@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<translations>
+   <translation id="telephony_line_password_title" qtlid="338144">Contraseña de la línea SIP</translation>
+
+   <translation id="telephony_line_password_rule_size" qtlid="384597">Doit contenir entre 8 et 20 caractères</translation>
+   <translation id="telephony_line_password_rule_special" qtlid="384610">Doit contenir des chiffres, lettres sans accent ou {{list}}</translation>
+   <translation id="telephony_line_password_rule_class" qtlid="387770">Contient au moins deux classes de caractères (chiffres, lettres, caractères spéciaux)</translation>
+   <translation id="telephony_line_password_rule_palindrome" qtlid="387783">N'est pas un palindrome (ex. : rotor, kayak)</translation>
+
+   <translation id="telephony_line_password_explaination1" qtlid="338157">La contraseña debe tener de 8 a 20 caracteres.</translation>
+   <translation id="telephony_line_password_explaination2" qtlid="338170">La contraseña debe tener al menos dos tipos de caracteres (cifras, letras o caracteres especiales).</translation>
+
+   <translation id="telephony_line_password_label" qtlid="338183">Nueva contraseña:</translation>
+   <translation id="telephony_line_password_placeholder" qtlid="338209">8 a 20 caracteres</translation>
+
+   <translation id="telephony_line_password_save_success" qtlid="338222">Se ha cambiado la contraseña de la línea SIP.</translation>
+   <translation id="telephony_line_password_save_fail" qtlid="338248">No se ha podido cambiar la contraseña de la línea SIP. Por favor, vuelva a intentarlo más adelante.</translation>
+
+</translations>

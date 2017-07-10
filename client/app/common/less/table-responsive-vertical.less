@@ -1,0 +1,19 @@
+.table-responsive-vertical {
+    @media screen and (max-width: @table-header-width-sm) {
+        > .table-pretty {
+            > tbody {
+                > tr {
+                    > td[data-title], th[data-title] {
+                        &:before {
+                            content : attr(data-title);
+                            float: none;
+                            display: block;
+                            font-weight : bold;
+                            color : @table-header-font-color-sm;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

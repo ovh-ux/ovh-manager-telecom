@@ -1,0 +1,43 @@
+<form name="abbreviatedNumberForm"
+      id="abbreviatedNumberForm"
+      class="form-horizontal ovh-form-flat import-abbr"
+      data-ng-submit="AbbreviatedNumberModal.send()">
+
+    <div class="modal-header">
+        <h3 class="modal-title" id="modal-title" data-translate="telephony_abbreviated_numbers_empty_modal_tile"></h3>
+    </div>
+
+    <div data-ng-if="!AbbreviatedNumberModal.removing" class="top-space-m32">
+
+        <p data-translate="telephony_abbreviated_numbers_empty_modal_text"></p>
+
+    </div>
+
+
+
+    <div class="modal-body" data-ng-if="AbbreviatedNumberModal.removing">
+        <uib-progressbar class="progress-striped"
+                         max="AbbreviatedNumberModal.total" 
+                         value="AbbreviatedNumberModal.progress">{{AbbreviatedNumberModal.progress}}</uib-progressbar>
+    </div>
+
+    <div class="modal-footer">
+        <button
+            type="button"
+            class="btn btn-default"
+            data-ng-disabled="AbbreviatedNumberModal.removing"
+            data-ng-click="AbbreviatedNumberModal.cancel()"
+            data-translate="cancel">
+        </button>
+        <button
+            data-ng-show="AbbreviatedNumberModal.abbreviatedNumbers.length"
+            type="submit"
+            class="btn btn-primary"
+            data-ng-disabled="AbbreviatedNumberModal.removing"
+            data-translate="submit"
+            data-ng-disabled="abbreviatedNumberForm.$invalid">
+        </button>
+    </div>
+
+
+</form>

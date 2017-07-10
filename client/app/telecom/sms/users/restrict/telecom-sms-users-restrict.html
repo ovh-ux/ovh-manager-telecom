@@ -1,0 +1,80 @@
+<form name="restrictUserForm"
+      id="restrictUserForm"
+      class="ovh-form-flat"
+      data-ng-submit="UsersRestrictByIpCtrl.restrict()">
+
+    <div class="modal-header">
+        <h3 class="modal-title pull-left" data-translate="sms_users_restrict_user_title"></h3>
+        <button
+            type="button"
+            class="close pull-right"
+            aria-label="{{ ::'cancel' | translate }}"
+            data-ng-click="UsersRestrictByIpCtrl.cancel()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <div class="modal-body" data-ng-if="!UsersRestrictByIpCtrl.loading.restrictByIpUser && !UsersRestrictByIpCtrl.restricted">
+
+        <p class="word-break"
+           data-translate="sms_users_restrict_user_info"
+           data-translate-values="{ login: UsersRestrictByIpCtrl.user.login }">
+        </p>
+
+        <div class="form-group bottom-space-m16" data-ng-repeat="ip in UsersRestrictByIpCtrl.user.ipRestrictions track by $index">
+            <div flat-input-container>
+                <label for="restriction{{ $index }}"
+                       class="control-label"
+                       data-translate="sms_users_restrict_user_restrict_label"
+                       data-translate-values="{ index: $index + 1 }">
+                </label>
+                <input
+                    type="text"
+                    name="restriction{{ $index }}"
+                    id="restriction{{ $index }}"
+                    class="form-control"
+                    autofocus
+                    data-ng-model="UsersRestrictByIpCtrl.user.ipRestrictions[$index]"
+                    data-ng-pattern="UsersRestrictByIpCtrl.ipRestrictions.pattern"
+                    data-translate-attr="{ placeholder: 'sms_users_restrict_user_restrict_placeholder' }"
+                    data-translate-values="{ index: $index + 1 }" />
+                <div role="alert"
+                     data-ng-if="restrictUserForm.$invalid && restrictUserForm.$dirty">
+                    <p class="text-danger"
+                       data-ng-if="restrictUserForm['restriction' + $index].$dirty && restrictUserForm['restriction' + $index].$error.pattern"
+                       data-translate="sms_users_restrict_user_restrict_error_pattern">
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="modal-body" data-ng-if="UsersRestrictByIpCtrl.loading.restrictByIpUser && !UsersRestrictByIpCtrl.restricted">
+        <bouncing-box-loader>
+            <h4 data-translate="sms_users_restrict_user_adding"></h4>
+        </bouncing-box-loader>
+    </div>
+
+    <div class="modal-body" data-ng-if="UsersRestrictByIpCtrl.restricted">
+        <success-drawing-check data-draw-success-check="UsersRestrictByIpCtrl.restricted">
+            <h4 data-translate="sms_users_restrict_user_added"></h4>
+        </success-drawing-check>
+    </div>
+
+    <div class="modal-footer">
+        <button
+            type="button"
+            class="btn btn-default"
+            data-ng-click="UsersRestrictByIpCtrl.cancel()"
+            data-translate="cancel"
+            data-ng-disabled="UsersRestrictByIpCtrl.loading.restrictByIpUser || UsersRestrictByIpCtrl.restricted">
+        </button>
+        <button
+            type="submit"
+            class="btn btn-primary"
+            data-ng-disabled="restrictUserForm.$invalid || !UsersRestrictByIpCtrl.hasChanged() || UsersRestrictByIpCtrl.loading.restrictByIpUser || UsersRestrictByIpCtrl.restricted"
+            data-translate="submit">
+        </button>
+    </div>
+</form>

@@ -1,0 +1,244 @@
+<div class="telecom-pack-move">
+    <header>
+        <section-back-link section-back-link-to-state="{{ PackMove.packName === 'sdsl' ? 'telecom.dashboard' : 'telecom.pack' }}"></section-back-link>
+        <h1 data-translate="pack_move_title"></h1>
+    </header>
+
+    <div class="telecom-section-content">
+
+        <spinner data-ng-if="PackMove.loading"></spinner>
+
+        <!-- BEGIN: end of loading -->
+        <div data-ng-if="!PackMove.loading">
+            <div class="alert alert-warning top-space-m20"
+                 role="alert"
+                 data-ng-if="PackMove.operationAlreadyPending">
+                 <span class="ovh-font ovh-font-filled-warning" aria-hidden="true"></span>
+                 <strong data-translate="pack_move_operation_already_pending"></strong>
+            </div>
+            <div class="alert alert-warning top-space-m20"
+                 role="alert"
+                 data-ng-if="!PackMove.operationAlreadyPending && PackMove.offer.current.isLegacy">
+                <span class="ovh-font ovh-font-filled-warning" aria-hidden="true"></span>
+                <strong data-translate="pack_move_legacy_offer"></strong>
+                <a data-translate="pack_move_legacy_offer_upgrade_offer"
+                   data-ui-sref="telecom.pack.migration">
+                </a>
+            </div>
+
+            <!-- BEGIN: Is not legacy offer -->
+            <div data-ng-if="!PackMove.operationAlreadyPending  && !PackMove.offer.current.isLegacy">
+
+                <!-- BEGIN: Line Information -->
+                <div class="widget-presentation">
+                    <h2 class="widget-presentation-title" data-translate="pack_move_line_title"></h2>
+
+                    <div flat-input-container class="input-group top-space-p4 bottom-space-m8">
+                        <flat-radio>
+                            <input type="radio"
+                                   id="radioNumber"
+                                   data-ng-model="PackMove.method"
+                                   data-ng-value="'number'"/>
+                        </flat-radio>
+                        <label for="radioNumber"
+                               class="left-space-p8"
+                               data-translate="pack_move_line_subtitle"></label>
+                    </div>
+                    <pack-move-eligibility-line-number data-offers-change="PackMove.computeOffer(OFFERS)"
+                                                       data-submited="PackMove.ongoingTest()"
+                                                       data-method="PackMove.method">
+                    </pack-move-eligibility-line-number>
+
+                    <div flat-input-container class="input-group top-space-p4 bottom-space-m8">
+                        <flat-radio>
+                            <input type="radio"
+                                   id="radioAddress"
+                                   data-ng-model="PackMove.method"
+                                   data-ng-value="'address'"/>
+                        </flat-radio>
+                        <label for="radioAddress"
+                               class="left-space-p8"
+                               data-translate="pack_move_address_subtitle"></label>
+                    </div>
+                    <pack-move-eligibility-address data-offers-change="PackMove.computeOffer(OFFERS)"
+                                                   data-submited="PackMove.ongoingTest()"
+                                                   data-method="PackMove.method">
+                    </pack-move-eligibility-address>
+                    <div class="alert alert-warning"
+                         role="alert"
+                         data-ng-if="!PackMove.testLine.canMove && PackMove.testLine.performed">
+                         <span class="ovh-font ovh-font-filled-warning" aria-hidden="true"></span>
+                         <strong data-translate="pack_move_cannot_move"></strong>
+                    </div>
+                </div>
+                <!-- END: Line Information -->
+
+                <!-- BEGIN: pack move form -->
+                <form name="packMoveForm"
+                      class="ovh-form-flat"
+                      data-ng-if="PackMove.testLine.canMove && PackMove.testLine.performed"
+                      data-ng-submit="PackMove.openConfirmModal()">
+
+                    <!-- BEGIN: Eligibility -->
+                    <div class="widget-presentation">
+                        <h2 class="widget-presentation-title" data-translate="pack_move_eligibility_title"></h2>
+                        <span class="service-item" data-translate="pack_move_eligibility_subtitle"></span>
+
+                        <div class="row">
+                            <div class="col-md-6 col-xs-12" data-ng-repeat="offer in PackMove.offer.available track by $index">
+                                <pack-move-offer data-offer="offer"
+                                                 data-change="PackMove.offerSelected(OFFER)"
+                                                 data-offer-model="PackMove.offer.selected"></pack-move-offer>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- END: Eligibility -->
+
+                    <!-- BEGIN: Keep numbers -->
+                    <div class="widget-presentation top-space-p16 move-number-config">
+                        <h2 class="widget-presentation-title" data-translate="pack_move_line_keep_number"></h2>
+                        <div class="row no-space">
+                            <!-- BEGIN: Current Address -->
+                            <pack-move-address-current data-loading="PackMove.packAdress.loading || PackMove.slammingCheck"
+                                                       data-line-number="{{PackMove.packAdress.lineNumber}}"
+                                                       data-port-line-number="PackMove.form.currentLandline.portLineNumber"
+                                                       data-portability="PackMove.packAdress.portability && !PackMove.hasSlamming"
+                                                       data-address="PackMove.packAdress.current">
+                            </pack-move-address-current>
+                            <!-- END: Current Address -->
+                            <!-- BEGIN: New Address -->
+                            <pack-move-address-future
+                                data-address="PackMove.offer.selected.address"
+                                data-address-loading="PackMove.packAdress.loading"
+                                data-rio="PackMove.form.futureLandline.rio"
+                                data-keep-line-number="PackMove.form.futureLandline.keepLineNumber"
+                                data-can-keep-line-number="PackMove.offer.selected.portability.eligible"
+                                data-line-number="{{PackMove.form.futureLandline.lineNumber}}">
+                            </pack-move-address-future>
+                            <!-- END: New Address -->
+                        </div>
+                    </div>
+                    <!-- END: Keep numbers -->
+
+                    <!-- BEGIN: FT meeting -->
+                    <div class="widget-presentation top-space-p16 move-number-config ft-meeting"
+                         data-ng-if="PackMove.offer.selected.meetingSlots">
+                        <h2 class="widget-presentation-title" data-translate="pack_move_meeting_slots"></h2>
+
+                        <p data-ng-show="PackMove.offer.selected.meetingSlots"
+                           data-translate="pack_move_mandatory_field"></p>
+
+                        <div data-ng-show="PackMove.offer.selected.meetingSlots.canBookFakeMeeting &&
+                            PackMove.offer.selected.meetingSlots.meetingSlots.length">
+                            <div flat-input-container class="input-group top-space-m16 col-md-12">
+                                <flat-radio>
+                                    <input type="radio"
+                                        id="radioFakeMeeting"
+                                        data-ng-model="PackMove.offer.meetingSlots.fakeMeeting"
+                                        data-ng-disabled="!PackMove.offer.selected.meetingSlots.canBookFakeMeeting"
+                                        data-ng-value="true"/>
+                                </flat-radio>
+                                <label for="radioFakeMeeting"
+                                       class="left-space-p8"
+                                       data-translate="pack_move_fake_meeting">
+                                </label>
+                            </div>
+                            <div flat-input-container class="input-group top-space-m16 col-md-12">
+                                <flat-radio>
+                                    <input type="radio"
+                                        id="radioNoFakeMeeting"
+                                        data-ng-model="PackMove.offer.meetingSlots.fakeMeeting"
+                                        data-ng-value="false"/>
+                                </flat-radio>
+                                <label for="radioNoFakeMeeting"
+                                       class="left-space-p8"
+                                       data-translate="pack_move_no_fake_meeting">
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-info"
+                             role="alert"
+                             data-ng-if="PackMove.offer.selected.meetingSlots.canBookFakeMeeting &&
+                             !PackMove.offer.selected.meetingSlots.meetingSlots.length">
+                             <span class="ovh-font ovh-font-filled-info" aria-hidden="true"></span>
+                             <span data-translate="pack_move_no_erdv_info"></span>
+                        </div>
+
+                        <div class="top-space-m32" data-translate="pack_move_contact_name_info"></div>
+
+                        <div flat-input-container class="top-space-m16">
+                            <label class="control-label required"
+                                   for="contactNameId"
+                                   data-translate="pack_move_contact_name"></label>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <input id="contactNameId"
+                                        class="form-control"
+                                        required
+                                        pattern=".+"
+                                        data-ng-model="PackMove.offer.selected.contactName"
+                                        placeholder="{{'pack_move_contact_name'| translate}}"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="top-space-m32 required"
+                             data-ng-show="PackMove.offer.selected.meetingSlots.meetingSlots.length &&
+                             !PackMove.offer.meetingSlots.fakeMeeting"
+                             data-translate="pack_move_programmed_meeting_select">
+                        </div>
+
+                        <div class="row top-space-m16">
+                            <div class="col-md-6 col-xs-12 meeting-calendar"
+                                data-ui-calendar="PackMove.calendarConfig"
+                                data-ng-model="PackMove.offer.selected.meetingSlots.calendarData"
+                                data-calendar="mainCalendar"
+                                data-ng-hide="PackMove.offer.selected.meetingSlots.canBookFakeMeeting && PackMove.offer.meetingSlots.fakeMeeting">
+                            </div>
+                        </div>
+
+                        <p class="top-space-m32"
+                            data-ng-show="PackMove.offer.selected.meetingSlots.meetingSlots.length &&
+                                !PackMove.offer.meetingSlots.fakeMeeting">
+                            <span data-translate="pack_move_programmed_meeting"
+                                data-ng-show="PackMove.offer.meetingSlots.slot"
+                                data-translate-values="PackMove.offer.meetingSlots.slot.display"></span>
+                        </p>
+                    </div>
+                    <!-- END: FT meeting -->
+
+                    <div class="bottom-space-m32 text-center">
+                        <button class="btn btn-primary"
+                            type="submit"
+                            data-ng-class="{
+                                'btn-info': PackMove.moveValidationPending,
+                                'btn-warning': PackMove.moveValidationError && !PackMove.moveValidationPending,
+                                'btn-primary': (!PackMove.moveValidationPending && !PackMove.moveValidationError && !PackMove.moveValidationSuccess) || (PackMove.moveValidationSuccess && !PackMove.moveValidationPending)}"
+                            data-ng-disabled="!PackMove.isFormValid() ||
+                            PackMove.moveValidationPending || PackMove.moveValidationSuccess">
+                            <span data-ng-show="!PackMove.moveValidationPending && !PackMove.moveValidationError &&
+                            !PackMove.moveValidationSuccess" data-translate="pack_move_validate"></span>
+                            <span data-ng-show="PackMove.moveValidationPending">
+                                <span data-translate="pack_move_pending_validation"></span>
+                                <span class="fa fa-spin fa-spinner left-space-m8" aria-hidden="true"></span>
+                            </span>
+                            <span data-ng-show="PackMove.moveValidationError && !PackMove.moveValidationPending">
+                                <span data-translate="pack_move_error_validation"></span>
+                                <span class="ovh-font ovh-font-warning left-space-m8" aria-hidden="true"></span>
+                            </span>
+                            <span data-ng-show="PackMove.moveValidationSuccess && !PackMove.moveValidationPending">
+                                <span data-translate="pack_move_success_validation"></span>
+                                <span class="ovh-font ovh-font-check left-space-m8" aria-hidden="true"></span>
+                            </span>
+                        </button>
+                    </div>
+                </form>
+                <!-- BEGIN: pack move form -->
+            </div>
+            <!-- END: Is not legacy offer -->
+        </div>
+        <!-- END: end of loading -->
+    </div>
+</div>

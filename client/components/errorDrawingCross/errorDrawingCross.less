@@ -1,0 +1,86 @@
+@ERROR_CROSS_HEIGHT: 50px;
+@ERROR_CROSS_WIDTH: @ERROR_CROSS_HEIGHT;
+@ERROR_CROSS_STROKE_COLOR: rgb(229, 87, 18);
+@ERROR_CROSS_STROKE_WIDTH: 2;
+@ERROR_CROSS_SHADOW_COLOR: rgb(0,0,0);
+
+error-drawing-cross {
+    height: @ERROR_CROSS_HEIGHT;
+    width: @ERROR_CROSS_WIDTH;
+    .errorDrawingCross {
+
+        display:inline-block;
+        position: relative;
+
+        &:before {
+            content: '';
+            width:  @ERROR_CROSS_WIDTH;
+            height: @ERROR_CROSS_HEIGHT/10;
+            background: @ERROR_CROSS_SHADOW_COLOR;
+            opacity: 0.1;
+            position: absolute;
+            top: 59px;
+            left: 0;
+            border-radius: 60px / 9px;
+        }
+
+        svg {
+            line {
+              display: none;
+
+              fill: none;
+              stroke: @ERROR_CROSS_STROKE_COLOR;
+              stroke-width: @ERROR_CROSS_STROKE_WIDTH;
+              stroke-linecap: round;
+              stroke-linejoin: round;
+              stroke-dasharray: 80;
+              stroke-dashoffset:81;
+            }
+        }
+
+        &.draw {
+            animation: fall 0.75s ease-in forwards;
+            animation-delay: 0.70s;
+            backface-visibility: visible !important;
+            transform-origin: bottom;
+            svg {
+                line {
+                    display: inline-block;
+                    &.firstLine {
+                        animation: errorDrawingCrossAnim 0.3s ease-in forwards;
+                    }
+                    &.secondLine {
+                        animation: errorDrawingCrossAnim 0.3s ease-in forwards;
+                        animation-delay: 0.3s;
+                    }
+                }
+            }
+        }
+
+
+        @keyframes errorDrawingCrossAnim {
+          from {
+            stroke-dashoffset:80;
+          }
+          to {
+            stroke-dashoffset:0;
+          }
+        }
+
+        @keyframes fall {
+          from {
+            transform: perspective(400px);
+            opacity: 1
+          }
+
+          30% {
+            transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+          }
+
+          to {
+            transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+          }
+        }
+
+    }
+}

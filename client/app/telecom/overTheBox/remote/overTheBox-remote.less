@@ -1,0 +1,60 @@
+.overthebox-remote{
+    table.table {
+        tbody {
+            tr {
+                .service-item {
+                    text-align: left !important;
+                }
+                .service-title {
+                    font-weight: 600;
+                }
+                td {
+                    * {
+                        vertical-align: middle;
+                    }
+
+                    i.active {
+                        color:@brand-success;
+                    }
+
+                    i.create {
+                        color: @brand-primary;
+                    }
+
+                    i.delete {
+                        color: @brand-remove;
+                    }
+
+                    i.pending {
+                        color: @brand-danger;
+                    }
+
+                    &.detail {
+                        div.row {
+                            border-left: solid 2px @UNIVERS;
+                            pre {
+                                display: inline-block;
+                                vertical-align: middle;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .widget-presentation{
+        .row{
+            padding: 6px 0;
+        }
+
+        .input-group{
+            width: 100%;
+
+            span{
+                border: none;
+            }
+        }
+
+    }
+}

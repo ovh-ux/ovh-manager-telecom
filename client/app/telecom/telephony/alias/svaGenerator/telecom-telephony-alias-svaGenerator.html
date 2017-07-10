@@ -1,0 +1,63 @@
+<div class="telephony-group-alias-svaGenerator">
+
+    <bouncing-box-loader data-ng-if="SvaGeneratorCtrl.isLoading">
+        <h1 data-translate="loading"></h1>
+    </bouncing-box-loader>
+
+    <div class="row top-space-m32" data-ng-if="!SvaGeneratorCtrl.isLoading">
+        <div class="col-xs-12 widget-presentation">
+            <header class="widget-presentation-header">
+                <h2 class="widget-presentation-title" data-translate="telephony_alias_sva_generator_panpanpan"></h2>
+            </header>
+        </div>
+        <div class="col-xs-12" data-ng-if="SvaGeneratorCtrl.notSupported">
+            <div class="alert alert-info" role="alert">
+                <i class="ovh-font ovh-font-filled-info"></i>
+                <p data-translate="telephony_alias_sva_generator_unsupported"></p>
+            </div>
+        </div>
+        <div class="col-xs-12" data-ng-if="SvaGeneratorCtrl.rate">
+            <div class="row">
+                <div class="col-sm-4" flat-input-container>
+                    <label for="fillType"
+                           class="control-label"
+                           data-translate="telephony_alias_sva_generator_fill">
+                    </label>
+                    <select flat-select
+                            name="fillType"
+                            id="fillType"
+                            class="form-control"
+                            data-ng-model="SvaGeneratorCtrl.fillType"
+                            data-ng-options="type as ('telephony_alias_sva_generator_fill_' + type | translate) for type in SvaGeneratorCtrl.fillTypeList">
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4 top-space-m16" flat-input-container>
+                    <label for="numberFormat"
+                           class="control-label"
+                           data-translate="telephony_alias_sva_generator_format">
+                    </label>
+                    <select flat-select
+                            name="numberFormat"
+                            id="numberFormat"
+                            class="form-control"
+                            data-ng-model="SvaGeneratorCtrl.numberFormat"
+                            data-ng-options="format for format in SvaGeneratorCtrl.numberFormatList">
+                    </select>
+                </div>
+            </div>
+            <div class="top-space-m16">
+                <sva-generator data-width="400"
+                               data-number="SvaGeneratorCtrl.serviceName"
+                               data-number-format="SvaGeneratorCtrl.numberFormat"
+                               data-price-per-call="SvaGeneratorCtrl.pricePerCall"
+                               data-price-per-minute="SvaGeneratorCtrl.pricePerMinute"
+                               data-fill="SvaGeneratorCtrl.fillType">
+                </sva-generator>
+            </div>
+        </div>
+    </div>
+
+</div>
+

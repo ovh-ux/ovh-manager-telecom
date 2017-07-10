@@ -1,0 +1,174 @@
+<form name="addResponseOptionForm"
+      id="addResponseOptionForm"
+      class="ovh-form-flat"
+      data-ng-submit="OptionsResponseAddCtrl.add()">
+
+    <div class="modal-header">
+        <h3 class="modal-title pull-left" data-translate="sms_options_response_tracking_add_title"></h3>
+        <button
+            type="button"
+            class="close pull-right"
+            aria-label="{{ ::'cancel' | translate }}"
+            data-ng-click="OptionsResponseAddCtrl.cancel()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <div class="modal-body" data-ng-if="!OptionsResponseAddCtrl.loading.addTrackingOption && !OptionsResponseAddCtrl.added">
+
+        <!-- MEDIA -->
+        <div class="form-group bottom-space-m16 clearfix">
+            <label for="media"
+                   class="control-label"
+                   data-translate="sms_options_response_tracking_add_media_label">
+            </label>
+            <select
+                flat-select
+                name="media"
+                id="media"
+                class="form-control"
+                autofocus
+                data-ng-init="OptionsResponseAddCtrl.trackingOptions.media = 'email'"
+                data-ng-model="OptionsResponseAddCtrl.trackingOptions.media"
+                data-ng-options="media as ('sms_options_response_tracking_add_media_' + media | translate) for media in OptionsResponseAddCtrl.availableTrackingMedia"
+                data-ng-change="OptionsResponseAddCtrl.resetTrackingOptions()">
+            </select>
+        </div>
+
+        <!-- SENDER EMAIL -->
+        <div class="form-group bottom-space-m16" data-ng-if="OptionsResponseAddCtrl.trackingOptions.media === 'email'">
+            <div flat-input-container>
+                <label for="sender"
+                       class="control-label"
+                       data-translate="sms_options_response_tracking_add_sender_email_label">
+                </label>
+                <input
+                    type="email"
+                    name="senderEmail"
+                    id="senderEmail"
+                    class="form-control"
+                    data-ng-model="OptionsResponseAddCtrl.trackingOptions.sender"
+                    data-ng-required="OptionsResponseAddCtrl.trackingOptions.media === 'email'"
+                    data-translate-attr="{ placeholder: 'sms_options_response_tracking_add_sender_email_label' }" />
+                <div role="alert"
+                     data-ng-messages="(addResponseOptionForm.$invalid && addResponseOptionForm.senderEmail.$dirty) && addResponseOptionForm.senderEmail.$error">
+                    <p class="text-danger"
+                       data-ng-message="required"
+                       data-translate="sms_options_response_tracking_add_sender_email_error_required">
+                    </p>
+                    <p class="text-danger"
+                       data-ng-message="email"
+                       data-translate="sms_options_response_tracking_add_sender_email_error_email">
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- TARGET EMAIL -->
+        <div class="form-group bottom-space-m16" data-ng-if="OptionsResponseAddCtrl.trackingOptions.media === 'email'">
+            <div flat-input-container>
+                <label for="targetEmail"
+                       class="control-label"
+                       data-translate="sms_options_response_tracking_add_target_email_label">
+                </label>
+                <input
+                    type="email"
+                    name="targetEmail"
+                    id="targetEmail"
+                    class="form-control"
+                    placeholder="{{ ::'sms_options_response_tracking_add_target_email_label' | translate }}"
+                    data-ng-model="OptionsResponseAddCtrl.trackingOptions.target"
+                    data-ng-required="OptionsResponseAddCtrl.trackingOptions.media === 'email'" />
+                <div role="alert"
+                     data-ng-messages="(addResponseOptionForm.$invalid && addResponseOptionForm.targetEmail.$dirty) && addResponseOptionForm.targetEmail.$error">
+                    <p class="text-danger"
+                       data-ng-message="required"
+                       data-translate="sms_options_response_tracking_add_target_email_error_required">
+                    </p>
+                    <p class="text-danger"
+                       data-ng-message="email"
+                       data-translate="sms_options_response_tracking_add_target_email_error_email">
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SENDER NUMBER -->
+        <div class="form-group bottom-space-m16 clearfix" data-ng-if="OptionsResponseAddCtrl.trackingOptions.media === 'sms'">
+            <label for="sender"
+                   class="control-label"
+                   data-translate="sms_options_response_tracking_add_sender_number_label">
+            </label>
+            <select
+                flat-select
+                name="sender"
+                id="sender"
+                class="form-control"
+                required
+                data-ng-model="OptionsResponseAddCtrl.trackingSender"
+                data-ng-options="sender as sender.sender for sender in OptionsResponseAddCtrl.senders track by sender.sender"
+                data-ng-change="OptionsResponseAddCtrl.handleTrackingSenderNumber()">
+            </select>
+        </div>
+
+        <!-- TARGET NUMBER -->
+        <div class="form-group bottom-space-m16" data-ng-if="OptionsResponseAddCtrl.trackingOptions.media === 'sms'">
+            <div flat-input-container>
+                <label for="targetNumber"
+                       class="control-label"
+                       data-translate="sms_options_response_tracking_add_target_number_label">
+                </label>
+                <input
+                    type="text"
+                    name="targetNumber"
+                    id="targetNumber"
+                    class="form-control"
+                    placeholder="{{ ::'sms_options_response_tracking_add_target_number_placeholder' | translate }}"
+                    data-ng-model="OptionsResponseAddCtrl.trackingOptions.target"
+                    data-ng-required="OptionsResponseAddCtrl.trackingOptions.media === 'sms'"
+                    data-ng-change="OptionsResponseAddCtrl.restrictTargetNumber()"
+                    data-ng-pattern="OptionsResponseAddCtrl.targetNumberPattern" />
+                <div role="alert"
+                     data-ng-messages="(addResponseOptionForm.$invalid && addResponseOptionForm.targetNumber.$dirty) && addResponseOptionForm.targetNumber.$error">
+                    <p class="text-danger"
+                       data-ng-message="required"
+                       data-translate="sms_options_response_tracking_add_target_number_error_required">
+                    </p>
+                    <p class="text-danger"
+                       data-ng-message="pattern"
+                       data-translate="sms_options_response_tracking_add_target_number_error_pattern">
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="modal-body" data-ng-if="OptionsResponseAddCtrl.loading.addTrackingOption && !OptionsResponseAddCtrl.added">
+        <bouncing-box-loader>
+            <h4 data-translate="sms_options_response_tracking_add_option_adding"></h4>
+        </bouncing-box-loader>
+    </div>
+
+    <div class="modal-body" data-ng-if="OptionsResponseAddCtrl.added">
+        <success-drawing-check data-draw-success-check="OptionsResponseAddCtrl.added">
+            <h4 data-translate="sms_options_response_tracking_add_option_added"></h4>
+        </success-drawing-check>
+    </div>
+
+    <div class="modal-footer">
+        <button
+            type="button"
+            class="btn btn-default"
+            data-ng-click="OptionsResponseAddCtrl.cancel()"
+            data-translate="cancel"
+            data-ng-disabled="OptionsResponseAddCtrl.loading.addTrackingOption || OptionsResponseAddCtrl.added">
+        </button>
+        <button
+            type="submit"
+            class="btn btn-primary"
+            data-ng-disabled="addResponseOptionForm.$invalid || OptionsResponseAddCtrl.loading.addTrackingOption || OptionsResponseAddCtrl.added"
+            data-translate="submit">
+        </button>
+    </div>
+</form>

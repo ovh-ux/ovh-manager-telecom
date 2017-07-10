@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<translations>
+   <translation id="telephony_line_actions_line_calls_display_number_title" qtlid="58532">Numeron näyttö</translation>
+   <translation id="telephony_line_actions_line_calls_display_number_read_error" qtlid="336155">Pääsy numeron näyttöön ei ole mahdollista.</translation>
+   <translation id="telephony_line_actions_line_calls_display_number_write_error" qtlid="336168">Numeron näyttöä ei voida päivittää. Se ei ole kansainvälisessä formaatissa tai et omista sitä.</translation>
+   <translation id="telephony_line_actions_line_calls_display_number_write_success" qtlid="336181">Numeron näyttö päivitettiin.</translation>
+   <translation id="telephony_line_actions_line_calls_display_number_label" qtlid="387029">Je souhaite présenter un numéro lors des appels sortants&#160;:</translation>
+   <translation id="telephony_line_actions_line_calls_display_number_confirm" qtlid="249107">Ota muutokset käyttöön</translation>
+   <translation id="telephony_line_actions_line_calls_display_number_info" qtlid="387042">Lors de vos appels sortants, présentez un numéro de votre groupe de facturation ou choisissez l'anonymat.</translation>
+   <translation id="telephony_line_actions_line_calls_identificationRestriction_checkbox_label" qtlid="387055">Rester anonyme</translation>
+</translations>

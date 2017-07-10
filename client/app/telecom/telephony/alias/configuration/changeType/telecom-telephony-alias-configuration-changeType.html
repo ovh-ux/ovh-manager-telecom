@@ -1,0 +1,66 @@
+<section class="telephony-group-alias-redirect">
+
+    <header>
+        <section-back-link section-back-link-to-state="telecom.telephony.alias.configuration"
+                           section-back-link-title="{{ 'telephony_alias_configuration_back_link' | translate }}">
+        </section-back-link>
+        <h1 data-translate="telephony_alias_change_type_title"></h1>
+
+        <div class="alert alert-info"
+             role="alert">
+            <i class="ovh-font ovh-font-filled-info right-space-m8"></i>
+            <p data-translate="telephony_alias_change_type_info_text_1"></p>
+            <p data-translate="telephony_alias_change_type_info_text_2"></p>
+        </div>
+    </header>
+
+    <div class="telecom-section-content" data-ng-if="AliasConfigurationChangeTypeCtrl.loading.line">
+        <bouncing-box-loader>
+            <h2 data-translate="loading"></h2>
+        </bouncing-box-loader>
+    </div>
+
+    <div class="telecom-section-content" data-ng-if="!AliasConfigurationChangeTypeCtrl.loading.line">
+        <div class="row">
+            <div class="col-xs-12 col-md-6 widget-presentation">
+                <header class="widget-presentation-header">
+                    <h2 class="widget-presentation-title" data-translate="telephony_alias_config_change_type_title"></h2>
+                </header>
+                <form class="ovh-form-flat"
+                      name="changeTypeForm"
+                      data-ng-submit="AliasConfigurationChangeTypeCtrl.changeType();"
+                      data-ng-if="!AliasConfigurationChangeTypeCtrl.loading.changing">
+                    <div class="form-group bottom-space-m16 clearfix">
+                        <label for="aliasType" data-translate="telephony_alias_config_change_type_label"></label>
+                        <select flat-select class="form-control"
+                            id="aliasType"
+                            name="aliasType"
+                            required
+                            data-ng-model="AliasConfigurationChangeTypeCtrl.number.feature.featureType"
+                            data-ng-options="type.id as type.label for type in AliasConfigurationChangeTypeCtrl.availableTypes | orderBy:'label'">
+                            <option value="" data-translate="telephony_alias_config_change_type_label_select" disabled></option>
+                        </select>
+                    </div>
+                    <div class="form-group bottom-space-m16">
+                        <button type="submit"
+                                class="btn btn-sm btn-primary pull-right"
+                                data-ng-disabled="!changeTypeForm.$valid || AliasConfigurationChangeTypeCtrl.loading.changing || !AliasConfigurationChangeTypeCtrl.number.feature.hasChange()"
+                                data-translate="submit">
+                        </button>
+                    </div>
+                </form>
+
+                <bouncing-box-loader data-ng-if="AliasConfigurationChangeTypeCtrl.loading.changing">
+                    <h4 data-translate="telephony_alias_config_change_type_doing"></h4>
+                </bouncing-box-loader>
+            </div>
+            <div class="col-xs-12 col-md-6 widget-presentation">
+                <header class="widget-presentation-header">
+                    <h2 class="widget-presentation-title" data-translate="telephony_alias_config_change_type_desc"></h2>
+                </header>
+                <p data-ng-if="AliasConfigurationChangeTypeCtrl.number.feature.featureType" data-translate="{{'telephony_alias_config_change_type_desc_' + AliasConfigurationChangeTypeCtrl.number.feature.featureType}}"></p>
+            </div>
+        </div>
+    </div>
+
+</section>

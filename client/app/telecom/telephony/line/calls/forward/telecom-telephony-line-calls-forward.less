@@ -1,0 +1,40 @@
+div.telephony-group-line-forward {
+    .ui-select-container {
+        span.form-control {
+            &.ui-select-toggle {
+                color: @gray-dark;
+            }
+        }
+    }
+
+    .ui-select-match-text {
+        max-width: 95%;
+        overflow-x: hidden;
+    }
+
+    input.in-text {
+        max-width: 70px;
+        display: inline-block;
+    }
+
+    input[type=number] {
+        -moz-appearance: textfield;
+        appearance: textfield;
+        margin: 0;
+    }
+
+    .ui-select-container {
+        .btn {
+            padding:6px 0;
+        }
+        .caret {
+            color: @FormFlatSelectDefault;
+            margin-top:-5px;
+            width: 8px;
+            right:5px;
+            border-top:8px dashed @FormFlatSelectDefault;
+            border-right:8px solid transparent;
+            border-left:8px solid transparent;
+        }
+    }
+}

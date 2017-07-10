@@ -1,0 +1,69 @@
+<!doctype html>
+<html data-ng-app="managerApp" data-lang>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title data-ng-bind-html="fullTitle"></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <!-- build:css(client) app/vendor.css -->
+        <!-- bower:css -->
+        <!-- endbower -->
+        <!-- injector:assetscss -->
+        <!-- endinjector:assetscss -->
+        <!-- endbuild -->
+        <!-- build:css({.tmp,client}) app/app.css -->
+        <link rel="stylesheet" href="app/app.css">
+        <!-- injector:css -->
+        <!-- endinjector -->
+        <!-- endbuild -->
+    </head>
+    <body class="ng-cloak" data-ng-cloak>
+
+        <!-- TOP MENU -->
+        <manager-navbar></manager-navbar>
+
+        <div class="container-fluid">
+            <div class="row" style="position: relative;">
+
+                <!-- SIDE MENU -->
+                <div data-sidebar-menu
+                     class="col-sm-3 col-md-2">
+                </div>
+
+                <!-- CONTENT -->
+                <div id="content" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
+
+                    <flash-message duration="600000" class="flash"></flash-message>
+                    <ovh-browser-alert></ovh-browser-alert>
+                    <ovh-task-follow></ovh-task-follow>
+
+                    <div ui-view=""></div>
+                </div>
+
+            </div>
+        </div>
+
+        <!--[if lt IE 9]>
+        <script src="bower_components/es5-shim/es5-shim.js"></script>
+        <script src="bower_components/json3/lib/json3.min.js"></script>
+        <![endif]-->
+        <!-- build:js({client,node_modules}) app/vendor.js -->
+        <!-- bower:js -->
+        <!-- endbower -->
+        <script src="bower_components/cryptojs/lib/Crypto.js"></script>
+        <script src="bower_components/cryptojs/lib/SHA1.js"></script>
+        <script src="bower_components/cryptojs/lib/BlockModes.js"></script>
+        <script src="bower_components/cryptojs/lib/PBKDF2.js"></script>
+        <script src="bower_components/cryptojs/lib/HMAC.js"></script>
+        <script src="bower_components/cryptojs/lib/AES.js"></script>
+        <!-- endbuild -->
+        <!-- build:js({.tmp,client}) app/app.js -->
+        <script src="app/app.js"></script>
+          <!-- injector:js -->
+          <!-- endinjector -->
+        <!-- endbuild -->
+
+</body>
+</html>

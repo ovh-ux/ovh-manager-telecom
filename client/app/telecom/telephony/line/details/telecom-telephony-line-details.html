@@ -1,0 +1,199 @@
+<section class="telecom-telephony-line-details">
+
+    <bouncing-box-loader data-ng-if="DetailsOfferCtrl.loading.init">
+        <h2 data-translate="loading"></h2>
+    </bouncing-box-loader>
+
+    <div data-ng-if="!DetailsOfferCtrl.loading.init">
+
+        <div class="row">
+            <!-- LINE INFORMATIONS -->
+            <section class="col-xs-12 col-md-6  widget-presentation">
+
+                <header class="widget-presentation-header">
+                    <h2 class="widget-presentation-title"
+                        data-translate="telephony_line_details_global_info_title" data-translate-values="{id: (DetailsOfferCtrl.line.serviceName | phoneNumber)}"></h2>
+                </header>
+
+                <dl class="dl-telecom">
+                    <!-- description -->
+                    <dt data-translate="telephony_line_details_label"></dt>
+                    <dd class="bottom-space-m8"
+                        data-ng-bind="::DetailsOfferCtrl.line.description || '-'">
+                    </dd>
+
+                    <!-- country code -->
+                    <dt data-translate="telephony_line_details_country"></dt>
+                    <dd class="bottom-space-m8">
+                        <span class="flag-icon" data-ng-class="['flag-icon-'+DetailsOfferCtrl.plan.country]"></span>
+                        /
+                        <span data-ng-bind="DetailsOfferCtrl.plan.prefix || '-'">
+                    </dd>
+
+                    <!-- next bill-->
+                    <dt data-translate="telephony_line_details_next_bill"></dt>
+                    <dd class="bottom-space-m8"
+                        data-ng-bind="::DetailsOfferCtrl.line.nextBill | date:'shortDate' || '-'">
+                    </dd>
+
+                    <!-- Simultaneous calls -->
+                    <dt data-translate="telephony_line_details_silmutaneous_call"></dt>
+                    <dd class="bottom-space-m8"
+                        data-ng-bind="::DetailsOfferCtrl.line.simultaneousLines || '-'">
+                    </dd>
+                </dl>
+            </section>
+
+            <!-- GROUPE INFORMATIONS-->
+            <section class="col-xs-12 col-md-6  widget-presentation">
+
+                <header class="widget-presentation-header">
+                    <h2 class="widget-presentation-title"
+                        data-translate="telephony_line_details_global_group_title"></h2>
+                </header>
+
+                <dl class="dl-telecom">
+                    <!-- id -->
+                    <dt data-translate="telephony_line_details_group_id"></dt>
+                    <dd class="bottom-space-m8"
+                        data-ng-bind="::DetailsOfferCtrl.group.billingAccount || '-'">
+                    </dd>
+
+                    <!-- description-->
+                    <dt data-translate="telephony_line_details_group_label"></dt>
+                    <dd class="bottom-space-m8"
+                        data-ng-bind="::DetailsOfferCtrl.group.getDisplayedName() || '-'">
+                    </dd>
+                </dl>
+            </section>
+        </div>
+
+        <div class="row">
+            <!-- PHONE -->
+            <section class="col-xs-12 col-md-6  widget-presentation"
+                 data-ng-if="DetailsOfferCtrl.line.hasPhone">
+
+                <header class="widget-presentation-header">
+                    <h2 class="widget-presentation-title"
+                        data-translate="telephony_line_details_hardware_title"></h2>
+                </header>
+
+                <dl class="dl-telecom">
+                    <!-- MODEL -->
+                    <dt data-translate="telephony_line_details_hardware_model"></dt>
+                    <dd class="bottom-space-m8"
+                        data-ng-bind="::DetailsOfferCtrl.line.phone.description || DetailsOfferCtrl.line.phone.brand">
+                    </dd>
+
+                    <!-- CONBI-->
+                    <dt data-translate="telephony_line_details_hardware_combi"></dt>
+                    <dd class="bottom-space-m8"
+                        data-ng-bind="::DetailsOfferCtrl.line.phone.combi || '-'">
+                    </dd>
+
+                    <!-- MAC-->
+                    <dt data-translate="telephony_line_details_hardware_mac"></dt>
+                    <dd class="bottom-space-m8"
+                        data-ng-bind="::DetailsOfferCtrl.line.phone.macAddress">
+                    </dd>
+
+                    <!-- IP -->
+                    <dt data-translate="telephony_line_details_hardware_ip"></dt>
+                    <dd class="bottom-space-m8"
+                        data-ng-bind="::DetailsOfferCtrl.line.phone.ip.ip || '-'">
+                    </dd>
+
+                    <!-- PORT -->
+                    <dt data-translate="telephony_line_details_hardware_port"></dt>
+                    <dd class="bottom-space-m8"
+                        data-ng-bind="::DetailsOfferCtrl.line.phone.port || '-'">
+                    </dd>
+
+                    <!-- PROTOCOL-->
+                    <dt data-translate="telephony_line_details_hardware_protocol"></dt>
+                    <dd class="bottom-space-m8"
+                        data-ng-bind="::DetailsOfferCtrl.line.phone.protocol | uppercase">
+                    </dd>
+
+                    <!-- INFRA -->
+                    <dt data-translate="telephony_line_details_hardware_infra"></dt>
+                    <dd class="bottom-space-m8"
+                        data-ng-bind="::DetailsOfferCtrl.line.phone.infra || DetailsOfferCtrl.line.infrastructure || '-'">
+                    </dd>
+
+                    <!-- STATUS-->
+                    <dt data-translate="telephony_line_details_hardware_status"></dt>
+                    <dd class="bottom-space-m8"
+                        data-ng-bind="::DetailsOfferCtrl.line.phone.status || '-'">
+                    </dd>
+                </dl>
+            </section>
+
+            <!-- SIP -->
+            <section class="col-xs-12 col-md-6  widget-presentation"
+                 data-ng-if="!DetailsOfferCtrl.line.hasPhone || (DetailsOfferCtrl.line.hasPhone && DetailsOfferCtrl.line.phone.protocol === 'sip')">
+
+                <header class="widget-presentation-header">
+                    <h2 class="widget-presentation-title"
+                        data-translate="telephony_line_details_sip_title"></h2>
+                </header>
+
+                <dl class="dl-telecom">
+                    <!-- LOGIN -->
+                    <dt data-translate="telephony_line_details_sip_login"></dt>
+                    <dd class="bottom-space-m8"
+                        data-ng-bind="::DetailsOfferCtrl.line.serviceName || '-'">
+                    </dd>
+
+                    <!-- LOGIN 2 ?!-->
+                    <dt data-translate="telephony_line_details_sip_auth_login"></dt>
+                    <dd class="bottom-space-m8"
+                        data-ng-bind="::DetailsOfferCtrl.line.serviceName || '-'">
+                    </dd>
+
+                    <!-- DOMAIN -->
+                    <dt data-translate="telephony_line_details_sip_domain"></dt>
+                    <dd class="bottom-space-m8">
+                        <p data-ng-bind="::DetailsOfferCtrl.line.options.domain || '-'"></p>
+                    </dd>
+
+                    <!-- INFRA -->
+                    <dt data-translate="telephony_line_details_sip_infra"></dt>
+                    <dd class="bottom-space-m8"
+                        data-ng-bind="::DetailsOfferCtrl.line.infrastructure || '-'">
+                    </dd>
+
+                    <!-- LAST REC-->
+                    <dt>
+                        <span data-translate="telephony_line_details_sip_last_rec"></span>
+                        <sup>1</sup>
+                    </dt>
+                    <dd class="bottom-space-m8"
+                        data-ng-bind="::DetailsOfferCtrl.line.lastRegistrations && DetailsOfferCtrl.line.lastRegistrations.length ? (DetailsOfferCtrl.line.lastRegistrations[0].datetime | date:'short') : '-'">
+                    </dd>
+
+                    <!-- IP LOC -->
+                    <dt data-translate="telephony_line_details_sip_ip_local"></dt>
+                    <dd class="bottom-space-m8"
+                        data-ng-bind="::DetailsOfferCtrl.line.phone.sip.localIp || '-'">
+                    </dd>
+
+                    <!-- IP PUB-->
+                    <dt data-translate="telephony_line_details_sip_ip_public"></dt>
+                    <dd class="bottom-space-m8"
+                        data-ng-bind=":: DetailsOfferCtrl.line.ips && DetailsOfferCtrl.line.ips.length ? DetailsOfferCtrl.line.ips[0].ip : '-'">
+                    </dd>
+                </dl>
+
+                <footer>
+                    <p class="text-base">
+                        <sup>1</sup>
+                        <em data-translate="telephony_line_details_sip_last_rec_info"></em>
+                    </p>
+                </footer>
+            </section>
+        </div>
+
+    </div>
+
+</section>

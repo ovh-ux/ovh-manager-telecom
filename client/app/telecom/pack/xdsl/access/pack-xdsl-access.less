@@ -1,0 +1,52 @@
+.telecom-pack-xdsl-access {
+    .status-label {
+        i {
+            margin-right: 6px;
+            font-size: 14px;
+            margin-top: -9px;
+        }
+    }
+
+    span.data-transfert-amount {
+        float: right;
+        span {
+            margin-left:2px;
+        }
+    }
+
+    .pull-right{
+        button{
+            &.btn-link{
+                padding: 0 0 0 8px;
+
+                &:hover, &:active, &:focus{
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+
+    slider, [slider]{
+        .bar{
+            background-color: @gray-light;
+        }
+    }
+
+    @media (min-width: @screen-sm-min) {
+        .table-action-buttons {
+            .fa-check {
+                width: 10px;
+            }
+        }
+    }
+
+    div.row {
+        padding: 6px 0;
+    }
+
+    .service-item {
+        p {
+            line-height: 1.5em;
+        }
+    }
+}

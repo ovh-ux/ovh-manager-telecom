@@ -1,0 +1,32 @@
+<div class="telecom-sms-sms-compose-tips">
+    <div class="modal-header">
+        <h3 class="modal-title pull-left" data-translate="sms_sms_compose_tip_size_title"></h3>
+        <button
+            type="button"
+            class="close pull-right"
+            aria-label="{{ 'cancel' | translate }}"
+            data-ng-click="ComposeTipsCtrl.close()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <div class="modal-body">
+        <p class="lh22" data-translate="sms_sms_compose_tip_compose_paragraphe_1"></p>
+        <p class="lh22" data-translate="sms_sms_compose_tip_compose_paragraphe_2"></p>
+        <ol class="lh22">
+            <li data-translate="sms_sms_compose_tip_compose_list_item_1"></li>
+            <li data-translate="sms_sms_compose_tip_compose_list_item_2"></li>
+            <li data-translate="sms_sms_compose_tip_compose_list_item_3"></li>
+            <li data-translate="sms_sms_compose_tip_compose_list_item_4"></li>
+        </ol>
+    </div>
+
+    <div class="modal-footer">
+        <button
+            type="button"
+            class="btn btn-primary"
+            data-ng-click="ComposeTipsCtrl.close()"
+            data-ng-bind="'ok' | translate">
+        </button>
+    </div>
+</div>

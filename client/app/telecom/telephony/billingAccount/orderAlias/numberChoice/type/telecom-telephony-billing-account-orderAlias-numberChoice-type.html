@@ -1,0 +1,33 @@
+<div class="row">
+    <div class="col-xs-12">
+        <label>
+            <flat-radio>
+                <input type="radio"
+                       data-ng-disabled="$ctrl.loading || $ctrl.ngDisabled"
+                       data-ng-model="$ctrl.radioModel"
+                       data-ng-value="$ctrl.radioValue"
+                       name="select_{{$ctrl.name}}"
+                       required>
+            </flat-radio>
+            <span>
+                <span class="left-space-m12 pointer" data-ng-bind="$ctrl.title"></span> -
+                <span class="red"
+                      data-translate="telephony_order_without_tax"
+                      data-translate-values="{ht: $ctrl.price}"></span>
+                <span data-translate="telephony_order_per_period"></span>
+            </span>
+        </label>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-11 col-md-4 left-space-m32 bottom-space-m8">
+        <select name="premiumNumber"
+                data-ng-if="$ctrl.choices.length"
+                class="form-control"
+                data-ng-disabled="$ctrl.loading || $ctrl.radioModel !== $ctrl.radioValue || $ctrl.ngDisabled"
+                data-ng-options="item as item for item in $ctrl.choices track by item"
+                data-ng-model="$ctrl.numberModel">
+        </select>
+    </div>
+</div>

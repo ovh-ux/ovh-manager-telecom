@@ -1,0 +1,168 @@
+<section class="telephony-billing-account-billing-deposit-movement">
+
+    <header>
+        <section-back-link section-back-link-to-state="telecom.telephony.billing"
+                           section-back-link-title="{{:: 'telephony_group_billing_actions_group_billing_back_link' | translate }}">
+        </section-back-link>
+        <h1 data-translate="telephony_group_billing_deposit_movement_title"></h1>
+    </header>
+
+    <bouncing-box-loader data-ng-if="BillingAccountDepositMovementCtrl.loading.init">
+      <h2 data-translate="loading"></h2>
+    </bouncing-box-loader>
+
+    <div data-ng-if="!BillingAccountDepositMovementCtrl.loading.init && BillingAccountDepositMovementCtrl.loading.success">
+        <success-drawing-check data-draw-success-check="BillingAccountDepositMovementCtrl.loading.success">
+            <h4 data-translate="telephony_group_billing_deposit_movement_success"></h4>
+        </success-drawing-check>
+    </div>
+
+    <div class="telecom-section-content" data-ng-hide="BillingAccountDepositMovementCtrl.loading.init || BillingAccountDepositMovementCtrl.loading.success">
+
+        <div class="row">
+            <div class="col-xs-12 col-md-6">
+
+                <form name="depositMovementForm"
+                      data-ng-submit="BillingAccountDepositMovementCtrl.submit()">
+
+                    <p class="bottom-space-m16" data-translate="telephony_group_billing_deposit_movement_info"></p>
+
+                    <div class="alert alert-danger" role="alert"
+                         data-ng-if="BillingAccountDepositMovementCtrl.source && !BillingAccountDepositMovementCtrl.source.securityDeposit.value">
+                         <i class="ovh-font ovh-font-filled-error"></i>
+                        <p data-translate="telephony_group_billing_deposit_movement_error_amount_too_low"></p>
+                    </div>
+
+                    <section class="widget-presentation">
+                        <header class="widget-presentation-header">
+                            <h2 class="widget-presentation-title" data-translate="telephony_group_billing_deposit_movement_source_subtitle"></h2>
+                        </header>
+
+                        <div class="row">
+                            <label for="source"
+                                   class="col-xs-12 col-sm-6 service-title"
+                                   data-translate="telephony_group_billing_deposit_movement_groups_label"></label>
+                            <div class="col-xs-12 col-sm-6 service-item">
+                               <select flat-select
+                                       class="form-control"
+                                       name="source"
+                                       id="source"
+                                       required
+                                       data-ng-change="BillingAccountDepositMovementCtrl.onChangeSource()"
+                                       data-ng-disabled="BillingAccountDepositMovementCtrl.loading.submit"
+                                       data-ng-model="BillingAccountDepositMovementCtrl.source"
+                                       data-ng-options="item.value as item.label for item in BillingAccountDepositMovementCtrl.sources">
+                               </select>
+                           </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6 service-title" data-translate="telephony_group_billing_deposit_movement_deposit_label"></div>
+                            <div class="col-xs-12 col-sm-6" data-ng-if="BillingAccountDepositMovementCtrl.source.securityDeposit">
+                                <span data-ng-bind="BillingAccountDepositMovementCtrl.source.securityDeposit.text"></span>
+                                <span class="left-space-m8" data-translate="telephony_group_billing_deposit_movement_without_tax"></span>
+                            </div>
+                        </div>
+
+                    </section>
+
+                    <section class="widget-presentation">
+                        <header class="widget-presentation-header">
+                            <h2 class="widget-presentation-title" data-translate="telephony_group_billing_deposit_movement_amount_subtitle"></h2>
+                        </header>
+
+                        <div class="row">
+                            <label for="amount"
+                                   class="col-xs-12 col-sm-6 service-title top-space-m4"
+                                   data-translate="telephony_group_billing_deposit_movement_amount_label"></label>
+                            <div class="col-xs-12 col-sm-6 service-item">
+                                <input type="number"
+                                       class="form-control input-amount inline-block"
+                                       name="amount"
+                                       min="0"
+                                       max="{{ BillingAccountDepositMovementCtrl.source.securityDeposit.value }}"
+                                       id="amount"
+                                       required
+                                       data-ng-disabled="!BillingAccountDepositMovementCtrl.source
+                                                      || !BillingAccountDepositMovementCtrl.source.securityDeposit.value
+                                                      ||  BillingAccountDepositMovementCtrl.loading.submit"
+                                       data-ng-model="BillingAccountDepositMovementCtrl.amount">
+                                </input>
+                                <span data-ng-if="BillingAccountDepositMovementCtrl.source.securityDeposit">
+                                    <span class="left-space-m8" data-ng-bind="BillingAccountDepositMovementCtrl.currency"></span>
+                                    <span class="left-space-m8" data-translate="telephony_group_billing_deposit_movement_without_tax"></span>
+                                </span>
+                                <div role="alert" data-ng-messages="depositMovementForm.$dirty && depositMovementForm.amount.$error">
+                                    <p data-ng-message="required"
+                                       data-translate="telephony_group_billing_deposit_movement_error_amount_required"></p>
+                                    <p data-ng-message="number"
+                                       data-translate="telephony_group_billing_deposit_movement_error_amount_number"></p>
+                                    <p data-ng-message="min"
+                                       data-translate="telephony_group_billing_deposit_movement_error_amount_min"
+                                       data-translate-values="{ min: 0 }"></p>
+                                    <p data-ng-message="max"
+                                       data-translate="telephony_group_billing_deposit_movement_error_amount_max"
+                                       data-translate-values="{ max: BillingAccountDepositMovementCtrl.source.securityDeposit.value }"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="widget-presentation">
+                        <header class="widget-presentation-header">
+                            <h2 class="widget-presentation-title" data-translate="telephony_group_billing_deposit_movement_destination_subtitle"></h2>
+                        </header>
+
+                        <div class="row">
+                            <label for="target"
+                                   class="col-xs-12 col-sm-6 service-title"
+                                   data-translate="telephony_group_billing_deposit_movement_groups_label"></label>
+                            <div class="col-xs-12 col-sm-6 service-item">
+                               <select flat-select
+                                       class="form-control"
+                                       name="target"
+                                       id="target"
+                                       required
+                                       data-ng-disabled="!BillingAccountDepositMovementCtrl.source || BillingAccountDepositMovementCtrl.loading.submit"
+                                       data-ng-model="BillingAccountDepositMovementCtrl.target"
+                                       data-ng-options="item.value as item.label disable when item.disable for item in BillingAccountDepositMovementCtrl.targets">
+                               </select>
+                           </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6 service-title" data-translate="telephony_group_billing_deposit_movement_deposit_label"></div>
+                            <div class="col-xs-12 col-sm-6" data-ng-if="BillingAccountDepositMovementCtrl.target.securityDeposit">
+                                <span data-ng-bind="BillingAccountDepositMovementCtrl.target.securityDeposit.text"></span>
+                                <span class="left-space-m8" data-translate="telephony_group_billing_deposit_movement_without_tax"></span>
+                            </div>
+                        </div>
+
+                        <div class="row text-warning top-space-m16">
+                            <div class="col-xs-12 col-sm-6 service-title" data-translate="telephony_group_billing_deposit_movement_estimate_label"></div>
+                            <div class="col-xs-12 col-sm-6" data-ng-if="BillingAccountDepositMovementCtrl.amount && BillingAccountDepositMovementCtrl.target.securityDeposit">
+                                <span data-ng-bind="(BillingAccountDepositMovementCtrl.amount + BillingAccountDepositMovementCtrl.target.securityDeposit.value) | currency : BillingAccountDepositMovementCtrl.currency : 2"></span>
+                                <span class="left-space-m8" data-translate="telephony_group_billing_deposit_movement_without_tax"></span>
+                            </div>
+                        </div>
+
+                    </section>
+
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <button type="submit"
+                                class="btn btn-sm btn-primary"
+                                data-ng-disabled="!depositMovementForm.$valid || !(BillingAccountDepositMovementCtrl.amount > 0) || BillingAccountDepositMovementCtrl.loading.submit"
+                                data-translate="telephony_group_billing_deposit_movement_submit">
+                            </button>
+                        </div>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+
+</section>

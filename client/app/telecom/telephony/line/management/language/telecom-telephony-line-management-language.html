@@ -1,0 +1,58 @@
+<div class="telephony-group-line-language">
+    <header>
+        <section-back-link section-back-link-to-state="telecom.telephony.line"
+                           section-back-link-title="{{ 'telephony_line_language_back_link' | translate }}">
+        </section-back-link>
+        <h1 data-translate="telephony_line_language_title"></h1>
+    </header>
+
+    <div class="telecom-section-content">
+
+        <div class="row">
+            <section class="col-xs-12 widget-presentation">
+                <header class="widget-presentation-header">
+                    <h2 class="widget-presentation-title"
+                        data-translate="telephony_line_language_informations_title"></h2>
+                </header>
+                <p class="bottom-space-m12" data-translate="telephony_line_language_informations_detail"></p>
+            </section>
+        </div>
+
+        <bouncing-box-loader data-ng-if="LineLanguage.loaders.init">
+            <h3 class="top-space-m16"
+                data-translate="loading">
+            </h3>
+        </bouncing-box-loader>
+
+        <div class="row" data-ng-if="!LineLanguage.loaders.init">
+            <div class="col-xs-12">
+                <form name="languageForm" class="ovh-form-flat" data-ng-submit="LineLanguage.changeLanguage();">
+                    <div class="row bottom-space-m16">
+                        <div class="col-xs-6">
+                            <select data-flat-select id="langage" name="language" class="form-control"
+                                data-ng-model="LineLanguage.language"
+                                data-ng-options="language.value as language.label for language in LineLanguage.availableLanguages">
+                                <option disabled="disabled" data-translate="telephony_line_language_value_placeholder"></option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <button class="btn btn-sm btn-primary"
+                                    data-ng-disabled="LineLanguage.loaders.change || LineLanguage.changeSuccess"
+                                    type="submit">
+                                <span data-translate="telephony_line_language_validate"></span>
+                                <i data-ng-if="LineLanguage.changeSuccess"
+                                   class="ovh-font ovh-font-success left-space-m4 fs16"></i>
+                                <spinner class="left-space-m4" data-ng-if="LineLanguage.loaders.change"></spinner>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+
+
+    </div>
+</div>

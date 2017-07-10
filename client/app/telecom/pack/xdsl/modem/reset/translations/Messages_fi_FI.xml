@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<translations>
+   <translation id="xdsl_modem_reset" qtlid="311505">Nollaa modeemi</translation>
+   <translation id="xdsl_modem_reset_an_error_ocurred" qtlid="311518">[Modeemin nollaus] Tapahtui virhe!</translation>
+   <translation id="xdsl_modem_reset_success" qtlid="311531">Nollataan modeemia.</translation>
+   <translation id="xdsl_modem_reset_really" qtlid="311544">Haluatko varmasti nollata modeemin?</translation>
+   <translation id="xdsl_modem_reset_success_end" qtlid="311557">Modeemin nollaus on päättynyt. Ole hyvä ja odota vielä muutama minuutti, että modeemisi konfiguroituu.</translation>
+</translations>

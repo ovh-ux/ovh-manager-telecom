@@ -1,0 +1,143 @@
+@flat-checkbox-border-color: @UNIVERS;
+@flat-checkbox-disabled-color: @text-disabled-color;
+@FormFlatLabelColor: @text-color;
+
+label {
+    font-weight: 400;
+}
+
+div.flat-select::after {
+    font-size: 2em;
+    line-height: 1.1em;
+    padding: 0px 0.85em;
+}
+
+select.form-control {
+    padding: 5px 20px 5px 6px;
+    height: 29px;
+}
+
+div.flat-checkbox{
+    border-radius: 0;
+    padding-right: 18px;
+
+    input:disabled {
+        &:hover {
+            ~ .flat-checkbox-on {
+                background-color: @gray-base;
+            }
+
+            ~ .flat-checkbox-off {
+                border-color: @gray-base;
+            }
+        }
+    }
+
+    .flat-checkbox-off{
+        border-radius: 0;
+    }
+}
+
+.input-group{
+    .flat-radio, .flat-checkbox, label{
+        display: table-cell;
+        vertical-align: top;
+    }
+}
+
+.ovh-form-flat {
+    fieldset {
+        margin-top: 16px;
+
+        legend {
+            font-size: 17px;
+            font-weight: bold;
+            border: none;
+            margin-bottom: 12px;
+
+            &.legend-radio {
+                font-size: @font-size-base;
+                border-bottom: none;
+                margin-bottom: 5px;
+            }
+        }
+    }
+
+    label {
+        font-weight: 400;
+
+        &:not(.text-danger) {
+            color: @text-color-content;
+        }
+
+        &.text-danger {
+            color: @brand-danger;
+        }
+    }
+
+    [data-ng-messages][role=alert] {
+        label {
+            color: @brand-danger;
+        }
+    }
+
+    .flat-checkbox{
+        .flat-checkbox-off{
+            border-color: @BRAND_SECONDARY;
+        }
+
+        .flat-checkbox-on{
+            background-color: @BRAND_SECONDARY;
+        }
+
+        input{
+            &:hover, &:focus, &:active{
+                ~ .flat-checkbox-off{
+                    border-color: @BRAND_SECONDARY;
+                }
+
+                ~ .flat-checkbox-on{
+                    background-color: @BRAND_SECONDARY;
+                }
+            }
+        }
+
+        ~ label{
+            margin-left: 8px;
+        }
+    }
+
+    input{
+        &.btn-primary {
+            box-shadow: none;
+
+            &:focus {
+                outline : 1px dotted darken(@btn-search-bg, 20%); //#324970; //8
+            }
+
+            &:active {
+                border-color : lighten(@btn-search-border, 7%); //#426094; //3
+            }
+
+            &:hover {
+                background-color : lighten(@btn-search-bg, 5%); //#5579b3; //-2
+            }
+
+        }
+    }
+
+    div[flat-input-container]{
+        input, select, textarea {
+            -webkit-appearance: none;
+        }
+    }
+
+    .intl-tel-input {
+        input.form-control.ng-valid-international-phone-number:not(.ng-empty) {
+            border-color: @FormFlatValidColor;
+            &:focus {
+                box-shadow: none;
+            }
+        }
+    }
+}

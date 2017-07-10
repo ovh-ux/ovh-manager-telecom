@@ -1,0 +1,324 @@
+// bower:less
+// endbower
+
+@import 'ovh-common-style/less/fonts/open-sans.less';
+@import 'ovh-angular-sidebar-menu/less/ovh-angular-sidebar-menu.less';
+@import 'ovh-angular-sidebar-menu/less/ovh-angular-sidebar-menu.dependencies.less';
+@import 'ovh-angular-form-flat/less/ovh-angular-form-flat.less';
+@import 'ovh-angular-tail-logs/less/ovh-angular-tail-logs.less';
+@import 'ovh-angular-pagination-front/less/ovh-angular-pagination-front.less';
+@import 'ovh-common-style/less/helpers.less';
+@import 'ovh-common-style/less/table.less';
+@import 'ovh-common-style/less/spinner/spinner.less';
+@import 'ovh-common-style/less/bootstrap3-col-height.less';
+@import 'ovh-common-style/less/animation.less';
+@import "ovh-angular-sso-auth-modal-plugin/less/ovh-angular-sso-auth-modal-plugin.less";
+@import "ovh-angular-contact/less/ovh-angular-contact.less";
+@import "ovh-ui-kit/packages/oui/stylekit.less";
+
+
+@icon-font-path: '../bower_components/bootstrap/fonts/';
+@fa-font-path: '../bower_components/font-awesome/fonts';
+@flag-icon-css-path: '../bower_components/flag-icon-css/flags';
+@ovh-font-path:'../bower_components/ovh-manager-webfont/dist/fonts/';
+@ovh-common-style-font-path: "../bower_components/ovh-common-style/fonts";
+@oui-icon-dist-folder: "../bower_components/ovh-ui-kit/dist/icons";
+
+/* ovh-common-style */
+@space-value : 0, 2, 4, 8, 12, 16, 20, 24, 32;
+
+.table {
+    &.table-pretty {
+        thead {
+            a {
+                color : white;
+                text-decoration: none;
+                cursor:pointer;
+            }
+        }
+    }
+}
+
+// Overide Bootstrap Params
+@screen-sm-min: @v6-min-with;
+@screen-sm-max: @v6-max-with;
+@component-offset-horizontal : 200px;
+
+// Params use by bootstrap and app
+@v6-min-with : 801px;
+@v6-max-with : 800px;
+
+
+// App params structure
+@FormTextColor          : #737782;
+@FormTextDarkColor      : #666;
+@TopTabBackground       : #eaeaea;
+@HomeIconColor          : #74adca;
+@HomeBtnTextColor       : #ffffff;
+
+// Bootstrap
+@brand-primary: #59d2ef;
+@brand-success: #7ba324;
+@brand-warning: #ad8d05;
+@brand-danger: #b04020;
+@brand-info: #3f5167;
+@gray-base: #757575;
+@gray-dark: #333;
+@gray-light: #e9ebe7;
+@gray-lighter: #f2f2f2;
+
+@state-success-text: @brand-success;
+@state-warning-text: @brand-warning;
+@state-danger-text: @brand-danger;
+@state-info-text: @brand-info;
+
+@label-default-bg: @gray;
+
+//Colors
+@UNIVERS: #33ACFF;
+@UNIVERS_SECONDARY: #354291;
+@blue-dark: @UNIVERS_SECONDARY;
+@BRAND_SECONDARY: #113f6d;
+@BRAND_DARK: #122844;
+@BRAND_LIGHT: #00A2BF;
+
+@brand-remove: @gray-base;
+@text-color-mainInfo: @gray-dark;
+@text-color-content: @gray-base;
+@list-group-border: @table-border-color;
+
+@dropdown-border: @UNIVERS;
+@state-info-text: @BRAND_SECONDARY;
+@table-border-color: @gray-light;
+@telecom-table-background-color: @gray-lighter;
+@spinnerColor: @text-color-content;
+
+@FormFlatInvalidColor: @brand-danger;
+@button-disabled-color: @gray-light;
+@action-bar-bg-color:  rgba(70, 70, 70, 0.9);
+
+// margins
+// header
+@md-margin-base: 32px;
+@sm-margin-side: 12px;
+@sm-margin-top: 16px;
+@sm-margin-bottom: 24px;
+
+// Zindex
+@zIndexFullOverlay        : 1040;
+@zIndexNavbar             : 1050;
+//@zIndexFullOverlaySidebar : 1060;
+@zIndexSideMenu           : 1070;
+
+@border-radius-base:             3px;
+@border-radius-large:            6px;
+@border-radius-small:            1px;
+
+// ContainerFluid
+@grid-gutter-width              : 4%;
+@container-fluid-padding-bottom : 32px;
+@TopNavResponsiveLeft           : 2%;
+
+// Fonts
+@font-size-base: 12px;
+@FONT-SIZE-MAININFO: 14px;
+@font-size-h1: 36px;
+@font-size-h2: 24px;
+@font-size-h3: 17px;
+@font-weight-h2: 300;
+@font-weight-h3: 700;
+
+// If you modify this, don't forget to modify rules in matchmedia-ng.config.js !!!
+// Extra small screen / phone
+//** Deprecated `@screen-xs` as of v3.0.1
+@screen-xs:                  993px;
+//** Deprecated `@screen-xs-min` as of v3.2.0
+@screen-xs-min:              @screen-xs;
+//** Deprecated `@screen-phone` as of v3.0.1
+@screen-phone:               @screen-xs-min;
+
+// Small screen / tablet
+//** Deprecated `@screen-sm` as of v3.0.1
+@screen-sm:                  993px;
+@screen-sm-min:              @screen-sm;
+//** Deprecated `@screen-tablet` as of v3.0.1
+@screen-tablet:              @screen-sm-min;
+
+// Medium screen / desktop
+//** Deprecated `@screen-md` as of v3.0.1
+@screen-md:                  1280px;
+@screen-md-min:              @screen-md;
+//** Deprecated `@screen-desktop` as of v3.0.1
+@screen-desktop:             @screen-md-min;
+
+// Large screen / wide desktop
+//** Deprecated `@screen-lg` as of v3.0.1
+@screen-lg:                  1600px;
+@screen-lg-min:              @screen-lg;
+//** Deprecated `@screen-lg-desktop` as of v3.0.1
+@screen-lg-desktop:          @screen-lg-min;
+
+@component-offset-horizontal : 200px;
+
+@zIndexUISelectBootstrap: 1061;
+@buttonFace: #DDDDDD;
+
+/*
+ * Base structure
+ */
+
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+    .font-open-sans;
+    font-size: @font-size-base;
+}
+
+section{
+    a, button.btn.btn-link {
+        color: @BRAND_SECONDARY;
+        font-weight: 600;
+
+        &:focus, &:hover, &:active{
+            color: @BRAND_LIGHT;
+        }
+    }
+}
+
+// Fix OTRS popup draggable height 100%
+html, body, .container-fluid {
+    height: 100%;
+}
+
+// Change the color of the Telecom navbar section
+/*.navbar-section ul li:nth-child(5) a {
+    color: @UNIVERS !important;
+    font-weight:bold;
+}*/
+
+
+// Fix flat-checkbox padding width
+.flat-checkbox {
+    width: 0 !important;
+    padding-right: 15px;
+}
+
+//Desktop
+@media (min-width: @v6-min-with) {
+    body {
+        padding-top : @TopNavHeight;
+    }
+}
+
+.browsehappy {
+    background : #ccc;
+    color      : #000;
+    padding    : 0 10px;
+}
+
+ul{
+    li{
+        list-style-type: none;
+    }
+}
+
+.form-control{
+    color: #333;
+
+    label{
+        font-weight: 400;
+    }
+}
+
+
+//BackDrop
+#full-overlay {
+    background : black;
+    opacity    : 0.4;
+    position   : fixed;
+    width      : 100%;
+    height     : 100%;
+    z-index    : @zIndexFullOverlay;
+    display    : none;
+
+    &.nav-open  {
+        display: none;
+    }
+}
+
+//Mobile
+@media (max-width: @v6-max-with) {
+    #content {
+        margin-top :  @MobileTopNavHeight - 1;
+    }
+
+    .section-back-link{
+        padding-top: 24px;
+    }
+}
+
+//medium screens
+@media (max-width: @screen-sm-min) {
+    #full-overlay[class*="nav-open"] {
+        display : block;
+    }
+}
+
+
+/*
+ * content
+ */
+
+#content {
+    padding : 0;
+
+    .page-header {
+        margin-top : 0;
+    }
+
+    .container-fluid {
+        padding-bottom: @container-fluid-padding-bottom;
+    }
+}
+
+.container {
+    width : auto;
+}
+
+//App-wide Styles
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: @v6-min-with) {
+    .container {
+        max-width: 730px;
+    }
+}
+
+@media (min-width: @screen-sm-min) {
+    .flex-center {
+        .row {
+            display: flex;
+        }
+        .service-title {
+            display: flex;
+            align-items: center;
+        }
+    }
+}
+
+.elipse {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.alert-dismissible {
+    button.close {
+        opacity: 1;
+        color: @text-color-content;
+
+        &:hover {
+            color: darken(@text-color-content, 20%);
+        }
+    }
+}
+
+// injector
+// endinjector

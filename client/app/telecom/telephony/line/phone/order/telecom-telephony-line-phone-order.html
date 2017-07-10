@@ -1,0 +1,396 @@
+<div class="telecom-telephony-line-phone-order">
+
+    <header>
+        <section-back-link section-back-link-to-state="telecom.telephony.line.phone"
+                           section-back-link-title="{{ 'telephony_group_line_phone_section_back_link' | translate }}">
+        </section-back-link>
+        <h1 data-ng-if="!PhoneOrderCtrl.phone"
+            data-translate="telephony_line_phone_order_title"></h1>
+        <h1 data-ng-if="PhoneOrderCtrl.phone"
+            data-translate="telephony_line_phone_order_change_title"></h1>
+    </header>
+
+    <div class="telecom-section-content">
+
+        <div data-ng-if="PhoneOrderCtrl.isLoading">
+            <bouncing-box-loader>
+                <h3 class="top-space-m16" data-translate="loading"></h3>
+            </bouncing-box-loader>
+        </div>
+
+        <div class="row" data-ng-if="!PhoneOrderCtrl.isLoading && PhoneOrderCtrl.hasPendingOfferTasks">
+
+            <!-- PENDING OFFER TASKS WARNING -->
+            <section class="col-xs-12 col-md-6  widget-presentation">
+                <header class="widget-presentation-header">
+                    <h2 class="widget-presentation-title"
+                        data-translate="telephony_line_phone_order_order_title"></h2>
+                </header>
+                <div class="alert alert-warning" role="alert">
+                    <i class="ovh-font ovh-font-filled-warning" aria-hidden="true"></i>
+                    <p data-translate="telephony_line_phone_pending_task_warning"></p>
+                </div>
+            </section>
+        </div>
+
+        <div class="row" data-ng-if="!PhoneOrderCtrl.isLoading && !PhoneOrderCtrl.hasPendingOfferTasks">
+
+            <!-- ORDER -->
+            <section class="col-xs-12 col-md-6  widget-presentation"
+                     data-ng-if="PhoneOrderCtrl.order.orderURL">
+                <header class="widget-presentation-header">
+                    <h2 class="widget-presentation-title"
+                        data-translate="telephony_line_phone_order_order_title"></h2>
+                </header>
+                <div class="alert alert-success" role="alert">
+                    <i class="ovh-font ovh-font-filled-check" aria-hidden="true"></i>
+                    <p data-translate="telephony_line_phone_order_success2"></p>
+                </div>
+                <p>
+                    <a target="_blank"
+                       class="btn btn-primary"
+                       rel="noopener"
+                       data-ng-href="{{:: PhoneOrderCtrl.order.orderURL }}">
+                        <span data-translate="telephony_line_phone_order_url"></span>
+                        <i class="fa fa-external-link" aria-hidden="true"></i>
+                    </a>
+                </p>
+            </section>
+
+            <!-- RMA -->
+            <section class="col-xs-12 col-md-6  widget-presentation"
+                     data-ng-if="PhoneOrderCtrl.rmas.length">
+                <header class="widget-presentation-header">
+                    <h2 class="widget-presentation-title"
+                        data-translate="telephony_line_phone_order_order_title"></h2>
+                </header>
+                <div class="alert alert-info" role="alert" data-ng-if="!PhoneOrderCtrl.returnSuccess && !PhoneOrderCtrl.order.success">
+                    <i class="ovh-font ovh-font-filled-info" aria-hidden="true"></i>
+                    <p data-translate="telephony_line_phone_order_rma_pending_info"></p>
+                </div>
+                <div class="alert alert-success" role="alert" data-ng-if="PhoneOrderCtrl.returnSuccess">
+                    <i class="ovh-font ovh-font-filled-check" aria-hidden="true"></i>
+                    <p data-translate="telephony_line_phone_order_return_success"></p>
+                </div>
+                <div class="alert alert-success" role="alert" data-ng-if="PhoneOrderCtrl.order.success">
+                    <i class="ovh-font ovh-font-filled-check" aria-hidden="true"></i>
+                    <p data-translate="telephony_line_phone_order_success"></p>
+                </div>
+                <p>
+                    <a class="btn btn-primary"
+                       target="_blank"
+                       rel="noopener"
+                       data-ng-href="{{ PhoneOrderCtrl.pdfBaseUrl + PhoneOrderCtrl.rmas[0].id }}"
+                       data-translate="telephony_line_phone_order_rma_pdf_download"></a>
+                </p>
+            </section>
+
+            <!-- PHONE SELECTION -->
+            <section class="col-xs-12 col-md-6  widget-presentation"
+                     data-ng-if="PhoneOrderCtrl.orderStep === 'hardware' && !PhoneOrderCtrl.rmas.length && !PhoneOrderCtrl.order.success">
+                <header class="widget-presentation-header">
+                    <h2 class="widget-presentation-title"
+                        data-translate="telephony_line_phone_order_order_title"></h2>
+                </header>
+                <p data-ng-if="PhoneOrderCtrl.merchandise.length || PhoneOrderCtrl.phoneOffers.length"
+                   data-translate="telephony_line_phone_order_order_prompt"></p>
+
+                <div data-ng-if="PhoneOrderCtrl.isStepLoading">
+                    <bouncing-box-loader>
+                        <h3 class="top-space-m16"
+                            data-translate="loading">
+                        </h3>
+                    </bouncing-box-loader>
+                </div>
+
+                <div data-ng-if="!PhoneOrderCtrl.isStepLoading">
+                    <select class="form-control"
+                            data-ng-if="PhoneOrderCtrl.merchandise.length || PhoneOrderCtrl.phoneOffers.length"
+                            data-ng-model="PhoneOrderCtrl.order.phone">
+                        <option value=""
+                                data-ng-if="PhoneOrderCtrl.phone"
+                                data-translate="telephony_line_phone_order_return_phone"
+                                data-translate-values="{ phone: PhoneOrderCtrl.phone.description }">
+                        </option>
+                        <option data-ng-if="PhoneOrderCtrl.phone"
+                                data-ng-repeat="phone in PhoneOrderCtrl.merchandise track by phone.name"
+                                data-ng-bind-html="PhoneOrderCtrl.getPhoneLabel(phone)"
+                                data-ng-value="phone.name">
+                        </option>
+                        <option data-ng-if="!PhoneOrderCtrl.phone"
+                                data-ng-repeat="offer in PhoneOrderCtrl.phoneOffers track by offer.brand"
+                                data-ng-bind-html="PhoneOrderCtrl.getOfferLabel(offer)"
+                                data-ng-value="offer.brand">
+                        </option>
+                    </select>
+                    <button type="button"
+                            class="btn btn-primary pull-right top-space-m8"
+                            data-translate="telephony_line_phone_order_order_next"
+                            data-ng-click="PhoneOrderCtrl.orderStep = PhoneOrderCtrl.order.phone ? 'shipping' : 'returnOnly'">
+                    </button>
+                    <div class="alert alert-info"
+                         role="alert"
+                         data-ng-if="!(PhoneOrderCtrl.phoneOffers.length || PhoneOrderCtrl.merchandise.length)">
+                        <i class="ovh-font ovh-font-filled-info" aria-hidden="true"></i>
+                        <p data-translate="telephony_line_phone_order_order_empty"></p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SHIPPING -->
+            <section class="col-xs-12 col-md-6  widget-presentation"
+                     data-ng-if="PhoneOrderCtrl.orderStep === 'shipping'">
+                <header class="widget-presentation-header">
+                    <h2 class="widget-presentation-title"
+                        data-translate="telephony_line_phone_order_shipping_title"></h2>
+                </header>
+
+                <h3 data-translate="telephony_line_phone_order_shipping_contact"></h3>
+                <ovh-contact data-ng-model="PhoneOrderCtrl.order.contact"
+                             data-ovh-contact-choice-options="PhoneOrderCtrl.contactChoiceOptions"
+                             data-ovh-contact-init-deferred="PhoneOrderCtrl.contactDeferred">
+                    <bouncing-box-loader>
+                        <h3 class="top-space-m16"
+                            data-translate="loading">
+                        </h3>
+                    </bouncing-box-loader>
+                </ovh-contact>
+
+                <h3 class="top-space-m32" data-translate="telephony_line_phone_order_shipping_mode"></h3>
+                <shipping-mode-selection data-ng-model="PhoneOrderCtrl.order.shipping.mode"
+                                         data-shipping-mode-selection-relay="PhoneOrderCtrl.order.shipping.relay"
+                                         data-shipping-mode-selection-options="PhoneOrderCtrl.order.shipping.options">
+                </shipping-mode-selection>
+
+                <button type="button"
+                        class="btn btn-default top-space-m8"
+                        data-translate="telephony_line_phone_order_order_prev"
+                        data-ng-click="PhoneOrderCtrl.orderStep = 'hardware'">
+                </button>
+                <button type="button"
+                        class="btn btn-primary pull-right top-space-m8"
+                        data-translate="telephony_line_phone_order_order_next"
+                        data-ng-disabled="!PhoneOrderCtrl.order.contact || (PhoneOrderCtrl.order.shipping.mode === 'mondialRelay' && !PhoneOrderCtrl.order.shipping.relay)"
+                        data-ng-click="PhoneOrderCtrl.orderStep = 'summary'">
+                </button>
+            </section>
+
+            <!-- PHONE RETURN -->
+            <section class="col-xs-12 col-md-6  widget-presentation"
+                     data-ng-if="PhoneOrderCtrl.orderStep === 'returnOnly'">
+                <header class="widget-presentation-header">
+                    <h2 class="widget-presentation-title"
+                        data-translate="telephony_line_phone_order_summary_title_short"></h2>
+                </header>
+
+                <p data-translate="telephony_line_phone_order_return_infos1"
+                      data-translate-values="{ phoneBrand: PhoneOrderCtrl.phone.description }"></p>
+                <div class="alert alert-info" role="alert">
+                    <i class="ovh-font ovh-font-filled-info" aria-hidden="true"></i>
+                    <p data-translate="telephony_line_phone_order_return_infos2"></p>
+                </div>
+
+                <button type="button"
+                        class="btn btn-default top-space-m8"
+                        data-translate="telephony_line_phone_order_order_prev"
+                        data-ng-disabled="PhoneOrderCtrl.isSubmiting"
+                        data-ng-click="PhoneOrderCtrl.orderStep = 'hardware'">
+                </button>
+                <button type="button"
+                        class="btn btn-primary pull-right top-space-m8"
+                        data-ng-disabled="PhoneOrderCtrl.isSubmiting"
+                        data-ng-click="PhoneOrderCtrl.submitPhoneReturn()">
+                    <span data-translate="telephony_line_phone_order_return_confirm"></span>
+                    <spinner data-ng-if="PhoneOrderCtrl.isSubmiting" class="left-space-m4"></spinner>
+                </button>
+            </section>
+
+            <!-- SUMMARY -->
+            <section class="col-xs-12 col-md-6  widget-presentation"
+                     data-ng-if="PhoneOrderCtrl.orderStep === 'summary'">
+                <header class="widget-presentation-header">
+                    <h2 class="widget-presentation-title"
+                        data-translate="telephony_line_phone_order_summary_title"></h2>
+                </header>
+
+                <div data-ng-if="PhoneOrderCtrl.isStepLoading">
+                    <bouncing-box-loader>
+                        <h3 class="top-space-m16"
+                            data-translate="loading">
+                        </h3>
+                    </bouncing-box-loader>
+                </div>
+
+                <div data-ng-if="!PhoneOrderCtrl.isStepLoading">
+
+                    <!-- PRICE SUMMARY TABLE -->
+                    <h3 data-translate="telephony_line_phone_order_summary"></h3>
+                    <div class="responsive-table-line">
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th data-translate="telephony_line_phone_order_table_description"></th>
+                                    <th class="text-right-sm"
+                                        data-translate="telephony_line_phone_order_table_unit_price"
+                                        style="width:25%;">
+                                    </th>
+                                    <th class="text-right-sm"
+                                        data-translate="telephony_line_phone_order_table_quantity"
+                                        style="width:12%;">
+                                    </th>
+                                    <th class="text-right-sm"
+                                        data-translate="telephony_line_phone_order_table_total"
+                                        style="width:15%;">
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr data-ng-repeat="detail in PhoneOrderCtrl.order.summary.details track by $index">
+                                    <td data-ng-bind="detail.description"
+                                        data-title="{{ :: 'telephony_line_phone_order_table_description' | translate }}">
+                                    </td>
+                                    <td class="text-right-sm text-price bold"
+                                        data-ng-bind="detail.unitPrice.text"
+                                        data-title="{{ :: 'telephony_line_phone_order_table_unit_price' | translate }}">
+                                    </td>
+                                    <td class="text-right-sm"
+                                        data-ng-bind="detail.quantity"
+                                        data-title="{{ :: 'telephony_line_phone_order_table_quantity' | translate }}">
+                                    </td>
+                                    <td class="text-right-sm text-price bold"
+                                        data-ng-bind="detail.totalPrice.text"
+                                        data-title="{{ :: 'telephony_line_phone_order_table_total' | translate }}">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="row">
+                        <div class="resume-prices col-md-6 col-md-offset-6">
+                            <dl>
+                                <dt data-translate="telephony_line_phone_order_prices_tax_free_total"></dt>
+                                <dd class="animate-opacity1-enter text-price bold"
+                                    data-ng-bind="PhoneOrderCtrl.order.summary.prices.withoutTax.text">
+                                </dd>
+
+                                <dt data-translate="telephony_line_phone_order_prices_tax_total"></dt>
+                                <dd class="animate-opacity1-enter text-price bold"
+                                    data-ng-bind="PhoneOrderCtrl.order.summary.prices.tax.text">
+                                </dd>
+
+                                <dt data-translate="telephony_line_phone_order_prices_with_tax_total"></dt>
+                                <dd class="animate-opacity1-enter text-price bold"
+                                    data-ng-bind="PhoneOrderCtrl.order.summary.prices.withTax.text">
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+
+                    <!-- SHIPPING CONTACT -->
+                    <h3 class="top-space-m32" data-translate="telephony_line_phone_order_shipping_contact"></h3>
+                    <div class="badge inline-block vertical-top right-space-m16">
+                        <i class="fa fa-user fa-5x"></i>
+                    </div>
+                    <div class="inline-block">
+                        <p class="bottom-space-m4" data-ng-bind="PhoneOrderCtrl.order.contact.lastName + ' ' + PhoneOrderCtrl.order.contact.firstName"></p>
+                        <p class="bottom-space-m4" data-ng-bind="PhoneOrderCtrl.order.contact.address.line1"></p>
+                        <p class="bottom-space-m4" data-ng-bind="PhoneOrderCtrl.order.contact.address.zip + ' ' + PhoneOrderCtrl.order.contact.address.city"></p>
+                    </div>
+
+                    <!-- SHIPPING MODE -->
+                    <h3 class="top-space-m32" data-translate="telephony_line_phone_order_shipping_mode"></h3>
+                    <p data-ng-if="PhoneOrderCtrl.order.shipping.mode === 'mondialRelay'"
+                       data-translate="telephony_line_phone_order_shipping_mode_mondial_relay"
+                       data-translate-values="{
+                           name: PhoneOrderCtrl.order.shipping.relay.name,
+                           street: PhoneOrderCtrl.order.shipping.relay.address,
+                           city: PhoneOrderCtrl.order.shipping.relay.city
+                       }">
+                    </p>
+                    <p data-ng-if="PhoneOrderCtrl.order.shipping.mode !== 'mondialRelay'"
+                       data-translate="telephony_line_phone_order_shipping_mode_other"></p>
+
+                    <!-- CONTRACTS -->
+                    <h3 class="top-space-m32" data-translate="telephony_line_phone_order_contracts"></h3>
+                    <div class="bottom-space-m32"
+                         data-contracts="PhoneOrderCtrl.order.summary.contracts"
+                         data-full-text="false"
+                         data-contracts-validated="PhoneOrderCtrl.order.isContractsAccepted">
+                    </div>
+
+                    <div data-ng-if="!PhoneOrderCtrl.phone">
+                        <hr />
+                        <label class="block bottom-space-m8 pointer">
+                            <flat-radio>
+                                <input type="radio"
+                                       data-ng-value="true"
+                                       data-ng-model="PhoneOrderCtrl.order.retract" />
+                            </flat-radio>
+                            <span class="left-space-m8"
+                                  data-translate="telephony_line_phone_order_retract">
+                            </span>
+                        </label>
+                        <label class="block bottom-space-m8 pointer">
+                            <flat-radio>
+                                <input type="radio"
+                                       data-ng-value="false"
+                                       data-ng-model="PhoneOrderCtrl.order.retract" />
+                            </flat-radio>
+                            <span class="left-space-m8"
+                                  data-translate="telephony_line_phone_order_noretract">
+                            </span>
+                        </label>
+                    </div>
+
+                    <button type="button"
+                            class="btn btn-default top-space-m8"
+                            data-translate="telephony_line_phone_order_order_prev"
+                            data-ng-click="PhoneOrderCtrl.orderStep = 'shipping'">
+                    </button>
+                    <button type="button"
+                            class="btn btn-primary pull-right top-space-m8"
+                            data-translate="telephony_line_phone_order_order_confirm"
+                            data-ng-disabled="!PhoneOrderCtrl.order.isContractsAccepted || PhoneOrderCtrl.isSubmiting"
+                            data-ng-click="PhoneOrderCtrl.submitOrder()">
+                    </button>
+                </div>
+            </section>
+
+            <!-- INFORMATIONS -->
+            <section class="col-xs-12 col-md-6  widget-presentation"
+                     data-ng-if="PhoneOrderCtrl.phone">
+                <header class="widget-presentation-header">
+                    <h2 class="widget-presentation-title"
+                        data-translate="telephony_line_phone_order_infos_title"></h2>
+                </header>
+                <p data-translate="telephony_line_phone_order_infos_part1"></p>
+                <p data-ng-if="PhoneOrderCtrl.phone">
+                    <strong data-translate="telephony_line_phone_order_process_title"></strong><br/>
+                    <span data-ng-if="!PhoneOrderCtrl.order.phone" data-translate="telephony_line_phone_order_process_return1"></span>
+                    <span data-ng-if="!PhoneOrderCtrl.order.phone" data-translate="telephony_line_phone_order_process_return2"></span>
+                    <span data-ng-if="PhoneOrderCtrl.order.phone" data-translate="telephony_line_phone_order_process_exchange1"></span>
+                    <span data-ng-if="PhoneOrderCtrl.order.phone" data-translate="telephony_line_phone_order_process_exchange2"></span>
+                </p>
+                <p data-ng-if="PhoneOrderCtrl.phone">
+                    <strong data-translate="telephony_line_phone_order_return_address_title"></strong><br/>
+                    <span data-translate="telephony_line_phone_order_return_address_content"></span>
+                </p>
+            </section>
+
+            <!-- ATTACH -->
+            <section class="col-xs-12 col-md-6  widget-presentation"
+                     data-ng-if="!PhoneOrderCtrl.phone">
+                <header class="widget-presentation-header">
+                    <h2 class="widget-presentation-title"
+                        data-translate="telephony_line_phone_order_attach_title"></h2>
+                </header>
+                <telecom-telephony-associate-device
+                    data-billing-account="PhoneOrderCtrl.billingAccount"
+                    data-service-name="PhoneOrderCtrl.serviceName">
+                </telecom-telephony-associate-device>
+            </section>
+
+        </div><!-- row -->
+    </div><!-- section content -->
+
+</div>

@@ -1,0 +1,193 @@
+<div class="telecom-pack-xdsl-wifi-config">
+
+    <div data-ng-if="ConfigWifiCtrl.errors.wifi" class="alert alert-warning" role="alert">
+        <span class="ovh-font ovh-font-warning" aria-hidden="true"></span>
+        <p data-translate="xdsl_modem_wifi_config_error_missing"></p>
+    </div>
+
+    <div data-ng-if="!ConfigWifiCtrl.errors.wifi" class="widget-presentation row">
+        <div class="col-xs-12 col-md-6">
+            <header class="widget-presentation-header">
+                <h2 class="widget-presentation-title" data-translate="xdsl_modem_wifi_config_title"></h2>
+            </header>
+
+            <div data-ng-if="ConfigWifiCtrl.loaders.wifi">
+                <spinner></spinner>
+            </div>
+
+            <form data-ng-if="!ConfigWifiCtrl.loaders.wifi" name="WifiForm" class="ovh-form-flat">
+                <label class="service-title" data-translate="xdsl_modem_wifi_config_wifi"></label>
+                <div class="btn-group block clearfix bottom-space-m16">
+                    <label class="btn btn-default"
+                           data-ng-model="ConfigWifiCtrl.wifi.enabled"
+                           data-uib-btn-radio="true"
+                           data-ng-disabled="$ctrl.number.feature.timeCondition.status === 'SAVING'"
+                           data-translate="common_yes_capitalized">
+                    </label>
+
+                    <label class="btn btn-default"
+                           data-ng-model="ConfigWifiCtrl.wifi.enabled"
+                           data-uib-btn-radio="false"
+                           data-ng-disabled="$ctrl.number.feature.timeCondition.status === 'SAVING'"
+                           data-translate="common_no_capitalized">
+                    </label>
+                </div>
+
+                <div class="bottom-space-m16">
+                    <label for="wifiSSID">
+                        <span data-translate="xdsl_modem_wifi_config_ssid"></span>
+                        <span class="ovh-font ovh-font-info"
+                            data-toggle="tooltip"
+                            data-uib-tooltip="{{'xdsl_modem_wifi_config_ssid_tooltip' | translate}}"
+                            data-tooltip-placement="right"
+                            aria-hidden="true"></span>
+                    </label>
+                    <div flat-input-container>
+                        <input id="wifiSSID"
+                            name="wifiSSID"
+                            required
+                            data-ng-model="ConfigWifiCtrl.wifi.SSID"
+                            class="form-control"
+                            data-ng-minlength="2"
+                            placeholder="{{ 'xdsl_modem_wifi_config_ssid' | translate }}">
+                    </div>
+                </div>
+
+                <fieldset class="bottom-space-m16">
+                    <legend class="legend-radio">
+                        <span data-translate="xdsl_modem_wifi_config_network_name"></span>
+                        <span class="ovh-font ovh-font-info"
+                            data-toggle="tooltip"
+                            data-uib-tooltip="{{'xdsl_modem_wifi_config_network_name_tooltip' | translate}}"
+                            data-tooltip-placement="right"
+                            aria-hidden="true"></span>
+                    </legend>
+                    <label class="radio-inline">
+                        <flat-radio>
+                            <input type="radio"
+                                data-ng-model="ConfigWifiCtrl.wifi.SSIDAdvertisementEnabled"
+                                data-ng-value="true"
+                                id="SSIDAdvertisementVisible"
+                                name="SSIDAdvertisementVisible">
+                        </flat-radio>
+                        <span class="left-space-m8" data-translate="xdsl_modem_wifi_config_visible"></span>
+                    </label>
+                    <label class="radio-inline">
+                        <flat-radio>
+                            <input type="radio"
+                                class="form-control"
+                                data-ng-model="ConfigWifiCtrl.wifi.SSIDAdvertisementEnabled"
+                                data-ng-value="false"
+                                id="SSIDAdvertisementHidden"
+                                name="SSIDAdvertisementHidden">
+                        </flat-radio>
+                        <span class="left-space-m8" data-translate="xdsl_modem_wifi_config_hidden"></span>
+                    </label>
+                </fieldset>
+
+                <div class="bottom-space-m16 clearfix">
+                    <label for="securityType">
+                        <span data-translate="xdsl_modem_wifi_config_security"></span>
+                        <span class="ovh-font ovh-font-info"
+                            data-toggle="tooltip"
+                            data-uib-tooltip="{{'xdsl_modem_wifi_config_security_tooltip' | translate}}"
+                            data-tooltip-placement="right"
+                            aria-hidden="true"></span>
+                    </label>
+                    <div flat-input-container>
+                        <select flat-select
+                                name="securityType"
+                                id="securityType"
+                                class="form-control"
+                                data-ng-model="ConfigWifiCtrl.wifi.securityType"
+                                required="required"
+                                data-ng-change="ConfigWifiCtrl.resetKey()"
+                                data-ng-options="item as ('xdsl_modem_wifi_' + item | translate) for item in ConfigWifiCtrl.fields.securityType">
+                        </select>
+                    </div>
+                </div>
+
+                <div data-ng-if="ConfigWifiCtrl.wifi.securityType !== 'None'" class="bottom-space-m16">
+                     <div flat-input-container
+                          data-ng-class="{ 'has-error': ConfigWifiCtrl.keyError() && ConfigWifiCtrl.wifi.key2 }">
+                          <label for="wifiKey">
+                              <span data-translate="xdsl_modem_wifi_config_key"></span>
+                              <span class="ovh-font ovh-font-info"
+                                  data-toggle="tooltip"
+                                  data-uib-tooltip="{{'xdsl_modem_wifi_config_key_tooltip' | translate}}"
+                                  data-tooltip-placement="right"></span>
+                          </label>
+                          <div class="row">
+                              <div class="col-xs-6">
+                                  <input id="wifiKey"
+                                      name="wifiKey"
+                                      type="password"
+                                      data-ng-model="ConfigWifiCtrl.wifi.key"
+                                      class="form-control"
+                                      data-ng-minlength="6"
+                                      placeholder="{{ 'xdsl_modem_wifi_config_new_key' | translate }}">
+                              </div>
+                              <div class="col-xs-6">
+                                  <input name="wifiKey2"
+                                      type="password"
+                                      data-ng-model="ConfigWifiCtrl.wifi.key2"
+                                      class="form-control"
+                                      data-ng-minlength="6"
+                                      placeholder="{{ 'xdsl_modem_wifi_config_retype_new_key' | translate }}">
+                              </div>
+                          </div>
+                     </div>
+                </div>
+
+                <div class="bottom-space-m16 clearfix">
+                    <label for="channelMode">
+                        <span data-translate="xdsl_modem_wifi_config_canal"></span>
+                        <span class="ovh-font ovh-font-info"
+                            data-toggle="tooltip"
+                            data-uib-tooltip="{{'xdsl_modem_wifi_config_canal_tooltip' | translate}}"
+                            data-tooltip-placement="right"
+                            aria-hidden="true"></span>
+                    </label>
+                    <div flat-input-container>
+                        <select name="channelMode"
+                                id="channelMode"
+                                flat-select
+                                class="form-control"
+                                data-ng-model="ConfigWifiCtrl.wifi.channelCustom"
+                                required>
+                                <option value="Auto">Auto</option>
+                                <option data-ng-repeat="n in ConfigWifiCtrl.fields.channelMode"
+                                        data-ng-value="{{n}}"
+                                        data-ng-bind="n"></option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Submit -->
+                <div role="group">
+                    <a data-ng-href="{{ PackXdslCtrl.backState() }}"
+                       class="btn btn-default"
+                       data-ng-disabled="ConfigWifiCtrl.loaders.completed"
+                       data-translate="cancel">
+                    </a>
+                    <button type="submit"
+                            class="btn btn-primary"
+                            data-ng-really-click="ConfigWifiCtrl.update()"
+                            data-ng-really-message="{{ 'xdsl_modem_wifi_config_really' | translate }}"
+                            data-ng-really-confirm="{{ 'ok' | translate }}"
+                            data-ng-really-cancel="{{ 'cancel' | translate }}"
+                            data-ng-really-window-class="revert-really-buttons"
+                            data-ng-disabled="WifiForm.$invalid ||
+                                ConfigWifiCtrl.haveToTypeYourKey ||
+                                ConfigWifiCtrl.loaders.completed ||
+                                ConfigWifiCtrl.keyError() ||
+                                !ConfigWifiCtrl.mediator.capabilities.canChangeWLAN ||
+                                ConfigWifiCtrl.mediator.tasks.changeModemConfigWLAN">
+                            <span data-ng-if="!ConfigWifiCtrl.loaders.completed || !ConfigWifiCtrl.mediator.tasks.current.changeModemConfigWLAN" data-translate="submit"></span>
+                            <spinner data-ng-if="ConfigWifiCtrl.loaders.completed || ConfigWifiCtrl.mediator.tasks.current.changeModemConfigWLAN"></spinner>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

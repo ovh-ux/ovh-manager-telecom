@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<translations>
+   <translation id="telecom_orders_alias_title" qtlid="333256">Ordina numeri</translation>
+   <translation id="telecom_orders_alias_billing_account_title" qtlid="345910">Gruppo di telefonia</translation>
+   <translation id="telecom_orders_alias_billing_account_label" qtlid="345923">Seleziona il gruppo di telefonia:</translation>
+   <translation id="telecom_orders_alias_billing_submit_label" qtlid="333529">Ordina un numero</translation>
+   <translation id="telecom_orders_alias_billing_loading_error" qtlid="345936">Impossibile caricare i tuoi gruppi di telefonia</translation>
+</translations>

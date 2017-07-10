@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<translations>
+   <translation id="xdsl_access_lns_curent" qtlid="309347">LNS actual:</translation>
+   <translation id="xdsl_access_lns_change" qtlid="309360">Cambiar el LNS:</translation>
+   <translation id="xdsl_access_lns_submit" qtlid="26047">Aceptar</translation>
+   <translation id="xdsl_access_lns_doing" qtlid="309373">Cambiando de LNS...</translation>
+   <translation id="xdsl_access_lns_an_error_ocurred" qtlid="309386">LNS: Se ha producido un error.</translation>
+   <translation id="xdsl_access_lns_description" qtlid="309399">El LNS corresponde a la pasarela de salida hacia internet utilizada. El tráfico transitará por la pasarela que haya elegido de la lista. Esta funcionalidad no está disponible en determinadas líneas (desagregadas OVH y FT).</translation>
+   <translation id="xdsl_access_lns_warning" qtlid="309412">Se aplicará en los siguientes 5 a 10 minutos.</translation>
+</translations>

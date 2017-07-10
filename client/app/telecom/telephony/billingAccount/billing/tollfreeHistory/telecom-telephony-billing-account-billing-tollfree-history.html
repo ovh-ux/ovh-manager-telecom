@@ -1,0 +1,119 @@
+<section class="telecom-telephony-billing-account-billing-tollfree-history">
+
+    <header>
+        <section-back-link section-back-link-to-state="telecom.telephony.billing"
+                           section-back-link-title="{{ 'telephony_group_billing_actions_group_billing_back_link' | translate }}">
+        </section-back-link>
+        <h1 data-translate="telephony_group_billing_tollfree_history_title">
+        </h1>
+    </header>
+
+    <bouncing-box-loader data-ng-if="TollfreeHistoryCtrl.loading.init">
+        <h2 class="top-space-m16"
+            data-translate="loading">
+        </h2>
+    </bouncing-box-loader>
+
+    <div data-ng-if="!TollfreeHistoryCtrl.loading.init"
+         class="telecom-section-content">
+
+        <div class="widget-presentation">
+            <h2 class="widget-presentation-title"
+                data-translate="telephony_group_billing_tollfree_history_list_title"
+                data-translate-values="{ groupName: TollfreeHistoryCtrl.group.getDisplayedName() }">
+            </h2>
+
+            <div class="row">
+                <div class="col-xs-12 table-responsive-vertical">
+                    <table class="table table-pretty table-hover table-striped no-space">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <button class="no-style no-outline left-space-p0"
+                                            type="button"
+                                            data-ng-disabled="!TollfreeHistoryCtrl.consumption.paginated.length"
+                                            data-ng-click="TollfreeHistoryCtrl.orderBy('date')">
+                                        <label class="pointer" data-translate="telephony_group_billing_tollfree_history_list_date"></label>
+                                        <span class="table-pretty-filter">
+                                            <i class="fa" data-ng-class="{
+                                                'fa-sort': TollfreeHistoryCtrl.consumption.orderBy !== 'date',
+                                                'fa-sort-desc': TollfreeHistoryCtrl.consumption.orderBy === 'date' && TollfreeHistoryCtrl.consumption.orderDesc,
+                                                'fa-sort-asc': TollfreeHistoryCtrl.consumption.orderBy === 'date' && !TollfreeHistoryCtrl.consumption.orderDesc
+                                            }"></i>
+                                        </span>
+                                    </button>
+                                </th>
+                                <th>
+                                    <button class="no-style no-outline left-space-p0"
+                                            type="button"
+                                            data-ng-disabled="!TollfreeHistoryCtrl.consumption.paginated.length"
+                                            data-ng-click="TollfreeHistoryCtrl.orderBy('priceValue')">
+                                        <label class="pointer"
+                                               data-translate="telephony_group_billing_tollfree_history_list_price">
+                                        </label>
+                                        <span class="table-pretty-filter">
+                                            <i class="fa" data-ng-class="{
+                                                'fa-sort': TollfreeHistoryCtrl.consumption.orderBy !== 'priceValue',
+                                                'fa-sort-desc': TollfreeHistoryCtrl.consumption.orderBy === 'priceValue' && TollfreeHistoryCtrl.consumption.orderDesc,
+                                                'fa-sort-asc': TollfreeHistoryCtrl.consumption.orderBy === 'priceValue' && !TollfreeHistoryCtrl.consumption.orderDesc
+                                            }"></i>
+                                        </span>
+                                    </button>
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody data-ng-if="!TollfreeHistoryCtrl.loading.init">
+                            <tr data-ng-repeat="consumption in TollfreeHistoryCtrl.consumption.paginated">
+                                <td data-title="{{:: 'telephony_group_billing_tollfree_history_list_date' | translate }}">
+                                    <span class="text-nowrap"
+                                          data-ng-bind="consumption.date | date:'shortDate'">
+                                    </span>
+                                </td>
+                                <td data-title="{{:: 'telephony_group_billing_tollfree_history_list_price' | translate }}">
+                                    <span class="text-nowrap"
+                                          data-ng-bind="consumption.price.text.replace('-', '')">
+                                    </span>
+                                </td>
+                                <td>
+                                    <button class="btn btn-default fs12"
+                                            type="button"
+                                            data-translate-attr="{
+                                                'title': 'telephony_group_billing_tollfree_history_list_download_csv'
+                                            }"
+                                            data-ng-disabled="consumption.downloading"
+                                            data-ng-click="TollfreeHistoryCtrl.download(consumption)">
+                                        <i data-ng-if="!consumption.downloading"
+                                           class="fa fa-file-excel-o">
+                                        </i>
+                                        <spinner data-ng-if="consumption.downloading"></spinner>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tbody data-ng-if="!TollfreeHistoryCtrl.loading.init && !TollfreeHistoryCtrl.consumption.paginated.length">
+                            <tr>
+                                <td class="text-center top-space-p16 bottom-space-p16" colspan="3">
+                                    <span data-translate="telephony_group_billing_tollfree_history_list_no_results"></span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="table-pretty-pagination top-space-m8"
+                         data-ng-if="!TollfreeHistoryCtrl.loading.init && TollfreeHistoryCtrl.consumption.raw.length"
+                         data-pagination-front
+                         data-items="TollfreeHistoryCtrl.consumption.sorted"
+                         data-paginated-items="TollfreeHistoryCtrl.consumption.paginated"
+                         data-current-page="currentPage"
+                         data-nb-pages="nbPages"
+                         data-items-per-page="itemsPerPage"
+                         data-page-placeholder="{{'common_pagination_page' | translate: {currentPage:currentPage, nbPages:nbPages} }}"
+                         data-item-per-page-placeholder="{{'common_pagination_display' | translate}}">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</section>

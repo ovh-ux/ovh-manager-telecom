@@ -1,0 +1,43 @@
+<div id="pack-resiliation-service-modal" class="pack-contract-modal">
+    <div class="modal-header" data-translate="resiliation_confirm_title"></div>
+    <div class="modal-body">
+        <h1 data-ng-bind="ResiliationModelCtrl.subject.name"></h1>
+        <ul class="pack-contract-confirm ovh-form-flat">
+            <li flat-input-container>
+                <flat-checkbox class="right-space-m16">
+                    <input
+                        type="checkbox"
+                        id="resiliation_message1"
+                        name="resiliation_message1"
+                        class="form-control"
+                        data-ng-model="ResiliationModelCtrl.resiliation.confirm.one"
+                        >
+                </flat-checkbox>
+                <label for="resiliation_message1" data-translate="resiliation_message1"></label>
+            </li>
+
+            <li>
+                <flat-checkbox class="right-space-m16">
+                    <input
+                        type="checkbox"
+                        id="resiliation_message2"
+                        name="resiliation_message2"
+                        class="form-control"
+                        data-ng-model="ResiliationModelCtrl.resiliation.confirm.two">
+                </flat-checkbox>
+                <label for="resiliation_message2" data-translate="resiliation_message2"></label>
+            </li>
+        </ul>
+    </div>
+    <div class="modal-footer">
+        <button type="button"
+                class="btn btn-primary"
+                data-ng-click="$close('ok')"
+                data-ng-disabled="!ResiliationModelCtrl.resiliation.confirm.one || !ResiliationModelCtrl.resiliation.confirm.two"
+                data-translate="resiliation_confirm"></button>
+        <button type="button"
+                class="btn btn-default"
+                data-ng-click="$dismiss('cancel')"
+                data-translate="cancel"></button>
+    </div>
+</div>

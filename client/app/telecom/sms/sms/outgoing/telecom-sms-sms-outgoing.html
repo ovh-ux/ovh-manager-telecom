@@ -1,0 +1,256 @@
+<section class="telecom-sms-sms-outgoing">
+
+    <header>
+        <section-back-link section-back-link-to-state="telecom.sms.sms"
+                           section-back-link-title="{{ 'sms_section_back_link' | translate }}">
+        </section-back-link>
+        <h1 data-translate="sms_sms_outgoing_title"></h1>
+    </header>
+
+    <div class="telecom-section-content">
+        <div class="table-responsive-vertical">
+            <div class="bottom-space-m12 clearfix">
+                <ul class="list-unstyled pull-left right-space-m12 bottom-space-m0"
+                    role="menu"
+                    data-table-action>
+                    <li role="menuitem">
+                        <button
+                            type="button"
+                            class="no-style"
+                            data-ng-click="SmsOutgoingCtrl.export()"
+                            data-ng-disabled="!SmsOutgoingCtrl.outgoing.raw.length || SmsOutgoingCtrl.outgoing.isExporting"
+                            data-uib-tooltip="{{:: 'sms_sms_outgoing_download_history' | translate }}"
+                            data-tooltip-placement="right"
+                            data-tooltip-append-to-body="true">
+                            <i class="ovh-font ovh-font-download" aria-hidden="true"></i>
+                            <label data-translate="common_download"></label>
+                        </button>
+                    </li>
+                    <li role="menuitem">
+                        <button
+                            type="button"
+                            class="no-style"
+                            data-ng-click="SmsOutgoingCtrl.refresh()"
+                            data-ng-disabled="SmsOutgoingCtrl.outgoing.isDeleting"
+                            data-uib-tooltip="{{:: 'common_refresh_data' | translate }}"
+                            data-tooltip-placement="right"
+                            data-tooltip-append-to-body="true">
+                            <i class="ovh-font ovh-font-arrow-rotate" aria-hidden="true"></i>
+                            <label data-translate="common_refresh"></label>
+                        </button>
+                    </li>
+                </ul>
+                <button
+                    type="button"
+                    class="btn btn-default pull-left"
+                    data-ng-disabled="SmsOutgoingCtrl.getSelection().length === 0 || SmsOutgoingCtrl.outgoing.isDeleting"
+                    data-ng-click="SmsOutgoingCtrl.deleteSelectedOutgoing()">
+                    <i class="ovh-font ovh-font-bin line-height-normal right-space-m4" aria-hidden="true"></i>
+                    <span data-ng-pluralize
+                          data-count="SmsOutgoingCtrl.getSelection().length"
+                          data-when="{
+                              '0': ('sms_sms_outgoing_delete' | translate),
+                              'one': ('sms_sms_outgoing_delete' | translate),
+                              'other': ('sms_sms_outgoing_delete_plural' | translate:{ count: {} })
+                          }">
+                    </span>
+                    <spinner class="left-space-m4" data-ng-if="SmsOutgoingCtrl.outgoing.isDeleting"></spinner>
+                </button>
+                <button
+                    type="button"
+                    class="btn btn-default pull-right"
+                    data-ng-if="SmsOutgoingCtrl.outgoing.raw.length || SmsOutgoingCtrl.outgoing.showFilter"
+                    data-ng-click="SmsOutgoingCtrl.toggleShowFilter()">
+                    <i class="ovh-font"
+                       data-ng-class="{
+                           'ovh-font-filter': !SmsOutgoingCtrl.outgoing.showFilter,
+                           'ovh-font-wrong': SmsOutgoingCtrl.outgoing.showFilter
+                    }"></i>
+                    <span class="left-space-m4" data-translate="common_filter"></span>
+                </button>
+            </div>
+            <div class="row bottom-space-m12"
+                 data-ng-if="SmsOutgoingCtrl.outgoing.showFilter">
+                <div class="col-xs-12 col-sm-offset-4 col-sm-4"
+                     data-flat-input-container>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="ovh-font ovh-font-phone fs16" aria-hidden="true"></i>
+                            <span class="sr-only" data-translate="sms_sms_outgoing_label_sender"></span>
+                        </span>
+                        <input
+                            class="form-control"
+                            type="text"
+                            autofocus
+                            data-ng-model="SmsOutgoingCtrl.outgoing.filterBy.sender"
+                            data-ng-change="SmsOutgoingCtrl.getDebouncedOutgoings()"
+                            data-translate-attr="{ placeholder: 'sms_sms_outgoing_label_sender' }" />
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-4"
+                     data-flat-input-container>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="ovh-font ovh-font-phone fs16" aria-hidden="true"></i>
+                            <span class="sr-only" data-translate="sms_sms_outgoing_label_receiver"></span>
+                        </span>
+                        <input
+                            class="form-control"
+                            type="text"
+                            data-ng-model="SmsOutgoingCtrl.outgoing.filterBy.receiver"
+                            data-ng-change="SmsOutgoingCtrl.getDebouncedOutgoings()"
+                            data-translate-attr="{ placeholder: 'sms_sms_outgoing_label_receiver' }" />
+                    </div>
+                </div>
+            </div>
+            <table class="table table-pretty table-hover table-striped no-space">
+                <thead>
+                    <tr>
+                        <th scope="col" width="40px">
+                            <input
+                                type="checkbox"
+                                data-ng-if="SmsOutgoingCtrl.outgoing.paginated.length"
+                                data-ng-disabled="SmsOutgoingCtrl.outgoing.isDeleting"
+                                data-ovh-checkbox-table
+                                data-ovh-checkbox-table-ids-all="SmsOutgoingCtrl.outgoing.paginated"
+                                data-ovh-checkbox-table-ids-page="SmsOutgoingCtrl.outgoing.paginated"
+                                data-ovh-checkbox-table-ids-selected="SmsOutgoingCtrl.outgoing.selected"
+                                data-ovh-checkbox-table-id="id" />
+                        </th>
+                        <th scope="col">
+                            <button
+                                type="button"
+                                class="no-style left-space-p0"
+                                data-ng-disabled="!SmsOutgoingCtrl.outgoing.paginated.length"
+                                data-ng-click="SmsOutgoingCtrl.toggleOrder()">
+                                <label class="pointer" data-translate="sms_sms_outgoing_label_date"></label>
+                                <span class="table-pretty-filter">
+                                    <i class="fa" data-ng-class="{
+                                        'fa-sort': SmsOutgoingCtrl.outgoing.orderBy !== 'creationDatetime',
+                                        'fa-sort-desc': SmsOutgoingCtrl.outgoing.orderBy === 'creationDatetime' && SmsOutgoingCtrl.outgoing.orderDesc,
+                                        'fa-sort-asc': SmsOutgoingCtrl.outgoing.orderBy === 'creationDatetime' && !SmsOutgoingCtrl.outgoing.orderDesc
+                                    }"></i>
+                                </span>
+                            </button>
+                        </th>
+                        <th scope="col">
+                            <label data-translate="sms_sms_outgoing_label_sender"></label>
+                        </th>
+                        <th scope="col">
+                            <label data-translate="sms_sms_outgoing_label_receiver"></label>
+                        </th>
+                        <th scope="col">
+                            <label data-translate="sms_sms_outgoing_label_tariff_code"></label>
+                        </th>
+                        <th scope="col">
+                            <label data-translate="sms_sms_outgoing_label_message"></label>
+                        </th>
+                        <th scope="col">
+                            <label data-translate="sms_sms_outgoing_label_status"></label>
+                        </th>
+                        <th scope="col">
+                            <label data-translate="common_actions"></label>
+                            <spinner data-ng-if="SmsOutgoingCtrl.outgoing.isReading || SmsOutgoingCtrl.outgoing.isExporting"></spinner>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody data-ng-if="!SmsOutgoingCtrl.outgoing.isLoading && SmsOutgoingCtrl.outgoing.raw.length">
+                    <tr data-ng-repeat="sms in SmsOutgoingCtrl.outgoing.paginated | orderBy:SmsOutgoingCtrl.outgoing.orderBy:SmsOutgoingCtrl.outgoing.orderDesc track by sms.id">
+                        <td data-title="{{ ::'sms_sms_outgoing_label_select' | translate }}">
+                            <input
+                                type="checkbox"
+                                data-ng-disabled="SmsOutgoingCtrl.outgoing.isDeleting"
+                                data-ng-model="SmsOutgoingCtrl.outgoing.selected[sms.id]" />
+                        </td>
+                        <td data-title="{{ ::'sms_sms_outgoing_label_date' | translate }}">
+                            <span class="text-nowrap" data-ng-bind="sms.creationDatetime | date: 'dd/MM/yyyy'"></span><br/>
+                            <span class="text-nowrap" data-ng-bind="sms.creationDatetime | date: 'HH:mm:ss'"></span>
+                        </td>
+                        <td data-title="{{ ::'sms_sms_outgoing_label_sender' | translate }}">
+                            <span class="text-nowrap" data-ng-if="!sms.isShortNumber" data-ng-bind="sms.sender"></span>
+                            <span class="text-nowrap" data-ng-if="sms.isShortNumber"
+                                  data-uib-tooltip="{{ ::'sms_sms_outgoing_number_allowed_response_fr_only' | translate }}"
+                                  data-translate="sms_sms_outgoing_number_allowed_response">
+                            </span>
+                        </td>
+                        <td data-title="{{ ::'sms_sms_outgoing_label_receiver' | translate }}">
+                            <span class="text-nowrap" data-ng-bind="sms.receiver"></span>
+                        </td>
+                        <td data-title="{{ ::'sms_sms_outgoing_label_tariff_code' | translate }}">
+                            <span class="text-nowrap" data-ng-bind="sms.tariffCode || '-'"></span>
+                        </td>
+                        <td data-title="{{ ::'sms_sms_outgoing_label_message' | translate }}">
+                            <span data-ng-if="sms.message.length >= 25">
+                                <span class="text-nowrap" data-ng-bind="sms.message | limitTo: 25" data-uib-tooltip="{{ sms.message }}"></span>…
+                            </span>
+                            <span class="text-nowrap" data-ng-if="sms.message.length < 25" data-ng-bind="sms.message"></span>
+                        </td>
+                        <td data-title="{{ ::'sms_sms_outgoing_label_status' | translate }}">
+                            <span data-ng-if="sms.deliveryReceipt === 1"
+                                  data-translate="sms_sms_outgoing_status_delivered">
+                            </span>
+                            <span data-ng-if="sms.deliveryReceipt !== 1">
+                                <span data-ng-if="sms.status.length >= 20">
+                                    <span class="text-nowrap" data-ng-bind="sms.status | limitTo: 20" data-uib-tooltip="{{ sms.status }}"></span>…
+                                </span>
+                                <span class="text-nowrap" data-ng-if="sms.status.length < 20" data-ng-bind="sms.status"></span>
+                                <span class="text-nowrap" data-ng-if="!sms.status.length">-</span>
+                            </span>
+                        </td>
+                        <td>
+                            <ul role="menu"
+                                data-table-action-line>
+                                <li role="menuitem">
+                                    <button
+                                        type="button"
+                                        class="no-style"
+                                        data-ng-click="SmsOutgoingCtrl.read(sms)">
+                                        <i class="ovh-font ovh-font-details" aria-hidden="true"></i>
+                                        <label data-translate="sms_sms_outgoing_read_title"></label>
+                                    </button>
+                                </li>
+                                <li role="menuitem">
+                                    <button
+                                        type="button"
+                                        class="no-style"
+                                        data-ng-click="SmsOutgoingCtrl.remove(sms)">
+                                        <i class="ovh-font ovh-font-bin" aria-hidden="true"></i>
+                                        <label data-translate="delete"></label>
+                                    </button>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+                <tbody data-ng-if="SmsOutgoingCtrl.outgoing.isLoading">
+                    <tr>
+                        <td class="text-center top-space-p16 bottom-space-p16" colspan="8">
+                            <spinner></spinner>
+                        </td>
+                    </tr>
+                </tbody>
+                <tbody data-ng-if="!SmsOutgoingCtrl.outgoing.isLoading && !SmsOutgoingCtrl.outgoing.raw.length">
+                    <tr>
+                        <td class="text-center top-space-p16 bottom-space-p16" colspan="8">
+                            <span data-translate="sms_sms_outgoing_empty"></span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="table-pretty-pagination top-space-m8"
+                 data-ng-show="!SmsOutgoingCtrl.outgoing.isLoading && SmsOutgoingCtrl.outgoing.raw.length"
+                 data-pagination-front
+                 data-items="SmsOutgoingCtrl.outgoing.raw"
+                 data-paginated-items="SmsOutgoingCtrl.outgoing.paginated"
+                 data-current-page="currentPage"
+                 data-nb-pages="nbPages"
+                 data-items-per-page="SmsOutgoingCtrl.outgoing.perPage"
+                 data-transform-item="SmsOutgoingCtrl.getDetails(item)"
+                 data-on-transform-item-done="SmsOutgoingCtrl.onTransformItemDone(items)"
+                 data-page-placeholder="{{ 'common_pagination_page' | translate: { currentPage: currentPage, nbPages: nbPages } }}"
+                 data-item-per-page-placeholder="{{ 'common_pagination_display' | translate }}">
+            </div>
+        </div>
+    </div>
+
+</section>

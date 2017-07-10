@@ -1,0 +1,43 @@
+<div id="pack-xdsl-modem-wifi">
+    <form name="wifiForm" class="ovh-form-flat">
+        <div class="form-group service-item col-xs-12 col-md-6 col-lg-5 left-space-p0 right-space-p0">
+
+            <a class="service-button service-button-checkbox"
+               data-a-disabled="!WifiCtrl.mediator.capabilities.canChangeWLAN || (WifiCtrl.mediator.tasks.changeModemConfigWLAN === true)"
+                data-ui-sref="telecom.pack.xdsl.modem.wifi({ wifiName: WifiCtrl.wifi.wifiName })"
+                role="button">
+
+                <div class="link-name">
+                    <span class="service-button-right-text" data-translate="xdsl_modem_wifi_configure"></span>
+                    <i class="ovh-font ovh-font-arrow-right"></i>
+                </div>
+            </a>
+
+            <div class="service-button-description-outside">
+                <flat-checkbox data-ng-hide="WifiCtrl.mediator.tasks.changeModemConfigWLAN">
+                    <input
+                        type="checkbox"
+                        id="wifiEnabled"
+                        name="wifiEnabled"
+                        class="form-control"
+                        data-ng-model="WifiCtrl.wifi.enabled"
+                        data-ng-disabled="!WifiCtrl.mediator.capabilities.canChangeWLAN"
+                        data-ng-really-click="WifiCtrl.update()"
+                        data-ng-really-undo="WifiCtrl.undo()"
+                        data-ng-really-message="{{ WifiCtrl.wifi.enabled ? 'xdsl_modem_wifi_really_on' : 'xdsl_modem_wifi_really_off' | translate }}"
+                        data-ng-really-confirm="{{ 'ok' | translate }}"
+                        data-ng-really-cancel="{{ 'cancel' | translate }}"
+                        data-ng-really-window-class="revert-really-buttons"
+                    >
+                </flat-checkbox>
+                <span data-ng-show="WifiCtrl.mediator.tasks.changeModemConfigWLAN">
+                    <spinner></spinner>
+                    <label data-ng-show="WifiCtrl.wifi.enabled" for="wifiEnabled">{{ 'xdsl_modem_wifi_success_validation_on' | translate }}</label>
+                    <label data-ng-hide="WifiCtrl.wifi.enabled" for="wifiEnabled">{{ 'xdsl_modem_wifi_success_validation_off' | translate }}</label>
+                </span>
+                <label data-ng-hide="WifiCtrl.mediator.tasks.changeModemConfigWLAN" class="pointer" for="wifiEnabled">{{ 'xdsl_modem_wifi_status' | translate }}</label>
+            </div>
+
+        </div>
+    </form>
+</div>

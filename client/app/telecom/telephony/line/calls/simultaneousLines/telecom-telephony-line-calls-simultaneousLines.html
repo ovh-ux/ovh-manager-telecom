@@ -1,0 +1,141 @@
+<section class="telephony-group-line-simultaneousLines">
+
+    <header>
+        <section-back-link section-back-link-to-state="telecom.telephony.line.calls" section-back-link-title="{{ 'telephony_line_calls_back_link' | translate }}">
+        </section-back-link>
+        <h1 data-translate="telephony_line_actions_line_calls_simultaneous_line_title"></h1>
+    </header>
+
+    <bouncing-box-loader data-ng-if="LineSimultaneousLinesCtrl.loading.init">
+        <h2 data-translate="loading"></h2>
+    </bouncing-box-loader>
+
+    <div class="telecom-section-content" data-ng-hide="LineSimultaneousLinesCtrl.loading.init">
+
+        <div class="alert alert-warning" role="alert"
+            data-ng-repeat="offerTask in LineSimultaneousLinesCtrl.offerTasks track by $index">
+            <i class="ovh-font ovh-font-filled-warning"></i>
+            <p data-translate="telephony_line_actions_line_calls_simultaneous_offerTasks"
+                data-translate-values="{executionDate : offerTask.formatedDate}"></p>
+            <p data-translate="telephony_line_actions_line_calls_simultaneous_offerTasks_1"></p>
+        </div>
+
+        <p data-ng-if="LineSimultaneousLinesCtrl.options.simultaneousLines >= 100" data-translate="telephony_line_actions_line_calls_simultaneous_line_support"></p>
+
+        <div class="row" data-ng-if="LineSimultaneousLinesCtrl.options.simultaneousLines < 100">
+            <div class="col-xs-12 col-md-6">
+
+                <form class="form-flat"
+                      name="simultaneousLinesCtrlForm"
+                      data-ng-submit="LineSimultaneousLinesCtrl.save()">
+
+                    <div class="row top-space-m32 bottom-space-m32">
+                        <div class="col-xs-12 col-md-6">
+                            <label for="simultaneousLines"
+                                data-translate="telephony_line_actions_line_calls_simultaneous_line_label"></label>
+                        </div>
+
+                        <div class="col-xs-12 col-md-6">
+                             <input-number-spinner data-ng-model="LineSimultaneousLinesCtrl.options.simultaneousLines"
+                                name="simultaneousLines"
+                                data-ng-disabled="LineSimultaneousLinesCtrl.loading.save || LineSimultaneousLinesCtrl.offerTasks.length"
+                                data-input-number-spinner-on-change="LineSimultaneousLinesCtrl.save()"
+                                data-input-number-spinner-max="LineSimultaneousLinesCtrl.options.maximumAvailableSimultaneousLines"
+                                data-input-number-spinner-min="LineSimultaneousLinesCtrl.options.minimumAvailableSimultaneousLines">
+                             </input-number-spinner>
+                        </div>
+                    </div>
+
+                    <div class="row bottom-space-m16" data-ng-if="LineSimultaneousLinesCtrl.showDoRemoveButtons">
+                        <div class="col-xs-6" >
+                            <button type="button" role="button" class="btn btn-sm btn-default"
+                                data-ng-disabled="LineSimultaneousLinesCtrl.loading.save"
+                                data-ng-click="LineSimultaneousLinesCtrl.cancelRemove()">
+                                <span data-translate="telephony_line_actions_line_calls_simultaneous_remove_cancel"></span>
+                            </button>
+                        </div>
+                        <div class="col-xs-6">
+                            <button type="button" role="button" class="btn btn-sm btn-primary pull-right"
+                                data-ng-disabled="LineSimultaneousLinesCtrl.loading.save"
+                                data-ng-click="LineSimultaneousLinesCtrl.doRemoveSimultaneousLines()">
+                                <span data-translate="telephony_line_actions_line_calls_simultaneous_remove_validate"></span>
+                                <spinner class="left-space-m4" data-ng-if="LineSimultaneousLinesCtrl.loading.save"></span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-12" data-ng-if="!LineSimultaneousLinesCtrl.contracts && LineSimultaneousLinesCtrl.loading.order">
+                            <bouncing-box-loader>
+                                <strong data-translate="loading"></strong>
+                            </bouncing-box-loader>
+                        </div>
+                    </div>
+
+                    <div class="row bottom-space-m32" data-ng-if="LineSimultaneousLinesCtrl.prices && !LineSimultaneousLinesCtrl.loading.order">
+
+                        <div class="col-xs-12">
+                            <div class="form-group bottom-space-m16"
+                                data-ng-repeat="detail in LineSimultaneousLinesCtrl.prices.details"
+                                data-ng-if="detail.detailType == 'DURATION'">
+                                <label class="col-xs-3 control-label text-left space-p0"
+                                data-translate="telephony_line_actions_line_calls_simultaneous_line_price_without_vat"></label>
+                                <div class="col-xs-9">
+                                    <p class="form-control-static space-p0 bold text-danger"
+                                    data-ng-bind="detail.totalPrice.text"></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12">
+                            <div class="form-group">
+                                <label class="col-xs-3 control-label text-left space-p0"
+                                    data-translate="telephony_line_actions_line_calls_simultaneous_line_price_vat"></label>
+                                <div class="col-xs-9">
+                                    <p class="form-control-static bold space-p0 text-danger"
+                                    data-ng-bind="LineSimultaneousLinesCtrl.prices.prices.tax.text"></p>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-xs-3 control-label text-left space-p0"
+                                    data-translate="telephony_line_actions_line_calls_simultaneous_line_price_total"></label>
+                                <div class="col-xs-9">
+                                    <p class="form-control-static bold space-p0 text-danger"
+                                    data-ng-bind="LineSimultaneousLinesCtrl.prices.prices.withTax.text"></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12" data-ng-if="LineSimultaneousLinesCtrl.contracts && !LineSimultaneousLinesCtrl.loading.order">
+                            <div data-contracts="LineSimultaneousLinesCtrl.contracts"
+                                data-full-text="true"
+                                data-contracts-validated="LineSimultaneousLinesCtrl.contractsAccepted">
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 bottom-space-m16" data-ng-if="!LineSimultaneousLinesCtrl.prices.url">
+                            <button type="button" role="button" class="btn btn-sm btn-primary"
+                                data-ng-disabled="LineSimultaneousLinesCtrl.loading.doOrder || !LineSimultaneousLinesCtrl.contractsAccepted"
+                                data-ng-click="LineSimultaneousLinesCtrl.doOrder()">
+                                <i class="ovh-font ovh-font-1x6 ovh-font-cart right-space-m4"></i>
+                                <span data-translate="telephony_line_actions_line_calls_simultaneous_order"></span>
+                                <spinner class="left-space-m4" data-ng-if="LineSimultaneousLinesCtrl.loading.doOrder"></span>
+                            </button>
+                        </div>
+
+                        <div class="col-xs-12 bottom-space-m16" data-ng-if="LineSimultaneousLinesCtrl.prices.url">
+                            <span data-translate="telephony_line_actions_line_calls_simultaneous_bc"></span>
+                            <a target="_blank"
+                                title="{{'telephony_line_actions_line_calls_simultaneous_order' | translate}}"
+                                data-ng-href="{{LineSimultaneousLinesCtrl.prices.url}}">
+                                <span data-translate="telephony_line_actions_line_calls_simultaneous_url"></span>
+                                <i class="ovh-font ovh-font-newtab left-space-m4"></i>
+                            </a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<translations>
+   <translation id="telephony_service_fax_settings_main_title" qtlid="306578">Configuración del fax</translation>
+   <translation id="telephony_service_fax_settings_general_options" qtlid="340133">Opciones generales</translation>
+   <translation id="telephony_service_fax_settings_general_options_fax_quality" qtlid="356914">Calidad de envío:</translation>
+   <translation id="telephony_service_fax_settings_general_options_fax_quality_normal" qtlid="67052">Normal</translation>
+   <translation id="telephony_service_fax_settings_general_options_fax_quality_high" qtlid="66332">Alta</translation>
+   <translation id="telephony_service_fax_settings_general_options_fax_quality_best" qtlid="356927">Mejor</translation>
+   <translation id="telephony_service_fax_settings_general_options_fax_max_call" qtlid="356940">Número de intentos de envío:</translation>
+   <translation id="telephony_service_fax_settings_header" qtlid="356953">Cabecera de los fax enviados</translation>
+   <translation id="telephony_service_fax_settings_notification_options" qtlid="356966">Opciones de notificación</translation>
+   <translation id="telephony_service_fax_settings_notification_options_from_name" qtlid="356979">Nombre del remitente:</translation>
+   <translation id="telephony_service_fax_settings_notification_options_from_name_error_required" qtlid="356992">El campo «Nombre del remitente» es obligatorio.</translation>
+   <translation id="telephony_service_fax_settings_notification_options_from_email" qtlid="391202">Adresse e-mail de l’expéditeur&#160;:</translation>
+   <translation id="telephony_service_fax_settings_notification_options_from_email_error_email" qtlid="391215">L’adresse e-mail n’est pas valide.</translation>
+   <translation id="telephony_service_fax_settings_notification_options_mail_format" qtlid="357031">Formato del email:</translation>
+   <translation id="telephony_service_fax_settings_notification_options_mail_format_html" qtlid="357044">HTML</translation>
+   <translation id="telephony_service_fax_settings_notification_options_mail_format_text" qtlid="234708">Texto.</translation>
+   <translation id="telephony_service_fax_settings_notification_options_update" qtlid="337936">Aplicar las opciones</translation>
+   <translation id="telephony_service_fax_settings_notification_options_update_success" qtlid="337949">Opciones guardadas.</translation>
+   <translation id="telephony_service_fax_settings_addresses_to_notify" qtlid="337975">Direcciones de correo electrónico de notificación</translation>
+   <translation id="telephony_service_fax_settings_addresses_to_notify_add" qtlid="71357">Añadir una dirección de correo electrónico</translation>
+   <translation id="telephony_service_fax_settings_addresses_to_notify_empty" qtlid="357057">Todavía no ha configurado ninguna dirección de correo electrónico de notificación.</translation>
+   <translation id="telephony_service_fax_settings_addresses_to_notify_placeholder" qtlid="69509">Email</translation>
+   <translation id="telephony_service_fax_settings_addresses_to_notify_error_required" qtlid="357070">El campo «Email» es obligatorio.</translation>
+   <translation id="telephony_service_fax_settings_addresses_to_notify_error_email" qtlid="391215">L’adresse e-mail n’est pas valide.</translation>
+   <translation id="telephony_service_fax_settings_addresses_to_notify_info_limit" qtlid="338014">Puede notificar a un máximo de 5 direcciones de correo electrónico.</translation>
+</translations>

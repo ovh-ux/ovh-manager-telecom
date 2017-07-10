@@ -1,0 +1,14 @@
+<div class="voip-time-condition-calendar">
+
+    <bouncing-box-loader data-ng-if="$ctrl.loading.init">
+        <h2 data-translate="loading"></h2>
+    </bouncing-box-loader>
+
+    <div data-ng-if="!$ctrl.loading.init">
+        <div class="voip-time-condition-ui-calendar"
+             data-ui-calendar="$ctrl.options"
+             data-calendar="conditionsCalendar">
+        </div>
+    </div>
+
+</div>

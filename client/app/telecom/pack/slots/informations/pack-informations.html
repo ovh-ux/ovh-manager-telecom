@@ -1,0 +1,126 @@
+<div id="pack-informations" data-ng-controller="PackInformationCtrl as PackInformation">
+
+    <div class="text-center" data-ng-if="PackInformation.isLoading">
+        <spinner></spinner>
+    </div>
+
+    <div data-ng-if="!PackInformation.isLoading">
+        <!-- PACK STATE -->
+        <div class="row info-row">
+            <div class="col-sm-4" data-translate="pack_xdsl_status"></div>
+            <div class="col-sm-8 description">
+                <span data-ng-if="Pack.pack.informations.status === 'ok'"
+                   class="ovh-font ovh-font-success text-success fs20 right-space-m8"
+                   aria-hidden="true">
+               </span>
+                <span data-ng-if="Pack.pack.informations.status === 'expired'"
+                   class="ovh-font ovh-font-failure text-danger fs20 right-space-m8"
+                   aria-hidden="true">
+               </span>
+                <span data-ng-if="Pack.pack.informations.status === 'inCreation'"
+                   class="ovh-font ovh-font-inprogress text-info fs20 right-space-m8"
+                   aria-hidden="true">
+               </span>
+                <span>{{ 'pack_xdsl_' + Pack.pack.informations.status | translate }}</span>
+            </div>
+        </div>
+
+        <!-- OFFER NAME -->
+        <div class="row info-row">
+            <div class="col-sm-4" data-translate="pack_xdsl_offer_name"></div>
+            <div class="col-sm-8">
+                <a class="service-button"
+                   data-ng-if="Pack.pack.informations.status === 'ok'"
+                   data-a-disabled="Pack.pack.informations.status !== 'ok'"
+                   data-ui-sref="telecom.pack.migration">
+                    <div class="service-button-description">
+                        <span class="link-description" data-ng-bind="Pack.pack.offerDescription"></span>
+                    </div>
+
+                    <div class="link-name">
+                        <span data-translate="pack_offer_migration"></span>
+                        <span class="ovh-font ovh-font-arrow-right" aria-hidden="true"></span>
+                    </div>
+                </a>
+                <span data-ng-if="Pack.pack.informations.status !== 'ok'" data-ng-bind="Pack.pack.offerDescription"></span>
+            </div>
+        </div>
+
+
+        <!-- PACK NAME -->
+        <div class="row info-row">
+            <div class="col-sm-4" data-translate="pack_xdsl_pack_id"></div>
+            <div class="col-sm-8 description" data-ng-bind="Pack.pack.packName"></div>
+        </div>
+
+        <!-- CREATION DATE -->
+        <div class="row info-row">
+            <div class="col-sm-4" data-translate="pack_xdsl_created_date"></div>
+            <div class="col-sm-8 description" data-ng-bind="(Pack.pack.informations.creation | date) || '-'"></div>
+        </div>
+
+        <!-- ENGAGED UP TO -->
+        <div class="row info-row">
+            <div class="col-sm-4" data-translate="pack_xdsl_engaged_date"></div>
+            <div class="col-sm-8">
+                <a class="service-button"
+                    data-ng-if="!PackInformation.resiliationFollowUp && Pack.pack.informations.status === 'ok'"
+                    data-a-disabled="!!PackInformation.resiliationFollowUp"
+                    data-ng-if="!PackInformation.resiliationFollowUp"
+                    title="{{ 'pack_offer_migration' | translate }}"
+                    data-ui-sref="telecom.pack.resiliation">
+                    <div class="service-button-description">
+                        <span class="link-description"
+                              data-ng-if="!PackInformation.isEngaged"
+                              data-translate="pack_xdsl_not_engaged"></span>
+                        <span class="link-description"
+                              data-ng-if="PackInformation.isEngaged"
+                              data-ng-bind="(Pack.pack.informations.engagedUpTo | date) || '-'"></span>
+                    </div>
+
+                    <div class="link-name">
+                        <span data-translate="common_resiliation"></span>
+                        <span class="ovh-font ovh-font-arrow-right" aria-hidden="true"></span>
+                    </div>
+                </a>
+                <span data-ng-if="Pack.pack.informations.status !== 'ok'" data-ng-bind="(Pack.pack.informations.engagedUpTo | date) || '-'"></span>
+            </div>
+        </div>
+
+        <!-- RESILIATION DATE -->
+        <div data-ng-if="PackInformation.resiliationFollowUp" class="row info-row info-row-darker">
+            <div class="col-sm-4" data-translate="pack_xdsl_resiliation_date"></div>
+            <div class="col-sm-8 description">
+                <a data-ui-sref="telecom.pack.resiliation"
+                   title="{{ 'common_resiliation_cancel' | translate }}">
+                    <span class="link-description resiliation-date"
+                          data-ng-bind="PackInformation.resiliationFollowUp.dateTodo | date"></span>
+                    <span class="pull-right">
+                        <span data-translate="cancel"></span>
+                        <span class="ovh-font ovh-font-arrow-right line-height-normal right-space-m8" aria-hidden="true"></span>
+                    </span>
+                </a>
+            </div>
+        </div>
+
+        <div class="row info-row">
+            <div class="col-sm-4" data-translate="pack_xdsl_pack_link_address"></div>
+            <div class="col-sm-8 description">
+                <span data-ng-if="Pack.pack.mainAccess.address">
+                    <span data-ng-bind="Pack.pack.mainAccess.address.numberStreet"></span>
+                    <span data-ng-bind="Pack.pack.mainAccess.address.street"></span>
+                    <span data-ng-bind="Pack.pack.mainAccess.address.zipCode"></span>
+                    <span data-ng-bind="Pack.pack.mainAccess.address.city"></span>
+                </span>
+                <span data-ng-if="!Pack.pack.mainAccess.address">-</span>
+            </div>
+        </div>
+
+        <div class="row info-row">
+            <div class="col-sm-4" data-translate="pack_xdsl_information_associated_line"></div>
+            <div class="col-sm-8 description" data-ng-bind="PackInformation.associatedLine"></div>
+        </div>
+
+    </div>
+
+</div>

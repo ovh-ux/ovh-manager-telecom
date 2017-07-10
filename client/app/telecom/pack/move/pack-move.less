@@ -1,0 +1,165 @@
+.telecom-pack-move{
+
+    .meeting-calendar {
+        overflow-y: hidden;
+
+        &.ng-hide-animate {
+            -webkit-transition: 1s ease all;
+            -moz-transition: 1s ease all;
+            -ms-transition: 1s ease all;
+            -o-transition: 1s ease all;
+            transition: 1s ease all;
+        }
+        &.ng-hide-remove {
+            max-height: 0;
+            opacity: 0;
+            &.ng-hide-remove-active {
+                max-height: 600px;
+                opacity:1;
+            }
+        }
+
+        &.ng-hide-add {
+            max-height: 600px;
+            opacity:1;
+
+            &.ng-hide-add-active {
+                max-height: 0;
+                opacity:0;
+            }
+        }
+
+        .fc-button-group{
+            button{
+                background: none;
+                border: solid 1px @MANAGER_DEFAULT_BUTTON_BORDER_COLOR;
+                box-shadow: none;
+                color: @MANAGER_BUTTON_COLOR;
+                border-radius: 0;
+
+                &.fc-corner-left {
+                    border-top-left-radius: @btn-radius;
+                    border-bottom-left-radius: @btn-radius;
+                }
+
+                &.fc-corner-right {
+                    border-top-right-radius: @btn-radius;
+                    border-bottom-right-radius: @btn-radius;
+                }
+            }
+        }
+
+        .ovh-pack-move-event{
+            .fc-content{
+                background-color: @BRAND_SECONDARY;
+                border: none;
+                border-radius: @btn-radius;
+                margin-bottom: 2px;
+                color: @HomeBtnTextColor;
+                cursor: pointer;
+            }
+
+            &.selected {
+                .fc-content {
+                    background-color: @BRAND_LIGHT;
+                }
+            }
+
+            &:hover, &:focus, &:active{
+                text-decoration: none;
+
+                .fc-content{
+                    background-color: darken(@BRAND_SECONDARY, 12%);
+                }
+            }
+        }
+    }
+}
+
+.location {
+    position: relative;
+
+    &--current {
+        margin-bottom: 40px;
+
+        &::after {
+            content: "";
+            display: block;
+            width: 0%;
+            height: 40px;
+            border-right-width: 2px;
+            border-right-color: @UNIVERS;
+            border-right-style: solid;
+            position: absolute;
+            left: 50%;
+            top: 100%;
+        }
+    }
+
+    &--future {
+        margin-top: 40px;
+
+        &::before {
+            content: "";
+            display: block;
+            width: 0%;
+            height: 40px;
+            border-right-width: 2px;
+            border-right-color: @UNIVERS;
+            border-right-style: dashed;
+            position: absolute;
+            left: 50%;
+            top: -40px;
+        }
+    }
+
+    @media screen and (min-width: @screen-md) {
+        width: 80%;
+
+        &--current {
+            float: left;
+            margin: 0;
+
+            &::after {
+                content: "";
+                display: block;
+                width: 25%;
+                border-right: none;
+                border-top-width: 2px;
+                border-top-color: @UNIVERS;
+                border-top-style: solid;
+                position: absolute;
+                top: 40px;
+                left: 100%;
+            }
+        }
+
+        &--future {
+            float: right;
+            margin: 0;
+
+            &::before {
+                content: "";
+                display: block;
+                width: 25%;
+                border-right: none;
+                border-top-width: 2px;
+                border-top-color: @UNIVERS;
+                border-top-style: dashed;
+                position: absolute;
+                top: 40px;
+                left: -25%;
+            }
+        }
+    }
+
+    &__icon {
+        font-size: 2.8em;
+        color: @UNIVERS;
+    }
+
+    &__lineNumber {
+        font-size: @FONT-SIZE-MAININFO;
+        color: @BRAND_SECONDARY;
+    }
+}

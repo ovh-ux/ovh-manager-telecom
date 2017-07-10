@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<translations>
+   <translation id="xdsl_details_address" qtlid="308879">Indirizzo di connessione</translation>
+   <translation id="xdsl_details_NRA_title" qtlid="40102">NRA</translation>
+   <translation id="xdsl_details_NRA_distance" qtlid="63040">Distanza del NRA</translation>
+   <translation id="xdsl_details_NRA_name" qtlid="309477">Nome MDF (Main Distribution Frame)</translation>
+   <translation id="xdsl_details_sectionLength_values" qtlid="309490">{{diameter}}mm: {{length}}m</translation>
+   <translation id="xdsl_details_cable_type" qtlid="309503">Tipo di cavo</translation>
+   <translation id="xdsl_details_att" qtlid="40126">Attenuazione</translation>
+   <translation id="xdsl_details_db" qtlid="309516">{{mitigation}} dB</translation>
+   <translation id="xdsl_details_syncDown" qtlid="309529">{{syncDown}} Kbps</translation>
+   <translation id="xdsl_details_syncUp" qtlid="309542">{{syncUp}} Kbps</translation>
+   <translation id="xdsl_details_metters" qtlid="309555">{{distance}} metri</translation>
+   <translation id="xdsl_details_LNS" qtlid="45520">LNS</translation>
+   <translation id="xdsl_resiliate" qtlid="48646">Disattiva</translation>
+
+   <translation id="xdsl_details_title" qtlid="27115">Informazioni generali</translation>
+   <translation id="xdsl_details_connection_title" qtlid="55925">Connessione</translation>
+
+   <translation id="xdsl_details_caracteristics" qtlid="309568">Caratteristiche</translation>
+   <translation id="xdsl_details_mac_address" qtlid="42562">Indirizzo MAC</translation>
+   <translation id="xdsl_details_mac_address_description" qtlid="309581">Indirizzo fisico del dispositivo</translation>
+   <translation id="xdsl_details_sync_label" qtlid="60698">Sincronizzazione</translation>
+   <translation id="xdsl_details_concentrationPoint_lineHead_label" qtlid="309594">Testa</translation>
+   <translation id="xdsl_details_concentrationPoint_lineInitialSectionPair_label" qtlid="309607">Doppino</translation>
+   <translation id="xdsl_details_concentrationPoint_lineInitialSection_label" qtlid="309620">Inizio</translation>
+   <translation id="xdsl_details_followUp_label" qtlid="78870">Controllo ordine</translation>
+   <translation id="xdsl_details_details_label" qtlid="37527">Dettagli</translation>
+   <translation id="xdsl_details_status_label" qtlid="33790">Stato</translation>
+   <translation id="xdsl_details_type_label" qtlid="2642">Tipo</translation>
+   <translation id="xdsl_details_degroupage_label" qtlid="309633">Unbundling</translation>
+   <translation id="xdsl_details_dns_really" qtlid="309646">Vuoi davvero modificare il reverse DNS?</translation>
+   <translation id="xdsl_details_dns_placeholder" qtlid="44284">Reverse DNS</translation>
+   <translation id="xdsl_details_button_move" qtlid="308788">Trasferisci</translation>
+   <translation id="xdsl_details_button_move_disabled" qtlid="384909">Demande de déménagement en cours</translation>
+   <translation id="xdsl_details_button_deconsolidation" qtlid="79338">Separazione totale</translation>
+   <translation id="xdsl_details_button_diagnostic" qtlid="95059">Diagnostica</translation>
+   <translation id="xdsl_details_button_ipv4" qtlid="44284">Reverse DNS</translation>
+   <translation id="xdsl_details_button_ipv6" qtlid="44284">Reverse DNS</translation>
+   <translation id="xdsl_details_add_dns" qtlid="309659">Aggiungi un reverse DNS</translation>
+   <translation id="xdsl_details_connection" qtlid="52267">Tipo di connessione</translation>
+   <translation id="xdsl_details_profile" qtlid="309672">Profilo di connessione</translation>
+   <translation id="xdsl_details_reset_dslam_port" qtlid="309685">Porta di connessione</translation>
+   <translation id="xdsl_details_rate_limit" qtlid="309698">Gestisci la velocità di trasmissione</translation>
+   <translation id="xdsl_details_diagnostic_label" qtlid="309711">Diagnostica della linea</translation>
+   <translation id="xdsl_details_diagnostic" qtlid="309724">Diagnostica della linea</translation>
+
+<!-- IPs -->
+   <translation id="xdsl_details_ips_v4" qtlid="101781">IPv4</translation>
+   <translation id="xdsl_details_ips_v6" qtlid="34126">IPv6</translation>
+   <translation id="xdsl_details_ips_remove_only_extra" qtlid="309737">È possibile rimuovere solo i blocchi IP aggiuntivi</translation>
+   <translation id="xdsl_details_ips_manage" qtlid="194216">Gestisci i tuoi indirizzi IP</translation>
+   <translation id="xdsl_details_ips_notifications" qtlid="72797">Alert</translation>
+   <translation id="xdsl_details_ips_title" qtlid="309750">IP</translation>
+   <translation id="xdsl_details_ips_order" qtlid="43558">Ordina</translation>
+   <translation id="xdsl_access_ip_delete_really" qtlid="309763">Vuoi davvero eliminare il blocco IP <b>{{ip}}/{{range}}</b></translation>
+
+<!-- status -->
+   <translation id="xdsl_details_status_active" qtlid="55133">Attivo</translation>
+   <translation id="xdsl_details_status_cancelled" qtlid="164623">Annullata</translation>
+   <translation id="xdsl_details_status_close" qtlid="56117">Fermato</translation>
+   <translation id="xdsl_details_status_deleting" qtlid="152778">In corso di eliminazione</translation>
+   <translation id="xdsl_details_status_doing" qtlid="29647">In corso di creazione</translation>
+   <translation id="xdsl_details_status_migration" qtlid="309776">In corso di migrazione</translation>
+   <translation id="xdsl_details_status_slamming" qtlid="309789">Compresso</translation>
+   <translation id="xdsl_details_status_upgradeOffer" qtlid="309802">Offerta aggiornata</translation>
+
+<!-- Migration -->
+   <translation id="xdsl_details_migration" qtlid="305564">Cambia offerta</translation>
+   <translation id="xdsl_details_migration_upgrade" qtlid="309815">Cambia offerta</translation>
+
+<!-- Migration PPP -->
+   <translation id="xdsl_details_migration_ppp_title" qtlid="384922">Migration xDSL</translation>
+   <translation id="xdsl_details_migration_ppp_info_text_1" qtlid="384935">Vous pouvez dès à présent passer votre modem sous le protocole PPPoE.</translation>
+   <translation id="xdsl_details_migration_ppp_info_text_2" qtlid="384948">Notez que votre modem redémarrera automatiquement une fois l’opération terminée.</translation>
+   <translation id="xdsl_details_migration_ppp_info_text_3" qtlid="384961">Vous pouvez dès à présent passer votre modem sous le protocole PPPoE en utilisant les identifiants de connexion que vous avez reçu par email. Si vous ne les avez pas reçu cliquez sur le lien ci-dessous pour qu'ils vous soient réenvoyés.</translation>
+   <translation id="xdsl_details_migration_ppp_info_anchor" qtlid="384974">Retrouvez plus d’information sur notre FAQ</translation>
+   <translation id="xdsl_details_migration_ppp_info_button_label" qtlid="384987">Migrer mon accès xDSL</translation>
+   <translation id="xdsl_details_migration_ppp_success" qtlid="385000">Processus de migration enregistré.</translation>
+   <translation id="xdsl_details_migration_ppp_error" qtlid="385013">Oups ! Une erreur est survenue dans l’enregistrement du processus de migration.<br/>{{error}}</translation>
+   <translation id="xdsl_details_migration_ppp_migrating" qtlid="385026">Votre migration est en cours, celle-ci peut prendre quelques minutes.</translation>
+   <translation id="xdsl_details_migration_ppp_migrated" qtlid="385039">Votre migration a été effectuée avec succès.</translation>
+   <translation id="xdsl_details_migration_ppp_request_login_email" qtlid="385052">Vos identifiants viennent de vous être envoyés par e-mail !</translation>
+   <translation id="xdsl_details_migration_ppp_request_login_email_button" qtlid="385065">Envoyer mes identifiants</translation>
+   <translation id="xdsl_details_migration_ppp_modal_title" qtlid="385078">Migration de mon accès xDSL</translation>
+   <translation id="xdsl_details_migration_ppp_modal_info" qtlid="385091">La migration automatique de votre modem va générer une coupure ainsi qu’une resynchronisation. Cette opération prendra 2 à 3 minutes environ.</translation>
+   <translation id="xdsl_details_migration_ppp_modal_migrate" qtlid="171695">Trasferisci</translation>
+   <translation id="xdsl_details_migration_ppp_modal_migrating" qtlid="385104">Lancement du processus de migration…</translation>
+   <translation id="xdsl_details_migration_ppp_modal_migrated" qtlid="385117">Processus de migration lancée !</translation>
+
+<!-- notfications -->
+   <translation id="xdsl_details_notif_show_none_part1" qtlid="309828">Crea degli alert per ricevere le notifiche via Email</translation>
+   <translation id="xdsl_details_notif_show_none_part2" qtlid="309841">e/o SMS quando l'accesso non risponde.</translation>
+   <translation id="xdsl_details_notif_show_many" qtlid="309854">{{count}} alert programmati</translation>
+   <translation id="xdsl_details_notif_show_one" qtlid="309867">{{count}} alert programmato</translation>
+
+<!-- collecte -->
+   <translation id="xdsl_connection_ovh" qtlid="309880">Unbundling OVH</translation>
+   <translation id="xdsl_connection_no_ovh" qtlid="309893">Rete</translation>
+
+   <translation id="xdsl_access_amount_download" qtlid="309906">Volume scaricato nel mese</translation>
+   <translation id="xdsl_access_amount_upload" qtlid="309919">Volume emesso nel corso del mese</translation>
+
+<!-- action -->
+   <translation id="xdsl_details_action" qtlid="72809">Azioni</translation>
+   <translation id="xdsl_details_transfert" qtlid="309932">Modifica la tua offerta</translation>
+</translations>

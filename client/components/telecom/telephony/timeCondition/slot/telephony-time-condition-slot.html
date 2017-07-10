@@ -1,0 +1,52 @@
+<div class="telephony-time-condition-slot dtable slot-legend full-width">
+    <div class="dtd">
+        <div class="legend-color"
+             data-ng-class="$ctrl.slot.name">
+        </div>
+    </div>
+    <div class="dtd">
+        <div data-ng-if="$ctrl.isScheduler && $ctrl.slot.name === 'unavailable'"
+             data-translate="voip_time_condition_slots_type_scheduler_unavailable">
+        </div>
+
+        <div data-ng-if="!($ctrl.isScheduler && $ctrl.slot.name === 'unavailable')"
+             data-translate="{{ 'voip_time_condition_slots_type_' + $ctrl.slot.name }}">
+        </div>
+
+        <div data-ng-if="!$ctrl.slot.noConfig">
+            <!-- SLOT NOT DEFINED -->
+            <span data-ng-if="!$ctrl.getSlotDetail('number')"
+                  data-translate="voip_time_condition_slots_undefined"
+                  class="legend-description small normal">
+            </span> <!-- END OF SLOT NOT DEFINED -->
+
+            <!-- SLOT DEFINED -->
+            <span data-ng-if="$ctrl.getSlotDetail('number')"
+                  class="legend-description small normal">
+
+                <span data-ng-if="$ctrl.slot.name !== 'available'"
+                      data-translate="{{ 'voip_time_condition_slots_redirect_type_' + $ctrl.getSlotDetail('type') }}"
+                      data-translate-values="{ number: ($ctrl.getSlotDetail('number') | phoneNumber) }">
+                </span>
+
+                <span data-ng-if="$ctrl.slot.name === 'available'"
+                      data-ng-bind="$ctrl.slot.number">
+                </span>
+
+            </span> <!-- END OF SLOT DEFINED -->
+        </div>
+    </div>
+    <div class="dtd text-right"
+         data-ng-if="$ctrl.enableEdition && $ctrl.slot.name !== 'available'">
+        <button type="button"
+                class="legend-edit"
+                data-ng-disabled="$ctrl.timeCondition.status === 'SAVING'"
+                data-responsive-popover="'components/telecom/telephony/timeCondition/slot/edit/telephony-time-condition-slot-edit.html'"
+                data-popover-placement="right auto"
+                data-popover-trigger="outsideClick"
+                data-popover-is-open="$ctrl.slot.inEdition"
+                data-popover-class="pretty-popover voip-time-condition-slots-edit-popover">
+            <i class="ovh-font ovh-font-config"></i>
+        </button>
+    </div>
+</div>

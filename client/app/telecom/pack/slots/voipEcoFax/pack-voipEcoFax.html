@@ -1,0 +1,33 @@
+<div data-ng-controller="PackVoipEcoFaxCtrl as VoipEcoFax">
+
+    <div data-ng-include="'app/common/dashboard/service/loading.html'" data-ng-if="loaders.services"></div>
+    <div data-ng-include="'app/common/dashboard/service/no-element.html'" data-ng-if="!loaders.services && VoipEcoFax.services.length == 0"></div>
+
+    <ul class="services-list" data-ng-if="!loaders.services && VoipEcoFax.services.length > 0">
+        <li class="service-item" data-ng-repeat="service in VoipEcoFax.services">
+
+            <a data-ng-href="{{ VoipEcoFax.generateV3Url(service) }}"
+               class="service-button"
+               target="_blank">
+                <span class="ovh-font ovh-font-print" aria-hidden="true"></span>
+
+                <div class="service-button-description">
+                    <div class="description-title">{{ service }}</div>
+                    <div class="description-subtext">{{ service }}</div>
+                </div>
+
+                <span class="ovh-font ovh-font-arrow-right" aria-hidden="true"></span>
+            </a>
+        </li>
+    </ul>
+
+    <div class="text-right">
+        <a data-ng-if="service.available > 0"
+            data-ui-sref="telecom.pack.voipEcoFax-activation"
+            class="telecom-link order-service"
+            title="{{:: 'common_order_activate_service' | translate }}">
+            <span class="ovh-font ovh-font-activer fs16 right-space-m4" aria-hidden="true"></span>
+            <span class="data-ng-binding" data-translate="common_order_activate_service"></span>
+        </a>
+    </div>
+</div>

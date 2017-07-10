@@ -1,0 +1,68 @@
+.telephony-portabilities {
+
+    ul {
+        padding-left: 55px;
+    }
+
+    li {
+        position: relative;
+        min-height: 50px;
+        padding-top: 18px;
+        padding-left: 4px;
+        //opacity: 0.5;
+    }
+
+    li.done, li.error, li.doing, li.cancelled {
+        opacity: 1;
+    }
+
+    li:after {
+        content: "";
+        display: block;
+        border-radius: 10px;
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        left: -25px;
+        top: 17px;
+        background-color: #aaa;
+    }
+
+    li.doing:after { background-color: @brand-info; }
+    li.done:after { background-color: @brand-success; }
+    li.error:after { background-color: @brand-danger; }
+
+    li:before {
+        content: "";
+        position: absolute;
+        left: -16px;
+        border-left: 3px solid #aaa;
+        height: 100%;
+        width: 1px;
+    }
+
+    li:first-child:before {
+        top: 20px;
+    }
+
+    li:last-child:before {
+        height: 0px;
+    }
+
+    .panel-heading {
+        padding: 0px !important;
+    }
+
+    .panel-group {
+        margin-bottom: 4px;
+
+        a {
+            color: inherit;
+            text-decoration: none !important;
+        }
+    }
+
+    .accordion-heading-container {
+        padding: 10px;
+    }
+}

@@ -1,0 +1,140 @@
+<div class="line-phone-configuration line-phone-configuration-user-extension">
+
+    <!-- CONSULT MODE -->
+    <dl data-ng-if="!$ctrl.editMode">
+        <dt data-translate="telephony_line_phone_configuration_config_extension_key_module">
+        </dt>
+        <dd class="bottom-space-m8"
+            data-ng-bind="$ctrl.extensionKeyModuleConfig.value">
+        </dd>
+    </dl>
+
+    <!-- MODULE NUMBER EDITION -->
+    <div class="bottom-space-m16"
+         data-ng-if="$ctrl.editMode">
+        <label for="{{ config.name }}"
+               data-translate="telephony_line_phone_configuration_config_extension_key_module">
+        </label>
+        <div class="row">
+            <div class="col-xs-12 col-sm-6">
+                <input-number-spinner data-ng-model="$ctrl.extensionKeyModuleConfig.value"
+                                      data-input-number-spinner-min="$ctrl.extensionKeyModuleConfig.rangeValue.from"
+                                      data-input-number-spinner-max="$ctrl.extensionKeyModuleConfig.rangeValue.to"
+                                      data-input-number-spinner-on-change="$ctrl.onModuleNumberChange()">
+                </input-number-spinner>
+
+                <p data-ng-if="$ctrl.displayInfo"
+                   class="text-info top-space-m8"
+                   data-translate="telephony_line_phone_configuration_config_extension_key_module_info">
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div data-ng-if="$ctrl.extensionKeyModuleConfig.value > 0">
+
+        <!-- MODULE AND PAGE SELECT -->
+        <div class="bottom-space-m8">
+
+            <!-- MODULE SELECTION -->
+            <div class="btn-group"
+                 data-uib-dropdown>
+
+                <button type="button"
+                        class="btn btn-default"
+                        id="btn-module-select"
+                        data-uib-dropdown-toggle>
+                    <span data-translate="telephony_line_phone_configuration_config_extension_key_module_number"
+                          data-translate-values="{ number: $ctrl.model.moduleIndex + 1 }">
+                    </span>
+                    <span class="caret"></span>
+                </button>
+
+                <ul class="dropdown-menu"
+                    data-uib-dropdown-menu
+                    role="menu"
+                    aria-labelledby="btn-module-select">
+                    <li data-ng-repeat="module in $ctrl.modules track by $index"
+                        role="menuitem">
+                        <button type="button"
+                                class="btn btn-link"
+                                data-ng-click="$ctrl.model.moduleIndex = $index; $ctrl.model.pageIndex = 0;"
+                                data-translate="telephony_line_phone_configuration_config_extension_key_module_number"
+                                data-translate-values="{ number: $index + 1 }">
+                        </button>
+                    </li>
+                </ul>
+
+            </div>
+
+            <!-- MODULE PAGE SELECTION -->
+            <div class="btn-group left-space-m32">
+                <label class="btn btn-default"
+                       data-ng-repeat="page in $ctrl.modules[$ctrl.model.moduleIndex] track by $index"
+                       data-ng-model="$ctrl.model.pageIndex"
+                       data-uib-btn-radio="$index"
+                       data-translate="telephony_line_phone_configuration_config_extension_key_module_page_number"
+                       data-translate-values="{ number: $index + 1 }">
+                </label>
+            </div>
+
+        </div>
+
+        <!-- PAGE DISPLAY -->
+        <!-- CONSULT MODE -->
+        <dl data-ng-if="!$ctrl.editMode">
+            <dt data-ng-repeat-start="config in $ctrl.modules[$ctrl.model.moduleIndex][$ctrl.model.pageIndex] track by $index"
+                data-translate="telephony_line_phone_configuration_config_extension_key_module_label_number"
+                data-translate-values="$ctrl.getKeyIndex($index)"
+                data-ng-if="$ctrl.expertMode || (!$ctrl.expertMode && config.level === null)">
+            </dt>
+            <dd data-ng-repeat-end
+                class="bottom-space-m8"
+                data-ng-bind="config.value || '-'"
+                data-ng-if="$ctrl.expertMode || (!$ctrl.expertMode && config.level === null)">
+            </dd>
+        </dl>
+
+        <!-- EDIT MODE -->
+        <div data-ng-if="$ctrl.editMode">
+            <div data-ng-repeat="config in $ctrl.modules[$ctrl.model.moduleIndex][$ctrl.model.pageIndex] track by $index"
+                 data-ng-if="$ctrl.expertMode || (!$ctrl.expertMode && config.level === null)"
+                 data-ng-switch="config.type"
+                 class="bottom-space-m8">
+
+                <div flat-input-container
+                     data-ng-switch-default>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <label for="{{ config.name }}"
+                                   data-translate="telephony_line_phone_configuration_config_extension_key_module_label_number"
+                                   data-translate-values="$ctrl.getKeyIndex($index)">
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6">
+                             <input type="text"
+                                    id="{{ config.name }}"
+                                    name="{{ config.name }}"
+                                    data-ng-model="config.value"
+                                    class="form-control"
+                                    placeholder="{{ 'telephony_line_phone_configuration_config_extension_key_module_label_number' | translate:$ctrl.getKeyIndex($index) }}"
+                                    data-ng-maxlength="{{ config.maxlength }}">
+                        </div>
+                    </div>
+                    <div data-ng-messages="$ctrl.configForm[config.name].$error">
+                        <label for="{{ config.name }}"
+                               data-ng-message="maxlength"
+                               data-translate="telephony_line_phone_configuration_maxlength_invalid"
+                               data-translate-values="{ maxlength: config.maxlength }">
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>

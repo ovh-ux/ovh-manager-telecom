@@ -1,0 +1,25 @@
+<div data-ng-controller="PackExchangeIndividualCtrl as ExchangeIndividual">
+
+    <div data-ng-include="'app/common/dashboard/service/loading.html'" data-ng-if="loaders.services"></div>
+    <div data-ng-include="'app/common/dashboard/service/no-element.html'" data-ng-if="!loaders.services && ExchangeIndividual.exchangeMail.services.length == 0"></div>
+    <ul class="services-list" data-ng-if="!loaders.services && ExchangeIndividual.exchangeMail.services.length > 0">
+        <li class="service-item" data-ng-repeat="service in ExchangeIndividual.exchangeMail.services track by service.name">
+            <a data-a-disabled="true" class="service-button">
+                <span class="ovh-font ovh-font-mail" aria-hidden="true"></span>
+
+                <div class="service-button-description">
+                    <div class="description-title">{{ service.name }}</div>
+                    <div class="description-subtext">{{ service.domain }}</div>
+                </div>
+            </a>
+        </li>
+    </ul>
+
+    <a data-ng-if="service.available > 0"
+       data-ui-sref="telecom.pack.exchangeIndividual-add"
+       class="pull-right telecom-link order-service"
+       title="{{:: 'common_order_activate_service' | translate }}">
+        <span class="ovh-font ovh-font-activer fs16 right-space-m4" aria-hidden="true"></span>
+        <span class="data-ng-binding" data-translate="common_order_activate_service"></span>
+    </a>
+</div>

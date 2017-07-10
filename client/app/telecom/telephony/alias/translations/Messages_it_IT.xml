@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<translations>
+   <translation id="telephony_alias_page_title" qtlid="393048">Numéro "{{name}}"</translation>
+   <translation id="telephony_alias_tab_order" qtlid="333256">Ordina numeri</translation>
+   <translation id="telephony_alias_tab_portability" qtlid="333269">Portabilità</translation>
+   <translation id="telephony_alias_tab_administrative_management" qtlid="72737">Gestione</translation>
+   <translation id="telephony_alias_tab_number_configuration" qtlid="333282">Configurazione del numero</translation>
+   <translation id="telephony_alias_tab_consumption" qtlid="25639">Consumo</translation>
+   <translation id="telephony_alias_tab_bank_maker" qtlid="333295">Generatore di etichette</translation>
+   <translation id="telephony_alias_tab_number_directory" qtlid="33370">Coordinate</translation>
+
+   <translation id="telephony_alias_rename_error" qtlid="333308">Impossibile rinominare il tuo alias {{serviceName}}.</translation>
+   <translation id="telephony_alias_termination_warning" qtlid="393061">Le numéro sera résilié le <strong>{{ date }}</strong>.</translation>
+   <translation id="telephony_alias_termination_warning_cancel" qtlid="358604">Per annullare, clicca qui.</translation>
+   <translation id="telephony_alias_convert_warning" qtlid="393074">Le numéro sera converti en ligne le <strong>{{ date }}</strong>.</translation>
+   <translation id="telephony_alias_load_error" qtlid="393087">Oups ! Une erreur est survenue lors du chargement de votre numéro.</translation>
+</translations>

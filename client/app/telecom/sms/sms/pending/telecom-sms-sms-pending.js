@@ -1,0 +1,15 @@
+angular.module("managerApp").config(function ($stateProvider) {
+    "use strict";
+
+    $stateProvider.state("telecom.sms.sms.pending", {
+        url: "/pending",
+        views: {
+            "@smsView": {
+                templateUrl: "app/telecom/sms/sms/pending/telecom-sms-sms-pending.html",
+                controller: "TelecomSmsSmsPendingCtrl",
+                controllerAs: "SmsPendingCtrl"
+            }
+        },
+        translations: ["common", "telecom/sms/sms/pending"]
+    });
+});

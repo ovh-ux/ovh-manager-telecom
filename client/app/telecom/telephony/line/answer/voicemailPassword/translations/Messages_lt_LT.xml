@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<translations>
+   <translation id="telephony_line_answer_voicemail_password_change_main_title" qtlid="337637">Mot de passe accès répondeur</translation>
+   <translation id="telephony_line_answer_voicemail_password_number_info" qtlid="26551">Informacija</translation>
+   <translation id="telephony_line_answer_voicemail_password_number_internal" qtlid="337650">Accès au répondeur :</translation>
+   <translation id="telephony_line_answer_voicemail_password_number_external" qtlid="337663">De l'extérieur :</translation>
+   <translation id="telephony_line_answer_voicemail_password_change_title" qtlid="337676">Mot de passe du répondeur</translation>
+   <translation id="telephony_line_answer_voicemail_password_input_label" qtlid="197375">Naujas slaptažodis:</translation>
+   <translation id="telephony_line_answer_voicemail_password_input_placeholder" qtlid="2270">Slaptažodis</translation>
+   <translation id="telephony_line_answer_voicemail_password_input_length_warning" qtlid="337689">Votre mot de passe doit comporter 4 chiffres.</translation>
+   <translation id="telephony_line_answer_voicemail_passwordConfirm_input_label" qtlid="197063">Pakartokite:</translation>
+   <translation id="telephony_line_answer_voicemail_passwordConfirm_input_placeholder" qtlid="387328">Saisissez à nouveau votre mot de passe</translation>
+   <translation id="telephony_line_answer_voicemail_password_matching_warning" qtlid="337702">Le mot de passe saisi ne correspond pas.</translation>
+   <translation id="telephony_line_answer_voicemail_password_apply" qtlid="249107">Taikyti keitimus</translation>
+   <translation id="telephony_line_answer_voicemail_password_change_success" qtlid="337715">Mot de passe modifié avec succès.</translation>
+   <translation id="telephony_line_answer_voicemail_password_change_error" qtlid="337728">Oups, nous n'arrivons pas à changer le mot de passe de votre répondeur.</translation>
+   <translation id="telephony_line_answer_voicemail_password_info" qtlid="337741">Mot de passe demandé lors de la consultation des messages depuis l'extérieur uniquement.</translation>
+</translations>

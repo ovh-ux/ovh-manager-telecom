@@ -1,0 +1,10 @@
+<button type="button"
+        data-ng-click="sortableCtrl.sortElement()"
+        data-uib-tooltip="{{ this.title }}"
+        class="no-style no-space no-outline">
+    <ng-transclude></ng-transclude>
+</button>
+<span data-ng-class="{'no-sort':sortableCtrl.getSort().fieldName!==sortableCtrl.fieldName}">
+    <i class="fa"
+       data-ng-class="{'fa-sort-amount-asc': !sortableCtrl.getSort().descending, 'fa-sort-amount-desc': sortableCtrl.getSort().descending}"></i>
+</span>

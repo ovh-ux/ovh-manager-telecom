@@ -1,0 +1,46 @@
+<div class="tips">
+	<span class="intitule">{{ 'TEMP_the_password' | translate }}</span>
+	<ul>
+		<li data-ng-class="{ 'valid': !passwordFormPart.password.$error.oneLowercase }">
+			<span class="glyphicon glyphicon-ok" aria-hidden="true"
+				  data-ng-show="!passwordFormPart.password.$error.oneLowercase"></span>
+			<span class="glyphicon glyphicon-remove" aria-hidden="true"
+				  data-ng-show="passwordFormPart.password.$error.oneLowercase"></span>
+			<span data-translate="TEMP_must_content_a_lowercase"></span>
+		</li>
+		<li data-ng-class="{ 'valid': !passwordFormPart.password.$error.oneUppercase }">
+			<span class="glyphicon glyphicon-ok" aria-hidden="true"
+				  data-ng-show="!passwordFormPart.password.$error.oneUppercase"></span>
+			<span class="glyphicon glyphicon-remove" aria-hidden="true"
+				  data-ng-show="passwordFormPart.password.$error.oneUppercase"></span>
+			<span data-translate="TEMP_must_content_an_uppercase"></span>
+		</li>
+		<li data-ng-class="{ 'valid': !passwordFormPart.password.$error.oneNumber }">
+			<span class="glyphicon glyphicon-ok" aria-hidden="true"
+				  data-ng-show="!passwordFormPart.password.$error.oneNumber"></span>
+			<span class="glyphicon glyphicon-remove" aria-hidden="true"
+				  data-ng-show="passwordFormPart.password.$error.oneNumber"></span>
+			<span data-translate="TEMP_must_content_a_figure"></span>
+		</li>
+		<li data-ng-class="{ 'valid': !passwordFormPart.password.$error.minChars }">
+			<span class="glyphicon glyphicon-ok" aria-hidden="true"
+				  data-ng-show="!passwordFormPart.password.$error.minChars"></span>
+			<span class="glyphicon glyphicon-remove" aria-hidden="true"
+				  data-ng-show="passwordFormPart.password.$error.minChars"></span>
+			<span data-translate="TEMP_must_be_lower_than_8_letters"></span>
+		</li>
+	</ul>
+
+	<div class="check-pwd pull-right">
+		<p data-translate="security_level"></p>
+		<div data-ovh-password-strength-bar
+			 data-ovh-pwd-strength="password.value"
+		 	 data-strength="passStrength">
+		</div>
+		<div class="clearfix pull-right" style="margin-top: -35px; clear: both;">
+			<span class="textbar-low" data-ng-show="passStrength > 0 && passStrength <= 33" data-translate="low"></span>
+			<span class="textbar-medium" data-ng-show="passStrength > 33 && passStrength <= 66" data-translate="medium"></span>
+			<span class="textbar-strong" data-ng-show="passStrength > 66" data-translate="strong"></span>
+		</div>
+	</div>
+</div>

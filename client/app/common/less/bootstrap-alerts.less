@@ -1,0 +1,125 @@
+@ALERT-VPADDING:              20px;
+@ALERT-HPADDING:              20px;
+@alert-border-radius:         @border-radius-large;
+
+@ALERT-OVH-BG:            @gray-light;
+@ALERT-OVH-TEXT:          @gray-dark;
+@ALERT-OVH-BORDER:        @UNIVERS;
+
+@alert-success-bg:            #e0eac2;
+@alert-success-text:          #57710e;
+@alert-success-border:        #b0ca67;
+@ALERT-SUCCESS-ICON-COLOR:    @alert-success-border;
+
+@alert-info-bg:               #dfeaf8;
+@alert-info-text:             @brand-info;
+@alert-info-border:           #b3becc;
+@ALERT-INFO-ICON-COLOR:             #7d8ca1;
+
+@alert-warning-bg:            #faefa0;
+@alert-warning-text:          #8a5300;
+@alert-warning-border:        #e3cd4d;
+@ALERT-WARNING-ICON-COLOR:          #d9ae00;
+
+@alert-danger-bg:             #f5e0da;
+@alert-danger-text:           @brand-danger;
+@alert-danger-border:         #eca490;
+@ALERT-DANGER-ICON-COLOR:           #e36947;
+
+.alert{
+    padding: @ALERT-VPADDING @ALERT-HPADDING;
+    border: solid 2px transparent;
+    position: relative;
+
+    &-dismissable, &-dismissible{
+        padding-right: (@ALERT-HPADDING + 20);
+    }
+
+    &.me-alerts{
+        &:before{
+            content: none;
+        }
+    }
+
+    > .ovh-font{
+        position: absolute;
+        top: 50%;
+        left: @ALERT-HPADDING;
+        margin-top: -16px;
+        font-family: "ovh-font";
+        font-size: 32px;
+        line-height: 1em;
+    }
+
+    h3{
+        color: inherit;
+    }
+
+    &-ovh{
+        .alert-variant(@ALERT-OVH-BG; @ALERT-OVH-BORDER; @ALERT-OVH-TEXT);
+    }
+
+    &-success {
+        padding-left: (@ALERT-HPADDING + 48);
+
+        .alert-variant(@alert-success-bg; @alert-success-border; @alert-success-text);
+
+        > .ovh-font-filled-check,
+        > .ovh-font-success{
+            color: @ALERT-SUCCESS-ICON-COLOR;
+        }
+    }
+
+    &-info {
+        padding-left: (@ALERT-HPADDING + 48);
+
+        .alert-variant(@alert-info-bg; @alert-info-border; @alert-info-text);
+
+        > .ovh-font-filled-info,
+        > .ovh-font-info{
+            color: @ALERT-INFO-ICON-COLOR;
+        }
+    }
+
+    &-warning {
+        padding-left: (@ALERT-HPADDING + 48);
+
+        .alert-variant(@alert-warning-bg; @alert-warning-border; @alert-warning-text);
+
+        > .ovh-font-filled-warning,
+        > .ovh-font-warning{
+            color: @ALERT-WARNING-ICON-COLOR;
+        }
+    }
+
+    &-danger {
+        padding-left: (@ALERT-HPADDING + 48);
+
+        .alert-variant(@alert-danger-bg; @alert-danger-border; @alert-danger-text);
+
+        > .ovh-font-filled-error,
+        > .ovh-font-failure{
+            color: @ALERT-DANGER-ICON-COLOR;
+        }
+    }
+
+    &.alert-xs {
+        display: inline-block;
+        padding: (@ALERT-VPADDING - 10) (@ALERT-HPADDING - 8);
+        border-width: 1px;
+        border-radius: @border-radius-base;
+
+        > .ovh-font {
+            font-size: 20px;
+            left: (@ALERT-HPADDING - 8);
+            margin-top: -10px;
+        }
+
+        &.alert-success,
+        &.alert-info,
+        &.alert-warning,
+        &.alert-danger {
+            padding-left: (@ALERT-HPADDING + 24);
+        }
+    }
+}

@@ -1,0 +1,42 @@
+<form name="managedByForm" class="ovh-form-flat">
+    <div class="form-group">
+
+        <flat-checkbox data-ng-if="!ManagedByCtrl.mediator.tasks.changeModemConfigManagement">
+            <input type="checkbox"
+                id="managedBy"
+                name="managedBy"
+                class="form-control"
+                data-ng-model="ManagedByCtrl.mediator.info.managedByOvh"
+                data-ng-disabled="!ManagedByCtrl.mediator.capabilities.canChangeManagement || ManagedBy.updating"
+                data-ng-really-click="ManagedByCtrl.changeManagedBy()"
+                data-ng-really-undo="ManagedByCtrl.undo()"
+                data-ng-really-message="{{ ManagedByCtrl.mediator.info.managedByOvh ? 'xdsl_modem_managedBy_really_on' : 'xdsl_modem_managedBy_really_off' | translate }}
+                    <div class='text-info top-space-m16'>
+                        <span class='ovh-font ovh-font-info fs16 line-height-normal' aria-hidden='true'></span>
+                        <span data-translate='xdsl_modem_managedBy_description'></span>
+                    </div>
+                    <div class='text-warning top-space-m16' data-ng-if='!ManagedByCtrl.mediator.info.managedByOvh'>
+                        <span class='ovh-font ovh-font-warning fs16 line-height-normal' aria-hidden='true'></span>
+                        <span data-translate='xdsl_modem_managedBy_warning_override'></span>
+                    </div>"
+                data-ng-really-confirm="{{ 'ok' | translate }}"
+                data-ng-really-cancel="{{ 'cancel' | translate }}"
+                data-ng-really-window-class="revert-really-buttons">
+        </flat-checkbox>
+        <div data-ng-if="ManagedByCtrl.mediator.tasks.changeModemConfigManagement">
+            <spinner></spinner>
+            <label data-ng-if="ManagedByCtrl.mediator.info.managedByOvh"
+                   for="managedBy"
+                   data-translate="xdsl_modem_managedBy_success_validation_on"></label>
+            <label data-ng-if="!ManagedByCtrl.mediator.info.managedByOvh"
+                   for="managedBy"
+                   data-translate="xdsl_modem_managedBy_success_validation_off"></label>
+        </div>
+        <label data-ng-if="!ManagedByCtrl.mediator.tasks.changeModemConfigManagement"
+            for="managedBy"
+            data-uib-tooltip-html="ManagedByCtrl.tooltip"
+            data-tooltip-append-to-body="true"
+            data-translate="xdsl_modem_managedBy_title">
+        </label>
+    </div>
+</form>

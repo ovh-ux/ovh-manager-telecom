@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<translations>
+   <translation id="xdsl_access_lns_curent" qtlid="309347">Dabartinis LNS:</translation>
+   <translation id="xdsl_access_lns_change" qtlid="309360">Pakeisti LNS:</translation>
+   <translation id="xdsl_access_lns_submit" qtlid="26047">Patvirtinti</translation>
+   <translation id="xdsl_access_lns_doing" qtlid="309373">LNS keičiama</translation>
+   <translation id="xdsl_access_lns_an_error_ocurred" qtlid="309386">[LNS] Klaida!</translation>
+   <translation id="xdsl_access_lns_description" qtlid="309399">LNS - tai vartai į internetą. Jūsų srautas bus perduodamas per tą sąsają, kurią pasirinksite iš sąrašo. Ši funkcija neveikia su kai kuriomis linijomis (nesujungtoms su OVH ir FT).</translation>
+   <translation id="xdsl_access_lns_warning" qtlid="309412">Veiks po 5 - 10 minučių.</translation>
+</translations>

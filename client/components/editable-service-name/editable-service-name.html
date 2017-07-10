@@ -1,0 +1,49 @@
+<form class="editable-service-name"
+      name="editableServiceNameForm"
+      data-ng-submit="$ctrl.saveServiceName()">
+    <h1>
+        <!-- NOT IN EDITION -->
+        <span data-ng-if="!$ctrl.inEdition">
+            <span data-ng-bind="$ctrl.title"
+                  class="editable-service-name-title inline-block vertical-middle">
+            </span>
+            <button type="button"
+                    class="btn btn-editable inline-block vertical-middle"
+                    data-ng-click="$ctrl.startEdition()"
+                    data-ng-disabled="$ctrl.disabled"
+                    title="{{$ctrl.getTitle()}}">
+                <i class="ovh-font ovh-font-editer"></i>
+            </button>
+        </span>
+
+        <!-- IN EDITION -->
+        <span data-ng-if="$ctrl.inEdition"
+              class="clearfix">
+            <input class="service-name-edit-input inline-block vertical-middle"
+                   name="editableServiceNameInput"
+                   data-ng-maxlength="$ctrl.maxlength"
+                   data-ng-model="$ctrl.model.serviceName"
+                   data-ng-readonly="$ctrl.loading.save"
+                   type="text"/>
+
+            <span class="edit-button-container inline-block vertical-middle">
+                <button type="submit"
+                        class="btn btn-editable"
+                        data-ng-disabled="$ctrl.loading.save || !editableServiceNameForm.editableServiceNameInput.$valid">
+                    <i class="ovh-font ovh-font-check"></i>
+                </button>
+
+                <button type="button"
+                        class="btn btn-editable"
+                        data-ng-click="$ctrl.cancelEdition()"
+                        data-ng-disabled="$ctrl.loading.save">
+                    <i class="ovh-font ovh-font-wrong"></i>
+                </button>
+            </span>
+        </span>
+    </h1>
+    <em class="vertical-middle"
+        data-ng-if="$ctrl.serviceName !== $ctrl.title || $ctrl.inEdition"
+        data-ng-bind="$ctrl.serviceName"></em>
+
+</form>

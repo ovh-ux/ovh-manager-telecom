@@ -1,0 +1,17 @@
+<div id="pack-exchangeLite" data-ng-controller="PackExchangeLiteCtrl as ExchangeLite">
+    <div data-ng-include="'app/common/dashboard/service/loading.html'" data-ng-if="loaders.services"></div>
+    <div data-ng-include="'app/common/dashboard/service/no-element.html'" data-ng-if="!loaders.services && ExchangeLite.exchangeMail.services.length == 0"></div>
+
+    <ul class="services-list" data-ng-if="!loaders.services && ExchangeLite.exchangeMail.services.length > 0">
+        <li class="service-item" data-ng-repeat="service in ExchangeLite.exchangeMail.services track by service.name">
+            <a data-a-disabled="true" class="service-button">
+                <span class="ovh-font ovh-font-mail" aria-hidden="true"></span>
+
+                <div class="service-button-description">
+                    <div class="description-title">{{ service.name }}</div>
+                    <div class="description-subtext">{{ service.domain }}</div>
+                </div>
+            </a>
+        </li>
+    </ul>
+</div>

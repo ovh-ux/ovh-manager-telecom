@@ -1,0 +1,133 @@
+<form name="abbreviatedNumberForm"
+      id="abbreviatedNumberForm"
+      class="form-horizontal ovh-form-flat import-abbr"
+      data-ng-submit="AbbreviatedNumberModal.send()">
+
+    <div class="modal-header">
+        <h3 class="modal-title" id="modal-title" data-translate="telephony_abbreviated_numbers_import_modal_tile"></h3>
+    </div>
+
+    <div data-ng-if="!AbbreviatedNumberModal.importing">
+
+        <div class="modal-body">
+            <div class="form-group">
+                <div flat-input-container>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <input-file data-ng-model="AbbreviatedNumberModal.uploadedFile"
+                                        data-change="AbbreviatedNumberModal.loadCsv(file)"
+                                        data-ng-accept="text/csv">
+                                <i class="fa fa-upload right-space-m4"></i>
+                                <span data-translate="telephony_abbreviated_numbers_import_button_label"></span>
+                            </input-file>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 text-danger" data-ng-bind="AbbreviatedNumberModal.errorLoading" role="alert">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="table table-pretty top-space-m16"
+            data-ng-show="AbbreviatedNumberModal.sample > AbbreviatedNumberModal.paginatedSample"
+            data-pagination-front
+            data-go-to-page="false"
+            data-items="AbbreviatedNumberModal.sample"
+            data-paginated-items="AbbreviatedNumberModal.paginatedSample"
+            data-items-per-page="AbbreviatedNumberModal.perPage"
+            data-page-placeholder="{{ 'common_pagination_go_to_page' | translate }}"
+            data-item-per-page-placeholder="{{'common_pagination_show_by_page' |translate }}">
+        </div>
+
+        <div class="modal-body">
+
+            <table class="table table-pretty table-hover table-striped" data-ng-if="AbbreviatedNumberModal.sample.length">
+                <thead>
+                    <tr>
+                        <th scope="col" data-translate="telephony_abbreviated_numbers_id"></th>
+                        <th scope="col" data-translate="telephony_abbreviated_numbers_number"></th>
+                        <th scope="col" data-translate="telephony_abbreviated_numbers_name"></th>
+                        <th scope="col" data-translate="telephony_abbreviated_numbers_surname" class="text-left" colspan="2"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-ng-repeat="abbreviated in AbbreviatedNumberModal.paginatedSample">
+                        <td>
+                            <span data-ng-if="abbreviated.isValid" data-ng-class="{'text-danger': !abbreviated.abbreviatedNumber.isValid}" data-ng-bind="abbreviated.abbreviatedNumber.value"></span>
+                            <del data-ng-if="!abbreviated.isValid" data-ng-class="{'text-danger': !abbreviated.abbreviatedNumber.isValid}" data-ng-bind="abbreviated.abbreviatedNumber.value"></del>
+                        </td>
+                        <td>
+                            <span data-ng-if="abbreviated.isValid" data-ng-class="{'text-danger': !abbreviated.destinationNumber.isValid}" data-ng-bind="abbreviated.destinationNumber.value"></span>
+                            <del data-ng-if="!abbreviated.isValid" data-ng-class="{'text-danger': !abbreviated.destinationNumber.isValid}" data-ng-bind="abbreviated.id.value"></del>
+                        </td>
+                        <td>
+                            <span data-ng-if="abbreviated.isValid" data-ng-class="{'text-danger': !abbreviated.name.isValid}" data-ng-bind="abbreviated.name.value"></span>
+                            <del data-ng-if="!abbreviated.isValid" data-ng-class="{'text-danger': !abbreviated.name.isValid}" data-ng-bind="abbreviated.name.value"></del>
+                        </td>
+                        <td>
+                            <span data-ng-if="abbreviated.isValid" data-ng-class="{'text-danger': !abbreviated.surname.isValid}" data-ng-bind="abbreviated.surname.value"></span>
+                            <del data-ng-if="!abbreviated.isValid" data-ng-class="{'text-danger': !abbreviated.surname.isValid}" data-ng-bind="abbreviated.surname.value"></del>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+
+     <div class="modal-body" data-ng-if="AbbreviatedNumberModal.loading.getFile && !AbbreviatedNumberModal.errorLoading">
+        <bouncing-box-loader>
+        </bouncing-box-loader>
+    </div>
+
+    <div class="modal-body" data-ng-if="AbbreviatedNumberModal.loading.getFile && !AbbreviatedNumberModal.errorLoading">
+        <uib-progressbar class="progress-striped"
+                         max="AbbreviatedNumberModal.total" 
+                         value="AbbreviatedNumberModal.progress"></uib-progressbar>
+    </div>
+
+    <div class="modal-body" data-ng-if="AbbreviatedNumberModal.importing">
+        <uib-progressbar class="progress-striped"
+                         max="AbbreviatedNumberModal.total" 
+                         value="AbbreviatedNumberModal.progress">{{AbbreviatedNumberModal.progress}}</uib-progressbar>
+        <div>
+            <span data-translate="telephony_abbreviated_numbers_import_item_imported"></span>
+            <span data-ng-bind="AbbreviatedNumberModal.imported.length"><span>
+        </div>
+        <div data-ng-if="AbbreviatedNumberModal.rejected">
+            <span class="text-danger" data-translate="telephony_abbreviated_numbers_import_item_rejected"></span>
+            <span class="text-danger" data-ng-bind="AbbreviatedNumberModal.rejected"><span>
+        </div>
+    </div>
+
+    <div class="modal-footer" data-ng-if="!AbbreviatedNumberModal.done">
+        <button
+            type="button"
+            class="btn btn-default"
+            data-ng-disabled="AbbreviatedNumberModal.importing"
+            data-ng-click="AbbreviatedNumberModal.cancel()"
+            data-translate="cancel">
+        </button>
+        <button
+            type="submit"
+            class="btn btn-primary"
+            data-ng-disabled="AbbreviatedNumberModal.importing || !AbbreviatedNumberModal.canImport"
+            data-translate="submit"
+            data-ng-disabled="abbreviatedNumberForm.$invalid">
+        </button>
+    </div>
+
+    <div class="modal-footer" data-ng-if="AbbreviatedNumberModal.done">
+        <button
+            type="button"
+            class="btn btn-primary"
+            data-ng-click="AbbreviatedNumberModal.close()"
+            data-translate="close"
+            data-ng-disabled="abbreviatedNumberForm.$invalid">
+        </button>
+    </div>
+
+</form>

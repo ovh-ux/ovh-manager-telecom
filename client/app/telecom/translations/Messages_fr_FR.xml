@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<translations>
+    <translation id="common_newtab">(nouvel onglet)</translation>
+    <translation id="common_window">(nouvelle fenêtre)</translation>
+    <translation id="common_vip">Statut VIP</translation>
+    <translation id="common_table_edit">: éditer</translation>
+    <translation id="common_table_delete">: supprimer</translation>
+    <translation id="common_table_validate_entry"> : ajouter cette entrée</translation>
+    <translation id="common_table_cancel_entry"> : annuler l'ajout</translation>
+    <translation id="common_table_validate_modifications">: valider les modifications</translation>
+    <translation id="common_table_cancel_modifications">: annuler les modifications</translation>
+</translations>

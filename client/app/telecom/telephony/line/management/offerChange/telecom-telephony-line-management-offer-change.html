@@ -1,0 +1,90 @@
+<section class="telecom-telephony-line-management-offerChange">
+
+    <header>
+        <section-back-link section-back-link-to-state="telecom.telephony.line"
+                           section-back-link-title="{{ 'telephony_group_line_section_back_link' | translate }}">
+        </section-back-link>
+        <h1 data-translate="telephony_line_management_change_offer_title"></h1>
+    </header>
+
+    <bouncing-box-loader data-ng-if="OfferChangeCtrl.loading.init">
+        <h3 class="top-space-m16"
+            data-translate="loading">
+        </h3>
+    </bouncing-box-loader>
+
+    <div class="telecom-section-content"
+         data-ng-if="!OfferChangeCtrl.loading.init">
+
+        <section class="widget-presentation">
+            <header class="widget-presentation-header">
+                <h2 class="widget-presentation-title"
+                    data-translate="telephony_line_management_change_offer_informations">
+                </h2>
+            </header>
+
+            <dl class="dl-horizontal">
+                <dt data-translate="telephony_line_management_change_offer_informations_group"></dt>
+                <dd data-ng-bind="OfferChangeCtrl.group.getDisplayedName()"></dd>
+
+                <dt data-translate="telephony_line_management_change_offer_informations_next_billing"></dt>
+                <dd data-ng-bind="OfferChangeCtrl.line.nextBill | date:'shortDate'"></dd>
+
+                <dt data-translate="telephony_line_management_change_offer_informations_offer"></dt>
+                <dd data-ng-bind="OfferChangeCtrl.line.offerInformations.getFullDescription()"></dd>
+            </dl>
+
+            <button type="button"
+                    class="btn btn-primary top-space-m16"
+                    data-translate="telephony_line_management_change_offer_change_button"
+                    data-ng-click="OfferChangeCtrl.changeOffer()"
+                    data-ng-if="!OfferChangeCtrl.line.pendingOfferChange && !OfferChangeCtrl.initError">
+            </button>
+
+            <div data-ng-if="OfferChangeCtrl.line.pendingOfferChange && !OfferChangeCtrl.loading.cancel">
+
+                <div class="alert alert-info top-space-m16"
+                     role="alert">
+                     <i class="ovh-font ovh-font-filled-info"></i>
+                    <p data-translate="telephony_line_management_change_offer_change_pending"
+                        data-translate-values="{ date: (OfferChangeCtrl.line.nextBill | date:'shortDate') }"></p>
+                    <p data-translate="telephony_line_management_change_offer_change_pending_new_offer"
+                       data-translate-values="{ offer: OfferChangeCtrl.line.pendingOfferChange.getFullDescription() }">
+                    </p>
+                </div>
+
+                <button type="button"
+                        class="btn btn-primary animate-fadeInLeft-enter"
+                        data-ng-if="!OfferChangeCtrl.confirmCancel"
+                        data-translate="telephony_line_management_change_offer_change_pending_cancel"
+                        data-ng-click="OfferChangeCtrl.confirmCancel = true">
+                </button>
+
+                <div data-ng-if="OfferChangeCtrl.confirmCancel"
+                     class="animate-fadeInRight-enter">
+                    <span data-translate="telephony_line_management_change_offer_change_pending_cancel_confirm"></span>
+                    <button class="btn btn-default"
+                            type="button"
+                            data-translate="cancel"
+                            data-ng-click="OfferChangeCtrl.confirmCancel = false">
+                    </button>
+                    <button class="btn btn-primary"
+                            type="button"
+                            data-translate="submit"
+                            data-ng-click="OfferChangeCtrl.cancelOfferChange()">
+                    </button>
+                </div>
+
+            </div>
+
+            <bouncing-box-loader data-ng-if="OfferChangeCtrl.loading.cancel">
+                <h3 class="top-space-m16"
+                    data-translate="telephony_line_management_change_offer_change_pending_cancel_doing">
+                </h3>
+            </bouncing-box-loader>
+
+        </section>
+
+    </div>
+
+</section>

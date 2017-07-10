@@ -1,0 +1,65 @@
+<div class="widget-presentation">
+    <h2 class="widget-presentation-title" data-translate="freefax_general_information"></h2>
+
+    <div class="text-center top-space-p8" data-spinner data-ng-show="loading"></div>
+    <div class="flex-center" data-ng-hide="!freeFax">
+        <div class="row">
+            <div class="col-xs-12 col-md-4 service-title" data-translate="freefax_domain"></div>
+            <div class="col-xs-12 col-md-8 service-item" data-ng-bind="freeFax.domain || ('freefax_domain_expired'|translate)"></div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-md-4 service-title" data-translate="freefax_offer"></div>
+            <div class="col-xs-12 col-md-8 service-item" data-translate="freefax_offer_ecofax_perso"></div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-md-4 service-title" data-translate="freefax_line"></div>
+            <div class="col-xs-12 col-md-8 service-item">{{freeFax.number}}</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-md-4 service-title" data-translate="freefax_fax_remaining"></div>
+            <div class="col-xs-12 col-md-8 service-item">{{freeFax.faxs}}</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-md-4 service-title" data-translate="freefax_point_remaining"></div>
+            <div class="col-xs-12 col-md-8 service-item">{{freeFax.points}}</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-md-4 service-title" data-translate="freefax_notifications"></div>
+            <div class="col-xs-12 col-md-8 service-item">
+                <a class="service-button"
+                   data-ui-sref="telecom.freefax.notifications"
+                   role="button">
+
+                    <div class="service-button-description">
+                        <div class="description-title-small description-title-fullHeight status-label"
+                             data-ng-pluralize
+                             data-count="freeFax.voicemail.redirectionEmails.length"
+                             data-when="{
+                                        '0': ('freefax_notif_show_none' | translate),
+                                        'one': ('freefax_notif_show_one_or_many' | translate : {count: freeFax.voicemail.redirectionEmails.length}),
+                                        'other': ('freefax_notif_show_one_or_many' | translate : {count: freeFax.voicemail.redirectionEmails.length})
+                                    }">
+                        </div>
+                    </div>
+                    <i class="ovh-font ovh-font-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-md-4 service-title" data-translate="freefax_voicemail"></div>
+            <div class="col-xs-12 col-md-8 service-item">
+                <a class="service-button"
+                   data-ui-sref="telecom.freefax.voicemail-configuration"
+                   role="button">
+
+                    <div class="service-button-description">
+                        <div class="description-title-small description-title-fullHeight status-label" data-translate="freefax_voicemail_active" data-ng-if="freeFax.voicemailActive"></div>
+                        <div class="description-title-small description-title-fullHeight status-label" data-translate="freefax_voicemail_inactive" data-ng-if="!freeFax.voicemailActive"></div>
+                    </div>
+
+                    <i class="ovh-font ovh-font-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

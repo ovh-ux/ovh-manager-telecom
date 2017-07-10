@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<translations>
+   <translation id="telephony_alias_administration_convert_back_link" qtlid="391943">Retour à l'administration de numéro</translation>
+   <translation id="telephony_alias_administration_convert_title" qtlid="392099">Convertir un numéro en ligne</translation>
+   <translation id="telephony_alias_administration_convert_offers_title" qtlid="392112">Sélection de l'offre</translation>
+   <translation id="telephony_alias_administration_convert_info_subtitle" qtlid="26551">Tiedot</translation>
+   <translation id="telephony_alias_administration_convert_info" qtlid="387393">Les demandes de conversion seront prises en compte lors de votre prochaine facturation. Jusqu'à cette date, l'annulation des demandes restera possible.</translation>
+   <translation id="telephony_alias_administration_convert_offers" qtlid="359787">Offres disponibles</translation>
+   <translation id="telephony_alias_administration_convert_monthly_price_tax_free" qtlid="270254">{{ price }} ALV 0 %/kk</translation>
+   <translation id="telephony_alias_administration_convert_submit" qtlid="392125">Convertir le numéro</translation>
+   <translation id="telephony_alias_administration_convert_success" qtlid="392138">Convertion planifiée avec succès.</translation>
+   <translation id="telephony_alias_administration_convert_task" qtlid="392151">Le numéro {{ number }} sera converti en ligne le {{ date }}.</translation>
+   <translation id="telephony_alias_administration_convert_cancel" qtlid="392164">Annuler la conversion</translation>
+   <translation id="telephony_alias_administration_convert_cancel_success" qtlid="392177">Convertion annulée avec succès.</translation>
+   <translation id="telephony_alias_administration_convert_task_title" qtlid="392190">Conversion planifiée</translation>
+   <translation id="telephony_alias_administration_convert_range_error" qtlid="392203">Ce numéro appartient à une plage de numéros il ne peut pas être converti en ligne.</translation>
+</translations>

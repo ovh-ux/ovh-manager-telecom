@@ -1,0 +1,315 @@
+<form name="addTelephonyFaxCampaignForm"
+      id="addTelephonyFaxCampaignForm"
+      class="ovh-form-flat"
+      data-ng-submit="CampaignsAddCtrl.add()">
+
+    <div class="modal-header">
+        <h3 class="modal-title pull-left" data-translate="telephony_service_fax_campaigns_add_campaign_title"></h3>
+        <button
+            type="button"
+            class="close pull-right"
+            aria-label="{{ ::'cancel' | translate }}"
+            data-ng-click="CampaignsAddCtrl.cancel()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <div class="modal-body"
+         data-ng-if="!CampaignsAddCtrl.loading.init && !CampaignsAddCtrl.loading.add && !CampaignsAddCtrl.added">
+
+        <!-- NAME -->
+        <div class="form-group">
+            <div flat-input-container>
+                <label for="name"
+                       class="control-label"
+                       data-translate="telephony_service_fax_campaigns_add_campaign_label_name">
+                </label>
+                <input
+                    type="text"
+                    name="name"
+                    id="name"
+                    class="form-control"
+                    required
+                    autofocus
+                    data-maxlength="24"
+                    data-ng-model="CampaignsAddCtrl.campaign.name"
+                    data-translate-attr="{ placeholder: 'telephony_service_fax_campaigns_add_campaign_label_name' }" />
+                <div role="alert"
+                     data-ng-messages="addTelephonyFaxCampaignForm.name.$dirty && addTelephonyFaxCampaignForm.name.$error">
+                    <p class="text-danger"
+                       data-ng-message="required"
+                       data-translate="telephony_service_fax_campaigns_add_campaign_name_error_required">
+                    </p>
+                    <p class="text-danger"
+                       data-ng-message="maxlength"
+                       data-translate="telephony_service_fax_campaigns_add_campaign_name_error_maxlength">
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- DOCUMENT -->
+        <div class="form-group top-space-m16">
+            <div class="row flex-row-center">
+                <div class="col-xs-4">
+                    <label for="document"
+                           class="control-label"
+                           data-translate="telephony_service_fax_campaigns_add_campaign_label_document">
+                    </label>
+                </div>
+                <div class="col-xs-8">
+                    <input-file id="document"
+                                data-ng-model="CampaignsAddCtrl.campaign.uploadedFile"
+                                data-ng-accept="application/pdf"
+                                data-ng-accept-filter="CampaignsAddCtrl.checkValidPdfExtention">
+                        <i class="fa fa-upload right-space-m4"></i>
+                        <span data-translate="telephony_service_fax_campaigns_add_campaign_label_file"></span>
+                    </input-file>
+                </div>
+            </div>
+        </div>
+
+        <!-- QUALITY -->
+        <div class="form-group bottom-space-m16 clearfix">
+            <label for="quality"
+                   class="control-label"
+                   data-translate="telephony_service_fax_campaigns_add_campaign_label_quality">
+            </label>
+            <select
+                flat-select
+                name="quality"
+                id="quality"
+                class="form-control"
+                required
+                data-ng-model="CampaignsAddCtrl.campaign.quality"
+                data-ng-options="quality as ('telephony_service_fax_campaigns_add_campaign_quality_' + quality | translate) for quality in CampaignsAddCtrl.enums.quality | orderBy:'':true">
+            </select>
+        </div>
+
+        <!-- SEND TYPE -->
+        <div class="form-group bottom-space-m16 clearfix">
+            <label for="sendType"
+                   class="control-label"
+                   data-translate="telephony_service_fax_campaigns_add_campaign_label_send_type">
+            </label>
+            <select
+                flat-select
+                name="sendType"
+                id="sendType"
+                class="form-control"
+                required
+                data-ng-model="CampaignsAddCtrl.campaign.sendType"
+                data-ng-options="type as ('telephony_service_fax_campaigns_add_campaign_send_type_' + type | translate) for type in CampaignsAddCtrl.enums.sendType | orderBy:'':true">
+            </select>
+            <div role="alert"
+                 data-ng-messages="addTelephonyFaxCampaignForm.sendType.$dirty && addTelephonyFaxCampaignForm.sendType.$error">
+                <p class="col-xs-12 text-danger"
+                   data-ng-message="required"
+                   data-translate="telephony_service_fax_campaigns_add_campaign_send_type_error_required">
+                </p>
+            </div>
+        </div>
+
+        <!-- SEND DATE -->
+        <div class="form-group bottom-space-m16"
+             data-ng-if="CampaignsAddCtrl.campaign.sendType === 'scheduled'">
+            <div flat-input-container>
+                <label for="sendDate"
+                       class="control-label"
+                       data-translate="telephony_service_fax_campaigns_add_campaign_label_send_date">
+                </label>
+                <div class="input-group date-picker-input">
+                    <input
+                        type="text"
+                        name="sendDate"
+                        id="sendDate"
+                        class="form-control input-block"
+                        data-ng-model="CampaignsAddCtrl.campaign.sendDate"
+                        data-ng-focus="CampaignsAddCtrl.openDatePicker($event)"
+                        data-ng-required="CampaignsAddCtrl.campaign.sendType === 'scheduled'"
+                        data-uib-datepicker-popup="dd/MM/yyyy"
+                        data-datepicker-options="CampaignsAddCtrl.picker.options"
+                        data-is-open="CampaignsAddCtrl.picker.dateOpened"
+                        data-show-button-bar="false"
+                        data-current-text="{{ ::'today' | translate }}"
+                        data-clear-text="{{ ::'reset' | translate }}"
+                        data-close-text="{{ ::'close' | translate }}"
+                        data-translate-attr="{ placeholder: 'telephony_service_fax_campaigns_add_campaign_label_send_date' }" />
+                    <span class="input-group-btn">
+                        <button
+                            type="button"
+                            class="btn btn-link btn-xs"
+                            data-ng-click="CampaignsAddCtrl.openDatePicker($event)">
+                            <i class="fa fa-calendar"></i>
+                        </button>
+                    </span>
+                </div>
+                <div role="alert"
+                     data-ng-messages="addTelephonyFaxCampaignForm.sendDate.$dirty && addTelephonyFaxCampaignForm.sendDate.$error">
+                    <p class="text-danger"
+                       data-ng-message="required"
+                       data-translate="telephony_service_fax_campaigns_add_campaign_send_date_error_required">
+                    </p>
+                    <p class="text-danger"
+                       data-ng-message="date"
+                       data-translate="telephony_service_fax_campaigns_add_campaign_send_date_error_date">
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SEND DATE TIME -->
+        <div class="form-group bottom-space-m16"
+             data-ng-if="CampaignsAddCtrl.campaign.sendType === 'scheduled'">
+            <label id="sendDateTime"
+                   class="control-label"
+                   data-translate="telephony_service_fax_campaigns_add_campaign_label_send_date_time">
+            </label>
+            <div data-uib-timepicker
+                 data-hour-step="1"
+                 data-minute-step="1"
+                 data-show-meridian="false"
+                 data-ng-model="CampaignsAddCtrl.picker.time">
+            </div>
+        </div>
+
+        <!-- RECIPIENTS TYPE -->
+        <div class="form-group bottom-space-m16">
+            <label class="block top-space-m12 pointer">
+                <flat-radio>
+                    <input
+                        type="radio"
+                        name="choice"
+                        id="list"
+                        value="list"
+                        data-ng-model="CampaignsAddCtrl.campaign.recipientsType"
+                        data-ng-checked="true" />
+                </flat-radio>
+                <span class="left-space-m8"
+                      data-translate="telephony_service_fax_campaigns_add_campaign_label_recipients_type_list">
+                </span>
+            </label>
+
+            <!--
+            <label class="block top-space-m12 pointer">
+                <flat-radio>
+                    <input
+                        type="radio"
+                        name="choice"
+                        id="document"
+                        value="document"
+                        data-ng-model="CampaignsAddCtrl.campaign.recipientsType" />
+                </flat-radio>
+                <span class="left-space-m8"
+                      data-translate="telephony_service_fax_campaigns_add_campaign_label_recipients_type_document">
+                </span>
+            </label>
+            -->
+        </div>
+
+        <!-- RECIPIENTS LIST -->
+        <div class="form-group bottom-space-m16"
+             data-ng-if="CampaignsAddCtrl.campaign.recipientsType === 'list'">
+            <div flat-input-container>
+                <label for="recipientsList"
+                       class="control-label"
+                       data-translate="telephony_service_fax_campaigns_add_campaign_label_recipients_list">
+                </label>
+                <textarea
+                    name="recipientsList"
+                    id="recipientsList"
+                    class="form-control vertical-resize"
+                    rows="4"
+                    placeholder="{{ ::CampaignsAddCtrl.recipientsListPlaceholder }}"
+                    data-ng-model="CampaignsAddCtrl.campaign.recipientsList"
+                    data-ng-pattern="CampaignsAddCtrl.pattern.recipientsList"
+                    data-ng-required="CampaignsAddCtrl.campaign.recipientsType === 'list'">
+                </textarea>
+                <div role="alert"
+                     data-ng-messages="addTelephonyFaxCampaignForm.recipientsList.$dirty && addTelephonyFaxCampaignForm.recipientsList.$error">
+                    <p class="text-danger"
+                       data-ng-message="required"
+                       data-translate="telephony_service_fax_campaigns_add_campaign_recipients_list_error_required">
+                    </p>
+                    <p class="text-danger"
+                       data-ng-message="pattern"
+                       data-translate="telephony_service_fax_campaigns_add_campaign_recipients_list_error_pattern">
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- RECIPIENTS DOC ID -->
+        <!--
+        <div class="form-group bottom-space-m16"
+             data-ng-if="CampaignsAddCtrl.campaign.recipientsType === 'document'">
+            <div flat-input-container>
+                <label for="recipientsDocId"
+                       class="control-label"
+                       data-translate="telephony_service_fax_campaigns_add_campaign_label_recipients_type_document">
+                </label>
+                <input
+                    type="url"
+                    name="recipientsDocId"
+                    id="recipientsDocId"
+                    class="form-control"
+                    data-ng-model="CampaignsAddCtrl.campaign.recipientsDocId"
+                    data-ng-pattern="CampaignsAddCtrl.pattern.recipientsDocId"
+                    data-ng-required="CampaignsAddCtrl.campaign.recipientsType === 'document'"
+                    data-translate-attr="{ placeholder: 'telephony_service_fax_campaigns_add_campaign_placeholder_recipients_doc_id' }" />
+                <div role="alert"
+                     data-ng-messages="addTelephonyFaxCampaignForm.recipientsDocId.$dirty && addTelephonyFaxCampaignForm.recipientsDocId.$error">
+                    <p class="text-danger"
+                       data-ng-message="required"
+                       data-translate="telephony_service_fax_campaigns_add_campaign_recipients_doc_id_error_required">
+                    </p>
+                    <p class="text-danger"
+                       data-ng-message="pattern"
+                       data-translate="telephony_service_fax_campaigns_add_campaign_recipients_doc_id_error_pattern">
+                    </p>
+                    <p class="text-danger"
+                       data-ng-message="url"
+                       data-translate="telephony_service_fax_campaigns_add_campaign_recipients_doc_id_error_url">
+                    </p>
+                </div>
+            </div>
+        </div>
+        -->
+
+    </div>
+
+    <div class="modal-body" data-ng-if="CampaignsAddCtrl.loading.init">
+        <bouncing-box-loader>
+            <h4 data-translate="loading"></h4>
+        </bouncing-box-loader>
+    </div>
+
+    <div class="modal-body" data-ng-if="CampaignsAddCtrl.loading.add && !CampaignsAddCtrl.added">
+        <bouncing-box-loader>
+            <h4 data-translate="telephony_service_fax_campaigns_add_campaign_adding"></h4>
+        </bouncing-box-loader>
+    </div>
+
+    <div class="modal-body" data-ng-if="CampaignsAddCtrl.added">
+        <success-drawing-check data-draw-success-check="CampaignsAddCtrl.added">
+            <h4 data-translate="telephony_service_fax_campaigns_add_campaign_added"></h4>
+        </success-drawing-check>
+    </div>
+
+    <div class="modal-footer">
+        <button
+            type="button"
+            class="btn btn-default"
+            data-ng-click="CampaignsAddCtrl.cancel()"
+            data-ng-disabled="CampaignsAddCtrl.loading.add || CampaignsAddCtrl.added"
+            data-translate="cancel">
+        </button>
+        <button
+            type="submit"
+            class="btn btn-primary"
+            data-ng-disabled="addTelephonyFaxCampaignForm.$invalid || !CampaignsAddCtrl.campaign.uploadedFile || CampaignsAddCtrl.loading.add || CampaignsAddCtrl.added"
+            data-translate="submit">
+        </button>
+    </div>
+
+</form>

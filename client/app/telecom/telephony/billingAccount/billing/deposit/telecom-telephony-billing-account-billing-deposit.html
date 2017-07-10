@@ -1,0 +1,129 @@
+<section class="telephony-account-billing-billing-deposit">
+
+    <header>
+        <section-back-link section-back-link-to-state="telecom.telephony.billing"
+                           section-back-link-title="{{:: 'telephony_group_billing_actions_group_billing_back_link' | translate }}">
+        </section-back-link>
+        <h1 data-translate="telephony_billing_actions_billing_deposit_title"></h1>
+    </header>
+
+    <bouncing-box-loader data-ng-if="BillingDepositCtrl.loading.init">
+        <h2 data-translate="loading"></h2>
+    </bouncing-box-loader>
+
+    <div class="telecom-section-content" data-ng-hide="BillingDepositCtrl.loading.init">
+
+        <div class="row">
+            <section class="col-xs-12 col-md-6 widget-presentation">
+
+                <header class="widget-presentation-header">
+                    <h2 class="widget-presentation-title" data-translate="telephony_billing_actions_billing_informations_title"></h2>
+                </header>
+
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 service-title" data-translate="telephony_billing_actions_billing_group_label"></div>
+                    <div class="col-xs-12 col-sm-6 service-item">
+                        <span data-ng-bind="BillingDepositCtrl.group.description"></span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 service-title" data-translate="telephony_billing_actions_billing_current_deposit_label"></div>
+                    <div class="col-xs-12 col-sm-6 service-item">
+                        <span data-ng-bind="BillingDepositCtrl.group.securityDeposit.text"></span>
+                        <span class="left-space-m8" data-translate="telephony_billing_actions_billing_without_tax"></span>
+                    </div>
+                </div>
+
+            </section>
+        </div>
+
+        <form class="form-horizontal"
+              name="billingDepositForm"
+              data-ng-if="!BillingDepositCtrl.loading.success"
+              data-ng-submit="BillingDepositCtrl.orderSecurityDeposit()">
+
+            <div class="row">
+                <section class="col-xs-12 col-md-6 widget-presentation">
+
+                    <header class="widget-presentation-header">
+                        <h2 class="widget-presentation-title" data-translate="telephony_billing_actions_billing_order_title"></h2>
+                    </header>
+
+                    <div class="row">
+                        <label for="amountToAdd"
+                               class="col-xs-12 col-sm-6 service-title"
+                               data-translate="telephony_billing_actions_billing_amount_to_add_label"></label>
+                        <div class="col-xs-12 col-sm-6 service-item">
+                            <select flat-select
+                                    class="form-control"
+                                    name="amountToAdd"
+                                    id="amountToAdd"
+                                    required
+                                    data-ng-change="BillingDepositCtrl.onChangeAmount()"
+                                    data-ng-disabled="BillingDepositCtrl.loading.submit"
+                                    data-ng-model="BillingDepositCtrl.securityDepositAmount"
+                                    data-ng-options="item.text for item in BillingDepositCtrl.securityDepositAmounts">
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row" data-ng-if="BillingDepositCtrl.futureDeposit">
+                        <div class="col-xs-12 col-sm-6 service-title" data-translate="telephony_billing_actions_billing_future_amount_label"></div>
+                        <div class="col-xs-12 col-sm-6 service-item">
+                            <span data-ng-bind="BillingDepositCtrl.futureDeposit.text"></span>
+                            <span class="left-space-m8" data-translate="telephony_billing_actions_billing_without_tax"></span>
+                        </div>
+                    </div>
+
+                    <div class="row" data-ng-if="BillingDepositCtrl.contracts.length">
+                        <div class="col-xs-12 top-space-m16 service-item">
+                            <div data-contracts="BillingDepositCtrl.contracts"
+                                 data-full-text="false"
+                                 data-contracts-validated="BillingDepositCtrl.contractsAccepted">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row top-space-m16">
+                        <div class="col-xs-12">
+                            <button type="submit"
+                                class="btn btn-sm btn-primary"
+                                data-ng-disabled="!billingDepositForm.$valid || !BillingDepositCtrl.contractsAccepted || BillingDepositCtrl.loading.submit"
+                                data-translate="telephony_billing_actions_billing_submit">
+                            </button>
+                        </div>
+                    </div>
+
+                </section>
+            </div>
+        </form>
+
+        <div class="row" data-ng-if="BillingDepositCtrl.loading.success">
+            <section class="col-xs-12 col-md-6 widget-presentation">
+
+                <header class="widget-presentation-header">
+                    <h2 class="widget-presentation-title" data-translate="telephony_billing_actions_billing_purchase_order_title"></h2>
+                </header>
+
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 service-title" data-translate="telephony_billing_actions_billing_purchase_order_label"></div>
+                    <div class="col-xs-12 col-sm-6 service-item">
+                        <a data-ng-href="{{ BillingDepositCtrl.order.url }}" target="_blank" data-ng-bind="BillingDepositCtrl.order.orderId"></a>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 service-title" data-translate="telephony_billing_actions_billing_amount_order_label"></div>
+                    <div class="col-xs-12 col-sm-6 service-item">
+                        <span data-ng-bind="BillingDepositCtrl.order.prices.withoutTax.text"></span>
+                        <span class="left-space-m8" data-translate="telephony_billing_actions_billing_without_tax"></span>
+                    </div>
+                </div>
+
+            </section>
+        </div>
+
+    </div>
+
+</section>

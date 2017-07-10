@@ -1,0 +1,161 @@
+<div class="alias-order-identity">
+    <!-- Name -->
+    <div flat-input-container
+         class="top-space-md-m8 bottom-space-m8 right-space-m16 name">
+        <div class="row sr-only">
+            <div class="col-sm-12">
+                <label class="control-label" for="nameElem"
+                    data-translate="telephony_order_identity_name">
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <input type="text"
+                class="form-control"
+                id="nameElem"
+                name="name"
+                data-ng-disabled="$ctrl.ngDisabled"
+                required
+                placeholder="{{:: 'telephony_order_identity_name' | translate }} *"
+                data-ng-model="$ctrl.ngModel.name" />
+        </div>
+    </div>
+
+    <!-- First name -->
+    <div flat-input-container
+         class="top-space-md-m8 bottom-space-m8 right-space-m16 first-name">
+        <div class="row sr-only">
+            <div class="col-sm-12">
+                <label class="control-label" for="firstNameElem"
+                    data-translate="telephony_order_identity_first_name">
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <input type="text"
+                class="form-control"
+                id="firstNameElem"
+                name="firstName"
+                data-ng-disabled="$ctrl.ngDisabled"
+                required
+                placeholder="{{:: 'telephony_order_identity_first_name' | translate }} *"
+                data-ng-model="$ctrl.ngModel.firstname" />
+        </div>
+    </div>
+
+    <!-- email -->
+    <div flat-input-container
+         class="top-space-md-m8 bottom-space-m8 right-space-m16 email">
+        <div class="row sr-only">
+            <div class="col-sm-12">
+                <label class="control-label" for="emailElem"
+                    data-translate="telephony_order_identity_email">
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <input type="text"
+                class="form-control"
+                id="emailElem"
+                name="email"
+                data-ng-disabled="$ctrl.ngDisabled"
+                data-ui-validate="'$ctrl.validator.isEmail($value)'"
+                placeholder="{{:: 'telephony_order_identity_email' | translate }} *"
+                data-ng-model="$ctrl.ngModel.email" />
+        </div>
+    </div>
+
+    <!-- organisation -->
+    <div flat-input-container
+         data-ng-show="$ctrl.organisation === 'true'"
+         class="top-space-md-m8 bottom-space-m8 right-space-m16 organisation">
+        <div class="row sr-only">
+            <div class="col-sm-12">
+                <label class="control-label" for="organisationElem"
+                    data-translate="telephony_order_identity_organisation">
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <input type="text"
+                class="form-control"
+                id="organisationElem"
+                name="organisation"
+                data-ng-disabled="$ctrl.ngDisabled"
+                data-ng-required="$ctrl.organisation === 'true'"
+                placeholder="{{:: 'telephony_order_identity_organisation' | translate }} *"
+                data-ng-model="$ctrl.ngModel.organisation" />
+        </div>
+    </div>
+
+    <!-- Social nomonation -->
+    <div flat-input-container
+         data-ng-show="$ctrl.organisation === 'true'"
+         class="top-space-md-m8 bottom-space-m8 right-space-m16 social-nomination">
+        <div class="row sr-only">
+            <div class="col-sm-12">
+                <label class="control-label" for="socialNominationElem"
+                    data-translate="telephony_order_identity_nomination">
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <input type="text"
+                class="form-control"
+                id="socialNominationElem"
+                data-ng-required="$ctrl.organisation === 'true'"
+                name="socialNomination"
+                data-ng-disabled="$ctrl.ngDisabled"
+                placeholder="{{:: 'telephony_order_identity_nomination' | translate }} *"
+                data-ng-model="$ctrl.ngModel.socialNomination" />
+        </div>
+    </div>
+
+    <!-- Siret -->
+    <div flat-input-container
+         data-ng-show="$ctrl.organisation === 'true'"
+         class="top-space-md-m8 bottom-space-m8 right-space-m16 siret">
+        <div class="row sr-only">
+            <div class="col-sm-12">
+                <label class="control-label" for="siretElem"
+                    data-translate="telephony_order_identity_siret">
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <input type="text"
+                class="form-control"
+                id="siretElem"
+                name="siret"
+                data-ng-disabled="$ctrl.ngDisabled"
+                data-ng-required="$ctrl.organisation === 'true'"
+                data-ui-validate="'$ctrl.validator.isSiret($value)'"
+                placeholder="{{:: 'telephony_order_identity_siret' | translate }} *"
+                data-ng-model="$ctrl.ngModel.siret" />
+        </div>
+    </div>
+
+    <!-- APE -->
+    <div flat-input-container
+         data-ng-show="$ctrl.organisation === 'true'"
+         class="top-space-md-m8 bottom-space-m8 right-space-m16 ape">
+        <div class="row sr-only">
+            <div class="col-sm-12">
+                <label class="control-label" for="apeElem"
+                    data-translate="telephony_order_identity_ape">
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <input type="text"
+                class="form-control"
+                id="apeElem"
+                name="ape"
+                data-ng-disabled="$ctrl.ngDisabled"
+                data-ng-required="$ctrl.organisation === 'true'"
+                placeholder="{{:: 'telephony_order_identity_ape' | translate }} *"
+                data-ng-model="$ctrl.ngModel.ape" />
+        </div>
+    </div>
+
+</div>

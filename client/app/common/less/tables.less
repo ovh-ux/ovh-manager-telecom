@@ -1,0 +1,86 @@
+/*=============================================
+=            RESPONSIVE TABLE LINE            =
+=============================================*/
+
+.responsive-table-line {
+    thead {
+        th {
+            background-color: @gray-light;
+        }
+    }
+
+    tbody {
+        td, th {
+            border-bottom: 1px solid @gray-light;
+        }
+    }
+
+    @media (max-width: @screen-sm) {
+        table, thead, tbody, tfoot, th, td, tr {
+            display: block;
+        }
+
+        thead tr, tfoot th {
+            display: none;
+        }
+
+        tbody > tr {
+            > th, > td {
+                border-top: none;
+                border-bottom: solid 1px @gray-light;
+                position: relative;
+                padding: 8px 0 8px 40%;
+                white-space: normal;
+                text-align: right;
+                font-weight: 400;
+
+                &::before {
+                    content: attr(data-title);
+                    position: absolute;
+                    top: 0px;
+                    left: 0px;
+                    width: 40%;
+                    padding: 8px 16px 8px 0;
+                    height: 100%;
+                    white-space: nowrap;
+                    text-overflow: ellipsis !important;
+                    overflow: hidden !important;
+                    text-align: left;
+                    font-weight: bold;
+                }
+            }
+
+            > td {
+                &:last-child {
+                    margin-bottom: 16px;
+                }
+
+                &:not(:last-child) {
+                    border-top: 0;
+                }
+            }
+        }
+    }
+
+    @media (min-width: @screen-sm) {
+        tbody, tfoot {
+            > tr {
+                td, th {
+                    padding: 16px;
+                    line-height: 1.5em;
+                }
+            }
+        }
+
+        thead {
+            > tr {
+                > th {
+                    padding: 8px 16px;
+                    line-height: 1.5em;
+                }
+            }
+        }
+    }
+}
+
+/*-----  End of RESPONSIVE TABLE LINE  ------*/

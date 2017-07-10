@@ -1,0 +1,26 @@
+<div class="telephony-number-ovh-pabx">
+
+    <!-- FEATURE IS LOADING -->
+    <div class="anchor-container anchor-loading anchor-point-x2"
+         data-ng-if="$ctrl.numberCtrl.loading.feature">
+        <div class="anchor"
+             data-jsplumb-endpoint
+             data-jsplumb-endpoint-uuid="redirect-loading">
+            <i class="fa fa-spinner fa-pulse"
+               data-jsplumb-connection
+               data-jsplumb-connection-target="incoming-call-{{ $ctrl.numberCtrl.number.serviceName }}">
+            </i>
+        </div>
+        <div class="anchor-content service-presentation">
+            <span class="service-label"
+                  data-translate="loading">
+            </span>
+        </div>
+    </div> <!-- FEATURE IS LOADING -->
+
+    <!-- DIALPLAN BOX -->
+    <telephony-number-ovh-pabx-dialplan data-ng-if="!$ctrl.numberCtrl.loading.feature"
+                                        data-telephony-number-ovh-pabx-dialplan="$ctrl.dialplan">
+    </telephony-number-ovh-pabx-dialplan> <!-- DIALPLAN BOX -->
+
+</div>

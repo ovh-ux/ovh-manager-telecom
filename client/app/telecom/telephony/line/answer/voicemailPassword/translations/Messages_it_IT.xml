@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<translations>
+   <translation id="telephony_line_answer_voicemail_password_change_main_title" qtlid="337637">Password di accesso alla segreteria</translation>
+   <translation id="telephony_line_answer_voicemail_password_number_info" qtlid="26551">Informazioni</translation>
+   <translation id="telephony_line_answer_voicemail_password_number_internal" qtlid="337650">Accesso alla segreteria:</translation>
+   <translation id="telephony_line_answer_voicemail_password_number_external" qtlid="337663">Dall'esterno:</translation>
+   <translation id="telephony_line_answer_voicemail_password_change_title" qtlid="337676">Password della segreteria</translation>
+   <translation id="telephony_line_answer_voicemail_password_input_label" qtlid="197375">Nuova password:</translation>
+   <translation id="telephony_line_answer_voicemail_password_input_placeholder" qtlid="2270">Password</translation>
+   <translation id="telephony_line_answer_voicemail_password_input_length_warning" qtlid="337689">La password deve contenere 4 cifre.</translation>
+   <translation id="telephony_line_answer_voicemail_passwordConfirm_input_label" qtlid="197063">Conferma:</translation>
+   <translation id="telephony_line_answer_voicemail_passwordConfirm_input_placeholder" qtlid="387328">Inserisci di nuovo la tua nuova password</translation>
+   <translation id="telephony_line_answer_voicemail_password_matching_warning" qtlid="337702">La password inserita non corrisponde.</translation>
+   <translation id="telephony_line_answer_voicemail_password_apply" qtlid="249107">Applica le modifiche</translation>
+   <translation id="telephony_line_answer_voicemail_password_change_success" qtlid="337715">Password modificata correttamente.</translation>
+   <translation id="telephony_line_answer_voicemail_password_change_error" qtlid="337728">Ops! Impossibile modificare la password della tua segreteria.</translation>
+   <translation id="telephony_line_answer_voicemail_password_info" qtlid="337741">Password richiesta solo per la consultazione dei messaggio dall'esterno.</translation>
+</translations>

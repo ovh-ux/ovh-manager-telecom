@@ -1,0 +1,76 @@
+<div class="row top-space-xs-m8">
+    <p class="col-xs-12" data-translate="telephony_order_identity_mendatory"></p>
+</div>
+<div class="row top-space-xs-m8">
+    <div class="col-xs-12">
+        <label class="group bottom-space-m8"
+               data-translate="telephony_order_coordinate_name_label">
+        </label>
+
+        <!-- company / individual -->
+        <div class="row top-space-m8" data-ng-if="!$ctrl.hideChoice">
+            <div class="col-xs-6 col-md-2">
+                <label>
+                    <flat-radio>
+                        <input type="radio"
+                               data-ng-disabled="$ctrl.ngDisabled"
+                               data-ng-model="$ctrl.ngModel.legalform"
+                               data-ng-value="'individual'"
+                               name="legalform"
+                               required>
+                    </flat-radio>
+                    <span class="left-space-m12 pointer" data-translate="telephony_order_coordinate_legalform_individual"></span>
+                </label>
+            </div>
+            <div class="col-xs-6 col-md-2">
+                <label>
+                    <flat-radio>
+                        <input type="radio"
+                               data-ng-disabled="$ctrl.ngDisabled"
+                               data-ng-model="$ctrl.ngModel.legalform"
+                               data-ng-value="'corporation'"
+                               name="legalform"
+                               required>
+                    </flat-radio>
+                    <span class="left-space-m12 pointer" data-translate="telephony_order_coordinate_legalform_company"></span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Identity -->
+        <telecom-telephony-billing-account-order-alias-coordinate-identity data-ng-model="$ctrl.ngModel"
+                                                                    data-ng-disabled="$ctrl.ngDisabled"
+                                                                    data-region-code="{{$ctrl.regionCode}}"
+                                                                    data-organisation="{{ $ctrl.ngModel.legalform === 'corporation' }}">
+        </telecom-telephony-billing-account-order-alias-coordinate-identity>
+    </div>
+</div>
+<div class="row top-space-xs-m8">
+    <div class="col-xs-12">
+        <label class="group bottom-space-m8"
+               data-translate="telephony_order_coordinate_address_label">
+        </label>
+        <telecom-telephony-billing-account-order-alias-coordinate-address data-ng-model="$ctrl.ngModel"
+                                                                   data-region-code="{{$ctrl.regionCode}}"
+                                                                   data-ng-disabled="$ctrl.ngDisabled">
+        </telecom-telephony-billing-account-order-alias-coordinate-address>
+    </div>
+</div>
+<!-- Universal directory -->
+<div class="row top-space-m16">
+    <div class="col-xs-12">
+        <flat-checkbox>
+            <input
+                type="checkbox"
+                id="universalDirectory"
+                name="universalDirectory"
+                class="form-control"
+                data-ng-disabled="$ctrl.ngDisabled"
+                data-ng-model="$ctrl.ngModel.displayUniversalDirectory">
+        </flat-checkbox>
+        <label for="universalDirectory"
+               class="left-space-m8 pointer"
+               data-uib-tooltip="{{:: 'telephony_order_coordinate_universalDirectory_tip' | translate }}"
+               data-translate="telephony_order_coordinate_universalDirectory"></label>
+    </div>
+</div>

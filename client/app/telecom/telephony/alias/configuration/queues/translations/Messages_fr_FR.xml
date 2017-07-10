@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<translations>
+   <translation id="telephony_alias_configuration_queues_title">Gérer les files d'appels</translation>
+   <translation id="telephony_alias_configuration_queues_list">Files d'appels</translation>
+   <translation id="telephony_alias_configuration_queues_queue">File</translation>
+   <translation id="telephony_alias_configuration_queues_queue_create">Ajouter une file</translation>
+   <translation id="telephony_alias_configuration_queues_queue_create_success">File ajoutée</translation>
+   <translation id="telephony_alias_configuration_queues_queue_delete">Supprimer la file</translation>
+   <translation id="telephony_alias_configuration_queues_queue_delete_success">File supprimée</translation>
+   <translation id="telephony_alias_configuration_queues_queue_update">Appliquer les modifications</translation>
+   <translation id="telephony_alias_configuration_queues_queue_update_success">Modifications appliquées</translation>
+   <translation id="telephony_alias_configuration_queues_agent_list">Agents membres de la file</translation>
+   <translation id="telephony_alias_configuration_queues_agent_add">Ajouter un membre à la file</translation>
+   <translation id="telephony_alias_configuration_queues_agent_add_helper">Numéro de l'agent à ajouter</translation>
+   <translation id="telephony_alias_configuration_queues_agent_select_add">Ajouter cet agent à la file</translation>
+   <translation id="telephony_alias_configuration_queues_agent_add_success">Membre ajouté</translation>
+   <translation id="telephony_alias_configuration_queues_options_manage">Gérer les options</translation>
+   <translation id="telephony_alias_configuration_queues_options">Options</translation>
+   <translation id="telephony_alias_configuration_queues_description">Nom de la file</translation>
+   <translation id="telephony_alias_configuration_queues_strategy">Stratégie</translation>
+   <translation id="telephony_alias_configuration_queues_follow_call_forwards">Suivre les renvois d'appels</translation>
+   <translation id="telephony_alias_configuration_queues_max_member">Nombre maximum d'appelants en attente</translation>
+   <translation id="telephony_alias_configuration_queues_max_wait_time">Temps d'attente maximum dans la file (en secondes)</translation>
+   <translation id="telephony_alias_configuration_queues_sound_on_hold">Musique d'attente</translation>
+   <translation id="telephony_alias_configuration_queues_sound_on_overflow">Annonce sur débordement</translation>
+   <translation id="telephony_alias_configuration_queues_sound_none">Aucun</translation>
+   <translation id="telephony_alias_configuration_queues_sound_file">Fichier ...</translation>
+   <translation id="telephony_alias_configuration_queues_sound_invalid">Format de fichier invalide</translation>
+   <translation id="telephony_alias_configuration_queues_strategy_cumulationByAgentOrder">Selon l'ordre défini des membres, cumulé</translation>
+   <translation id="telephony_alias_configuration_queues_strategy_longestHangupAgent">Le plus ancien à avoir raccroché</translation>
+   <translation id="telephony_alias_configuration_queues_strategy_longestIdleAgent">Du plus disponible au moins disponible</translation>
+   <translation id="telephony_alias_configuration_queues_strategy_random">Aléatoire</translation>
+   <translation id="telephony_alias_configuration_queues_strategy_roundRobin">Selon une répartition de charge</translation>
+   <translation id="telephony_alias_configuration_queues_strategy_sequentiallyByAgentOrder">Selon l'ordre défini des membres</translation>
+   <translation id="telephony_alias_configuration_queues_strategy_ringAll">Tous en même temps</translation>
+</translations>

@@ -1,0 +1,152 @@
+<div class="telecom-telephony-line-phone-accessories-resume">
+
+    <bouncing-box-loader data-ng-if="AccessoriesResumeCtrl.loading.init">
+        <h3 class="top-space-m16"
+            data-translate="loading">
+        </h3>
+    </bouncing-box-loader>
+
+    <form data-ng-submit="AccessoriesResumeCtrl.process.currentView = 'finalize'"
+          data-ng-if="!AccessoriesResumeCtrl.loading.init">
+
+        <div data-ng-if="AccessoriesResumeCtrl.error"
+             role="alert"
+             class="alert alert-danger">
+            <p>
+                <i class="ovh-font ovh-font-wrong"></i>
+                <span data-translate="telephony_line_phone_accessories_resume_load_error"></span>
+                <span data-ng-bind="AccessoriesResumeCtrl.error.data.message"></span>
+            </p>
+        </div>
+
+        <div data-ng-if="!AccessoriesResumeCtrl.error">
+
+            <div class="widget-presentation">
+
+                <h2 class="widget-presentation-title"
+                    data-translate="telephony_line_phone_accessories_resume_title">
+                </h2>
+
+                <div class="responsive-table-line">
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th data-translate="telephony_line_phone_accessories_resume_table_description"></th>
+                                <th class="text-right-sm"
+                                    data-translate="telephony_line_phone_accessories_resume_table_unit_price"
+                                    style="width:15%;">
+                                </th>
+                                <th class="text-right-sm"
+                                    data-translate="telephony_line_phone_accessories_resume_table_quantity"
+                                    style="width:12%;">
+                                </th>
+                                <th class="text-right-sm"
+                                    data-translate="telephony_line_phone_accessories_resume_table_total"
+                                    style="width:15%;">
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr data-ng-repeat="detail in AccessoriesResumeCtrl.order.details track by $index">
+                                <td data-ng-bind="detail.description"
+                                    data-title="{{ :: 'telephony_line_phone_accessories_resume_table_description' | translate }}">
+                                </td>
+                                <td class="text-right-sm text-price"
+                                    data-ng-bind="detail.unitPrice.text"
+                                    data-title="{{ :: 'telephony_line_phone_accessories_resume_table_unit_price' | translate }}">
+                                </td>
+                                <td class="text-right-sm"
+                                    data-ng-bind="detail.quantity"
+                                    data-title="{{ :: 'telephony_line_phone_accessories_resume_table_quantity' | translate }}">
+                                </td>
+                                <td class="text-right-sm text-price"
+                                    data-ng-bind="detail.totalPrice.text"
+                                    data-title="{{ :: 'telephony_line_phone_accessories_resume_table_total' | translate }}">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row">
+                    <div class="resume-prices col-md-3 col-md-offset-9">
+                        <dl>
+                            <dt data-translate="telephony_line_phone_accessories_resume_prices_tax_free_total"></dt>
+                            <dd class="animate-opacity1-enter text-price"
+                                data-ng-bind="AccessoriesResumeCtrl.order.prices.withoutTax.text">
+                            </dd>
+
+                            <dt data-translate="telephony_line_phone_accessories_resume_prices_tax_total"></dt>
+                            <dd class="animate-opacity1-enter text-price"
+                                data-ng-bind="AccessoriesResumeCtrl.order.prices.tax.text">
+                            </dd>
+
+                            <dt data-translate="telephony_line_phone_accessories_resume_prices_with_tax_total"></dt>
+                            <dd class="animate-opacity1-enter text-price"
+                                data-ng-bind="AccessoriesResumeCtrl.order.prices.withTax.text">
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="widget-presentation">
+
+                <h2 class="widget-presentation-title"
+                    data-translate="telephony_line_phone_accessories_resume_contact_title">
+                </h2>
+
+                <div>
+                    <div class="badge inline-block vertical-top right-space-m16">
+                        <i class="fa fa-user fa-5x"></i>
+                    </div>
+                    <div class="inline-block">
+                        <p data-ng-bind="AccessoriesResumeCtrl.process.shipping.contact.lastName + ' ' + AccessoriesResumeCtrl.process.shipping.contact.firstName"></p>
+                        <p data-ng-bind="AccessoriesResumeCtrl.process.shipping.contact.address.line1"></p>
+                        <p data-ng-bind="AccessoriesResumeCtrl.process.shipping.contact.address.zip + ' ' + AccessoriesResumeCtrl.process.shipping.contact.address.city"></p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="widget-presentation">
+
+                <h2 class="widget-presentation-title"
+                    data-translate="telephony_line_phone_accessories_resume_contracts_title">
+                </h2>
+
+                <div data-contracts="AccessoriesResumeCtrl.order.contracts"
+                     data-contracts-validated="AccessoriesResumeCtrl.model.contracts">
+                </div>
+
+            </div>
+
+            <div class="widget-presentation">
+
+                <h2 class="widget-presentation-title"
+                    data-translate="telephony_line_phone_accessories_resume_retract_title">
+                </h2>
+
+                <telecom-retractation data-ng-model="AccessoriesResumeCtrl.process.retract"></telecom-retractation>
+
+            </div>
+
+        </div>
+
+        <div class="footer-button-container clearfix top-space-m16 bottom-space-m32">
+            <button type="submit"
+                    class="btn btn-primary"
+                    data-translate="telephony_line_phone_accessories_resume_validate"
+                    data-ng-disabled="!AccessoriesResumeCtrl.model.contracts || AccessoriesResumeCtrl.process.retract === null">
+            </button>
+
+            <button type="reset"
+                    class="btn btn-default"
+                    data-translate="telephony_line_phone_accessories_previous"
+                    data-ng-click="AccessoriesResumeCtrl.process.currentView = 'shipping'">
+            </button>
+        </div>
+
+    </form>
+
+</div>

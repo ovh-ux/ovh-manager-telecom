@@ -1,0 +1,37 @@
+<section class="telecom-telephony-line-phone-accessories">
+
+    <header>
+        <section-back-link section-back-link-to-state="telecom.telephony.line.phone"
+                           section-back-link-title="{{ 'telephony_group_line_phone_section_back_link' | translate }}">
+        </section-back-link>
+        <h1 data-translate="telephony_line_phone_accessories_title"></h1>
+    </header>
+
+    <bouncing-box-loader data-ng-if="AccessoriesCtrl.loading.init">
+        <h3 class="top-space-m16"
+            data-translate="loading">
+        </h3>
+    </bouncing-box-loader>
+
+    <div data-ng-if="!AccessoriesCtrl.loading.init"
+         class="telecom-section-content">
+
+        <div data-ng-if="AccessoriesCtrl.process.currentView === 'choice'"
+             data-ui-view="@choiceView">
+        </div>
+
+        <div data-ng-if="AccessoriesCtrl.process.currentView === 'shipping'"
+             data-ui-view="@shippingView">
+        </div>
+
+        <div data-ng-if="AccessoriesCtrl.process.currentView === 'resume'"
+             data-ui-view="@resumeView">
+        </div>
+
+        <div data-ng-if="AccessoriesCtrl.process.currentView === 'finalize'"
+             data-ui-view="@finalizeView">
+        </div>
+
+    </div>
+
+</section>

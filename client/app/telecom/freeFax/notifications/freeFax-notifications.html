@@ -1,0 +1,132 @@
+<div class="telecom-freefax-notifications">
+
+    <header>
+        <section-back-link section-back-link-to-state="telecom.freefax"></section-back-link>
+        <h1 data-translate="freefax_notifications_title"
+            data-translate-values="{ serviceName: FreeFaxNotifications.serviceName }">
+        </h1>
+    </header>
+
+    <div class="telecom-section-content">
+
+        <div class="widget-presentation">
+            <h2 class="widget-presentation-title">
+                <span data-translate="freefax_notifications"></span>
+            </h2>
+
+            <div class="table-responsive-vertical ovh-form-flat">
+                <table class="table table-hover table-condensed ovh-form-flat table-form table-pretty">
+                    <thead>
+                        <tr>
+                            <th scope="col" data-translate="freefax_notification_email"></th>
+                            <th scope="col" data-translate="freefax_notification_type"></th>
+                            <th scope="col" data-translate="freefax_notification_source" colspan="2" class="text-left"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-ng-if="FreeFaxNotifications.notifications && FreeFaxNotifications.notifications.length === 0">
+                            <td class="text-center" colspan="4" data-translate="freefax_notification_noNotification"></td>
+                        </tr>
+                        <tr data-ng-hide="FreeFaxNotifications.notifications">
+                            <td colspan="4" class="text-center">
+                                <spinner></spinner>
+                            </td>
+                        </tr>
+                        <tr data-ng-repeat="notification in FreeFaxNotifications.notifications track by notification.id" 
+                            data-ng-form
+                            data-ng-keydown="FreeFaxNotifications.watchKey($event, notification, localForm.$valid)"
+                            name="localForm">
+
+                            <!-- Email -->
+                            <td class="form-group" data-translate-attr="{title: 'freefax_notification_email'}">
+                                <span data-ng-hide="notification.editMode" data-ng-bind="notification.email"></span>
+                                <div data-flat-input-container data-ng-show="notification.editMode">
+                                    <input type="email" 
+                                           required
+                                           data-ng-disabled="notification.busy"
+                                           data-ui-validate="'FreeFaxNotifications.isUnique($value, FreeFaxNotifications.notifications, notification)'"
+                                           data-ng-model="notification.tempValue.email">
+                                </div>
+                            </td>
+
+                            <!-- Type -->
+                            <td class="form-group" data-translate-attr="{title: 'freefax_notification_type'}">
+                                <span data-ng-hide="notification.editMode || notification.source === 'fax'" data-ng-bind="notification.translatedType"></span>
+                                <div data-flat-input-container data-ng-show="notification.editMode && notification.tempValue.source !== 'fax'">
+                                    <select class="form-control" data-ng-model="notification.tempValue.type"
+                                            data-ng-disabled="notification.busy"
+                                            data-ng-options="choice.value as choice.label for choice in FreeFaxNotifications.typeChoices">
+                                    </select>
+                                </div>
+                            </td>
+
+                            <!-- source -->
+                            <td class="form-group"
+                                data-translate-attr="{title: 'freefax_notification_source'}">
+                                <span data-ng-hide="notification.editMode" data-ng-bind="('freefax_notification_source_' + notification.source) | translate"></span>
+                                <div data-flat-input-container data-ng-show="notification.editMode">
+                                    <select class="form-control" data-ng-model="notification.tempValue.source"
+                                            data-ng-disabled="notification.busy"
+                                            data-ng-options="choice.value as choice.label for choice in FreeFaxNotifications.sourceChoices">
+                                    </select>
+                                </div>
+                            </td>
+
+                            <!-- Buttons -->
+                            <td class="form-group col-mobile-button-big" data-ng-hide="notification.editMode">
+                                <div class="text-right">
+                                    <button class="btn btn-xs btn-link"
+                                            type="button"
+                                            data-translate-attr="{title: 'edit_name'}"
+                                            data-translate-values="{ name: notification.email }"
+                                            data-ng-click="notification.edit()"
+                                            data-ng-disabled="notification.busy">
+                                        <i class="ovh-font ovh-font-editer"></i>
+                                    </button>
+                                    <button class="btn btn-xs  btn-link"
+                                            data-translate-attr="{title: 'freefax_notification_delete'}"
+                                            type="button"
+                                            data-ng-really-click="FreeFaxNotifications.destroy(notification)"
+                                            data-ng-really-message="{{ 'freefax_notification_confirm' | translate: {email:notification.email} }}"
+                                            data-ng-really-confirm="{{ 'ok' | translate }}"
+                                            data-ng-really-cancel="{{ 'cancel' | translate }}"
+                                            data-ng-really-window-class="revert-really-buttons"
+                                            data-ng-disabled="notification.updating">
+                                        <i class="ovh-font ovh-font-bin"></i>
+                                    </button>
+                                </div>
+                            </td>
+                            <td class="form-group col-mobile-button-big" data-ng-show="notification.editMode">
+                                <div class="text-right">
+                                    <button type="submit"
+                                            class="btn btn-xs btn-primary"
+                                            data-ng-click="FreeFaxNotifications.update(notification)"
+                                            data-ng-disabled="notification.busy || localForm.$invalid"
+                                            data-translate-attr="{title: 'submit'}">
+                                        <i class="ovh-font ovh-font-check"></i>
+                                    </button>
+                                    <button type="reset"
+                                            class="btn btn-xs btn-default"
+                                            data-ng-disabled="notification.busy"
+                                            data-ng-click="FreeFaxNotifications.cancel(notification)"
+                                            data-translate-attr="{title: 'cancel'}">
+                                        <i class="ovh-font ovh-font-wrong"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button class="btn btn-sm btn-primary"
+                        type="button"
+                        data-translate="freefax_notification_add"
+                        data-translate-attr="{title: 'components_notification_add'}"
+                        data-ng-click="FreeFaxNotifications.add()"
+                        data-ng-disabled="(!FreeFaxNotifications.notifications) ||
+                                          (FreeFaxNotifications.notifications.length >= FreeFaxNotifications.maxNotifications)">
+                </button>
+            </div>
+        </div>
+
+    </div>
+</div>

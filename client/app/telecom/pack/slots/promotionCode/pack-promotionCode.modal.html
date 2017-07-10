@@ -1,0 +1,30 @@
+<div id="pack-promotion-code-modal" class="pack-contract-modal" data-ng-init="promotion.confirm = false">
+    <div class="modal-header" data-translate="pack_promotion_code_modal_title"></div>
+    <div class="modal-body">
+        <ul class="list-unstyled">
+            <li>
+                <flat-checkbox class="right-space-m12">
+                    <input
+                        type="checkbox"
+                        id="reengage_message1"
+                        name="reengage_message1"
+                        class="form-control"
+                        data-ng-model="promotion.confirm"
+                    >
+                </flat-checkbox>
+                <label for="reengage_message1" data-ng-bind-html="ctrl.condition"></label>
+            </li>
+        </ul>
+    </div>
+    <div role="group" class="modal-footer">
+        <button type="button"
+                class="btn btn-default"
+                data-ng-click="$dismiss('cancel')"
+                data-translate="cancel"></button>
+        <button type="button"
+                class="btn btn-primary"
+                data-ng-click="$close('ok')"
+                data-ng-show="promotion.confirm"
+                data-translate="pack_promotion_code_confirm"></button>
+    </div>
+</div>

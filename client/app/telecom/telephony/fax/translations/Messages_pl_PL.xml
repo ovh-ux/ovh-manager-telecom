@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<translations>
+   <translation id="telephony_fax_page_title" qtlid="393178">Fax "{{name}}"</translation>
+   <translation id="telephony_fax_section_back_link" qtlid="357083">Retour à la gestion du fax</translation>
+   <translation id="telephony_fax_actions_line_fax_password" qtlid="357096">Mot de passe fax</translation>
+   <translation id="telephony_fax_actions_line_fax_options" qtlid="306578">Configuration du fax</translation>
+   <translation id="telephony_fax_actions_line_fax_white_label_domains" qtlid="357109">Domaines Ecofax Marque Blanche</translation>
+   <translation id="telephony_fax_actions_line_fax_filtering" qtlid="357122">Filtrage des fax</translation>
+   <translation id="telephony_fax_actions_line_fax_campaign_management" qtlid="357135">Campagnes de Fax</translation>
+   <translation id="telephony_fax_actions_line_convert_to_ecofax_pro" qtlid="357148">Convertir un Ecofax perso</translation>
+   <translation id="telephony_fax_rename_error" qtlid="357161">Impossible de renommer votre fax {{serviceName}}.</translation>
+</translations>

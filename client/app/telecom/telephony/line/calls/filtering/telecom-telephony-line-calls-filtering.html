@@ -1,0 +1,133 @@
+<section class="telephony-group-line-filtering">
+
+    <header>
+        <section-back-link section-back-link-to-state="telecom.telephony.line.calls"
+                           section-back-link-title="{{ 'telephony_line_calls_back_link' | translate }}">
+        </section-back-link>
+        <h1 data-translate="telephony_line_calls_filtering_title"></h1>
+    </header>
+
+</section>
+
+<bouncing-box-loader data-ng-if="CallsFilteringCtrl.isInitializing">
+    <h1 data-translate="loading"></h1>
+</bouncing-box-loader>
+
+<div class="telecom-section-content" data-ng-if="!CallsFilteringCtrl.isInitializing">
+
+    <div class="row">
+
+        <!-- FILTERING ENABLE -->
+        <div class="col-md-6">
+            <div class="widget-presentation">
+                <h2 class="widget-presentation-title" data-translate="telephony_line_calls_filtering_enable"></h2>
+            </div>
+            <p class="text-info" style="margin-top: -16px">
+                <i class="ovh-font ovh-font-info line-height-normal right-space-m4"></i>
+                <span data-translate="telephony_line_calls_filtering_info"></span>
+            </p>
+            <div class="row">
+                <span class="col-md-6 top-space-m4">
+                    <span data-translate="telephony_line_calls_filtering_incoming"></span>
+                    <spinner class="pull-right" data-ng-if="CallsFilteringCtrl.screen.isIncomingLoading"></spinner>
+                </span>
+                <div class="col-md-6">
+                    <select flat-select
+                        class="form-control"
+                        data-ng-model="CallsFilteringCtrl.screen.modified.incomingScreenList"
+                        data-ng-change="CallsFilteringCtrl.updateScreen('incoming')"
+                        data-ng-disabled="CallsFilteringCtrl.screen.isLoading"
+                        required>
+                        <option value="disabled" data-translate="telephony_line_calls_filtering_list_none"></option>
+                        <option value="whitelist" data-translate="telephony_line_calls_filtering_list_white"></option>
+                        <option value="blacklist" data-translate="telephony_line_calls_filtering_list_black"></option>
+                    </select>
+                </div>
+            </div>
+            <div class="row top-space-m4">
+                <span class="col-md-6 top-space-m4">
+                    <span data-translate="telephony_line_calls_filtering_outgoing"></span>
+                    <spinner class="pull-right" data-ng-if="CallsFilteringCtrl.screen.isOutgoingLoading"></spinner>
+                </span>
+                <div class="col-md-6">
+                    <select flat-select
+                        class="form-control"
+                        data-ng-model="CallsFilteringCtrl.screen.modified.outgoingScreenList"
+                        data-ng-change="CallsFilteringCtrl.updateScreen('outgoing')"
+                        data-ng-disabled="CallsFilteringCtrl.screen.isLoading"
+                        required>
+                        <option value="disabled" data-translate="telephony_line_calls_filtering_list_none"></option>
+                        <option value="whitelist" data-translate="telephony_line_calls_filtering_list_white"></option>
+                        <option value="blacklist" data-translate="telephony_line_calls_filtering_list_black"></option>
+                    </select>
+                </div>
+            </div>
+            <div class="row top-space-m4">
+                <span class="col-md-6 top-space-m4">
+                    <span data-translate="telephony_line_calls_filtering_anonymous_reject"></span>
+                    <spinner class="pull-right" data-ng-if="CallsFilteringCtrl.options.isUpdating.anonymousCallRejection"></spinner>
+                </span>
+                <div class="col-md-6">
+                    <flat-checkbox class="top-space-m4">
+                        <input type="checkbox"
+                               data-ng-disabled="CallsFilteringCtrl.options.isUpdating"
+                               data-ng-change="CallsFilteringCtrl.changeOption('anonymousCallRejection')"
+                               data-ng-model="CallsFilteringCtrl.options.modified.anonymousCallRejection" />
+                    </flat-checkbox>
+                </div>
+            </div>
+            <div class="row top-space-m4">
+                <span class="col-md-6 top-space-m4">
+                    <span data-translate="telephony_line_calls_filtering_do_not_disturb"></span>
+                    <spinner class="pull-right" data-ng-if="CallsFilteringCtrl.options.isUpdating.doNotDisturb"></spinner>
+                </span>
+                <div class="col-md-6">
+                    <flat-checkbox class="top-space-m4">
+                        <input type="checkbox"
+                               data-ng-disabled="CallsFilteringCtrl.options.isUpdating"
+                               data-ng-change="CallsFilteringCtrl.changeOption('doNotDisturb')"
+                               data-ng-model="CallsFilteringCtrl.options.modified.doNotDisturb" />
+                    </flat-checkbox>
+                </div>
+            </div>
+            <div class="row top-space-m4 bottom-space-m16">
+                <span class="col-md-6 top-space-m4">
+                    <span data-translate="telephony_line_calls_filtering_absent"></span>
+                    <spinner class="pull-right" data-ng-if="CallsFilteringCtrl.options.isUpdating.absentSubscriber"></spinner>
+                </span>
+                <div class="col-md-6">
+                    <flat-checkbox class="top-space-m4">
+                        <input type="checkbox"
+                               data-ng-disabled="CallsFilteringCtrl.options.isUpdating"
+                               data-ng-change="CallsFilteringCtrl.changeOption('absentSubscriber')"
+                               data-ng-model="CallsFilteringCtrl.options.modified.absentSubscriber" />
+                    </flat-checkbox>
+                </div>
+            </div>
+        </div>
+
+        <!-- FILTERING ADD -->
+        <div class="col-md-6">
+            <div class="widget-presentation">
+                <h2 class="widget-presentation-title" data-translate="telephony_line_calls_filtering_new"></h2>
+            </div>
+            <telecom-telephony-calls-filtering-add
+                data-add-screen-list="CallsFilteringCtrl.addScreenList(screen)"
+                data-get-screen-list="CallsFilteringCtrl.screenLists.getList()"
+                data-on-screen-list-added="CallsFilteringCtrl.onScreenListAdded(screen)">
+            </telecom-telephony-calls-filtering-add>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 table-responsive-vertical top-space-m32">
+            <div class="widget-presentation">
+                <h2 class="widget-presentation-title" data-translate="telephony_line_calls_filtering_config"></h2>
+            </div>
+            <telecom-telephony-calls-filtering-table
+                data-api="CallsFilteringCtrl.screenLists">
+            </telecom-telephony-calls-filtering-table>
+        </div>
+    </div>
+
+</div>

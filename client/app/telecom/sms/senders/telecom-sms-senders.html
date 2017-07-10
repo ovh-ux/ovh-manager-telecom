@@ -1,0 +1,273 @@
+<section class="telecom-sms-senders">
+
+    <div class="alert alert-warning"
+         role="alert"
+         data-ng-if="SmsSendersCtrl.senders.hasExpiration">
+        <i class="ovh-font ovh-font-filled-warning" aria-hidden="true"></i>
+        <p class="bottom-space-m12"
+            data-ng-if="SmsSendersCtrl.getSendersDeletedAtExpiration().length > 1"
+            data-translate="sms_senders_terminate_alert"></p>
+        <ul data-ng-class="{
+            'left-space-p0': SmsSendersCtrl.getSendersDeletedAtExpiration().length <= 1
+        }">
+            <li data-ng-repeat="sender in SmsSendersCtrl.getSendersDeletedAtExpiration() track by $index"
+                data-translate="sms_senders_terminate_alert_list"
+                data-translate-values="{
+                    sender: sender.sender,
+                    date: (sender.serviceInfos.expiration | date:'shortDate')
+                }">
+            </li>
+        </ul>
+    </div>
+
+    <div class="row main-actions-container bottom-space-m24">
+        <telecom-v4-link class="col-xs-12 col-md-4"
+                         data-ng-repeat="action in SmsSendersCtrl.actions"
+                         data-action="action">
+        </telecom-v4-link>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 widget-presentation">
+
+            <header class="widget-presentation-header">
+                <h2 class="widget-presentation-title" data-translate="sms_senders_manage_title"></h2>
+            </header>
+
+            <div class="bottom-space-m16">
+                <ul class="pull-left right-space-m12"
+                    role="menu"
+                    data-table-action>
+                    <li role="menuitem">
+                        <button
+                            type="button"
+                            class="no-style"
+                            data-ui-sref="telecom.sms.senders.add">
+                            <i class="ovh-font ovh-font-add-circle" aria-hidden="true"></i>
+                            <label data-translate="common_add"></label>
+                        </button>
+                    </li>
+                    <li role="menuitem">
+                        <button
+                            type="button"
+                            class="no-style"
+                            data-ng-click="SmsSendersCtrl.refresh()">
+                            <i class="ovh-font ovh-font-arrow-rotate" aria-hidden="true"></i>
+                            <label data-translate="common_refresh"></label>
+                        </button>
+                    </li>
+                </ul>
+                <button
+                    type="button"
+                    class="btn btn-default btn-block-xs-only"
+                    data-ng-disabled="SmsSendersCtrl.getSelection().length === 0 || SmsSendersCtrl.senders.isDeleting"
+                    data-ng-click="SmsSendersCtrl.deleteSelectedSenders()">
+                    <i class="ovh-font ovh-font-bin line-height-normal right-space-m4" aria-hidden="true"></i>
+                    <span data-ng-pluralize
+                          data-count="SmsSendersCtrl.getSelection().length"
+                          data-when="{
+                              '0': ('sms_senders_delete_sender' | translate),
+                              'one': ('sms_senders_delete_sender' | translate),
+                              'other': ('sms_senders_delete_senders' | translate:{ count: {} })
+                          }">
+                    </span>
+                    <spinner class="left-space-m4"
+                             data-ng-if="SmsSendersCtrl.senders.isDeleting">
+                    </spinner>
+                </button>
+            </div>
+
+            <div class="table-responsive-vertical">
+                <table class="table table-pretty table-hover table-striped no-space">
+                    <thead>
+                        <tr>
+                            <th scope="col" width="40px">
+                                <input
+                                    type="checkbox"
+                                    data-ng-if="SmsSendersCtrl.senders.paginated.length"
+                                    data-ng-disabled="SmsSendersCtrl.senders.isDeleting"
+                                    data-ovh-checkbox-table
+                                    data-ovh-checkbox-table-ids-all="SmsSendersCtrl.senders.raw"
+                                    data-ovh-checkbox-table-ids-page="SmsSendersCtrl.senders.paginated"
+                                    data-ovh-checkbox-table-ids-selected="SmsSendersCtrl.senders.selected"
+                                    data-ovh-checkbox-table-id="sender" />
+                            </th>
+                            <th scope="col">
+                                <button type="button"
+                                        class="no-style left-space-p0"
+                                        data-ng-disabled="!SmsSendersCtrl.senders.sorted.length"
+                                        data-ng-click="SmsSendersCtrl.orderBy('sender')">
+                                    <label class="pointer" data-translate="sms_senders_label_sender"></label>
+                                    <span class="table-pretty-filter">
+                                        <i class="fa" data-ng-class="{
+                                            'fa-sort': SmsSendersCtrl.senders.orderBy !== 'sender',
+                                            'fa-sort-desc': SmsSendersCtrl.senders.orderBy === 'sender' && SmsSendersCtrl.senders.orderDesc,
+                                            'fa-sort-asc': SmsSendersCtrl.senders.orderBy === 'sender' && !SmsSendersCtrl.senders.orderDesc
+                                        }"></i>
+                                    </span>
+                                </button>
+                            </th>
+                            <th scope="col">
+                                <button type="button"
+                                        class="no-style left-space-p0"
+                                        data-ng-disabled="!SmsSendersCtrl.senders.sorted.length"
+                                        data-ng-click="SmsSendersCtrl.orderBy('referer')">
+                                    <label class="pointer" data-translate="sms_senders_label_referer"></label>
+                                    <span class="table-pretty-filter">
+                                        <i class="fa" data-ng-class="{
+                                            'fa-sort': SmsSendersCtrl.senders.orderBy !== 'referer',
+                                            'fa-sort-desc': SmsSendersCtrl.senders.orderBy === 'referer' && SmsSendersCtrl.senders.orderDesc,
+                                            'fa-sort-asc': SmsSendersCtrl.senders.orderBy === 'referer' && !SmsSendersCtrl.senders.orderDesc
+                                        }"></i>
+                                    </span>
+                                </button>
+                            </th>
+                            <th scope="col">
+                                <button type="button"
+                                        class="no-style left-space-p0"
+                                        data-ng-disabled="!SmsSendersCtrl.senders.sorted.length"
+                                        data-ng-click="SmsSendersCtrl.orderBy('description')">
+                                    <label class="pointer" data-translate="sms_senders_label_description"></label>
+                                    <span class="table-pretty-filter">
+                                        <i class="fa" data-ng-class="{
+                                            'fa-sort': SmsSendersCtrl.senders.orderBy !== 'description',
+                                            'fa-sort-desc': SmsSendersCtrl.senders.orderBy === 'description' && SmsSendersCtrl.senders.orderDesc,
+                                            'fa-sort-asc': SmsSendersCtrl.senders.orderBy === 'description' && !SmsSendersCtrl.senders.orderDesc
+                                        }"></i>
+                                    </span>
+                                </button>
+                            </th>
+                            <th scope="col">
+                                <button type="button"
+                                        class="no-style left-space-p0"
+                                        data-ng-disabled="!SmsSendersCtrl.senders.sorted.length"
+                                        data-ng-click="SmsSendersCtrl.orderBy('status')">
+                                    <label class="pointer" data-translate="sms_senders_label_status"></label>
+                                    <span class="table-pretty-filter">
+                                        <i class="fa" data-ng-class="{
+                                            'fa-sort': SmsSendersCtrl.senders.orderBy !== 'status',
+                                            'fa-sort-desc': SmsSendersCtrl.senders.orderBy === 'status' && SmsSendersCtrl.senders.orderDesc,
+                                            'fa-sort-asc': SmsSendersCtrl.senders.orderBy === 'status' && !SmsSendersCtrl.senders.orderDesc
+                                        }"></i>
+                                    </span>
+                                </button>
+                            </th>
+                            <th scope="col">
+                                <label data-translate="common_actions"></label>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody data-ng-if="!SmsSendersCtrl.senders.isLoading">
+                        <tr data-ng-repeat="sender in SmsSendersCtrl.senders.paginated | orderBy:SmsSendersCtrl.senders.orderBy:SmsSendersCtrl.senders.orderDesc track by $index">
+                            <td>
+                                <input
+                                    type="checkbox"
+                                    data-ng-if="sender.type !== 'virtual'"
+                                    data-ng-disabled="SmsSendersCtrl.senders.isDeleting"
+                                    data-ng-model="SmsSendersCtrl.senders.selected[sender.sender]" />
+                            </td>
+                            <td data-title="{{ ::'sms_senders_label_sender' | translate }}"
+                                data-ng-bind="sender.sender">
+                            </td>
+                            <td data-title="{{ ::'sms_senders_label_referer' | translate }}"
+                                data-ng-bind="'sms_senders_referer_' + sender.referer | translate">
+                            </td>
+                            <td data-title="{{ ::'sms_senders_label_description' | translate }}"
+                                data-ng-bind="sender.description || '-'">
+                            </td>
+                            <td data-title="{{ ::'sms_senders_label_status' | translate }}">
+                                <i class="ovh-font fs20"
+                                   aria-hidden="true"
+                                   data-ng-class="{
+                                       'ovh-font-success text-success': sender.status === 'enable' && !sender.serviceInfos.renew.deleteAtExpiration,
+                                       'ovh-font-failure text-danger': sender.status === 'refused',
+                                       'ovh-font-activer text-disabled': sender.status === 'disable' && sender.serviceInfos.status !== 'expired',
+                                       'ovh-font-inprogress text-info': sender.status === 'waitingValidation',
+                                       'ovh-font-warning text-warning': sender.serviceInfos.renew.deleteAtExpiration || sender.serviceInfos.status === 'expired'
+                                   }">
+                                </i>
+                                <span class="left-space-m4"
+                                      data-ng-if="sender.type !== 'virtual' || !sender.serviceInfos.renew.deleteAtExpiration && sender.serviceInfos.status !== 'expired'"
+                                      data-ng-bind="'sms_senders_status_' + sender.status | translate">
+                                </span>
+                                <span class="left-space-m4"
+                                      data-ng-if="sender.type === 'virtual' && sender.serviceInfos.renew.deleteAtExpiration"
+                                      data-translate="sms_senders_status_delete_at_expiration">
+                                </span>
+                                <span class="left-space-m4"
+                                      data-ng-if="sender.serviceInfos.status === 'expired'"
+                                      data-translate="sms_senders_status_expired">
+                                </span>
+                            </td>
+                            <td>
+                                <ul role="menu"
+                                    data-table-action-line>
+                                    <li role="menuitem">
+                                        <button
+                                            type="button"
+                                            class="no-style"
+                                            data-ng-click="SmsSendersCtrl.edit(sender)"
+                                            data-ng-disabled="!SmsSendersCtrl.canEdit(sender)">
+                                            <i class="ovh-font ovh-font-editer" aria-hidden="true"></i>
+                                            <label data-translate="edit"></label>
+                                        </button>
+                                    </li>
+                                    <li role="menuitem">
+                                        <button
+                                            type="button"
+                                            class="no-style"
+                                            data-ng-click="SmsSendersCtrl.remove(sender)"
+                                            data-ng-disabled="sender.type === 'virtual'">
+                                            <i class="ovh-font ovh-font-bin" aria-hidden="true"></i>
+                                            <label data-translate="delete"></label>
+                                        </button>
+                                    </li>
+                                    <li role="menuitem">
+                                        <button
+                                            type="button"
+                                            class="no-style"
+                                            data-ng-click="SmsSendersCtrl.terminate(sender)"
+                                            data-ng-disabled="!SmsSendersCtrl.canTerminate(sender)">
+                                            <i class="ovh-font ovh-font-stop" aria-hidden="true"></i>
+                                            <label data-ng-bind="sender.serviceInfos.renew.deleteAtExpiration ? 'sms_senders_terminate_cancel' : 'common_resiliation' | translate"></label>
+                                        </button>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tbody data-ng-if="SmsSendersCtrl.senders.isLoading">
+                        <tr>
+                            <td class="text-center top-space-p16 bottom-space-p16" colspan="6">
+                                <spinner></spinner>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tbody data-ng-if="!SmsSendersCtrl.senders.isLoading && !SmsSendersCtrl.senders.raw.length">
+                        <tr>
+                            <td colspan="6"
+                                class="text-center top-space-p16 bottom-space-p16"
+                                data-translate="sms_senders_empty">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="table-pretty-pagination top-space-m8"
+                     data-ng-show="!SmsSendersCtrl.senders.isLoading && SmsSendersCtrl.senders.raw.length"
+                     data-pagination-front
+                     data-items="SmsSendersCtrl.senders.sorted"
+                     data-paginated-items="SmsSendersCtrl.senders.paginated"
+                     data-current-page="currentPage"
+                     data-nb-pages="nbPages"
+                     data-items-per-page="itemsPerPage"
+                     data-page-placeholder="{{'common_pagination_page' | translate: {currentPage:currentPage, nbPages:nbPages} }}"
+                     data-item-per-page-placeholder="{{'common_pagination_display' | translate}}">
+                </div>
+            </div>
+
+        </div>
+        <!-- .widget-presentation -->
+    </div>
+    <!-- .row -->
+
+</section>

@@ -1,0 +1,194 @@
+<form name="addReceiverForm"
+      id="addReceiverForm"
+      class="ovh-form-flat"
+      data-ng-submit="ReceiversAddCtrl.add()">
+
+    <div class="modal-header">
+        <h3 class="modal-title pull-left" data-translate="sms_receivers_add_receiver"></h3>
+        <button
+            type="button"
+            class="close pull-right"
+            aria-label="{{ ::'cancel' | translate }}"
+            data-ng-click="ReceiversAddCtrl.cancel()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <div class="modal-body" data-ng-if="!ReceiversAddCtrl.loading.addReceiver && !ReceiversAddCtrl.added || ReceiversAddCtrl.requirement">
+
+        <div class="alert alert-danger bottom-space-m24"
+             role="alert"
+             data-ng-if="ReceiversAddCtrl.slot.isFull">
+            <i class="ovh-font ovh-font-filled-error" aria-hidden="true"></i>
+            <p data-translate="sms_receivers_add_receiver_slot_is_full"></p>
+            <p data-translate="sms_receivers_add_receiver_slot_please_remove_one"></p>
+        </div>
+
+        <div class="alert alert-danger bottom-space-m24"
+             role="alert"
+             data-ng-if="!ReceiversAddCtrl.loading.addReceiver && !ReceiversAddCtrl.lineErrors && ReceiversAddCtrl.requirement">
+            <i class="ovh-font ovh-font-filled-error" aria-hidden="true"></i>
+            <p data-translate="sms_receivers_add_receiver_column_number_required"></p>
+        </div>
+
+        <div class="alert alert-danger bottom-space-m24"
+             role="alert"
+             data-ng-if="!ReceiversAddCtrl.loading.addReceiver && ReceiversAddCtrl.lineErrors">
+            <i class="ovh-font ovh-font-filled-error" aria-hidden="true"></i>
+            <p data-translate="sms_receivers_add_receiver_line_errors"
+               data-translate-values="{ line: ReceiversAddCtrl.lineErrors }">
+            </p>
+        </div>
+
+        <!-- URL-MODE -->
+        <div class="text-center">
+            <label class="inline-block vertical-middle fs14 top-space-m4 pointer"
+                   for="display-mode"
+                   data-ng-class="{ 'bold': !ReceiversAddCtrl.urlMode }"
+                   data-translate="sms_receivers_add_mode_document">
+            </label>
+            <flat-switch class="inline-block vertical-middle left-space-m8 right-space-m8">
+                <input
+                    type="checkbox"
+                    id="display-mode"
+                    data-ng-model="ReceiversAddCtrl.urlMode" />
+            </flat-switch>
+            <label class="inline-block vertical-middle fs14 top-space-m4 pointer"
+                   for="display-mode"
+                   data-ng-class="{ 'bold': ReceiversAddCtrl.urlMode }"
+                   data-translate="sms_receivers_add_mode_url">
+            </label>
+        </div>
+
+        <!-- DESCRIPTION -->
+        <div class="form-group bottom-space-m16">
+            <div data-flat-input-container>
+                <label for="description"
+                       class="control-label"
+                       data-translate="sms_receivers_add_description_label">
+                </label>
+                <input
+                    type="text"
+                    name="description"
+                    id="description"
+                    class="form-control"
+                    autofocus
+                    required
+                    data-ng-model="ReceiversAddCtrl.receiverForm.description"
+                    data-ng-disabled="ReceiversAddCtrl.slot.isFull"
+                    data-ng-maxlength="40"
+                    data-translate-attr="{ placeholder: 'sms_receivers_add_description_placeholder' }" />
+                <div role="alert"
+                     data-ng-messages="(addReceiverForm.$invalid && addReceiverForm.description.$dirty) && addReceiverForm.description.$error">
+                    <p class="text-danger"
+                       data-ng-message="required"
+                       data-translate="sms_receivers_add_description_error_required">
+                    </p>
+                    <p class="text-danger"
+                       data-ng-message="maxlength"
+                       data-translate="sms_receivers_add_description_error_maxlength">
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div data-ng-if="!ReceiversAddCtrl.urlMode">
+            <!-- FILE -->
+            <div class="form-group clearfix bottom-space-m16">
+                <input-file
+                    data-ng-model="ReceiversAddCtrl.receiverForm.uploadedFile"
+                    data-ng-accept="text/*"
+                    data-ng-accept-filter="ReceiversAddCtrl.checkValidTextExtention(file)">
+                    <i class="fa fa-upload right-space-m4" aria-hidden="true"></i>
+                    <span data-translate="sms_receivers_add_file_label"></span>
+                </input-file>
+            </div>
+        </div>
+
+        <div data-ng-if="ReceiversAddCtrl.urlMode">
+            <!-- URL -->
+            <div class="form-group bottom-space-m20">
+                <div data-flat-input-container>
+                    <label for="url"
+                           class="control-label"
+                           data-translate="sms_receivers_add_url_label">
+                    </label>
+                    <input
+                        type="url"
+                        name="url"
+                        id="url"
+                        class="form-control"
+                        required
+                        data-ng-model="ReceiversAddCtrl.receiverForm.url"
+                        data-ng-pattern="/^(https?):\/\/.*$/"
+                        data-ng-disabled="ReceiversAddCtrl.slot.isFull"
+                        data-translate-attr="{ placeholder: 'sms_receivers_add_url_placeholder' }" />
+                    <div role="alert"
+                         data-ng-messages="(addReceiverForm.$invalid && addReceiverForm.url.$dirty) && addReceiverForm.url.$error">
+                        <p class="text-danger"
+                            data-ng-message="required"
+                            data-translate="sms_receivers_add_url_error_required">
+                        </p>
+                        <p class="text-danger"
+                           data-ng-message="pattern"
+                           data-translate="sms_receivers_add_url_error_pattern">
+                        </p>
+                        <p class="text-danger"
+                           data-ng-message="url"
+                           data-translate="sms_receivers_add_url_error_url">
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AUTO UPDATE -->
+            <div class="form-group">
+                <label class="block pointer">
+                    <flat-checkbox>
+                        <input
+                            type="checkbox"
+                            name="autoUpdate"
+                            id="autoUpdate"
+                            class="form-control"
+                            data-ng-model="ReceiversAddCtrl.receiverForm.autoUpdate"
+                            data-ng-checked="ReceiversAddCtrl.receiverForm.autoUpdate" />
+                    </flat-checkbox>
+                    <span class="left-space-m8" data-translate="sms_receivers_add_auto_update_label"></span>
+                </label>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="modal-body" data-ng-if="ReceiversAddCtrl.loading.addReceiver && !ReceiversAddCtrl.added">
+        <bouncing-box-loader>
+            <h4 data-translate="sms_receivers_add_receiver_adding"></h4>
+        </bouncing-box-loader>
+    </div>
+
+    <div class="modal-body" data-ng-if="ReceiversAddCtrl.added && !ReceiversAddCtrl.requirement">
+        <success-drawing-check data-draw-success-check="ReceiversAddCtrl.added">
+            <h4 data-translate="sms_receivers_add_receiver_added"></h4>
+        </success-drawing-check>
+    </div>
+
+    <div class="modal-footer">
+        <button
+            type="button"
+            class="btn btn-default"
+            data-ng-click="ReceiversAddCtrl.cancel()"
+            data-translate="cancel"
+            data-ng-disabled="ReceiversAddCtrl.loading.addReceiver || ReceiversAddCtrl.added">
+        </button>
+        <button
+            type="submit"
+            class="btn btn-primary"
+            data-ng-disabled="addReceiverForm.$invalid ||
+                              ReceiversAddCtrl.loading.addReceiver ||
+                              ReceiversAddCtrl.added ||
+                              ReceiversAddCtrl.slot.isFull ||
+                              (!ReceiversAddCtrl.receiverForm.url && !ReceiversAddCtrl.receiverForm.uploadedFile)"
+            data-translate="submit">
+        </button>
+    </div>
+</form>

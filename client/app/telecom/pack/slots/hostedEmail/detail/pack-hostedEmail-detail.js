@@ -1,0 +1,14 @@
+angular.module("managerApp").config(function ($stateProvider) {
+    "use strict";
+    $stateProvider.state("telecom.pack.hostedEmail-detail", {
+        url: "/hostedEmail/:serviceName/detail",
+        views: {
+            "packView@telecom.pack": {
+                templateUrl: "app/telecom/pack/slots/hostedEmail/detail/pack-hostedEmail-detail.html",
+                controller: "PackHostedEmailDetailCtrl",
+                controllerAs: "DetailCtrl"
+            }
+        },
+        translations: ["common", "components", "telecom/pack/slots/hostedEmail/detail"]
+    });
+});

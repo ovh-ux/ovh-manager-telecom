@@ -1,0 +1,73 @@
+<form class="pack-contract-modal" data-ng-submit="ctrl.confirm()">
+    <h1 class="modal-header" data-translate="pack_xdsl_access_ip_order_title"></h1>
+    <div class="text-center top-space-p20" data-ng-if="ctrl.loading" data-spinner></div>
+    <div class="modal-body" data-ng-if="!ctrl.loading">
+        <p class="bottom-space-m16">
+            <span data-translate="pack_xdsl_access_ip_order_operation_title"></span>
+            <strong data-translate="pack_xdsl_access_ip_order_operation"
+                    data-translate-values="{amountIp: ctrl.constants.amountIpOrdered}"></strong>
+        </p>
+        <p class="bottom-space-m16">
+            <span data-translate="pack_xdsl_access_ip_order_service_title"></span>
+            <strong data-ng-bind="ctrl.constants.xdslId"></strong>
+        </p>
+        <p class="bottom-space-m20"
+            data-translate="pack_xdsl_access_ip_order_disclaim"
+            data-translate-values="{
+                price: ctrl.constants.price,
+                hoursBeforeCollected: ctrl.constants.hoursBeforeCollected,
+                hoursBeforeActivation: ctrl.constants.hoursBeforeActivation,
+                engagementMinimumMonths: ctrl.constants.engagementMinimumMonths
+                }">
+        </p>
+        <ul class="list-unstyled">
+            <li>
+                <flat-checkbox class="right-space-m16">
+                    <input type="checkbox"
+                            id="confirm1"
+                            name="confirm1"
+                            class="form-control"
+                            data-ng-model="ctrl.checkbox.userAcceptImmediateExecution">
+                </flat-checkbox>
+                <label for="confirm1" data-translate="pack_xdsl_access_ip_order_immediate_execution"></label>
+            </li>
+            <li>
+                <flat-checkbox class="right-space-m16">
+                    <input type="checkbox"
+                            id="confirm2"
+                            name="confirm2"
+                            class="form-control"
+                            data-ng-model="ctrl.checkbox.userAcceptModalities">
+                </flat-checkbox>
+                <label for="confirm2">
+                    <span data-translate="pack_xdsl_access_ip_order_accept_conditions"></span>
+                    (<a data-ng-href="{{ctrl.constants.contractUrl}}"
+                        title="{{'::pack_xdsl_access_ip_order_accept_conditions_contract' | translate}} {{::'common_newtab' | translate}}"
+                        target="_blank"
+                        rel="nofollow">
+                        <span data-translate="pack_xdsl_access_ip_order_accept_conditions_contract"></span>
+                        <span class="ovh-font ovh-font-newtab fs16" aria-hidden="true"></span>
+                    </a>)
+                </label>
+            </li>
+        </ul>
+    </div>
+
+    <div class="modal-footer text-left" role="group">
+        <button type="submit"
+                data-ng-disabled="ctrl.loading"
+                class="btn btn-primary"
+                data-ng-if="
+                    ctrl.checkbox.userAcceptImmediateExecution &&
+                    ctrl.checkbox.userAcceptModalities &&
+                    !ctrl.loading"
+                data-translate="pack_xdsl_access_ip_order_yes">
+        </button>
+        <button type="button"
+                class="btn btn-default"
+                data-ng-disabled="ctrl.loading"
+                data-ng-click="ctrl.cancel()"
+                data-translate="pack_xdsl_access_ip_order_no">
+        </button>
+    </div>
+</form>

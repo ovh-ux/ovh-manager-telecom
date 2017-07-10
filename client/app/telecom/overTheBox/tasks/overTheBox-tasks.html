@@ -1,0 +1,63 @@
+<div class="telecom-overTheBox-tasks">
+
+    <div class="telecom-section-content">
+        <div class="widget-presentation">
+            <h2 class="widget-presentation-title" data-translate="overTheBox_tasks_list"></h2>
+
+            <spinner data-ng-show="OverTheBoxTasks.loaders.init"></spinner>
+
+            <!-- TASKS LIST -->
+            <div class="table-responsive-vertical">
+
+                <table class="table table-pretty table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col" data-translate="overTheBox_tasks_name"></th>
+                            <th scope="col" data-translate="overTheBox_tasks_id"></th>
+                            <th scope="col" data-translate="overTheBox_tasks_status"></th>
+                        </tr>
+                    </thead>
+                    <tbody data-ng-if="OverTheBoxTasks.taskIds.length <= 0">
+                        <tr>
+                            <td colspan="3" class="text-center" data-translate="overTheBox_no_task"></td>
+                        </tr>
+                    </tbody>
+                    <tbody data-ng-id="OverTheBoxTasks.taskIds.length > 0">
+                        <tr data-ng-repeat="task in OverTheBoxTasks.tasks">
+                            <td data-title="{{'overTheBox_tasks_name' | translate}}"
+                                data-ng-bind="task.name">
+                            </td>
+                            <td data-title="{{'overTheBox_tasks_id' | translate}}"
+                                data-ng-bind="task.taskId"></td>
+                            <td data-title="{{'overTheBox_tasks_status' | translate}}">
+                                <span class="label"
+                                      data-ng-class="{
+                                                     'label-success': task.status === 'done',
+                                                     'label-danger': tasks.status === 'error',
+                                                     'label-info': tasks.status === 'doing',
+                                                     'label-primary': tasks.status === 'todo'
+                                                     }">
+                                    {{ 'overTheBox_tasks_status_' + task.status | translate }}
+                                </span>
+                            </td>
+
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div data-pagination-front
+                     data-go-to-page="false"
+                     data-items="OverTheBoxTasks.taskIds"
+                     data-paginated-items="OverTheBoxTasks.tasks"
+                     data-current-page="currentPage"
+                     data-nb-pages="maxSize"
+                     data-items-per-page="OverTheBoxTasks.filter.perPage"
+                     data-transform-item="OverTheBoxTasks.onTransformItem(item)"
+                     data-on-transform-item-done="OverTheBoxTasks.onTransformItemDone(items)"
+                     data-page-placeholder="{{ 'common_pagination_go_to_page' | translate }}"
+                     data-item-per-page-placeholder="{{'common_pagination_show_by_page' |translate }}">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

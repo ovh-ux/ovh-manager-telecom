@@ -1,0 +1,209 @@
+<div class="telecom-freefax-voicemail">
+
+    <header>
+        <section-back-link section-back-link-to-state="telecom.freefax"></section-back-link>
+        <h1 data-translate="freefax_voicemail_configuration_title"
+            data-translate-values="{ serviceName: VoicemailConf.serviceName }">
+        </h1>
+    </header>
+
+    <div class="telecom-section-content">
+
+        <div class="row widget-presentation">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <h2 class="widget-presentation-title">{{ 'freefax_voicemail_parameters' | translate }}</h2>
+                    <form name="voicemailConfigurationForm"
+                          class="col-12 flex-center form-horizontal ovh-form-flat"
+                          data-ng-submit="VoicemailConf.saveConfiguration(VoicemailConf.voiceMail)">
+                        <!-- active -->
+                        <div class="row">
+                            <div class="col-xs-12 col-md-4 service-title" data-translate="freefax_voicemail_activation"></div>
+                            <div class="col-xs-12 col-md-8 service-item">
+                                <div flat-input-container>
+                                    <flat-checkbox>
+                                        <input
+                                            type="checkbox"
+                                            id="voicemail-active"
+                                            name="voicemail-active"
+                                            data-ng-model="VoicemailConf.voiceMail.activateVoiceMail"
+                                            data-ng-disabled="!VoicemailConf.editMode"
+                                            >
+                                    </flat-checkbox>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- automatic delete -->
+                        <div class="row">
+                            <div class="col-xs-12 col-md-4 service-title" data-translate="freefax_voicemail_keep_messages"></div>
+                            <div class="col-xs-12 col-md-8 service-item">
+                                <div flat-input-container>
+                                    <flat-checkbox>
+                                        <input
+                                            type="checkbox"
+                                            id="automatic-delete"
+                                            name="automatic-delete"
+                                            data-ng-model="VoicemailConf.voiceMail.keepMessage"
+                                            data-ng-true-value="false"
+                                            data-ng-false-value="true"
+                                            data-ng-disabled="!VoicemailConf.editMode"
+                                            >
+                                    </flat-checkbox>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- define password -->
+                        <div class="row">
+                            <div class="col-xs-12 col-md-4 service-title" data-translate="freefax_voicemail_password"></div>
+                            <div class="col-xs-12 col-md-8 service-item">
+                                <div flat-input-container class="input-group" data-ng-if="VoicemailConf.editMode">
+                                    <div>
+                                        <input
+                                            name="voicemailPassword"
+                                            class="form-control"
+                                            data-ng-model="VoicemailConf.password[0]"
+                                            placeholder="{{ 'freefax_voicemail_change_password' | translate }}"
+                                            maxlength="4"
+                                            type="password"
+                                            data-ui-validate="'VoicemailConf.validPassword($value)'"
+                                            >
+                                    </div>
+                                    <div class="top-space-m4">
+                                        <input
+                                            name="voicemailPasswordConfirm"
+                                            class="form-control"
+                                            data-ng-model="VoicemailConf.password[1]"
+                                            placeholder="{{ 'freefax_voicemail_change_password_confirm' | translate }}"
+                                            maxlength="4"
+                                            type="password"
+                                            data-ui-validate="'VoicemailConf.validPassword($value)'"
+                                            >
+                                    </div>
+                                </div>
+                                <div data-ng-if="!VoicemailConf.editMode">
+                                    ****
+                                </div>
+                            </div>
+                        </div>
+                        <!-- activate password -->
+                        <div class="row">
+                            <div class="col-xs-12 col-md-4 service-title" data-translate="freefax_voicemail_always_ask_password"></div>
+                            <div class="col-xs-12 col-md-8 service-item">
+                                <div flat-input-container>
+                                    <flat-checkbox>
+                                        <input
+                                            type="checkbox"
+                                            id="password-active"
+                                            name="password-active"
+                                            data-ng-model="VoicemailConf.voiceMail.forcePassword"
+                                            data-ng-true-value="false"
+                                            data-ng-false-value="true"
+                                            data-ng-disabled="!VoicemailConf.editMode"
+                                            >
+                                    </flat-checkbox>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- sender -->
+                        <div class="row">
+                            <div class="col-xs-12 col-md-4 service-title" data-translate="freefax_voicemail_sender_name"></div>
+                            <div class="col-xs-12 col-md-8 service-item">
+                                <div flat-input-container data-ng-if="VoicemailConf.editMode">
+                                    <input
+                                        name="fromName"
+                                        class="form-control"
+                                        data-ng-model="VoicemailConf.voiceMail.fromName"
+                                        placeholder="{{ 'freefax_voicemail_sender_name' | translate }}"
+                                        maxlength="50"
+                                        type="text"
+                                        data-ui-validate="'VoicemailConf.validName($value)'"
+                                        >
+                                </div>
+                                <div data-ng-if="!VoicemailConf.editMode">
+                                    {{VoicemailConf.voiceMail.fromName}}
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- sender email -->
+                        <div class="row">
+                            <div class="col-xs-12 col-md-4 service-title" data-translate="freefax_voicemail_sender_email"></div>
+                            <div class="col-xs-12 col-md-8 service-item">
+                                <div flat-input-container data-ng-if="VoicemailConf.editMode">
+                                    <input
+                                        name="fromEmail"
+                                        class="form-control"
+                                        data-ng-model="VoicemailConf.voiceMail.fromEmail"
+                                        placeholder="{{ 'freefax_voicemail_redirection_email' | translate }}"
+                                        maxlength="50"
+                                        type="email"
+                                        >
+                                </div>
+                                <div data-ng-if="!VoicemailConf.editMode">
+                                    {{VoicemailConf.voiceMail.fromEmail}}
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- audio format -->
+                        <div class="row">
+                            <div class="col-xs-12 col-md-4 service-title" data-translate="freefax_voicemail_audio_format"></div>
+                            <div class="col-xs-12 col-md-8 service-item">
+                                <div flat-input-container data-ng-if="VoicemailConf.editMode">
+                                    <select
+                                        data-ng-required="true"
+                                        name="audioFormat"
+                                        aria-labelledby="audioFormat"
+                                        class="form-control"
+                                        data-ng-model="VoicemailConf.voiceMail.audioFormat"
+                                        data-ng-options="format as format.label for format in VoicemailConf.audioFormatList"
+                                        ></select>
+                                </div>
+                                <div data-ng-if="!VoicemailConf.editMode">
+                                    {{VoicemailConf.voiceMail.audioFormat.label}}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-12 col-md-12">
+                                <div class="top-space-m12">
+                                    <button
+                                        type="reset"
+                                        data-translate="cancel"
+                                        class="btn btn-sm btn-cancel btn-default"
+                                        data-ng-click="VoicemailConf.cancelEditMode()"
+                                        data-ng-disabled="VoicemailConf.loading"
+                                        data-ng-if="VoicemailConf.editMode"
+                                        >
+                                    </button>
+                                    <button
+                                        type="button"
+                                        data-translate="edit"
+                                        data-ng-click="VoicemailConf.enterEditMode()"
+                                        class="btn btn-primary"
+                                        data-ng-disabled="VoicemailConf.loading "
+                                        data-ng-if="!VoicemailConf.editMode"
+                                        >
+                                    </button>
+                                    <button
+                                        type="submit"
+                                        data-translate="submit"
+                                        class="btn btn-primary"
+                                        data-ng-disabled="voicemailConfigurationForm.$invalid || VoicemailConf.loading "
+                                        data-ng-if="VoicemailConf.editMode"
+                                        >
+                                    </button>
+                                    <spinner class="left-space-m4" data-ng-show="VoicemailConf.loading"></spinner>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,160 @@
+<div data-ng-controller="telephonyNumberOvhPabxMenuEditCtrl as $ctrl"
+     class="telephony-number-ovh-pabx-menu-edit popover-pages"
+     data-ng-form="menuOptionsForm">
+
+    <div class="popover-pages-wrapper"
+         data-ng-class="{ move: $ctrl.menuCtrl.popoverStatus.move }">
+
+        <!-- LEFT PAGE -->
+        <section class="popover-page page-section">
+
+            <header>
+                <h2 data-translate="{{ $ctrl.menu.status === 'DRAFT' ? 'telephony_number_feature_ovh_pabx_menu_options_create' : 'telephony_number_feature_ovh_pabx_menu_options' }}"></h2>
+            </header>
+
+            <section>
+                <div class="section-group">
+                    <!-- NAME -->
+                    <div class="section-item form-group"
+                         data-ng-class="{ 'has-error': menuOptionsForm.menuName.$invalid && menuOptionsForm.menuName.$dirty }">
+                        <div data-flat-input-container>
+                            <label for="menuName"
+                                   class="control-label required"
+                                   data-translate="{{ 'telephony_number_feature_ovh_pabx_menu_options_name' }}">
+                            </label>
+                            <input type="text"
+                                   class="form-control"
+                                   name="menuName"
+                                   id="menuName"
+                                   data-ng-model="$ctrl.menu.name"
+                                   data-translate-attr="{ placeholder: 'telephony_number_feature_ovh_pabx_menu_options_name' }"
+                                   data-required
+                                   data-ng-pattern="/^[\w\s]+$/" />
+                        </div>
+                        <div data-ng-messages="menuOptionsForm.menuName.$error"
+                             data-ng-if="menuOptionsForm.menuName.$invalid && menuOptionsForm.menuName.$dirty"
+                             role="alert"
+                             class="top-space-m8">
+                            <label for="menuName"
+                                   class="normal small"
+                                   data-ng-message="required"
+                                   data-translate="telephony_number_feature_ovh_pabx_menu_options_name_required">
+                            </label>
+                            <label for="menuName"
+                                   class="normal small"
+                                   data-ng-message="pattern"
+                                   data-translate="telephony_number_feature_ovh_pabx_menu_options_name_bad_format">
+                            </label>
+                        </div>
+                    </div> <!-- END OF NAME -->
+
+                    <!-- GREET SOUND -->
+                    <button type="button"
+                            class="section-item no-style full-width text-left"
+                            data-ng-click="$ctrl.onSoundChoiceButtonClick('greetSound')">
+                        <label class="pointer radio-label-main required">
+                            <span data-translate="telephony_number_feature_ovh_pabx_menu_options_greet_sound"></span>
+                            <span class="pointer"
+                                  data-uib-tooltip="{{ 'telephony_number_feature_ovh_pabx_menu_options_greet_sound_explain' | translate }}"
+                                  data-tooltip-append-to-body="true">
+                                <i class="ovh-font ovh-font-filled-question"></i>
+                            </span>
+                        </label>
+                        <span class="block"
+                              data-ng-if="!$ctrl.menu.greetSound"
+                              data-translate="telephony_number_feature_ovh_pabx_menu_options_no_sound_selected">
+                        </span>
+                        <span class="block"
+                              data-ng-if="$ctrl.menu.greetSound"
+                              data-ng-bind="$ctrl.getSoundInfos('greetSound').name">
+                        </span>
+                        <div class="chevron-right">
+                            <div class="chevron-wrapper">
+                                <i class="ovh-font ovh-font-arrow-right"></i>
+                            </div>
+                        </div>
+                    </button> <!-- END OF GREET SOUND -->
+
+                    <!-- INVALID SOUND -->
+                    <button type="button"
+                            class="section-item no-style full-width text-left"
+                            data-ng-click="$ctrl.onSoundChoiceButtonClick('invalidSound')">
+                        <label class="pointer radio-label-main">
+                            <span data-translate="telephony_number_feature_ovh_pabx_menu_options_invalid_sound"></span>
+                            <span class="pointer"
+                                  data-uib-tooltip="{{ 'telephony_number_feature_ovh_pabx_menu_options_invalid_sound_explain' | translate }}"
+                                  data-tooltip-append-to-body="true">
+                                <i class="ovh-font ovh-font-filled-question"></i>
+                            </span>
+                        </label>
+                        <span class="block"
+                              data-ng-if="!$ctrl.menu.invalidSound"
+                              data-translate="telephony_number_feature_ovh_pabx_menu_options_no_sound_selected">
+                        </span>
+                        <span class="block"
+                              data-ng-if="$ctrl.menu.invalidSound"
+                              data-ng-bind="$ctrl.getSoundInfos('invalidSound').name">
+                        </span>
+                        <div class="chevron-right">
+                            <div class="chevron-wrapper">
+                                <i class="ovh-font ovh-font-arrow-right"></i>
+                            </div>
+                        </div>
+                    </button> <!-- END OF INVALID SOUND -->
+                </div>
+            </section>
+
+            <!-- FOOTER ACTIONS -->
+            <footer class="clearfix double-choice">
+                <button type="submit"
+                        class="btn btn-primary"
+                        data-ng-disabled="!$ctrl.menu.hasChange() || !$ctrl.isMenuValid() || menuOptionsForm.$invalid"
+                        data-translate="{{ $ctrl.menu.status === 'DRAFT' ? 'common_create' : 'modify' }}"
+                        data-ng-click="$ctrl.onValidateBtnClick()">
+                </button>
+
+                <button type="button"
+                        class="btn btn-default"
+                        data-translate="cancel"
+                        data-ng-click="$ctrl.onCancelBtnClick()">
+                </button>
+            </footer> <!-- FOOTER ACTIONS -->
+
+        </section> <!-- LEFT PAGE -->
+
+        <!-- RIGHT PAGE -->
+        <section class="popover-page page-section">
+
+            <header>
+                <button type="button"
+                        class="back-btn no-style no-space fs20"
+                        data-ng-click="$ctrl.menuCtrl.popoverStatus.move = false"
+                        data-translate-attr="{ title: 'back' }">
+                    <i class="ovh-font ovh-font-arrow-left"></i>
+                </button>
+
+                <h2 data-ng-if="$ctrl.menuCtrl.popoverStatus.rightPage === 'greetSound' || $ctrl.menuCtrl.popoverStatus.rightPage === 'invalidSound'"
+                    data-translate="telephony_number_feature_ovh_pabx_menu_options_sound_to_play">
+                </h2>
+
+            </header>
+
+            <!-- GREET SOUND CHOICE -->
+            <telephony-number-ovh-pabx-sound-popover-section data-ng-if="$ctrl.menuCtrl.popoverStatus.rightPage === 'greetSound'"
+                                                             data-ovh-pabx="$ctrl.menuCtrl.ovhPabx"
+                                                             data-selected-sound-id="$ctrl.menu.greetSound"
+                                                             data-on-sound-change="$ctrl.onSoundSelected">
+            </telephony-number-ovh-pabx-sound-popover-section> <!-- END OF GREET SOUND CHOICE -->
+
+            <!-- INVALID SOUND CHOICE -->
+            <telephony-number-ovh-pabx-sound-popover-section data-ng-if="$ctrl.menuCtrl.popoverStatus.rightPage === 'invalidSound'"
+                                                             data-ovh-pabx="$ctrl.menuCtrl.ovhPabx"
+                                                             data-selected-sound-id="$ctrl.menu.invalidSound"
+                                                             data-on-sound-change="$ctrl.onSoundSelected">
+            </telephony-number-ovh-pabx-sound-popover-section> <!-- END OF INVALID SOUND CHOICE -->
+
+        </section> <!-- RIGHT PAGE -->
+
+    </div>
+
+</div>

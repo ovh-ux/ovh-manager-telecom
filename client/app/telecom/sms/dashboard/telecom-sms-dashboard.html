@@ -1,0 +1,182 @@
+<section class="telecom-sms-dashboard">
+
+    <!-- LOADING -->
+    <bouncing-box-loader data-ng-if="SmsDashboardCtrl.loading.init">
+        <h2 data-translate="loading"></h2>
+    </bouncing-box-loader>
+
+    <div class="row" data-ng-if="!SmsDashboardCtrl.loading.init">
+        <div class="col-xs-12 col-md-4 bottom-space-m16">
+
+            <div class="widget-presentation">
+                <header class="widget-presentation-header">
+                    <h2 class="widget-presentation-title" data-translate="sms_actions"></h2>
+                </header>
+                <telecom-v4-link data-ng-repeat="action in SmsDashboardCtrl.actions track by $index"
+                                 data-action="action">
+                </telecom-v4-link>
+            </div>
+
+        </div>
+        <div class="col-xs-12 col-md-8">
+
+            <div class="widget-presentation bottom-space-m32">
+                <header class="widget-presentation-header">
+                    <h2 class="widget-presentation-title" data-translate="sms_consumed"></h2>
+                </header>
+                <div class="row">
+                    <div class="col-xs-12 col-md-6">
+
+                        <div class="sms-consumed-item">
+                            <div class="sms-consumed-item-icon">
+                                <i class="ovh-font ovh-font-message text-primary"></i>
+                            </div>
+                            <div class="sms-consumed-item-description">
+                                <strong data-translate="sms_consumed_credit_left"></strong>
+                                <div>
+                                    <strong class="text-primary fs20"
+                                            data-ng-bind="SmsDashboardCtrl.service.creditsLeft">
+                                    </strong>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-xs-12 col-md-6">
+
+                        <div class="sms-consumed-item">
+                            <div class="sms-consumed-item-icon">
+                                <i class="ovh-font"
+                                   data-ng-class="{
+                                       'ovh-font-success text-success': SmsDashboardCtrl.service.automaticRecreditAmount,
+                                       'ovh-font-failure text-danger': !SmsDashboardCtrl.service.automaticRecreditAmount
+                                }"></i>
+                            </div>
+                            <div class="sms-consumed-item-description">
+                                <strong data-translate="sms_consumed_automatic_recredit_amount"></strong>
+                                <div>
+                                    <strong class="text-primary fs20"
+                                            data-ng-if="SmsDashboardCtrl.service.automaticRecreditAmount"
+                                            data-translate="sms_consumed_automatic_recredit_amount_activate">
+                                    </strong>
+                                    <strong class="text-disabled fs20"
+                                            data-ng-if="!SmsDashboardCtrl.service.automaticRecreditAmount"
+                                            data-translate="sms_consumed_automatic_recredit_amount_disactivate">
+                                    </strong>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="widget-presentation">
+                <header class="widget-presentation-header">
+                    <h2 class="widget-presentation-title" data-translate="sms_statistics_title"></h2>
+                </header>
+
+                <div class="row bottom-space-m16">
+                    <div class="col-xs-12 col-md-6 bottom-space-m16">
+                        <select
+                            flat-select
+                            name="statsMonths"
+                            class="form-control"
+                            id="statsMonths"
+                            data-ng-model="SmsDashboardCtrl.stats.filter.month"
+                            data-ng-change="SmsDashboardCtrl.getStats()"
+                            data-ng-disabled="SmsDashboardCtrl.loading.stats">
+                            <option
+                                value=""
+                                data-translate="sms_statistics_filter_month">
+                            </option>
+                            <option
+                                data-ng-repeat="month in SmsDashboardCtrl.stats.label.months track by $index"
+                                data-ng-value="month.index"
+                                data-ng-bind="month.name + (month.fromYear < SmsDashboardCtrl.stats.moment.year ? ' ('  + month.fromYear + ')' : '')">
+                            </option>
+                        </select>
+                    </div>
+                    <div class="col-xs-12 col-md-6 bottom-space-m16">
+                        <select
+                            flat-select
+                            name="statsSender"
+                            class="form-control"
+                            id="statsSender"
+                            data-ng-options="sender for sender in SmsDashboardCtrl.stats.label.senders | orderBy"
+                            data-ng-model="SmsDashboardCtrl.stats.filter.sender"
+                            data-ng-change="SmsDashboardCtrl.getStats(SmsDashboardCtrl.stats.filter.sender)"
+                            data-ng-disabled="SmsDashboardCtrl.loading.stats">
+                            <option
+                                value=""
+                                data-translate="sms_statistics_filter_sender">
+                            </option>
+                        </select>
+                    </div>
+                </div><!-- .row -->
+
+                <bouncing-box-loader data-ng-if="SmsDashboardCtrl.loading.stats">
+                    <h4 data-translate="loading"></h4>
+                </bouncing-box-loader>
+
+                <div class="row" data-ng-if="!SmsDashboardCtrl.loading.stats">
+                    <div class="col-xs-12 col-md-4">
+                        <div class="sms-consumed-item">
+                            <div class="sms-consumed-item-icon">
+                                <i class="ovh-font ovh-font-SMSEmitting text-primary"></i>
+                            </div>
+                            <div class="sms-consumed-item-description">
+                                <strong class="fs18 text-primary" data-ng-bind="SmsDashboardCtrl.stats.data.outgoing"></strong><br />
+                                <strong data-ng-pluralize
+                                        data-count="SmsDashboardCtrl.stats.data.outgoing"
+                                        data-when="{
+                                            '0': ('sms_statistics_outgoing' | translate),
+                                            'one': ('sms_statistics_outgoing' | translate),
+                                            'other': ('sms_statistics_outgoing_plural' | translate)
+                                        }">
+                                </strong>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-4">
+                        <div class="sms-consumed-item">
+                            <div class="sms-consumed-item-icon">
+                                <i class="ovh-font ovh-font-SMSReceiving text-primary"></i>
+                            </div>
+                            <div class="sms-consumed-item-description">
+                                <strong class="fs18 text-primary" data-ng-bind="SmsDashboardCtrl.stats.data.incoming"></strong><br />
+                                <strong data-ng-pluralize
+                                        data-count="SmsDashboardCtrl.stats.data.incoming"
+                                        data-when="{
+                                            '0': ('sms_statistics_incoming' | translate),
+                                            'one': ('sms_statistics_incoming' | translate),
+                                            'other': ('sms_statistics_incoming_plural' | translate)
+                                        }">
+                                </strong>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-4">
+                        <div class="sms-consumed-item">
+                            <div class="sms-consumed-item-icon">
+                                <i class="ovh-font ovh-font-SMSPlanned text-primary"></i>
+                            </div>
+                            <div class="sms-consumed-item-description">
+                                <strong class="fs18 text-primary" data-ng-bind="SmsDashboardCtrl.stats.data.jobs"></strong><br />
+                                <strong data-ng-pluralize
+                                        data-count="SmsDashboardCtrl.stats.data.jobs"
+                                        data-when="{
+                                            '0': ('sms_statistics_planned' | translate),
+                                            'one': ('sms_statistics_planned' | translate),
+                                            'other': ('sms_statistics_planned_plural' | translate)
+                                        }">
+                                </strong>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- .row -->
+            </div>
+        </div>
+    </div>
+
+</section>

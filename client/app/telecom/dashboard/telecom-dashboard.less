@@ -1,0 +1,56 @@
+@telecom-dashboard-status-size: @TopNavHeight;
+
+.telecom-dashboard {
+
+    .alert {
+        &.alert-ovh {
+            &.alert-ad {
+                background-color: @gray-lighter;
+                border-color: @UNIVERS;
+                color: @gray-dark;
+                .master{
+                    .ad-price {
+                        color: @UNIVERS;
+                    }
+                }
+            }
+        }
+    }
+
+    header {
+        .dashboard-vip-icon {
+            padding: 0rem 0.7rem 0.6rem 0.9rem;
+            overflow: hidden;
+            border-radius: 50%;
+            text-align: center;
+            color: white;
+            font-size: 2.4rem;
+            background-color: @UNIVERS;
+        }
+
+        @media (max-width: @screen-sm-max) {
+            .dashboard-vip-icon{
+                display: none;
+            }
+        }
+    }
+
+    div.flash {
+        div.alert {
+            margin: @md-margin-base @md-margin-base 0 @md-margin-base;
+            //float: right;
+            z-index: 9999;
+        }
+        .balance-price {
+            color: @brand-danger;
+            font-weight: bold;
+        }
+
+        @media (max-width: @screen-sm-max) {
+            div.alert {
+                margin: @sm-margin-top @sm-margin-side @sm-margin-bottom @sm-margin-side;
+            }
+        }
+    }
+
+}

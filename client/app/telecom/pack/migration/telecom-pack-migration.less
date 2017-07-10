@@ -1,0 +1,147 @@
+.telecom-pack-migration {
+    .table-comparison {
+        &__property {
+            &-name {
+                text-align: left;
+                font-weight: bold;
+
+                &--sublevel {
+                    text-align: left;
+                    font-weight: 400;
+                }
+            }
+
+            &-icon {
+                font-size: 2.4rem;
+                color: @UNIVERS;
+                margin-right: 8px;
+            }
+
+        }
+
+        &--item-base {
+            background-color: @gray-lighter;
+        }
+
+        &__cell {
+            border: none;
+            vertical-align: middle;
+
+            &--border {
+                border-bottom: solid 1px @UNIVERS;
+            }
+
+            &--head {
+                border-bottom: 2px solid @UNIVERS;
+                text-align: center;
+            }
+
+            .text-price {
+                font-weight: bold;
+                font-size: @font-size-h3;
+            }
+
+            small {
+                .text-price {
+                    font-size: 1em;
+                }
+            }
+
+            strong {
+                font-size: @FONT-SIZE-MAININFO;
+
+                &:not(.text-muted) {
+                    color: @UNIVERS;
+                }
+            }
+        }
+
+        &__value {
+            text-align: center;
+        }
+
+        @media screen and (max-width: @table-header-width-sm) {
+            display: block;
+            margin: 0 0 16px 0;
+            width: 100%;
+
+            &__cell {
+                display: block;
+
+                &--head {
+                    display: none;
+                }
+
+                &--empty {
+                    display: none;
+                }
+            }
+
+            &__property {
+                display: block;
+                text-align: right;
+
+                &-name {
+                    padding: 8px 0;
+                    margin-top: 24px;
+                    border-bottom: 2px solid @UNIVERS;
+
+                    &--sublevel {
+                        padding: 8px 0;
+                        margin-top: 24px;
+                        border-bottom: 2px solid @UNIVERS;
+                    }
+                }
+
+                &-category {
+                    padding-bottom: 0;
+                    border-bottom: 0;
+                }
+            }
+
+            &__value {
+                padding: 8px 16px;
+                border-bottom: 1px solid #bbbdbf;
+                text-align: right;
+
+                &::before {
+                    content: attr(data-title);
+                    display: block;
+                    text-align: left;
+                }
+
+                &--button {
+                    padding: 16px 0;
+                    border-bottom: none;
+
+                    &::before {
+                        display: inline-block;
+                        margin-right: 16px;
+                        font-size: @FONT-SIZE-MAININFO;
+                        font-weight: bold;
+                    }
+                }
+
+                .input-number-spinner {
+                    float: right;
+                }
+            }
+
+            &__body, &__foot {
+                display: block;
+            }
+
+            &__foot {
+                margin-top: 32px;
+            }
+        }
+    }
+
+    .text-asterisk {
+        &:before {
+            display: inline-block;
+            content: "*";
+            padding-right: 4px;
+        }
+    }
+}

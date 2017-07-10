@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<translations>
+   <translation id="telecom_siteBuilders_service_title" qtlid="384220">Mano svetainės</translation>
+   <translation id="telecom_siteBuilders_domain" qtlid="8458">Domenas</translation>
+   <translation id="telecom_siteBuilders_date" qtlid="26419">Sukūrimo data</translation>
+   <translation id="telecom_siteBuilders_state" qtlid="33790">Būsena</translation>
+   <translation id="telecom_siteBuilders_actions" qtlid="72809">Veiksmai</translation>
+   <translation id="telecom_siteBuilders_state_ok" qtlid="55133">Įjungtas</translation>
+   <translation id="telecom_siteBuilders_state_toDelete" qtlid="152778">Trinama</translation>
+   <translation id="telecom_siteBuilders_go_to_admin" qtlid="384233">Pereiti prie svetainės administravimo (naujame lange)</translation>
+   <translation id="telecom_siteBuilders_empty" qtlid="384246">Jokios svetainės</translation>
+</translations>

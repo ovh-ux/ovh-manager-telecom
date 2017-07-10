@@ -1,0 +1,73 @@
+<div class="widget-presentation">
+
+    <h2 class="widget-presentation-title" data-translate="telecom_dashboard_bill_title"></h2>
+
+    <div class="table-responsive-vertical">
+        <table class="table table-pretty table-hover table-stripped">
+            <caption class="sr-only" data-translate="telecom_dashboard_bill_title"></caption>
+            <thead>
+                <tr>
+                    <th scope="col">
+                        <button type="button"
+                                class="btn btn-default"
+                                data-ng-click="BillsCtrl.sortby = 'date'; BillsCtrl.reverse=!BillsCtrl.reverse"
+                                title="{{::'telecom_dashboard_date' | translate}}">
+                            {{::'telecom_dashboard_date' | translate}}
+                            <span class="fa fa-sort-asc"
+                                  aria-hidden="true"
+                                  data-ng-class="{'asc-selected': BillsCtrl.reverse && BillsCtrl.sortby === 'date'}"></span>
+                            <span class="fa fa-sort-desc sort-desc-left"
+                                  aria-hidden="true"
+                                  data-ng-class="{'desc-selected': !BillsCtrl.reverse && BillsCtrl.sortby === 'date'}"></span>
+                        </button>
+                    </th>
+                    <th scope="col" data-translate="telecom_dashboard_references"></th>
+                    <th scope="col" data-translate="telecom_dashboard_total_price"></th>
+                    <th scope="col" data-translate="telecom_dashboard_download"></th>
+                </tr>
+            </thead>
+
+            <tbody data-ng-if="!BillsCtrl.loaders.bills">
+                <tr data-ng-if="BillsCtrl.last.length > 0" data-ng-repeat="lastBill in BillsCtrl.last | orderBy:BillsCtrl.sortby:BillsCtrl.reverse track by lastBill.billId">
+                    <th scope="row" data-title="{{'telecom_dashboard_date' | translate}}">{{lastBill.date | date:'shortDate'}}</th>
+                    <td data-title="{{'telecom_dashboard_references' | translate}}">{{::lastBill.billId}}</td>
+                    <td data-title="{{'telecom_dashboard_total_price' | translate}}">{{::lastBill.priceWithTax.text}}</td>
+                    <td data-title="{{'telecom_dashboard_download' | translate}}" class="col-mobile-button-big">
+                        <a class="telecom-link"
+                           target=_blank
+                           data-ng-href="{{lastBill.url}}"
+                           title="{{::'telecom_dashboard_bill_url' | translate}}">
+                            <span class="ovh-font ovh-font-newtab fs20" aria-hidden="true"></span>
+                        </a>
+                        <a class="telecom-link left-space-m16"
+                           target=_blank
+                           data-ng-href="{{lastBill.pdfUrl}}"
+                           title="{{::'telecom_dashboard_bill_pdf' | translate}}">
+                            <span class="ovh-font ovh-font-export-pdf fs20" aria-hidden="true"></span>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="text-center table-pretty-no-content bottom-space-m16"
+         data-ng-if="BillsCtrl.loaders.bills"
+         data-spinner>
+    </div>
+
+    <div class="text-center table-pretty-no-content bottom-space-m16"
+         data-ng-if="!BillsCtrl.loaders.bills && BillsCtrl.last.length === 0"
+         data-translate="telecom_dashboard_bill_none">
+    </div>
+
+    <div data-ng-if="BillsCtrl.last.length === BillsCtrl.amountBillsDisplayed" class="bottom-space-m32 text-right">
+        <a class="telecom-link"
+           data-ng-href="{{ BillsCtrl.links.billing }}"
+           title="{{::'telecom_dashboard_bill_more' | translate}}"
+           target="_blank">
+            <span class="ovh-font ovh-font-details fs16" aria-hidden="true"></span>
+            <span data-translate="telecom_dashboard_bill_more"></span>
+        </a>
+    </div>
+</div>

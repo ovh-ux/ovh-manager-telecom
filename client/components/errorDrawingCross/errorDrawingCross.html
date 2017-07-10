@@ -1,0 +1,17 @@
+<div class="top-space-m24">
+    <div class="row text-center">
+        <div class="col-xs-12">
+            <div class="errorDrawingCross" data-ng-class="{
+                'draw': $ctrl.drawErrorCross
+            }">
+              <svg width="50" height="50" viewBox="0 0 50 50">
+                  <line class="firstLine" x1="0" y1="0" x2="50" y2="50" />
+                  <line class="secondLine"  x1="0" y1="50" x2="50" y2="0" />
+              </svg>
+            </div>
+        </div>
+    </div>
+    <div class="row space-m0">
+        <div class="col-xs-12 text-center" data-ng-transclude></div>
+    </div>
+</div>

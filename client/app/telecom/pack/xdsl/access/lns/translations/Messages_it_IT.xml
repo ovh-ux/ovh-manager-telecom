@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<translations>
+   <translation id="xdsl_access_lns_curent" qtlid="309347">LNS attuale:</translation>
+   <translation id="xdsl_access_lns_change" qtlid="309360">Modifica LNS:</translation>
+   <translation id="xdsl_access_lns_submit" qtlid="26047">Conferma</translation>
+   <translation id="xdsl_access_lns_doing" qtlid="309373">Modifica LNS in corso...</translation>
+   <translation id="xdsl_access_lns_an_error_ocurred" qtlid="309386">[LNS] Si è verificato un errore!</translation>
+   <translation id="xdsl_access_lns_description" qtlid="309399">LNS corrisponde al gateway di uscita utilizzato per l'accesso a Internet. Il tuo traffico transita dal gateway che hai scelto tra quelli proposti. Questa funzionalità non è disponibile su alcune linee (unbundling OVH e FT).</translation>
+   <translation id="xdsl_access_lns_warning" qtlid="309412">La modifica diventerà effettiva entro 5-10 minuti.</translation>
+</translations>

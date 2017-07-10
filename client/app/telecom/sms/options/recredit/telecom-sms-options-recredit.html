@@ -1,0 +1,94 @@
+<section class="telecom-sms-options-recredit">
+
+    <header>
+        <section-back-link section-back-link-to-state="telecom.sms.options"
+                           section-back-link-title="{{ 'sms_section_back_link' | translate }}">
+        </section-back-link>
+        <h1 data-translate="sms_options_recredit_title"></h1>
+    </header>
+
+    <div class="telecom-section-content">
+
+        <div class="row">
+            <div class="col-xs-12 widget-presentation">
+
+                <header class="widget-presentation-header">
+                    <h2 class="widget-presentation-title" data-translate="sms_options_recredit_information_title"></h2>
+                </header>
+
+                <p class="bottom-space-m12 lh22"
+                   data-translate="sms_options_recredit_information_text">
+                </p>
+                <p class="bottom-space-m12 lh22"
+                   data-translate="sms_options_recredit_information_note">
+                </p>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 widget-presentation">
+
+                <header class="widget-presentation-header">
+                    <h2 class="widget-presentation-title" data-translate="sms_options_recredit_manage_title"></h2>
+                </header>
+
+                <div class="text-center" data-ng-if="TelecomSmsOptionsRecreditCtrl.loading.init">
+                    <spinner></spinner>
+                </div>
+
+                <ul class="list-unstyled bottom-space-m20 lh22"
+                    data-ng-if="!TelecomSmsOptionsRecreditCtrl.loading.init">
+                    <li class="bottom-space-m12">
+                        <div class="row">
+                            <div class="col-xs-12 col-md-3">
+                                <strong data-translate="sms_options_recredit_manage_threshold_label"></strong>
+                            </div>
+                            <div class="col-xs-12 col-md-9">
+                                <span data-translate="sms_options_recredit_manage_threshold_text"
+                                      data-translate-values="{ creditThresholdForAutomaticRecredit: TelecomSmsOptionsRecreditCtrl.service.creditThresholdForAutomaticRecredit }">
+                                </span>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="row">
+                            <div class="col-xs-12 col-md-3">
+                                <strong data-translate="sms_options_recredit_manage_quantity_label"></strong>
+                            </div>
+                            <div class="col-xs-12 col-md-9">
+                                <span data-ng-if="TelecomSmsOptionsRecreditCtrl.service.automaticRecreditAmount"
+                                      data-translate="sms_options_recredit_manage_quantity_text"
+                                      data-translate-values="{ automaticRecreditAmount: TelecomSmsOptionsRecreditCtrl.service.automaticRecreditAmount }">
+                                </span>
+                                <span data-ng-if="!TelecomSmsOptionsRecreditCtrl.service.automaticRecreditAmount"
+                                      data-translate="sms_options_recredit_manage_quantity_empty_text">
+                                </span>
+
+                                <span data-ng-if="!TelecomSmsOptionsRecreditCtrl.loading.price && TelecomSmsOptionsRecreditCtrl.service.price"
+                                      data-translate="sms_options_recredit_manage_quantity_price_text"
+                                      data-translate-values="{ price: TelecomSmsOptionsRecreditCtrl.service.price.text }">
+                                </span>
+                                <span data-ng-if="TelecomSmsOptionsRecreditCtrl.loading.price">
+                                    <spinner></spinner>
+                                </span>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+
+                <button
+                    type="button"
+                    class="btn btn-primary"
+                    data-ng-if="!TelecomSmsOptionsRecreditCtrl.loading.init"
+                    data-ng-click="TelecomSmsOptionsRecreditCtrl.update(TelecomSmsOptionsRecreditCtrl.service)">
+                    <i class="ovh-font ovh-font-editer right-space-m4" aria-hidden="true"></i>
+                    <span data-translate="modify"></span>
+                </button>
+
+            </div>
+        </div>
+
+    </div>
+
+</section>

@@ -1,0 +1,70 @@
+<section class="telecom-sms-phonebooks-create">
+
+    <header role="banner">
+        <section-back-link section-back-link-to-state="telecom.sms.phonebooks"
+                           section-back-link-title="{{:: 'sms_phonebooks_create_back_link' | translate }}">
+        </section-back-link>
+        <h1 data-translate="sms_phonebooks_phonebook_create"></h1>
+    </header>
+
+    <main class="telecom-section-content"
+          role="main">
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-6">
+                <form name="phonebookCreateForm"
+                      class="ovh-form-flat"
+                      novalidate
+                      data-ng-submit="PhonebooksCreateCtrl.create()">
+                    <div class="form-group bottom-space-m16" data-flat-input-container>
+                        <label for="name"
+                               class="control-label"
+                               data-translate="sms_phonebooks_phonebook_create_name_placeholder">
+                        </label>
+                        <input
+                            type="text"
+                            name="name"
+                            id="name"
+                            class="form-control"
+                            autofocus
+                            required
+                            data-ng-model="PhonebooksCreateCtrl.phonebookToAdd.name"
+                            data-ng-pattern="/^[\w\s.\-À-ú]*$/"
+                            data-ng-maxlength="50"
+                            data-translate-attr="{ placeholder: 'sms_phonebooks_phonebook_create_name_placeholder' }" />
+                        <div role="alert"
+                             data-ng-messages="phonebookCreateForm.name.$dirty && phonebookCreateForm.name.$error">
+                            <p class="text-danger"
+                               data-ng-message="required"
+                               data-translate="sms_phonebooks_phonebook_create_name_error_required">
+                            </p>
+                            <p class="text-danger"
+                               data-ng-message="pattern"
+                               data-translate="sms_phonebooks_phonebook_create_name_error_pattern">
+                            </p>
+                            <p class="text-danger"
+                               data-ng-message="maxlength"
+                               data-translate="sms_phonebooks_phonebook_create_name_error_maxlength">
+                            </p>
+                        </div>
+                    </div>
+                    <div class="form-group bottom-space-m16">
+                        <button
+                            type="submit"
+                            class="btn btn-primary"
+                            data-ng-disabled="phonebookCreateForm.$invalid || PhonebooksCreateCtrl.phonebookToAdd.isAdding">
+                            <span data-translate="sms_phonebooks_create"></span>
+                            <spinner class="left-space-m4"
+                                     data-ng-if="PhonebooksCreateCtrl.phonebookToAdd.isAdding">
+                            </spinner>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </main>
+    <!-- /.telecom-section-content -->
+
+</section>
+<!-- /.telecom-sms-phonebooks-create -->

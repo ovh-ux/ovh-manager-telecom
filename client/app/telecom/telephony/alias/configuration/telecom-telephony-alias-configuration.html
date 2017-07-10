@@ -1,0 +1,20 @@
+<div class="telephony-group-alias-configuration">
+
+    <bouncing-box-loader data-ng-if="AliasConfigurationCtrl.loading.init">
+        <h1 data-translate="loading"></h1>
+    </bouncing-box-loader>
+
+    <div data-ng-if="!AliasConfigurationCtrl.loading.init">
+
+        <telecom-v4-links data-ng-if="!AliasConfigurationCtrl.isSubwayPlanActive()"
+                          data-telecom-v4-links="AliasConfigurationCtrl.actions">
+        </telecom-v4-links>
+
+        <telephony-number data-ng-if="AliasConfigurationCtrl.isSubwayPlanActive()"
+                          data-telephony-number="AliasConfigurationCtrl.number"
+                          data-telephony-number-feature-actions="AliasConfigurationCtrl.actions">
+        </telephony-number>
+
+    </div>
+
+</div>

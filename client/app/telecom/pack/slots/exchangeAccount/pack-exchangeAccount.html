@@ -1,0 +1,35 @@
+<div data-ng-controller="PackExchangeAccountCtrl as ExchangeAccount">
+
+    <div data-ng-include="'app/common/dashboard/service/loading.html'" data-ng-if="loaders.services"></div>
+    <div data-ng-include="'app/common/dashboard/service/no-element.html'" data-ng-if="!loaders.services && ExchangeAccount.services.length == 0"></div>
+    <ul class="services-list" data-ng-if="!loaders.services && ExchangeAccount.services.length > 0">
+        <li class="service-item" data-ng-repeat="service in ExchangeAccount.services track by service.id">
+            <a class="service-button"
+               data-ng-href="{{ service.managerUrl }}"
+               target="_blank"
+               rel="noopener">
+                <span class="ovh-font ovh-font-mail" aria-hidden="true"></span>
+
+                <div class="service-button-description">
+                    <div class="description-title"
+                         data-ng-bind="service.primaryEmailAddress">
+                    </div>
+                    <div class="description-subtext"
+                         data-ng-bind="service.domain">
+                    </div>
+                </div>
+
+                <span class="ovh-font ovh-font-arrow-right" aria-hidden="true"></span>
+            </a>
+        </li>
+    </ul>
+
+    <a data-ng-if="service.available > 0"
+       data-a-disabled="true"
+       class="pull-right telecom-link text-disabled order-service"
+       title="{{:: 'common_order_activate_service' | translate }}"
+       data-uib-tooltip="{{ ::'coming_soon' | translate }}">
+        <span class="ovh-font ovh-font-1x3 ovh-font-activer right-space-m4" aria-hidden="true"></span>
+        <span class="data-ng-binding" data-translate="common_order_activate_service"></span>
+    </a>
+</div>

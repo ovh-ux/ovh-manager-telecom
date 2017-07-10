@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<translations>
+   <translation id="telephony_alias_configuration_back_link" qtlid="332866">Retour à la configuration</translation>
+
+   <translation id="telephony_alias_configuration_actions_number_modification_new" qtlid="332827">Modifier le type du numéro</translation>
+   <translation id="telephony_alias_configuration_actions_number_redirect_modification" qtlid="332840">Gérer la redirection</translation>
+
+<!-- HUNTINGS -->
+   <translation id="telephony_alias_configuration_actions_number_hunting_beta" qtlid="356797">Bêta des files d'appels +</translation>
+   <translation id="telephony_alias_configuration_actions_number_hunting_mode" qtlid="340354">Gérer les options</translation>
+   <translation id="telephony_alias_configuration_actions_number_hunting_members" qtlid="356810">Gérer les membres</translation>
+   <translation id="telephony_alias_configuration_actions_number_hunting_slots" qtlid="335154">Gérer les plages horaires</translation>
+   <translation id="telephony_alias_configuration_actions_number_hunting_events" qtlid="335167">Gérer les fermetures exceptionnelles</translation>
+   <translation id="telephony_alias_configuration_actions_number_hunting_filtering" qtlid="356823">Gérer le filtrage d'appel</translation>
+
+<!-- EASYHUNTING -->
+
+<!-- CLOUDHUNTING -->
+   <translation id="telephony_alias_configuration_actions_number_cloud_hunting_events" qtlid="356836">Gérer les crénaux exceptionnels</translation>
+   <translation id="telephony_alias_configuration_actions_number_cloud_hunting_configuration" qtlid="356849">Gérer le plan de numérotation</translation>
+
+<!-- CONFERENCE -->
+   <translation id="telephony_alias_configuration_actions_number_manage_conference" qtlid="356862">Conférence téléphonique</translation>
+
+<!-- EASYPABX -->
+   <translation id="telephony_alias_configuration_actions_number_easy_pabx_music" qtlid="356875">Gérer les musiques</translation>
+
+<!-- SVI -->
+   <translation id="telephony_alias_configuration_actions_number_svi_script_address" qtlid="356888">Gérer les paramètres du serveur vocal</translation>
+
+   <translation id="telephony_alias_configuration_load_error" qtlid="356901">Oups ! Une erreur est survenue lors du chargement du numéro.</translation>
+</translations>

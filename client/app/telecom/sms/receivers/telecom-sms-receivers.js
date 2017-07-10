@@ -1,0 +1,19 @@
+angular.module("managerApp").config(function ($stateProvider) {
+    "use strict";
+
+    $stateProvider.state("telecom.sms.receivers", {
+        url: "/receivers",
+        views: {
+            smsInnerView: {
+                templateUrl: "app/telecom/sms/receivers/telecom-sms-receivers.html",
+                controller: "TelecomSmsReceiversCtrl",
+                controllerAs: "SmsReceiversCtrl"
+            }
+        },
+        translations: [
+            "common",
+            "telecom/sms",
+            "telecom/sms/receivers"
+        ]
+    });
+});

@@ -1,0 +1,30 @@
+<section class="telephony-group-line-displayNumber">
+
+    <header>
+        <section-back-link section-back-link-to-state="telecom.telephony.line.calls"
+                           section-back-link-title="{{ 'telephony_line_calls_back_link' | translate }}">
+        </section-back-link>
+        <h1 data-translate="telephony_line_actions_line_calls_abbreviated_numbers_title"></h1>
+    </header>
+
+</section>
+
+<bouncing-box-loader data-ng-if="LineAbbreviatedNumbersCtrl.loading.init">
+    <h2 data-translate="loading"></h2>
+</bouncing-box-loader>
+
+<div class="telecom-section-content" data-ng-hide="LineAbbreviatedNumbersCtrl.loading.init">
+    <p data-translate="telephony_line_actions_line_calls_abbreviated_numbers_explaination"></p>
+
+    <telecom-telephony-abbreviated-numbers
+            data-abbreviated-numbers="LineAbbreviatedNumbersCtrl.abbreviatedNumbers"
+            data-abbreviated-number-pattern="LineAbbreviatedNumbersCtrl.pattern"
+            data-loading="LineAbbreviatedNumbersCtrl.loading"
+            data-remove-callback="LineAbbreviatedNumbersCtrl.remove(value)"
+            data-insert-callback="LineAbbreviatedNumbersCtrl.insert(value)"
+            data-update-callback="LineAbbreviatedNumbersCtrl.update(value)"
+            data-reload-callback="LineAbbreviatedNumbersCtrl.load()"
+            data-export-filename="LineAbbreviatedNumbersCtrl.exportFilename"
+            data-v4redirect="LineAbbreviatedNumbersCtrl.v4redirect">
+    </telecom-telephony-abbreviated-numbers>
+</div>

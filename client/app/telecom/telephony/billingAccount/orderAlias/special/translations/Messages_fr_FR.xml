@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<translations>
+   <translation id="telephony_order_special_title" qtlid="334010">Commander un numéro spécial</translation>
+   <translation id="telephony_order_special_submit_title" qtlid="334010">Commander un numéro spécial</translation>
+   <translation id="telephony_order_special_amount_title" qtlid="333399">Je commande</translation>
+   <translation id="telephony_order_special_amount_title" qtlid="333412">Nombre de numéros&#160;:</translation>
+   <translation id="telephony_order_special_range_title" qtlid="346846">Plage&#160;:</translation>
+   <translation id="telephony_order_special_typology_title" qtlid="346859">Typologie&#160;:</translation>
+   <translation id="telephony_order_special_specific_title" qtlid="333451">Choix du numéro</translation>
+   <translation id="telephony_order_special_retractation_title" qtlid="319973">Droit de rétractation</translation>
+   <translation id="telephony_order_special_address_title" qtlid="333464">Coordonnées du titulaire du numéro</translation>
+
+   <translation id="telephony_order_special_zone_tip" qtlid="333477">Ville ou code postal</translation>
+
+   <translation id="telephony_order_special_numbers_error" qtlid="333490">Impossible de charger la liste des présélections de numéros.</translation>
+
+   <translation id="telephony_order_special_order_error" qtlid="346872">La commande de numéro(s) spécial(aux) a échoué. Veuillez réessayer ultérieurement.</translation>
+
+   <translation id="telephony_order_special_order_success" qtlid="333516">Numéro(s) géographique(s) commandé(s). Veuillez régler votre commande.</translation>
+   <translation id="telephony_order_special_range_error" qtlid="346885">Impossible de charger les plages de numéros.</translation>
+   <translation id="telephony_order_specific_typology_error" qtlid="346898">Impossible de charger les typologies de numéros.</translation>
+
+   <translation id="telephony_order_specific_typology_access_label" qtlid="346911">Services délivrant des Codes d'accès</translation>
+   <translation id="telephony_order_specific_typology_announced_label" qtlid="346924">Petites annonces</translation>
+   <translation id="telephony_order_specific_typology_conferencing_label" qtlid="346937">Services de téléphonie/téléconférence</translation>
+   <translation id="telephony_order_specific_typology_contentsAuto_label" qtlid="346950">Édition de contenus automatisée, délivrés par un automate</translation>
+   <translation id="telephony_order_specific_typology_contentsManual_label" qtlid="346963">Édition de contenu de services délivrés par des personnes physiques qualifiées</translation>
+   <translation id="telephony_order_specific_typology_games_label" qtlid="346976">Jeux</translation>
+   <translation id="telephony_order_specific_typology_linking_label" qtlid="346989">Services de mise en relation</translation>
+   <translation id="telephony_order_specific_typology_m2m_label" qtlid="347002">Services de Machine à machine</translation>
+   <translation id="telephony_order_specific_typology_relationship_label" qtlid="347015">Relation client entreprise / administration / association</translation>
+
+   <translation id="telephony_order_specific_typology_adults_label">Contenu pour adultes</translation>
+   <translation id="telephony_order_specific_typology_content_label" qtlid="347041">Sonneries, logos</translation>
+   <translation id="telephony_order_specific_typology_general_label" qtlid="69341">Général</translation>
+   <translation id="telephony_order_specific_typology_relaxing_label" qtlid="347054">Services de détente</translation>
+</translations>

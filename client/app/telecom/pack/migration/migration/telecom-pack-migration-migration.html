@@ -1,0 +1,31 @@
+<div class="telecom-pack-migration-migration">
+
+    <div class="alert alert-info"
+         data-ng-if="MigrationCtrl.loading.migrate && MigrationCtrl.process.migrationDoing">
+         <i class="ovh-font ovh-font-filled-info"></i>
+        <p span data-translate="telecom_pack_migration_already_pending"></p>
+    </div>
+
+    <bouncing-box-loader data-ng-if="MigrationCtrl.loading.migrate">
+        <h2 class="top-space-m16"
+            data-translate="telecom_pack_migration_doing">
+        </h2>
+    </bouncing-box-loader>
+
+    <div data-ng-if="!MigrationCtrl.loading.migrate">
+
+        <div class="alert alert-success"
+             data-ng-if="MigrationCtrl.migrationStatus === 'success'">
+             <i class="ovh-font ovh-font-filled-success"></i>
+            <p data-translate="telecom_pack_migration_success_title"></p>
+        </div>
+
+        <div class="alert alert-danger"
+             data-ng-if="MigrationCtrl.migrationStatus === 'error'">
+             <i class="ovh-font ovh-font-filled-error"></i>
+            <p data-translate="telecom_pack_migration_error"></p>
+        </div>
+
+    </div>
+
+</div>

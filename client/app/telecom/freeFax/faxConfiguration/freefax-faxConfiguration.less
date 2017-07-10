@@ -1,0 +1,51 @@
+#freeFax-faxConfiguration {
+    .btn-fax-header-help {
+        i {
+            margin-top: -9px;
+        }
+    }
+
+    div.password-display {
+        position: relative;
+
+        button.input-password {
+            position: absolute;
+            right: 8px;
+            top: 7px;
+            padding: 0;
+            background-color: transparent;
+            border: none;
+            color: @text-color-mainInfo;
+            z-index: 10;
+
+            &:focus {
+                border: none;
+                outline: none;
+            }
+
+            svg.vision {
+                width: 21px;
+                height: 17px;
+                fill: @text-color-mainInfo;
+
+                &.eye {
+                    .input-password-see {
+                        display: initial;
+                    }
+                    .input-password-hide {
+                        display: none;
+                    }
+                }
+
+                &.eye-slash {
+                    .input-password-see {
+                        display: none;
+                    }
+                    .input-password-hide {
+                        display: initial;
+                    }
+                }
+            }
+        }
+    }
+}

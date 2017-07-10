@@ -1,0 +1,92 @@
+div.telephony-order {
+    border-bottom: solid 1px @table-border-color;
+
+    h3 {
+        font-weight: 700;
+        margin-bottom: 5px;
+
+        em {
+            font-style: normal;
+            color: @state-info-text;
+            font-weight: 600;
+        }
+    }
+
+    div.description {
+        font-size: 1.2em;
+        color: @text-color-content;
+        margin-bottom: 10px;
+    }
+
+    div.ordering {
+
+        div.cost {
+            display: inline-block;
+            vertical-align: top;
+            margin-right: 10px;
+
+            div.pricing {
+                text-align: right;
+                font-size: 1.2em;
+                color: @text-color-content;
+
+                span.cost {
+                    font-size: 1.1em;
+                    font-weight: 600;
+                }
+
+                span.lasting {
+                    font-size: 0.8em;
+                }
+            }
+            div.with-tax {
+                text-align: right;
+                color: @text-color-content;
+            }
+        }
+
+    }
+
+    div.action {
+        text-align: right;
+
+        a {
+            font-size: 1.8em;
+        }
+    }
+}
+
+#orderNumberForm {
+    label.group {
+        font-weight: 600;
+    }
+}
+
+section.telephony-group-order {
+
+    .ui-select-container {
+        span.form-control {
+            &.ui-select-toggle {
+                color: @gray-dark;
+            }
+        }
+        ul.ui-select-dropdown {
+            max-height: 100px;
+        }
+    }
+    .form-horizontal .control-label {
+        text-align: left;
+    }
+
+    .ui-select-bootstrap {
+        .ui-select-match-text {
+            span.flag-icon {
+                width: 15px;
+                line-height: 16px;
+            }
+            span.country-name {
+                width: initial;
+            }
+        }
+    } 
+}

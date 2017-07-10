@@ -1,0 +1,176 @@
+<form name="abbreviatedNumberForm"
+      id="abbreviatedNumberForm"
+      class="ovh-form-flat"
+      data-ng-submit="AbbreviatedNumberModal.send()">
+
+    <div class="modal-header" data-ng-if="AbbreviatedNumberModal.title">
+        <h3 class="modal-title" id="modal-title" data-ng-bind="AbbreviatedNumberModal.title"></h3>
+    </div>
+
+    <div class="modal-body">
+        <!-- Abbreviated number -->
+        <div class="form-group">
+            <div flat-input-container>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <label for="abbreviatedNumber"
+                               class="control-label"
+                               data-translate="telephony_abbreviated_numbers_id">
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <input
+                            type="text"
+                            name="abbreviatedNumber"
+                            id="abbreviatedNumber"
+                            class="form-control"
+                            data-translate
+                            translate-attr-placeholder="telephony_abbreviated_numbers_id"
+                            data-ng-pattern="AbbreviatedNumberModal.pattern.regexp"
+                            data-ui-validate="{available: 'true'}"
+                            required
+                            data-ng-readonly="AbbreviatedNumberModal.readOnly.abbreviatedNumber"
+                            data-ng-model="AbbreviatedNumberModal.data.abbreviatedNumber" />
+                    </div>
+                </div>
+                <div class="row" data-ng-if="abbreviatedNumberForm.$invalid && abbreviatedNumberForm.$dirty">
+                    <ul data-ng-messages="abbreviatedNumberForm.abbreviatedNumber.$error" role="alert" class="col-xs-12">
+                        <li data-ng-message="pattern" data-ng-bind="AbbreviatedNumberModal.pattern.errorMessage"></li>
+                        <li data-ng-message="available" data-translate="telephony_abbreviated_numbers_not_free_error"></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Number -->
+        <div class="form-group">
+            <div flat-input-container>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <label for="destinationNumber"
+                               class="control-label"
+                               data-translate="telephony_abbreviated_numbers_number">
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <input
+                            type="text"
+                            name="destinationNumber"
+                            id="destinationNumber"
+                            class="form-control"
+                            data-translate
+                            translate-attr-placeholder="telephony_abbreviated_numbers_number"
+                            data-ng-pattern="AbbreviatedNumberModal.numberPattern"
+                            required
+                            data-ng-readonly="AbbreviatedNumberModal.readOnly.destinationNumber"
+                            data-ng-model="AbbreviatedNumberModal.data.destinationNumber"/>
+                    </div>
+                </div>
+                <div class="row" data-ng-if="abbreviatedNumberForm.$invalid && abbreviatedNumberForm.$dirty">
+                    <ul data-ng-messages="abbreviatedNumberForm.destinationNumber.$error" role="alert" class="col-xs-12">
+                        <li data-ng-message="pattern" data-translate="telephony_abbreviated_numbers_number_error"></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Surname -->
+        <div class="form-group">
+            <div flat-input-container>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <label for="surname"
+                               class="control-label"
+                               data-translate="telephony_abbreviated_numbers_surname">
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <input
+                            type="text"
+                            name="surname"
+                            id="surname"
+                            class="form-control"
+                            data-translate
+                            translate-attr-placeholder="telephony_abbreviated_numbers_surname"
+                            maxlength="85"
+                            data-ng-pattern="AbbreviatedNumberModal.namePattern"
+                            required
+                            data-ng-readonly="AbbreviatedNumberModal.readOnly.surname"
+                            data-ng-model="AbbreviatedNumberModal.data.surname"/>
+                    </div>
+                </div>
+                <div class="row" data-ng-if="abbreviatedNumberForm.$invalid && abbreviatedNumberForm.$dirty">
+                    <ul data-ng-messages="abbreviatedNumberForm.surname.$error" role="alert" class="col-xs-12">
+                        <li data-ng-message="pattern" data-translate="telephony_abbreviated_numbers_name_error"></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Name -->
+        <div class="form-group">
+            <div flat-input-container>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <label for="name"
+                               class="control-label"
+                               data-translate="telephony_abbreviated_numbers_name">
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <input
+                            type="text"
+                            name="name"
+                            id="name"
+                            class="form-control"
+                            data-translate
+                            translate-attr-placeholder="telephony_abbreviated_numbers_name"
+                            maxlength="85"
+                            data-ng-pattern="AbbreviatedNumberModal.namePattern"
+                            required
+                            data-ng-readonly="AbbreviatedNumberModal.readOnly.name"
+                            data-ng-model="AbbreviatedNumberModal.data.name"/>
+                    </div>
+                </div>
+                <div class="row" data-ng-if="abbreviatedNumberForm.$invalid && abbreviatedNumberForm.$dirty">
+                    <ul data-ng-messages="abbreviatedNumberForm.name.$error" role="alert" class="col-xs-12">
+                        <li data-ng-message="pattern" data-translate="telephony_abbreviated_numbers_name_error"></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="modal-body" data-ng-if="AbbreviatedNumberModal.loading.updating">
+        <bouncing-box-loader>
+        </bouncing-box-loader>
+    </div>
+
+    <div class="modal-footer">
+        <button
+            type="button"
+            class="btn btn-default"
+            data-ng-click="AbbreviatedNumberModal.cancel()"
+            data-translate="cancel"
+            data-ng-disabled="">
+        </button>
+        <button
+            type="submit"
+            class="btn btn-primary"
+            data-translate="submit"
+            data-ng-disabled="abbreviatedNumberForm.$invalid">
+        </button>
+    </div>
+
+</form>

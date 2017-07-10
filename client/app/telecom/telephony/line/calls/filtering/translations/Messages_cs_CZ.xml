@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<translations>
+   <translation id="telephony_line_calls_filtering_title" qtlid="335141">Filtrage d'appels</translation>
+   <translation id="telephony_line_calls_filtering_info" qtlid="358695">Afin que votre configuration de filtrage soit active, veuillez sélectionner la liste à appliquer aux appels entrants et sortants.</translation>
+   <translation id="telephony_line_calls_filtering_enable" qtlid="358708">Activation du filtrage</translation>
+   <translation id="telephony_line_calls_filtering_new" qtlid="358721">Configurer de nouveaux filtrages</translation>
+   <translation id="telephony_line_calls_filtering_add" qtlid="37923">Přidat</translation>
+   <translation id="telephony_line_calls_filtering_apply" qtlid="41326">Provést změny</translation>
+   <translation id="telephony_line_calls_filtering_add_success" qtlid="358734">Ajout du filtre en cours</translation>
+   <translation id="telephony_line_calls_filtering_add_plural_success" qtlid="358747">Ajout des filtres en cours</translation>
+   <translation id="telephony_line_calls_filtering_add_already_exist" qtlid="358760">Ce filtre est déjà présent dans la liste.</translation>
+   <translation id="telephony_line_calls_filtering_helper" qtlid="69773">Asistent</translation>
+   <translation id="telephony_line_calls_filtering_helper_title" qtlid="23215">Pomocník při nastavení</translation>
+   <translation id="telephony_line_calls_filtering_csv_import" qtlid="358773">Import CSV</translation>
+   <translation id="telephony_line_calls_filtering_csv_filename" qtlid="358786">Filtrage</translation>
+   <translation id="telephony_line_calls_filtering_csv_invalid" qtlid="358799">Veuillez sélectionner un fichier au format CSV.</translation>
+   <translation id="telephony_line_calls_filtering_csv_parse_error" qtlid="358812">Le format du fichier CSV est invalide.</translation>
+   <translation id="telephony_line_calls_filtering_csv_import_success" qtlid="358825">Import en cours ...</translation>
+   <translation id="telephony_line_calls_filtering_config" qtlid="169849">Současné nastavení</translation>
+   <translation id="telephony_line_calls_filtering_number" qtlid="30778">Číslo</translation>
+   <translation id="telephony_line_calls_filtering_number_info" qtlid="358838">Vous avez la possibilité de saisir tout ou partie du numéro. (Exemple : +33123455678 le numéro complet ; +3312345 les numéros commençant par ces chiffres)</translation>
+   <translation id="telephony_line_calls_filtering_number_international" qtlid="358851">Au format international</translation>
+   <translation id="telephony_line_calls_filtering_nature" qtlid="93283">Typ čísla</translation>
+   <translation id="telephony_line_calls_filtering_nature_fax" qtlid="32926">Fax</translation>
+   <translation id="telephony_line_calls_filtering_nature_international" qtlid="358864">International</translation>
+   <translation id="telephony_line_calls_filtering_nature_services" qtlid="358877">Services OVH</translation>
+   <translation id="telephony_line_calls_filtering_nature_special" qtlid="358890">Numéro court</translation>
+   <translation id="telephony_line_calls_filtering_nature_voicemail" qtlid="88956">Záznamník</translation>
+   <translation id="telephony_line_calls_filtering_status" qtlid="26443">Stav</translation>
+   <translation id="telephony_line_calls_filtering_status_delete" qtlid="59699">Smazat</translation>
+   <translation id="telephony_line_calls_filtering_status_delete_success" qtlid="358903">Suppression en cours ...</translation>
+   <translation id="telephony_line_calls_filtering_status_new" qtlid="26791">Vytvoření</translation>
+   <translation id="telephony_line_calls_filtering_type" qtlid="2642">Typ</translation>
+   <translation id="telephony_line_calls_filtering_type_incoming" qtlid="358916">Appels entrants</translation>
+   <translation id="telephony_line_calls_filtering_type_outgoing" qtlid="358929">Appels sortants</translation>
+   <translation id="telephony_line_calls_filtering_list" qtlid="358942">Liste</translation>
+   <translation id="telephony_line_calls_filtering_list_white" qtlid="358955">Blanche</translation>
+   <translation id="telephony_line_calls_filtering_list_black" qtlid="358968">Noire</translation>
+   <translation id="telephony_line_calls_filtering_list_none" qtlid="358981">Aucune liste active</translation>
+   <translation id="telephony_line_calls_filtering_empty" qtlid="358994">Aucun filtre trouvé</translation>
+   <translation id="telephony_line_calls_filtering_loading" qtlid="242769">Načítání...</translation>
+   <translation id="telephony_line_calls_filtering_delete" qtlid="359007">Supprimer le filtre sélectionné</translation>
+   <translation id="telephony_line_calls_filtering_delete_plural" qtlid="359020">Supprimer les {{ nb }} filtres sélectionnés</translation>
+   <translation id="telephony_line_calls_filtering_export" qtlid="69881">Export</translation>
+   <translation id="telephony_line_calls_filtering_incoming" qtlid="359033">Filtrage appel entrant</translation>
+   <translation id="telephony_line_calls_filtering_outgoing" qtlid="359046">Filtrage appel sortant</translation>
+   <translation id="telephony_line_calls_filtering_anonymous_reject" qtlid="387185">Rejet des appels anonymes</translation>
+   <translation id="telephony_line_calls_filtering_do_not_disturb" qtlid="387198">Ne pas déranger</translation>
+   <translation id="telephony_line_calls_filtering_absent" qtlid="80058">Žádný člen</translation>
+   <translation id="telephony_line_calls_filtering_disabled" qtlid="359059">Pour activer le filtrage, veuillez sélectionner la liste à appliquer.</translation>
+   <translation id="telephony_line_calls_filtering_list_choose" qtlid="359072">Choisir la liste de filtrage ...</translation>
+   <translation id="telephony_line_calls_filtering_type_incomingBlackList" qtlid="359085">Appels entrants - Liste noire</translation>
+   <translation id="telephony_line_calls_filtering_type_outgoingBlackList" qtlid="359098">Appels sortants - Liste noire</translation>
+   <translation id="telephony_line_calls_filtering_type_incomingWhiteList" qtlid="359111">Appels entrants - Liste blanche</translation>
+   <translation id="telephony_line_calls_filtering_type_outgoingWhiteList" qtlid="359124">Appels sortants - Liste blanche</translation>
+   <translation id="telephony_line_calls_filtering_helper_mobile" qtlid="359137">Mobiles nationaux</translation>
+   <translation id="telephony_line_calls_filtering_helper_line" qtlid="359150">Fixes nationaux</translation>
+   <translation id="telephony_line_calls_filtering_helper_foreign" qtlid="359163">Numéros étrangers</translation>
+   <translation id="telephony_line_calls_filtering_helper_special" qtlid="58991">Specifická čísla</translation>
+   <translation id="telephony_line_calls_filtering_helper_short" qtlid="359176">Numéros courts</translation>
+</translations>

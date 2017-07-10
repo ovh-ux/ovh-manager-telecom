@@ -1,0 +1,152 @@
+<section class="telephony-group-line-consumption-incoming-calls">
+
+    <header>
+        <section-back-link section-back-link-to-state="telecom.telephony.line"
+                           section-back-link-title="{{:: 'telephony_group_line_section_back_link' | translate }}">
+        </section-back-link>
+        <h1 data-translate="telephony_line_restrictions_title"></h1>
+    </header>
+
+    <div class="telecom-section-content">
+
+        <div data-ng-if="LineRestrictionsCtrl.isLoading">
+            <bouncing-box-loader>
+                <h2 class="top-space-m16" data-translate="loading"></h2>
+            </bouncing-box-loader>
+        </div>
+
+        <div class="row" data-ng-if="!LineRestrictionsCtrl.isLoading">
+
+            <!-- LINE IP RESTRICTIONS -->
+            <div class="col-md-6 bottom-space-m32" data-ng-if="LineRestrictionsCtrl.lineOptionsForm">
+                <div class="widget-presentation">
+                    <h2 class="widget-presentation-title"
+                        data-translate="telephony_line_restrictions_line_title"></h2>
+                </div>
+                <p class="alert alert-info" role="alert">
+                    <i class="ovh-font ovh-font-info line-height-normal right-space-m4"></i>
+                    <span data-translate="telephony_line_restrictions_line_infos"></span>
+                </p>
+                <div class="top-space-m32 row">
+                    <div class="col-md-4">
+                        <strong data-translate="telephony_line_restrictions_authorized"></strong>
+                    </div>
+                    <div class="col-md-8">
+                        <p data-translate="telephony_line_restrictions_none"
+                           data-ng-if="LineRestrictionsCtrl.lineOptionsForm.ipRestrictions.length === 0"></p>
+                        <form name="lineOptionsForm"
+                              class="form-horizontal ovh-form-flat"
+                              data-ng-submit="LineRestrictionsCtrl.applyLineChanges()">
+                            <div class="row" data-ng-repeat="ip in LineRestrictionsCtrl.lineOptionsForm.ipRestrictions track by $index">
+                                <div class="col-xs-10" flat-input-container>
+                                    <input type="text"
+                                           class="form-control bottom-space-m4 lineIpInput"
+                                           placeholder="{{:: 'telephony_line_restrictions_ip' | translate }}"
+                                           data-ng-pattern="LineRestrictionsCtrl.ipValidator"
+                                           data-ng-trim="false"
+                                           required
+                                           data-ng-model="LineRestrictionsCtrl.lineOptionsForm.ipRestrictions[$index]" />
+                                </div>
+                                <div class="col-xs-2">
+                                    <button type="button"
+                                            class="btn no-style"
+                                            data-ng-click="LineRestrictionsCtrl.lineOptionsForm.ipRestrictions.splice($index, 1)">
+                                        <i class="ovh-font ovh-font-bin fs14 line-height-normal"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <button type="button"
+                                    class="btn btn-default top-space-m8"
+                                    data-translate="telephony_line_restrictions_add"
+                                    data-ng-disabled="LineRestrictionsCtrl.lineOptionsForm.ipRestrictions.length >= 6"
+                                    data-ng-click="LineRestrictionsCtrl.addLineRestriction()">
+                            </button>
+                            <div class="top-space-m16">
+                                <button type="button"
+                                        class="btn btn-default no-transition top-space-m8"
+                                        data-translate="telephony_line_restrictions_cancel"
+                                        data-ng-if="LineRestrictionsCtrl.hasLineRestrictionChanged() && !LineRestrictionsCtrl.isChangingLineOptions"
+                                        data-ng-click="LineRestrictionsCtrl.cancelLineChanges()">
+                                </button>
+                                <button type="submit"
+                                        class="btn btn-primary top-space-m8"
+                                        data-ng-disabled="!LineRestrictionsCtrl.hasLineRestrictionChanged() || LineRestrictionsCtrl.isChangingLineOptions || LineRestrictionsCtrl.changeLineSuccess || lineOptionsForm.$invalid">
+                                    <span data-translate="telephony_line_restrictions_apply"></span>
+                                    <i data-ng-if="LineRestrictionsCtrl.changeLineSuccess" class="ovh-font ovh-font-success fs14 left-space-m4"></i>
+                                    <spinner class="left-space-m4" data-ng-if="LineRestrictionsCtrl.isChangingLineOptions"></spinner>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ACCOUNT IP RESTRICTIONS -->
+            <div class="col-md-6 bottom-space-m32">
+                <div class="widget-presentation">
+                    <h2 class="widget-presentation-title"
+                        data-translate="telephony_line_restrictions_account_title"></h2>
+                </div>
+                <p class="alert alert-info" role="alert">
+                    <i class="ovh-font ovh-font-info line-height-normal right-space-m4"></i>
+                    <span data-translate="telephony_line_restrictions_account_infos"></span>
+                </p>
+                <div class="top-space-m32 row">
+                    <div class="col-md-4">
+                        <strong data-translate="telephony_line_restrictions_authorized"></strong>
+                    </div>
+                    <div class="col-md-8">
+                        <p data-translate="telephony_line_restrictions_none"
+                           data-ng-if="LineRestrictionsCtrl.accountRestrictionsForm.length === 0"></p>
+                        <form name="accountRestrictionsForm"
+                              class="form-horizontal ovh-form-flat"
+                              data-ng-submit="LineRestrictionsCtrl.applyAccountChanges()">
+                            <div class="row" data-ng-repeat="ip in LineRestrictionsCtrl.accountRestrictionsForm track by $index">
+                                <div class="col-xs-10" flat-input-container>
+                                    <input type="text"
+                                           class="form-control bottom-space-m4 accountIpInput"
+                                           placeholder="{{:: 'telephony_line_restrictions_ip' | translate }}"
+                                           data-ng-pattern="LineRestrictionsCtrl.ipValidator"
+                                           data-ng-trim="false"
+                                           required
+                                           data-ng-model="LineRestrictionsCtrl.accountRestrictionsForm[$index].subnet" />
+                                </div>
+                                <div class="col-xs-2">
+                                    <button type="button"
+                                            class="btn no-style"
+                                            data-ng-click="LineRestrictionsCtrl.accountRestrictionsForm.splice($index, 1)">
+                                        <i class="ovh-font ovh-font-bin fs14 line-height-normal"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <button type="button"
+                                    class="btn btn-default top-space-m8"
+                                    data-translate="telephony_line_restrictions_add"
+                                    data-ng-disabled="LineRestrictionsCtrl.accountRestrictionsForm.length >= 6"
+                                    data-ng-click="LineRestrictionsCtrl.addAccountRestriction()">
+                            </button>
+                            <div class="top-space-m16">
+                                <button type="button"
+                                        class="btn btn-default no-transition top-space-m8"
+                                        data-translate="telephony_line_restrictions_cancel"
+                                        data-ng-if="LineRestrictionsCtrl.hasAccountRestrictionChanged() && !LineRestrictionsCtrl.isChangingAccountOptions"
+                                        data-ng-click="LineRestrictionsCtrl.cancelAccountChanges()">
+                                </button>
+                                <button type="submit"
+                                        class="btn btn-primary top-space-m8"
+                                        data-ng-disabled="!LineRestrictionsCtrl.hasAccountRestrictionChanged() || LineRestrictionsCtrl.isChangingAccountOptions || LineRestrictionsCtrl.changeAccountSuccess || accountRestrictionsForm.$invalid">
+                                    <span data-translate="telephony_line_restrictions_apply"></span>
+                                    <i data-ng-if="LineRestrictionsCtrl.changeAccountSuccess" class="ovh-font ovh-font-success fs14 left-space-m4"></i>
+                                    <spinner class="left-space-m4" data-ng-if="LineRestrictionsCtrl.isChangingAccountOptions"></spinner>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- first row -->
+
+    </div><!-- telecom section content -->
+
+</section>

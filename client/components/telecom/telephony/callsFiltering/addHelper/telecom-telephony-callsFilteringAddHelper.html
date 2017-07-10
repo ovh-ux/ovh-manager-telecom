@@ -1,0 +1,74 @@
+<form name="filteringHelperAddForm"
+      class="form-horizontal ovh-form-flat"
+      data-ng-submit="FilteringHelperCtrl.applyHelper()">
+
+    <div class="modal-header">
+        <h3 class="modal-title pull-left" data-translate="telephony_calls_filtering_helper_title"></h3>
+        <button type="button"
+                class="close pull-right"
+                aria-label="{{ ::'cancel' | translate }}"
+                data-ng-click="FilteringHelperCtrl.cancel()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <div class="modal-body">
+        <!-- TYPE -->
+        <div class="row top-space-m4">
+            <span class="col-md-6 top-space-m4">
+                <span data-translate="telephony_calls_filtering_list"></span>
+            </span>
+            <div class="col-md-6">
+                <select flat-select
+                    class="form-control"
+                    data-ng-model="FilteringHelperCtrl.type"
+                    required>
+                    <option value="" data-translate="telephony_calls_filtering_list_choose" disabled></option>
+                    <option value="incomingWhiteList" data-translate="telephony_calls_filtering_type_incomingWhiteList"></option>
+                    <option value="incomingBlackList" data-translate="telephony_calls_filtering_type_incomingBlackList"></option>
+                    <option data-ng-if="!FilteringHelperCtrl.disableOutgoing"
+                            value="outgoingWhiteList"
+                            data-translate="telephony_calls_filtering_type_outgoingWhiteList"></option>
+                    <option data-ng-if="!FilteringHelperCtrl.disableOutgoing"
+                            value="outgoingBlackList"
+                            data-translate="telephony_calls_filtering_type_outgoingBlackList"></option>
+                </select>
+            </div>
+        </div>
+
+        <!-- HELPER -->
+        <div class="row top-space-m4">
+            <span class="col-md-6 top-space-m4">
+                <span data-translate="telephony_calls_filtering_nature"></span>
+            </span>
+            <div class="col-md-6">
+                <select flat-select
+                    class="form-control"
+                    data-ng-model="FilteringHelperCtrl.helper"
+                    required>
+                    <option value="mobile" data-translate="telephony_calls_filtering_helper_mobile"></option>
+                    <option value="line" data-translate="telephony_calls_filtering_helper_line"></option>
+                    <option value="foreign" data-translate="telephony_calls_filtering_helper_foreign"></option>
+                    <option value="special" data-translate="telephony_calls_filtering_helper_special"></option>
+                    <option value="short" data-translate="telephony_calls_filtering_helper_short"></option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <!-- SUBMIT BUTTON -->
+        <div class="row top-space-m4">
+            <div class="col-xs-12">
+                <button type="submit"
+                        class="btn btn-default"
+                        data-ng-disabled="filteringHelperAddForm.$invalid || FilteringHelperCtrl.isLoading">
+                    <span data-translate="telephony_calls_filtering_apply"></span>
+                    <spinner class="left-space-m4" data-ng-if="FilteringHelperCtrl.isLoading"></spinner>
+                </button>
+            </div>
+        </div>
+    </div>
+
+</form>
+

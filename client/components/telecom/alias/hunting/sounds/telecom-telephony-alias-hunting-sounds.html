@@ -1,0 +1,59 @@
+<form name="easyHuntingSoundsHelper"
+      class="ovh-form-flat"
+      data-ng-if="$ctrl.isInitialized"
+      data-ng-submit="$ctrl.uploadFile()">
+
+    <div class="modal-header">
+        <h3 class="modal-title pull-left" data-translate="telephony_alias_hunting_sounds_manager"></h3>
+        <button type="button"
+                class="close pull-right"
+                aria-label="{{ ::'cancel' | translate }}"
+                data-ng-click="$ctrl.close()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <div class="modal-body clearfix">
+
+        <input-file data-ng-model="$ctrl.toUpload"
+                    data-ng-accept="audio/*"
+                    data-ng-accept-filter="$ctrl.checkValidAudioExtention(file)">
+            <i class="fa fa-upload right-space-m4"></i>
+            <span data-translate="telephony_alias_hunting_sounds_upload"></span>
+        </input-file>
+
+        <button type="submit"
+                class="btn btn-default top-space-m8 pull-right no-transition"
+                data-ng-disabled="$ctrl.isUploading"
+                data-ng-if="$ctrl.toUpload">
+            <span data-translate="submit"></span>
+            <spinner class="left-space-m4" data-ng-if="$ctrl.isUploading"></spinner>
+        </button>
+
+        <div data-ng-if="$ctrl.sounds.length" class="row">
+            <p class="col-xs-12 top-space-m16"
+               data-translate="telephony_alias_hunting_sounds_list"></p>
+        </div>
+        <ul data-ng-if="$ctrl.sounds.length">
+            <li class="row top-space-m4" data-ng-repeat="sound in $ctrl.sounds track by $index">
+                <button type="button"
+                        class="btn btn-default col-xs-12"
+                        data-ng-click="$ctrl.chooseSound(sound)">
+                    <span data-ng-bind="sound.name"></span>
+                </button>
+                <button type="button"
+                        class="btn no-style"
+                        title="{{:: 'telephony_alias_hunting_sounds_delete' | translate }}"
+                        data-ng-disabled="sound.isDeleting"
+                        data-ng-click="$ctrl.deleteSound(sound)">
+                    <i class="ovh-font ovh-font-wrong line-height-normal" data-ng-if="!sound.isDeleting"></i>
+                    <spinner data-ng-if="sound.isDeleting"></spinner>
+                </button>
+            </li>
+        </ul>
+
+    </div>
+
+</form>
+
+

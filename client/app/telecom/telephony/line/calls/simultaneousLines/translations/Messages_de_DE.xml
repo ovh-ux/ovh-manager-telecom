@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<translations>
+   <translation id="telephony_line_actions_line_calls_simultaneous_line_title" qtlid="303718">Gleichzeitige Anrufe</translation>
+   <translation id="telephony_line_actions_line_calls_simultaneous_line_load_error" qtlid="334686">Erreur lors de la lecture de la configuration.</translation>
+   <translation id="telephony_line_actions_line_calls_simultaneous_line_write_error" qtlid="387068">Oups ! Impossible de modifier le nombre d'appels simultanés.</translation>
+   <translation id="telephony_line_actions_line_calls_simultaneous_line_order_error" qtlid="387081">Impossible de générer le bon de commande.</translation>
+   <translation id="telephony_line_actions_line_calls_simultaneous_line_label" qtlid="335206">Nombre d'appels simultanés&#160;:</translation>
+   <translation id="telephony_line_actions_line_calls_simultaneous_line_support" qtlid="387094">Votre configuration accepte plus de 100 appels simultanés. Pour changer cette valeur, merci de contacter le support au 1007.</translation>
+   <translation id="telephony_line_actions_line_calls_simultaneous_line_price_vat" qtlid="360190">TVA&#160;:&#160;</translation>
+   <translation id="telephony_line_actions_line_calls_simultaneous_line_price_without_vat" qtlid="360164">Prix&#160;(HT)&#160;:&#160;</translation>
+   <translation id="telephony_line_actions_line_calls_simultaneous_line_price_total" qtlid="360177">Total&#160;(TTC)&#160;:&#160;</translation>
+   <translation id="telephony_line_actions_line_calls_simultaneous_order" qtlid="43558">Bestellen</translation>
+   <translation id="telephony_line_actions_line_calls_simultaneous_bc" qtlid="334387">Afin de finaliser votre demande, merci de valider ce</translation>
+   <translation id="telephony_line_actions_line_calls_simultaneous_url" qtlid="292800">Bestellschein </translation>
+   <translation id="telephony_line_actions_line_calls_simultaneous_order" qtlid="186219">Bestellschein erstellen</translation>
+   <translation id="telephony_line_actions_line_calls_simultaneous_offerTasks" qtlid="387107">Une suppression du nombre d'appels simultanés est en cours. Elle sera effective le {{executionDate}}.</translation>
+   <translation id="telephony_line_actions_line_calls_simultaneous_offerTasks_1" qtlid="387120">Vous ne pouvez pas modifier le nombre d'appels simultanés pendant cette période.</translation>
+   <translation id="telephony_line_actions_line_calls_simultaneous_remove_validate" qtlid="26047">Bestätigen</translation>
+   <translation id="telephony_line_actions_line_calls_simultaneous_remove_cancel" qtlid="37863">Abbrechen</translation>
+   <translation id="telephony_line_actions_line_calls_simultaneous_line_offer_task_error" qtlid="387133">Impossible de récupérer les tâches en cours.</translation>
+</translations>

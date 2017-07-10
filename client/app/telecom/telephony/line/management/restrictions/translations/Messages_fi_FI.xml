@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<translations>
+   <translation id="telephony_line_restrictions_title" qtlid="338092">Restrictions SIP par IP</translation>
+   <translation id="telephony_line_restrictions_line_title" qtlid="387666">Restrictions SIP de la ligne</translation>
+   <translation id="telephony_line_restrictions_account_title" qtlid="387679">Restrictions SIP associées à votre code client</translation>
+   <translation id="telephony_line_restrictions_line_infos" qtlid="387692">Ces restrictions sont utilisées sur la ligne actuellement sélectionnée.</translation>
+   <translation id="telephony_line_restrictions_account_infos" qtlid="387705">Ces restrictions sont utilisées lors de l'installation de nouvelles lignes commandées avec votre code client.</translation>
+   <translation id="telephony_line_restrictions_authorized" qtlid="387718">Réseaux IP autorisés</translation>
+   <translation id="telephony_line_restrictions_add" qtlid="387731">Ajouter une adresse IP</translation>
+   <translation id="telephony_line_restrictions_none" qtlid="387744">Aucune restriction</translation>
+   <translation id="telephony_line_restrictions_apply" qtlid="249107">Ota muutokset käyttöön</translation>
+   <translation id="telephony_line_restrictions_cancel" qtlid="37863">Peruuta</translation>
+   <translation id="telephony_line_restrictions_ip" qtlid="26191">IP-osoite</translation>
+   <translation id="telephony_line_restrictions_account_missing" qtlid="387757">Bientôt disponible.</translation>
+</translations>

@@ -1,0 +1,337 @@
+.colorize-event-categories(@color) {
+    background-color: fade(@color, 60%);
+    border-color: fade(@color, 60%);
+}
+
+.telephony-scheduler {
+    position: relative;
+
+    .scheduler-calendar {
+        position: relative;
+
+        .scheduler-ui-calendar {
+            position: relative;
+
+            // defining calendar event styles
+            a.fc-event {
+                color: @text-color;
+                cursor: pointer;
+
+                &.scheduler1 {
+                    .colorize-event-categories(@telephony-slot1-color);
+                }
+
+                &.scheduler2 {
+                    .colorize-event-categories(@telephony-slot2-color);
+                }
+
+                &.scheduler3 {
+                    .colorize-event-categories(@telephony-slot3-color);
+                }
+
+                &.holidays {
+                    .colorize-event-categories(@telephony-slot-available-color);
+                }
+            }
+
+            &.topZIndex {
+                z-index: 15;
+            }
+
+            .fc-day-header {
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+            }
+        }
+    }
+
+    .telephony-scheduler-filters {
+        button {
+            padding: @padding-base-vertical @padding-base-horizontal;
+            color: @text-disabled-color;
+
+            &:hover {
+                .telephony-time-condition-slot {
+                    font-weight: bold;
+
+                    .legend-description {
+                        font-weight: bold !important;
+                    }
+                }
+            }
+
+            &.active-slot {
+                .telephony-time-condition-slot {
+                    color: @text-color;
+
+                    .legend-description {
+                        color: @text-color !important;
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+.telephony-scheduler-time-condition-slots {
+    .telephony-time-condition-slot .legend-color.unavailable {
+        .colorize-event-categories(@telephony-slot-available-color);
+    }
+}
+
+.scheduler-overlay {
+    position: absolute;
+    z-index: 10;
+
+    .scheduler-overlay-backdrop {
+        background-color: #FFF;
+        opacity: @modal-backdrop-opacity;
+    }
+
+    .scheduler-overlay-loader {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+
+        bouncing-box-loader,
+        success-drawing-check {
+            height: auto;
+            width: 100%;
+        }
+    }
+}
+
+.telephony-scheduler-events-popup {
+    @event-page-width: 400px;
+    @event-page-width-mobile: 100%;
+    .telephony-scheduler-events {
+        height: 100%;
+
+        .event-wrapper {
+            overflow:hidden;
+            position: relative;
+
+            .event-pages-wrapper {
+                height: 100%;
+                transition: margin-left .5s;
+                margin-left: 0;
+
+                .event-page {
+                    height: 100%;
+                    float: left;
+
+                    .event-category {
+                        .dtd {
+                            padding: 0 0 0 @padding-base-horizontal;
+
+                            &.category-radio {
+                                width: 25px;
+                            }
+                        }
+
+                        .category-color {
+                            i {
+                                width: 35px;
+                                height: 24px;
+                                border-radius: 4px;
+                                display: inline-block;
+                            }
+                        }
+                    }
+
+                    &.page-left {
+                        .event-duration {
+                            button {
+                                line-height: 26px;
+                            }
+                        }
+
+                        .event-date {
+                            transition-duration: .5s;
+
+                            &.all-day {
+                                .event-date-hour {
+                                    display: none;
+                                }
+
+                                .event-date-date {
+                                    width: 100%;
+                                }
+                            }
+
+                            &.all-day-remove.all-day-remove-active .event-date-hour {
+                                display: none;
+                            }
+
+                            .event-date-date {
+                                transition: width .5s;
+
+                                label.input-group-addon {
+                                    vertical-align: middle;
+                                    cursor: pointer;
+                                }
+                            }
+
+                            .event-date-hour {
+                                .flat-select{
+                                    text-align-last: center;    // to center selected option
+
+                                    &:after {
+                                        content: "\f017";
+                                        font-size: 1.7em;
+                                        top: 4px;
+                                        right: 4px;
+                                    }
+                                }
+                            }
+                        }
+
+                        .event-description textarea {
+                            resize: none;
+                        }
+                    }
+
+                    &.page-right {
+                        .uib-datepicker {
+                            table.uib-monthpicker,
+                            table.uib-daypicker,
+                            table.uib-yearpicker {
+                                width: 100%;
+
+                                button.active {
+                                    // override btn-default rules
+                                    background-color: @btn-info-bg;
+                                    border-color: @btn-info-border;
+                                    color: #FFF;
+
+                                    .text-info {
+                                        color: #FFF;
+                                    }
+                                }
+
+                                .btn-info {
+                                    background-color: fadeout(@MANAGER_BUTTON_COLOR, 88%);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+
+    &:not(.popover-full-screen) {
+        .telephony-scheduler-events .event-wrapper {
+            width: @event-page-width;
+
+            .event-pages-wrapper {
+                width: @event-page-width * 2;
+
+                &.move {
+                    margin-left: -(@event-page-width);
+                }
+
+                .event-page {
+                    width: @event-page-width;
+                }
+            }
+        }
+    }
+
+    &.popover-full-screen {
+
+        .telephony-scheduler-events .event-wrapper {
+            width: @event-page-width-mobile;
+            height: 100%;
+
+            .event-pages-wrapper {
+                width: @event-page-width-mobile * 2;
+
+                &.move {
+                    margin-left: -(@event-page-width-mobile);
+                }
+
+                .event-page {
+                    width: @event-page-width-mobile / 2;
+                }
+            }
+        }
+    }
+}
+
+.telephony-scheduler-actions-menu {
+    &:not(.popover-full-screen) {
+        width: 350px;
+    }
+
+    .arrow {
+        right: 10px !important;
+    }
+
+    .popover-content {
+        .bottom-action {
+            background-color: @gray-light;
+            overflow: hidden;
+            max-height: 150px;
+            transition: max-height .5s;
+
+            .confirm-inner {
+                padding: 12px;
+            }
+
+            &.ng-hide {
+                max-height: 0;
+            }
+        }
+    }
+}
+
+.telecom-scheduler-export {
+    .category-filters {
+        button {
+            margin-bottom: 4px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+            padding: @padding-base-vertical @padding-base-horizontal;
+            color: @text-disabled-color;
+
+            &:hover {
+                font-weight: bold;
+            }
+
+            &.active-slot {
+                color: @text-color;
+            }
+        }
+    }
+}
+
+.telecom-scheduler-bank-holidays {
+    .bank-holidays-list {
+        .bank-holiday-item {
+            &:not(:last-child) {
+                border-bottom: 1px solid @gray-light;
+            }
+
+            label {
+                padding: 10px 15px;
+                cursor: pointer;
+
+                strong {
+                    color: @gray-base;
+                }
+
+                .dtd:first-child {
+                    width: 30px;
+                }
+            }
+        }
+    }
+}

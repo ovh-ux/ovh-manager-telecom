@@ -1,0 +1,46 @@
+.telephony-number-conference {
+
+    &-actions,
+    &-actions-item {
+        float: left;
+    }
+
+    button.participant-actions {
+        .makeRoundedButton(30px, 3px, 1.2em);
+    }
+
+    .participants-list {
+        .anchor-content {
+            min-width: 220px;
+        }
+    }
+
+    .participant-actions ~ i {
+        font-size: 1.6em;
+    }
+}
+
+.telephony-number-conference-participant-actions-menu {
+    margin-left: 3px;
+
+    &:not(.popover-full-screen) {
+        width: 350px;
+    }
+
+    .popover-content {
+        .bottom-action {
+            background-color: @gray-light;
+            overflow: hidden;
+            max-height: 150px;
+            transition: max-height .5s;
+
+            .confirm-inner {
+                padding: 12px;
+            }
+
+            &.ng-hide {
+                max-height: 0;
+            }
+        }
+    }
+}

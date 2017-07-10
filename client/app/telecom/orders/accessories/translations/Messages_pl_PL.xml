@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<translations>
+   <translation id="telecom_orders_accessories_title" qtlid="336857">Commander des accessoires</translation>
+   <translation id="telecom_orders_accessories_group_choice" qtlid="345910">Grupa telefoniczna</translation>
+   <translation id="telecom_orders_accessories_group_choice_label" qtlid="395869">Sélectionnez le groupe de téléphonie auquel lier la commande d'accessoires :</translation>
+   <translation id="telecom_orders_accessories_group_load_error" qtlid="395882">Oups ! Impossible de charger vos groupes de téléphonie.</translation>
+   <translation id="telecom_orders_accessories_order_error" qtlid="395895">Ce groupe ne comporte aucune ligne sur laquelle commander d'accessoire.</translation>
+</translations>

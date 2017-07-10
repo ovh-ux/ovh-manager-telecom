@@ -1,0 +1,36 @@
+<div data-ng-controller="PackHubicCtrl as Hubic">
+    <div data-ng-include="'app/common/dashboard/service/loading.html'" data-ng-if="Hubic.loaders.services"></div>
+    <div data-ng-include="'app/common/dashboard/service/no-hubic.html'" data-ng-if="!Hubic.loaders.services && !Hubic.services.length"></div>
+
+    <ul class="services-list" data-ng-if="!Hubic.loaders.services && Hubic.services.length">
+        <li class="service-item" data-ng-repeat="service in Hubic.services track by service.domain">
+
+            <a data-ng-href="{{service.url}}"
+               class="service-button"
+               target="_blank"
+               rel="noopener">
+                <span class="ovh-font ovh-font-cloud" aria-hidden="true"></span>
+                <div class="service-button-description">
+                    <div class="description-title" data-ng-bind="service.domain"></div>
+                    <div class="description-subtext">
+                        <span data-ng-bind="service.size"></span>
+                        <span data-ng-if="service.voucher"
+                              data-translate="pack_xdsl_hubic_voucher"
+                              data-translate-values="{voucher: service.voucher}"></span>
+                    </div>
+                </div>
+                <span class="ovh-font ovh-font-arrow-right" aria-hidden="true"></span>
+            </a>
+        </li>
+    </ul>
+
+    <div class="text-right">
+        <a data-ng-if="service.available > 0"
+           data-ui-sref="telecom.pack.hubic-activation"
+           class="telecom-link order-service"
+           data-translate-attr="{title: 'common_order_activate_service'}">
+            <span class="ovh-font ovh-font-activer fs16 right-space-m4" aria-hidden="true"></span>
+            <span class="data-ng-binding" data-translate="pack_xdsl_hubic_activate"></span>
+        </a>
+    </div>
+</div>

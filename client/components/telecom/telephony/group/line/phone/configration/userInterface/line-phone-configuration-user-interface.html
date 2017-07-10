@@ -1,0 +1,74 @@
+<div class="line-phone-configuration line-phone-configuration-user-interface">
+
+    <!-- OTHER CONFIGS - IF SOME -->
+    <line-phone-configuration data-ng-if="$ctrl.fakeConfigGroup"
+                              data-line-phone-configuration-group="$ctrl.fakeConfigGroup"
+                              data-line-phone-configuration-edit-mode="$ctrl.editMode"
+                              data-line-phone-configuration-expert-mode="$ctrl.expertMode">
+    </line-phone-configuration>
+
+    <!-- SCREEN CHOICE -->
+    <div class="btn-group bottom-space-m16"
+         data-ng-if="$ctrl.screenPages.length > 1">
+        <label class="btn btn-default"
+               data-ng-repeat="screen in $ctrl.screenPages track by $index"
+               data-ng-model="$ctrl.currentScreenPage"
+               data-uib-btn-radio="$index"
+               data-translate="telephony_line_phone_configuration_user_interface_screen"
+               data-translate-values="{ number: $index + 1 }">
+        </label>
+    </div>
+
+    <!-- CONSULT MODE -->
+    <dl data-ng-if="!$ctrl.editMode">
+        <dt data-ng-repeat-start="config in $ctrl.screenPages[$ctrl.currentScreenPage] track by $index"
+            data-translate="telephony_line_phone_configuration_config_user_interface_key"
+            data-translate-values="{ number: ($index + ($ctrl.currentScreenPage * $ctrl.configGroup.keysPerScreen) + 1) }"
+            data-ng-if="$ctrl.expertMode || (!$ctrl.expertMode && config.level === null)">
+        </dt>
+        <dd data-ng-repeat-end
+            class="bottom-space-m8"
+            data-ng-bind="config.value || '-'"
+            data-ng-if="$ctrl.expertMode || (!$ctrl.expertMode && config.level === null)">
+        </dd>
+    </dl>
+
+    <!-- EDIT MODE -->
+    <div data-ng-if="$ctrl.editMode">
+        <div data-ng-repeat="config in $ctrl.screenPages[$ctrl.currentScreenPage] track by $index"
+             data-ng-if="$ctrl.expertMode || (!$ctrl.expertMode && config.level === null)"
+             class="bottom-space-m8">
+
+            <div flat-input-container>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <label for="{{ config.name }}"
+                               data-translate="telephony_line_phone_configuration_config_user_interface_key"
+                               data-translate-values="{ number: ($index + ($ctrl.currentScreenPage * $ctrl.configGroup.keysPerScreen) + 1) }">
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6">
+                         <input type="text"
+                                id="{{ config.name }}"
+                                name="{{ config.name }}"
+                                data-ng-model="config.value"
+                                class="form-control"
+                                placeholder="{{ 'telephony_line_phone_configuration_config_user_interface_key' | translate:$ctrl.getKeyIndex($index) }}"
+                                data-ng-maxlength="{{ config.maxlength }}">
+                    </div>
+                </div>
+                <div data-ng-messages="$ctrl.configForm[config.name].$error">
+                    <label for="{{ config.name }}"
+                           data-ng-message="maxlength"
+                           data-translate="telephony_line_phone_configuration_maxlength_invalid"
+                           data-translate-values="{ maxlength: config.maxlength }">
+                    </label>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>

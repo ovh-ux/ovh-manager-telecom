@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<translations>
+   <translation id="telephony_alias_configuration_back_link" qtlid="332866">Retour à la configuration</translation>
+
+   <translation id="telephony_alias_configuration_actions_number_modification_new" qtlid="332827">Keisti numerio tipą</translation>
+   <translation id="telephony_alias_configuration_actions_number_redirect_modification" qtlid="332840">Nukreipimų valdymas</translation>
+
+<!-- HUNTINGS -->
+   <translation id="telephony_alias_configuration_actions_number_hunting_beta" qtlid="356797">Skambučių eilių Beta +</translation>
+   <translation id="telephony_alias_configuration_actions_number_hunting_mode" qtlid="340354">Parinkčių valdymas</translation>
+   <translation id="telephony_alias_configuration_actions_number_hunting_members" qtlid="356810">Narių valdymas</translation>
+   <translation id="telephony_alias_configuration_actions_number_hunting_slots" qtlid="335154">Valandinių intervalų valdymas</translation>
+   <translation id="telephony_alias_configuration_actions_number_hunting_events" qtlid="335167">Išskirtinių blokavimų valdymas</translation>
+   <translation id="telephony_alias_configuration_actions_number_hunting_filtering" qtlid="356823">Skambučių filtravimo valdymas</translation>
+
+<!-- EASYHUNTING -->
+
+<!-- CLOUDHUNTING -->
+   <translation id="telephony_alias_configuration_actions_number_cloud_hunting_events" qtlid="356836">Išskirtinių jungčių valdymas</translation>
+   <translation id="telephony_alias_configuration_actions_number_cloud_hunting_configuration" qtlid="356849">Numeracijos plano valdymas</translation>
+
+<!-- CONFERENCE -->
+   <translation id="telephony_alias_configuration_actions_number_manage_conference" qtlid="356862">Telefoninės konferencijos</translation>
+
+<!-- EASYPABX -->
+   <translation id="telephony_alias_configuration_actions_number_easy_pabx_music" qtlid="356875">Melodijų valdymas</translation>
+
+<!-- SVI -->
+   <translation id="telephony_alias_configuration_actions_number_svi_script_address" qtlid="356888">Balso serverio parametrų valdymas</translation>
+
+   <translation id="telephony_alias_configuration_load_error" qtlid="356901">Klaida įkeliant numerį.</translation>
+</translations>

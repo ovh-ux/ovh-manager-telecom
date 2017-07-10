@@ -1,0 +1,296 @@
+<form class="telephony-scheduler ovh-form-flat"
+      name="telephonyScheduler"
+      data-ng-submit="$ctrl.saveScheduler()"
+      novalidate>
+
+    <div class="scheduler-overlay full-width full-height"
+         data-ng-if="$ctrl.loading.edit || $ctrl.loading.import || $ctrl.loading.save">
+        <div class="scheduler-overlay-backdrop full-width full-height"></div>
+        <div class="scheduler-overlay-loader flex-col-center"
+             data-ng-if="$ctrl.loading.import"
+             data-ng-transclude>
+        </div>
+    </div>
+
+    <div data-ng-if="!$ctrl.loading.init"
+         class="row">
+
+        <!-- PARAMS AND FILTERS -->
+        <div class="col-xs-12 col-md-3">
+
+            <!-- SCHEDULER PARAMS -->
+            <div class="widget-presentation">
+                <h2 class="widget-presentation-title"
+                    data-translate="telephony_scheduler_params_title">
+                </h2>
+
+                <div data-ng-transclude
+                     data-ng-if="$ctrl.loading.params">
+                </div>
+
+                <telephony-scheduler-params data-ng-show="!$ctrl.loading.params"></telephony-scheduler-params>
+            </div> <!-- SCHEDULER PARAMS -->
+
+            <!-- SCHEDULER FILTERS -->
+            <div class="widget-presentation">
+                <h2 class="widget-presentation-title"
+                    data-translate="telephony_scheduler_categories_title">
+                </h2>
+
+                <div data-ng-transclude
+                     data-ng-if="$ctrl.loading.filters">
+                </div>
+
+                <telephony-scheduler-filters data-ng-model="$ctrl.model.filters"
+                                             data-telephony-scheduler-filters-on-change="$ctrl.onFiltersChange()"
+                                             data-ng-show="!$ctrl.loading.filters">
+                </telephony-scheduler-filters>
+            </div> <!-- SCHEDULER FILTERS -->
+
+        </div>
+
+        <div class="scheduler-calendar col-xs-12 col-md-9">
+
+            <!-- HEADER -->
+            <div class="calendar-header bottom-space-m16 dtable full-width">
+                <!-- DESKTOP VIEW -->
+                <div data-ng-if="$ctrl.status.isDesktop"
+                     class="dtr">
+                    <div class="header-left dtd vertical-middle">
+                        <!-- TODAY BUTTON -->
+                        <button type="button"
+                                class="btn btn-default right-space-m16"
+                                data-translate="telephony_scheduler_calendar_today"
+                                data-ng-click="$ctrl.onCalendarNavigate('today')">
+                        </button> <!-- TODAY BUTTON -->
+
+                        <!-- PREV - NEXT BUTTONS -->
+                        <div class="btn-group right-space-m16"
+                             role="group">
+
+                            <button type="button"
+                                    class="btn btn-default"
+                                    data-translate-attr="{ title: 'telephony_scheduler_header_previous_title' }"
+                                    data-ng-click="$ctrl.onCalendarNavigate('prev')">
+                                <i class="ovh-font ovh-font-arrow-left"></i>
+                            </button>
+
+                            <button type="button"
+                                    class="btn btn-default"
+                                    data-translate-attr="{ title: 'telephony_scheduler_header_next_title' }"
+                                    data-ng-click="$ctrl.onCalendarNavigate('next')">
+                                <i class="ovh-font ovh-font-arrow-right"></i>
+                            </button>
+                        </div> <!-- PREV - NEXT BUTTONS -->
+                    </div>
+
+                    <!-- CURRENT PERIOD -->
+                    <div class="header-period dtd vertical-middle">
+                        <h2 class="no-space"
+                            data-ng-bind="$ctrl.getCalendarTitle()">
+                        </h2>
+                    </div> <!-- CURRENT PERIOD -->
+
+                    <div class="header-right text-right dtd vertical-middle">
+                        <!-- VIEWS BUTTONS -->
+                        <div class="btn-group"
+                             role="group">
+
+                            <button type="button"
+                                    class="btn btn-default"
+                                    data-ng-class="{ active: $ctrl.model.currentView === 'agendaDay' }"
+                                    data-translate="telephony_scheduler_calendar_day"
+                                    data-translate-attr="{ title: 'telephony_scheduler_calendar_day' }"
+                                    data-ng-click="$ctrl.onChangeCalendarView('agendaDay')">
+                            </button>
+
+                            <button type="button"
+                                    class="btn btn-default"
+                                    data-ng-class="{ active: $ctrl.model.currentView === 'agendaWeek' }"
+                                    data-translate="telephony_scheduler_calendar_week"
+                                    data-translate-attr="{ title: 'telephony_scheduler_calendar_week' }"
+                                    data-ng-click="$ctrl.onChangeCalendarView('agendaWeek')">
+                            </button>
+
+                            <button type="button"
+                                    class="btn btn-default"
+                                    data-ng-class="{ active: $ctrl.model.currentView === 'month' }"
+                                    data-translate="telephony_scheduler_calendar_month"
+                                    data-translate-attr="{ title: 'telephony_scheduler_calendar_month' }"
+                                    data-ng-click="$ctrl.onChangeCalendarView('month')">
+                            </button>
+                        </div> <!-- VIEWS BUTTONS -->
+
+                        <!-- OTHER ACTIONS -->
+                        <button type="button"
+                                class="btn btn-default left-space-m8"
+                                data-ng-click="$ctrl.status.displayActions = true; $ctrl.status.deleteConfirm = false;"
+                                data-responsive-popover="'components/telecom/telephony/scheduler/telephony-scheduler-actions.html'"
+                                data-popover-placement="bottom-right"
+                                data-popover-append-to-body="true"
+                                data-popover-class="ovh-angular-actions-menu telephony-scheduler-actions-menu"
+                                data-popover-trigger="outsideClick"
+                                data-popover-is-open="$ctrl.status.displayActions">
+                            <i class="ovh-font ovh-font-dots"></i>
+                        </button> <!-- OTHER ACTIONS -->
+                    </div>
+                </div> <!-- DESKTOP VIEW -->
+
+                <!-- MOBILE VIEW -->
+                <div data-ng-if="!$ctrl.status.isDesktop"
+                     class="dtr">
+
+                    <!-- VIEWS SWITCH -->
+                    <div class="dtd text-left">
+                        <div class="btn-group"
+                             data-uib-dropdown>
+                            <button type="button"
+                                    id="mobile-view-switch"
+                                    class="btn btn-default"
+                                    data-uib-dropdown-toggle>
+                                <span data-ng-bind="$ctrl.getCalendarTitle()"></span>
+                                <i class="caret"></i>
+                            </button>
+                            <ul class="dropdown-menu"
+                                data-uib-dropdown-menu
+                                role="menu"
+                                aria-labelledby="mobile-view-switch">
+                                <li role="menuitem">
+                                    <button type="button"
+                                            class="btn btn-link full-width"
+                                            data-ng-class="{ active: $ctrl.model.currentView === 'month' }"
+                                            data-translate="telephony_scheduler_calendar_month"
+                                            data-translate-attr="{ title: 'telephony_scheduler_calendar_month' }"
+                                            data-ng-click="$ctrl.onChangeCalendarView('month')">
+                                    </button>
+                                </li>
+                                <li role="menuitem">
+                                    <button type="button"
+                                            class="btn btn-link full-width"
+                                            data-ng-class="{ active: $ctrl.model.currentView === 'agendaWeek' }"
+                                            data-translate="telephony_scheduler_calendar_week"
+                                            data-translate-attr="{ title: 'telephony_scheduler_calendar_week' }"
+                                            data-ng-click="$ctrl.onChangeCalendarView('agendaWeek')">
+                                    </button>
+                                </li>
+                                <li role="menuitem">
+                                    <button type="button"
+                                            class="btn btn-link full-width"
+                                            data-ng-class="{ active: $ctrl.model.currentView === 'agendaDay' }"
+                                            data-translate="telephony_scheduler_calendar_day"
+                                            data-translate-attr="{ title: 'telephony_scheduler_calendar_day' }"
+                                            data-ng-click="$ctrl.onChangeCalendarView('agendaDay')">
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div> <!-- VIEWS SWITCH -->
+
+                    <!-- NAVIGATE BUTTONS -->
+                    <div class="dtd">
+                        <div class="btn-group"
+                             data-uib-dropdown>
+                            <button type="button"
+                                    class="btn btn-default no-space"
+                                    id="mobile-navigate-buttons"
+                                    data-translate-attr="{ title: 'telephony_scheduler_calendar_today' }"
+                                    data-ng-click="$ctrl.onCalendarNavigate('today')">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-calendar-o fa-stack-2x"></i>
+                                    <i class="inline-block top-space-m4"
+                                       data-ng-bind="$ctrl.getCurrentDay()">
+                                    </i>
+                                </span>
+                            </button>
+                            <button type="button"
+                                    class="btn btn-default left-space-p4 right-space-p4"
+                                    data-uib-dropdown-toggle>
+                                <i class="caret"></i>
+                            </button>
+                            <ul class="dropdown-menu"
+                                data-uib-dropdown-menu
+                                role="menu"
+                                aria-labelledby="mobile-navigate-buttons">
+                                <li role="menuitem">
+                                    <button type="button"
+                                            class="btn btn-link full-width"
+                                            data-translate="telephony_scheduler_header_previous_title"
+                                            data-ng-click="$ctrl.onCalendarNavigate('prev')">
+                                    </button>
+                                </li>
+                                <li role="menuitem">
+                                    <button type="button"
+                                            class="btn btn-link full-width"
+                                            data-translate="telephony_scheduler_header_next_title"
+                                            data-ng-click="$ctrl.onCalendarNavigate('next')">
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div> <!-- NAVIGATE BUTTONS -->
+
+                    <!-- OTHER ACTIONS -->
+                    <div class="dtd text-right">
+                        <button type="button"
+                                class="btn btn-default left-space-m8"
+                                data-ng-click="$ctrl.status.displayActions = true; $ctrl.status.deleteConfirm = false;"
+                                data-responsive-popover="'components/telecom/telephony/scheduler/telephony-scheduler-actions.html'"
+                                data-popover-placement="bottom-right"
+                                data-popover-append-to-body="true"
+                                data-popover-class="ovh-angular-actions-menu telephony-scheduler-actions-menu"
+                                data-popover-trigger="outsideClick"
+                                data-popover-is-open="$ctrl.status.displayActions">
+                            <i class="ovh-font ovh-font-dots"></i>
+                        </button>
+                    </div> <!-- OTHER ACTIONS -->
+
+                </div> <!-- MOBILE VIEW -->
+            </div> <!-- HEADER -->
+
+            <!-- UI-CALENDAR -->
+            <div class="scheduler-ui-calendar">
+                <div class="scheduler-overlay full-width full-height"
+                     data-ng-if="$ctrl.loading.events">
+                    <div class="scheduler-overlay-backdrop full-width full-height"></div>
+                    <div class="scheduler-overlay-loader flex-col-center"
+                         data-ng-transclude>
+                    </div>
+                </div>
+
+                <div data-ui-calendar="$ctrl.calendarOptions"
+                     data-calendar="eventsCalendar"
+                     data-ng-model="$ctrl.model.events">
+                </div>
+            </div> <!-- UI-CALENDAR -->
+
+        </div>
+
+    </div>
+
+    <footer class="voip-action-bar"
+            data-ng-if="$ctrl.hasChange() && !$ctrl.loading.edit">
+
+        <p class="question"
+           data-translate="telephony_scheduler_save">
+        </p>
+
+        <div class="button-container inline-block">
+            <button type="submit"
+                    class="btn btn-primary pull-rigth"
+                    data-ng-disabled="$ctrl.loading.save">
+                <spinner data-ng-if="$ctrl.loading.save"
+                         data-name="bubbles-fff-222-16">
+                </spinner>
+                <span data-translate="submit"></span>
+            </button>
+            <button type="button"
+                    class="btn voip-cancel pull-left"
+                    data-translate="cancel"
+                    data-ng-click="$ctrl.cancelEdition()"
+                    data-ng-disabled="$ctrl.loading.save">
+            </button>
+        </div>
+
+    </footer>
+
+</form>

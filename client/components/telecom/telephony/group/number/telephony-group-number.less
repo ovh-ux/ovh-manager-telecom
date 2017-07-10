@@ -1,0 +1,120 @@
+// COLORS
+@telephony-number-main-color: @BRAND_SECONDARY;
+@telephony-number-disabled-color: #999999;
+
+// SIZES
+@voip-diagram-anchor-base-size: 16px;
+@voip-diagram-radio-radio-size: 28px;
+
+.telephony-number {
+
+    .telephony-number-plan {
+        padding: 40px 40px 80px;
+        height: 100%;
+        background-color: #f3f3f3;
+        box-shadow: inset 0 5px 6px -5px #888;
+
+        .telephony-number-feature {
+            .participants-list,
+            .redirect-in-edition {
+                margin-top: 60px;
+                margin-left: 60px;
+            }
+
+        }
+
+        .anchor-number-container .anchor-actions a.btn-actions {
+            line-height: 36px;
+        }
+
+        .ovh-pabx-dialplan-extension,
+        .telephony-number-ovh-pabx-menu {
+            .hover-grip:not(.grip-disabled) {
+                cursor: move;
+            }
+
+            .hover-grip.grip-disabled {
+                cursor: no-drop;
+            }
+        }
+    }
+
+}
+
+.telephony-number-feature-popover {
+    .makeTwoPagePopover();
+
+    &.telephony-number-svi-config-popup,
+    &.telephony-number-conference-config-popup {
+        div.flat-select {
+            float: none;
+
+            select {
+                height: @input-height-base;
+            }
+        }
+    }
+
+    &.telephony-number-ovh-pabx-actions-popup {
+        section.page-section {
+            section {
+                overflow-y: auto;
+
+                .relative-container {
+                    position: relative;
+                }
+
+                .group-title-btn .btn-link {
+                    color: #999;
+                }
+
+                .sound-list-container, .menu-list-container, .condition-list-container {
+                    position: relative;
+                    overflow: hidden;
+
+                    .confirm-container {
+                        position: absolute;
+                        left: 0;
+                        z-index: 10;
+                    }
+                }
+
+                .section-group.telephony-ovh-pabx-time-condition-group {
+                    .btn-group .btn {
+                        min-width: 100% / 7;
+                        padding: 6px 12px;
+                    }
+
+                    table.uib-timepicker {
+                        margin: auto;
+                    }
+                }
+            }
+        }
+
+        &:not(.popover-full-screen) {
+            @section-height: 450px;
+            max-height: 520px;
+
+            section.page-section {
+
+                section {
+                    overflow-y: auto;
+                }
+
+                &:first-child {
+                    section {
+                        min-height: @section-height - 60px;     // 60px is the height of the footer
+                    }
+                }
+
+                &:last-child {
+                    section {
+                        min-height: @section-height;
+                        max-height: @section-height;
+                    }
+                }
+            }
+        }
+    }
+}

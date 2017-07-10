@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<translations>
+   <translation id="components_notification_delete" qtlid="2414">Supprimer</translation>
+   <translation id="components_notification_type" qtlid="2642">Type</translation>
+   <translation id="components_notification_error_noSmsAccount" qtlid="345728">Vous n'avez pas de comptes SMS</translation>
+   <translation id="components_notification_loading" qtlid="345741">Le chargement de vos alertes est en cours ...</translation>
+   <translation id="components_notification_noNotification" qtlid="345754">Il n'y a aucune alerte enregistrée.</translation>
+   <translation id="components_notification_frequency" qtlid="345767">Fréquence d'envoi</translation>
+   <translation id="components_notification_contact" qtlid="345780">Contact à notifier en cas d'alertes</translation>
+   <translation id="components_notification_account" qtlid="345793">Compte:</translation>
+   <translation id="components_notification_confirm" qtlid="345806">Êtes-vous sûr(e) de vouloir supprimer la notification sur le service {{service}} pour {{contact}} ?</translation>
+   <translation id="components_notification_add" qtlid="274434">Ajouter une alerte</translation>
+   <translation id="components_notification_mail" qtlid="69509">E-mail</translation>
+   <translation id="components_notification_sms" qtlid="28243">SMS</translation>
+   <translation id="components_notification_once" qtlid="345819">Une fois</translation>
+   <translation id="components_notification_5m" qtlid="345832">Toutes les 5 minutes</translation>
+   <translation id="components_notification_1h" qtlid="8782">Toutes les heures</translation>
+   <translation id="components_notification_6h" qtlid="154130">Toutes les 6 heures</translation>
+</translations>

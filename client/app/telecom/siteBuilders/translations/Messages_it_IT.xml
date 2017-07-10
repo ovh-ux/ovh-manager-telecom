@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<translations>
+   <translation id="telecom_siteBuilders_service_title" qtlid="384220">I tuoi siti Web</translation>
+   <translation id="telecom_siteBuilders_domain" qtlid="8458">Dominio</translation>
+   <translation id="telecom_siteBuilders_date" qtlid="26419">Data di creazione</translation>
+   <translation id="telecom_siteBuilders_state" qtlid="33790">Stato</translation>
+   <translation id="telecom_siteBuilders_actions" qtlid="72809">Azioni</translation>
+   <translation id="telecom_siteBuilders_state_ok" qtlid="55133">Attivo</translation>
+   <translation id="telecom_siteBuilders_state_toDelete" qtlid="152778">In corso di eliminazione</translation>
+   <translation id="telecom_siteBuilders_go_to_admin" qtlid="384233">Vai alla gestione del sito Web (nuova finestra)</translation>
+   <translation id="telecom_siteBuilders_empty" qtlid="384246">Nessun sito Web</translation>
+</translations>

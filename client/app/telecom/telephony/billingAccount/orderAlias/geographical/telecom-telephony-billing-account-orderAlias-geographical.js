@@ -1,0 +1,14 @@
+angular.module("managerApp").config(function ($stateProvider) {
+    "use strict";
+    $stateProvider.state("telecom.telephony.orderAlias.geographical", {
+        url: "/geographical",
+        views: {
+            "@telecomTelephonyBillingAccountOrderAliasView": {
+                templateUrl: "app/telecom/telephony/billingAccount/orderAlias/geographical/telecom-telephony-billing-account-orderAlias-geographical.html",
+                controller: "TelecomTelephonyAliasOrderGeographicalCtrl",
+                controllerAs: "AliasOrderGeographicalCtrl"
+            }
+        },
+        translations: ["common", "telecom/telephony/billingAccount/orderAlias", "telecom/telephony/billingAccount/orderAlias/geographical"]
+    });
+});

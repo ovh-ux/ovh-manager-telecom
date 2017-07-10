@@ -1,0 +1,487 @@
+<section class="telecom-sms-phonebooks">
+
+    <bouncing-box-loader data-ng-if="PhonebooksCtrl.phonebooks.isLoading">
+        <h2 data-translate="loading"></h2>
+    </bouncing-box-loader>
+
+    <div data-ng-if="!PhonebooksCtrl.phonebooks.isLoading">
+
+        <div data-ng-if="!PhonebooksCtrl.phonebooks.raw.length">
+            <div class="row">
+                <div class="col-xs-12 col-sm-6">
+                    <section class="widget-presentation">
+                        <h2 class="widget-presentation-title"
+                            data-translate="sms_phonebooks_phonebook_create">
+                        </h2>
+                        <p class="alert alert-info"
+                           role="alert">
+                            <i class="ovh-font ovh-font-filled-info" aria-hidden="true"></i>
+                            <span data-translate="sms_phonebooks_phonebook_create_info"></span>
+                        </p>
+                        <button
+                            type="button"
+                            class="btn btn-primary btn-block-xs-only"
+                            data-ui-sref="telecom.sms.phonebooks.create"
+                            data-translate="sms_phonebooks_phonebook_create">
+                        </button>
+                    </section>
+                    <!-- /.widget-presentation -->
+                </div>
+            </div>
+        </div>
+
+        <div data-ng-if="PhonebooksCtrl.phonebooks.raw.length">
+
+            <!-- PHONEBOOKS -->
+            <div class="row">
+                <div class="col-xs-12 col-md-6">
+                    <section class="widget-presentation">
+                        <h2 class="widget-presentation-title"
+                            data-translate="sms_phonebooks_phonebook_title">
+                        </h2>
+                        <div class="bottom-space-m12 clearfix"
+                             data-ng-if="PhonebooksCtrl.phonebooks.raw.length > 1">
+                            <label for="phonebook"
+                                   class="pointer"
+                                   data-translate="sms_phonebooks_phonebook_select_label">
+                            </label>
+                            <select
+                                name="phonebook"
+                                id="phonebook"
+                                class="form-control"
+                                data-flat-select
+                                data-ng-model="PhonebooksCtrl.phonebooks.current"
+                                data-ng-options="phonebook as phonebook.name for phonebook in PhonebooksCtrl.phonebooks.raw"
+                                data-ng-change="PhonebooksCtrl.changePhonebook()"
+                                data-ng-disabled="PhonebooksCtrl.phonebooks.current.inEdition">
+                            </select>
+                        </div>
+                        <form class="ovh-form-flat form-inline bottom-space-m12"
+                              name="updatePhonebookForm"
+                              id="updatePhonebookForm"
+                              data-ng-submit="PhonebooksCtrl.updatePhonebook()">
+                            <label for="phonebookName"
+                                   class="control-label"
+                                   data-translate="sms_phonebooks_phonebook_update_name_label">
+                            </label>
+                            <span data-ng-if="!PhonebooksCtrl.phonebooks.current.inEdition">
+                                <span class="phonebook-name" data-ng-bind="PhonebooksCtrl.phonebooks.current.name"></span>
+                                <button
+                                    type="button"
+                                    class="btn no-style"
+                                    data-ng-click="PhonebooksCtrl.startEdition()"
+                                    data-translate-attr="{ title: 'sms_phonebooks_phonebook_update_name_sr_only' }">
+                                    <i class="ovh-font ovh-font-editer" aria-hidden="true"></i>
+                                    <span class="sr-only"
+                                          data-translate="sms_phonebooks_phonebook_update_name_sr_only">
+                                    </span>
+                                </button>
+                            </span>
+                            <span data-ng-if="PhonebooksCtrl.phonebooks.current.inEdition">
+                                <span class="form-group">
+                                    <div flat-input-container>
+                                        <input
+                                            type="text"
+                                            class="form-control right-space-m8"
+                                            name="phonebookName"
+                                            id="phonebookName"
+                                            required
+                                            data-ng-model="PhonebooksCtrl.phonebooks.current.newName"
+                                            data-ng-pattern="/^[\w\s.\-À-ú]*$/"
+                                            data-ng-maxlength="50"
+                                            data-translate-attr="{ placeholder: 'sms_phonebooks_phonebook_update_name_placeholder' }" />
+                                    </div>
+                                </span>
+                                <button
+                                    type="submit"
+                                    class="btn btn-default"
+                                    data-ng-disabled="updatePhonebookForm.$invalid || (PhonebooksCtrl.phonebooks.current.name === PhonebooksCtrl.phonebooks.current.newName)">
+                                    <i class="ovh-font ovh-font-check" aria-hidden="true"></i>
+                                    <span class="sr-only"
+                                          data-translate="sms_phonebooks_phonebook_update_name_sr_only">
+                                    </span>
+                                </button>
+                                <button
+                                    type="button"
+                                    class="btn btn-default"
+                                    data-ng-click="PhonebooksCtrl.cancelEdition()">
+                                    <i class="ovh-font ovh-font-wrong" aria-hidden="true"></i>
+                                    <span class="sr-only" data-translate="cancel"></span>
+                                </button>
+                            </span>
+                            <div class="top-space-m12"
+                                 role="alert"
+                                 data-ng-messages="updatePhonebookForm.$dirty && updatePhonebookForm.phonebookName.$error">
+                                <p class="text-danger"
+                                   data-ng-message="required"
+                                   data-translate="sms_phonebooks_phonebook_create_name_error_required">
+                                </p>
+                                <p class="text-danger"
+                                   data-ng-message="pattern"
+                                   data-translate="sms_phonebooks_phonebook_create_name_error_pattern">
+                                </p>
+                                <p class="text-danger"
+                                   data-ng-message="maxlength"
+                                   data-translate="sms_phonebooks_phonebook_create_name_error_maxlength">
+                                </p>
+                            </div>
+                        </form>
+                        <button
+                            type="button"
+                            class="btn btn-primary btn-block-xs-only"
+                            data-ui-sref="telecom.sms.phonebooks.create"
+                            data-ng-disabled="PhonebooksCtrl.phonebooks.current.inEdition ||
+                                              PhonebooksCtrl.phonebooks.hasModalOpened"
+                            data-translate="sms_phonebooks_phonebook_create">
+                        </button>
+                        <button
+                            type="button"
+                            class="btn btn-default btn-block-xs-only"
+                            data-ng-disabled="PhonebooksCtrl.phonebooks.current.inEdition ||
+                                              PhonebooksCtrl.phonebooks.hasModalOpened"
+                            data-ng-click="PhonebooksCtrl.deletePhonebook()">
+                            <span data-translate="sms_phonebooks_phonebook_delete"></span>
+                        </button>
+                    </section>
+                    <!-- /.widget-presentation -->
+                </div>
+            </div>
+
+            <!-- PHONEBOOK CONTACT -->
+            <div class="row">
+                <div class="col-xs-12">
+                    <section class="widget-presentation">
+                        <h2 class="widget-presentation-title"
+                            data-translate="sms_phonebooks_phonebook_contact_title">
+                        </h2>
+                        <div class="alert alert-info"
+                             role="alert"
+                             data-ng-if="PhonebooksCtrl.phonebookContact.isImporting">
+                            <i class="ovh-font ovh-font-filled-info" aria-hidden="true"></i>
+                            <span data-translate="sms_phonebooks_phonebook_contact_import_alert_task"></span>
+                        </div>
+                        <div class="bottom-space-m16">
+                            <ul class="pull-left right-space-m12"
+                                role="menu"
+                                data-table-action>
+                                <li role="menuitem">
+                                    <button
+                                        type="button"
+                                        class="no-style"
+                                        data-ng-click="PhonebooksCtrl.createPhonebookContact()"
+                                        data-ng-disabled="PhonebooksCtrl.phonebookContact.isLoading ||
+                                                          PhonebooksCtrl.phonebooks.current.inEdition ||
+                                                          PhonebooksCtrl.phonebooks.hasModalOpened">
+                                        <i class="ovh-font ovh-font-add-circle" aria-hidden="true"></i>
+                                        <label data-translate="common_add"></label>
+                                    </button>
+                                </li>
+                                <li role="menuitem">
+                                    <button
+                                        type="button"
+                                        class="no-style"
+                                        data-ng-click="PhonebooksCtrl.importPhonebookContact()"
+                                        data-ng-disabled="PhonebooksCtrl.phonebookContact.isLoading ||
+                                                          PhonebooksCtrl.phonebooks.current.inEdition ||
+                                                          PhonebooksCtrl.phonebooks.hasModalOpened ||
+                                                          PhonebooksCtrl.phonebookContact.isImporting">
+                                        <i class="ovh-font ovh-font-upload" aria-hidden="true"></i>
+                                        <label data-translate="sms_phonebooks_phonebook_contact_import"></label>
+                                    </button>
+                                </li>
+                                <li role="menuitem">
+                                    <button
+                                        type="button"
+                                        class="no-style"
+                                        data-ng-click="PhonebooksCtrl.exportPhonebookContact()"
+                                        data-ng-disabled="PhonebooksCtrl.phonebookContact.isLoading ||
+                                                          PhonebooksCtrl.phonebooks.current.inEdition ||
+                                                          PhonebooksCtrl.phonebooks.hasModalOpened ||
+                                                          PhonebooksCtrl.phonebookContact.isExporting ||
+                                                          !PhonebooksCtrl.phonebookContact.raw.length">
+                                        <i class="ovh-font ovh-font-download" aria-hidden="true"></i>
+                                        <label data-translate="sms_phonebooks_phonebook_contact_export"></label>
+                                    </button>
+                                </li>
+                                <li role="menuitem">
+                                    <button
+                                        type="button"
+                                        class="no-style"
+                                        data-ng-click="PhonebooksCtrl.refresh()">
+                                        <i class="ovh-font ovh-font-arrow-rotate" aria-hidden="true"></i>
+                                        <label data-translate="common_refresh"></label>
+                                    </button>
+                                </li>
+                            </ul>
+                            <button
+                                type="button"
+                                class="btn btn-default btn-block-xs-only"
+                                data-ng-disabled="PhonebooksCtrl.phonebookContact.isLoading ||
+                                                  PhonebooksCtrl.phonebookContact.isDeleting ||
+                                                  PhonebooksCtrl.getSelection().length === 0"
+                                data-ng-click="PhonebooksCtrl.deleteSelectedPhonebookContact()">
+                                <i class="ovh-font ovh-font-bin line-height-normal right-space-m4" aria-hidden="true"></i>
+                                <span data-ng-pluralize
+                                      data-count="PhonebooksCtrl.getSelection().length"
+                                      data-when="{
+                                          '0': ('sms_phonebooks_phonebook_contact_selected_delete' | translate),
+                                          'one': ('sms_phonebooks_phonebook_contact_selected_delete' | translate),
+                                          'other': ('sms_phonebooks_phonebook_contact_selected_delete_plural' | translate:{ count: {} })
+                                      }">
+                                </span>
+                                <spinner class="left-space-m4"
+                                         data-ng-if="PhonebooksCtrl.phonebookContact.isDeleting">
+                                </spinner>
+                            </button>
+                        </div>
+                        <div class="table-responsive-vertical">
+                            <table class="table table-pretty table-hover table-striped no-space">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">
+                                            <input
+                                                type="checkbox"
+                                                data-ng-if="PhonebooksCtrl.phonebookContact.paginated.length"
+                                                data-ng-disabled="PhonebooksCtrl.phonebookContact.isDeleting"
+                                                data-ovh-checkbox-table
+                                                data-ovh-checkbox-table-ids-all="PhonebooksCtrl.phonebookContact.raw"
+                                                data-ovh-checkbox-table-ids-page="PhonebooksCtrl.phonebookContact.paginated"
+                                                data-ovh-checkbox-table-ids-selected="PhonebooksCtrl.phonebookContact.selected"
+                                                data-ovh-checkbox-table-id="id" />
+                                        </th>
+                                        <th scope="col">
+                                            <button
+                                                type="button"
+                                                class="no-style left-space-p0"
+                                                title="{{:: 'sms_phonebooks_phonebook_contact_column_surname' | translate }}"
+                                                data-ng-disabled="!PhonebooksCtrl.phonebookContact.paginated.length"
+                                                data-ng-click="PhonebooksCtrl.orderPhonebookContactBy('surname')">
+                                                <label class="pointer"
+                                                       data-translate="sms_phonebooks_phonebook_contact_column_surname">
+                                                </label>
+                                                <span class="table-pretty-filter">
+                                                    <i class="fa" data-ng-class="{
+                                                        'fa-sort': PhonebooksCtrl.phonebookContact.orderBy !== 'surname',
+                                                        'fa-sort-desc': PhonebooksCtrl.phonebookContact.orderBy === 'surname' && PhonebooksCtrl.phonebookContact.orderDesc,
+                                                        'fa-sort-asc': PhonebooksCtrl.phonebookContact.orderBy === 'surname' && !PhonebooksCtrl.phonebookContact.orderDesc
+                                                    }"></i>
+                                                </span>
+                                            </button>
+                                        </th>
+                                        <th scope="col">
+                                            <button
+                                                type="button"
+                                                class="no-style left-space-p0"
+                                                title="{{:: 'sms_phonebooks_phonebook_contact_column_name' | translate }}"
+                                                data-ng-disabled="!PhonebooksCtrl.phonebookContact.paginated.length"
+                                                data-ng-click="PhonebooksCtrl.orderPhonebookContactBy('name')">
+                                                <label class="pointer"
+                                                       data-translate="sms_phonebooks_phonebook_contact_column_name">
+                                                </label>
+                                                <span class="table-pretty-filter">
+                                                    <i class="fa" data-ng-class="{
+                                                        'fa-sort': PhonebooksCtrl.phonebookContact.orderBy !== 'name',
+                                                        'fa-sort-desc': PhonebooksCtrl.phonebookContact.orderBy === 'name' && PhonebooksCtrl.phonebookContact.orderDesc,
+                                                        'fa-sort-asc': PhonebooksCtrl.phonebookContact.orderBy === 'name' && !PhonebooksCtrl.phonebookContact.orderDesc
+                                                    }"></i>
+                                                </span>
+                                            </button>
+                                        </th>
+                                        <th scope="col">
+                                            <button
+                                                type="button"
+                                                class="no-style left-space-p0"
+                                                title="{{:: 'sms_phonebooks_phonebook_contact_column_group' | translate }}"
+                                                data-ng-disabled="!PhonebooksCtrl.phonebookContact.paginated.length"
+                                                data-ng-click="PhonebooksCtrl.orderPhonebookContactBy('group')">
+                                                <label class="pointer"
+                                                       data-translate="sms_phonebooks_phonebook_contact_column_group">
+                                                </label>
+                                                <span class="table-pretty-filter">
+                                                    <i class="fa" data-ng-class="{
+                                                        'fa-sort': PhonebooksCtrl.phonebookContact.orderBy !== 'group',
+                                                        'fa-sort-desc': PhonebooksCtrl.phonebookContact.orderBy === 'group' && PhonebooksCtrl.phonebookContact.orderDesc,
+                                                        'fa-sort-asc': PhonebooksCtrl.phonebookContact.orderBy === 'group' && !PhonebooksCtrl.phonebookContact.orderDesc
+                                                    }"></i>
+                                                </span>
+                                            </button>
+                                        </th>
+                                        <th scope="col">
+                                            <button
+                                                type="button"
+                                                class="no-style left-space-p0"
+                                                title="{{:: 'sms_phonebooks_phonebook_contact_column_home_phone_title' | translate }}"
+                                                data-ng-disabled="!PhonebooksCtrl.phonebookContact.paginated.length"
+                                                data-ng-click="PhonebooksCtrl.orderPhonebookContactBy('homePhone')">
+                                                <label class="pointer"
+                                                       data-translate="sms_phonebooks_phonebook_contact_column_home_phone">
+                                                </label>
+                                                <span class="table-pretty-filter">
+                                                    <i class="fa" data-ng-class="{
+                                                        'fa-sort': PhonebooksCtrl.phonebookContact.orderBy !== 'homePhone',
+                                                        'fa-sort-desc': PhonebooksCtrl.phonebookContact.orderBy === 'homePhone' && PhonebooksCtrl.phonebookContact.orderDesc,
+                                                        'fa-sort-asc': PhonebooksCtrl.phonebookContact.orderBy === 'homePhone' && !PhonebooksCtrl.phonebookContact.orderDesc
+                                                    }"></i>
+                                                </span>
+                                            </button>
+                                        </th>
+                                        <th scope="col">
+                                            <button
+                                                type="button"
+                                                class="no-style left-space-p0"
+                                                title="{{:: 'sms_phonebooks_phonebook_contact_column_home_mobile_title' | translate }}"
+                                                data-ng-disabled="!PhonebooksCtrl.phonebookContact.paginated.length"
+                                                data-ng-click="PhonebooksCtrl.orderPhonebookContactBy('homeMobile')">
+                                                <span class="table-pretty-filter">
+                                                    <label class="pointer"
+                                                           data-translate="sms_phonebooks_phonebook_contact_column_home_mobile">
+                                                    </label>
+                                                    <i class="fa" data-ng-class="{
+                                                        'fa-sort': PhonebooksCtrl.phonebookContact.orderBy !== 'homeMobile',
+                                                        'fa-sort-desc': PhonebooksCtrl.phonebookContact.orderBy === 'homeMobile' && PhonebooksCtrl.phonebookContact.orderDesc,
+                                                        'fa-sort-asc': PhonebooksCtrl.phonebookContact.orderBy === 'homeMobile' && !PhonebooksCtrl.phonebookContact.orderDesc
+                                                    }"></i>
+                                                </span>
+                                            </button>
+                                        </th>
+                                        <th scope="col">
+                                            <button
+                                                type="button"
+                                                class="no-style left-space-p0"
+                                                title="{{:: 'sms_phonebooks_phonebook_contact_column_work_phone_title' | translate }}"
+                                                data-ng-disabled="!PhonebooksCtrl.phonebookContact.paginated.length"
+                                                data-ng-click="PhonebooksCtrl.orderPhonebookContactBy('workPhone')">
+                                                <label class="pointer"
+                                                       data-translate="sms_phonebooks_phonebook_contact_column_work_phone">
+                                                </label>
+                                                <span class="table-pretty-filter">
+                                                    <i class="fa" data-ng-class="{
+                                                        'fa-sort': PhonebooksCtrl.phonebookContact.orderBy !== 'workPhone',
+                                                        'fa-sort-desc': PhonebooksCtrl.phonebookContact.orderBy === 'workPhone' && PhonebooksCtrl.phonebookContact.orderDesc,
+                                                        'fa-sort-asc': PhonebooksCtrl.phonebookContact.orderBy === 'workPhone' && !PhonebooksCtrl.phonebookContact.orderDesc
+                                                    }"></i>
+                                                </span>
+                                            </button>
+                                        </th>
+                                        <th scope="col">
+                                            <button
+                                                type="button"
+                                                class="no-style left-space-p0"
+                                                title="{{:: 'sms_phonebooks_phonebook_contact_column_work_mobile_title' | translate }}"
+                                                data-ng-disabled="!PhonebooksCtrl.phonebookContact.paginated.length"
+                                                data-ng-click="PhonebooksCtrl.orderPhonebookContactBy('workMobile')">
+                                                <label class="pointer"
+                                                       data-translate="sms_phonebooks_phonebook_contact_column_work_mobile">
+                                                </label>
+                                                <span class="table-pretty-filter">
+                                                    <i class="fa" data-ng-class="{
+                                                        'fa-sort': PhonebooksCtrl.phonebookContact.orderBy !== 'workMobile',
+                                                        'fa-sort-desc': PhonebooksCtrl.phonebookContact.orderBy === 'workMobile' && PhonebooksCtrl.phonebookContact.orderDesc,
+                                                        'fa-sort-asc': PhonebooksCtrl.phonebookContact.orderBy === 'workMobile' && !PhonebooksCtrl.phonebookContact.orderDesc
+                                                    }"></i>
+                                                </span>
+                                            </button>
+                                        </th>
+                                        <th scope="col">
+                                            <label data-translate="common_actions"></label>
+                                            <spinner class="left-space-m4"
+                                                     data-ng-if="PhonebooksCtrl.phonebookContact.isExporting">
+                                            </spinner>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody data-ng-if="!PhonebooksCtrl.phonebookContact.isLoading">
+                                    <tr data-ng-repeat="contact in PhonebooksCtrl.phonebookContact.paginated">
+                                        <td>
+                                            <input
+                                                type="checkbox"
+                                                data-ng-disabled="PhonebooksCtrl.phonebookContact.isDeleting"
+                                                data-ng-model="PhonebooksCtrl.phonebookContact.selected[contact.id]" />
+                                        </td>
+                                        <td data-title="{{:: 'sms_phonebooks_phonebook_contact_column_surname' | translate }}"
+                                            data-ng-bind="contact.surname">
+                                        </td>
+                                        <td data-title="{{:: 'sms_phonebooks_phonebook_contact_column_name' | translate }}"
+                                            data-ng-bind="contact.name">
+                                        </td>
+                                        <td data-title="{{:: 'sms_phonebooks_phonebook_contact_column_group' | translate }}">
+                                            <span data-ng-bind="contact.group || '-' | limitTo:25"
+                                                  data-uib-tooltip="{{ contact.group }}"
+                                                  data-tooltip-enable="contact.group.length > 25"
+                                                  data-tooltip-class="word-break">
+                                            </span>
+                                        </td>
+                                        <td data-title="{{:: 'sms_phonebooks_phonebook_contact_column_home_phone_title' | translate }}"
+                                            data-ng-bind="contact.homePhone || '-'">
+                                        </td>
+                                        <td data-title="{{:: 'sms_phonebooks_phonebook_contact_column_home_mobile_title' | translate }}"
+                                            data-ng-bind="contact.homeMobile || '-'">
+                                        </td>
+                                        <td data-title="{{:: 'sms_phonebooks_phonebook_contact_column_work_phone_title' | translate }}"
+                                            data-ng-bind="contact.workPhone || '-'">
+                                        </td>
+                                        <td data-title="{{:: 'sms_phonebooks_phonebook_contact_column_work_mobile_title' | translate }}"
+                                            data-ng-bind="contact.workMobile || '-'">
+                                        </td>
+                                        <td>
+                                            <ul data-table-action-line>
+                                                <li>
+                                                    <button
+                                                        type="button"
+                                                        data-ng-disabled="contact.updating"
+                                                        data-ng-click="PhonebooksCtrl.updatePhonebookContact(contact)">
+                                                        <i class="ovh-font ovh-font-editer" aria-hidden="true"></i>
+                                                        <label data-translate="edit"></label>
+                                                    </button>
+                                                </li>
+                                                <li>
+                                                    <button
+                                                        type="button"
+                                                        data-ng-disabled="contact.removing"
+                                                        data-ng-click="PhonebooksCtrl.deletePhonebookContact(contact)">
+                                                        <i class="ovh-font ovh-font-bin" aria-hidden="true"></i>
+                                                        <label data-translate="delete"></label>
+                                                    </button>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <tbody data-ng-if="PhonebooksCtrl.phonebookContact.isLoading">
+                                    <tr>
+                                        <td class="text-center top-space-p16 bottom-space-p16" colspan="9">
+                                            <span data-translate="sms_phonebooks_phonebook_contact_loading"></span>
+                                            <spinner class="left-space-m4"></spinner>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <tbody data-ng-if="!PhonebooksCtrl.phonebookContact.isLoading && !PhonebooksCtrl.phonebookContact.paginated.length">
+                                    <tr>
+                                        <td class="text-center top-space-p16 bottom-space-p16" colspan="9">
+                                            <span data-translate="sms_phonebooks_phonebook_contact_empty"></span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="table-pretty-pagination top-space-m8"
+                                 data-ng-if="!PhonebooksCtrl.phonebookContact.isLoading && PhonebooksCtrl.phonebookContact.raw.length"
+                                 data-pagination-front
+                                 data-items="PhonebooksCtrl.phonebookContact.sorted"
+                                 data-paginated-items="PhonebooksCtrl.phonebookContact.paginated"
+                                 data-current-page="currentPage"
+                                 data-nb-pages="nbPages"
+                                 data-items-per-page="itemsPerPage"
+                                 data-page-placeholder="{{'common_pagination_page' | translate: { currentPage: currentPage, nbPages: nbPages } }}"
+                                 data-item-per-page-placeholder="{{'common_pagination_display' | translate}}">
+                            </div>
+                        </div>
+                    </section>
+                    <!-- /.widget-presentation -->
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</section>
+<!-- /.telecom-sms-phonebooks -->

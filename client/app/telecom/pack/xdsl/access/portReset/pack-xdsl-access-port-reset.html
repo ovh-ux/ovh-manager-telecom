@@ -1,0 +1,20 @@
+<div data-ng-controller="XdslAccessPortResetCtrl as DslamResetCtrl">
+    <button id="dslamReset"
+        class="btn btn-primary"
+        type="button"
+        data-uib-tooltip-html-unsafe="<strong class='text-warning'>{{ 'xdsl_access_dslam_reset_warning' | translate }}</strong>"
+        data-translate-attribute="{ title : 'xdsl_access_dslam_reset' }"
+        data-ng-really-click="DslamResetCtrl.resetDslam()"
+        data-ng-really-message="{{ 'xdsl_access_dslam_reset_really' | translate }}
+                                <div class='text-warning'>{{ 'xdsl_access_dslam_reset_warning' | translate }}</div>"
+        data-ng-really-confirm="{{ 'ok' | translate }}"
+        data-ng-really-cancel="{{ 'cancel' | translate }}"
+        data-ng-really-window-class="revert-really-buttons"
+        data-ng-disabled="!access.xdsl.capabilities.canResetDslamPort || access.tasks.current.dslamPortReset">
+        <div data-ng-if="access.tasks.current.dslamPortReset">
+            <spinner></spinner>
+            <span data-translate="xdsl_access_dslam_reset_success"></span>
+        </div>
+        <div data-ng-if="!access.tasks.current.dslamPortReset" data-translate="xdsl_access_dslam_reset"></div>
+    </button>
+</div>

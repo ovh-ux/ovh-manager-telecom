@@ -1,0 +1,132 @@
+<section class="telecom-pack-xdsl-modem"
+         data-ui-view="modemView">
+
+    <bouncing-box-loader data-ng-if="XdslModem.loaders.modem">
+        <h3 data-translate="loading" class="top-space-m16"></h3>
+    </bouncing-box-loader>
+
+    <div data-ng-if="!XdslModem.loaders.modem">
+        <div data-ng-if="!XdslModem.mediator.capabilities.canBeManagedByOvh"
+             role="alert"
+             class="alert alert-warning">
+            <span class="ovh-font ovh-font-filled-warning" aria-hidden="true"></span>
+            <p data-translate="xdsl_modem_cant_be_managed"></p>
+        </div>
+
+        <div id="pack-xdsl-modem-table" data-ng-if="XdslModem.mediator.capabilities.canBeManagedByOvh">
+
+            <div class="alert alert-warning" role="alert" data-ng-if="XdslModem.mediator.info.isBridged">
+                <span class="ovh-font ovh-font-filled-warning" aria-hidden="true"></span>
+                <span scroll-to="bridgeModeA" data-ng-bind-html="'xdsl_modem_warning_bridge' | translate"></span>
+          </div>
+
+            <div class="alert alert-warning" role="alert" data-ng-if="!XdslModem.mediator.info.managedByOvh">
+              <span class="ovh-font ovh-font-filled-warning" aria-hidden="true"></span>
+              <span scroll-to="managedByA" data-ng-bind-html="'xdsl_modem_warning_managedBy' | translate"></span>
+          </div>
+
+            <section class="widget-presentation">
+                <header class="widget-presentation-header">
+                    <h2 class="widget-presentation-title" data-translate="xdsl_modem_network"></h2>
+                </header>
+                <div data-ui-view="@connectedDeviceView"></div>
+            </section>
+
+            <section id="managedByA" class="widget-presentation">
+                <header class="widget-presentation-header">
+                    <h2 class="widget-presentation-title" data-translate="xdsl_modem_general_config"></h2>
+                </header>
+
+                <div data-ui-view="@modemRebootView"></div>
+
+                <div class="row" data-ng-class="{ 'disabled' : !XdslModem.mediator.capabilities.canChangeManagement }">
+                    <div class="col-xs-12 col-md-3 service-title">
+                        <label for="managedBy" data-translate="xdsl_modem_managedBy"></label>
+                    </div>
+                    <div class="col-xs-12 col-md-9" data-ui-view="@managedByOvhView"></div>
+                </div>
+
+                <div class="row" data-ng-class="{ 'disabled' : !XdslModem.mediator.capabilities.canChangeWLAN || XdslModem.mediator.tasks.changeModemConfigWLAN }">
+                    <div class="col-xs-12 col-md-3 service-title">
+                        <label for="wifiEnabled" data-translate="xdsl_modem_wifi"></label>
+                    </div>
+                    <div class="col-xs-12 col-md-9" data-ui-view="@wifiView"></div>
+                </div>
+
+                <div class="row" data-ng-class="{ 'disabled' : !XdslModem.mediator.capabilities.canChangeEasyFirewallLevel }">
+                    <div class="col-xs-12 col-md-3 service-title">
+                        <label class="tooltip-label"
+                            data-uib-tooltip="{{ 'xdsl_modem_firewall_description' | translate }}"
+                            data-tooltip-placement="right"
+                            for="configFirewall"
+                            data-tooltip-append-to-body="true"
+                            data-translate="xdsl_modem_firewall">
+                        </label>
+                    </div>
+                    <div class="col-xs-12 col-md-9" data-ui-view="@firewallView"></div>
+                </div>
+            </section>
+
+            <div data-ui-view="@routerView"></div>
+
+            <section id="bridgeModeA" class="widget-presentation">
+                <header class="widget-presentation-header">
+                    <h2 class="widget-presentation-title" data-translate="xdsl_modem_advanced_config"></h2>
+                </header>
+
+                <div data-ui-view="@modemResetView" data-ng-class="{ 'disabled' : !XdslModem.mediator.capabilities.canReset }"></div>
+
+                <div class="row" data-ng-class="{ 'disabled' : !XdslModem.mediator.capabilities.canChangeBridgeMode }">
+                    <div class="col-xs-12 col-md-3 service-title">
+                        <label for="bridgeMode" data-translate="xdsl_modem_bridge"></label>
+                    </div>
+                    <div class="col-xs-12 col-md-9" data-ui-view="@bridgeModeView"></div>
+                </div>
+
+                <div class="row" data-ng-class="{ 'disabled' : !XdslModem.mediator.capabilities.canChangeMtu || XdslModem.mediator.tasks.changeMTU }">
+                    <div class="col-xs-12 col-md-3 service-title">
+                        <label class="tooltip-label"
+                            data-uib-tooltip="{{ 'xdsl_modem_mtu_description' | translate }}"
+                            data-tooltip-placement="right"
+                            data-tooltip-append-to-body="true"
+                            for="configMtu"
+                            data-translate="xdsl_modem_mtu">
+                        </label>
+                    </div>
+                    <div class="col-xs-12 col-md-9" data-ui-view="@mtuView"></div>
+                </div>
+
+                <div class="row" data-ng-class="{ 'disabled' : !XdslModem.mediator.capabilities.canChangeDMZ || XdslModem.mediator.tasks.changeModemConfigDMZ }">
+                    <div class="col-xs-12 col-md-3 service-title" data-translate="xdsl_modem_dmz"></div>
+                    <div class="col-xs-12 col-md-9 service-item">
+                        <div class="row">
+                            <div class="service-item col-xs-12 col-md-6 col-lg-5">
+                                <a class="service-button"
+                                    data-a-disabled="!XdslModem.mediator.capabilities.canChangeDMZ || (XdslModem.mediator.tasks.changeModemConfigDMZ === true)"
+                                    data-ui-sref="telecom.pack.xdsl.modem.dmz"
+                                    role="button">
+
+                                    <div class="service-button-description">
+                                        <div class="description-title-small description-title-fullHeight">
+                                            {{ XdslModem.mediator.info.dmzIP || ('xdsl_modem_dmz_none' | translate) }}
+                                            <spinner data-ng-show="XdslModem.mediator.tasks.changeModemConfigDMZ" class="left-space-m4" size="12"></spinner>
+                                        </div>
+                                    </div>
+
+                                    <div class="link-name">
+                                        <span data-translate="configure"></span>
+                                        <span class="ovh-font ovh-font-arrow-right" aria-hidden="true"></span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+        </div>
+
+    </div>
+
+</section>

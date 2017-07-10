@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<translations>
+   <translation id="telecom_welcoming_page_title" qtlid="330396">Hallintapaneeli</translation>
+   <translation id="telecom_welcoming_title" qtlid="338547">Hallintapaneelisi kehittyy!</translation>
+   <translation id="telecom_welcoming_title_hasNoService" qtlid="338560">Tervetuloa Telecom-hallintapaneeliisi!</translation>
+   <translation id="telecom_welcoming_text_hasNoService" qtlid="338573">Tarjoamme sinulle ainutlaatuisen käyttöliittymän, jonka ulkoasu on täysin uudistettu. Lisäksi tulossa on vielä lukuisia parannuksia.</translation>
+   <translation id="telecom_welcoming_text_hasServices_part1" qtlid="338586">Otimme huomioon mielipiteenne ja nyt voimme tarjota ainutlaatuisen hallintapaneelin täysin uudistetulla ulkoasulla.</translation>
+   <translation id="telecom_welcoming_text_hasServices_part2" qtlid="338599">Valikko on nyt käytännöllisempi sekä sivut entistä yhtenäisempiä.</translation>
+   <translation id="telecom_welcoming_text_hasTelephonyServices_part1" qtlid="385988">Les gestions de la VoIP et des fax arrivent aussi progressivement. Plus besoin ainsi de changer d'interface ;)</translation>
+   <translation id="telecom_welcoming_text_hasTelephonyServices_part2" qtlid="338625">Tässä kuvassa kuvatut ominaisuudet:</translation>
+   <translation id="telecom_welcoming_text_hasTelephonyServices_part3" qtlid="338638">avautuu vanhassa hallintapaneelissa (manager V4).</translation>
+   <translation id="telecom_welcoming_text_feedback" qtlid="386001">N'hésitez pas à nous faire part de vos <a href="mailto:voip@ml.ovh.net,sms@ml.ovh.net,adsl@ml.ovh.net">suggestions</a>&#160;!</translation>
+   <translation id="telecom_welcoming_link_hasNoService" qtlid="338664">Tutustu telecom-tuotteisiin</translation>
+   <translation id="telecom_welcoming_link_hasServices" qtlid="338677">Tutustu nyt</translation>
+</translations>

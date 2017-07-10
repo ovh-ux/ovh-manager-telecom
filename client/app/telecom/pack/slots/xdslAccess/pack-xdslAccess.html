@@ -1,0 +1,23 @@
+<div id="pack-xdslAccess" data-ng-controller="PackAccessCtrl as Access">
+
+    <div data-ng-include="'app/common/dashboard/service/loading.html'" data-ng-if="loaders.services"></div>
+    <div data-ng-include="'app/common/dashboard/service/no-element.html'" data-ng-if="!loaders.services && Access.services.length == 0"></div>
+
+    <ul data-ng-if="!loaders.services && Access.services.length > 0">
+        <li class="service-item" data-ng-repeat="service in Access.services track by service.accessName">
+            <a class="service-button"
+               data-ui-sref="telecom.pack.xdsl({
+                    serviceName: service.accessName,
+                    number: service.lines[0] })">
+                <span class="ovh-font ovh-font-xdsl-{{service.accessType}}" aria-hidden="true"></span>
+
+                <div class="service-button-description">
+                    <div class="description-title">{{service.description || service.accessName }}</div>
+                    <div class="description-subtext">{{ service.accessName }}</div>
+                </div>
+
+                <span class="ovh-font ovh-font-arrow-right" aria-hidden="true"></span>
+            </a>
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,135 @@
+<div class="anchor-container anchor-rectangle">
+    <div class="anchor-wrapper"
+         data-responsive-popover="'components/telecom/telephony/group/number/feature/ovhPabx/dialplan/edit/telephony-group-number-feature-ovh-pabx-dialplan-edit.html'"
+         data-popover-trigger="none"
+         data-popover-is-open="$ctrl.popoverStatus.isOpen"
+         data-popover-placement="right"
+         data-popover-class="pretty-popover telephony-number-feature-popover telephony-number-ovh-pabx-actions-popup">
+
+        <div class="anchor">
+            <i data-ng-class="{ 'ovh-font ovh-font-config': !$ctrl.isLoading(), 'fa fa-spinner fa-pulse': $ctrl.isLoading() }"></i>
+        </div>
+
+        <div class="anchor-content">
+            <span class="content-label block"
+                  data-translate="telephony_number_feature_ovh_pabx_dialplan">
+            </span>
+            <span class="block elipse no-wrap"
+                  data-ng-bind="!$ctrl.dialplan.inEdition ? $ctrl.dialplan.name : $ctrl.dialplan.saveForEdition.name">
+            </span>
+        </div>
+
+        <div class="anchor-actions"
+             data-uib-dropdown>
+            <button type="button"
+                    class="btn btn-link btn-feature-actions"
+                    data-ng-disabled="$ctrl.isActionsDisabled()"
+                    data-ng-attr-id="dialplan-{{ $ctrl.dialplan.dialplanId }}-actions"
+                    data-uib-dropdown-toggle>
+                <i class="ovh-font ovh-font-dots"></i>
+            </button>
+            <!-- DIALPLAN ACTIONS -->
+            <ul class="dropdown-menu ovh-dropdown-menu"
+                data-uib-dropdown-menu
+                role="menu"
+                data-ng-attr-aria-labelledby="dialplan-{{ $ctrl.dialplan.dialplanId }}-actions">
+                <!-- EDIT MENU BTN -->
+                <li role="menuitem">
+                    <button type="button"
+                            class="btn btn-link full-width"
+                            data-translate="telephony_number_feature_ovh_pabx_dialplan_action_edit"
+                            data-ng-click="$ctrl.onEditDialplanBtnClick()">
+                    </button>
+                </li> <!-- END OF EDIT MENU BTN -->
+                <li class="divider"></li>
+                <!-- ADD EXTENSION BTN -->
+                <li role="menuitem">
+                    <button type="button"
+                            class="btn btn-link full-width"
+                            data-translate="telephony_number_feature_ovh_pabx_step_add"
+                            data-ng-click="$ctrl.onExtensionAddBtnClick()">
+                    </button>
+                </li> <!-- END OF ADD EXTENSION BTN -->
+                <li class="divider"></li>
+                <!-- DELETE DIALPLAN BTN -->
+                <li role="menuitem">
+                    <button type="button"
+                            class="btn btn-link full-width"
+                            data-translate="telephony_number_feature_ovh_pabx_dialplan_action_delete"
+                            data-ng-click="$ctrl.dialplan.status = 'DELETE_PENDING'">
+                    </button>
+                </li> <!-- END OF DELETE DIALPLAN BTN -->
+            </ul> <!-- END OF DIALPLAN ACTIONS -->
+        </div>
+
+        <div class="anchor-confirm"
+             data-ng-if="$ctrl.dialplan.status === 'DELETE_PENDING'">
+            <div class="confirm-overlay"></div>
+            <div class="confirm-content text-center animated fadeInRight flex-row-center">
+                <button type="button"
+                        class="btn btn-default"
+                        data-translate="cancel"
+                        data-ng-click="$ctrl.dialplan.status = 'OK'">
+                </button>
+
+                <button type="button"
+                        class="btn btn-danger"
+                        data-translate="common_confirm"
+                        data-ng-click="$ctrl.onDialplanDeleteConfirmBtnClick()">
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="voip-metro-plan-subpart"
+     data-ng-if="$ctrl.dialplan">
+    <!-- INIT LOADING -->
+    <div data-ng-if="$ctrl.loading.init">
+        <div class="anchor-container anchor-point-x2">
+            <div class="anchor"
+                 data-jsplumb-endpoint="$ctrl.ovhPabxCtrl.numberCtrl.jsPlumbEndpointsOptions.topLeft">
+                <i class="fa fa-spinner fa-pulse"
+                   data-jsplumb-connection
+                   data-jsplumb-connection-target="incoming-call-{{ $ctrl.ovhPabxCtrl.numberCtrl.number.serviceName }}">
+                </i>
+            </div>
+            <div class="anchor-content service-presentation">
+                <span class="service-label"
+                      data-translate="loading">
+                </span>
+            </div>
+        </div>
+    </div> <!-- INIT LOADING -->
+
+    <!-- EXTENSION DISPLAY -->
+    <div data-ng-if="!$ctrl.loading.init">
+        <div data-ui-sortable="$ctrl.sortableOptions"
+             data-ng-model="$ctrl.ovhPabxCtrl.dialplan.extensions">
+            <!-- ADDED EXTENSIONS -->
+            <div data-ng-repeat="extension in $ctrl.ovhPabxCtrl.dialplan.extensions track by extension.extensionId"
+                 data-smooth-scroll
+                 data-scroll-if="{{ extension.status === 'IN_CREATION' }}"
+                 data-offset="550">
+                <telephony-number-ovh-pabx-dialplan-extension data-extension="extension"></telephony-number-ovh-pabx-dialplan-extension>
+            </div> <!-- ADDED EXTENSIONS -->
+        </div>
+
+        <!-- ADD BTN -->
+        <div class="anchor-container anchor-point-x2 anchor-button-container">
+            <button type="button"
+                    class="anchor no-style"
+                    data-jsplumb-endpoint="$ctrl.ovhPabxCtrl.numberCtrl.jsPlumbEndpointsOptions.topLeft"
+                    data-translate-attr="{ title: 'telephony_number_feature_ovh_pabx_step_add' }"
+                    data-ng-disabled="$ctrl.isActionsDisabled()"
+                    data-ng-click="$ctrl.onExtensionAddBtnClick()">
+                <i class="ovh-font ovh-font-ajouter"
+                   data-jsplumb-connection
+                   data-jsplumb-connection-target="incoming-call-{{ $ctrl.ovhPabxCtrl.numberCtrl.number.serviceName }}">
+                </i>
+            </button>
+        </div> <!-- ADD BTN -->
+    </div> <!-- EXTENSION DISPLAY -->
+
+</div>
+

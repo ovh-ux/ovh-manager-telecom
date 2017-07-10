@@ -1,0 +1,73 @@
+<div class="telecom-pack-migration-shipping">
+
+    <div class="row">
+
+        <div class="col-xs-12 col-md-6">
+
+            <div class="widget-presentation">
+                <h2 class="widget-presentation-title"
+                    data-translate="telecom_pack_migration_shipping_title">
+                </h2>
+
+                <p data-translate="telecom_pack_migration_shipping_explain"></p>
+                <p data-translate="telecom_pack_migration_shipping_explain2"></p>
+
+                <!-- LOADER -->
+                <bouncing-box-loader data-ng-if="ShippingCtrl.loading.init">
+                    <h3 class="top-space-m16"
+                        data-translate="loading">
+                    </h3>
+                </bouncing-box-loader>
+
+                <div data-ng-if="!ShippingCtrl.loading.init">
+
+                    <!-- CONTACT CHOICE -->
+                    <div class="contact-choice">
+                        <h3 data-translate="telecom_pack_migration_shipping_contact"
+                            class="bottom-space-m16 top-space-m32">
+                        </h3>
+
+                        <ovh-contact data-ng-model="ShippingCtrl.process.shipping.address"
+                                     data-ovh-contact-choice-options="ShippingCtrl.ovhContactOptions">
+                            <bouncing-box-loader>
+                                <h3 class="top-space-m16"
+                                    data-translate="loading">
+                                </h3>
+                            </bouncing-box-loader>
+                        </ovh-contact>
+                    </div> <!-- CONTACT CHOICE -->
+
+                    <!-- SHIPPING MODE CHOICE -->
+                    <div class="shipping-choice top-space-m32">
+                        <h3 data-translate="telecom_pack_migration_shipping_mode"
+                            class="bottom-space-m16">
+                        </h3>
+
+                        <shipping-mode-selection data-ng-model="ShippingCtrl.process.shipping.mode"
+                                                 data-shipping-mode-selection-relay="ShippingCtrl.process.shipping.relay">
+                        </shipping-mode-selection>
+                    </div> <!-- SHIPPING MODE CHOICE -->
+
+                </div>
+
+                <div class="top-space-m32"
+                     data-ng-if="!ShippingCtrl.loading.init">
+                    <a class="btn btn-default"
+                       data-translate="telecom_pack_migration_confirm_cancel_button"
+                       data-ui-sref="telecom.pack">
+                    </a>
+                    <button type="button"
+                            class="btn btn-primary"
+                            data-ng-disabled="!ShippingCtrl.process.shipping.mode || (ShippingCtrl.process.shipping.mode === 'mondialRelay' && !ShippingCtrl.process.shipping.relay) || (ShippingCtrl.process.shipping.mode === 'transporter' && !ShippingCtrl.process.shipping.address)"
+                            data-translate="telecom_pack_migration_shipping_confirm"
+                            data-ng-click="ShippingCtrl.process.currentStep = 'confirm'">
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

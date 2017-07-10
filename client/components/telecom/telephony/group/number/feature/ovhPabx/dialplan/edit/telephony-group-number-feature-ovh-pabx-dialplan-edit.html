@@ -1,0 +1,203 @@
+<div class="telephony-number-ovh-pabx-config popover-pages"
+     data-ng-controller="telephonyNumberOvhPabxDialplanEditCtrl as $ctrl"
+     data-ng-form="dialplanForm">
+
+    <div class="popover-pages-wrapper"
+         data-ng-class="{ move: $ctrl.dialplanCtrl.popoverStatus.move }">
+
+        <section class="popover-page page-section">
+
+            <header>
+                <h2 data-translate="telephony_number_feature_ovh_pabx_dialplan_edit"></h2>
+            </header>
+
+            <section>
+
+                <div class="section-group">
+
+                    <!-- NAME -->
+                    <div class="section-item form-group"
+                         data-ng-class="{ 'has-error': dialplanForm.name.$invalid && dialplanForm.name.$dirty }">
+                        <div data-flat-input-container>
+                            <label for="name"
+                                   class="control-label required"
+                                   data-translate="common_lastname">
+                            </label>
+                            <input type="text"
+                                   class="form-control"
+                                   name="name"
+                                   id="name"
+                                   data-ng-model="$ctrl.dialplan.name"
+                                   data-translate-attr="{ placeholder: 'common_lastname' }"
+                                   data-required
+                                   data-ng-pattern="/^[\w\s]+$/"
+                                   aria-describedby="dialplan-name-explain" />
+                            <span class="help-block small bottom-space-m0"
+                                  id="dialplan-name-explain"
+                                  data-translate="telephony_number_feature_ovh_pabx_dialplan_name_explain">
+                            </span>
+                        </div>
+                        <div data-ng-messages="dialplanForm.name.$error"
+                             data-ng-if="dialplanForm.name.$invalid && dialplanForm.name.$dirty"
+                             role="alert"
+                             class="top-space-m8">
+                            <label for="name"
+                                   class="normal small"
+                                   data-ng-message="required"
+                                   data-translate="telephony_number_feature_ovh_pabx_dialplan_name_required">
+                            </label>
+                            <label for="name"
+                                   class="normal small"
+                                   data-ng-message="pattern"
+                                   data-translate="telephony_number_feature_ovh_pabx_dialplan_name_bad_format">
+                            </label>
+                        </div>
+                    </div> <!-- NAME -->
+
+                    <!-- TRANSFER TIMEOUT -->
+                    <div class="section-item form-group">
+                        <label class="normal bottom-space-m0">
+                            <span class="bold inline-block bottom-space-m4"
+                                  data-translate="telephony_number_feature_ovh_pabx_dialplan_transfer_timeout">
+                            </span>
+                            <input-number-spinner data-ng-model="$ctrl.dialplan.transferTimeout"
+                                                  data-input-number-spinner-min="0"
+                                                  data-input-number-spinner-max="1800">
+                            </input-number-spinner>
+                        </label>
+                        <span class="help-block small bottom-space-m0"
+                              data-translate="telephony_number_feature_ovh_pabx_dialplan_transfer_timeout_explain">
+                        </span>
+                    </div> <!-- TRANSFER TIMEOUT -->
+
+                    <!-- SHOW CALLER NUMBER -->
+                    <button type="button"
+                            class="section-item no-style full-width text-left"
+                            data-ng-click="$ctrl.changeShowCallerNumberChoice()"
+                            data-ng-if="$ctrl.ovhPabx.featureType === 'cloudIvr'">
+                        <label class="pointer radio-label-main"
+                               data-translate="telephony_number_feature_ovh_pabx_dialplan_show_caller_number">
+                        </label>
+                        <span class="block"
+                              data-translate="{{ 'telephony_number_feature_ovh_pabx_dialplan_show_caller_number_' + $ctrl.dialplan.showCallerNumber }}">
+                        </span>
+                        <div class="chevron-right">
+                            <div class="chevron-wrapper">
+                                <i class="ovh-font ovh-font-arrow-right"></i>
+                            </div>
+                        </div>
+                    </button> <!-- SHOW CALLER NUMBER -->
+                </div>
+
+                <div class="section-group">
+                    <!-- ANONYMOUS REJECTION -->
+                    <div class="section-item">
+                        <div class="dtable full-width table-fixed">
+                            <div class="dtd text-center">
+                                <button type="button"
+                                        class="no-style text-center space-p0"
+                                        data-ng-class="{ bold: !$ctrl.dialplan.anonymousRejection }"
+                                        data-ng-click="$ctrl.dialplan.anonymousRejection = false"
+                                        data-translate="telephony_number_feature_ovh_pabx_dialplan_anonymous_rejection_inactive">
+                                </button>
+                            </div>
+                            <div class="dtd text-center">
+                                <flat-switch class="inline-block vertical-middle">
+                                    <input type="checkbox"
+                                           data-ng-model="$ctrl.dialplan.anonymousRejection" />
+                                </flat-switch>
+                            </div>
+                            <div class="dtd text-center">
+                                <button type="button"
+                                        class="no-style text-center space-p0"
+                                        data-ng-class="{ bold: $ctrl.dialplan.anonymousRejection }"
+                                        data-ng-click="$ctrl.dialplan.anonymousRejection = true"
+                                        data-translate="telephony_number_feature_ovh_pabx_dialplan_anonymous_rejection_active">
+                                </button>
+                            </div>
+                        </div>
+                    </div> <!-- ANONYMOUS REJECTION -->
+
+                </div>
+
+            </section>
+
+            <footer class="clearfix double-choice">
+                <button type="submit"
+                        data-ng-click="$ctrl.onValidateBtnClick()"
+                        class="btn btn-primary"
+                        data-ng-disabled="($ctrl.dialplan.status !== 'DRAFT' && !$ctrl.dialplan.hasChange()) || dialplanForm.$invalid"
+                        data-translate="{{ $ctrl.dialplan.status === 'DRAFT' ? 'common_create' : 'modify' }}">
+                </button>
+
+                <button type="button"
+                        class="btn btn-default"
+                        data-translate="cancel"
+                        data-ng-click="$ctrl.onCancelBtnClick()">
+                </button>
+            </footer>
+
+        </section>
+
+        <section class="popover-page page-section">
+            <header>
+                <button type="button"
+                        class="back-btn no-style no-space fs20"
+                        data-ng-click="$ctrl.dialplanCtrl.popoverStatus.move = false"
+                        data-translate-attr="{ title: 'telephony_scheduler_events_back' }">
+                    <i class="ovh-font ovh-font-arrow-left"></i>
+                </button>
+
+                <h2 data-ng-if="$ctrl.dialplanCtrl.popoverStatus.rightPage === 'delete'"
+                    data-translate="telephony_number_feature_ovh_pabx_action_delete_title">
+                </h2>
+
+                <h2 data-ng-if="$ctrl.dialplanCtrl.popoverStatus.rightPage === 'callerNumber'"
+                    data-translate="telephony_number_feature_ovh_pabx_dialplan_show_caller_number">
+                </h2>
+            </header>
+
+            <!-- CALLER NUMBER CHOICE -->
+            <section data-ng-if="$ctrl.dialplanCtrl.popoverStatus.rightPage === 'callerNumber'">
+
+                <!-- EXPLAIN -->
+                <div class="alert alert-info bottom-space-m0"
+                     role="alert">
+                    <i class="ovh-font ovh-font-filled-info"
+                       aria-hidden="true">
+                    </i>
+                    <p data-translate="telephony_number_feature_ovh_pabx_dialplan_show_caller_number_explain"></p>
+                </div> <!-- EXPLAIN -->
+
+                <div class="section-group">
+                    <!-- CHOICES -->
+                    <label class="section-item item-choice full-width pointer dtable"
+                           data-ng-repeat="callerNumber in $ctrl.availableCallerNumberTypes track by $index">
+                        <div class="dtr">
+                            <div class="dtd vertical-middle radio-content">
+                                <flat-radio>
+                                    <input type="radio"
+                                           name="showCallerNumber"
+                                           data-ng-model="$ctrl.dialplan.showCallerNumber"
+                                           data-ng-value="callerNumber"
+                                           data-ng-change="$ctrl.dialplanCtrl.popoverStatus.move = false" />
+                                </flat-radio>
+                            </div>
+                            <div class="dtd vertical-middle">
+                                <span class="block radio-label-main"
+                                      data-translate="{{ 'telephony_number_feature_ovh_pabx_dialplan_show_caller_number_' + callerNumber }}">
+                                </span>
+                                <span class="small normal"
+                                      data-translate="{{ 'telephony_number_feature_ovh_pabx_dialplan_show_caller_number_' + callerNumber + '_explain' }}">
+                                </span>
+                            </div>
+                        </div>
+                    </label> <!-- CHOICES -->
+                </div>
+
+            </section> <!-- CALLER NUMBER CHOICE -->
+
+        </section>
+    </div>
+
+</div>

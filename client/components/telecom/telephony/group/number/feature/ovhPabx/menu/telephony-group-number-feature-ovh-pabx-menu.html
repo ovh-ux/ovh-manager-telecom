@@ -1,0 +1,214 @@
+<div class="telephony-number-ovh-pabx-menu">
+
+    <div data-ng-class="{ 'anchors-line-container': $ctrl.hasMenuEntryOrDialPlanExtension() }">
+        <!-- DISPLAY POSITION OR ENTRY DTMF -->
+        <div class="anchor-cell-container right-space-p16"
+             data-ng-if="$ctrl.hasMenuEntryOrDialPlanExtension()">
+            <div class="anchor-container anchor-empty">
+                <div class="anchor"
+                     data-ng-class="{ 'hover-grip rule-grip': $ctrl.dialplanRule }"
+                     data-jsplumb-endpoint="$ctrl.jsPlumbEndpointsOptions.topLeft">
+                    <span data-jsplumb-connection="$ctrl.isDisabled() ? $ctrl.numberCtrl.jsPlumbConnectionsOptions.disabled : null"
+                          data-jsplumb-connection-target="{{ $ctrl.getParentEndpointUuid() }}">
+                        <span class="position-text"
+                              data-ng-if="!$ctrl.dialplanRule"
+                              data-ng-bind="$ctrl.getEntryAttr('dtmf')">
+                        </span>
+                        <i data-ng-if="$ctrl.dialplanRule"
+                           data-ng-class="{ 'ovh-font ovh-font-grip': !$ctrl.isLoading(), 'fa fa-spinner fa-pulse': $ctrl.isLoading() }">
+                        </i>
+                    </span>
+                </div>
+            </div>
+        </div> <!-- END OF DISPLAY POSITION OR ENTRY DTMF -->
+
+        <!-- MENU DISPLAY -->
+        <div data-ng-class="{ 'anchor-cell-container': $ctrl.hasMenuEntryOrDialPlanExtension() }">
+            <div class="anchor-container anchor-rectangle">
+                <div class="anchor-wrapper"
+                     data-responsive-popover="$ctrl.popoverStatus.templateUrl"
+                     data-popover-placement="auto right"
+                     data-popover-trigger="none"
+                     data-popover-is-open="$ctrl.popoverStatus.isOpen"
+                     data-popover-class="pretty-popover telephony-number-feature-popover telephony-number-ovh-pabx-actions-popup">
+                    <div class="anchor"
+                         data-jsplumb-endpoint
+                         data-jsplumb-endpoint-uuid="{{ $ctrl.getEndpointUuid() }}">
+                        <i class="ovh-font ovh-font-programmableKeys"></i>
+                    </div>
+                    <!-- MENU NAME -->
+                    <div class="anchor-content">
+                        <span class="content-label block"
+                              data-ng-if="$ctrl.dialplanRule"
+                              data-translate="telephony_number_feature_ovh_pabx_menu_entry_action_launch_menu">
+                        </span>
+                        <span class="content-label block"
+                              data-ng-if="$ctrl.menuEntry"
+                              data-translate="telephony_number_feature_ovh_pabx_menu_entry_action_menu_sub">
+                        </span>
+                        <span class="content-label block"
+                              data-ng-if="!$ctrl.hasMenuEntryOrDialPlanExtension()"
+                              data-translate="telephony_number_feature_ovh_pabx_menu">
+                        </span>
+                        <span class="block elipse no-wrap"
+                              data-ng-bind="$ctrl.menu.inEdition ? $ctrl.menu.saveForEdition.name : $ctrl.menu.name">
+                        </span>
+                    </div> <!-- END OF MENU NAME -->
+                    <!-- AVAILABLE MENU ACTIONS -->
+                    <div class="anchor-actions"
+                         data-uib-dropdown>
+                        <button type="button"
+                                class="btn btn-link btn-feature-actions"
+                                data-ng-click="$ctrl.openConfigPopover()"
+                                data-ng-disabled="$ctrl.isActionsDisabled()"
+                                data-ng-attr-id="menu-{{ $ctrl.menu.menuId }}-actions"
+                                data-uib-dropdown-toggle>
+                            <i class="ovh-font ovh-font-dots"></i>
+                        </button>
+                        <!-- MENU ACTIONS -->
+                        <ul class="dropdown-menu ovh-dropdown-menu"
+                            data-uib-dropdown-menu
+                            role="menu"
+                            data-ng-attr-aria-labelledby="menu-{{ $ctrl.menu.menuId }}-actions">
+                            <!-- EDIT MENU BTN -->
+                            <li role="menuitem">
+                                <button type="button"
+                                        class="btn btn-link full-width"
+                                        data-translate="telephony_number_feature_ovh_pabx_menu_action_edit"
+                                        data-ng-click="$ctrl.onEditMenuBtnClick()">
+                                </button>
+                            </li> <!-- END OF EDIT MENU BTN -->
+                            <li class="divider"></li>
+                            <!-- ADD MENU ENTRY -->
+                            <li role="menuitem">
+                                <button type="button"
+                                        class="btn btn-link full-width"
+                                        data-translate="telephony_number_feature_ovh_pabx_menu_action_add_entry"
+                                        data-ng-disabled="!$ctrl.menu.hasAvailableDtmfEntryKey()"
+                                        data-ng-click="$ctrl.addMenuEntry()">
+                                </button>
+                            </li> <!-- END OF ADD MENU ENTRY -->
+                            <li class="divider"></li>
+                            <!-- DELETE MENU -->
+                            <li role="menuitem">
+                                <button type="button"
+                                        class="btn btn-link full-width"
+                                        data-translate="telephony_number_feature_ovh_pabx_menu_action_delete"
+                                        data-ng-click="$ctrl.menu.status = 'DELETE_PENDING'"
+                                        data-ng-if="!$ctrl.hasMenuEntryOrDialPlanExtension()">
+                                </button>
+                            </li> <!-- END OF DELETE MENU -->
+                            <!-- EDIT MENU ENTRY -->
+                            <li role="menuitem">
+                                <button type="button"
+                                        class="btn btn-link full-width"
+                                        data-translate="telephony_number_feature_ovh_pabx_menu_entry_edit"
+                                        data-ng-if="$ctrl.menuEntry"
+                                        data-ng-click="$ctrl.onEditMenuEntryBtnClick()">
+                                </button>
+                            </li> <!-- END OF EDIT MENU ENTRY -->
+                            <!-- DELETE MENU ENTRY -->
+                            <li role="menuitem">
+                                <button type="button"
+                                        class="btn btn-link full-width"
+                                        data-translate="telephony_number_feature_ovh_pabx_menu_entry_delete"
+                                        data-ng-if="$ctrl.menuEntry"
+                                        data-ng-click="$ctrl.menuEntry.status = 'DELETE_PENDING'">
+                                </button>
+                            </li> <!-- END OF DELETE MENU ENTRY -->
+                            <!-- EDIT DIALPLAN RULE -->
+                            <li role="menuitem">
+                                <button type="button"
+                                        class="btn btn-link full-width"
+                                        data-translate="telephony_number_feature_ovh_pabx_step_rule_action_edit"
+                                        data-ng-if="$ctrl.dialplanRule"
+                                        data-ng-click="$ctrl.onDialplanRuleEditBtnClick()">
+                                </button>
+                            </li> <!-- END OF EDIT DIALPLAN RULE -->
+                            <!-- DELETE DIALPLAN RULE -->
+                            <li role="menuitem">
+                                <button type="button"
+                                        class="btn btn-link full-width"
+                                        data-translate="telephony_number_feature_ovh_pabx_step_rule_action_delete"
+                                        data-ng-if="$ctrl.dialplanRule"
+                                        data-ng-click="$ctrl.dialplanRule.status = 'DELETE_PENDING'">
+                                </button>
+                            </li> <!-- END OF DELETE DIALPLAN RULE -->
+                        </ul> <!-- END OF MENU ACTIONS -->
+                    </div> <!-- END OF AVAILABLE MENU ACTIONS -->
+                    <div class="anchor-confirm"
+                         data-ng-if="$ctrl.menu.status === 'DELETE_PENDING' || $ctrl.menuEntry.status === 'DELETE_PENDING' || $ctrl.dialplanRule.status === 'DELETE_PENDING'">
+                        <div class="confirm-overlay"></div>
+                        <div class="confirm-content text-center animated fadeInRight flex-row-center">
+                            <button type="button"
+                                    class="btn btn-default"
+                                    data-translate="cancel"
+                                    data-ng-click="$ctrl.onDeleteCancelBtnClick()">
+                            </button>
+
+                            <button type="button"
+                                    class="btn btn-danger"
+                                    data-translate="common_confirm"
+                                    data-ng-click="$ctrl.onMenuDeleteConfirmBtnClick()">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- END OF MENU DISPLAY -->
+        </div>
+    </div>
+
+    <div data-ng-class="$ctrl.hasMenuEntryOrDialPlanExtension() ? 'voip-metro-plan-subpart-extended top-space-m0' : 'voip-metro-plan-subpart'">
+        <!-- LOADING DISPLAY -->
+        <div data-ng-if="$ctrl.loading.init">
+            <div class="anchor-container anchor-point-x2">
+                <div class="anchor"
+                     data-jsplumb-endpoint="$ctrl.jsPlumbEndpointsOptions.topLeft">
+                    <i class="fa fa-spinner fa-pulse"
+                       data-jsplumb-connection
+                       data-jsplumb-connection-target="{{ $ctrl.getEndpointUuid() }}">
+                    </i>
+                </div>
+                <div class="anchor-content service-presentation">
+                    <span class="service-label"
+                          data-translate="loading">
+                    </span>
+                </div>
+            </div>
+        </div> <!-- END OF LOADING DISPLAY -->
+
+        <!-- MENU ENTRY DISPLAY -->
+        <div data-ng-if="!$ctrl.loading.init">
+            <!-- ENTRY LIST -->
+            <div>
+                <div data-ng-repeat="entry in $ctrl.menu.entries track by $index"
+                     data-smooth-scroll
+                     data-scroll-if="{{ entry.status === 'DRAFT' && $ctrl.popoverStatus.isParentClicked }}"
+                     data-offset="550">
+                    <telephony-number-ovh-pabx-menu-entry data-ng-if="$ctrl.getEntryAttr('action', entry) !== 'menuSub'"
+                                                          data-menu-entry="entry">
+                    </telephony-number-ovh-pabx-menu-entry>
+                    <telephony-number-ovh-pabx-menu data-ng-if="$ctrl.getEntryAttr('action', entry) === 'menuSub'"
+                                                    data-ovh-pabx-menu="$ctrl.getEntryMenu(entry)"
+                                                    data-ovh-pabx-menu-entry="entry">
+                    </telephony-number-ovh-pabx-menu>
+                </div>
+            </div> <!-- END OF ENTRY LIST -->
+            <!-- ADD ENTRY BTN -->
+            <div class="anchor-container anchor-point-x2 anchor-button-container">
+                <button type="button"
+                        class="anchor no-style"
+                        data-jsplumb-endpoint="$ctrl.jsPlumbEndpointsOptions.topLeft"
+                        data-translate-attr="{ title: 'telephony_number_feature_ovh_pabx_menu_action_add_entry' }"
+                        data-ng-disabled="$ctrl.isActionsDisabled() || !$ctrl.menu.hasAvailableDtmfEntryKey()"
+                        data-ng-click="$ctrl.addMenuEntry()">
+                    <i class="ovh-font ovh-font-ajouter"
+                       data-jsplumb-connection="$ctrl.isDisabled() ? $ctrl.jsPlumbConnectionsOptions.disabled : null"
+                       data-jsplumb-connection-target="{{ $ctrl.getEndpointUuid() }}">
+                    </i>
+                </button>
+            </div> <!-- END OF ADD ENTRY BTN -->
+        </div> <!-- END OF MENU ENTRY DISPLAY -->
+    </div>
+
+</div>

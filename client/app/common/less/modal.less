@@ -1,0 +1,42 @@
+// Bootstrap
+@modal-title-padding: 5px;
+@modal-inner-padding: 16px;
+
+@modal-header-border-color: @UNIVERS;
+
+.modal {
+    .modal-content {
+        padding: @modal-inner-padding;
+
+        .modal-header {
+            font-size: @font-size-h2;
+            font-weight: @font-weight-h2;
+            border-bottom: 2px solid @modal-header-border-color;
+            padding: 0 0 5px 0;
+            margin: 0;
+        }
+
+        .modal-body {
+            padding: 16px 0;
+
+            li {
+                display: flex;
+
+                .flat-checkbox {
+                    flex: 1 1 1;
+                }
+            }
+        }
+
+        .modal-footer {
+            padding: 0;
+            border-top: none;
+        }
+    }
+
+    @media (min-width: @screen-sm-min) {
+      .modal-dialog {
+        margin: 90px auto;
+      }
+    }
+}

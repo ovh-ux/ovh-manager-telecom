@@ -1,0 +1,75 @@
+<div class="telecom-telephony-line-phone-accessories-shipping">
+
+    <bouncing-box-loader data-ng-if="AccessoriesShippingCtrl.loading.init">
+        <h3 class="top-space-m16"
+            data-translate="loading">
+        </h3>
+    </bouncing-box-loader>
+
+    <div class="row"
+         data-ng-show="!AccessoriesShippingCtrl.loading.init">
+
+        <div class="col-xs-12 col-md-6">
+
+            <div class="widget-presentation">
+
+                <h2 class="widget-presentation-title"
+                    data-translate="telephony_line_phone_accessories_shipping_title">
+                </h2>
+
+                <!-- CONTACT CHOICE -->
+                <div class="contact-choice">
+                    <h3 data-translate="telephony_line_phone_accessories_shipping_contact"
+                        class="bottom-space-m16">
+                    </h3>
+
+                    <ovh-contact data-ng-model="AccessoriesShippingCtrl.process.shipping.contact"
+                                 data-ovh-contact-choice-options="AccessoriesShippingCtrl.contactChoiceOptions"
+                                 data-ovh-contact-init-deferred="AccessoriesShippingCtrl.contactDeferred">
+                        <bouncing-box-loader>
+                            <h3 class="top-space-m16"
+                                data-translate="loading">
+                            </h3>
+                        </bouncing-box-loader>
+                    </ovh-contact>
+                </div> <!-- CONTACT CHOICE -->
+
+                <!-- SHIPPING MODE CHOICE -->
+                <div class="shipping-choice top-space-m16"
+                     data-ng-if="!AccessoriesShippingCtrl.process.shipping.contact.inEdition && !AccessoriesShippingCtrl.loading.init">
+                    <h3 data-translate="telephony_line_phone_accessories_shipping_mode"
+                        class="bottom-space-m16">
+                    </h3>
+
+                    <shipping-mode-selection data-ng-model="AccessoriesShippingCtrl.process.shipping.mode"
+                                             data-shipping-mode-selection-relay="AccessoriesShippingCtrl.process.shipping.relay"
+                                             data-shipping-mode-selection-options="AccessoriesShippingCtrl.shippingOptions">
+                    </shipping-mode-selection>
+                </div> <!-- SHIPPING MODE CHOICE -->
+
+                <form data-ng-if="!AccessoriesShippingCtrl.process.shipping.contact.inEdition"
+                      data-ng-submit="AccessoriesShippingCtrl.process.currentView = 'resume'">
+
+                    <div class="footer-button-container clearfix top-space-m16 bottom-space-m32">
+                        <button type="submit"
+                                class="btn btn-primary"
+                                data-translate="telephony_line_phone_accessories_shipping_validate"
+                                data-ng-disabled="(AccessoriesShippingCtrl.process.shipping.mode === 'mondialRelay' && !AccessoriesShippingCtrl.process.shipping.relay) || !AccessoriesShippingCtrl.process.shipping.contact">
+                        </button>
+
+                        <button type="reset"
+                                class="btn btn-default"
+                                data-translate="telephony_line_phone_accessories_previous"
+                                data-ng-click="AccessoriesShippingCtrl.process.currentView = 'choice'">
+                        </button>
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

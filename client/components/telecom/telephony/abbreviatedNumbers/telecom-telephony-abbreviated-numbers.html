@@ -1,0 +1,119 @@
+<div class="widget-presentation">
+
+    <!-- REMOTES LIST -->
+    <div class="table-responsive-vertical ">
+
+        <ul table-action class="bottom-space-m8">
+            <li>
+                <button type="button"
+                    data-ng-click="$ctrl.add()"
+                    data-uib-tooltip="{{ 'telephony_abbreviated_numbers_add_tooltip' | translate}}"
+                    data-tooltip-placement="right"
+                    data-tooltip-append-to-body="true"
+                    data-ng-disabled="$ctrl.loading.init">
+                    <i class="ovh-font ovh-font-add-circle"></i>
+                    <label data-translate="common_add"></label>
+                </button>
+            </li><li>
+                <a href="#"
+                    data-ng-click="$event.preventDefault()"
+                    data-ng-csv="$ctrl.abbreviatedNumbers"
+                    data-csv-header="$ctrl.getCsvHeader()"
+                    csv-column-order="$ctrl.getCsvOrder()"
+                    data-ng-disabled="$ctrl.loading.init || !$ctrl.abbreviatedNumbers.length"
+                    data-uib-tooltip="{{ 'telephony_abbreviated_numbers_export_tooltip' | translate}}"
+                    data-tooltip-placement="right"
+                    data-tooltip-append-to-body="true"
+                    data-filename="{{ $ctrl.exportFilename || 'abbreviated-numbers.csv' }}">
+                    <i class="fa fa-download" aria-hidden="true"></i>
+                    <label data-translate="telephony_abbreviated_numbers_download_label"></label>
+                </a>
+            </li><li>
+                <button type="button"
+                    data-ng-click="$ctrl.openImport()"
+                    data-uib-tooltip="{{ 'telephony_abbreviated_numbers_import_tooltip' | translate}}"
+                    data-tooltip-placement="right"
+                    data-tooltip-append-to-body="true"
+                    data-ng-disabled="$ctrl.loading.init">
+                    <i class="fa fa-upload" aria-hidden="true"></i>
+                    <label data-translate="telephony_abbreviated_numbers_import_label"></label>
+                </button>
+            </li><li>
+                <button type="button"
+                    data-ng-click="$ctrl.trashAll()"
+                    data-uib-tooltip="{{ 'telephony_abbreviated_numbers_trash_all_tooltip' | translate}}"
+                    data-tooltip-append-to-body="true"
+                    data-tooltip-placement="right"
+                    data-ng-disabled="$ctrl.loading.init || !$ctrl.abbreviatedNumbers.length">
+                    <i class="ovh-font ovh-font-bin" aria-hidden="true"></i>
+                    <label data-translate="telephony_abbreviated_numbers_trash_all_label"></label>
+                </button>
+            </li>
+        </ul>
+
+        <table class="table table-pretty table-hover table-striped">
+            <thead>
+                <tr>
+                    <th scope="col" data-translate="telephony_abbreviated_numbers_id"></th>
+                    <th scope="col" data-translate="telephony_abbreviated_numbers_number"></th>
+                    <th scope="col" data-translate="telephony_abbreviated_numbers_surname"></th>
+                    <th scope="col" data-translate="telephony_abbreviated_numbers_name" class="text-left" colspan="2"></th>
+                </tr>
+            </thead>
+            <tbody data-ng-if="$ctrl.abbreviatedNumbers.length === 0">
+                <tr data-ng-hide="$ctrl.loading.init">
+                    <td colspan="5" data-translate="telephony_abbreviated_numbers_table_empty" class="text-left"></td>
+                </tr>
+            </tbody>
+            <tbody>
+                <tr data-ng-repeat="abbreviated in $ctrl.paginatedAbbreviatedNumbers track by abbreviated.abbreviatedNumber">
+                    <td>
+                        <span data-ng-bind="abbreviated.abbreviatedNumber"></span>
+                    </td>
+                    <td>
+                        <span data-ng-bind="abbreviated.destinationNumber"></span>
+                    </td>
+                    <td>
+                        <span data-ng-bind="abbreviated.surname"></span>
+                    </td>
+                    <td>
+                        <span data-ng-bind="abbreviated.name"></span>
+                    </td>
+                    <td>
+                        <spinner data-ng-show="abbreviated.removing"></spinner>
+                        <ul table-action-line data-ng-hide="abbreviated.removing">
+                            <li>
+                                <button type="button"
+                                        data-ng-disabled="abbreviated.updating"
+                                        data-ng-click="$ctrl.update(abbreviated)">
+                                    <i class="ovh-font ovh-font-editer"></i>
+                                    <label data-translate="edit"></label>
+                                </button>
+                            </li><li>
+                                <button type="button"
+                                        data-ng-disabled="abbreviated.removing"
+                                        data-ng-click="$ctrl.remove(abbreviated)">
+                                    <i class="ovh-font ovh-font-bin"></i>
+                                    <label data-translate="delete"></label>
+                                </button>
+                            </li>
+                        </ul>
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="table table-pretty"
+         data-ng-show="$ctrl.abbreviatedNumbers > $ctrl.paginatedAbbreviatedNumbers"
+         data-pagination-front
+         data-go-to-page="false"
+         data-items="$ctrl.abbreviatedNumbers"
+         data-paginated-items="$ctrl.paginatedAbbreviatedNumbers"
+         data-items-per-page="$ctrl.filter.perPage"
+         data-page-placeholder="{{ 'common_pagination_go_to_page' | translate }}"
+         data-item-per-page-placeholder="{{'common_pagination_show_by_page' |translate }}">
+    </div>
+
+</div>

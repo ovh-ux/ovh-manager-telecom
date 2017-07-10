@@ -1,0 +1,362 @@
+<section class="telecom-sms-senders-add">
+
+    <header>
+        <section-back-link section-back-link-to-state="telecom.sms.senders"
+                           section-back-link-title="{{ 'sms_section_back_link' | translate }}">
+        </section-back-link>
+        <h1 data-translate="sms_senders_add_sender_title"></h1>
+    </header>
+
+    <!-- LOADING -->
+    <bouncing-box-loader data-ng-if="SmsSendersAddCtrl.loading.init">
+        <h2 data-translate="loading"></h2>
+    </bouncing-box-loader>
+
+    <div class="telecom-section-content" data-ng-if="!SmsSendersAddCtrl.loading.init">
+
+        <div class="row bottom-space-m20">
+            <div class="col-xs-12 col-md-8">
+
+                <label class="block bottom-space-m12 pointer">
+                    <flat-radio>
+                        <input
+                            type="radio"
+                            name="choice"
+                            id="manual"
+                            value="manual"
+                            data-ng-model="SmsSendersAddCtrl.choice" />
+                    </flat-radio>
+                    <span class="left-space-m8"
+                          data-translate="sms_senders_add_sender_choice_manual">
+                    </span>
+                </label>
+
+                <label class="block bottom-space-m12 pointer">
+                    <flat-radio>
+                        <input
+                            type="radio"
+                            name="choice"
+                            id="personal"
+                            value="personal"
+                            data-ng-model="SmsSendersAddCtrl.choice" />
+                    </flat-radio>
+                    <span class="left-space-m8"
+                          data-translate="sms_senders_add_sender_choice_personal">
+                    </span>
+                </label>
+
+                <label class="block bottom-space-m12 pointer">
+                    <flat-radio>
+                        <input
+                            type="radio"
+                            name="choice"
+                            id="domain"
+                            value="domain"
+                            data-ng-model="SmsSendersAddCtrl.choice" />
+                    </flat-radio>
+                    <span class="left-space-m8"
+                          data-translate="sms_senders_add_sender_choice_domain">
+                    </span>
+                </label>
+
+            </div>
+        </div><!-- .row -->
+
+        <div class="row">
+            <div class="col-xs-12 col-md-8 col-lg-6">
+
+                <form name="addSenderForm"
+                      id="addSenderForm"
+                      class="ovh-form-flat"
+                      data-ng-if="SmsSendersAddCtrl.choice === 'manual'"
+                      data-ng-submit="SmsSendersAddCtrl.add()">
+
+                    <h4><strong data-translate="sms_senders_add_sender_info_pricing"></strong></h4>
+                    <p data-translate="sms_senders_add_sender_info_pricing_text"></p>
+                    <h4><strong data-translate="sms_senders_add_sender_info_timetable_validation"></strong></h4>
+                    <p data-translate="sms_senders_add_sender_info_timetable_validation_text"></p>
+
+                    <div class="alert alert-info" role="alert">
+                        <i class="ovh-font ovh-font-filled-info"></i>
+                        <strong class="text-uppercase" data-translate="sms_senders_add_sender_warning_title"></strong>
+                        <p data-translate="sms_senders_add_sender_warning_text"></p>
+                    </div>
+
+                    <!-- Sender -->
+                    <div class="form-group bottom-space-m16">
+                        <div flat-input-container>
+                            <label for="sender"
+                                   class="control-label"
+                                   data-translate="sms_senders_add_sender_label">
+                            </label>
+                            <input
+                                type="text"
+                                name="sender"
+                                id="sender"
+                                class="form-control"
+                                required
+                                autofocus
+                                data-ng-model="SmsSendersAddCtrl.sender.sender"
+                                data-ng-maxlength="11"
+                                data-ng-pattern="SmsSendersAddCtrl.senders.pattern"
+                                data-translate-attr="{ placeholder: 'sms_senders_add_sender_placeholder' }" />
+                            <div role="alert"
+                                 data-ng-messages="(addSenderForm.$invalid && addSenderForm.sender.$dirty) && addSenderForm.sender.$error">
+                                <p class="text-danger"
+                                   data-ng-message="required"
+                                   data-translate="sms_senders_add_sender_error_required">
+                                </p>
+                                <p class="text-danger"
+                                   data-ng-message="pattern"
+                                   data-translate="sms_senders_add_sender_error_pattern">
+                                </p>
+                                <p class="text-danger"
+                                   data-ng-message="maxlength"
+                                   data-translate="sms_senders_add_sender_error_maxlength">
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Description -->
+                    <div class="form-group bottom-space-m16">
+                        <div flat-input-container>
+                            <label for="description"
+                                   class="control-label"
+                                   data-translate="sms_senders_add_sender_description_label">
+                            </label>
+                            <input
+                                type="text"
+                                name="description"
+                                id="description"
+                                class="form-control"
+                                data-ng-model="SmsSendersAddCtrl.sender.description"
+                                data-ng-maxlength="40"
+                                data-translate-attr="{ placeholder: 'sms_senders_add_sender_description_placeholder' }" />
+                            <div role="alert"
+                                 data-ng-messages="addSenderForm.description.$error">
+                                <p class="text-danger"
+                                   data-ng-message="maxlength"
+                                   data-translate="sms_senders_add_sender_description_error_maxlength">
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Reason -->
+                    <div class="form-group bottom-space-m16">
+                        <div flat-input-container>
+                            <label for="reason"
+                                   class="control-label"
+                                   data-translate="sms_senders_add_sender_reason_label">
+                            </label>
+                            <textarea
+                                name="reason"
+                                id="reason"
+                                class="form-control vertical-resize"
+                                required
+                                data-ng-model="SmsSendersAddCtrl.sender.reason"
+                                data-ng-maxlength="250"
+                                data-translate-attr="{ placeholder: 'sms_senders_add_sender_reason_placeholder' }">
+                            </textarea>
+                            <div role="alert"
+                                 data-ng-messages="(addSenderForm.$invalid && addSenderForm.reason.$dirty) && addSenderForm.reason.$error">
+                                <p class="text-danger"
+                                   data-ng-message="required"
+                                   data-translate="sms_senders_add_sender_reason_error_required">
+                                </p>
+                                <p class="text-danger"
+                                   data-ng-message="maxlength"
+                                   data-translate="sms_senders_add_sender_reason_error_maxlength">
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group bottom-space-m16">
+                        <button
+                            type="submit"
+                            class="btn btn-primary"
+                            data-ng-disabled="addSenderForm.$invalid || SmsSendersAddCtrl.loading.adding">
+                            <span data-translate="submit"></span>
+                            <spinner class="left-space-m8"
+                                     data-ng-if="SmsSendersAddCtrl.loading.adding">
+                            </spinner>
+                        </button>
+                    </div>
+
+                </form>
+
+                <div class="table-responsive-vertical"
+                     data-ng-if="SmsSendersAddCtrl.choice === 'personal'">
+
+                    <div class="alert alert-info" role="alert">
+                        <i class="ovh-font ovh-font-filled-info"></i>
+                        <p data-translate="sms_senders_add_sender_warning_text_nichandle"></p>
+                    </div>
+
+                    <div class="bottom-space-m16">
+                        <button
+                            type="button"
+                            class="btn btn-default"
+                            data-ng-disabled="SmsSendersAddCtrl.getSelection().length === 0 || SmsSendersAddCtrl.senders.availableForValidation.nichandle.isDeleting || SmsSendersAddCtrl.loading.adding"
+                            data-ng-click="SmsSendersAddCtrl.addSelectedSendersAvailableForValidaton()">
+                            <i class="ovh-font ovh-font-ajouter line-height-normal right-space-m4"></i>
+                            <span data-ng-pluralize
+                                  data-count="SmsSendersAddCtrl.getSelection().length"
+                                  data-when="{
+                                      '0': ('sms_senders_add_sender' | translate),
+                                      'one': ('sms_senders_add_sender' | translate),
+                                      'other': ('sms_senders_add_senders' | translate:{ count: {} })
+                                  }">
+                            </span>
+                            <spinner class="left-space-m4" data-ng-if="SmsSendersAddCtrl.senders.availableForValidation.nichandle.isDeleting"></spinner>
+                        </button>
+                    </div>
+
+                    <table class="table table-pretty table-hover table-striped no-space">
+                        <thead>
+                            <tr>
+                                <th scope="col" width="40px">
+                                    <input
+                                        type="checkbox"
+                                        data-ng-if="SmsSendersAddCtrl.senders.availableForValidation.nichandle.length"
+                                        data-ng-disabled="SmsSendersAddCtrl.senders.availableForValidation.nichandle.isDeleting"
+                                        data-ovh-checkbox-table
+                                        data-ovh-checkbox-table-ids-all="SmsSendersAddCtrl.senders.availableForValidation.nichandle"
+                                        data-ovh-checkbox-table-ids-selected="SmsSendersAddCtrl.senders.availableForValidation.selected"
+                                        data-ovh-checkbox-table-id="sender" />
+                                </th>
+                                <th scope="col" data-translate="sms_senders_add_sender_placeholder"></th>
+                                <th scope="col">
+                                    <spinner class="right-space-p12"
+                                             data-ng-if="SmsSendersAddCtrl.loading.adding">
+                                    </spinner>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody data-ng-if="SmsSendersAddCtrl.senders.availableForValidation.nichandle.length">
+                            <tr data-ng-repeat="nichandle in SmsSendersAddCtrl.senders.availableForValidation.nichandle">
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        data-ng-disabled="SmsSendersAddCtrl.senders.availableForValidation.nichandle.isDeleting"
+                                        data-ng-model="SmsSendersAddCtrl.senders.availableForValidation.selected[nichandle.sender]" />
+                                </td>
+                                <td data-title="{{:: 'sms_senders_add_sender_placeholder' | translate }}"
+                                    data-ng-bind="nichandle.sender">
+                                </td>
+                                <td class="text-right">
+                                    <button
+                                        type="button"
+                                        class="btn btn-default"
+                                        data-ng-click="SmsSendersAddCtrl.addSenderAvailable(nichandle)">
+                                        <i class="ovh-font ovh-font-ajouter" aria-hidden="true"></i>
+                                        <span class="sr-only"
+                                              data-translate="sms_senders_add_sender_sr_only"
+                                              data-translate-values="{ sender: nichandle.sender }">
+                                        </span>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tbody data-ng-if="!SmsSendersAddCtrl.senders.availableForValidation.nichandle.length">
+                            <tr>
+                                <td class="text-center" colspan="3"
+                                    data-translate="sms_senders_add_sender_personal_empty">
+                                </td>
+                            </tr>
+                        </toby>
+                    </table>
+                </div>
+
+                <div class="table-responsive-vertical"
+                     data-ng-if="SmsSendersAddCtrl.choice === 'domain'">
+
+                    <div class="alert alert-info" role="alert">
+                        <i class="ovh-font ovh-font-filled-info"></i>
+                        <p data-translate="sms_senders_add_sender_warning_text_domains"></p>
+                    </div>
+
+                    <div class="bottom-space-m16">
+                        <button
+                            type="button"
+                            class="btn btn-default"
+                            data-ng-disabled="SmsSendersAddCtrl.getSelection().length === 0 || SmsSendersAddCtrl.senders.availableForValidation.domains.isDeleting  || SmsSendersAddCtrl.loading.adding"
+                            data-ng-click="SmsSendersAddCtrl.addSelectedSendersAvailableForValidaton()">
+                            <i class="ovh-font ovh-font-ajouter line-height-normal right-space-m4"></i>
+                            <span data-ng-pluralize
+                                  data-count="SmsSendersAddCtrl.getSelection().length"
+                                  data-when="{
+                                      '0': ('sms_senders_add_sender' | translate),
+                                      'one': ('sms_senders_add_sender' | translate),
+                                      'other': ('sms_senders_add_senders' | translate:{ count: {} })
+                                  }">
+                            </span>
+                            <spinner class="left-space-m4" data-ng-if="SmsSendersAddCtrl.senders.availableForValidation.domains.isDeleting"></spinner>
+                        </button>
+                    </div>
+
+                    <table class="table table-pretty table-hover table-striped no-space">
+                        <thead>
+                            <tr>
+                                <th scope="col" width="40px">
+                                    <input
+                                        type="checkbox"
+                                        data-ng-if="SmsSendersAddCtrl.senders.availableForValidation.domains.length"
+                                        data-ng-disabled="SmsSendersAddCtrl.senders.availableForValidation.domains.isDeleting"
+                                        data-ovh-checkbox-table
+                                        data-ovh-checkbox-table-ids-all="SmsSendersAddCtrl.senders.availableForValidation.domains"
+                                        data-ovh-checkbox-table-ids-selected="SmsSendersAddCtrl.senders.availableForValidation.selected"
+                                        data-ovh-checkbox-table-id="sender" />
+                                </th>
+                                <th scope="col"
+                                    data-translate="sms_senders_add_sender_placeholder"></th>
+                                <th scope="col">
+                                    <spinner class="right-space-p12"
+                                             data-ng-if="SmsSendersAddCtrl.loading.adding">
+                                    </spinner>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody data-ng-if="SmsSendersAddCtrl.senders.availableForValidation.domains.length">
+                            <tr data-ng-repeat="domain in SmsSendersAddCtrl.senders.availableForValidation.domains">
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        data-ng-disabled="SmsSendersAddCtrl.senders.availableForValidation.domains.isDeleting"
+                                        data-ng-model="SmsSendersAddCtrl.senders.availableForValidation.selected[domain.sender]">
+                                </td>
+                                <td data-title="{{:: 'sms_senders_add_sender_placeholder' | translate }}"
+                                    data-ng-bind="domain.sender">
+                                </td>
+                                <td class="text-right">
+                                    <button
+                                        type="button"
+                                        class="btn btn-default"
+                                        data-ng-click="SmsSendersAddCtrl.addSenderAvailable(domain)">
+                                        <i class="ovh-font ovh-font-ajouter" aria-hidden="true"></i>
+                                        <span class="sr-only"
+                                              data-translate="sms_senders_add_sender_sr_only"
+                                              data-translate-values="{ sender: domain.sender }">
+                                        </span>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tbody data-ng-if="!SmsSendersAddCtrl.senders.availableForValidation.domains.length">
+                            <tr>
+                                <td class="text-center" colspan="3"
+                                    data-translate="sms_senders_add_sender_domain_empty">
+                                </td>
+                            </tr>
+                        </toby>
+                    </table>
+                </div>
+
+            </div>
+        </div><!-- .row -->
+
+    </div><!-- .telecom-section-content -->
+
+</section>

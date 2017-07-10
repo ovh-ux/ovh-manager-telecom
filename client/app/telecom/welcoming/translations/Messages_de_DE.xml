@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<translations>
+   <translation id="telecom_welcoming_page_title" qtlid="330396">Kundencenter</translation>
+   <translation id="telecom_welcoming_title" qtlid="338547">Votre espace client évolue&#160;!</translation>
+   <translation id="telecom_welcoming_title_hasNoService" qtlid="338560">Bienvenue sur l'espace client télécom&#160;!</translation>
+   <translation id="telecom_welcoming_text_hasNoService" qtlid="338573">Nous vous proposons une interface inédite dont le design a été complètement revu. De nombreuses améliorations sont encore à venir.</translation>
+   <translation id="telecom_welcoming_text_hasServices_part1" qtlid="338586">Nous avons tenu compte de vos remarques et vous proposons désormais un espace client inédit dont le design a été complètement revu.</translation>
+   <translation id="telecom_welcoming_text_hasServices_part2" qtlid="338599">Vous profiterez notamment d'un menu plus pratique et de pages plus homogènes.</translation>
+   <translation id="telecom_welcoming_text_hasTelephonyServices_part1" qtlid="385988">Les gestions de la VoIP et des fax arrivent aussi progressivement. Plus besoin ainsi de changer d'interface ;)</translation>
+   <translation id="telecom_welcoming_text_hasTelephonyServices_part2" qtlid="338625">Les fonctionnalités suivies de ce pictogramme&#160;:</translation>
+   <translation id="telecom_welcoming_text_hasTelephonyServices_part3" qtlid="338638">s'ouvrent provisoirement dans l'ancien espace client (manager V4).</translation>
+   <translation id="telecom_welcoming_text_feedback" qtlid="386001">N'hésitez pas à nous faire part de vos <a href="mailto:voip@ml.ovh.net,sms@ml.ovh.net,adsl@ml.ovh.net">suggestions</a>&#160;!</translation>
+   <translation id="telecom_welcoming_link_hasNoService" qtlid="338664">Découvrir les produits télécom</translation>
+   <translation id="telecom_welcoming_link_hasServices" qtlid="338677">Découvrir maintenant</translation>
+</translations>

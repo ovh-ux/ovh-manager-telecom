@@ -1,0 +1,62 @@
+<section>
+
+    <header>
+        <section-back-link section-back-link-to-state="telecom.telephony.administration"
+                           section-back-link-title="{{:: 'telephony_group_admin_group_back_link' | translate }}">
+        </section-back-link>
+        <h1 data-translate="telephony_delete_group_title"></h1>
+    </header>
+
+    <div class="telecom-section-content">
+
+        <div data-ng-if="DeleteGroupCtrl.loading">
+            <bouncing-box-loader>
+                <h2 class="top-space-m16" data-translate="loading"></h2>
+            </bouncing-box-loader>
+        </div>
+
+        <div class="row" data-ng-if="DeleteGroupCtrl.loaded">
+
+            <div class="col-md-6 bottom-space-m32">
+                <p class="alert alert-warning">
+                    <i class="ovh-font ovh-font-filled-warning"></i>
+                    <span data-translate="telephony_delete_group_warning"></span>
+                </p>
+
+                <p data-translate="telephony_delete_group_infos"></p>
+
+                <div data-ng-if="DeleteGroupCtrl.task" class="text-danger fs16 top-space-m32">
+                    <p>
+                        <span data-translate="telephony_delete_group_pending"
+                              data-translate-values="{ group: DeleteGroupCtrl.group.description || DeleteGroupCtrl.group.billingAccount }"></span>
+                        <span>{{:: DeleteGroupCtrl.task.executionDate | date:'dd/MM/yyyy' }}</span>
+                    </p>
+                    <button type="button"
+                            class="btn btn-primary"
+                            data-ng-disabled="DeleteGroupCtrl.cancelling"
+                            data-ng-click="DeleteGroupCtrl.cancelTermination()">
+                        <i class="ovh-font ovh-font-wrong fs14 line-height-normal right-space-m4"></i>
+                        <span data-translate="telephony_delete_group_cancel"></span>
+                        <spinner class="left-space-m4" data-ng-if="DeleteGroupCtrl.cancelling"></spinner>
+                    </button>
+                </div>
+
+                <div data-ng-if="!DeleteGroupCtrl.task" class="top-space-m32">
+                    <button type="button"
+                            class="btn btn-primary"
+                            data-ng-disabled="DeleteGroupCtrl.deleting"
+                            data-ng-click="DeleteGroupCtrl.terminate()">
+                        <i class="ovh-font ovh-font-bin fs14 line-height-normal right-space-m4"></i>
+                        <span data-translate="telephony_delete_group_delete"
+                              data-translate-values="{ group: DeleteGroupCtrl.group.description || DeleteGroupCtrl.group.billingAccount }"></span>
+                        <spinner class="left-space-m4" data-ng-if="DeleteGroupCtrl.deleting"></spinner>
+                    </button>
+                </div>
+
+            </div>
+
+        </div><!-- row -->
+
+    </div><!-- section content -->
+
+</section>

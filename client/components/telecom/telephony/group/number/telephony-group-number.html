@@ -1,0 +1,135 @@
+<form class="telephony-number"
+      name="telephonyNumber"
+      data-ng-submit="$ctrl.saveNumber()"
+      novalidate>
+
+    <div class="telephony-number-plan voip-metro-plan"
+         data-ng-if="!$ctrl.loading.init"
+         data-jsplumb="$ctrl.jsPlumbInstanceOptions"
+         data-jsplumb-instance="$ctrl.jsplumbInstance">
+
+        <!-- HEADER -->
+        <div class="number-header">
+
+            <!-- INCOMING CALL -->
+            <div class="anchor-container anchor-point top-space-m0">
+                <div class="anchor"
+                     data-jsplumb-endpoint
+                     data-jsplumb-endpoint-uuid="incoming-call-{{ $ctrl.number.serviceName }}">
+                </div>
+                <div class="anchor-content">
+                    <span data-translate="telephony_number_incoming_calls"></span>
+                </div>
+            </div> <!-- INCOMING CALL -->
+
+            <!-- NUMBER DISPLAY -->
+            <div class="anchor-container anchor-point-x2 anchor-number-container">
+                <div class="anchor">
+                    <i class="ovh-font ovh-font-hashtag"></i>
+                </div>
+                <div class="anchor-content service-presentation">
+                    <span class="service-label"
+                          data-ng-bind="$ctrl.number.getDisplayedName()">
+                    </span>
+                    <span class="service-number"
+                          data-ng-bind="$ctrl.number.serviceName | phoneNumber">
+                    </span>
+                </div>
+                <!-- ONLY ONE ACTION => CHANGE FEATURE TYPE -->
+                <div class="anchor-actions"
+                     data-ng-if="$ctrl.featureActions.length === 1">
+                    <a class="btn-actions"
+                       data-ui-sref="{{ $ctrl.featureActions[0].sref }}"
+                       data-ng-attr-title="{{ $ctrl.featureActions[0].text }}">
+                        <i class="ovh-font ovh-font-editer"></i>
+                    </a>
+                </div> <!-- ONLY ONE ACTION => CHANGE FEATURE TYPE -->
+
+                <!-- MORE ACTIONS -->
+                <div class="anchor-actions"
+                     data-ng-if="$ctrl.featureActions.length > 1"
+                     data-uib-dropdown>
+                    <button type="button"
+                            id="number-actions"
+                            class="btn-actions"
+                            data-ng-disabled="$ctrl.number.inEdition"
+                            data-uib-dropdown-toggle>
+                        <i class="ovh-font ovh-font-dots vertical-top"></i>
+                    </button>
+                    <ul class="dropdown-menu ovh-dropdown-menu"
+                        role="menu"
+                        data-aria-labelledby="number-actions"
+                        data-uib-dropdown-menu>
+                        <li role="menuitem"
+                            data-ng-class="{ divider: action.divider }"
+                            data-ng-repeat="action in $ctrl.featureActions track by $index">
+                            <!-- ACTION WITH SREF -->
+                            <a class="btn btn-link full-width"
+                               data-ui-sref="{{ action.sref }}"
+                               data-ng-if="action.sref"
+                               data-ng-bind="action.text">
+                            </a> <!-- END OF ACTION WITH SREF -->
+
+                            <!-- ACTION WITH URL -->
+                            <a class="btn btn-link full-width"
+                               data-ng-href="{{ action.url }}"
+                               data-ng-if="action.url"
+                               target="_blank"
+                               rel="nofollow">
+                                <span data-ng-bind="action.text"></span>
+                                <span class="ovh-font ovh-font-backToV4 left-space-m8"></span>
+                            </a> <!-- END OF ACTION WITH URL -->
+                        </li>
+                    </ul>
+                </div> <!-- MORE ACTIONS -->
+            </div> <!-- NUMBER DISPLAY -->
+
+        </div> <!-- HEADER -->
+
+        <!-- FEATURES -->
+        <div class="telephony-number-feature"
+             data-ng-switch="$ctrl.number.getFeatureFamily()">
+
+            <!-- REDIRECT -->
+            <telephony-number-redirect data-ng-switch-when="redirect"></telephony-number-redirect> <!-- REDIRECT -->
+
+            <!-- OVHPABX -->
+            <telephony-number-ovh-pabx data-ng-switch-when="ovhPabx"></telephony-number-ovh-pabx> <!-- OVHPABX -->
+
+            <!-- SVI -->
+            <telephony-number-svi data-ng-switch-when="svi"></telephony-number-svi> <!-- SVI -->
+
+            <!-- CONFERENCE -->
+            <telephony-number-conference data-ng-switch-when="conference"></telephony-number-conference> <!-- CONFERENCE -->
+
+        </div> <!-- FEATURES -->
+
+    </div>
+
+    <footer class="voip-action-bar"
+            data-ng-if="$ctrl.number.feature.inEdition && !$ctrl.number.feature.inPendingState() && !$ctrl.loading.save">
+
+        <p class="question"
+           data-translate="telephony_number_footer_question">
+        </p>
+
+        <div class="button-container inline-block">
+            <button type="submit"
+                    class="btn btn-primary pull-rigth"
+                    data-ng-disabled="!$ctrl.number.feature.hasChange() || $ctrl.loading.save || $ctrl.loading.feature">
+                <spinner data-ng-if="$ctrl.loading.save"
+                         data-name="bubbles-fff-222-16">
+                </spinner>
+                <span data-translate="submit"></span>
+            </button>
+            <button type="button"
+                    class="btn voip-cancel pull-left"
+                    data-translate="cancel"
+                    data-ng-click="$ctrl.number.stopEdition(true, true)"
+                    data-ng-disabled="$ctrl.loading.save">
+            </button>
+        </div>
+
+    </footer>
+
+</form>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<translations>
+   <translation id="xdsl_modem_reset" qtlid="311505">Ripristina il modem</translation>
+   <translation id="xdsl_modem_reset_an_error_ocurred" qtlid="311518">[Ripristino Modem] Si è verificato un errore!</translation>
+   <translation id="xdsl_modem_reset_success" qtlid="311531">Ripristino del modem in corso...</translation>
+   <translation id="xdsl_modem_reset_really" qtlid="311544">Vuoi davvero reimpostare il tuo modem?</translation>
+   <translation id="xdsl_modem_reset_success_end" qtlid="311557">Ripristino del modem terminato. Ti preghiamo di attendere ancora qualche minuto, il tempo necessario al completamento della configurazione del tuo modem.</translation>
+</translations>

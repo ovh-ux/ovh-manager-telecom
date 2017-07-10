@@ -1,0 +1,139 @@
+<form name="relaunchSmsTemplateForm"
+      id="relaunchSmsTemplateForm"
+      class="ovh-form-flat"
+      data-ng-submit="TemplateRelaunchCtrl.relaunch()">
+
+    <div class="modal-header">
+        <h3 class="modal-title pull-left" data-translate="sms_sms_templates_remove"></h3>
+        <button
+            type="button"
+            class="close pull-right"
+            aria-label="{{ ::'cancel' | translate }}"
+            data-ng-click="TemplateRelaunchCtrl.cancel()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <div class="modal-body" data-ng-if="!TemplateRelaunchCtrl.loading.relaunchTemplate && !TemplateRelaunchCtrl.relaunched">
+
+        <!-- NAME -->
+        <div class="form-group bottom-space-m16">
+            <div flat-input-container>
+                <label for="name"
+                       class="control-label"
+                       data-translate="sms_sms_templates_add_name_label">
+                </label>
+                <input
+                    type="text"
+                    name="name"
+                    id="name"
+                    class="form-control"
+                    required
+                    readonly
+                    data-ng-model="TemplateRelaunchCtrl.template.name"
+                    data-ng-maxlength="249"
+                    data-translatea-attr="{ placeholder: 'sms_sms_templates_add_name_placeholder' }" />
+                <div role="alert"
+                     data-ng-messages="relaunchSmsTemplateForm.name.$error">
+                    <p class="text-danger"
+                        data-ng-message="maxlength"
+                        data-translate="sms_sms_templates_add_name_error_maxlength">
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- DESCRIPTION -->
+        <div class="form-group bottom-space-m16">
+            <div flat-input-container>
+                <label for="description"
+                       class="control-label"
+                       data-translate="sms_sms_templates_add_description_label">
+                </label>
+                <input
+                    type="text"
+                    name="description"
+                    id="description"
+                    class="form-control"
+                    placeholder="{{ ::'sms_sms_templates_add_description_placeholder' | translate }}"
+                    required
+                    autofocus
+                    data-ng-model="TemplateRelaunchCtrl.template.description"
+                    data-ng-maxlength="249"
+                    data-ng-minlength="31" />
+                <div role="alert"
+                     data-ng-messages="relaunchSmsTemplateForm.description.$error">
+                    <p class="text-danger"
+                        data-ng-message="maxlength"
+                        data-translate="sms_sms_templates_add_description_error_maxlength">
+                    </p>
+                    <p class="text-danger"
+                        data-ng-message="minlength"
+                        data-translate="sms_sms_templates_add_description_error_minlength">
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- MESSAGE -->
+        <div class="form-group bottom-space-m16">
+            <div flat-input-container>
+                <label for="message"
+                       class="control-label"
+                       data-translate="sms_sms_templates_add_message_label">
+                </label>
+                <textarea
+                    name="message"
+                    id="message"
+                    class="form-control resizable-vertical"
+                    rows="10"
+                    required
+                    data-ng-model="TemplateRelaunchCtrl.template.message"
+                    data-ng-maxlength="249"
+                    data-ng-minlength="31"
+                    data-translate-attr="{ placeholder: 'sms_sms_templates_add_message_placeholder' }">
+                </textarea>
+                <div role="alert"
+                     data-ng-messages="relaunchSmsTemplateForm.message.$error">
+                    <p class="text-danger"
+                        data-ng-message="maxlength"
+                        data-translate="sms_sms_templates_add_message_error_maxlength">
+                    </p>
+                    <p class="text-danger"
+                        data-ng-message="minlength"
+                        data-translate="sms_sms_templates_add_message_error_minlength">
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="modal-body" data-ng-if="TemplateRelaunchCtrl.loading.relaunchTemplate && !TemplateRelaunchCtrl.relaunched">
+        <bouncing-box-loader>
+            <h4 data-translate="sms_sms_templates_relaunching"></h4>
+        </bouncing-box-loader>
+    </div>
+
+    <div class="modal-body" data-ng-if="TemplateRelaunchCtrl.relaunched">
+        <success-drawing-check data-draw-success-check="TemplateRelaunchCtrl.relaunched">
+            <h4 data-translate="sms_sms_templates_relaunched"></h4>
+        </success-drawing-check>
+    </div>
+
+    <div class="modal-footer">
+        <button
+            type="button"
+            class="btn btn-default"
+            data-ng-click="TemplateRelaunchCtrl.cancel()"
+            data-ng-disabled="TemplateRelaunchCtrl.loading.relaunchTemplate || TemplateRelaunchCtrl.relaunched"
+            data-translate="cancel">
+        </button>
+        <button
+            type="submit"
+            class="btn btn-primary"
+            data-ng-disabled="relaunchSmsTemplateForm.$invalid || TemplateRelaunchCtrl.loading.relaunchTemplate || TemplateRelaunchCtrl.relaunched"
+            data-translate="submit">
+        </button>
+    </div>
+</form>

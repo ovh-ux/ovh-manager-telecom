@@ -1,0 +1,131 @@
+<table class="table table-pretty table-hover table-striped no-space">
+    <thead>
+        <tr>
+            <th scope="col"
+                data-ng-if="$ctrl.withChoice"
+                style="width: 20px;">
+                &nbsp;
+            </th>
+            <th scope="col">
+                <button type="button"
+                        class="no-style left-space-p0"
+                        data-translate-attr="{ title: 'common_lastname' }"
+                        data-ng-disabled="$ctrl.loading.init || !$ctrl.menus.raw.length"
+                        data-ng-click="$ctrl.orderByName()">
+                    <label class="pointer"
+                           data-translate="common_lastname">
+                    </label>
+                    <span class="table-pretty-filter">
+                        <i class="fa fa-sort"
+                           data-ng-class="{
+                            'fa-sort-desc': $ctrl.orderDesc,
+                            'fa-sort-asc': !$ctrl.orderDesc
+                        }"></i>
+                    </span>
+                </button>
+            </th>
+            <th>&nbsp;</th>
+        </tr>
+    </thead>
+    <tbody data-ng-if="$ctrl.loading.init">
+        <tr>
+            <td colspan="3"
+                class="text-center">
+                <bouncing-box-loader>
+                    <h2 data-translate="loading"></h2>
+                </bouncing-box-loader>
+            </td>
+        </tr>
+    </tbody>
+    <tbody data-ng-if="!$ctrl.loading.init && $ctrl.menus.raw.length === 0">
+        <tr>
+            <td colspan="3"
+                class="text-center">
+                <em data-translate="telephony_number_feature_ovh_pabx_menu_list_none"></em>
+            </td>
+        </tr>
+    </tbody>
+    <tbody data-ng-if="!$ctrl.loading.init && $ctrl.menus.raw.length > 0">
+        <tr data-ng-repeat="menu in $ctrl.menus.paginated track by $index">
+            <td class="cell-label"
+                data-ng-if="$ctrl.withChoice">
+                <div data-ng-class="{ 'opacity2-leave': $ctrl.askedMenuDelete === menu.menuId, 'opacity2-enter': $ctrl.askedMenuDelete !== menu.menuId }">
+                    <label class="pointer">
+                        <flat-radio>
+                            <input type="radio"
+                                   data-ng-attr-name="{{ $ctrl.radioName }}"
+                                   data-ng-attr-id="{{ $ctrl.idPrefix + '-' + menu.menuId }}"
+                                   data-ng-model="$ctrl.selectedMenu"
+                                   data-ng-value="menu.menuId"
+                                   data-ng-disabled="$ctrl.isMenuChoiceDisabled(menu)"
+                                   data-ng-change="$ctrl.onSelectedMenuChanged(menu)" />
+                        </flat-radio>
+                    </label>
+                </div>
+            </td>
+            <td class="text-left"
+                data-ng-class="{ 'cell-label': $ctrl.withChoice }">
+                <div data-ng-class="{ 'opacity2-leave': $ctrl.askedMenuDelete === menu.menuId, 'opacity2-enter': $ctrl.askedMenuDelete !== menu.menuId }">
+                    <span data-ng-if="!$ctrl.withChoice"
+                          data-ng-bind="menu.name">
+                    </span>
+                    <label data-ng-if="$ctrl.withChoice"
+                           data-ng-attr-for="{{ $ctrl.idPrefix + '-' + menu.menuId }}"
+                           data-ng-bind="menu.name"
+                           class="pointer">
+                    </label>
+                </div>
+            </td>
+            <td class="text-right">
+                <div class="pretty-table-confirm-container text-center animate-fadeInRight-enter animate-fadeOutLeft-leave full-width"
+                     data-ng-show="$ctrl.askedMenuDelete === menu.menuId">
+                    <button type="button"
+                            class="btn btn-default"
+                            data-ng-click="$ctrl.askedMenuDelete = null">
+                        <i class="ovh-font ovh-font-wrong right-space-m8"></i>
+                        <span data-translate="cancel"></span>
+                    </button>
+
+                    <button type="button"
+                            class="btn btn-danger"
+                            data-ng-click="$ctrl.onMenuDeleteConfirm(menu)">
+                        <i class="ovh-font ovh-font-bin right-space-m8"></i>
+                        <span data-translate="delete"></span>
+                        <spinner name="bubbles-fff-d34936-16"
+                                 data-ng-show="menu.status === 'DELETING'">
+                        </spinner>
+                    </button>
+                </div>
+
+                <div data-ng-class="{ 'opacity2-leave': $ctrl.askedMenuDelete === menu.menuId, 'opacity2-enter': $ctrl.askedMenuDelete !== menu.menuId }">
+                    <button type="button"
+                            data-ng-if="menu.status !== 'IN_CREATION'"
+                            class="btn-actions-list"
+                            data-ng-click="$ctrl.askedMenuDelete = menu.menuId"
+                            data-translate-attr="{ title: 'telephony_number_feature_ovh_pabx_menu_delete_title' }"
+                            data-ng-disabled="$ctrl.isMenuChoiceDisabled(menu)">
+                        <i class="ovh-font ovh-font-bin"></i>
+                    </button>
+
+                    <spinner data-ng-if="menu.status === 'IN_CREATION'"
+                             class="right-space-m8">
+                    </spinner>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- FOOTER PAGINATION -->
+<div class="table-pretty-pagination top-space-m8"
+     data-ng-if="!$ctrl.loading.init && $ctrl.menus.raw.length"
+     data-pagination-front
+     data-items="$ctrl.menus.sorted"
+     data-paginated-items="$ctrl.menus.paginated"
+     data-current-page="currentPage"
+     data-nb-pages="nbPages"
+     data-items-per-page="itemsPerPage"
+     data-page-placeholder="{{'common_pagination_page' | translate: {currentPage:currentPage, nbPages:nbPages} }}"
+     data-item-per-page-placeholder="{{'common_pagination_display' | translate}}"
+     data-go-to-page="false">
+</div> <!-- END OF FOOTER PAGINATION -->

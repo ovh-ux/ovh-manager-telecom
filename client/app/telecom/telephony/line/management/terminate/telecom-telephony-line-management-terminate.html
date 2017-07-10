@@ -1,0 +1,97 @@
+<section class="telecom-telephony-line-management-terminate">
+
+    <header>
+        <section-back-link section-back-link-to-state="telecom.telephony.line"
+                           section-back-link-title="{{ 'telephony_group_line_section_back_link' | translate }}">
+        </section-back-link>
+        <h1 data-translate="telephony_group_line_terminate_title"
+            data-translate-values="{ line: TerminateCtrl.line.getDisplayedName() }">
+        </h1>
+    </header>
+
+    <div class="telecom-section-content">
+
+        <div class="row">
+            <!-- LINE INFORMATIONS -->
+            <section class="col-xs-12 col-md-6 widget-presentation">
+                <header class="widget-presentation-header">
+                    <h2 class="widget-presentation-title" data-translate="telephony_group_line_terminate_info_title"></h2>
+                </header>
+                <p data-translate="telephony_group_line_terminate_info_1"></p>
+                <p data-translate="telephony_group_line_terminate_info_2"></p>
+                <div data-ng-if="TerminateCtrl.hasPhone">
+                    <h3 class="top-space-m24" data-translate="telephony_group_line_terminate_info_3"></h3>
+                    <p data-translate="telephony_group_line_terminate_info_4"></p>
+                    <address class="address top-space-m16">
+                        <div class="house">
+                            <i class="ovh-font ovh-font-home"></i>
+                        </div>
+                        <div class="address-content">
+                            <h3 data-translate="telephony_group_line_terminate_back_address"></h3>
+                            <translate translate="telephony_group_line_terminate_address"></translate>
+                        </div>
+                    </address>
+                </div>
+            </section>
+
+            <!-- GROUPE INFORMATIONS-->
+            <div class="col-xs-12 col-md-6  widget-presentation">
+                <header class="widget-presentation-header">
+                    <h2 class="widget-presentation-title" data-translate="telephony_group_line_terminate_action_title"></h2>
+                </header>
+
+                <form name="terminateFrom" class="ovh-form-flat"
+                    data-ng-submit="TerminateCtrl.terminate()">
+                    <div class="form-group bottom-space-m16 clearfix">
+                        <label for="reason" data-translate="telephony_group_line_terminate_action_label"></label>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <select flat-select class="form-control"
+                                    id="reason"
+                                    name="reason"
+                                    required
+                                    data-ng-model="TerminateCtrl.reason.id"
+                                    data-ng-change="TerminateCtrl.cleanReasonDetail()"
+                                    data-ng-options="'telephony_group_line_terminate_reason_label_' + reason | translate for reason in TerminateCtrl.availableReasons">
+                                    <option value="" data-translate="telephony_group_line_terminate_reason_label" disabled></option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group bottom-space-m16">
+                        <div flat-input-container class="top-space-m16" data-ng-show="TerminateCtrl.haveToGiveReasonDetail();">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <label class="control-label" for="reasonDetail"
+                                        data-translate="telephony_group_line_terminate_action_reason_detail_label">
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="row" >
+                                <div class="col-xs-12">
+                                    <textarea id="reasonDetail"
+                                        name="reasonDetail"
+                                        class="form-control"
+                                        rows="15"
+                                        data-ng-required="TerminateCtrl.haveToGiveReasonDetail();"
+                                        placeholder="{{'telephony_group_line_terminate_action_reason_detail_placeholder' | translate}}"
+                                        data-ng-model="TerminateCtrl.reason.details">
+                                    </textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group bottom-space-m16 clearfix">
+                        <button type="submit"
+                            class="btn btn-sm btn-primary pull-right"
+                            data-ng-disabled="!terminateFrom.$valid || TerminateCtrl.loading.terminate"
+                            data-translate="telephony_group_line_terminate_terminate">
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+</section>

@@ -1,0 +1,163 @@
+<form id="editFunctionKeyForm" name="editFunctionKeyForm" class="ovh-form-flat" data-ng-submit="ProgammableKeysEditCtrl.save()">
+
+    <div class="modal-header">
+        <h3 class="modal-title pull-left" data-translate="telephony_line_phone_programmableKeys_keys_add_title"></h3>
+        <button type="button" class="close pull-right"
+            aria-label="{{'cancel'|translate}}"
+            data-ng-click="ProgammableKeysEditCtrl.cancel()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <div class="modal-body" data-ng-if="!ProgammableKeysEditCtrl.loading.save && !ProgammableKeysEditCtrl.saved">
+        <div class="form-group" data-ng-if="!ProgammableKeysEditCtrl.loading.init">
+            <!-- Function -->
+            <div class="row">
+                <div class="col-xs-12">
+                    <label for="function" data-translate="telephony_line_phone_programmableKeys_available_function_function_label"></label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6">
+                    <select flat-select class="form-control"
+                        id="function"
+                        name="function"
+                        required
+                        data-ng-disabled="ProgammableKeysEditCtrl.loading.parameters"
+                        data-ng-model="ProgammableKeysEditCtrl.selectedFunction"
+                        data-ng-change="ProgammableKeysEditCtrl.setParameters()"
+                        data-ng-options="function as function.functionLabel group by function.group for function in ProgammableKeysEditCtrl.availableFunctions">
+                        <option value="" data-translate="telephony_line_phone_programmableKeys_available_function_select" disabled></option>
+                    </select>
+                </div>
+            </div>
+            <!-- parametre -->
+            <div flat-input-container data-ng-if="ProgammableKeysEditCtrl.getParameterFunctions()">
+                <div class="row top-space-m12" data-ng-if="!ProgammableKeysEditCtrl.loading.parameters">
+                    <div class="col-xs-12">
+                        <label class="control-label" for="parameter" data-translate="telephony_line_phone_programmableKeys_available_function_parameter_label"></label>
+                    </div>
+                </div>
+                <!-- NEED TO SHOW GOOD INPUT FOR PARAMETERS -->
+                <div class="row" data-ng-switch on="ProgammableKeysEditCtrl.getParameterFunctions()">
+                    <!-- PHONE NUMBER -->
+                    <div class="col-xs-12" data-ng-switch-when="number" >
+                        <input id="parameter"
+                            type="text"
+                            name="parameter"
+                            class="form-control"
+                            placeholder="{{ 'telephony_line_phone_programmableKeys_available_function_parameter_placeholdel' | translate }}"
+                            data-ng-model="ProgammableKeysEditCtrl.FunctionKey.parameter"
+                            data-ng-minlength="2"
+                            data-ng-maxlength="26"
+                            data-ng-pattern="ProgammableKeysEditCtrl.numberPattern"
+                            required/>
+                    </div>
+
+                    <!-- EXT DYNAMIC -->
+                    <div class="col-xs-12" data-ng-switch-when="dynamic">
+                        <select flat-select class="form-control"
+                            id="parameter"
+                            name="parameter"
+                            data-ng-if="!ProgammableKeysEditCtrl.loading.parameters"
+                            data-ng-model="ProgammableKeysEditCtrl.FunctionKey.parameter"
+                            data-ng-options="parameter for parameter in ProgammableKeysEditCtrl.availableParameters"
+                            required>
+                            <option value="" data-translate="telephony_line_phone_programmableKeys_available_function_param_select" disabled></option>
+                        </select>
+                    </div>
+
+                    <!-- SIBLING -->
+                    <div class="col-xs-12" data-ng-switch-when="sibling">
+                        <select flat-select class="form-control"
+                            id="parameter"
+                            name="parameter"
+                            data-ng-if="!ProgammableKeysEditCtrl.loading.parameters"
+                            data-ng-model="ProgammableKeysEditCtrl.FunctionKey.parameter"
+                            data-ng-options="parameter.serviceName as (parameter.description + ' (' + parameter.serviceName + ')' ) for parameter in ProgammableKeysEditCtrl.availableParameters"
+                            required>
+                            <option value="" data-translate="telephony_line_phone_programmableKeys_available_function_param_select" disabled></option>
+                        </select>
+                    </div>
+
+                    <!-- VOICE FAX -->
+                    <div class="col-xs-12" data-ng-switch-when="voicefax">
+                        <select flat-select class="form-control"
+                            id="parameter"
+                            name="parameter"
+                            data-ng-if="!ProgammableKeysEditCtrl.loading.parameters"
+                            data-ng-model="ProgammableKeysEditCtrl.FunctionKey.parameter"
+                            data-ng-options="parameter.serviceName as ( parameter.label + ' (' + parameter.serviceName + ') ') group by parameter.group for parameter in ProgammableKeysEditCtrl.availableParameters"
+                            required>
+                            <option value="" data-translate="telephony_line_phone_programmableKeys_available_function_param_select" disabled></option>
+                        </select>
+                    </div>
+
+                    <!-- HUNTING -->
+                    <div class="col-xs-12" data-ng-switch-when="hunting">
+                        <select flat-select class="form-control"
+                            id="parameter"
+                            name="parameter"
+                            data-ng-if="!ProgammableKeysEditCtrl.loading.parameters"
+                            data-ng-model="ProgammableKeysEditCtrl.FunctionKey.parameter"
+                            data-ng-options="parameter.serviceName as parameter.description + ' (' + parameter.serviceName + ')' group by parameter.billingAccount for parameter in ProgammableKeysEditCtrl.availableParameters"
+                            required>
+                            <option value="" data-translate="telephony_line_phone_programmableKeys_available_function_param_select" disabled></option>
+                        </select>
+                    </div>
+
+                    <!-- cloudHunting -->
+                    <div class="col-xs-12" data-ng-switch-when="cloudhunting">
+                        <select flat-select class="form-control"
+                            id="parameter"
+                            name="parameter"
+                            data-ng-if="!ProgammableKeysEditCtrl.loading.parameters"
+                            data-ng-model="ProgammableKeysEditCtrl.FunctionKey.parameter"
+                            data-ng-options="parameter.serviceName as parameter.description + ' (' + parameter.serviceName + ')' group by parameter.billingAccount for parameter in ProgammableKeysEditCtrl.availableParameters"
+                            required>
+                            <option value="" data-translate="telephony_line_phone_programmableKeys_available_function_param_select" disabled></option>
+                        </select>
+                    </div>
+
+                    <!-- URL -->
+                    <div class="col-xs-12" data-ng-switch-when="url">
+                        <input id="parameter"
+                            type="url"
+                            name="parameter"
+                            class="form-control"
+                            placeholder="{{ 'telephony_line_phone_programmableKeys_available_function_parameter_placeholdel' | translate }}"
+                            data-ng-model="ProgammableKeysEditCtrl.FunctionKey.parameter"
+                            data-ng-pattern="ProgammableKeysEditCtrl.urlPattern"
+                            required/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" data-ng-if="ProgammableKeysEditCtrl.loading.parameters || ProgammableKeysEditCtrl.loading.init">
+            <div class="col-xs-12">
+                <bouncing-box-loader>
+                    <p class="top-space-m16" data-translate="loading"></p>
+                </bouncing-box-loader>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-body" data-ng-if="ProgammableKeysEditCtrl.loading.save && !ProgammableKeysEditCtrl.saved">
+        <bouncing-box-loader>
+            <h4 data-translate="telephony_line_phone_programmableKeys_saving"></h4>
+        </bouncing-box-loader>
+    </div>
+
+    <div class="modal-body" data-ng-if="ProgammableKeysEditCtrl.saved">
+        <success-drawing-check data-draw-success-check="ProgammableKeysEditCtrl.saved">
+            <h4 data-translate="telephony_line_phone_programmableKeys_save_success"></h4>
+        </success-drawing-check>
+    </div>
+
+    <div class="modal-footer">
+        <button class="btn btn-default" type="button"
+            data-ng-click="ProgammableKeysEditCtrl.cancel()" data-translate="cancel"></button>
+        <button class="btn btn-primary" data-ng-click="ProgammableKeysEditCtrl.save()" type="button"
+            data-translate="submit" data-ng-disabled="editFunctionKeyForm.$invalid || ProgammableKeysEditCtrl.loading.save || ProgammableKeysEditCtrl.saved"></button>
+    </div>
+</form>

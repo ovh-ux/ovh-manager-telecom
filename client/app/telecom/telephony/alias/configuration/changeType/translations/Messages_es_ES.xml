@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<translations>
+   <translation id="telephony_alias_change_type_title" qtlid="332918">Cambiar el tipo de número</translation>
+
+   <translation id="telephony_alias_change_type_info_text_1" qtlid="332931">Configure su número como quiera.</translation>
+   <translation id="telephony_alias_change_type_info_title" qtlid="26551">Datos</translation>
+   <translation id="telephony_alias_change_type_info_text_2" qtlid="332944">Por defecto, su número no está configurado y no permite ninguna acción, pero OVH le ofrece múltiples servicios: desde la redirección al servidor de voz interactivo hasta la conferencia, pasando por la cola de llamadas.</translation>
+   <translation id="telephony_alias_config_change_type_title" qtlid="4406">Configuración</translation>
+   <translation id="telephony_alias_config_change_type_label" qtlid="332957">Funcionalidad del número:&#160;</translation>
+   <translation id="telephony_alias_config_change_type_desc" qtlid="332970">Descripción de la solución seleccionada</translation>
+   <translation id="telephony_alias_config_change_type_doing" qtlid="392983">Changement du type de numéro en cours...</translation>
+
+   <translation id="telephony_alias_change_type_validate" qtlid="26047">Aceptar</translation>
+   <translation id="telephony_alias_change_type_ok" qtlid="332983">La funcionalidad se ha cambiado correctamente.</translation>
+   <translation id="telephony_alias_change_type_ko" qtlid="392996">Impossible de changer la fonctionnalité.</translation>
+
+   <translation id="telephony_alias_config_change_type_label_select" qtlid="333009">Elija una funcionalidad</translation>
+
+   <translation id="telephony_alias_config_change_type_label_redirect" qtlid="333022">Redirección con supervisión</translation>
+   <translation id="telephony_alias_config_change_type_desc_redirect" qtlid="333035">Permite redirigir las llamadas recibidas a la línea o número que usted indique.<br/><br/>Esta configuración permite supervisar las llamadas desde otro puesto, así como modificar la presentación del número sobre la marcha.</translation>
+
+   <translation id="telephony_alias_config_change_type_label_ddi" qtlid="393009">Redirection avec présentation de ce numéro sur ma ligne SIP ou mon Trunk (Ddi)</translation>
+   <translation id="telephony_alias_config_change_type_desc_ddi" qtlid="333061">ESte modo permite redirigir el número a la línea SIP o el Trunk que usted indique.<br/><br/>El número también podrá mostrarse para las llamadas salientes de la línea SIP o del Trunk que usted indique.</translation>
+
+   <translation id="telephony_alias_config_change_type_label_conference" qtlid="333074">Conferencia</translation>
+   <translation id="telephony_alias_config_change_type_desc_conference" qtlid="333087">La conferencia permite comunicar por teléfono con varios interlocutores simultáneamente.<br/><br/>Proteja la conferencia con un código, establezca un anuncio personalizado, memorice los participantes y reciba un informe por correo electrónico al finalizar la conferencia.<br/><br/>Desde una interfaz podrá seguir en tiempo real las conversaciones de los participantes y cortarles el audio o el micrófono.</translation>
+
+   <translation id="telephony_alias_config_change_type_label_cloudIvr" qtlid="333100">Servidor de voz interactivo</translation>
+   <translation id="telephony_alias_config_change_type_desc_cloudIvr" qtlid="333113">El servidor de voz interactivo dispone de una sencilla interfaz para crear un menú interactivo.<br/><br/> A través de mensajes previamente grabados, la persona que realiza la llamada interactúa con el servidor mediante las teclas de su teléfono. Según la configuración, es posible transferirle a otro número, reproducir audio, redirigirle a un buzón de voz de OVH o colgar la llamada.</translation>
+
+   <translation id="telephony_alias_config_change_type_label_svi" qtlid="333126">Servidor de voz interactivo (modo experto) en VXML</translation>
+   <translation id="telephony_alias_config_change_type_desc_svi" qtlid="333139">El servidor de voz interactivo en VXML permite, a través de una configuración VXML 2.1, utilizar un menú interactivo avanzado.<br/><br/>A través de mensajes previamente grabados o de la síntesis vocal, la persona que realiza la llamada interactúa con el servidor mediante las teclas de su teléfono. Según la configuración, es posible reproducir audio o transferirle a otros números.<br/><br/>Tenga en cuenta que solo es posible la transferencia a números de OVH.</translation>
+
+   <translation id="telephony_alias_config_change_type_label_easyHunting" qtlid="324457">Cola de llamadas</translation>
+   <translation id="telephony_alias_config_change_type_desc_easyHunting" qtlid="333152">Con la cola de llamadas, puede gestionar el flujo de llamadas.<br/><br/>Reproduzca un sonido de bienvenida, personalice la música de espera y haga que suene el teléfono de los distintos trabajadores o departamentos en función de las estrategias que usted establezca, en las franjas horarias elegidas. Puede determinar el número máximo de llamadas en la cola y el tiempo máximo de espera. Si no puede responder, se redirigirá al interlocutor al contestador de una línea OVH.<br/><br/><b class="text-danger">Tenga en cuenta que, en este modo de funcionamiento, la redirección de llamadas de los miembros de la cola se desactiva automáticamente.</b></translation>
+
+   <translation id="telephony_alias_config_change_type_label_cloudHunting" qtlid="333165">Cola de llamadas (modo experto)</translation>
+   <translation id="telephony_alias_config_change_type_desc_cloudHunting" qtlid="333178">Con el modo experto de la cola de llamadas, puede gestionar el flujo de llamadas de principio a fin.<br/><br/>Dispone de una interfaz similar a la del servidor de voz interactivo, con la que podrá programar etapa por etapa el desarrollo de las llamadas entrantes.<br/><br/>En función del número que realice la llamada o de la franja horaria, reproduzca sonidos de bienvenida, personalice la música de espera o haga que suene el teléfono de los distintos trabajadores o departamentos en función de las estrategias que usted establezca.<br/><br/><b class="text-danger">Tenga en cuenta que, en este modo de funcionamiento, la redirección de llamadas de los miembros de la cola de llamadas se desactivará automáticamente.</b></translation>
+
+   <translation id="telephony_alias_config_change_type_label_easyPabx" qtlid="60119">Easy PABX</translation>
+   <translation id="telephony_alias_config_change_type_desc_easyPabx" qtlid="333191">No pierda más llamadas gracias a easyPABX. Redirija su número hacia una o más líneas de OVH o números externos. Asigne las llamadas entrantes según las estrategias que usted mismo establezca. Si no puede responder, el interlocutor será redirigido hacia un contestador.</translation>
+
+   <translation id="telephony_alias_config_change_type_label_miniPabx" qtlid="333204">Mini PABX</translation>
+   <translation id="telephony_alias_config_change_type_desc_miniPabx" qtlid="333217">Con el miniPABX podrá gestionar el flujo de llamadas a los distintos departamentos o trabajadores en función de su disponibilidad. Usted elige el reparto de las llamadas, así como el número y el tiempo máximo de las llamadas en la cola.</translation>
+
+   <translation id="telephony_alias_config_change_type_label_empty" qtlid="333230">Sin funcionalidades</translation>
+   <translation id="telephony_alias_config_change_type_desc_empty" qtlid="333243">Sin funcionalidades</translation>
+
+</translations>

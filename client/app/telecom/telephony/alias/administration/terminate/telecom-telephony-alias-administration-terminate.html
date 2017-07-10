@@ -1,0 +1,86 @@
+<section class="telephony-group-alias-redirect">
+
+    <header>
+        <section-back-link section-back-link-to-state="telecom.telephony.alias.administration"
+                           section-back-link-title="{{ 'telephony_alias_administration_terminate_back_link' | translate }}">
+        </section-back-link>
+        <h1 data-translate="telephony_alias_administration_terminate_title"></h1>
+    </header>
+
+    <bouncing-box-loader data-ng-if="AliasTerminateCtrl.isLoading">
+        <h2 data-translate="loading"></h2>
+    </bouncing-box-loader>
+
+    <div class="telecom-section-content" data-ng-if="!AliasTerminateCtrl.isLoading">
+        <div class="row">
+            <div class="col-md-6 widget-presentation">
+                <header class="widget-presentation-header">
+                    <h2 class="widget-presentation-title" data-translate="telephony_alias_administration_terminate_info_subtitle"></h2>
+                </header>
+                <p data-translate="telephony_alias_administration_terminate_info1"></p>
+                <p data-translate="telephony_alias_administration_terminate_info2"></p>
+                <p data-translate="telephony_alias_administration_terminate_info3"></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 widget-presentation">
+                <header class="widget-presentation-header">
+                    <h2 class="widget-presentation-title" data-translate="telephony_alias_administration_terminate_subtitle"></h2>
+                </header>
+                <div data-ng-if="AliasTerminateCtrl.task">
+                    <p class="text-danger">
+                        <i class="ovh-font ovh-font-warning fs16 line-height-normal right-space-m4"></i>
+                        <span data-translate="telephony_alias_administration_terminate_warning"
+                              data-translate-values="{ number: (AliasTerminateCtrl.number.serviceName | phoneNumber), date: (AliasTerminateCtrl.task.executionDate | date) }"></span>
+                    </p>
+                    <button type="button"
+                            class="btn btn-default top-space-m4 pull-right"
+                            data-ng-disabled="AliasTerminateCtrl.isCancelling"
+                            data-ng-click="AliasTerminateCtrl.cancelTermination()">
+                        <span data-translate="telephony_alias_administration_cancel_termination"></span>
+                        <spinner class="left-space-m4" data-ng-if="AliasTerminateCtrl.isCancelling"></spinner>
+                    </button>
+                </div>
+                <div class="clearfix" data-ng-if="!AliasTerminateCtrl.task">
+                    <p>
+                        <span data-translate="telephony_alias_administration_terminate_info5"></span>
+                        <strong data-ng-if="AliasTerminateCtrl.number.partOfPool"
+                                data-ng-bind="AliasTerminateCtrl.number.partOfPool"></strong>
+                        <span class="text-danger block" data-ng-if="AliasTerminateCtrl.number.partOfPool">
+                            <i class="ovh-font ovh-font-warning fs16 line-height-normal right-space-m4"></i>
+                            <span data-translate="telephony_alias_administration_terminate_pool_warning"></span>
+                        </span>
+                        <strong data-ng-if="!AliasTerminateCtrl.number.partOfPool"
+                                data-ng-bind="AliasTerminateCtrl.number.serviceName | phoneNumber"></strong>
+                    </p>
+                    <p data-translate="telephony_alias_administration_terminate_info4"></p>
+                    <div class="top-space-m16 clearfix">
+                        <select flat-select
+                            class="form-control"
+                            data-ng-model="AliasTerminateCtrl.reason"
+                            data-ng-disabled="AliasTerminateCtrl.isTerminating"
+                            data-ng-options="('telephony_alias_administration_terminate_reason_' + reason | translate) for reason in AliasTerminateCtrl.reasonEnum"
+                            required>
+                            <option value="" data-translate="telephony_alias_administration_terminate_reason" disabled></option>
+                        </select>
+                    </div>
+                    <div flat-input-container class="top-space-m16" data-ng-if="AliasTerminateCtrl.reason === 'missingOptions' || AliasTerminateCtrl.reason === 'other'">
+                        <textarea class="form-control" rows="5"
+                                  placeholder="{{:: 'telephony_alias_administration_terminate_details' | translate}}"
+                                  data-ng-disabled="AliasTerminateCtrl.isTerminating"
+                                  data-ng-model="AliasTerminateCtrl.details">
+                        </textarea>
+                    </div>
+                    <button type="button"
+                            class="btn btn-default top-space-m16 pull-right"
+                            data-ng-disabled="!AliasTerminateCtrl.hasValidReason() || AliasTerminateCtrl.isTerminating"
+                            data-ng-click="AliasTerminateCtrl.terminate()">
+                        <span data-translate="telephony_alias_administration_terminate"></span>
+                        <spinner class="left-space-m4" data-ng-if="AliasTerminateCtrl.isTerminating"></spinner>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>

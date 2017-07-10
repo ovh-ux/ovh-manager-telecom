@@ -1,0 +1,144 @@
+@text-disabled-color: #757575;
+@sides-margin: 2%;
+
+.no-wrap {
+    white-space: nowrap;
+}
+
+.disabled-underline-link() {
+    &:hover, &:active, &:focus {
+        text-decoration: none;
+    }
+}
+
+.block-emphasis {
+    padding: 16px;
+    background-color: @gray-lighter;
+
+    &__row {
+        display: flex;
+    }
+
+    &__column {
+        &--first {
+            flex-grow: 0;
+            padding-right: 8px;
+        }
+    }
+}
+
+div.ui-select-choices-group {
+    border:solid 1px;
+    padding-left:3px;
+    background-color: white;
+}
+
+div.ui-select-container {
+    cursor: pointer;
+}
+
+.text-disabled {
+    color: @text-disabled-color !important;
+}
+
+.text-warning {
+    font-weight: bold;
+}
+
+.text-default {
+    color: @text-color;
+}
+
+.text-base {
+    color: @gray-base;
+}
+
+.text-muted {
+    color: #999;
+}
+
+.text-price {
+    color: #d30d33 !important;
+}
+
+.required::after {
+    content: "*";
+    display: inline-block;
+    margin-left: 4px;
+}
+
+a.telecom-link,
+button.telecom-link,
+a.btn-link,
+button.btn-link {
+    .disabled-underline-link();
+
+    span:not(.ovh-font) {
+        text-decoration: underline;
+        font-weight: bold;
+    }
+
+    &:hover, &:focus, &:active {
+        > span:not(.ovh-font) {
+            text-decoration: underline;
+            font-weight: bold;
+        }
+    }
+}
+
+.sidebarbar-action-icon {
+    line-height: 30px;
+}
+
+.alert {
+    &.alert-ovh {
+        &.alert-ad {
+            background-color: @gray-lighter;
+            border-color: @UNIVERS;
+            color: @text-color-mainInfo;
+            .master{
+                .ad-price {
+                    color: @UNIVERS;
+                }
+            }
+        }
+    }
+}
+
+.no-transition {
+    transition: none !important;
+}
+
+.line-height-normal {
+    line-height: normal !important;
+}
+
+[data-ng-messages][role=alert] {
+    color: @alert-danger-text;
+}
+
+dl.dl-telecom {
+    color: @gray-base;
+
+    > dt {
+        font-weight: normal;
+    }
+
+    > dd {
+        font-weight: bold;
+        margin-bottom: 8px;
+    }
+}
+
+.table-fixed {
+    table-layout: fixed;
+}
+
+.browser-alert__container {
+    .oui-message {
+        max-width: inherit;
+        line-height: 2;
+        font-size: 1.2rem;
+        font-weight: 500;
+    }
+}

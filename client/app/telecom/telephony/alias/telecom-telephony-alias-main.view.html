@@ -1,0 +1,95 @@
+<section class="telecom-telephony-alias">
+
+    <!-- LOADING -->
+    <bouncing-box-loader data-ng-if="AliasCtrl.loading.init">
+        <h1 data-translate="loading"></h1>
+    </bouncing-box-loader>
+
+    <div class="telecom-section-header" data-ng-if="!AliasCtrl.loading.init">
+        <header role="banner">
+            <!-- GROUP TITLE -->
+            <editable-service-name data-editable-service-name-title="AliasCtrl.number.getDisplayedName()"
+                                   data-editable-service-name-title-on-save="AliasCtrl.numberDescriptionSave"
+                                   data-editable-service-name-service-name="AliasCtrl.number.serviceName"
+                                   data-ng-if="AliasCtrl.serviceName"
+                                   data-maxlength="25">
+            </editable-service-name>
+        </header>
+
+        <!-- LINE ACTIONS -->
+        <nav role="navigation">
+            <responsive-tabs>
+
+                <responsive-tab data-state="telecom.telephony.alias"
+                                data-disabled="!AliasCtrl.serviceName"
+                                data-dropdown-title="{{ 'telephony_alias_tab_portability' | translate }}">
+                    <span data-translate="telephony_alias_tab_portability"></span>
+                </responsive-tab>
+
+                <responsive-tab data-state="telecom.telephony.alias.administration"
+                                data-disabled="!AliasCtrl.serviceName"
+                                data-dropdown-title="{{ 'telephony_alias_tab_administrative_management' | translate }}">
+                    <span data-translate="telephony_alias_tab_administrative_management"></span>
+                </responsive-tab>
+
+                <responsive-tab data-state="telecom.telephony.alias.configuration"
+                                data-disabled="!AliasCtrl.serviceName"
+                                data-dropdown-title="{{ 'telephony_alias_tab_number_configuration' | translate }}">
+                    <span data-translate="telephony_alias_tab_number_configuration"></span>
+                </responsive-tab>
+
+                <responsive-tab data-state="telecom.telephony.alias.consumption"
+                                data-disabled="!AliasCtrl.serviceName"
+                                data-ng-if="!AliasCtrl.loading.init && AliasCtrl.number.feature.hasConsumption()"
+                                data-dropdown-title="{{ 'telephony_alias_tab_consumption' | translate }}">
+                    <span data-translate="telephony_alias_tab_consumption"></span>
+                </responsive-tab>
+
+                <responsive-tab data-state="telecom.telephony.alias.svaGenerator"
+                                data-disabled="!AliasCtrl.serviceName"
+                                data-dropdown-title="{{ 'telephony_alias_tab_bank_maker' | translate }}">
+                    <span data-translate="telephony_alias_tab_bank_maker"></span>
+                </responsive-tab>
+
+                <responsive-tab data-state="telecom.telephony.alias.contact"
+                                data-disabled="!AliasCtrl.serviceName"
+                                data-dropdown-title="{{ 'telephony_alias_tab_number_directory' | translate }}">
+                    <span data-translate="telephony_alias_tab_number_directory"></span>
+                </responsive-tab>
+
+                <responsive-tab-more>
+                    <i class="fa fa-plus"></i>
+                </responsive-tab-more>
+            </responsive-tabs>
+        </nav>
+    </div><!-- .telecom-section-header -->
+
+    <div class="telecom-section-alert"
+         data-ng-if="!AliasCtrl.loading.init">
+        <div class="alert alert-warning"
+             role="alert"
+             data-ng-if="AliasCtrl.terminationTask">
+            <i class="ovh-font ovh-font-filled-warning"></i>
+            <span data-translate="telephony_alias_termination_warning"
+                  data-translate-values="{ date: (AliasCtrl.terminationTask.executionDate | date) }"></span>
+            <a data-ui-sref="telecom.telephony.alias.administration.terminate"
+               data-translate="telephony_alias_termination_warning_cancel"></a>
+        </div>
+        <div class="alert alert-warning"
+             role="alert"
+             data-ng-if="AliasCtrl.convertTask">
+            <i class="ovh-font ovh-font-filled-warning"></i>
+            <span data-translate="telephony_alias_convert_warning"
+                  data-translate-values="{ date: (AliasCtrl.convertTask.executionDate | date) }"></span>
+            <a data-ui-sref="telecom.telephony.alias.administration.convertToLine"
+               data-translate="telephony_alias_termination_warning_cancel"></a>
+        </div>
+    </div>
+
+    <main class="telecom-section-content"
+         role="main"
+         data-ng-if="!AliasCtrl.loading.init"
+         data-ui-view="aliasInnerView">
+    </main><!-- .telecom-section-content -->
+
+</section>

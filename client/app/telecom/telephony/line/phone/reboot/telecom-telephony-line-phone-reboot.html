@@ -1,0 +1,44 @@
+<div class="telecom-telephony-line-phone-reboot">
+
+    <header>
+        <section-back-link section-back-link-to-state="telecom.telephony.line.phone"
+                           section-back-link-title="{{ 'telephony_group_line_phone_section_back_link' | translate }}">
+        </section-back-link>
+        <h1 data-translate="telephony_line_phone_reboot_title"></h1>
+    </header>
+
+    <div class="telecom-section-content">
+        <div data-ng-if="PhoneRebootCtrl.isLoading">
+            <bouncing-box-loader>
+                <h3 class="top-space-m16" data-translate="loading"></h3>
+            </bouncing-box-loader>
+        </div>
+        <div class="row" data-ng-if="!PhoneRebootCtrl.isLoading">
+            <section class="col-xs-12 col-md-6  widget-presentation">
+                <header class="widget-presentation-header">
+                    <h2 class="widget-presentation-title"
+                        data-translate="telephony_line_phone_reboot_section_title"></h2>
+                </header>
+                <dl class="dl-telecom">
+                    <dt data-translate="telephony_line_phone_reboot_phone_brand"></dt>
+                    <dd class="bottom-space-m8" data-ng-bind=":: PhoneRebootCtrl.phone.description || '-'"></dd>
+                    <dt data-translate="telephony_line_phone_reboot_phone_mac_address"></dt>
+                    <dd class="bottom-space-m8" data-ng-bind=":: PhoneRebootCtrl.phone.macAddress || '-'"></dd>
+                </dl>
+                <p class="text-warning"
+                   data-ng-if="!PhoneRebootCtrl.isRebootable"
+                   data-translate="telephony_line_phone_reboot_unsupported">
+                </p>
+                <button type="button"
+                        class="btn btn-sm btn-default"
+                        data-ng-click="PhoneRebootCtrl.reboot()"
+                        data-ng-disabled="!PhoneRebootCtrl.isRebootable || PhoneRebootCtrl.isRebooting || PhoneRebootCtrl.rebootSuccess">
+                    <span data-ng-if="true" data-translate="telephony_line_phone_reboot_phone"></span>
+                    <spinner class="left-space-m8" data-ng-if="PhoneRebootCtrl.isRebooting"></spinner>
+                    <i data-ng-if="PhoneRebootCtrl.rebootSuccess" class="ovh-font ovh-font-success left-space-m4"></i>
+                </button>
+            </section>
+        </div>
+    </div>
+
+</div>

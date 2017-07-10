@@ -1,0 +1,67 @@
+<div class="telecom-pack-xdsl-deconsolidation">
+
+    <bouncing-box-loader class="top-space-m20" data-ng-if="loaders.deconsolidation || loaders.xdsl || DeconCtrl.loading">
+        <h3 class="top-space-m16"
+            data-translate="loading">
+        </h3>
+    </bouncing-box-loader>
+
+    <div class="widget-presentation">
+
+        <h2 class="widget-presentation-title"
+            data-translate="xdsl_access_deconsolidation_title">
+        </h2>
+
+        <div data-ng-if="!loaders.deconsolidation && !loaders.xdsl && !DeconCtrl.loading">
+            <div data-ng-if="deconsolidation === 'total'" class="alert alert-warning" role="alert">
+                <span class="ovh-font ovh-font-filled-warning" aria-hidden="true"></span>
+                <p class="master top-space-m15" data-translate="xdsl_access_deconsolidation_warning_total"></p>
+            </div>
+            <div data-ng-if="deconsolidation === 'partial'">
+                <div class="alert alert-warning top-space-m20"
+                     role="alert"
+                     data-ng-if="DeconCtrl.isLegacyOffer">
+                     <span class="ovh-font ovh-font-filled-warning" aria-hidden="true"></span>
+                    <strong data-translate="xdsl_access_deconsolidation_legacy_offer"></strong>
+                    <a data-translate="xdsl_access_deconsolidation_legacy_offer_upgrade"
+                       data-ng-href="{{ ::DeconCtrl.getOldV6TransfertUrl()}}"
+                       data-uib-tooltip="{{ ::'redirection_old_manager' | translate }}"
+                       target="_blank">
+                    </a>
+                </div>
+                <form class="ovh-form-flat" data-ng-if="!DeconCtrl.isLegacyOffer">
+                    <h3 data-translate="xdsl_access_deconsolidation_rio_title"></h3>
+                    <div class="input-group bottom-space-m12"
+                       data-ng-class="{'has-error': !DeconCtrl.rioCodeIsValid &&
+                       DeconCtrl.model.rio}">
+                        <input type="text"
+                               class="form-control small-input"
+                               data-ng-model="DeconCtrl.model.rio"
+                               data-ng-change="DeconCtrl.checkRioCode()"
+                               id="rio"
+                               placeholder="{{ 'xdsl_access_deconsolidation_rio' | translate }}">
+                        <div>
+                            <label for="rio"
+                                   class="top-space-m8"
+                                   data-translate="xdsl_access_deconsolidation_rio_warning"></label>
+                        </div>
+                    </div>
+                    <p data-translate="xdsl_access_deconsolidation_rio_help"></p>
+
+                    <div class="alert alert-info" role="alert">
+                        <span class="ovh-font ovh-font-filled-info" aria-hidden="true"></span>
+                        <p data-translate="xdsl_access_deconsolidation_desc_important"></p>
+                    </div>
+                    <button class="top-space-m16 btn btn-primary"
+                            type="submit"
+                            data-ng-disabled="!DeconCtrl.rioCodeIsValid && DeconCtrl.model.rio"
+                            data-translate="xdsl_access_deconsolidation_validate"
+                            data-ng-click="DeconCtrl.openConfirmModal()">
+                    </button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+</div>

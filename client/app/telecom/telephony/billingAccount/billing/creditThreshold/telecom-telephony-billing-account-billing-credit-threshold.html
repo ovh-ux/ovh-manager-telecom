@@ -1,0 +1,113 @@
+<section class="telephony-account-billing-billing-credit-threshold">
+
+    <header>
+        <section-back-link section-back-link-to-state="telecom.telephony.billing"
+                           section-back-link-title="{{:: 'telephony_group_billing_actions_group_billing_back_link' | translate }}">
+        </section-back-link>
+        <h1 data-translate="telephony_group_billing_credit_threshold_title"></h1>
+    </header>
+
+    <bouncing-box-loader data-ng-if="BillingAccountCreditThresholdCtrl.loading.init">
+        <h2 data-translate="loading"></h2>
+    </bouncing-box-loader>
+
+    <div data-ng-if="!BillingAccountCreditThresholdCtrl.loading.init && BillingAccountCreditThresholdCtrl.loading.success">
+        <success-drawing-check data-draw-success-check="BillingAccountCreditThresholdCtrl.loading.success">
+            <h4 data-translate="telephony_group_billing_credit_threshold_success"></h4>
+        </success-drawing-check>
+    </div>
+
+    <div class="telecom-section-content" data-ng-hide="BillingAccountCreditThresholdCtrl.loading.init || BillingAccountCreditThresholdCtrl.loading.success">
+
+        <div class="row">
+            <div class="col-xs-12 col-md-6">
+
+                <form class="flex-center"
+                    name="creditThresholdForm"
+                    data-ng-submit="BillingAccountCreditThresholdCtrl.submit()">
+
+                    <section class="widget-presentation">
+                        <header class="widget-presentation-header">
+                            <h2 class="widget-presentation-title" data-translate="telephony_group_billing_credit_threshold_info_subtitle"></h2>
+                        </header>
+
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-7 service-title" data-translate="telephony_group_billing_credit_threshold_credit_threshold"></div>
+                            <div class="col-xs-12 col-sm-5 service-item">
+                                <span data-ng-bind="BillingAccountCreditThresholdCtrl.creditThreshold.text"></span>
+                                <span class="left-space-m8" data-translate="telephony_group_billing_credit_threshold_without_tax"></span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-7 service-title" data-translate="telephony_group_billing_credit_threshold_allowed_out_plan"></div>
+                            <div class="col-xs-12 col-sm-5 service-item">
+                                <span data-ng-bind="BillingAccountCreditThresholdCtrl.allowedOutplan.text"></span>
+                                <span class="left-space-m8" data-translate="telephony_group_billing_credit_threshold_without_tax"></span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-7 service-title" data-translate="telephony_group_billing_credit_threshold_current_out_plan"></div>
+                            <div class="col-xs-12 col-sm-5 service-item red">
+                                <span data-ng-bind="BillingAccountCreditThresholdCtrl.currentOutplan.text"></span>
+                                <span class="left-space-m8" data-translate="telephony_group_billing_credit_threshold_without_tax"></span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <label for="credit"
+                                   class="col-xs-12 col-sm-7 service-title"
+                                   data-translate="telephony_group_billing_credit_threshold_credits_label">
+                           </label>
+                            <div class="col-xs-12 col-sm-5 service-item">
+                               <select flat-select
+                                       class="form-control"
+                                       name="credit"
+                                       id="credit"
+                                       required
+                                       data-ng-change="BillingAccountCreditThresholdCtrl.onChangeCredit()"
+                                       data-ng-disabled="BillingAccountCreditThresholdCtrl.loading.submit"
+                                       data-ng-model="BillingAccountCreditThresholdCtrl.credit"
+                                       data-ng-options="item.label disable when item.disable for item in BillingAccountCreditThresholdCtrl.credits">
+                               </select>
+                           </div>
+                        </div>
+
+                        <div class="row top-space-m16" data-ng-if="BillingAccountCreditThresholdCtrl.newCredit">
+                            <div class="col-xs-12 col-sm-7 service-title" data-translate="telephony_group_billing_credit_threshold_new_credit"></div>
+                            <div class="col-xs-12 col-sm-5 service-item">
+                                <span data-ng-bind="BillingAccountCreditThresholdCtrl.newCredit.text"></span>
+                                <span class="left-space-m8" data-translate="telephony_group_billing_credit_threshold_without_tax"></span>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="widget-presentation" data-ng-if="BillingAccountCreditThresholdCtrl.newCredit">
+                        <header class="widget-presentation-header">
+                            <h2 class="widget-presentation-title" data-translate="telephony_group_billing_credit_threshold_contracts_subtitle"></h2>
+                        </header>
+                        <p class="service-title top-space-m32" data-translate="telephony_group_billing_credit_threshold_contracts"></p>
+                        <div data-contracts="BillingAccountCreditThresholdCtrl.contracts"
+                             data-full-text="false"
+                             data-contracts-validated="BillingAccountCreditThresholdCtrl.contractsAccepted">
+                        </div>
+                    </section>
+
+                    <div class="row top-space-m32">
+                        <div class="col-xs-12">
+                            <button type="submit"
+                                    class="btn btn-sm btn-primary"
+                                    data-ng-disabled="!creditThresholdForm.$valid || !BillingAccountCreditThresholdCtrl.contractsAccepted || BillingAccountCreditThresholdCtrl.loading.submit"
+                                    data-translate="telephony_group_billing_credit_threshold_submit">
+                            </button>
+                        </div>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+</section>

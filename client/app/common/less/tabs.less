@@ -1,0 +1,129 @@
+.tab-container {
+    margin: 0 @sm-margin-side;
+
+    .nav.nav-tabs {
+        border-bottom: 0;
+        > li {
+
+            &::after {
+                width: 0%;
+                content: ' ';
+                display: block;
+                border-bottom: 3px solid @UNIVERS;
+                position: relative;
+                left: 50%;
+            }
+
+            &.active {
+                &:after {
+                    width:100%;
+                    left:0%;
+                    animation: nav-tabs-border-bounce-animation 1000ms linear 1 both;
+                }
+            }
+
+            a {
+                color:@text-color-mainInfo;
+                display: inline-block;
+                text-align: center;
+                padding: 8px 24px;
+                border: 0;
+                font-size: 12px;
+                font-weight: 400;
+                background-color: transparent;
+
+                i {
+                    display: block;
+                    font-size: 30px;
+                }
+            }
+
+            &:not(.disabled) a:hover {
+                background: transparent;
+                color: @UNIVERS;
+            }
+
+            &.disabled {
+                opacity: .3;
+            }
+
+            &.active {
+                a {
+                    color: @BRAND_SECONDARY;
+                    font-weight: 700;
+                }
+            }
+        }
+
+    }
+
+}
+
+@keyframes nav-tabs-border-bounce-animation {
+    0% {
+        width:0%;
+        left:50%;
+    }
+    4% {
+        width:43%;
+        left:28%;
+    }
+    7.91% {
+        width:88%;
+        left:11%;
+    }
+    11.91% {
+        width:118.9%;
+        left: -9.45%;
+    }
+    15.82% {
+        width:127.5%;
+        left: -13.5%;
+    }
+    20.42% {
+        width:119.6%;
+        left: -9.8%;
+    }
+    24.92% {
+        width:105.9%;
+        left:-2.95%;
+    }
+    29.53% {
+        width:95,98%;
+        left: 2.5%;
+    }
+    34.03% {
+        width:93.07%;
+        left:4%;
+    }
+    43.14% {
+        width:98.53%;
+        left:0.74%;
+    }
+    52.15% {
+        width:101.739%;
+        left:-0.7%;
+    }
+    70.37% {
+        width:99.56%;
+        left:0.22%;
+    }
+    88.59% {
+        width:100.11%;
+        left:-0.05%;
+    }
+    100% {
+        width:100%;
+        left:0%;
+    }
+}
+
+
+
+
+
+@media (min-width: @screen-sm-min) {
+    .tab-container {
+        margin: 0 @md-margin-base;
+    }
+}

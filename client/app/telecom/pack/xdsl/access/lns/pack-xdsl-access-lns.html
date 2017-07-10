@@ -1,0 +1,28 @@
+<div data-ng-controller="XdslAccessLnsCtrl as LnsCtrl">
+    <form name="LnsForm"
+          class="form-horizontal ovh-form-flat"
+          data-ng-submit="LnsCtrl.changeLns()"
+          data-ng-show="LnsCtrl.lns">
+        <div class="form-group">
+            <span class="sr-only" data-translate="xdsl_details_LNS"></span>
+            <select flat-select
+                class="form-control"
+                id="newLns"
+                name="newLns"
+                data-ng-model="LnsCtrl.currentLnsTmp"
+                data-ng-options="lns.city for lns in LnsCtrl.lns"
+                data-ng-disabled="access.tasks.current.lnsChange">
+            </select>
+
+            <button class="btn btn-sm btn-primary left-space-m8"
+                    type="submit"
+                    data-ng-disabled="!LnsCtrl.lns || access.tasks.current.lnsChange || LnsCtrl.currentLns === LnsCtrl.currentLnsTmp">
+                    <span data-ng-if="access.tasks.current.lnsChange">
+                        <spinner size="12"></spinner>
+                        <span data-translate="xdsl_access_lns_doing"></span>
+                    </span>
+                    <span data-ng-if="!access.tasks.current.lnsChange" data-translate="submit"></span>
+            </button>
+        </div>
+    </form>
+</div>

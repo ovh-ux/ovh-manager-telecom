@@ -1,0 +1,17 @@
+<button class="btn btn-link section-back-link"
+        data-ng-if="$ctrl.onClick"
+        data-ng-click="$ctrl.onClick()">
+    <i class="ovh-font ovh-font-arrow-left"
+       aria-hidden>
+    </i>
+    <span data-translate="{{ $ctrl.linkText || 'back' }}"></span>
+</button>
+
+<a class="section-back-link"
+   data-ng-if="!$ctrl.onClick"
+   data-ui-sref="{{ $ctrl.toState || '^' }}">
+    <i class="ovh-font ovh-font-arrow-left"
+       aria-hidden>
+    </i>
+    <span data-translate="{{ $ctrl.linkText || 'back' }}"></span>
+</a>

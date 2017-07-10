@@ -1,0 +1,211 @@
+<div class="telecom-pack-domain-activation">
+
+    <header>
+        <section-back-link section-back-link-to-state="telecom.pack"></section-back-link>
+        <h1 data-translate="domain_activation_widget_title"></h1>
+    </header>
+
+    <div class="telecom-section-content">
+
+        <div class="alert alert-danger alert-dismissible"
+             role="alert"
+             data-ng-repeat="(index, error) in errors">
+            <span class="ovh-font ovh-font-filled-error" aria-hidden="true"></span>
+            <button type="button"
+                    class="close"
+                    data-ng-click="closeThisError(index);"
+                    aria-label="{{:: 'close' | translate }}">
+                    <span aria-hidden="true">&times;</span>
+            </button>
+            <p data-ng-bind-html="error.key | translate"></p>
+            {{error.data}}
+        </div>
+
+        <div class="text-center" data-ng-if="PackDomainActivation.isLoading">
+            <bouncing-box-loader>
+                <h3 data-translate="loading"></h3>
+            </bouncing-box-loader>
+        </div>
+
+        <div class="row" data-ng-if="!PackDomainActivation.isLoading && locker.activatedDomains.length !== 0">
+            <section class="widget-presentation col-xs-12 col-md-6" data-ng-if="locker.activatedDomains.length !== 0">
+                <h2 class="widget-presentation-title">
+                    {{'domain_activation_activated_domains_reminder' | translate}}
+                </h2>
+                <ul>
+                    <li data-ng-repeat="domain in locker.activatedDomains" data-ng-bind="domain"></li>
+                </ul>
+            </section>
+        </div>
+
+        <div class="row" data-ng-if="!PackDomainActivation.isLoading">
+            <section class="widget-presentation col-xs-12 col-md-6">
+                <h2 class="widget-presentation-title">{{'domain_activation_widget_intro1' | translate}}</h2>
+
+                <form class="ovh-form-flat" data-ng-if="locker.tldList.length !== 0"
+                  name="domainActivation">
+
+                  <!--select domain-->
+                  <div class="input-select clearfix">
+                      <div flat-input-container>
+                          <label for="inputDomain"
+                                 class="control-label"
+                                 data-ng-bind=":: 'domain_activation_form_domain_label' | translate | capitalize">
+                          </label>
+                          <div class="input-select-container">
+                              <div class="input-group col-xs-8">
+                                  <!-- For regex below
+                                  \x22 is " (double quote)
+                                  \x27 is ' (single quote)
+                                  \xa0 is   (unbreakable space)
+                                  \x20 is   (space)
+
+                                  Waiting for the api to check the validity of a domain,
+                                  we have to be relatively "permissive". We won't refuse a
+                                  valid domain. But we can accept a domain who will be
+                                  rejected later by the api. For now no better way.
+                                  -->
+                                  <input type="text"
+                                         class="form-control"
+                                         data-ng-pattern=
+                                         "/^[^!|&[\]{}()«»\<\>_^@~\-\x20\xa0\x27\x22\.,;=][^!|&[\]{}()\\/«»<>_^@~\x20\xa0\x27\x22\.,;=]{1,63}[^!|&[\]{}()\\/«»<>_^@~\-\x20\xa0\x27\x22\.,;=]$/"
+                                         id="inputDomain"
+                                         data-ng-model="model.domain"
+                                         name="domain"
+                                         data-ng-disabled="PackDomainActivation.isActivating"
+                                         required data-ng-minlength="1"
+                                         data-ng-trim="true"
+                                         data-ng-change="scheduleCheckDomainDisponibility();"
+                                         placeholder="{{:: 'domain_activation_form_domain_label' | translate | capitalize }}">
+                              </div>
+                              <div class="col-xs-4 no-margin">
+                                  <select class="form-control"
+                                          data-ng-model="model.tld"
+                                          name="tld"
+                                          data-ng-options="tld.value as tld.label for tld in locker.tldList"
+                                          data-ng-disabled="PackDomainActivation.isActivating"
+                                          data-ng-change="checkDomainDisponibility();">
+                                  </select>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="top-space-m8" data-ng-if="toggles.domainLoading">
+                      <span class="fa fa-refresh fa-spin text-info" aria-hidden="true"></span>
+                      <span data-translate="domain_activation_check_dispo"></span>
+                  </div>
+
+                  <!-- already in pack-->
+                  <div class="availabilityMessage" data-ng-if="toggles.domainStatus === 'alreadyActivated'">
+                      <span class="ovh-font ovh-font-warning text-warning fs16" aria-hidden="true"></span>
+                      <span data-translate="domain_activation_is_already_in_pack"></span>
+                  </div>
+
+                  <!-- available -->
+                  <div data-ng-if="toggles.domainStatus === 'available'">
+                      <div class="availabilityMessage">
+                          <span class="ovh-font ovh-font-success text-success fs16" aria-hidden="true"></span>
+                          <span>{{locker.fqdn}} {{'domain_activation_is_available' | translate}}</span>
+                      </div>
+
+                      <p data-translate="domain_activation_you_are"></p>
+                      <div>
+                          <label>
+                              <flat-radio>
+                                  <input type="radio"
+                                         data-ng-model="model.legalStatus"
+                                         data-ng-disabled="PackDomainActivation.isActivating"
+                                         value="individual"
+                                         name="legalStatus"
+                                         required>
+                              </flat-radio>
+                              <span class="left-space-m4" data-translate="domain_activation_is_individual"></span>
+                          </label>
+                          <label class="left-space-m16">
+                              <flat-radio>
+                                  <input type="radio"
+                                         data-ng-model="model.legalStatus"
+                                         data-ng-disabled="PackDomainActivation.isActivating"
+                                         value="corporation"
+                                         name="legalStatus">
+                              </flat-radio>
+                              <span class="left-space-m4" data-translate="domain_activation_is_corporation"></span>
+                          </label>
+                          <label class="left-space-m16">
+                              <flat-radio>
+                                  <input type="radio"
+                                         data-ng-model="model.legalStatus"
+                                         data-ng-disabled="PackDomainActivation.isActivating"
+                                         value="association"
+                                         name="legalStatus">
+                              </flat-radio>
+                              <span class="left-space-m4" data-translate="domain_activation_is_association"></span>
+                          </label>
+                      </div>
+                  </div>
+
+                  <!-- unavailable -->
+                  <div data-ng-if="toggles.domainStatus === 'unavailable'">
+                      <div class="availabilityMessage">
+                          <span class="ovh-font ovh-font-warning text-warning fs16" aria-hidden="true"></span>
+                          <span>{{model.domain + '.' +
+                              model.tld}} {{'domain_activation_is_unavailable' | translate}}</span>
+                      </div>
+
+                      <p data-translate="domain_activation_do_you_transfert"></p>
+
+                     <div class="btn-group block clearfix bottom-space-m16">
+                          <label class="btn btn-default"
+                                 data-ng-model="toggles.transfertWanted"
+                                 data-uib-btn-radio="true"
+                                 data-translate="common_yes_capitalized">
+                          </label>
+
+                          <label class="btn btn-default"
+                                 data-ng-model="toggles.transfertWanted"
+                                 data-uib-btn-radio="false"
+                                 data-translate="common_no_capitalized">
+                          </label>
+                      </div>
+
+                      <div class="alert alert-info" role="alert">
+                          <span class="ovh-font ovh-font-filled-info" aria-hidden="true"></span>
+                          <span data-translate="domain_activation_authinfo_info"></span>
+                      </div>
+
+                      <div flat-input-container data-ng-if="toggles.transfertWanted">
+                          <label class="control-label" for="formAuthInfo">
+                              {{'domain_activation_form_authinfo' | translate}} *
+                          </label>
+                          <input id="formAuthInfo"
+                                 name="authinfo"
+                                 data-ng-model="model.authInfo"
+                                 class="form-control" data-ng-pattern="/^\S{8,}$/"
+                                 required
+                                 placeholder="{{'domain_activation_form_authinfo' | translate}} *">
+                      </div>
+                  </div>
+
+
+                  <!-- validation button -->
+                  <div data-ng-if="toggles.transfertWanted || model.action === 'create'">
+                      <button type="button"
+                              class="btn btn-primary"
+                              data-ng-click="submit()"
+                              data-ng-disabled="PackDomainActivation.isActivating || !domainActivation.$valid || toggles.domainLoading || toggles.loading > 0">
+                          <span data-ng-if="toggles.transfertWanted" data-translate="domain_activation_form_ok_transfert_button"></span>
+                          <span data-ng-if="model.action === 'create'" data-translate="domain_activation_form_ok_activate_button"></span>
+                          <spinner class="left-space-m4" data-ng-if="PackDomainActivation.isActivating"></spinner>
+                      </button>
+                  </div>
+              </form>
+
+              <div class="alert alert-warning" role="alert" data-ng-if="locker.tldList.length === 0">
+                  <span class="ovh-font ovh-font-filled-warning" aria-hidden="true"></span>
+                  <span data-translate="domain_activation_no_tld"></span>
+              </div>
+            </section>
+        </div>
+    </div>
+
+</div>

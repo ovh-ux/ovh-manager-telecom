@@ -1,0 +1,53 @@
+<div class="telecom-pack-hubic-activation">
+
+    <header>
+        <section-back-link section-back-link-to-state="telecom.pack"></section-back-link>
+        <h1 data-translate="hubic_activation_widget-title"></h1>
+    </header>
+
+    <div class="telecom-section-content">
+
+        <div class="widget-presentation">
+
+            <div class="alert alert-ovh">
+                <p data-translate="hubic_activation_widget-intro"></p>
+            </div>
+
+            <spinner data-ng-if="PackHubicActivationCtrl.loading"></spinner>
+
+            <div class="row">
+                <div class="col-xs-12 col-md-6">
+
+                    <div class="table-responsive-vertical ovh-form-flat col-" data-ng-if="!PackHubicActivation.loading && PackHubicActivation.hubicList.length">
+                        <table class="table table-hover table-condensed ovh-form-flat table-form table-pretty">
+                            <thead>
+                            <tr>
+                                <th scope="col"
+                                    data-translate="hubic_activation_widget_hubic_header"></th>
+                                <th scope="col"
+                                    data-translate="hubic_activation_widget_voucher_header"></th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            <tr class="active" data-ng-repeat="hubic in PackHubicActivation.hubicList track by hubic.domain">
+                                <th scope="row">
+                                    <strong data-ng-bind="hubic.domain"></strong>
+                                    ( <span data-ng-bind="hubic.size"></span> )
+                                </th>
+                                <td>
+                                    <span data-ng-if="hubic.voucher" data-ng-bind="hubic.voucher"></span>
+                                    <span data-ng-if="!hubic.voucher">-</span>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

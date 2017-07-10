@@ -1,0 +1,122 @@
+.telecom-pack-voipLine-activation {
+    .ovh-font-warning.text-warning{
+        font-size: @FONT-SIZE-MAININFO;
+        font-weight: 400;
+        position: relative;
+        bottom: 2px;
+    }
+
+    .selected-hardware {
+        background: @telecom-table-background-color;
+        padding: 12px;
+    }
+
+    .voipLine-hardware-image, .carousel-caption{
+        height: 120px;
+        margin-bottom: 8px;
+
+        img{
+            max-height: 120px;
+        }
+    }
+
+    .carousel {
+        padding-top:20px;
+        padding-bottom:20px;
+        background: @telecom-table-background-color;
+    }
+
+    .carousel-wrapper {
+        float: none;
+    }
+
+    .voipLine-hardware-image, .carousel-caption{
+        display: inline-block;
+        width: 35%;
+        height: 150px;
+        vertical-align: top;
+        margin-bottom: 24px;
+    }
+
+    .voipLine-hardware-image {
+        img{
+            max-width: 90%;
+            max-height: 120px;
+            margin-left: 0;
+        }
+    }
+
+    .carousel-caption {
+        padding: 0;
+        position: static;
+        text-shadow: none;
+        color:@text-color-mainInfo;
+        text-align: left;
+
+        button{
+            margin-top: 12px;
+        }
+    }
+
+    .carousel-control {
+        text-shadow : none;
+        cursor : pointer;
+
+        &.left, &.right {
+            background-image: none;
+            background-repeat: no-repeat;
+        }
+
+        .glyphicon-chevron-left, .glyphicon-chevron-right {
+            &:before {
+                color : @UNIVERS;
+            }
+        }
+    }
+
+    .carousel-indicators {
+        bottom: 0;
+        .active {
+            background-color: @UNIVERS;
+            border: none;
+        }
+        li {
+            border-color: @text-color-mainInfo;
+        }
+    }
+
+    .animate-mondial-relay, .animate-addresses {
+
+        overflow: hidden;
+        &.ng-hide-animate {
+            -webkit-transition: 1s ease all;
+            -moz-transition: 1s ease all;
+            -ms-transition: 1s ease all;
+            -o-transition: 1s ease all;
+            transition: 1s ease all;
+        }
+        &.ng-hide-remove {
+            max-height: 0;
+            opacity: 0;
+            &.ng-hide-remove-active {
+                max-height: 600px;
+                opacity:1;
+            }
+        }
+
+        &.ng-hide-add {
+            max-height: 600px;
+            opacity:1;
+            &.ng-hide-add-active {
+                max-height: 0;
+                opacity:0;
+            }
+        }
+    }
+
+    .address-container {
+        display: flex;
+        padding: 16px;
+        background-color: @telecom-table-background-color;
+    }
+}

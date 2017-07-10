@@ -1,0 +1,99 @@
+div.table-action-line {
+    @arrowSize: 12px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    left: auto;
+    right: 0;
+    @media (max-width: 780px) {
+        left: 0;
+        right: auto;
+    }
+
+    &.dropdown-menu {
+        border-color: @gray-base;
+        min-width: 74px;
+    }
+
+    div.arrow {
+        position: relative;
+        background: #ffffff;
+
+        &:after, &:before {
+            bottom: 100%;
+            border: solid transparent;
+            content: " ";
+            height: 0;
+            width: 0;
+            position: absolute;
+            pointer-events: none;
+            @media (max-width: 780px) {
+                left: 11%;
+            }
+            left: 89%;
+        }
+
+        &.two {
+            &:after, &:before {
+                @media (max-width: 780px) {
+                    left: 15%;
+                }
+                left: 85%;
+            }
+        }
+
+        &.one {
+            &:after, &:before {
+                @media (max-width: 780px) {
+                    left: 30%;
+                }
+                left: 70%;
+            }
+        }
+
+        &:after {
+            border-color: transparent;
+            border-bottom-color: #ffffff;
+            border-width: @arrowSize;
+            margin-left: -@arrowSize;
+        }
+        &:before {
+            border-color: transparent;;
+            // visual effet; oblique lines seem paler
+            border-bottom-color: darken(@gray-base, 40%);
+            border-width: @arrowSize+1px;
+            margin-left: -(@arrowSize+1px);
+        }
+
+    }
+
+    .action-menu {
+        > li {
+            > button {
+                &[disabled] {
+                    cursor: not-allowed;
+
+                    &:hover,
+                    &:focus {
+                        background-color: inherit;
+                    }
+                }
+
+                > label {
+                    word-break: initial;
+                }
+            }
+        }
+    }
+}
+
+div.btn-group {
+    button.table-action-line {
+        &.btn.btn-link{
+
+            &:hover,&:focus {
+                text-decoration: none;
+                color: @BRAND_LIGHT;
+            }
+        }
+    }
+}

@@ -1,0 +1,12 @@
+<div class="sva-generator">
+    <spinner data-ng-if="isLoading"></spinner>
+    <div class="sva-container" data-ng-show="!isLoading"></div>
+    <p data-ng-if="imageHref">
+        <span data-translate="telecom_sva_generator_download"></span>
+        <a data-ng-href="{{ imageHref }}" download="{{ number + '.png' }}">{{ number + '.png' }}</a>
+    </p>
+    <div class="alert alert-info" role="alert" data-ng-if="invalidNumber">
+        <i class="ovh-font ovh-font-filled-info"></i>
+        <p data-translate="telecom_sva_generator_invalid_number"></p>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<translations>
+   <translation id="telephony_service_fax_settings_main_title" qtlid="306578">Fakso konfigūravimas</translation>
+   <translation id="telephony_service_fax_settings_general_options" qtlid="340133">Pagrindiniai nustatymai</translation>
+   <translation id="telephony_service_fax_settings_general_options_fax_quality" qtlid="356914">Siuntimo kokybė:</translation>
+   <translation id="telephony_service_fax_settings_general_options_fax_quality_normal" qtlid="67052">Normalus</translation>
+   <translation id="telephony_service_fax_settings_general_options_fax_quality_high" qtlid="66332">Aukštas</translation>
+   <translation id="telephony_service_fax_settings_general_options_fax_quality_best" qtlid="356927">Geriausia</translation>
+   <translation id="telephony_service_fax_settings_general_options_fax_max_call" qtlid="356940">Siuntimo bandymų kiekis:</translation>
+   <translation id="telephony_service_fax_settings_header" qtlid="356953">Siunčiamų faksogramų antraštė</translation>
+   <translation id="telephony_service_fax_settings_notification_options" qtlid="356966">Pranešimų nustatymai</translation>
+   <translation id="telephony_service_fax_settings_notification_options_from_name" qtlid="356979">Siuntėjo vardas:</translation>
+   <translation id="telephony_service_fax_settings_notification_options_from_name_error_required" qtlid="356992">Siuntėjo vardas yra privalomas</translation>
+   <translation id="telephony_service_fax_settings_notification_options_from_email" qtlid="391202">Adresse e-mail de l’expéditeur&#160;:</translation>
+   <translation id="telephony_service_fax_settings_notification_options_from_email_error_email" qtlid="391215">L’adresse e-mail n’est pas valide.</translation>
+   <translation id="telephony_service_fax_settings_notification_options_mail_format" qtlid="357031">Laiško formatas:</translation>
+   <translation id="telephony_service_fax_settings_notification_options_mail_format_html" qtlid="357044">HTML</translation>
+   <translation id="telephony_service_fax_settings_notification_options_mail_format_text" qtlid="234708">Tekstas </translation>
+   <translation id="telephony_service_fax_settings_notification_options_update" qtlid="337936">Taikyti visas parinktis</translation>
+   <translation id="telephony_service_fax_settings_notification_options_update_success" qtlid="337949">Išsaugotos parinktys</translation>
+   <translation id="telephony_service_fax_settings_addresses_to_notify" qtlid="337975">El. pašto adresas pranešimams</translation>
+   <translation id="telephony_service_fax_settings_addresses_to_notify_add" qtlid="71357">Įtraukti el. pašto adresą</translation>
+   <translation id="telephony_service_fax_settings_addresses_to_notify_empty" qtlid="357057">Dar nesate sukūrę el. pašto adreso pranešimams.</translation>
+   <translation id="telephony_service_fax_settings_addresses_to_notify_placeholder" qtlid="69509">El. paštas</translation>
+   <translation id="telephony_service_fax_settings_addresses_to_notify_error_required" qtlid="357070">El. pašto laukas yra privalomas</translation>
+   <translation id="telephony_service_fax_settings_addresses_to_notify_error_email" qtlid="391215">L’adresse e-mail n’est pas valide.</translation>
+   <translation id="telephony_service_fax_settings_addresses_to_notify_info_limit" qtlid="338014">Galite pranešti daugiausiai 5 el. pašto adresais.</translation>
+</translations>

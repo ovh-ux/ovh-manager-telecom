@@ -1,0 +1,431 @@
+<section class="telecom-pack-xdsl-access" data-ui-view="accessView">
+
+    <div class="row top-space-m20" data-ng-if="loaders.details || loaders.tasks">
+        <div class="col-xs-12 text-center" data-spinner data-size="64"></div>
+        <p class="col-xs-12 text-center top-space-m20" data-translate="loading"></p>
+    </div>
+
+    <div data-ng-if="!loaders.details && !loaders.tasks">
+
+        <div class="row space-p0 bottom-space-m32">
+            <div class="col-xs-12 col-md-6 widget-presentation">
+                <h2 class="widget-presentation-title" data-translate="xdsl_details_title"></h2>
+
+                <div class="col-12 flex-center">
+                    <!-- Status -->
+                    <div class="row">
+                        <div class="col-xs-12 col-md-4 service-title" data-translate="xdsl_details_status_label"></div>
+                        <div class="col-xs-12 col-md-8 service-item">
+                            <a class="service-button"
+                               data-ui-sref="telecom.pack.xdsl.access-diagnostic"
+                               role="button">
+
+                                <div class="service-button-description">
+                                    <div class="description-title-small description-title-fullHeight status-label"
+                                         data-ng-bind-html="XdslAccess.statusLabel">
+                                    </div>
+                                </div>
+
+                                <div class="link-name">
+                                    <span data-translate="xdsl_details_button_diagnostic"></span>
+                                    <i class="ovh-font ovh-font-arrow-right"></i>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Synchro -->
+                    <div class="row">
+                        <div class="col-xs-12 col-md-4 service-title" data-translate="xdsl_details_sync_label"></div>
+                        <div class="col-xs-12 col-md-8 service-item">
+                            <strong class="text-info text-uppercase right-space-m2" data-ng-if="XdslAccess.lineDetails.syncDown">
+                                <i class="fa fa-arrow-down"></i>
+                                <span data-translate="xdsl_details_syncDown"
+                                      data-translate-values="{ syncDown: XdslAccess.lineDetails.syncDown }">
+                                </span>
+                            </strong>
+                            <strong class="text-info text-uppercase" data-ng-if="XdslAccess.lineDetails.syncUp">
+                                <i class="fa fa-arrow-up"></i>
+                                <span data-translate="xdsl_details_syncUp"
+                                      data-translate-values="{ syncUp: XdslAccess.lineDetails.syncUp }">
+                                </span>
+                            </strong>
+                            <span data-ng-if="!XdslAccess.lineDetails.syncUp && !XdslAccess.lineDetails.syncDown">-</span>
+                        </div>
+                    </div>
+
+                    <!-- Attenuation -->
+                    <div class="row">
+                        <div class="col-xs-12 col-md-4 service-title" data-translate="xdsl_details_att"></div>
+                        <div class="col-xs-12 col-md-8 service-item">
+                            <span data-translate="xdsl_details_db"
+                                  data-translate-values="{ mitigation: XdslAccess.lineDetails.mitigation }">
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Access Type -->
+                    <div class="row">
+                        <div class="col-xs-12 col-md-4 service-title" data-translate="xdsl_details_type_label"></div>
+                        <div class="col-xs-12 col-md-8 service-item">
+                            <strong class="text-uppercase text-default">{{::access.xdsl.accessType}}</strong>
+                        </div>
+                    </div>
+
+                    <!-- DEGROUPAGE -->
+                    <div class="row">
+                        <div class="col-xs-12 col-md-4 service-title" data-translate="xdsl_details_degroupage_label"></div>
+                        <div class="col-xs-12 col-md-8 service-item"
+                             data-ng-if="XdslAccess.lineDetails.deconsolidation !== 'partial' || access.tasks.current.accessPartToTotal">
+                            <span data-translate="xdsl_access_deconsolidation_{{XdslAccess.lineDetails.deconsolidation}}"
+                                  data-uib-tooltip-template="'pack-xdsl-access-tooltip-deconsolidation.html'"
+                                  data-tooltip-enable="XdslAccess.lineDetails.deconsolidation"
+                                  data-tooltip-placement="right"></span>
+                        </div>
+                        <div class="col-xs-12 col-md-8 service-item"
+                             data-ng-if="XdslAccess.lineDetails.deconsolidation === 'partial' && !access.tasks.current.accessPartToTotal">
+                            <a class="service-button"
+                               data-ui-sref="telecom.pack.xdsl.access-deconsolidation"
+                               data-uib-tooltip-template="'pack-xdsl-access-tooltip-deconsolidation.html'"
+                               data-tooltip-enable="XdslAccess.lineDetails.deconsolidation"
+                               data-tooltip-placement="right">
+                                <div class="service-button-description">
+                                    <div class="description-title-small description-title-fullHeight" data-translate="xdsl_access_deconsolidation_{{XdslAccess.lineDetails.deconsolidation}}"></div>
+                                </div>
+
+                                <div class="link-name">
+                                    <span data-translate="xdsl_details_button_deconsolidation"></span>
+                                    <i class="ovh-font ovh-font-arrow-right"></i>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- ADDRESS -->
+                    <div class="row">
+                        <div class="col-xs-12 col-md-4 service-title" data-translate="xdsl_details_address"></div>
+                        <div class="col-xs-12 col-md-8 service-item">
+                            <div class="service-button"
+                                 data-ng-if="XdslAccess.pendingAddressMove">
+                                <p>{{access.xdsl.address.numberStreet}} {{access.xdsl.address.street}},<br />
+                                   {{access.xdsl.address.zipCode}} {{access.xdsl.address.city}}</p>
+                                   <i class="ovh-font ovh-font-info fs16 line-height-normal right-space-m4"></i>
+                                <span class="text-info" data-translate="xdsl_details_button_move_disabled"></span>
+                            </div>
+                            <a class="service-button"
+                               data-ng-if="!XdslAccess.pendingAddressMove"
+                               data-ui-sref="telecom.pack.move">
+                                <div class="service-button-description">
+                                    <div>{{access.xdsl.address.numberStreet}} {{access.xdsl.address.street}},</div>
+                                    <div>{{access.xdsl.address.zipCode}} {{access.xdsl.address.city}}</div>
+                                </div>
+
+                                <div class="link-name">
+                                    <span data-translate="xdsl_details_button_move"></span>
+                                    <i class="ovh-font ovh-font-arrow-right"></i>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- SUIVI COMMANDE -->
+                    <div class="row">
+                        <div class="col-xs-12 col-md-4 service-title" data-translate="xdsl_details_followUp_label"></div>
+                        <div class="col-xs-12 col-md-8 service-item">
+                            <a class="service-button"
+                               data-ui-sref="telecom.pack.xdsl.access-order"
+                               role="button">
+
+                                <div class="service-button-description">
+                                    <div data-ng-class="{ 'description-title-fullHeight' : !XdslAccess.actualOrder.doneDateLocale }"
+                                         data-translate="telecom_pack_xdsl_order_follow_up_step_name_{{XdslAccess.actualOrder.name}}"></div>
+                                    <div data-ng-if="XdslAccess.actualOrder.doneDateLocale"
+                                         class="description-title-small">{{ ::XdslAccess.actualOrder.doneDateLocale }}</div>
+                                </div>
+
+                                <i class="ovh-font ovh-font-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- ALERTS -->
+                    <div class="row">
+                        <div class="col-xs-12 col-md-4 service-title" data-translate="xdsl_details_ips_notifications"></div>
+                        <div class="col-xs-12 col-md-8 service-item">
+                            <a class="service-button"
+                               data-ui-sref="telecom.pack.xdsl.access-notifications"
+                               role="button">
+
+                                <div class="service-button-description">
+                                    <div class="description-title-small description-title-fullHeight"
+                                         data-ng-pluralize
+                                         data-count="access.notificationsCount"
+                                         data-when="{
+                                            '0': '',
+                                            'one': ('xdsl_details_notif_show_one' | translate : {count: access.notificationsCount}),
+                                            'other': ('xdsl_details_notif_show_many' | translate : {count: access.notificationsCount})
+                                         }">
+                                    </div>
+                                    <div data-ng-if="access.notificationsCount === 0">
+                                        <span data-translate="xdsl_details_notif_show_none_part1"></span>
+                                        <span data-translate="xdsl_details_notif_show_none_part2"></span>
+                                    </div>
+                                </div>
+
+                                <i class="ovh-font ovh-font-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="row" data-ng-if="XdslAccess.packName==='sdsl'">
+                        <div class="col-xs-12 col-md-12">
+                            <a data-ui-sref="telecom.pack.xdsl.access-resiliation" data-translate="xdsl_resiliate" title="{{::'common_resiliation' | translate }}"></a>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Caracteristics -->
+            <div class="col-xs-12 col-md-6 widget-presentation">
+                <h2 class="widget-presentation-title" data-translate="xdsl_details_caracteristics"></h2>
+
+                <div class="row">
+                    <div class="col-xs-12 col-lg-5 bottom-space-p24">
+                        <h3 data-translate="xdsl_details_NRA_title"></h3>
+
+                        <dl class="dl-horizontal">
+                            <dt data-translate="xdsl_details_NRA_name"></dt>
+                            <dd>
+                                {{::access.xdsl.nra}}
+                            </dd>
+
+                            <dt data-translate="xdsl_details_NRA_distance"></dt>
+                            <dd data-translate="xdsl_details_metters"
+                                data-translate-values="{ distance: XdslAccess.lineDetails.distance }">
+                            </dd>
+
+                            <dt data-translate="xdsl_details_cable_type"></dt>
+                            <dd data-ng-if="XdslAccess.lineDetails.lineSectionsLength.length"
+                                data-translate="xdsl_details_sectionLength_values"
+                                data-translate-values="{ diameter: XdslAccess.lineDetails.lineSectionsLength[0].diameter, length: XdslAccess.lineDetails.lineSectionsLength[0].length }">
+                            </dd>
+                            <dd data-ng-if="!XdslAccess.lineDetails.lineSectionsLength.length">-</dd>
+
+                            <dt data-translate="xdsl_details_concentrationPoint_lineHead_label"></dt>
+                            <dd data-ng-if="XdslAccess.lineDetails.concentrationPoint.lineHead">
+                                {{::XdslAccess.lineDetails.concentrationPoint.lineHead }}
+                            </dd>
+                            <dd data-ng-if="!XdslAccess.lineDetails.concentrationPoint.lineHead">-</dd>
+
+                            <dt data-translate="xdsl_details_concentrationPoint_lineInitialSection_label"></dt>
+                            <dd data-ng-if="XdslAccess.lineDetails.concentrationPoint.lineInitialSection">
+                                {{::XdslAccess.lineDetails.concentrationPoint.lineInitialSection }}
+                            </dd>
+                            <dd data-ng-if="!XdslAccess.lineDetails.concentrationPoint.lineInitialSection">-</dd>
+
+                            <dt data-translate="xdsl_details_concentrationPoint_lineInitialSectionPair_label"></dt>
+                            <dd data-ng-if="XdslAccess.lineDetails.concentrationPoint.lineInitialSectionPair">
+                                {{::XdslAccess.lineDetails.concentrationPoint.lineInitialSectionPair }}
+                            </dd>
+                            <dd data-ng-if="!XdslAccess.lineDetails.concentrationPoint.lineInitialSectionPair">-</dd>
+                        </dl>
+                    </div>
+
+
+                    <!-- IPS -->
+                    <div class="col-xs-12 col-lg-7 bottom-space-p24">
+                        <h3 data-translate="xdsl_details_ips_title"></h3>
+                        <!-- IP V4 -->
+                        <div class="row"  data-ng-if="XdslAccess.ipsV4.length > 0">
+                            <div class="col-xs-12 col-md-2 service-title" data-translate="xdsl_details_ips_v4"></div>
+                            <div class="col-xs-12 col-md-10 service-item">
+                                <ul class="row">
+                                    <li class="col-xs-12 bottom-space-m8" data-ng-repeat="ip in XdslAccess.ipsV4 | orderBy:'-range' track by ip.ip">
+                                        <span>
+                                            {{ip.ip}}
+                                            <strong>/</strong>
+                                            {{ip.range}}
+                                        </span>
+                                        <div class="pull-right">
+                                            <button type="button"
+                                                    data-ng-disabled="ip.deleting"
+                                                    title="{{::'xdsl_details_ips_manage' | translate }}"
+                                                    data-ui-sref="telecom.pack.xdsl.access-ip({block:ip.getBlock()})"
+                                                    class="btn btn-default">
+                                                <i class="ovh-font ovh-font-1x4 ovh-font-config"></i>
+                                            </button>
+                                            <span data-uib-tooltip-template="'pack-xdsl-access-tooltip-ipDelete.html'"
+                                                  data-tooltip-enable="ip.range === constants.rangeOfBaseIpv4IP"
+                                                  data-tooltip-append-to-body="true"
+                                                  data-tooltip-placement="right">
+                                            <button type="button"
+                                                    data-ng-disabled="ip.deleting || ip.range === constants.rangeOfBaseIpv4IP"
+                                                    class="btn btn-default"
+                                                    data-ng-really-click="XdslAccess.deleteIps(ip)"
+                                                    data-ng-really-message="{{::'xdsl_access_ip_delete_really' | translate:ip}}"
+                                                    data-ng-really-confirm="{{::'ok' | translate }}"
+                                                    data-ng-really-cancel="{{::'cancel' | translate }}"
+                                                    data-ng-really-window-class="revert-really-buttons">
+                                                <i class="ovh-font ovh-font-1x4 ovh-font-bin"></i>
+                                            </button>
+                                            </span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- IP V6 -->
+                        <div class="row" data-ng-if="XdslAccess.ipsV6.length > 0">
+                            <div class="col-xs-12 col-md-2 service-title">
+                                <span class="tooltip-label"
+                                      data-uib-tooltip-template="'pack-xdsl-access-tooltip-ips.html'"
+                                      data-tooltip-append-to-body="true"
+                                      data-tooltip-placement="right"
+                                      data-translate="xdsl_details_ips_v6">
+                                </span>
+                            </div>
+                            <div class="col-xs-12 col-md-10 service-item">
+
+                                <div data-ng-include="'app/telecom/pack/xdsl/access/ipv6/pack-xdsl-access-ipv6.html'"></div>
+                                <ul class="row">
+                                    <li class="col-xs-12 bottom-space-m8" data-ng-repeat="ip in XdslAccess.ipsV6 | orderBy:'-range' track by ip.ip">
+                                        <span>
+                                            {{ip.ip}}
+                                            <strong>/</strong>
+                                            {{ip.range}}
+                                        </span>
+                                        <div class="pull-right">
+                                            <button type="button"
+                                                    data-ng-disabled="ip.deleting"
+                                                    data-ui-sref="telecom.pack.xdsl.access-ip({block:ip.getBlock()})"
+                                                    title="{{::'xdsl_details_ips_manage' | translate }}"
+                                                    class="btn btn-default">
+                                                <i class="ovh-font ovh-font-1x4 ovh-font-config"></i>
+                                            </button>
+                                            <span data-uib-tooltip-template="'pack-xdsl-access-tooltip-ipDelete.html'"
+                                                  data-tooltip-enable="true"
+                                                  data-tooltip-placement="right"
+                                                  data-tooltip-append-to-body="true">
+                                            <button type="button"
+                                                    data-ng-disabled="true"
+                                                    class="btn btn-default">
+                                                <i class="ovh-font ovh-font-1x4 ovh-font-bin"></i>
+                                            </button>
+                                            </span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <button type="button"
+                                    class="btn btn-sm btn-primary"
+                                    data-ng-disabled="!XdslAccess.canOrderIps()"
+                                    data-ng-click="XdslAccess.orderIps()">
+                                    <i class="ovh-font ovh-font-1x6 ovh-font-cart right-space-m4"></i>
+                                    <span data-translate="xdsl_details_ips_order"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12 bottom-space-p24">
+                        <!-- Connexion -->
+                        <h3 data-translate="xdsl_details_connection_title"></h3>
+
+                        <div class="row">
+                            <div class="col-xs-12 col-md-4 service-title" data-translate="xdsl_details_connection"></div>
+                            <div class="col-xs-12 col-md-8 service-item">
+                                <span data-ng-if="access.xdsl.capabilities.canChangeDslamProfile" data-translate="xdsl_connection_ovh"></span>
+                                <span data-ng-if="!access.xdsl.capabilities.canChangeDslamProfile" data-translate="xdsl_connection_no_ovh"></span>
+                            </div>
+                        </div>
+
+                        <div class="row" data-ng-if="access.xdsl.capabilities.canChangeDslamProfile">
+                            <div class="col-xs-12 col-md-4 service-title">
+                                <a class="tooltip-label"
+                                   href="https://www.ovh.com/fr/a1649.adsl-vdsl-quel-profil-box"
+                                   target="_blank"
+                                   data-tooltip-append-to-body="true"
+                                   data-tooltip-placement="right"
+                                   data-uib-tooltip-template="'pack-xdsl-access-tooltip-dslamProfile.html'"
+                                   data-translate="xdsl_details_profile">
+                                </a>
+                            </div>
+                            <div class="col-xs-12 col-md-8 service-item"
+                                 data-ng-include="'app/telecom/pack/xdsl/access/profil/pack-xdsl-access-profil.html'"></div>
+                        </div>
+
+                        <div class="row" data-ng-if="access.xdsl.capabilities.canChangeLns">
+                            <div class="col-xs-12 col-md-4 service-title">
+                                <label class="tooltip-label"
+                                      for="newLns"
+                                      data-tooltip-append-to-body="true"
+                                      data-tooltip-placement="right"
+                                      data-uib-tooltip-template="'pack-xdsl-access-tooltip-lns.html'"
+                                      data-translate="xdsl_details_LNS">
+                                </label>
+                            </div>
+                            <div class="col-xs-12 col-md-8 service-item" data-ng-if="access.xdsl.hasLns"
+                                 data-ng-include="'app/telecom/pack/xdsl/access/lns/pack-xdsl-access-lns.html'"></div>
+                            <div class="col-xs-12 col-md-8 service-item" data-ng-if="!access.xdsl.hasLns">-</div>
+                        </div>
+
+                        <div class="row" data-ng-if="access.xdsl.capabilities.canApplyLnsRateLimit">
+                            <div class="col-xs-12 col-md-4 service-title">
+                                <span class="tooltip-label"
+                                      data-tooltip-append-to-body="true"
+                                      data-tooltip-placement="right"
+                                      data-uib-tooltip-template="'pack-xdsl-access-tooltip-lnsApply.html'"
+                                      data-translate="xdsl_details_rate_limit">
+                                </span>
+                            </div>
+                            <div class="col-xs-12 col-md-8 service-item" data-ng-if="access.xdsl.capabilities.canApplyLnsRateLimit"
+                                data-ng-include="'app/telecom/pack/xdsl/access/rateLimit/xdsl-access-lns-ratelimit.html'"></div>
+                        </div>
+
+                        <div class="row" data-ng-if="access.xdsl.capabilities.canResetDslamPort && access.xdsl.capabilities.hasDslamPort">
+                            <div class="col-xs-12 col-md-4 service-title">
+                                <span class="tooltip-label"
+                                      for="dslamReset"
+                                      data-tooltip-append-to-body="true"
+                                      data-tooltip-placement="right"
+                                      data-uib-tooltip-template="'pack-xdsl-access-tooltip-dslam.html'"
+                                      data-translate="xdsl_details_reset_dslam_port">
+                                </span>
+                            </div>
+                            <div class="col-xs-12 col-md-8 service-item" data-ng-include="'app/telecom/pack/xdsl/access/portReset/pack-xdsl-access-port-reset.html'"></div>
+                        </div>
+
+                        <div class="row" data-ng-if="XdslAccess.modem">
+                            <div class="col-xs-12 col-md-4 service-title">
+                                <span class="tooltip-label"
+                                      data-tooltip-append-to-body="true"
+                                      data-tooltip-placement="right"
+                                      data-uib-tooltip-template="'pack-xdsl-access-tooltip-mac.html'"
+                                      data-translate="xdsl_details_mac_address">
+                                </span>
+                            </div>
+                            <div class="col-xs-12 col-md-8 service-item">{{XdslAccess.modem.macAddress}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row space-p0">
+            <div class="col-xs-12 widget-presentation" style="overflow: hidden;">
+                <h2 class="widget-presentation-title" data-translate="xdsl_statistics_title"></h2>
+                <div data-ng-include="'app/telecom/pack/xdsl/access/statistics/pack-xdsl-statistics.html'"></div>
+            </div>
+        </div>
+
+    </div>
+
+</section>

@@ -1,0 +1,142 @@
+@table-header-background-color: @table-border-color;
+@table-header-font-color: @text-color-mainInfo;
+@table-header-icon-color: @gray-base;
+@table-header-font-color-sm: @text-color;
+@table-header-width-sm: 780px;
+
+.table.table-pretty {
+    th {
+        font-weight: 400;
+        font-size: @FONT-SIZE-MAININFO;
+        padding-right: 0px;
+        padding-left: 0px;
+
+        a, .btn-default {
+            padding: 0;
+            border: none;
+            font-size: @FONT-SIZE-MAININFO;
+            font-weight: 400;
+            color: @table-header-font-color;
+            text-decoration: none;
+            cursor: pointer;
+
+            i, .ovh-font, .fa {
+                color: @table-header-icon-color;
+
+                &.asc-selected {
+                    color: @UNIVERS;
+                }
+                &.desc-selected {
+                    color: @UNIVERS;
+                }
+                &.sort-desc-left {
+                    margin-left: -12px;
+                }
+            }
+
+            &:hover, &:focus, &:active {
+                background-color: transparent;
+                box-shadow: none;
+            }
+        }
+
+        label {
+            small {
+                font-weight: normal;
+                font-size: smaller;
+                color: @text-color-content;
+            }
+        }
+    }
+
+    td, .table-content, th[scope="row"] {
+        font-size: @font-size-base;
+        font-weight: 400;
+        color: @text-color-content;
+        vertical-align: middle;
+        border: none;
+        word-break: break-all;
+    }
+
+    td:not(.cell-label), th, .table-content {
+        padding: 8px;
+    }
+
+    td.cell-label {
+        padding: 0;
+        label {
+            width: 100%;
+            padding: 8px;
+        }
+    }
+
+    @media screen and (max-width: @table-header-width-sm) {
+        margin-top: 16px;
+
+        th {
+            display: block;
+        }
+        tr {
+            padding: 8px;
+            background-color: @telecom-table-background-color;
+        }
+        .col-mobile-button-big {
+            a {
+                margin-top: 8px;
+                display: inline-block;
+
+                i, .ovh-font, .fa {
+                    font-size: 32px !important;
+                }
+            }
+            button i, button .ovh-font, button .fa {
+                font-size: 24px !important;
+                padding: 4px;
+            }
+        }
+
+
+        input.form-control {
+            padding-right: 0px;
+            clear: both;
+        }
+    }
+
+    @media screen and (min-width: (@table-header-width-sm+1)) {
+        .text-center-md {
+            text-align: center;
+        }
+
+        th:first-child, td:first-child:not(.cell-label) {
+            padding-left: 16px;
+        }
+
+        td.cell-label:first-child {
+            padding-left: 0;
+            label {
+                padding-left: 16px;
+            }
+        }
+
+        th:last-child, td:last-child {
+            padding-left: 0;
+            padding-right: 16px;
+            text-align: right;
+        }
+    }
+
+    .pretty-table-confirm-container {
+        position: absolute;
+        left: 0;
+        z-index: 10;
+
+        .btn-default {
+            background-color: #FFF;
+        }
+    }
+}
+
+
+.table-pretty-no-content {
+    color: @text-color-content;
+}
