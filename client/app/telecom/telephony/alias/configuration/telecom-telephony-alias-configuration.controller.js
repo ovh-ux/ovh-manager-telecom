@@ -10,7 +10,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationCtrl"
     self.actions = null;
     self.number = null;
 
-    /*===============================
+    /*= ==============================
     =            HELPERS            =
     ===============================*/
 
@@ -112,6 +112,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationCtrl"
                     text: $translate.instant("telephony_alias_configuration_actions_number_hunting_mode")
                 }, {
                     name: "number_easy_hunting_members",
+
                     // url: TelephonyMediator.getV6ToV4RedirectionUrl("alias.number_easy_hunting_members"),
                     // uncomment this line when deblocked by API
                     sref: "telecom.telephony.alias.configuration.members.easyHunting",
@@ -156,6 +157,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationCtrl"
                     url: TelephonyMediator.getV6ToV4RedirectionUrl("alias.number_manage_conference"),
                     text: $translate.instant("telephony_alias_configuration_actions_number_manage_conference")
                 }];
+
             // EASY AND MINI PABX ARE NO MORE USED
             // case "easyPabx":
             //     return [{
@@ -219,9 +221,9 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationCtrl"
         return ["redirect", "svi", "ovhPabx"].indexOf(self.number.getFeatureFamily()) > -1;
     };
 
-    /*-----  End of HELPERS  ------*/
+    /* -----  End of HELPERS  ------*/
 
-    /*======================================
+    /*= =====================================
     =            INITIALIZATION            =
     ======================================*/
 
@@ -242,15 +244,15 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationCtrl"
             return self.number.feature.init().then(function () {
                 self.actions = initActions();
             });
-        })["catch"](function (error) {
-            Toast.error([$translate.instant("telephony_alias_configuration_load_error"), error.data && error.data.message || ""].join(" "));
+        }).catch(function (error) {
+            Toast.error([$translate.instant("telephony_alias_configuration_load_error"), _.get(error, "data.message", "")].join(" "));
             return $q.reject(error);
-        })["finally"](function () {
+        }).finally(function () {
             self.loading.init = false;
         });
     }
 
-    /*-----  End of INITIALIZATION  ------*/
+    /* -----  End of INITIALIZATION  ------*/
 
     init();
 

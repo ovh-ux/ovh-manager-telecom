@@ -1,0 +1,83 @@
+<div class="telephony-number-ovh-pabx-tts-list">
+
+    <bouncing-box-loader data-ng-if="$ctrl.loading.init">
+        <h2 data-translate="loading"></h2>
+    </bouncing-box-loader>
+
+    <!-- CREATION FORM -->
+    <form novalidate
+          name="$ctrl.ttsCreateForm"
+          data-ng-submit="$ctrl.onTtsCreateFormSubmit()">
+        <!-- VOICE -->
+        <div class="form-group">
+            <label for="ttsVoice"
+                   data-translate="telephony_number_feature_ovh_pabx_tts_voice">
+            </label>
+            <div class="row">
+                <div class="col-sm-6">
+                    <select class="form-control"
+                            id="ttsVoice"
+                            name="ttsVoice"
+                            data-flat-select
+                            data-ng-model="$ctrl.model.voice"
+                            data-ng-disabled="$ctrl.loading.creating"
+                            data-ng-options="voice.value as voice.label for voice in $ctrl.availableVoices">
+                    </select>
+                </div>
+            </div>
+        </div> <!-- END OF VOICE -->
+
+        <!-- TEXT -->
+        <div class="form-group"
+             data-ng-class="{ 'has-error': $ctrl.ttsCreateForm.ttsText.$invalid && $ctrl.ttsCreateForm.ttsText.$dirty }">
+            <label for="ttsText"
+                   data-translate="telephony_number_feature_ovh_pabx_tts_text">
+            </label>
+            <textarea class="form-control vertical-resize"
+                      id="ttsText"
+                      name="ttsText"
+                      rows="5"
+                      data-ng-model="$ctrl.model.text"
+                      data-ng-maxlength="'1024'"
+                      data-ng-required="true"
+                      data-ng-disabled="$ctrl.loading.creating">
+            </textarea>
+            <div data-ng-messages="$ctrl.ttsCreateForm.ttsText.$error"
+                 data-ng-if="$ctrl.ttsCreateForm.ttsText.$invalid && $ctrl.ttsCreateForm.ttsText.$dirty"
+                 role="alert"
+                 class="top-space-m8">
+                <label for="ttsText"
+                       class="normal small"
+                       data-ng-message="required"
+                       data-translate="telephony_number_feature_ovh_pabx_tts_create_text_required">
+                </label>
+                <label for="ttsText"
+                       class="normal small"
+                       data-ng-message="maxlength"
+                       data-translate="telephony_number_feature_ovh_pabx_tts_create_text_too_long">
+                </label>
+            </div>
+        </div> <!-- END OF TEXT -->
+
+        <div class="clearfix">
+            <button type="submit"
+                    class="btn btn-primary pull-right"
+                    data-ng-disabled="$ctrl.loading.creating || !$ctrl.ttsCreateForm.$valid">
+                <span data-translate="common_create"></span>
+                <spinner name="bubbles-fff-d34936-16"
+                         data-ng-show="$ctrl.loading.creating">
+                </spinner>
+            </button>
+
+            <button type="button"
+                    class="btn btn-default pull-left left-space-m0"
+                    data-translate="cancel"
+                    data-ng-click="$ctrl.onCancelTtsBtnClick()"
+                    data-ng-disabled="$ctrl.loading.creating">
+            </button>
+        </div>
+    </form> <!-- END OF CREATION FORM -->
+
+</div>
+
+<!--  -->

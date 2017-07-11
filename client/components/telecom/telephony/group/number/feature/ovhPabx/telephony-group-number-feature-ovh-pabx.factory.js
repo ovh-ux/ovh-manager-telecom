@@ -1,4 +1,4 @@
-angular.module("managerApp").factory("TelephonyGroupNumberOvhPabx", function ($q, VoipScheduler, TelephonyGroupNumberOvhPabxDialplan, TelephonyGroupNumberOvhPabxSound, TelephonyGroupNumberOvhPabxMenu, Telephony) {
+angular.module("managerApp").factory("TelephonyGroupNumberOvhPabx", function ($q, VoipScheduler, TelephonyGroupNumberOvhPabxDialplan, TelephonyGroupNumberOvhPabxSound, TelephonyGroupNumberOvhPabxMenu, TelephonyGroupNumberOvhPabxTts, Telephony) {
     "use strict";
 
     /*= ==================================
@@ -45,6 +45,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberOvhPabx", function ($q
         this.sounds = [];
         this.menus = [];
         this.queues = [];
+        this.tts = [];
     }
 
     /* -----  End of CONSTRUCTOR  ------*/
@@ -321,10 +322,10 @@ angular.module("managerApp").factory("TelephonyGroupNumberOvhPabx", function ($q
         return self;
     };
 
-    /* ----------  HUNTING  ----------*/
+    /* ----------  QUEUES  ----------*/
 
     /**
-     *  TODO FOR HUNTING
+     *  TODO FOR QUEUES
      *  Set the same philosophy as menu and sounds.
      *  Create factory and add instance of the factory inside queues array.
      */
@@ -361,6 +362,70 @@ angular.module("managerApp").factory("TelephonyGroupNumberOvhPabx", function ($q
                 });
             }));
         });
+    };
+
+    /* ----------  TTS  ----------*/
+
+    TelephonyGroupNumberOvhPabx.prototype.getTts = function () {
+        var self = this;
+
+        return Telephony.OvhPabx().Tts().Lexi().query({
+            billingAccount: self.billingAccount,
+            serviceName: self.serviceName
+        }).$promise.then(function (ttsIds) {
+            return $q.all(_.map(_.chunk(ttsIds, 50), function (chunkIds) {
+                return Telephony.OvhPabx().Tts().Lexi().getBatch({
+                    billingAccount: self.billingAccount,
+                    serviceName: self.serviceName,
+                    id: chunkIds
+                }).$promise.then(function (resources) {
+                    _.chain(resources).filter(function (ttsOptions) {
+                        return ttsOptions.value !== null;
+                    }).map("value").value().forEach(function (ttsOptions) {
+                        self.addTts(ttsOptions);
+                    });
+                    return self;
+                });
+            }));
+        });
+    };
+
+    TelephonyGroupNumberOvhPabx.prototype.addTts = function (ttsOptionsParam) {
+        var self = this;
+        var ttsOptions = ttsOptionsParam;
+        var tts = null;
+
+        if (!ttsOptions) {
+            ttsOptions = {};
+        }
+
+        if (ttsOptions.id) {
+            tts = _.find(self.tts, {
+                id: ttsOptions.id
+            });
+        }
+
+        if (tts) {
+            tts.setOptions(ttsOptions);
+        } else {
+            tts = new TelephonyGroupNumberOvhPabxTts(angular.extend(ttsOptions, {
+                billingAccount: self.billingAccount,
+                serviceName: self.serviceName
+            }));
+            self.tts.push(tts);
+        }
+
+        return tts;
+    };
+
+    TelephonyGroupNumberOvhPabx.prototype.removeTts = function (tts) {
+        var self = this;
+
+        _.remove(self.tts, {
+            id: tts.id
+        });
+
+        return self;
     };
 
     /* ----------  HELPERS  ----------*/
