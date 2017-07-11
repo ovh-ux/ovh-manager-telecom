@@ -151,16 +151,17 @@
                                      readonly
                                      data-ng-model="FaxConfCtrl.passwordDisplay"
                                      class="form-control">
-                             <span role="button"
-                                   class="btn btn-default input-group-addon"
-                                   data-ng-click="FaxConfCtrl.togglePassword();$event.stopPropagation();">
-                                   <span class="fa"
-                                            data-ng-class="{'fa-eye': !FaxConfCtrl.showPassword, 'fa-eye-slash': FaxConfCtrl.showPassword}"
-                                            aria-hidden="true"></span>
+                             <span class="input-group-btn">
+                                 <button type="button"
+                                         class="btn btn-default"
+                                         data-ng-click="FaxConfCtrl.togglePassword();$event.stopPropagation();">
+                                         <span class="fa"
+                                               data-ng-class="{'fa-eye': !FaxConfCtrl.showPassword, 'fa-eye-slash': FaxConfCtrl.showPassword}"
+                                               aria-hidden="true"></span>
+                                 </button>
                              </span>
                           </div>
                       </div>
-
                   </div>
               </div>
           </div>
