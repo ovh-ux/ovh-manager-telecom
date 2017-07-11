@@ -47,7 +47,7 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxTtsCreateCtrl", f
             self.ovhPabx.addTts(tts);
             resetTtsModel();
             if (self.onTtsCreationSuccess && _.isFunction(self.onTtsCreationSuccess())) {
-                self.onTtsCreationSuccess()();
+                self.onTtsCreationSuccess()(tts);
             }
         }).catch(function (error) {
             Toast.error([$translate.instant("telephony_number_feature_ovh_pabx_tts_create_error"), _.get(error, "data.message", "")].join(" "));
@@ -113,9 +113,8 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxTtsCreateCtrl", f
         }
         self.idPrefix = _.kebabCase(self.radioName);
 
-        return $q.all({
-            translations: getTranslations(),
-            voiceEnum: getVoiceEnum()
+        return getTranslations().then(function () {
+            return getVoiceEnum();
         }).then(function () {
             resetTtsModel();
         }).finally(function () {

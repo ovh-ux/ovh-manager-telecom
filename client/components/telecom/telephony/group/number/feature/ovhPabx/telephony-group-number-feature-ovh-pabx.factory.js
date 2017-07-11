@@ -366,6 +366,14 @@ angular.module("managerApp").factory("TelephonyGroupNumberOvhPabx", function ($q
 
     /* ----------  TTS  ----------*/
 
+    TelephonyGroupNumberOvhPabx.prototype.getSingleTts = function (ttsId) {
+        var self = this;
+
+        return _.find(self.tts, {
+            id: ttsId
+        });
+    };
+
     TelephonyGroupNumberOvhPabx.prototype.getTts = function () {
         var self = this;
 

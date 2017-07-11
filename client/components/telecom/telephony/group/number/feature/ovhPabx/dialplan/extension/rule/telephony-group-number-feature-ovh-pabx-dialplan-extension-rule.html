@@ -62,13 +62,20 @@
                         <!-- HUNTING -->
                         <span data-ng-switch-when="hunting"
                               data-ng-bind="$ctrl.ovhPabx.getQueue($ctrl.getRuleAttribute('actionParam')).description || $ctrl.ovhPabx.getQueue($ctrl.getRuleAttribute('actionParam')).queueId">
-                        </span> <!-- END OF HUNTING -->
+                        </span> <!-- End of HUNTING -->
+
+                        <!-- TTS -->
+                        <span class="block elipse no-wrap"
+                              data-ng-switch-when="tts"
+                              data-ng-bind="$ctrl.ovhPabx.getSingleTts($ctrl.getRuleAttribute('actionParam')).text"
+                              data-ng-attr-title="{{ $ctrl.ovhPabx.getSingleTts($ctrl.getRuleAttribute('actionParam')).text }}">
+                        </span> <!-- End of TTS -->
 
                         <!-- DEFAULT TYPE -->
                         <span data-ng-switch-default
                               data-ng-bind="$ctrl.getRuleAttribute('actionParam')">
                         </span> <!-- DEFAULT TYPE --> <!-- ACTION PARAM DISPLAY -->
-                    </div> <!-- END OF RULE ACTION -->
+                    </div> <!-- End of RULE ACTION -->
                     <!-- AVAILABLE RULE ACTIONS -->
                     <div class="anchor-actions"
                          data-uib-dropdown>
@@ -102,7 +109,7 @@
                                 </button>
                             </li> <!-- DELETE ACTION -->
                         </ul> <!-- ACTIONS LIST -->
-                    </div> <!-- END OF AVAILABLE RULE ACTIONS -->
+                    </div> <!-- End of AVAILABLE RULE ACTIONS -->
                     <div class="anchor-confirm"
                          data-ng-if="$ctrl.deletePending">
                         <div class="confirm-overlay"></div>

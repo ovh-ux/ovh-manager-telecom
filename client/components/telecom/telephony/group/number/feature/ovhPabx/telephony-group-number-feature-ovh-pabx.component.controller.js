@@ -72,6 +72,9 @@ angular.module("managerApp").controller("TelephonyNumberOvhPabxCtrl", function (
             }
             if (self.ovhPabx.featureType === "cloudHunting") {
                 initPormises.push(self.ovhPabx.getQueues());
+                if (self.ovhPabx.isCCS) {
+                    initPormises.push(self.ovhPabx.getTts());
+                }
             }
 
             return $q.allSettled(initPormises);
