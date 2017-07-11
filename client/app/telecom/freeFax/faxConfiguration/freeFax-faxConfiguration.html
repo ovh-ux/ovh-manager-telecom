@@ -1,241 +1,284 @@
 <div id="freeFax-faxConfiguration" class="widget-presentation" data-ng-controller="FreeFaxConfigurationCtrl as FaxConfCtrl">
     <h2 class="widget-presentation-title" data-translate="freefax_fax_configuration"></h2>
-    <div class="text-center top-space-p8" data-spinner data-ng-show="loading"></div>
+
+    <bouncing-box-loader data-ng-if="loading">
+        <h3 class="top-space-m16"
+            data-translate="loading">
+        </h3>
+    </bouncing-box-loader>
+
     <form name="faxConfigurationForm"
-          data-ng-submit="FaxConfCtrl.submit()"
-          class="flex-center form-horizontal ovh-form-flat"
-          data-ng-show="freeFax">
-        <div class="row">
-            <div class="col-xs-12 col-md-4 service-title" data-translate="freefax_expeditor"></div>
-            <div class="col-xs-12 col-md-8 service-item">
-                <div flat-input-container class="input-group col-md-8" data-ng-if="FaxConfCtrl.editMode">
-                    <label class="control-label" data-ng-if="faxConfigurationForm.expeditor.$invalid">
-                        {{ 'freefax_expeditor_form_error' | translate }}<span class="red"> *</span>
-                    </label>
-                    <input
-                        name="expeditor"
-                        type="text"
-                        class="form-control"
-                        data-ng-model="freeFax.fromName"
-                        data-required
-                        data-ng-disabled="FaxConfCtrl.loading"
-                        data-maxlength="50">
-                </div>
-                <div data-ng-if="!FaxConfCtrl.editMode">
-                    {{freeFax.fromName}}
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12 col-md-4 service-title" data-translate="freefax_expeditor_mail"></div>
-            <div class="col-xs-12 col-md-8 service-item">
-                <div flat-input-container class="input-group col-md-8" data-ng-if="FaxConfCtrl.editMode">
-                    <label class="control-label" data-ng-if="faxConfigurationForm.expeditorMail.$invalid">
-                        {{ 'freefax_expeditor_mail_form_error' | translate }}<span class="red"> *</span>
-                    </label>
-                    <input
-                        name="expeditorMail"
-                        type="email"
-                        class="form-control input-sm"
-                        data-ng-model="freeFax.fromEmail"
-                        data-required
-                        data-ui-validate="'FaxConfCtrl.validator.isEmail($value)'"
-                        data-ng-disabled="FaxConfCtrl.loading"
-                        data-maxlength="50">
-                </div>
-                <div data-ng-if="!FaxConfCtrl.editMode">
-                    {{freeFax.fromEmail}}
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12 col-md-4 service-title" data-translate="freefax_quality"></div>
-            <div class="col-xs-12 col-md-8 service-item">
-                <div flat-input-container class="input-group" data-ng-if="FaxConfCtrl.editMode">
-                    <select data-flat-select
-                        name="quality"
-                        data-ng-model="freeFax.faxQuality"
-                        class="form-control"
-                        data-required
-                        data-ng-disabled="FaxConfCtrl.loading"
-                        data-ng-options="quality.value as quality.label for quality in FaxConfCtrl.qualityOptions">
-                    </select>
-                </div>
-                <div data-ng-if="!FaxConfCtrl.editMode">
-                    {{ "freefax_quality_" + freeFax.faxQuality | translate }}
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12 col-md-4 service-title" data-translate="freefax_max_try"></div>
-            <div class="col-xs-12 col-md-8 service-item">
-                <div flat-input-container class="input-group" data-ng-if="FaxConfCtrl.editMode">
-                    <select data-flat-select
-                            name="maxTry"
-                            data-ng-model="freeFax.faxMaxCall"
-                            class="form-control"
-                            data-required
-                            data-ng-disabled="FaxConfCtrl.loading"
-                            data-ng-model="OtrsCtrl.filters.serviceName"
-                            data-ng-options="maxRequest as maxRequest for maxRequest in FaxConfCtrl.maxRequestsOptions">
-                    </select>
-                </div>
-                <div data-ng-if="!FaxConfCtrl.editMode">
-                    {{freeFax.faxMaxCall}}
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12 col-md-4 service-title"
-                 data-translate="freefax_header">
-            </div>
-            <div class="col-xs-12 col-md-8 service-item">
-                <div flat-input-container class="input-group col-md-8" data-ng-if="FaxConfCtrl.editMode">
-                    <label class="control-label" data-ng-if="faxConfigurationForm.faxHeader.$invalid">
-                        {{ 'freefax_header_form_error' | translate }}<span class="red"> *</span>
-                    </label>
-                    <input
-                            name="faxHeader"
-                            type="text"
-                            class="form-control"
-                            data-ng-model="freeFax.faxTagLine"
-                            data-required
-                            data-ng-disabled="FaxConfCtrl.loading"
-                            data-maxlength="50">
-                </div>
-                <div data-ng-if="!FaxConfCtrl.editMode">
-                    {{freeFax.faxTagLine}}
-                </div>
-            </div>
-        </div>
-        <div class="row" data-ng-if="FaxConfCtrl.editMode">
-            <div class="col-xs-12 col-md-4 service-title"
-                 data-translate="freefax_reset_password">
-            </div>
-            <div class="col-xs-12 col-md-8 service-item">
-                <button
-                    type="button"
-                    data-ng-hide="FaxConfCtrl.generatedPassword"
-                    data-translate="freefax_reset_password_btn"
-                    class="btn btn-sm btn-primary pull-left"
-                    data-ng-really-click="FaxConfCtrl.generatePassword()"
-                    data-ng-really-message="{{ 'freefax_reset_password_confirm' | translate }}"
-                    data-ng-really-confirm="{{ 'ok' | translate }}"
-                    data-ng-really-cancel="{{ 'cancel' | translate }}"
-                    data-ng-really-window-class="revert-really-buttons"
-                    data-ng-disabled="FaxConfCtrl.generatingPassword"
-                    >
-                </button>
-                <spinner class="left-space-m16" data-ng-if="FaxConfCtrl.generatingPassword"></spinner>
-                <span data-ng-show="FaxConfCtrl.generatedPassword">
-                    
-                    <div flat-input-container class="input-group col-md-4 password-display">
-                        <input type="text" readonly data-ng-model="FaxConfCtrl.passwordDisplay" class="form-control">
-                        <button type="button" class="input-password" data-ng-click="FaxConfCtrl.togglePassword();$event.stopPropagation();">
-                            <svg class="vision" data-ng-class="{'eye': !FaxConfCtrl.showPassword, 'eye-slash': FaxConfCtrl.showPassword}">
-                                <path class="input-password-see" d="M11.18,1.82A11.69,11.69,0,0,1,20.79,7.4,1.39,1.39,0,0,1,20.8,9a11.26,11.26,0,0,1-8.2,5.41C7.76,15.06,4.08,13,1.36,9.09a1.45,1.45,0,0,1,0-1.76,11.77,11.77,0,0,1,8.35-5.4C10.15,1.86,10.61,1.86,11.18,1.82ZM6.65,4.4A10.28,10.28,0,0,0,2.59,8.07a.37.37,0,0,0,0,.34,20,20,0,0,0,1.66,1.94A9.4,9.4,0,0,0,13,12.95a10.32,10.32,0,0,0,6.51-4.59.43.43,0,0,0,0-.37,10.25,10.25,0,0,0-2.09-2.34c-.59-.48-1.24-.88-1.87-1.32l-.09.08a4.89,4.89,0,0,1-1.49,6.43,5,5,0,0,1-5.81,0A4.9,4.9,0,0,1,6.28,8.29,5,5,0,0,1,6.65,4.4Zm.94,2.27a1.81,1.81,0,0,0,.31.55.51.51,0,0,0,.82-.44A2.24,2.24,0,0,1,10.1,4.71a4.21,4.21,0,0,1,1-.21.56.56,0,0,0,.51-.55.54.54,0,0,0-.59-.5A3.51,3.51,0,0,0,7.59,6.67Z"/>
-                                <path class="input-password-hide" d="M20.79,7.4A14.57,14.57,0,0,0,19.73,6a3.7,3.7,0,0,1,.09.77,3.78,3.78,0,0,1-.29,1.41.28.28,0,0,1,0,.18l-.16.22a5.54,5.54,0,0,1-1.44,1.69A9.61,9.61,0,0,1,13,12.95a10.11,10.11,0,0,1-2.14.2L9.55,14.46a12.28,12.28,0,0,0,3,0A11.26,11.26,0,0,0,20.8,9,1.39,1.39,0,0,0,20.79,7.4Z"/>
-                                <path class="input-password-hide" d="M17.44.77,6.33,11.87a11.21,11.21,0,0,1-1.82-1.33A4.76,4.76,0,0,1,2.24,6.76a3.69,3.69,0,0,1,.08-.71,14.11,14.11,0,0,0-1,1.28,1.45,1.45,0,0,0,0,1.76,13.55,13.55,0,0,0,3.92,3.84l-2.2,2.2,1.41,1.41L18.85,2.18Z"/>
-                            </svg>
-                        </button>
-                    </div>                   
-                    
-                </span>
-            </div>
-        </div>
-        <div class="top-space-m12">
-            <button
-                    type="reset"
-                    data-translate="cancel"
-                    class="btn btn-default"
-                    data-ng-click="FaxConfCtrl.cancelEditMode()"
-                    data-ng-disabled="FaxConfCtrl.loading"
-                    data-ng-if="FaxConfCtrl.editMode"
-                    >
-            </button>
-            <button
-                    type="button"
-                    data-translate="edit"
-                    data-ng-click="FaxConfCtrl.enterEditMode()"
-                    class="btn btn-primary"
-                    data-ng-disabled="FaxConfCtrl.loading"
-                    data-ng-if="!FaxConfCtrl.editMode"
-                    >
-            </button>
-            <button
-                type="submit"
-                data-translate="submit"
-                class="btn btn-primary pull-right"
-                data-ng-disabled="faxConfigurationForm.$invalid || FaxConfCtrl.loading "
-                data-ng-if="FaxConfCtrl.editMode"
-                >
-            </button>
-            <spinner class="left-space-m4" data-ng-show="FaxConfCtrl.loading"></spinner>
-        </div>
+          class="form-horizontal ovh-form-flat"
+          data-ng-if="freeFax && FaxConfCtrl.editMode"
+          data-ng-submit="FaxConfCtrl.submit()">
+          <div class="bottom-space-m16" data-translate="common_required_fields"></div>
+
+          <div class="form-group info-row">
+              <label class="col-xs-12 col-md-4 text-left control-label service-title required"
+                     for="expeditor"
+                     data-translate="freefax_expeditor">
+              </label>
+              <div class="col-xs-12 col-md-8 clearfix">
+                  <div flat-input-container>
+                       <input name="expeditor"
+                             id="expeditor"
+                             type="text"
+                             class="form-control"
+                             data-ng-model="freeFax.fromName"
+                             required
+                             data-ng-disabled="FaxConfCtrl.loading"
+                             data-maxlength="50">
+                  </div>
+                  <small class="text-danger"
+                         data-ng-if="faxConfigurationForm.expeditor.$invalid"
+                         data-translate="freefax_expeditor_form_error">
+                  </small>
+              </div>
+          </div>
+
+          <div class="form-group info-row">
+              <label class="col-xs-12 col-md-4 text-left control-label service-title required"
+                     for="expeditorMail"
+                     data-translate="freefax_expeditor_mail">
+              </label>
+              <div class="col-xs-12 col-md-8 clearfix">
+                  <div flat-input-container>
+                      <input name="expeditorMail"
+                             id="expeditorMail"
+                             type="email"
+                             class="form-control"
+                             data-ng-model="freeFax.fromEmail"
+                             required
+                             data-ui-validate="'FaxConfCtrl.validator.isEmail($value)'"
+                             data-ng-disabled="FaxConfCtrl.loading"
+                             data-maxlength="50">
+                  </div>
+                  <small class="text-danger"
+                         data-ng-if="faxConfigurationForm.expeditorMail.$invalid"
+                         data-translate="freefax_expeditor_mail_form_error">
+                  </small>
+              </div>
+          </div>
+
+          <div class="form-group info-row">
+              <label class="col-xs-12 col-md-4 text-left control-label service-title"
+                     for="quality"
+                     data-translate="freefax_quality">
+              </label>
+              <div class="col-xs-12 col-md-8 clearfix">
+                  <div flat-input-container>
+                      <select data-flat-select
+                             id="quality"
+                             name="quality"
+                             data-ng-model="freeFax.faxQuality"
+                             class="form-control"
+                             required
+                             data-ng-disabled="FaxConfCtrl.loading"
+                             data-ng-options="quality.value as quality.label for quality in FaxConfCtrl.qualityOptions">
+                      </select>
+                  </div>
+              </div>
+          </div>
+
+          <div class="form-group info-row">
+              <label class="col-xs-12 col-md-4 text-left control-label service-title"
+                     for="maxTry"
+                     data-translate="freefax_max_try">
+              </label>
+              <div class="col-xs-12 col-md-8 clearfix">
+                  <div flat-input-container>
+                      <select data-flat-select
+                             id="maxTry"
+                             name="maxTry"
+                             data-ng-model="freeFax.faxMaxCall"
+                             class="form-control"
+                             required
+                             data-ng-disabled="FaxConfCtrl.loading"
+                             data-ng-model="OtrsCtrl.filters.serviceName"
+                             data-ng-options="maxRequest as maxRequest for maxRequest in FaxConfCtrl.maxRequestsOptions">
+                      </select>
+                  </div>
+              </div>
+          </div>
+
+          <div class="form-group info-row">
+              <label class="col-xs-12 col-md-4 text-left control-label service-title"
+                     for="faxHeader"
+                     data-translate="freefax_header">
+              </label>
+              <div class="col-xs-12 col-md-8 clearfix">
+                  <div flat-input-container>
+                      <input name="faxHeader"
+                             id="faxHeader"
+                             type="text"
+                             class="form-control"
+                             data-ng-model="freeFax.faxTagLine"
+                             required
+                             data-ng-disabled="FaxConfCtrl.loading"
+                             data-maxlength="50">
+                  </div>
+                  <small class="text-danger"
+                         data-ng-if="faxConfigurationForm.expeditorMail.$invalid"
+                         data-translate="freefax_header_form_error">
+                  </small>
+              </div>
+          </div>
+
+          <div class="form-group info-row">
+              <label class="col-xs-12 col-md-4 text-left control-label service-title"
+                     for="newPassword"
+                     data-translate="freefax_reset_password"></label>
+              <div class="col-xs-12 col-md-8">
+                  <button type="button"
+                      data-ng-if="!FaxConfCtrl.generatedPassword"
+                      data-translate="freefax_reset_password_btn"
+                      class="btn btn-primary"
+                      data-ng-really-click="FaxConfCtrl.generatePassword()"
+                      data-ng-really-message="{{ 'freefax_reset_password_confirm' | translate }}"
+                      data-ng-really-confirm="{{ 'ok' | translate }}"
+                      data-ng-really-cancel="{{ 'cancel' | translate }}"
+                      data-ng-really-window-class="revert-really-buttons"
+                      data-ng-disabled="FaxConfCtrl.generatingPassword">
+                  </button>
+
+                  <spinner class="left-space-m16" data-ng-if="FaxConfCtrl.generatingPassword"></spinner>
+
+                  <div data-ng-if="FaxConfCtrl.generatedPassword">
+                      <div flat-input-container>
+                          <div class="input-group">
+                              <input type="text"
+                                     id="newPassword"
+                                     readonly
+                                     data-ng-model="FaxConfCtrl.passwordDisplay"
+                                     class="form-control">
+                             <span role="button"
+                                   class="btn btn-default input-group-addon"
+                                   data-ng-click="FaxConfCtrl.togglePassword();$event.stopPropagation();">
+                                   <span class="fa"
+                                            data-ng-class="{'fa-eye': !FaxConfCtrl.showPassword, 'fa-eye-slash': FaxConfCtrl.showPassword}"
+                                            aria-hidden="true"></span>
+                             </span>
+                          </div>
+                      </div>
+
+                  </div>
+              </div>
+          </div>
+
+          <div class="top-space-m16">
+              <button type="reset"
+                      data-translate="cancel"
+                      class="btn btn-default"
+                      data-ng-click="FaxConfCtrl.cancelEditMode()"
+                      data-ng-disabled="FaxConfCtrl.loading">
+              </button>
+
+              <button type="submit"
+                  data-translate="submit"
+                  class="btn btn-primary"
+                  data-ng-disabled="faxConfigurationForm.$invalid || FaxConfCtrl.loading ">
+              </button>
+
+              <spinner class="left-space-m4" data-ng-if="FaxConfCtrl.loading"></spinner>
+          </div>
     </form>
-    <div data-ng-show="freeFax">
-        <div>
-            <button class="btn btn-link btn-fax-header-help data-uib-dropdown-toggle no-style top-space-m12"
-                    type="button"
-                    data-ng-click="FaxConfCtrl.showFreeFaxHeaderTips = !FaxConfCtrl.showFreeFaxHeaderTips">
-                <i class="ovh-font"
-                   data-ng-class="{'ovh-font-disclosure-right':!FaxConfCtrl.showFreeFaxHeaderTips,
-                                        'ovh-font-disclosure-down':FaxConfCtrl.showFreeFaxHeaderTips}">
-                </i>
-                <span data-translate="freefax_header_help"></span>
-            </button>
+
+    <div data-ng-if="freeFax && !FaxConfCtrl.editMode">
+        <div class="row info-row">
+            <div class="col-xs-12 col-md-4 service-title" data-translate="freefax_expeditor"></div>
+            <div class="col-xs-12 col-md-8 description" data-ng-bind="freeFax.fromName"></div>
         </div>
+
+        <div class="row info-row">
+            <div class="col-xs-12 col-md-4 service-title" data-translate="freefax_expeditor_mail"></div>
+            <div class="col-xs-12 col-md-8 description" data-ng-bind="freeFax.fromEmail"></div>
+        </div>
+
+        <div class="row info-row">
+            <div class="col-xs-12 col-md-4 service-title" data-translate="freefax_quality"></div>
+            <div class="col-xs-12 col-md-8 description"> {{ "freefax_quality_" + freeFax.faxQuality | translate }}</div>
+        </div>
+
+        <div class="row info-row">
+            <div class="col-xs-12 col-md-4 service-title" data-translate="freefax_max_try"></div>
+            <div class="col-xs-12 col-md-8 description" data-ng-bind="freeFax.faxMaxCall"></div>
+        </div>
+
+        <div class="row info-row">
+            <div class="col-xs-12 col-md-4 service-title" data-translate="freefax_header"></div>
+            <div class="col-xs-12 col-md-8 description" data-ng-bind="freeFax.faxTagLine"></div>
+        </div>
+
+        <button type="button"
+                data-translate="edit"
+                data-ng-click="FaxConfCtrl.enterEditMode()"
+                class="btn btn-primary top-space-m16"
+                data-ng-disabled="FaxConfCtrl.loading">
+        </button>
+    </div>
+
+    <div data-ng-if="freeFax">
+        <button class="btn btn-link data-uib-dropdown-toggle space-p0 top-space-m12 bottom-space-m12"
+                type="button"
+                data-ng-click="FaxConfCtrl.showFreeFaxHeaderTips = !FaxConfCtrl.showFreeFaxHeaderTips">
+            <span class="ovh-font"
+                  data-ng-class="{'ovh-font-disclosure-right':!FaxConfCtrl.showFreeFaxHeaderTips,
+                                  'ovh-font-disclosure-down':FaxConfCtrl.showFreeFaxHeaderTips}"
+                  aria-hidden="true">
+            </span>
+            <span data-translate="freefax_header_help"></span>
+        </button>
         <div class="row" data-ng-show="FaxConfCtrl.showFreeFaxHeaderTips">
             <div class="col-md-6">
-                <div class="row">
-                    <p class="col-md-3 service-title">|</p>
-                    <p class="col-md-9 service-item" data-translate="freefax_header_variable_column_description"></p>
+                <div class="row info-row">
+                    <span class="col-md-3 service-title">|</span>
+                    <span class="col-md-9 description" data-translate="freefax_header_variable_column_description"></span>
                 </div>
-                <div class="row">
-                    <p class="col-md-3 service-title">%%i</p>
-                    <p class="col-md-9 service-item" data-translate="freefax_header_variable_task_identifier_description"></p>
+                <div class="row info-row">
+                    <span class="col-md-3 service-title">%%i</span>
+                    <span class="col-md-9 description" data-translate="freefax_header_variable_task_identifier_description"></span>
                 </div>
-                <div class="row">
-                    <p class="col-md-3 service-title">%%j</p>
-                    <p class="col-md-9 service-item" data-translate="freefax_header_variable_attachment_name_description"></p>
+                <div class="row info-row">
+                    <span class="col-md-3 service-title">%%j</span>
+                    <span class="col-md-9 description" data-translate="freefax_header_variable_attachment_name_description"></span>
                 </div>
-                <div class="row">
-                    <p class="col-md-3 service-title">%%l</p>
-                    <p class="col-md-9 service-item" data-translate="freefax_header_variable_emission_id_description"></p>
+                <div class="row info-row">
+                    <span class="col-md-3 service-title">%%l</span>
+                    <span class="col-md-9 description" data-translate="freefax_header_variable_emission_id_description"></span>
                 </div>
-                <div class="row">
-                    <p class="col-md-3 service-title">%%m</p>
-                    <p class="col-md-9 service-item" data-translate="freefax_header_variable_expeditor_email_description"></p>
+                <div class="row info-row">
+                    <span class="col-md-3 service-title">%%m</span>
+                    <span class="col-md-9 description" data-translate="freefax_header_variable_expeditor_email_description"></span>
                 </div>
-                <div class="row">
-                    <p class="col-md-3 service-title">%%n</p>
-                    <p class="col-md-9 service-item" data-translate="freefax_header_variable_fax_number_description"></p>
+                <div class="row info-row">
+                    <span class="col-md-3 service-title">%%n</span>
+                    <span class="col-md-9 description" data-translate="freefax_header_variable_fax_number_description"></span>
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="row">
-                    <p class="col-md-3 service-title">%%p</p>
-                    <p class="col-md-9 service-item" data-translate="freefax_header_variable_session_page_number_description"></p>
+                <div class="row info-row">
+                    <span class="col-md-3 service-title">%%p</span>
+                    <span class="col-md-9 description" data-translate="freefax_header_variable_session_page_number_description"></span>
                 </div>
-                <div class="row">
-                    <p class="col-md-3 service-title">%%P</p>
-                    <p class="col-md-9 service-item" data-translate="freefax_header_variable_task_page_number_description"></p>
+                <div class="row info-row">
+                    <span class="col-md-3 service-title">%%P</span>
+                    <span class="col-md-9 description" data-translate="freefax_header_variable_task_page_number_description"></span>
                 </div>
-                <div class="row">
-                    <p class="col-md-3 service-title">%%r</p>
-                    <p class="col-md-9 service-item" data-translate="freefax_header_variable_recipient_id_description"></p>
+                <div class="row info-row">
+                    <span class="col-md-3 service-title">%%r</span>
+                    <span class="col-md-9 description" data-translate="freefax_header_variable_recipient_id_description"></span>
                 </div>
-                <div class="row">
-                    <p class="col-md-3 service-title">%%t</p>
-                    <p class="col-md-9 service-item" data-translate="freefax_header_variable_session_page_amount_description"></p>
+                <div class="row info-row">
+                    <span class="col-md-3 service-title">%%t</span>
+                    <span class="col-md-9 description" data-translate="freefax_header_variable_session_page_amount_description"></span>
                 </div>
-                <div class="row">
-                    <p class="col-md-3 service-title">%%T</p>
-                    <p class="col-md-9 service-item" data-translate="freefax_header_variable_task_page_amount_description"></p>
+                <div class="row info-row">
+                    <span class="col-md-3 service-title">%%T</span>
+                    <span class="col-md-9 description" data-translate="freefax_header_variable_task_page_amount_description"></span>
                 </div>
-                <div class="row">
-                    <p class="col-md-3 service-title">%%d</p>
-                    <p class="col-md-9 service-item" data-translate="freefax_header_variable_expeditor_name_description"></p>
+                <div class="row info-row">
+                    <span class="col-md-3 service-title">%%d</span>
+                    <span class="col-md-9 description" data-translate="freefax_header_variable_expeditor_name_description"></span>
                 </div>
             </div>
         </div>
