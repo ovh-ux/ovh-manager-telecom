@@ -92,7 +92,7 @@
                 </h2>
                 <div data-ng-repeat="service in DetailCtrl.configuration.services track by service.type" class="bottom-space-m16">
                     <button type="button"
-                            class="btn btn-link no-space bottom-space-p8 top-space-p8"
+                            class="btn btn btn-link no-space bottom-space-p8 top-space-p8"
                             data-ng-click="service.visible = !service.visible">
                         <span class="ovh-font fs8" data-ng-class="{'ovh-font-disclosure-right': !service.visible, 'ovh-font-disclosure-down': service.visible}" aria-hidden="true"></span>
                         <span data-ng-bind="('hosted_email_detail_server_' + service.type) | translate"></span>
@@ -139,13 +139,13 @@
                 <form name=passwordChange data-ng-submit="DetailCtrl.changePassword()">
                     <label for="password" data-translate="hosted_email_detail_client_change_password_label"></label>
                     <div class="row">
-                        <ovh-ng-input-password
+                        <input-password
                                 class="col-xs-6"
                                 name="password"
                                 data-ng-model="DetailCtrl.password"
                                 data-strength="DetailCtrl.getStrength(value)"
                                 data-rules="DetailCtrl.passwordRules">
-                        </ovh-ng-input-password>
+                        </input-password>
                     </div>
                     <button class="btn btn-primary"
                             type="submit"
