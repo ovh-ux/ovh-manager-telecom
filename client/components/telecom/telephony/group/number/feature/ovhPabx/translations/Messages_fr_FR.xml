@@ -12,6 +12,12 @@
     <translation id="telephony_number_feature_ovh_pabx_dialplan_anonymous_rejection">Rejet d'appel masqué</translation>
     <translation id="telephony_number_feature_ovh_pabx_dialplan_anonymous_rejection_active">Rejeter les appels masqués</translation>
     <translation id="telephony_number_feature_ovh_pabx_dialplan_anonymous_rejection_inactive">Ne pas rejeter les appels masqués</translation>
+    <translation id="telephony_number_feature_ovh_pabx_dialplan_show_caller_number">Numéro à présenter</translation>
+    <translation id="telephony_number_feature_ovh_pabx_dialplan_show_caller_number_explain">Le numéro à présenter permet de définir la présentation lors d'un appel entrant sur le téléphone qui reçoit cet appel.</translation>
+    <translation id="telephony_number_feature_ovh_pabx_dialplan_show_caller_number_both">Les deux numéros</translation>
+    <translation id="telephony_number_feature_ovh_pabx_dialplan_show_caller_number_both_explain">Le téléphone cible (qui reçoit l'appel) verra sur son écran le numéro de l'alias (numéro qui est composé par l’appelant).</translation>
+    <translation id="telephony_number_feature_ovh_pabx_dialplan_show_caller_number_caller">Le numéro de l'appelant</translation>
+    <translation id="telephony_number_feature_ovh_pabx_dialplan_show_caller_number_caller_explain">Le téléphone cible (qui reçoit l'appel) verra sur son écran la ligne qui compose l'appel ainsi que le numéro alias qui est composé.</translation>
 
     <!-- STEPS -->
     <translation id="telephony_number_feature_ovh_pabx_step_add">Ajouter une étape</translation>

@@ -10,7 +10,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationCtrl"
     self.actions = null;
     self.number = null;
 
-    /*= ==============================
+    /*===============================
     =            HELPERS            =
     ===============================*/
 
@@ -20,72 +20,78 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationCtrl"
         case "svi":
             return [];
         case "ovhPabx":
-            var ovhPabxActions = [];
+            var ovhPabxActions = [{
+                divider: true
+            }];
+
+            // add member/agent and queues for cloudHunting
             if (self.number.feature.featureType === "cloudHunting") {
-                if (self.number.feature.isCCS) {
-                    ovhPabxActions = [{
-                        name: "number_cloud_hunting_agents",
-                        sref: "telecom.telephony.alias.configuration.agents.ovhPabx",
-                        text: $translate.instant("telephony_alias_configuration_actions_number_hunting_agents")
-                    }, {
-                        name: "number_cloud_hunting_queues",
-                        sref: "telecom.telephony.alias.configuration.queues.ovhPabx",
-                        text: $translate.instant("telephony_alias_configuration_actions_number_hunting_queues")
-                    }];
-                } else {
-                    ovhPabxActions = [];
+                // add link for upgrade to "CCS expert" for "File d'appel expert"
+                if (!self.number.feature.isCCS) {
+                    ovhPabxActions.splice(0, 0, {
+                        name: "number_cloud_hunting_beta",
+                        url: TelephonyMediator.getV6ToV4RedirectionUrl("alias.number_cloud_hunting_beta"),
+                        text: $translate.instant("telephony_alias_configuration_actions_number_cloud_hunting_beta")
+                    });
                 }
-            }
 
-            if (!self.number.feature.isCCS) {
+                // agents for "CCS expert" - members for "File d'appel expert"
+                ovhPabxActions.push(self.number.feature.isCCS ? {
+                    name: "number_cloud_hunting_agents",
+                    sref: "telecom.telephony.alias.configuration.agents.ovhPabx",
+                    text: $translate.instant("telephony_alias_configuration_actions_number_hunting_agents")
+                } : {
+                    name: "number_easy_hunting_members",
+                    sref: "telecom.telephony.alias.configuration.agents.ovhPabx",
+                    text: $translate.instant("telephony_alias_configuration_actions_number_hunting_members")
+                });
+
+                // queue for both "CCS expert" and "File d'appel expert"
                 ovhPabxActions.push({
-                    divider: true
-                });
-
-                // there is no menu for "File d'appel - mode expert"
-                if (self.number.feature.featureType === "cloudIvr") {
-                    ovhPabxActions.push({
-                        name: "number_ovh_pabx_menus",
-                        sref: "telecom.telephony.alias.configuration.ovhPabx.menus",
-                        text: $translate.instant("telephony_alias_configuration_actions_menus_management")
-                    });
-                } else {
-                    ovhPabxActions.push({
-                        name: "number_easy_hunting_members",
-                        sref: "telecom.telephony.alias.configuration.agents.ovhPabx",
-                        text: $translate.instant("telephony_alias_configuration_actions_number_hunting_members")
-                    }, {
-                        name: "number_cloud_hunting_queues",
-                        sref: "telecom.telephony.alias.configuration.queues.ovhPabx",
-                        text: $translate.instant("telephony_alias_configuration_actions_number_hunting_queues")
-                    });
-                }
-                ovhPabxActions = ovhPabxActions.concat({
-                    name: "number_ovh_pabx_sounds",
-                    sref: "telecom.telephony.alias.configuration.ovhPabx.sounds",
-                    text: $translate.instant("telephony_alias_configuration_actions_sounds_management")
-                }, {
-                    divider: true
-                }, {
-                    name: "number_cloud_hunting_events",
-                    sref: "telecom.telephony.alias.configuration.scheduler.ovhPabx",
-                    text: $translate.instant("telephony_alias_configuration_actions_number_cloud_hunting_events")
-                });
-            } else {
-                ovhPabxActions = ovhPabxActions.concat({
-                    name: "number_cloud_hunting_events",
-                    sref: "telecom.telephony.alias.configuration.scheduler.ovhPabx",
-                    text: $translate.instant("telephony_alias_configuration_actions_number_cloud_hunting_events")
-                }, {
-                    name: "number_cloud_hunting_configuration",
-                    url: TelephonyMediator.getV6ToV4RedirectionUrl("alias.number_cloud_hunting_configuration"),
-                    text: $translate.instant("telephony_alias_configuration_actions_number_cloud_hunting_configuration")
+                    name: "number_cloud_hunting_queues",
+                    sref: "telecom.telephony.alias.configuration.queues.ovhPabx",
+                    text: $translate.instant("telephony_alias_configuration_actions_number_hunting_queues")
                 });
             }
 
+            // add menu link exept for "File d'appel expert"
+            if (self.number.feature.featureType === "cloudIvr" || (self.number.feature.featureType === "cloudHunting" && self.number.feature.isCCS)) {
+                ovhPabxActions.push({
+                    name: "number_ovh_pabx_menus",
+                    sref: "telecom.telephony.alias.configuration.ovhPabx.menus",
+                    text: $translate.instant("telephony_alias_configuration_actions_menus_management")
+                });
+            }
+
+            // add tts link for "CCS expert"
             if (self.number.feature.isCCS) {
-                // if it is a CCS => add records management page link
                 ovhPabxActions.push({
+                    name: "number_ovh_pabx_tts",
+                    sref: "telecom.telephony.alias.configuration.ovhPabx.tts",
+                    text: $translate.instant("telephony_alias_configuration_actions_tts_management")
+                });
+            }
+
+            // add links for all : "CCS expert", "Serveur Vocal interactif" and "File d'appel expert"
+            // sound
+            // events
+            ovhPabxActions.push({
+                name: "number_ovh_pabx_sounds",
+                sref: "telecom.telephony.alias.configuration.ovhPabx.sounds",
+                text: $translate.instant("telephony_alias_configuration_actions_sounds_management")
+            }, {
+                divider: true
+            }, {
+                name: "number_cloud_hunting_events",
+                sref: "telecom.telephony.alias.configuration.scheduler.ovhPabx",
+                text: $translate.instant("telephony_alias_configuration_actions_number_cloud_hunting_events")
+            });
+
+            // add links for hunting board and hunting records for "CCS expert"
+            if (self.number.feature.isCCS) {
+                ovhPabxActions.push({
+                    divider: true
+                }, {
                     name: "number_cloud_hunting_board",
                     url: TelephonyMediator.getV6ToV4RedirectionUrl("alias.number_cloud_hunting_board"),
                     text: $translate.instant("telephony_alias_configuration_actions_number_hunting_board")
@@ -94,17 +100,9 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationCtrl"
                     sref: "telecom.telephony.alias.configuration.records.ovhPabx",
                     text: $translate.instant("telephony_alias_configuration_actions_number_hunting_records")
                 });
-            } else if (!self.number.feature.isCCS && self.number.feature.featureType !== "cloudIvr") {
-                // if not a CSS: add possibility to upgrade to
-                ovhPabxActions.splice(0, 0, {
-                    name: "number_cloud_hunting_beta",
-                    url: TelephonyMediator.getV6ToV4RedirectionUrl("alias.number_cloud_hunting_beta"),
-                    text: $translate.instant("telephony_alias_configuration_actions_number_cloud_hunting_beta")
-                });
             }
+
             return ovhPabxActions;
-        case "conference":
-            return [];
         default:
             switch (self.number.feature.featureType) {
             case "easyHunting":
@@ -114,6 +112,8 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationCtrl"
                     text: $translate.instant("telephony_alias_configuration_actions_number_hunting_mode")
                 }, {
                     name: "number_easy_hunting_members",
+                    // url: TelephonyMediator.getV6ToV4RedirectionUrl("alias.number_easy_hunting_members"),
+                    // uncomment this line when deblocked by API
                     sref: "telecom.telephony.alias.configuration.members.easyHunting",
                     text: $translate.instant("telephony_alias_configuration_actions_number_hunting_members")
                 }, {
@@ -150,6 +150,65 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationCtrl"
                     });
                 }
                 return easyHuntingActions;
+            case "conference":
+                return [{
+                    name: "number_manage_conference",
+                    url: TelephonyMediator.getV6ToV4RedirectionUrl("alias.number_manage_conference"),
+                    text: $translate.instant("telephony_alias_configuration_actions_number_manage_conference")
+                }];
+            // EASY AND MINI PABX ARE NO MORE USED
+            // case "easyPabx":
+            //     return [{
+            //         name: "number_easy_pabx_mode",
+            //         url: TelephonyMediator.getV6ToV4RedirectionUrl("alias.number_easy_pabx_mode"),
+            //         text: $translate.instant("telephony_alias_configuration_actions_number_hunting_mode")
+            //     }, {
+            //         name: "number_easy_pabx_members",
+            //         url: TelephonyMediator.getV6ToV4RedirectionUrl("alias.number_easy_pabx_members"),
+            //         text: $translate.instant("telephony_alias_configuration_actions_number_hunting_members")
+            //     }, {
+            //         name: "number_easy_pabx_music",
+            //         url: TelephonyMediator.getV6ToV4RedirectionUrl("alias.number_easy_pabx_music"),
+            //         text: $translate.instant("telephony_alias_configuration_actions_number_easy_pabx_music")
+            //     }, {
+            //         name: "number_easy_pabx_slots",
+            //         url: TelephonyMediator.getV6ToV4RedirectionUrl("alias.number_easy_pabx_slots"),
+            //         text: $translate.instant("telephony_alias_configuration_actions_number_hunting_slots")
+            //     }, {
+            //         name: "number_easy_pabx_events",
+            //         url: TelephonyMediator.getV6ToV4RedirectionUrl("alias.number_easy_pabx_events"),
+            //         text: $translate.instant("telephony_alias_configuration_actions_number_hunting_events")
+            //     }, {
+            //         name: "number_easy_pabx_filtering",
+            //         url: TelephonyMediator.getV6ToV4RedirectionUrl("alias.number_easy_pabx_filtering"),
+            //         text: $translate.instant("telephony_alias_configuration_actions_number_hunting_filtering")
+            //     }];
+            // case "miniPabx":
+            //     return [{
+            //         name: "number_mini_pabx_mode",
+            //         url: TelephonyMediator.getV6ToV4RedirectionUrl("alias.number_mini_pabx_mode"),
+            //         text: $translate.instant("telephony_alias_configuration_actions_number_hunting_mode")
+            //     }, {
+            //         name: "number_mini_pabx_members",
+            //         url: TelephonyMediator.getV6ToV4RedirectionUrl("alias.number_mini_pabx_members"),
+            //         text: $translate.instant("telephony_alias_configuration_actions_number_hunting_members")
+            //     }, {
+            //         name: "number_mini_pabx_music",
+            //         url: TelephonyMediator.getV6ToV4RedirectionUrl("alias.number_mini_pabx_music"),
+            //         text: $translate.instant("telephony_alias_configuration_actions_number_easy_pabx_music")
+            //     }, {
+            //         name: "number_mini_pabx_slots",
+            //         url: TelephonyMediator.getV6ToV4RedirectionUrl("alias.number_mini_pabx_slots"),
+            //         text: $translate.instant("telephony_alias_configuration_actions_number_hunting_slots")
+            //     }, {
+            //         name: "number_mini_pabx_events",
+            //         url: TelephonyMediator.getV6ToV4RedirectionUrl("alias.number_mini_pabx_events"),
+            //         text: $translate.instant("telephony_alias_configuration_actions_number_hunting_events")
+            //     }, {
+            //         name: "number_mini_pabx_filtering",
+            //         url: TelephonyMediator.getV6ToV4RedirectionUrl("alias.number_mini_pabx_filtering"),
+            //         text: $translate.instant("telephony_alias_configuration_actions_number_hunting_filtering")
+            //     }];
             default:
                 return [];
             }
@@ -157,18 +216,12 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationCtrl"
     }
 
     self.isSubwayPlanActive = function () {
-        if (["redirect", "svi", "conference"].indexOf(self.number.getFeatureFamily()) > -1) {
-            return true;
-        } else if ((self.number.feature.featureType === "cloudHunting" && !self.number.feature.isCCS) || self.number.feature.featureType === "cloudIvr") {
-            return true;
-        }
-        return false;
-
+        return ["redirect", "svi", "ovhPabx"].indexOf(self.number.getFeatureFamily()) > -1;
     };
 
-    /* -----  End of HELPERS  ------*/
+    /*-----  End of HELPERS  ------*/
 
-    /*= =====================================
+    /*======================================
     =            INITIALIZATION            =
     ======================================*/
 
@@ -189,15 +242,15 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationCtrl"
             return self.number.feature.init().then(function () {
                 self.actions = initActions();
             });
-        }).catch(function (error) {
-            Toast.error([$translate.instant("telephony_alias_configuration_load_error"), (error.data && error.data.message) || ""].join(" "));
+        })["catch"](function (error) {
+            Toast.error([$translate.instant("telephony_alias_configuration_load_error"), error.data && error.data.message || ""].join(" "));
             return $q.reject(error);
-        }).finally(function () {
+        })["finally"](function () {
             self.loading.init = false;
         });
     }
 
-    /* -----  End of INITIALIZATION  ------*/
+    /*-----  End of INITIALIZATION  ------*/
 
     init();
 

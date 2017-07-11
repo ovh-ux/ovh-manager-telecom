@@ -74,7 +74,7 @@
                     <button type="button"
                             class="section-item no-style full-width text-left"
                             data-ng-click="$ctrl.changeShowCallerNumberChoice()"
-                            data-ng-if="$ctrl.ovhPabx.featureType === 'cloudIvr'">
+                            data-ng-if="$ctrl.ovhPabx.featureType === 'cloudIvr' || $ctrl.ovhPabx.isCCS">
                         <label class="pointer radio-label-main"
                                data-translate="telephony_number_feature_ovh_pabx_dialplan_show_caller_number">
                         </label>
