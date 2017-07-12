@@ -68,13 +68,13 @@
                 </thead>
                 <tbody data-ng-if="!StatsEasyHuntingCtrl.isLoading">
                     <tr data-ng-repeat="call in StatsEasyHuntingCtrl.callsPaginated track by call.id">
-                        <td data-title="{{:: 'telephony_alias_configuration_mode_calls_number' | translate }}">
+                        <th scope="row" data-title="{{:: 'telephony_alias_configuration_mode_calls_number' | translate }}">
                             <span class="text-nowrap right-space-m16 text-capitalize"
                                   data-ng-bind="call.callerIdNumber | phoneNumber"></span>
                             <span class="text-nowrap right-space-m16"
                                   data-ng-if="call.callerIdName"
                                   data-ng-bind="'(' + call.callerIdName + ')'"></span>
-                        </td>
+                        </th>
                         <td data-title="{{:: 'telephony_alias_configuration_mode_calls_queue_time' | translate }}">
                             <elapsed-time data-from="call.begin"></elapsed-time>
                         </td>
@@ -173,9 +173,9 @@
                 </thead>
                 <tbody data-ng-if="!StatsEasyHuntingCtrl.isLoading">
                     <tr data-ng-repeat="agent in StatsEasyHuntingCtrl.agentsStatusPaginated track by agent.agentId">
-                        <td data-title="{{:: 'telephony_alias_configuration_mode_calls_agent' | translate }}">
+                        <th scope="row" data-title="{{:: 'telephony_alias_configuration_mode_calls_agent' | translate }}">
                             <span class="text-nowrap right-space-m16" data-ng-bind="agent.agentId"></span>
-                        </td>
+                        </th>
                         <td data-title="{{:: 'telephony_alias_configuration_mode_calls_agent_status' | translate }}">
                             <span class="text-nowrap right-space-m16" data-ng-bind="'telephony_alias_configuration_mode_calls_agent_status_' + agent.status | translate"></span>
                         </td>

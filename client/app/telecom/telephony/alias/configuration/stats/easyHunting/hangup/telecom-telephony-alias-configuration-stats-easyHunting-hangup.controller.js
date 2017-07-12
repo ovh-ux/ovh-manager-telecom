@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationStatsEasyHuntingHangupCtrl", function ($scope, $uibModalInstance, $translate, Telephony, Toast, params) {
+angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationStatsEasyHuntingHangupCtrl", function ($uibModalInstance, $translate, Telephony, Toast, params) {
     "use strict";
 
     var self = this;
