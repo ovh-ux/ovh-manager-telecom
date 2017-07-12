@@ -1,169 +1,171 @@
-angular.module("managerApp").controller("XdslAccessCtrl",
-    function ($scope, $stateParams, Xdsl, XdslTasksCurrent, XdslAvailableLns, XdslLines, XdslNotifications, XdslModem, XdslIps, PackXdsl, $uibModal, $q, $filter, $translate, ToastError, PACK_IP, REDIRECT_URLS, $templateCache) {
-        "use strict";
+angular.module("managerApp").controller("XdslAccessCtrl", function ($scope, $stateParams, $uibModal, $q, $filter, $translate, $templateCache, Xdsl, XdslTasksCurrent, XdslAvailableLns, XdslLines, XdslNotifications, XdslModem, XdslIps,
+                                                                    PackXdsl, ToastError, PACK_IP, REDIRECT_URLS) {
+    "use strict";
 
-        var self = this;
+    var self = this;
 
-        this.packName = $stateParams.packName;
+    this.packName = $stateParams.packName;
 
-        $scope.loaders = {
-            details: true,
-            tasks: true,
-            deconsolidation: true,
-            xdsl: true
-        };
+    $scope.loaders = {
+        details: true,
+        tasks: true,
+        deconsolidation: true,
+        xdsl: true
+    };
 
-        $scope.access = {
-            xdsl: null,
-            tasks: { current: {} }
-        };
+    $scope.access = {
+        xdsl: null,
+        tasks: { current: {} }
+    };
 
-        $scope.constants = {
-            rangeOfBaseIpv4IP: PACK_IP.baseIpv4Range
-        };
+    $scope.constants = {
+        rangeOfBaseIpv4IP: PACK_IP.baseIpv4Range
+    };
 
-        function init () {
-            self.number = $stateParams.number;
-            self.getLinesDetails();
+    function init () {
+        self.number = $stateParams.number;
+        self.getLinesDetails();
 
-            $templateCache.put("pack-xdsl-access-tooltip-mac.html", "<div class=\"tooltip-description\" data-translate=\"xdsl_details_mac_address_description\"></div>");
-            $templateCache.put("pack-xdsl-access-tooltip-dslam.html", "<div class=\"tooltip-description\" data-translate=\"xdsl_access_dslam_reset_description\"></div><div class=\"text-warning\" data-translate=\"xdsl_access_dslam_reset_warning\"></div>");
-            $templateCache.put("pack-xdsl-access-tooltip-lnsApply.html", "<div class=\"tooltip-description\" data-translate=\"xdsl_access_lns_ratelimit_description\"></div><div class=\"text-warning\" data-translate=\"xdsl_access_lns_ratelimit_warning\"></div>");
-            $templateCache.put("pack-xdsl-access-tooltip-lns.html", "<div class=\"tooltip-description\" data-translate=\"xdsl_access_lns_description\"></div><div class=\"text-warning\" data-translate=\"xdsl_access_lns_warning\"></div>");
-            $templateCache.put("pack-xdsl-access-tooltip-deconsolidation.html", "<div class=\"tooltip-description\" data-ng-bind=\" ('xdsl_access_deconsolidation_warning_' + XdslAccess.lineDetails.deconsolidation) | translate\"></div>");
-            $templateCache.put("pack-xdsl-access-tooltip-ipDelete.html", "<div class=\"tooltip-description\" data-translate=\"xdsl_details_ips_remove_only_extra\"></div>");
-            $templateCache.put("pack-xdsl-access-tooltip-ips.html", "<div class=\"tooltip-description\" data-translate=\"xdsl_access_ipv6_description\"></div><div class=\"text-warning\" data-translate=\"xdsl_access_ipv6_warning\"></div>");
-            $templateCache.put("pack-xdsl-access-tooltip-dslamProfile.html", "<div class=\"text-left\"><p data-translate=\"xdsl_access_profile_tooltip_interleaved\"></p><p data-translate=\"xdsl_access_profile_tooltip_fast\"></p><p data-translate=\"xdsl_access_profile_tooltip_ginp\"></p><p data-translate=\"xdsl_access_profile_tooltip_auto\"></p><p data-translate=\"xdsl_access_profile_tooltip_snr\"></p><p class=\"text-warning\" data-translate=\"xdsl_access_profile_tooltip_time\"></p></div>");
+        /* eslint-disable max-len */
+        $templateCache.put("pack-xdsl-access-tooltip-mac.html", "<div class=\"tooltip-description\" data-translate=\"xdsl_details_mac_address_description\"></div>");
+        $templateCache.put("pack-xdsl-access-tooltip-dslam.html", "<div class=\"tooltip-description\" data-translate=\"xdsl_access_dslam_reset_description\"></div><div class=\"text-warning\" data-translate=\"xdsl_access_dslam_reset_warning\"></div>");
+        $templateCache.put("pack-xdsl-access-tooltip-lnsApply.html", "<div class=\"tooltip-description\" data-translate=\"xdsl_access_lns_ratelimit_description\"></div><div class=\"text-warning\" data-translate=\"xdsl_access_lns_ratelimit_warning\"></div>");
+        $templateCache.put("pack-xdsl-access-tooltip-lns.html", "<div class=\"tooltip-description\" data-translate=\"xdsl_access_lns_description\"></div><div class=\"text-warning\" data-translate=\"xdsl_access_lns_warning\"></div>");
+        $templateCache.put("pack-xdsl-access-tooltip-deconsolidation.html", "<div class=\"tooltip-description\" data-ng-bind=\" ('xdsl_access_deconsolidation_warning_' + XdslAccess.lineDetails.deconsolidation) | translate\"></div>");
+        $templateCache.put("pack-xdsl-access-tooltip-ipDelete.html", "<div class=\"tooltip-description\" data-translate=\"xdsl_details_ips_remove_only_extra\"></div>");
+        $templateCache.put("pack-xdsl-access-tooltip-ips.html", "<div class=\"tooltip-description\" data-translate=\"xdsl_access_ipv6_description\"></div><div class=\"text-warning\" data-translate=\"xdsl_access_ipv6_warning\"></div>");
+        $templateCache.put("pack-xdsl-access-tooltip-dslamProfile.html", "<div class=\"text-left\"><p data-translate=\"xdsl_access_profile_tooltip_interleaved\"></p><p data-translate=\"xdsl_access_profile_tooltip_fast\"></p><p data-translate=\"xdsl_access_profile_tooltip_ginp\"></p><p data-translate=\"xdsl_access_profile_tooltip_auto\"></p><p data-translate=\"xdsl_access_profile_tooltip_snr\"></p><p class=\"text-warning\" data-translate=\"xdsl_access_profile_tooltip_time\"></p></div>");
+        /* eslint-enable max-len */
+    }
+
+    function setStatusLabel (status) {
+        switch (status) {
+        case "active":
+            self.statusLabel = "<span class=\"ovh-font ovh-font-success text-success fs16 right-space-m8\" aria-hidden=\"true\"></span> " + $translate.instant("xdsl_details_status_" + status);
+            break;
+        case "doing":
+        case "migration":
+        case "upgradeOffer":
+            self.statusLabel = "<span class=\"ovh-font ovh-font-success text-success fs16 right-space-m8\" aria-hidden=\"true\"></span> " + $translate.instant("xdsl_details_status_" + status);
+            break;
+        case "cancelled":
+        case "close":
+        case "deleting":
+        case "slamming":
+            self.statusLabel = "<span class=\"ovh-font ovh-font-failure text-danger fs16 right-space-m8\" aria-hidden=\"true\"></span> " + $translate.instant("xdsl_details_status_" + status);
+            break;
+        default :
+            self.statusLabel = status;
         }
+    }
 
-        function setStatusLabel (status) {
-            switch (status) {
-                case "active":
-                    self.statusLabel = "<span class=\"ovh-font ovh-font-success text-success fs16 right-space-m8\" aria-hidden=\"true\"></span> " + $translate.instant("xdsl_details_status_" + status);
-                    break;
-                case "doing":
-                case "migration":
-                case "upgradeOffer":
-                    self.statusLabel = "<span class=\"ovh-font ovh-font-success text-success fs16 right-space-m8\" aria-hidden=\"true\"></span> " + $translate.instant("xdsl_details_status_" + status);
-                    break;
-                case "cancelled":
-                case "close":
-                case "deleting":
-                case "slamming":
-                    self.statusLabel = "<span class=\"ovh-font ovh-font-failure text-danger fs16 right-space-m8\" aria-hidden=\"true\"></span> " + $translate.instant("xdsl_details_status_" + status);
-                    break;
-                default :
-                    self.statusLabel = status;
+    function error (err) {
+        if (!_.isEmpty(err)) {
+            ToastError(err);
+        }
+        $scope.loaders.tasks = false;
+    }
+
+    function success (result) {
+        if (result.success) {
+            if ($scope.access.tasks.current.pendingOrderAdditionalIpOption && !result.data.pendingOrderAdditionalIpOption) {
+                self.getIps();
+                self.ordering = false;
             }
+            $scope.access.tasks.current = result.data;
+        } else {
+            error(result);
         }
+        $scope.loaders.tasks = false;
+    }
 
-        function error (err) {
-            if (!_.isEmpty(err)) {
-                new ToastError(err);
-            }
-            $scope.loaders.tasks = false;
-        }
+    function pollTasks () {
+        XdslTasksCurrent.Aapi().poll($scope, {
+            xdslId: $stateParams.serviceName
+        }).then(
+            success,
+            error,
+            success
+        );
+    }
 
-        function success (result) {
-            if (result.success) {
-                if (($scope.access.tasks.current.pendingOrderAdditionalIpOption) && (!result.data.pendingOrderAdditionalIpOption)) {
-                    self.getIps();
-                    self.ordering = false;
-                }
-                $scope.access.tasks.current = result.data;
-            } else {
-                error(result);
-            }
-            $scope.loaders.tasks = false;
-        }
+    this.getOldV6TransfertUrl = function () {
+        return REDIRECT_URLS.oldV6ServiceTransfert;
+    };
 
-        function pollTasks () {
-            XdslTasksCurrent.Aapi().poll($scope, {
-                xdslId: $stateParams.serviceName
-            }).then(
-                success,
-                error,
-                success
-            );
-        }
-
-        this.getOldV6TransfertUrl = function () {
-            return REDIRECT_URLS.oldV6ServiceTransfert;
-        };
-
-        this.getIps = function () {
-            return XdslIps.Aapi().ips({
-                xdslId: $stateParams.serviceName
-            }).$promise.then(function (ips) {
-                    self.ips = ips;
-                    self.ipsV6 = $filter("filter")(ips, { version: "v6" });
-                    self.ipsV4 = $filter("filter")(ips, { version: "v4" });
-                    ips.forEach(function (ip) {
-                        ip.getBlock = function () {
-                            return this.ip + "/" + this.range;
-                        };
-                    });
-                }, ToastError);
-        };
-
-        this.canOrderIps = function () {
-            return _.filter(self.ipsV4, function (ip) {
-                return ip.range !== PACK_IP.baseIpv4Range;
-            }).length === 0;
-        };
-
-        this.orderIps = function () {
-            var modal = $uibModal.open({
-                animation: true,
-                templateUrl: "app/telecom/pack/xdsl/access/ip/order/pack-xdsl-access-ip-order.modal.html",
-                controller: "XdslAccessIpOrderCtrl",
-                controllerAs: "ctrl",
-                resolve: {
-                    data: function () {
-                        return {
-                            xdslId: $stateParams.serviceName
-                        };
-                    }
-                }
+    this.getIps = function () {
+        return XdslIps.Aapi().ips({
+            xdslId: $stateParams.serviceName
+        }).$promise.then(function (ips) {
+            self.ips = ips;
+            self.ipsV6 = $filter("filter")(ips, { version: "v6" });
+            self.ipsV4 = $filter("filter")(ips, { version: "v4" });
+            ips.forEach(function (ip) {
+                ip.getBlock = function () {
+                    return this.ip + "/" + this.range;
+                };
             });
-            modal.result.then(function (result) {
-                $scope.access.tasks.current[result.function] = true;
-            });
-        };
+        }, ToastError);
+    };
 
-        this.deleteIps = function (ip) {
-            ip.deleting = true;
-            XdslIps.Lexi().unOrder({
-                xdslId: $stateParams.serviceName,
-                ip: ip.ip
-            }, null).$promise.then(function () {
-                    self.getIps();
-                    ip.deleting = false;
-                }, function (err) {
-                    ip.deleting = false;
-                    new ToastError(err);
-                });
+    this.canOrderIps = function () {
+        return _.filter(self.ipsV4, function (ip) {
+            return ip.range !== PACK_IP.baseIpv4Range;
+        }).length === 0;
+    };
 
-        };
-
-        $scope.notificationsChanged = function (elements) {
-            if ($scope.access) {
-                $scope.access.notificationsCount = elements.length;
+    this.orderIps = function () {
+        var modal = $uibModal.open({
+            animation: true,
+            templateUrl: "app/telecom/pack/xdsl/access/ip/order/pack-xdsl-access-ip-order.modal.html",
+            controller: "XdslAccessIpOrderCtrl",
+            controllerAs: "ctrl",
+            resolve: {
+                data: function () {
+                    return {
+                        xdslId: $stateParams.serviceName
+                    };
+                }
             }
-        };
+        });
+        modal.result.then(function (result) {
+            $scope.access.tasks.current[result.function] = true;
+        });
+    };
 
-        this.getLinesDetails = function () {
+    this.deleteIps = function (ip) {
+        ip.deleting = true;
+        XdslIps.Lexi().unOrder({
+            xdslId: $stateParams.serviceName,
+            ip: ip.ip
+        }, null).$promise.then(function () {
+            self.getIps();
+            ip.deleting = false;
+        }, function (err) {
+            ip.deleting = false;
+            ToastError(err);
+        });
 
-            $scope.loaders.details = true;
-            $scope.loaders.tasks = true;
+    };
 
-            self.transfert = {};
+    $scope.notificationsChanged = function (elements) {
+        if ($scope.access) {
+            $scope.access.notificationsCount = elements.length;
+        }
+    };
 
-            pollTasks();
+    this.getLinesDetails = function () {
 
-            $q.allSettled(
+        $scope.loaders.details = true;
+        $scope.loaders.tasks = true;
+
+        self.transfert = {};
+
+        pollTasks();
+
+        $q.allSettled(
             [
-                //Get access Details
+                // Get access Details
                 Xdsl.Lexi().get({
                     xdslId: $stateParams.serviceName
                 }).$promise.then(function (access) {
@@ -180,18 +182,17 @@ angular.module("managerApp").controller("XdslAccessCtrl",
                             }
                             $scope.access.xdsl.lns = availableLns;
                             return $scope.access.xdsl;
-                        }, function () {
                         });
-                    } else {
-                        return $scope.access.xdsl;
                     }
+                    return $scope.access.xdsl;
+
 
                 }, function (err) {
                     $scope.loaders.xdsl = false;
-                    new ToastError(err);
+                    return new ToastError(err);
                 }),
 
-                //Get line details
+                // Get line details
                 XdslLines.Lexi().get({
                     xdslId: $stateParams.serviceName,
                     number: $stateParams.number
@@ -201,10 +202,10 @@ angular.module("managerApp").controller("XdslAccessCtrl",
                     $scope.loaders.deconsolidation = false;
                 }, function (err) {
                     $scope.loaders.deconsolidation = false;
-                    new ToastError(err);
+                    return new ToastError(err);
                 }),
 
-                //Get MAC Address
+                // Get MAC Address
                 XdslModem.Lexi().get(
                     {
                         xdslId: $stateParams.serviceName
@@ -216,7 +217,7 @@ angular.module("managerApp").controller("XdslAccessCtrl",
                         if (err.status === 404) {
                             return;
                         }
-                        return new ToastError(err);
+                        ToastError(err);
                     }
                 ),
 
@@ -258,13 +259,13 @@ angular.module("managerApp").controller("XdslAccessCtrl",
             ]).finally(function () {
                 $scope.loaders.details = false;
             });
-        };
+    };
 
-        $scope.$on("changeAccessNameEvent", function (event, data) {
-            if ($scope.access.xdsl.accessName === data.xdslId) {
-                $scope.access.xdsl.description = data.description;
-            }
-        });
-
-        init();
+    $scope.$on("changeAccessNameEvent", function (event, data) {
+        if ($scope.access.xdsl.accessName === data.xdslId) {
+            $scope.access.xdsl.description = data.description;
+        }
     });
+
+    init();
+});
