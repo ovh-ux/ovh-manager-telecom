@@ -1,6 +1,6 @@
 {
   "name": "ovh-manager-telecom",
-  "version": "6.6.41",
+  "version": "6.6.42",
   "description": "OVH Control Panel Telecom UI",
   "main": "server/app.js",
   "dependencies": {
