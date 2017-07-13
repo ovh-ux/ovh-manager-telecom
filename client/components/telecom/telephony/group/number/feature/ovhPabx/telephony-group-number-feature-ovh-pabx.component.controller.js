@@ -52,7 +52,7 @@ angular.module("managerApp").controller("TelephonyNumberOvhPabxCtrl", function (
     /* ----------  Component initialization  ----------*/
 
     self.$onInit = function () {
-        var initPormises;
+        var initPromises;
 
         // set loading
         self.numberCtrl.loading.feature = true;
@@ -61,23 +61,23 @@ angular.module("managerApp").controller("TelephonyNumberOvhPabxCtrl", function (
         self.ovhPabx = self.numberCtrl.number.feature;
 
         return getTranslations().then(function () {
-            initPormises = [
+            initPromises = [
                 self.ovhPabx.getDialplans(),
                 self.ovhPabx.getSounds(),
                 TelephonyMediator.getAll()
             ];
 
             if (self.ovhPabx.featureType === "cloudIvr" || (self.ovhPabx.isCCS && self.ovhPabx.featureType === "cloudHunting")) {
-                initPormises.push(self.ovhPabx.getMenus());
+                initPromises.push(self.ovhPabx.getMenus());
             }
             if (self.ovhPabx.featureType === "cloudHunting") {
-                initPormises.push(self.ovhPabx.getQueues());
+                initPromises.push(self.ovhPabx.getQueues());
                 if (self.ovhPabx.isCCS) {
-                    initPormises.push(self.ovhPabx.getTts());
+                    initPromises.push(self.ovhPabx.getTts());
                 }
             }
 
-            return $q.allSettled(initPormises);
+            return $q.allSettled(initPromises);
         }).then(function () {
             self.refreshDisplayedDialplan();
         }).finally(function () {

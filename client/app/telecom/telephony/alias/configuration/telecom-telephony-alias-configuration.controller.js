@@ -28,7 +28,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationCtrl"
             if (self.number.feature.featureType === "cloudHunting") {
                 // add link for upgrade to "CCS expert" for "File d'appel expert"
                 if (!self.number.feature.isCCS) {
-                    ovhPabxActions.splice(0, 0, {
+                    ovhPabxActions.unshift({
                         name: "number_cloud_hunting_beta",
                         url: TelephonyMediator.getV6ToV4RedirectionUrl("alias.number_cloud_hunting_beta"),
                         text: $translate.instant("telephony_alias_configuration_actions_number_cloud_hunting_beta")
@@ -112,9 +112,6 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationCtrl"
                     text: $translate.instant("telephony_alias_configuration_actions_number_hunting_mode")
                 }, {
                     name: "number_easy_hunting_members",
-
-                    // url: TelephonyMediator.getV6ToV4RedirectionUrl("alias.number_easy_hunting_members"),
-                    // uncomment this line when deblocked by API
                     sref: "telecom.telephony.alias.configuration.members.easyHunting",
                     text: $translate.instant("telephony_alias_configuration_actions_number_hunting_members")
                 }, {
@@ -144,7 +141,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationCtrl"
                     });
                 } else {
                     // if not a CSS: add possibility to upgrade to
-                    easyHuntingActions.splice(0, 0, {
+                    easyHuntingActions.unshift({
                         name: "number_easy_hunting_beta",
                         url: TelephonyMediator.getV6ToV4RedirectionUrl("alias.number_cloud_hunting_beta"),
                         text: $translate.instant("telephony_alias_configuration_actions_number_hunting_beta")
@@ -157,60 +154,6 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationCtrl"
                     url: TelephonyMediator.getV6ToV4RedirectionUrl("alias.number_manage_conference"),
                     text: $translate.instant("telephony_alias_configuration_actions_number_manage_conference")
                 }];
-
-            // EASY AND MINI PABX ARE NO MORE USED
-            // case "easyPabx":
-            //     return [{
-            //         name: "number_easy_pabx_mode",
-            //         url: TelephonyMediator.getV6ToV4RedirectionUrl("alias.number_easy_pabx_mode"),
-            //         text: $translate.instant("telephony_alias_configuration_actions_number_hunting_mode")
-            //     }, {
-            //         name: "number_easy_pabx_members",
-            //         url: TelephonyMediator.getV6ToV4RedirectionUrl("alias.number_easy_pabx_members"),
-            //         text: $translate.instant("telephony_alias_configuration_actions_number_hunting_members")
-            //     }, {
-            //         name: "number_easy_pabx_music",
-            //         url: TelephonyMediator.getV6ToV4RedirectionUrl("alias.number_easy_pabx_music"),
-            //         text: $translate.instant("telephony_alias_configuration_actions_number_easy_pabx_music")
-            //     }, {
-            //         name: "number_easy_pabx_slots",
-            //         url: TelephonyMediator.getV6ToV4RedirectionUrl("alias.number_easy_pabx_slots"),
-            //         text: $translate.instant("telephony_alias_configuration_actions_number_hunting_slots")
-            //     }, {
-            //         name: "number_easy_pabx_events",
-            //         url: TelephonyMediator.getV6ToV4RedirectionUrl("alias.number_easy_pabx_events"),
-            //         text: $translate.instant("telephony_alias_configuration_actions_number_hunting_events")
-            //     }, {
-            //         name: "number_easy_pabx_filtering",
-            //         url: TelephonyMediator.getV6ToV4RedirectionUrl("alias.number_easy_pabx_filtering"),
-            //         text: $translate.instant("telephony_alias_configuration_actions_number_hunting_filtering")
-            //     }];
-            // case "miniPabx":
-            //     return [{
-            //         name: "number_mini_pabx_mode",
-            //         url: TelephonyMediator.getV6ToV4RedirectionUrl("alias.number_mini_pabx_mode"),
-            //         text: $translate.instant("telephony_alias_configuration_actions_number_hunting_mode")
-            //     }, {
-            //         name: "number_mini_pabx_members",
-            //         url: TelephonyMediator.getV6ToV4RedirectionUrl("alias.number_mini_pabx_members"),
-            //         text: $translate.instant("telephony_alias_configuration_actions_number_hunting_members")
-            //     }, {
-            //         name: "number_mini_pabx_music",
-            //         url: TelephonyMediator.getV6ToV4RedirectionUrl("alias.number_mini_pabx_music"),
-            //         text: $translate.instant("telephony_alias_configuration_actions_number_easy_pabx_music")
-            //     }, {
-            //         name: "number_mini_pabx_slots",
-            //         url: TelephonyMediator.getV6ToV4RedirectionUrl("alias.number_mini_pabx_slots"),
-            //         text: $translate.instant("telephony_alias_configuration_actions_number_hunting_slots")
-            //     }, {
-            //         name: "number_mini_pabx_events",
-            //         url: TelephonyMediator.getV6ToV4RedirectionUrl("alias.number_mini_pabx_events"),
-            //         text: $translate.instant("telephony_alias_configuration_actions_number_hunting_events")
-            //     }, {
-            //         name: "number_mini_pabx_filtering",
-            //         url: TelephonyMediator.getV6ToV4RedirectionUrl("alias.number_mini_pabx_filtering"),
-            //         text: $translate.instant("telephony_alias_configuration_actions_number_hunting_filtering")
-            //     }];
             default:
                 return [];
             }

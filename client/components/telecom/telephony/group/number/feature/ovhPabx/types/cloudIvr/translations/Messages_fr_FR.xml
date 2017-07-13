@@ -14,5 +14,5 @@
 
 <!-- SHOW CALLER NUMBER -->
     <translation id="telephony_number_feature_ovh_pabx_dialplan_show_caller_number_alias">Le numéro du SVI</translation>
-    <translation id="telephony_number_feature_ovh_pabx_dialplan_show_caller_number_alias_explain">Le téléphone cible (qui reçoit l'appel) verra sur son écran le numéro de la ligne qui compose le numéro du SVI (ligne qui appelle).</translation>
+    <translation id="telephony_number_feature_ovh_pabx_dialplan_show_caller_number_alias_explain">Le téléphone cible (qui reçoit l'appel) verra sur son écran le numéro de la ligne qui compose le numéro du SVI (ligne appelante).</translation>
 </translations>

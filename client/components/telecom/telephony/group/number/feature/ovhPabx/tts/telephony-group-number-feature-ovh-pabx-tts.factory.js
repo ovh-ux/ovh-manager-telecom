@@ -71,7 +71,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberOvhPabxTts", function 
             self.status = "OK";
             return self;
         }).catch(function (error) {
-            // if cration fail - back to DRAFT status
+            // if creation fail - back to DRAFT status
             self.status = "DRAFT";
             return $q.reject(error);
         });

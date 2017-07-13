@@ -50,7 +50,9 @@
                     <button type="button"
                             class="btn btn-primary bottom-space-m16"
                             data-ng-click="$ctrl.state.collapse = true">
-                        <i class="ovh-font ovh-font-ajouter inline-block vertical-middle"></i>
+                        <i class="ovh-font ovh-font-ajouter inline-block vertical-middle"
+                           aria-hidden="true">
+                        </i>
                         <span class="inline-block vertical-middle left-space-p4"
                               data-translate="telephony_alias_ovh_pabx_tts_add">
                         </span>
@@ -151,14 +153,18 @@
                                         <button type="button"
                                                 class="btn btn-default"
                                                 data-ng-click="tts.status = 'OK'">
-                                            <i class="ovh-font ovh-font-wrong right-space-m8"></i>
+                                            <i class="ovh-font ovh-font-wrong right-space-m8"
+                                               aria-hidden="true">
+                                            </i>
                                             <span data-translate="cancel"></span>
                                         </button>
 
                                         <button type="button"
                                                 class="btn btn-danger"
                                                 data-ng-click="$ctrl.onTtsDeleteBtnClick(tts)">
-                                            <i class="ovh-font ovh-font-bin right-space-m8"></i>
+                                            <i class="ovh-font ovh-font-bin right-space-m8"
+                                               aria-hidden="true">
+                                            </i>
                                             <span data-translate="delete"></span>
                                             <spinner name="bubbles-fff-d34936-16"
                                                      data-ng-show="tts.status === 'DELETING'">
@@ -171,7 +177,9 @@
                                                 class="btn-actions-list"
                                                 data-ng-click="tts.status = 'PENDING_DELETE'"
                                                 data-translate-attr="{ title: 'telephony_number_feature_ovh_pabx_menu_delete_title' }">
-                                            <i class="ovh-font ovh-font-bin"></i>
+                                            <i class="ovh-font ovh-font-bin"
+                                               aria-hidden="true">
+                                            </i>
                                         </button>
                                     </div>
                                 </td>
