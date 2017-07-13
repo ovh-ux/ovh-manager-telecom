@@ -130,7 +130,7 @@
                               data-translate="telephony_number_feature_ovh_pabx_menu_options_no_sound_selected">
                         </span>
                         <span class="block elipse no-wrap"
-                              data-ng-if="$ctrl.menu.invalidSound ||$ctrl.menu.invalidSoundTts"
+                              data-ng-if="$ctrl.menu.invalidSound || $ctrl.menu.invalidSoundTts"
                               data-ng-bind="$ctrl.getSoundInfos($ctrl.model.invalidSoundType === 'sound' ? 'invalidSound' : 'invalidSoundTts')"
                               data-ng-attr-title="{{ $ctrl.getSoundInfos($ctrl.model.invalidSoundType === 'sound' ? 'invalidSound' : 'invalidSoundTts') }}">
                         </span>
@@ -147,7 +147,7 @@
             <footer class="clearfix double-choice">
                 <button type="submit"
                         class="btn btn-primary"
-                        data-ng-disabled="!$ctrl.menu.hasChange() || !$ctrl.isMenuValid() || $ctrl.isFormValid()"
+                        data-ng-disabled="!$ctrl.menu.hasChange() || !$ctrl.isMenuValid() || !$ctrl.isFormValid()"
                         data-translate="{{ $ctrl.menu.status === 'DRAFT' ? 'common_create' : 'modify' }}"
                         data-ng-click="$ctrl.onValidateBtnClick()">
                 </button>
@@ -167,7 +167,7 @@
             <header>
                 <button type="button"
                         class="back-btn no-style no-space fs20"
-                        data-ng-click="$ctrl.menuCtrl.popoverStatus.move = false"
+                        data-ng-click="$ctrl.menuCtrl.popoverStatus.move = false; $ctrl.state.collapse = false"
                         data-translate-attr="{ title: 'back' }">
                     <i class="ovh-font ovh-font-arrow-left"></i>
                 </button>

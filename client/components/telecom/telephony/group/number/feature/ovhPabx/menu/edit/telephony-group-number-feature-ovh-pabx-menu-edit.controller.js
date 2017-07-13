@@ -59,6 +59,9 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxMenuEditCtrl", fu
 
     self.isMenuValid = function () {
         if (self.menu.greetSound || self.menu.greetSoundTts) {
+            if (self.model.invalidSoundType !== "none" && !self.menu.invalidSound && !self.menu.invalidSoundTts) {
+                return false;
+            }
             return true;
         }
 
@@ -68,10 +71,9 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxMenuEditCtrl", fu
     self.isFormValid = function () {
         var ttsForm = _.get(self.menuOptionsForm, "$ctrl.ttsCreateForm");
         if (ttsForm) {
-            return self.menuOptionsForm.$valid && (ttsForm.$valid || ttsForm.$invalid);
+            return ttsForm.$dirty ? self.menuOptionsForm.$valid : true;
         }
-
-        return self.menuOptionsForm;
+        return self.menuOptionsForm.$valid;
     };
 
     /* -----  End of HELPERS  ------*/
@@ -179,6 +181,10 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxMenuEditCtrl", fu
 
     /* ----------  Tts sound  ----------*/
 
+    self.onAddTtsButtonClick = function () {
+        self.state.collapse = true;
+    };
+
     self.onTtsCreationCancel = function () {
         self.state.collapse = false;
     };
@@ -212,7 +218,7 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxMenuEditCtrl", fu
         // set invalid sound type
         if (self.menu.invalidSoundTts) {
             self.model.invalidSoundType = "tts";
-        } else if (self.invalidSound) {
+        } else if (self.invalidSound || !self.menuCtrl.ovhPabx.isTtsAvailable()) {
             self.model.invalidSoundType = "sound";
         } else {
             self.model.invalidSoundType = "none";

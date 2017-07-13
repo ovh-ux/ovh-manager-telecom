@@ -295,7 +295,7 @@
             <footer class="clearfix double-choice">
                 <button type="submit"
                         class="btn btn-primary"
-                        data-ng-disabled="!$ctrl.rule.hasChange() || !$ctrl.isRuleValid() || $ctrl.isFormValid()"
+                        data-ng-disabled="!$ctrl.rule.hasChange() || !$ctrl.isRuleValid() || !$ctrl.isFormValid()"
                         data-translate="{{ $ctrl.rule.status === 'DRAFT' ? 'common_create' : 'modify' }}"
                         data-ng-click="$ctrl.onValidateBtnClick()">
                 </button>

@@ -36,7 +36,10 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxDialplanExtension
 
     self.isFormValid = function () {
         var ttsForm = _.get(self.extensionRuleForm, "$ctrl.ttsCreateForm");
-        return ttsForm ? self.extensionRuleForm.$valid && (ttsForm.$valid || ttsForm.$invalid) : self.extensionRuleForm;
+        if (ttsForm) {
+            return ttsForm.$dirty ? self.extensionRuleForm.$valid : true;
+        }
+        return self.extensionRuleForm.$valid;
     };
 
     /**

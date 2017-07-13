@@ -209,11 +209,11 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxMenuCtrl", functi
         self.parentCtrl = self.menuCtrl || self.extensionCtrl || {};
 
         // set controller uuid
-        self.uuid = _.uniqueId("ovhPabx_menu_".concat(self.menu.menuId));
+        self.uuid = _.uniqueId("ovhPabx_menu_".concat(_.get(self.menu, "menuId", "")));
 
-        if (self.menu.status !== "DRAFT") {
+        initPromises.tts = self.ovhPabx.getTts();
+        if (self.menu && self.menu.status !== "DRAFT") {
             initPromises.entries = self.menu.getEntries();
-            initPromises.tts = self.ovhPabx.getTts();
         }
 
         return $q.all(initPromises).finally(function () {
