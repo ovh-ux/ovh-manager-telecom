@@ -99,7 +99,7 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxTtsCreateCtrl", f
 
     self.$onInit = function () {
         if (!self.numberCtrl && !self.ovhPabx) {
-            throw new Error("telephonyNumberOvhPabxTtsList must have telephonyNumber component as parent or must have ovhPabx attribute specified");
+            throw new Error("telephonyNumberOvhPabxTtsCreate must have telephonyNumber component as parent or must have ovhPabx attribute specified");
         }
 
         self.loading.init = true;

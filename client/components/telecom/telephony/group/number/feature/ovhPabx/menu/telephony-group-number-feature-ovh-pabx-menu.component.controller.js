@@ -172,7 +172,9 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxMenuCtrl", functi
     function getTranslations () {
         self.loading.translations = true;
 
+        $translatePartialLoader.addPart("../components/telecom/telephony/group/number/feature/ovhPabx");
         $translatePartialLoader.addPart("../components/telecom/telephony/group/number/feature/ovhPabx/menu");
+        $translatePartialLoader.addPart("../components/telecom/telephony/group/number/feature/ovhPabx/tts");
         return $translate.refresh().finally(function () {
             self.loading.translations = false;
         });
@@ -211,6 +213,7 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxMenuCtrl", functi
 
         if (self.menu.status !== "DRAFT") {
             initPromises.entries = self.menu.getEntries();
+            initPromises.tts = self.ovhPabx.getTts();
         }
 
         return $q.all(initPromises).finally(function () {

@@ -4,13 +4,20 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxMenuEditCtrl", fu
     var self = this;
 
     self.model = {
-        soundFile: null
+        soundFile: null,
+        greetSoundType: null,
+        invalidSoundType: null
+    };
+
+    self.state = {
+        collapse: false
     };
 
     self.menuCtrl = null;
     self.ovhPabx = null;
     self.menu = null;
     self.uploadErrors = null;
+    self.availableSoundTypes = ["sound", "tts"];
 
     /*= ==============================
     =            HELPERS            =
@@ -21,9 +28,9 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxMenuEditCtrl", fu
     };
 
     self.getSoundInfos = function (soundType) {
-        return _.find(self.menuCtrl.ovhPabx.sounds, {
-            soundId: _.get(self.menu, soundType)
-        });
+        var isTts = ["greetSoundTts", "invalidSoundTts"].indexOf(soundType) > -1;
+
+        return !isTts ? _.get(self.menuCtrl.ovhPabx.getSound(_.get(self.menu, soundType)), "name") : _.get(self.menuCtrl.ovhPabx.getSingleTts(_.get(self.menu, soundType)), "text");
     };
 
     self.soundListModel = function (soundId) {
@@ -51,7 +58,20 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxMenuEditCtrl", fu
     };
 
     self.isMenuValid = function () {
-        return !!self.menu.greetSound;
+        if (self.menu.greetSound || self.menu.greetSoundTts) {
+            return true;
+        }
+
+        return false;
+    };
+
+    self.isFormValid = function () {
+        var ttsForm = _.get(self.menuOptionsForm, "$ctrl.ttsCreateForm");
+        if (ttsForm) {
+            return self.menuOptionsForm.$valid && (ttsForm.$valid || ttsForm.$invalid);
+        }
+
+        return self.menuOptionsForm;
     };
 
     /* -----  End of HELPERS  ------*/
@@ -123,6 +143,24 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxMenuEditCtrl", fu
         });
     };
 
+    /* ----------  Greet sound type  ----------*/
+
+    self.onSoundTypeChoiceButtonClick = function (soundType) {
+        self.menuCtrl.popoverStatus.move = true;
+        self.menuCtrl.popoverStatus.rightPage = soundType;
+    };
+
+    self.onSoudTypeChange = function () {
+        if (self.menuCtrl.popoverStatus.rightPage === "greetSoundType") {
+            self.menu.greetSound = null;
+            self.menu.greetSoundTts = null;
+        } else if (self.menuCtrl.popoverStatus.rightPage === "invalidSoundType") {
+            self.menu.invalidSound = null;
+            self.menu.invalidSoundTts = null;
+        }
+        self.menuCtrl.popoverStatus.move = false;
+    };
+
     /* ----------  Sound file selection  ----------*/
 
     self.onSoundChoiceButtonClick = function (soundType) {
@@ -139,6 +177,18 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxMenuEditCtrl", fu
         }
     };
 
+    /* ----------  Tts sound  ----------*/
+
+    self.onTtsCreationCancel = function () {
+        self.state.collapse = false;
+    };
+
+    self.onTtsCreationSuccess = function (tts) {
+        _.set(self.menuCtrl.menu, self.menuCtrl.popoverStatus.rightPage, tts.id);
+        self.state.collapse = false;
+        self.menuCtrl.popoverStatus.move = false;
+    };
+
     /* -----  End of EVENTS  ------*/
 
     /*= =====================================
@@ -150,6 +200,23 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxMenuEditCtrl", fu
 
         // set menu to edit
         self.menu = self.menuCtrl.menu;
+
+        // set sound types
+        // set greet sound type
+        if (self.menu.greetSoundTts) {
+            self.model.greetSoundType = "tts";
+        } else {
+            self.model.greetSoundType = "sound";
+        }
+
+        // set invalid sound type
+        if (self.menu.invalidSoundTts) {
+            self.model.invalidSoundType = "tts";
+        } else if (self.invalidSound) {
+            self.model.invalidSoundType = "sound";
+        } else {
+            self.model.invalidSoundType = "none";
+        }
 
         // start menu edition
         self.menu.startEdition();

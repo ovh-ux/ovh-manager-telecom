@@ -64,6 +64,14 @@ angular.module("managerApp").factory("TelephonyGroupNumberOvhPabx", function ($q
         return self;
     };
 
+    /* ----------  HELPERS  ----------*/
+
+    TelephonyGroupNumberOvhPabx.prototype.isTtsAvailable = function () {
+        var self = this;
+
+        return self.isCCS;
+    };
+
     /* ----------  EDITION  ----------*/
 
     TelephonyGroupNumberOvhPabx.prototype.startEdition = function () {
@@ -102,6 +110,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberOvhPabx", function ($q
         }
         return self.hasChange("featureType");
     };
+
 
     /* ----------  SCHEDULER  ----------*/
 
@@ -174,9 +183,8 @@ angular.module("managerApp").factory("TelephonyGroupNumberOvhPabx", function ($q
 
     /* ----------  SOUNDS  ----------*/
 
-    TelephonyGroupNumberOvhPabx.prototype.getSound = function (sound) {
+    TelephonyGroupNumberOvhPabx.prototype.getSound = function (soundId) {
         var self = this;
-        var soundId = sound.constructor.name === "TelephonyGroupNumberOvhPabxSound" ? sound.id : sound;
 
         return _.find(self.sounds, {
             soundId: soundId
