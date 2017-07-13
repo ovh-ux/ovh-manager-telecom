@@ -20,14 +20,10 @@ angular.module("managerApp").controller("TelecomSmsSendersAddCtrl", function ($q
     }
 
     self.getSelection = function () {
-        return _.filter(
-            _.union(
-                self.senders.availableForValidation.nichandle,
-                self.senders.availableForValidation.domains
-            ), function (sender) {
-            return sender && self.senders.availableForValidation.selected && self.senders.availableForValidation.selected[sender.sender];
-        }
-        );
+        var allSelectedSenders = _.union(self.senders.availableForValidation.nichandle, self.senders.availableForValidation.domains);
+        return _.filter(allSelectedSenders, function (sender) {
+            return self.senders.availableForValidation.selected && self.senders.availableForValidation.selected[sender.sender];
+        });
     };
 
     /* -----  End of HELPERS  ------*/
@@ -78,7 +74,8 @@ angular.module("managerApp").controller("TelecomSmsSendersAddCtrl", function ($q
             return Sms.Senders().Lexi().create({
                 serviceName: $stateParams.serviceName
             }, {
-                sender: sender.sender
+                sender: sender.sender,
+                reason: "sendersAvailableForValidation"
             }).$promise;
         });
         self.loading.adding = true;
