@@ -1,0 +1,147 @@
+angular.module("managerApp").controller("TelecomTelephonyAliasPortabilityOrderCtrl", function ($scope, $stateParams, $translate, $q, moment, TelephonyMediator, Order, ToastError) {
+    "use strict";
+
+    var self = this;
+
+
+    function init () {
+
+        // attributes shared by 'individual' and 'company' social reason
+        self.sharedAttributes = [
+            "billingAccount", "building", "callNumber", "city", "comment", "contactName",
+            "contactNumber", "country", "desireDate", "displayUniversalDirectory", "door",
+            "firstName", "floor", "groupNumber", "lineToRedirectAliasTo", "name", "offer",
+            "socialReason", "stair", "streetName", "streetNumber", "streetNumberExtra",
+            "streetType", "type", "zip"
+        ];
+
+        self.order = {
+            // default values
+            type: "landline",
+            sdatype: "all",
+            socialReason: "individual",
+            country: "france",
+            contactNumber: "",
+            translatedCountry: $translate.instant("telephony_alias_portability_order_contact_country_france"),
+            displayUniversalDirectory: false,
+            numbersList: []
+        };
+
+        self.stepsList = ["number", "contact", "config", "summary"];
+        self.step = "number";
+        self.minDate = moment().add(15, "days").toDate();
+        self.desireDatePickerOpened = false;
+
+        // reset contract when step changes
+        $scope.$watch("PortabilityOrderCtrl.step", function () {
+            self.order.isContractsAccepted = false;
+        });
+
+        $scope.$watch("PortabilityOrderCtrl.order", function () {
+            self.order.socialReason = self.order.type === "special" ? "corporation" : "individual";
+            self.order.offer = self.order.socialReason === "corporation" ? "company" : "individual";
+            self.order.contactName = self.order.name;
+        }, true);
+
+        // fetch list of billing accounts
+        return TelephonyMediator.getGroups().then(function (groups) {
+            self.billingAccounts = groups;
+            self.order.billingAccount = $stateParams.billingAccount;
+        }).catch(function (err) {
+            return new ToastError(err);
+        });
+    }
+
+    self.openDesireDatePicker = function (ev) {
+        ev.preventDefault();
+        ev.stopPropagation();
+        self.desireDatePickerOpened = true;
+    };
+
+    // select number corresponding country automatically
+    self.onNumberChange = function () {
+        var number = self.normalizeNumber(self.order.number);
+        if (_.startsWith(number, "0033")) {
+            self.order.country = "france";
+        } else if (_.startsWith(number, "0032")) {
+            self.order.country = "belgium";
+        } else if (_.startsWith(number, "0041")) {
+            self.order.country = "switzerland";
+        }
+        self.order.translatedCountry = $translate.instant("telephony_alias_portability_order_contact_country_" + self.order.country);
+    };
+
+    self.onChooseRedirectToLine = function (result) {
+        self.order.lineToRedirectAliasTo = result.serviceName;
+        self.order.lineToRedirectAliasToDescription = result.description;
+    };
+
+    // add sdaNumberToAdd number to numbersList
+    self.addSdaNumber = function () {
+        self.order.numbersList.push(self.order.sdaNumberToAdd);
+        self.order.numbersList = _.uniq(self.order.numbersList);
+        self.order.sdaNumberToAdd = null;
+    };
+
+    // remove given number from numbersList
+    self.removeSdaNumber = function (number) {
+        self.order.numbersList = _.pull(self.order.numbersList, number);
+    };
+
+    // normalize number : replace +33 by 0033
+    self.normalizeNumber = function (numberParam) {
+        var number = numberParam;
+        if (number) {
+            number = number.replace(/^\+/, "00");
+        }
+        return number;
+    };
+
+    self.getOrderParams = function () {
+        var params = _.pick(self.order, self.sharedAttributes);
+
+        if (params.socialReason === "individual") {
+            params = _.assign(params, _.pick(self.order, "rio"));
+        } else {
+            params = _.assign(params, _.pick(self.order, "siret"));
+            params.firstName = "";
+        }
+
+        if (params.type === "special" && self.order.sdatype === "select" && self.order.numbersList.length) {
+            params.listNumbers = _.map(self.order.numbersList, self.normalizeNumber).join(",");
+        }
+
+        params.callNumber = self.normalizeNumber(params.callNumber);
+        params.contactNumber = self.normalizeNumber(params.contactNumber);
+        params.desireDate = moment(params.desireDate).format("Y-MM-DD");
+
+        return params;
+    };
+
+    self.fetchPriceAndContracts = function () {
+        self.step = "summary";
+        return Order.Telephony().Lexi().getPortability(self.getOrderParams()).$promise.then(function (result) {
+            self.details = result.details;
+            self.contracts = result.contracts;
+            self.prices = result.prices;
+        }).catch(function (err) {
+            return new ToastError(err);
+        });
+    };
+
+    self.submitOrder = function () {
+        self.order.isOrdering = true;
+        return Order.Telephony().Lexi().orderPortability({
+            billingAccount: self.order.billingAccount
+        }, self.getOrderParams()).$promise.then(function (result) {
+            self.order.url = result.url;
+            self.order.success = true;
+        }).catch(function (err) {
+            return new ToastError(err);
+        }).finally(function () {
+            self.order.isOrdering = false;
+        });
+    };
+
+    init();
+});
