@@ -7,8 +7,7 @@
                 data-translate="overTheBox_action_reboot_label">
         </button>
         <div class="btn-group" data-uib-dropdown>
-            <button id="single-button"
-                    type="button"
+            <button type="button"
                     class="btn btn-primary"
                     data-uib-dropdown-toggle>
                 <span data-translate="overTheBox_action_update_label"></span>
@@ -133,11 +132,14 @@
                                     <div flat-input-container>
                                         <div class="row">
                                             <div class="col-xs-8">
+                                                <label for="input-inline-deviceId"
+                                                       class="sr-only"
+                                                       data-translate="overTheBox_deviceId"></label>
                                                 <!-- list des items : OverTheBoxDetails.deviceIds -->
                                                 <input id="input-inline-deviceId"
                                                        name="input-inline-deviceId"
                                                        class="form-control"
-                                                       typeahead="deviceId for deviceId in OverTheBoxDetails.deviceIds"
+                                                       data-typeahead="deviceId for deviceId in OverTheBoxDetails.deviceIds"
                                                        data-ng-pattern="/[a-z0-9]{8}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{12}/"
                                                        data-ng-model="OverTheBoxDetails.deviceIdToLink" />
                                             </div>
