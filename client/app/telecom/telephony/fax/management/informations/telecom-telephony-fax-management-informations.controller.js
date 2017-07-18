@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyFaxManagementCtrl", function ($q, $stateParams, $translate, TelephonyMediator, Toast) {
+angular.module("managerApp").controller("TelecomTelephonyFaxManagementInformationsCtrl", function ($q, $stateParams, $translate, TelephonyMediator, Toast, NumberPlans) {
     "use strict";
 
     var self = this;
@@ -7,31 +7,21 @@ angular.module("managerApp").controller("TelecomTelephonyFaxManagementCtrl", fun
         init: false
     };
 
+    self.group = null;
     self.fax = null;
-    self.actions = null;
+    self.plan = null;
 
     /* =====================================
     =            INITIALIZATION            =
     ====================================== */
 
-    function initActions () {
-        var actions = [{
-            name: "fax_information",
-            main: true,
-            picto: "ovh-font-details",
-            sref: "telecom.telephony.fax.management.informations",
-            text: $translate.instant("telephony_group_fax_management_action_informations")
-        }];
-
-        self.actions = actions;
-    }
-
     self.$onInit = function () {
         self.loading.init = true;
 
         return TelephonyMediator.getGroup($stateParams.billingAccount).then(function (group) {
-            self.fax = group.getFax($stateParams.serviceName);
-            initActions();
+            self.group = group;
+            self.fax = self.group.getFax($stateParams.serviceName);
+            self.plan = NumberPlans.getPlanByNumber(self.fax);
         }).catch(function (error) {
             Toast.error([$translate.instant("telephony_fax_loading_error"), _.get(error, "data.message", "")].join(" "));
             return $q.reject(error);
