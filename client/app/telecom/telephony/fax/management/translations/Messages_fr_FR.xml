@@ -3,4 +3,5 @@
     <translation id="telephony_group_fax_management_back_link">Retour à la gestion du fax</translation>
     <!-- ACTIONS -->
     <translation id="telephony_group_fax_management_action_informations">Informations générales</translation>
+    <translation id="telephony_group_fax_management_action_terminate">Résiliation du fax</translation>
 </translations>

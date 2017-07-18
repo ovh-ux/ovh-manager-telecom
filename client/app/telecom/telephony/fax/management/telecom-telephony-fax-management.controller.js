@@ -16,11 +16,17 @@ angular.module("managerApp").controller("TelecomTelephonyFaxManagementCtrl", fun
 
     function initActions () {
         var actions = [{
-            name: "fax_information",
+            name: "fax_management_information",
             main: true,
             picto: "ovh-font-details",
             sref: "telecom.telephony.fax.management.informations",
             text: $translate.instant("telephony_group_fax_management_action_informations")
+        }, {
+            name: "fax_management_terminate",
+            sref: "telecom.telephony.fax.management.terminate",
+            main: true,
+            picto: "ovh-font-filled-error",
+            text: $translate.instant("telephony_group_fax_management_action_terminate")
         }];
 
         self.actions = actions;

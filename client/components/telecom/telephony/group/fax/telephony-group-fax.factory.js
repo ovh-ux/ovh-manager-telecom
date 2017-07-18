@@ -66,6 +66,27 @@ angular.module("managerApp").factory("TelephonyGroupFax", function (OvhApiTeleph
         }).$promise;
     };
 
+    TelephonyGroupFax.prototype.terminate = function (reason, details) {
+        var self = this;
+
+        return Telephony.Service().Lexi().delete({
+            billingAccount: self.billingAccount,
+            serviceName: self.serviceName
+        }, {
+            reason: reason,
+            details: details
+        }).$promise;
+    };
+
+    TelephonyGroupFax.prototype.cancelTermination = function () {
+        var self = this;
+
+        return Telephony.Service().Lexi().cancelTermination({
+            billingAccount: self.billingAccount,
+            serviceName: self.serviceName
+        }, {}).$promise;
+    };
+
     /* ----------  EDITION  ----------*/
 
     TelephonyGroupFax.prototype.startEdition = function () {
