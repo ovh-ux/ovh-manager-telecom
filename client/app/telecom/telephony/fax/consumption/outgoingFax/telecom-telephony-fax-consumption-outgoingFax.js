@@ -1,11 +1,11 @@
 angular.module("managerApp").config(function ($stateProvider) {
     "use strict";
-    $stateProvider.state("telecom.telephony.line.consumption.outgoingFax", {
+    $stateProvider.state("telecom.telephony.fax.consumption.outgoingFax", {
         url: "/outgoingFax",
         views: {
-            "@lineView": {
-                templateUrl: "app/telecom/telephony/line/consumption/outgoingFax/telecom-telephony-line-consumption-outgoingFax.html",
-                controller: "TelecomTelephonyLineConsumptionOutgoingFaxCtrl",
+            "@faxView": {
+                templateUrl: "app/telecom/telephony/fax/consumption/outgoingFax/telecom-telephony-fax-consumption-outgoingFax.html",
+                controller: "TelecomTelephonyFaxConsumptionOutgoingFaxCtrl",
                 controllerAs: "$ctrl"
             },
             "@consumptionView": {
