@@ -1,17 +1,7 @@
-div.graph-gauge {
-    float: right;
-
-    span {
+span {
+    &[data-gauge],
+    .rate {
+        display: inline-block;
         vertical-align: middle;
-        font-size: 1.1em;
-
-        &[gauge] {
-            display: inline-block;
-        }
-
-        i {
-            color: @state-info-text;
-        }
     }
-
 }
