@@ -9,4 +9,5 @@
     <translation id="common_table_cancel_entry"> : annuler l'ajout</translation>
     <translation id="common_table_validate_modifications">: valider les modifications</translation>
     <translation id="common_table_cancel_modifications">: annuler les modifications</translation>
+    <translation id="common_required_fields">Les champs marqués d'un astérisque sont obligatoires.</translation>
 </translations>
