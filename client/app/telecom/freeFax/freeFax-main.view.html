@@ -10,7 +10,7 @@
 
     <main class="telecom-section-content"
           role="main">
-        <div class="row" data-ng-hide="FreeFax.error">
+        <div class="row" data-ng-if="!FreeFax.error">
             <div class="col-md-6 col-xs-12">
                 <div data-ng-include="'app/telecom/freeFax/information/freeFax-information.html'"></div>
                 <div data-ng-include="'app/telecom/freeFax/credit/freeFax-credit.html'"></div>
@@ -19,7 +19,7 @@
                 <div data-ng-include="'app/telecom/freeFax/faxConfiguration/freeFax-faxConfiguration.html'"></div>
             </div>
         </div>
-        <h2 data-ng-bind="FreeFax.error" data-ng-show="FreeFax.error"></h2>
+        <h2 data-ng-bind="FreeFax.error" data-ng-if="FreeFax.error"></h2>
     </main><!-- .telecom-section-content-content -->
 
 </div>

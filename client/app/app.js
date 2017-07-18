@@ -1,7 +1,7 @@
 angular.module("managerApp", [
     "ovh-angular-sso-auth",
     "ovh-angular-sso-auth-modal-plugin",
-    "angular-a-disabled",
+    "ovh-angular-a-disabled",
     "angular-ellipses",
     "ovh-angular-timeline",
     "ovh-angular-ui-confirm-modal",
