@@ -5,9 +5,17 @@ angular.module("managerApp").config(function ($stateProvider) {
         url: "/fax/:serviceName",
         views: {
             "@telephonyView": {
-                templateUrl: "app/telecom/telephony/fax/telecom-telephony-fax.html",
+                templateUrl: "app/telecom/telephony/fax/telecom-telephony-fax.html"
+            },
+            "@faxView": {
+                templateUrl: "app/telecom/telephony/fax/telecom-telephony-fax-main-view.html",
                 controller: "TelecomTelephonyFaxCtrl",
-                controllerAs: "FaxCtrl"
+                controllerAs: "$ctrl"
+            },
+            "faxInnerView@telecom.telephony.fax": {
+                templateUrl: "app/telecom/telephony/fax/management/telecom-telephony-fax-management.html",
+                controller: "TelecomTelephonyFaxManagementCtrl",
+                controllerAs: "$ctrl"
             }
         },
         translations: ["common", "telecom/telephony/fax"],

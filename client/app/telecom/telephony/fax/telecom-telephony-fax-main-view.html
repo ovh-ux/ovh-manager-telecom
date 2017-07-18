@@ -1,0 +1,89 @@
+<section class="telecom-telephony-fax">
+
+    <!-- LOADING -->
+    <bouncing-box-loader data-ng-if="$ctrl.loading.init">
+        <h1 data-translate="loading"></h1>
+    </bouncing-box-loader>
+
+    <div class="telecom-section-header" data-ng-if="!$ctrl.loading.init">
+        <header role="banner">
+            <!-- GROUP TITLE -->
+            <editable-service-name data-editable-service-name-title="$ctrl.fax.getDisplayedName()"
+                                   data-editable-service-name-title-on-save="$ctrl.faxNameSave"
+                                   data-editable-service-name-service-name="$ctrl.fax.serviceName"
+                                   data-maxlength="25">
+            </editable-service-name>
+        </header>
+
+        <!-- LINE ACTIONS -->
+        <nav role="navigation">
+            <responsive-tabs>
+
+                <responsive-tab data-state="telecom.telephony.fax"
+                                data-dropdown-title="{{ 'telephony_fax_tab_manage' | translate }}">
+                    <span data-translate="telephony_fax_tab_manage"></span>
+                </responsive-tab>
+
+                <responsive-tab data-state="telecom.telephony.fax.consumption"
+                                data-dropdown-title="{{ 'telephony_fax_tab_consumption' | translate }}">
+                    <span data-translate="telephony_fax_tab_consumption"></span>
+                </responsive-tab>
+
+                <!--
+
+                <responsive-tab data-state="telecom.telephony.line.consumption"
+                                data-dropdown-title="{{ 'telephony_line_tab_consumption' | translate }}">
+                    <span data-translate="telephony_line_tab_consumption"></span>
+                </responsive-tab>
+
+                <responsive-tab data-state="telecom.telephony.line.calls"
+                                data-dropdown-title="{{ 'telephony_line_tab_call_management' | translate }}">
+                    <span data-translate="telephony_line_tab_call_management"></span>
+                </responsive-tab>
+
+                <responsive-tab data-state="telecom.telephony.line.tones"
+                                data-dropdown-title="{{ 'telephony_line_tab_music_management' | translate }}"
+                                data-disabled="$ctrl.loading.init || $ctrl.fax.isIndividual() || $ctrl.fax.isTrunk() || $ctrl.fax.isPlugNFax">
+                    <span data-translate="telephony_line_tab_music_management"></span>
+                </responsive-tab>
+
+                <responsive-tab data-state="telecom.telephony.line.answer"
+                                data-dropdown-title="{{ 'telephony_line_tab_answering_machine' | translate }}">
+                    <span data-translate="telephony_line_tab_answering_machine"></span>
+                </responsive-tab>
+
+                <responsive-tab data-state="telecom.telephony.line.phone"
+                                data-dropdown-title="{{ 'telephony_line_tab_phone' | translate }}">
+                    <span data-translate="telephony_line_tab_phone"></span>
+                </responsive-tab>
+
+                <responsive-tab data-state="telecom.telephony.line.assist"
+                                data-dropdown-title="{{ 'telephony_line_tab_assist' | translate }}">
+                    <span data-translate="telephony_line_tab_assist"></span>
+                </responsive-tab>
+
+                <responsive-tab data-state="telecom.telephony.line.contact"
+                                data-dropdown-title="{{ 'telephony_line_tab_contact_details' | translate }}">
+                    <span data-translate="telephony_line_tab_contact_details"></span>
+                </responsive-tab>
+
+                <responsive-tab data-state="telecom.telephony.line.fax"
+                                data-dropdown-title="{{ 'telephony_line_tab_fax' | translate }}"
+                                data-disabled="$ctrl.loading.init || !($ctrl.fax.isPlugNFax || $ctrl.fax)">
+                    <span data-translate="telephony_line_tab_fax"></span>
+                </responsive-tab> -->
+
+                <responsive-tab-more>
+                    <i class="fa fa-plus"></i>
+                </responsive-tab-more>
+            </responsive-tabs>
+        </nav>
+    </div><!-- .telecom-section-header -->
+
+    <main class="telecom-section-content"
+          role="main"
+          data-ng-if="!$ctrl.loading.init"
+          data-ui-view="faxInnerView">
+    </main><!-- .telecom-section-content -->
+
+</section>

@@ -3,9 +3,16 @@ angular.module("managerApp").controller("TelecomTelephonyFaxCtrl", function ($q,
 
     var self = this;
 
-    /*= ==============================
+    self.loading = {
+        init: false
+    };
+
+    self.fax = null;
+    self.actions = null;
+
+    /* ===============================
     =            ACTIONS            =
-    ===============================*/
+    =============================== */
 
     self.faxNameSave = function (newServiceDescription) {
         self.fax.startEdition();
@@ -22,11 +29,11 @@ angular.module("managerApp").controller("TelecomTelephonyFaxCtrl", function ($q,
         });
     };
 
-    /* -----  End of ACTIONS  ------*/
+    /* -----  End of ACTIONS  ------ */
 
-    /*= =====================================
+    /* ======================================
     =            INITIALIZATION            =
-    ======================================*/
+    ====================================== */
 
     function initActions () {
         self.actions = [{
@@ -57,24 +64,20 @@ angular.module("managerApp").controller("TelecomTelephonyFaxCtrl", function ($q,
         }];
     }
 
-    function init () {
-        self.loading = {
-            init: false
-        };
+    /* =====================================
+    =            INITIALIZATION            =
+    ====================================== */
 
-        self.fax = null;
-        self.actions = null;
-
+    self.$onInit = function () {
         self.loading.init = true;
+
         return TelephonyMediator.getGroup($stateParams.billingAccount).then(function (group) {
             self.fax = group.getFax($stateParams.serviceName);
-            initActions();
         }).finally(function () {
             self.loading.init = false;
         });
-    }
+    };
 
-    /* -----  End of INITIALIZATION  ------*/
+    /* -----  End of INITIALIZATION  ------ */
 
-    init();
 });
