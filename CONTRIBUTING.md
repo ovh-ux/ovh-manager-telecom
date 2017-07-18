@@ -7,7 +7,7 @@ pay attention to a few things:
 2. your code must be unit-tested
 3. your code must be documented
 4. your work must be signed (see below)
-5. you may contribute through GitHub Pull Requests
+5. you may contribute through GitHub Pull Requests on `develop` branch
 6. the sentences must be done in French (temporarily, due to internal process)
 
 # Coding and documentation Style
