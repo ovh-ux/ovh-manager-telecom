@@ -1,20 +1,20 @@
 <div class="widget-presentation" data-ng-controller="FreeFaxCreditCtrl as Credit">
     <h2 class="widget-presentation-title" data-translate="freefax_general_credit"></h2>
-    <div data-ng-hide="Credit.orderDone">
+    <div data-ng-if="!Credit.orderDone">
         <div class="row bottom-space-m16">
             <div class="col-xs-12 col-md-4 service-title" data-translate="freefax_credit_add_label"></div>
-            <div class="col-xs-6 col-md-4 service-item">
+            <div class="col-xs-6 col-md-4">
                 <div flat-input-container>
-                    <select class="form-control" data-ng-model="Credit.amount"
+                    <select class="form-control"
+                            data-ng-model="Credit.amount"
                             data-ng-options="choice as choice.label for choice in Credit.creditChoices track by choice.value"
-                            data-ng-change="Credit.getPrice(Credit.amount.value)"
-                        >
+                            data-ng-change="Credit.getPrice(Credit.amount.value)">
                     </select>
                 </div>
             </div>
             <div class="col-xs-6 col-md-4 service-item">
                 <label data-ng-if="Credit.cost">{{ 'freefax_credit_unit' | translate:{quantity:Credit.quantity, fax:Credit.quantity/2} }} / {{Credit.cost.withTax.text}} {{:: 'ttc' | translate}}</label>
-                <spinner data-ng-show="Credit.cost === null"></spinner>
+                <spinner data-ng-if="Credit.cost === null"></spinner>
             </div>
         </div>
         <div class="bottom-space-m16"
@@ -23,26 +23,23 @@
              data-full-text="false"
              data-contracts-validated="Credit.contractsAccepted">
         </div>
-        <div class="text-right">
-            <button type="button"
-                    class="btn btn-primary"
-                    title="{{'common_generate_order' | translate}}"
-                    data-ng-click="Credit.order(Credit.amount.value)"
-                    data-ng-disabled="!Credit.contractsAccepted">
-                {{:: 'common_generate_order' | translate }}
-            </button>
-        </div>
+        <button type="button"
+                class="btn btn-primary"
+                data-ng-click="Credit.order(Credit.amount.value)"
+                data-ng-disabled="!Credit.contractsAccepted"
+                data-translate="common_generate_order">
+        </button>
     </div>
-    <div data-ng-show="Credit.orderDone">
-        <div class="row">
-            <spinner data-ng-hide="Credit.bill"></spinner>
-            <div class="col-xs-12 col-md-12 service-item" data-ng-show="Credit.bill">
-                <p>{{ 'freefax_credit_loaded' | translate:{amount:Credit.amount.value, total: Credit.bill.total, quantity:Credit.bill.quantity} }}</p>
-                <a href="{{Credit.bill.url}}" class="telecom-link pull-right" target="_blank">
-                    <span class="text-underline bold">{{ 'freefax_credit_billing' | translate }}</span>
-                    <i class="ovh-font ovh-font-newtab ovh-font-1x4 left-space-m4"></i>
-                </a>
-            </div>
+    <div data-ng-if="Credit.orderDone">
+        <spinner data-ng-if="!Credit.bill"></spinner>
+        <div data-ng-if="Credit.bill">
+            <p class="service-item">{{ 'freefax_credit_loaded' | translate:{amount:Credit.amount.value, total: Credit.bill.total, quantity:Credit.bill.quantity} }}</p>
+            <a href="{{Credit.bill.url}}"
+               class="btn btn-link top-space-m16 space-p0"
+               target="_blank">
+                <span data-translate="freefax_credit_billing"></span>
+                <span class="ovh-font ovh-font-newtab fs16 left-space-m4"></span>
+            </a>
         </div>
     </div>
 </div>

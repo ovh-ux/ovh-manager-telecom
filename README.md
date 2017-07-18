@@ -54,8 +54,6 @@ The manager is running on [https://localhost:8181](https://localhost:8181)
 
 And start developing.
 
-**Note:** once logged in, you will be redirect to http. Change it to https.
-
 ## Related links
 
  * Contribute: https://github.com/ovh-ux/ovh-manager-telecom/blob/master/CONTRIBUTING.md
