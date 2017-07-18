@@ -3,17 +3,16 @@ angular.module("managerApp").controller("TelecomTelephonyAliasPortabilityOrderCt
 
     var self = this;
 
+    // attributes shared by 'individual' and 'company' social reason
+    var sharedAttributes = [
+        "billingAccount", "building", "callNumber", "city", "comment", "contactName",
+        "contactNumber", "country", "desireDate", "displayUniversalDirectory", "door",
+        "firstName", "floor", "groupNumber", "lineToRedirectAliasTo", "name", "offer",
+        "socialReason", "stair", "streetName", "streetNumber", "streetNumberExtra",
+        "streetType", "type", "zip"
+    ];
 
     function init () {
-
-        // attributes shared by 'individual' and 'company' social reason
-        self.sharedAttributes = [
-            "billingAccount", "building", "callNumber", "city", "comment", "contactName",
-            "contactNumber", "country", "desireDate", "displayUniversalDirectory", "door",
-            "firstName", "floor", "groupNumber", "lineToRedirectAliasTo", "name", "offer",
-            "socialReason", "stair", "streetName", "streetNumber", "streetNumberExtra",
-            "streetType", "type", "zip"
-        ];
 
         self.order = {
             // default values
@@ -98,7 +97,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasPortabilityOrderCt
     };
 
     self.getOrderParams = function () {
-        var params = _.pick(self.order, self.sharedAttributes);
+        var params = _.pick(self.order, sharedAttributes);
 
         if (params.socialReason === "individual") {
             params = _.assign(params, _.pick(self.order, "rio"));

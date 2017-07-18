@@ -59,7 +59,7 @@
                         data-translate="telephony_alias_portability_order_step_4"></li>
                 </ol>
 
-                <div class="col-xs-12">
+                <div class="container">
 
                     <!-- NUMBER FORM -->
                     <form name="portabilityNumberForm"
@@ -256,9 +256,9 @@
                                     data-show-button-bar="false"
                                     data-is-open="PortabilityOrderCtrl.desireDatePickerOpened"
                                     data-ng-focus="PortabilityOrderCtrl.openDesireDatePicker($event)"
-                                    current-text="{{:: 'today' | translate }}"
-                                    clear-text="{{:: 'reset' | translate }}"
-                                    close-text="{{:: 'close' | translate }}"
+                                    data-current-text="{{:: 'today' | translate }}"
+                                    data-clear-text="{{:: 'reset' | translate }}"
+                                    data-close-text="{{:: 'close' | translate }}"
                                     data-ng-model="PortabilityOrderCtrl.order.desireDate"
                                     required />
                                 <span class="input-group-btn">
@@ -386,7 +386,7 @@
                                    data-ng-model="PortabilityOrderCtrl.order.siret"
                                    required />
                             <div data-ng-messages="portabilityContactForm.siret.$error" role="alert">
-                                 <label for="siret"
+                                 <label for="companyId"
                                         data-ng-if="portabilityContactForm.siret.$touched"
                                         data-ng-message="required"
                                         data-translate="telephony_alias_portability_order_contact_required">
@@ -426,7 +426,7 @@
                                    class="control-label">
                                 <span data-translate="telephony_alias_portability_order_contact_gsm"></span>
                                 <i class="ovh-font ovh-font-filled-info line-height-normal"
-                                   uib-tooltip="{{:: 'telephony_alias_portability_order_contact_gsm_help' | translate }}"></i>
+                                   data-uib-tooltip="{{:: 'telephony_alias_portability_order_contact_gsm_help' | translate }}"></i>
                             </label>
                             <input type="text"
                                    id="contactNumber"
@@ -786,9 +786,10 @@
                                     </thead>
                                     <tbody>
                                         <tr data-ng-repeat="detail in PortabilityOrderCtrl.details track by $index">
-                                            <td data-ng-bind="detail.description"
+                                            <th scope-"row"
+                                                data-ng-bind="detail.description"
                                                 data-title="{{ :: 'telephony_alias_portability_order_description' | translate }}">
-                                            </td>
+                                            </th>
                                             <td class="text-right-sm text-price bold"
                                                 data-ng-bind="detail.unitPrice.text"
                                                 data-title="{{ :: 'telephony_alias_portability_order_unit_price' | translate }}">
@@ -861,11 +862,11 @@
                         data-translate="telephony_alias_portability_order_infos_title"></h2>
                 </header>
                 <div role="alert" class="alert alert-info">
-                    <i class="ovh-font ovh-font-filled-info right-space-m4 line-height-normal"></i>
+                    <i aria-hidden="true" class="ovh-font ovh-font-filled-info right-space-m4 line-height-normal"></i>
                     <p data-translate="telephony_alias_portability_order_infos"></p>
                 </div>
                 <div role="alert" class="alert alert-warning">
-                    <i class="ovh-font ovh-font-filled-warning right-space-m4 line-height-normal"></i>
+                    <i aria-hidden="true" class="ovh-font ovh-font-filled-warning right-space-m4 line-height-normal"></i>
                     <p data-translate="telephony_alias_portability_order_warning_1"></p>
                     <p data-translate="telephony_alias_portability_order_warning_2"></p>
                     <p data-translate="telephony_alias_portability_order_warning_3"></p>
