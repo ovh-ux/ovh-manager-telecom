@@ -15,11 +15,12 @@
         </li>
     </ul>
 
-    <a data-ng-if="service.available > 0"
-       data-ui-sref="telecom.pack.exchangeIndividual-add"
-       class="pull-right telecom-link order-service"
-       title="{{:: 'common_order_activate_service' | translate }}">
-        <span class="ovh-font ovh-font-activer fs16 right-space-m4" aria-hidden="true"></span>
-        <span class="data-ng-binding" data-translate="common_order_activate_service"></span>
-    </a>
+    <div class="order-service">
+        <a data-ng-if="service.available > 0"
+           data-ui-sref="telecom.pack.exchangeIndividual-add"
+           class="btn btn-link">
+            <span class="ovh-font ovh-font-activer fs16 right-space-m4" aria-hidden="true"></span>
+            <span class="data-ng-binding" data-translate="common_order_activate_service"></span>
+        </a>
+    </div>
 </div>
