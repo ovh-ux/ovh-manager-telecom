@@ -5,6 +5,7 @@
     <!-- TABS -->
     <translation id="telephony_fax_tab_manage">Gestion</translation>
     <translation id="telephony_fax_tab_consumption">Consommation</translation>
+    <translation id="telephony_fax_tab_contact">Coordonnées</translation>
 
    <translation id="telephony_fax_section_back_link" qtlid="357083">Retour à la gestion du fax</translation>
    <translation id="telephony_fax_actions_line_fax_password" qtlid="357096">Mot de passe fax</translation>
