@@ -1,9 +1,9 @@
-angular.module("managerApp").controller("TelecomTelephonyLineAssistLogsCtrl", function ($scope, $q, $translate, $stateParams, TelephonyMediator, OvhApiTelephony, OvhApiMe, Toast, PAGINATION_PER_PAGE) {
+angular.module("managerApp").controller("TelecomTelephonyServiceAssistLogsCtrl", function ($scope, $q, $translate, $stateParams, TelephonyMediator, OvhApiTelephony, OvhApiMe, Toast, PAGINATION_PER_PAGE) {
     "use strict";
 
     var self = this;
 
-    self.line = null;
+    self.service = null;
     self.logs = null;
     self.logsPerPage = PAGINATION_PER_PAGE;
 
@@ -20,6 +20,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineAssistLogsCtrl", fu
         configEdit: false
     };
     self.user = null;
+    self.backSref = null;
 
     /*= ==============================
     =            ACTIONS            =
@@ -43,26 +44,26 @@ angular.module("managerApp").controller("TelecomTelephonyLineAssistLogsCtrl", fu
     };
 
     self.startNotificationsChange = function () {
-        self.line.startEdition();
+        self.service.startEdition();
         self.model.configEdit = true;
 
-        if (!self.user && !self.line.notifications.logs.email) {
+        if (!self.user && !self.service.notifications.logs.email) {
             self.loading.user = true;
 
             // if request fail - no need to catch it
             OvhApiMe.Lexi().get().$promise.then(function (user) {
                 self.user = user;
-                self.line.notifications.logs.email = self.user.email;
+                self.service.notifications.logs.email = self.user.email;
             }).finally(function () {
                 self.loading.user = false;
             });
-        } else if (!self.line.notifications.logs.email) {
-            self.line.notifications.logs.email = self.user.email;
+        } else if (!self.service.notifications.logs.email) {
+            self.service.notifications.logs.email = self.user.email;
         }
     };
 
     self.cancelNotificationsChange = function () {
-        self.line.stopEdition(true);
+        self.service.stopEdition(true);
         self.model.configEdit = false;
     };
 
@@ -70,15 +71,15 @@ angular.module("managerApp").controller("TelecomTelephonyLineAssistLogsCtrl", fu
         self.loading.save = true;
 
         // reset email and sendIfNull if frequency is "Never"
-        if (self.line.notifications.logs.frequency === "Never") {
-            self.line.notifications.logs.email = null;
-            self.line.notifications.logs.sendIfNull = false;
+        if (self.service.notifications.logs.frequency === "Never") {
+            self.service.notifications.logs.email = null;
+            self.service.notifications.logs.sendIfNull = false;
         }
 
-        return self.line.save().then(function () {
-            self.line.stopEdition();
+        return self.service.save().then(function () {
+            self.service.stopEdition();
         }).catch(function (error) {
-            self.line.stopEdition(true);
+            self.service.stopEdition(true);
             Toast.error([$translate.instant("telephony_line_assist_support_logs_save_error"), (error.data && error.data.message) || ""].join(" "));
             return $q.reject(error);
         }).finally(function () {
@@ -96,8 +97,10 @@ angular.module("managerApp").controller("TelecomTelephonyLineAssistLogsCtrl", fu
     function init () {
         self.loading.init = true;
 
-        return TelephonyMediator.getGroup($stateParams.billingAccount).then(function (group) {
-            self.line = group.getLine($stateParams.serviceName);
+        return TelephonyMediator.getGroup($stateParams.billingAccount).then(function () {
+            self.service = TelephonyMediator.findService($stateParams.serviceName);
+
+            self.backSref = self.service.isFax ? "telecom.telephony.fax.assist" : "telecom.telephony.line.assist";
 
             return self.refreshLogs();
         }, function (error) {
@@ -110,8 +113,8 @@ angular.module("managerApp").controller("TelecomTelephonyLineAssistLogsCtrl", fu
 
     // in case we don't click on cancel button
     $scope.$on("$destroy", function () {
-        if (self.line) {
-            self.line.stopEdition(true);
+        if (self.service) {
+            self.service.stopEdition(true);
         }
     });
 

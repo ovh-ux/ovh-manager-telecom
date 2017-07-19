@@ -1,7 +1,9 @@
-angular.module("managerApp").controller("TelecomTelephonyLineAssistOrdersCtrl", function ($filter, $q, $translate, OvhApiTelephony, OvhApiMeOrder) {
+angular.module("managerApp").controller("TelecomTelephonyServiceAssistOrdersCtrl", function ($filter, $q, $translate, $stateParams, OvhApiTelephony, OvhApiMeOrder, TelephonyMediator) {
     "use strict";
 
     var self = this;
+
+    self.service = null;
 
     /*= ==============================
     =            HELPERS            =
@@ -63,9 +65,14 @@ angular.module("managerApp").controller("TelecomTelephonyLineAssistOrdersCtrl", 
             orderDesc: true
         };
         self.orders.isLoading = true;
-        return fetchOrders().then(function (orders) {
-            self.orders.raw = orders;
-            self.applySorting();
+
+        return TelephonyMediator.getGroup($stateParams.billingAccount).then(function () {
+            self.service = TelephonyMediator.findService($stateParams.serviceName);
+
+            return fetchOrders().then(function (orders) {
+                self.orders.raw = orders;
+                self.applySorting();
+            });
         }).finally(function () {
             self.orders.isLoading = false;
         });

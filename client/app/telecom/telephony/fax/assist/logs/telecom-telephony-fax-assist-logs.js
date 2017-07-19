@@ -1,9 +1,10 @@
 angular.module("managerApp").config(function ($stateProvider) {
     "use strict";
-    $stateProvider.state("telecom.telephony.line.assist.logs", {
+
+    $stateProvider.state("telecom.telephony.fax.assist.logs", {
         url: "/logs",
         views: {
-            "@lineView": {
+            "@faxView": {
                 templateUrl: "app/telecom/telephony/service/assist/logs/telecom-telephony-service-assist-logs.html",
                 controller: "TelecomTelephonyServiceAssistLogsCtrl",
                 controllerAs: "LogsCtrl"

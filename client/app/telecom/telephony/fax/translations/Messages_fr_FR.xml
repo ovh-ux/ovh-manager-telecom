@@ -7,6 +7,7 @@
     <translation id="telephony_fax_tab_consumption">Consommation</translation>
     <translation id="telephony_fax_tab_fax">Fax</translation>
     <translation id="telephony_fax_tab_contact">Coordonnées</translation>
+    <translation id="telephony_fax_tab_assist">Assistance</translation>
 
    <translation id="telephony_fax_section_back_link" qtlid="357083">Retour à la gestion du fax</translation>
    <translation id="telephony_fax_rename_error" qtlid="357161">Impossible de renommer votre fax {{serviceName}}.</translation>

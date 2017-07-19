@@ -30,6 +30,16 @@ angular.module("managerApp").factory("TelephonyGroupFax", function (OvhApiTeleph
         this.description = options.description;
         this.offers = options.offers;
 
+        // managing notifications object
+        this.notifications = options.notifications || {};
+        if (_.isNull(_.get(this.notifications, "logs")) || _.isUndefined(_.get(this.notifications, "logs"))) {
+            this.notifications.logs = {
+                email: null,
+                frequency: "Never",
+                sendIfNull: false
+            };
+        }
+
         // custom attributes
         this.inEdition = false;
         this.saveForEdition = null;
@@ -62,7 +72,8 @@ angular.module("managerApp").factory("TelephonyGroupFax", function (OvhApiTeleph
             billingAccount: self.billingAccount,
             serviceName: self.serviceName
         }, {
-            description: self.description
+            description: self.description,
+            notifications: self.notifications
         }).$promise;
     };
 
@@ -95,7 +106,8 @@ angular.module("managerApp").factory("TelephonyGroupFax", function (OvhApiTeleph
         self.inEdition = true;
 
         self.saveForEdition = {
-            description: angular.copy(self.description)
+            description: angular.copy(self.description),
+            notifications: angular.copy(self.notifications)
         };
 
         return self;
@@ -106,12 +118,19 @@ angular.module("managerApp").factory("TelephonyGroupFax", function (OvhApiTeleph
 
         if (self.saveForEdition && cancel) {
             self.description = angular.copy(self.saveForEdition.description);
+            self.notifications = angular.copy(self.saveForEdition.notifications);
         }
 
         self.saveForEdition = null;
         self.inEdition = false;
 
         return self;
+    };
+
+    TelephonyGroupFax.prototype.hasChange = function (path) {
+        var self = this;
+
+        return _.get(self.saveForEdition, path) !== _.get(self, path);
     };
 
     /* -----  End of PROTOTYPE METHODS  ------*/
