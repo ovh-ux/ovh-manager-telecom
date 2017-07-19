@@ -10,7 +10,7 @@
             <a data-ng-href="{{ PackXdslCtrl.backState() }}"
                data-ng-if="PackXdslCtrl.content.back.state &&
                            PackXdslCtrl.content.status === 'active'">
-                <i class="ovh-font ovh-font-arrow-left" aria-hidden="true"></i>
+                <span class="ovh-font ovh-font-arrow-left" aria-hidden="true"></span>
                 <span data-ng-bind="PackXdslCtrl.pack.general.description ||
                                     PackXdslCtrl.pack.general.packName ||
                                     PackXdslCtrl.access.description ||
@@ -36,7 +36,11 @@
                                 data-dropdown-title="{{ 'xdsl_tabs_modem' | translate }}">
                     <span data-translate="xdsl_tabs_modem"></span>
                 </responsive-tab>
-                <responsive-tab-more> <i class="fa fa-plus"></i> </responsive-tab-more>
+                <responsive-tab-more>
+                    <span data-translate-attr="{title: 'common_tabs_more'}"
+                          class="fa fa-plus"
+                          aria-hidden="true"></span>
+                </responsive-tab-more>
             </responsive-tabs>
         </nav>
 
