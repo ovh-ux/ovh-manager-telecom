@@ -156,17 +156,20 @@ angular.module("managerApp").controller("TelecomSmsSmsOutgoingCtrl", function ($
             "creationDatetime.to": moment().format(),
             wayType: "outgoing"
         }).$promise.then(function (smsDoc) {
+            // 1. We need to poll to know if the size of the document is not empty.
             var tryGetDocument = function () {
                 User.Document().Lexi().resetCache();
                 return User.Document().Lexi().get({
                     id: smsDoc.docId
                 }).$promise.then(function (doc) {
                     if (doc.size > 0) {
-                        return doc;
+                        // 2. Then we set a timeout to be sure that we have data.
+                        return $timeout(function () {
+                            return doc;
+                        }, 5000);
                     }
                     self.outgoing.poller = $timeout(tryGetDocument, 1000);
                     return self.outgoing.poller;
-
                 });
             };
             return tryGetDocument().then(function (doc) {
