@@ -1,4 +1,4 @@
-<section class="telephony-group-line-default-voicemail">
+<section class="telephony-group-line-answer-default">
 
     <header>
         <section-back-link section-back-link-to-state="telecom.telephony.line.answer"
@@ -7,47 +7,8 @@
         <h1 data-translate="telephony_line_answer_default_voicemail_title"></h1>
     </header>
 
-    <div class="telecom-section-content">
-        <div class="row">
-
-            <div class="col-md-6 text-center" data-ng-if="DefaultVoicemailCtrl.loading">
-                <spinner></spinner>
-            </div>
-            <div class="col-md-6" data-ng-if="!DefaultVoicemailCtrl.loading">
-                <form name="defaultVoicemailForm"
-                      class="form-horizontal ovh-form-flat"
-                      data-ng-submit="DefaultVoicemailCtrl.saveDefaultVoicemail()"
-                      novalidate>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <span data-translate="telephony_line_answer_default_voicemail_label"></span>
-                        </div>
-                        <div class="col-md-6">
-                            <select flat-select
-                                class="form-control"
-                                data-ng-model="DefaultVoicemailCtrl.options.defaultVoicemail"
-                                data-ng-change="DefaultVoicemailCtrl.success = false"
-                                data-ng-options="number.serviceName as DefaultVoicemailCtrl.formatNumber(number) for number in DefaultVoicemailCtrl.numbers | orderBy: ['description', 'label', 'serviceName']"
-                                required>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row top-space-m16">
-                        <div class="col-md-6 col-md-offset-4">
-                            <button type="submit"
-                                    data-ng-disabled="DefaultVoicemailCtrl.options.defaultVoicemail === DefaultVoicemailCtrl.defaultVoicemail || DefaultVoicemailCtrl.saving"
-                                    class="btn btn-sm btn-primary">
-                                    <span data-translate="telephony_line_answer_default_voicemail_change"></span>
-                                    <i data-ng-if="DefaultVoicemailCtrl.success"
-                                       class="ovh-font ovh-font-success left-space-m4 fs16"></i>
-                                <spinner class="left-space-m4" data-ng-if="DefaultVoicemailCtrl.saving"></spinner>
-                            </button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-
-        </div><!-- row -->
-    </div><!-- content -->
+    <div class="telecom-section-content"
+         data-ui-view="@voicemailView">
+    </div>
 
 </section>

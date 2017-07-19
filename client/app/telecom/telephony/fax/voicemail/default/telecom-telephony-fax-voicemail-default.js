@@ -1,10 +1,11 @@
 angular.module("managerApp").config(function ($stateProvider) {
     "use strict";
-    $stateProvider.state("telecom.telephony.line.defaultVoicemail", {
-        url: "/defaultVoicemail",
+
+    $stateProvider.state("telecom.telephony.fax.voicemail.default", {
+        url: "/default",
         views: {
-            "@lineView": {
-                templateUrl: "app/telecom/telephony/line/answer/defaultVoicemail/telecom-telephony-line-answer-defaultVoicemail.html",
+            "@faxView": {
+                templateUrl: "app/telecom/telephony/fax/voicemail/default/telecom-telephony-fax-voicemail-default.html",
                 noTranslations: true
             },
             "@voicemailView": {
@@ -13,6 +14,6 @@ angular.module("managerApp").config(function ($stateProvider) {
                 controllerAs: "DefaultVoicemailCtrl"
             }
         },
-        translations: ["common", "telecom/telephony/line/answer"]
+        translations: ["common", "telecom/telephony/service/voicemail/default"]
     });
 });

@@ -5,6 +5,7 @@
     <!-- TABS -->
     <translation id="telephony_fax_tab_manage">Gestion</translation>
     <translation id="telephony_fax_tab_consumption">Consommation</translation>
+    <translation id="telephony_fax_tab_voicemail">Répondeur</translation>
     <translation id="telephony_fax_tab_fax">Fax</translation>
     <translation id="telephony_fax_tab_contact">Coordonnées</translation>
     <translation id="telephony_fax_tab_assist">Assistance</translation>

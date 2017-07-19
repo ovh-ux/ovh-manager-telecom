@@ -1,10 +1,11 @@
 angular.module("managerApp").config(function ($stateProvider) {
     "use strict";
-    $stateProvider.state("telecom.telephony.line.voicemailPassword", {
-        url: "/voicemailPassword",
+
+    $stateProvider.state("telecom.telephony.fax.voicemail.password", {
+        url: "/password",
         views: {
-            "@lineView": {
-                templateUrl: "app/telecom/telephony/line/answer/voicemailPassword/telecom-telephony-line-answer-voicemailPassword.html",
+            "@faxView": {
+                templateUrl: "app/telecom/telephony/fax/voicemail/password/telecom-telephony-fax-voicemail-password.html",
                 noTranslations: true
             },
             "@voicemailView": {
@@ -13,6 +14,6 @@ angular.module("managerApp").config(function ($stateProvider) {
                 controllerAs: "VoicemailPasswordCtrl"
             }
         },
-        translations: ["common", "telecom/telephony/service/voicemail/password", "telecom/telephony/line/answer"]
+        translations: ["common", "telecom/telephony/service/voicemail/password"]
     });
 });

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<translations>
+    <translation id="telephony_group_fax_voicemail_back_link">Retour à la gestion du répondeur</translation>
+    <!-- ACTIONS -->
+    <translation id="telephony_group_fax_voicemail_action_management">Ecoute et gestion des messages</translation>
+    <translation id="telephony_group_fax_voicemail_action_default">Choix de la messagerie par défaut</translation>
+    <translation id="telephony_group_fax_voicemail_action_password">Mot de passe accès répondeur</translation>
+    <translation id="telephony_group_fax_voicemail_action_options">Configuration du répondeur</translation>
+</translations>
