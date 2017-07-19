@@ -1,11 +1,11 @@
 angular.module("managerApp").config(function ($stateProvider) {
     "use strict";
 
-    $stateProvider.state("telecom.telephony.fax.campaigns", {
+    $stateProvider.state("telecom.telephony.fax.fax.campaigns", {
         url: "/campaigns",
         views: {
             "@telephonyView": {
-                templateUrl: "app/telecom/telephony/fax/campaigns/telecom-telephony-fax-campaigns.html",
+                templateUrl: "app/telecom/telephony/fax/fax/campaigns/telecom-telephony-fax-fax-campaigns.html",
                 noTranslations: true
             },
             "@faxCampaignsView": {

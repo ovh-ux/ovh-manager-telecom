@@ -1,11 +1,11 @@
 angular.module("managerApp").config(function ($stateProvider) {
     "use strict";
 
-    $stateProvider.state("telecom.telephony.fax.password", {
+    $stateProvider.state("telecom.telephony.fax.fax.password", {
         url: "/password",
         views: {
             "@telephonyView": {
-                templateUrl: "app/telecom/telephony/fax/password/telecom-telephony-fax-password.html",
+                templateUrl: "app/telecom/telephony/fax/fax/password/telecom-telephony-fax-fax-password.html",
                 noTranslations: true
             },
             "@faxPasswordView": {
