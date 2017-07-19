@@ -188,7 +188,8 @@
                             <span data-gauge="OverTheBoxDetails.download.max" data-gauge-width="50" data-ng-model="OverTheBoxDetails.download.current"></span>
                             <span class="left-space-m8 rate">
                                 <span class="fa fa-arrow-down text-info" aria-hidden="true"></span>
-                                <span>{{ OverTheBoxDetails.download.display.value }} {{OverTheBoxDetails.download.display.unit}}</span>
+                                <span data-ng-bind="OverTheBoxDetails.download.display.value"></span>
+                                <span data-ng-bind="OverTheBoxDetails.download.display.unit"></span>
                             </span>
                         </div>
                         <h3 data-translate="overthebox_traffic_download"></h3>
@@ -199,7 +200,8 @@
                             <span data-gauge="OverTheBoxDetails.upload.max" data-gauge-width="50" data-ng-model="OverTheBoxDetails.upload.current"></span>
                             <span class="left-space-m8 rate">
                                 <span class="fa fa-arrow-up text-info" aria-hidden="true"></span>
-                                <span>{{ OverTheBoxDetails.upload.display.value }} {{OverTheBoxDetails.upload.display.unit}}</span>
+                                <span data-ng-bind:"OverTheBoxDetails.upload.display.value"></span>
+                                <span data-ng-bind="OverTheBoxDetails.upload.display.unit"></span>
                             </span>
                         </div>
                         <h3 data-translate="overthebox_traffic_upload"></h3>
