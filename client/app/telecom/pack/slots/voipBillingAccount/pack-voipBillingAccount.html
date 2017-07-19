@@ -5,14 +5,14 @@
 
     <ul class="services-list" data-ng-if="!loaders.services && VoipBillingAccount.services.length > 0">
         <li class="service-item" data-ng-repeat="service in VoipBillingAccount.services track by service.domain">
-            <a data-a-disabled="true" class="service-button">
+            <span class="service-button">
                 <span class="ovh-font ovh-font-phone" aria-hidden="true"></span>
 
                 <div class="service-button-description">
-                    <div class="description-title">{{ service }}</div>
-                    <div class="description-subtext">{{ service }}</div>
+                    <div class="description-title" data-ng-bind="service"></div>
+                    <div class="description-subtext" data-ng-bind="service"></div>
                 </div>
-            </a>
+            </span>
         </li>
     </ul>
 </div>

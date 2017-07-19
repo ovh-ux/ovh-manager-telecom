@@ -5,12 +5,16 @@
 
     <ul class="services-list" data-ng-if="!loaders.services && VoipLine.services.length > 0">
         <li class="service-item" data-ng-repeat="service in VoipLine.services track by service.domain">
-            <a data-a-disabled="true" class="service-button">
+            <a class="service-button"
+               data-ui-sref="telecom.telephony.line({
+                   billingAccount: service.billingAccount,
+                   serviceName: service.domain
+               })">
                 <span class="ovh-font ovh-font-phone" aria-hidden="true"></span>
 
                 <div class="service-button-description">
-                    <div class="description-title">{{ service.domain }}</div>
-                    <div class="description-subtext">{{ service.billingAccount }}</div>
+                    <div class="description-title" data-ng-bind="service.domain"></div>
+                    <div class="description-subtext" data-ng-bind="service.billingAccount"></div>
                 </div>
             </a>
         </li>

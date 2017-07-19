@@ -101,10 +101,11 @@
                     <div class="col-xs-12 col-md-9 service-item">
                         <div class="row">
                             <div class="service-item col-xs-12 col-md-6 col-lg-5">
-                                <a class="service-button"
-                                    data-a-disabled="!XdslModem.mediator.capabilities.canChangeDMZ || (XdslModem.mediator.tasks.changeModemConfigDMZ === true)"
-                                    data-ui-sref="telecom.pack.xdsl.modem.dmz"
-                                    role="button">
+                                <button
+                                    type="button"
+                                    class="service-button no-style"
+                                    data-ng-disabled="!XdslModem.mediator.capabilities.canChangeDMZ || (XdslModem.mediator.tasks.changeModemConfigDMZ === true)"
+                                    data-ui-sref="telecom.pack.xdsl.modem.dmz">
 
                                     <div class="service-button-description">
                                         <div class="description-title-small description-title-fullHeight">
@@ -117,7 +118,7 @@
                                         <span data-translate="configure"></span>
                                         <span class="ovh-font ovh-font-arrow-right" aria-hidden="true"></span>
                                     </div>
-                                </a>
+                                </button>
                             </div>
                         </div>
                     </div>
