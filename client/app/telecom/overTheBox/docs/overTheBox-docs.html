@@ -24,9 +24,8 @@
                         <a title="{{:: subSection.label | translate}} ({{:: 'overTheBox_docs_open_new_tab' | translate }})"
                            target="_blank"
                            class="btn btn-link left-space-p0 right-space-p0"
-                           data-ng-if="subSection.url[OverTheBoxDocs.language]"
-                           data-ng-href="{{subSection.url[OverTheBoxDocs.language]}}"
-                           data-ng-if="subSection.url">
+                           data-ng-if="subSection.url && subSection.url[OverTheBoxDocs.language]"
+                           data-ng-href="{{subSection.url[OverTheBoxDocs.language]}}">
                             <span data-translate="{{subSection.label}}"></span>
                             <span class="ovh-font ovh-font-newtab left-space-m4" aria-hidden="true"></span>
                         </a>
