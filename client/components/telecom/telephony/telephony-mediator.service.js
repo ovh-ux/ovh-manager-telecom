@@ -69,7 +69,6 @@ angular.module("managerApp").service("TelephonyMediator", function ($q, $statePa
     /* ----------  SERVICES  ----------*/
 
     self.findService = function (serviceName) {
-        console.log("findService");
         var tmpGroup = null;
         var tmpService = null;
 
