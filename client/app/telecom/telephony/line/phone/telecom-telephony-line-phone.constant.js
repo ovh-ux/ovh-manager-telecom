@@ -117,6 +117,46 @@
                 }
             },
             icon: "ovh-font-phoneAlt"
+        },
+        "phone.cisco.cp8851": {
+            img: "https://www.ovhtelecom.fr/images/telephonie/cisco_CP8851/CP8851-main.jpg",
+            additionalConfiguration: {
+                UserInterface: {
+                    screens: 1,
+                    keysPerScreen: 10
+                }
+            },
+            icon: "ovh-font-phoneAlt"
+        },
+        "phone.yealink.cp860": {
+            img: "https://www.ovhtelecom.fr/images/telephonie/yealink_CP860/CP860-main.jpg",
+            additionalConfiguration: {
+                UserInterface: {
+                    screens: 1,
+                    keysPerScreen: 1
+                }
+            },
+            icon: "ovh-font-phoneAlt"
+        },
+        "phone.yealink.w56p": {
+            img: "https://www.ovhtelecom.fr/images/telephonie/yealink_W56P/W56P-main.jpg",
+            additionalConfiguration: {
+                UserInterface: {
+                    screens: 1,
+                    keysPerScreen: 1
+                }
+            },
+            icon: "ovh-font-phoneAlt"
+        },
+        "phone.cisco.cp7841": {
+            img: "https://www.ovhtelecom.fr/images/telephonie/cisco_CP7841/CP7841-main.jpg",
+            additionalConfiguration: {
+                UserInterface: {
+                    screens: 1,
+                    keysPerScreen: 4
+                }
+            },
+            icon: "ovh-font-phoneAlt"
         }
     }).constant("TELEPHONY_LINE_PHONE_ACCESSORIES", {
         "cisco.linksys.alim": {
