@@ -10,9 +10,8 @@
                 <a class="btn btn-link space-p0 fs16"
                    title="{{:: section.label | translate}} ({{:: 'overTheBox_docs_open_new_tab' | translate }})"
                    target="_blank"
-                   data-ng-if="section.url[OverTheBoxDocs.language]"
-                   data-ng-href="{{section.url[OverTheBoxDocs.language]}}"
-                   data-ng-if="section.url">
+                   data-ng-if="section.url && section.url[OverTheBoxDocs.language]"
+                   data-ng-href="{{section.url[OverTheBoxDocs.language]}}">
                     <span data-translate="{{section.label}}"></span>
                     <span class="ovh-font ovh-font-newtab left-space-m4" aria-hidden="true"></span>
                 </a>
