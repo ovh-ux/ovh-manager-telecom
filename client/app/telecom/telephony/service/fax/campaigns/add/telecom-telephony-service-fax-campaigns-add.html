@@ -19,7 +19,7 @@
 
         <!-- NAME -->
         <div class="form-group">
-            <div flat-input-container>
+            <div data-flat-input-container>
                 <label for="name"
                        class="control-label"
                        data-translate="telephony_service_fax_campaigns_add_campaign_label_name">
@@ -71,18 +71,18 @@
 
         <!-- QUALITY -->
         <div class="form-group bottom-space-m16 clearfix">
-            <label for="quality"
+            <label for="faxQuality"
                    class="control-label"
                    data-translate="telephony_service_fax_campaigns_add_campaign_label_quality">
             </label>
             <select
-                flat-select
-                name="quality"
-                id="quality"
+                name="faxQuality"
+                id="faxQuality"
                 class="form-control"
                 required
-                data-ng-model="CampaignsAddCtrl.campaign.quality"
-                data-ng-options="quality as ('telephony_service_fax_campaigns_add_campaign_quality_' + quality | translate) for quality in CampaignsAddCtrl.enums.quality | orderBy:'':true">
+                data-flat-select
+                data-ng-model="CampaignsAddCtrl.campaign.faxQuality"
+                data-ng-options="quality as ('telephony_service_fax_campaigns_add_campaign_quality_' + quality | translate) for quality in CampaignsAddCtrl.enums.faxQuality | orderBy:'':true">
             </select>
         </div>
 
@@ -93,11 +93,11 @@
                    data-translate="telephony_service_fax_campaigns_add_campaign_label_send_type">
             </label>
             <select
-                flat-select
                 name="sendType"
                 id="sendType"
                 class="form-control"
                 required
+                data-flat-select
                 data-ng-model="CampaignsAddCtrl.campaign.sendType"
                 data-ng-options="type as ('telephony_service_fax_campaigns_add_campaign_send_type_' + type | translate) for type in CampaignsAddCtrl.enums.sendType | orderBy:'':true">
             </select>
@@ -113,7 +113,7 @@
         <!-- SEND DATE -->
         <div class="form-group bottom-space-m16"
              data-ng-if="CampaignsAddCtrl.campaign.sendType === 'scheduled'">
-            <div flat-input-container>
+            <div data-flat-input-container>
                 <label for="sendDate"
                        class="control-label"
                        data-translate="telephony_service_fax_campaigns_add_campaign_label_send_date">
@@ -210,7 +210,7 @@
         <!-- RECIPIENTS LIST -->
         <div class="form-group bottom-space-m16"
              data-ng-if="CampaignsAddCtrl.campaign.recipientsType === 'list'">
-            <div flat-input-container>
+            <div data-flat-input-container>
                 <label for="recipientsList"
                        class="control-label"
                        data-translate="telephony_service_fax_campaigns_add_campaign_label_recipients_list">
@@ -307,7 +307,10 @@
         <button
             type="submit"
             class="btn btn-primary"
-            data-ng-disabled="addTelephonyFaxCampaignForm.$invalid || !CampaignsAddCtrl.campaign.uploadedFile || CampaignsAddCtrl.loading.add || CampaignsAddCtrl.added"
+            data-ng-disabled="addTelephonyFaxCampaignForm.$invalid ||
+                              !CampaignsAddCtrl.campaign.uploadedFile ||
+                              CampaignsAddCtrl.loading.add ||
+                              CampaignsAddCtrl.added"
             data-translate="submit">
         </button>
     </div>

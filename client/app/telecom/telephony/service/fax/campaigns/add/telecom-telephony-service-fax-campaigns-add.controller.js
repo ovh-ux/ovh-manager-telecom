@@ -12,7 +12,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxCampaignsAddC
             billingAccount: $stateParams.billingAccount
         }).$promise.then(function (schema) {
             return {
-                quality: schema.models["telephony.FaxQualityEnum"].enum,
+                faxQuality: schema.models["telephony.FaxQualityEnum"].enum,
                 sendType: schema.models["telephony.FaxCampaignSendTypeEnum"].enum,
                 recipientsType: schema.models["telephony.FaxCampaignRecipientsTypeEnum"].enum
             };
@@ -35,8 +35,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxCampaignsAddC
             recipientsType: self.campaign.recipientsType,
             documentId: doc.id,
             name: self.campaign.name,
-
-            // faxQuality: self.campaign.quality,      @missing-api
+            faxQuality: self.campaign.faxQuality,
             sendType: self.campaign.sendType,
             sendDate: setCampainDateTime(),
             recipientsList: _.words(self.campaign.recipientsList),
@@ -134,7 +133,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxCampaignsAddC
         return fetchEnums().then(function (enums) {
             self.enums = enums;
 
-            self.campaign.quality = "normal";
+            self.campaign.faxQuality = "normal";
             self.campaign.sendType = _.last(_.pull(self.enums.sendType, "automatic")); // scheduled
             self.campaign.recipientsType = "list";
 
