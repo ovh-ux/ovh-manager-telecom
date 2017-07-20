@@ -183,11 +183,11 @@ angular.module("managerApp").service("TelephonySidebar", function ($q, $translat
             loading: false,
             enabled: true,
             action: function () {
-                this.loading = true;
+                self.mainSectionItem.viewMore.loading = true;
                 return self.fetchData().catch(function (error) {
                     return new ToastError(error);
                 }).finally(function () {
-                    this.loading = false;
+                    self.mainSectionItem.viewMore.loading = false;
                 });
             }
         };
