@@ -66,6 +66,7 @@
    <translation id="telephony_line_phone_configuration_config_rtp_base_port">Port de base du RTP</translation>
    <translation id="telephony_line_phone_configuration_config_vlan_data_id">Identifiant données du VLAN</translation>
    <translation id="telephony_line_phone_configuration_config_vlan_mode">Mode du VLAN</translation>
+   <translation id="telephony_line_phone_configuration_config_cdp">CDP</translation>
    <translation id="telephony_line_phone_configuration_config_vlan_voice_id">Identifiant voix du VLAN</translation>
    <translation id="telephony_line_phone_configuration_config_outbound_proxy_port">Port distant du serveur proxy</translation>
    <translation id="telephony_line_phone_configuration_config_use_outbound_proxy">Utiliser le proxy</translation>
@@ -98,6 +99,7 @@
    <translation id="telephony_line_phone_configuration_config_speaker_volume">Volume sonnerie du haut parleur</translation>
    <translation id="telephony_line_phone_configuration_config_handset_tone_volume">Volume sonnerie du combiné</translation>
    <translation id="telephony_line_phone_configuration_config_handset_volume">Volume du combiné</translation>
+   <translation id="telephony_line_phone_configuration_config_bluetooth_volume">Volume du bluetooth</translation>
    <translation id="telephony_line_phone_configuration_config_call_pickup_visual_alert">Alerte visuelle au décrochage</translation>
    <translation id="telephony_line_phone_configuration_config_call_pickup_beep_alert">Bip au décrochage</translation>
    <translation id="telephony_line_phone_configuration_config_semi_attend_tran_enable">Transfert sur raccroché</translation>
@@ -114,6 +116,7 @@
    <translation id="telephony_line_phone_configuration_config_display_contrast">Contraste de l'écran</translation>
    <translation id="telephony_line_phone_configuration_config_display_name">DisplayName</translation>
    <translation id="telephony_line_phone_configuration_config_auth_resync">AuthResync</translation>
+   <translation id="telephony_line_phone_configuration_config_lcd_timer">LCDTimer</translation>
    <translation id="telephony_line_phone_configuration_config_local_sip_port">LocalSipPort</translation>
    <translation id="telephony_line_phone_configuration_config_send_audio_to_speaker">Mode haut parleur</translation>
    <translation id="telephony_line_phone_configuration_config_station_name">StationName</translation>
