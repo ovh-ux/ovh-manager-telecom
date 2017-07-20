@@ -5,22 +5,27 @@
 
     <ul class="services-list" data-ng-if="!loaders.services && VoipLine.services.length > 0">
         <li class="service-item" data-ng-repeat="service in VoipLine.services track by service.domain">
-            <a data-a-disabled="true" class="service-button">
+            <a class="service-button"
+               data-ui-sref="telecom.telephony.line({
+                   billingAccount: service.billingAccount,
+                   serviceName: service.domain
+               })">
                 <span class="ovh-font ovh-font-phone" aria-hidden="true"></span>
 
                 <div class="service-button-description">
-                    <div class="description-title">{{ service.domain }}</div>
-                    <div class="description-subtext">{{ service.billingAccount }}</div>
+                    <div class="description-title" data-ng-bind="service.domain"></div>
+                    <div class="description-subtext" data-ng-bind="service.billingAccount"></div>
                 </div>
             </a>
         </li>
     </ul>
 
-    <a data-ng-if="service.available > 0"
-        data-ui-sref="telecom.pack.voipLine-activation"
-        class="pull-right telecom-link order-service"
-        title="{{:: 'common_order_activate_service' | translate }}">
-        <span class="ovh-font ovh-font-activer fs16 right-space-m4" aria-hidden="true"></span>
-        <span class="data-ng-binding" data-translate="common_order_activate_service"></span>
-    </a>
+    <div class="order-service">
+        <a data-ng-if="service.available > 0"
+            data-ui-sref="telecom.pack.voipLine-activation"
+            class="btn btn-link">
+            <span class="ovh-font ovh-font-activer fs16 right-space-m4" aria-hidden="true"></span>
+            <span class="data-ng-binding" data-translate="common_order_activate_service"></span>
+        </a>
+    </div>
 </div>

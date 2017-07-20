@@ -2,16 +2,17 @@
     <form name="wifiForm" class="ovh-form-flat">
         <div class="form-group service-item col-xs-12 col-md-6 col-lg-5 left-space-p0 right-space-p0">
 
-            <a class="service-button service-button-checkbox"
-               data-a-disabled="!WifiCtrl.mediator.capabilities.canChangeWLAN || (WifiCtrl.mediator.tasks.changeModemConfigWLAN === true)"
-                data-ui-sref="telecom.pack.xdsl.modem.wifi({ wifiName: WifiCtrl.wifi.wifiName })"
-                role="button">
+            <button
+                type="button"
+                class="service-button service-button-checkbox no-style"
+                data-ng-disabled="!WifiCtrl.mediator.capabilities.canChangeWLAN || (WifiCtrl.mediator.tasks.changeModemConfigWLAN === true)"
+                data-ui-sref="telecom.pack.xdsl.modem.wifi({ wifiName: WifiCtrl.wifi.wifiName })">
 
                 <div class="link-name">
                     <span class="service-button-right-text" data-translate="xdsl_modem_wifi_configure"></span>
                     <i class="ovh-font ovh-font-arrow-right"></i>
                 </div>
-            </a>
+            </button>
 
             <div class="service-button-description-outside">
                 <flat-checkbox data-ng-hide="WifiCtrl.mediator.tasks.changeModemConfigWLAN">

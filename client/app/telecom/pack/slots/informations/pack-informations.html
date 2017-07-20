@@ -31,7 +31,6 @@
             <div class="col-sm-8">
                 <a class="service-button"
                    data-ng-if="Pack.pack.informations.status === 'ok'"
-                   data-a-disabled="Pack.pack.informations.status !== 'ok'"
                    data-ui-sref="telecom.pack.migration">
                     <div class="service-button-description">
                         <span class="link-description" data-ng-bind="Pack.pack.offerDescription"></span>
@@ -64,11 +63,9 @@
             <div class="col-sm-4" data-translate="pack_xdsl_engaged_date"></div>
             <div class="col-sm-8">
                 <a class="service-button"
-                    data-ng-if="!PackInformation.resiliationFollowUp && Pack.pack.informations.status === 'ok'"
-                    data-a-disabled="!!PackInformation.resiliationFollowUp"
-                    data-ng-if="!PackInformation.resiliationFollowUp"
-                    title="{{ 'pack_offer_migration' | translate }}"
-                    data-ui-sref="telecom.pack.resiliation">
+                   data-ng-if="!PackInformation.resiliationFollowUp && Pack.pack.informations.status === 'ok'"
+                   data-translate-attr="{ title: 'pack_offer_migration' }"
+                   data-ui-sref="telecom.pack.resiliation">
                     <div class="service-button-description">
                         <span class="link-description"
                               data-ng-if="!PackInformation.isEngaged"
