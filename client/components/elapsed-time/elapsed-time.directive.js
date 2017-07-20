@@ -13,17 +13,21 @@
  *   - elapsedTime directives are synced and updated at the same time : every directive is updated
  *     in a single angular loop
  */
-angular.module("managerApp").service("ElapsedTimePeriodicUpdater", function ($timeout) {
+angular.module("managerApp").service("ElapsedTimePeriodicUpdater", function ($timeout, $http, $q) {
     "use strict";
 
     var toRefresh = [];
+    var deltaTime = null;
+    var pendingDeltaTime = null;
 
-    function refreshPeriodically () {
+    function refreshPeriodically (delta) {
         _.each(toRefresh, function (callback) {
-            callback();
+            callback(delta);
         });
         if (toRefresh.length) {
-            $timeout(refreshPeriodically, 250);
+            $timeout(function () {
+                refreshPeriodically(delta);
+            }, 250);
         }
     }
 
@@ -33,11 +37,28 @@ angular.module("managerApp").service("ElapsedTimePeriodicUpdater", function ($ti
                 toRefresh.push(callback);
             }
             if (toRefresh.length === 1) {
-                refreshPeriodically();
+                this.getDeltaTime().then(function (delta) {
+                    refreshPeriodically(delta);
+                });
             }
         },
         unregister: function (callback) {
             _.pull(toRefresh, callback);
+        },
+        getDeltaTime: function () {
+            if (deltaTime !== null) {
+                return $q.when(deltaTime);
+            } else if (pendingDeltaTime) {
+                return pendingDeltaTime;
+            } else {
+                pendingDeltaTime = $http.get("/auth/time").then(function (result) {
+                    deltaTime = moment.unix(result.data).diff(moment(), "seconds");
+                    return deltaTime;
+                }).finally(function () {
+                    pendingDeltaTime = null;
+                });
+                return pendingDeltaTime;
+            }
         }
     };
 }).directive("elapsedTime", function (moment, $translatePartialLoader, $translate, $timeout, ElapsedTimePeriodicUpdater) {
@@ -54,9 +75,9 @@ angular.module("managerApp").service("ElapsedTimePeriodicUpdater", function ($ti
             var isLoading = true;
             scope.value = "";
 
-            function refresh () {
+            function refresh (delta) {
                 if (!isLoading) {
-                    var from = moment(scope.from);
+                    var from = moment(scope.from).subtract(delta, "seconds");
                     var days = moment().diff(from, "days");
                     var hours = moment().diff(from, "hours") - (24 * days);
                     var minutes = moment().diff(from, "minutes") - (days * 24 * 60) - (hours * 60);
@@ -90,12 +111,16 @@ angular.module("managerApp").service("ElapsedTimePeriodicUpdater", function ($ti
             $translatePartialLoader.addPart("../components/elapsed-time");
             $translate.refresh().then(function () {
                 isLoading = false;
-                refresh();
+                ElapsedTimePeriodicUpdater.getDeltaTime().then(function (delta) {
+                    refresh(delta);
+                });
             });
 
             // refresh when model changes
             scope.$watch("from", function () {
-                refresh();
+                ElapsedTimePeriodicUpdater.getDeltaTime().then(function (delta) {
+                    refresh(delta);
+                });
             });
 
             ElapsedTimePeriodicUpdater.register(refresh);
