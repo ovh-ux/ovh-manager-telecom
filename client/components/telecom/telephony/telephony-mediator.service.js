@@ -369,7 +369,19 @@ angular.module("managerApp").service("TelephonyMediator", function ($q, $statePa
                     billingAccount: billingAccount
                 }).$promise;
             });
-            return $q.all(promises).then(function (result) {
+            return $q.allSettled(promises).then(angular.noop, function (result) {
+                // filter errors - no need to reject
+                // if a billing account is not well loaded, we don't block the sidebar.
+                var hasGroupNotFound = _.some(result, function (res) {
+                    return res.constructor.name !== "Resource" && res.status === 404;
+                });
+                if (hasGroupNotFound) {
+                    return _.filter(result, function (resource) {
+                        return resource.constructor.name === "Resource";
+                    });
+                }
+                return $q.reject(result);
+            }).then(function (result) {
                 return populateGroupOptions(_.map(result, function (account) {
                     return {
                         key: account.billingAccount,
