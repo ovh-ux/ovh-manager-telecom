@@ -4,9 +4,7 @@ angular.module("managerApp").config(function ($stateProvider) {
         url: "/incomingFax",
         views: {
             "@faxView": {
-                templateUrl: "app/telecom/telephony/fax/consumption/incomingFax/telecom-telephony-fax-consumption-incomingFax.html",
-                controller: "TelecomTelephonyFaxConsumptionIncomingFaxCtrl",
-                controllerAs: "$ctrl"
+                templateUrl: "app/telecom/telephony/fax/consumption/incomingFax/telecom-telephony-fax-consumption-incomingFax.html"
             },
             "@consumptionView": {
                 templateUrl: "app/telecom/telephony/service/consumption/incomingFax/telecom-telephony-service-consumption-incomingFax.html",
