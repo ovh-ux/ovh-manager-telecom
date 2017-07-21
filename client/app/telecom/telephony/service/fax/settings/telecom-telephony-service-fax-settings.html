@@ -90,11 +90,117 @@
                         data-translate="telephony_service_fax_settings_header">
                     </h2>
                 </header>
-                <div class="alert alert-info"
-                     role="alert">
-                    <i class="ovh-font ovh-font-filled-info" aria-hidden="true"></i>
-                    <p data-translate="comming_soon"></p>
-                </div>
+                <form name="faxTagLineForm"
+                      class="form-horizontal ovh-form-flat"
+                      data-ng-submit="SettingsCtrl.updatefaxTagLine()">
+                    <!-- FAX TAG LINE -->
+                    <div class="row bottom-space-m16">
+                        <label for="faxTagLine"
+                               class="col-xs-12 col-md-4 control-label text-left"
+                               data-translate="telephony_service_fax_settings_header">
+                        </label>
+                        <div class="col-xs-12 col-md-8">
+                            <div data-flat-input-container>
+                                <input
+                                    type="text"
+                                    name="faxTagLine"
+                                    id="faxTagLine"
+                                    class="form-control"
+                                    data-ng-model="SettingsCtrl.faxTagLineForm.faxTagLine"
+                                    data-ng-maxlength="50" />
+                            </div>
+                            <div role="alert"
+                                 data-ng-messages="faxTagLineForm.faxTagLine.$error">
+                                <span data-ng-message="maxlength"
+                                      data-translate="telephony_service_fax_settings_header_error_maxlength">
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix">
+                        <button
+                            type="button"
+                            class="btn btn-link bottom-space-m12"
+                            data-ng-click="SettingsCtrl.showFaxTag = !SettingsCtrl.showFaxTag">
+                            <span class="ovh-font"
+                                  data-ng-class="{
+                                      'ovh-font-disclosure-right':!SettingsCtrl.showFaxTag,
+                                      'ovh-font-disclosure-down':SettingsCtrl.showFaxTag
+                                  }"
+                                  aria-hidden="true">
+                            </span>
+                            <span data-translate="telephony_service_fax_settings_header_help"></span>
+                        </button>
+                        <table class="table table-pretty table-hover table-striped"
+                           data-ng-if="SettingsCtrl.showFaxTag">
+                        <tbody>
+                            <tr>
+                                <td>|</td>
+                                <td data-translate="telephony_service_fax_settings_header_help_info0"></td>
+                            </tr>
+                            <tr>
+                                <td>#01#</td>
+                                <td data-translate="telephony_service_fax_settings_header_help_info1"></td>
+                            </tr>
+                            <tr>
+                                <td>#02#</td>
+                                <td data-translate="telephony_service_fax_settings_header_help_info2"></td>
+                            </tr>
+                            <tr>
+                                <td>#03#</td>
+                                <td data-translate="telephony_service_fax_settings_header_help_info3"></td>
+                            </tr>
+                            <tr>
+                                <td>#04#</td>
+                                <td data-translate="telephony_service_fax_settings_header_help_info4"></td>
+                            </tr>
+                            <tr>
+                                <td>#05#</td>
+                                <td data-translate="telephony_service_fax_settings_header_help_info5"></td>
+                            </tr>
+                            <tr>
+                                <td>#06#</td>
+                                <td data-translate="telephony_service_fax_settings_header_help_info6"></td>
+                            </tr>
+                            <tr>
+                                <td>#07#</td>
+                                <td data-translate="telephony_service_fax_settings_header_help_info7"></td>
+                            </tr>
+                            <tr>
+                                <td>#08#</td>
+                                <td data-translate="telephony_service_fax_settings_header_help_info8"></td>
+                            </tr>
+                            <tr>
+                                <td>#09#</td>
+                                <td data-translate="telephony_service_fax_settings_header_help_info8"></td>
+                            </tr>
+                            <tr>
+                                <td>#10#</td>
+                                <td data-translate="telephony_service_fax_settings_header_help_info10"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    </div>
+                    <button
+                        type="submit"
+                        class="btn btn-sm btn-primary"
+                        data-ng-disabled="faxTagLineForm.$invalid ||
+                                          !SettingsCtrl.faxTagLineChanged() ||
+                                          SettingsCtrl.faxTagLineForm.isUpdating">
+                        <span data-ng-if="!SettingsCtrl.faxTagLineForm.isSuccess"
+                              data-translate="telephony_service_fax_settings_header_update">
+                        </span>
+                        <span data-ng-if="SettingsCtrl.faxTagLineForm.isSuccess"
+                              data-translate="telephony_service_fax_settings_header_update_success">
+                        </span>
+                        <i class="ovh-font ovh-font-success fs14 left-space-m4"
+                           data-ng-if="SettingsCtrl.faxTagLineForm.isSuccess">
+                        </i>
+                        <spinner class="left-space-m8"
+                                 data-ng-if="SettingsCtrl.faxTagLineForm.isUpdating">
+                        </spinner>
+                    </button>
+                </form>
             </div>
         </div>
     </div><!-- .row -->
@@ -237,11 +343,11 @@
                         </div>
                     </li>
                 </ul>
-                <p class="text-info text-center bottom-space-m16"
+                <div class="alert alert-info bottom-space-m16"
                    data-ng-if="!SettingsCtrl.settings.redirectionEmail.length">
-                    <i class="ovh-font ovh-font-info right-space-m4"></i>
-                    <span data-translate="telephony_service_fax_settings_addresses_to_notify_empty"></span>
-                </p>
+                    <i class="ovh-font ovh-font-info" aria-hidden="true"></i>
+                    <p data-translate="telephony_service_fax_settings_addresses_to_notify_empty"></p>
+                </div>
                 <form name="faxAddressesToNotifyForm"
                       class="ovh-form-flat"
                       data-ng-submit="SettingsCtrl.addRedirectionEmail()"
