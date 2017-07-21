@@ -3,9 +3,9 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxCampaignsAddC
 
     var self = this;
 
-    /*= ==============================
+    /* ===============================
     =            HELPERS            =
-    ===============================*/
+    =============================== */
 
     function fetchEnums () {
         return OvhApiTelephony.Lexi().schema({
@@ -27,20 +27,56 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxCampaignsAddC
         return self.campaign.sendDate;
     }
 
-    function createCampaign (doc) {
-        return OvhApiTelephony.Fax().Campaigns().Lexi().create({
-            billingAccount: $stateParams.billingAccount,
-            serviceName: $stateParams.serviceName
-        }, {
+    self.checkValidPdfExtention = function (file) {
+        var fileName = file ? file.name : "";
+        var found = _.endsWith(fileName.toLowerCase(), "pdf");
+        if (!found) {
+            ToastError($translate.instant("telephony_service_fax_campaigns_add_campaign_file_invalid"));
+        }
+        return found;
+    };
+
+    self.checkValidTextExtention = function (file) {
+        var fileName = file ? file.name : "";
+        var found = _.endsWith(fileName.toLowerCase(), "txt");
+        if (!found) {
+            ToastError($translate.instant("telephony_service_fax_campaigns_add_campaign_file_invalid"));
+        }
+        return found;
+    };
+
+    function uploadDocuments () {
+        var promise = {};
+        promise.pdf = OvhApiMe.Document().Lexi().upload(
+            self.campaign.uploadedFile.name,
+            self.campaign.uploadedFile
+        );
+        if (self.campaign.recipientsType === "document" && self.campaign.recipientsDocFile) {
+            promise.recipientsDoc = OvhApiMe.Document().Lexi().upload(
+                self.campaign.recipientsDocFile.name,
+                self.campaign.recipientsDocFile
+            );
+        }
+        return $q.all(promise);
+    }
+
+    function createCampaign (docs) {
+        var campaign = {
             recipientsType: self.campaign.recipientsType,
-            documentId: doc.id,
+            documentId: _.get(docs, "pdf.id"),
             name: self.campaign.name,
             faxQuality: self.campaign.faxQuality,
             sendType: self.campaign.sendType,
             sendDate: setCampainDateTime(),
-            recipientsList: _.words(self.campaign.recipientsList),
-            recipientsDocId: self.campaign.recipientsDocId
-        }).$promise.catch(function (error) {
+            recipientsList: _.words(self.campaign.recipientsList)
+        };
+        if (self.campaign.recipientsType === "document" && _.has(docs, "recipientsDoc.id")) {
+            campaign.recipientsDocId = _.get(docs, "recipientsDoc.id");
+        }
+        return OvhApiTelephony.Fax().Campaigns().Lexi().create({
+            billingAccount: $stateParams.billingAccount,
+            serviceName: $stateParams.serviceName
+        }, campaign).$promise.catch(function (error) {
             return self.cancel({
                 type: "API",
                 message: _.get(error, "data.message")
@@ -48,11 +84,11 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxCampaignsAddC
         });
     }
 
-    /* -----  End of HELPERS  ------*/
+    /* -----  End of HELPERS  ------ */
 
-    /*= ==============================
-    =            ACTIONS            =
-    ===============================*/
+    /* ===============================
+    =            EVENTS            =
+    =============================== */
 
     self.openDatePicker = function ($event) {
         $event.preventDefault();
@@ -60,36 +96,29 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxCampaignsAddC
         self.picker.dateOpened = true;
     };
 
-    self.checkValidPdfExtention = function (file) {
-        var fileName = file ? file.name : "";
-        var found = _.endsWith(fileName.toLowerCase(), "pdf");
-        if (!found) {
-            ToastError($translate.instant("telephony_fax_campaigns_add_campaign_file_invalid"));
-        }
-        return found;
-    };
+    /* -----  End of EVENTS  ------ */
+
+    /* ===============================
+    =            ACTIONS            =
+    =============================== */
 
     self.add = function () {
         self.loading.add = true;
-        return OvhApiMe.Document().Lexi().upload(
-            self.campaign.uploadedFile.name,
-            self.campaign.uploadedFile
-        ).then(function (doc) {
-            return $q.all({
-                create: createCampaign(doc),
-                noop: $timeout(angular.noop, 1000)
-            }).then(function () {
+        return uploadDocuments().then(function (docs) {
+            return $q.all([
+                createCampaign(docs),
+                $timeout(angular.noop, 1000)
+            ]).then(function () {
                 self.loading.add = false;
                 self.added = true;
                 return $timeout(self.close, 1500);
             });
-        })
-            .catch(function (error) {
-                return self.cancel({
-                    type: "API",
-                    message: _.get(error, "data.message")
-                });
+        }).catch(function (error) {
+            return self.cancel({
+                type: "API",
+                message: _.get(error, "data.message")
             });
+        });
     };
 
     self.cancel = function (message) {
@@ -100,11 +129,11 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxCampaignsAddC
         return $uibModalInstance.close(true);
     };
 
-    /* -----  End of ACTIONS  ------*/
+    /* -----  End of ACTIONS  ------ */
 
-    /*= =====================================
+    /* ======================================
     =            INITIALIZATION            =
-    ======================================*/
+    ====================================== */
 
     function init () {
         self.loading = {
@@ -125,8 +154,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxCampaignsAddC
         };
 
         self.pattern = {
-            recipientsList: /^\+?\d{6,17}([,;\s]\+?\d{6,17})*$/,
-            recipientsDocId: /^(https?):\/\/.*$/
+            recipientsList: /^\+?\d{6,17}([,;\s]\+?\d{6,17})*$/
         };
 
         self.loading.init = true;
@@ -150,7 +178,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxCampaignsAddC
         });
     }
 
-    /* -----  End of INITIALIZATION  ------*/
+    /* -----  End of INITIALIZATION  ------ */
 
     init();
 });

@@ -51,18 +51,18 @@
         <!-- DOCUMENT -->
         <div class="form-group top-space-m16">
             <div class="row flex-row-center">
-                <div class="col-xs-4">
+                <div class="col-xs-6">
                     <label for="document"
                            class="control-label"
                            data-translate="telephony_service_fax_campaigns_add_campaign_label_document">
                     </label>
                 </div>
-                <div class="col-xs-8">
+                <div class="col-xs-6">
                     <input-file id="document"
                                 data-ng-model="CampaignsAddCtrl.campaign.uploadedFile"
                                 data-ng-accept="application/pdf"
-                                data-ng-accept-filter="CampaignsAddCtrl.checkValidPdfExtention">
-                        <i class="fa fa-upload right-space-m4"></i>
+                                data-ng-accept-filter="CampaignsAddCtrl.checkValidPdfExtention(file)">
+                        <i class="fa fa-upload right-space-m4" aria-hidden="true"></i>
                         <span data-translate="telephony_service_fax_campaigns_add_campaign_label_file"></span>
                     </input-file>
                 </div>
@@ -190,7 +190,6 @@
                 </span>
             </label>
 
-            <!--
             <label class="block top-space-m12 pointer">
                 <flat-radio>
                     <input
@@ -204,7 +203,6 @@
                       data-translate="telephony_service_fax_campaigns_add_campaign_label_recipients_type_document">
                 </span>
             </label>
-            -->
         </div>
 
         <!-- RECIPIENTS LIST -->
@@ -240,41 +238,26 @@
         </div>
 
         <!-- RECIPIENTS DOC ID -->
-        <!--
-        <div class="form-group bottom-space-m16"
+        <div class="form-group top-space-m16"
              data-ng-if="CampaignsAddCtrl.campaign.recipientsType === 'document'">
-            <div flat-input-container>
-                <label for="recipientsDocId"
-                       class="control-label"
-                       data-translate="telephony_service_fax_campaigns_add_campaign_label_recipients_type_document">
-                </label>
-                <input
-                    type="url"
-                    name="recipientsDocId"
-                    id="recipientsDocId"
-                    class="form-control"
-                    data-ng-model="CampaignsAddCtrl.campaign.recipientsDocId"
-                    data-ng-pattern="CampaignsAddCtrl.pattern.recipientsDocId"
-                    data-ng-required="CampaignsAddCtrl.campaign.recipientsType === 'document'"
-                    data-translate-attr="{ placeholder: 'telephony_service_fax_campaigns_add_campaign_placeholder_recipients_doc_id' }" />
-                <div role="alert"
-                     data-ng-messages="addTelephonyFaxCampaignForm.recipientsDocId.$dirty && addTelephonyFaxCampaignForm.recipientsDocId.$error">
-                    <p class="text-danger"
-                       data-ng-message="required"
-                       data-translate="telephony_service_fax_campaigns_add_campaign_recipients_doc_id_error_required">
-                    </p>
-                    <p class="text-danger"
-                       data-ng-message="pattern"
-                       data-translate="telephony_service_fax_campaigns_add_campaign_recipients_doc_id_error_pattern">
-                    </p>
-                    <p class="text-danger"
-                       data-ng-message="url"
-                       data-translate="telephony_service_fax_campaigns_add_campaign_recipients_doc_id_error_url">
-                    </p>
+            <div class="row flex-row-center">
+                <div class="col-xs-6">
+                    <label for="recipientsDocId"
+                           class="control-label"
+                           data-translate="telephony_service_fax_campaigns_add_campaign_label_recipients_type_document">
+                    </label>
+                </div>
+                <div class="col-xs-6">
+                    <input-file id="recipientsDocId"
+                                data-ng-model="CampaignsAddCtrl.campaign.recipientsDocFile"
+                                data-ng-accept="application/text"
+                                data-ng-accept-filter="CampaignsAddCtrl.checkValidTextExtention(file)">
+                        <i class="fa fa-upload right-space-m4" aria-hidden="true"></i>
+                        <span data-translate="telephony_service_fax_campaigns_add_campaign_label_file"></span>
+                    </input-file>
                 </div>
             </div>
         </div>
-        -->
 
     </div>
 
@@ -309,6 +292,7 @@
             class="btn btn-primary"
             data-ng-disabled="addTelephonyFaxCampaignForm.$invalid ||
                               !CampaignsAddCtrl.campaign.uploadedFile ||
+                              (CampaignsAddCtrl.campaign.recipientsType === 'document' && !CampaignsAddCtrl.campaign.recipientsDocFile) ||
                               CampaignsAddCtrl.loading.add ||
                               CampaignsAddCtrl.added"
             data-translate="submit">
