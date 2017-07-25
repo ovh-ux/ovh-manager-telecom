@@ -34,5 +34,6 @@ module.exports = {
         "CSV": true,
         "jsPlumb": true,
         "jsPlumbUtil": true,
+        "Raven": true
     }
 };
