@@ -94,7 +94,7 @@ module.exports = function (grunt) {
                     "<%= yeoman.client %>/{app,components}/**/!(*.spec|*.mock).js",
                     "!<%= yeoman.client %>/app/app.js"
                 ],
-                tasks: ["injector:scripts"]
+                tasks: ["babel:dist", "injector:scripts"]
             },
 
             translations: {
@@ -160,6 +160,25 @@ module.exports = function (grunt) {
             all: [
                 "<%= yeoman.client %>/{app,components}/**/!(*.spec|*.mock).js"
             ]
+        },
+
+        //#######################################################################################
+        //##      TASK: babel                                                                  ##
+        //##            For ES6 support                                                        ##
+        //#######################################################################################
+        babel: {
+            options: {
+                presets: ["es2015"]
+            },
+            dist: {
+                files: [{
+                    expand: true,
+                    src: [
+                        "<%= yeoman.client %>/{app,components}/**/*.js"
+                    ],
+                    dest: "<%= yeoman.dist %>"
+                }]
+            }
         },
 
         //#######################################################################################
@@ -459,6 +478,24 @@ module.exports = function (grunt) {
             tpl_karma: {
                 src: "karma.conf.tpl.js",
                 dest: "karma.conf.js"
+            },
+            dev: {
+                files: [{
+                    expand: true,
+                    dot: true,
+                    cwd: "<%= yeoman.client %>",
+                    dest: "<%= yeoman.dist %>/client",
+                    src: [
+                        "components/**/*.html",
+                        "components/**/assets/**/*",
+                        "assets/**/*",
+                        "assets/images/{,*/}*.{webp}",
+                        "assets/fonts/**/*",
+                        "assets/sounds/**/*",
+                        "app/**/!(*.tpl).html",
+                        "index.html"
+                    ]
+                }]
             }
         },
 
@@ -557,9 +594,8 @@ module.exports = function (grunt) {
             scripts: {
                 options: {
                     transform: function (filePath) {
-                        var yoClient = grunt.config.get("yeoman.client");
-                        filePath = filePath.replace("/" + yoClient + "/", "");
-                        filePath = filePath.replace("/<%= yeoman.tmp %>/", "");
+                        var yoDist = grunt.config.get("yeoman.dist");
+                        filePath = filePath.replace("/" + yoDist + "/client/", "");
                         return "<script src=\"" + filePath + "\"></script>";
                     },
                     sort: function (a, b) {
@@ -574,12 +610,12 @@ module.exports = function (grunt) {
                 },
                 files: {
                     "<%= yeoman.client %>/index.html": [
-                            "{<%= yeoman.tmp %>,<%= yeoman.client %>}/{app,components}/**/!(*.spec|*.mock).js",
-                            "!<%= yeoman.client %>/app/config/*.js",
-                            "<%= yeoman.client %>/app/config/" + mode + ".js",
-                            "<%= yeoman.client %>/app/config/all.js",
-                            "!{<%= yeoman.tmp %>,<%= yeoman.client %>}/app/app.js"
-                        ]
+                        "<%= yeoman.dist %>/<%= yeoman.client %>/{app,components}/**/!(*.spec|*.mock).js",
+                        "!<%= yeoman.dist %>/<%= yeoman.client %>/app/config/*.js",
+                        "<%= yeoman.dist %>/<%= yeoman.client %>/app/config/" + mode + ".js",
+                        "<%= yeoman.dist %>/<%= yeoman.client %>/app/config/all.js",
+                        "!<%= yeoman.dist %>/<%= yeoman.client %>/app/app.js"
+                    ]
                 }
             },
 
@@ -785,6 +821,7 @@ module.exports = function (grunt) {
         grunt.task.run([
             "clean:server",
             "env:all",
+            "babel:dist",
             "ngconstant",
             "concurrent:templates",
             "injector",
@@ -794,6 +831,7 @@ module.exports = function (grunt) {
             "postcss",
             "ovhTranslation",
             "json_merge",
+            "copy:dev",
             "express:dev",
             "wait",
             "open",
