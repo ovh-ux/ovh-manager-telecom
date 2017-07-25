@@ -22,6 +22,17 @@ module.exports = function (grunt) {
 
     var mode = grunt.option("mode") || "dev";
 
+    var copyDevTest = [
+        "components/**/*.html",
+        "components/**/assets/**/*",
+        "assets/**/*",
+        "assets/images/{,*/}*.{webp}",
+        "assets/fonts/**/*",
+        "assets/sounds/**/*",
+        "app/**/!(*.tpl).html",
+        "index.html"
+    ];
+
     grunt.loadTasks("./tasks");
 
     // Time how long tasks take. Can help when optimizing build times
@@ -177,6 +188,15 @@ module.exports = function (grunt) {
                         "<%= yeoman.client %>/{app,components}/**/*.js"
                     ],
                     dest: "<%= yeoman.dist %>"
+                }]
+            },
+            test: {
+                files: [{
+                    expand: true,
+                    src: [
+                        "<%= yeoman.client %>/{app,components}/**/*.js"
+                    ],
+                    dest: "<%= yeoman.tmp %>"
                 }]
             }
         },
@@ -485,16 +505,16 @@ module.exports = function (grunt) {
                     dot: true,
                     cwd: "<%= yeoman.client %>",
                     dest: "<%= yeoman.dist %>/client",
-                    src: [
-                        "components/**/*.html",
-                        "components/**/assets/**/*",
-                        "assets/**/*",
-                        "assets/images/{,*/}*.{webp}",
-                        "assets/fonts/**/*",
-                        "assets/sounds/**/*",
-                        "app/**/!(*.tpl).html",
-                        "index.html"
-                    ]
+                    src: copyDevTest
+                }]
+            },
+            test: {
+                files: [{
+                    expand: true,
+                    dot: true,
+                    cwd: "<%= yeoman.client %>",
+                    dest: "<%= yeoman.tmp %>/client",
+                    src: copyDevTest
                 }]
             }
         },
@@ -848,8 +868,10 @@ module.exports = function (grunt) {
         return grunt.task.run([
             "clean",
             "env:all",
+            "babel:test",
             "ngconstant",
             "concurrent:templates",
+            "copy:test",
             "wiredep:client",
             "wiredep:test",
             "eslint:all",
