@@ -428,58 +428,56 @@ module.exports = function (grunt) {
         //#######################################################################################
         copy: {
             dist: {
-                files: [
-                    {
-                        expand: true,
-                        dot: true,
-                        cwd: "<%= yeoman.client %>",
-                        dest: "<%= yeoman.dist %>/client",
-                        src: [
-                            "*.{ico,png,txt}",
-                            "bower_components/**/*.{ttf,woff,woff2,svg,eot}",
-                            "bower_components/bootstrap/dist/css/bootstrap.min.css",
-                            "bower_components/angular-i18n/**.js",
-                            "components/**/*.html",
-                            "components/**/assets/**/*",
-                            ".htaccess",
-                            "assets/**/*",
-                            "assets/images/{,*/}*.{webp}",
-                            "assets/fonts/**/*",
-                            "assets/sounds/**/*",
-                            "app/**/!(*.tpl).html",
-                            "index.html"
-                        ]
-                    }, {
-                        expand: true,
-                        cwd: "<%= yeoman.tmp %>/images",
-                        dest: "<%= yeoman.dist %>/client/assets/images",
-                        src: ["generated/*"]
-                    }, {
-                        expand: true,
-                        dest: "<%= yeoman.dist %>",
-                        src: [
-                            "package.json",
-                            "<%= yeoman.server %>/**/*"
-                        ]
-                    }, {
-                        expand : true,
-                        cwd: "<%= yeoman.tmp %>",
-                        dest: "<%= yeoman.dist %>/client",
-                        src : ["**/translations/*.json"]
-                    }, {
-                        cwd: "<%= yeoman.client %>",
-                        expand: true,
-                        dest: "<%= yeoman.dist %>/client",
-                        src: "usertests/**/*"
-                    }, {
-                        expand: true,
-                        cwd: "<%= yeoman.client %>",
-                        dest: "<%= yeoman.dist %>/client",
-                        src: [
-                            "bower_components/**/dist/**/Messages_*.json"
-                        ]
-                    }
-                ]
+                files: [{
+                    expand: true,
+                    dot: true,
+                    cwd: "<%= yeoman.client %>",
+                    dest: "<%= yeoman.dist %>/client",
+                    src: [
+                        "*.{ico,png,txt}",
+                        "bower_components/**/*.{ttf,woff,woff2,svg,eot}",
+                        "bower_components/bootstrap/dist/css/bootstrap.min.css",
+                        "bower_components/angular-i18n/**.js",
+                        "components/**/*.html",
+                        "components/**/assets/**/*",
+                        ".htaccess",
+                        "assets/**/*",
+                        "assets/images/{,*/}*.{webp}",
+                        "assets/fonts/**/*",
+                        "assets/sounds/**/*",
+                        "app/**/!(*.tpl).html",
+                        "index.html"
+                    ]
+                }, {
+                    expand: true,
+                    cwd: "<%= yeoman.tmp %>/images",
+                    dest: "<%= yeoman.dist %>/client/assets/images",
+                    src: ["generated/*"]
+                }, {
+                    expand: true,
+                    dest: "<%= yeoman.dist %>",
+                    src: [
+                        "package.json",
+                        "<%= yeoman.server %>/**/*"
+                    ]
+                }, {
+                    expand : true,
+                    cwd: "<%= yeoman.tmp %>",
+                    dest: "<%= yeoman.dist %>/client",
+                    src : ["**/translations/*.json"]
+                }, {
+                    cwd: "<%= yeoman.client %>",
+                    expand: true,
+                    dest: "<%= yeoman.dist %>/client",
+                    src: "usertests/**/*"
+                }, {
+                    expand: true,
+                    cwd: "<%= yeoman.client %>",
+                    dest: "<%= yeoman.dist %>/client",
+                    src: [
+                        "bower_components/**/dist/**/Messages_*.json"
+                    ]
+                }]
             },
             styles: {
                 expand: true,
@@ -881,6 +879,7 @@ module.exports = function (grunt) {
 
     grunt.registerTask("buildProd", [
         "clean:dist",
+        "babel:dist",
         "ngconstant",
         "concurrent:templates",
         "injector",
