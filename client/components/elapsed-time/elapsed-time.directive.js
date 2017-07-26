@@ -50,15 +50,14 @@ angular.module("managerApp").service("ElapsedTimePeriodicUpdater", function ($ti
                 return $q.when(deltaTime);
             } else if (pendingDeltaTime) {
                 return pendingDeltaTime;
-            } else {
-                pendingDeltaTime = $http.get("/auth/time").then(function (result) {
-                    deltaTime = moment.unix(result.data).diff(moment(), "seconds");
-                    return deltaTime;
-                }).finally(function () {
-                    pendingDeltaTime = null;
-                });
-                return pendingDeltaTime;
             }
+            pendingDeltaTime = $http.get("/auth/time").then(function (result) {
+                deltaTime = moment.unix(result.data).diff(moment(), "seconds");
+                return deltaTime;
+            }).finally(function () {
+                pendingDeltaTime = null;
+            });
+            return pendingDeltaTime;
         }
     };
 }).directive("elapsedTime", function (moment, $translatePartialLoader, $translate, $timeout, ElapsedTimePeriodicUpdater) {
