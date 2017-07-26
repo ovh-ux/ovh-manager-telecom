@@ -2,219 +2,183 @@
 
     <!-- Synchonisation -->
 
-    <section>
-        <h3 data-translate="xdsl_statistics_sync_title"
-            class="top-space-m16">
-        </h3>
+    <section class="bottom-space-m16">
+        <h3 data-translate="xdsl_statistics_sync_title"></h3>
 
-        <div class="row">
-            <div class="col-md-12">
-                <div data-chartjs="XdslStatistics.synchronization.chart" class="chart-container"></div>
-            </div>
-        </div>
-
-        <div class="row top-space-m32">
-            <div class="col-md-12">
-
-                <div class="space-m20 alert alert-warning " role="alert"
-                    data-ng-if="!XdslStatistics.synchronization.haveSeries && !XdslStatistics.synchronization.loading"
-                    data-translate="xdsl_statistics_error">
-                    <i class="ovh-font ovh-font-filled-warning"></i>
+        <form class="form-horizontal"
+            data-ng-if="XdslStatistics.synchronization.haveSeries">
+            <div class="form-group">
+                <label for="syncPeriod"
+                    class="col-xs-3 col-md-2 control-label text-left"
+                    data-translate="xdsl_statistics_period">
+                </label>
+                <div class="col-xs-9 col-md-10 clearfix">
+                    <select flat-select
+                            id="syncPeriod"
+                            name="syncPeriod"
+                            class="form-control"
+                            data-ng-disabled="XdslStatistics.synchronization.loading"
+                            data-ng-change="XdslStatistics.getSynchronizationStatistics(XdslStatistics.synchronization.period)"
+                            data-ng-model="XdslStatistics.synchronization.period"
+                            data-ng-options="'xdsl_statistics_' + period  + '_label'| translate for period in XdslStatistics.periodOptions">
+                    </select>
                 </div>
-
-                <form class="form-horizontal"
-                    data-ng-if="XdslStatistics.synchronization.haveSeries">
-                    <div class="row form-group">
-                        <label for="syncPeriod"
-                            class="control-label col-xs-2"
-                            data-translate="xdsl_statistics_period">
-                        </label>
-                        <div class="col-xs-3">
-                            <select flat-select id="syncPeriod"
-                                    name="syncPeriod"
-                                    class="form-control"
-                                    data-ng-disabled="XdslStatistics.synchronization.loading"
-                                    data-ng-change="XdslStatistics.getSynchronizationStatistics(XdslStatistics.synchronization.period)"
-                                    data-ng-model="XdslStatistics.synchronization.period"
-                                    data-ng-options="'xdsl_statistics_' + period  + '_label'| translate for period in XdslStatistics.periodOptions">
-                            </select>
-                        </div>
-                    </div>
-                </form>
             </div>
+        </form>
+
+        <div data-chartjs="XdslStatistics.synchronization.chart" class="chart-container"></div>
+
+        <div class="top-space-m16 bottom-space-m16 alert alert-warning " role="alert"
+            data-ng-if="!XdslStatistics.synchronization.haveSeries && !XdslStatistics.synchronization.loading"
+            data-translate="xdsl_statistics_error">
+            <span class="ovh-font ovh-font-filled-warning" aria-hidden="true"></span>
+            <p data-translate="xdsl_statistics_error"></p>
         </div>
+
     </section>
 
 
     <!--     Traffic    -->
-    <section>
+    <section class="bottom-space-m16">
         <h3 data-translate="xdsl_statistics_traffic_title"></h3>
 
-        <div class="row">
-            <div class="col-md-12">
-                <div data-chartjs="XdslStatistics.traffic.chart" class="chart-container"></div>
-            </div>
-        </div>
-
-        <div class="row top-space-m32">
-            <div class="col-md-12">
-
-                <div class="space-m20 alert alert-warning"
-                    role="alert"
-                    data-ng-if="!XdslStatistics.traffic.haveSeries && !XdslStatistics.traffic.loading">
-                    <i class="ovh-font ovh-font-filled-warning"></i>
-                    <p data-translate="xdsl_statistics_error"></p>
+        <form class="form-horizontal"
+            data-ng-if="XdslStatistics.traffic.haveSeries">
+            <div class="form-group">
+                <label for="trafficPeriod"
+                    class="col-xs-3 col-md-2 control-label text-left"
+                    data-translate="xdsl_statistics_period">
+                </label>
+                <div class="col-xs-9 col-md-10 clearfix">
+                    <select flat-select
+                            id="trafficPeriod"
+                            name="trafficPeriod"
+                            class="form-control"
+                            data-ng-disabled="XdslStatistics.traffic.loading"
+                            data-ng-change="XdslStatistics.getTrafficStatistics(XdslStatistics.traffic.period)"
+                            data-ng-model="XdslStatistics.traffic.period"
+                            data-ng-options="'xdsl_statistics_' + period  + '_label'| translate for period in XdslStatistics.periodOptions">
+                    </select>
                 </div>
-
-                <form class="form-horizontal"
-                    data-ng-if="XdslStatistics.traffic.haveSeries">
-                    <div class="row form-group">
-                        <label for="trafficPeriod"
-                            class="control-label col-xs-2"
-                            data-translate="xdsl_statistics_period">
-                        </label>
-                        <div class="col-xs-3">
-                            <select flat-select id="trafficPeriod"
-                                    name="trafficPeriod"
-                                    class="form-control"
-                                    data-ng-disabled="XdslStatistics.traffic.loading"
-                                    data-ng-change="XdslStatistics.getTrafficStatistics(XdslStatistics.traffic.period)"
-                                    data-ng-model="XdslStatistics.traffic.period"
-                                    data-ng-options="'xdsl_statistics_' + period  + '_label'| translate for period in XdslStatistics.periodOptions">
-                            </select>
-                        </div>
-                    </div>
-                </form>
             </div>
+        </form>
+
+        <div data-chartjs="XdslStatistics.traffic.chart" class="chart-container"></div>
+
+        <div class="top-space-m16 bottom-space-m16 alert alert-warning"
+            role="alert"
+            data-ng-if="!XdslStatistics.traffic.haveSeries && !XdslStatistics.traffic.loading">
+            <span class="ovh-font ovh-font-filled-warning"></span>
+            <p data-translate="xdsl_statistics_error"></p>
         </div>
+
     </section>
 
     <!--     Ping       -->
-    <section>
+    <section class="bottom-space-m16">
         <h3 data-translate="xdsl_statistics_ping_title"></h3>
-        
-        <div class="row">
-            <div class="col-md-12">
-                <div data-chartjs="XdslStatistics.ping.chart" class="chart-container"></div>
-            </div>
-        </div>
 
-        <div class="row top-space-m32">
-            <div class="col-md-12">
-
-                <div class="space-m20 alert alert-warning"
-                    role="alert"
-                    data-ng-if="!XdslStatistics.ping.haveSeries && !XdslStatistics.ping.loading">
-                    <i class="ovh-font ovh-font-filled-warning"></i>
-                    <p data-translate="xdsl_statistics_error"></p>
+        <form class="form-horizontal"
+            data-ng-if="XdslStatistics.ping.haveSeries">
+            <div class="form-group">
+                <label for="pingPeriod"
+                    class="col-xs-3 col-md-2 control-label text-left"
+                    data-translate="xdsl_statistics_period">
+                </label>
+                <div class="col-xs-9 col-md-10 clearfix">
+                    <select flat-select
+                            id="pingPeriod"
+                            name="pingPeriod"
+                            class="form-control"
+                            data-ng-disabled="XdslStatistics.ping.loading"
+                            data-ng-change="XdslStatistics.getPingStatistics(XdslStatistics.ping.period)"
+                            data-ng-model="XdslStatistics.ping.period"
+                            data-ng-options="'xdsl_statistics_' + period  + '_label'| translate for period in XdslStatistics.periodOptions">
+                    </select>
                 </div>
-
-                <form class="row form-horizontal"
-                    data-ng-if="XdslStatistics.ping.haveSeries">
-                    <div class="row form-group">
-                        <label for="pingPeriod"
-                            class="control-label col-xs-2"
-                            data-translate="xdsl_statistics_period">
-                        </label>
-                        <div class="col-xs-3">
-                            <select flat-select id="pingPeriod"
-                                    name="pingPeriod"
-                                    class="form-control"
-                                    data-ng-disabled="XdslStatistics.ping.loading"
-                                    data-ng-change="XdslStatistics.getPingStatistics(XdslStatistics.ping.period)"
-                                    data-ng-model="XdslStatistics.ping.period"
-                                    data-ng-options="'xdsl_statistics_' + period  + '_label'| translate for period in XdslStatistics.periodOptions">
-                            </select>
-                        </div>
-                    </div>
-                </form>
             </div>
+        </form>
+
+        <div data-chartjs="XdslStatistics.ping.chart" class="chart-container"></div>
+
+        <div class="top-space-m16 bottom-space-m16 alert alert-warning"
+            role="alert"
+            data-ng-if="!XdslStatistics.ping.haveSeries && !XdslStatistics.ping.loading">
+            <span class="ovh-font ovh-font-filled-warning" aria-hidden="true"></span>
+            <p data-translate="xdsl_statistics_error"></p>
         </div>
+
     </section>
 
     <!--      snr       -->
-    <section>
+    <section class="bottom-space-m16">
         <h3 data-translate="xdsl_statistics_snr_title"></h3>
 
-        <div class="row">
-            <div class="col-md-12">
-                <div data-chartjs="XdslStatistics.snr.chart" class="chart-container"></div>
-            </div>
-        </div>
-
-        <div class="row top-space-m32">
-            <div class="col-md-12">
-
-                <div class="space-m20 alert alert-warning"
-                    role="alert"
-                    data-ng-if="!XdslStatistics.snr.haveSeries && !XdslStatistics.snr.loading">
-                    <i class="ovh-font ovh-font-filled-warning"></i>
-                    <p data-translate="xdsl_statistics_error"></p>
+        <form class="form-horizontal"
+            data-ng-if="XdslStatistics.snr.haveSeries">
+            <div class="form-group">
+                <label for="snrPeriod"
+                    class="col-xs-3 col-md-2 control-label text-left"
+                    data-translate="xdsl_statistics_period">
+                </label>
+                <div class="col-xs-9 col-md-10 clearfix">
+                    <select flat-select
+                            id="snrPeriod"
+                            name="snrPeriod"
+                            class="form-control"
+                            data-ng-disabled="XdslStatistics.snr.loading"
+                            data-ng-change="XdslStatistics.getSNRstatistics(XdslStatistics.snr.period)"
+                            data-ng-model="XdslStatistics.snr.period"
+                            data-ng-options="'xdsl_statistics_' + period  + '_label'| translate for period in XdslStatistics.periodOptions">
+                    </select>
                 </div>
-
-                <form class="form-horizontal"
-                    data-ng-if="XdslStatistics.snr.haveSeries">
-                    <div class="row form-group">
-                        <label for="snrPeriod"
-                            class="control-label col-xs-2"
-                            data-translate="xdsl_statistics_period">
-                        </label>
-                        <div class="col-xs-3">
-                            <select flat-select id="snrPeriod"
-                                    name="snrPeriod"
-                                    class="form-control"
-                                    data-ng-disabled="XdslStatistics.snr.loading"
-                                    data-ng-change="XdslStatistics.getSNRstatistics(XdslStatistics.snr.period)"
-                                    data-ng-model="XdslStatistics.snr.period"
-                                    data-ng-options="'xdsl_statistics_' + period  + '_label'| translate for period in XdslStatistics.periodOptions">
-                            </select>
-                        </div>
-                    </div>
-                </form>
             </div>
+        </form>
+
+        <div data-chartjs="XdslStatistics.snr.chart" class="chart-container"></div>
+
+        <div class="top-space-m16 bottom-space-m16 alert alert-warning"
+            role="alert"
+            data-ng-if="!XdslStatistics.snr.haveSeries && !XdslStatistics.snr.loading">
+            <span class="ovh-font ovh-font-filled-warning" aria-hidden="true"></span>
+            <p data-translate="xdsl_statistics_error"></p>
         </div>
+
     </section>
 
     <!-- Synchonisation -->
-    <section>
+    <section class="bottom-space-m16">
         <h3 data-translate="xdsl_statistics_attenuation_title"></h3>
 
-        <div class="row">
-            <div class="col-md-12">
-                <div data-chartjs="XdslStatistics.attenuation.chart" class="chart-container"></div>
-            </div>
-        </div>
-
-        <div class="row top-space-m32">
-            <div class="col-md-12">
-
-                <div class="space-m20 alert alert-warning"
-                    role="alert"
-                    data-ng-if="!XdslStatistics.attenuation.haveSeries && !XdslStatistics.attenuation.loading">
-                    <i class="ovh-font ovh-font-filled-warning"></i>
-                    <p data-translate="xdsl_statistics_error"></p>
+        <form class="form-horizontal"
+            data-ng-if="XdslStatistics.attenuation.haveSeries">
+            <div class="form-group">
+                <label for="attnPeriod"
+                    class="col-xs-3 col-md-2 control-label text-left"
+                    data-translate="xdsl_statistics_period">
+                </label>
+                <div class="col-xs-9 col-md-10 clearfix">
+                    <select flat-select
+                            id="attnPeriod"
+                            name="attnPeriod"
+                            class="form-control"
+                            data-ng-disabled="XdslStatistics.attenuation.loading"
+                            data-ng-change="XdslStatistics.getAttenuationStatistics(XdslStatistics.attenuation.period)"
+                            data-ng-model="XdslStatistics.attenuation.period"
+                            data-ng-options="'xdsl_statistics_' + period  + '_label'| translate for period in XdslStatistics.periodOptions">
+                    </select>
                 </div>
-
-                <form class="form-horizontal"
-                    data-ng-if="XdslStatistics.attenuation.haveSeries">
-                    <div class="row form-group">
-                        <label for="attnPeriod"
-                            class="control-label col-xs-2"
-                            data-translate="xdsl_statistics_period">
-                        </label>
-                        <div class="col-xs-3">
-                            <select flat-select id="attnPeriod"
-                                    name="attnPeriod"
-                                    class="form-control"
-                                    data-ng-disabled="XdslStatistics.attenuation.loading"
-                                    data-ng-change="XdslStatistics.getAttenuationStatistics(XdslStatistics.attenuation.period)"
-                                    data-ng-model="XdslStatistics.attenuation.period"
-                                    data-ng-options="'xdsl_statistics_' + period  + '_label'| translate for period in XdslStatistics.periodOptions">
-                            </select>
-                        </div>
-                    </div>
-                </form>
             </div>
+        </form>
+
+        <div data-chartjs="XdslStatistics.attenuation.chart" class="chart-container"></div>
+
+        <div class="space-m20 alert alert-warning"
+            role="alert"
+            data-ng-if="!XdslStatistics.attenuation.haveSeries && !XdslStatistics.attenuation.loading">
+            <span class="ovh-font ovh-font-filled-warning" aria-hidden="true"></span>
+            <p data-translate="xdsl_statistics_error"></p>
         </div>
+
     </section>
 </section>

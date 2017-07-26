@@ -1,5 +1,5 @@
 <div class="table-responsive-vertical" data-ng-controller="PackTaskCtrl as PackTask" data-ng-show="PackTask.allTasks.length">
-    <table class="table table-pretty table-hover table-condensed ovh-form-flat table-form task-table">
+    <table class="table table-pretty table-hover table-condensed ovh-form-flat">
         <thead>
             <tr>
                 <th scope="col" data-translate="telecom_task_function"></th>
@@ -28,15 +28,19 @@
         </thead>
         <tbody>
             <tr data-ng-repeat="task in PackTask.paginatedTasks track by task.id">
-                <th scope="row" data-title="{{'telecom_task_function' | translate}}">{{task.function | translate}}</th>
+                <th scope="row"
+                    data-translate-attr="{title:'telecom_task_function'}"
+                    data-translate="task.function"></th>
                 <td data-title="{{'telecom_task_status' | translate}}" class="text-center-md">
                     <spinner data-ng-show="task.status.spinner"></spinner>
                     <span data-ng-if="task.status.icon && !task.status.spinner"
-                          class="ovh-font fs20 pointer"
+                          class="ovh-font fs16"
                           data-ng-class="task.status.icon"
-                          data-uib-tooltip="{{ task.status.tip }}"></span>
+                          data-uib-tooltip="{{ task.status.tip }}"
+                          aria-hidden="true"></span>
                 </td>
-                <td data-title="{{'telecom_task_date' | translate}}">{{task.updateDate | date:'dd/MM/yyyy'}}</td>
+                <td data-translate-attr="{title:'telecom_task_date'}"
+                    data-ng-bind="(task.updateDate | date:'dd/MM/yyyy')"></td>
             </tr>
         </tbody>
     </table>

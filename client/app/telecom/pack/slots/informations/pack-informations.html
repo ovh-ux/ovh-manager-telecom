@@ -64,7 +64,6 @@
             <div class="col-sm-8">
                 <a class="service-button"
                    data-ng-if="!PackInformation.resiliationFollowUp && Pack.pack.informations.status === 'ok'"
-                   data-translate-attr="{ title: 'pack_offer_migration' }"
                    data-ui-sref="telecom.pack.resiliation">
                     <div class="service-button-description">
                         <span class="link-description"
@@ -85,16 +84,17 @@
         </div>
 
         <!-- RESILIATION DATE -->
-        <div data-ng-if="PackInformation.resiliationFollowUp" class="row info-row info-row-darker">
+        <div data-ng-if="PackInformation.resiliationFollowUp" class="row info-row ">
             <div class="col-sm-4" data-translate="pack_xdsl_resiliation_date"></div>
             <div class="col-sm-8 description">
-                <a data-ui-sref="telecom.pack.resiliation"
-                   title="{{ 'common_resiliation_cancel' | translate }}">
-                    <span class="link-description resiliation-date"
-                          data-ng-bind="PackInformation.resiliationFollowUp.dateTodo | date"></span>
-                    <span class="pull-right">
+                <a class="service-button"
+                   data-ui-sref="telecom.pack.resiliation"
+                   data-translate-attr="{ title: 'common_resiliation_cancel' }">
+                    <strong class="resiliation-date text-warning"
+                          data-ng-bind="PackInformation.resiliationFollowUp.dateTodo | date"></strong>
+                    <span class="link-name">
                         <span data-translate="cancel"></span>
-                        <span class="ovh-font ovh-font-arrow-right line-height-normal right-space-m8" aria-hidden="true"></span>
+                        <span class="ovh-font ovh-font-arrow-right" aria-hidden="true"></span>
                     </span>
                 </a>
             </div>

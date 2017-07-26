@@ -63,7 +63,7 @@
                                   Waiting for the api to check the validity of a domain,
                                   we have to be relatively "permissive". We won't refuse a
                                   valid domain. But we can accept a domain who will be
-                                  rejected later by the api. For now no better way.
+                                  rejected later by the api. For now I have no better way.
                                   -->
                                   <input type="text"
                                          class="form-control"
@@ -96,19 +96,19 @@
                   </div>
 
                   <!-- already in pack-->
-                  <div class="availabilityMessage" data-ng-if="toggles.domainStatus === 'alreadyActivated'">
+                  <div data-ng-if="toggles.domainStatus === 'alreadyActivated'">
                       <span class="ovh-font ovh-font-warning text-warning fs16" aria-hidden="true"></span>
                       <span data-translate="domain_activation_is_already_in_pack"></span>
                   </div>
 
                   <!-- available -->
                   <div data-ng-if="toggles.domainStatus === 'available'">
-                      <div class="availabilityMessage">
+                      <div>
                           <span class="ovh-font ovh-font-success text-success fs16" aria-hidden="true"></span>
                           <span>{{locker.fqdn}} {{'domain_activation_is_available' | translate}}</span>
                       </div>
 
-                      <p data-translate="domain_activation_you_are"></p>
+                      <p class="top-space-m16" data-translate="domain_activation_you_are"></p>
                       <div>
                           <label>
                               <flat-radio>
@@ -146,13 +146,13 @@
 
                   <!-- unavailable -->
                   <div data-ng-if="toggles.domainStatus === 'unavailable'">
-                      <div class="availabilityMessage">
+                      <div>
                           <span class="ovh-font ovh-font-warning text-warning fs16" aria-hidden="true"></span>
                           <span>{{model.domain + '.' +
                               model.tld}} {{'domain_activation_is_unavailable' | translate}}</span>
                       </div>
 
-                      <p data-translate="domain_activation_do_you_transfert"></p>
+                      <p class="top-space-m16" data-translate="domain_activation_do_you_transfert"></p>
 
                      <div class="btn-group block clearfix bottom-space-m16">
                           <label class="btn btn-default"
@@ -190,7 +190,7 @@
                   <!-- validation button -->
                   <div data-ng-if="toggles.transfertWanted || model.action === 'create'">
                       <button type="button"
-                              class="btn btn-primary"
+                              class="btn btn-primary top-space-m32"
                               data-ng-click="submit()"
                               data-ng-disabled="PackDomainActivation.isActivating || !domainActivation.$valid || toggles.domainLoading || toggles.loading > 0">
                           <span data-ng-if="toggles.transfertWanted" data-translate="domain_activation_form_ok_transfert_button"></span>
