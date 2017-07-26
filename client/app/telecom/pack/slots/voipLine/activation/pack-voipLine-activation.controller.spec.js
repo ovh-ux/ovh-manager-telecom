@@ -14,9 +14,9 @@ describe("Controller: PackVoipLineActivationCtrl", function () {
     var _$translate;
     var PackVoipLineActivationCtrl;
     var scope;
-    var mockServicesApiResponse = readJSON("client/bower_components/ovh-api-services/pack/xdsl/pack-xdsl.service.dt.spec.json");
-    var mockHardwares = readJSON("client/bower_components/ovh-api-services/pack/xdsl/voipLine/pack-xdsl-voipLine.service.dt.spec.json").hardwares;
-    var mockAddress = readJSON("client/bower_components/ovh-api-services/pack/xdsl/voipLine/pack-xdsl-voipLine.service.dt.spec.json").address;
+    var mockServicesApiResponse = readJSON("client/bower_components/ovh-api-services/src/pack/xdsl/pack-xdsl.service.dt.spec.json");
+    var mockHardwares = readJSON("client/bower_components/ovh-api-services/src/pack/xdsl/voipLine/pack-xdsl-voipLine.service.dt.spec.json").hardwares;
+    var mockAddress = readJSON("client/bower_components/ovh-api-services/src/pack/xdsl/voipLine/pack-xdsl-voipLine.service.dt.spec.json").address;
 
     beforeEach(inject(function (ssoAuthentication, $httpBackend, $rootScope, $controller, $stateParams, $translate,
                                 $state, Toast, $injector) {

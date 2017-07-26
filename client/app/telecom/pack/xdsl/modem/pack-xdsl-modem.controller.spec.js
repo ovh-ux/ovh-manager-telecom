@@ -2,7 +2,7 @@
 
 describe("Controller: XdslModemCtrl", function () {
 
-    var dataTest = readJSON("client/bower_components/ovh-api-services/xdsl/modem/xdsl-modem.service.dt.spec.json");
+    var dataTest = readJSON("client/bower_components/ovh-api-services/src/xdsl/modem/xdsl-modem.service.dt.spec.json");
 
     // load the controller"s module
     beforeEach(angular.mock.module("managerAppMock"));
