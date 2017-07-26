@@ -1,14 +1,14 @@
-<div  class="col-md-12 alert alert-ovh" data-ng-controller="OrderOverTheBoxWarningCtrl as OrderOverTheBoxWarning">
-    <h3>
-        <span class="ovh-font ovh-font-warning"></span>
-        <span data-translate="order_overTheBox_no_device_detected_title"></span>
-    </h3>
+<div class="alert alert-warning"
+     role="alert"
+     data-ng-controller="OrderOverTheBoxWarningCtrl as OrderOverTheBoxWarning">
+    <span class="ovh-font ovh-font-filled-warning" aria-hidden="true"></span>
+    <h3 data-translate="order_overTheBox_no_device_detected_title"></h3>
     <p class="top-space-m8" data-translate="order_overTheBox_no_device_detected_advise"></p>
-    <ul class="top-space-m8">
+    <ul class="top-space-m8 list-unstyled">
         <li data-translate="order_overTheBox_no_device_detected_advise_internet"></li>
         <li data-translate="order_overTheBox_no_device_detected_advise_connected"></li>
     </ul>
-    <p class="top-space-m8">
-        <em data-translate="order_overTheBox_no_device_detected_advise_needed" data-translate-values="{url: OrderOverTheBoxWarning.guide}"></em>
-    </p>
+    <p class="top-space-m8"
+       data-translate="order_overTheBox_no_device_detected_advise_needed"
+       data-translate-values="{url: OrderOverTheBoxWarning.guide}"></p>
 </div>
