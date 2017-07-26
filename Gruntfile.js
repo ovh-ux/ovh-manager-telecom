@@ -137,6 +137,13 @@ module.exports = function (grunt) {
                 tasks: ["injector:less", "less", "postcss"]
             },
 
+            htmlTemplates: {
+                files: [
+                    "<%= yeoman.client %>/{app,components}/**/!(*.tpl).html"
+                ],
+                tasks: ["copy:html"]
+            },
+
             gruntfile: {
                 files: ["Gruntfile.js"]
             },
@@ -513,6 +520,17 @@ module.exports = function (grunt) {
                     cwd: "<%= yeoman.client %>",
                     dest: "<%= yeoman.tmp %>/client",
                     src: copyDevTest
+                }]
+            },
+            html: {
+                files: [{
+                    expand: true,
+                    dot: true,
+                    cwd: "<%= yeoman.client %>",
+                    dest: "<%= yeoman.dist %>/client",
+                    src: [
+                        "{app,components}/**/!(*.tpl).html"
+                    ]
                 }]
             }
         },
