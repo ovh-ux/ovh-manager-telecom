@@ -1,0 +1,54 @@
+<div>
+    <div class="modal-header">
+        <h3 class="modal-title pull-left"
+            data-translate="telephony_alias_configuration_mode_calls_action_transfert">
+        </h3>
+        <button type="button"
+                class="close pull-right"
+                aria-label="{{ ::'cancel' | translate }}"
+                data-ng-click="$ctrl.cancel()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <div class="modal-body">
+        <p class="alert alert-info" role="alert">
+            <i class="ovh-font ovh-font-info" aria-hidden="true"></i>
+            <span data-translate="telephony_alias_configuration_mode_calls_action_transfert_help"></span>
+        </p>
+        <form name="transfertForm"
+              data-ng-submit="$ctrl.submit()"
+              novalidate>
+            <div class="form-group">
+                <label for="number"
+                       class="control-label"
+                       data-translate="telephony_alias_configuration_mode_calls_action_transfert_number">
+                </label>
+                <input type="text"
+                       id="number"
+                       name="number"
+                       class="form-control"
+                       data-ng-model="$ctrl.number"
+                       data-ng-pattern="/^\+?\d+$/"
+                       autofocus
+                       required />
+                <p class="alert alert-danger top-space-m16"
+                   data-ng-if="$ctrl.error"
+                   role="alert">
+                    <i class="ovh-font ovh-font-filled-error" aria-hidden="true"></i>
+                    <span data-ng-bind="$ctrl.error"></span>
+                </p>
+                <button type="submit"
+                        class="btn btn-primary pull-right top-space-m8"
+                        data-ng-disabled="transfertForm.$invalid">
+                    <span data-translate="telephony_alias_configuration_mode_calls_action_transfert_confirm"></span>
+                    <spinner data-ng-if="$ctrl.isSubmitting" class="left-space-m4"></spinner>
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <!-- spacing -->
+    <div class="modal-footer"></div>
+
+</div>

@@ -1,0 +1,217 @@
+<section class="telephony-group-alias-configuration-stats-easyHunting">
+
+    <header>
+        <section-back-link section-back-link-to-state="telecom.telephony.alias.configuration"
+                           section-back-link-title="{{ 'telephony_alias_configuration_stats_back_link' | translate }}">
+        </section-back-link>
+        <h1 data-translate="telephony_alias_configuration_stats_title"></h1>
+    </header>
+
+    <div class="telecom-section-content" data-ng-if="StatsEasyHuntingCtrl.isLoading">
+        <bouncing-box-loader>
+            <h4 data-translate="loading"></h4>
+        </bouncing-box-loader>
+    </div>
+
+    <!-- STATS -->
+    <div class="telecom-section-content" data-ng-if="!StatsEasyHuntingCtrl.isLoading">
+        <div class="widget-presentation">
+            <header class="widget-presentation-header">
+                <h2 class="widget-presentation-title" data-translate="telephony_alias_configuration_mode_info_title"></h2>
+            </header>
+        </div>
+        <dl>
+            <dt data-ng-if="StatsEasyHuntingCtrl.stats.callsTotal" data-translate="telephony_alias_configuration_stats_qos"></dt>
+            <dd data-ng-if="StatsEasyHuntingCtrl.stats.callsTotal" data-ng-bind="StatsEasyHuntingCtrl.getQoS() + ' %'"></dd>
+            <dt data-translate="telephony_alias_configuration_stats_calls_total"></dt>
+            <dd data-ng-bind="StatsEasyHuntingCtrl.stats.callsTotal"></dd>
+            <dt data-translate="telephony_alias_configuration_stats_calls_answered"></dt>
+            <dd data-ng-bind="StatsEasyHuntingCtrl.stats.callsAnswered"></dd>
+            <dt data-translate="telephony_alias_configuration_stats_calls_lost"></dt>
+            <dd data-ng-bind="StatsEasyHuntingCtrl.stats.callsLost"></dd>
+            <dt data-translate="telephony_alias_configuration_stats_calls_wait_average"></dt>
+            <dd data-ng-bind="StatsEasyHuntingCtrl.getAverageWaitTime() | duration"></dd>
+            <dt data-translate="telephony_alias_configuration_stats_calls_duration_average"></dt>
+            <dd data-ng-bind="StatsEasyHuntingCtrl.getAverageCallTime() | duration"></dd>
+        </dl>
+    </div><!-- stats -->
+
+    <!-- CALLS -->
+    <div class="telecom-section-content" data-ng-if="!StatsEasyHuntingCtrl.isLoading">
+        <div class="widget-presentation">
+            <header class="widget-presentation-header">
+                <h2 class="widget-presentation-title" data-translate="telephony_alias_configuration_mode_calls_title"></h2>
+            </header>
+        </div>
+        <dl>
+            <dt data-translate="telephony_alias_configuration_mode_calls_ongoing"></dt>
+            <dd data-ng-bind="StatsEasyHuntingCtrl.getOngoingCalls().length"></dd>
+            <dt data-translate="telephony_alias_configuration_mode_calls_pending"></dt>
+            <dd data-ng-bind="StatsEasyHuntingCtrl.getPendingCalls().length"></dd>
+            <dt data-translate="telephony_alias_configuration_mode_calls_maxwait"></dt>
+            <dd>
+                <elapsed-time data-ng-if="StatsEasyHuntingCtrl.getMaxWaitTime()"
+                              data-from="StatsEasyHuntingCtrl.getMaxWaitTime()"></elapsed-time>
+                <span data-ng-if="!StatsEasyHuntingCtrl.getMaxWaitTime()">-</span>
+            </dd>
+        </dl>
+        <div class="table-responsive-vertical">
+            <table class="table table-pretty table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col" data-translate="telephony_alias_configuration_mode_calls_number"></th>
+                        <th scope="col" data-translate="telephony_alias_configuration_mode_calls_queue_time"></th>
+                        <th scope="col" data-translate="telephony_alias_configuration_mode_calls_time"></th>
+                        <th scope="col" data-translate="telephony_alias_configuration_mode_calls_agent"></th>
+                        <th scope="col" data-translate="telephony_alias_configuration_mode_calls_action"></th>
+                    </tr>
+                </thead>
+                <tbody data-ng-if="!StatsEasyHuntingCtrl.isLoading">
+                    <tr data-ng-repeat="call in StatsEasyHuntingCtrl.callsPaginated track by call.id">
+                        <th scope="row" data-title="{{:: 'telephony_alias_configuration_mode_calls_number' | translate }}">
+                            <span class="text-nowrap right-space-m16 text-capitalize"
+                                  data-ng-bind="call.callerIdNumber | phoneNumber"></span>
+                            <span class="text-nowrap right-space-m16"
+                                  data-ng-if="call.callerIdName"
+                                  data-ng-bind="'(' + call.callerIdName + ')'"></span>
+                        </th>
+                        <td data-title="{{:: 'telephony_alias_configuration_mode_calls_queue_time' | translate }}">
+                            <elapsed-time data-from="call.begin"></elapsed-time>
+                        </td>
+                        <td data-title="{{:: 'telephony_alias_configuration_mode_calls_time' | translate }}">
+                            <span class="text-nowrap right-space-m16 text-capitalize"
+                                  data-ng-if="!call.answered"
+                                  data-ng-bind="call.answered ? 'yes' : 'no' | translate"></span>
+                            <elapsed-time data-ng-if="call.answered"
+                                          data-from="call.answered"></elapsed-time>
+                        </td>
+                        <td data-title="{{:: 'telephony_alias_configuration_mode_calls_agent' | translate }}">
+                            <span class="text-nowrap right-space-m16" data-ng-bind="call.agent || '-'"></span>
+                        </td>
+                        <td data-title="{{:: 'telephony_alias_configuration_mode_calls_action' | translate }}">
+                            <button type="button"
+                                    class="no-style fs16"
+                                    data-ng-if="!call.answered"
+                                    data-ng-attr-title="{{:: 'telephony_alias_configuration_mode_calls_action_intercept' | translate }}"
+                                    data-ng-click="StatsEasyHuntingCtrl.interceptCall(call)">
+                                <i class="ovh-font ovh-font-callForwarding" aria-hidden="true"></i>
+                            </button>
+                            <button type="button"
+                                    class="no-style fs16"
+                                    data-ng-if="call.answered"
+                                    data-ng-attr-title="{{:: 'telephony_alias_configuration_mode_calls_action_eavesdrop' | translate }}"
+                                    data-ng-click="StatsEasyHuntingCtrl.eavesdropCall(call)">
+                                <i class="ovh-font ovh-font-speaker" aria-hidden="true"></i>
+                            </button>
+                            <button type="button"
+                                    class="no-style fs16"
+                                    data-ng-if="call.answered"
+                                    data-ng-attr-title="{{:: 'telephony_alias_configuration_mode_calls_action_transfert' | translate }}"
+                                    data-ng-click="StatsEasyHuntingCtrl.transfertCall(call)">
+                                <i class="ovh-font ovh-font-redirect" aria-hidden="true"></i>
+                            </button>
+                            <button type="button"
+                                    class="no-style fs16"
+                                    data-ng-if="call.answered"
+                                    data-ng-attr-title="{{:: 'telephony_alias_configuration_mode_calls_action_hangup' | translate }}"
+                                    data-ng-click="StatsEasyHuntingCtrl.hangupCall(call)">
+                                <i class="ovh-font ovh-font-callRestriction" aria-hidden="true"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+                <tbody data-ng-if="StatsEasyHuntingCtrl.isLoading">
+                    <tr>
+                        <td class="text-center top-space-p16 bottom-space-p16" colspan="5">
+                            <spinner></spinner>
+                        </td>
+                    </tr>
+                </tbody>
+                <tbody data-ng-if="!StatsEasyHuntingCtrl.isLoading && !StatsEasyHuntingCtrl.calls.length">
+                    <tr>
+                        <td class="text-center top-space-p16 bottom-space-p16" colspan="5">
+                            <span data-translate="telephony_alias_configuration_mode_calls_empty"></span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="table-pretty-pagination top-space-m8 bottom-space-m16"
+                 data-ng-show="!StatsEasyHuntingCtrl.isLoading && StatsEasyHuntingCtrl.calls.length"
+                 data-pagination-front
+                 data-items="StatsEasyHuntingCtrl.calls"
+                 data-paginated-items="StatsEasyHuntingCtrl.callsPaginated"
+                 data-current-page="currentPage"
+                 data-nb-pages="nbPages"
+                 data-items-per-page="itemsPerPage"
+                 data-page-placeholder="{{ 'common_pagination_page' | translate: { currentPage:currentPage, nbPages:nbPages } }}"
+                 data-item-per-page-placeholder="{{ 'common_pagination_display' | translate }}">
+            </div>
+        </div>
+    </div><!-- calls -->
+
+    <!-- AGENTS -->
+    <div class="telecom-section-content" data-ng-if="!StatsEasyHuntingCtrl.isLoading">
+        <div class="widget-presentation">
+            <header class="widget-presentation-header">
+                <h2 class="widget-presentation-title" data-translate="telephony_alias_configuration_mode_agents_title"></h2>
+            </header>
+        </div>
+        <dl>
+            <dt data-translate="telephony_alias_configuration_mode_agents_ongoing"></dt>
+            <dd data-ng-bind="StatsEasyHuntingCtrl.getOnCallAgentsCount()"></dd>
+            <dt data-translate="telephony_alias_configuration_mode_agents_pending"></dt>
+            <dd data-ng-bind="StatsEasyHuntingCtrl.getWaitingAgentsCount()"></dd>
+        </dl>
+        <div class="table-responsive-vertical">
+            <table class="table table-pretty table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col" data-translate="telephony_alias_configuration_mode_calls_agent"></th>
+                        <th scope="col" data-translate="telephony_alias_configuration_mode_calls_agent_status"></th>
+                        <th scope="col" data-translate="telephony_alias_configuration_mode_calls_agent_updated"></th>
+                    </tr>
+                </thead>
+                <tbody data-ng-if="!StatsEasyHuntingCtrl.isLoading">
+                    <tr data-ng-repeat="agent in StatsEasyHuntingCtrl.agentsStatusPaginated track by agent.agentId">
+                        <th scope="row" data-title="{{:: 'telephony_alias_configuration_mode_calls_agent' | translate }}">
+                            <span class="text-nowrap right-space-m16" data-ng-bind="agent.agentId"></span>
+                        </th>
+                        <td data-title="{{:: 'telephony_alias_configuration_mode_calls_agent_status' | translate }}">
+                            <span class="text-nowrap right-space-m16" data-ng-bind="'telephony_alias_configuration_mode_calls_agent_status_' + agent.status | translate"></span>
+                        </td>
+                        <td data-title="{{:: 'telephony_alias_configuration_mode_calls_agent_updated' | translate }}">
+                            <span data-translate="telephony_alias_configuration_mode_calls_agent_updated_ago"></span>
+                            <elapsed-time data-from="agent.lastStatusChange"></elapsed-time>
+                        </td>
+                    </tr>
+                </tbody>
+                <tbody data-ng-if="StatsEasyHuntingCtrl.isLoading">
+                    <tr>
+                        <td class="text-center top-space-p16 bottom-space-p16" colspan="3">
+                            <spinner></spinner>
+                        </td>
+                    </tr>
+                </tbody>
+                <tbody data-ng-if="!StatsEasyHuntingCtrl.isLoading && !StatsEasyHuntingCtrl.agentsStatus.length">
+                    <tr>
+                        <td class="text-center top-space-p16 bottom-space-p16" colspan="3">
+                            <span data-translate="telephony_alias_configuration_mode_agents_empty"></span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="table-pretty-pagination top-space-m8 bottom-space-m16"
+                 data-ng-show="!StatsEasyHuntingCtrl.isLoading && StatsEasyHuntingCtrl.agentsStatus.length"
+                 data-pagination-front
+                 data-items="StatsEasyHuntingCtrl.agentsStatus"
+                 data-paginated-items="StatsEasyHuntingCtrl.agentsStatusPaginated"
+                 data-current-page="currentPage"
+                 data-nb-pages="nbPages"
+                 data-items-per-page="itemsPerPage"
+                 data-page-placeholder="{{ 'common_pagination_page' | translate: { currentPage:currentPage, nbPages:nbPages } }}"
+                 data-item-per-page-placeholder="{{ 'common_pagination_display' | translate }}">
+            </div>
+        </div>
+    </div><!-- agents -->
+
+</section>
