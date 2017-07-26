@@ -31,7 +31,7 @@ module.exports = function (app) {
         app.use(express.static(path.join(config.root, 'public')));
         app.set('appPath', path.join(config.root, '/public'));
     } else {
-        app.set('appPath', 'client');
+        app.set('appPath', 'dist/client');
     }
 
 };
