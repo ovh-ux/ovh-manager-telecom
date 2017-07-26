@@ -5,9 +5,9 @@ describe("Controller: XdslModemDmzCtrl", function () {
     // load the controller"s module
     beforeEach(angular.mock.module("managerAppMock"));
 
-    var dataXdslModem = readJSON("client/bower_components/ovh-api-services/xdsl/modem/xdsl-modem.service.dt.spec.json");
-    var dataXdslModemLan = readJSON("client/bower_components/ovh-api-services/xdsl/modem/lan/xdsl-modem-lan.service.dt.spec.json");
-    var dataXdsl = readJSON("client/bower_components/ovh-api-services/xdsl/xdsl.service.dt.spec.json");
+    var dataXdslModem = readJSON("client/bower_components/ovh-api-services/src/xdsl/modem/xdsl-modem.service.dt.spec.json");
+    var dataXdslModemLan = readJSON("client/bower_components/ovh-api-services/src/xdsl/modem/lan/xdsl-modem-lan.service.dt.spec.json");
+    var dataXdsl = readJSON("client/bower_components/ovh-api-services/src/xdsl/xdsl.service.dt.spec.json");
 
     var validIp = "192.168.5.21";
     var invalidIpWord = "hello world";

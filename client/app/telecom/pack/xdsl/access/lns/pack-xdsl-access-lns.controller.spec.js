@@ -4,9 +4,9 @@ describe("Controller: XdslAccessLnsCtrl", function () {
 
     // load the controller"s module
     beforeEach(angular.mock.module("managerAppMock"));
-    var dataLns = readJSON("client/bower_components/ovh-api-services/xdsl/availableLns/xdsl-availableLns.service.dt.spec.json");
-    var dataXdsl = readJSON("client/bower_components/ovh-api-services/xdsl/xdsl.service.dt.spec.json");
-    var dataTasks = readJSON("client/bower_components/ovh-api-services/xdsl/tasks/current/xdsl-tasks-current.service.dt.spec.json");
+    var dataLns = readJSON("client/bower_components/ovh-api-services/src/xdsl/availableLns/xdsl-availableLns.service.dt.spec.json");
+    var dataXdsl = readJSON("client/bower_components/ovh-api-services/src/xdsl/xdsl.service.dt.spec.json");
+    var dataTasks = readJSON("client/bower_components/ovh-api-services/src/xdsl/tasks/current/xdsl-tasks-current.service.dt.spec.json");
 
     var $httpBackend;
     var $rootScope;

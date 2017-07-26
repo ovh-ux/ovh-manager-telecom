@@ -50,7 +50,7 @@ describe("Controller TelecomTelephonyBillingAccountOrderAliasCtrl - ", function 
     });
 
     describe("Get prices", function () {
-        var pricesMock = readJSON("client/bower_components/ovh-api-services/telephony/number/telephony-number.aapi.service.dt.spec.json").prices;
+        var pricesMock = readJSON("client/bower_components/ovh-api-services/src/telephony/number/telephony-number.aapi.service.dt.spec.json").prices;
         beforeEach(function () {
             $httpBackend.whenGET(["/2api/telephony", billingAccount, "number/fr/prices"].join("/")).respond(200, pricesMock);
         });

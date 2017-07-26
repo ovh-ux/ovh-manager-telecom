@@ -75,7 +75,7 @@
    <translation id="telephony_line_assist_troubleshooting_manual_config_interface_connection_thomson_step1_password" qtlid="390474">Mot de passe : <strong>784518</strong>.</translation>
    <translation id="telephony_line_assist_troubleshooting_manual_config_interface_connection_thomson_step2" qtlid="390487">Cliquez sur <strong>Setup</strong>, puis <strong>Auto Provisioning</strong> et <strong>Basic Setup</strong>.</translation>
    <translation id="telephony_line_assist_troubleshooting_manual_config_interface_connection_thomson_step3" qtlid="390500">Pour l'option <strong>Auto Provisioning Setting</strong>, sélectionnez <strong>HTTP preset</strong>.</translation>
-   <translation id="telephony_line_assist_troubleshooting_manual_config_interface_connection_thomson_step4" qtlid="390513">Pour l'option <strong>Server IP Address</strong>, entrez la valeur <strong>th.prov.voip.ovh.net/tb30</strong></translation>
+   <translation id="telephony_line_assist_troubleshooting_manual_config_interface_connection_thomson_step4">Pour l'option <strong>Server IP Address</strong>, entrez la valeur <strong>{{ server }}</strong></translation>
    <translation id="telephony_line_assist_troubleshooting_manual_config_interface_connection_thomson_step5" qtlid="390526">Validez afin de sauvegarder les paramètres.</translation>
    <translation id="telephony_line_assist_troubleshooting_manual_config_interface_connection_thomson_step6" qtlid="390539">Cliquez sur <strong>Restart</strong> pour appliquer les paramètres.</translation>
 
