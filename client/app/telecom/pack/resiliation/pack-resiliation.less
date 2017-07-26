@@ -4,35 +4,32 @@
         margin-bottom: 16px;
 
         .service-item{
-            .service-select-all, .service-select-single{
-                padding: 6px 0 0 0;
-            }
             .service-select-all{
-                color: @blue-dark;
                 background-color: @gray-light;
+
+                label {
+                    color: @BRAND_DARK;
+                    font-size: @FONT-SIZE-MAININFO;
+                    font-weight: 700;
+                }
+            }
+
+            .service-select-single {
+                padding: 4px 0;
+
+                strong {
+                    color: @BRAND_DARK;
+                }
             }
         }
     }
 
-    label {
-        color: @gray-dark !important;
+    .ovh-form-flat label {
+        color: @gray-dark;
     }
 
-    label.disabled {
-        color: @gray-base !important;
-    }
-
-    strong {
-        font-weight: bold;
-        color: @BRAND_SECONDARY;
-    }
-
-    .flat-checkbox-on, .flat-checkbox-off {
-        background-color: white;
-    }
-
-    .ovh-blue {
-        color: @BRAND_SECONDARY;
+    .resiliation-date {
+        font-size: @FONT-SIZE-MAININFO;
     }
 
     #resiliationNativeDateElem {

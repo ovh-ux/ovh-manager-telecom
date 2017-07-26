@@ -80,11 +80,12 @@
                                 <span data-translate="telefony_activation_no_more_port_modem"></span>
                             </div>
                         </div>
-                        <div data-ng-if="hardware.line.needHardware">
+                        <div data-ng-if="hardware.line.needHardware" class="top-space-m8">
                             <!-- choices -->
                             <div data-uib-carousel id="{{'carousel' + hardware.index}}"
                                  data-ng-if="!hardware.line.hardware"
-                                 active="hardware.carouselIndex">
+                                 data-active="hardware.carouselIndex"
+                                 class="block-emphasis">
                                 <div data-uib-slide
                                      index="$index"
                                      data-ng-repeat="slide in hardware.availableHardwares track by slide.name">
@@ -109,7 +110,7 @@
                                         </div>
 
                                         <button type="button"
-                                                class="btn btn-primary"
+                                                class="btn btn-primary top-space-m16"
                                                 data-ng-click="hardware.line.hardware = slide"
                                                 data-translate="telefony_activation_hardware_select_label">
                                         </button>
@@ -118,7 +119,7 @@
                             </div>
 
                             <!-- user selection -->
-                            <div data-ng-if="hardware.line.hardware" class="selected-hardware">
+                            <div data-ng-if="hardware.line.hardware" class="block-emphasis selected-hardware">
                                 <div>
                                     <div class="voipLine-hardware-image">
                                         <img data-ng-src="{{hardware.line.hardware.image}}">
@@ -195,30 +196,32 @@
                 </div>
 
                 <!-- Transporter -->
-                <div class="row animate-addresses" data-ng-show="PackVoipLineActivationCtrl.shippingMode === 'transporter'">
-                    <div class="top-space-m16" data-ng-repeat="addressGroup in PackVoipLineActivationCtrl.framedShippingAddresses">
+                <div class="animate-addresses" data-ng-show="PackVoipLineActivationCtrl.shippingMode === 'transporter'">
+                    <div class="row top-space-m16" data-ng-repeat="addressGroup in PackVoipLineActivationCtrl.framedShippingAddresses">
                         <div class="col-md-4" data-ng-repeat="address in addressGroup track by address.shippingId">
-                            <div class="address-container">
-                                <flat-radio class="pointer right-space-m8">
-                                    <input type="radio" data-ng-model="PackVoipLineActivationCtrl.transporterAddress"
-                                        value="{{address.shippingId}}"
-                                        name="{{ 'address-' + address.shippingId}}"
-                                        id="{{ 'addr_' + address.shippingId + 'Elem'}}"
-                                        required>
-                                </flat-radio>
-                                <label for="{{ 'addr_' + address.shippingId + 'Elem'}}">
-                                    <div>
-                                        <span data-ng-bind="address.firstName"></span>
-                                        <span data-ng-bind="address.lastName"></span>
-                                    </div>
-                                    <div data-ng-bind="address.address"></div>
-                                    <div>
-                                        <span data-ng-bind="address.zipCode"></span>
-                                        <span data-ng-bind="address.cityName"></span>
-                                         -
-                                        <span data-ng-bind="address.countryCode"></span>
-                                    </div>
-                                </label>
+                            <div class="block-emphasis">
+                                <div class="block-emphasis__row">
+                                    <flat-radio class="block-emphasis__column block-emphasis__column--first">
+                                        <input type="radio" data-ng-model="PackVoipLineActivationCtrl.transporterAddress"
+                                            value="{{address.shippingId}}"
+                                            name="{{ 'address-' + address.shippingId}}"
+                                            id="{{ 'addr_' + address.shippingId + 'Elem'}}"
+                                            required>
+                                    </flat-radio>
+                                    <label class="block-emphasis__column" for="{{ 'addr_' + address.shippingId + 'Elem'}}">
+                                        <div>
+                                            <span data-ng-bind="address.firstName"></span>
+                                            <span data-ng-bind="address.lastName"></span>
+                                        </div>
+                                        <div data-ng-bind="address.address"></div>
+                                        <div>
+                                            <span data-ng-bind="address.zipCode"></span>
+                                            <span data-ng-bind="address.cityName"></span>
+                                             -
+                                            <span data-ng-bind="address.countryCode"></span>
+                                        </div>
+                                    </label>
+                                </div>
                             </div>
                         </div>
                     </div>

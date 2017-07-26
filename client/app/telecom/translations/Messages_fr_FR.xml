@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <translations>
+    <translation id="common_tabs_more">Autres catégories</translation>
     <translation id="common_newtab">(nouvel onglet)</translation>
     <translation id="common_window">(nouvelle fenêtre)</translation>
     <translation id="common_vip">Statut VIP</translation>

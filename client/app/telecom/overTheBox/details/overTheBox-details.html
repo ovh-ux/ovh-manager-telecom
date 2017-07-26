@@ -1,40 +1,36 @@
 <div class="overthebox">
-    <header class="clearfix">
-        <div id="overtheboxActionButtons" class="pull-right">
-            <button class="btn btn-primary"
-                    type="button"
-                    data-ng-click="OverTheBoxDetails.LaunchAction('reboot')"
-                    data-ng-disabled="!OverTheBoxDetails.availableAction.reboot"
-                    data-translate="overTheBox_action_reboot_label"></button>
-            <div class="btn-group" data-uib-dropdown>
-                <button id="single-button"
-                        type="button"
-                        class="btn btn-primary"
-                        data-uib-dropdown-toggle>
-                    <span data-translate="overTheBox_action_update_label"></span>
-                    <i class="ovh-font ovh-font-small-arrow-down"></i>
-                </button>
-                <ul class="dropdown-menu ovh-dropdown-menu pull-right">
-                    <li role="menuitem">
-                        <button
-                           data-ng-click="OverTheBoxDetails.LaunchAction('upgrade')"
-                           type="button"
-                           data-ng-disabled="!OverTheBoxDetails.availableAction.upgrade">
-                            <p class="dropdown-menu-title" data-translate="overTheBox_action_upgrade_title"></p>
-                            <p class="dropdown-menu-description" data-translate="overTheBox_action_upgrade_label"></p>
-                        </button>
-                    </li>
-                    <li role="menuitem">
-                        <button
-                           data-ng-click="OverTheBoxDetails.LaunchAction('sysupgrade')"
-                           type="button"
-                           data-ng-disabled="!OverTheBoxDetails.availableAction.sysupgrade">
-                            <p class="dropdown-menu-title" data-translate="overTheBox_action_sysupgrade_title"></p>
-                            <p class="dropdown-menu-description" data-translate="overTheBox_action_sysupgrade_label"></p>
-                        </button>
-                    </li>
-                </ul>
-            </div>
+    <header class="text-right">
+        <button class="btn btn-primary"
+                type="button"
+                data-ng-click="OverTheBoxDetails.LaunchAction('reboot')"
+                data-ng-disabled="!OverTheBoxDetails.availableAction.reboot"
+                data-translate="overTheBox_action_reboot_label">
+        </button>
+        <div class="btn-group" data-uib-dropdown>
+            <button type="button"
+                    class="btn btn-primary"
+                    data-uib-dropdown-toggle>
+                <span data-translate="overTheBox_action_update_label"></span>
+                <span class="ovh-font ovh-font-small-arrow-down" aria-hidden="true"></span>
+            </button>
+            <ul class="dropdown-menu ovh-dropdown-menu pull-right">
+                <li role="menuitem">
+                    <button data-ng-click="OverTheBoxDetails.LaunchAction('upgrade')"
+                            type="button"
+                            data-ng-disabled="!OverTheBoxDetails.availableAction.upgrade">
+                            <p class="service-title" data-translate="overTheBox_action_upgrade_title"></p>
+                            <p class="description" data-translate="overTheBox_action_upgrade_label"></p>
+                    </button>
+                </li>
+                <li role="menuitem">
+                    <button data-ng-click="OverTheBoxDetails.LaunchAction('sysupgrade')"
+                            type="button"
+                            data-ng-disabled="!OverTheBoxDetails.availableAction.sysupgrade">
+                            <p class="service-title" data-translate="overTheBox_action_sysupgrade_title"></p>
+                            <p class="description" data-translate="overTheBox_action_sysupgrade_label"></p>
+                    </button>
+                </li>
+            </ul>
         </div>
     </header>
 
@@ -42,164 +38,174 @@
 
         <div class="alert alert-warning" role="alert"
             data-ng-if="OverTheBoxDetails.serviceInfos.renew.deleteAtExpiration">
-            <i class="ovh-font ovh-font-filled-warning"></i>
+            <span class="ovh-font ovh-font-filled-warning" aria-hidden="true"></span>
             <span data-translate="overTheBox_expiration_warning" data-translate-values="{ date: (OverTheBoxDetails.serviceInfos.expiration | date:'dd/MM/yyyy')}"></span>
             <span data-translate="overTheBox_expiration_warning_help"></span>
         </div>
 
-        <spinner data-ng-show="OverTheBoxDetails.loaders.init"></spinner>
+        <spinner data-ng-if="OverTheBoxDetails.loaders.init"></spinner>
 
         <!-- DEVICE LINKED NOT ACTIVATED -->
-        <div class="row"
-             data-ng-if="!OverTheBoxDetails.loaders.device && OverTheBoxDetails.device && !OverTheBoxDetails.device.activated">
-            <div class="col-md-12">
-                <div data-ng-include="'app/telecom/overTheBox/warning/overTheBox-warning-notActivated.html'"></div>
-            </div>
+        <div data-ng-if="!OverTheBoxDetails.loaders.device && OverTheBoxDetails.device && !OverTheBoxDetails.device.activated"
+             data-ng-include="'app/telecom/overTheBox/warning/overTheBox-warning-notActivated.html'">
         </div>
 
         <!-- SERVICE INFOS  -->
-        <div class="row" data-ng-if="OverTheBox.service">
+        <div data-ng-if="OverTheBox.service">
 
             <!-- General Information -->
-            <div class="col-md-12">
-                <div class="widget-presentation">
-                    <h2 class="widget-presentation-title" data-translate="overthebox_general_information"></h2>
-                    <div class="row">
-                        <div class="col-md-6">
+            <div class="widget-presentation">
+                <h2 class="widget-presentation-title" data-translate="overthebox_general_information"></h2>
+                <div class="row">
+                    <div class="col-md-6">
 
-                            <div data-ng-if="OverTheBoxDetails.loaders.device || !OverTheBoxDetails.error.noDeviceLinked">
-                                <div class="row">
-                                    <div class="col-xs-12 col-md-4 service-title" data-translate="overTheBox_device_state"></div>
-                                    <div class="col-xs-12 col-md-8 service-item">
-                                        <i class="ovh-font ovh-font-success text-success" data-ng-if="OverTheBoxDetails.device.activated"></i>
-                                        <i class="ovh-font ovh-font-warning text-danger" data-ng-if="!OverTheBoxDetails.device.activated"></i>
-                                        {{('overTheBox_status_' + OverTheBoxDetails.device.activated) | translate}}
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-xs-12 col-md-4 service-title"
-                                     data-translate="overTheBox_expiration_date"
-                                     data-ng-if="OverTheBoxDetails.serviceInfos.renew.deleteAtExpiration"></div>
-                                <div class="col-xs-12 col-md-4 service-title"
-                                     data-translate="overTheBox_billing_date"
-                                     data-ng-if="!OverTheBoxDetails.serviceInfos.renew.deleteAtExpiration"></div>
-                                <div class="col-xs-12 col-md-8 service-item">
-                                    <span data-ng-bind="OverTheBoxDetails.serviceInfos.expiration | date:'dd/MM/yyyy'"></span>
-                                    <button class="btn btn-xs btn-primary left-space-m8"
-                                            data-translate="overTheBox_resiliate"
-                                            type="button"
-                                            title="{{ 'overTheBox_resiliate' |translate}}"
-                                            data-ng-if="OverTheBoxDetails.canResiliate()"
-                                            data-ng-really-click="OverTheBoxDetails.resiliate()"
-                                            data-ng-really-message="{{ 'overTheBox_resiliation_confirm' | translate: {service:OverTheBox.service.customerDescription || OverTheBox.service.serviceName, date: (OverTheBoxDetails.serviceInfos.expiration | date:'dd/MM/yyyy')} }}"
-                                            data-ng-really-confirm="{{ 'ok' | translate }}"
-                                            data-ng-really-cancel="{{ 'cancel' | translate }}"
-                                            data-ng-really-window-class="revert-really-buttons"
-                                            data-ng-disabled="OverTheBoxDetails.loaders.resiliating"></button>
-                                        <button class="btn btn-xs btn-primary left-space-m8"
-                                            data-translate="overTheBox_cancel_resiliation"
-                                            type="button"
-                                            title="{{ 'overTheBox_cancel_resiliation' |translate}}"
-                                            data-ng-if="OverTheBoxDetails.canCancelResiliation()"
-                                            data-ng-click="OverTheBoxDetails.cancelResiliation()"
-                                            data-ng-disabled="OverTheBoxDetails.loaders.cancellingResiliation"></button>
+                        <div data-ng-if="OverTheBoxDetails.loaders.device || !OverTheBoxDetails.error.noDeviceLinked">
+                            <div class="row info-row">
+                                <div class="col-xs-12 col-md-4 service-title" data-translate="overTheBox_device_state"></div>
+                                <div class="col-xs-12 col-md-8 description">
+                                    <span class="ovh-font ovh-font-success fs16 text-success"
+                                          data-ng-if="OverTheBoxDetails.device.activated"
+                                          aria-hidden="true"></span>
+                                    <span class="ovh-font ovh-font-warning fs16 text-warning"
+                                          data-ng-if="!OverTheBoxDetails.device.activated"
+                                          aria-hidden="true"></span>
+                                    {{('overTheBox_status_' + OverTheBoxDetails.device.activated) | translate}}
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
 
-                            <div class="row">
-                                <div class="col-xs-12 col-md-4 service-title"
-                                    data-ng-class="{'text-warning': !OverTheBoxDetails.device.deviceId}">
-                                    <i class="ovh-font ovh-font-filled-warning fs16"
-                                        data-ng-show="!OverTheBoxDetails.device.deviceId"></i>
-                                    <span data-translate="overTheBox_deviceId"></span>
-                                </div>
-                                <div class="col-xs-12 col-md-8 service-item">
-                                    <span data-ng-hide="OverTheBoxDetails.device.editMode">{{OverTheBoxDetails.device.deviceId}}</span>
-                                    <button class="btn btn-xs btn-primary left-space-m8"
-                                            data-translate="modify"
-                                            type="button"
-                                            title="{{ 'edit' |translate}}"
-                                            data-ng-hide="OverTheBoxDetails.device.editMode || !OverTheBoxDetails.device.deviceId"
-                                            data-ng-click="OverTheBoxDetails.device.editMode = true; OverTheBoxDetails.deviceIdToLink = OverTheBoxDetails.device.deviceId">
-                                    </button>
-                                    <form data-ng-show="OverTheBoxDetails.device.editMode || !OverTheBoxDetails.device.deviceId" name="formEditDevice" class="ovh-form-flat" novalidate>
-                                        <div flat-input-container>
-                                            <div class="row">
-                                                <div class="col-xs-8">
-                                                    <!-- list des items : OverTheBoxDetails.deviceIds -->
-                                                    <input id="input-inline-deviceId"
-                                                           name="input-inline-deviceId"
-                                                           class="form-control"
-                                                           typeahead="deviceId for deviceId in OverTheBoxDetails.deviceIds"
-                                                           data-ng-pattern="/[a-z0-9]{8}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{12}/"
-                                                           data-ng-model="OverTheBoxDetails.deviceIdToLink" />
-                                                </div>
-                                                <div class="col-xs-4">
-                                                    <button class="btn btn-primary btn-xs" type="submit"
-                                                            title="{{'ok' | translate}}"
-                                                            data-ng-really-click="OverTheBoxDetails.linkDevice({deviceId: OverTheBoxDetails.deviceIdToLink}); OverTheBoxDetails.device.editMode = false"
-                                                            data-ng-really-message="{{ 'overTheBox_link_device_confirm' | translate }}"
-                                                            data-ng-really-confirm="{{ 'ok' | translate }}"
-                                                            data-ng-really-cancel="{{ 'cancel' | translate }}"
-                                                            data-ng-really-window-class="revert-really-buttons"
-                                                            data-ng-disabled="!OverTheBoxDetails.deviceIdToLink || formEditDevice.$invalid">
-                                                        <i class="ovh-font ovh-font-check"></i>
-                                                    </button>
-                                                    <button class="btn btn-default btn-xs left-space-m8" type="button"
-                                                            title="{{'cancel' | translate}}"
-                                                            data-ng-disabled="!OverTheBoxDetails.device.deviceId"
-                                                            data-ng-click="OverTheBoxDetails.device.editMode = false">
-                                                        <i class="ovh-font ovh-font-wrong"></i>
-                                                    </button>
-                                                </div>
+                        <div class="row info-row">
+                            <div class="col-xs-12 col-md-4 service-title"
+                                 data-translate="overTheBox_expiration_date"
+                                 data-ng-if="OverTheBoxDetails.serviceInfos.renew.deleteAtExpiration"></div>
+                            <div class="col-xs-12 col-md-4 service-title"
+                                 data-translate="overTheBox_billing_date"
+                                 data-ng-if="!OverTheBoxDetails.serviceInfos.renew.deleteAtExpiration"></div>
+                            <div class="col-xs-12 col-md-8 description">
+                                <span data-ng-bind="OverTheBoxDetails.serviceInfos.expiration | date:'dd/MM/yyyy'"></span>
+                                <button class="btn btn-xs btn-primary left-space-m8"
+                                        data-translate="overTheBox_resiliate"
+                                        title="{{OverTheBox.service.customerDescription}} : {{::'overTheBox_resiliate' | translate}}"
+                                        type="button"
+                                        data-ng-if="OverTheBoxDetails.canResiliate()"
+                                        data-ng-really-click="OverTheBoxDetails.resiliate()"
+                                        data-ng-really-message="{{ 'overTheBox_resiliation_confirm' | translate: {service:OverTheBox.service.customerDescription || OverTheBox.service.serviceName, date: (OverTheBoxDetails.serviceInfos.expiration | date:'dd/MM/yyyy')} }}"
+                                        data-ng-really-confirm="{{ 'ok' | translate }}"
+                                        data-ng-really-cancel="{{ 'cancel' | translate }}"
+                                        data-ng-really-window-class="revert-really-buttons"
+                                        data-ng-disabled="OverTheBoxDetails.loaders.resiliating">
+                                </button>
+                                <button class="btn btn-xs btn-primary left-space-m8"
+                                        data-translate="overTheBox_cancel_resiliation"
+                                        title="{{OverTheBox.service.customerDescription}} : {{::'overTheBox_cancel_resiliation' | translate}}"
+                                        type="button"
+                                        data-ng-if="OverTheBoxDetails.canCancelResiliation()"
+                                        data-ng-click="OverTheBoxDetails.cancelResiliation()"
+                                        data-ng-disabled="OverTheBoxDetails.loaders.cancellingResiliation">
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+
+                        <div class="row info-row">
+                            <div class="col-xs-12 col-md-4 service-title"
+                                data-ng-class="{'text-warning': !OverTheBoxDetails.device.deviceId}">
+                                <span class="ovh-font ovh-font-filled-warning fs16"
+                                    data-ng-if="!OverTheBoxDetails.device.deviceId"></span>
+                                <span data-translate="overTheBox_deviceId"></span>
+                            </div>
+                            <div class="col-xs-12 col-md-8 description">
+                                <span data-ng-if="!OverTheBoxDetails.device.editMode"
+                                      data-ng-bind="OverTheBoxDetails.device.deviceId"></span>
+                                <button class="btn btn-xs btn-primary left-space-m8"
+                                        data-translate="modify"
+                                        type="button"
+                                        title="{{::'overTheBox_deviceId_button_title' | translate }} {{::'modify' | translate }}"
+                                        data-ng-if="!OverTheBoxDetails.device.editMode && OverTheBoxDetails.device.deviceId"
+                                        data-ng-click="OverTheBoxDetails.device.editMode = true; OverTheBoxDetails.deviceIdToLink = OverTheBoxDetails.device.deviceId">
+                                </button>
+                                <form data-ng-if="OverTheBoxDetails.device.editMode || !OverTheBoxDetails.device.deviceId"
+                                      name="formEditDevice"
+                                      class="ovh-form-flat"
+                                      novalidate>
+                                    <div flat-input-container>
+                                        <div class="row">
+                                            <div class="col-xs-8">
+                                                <label for="input-inline-deviceId"
+                                                       class="sr-only"
+                                                       data-translate="overTheBox_deviceId"></label>
+                                                <!-- list des items : OverTheBoxDetails.deviceIds -->
+                                                <input id="input-inline-deviceId"
+                                                       name="input-inline-deviceId"
+                                                       class="form-control"
+                                                       data-typeahead="deviceId for deviceId in OverTheBoxDetails.deviceIds"
+                                                       data-ng-pattern="/[a-z0-9]{8}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{12}/"
+                                                       data-ng-model="OverTheBoxDetails.deviceIdToLink" />
+                                            </div>
+                                            <div class="col-xs-4">
+                                                <button class="btn btn-primary btn-xs"
+                                                        type="submit"
+                                                        title="{{OverTheBoxDetails.deviceIdToLink}} {{::'common_table_validate_modifications' | translate}}"
+                                                        data-ng-really-click="OverTheBoxDetails.linkDevice({deviceId: OverTheBoxDetails.deviceIdToLink}); OverTheBoxDetails.device.editMode = false"
+                                                        data-ng-really-message="{{ 'overTheBox_link_device_confirm' | translate }}"
+                                                        data-ng-really-confirm="{{ 'ok' | translate }}"
+                                                        data-ng-really-cancel="{{ 'cancel' | translate }}"
+                                                        data-ng-really-window-class="revert-really-buttons"
+                                                        data-ng-disabled="!OverTheBoxDetails.deviceIdToLink || formEditDevice.$invalid">
+                                                    <span class="ovh-font ovh-font-check" aria-hidden="true"></span>
+                                                </button>
+                                                <button class="btn btn-default btn-xs left-space-m8"
+                                                        type="button"
+                                                        title="{{OverTheBoxDetails.deviceIdToLink}} {{::'common_table_cancel_modifications' | translate}}"
+                                                        data-ng-disabled="!OverTheBoxDetails.device.deviceId"
+                                                        data-ng-click="OverTheBoxDetails.device.editMode = false">
+                                                    <span class="ovh-font ovh-font-wrong" aria-hidden="true"></span>
+                                                </button>
                                             </div>
                                         </div>
-                                    </form>
-                                </div>
+                                    </div>
+                                </form>
                             </div>
+                        </div>
 
-                            <div class="row" data-ng-if="OverTheBoxDetails.loaders.device || !OverTheBoxDetails.error.noDeviceLinked">
-                                <div class="col-xs-12 col-md-4 service-title" data-translate="overTheBox_publicIp"></div>
-                                <div class="col-xs-12 col-md-8 service-item">{{OverTheBoxDetails.device.publicIp}}</div>
-                            </div>
+                        <div class="row info-row" data-ng-if="OverTheBoxDetails.loaders.device || !OverTheBoxDetails.error.noDeviceLinked">
+                            <div class="col-xs-12 col-md-4 service-title" data-translate="overTheBox_publicIp"></div>
+                            <div class="col-xs-12 col-md-8 description" data-ng-bind="OverTheBoxDetails.device.publicIp"></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="row top-space-m32" data-ng-if="OverTheBox.service">
-            <div class="col-md-12">
-                <div class="widget-presentation">
-                    <h2 class="widget-presentation-title" data-translate="overthebox_traffic"></h2>
-                    <spinner data-ng-show="OverTheBoxDetails.loaders.graph"></spinner>
-                    <div class="row top-space-m8">
-                        <div class="col-md-6">
-                            <div class="graph-gauge">
-                                <span data-gauge="OverTheBoxDetails.download.max" data-gauge-width="50" data-ng-model="OverTheBoxDetails.download.current"></span>
-                                <span class="left-space-m16 rate">
-                                    <i class="fa fa-arrow-down"></i>
-                                    <span>{{ OverTheBoxDetails.download.display.value }} {{OverTheBoxDetails.download.display.unit}}</span>
-                                </span>
-                            </div>
-                            <h3 data-translate="overthebox_traffic_download"></h3>
-                            <div data-chartjs="OverTheBoxDetails.chartDown" class="chart-container"></div>
+        <div class="top-space-m32" data-ng-if="OverTheBox.service">
+            <div class="widget-presentation">
+                <h2 class="widget-presentation-title" data-translate="overthebox_traffic"></h2>
+                <spinner data-ng-if="OverTheBoxDetails.loaders.graph"></spinner>
+                <div class="row info-row">
+                    <div class="col-md-6 clearfix">
+                        <div class="pull-right">
+                            <span data-gauge="OverTheBoxDetails.download.max" data-gauge-width="50" data-ng-model="OverTheBoxDetails.download.current"></span>
+                            <span class="left-space-m8 rate">
+                                <span class="fa fa-arrow-down text-info" aria-hidden="true"></span>
+                                <span data-ng-bind="OverTheBoxDetails.download.display.value"></span>
+                                <span data-ng-bind="OverTheBoxDetails.download.display.unit"></span>
+                            </span>
                         </div>
-                        <div class="col-md-6">
-                            <div class="graph-gauge">
-                                <span data-gauge="OverTheBoxDetails.upload.max" data-gauge-width="50" data-ng-model="OverTheBoxDetails.upload.current"></span>
-                                <span class="left-space-m16 rate">
-                                    <i class="fa fa-arrow-up"></i>
-                                    <span>{{ OverTheBoxDetails.upload.display.value }} {{OverTheBoxDetails.upload.display.unit}}</span>
-                                </span>
-                            </div>
-                            <h3 data-translate="overthebox_traffic_upload"></h3>
-                            <div data-chartjs="OverTheBoxDetails.chartUp" class="chart-container"></div>
+                        <h3 data-translate="overthebox_traffic_download"></h3>
+                        <div data-chartjs="OverTheBoxDetails.chartDown" class="chart-container"></div>
+                    </div>
+                    <div class="col-md-6 clearfix">
+                        <div class="pull-right">
+                            <span data-gauge="OverTheBoxDetails.upload.max" data-gauge-width="50" data-ng-model="OverTheBoxDetails.upload.current"></span>
+                            <span class="left-space-m8 rate">
+                                <span class="fa fa-arrow-up text-info" aria-hidden="true"></span>
+                                <span data-ng-bind="OverTheBoxDetails.upload.display.value"></span>
+                                <span data-ng-bind="OverTheBoxDetails.upload.display.unit"></span>
+                            </span>
                         </div>
+                        <h3 data-translate="overthebox_traffic_upload"></h3>
+                        <div data-chartjs="OverTheBoxDetails.chartUp" class="chart-container"></div>
                     </div>
                 </div>
             </div>

@@ -13,11 +13,11 @@ module.exports = function (config) {
             // bower:js
             // endbower
             "client/bower_components/at-internet-smarttag-manager/dist/smarttag.js",
-            "client/app/app.js",
+            ".tmp/client/app/app.js",
             ".tmp/app/config.js",
-            "client/{app,components}/**/*.module.js",
-            "client/{app,components}/**/*.js",
-            "client/{app,components}/**/*.html",
+            ".tmp/client/{app,components}/**/*.module.js",
+            ".tmp/client/{app,components}/**/*.js",
+            ".tmp/client/{app,components}/**/*.html",
 
             { pattern: "client/{app,components,bower_components}/**/*.dt.spec.json", included: false }
         ],
@@ -35,12 +35,12 @@ module.exports = function (config) {
         },
 
         ngHtml2JsPreprocessor: {
-            stripPrefix: "client/",
+            stripPrefix: ".tmp/client/",
             moduleName: "templates"
         },
 
         ngJade2JsPreprocessor: {
-            stripPrefix: "client/"
+            stripPrefix: ".tmp/client/"
         },
 
         // list of files / patterns to exclude
