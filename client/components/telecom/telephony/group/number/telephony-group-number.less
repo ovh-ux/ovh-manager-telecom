@@ -6,13 +6,126 @@
 @voip-diagram-anchor-base-size: 16px;
 @voip-diagram-radio-radio-size: 28px;
 
-.telephony-number {
+.voip-plan {
+    position: relative;
+
+    &__step {
+        display: flex;
+
+        &-container {
+            display: inline-block;
+        }
+
+        &--node {
+            border: solid 1px @mischka;
+            align-items: stretch;
+            background-color: white;
+        }
+
+        &--point {
+            align-items: center;
+        }
+
+        &-icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 16px;
+
+            &--grip {
+                width: 35px;
+                height: 35px;
+                border: solid 1px @brand-primary;
+                background-color: fadeout(@brand-primary, 85%);
+                color: @BRAND_DARK;
+                border-radius: 50%;
+            }
+
+            &--phone-number {
+                width: 39px;
+                height: 39px;
+                border: solid 1px @BRAND_DARK;
+                background-color: white;
+                color: @BRAND_DARK;
+                border-radius: 50%;
+            }
+
+            &--included {
+                padding: 8px;
+                background-color: @BRAND_DARK;
+                color: white;
+            }
+        }
+
+        &-description {
+            padding: 8px 16px;
+        }
+
+        &-name {
+            display: block;
+            font-size: @FONT-SIZE-MAININFO;
+            color: @BRAND_DARK;
+
+            &--has-info {
+                margin-bottom: 4px;
+            }
+        }
+
+        &-info {
+            display: block;
+            font-size: @font-size-base;
+            color: @shuttleGray;
+        }
+
+        &-btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 16px;
+            color: @BRAND_DARK;
+
+            &-container {
+                display: flex;
+                align-items: stretch;
+            }
+
+            &--primary {
+                width: 35px;
+                height: 35px;
+                border: solid 1px @brand-primary;
+                background-color: @brand-primary;
+                border-radius: 50%;
+            }
+
+            &--default {
+                width: 35px;
+                height: 35px;
+                border: solid 1px @brand-primary;
+                background-color: white;
+                border-radius: 50%;
+            }
+
+            &--included {
+                padding: 8px;
+                background-color: fadeout(@brand-primary, 85%);
+                border: none;
+            }
+        }
+    }
+    
+    &__title {
+        color: @BRAND_DARK;
+    }
+
+    @media screen and (min-width: @screen-xs) {
+        margin: 32px;
+    }
+
 
     .telephony-number-plan {
-        padding: 40px 40px 80px;
+        position: relative;
+        padding: 16px 32px;
         height: 100%;
-        background-color: #f3f3f3;
-        box-shadow: inset 0 5px 6px -5px #888;
 
         .telephony-number-feature {
             .participants-list,
