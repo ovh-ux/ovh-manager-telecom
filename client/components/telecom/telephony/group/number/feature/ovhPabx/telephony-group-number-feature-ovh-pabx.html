@@ -1,18 +1,19 @@
 <div class="telephony-number-ovh-pabx">
 
     <!-- FEATURE IS LOADING -->
-    <div class="anchor-container anchor-loading anchor-point-x2"
+    <div class="voip-plan__step"
          data-ng-if="$ctrl.numberCtrl.loading.feature">
-        <div class="anchor"
+        <div class="voip-plan__step-icon"
              data-jsplumb-endpoint
              data-jsplumb-endpoint-uuid="redirect-loading">
-            <i class="fa fa-spinner fa-pulse"
+            <span class="fa fa-spinner fa-pulse"
                data-jsplumb-connection
-               data-jsplumb-connection-target="incoming-call-{{ $ctrl.numberCtrl.number.serviceName }}">
-            </i>
+               data-jsplumb-connection-target="incoming-call-{{ $ctrl.numberCtrl.number.serviceName }}"
+               aria-hidden="true">
+           </span>
         </div>
-        <div class="anchor-content service-presentation">
-            <span class="service-label"
+        <div class="voip-plan__step-description">
+            <span class="voip-plan__step-info"
                   data-translate="loading">
             </span>
         </div>
