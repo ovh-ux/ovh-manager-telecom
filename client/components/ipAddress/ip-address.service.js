@@ -8,11 +8,11 @@ angular.module("managerApp").service("IpAddress", function ($window) {
     /**
      * Returns a new instance of Address6.
      */
-    this.address6 = function () {
+    this.address6 = function (...args) {
         if ("Address6" in $window) {
             var Address6 = $window.Address6;
             var address = Object.create(Address6.prototype);
-            Address6.apply(address, arguments);
+            Address6.apply(address, args);
             return address;
         }
         throw new Error("Missing ip-address dependency");
@@ -22,11 +22,11 @@ angular.module("managerApp").service("IpAddress", function ($window) {
     /**
      * Returns a new instance of Address4.
      */
-    this.address4 = function () {
+    this.address4 = function (...args) {
         if ("Address4" in $window) {
             var Address4 = $window.Address4;
             var address = Object.create(Address4.prototype);
-            Address4.apply(address, arguments);
+            Address4.apply(address, args);
             return address;
         }
         throw new Error("Missing ip-address dependency");

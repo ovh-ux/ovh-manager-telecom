@@ -204,8 +204,10 @@ module.exports = function (app) {
             ) && req.path.indexOf("bower_components") === -1
         ) {
             res.sendFile(path.join(path.normalize(__dirname + "/../.tmp"), req.path));
-        } else {
+        } else if (req.path.indexOf("bower_components") >= 0) {
             res.sendFile(path.join(path.normalize(__dirname + "/../client"), req.path));
+        } else {
+            res.sendFile(path.join(path.normalize(__dirname + "/../dist/client"), req.path));
         }
     }).get(errors[404]);
 
