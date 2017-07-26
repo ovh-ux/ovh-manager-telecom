@@ -155,8 +155,7 @@ module.exports = function (grunt) {
         //#######################################################################################
         eslint: {
             options: {
-                quiet: true, // Disable to see warning
-                fix: true
+                quiet: true // Disable to see warning
             },
             all: [
                 "<%= yeoman.client %>/{app,components}/**/!(*.spec|*.mock).js"
