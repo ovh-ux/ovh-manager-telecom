@@ -49,7 +49,8 @@
    <translation id="xdsl_details_ips_v4" qtlid="101781">IPv4</translation>
    <translation id="xdsl_details_ips_v6" qtlid="34126">IPv6</translation>
    <translation id="xdsl_details_ips_remove_only_extra" qtlid="309737">Il n'est possible d'enlever que les blocks d'IPs supplémentaires</translation>
-   <translation id="xdsl_details_ips_manage" qtlid="194216">Gérer les IPs</translation>
+   <translation id="xdsl_details_ips_manage">gérer les IPs</translation>
+   <translation id="xdsl_details_ips_delete">supprimer ce bloc d'IPs</translation>
    <translation id="xdsl_details_ips_notifications" qtlid="72797">Alertes</translation>
    <translation id="xdsl_details_ips_title" qtlid="309750">IPs</translation>
    <translation id="xdsl_details_ips_order" qtlid="43558">Commander</translation>

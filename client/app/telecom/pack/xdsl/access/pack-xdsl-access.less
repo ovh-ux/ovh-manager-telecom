@@ -1,28 +1,9 @@
 .telecom-pack-xdsl-access {
-    .status-label {
-        i {
-            margin-right: 6px;
-            font-size: 14px;
-            margin-top: -9px;
-        }
-    }
+    .chart-container {
+        height: 320px;
 
-    span.data-transfert-amount {
-        float: right;
-        span {
-            margin-left:2px;
-        }
-    }
-
-    .pull-right{
-        button{
-            &.btn-link{
-                padding: 0 0 0 8px;
-
-                &:hover, &:active, &:focus{
-                    text-decoration: none;
-                }
-            }
+        @media (max-width: @screen-md-min) {
+            height: 240px;
         }
     }
 
@@ -42,11 +23,5 @@
 
     div.row {
         padding: 6px 0;
-    }
-
-    .service-item {
-        p {
-            line-height: 1.5em;
-        }
     }
 }

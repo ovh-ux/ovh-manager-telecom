@@ -41,18 +41,18 @@ angular.module("managerApp").controller("XdslAccessCtrl", function ($scope, $sta
     function setStatusLabel (status) {
         switch (status) {
         case "active":
-            self.statusLabel = "<i class=\"ovh-font ovh-font-success text-success fs16 right-space-m8\"></i> " + $translate.instant("xdsl_details_status_" + status);
+            self.statusLabel = "<span class=\"ovh-font ovh-font-success text-success fs16 right-space-m8\" aria-hidden=\"true\"></span> " + $translate.instant("xdsl_details_status_" + status);
             break;
         case "doing":
         case "migration":
         case "upgradeOffer":
-            self.statusLabel = "<i class=\"ovh-font ovh-font-success text-success fs16 right-space-m8\"></i> " + $translate.instant("xdsl_details_status_" + status);
+            self.statusLabel = "<span class=\"ovh-font ovh-font-success text-success fs16 right-space-m8\" aria-hidden=\"true\"></span> " + $translate.instant("xdsl_details_status_" + status);
             break;
         case "cancelled":
         case "close":
         case "deleting":
         case "slamming":
-            self.statusLabel = "<i class=\"ovh-font ovh-font-failure text-danger fs16 right-space-m8\"></i> " + $translate.instant("xdsl_details_status_" + status);
+            self.statusLabel = "<span class=\"ovh-font ovh-font-failure text-danger fs16 right-space-m8\" aria-hidden=\"true\"></span> " + $translate.instant("xdsl_details_status_" + status);
             break;
         default :
             self.statusLabel = status;

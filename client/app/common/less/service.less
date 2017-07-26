@@ -100,7 +100,9 @@
         }
     }
 
-    &:hover, &:focus, &:active {
+    &:hover:not(span),
+    &:focus:not(span),
+    &:active:not(span) {
         text-decoration: none;
         color: @text-color-content;
 
