@@ -11,9 +11,13 @@
 
     &__step {
         display: flex;
+        position: relative;
+        z-index: 10;
+        margin: 16px 0;
 
-        &-container {
-            display: inline-block;
+        &-content {
+            display: flex;
+            align-items: center;
         }
 
         &--node {
@@ -30,35 +34,41 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 16px;
 
             &--grip {
                 width: 35px;
                 height: 35px;
                 border: solid 1px @brand-primary;
-                background-color: fadeout(@brand-primary, 85%);
+                background-color: @foam;
                 color: @BRAND_DARK;
+                font-size: 16px;
                 border-radius: 50%;
             }
 
-            &--phone-number {
+            &--basic {
                 width: 39px;
                 height: 39px;
                 border: solid 1px @BRAND_DARK;
                 background-color: white;
+                font-size: 20px;
                 color: @BRAND_DARK;
                 border-radius: 50%;
             }
 
             &--included {
-                padding: 8px;
+                width: 40px;
+                padding: 8px 0;
                 background-color: @BRAND_DARK;
+                font-size: 20px;
                 color: white;
             }
         }
 
         &-description {
+            display: inline-block;
+            max-width: 348px;
             padding: 8px 16px;
+            white-space: nowrap;
         }
 
         &-name {
@@ -106,19 +116,79 @@
             }
 
             &--included {
-                padding: 8px;
-                background-color: fadeout(@brand-primary, 85%);
+                width: 40px;
+                padding: 8px 0;
+                background-color: @foam;
                 border: none;
             }
         }
+
+        &-confirm {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 51;
+            width: 100%;
+            height: 100%;
+
+            &-overlay {
+                position: absolute;
+                z-index: 52;
+                background-color: #FFF;
+                opacity: .9;
+            }
+
+            &-content {
+                position: absolute;
+                z-index: 53;
+                width: 100%;
+                height: 100%;
+
+                .btn.btn-default {
+                    background-color: #FFF;
+                }
+            }
+        }
     }
-    
+
+    &__start {
+        background-color: @BRAND_DARK;
+        border-radius: 50%;
+        height: 16px;
+        width: 16px;
+        margin-left: 12px;
+        margin-right: 16px;
+    }
+
     &__title {
+        margin: 0;
         color: @BRAND_DARK;
+    }
+
+    &__subpart {
+        margin: 48px 0 0 64px;
     }
 
     @media screen and (min-width: @screen-xs) {
         margin: 32px;
+    }
+
+    /*----------  FOR JSPLUMB SVG ELEMENTS  ----------*/
+
+    .jtk-connector {
+        z-index: 4;
+
+        &-disabled {
+            z-index: 3;
+
+            path {
+                stroke: @voip-metro-plan-disabled-bgcolor;
+            }
+        }
+
+        &.jtk-hover {
+            z-index: 5;
+        }
     }
 
 
