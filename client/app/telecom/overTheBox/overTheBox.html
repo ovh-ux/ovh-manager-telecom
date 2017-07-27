@@ -7,10 +7,10 @@
                                    data-disabled="false"
                                    data-editable-service-name-title-on-save="OverTheBox.updateName">
             </editable-service-name>
-            <dl>
-                <dt data-translate="overTheBox_dashboard_service_label"></dt>
-                <dd data-ng-bind="OverTheBox.service.serviceName | characters:50:true"></dd>
-            </dl>
+            <div>
+                <span class="service-title" data-translate="overTheBox_dashboard_service_label"></span>
+                <span class="service-item" data-ng-bind="OverTheBox.service.serviceName | characters:50:true"></span>
+            </div>
         </header>
 
         <nav role="navigation">

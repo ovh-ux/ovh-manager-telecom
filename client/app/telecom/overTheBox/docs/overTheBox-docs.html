@@ -7,42 +7,42 @@
 
         <div data-ng-repeat="section in OverTheBoxDocs.docs.subs track by section.label">
             <div>
-                <a class="fs16"
+                <a class="btn btn-link space-p0 fs16"
                    title="{{:: section.label | translate}} ({{:: 'overTheBox_docs_open_new_tab' | translate }})"
                    target="_blank"
-                   data-ng-if="section.url[OverTheBoxDocs.language]"
-                   data-ng-href="{{section.url[OverTheBoxDocs.language]}}"
-                   data-ng-if="section.url">
+                   data-ng-if="section.url && section.url[OverTheBoxDocs.language]"
+                   data-ng-href="{{section.url[OverTheBoxDocs.language]}}">
                     <span data-translate="{{section.label}}"></span>
-                    <i class="ovh-font ovh-font-newtab left-space-m4"></i>
+                    <span class="ovh-font ovh-font-newtab left-space-m4" aria-hidden="true"></span>
                 </a>
             </div>
             <div class="widget-presentation top-space-m32" data-ng-if="!section.url">
                 <h2 class="widget-presentation-title" data-translate="{{section.label}}"></h2>
-                <div class="row" data-ng-repeat="subSection in section.subs track by subSection.label">
-                    <div class="col-lg-12">
-                        <div>
-                            <a title="{{:: subSection.label | translate}} ({{:: 'overTheBox_docs_open_new_tab' | translate }})"
-                               target="_blank"
-                               data-ng-if="subSection.url[OverTheBoxDocs.language]"
-                               data-ng-href="{{subSection.url[OverTheBoxDocs.language]}}"
-                               data-ng-if="subSection.url">
-                                <span data-translate="{{subSection.label}}"></span>
-                                <i class="ovh-font ovh-font-newtab left-space-m4"></i>
-                            </a>
-                        </div>
-                        <div class="top-space-m16" data-ng-if="!subSection.url">
-                            <h3 data-translate="{{subSection.label}}"></h3>
-                            <div data-ng-repeat="subsubSection in subSection.subs track by subsubSection.label">
+                <div data-ng-repeat="subSection in section.subs track by subSection.label">
+                    <div>
+                        <a title="{{:: subSection.label | translate}} ({{:: 'overTheBox_docs_open_new_tab' | translate }})"
+                           target="_blank"
+                           class="btn btn-link left-space-p0 right-space-p0"
+                           data-ng-if="subSection.url && subSection.url[OverTheBoxDocs.language]"
+                           data-ng-href="{{subSection.url[OverTheBoxDocs.language]}}">
+                            <span data-translate="{{subSection.label}}"></span>
+                            <span class="ovh-font ovh-font-newtab left-space-m4" aria-hidden="true"></span>
+                        </a>
+                    </div>
+                    <div class="top-space-m32" data-ng-if="!subSection.url">
+                        <h3 data-translate="{{subSection.label}}"></h3>
+                        <ul>
+                            <li data-ng-repeat="subsubSection in subSection.subs track by subsubSection.label">
                                 <a target="_blank"
+                                   class="btn btn-link left-space-p0 right-space-p0"
                                    title="{{:: subsubSection.label | translate}} ({{:: 'overTheBox_docs_open_new_tab' | translate }})"
                                    data-ng-if="subsubSection.url[OverTheBoxDocs.language]"
                                    data-ng-href="{{subsubSection.url[OverTheBoxDocs.language]}}">
                                     <span data-translate="{{subsubSection.label}}"></span>
-                                    <i class="ovh-font ovh-font-newtab left-space-m4"></i>
+                                    <span class="ovh-font ovh-font-newtab left-space-m4" aria-hidden="true"></span>
                                 </a>
-                            </div>
-                        </div>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>

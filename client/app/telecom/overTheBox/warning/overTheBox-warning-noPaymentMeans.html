@@ -1,7 +1,7 @@
-<div class="col-md-12 alert alert-ovh" data-ng-controller="OrderOverTheBoxWarningCtrl as OrderOverTheBoxWarning">
-    <i class="ovh-font ovh-font-filled-warning"></i>
-    <h3>
-        <span data-translate="order_overTheBox_payment_no_means"></span>
-    </h3>
-    <p  data-translate="order_overTheBox_payment_means" data-translate-values="{url: OrderOverTheBoxWarning.paymentMeans}"></p>
+<div class="alert alert-warning"
+     role="alert"
+     data-ng-controller="OrderOverTheBoxWarningCtrl as OrderOverTheBoxWarning">
+    <span class="ovh-font ovh-font-filled-warning" aria-hidden="true"></span>
+    <h3 data-translate="order_overTheBox_payment_no_means"></h3>
+    <p data-translate="order_overTheBox_payment_means" data-translate-values="{url: OrderOverTheBoxWarning.paymentMeans}"></p>
 </div>

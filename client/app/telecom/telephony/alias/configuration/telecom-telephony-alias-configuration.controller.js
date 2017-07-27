@@ -134,7 +134,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationCtrl"
                     // if it is a CCS => add records management page link
                     easyHuntingActions.push({
                         name: "number_easy_hunting_board",
-                        url: TelephonyMediator.getV6ToV4RedirectionUrl("alias.number_easy_hunting_board"),
+                        sref: "telecom.telephony.alias.configuration.stats.easyHunting",
                         text: $translate.instant("telephony_alias_configuration_actions_number_hunting_board")
                     }, {
                         name: "number_cloud_hunting_records",
