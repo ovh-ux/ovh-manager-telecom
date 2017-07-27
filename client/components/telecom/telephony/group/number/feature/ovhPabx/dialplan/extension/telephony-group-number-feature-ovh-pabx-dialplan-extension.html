@@ -217,18 +217,21 @@
             </div> <!-- RULE LIST -->
 
             <!-- ADD BTN -->
-            <button type="button"
-                    class="voip-plan__step-btn voip-plan__step-btn--primary"
-                    data-jsplumb-endpoint="$ctrl.numberCtrl.jsPlumbEndpointsOptions.topLeft"
-                    data-translate-attr="{ title: 'telephony_number_feature_ovh_pabx_step_add_rule' }"
-                    data-ng-disabled="$ctrl.isActionsDisabled()"
-                    data-ng-click="$ctrl.addRule(false)">
-                <span class="ovh-font ovh-font-ajouter"
-                   data-ng-if="!$ctrl.extension.collapsed"
-                   data-jsplumb-connection="!$ctrl.extension.enabled ? $ctrl.numberCtrl.jsPlumbConnectionsOptions.disabled : null"
-                   data-jsplumb-connection-target="{{ $ctrl.uuid }}">
-               </span>
-            </button> <!-- ADD BTN -->
+            <div class="voip-plan__step">
+                <button type="button"
+                        class="voip-plan__step-btn voip-plan__step-btn--primary voip-plan__step-btn--add"
+                        data-jsplumb-endpoint="$ctrl.numberCtrl.jsPlumbEndpointsOptions.topLeft"
+                        data-translate-attr="{ title: 'telephony_number_feature_ovh_pabx_step_add_rule' }"
+                        data-ng-disabled="$ctrl.isActionsDisabled()"
+                        data-ng-click="$ctrl.addRule(false)">
+                    <span class="ovh-font ovh-font-ajouter"
+                       data-ng-if="!$ctrl.extension.collapsed"
+                       data-jsplumb-connection="!$ctrl.extension.enabled ? $ctrl.numberCtrl.jsPlumbConnectionsOptions.disabled : null"
+                       data-jsplumb-connection-target="{{ $ctrl.uuid }}">
+                   </span>
+                </button>
+            </div>
+             <!-- ADD BTN -->
 
             <!-- CONDITION DISPLAY -->
             <div class="voip-plan__step">
@@ -238,7 +241,8 @@
                        data-jsplumb-connection="!$ctrl.extension.enabled ? $ctrl.numberCtrl.jsPlumbConnectionsOptions.disabled : null"
                        data-jsplumb-connection-target="{{ $ctrl.uuid }}">
                    </span>
-                    <div data-jsplumb-endpoint
+                    <div class="voip-plan__invisible-anchor voip-plan__invisible-anchor--in-icon"
+                         data-jsplumb-endpoint
                          data-jsplumb-endpoint-uuid="{{ $ctrl.getEndpointUuid() + '-condition' }}">
                     </div>
                 </div>
@@ -252,7 +256,7 @@
             </div> <!-- END OF CONDITION DISPLAY -->
 
             <!-- NEGATIVE ACTION DISPLAY -->
-            <div class="voip-plan__subpart-extended">
+            <div class="voip-plan__subpart">
                 <!-- RULE LIST -->
                 <div data-ui-sortable="$ctrl.negativeRulesSortableOptions"
                      data-ng-model="$ctrl.extension.negativeRules">
@@ -272,19 +276,22 @@
                 </div> <!-- RULE LIST -->
 
                 <!-- ADD NEGATIVE ACTION BTN -->
-                <button type="button"
-                        class="voip-plan__step-btn voip-plan__step-btn--primary"
-                        data-jsplumb-endpoint="$ctrl.numberCtrl.jsPlumbEndpointsOptions.topLeft"
-                        data-translate-attr="{ title: 'telephony_number_feature_ovh_pabx_step_add_rule_invalid' }"
-                        data-ng-disabled="$ctrl.isActionsDisabled()"
-                        data-ng-click="$ctrl.addRule(true)">
-                    <span class="ovh-font ovh-font-ajouter"
-                       data-ng-if="!$ctrl.extension.collapsed"
-                       data-jsplumb-connection="!$ctrl.extension.enabled ? $ctrl.numberCtrl.jsPlumbConnectionsOptions.disabled : null"
-                       data-jsplumb-connection-target="{{ $ctrl.getEndpointUuid() + '-condition' }}"
-                       aria-hidden="true">
-                   </span>
-                </button><!-- ADD NEGATIVE ACTION BTN -->
+                <div class="voip-plan__step">
+                    <button type="button"
+                            class="voip-plan__step-btn voip-plan__step-btn--primary voip-plan__step-btn--add"
+                            data-jsplumb-endpoint="$ctrl.numberCtrl.jsPlumbEndpointsOptions.topLeft"
+                            data-translate-attr="{ title: 'telephony_number_feature_ovh_pabx_step_add_rule_invalid' }"
+                            data-ng-disabled="$ctrl.isActionsDisabled()"
+                            data-ng-click="$ctrl.addRule(true)">
+                        <span class="ovh-font ovh-font-ajouter"
+                           data-ng-if="!$ctrl.extension.collapsed"
+                           data-jsplumb-connection="!$ctrl.extension.enabled ? $ctrl.numberCtrl.jsPlumbConnectionsOptions.disabled : null"
+                           data-jsplumb-connection-target="{{ $ctrl.getEndpointUuid() + '-condition' }}"
+                           aria-hidden="true">
+                       </span>
+                    </button>
+                </div>
+                <!-- ADD NEGATIVE ACTION BTN -->
             </div> <!-- END OF NEGATIVE ACTION DISPLAY -->
         </div>
     </div> <!-- RULE DISPLAY -->
