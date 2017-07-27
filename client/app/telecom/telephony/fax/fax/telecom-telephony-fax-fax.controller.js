@@ -25,7 +25,7 @@ angular.module("managerApp").controller("TelecomTelephonyFaxFaxCtrl", function (
             text: $translate.instant("telephony_group_fax_fax_action_options")
         }, {
             name: "line_fax_white_label_domains",
-            url: TelephonyMediator.getV6ToV4RedirectionUrl("line.line_fax_white_label_domains"),
+            sref: "telecom.telephony.fax.fax.customDomains",
             text: $translate.instant("telephony_group_fax_fax_action_white_label_domains"),
             disabled: !TelecomMediator.isVip
         }, {

@@ -1,0 +1,143 @@
+<section class="telecom-telephony-service-fax-custom-domains">
+
+    <div class="row">
+        <div class="col-xs-12 col-md-6">
+
+            <div class="widget-presentation">
+                <header class="widget-presentation-header">
+                    <h2 class="widget-presentation-title"
+                        data-translate="telephony_service_fax_custom_domains_informations">
+                    </h2>
+                </header>
+                <div class="alert alert-info" role="alert">
+                    <span class="ovh-font ovh-font-filled-info" aria-hidden="true"></span>
+                    <p data-translate="telephony_service_fax_custom_domains_informations_alert_info1"></p>
+                    <p data-translate="telephony_service_fax_custom_domains_informations_alert_info2"></p>
+                </div>
+            </div>
+            <!-- /.widget-presentation -->
+
+        </div>
+        <div class="col-xs-12 col-md-6">
+
+            <div class="widget-presentation">
+                <header class="widget-presentation-header">
+                    <h2 class="widget-presentation-title"
+                        data-translate="telephony_service_fax_custom_domains_configuration">
+                    </h2>
+                </header>
+
+                <bouncing-box-loader data-ng-if="$ctrl.loading.init">
+                    <h3 data-translate="loading"></h3>
+                </bouncing-box-loader>
+
+                <div data-ng-if="!$ctrl.loading.init">
+
+                    <!-- TABLE -->
+                    <div class="table-responsive">
+                        <table class="table table-striped table-pretty table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col"
+                                        data-translate="telephony_service_fax_custom_domains_configuration_table_column_domain">
+                                    </th>
+                                    <th scope="col"
+                                        data-translate="telephony_service_fax_custom_domains_configuration_table_column_action">
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody data-ng-if="!$ctrl.customDomains.isLoading && $ctrl.customDomains.raw.length">
+                                <tr data-ng-repeat="customDomain in $ctrl.customDomains.paginated track by customDomain.id">
+                                    <th scope="row" data-ng-bind="customDomain.domain"></th>
+                                    <td>
+                                        <button
+                                            type="button"
+                                            class="btn btn-default"
+                                            data-ng-click="$ctrl.removeCustomDomains(customDomain)"
+                                            data-ng-disabled="customDomain.isDeleting"
+                                            data-translate-attr="{ title: 'telephony_service_fax_custom_domains_configuration_table_action_delete' }"
+                                            data-translate-values="{ domain: customDomain.domain }">
+                                            <span class="ovh-font ovh-font-bin" aria-hidden="true"></span>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tbody data-ng-if="$ctrl.customDomains.isLoading">
+                                <tr>
+                                    <td colspan="2" class="text-center">
+                                        <spinner></spinner>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tbody data-ng-if="!$ctrl.customDomains.isLoading && !$ctrl.customDomains.raw.length">
+                                <tr>
+                                    <td colspan="2"
+                                        class="text-center"
+                                        data-translate="telephony_service_fax_custom_domains_configuration_table_empty">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="table-pretty-pagination top-space-m8"
+                             data-ng-show="!$ctrl.customDomains.isLoading && $ctrl.customDomains.raw.length && $ctrl.customDomains.raw.length > itemsPerPage"
+                             data-pagination-front
+                             data-items="$ctrl.customDomains.sorted"
+                             data-paginated-items="$ctrl.customDomains.paginated"
+                             data-current-page="currentPage"
+                             data-nb-pages="nbPages"
+                             data-items-per-page="itemsPerPage"
+                             data-page-placeholder="{{ 'common_pagination_page' | translate: { currentPage: currentPage, nbPages: nbPages } }}"
+                             data-item-per-page-placeholder="{{ 'common_pagination_display' | translate }}">
+                        </div>
+                    </div>
+
+                    <!-- FORM -->
+                    <form class="ovh-form-flat"
+                          name="addCustomDomainForm"
+                          novalidate
+                          data-ng-submit="$ctrl.addCustomDomains(addCustomDomainForm)">
+                        <div class="form-group bottom-space-m12">
+                            <div data-flat-input-container>
+                                <label for="addCustomDomain"
+                                      class="control-label"
+                                      data-translate="telephony_service_fax_custom_domains_configuration_form_add_label">
+                                </label>
+                                <input
+                                    type="text"
+                                    id="addCustomDomain"
+                                    class="form-control"
+                                    name="addCustomDomain"
+                                    autofocus
+                                    autocomplete="off"
+                                    required
+                                    data-ng-model="$ctrl.addCustomDomainsForm.domain"
+                                    data-uib-typeahead="domain for domain in $ctrl.domains | filter:$viewValue | limitTo:8"
+                                    data-translate-attr="{ placeholder: 'telephony_service_fax_custom_domains_configuration_form_add_label' }" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button
+                                type="submit"
+                                class="btn btn-primary left-space-m8"
+                                data-ng-disabled="addCustomDomainForm.$invalid ||
+                                                  $ctrl.addCustomDomainsForm.isAdding"
+                                data-translate="submit">
+                            </button>
+                            <button
+                                type="reset"
+                                class="btn btn-default pull-left left-space-m0"
+                                data-translate="cancel">
+                            </button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+            <!-- /.widget-presentation -->
+
+        </div>
+    </div>
+    <!-- /.row -->
+
+</section>
+<!-- /.telecom-telephony-service-fax-custom-domains -->
