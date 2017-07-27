@@ -68,6 +68,11 @@
                 font-size: 20px;
                 color: white;
             }
+
+            &--indicators {
+                font-size: 16px;
+                color: @shuttleGray;
+            }
         }
 
         &-radio {
@@ -187,6 +192,12 @@
                 position: relative;
                 z-index: 10;
             }
+
+            &--switch {
+                border: none;
+                background-color: transparent;
+                font-size: 20px;
+            }
         }
 
         &-confirm {
@@ -215,6 +226,17 @@
                 .btn.btn-default {
                     background-color: #FFF;
                 }
+            }
+        }
+
+        &-config {
+            display: flex;
+            align-items: center;
+
+            &-item {
+                display: flex;
+                align-items: center;
+                margin-left: 16px;
             }
         }
     }
