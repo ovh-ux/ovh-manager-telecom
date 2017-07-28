@@ -159,6 +159,14 @@
             align-items: center;
             font-size: 16px;
             color: @BRAND_DARK;
+            transition: all 200ms ease-in-out;
+
+            &:hover,
+            &:focus,
+            &:active {
+                color: @BRAND_DARK;
+                text-decoration: none;
+            }
 
             &-container {
                 display: flex;
@@ -166,19 +174,31 @@
             }
 
             &--primary {
-                width: 39px;
-                height: 39px;
-                border: solid 1px @brand-primary;
+                width: 40px;
+                height: 40px;
+                border: none;
                 background-color: @brand-primary;
                 border-radius: 50%;
+
+                &:hover,
+                &:focus,
+                &:active {
+                    background-color: darken(@brand-primary, 15%);
+                }
             }
 
             &--default {
-                width: 39px;
-                height: 39px;
+                width: 38px;
+                height: 38px;
                 border: solid 1px @brand-primary;
-                background-color: white;
+                background-color: transparent;
                 border-radius: 50%;
+
+                &:hover,
+                &:focus,
+                &:active {
+                    background-color: fadeout(@brand-primary, 85%);
+                }
             }
 
             &--included {
@@ -186,6 +206,12 @@
                 padding: 8px 0;
                 background-color: @foam;
                 border: none;
+
+                &:hover,
+                &:focus,
+                &:active {
+                    background-color: lighten(@brand-primary, 25%);
+                }
             }
 
             &--add {
