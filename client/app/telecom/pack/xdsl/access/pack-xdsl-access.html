@@ -357,22 +357,6 @@
                                  data-ng-include="'app/telecom/pack/xdsl/access/profil/pack-xdsl-access-profil.html'"></div>
                         </div>
 
-                        <div class="row" data-ng-if="access.xdsl.capabilities.canChangeLns">
-                            <div class="col-xs-12 col-md-4 service-title">
-                                <label class="tooltip-label"
-                                      for="newLns"
-                                      data-tooltip-append-to-body="true"
-                                      data-tooltip-placement="right"
-                                      data-uib-tooltip-template="'pack-xdsl-access-tooltip-lns.html'"
-                                      data-translate="xdsl_details_LNS">
-                                </label>
-                            </div>
-                            <div class="col-xs-12 col-md-8 service-item"
-                                 data-ng-if="access.xdsl.hasLns"
-                                 data-ng-include="'app/telecom/pack/xdsl/access/lns/pack-xdsl-access-lns.html'"></div>
-                            <div class="col-xs-12 col-md-8 service-item" data-ng-if="!access.xdsl.hasLns">-</div>
-                        </div>
-
                         <div class="row" data-ng-if="access.xdsl.capabilities.canApplyLnsRateLimit">
                             <div class="col-xs-12 col-md-4 service-title">
                                 <span class="tooltip-label"
