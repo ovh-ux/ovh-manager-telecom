@@ -105,7 +105,7 @@ module.exports = function (grunt) {
                     "<%= yeoman.client %>/{app,components}/**/!(*.spec|*.mock).js",
                     "!<%= yeoman.client %>/app/app.js"
                 ],
-                tasks: ["babel:dist", "injector:scripts"]
+                tasks: ["newer:babel:dist", "injector:scripts"]
             },
 
             translations: {
@@ -141,7 +141,7 @@ module.exports = function (grunt) {
                 files: [
                     "<%= yeoman.client %>/{app,components}/**/!(*.tpl).html"
                 ],
-                tasks: ["copy:html"]
+                tasks: ["newer:copy:html"]
             },
 
             gruntfile: {
