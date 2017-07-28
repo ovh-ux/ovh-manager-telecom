@@ -31,6 +31,15 @@ angular.module("managerApp").controller("TelecomTelephonyLineAssistTroubleshooti
 
     };
 
+    self.getServerAddress = function () {
+        if (self.process.line.phone.brand === "phone.thomson.st2030") {
+            return "th.prov.voip.ovh.net/st2030";
+        }
+
+        // TODO : add other conditions for other thomson phones (if some)
+        return "th.prov.voip.ovh.net/tb30";
+    };
+
     self.getWebInterfaceImageName = function () {
         if (self.process.line.phone.brand === "phone.cisco.spa112") {
             return "cisco_spa112_1";
