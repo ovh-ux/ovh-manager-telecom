@@ -3,6 +3,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationStats
 
     var self = this;
     var poller = null;
+    var stopPolling = false;
 
     function init () {
         self.isLoading = true;
@@ -10,6 +11,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationStats
             if (poller) {
                 $timeout.cancel(poller);
             }
+            stopPolling = true;
         });
         self.fetchFirstQueueId().then(function (queueId) {
             self.queueId = queueId;
@@ -46,7 +48,9 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationStats
     self.pollStats = function (queueId) {
         var periodicRefresh = function () {
             self.refreshStats(queueId).finally(function () {
-                poller = $timeout(periodicRefresh, 1000);
+                if (!stopPolling) {
+                    poller = $timeout(periodicRefresh, 1000);
+                }
             });
         };
         $timeout(periodicRefresh, 1000);
