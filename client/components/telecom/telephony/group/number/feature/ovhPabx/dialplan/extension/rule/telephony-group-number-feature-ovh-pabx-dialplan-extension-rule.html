@@ -2,7 +2,7 @@
     <!-- RULE BLOCK -->
          <!-- POSITION -->
          <div class="voip-plan__step-icon voip-plan__step-icon--grip hover-grip rule-grip"
-              data-ng-class="{ 'grip-disabled': $ctrl.isActionsDisabled() }"
+              data-ng-class="{ 'voip-plan__step-icon--grip-disabled': $ctrl.isActionsDisabled() }"
               data-jsplumb-endpoint="$ctrl.numberCtrl.jsPlumbEndpointsOptions.topLeft">
              <span data-jsplumb-connection="!$ctrl.extension.enabled ? $ctrl.numberCtrl.jsPlumbConnectionsOptions.disabled : null"
                    data-jsplumb-connection-target="{{ $ctrl.rule.negativeAction ? $ctrl.extensionCtrl.uuid + '-condition' : $ctrl.extensionCtrl.uuid }}"
@@ -19,7 +19,7 @@
              data-popover-trigger="none"
              data-popover-is-open="$ctrl.popoverStatus.isOpen"
              data-popover-class="pretty-popover telephony-number-feature-popover telephony-number-ovh-pabx-actions-popup"
-             data-ng-class="{ 'pending-delete': $ctrl.deletePending }">
+             data-ng-class="{ 'voip-plan__step-content--delete-anim': $ctrl.deletePending }">
             <div class="voip-plan__step-description"
                  data-ng-switch="$ctrl.getActionFamily()">
                 <span class="voip-plan__step-name voip-plan__step-name--has-info"
@@ -103,7 +103,7 @@
                     </li> <!-- DELETE ACTION -->
                 </ul> <!-- ACTIONS LIST -->
             </div> <!-- END OF AVAILABLE RULE ACTIONS -->
-            <div class="voip-plan__step-confirm"
+            <div class="voip-plan__step-confirm voip-plan__step-confirm--has-border"
                  data-ng-if="$ctrl.deletePending">
                 <div class="voip-plan__step-confirm-overlay"></div>
                 <div class="voip-plan__step-confirm-content text-center animated fadeInRight flex-row-center">

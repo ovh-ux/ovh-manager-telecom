@@ -153,7 +153,7 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxDialplanExtension
         var sortableOptions = {
             axis: "y",
             handle: ".rule-grip",
-            cancel: ".grip-disabled",
+            cancel: ".voip-plan__step-icon--grip-disabled",
             containment: "parent",
             sort: UI_SORTABLE_HELPERS.variableHeightTolerance,
             start: function () {

@@ -1,13 +1,16 @@
 // COLORS
 @telephony-number-main-color: @BRAND_SECONDARY;
 @telephony-number-disabled-color: #999999;
+@voip-plan-disabled-color: @shuttleGray;
 
 // SIZES
 @voip-diagram-anchor-base-size: 16px;
 @voip-diagram-radio-radio-size: 28px;
 
 .voip-plan {
+    width: 100%;
     position: relative;
+    overflow-x: auto;
 
     &__step {
         display: flex;
@@ -16,6 +19,7 @@
 
         &-content {
             display: flex;
+            flex-shrink: 0;
             align-items: center;
             position: relative;
 
@@ -36,6 +40,7 @@
 
         &-icon {
             display: flex;
+            flex-shrink: 0;
             justify-content: center;
             align-items: center;
             position: relative;
@@ -49,6 +54,22 @@
                 color: @BRAND_DARK;
                 font-size: 16px;
                 border-radius: 50%;
+                cursor: move;
+
+                &:hover {
+                    background-color: lighten(@brand-primary, 25%);
+                }
+
+                &-disabled {
+                    border: solid 1px @mischka;
+                    background-color: @gray-lighter;
+                    cursor: no-drop;
+                    color: @shuttleGray;
+
+                    &:hover {
+                        background-color: @gray-lighter;
+                    }
+                }
             }
 
             &--basic {
@@ -79,6 +100,7 @@
             display: block;
             width: 20px;
             height: 20px;
+            flex-shrink: 0;
             position: relative;
             z-index: 10;
             cursor: pointer;
@@ -133,6 +155,7 @@
             display: inline-block;
             min-width: 200px;
             max-width: 348px;
+            flex-shrink: 0;
             padding: 8px 16px;
             white-space: nowrap;
         }
@@ -157,6 +180,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-shrink: 0;
             font-size: 16px;
             color: @BRAND_DARK;
             transition: all 200ms ease-in-out;
@@ -229,6 +253,7 @@
         &-confirm {
             width: 100%;
             height: 100%;
+            flex-shrink: 0;
             position: absolute;
             top: 0;
             left: 0;
@@ -247,10 +272,54 @@
                 width: 100%;
                 height: 100%;
                 position: absolute;
-                z-index: 53;
+                z-index: 54;
 
                 .btn.btn-default {
-                    background-color: #FFF;
+                    background-color: white;
+
+                    &:hover,
+                    &:focus,
+                    &:active {
+                        background-color: @gray-lighter;
+                    }
+                }
+            }
+
+            &--has-border {
+                left: 8px;
+
+                &::before, &::after {
+                    width: 100%;
+                    height: 100%;
+                    content:'';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    z-index: 53;
+                    box-sizing: border-box;
+                    animation: 0.5s borderAnim;
+                }
+
+                &::before {
+                    border-bottom: 1px solid @mischka;
+                    border-left: 1px solid @mischka;
+                    transform-origin: 0 100%;
+                }
+
+                &::after {
+                    border-top: 1px solid @mischka;
+                    border-right: 1px solid @mischka;
+                    transform-origin: 100% 0;
+                }
+
+                @keyframes borderAnim {
+                    0% {
+                        transform: scale(0);
+                    }
+
+                    100% {
+                        transform: scale(1);
+                    }
                 }
             }
         }
@@ -316,7 +385,7 @@
             z-index: 3;
 
             path {
-                stroke: @voip-metro-plan-disabled-bgcolor;
+                stroke: @voip-plan-disabled-color;
             }
         }
 
@@ -325,26 +394,41 @@
         }
     }
 
-
-    .telephony-number-plan {
-        .telephony-number-feature {
-            .participants-list,
-            .redirect-in-edition {
-                margin-top: 60px;
-                margin-left: 60px;
+    /*----------  disabled  ----------*/
+    .disabled {
+        .voip-plan__step {
+            &-icon {
+                border-color : @mischka;
+                background-color : @gray-lighter;
+                color : @shuttleGray;
+                cursor: default;
             }
 
+            &-name,
+            &-info {
+                color : @shuttleGray;
+            }
+
+            &-btn {
+                color : @shuttleGray;
+                cursor: default;
+
+                &--default,
+                &--primary {
+                    border-color : @mischka;
+                    background-color : @gray-lighter;
+                }
+
+                &--included {
+                    background-color : transparent;
+                }
+            }
         }
 
-        .ovh-pabx-dialplan-extension,
-        .telephony-number-ovh-pabx-menu {
-            .hover-grip:not(.grip-disabled) {
-                cursor: move;
-            }
-
-            .hover-grip.grip-disabled {
-                cursor: no-drop;
-            }
+        .dropdown-menu {
+            border-color : @mischka;
+            background-color: @gray-lighter;
+            color: @shuttleGray;
         }
     }
 

@@ -1,10 +1,10 @@
-<div class="ovh-pabx-dialplan-extension voip-metro-plan-part"
+<div class="ovh-pabx-dialplan-extension"
      data-ng-class="{ disabled: !$ctrl.extension.enabled }">
     <!-- EXTENSION DISPLAY -->
     <div class="voip-plan__step">
         <!-- POSITION -->
         <div class="voip-plan__step-icon voip-plan__step-icon--grip hover-grip rule-grip"
-             data-ng-class="{ 'grip-disabled': $ctrl.isActionsDisabled() }"
+             data-ng-class="{ 'voip-plan__step-icon--grip-disabled': $ctrl.isActionsDisabled() }"
              data-jsplumb-endpoint="$ctrl.numberCtrl.jsPlumbEndpointsOptions.topLeft">
             <span data-ng-class="$ctrl.isLoading() ? 'fa fa-spinner fa-pulse' :'ovh-font ovh-font-grip'"
                data-jsplumb-connection="!$ctrl.extension.enabled ? $ctrl.numberCtrl.jsPlumbConnectionsOptions.disabled : null"
