@@ -1,0 +1,100 @@
+<section class="telecom-telephony-service-fax-convert-to-voicefax">
+
+    <bouncing-box-loader data-ng-if="$ctrl.isLoading">
+        <h2 data-translate="loading"></h2>
+    </bouncing-box-loader>
+
+    <div data-ng-if="!$ctrl.isLoading">
+        <div class="row">
+            <div class="col-xs-12 col-md-8">
+
+                <div class="widget-presentation">
+                    <header class="widget-presentation-header">
+                        <h2 class="widget-presentation-title"
+                            data-translate="telephony_service_fax_convert_to_voicefax_informations">
+                        </h2>
+                    </header>
+                    <div class="alert alert-info" role="alert">
+                        <span class="ovh-font ovh-font-filled-info" aria-hidden="true"></span>
+                        <p data-translate="telephony_service_fax_convert_to_voicefax_informations_info1"></p>
+                        <p data-translate="telephony_service_fax_convert_to_voicefax_informations_info2"></p>
+                    </div>
+                </div>
+                <!-- /.widget-presentation -->
+
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <div class="row">
+            <div class="col-xs-12 col-md-8">
+
+                <div class="widget-presentation">
+                    <header class="widget-presentation-header">
+                        <h2 class="widget-presentation-title"
+                            data-translate="telephony_service_fax_convert_to_voicefax_list">
+                        </h2>
+                    </header>
+                    <bouncing-box-loader data-ng-if="$ctrl.convertToVoicefaxForm.isChanging">
+                        <h3 data-translate="loading"></h3>
+                    </bouncing-box-loader>
+                    <div data-ng-if="!$ctrl.convertToVoicefaxForm.isChanging">
+                        <form class="ovh-form-flat"
+                              name="convertToVoicefaxForm"
+                              novalidate
+                              data-ng-submit="$ctrl.orderConvertToVoicefax()">
+                            <div class="form-group bottom-space-m12 clearfix">
+                                <label for="service" class="control-label"
+                                    data-translate="telephony_service_fax_convert_to_voicefax_list_service_label">
+                                </label>
+                                <select
+                                    name="service"
+                                    id="service"
+                                    class="form-control"
+                                    required
+                                    autofocus
+                                    data-flat-select
+                                    data-ng-model="$ctrl.convertToVoicefaxForm.serviceName"
+                                    data-ng-options="service as service.service for service in $ctrl.services"
+                                    data-ng-change="$ctrl.changeNumberToConvert(service)">
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <div data-contracts="$ctrl.convertToVoicefaxForm.serviceName.informations.contracts"
+                                     data-contracts-validated="$ctrl.convertToVoicefaxForm.contracts">
+                                </div>
+                            </div>
+                            <div class="form-group bottom-space-m12" data-ng-if="!$ctrl.convertToVoicefaxForm.prices">
+                                <button
+                                    type="submit"
+                                    class="btn btn-primary"
+                                    data-ng-disabled="!$ctrl.convertToVoicefaxForm.contracts || $ctrl.convertToVoicefaxForm.isOrdering">
+                                    <span class="ovh-font ovh-font-1x6 ovh-font-cart right-space-m4" aria-hidden="true"></span>
+                                    <span data-translate="telephony_service_fax_convert_to_voicefax_list_service_order"></span>
+                                    <spinner class="left-space-m4" data-ng-if="$ctrl.convertToVoicefaxForm.isOrdering"></spinner>
+                                </button>
+                            </div>
+                            <small>* <span data-translate="telephony_service_fax_convert_to_voicefax_list_service_order_note"></span></small>
+
+                            <div class="form-group top-space-m12 bottom-space-m12" data-ng-if="$ctrl.convertToVoicefaxForm.prices">
+                                <span data-translate="telephony_service_fax_convert_to_voicefax_list_service_order_valid"></span>
+                                <a target="_blank"
+                                   rel="noopenner"
+                                   data-ng-href="{{ $ctrl.convertToVoicefaxForm.prices.url }}"
+                                   data-translate-attr="{ title: 'telephony_service_fax_convert_to_voicefax_list_service_order_note' }">
+                                    <span data-translate="telephony_service_fax_convert_to_voicefax_list_service_order_url"></span>
+                                    <span class="ovh-font ovh-font-newtab left-space-m4" aria-hidden="true"></span>
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- /.widget-presentation -->
+
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
+
+</section>
+<!-- /.telecom-telephony-service-fax-convert-to-voicefax -->

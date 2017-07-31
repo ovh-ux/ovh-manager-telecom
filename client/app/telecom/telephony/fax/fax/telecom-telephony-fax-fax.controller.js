@@ -18,28 +18,28 @@ angular.module("managerApp").controller("TelecomTelephonyFaxFaxCtrl", function (
         var actions = [{
             name: "line_fax_password",
             sref: "telecom.telephony.fax.fax.password",
-            text: $translate.instant("telephony_group_fax_fax_action_password")
+            text: $translate.instant("telephony_fax_fax_action_password")
         }, {
             name: "line_fax_options",
             sref: "telecom.telephony.fax.fax.settings",
-            text: $translate.instant("telephony_group_fax_fax_action_options")
+            text: $translate.instant("telephony_fax_fax_action_options")
         }, {
             name: "line_fax_white_label_domains",
             sref: "telecom.telephony.fax.fax.customDomains",
-            text: $translate.instant("telephony_group_fax_fax_action_white_label_domains"),
+            text: $translate.instant("telephony_fax_fax_action_white_label_domains"),
             disabled: !TelecomMediator.isVip
         }, {
             name: "line_fax_filtering",
             url: TelephonyMediator.getV6ToV4RedirectionUrl("line.line_fax_filtering"),
-            text: $translate.instant("telephony_group_fax_fax_action_filtering")
+            text: $translate.instant("telephony_fax_fax_action_filtering")
         }, {
             name: "line_fax_campaign_management",
             sref: "telecom.telephony.fax.fax.campaigns",
-            text: $translate.instant("telephony_group_fax_fax_action_campaign_management")
+            text: $translate.instant("telephony_fax_fax_action_campaign_management")
         }, {
             name: "line_convert_to_ecofax_pro",
-            url: TelephonyMediator.getV6ToV4RedirectionUrl("line.line_convert_to_ecofax_pro"),
-            text: $translate.instant("telephony_group_fax_fax_action_convert_to_ecofax_perso")
+            sref: "telecom.telephony.fax.fax.convertToVoicefax",
+            text: $translate.instant("telephony_fax_fax_action_convert_to_voicefax")
         }];
 
         self.actions = actions;
