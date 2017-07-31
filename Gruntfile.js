@@ -855,7 +855,7 @@ module.exports = function (grunt) {
         }
 
         grunt.task.run([
-            "clean:server",
+            "clean",
             "env:all",
             "babel:dist",
             "ngconstant",
