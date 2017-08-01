@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyLineFaxCtrl", function ($translate, TelecomMediator, TelephonyMediator) {
+angular.module("managerApp").controller("TelecomTelephonyLineFaxCtrl", function ($translate, TelecomMediator) {
     "use strict";
 
     var self = this;
