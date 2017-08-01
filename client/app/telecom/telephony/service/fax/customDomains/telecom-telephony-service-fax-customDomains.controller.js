@@ -53,6 +53,11 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxCustomDomains
         });
     };
 
+    self.cancelCustomDomains = function (form) {
+        form.$setPristine();
+        self.addCustomDomainsForm.domain = null;
+    };
+
     self.removeCustomDomains = function (domain) {
         domain.isDeleting = true;
         return $q.all([
@@ -93,6 +98,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxCustomDomains
     ====================================== */
 
     function init () {
+        console.log("TelecomTelephonyServiceFaxCustomDomainsCtrl");
         self.loading = {
             init: false
         };
