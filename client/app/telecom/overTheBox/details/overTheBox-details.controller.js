@@ -142,8 +142,8 @@ angular.module("managerApp").controller("OverTheBoxDetailsCtrl", function ($scop
             var downSeries = _.chain(filteredDown)
                 .map(function (d) {
                     return {
-                        name: d.tags.iface.replace(/^([a-z]*)(\d+)$/i, function () {
-                            return $translate.instant("overTheBox_interface_" + arguments[1].toLowerCase(), { num: arguments[2] });
+                        name: d.tags.iface.replace(/^([a-z]*)(\d+)$/i, function (interfaceName, num) {
+                            return $translate.instant("overTheBox_interface_" + interfaceName.toLowerCase(), { num });
                         }),
                         data: Object.keys(d.dps).map(function (key) {
                             return {
@@ -191,8 +191,8 @@ angular.module("managerApp").controller("OverTheBoxDetailsCtrl", function ($scop
             var upSeries = _.chain(filteredUp)
                 .map(function (d) {
                     return {
-                        name: d.tags.iface.replace(/^([a-z]*)(\d+)$/i, function () {
-                            return $translate.instant("overTheBox_interface_" + arguments[1].toLowerCase(), { num: arguments[2] });
+                        name: d.tags.iface.replace(/^([a-z]*)(\d+)$/i, function (interfaceName, num) {
+                            return $translate.instant("overTheBox_interface_" + interfaceName.toLowerCase(), { num });
                         }),
                         data: Object.keys(d.dps).map(function (key) {
                             return {

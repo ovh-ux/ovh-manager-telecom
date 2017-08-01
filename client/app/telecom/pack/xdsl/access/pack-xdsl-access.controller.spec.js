@@ -2,12 +2,12 @@
 
 describe("Controller: XdslAccessCtrl", function () {
 
-    var dataXdsl = readJSON("client/bower_components/ovh-api-services/xdsl/xdsl.service.dt.spec.json");
-    var dataTasks = readJSON("client/bower_components/ovh-api-services/xdsl/tasks/current/xdsl-tasks-current.service.dt.spec.json");
-    var dataIps = readJSON("client/bower_components/ovh-api-services/xdsl/ips/xdsl-ips.service.dt.spec.json");
-    var dataNotifications = readJSON("client/bower_components/ovh-api-services/xdsl/notifications/xdsl-notifications.service.dt.spec.json");
-    var dataLines = readJSON("client/bower_components/ovh-api-services/xdsl/lines/xdsl-lines.service.dt.spec.json");
-    var dataOrder = readJSON("client/bower_components/ovh-api-services/xdsl/order/xdsl-order.service.dt.spec.json");
+    var dataXdsl = readJSON("client/bower_components/ovh-api-services/src/xdsl/xdsl.service.dt.spec.json");
+    var dataTasks = readJSON("client/bower_components/ovh-api-services/src/xdsl/tasks/current/xdsl-tasks-current.service.dt.spec.json");
+    var dataIps = readJSON("client/bower_components/ovh-api-services/src/xdsl/ips/xdsl-ips.service.dt.spec.json");
+    var dataNotifications = readJSON("client/bower_components/ovh-api-services/src/xdsl/notifications/xdsl-notifications.service.dt.spec.json");
+    var dataLines = readJSON("client/bower_components/ovh-api-services/src/xdsl/lines/xdsl-lines.service.dt.spec.json");
+    var dataOrder = readJSON("client/bower_components/ovh-api-services/src/xdsl/order/xdsl-order.service.dt.spec.json");
 
     // load the controller"s module
     beforeEach(angular.mock.module("managerAppMock"));

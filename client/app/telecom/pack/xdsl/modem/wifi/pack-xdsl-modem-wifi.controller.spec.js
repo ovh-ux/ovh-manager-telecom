@@ -5,10 +5,10 @@ describe("Controller: XdslModemWifiCtrl", function () {
     // load the controller"s module
     beforeEach(angular.mock.module("managerAppMock"));
 
-    var dataXdslModem = readJSON("client/bower_components/ovh-api-services/xdsl/modem/xdsl-modem.service.dt.spec.json");
-    var dataXdslModemWifi = readJSON("client/bower_components/ovh-api-services/xdsl/modem/wifi/xdsl-modem-wifi.service.dt.spec.json");
-    var dataXdsl = readJSON("client/bower_components/ovh-api-services/xdsl/xdsl.service.dt.spec.json");
-    var dataTasks = readJSON("client/bower_components/ovh-api-services/xdsl/tasks/current/xdsl-tasks-current.service.dt.spec.json");
+    var dataXdslModem = readJSON("client/bower_components/ovh-api-services/src/xdsl/modem/xdsl-modem.service.dt.spec.json");
+    var dataXdslModemWifi = readJSON("client/bower_components/ovh-api-services/src/xdsl/modem/wifi/xdsl-modem-wifi.service.dt.spec.json");
+    var dataXdsl = readJSON("client/bower_components/ovh-api-services/src/xdsl/xdsl.service.dt.spec.json");
+    var dataTasks = readJSON("client/bower_components/ovh-api-services/src/xdsl/tasks/current/xdsl-tasks-current.service.dt.spec.json");
 
     var $httpBackend;
     var $rootScope;
