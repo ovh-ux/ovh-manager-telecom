@@ -1,11 +1,12 @@
 // COLORS
 @voip-plan-main-color : @BRAND_DARK;
-@voip-plan-secondary-color : @shuttleGray;
-@voip-plan-border-color : @mischka;
+@voip-plan-secondary-color : @oui-color-shuttle;
+@voip-plan-border-color : @oui-color-mischka;
+@voip-plan-secondary-background-color : @oui-color-foam;
 
 @voip-plan-disabled-color : @voip-plan-secondary-color;
-@voip-plan-disabled-background-color : @mischka;
-@voip-plan-disabled-border-color : @mischka;
+@voip-plan-disabled-background-color : @oui-color-mischka;
+@voip-plan-disabled-border-color : @oui-color-mischka;
 
 // SIZES
 @voip-plan-main-elements-size : 40px;
@@ -56,7 +57,7 @@
                 width: @voip-plan-main-elements-size - 2;
                 height: @voip-plan-main-elements-size - 2;
                 border: solid 1px @brand-primary;
-                background-color: @foam;
+                background-color: @voip-plan-secondary-background-color;
                 color: @voip-plan-main-color;
                 font-size: @voip-plan-icons-font-size;
                 border-radius: 50%;
@@ -67,7 +68,7 @@
                 }
 
                 &-disabled {
-                    border: solid 1px @mischka;
+                    border: solid 1px @voip-plan-disabled-border-color;
                     background-color: @gray-lighter;
                     cursor: no-drop;
                     color: @voip-plan-disabled-color;
@@ -234,7 +235,7 @@
             &--included {
                 width: @voip-plan-main-elements-size;
                 padding: 8px 0;
-                background-color: @foam;
+                background-color: @voip-plan-secondary-background-color;
                 border: none;
 
                 &:hover,
