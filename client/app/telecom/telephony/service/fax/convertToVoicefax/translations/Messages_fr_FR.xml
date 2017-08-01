@@ -6,7 +6,6 @@
     <translation id="telephony_service_fax_convert_to_voicefax_list">Liste des Ecofax convertisibles du groupe</translation>
     <translation id="telephony_service_fax_convert_to_voicefax_list_service_label">Sélectionnez votre numéro :</translation>
     <translation id="telephony_service_fax_convert_to_voicefax_list_service_order">Générer le bon de commande</translation>
-    <translation id="telephony_service_fax_convert_to_voicefax_list_service_order_note">Ce domaine n’est plus chez OVH. Sans action de votre part, le service de fax associé sera fermé automatiquement sous 30 jours maximum.</translation>
     <translation id="telephony_service_fax_convert_to_voicefax_list_service_order_valid">Afin de finaliser votre demande, merci de valider ce</translation>
     <translation id="telephony_service_fax_convert_to_voicefax_list_service_order_url">bon de commande</translation>
     <translation id="telephony_service_fax_convert_to_voicefax_list_error_loading">Oups ! Une erreur est survenue lors du chargement de la liste des Ecofax convertisibles du groupe.</translation>
