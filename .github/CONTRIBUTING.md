@@ -25,3 +25,6 @@ contributed to ovh-manager-telecom must be released under this license.
 
 When introducing a new file into the project, please make sure it has a
 copyright header making clear under which license it's being released.
+
+# Go Futher
+You can read our full [guildelines](https://github.com/ovh-ux/ovh-ux-guidelines).
