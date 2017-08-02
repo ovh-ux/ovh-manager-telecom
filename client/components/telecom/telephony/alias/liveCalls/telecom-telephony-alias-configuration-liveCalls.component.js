@@ -41,14 +41,13 @@ angular.module("managerApp").component("telecomTelephonyAliasLiveCalls", {
         self.getQueueId = function () {
             if (self.queueId) {
                 return $q.when(self.queueId);
-            } else {
-                return self.apiEndpoint.Hunting().Queue().Lexi().query({
-                    billingAccount: $stateParams.billingAccount,
-                    serviceName: $stateParams.serviceName
-                }).$promise.then(function (ids) {
-                    return _.first(ids);
-                });
             }
+            return self.apiEndpoint.Hunting().Queue().Lexi().query({
+                billingAccount: $stateParams.billingAccount,
+                serviceName: $stateParams.serviceName
+            }).$promise.then(function (ids) {
+                return _.first(ids);
+            });
         };
 
         self.refreshStats = function (queueId) {
