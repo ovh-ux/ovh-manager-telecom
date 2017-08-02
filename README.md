@@ -56,7 +56,7 @@ And start developing.
 
 ## Related links
 
- * Contribute: https://github.com/ovh-ux/ovh-manager-telecom/blob/master/CONTRIBUTING.md
+ * Contribute: https://github.com/ovh-ux/ovh-ux-guidelines/blob/master/.github/CONTRIBUTING.md
  * Report bugs: https://github.com/ovh-ux/ovh-manager-telecom/issues
 
 ## License
