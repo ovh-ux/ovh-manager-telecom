@@ -12,6 +12,12 @@
     <translation id="telephony_number_feature_ovh_pabx_dialplan_anonymous_rejection">Rejet d'appel masqué</translation>
     <translation id="telephony_number_feature_ovh_pabx_dialplan_anonymous_rejection_active">Rejeter les appels masqués</translation>
     <translation id="telephony_number_feature_ovh_pabx_dialplan_anonymous_rejection_inactive">Ne pas rejeter les appels masqués</translation>
+    <translation id="telephony_number_feature_ovh_pabx_dialplan_show_caller_number">Numéro à présenter</translation>
+    <translation id="telephony_number_feature_ovh_pabx_dialplan_show_caller_number_explain">Le numéro à présenter permet de définir la présentation lors d'un appel entrant sur le téléphone qui reçoit cet appel.</translation>
+    <translation id="telephony_number_feature_ovh_pabx_dialplan_show_caller_number_both">Les deux numéros</translation>
+    <translation id="telephony_number_feature_ovh_pabx_dialplan_show_caller_number_both_explain">Le téléphone cible (qui reçoit l'appel) verra sur son écran le numéro de l'alias (numéro qui est composé par l’appelant).</translation>
+    <translation id="telephony_number_feature_ovh_pabx_dialplan_show_caller_number_caller">Le numéro de l'appelant</translation>
+    <translation id="telephony_number_feature_ovh_pabx_dialplan_show_caller_number_caller_explain">Le téléphone cible (qui reçoit l'appel) verra sur son écran la ligne qui compose l'appel ainsi que le numéro alias qui est composé.</translation>
 
     <!-- STEPS -->
     <translation id="telephony_number_feature_ovh_pabx_step_add">Ajouter une étape</translation>
@@ -102,7 +108,7 @@
     <translation id="telephony_number_feature_ovh_pabx_step_rule_ivr_menu_add_menu">Ajouter un menu interactif</translation>
     <translation id="telephony_number_feature_ovh_pabx_step_rule_ivr_menu_add_menu_new">Nouveau menu</translation>
     <translation id="telephony_number_feature_ovh_pabx_step_rule_ivr_menu_add_menu_new_name">Mon menu interactif {{ index }}</translation>
-    <translation id="telephony_number_feature_ovh_pabx_step_rule_ivr_menu_add_menu_explain">Il vous sera possible d'éditer celui-ci après validation des options de l'action.</translation>
+    <translation id="telephony_number_feature_ovh_pabx_step_rule_ivr_menu_add_menu_explain">Commencez l'édition d'un menu interractif en cliquant sur ce bouton !</translation>
     <!-- PLAYBACK / ENDLESS PLAYBACK -->
     <translation id="telephony_number_feature_ovh_pabx_step_rule_playback">Jouer un son</translation>
     <translation id="telephony_number_feature_ovh_pabx_step_rule_playback_explain">Permet de jouer un son.</translation>
@@ -128,6 +134,17 @@
     <translation id="telephony_number_feature_ovh_pabx_step_rule_read_dtmf_action_param_required">Veuillez spécifier un nom de variable d'entrée DTMF.</translation>
     <translation id="telephony_number_feature_ovh_pabx_step_rule_read_dtmf_action_param_bad_format">Le nom de variable d'entrée DTMF ne peut contenir que des lettres (sans accents) ou des chiffres.</translation>
     <translation id="telephony_number_feature_ovh_pabx_step_rule_read_dtmf_action_param_too_long">Le nom de variable d'entrée DTMF ne peut pas dépasser 24 caractères.</translation>
+    <!-- TTS -->
+    <translation id="telephony_number_feature_ovh_pabx_step_rule_tts">Lire un TTS</translation>
+    <translation id="telephony_number_feature_ovh_pabx_step_rule_tts_explain">Permet de lire un texte écrit en un texte parlé.</translation>
+    <translation id="telephony_number_feature_ovh_pabx_step_rule_tts_to_read">TTS à lire</translation>
+    <translation id="telephony_number_feature_ovh_pabx_step_rule_tts_no_selected">Aucun TTS sélectionné</translation>
+    <translation id="telephony_number_feature_ovh_pabx_step_rule_tts_choice">Choix du TTS</translation>
+    <translation id="telephony_number_feature_ovh_pabx_step_rule_tts_add">Ajouter un TTS</translation>
+    <translation id="telephony_number_feature_ovh_pabx_step_rule_tts_add_explain">Ajoutez un texte afin qu'il soit lu en texte parlé.</translation>
+    <translation id="telephony_number_feature_ovh_pabx_step_rule_tts_list">Liste des TTS</translation>
+    <translation id="telephony_number_feature_ovh_pabx_step_rule_no_tts_added">Aucun TTS ajouté</translation>
+    <translation id="telephony_number_feature_ovh_pabx_step_rule_tts_info">Vous pouvez gérer vos Text To Speach <a data-ui-sref="telecom.telephony.alias.configuration.ovhPabx.tts">sur la page de gestion des TTS</a>.</translation>
     <!-- HUNTING -->
     <translation id="telephony_number_feature_ovh_pabx_step_rule_hunting">Faire sonner les membres de la file</translation>
     <translation id="telephony_number_feature_ovh_pabx_step_rule_hunting_explain">Permet de faire sonner simultanément tous les membres de la file d'appel sélectionnée.</translation>

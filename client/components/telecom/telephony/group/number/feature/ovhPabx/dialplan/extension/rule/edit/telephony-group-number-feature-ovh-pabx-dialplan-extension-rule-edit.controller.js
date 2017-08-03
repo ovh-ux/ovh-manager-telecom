@@ -7,6 +7,10 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxDialplanExtension
         init: false
     };
 
+    self.state = {
+        collapse: false
+    };
+
     self.parentCtrl = null;
     self.ovhPabx = null;
     self.rule = null;
@@ -23,10 +27,19 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxDialplanExtension
         case "voicemail":
         case "ivr":
         case "hunting":
+        case "tts":
             return self.rule.actionParam;
         default:
             return true;
         }
+    };
+
+    self.isFormValid = function () {
+        var ttsForm = _.get(self.extensionRuleForm, "$ctrl.ttsCreateForm");
+        if (ttsForm) {
+            return ttsForm.$dirty ? self.extensionRuleForm.$valid : true;
+        }
+        return self.extensionRuleForm.$valid;
     };
 
     /**
@@ -136,6 +149,27 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxDialplanExtension
     self.onHuntingActionParamButtonClick = function () {
         self.parentCtrl.popoverStatus.rightPage = "hunting";
         self.parentCtrl.popoverStatus.move = true;
+    };
+
+    /* ----------  TTS  ----------*/
+
+    self.onTtsActionParamButtonClick = function () {
+        self.parentCtrl.popoverStatus.rightPage = "tts";
+        self.parentCtrl.popoverStatus.move = true;
+    };
+
+    self.onAddTtsButtonClick = function () {
+        self.state.collapse = true;
+    };
+
+    self.onTtsCreationCancel = function () {
+        self.state.collapse = false;
+    };
+
+    self.onTtsCreationSuccess = function (tts) {
+        self.rule.actionParam = tts.id;
+        self.state.collapse = false;
+        self.parentCtrl.popoverStatus.move = false;
     };
 
     /* ----------  FOOTER ACTIONS  ----------*/

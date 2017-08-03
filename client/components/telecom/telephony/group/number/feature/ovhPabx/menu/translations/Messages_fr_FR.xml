@@ -8,11 +8,17 @@
     <translation id="telephony_number_feature_ovh_pabx_menu_options_name">Nom du menu interactif</translation>
     <translation id="telephony_number_feature_ovh_pabx_menu_options_name_required">Veuillez donner un nom à votre menu interactif.</translation>
     <translation id="telephony_number_feature_ovh_pabx_menu_options_name_bad_format">Le nom ne peut contenir que des lettres (sans accents), chiffres, tirets bas ou des espaces.</translation>
-    <translation id="telephony_number_feature_ovh_pabx_menu_options_greet_sound">Fichier son d'accueil</translation>
+    <translation id="telephony_number_feature_ovh_pabx_menu_options_greet_sound">Son d'accueil</translation>
+    <translation id="telephony_number_feature_ovh_pabx_menu_options_greet_sound_type">Type de son d'accueil</translation>
     <translation id="telephony_number_feature_ovh_pabx_menu_options_greet_sound_explain">C'est le son qui sera joué dès le début d'appel. Il doit exposer à l'appelant les différents choix de touches possible.</translation>
-    <translation id="telephony_number_feature_ovh_pabx_menu_options_invalid_sound">Fichier son en cas d'action invalide</translation>
+    <translation id="telephony_number_feature_ovh_pabx_menu_options_invalid_sound">Son en cas d'action invalide</translation>
+    <translation id="telephony_number_feature_ovh_pabx_menu_options_invalid_sound_type">Type de son en cas d'action invalide</translation>
     <translation id="telephony_number_feature_ovh_pabx_menu_options_invalid_sound_explain">C'est le son que l'appelant entendra s'il se trompe de touche.</translation>
-    <translation id="telephony_number_feature_ovh_pabx_menu_options_no_sound_selected">Aucun fichier son sélectionné</translation>
+    <translation id="telephony_number_feature_ovh_pabx_menu_options_sound_type_choice">Choix du type de son</translation>
+    <translation id="telephony_number_feature_ovh_pabx_menu_options_sound_type_none">Aucun</translation>
+    <translation id="telephony_number_feature_ovh_pabx_menu_options_sound_type_sound">Fichier son</translation>
+    <translation id="telephony_number_feature_ovh_pabx_menu_options_sound_type_tts">Text-To-Speech</translation>
+    <translation id="telephony_number_feature_ovh_pabx_menu_options_no_sound_selected">Aucun son sélectionné</translation>
 
     <!-- GREET AND INVALID SOUNDS -->
     <translation id="telephony_number_feature_ovh_pabx_menu_options_sound_add">Ajouter un son</translation>
