@@ -1,6 +1,5 @@
 angular.module("managerApp").config(function ($stateProvider) {
     "use strict";
-
     $stateProvider.state("telecom.telephony.fax.voicemail.default", {
         url: "/default",
         views: {
@@ -14,6 +13,9 @@ angular.module("managerApp").config(function ($stateProvider) {
                 controllerAs: "DefaultVoicemailCtrl"
             }
         },
-        translations: ["common", "telecom/telephony/service/voicemail/default"]
+        translations: [
+            "common",
+            "telecom/telephony/service/voicemail/default"
+        ]
     });
 });

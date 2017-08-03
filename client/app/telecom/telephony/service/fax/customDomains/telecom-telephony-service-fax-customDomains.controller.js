@@ -98,7 +98,6 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxCustomDomains
     ====================================== */
 
     function init () {
-        console.log("TelecomTelephonyServiceFaxCustomDomainsCtrl");
         self.loading = {
             init: false
         };

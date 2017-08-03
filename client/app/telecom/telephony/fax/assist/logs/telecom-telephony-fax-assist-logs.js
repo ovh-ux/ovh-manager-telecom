@@ -1,6 +1,5 @@
 angular.module("managerApp").config(function ($stateProvider) {
     "use strict";
-
     $stateProvider.state("telecom.telephony.fax.assist.logs", {
         url: "/logs",
         views: {
@@ -10,6 +9,9 @@ angular.module("managerApp").config(function ($stateProvider) {
                 controllerAs: "LogsCtrl"
             }
         },
-        translations: ["common", "telecom/telephony/service/assist/logs"]
+        translations: [
+            "common",
+            "telecom/telephony/service/assist/logs"
+        ]
     });
 });

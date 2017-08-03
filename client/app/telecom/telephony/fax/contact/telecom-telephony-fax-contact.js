@@ -1,6 +1,5 @@
 angular.module("managerApp").config(function ($stateProvider) {
     "use strict";
-
     $stateProvider.state("telecom.telephony.fax.contact", {
         url: "/contact",
         views: {
@@ -10,6 +9,10 @@ angular.module("managerApp").config(function ($stateProvider) {
                 controllerAs: "ServiceContactCtrl"
             }
         },
-        translations: ["common", "telecom/telephony/service/contact"]
+        translations: [
+            "common",
+            "telecom/telephony/fax",
+            "telecom/telephony/service/contact"
+        ]
     });
 });

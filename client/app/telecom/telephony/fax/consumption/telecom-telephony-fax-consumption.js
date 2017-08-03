@@ -1,6 +1,5 @@
 angular.module("managerApp").config(function ($stateProvider) {
     "use strict";
-
     $stateProvider.state("telecom.telephony.fax.consumption", {
         url: "/consumption",
         views: {
@@ -10,11 +9,10 @@ angular.module("managerApp").config(function ($stateProvider) {
                 controllerAs: "$ctrl"
             }
         },
-        translations: ["common", "telecom/telephony/fax"],
-        resolve: {
-            $title: function (translations, $translate, $stateParams) {
-                return $translate("telephony_fax_page_title", { name: $stateParams.serviceName });
-            }
-        }
+        translations: [
+            "common",
+            "telecom/telephony/fax",
+            "telecom/telephony/fax/consumption"
+        ]
     });
 });

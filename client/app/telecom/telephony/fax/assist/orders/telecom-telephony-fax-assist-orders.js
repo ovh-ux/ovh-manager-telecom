@@ -9,6 +9,9 @@ angular.module("managerApp").config(function ($stateProvider) {
                 controllerAs: "OrdersCtrl"
             }
         },
-        translations: ["common", "telecom/telephony/service/assist/orders"]
+        translations: [
+            "common",
+            "telecom/telephony/service/assist/orders"
+        ]
     });
 });
