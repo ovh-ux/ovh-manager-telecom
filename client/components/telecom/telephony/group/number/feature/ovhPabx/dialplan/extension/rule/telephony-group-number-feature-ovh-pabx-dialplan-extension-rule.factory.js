@@ -74,7 +74,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberOvhPabxDialplanExtensi
         // special rule for action param
         if (self.getActionFamily() === "sleep") {
             self.actionParam = ruleOptions.actionParam ? parseInt(ruleOptions.actionParam, 10) : 1000;
-        } else if (["playback", "ivr", "hunting"].indexOf(self.getActionFamily()) !== -1) {
+        } else if (["playback", "ivr", "hunting", "tts"].indexOf(self.getActionFamily()) !== -1) {
             self.actionParam = ruleOptions.actionParam ? parseInt(ruleOptions.actionParam, 10) : "";
         } else {
             self.actionParam = ruleOptions.actionParam || "";

@@ -23,23 +23,8 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxMenuListCtrl", fu
     =            HELPERS            =
     ===============================*/
 
-    function getFilteredMenuList () {
-        return _.filter(self.ovhPabx.menus, function (menu) {
-            return menu.status !== "DRAFT";
-        });
-    }
-
-    self.sortMenus = function () {
-        self.menus.sorted = $filter("orderBy")(
-            self.menus.raw,
-            self.menus.orderBy,
-            self.menus.orderDesc
-        );
-    };
-
     self.orderByName = function () {
         self.menus.orderDesc = !self.menus.orderDesc;
-        self.sortMenus();
     };
 
     function isDisabledMenuUsedInEntry (menu) {
@@ -61,8 +46,6 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxMenuListCtrl", fu
     self.onMenuDeleteConfirm = function (menu) {
         return menu.remove().then(function () {
             self.ovhPabx.removeMenu(menu);
-            self.menus.raw = getFilteredMenuList();
-            self.sortMenus();
             self.onSelectedMenuChanged(null);
         }).catch(function (error) {
             var errorTranslationKey = "telephony_number_feature_ovh_pabx_menu_list_delete_error";
@@ -132,8 +115,7 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxMenuListCtrl", fu
             translations: getTranslations(),
             menusEntries: getAllMenuEntries()
         }).then(function () {
-            self.menus.raw = getFilteredMenuList();
-            self.sortMenus();
+            self.menus.raw = self.ovhPabx.menus;
         }).finally(function () {
             self.loading.init = false;
         });
