@@ -19,8 +19,8 @@
                 <span class="col-xs-2" data-ng-bind="log.message.syslog_program"></span>
                 <span class="col-xs-5" data-ng-bind="log.message.message"></span>
             </div>
-            <div class="row" data-ng-if="OTBLogs.logger.logs.length === 0">
-                <span class="col-xs-12" data-translate="overTheBox_logs_no_logs"></span>
+            <div data-ng-if="OTBLogs.logger.logs.length === 0"
+                 data-translate="overTheBox_logs_no_logs">
             </div>
         </ovh-tail-logs>
     </div>

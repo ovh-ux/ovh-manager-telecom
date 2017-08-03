@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <translations>
    <translation id="overTheBox_dashboard_title" qtlid="305616">Mon OverTheBox</translation>
-   <translation id="overTheBox_dashboard_service_label" qtlid="266952">Nom du service</translation>
+   <translation id="overTheBox_dashboard_service_label" qtlid="266952">Nom du service :</translation>
    <translation id="overTheBox_device_listing_title" qtlid="289588">Liste des périphériques</translation>
    <translation id="overTheBox_device_button_add" qtlid="317659">Nouveau périphérique</translation>
    <translation id="overTheBox_device_activation" qtlid="74958">Activation</translation>
@@ -33,6 +33,7 @@
    <translation id="overTheBox_bandwidth" qtlid="89749">Débit</translation>
    <translation id="overTheBox_publicIp" qtlid="317711">Adresse IP publique&#160;:</translation>
    <translation id="overTheBox_deviceId" qtlid="317724">Identifiant du périphérique&#160;:</translation>
+   <translation id="overTheBox_deviceId_button_title">Identifiant du périphérique :</translation>
    <translation id="overTheBox_device_state" qtlid="317737">État du périphérique&#160;:</translation>
    <translation id="overTheBox_expiration_date" qtlid="317750">Prochaine facturation&#160;:</translation>
    <translation id="overTheBox_billing_date" qtlid="317750">Prochaine facturation&#160;:</translation>

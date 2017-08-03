@@ -1,38 +1,7 @@
-div.overthebox div.row {
-    padding: 6px 0;
-
-    dl {
-        font-size: 1.1em;
-        dt,dd {
-            padding-left: 0;
-            display: inline-block;
-        }
-
-        dd {
-            color: @text-color-content;
-        }
-
-        dt {
-            font-weight: 500;
-            font-size: 1.1em;
-        }
-    }
-}
-
-div.graph-gauge {
-    float: right;
-
-    span {
+span {
+    &[data-gauge],
+    .rate {
+        display: inline-block;
         vertical-align: middle;
-        font-size: 1.1em;
-
-        &[gauge] {
-            display: inline-block;
-        }
-
-        i {
-            color: @state-info-text;
-        }
     }
-
 }

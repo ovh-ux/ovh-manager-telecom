@@ -27,7 +27,7 @@
    <translation id="telecom_sidebar_actions_menu_domain" qtlid="66428">Nom de domaine</translation>
 <!-- INTERNET ORDERS -->
    <translation id="telecom_sidebar_actions_menu_internet" qtlid="345520">Offres Internet</translation>
-   <translation id="telecom_sidebar_actions_menu_internet_xdsl" qtlid="345533">ADSL &amp; VDSL</translation>
+   <translation id="telecom_sidebar_actions_menu_internet_xdsl">ADSL & VDSL</translation>
    <translation id="telecom_sidebar_actions_menu_internet_enterprise" qtlid="345546">Pack ADSL Entreprise</translation>
    <translation id="telecom_sidebar_actions_menu_internet_rescue" qtlid="345559">Ligne de secours</translation>
    <translation id="telecom_sidebar_actions_menu_internet_sdsl" qtlid="345572">SDSL</translation>

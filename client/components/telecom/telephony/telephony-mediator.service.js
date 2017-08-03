@@ -1,4 +1,6 @@
-angular.module("managerApp").service("TelephonyMediator", function ($q, $stateParams, Telephony, TelephonyGroup, TelephonyLine, TelephonyGroupLinePhone, REDIRECT_URLS, REDIRECT_V4_HASH) {
+angular.module("managerApp").service("TelephonyMediator", function ($q, $stateParams, Telephony, TelephonyGroup,
+                                                                    TelephonyLine, TelephonyGroupLinePhone,
+                                                                    REDIRECT_URLS, REDIRECT_V4_HASH) {
     "use strict";
 
     var self = this;
@@ -20,8 +22,8 @@ angular.module("managerApp").service("TelephonyMediator", function ($q, $statePa
     };
 
     /*= ===========================================
-    =            V6 to V4 redirection            =
-    ============================================*/
+        =            V6 to V4 redirection            =
+        ============================================*/
 
     self.getV6ToV4RedirectionUrl = function (constantPath) {
         var url = REDIRECT_URLS.telephonyV4 + _.get(REDIRECT_V4_HASH, constantPath);
@@ -35,12 +37,16 @@ angular.module("managerApp").service("TelephonyMediator", function ($q, $statePa
     /* -----  End of V6 to V4 redirection  ------*/
     /* ------ Awesome code from perl -----------*/
     self.IsValidNumber = function (number) {
-        return !!(number && number.match(/^\+?(\d|\.| |#|-)+$/) && number.length < 26 && number.length > 2);
+        return !!(
+            number &&
+                number.match(/^\+?(\d|\.| |#|-)+$/) &&
+                number.length < 26 &&
+                number.length > 2);
     };
 
     /*= =================================
-    =            API MODELS            =
-    ==================================*/
+        =            API MODELS            =
+        ==================================*/
 
     self.getApiModels = function () {
         return Telephony.Lexi().schema().$promise.then(function (schemas) {
@@ -57,8 +63,8 @@ angular.module("managerApp").service("TelephonyMediator", function ($q, $statePa
     /* -----  End of API MODELS  ------*/
 
     /*= ============================
-    =            GROUP            =
-    =============================*/
+        =            GROUP            =
+        =============================*/
 
     /* ----------  SERVICES  ----------*/
 
@@ -85,49 +91,45 @@ angular.module("managerApp").service("TelephonyMediator", function ($q, $statePa
         self.getAllDeferred = $q.defer();
 
         // get billing accounts and services
-        // first be sure that menu is loaded
-        $q.when(self.initDeferred).then(function () {
-            $q.all({
-                groups: Telephony.Aapi().billingAccounts().$promise,
-                services: Telephony.Number().Aapi().all().$promise
-            }).then(function (responses) {
-                // populate account groups
-                var groupServices;
-                angular.forEach(responses.groups, function (groupOptions) {
-                    // get services of group
-                    groupServices = _.filter(responses.services, {
-                        billingAccount: groupOptions.billingAccount
-                    });
-
-                    // set group lines list option
-                    groupOptions.lines = _.filter(groupServices, {
-                        type: "sip"
-                    });
-
-                    // set group fax list option
-                    groupOptions.fax = _.filter(groupServices, {
-                        type: "fax"
-                    });
-
-                    // set group numbers list option
-                    groupOptions.numbers = _.filter(groupServices, {
-                        type: "number"
-                    });
-
-                    // add group to TelephonyMediator groups
-                    // if group is already added, it won't be overrided
-                    self.addGroup(groupOptions);
+        $q.all({
+            groups: Telephony.Aapi().billingAccounts().$promise,
+            services: Telephony.Number().Aapi().all().$promise
+        }).then(function (responses) {
+            // populate account groups
+            var groupServices;
+            angular.forEach(responses.groups, function (groupOptions) {
+                // get services of group
+                groupServices = _.filter(responses.services, {
+                    billingAccount: groupOptions.billingAccount
                 });
 
-                self.getAllDeferred.resolve(self.groups);
+                // set group lines list option
+                groupOptions.lines = _.filter(groupServices, {
+                    type: "sip"
+                });
 
-                return self.groups;
-            }).catch(function (error) {
-                self.getAllDeferred.reject(error);
-                return $q.reject(error);
+                // set group fax list option
+                groupOptions.fax = _.filter(groupServices, {
+                    type: "fax"
+                });
+
+                // set group numbers list option
+                groupOptions.numbers = _.filter(groupServices, {
+                    type: "number"
+                });
+
+                // add group to TelephonyMediator groups
+                // if group is already added, it won't be overrided
+                self.addGroup(groupOptions);
             });
-        });
 
+            self.getAllDeferred.resolve(self.groups);
+
+            return self.groups;
+        }).catch(function (error) {
+            self.getAllDeferred.reject(error);
+            return $q.reject(error);
+        });
         return self.getAllDeferred.promise;
     };
 
@@ -272,7 +274,7 @@ angular.module("managerApp").service("TelephonyMediator", function ($q, $statePa
 
                     });
                 } else if (billingAccounts.length === 1) {
-                                                         // as there is no path attribute when there is only one billing account in batch
+                    // as there is no path attribute when there is only one billing account in batch
                     billingAccounts[0].value.numbers = _.chain(response.numbers).filter(function (numberResponse) {
                         return numberResponse.value !== null;
                     }).map("value").value();
@@ -304,15 +306,8 @@ angular.module("managerApp").service("TelephonyMediator", function ($q, $statePa
         });
     };
 
-    // Returns a list of all groups
-    self.getGroups = function (force) {
-        return self.getAll(force).then(function (result) {
-            return _.values(result);
-        });
-    };
-
-        /** @TODO uncommend when API V7 available for /telephony */
-        /*
+    /** @TODO uncommend when API V7 available for /telephony */
+    /*
         self.fetchGroup = function (billingAccount) {
             return Telephony.Erika().get().execute({
                 billingAccount: billingAccount
@@ -341,12 +336,12 @@ angular.module("managerApp").service("TelephonyMediator", function ($q, $statePa
         });
     };
 
-        /**
+    /**
          * Return populated groups from API, sorted by description, limits results from "offset" to "limit".
          * "searchQuery" parameter is optional and allow to only returns groups with description matching it.
          */
-        /** @TODO uncommend when API V7 available for /telephony */
-        /*
+    /** @TODO uncommend when API V7 available for /telephony */
+    /*
         self.fetchGroups = function (offset, limit, searchQuery) {
             var request = Telephony.Erika().query().expand().sort(["description"]).offset(offset).limit(limit);
             if (searchQuery) {
@@ -373,7 +368,19 @@ angular.module("managerApp").service("TelephonyMediator", function ($q, $statePa
                     billingAccount: billingAccount
                 }).$promise;
             });
-            return $q.all(promises).then(function (result) {
+            return $q.allSettled(promises).then(function (result) {
+                return result;
+            }, function (result) {
+                // filter errors - no need to reject
+                // if a billing account is not well loaded, we don't block the sidebar.
+                var groupNotFound = _.filter(result, function (res) {
+                    return _.get(res, "status") === 404;
+                });
+                if (groupNotFound.length) {
+                    return _.difference(result, groupNotFound);
+                }
+                return $q.reject(result);
+            }).then(function (result) {
                 return populateGroupOptions(_.map(result, function (account) {
                     return {
                         key: account.billingAccount,
@@ -419,8 +426,8 @@ angular.module("managerApp").service("TelephonyMediator", function ($q, $statePa
     /* -----  End of GROUP  ------*/
 
     /*= ======================================
-    =            SIDEBAR HELPERS            =
-    =======================================*/
+        =            SIDEBAR HELPERS            =
+        =======================================*/
 
     /* ----------  COUNT  ----------*/
 
@@ -432,7 +439,7 @@ angular.module("managerApp").service("TelephonyMediator", function ($q, $statePa
                 return telephonyGroupsIds.length;
             });
         };
-    */
+        */
 
     /** @TODO delete when API V7 available for /telephony */
     self.getCount = function () {
@@ -444,8 +451,8 @@ angular.module("managerApp").service("TelephonyMediator", function ($q, $statePa
     /* -----  End of SIDEBAR HELPERS  ------*/
 
     /*= =====================================
-    =            INITIALIZATION            =
-    ======================================*/
+        =            INITIALIZATION            =
+        ======================================*/
 
     self.init = function (force) {
         if (self.initDeferred && !force) {

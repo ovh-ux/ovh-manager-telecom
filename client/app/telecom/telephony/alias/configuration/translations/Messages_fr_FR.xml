@@ -21,7 +21,7 @@
 <!-- EASYHUNTING -->
 
 <!-- CLOUDHUNTING -->
-   <translation id="telephony_alias_configuration_actions_number_cloud_hunting_events" qtlid="356836">Gérer les crénaux exceptionnels</translation>
+   <translation id="telephony_alias_configuration_actions_number_cloud_hunting_events">Gérer les créneaux exceptionnels</translation>
    <translation id="telephony_alias_configuration_actions_number_cloud_hunting_configuration" qtlid="356849">Gérer le plan de numérotation</translation>
    <translation id="telephony_alias_configuration_actions_number_cloud_hunting_beta">Migrer vers Contact Center Solution</translation>
 
@@ -32,6 +32,7 @@
    <translation id="telephony_alias_configuration_actions_number_easy_pabx_music" qtlid="356875">Gérer les musiques</translation>
    <translation id="telephony_alias_configuration_actions_sounds_management">Gérer les sons</translation>
    <translation id="telephony_alias_configuration_actions_menus_management">Gérer les menus interactifs</translation>
+   <translation id="telephony_alias_configuration_actions_tts_management">Gérer les TTS</translation>
 
 <!-- SVI -->
    <translation id="telephony_alias_configuration_actions_number_svi_script_address" qtlid="356888">Gérer les paramètres du serveur vocal</translation>

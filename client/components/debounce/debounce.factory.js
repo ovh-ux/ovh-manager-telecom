@@ -4,8 +4,7 @@ angular.module("managerApp").factory("debounce", function ($timeout, $q) {
         var timeout;
         var deferred = $q.defer();
 
-        return function () {
-            var args = arguments;
+        return function (...args) {
             var later = function () {
                 timeout = null;
                 if (!immediate) {

@@ -114,6 +114,14 @@
     &.btn-link {
         &:hover, &:active, &:focus{
             color: darken(@MANAGER_BUTTON_COLOR, 12%);
+
+            .ovh-font-newtab {
+                opacity: 1;
+            }
+        }
+
+        .ovh-font-newtab {
+            opacity: 0.4;
         }
     }
 
@@ -144,6 +152,11 @@
             padding-right: 15px;
             font-weight: normal;
             color: inherit;
+
+            span:not(.ovh-font) {
+                text-decoration: none;
+                font-weight: normal;
+            }
 
             &:hover:not([disabled]) {
                 background: @dropdown-link-hover-bg;

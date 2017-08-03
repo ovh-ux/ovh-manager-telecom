@@ -14,7 +14,9 @@ angular.module("managerApp").controller("jsplumbCtrl", function ($timeout) {
         }
 
         repaintTimeout = $timeout(function () {
-            self.instance.setSuspendDrawing(false, true);
+            if (self.instance) {
+                self.instance.setSuspendDrawing(false, true);
+            }
         }, 150);
     };
 
