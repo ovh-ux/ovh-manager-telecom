@@ -58,6 +58,7 @@
    <translation id="telephony_line_phone_configuration_config_local_ip_dns_2">DNS 2</translation>
    <translation id="telephony_line_phone_configuration_config_local_ip_mask">Masque d'adressage IP</translation>
    <translation id="telephony_line_phone_configuration_config_local_ip_address">Adresse IP</translation>
+   <translation id="telephony_line_phone_configuration_config_remote_port">Port distant</translation>
    <translation id="telephony_line_phone_configuration_config_local_ip_gateway">Passerelle</translation>
    <translation id="telephony_line_phone_configuration_config_automatic_answser_mode">Mode de réponse automatique</translation>
    <translation id="telephony_line_phone_configuration_config_ehs_ringer_period">Période de sonnerie du décroché électronique</translation>

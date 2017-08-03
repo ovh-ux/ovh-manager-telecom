@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("XdslAccessCtrl", function ($scope, $stateParams, $uibModal, $q, $filter, $translate, $templateCache, Xdsl, XdslTasksCurrent, XdslAvailableLns, XdslLines, XdslNotifications, XdslModem, XdslIps,
+angular.module("managerApp").controller("XdslAccessCtrl", function ($scope, $stateParams, $uibModal, $q, $filter, $translate, $templateCache, Xdsl, XdslTasksCurrent, XdslLines, XdslNotifications, XdslModem, XdslIps,
                                                                     PackXdsl, ToastError, PACK_IP, REDIRECT_URLS) {
     "use strict";
 
@@ -172,21 +172,7 @@ angular.module("managerApp").controller("XdslAccessCtrl", function ($scope, $sta
                     $scope.loaders.xdsl = false;
                     $scope.access.xdsl = access;
                     setStatusLabel($scope.access.xdsl.status);
-
-                    if ($scope.access.xdsl.capabilities.canChangeLns) {
-                        return XdslAvailableLns.Lexi().query({
-                            xdslId: $stateParams.serviceName
-                        }).$promise.then(function (availableLns) {
-                            if (!_.isEmpty(availableLns)) {
-                                $scope.access.xdsl.hasLns = true;
-                            }
-                            $scope.access.xdsl.lns = availableLns;
-                            return $scope.access.xdsl;
-                        });
-                    }
                     return $scope.access.xdsl;
-
-
                 }, function (err) {
                     $scope.loaders.xdsl = false;
                     return new ToastError(err);

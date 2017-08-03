@@ -1,6 +1,6 @@
 <div data-ng-controller="telephonyNumberOvhPabxDialplanExtensionRuleEditCtrl as $ctrl"
      class="telephony-number-ovh-pabx-extension-rule-edit popover-pages"
-     data-ng-form="extensionRuleForm">
+     data-ng-form="$ctrl.extensionRuleForm">
 
     <div class="popover-pages-wrapper"
          data-ng-class="{ move: $ctrl.parentCtrl.popoverStatus.move }">
@@ -35,7 +35,7 @@
                     <div data-ng-switch="$ctrl.rule.getActionFamily()">
                         <!-- SET CALLER NAME -->
                         <div class="section-item form-group"
-                             data-ng-class="{ 'has-error': extensionRuleForm.setCallerNameActionParam.$invalid && extensionRuleForm.setCallerNameActionParam.$dirty }"
+                             data-ng-class="{ 'has-error': $ctrl.extensionRuleForm.setCallerNameActionParam.$invalid && $ctrl.extensionRuleForm.setCallerNameActionParam.$dirty }"
                              data-ng-switch-when="setCallerName">
                             <div data-flat-input-container>
                                 <label for="setCallerNameActionParam"
@@ -51,8 +51,8 @@
                                        data-required
                                        data-ng-pattern="/^[\w\s]+$/" />
                             </div>
-                            <div data-ng-messages="extensionRuleForm.setCallerNameActionParam.$error"
-                                 data-ng-if="extensionRuleForm.setCallerNameActionParam.$invalid && extensionRuleForm.setCallerNameActionParam.$dirty"
+                            <div data-ng-messages="$ctrl.extensionRuleForm.setCallerNameActionParam.$error"
+                                 data-ng-if="$ctrl.extensionRuleForm.setCallerNameActionParam.$invalid && $ctrl.extensionRuleForm.setCallerNameActionParam.$dirty"
                                  role="alert"
                                  class="top-space-m8">
                                 <label for="setCallerNameActionParam"
@@ -140,7 +140,7 @@
 
                         <!-- BRIDGE -->
                         <div class="section-item form-group"
-                             data-ng-class="{ 'has-error': extensionRuleForm.setBridgeActionParam.$invalid && extensionRuleForm.setBridgeActionParam.$dirty }"
+                             data-ng-class="{ 'has-error': $ctrl.extensionRuleForm.setBridgeActionParam.$invalid && $ctrl.extensionRuleForm.setBridgeActionParam.$dirty }"
                              data-ng-switch-when="bridge">
                             <div data-flat-input-container>
                                 <label for="setBridgeActionParam"
@@ -156,8 +156,8 @@
                                        data-required
                                        data-ng-pattern="/^(00|\+)([0-9]{2}\d+)$/" />
                             </div>
-                            <div data-ng-messages="extensionRuleForm.setBridgeActionParam.$error"
-                                 data-ng-if="extensionRuleForm.setBridgeActionParam.$invalid && extensionRuleForm.setBridgeActionParam.$dirty"
+                            <div data-ng-messages="$ctrl.extensionRuleForm.setBridgeActionParam.$error"
+                                 data-ng-if="$ctrl.extensionRuleForm.setBridgeActionParam.$invalid && $ctrl.extensionRuleForm.setBridgeActionParam.$dirty"
                                  role="alert"
                                  class="top-space-m8">
                                 <label for="setBridgeActionParam"
@@ -202,7 +202,7 @@
 
                         <!-- READ DTMF -->
                         <div class="section-item form-group"
-                             data-ng-class="{ 'has-error': extensionRuleForm.setReadDtmfActionParam.$invalid && extensionRuleForm.setReadDtmfActionParam.$dirty }"
+                             data-ng-class="{ 'has-error': $ctrl.extensionRuleForm.setReadDtmfActionParam.$invalid && $ctrl.extensionRuleForm.setReadDtmfActionParam.$dirty }"
                              data-ng-switch-when="readDtmf">
                             <div data-flat-input-container>
                                 <label for="setReadDtmfActionParam"
@@ -219,8 +219,8 @@
                                        data-ng-maxlength="24"
                                        data-ng-pattern="/^[a-zA-Z0-9]+$/" />
                             </div>
-                            <div data-ng-messages="extensionRuleForm.setReadDtmfActionParam.$error"
-                                 data-ng-if="extensionRuleForm.setReadDtmfActionParam.$invalid && extensionRuleForm.setReadDtmfActionParam.$dirty"
+                            <div data-ng-messages="$ctrl.extensionRuleForm.setReadDtmfActionParam.$error"
+                                 data-ng-if="$ctrl.extensionRuleForm.setReadDtmfActionParam.$invalid && $ctrl.extensionRuleForm.setReadDtmfActionParam.$dirty"
                                  role="alert"
                                  class="top-space-m8">
                                 <label for="setReadDtmfActionParam"
@@ -246,7 +246,7 @@
                                 class="section-item no-style full-width text-left"
                                 data-ng-switch-when="hunting"
                                 data-ng-click="$ctrl.onHuntingActionParamButtonClick()">
-                            <label class="pointer required"
+                            <label class="pointer radio-label-main required"
                                    data-translate="telephony_number_feature_ovh_pabx_step_rule_hunting">
                             </label>
                             <span class="block"
@@ -263,6 +263,30 @@
                                 </div>
                             </div>
                         </button> <!-- END OF HUNTING -->
+
+                        <!-- TTS -->
+                        <button type="button"
+                                class="section-item no-style full-width text-left"
+                                data-ng-switch-when="tts"
+                                data-ng-click="$ctrl.onTtsActionParamButtonClick()">
+                            <label class="pointer radio-label-main"
+                                   data-translate="telephony_number_feature_ovh_pabx_step_rule_tts_to_read">
+                            </label>
+                            <span class="block"
+                                  data-translate="telephony_number_feature_ovh_pabx_step_rule_tts_no_selected"
+                                  data-ng-if="!$ctrl.rule.actionParam">
+                            </span>
+                            <span class="block elipse no-wrap"
+                                  data-ng-if="$ctrl.rule.actionParam"
+                                  data-ng-bind="$ctrl.ovhPabx.getSingleTts($ctrl.rule.actionParam).text"
+                                  data-ng-attr-title="{{ $ctrl.ovhPabx.getSingleTts($ctrl.rule.actionParam).text }}">
+                            </span>
+                            <div class="chevron-right">
+                                <div class="chevron-wrapper">
+                                    <i class="ovh-font ovh-font-arrow-right"></i>
+                                </div>
+                            </div>
+                        </button> <!-- End of TTS -->
                     </div> <!-- SWITCH ACTION FOR ACTION PARAM -->
                 </div>
             </section>
@@ -271,7 +295,7 @@
             <footer class="clearfix double-choice">
                 <button type="submit"
                         class="btn btn-primary"
-                        data-ng-disabled="!$ctrl.rule.hasChange() || !$ctrl.isRuleValid() || extensionRuleForm.$invalid"
+                        data-ng-disabled="!$ctrl.rule.hasChange() || !$ctrl.isRuleValid() || !$ctrl.isFormValid()"
                         data-translate="{{ $ctrl.rule.status === 'DRAFT' ? 'common_create' : 'modify' }}"
                         data-ng-click="$ctrl.onValidateBtnClick()">
                 </button>
@@ -292,7 +316,7 @@
             <header>
                 <button type="button"
                         class="back-btn no-style no-space fs20"
-                        data-ng-click="$ctrl.parentCtrl.popoverStatus.move = false"
+                        data-ng-click="$ctrl.parentCtrl.popoverStatus.move = false; $ctrl.state.collapse = false"
                         data-translate-attr="{ title: 'back' }">
                     <i class="ovh-font ovh-font-arrow-left"></i>
                 </button>
@@ -311,6 +335,10 @@
 
                 <h2 data-ng-switch-when="hunting"
                     data-translate="telephony_number_feature_ovh_pabx_step_rule_hunting_choice">
+                </h2>
+
+                <h2 data-ng-switch-when="tts"
+                    data-translate="telephony_number_feature_ovh_pabx_step_rule_tts_choice">
                 </h2>
             </header>
 
@@ -419,6 +447,88 @@
                     </label>
                 </div> <!-- END OF QUEUE SELECTION -->
             </section> <!-- END OF HUNTING CHOICE -->
+
+            <!-- TTS -->
+            <section data-ng-switch-when="tts">
+                <!-- TTS INFO -->
+                <div class="alert alert-info bottom-space-m0"
+                     role="alert">
+                    <i class="ovh-font ovh-font-filled-info right-space-m8"
+                       aria-hidden="true">
+                    </i>
+                    <p data-translate="telephony_number_feature_ovh_pabx_step_rule_tts_info"
+                       data-translate-compile>
+                    </p>
+                </div> <!-- End of TTS INFO -->
+
+                <!-- ADD TTS BTN -->
+                <div class="section-group"
+                     data-uib-collapse="$ctrl.state.collapse">
+                    <button type="button"
+                            class="section-item no-style full-width text-left"
+                            data-ng-click="$ctrl.onAddTtsButtonClick()">
+                        <div class="dtable">
+                            <div class="dtd vertical-middle left-space-p16 right-space-p16">
+                                <i class="ovh-font ovh-font-ajouter fs18"></i>
+                            </div>
+                            <div class="dtd vertical-middle">
+                                <label class="block radio-label-main pointer"
+                                       data-translate="telephony_number_feature_ovh_pabx_step_rule_tts_add">
+                                </label>
+                                <span class="small normal"
+                                      data-translate="telephony_number_feature_ovh_pabx_step_rule_tts_add_explain">
+                                </span>
+                            </div>
+                        </div>
+                    </button>
+                </div> <!-- End of ADD TTS BTN -->
+
+                <!-- ADD TTS FORM -->
+                <div class="section-group"
+                     data-uib-collapse="!$ctrl.state.collapse">
+                    <div class="section-item">
+                        <telephony-number-ovh-pabx-tts-create data-on-tts-creation-cancel="$ctrl.onTtsCreationCancel"
+                                                              data-on-tts-creation-success="$ctrl.onTtsCreationSuccess">
+                        </telephony-number-ovh-pabx-tts-create>
+                    </div>
+                </div> <!-- End of ADD TTS FORM -->
+
+                <!-- TTS LIST -->
+                <div class="section-group">
+                    <div class="group-title">
+                        <span data-translate="telephony_number_feature_ovh_pabx_step_rule_tts_list"></span>
+                    </div>
+
+                    <div class="section-item"
+                         data-ng-if="$ctrl.ovhPabx.tts.length === 0">
+                        <em data-translate="telephony_number_feature_ovh_pabx_step_rule_no_tts_added"></em>
+                    </div>
+
+                    <label class="section-item item-choice full-width pointer dtable table-fixed"
+                           data-ng-if="$ctrl.ovhPabx.tts.length > 0"
+                           data-ng-repeat="tts in $ctrl.ovhPabx.tts | orderBy:'text' track by $index">
+                        <div class="dtr">
+                            <div class="dtd vertical-middle radio-content">
+                                <flat-radio>
+                                    <input type="radio"
+                                           name="ruleAction"
+                                           data-ng-model="$ctrl.rule.actionParam"
+                                           data-ng-value="tts.id"
+                                           data-ng-change="$ctrl.parentCtrl.popoverStatus.move = false" />
+                                </flat-radio>
+                            </div>
+                            <div class="dtd vertical-middle">
+                                <span class="block radio-label-main elipse no-wrap"
+                                      data-ng-bind="tts.text">
+                                </span>
+                                <span class="small normal"
+                                      data-translate="{{ 'telephony_number_feature_ovh_pabx_tts_voice_' + tts.voice.toLowerCase() }}">
+                                </span>
+                            </div>
+                        </div>
+                    </label>
+                </div> <!-- End of TTS LIST -->
+            </section> <!-- End of TTS -->
 
         </section> <!-- RIGHT PAGE -->
 
