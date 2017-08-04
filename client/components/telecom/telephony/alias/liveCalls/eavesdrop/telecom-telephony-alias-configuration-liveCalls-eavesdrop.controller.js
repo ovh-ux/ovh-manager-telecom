@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationLiveCallsEavesdropCtrl", function ($uibModalInstance, $translate, Telephony, Toast, params) {
+angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationLiveCallsEavesdropCtrl", function ($uibModalInstance, $translate, Toast, params) {
     "use strict";
 
     var self = this;

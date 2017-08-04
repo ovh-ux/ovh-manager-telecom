@@ -4,7 +4,7 @@ angular.module("managerApp").component("telecomTelephonyAliasLiveCalls", {
         queueId: "<"
     },
     templateUrl: "components/telecom/telephony/alias/liveCalls/telecom-telephony-alias-configuration-liveCalls.html",
-    controller: function ($scope, $stateParams, $q, $timeout, $uibModal, $translate, $translatePartialLoader, moment, Telephony, ToastError) {
+    controller: function ($scope, $stateParams, $q, $timeout, $uibModal, $translate, $translatePartialLoader, moment, ToastError) {
         "use strict";
 
         var self = this;
