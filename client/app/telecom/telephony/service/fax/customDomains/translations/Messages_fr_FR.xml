@@ -2,7 +2,7 @@
 <translations>
     <translation id="telephony_service_fax_custom_domains_informations">Informations</translation>
     <translation id="telephony_service_fax_custom_domains_informations_alert_info1">Les domaines Ecofax Marque Blanche vous permettent d'envoyer des Fax en utilisant le service Ecofax via votre propre nom de domaine.<br/>Vous pourrez, ainsi, envoyer un fax en utilisant une adresse email du type <strong>0102030405@masociete.com</strong>.</translation>
-    <translation id="telephony_service_fax_custom_domains_informations_alert_info2">Le domaine que vous renseignez doit avoir un enregistrement MX 1 vers <strong>mail.ecofax.fr</strong>.<br/>Si votre domaine est hébergé chez OVH et ne comporte aucun enregistrement MX, la configuration se fera automatiquement.</translation>
+    <translation id="telephony_service_fax_custom_domains_informations_alert_info2">Le domaine que vous renseignez doit avoir un enregistrement MX 1 vers <strong>mail.ecofax.fr</strong>.</translation>
     <translation id="telephony_service_fax_custom_domains_configuration">Domaines configurés</translation>
     <translation id="telephony_service_fax_custom_domains_configuration_table_column_domain">Domaine</translation>
     <translation id="telephony_service_fax_custom_domains_configuration_table_column_action">Actions</translation>
