@@ -63,7 +63,7 @@ angular.module("managerApp").controller("TelecomTelephonyLinePhoneCtrl", functio
         }, {
             name: "line_phonebook",
             main: true,
-            disabled: !self.line.hasPhone,
+            disabled: !self.line.hasPhone || !self.line.hasSupportsPhonebook,
             picto: "ovh-font-contacts",
             sref: "telecom.telephony.line.phone.phonebook",
             text: $translate.instant("telephony_line_phone_actions_line_phonebook")
@@ -79,6 +79,7 @@ angular.module("managerApp").controller("TelecomTelephonyLinePhoneCtrl", functio
 
             return $q.allSettled([
                 self.line.getPhone(),
+                self.line.supportsPhonebook(),
                 self.billingAccount.getAvailableOrderNames()
             ]).then(function () {
                 initActions();
