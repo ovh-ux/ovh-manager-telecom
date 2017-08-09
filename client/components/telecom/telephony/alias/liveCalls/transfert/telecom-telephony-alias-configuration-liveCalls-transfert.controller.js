@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationStatsEasyHuntingTransfertCtrl", function ($uibModalInstance, $translate, Telephony, Toast, params) {
+angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationLiveCallsTransfertCtrl", function ($uibModalInstance, $translate, Toast, params) {
     "use strict";
 
     var self = this;
@@ -16,7 +16,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationStats
     self.submit = function () {
         self.isSubmitting = true;
         self.error = null;
-        return Telephony.EasyHunting().Hunting().Queue().LiveCalls().Lexi().transfer({
+        return params.apiEndpoint.Hunting().Queue().LiveCalls().Lexi().transfer({
             billingAccount: params.billingAccount,
             serviceName: params.serviceName,
             queueId: params.queueId,

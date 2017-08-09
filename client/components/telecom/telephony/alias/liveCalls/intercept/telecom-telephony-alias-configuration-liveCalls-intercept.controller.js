@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationStatsEasyHuntingInterceptCtrl", function ($uibModalInstance, $translate, Telephony, Toast, params) {
+angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationLiveCallsInterceptCtrl", function ($uibModalInstance, $translate, Toast, params) {
     "use strict";
 
     var self = this;
@@ -16,7 +16,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationStats
     self.submit = function () {
         self.isSubmitting = true;
         self.error = null;
-        return Telephony.EasyHunting().Hunting().Queue().LiveCalls().Lexi().intercept({
+        return params.apiEndpoint.Hunting().Queue().LiveCalls().Lexi().intercept({
             billingAccount: params.billingAccount,
             serviceName: params.serviceName,
             queueId: params.queueId,
