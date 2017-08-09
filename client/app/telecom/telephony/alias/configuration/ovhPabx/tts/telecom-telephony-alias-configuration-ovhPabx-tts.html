@@ -1,0 +1,209 @@
+<div class="telecom-telephony-alias-configuration-ovhPabx-sounds">
+
+    <header>
+        <section-back-link section-back-link-to-state="telecom.telephony.alias.configuration"
+                           section-back-link-title="{{ 'telephony_alias_configuration_back_link' | translate }}">
+        </section-back-link>
+        <h1 data-translate="telephony_alias_ovh_pabx_tts_title"></h1>
+    </header>
+
+    <div class="telecom-section-content">
+        <!-- SHOW LOADING -->
+        <bouncing-box-loader data-ng-if="$ctrl.loading.init">
+            <h2 data-translate="loading"></h2>
+        </bouncing-box-loader> <!-- End of SHOW LOADING -->
+
+        <!-- NOT AN OVHPABX OR VALID OVHPABX -->
+        <div class="row"
+             data-ng-if="!$ctrl.loading.init && ($ctrl.number.getFeatureFamily() !== 'ovhPabx' || !$ctrl.number.feature.isCCS)">
+            <div class="col-xs-12 col-md-6">
+                <div class="alert alert-warning"
+                     role="alert">
+                    <i class="ovh-font ovh-font-filled-warning"
+                       aria-hidden="true">
+                    </i>
+                    <p data-translate="telephony_alias_ovh_pabx_condition"
+                       data-ng-if="$ctrl.number.getFeatureFamily() !== 'ovhPabx'">
+                    </p>
+                    <p data-translate="telephony_alias_ovh_pabx_tts_condition"
+                       data-ng-if="!$ctrl.number.feature.isCCS">
+                    </p>
+                    <a data-ui-sref="telecom.telephony.alias.configuration.changeType"
+                       data-translate="telephony_alias_configuration_change_type"
+                       data-translate-attr="{ title: 'telephony_alias_configuration_change_type' }">
+                   </a>
+                </div>
+            </div>
+        </div> <!-- End of NOT AN OVHPABX OR VALID OVHPABX -->
+
+        <!-- SOUND LIST -->
+        <div class="row"
+             data-ng-if="!$ctrl.loading.init && $ctrl.number.getFeatureFamily() === 'ovhPabx' && $ctrl.number.feature.isCCS">
+            <div class="col-xs-12 col-md-6 widget-presentation">
+                <header class="widget-presentation-header">
+                    <h2 class="widget-presentation-title"
+                        data-translate="telephony_alias_ovh_pabx_tts_list_title">
+                    </h2>
+                </header>
+
+                <div data-uib-collapse="$ctrl.state.collapse">
+                    <button type="button"
+                            class="btn btn-primary bottom-space-m16"
+                            data-ng-click="$ctrl.state.collapse = true">
+                        <i class="ovh-font ovh-font-ajouter inline-block vertical-middle"
+                           aria-hidden="true">
+                        </i>
+                        <span class="inline-block vertical-middle left-space-p4"
+                              data-translate="telephony_alias_ovh_pabx_tts_add">
+                        </span>
+                    </button>
+                </div>
+
+                <!-- TTS ADD -->
+                <div data-uib-collapse="!$ctrl.state.collapse">
+                    <div class="bottom-space-m16">
+                        <telephony-number-ovh-pabx-tts-create data-ovh-pabx="$ctrl.number.feature"
+                                                              data-on-tts-creation-cancel="$ctrl.onCreationCancel"
+                                                              data-on-tts-creation-success="$ctrl.onCreationSuccess">
+                        </telephony-number-ovh-pabx-tts-create>
+                    </div>
+                </div> <!-- End of TTS ADD -->
+
+                <!-- TTS LIST -->
+                <div class="responsive-table-line">
+                    <table class="table table-pretty table-hover table-striped table-fixed">
+                        <thead>
+                            <tr>
+                                <th scope="col">
+                                    <button type="button"
+                                            class="no-style left-space-p0"
+                                            data-translate-attr="{ title: 'telephony_number_feature_ovh_pabx_tts_voice' }"
+                                            data-ng-disabled="!$ctrl.tts.raw.length"
+                                            data-ng-click="$ctrl.orderBy('voice')">
+                                        <label class="pointer"
+                                               data-translate="telephony_number_feature_ovh_pabx_tts_voice">
+                                        </label>
+                                        <span class="table-pretty-filter">
+                                            <i class="fa fa-sort fa-sort-desc"
+                                               data-ng-show="$ctrl.state.orderBy === 'voice' && $ctrl.state.orderDesc">
+                                            </i>
+                                            <i class="fa fa-sort fa-sort-asc"
+                                               data-ng-show="$ctrl.state.orderBy === 'voice' && !$ctrl.state.orderDesc">
+                                            </i>
+                                        </span>
+                                    </button>
+                                </th>
+                                <th scope="col">
+                                    <button type="button"
+                                            class="no-style left-space-p0"
+                                            data-translate-attr="{ title: 'telephony_number_feature_ovh_pabx_tts_text' }"
+                                            data-ng-disabled="!$ctrl.tts.raw.length"
+                                            data-ng-click="$ctrl.orderBy('text')">
+                                        <label class="pointer"
+                                               data-translate="telephony_number_feature_ovh_pabx_tts_text">
+                                        </label>
+                                        <span class="table-pretty-filter">
+                                            <i class="fa fa-sort fa-sort-desc"
+                                               data-ng-show="$ctrl.state.orderBy === 'text' && $ctrl.state.orderDesc">
+                                            </i>
+                                            <i class="fa fa-sort fa-sort-asc"
+                                               data-ng-show="$ctrl.state.orderBy === 'text' && !$ctrl.state.orderDesc">
+                                            </i>
+                                        </span>
+                                    </button>
+                                </th>
+                                <th style="width: 45px;">&nbsp;</th>
+                            </tr>
+                        </thead>
+                        <tbody data-ng-if="$ctrl.tts.raw.length === 0">
+                            <tr>
+                                <td colspan="3"
+                                    class="text-center">
+                                    <em data-translate="telephony_number_feature_ovh_pabx_menu_list_none"></em>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tbody data-ng-if="$ctrl.tts.raw.length > 0">
+                            <tr data-ng-repeat="tts in $ctrl.tts.paginated track by $index">
+                                <td class="text-left no-wrap"
+                                    data-translate-attr="{ 'data-title': 'telephony_number_feature_ovh_pabx_tts_voice' }">
+                                    <div data-ng-class="{ 'opacity2-leave': $ctrl.isDeleting(tts), 'opacity2-enter': !$ctrl.isDeleting(tts) }">
+                                        <span data-translate="{{ 'telephony_number_feature_ovh_pabx_tts_voice_' + tts.voice.toLowerCase() }}"></span>
+                                    </div>
+                                </td>
+                                <td class="text-left"
+                                    data-translate-attr="{ 'data-title': 'telephony_number_feature_ovh_pabx_tts_text' }">
+                                    <div data-ng-class="{ 'opacity2-leave': $ctrl.isDeleting(tts), 'opacity2-enter': !$ctrl.isDeleting(tts) }">
+                                        <button class="no-style text-left"
+                                                data-ng-click="$ctrl.state.textDetail == tts.id ? $ctrl.state.textDetail = null : $ctrl.state.textDetail = tts.id">
+                                            <i class="fa fa-caret-right rotate"
+                                               data-ng-class="{ 'rotate90' : $ctrl.state.textDetail === tts.id }">
+                                            </i>
+                                            <span class="inline-block vertical-middle"
+                                                  data-ng-class="{ 'elipse no-wrap': $ctrl.state.textDetail !== tts.id }"
+                                                  data-ng-style="$ctrl.state.textDetail !== tts.id && { width: '300px' }"
+                                                  data-ng-bind="tts.text">
+                                            </span>
+                                        </button>
+                                    </div>
+                                </td>
+                                <td class="text-right">
+                                    <div class="pretty-table-confirm-container text-center animate-fadeInRight-enter animate-fadeOutLeft-leave full-width"
+                                         data-ng-show="$ctrl.isDeleting(tts)">
+                                        <button type="button"
+                                                class="btn btn-default"
+                                                data-ng-click="tts.status = 'OK'">
+                                            <i class="ovh-font ovh-font-wrong right-space-m8"
+                                               aria-hidden="true">
+                                            </i>
+                                            <span data-translate="cancel"></span>
+                                        </button>
+
+                                        <button type="button"
+                                                class="btn btn-danger"
+                                                data-ng-click="$ctrl.onTtsDeleteBtnClick(tts)">
+                                            <i class="ovh-font ovh-font-bin right-space-m8"
+                                               aria-hidden="true">
+                                            </i>
+                                            <span data-translate="delete"></span>
+                                            <spinner name="bubbles-fff-d34936-16"
+                                                     data-ng-show="tts.status === 'DELETING'">
+                                            </spinner>
+                                        </button>
+                                    </div>
+
+                                    <div data-ng-class="{ 'opacity2-leave': $ctrl.isDeleting(tts), 'opacity2-enter': !$ctrl.isDeleting(tts) }">
+                                        <button type="button"
+                                                class="btn-actions-list"
+                                                data-ng-click="tts.status = 'PENDING_DELETE'"
+                                                data-translate-attr="{ title: 'telephony_number_feature_ovh_pabx_menu_delete_title' }">
+                                            <i class="ovh-font ovh-font-bin"
+                                               aria-hidden="true">
+                                            </i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table> <!-- End of TTS LIST -->
+                </div>
+
+                <!-- FOOTER PAGINATION -->
+                <div class="table-pretty-pagination top-space-m8"
+                     data-ng-if="$ctrl.tts.raw.length"
+                     data-pagination-front
+                     data-items="$ctrl.tts.sorted"
+                     data-paginated-items="$ctrl.tts.paginated"
+                     data-current-page="currentPage"
+                     data-nb-pages="nbPages"
+                     data-items-per-page="itemsPerPage"
+                     data-page-placeholder="{{'common_pagination_page' | translate: {currentPage:currentPage, nbPages:nbPages} }}"
+                     data-item-per-page-placeholder="{{'common_pagination_display' | translate}}"
+                     data-go-to-page="false">
+                </div> <!-- End of FOOTER PAGINATION -->
+
+            </div>
+        </div> <!-- End of SOUND LIST -->
+    </div>
+
+</div>
