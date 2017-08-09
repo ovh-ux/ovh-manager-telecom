@@ -93,7 +93,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationCtrl"
                     divider: true
                 }, {
                     name: "number_cloud_hunting_board",
-                    url: TelephonyMediator.getV6ToV4RedirectionUrl("alias.number_cloud_hunting_board"),
+                    sref: "telecom.telephony.alias.configuration.stats.ovhPabx",
                     text: $translate.instant("telephony_alias_configuration_actions_number_hunting_board")
                 }, {
                     name: "number_cloud_hunting_records",
