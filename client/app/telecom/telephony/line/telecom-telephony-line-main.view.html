@@ -75,12 +75,12 @@
 
     <div class="telecom-section-alert"
          data-ng-if="!LineCtrl.loading.init">
-        <div class="alert alert-warning" role="alert" data-ng-if="LineCtrl.terminating">
+        <div class="alert alert-xs alert-warning" role="alert" data-ng-if="LineCtrl.terminating">
             <i class="ovh-font ovh-font-filled-warning line-height-normal right-space-m4 text-warning"></i>
             <span data-translate="telephony_line_expire_date" data-translate-values="{date: LineCtrl.terminating.executionDate}"></span>
             <a data-ui-sref="telecom.telephony.line.terminate.cancel" data-translate="telephony_line_expire_link"></a>
         </div>
-        <div class="alert alert-warning" role="alert" data-ng-if="LineCtrl.converting">
+        <div class="alert alert-xs alert-warning" role="alert" data-ng-if="LineCtrl.converting">
             <i class="ovh-font ovh-font-filled-warning line-height-normal right-space-m4 text-warning"></i>
             <span data-translate="telephony_line_convert_date" data-translate-values="{ date: (LineCtrl.converting.executionDate | date) }"></span>
             <a data-ui-sref="telecom.telephony.line.convert" data-translate="telephony_line_convert_link"></a>
