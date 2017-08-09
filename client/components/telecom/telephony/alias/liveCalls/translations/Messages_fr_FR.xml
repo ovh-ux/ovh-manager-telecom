@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <translations>
    <translation id="telephony_alias_configuration_mode_info_title">Statistiques</translation>
-   <translation id="telephony_alias_configuration_stats_qos">QoS de la file (&#37;age d'appels pris)</translation>
+   <translation id="telephony_alias_configuration_stats_qos">QoS de la file (pourcentage d'appels pris)</translation>
    <translation id="telephony_alias_configuration_stats_calls_total">Nombre total d'appels</translation>
    <translation id="telephony_alias_configuration_stats_calls_answered">Nombre d'appels répondus</translation>
    <translation id="telephony_alias_configuration_stats_calls_lost">Nombre d'appels perdus</translation>

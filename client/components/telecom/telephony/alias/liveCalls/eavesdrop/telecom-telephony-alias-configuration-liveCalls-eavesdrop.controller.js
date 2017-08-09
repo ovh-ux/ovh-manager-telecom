@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationStatsEasyHuntingEavesdropCtrl", function ($uibModalInstance, $translate, Telephony, Toast, params) {
+angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationLiveCallsEavesdropCtrl", function ($uibModalInstance, $translate, Toast, params) {
     "use strict";
 
     var self = this;
@@ -19,7 +19,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationStats
         self.error = null;
 
         if (!self.type) {
-            promise = Telephony.EasyHunting().Hunting().Queue().LiveCalls().Lexi().eavesdrop({
+            promise = params.apiEndpoint.Hunting().Queue().LiveCalls().Lexi().eavesdrop({
                 billingAccount: params.billingAccount,
                 serviceName: params.serviceName,
                 queueId: params.queueId,
@@ -28,7 +28,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationStats
                 number: self.number
             }).$promise;
         } else {
-            promise = Telephony.EasyHunting().Hunting().Queue().LiveCalls().Lexi().whisper({
+            promise = params.apiEndpoint.Hunting().Queue().LiveCalls().Lexi().whisper({
                 billingAccount: params.billingAccount,
                 serviceName: params.serviceName,
                 queueId: params.queueId,
