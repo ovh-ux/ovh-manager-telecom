@@ -356,6 +356,9 @@ angular.module("managerApp", [
                         }
                     ]
                 }, {
+                    label: $translate.instant("common_menu_billing"),
+                    url: REDIRECT_URLS.billing
+                }, {
                     label: (function () {
                         var selectedLang;
                         if (localStorage["univers-selected-language"]) {
@@ -379,9 +382,6 @@ angular.module("managerApp", [
                         });
                         return subLinksLang;
                     })()
-                }, {
-                    label: $translate.instant("common_menu_billing"),
-                    url: REDIRECT_URLS.billing
                 }, {
                     label: user.firstname + " " + user.name + " (" + user.nichandle + ")",
                     subLinks: [
