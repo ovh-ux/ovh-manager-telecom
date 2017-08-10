@@ -1,7 +1,7 @@
 <section class="telephony-group-line-voicemail-management">
 
     <header>
-        <section-back-link section-back-link-to-state="telecom.telephony.alias"
+        <section-back-link section-back-link-to-state="telecom.telephony"
                            section-back-link-title="{{ 'telephony_alias_portability_order_back_link' | translate }}">
         </section-back-link>
         <h1 data-translate="telephony_alias_portability_order_title"></h1>
@@ -519,131 +519,148 @@
                             </div>
                         </div>
 
-                        <!-- STREET NUMBER -->
-                        <div class="form-group"
-                             data-ng-class="{ 'has-error': portabilityContactForm.streetNumber.$invalid && portabilityContactForm.streetNumber.$touched }">
-                            <label for="streetNumber"
-                                   class="control-label">
-                                <span data-translate="telephony_alias_portability_order_contact_street_number"></span>
-                                <span aria-hidden="true">&#42;</span>
-                            </label>
-                            <input type="text"
-                                   id="streetNumber"
-                                   name="streetNumber"
-                                   class="form-control"
-                                   data-ng-model="PortabilityOrderCtrl.order.streetNumber"
-                                   data-ng-pattern="/^[0-9]+$/"
-                                   required />
-                            <div data-ng-messages="portabilityContactForm.streetNumber.$error" role="alert">
-                                 <label for="streetNumber"
-                                        data-ng-message="required"
-                                        data-ng-if="portabilityContactForm.streetNumber.$touched"
-                                        data-translate="telephony_alias_portability_order_contact_required">
-                                 </label>
-                                 <label for="zip"
-                                        data-ng-message="pattern"
-                                        data-ng-if="portabilityContactForm.streetNumber.$touched"
-                                        data-translate="telephony_alias_portability_order_contact_street_number_pattern_error">
-                                 </label>
+                        <div class="form-group">
+                            <div class="row">
+
+                                <!-- STREET NUMBER -->
+                                <div class="col-xs-4"
+                                     data-ng-class="{ 'has-error': portabilityContactForm.streetNumber.$invalid && portabilityContactForm.streetNumber.$touched }">
+                                    <label for="streetNumber"
+                                           class="control-label">
+                                        <span data-translate="telephony_alias_portability_order_contact_street_number"></span>
+                                        <span aria-hidden="true">&#42;</span>
+                                    </label>
+                                    <input type="text"
+                                           id="streetNumber"
+                                           name="streetNumber"
+                                           class="form-control"
+                                           data-ng-model="PortabilityOrderCtrl.order.streetNumber"
+                                           data-ng-pattern="/^[0-9]+$/"
+                                           required />
+                                    <div data-ng-messages="portabilityContactForm.streetNumber.$error" role="alert">
+                                         <label for="streetNumber"
+                                                data-ng-message="required"
+                                                data-ng-if="portabilityContactForm.streetNumber.$touched"
+                                                data-translate="telephony_alias_portability_order_contact_required">
+                                         </label>
+                                         <label for="zip"
+                                                data-ng-message="pattern"
+                                                data-ng-if="portabilityContactForm.streetNumber.$touched"
+                                                data-translate="telephony_alias_portability_order_contact_street_number_pattern_error">
+                                         </label>
+                                    </div>
+                                </div>
+
+                                <!-- STREET NUMBER EXTRA -->
+                                <div class="col-xs-8"
+                                     data-ng-class="{ 'has-error': portabilityContactForm.streetNumberExtra.$invalid && portabilityContactForm.streetNumberExtra.$touched }">
+                                    <label for="streetNumberExtra"
+                                           class="control-label"
+                                           data-translate="telephony_alias_portability_order_contact_street_number_extra"></label>
+                                    <input type="text"
+                                           id="streetNumberExtra"
+                                           name="streetNumberExtra"
+                                           class="form-control"
+                                           data-ng-model="PortabilityOrderCtrl.order.streetNumberExtra" />
+                                </div>
+
                             </div>
                         </div>
 
-                        <!-- STREET NUMBER EXTRA -->
-                        <div class="form-group"
-                             data-ng-class="{ 'has-error': portabilityContactForm.streetNumberExtra.$invalid && portabilityContactForm.streetNumberExtra.$touched }">
-                            <label for="streetNumberExtra"
-                                   class="control-label"
-                                   data-translate="telephony_alias_portability_order_contact_street_number_extra"></label>
-                            <input type="text"
-                                   id="streetNumberExtra"
-                                   name="streetNumberExtra"
-                                   class="form-control"
-                                   data-ng-model="PortabilityOrderCtrl.order.streetNumberExtra" />
-                        </div>
+                        <div class="form-group">
+                            <div class="row">
 
-                        <!-- STREET TYPE -->
-                        <div class="form-group"
-                             data-ng-class="{ 'has-error': portabilityContactForm.streetType.$invalid && portabilityContactForm.streetType.$touched }">
-                            <label for="streetType"
-                                   class="control-label">
-                                <span data-translate="telephony_alias_portability_order_contact_street_type"></span>
-                                <span aria-hidden="true">&#42;</span>
-                            </label>
-                            <input type="text"
-                                   id="streetType"
-                                   name="streetType"
-                                   class="form-control"
-                                   data-ng-model="PortabilityOrderCtrl.order.streetType"
-                                   required />
-                            <div data-ng-messages="portabilityContactForm.streetType.$error" role="alert">
-                                 <label for="streetType"
-                                        data-ng-message="required"
-                                        data-ng-if="portabilityContactForm.streetType.$touched"
-                                        data-translate="telephony_alias_portability_order_contact_required">
-                                 </label>
+                                <!-- STREET TYPE -->
+                                <div class="col-xs-4"
+                                     data-ng-class="{ 'has-error': portabilityContactForm.streetType.$invalid && portabilityContactForm.streetType.$touched }">
+                                    <label for="streetType"
+                                           class="control-label">
+                                        <span data-translate="telephony_alias_portability_order_contact_street_type"></span>
+                                        <span aria-hidden="true">&#42;</span>
+                                    </label>
+                                    <input type="text"
+                                           id="streetType"
+                                           name="streetType"
+                                           class="form-control"
+                                           data-ng-model="PortabilityOrderCtrl.order.streetType"
+                                           required />
+                                    <div data-ng-messages="portabilityContactForm.streetType.$error" role="alert">
+                                         <label for="streetType"
+                                                data-ng-message="required"
+                                                data-ng-if="portabilityContactForm.streetType.$touched"
+                                                data-translate="telephony_alias_portability_order_contact_required">
+                                         </label>
+                                    </div>
+                                </div>
+
+                                <!-- STREET NAME -->
+                                <div class="col-xs-8"
+                                     data-ng-class="{ 'has-error': portabilityContactForm.streetName.$invalid && portabilityContactForm.streetName.$touched }">
+                                    <label for="streetName"
+                                           class="control-label">
+                                        <span data-translate="telephony_alias_portability_order_contact_street_name"></span>
+                                        <span aria-hidden="true">&#42;</span>
+                                    </label>
+                                    <input type="text"
+                                           id="streetName"
+                                           name="streetName"
+                                           class="form-control"
+                                           data-ng-model="PortabilityOrderCtrl.order.streetName"
+                                           required />
+                                    <div data-ng-messages="portabilityContactForm.streetName.$error" role="alert">
+                                         <label for="streetName"
+                                                data-ng-message="required"
+                                                data-ng-if="portabilityContactForm.streetName.$touched"
+                                                data-translate="telephony_alias_portability_order_contact_required">
+                                         </label>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
 
-                        <!-- STREET NAME -->
-                        <div class="form-group"
-                             data-ng-class="{ 'has-error': portabilityContactForm.streetName.$invalid && portabilityContactForm.streetName.$touched }">
-                            <label for="streetName"
-                                   class="control-label">
-                                <span data-translate="telephony_alias_portability_order_contact_street_name"></span>
-                                <span aria-hidden="true">&#42;</span>
-                            </label>
-                            <input type="text"
-                                   id="streetName"
-                                   name="streetName"
-                                   class="form-control"
-                                   data-ng-model="PortabilityOrderCtrl.order.streetName"
-                                   required />
-                            <div data-ng-messages="portabilityContactForm.streetName.$error" role="alert">
-                                 <label for="streetName"
-                                        data-ng-message="required"
-                                        data-ng-if="portabilityContactForm.streetName.$touched"
-                                        data-translate="telephony_alias_portability_order_contact_required">
-                                 </label>
+                        <div class="form-group">
+                            <div class="row">
+
+                                <!-- BUILDING-->
+                                <div class="col-xs-4"
+                                     data-ng-class="{ 'has-error': portabilityContactForm.building.$invalid && portabilityContactForm.building.$touched }">
+                                    <label for="building"
+                                           class="control-label"
+                                           data-translate="telephony_alias_portability_order_contact_building"></label>
+                                    <input type="text"
+                                           id="building"
+                                           name="building"
+                                           class="form-control"
+                                           data-ng-model="PortabilityOrderCtrl.order.building" />
+                                </div>
+
+                                <!-- STAIR -->
+                                <div class="col-xs-4"
+                                     data-ng-class="{ 'has-error': portabilityContactForm.stair.$invalid && portabilityContactForm.stair.$touched }">
+                                    <label for="stair"
+                                           class="control-label"
+                                           data-translate="telephony_alias_portability_order_contact_stair"></label>
+                                    <input type="text"
+                                           id="stair"
+                                           name="stair"
+                                           class="form-control"
+                                           data-ng-model="PortabilityOrderCtrl.order.stair" />
+                                </div>
+
+                                <!-- FLOOR -->
+                                <div class="col-xs-4"
+                                     data-ng-class="{ 'has-error': portabilityContactForm.floor.$invalid && portabilityContactForm.floor.$touched }">
+                                    <label for="floor"
+                                           class="control-label"
+                                           data-translate="telephony_alias_portability_order_contact_floor"></label>
+                                    <input type="text"
+                                           id="floor"
+                                           name="floor"
+                                           class="form-control"
+                                           data-ng-model="PortabilityOrderCtrl.order.floor" />
+                                </div>
                             </div>
-                        </div>
-
-                        <!-- BUILDING-->
-                        <div class="form-group"
-                             data-ng-class="{ 'has-error': portabilityContactForm.building.$invalid && portabilityContactForm.building.$touched }">
-                            <label for="building"
-                                   class="control-label"
-                                   data-translate="telephony_alias_portability_order_contact_building"></label>
-                            <input type="text"
-                                   id="building"
-                                   name="building"
-                                   class="form-control"
-                                   data-ng-model="PortabilityOrderCtrl.order.building" />
-                        </div>
-
-                        <!-- STAIR -->
-                        <div class="form-group"
-                             data-ng-class="{ 'has-error': portabilityContactForm.stair.$invalid && portabilityContactForm.stair.$touched }">
-                            <label for="stair"
-                                   class="control-label"
-                                   data-translate="telephony_alias_portability_order_contact_stair"></label>
-                            <input type="text"
-                                   id="stair"
-                                   name="stair"
-                                   class="form-control"
-                                   data-ng-model="PortabilityOrderCtrl.order.stair" />
-                        </div>
-
-                        <!-- FLOOR -->
-                        <div class="form-group"
-                             data-ng-class="{ 'has-error': portabilityContactForm.floor.$invalid && portabilityContactForm.floor.$touched }">
-                            <label for="floor"
-                                   class="control-label"
-                                   data-translate="telephony_alias_portability_order_contact_floor"></label>
-                            <input type="text"
-                                   id="floor"
-                                   name="floor"
-                                   class="form-control"
-                                   data-ng-model="PortabilityOrderCtrl.order.floor" />
                         </div>
 
                         <!-- DISPLAY UNIVERSAL DIRECTORY -->

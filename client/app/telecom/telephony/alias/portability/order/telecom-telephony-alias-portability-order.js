@@ -1,8 +1,8 @@
 angular.module("managerApp").config(function ($stateProvider) {
     "use strict";
 
-    $stateProvider.state("telecom.telephony.alias.portabilityOrder", {
-        url: "/alias/:serviceName/portabilityOrder",
+    $stateProvider.state("telecom.telephony.portabilityOrder", {
+        url: "/portabilityOrder",
         views: {
             "@telephonyView": {
                 templateUrl: "app/telecom/telephony/alias/portability/order/telecom-telephony-alias-portability-order.html",

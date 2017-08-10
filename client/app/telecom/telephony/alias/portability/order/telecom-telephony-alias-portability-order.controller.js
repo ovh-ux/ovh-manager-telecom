@@ -124,6 +124,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasPortabilityOrderCt
             self.contracts = result.contracts;
             self.prices = result.prices;
         }).catch(function (err) {
+            self.step = "number";
             return new ToastError(err);
         });
     };
@@ -132,7 +133,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasPortabilityOrderCt
         self.order.isOrdering = true;
         return Order.Telephony().Lexi().orderPortability({
             billingAccount: self.order.billingAccount
-        }, self.getOrderParams()).$promise.then(function (result) {
+        }, _.omit(self.getOrderParams(), "billingAccount")).$promise.then(function (result) {
             self.order.url = result.url;
             self.order.success = true;
         }).catch(function (err) {
