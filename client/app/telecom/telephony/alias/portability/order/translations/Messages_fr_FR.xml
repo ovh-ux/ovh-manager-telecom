@@ -11,7 +11,7 @@
    <translation id="telephony_alias_portability_order_warning_3">Si vous portez le numéro sur lequel votre connexion Internet est rattachée, votre accès à Internet sera coupé.</translation>
    <translation id="telephony_alias_portability_order_type">Vous souhaitez commander une portabilité pour :</translation>
    <translation id="telephony_alias_portability_order_landline">Un numéro isolé</translation>
-   <translation id="telephony_alias_portability_order_special">Un ou plusieurs numéros appartenant à une tranche de numéros (SDA)</translation>
+   <translation id="telephony_alias_portability_order_sda">Un ou plusieurs numéros appartenant à une tranche de numéros (SDA)</translation>
    <translation id="telephony_alias_portability_order_callNumber">Numéro à porter (format international)</translation>
    <translation id="telephony_alias_portability_order_number_international">N° au format international</translation>
    <translation id="telephony_alias_portability_order_callNumber_pattern_error">Veuillez saisir un numéro au format international (0033… ou +33…).</translation>
@@ -53,11 +53,11 @@
    <translation id="telephony_alias_portability_order_redirect_line">Souhaitez-vous rediriger le numéro vers une ligne ?</translation>
    <translation id="telephony_alias_portability_order_redirect_line_choose">Choisir une ligne</translation>
    <translation id="telephony_alias_portability_order_redirect_line_info">Si vous ne sélectionnez aucune ligne, vous pourrez effectuer la redirection plus tard.</translation>
-   <translation id="telephony_alias_portability_order_special_info">Vous souhaitez :</translation>
-   <translation id="telephony_alias_portability_order_special_all">Porter votre numéro principal et l’ensemble des numéros Sélection Directe à l'Arrivée (SDA) rattachés. (Dans ce cas, la liste des SDA vous sera transmise par mail dans les prochains jours.)</translation>
-   <translation id="telephony_alias_portability_order_special_select">Porter votre numéro principal et une partie des numéros Sélection Directe à l'Arrivée (SDA).</translation>
-   <translation id="telephony_alias_portability_order_special_add">Numéro SDA à ajouter :</translation>
-   <translation id="telephony_alias_portability_order_special_add_list">Les numéros suivants seront également portés :</translation>
+   <translation id="telephony_alias_portability_order_sda_info">Vous souhaitez :</translation>
+   <translation id="telephony_alias_portability_order_sda_all">Porter votre numéro principal et l’ensemble des numéros Sélection Directe à l'Arrivée (SDA) rattachés. (Dans ce cas, la liste des SDA vous sera transmise par mail dans les prochains jours.)</translation>
+   <translation id="telephony_alias_portability_order_sda_select">Porter votre numéro principal et une partie des numéros Sélection Directe à l'Arrivée (SDA).</translation>
+   <translation id="telephony_alias_portability_order_sda_add">Numéro SDA à ajouter :</translation>
+   <translation id="telephony_alias_portability_order_sda_add_list">Les numéros suivants seront également portés :</translation>
    <translation id="telephony_alias_portability_order_description">Description</translation>
    <translation id="telephony_alias_portability_order_unit_price">Prix unitaire</translation>
    <translation id="telephony_alias_portability_order_quantity">Quantité</translation>

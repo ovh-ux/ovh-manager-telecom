@@ -30,6 +30,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasPortabilityOrderCt
         self.step = "number";
         self.minDate = moment().add(15, "days").toDate();
         self.desireDatePickerOpened = false;
+        self.isSDA = false;
 
         // reset contract when step changes
         $scope.$watch("PortabilityOrderCtrl.step", function () {
@@ -37,7 +38,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasPortabilityOrderCt
         });
 
         $scope.$watch("PortabilityOrderCtrl.order", function () {
-            self.order.socialReason = self.order.type === "special" ? "corporation" : "individual";
+            self.order.socialReason = self.isSDA ? "corporation" : "individual";
             self.order.offer = self.order.socialReason === "corporation" ? "company" : "individual";
             self.order.contactName = self.order.name;
         }, true);
@@ -106,7 +107,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasPortabilityOrderCt
             params.firstName = "";
         }
 
-        if (params.type === "special" && self.order.sdatype === "select" && self.order.numbersList.length) {
+        if (self.isSDA && self.order.sdatype === "select" && self.order.numbersList.length) {
             params.listNumbers = _.map(self.order.numbersList, self.normalizeNumber).join(",");
         }
 

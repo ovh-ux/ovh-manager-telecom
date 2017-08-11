@@ -76,8 +76,8 @@
                                 <label class="pointer">
                                     <flat-radio>
                                         <input type="radio"
-                                               data-ng-model="PortabilityOrderCtrl.order.type"
-                                               data-ng-value="'landline'"
+                                               data-ng-model="PortabilityOrderCtrl.isSDA"
+                                               data-ng-value="false"
                                                name="orderType"
                                                autofocus
                                                required />
@@ -89,12 +89,12 @@
                                 <label class="pointer">
                                     <flat-radio>
                                         <input type="radio"
-                                               data-ng-model="PortabilityOrderCtrl.order.type"
-                                               data-ng-value="'special'"
+                                               data-ng-model="PortabilityOrderCtrl.isSDA"
+                                               data-ng-value="true"
                                                name="orderType"
                                                required />
                                     </flat-radio>
-                                    <span class="left-space-m4" data-translate="telephony_alias_portability_order_special"></span>
+                                    <span class="left-space-m4" data-translate="telephony_alias_portability_order_sda"></span>
                                 </label>
                             </div>
                         </div>
@@ -130,7 +130,7 @@
 
                         <!-- RIO -->
                         <div class="form-group"
-                             data-ng-if="PortabilityOrderCtrl.order.callNumber && PortabilityOrderCtrl.order.type === 'landline'">
+                             data-ng-if="PortabilityOrderCtrl.order.callNumber && !PortabilityOrderCtrl.isSDA">
                             <label for="rio"
                                    class="control-label">
                                 <span data-translate="telephony_alias_portability_order_rio" />
@@ -161,10 +161,10 @@
 
                         <!-- SDA NUMBERS -->
                         <div class="form-group top-space-m16"
-                             data-ng-if="PortabilityOrderCtrl.order.type === 'special'">
+                             data-ng-if="PortabilityOrderCtrl.isSDA">
 
                             <p class="bottom-space-m8"
-                               data-translate="telephony_alias_portability_order_special_info"></p>
+                               data-translate="telephony_alias_portability_order_sda_info"></p>
 
                             <!-- SDA TYPE -->
                             <div class="left-space-m16">
@@ -177,7 +177,7 @@
                                                required />
                                     </flat-radio>
                                     <span class="left-space-m4"
-                                          data-translate="telephony_alias_portability_order_special_all"></span>
+                                          data-translate="telephony_alias_portability_order_sda_all"></span>
                                 </label>
                             </div>
                             <div class="top-space-m4 left-space-m16">
@@ -190,7 +190,7 @@
                                                required />
                                     </flat-radio>
                                     <span class="left-space-m4"
-                                          data-translate="telephony_alias_portability_order_special_select"></span>
+                                          data-translate="telephony_alias_portability_order_sda_select"></span>
                                 </label>
                             </div>
 
@@ -198,7 +198,7 @@
                             <div class="top-space-m8"
                                  data-ng-if="PortabilityOrderCtrl.order.sdatype === 'select'">
 
-                                <p data-translate="telephony_alias_portability_order_special_add"></p>
+                                <p data-translate="telephony_alias_portability_order_sda_add"></p>
 
                                 <div>
                                     <input type="text"
@@ -219,7 +219,7 @@
                                 </div>
 
                                 <p class="top-space-m16"
-                                   data-translate="telephony_alias_portability_order_special_add_list"
+                                   data-translate="telephony_alias_portability_order_sda_add_list"
                                    data-ng-if="PortabilityOrderCtrl.order.numbersList.length">
                                 </p>
 
@@ -313,7 +313,7 @@
                             <select id="socialReason"
                                     name="socialReason"
                                     class="form-control"
-                                    data-ng-disabled="PortabilityOrderCtrl.order.type === 'special'"
+                                    data-ng-disabled="PortabilityOrderCtrl.isSDA"
                                     data-ng-model="PortabilityOrderCtrl.order.socialReason">
                                 <option data-translate="telephony_alias_portability_order_contact_social_reason_individual"
                                         value="individual"></option>
@@ -733,7 +733,7 @@
                                 <button type="button"
                                         class="btn btn-default"
                                         data-voip-service-choice-popover="{
-                                            popoverPlacement: 'auto auto',
+                                            popoverPlacement: 'right auto',
                                             popoverClass: 'pretty-popover telephony-service-choice-popover',
                                             popoverAppendToBody: true,
                                             popoverIsOpen: false
