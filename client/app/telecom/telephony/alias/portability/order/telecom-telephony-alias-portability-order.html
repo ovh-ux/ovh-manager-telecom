@@ -111,8 +111,7 @@
                                    name="callNumber"
                                    class="form-control"
                                    data-ng-model="PortabilityOrderCtrl.order.callNumber"
-                                   data-ng-change="PortabilityOrderCtrl.onNumberChange()"
-                                   data-ng-pattern="/^(00\d\d|\+\d\d)\d{8,}$/"
+                                   data-ng-pattern="/^(0033|\+33|0032|\+32|0041|\+41)\d{8,}$/"
                                    required />
                             <div role="alert"
                                  data-ng-if="portabilityNumberForm.callNumber.$touched"
@@ -130,7 +129,7 @@
 
                         <!-- RIO -->
                         <div class="form-group"
-                             data-ng-if="PortabilityOrderCtrl.order.callNumber && !PortabilityOrderCtrl.isSDA">
+                             data-ng-if="PortabilityOrderCtrl.order.callNumber && !PortabilityOrderCtrl.isSDA && PortabilityOrderCtrl.order.country === 'france'">
                             <label for="rio"
                                    class="control-label">
                                 <span data-translate="telephony_alias_portability_order_rio" />
@@ -881,6 +880,7 @@
                 <div role="alert" class="alert alert-info">
                     <i aria-hidden="true" class="ovh-font ovh-font-filled-info right-space-m4 line-height-normal"></i>
                     <p data-translate="telephony_alias_portability_order_infos"></p>
+                    <p data-translate="telephony_alias_portability_order_infos_country"></p>
                 </div>
                 <div role="alert" class="alert alert-warning">
                     <i aria-hidden="true" class="ovh-font ovh-font-filled-warning right-space-m4 line-height-normal"></i>

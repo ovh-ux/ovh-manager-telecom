@@ -29,6 +29,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasPortabilityOrderCt
         self.stepsList = ["number", "contact", "config", "summary"];
         self.step = "number";
         self.minDate = moment().add(15, "days").toDate();
+        self.order.desireDate = moment(self.minDate).toDate();
         self.desireDatePickerOpened = false;
         self.isSDA = false;
 
@@ -41,6 +42,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasPortabilityOrderCt
             self.order.socialReason = self.isSDA ? "corporation" : "individual";
             self.order.offer = self.order.socialReason === "corporation" ? "company" : "individual";
             self.order.contactName = self.order.name;
+            self.onNumberChange();
         }, true);
 
         // fetch list of billing accounts
@@ -60,13 +62,15 @@ angular.module("managerApp").controller("TelecomTelephonyAliasPortabilityOrderCt
 
     // select number corresponding country automatically
     self.onNumberChange = function () {
-        var number = self.normalizeNumber(self.order.number);
+        var number = self.normalizeNumber(self.order.callNumber);
         if (_.startsWith(number, "0033")) {
             self.order.country = "france";
         } else if (_.startsWith(number, "0032")) {
             self.order.country = "belgium";
+            self.order.rio = null;
         } else if (_.startsWith(number, "0041")) {
             self.order.country = "switzerland";
+            self.order.rio = null;
         }
         self.order.translatedCountry = $translate.instant("telephony_alias_portability_order_contact_country_" + self.order.country);
     };
