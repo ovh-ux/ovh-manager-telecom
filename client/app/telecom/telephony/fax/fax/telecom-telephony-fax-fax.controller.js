@@ -30,9 +30,7 @@ angular.module("managerApp").controller("TelecomTelephonyFaxFaxCtrl", function (
             disabled: !TelecomMediator.isVip
         }, {
             name: "line_fax_filtering",
-
-            // sref: "telecom.telephony.fax.fax.filtering",
-            url: TelephonyMediator.getV6ToV4RedirectionUrl("line.line_fax_filtering"),
+            sref: "telecom.telephony.fax.fax.filtering",
             text: $translate.instant("telephony_fax_fax_action_filtering")
         }, {
             name: "line_fax_campaign_management",

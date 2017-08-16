@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyLineFaxCtrl", function ($translate, TelecomMediator, TelephonyMediator) {
+angular.module("managerApp").controller("TelecomTelephonyLineFaxCtrl", function ($translate, TelecomMediator) {
     "use strict";
 
     var self = this;
@@ -25,9 +25,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineFaxCtrl", function 
             disabled: !TelecomMediator.isVip
         }, {
             name: "line_filtering",
-
-            // sref: "telecom.telephony.line.fax.filtering",
-            url: TelephonyMediator.getV6ToV4RedirectionUrl("line.line_fax_filtering"),
+            sref: "telecom.telephony.line.fax.filtering",
             text: $translate.instant("telephony_line_fax_action_line_filtering")
         }, {
             name: "line_campaign_management",

@@ -12,9 +12,13 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxFilteringCtrl
     =            HELPERS            =
     =============================== */
 
-    function fetchOptions () {
-        return $q.when({
-            anonymousFaxRejection: false
+    function fetchEnums () {
+        return Telephony.Lexi().schema({
+            billingAccount: $stateParams.billingAccount
+        }).$promise.then(function (schema) {
+            return {
+                screenListType: schema.models["telephony.FaxScreenListTypeEnum"].enum
+            };
         });
     }
 
@@ -23,9 +27,11 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxFilteringCtrl
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }).$promise.then(function (screenLists) {
+            self.screenListsForm.filteringList = screenLists.filteringList;
             return _.map(screenListsTypes, function (type) {
                 return _.map(_.get(screenLists, type), function (screen) {
                     return {
+                        callNumber: screenLists.callNumber,
                         number: screen,
                         type: type,
                         id: _.random(_.now())
@@ -46,58 +52,47 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxFilteringCtrl
     /* -----  End of HELPERS  ------ */
 
     /* ===============================
-    =            EVENTS             =
-    =============================== */
-
-    self.changeOption = function (opt) {
-        return opt;
-    };
-
-    /* -----  End of EVENTS  ------ */
-
-    /* ===============================
     =            ACTIONS            =
     =============================== */
 
-    self.sortScreenLists = function () {
-        var data = angular.copy(self.screenLists.raw);
-        data = $filter("filter")(data, self.screenLists.filterBy);
-        data = $filter("orderBy")(
-            data,
-            self.screenLists.orderBy,
-            self.screenLists.orderDesc
-        );
-        self.screenLists.sorted = data;
-
-        // avoid pagination bug...
-        if (self.screenLists.sorted.length === 0) {
-            self.screenLists.paginated = [];
-        }
-    };
-
-    self.orderScreenListsBy = function (by) {
-        if (self.screenLists.orderBy === by) {
-            self.screenLists.orderDesc = !self.screenLists.orderDesc;
-        } else {
-            self.screenLists.orderBy = by;
-        }
-        self.sortScreenLists();
-    };
-
-    self.refresh = function () {
-        self.screenLists.isLoading = true;
-        return $q.all({
-            options: fetchOptions(),
-            screenLists: fetchScreenLists()
-        }).then(function (result) {
-            self.options.raw = result.options;
-            self.options.modified = angular.copy(result.options);
-            self.screenLists.raw = result.screenLists;
-            self.sortScreenLists();
-        }).catch(function (err) {
+    self.updateFilteringList = function () {
+        self.screenListsForm.isUpdating = true;
+        return Telephony.Fax().Lexi().createScreenLists({
+            billingAccount: $stateParams.billingAccount,
+            serviceName: $stateParams.serviceName
+        }, _.pick(self.screenListsForm, "filteringList")).$promise.catch(function (err) {
             return new ToastError(err);
         }).finally(function () {
-            self.screenLists.isLoading = false;
+            self.screenListsForm.isUpdating = false;
+        });
+    };
+
+    self.addScreen = function (form) {
+        var screenList = {};
+        var screenListType = [
+            self.screenListToAdd.nature,
+            self.screenListToAdd.type
+        ].join("");
+        screenList[screenListType] = [].concat(self.screenListToAdd.number);
+        self.screenListsForm.isAdding = true;
+        return Telephony.Fax().Lexi().createScreenLists({
+            billingAccount: $stateParams.billingAccount,
+            serviceName: $stateParams.serviceName
+        }, screenList).$promise.then(function () {
+            form.$setPristine();
+            self.screenListToAdd.number = "";
+            Toast.success($translate.instant("telephony_service_fax_filtering_new_success"));
+            return self.refresh();
+        }).catch(function (error) {
+            return new ToastError(error);
+        }).finally(function () {
+            self.screenListsForm.isAdding = false;
+        });
+    };
+
+    self.exportSelection = function () {
+        return _.map(self.getSelection(), function (filter) {
+            return _.pick(filter, ["callNumber", "number", "type"]);
         });
     };
 
@@ -132,6 +127,47 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxFilteringCtrl
         });
     };
 
+    self.sortScreenLists = function () {
+        var data = angular.copy(self.screenLists.raw);
+        data = $filter("filter")(data, self.screenLists.filterBy);
+        data = $filter("orderBy")(
+            data,
+            self.screenLists.orderBy,
+            self.screenLists.orderDesc
+        );
+        self.screenLists.sorted = data;
+
+        // avoid pagination bug...
+        if (self.screenLists.sorted.length === 0) {
+            self.screenLists.paginated = [];
+        }
+    };
+
+    self.orderScreenListsBy = function (by) {
+        if (self.screenLists.orderBy === by) {
+            self.screenLists.orderDesc = !self.screenLists.orderDesc;
+        } else {
+            self.screenLists.orderBy = by;
+        }
+        self.sortScreenLists();
+    };
+
+    self.refresh = function () {
+        self.screenLists.isLoading = true;
+        return $q.all({
+            enums: fetchEnums(),
+            screenLists: fetchScreenLists()
+        }).then(function (result) {
+            self.enums = result.enums;
+            self.screenLists.raw = result.screenLists;
+            self.sortScreenLists();
+        }).catch(function (err) {
+            return new ToastError(err);
+        }).finally(function () {
+            self.screenLists.isLoading = false;
+        });
+    };
+
     /* -----  End of ACTIONS  ------ */
 
     /* ======================================
@@ -143,11 +179,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxFilteringCtrl
             init: false
         };
         self.fax = null;
-        self.options = {
-            raw: null,
-            modified: null,
-            isUpdating: null
-        };
+        self.enums = {};
         self.screenLists = {
             raw: [],
             paginated: null,
@@ -161,7 +193,16 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxFilteringCtrl
             isLoading: false,
             isDeleting: false
         };
-
+        self.screenListsForm = {
+            filteringList: null,
+            isAdding: false,
+            isUpdating: false
+        };
+        self.screenListToAdd = {
+            nature: "whitelisted",
+            type: "Numbers",
+            number: null
+        };
         self.loading.init = true;
         return TelephonyMediator.getGroup($stateParams.billingAccount).then(function (group) {
             self.fax = group.getFax($stateParams.serviceName);
