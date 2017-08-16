@@ -18,7 +18,7 @@
 
         <!-- NAME -->
         <div class="form-group bottom-space-m16">
-            <div flat-input-container>
+            <div data-flat-input-container>
                 <label for="name"
                        class="control-label"
                        data-translate="sms_sms_templates_add_name_label">
@@ -30,7 +30,7 @@
                     class="form-control"
                     required
                     readonly
-                    data-ng-model="TemplateEditCtrl.template.name"
+                    data-ng-model="TemplateEditCtrl.model.template.name"
                     data-ng-maxlength="249"
                     data-translate-attr="{ placeholder: 'sms_sms_templates_add_name_placeholder' }" />
                 <div role="alert"
@@ -50,19 +50,19 @@
                    data-translate="sms_sms_templates_add_activity_placeholder">
             </label>
             <select
-                flat-select
                 name="activity"
                 id="activity"
                 class="form-control"
                 required
-                data-ng-model="TemplateEditCtrl.template.activity"
+                data-flat-select
+                data-ng-model="TemplateEditCtrl.model.template.activity"
                 data-ng-options="activity as ('sms_sms_templates_add_activity_type_' + activity | translate) for activity in TemplateEditCtrl.availableActivities">
             </select>
         </div>
 
         <!-- DESCRIPTION -->
         <div class="form-group bottom-space-m16">
-            <div flat-input-container>
+            <div data-flat-input-container>
                 <label for="description"
                        class="control-label"
                        data-translate="sms_sms_templates_add_description_label">
@@ -75,7 +75,7 @@
                     required
                     data-ng-maxlength="249"
                     data-ng-minlength="31"
-                    data-ng-model="TemplateEditCtrl.template.description"
+                    data-ng-model="TemplateEditCtrl.model.template.description"
                     data-translate-attr="{ placeholder: 'sms_sms_templates_add_description_placeholder' }" />
                 <div role="alert"
                      data-ng-messages="editSmsTemplateForm.description.$error">
@@ -93,7 +93,7 @@
 
         <!-- MESSAGE -->
         <div class="form-group">
-            <div flat-input-container>
+            <div data-flat-input-container>
                 <label for="message"
                        class="control-label"
                        data-translate="sms_sms_templates_add_message_label">
@@ -104,7 +104,7 @@
                     class="form-control resizable-vertical"
                     rows="10"
                     required
-                    data-ng-model="TemplateEditCtrl.template.message"
+                    data-ng-model="TemplateEditCtrl.model.template.message"
                     data-ng-maxlength="249"
                     data-ng-minlength="31"
                     data-translate-attr="{ placeholder: 'sms_sms_templates_add_message_placeholder' }">
@@ -132,8 +132,8 @@
                         name="status"
                         id="status"
                         class="form-control"
-                        data-ng-model="TemplateEditCtrl.template.status"
-                        data-ng-checked="TemplateEditCtrl.template.status"
+                        data-ng-model="TemplateEditCtrl.model.template.status"
+                        data-ng-checked="TemplateEditCtrl.model.template.status"
                         data-ng-true-value="'enable'"
                         data-ng-false-value="'disable'" />
                 </flat-checkbox>

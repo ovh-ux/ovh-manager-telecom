@@ -1,60 +1,63 @@
-angular.module("managerApp").controller("TelecomSmsReceiversCleanCtrl", function ($q, $stateParams, $timeout, $uibModalInstance, Sms, SmsMediator, receiver) {
-    "use strict";
+angular.module("managerApp").controller("TelecomSmsReceiversCleanCtrl", class TelecomSmsReceiversCleanCtrl {
+    constructor ($q, $stateParams, $timeout, $uibModalInstance, Sms, SmsMediator, receiver) {
+        this.$q = $q;
+        this.$stateParams = $stateParams;
+        this.$timeout = $timeout;
+        this.$uibModalInstance = $uibModalInstance;
+        this.api = {
+            sms: {
+                receivers: Sms.Receivers().Lexi()
+            }
+        };
+        this.SmsMediator = SmsMediator;
+        this.receiver = receiver;
+    }
 
-    var self = this;
+    $onInit () {
+        this.loading = {
+            init: false,
+            clean: false
+        };
+        this.cleaned = false;
+        this.receiver = angular.copy(this.receiver);
+        this.clean = {
+            choice: "freemium",
+            price: this.receiver.records * 0.1 //  0.1 credit per receiver
+        };
+    }
 
-    self.loading = {
-        init: false,
-        clean: false
-    };
-
-    self.cleaned = false;
-
-    self.receiver = angular.copy(receiver);
-
-    self.clean = {
-        choice: "freemium",
-        price: self.receiver.records * 0.1 //  0.1 credit per receiver
-    };
-
-    /*= ==============================
-    =            ACTIONS            =
-    ===============================*/
-
-    self.cleanReceivers = function () {
-        self.loading.clean = true;
-
-        return $q.all([
-            Sms.Receivers().Lexi().clean({
-                serviceName: $stateParams.serviceName,
-                slotId: self.receiver.slotId
+    /**
+     * Clean receivers' list.
+     * @return {Promise}
+     */
+    cleanReceivers () {
+        this.loading.clean = true;
+        return this.$q.all([
+            this.api.sms.receivers.clean({
+                serviceName: this.$stateParams.serviceName,
+                slotId: this.receiver.slotId
             }, {
-                freemium: self.clean.choice === "freemium",
+                freemium: this.clean.choice === "freemium",
                 priceOnly: false
             }).$promise,
-            $timeout(angular.noop, 1000)
-        ]).then(function (results) {
-            self.loading.clean = false;
-            self.cleaned = true;
-
-            return $timeout(self.close({
+            this.$timeout(angular.noop, 1000)
+        ]).then((results) => {
+            this.loading.clean = false;
+            this.cleaned = true;
+            this.$timeout(() => this.close({
                 taskId: results[0].taskId
             }), 1000);
-        }, function (error) {
-            return self.cancel({
-                type: "API",
-                msg: error
-            });
-        });
-    };
+        }).catch((error) => this.cancel({
+            type: "API",
+            msg: error
+        }));
+    }
 
-    self.cancel = function (message) {
-        return $uibModalInstance.dismiss(message);
-    };
+    cancel (message) {
+        return this.$uibModalInstance.dismiss(message);
+    }
 
-    self.close = function (task) {
-        return $uibModalInstance.close(task || true);
-    };
-
-    /* -----  End of ACTIONS  ------*/
+    close (task) {
+        return this.$uibModalInstance.close(task || true);
+    }
 });

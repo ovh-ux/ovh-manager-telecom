@@ -33,7 +33,7 @@
                     id="description"
                     class="form-control"
                     autofocus
-                    data-ng-model="SendersEditCtrl.sender.description"
+                    data-ng-model="SendersEditCtrl.model.sender.description"
                     data-ng-maxlength="40"
                     data-translate-attr="{ placeholder: 'sms_senders_edit_sender_description_placeholder' }" />
                 <div role="alert"
@@ -55,8 +55,8 @@
                         name="status"
                         id="status"
                         class="form-control"
-                        data-ng-model="SendersEditCtrl.sender.status"
-                        data-ng-checked="SendersEditCtrl.sender.status === 'enable'"
+                        data-ng-model="SendersEditCtrl.model.sender.status"
+                        data-ng-checked="SendersEditCtrl.model.sender.status === 'enable'"
                         data-ng-true-value="'enable'"
                         data-ng-false-value="'disable'" />
                 </flat-checkbox>
@@ -83,7 +83,7 @@
             type="button"
             class="btn btn-default"
             data-ng-click="SendersEditCtrl.cancel()"
-            data-ng-disabled="editSenderForm.$invalid || SendersEditCtrl.loading.editSender || SendersEditCtrl.edited"
+            data-ng-disabled="SendersEditCtrl.loading.editSender || SendersEditCtrl.edited"
             data-translate="cancel">
         </button>
         <button

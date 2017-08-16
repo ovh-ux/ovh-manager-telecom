@@ -1,49 +1,51 @@
-angular.module("managerApp").controller("TelecomSmsReceiversRemoveCtrl", function ($q, $stateParams, $timeout, $uibModalInstance, Sms, receiver) {
-    "use strict";
+angular.module("managerApp").controller("TelecomSmsReceiversRemoveCtrl", class TelecomSmsReceiversRemoveCtrl {
+    constructor ($q, $stateParams, $timeout, $uibModalInstance, Sms, receiver) {
+        this.$q = $q;
+        this.$stateParams = $stateParams;
+        this.$timeout = $timeout;
+        this.$uibModalInstance = $uibModalInstance;
+        this.api = {
+            sms: {
+                receivers: Sms.Receivers().Lexi()
+            }
+        };
+        this.receiver = receiver;
+    }
 
-    var self = this;
+    $onInit () {
+        this.loading = {
+            removeReceiver: false
+        };
+        this.removed = false;
+    }
 
-    self.loading = {
-        removeReceiver: false
-    };
-
-    self.removed = false;
-
-    self.receiver = angular.copy(receiver);
-
-    /*= ==============================
-    =            ACTIONS            =
-    ===============================*/
-
-    self.remove = function () {
-        self.loading.removeReceiver = true;
-
-        return $q.all([
-            Sms.Receivers().Lexi().delete({
-                serviceName: $stateParams.serviceName,
-                slotId: self.receiver.slotId
+    /**
+     * Remove receiver's list.
+     * @return {Promise}
+     */
+    remove () {
+        this.loading.removeReceiver = true;
+        return this.$q.all([
+            this.api.sms.receivers.delete({
+                serviceName: this.$stateParams.serviceName,
+                slotId: this.receiver.slotId
             }).$promise,
-            $timeout(angular.noop, 1000)
-        ]).then(function () {
-            self.loading.removeReceiver = false;
-            self.removed = true;
+            this.$timeout(angular.noop, 1000)
+        ]).then(() => {
+            this.loading.removeReceiver = false;
+            this.removed = true;
+            return this.$timeout(() => this.close(), 1500);
+        }).catch((error) => this.cancel({
+            type: "API",
+            msg: error
+        }));
+    }
 
-            return $timeout(self.close, 1500);
-        }, function (error) {
-            return self.cancel({
-                type: "API",
-                msg: error
-            });
-        });
-    };
+    cancel (message) {
+        return this.$uibModalInstance.dismiss(message);
+    }
 
-    self.cancel = function (message) {
-        return $uibModalInstance.dismiss(message);
-    };
-
-    self.close = function () {
-        return $uibModalInstance.close(true);
-    };
-
-    /* -----  End of ACTIONS  ------*/
+    close () {
+        return this.$uibModalInstance.close(true);
+    }
 });

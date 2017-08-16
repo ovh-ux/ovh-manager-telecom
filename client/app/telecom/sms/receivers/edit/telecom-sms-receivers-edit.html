@@ -18,7 +18,7 @@
 
         <!-- DESCRIPTION -->
         <div class="form-group bottom-space-m16">
-            <div flat-input-container>
+            <div data-flat-input-container>
                 <label for="description"
                        class="control-label"
                        data-translate="sms_receivers_add_description_label">
@@ -29,7 +29,7 @@
                     id="description"
                     class="form-control"
                     required
-                    data-ng-model="ReceiversEditCtrl.receiver.description"
+                    data-ng-model="ReceiversEditCtrl.model.receiver.description"
                     data-ng-maxlength="40"
                     data-translate-attr="{ placeholder: 'sms_receivers_add_description_placeholder' }" />
                 <div data-ng-messages="editReceiverForm.description.$error && editReceiverForm.$dirty">
@@ -54,8 +54,8 @@
                         name="autoUpdate"
                         id="autoUpdate"
                         class="form-control"
-                        data-ng-model="ReceiversEditCtrl.receiver.autoUpdate"
-                        data-ng-checked="ReceiversEditCtrl.receiver.autoUpdate" />
+                        data-ng-model="ReceiversEditCtrl.model.receiver.autoUpdate"
+                        data-ng-checked="ReceiversEditCtrl.model.receiver.autoUpdate" />
                 </flat-checkbox>
                 <span class="left-space-m8" data-translate="sms_receivers_add_auto_update_label"></span>
             </label>
