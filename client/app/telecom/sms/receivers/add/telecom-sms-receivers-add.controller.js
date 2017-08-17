@@ -1,124 +1,125 @@
-angular.module("managerApp").controller("TelecomSmsReceiversAddCtrl", function ($q, $stateParams, $timeout, $translate, $uibModalInstance, Sms, User, slot, ToastError) {
-    "use strict";
-
-    var self = this;
-
-    self.loading = {
-        addReceiver: false
-    };
-
-    self.added = false;
-
-    self.receiverForm = {
-        description: null,
-        url: null,
-        uploadedFile: null,
-        autoUpdate: false
-    };
-
-    self.urlMode = false;
-
-    self.requirement = false;
-    self.lineErrors = null;
-
-    self.slot = slot;
-
-    /*= ==============================
-    =            HELPERS            =
-    ===============================*/
-
-    self.checkValidTextExtention = function (file) {
-        var validExtensions = ["csv", "txt"];
-        var fileName = file ? file.name : "";
-        var found = _.some(validExtensions, function (ext) {
-            return _.endsWith(fileName.toLowerCase(), ext);
-        });
-        if (!found) {
-            return new ToastError($translate.instant("sms_receivers_add_file_invalid"));
-        }
-        return found;
-    };
-
-    function uploadFile (file) {
-        return User.Document().Lexi().upload(
-            file.name,
-            file
-        );
-    }
-
-    function createReceiversList () {
-        var promise = null;
-        self.lineErrors = null;
-        if (self.urlMode) {
-            promise = Sms.Receivers().Lexi().create({
-                serviceName: $stateParams.serviceName
-            }, {
-                autoUpdate: self.receiverForm.autoUpdate,
-                csvUrl: self.receiverForm.url,
-                description: self.receiverForm.description,
-                slotId: _.head(self.slot.available)
-            }).$promise;
-        } else {
-            promise = uploadFile(self.receiverForm.uploadedFile).then(function (doc) {
-                return Sms.Receivers().Lexi().create({
-                    serviceName: $stateParams.serviceName
-                }, {
-                    autoUpdate: self.receiverForm.autoUpdate,
-                    documentId: doc.id,
-                    description: self.receiverForm.description,
-                    slotId: _.head(self.slot.available)
-                }).$promise;
-            });
-        }
-        return promise.catch(function (err) {
-            var message = _.get(err, "data.message");
-            if (message) {
-                var lineErrors = message.match(/on line (\d+)$/);
-                if (_.isArray(lineErrors)) {
-                    self.lineErrors = _.last(lineErrors);
-                }
+angular.module("managerApp").controller("TelecomSmsReceiversAddCtrl", class TelecomSmsReceiversAddCtrl {
+    constructor ($q, $stateParams, $timeout, $translate, $uibModalInstance, Sms, User, slot, ToastError) {
+        this.$q = $q;
+        this.$stateParams = $stateParams;
+        this.$timeout = $timeout;
+        this.$translate = $translate;
+        this.$uibModalInstance = $uibModalInstance;
+        this.api = {
+            sms: {
+                receivers: Sms.Receivers().Lexi()
+            },
+            user: {
+                document: User.Document().Lexi()
             }
-            self.loading.addReceiver = false;
-            self.requirement = true;
-        });
+        };
+        this.slot = slot;
+        this.ToastError = ToastError;
     }
 
-    /* -----  End of HELPERS  ------*/
+    $onInit () {
+        this.loading = {
+            addReceiver: false
+        };
+        this.added = false;
+        this.receiverForm = {
+            description: null,
+            url: null,
+            uploadedFile: null,
+            autoUpdate: false
+        };
+        this.urlMode = false;
+        this.requirement = false;
+        this.lineErrors = null;
+    }
 
-    /*= ==============================
-    =            ACTIONS            =
-    ===============================*/
-
-    self.add = function () {
-        self.loading.addReceiver = true;
-        self.requirement = false;
-
-        return $q.all([
-            createReceiversList(),
-            $timeout(angular.noop, 1000)
-        ]).then(function () {
-            self.loading.addReceiver = false;
-
-            if (!self.requirement && !self.lineErrors) {
-                self.added = true;
-                return $timeout(self.close, 1000);
+    /**
+     * Add receiver list.
+     * @return {Promise}
+     */
+    add () {
+        this.loading.addReceiver = true;
+        this.requirement = false;
+        return this.$q.all([
+            this.createReceiversList(),
+            this.$timeout(angular.noop, 1000)
+        ]).then(() => {
+            this.loading.addReceiver = false;
+            if (!this.requirement && !this.lineErrors) {
+                this.added = true;
+                return this.$timeout(() => this.close(), 1000);
             }
             return null;
-        }, function (error) {
-            return self.cancel({
-                type: "API",
-                msg: error
-            });
+        }).catch((error) => this.cancel({
+            type: "API",
+            msg: error
+        }));
+    }
+
+    /**
+     * Create receivers' list.
+     * @return {Promise}
+     */
+    createReceiversList () {
+        let promise = null;
+        this.lineErrors = null;
+        if (this.urlMode) {
+            promise = this.api.sms.receivers.create({
+                serviceName: this.$stateParams.serviceName
+            }, {
+                autoUpdate: this.receiverForm.autoUpdate,
+                csvUrl: this.receiverForm.url,
+                description: this.receiverForm.description,
+                slotId: _.head(this.slot.available)
+            }).$promise;
+        } else {
+            promise = this.api.user.document.upload(
+                this.receiverForm.uploadedFile.name,
+                this.receiverForm.uploadedFile
+            ).then((doc) =>
+                this.api.sms.receivers.create({
+                    serviceName: this.$stateParams.serviceName
+                }, {
+                    autoUpdate: this.receiverForm.autoUpdate,
+                    documentId: doc.id,
+                    description: this.receiverForm.description,
+                    slotId: _.head(this.slot.available)
+                }).$promise
+            );
+        }
+        return promise.catch((err) => {
+            const message = _.get(err, "data.message");
+            if (message) {
+                const lineErrors = message.match(/on line (\d+)$/);
+                if (_.isArray(lineErrors)) {
+                    this.lineErrors = _.last(lineErrors);
+                }
+            }
+            this.loading.addReceiver = false;
+            this.requirement = true;
         });
-    };
+    }
 
-    self.cancel = function (message) {
-        return $uibModalInstance.dismiss(message);
-    };
+    /**
+     * Check valid text extention.
+     * @param  {Object} file
+     * @return {Boolean}
+     */
+    checkValidTextExtention (file) {
+        const validExtensions = ["csv", "txt"];
+        const fileName = file ? file.name : "";
+        const found = _.some(validExtensions, (ext) => _.endsWith(fileName.toLowerCase(), ext));
+        if (!found) {
+            this.ToastError(this.$translate.instant("sms_receivers_add_file_invalid"));
+        }
+        return found;
+    }
 
-    self.close = function () {
-        return $uibModalInstance.close(true);
-    };
+    cancel (message) {
+        return this.$uibModalInstance.dismiss(message);
+    }
 
-    /* -----  End of ACTIONS  ------*/
+    close () {
+        return this.$uibModalInstance.close(true);
+    }
 });

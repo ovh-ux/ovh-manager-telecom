@@ -1,83 +1,74 @@
-angular.module("managerApp").controller("TelecomSmsOptionsRecreditCtrl", function ($q, $stateParams, $uibModal, $translate, Sms, SmsMediator, OrderSms, Toast, ToastError) {
-    "use strict";
-
-    var self = this;
-
-    self.loading = {
-        init: false,
-        price: false
-    };
-
-    self.service = null;
-
-    function fetchOfferPrice (service) {
-        if (service.automaticRecreditAmount !== null) {
-            return OrderSms.Lexi().getCredits({
-                serviceName: $stateParams.serviceName,
-                quantity: service.automaticRecreditAmount
-            }).$promise.then(function (credits) {
-                return _.result(credits, "prices.withoutTax");
-            }).then(function (price) {
-                return _.assign(service, { price: price });
-            });
-        }
-        service.price = null;
-        return $q.when(service);
-
+angular.module("managerApp").controller("TelecomSmsOptionsRecreditCtrl", class TelecomSmsOptionsRecreditCtrl {
+    constructor ($q, $stateParams, $translate, $uibModal, OrderSms, SmsMediator, Toast, ToastError) {
+        this.$q = $q;
+        this.$stateParams = $stateParams;
+        this.$translate = $translate;
+        this.$uibModal = $uibModal;
+        this.api = {
+            orderSms: OrderSms.Lexi()
+        };
+        this.SmsMediator = SmsMediator;
+        this.Toast = Toast;
+        this.ToastError = ToastError;
     }
 
-    /*= ==============================
-    =            ACTIONS            =
-    ===============================*/
+    $onInit () {
+        this.loading = {
+            init: false,
+            price: false
+        };
+        this.service = null;
 
-    self.update = function (service) {
-        var modal = $uibModal.open({
+        this.loading.init = true;
+        return this.SmsMediator.initDeferred.promise.then(() => {
+            this.service = this.SmsMediator.getCurrentSmsService();
+            return this.service;
+        }).then((service) => this.fetchOfferPrice(service)).catch((err) => {
+            this.ToastError(err);
+        }).finally(() => {
+            this.loading.init = false;
+        });
+    }
+
+    /**
+     * Fetch offer price.
+     * @param  {Ojbect} service SmsService
+     * @return {Promise}
+     */
+    fetchOfferPrice (service) {
+        if (service.automaticRecreditAmount !== null) {
+            return this.api.orderSms.getCredits({
+                serviceName: this.$stateParams.serviceName,
+                quantity: service.automaticRecreditAmount
+            }).$promise.then((credits) =>
+                _.result(credits, "prices.withoutTax")
+            ).then((price) => _.assign(service, { price }));
+        }
+        service.price = null;
+        return this.$q.when(service);
+    }
+
+    /**
+     * Opens a modal to manage sms recredit options.
+     * @param  {Object} service SmsService
+     */
+    update (service) {
+        const modal = this.$uibModal.open({
             animation: true,
             templateUrl: "app/telecom/sms/options/recredit/update/telecom-sms-options-recredit-update.html",
             controller: "TelecomSmsOptionsRecreditUpdateCtrl",
             controllerAs: "OptionsRecreditUpdateCtrl",
-            resolve: {
-                service: function () { return service; }
-            }
+            resolve: { service: () => service }
         });
-
-        modal.result.then(function () {
-            self.loading.price = true;
-
-            return fetchOfferPrice(self.service).finally(function () {
-                self.loading.price = false;
+        modal.result.then(() => {
+            this.loading.price = true;
+            return this.fetchOfferPrice(this.service).finally(() => {
+                this.loading.price = false;
             });
-        }, function (error) {
+        }).catch((error) => {
             if (error && error.type === "API") {
-                Toast.error($translate.instant("sms_options_recredit_update_ko", { error: error.message }));
+                this.Toast.error(this.$translate.instant("sms_options_recredit_update_ko", { error: error.message }));
             }
-        });
-
-        return modal;
-    };
-
-    /* -----  End of ACTIONS  ------*/
-
-    /*= =====================================
-    =            INITIALIZATION            =
-    ======================================*/
-
-    function init () {
-        self.loading.init = true;
-
-        return SmsMediator.initDeferred.promise.then(function () {
-            self.service = SmsMediator.getCurrentSmsService();
-            return self.service;
-        }).then(function (service) {
-            return fetchOfferPrice(service);
-        }).catch(function (err) {
-            return new ToastError(err);
-        }).finally(function () {
-            self.loading.init = false;
         });
     }
-
-    /* -----  End of INITIALIZATION  ------*/
-
-    init();
 });

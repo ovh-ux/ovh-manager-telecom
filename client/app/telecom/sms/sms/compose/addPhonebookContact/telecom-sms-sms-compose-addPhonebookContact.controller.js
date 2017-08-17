@@ -1,110 +1,29 @@
-angular.module("managerApp").controller("TelecomSmsSmsComposeAddPhonebookContactCtrl", function ($filter, $q, $scope, $stateParams, $timeout, $translate, $uibModalInstance,
-                                                                                                 phonebooks, Sms, Toast, SMS_PHONEBOOKS) {
-    "use strict";
-
-    var self = this;
-
-    /*= ==============================
-    =            HELPERS            =
-    ===============================*/
-
-    function fetchPhonebookContact (phonebook) {
-        return Sms.Phonebooks().PhonebookContact().Lexi().query({
-            serviceName: $stateParams.serviceName,
-            bookKey: _.get(phonebook, "bookKey")
-        }).$promise.then(function (phonebookContactIds) {
-            return $q.all(_.map(_.chunk(phonebookContactIds, 50), function (chunkIds) {
-                return Sms.Phonebooks().PhonebookContact().Lexi().getBatch({
-                    serviceName: $stateParams.serviceName,
-                    bookKey: _.get(phonebook, "bookKey"),
-                    id: chunkIds
-                }).$promise;
-            })).then(function (chunkResult) {
-                var result = _.pluck(_.flatten(chunkResult), "value");
-                var emptyPhoneNumber = _.get(SMS_PHONEBOOKS, "emptyFields.numbers");
-                return _.each(result, function (contact) {
-                    contact.homeMobile = contact.homeMobile === emptyPhoneNumber ? "" : contact.homeMobile;
-                    contact.homePhone = contact.homePhone === emptyPhoneNumber ? "" : contact.homePhone;
-                    contact.workMobile = contact.workMobile === emptyPhoneNumber ? "" : contact.workMobile;
-                    contact.workPhone = contact.workPhone === emptyPhoneNumber ? "" : contact.workPhone;
-                });
-            }).then(function (contacts) {
-                var clonedContacts = [];
-                _.each(self.availableTypes, function (field) {
-                    _.each(_.cloneDeep(contacts), function (contact) {
-                        contact.type = field;
-                        contact.id = [contact.id, contact.type].join("_");
-                        if (_.isEmpty(_.get(contact, field))) {
-                            return;
-                        }
-                        clonedContacts.push(_.omit(contact, _.difference(self.availableTypes, [field])));
-                    });
-                });
-                return _.flatten(clonedContacts);
-            });
-        });
+angular.module("managerApp").controller("TelecomSmsSmsComposeAddPhonebookContactCtrl", class TelecomSmsSmsComposeAddPhonebookContactCtrl {
+    constructor ($filter, $q, $scope, $stateParams, $timeout, $translate, $uibModalInstance, phonebooks, Sms, Toast, SMS_PHONEBOOKS) {
+        this.$filter = $filter;
+        this.$q = $q;
+        this.$scope = $scope;
+        this.$stateParams = $stateParams;
+        this.$timeout = $timeout;
+        this.$translate = $translate;
+        this.$uibModalInstance = $uibModalInstance;
+        this.phonebooks = phonebooks;
+        this.api = {
+            sms: {
+                phonebooks: {
+                    phonebookcontact: Sms.Phonebooks().PhonebookContact().Lexi()
+                }
+            }
+        };
+        this.Toast = Toast;
+        this.constant = { SMS_PHONEBOOKS };
     }
 
-    /* -----  End of HELPERS  ------*/
-
-    /*= ==============================
-    =            ACTIONS            =
-    ===============================*/
-
-    self.add = function () {
-        self.phonebookContact.isAdding = true;
-        return $timeout(angular.noop, 500).then(function () {
-            self.phonebookContact.isAdding = false;
-            self.phonebookContact.hasBeenAdded = true;
-            return $timeout(angular.noop, 1500).then(function () {
-                return self.close(self.selectedContacts);
-            });
-        });
-    };
-
-    self.sortPhonebookContact = function () {
-        var data = angular.copy(self.phonebookContact.raw);
-        data = $filter("orderBy")(
-            data,
-            self.phonebookContact.orderBy,
-            self.phonebookContact.orderDesc
-        );
-        self.phonebookContact.sorted = _.each(data, function (contact) {
-            contact.isSelected = _.some(self.selectedContacts, { id: contact.id });
-        });
-    };
-
-    self.refresh = function () {
-        self.phonebookContact.isLoading = true;
-        Sms.Phonebooks().PhonebookContact().Lexi().resetAllCache();
-        return fetchPhonebookContact(self.phonebooks.current).then(function (phonebookContact) {
-            self.phonebookContact.raw = phonebookContact;
-            self.sortPhonebookContact();
-        }).catch(function (err) {
-            Toast.error([$translate.instant("sms_sms_compose_add_phonebook_contact_ko"), (err.data && err.data.message) || ""].join(" "));
-            return $q.reject(err);
-        }).finally(function () {
-            self.phonebookContact.isLoading = false;
-        });
-    };
-
-    self.cancel = function (message) {
-        return $uibModalInstance.dismiss(message);
-    };
-
-    self.close = function () {
-        return $uibModalInstance.close(self.selectedContacts);
-    };
-
-    /* -----  End of ACTIONS  ------*/
-
-    /*= =====================================
-    =            INITIALIZATION            =
-    ======================================*/
-
-    function init () {
-        self.phonebooks = phonebooks;
-        self.phonebookContact = {
+    $onInit () {
+        this.model = {
+            phonebooks: this.phonebooks
+        };
+        this.phonebookContact = {
             raw: [],
             sorted: null,
             selected: {},
@@ -114,24 +33,115 @@ angular.module("managerApp").controller("TelecomSmsSmsComposeAddPhonebookContact
             isAdding: false,
             hasBeenAdded: false
         };
-        self.selectedContacts = angular.copy(self.phonebooks.lists);
-        self.availableTypes = _.get(SMS_PHONEBOOKS, "numberFields");
-        $scope.$watch("AddPhonebookContactCtrl.phonebookContact.sorted", function (contacts) {
-            _.each(contacts, function (contact) {
-                var alreadyAdded = _.find(self.selectedContacts, { id: contact.id });
+        this.selectedContacts = angular.copy(this.phonebooks.lists);
+        this.availableTypes = _.get(this.constant.SMS_PHONEBOOKS, "numberFields");
+        this.$scope.$watch("AddPhonebookContactCtrl.phonebookContact.sorted", (contacts) => {
+            _.each(contacts, (contact) => {
+                const alreadyAdded = _.find(this.selectedContacts, { id: contact.id });
                 if (contact.isSelected) {
                     if (!alreadyAdded) {
-                        self.selectedContacts.push(contact);
+                        this.selectedContacts.push(contact);
                     }
                 } else {
-                    _.pull(self.selectedContacts, alreadyAdded);
+                    _.pull(this.selectedContacts, alreadyAdded);
                 }
             });
         }, true);
-        return self.refresh();
+        this.refresh();
     }
 
-    /* -----  End of INITIALIZATION  ------*/
+    /**
+     * Fetch all phonebook contact.
+     * @param  {Object} phonebook
+     * @return {Promise}
+     */
+    fetchPhonebookContact (phonebook) {
+        return this.api.sms.phonebooks.phonebookcontact.query({
+            serviceName: this.$stateParams.serviceName,
+            bookKey: _.get(phonebook, "bookKey")
+        }).$promise.then((phonebookContactIds) =>
+            this.$q.all(_.map(_.chunk(phonebookContactIds, 50), (id) =>
+                this.api.sms.phonebooks.phonebookcontact.getBatch({
+                    serviceName: this.$stateParams.serviceName,
+                    bookKey: _.get(phonebook, "bookKey"),
+                    id: id
+                }).$promise
+            )).then((chunkResult) => {
+                const result = _.pluck(_.flatten(chunkResult), "value");
+                const emptyPhoneNumber = _.get(this.constant.SMS_PHONEBOOKS, "emptyFields.numbers");
+                return _.each(result, (contact) => {
+                    contact.homeMobile = contact.homeMobile === emptyPhoneNumber ? "" : contact.homeMobile;
+                    contact.homePhone = contact.homePhone === emptyPhoneNumber ? "" : contact.homePhone;
+                    contact.workMobile = contact.workMobile === emptyPhoneNumber ? "" : contact.workMobile;
+                    contact.workPhone = contact.workPhone === emptyPhoneNumber ? "" : contact.workPhone;
+                });
+            }).then((contacts) => {
+                const clonedContacts = [];
+                _.each(this.availableTypes, (field) => {
+                    _.each(_.cloneDeep(contacts), (contact) => {
+                        contact.type = field;
+                        contact.id = [contact.id, contact.type].join("_");
+                        if (_.isEmpty(_.get(contact, field))) {
+                            return;
+                        }
+                        clonedContacts.push(_.omit(contact, _.difference(this.availableTypes, [field])));
+                    });
+                });
+                return _.flatten(clonedContacts);
+            })
+        );
+    }
 
-    init();
+    /**
+     * Refresh all phonebook contact list.
+     * @return {Promise}
+     */
+    refresh () {
+        this.phonebookContact.isLoading = true;
+        this.api.sms.phonebooks.phonebookcontact.resetAllCache();
+        return this.fetchPhonebookContact(this.phonebooks.current).then((phonebookContact) => {
+            this.phonebookContact.raw = phonebookContact;
+            this.sortPhonebookContact();
+        }).catch((err) => {
+            this.Toast.error(`${this.$translate.instant("sms_sms_compose_add_phonebook_contact_ko")} ${_.get(err, "data.message")}`);
+            return this.$q.reject(err);
+        }).finally(() => {
+            this.phonebookContact.isLoading = false;
+        });
+    }
+
+    /**
+     * Sort phonebook contact.
+     */
+    sortPhonebookContact () {
+        let data = angular.copy(this.phonebookContact.raw);
+        data = this.$filter("orderBy")(
+            data,
+            this.phonebookContact.orderBy,
+            this.phonebookContact.orderDesc
+        );
+        this.phonebookContact.sorted = _.each(data, (contact) => {
+            contact.isSelected = _.some(this.selectedContacts, { id: contact.id });
+        });
+    }
+
+    /**
+     * Add phonebook contact.
+     */
+    add () {
+        this.phonebookContact.isAdding = true;
+        return this.$timeout(angular.noop, 500).then(() => {
+            this.phonebookContact.isAdding = false;
+            this.phonebookContact.hasBeenAdded = true;
+            return this.$timeout(angular.noop, 1500).then(() => this.close(this.selectedContacts));
+        });
+    }
+
+    cancel (message) {
+        return this.$uibModalInstance.dismiss(message);
+    }
+
+    close () {
+        return this.$uibModalInstance.close(this.selectedContacts);
+    }
 });

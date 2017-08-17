@@ -18,11 +18,11 @@
 
         <p class="word-break"
            data-translate="sms_users_restrict_user_info"
-           data-translate-values="{ login: UsersRestrictByIpCtrl.user.login }">
+           data-translate-values="{ login: UsersRestrictByIpCtrl.model.user.login }">
         </p>
 
-        <div class="form-group bottom-space-m16" data-ng-repeat="ip in UsersRestrictByIpCtrl.user.ipRestrictions track by $index">
-            <div flat-input-container>
+        <div class="form-group bottom-space-m16" data-ng-repeat="ip in UsersRestrictByIpCtrl.model.user.ipRestrictions track by $index">
+            <div data-flat-input-container>
                 <label for="restriction{{ $index }}"
                        class="control-label"
                        data-translate="sms_users_restrict_user_restrict_label"
@@ -34,7 +34,7 @@
                     id="restriction{{ $index }}"
                     class="form-control"
                     autofocus
-                    data-ng-model="UsersRestrictByIpCtrl.user.ipRestrictions[$index]"
+                    data-ng-model="UsersRestrictByIpCtrl.model.user.ipRestrictions[$index]"
                     data-ng-pattern="UsersRestrictByIpCtrl.ipRestrictions.pattern"
                     data-translate-attr="{ placeholder: 'sms_users_restrict_user_restrict_placeholder' }"
                     data-translate-values="{ index: $index + 1 }" />

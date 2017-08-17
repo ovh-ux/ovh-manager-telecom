@@ -1,9 +1,9 @@
-angular.module("managerApp").controller("TelecomSmsSmsComposeTipsCtrl", function ($uibModalInstance) {
-    "use strict";
+angular.module("managerApp").controller("TelecomSmsSmsComposeTipsCtrl", class TelecomSmsSmsComposeTipsCtrl {
+    constructor ($uibModalInstance) {
+        this.$uibModalInstance = $uibModalInstance;
+    }
 
-    var self = this;
-
-    self.close = function () {
-        return $uibModalInstance.close(true);
-    };
+    close () {
+        return this.$uibModalInstance.close(true);
+    }
 });
