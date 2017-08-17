@@ -29,8 +29,10 @@
                             required
                             data-flat-select
                             data-ng-model="$ctrl.screenListsForm.filteringList"
-                            data-ng-change="$ctrl.updateFilteringList()"
-                            data-ng-options="type as ('telephony_service_fax_filtering_list_type_' + type | translate) for type in $ctrl.enums.screenListType">
+                            data-ng-change="$ctrl.updateFilteringList()">
+                            <option value="no" data-translate="telephony_service_fax_filtering_list_type_no"></option>
+                            <option value="whitelist" data-translate="telephony_service_fax_filtering_list_type_whitelist"></option>
+                            <option value="blacklist" data-translate="telephony_service_fax_filtering_list_type_blacklist"></option>
                         </select>
                     </div>
                 </div>

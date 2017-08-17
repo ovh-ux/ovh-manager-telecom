@@ -12,16 +12,6 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxFilteringCtrl
     =            HELPERS            =
     =============================== */
 
-    function fetchEnums () {
-        return Telephony.Lexi().schema({
-            billingAccount: $stateParams.billingAccount
-        }).$promise.then(function (schema) {
-            return {
-                screenListType: schema.models["telephony.FaxScreenListTypeEnum"].enum
-            };
-        });
-    }
-
     function fetchScreenLists () {
         return Telephony.Fax().Lexi().getScreenLists({
             billingAccount: $stateParams.billingAccount,
@@ -154,12 +144,8 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxFilteringCtrl
 
     self.refresh = function () {
         self.screenLists.isLoading = true;
-        return $q.all({
-            enums: fetchEnums(),
-            screenLists: fetchScreenLists()
-        }).then(function (result) {
-            self.enums = result.enums;
-            self.screenLists.raw = result.screenLists;
+        return fetchScreenLists().then(function (screenLists) {
+            self.screenLists.raw = screenLists;
             self.sortScreenLists();
         }).catch(function (err) {
             return new ToastError(err);
@@ -179,7 +165,6 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxFilteringCtrl
             init: false
         };
         self.fax = null;
-        self.enums = {};
         self.screenLists = {
             raw: [],
             paginated: null,
