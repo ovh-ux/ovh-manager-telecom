@@ -1,41 +1,38 @@
-angular.module("managerApp").controller("TelecomSmsPhonebooksCreateCtrl", function ($state, $stateParams, Sms, ToastError) {
-    "use strict";
+angular.module("managerApp").controller("TelecomSmsPhonebooksCreateCtrl", class TelecomSmsPhonebooksCreateCtrl {
+    constructor ($state, $stateParams, Sms, ToastError) {
+        this.$state = $state;
+        this.$stateParams = $stateParams;
+        this.api = {
+            sms: {
+                phonebooks: Sms.Phonebooks().Lexi()
+            }
+        };
+        this.ToastError = ToastError;
+    }
 
-    var self = this;
-
-    /*= ==============================
-    =            ACTIONS            =
-    ===============================*/
-
-    self.create = function () {
-        self.phonebookToAdd.isAdding = true;
-        return Sms.Phonebooks().Lexi().create({
-            serviceName: $stateParams.serviceName
-        }, _.pick(self.phonebookToAdd, "name")).$promise.then(function (phonebook) {
-            return $state.go("telecom.sms.phonebooks", {
-                bookKey: phonebook.bookKey
-            });
-        }).catch(function (err) {
-            return new ToastError(err);
-        }).finally(function () {
-            self.phonebookToAdd.isAdding = false;
-        });
-    };
-
-    /* -----  End of ACTIONS  ------*/
-
-    /*= =====================================
-    =            INITIALIZATION            =
-    ======================================*/
-
-    function init () {
-        self.phonebookToAdd = {
+    $onInit () {
+        this.phonebookToAdd = {
             name: null,
             isAdding: false
         };
     }
 
-    /* -----  End of INITIALIZATION  ------*/
-
-    init();
+    /**
+     * Create a phonebook.
+     * @return {Promise}
+     */
+    create () {
+        this.phonebookToAdd.isAdding = true;
+        return this.api.sms.phonebooks.create({
+            serviceName: this.$stateParams.serviceName
+        }, _.pick(this.phonebookToAdd, "name")).$promise.then((phonebook) =>
+            this.$state.go("telecom.sms.phonebooks", {
+                bookKey: phonebook.bookKey
+            })
+        ).catch((err) => {
+            this.ToastError(err);
+        }).finally(() => {
+            this.phonebookToAdd.isAdding = false;
+        });
+    }
 });

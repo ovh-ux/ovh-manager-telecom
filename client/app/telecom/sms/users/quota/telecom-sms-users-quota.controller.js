@@ -1,68 +1,72 @@
-angular.module("managerApp").controller("TelecomSmsUsersQuotaCtrl", function ($q, $stateParams, $timeout, $uibModalInstance, Sms, user, service) {
-    "use strict";
+angular.module("managerApp").controller("TelecomSmsUsersQuotaCtrl", class TelecomSmsUsersQuotaCtrl {
+    constructor ($q, $stateParams, $timeout, $uibModalInstance, Sms, params) {
+        this.$q = $q;
+        this.$stateParams = $stateParams;
+        this.$timeout = $timeout;
+        this.$uibModalInstance = $uibModalInstance;
+        this.api = {
+            sms: {
+                users: Sms.Users().Lexi()
+            }
+        };
+        this.user = params.user;
+        this.service = params.service;
+    }
 
-    var self = this;
+    $onInit () {
+        this.loading = {
+            quotaUser: false
+        };
+        this.quotaApplied = false;
+        this.model = {
+            user: angular.copy(this.user),
+            service: angular.copy(this.service)
+        };
+    }
 
-    self.loading = {
-        quotaUser: false
-    };
-
-    self.quotaApplied = false;
-
-    self.user = angular.copy(user);
-    self.service = angular.copy(service);
-
-    /*= ==============================
-    =            HELPERS            =
-    ===============================*/
-
-    self.hasChanged = function () {
-        return !(
-            self.user.quotaInformations.quotaLeft === user.quotaInformations.quotaLeft &&
-            self.user.quotaInformations.quotaStatus === user.quotaInformations.quotaStatus
-        );
-    };
-
-    /* -----  End of HELPERS  ------*/
-
-    /*= ==============================
-    =            ACTIONS            =
-    ===============================*/
-
-    self.quota = function () {
-        self.loading.quotaUser = true;
-
-        return $q.all([
-            Sms.Users().Lexi().edit({
-                serviceName: $stateParams.serviceName,
-                login: self.user.login
+    /**
+     * Set sms api user quota.
+     * @return {Promise}
+     */
+    quota () {
+        this.loading.quotaUser = true;
+        return this.$q.all([
+            this.api.sms.users.edit({
+                serviceName: this.$stateParams.serviceName,
+                login: this.model.user.login
             }, {
                 quotaInformations: {
-                    quotaLeft: self.user.quotaInformations.quotaLeft,
-                    quotaStatus: self.user.quotaInformations.quotaStatus
+                    quotaLeft: this.model.user.quotaInformations.quotaLeft,
+                    quotaStatus: this.model.user.quotaInformations.quotaStatus
                 }
             }).$promise,
-            $timeout(angular.noop, 1000)
-        ]).then(function () {
-            self.loading.quotaUser = false;
-            self.quotaApplied = true;
+            this.$timeout(angular.noop, 1000)
+        ]).then(() => {
+            this.loading.quotaUser = false;
+            this.quotaApplied = true;
+            return this.$timeout(() => this.close(), 1000);
+        }).catch((error) => this.cancel({
+            type: "API",
+            msg: error
+        }));
+    }
 
-            return $timeout(self.close, 1000);
-        }, function (error) {
-            return self.cancel({
-                type: "API",
-                msg: error
-            });
-        });
-    };
+    cancel (message) {
+        return this.$uibModalInstance.dismiss(message);
+    }
 
-    self.cancel = function (message) {
-        return $uibModalInstance.dismiss(message);
-    };
+    close () {
+        return this.$uibModalInstance.close(true);
+    }
 
-    self.close = function () {
-        return $uibModalInstance.close(true);
-    };
-
-    /* -----  End of ACTIONS  ------*/
+    /**
+     * Has changed helper.
+     * @return {Boolean}
+     */
+    hasChanged () {
+        return !(
+            this.model.user.quotaInformations.quotaLeft === this.user.quotaInformations.quotaLeft &&
+            this.model.user.quotaInformations.quotaStatus === this.user.quotaInformations.quotaStatus
+        );
+    }
 });

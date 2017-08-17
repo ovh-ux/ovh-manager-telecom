@@ -1,26 +1,32 @@
-angular.module("managerApp").controller("TelecomSmsReceiversReadCtrl", function ($stateParams, $translate, $uibModalInstance, receiver, csv) {
-    "use strict";
+angular.module("managerApp").controller("TelecomSmsReceiversReadCtrl", class TelecomSmsReceiversReadCtrl {
+    constructor ($stateParams, $translate, $uibModalInstance, receiver, csv) {
+        this.$stateParams = $stateParams;
+        this.$translate = $translate;
+        this.$uibModalInstance = $uibModalInstance;
+        this.receiver = receiver;
+        this.csv = csv;
+    }
 
-    var self = this;
+    $onInit () {
+        this.model = {
+            receiver: angular.copy(this.receiver),
+            csv: angular.copy(this.csv)
+        };
+    }
 
-    self.receiver = angular.copy(receiver);
-    self.csv = angular.copy(csv);
-
-    /*= ==============================
-    =            ACTIONS            =
-    ===============================*/
-
-    self.setFilename = function () {
+    /**
+     * Set filename base on service name and description.
+     * @return {String}
+     */
+    setFilename () {
         return _.kebabCase([
-            $stateParams.serviceName,
-            $translate.instant("sms_tabs_contacts"),
-            self.receiver.description
+            this.$stateParams.serviceName,
+            this.$translate.instant("sms_tabs_contacts"),
+            _.get(this.model.receiver, "description", "")
         ].join()) + ".csv";
-    };
+    }
 
-    self.close = function () {
-        return $uibModalInstance.close(true);
-    };
-
-    /* -----  End of INITIALIZATION  ------*/
+    close () {
+        return this.$uibModalInstance.close(true);
+    }
 });

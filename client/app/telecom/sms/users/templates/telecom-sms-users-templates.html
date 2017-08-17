@@ -35,7 +35,7 @@
                     name="customizedEmailMode"
                     class="form-control"
                     id="customizedEmailMode"
-                    data-ng-model="UsersTemplatesCtrl.service.templates.customizedEmailMode" />
+                    data-ng-model="UsersTemplatesCtrl.model.service.templates.customizedEmailMode" />
             </flat-checkbox>
             <span class="left-space-m8">
                 <span data-translate="sms_users_templates_customized_email_mode_label"></span>
@@ -49,7 +49,7 @@
 
         <!-- EMAIL FROM -->
         <div class="form-group bottom-space-m16">
-            <div flat-input-container>
+            <div data-flat-input-container>
                 <label for="emailFrom"
                        class="control-label"
                        data-translate="sms_users_templates_email_from_label">
@@ -60,9 +60,9 @@
                     id="emailFrom"
                     class="form-control"
                     autofocus
-                    data-ng-model="UsersTemplatesCtrl.service.templates.emailFrom"
-                    data-ng-required="UsersTemplatesCtrl.service.templates.customizedEmailMode"
-                    data-ng-disabled="!UsersTemplatesCtrl.service.templates.customizedEmailMode"
+                    data-ng-model="UsersTemplatesCtrl.model.service.templates.emailFrom"
+                    data-ng-required="UsersTemplatesCtrl.model.service.templates.customizedEmailMode"
+                    data-ng-disabled="!UsersTemplatesCtrl.model.service.templates.customizedEmailMode"
                     data-translate-attr="{ placeholder: 'sms_users_templates_email_from_placeholder' }" />
                 <div role="alert"
                      data-ng-messages="(templatesUserForm.$invalid && templatesUserForm.emailFrom.$dirty) && templatesUserForm.emailFrom.$error">
@@ -80,7 +80,7 @@
 
         <!-- EMAIL SUBJECT -->
         <div class="form-group bottom-space-m16">
-            <div flat-input-container>
+            <div data-flat-input-container>
                 <label for="emailSubject"
                        class="control-label"
                        data-translate="sms_users_templates_email_subject_label">
@@ -90,9 +90,9 @@
                     name="emailSubject"
                     id="emailSubject"
                     class="form-control"
-                    data-ng-model="UsersTemplatesCtrl.service.templates.emailSubject"
-                    data-ng-required="UsersTemplatesCtrl.service.templates.customizedEmailMode"
-                    data-ng-disabled="!UsersTemplatesCtrl.service.templates.customizedEmailMode"
+                    data-ng-model="UsersTemplatesCtrl.model.service.templates.emailSubject"
+                    data-ng-required="UsersTemplatesCtrl.model.service.templates.customizedEmailMode"
+                    data-ng-disabled="!UsersTemplatesCtrl.model.service.templates.customizedEmailMode"
                     data-translate-attr="{ placeholder: 'sms_users_templates_email_subject_placeholder' }" />
                 <div role="alert"
                      data-ng-messages="(templatesUserForm.$invalid && templatesUserForm.emailSubject.$dirty) && templatesUserForm.emailSubject.$error">
@@ -106,7 +106,7 @@
 
         <!-- EMAIL BODY -->
         <div class="form-group bottom-space-m16">
-            <div flat-input-container>
+            <div data-flat-input-container>
                 <label for="emailBody"
                        class="control-label"
                        data-translate="sms_users_templates_email_body_label">
@@ -115,8 +115,8 @@
                     name="emailBody"
                     id="emailBody"
                     class="form-control vertical-resize"data-ng-model="UsersTemplatesCtrl.service.templates.emailBody"
-                    data-ng-required="UsersTemplatesCtrl.service.templates.customizedEmailMode"
-                    data-ng-disabled="!UsersTemplatesCtrl.service.templates.customizedEmailMode"
+                    data-ng-required="UsersTemplatesCtrl.model.service.templates.customizedEmailMode"
+                    data-ng-disabled="!UsersTemplatesCtrl.model.service.templates.customizedEmailMode"
                     data-translate-attr="{ placeholder: 'sms_users_templates_email_body_placeholder' }"
                     data-ng-trim="false">
                 </textarea>
@@ -138,7 +138,7 @@
                     name="customizedSmsMode"
                     class="form-control"
                     id="customizedSmsMode"
-                    data-ng-model="UsersTemplatesCtrl.service.templates.customizedSmsMode" />
+                    data-ng-model="UsersTemplatesCtrl.model.service.templates.customizedSmsMode" />
             </flat-checkbox>
             <span class="left-space-m8">
                 <span data-translate="sms_users_templates_customized_sms_mode_label"></span>
@@ -152,7 +152,7 @@
 
         <!-- SMS BODY -->
         <div class="form-group bottom-space-m16">
-            <div flat-input-container>
+            <div data-flat-input-container>
                 <label for="smsBody"
                        class="control-label"
                        data-translate="sms_users_templates_sms_body_label">
@@ -161,16 +161,16 @@
                     name="smsBody"
                     id="smsBody"
                     class="form-control vertical-resize"
-                    data-ng-model="UsersTemplatesCtrl.service.templates.smsBody"
-                    data-ng-required="UsersTemplatesCtrl.service.templates.customizedSmsMode"
-                    data-ng-disabled="!UsersTemplatesCtrl.service.templates.customizedSmsMode"
+                    data-ng-model="UsersTemplatesCtrl.model.service.templates.smsBody"
+                    data-ng-required="UsersTemplatesCtrl.model.service.templates.customizedSmsMode"
+                    data-ng-disabled="!UsersTemplatesCtrl.model.service.templates.customizedSmsMode"
                     data-ng-maxlength="UsersTemplatesCtrl.smsBodyMaxLength"
                     data-translate-attr="{ placeholder: 'sms_users_templates_sms_body_placeholder' }">
                 </textarea>
                 <div class="text-right">
                     <small class="service-item">
                         <span data-translate="sms_users_templates_sms_body_characters_left"></span>
-                        <b data-ng-bind="UsersTemplatesCtrl.smsBodyMaxLength - UsersTemplatesCtrl.service.templates.smsBody.length"></b>&nbsp;/&nbsp;<span data-ng-bind="UsersTemplatesCtrl.smsBodyMaxLength"></span>
+                        <b data-ng-bind="UsersTemplatesCtrl.smsBodyMaxLength - UsersTemplatesCtrl.model.service.templates.smsBody.length"></b>&nbsp;/&nbsp;<span data-ng-bind="UsersTemplatesCtrl.smsBodyMaxLength"></span>
                     </small>
                 </div>
                 <div role="alert"

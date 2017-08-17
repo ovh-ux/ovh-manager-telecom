@@ -23,11 +23,11 @@
                    data-translate="sms_options_response_tracking_add_media_label">
             </label>
             <select
-                flat-select
                 name="media"
                 id="media"
                 class="form-control"
                 autofocus
+                data-flat-select
                 data-ng-model="OptionsResponseEditCtrl.trackingOptions.media"
                 data-ng-options="media as ('sms_options_response_tracking_add_media_' + media | translate) for media in OptionsResponseEditCtrl.availableTrackingMedia"
                 data-ng-change="OptionsResponseEditCtrl.resetTrackingOptions()">
@@ -36,7 +36,7 @@
 
         <!-- SENDER EMAIL -->
         <div class="form-group bottom-space-m16" data-ng-if="OptionsResponseEditCtrl.trackingOptions.media === 'email'">
-            <div flat-input-container>
+            <div data-flat-input-container>
                 <label for="sender"
                        class="control-label"
                        data-translate="sms_options_response_tracking_add_sender_email_label">
@@ -46,7 +46,7 @@
                     name="senderEmail"
                     id="senderEmail"
                     class="form-control"
-                    data-ng-model="OptionsResponseEditCtrl.option.sender"
+                    data-ng-model="OptionsResponseEditCtrl.model.option.sender"
                     data-ng-required="OptionsResponseEditCtrl.trackingOptions.media === 'email'"
                     data-translate-attr="{ placeholder: 'sms_options_response_tracking_add_sender_email_label' }" />
                 <div role="alert"
@@ -65,7 +65,7 @@
 
         <!-- TARGET EMAIL -->
         <div class="form-group bottom-space-m16" data-ng-if="OptionsResponseEditCtrl.trackingOptions.media === 'email'">
-            <div flat-input-container>
+            <div data-flat-input-container>
                 <label for="targetEmail"
                        class="control-label"
                        data-translate="sms_options_response_tracking_add_target_email_label">
@@ -75,7 +75,7 @@
                     name="targetEmail"
                     id="targetEmail"
                     class="form-control"
-                    data-ng-model="OptionsResponseEditCtrl.option.target"
+                    data-ng-model="OptionsResponseEditCtrl.model.option.target"
                     data-ng-required="OptionsResponseEditCtrl.trackingOptions.media === 'email'"
                     data-translate-attr="{ placeholder: 'sms_options_response_tracking_add_target_email_label' }" />
                 <div role="alert"
@@ -99,19 +99,19 @@
                    data-translate="sms_options_response_tracking_add_sender_number_label">
             </label>
             <select
-                flat-select
                 name="sender"
                 id="sender"
                 class="form-control"
                 required
-                data-ng-model="OptionsResponseEditCtrl.trackingSender"
+                data-flat-select
+                data-ng-model="OptionsResponseEditCtrl.trackingSender.sender"
                 data-ng-options="sender as sender.sender for sender in OptionsResponseEditCtrl.senders track by sender.sender">
             </select>
         </div>
 
         <!-- TARGET NUMBER -->
         <div class="form-group bottom-space-m16" data-ng-if="OptionsResponseEditCtrl.trackingOptions.media === 'sms'">
-            <div flat-input-container>
+            <div data-flat-input-container>
                 <label for="targetNumber"
                        class="control-label"
                        data-translate="sms_options_response_tracking_add_target_number_label">
@@ -121,7 +121,7 @@
                     name="targetNumber"
                     id="targetNumber"
                     class="form-control"
-                    data-ng-model="OptionsResponseEditCtrl.option.target"
+                    data-ng-model="OptionsResponseEditCtrl.model.option.target"
                     data-ng-required="OptionsResponseEditCtrl.trackingOptions.media === 'sms'"
                     data-ng-pattern="OptionsResponseEditCtrl.targetNumberPattern"
                     data-translate-attr="{ placeholder: 'sms_options_response_tracking_add_target_number_label' }" />

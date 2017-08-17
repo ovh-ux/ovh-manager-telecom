@@ -1,51 +1,58 @@
-angular.module("managerApp").controller("TelecomSmsSmsTemplateRelaunchCtrl", function ($q, $stateParams, $timeout, $uibModalInstance, Sms, template) {
-    "use strict";
-    var self = this;
+angular.module("managerApp").controller("TelecomSmsSmsTemplateRelaunchCtrl", class TelecomSmsSmsTemplateRelaunchCtrl {
+    constructor ($q, $stateParams, $timeout, $uibModalInstance, Sms, template) {
+        this.$q = $q;
+        this.$stateParams = $stateParams;
+        this.$timeout = $timeout;
+        this.$uibModalInstance = $uibModalInstance;
+        this.api = {
+            sms: {
+                templates: Sms.Templates().Lexi()
+            }
+        };
+        this.template = template;
+    }
 
-    self.loading = {
-        relaunchTemplate: false
-    };
+    $onInit () {
+        this.loading = {
+            relaunchTemplate: false
+        };
+        this.relaunched = false;
+        this.model = {
+            template: angular.copy(this.template)
+        };
+        this.availableActivities = [];
+    }
 
-    self.relaunched = false;
-    self.template = angular.copy(template);
-    self.availableActivities = [];
-
-    /*= ==============================
-    =            ACTIONS            =
-    ===============================*/
-
-    self.relaunch = function () {
-        self.loading.removeTemplate = true;
-
-        return $q.all([
-            Sms.Templates().Lexi().relaunchValidation({
-                serviceName: $stateParams.serviceName,
-                name: self.template.name
+    /**
+     * Relaunch templates.
+     * @return {Promise}
+     */
+    relaunch () {
+        this.loading.removeTemplate = true;
+        return this.$q.all([
+            this.api.sms.templates.relaunchValidation({
+                serviceName: this.$stateParams.serviceName,
+                name: this.model.template.name
             }, {
-                description: self.template.description,
-                message: self.template.message
+                description: this.model.template.description,
+                message: this.model.template.message
             }).$promise,
-            $timeout(angular.noop, 1000)
-        ]).then(function () {
-            self.loading.relaunchTemplate = false;
-            self.relaunched = true;
+            this.$timeout(angular.noop, 1000)
+        ]).then(() => {
+            this.loading.relaunchTemplate = false;
+            this.relaunched = true;
+            return this.$timeout(() => this.close(), 1500);
+        }).catch((error) => this.cancel({
+            type: "API",
+            msg: error
+        }));
+    }
 
-            return $timeout(self.close, 1500);
-        }, function (error) {
-            return self.cancel({
-                type: "API",
-                msg: error
-            });
-        });
-    };
+    cancel (message) {
+        return this.$uibModalInstance.dismiss(message);
+    }
 
-    self.cancel = function (message) {
-        return $uibModalInstance.dismiss(message);
-    };
-
-    self.close = function () {
-        return $uibModalInstance.close(true);
-    };
-
-    /* -----  End of ACTIONS  ------*/
+    close () {
+        return this.$uibModalInstance.close(true);
+    }
 });

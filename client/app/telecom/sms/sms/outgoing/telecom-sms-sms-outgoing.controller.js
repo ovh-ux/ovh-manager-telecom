@@ -1,225 +1,27 @@
-angular.module("managerApp").controller("TelecomSmsSmsOutgoingCtrl", function ($scope, $stateParams, $q, $filter, $timeout, $window, $uibModal, $translate, Sms, User, debounce, Toast, ToastError) {
-    "use strict";
-
-    var self = this;
-
-    /*= ==============================
-    =            HELPERS            =
-    ===============================*/
-
-    function fetchOutgoingSms () {
-        var sender = self.outgoing.filterBy.sender || null;
-        if (sender === $translate.instant("sms_sms_outgoing_number_allowed_response")) {
-            sender = "";
-        }
-        return Sms.Outgoing().Lexi().query({
-            serviceName: $stateParams.serviceName,
-            receiver: self.outgoing.filterBy.receiver || null,
-            sender: sender
-        }).$promise.then(function (outgoing) {
-            return _.sortBy(outgoing).reverse();
-        });
-    }
-
-    function fetchServiceInfos () {
-        return Sms.Lexi().getServiceInfos({
-            serviceName: $stateParams.serviceName
-        }).$promise;
-    }
-
-    function fetchOutgoingSmsHlr (sms) {
-        return Sms.Outgoing().Lexi().getHlr({
-            serviceName: $stateParams.serviceName,
-            id: sms.id
-        }).$promise.then(function (voidResponse) {
-            return voidResponse;
-        }, function () {
-            return false;
-        });
-    }
-
-    function resetAllCache () {
-        Sms.Outgoing().Lexi().resetAllCache();
-        Sms.Jobs().Lexi().resetAllCache();
-    }
-
-    self.getSelection = function () {
-        return _.filter(self.outgoing.paginated, function (outgoing) {
-            return outgoing && self.outgoing.selected && self.outgoing.selected[outgoing.id];
-        });
-    };
-
-    /* -----  End of HELPERS  ------*/
-
-    /*= ==============================
-    =            ACTIONS            =
-    ===============================*/
-
-    self.getDetails = function (item) {
-        self.outgoing.isLoading = true;
-        return Sms.Outgoing().Lexi().get({
-            serviceName: $stateParams.serviceName,
-            id: item
-        }).$promise.then(function (outgoing) {
-            if (_.isEmpty(outgoing.sender)) {
-                outgoing.isShortNumber = true;
-                outgoing.sender = $translate.instant("sms_sms_outgoing_number_allowed_response");
-            }
-            return Sms.Jobs().Lexi().getPtts({
-                ptt: outgoing.ptt
-            }).$promise.then(function (ptt) {
-                outgoing.status = ptt.comment;
-                return outgoing;
-            });
-        });
-    };
-
-    self.toggleShowFilter = function () {
-        self.outgoing.showFilter = !self.outgoing.showFilter;
-        self.outgoing.filterBy = {
-            receiver: undefined,
-            sender: undefined
+angular.module("managerApp").controller("TelecomSmsSmsOutgoingCtrl", class TelecomSmsSmsOutgoingCtrl {
+    constructor ($scope, $stateParams, $q, $filter, $timeout, $window, $uibModal, $translate, Sms, User, debounce, Toast, ToastError) {
+        this.$scope = $scope;
+        this.$stateParams = $stateParams;
+        this.$q = $q;
+        this.$filter = $filter;
+        this.$timeout = $timeout;
+        this.$window = $window;
+        this.$uibModal = $uibModal;
+        this.$translate = $translate;
+        this.User = User;
+        this.api = {
+            sms: Sms.Lexi(),
+            smsOutgoing: Sms.Outgoing().Lexi(),
+            smsJobs: Sms.Jobs().Lexi(),
+            userDocument: User.Document().Lexi()
         };
-        if (self.outgoing.showFilter === false) {
-            self.refresh();
-        }
-    };
+        this.debounce = debounce;
+        this.Toast = Toast;
+        this.ToastError = ToastError;
+    }
 
-    self.toggleOrder = function () {
-        self.outgoing.orderDesc = !self.outgoing.orderDesc;
-        self.outgoing.raw.reverse();
-    };
-
-    self.onTransformItemDone = function () {
-        self.outgoing.isLoading = false;
-    };
-
-    self.refresh = function () {
-        resetAllCache();
-        self.outgoing.isLoading = true;
-        return fetchOutgoingSms().then(function (outgoing) {
-            self.outgoing.raw = angular.copy(outgoing);
-        }).catch(function (err) {
-            return new ToastError(err);
-        }).finally(function () {
-            self.outgoing.isLoading = false;
-        });
-    };
-
-    self.read = function (outgoingSms) {
-        var modal = $uibModal.open({
-            animation: true,
-            templateUrl: "app/telecom/sms/sms/outgoing/read/telecom-sms-sms-outgoing-read.html",
-            controller: "TelecomSmsSmsOutgoingReadCtrl",
-            controllerAs: "OutgoingReadCtrl",
-            resolve: {
-                outgoingSms: function () { return outgoingSms; },
-                outgoingSmsHlr: function () { return fetchOutgoingSmsHlr(outgoingSms); }
-            }
-        });
-
-        self.outgoing.isReading = true;
-        modal.rendered.then(function () {
-            self.outgoing.isReading = false;
-        });
-
-        return modal;
-    };
-
-    self.remove = function (outgoingSms) {
-        var modal = $uibModal.open({
-            animation: true,
-            templateUrl: "app/telecom/sms/sms/outgoing/remove/telecom-sms-sms-outgoing-remove.html",
-            controller: "TelecomSmsSmsOutgoingRemoveCtrl",
-            controllerAs: "OutgoingRemoveCtrl",
-            resolve: {
-                outgoingSms: function () { return outgoingSms; }
-            }
-        });
-
-        modal.result.then(function () {
-            return self.refresh();
-        }, function (error) {
-            if (error && error.type === "API") {
-                Toast.error($translate.instant("sms_sms_outgoing_remove_ko", { error: error.message }));
-            }
-        });
-
-        return modal;
-    };
-
-    self.export = function () {
-        self.outgoing.isExporting = true;
-        return Sms.Lexi().getDocument({
-            serviceName: $stateParams.serviceName,
-            "creationDatetime.from": moment(self.serviceInfos.creation).format(),
-            "creationDatetime.to": moment().format(),
-            wayType: "outgoing"
-        }).$promise.then(function (smsDoc) {
-            // 1. We need to poll to know if the size of the document is not empty.
-            var tryGetDocument = function () {
-                User.Document().Lexi().resetCache();
-                return User.Document().Lexi().get({
-                    id: smsDoc.docId
-                }).$promise.then(function (doc) {
-                    if (doc.size > 0) {
-                        // 2. Then we set a timeout to be sure that we have data.
-                        return $timeout(function () {
-                            return doc;
-                        }, 5000);
-                    }
-                    self.outgoing.poller = $timeout(tryGetDocument, 1000);
-                    return self.outgoing.poller;
-                });
-            };
-            return tryGetDocument().then(function (doc) {
-                $window.location.href = doc.getUrl;
-            });
-        }).catch(function (error) {
-            Toast.error($translate.instant("sms_sms_outgoing_download_history_ko"));
-            return $q.reject(error);
-        }).finally(function () {
-            self.outgoing.isExporting = false;
-        });
-    };
-
-    self.deleteSelectedOutgoing = function () {
-        var outgoings = self.getSelection();
-        var queries = outgoings.map(function (outgoing) {
-            return Sms.Outgoing().Lexi().delete({
-                serviceName: $stateParams.serviceName,
-                id: outgoing.id
-            }).$promise;
-        });
-        self.outgoing.isDeleting = true;
-        queries.push($timeout(angular.noop, 500)); // avoid clipping
-        Toast.info($translate.instant("sms_sms_outgoing_delete_success"));
-        return $q.all(queries).then(function () {
-            self.outgoing.selected = {};
-            return self.refresh();
-        }).catch(function (err) {
-            return new ToastError(err);
-        }).finally(function () {
-            self.outgoing.isDeleting = false;
-        });
-    };
-
-    /* -----  End of ACTIONS  ------*/
-
-    /*= ==============================
-    =            EVENTS            =
-    ===============================*/
-
-    self.getDebouncedOutgoings = debounce(self.refresh, 500, false);
-
-    /* -----  End of EVENTS  ------*/
-
-    /*= =====================================
-    =            INITIALIZATION            =
-    ======================================*/
-
-    function init () {
-        self.outgoing = {
+    $onInit () {
+        this.outgoing = {
             raw: [],
             paginated: null,
             selected: {},
@@ -236,27 +38,242 @@ angular.module("managerApp").controller("TelecomSmsSmsOutgoingCtrl", function ($
             isDeleting: false,
             poller: null
         };
-        self.serviceInfos = null;
+        this.serviceInfos = null;
 
-        self.outgoing.isLoading = true;
-        return $q.all({
-            outgoing: fetchOutgoingSms(),
-            serviceInfos: fetchServiceInfos()
-        }).then(function (results) {
-            self.outgoing.raw = angular.copy(results.outgoing);
-            self.serviceInfos = results.serviceInfos;
-        }).catch(function (err) {
-            return new ToastError(err);
-        }).finally(function () {
-            self.outgoing.isLoading = false;
+        this.outgoing.isLoading = true;
+        this.$q.all({
+            outgoing: this.fetchOutgoingSms(),
+            serviceInfos: this.fetchServiceInfos()
+        }).then((results) => {
+            this.outgoing.raw = angular.copy(results.outgoing);
+            this.serviceInfos = results.serviceInfos;
+        }).catch((err) => {
+            this.ToastError(err);
+        }).finally(() => {
+            this.outgoing.isLoading = false;
+        });
+
+        this.getDebouncedOutgoings = this.debounce(this.refresh.bind(this), 500, false);
+
+        this.$scope.$on("$destroy", () => {
+            this.$timeout.cancel(this.outgoing.poller);
         });
     }
 
-    /* -----  End of INITIALIZATION  ------*/
+    /**
+     * Fetch outgoing sms.
+     * @return {Promise}
+     */
+    fetchOutgoingSms () {
+        let sender = this.outgoing.filterBy.sender || null;
+        if (sender === this.$translate.instant("sms_sms_outgoing_number_allowed_response")) {
+            sender = "";
+        }
+        return this.api.smsOutgoing.query({
+            serviceName: this.$stateParams.serviceName,
+            receiver: this.outgoing.filterBy.receiver || null,
+            sender
+        }).$promise.then((outgoing) => _.sortBy(outgoing).reverse());
+    }
 
-    init();
+    /**
+     * Fetch service infos.
+     * @return {Promise}
+     */
+    fetchServiceInfos () {
+        return this.api.sms.getServiceInfos({
+            serviceName: this.$stateParams.serviceName
+        }).$promise;
+    }
 
-    $scope.$on("$destroy", function () {
-        $timeout.cancel(self.outgoing.poller);
-    });
+    /**
+     * Fetch outgoing sms hlr.
+     * @param  {Object} sms
+     * @return {Promise}
+     */
+    fetchOutgoingSmsHlr (sms) {
+        return this.api.smsOutgoing.getHlr({
+            serviceName: this.$stateParams.serviceName,
+            id: sms.id
+        }).$promise.catch(() => false);
+    }
+
+    /**
+     * Get details.
+     * @param  {Object} id
+     * @return {Promise}
+     */
+    getDetails (id) {
+        this.outgoing.isLoading = true;
+        return this.api.smsOutgoing.get({
+            serviceName: this.$stateParams.serviceName,
+            id
+        }).$promise.then((outgoing) => {
+            if (_.isEmpty(outgoing.sender)) {
+                outgoing.isShortNumber = true;
+                outgoing.sender = this.$translate.instant("sms_sms_outgoing_number_allowed_response");
+            }
+            return this.api.smsJobs.getPtts({
+                ptt: outgoing.ptt
+            }).$promise.then((ptt) => {
+                outgoing.status = ptt.comment;
+                return outgoing;
+            });
+        });
+    }
+
+    /**
+     * Toggle show filter.
+     */
+    toggleShowFilter () {
+        this.outgoing.showFilter = !this.outgoing.showFilter;
+        this.outgoing.filterBy = {
+            receiver: undefined,
+            sender: undefined
+        };
+        if (this.outgoing.showFilter === false) {
+            this.refresh();
+        }
+    }
+
+    /**
+     * Toggle order.
+     */
+    toggleOrder () {
+        this.outgoing.orderDesc = !this.outgoing.orderDesc;
+        this.outgoing.raw.reverse();
+    }
+
+    onTransformItemDone () {
+        this.outgoing.isLoading = false;
+    }
+
+    /**
+     * Get all selected outgoing sms.
+     * @return {Array}
+     */
+    getSelection () {
+        return _.filter(this.outgoing.paginated, (outgoing) =>
+            outgoing && this.outgoing.selected && this.outgoing.selected[outgoing.id]
+        );
+    }
+
+    /**
+     * Delete selected outgoing sms.
+     * @return {Promise}
+     */
+    deleteSelectedOutgoing () {
+        const outgoings = this.getSelection();
+        const queries = outgoings.map((outgoing) =>
+            this.api.smsOutgoing.delete({
+                serviceName: this.$stateParams.serviceName,
+                id: outgoing.id
+            }).$promise
+        );
+        this.outgoing.isDeleting = true;
+        queries.push(this.$timeout(angular.noop, 500)); // avoid clipping
+        this.Toast.info(this.$translate.instant("sms_sms_outgoing_delete_success"));
+        return this.$q.all(queries).then(() => {
+            this.outgoing.selected = {};
+            return this.refresh();
+        }).catch((err) => {
+            this.ToastError(err);
+        }).finally(() => {
+            this.outgoing.isDeleting = false;
+        });
+    }
+
+    /**
+     * Opens a modal to read outgoing sms.
+     * @param  {Object} outgoingSms
+     */
+    read (outgoingSms) {
+        const modal = this.$uibModal.open({
+            animation: true,
+            templateUrl: "app/telecom/sms/sms/outgoing/read/telecom-sms-sms-outgoing-read.html",
+            controller: "TelecomSmsSmsOutgoingReadCtrl",
+            controllerAs: "OutgoingReadCtrl",
+            resolve: {
+                outgoingSms: () => outgoingSms,
+                outgoingSmsHlr: () => this.fetchOutgoingSmsHlr(outgoingSms)
+            }
+        });
+        this.outgoing.isReading = true;
+        modal.rendered.then(() => {
+            this.outgoing.isReading = false;
+        });
+    }
+
+    /**
+     * Opens a modal to remove outgoing sms.
+     * @param  {Object} outgoingSms
+     */
+    remove (outgoingSms) {
+        const modal = this.$uibModal.open({
+            animation: true,
+            templateUrl: "app/telecom/sms/sms/outgoing/remove/telecom-sms-sms-outgoing-remove.html",
+            controller: "TelecomSmsSmsOutgoingRemoveCtrl",
+            controllerAs: "OutgoingRemoveCtrl",
+            resolve: { outgoingSms: () => outgoingSms }
+        });
+        modal.result.then(() => this.refresh()).catch((error) => {
+            if (error && error.type === "API") {
+                this.Toast.error(this.$translate.instant("sms_sms_outgoing_remove_ko", { error: error.message }));
+            }
+        });
+    }
+
+    /**
+     * Export history.
+     * @return {Promise}
+     */
+    exportHistory () {
+        this.outgoing.isExporting = true;
+        return this.api.sms.getDocument({
+            serviceName: this.$stateParams.serviceName,
+            "creationDatetime.from": moment(this.serviceInfos.creation).format(),
+            "creationDatetime.to": moment().format(),
+            wayType: "outgoing"
+        }).$promise.then((smsDoc) => {
+            // 1. We need to poll to know if the size of the document is not empty.
+            const tryGetDocument = () => {
+                this.api.userDocument.resetCache();
+                return this.api.userDocument.get({
+                    id: smsDoc.docId
+                }).$promise.then((doc) => {
+                    if (doc.size > 0) {
+                        // 2. Then we set a timeout to be sure that we have data.
+                        return this.$timeout(() => doc, 5000);
+                    }
+                    this.outgoing.poller = this.$timeout(tryGetDocument, 1000);
+                    return this.outgoing.poller;
+                });
+            };
+            return tryGetDocument().then((doc) => {
+                this.$window.location.href = doc.getUrl;
+            });
+        }).catch((error) => {
+            this.Toast.error(this.$translate.instant("sms_sms_outgoing_download_history_ko"));
+            return this.$q.reject(error);
+        }).finally(() => {
+            this.outgoing.isExporting = false;
+        });
+    }
+
+    /**
+     * Refresh outgoing sms list.
+     * @return {Promise}
+     */
+    refresh () {
+        this.api.smsOutgoing.resetAllCache();
+        this.api.smsJobs.resetAllCache();
+        this.outgoing.isLoading = true;
+        return this.fetchOutgoingSms().then((outgoing) => {
+            this.outgoing.raw = angular.copy(outgoing);
+        }).catch((err) => {
+            this.ToastError(err);
+        }).finally(() => {
+            this.outgoing.isLoading = false;
+        });
+    }
 });

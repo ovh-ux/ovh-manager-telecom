@@ -1,180 +1,179 @@
-angular.module("managerApp").controller("TelecomSmsSmsTemplatesCtrl", function ($q, $translate, $stateParams, $uibModal, Sms, SmsMediator, Toast, ToastError) {
-    "use strict";
+angular.module("managerApp").controller("TelecomSmsSmsTemplatesCtrl", class TelecomSmsSmsTemplatesCtrl {
+    constructor ($q, $translate, $stateParams, $uibModal, Sms, SmsMediator, Toast, ToastError) {
+        this.$q = $q;
+        this.$translate = $translate;
+        this.$stateParams = $stateParams;
+        this.$uibModal = $uibModal;
+        this.api = {
+            sms: {
+                templates: Sms.Templates().Lexi()
+            }
+        };
+        this.SmsMediator = SmsMediator;
+        this.Toast = Toast;
+        this.ToastError = ToastError;
+    }
 
-    var self = this;
+    $onInit () {
+        this.loading = {
+            init: false
+        };
+        this.service = null;
+        this.templates = {
+            raw: null,
+            paginated: null,
+            orderBy: "name",
+            orderDesc: false,
+            isLoading: false
+        };
 
-    this.loading = {
-        init: false
-    };
-
-    this.service = null;
-
-    this.templates = {
-        raw: null,
-        paginated: null,
-        orderBy: "name",
-        orderDesc: false,
-        isLoading: false
-    };
-
-    /*= ==============================
-    =            ACTIONS            =
-    ===============================*/
-
-    this.getDetails = function getDetails (item) {
-        self.templates.isLoading = true;
-        return Sms.Templates().Lexi().get({
-            serviceName: $stateParams.serviceName,
-            name: item
-        }).$promise;
-    };
-
-    this.orderBy = function orderBy (by) {
-        if (self.templates.orderBy === by) {
-            self.templates.orderDesc = !self.templates.orderDesc;
-        } else {
-            self.templates.orderBy = by;
-        }
-    };
-
-    this.onTransformItemDone = function onTransformItemDone () {
-        self.templates.isLoading = false;
-    };
-
-    self.refresh = function () {
-        Sms.Templates().Lexi().resetCache();
-        Sms.Templates().Lexi().resetQueryCache();
-        self.templates.raw = null;
-        self.templates.isLoading = true;
-        return Sms.Templates().Lexi().query({
-            serviceName: $stateParams.serviceName
-        }).$promise.then(function (templates) {
-            self.templates.raw = templates;
-        }).catch(function (err) {
-            return new ToastError(err);
-        }).finally(function () {
-            self.templates.isLoading = false;
+        this.loading.init = true;
+        return this.SmsMediator.initDeferred.promise.then(() => {
+            this.service = this.SmsMediator.getCurrentSmsService();
+            this.api.sms.templates.query({
+                serviceName: this.$stateParams.serviceName
+            }).$promise.then((templates) => {
+                this.templates.raw = templates;
+            });
+        }).catch((err) => {
+            this.ToastError(err);
+        }).finally(() => {
+            this.loading.init = false;
         });
-    };
+    }
 
-    this.add = function add () {
-        var modal = $uibModal.open({
+    /**
+     * Get details.
+     * @param  {String} name
+     * @return {Promise}
+     */
+    getDetails (name) {
+        this.templates.isLoading = true;
+        return this.api.sms.templates.get({
+            serviceName: this.$stateParams.serviceName,
+            name
+        }).$promise;
+    }
+
+    /**
+     * Order templates' list.
+     * @param  {String} by
+     */
+    orderBy (by) {
+        if (this.templates.orderBy === by) {
+            this.templates.orderDesc = !this.templates.orderDesc;
+        } else {
+            this.templates.orderBy = by;
+        }
+    }
+
+    onTransformItemDone () {
+        this.templates.isLoading = false;
+    }
+
+    /**
+     * Refresh templates' list.
+     * @return {Promise}
+     */
+    refresh () {
+        this.api.sms.templates.resetCache();
+        this.api.sms.templates.resetQueryCache();
+        this.templates.raw = null;
+        this.templates.isLoading = true;
+        return this.api.sms.templates.query({
+            serviceName: this.$stateParams.serviceName
+        }).$promise.then((templates) => {
+            this.templates.raw = templates;
+        }).catch((err) => {
+            this.ToastError(err);
+        }).finally(() => {
+            this.templates.isLoading = false;
+        });
+    }
+
+    /**
+     * Opens a modal to add a new template.
+     */
+    add () {
+        const modal = this.$uibModal.open({
             animation: true,
             templateUrl: "app/telecom/sms/sms/templates/add/telecom-sms-sms-templates-add.html",
             controller: "TelecomSmsSmsTemplateAddCtrl",
             controllerAs: "TemplateAddCtrl"
         });
-
-        modal.result.then(function () {
-            return Sms.Templates().Lexi().query({
-                serviceName: $stateParams.serviceName
-            }).$promise.then(function (templates) {
-                self.templates.raw = templates;
-            });
-        }, function (error) {
+        modal.result.then(() =>
+            this.api.sms.templates.query({
+                serviceName: this.$stateParams.serviceName
+            }).$promise.then((templates) => {
+                this.templates.raw = templates;
+            })
+        ).catch((error) => {
             if (error && error.type === "API") {
-                Toast.error($translate.instant("sms_sms_templates_adding_ko", { error: _.get(error, "msg.data.message") }));
+                this.Toast.error(this.$translate.instant("sms_sms_templates_adding_ko", { error: _.get(error, "msg.data.message") }));
             }
         });
+    }
 
-        return modal;
-    };
-
-    self.edit = function (template) {
-        var modal = $uibModal.open({
+    /**
+     * Opens a modal to edit a given template.
+     * @param  {Object} template
+     */
+    edit (template) {
+        const modal = this.$uibModal.open({
             animation: true,
             templateUrl: "app/telecom/sms/sms/templates/edit/telecom-sms-sms-templates-edit.html",
             controller: "TelecomSmsSmsTemplateEditCtrl",
             controllerAs: "TemplateEditCtrl",
-            resolve: {
-                template: function () { return template; }
-            }
+            resolve: { template: () => template }
         });
-
-        modal.result.then(function () {
-            self.refresh();
-        }, function (error) {
+        modal.result.then(() => this.refresh()).catch((error) => {
             if (error && error.type === "API") {
-                Toast.error($translate.instant("sms_sms_templates_editing_ko", { error: _.get(error, "msg.data.message") }));
+                this.Toast.error(this.$translate.instant("sms_sms_templates_editing_ko", { error: _.get(error, "msg.data.message") }));
             }
         });
+    }
 
-        return modal;
-    };
-
-    self.relaunch = function (template) {
-        var modal = $uibModal.open({
+    /**
+     * Opens a modal to relaunch a given template.
+     * @param  {Object} template
+     */
+    relaunch (template) {
+        const modal = this.$uibModal.open({
             animation: true,
             templateUrl: "app/telecom/sms/sms/templates/relaunch/telecom-sms-sms-templates-relaunch.html",
             controller: "TelecomSmsSmsTemplateRelaunchCtrl",
             controllerAs: "TemplateRelaunchCtrl",
-            resolve: {
-                template: function () { return template; }
-            }
+            resolve: { template: () => template }
         });
-
-        modal.result.then(function () {
-            self.refresh();
-        }, function (error) {
+        modal.result.then(() => this.refresh()).catch((error) => {
             if (error && error.type === "API") {
-                Toast.error($translate.instant("sms_sms_templates_relaunching_ko", { error: _.get(error, "msg.data.message") }));
+                this.Toast.error(this.$translate.instant("sms_sms_templates_relaunching_ko", { error: _.get(error, "msg.data.message") }));
             }
         });
+    }
 
-        return modal;
-    };
-
-    self.remove = function (template) {
-
-        var modal = $uibModal.open({
+    /**
+     * Opens a modal to remove a given template.
+     * @param  {Object} template
+     */
+    remove (template) {
+        const modal = this.$uibModal.open({
             animation: true,
             templateUrl: "app/telecom/sms/sms/templates/remove/telecom-sms-sms-templates-remove.html",
             controller: "TelecomSmsSmsTemplateRemoveCtrl",
             controllerAs: "TemplateRemoveCtrl",
-            resolve: {
-                template: function () { return template; }
-            }
+            resolve: { template: () => template }
         });
-
-        modal.result.then(function () {
-            return Sms.Templates().Lexi().query({
-                serviceName: $stateParams.serviceName
-            }).$promise.then(function (templates) {
-                self.templates.raw = templates;
-            });
-        }, function (error) {
+        modal.result.then(() =>
+            this.api.sms.templates.query({
+                serviceName: this.$stateParams.serviceName
+            }).$promise.then((templates) => {
+                this.templates.raw = templates;
+            })
+        ).catch((error) => {
             if (error && error.type === "API") {
-                Toast.error($translate.instant("sms_sms_templates_removing_ko", { error: _.get(error, "msg.data.message") }));
+                this.Toast.error(this.$translate.instant("sms_sms_templates_removing_ko", { error: _.get(error, "msg.data.message") }));
             }
-        });
-
-        return modal;
-    };
-
-    /* -----  End of ACTIONS  ------*/
-
-    /*= =====================================
-    =            INITIALIZATION            =
-    ======================================*/
-
-    function init () {
-        self.loading.init = true;
-
-        return SmsMediator.initDeferred.promise.then(function () {
-            return Sms.Templates().Lexi().query({
-                serviceName: $stateParams.serviceName
-            }).$promise.then(function (templates) {
-                self.templates.raw = templates;
-            });
-        }).catch(function (err) {
-            return new ToastError(err);
-        }).finally(function () {
-            self.loading.init = false;
-            self.service = SmsMediator.getCurrentSmsService();
         });
     }
-
-    /* -----  End of INITIALIZATION  ------*/
-
-    init();
 });

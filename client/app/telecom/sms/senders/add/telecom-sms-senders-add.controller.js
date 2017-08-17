@@ -1,111 +1,24 @@
-angular.module("managerApp").controller("TelecomSmsSendersAddCtrl", function ($q, $stateParams, $translate, $state, $timeout, Sms, Toast, ToastError) {
-    "use strict";
-
-    var self = this;
-
-    /*= ==============================
-    =            HELPERS            =
-    ===============================*/
-
-    function fetchSenders () {
-        return Sms.Senders().Lexi().query({
-            serviceName: $stateParams.serviceName
-        }).$promise;
+angular.module("managerApp").controller("TelecomSmsSendersAddCtrl", class TelecomSmsSendersAddCtrl {
+    constructor ($q, $stateParams, $translate, $state, $timeout, Sms, Toast, ToastError) {
+        this.$q = $q;
+        this.$stateParams = $stateParams;
+        this.$translate = $translate;
+        this.$state = $state;
+        this.$timeout = $timeout;
+        this.api = {
+            sms: Sms.Lexi(),
+            smsSenders: Sms.Senders().Lexi()
+        };
+        this.Toast = Toast;
+        this.ToastError = ToastError;
     }
 
-    function fetchSendersAvailableForValidation () {
-        return Sms.Lexi().getSendersAvailableForValidation({
-            serviceName: $stateParams.serviceName
-        }).$promise;
-    }
-
-    self.getSelection = function () {
-        var allSelectedSenders = _.union(self.senders.availableForValidation.nichandle, self.senders.availableForValidation.domains);
-        return _.filter(allSelectedSenders, function (sender) {
-            return self.senders.availableForValidation.selected && self.senders.availableForValidation.selected[sender.sender];
-        });
-    };
-
-    /* -----  End of HELPERS  ------*/
-
-    /*= ==============================
-    =            ACTIONS            =
-    ===============================*/
-
-    self.addSenderAvailable = function (sender) {
-        self.loading.adding = true;
-
-        return Sms.Senders().Lexi().create({
-            serviceName: $stateParams.serviceName
-        }, {
-            sender: sender.sender,
-            reason: "sendersAvailableForValidation"
-        }).$promise.then(function () {
-            Toast.success($translate.instant("sms_senders_add_sender_added"));
-            return $state.go("telecom.sms.senders");
-        }).catch(function (err) {
-            return new ToastError(err);
-        }).finally(function () {
-            self.loading.adding = false;
-        });
-    };
-
-    self.add = function () {
-        self.loading.adding = true;
-
-        return Sms.Senders().Lexi().create({
-            serviceName: $stateParams.serviceName
-        }, {
-            sender: self.sender.sender,
-            description: self.sender.description,
-            reason: self.sender.reason
-        }).$promise.then(function () {
-            return $state.go("telecom.sms.senders");
-        }).catch(function (err) {
-            return new ToastError(err);
-        }).finally(function () {
-            self.loading.adding = false;
-        });
-    };
-
-    self.addSelectedSendersAvailableForValidaton = function () {
-        var sendersAvailableForValidaton = self.getSelection();
-        var queries = sendersAvailableForValidaton.map(function (sender) {
-            return Sms.Senders().Lexi().create({
-                serviceName: $stateParams.serviceName
-            }, {
-                sender: sender.sender,
-                reason: "sendersAvailableForValidation"
-            }).$promise;
-        });
-        self.loading.adding = true;
-        queries.push($timeout(angular.noop, 500)); // avoid clipping
-        Toast.info($translate.instant("sms_senders_add_senders_success"));
-        return $q.all(queries).then(function () {
-            self.senders.availableForValidation.selected = {};
-            return $state.go("telecom.sms.senders");
-        }).catch(function (err) {
-            return new ToastError(err);
-        }).finally(function () {
-            self.loading.adding = false;
-        });
-    };
-
-    /* -----  End of ACTIONS  ------*/
-
-    /*= =====================================
-    =            INITIALIZATION            =
-    ======================================*/
-
-    function init () {
-        self.loading = {
+    $onInit () {
+        this.loading = {
             init: false,
             adding: false
         };
-
-        self.sender = {};
-
-        self.senders = {
+        this.senders = {
             pattern: /^[\w\s\-.,&+]+$/,
             availableForValidation: {
                 domains: [],
@@ -113,45 +26,128 @@ angular.module("managerApp").controller("TelecomSmsSendersAddCtrl", function ($q
                 selected: {}
             }
         };
+        this.sendersAvailableForValidation = null;
+        this.choice = "manual";
 
-        self.sendersAvailableForValidation = null;
-
-        self.choice = "manual";
-
-        self.loading.init = true;
-        return $q.all({
-            senders: fetchSenders(),
-            sendersAvailableForValidation: fetchSendersAvailableForValidation()
-        })
-            .then(function (results) {
-                self.sendersAvailableForValidation = results.sendersAvailableForValidation;
-                return $q.all(_.map(results.senders, function (sender) {
-                    return Sms.Senders().Lexi().get({
-                        serviceName: $stateParams.serviceName,
-                        sender: sender
-                    }).$promise;
-                }));
-            })
-            .then(function (senders) {
-                self.senders.availableForValidation.domains = _.filter(self.sendersAvailableForValidation, { referer: "domain" });
-                self.senders.availableForValidation.domains = _.filter(self.senders.availableForValidation.domains, function (domain) {
-                    return !_.find(senders, { sender: domain.sender });
-                });
-
-                self.senders.availableForValidation.nichandle = _.uniq(_.filter(self.sendersAvailableForValidation, { referer: "nichandle" }), "sender");
-                self.senders.availableForValidation.nichandle = _.filter(self.senders.availableForValidation.nichandle, function (nichandle) {
-                    return !_.find(senders, { sender: nichandle.sender });
-                });
-            })
-            .catch(function (err) {
-                return new ToastError(err);
-            })
-            .finally(function () {
-                self.loading.init = false;
-            });
+        this.loading.init = true;
+        return this.$q.all({
+            senders: this.fetchSenders(),
+            sendersAvailableForValidation: this.fetchSendersAvailableForValidation()
+        }).then((results) => {
+            this.sendersAvailableForValidation = results.sendersAvailableForValidation;
+            return this.$q.all(_.map(results.senders, (sender) =>
+                this.api.smsSenders.get({
+                    serviceName: this.$stateParams.serviceName,
+                    sender
+                }).$promise
+            ));
+        }).then((senders) => {
+            this.senders.availableForValidation.domains = _.filter(this.sendersAvailableForValidation, { referer: "domain" });
+            this.senders.availableForValidation.domains = _.filter(this.senders.availableForValidation.domains, (domain) => !_.find(senders, { sender: domain.sender }));
+            this.senders.availableForValidation.nichandle = _.uniq(_.filter(this.sendersAvailableForValidation, { referer: "nichandle" }), "sender");
+            this.senders.availableForValidation.nichandle = _.filter(this.senders.availableForValidation.nichandle, (nichandle) => !_.find(senders, { sender: nichandle.sender }));
+        }).catch((err) => {
+            this.ToastError(err);
+        }).finally(() => {
+            this.loading.init = false;
+        });
     }
 
-    /* -----  End of INITIALIZATION  ------*/
+    /**
+     * Fetch all senders.
+     * @return {Promise}
+     */
+    fetchSenders () {
+        return this.api.smsSenders.query({
+            serviceName: this.$stateParams.serviceName
+        }).$promise;
+    }
 
-    init();
+    /**
+     * Fetch all senders available for validation.
+     * @return {Promise}
+     */
+    fetchSendersAvailableForValidation () {
+        return this.api.sms.getSendersAvailableForValidation({
+            serviceName: this.$stateParams.serviceName
+        }).$promise;
+    }
+
+    /**
+     * Add sender available.
+     * @param {Object} sender
+     */
+    addSenderAvailable (sender) {
+        this.loading.adding = true;
+        return this.api.smsSenders.create({
+            serviceName: this.$stateParams.serviceName
+        }, {
+            sender: sender.sender,
+            reason: "sendersAvailableForValidation"
+        }).$promise.then(() => {
+            this.Toast.success(this.$translate.instant("sms_senders_add_sender_added"));
+            return this.$state.go("telecom.sms.senders");
+        }).catch((err) => {
+            this.ToastError(err);
+        }).finally(() => {
+            this.loading.adding = false;
+        });
+    }
+
+    /**
+     * Add sender.
+     * @return {Promise}
+     */
+    add () {
+        this.loading.adding = true;
+        return this.api.smsSenders.create({
+            serviceName: this.$stateParams.serviceName
+        }, {
+            sender: this.sender.sender,
+            description: this.sender.description,
+            reason: this.sender.reason
+        }).$promise.then(() => this.$state.go("telecom.sms.senders")).catch((err) => {
+            this.ToastError(err);
+        }).finally(() => {
+            this.loading.adding = false;
+        });
+    }
+
+    /**
+     * Get all selected senders.
+     * @return {Array}
+     */
+    getSelection () {
+        const allSelectedSenders = _.union(this.senders.availableForValidation.nichandle, this.senders.availableForValidation.domains);
+        return _.filter(allSelectedSenders, (sender) =>
+            this.senders.availableForValidation.selected && this.senders.availableForValidation.selected[sender.sender]
+        );
+    }
+
+    /**
+     * Add all selected senders available for validaton.
+     * @return {Promise}
+     */
+    addSelectedSendersAvailableForValidaton () {
+        const sendersAvailableForValidaton = this.getSelection();
+        const queries = sendersAvailableForValidaton.map((sender) =>
+            this.api.smsSenders.create({
+                serviceName: this.$stateParams.serviceName
+            }, {
+                sender: sender.sender,
+                reason: "sendersAvailableForValidation"
+            }).$promise
+        );
+        this.loading.adding = true;
+        queries.push(this.$timeout(angular.noop, 500)); // avoid clipping
+        this.Toast.info(this.$translate.instant("sms_senders_add_senders_success"));
+        return this.$q.all(queries).then(() => {
+            this.senders.availableForValidation.selected = {};
+            return this.$state.go("telecom.sms.senders");
+        }).catch((err) => {
+            this.ToastError(err);
+        }).finally(() => {
+            this.loading.adding = false;
+        });
+    }
 });

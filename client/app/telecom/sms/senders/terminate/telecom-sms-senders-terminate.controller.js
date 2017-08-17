@@ -1,60 +1,66 @@
-angular.module("managerApp").controller("TelecomSmsSendersTerminateCtrl", function ($q, $timeout, $uibModalInstance, Sms, sender) {
-    "use strict";
+angular.module("managerApp").controller("TelecomSmsSendersTerminateCtrl", class TelecomSmsSendersTerminateCtrl {
+    constructor ($q, $timeout, $uibModalInstance, Sms, sender) {
+        this.$q = $q;
+        this.$timeout = $timeout;
+        this.$uibModalInstance = $uibModalInstance;
+        this.api = {
+            sms: {
+                virtualNumbers: Sms.VirtualNumbers().Lexi()
+            }
+        };
+        this.sender = sender;
+    }
 
-    var self = this;
+    $onInit () {
+        this.loading = {
+            terminate: false
+        };
+        this.terminated = false;
+        this.model = {
+            sender: angular.copy(this.sender)
+        };
+        this.number = _.get(this.sender, "serviceInfos.domain");
+    }
 
-    self.loading = {
-        terminate: false
-    };
-    self.terminated = false;
-    self.sender = angular.copy(sender);
-    self.number = _.get(self.sender, "serviceInfos.domain");
+    /**
+     * Terminate a virtual number.
+     * @return {Promise}
+     */
+    terminate () {
+        this.loading.terminate = true;
+        return this.$q.all([
+            this.api.sms.virtualNumbers.updateVirtualNumbersServiceInfos({
+                number: this.number
+            }, { renew: this.getRenewInfos() }).$promise,
+            this.$timeout(angular.noop, 1000)
+        ]).then(() => {
+            this.loading.terminate = false;
+            this.terminated = true;
+            return this.$timeout(() => this.close(), 1500);
+        }).catch((error) => this.cancel({
+            type: "API",
+            msg: error
+        }));
+    }
 
-    /*= ==============================
-    =            HELPERS            =
-    ===============================*/
-
-    function getRenewInfos () {
+    /**
+     * Get renew infos helper.
+     * @return {Object}
+     */
+    getRenewInfos () {
         return {
-            automatic: self.sender.serviceInfos.renew.automatic,
-            deleteAtExpiration: !self.sender.serviceInfos.renew.deleteAtExpiration,
-            forced: self.sender.serviceInfos.renew.forced,
-            period: self.sender.serviceInfos.renew.period
+            automatic: this.model.sender.serviceInfos.renew.automatic,
+            deleteAtExpiration: !this.model.sender.serviceInfos.renew.deleteAtExpiration,
+            forced: this.model.sender.serviceInfos.renew.forced,
+            period: this.model.sender.serviceInfos.renew.period
         };
     }
 
-    /* -----  End of HELPERS  ------*/
+    cancel (message) {
+        return this.$uibModalInstance.dismiss(message);
+    }
 
-    /*= ==============================
-    =            ACTIONS            =
-    ===============================*/
-
-    self.terminate = function () {
-        self.loading.terminate = true;
-        return $q.all([
-            Sms.VirtualNumbers().Lexi().updateVirtualNumbersServiceInfos({
-                number: self.number
-            }, { renew: getRenewInfos() }).$promise,
-            $timeout(angular.noop, 1000)
-        ]).then(function () {
-            self.loading.terminate = false;
-            self.terminated = true;
-            return $timeout(self.close, 1500);
-        }, function (error) {
-            return self.cancel({
-                type: "API",
-                msg: error
-            });
-        });
-    };
-
-    self.cancel = function (message) {
-        return $uibModalInstance.dismiss(message);
-    };
-
-    self.close = function () {
-        return $uibModalInstance.close(true);
-    };
-
-    /* -----  End of ACTIONS  ------*/
+    close () {
+        return this.$uibModalInstance.close(true);
+    }
 });
