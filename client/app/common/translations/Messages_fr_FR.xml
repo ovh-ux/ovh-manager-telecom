@@ -14,6 +14,8 @@
    <translation id="common_yes_capitalized">Oui</translation>
    <translation id="no" qtlid="50602">non</translation>
    <translation id="common_no_capitalized">Non</translation>
+   <translation id="previous">Précédent</translation>
+   <translation id="next">Suivant</translation>
 
    <translation id="show" qtlid="69353">Afficher</translation>
    <translation id="hide" qtlid="26539">Cacher</translation>
