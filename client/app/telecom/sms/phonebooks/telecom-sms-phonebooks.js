@@ -1,6 +1,5 @@
-angular.module("managerApp").config(function ($stateProvider) {
+angular.module("managerApp").config(($stateProvider) => {
     "use strict";
-
     $stateProvider.state("telecom.sms.phonebooks", {
         url: "/phonebooks",
         views: {
@@ -13,6 +12,9 @@ angular.module("managerApp").config(function ($stateProvider) {
         params: {
             bookKey: null
         },
-        translations: ["common", "telecom/sms/phonebooks"]
+        translations: [
+            "common",
+            "telecom/sms/phonebooks"
+        ]
     });
 });

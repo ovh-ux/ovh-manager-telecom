@@ -1,266 +1,26 @@
-angular.module("managerApp").controller("TelecomSmsReceiversCtrl", function ($scope, $stateParams, $q, $filter, $uibModal, $translate, $timeout, Sms, CSVParser, Toast, ToastError, URLS) {
-    "use strict";
-
-    var self = this;
-
-    /*= ==============================
-    =            HELPERS            =
-    ===============================*/
-
-    function fetchReceivers () {
-        return Sms.Receivers().Lexi().query({
-            serviceName: $stateParams.serviceName
-        }).$promise.then(function (receiversIds) {
-            self.slot.raw = receiversIds;
-
-            // slotId isn't auto generated :( and must be in the range 1…9.
-            for (var i = 1; i <= self.slot.threshold; i++) {
-                if (_.indexOf(self.slot.raw, i) === -1) {
-                    self.slot.available.push(i);
-                }
+angular.module("managerApp").controller("TelecomSmsReceiversCtrl", class TelecomSmsReceiversCtrl {
+    constructor ($scope, $stateParams, $q, $filter, $uibModal, $translate, $timeout, Sms, CSVParser, Toast, ToastError, URLS) {
+        this.$filter = $filter;
+        this.$q = $q;
+        this.$scope = $scope;
+        this.$stateParams = $stateParams;
+        this.$timeout = $timeout;
+        this.$translate = $translate;
+        this.$uibModal = $uibModal;
+        this.api = {
+            sms: {
+                receivers: Sms.Receivers().Lexi(),
+                task: Sms.Task().Lexi()
             }
-            self.slot.count = receiversIds.length;
-            self.slot.isFull = self.slot.count >= self.slot.threshold;
-            return $q.all(_.map(receiversIds, function (id) {
-                return Sms.Receivers().Lexi().get({
-                    serviceName: $stateParams.serviceName,
-                    slotId: id
-                }).$promise;
-            }));
-        });
+        };
+        this.CSVParser = CSVParser;
+        this.Toast = Toast;
+        this.ToastError = ToastError;
+        this.constant = { URLS };
     }
 
-    self.getSelection = function () {
-        return _.filter(self.receivers.raw, function (receiver) {
-            return receiver && self.receivers.selected && self.receivers.selected[receiver.slotId];
-        });
-    };
-
-    /* -----  End of HELPERS  ------*/
-
-    /*= ==============================
-    =            ACTIONS            =
-    ===============================*/
-
-    self.refresh = function () {
-        Sms.Receivers().Lexi().resetAllCache();
-        self.slot.available = [];
-        self.receivers.isLoading = true;
-        return fetchReceivers().then(function (receivers) {
-            self.receivers.raw = angular.copy(receivers);
-            self.applySorting();
-        }).catch(function (err) {
-            return new ToastError(err);
-        }).finally(function () {
-            self.receivers.isLoading = false;
-        });
-    };
-
-    self.applySorting = function () {
-        var data = angular.copy(self.receivers.raw);
-        data = $filter("orderBy")(
-            data,
-            self.receivers.orderBy,
-            self.receivers.orderDesc
-        );
-        self.receivers.sorted = data;
-    };
-
-    self.orderBy = function (by) {
-        if (self.receivers.orderBy === by) {
-            self.receivers.orderDesc = !self.receivers.orderDesc;
-        } else {
-            self.receivers.orderBy = by;
-        }
-        self.applySorting();
-    };
-
-    self.add = function () {
-        var modal = $uibModal.open({
-            animation: true,
-            templateUrl: "app/telecom/sms/receivers/add/telecom-sms-receivers-add.html",
-            controller: "TelecomSmsReceiversAddCtrl",
-            controllerAs: "ReceiversAddCtrl",
-            resolve: {
-                slot: function () { return self.slot; }
-            }
-        });
-
-        modal.result.then(function () {
-            return self.refresh();
-        }, function (error) {
-            if (error && error.type === "API") {
-                Toast.error($translate.instant("sms_receivers_add_receiver_ko", { error: _.get(error, "msg.data.message") }));
-            }
-        });
-
-        return modal;
-    };
-
-    self.edit = function (receiver) {
-        var modal = $uibModal.open({
-            animation: true,
-            templateUrl: "app/telecom/sms/receivers/edit/telecom-sms-receivers-edit.html",
-            controller: "TelecomSmsReceiversEditCtrl",
-            controllerAs: "ReceiversEditCtrl",
-            resolve: {
-                receiver: function () { return receiver; }
-            }
-        });
-
-        modal.result.then(function () {
-            return self.refresh();
-        }, function (error) {
-            if (error && error.type === "API") {
-                Toast.error($translate.instant("sms_receivers_edit_receiver_ko", { error: _.get(error, "msg.data.message") }));
-            }
-        });
-
-        return modal;
-    };
-
-    self.read = function (receiver) {
-        var modal = $uibModal.open({
-            animation: true,
-            templateUrl: "app/telecom/sms/receivers/read/telecom-sms-receivers-read.html",
-            controller: "TelecomSmsReceiversReadCtrl",
-            controllerAs: "ReceiversReadCtrl",
-            resolve: {
-                receiver: function () { return receiver; },
-                csv: function () { return self.getCsvData(receiver); }
-            }
-        });
-
-        self.receivers.isReading = true;
-        modal.rendered.then(function () {
-            self.receivers.isReading = false;
-        });
-
-        return modal;
-    };
-
-    self.clean = function (receiver) {
-        if (self.receivers.isCleaning) {
-            return $q.when(null);
-        }
-
-        var modal = $uibModal.open({
-            animation: true,
-            templateUrl: "app/telecom/sms/receivers/clean/telecom-sms-receivers-clean.html",
-            controller: "TelecomSmsReceiversCleanCtrl",
-            controllerAs: "ReceiversCleanCtrl",
-            resolve: {
-                receiver: function () { return receiver; }
-            }
-        });
-
-        modal.result.then(function (response) {
-            if (_.has(response, "taskId")) {
-                self.receivers.isCleaning = true;
-                return Sms.Task().Lexi().poll($scope, {
-                    serviceName: $stateParams.serviceName,
-                    taskId: response.taskId
-                })
-                    .then(function (voidResponse) {
-                        return voidResponse;
-                    })
-                    .finally(function () {
-                        self.receivers.isCleaning = false;
-                        self.refresh();
-                    });
-            }
-            return response;
-
-        }, function (error) {
-            if (error && error.type === "API") {
-                Toast.error($translate.instant("sms_receivers_clean_receiver_ko", { error: _.get(error, "msg.data.message") }));
-            }
-        });
-
-        return modal;
-    };
-
-    self.getCsvData = function (receiver) {
-        return Sms.Receivers().Lexi().getCsv({
-            serviceName: $stateParams.serviceName,
-            slotId: receiver.slotId
-        }).$promise.then(function (csv) {
-            CSVParser.setColumnSeparator(";");
-            CSVParser.setDetectTypes(false);
-
-            try {
-                self.csv.data = CSVParser.parse(csv.data);
-            } catch (err) {
-                self.csv.data = null;
-                Toast.error($translate.instant("sms_receivers_read_receiver_parse_ko", { error: _.get(err, "msg.data.message") }));
-            }
-
-            return self.csv.data;
-        }).catch(function (err) {
-            self.receivers.isReading = false;
-            return new ToastError(err);
-        });
-    };
-
-    self.setFilename = function (receiver) {
-        return _.kebabCase([
-            $stateParams.serviceName,
-            $translate.instant("sms_tabs_contacts"),
-            receiver.description
-        ].join()) + ".csv";
-    };
-
-    self.remove = function (receiver) {
-        var modal = $uibModal.open({
-            animation: true,
-            templateUrl: "app/telecom/sms/receivers/remove/telecom-sms-receivers-remove.html",
-            controller: "TelecomSmsReceiversRemoveCtrl",
-            controllerAs: "ReceiversRemoveCtrl",
-            resolve: {
-                receiver: function () { return receiver; }
-            }
-        });
-
-        modal.result.then(function () {
-            return self.refresh();
-        }, function (error) {
-            if (error && error.type === "API") {
-                Toast.error($translate.instant("sms_receivers_remove_receiver_ko", { error: _.get(error, "msg.data.message") }));
-            }
-        });
-
-        return modal;
-    };
-
-    self.deleteSelectedReceivers = function () {
-        var receivers = self.getSelection();
-        var queries = receivers.map(function (receiver) {
-            return Sms.Receivers().Lexi().delete({
-                serviceName: $stateParams.serviceName,
-                slotId: receiver.slotId
-            }).$promise;
-        });
-        self.receivers.isDeleting = true;
-        queries.push($timeout(angular.noop, 500)); // avoid clipping
-        Toast.info($translate.instant("sms_receivers_delete_receivers_success"));
-        return $q.all(queries).then(function () {
-            self.receivers.selected = {};
-            return self.refresh();
-        }).catch(function (err) {
-            return new ToastError(err);
-        }).finally(function () {
-            self.receivers.isDeleting = false;
-        });
-    };
-
-    /* -----  End of ACTIONS  ------*/
-
-    /*= =====================================
-    =            INITIALIZATION            =
-    ======================================*/
-
-    function init () {
-        self.receivers = {
+    $onInit () {
+        this.receivers = {
             raw: [],
             paginated: null,
             sorted: null,
@@ -272,36 +32,284 @@ angular.module("managerApp").controller("TelecomSmsReceiversCtrl", function ($sc
             isCleaning: false,
             isDeleting: false
         };
-
-        self.slot = {
+        this.slot = {
             raw: [],
             available: [],
             count: null,
             isFull: false,
             threshold: 9
         };
-
-        self.csv = {
+        this.csv = {
             raw: null,
             data: null
         };
-
-        self.urls = {
-            receivers: _.get(URLS, "guides.sms.receivers")
+        this.urls = {
+            receivers: _.get(this.constant.URLS, "guides.sms.receivers")
         };
 
-        self.receivers.isLoading = true;
-        return fetchReceivers().then(function (receivers) {
-            self.receivers.raw = angular.copy(receivers);
-            self.applySorting();
-        }).catch(function (err) {
-            return new ToastError(err);
-        }).finally(function () {
-            self.receivers.isLoading = false;
+        this.receivers.isLoading = true;
+        return this.fetchReceivers().then((receivers) => {
+            this.receivers.raw = angular.copy(receivers);
+            this.sortReceivers();
+        }).catch((err) => {
+            this.ToastError(err);
+        }).finally(() => {
+            this.receivers.isLoading = false;
         });
     }
 
-    /* -----  End of INITIALIZATION  ------*/
+    /**
+     * Fetch all receivers.
+     * @return {Promise}
+     */
+    fetchReceivers () {
+        return this.api.sms.receivers.query({
+            serviceName: this.$stateParams.serviceName
+        }).$promise.then((receiversIds) => {
+            this.slot.raw = receiversIds;
 
-    init();
+            // slotId isn't auto generated :( and must be in the range 1…9.
+            for (let i = 1; i <= this.slot.threshold; i++) {
+                if (_.indexOf(this.slot.raw, i) === -1) {
+                    this.slot.available.push(i);
+                }
+            }
+            this.slot.count = receiversIds.length;
+            this.slot.isFull = this.slot.count >= this.slot.threshold;
+            return this.$q.all(_.map(receiversIds, (slotId) =>
+                this.api.sms.receivers.get({
+                    serviceName: this.$stateParams.serviceName,
+                    slotId
+                }).$promise
+            ));
+        });
+    }
+
+    /**
+     * Sort receivers.
+     */
+    sortReceivers () {
+        let data = angular.copy(this.receivers.raw);
+        data = this.$filter("orderBy")(
+            data,
+            this.receivers.orderBy,
+            this.receivers.orderDesc
+        );
+        this.receivers.sorted = data;
+    }
+
+    /**
+     * Order receiver list.
+     * @param  {String} by
+     */
+    orderBy (by) {
+        if (this.receivers.orderBy === by) {
+            this.receivers.orderDesc = !this.receivers.orderDesc;
+        } else {
+            this.receivers.orderBy = by;
+        }
+        this.sortReceivers();
+    }
+
+    /**
+     * Get all receivers selected.
+     * @return {Array}
+     */
+    getSelection () {
+        return _.filter(this.receivers.raw, (receiver) =>
+            receiver && this.receivers.selected && this.receivers.selected[receiver.slotId]
+        );
+    }
+
+    /**
+     * Refresh receivers' list.
+     * @return {Promise}
+     */
+    refresh () {
+        this.api.sms.receivers.resetAllCache();
+        this.slot.available = [];
+        this.receivers.isLoading = true;
+        return this.fetchReceivers().then((receivers) => {
+            this.receivers.raw = angular.copy(receivers);
+            this.sortReceivers();
+        }).catch((err) => {
+            this.ToastError(err);
+        }).finally(() => {
+            this.receivers.isLoading = false;
+        });
+    }
+
+    /**
+     * Opens a modal to add a receiver list.
+     */
+    add () {
+        const modal = this.$uibModal.open({
+            animation: true,
+            templateUrl: "app/telecom/sms/receivers/add/telecom-sms-receivers-add.html",
+            controller: "TelecomSmsReceiversAddCtrl",
+            controllerAs: "ReceiversAddCtrl",
+            resolve: { slot: () => this.slot }
+        });
+        modal.result.then(() => this.refresh(), (error) => {
+            if (error && error.type === "API") {
+                this.Toast.error(this.$translate.instant("sms_receivers_add_receiver_ko", { error: _.get(error, "msg.data.message") }));
+            }
+        });
+    }
+
+    /**
+     * Opens a modal to edit a given receiver list.
+     * @param  {Object} receiver
+     */
+    edit (receiver) {
+        const modal = this.$uibModal.open({
+            animation: true,
+            templateUrl: "app/telecom/sms/receivers/edit/telecom-sms-receivers-edit.html",
+            controller: "TelecomSmsReceiversEditCtrl",
+            controllerAs: "ReceiversEditCtrl",
+            resolve: { receiver: () => receiver }
+        });
+        modal.result.then(() => this.refresh(), (error) => {
+            if (error && error.type === "API") {
+                this.Toast.error(this.$translate.instant("sms_receivers_edit_receiver_ko", { error: _.get(error, "msg.data.message") }));
+            }
+        });
+    }
+
+    /**
+     * Opens a modal to read a given receiver list.
+     * @param  {Object} receiver
+     */
+    read (receiver) {
+        const modal = this.$uibModal.open({
+            animation: true,
+            templateUrl: "app/telecom/sms/receivers/read/telecom-sms-receivers-read.html",
+            controller: "TelecomSmsReceiversReadCtrl",
+            controllerAs: "ReceiversReadCtrl",
+            resolve: {
+                receiver: () => receiver,
+                csv: () => this.getCsvData(receiver)
+            }
+        });
+        this.receivers.isReading = true;
+        modal.rendered.then(() => {
+            this.receivers.isReading = false;
+        });
+    }
+
+    /**
+     * Opens a modal to clean a given receiver list.
+     * @param  {Object} receiver
+     */
+    clean (receiver) {
+        if (this.receivers.isCleaning) {
+            return this.$q.when(null);
+        }
+        const modal = this.$uibModal.open({
+            animation: true,
+            templateUrl: "app/telecom/sms/receivers/clean/telecom-sms-receivers-clean.html",
+            controller: "TelecomSmsReceiversCleanCtrl",
+            controllerAs: "ReceiversCleanCtrl",
+            resolve: { receiver: () => receiver }
+        });
+        modal.result.then((response) => {
+            if (_.has(response, "taskId")) {
+                this.receivers.isCleaning = true;
+                return this.api.sms.task.poll(this.$scope, {
+                    serviceName: this.$stateParams.serviceName,
+                    taskId: response.taskId
+                }).finally(() => {
+                    this.receivers.isCleaning = false;
+                    this.refresh();
+                });
+            }
+            return response;
+        }).catch((error) => {
+            if (error && error.type === "API") {
+                this.Toast.error(this.$translate.instant("sms_receivers_clean_receiver_ko", { error: _.get(error, "msg.data.message") }));
+            }
+        });
+        return modal;
+    }
+
+    /**
+     * Get CSV data.
+     * @param  {Object} receiver
+     * @return {Promise}
+     */
+    getCsvData (receiver) {
+        return this.api.sms.receivers.getCsv({
+            serviceName: this.$stateParams.serviceName,
+            slotId: receiver.slotId
+        }).$promise.then((csv) => {
+            this.CSVParser.setColumnSeparator(";");
+            this.CSVParser.setDetectTypes(false);
+            try {
+                this.csv.data = this.CSVParser.parse(csv.data);
+            } catch (err) {
+                this.csv.data = null;
+                this.Toast.error(this.$translate.instant("sms_receivers_read_receiver_parse_ko", { error: _.get(err, "msg.data.message") }));
+            }
+            return this.csv.data;
+        }).catch((err) => {
+            this.receivers.isReading = false;
+            this.ToastError(err);
+        });
+    }
+
+    /**
+     * Set filename based on service name and receiver description.
+     * @param {Object} receiver
+     */
+    setFilename (receiver) {
+        return _.kebabCase([
+            this.$stateParams.serviceName,
+            this.$translate.instant("sms_tabs_contacts"),
+            receiver.description
+        ].join()) + ".csv";
+    }
+
+    /**
+     * Opens a modal to remove a given receiver's list.
+     * @param  {Object} receiver
+     */
+    remove (receiver) {
+        const modal = this.$uibModal.open({
+            animation: true,
+            templateUrl: "app/telecom/sms/receivers/remove/telecom-sms-receivers-remove.html",
+            controller: "TelecomSmsReceiversRemoveCtrl",
+            controllerAs: "ReceiversRemoveCtrl",
+            resolve: { receiver: () => receiver }
+        });
+        modal.result.then(() => this.refresh(), (error) => {
+            if (error && error.type === "API") {
+                this.Toast.error(this.$translate.instant("sms_receivers_remove_receiver_ko", { error: _.get(error, "msg.data.message") }));
+            }
+        });
+    }
+
+    /**
+     * Delete selected receivers.
+     * @return {Promise}
+     */
+    deleteSelectedReceivers () {
+        const receivers = this.getSelection();
+        const queries = receivers.map((receiver) =>
+            this.api.sms.receivers.delete({
+                serviceName: this.$stateParams.serviceName,
+                slotId: receiver.slotId
+            }).$promise
+        );
+        this.receivers.isDeleting = true;
+        queries.push(this.$timeout(angular.noop, 500)); // avoid clipping
+        this.Toast.info(this.$translate.instant("sms_receivers_delete_receivers_success"));
+        return this.$q.all(queries).then(() => {
+            this.receivers.selected = {};
+            return this.refresh();
+        }).catch((err) => {
+            this.ToastError(err);
+        }).finally(() => {
+            this.receivers.isDeleting = false;
+        });
+    }
 });

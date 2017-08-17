@@ -1,197 +1,26 @@
-angular.module("managerApp").controller("TelecomSmsSmsIncomingCtrl", function ($scope, $stateParams, $q, $filter, $window, $uibModal, $translate, $timeout, Sms, User, Toast, ToastError) {
-    "use strict";
-
-    var self = this;
-
-    /*= ==============================
-    =            HELPERS            =
-    ===============================*/
-
-    function fetchIncomingSms () {
-        return Sms.Incoming().Lexi().query({
-            serviceName: $stateParams.serviceName
-        }).$promise.then(function (incomingIds) {
-            return $q.all(_.map(_.chunk(incomingIds, 50), function (chunkIds) {
-                return Sms.Incoming().Lexi().getBatch({
-                    serviceName: $stateParams.serviceName,
-                    id: chunkIds
-                }).$promise;
-            })).then(function (chunkResult) {
-                return _.pluck(_.flatten(chunkResult), "value");
-            });
-        });
-    }
-
-    function fetchServiceInfos () {
-        return Sms.Lexi().getServiceInfos({
-            serviceName: $stateParams.serviceName
-        }).$promise;
-    }
-
-    self.getSelection = function () {
-        return _.filter(self.incoming.raw, function (incoming) {
-            return incoming && self.incoming.selected && self.incoming.selected[incoming.id];
-        });
-    };
-
-    /* -----  End of HELPERS  ------*/
-
-    /*= ==============================
-    =            ACTIONS            =
-    ===============================*/
-
-    self.refresh = function () {
-        Sms.Incoming().Lexi().resetAllCache();
-        self.incoming.isLoading = true;
-        return $q.all({
-            incoming: fetchIncomingSms(),
-            serviceInfos: fetchServiceInfos()
-        }).then(function (results) {
-            self.incoming.raw = angular.copy(results.incoming);
-            self.serviceInfos = results.serviceInfos;
-            self.applySorting();
-        }).catch(function (err) {
-            return new ToastError(err);
-        }).finally(function () {
-            self.incoming.isLoading = false;
-        });
-    };
-
-    self.applySorting = function () {
-        var data = angular.copy(self.incoming.raw);
-        data = $filter("filter")(data, self.incoming.filterBy);
-        data = $filter("orderBy")(
-            data,
-            self.incoming.orderBy,
-            self.incoming.orderDesc
-        );
-        self.incoming.sorted = data;
-    };
-
-    self.toggleShowFilter = function () {
-        self.incoming.showFilter = !self.incoming.showFilter;
-        self.incoming.filterBy = {
-            sender: undefined
+angular.module("managerApp").controller("TelecomSmsSmsIncomingCtrl", class TelecomSmsSmsIncomingCtrl {
+    constructor ($filter, $q, $scope, $stateParams, $translate, $timeout, $uibModal, $window, Sms, User, Toast, ToastError) {
+        this.$filter = $filter;
+        this.$q = $q;
+        this.$scope = $scope;
+        this.$stateParams = $stateParams;
+        this.$translate = $translate;
+        this.$timeout = $timeout;
+        this.$uibModal = $uibModal;
+        this.$window = $window;
+        this.api = {
+            sms: Sms.Lexi(),
+            smsIncoming: Sms.Incoming().Lexi(),
+            user: {
+                document: User.Document().Lexi()
+            }
         };
-        self.applySorting();
-    };
+        this.Toast = Toast;
+        this.ToastError = ToastError;
+    }
 
-    self.orderBy = function (by) {
-        if (self.incoming.orderBy === by) {
-            self.incoming.orderDesc = !self.incoming.orderDesc;
-        } else {
-            self.incoming.orderBy = by;
-        }
-        self.applySorting();
-    };
-
-    self.deleteSelectedIncoming = function () {
-        var incomings = self.getSelection();
-        var queries = incomings.map(function (incoming) {
-            return Sms.Incoming().Lexi().delete({
-                serviceName: $stateParams.serviceName,
-                id: incoming.id
-            }).$promise;
-        });
-        self.incoming.isDeleting = true;
-        queries.push($timeout(angular.noop, 500)); // avoid clipping
-        Toast.info($translate.instant("sms_sms_incoming_remove_success"));
-        return $q.all(queries).then(function () {
-            self.incoming.selected = {};
-            return self.refresh();
-        }).catch(function (err) {
-            return new ToastError(err);
-        }).finally(function () {
-            self.incoming.isDeleting = false;
-        });
-    };
-
-    self.read = function (incomingSms) {
-        var modal = $uibModal.open({
-            animation: true,
-            templateUrl: "app/telecom/sms/sms/incoming/read/telecom-sms-sms-incoming-read.html",
-            controller: "TelecomSmsSmsIncomingReadCtrl",
-            controllerAs: "IncomingReadCtrl",
-            resolve: {
-                incomingSms: function () { return incomingSms; }
-            }
-        });
-
-        self.incoming.isReading = true;
-        modal.rendered.then(function () {
-            self.incoming.isReading = false;
-        });
-
-        return modal;
-    };
-
-    self.remove = function (incomingSms) {
-        var modal = $uibModal.open({
-            animation: true,
-            templateUrl: "app/telecom/sms/sms/incoming/remove/telecom-sms-sms-incoming-remove.html",
-            controller: "TelecomSmsSmsIncomingRemoveCtrl",
-            controllerAs: "IncomingRemoveCtrl",
-            resolve: {
-                incomingSms: function () { return incomingSms; }
-            }
-        });
-
-        modal.result.then(function () {
-            self.refresh();
-        }, function (error) {
-            if (error && error.type === "API") {
-                Toast.error($translate.instant("sms_sms_incoming_remove_ko", { error: _.get(error, "msg.data.message") }));
-            }
-        });
-
-        return modal;
-    };
-
-    self.export = function () {
-        self.incoming.isExporting = true;
-        return Sms.Lexi().getDocument({
-            serviceName: $stateParams.serviceName,
-            "creationDatetime.from": moment(self.serviceInfos.creation).format(),
-            "creationDatetime.to": moment().format(),
-            wayType: "incoming"
-        }).$promise.then(function (smsDoc) {
-            var tryGetDocument = function () {
-                User.Document().Lexi().resetCache();
-                return User.Document().Lexi().get({
-                    id: smsDoc.docId
-                }).$promise.then(function (doc) {
-                    if (doc.size > 0) {
-                        return doc;
-                    }
-                    self.incoming.poller = $timeout(tryGetDocument, 1000);
-                    return self.incoming.poller;
-
-                });
-            };
-            return tryGetDocument().then(function (doc) {
-                $window.location.href = doc.getUrl;
-                $timeout(function () {
-                    return User.Document().Lexi().delete({
-                        id: doc.id
-                    }).$promise;
-                }, 3000);
-            });
-        }).catch(function (error) {
-            Toast.error($translate.instant("sms_sms_incoming_download_history_ko"));
-            return $q.reject(error);
-        }).finally(function () {
-            self.incoming.isExporting = false;
-        });
-    };
-
-    /* -----  End of ACTIONS  ------*/
-
-    /*= =====================================
-    =            INITIALIZATION            =
-    ======================================*/
-
-    function init () {
-        self.incoming = {
+    $onInit () {
+        this.incoming = {
             raw: [],
             paginated: null,
             sorted: null,
@@ -208,16 +37,205 @@ angular.module("managerApp").controller("TelecomSmsSmsIncomingCtrl", function ($
             isDeleting: false,
             poller: null
         };
-        self.serviceInfos = null;
-
-        self.refresh();
+        this.serviceInfos = null;
+        this.refresh();
+        this.$scope.$on("$destroy", () => this.$timeout.cancel(this.incoming.poller));
     }
 
-    /* -----  End of INITIALIZATION  ------*/
+    /**
+     * Refresh incoming sms list.
+     * @return {Promise}
+     */
+    refresh () {
+        this.api.smsIncoming.resetAllCache();
+        this.incoming.isLoading = true;
+        return this.$q.all({
+            incoming: this.fetchIncomingSms(),
+            serviceInfos: this.fetchServiceInfos()
+        }).then((results) => {
+            this.incoming.raw = angular.copy(results.incoming);
+            this.serviceInfos = results.serviceInfos;
+            this.applySorting();
+        }).catch((err) => {
+            this.ToastError(err);
+        }).finally(() => {
+            this.incoming.isLoading = false;
+        });
+    }
 
-    init();
+    /**
+     * Fetch all incoming sms.
+     * @return {Promise}
+     */
+    fetchIncomingSms () {
+        return this.api.smsIncoming.query({
+            serviceName: this.$stateParams.serviceName
+        }).$promise.then((incomingIds) =>
+            this.$q.all(_.map(_.chunk(incomingIds, 50), (id) =>
+                this.api.smsIncoming.getBatch({
+                    serviceName: this.$stateParams.serviceName,
+                    id
+                }).$promise
+            )).then((chunkResult) => _.pluck(_.flatten(chunkResult), "value"))
+        );
+    }
 
-    $scope.$on("$destroy", function () {
-        $timeout.cancel(self.incoming.poller);
-    });
+    /**
+     * Fetch service infos.
+     * @return {Promise}
+     */
+    fetchServiceInfos () {
+        return this.api.sms.getServiceInfos({
+            serviceName: this.$stateParams.serviceName
+        }).$promise;
+    }
+
+    /**
+     * Apply sorting.
+     */
+    applySorting () {
+        let data = angular.copy(this.incoming.raw);
+        data = this.$filter("filter")(data, this.incoming.filterBy);
+        data = this.$filter("orderBy")(
+            data,
+            this.incoming.orderBy,
+            this.incoming.orderDesc
+        );
+        this.incoming.sorted = data;
+    }
+
+    /**
+     * Toggle show filter.
+     */
+    toggleShowFilter () {
+        this.incoming.showFilter = !this.incoming.showFilter;
+        this.incoming.filterBy = {
+            sender: undefined
+        };
+        this.applySorting();
+    }
+
+    /**
+     * Order incoming sms.
+     * @param  {String} by
+     */
+    orderBy (by) {
+        if (this.incoming.orderBy === by) {
+            this.incoming.orderDesc = !this.incoming.orderDesc;
+        } else {
+            this.incoming.orderBy = by;
+        }
+        this.applySorting();
+    }
+
+    /**
+     * Get all incoming sms selected.
+     * @return {Promise}
+     */
+    getSelection () {
+        return _.filter(this.incoming.raw, (incoming) =>
+            incoming && this.incoming.selected && this.incoming.selected[incoming.id]
+        );
+    }
+
+    /**
+     * Delete selected incoming sms.
+     * @return {Promise}
+     */
+    deleteSelectedIncoming () {
+        const incomings = this.getSelection();
+        const queries = incomings.map((incoming) =>
+            this.api.smsIncoming.delete({
+                serviceName: this.$stateParams.serviceName,
+                id: incoming.id
+            }).$promise
+        );
+        this.incoming.isDeleting = true;
+        queries.push(this.$timeout(angular.noop, 500)); // avoid clipping
+        this.Toast.info(this.$translate.instant("sms_sms_incoming_remove_success"));
+        return this.$q.all(queries).then(() => {
+            this.incoming.selected = {};
+            return this.refresh();
+        }).catch((err) => {
+            this.ToastError(err);
+        }).finally(() => {
+            this.incoming.isDeleting = false;
+        });
+    }
+
+    /**
+     * Opens a modal to read a given incoming sms.
+     * @param  {Object} incomingSms
+     */
+    read (incomingSms) {
+        const modal = this.$uibModal.open({
+            animation: true,
+            templateUrl: "app/telecom/sms/sms/incoming/read/telecom-sms-sms-incoming-read.html",
+            controller: "TelecomSmsSmsIncomingReadCtrl",
+            controllerAs: "IncomingReadCtrl",
+            resolve: { incomingSms: () => incomingSms }
+        });
+        this.incoming.isReading = true;
+        modal.rendered.then(() => {
+            this.incoming.isReading = false;
+        });
+    }
+
+    /**
+     * Opens a modal to remove a given incoming sms.
+     * @param  {Object} incomingSms
+     */
+    remove (incomingSms) {
+        const modal = this.$uibModal.open({
+            animation: true,
+            templateUrl: "app/telecom/sms/sms/incoming/remove/telecom-sms-sms-incoming-remove.html",
+            controller: "TelecomSmsSmsIncomingRemoveCtrl",
+            controllerAs: "IncomingRemoveCtrl",
+            resolve: { incomingSms: () => incomingSms }
+        });
+        modal.result.then(() => this.refresh()).catch((error) => {
+            if (error && error.type === "API") {
+                this.Toast.error(this.$translate.instant("sms_sms_incoming_remove_ko", { error: _.get(error, "msg.data.message") }));
+            }
+        });
+    }
+
+    /**
+     * Export history.
+     * @return {Promise}
+     */
+    exportHistory () {
+        this.incoming.isExporting = true;
+        return this.api.sms.getDocument({
+            serviceName: this.$stateParams.serviceName,
+            "creationDatetime.from": moment(this.serviceInfos.creation).format(),
+            "creationDatetime.to": moment().format(),
+            wayType: "incoming"
+        }).$promise.then((smsDoc) => {
+            const tryGetDocument = () => {
+                this.api.user.document.resetCache();
+                return this.api.user.document.get({
+                    id: smsDoc.docId
+                }).$promise.then((doc) => {
+                    if (doc.size > 0) {
+                        return doc;
+                    }
+                    this.incoming.poller = this.$timeout(tryGetDocument, 1000);
+                    return this.incoming.poller;
+
+                });
+            };
+            return tryGetDocument().then((doc) => {
+                this.$window.location.href = doc.getUrl;
+                this.$timeout(() =>
+                    this.api.user.document.delete({ id: doc.id }).$promise, 3000
+                );
+            });
+        }).catch((error) => {
+            this.Toast.error(this.$translate.instant("sms_sms_incoming_download_history_ko"));
+            return this.$q.reject(error);
+        }).finally(() => {
+            this.incoming.isExporting = false;
+        });
+    }
 });

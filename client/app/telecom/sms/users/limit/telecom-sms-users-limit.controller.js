@@ -1,132 +1,138 @@
-angular.module("managerApp").controller("TelecomSmsUsersLimitCtrl", function ($q, $stateParams, $timeout, $uibModalInstance, User, Sms, SmsMediator, user, ToastError) {
-    "use strict";
+angular.module("managerApp").controller("TelecomSmsUsersLimitCtrl", class TelecomSmsUsersLimitCtrl {
+    constructor ($q, $stateParams, $timeout, $uibModalInstance, User, Sms, SmsMediator, user, ToastError) {
+        this.$q = $q;
+        this.$stateParams = $stateParams;
+        this.$timeout = $timeout;
+        this.$uibModalInstance = $uibModalInstance;
+        this.api = {
+            sms: {
+                users: Sms.Users().Lexi()
+            },
+            user: User.Lexi()
+        };
+        this.SmsMediator = SmsMediator;
+        this.ToastError = ToastError;
+        this.user = user;
+    }
 
-    var self = this;
+    $onInit () {
+        this.loading = {
+            init: false,
+            limitUser: false
+        };
+        this.limited = false;
+        this.model = {
+            user: angular.copy(this.user)
+        };
+        this.enums = {};
+        this.limitStatus = null;
+        this.numberPattern = /^\+?\d+$/;
 
-    /*= ==============================
-    =            HELPERS            =
-    ===============================*/
-
-    function fetchEnums () {
-        return SmsMediator.getApiScheme().then(function (schema) {
-            return {
-                smsSupport: schema.models["sms.SupportEnum"].enum
-            };
+        this.loading.init = true;
+        return this.$q.all({
+            enums: this.fetchEnums(),
+            userEmail: this.fetchUserEmail()
+        }).then((result) => {
+            this.enums = result.enums;
+            this.limitStatus = this.getLimitStatus();
+        }).catch((err) => {
+            this.ToastError(err);
+        }).finally(() => {
+            this.loading.init = false;
         });
     }
 
-    function fetchUserEmail () {
-        if (_.isEmpty(user.alertThresholdInformations.alertEmail)) {
-            return User.Lexi().get().$promise.then(function (userResult) {
-                self.user.alertThresholdInformations.alertEmail = userResult.email;
+    /**
+     * Fetch enums.
+     * @return {Promise}
+     */
+    fetchEnums () {
+        return this.SmsMediator.getApiScheme().then((schema) => schema.models["sms.SupportEnum"].enum);
+    }
+
+    /**
+     * Fetch user email.
+     * @return {Promise}
+     */
+    fetchUserEmail () {
+        if (_.isEmpty(this.user.alertThresholdInformations.alertEmail)) {
+            return this.api.user.get().$promise.then((user) => {
+                this.model.user.alertThresholdInformations.alertEmail = user.email;
             });
         }
-        return $q.when(null);
+        return this.$q.when(null);
     }
 
-    self.hasChanged = function () {
-        return !(
-            self.user.alertThresholdInformations.alertEmail === user.alertThresholdInformations.alertEmail &&
-            self.user.alertThresholdInformations.alertNumber === user.alertThresholdInformations.alertNumber &&
-            self.alertThreshold === user.alertThresholdInformations.alertThreshold &&
-            self.user.alertThresholdInformations.support === user.alertThresholdInformations.support &&
-            self.user.alertThresholdInformations.limitStatus === self.limitStatus
-        );
-    };
-
-    function getLimitStatus () {
-        if (self.user.alertThresholdInformations.alertThreshold === -1) {
-            self.user.alertThresholdInformations.limitStatus = "inactive";
+    /**
+     * Get limit status.
+     * @return {String}
+     */
+    getLimitStatus () {
+        if (this.model.user.alertThresholdInformations.alertThreshold === -1) {
+            this.model.user.alertThresholdInformations.limitStatus = "inactive";
         } else {
-            self.user.alertThresholdInformations.limitStatus = "active";
-            self.alertThreshold = self.user.alertThresholdInformations.alertThreshold;
+            this.model.user.alertThresholdInformations.limitStatus = "active";
+            this.alertThreshold = this.model.user.alertThresholdInformations.alertThreshold;
         }
-        return self.user.alertThresholdInformations.limitStatus;
+        return this.model.user.alertThresholdInformations.limitStatus;
     }
 
-    function getAlertThresholdInformations () {
+    /**
+     * Get alert threshold informations.
+     * @return {Objet}
+     */
+    getAlertThresholdInformations () {
         return {
             alertThresholdInformations: {
-                alertEmail: self.user.alertThresholdInformations.alertEmail,
-                alertNumber: self.user.alertThresholdInformations.alertNumber,
-                alertThreshold: self.user.alertThresholdInformations.limitStatus === "active" ? self.alertThreshold : -1,
-                support: self.user.alertThresholdInformations.support
+                alertEmail: this.model.user.alertThresholdInformations.alertEmail,
+                alertNumber: this.model.user.alertThresholdInformations.alertNumber,
+                alertThreshold: this.model.user.alertThresholdInformations.limitStatus === "active" ? this.alertThreshold : -1,
+                support: this.model.user.alertThresholdInformations.support
             }
         };
     }
 
-    /* -----  End of HELPERS  ------*/
-
-    /*= ==============================
-    =            ACTIONS            =
-    ===============================*/
-
-    self.limit = function () {
-        self.loading.limitUser = true;
-
-        return $q.all([
-            Sms.Users().Lexi().edit({
-                serviceName: $stateParams.serviceName,
-                login: self.user.login
-            }, getAlertThresholdInformations()).$promise,
-            $timeout(angular.noop, 1000)
-        ]).then(function () {
-            self.loading.limitUser = false;
-            self.limited = true;
-
-            return $timeout(self.close, 1000);
-        }, function (error) {
-            return self.cancel({
-                type: "API",
-                msg: error
-            });
-        });
-    };
-
-    self.cancel = function (message) {
-        return $uibModalInstance.dismiss(message);
-    };
-
-    self.close = function () {
-        return $uibModalInstance.close(true);
-    };
-
-    /* -----  End of ACTIONS  ------*/
-
-    /*= =====================================
-    =            INITIALIZATION            =
-    ======================================*/
-
-    function init () {
-        self.loading = {
-            init: false,
-            limitUser: false
-        };
-
-        self.limited = false;
-
-        self.user = angular.copy(user);
-
-        self.enums = {};
-
-        self.limitStatus = null;
-        self.numberPattern = /^\+?\d+$/;
-
-        self.loading.init = true;
-        return $q.all({
-            enums: fetchEnums(),
-            userEmail: fetchUserEmail()
-        }).then(function (responses) {
-            self.enums = responses.enums;
-            self.limitStatus = getLimitStatus();
-        }).catch(function (err) {
-            return new ToastError(err);
-        }).finally(function () {
-            self.loading.init = false;
-        });
+    /**
+     * Set sms api user limit.
+     * @return {Promise}
+     */
+    limit () {
+        this.loading.limitUser = true;
+        return this.$q.all([
+            this.api.sms.users.edit({
+                serviceName: this.$stateParams.serviceName,
+                login: this.model.user.login
+            }, this.getAlertThresholdInformations()).$promise,
+            this.$timeout(angular.noop, 1000)
+        ]).then(() => {
+            this.loading.limitUser = false;
+            this.limited = true;
+            return this.$timeout(() => this.close(), 1000);
+        }).catch((error) => this.cancel({
+            type: "API",
+            msg: error
+        }));
     }
 
-    /* -----  End of INITIALIZATION  ------*/
+    cancel (message) {
+        return this.$uibModalInstance.dismiss(message);
+    }
 
-    init();
+    close () {
+        return this.$uibModalInstance.close(true);
+    }
+
+    /**
+     * Has changed helper.
+     * @return {Boolean}
+     */
+    hasChanged () {
+        return !(
+            this.model.user.alertThresholdInformations.alertEmail === this.user.alertThresholdInformations.alertEmail &&
+            this.model.user.alertThresholdInformations.alertNumber === this.user.alertThresholdInformations.alertNumber &&
+            this.alertThreshold === this.user.alertThresholdInformations.alertThreshold &&
+            this.model.user.alertThresholdInformations.support === this.user.alertThresholdInformations.support &&
+            this.model.user.alertThresholdInformations.limitStatus === this.limitStatus
+        );
+    }
 });

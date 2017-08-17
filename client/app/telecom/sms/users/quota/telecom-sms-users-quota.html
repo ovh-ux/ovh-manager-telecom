@@ -18,10 +18,10 @@
 
         <p class="word-break"
            data-translate="sms_users_quota_user_info"
-           data-translate-values="{ login: UsersQuotaCtrl.user.login }">
+           data-translate-values="{ login: UsersQuotaCtrl.model.user.login }">
         </p>
 
-        <!-- Activate quota -->
+        <!-- ACTIVATE QUOTA -->
         <div class="form-group bottom-space-m16">
             <label class="block pointer">
                 <flat-checkbox>
@@ -31,8 +31,8 @@
                         id="quotaStatus"
                         class="form-control"
                         autofocus
-                        data-ng-model="UsersQuotaCtrl.user.quotaInformations.quotaStatus"
-                        data-ng-checked="UsersQuotaCtrl.user.quotaInformations.quotaStatus === 'active'"
+                        data-ng-model="UsersQuotaCtrl.model.user.quotaInformations.quotaStatus"
+                        data-ng-checked="UsersQuotaCtrl.model.user.quotaInformations.quotaStatus === 'active'"
                         data-ng-true-value="'active'"
                         data-ng-false-value="'inactive'" />
                 </flat-checkbox>
@@ -40,9 +40,9 @@
             </label>
         </div>
 
-        <!-- New quota -->
+        <!-- NEW QUOTA -->
         <div class="form-group bottom-space-m16">
-            <div flat-input-container>
+            <div data-flat-input-container>
                 <label for="newQuota"
                        class="control-label"
                        data-translate="sms_users_quota_user_new_quota_label">
@@ -55,8 +55,8 @@
                     min="0"
                     max="{{ UsersQuotaCtrl.service.creditsLeft }}"
                     step="1"
-                    data-ng-model="UsersQuotaCtrl.user.quotaInformations.quotaLeft"
-                    data-ng-disabled="UsersQuotaCtrl.user.quotaInformations.quotaStatus === 'inactive'"
+                    data-ng-model="UsersQuotaCtrl.model.user.quotaInformations.quotaLeft"
+                    data-ng-disabled="UsersQuotaCtrl.model.user.quotaInformations.quotaStatus === 'inactive'"
                     data-translate-attr="{ placeholder: 'sms_users_quota_user_new_quota_placeholder' }" />
                 <div role="alert"
                      data-ng-messages="quotaUserForm.newQuota.$error">

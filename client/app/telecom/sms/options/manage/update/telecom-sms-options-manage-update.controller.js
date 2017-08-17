@@ -1,57 +1,66 @@
-angular.module("managerApp").controller("TelecomSmsOptionsManageUpdateCtrl", function ($q, $stateParams, $timeout, $uibModalInstance, Sms, service) {
-    "use strict";
+angular.module("managerApp").controller("TelecomSmsOptionsManageUpdateCtrl", class TelecomSmsOptionsManageUpdateCtrl {
+    constructor ($q, $stateParams, $timeout, $uibModalInstance, Sms, service) {
+        this.$q = $q;
+        this.$stateParams = $stateParams;
+        this.$timeout = $timeout;
+        this.$uibModalInstance = $uibModalInstance;
+        this.api = {
+            sms: Sms.Lexi()
+        };
+        this.service = service;
+    }
 
-    var self = this;
+    $onInit () {
+        this.loading = {
+            updateOptions: false
+        };
+        this.updated = false;
+        this.model = {
+            service: angular.copy(this.service)
+        };
+        this.urlPattern = /^(https?):\/\/.*$/;
+        this.attributs = ["callBack", "stopCallBack"];
+    }
 
-    self.loading = {
-        updateOptions: false
-    };
+    /**
+     * Set callBack and stopCallBack URL.
+     * @return {Promise}
+     */
+    setUrls () {
+        this.loading.updateOptions = true;
+        return this.$q.all([
+            this.api.sms.put({
+                serviceName: this.$stateParams.serviceName
+            }, _.pick(this.model.service, this.attributs)).$promise,
+            this.$timeout(angular.noop, 1000)
+        ]).then(() => {
+            this.loading.updateOptions = false;
+            this.updated = true;
+            this.service.callBack = this.model.service.callBack;
+            this.service.stopCallBack = this.model.service.stopCallBack;
+            return this.$timeout(() => this.close(), 1500);
+        }).catch((error) => this.cancel({
+            type: "API",
+            msg: error
+        }));
+    }
 
-    self.updated = false;
+    cancel (message) {
+        return this.$uibModalInstance.dismiss(message);
+    }
 
-    self.service = angular.copy(service);
+    close () {
+        return this.$uibModalInstance.close(true);
+    }
 
-    self.urlPattern = /^(https?):\/\/.*$/;
-
-    self.hasChanged = function () {
-        return !(
-            self.service.callBack === service.callBack &&
-            self.service.stopCallBack === service.stopCallBack
+    /**
+     * Has changed helper.
+     * @return {Boolean}
+     */
+    hasChanged () {
+        return !_.isEqual(
+            _.pick(this.model.service, this.attributs),
+            _.pick(this.service, this.attributs)
         );
-    };
-
-    self.setUrls = function () {
-        self.loading.updateOptions = true;
-
-        return $q.all([
-            Sms.Lexi().put({
-                serviceName: $stateParams.serviceName
-            }, {
-                callBack: self.service.callBack,
-                stopCallBack: self.service.stopCallBack
-            }).$promise,
-            $timeout(angular.noop, 1000)
-        ]).then(function () {
-            self.loading.updateOptions = false;
-            self.updated = true;
-
-            service.callBack = self.service.callBack;
-            service.stopCallBack = self.service.stopCallBack;
-
-            return $timeout(self.close, 1500);
-        }, function (error) {
-            return self.cancel({
-                type: "API",
-                msg: error
-            });
-        });
-    };
-
-    self.cancel = function (message) {
-        return $uibModalInstance.dismiss(message);
-    };
-
-    self.close = function () {
-        return $uibModalInstance.close(true);
-    };
+    }
 });

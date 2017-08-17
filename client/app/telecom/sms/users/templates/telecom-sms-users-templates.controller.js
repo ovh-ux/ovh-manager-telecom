@@ -1,56 +1,66 @@
-angular.module("managerApp").controller("TelecomSmsUsersTemplatesCtrl", function ($q, $stateParams, $timeout, $uibModalInstance, Sms, service, SMS_ALERTS) {
-    "use strict";
+angular.module("managerApp").controller("TelecomSmsUsersTemplatesCtrl", class TelecomSmsUsersTemplatesCtrl {
+    constructor ($q, $stateParams, $timeout, $uibModalInstance, Sms, service, SMS_ALERTS) {
+        this.$q = $q;
+        this.$stateParams = $stateParams;
+        this.$timeout = $timeout;
+        this.$uibModalInstance = $uibModalInstance;
+        this.api = {
+            sms: Sms.Lexi()
+        };
+        this.service = service;
+        this.constant = { SMS_ALERTS };
+    }
 
-    var self = this;
+    $onInit () {
+        this.loading = {
+            updateTemplates: false
+        };
+        this.updated = false;
+        this.attributes = ["templates"];
+        this.model = {
+            service: angular.copy(this.service)
+        };
+        this.smsBodyMaxLength = _.get(this.constant.SMS_ALERTS, "sms.bodyMaxLength");
+        this.variables = _.get(this.constant.SMS_ALERTS, "variables");
+    }
 
-    self.loading = {
-        updateTemplates: false
-    };
-    self.updated = false;
-    self.service = angular.copy(service);
-    self.smsBodyMaxLength = _.get(SMS_ALERTS, "sms.bodyMaxLength");
-    self.variables = _.get(SMS_ALERTS, "variables");
+    /**
+     * Set templates.
+     * @return {Promise}
+     */
+    templates () {
+        this.loading.updateTemplates = true;
+        return this.$q.all([
+            this.api.sms.put({
+                serviceName: this.$stateParams.serviceName
+            }, _.pick(this.model.service, this.attributes)).$promise,
+            this.$timeout(angular.noop, 1000)
+        ]).then(() => {
+            this.loading.updateTemplates = false;
+            this.updated = true;
+            return this.$timeout(() => this.close(), 1000);
+        }).catch((error) => this.cancel({
+            type: "API",
+            msg: error
+        }));
+    }
 
-    /*= ==============================
-    =            HELPERS            =
-    ===============================*/
+    cancel (message) {
+        return this.$uibModalInstance.dismiss(message);
+    }
 
-    self.hasChanged = function () {
-        return !_.isEqual(self.service.templates, service.templates);
-    };
+    close () {
+        return this.$uibModalInstance.close(true);
+    }
 
-    /* -----  End of HELPERS  ------*/
-
-    /*= ==============================
-    =            ACTIONS            =
-    ===============================*/
-
-    self.cancel = function (message) {
-        return $uibModalInstance.dismiss(message);
-    };
-
-    self.close = function () {
-        return $uibModalInstance.close(true);
-    };
-
-    self.templates = function () {
-        self.loading.updateTemplates = true;
-        return $q.all([
-            Sms.Lexi().put({
-                serviceName: $stateParams.serviceName
-            }, _.pick(self.service, "templates")).$promise,
-            $timeout(angular.noop, 1000)
-        ]).then(function () {
-            self.loading.updateTemplates = false;
-            self.updated = true;
-            return $timeout(self.close, 1000);
-        }, function (error) {
-            return self.cancel({
-                type: "API",
-                msg: error
-            });
-        });
-    };
-
-    /* -----  End of ACTIONS  ------*/
+    /**
+     * Has changed helper.
+     * @return {Boolean}
+     */
+    hasChanged () {
+        return !_.isEqual(
+            _.pick(this.model.service, this.attributes),
+            _.pick(this.service, this.attributes)
+        );
+    }
 });

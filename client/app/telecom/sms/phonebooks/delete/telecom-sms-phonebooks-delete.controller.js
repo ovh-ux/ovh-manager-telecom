@@ -1,53 +1,52 @@
-angular.module("managerApp").controller("TelecomSmsPhonebooksDeleteCtrl", function ($q, $stateParams, $timeout, $uibModalInstance, phonebook, Sms) {
-    "use strict";
-
-    var self = this;
-
-    /*= ==============================
-    =            ACTIONS            =
-    ===============================*/
-
-    self.delete = function () {
-        self.isDeleting = true;
-        return $q.all([
-            Sms.Phonebooks().Lexi().delete({
-                serviceName: $stateParams.serviceName,
-                bookKey: _.get(self.phonebook, "bookKey")
-            }).$promise,
-            $timeout(angular.noop, 1000)
-        ]).then(function () {
-            self.isDeleting = false;
-            self.deleted = true;
-            return $timeout(self.close, 1500);
-        }, function (error) {
-            return self.cancel({
-                type: "API",
-                msg: error
-            });
-        });
-    };
-
-    self.cancel = function (message) {
-        return $uibModalInstance.dismiss(message);
-    };
-
-    self.close = function () {
-        return $uibModalInstance.close(true);
-    };
-
-    /* -----  End of ACTIONS  ------*/
-
-    /*= =====================================
-    =            INITIALIZATION            =
-    ======================================*/
-
-    function init () {
-        self.phonebook = angular.copy(phonebook);
-        self.isDeleting = false;
-        self.deleted = false;
+angular.module("managerApp").controller("TelecomSmsPhonebooksDeleteCtrl", class TelecomSmsPhonebooksDeleteCtrl {
+    constructor ($q, $stateParams, $timeout, $uibModalInstance, phonebook, Sms) {
+        this.$q = $q;
+        this.$stateParams = $stateParams;
+        this.$timeout = $timeout;
+        this.$uibModalInstance = $uibModalInstance;
+        this.phonebook = phonebook;
+        this.api = {
+            sms: {
+                phonebooks: Sms.Phonebooks().Lexi()
+            }
+        };
     }
 
-    /* -----  End of INITIALIZATION  ------*/
+    $onInit () {
+        this.model = {
+            phonebook: angular.copy(this.phonebook)
+        };
+        this.isDeleting = false;
+        this.deleted = false;
+    }
 
-    init();
+    /**
+     * Delete phonebook.
+     * @return {Promise}
+     */
+    delete () {
+        this.isDeleting = true;
+        return this.$q.all([
+            this.api.sms.phonebooks.delete({
+                serviceName: this.$stateParams.serviceName,
+                bookKey: _.get(this.phonebook, "bookKey")
+            }).$promise,
+            this.$timeout(angular.noop, 1000)
+        ]).then(() => {
+            this.isDeleting = false;
+            this.deleted = true;
+            return this.$timeout(() => this.close(), 1500);
+        }).catch((error) => this.cancel({
+            type: "API",
+            msg: error
+        }));
+    }
+
+    cancel (message) {
+        return this.$uibModalInstance.dismiss(message);
+    }
+
+    close () {
+        return this.$uibModalInstance.close(true);
+    }
 });
