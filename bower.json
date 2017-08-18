@@ -102,7 +102,7 @@
     "ovh-manager-webfont": "^1.0.1",
     "ovh-ng-input-password": "^1.2.5",
     "ovh-ngstrap": "^4.0.2",
-    "ovh-ui-kit": "git+https://github.com/ovh-ux/ovh-ui-kit.git#v1.0.0-alpha.7",
+    "ovh-ui-kit": "git+https://github.com/ovh-ux/ovh-ui-kit.git#v1.0.0-alpha.13",
     "validator-js": "3.40.1"
   },
   "devDependencies": {

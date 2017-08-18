@@ -15,6 +15,7 @@
         <!-- endbuild -->
         <!-- build:css({.tmp,client}) app/app.css -->
         <link rel="stylesheet" href="app/app.css">
+        <link rel="stylesheet" href="node_modules/ng-embed/dist/ng-embed.min.css">
         <!-- injector:css -->
         <!-- endinjector -->
         <!-- endbuild -->
@@ -43,6 +44,7 @@
                 </div>
 
             </div>
+            <chatbot></chatbot>
         </div>
 
         <!--[if lt IE 9]>
@@ -58,6 +60,14 @@
         <script src="bower_components/cryptojs/lib/PBKDF2.js"></script>
         <script src="bower_components/cryptojs/lib/HMAC.js"></script>
         <script src="bower_components/cryptojs/lib/AES.js"></script>
+
+        <script src="bower_components/jquery-ui/jquery-ui.js"></script>
+        <script src="node_modules/simple-web-notification/web-notification.js"></script>
+        <script src="node_modules/angular-web-notification/angular-web-notification.js"></script>
+        <script src="node_modules/ng-embed/dist/ng-embed.min.js"></script>
+        <script src="node_modules/ovh-angular-proxy-request/dist/ovh-angular-proxy-request.min.js"></script>
+        <script src="node_modules/ovh-angular-user-pref/dist/ovh-angular-user-pref.min.js"></script>
+        <script src="node_modules/ovh-angular-chatbot/dist/ovh-angular-chatbot.min.js"></script>
         <!-- endbuild -->
         <!-- build:js({.tmp,dist/client}) app/app.js -->
         <script src="app/app.js"></script>

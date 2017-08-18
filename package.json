@@ -10,6 +10,9 @@
     "express": "~4.13.3",
     "lodash": "~3.0.1",
     "morgan": "~1.0.0",
+    "ovh-angular-chatbot": "git+https://github.com/ovh-ux/ovh-angular-chatbot.git",
+    "ovh-angular-proxy-request": "^0.1.0",
+    "ovh-angular-user-pref": "^0.3.1",
     "request": "^2.51.0",
     "spdy": "^3.4.4"
   },
