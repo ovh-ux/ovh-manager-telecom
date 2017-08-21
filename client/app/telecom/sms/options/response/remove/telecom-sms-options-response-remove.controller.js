@@ -1,60 +1,65 @@
-angular.module("managerApp").controller("TelecomSmsOptionsResponseRemoveCtrl", function ($q, $stateParams, $timeout, $uibModalInstance, Sms, SmsMediator, service, index, option) {
-    "use strict";
+angular.module("managerApp").controller("TelecomSmsOptionsResponseRemoveCtrl", class TelecomSmsOptionsResponseRemoveCtrl {
+    constructor ($q, $stateParams, $timeout, $uibModalInstance, Sms, SmsMediator, service, index, option) {
+        this.$q = $q;
+        this.$stateParams = $stateParams;
+        this.$timeout = $timeout;
+        this.$uibModalInstance = $uibModalInstance;
+        this.api = {
+            sms: Sms.Lexi()
+        };
+        this.SmsMediator = SmsMediator;
+        this.service = service;
+        this.index = index;
+        this.option = option;
+    }
 
-    var self = this;
+    $onInit () {
+        this.loading = {
+            removeTrackingOption: false
+        };
+        this.removed = false;
+        this.model = {
+            service: angular.copy(this.service),
+            index: this.index,
+            option: this.option
+        };
+    }
 
-    self.loading = {
-        removeTrackingOption: false
-    };
-
-    self.removed = false;
-
-    self.service = angular.copy(service);
-    self.index = index;
-    self.option = option;
-
-    /*= ==============================
-    =            ACTIONS            =
-    ===============================*/
-
-    self.remove = function () {
-        self.loading.removeTrackingOption = true;
-
+    /**
+     * Remove sms response tracking options.
+     * @return {Promise}
+     */
+    remove () {
+        this.loading.removeTrackingOption = true;
         _.remove(
-            self.service.smsResponse.trackingOptions,
-            self.service.smsResponse.trackingOptions[self.index]
+            this.model.service.smsResponse.trackingOptions,
+            this.model.service.smsResponse.trackingOptions[this.model.index]
         );
-
-        return $q.all([
-            Sms.Lexi().edit({
-                serviceName: $stateParams.serviceName
+        return this.$q.all([
+            this.api.sms.edit({
+                serviceName: this.$stateParams.serviceName
             }, {
                 smsResponse: {
-                    trackingOptions: self.service.smsResponse.trackingOptions,
-                    responseType: self.service.smsResponse.responseType
+                    trackingOptions: this.model.service.smsResponse.trackingOptions,
+                    responseType: this.model.service.smsResponse.responseType
                 }
             }).$promise,
-            $timeout(angular.noop, 1000)
-        ]).then(function () {
-            self.loading.removeTrackingOption = false;
-            self.removed = true;
+            this.$timeout(angular.noop, 1000)
+        ]).then(() => {
+            this.loading.removeTrackingOption = false;
+            this.removed = true;
+            return this.$timeout(() => this.close(), 1000);
+        }).catch((error) => this.cancel({
+            type: "API",
+            msg: error
+        }));
+    }
 
-            return $timeout(self.close, 1000);
-        }, function (error) {
-            return self.cancel({
-                type: "API",
-                msg: error
-            });
-        });
-    };
+    cancel (message) {
+        return this.$uibModalInstance.dismiss(message);
+    }
 
-    self.cancel = function (message) {
-        return $uibModalInstance.dismiss(message);
-    };
-
-    self.close = function () {
-        return $uibModalInstance.close(true);
-    };
-
-    /* -----  End of ACTIONS  ------*/
+    close () {
+        return this.$uibModalInstance.close(true);
+    }
 });

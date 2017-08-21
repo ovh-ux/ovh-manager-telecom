@@ -1,190 +1,29 @@
-angular.module("managerApp").controller("TelecomSmsOptionsResponseCtrl", function ($q, $stateParams, $translate, $uibModal, Sms, SmsMediator, Toast, ToastError) {
-    "use strict";
-
-    var self = this;
-
-    /*= ==============================
-    =            HELPERS            =
-    ===============================*/
-
-    function fetchEnums () {
-        return SmsMediator.getApiScheme().then(function (schema) {
-            return {
-                smsResponseType: schema.models["sms.ResponseTypeEnum"].enum
-            };
-        });
+angular.module("managerApp").controller("TelecomSmsOptionsResponseCtrl", class TelecomSmsOptionsResponseCtrl {
+    constructor ($q, $stateParams, $translate, $uibModal, Sms, SmsMediator, Toast, ToastError) {
+        this.$q = $q;
+        this.$stateParams = $stateParams;
+        this.$translate = $translate;
+        this.$uibModal = $uibModal;
+        this.api = {
+            sms: Sms.Lexi(),
+            smsSenders: Sms.Senders().Lexi()
+        };
+        this.SmsMediator = SmsMediator;
+        this.Toast = Toast;
+        this.ToastError = ToastError;
     }
 
-    function fetchService () {
-        return Sms.Lexi().get({
-            serviceName: $stateParams.serviceName
-        }).$promise;
-    }
-
-    function fetchSenders () {
-        return Sms.Senders().Lexi().query({
-            serviceName: $stateParams.serviceName
-        }).$promise.then(function (sendersIds) {
-            return $q.all(_.map(sendersIds, function (sender) {
-                return Sms.Senders().Lexi().get({
-                    serviceName: $stateParams.serviceName,
-                    sender: sender
-                }).$promise;
-            })).then(function (senders) {
-                return _.filter(senders, { status: "enable" });
-            });
-        });
-    }
-
-    /* -----  End of HELPERS  ------*/
-
-    /*= ==============================
-    =            ACTIONS            =
-    ===============================*/
-
-    self.hasChanged = function () {
-        return !(
-            self.service.smsResponse.responseType === self.smsResponse.responseType &&
-            self.service.smsResponse.cgiUrl === self.smsResponse.cgiUrl &&
-            self.service.smsResponse.text === self.smsResponse.text
-        );
-    };
-
-    self.computeRemainingChar = function () {
-        return _.assign(self.message, SmsMediator.getSmsInfoText(
-            self.smsResponse.text,
-            false // suffix
-        ));
-    };
-
-    self.setResponseAction = function () {
-        self.loading.action = true;
-
-        return Sms.Lexi().edit({
-            serviceName: $stateParams.serviceName
-        }, {
-            smsResponse: {
-                cgiUrl: self.smsResponse.cgiUrl,
-                responseType: self.smsResponse.responseType,
-                text: self.smsResponse.text,
-                trackingOptions: self.smsResponse.trackingOptions
-            }
-        }).$promise.then(function () {
-            self.service.smsResponse = self.smsResponse;
-            self.smsResponse = angular.copy(_.result(self.service, "smsResponse"));
-
-            Toast.success($translate.instant("sms_options_response_action_status_success"));
-        }).catch(function (err) {
-            return new ToastError(err);
-        }).finally(function () {
-            self.loading.action = false;
-        });
-    };
-
-    self.addTrackingOptions = function () {
-        var modal = $uibModal.open({
-            animation: true,
-            templateUrl: "app/telecom/sms/options/response/add/telecom-sms-options-response-add.html",
-            controller: "TelecomSmsOptionsResponseAddCtrl",
-            controllerAs: "OptionsResponseAddCtrl",
-            resolve: {
-                service: function () { return self.service; },
-                senders: function () { return self.senders; }
-            }
-        });
-
-        modal.result.then(function () {
-            return fetchService().then(function (service) {
-                self.service = angular.copy(service);
-                self.smsResponse = angular.copy(_.result(self.service, "smsResponse"));
-            });
-        }, function (error) {
-            if (error && error.type === "API") {
-                Toast.error($translate.instant("sms_options_response_tracking_add_option_ko", { error: error.message }));
-            }
-        });
-
-        return modal;
-    };
-
-    self.editTrackingOptions = function ($index, option) {
-        var modal = $uibModal.open({
-            animation: true,
-            templateUrl: "app/telecom/sms/options/response/edit/telecom-sms-options-response-edit.html",
-            controller: "TelecomSmsOptionsResponseEditCtrl",
-            controllerAs: "OptionsResponseEditCtrl",
-            resolve: {
-                service: function () { return self.service; },
-                senders: function () { return self.senders; },
-                index: function () { return $index; },
-                option: function () { return option; }
-            }
-        });
-
-        modal.result.then(function () {
-            return fetchService().then(function (service) {
-                self.service = angular.copy(service);
-                self.smsResponse = angular.copy(_.result(self.service, "smsResponse"));
-            });
-        }, function (error) {
-            if (error && error.type === "API") {
-                Toast.error($translate.instant("sms_options_response_tracking_edit_option_ko", { error: error.message }));
-            }
-        });
-
-        return modal;
-    };
-
-    self.removeTrackingOptions = function ($index, option) {
-        var modal = $uibModal.open({
-            animation: true,
-            templateUrl: "app/telecom/sms/options/response/remove/telecom-sms-options-response-remove.html",
-            controller: "TelecomSmsOptionsResponseRemoveCtrl",
-            controllerAs: "OptionsResponseRemoveCtrl",
-            resolve: {
-                service: function () { return self.service; },
-                index: function () { return $index; },
-                option: function () { return option; }
-            }
-        });
-
-        modal.result.then(function () {
-            return fetchService().then(function (service) {
-                self.service = angular.copy(service);
-                self.smsResponse = angular.copy(_.result(self.service, "smsResponse"));
-            });
-        }, function (error) {
-            if (error && error.type === "API") {
-                Toast.error($translate.instant("sms_options_response_tracking_remove_option_ko", { error: error.message }));
-            }
-        });
-
-        return modal;
-    };
-
-    /* -----  End of ACTIONS  ------*/
-
-    /*= =====================================
-    =            INITIALIZATION            =
-    ======================================*/
-
-    function init () {
-        self.loading = {
+    $onInit () {
+        this.loading = {
             init: false,
             action: false
         };
-
-        self.enums = {};
-
-        self.service = null;
-
-        self.smsResponse = {};
-
-        self.senders = null;
-
-        self.urlPattern = /^(https?):\/\/.*$/;
-
-        self.message = {
+        this.enums = {};
+        this.service = null;
+        this.smsResponse = {};
+        this.senders = null;
+        this.urlPattern = /^(https?):\/\/.*$/;
+        this.message = {
             coding: "7bit",
             defaultSize: 160,
             remainingCharacters: null,
@@ -193,29 +32,204 @@ angular.module("managerApp").controller("TelecomSmsOptionsResponseCtrl", functio
             maxLengthReached: false
         };
 
-        self.loading.init = true;
-        return $q.all({
-            enums: fetchEnums(),
-            service: fetchService(),
-            senders: fetchSenders()
-        }).then(function (responses) {
-            self.enums = responses.enums;
+        this.loading.init = true;
+        return this.$q.all({
+            enums: this.fetchEnums(),
+            service: this.fetchService(),
+            senders: this.fetchSenders()
+        }).then((responses) => {
+            this.enums = responses.enums;
 
             // Reordered available responses
             // ["cgi", "none", "text"] => ["none", "cgi", "text"]
-            self.enums.smsResponseType.splice(0, 0, self.enums.smsResponseType.splice(1, 1)[0]);
-            self.service = angular.copy(responses.service);
-            self.smsResponse = angular.copy(_.result(self.service, "smsResponse"));
-            self.senders = responses.senders;
-            self.computeRemainingChar();
-        }).catch(function (err) {
-            return new ToastError(err);
-        }).finally(function () {
-            self.loading.init = false;
+            this.enums.smsResponseType.splice(0, 0, this.enums.smsResponseType.splice(1, 1)[0]);
+            this.service = angular.copy(responses.service);
+            this.smsResponse = angular.copy(_.result(this.service, "smsResponse"));
+            this.senders = responses.senders;
+            this.computeRemainingChar();
+        }).catch((err) => {
+            this.ToastError(err);
+        }).finally(() => {
+            this.loading.init = false;
         });
     }
 
-    /* -----  End of INITIALIZATION  ------*/
+    /**
+     * Fetch enums.
+     * @return {Promise}
+     */
+    fetchEnums () {
+        return this.SmsMediator.getApiScheme().then((schema) => {
+            const smsResponseTypeEnum = {
+                smsResponseType: schema.models["sms.ResponseTypeEnum"].enum
+            };
+            return smsResponseTypeEnum;
+        });
+    }
 
-    init();
+    /**
+     * Fetch service.
+     * @return {Promise}
+     */
+    fetchService () {
+        return this.api.sms.get({
+            serviceName: this.$stateParams.serviceName
+        }).$promise;
+    }
+
+    /**
+     * Fetch all enabled senders.
+     * @return {Promise}
+     */
+    fetchSenders () {
+        return this.api.smsSenders.query({
+            serviceName: this.$stateParams.serviceName
+        }).$promise.then((sendersIds) =>
+            this.$q.all(_.map(sendersIds, (sender) =>
+                this.api.smsSenders.get({
+                    serviceName: this.$stateParams.serviceName,
+                    sender
+                }).$promise
+            )).then((senders) => _.filter(senders, { status: "enable" }))
+        );
+    }
+
+    /**
+     * Compute remaining characters.
+     * @return {Object}
+     */
+    computeRemainingChar () {
+        return _.assign(this.message, this.SmsMediator.getSmsInfoText(
+            this.smsResponse.text,
+            false // suffix
+        ));
+    }
+
+    /**
+     * Set response action.
+     * @return {Promise}
+     */
+    setResponseAction () {
+        this.loading.action = true;
+        return this.api.sms.edit({
+            serviceName: this.$stateParams.serviceName
+        }, {
+            smsResponse: {
+                cgiUrl: this.smsResponse.cgiUrl,
+                responseType: this.smsResponse.responseType,
+                text: this.smsResponse.text,
+                trackingOptions: this.smsResponse.trackingOptions
+            }
+        }).$promise.then(() => {
+            this.service.smsResponse = this.smsResponse;
+            this.smsResponse = angular.copy(_.result(this.service, "smsResponse"));
+            this.Toast.success(this.$translate.instant("sms_options_response_action_status_success"));
+        }).catch((err) => {
+            this.ToastError(err);
+        }).finally(() => {
+            this.loading.action = false;
+        });
+    }
+
+    /**
+     * Add tracking options.
+     */
+    addTrackingOptions () {
+        const modal = this.$uibModal.open({
+            animation: true,
+            templateUrl: "app/telecom/sms/options/response/add/telecom-sms-options-response-add.html",
+            controller: "TelecomSmsOptionsResponseAddCtrl",
+            controllerAs: "OptionsResponseAddCtrl",
+            resolve: {
+                params: () => {
+                    const params = {
+                        service: this.service,
+                        senders: this.senders
+                    };
+                    return params;
+                }
+            }
+        });
+        modal.result.then(() =>
+            this.fetchService().then((service) => {
+                this.service = angular.copy(service);
+                this.smsResponse = angular.copy(_.result(this.service, "smsResponse"));
+            })
+        ).catch((error) => {
+            if (error && error.type === "API") {
+                this.Toast.error(this.$translate.instant("sms_options_response_tracking_add_option_ko", { error: error.message }));
+            }
+        });
+    }
+
+    /**
+     * Edit tracking options.
+     * @param  {Number} $index
+     * @param  {Object} option
+     */
+    editTrackingOptions ($index, option) {
+        const modal = this.$uibModal.open({
+            animation: true,
+            templateUrl: "app/telecom/sms/options/response/edit/telecom-sms-options-response-edit.html",
+            controller: "TelecomSmsOptionsResponseEditCtrl",
+            controllerAs: "OptionsResponseEditCtrl",
+            resolve: {
+                service: () => this.service,
+                senders: () => this.senders,
+                index: () => $index,
+                option: () => option
+            }
+        });
+        modal.result.then(() =>
+            this.fetchService().then((service) => {
+                this.service = angular.copy(service);
+                this.smsResponse = angular.copy(_.result(this.service, "smsResponse"));
+            })
+        ).catch((error) => {
+            if (error && error.type === "API") {
+                this.Toast.error(this.$translate.instant("sms_options_response_tracking_edit_option_ko", { error: error.message }));
+            }
+        });
+    }
+
+    /**
+     * Remove tracking options.
+     * @param  {Number} $index
+     * @param  {Object} option
+     */
+    removeTrackingOptions ($index, option) {
+        const modal = this.$uibModal.open({
+            animation: true,
+            templateUrl: "app/telecom/sms/options/response/remove/telecom-sms-options-response-remove.html",
+            controller: "TelecomSmsOptionsResponseRemoveCtrl",
+            controllerAs: "OptionsResponseRemoveCtrl",
+            resolve: {
+                service: () => this.service,
+                index: () => $index,
+                option: () => option
+            }
+        });
+        modal.result.then(() =>
+            this.fetchService().then((service) => {
+                this.service = angular.copy(service);
+                this.smsResponse = angular.copy(_.result(this.service, "smsResponse"));
+            })
+        ).catch((error) => {
+            if (error && error.type === "API") {
+                this.Toast.error(this.$translate.instant("sms_options_response_tracking_remove_option_ko", { error: error.message }));
+            }
+        });
+    }
+
+    /**
+     * Has changed helper.
+     * @return {Boolean}
+     */
+    hasChanged () {
+        return !(
+            this.service.smsResponse.responseType === this.smsResponse.responseType &&
+            this.service.smsResponse.cgiUrl === this.smsResponse.cgiUrl &&
+            this.service.smsResponse.text === this.smsResponse.text
+        );
+    }
 });

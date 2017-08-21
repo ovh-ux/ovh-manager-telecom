@@ -1,12 +1,11 @@
-angular.module("managerApp").controller("TelecomSmsSmsOutgoingReadCtrl", function ($uibModalInstance, outgoingSms, outgoingSmsHlr) {
-    "use strict";
+angular.module("managerApp").controller("TelecomSmsSmsOutgoingReadCtrl", class TelecomSmsSmsOutgoingReadCtrl {
+    constructor ($uibModalInstance, outgoingSms, outgoingSmsHlr) {
+        this.$uibModalInstance = $uibModalInstance;
+        this.outgoingSms = outgoingSms;
+        this.outgoingSmsHlr = outgoingSmsHlr;
+    }
 
-    var self = this;
-
-    self.outgoingSms = angular.copy(outgoingSms);
-    self.outgoingSmsHlr = angular.copy(outgoingSmsHlr);
-
-    self.close = function () {
-        return $uibModalInstance.close(true);
-    };
+    close () {
+        return this.$uibModalInstance.close(true);
+    }
 });

@@ -1,6 +1,5 @@
-angular.module("managerApp").config(function ($stateProvider) {
+angular.module("managerApp").config(($stateProvider) => {
     "use strict";
-
     $stateProvider.state("telecom.sms.senders.blacklisted", {
         url: "/blacklisted",
         views: {
@@ -10,6 +9,9 @@ angular.module("managerApp").config(function ($stateProvider) {
                 controllerAs: "SmsSendersBlacklistedCtrl"
             }
         },
-        translations: ["common", "telecom/sms/senders/blacklisted"]
+        translations: [
+            "common",
+            "telecom/sms/senders/blacklisted"
+        ]
     });
 });

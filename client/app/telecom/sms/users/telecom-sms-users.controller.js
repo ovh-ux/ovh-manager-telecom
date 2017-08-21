@@ -1,253 +1,22 @@
-angular.module("managerApp").controller("TelecomSmsUsersCtrl", function ($stateParams, $q, $filter, $uibModal, $translate, Sms, SmsMediator, Toast, ToastError) {
-    "use strict";
-
-    var self = this;
-
-    /*= ==============================
-    =            HELPERS            =
-    ===============================*/
-
-    function fetchUsers () {
-        return Sms.Users().Lexi().query({
-            serviceName: $stateParams.serviceName
-        }).$promise.then(function (loginIds) {
-            return $q.all(_.map(loginIds, function (login) {
-                return Sms.Users().Lexi().get({
-                    serviceName: $stateParams.serviceName,
-                    login: login
-                }).$promise;
-            }));
-        });
+angular.module("managerApp").controller("TelecomSmsUsersCtrl", class TelecomSmsUsersCtrl {
+    constructor ($stateParams, $q, $filter, $uibModal, $translate, Sms, SmsMediator, Toast, ToastError) {
+        this.$filter = $filter;
+        this.$q = $q;
+        this.$stateParams = $stateParams;
+        this.$translate = $translate;
+        this.$uibModal = $uibModal;
+        this.api = {
+            sms: Sms.Lexi(),
+            smsUsers: Sms.Users().Lexi()
+        };
+        this.SmsMediator = SmsMediator;
+        this.Toast = Toast;
+        this.ToastError = ToastError;
     }
 
-    /* -----  End of HELPERS  ------*/
-
-    /*= ==============================
-    =            ACTIONS            =
-    ===============================*/
-
-    self.refresh = function () {
-        Sms.Users().Lexi().resetAllCache();
-        self.users.isLoading = true;
-        return fetchUsers().then(function (users) {
-            self.users.raw = angular.copy(users);
-            self.applySorting();
-        }).catch(function (err) {
-            return new ToastError(err);
-        }).finally(function () {
-            self.users.isLoading = false;
-        });
-    };
-
-    self.applySorting = function () {
-        var data = angular.copy(self.users.raw);
-        data = $filter("orderBy")(
-            data,
-            self.users.orderBy,
-            self.users.orderDesc
-        );
-        self.users.sorted = data;
-    };
-
-    self.orderBy = function (by) {
-        if (self.users.orderBy === by) {
-            self.users.orderDesc = !self.users.orderDesc;
-        } else {
-            self.users.orderBy = by;
-        }
-        self.applySorting();
-    };
-
-    self.add = function () {
-        var modal = $uibModal.open({
-            animation: true,
-            templateUrl: "app/telecom/sms/users/add/telecom-sms-users-add.html",
-            controller: "TelecomSmsUsersAddCtrl",
-            controllerAs: "UsersAddCtrl"
-        });
-
-        modal.result.then(function () {
-            return self.refresh();
-        }, function (error) {
-            if (error && error.type === "API") {
-                Toast.error($translate.instant("sms_users_add_user_ko", { error: _.get(error, "msg.data.message") }));
-            }
-        });
-
-        return modal;
-    };
-
-    self.templates = function () {
-        var modal = $uibModal.open({
-            animation: true,
-            templateUrl: "app/telecom/sms/users/templates/telecom-sms-users-templates.html",
-            controller: "TelecomSmsUsersTemplatesCtrl",
-            controllerAs: "UsersTemplatesCtrl",
-            resolve: {
-                service: function () { return self.service; }
-            }
-        });
-
-        modal.result.then(function () {
-            return Sms.Lexi().get({
-                serviceName: $stateParams.serviceName
-            }).$promise.then(function (service) {
-                self.service = service;
-            }).catch(function (error) {
-                return new ToastError(error);
-            });
-        }, function (error) {
-            if (error && error.type === "API") {
-                Toast.error($translate.instant("sms_users_templates_update_ko", { error: _.get(error, "msg.data.message") }));
-            }
-        });
-
-        return modal;
-    };
-
-    self.changePassword = function (user) {
-        var modal = $uibModal.open({
-            animation: true,
-            templateUrl: "app/telecom/sms/users/change-password/telecom-sms-users-change-password.html",
-            controller: "TelecomSmsUsersChangePasswordCtrl",
-            controllerAs: "UsersChangePasswordCtrl",
-            resolve: {
-                user: function () { return user; }
-            }
-        });
-
-        modal.result.then(function () {
-            return self.refresh();
-        }, function (error) {
-            if (error && error.type === "API") {
-                Toast.error($translate.instant("sms_users_change_password_user_ko", { error: _.get(error, "msg.data.message") }));
-            }
-        });
-
-        return modal;
-    };
-
-    self.quota = function (user) {
-        var modal = $uibModal.open({
-            animation: true,
-            templateUrl: "app/telecom/sms/users/quota/telecom-sms-users-quota.html",
-            controller: "TelecomSmsUsersQuotaCtrl",
-            controllerAs: "UsersQuotaCtrl",
-            resolve: {
-                user: function () { return user; },
-                service: function () { return self.service; }
-            }
-        });
-
-        modal.result.then(function () {
-            return self.refresh();
-        }, function (error) {
-            if (error && error.type === "API") {
-                Toast.error($translate.instant("sms_users_quota_user_ko", { error: _.get(error, "msg.data.message") }));
-            }
-        });
-
-        return modal;
-    };
-
-    self.limit = function (user) {
-        var modal = $uibModal.open({
-            animation: true,
-            templateUrl: "app/telecom/sms/users/limit/telecom-sms-users-limit.html",
-            controller: "TelecomSmsUsersLimitCtrl",
-            controllerAs: "UsersLimitCtrl",
-            resolve: {
-                user: function () { return user; }
-            }
-        });
-
-        modal.result.then(function () {
-            return self.refresh();
-        }, function (error) {
-            if (error && error.type === "API") {
-                Toast.error($translate.instant("sms_users_limit_user_ko", { error: _.get(error, "msg.data.message") }));
-            }
-        });
-
-        return modal;
-    };
-
-    self.restrict = function (user) {
-        var modal = $uibModal.open({
-            animation: true,
-            templateUrl: "app/telecom/sms/users/restrict/telecom-sms-users-restrict.html",
-            controller: "TelecomSmsUsersRestrictByIpCtrl",
-            controllerAs: "UsersRestrictByIpCtrl",
-            resolve: {
-                user: function () { return user; }
-            }
-        });
-
-        modal.result.then(function () {
-            return self.refresh();
-        }, function (error) {
-            if (error && error.type === "API") {
-                Toast.error($translate.instant("sms_users_restrict_user_ko", { error: _.get(error, "msg.data.message") }));
-            }
-        });
-
-        return modal;
-    };
-
-    self.callback = function (user) {
-        var modal = $uibModal.open({
-            animation: true,
-            templateUrl: "app/telecom/sms/users/callback/telecom-sms-users-callback.html",
-            controller: "TelecomSmsUsersCallbackCtrl",
-            controllerAs: "UsersCallbackCtrl",
-            resolve: {
-                user: function () { return user; }
-            }
-        });
-
-        modal.result.then(function () {
-            return self.refresh();
-        }, function (error) {
-            if (error && error.type === "API") {
-                Toast.error($translate.instant("sms_users_callback_user_ko", { error: _.get(error, "msg.data.message") }));
-            }
-        });
-
-        return modal;
-    };
-
-    self.remove = function (user) {
-        var modal = $uibModal.open({
-            animation: true,
-            templateUrl: "app/telecom/sms/users/remove/telecom-sms-users-remove.html",
-            controller: "TelecomSmsUsersRemoveCtrl",
-            controllerAs: "UsersRemoveCtrl",
-            resolve: {
-                user: function () { return user; }
-            }
-        });
-
-        modal.result.then(function () {
-            return self.refresh();
-        }, function (error) {
-            if (error && error.type === "API") {
-                Toast.error($translate.instant("sms_users_remove_user_ko", { error: _.get(error, "msg.data.message") }));
-            }
-        });
-
-        return modal;
-    };
-
-    /* -----  End of ACTIONS  ------*/
-
-    /*= =====================================
-    =            INITIALIZATION            =
-    ======================================*/
-
-    function init () {
-        self.service = null;
-
-        self.users = {
+    $onInit () {
+        this.service = null;
+        this.users = {
             raw: null,
             paginated: null,
             sorted: null,
@@ -255,13 +24,231 @@ angular.module("managerApp").controller("TelecomSmsUsersCtrl", function ($stateP
             orderDesc: false,
             isLoading: false
         };
-
-        return self.refresh().then(function () {
-            self.service = SmsMediator.getCurrentSmsService();
+        this.refresh().then(() => {
+            this.service = this.SmsMediator.getCurrentSmsService();
         });
     }
 
-    /* -----  End of INITIALIZATION  ------*/
+    /**
+     * Refresh all sms api users list.
+     * @return {Promise}
+     */
+    refresh () {
+        this.api.smsUsers.resetAllCache();
+        this.users.isLoading = true;
+        return this.fetchUsers().then((users) => {
+            this.users.raw = angular.copy(users);
+            this.sortUsers();
+        }).catch((err) => {
+            this.ToastError(err);
+        }).finally(() => {
+            this.users.isLoading = false;
+        });
+    }
 
-    init();
+    /**
+     * Fetch all sms api users.
+     * @return {Promise}
+     */
+    fetchUsers () {
+        return this.api.smsUsers.query({
+            serviceName: this.$stateParams.serviceName
+        }).$promise.then((loginIds) =>
+            this.$q.all(_.map(loginIds, (login) =>
+                this.api.smsUsers.get({
+                    serviceName: this.$stateParams.serviceName,
+                    login
+                }).$promise
+            ))
+        );
+    }
+
+    /**
+     * Sort sms api users.
+     */
+    sortUsers () {
+        let data = angular.copy(this.users.raw);
+        data = this.$filter("orderBy")(
+            data,
+            this.users.orderBy,
+            this.users.orderDesc
+        );
+        this.users.sorted = data;
+    }
+
+    /**
+     * Order sms api user list.
+     * @param  {String} by
+     */
+    orderBy (by) {
+        if (this.users.orderBy === by) {
+            this.users.orderDesc = !this.users.orderDesc;
+        } else {
+            this.users.orderBy = by;
+        }
+        this.sortUsers();
+    }
+
+    /**
+     * Opens a modal to add a sms api user.
+     */
+    add () {
+        const modal = this.$uibModal.open({
+            animation: true,
+            templateUrl: "app/telecom/sms/users/add/telecom-sms-users-add.html",
+            controller: "TelecomSmsUsersAddCtrl",
+            controllerAs: "UsersAddCtrl"
+        });
+        modal.result.then(() => this.refresh()).catch((error) => {
+            if (error && error.type === "API") {
+                this.Toast.error(this.$translate.instant("sms_users_add_user_ko", { error: _.get(error, "msg.data.message") }));
+            }
+        });
+    }
+
+    /**
+     * Opens a modal to manager templates.
+     */
+    templates () {
+        const modal = this.$uibModal.open({
+            animation: true,
+            templateUrl: "app/telecom/sms/users/templates/telecom-sms-users-templates.html",
+            controller: "TelecomSmsUsersTemplatesCtrl",
+            controllerAs: "UsersTemplatesCtrl",
+            resolve: { service: () => this.service }
+        });
+        modal.result.then(() =>
+            this.api.sms.get({
+                serviceName: this.$stateParams.serviceName
+            }).$promise.then((service) => {
+                this.service = service;
+            }).catch((error) => this.ToastError(error))
+        ).catch((error) => {
+            if (error && error.type === "API") {
+                this.Toast.error(this.$translate.instant("sms_users_templates_update_ko", { error: _.get(error, "msg.data.message") }));
+            }
+        });
+    }
+
+    /**
+     * Opens a modal to change password for a given sms api user.
+     * @param  {Ressource} user An api user.
+     */
+    changePassword (user) {
+        const modal = this.$uibModal.open({
+            animation: true,
+            templateUrl: "app/telecom/sms/users/change-password/telecom-sms-users-change-password.html",
+            controller: "TelecomSmsUsersChangePasswordCtrl",
+            controllerAs: "UsersChangePasswordCtrl",
+            resolve: { user: () => user }
+        });
+        modal.result.then(() => this.refresh()).catch((error) => {
+            if (error && error.type === "API") {
+                this.Toast.error(this.$translate.instant("sms_users_change_password_user_ko", { error: _.get(error, "msg.data.message") }));
+            }
+        });
+    }
+
+    /**
+     * Opens a modal to set quota for a given sms api user.
+     * @param  {Ressource} user An api user.
+     */
+    quota (user) {
+        const modal = this.$uibModal.open({
+            animation: true,
+            templateUrl: "app/telecom/sms/users/quota/telecom-sms-users-quota.html",
+            controller: "TelecomSmsUsersQuotaCtrl",
+            controllerAs: "UsersQuotaCtrl",
+            resolve: {
+                params: () => {
+                    const params = {
+                        user,
+                        service: this.service
+                    };
+                    return params;
+                }
+            }
+        });
+        modal.result.then(() => this.refresh()).catch((error) => {
+            if (error && error.type === "API") {
+                this.Toast.error(this.$translate.instant("sms_users_quota_user_ko", { error: _.get(error, "msg.data.message") }));
+            }
+        });
+    }
+
+    /**
+     * Opens a modal to set limit for a given sms api user.
+     * @param  {Ressource} user An api user.
+     */
+    limit (user) {
+        const modal = this.$uibModal.open({
+            animation: true,
+            templateUrl: "app/telecom/sms/users/limit/telecom-sms-users-limit.html",
+            controller: "TelecomSmsUsersLimitCtrl",
+            controllerAs: "UsersLimitCtrl",
+            resolve: { user: () => user }
+        });
+        modal.result.then(() => this.refresh()).catch((error) => {
+            if (error && error.type === "API") {
+                this.Toast.error(this.$translate.instant("sms_users_limit_user_ko", { error: _.get(error, "msg.data.message") }));
+            }
+        });
+    }
+
+    /**
+     * Opens a modal to set restrict for a given sms api user.
+     * @param  {Ressource} user An api user.
+     */
+    restrict (user) {
+        const modal = this.$uibModal.open({
+            animation: true,
+            templateUrl: "app/telecom/sms/users/restrict/telecom-sms-users-restrict.html",
+            controller: "TelecomSmsUsersRestrictByIpCtrl",
+            controllerAs: "UsersRestrictByIpCtrl",
+            resolve: { user: () => user }
+        });
+        modal.result.then(() => this.refresh()).catch((error) => {
+            if (error && error.type === "API") {
+                this.Toast.error(this.$translate.instant("sms_users_restrict_user_ko", { error: _.get(error, "msg.data.message") }));
+            }
+        });
+    }
+
+    /**
+     * Opens a modal to set callback URL for a given sms api user.
+     * @param  {Ressource} user An api user.
+     */
+    callback (user) {
+        const modal = this.$uibModal.open({
+            animation: true,
+            templateUrl: "app/telecom/sms/users/callback/telecom-sms-users-callback.html",
+            controller: "TelecomSmsUsersCallbackCtrl",
+            controllerAs: "UsersCallbackCtrl",
+            resolve: { user: () => user }
+        });
+        modal.result.then(() => this.refresh()).catch((error) => {
+            if (error && error.type === "API") {
+                this.Toast.error(this.$translate.instant("sms_users_callback_user_ko", { error: _.get(error, "msg.data.message") }));
+            }
+        });
+    }
+
+    /**
+     * Opens a modal to remove a given sms api user.
+     * @param  {Ressource} user An api user.
+     */
+    remove (user) {
+        const modal = this.$uibModal.open({
+            animation: true,
+            templateUrl: "app/telecom/sms/users/remove/telecom-sms-users-remove.html",
+            controller: "TelecomSmsUsersRemoveCtrl",
+            controllerAs: "UsersRemoveCtrl",
+            resolve: { user: () => user }
+        });
+        modal.result.then(() => this.refresh()).catch((error) => {
+            if (error && error.type === "API") {
+                this.Toast.error(this.$translate.instant("sms_users_remove_user_ko", { error: _.get(error, "msg.data.message") }));
+            }
+        });
+    }
 });

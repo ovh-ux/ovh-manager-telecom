@@ -16,9 +16,9 @@
 
     <div class="modal-body" data-ng-if="!OptionsRecreditUpdateCtrl.loading.init && !OptionsRecreditUpdateCtrl.loading.updateOptions && !OptionsRecreditUpdateCtrl.updated">
 
-        <!-- creditThresholdForAutomaticRecredit -->
+        <!-- CREDIT THRESHOLD FOR AUTOMATIC RECREDIT -->
         <div class="form-group bottom-space-m16">
-            <div flat-input-container>
+            <div data-flat-input-container>
                 <label for="threshold"
                        class="control-label"
                        data-translate="sms_options_recredit_update_threshold_label">
@@ -31,7 +31,7 @@
                     min="0"
                     step="any"
                     required
-                    data-ng-model="OptionsRecreditUpdateCtrl.service.creditThresholdForAutomaticRecredit"
+                    data-ng-model="OptionsRecreditUpdateCtrl.model.service.creditThresholdForAutomaticRecredit"
                     data-translate-attr="{ placeholder: 'sms_options_recredit_update_threshold_label' }" />
                 <div role="alert"
                      data-ng-messages="updateRecreditOptionsForm.threshold.$error">
@@ -51,7 +51,7 @@
             </div>
         </div>
 
-        <!-- automaticRecreditAmount -->
+        <!-- AUTOMATIC RECREDIT AMOUNT -->
         <div class="form-group bottom-space-m16">
             <label for="amount"
                    class="control-label"
@@ -60,11 +60,11 @@
             <div class="row">
                 <div class="col-xs-8">
                     <select
-                        flat-select
                         name="amount"
                         id="amount"
                         class="form-control"
-                        data-ng-model="OptionsRecreditUpdateCtrl.service.automaticRecreditAmount"
+                        data-flat-select
+                        data-ng-model="OptionsRecreditUpdateCtrl.model.service.automaticRecreditAmount"
                         data-ng-options="amout as ('sms_options_recredit_update_quantity_option' | translate:{ amout: amout }) for amout in OptionsRecreditUpdateCtrl.availablePackQuantity"
                         data-ng-change="OptionsRecreditUpdateCtrl.getAmount()">
                         <option value="" data-translate="sms_options_recredit_manage_quantity_empty_text"></option>
@@ -106,13 +106,17 @@
             class="btn btn-default"
             data-ng-click="OptionsRecreditUpdateCtrl.cancel()"
             data-translate="cancel"
-            data-ng-disabled="updateRecreditOptionsForm.$invalid || OptionsRecreditUpdateCtrl.loading.updateOptions || OptionsRecreditUpdateCtrl.updated">
+            data-ng-disabled="OptionsRecreditUpdateCtrl.loading.updateOptions ||
+                              OptionsRecreditUpdateCtrl.updated">
         </button>
         <button
             type="submit"
             class="btn btn-primary"
             data-translate="submit"
-            data-ng-disabled="updateRecreditOptionsForm.$invalid || !OptionsRecreditUpdateCtrl.hasChanged() || OptionsRecreditUpdateCtrl.loading.updateOptions || OptionsRecreditUpdateCtrl.updated">
+            data-ng-disabled="updateRecreditOptionsForm.$invalid ||
+                              !OptionsRecreditUpdateCtrl.hasChanged() ||
+                              OptionsRecreditUpdateCtrl.loading.updateOptions ||
+                              OptionsRecreditUpdateCtrl.updated">
         </button>
     </div>
 

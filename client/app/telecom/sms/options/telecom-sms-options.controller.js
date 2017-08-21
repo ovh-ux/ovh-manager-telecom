@@ -1,31 +1,21 @@
-angular.module("managerApp").controller("TelecomSmsOptionsCtrl", function ($translate) {
-    "use strict";
+angular.module("managerApp").controller("TelecomSmsOptionsCtrl", class TelecomSmsOptionsCtrl {
+    constructor ($translate) {
+        this.$translate = $translate;
+    }
 
-    var self = this;
-
-    self.actions = null;
-
-    /*= =====================================
-    =            INITIALIZATION            =
-    ======================================*/
-
-    function init () {
-        self.actions = [{
+    $onInit () {
+        this.actions = [{
             name: "options_manage",
             sref: "telecom.sms.options.manage",
-            text: $translate.instant("sms_options_manage")
+            text: this.$translate.instant("sms_options_manage")
         }, {
             name: "options_response",
             sref: "telecom.sms.options.response",
-            text: $translate.instant("sms_options_response")
+            text: this.$translate.instant("sms_options_response")
         }, {
             name: "options_recredit",
             sref: "telecom.sms.options.recredit",
-            text: $translate.instant("sms_options_recredit")
+            text: this.$translate.instant("sms_options_recredit")
         }];
     }
-
-    /* -----  End of INITIALIZATION  ------*/
-
-    init();
 });

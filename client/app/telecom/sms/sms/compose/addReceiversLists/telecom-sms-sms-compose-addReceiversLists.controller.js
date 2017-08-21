@@ -1,46 +1,51 @@
-angular.module("managerApp").controller("TelecomSmsSmsComposeAddReceiversListsCtrl", function ($stateParams, $timeout, $uibModalInstance, Sms, SmsMediator, receivers) {
-    "use strict";
+angular.module("managerApp").controller("TelecomSmsSmsComposeAddReceiversListsCtrl", class TelecomSmsSmsComposeAddReceiversListsCtrl {
+    constructor ($stateParams, $timeout, $uibModalInstance, Sms, SmsMediator, receivers) {
+        this.$stateParams = $stateParams;
+        this.$timeout = $timeout;
+        this.$uibModalInstance = $uibModalInstance;
+        this.Sms = Sms;
+        this.SmsMediator = SmsMediator;
+        this.receivers = receivers;
+    }
 
-    var self = this;
+    $onInit () {
+        this.loading = {
+            addReceiversLists: false
+        };
+        this.added = false;
+        this.model = {
+            receivers: angular.copy(this.receivers)
+        };
+    }
 
-    self.loading = {
-        addReceiversLists: false
-    };
-
-    self.added = false;
-
-    self.receivers = angular.copy(receivers);
-
-    /*= ==============================
-    =            HELPERS            =
-    ===============================*/
-
-    self.hasSelected = function () {
-        return _.filter(self.receivers, { isSelected: true }).length > 0;
-    };
-
-    /* -----  End of HELPERS  ------*/
-
-    /*= ==============================
-    =            ACTIONS            =
-    ===============================*/
-
-    self.add = function () {
-        self.loading.addReceiversLists = true;
-        return $timeout(angular.noop, 1000).then(function () {
-            self.loading.addReceiversLists = false;
-            self.added = true;
-            return $timeout(self.close(self.receivers), 3000);
+    /**
+     * Add receivers' lists.
+     * @return {Promise}
+     */
+    add () {
+        this.loading.addReceiversLists = true;
+        return this.$timeout(angular.noop, 1000).then(() => {
+            this.loading.addReceiversLists = false;
+            this.added = true;
+            return this.$timeout(this.close(this.model.receivers), 3000);
         });
-    };
+    }
 
-    self.cancel = function (message) {
-        return $uibModalInstance.dismiss(message);
-    };
+    cancel (message) {
+        return this.$uibModalInstance.dismiss(message);
+    }
 
-    self.close = function () {
-        return $uibModalInstance.close(self.receivers);
-    };
+    close () {
+        return this.$uibModalInstance.close(this.model.receivers);
+    }
 
-    /* -----  End of ACTIONS  ------*/
+    /**
+     * Has selected helper.
+     * @return {Boolean}
+     */
+    hasSelected () {
+        return _.some(this.receivers, { isSelected: true });
+
+        // return _.filter(this.receivers, { isSelected: true }).length > 0;
+    }
 });

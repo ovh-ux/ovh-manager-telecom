@@ -1,63 +1,67 @@
-angular.module("managerApp").controller("TelecomSmsUsersCallbackCtrl", function ($q, $stateParams, $timeout, $uibModalInstance, Sms, user) {
-    "use strict";
+angular.module("managerApp").controller("TelecomSmsUsersCallbackCtrl", class TelecomSmsUsersCallbackCtrl {
+    constructor ($q, $stateParams, $timeout, $uibModalInstance, Sms, user) {
+        this.$q = $q;
+        this.$stateParams = $stateParams;
+        this.$timeout = $timeout;
+        this.$uibModalInstance = $uibModalInstance;
+        this.api = {
+            sms: {
+                users: Sms.Users().Lexi()
+            }
+        };
+        this.user = user;
+    }
 
-    var self = this;
+    $onInit () {
+        this.loading = {
+            changePasswordUser: false
+        };
+        this.changed = false;
+        this.attributes = ["callBack"];
+        this.model = {
+            user: angular.copy(this.user)
+        };
+        this.urlPattern = /^(https?):\/\/.*$/;
+    }
 
-    self.loading = {
-        changePasswordUser: false
-    };
+    /**
+     * Set callback URL for sms api user.
+     * @return {Promise}
+     */
+    setUrl () {
+        this.loading.changePasswordUser = true;
+        return this.$q.all([
+            this.api.sms.users.edit({
+                serviceName: this.$stateParams.serviceName,
+                login: this.model.user.login
+            }, _.pick(this.model.user, this.attributes)).$promise,
+            this.$timeout(angular.noop, 1000)
+        ]).then(() => {
+            this.loading.changePasswordUser = false;
+            this.changed = true;
+            return this.$timeout(() => this.close(), 1000);
+        }).catch((error) => this.cancel({
+            type: "API",
+            msg: error
+        }));
+    }
 
-    self.changed = false;
+    cancel (message) {
+        return this.$uibModalInstance.dismiss(message);
+    }
 
-    self.user = angular.copy(user);
+    close () {
+        return this.$uibModalInstance.close(true);
+    }
 
-    self.urlPattern = /^(https?):\/\/.*$/;
-
-    /*= ==============================
-    =            HELPERS            =
-    ===============================*/
-
-    self.hasChanged = function () {
-        return self.user.callBack === user.callBack;
-    };
-
-    /* -----  End of HELPERS  ------*/
-
-    /*= ==============================
-    =            ACTIONS            =
-    ===============================*/
-
-    self.setUrl = function () {
-        self.loading.changePasswordUser = true;
-
-        return $q.all([
-            Sms.Users().Lexi().edit({
-                serviceName: $stateParams.serviceName,
-                login: self.user.login
-            }, {
-                callBack: self.user.callBack
-            }).$promise,
-            $timeout(angular.noop, 1000)
-        ]).then(function () {
-            self.loading.changePasswordUser = false;
-            self.changed = true;
-
-            return $timeout(self.close, 1000);
-        }, function (error) {
-            return self.cancel({
-                type: "API",
-                msg: error
-            });
-        });
-    };
-
-    self.cancel = function (message) {
-        return $uibModalInstance.dismiss(message);
-    };
-
-    self.close = function () {
-        return $uibModalInstance.close(true);
-    };
-
-    /* -----  End of ACTIONS  ------*/
+    /**
+     * Has changed helper.
+     * @return {Boolean}
+     */
+    hasChanged () {
+        return !_.isEqual(
+            _.pick(this.model.user, this.attributes),
+            _.pick(this.user, this.attributes)
+        );
+    }
 });

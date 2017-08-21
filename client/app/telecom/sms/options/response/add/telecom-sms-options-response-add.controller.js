@@ -1,99 +1,100 @@
-angular.module("managerApp").controller("TelecomSmsOptionsResponseAddCtrl",
-                                        function ($q, $stateParams, $timeout, $uibModalInstance, Sms, SmsMediator, service, senders, ToastError) {
-                                            "use strict";
+angular.module("managerApp").controller("TelecomSmsOptionsResponseAddCtrl", class TelecomSmsOptionsResponseAddCtrl {
+    constructor ($q, $stateParams, $timeout, $uibModalInstance, params, Sms, SmsMediator, ToastError) {
+        this.$q = $q;
+        this.$stateParams = $stateParams;
+        this.$timeout = $timeout;
+        this.$uibModalInstance = $uibModalInstance;
+        this.api = {
+            sms: Sms.Lexi()
+        };
+        this.service = params.service;
+        this.senders = params.senders;
+        this.SmsMediator = SmsMediator;
+        this.ToastError = ToastError;
+    }
 
-                                            var self = this;
+    $onInit () {
+        this.loading = {
+            init: false,
+            addTrackingOption: false
+        };
+        this.added = false;
+        this.model = {
+            service: angular.copy(this.service),
+            senders: angular.copy(this.senders)
+        };
+        this.availableTrackingMedia = [];
+        this.trackingOptions = {};
+        this.targetNumberPattern = /^(\+|0{2}?)\d+$/;
 
-                                            self.loading = {
-                                                init: false,
-                                                addTrackingOption: false
-                                            };
+        this.loading.init = true;
+        return this.SmsMediator.initDeferred.promise.then(() =>
+            this.SmsMediator.getApiScheme().then((schema) => {
+                this.availableTrackingMedia = _.pull(schema.models["sms.ResponseTrackingMediaEnum"].enum, "voice");
+                return this.availableTrackingMedia;
+            })
+        ).catch((err) => {
+            this.ToastError(err);
+        }).finally(() => {
+            this.loading.init = false;
+        });
+    }
 
-                                            self.added = false;
+    /**
+     * Reset tracking options.
+     */
+    resetTrackingOptions () {
+        this.trackingOptions.sender = this.trackingOptions.target = "";
+    }
 
-                                            self.service = angular.copy(service);
-                                            self.senders = angular.copy(senders);
+    /**
+     * Handle tracking sender number.
+     */
+    handleTrackingSenderNumber () {
+        this.trackingOptions.sender = _.has(this.trackingSender, "sender") ? this.trackingSender.sender : "";
+    }
 
-                                            self.availableTrackingMedia = [];
-                                            self.trackingOptions = {};
+    /**
+     * Restrict target number.
+     */
+    restrictTargetNumber () {
+        if (this.trackingOptions.target) {
+            this.trackingOptions.target = this.trackingOptions.target.replace(/[^0-9\+]/g, "");
+        }
+    }
 
-                                            self.targetNumberPattern = /^(\+|0{2}?)\d+$/;
+    /**
+     * Add sms response tracking options.
+     * @return {Promise}
+     */
+    add () {
+        this.loading.addTrackingOption = true;
+        this.model.service.smsResponse.trackingOptions.push(this.trackingOptions);
+        return this.$q.all([
+            this.api.sms.edit({
+                serviceName: this.$stateParams.serviceName
+            }, {
+                smsResponse: {
+                    trackingOptions: this.model.service.smsResponse.trackingOptions,
+                    responseType: this.model.service.smsResponse.responseType
+                }
+            }).$promise,
+            this.$timeout(angular.noop, 1000)
+        ]).then(() => {
+            this.loading.addTrackingOption = false;
+            this.added = true;
+            return this.$timeout(() => this.close(), 1000);
+        }).catch((error) => this.cancel({
+            type: "API",
+            message: error.data.message
+        }));
+    }
 
-                                            /*= ==============================
-    =            ACTIONS            =
-    ===============================*/
+    cancel (message) {
+        return this.$uibModalInstance.dismiss(message);
+    }
 
-                                            self.resetTrackingOptions = function () {
-                                                self.trackingOptions.sender = self.trackingOptions.target = "";
-                                            };
-
-                                            self.handleTrackingSenderNumber = function () {
-                                                self.trackingOptions.sender = _.has(self.trackingSender, "sender") ? self.trackingSender.sender : "";
-                                            };
-
-                                            self.restrictTargetNumber = function () {
-                                                if (self.trackingOptions.target) {
-                                                    self.trackingOptions.target = self.trackingOptions.target.replace(/[^0-9\+]/g, "");
-                                                }
-                                            };
-
-                                            self.add = function () {
-                                                self.loading.addTrackingOption = true;
-                                                self.service.smsResponse.trackingOptions.push(self.trackingOptions);
-
-                                                return $q.all([
-                                                    Sms.Lexi().edit({
-                                                        serviceName: $stateParams.serviceName
-                                                    }, {
-                                                        smsResponse: {
-                                                            trackingOptions: self.service.smsResponse.trackingOptions,
-                                                            responseType: self.service.smsResponse.responseType
-                                                        }
-                                                    }).$promise,
-                                                    $timeout(angular.noop, 1000)
-                                                ]).then(function () {
-                                                    self.loading.addTrackingOption = false;
-                                                    self.added = true;
-
-                                                    return $timeout(self.close, 1000);
-                                                }, function (error) {
-                                                    return self.cancel({
-                                                        type: "API",
-                                                        message: error.data.message
-                                                    });
-                                                });
-                                            };
-
-                                            self.cancel = function (message) {
-                                                return $uibModalInstance.dismiss(message);
-                                            };
-
-                                            self.close = function () {
-                                                return $uibModalInstance.close(true);
-                                            };
-
-                                            /* -----  End of ACTIONS  ------*/
-
-                                            /*= =====================================
-    =            INITIALIZATION            =
-    ======================================*/
-
-                                            function init () {
-                                                self.loading.init = true;
-
-                                                return SmsMediator.initDeferred.promise.then(function () {
-                                                    return SmsMediator.getApiScheme().then(function (schema) {
-                                                        self.availableTrackingMedia = _.pull(schema.models["sms.ResponseTrackingMediaEnum"].enum, "voice");
-                                                        return self.availableTrackingMedia;
-                                                    });
-                                                }).catch(function (err) {
-                                                    return new ToastError(err);
-                                                }).finally(function () {
-                                                    self.loading.init = false;
-                                                });
-                                            }
-
-                                            /* -----  End of INITIALIZATION  ------*/
-
-                                            init();
-                                        });
+    close () {
+        return this.$uibModalInstance.close(true);
+    }
+});

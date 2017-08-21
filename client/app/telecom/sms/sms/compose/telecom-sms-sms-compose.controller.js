@@ -1,389 +1,54 @@
-angular.module("managerApp").controller("TelecomSmsSmsComposeCtrl", function ($q, $translate, $stateParams, $filter, $uibModal, Sms, SmsMediator, User,
-                                                                              atInternet, Toast, ToastError, URLS) {
-    "use strict";
-
-    var self = this;
-
-    /*= ==============================
-    =            HELPERS            =
-    ===============================*/
-
-    function fetchEnums () {
-        return SmsMediator.getApiScheme().then(function (schema) {
-            return {
-                smsClass: _.pull(schema.models["sms.ClassEnum"].enum, "toolkit")
-            };
-        });
-    }
-
-    function fetchUser () {
-        return User.Lexi().get().$promise;
-    }
-
-    function fetchSenders () {
-        return Sms.Senders().Lexi().query({
-            serviceName: $stateParams.serviceName
-        }).$promise.then(function (sendersIds) {
-            return $q.all(_.map(sendersIds, function (sender) {
-                return Sms.Senders().Lexi().get({
-                    serviceName: $stateParams.serviceName,
-                    sender: sender
-                }).$promise;
-            })).then(function (senders) {
-                return _.filter(senders, { status: "enable" });
-            });
-        });
-    }
-
-    function fetchReceivers () {
-        return Sms.Receivers().Lexi().query({
-            serviceName: $stateParams.serviceName
-        }).$promise.then(function (receiversIds) {
-            return $q.all(_.map(receiversIds, function (id) {
-                return Sms.Receivers().Lexi().get({
-                    serviceName: $stateParams.serviceName,
-                    slotId: id
-                }).$promise;
-            }));
-        });
-    }
-
-    function fetchPhonebooks () {
-        return Sms.Phonebooks().Lexi().query({
-            serviceName: $stateParams.serviceName
-        }).$promise.then(function (phonebooksIds) {
-            return $q.all(_.map(phonebooksIds, function (bookKey) {
-                return Sms.Phonebooks().Lexi().get({
-                    serviceName: $stateParams.serviceName,
-                    bookKey: bookKey
-                }).$promise;
-            })).then(function (phonebooks) {
-                return _.sortBy(phonebooks, "name");
-            });
-        });
-    }
-
-    function getDifferedPeriod () {
-        var date = new Date();
-
-        if (self.picker.date) {
-            self.picker.date.setHours(self.picker.time.getHours());
-            self.picker.date.setMinutes(self.picker.time.getMinutes());
-
-            if (self.picker.date > date) {
-                var minutes = moment(self.picker.date).diff(moment(), "minutes");
-                return minutes;
-            }
-        }
-
-        return null;
-    }
-
-    function createSms (slotId) {
-        var phonebookContactNumber = [];
-        _.each(self.phonebooks.lists, function (contact) {
-            phonebookContactNumber.push(_.get(contact, contact.type));
-        });
-        var receivers = _.union(phonebookContactNumber, self.sms.receivers ? [self.sms.receivers] : null);
-        var differedPeriod = self.sms.differedPeriod ? getDifferedPeriod() : null;
-        var sender = self.sms.sender === "shortNumber" ? null : self.sms.sender;
-        var senderForResponse = self.sms.sender === "shortNumber" ? true : self.sms.senderForResponse;
-
-        return {
-            charset: "UTF-8",
-            "class": self.sms.class,
-            coding: self.message.coding,
-            differedPeriod: differedPeriod,
-            message: self.sms.message,
-            noStopClause: !!self.sms.noStopClause,
-            priority: "high",
-            receivers: receivers,
-            receiversSlotId: slotId || null,
-            sender: sender,
-            senderForResponse: senderForResponse,
-            validityPeriod: "2880"
-        };
-    }
-
-    function resetForm (form) {
-        // restore default values
-        self.sms = {
-            "class": "phoneDisplay",
-            differedPeriod: false,
-            message: null,
-            receivers: null,
-            noStopClause: false,
-            sender: "shortNumber",
-            senderForResponse: false
-        };
-
-        self.computeRemainingChar();
-        self.clearReceiversLists();
-        self.clearPhonebookContactList();
-
-        // hide the options panel
-        self.moreOptions = false;
-
-        form.$setPristine(true);
-    }
-
-    self.isVirtualNumber = function () {
-        return !!_.find(self.senders.virtual, { sender: self.sms.sender });
-    };
-
-    self.getEstimationCreditRemaining = function () {
-        var totalReceivers = self.receivers.records + self.phonebooks.lists.length + (self.sms.receivers ? 1 : 0);
-        var creditRemaining = self.service.creditsLeft - (totalReceivers * self.message.equivalence);
-        return $filter("number")(creditRemaining, 2);
-    };
-
-    /* -----  End of HELPERS  ------*/
-
-    /*= ==============================
-    =            ACTIONS            =
-    ===============================*/
-
-    /* ----------  RECEIVERS  ----------*/
-
-    self.clearReceiversLists = function ($event) {
-        if ($event) {
-            $event.preventDefault();
-        }
-
-        self.receivers.records = self.receivers.count = 0;
-        return _.map(self.receivers.raw, function (receiver) {
-            receiver.isSelected = false;
-        });
-    };
-
-    self.addReceiversLists = function ($event) {
-        $event.preventDefault();
-
-        var modal = $uibModal.open({
-            animation: true,
-            templateUrl: "app/telecom/sms/sms/compose/addReceiversLists/telecom-sms-sms-compose-addReceiversLists.html",
-            controller: "TelecomSmsSmsComposeAddReceiversListsCtrl",
-            controllerAs: "AddReceiversListsCtrl",
-            resolve: {
-                receivers: function () { return self.receivers.raw; }
-            }
-        });
-
-        modal.result.then(function (receivers) {
-            self.receivers = {
-                raw: receivers,
-                count: _.size(_.filter(receivers, "isSelected")),
-                records: _.sum(_.pluck(_.filter(receivers, "isSelected"), "records"))
-            };
-        });
-
-        return modal;
-    };
-
-    /* ----------  PHONEBOOK CONTACT  ----------*/
-
-    self.addPhonebookContact = function ($event) {
-        $event.preventDefault();
-        var modal = $uibModal.open({
-            animation: true,
-            templateUrl: "app/telecom/sms/sms/compose/addPhonebookContact/telecom-sms-sms-compose-addPhonebookContact.html",
-            controller: "TelecomSmsSmsComposeAddPhonebookContactCtrl",
-            controllerAs: "AddPhonebookContactCtrl",
-            resolve: {
-                phonebooks: function () { return self.phonebooks; }
-            }
-        });
-
-        modal.result.then(function (result) {
-            self.phonebooks.lists = [];
-            _.each(result, function (contact) {
-                self.phonebooks.lists.push(contact);
-            });
-        });
-
-        return modal;
-    };
-
-    self.clearPhonebookContactList = function ($event) {
-        if ($event) {
-            $event.preventDefault();
-        }
-        self.phonebooks.lists = [];
-        return self.phonebooks;
-    };
-
-    /* ----------  Send  ----------*/
-
-    self.send = function (form) {
-        var promises = [];
-        var slotIds = _.pluck(_.filter(self.receivers.raw, "isSelected"), "slotId");
-
-        self.loading.send = true;
-        if (self.isVirtualNumber()) {
-            if (self.sms.receivers || _.size(self.phonebooks.lists)) {
-                promises.push(Sms.VirtualNumbers().Jobs().Lexi().send({
-                    serviceName: $stateParams.serviceName,
-                    number: self.sms.sender
-                }, _.omit(createSms(), [
-                    "sender",
-                    "noStopClause",
-                    "senderForResponse"
-                ])).$promise);
-            }
-            if (_.size(slotIds)) {
-                _.map(slotIds, function (slotId) {
-                    promises.push(Sms.VirtualNumbers().Jobs().Lexi().send({
-                        serviceName: $stateParams.serviceName,
-                        number: self.sms.sender
-                    }, _.omit(createSms(slotId), [
-                        "receivers",
-                        "sender",
-                        "noStopClause",
-                        "senderForResponse"
-                    ])).$promise);
-                });
-            }
-        } else {
-            if (self.sms.receivers || _.size(self.phonebooks.lists)) {
-                promises.push(Sms.Jobs().Lexi().send({
-                    serviceName: $stateParams.serviceName
-                }, createSms()).$promise);
-            }
-            if (_.size(slotIds)) {
-                _.map(slotIds, function (slotId) {
-                    promises.push(Sms.Jobs().Lexi().send({
-                        serviceName: $stateParams.serviceName
-                    }, _.omit(createSms(slotId), "receivers")).$promise);
-                });
-            }
-        }
-
-        return $q.all(promises).then(function (results) {
-            var totalCreditsRemoved = _.sum(results, "totalCreditsRemoved");
-            var invalidReceivers = _.chain(results).pluck("invalidReceivers").flatten().value();
-            var validReceivers = _.chain(results).pluck("validReceivers").flatten().value();
-
-            // update the creditLeft value (displayed on the dashboard)
-            self.service.creditsLeft -= totalCreditsRemoved;
-
-            atInternet.trackClick({
-                name: "sms-sended",
-                type: "action",
-                chapter1: "telecom-sms",
-                chapter2: "telecom-sms-sms",
-                chapter3: "telecom-sms-sms-compose",
-                customObject: {
-                    nichandle: _.get(self.user, "nichandle"),
-                    country: _.get(self.user, "country"),
-                    receiversCount: self.receivers.count,
-                    receiversLists: self.receivers.records + (self.sms.receivers ? 1 : 0),
-                    phonebookContactCount: self.phonebooks.lists.length,
-                    totalCreditsRemoved: totalCreditsRemoved,
-                    invalidReceivers: _.size(invalidReceivers),
-                    validReceivers: _.size(validReceivers)
+angular.module("managerApp").controller("TelecomSmsSmsComposeCtrl", class TelecomSmsSmsComposeCtrl {
+    constructor ($q, $translate, $stateParams, $filter, $uibModal, Sms, SmsMediator, User, atInternet, Toast, ToastError, URLS) {
+        this.$q = $q;
+        this.$translate = $translate;
+        this.$stateParams = $stateParams;
+        this.$filter = $filter;
+        this.$uibModal = $uibModal;
+        this.SmsMediator = SmsMediator;
+        this.api = {
+            sms: {
+                jobs: Sms.Jobs().Lexi(),
+                phonebooks: Sms.Phonebooks().Lexi(),
+                receivers: Sms.Receivers().Lexi(),
+                senders: Sms.Senders().Lexi(),
+                virtualNumbers: {
+                    jobs: Sms.VirtualNumbers().Jobs().Lexi()
                 }
-            });
+            },
+            user: User.Lexi()
+        };
+        this.atInternet = atInternet;
+        this.Toast = Toast;
+        this.ToastError = ToastError;
+        this.constant = { URLS };
+    }
 
-
-            resetForm(form);
-
-            Toast.success($translate.instant("sms_sms_compose_status_success"));
-        }).catch(function (err) {
-            Toast.error($translate.instant("sms_sms_compose_status_failed"));
-            return $q.reject(err);
-        }).finally(function () {
-            self.loading.send = false;
-        });
-    };
-
-    self.cancel = function (form) {
-        resetForm(form);
-    };
-
-    /* ----------  Aside tips  ----------*/
-
-    self.tips = function ($event, tip) {
-        $event.preventDefault();
-        $event.stopPropagation();
-
-        var modal = $uibModal.open({
-            templateUrl: "app/telecom/sms/sms/compose/tips/telecom-sms-sms-compose-tips-" + tip + ".html",
-            controller: "TelecomSmsSmsComposeTipsCtrl",
-            controllerAs: "ComposeTipsCtrl"
-        });
-
-        return modal;
-    };
-
-    /* -----  End of ACTIONS  ------*/
-
-    /*= ==============================
-    =            EVENTS            =
-    ===============================*/
-
-    self.showAdvice = function () {
-        if (self.sms.sender && /[0-9\+]/.test(self.sms.sender) && !self.isVirtualNumber()) {
-            self.advice = true;
-            self.sms.noStopClause = true;
-        } else {
-            self.advice = false;
-            self.sms.noStopClause = false;
-        }
-        return self.computeRemainingChar();
-    };
-
-    self.computeRemainingChar = function () {
-        return _.assign(self.message, SmsMediator.getSmsInfoText(
-            self.sms.message,
-            !self.sms.noStopClause // suffix
-        ));
-    };
-
-    self.openDatePicker = function ($event) {
-        $event.preventDefault();
-        $event.stopPropagation();
-
-        self.picker.dateOpened = true;
-    };
-
-    /* -----  End of EVENTS  ------*/
-
-    /*= =====================================
-    =            INITIALIZATION            =
-    ======================================*/
-
-    function init () {
-        self.loading = {
+    $onInit () {
+        this.loading = {
             init: false,
             send: false
         };
-
-        self.enums = {};
-
-        self.user = {};
-
-        self.senders = {
+        this.enums = {};
+        this.user = {};
+        this.senders = {
             raw: [],
             alphanumeric: [],
             other: [],
             virtual: []
         };
-
-        self.receivers = {
+        this.receivers = {
             raw: [],
             count: 0,
             records: 0
         };
-
-        self.phonebooks = {
+        this.phonebooks = {
             raw: [],
             current: null,
             lists: []
         };
-
-        self.service = null;
-
-        self.message = {
+        this.service = null;
+        this.message = {
             coding: "7bit",
             defaultSize: 160,
             remainingCharacters: null,
@@ -391,8 +56,7 @@ angular.module("managerApp").controller("TelecomSmsSmsComposeCtrl", function ($q
             maxlength: null,
             maxLengthReached: false
         };
-
-        self.sms = {
+        this.sms = {
             "class": "phoneDisplay",
             differedPeriod: false,
             message: null,
@@ -401,12 +65,9 @@ angular.module("managerApp").controller("TelecomSmsSmsComposeCtrl", function ($q
             sender: "shortNumber",
             senderForResponse: false
         };
-
-        self.advice = false;
-
-        self.moreOptions = false;
-
-        self.picker = {
+        this.advice = false;
+        this.moreOptions = false;
+        this.picker = {
             date: null,
             dateOpened: false,
             time: moment().toDate(),
@@ -414,49 +75,415 @@ angular.module("managerApp").controller("TelecomSmsSmsComposeCtrl", function ($q
                 minDate: moment().toDate()
             }
         };
-
-        self.urls = {
-            receivers: _.get(URLS, "guides.sms.receivers")
+        this.urls = {
+            receivers: _.get(this.constant.URLS, "guides.sms.receivers")
         };
 
-        self.loading.init = true;
-        return SmsMediator.initDeferred.promise.then(function () {
-            return $q.all({
-                enums: fetchEnums(),
-                user: fetchUser(),
-                senders: fetchSenders(),
-                receivers: fetchReceivers(),
-                phonebooks: fetchPhonebooks()
-            }).then(function (result) {
-                self.enums = result.enums;
-                self.user = result.user;
-                self.senders.raw = result.senders;
-                self.receivers.raw = result.receivers;
-                self.phonebooks.raw = result.phonebooks;
-                self.phonebooks.current = _.head(self.phonebooks.raw);
-                return self.senders.raw;
-            }).then(function (senders) {
-                return _.each(senders, function (sender) {
+        this.loading.init = true;
+        return this.SmsMediator.initDeferred.promise.then(() =>
+            this.$q.all({
+                enums: this.fetchEnums(),
+                user: this.fetchUser(),
+                senders: this.fetchSenders(),
+                receivers: this.fetchReceivers(),
+                phonebooks: this.fetchPhonebooks()
+            }).then((result) => {
+                this.enums = result.enums;
+                this.user = result.user;
+                this.senders.raw = result.senders;
+                this.receivers.raw = result.receivers;
+                this.phonebooks.raw = result.phonebooks;
+                this.phonebooks.current = _.head(this.phonebooks.raw);
+                return this.senders.raw;
+            }).then((senders) =>
+                _.each(senders, (sender) => {
                     if (sender.type === "virtual") {
-                        self.senders.virtual.push(sender);
+                        this.senders.virtual.push(sender);
                     } else if (/\d+/.test(sender.sender)) {
-                        self.senders.other.push(sender);
+                        this.senders.other.push(sender);
                     } else {
-                        self.senders.alphanumeric.push(sender);
+                        this.senders.alphanumeric.push(sender);
                     }
-                });
-            }).then(function () {
-                self.service = SmsMediator.getCurrentSmsService();
-                self.computeRemainingChar();
-            });
-        }).catch(function (err) {
-            return new ToastError(err);
-        }).finally(function () {
-            self.loading.init = false;
+                })
+            ).then(() => {
+                this.service = this.SmsMediator.getCurrentSmsService();
+                this.computeRemainingChar();
+            })
+        ).catch((err) => {
+            this.ToastError(err);
+        }).finally(() => {
+            this.loading.init = false;
         });
     }
 
-    /* -----  End of INITIALIZATION  ------*/
+    /**
+     * Fetch enums.
+     * @return {Promise}
+     */
+    fetchEnums () {
+        return this.SmsMediator.getApiScheme().then((schema) => {
+            const smsClass = {
+                smsClass: _.pull(schema.models["sms.ClassEnum"].enum, "toolkit")
+            };
+            return smsClass;
+        });
+    }
 
-    init();
+    /**
+     * Fetch user.
+     * @return {Promise}
+     */
+    fetchUser () {
+        return this.api.user.get().$promise;
+    }
+
+    /**
+     * Fetch senders
+     * @return {Promise}
+     */
+    fetchSenders () {
+        return this.api.sms.senders.query({
+            serviceName: this.$stateParams.serviceName
+        }).$promise.then((sendersIds) =>
+            this.$q.all(_.map(sendersIds, (sender) =>
+                this.api.sms.senders.get({
+                    serviceName: this.$stateParams.serviceName,
+                    sender
+                }).$promise
+            )).then((senders) => _.filter(senders, { status: "enable" }))
+        );
+    }
+
+    /**
+     * Fetch receivers.
+     * @return {Promise}
+     */
+    fetchReceivers () {
+        return this.api.sms.receivers.query({
+            serviceName: this.$stateParams.serviceName
+        }).$promise.then((receiversIds) =>
+            this.$q.all(_.map(receiversIds, (slotId) =>
+                this.api.sms.receivers.get({
+                    serviceName: this.$stateParams.serviceName,
+                    slotId
+                }).$promise
+            ))
+        );
+    }
+
+    /**
+     * Fetch phonebooks.
+     * @return {Promise}
+     */
+    fetchPhonebooks () {
+        return this.api.sms.phonebooks.query({
+            serviceName: this.$stateParams.serviceName
+        }).$promise.then((phonebooksIds) =>
+            this.$q.all(_.map(phonebooksIds, (bookKey) =>
+                this.api.sms.phonebooks.get({
+                    serviceName: this.$stateParams.serviceName,
+                    bookKey
+                }).$promise
+            )).then((phonebooks) => _.sortBy(phonebooks, "name"))
+        );
+    }
+
+    /**
+     * Compute remaining characters.
+     * @return {Object}
+     */
+    computeRemainingChar () {
+        return _.assign(this.message, this.SmsMediator.getSmsInfoText(
+            this.sms.message,
+            !this.sms.noStopClause // suffix
+        ));
+    }
+
+    /**
+     * Is virtual number.
+     * @return {Boolean}
+     */
+    isVirtualNumber () {
+        return !!_.find(this.senders.virtual, { sender: this.sms.sender });
+    }
+
+    /**
+     * Show advice.
+     * @return {Object}
+     */
+    showAdvice () {
+        if (this.sms.sender && /[0-9\+]/.test(this.sms.sender) && !this.isVirtualNumber()) {
+            this.advice = true;
+            this.sms.noStopClause = true;
+        } else {
+            this.advice = false;
+            this.sms.noStopClause = false;
+        }
+        return this.computeRemainingChar();
+    }
+
+    /**
+     * Open date picker.
+     * @param  {Object} $event
+     */
+    openDatePicker ($event) {
+        $event.preventDefault();
+        $event.stopPropagation();
+        this.picker.dateOpened = true;
+    }
+
+    /**
+     * Get differed period helper.
+     * @return {String|Null}
+     */
+    getDifferedPeriod () {
+        const date = new Date();
+        if (this.picker.date) {
+            this.picker.date.setHours(this.picker.time.getHours());
+            this.picker.date.setMinutes(this.picker.time.getMinutes());
+            if (this.picker.date > date) {
+                const minutes = moment(this.picker.date).diff(moment(), "minutes");
+                return minutes;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Create sms.
+     * @param  {String} slotId
+     * @return {Object}
+     */
+    createSms (slotId) {
+        const phonebookContactNumber = [];
+        _.each(this.phonebooks.lists, (contact) => phonebookContactNumber.push(_.get(contact, contact.type)));
+        const receivers = _.union(phonebookContactNumber, this.sms.receivers ? [this.sms.receivers] : null);
+        const differedPeriod = this.sms.differedPeriod ? this.getDifferedPeriod() : null;
+        const sender = this.sms.sender === "shortNumber" ? null : this.sms.sender;
+        const senderForResponse = this.sms.sender === "shortNumber" ? true : this.sms.senderForResponse;
+        return {
+            charset: "UTF-8",
+            "class": this.sms.class,
+            coding: this.message.coding,
+            differedPeriod,
+            message: this.sms.message,
+            noStopClause: !!this.sms.noStopClause,
+            priority: "high",
+            receivers,
+            receiversSlotId: slotId || null,
+            sender,
+            senderForResponse: senderForResponse,
+            validityPeriod: "2880"
+        };
+    }
+
+    /**
+     * Reset form helper.
+     * @param {Object} form
+     */
+    resetForm (form) {
+        // restore default values
+        this.sms = {
+            "class": "phoneDisplay",
+            differedPeriod: false,
+            message: null,
+            receivers: null,
+            noStopClause: false,
+            sender: "shortNumber",
+            senderForResponse: false
+        };
+        this.computeRemainingChar();
+        this.clearReceiversLists();
+        this.clearPhonebookContactList();
+
+        // hide the options panel
+        this.moreOptions = false;
+        form.$setPristine(true);
+    }
+
+    /**
+     * Get estimation credit remaining helper.
+     * @return {String}
+     */
+    getEstimationCreditRemaining () {
+        const totalReceivers = this.receivers.records + this.phonebooks.lists.length + (this.sms.receivers ? 1 : 0);
+        const creditRemaining = this.service.creditsLeft - (totalReceivers * this.message.equivalence);
+        return this.$filter("number")(creditRemaining, 2);
+    }
+
+    /**
+     * Clear receivers' lists.
+     * @param  {Object} $event
+     * @return {Array}
+     */
+    clearReceiversLists ($event) {
+        if ($event) {
+            $event.preventDefault();
+        }
+        this.receivers.records = this.receivers.count = 0;
+        return _.map(this.receivers.raw, (receiver) => {
+            receiver.isSelected = false;
+        });
+    }
+
+    /**
+     * Opens a modal to add receivers' lists.
+     * @param {Object} $event
+     */
+    addReceiversLists ($event) {
+        $event.preventDefault();
+        const modal = this.$uibModal.open({
+            animation: true,
+            templateUrl: "app/telecom/sms/sms/compose/addReceiversLists/telecom-sms-sms-compose-addReceiversLists.html",
+            controller: "TelecomSmsSmsComposeAddReceiversListsCtrl",
+            controllerAs: "AddReceiversListsCtrl",
+            resolve: {
+                receivers: () => this.receivers.raw
+            }
+        });
+        modal.result.then((receivers) => {
+            this.receivers = {
+                raw: receivers,
+                count: _.size(_.filter(receivers, "isSelected")),
+                records: _.sum(_.pluck(_.filter(receivers, "isSelected"), "records"))
+            };
+        });
+    }
+
+    /**
+     * Opens a modal to add phonebook contact.
+     * @param {Object} $event
+     */
+    addPhonebookContact ($event) {
+        $event.preventDefault();
+        const modal = this.$uibModal.open({
+            animation: true,
+            templateUrl: "app/telecom/sms/sms/compose/addPhonebookContact/telecom-sms-sms-compose-addPhonebookContact.html",
+            controller: "TelecomSmsSmsComposeAddPhonebookContactCtrl",
+            controllerAs: "AddPhonebookContactCtrl",
+            resolve: { phonebooks: () => this.phonebooks }
+        });
+        modal.result.then((result) => {
+            this.phonebooks.lists = [];
+            _.each(result, (contact) => this.phonebooks.lists.push(contact));
+        });
+    }
+
+    /**
+     * Clear phonebook contact list helper.
+     * @param  {Object} $event
+     * @return {Object}
+     */
+    clearPhonebookContactList ($event) {
+        if ($event) {
+            $event.preventDefault();
+        }
+        this.phonebooks.lists = [];
+        return this.phonebooks;
+    }
+
+    /**
+     * Send SMS.
+     * @param  {Object} form
+     * @return {Promise}
+     */
+    send (form) {
+        const promises = [];
+        const slotIds = _.pluck(_.filter(this.receivers.raw, "isSelected"), "slotId");
+        this.loading.send = true;
+        if (this.isVirtualNumber()) {
+            if (this.sms.receivers || _.size(this.phonebooks.lists)) {
+                promises.push(this.api.sms.virtualNumbers.jobs.send({
+                    serviceName: this.$stateParams.serviceName,
+                    number: this.sms.sender
+                }, _.omit(this.createSms(), [
+                    "sender",
+                    "noStopClause",
+                    "senderForResponse"
+                ])).$promise);
+            }
+            if (_.size(slotIds)) {
+                _.map(slotIds, (slotId) =>
+                    promises.push(this.api.sms.virtualNumbers.jobs.send({
+                        serviceName: this.$stateParams.serviceName,
+                        number: this.sms.sender
+                    }, _.omit(this.createSms(slotId), [
+                        "receivers",
+                        "sender",
+                        "noStopClause",
+                        "senderForResponse"
+                    ])).$promise)
+                );
+            }
+        } else {
+            if (this.sms.receivers || _.size(this.phonebooks.lists)) {
+                promises.push(this.api.sms.jobs.send({
+                    serviceName: this.$stateParams.serviceName
+                }, this.createSms()).$promise);
+            }
+            if (_.size(slotIds)) {
+                _.map(slotIds, (slotId) =>
+                    promises.push(this.api.sms.jobs.send({
+                        serviceName: this.$stateParams.serviceName
+                    }, _.omit(this.createSms(slotId), "receivers")).$promise)
+                );
+            }
+        }
+
+        return this.$q.all(promises).then((results) => {
+            const totalCreditsRemoved = _.sum(results, "totalCreditsRemoved");
+            const invalidReceivers = _.chain(results).pluck("invalidReceivers").flatten().value();
+            const validReceivers = _.chain(results).pluck("validReceivers").flatten().value();
+
+            // update the creditLeft value (displayed on the dashboard)
+            this.service.creditsLeft -= totalCreditsRemoved;
+            this.atInternet.trackClick({
+                name: "sms-sended",
+                type: "action",
+                chapter1: "telecom-sms",
+                chapter2: "telecom-sms-sms",
+                chapter3: "telecom-sms-sms-compose",
+                customObject: {
+                    nichandle: _.get(this.user, "nichandle"),
+                    country: _.get(this.user, "country"),
+                    receiversCount: this.receivers.count,
+                    receiversLists: this.receivers.records + (this.sms.receivers ? 1 : 0),
+                    phonebookContactCount: this.phonebooks.lists.length,
+                    totalCreditsRemoved: totalCreditsRemoved,
+                    invalidReceivers: _.size(invalidReceivers),
+                    validReceivers: _.size(validReceivers)
+                }
+            });
+            this.resetForm(form);
+            this.Toast.success(this.$translate.instant("sms_sms_compose_status_success"));
+        }).catch((err) => {
+            this.Toast.error(this.$translate.instant("sms_sms_compose_status_failed"));
+            return this.$q.reject(err);
+        }).finally(() => {
+            this.loading.send = false;
+        });
+    }
+
+    /**
+     * Cancel.
+     * @param  {Object} form
+     */
+    cancel (form) {
+        this.resetForm(form);
+    }
+
+    /**
+     * Opens a modal with tips.
+     * @param  {Object} $event
+     * @param  {String} tip
+     */
+    tips ($event, tip) {
+        $event.preventDefault();
+        $event.stopPropagation();
+        this.$uibModal.open({
+            templateUrl: `app/telecom/sms/sms/compose/tips/telecom-sms-sms-compose-tips-${tip}.html`,
+            controller: "TelecomSmsSmsComposeTipsCtrl",
+            controllerAs: "ComposeTipsCtrl"
+        });
+    }
 });

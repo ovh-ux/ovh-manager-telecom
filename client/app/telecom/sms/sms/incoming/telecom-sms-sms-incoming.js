@@ -1,6 +1,5 @@
-angular.module("managerApp").config(function ($stateProvider) {
+angular.module("managerApp").config(($stateProvider) => {
     "use strict";
-
     $stateProvider.state("telecom.sms.sms.incoming", {
         url: "/incoming",
         views: {
@@ -10,6 +9,9 @@ angular.module("managerApp").config(function ($stateProvider) {
                 controllerAs: "SmsIncomingCtrl"
             }
         },
-        translations: ["common", "telecom/sms/sms/incoming"]
+        translations: [
+            "common",
+            "telecom/sms/sms/incoming"
+        ]
     });
 });
