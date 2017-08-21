@@ -14,10 +14,26 @@
 
             .thumbnail {
                 border: 0px;
-                img {
+                img, span.ovh-font {
                     width: 100px;
                     height: 100px;
                 }
+
+                span.ovh-font {
+                    display: block;
+                    text-align: center;
+                    font-size: 90px;
+                    margin-left: auto;
+                    margin-right: auto;
+                    color: @text-color;
+                }
+
+                a.no-src {
+                    &:hover, &:active, &:focus {
+                        text-decoration: none;
+                    }
+                }
+
             }
         }
     }
