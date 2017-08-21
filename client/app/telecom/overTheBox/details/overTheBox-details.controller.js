@@ -11,7 +11,7 @@ angular.module("managerApp").controller("OverTheBoxDetailsCtrl", function ($scop
      * @param  {Array} all   All scale labels
      * @return {String} Label
      */
-    var logarithmicAxisDisplay = function (label, index, all) {
+    var humanizeAxisDisplay = function (label, index, all) {
         var interval = Math.round(all.length / 4);
         if (index === all.length - 1 || index % interval === 0) {
             return $filter("unit-humanize")(label, "generic", 1);
@@ -127,9 +127,8 @@ angular.module("managerApp").controller("OverTheBoxDetailsCtrl", function ($scop
             self.chartDown = new ChartjsFactory(angular.copy(OVERTHEBOX_DETAILS.chart));
             self.chartDown.setYLabel($translate.instant("overTheBox_statistics_bits_per_sec_legend"));
             self.chartDown.setAxisOptions("yAxes", {
-                type: "logarithmic",
                 ticks: {
-                    callback: logarithmicAxisDisplay
+                    callback: humanizeAxisDisplay
                 }
             });
             self.chartDown.setTooltipCallback(
@@ -142,9 +141,7 @@ angular.module("managerApp").controller("OverTheBoxDetailsCtrl", function ($scop
             var downSeries = _.chain(filteredDown)
                 .map(function (d) {
                     return {
-                        name: d.tags.iface.replace(/^([a-z]*)(\d+)$/i, function (interfaceName, num) {
-                            return $translate.instant("overTheBox_interface_" + interfaceName.toLowerCase(), { num });
-                        }),
+                        name: d.tags.iface,
                         data: Object.keys(d.dps).map(function (key) {
                             return {
                                 x: key * 1000,
@@ -176,9 +173,8 @@ angular.module("managerApp").controller("OverTheBoxDetailsCtrl", function ($scop
             self.chartUp = new ChartjsFactory(angular.copy(OVERTHEBOX_DETAILS.chart));
             self.chartUp.setYLabel($translate.instant("overTheBox_statistics_bits_per_sec_legend"));
             self.chartUp.setAxisOptions("yAxes", {
-                type: "logarithmic",
                 ticks: {
-                    callback: logarithmicAxisDisplay
+                    callback: humanizeAxisDisplay
                 }
             });
             self.chartUp.setTooltipCallback(
@@ -191,9 +187,7 @@ angular.module("managerApp").controller("OverTheBoxDetailsCtrl", function ($scop
             var upSeries = _.chain(filteredUp)
                 .map(function (d) {
                     return {
-                        name: d.tags.iface.replace(/^([a-z]*)(\d+)$/i, function (interfaceName, num) {
-                            return $translate.instant("overTheBox_interface_" + interfaceName.toLowerCase(), { num });
-                        }),
+                        name: d.tags.iface,
                         data: Object.keys(d.dps).map(function (key) {
                             return {
                                 x: key * 1000,
@@ -382,7 +376,7 @@ angular.module("managerApp").controller("OverTheBoxDetailsCtrl", function ($scop
             function (devices) {
                 self.device = devices;
                 self.kpiInterfaces = devices.networkInterfaces.filter(function (netInterface) {
-                    return /^if\d+$/i.test(netInterface.name) || /^tun\d+$/.test(netInterface.name);
+                    return netInterface.gateway != null;
                 }).map(function (netInterface) {
                     return netInterface.name;
                 });
