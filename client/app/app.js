@@ -63,10 +63,6 @@ angular.module("managerApp", [
     "ovh-angular-chatbot"
 ])
 
-.config(function(chatbotServiceProvider, telecomConfig) {
-    chatbotServiceProvider.setChatbotUrl("/chatbot");
-})
-
 /*= =========  GLOBAL OPTIONS  ==========*/
     .config(function ($urlRouterProvider, $locationProvider, $compileProvider, $logProvider, telecomConfig, ToastProvider) {
         "use strict";
