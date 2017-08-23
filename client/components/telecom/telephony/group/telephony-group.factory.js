@@ -18,7 +18,7 @@ angular.module("managerApp").factory("TelephonyGroup", function ($q, Telephony, 
         }
 
         // mandatory
-        this.billingAccount = options.billingAccount;
+        this.billingAccount = options.billingAccount.toLowerCase();
 
         // from API
         this.description = options.description;
