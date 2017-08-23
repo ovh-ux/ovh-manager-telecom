@@ -21,7 +21,7 @@
         <p data-translate="sms_sms_compose_add_receivers_select_lists"></p>
 
         <div class="form-group bottom-space-m12"
-             data-ng-repeat="receiver in AddReceiversListsCtrl.receivers | orderBy:'description'">
+             data-ng-repeat="receiver in AddReceiversListsCtrl.model.receivers | orderBy:'description'">
             <label class="block pointer">
                 <flat-checkbox>
                     <input

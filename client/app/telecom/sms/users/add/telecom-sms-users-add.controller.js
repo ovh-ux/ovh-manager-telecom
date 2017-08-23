@@ -1,51 +1,51 @@
-angular.module("managerApp").controller("TelecomSmsUsersAddCtrl", function ($q, $stateParams, $timeout, $uibModalInstance, Sms) {
-    "use strict";
+angular.module("managerApp").controller("TelecomSmsUsersAddCtrl", class TelecomSmsUsersAddCtrl {
+    constructor ($q, $stateParams, $timeout, $uibModalInstance, Sms) {
+        this.$q = $q;
+        this.$stateParams = $stateParams;
+        this.$timeout = $timeout;
+        this.$uibModalInstance = $uibModalInstance;
+        this.api = {
+            sms: {
+                users: Sms.Users().Lexi()
+            }
+        };
+    }
 
-    var self = this;
+    $onInit () {
+        this.loading = {
+            addUser: false
+        };
+        this.added = false;
+        this.user = null;
+        this.attributes = ["login", "password"];
+    }
 
-    self.loading = {
-        addUser: false
-    };
+    /**
+     * Add sms api user.
+     * @return {Promise}
+     */
+    add () {
+        this.loading.addUser = true;
+        return this.$q.all([
+            this.api.sms.users.create({
+                serviceName: this.$stateParams.serviceName
+            }, _.pick(this.user, this.attributes)).$promise,
+            this.$timeout(angular.noop, 1000)
+        ]).then(() => {
+            this.loading.addUser = false;
+            this.added = true;
+            return this.$timeout(() => this.close(), 1000);
+        }).catch((error) => this.cancel({
+            type: "API",
+            msg: error
+        }));
+    }
 
-    self.added = false;
+    cancel (message) {
+        return this.$uibModalInstance.dismiss(message);
+    }
 
-    self.user = null;
-
-    /*= ==============================
-    =            ACTIONS            =
-    ===============================*/
-
-    self.add = function () {
-        self.loading.addUser = true;
-
-        return $q.all([
-            Sms.Users().Lexi().create({
-                serviceName: $stateParams.serviceName
-            }, {
-                login: self.user.login,
-                password: self.user.password
-            }).$promise,
-            $timeout(angular.noop, 1000)
-        ]).then(function () {
-            self.loading.addUser = false;
-            self.added = true;
-
-            return $timeout(self.close, 1000);
-        }, function (error) {
-            return self.cancel({
-                type: "API",
-                msg: error
-            });
-        });
-    };
-
-    self.cancel = function (message) {
-        return $uibModalInstance.dismiss(message);
-    };
-
-    self.close = function () {
-        return $uibModalInstance.close(true);
-    };
-
-    /* -----  End of ACTIONS  ------*/
+    close () {
+        return this.$uibModalInstance.close(true);
+    }
 });

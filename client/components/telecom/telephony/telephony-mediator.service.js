@@ -306,6 +306,12 @@ angular.module("managerApp").service("TelephonyMediator", function ($q, $statePa
         });
     };
 
+    self.getGroups = function (force) {
+        return self.getAll(force).then(function (result) {
+            return _.values(result);
+        });
+    };
+
     /** @TODO uncommend when API V7 available for /telephony */
     /*
         self.fetchGroup = function (billingAccount) {

@@ -1,4 +1,4 @@
-angular.module("managerApp").config(function ($stateProvider) {
+angular.module("managerApp").config(($stateProvider) => {
     "use strict";
 
     $stateProvider.state("telecom.sms", {
@@ -15,23 +15,24 @@ angular.module("managerApp").config(function ($stateProvider) {
         },
         "abstract": true,
         resolve: {
-            initSms: function ($q, $stateParams, SmsMediator) {
+            initSms: ($q, $stateParams, SmsMediator) => {
                 // init sms services
-                SmsMediator.initAll().then(function (smsDetails) {
-                    SmsMediator.setCurrentSmsService(smsDetails[$stateParams.serviceName]);
-                });
+                SmsMediator.initAll().then((smsDetails) =>
+                    SmsMediator.setCurrentSmsService(smsDetails[$stateParams.serviceName])
+                );
                 return $q.when({ init: true });
             },
-            $title: function (translations, $translate, Sms, $stateParams) {
-                return Sms.Lexi().get({
+            $title: (translations, $translate, Sms, $stateParams) => {
+                Sms.Lexi().get({
                     serviceName: $stateParams.serviceName
-                }).$promise.then(function (data) {
-                    return $translate.instant("sms_page_title", { name: data.description || $stateParams.serviceName }, null, null, "escape");
-                }).catch(function () {
-                    return $translate("sms_page_title", { name: $stateParams.serviceName });
-                });
+                }).$promise.then((data) =>
+                    $translate.instant("sms_page_title", { name: data.description || $stateParams.serviceName }, null, null, "escape")
+                ).catch(() => $translate("sms_page_title", { name: $stateParams.serviceName }));
             }
         },
-        translations: ["common", "telecom/sms"]
+        translations: [
+            "common",
+            "telecom/sms"
+        ]
     });
 });

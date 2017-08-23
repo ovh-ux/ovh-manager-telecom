@@ -1,47 +1,54 @@
-angular.module("managerApp").controller("TelecomSmsSmsTemplateRemoveCtrl", function ($q, $stateParams, $timeout, $uibModalInstance, Sms, template) {
-    "use strict";
-    var self = this;
+angular.module("managerApp").controller("TelecomSmsSmsTemplateRemoveCtrl", class TelecomSmsSmsTemplateRemoveCtrl {
+    constructor ($q, $stateParams, $timeout, $uibModalInstance, Sms, template) {
+        this.$q = $q;
+        this.$stateParams = $stateParams;
+        this.$timeout = $timeout;
+        this.$uibModalInstance = $uibModalInstance;
+        this.api = {
+            sms: {
+                templates: Sms.Templates().Lexi()
+            }
+        };
+        this.template = template;
+    }
 
-    self.loading = {
-        removeTemplate: false
-    };
+    $onInit () {
+        this.loading = {
+            removeTemplate: false
+        };
+        this.removed = false;
+        this.model = {
+            template: angular.copy(this.template)
+        };
+    }
 
-    self.removed = false;
-    self.template = angular.copy(template);
-
-    /*= ==============================
-    =            ACTIONS            =
-    ===============================*/
-
-    self.remove = function () {
-        self.loading.removeTemplate = true;
-
-        return $q.all([
-            Sms.Templates().Lexi().delete({
-                serviceName: $stateParams.serviceName,
-                name: self.template.name
+    /**
+     * Remove templates.
+     * @return {Promise}
+     */
+    remove () {
+        this.loading.removeTemplate = true;
+        return this.$q.all([
+            this.api.sms.templates.delete({
+                serviceName: this.$stateParams.serviceName,
+                name: this.model.template.name
             }).$promise,
-            $timeout(angular.noop, 1000)
-        ]).then(function () {
-            self.loading.removeTemplate = false;
-            self.removed = true;
+            this.$timeout(angular.noop, 1000)
+        ]).then(() => {
+            this.loading.removeTemplate = false;
+            this.removed = true;
+            return this.$timeout(() => this.close(), 1500);
+        }).catch((error) => this.cancel({
+            type: "API",
+            msg: error
+        }));
+    }
 
-            return $timeout(self.close, 1500);
-        }, function (error) {
-            return self.cancel({
-                type: "API",
-                msg: error
-            });
-        });
-    };
+    cancel (message) {
+        return this.$uibModalInstance.dismiss(message);
+    }
 
-    self.cancel = function (message) {
-        return $uibModalInstance.dismiss(message);
-    };
-
-    self.close = function () {
-        return $uibModalInstance.close(true);
-    };
-
-    /* -----  End of ACTIONS  ------*/
+    close () {
+        return this.$uibModalInstance.close(true);
+    }
 });

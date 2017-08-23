@@ -1,69 +1,68 @@
-angular.module("managerApp").controller("TelecomSmsSendersEditCtrl", function ($q, $stateParams, $timeout, $uibModalInstance, Sms, sender) {
-    "use strict";
+angular.module("managerApp").controller("TelecomSmsSendersEditCtrl", class TelecomSmsSendersEditCtrl {
+    constructor ($q, $stateParams, $timeout, $uibModalInstance, Sms, sender) {
+        this.$q = $q;
+        this.$stateParams = $stateParams;
+        this.$timeout = $timeout;
+        this.$uibModalInstance = $uibModalInstance;
+        this.api = {
+            sms: {
+                senders: Sms.Senders().Lexi()
+            }
+        };
+        this.sender = sender;
+    }
 
-    var self = this;
+    $onInit () {
+        this.loading = {
+            editSender: false
+        };
+        this.edited = false;
+        this.model = {
+            sender: angular.copy(this.sender)
+        };
+        this.attributs = ["description", "status"];
+    }
 
-    self.loading = {
-        editSender: false
-    };
+    /**
+     * Edit sender.
+     * @return {Promise}
+     */
+    edit () {
+        this.loading.editSender = true;
+        return this.$q.all([
+            this.api.sms.senders.edit({
+                serviceName: this.$stateParams.serviceName,
+                sender: this.model.sender.sender
+            }, _.pick(this.model.sender, this.attributs)).$promise.catch((error) => this.$q.reject(error)),
+            this.$timeout(angular.noop, 1000)
+        ]).then(() => {
+            this.loading.editSender = false;
+            this.edited = true;
+            this.sender.description = this.model.sender.description;
+            this.sender.status = this.model.sender.status;
+            return this.$timeout(() => this.close(), 1000);
+        }).catch((error) => this.cancel({
+            type: "API",
+            msg: error
+        }));
+    }
 
-    self.edited = false;
+    cancel (message) {
+        return this.$uibModalInstance.dismiss(message);
+    }
 
-    self.sender = angular.copy(sender);
+    close () {
+        return this.$uibModalInstance.close(true);
+    }
 
-    /*= ==============================
-    =            HELPERS            =
-    ===============================*/
-
-    self.hasChanged = function () {
-        return !(self.sender.description === sender.description && self.sender.status === sender.status);
-    };
-
-    /* -----  End of HELPERS  ------*/
-
-    /*= ==============================
-    =            ACTIONS            =
-    ===============================*/
-
-    self.edit = function () {
-        self.loading.editSender = true;
-
-        return $q.all([
-            Sms.Senders().Lexi().edit({
-                serviceName: $stateParams.serviceName,
-                sender: self.sender.sender
-            }, {
-                description: self.sender.description,
-                status: self.sender.status
-            }).$promise.then(function (voidResponse) {
-                return voidResponse;
-            }, function (error) {
-                return $q.reject(error);
-            }),
-            $timeout(angular.noop, 1000)
-        ]).then(function () {
-            self.loading.editSender = false;
-            self.edited = true;
-
-            sender.description = self.sender.description;
-            sender.status = self.sender.status;
-
-            return $timeout(self.close, 1000);
-        }, function (error) {
-            return self.cancel({
-                type: "API",
-                msg: error
-            });
-        });
-    };
-
-    self.cancel = function (message) {
-        return $uibModalInstance.dismiss(message);
-    };
-
-    self.close = function () {
-        return $uibModalInstance.close(true);
-    };
-
-    /* -----  End of ACTIONS  ------*/
+    /**
+     * Has changed helper.
+     * @return {Boolean}
+     */
+    hasChanged () {
+        return !_.isEqual(
+            _.pick(this.model.sender, this.attributs),
+            _.pick(this.sender, this.attributs)
+        );
+    }
 });

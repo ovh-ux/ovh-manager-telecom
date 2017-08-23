@@ -16,9 +16,9 @@
 
     <div class="modal-body" data-ng-if="!OptionsManageUpdateCtrl.loading.updateOptions && !OptionsManageUpdateCtrl.updated">
 
-        <!-- CallBack -->
+        <!-- CALLBACK -->
         <div class="form-group bottom-space-m16">
-            <div flat-input-container>
+            <div data-flat-input-container>
                 <label for="callBack"
                        class="control-label"
                        data-translate="sms_options_manage_update_callback_label">
@@ -30,7 +30,7 @@
                     class="form-control"
                     data-translate-attr="{ placeholder: 'sms_options_manage_update_callback_label' }"
                     data-ng-pattern="OptionsManageUpdateCtrl.urlPattern"
-                    data-ng-model="OptionsManageUpdateCtrl.service.callBack" />
+                    data-ng-model="OptionsManageUpdateCtrl.model.service.callBack" />
                 <div role="alert"
                      data-ng-messages="updateManageOptionsForm.callBack.$error">
                     <p class="text-danger"
@@ -45,9 +45,9 @@
             </div>
         </div>
 
-        <!-- StopCallBack -->
+        <!-- STOPCALLBACK -->
         <div class="form-group bottom-space-m16">
-            <div flat-input-container>
+            <div data-flat-input-container>
                 <label for="stopCallBack"
                        class="control-label"
                        data-translate="sms_options_manage_update_stopcallback_label">
@@ -59,7 +59,7 @@
                     class="form-control"
                     data-translate-attr="{ placeholder: 'sms_options_manage_update_stopcallback_label' }"
                     data-ng-pattern="OptionsManageUpdateCtrl.urlPattern"
-                    data-ng-model="OptionsManageUpdateCtrl.service.stopCallBack" />
+                    data-ng-model="OptionsManageUpdateCtrl.model.service.stopCallBack" />
                 <div role="alert"
                      data-ng-messages="updateManageOptionsForm.stopCallBack.$error">
                     <p class="text-danger"
@@ -94,7 +94,7 @@
             class="btn btn-default"
             data-ng-click="OptionsManageUpdateCtrl.cancel()"
             data-translate="cancel"
-            data-ng-disabled="updateManageOptionsForm.$invalid || OptionsManageUpdateCtrl.loading.updateOptions || OptionsManageUpdateCtrl.updated">
+            data-ng-disabled="OptionsManageUpdateCtrl.loading.updateOptions || OptionsManageUpdateCtrl.updated">
         </button>
         <button
             type="submit"

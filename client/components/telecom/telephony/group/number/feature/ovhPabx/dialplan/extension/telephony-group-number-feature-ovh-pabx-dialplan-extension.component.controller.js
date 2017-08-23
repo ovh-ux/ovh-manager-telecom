@@ -60,7 +60,7 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxDialplanExtension
     };
 
     self.extensionHasConditions = function () {
-        return self.getExtensionAttr("schedulerCategory") || self.getExtensionAttr("screenListType");
+        return self.getExtensionAttr("schedulerCategory") || self.getExtensionAttr("screenListType") || self.getExtensionAttr("timeConditions").length;
     };
 
     self.getRuleAttr = function (attr, rule) {

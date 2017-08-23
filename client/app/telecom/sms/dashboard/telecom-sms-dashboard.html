@@ -79,10 +79,10 @@
                 <div class="row bottom-space-m16">
                     <div class="col-xs-12 col-md-6 bottom-space-m16">
                         <select
-                            flat-select
                             name="statsMonths"
                             class="form-control"
                             id="statsMonths"
+                            data-flat-select
                             data-ng-model="SmsDashboardCtrl.stats.filter.month"
                             data-ng-change="SmsDashboardCtrl.getStats()"
                             data-ng-disabled="SmsDashboardCtrl.loading.stats">
@@ -99,10 +99,10 @@
                     </div>
                     <div class="col-xs-12 col-md-6 bottom-space-m16">
                         <select
-                            flat-select
                             name="statsSender"
                             class="form-control"
                             id="statsSender"
+                            data-flat-select
                             data-ng-options="sender for sender in SmsDashboardCtrl.stats.label.senders | orderBy"
                             data-ng-model="SmsDashboardCtrl.stats.filter.sender"
                             data-ng-change="SmsDashboardCtrl.getStats(SmsDashboardCtrl.stats.filter.sender)"
@@ -180,3 +180,4 @@
     </div>
 
 </section>
+<!-- /.telecom-sms-dashboard -->

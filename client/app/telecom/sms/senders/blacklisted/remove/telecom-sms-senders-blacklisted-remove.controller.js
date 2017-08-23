@@ -1,49 +1,51 @@
-angular.module("managerApp").controller("TelecomSmsSendersBlacklistedRemoveCtrl", function ($q, $stateParams, $timeout, $uibModalInstance, Sms, blacklist) {
-    "use strict";
+angular.module("managerApp").controller("TelecomSmsSendersBlacklistedRemoveCtrl", class TelecomSmsSendersBlacklistedRemoveCtrl {
+    constructor ($q, $stateParams, $timeout, $uibModalInstance, Sms, blacklist) {
+        this.$q = $q;
+        this.$stateParams = $stateParams;
+        this.$timeout = $timeout;
+        this.$uibModalInstance = $uibModalInstance;
+        this.api = {
+            sms: {
+                blacklists: Sms.Blacklists().Lexi()
+            }
+        };
+        this.blacklist = blacklist;
+    }
 
-    var self = this;
+    $onInit () {
+        this.loading = {
+            removeBlacklisted: false
+        };
+        this.removed = false;
+    }
 
-    self.loading = {
-        removeBlacklisted: false
-    };
-
-    self.removed = false;
-
-    self.blacklist = angular.copy(blacklist);
-
-    /*= ==============================
-    =            ACTIONS            =
-    ===============================*/
-
-    self.remove = function () {
-        self.loading.removeBlacklisted = true;
-
-        return $q.all([
-            Sms.Blacklists().Lexi().delete({
-                serviceName: $stateParams.serviceName,
-                number: self.blacklist.number
+    /**
+     * Remove blacklists.
+     * @return {Promise}
+     */
+    remove () {
+        this.loading.removeBlacklisted = true;
+        return this.$q.all([
+            this.api.sms.blacklists.delete({
+                serviceName: this.$stateParams.serviceName,
+                number: this.blacklist.number
             }).$promise,
-            $timeout(angular.noop, 1000)
-        ]).then(function () {
-            self.loading.removeBlacklisted = false;
-            self.removed = true;
+            this.$timeout(angular.noop, 1000)
+        ]).then(() => {
+            this.loading.removeBlacklisted = false;
+            this.removed = true;
+            return this.$timeout(() => this.close(), 1500);
+        }).catch((error) => this.cancel({
+            type: "API",
+            msg: error
+        }));
+    }
 
-            return $timeout(self.close, 1500);
-        }, function (error) {
-            return self.cancel({
-                type: "API",
-                msg: error
-            });
-        });
-    };
+    cancel (message) {
+        return this.$uibModalInstance.dismiss(message);
+    }
 
-    self.cancel = function (message) {
-        return $uibModalInstance.dismiss(message);
-    };
-
-    self.close = function () {
-        return $uibModalInstance.close(true);
-    };
-
-    /* -----  End of ACTIONS  ------*/
+    close () {
+        return this.$uibModalInstance.close(true);
+    }
 });

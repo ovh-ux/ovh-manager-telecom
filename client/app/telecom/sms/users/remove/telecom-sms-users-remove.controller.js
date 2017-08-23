@@ -1,49 +1,54 @@
-angular.module("managerApp").controller("TelecomSmsUsersRemoveCtrl", function ($q, $stateParams, $timeout, $uibModalInstance, Sms, user) {
-    "use strict";
+angular.module("managerApp").controller("TelecomSmsUsersRemoveCtrl", class TelecomSmsUsersRemoveCtrl {
+    constructor ($q, $stateParams, $timeout, $uibModalInstance, Sms, user) {
+        this.$q = $q;
+        this.$stateParams = $stateParams;
+        this.$timeout = $timeout;
+        this.$uibModalInstance = $uibModalInstance;
+        this.api = {
+            sms: {
+                users: Sms.Users().Lexi()
+            }
+        };
+        this.user = user;
+    }
 
-    var self = this;
+    $onInit () {
+        this.loading = {
+            removeUser: false
+        };
+        this.removed = false;
+        this.model = {
+            user: angular.copy(this.user)
+        };
+    }
 
-    self.loading = {
-        removeUser: false
-    };
-
-    self.removed = false;
-
-    self.user = angular.copy(user);
-
-    /*= ==============================
-    =            ACTIONS            =
-    ===============================*/
-
-    self.remove = function () {
-        self.loading.removeUser = true;
-
-        return $q.all([
-            Sms.Users().Lexi().delete({
-                serviceName: $stateParams.serviceName,
-                login: self.user.login
+    /**
+     * Remove sms api user api.
+     * @return {Promise}
+     */
+    remove () {
+        this.loading.removeUser = true;
+        return this.$q.all([
+            this.api.sms.users.delete({
+                serviceName: this.$stateParams.serviceName,
+                login: this.model.user.login
             }).$promise,
-            $timeout(angular.noop, 1000)
-        ]).then(function () {
-            self.loading.removeUser = false;
-            self.removed = true;
+            this.$timeout(angular.noop, 1000)
+        ]).then(() => {
+            this.loading.removeUser = false;
+            this.removed = true;
+            return this.$timeout(() => this.close(), 1500);
+        }).catch((error) => this.cancel({
+            type: "API",
+            msg: error
+        }));
+    }
 
-            return $timeout(self.close, 1500);
-        }, function (error) {
-            return self.cancel({
-                type: "API",
-                msg: error
-            });
-        });
-    };
+    cancel (message) {
+        return this.$uibModalInstance.dismiss(message);
+    }
 
-    self.cancel = function (message) {
-        return $uibModalInstance.dismiss(message);
-    };
-
-    self.close = function () {
-        return $uibModalInstance.close(true);
-    };
-
-    /* -----  End of ACTIONS  ------*/
+    close () {
+        return this.$uibModalInstance.close(true);
+    }
 });

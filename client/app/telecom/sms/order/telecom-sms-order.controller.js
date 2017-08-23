@@ -1,52 +1,55 @@
-angular.module("managerApp").controller("TelecomSmsOrderCtrl", function ($q, $translate, $filter, $stateParams, SmsMediator, Order, debounce, Toast, SMS_ORDER_PREFIELDS_VALUES) {
-    "use strict";
+angular.module("managerApp").controller("TelecomSmsOrderCtrl", class TelecomSmsOrderCtrl {
+    constructor ($q, $translate, $filter, $stateParams, SmsMediator, Order, debounce, Toast, SMS_ORDER_PREFIELDS_VALUES) {
+        this.$q = $q;
+        this.$translate = $translate;
+        this.$filter = $filter;
+        this.$stateParams = $stateParams;
+        this.SmsMediator = SmsMediator;
+        this.api = {
+            order: {
+                sms: Order.Sms().Lexi()
+            }
+        };
+        this.debounce = debounce;
+        this.Toast = Toast;
+        this.constant = { SMS_ORDER_PREFIELDS_VALUES };
+    }
 
-    var self = this;
+    $onInit () {
+        this.loading = {
+            init: false,
+            order: false,
+            prices: false
+        };
+        this.order = {
+            account: null,
+            credit: null,
+            customCredit: 100,
+            max: 1000000,
+            min: 100
+        };
+        this.contracts = null;
+        this.contractsAccepted = false;
+        this.availableAccounts = null;
+        this.availableCredits = null;
 
-    this.loading = {
-        init: false,
-        order: false,
-        prices: false
-    };
-
-    this.order = {
-        account: null,
-        credit: null,
-        customCredit: 100,
-        max: 1000000,
-        min: 100
-    };
-
-    this.contracts = null;
-    this.contractsAccepted = false;
-    this.availableAccounts = null;
-    this.availableCredits = null;
-
-    /*= =====================================
-        =            INITIALIZATION            =
-        ======================================*/
-
-    function init () {
-        self.loading.init = true;
-
-        self.availableCredits = [];
-        _.forEach(SMS_ORDER_PREFIELDS_VALUES, function (value, idx) {
-            self.availableCredits.push({
-                label: isNaN(value) ? $translate.instant("sms_order_credit_custom") : $filter("number")(value),
+        this.availableCredits = [];
+        _.forEach(this.constant.SMS_ORDER_PREFIELDS_VALUES, (value, idx) => {
+            this.availableCredits.push({
+                label: isNaN(value) ? this.$translate.instant("sms_order_credit_custom") : this.$filter("number")(value),
                 value: value
             });
-            if (value === self.order.min) {
-                self.order.credit = self.availableCredits[idx];
+            if (value === this.order.min) {
+                this.order.credit = this.availableCredits[idx];
             }
         });
 
-        SmsMediator.initAll().then(function () {
-            var availableAccounts = _.toArray(SmsMediator.getAccounts()).sort(function (a, b) {
-                return a.name.localeCompare(b.name);
-            });
+        this.loading.init = true;
+        this.SmsMediator.initAll().then(() => {
+            const availableAccounts = _.toArray(this.SmsMediator.getAccounts()).sort((a, b) => a.name.localeCompare(b.name));
 
             // We have to format it to become human readable
-            _.forEach(availableAccounts, function (account, idx) {
+            _.forEach(availableAccounts, (account, idx) => {
                 // if no description, take sms id
                 if (account.description === "") {
                     account.label = account.name;
@@ -57,113 +60,119 @@ angular.module("managerApp").controller("TelecomSmsOrderCtrl", function ($q, $tr
                 }
 
                 // If we are on a service, preselect
-                if (account.name === $stateParams.serviceName) {
-                    self.order.account = availableAccounts[idx];
+                if (account.name === this.$stateParams.serviceName) {
+                    this.order.account = availableAccounts[idx];
                 }
             });
-
-            var newAccount = {
+            const newAccount = {
                 name: "new",
                 description: "",
-                label: $translate.instant("sms_order_new_account")
+                label: this.$translate.instant("sms_order_new_account")
             };
             availableAccounts.push(newAccount);
-
-            self.availableAccounts = availableAccounts;
-
-            if (!self.order.account) {
-                self.order.account = self.availableAccounts[self.availableAccounts.length - 1];
+            this.availableAccounts = availableAccounts;
+            if (!this.order.account) {
+                this.order.account = this.availableAccounts[this.availableAccounts.length - 1];
             }
-        }).then(function () {
-            self.loading.init = false;
-        }).then(function () {
-            return self.getPrices();
+        }).then(() => this.getPrices()).finally(() => {
+            this.loading.init = false;
+        });
+
+        this.getDebouncedPrices = this.debounce(this.getPrices, 500, false);
+    }
+
+    /**
+     * Is account creation.
+     * @return {Boolean}
+     */
+    isAccountCreation () {
+        return this.order.account.name === "new";
+    }
+
+    /**
+     * Custom credit selected.
+     * @return {Boolean}
+     */
+    customCreditSelected () {
+        return this.order.credit.label && this.order.credit.label === this.$translate.instant("sms_order_credit_custom");
+    }
+
+    /**
+     * Get selected credit.
+     * @return {String}
+     */
+    getSelectedCredit () {
+        if (this.customCreditSelected()) {
+            return this.order.customCredit;
+        }
+        return this.order.credit.value;
+    }
+
+    /**
+     * Get prices.
+     * @return {Promise}
+     */
+    getPrices () {
+        this.loading.prices = true;
+        this.contracts = null;
+        this.prices = null;
+        this.contractsAccepted = false;
+        if (this.isAccountCreation()) {
+            return this.api.order.sms.getNewSmsAccount({
+                quantity: this.getSelectedCredit()
+            }).$promise.then((newAccountPriceDetails) => {
+                this.contracts = newAccountPriceDetails.contracts;
+                this.prices = newAccountPriceDetails;
+                return this.prices;
+            }).catch((error) => {
+                this.Toast.error(this.$translate.instant("sms_order_ko"));
+                return this.$q.reject(error);
+            }).finally(() => {
+                this.loading.prices = false;
+            });
+        }
+        return this.api.order.sms.getCredits({
+            serviceName: this.order.account.name,
+            quantity: this.getSelectedCredit()
+        }).$promise.then((priceDetails) => {
+            this.contracts = priceDetails.contracts;
+            this.prices = priceDetails;
+        }).catch(() =>
+            this.Toast.error(this.$translate.instant("sms_order_ko"))
+        ).finally(() => {
+            this.loading.prices = false;
         });
     }
 
-    /* -----  End of INITIALIZATION  ------*/
-
-    this.customCreditSelected = function customCreditSelected () {
-        return self.order.credit.label && self.order.credit.label === $translate.instant("sms_order_credit_custom");
-    };
-
-    function getSelectedCredit () {
-        if (self.customCreditSelected()) {
-            return self.order.customCredit;
-        }
-        return self.order.credit.value;
-    }
-
-    function isAccountCreation () {
-        return self.order.account.name === "new";
-    }
-
-    this.getPrices = function () {
-        self.loading.prices = true;
-        self.contracts = null;
-        self.prices = null;
-        self.contractsAccepted = false;
-
-        if (isAccountCreation()) {
-            return Order.Sms().Lexi().getNewSmsAccount({
-                quantity: getSelectedCredit()
-            }).$promise.then(function (newAccountPriceDetails) {
-                self.contracts = newAccountPriceDetails.contracts;
-                self.prices = newAccountPriceDetails;
-                return self.prices;
-            }, function (error) {
-                Toast.error($translate.instant("sms_order_ko"));
-                return $q.reject(error);
-            }).finally(function () {
-                self.loading.prices = false;
+    /**
+     * Do order.
+     * @return {Promise}
+     */
+    doOrder () {
+        this.loading.order = true;
+        this.prices.url = null;
+        if (this.isAccountCreation()) {
+            return this.api.order.sms.orderNewSmsAccount({}, {
+                quantity: this.getSelectedCredit()
+            }).$promise.then((newAccountPriceDetails) => {
+                this.prices.url = newAccountPriceDetails.url;
+                return this.prices.url;
+            }).catch(() =>
+                this.Toast.error(this.$translate.instant("sms_order_ko"))
+            ).finally(() => {
+                this.loading.order = false;
             });
         }
-        return Order.Sms().Lexi().getCredits({
-            serviceName: self.order.account.name,
-            quantity: getSelectedCredit()
-        }).$promise.then(function (priceDetails) {
-            self.contracts = priceDetails.contracts;
-            self.prices = priceDetails;
-        }, function () {
-            Toast.error($translate.instant("sms_order_ko"));
-        }).finally(function () {
-            self.loading.prices = false;
-        });
-
-    };
-
-    this.doOrder = function () {
-        self.loading.order = true;
-        self.prices.url = null;
-
-        if (isAccountCreation()) {
-            return Order.Sms().Lexi().orderNewSmsAccount({}, {
-                quantity: getSelectedCredit()
-            }).$promise.then(function (newAccountPriceDetails) {
-                self.prices.url = newAccountPriceDetails.url;
-                return self.prices.url;
-            }, function () {
-                Toast.error($translate.instant("sms_order_ko"));
-            }).finally(function () {
-                self.loading.order = false;
-            });
-        }
-        return Order.Sms().Lexi().orderCredits({
-            serviceName: self.order.account.name
+        return this.api.order.sms.orderCredits({
+            serviceName: this.order.account.name
         }, {
-            quantity: getSelectedCredit()
-        }).$promise.then(function (priceDetails) {
-            self.prices.url = priceDetails.url;
-        }, function () {
-            Toast.error($translate.instant("sms_order_ko"));
-        }).finally(function () {
-            self.loading.order = false;
+            quantity: this.getSelectedCredit()
+        }).$promise.then((priceDetails) => {
+            this.prices.url = priceDetails.url;
+        }).catch(() =>
+            this.Toast.error(this.$translate.instant("sms_order_ko"))
+        ).finally(() => {
+            this.loading.order = false;
         });
-
-    };
-
-    this.getDebouncedPrices = debounce(self.getPrices, 500, false);
-
-    init();
-}
-);
+    }
+});
