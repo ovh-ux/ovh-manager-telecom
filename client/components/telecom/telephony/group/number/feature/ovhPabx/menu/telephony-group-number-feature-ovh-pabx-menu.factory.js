@@ -256,7 +256,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberOvhPabxMenu", function
         if (attr) {
             return !_.isEqual(_.get(self.saveForEdition, attr), _.get(self, attr));
         }
-        return self.hasChange("name") || self.hasChange("greetSound") || self.hasChange("invalidSound");
+        return self.hasChange("name") || self.hasChange("greetSound") || self.hasChange("invalidSound") || self.hasChange("greetSoundTts") || self.hasChange("invalidSoundTts");
     };
 
     /* -----  End of PROTOTYPE METHODS  ------*/

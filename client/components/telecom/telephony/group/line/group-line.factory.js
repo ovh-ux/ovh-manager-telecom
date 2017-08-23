@@ -35,6 +35,7 @@ angular.module("managerApp").factory("TelephonyGroupLine", function ($q, $filter
         this.simultaneousLines = options.simultaneousLines;
         this.phone = options.phone;
         this.hasPhone = undefined;
+        this.hasSupportsPhonebook = undefined;
 
         this.options = null;
         this.ips = null;
@@ -143,6 +144,24 @@ angular.module("managerApp").factory("TelephonyGroupLine", function ($q, $filter
             description: self.description,
             notifications: self.notifications
         }).$promise;
+    };
+
+    TelephonyGroupLine.prototype.supportsPhonebook = function () {
+        var self = this;
+
+        if (_.isUndefined(self.hasSupportsPhonebook)) {
+            return Telephony.Line().Phone().Lexi().supportsPhonebook({
+                billingAccount: self.billingAccount,
+                serviceName: self.serviceName
+            }).$promise.then(function (support) {
+                self.hasSupportsPhonebook = _.get(support, "data", null);
+                return support;
+            }, function () {
+                self.hasSupportsPhonebook = false;
+                return null;
+            });
+        }
+        return $q.when(self.hasSupportsPhonebook);
     };
 
     TelephonyGroupLine.prototype.getPhone = function () {

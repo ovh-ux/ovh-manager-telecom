@@ -5,6 +5,7 @@
    <translation id="telephony_group_billing_dashboard_actions_group_delete" qtlid="69929">Supprimer le groupe</translation>
    <translation id="telephony_group_billing_dashboard_actions_group_last_bill" qtlid="386274">Consulter mes dernières factures</translation>
    <translation id="telephony_group_billing_dashboard_actions_portabilities" qtlid="386287">Consulter mes portabilités en cours</translation>
+   <translation id="telephony_group_billing_dashboard_actions_portabilities_create">Demander une portabilité</translation>
    <translation id="telephony_group_billing_dashboard_consumption_title" qtlid="25999">Consommation du mois</translation>
    <translation id="telephony_group_billing_dashboard_bill_title" qtlid="386300">Mes 5 derniers relevés de conso.</translation>
    <translation id="telephony_group_billing_dashboard_information_title" qtlid="386313">Info. générales</translation>

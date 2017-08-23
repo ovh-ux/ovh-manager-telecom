@@ -53,5 +53,5 @@
     <translation id="telephony_number_feature_conference_participants_state_talking">En train de parler</translation>
     <translation id="telephony_number_feature_conference_participants_state_deaf">N’entend pas</translation>
     <translation id="telephony_number_feature_conference_participants_state_muted">Ne peux pas parler</translation>
-    <translation id="telephony_number_feature_conference_participants_emprty">Aucun participant dans la conférence</translation>
+    <translation id="telephony_number_feature_conference_participants_empty">Aucun participant dans la conférence</translation>
 </translations>

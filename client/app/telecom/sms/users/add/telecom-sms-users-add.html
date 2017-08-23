@@ -16,9 +16,9 @@
 
     <div class="modal-body" data-ng-if="!UsersAddCtrl.loading.addUser && !UsersAddCtrl.added">
 
-        <!-- Login -->
+        <!-- LOGIN -->
         <div class="form-group bottom-space-m16">
-            <div flat-input-container>
+            <div data-flat-input-container>
                 <label for="login"
                        class="control-label"
                        data-translate="sms_users_add_user_login_label">
@@ -47,9 +47,9 @@
             </div>
         </div>
 
-        <!-- Password -->
+        <!-- PASSWORD -->
         <div class="form-group bottom-space-m16">
-            <div flat-input-container>
+            <div data-flat-input-container>
                 <label for="password"
                        class="control-label"
                        data-translate="sms_users_add_user_password_label">
@@ -59,11 +59,9 @@
                     name="password"
                     id="password"
                     class="form-control"
-                    minlength="8"
-                    maxlength="8"
                     required
                     data-ng-model="UsersAddCtrl.user.password"
-                    data-ng-pattern="/^\w+$/"
+                    data-ng-pattern="/^\w{8}$/"
                     data-translate-attr="{ placeholder: 'sms_users_add_user_password_placeholder' }" />
                 <div role="alert"
                      data-ng-messages="(addUserForm.$invalid && addUserForm.password.$dirty) && addUserForm.password.$error">
@@ -72,16 +70,8 @@
                        data-translate="sms_users_add_user_password_required">
                     </p>
                     <p class="text-danger"
-                       data-ng-message="minlength"
-                       data-translate="sms_users_add_user_password_error_minlength">
-                    </p>
-                    <p class="text-danger"
-                       data-ng-message="maxlength"
-                       data-translate="sms_users_add_user_password_error_minlength">
-                    </p>
-                    <p class="text-danger"
                        data-ng-message="pattern"
-                       data-translate="sms_users_add_user_password_error_minlength">
+                       data-translate="sms_users_add_user_password_error_pattern">
                     </p>
                 </div>
             </div>

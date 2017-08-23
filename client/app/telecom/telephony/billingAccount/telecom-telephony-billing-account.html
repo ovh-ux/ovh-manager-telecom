@@ -69,13 +69,17 @@
         </div><!-- .telecom-section-header -->
 
         <div class="telecom-section-alert">
-            <div class="alert alert-warning"
+            <div class="alert alert-xs alert-warning"
                  role="alert"
                  data-ng-if="!BillingAccountCtrl.loading.init && BillingAccountCtrl.terminationTask">
-                <i class="ovh-font ovh-font-filled-warning" aria-hidden="true"></i>
+                <span class="ovh-font ovh-font-filled-warning" aria-hidden="true"></span>
                 <span data-translate="telephony_group_termination_warning"
-                      data-translate-values="{ date: (BillingAccountCtrl.terminationTask.executionDate | date) }">
+                      data-translate-values="{ date: (BillingAccountCtrl.terminationTask.executionDate | date) }"
+                      data-translate-compile>
                 </span>
+                <a data-ui-sref="telecom.telephony.deleteGroup"
+                   data-translate="telephony_group_termination_warning_link">
+                </a>.
             </div>
         </div><!-- .telecom-section-alert -->
 

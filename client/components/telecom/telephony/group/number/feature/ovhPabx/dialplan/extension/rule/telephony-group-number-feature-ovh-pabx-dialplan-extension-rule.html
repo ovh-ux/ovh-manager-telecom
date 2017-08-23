@@ -56,46 +56,54 @@
                       data-ng-switch-when="ivr"
                       data-ng-bind="$ctrl.getMenu().name">
                 </span> <!-- IVR -->
-
                 <!-- HUNTING -->
                 <span class="voip-plan__step-info"
-                      data-ng-switch-when="hunting"
-                      data-ng-bind="$ctrl.ovhPabx.getQueue($ctrl.getRuleAttribute('actionParam')).description || $ctrl.ovhPabx.getQueue($ctrl.getRuleAttribute('actionParam')).queueId">
+                       data-ng-switch-when="hunting"
+                       data-ng-bind="$ctrl.ovhPabx.getQueue($ctrl.getRuleAttribute('actionParam')).description || $ctrl.ovhPabx.getQueue($ctrl.getRuleAttribute('actionParam')).queueId">
                 </span> <!-- END OF HUNTING -->
+
+                <!-- TTS -->
+                <span class="voip-plan__step-info"
+                      data-ng-switch-when="tts"
+                      data-ng-bind="$ctrl.ovhPabx.getSingleTts($ctrl.getRuleAttribute('actionParam')).text"
+                      data-ng-attr-title="{{ $ctrl.ovhPabx.getSingleTts($ctrl.getRuleAttribute('actionParam')).text }}">
+                </span> <!-- End of TTS -->
 
                 <!-- DEFAULT TYPE -->
                 <span class="voip-plan__step-info"
                       data-ng-switch-default
                       data-ng-bind="$ctrl.getRuleAttribute('actionParam')">
-                </span> <!-- DEFAULT TYPE --> <!-- ACTION PARAM DISPLAY -->
+                </span> <!-- DEFAULT TYPE -->
+                <!-- ACTION PARAM DISPLAY -->
             </div> <!-- END OF RULE ACTION -->
+
             <!-- AVAILABLE RULE ACTIONS -->
             <div class="voip-plan__step-btn-container"
                  data-uib-dropdown>
-                <button type="button"
-                        class="voip-plan__step-btn voip-plan__step-btn--default"
-                        data-attr-id="extension-rule-{{ $ctrl.rule.ruleId }}-actions"
-                        data-ng-disabled="$ctrl.isActionsDisabled()"
-                        data-uib-dropdown-toggle>
-                    <span class="ovh-font ovh-font-dots"></span>
-                </button>
-                <!-- ACTIONS LIST -->
-                <ul class="dropdown-menu ovh-dropdown-menu"
-                    data-uib-dropdown-menu
-                    role="menu"
-                    aria-labelledby="extension-rule-{{ $ctrl.rule.ruleId }}-actions">
-                    <!-- EDIT ACTION -->
-                    <li role="menuitem">
-                        <button type="button"
-                                class="btn btn-link full-width"
-                                data-translate="telephony_number_feature_ovh_pabx_step_rule_action_edit"
-                                data-ng-click="$ctrl.popoverStatus.isOpen = true">
-                        </button>
-                    </li> <!-- EDIT ACTION -->
-                    <li class="divider"></li>
-                    <!-- DELETE ACTION -->
-                    <li role="menuitem">
-                        <button type="button"
+                 <button type="button"
+                         class="voip-plan__step-btn voip-plan__step-btn--default"
+                         data-attr-id="extension-rule-{{ $ctrl.rule.ruleId }}-actions"
+                         data-ng-disabled="$ctrl.isActionsDisabled()"
+                         data-uib-dropdown-toggle>
+                     <span class="ovh-font ovh-font-dots vertical-top" aria-hidden="true"></span>
+                 </button>
+                 <!-- ACTIONS LIST -->
+                 <ul class="dropdown-menu ovh-dropdown-menu"
+                     data-uib-dropdown-menu
+                     role="menu"
+                     aria-labelledby="extension-rule-{{ $ctrl.rule.ruleId }}-actions">
+                     <!-- EDIT ACTION -->
+                     <li role="menuitem">
+                         <button type="button"
+                                 class="btn btn-link full-width"
+                                 data-translate="telephony_number_feature_ovh_pabx_step_rule_action_edit"
+                                 data-ng-click="$ctrl.popoverStatus.isOpen = true">
+                         </button>
+                     </li> <!-- EDIT ACTION -->
+                     <li class="divider"></li>
+                     <!-- DELETE ACTION -->
+                     <li role="menuitem">
+                         <button type="button"
                                 class="btn btn-link full-width"
                                 data-translate="telephony_number_feature_ovh_pabx_step_rule_action_delete"
                                 data-ng-click="$ctrl.deletePending = true">

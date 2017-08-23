@@ -30,7 +30,7 @@
 
                     <!-- TYPE -->
                     <dt data-translate="telephony_line_assist_rma_type"></dt>
-                    <dd data-ng-bind="'telephony_line_assist_rma_type_' + (rma.type | replace:' ':'_') | translate"></dd>
+                    <dd data-ng-bind="'telephony_line_assist_rma_type_' + (rma.type | snakeCase) | translate"></dd>
 
                     <!-- NEW OFFER -->
                     <dt data-ng-if="rma.offerTypeNew && rma.offerTypeNew !== rma.offerTypeOld" data-translate="telephony_line_assist_rma_offer_new"></dt>

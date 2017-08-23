@@ -18,8 +18,8 @@
                     <span class="table-pretty-filter">
                         <i class="fa fa-sort"
                            data-ng-class="{
-                            'fa-sort-desc': $ctrl.orderDesc,
-                            'fa-sort-asc': !$ctrl.orderDesc
+                            'fa-sort-desc': $ctrl.menus.orderDesc,
+                            'fa-sort-asc': !$ctrl.menus.orderDesc
                         }"></i>
                     </span>
                 </button>
@@ -46,7 +46,7 @@
         </tr>
     </tbody>
     <tbody data-ng-if="!$ctrl.loading.init && $ctrl.menus.raw.length > 0">
-        <tr data-ng-repeat="menu in $ctrl.menus.paginated track by $index">
+        <tr data-ng-repeat="menu in $ctrl.menus.paginated | filter:{status: '!DRAFT'} | orderBy:$ctrl.menus.orderBy:$ctrl.menus.orderDesc track by $index">
             <td class="cell-label"
                 data-ng-if="$ctrl.withChoice">
                 <div data-ng-class="{ 'opacity2-leave': $ctrl.askedMenuDelete === menu.menuId, 'opacity2-enter': $ctrl.askedMenuDelete !== menu.menuId }">
@@ -120,7 +120,7 @@
 <div class="table-pretty-pagination top-space-m8"
      data-ng-if="!$ctrl.loading.init && $ctrl.menus.raw.length"
      data-pagination-front
-     data-items="$ctrl.menus.sorted"
+     data-items="$ctrl.menus.raw"
      data-paginated-items="$ctrl.menus.paginated"
      data-current-page="currentPage"
      data-nb-pages="nbPages"

@@ -1,208 +1,28 @@
-angular.module("managerApp").controller("TelecomSmsSendersCtrl", function ($stateParams, $q, $filter, $timeout, $uibModal, $translate, Sms, Toast, ToastError) {
-    "use strict";
-
-    var self = this;
-
-    /*= ==============================
-    =            HELPERS            =
-    ===============================*/
-
-    function fetchSenders () {
-        return Sms.Senders().Lexi().query({
-            serviceName: $stateParams.serviceName
-        }).$promise.then(function (sendersIds) {
-            return $q.all(_.map(_.chunk(sendersIds, 50), function (chunkIds) {
-                return Sms.Senders().Lexi().getBatch({
-                    serviceName: $stateParams.serviceName,
-                    sender: chunkIds.join("|")
-                }).$promise;
-            })).then(function (chunkResult) {
-                return _.pluck(_.flatten(chunkResult), "value");
-            });
-        });
+angular.module("managerApp").controller("TelecomSmsSendersCtrl", class TelecomSmsSendersCtrl {
+    constructor ($stateParams, $q, $filter, $timeout, $uibModal, $translate, Sms, Toast, ToastError) {
+        this.$stateParams = $stateParams;
+        this.$q = $q;
+        this.$filter = $filter;
+        this.$timeout = $timeout;
+        this.$uibModal = $uibModal;
+        this.$translate = $translate;
+        this.api = {
+            sms: {
+                senders: Sms.Senders().Lexi(),
+                virtualNumbers: Sms.VirtualNumbers().Lexi()
+            }
+        };
+        this.Toast = Toast;
+        this.ToastError = ToastError;
     }
 
-    self.getSelection = function () {
-        return _.filter(self.senders.raw, function (sender) {
-            return sender && sender.type !== "virtual" && self.senders.selected && self.senders.selected[sender.sender];
-        });
-    };
-
-    function resetAllCache () {
-        Sms.Senders().Lexi().resetAllCache();
-        Sms.VirtualNumbers().Lexi().resetAllCache();
-    }
-
-    self.canEdit = function (sender) {
-        if (sender.status === "waitingValidation") {
-            return false;
-        }
-        return sender.type === "virtual" ? sender.serviceInfos.status !== "expired" : true;
-    };
-
-    self.canTerminate = function (sender) {
-        return sender.type === "virtual" &&
-            sender.serviceInfos.canDeleteAtExpiration &&
-            sender.serviceInfos.status !== "expired";
-    };
-
-    self.getSendersDeletedAtExpiration = function () {
-        return _.filter(self.senders.raw, "serviceInfos.renew.deleteAtExpiration");
-    };
-
-    /* -----  End of HELPERS  ------*/
-
-    /*= ==============================
-    =            ACTIONS            =
-    ===============================*/
-
-    self.refresh = function () {
-        self.senders.isLoading = true;
-        resetAllCache();
-        return fetchSenders().then(function (senders) {
-            return $q.all(_.map(senders, function (sender) {
-                sender.serviceInfos = null;
-                if (sender.type === "virtual") {
-                    var number = "00" + _.trimLeft(sender.sender, "+");
-                    return Sms.VirtualNumbers().Lexi().getVirtualNumbersServiceInfos({
-                        number: number
-                    }).$promise.then(function (serviceInfos) {
-                        sender.serviceInfos = serviceInfos;
-                        return sender;
-                    });
-                }
-                return $q.resolve(sender);
-
-            })).then(function (sendersResult) {
-                self.senders.raw = sendersResult;
-                self.senders.hasExpiration = _.some(self.senders.raw, "serviceInfos.renew.deleteAtExpiration");
-                self.applySorting();
-            });
-        }).catch(function (err) {
-            return new ToastError(err);
-        }).finally(function () {
-            self.senders.isLoading = false;
-        });
-    };
-
-    self.applySorting = function () {
-        var data = angular.copy(self.senders.raw);
-        data = $filter("orderBy")(
-            data,
-            self.senders.orderBy,
-            self.senders.orderDesc
-        );
-        self.senders.sorted = data;
-    };
-
-    self.orderBy = function (by) {
-        if (self.senders.orderBy === by) {
-            self.senders.orderDesc = !self.senders.orderDesc;
-        } else {
-            self.senders.orderBy = by;
-        }
-        self.applySorting();
-    };
-
-    self.deleteSelectedSenders = function () {
-        var senders = self.getSelection();
-        var queries = senders.map(function (sender) {
-            return Sms.Senders().Lexi().delete({
-                serviceName: $stateParams.serviceName,
-                sender: sender.sender
-            }).$promise;
-        });
-        self.senders.isDeleting = true;
-        queries.push($timeout(angular.noop, 500)); // avoid clipping
-        Toast.info($translate.instant("sms_senders_delete_senders_success"));
-        return $q.all(queries).then(function () {
-            self.senders.selected = {};
-            return self.refresh();
-        }).catch(function (err) {
-            return new ToastError(err);
-        }).finally(function () {
-            self.senders.isDeleting = false;
-        });
-    };
-
-    self.edit = function (sender) {
-        var modal = $uibModal.open({
-            animation: true,
-            templateUrl: "app/telecom/sms/senders/edit/telecom-sms-senders-edit.html",
-            controller: "TelecomSmsSendersEditCtrl",
-            controllerAs: "SendersEditCtrl",
-            resolve: {
-                sender: function () { return sender; }
-            }
-        });
-
-        modal.result.then(function () {
-            return self.refresh();
-        }, function (error) {
-            if (error && error.type === "API") {
-                Toast.error($translate.instant("sms_senders_edit_sender_ko", { error: _.get(error, "msg.data.message") }));
-            }
-        });
-
-        return modal;
-    };
-
-    self.remove = function (sender) {
-        var modal = $uibModal.open({
-            animation: true,
-            templateUrl: "app/telecom/sms/senders/remove/telecom-sms-senders-remove.html",
-            controller: "TelecomSmsSendersRemoveCtrl",
-            controllerAs: "SendersRemoveCtrl",
-            resolve: {
-                sender: function () { return sender; }
-            }
-        });
-
-        modal.result.then(function () {
-            return self.refresh();
-        }, function (error) {
-            if (error && error.type === "API") {
-                Toast.error($translate.instant("sms_senders_remove_sender_ko", { error: _.get(error, "msg.data.message") }));
-            }
-        });
-
-        return modal;
-    };
-
-    self.terminate = function (sender) {
-        var modal = $uibModal.open({
-            animation: true,
-            templateUrl: "app/telecom/sms/senders/terminate/telecom-sms-senders-terminate.html",
-            controller: "TelecomSmsSendersTerminateCtrl",
-            controllerAs: "SendersTerminateCtrl",
-            resolve: {
-                sender: function () { return sender; }
-            }
-        });
-
-        modal.result.then(function () {
-            return self.refresh();
-        }, function (error) {
-            if (error && error.type === "API") {
-                Toast.error($translate.instant("sms_senders_terminate_sender_ko", { error: _.get(error, "msg.data.message") }));
-            }
-        });
-    };
-
-    /* -----  End of ACTIONS  ------*/
-
-    /*= =====================================
-    =            INITIALIZATION            =
-    ======================================*/
-
-    function init () {
-        self.actions = [{
+    $onInit () {
+        this.actions = [{
             name: "manage_blacklisted_senders",
             sref: "telecom.sms.senders.blacklisted",
-            text: $translate.instant("sms_senders_manage_blacklisted")
+            text: this.$translate.instant("sms_senders_manage_blacklisted")
         }];
-
-        self.senders = {
+        this.senders = {
             raw: [],
             paginated: null,
             sorted: null,
@@ -213,11 +33,212 @@ angular.module("managerApp").controller("TelecomSmsSendersCtrl", function ($stat
             isDeleting: false,
             hasExpiration: false
         };
-
-        return self.refresh();
+        this.refresh();
     }
 
-    /* -----  End of INITIALIZATION  ------*/
+    /**
+     * Refresh senders' list.
+     * @return {Promise}
+     */
+    refresh () {
+        this.senders.isLoading = true;
+        this.resetAllCache();
+        return this.fetchSenders().then((senders) =>
+            this.$q.all(_.map(senders, (sender) => {
+                sender.serviceInfos = null;
+                if (sender.type === "virtual") {
+                    const number = "00" + _.trimLeft(sender.sender, "+");
+                    return this.api.sms.virtualNumbers.getVirtualNumbersServiceInfos({ number }).$promise.then((serviceInfos) => {
+                        sender.serviceInfos = serviceInfos;
+                        return sender;
+                    });
+                }
+                return this.$q.resolve(sender);
+            })).then((sendersResult) => {
+                this.senders.raw = sendersResult;
+                this.senders.hasExpiration = _.some(this.senders.raw, "serviceInfos.renew.deleteAtExpiration");
+                this.sortSenders();
+            })
+        ).catch((err) => {
+            this.ToastError(err);
+        }).finally(() => {
+            this.senders.isLoading = false;
+        });
+    }
 
-    init();
+    /**
+     * Reset all cache.
+     */
+    resetAllCache () {
+        this.api.sms.senders.resetAllCache();
+        this.api.sms.virtualNumbers.resetAllCache();
+    }
+
+    /**
+     * Fetch all senders.
+     * @return {Promise}
+     */
+    fetchSenders () {
+        return this.api.sms.senders.query({
+            serviceName: this.$stateParams.serviceName
+        }).$promise.then((sendersIds) =>
+            this.$q.all(_.map(_.chunk(sendersIds, 50), (chunkIds) =>
+                this.api.sms.senders.getBatch({
+                    serviceName: this.$stateParams.serviceName,
+                    sender: chunkIds.join("|")
+                }).$promise
+            )).then((chunkResult) => _.pluck(_.flatten(chunkResult), "value"))
+        );
+    }
+
+    /**
+     * Sort senders.
+     */
+    sortSenders () {
+        let data = angular.copy(this.senders.raw);
+        data = this.$filter("orderBy")(
+            data,
+            this.senders.orderBy,
+            this.senders.orderDesc
+        );
+        this.senders.sorted = data;
+    }
+
+    /**
+     * Order senders.
+     * @param  {String} by
+     */
+    orderBy (by) {
+        if (this.senders.orderBy === by) {
+            this.senders.orderDesc = !this.senders.orderDesc;
+        } else {
+            this.senders.orderBy = by;
+        }
+        this.sortSenders();
+    }
+
+    /**
+     * Get all senders selected.
+     * @return {Array}
+     */
+    getSelection () {
+        return _.filter(this.senders.raw, (sender) =>
+            sender && sender.type !== "virtual" && this.senders.selected && this.senders.selected[sender.sender]
+        );
+    }
+
+    /**
+     * Delete all selected senders.
+     * @return {Promise}
+     */
+    deleteSelectedSenders () {
+        const senders = this.getSelection();
+        const queries = senders.map((sender) =>
+            this.api.sms.senders.delete({
+                serviceName: this.$stateParams.serviceName,
+                sender: sender.sender
+            }).$promise
+        );
+        this.senders.isDeleting = true;
+        queries.push(this.$timeout(angular.noop, 500)); // avoid clipping
+        this.Toast.info(this.$translate.instant("sms_senders_delete_senders_success"));
+        return this.$q.all(queries).then(() => {
+            this.senders.selected = {};
+            return this.refresh();
+        }).catch((err) => {
+            this.ToastError(err);
+        }).finally(() => {
+            this.senders.isDeleting = false;
+        });
+    }
+
+    /**
+     * Opens a modal to edit a given sender.
+     * @param  {Object} sender
+     */
+    edit (sender) {
+        const modal = this.$uibModal.open({
+            animation: true,
+            templateUrl: "app/telecom/sms/senders/edit/telecom-sms-senders-edit.html",
+            controller: "TelecomSmsSendersEditCtrl",
+            controllerAs: "SendersEditCtrl",
+            resolve: { sender: () => sender }
+        });
+        modal.result.then(() => this.refresh()).catch((error) => {
+            if (error && error.type === "API") {
+                this.Toast.error(this.$translate.instant("sms_senders_edit_sender_ko", { error: _.get(error, "msg.data.message") }));
+            }
+        });
+    }
+
+    /**
+     * Opens a modal to remove a given sender.
+     * @param  {Object} sender
+     */
+    remove (sender) {
+        const modal = this.$uibModal.open({
+            animation: true,
+            templateUrl: "app/telecom/sms/senders/remove/telecom-sms-senders-remove.html",
+            controller: "TelecomSmsSendersRemoveCtrl",
+            controllerAs: "SendersRemoveCtrl",
+            resolve: { sender: () => sender }
+        });
+        modal.result.then(() => this.refresh()).catch((error) => {
+            if (error && error.type === "API") {
+                this.Toast.error(this.$translate.instant("sms_senders_remove_sender_ko", { error: _.get(error, "msg.data.message") }));
+            }
+        });
+    }
+
+    /**
+     * Opens a modal to terminate a given sender.
+     * @param  {Object} sender
+     */
+    terminate (sender) {
+        const modal = this.$uibModal.open({
+            animation: true,
+            templateUrl: "app/telecom/sms/senders/terminate/telecom-sms-senders-terminate.html",
+            controller: "TelecomSmsSendersTerminateCtrl",
+            controllerAs: "SendersTerminateCtrl",
+            resolve: { sender: () => sender }
+        });
+        modal.result.then(() => this.refresh()).catch((error) => {
+            if (error && error.type === "API") {
+                this.Toast.error(this.$translate.instant("sms_senders_terminate_sender_ko", { error: _.get(error, "msg.data.message") }));
+            }
+        });
+    }
+
+    /* eslint-disable class-methods-use-this */
+    /**
+     * Can edit helper.
+     * @param  {Object} sender
+     * @return {Boolean}
+     */
+    canEdit (sender) {
+        if (sender.status === "waitingValidation") {
+            return false;
+        }
+        return sender.type === "virtual" ? sender.serviceInfos.status !== "expired" : true;
+    }
+
+    /**
+     * Can terminate helper.
+     * @param  {Object} sender
+     * @return {Boolean}
+     */
+    canTerminate (sender) {
+        return sender.type === "virtual" &&
+            sender.serviceInfos.canDeleteAtExpiration &&
+            sender.serviceInfos.status !== "expired";
+    }
+    /* eslint-enable class-methods-use-this */
+
+    /**
+     * Get senders deleted at expiration.
+     * @return {Array}
+     */
+    getSendersDeletedAtExpiration () {
+        return _.filter(this.senders.raw, "serviceInfos.renew.deleteAtExpiration");
+    }
 });

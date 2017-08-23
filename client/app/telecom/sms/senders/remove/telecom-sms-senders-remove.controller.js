@@ -1,53 +1,51 @@
-angular.module("managerApp").controller("TelecomSmsSendersRemoveCtrl", function ($q, $stateParams, $timeout, $uibModalInstance, Sms, sender) {
-    "use strict";
+angular.module("managerApp").controller("TelecomSmsSendersRemoveCtrl", class TelecomSmsSendersRemoveCtrl {
+    constructor ($q, $stateParams, $timeout, $uibModalInstance, Sms, sender) {
+        this.$q = $q;
+        this.$stateParams = $stateParams;
+        this.$timeout = $timeout;
+        this.$uibModalInstance = $uibModalInstance;
+        this.api = {
+            sms: {
+                senders: Sms.Senders().Lexi()
+            }
+        };
+        this.sender = sender;
+    }
 
-    var self = this;
+    $onInit () {
+        this.loading = {
+            removeSender: false
+        };
+        this.removed = false;
+    }
 
-    self.loading = {
-        removeSender: false
-    };
+    /**
+     * Remove sender.
+     * @return {Promise}
+     */
+    remove () {
+        this.loading.removeSender = true;
+        return this.$q.all([
+            this.api.sms.senders.delete({
+                serviceName: this.$stateParams.serviceName,
+                sender: this.sender.sender
+            }).$promise.catch((error) => this.$q.reject(error)),
+            this.$timeout(angular.noop, 1000)
+        ]).then(() => {
+            this.loading.removeSender = false;
+            this.removed = true;
+            return this.$timeout(() => this.close(), 1500);
+        }).catch((error) => this.cancel({
+            type: "API",
+            msg: error
+        }));
+    }
 
-    self.removed = false;
+    cancel (message) {
+        return this.$uibModalInstance.dismiss(message);
+    }
 
-    self.sender = angular.copy(sender);
-
-    /*= ==============================
-    =            ACTIONS            =
-    ===============================*/
-
-    self.remove = function () {
-        self.loading.removeSender = true;
-
-        return $q.all([
-            Sms.Senders().Lexi().delete({
-                serviceName: $stateParams.serviceName,
-                sender: self.sender.sender
-            }).$promise.then(function (voidResponse) {
-                return voidResponse;
-            }, function (error) {
-                return $q.reject(error);
-            }),
-            $timeout(angular.noop, 1000)
-        ]).then(function () {
-            self.loading.removeSender = false;
-            self.removed = true;
-
-            return $timeout(self.close, 1500);
-        }, function (error) {
-            return self.cancel({
-                type: "API",
-                msg: error
-            });
-        });
-    };
-
-    self.cancel = function (message) {
-        return $uibModalInstance.dismiss(message);
-    };
-
-    self.close = function () {
-        return $uibModalInstance.close(true);
-    };
-
-    /* -----  End of ACTIONS  ------*/
+    close () {
+        return this.$uibModalInstance.close(true);
+    }
 });

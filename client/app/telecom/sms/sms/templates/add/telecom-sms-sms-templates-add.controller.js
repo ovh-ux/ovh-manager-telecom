@@ -1,62 +1,71 @@
-angular.module("managerApp").controller("TelecomSmsSmsTemplateAddCtrl", function ($q, $stateParams, $timeout, $translate, $uibModalInstance, Sms, SmsMediator) {
-    "use strict";
-    var self = this;
+angular.module("managerApp").controller("TelecomSmsSmsTemplateAddCtrl", class TelecomSmsSmsTemplateAddCtrl {
+    constructor ($q, $stateParams, $timeout, $translate, $uibModalInstance, Sms, SmsMediator) {
+        this.$q = $q;
+        this.$stateParams = $stateParams;
+        this.$timeout = $timeout;
+        this.$translate = $translate;
+        this.$uibModalInstance = $uibModalInstance;
+        this.api = {
+            sms: {
+                templates: Sms.Templates().Lexi()
+            }
+        };
+        this.SmsMediator = SmsMediator;
+    }
 
-    this.template = {
-        activity: null,
-        description: null,
-        message: null,
-        name: null,
-        reason: null
-    };
+    $onInit () {
+        this.loading = {
+            init: false,
+            add: false
+        };
+        this.template = {
+            activity: null,
+            description: null,
+            message: null,
+            name: null,
+            reason: null
+        };
+        this.loading.init = true;
 
-    this.loading = {
-        init: false,
-        add: false
-    };
-
-    this.init = function init () {
-        self.loading.init = true;
-        return SmsMediator.getApiScheme().then(function (schema) {
-            self.availableActivities = [];
-            angular.forEach(schema.models["sms.TypeTemplateEnum"].enum, function (id) {
-                self.availableActivities.push({
-                    id: id,
-                    label: $translate.instant("sms_sms_templates_add_activity_type_" + id)
+        return this.SmsMediator.getApiScheme().then((schema) => {
+            this.availableActivities = [];
+            angular.forEach(schema.models["sms.TypeTemplateEnum"].enum, (id) => {
+                this.availableActivities.push({
+                    id,
+                    label: this.$translate.instant(`sms_sms_templates_add_activity_type_${id}`)
                 });
             });
-            return self.availableActivities;
-        }).finally(function () {
-            self.loading.init = false;
+            return this.availableActivities;
+        }).finally(() => {
+            this.loading.init = false;
         });
-    };
+    }
 
-    this.add = function add () {
-        self.loading.add = true;
-        return $q.all([
-            Sms.Templates().Lexi().create({
-                serviceName: $stateParams.serviceName
-            }, self.template).$promise.catch(function (error) {
-                return self.cancel({
-                    type: "API",
-                    msg: error
-                });
-            }),
-            $timeout(angular.noop, 1000)
-        ]).then(function () {
-            self.loading.add = false;
-            self.added = true;
-            return $timeout(self.close, 1500);
+    /**
+     * Add templates.
+     */
+    add () {
+        this.loading.add = true;
+        return this.$q.all([
+            this.api.sms.templates.create({
+                serviceName: this.$stateParams.serviceName
+            }, this.template).$promise.catch((error) => this.cancel({
+                type: "API",
+                msg: error
+            })),
+            this.$timeout(angular.noop, 1000)
+        ]).then(() => {
+            this.loading.add = false;
+            this.added = true;
+            return this.$timeout(() => this.close(), 1500);
         });
-    };
+    }
 
-    this.cancel = function cancel (message) {
-        return $uibModalInstance.dismiss(message);
-    };
+    cancel (message) {
+        return this.$uibModalInstance.dismiss(message);
+    }
 
-    this.close = function close () {
-        return $uibModalInstance.close(true);
-    };
-
-    this.init();
+    close () {
+        return this.$uibModalInstance.close(true);
+    }
 });

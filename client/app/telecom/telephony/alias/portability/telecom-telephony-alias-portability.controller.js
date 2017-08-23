@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyAliasPortabilityCtrl", function ($translate, $stateParams, TelephonyMediator) {
+angular.module("managerApp").controller("TelecomTelephonyAliasPortabilityCtrl", function ($translate) {
     "use strict";
 
     var self = this;
@@ -12,7 +12,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasPortabilityCtrl", 
     function init () {
         self.actions = [{
             name: "number_portability_order",
-            url: TelephonyMediator.getV6ToV4RedirectionUrl("alias.number_portability_order"),
+            sref: "telecom.telephony.portabilityOrder",
             text: $translate.instant("telephony_alias_portability_actions_number_portability_order")
         }, {
             name: "number_portability_status",

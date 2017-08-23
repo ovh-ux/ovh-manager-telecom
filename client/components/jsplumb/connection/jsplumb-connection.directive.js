@@ -28,9 +28,14 @@ angular.module("managerApp").directive("jsplumbConnection", function () {
              *  Directive destroy management. Detach connection from instance.
              */
             iScope.$on("$destroy", function () {
-                if (jsplumbCtrl.instance) {
-                    jsplumbCtrl.instance.detach(connectionCtrl.connection);
-                    jsplumbCtrl.instance.customRepaint();
+                try {
+                    if (jsplumbCtrl.instance) {
+                        jsplumbCtrl.instance.detach(connectionCtrl.connection);
+                        jsplumbCtrl.instance.customRepaint();
+                    }
+                } finally {
+
+                    /* continue regardless of error */
                 }
             });
 

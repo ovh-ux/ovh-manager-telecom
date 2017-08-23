@@ -1,51 +1,37 @@
-angular.module("managerApp").controller("TelecomSmsOptionsManageCtrl", function ($uibModal, SmsMediator, ToastError) {
-    "use strict";
+angular.module("managerApp").controller("TelecomSmsOptionsManageCtrl", class TelecomSmsOptionsManageCtrl {
+    constructor ($uibModal, SmsMediator, ToastError) {
+        this.$uibModal = $uibModal;
+        this.SmsMediator = SmsMediator;
+        this.ToastError = ToastError;
+    }
 
-    var self = this;
+    $onInit () {
+        this.loading = {
+            init: false
+        };
+        this.service = null;
 
-    self.loading = {
-        init: false
-    };
+        this.loading.init = true;
+        return this.SmsMediator.initDeferred.promise.then(() => {
+            this.service = this.SmsMediator.getCurrentSmsService();
+        }).catch((err) => {
+            this.ToastError(err);
+        }).finally(() => {
+            this.loading.init = false;
+        });
+    }
 
-    self.service = null;
-
-    /*= ==============================
-    =            ACTIONS            =
-    ===============================*/
-
-    self.update = function (service) {
-        var modal = $uibModal.open({
+    /**
+     * Opens a modal to manage sms' options.
+     * @param  {Object} service SmsService.
+     */
+    update (service) {
+        this.$uibModal.open({
             animation: true,
             templateUrl: "app/telecom/sms/options/manage/update/telecom-sms-options-manage-update.html",
             controller: "TelecomSmsOptionsManageUpdateCtrl",
             controllerAs: "OptionsManageUpdateCtrl",
-            resolve: {
-                service: function () { return service; }
-            }
-        });
-
-        return modal;
-    };
-
-    /* -----  End of ACTIONS  ------*/
-
-    /*= =====================================
-    =            INITIALIZATION            =
-    ======================================*/
-
-    function init () {
-        self.loading.init = true;
-
-        return SmsMediator.initDeferred.promise.then(function () {
-            self.service = SmsMediator.getCurrentSmsService();
-        }).catch(function (err) {
-            return new ToastError(err);
-        }).finally(function () {
-            self.loading.init = false;
+            resolve: { service: () => service }
         });
     }
-
-    /* -----  End of INITIALIZATION  ------*/
-
-    init();
 });
