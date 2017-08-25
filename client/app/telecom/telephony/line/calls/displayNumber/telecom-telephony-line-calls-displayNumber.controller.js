@@ -1,39 +1,9 @@
-angular.module("managerApp").controller("TelecomTelephonyLineCallsDisplayNumberCtrl", function ($q, $stateParams, $translate, TelephonyLineOptions, TelephonyNumber, Toast, ToastError) {
+angular.module("managerApp").controller("TelecomTelephonyLineCallsDisplayNumberCtrl", function ($scope, $q, $stateParams, $translate, $timeout, TelephonyLineOptions, Toast, ToastError, TelephonyMediator) {
     "use strict";
 
     var self = this;
 
-    /**
-     * Update displayNumber
-     * @param {String} newNum New display number
-     * @returns {Promise}
-     */
-    this.update = function (newNum) {
-        var data = {
-            identificationRestriction: self.identificationRestriction
-        };
-
-        if (!self.identificationRestriction) {
-            data.displayNumber = newNum.serviceName;
-        }
-
-        return TelephonyLineOptions.Lexi().update(
-            {
-                billingAccount: $stateParams.billingAccount,
-                serviceName: $stateParams.serviceName
-            }, data).$promise.then(
-            function (result) {
-                Toast.success($translate.instant("telephony_line_actions_line_calls_display_number_write_success"));
-                self.saved = self.current;
-                return result;
-            }, function (err) {
-                ToastError($translate.instant("telephony_line_actions_line_calls_display_number_write_error"));
-                return $q.reject(err);
-            }
-        );
-    };
-
-    function getCurrentDisplayNumber () {
+    function getLineOptions () {
         return TelephonyLineOptions.Lexi().get({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
@@ -45,58 +15,83 @@ angular.module("managerApp").controller("TelecomTelephonyLineCallsDisplayNumberC
         });
     }
 
-    function getAliases () {
-        return TelephonyNumber.Aapi().query({
-            billingAccount: $stateParams.billingAccount
-        }).$promise.then(function (aliases) {
-            self.numbers = _.uniq(
-                _.filter(
-                    aliases,
-                    function (elt) {
-                        return ["fax", "line", "alias"].indexOf(elt.type) > -1;
-                    }
-                ),
-                "serviceName"
-            );
-        }, function () {
-            self.numbers = [];
-            return new ToastError($translate.instant("telephony_line_actions_line_calls_display_number_read_error"));
-        });
-    }
-
-    /**
-     * Initialize the controller by readind the display number
-     * @returns {Promise}
-     */
     function init () {
+        self.isLoading = true;
+        self.form = {
+            identificationRestriction: undefined,
+            displayedService: undefined
+        };
 
-        self.numbers = [];
-        self.updating = true;
-
-        return $q.all([
-            getAliases(),
-            getCurrentDisplayNumber()
-        ]).then(null, function () {
-            if (!self.numbers.length) {
-                self.numbers.push({
-                    serviceName: self.options && self.options.displayNumber ? self.options.displayNumber : $stateParams.serviceName
-                });
+        $scope.$watch("LineDisplayNumberCtrl.form.identificationRestriction", function () {
+            if (self.form.identificationRestriction) {
+                self.form.displayedService = angular.copy(self.displayedService);
             }
-        }).finally(function () {
-            self.numbers.forEach(function (detail) {
-                detail.label = detail.serviceName + (detail.serviceName !== detail.description ? " (" + detail.description + ")" : "");
+        });
+
+        return getLineOptions().then(function (options) {
+            self.identificationRestriction = _.get(options, "identificationRestriction");
+            self.form.identificationRestriction = self.identificationRestriction;
+        }).then(function () {
+            return TelephonyMediator.getGroup($stateParams.billingAccount).then(function (group) {
+                return group.getLine($stateParams.serviceName);
             });
-            self.current = _.find(
-                self.numbers,
-                {
-                    serviceName: self.options && self.options.displayNumber ? self.options.displayNumber : $stateParams.serviceName
-                }
-            );
-            self.identificationRestriction = self.options.identificationRestriction;
-            self.saved = self.current;
-            self.updating = false;
+        }).then(function (line) {
+            self.displayedService = line;
+            self.form.displayedService = angular.copy(self.displayedService);
+        }).catch(function (err) {
+            return new ToastError(err);
+        }).finally(function () {
+            self.isLoading = false;
         });
     }
+
+    self.getServiceLabel = function (service) {
+        if (service.description && service.serviceName !== service.description) {
+            return service.serviceName + " (" + service.description + ")";
+        }
+        return service.serviceName;
+    };
+
+    self.onChooseService = function (service) {
+        self.form.displayedService = service;
+    };
+
+    self.hasChanges = function () {
+        return !angular.equals(self.displayedService, self.form.displayedService) ||
+               self.identificationRestriction !== self.form.identificationRestriction;
+    };
+
+    self.reset = function () {
+        // $timeout is here so flat-checkbox is corretly refreshed ...
+        $timeout(function () {
+            self.form.displayedService = angular.copy(self.displayedService);
+            self.form.identificationRestriction = self.identificationRestriction;
+        });
+    };
+
+    self.update = function () {
+        var data = {
+            identificationRestriction: self.form.identificationRestriction
+        };
+
+        if (!data.identificationRestriction && _.get(self.form, "displayedService.serviceName")) {
+            data.displayNumber = _.get(self.form, "displayedService.serviceName");
+        }
+
+        self.isUpdating = true;
+        return TelephonyLineOptions.Lexi().update({
+            billingAccount: $stateParams.billingAccount,
+            serviceName: $stateParams.serviceName
+        }, data).$promise.then(function () {
+            self.identificationRestriction = self.form.identificationRestriction;
+            self.displayedService = angular.copy(self.form.displayedService);
+            Toast.success($translate.instant("telephony_line_actions_line_calls_display_number_write_success"));
+        }, function () {
+            return new ToastError($translate.instant("telephony_line_actions_line_calls_display_number_write_error"));
+        }).finally(function () {
+            self.isUpdating = false;
+        });
+    };
 
     init();
 });
