@@ -5,7 +5,7 @@ describe("Controller: TelecomSmsCtrl", () => {
 
     // load the controller"s module
     beforeEach(angular.mock.module("managerAppMock"));
-    beforeEach(module("smsMock"));
+    beforeEach(angular.mock.module("smsMock"));
 
     // Initialize the controller and a mock scope
     beforeEach(inject(($controller, $rootScope) => {

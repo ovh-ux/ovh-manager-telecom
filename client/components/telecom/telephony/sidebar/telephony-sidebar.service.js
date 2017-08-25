@@ -1,4 +1,4 @@
-angular.module("managerApp").service("TelephonySidebar", function ($q, $translate, SidebarMenu, Telephony, TelephonyMediator) {
+angular.module("managerApp").service("TelephonySidebar", function ($q, $translate, SidebarMenu, Telephony, TelephonyMediator, voipBillingAccount) {
     "use strict";
 
     var self = this;
@@ -87,6 +87,9 @@ angular.module("managerApp").service("TelephonySidebar", function ($q, $translat
     };
 
     self.init = function () {
+        console.log("init");
+
+        voipBillingAccount.test();
 
         self.mainSectionItem = SidebarMenu.addMenuItem({
             title: $translate.instant("telecom_sidebar_section_telephony"),

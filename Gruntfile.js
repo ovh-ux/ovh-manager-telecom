@@ -105,7 +105,7 @@ module.exports = function (grunt) {
                     "<%= yeoman.client %>/{app,components}/**/!(*.spec|*.mock).js",
                     "!<%= yeoman.client %>/app/app.js"
                 ],
-                tasks: ["newer:babel:dist", "injector:scripts"]
+                tasks: ["newer:browserify:dist", "injector:scripts"]
             },
 
             translations: {
@@ -184,9 +184,36 @@ module.exports = function (grunt) {
         //##      TASK: babel                                                                  ##
         //##            For ES6 support                                                        ##
         //#######################################################################################
-        babel: {
+        // babel: {
+        //     options: {
+        //         presets: ["es2015"]
+        //     },
+        //     dist: {
+        //         files: [{
+        //             expand: true,
+        //             src: [
+        //                 "<%= yeoman.client %>/{app,components}/**/*.js"
+        //             ],
+        //             dest: "<%= yeoman.dist %>"
+        //         }]
+        //     },
+        //     test: {
+        //         files: [{
+        //             expand: true,
+        //             src: [
+        //                 "<%= yeoman.client %>/{app,components}/**/*.js"
+        //             ],
+        //             dest: "<%= yeoman.tmp %>"
+        //         }]
+        //     }
+        // },
+
+        browserify: {
             options: {
-                presets: ["es2015"]
+                transform: [['babelify', { presets: "es2015" }]]/*,
+                browserifyOptions: {
+                    debug: true
+                }*/
             },
             dist: {
                 files: [{
@@ -855,9 +882,9 @@ module.exports = function (grunt) {
         }
 
         grunt.task.run([
-            "clean:server",
+            "clean",
             "env:all",
-            "babel:dist",
+            "browserify:dist",
             "ngconstant",
             "concurrent:templates",
             "injector",
@@ -884,7 +911,7 @@ module.exports = function (grunt) {
         return grunt.task.run([
             "clean",
             "env:all",
-            "babel:test",
+            "browserify:test",
             "ngconstant",
             "concurrent:templates",
             "copy:test",
@@ -897,7 +924,7 @@ module.exports = function (grunt) {
 
     grunt.registerTask("buildProd", [
         "clean:dist",
-        "babel:dist",
+        "browserify:dist",
         "ngconstant",
         "concurrent:templates",
         "injector",

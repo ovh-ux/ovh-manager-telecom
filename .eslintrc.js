@@ -8,6 +8,9 @@ module.exports = {
         "mocha": true
     },
     "extends": "ovh",
+    "parserOptions": {
+        "sourceType": "module"
+    },
     "rules": {
         "newline-per-chained-call": 0,
         "no-restricted-properties": [0, {

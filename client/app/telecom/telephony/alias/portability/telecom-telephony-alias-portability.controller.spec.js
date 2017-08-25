@@ -5,7 +5,7 @@ describe("Controller: TelecomTelephonyAliasPortabilityCtrl", function () {
 
     // load the controller"s module
     beforeEach(angular.mock.module("managerAppMock"));
-    beforeEach(module("telephonyMock"));
+    beforeEach(angular.mock.module("telephonyMock"));
 
     // Initialize the controller and a mock scope
     beforeEach(inject(function ($controller, $rootScope) {

@@ -11,7 +11,7 @@ describe("Controller TelecomTelephonyBillingAccountOrderAliasCtrl - ", function 
 
     // load the controller"s module
     beforeEach(angular.mock.module("managerAppMock"));
-    beforeEach(module("telephonyMock"));
+    beforeEach(angular.mock.module("telephonyMock"));
 
     beforeEach(inject(function (_$httpBackend_, $rootScope, _$controller_, _$state_, ssoAuthentication, $translate, $injector, _TELEPHONY_NUMBER_OFFER_) {
         $httpBackend = _$httpBackend_;
