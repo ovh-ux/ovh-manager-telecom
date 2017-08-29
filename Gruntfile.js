@@ -220,7 +220,7 @@ module.exports = function (grunt) {
                 options: browserifyBaseOptions,
                 src: [
                     "<%= yeoman.client %>/{app,components}/**/!(*.spec|*.mock).js",
-                    "<%= yeoman.client %>/app/config/*.js",
+                    "!<%= yeoman.client %>/app/config/*.js",
                     "<%= yeoman.client %>/app/config/" + mode + ".js",
                     "<%= yeoman.client %>/app/config/all.js",
                     "<%= yeoman.client %>/app/app.js",
