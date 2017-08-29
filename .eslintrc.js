@@ -21,7 +21,10 @@ module.exports = {
         "no-underscore-dangle": 0,
         "prefer-arrow-callback": 0,
         "prefer-template": 0,
-        "object-shorthand": 0
+        "object-shorthand": 0,
+        "quotes": ["error", "double", {
+            "allowTemplateLiterals": true
+        }]
     },
     "globals": {
         "_": true,

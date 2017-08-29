@@ -1,5 +1,5 @@
-export default class {
+export default class VoipBillingAccount {
     constructor () {
-        console.log("BillingAccount construct");
+        console.log("VoipBillingAccount construct waw !");
     }
 }

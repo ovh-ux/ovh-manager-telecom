@@ -2,6 +2,7 @@
 
 module.exports = function (grunt) {
     var localConfig;
+    const _ = require("lodash");
     try {
         localConfig = require("./server/config/local.env");
     } catch (e) {
@@ -32,6 +33,10 @@ module.exports = function (grunt) {
         "app/**/!(*.tpl).html",
         "index.html"
     ];
+
+    var browserifyBaseOptions = {
+        transform: [['babelify', { presets: "es2015" }]]
+    };
 
     grunt.loadTasks("./tasks");
 
@@ -105,7 +110,7 @@ module.exports = function (grunt) {
                     "<%= yeoman.client %>/{app,components}/**/!(*.spec|*.mock).js",
                     "!<%= yeoman.client %>/app/app.js"
                 ],
-                tasks: ["newer:browserify:dist", "injector:scripts"]
+                tasks: ["injector:scripts"]
             },
 
             translations: {
@@ -181,50 +186,28 @@ module.exports = function (grunt) {
         },
 
         //#######################################################################################
-        //##      TASK: babel                                                                  ##
-        //##            For ES6 support                                                        ##
+        //##      TASK: browserify                                                             ##
+        //##            Helper for ES6 support                                                 ##
         //#######################################################################################
-        // babel: {
-        //     options: {
-        //         presets: ["es2015"]
-        //     },
-        //     dist: {
-        //         files: [{
-        //             expand: true,
-        //             src: [
-        //                 "<%= yeoman.client %>/{app,components}/**/*.js"
-        //             ],
-        //             dest: "<%= yeoman.dist %>"
-        //         }]
-        //     },
-        //     test: {
-        //         files: [{
-        //             expand: true,
-        //             src: [
-        //                 "<%= yeoman.client %>/{app,components}/**/*.js"
-        //             ],
-        //             dest: "<%= yeoman.tmp %>"
-        //         }]
-        //     }
-        // },
-
         browserify: {
-            options: {
-                transform: [['babelify', { presets: "es2015" }]]/*,
-                browserifyOptions: {
-                    debug: true
-                }*/
-            },
-            dist: {
+            dev: {
+                options: _.extend({
+                    watch: true,
+                    // uncomment these lines if you want to have source map files for debuging purpose
+                    // browserifyOptions: {
+                    //     debug: true
+                    // }
+                }, browserifyBaseOptions),
                 files: [{
                     expand: true,
                     src: [
-                        "<%= yeoman.client %>/{app,components}/**/*.js"
+                        "<%= yeoman.client %>/{app,components}/**/!(*.spec|*.mock).js"
                     ],
                     dest: "<%= yeoman.dist %>"
                 }]
             },
             test: {
+                options: browserifyBaseOptions,
                 files: [{
                     expand: true,
                     src: [
@@ -232,6 +215,13 @@ module.exports = function (grunt) {
                     ],
                     dest: "<%= yeoman.tmp %>"
                 }]
+            },
+            dist: {
+                options: browserifyBaseOptions,
+                src: [
+                    "<%= yeoman.client %>/{app,components}/**/!(*.spec|*.mock).js"
+                ],
+                dest: "<%= yeoman.dist %>/<%= yeoman.client %>/app/app.js"
             }
         },
 
@@ -677,7 +667,8 @@ module.exports = function (grunt) {
                         "!<%= yeoman.dist %>/<%= yeoman.client %>/app/config/*.js",
                         "<%= yeoman.dist %>/<%= yeoman.client %>/app/config/" + mode + ".js",
                         "<%= yeoman.dist %>/<%= yeoman.client %>/app/config/all.js",
-                        "!<%= yeoman.dist %>/<%= yeoman.client %>/app/app.js"
+                        "!<%= yeoman.dist %>/<%= yeoman.client %>/app/app.js",
+                        "!<%= yeoman.dist %>/<%= yeoman.client %>/<%= pkg.name %>.js"
                     ]
                 }
             },
@@ -884,7 +875,7 @@ module.exports = function (grunt) {
         grunt.task.run([
             "clean",
             "env:all",
-            "browserify:dist",
+            "browserify:dev",
             "ngconstant",
             "concurrent:templates",
             "injector",
