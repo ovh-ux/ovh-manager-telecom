@@ -7,15 +7,15 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-        <!-- build:css(client) app/vendor.css -->
+        <!-- build:css(client,.) app/vendor.css -->
         <!-- bower:css -->
         <!-- endbower -->
         <!-- injector:assetscss -->
         <!-- endinjector:assetscss -->
+        <link rel="stylesheet" href="node_modules/ng-embed/dist/ng-embed.min.css">
         <!-- endbuild -->
         <!-- build:css({.tmp,client}) app/app.css -->
         <link rel="stylesheet" href="app/app.css">
-        <link rel="stylesheet" href="node_modules/ng-embed/dist/ng-embed.min.css">
         <!-- injector:css -->
         <!-- endinjector -->
         <!-- endbuild -->
@@ -51,7 +51,7 @@
         <script src="bower_components/es5-shim/es5-shim.js"></script>
         <script src="bower_components/json3/lib/json3.min.js"></script>
         <![endif]-->
-        <!-- build:js({client,node_modules}) app/vendor.js -->
+        <!-- build:js({client,.}) app/vendor.js -->
         <!-- bower:js -->
         <!-- endbower -->
         <script src="bower_components/cryptojs/lib/Crypto.js"></script>
