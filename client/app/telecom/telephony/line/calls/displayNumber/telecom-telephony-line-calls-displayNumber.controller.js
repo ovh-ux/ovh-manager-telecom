@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyLineCallsDisplayNumberCtrl", function ($scope, $stateParams, $translate, $timeout, TelephonyLineOptions, Toast, ToastError, TelephonyMediator) {
+angular.module("managerApp").controller("TelecomTelephonyLineCallsDisplayNumberCtrl", function ($scope, $stateParams, $translate, $timeout, TelephonyLineOptions, Toast, ToastError) {
     "use strict";
 
     var self = this;
@@ -31,12 +31,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineCallsDisplayNumberC
         return getLineOptions().then(function (options) {
             self.identificationRestriction = _.get(options, "identificationRestriction");
             self.form.identificationRestriction = self.identificationRestriction;
-        }).then(function () {
-            return TelephonyMediator.getGroup($stateParams.billingAccount).then(function (group) {
-                return group.getLine($stateParams.serviceName);
-            });
-        }).then(function (line) {
-            self.displayedService = line;
+            self.displayedService = options.displayNumber;
             self.form.displayedService = angular.copy(self.displayedService);
         }).catch(function (err) {
             return new ToastError(err);
@@ -45,15 +40,8 @@ angular.module("managerApp").controller("TelecomTelephonyLineCallsDisplayNumberC
         });
     }
 
-    self.getServiceLabel = function (service) {
-        if (service.description && service.serviceName !== service.description) {
-            return service.serviceName + " (" + service.description + ")";
-        }
-        return service.serviceName;
-    };
-
     self.onChooseService = function (service) {
-        self.form.displayedService = service;
+        self.form.displayedService = service.serviceName;
     };
 
     self.hasChanges = function () {
@@ -74,8 +62,8 @@ angular.module("managerApp").controller("TelecomTelephonyLineCallsDisplayNumberC
             identificationRestriction: self.form.identificationRestriction
         };
 
-        if (!data.identificationRestriction && _.get(self.form, "displayedService.serviceName")) {
-            data.displayNumber = _.get(self.form, "displayedService.serviceName");
+        if (!data.identificationRestriction && self.form.displayedService) {
+            data.displayNumber = self.form.displayedService;
         }
 
         self.isUpdating = true;
