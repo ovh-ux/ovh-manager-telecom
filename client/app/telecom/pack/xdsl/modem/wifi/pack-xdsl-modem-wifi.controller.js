@@ -42,7 +42,9 @@ angular.module("managerApp").controller("XdslModemWifiCtrl", function ($statePar
             xdslId: $stateParams.serviceName
         }).$promise.then(
             function (data) {
-                self.wifi = data[0];
+                self.wifi = _.find(data, {
+                    wifiName: "defaultWIFI"
+                });
                 self.undoData = {
                     enabled: self.wifi ? self.wifi.enabled : false
                 };

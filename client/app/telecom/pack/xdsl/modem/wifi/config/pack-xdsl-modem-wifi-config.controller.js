@@ -117,7 +117,9 @@ angular.module("managerApp")
                     }
                 ).$promise.then(
                     function (data) {
-                        self.wifi = data[0];
+                        self.wifi = _.find(data, {
+                            wifiName: "defaultWIFI"
+                        });
                         self.wifi.channelCustom = self.wifi.channelMode === "Auto" ? "Auto" : self.wifi.channel;
                         self.loaders.wifi = false;
                         return data;
