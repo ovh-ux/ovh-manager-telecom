@@ -5,7 +5,10 @@
    <translation id="telephony_line_actions_line_calls_display_number_write_error" qtlid="336168">Impossible de mettre à jour la présentation du numéro. Ce dernier n'est pas au format international ou ne vous appartient pas.</translation>
    <translation id="telephony_line_actions_line_calls_display_number_write_success" qtlid="336181">La présentation du numéro a été mise à jour.</translation>
    <translation id="telephony_line_actions_line_calls_display_number_label" qtlid="387029">Je souhaite présenter un numéro lors des appels sortants&#160;:</translation>
+   <translation id="telephony_line_actions_line_calls_display_number_choose">Choisir un autre numéro</translation>
    <translation id="telephony_line_actions_line_calls_display_number_confirm" qtlid="249107">Appliquer les modifications</translation>
    <translation id="telephony_line_actions_line_calls_display_number_info" qtlid="387042">Lors de vos appels sortants, présentez un numéro de votre groupe de facturation ou choisissez l'anonymat.</translation>
    <translation id="telephony_line_actions_line_calls_identificationRestriction_checkbox_label" qtlid="387055">Rester anonyme</translation>
+   <translation id="telephony_line_actions_line_calls_submit_changes">Appliquer les modifications</translation>
+   <translation id="telephony_line_actions_line_calls_anonymous">Numéro masqué</translation>
 </translations>
