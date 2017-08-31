@@ -1,6 +1,6 @@
 {
   "name": "ovh-manager-telecom",
-  "version": "6.7.8",
+  "version": "6.7.9",
   "description": "OVH Control Panel Telecom UI",
   "authors": [
     "OVH SAS"
@@ -89,7 +89,7 @@
     "ovh-angular-sidebar-menu": "^3.3.9",
     "ovh-angular-simple-country-list": "^0.0.9",
     "ovh-angular-sso-auth": "^3.1.2",
-    "ovh-angular-sso-auth-modal-plugin": "^1.0.15",
+    "ovh-angular-sso-auth-modal-plugin": "^2.0.1",
     "ovh-angular-swimming-poll": "^3.0.0",
     "ovh-angular-tail-logs": "^1.1.1",
     "ovh-angular-timeline": "^1.5.2",
@@ -102,7 +102,7 @@
     "ovh-manager-webfont": "^1.0.1",
     "ovh-ng-input-password": "^1.2.5",
     "ovh-ngstrap": "^4.0.2",
-    "ovh-ui-kit": "git+https://github.com/ovh-ux/ovh-ui-kit.git#v1.0.0-alpha.7",
+    "ovh-ui-kit": "^1.0.0-alpha.13",
     "validator-js": "3.40.1"
   },
   "devDependencies": {
