@@ -1,7 +1,7 @@
 angular.module("managerApp").constant("VOIP_TIME_CONDITION", {
     slotTypesCount: {
         sip: 3,
-        easyHunting: 1,
+        easyHunting: 3,
         ovhPabx: 0
     }
 }).constant("VOIP_TIME_CONDITION_DEFAULT_SLOTS", [{
