@@ -58,6 +58,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineCallsSimultaneousLi
             });
         }).finally(function () {
             self.loading.order = false;
+            self.loading.doOrder = false;
         });
     };
 
