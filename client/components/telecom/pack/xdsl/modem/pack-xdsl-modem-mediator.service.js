@@ -53,14 +53,12 @@ angular.module("managerApp").service("PackXdslModemMediator", function ($rootSco
     };
 
     this.disableCapabilities = function () {
-        this.capabilities = _.mapValues(this.capabilities,
-                                        function (val, key) {
-                                            if (key === "canBeManagedByOvh" || key === "canChangeMtu") {
-                                                return val;
-                                            }
-                                            return false;
-                                        }
-        );
+        this.capabilities = _.mapValues(this.capabilities, function (val, key) {
+            if (key === "canBeManagedByOvh" || key === "canChangeMtu") {
+                return val;
+            }
+            return false;
+        });
     };
 
     this.raiseTask = function (name, state, byPassFlag) {
