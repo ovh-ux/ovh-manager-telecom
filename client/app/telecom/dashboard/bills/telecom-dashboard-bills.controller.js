@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomDashboardBillsCtrl", function (UserBill, ToastError, REDIRECT_URLS) {
+angular.module("managerApp").controller("TelecomDashboardBillsCtrl", function (OvhApiMeBill, ToastError, REDIRECT_URLS) {
     "use strict";
 
     var self = this;
@@ -20,7 +20,7 @@ angular.module("managerApp").controller("TelecomDashboardBillsCtrl", function (U
     =================================*/
 
     function getLastBills () {
-        return UserBill.Aapi().last().$promise.then(function (lastBills) {
+        return OvhApiMeBill.Aapi().last().$promise.then(function (lastBills) {
             self.last = lastBills.slice(Math.max(lastBills.length - self.amountBillsDisplayed, 0));
         }, function (err) {
             ToastError(err);

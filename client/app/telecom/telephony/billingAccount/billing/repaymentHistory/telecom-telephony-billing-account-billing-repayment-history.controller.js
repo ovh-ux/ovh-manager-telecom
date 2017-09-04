@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingRepaymentHistoryCtrl", function ($q, $filter, $window, $timeout, $stateParams, $translate, TelephonyMediator, Telephony, Toast) {
+angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingRepaymentHistoryCtrl", function ($q, $filter, $window, $timeout, $stateParams, $translate, TelephonyMediator, OvhApiTelephony, Toast) {
     "use strict";
 
     var self = this;
@@ -24,11 +24,11 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingRe
     ===============================*/
 
     function fetchHistory () {
-        return Telephony.HistoryRepaymentConsumption().Lexi().query({
+        return OvhApiTelephony.HistoryRepaymentConsumption().Lexi().query({
             billingAccount: $stateParams.billingAccount
         }).$promise.then(function (dates) {
             return $q.all(_.map(_.chunk(dates, 50), function (chunkDates) {
-                return Telephony.HistoryRepaymentConsumption().Lexi().getBatch({
+                return OvhApiTelephony.HistoryRepaymentConsumption().Lexi().getBatch({
                     billingAccount: $stateParams.billingAccount,
                     date: chunkDates
                 }).$promise;
@@ -60,7 +60,7 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingRe
 
     self.fetchFile = function (consumption) {
         var tryDownload = function () {
-            return Telephony.HistoryRepaymentConsumption().Lexi().getDocument({
+            return OvhApiTelephony.HistoryRepaymentConsumption().Lexi().getDocument({
                 billingAccount: $stateParams.billingAccount,
                 date: consumption.date
             }).$promise.then(function (info) {

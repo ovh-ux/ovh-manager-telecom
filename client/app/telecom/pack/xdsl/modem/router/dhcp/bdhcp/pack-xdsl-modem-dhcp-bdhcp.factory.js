@@ -1,4 +1,4 @@
-angular.module("managerApp").factory("PackXdslModemDhcpBdhcpObject", function (Xdsl, $translate, Toast, $q) {
+angular.module("managerApp").factory("PackXdslModemDhcpBdhcpObject", function (OvhApiXdsl, $translate, Toast, $q) {
     "use strict";
 
     var template = {
@@ -40,7 +40,7 @@ angular.module("managerApp").factory("PackXdslModemDhcpBdhcpObject", function (X
         var self = this;
         this.busy = true;
         if (this.created) {
-            return Xdsl.Modem().Lan().Dhcp().DHCPStaticAddress().Lexi().update(
+            return OvhApiXdsl.Modem().Lan().Dhcp().DHCPStaticAddress().Lexi().update(
                 {
                     xdslId: serviceName,
                     lanName: lanName,
@@ -60,7 +60,7 @@ angular.module("managerApp").factory("PackXdslModemDhcpBdhcpObject", function (X
                 self.busy = false;
             });
         }
-        return Xdsl.Modem().Lan().Dhcp().DHCPStaticAddress().Lexi().post(
+        return OvhApiXdsl.Modem().Lan().Dhcp().DHCPStaticAddress().Lexi().post(
             {
                 xdslId: serviceName,
                 lanName: lanName,
@@ -92,7 +92,7 @@ angular.module("managerApp").factory("PackXdslModemDhcpBdhcpObject", function (X
     PackXdslModemDhcpBdhcpObject.prototype.remove = function (serviceName, lanName, dhcpName) {
         var self = this;
         this.busy = true;
-        return Xdsl.Modem().Lan().Dhcp().DHCPStaticAddress().Lexi().delete(
+        return OvhApiXdsl.Modem().Lan().Dhcp().DHCPStaticAddress().Lexi().delete(
             {
                 xdslId: serviceName,
                 lanName: lanName,

@@ -1,11 +1,11 @@
-angular.module("managerApp").controller("XdslAccessIpv6Ctrl", function ($stateParams, $scope, $translate, XdslIps, Toast, ToastError) {
+angular.module("managerApp").controller("XdslAccessIpv6Ctrl", function ($stateParams, $scope, $translate, OvhApiXdslIps, Toast, ToastError) {
     "use strict";
     this.submitIp = function () {
         if (_.isEmpty($stateParams.serviceName)) {
             Toast.error($translate.instant("xdsl_access_ipv6_an_error_ocurred"));
         }
 
-        XdslIps.Lexi().setIpv6(
+        OvhApiXdslIps.Lexi().setIpv6(
             { xdslId: $stateParams.serviceName },
             { enabled: $scope.access.xdsl.ipv6Enabled },
             function (result) {

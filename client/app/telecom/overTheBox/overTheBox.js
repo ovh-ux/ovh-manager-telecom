@@ -17,8 +17,8 @@ angular.module("managerApp").config(function ($stateProvider) {
             "telecom/overTheBox/remote"
         ],
         resolve: {
-            $title: function (translations, $translate, $stateParams, OverTheBox) {
-                return OverTheBox.Lexi().get({
+            $title: function (translations, $translate, $stateParams, OvhApiOverTheBox) {
+                return OvhApiOverTheBox.Lexi().get({
                     serviceName: $stateParams.serviceName
                 }).$promise.then(function (data) {
                     return $translate.instant("overTheBox_page_title", { name: data.customerDescription || $stateParams.serviceName }, null, null, "escape");

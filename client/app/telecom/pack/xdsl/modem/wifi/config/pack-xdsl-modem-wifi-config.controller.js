@@ -1,5 +1,5 @@
 angular.module("managerApp")
-    .controller("XdslModemWifiConfigCtrl", function ($state, $q, $timeout, $stateParams, $translate, Toast, Xdsl, PackXdslModemMediator) {
+    .controller("XdslModemWifiConfigCtrl", function ($state, $q, $timeout, $stateParams, $translate, Toast, OvhApiXdsl, PackXdslModemMediator) {
         "use strict";
 
         var self = this;
@@ -75,7 +75,7 @@ angular.module("managerApp")
             }
 
             var wifiTmp = _.pick(this.wifi, wifiFields);
-            Xdsl.Modem().Wifi().Lexi().update(
+            OvhApiXdsl.Modem().Wifi().Lexi().update(
                 {
                     xdslId: $stateParams.serviceName,
                     wifiName: this.wifi.wifiName
@@ -111,7 +111,7 @@ angular.module("managerApp")
                 self.wifi.channelCustom = self.wifi.channelMode === "Auto" ? "Auto" : self.wifi.channel;
                 self.loaders.wifi = false;
             } else {
-                Xdsl.Modem().Wifi().Aapi().getWifiDetails(
+                OvhApiXdsl.Modem().Wifi().Aapi().getWifiDetails(
                     {
                         xdslId: $stateParams.serviceName
                     }

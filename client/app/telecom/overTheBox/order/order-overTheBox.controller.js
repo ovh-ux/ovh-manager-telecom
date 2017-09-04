@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("OrderOverTheBoxCtrl", function ($translate, $q, $scope, OrderOverTheBoxNew, PriceOverTheBoxOffer, OverTheBox, Toast, ToastError, UserPaymentMean) {
+angular.module("managerApp").controller("OrderOverTheBoxCtrl", function ($translate, $q, $scope, OvhApiOrderOverTheBoxNew, OvhApiPriceOverTheBoxOffer, OvhApiOverTheBox, Toast, ToastError, OvhApiMePaymentMean) {
     "use strict";
 
     var self = this;
@@ -38,7 +38,7 @@ angular.module("managerApp").controller("OrderOverTheBoxCtrl", function ($transl
 
     self.checkPaymentMeans = function () {
         self.paymentMeansChecking = false;
-        return UserPaymentMean.Lexi().getDefaultPaymentMean().then(function (defaultPaymentMean) {
+        return OvhApiMePaymentMean.Lexi().getDefaultPaymentMean().then(function (defaultPaymentMean) {
             self.hasDefaultPaymentMeans = !!defaultPaymentMean;
         }).finally(function () {
             self.paymentMeansChecking = false;
@@ -48,14 +48,14 @@ angular.module("managerApp").controller("OrderOverTheBoxCtrl", function ($transl
     self.checkDevices = function () {
         self.loaders.checking = true;
         return $q.all([
-            OverTheBox.Lexi().checkDevices().$promise.then(function (devices) {
+            OvhApiOverTheBox.Lexi().checkDevices().$promise.then(function (devices) {
                 self.devices = devices;
                 return devices;
             }, function (error) {
                 self.error.checking = error.data;
                 return new ToastError(error);
             }),
-            OverTheBox.Aapi().getServices().$promise.then(function (services) {
+            OvhApiOverTheBox.Aapi().getServices().$promise.then(function (services) {
                 self.services = services;
                 self.unlinkedServices = services.filter(function (service) {
                     return !service.device;
@@ -98,7 +98,7 @@ angular.module("managerApp").controller("OrderOverTheBoxCtrl", function ($transl
     };
 
     self.getOrderOffers = function () {
-        return OverTheBox.Lexi().availableOffers().$promise.then(
+        return OvhApiOverTheBox.Lexi().availableOffers().$promise.then(
             function (offers) {
                 self.offers = offers;
 
@@ -113,7 +113,7 @@ angular.module("managerApp").controller("OrderOverTheBoxCtrl", function ($transl
     self.getOrderDurations = function () {
         self.loaders.durations = true;
 
-        return OrderOverTheBoxNew.Lexi().query({
+        return OvhApiOrderOverTheBoxNew.Lexi().query({
             deviceId: self.orderModel.deviceId,
             offer: self.orderModel.offer,
             voucher: self.orderModel.voucher
@@ -136,7 +136,7 @@ angular.module("managerApp").controller("OrderOverTheBoxCtrl", function ($transl
 
     self.getOrder = function () {
         self.loaders.order = true;
-        return OrderOverTheBoxNew.Lexi().get({
+        return OvhApiOrderOverTheBoxNew.Lexi().get({
             duration: self.orderModel.duration,
             deviceId: self.orderModel.deviceId,
             offer: self.orderModel.offer || "summit",
@@ -154,7 +154,7 @@ angular.module("managerApp").controller("OrderOverTheBoxCtrl", function ($transl
 
     self.order = function () {
         self.loaders.create = true;
-        return OrderOverTheBoxNew.Lexi().save({
+        return OvhApiOrderOverTheBoxNew.Lexi().save({
             duration: self.orderModel.duration
         }, {
             deviceId: self.orderModel.deviceId,

@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("PackVoipEcoFaxCtrl", function ($scope, PackXdslVoipEcofax, $stateParams, REDIRECT_URLS) {
+angular.module("managerApp").controller("PackVoipEcoFaxCtrl", function ($scope, OvhApiPackXdslVoipEcofax, $stateParams, REDIRECT_URLS) {
     "use strict";
 
     var self = this;
@@ -13,7 +13,7 @@ angular.module("managerApp").controller("PackVoipEcoFaxCtrl", function ($scope, 
         };
 
         // Get service link to this access from current Pack Xdsl
-        return PackXdslVoipEcofax.Lexi().query({
+        return OvhApiPackXdslVoipEcofax.Lexi().query({
             packId: $stateParams.packName
         }).$promise.then(
             function (services) {

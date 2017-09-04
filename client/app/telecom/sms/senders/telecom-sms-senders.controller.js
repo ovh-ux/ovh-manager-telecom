@@ -1,5 +1,5 @@
 angular.module("managerApp").controller("TelecomSmsSendersCtrl", class TelecomSmsSendersCtrl {
-    constructor ($stateParams, $q, $filter, $timeout, $uibModal, $translate, Sms, Toast, ToastError) {
+    constructor ($stateParams, $q, $filter, $timeout, $uibModal, $translate, OvhApiSms, Toast, ToastError) {
         this.$stateParams = $stateParams;
         this.$q = $q;
         this.$filter = $filter;
@@ -8,8 +8,8 @@ angular.module("managerApp").controller("TelecomSmsSendersCtrl", class TelecomSm
         this.$translate = $translate;
         this.api = {
             sms: {
-                senders: Sms.Senders().Lexi(),
-                virtualNumbers: Sms.VirtualNumbers().Lexi()
+                senders: OvhApiSms.Senders().Lexi(),
+                virtualNumbers: OvhApiSms.VirtualNumbers().Lexi()
             }
         };
         this.Toast = Toast;

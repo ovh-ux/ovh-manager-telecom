@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyLineAnswerVoicemailPasswordCtrl", function ($stateParams, $translate, $timeout, Telephony, ToastError) {
+angular.module("managerApp").controller("TelecomTelephonyLineAnswerVoicemailPasswordCtrl", function ($stateParams, $translate, $timeout, OvhApiTelephony, ToastError) {
     "use strict";
 
     var self = this;
@@ -6,7 +6,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineAnswerVoicemailPass
     function init () {
         self.options = null;
         self.loading = true;
-        Telephony.Line().Lexi().getOptions({
+        OvhApiTelephony.Line().Lexi().getOptions({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }).$promise.then(function (options) {
@@ -36,7 +36,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineAnswerVoicemailPass
     self.submitPasswordChange = function (form) {
         self.submitting = true;
         self.success = false;
-        return Telephony.Voicemail().Lexi().changePassword({
+        return OvhApiTelephony.Voicemail().Lexi().changePassword({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }, {

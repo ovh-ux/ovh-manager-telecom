@@ -30,8 +30,8 @@ angular.module("managerApp").config(function ($stateProvider) {
                 });
                 return $q.when({ init: true });
             },
-            $title: function (translations, $translate, $stateParams, Telephony) {
-                return Telephony.Lexi().get({
+            $title: function (translations, $translate, $stateParams, OvhApiTelephony) {
+                return OvhApiTelephony.Lexi().get({
                     billingAccount: $stateParams.billingAccount
                 }).$promise.then(function (data) {
                     return $translate.instant("telephony_page_title", { name: data.description || $stateParams.billingAccount }, null, null, "escape");

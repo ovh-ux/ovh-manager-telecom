@@ -1,12 +1,12 @@
 angular.module("managerApp").controller("TelecomSmsUsersQuotaCtrl", class TelecomSmsUsersQuotaCtrl {
-    constructor ($q, $stateParams, $timeout, $uibModalInstance, Sms, params) {
+    constructor ($q, $stateParams, $timeout, $uibModalInstance, OvhApiSms, params) {
         this.$q = $q;
         this.$stateParams = $stateParams;
         this.$timeout = $timeout;
         this.$uibModalInstance = $uibModalInstance;
         this.api = {
             sms: {
-                users: Sms.Users().Lexi()
+                users: OvhApiSms.Users().Lexi()
             }
         };
         this.user = params.user;

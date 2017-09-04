@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("XdslModemDmzCtrl", function ($stateParams, $translate, $q, Xdsl, Toast, PackXdslModemMediator) {
+angular.module("managerApp").controller("XdslModemDmzCtrl", function ($stateParams, $translate, $q, OvhApiXdsl, Toast, PackXdslModemMediator) {
     "use strict";
 
     var self = this;
@@ -18,7 +18,7 @@ angular.module("managerApp").controller("XdslModemDmzCtrl", function ($statePara
             Toast.error($translate.instant("xdsl_modem_dmz_an_error_ocurred"));
             return $q.reject();
         }
-        return Xdsl.Modem().Lexi().update(
+        return OvhApiXdsl.Modem().Lexi().update(
             {
                 xdslId: $stateParams.serviceName
             },
@@ -52,7 +52,7 @@ angular.module("managerApp").controller("XdslModemDmzCtrl", function ($statePara
     };
 
     var init = function () {
-        return Xdsl.Modem().Lan().Aapi().getLanDetails(
+        return OvhApiXdsl.Modem().Lan().Aapi().getLanDetails(
             {
                 xdslId: $stateParams.serviceName
             }

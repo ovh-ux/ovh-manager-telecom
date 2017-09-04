@@ -1,5 +1,5 @@
 angular.module("managerApp").controller("TelecomSmsPhonebooksDeleteCtrl", class TelecomSmsPhonebooksDeleteCtrl {
-    constructor ($q, $stateParams, $timeout, $uibModalInstance, phonebook, Sms) {
+    constructor ($q, $stateParams, $timeout, $uibModalInstance, phonebook, OvhApiSms) {
         this.$q = $q;
         this.$stateParams = $stateParams;
         this.$timeout = $timeout;
@@ -7,7 +7,7 @@ angular.module("managerApp").controller("TelecomSmsPhonebooksDeleteCtrl", class 
         this.phonebook = phonebook;
         this.api = {
             sms: {
-                phonebooks: Sms.Phonebooks().Lexi()
+                phonebooks: OvhApiSms.Phonebooks().Lexi()
             }
         };
     }

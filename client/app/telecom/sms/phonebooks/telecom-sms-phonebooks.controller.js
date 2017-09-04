@@ -1,5 +1,5 @@
 angular.module("managerApp").controller("TelecomSmsPhonebooksCtrl", class TelecomSmsPhonebooksCtrl {
-    constructor ($document, $filter, $q, $scope, $stateParams, $translate, $timeout, $uibModal, $window, Sms, Toast, ToastError, SMS_PHONEBOOKS) {
+    constructor ($document, $filter, $q, $scope, $stateParams, $translate, $timeout, $uibModal, $window, OvhApiSms, Toast, ToastError, SMS_PHONEBOOKS) {
         this.$document = $document;
         this.$filter = $filter;
         this.$q = $q;
@@ -11,9 +11,9 @@ angular.module("managerApp").controller("TelecomSmsPhonebooksCtrl", class Teleco
         this.$window = $window;
         this.api = {
             sms: {
-                phonebooks: Sms.Phonebooks().Lexi(),
-                phonebookContact: Sms.Phonebooks().PhonebookContact().Lexi(),
-                task: Sms.Task().Lexi()
+                phonebooks: OvhApiSms.Phonebooks().Lexi(),
+                phonebookContact: OvhApiSms.Phonebooks().PhonebookContact().Lexi(),
+                task: OvhApiSms.Task().Lexi()
             }
         };
         this.Toast = Toast;

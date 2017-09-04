@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("FreeFaxVoicemailConfigurationCtrl", function ($scope, $stateParams, FreeFax, Toast, $translate, ToastError, $q, FREEFAX) {
+angular.module("managerApp").controller("FreeFaxVoicemailConfigurationCtrl", function ($scope, $stateParams, OvhApiFreeFax, Toast, $translate, ToastError, $q, FREEFAX) {
     "use strict";
 
     var self = this;
@@ -20,7 +20,7 @@ angular.module("managerApp").controller("FreeFaxVoicemailConfigurationCtrl", fun
         });
 
 
-        return FreeFax.Lexi().voiceMailGet({
+        return OvhApiFreeFax.Lexi().voiceMailGet({
             serviceName: $stateParams.serviceName
         }).$promise.then(function (voiceMail) {
             self.voiceMail = voiceMail;
@@ -30,7 +30,7 @@ angular.module("managerApp").controller("FreeFaxVoicemailConfigurationCtrl", fun
         }, function (err) {
             return new ToastError(err);
         }).then(function () {
-            return FreeFax.Lexi().voiceMailGetRouting({
+            return OvhApiFreeFax.Lexi().voiceMailGetRouting({
                 serviceName: $stateParams.serviceName
             }).$promise.then(function (routing) {
                 initialActivateVoiceMail = routing.value;
@@ -90,7 +90,7 @@ angular.module("managerApp").controller("FreeFaxVoicemailConfigurationCtrl", fun
 
     this.save = function (conf) {
         var tasks = [
-            FreeFax.Lexi().voiceMailPut({
+            OvhApiFreeFax.Lexi().voiceMailPut({
                 serviceName: $stateParams.serviceName
             }, {
                 audioFormat: conf.audioFormat.value,
@@ -104,7 +104,7 @@ angular.module("managerApp").controller("FreeFaxVoicemailConfigurationCtrl", fun
 
         if (conf.activateVoiceMail !== initialActivateVoiceMail) {
             tasks.push(
-                FreeFax.Lexi().voiceMailChangeRouting({
+                OvhApiFreeFax.Lexi().voiceMailChangeRouting({
                     serviceName: $stateParams.serviceName
                 }, {
                     routing: conf.activateVoiceMail ? "voicemail" : "fax"
@@ -120,7 +120,7 @@ angular.module("managerApp").controller("FreeFaxVoicemailConfigurationCtrl", fun
                 Toast.error($translate.instant("freefax_voicemail_bad_password"));
                 reject($translate.instant("freefax_voicemail_bad_password"));
             } else {
-                FreeFax.Lexi().changePassword({
+                OvhApiFreeFax.Lexi().changePassword({
                     serviceName: $stateParams.serviceName
                 }, {
                     password: newPassword
