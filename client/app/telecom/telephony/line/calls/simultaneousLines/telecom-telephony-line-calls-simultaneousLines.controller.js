@@ -13,11 +13,11 @@ angular.module("managerApp").controller("TelecomTelephonyLineCallsSimultaneousLi
         text: $translate.instant("modify")
     };
 
-    this.needSave = function () {
+    self.needSave = function () {
         return self.options.simultaneousLines !== self.saved.simultaneousLines;
     };
 
-    this.showOrder = function () {
+    self.showOrder = function () {
 
         self.loading.order = true;
 
@@ -39,7 +39,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineCallsSimultaneousLi
         });
     };
 
-    this.doOrder = function () {
+    self.doOrder = function () {
         self.loading.doOrder = true;
 
         return apiResources.orderSimultaneousLines({
@@ -88,7 +88,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineCallsSimultaneousLi
         });
     }
 
-    this.doRemoveSimultaneousLines = function () {
+    self.doRemoveSimultaneousLines = function () {
         self.loading.save = true;
 
         return Telephony.Line().Lexi().removeSimultaneousLine({
@@ -113,12 +113,12 @@ angular.module("managerApp").controller("TelecomTelephonyLineCallsSimultaneousLi
         });
     };
 
-    this.cancelRemove = function () {
+    self.cancelRemove = function () {
         self.showDoRemoveButtons = false;
         self.options.simultaneousLines = self.saved.simultaneousLines;
     };
 
-    this.save = debounce(function () {
+    self.save = debounce(function () {
 
         self.contracts = null;
         self.prices = null;
@@ -127,7 +127,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineCallsSimultaneousLi
         if (self.needSave) {
 
             if (self.saved.simultaneousLines < self.options.simultaneousLines) {
-                this.loading.save = true;
+                self.loading.save = true;
                 self.showDoRemoveButtons = false;
                 return self.showOrder().finally(function () {
                     self.loading.save = false;
