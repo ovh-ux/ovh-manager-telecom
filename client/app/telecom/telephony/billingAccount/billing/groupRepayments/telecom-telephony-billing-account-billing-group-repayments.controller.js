@@ -1,7 +1,33 @@
-angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingGroupRepaymentsCtrl", function ($q, $stateParams, $translate, TelephonyMediator, Toast) {
+angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingGroupRepaymentsCtrl", function ($q, $stateParams, $translate, OvhApiTelephony, TelephonyMediator, Toast) {
     "use strict";
 
     var self = this;
+
+    /* =============================
+    =            EVENTS            =
+    ============================== */
+
+    self.askHistoryRepaymentConsumption = function () {
+        self.groupRepaymentsForm.isAsking = true;
+
+        return OvhApiTelephony.HistoryRepaymentConsumption().Lexi().create({
+            billingAccount: $stateParams.billingAccount
+        }, {
+            billingNumber: self.groupRepaymentsForm.billingNumber
+        }).$promise.then(function () {
+            Toast.success($translate.instant("telephony_group_billing_group_repayments_ask_new_repayment_success"));
+            init();
+        }).catch(function (error) {
+            Toast.error([$translate.instant("telephony_group_billing_group_repayments_ask_new_repayment_error"), _.get(error, "data.message")].join(" "));
+            init();
+            return $q.reject(error);
+        }).finally(function () {
+            self.groupRepaymentsForm.isAsking = false;
+        });
+    };
+
+    /* -----  End of EVENTS  ------ */
+
 
     /*= =====================================
     =            INITIALIZATION            =
@@ -27,12 +53,14 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingGr
             },
             isLoading: false
         };
+
         self.groupRepaymentsForm = {
-            v4url: TelephonyMediator.getV6ToV4RedirectionUrl("group.group_repayments"),
             billingNumber: null,
             isAsking: false
         };
+
         self.consumptions.isLoading = true;
+
         return TelephonyMediator.getGroup($stateParams.billingAccount).then(function (group) {
             return group.getRepaymentConsumption().then(function (repaymentConsumptions) {
                 self.consumptions.all = _.get(repaymentConsumptions, "groupRepayments.all");
