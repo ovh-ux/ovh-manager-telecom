@@ -1,4 +1,4 @@
-angular.module("managerApp").service("TelephonyAccessoriesOrderProcess", function ($q, Telephony, Order, TELEPHONY_LINE_PHONE_ACCESSORIES) {
+angular.module("managerApp").service("TelephonyAccessoriesOrderProcess", function ($q, OvhApiTelephony, OvhApiOrder, TELEPHONY_LINE_PHONE_ACCESSORIES) {
     "use strict";
 
     var self = this;
@@ -40,7 +40,7 @@ angular.module("managerApp").service("TelephonyAccessoriesOrderProcess", functio
 
     self.getAvailableAccessories = function (country) {
         if (!orderProcess.accessoriesList) {
-            return Telephony.Lexi().accessories({
+            return OvhApiTelephony.Lexi().accessories({
                 country: country || "fr"
             }).$promise.then(function (accessoriesList) {
                 orderProcess.accessoriesList = _.map(accessoriesList, function (accessory) {
@@ -66,7 +66,7 @@ angular.module("managerApp").service("TelephonyAccessoriesOrderProcess", functio
     ================================*/
 
     self.getOrderCheckout = function () {
-        return Order.Telephony().Lexi().getAccessories({
+        return OvhApiOrder.Telephony().Lexi().getAccessories({
             billingAccount: orderProcess.billingAccount,
             accessories: getAccessoryList(),
             retractation: true,
@@ -76,7 +76,7 @@ angular.module("managerApp").service("TelephonyAccessoriesOrderProcess", functio
     };
 
     self.orderCheckout = function () {
-        return Order.Telephony().Lexi().orderAccessories({
+        return OvhApiOrder.Telephony().Lexi().orderAccessories({
             billingAccount: orderProcess.billingAccount
         }, {
             accessories: getAccessoryList(),

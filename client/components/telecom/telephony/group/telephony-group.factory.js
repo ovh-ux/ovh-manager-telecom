@@ -1,4 +1,4 @@
-angular.module("managerApp").factory("TelephonyGroup", function ($q, Telephony, TelephonyGroupLine, TelephonyGroupNumber, TelephonyGroupFax, Order, TELEPHONY_REPAYMENT_CONSUMPTION) {
+angular.module("managerApp").factory("TelephonyGroup", function ($q, OvhApiTelephony, TelephonyGroupLine, TelephonyGroupNumber, TelephonyGroupFax, OvhApiOrder, TELEPHONY_REPAYMENT_CONSUMPTION) {
     "use strict";
 
     /*= ==================================
@@ -80,7 +80,7 @@ angular.module("managerApp").factory("TelephonyGroup", function ($q, Telephony, 
     TelephonyGroup.prototype.save = function () {
         var self = this;
 
-        return Telephony.Lexi().edit({
+        return OvhApiTelephony.Lexi().edit({
             billingAccount: self.billingAccount
         }, {
             description: self.description
@@ -166,7 +166,7 @@ angular.module("managerApp").factory("TelephonyGroup", function ($q, Telephony, 
             return $q.when(self);
         }
 
-        return Telephony.Service().RepaymentConsumption().Aapi().repayment({
+        return OvhApiTelephony.Service().RepaymentConsumption().Aapi().repayment({
             billingAccount: self.billingAccount
         }).$promise.then(function (consumptions) {
             var calledFeesPrefix = _.chain(TELEPHONY_REPAYMENT_CONSUMPTION)
@@ -265,7 +265,7 @@ angular.module("managerApp").factory("TelephonyGroup", function ($q, Telephony, 
         if (self.availableOrders) {
             return $q.when(self.availableOrders);
         }
-        return Order.Telephony().Lexi().get({
+        return OvhApiOrder.Telephony().Lexi().get({
             billingAccount: self.billingAccount
         }).$promise.then(function (orderNames) {
             self.availableOrders = orderNames;

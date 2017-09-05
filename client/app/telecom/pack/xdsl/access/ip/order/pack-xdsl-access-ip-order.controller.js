@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("XdslAccessIpOrderCtrl", ["$uibModalInstance", "data", "XdslIps", "ToastError", "URLS", function ($uibModalInstance, data, XdslIps, ToastError, URLS) {
+angular.module("managerApp").controller("XdslAccessIpOrderCtrl", ["$uibModalInstance", "data", "OvhApiXdslIps", "ToastError", "URLS", function ($uibModalInstance, data, OvhApiXdslIps, ToastError, URLS) {
     "use strict";
 
     var self = this;
@@ -21,7 +21,7 @@ angular.module("managerApp").controller("XdslAccessIpOrderCtrl", ["$uibModalInst
 
     this.init = function () {
         self.loading = true;
-        XdslIps.Lexi().price({
+        OvhApiXdslIps.Lexi().price({
             ipRange: ipRange
         }, null).$promise.then(function (result) {
             self.constants.price = result.text;
@@ -39,7 +39,7 @@ angular.module("managerApp").controller("XdslAccessIpOrderCtrl", ["$uibModalInst
 
     this.confirm = function () {
         self.loading = true;
-        XdslIps.Lexi().order({
+        OvhApiXdslIps.Lexi().order({
             xdslId: self.constants.xdslId
         }, null).$promise.then(function (result) {
             $uibModalInstance.close(result);

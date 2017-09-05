@@ -1,5 +1,5 @@
 angular.module("managerApp")
-    .controller("XdslModemWifiConfigCtrl", function ($state, $q, $timeout, $stateParams, $translate, Toast, Xdsl, PackXdslModemMediator) {
+    .controller("XdslModemWifiConfigCtrl", function ($state, $q, $timeout, $stateParams, $translate, Toast, OvhApiXdsl, PackXdslModemMediator) {
         "use strict";
 
         var self = this;
@@ -74,7 +74,7 @@ angular.module("managerApp")
                 wifiTmp.securityKey = self.wifi.securityKey;
             }
 
-            Xdsl.Modem().Wifi().Lexi().update({
+            OvhApiXdsl.Modem().Wifi().Lexi().update({
                 xdslId: $stateParams.serviceName,
                 wifiName: this.wifi.wifiName
             }, wifiTmp).$promise.then(function (data) {
@@ -157,7 +157,7 @@ angular.module("managerApp")
         function init () {
             self.fields.securityType = ["None", "WEP", "WPA", "WPA2", "WPAandWPA2"];
 
-            return Xdsl.Modem().Wifi().Aapi().getWifiDetails({
+            return OvhApiXdsl.Modem().Wifi().Aapi().getWifiDetails({
                 xdslId: $stateParams.serviceName
             }).$promise.then(function (data) {
                 self.wifis = _.map(data, function (wifi) {

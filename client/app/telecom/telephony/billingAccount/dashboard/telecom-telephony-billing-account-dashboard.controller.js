@@ -1,5 +1,6 @@
 angular.module("managerApp")
-    .controller("TelecomTelephonyBillingAccountDashboardCtrl", function ($translate, $scope, $stateParams, $state, $q, $window, $timeout, TelephonyMediator, Telephony, ToastError, TelephonyGroupLinePhone, TELEPHONY_LINE_PHONE_ADDITIONAL_INFOS) {
+    .controller("TelecomTelephonyBillingAccountDashboardCtrl", function ($translate, $scope, $stateParams, $state, $q, $window, $timeout,
+                                                                         TelephonyMediator, OvhApiTelephony, ToastError, TelephonyGroupLinePhone, TELEPHONY_LINE_PHONE_ADDITIONAL_INFOS) {
         "use strict";
 
         var self = this;
@@ -36,7 +37,7 @@ angular.module("managerApp")
         function fetchPhones (line) {
             self.loading.phones = true;
 
-            return Telephony.Line().Phone().Lexi().get({
+            return OvhApiTelephony.Line().Phone().Lexi().get({
                 billingAccount: line.billingAccount,
                 serviceName: line.serviceName
             }).$promise.then(function (phoneOpts) {
@@ -77,7 +78,7 @@ angular.module("managerApp")
                 return self.portability;
             }
 
-            return Telephony.Portability().Lexi().query({
+            return OvhApiTelephony.Portability().Lexi().query({
                 billingAccount: $stateParams.billingAccount
             }).$promise.then(function (ids) {
                 self.portabilities = ids.length;
@@ -98,11 +99,11 @@ angular.module("managerApp")
                 return self.bills;
             }
 
-            return Telephony.HistoryConsumption().Lexi().query({
+            return OvhApiTelephony.HistoryConsumption().Lexi().query({
                 billingAccount: $stateParams.billingAccount
             }).$promise.then(function (ids) {
                 return $q.all(_.map(_.slice(ids, ids.length - 5), function (chunkIds) {
-                    return Telephony.HistoryConsumption().Lexi().getBatch({
+                    return OvhApiTelephony.HistoryConsumption().Lexi().getBatch({
                         billingAccount: $stateParams.billingAccount,
                         date: chunkIds
                     }).$promise;
@@ -139,7 +140,7 @@ angular.module("managerApp")
                 return self.consumption;
             }
 
-            return Telephony.Service().VoiceConsumption().Aapi().get({
+            return OvhApiTelephony.Service().VoiceConsumption().Aapi().get({
                 billingAccount: $stateParams.billingAccount
             }).$promise.then(function (consumption) {
                 if (self.group.lines && self.group.lines.length) {
@@ -167,7 +168,7 @@ angular.module("managerApp")
 
         function getFile (consumption, type) {
             var tryDownload = function () {
-                return Telephony.HistoryConsumption().Lexi().getFile({
+                return OvhApiTelephony.HistoryConsumption().Lexi().getFile({
                     billingAccount: $stateParams.billingAccount,
                     date: consumption.date,
                     extension: type

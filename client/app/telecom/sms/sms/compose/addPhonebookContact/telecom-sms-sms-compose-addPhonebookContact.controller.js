@@ -1,5 +1,5 @@
 angular.module("managerApp").controller("TelecomSmsSmsComposeAddPhonebookContactCtrl", class TelecomSmsSmsComposeAddPhonebookContactCtrl {
-    constructor ($filter, $q, $scope, $stateParams, $timeout, $translate, $uibModalInstance, phonebooks, Sms, Toast, SMS_PHONEBOOKS) {
+    constructor ($filter, $q, $scope, $stateParams, $timeout, $translate, $uibModalInstance, phonebooks, OvhApiSms, Toast, SMS_PHONEBOOKS) {
         this.$filter = $filter;
         this.$q = $q;
         this.$scope = $scope;
@@ -11,7 +11,7 @@ angular.module("managerApp").controller("TelecomSmsSmsComposeAddPhonebookContact
         this.api = {
             sms: {
                 phonebooks: {
-                    phonebookcontact: Sms.Phonebooks().PhonebookContact().Lexi()
+                    phonebookcontact: OvhApiSms.Phonebooks().PhonebookContact().Lexi()
                 }
             }
         };

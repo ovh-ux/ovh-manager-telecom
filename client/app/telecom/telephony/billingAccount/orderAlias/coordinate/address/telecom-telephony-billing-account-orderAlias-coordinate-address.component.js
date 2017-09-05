@@ -5,7 +5,7 @@ angular.module("managerApp").component("telecomTelephonyBillingAccountOrderAlias
         regionCode: "@",
         ngDisabled: "=?"
     },
-    controller: function ($scope, NewAccount) {
+    controller: function ($scope, OvhApiNewAccount) {
         "use strict";
         var self = this;
 
@@ -17,7 +17,7 @@ angular.module("managerApp").component("telecomTelephonyBillingAccountOrderAlias
 
         this.getValidator = function () {
             if (this.regionCode) {
-                NewAccount.CreationRules().Lexi().get({
+                OvhApiNewAccount.CreationRules().Lexi().get({
                     country: this.regionCode === "uk" ? "GB" : this.regionCode.toUpperCase(),
                     legalform: "corporation",
                     ovhCompany: "ovh",

@@ -1,10 +1,10 @@
-angular.module("managerApp").controller("PackInformationCtrl", function ($scope, $translate, $q, $stateParams, Toast, PackXdsl, Xdsl, moment) {
+angular.module("managerApp").controller("PackInformationCtrl", function ($scope, $translate, $q, $stateParams, Toast, OvhApiPackXdsl, OvhApiXdsl, moment) {
     "use strict";
 
     var self = this;
 
     function getResiliationFollowUp () {
-        return PackXdsl.Lexi().resiliationFollowUp({
+        return OvhApiPackXdsl.Lexi().resiliationFollowUp({
             packName: $stateParams.packName
         }).$promise.catch(function (err) {
             return err.status === 404 ? $q.when(null) : $q.reject(err);
@@ -12,7 +12,7 @@ angular.module("managerApp").controller("PackInformationCtrl", function ($scope,
     }
 
     function getIsResiliationCancellable () {
-        return PackXdsl.Resiliation().Lexi().canCancelResiliation({
+        return OvhApiPackXdsl.Resiliation().Lexi().canCancelResiliation({
             packName: $stateParams.packName
         }, null).$promise.then(function (result) {
             return result.value;
@@ -20,10 +20,10 @@ angular.module("managerApp").controller("PackInformationCtrl", function ($scope,
     }
 
     function getAssociatedLine () {
-        return PackXdsl.Access().Lexi().getServices({
+        return OvhApiPackXdsl.Access().Lexi().getServices({
             packId: $stateParams.packName
         }).$promise.then(function (access) {
-            return Xdsl.Lines().Lexi().query({
+            return OvhApiXdsl.Lines().Lexi().query({
                 xdslId: _.first(access)
             }).$promise.then(function (lines) {
                 return _.first(lines);

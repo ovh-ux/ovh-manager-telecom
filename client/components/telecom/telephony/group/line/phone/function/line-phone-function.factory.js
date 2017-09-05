@@ -1,4 +1,4 @@
-angular.module("managerApp").factory("TelephonyGroupLinePhoneFunction", function (Telephony, $q) {
+angular.module("managerApp").factory("TelephonyGroupLinePhoneFunction", function ($q, OvhApiTelephony) {
     "use strict";
 
     var mandatoriesPhoneFunctionOptions = [
@@ -64,7 +64,7 @@ angular.module("managerApp").factory("TelephonyGroupLinePhoneFunction", function
 
     TelephonyGroupLineFunctionPhone.prototype.getAvailableFunctions = function () {
         var self = this;
-        return Telephony.Line().Phone().FunctionKey().Lexi().availableFunctions({
+        return OvhApiTelephony.Line().Phone().FunctionKey().Lexi().availableFunctions({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName,
             keyNum: self.keyNum
@@ -79,7 +79,7 @@ angular.module("managerApp").factory("TelephonyGroupLinePhoneFunction", function
     TelephonyGroupLineFunctionPhone.prototype.save = function () {
         var self = this;
 
-        return Telephony.Line().Phone().FunctionKey().Lexi().save({
+        return OvhApiTelephony.Line().Phone().FunctionKey().Lexi().save({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName,
             keyNum: self.keyNum
@@ -99,13 +99,13 @@ angular.module("managerApp").factory("TelephonyGroupLinePhoneFunction", function
         var resultKeys = [];
         var requests = [];
 
-        return Telephony.Line().Phone().FunctionKey().Lexi().query({
+        return OvhApiTelephony.Line().Phone().FunctionKey().Lexi().query({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName
         }).$promise.then(function (functionKeys) {
 
             angular.forEach(functionKeys, function (key) {
-                requests.push(Telephony.Line().Phone().FunctionKey().Lexi().get({
+                requests.push(OvhApiTelephony.Line().Phone().FunctionKey().Lexi().get({
                     billingAccount: self.billingAccount,
                     serviceName: self.serviceName,
                     keyNum: key

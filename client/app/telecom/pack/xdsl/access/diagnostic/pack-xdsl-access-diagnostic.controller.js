@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("XdslDiagnosticCtrl", function ($q, $scope, $stateParams, $translate, XdslDiagnostic, Poller, Toast, UserVipStatus) {
+angular.module("managerApp").controller("XdslDiagnosticCtrl", function ($q, $scope, $stateParams, $translate, OvhApiXdslDiagnostic, Poller, Toast, OvhApiMeVipStatus) {
     "use strict";
     var self = this;
 
@@ -21,7 +21,7 @@ angular.module("managerApp").controller("XdslDiagnosticCtrl", function ($q, $sco
         self.wizardTypeSelection = "type1";
 
         // if error in API call, you are not VIP by default
-        return UserVipStatus.Lexi().get().$promise.then(function (data) {
+        return OvhApiMeVipStatus.Lexi().get().$promise.then(function (data) {
             self.isVIP = data.telecom;
             self.launchPoller();
         }).finally(function () {
@@ -59,7 +59,7 @@ angular.module("managerApp").controller("XdslDiagnosticCtrl", function ($q, $sco
 
         // disable "launch" button
         self.status.diagnosticRunning = true;
-        XdslDiagnostic.Lexi().launchDiagnostic({
+        OvhApiXdslDiagnostic.Lexi().launchDiagnostic({
             xdslId: $stateParams.serviceName
         }, null).$promise.then(function (data) {
             angular.extend(self.status, data);
@@ -96,7 +96,7 @@ angular.module("managerApp").controller("XdslDiagnosticCtrl", function ($q, $sco
     self.launchPoller = function () {
         if (!self.status.pollerRunning) {
             self.status.pollerRunning = true;
-            XdslDiagnostic.Aapi().poll($scope, {
+            OvhApiXdslDiagnostic.Aapi().poll($scope, {
                 xdslId: $stateParams.serviceName
             }).then(
                 self.pollerSuccess,

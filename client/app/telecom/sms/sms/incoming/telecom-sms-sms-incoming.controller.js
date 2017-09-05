@@ -1,5 +1,5 @@
 angular.module("managerApp").controller("TelecomSmsSmsIncomingCtrl", class TelecomSmsSmsIncomingCtrl {
-    constructor ($filter, $q, $scope, $stateParams, $translate, $timeout, $uibModal, $window, Sms, User, Toast, ToastError) {
+    constructor ($filter, $q, $scope, $stateParams, $translate, $timeout, $uibModal, $window, OvhApiSms, OvhApiMe, Toast, ToastError) {
         this.$filter = $filter;
         this.$q = $q;
         this.$scope = $scope;
@@ -9,10 +9,10 @@ angular.module("managerApp").controller("TelecomSmsSmsIncomingCtrl", class Telec
         this.$uibModal = $uibModal;
         this.$window = $window;
         this.api = {
-            sms: Sms.Lexi(),
-            smsIncoming: Sms.Incoming().Lexi(),
+            sms: OvhApiSms.Lexi(),
+            smsIncoming: OvhApiSms.Incoming().Lexi(),
             user: {
-                document: User.Document().Lexi()
+                document: OvhApiMe.Document().Lexi()
             }
         };
         this.Toast = Toast;

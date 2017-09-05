@@ -1,26 +1,26 @@
 angular.module("managerApp").controller(
     "TelecomTelephonyAbbreviatedNumbersCtrl",
-    function ($q, $stateParams, $translate, Telephony, Toast, PAGINATION_PER_PAGE) {
+    function ($q, $stateParams, $translate, OvhApiTelephony, Toast, PAGINATION_PER_PAGE) {
         "use strict";
 
         var self = this;
 
         this.remove = function (abbreviatedNumber) {
-            return Telephony.AbbreviatedNumber().Lexi().remove({
+            return OvhApiTelephony.AbbreviatedNumber().Lexi().remove({
                 billingAccount: $stateParams.billingAccount,
                 abbreviatedNumber: abbreviatedNumber.abbreviatedNumber
             }).$promise;
         };
 
         this.insert = function (abbreviatedNumber) {
-            return Telephony.AbbreviatedNumber().Lexi().insert({
+            return OvhApiTelephony.AbbreviatedNumber().Lexi().insert({
                 billingAccount: $stateParams.billingAccount,
                 serviceName: $stateParams.serviceName
             }, abbreviatedNumber).$promise;
         };
 
         this.update = function (abbreviatedNumber) {
-            return Telephony.AbbreviatedNumber().Lexi().update({
+            return OvhApiTelephony.AbbreviatedNumber().Lexi().update({
                 billingAccount: $stateParams.billingAccount,
                 serviceName: $stateParams.serviceName,
                 abbreviatedNumber: abbreviatedNumber.abbreviatedNumber
@@ -32,7 +32,7 @@ angular.module("managerApp").controller(
                 init: true
             };
             this.abbreviatedNumbers = [];
-            return Telephony.AbbreviatedNumber().Aapi().query({
+            return OvhApiTelephony.AbbreviatedNumber().Aapi().query({
                 billingAccount: $stateParams.billingAccount
             }).$promise.then(
                 function (abbreviatedNumbers) {
@@ -56,7 +56,7 @@ angular.module("managerApp").controller(
             };
 
             return $q.all([
-                Telephony.Lexi().get({ billingAccount: $stateParams.billingAccount }).$promise.then(
+                OvhApiTelephony.Lexi().get({ billingAccount: $stateParams.billingAccount }).$promise.then(
                     function (detail) {
                         self.exportFilename = "ab_num_" + (detail.description || $stateParams.billingAccount) + ".csv";
                     },

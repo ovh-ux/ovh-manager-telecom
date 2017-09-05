@@ -1,5 +1,5 @@
 angular.module("managerApp").controller("TelecomSmsOrderCtrl", class TelecomSmsOrderCtrl {
-    constructor ($q, $translate, $filter, $stateParams, SmsMediator, Order, debounce, Toast, SMS_ORDER_PREFIELDS_VALUES) {
+    constructor ($q, $translate, $filter, $stateParams, SmsMediator, OvhApiOrder, debounce, Toast, SMS_ORDER_PREFIELDS_VALUES) {
         this.$q = $q;
         this.$translate = $translate;
         this.$filter = $filter;
@@ -7,7 +7,7 @@ angular.module("managerApp").controller("TelecomSmsOrderCtrl", class TelecomSmsO
         this.SmsMediator = SmsMediator;
         this.api = {
             order: {
-                sms: Order.Sms().Lexi()
+                sms: OvhApiOrder.Sms().Lexi()
             }
         };
         this.debounce = debounce;

@@ -1,4 +1,4 @@
-angular.module("managerApp").factory("TelephonyGroupNumberEasyHunting", function ($q, VoipScheduler, VoipTimeCondition, Telephony) {
+angular.module("managerApp").factory("TelephonyGroupNumberEasyHunting", function ($q, VoipScheduler, VoipTimeCondition, OvhApiTelephony) {
     "use strict";
 
     /*= ==================================
@@ -138,10 +138,10 @@ angular.module("managerApp").factory("TelephonyGroupNumberEasyHunting", function
         var self = this;
 
         if (resetCache) {
-            Telephony.EasyHunting().Lexi().resetAllCache();
+            OvhApiTelephony.EasyHunting().Lexi().resetAllCache();
         }
 
-        return Telephony.EasyHunting().Lexi().get({
+        return OvhApiTelephony.EasyHunting().Lexi().get({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName
         }).$promise.then(function (featureOptions) {

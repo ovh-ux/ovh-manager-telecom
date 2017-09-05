@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelephonySchedulerImportCtrl", function ($timeout, $uibModalInstance, modalData, User) {
+angular.module("managerApp").controller("TelephonySchedulerImportCtrl", function ($timeout, $uibModalInstance, modalData, OvhApiMe) {
     "use strict";
 
     var self = this;
@@ -23,7 +23,7 @@ angular.module("managerApp").controller("TelephonySchedulerImportCtrl", function
     ===============================*/
 
     function uploadFile () {
-        return User.Document().Lexi().upload(self.model.icsFile.name, self.model.icsFile);
+        return OvhApiMe.Document().Lexi().upload(self.model.icsFile.name, self.model.icsFile);
     }
 
     self.checkIcsFileType = function (file) {

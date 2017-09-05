@@ -1,14 +1,14 @@
-angular.module("managerApp").controller("TelecomTelephonyBillingAccountAdministrationDeleteGroup", function ($stateParams, $q, $translate, Telephony, Toast, ToastError) {
+angular.module("managerApp").controller("TelecomTelephonyBillingAccountAdministrationDeleteGroup", function ($stateParams, $q, $translate, OvhApiTelephony, Toast, ToastError) {
     "use strict";
 
     var self = this;
 
     function getOfferTaskList (billingAccount) {
-        return Telephony.OfferTask().Lexi().query({
+        return OvhApiTelephony.OfferTask().Lexi().query({
             billingAccount: billingAccount
         }).$promise.then(function (offerTaskIds) {
             return $q.all(_.map(offerTaskIds, function (id) {
-                return Telephony.OfferTask().Lexi().get({
+                return OvhApiTelephony.OfferTask().Lexi().get({
                     billingAccount: billingAccount,
                     taskId: id
                 }).$promise;
@@ -24,7 +24,7 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountAdministr
     }
 
     function fetchGroup () {
-        return Telephony.Lexi().get({
+        return OvhApiTelephony.Lexi().get({
             billingAccount: $stateParams.billingAccount
         }).$promise.then(function (group) {
             self.group = group;
@@ -33,7 +33,7 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountAdministr
 
     self.cancelTermination = function () {
         self.cancelling = true;
-        return Telephony.Lexi().cancelTermination({
+        return OvhApiTelephony.Lexi().cancelTermination({
             billingAccount: $stateParams.billingAccount
         }, {}).$promise.then(function () {
             return fetchTerminationTask();
@@ -49,7 +49,7 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountAdministr
 
     self.terminate = function () {
         self.deleting = true;
-        return Telephony.Lexi().delete({
+        return OvhApiTelephony.Lexi().delete({
             billingAccount: $stateParams.billingAccount
         }, {}).$promise.then(function () {
             return fetchTerminationTask();
@@ -84,4 +84,3 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountAdministr
 
     init();
 });
-

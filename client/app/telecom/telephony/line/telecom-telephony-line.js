@@ -20,8 +20,8 @@ angular.module("managerApp").config(function ($stateProvider) {
         },
         translations: ["common", "telecom/telephony/line"],
         resolve: {
-            $title: function (translations, $translate, $stateParams, Telephony) {
-                return Telephony.Line().Lexi().get({
+            $title: function (translations, $translate, $stateParams, OvhApiTelephony) {
+                return OvhApiTelephony.Line().Lexi().get({
                     billingAccount: $stateParams.billingAccount,
                     serviceName: $stateParams.serviceName
                 }).$promise.then(function (data) {

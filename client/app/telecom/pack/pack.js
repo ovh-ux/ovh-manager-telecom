@@ -16,8 +16,8 @@ angular.module("managerApp").config(function ($stateProvider) {
             resiliationNotification: function () {
                 return {};
             },
-            $title: function (translations, $translate, PackXdsl, $stateParams) {
-                return PackXdsl.Lexi().get({
+            $title: function (translations, $translate, OvhApiPackXdsl, $stateParams) {
+                return OvhApiPackXdsl.Lexi().get({
                     packId: $stateParams.packName
                 }).$promise.then(function (data) {
                     return $translate.instant("pack_xdsl_page_title", { name: data.description || $stateParams.packName }, null, null, "escape");

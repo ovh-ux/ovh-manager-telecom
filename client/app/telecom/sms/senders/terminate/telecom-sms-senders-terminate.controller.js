@@ -1,11 +1,11 @@
 angular.module("managerApp").controller("TelecomSmsSendersTerminateCtrl", class TelecomSmsSendersTerminateCtrl {
-    constructor ($q, $timeout, $uibModalInstance, Sms, sender) {
+    constructor ($q, $timeout, $uibModalInstance, OvhApiSms, sender) {
         this.$q = $q;
         this.$timeout = $timeout;
         this.$uibModalInstance = $uibModalInstance;
         this.api = {
             sms: {
-                virtualNumbers: Sms.VirtualNumbers().Lexi()
+                virtualNumbers: OvhApiSms.VirtualNumbers().Lexi()
             }
         };
         this.sender = sender;
