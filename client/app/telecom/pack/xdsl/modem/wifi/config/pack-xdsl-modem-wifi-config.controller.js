@@ -3,9 +3,9 @@ angular.module("managerApp")
         "use strict";
 
         var self = this;
-        this.haveToTypeYourKey = false;
         this.mediator = PackXdslModemMediator;
         this.wifi = null;
+        this.modem = null;
 
         this.loaders = {
             wifi: true,
@@ -31,27 +31,9 @@ angular.module("managerApp")
             "securityType"
         ];
 
-        this.keyError = function () {
-            if (!this.wifi || !this.wifi.key) {
-                return false;
-            }
-
-            if (this.wifi.key.length > 0 && this.wifi.key === this.wifi.key2) {
-                this.haveToTypeYourKey = false;
-                return false;
-            }
-
-            return this.wifi.key !== this.wifi.key2;
-        };
-
         this.resetKey = function () {
-            if (this.wifi.securityType === "None") {
-                this.wifi.key = "";
-                this.wifi.key2 = "";
-                this.haveToTypeYourKey = false;
-            } else {
-                this.haveToTypeYourKey = true;
-            }
+            this.wifi.key = "";
+            this.wifi.key2 = "";
         };
 
         this.update = function () {
@@ -154,13 +136,28 @@ angular.module("managerApp")
             self.wifi = angular.copy(wifi);
         };
 
-        function init () {
-            self.fields.securityType = ["None", "WEP", "WPA", "WPA2", "WPAandWPA2"];
+        function getModem () {
+            return OvhApiXdsl.Modem().Lexi().get({
+                xdslId: $stateParams.serviceName
+            }).$promise;
+        }
 
+        function getWifi () {
             return OvhApiXdsl.Modem().Wifi().Aapi().getWifiDetails({
                 xdslId: $stateParams.serviceName
-            }).$promise.then(function (data) {
-                self.wifis = _.map(data, function (wifi) {
+            }).$promise;
+        }
+
+        function init () {
+
+
+            return $q.all({
+                modem: getModem(),
+                wifi: getWifi()
+            }).then(function (response) {
+                self.modem = response.modem;
+
+                self.wifis = _.map(response.wifi, function (wifi) {
                     wifi.channelCustom = wifi.channelMode === "Auto" ? "Auto" : wifi.channel;
                     return wifi;
                 }).sort(function (wifiA) {
@@ -173,7 +170,7 @@ angular.module("managerApp")
                     }));
                 }
 
-                return data;
+                self.fields.securityType = self.modem.model === "TG799VAC" ? ["None", "WPA2", "WPAandWPA2"] : ["None", "WEP", "WPA", "WPA2", "WPAandWPA2"];
             }).catch(function (err) {
                 Toast.error($translate.instant("xdsl_modem_wifi_read_error"));
                 return $q.reject(err);
