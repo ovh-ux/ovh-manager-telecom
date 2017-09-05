@@ -165,7 +165,7 @@ angular.module("managerApp")
                 });
 
                 if (self.wifis.length === 1) {
-                    self.setSelectedWifi(_.find(data, {
+                    self.setSelectedWifi(_.find(response.wifi, {
                         wifiName: "defaultWIFI"
                     }));
                 }
