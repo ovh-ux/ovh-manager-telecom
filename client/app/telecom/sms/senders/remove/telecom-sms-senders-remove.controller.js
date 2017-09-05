@@ -1,12 +1,12 @@
 angular.module("managerApp").controller("TelecomSmsSendersRemoveCtrl", class TelecomSmsSendersRemoveCtrl {
-    constructor ($q, $stateParams, $timeout, $uibModalInstance, Sms, sender) {
+    constructor ($q, $stateParams, $timeout, $uibModalInstance, OvhApiSms, sender) {
         this.$q = $q;
         this.$stateParams = $stateParams;
         this.$timeout = $timeout;
         this.$uibModalInstance = $uibModalInstance;
         this.api = {
             sms: {
-                senders: Sms.Senders().Lexi()
+                senders: OvhApiSms.Senders().Lexi()
             }
         };
         this.sender = sender;

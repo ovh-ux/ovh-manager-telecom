@@ -1,12 +1,12 @@
 angular.module("managerApp").controller("TelecomSmsSmsTemplatesCtrl", class TelecomSmsSmsTemplatesCtrl {
-    constructor ($q, $translate, $stateParams, $uibModal, Sms, SmsMediator, Toast, ToastError) {
+    constructor ($q, $translate, $stateParams, $uibModal, OvhApiSms, SmsMediator, Toast, ToastError) {
         this.$q = $q;
         this.$translate = $translate;
         this.$stateParams = $stateParams;
         this.$uibModal = $uibModal;
         this.api = {
             sms: {
-                templates: Sms.Templates().Lexi()
+                templates: OvhApiSms.Templates().Lexi()
             }
         };
         this.SmsMediator = SmsMediator;

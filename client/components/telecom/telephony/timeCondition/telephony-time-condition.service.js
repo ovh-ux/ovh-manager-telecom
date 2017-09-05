@@ -1,22 +1,21 @@
-angular.module("managerApp").service("voipTimeCondition", function ($q, $translate, Telephony, VOIP_TIME_CONDITION, VOIP_TIMECONDITION_ORDERED_DAYS) {
+angular.module("managerApp").service("voipTimeCondition", function ($q, $translate, OvhApiTelephony, VOIP_TIME_CONDITION, VOIP_TIMECONDITION_ORDERED_DAYS) {
     "use strict";
 
     var self = this;
 
     var timeConditionResources = {
         sip: {
-            init: Telephony.TimeCondition().Lexi().getOptions,
-            save: Telephony.TimeCondition().Lexi().setOptions,
-            condition: Telephony.TimeCondition().Condition().Lexi()
+            init: OvhApiTelephony.TimeCondition().Lexi().getOptions,
+            save: OvhApiTelephony.TimeCondition().Lexi().setOptions,
+            condition: OvhApiTelephony.TimeCondition().Condition().Lexi()
         },
         easyHunting: {
-            init: Telephony.EasyHunting().TimeConditions().Lexi().get,
-            save: Telephony.EasyHunting().TimeConditions().Lexi().save,
-            condition: Telephony.EasyHunting().TimeConditions().Conditions().Lexi()
+            init: OvhApiTelephony.EasyHunting().TimeConditions().Lexi().get,
+            save: OvhApiTelephony.EasyHunting().TimeConditions().Lexi().save,
+            condition: OvhApiTelephony.EasyHunting().TimeConditions().Conditions().Lexi()
         },
         ovhPabx: {
-            condition: Telephony.OvhPabx().Dialplan().Extension().ConditionTime()
-                .Lexi()
+            condition: OvhApiTelephony.OvhPabx().Dialplan().Extension().ConditionTime().Lexi()
         }
     };
 

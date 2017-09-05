@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyLineAssistOrdersCtrl", function ($filter, $q, $translate, Telephony, UserOrder) {
+angular.module("managerApp").controller("TelecomTelephonyLineAssistOrdersCtrl", function ($filter, $q, $translate, OvhApiTelephony, OvhApiMeOrder) {
     "use strict";
 
     var self = this;
@@ -8,10 +8,10 @@ angular.module("managerApp").controller("TelecomTelephonyLineAssistOrdersCtrl", 
     ===============================*/
 
     function fetchOrders () {
-        return Telephony.Lexi().getCurrentOrderIds().$promise.then(function (orderIds) {
-            return UserOrder.Erika().query().addFilter("orderId", "in", orderIds).expand().execute().$promise.then(function (orders) {
+        return OvhApiTelephony.Lexi().getCurrentOrderIds().$promise.then(function (orderIds) {
+            return OvhApiMeOrder.Erika().query().addFilter("orderId", "in", orderIds).expand().execute().$promise.then(function (orders) {
                 return $q.all(_.map(_.pluck(orders, "value"), function (order) {
-                    return UserOrder.Lexi().getStatus({
+                    return OvhApiMeOrder.Lexi().getStatus({
                         orderId: order.orderId
                     }).$promise.then(function (status) {
                         order.statusText = $translate.instant("telephony_line_assist_orders_order_status_" + _.snakeCase(status.status));

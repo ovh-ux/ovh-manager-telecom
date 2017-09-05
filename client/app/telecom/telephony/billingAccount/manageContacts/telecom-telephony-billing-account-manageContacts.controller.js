@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyBillingAccountManageContactsCtrl", function ($stateParams, $q, $translate, Telephony, User, TelephonyMediator, PackXdslVoipLine, Toast, ToastError) {
+angular.module("managerApp").controller("TelecomTelephonyBillingAccountManageContactsCtrl", function ($stateParams, $q, $translate, OvhApiTelephony, OvhApiMe, TelephonyMediator, OvhApiPackXdslVoipLine, Toast, ToastError) {
     "use strict";
 
     var self = this;
@@ -6,7 +6,7 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountManageCon
     var contactAttributes = ["contactAdmin", "contactBilling", "contactTech"];
 
     function getGroupContacts () {
-        return Telephony.Lexi().getServiceInfos({
+        return OvhApiTelephony.Lexi().getServiceInfos({
             billingAccount: $stateParams.billingAccount
         }).$promise.then(function (result) {
             return [{
@@ -19,17 +19,17 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountManageCon
     }
 
     function getPackXdslServiceIds () {
-        return PackXdslVoipLine.Erika().services().aggregate("packName").execute().$promise.then(function (ids) {
+        return OvhApiPackXdslVoipLine.Erika().services().aggregate("packName").execute().$promise.then(function (ids) {
             return _.pluck(ids, "key");
         });
     }
 
     function getLinesContacts () {
-        return Telephony.Line().Lexi().query({
+        return OvhApiTelephony.Line().Lexi().query({
             billingAccount: $stateParams.billingAccount
         }).$promise.then(function (ids) {
             return $q.all(_.map(ids, function (id) {
-                return Telephony.Lines().Lexi().getServiceInfos({
+                return OvhApiTelephony.Lines().Lexi().getServiceInfos({
                     serviceName: id
                 }).$promise.then(function (infos) {
                     return {
@@ -41,7 +41,7 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountManageCon
                 }).catch(function (err) {
                     // if serviceInfos does not exist, service might be a sip trunk
                     if (err.status === 404) {
-                        return Telephony.Trunks().Lexi().getServiceInfos({
+                        return OvhApiTelephony.Trunks().Lexi().getServiceInfos({
                             serviceName: id
                         }).$promise.then(function (infos) {
                             return {
@@ -60,11 +60,11 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountManageCon
     }
 
     function getAliasContacts () {
-        return Telephony.Number().Lexi().query({
+        return OvhApiTelephony.Number().Lexi().query({
             billingAccount: $stateParams.billingAccount
         }).$promise.then(function (ids) {
             return $q.all(_.map(ids, function (id) {
-                return Telephony.Aliases().Lexi().getServiceInfos({
+                return OvhApiTelephony.Aliases().Lexi().getServiceInfos({
                     serviceName: id
                 }).$promise.then(function (infos) {
                     return {
@@ -79,9 +79,9 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountManageCon
     }
 
     function getPendingTasks () {
-        return User.Task().ContactChange().Lexi().query().$promise.then(function (ids) {
+        return OvhApiMe.Task().ContactChange().Lexi().query().$promise.then(function (ids) {
             return $q.all(_.map(_.chunk(ids, 50), function (chunkIds) {
-                return User.Task().ContactChange().Lexi().getBatch({
+                return OvhApiMe.Task().ContactChange().Lexi().getBatch({
                     id: chunkIds
                 }).$promise;
             })).then(function (chunkResult) {
@@ -181,22 +181,22 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountManageCon
         contact.submiting = true;
         switch (contact.serviceType) {
         case "group":
-            promise = Telephony.Lexi().changeContact({
+            promise = OvhApiTelephony.Lexi().changeContact({
                 billingAccount: $stateParams.billingAccount
             }, _.pick(contact.modified, contactAttributes)).$promise;
             break;
         case "line":
-            promise = Telephony.Lines().Lexi().changeContact({
+            promise = OvhApiTelephony.Lines().Lexi().changeContact({
                 serviceName: contact.serviceName
             }, _.pick(contact.modified, contactAttributes)).$promise;
             break;
         case "trunk":
-            promise = Telephony.Trunks().Lexi().changeContact({
+            promise = OvhApiTelephony.Trunks().Lexi().changeContact({
                 serviceName: contact.serviceName
             }, _.pick(contact.modified, contactAttributes)).$promise;
             break;
         case "alias":
-            promise = Telephony.Aliases().Lexi().changeContact({
+            promise = OvhApiTelephony.Aliases().Lexi().changeContact({
                 serviceName: contact.serviceName
             }, _.pick(contact.modified, contactAttributes)).$promise;
             break;

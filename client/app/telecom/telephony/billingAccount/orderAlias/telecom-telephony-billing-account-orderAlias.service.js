@@ -1,4 +1,4 @@
-angular.module("managerApp").service("TelecomTelephonyBillingAccountOrderAliasService", function ($q, Telephony, User, TELEPHONY_NUMBER_OFFER) {
+angular.module("managerApp").service("TelecomTelephonyBillingAccountOrderAliasService", function ($q, OvhApiTelephony, OvhApiMe, TELEPHONY_NUMBER_OFFER) {
     "use strict";
 
     /**
@@ -27,7 +27,7 @@ angular.module("managerApp").service("TelecomTelephonyBillingAccountOrderAliasSe
      * @returns {Promise}
      */
     this.getUser = function () {
-        return User.Lexi().get().$promise.then(
+        return OvhApiMe.Lexi().get().$promise.then(
             function (user) {
                 user.country = user.country.toLowerCase();
                 user.legalform = !user.companyNationalIdentificationNumber ? "individual" : "corporation";
@@ -50,7 +50,7 @@ angular.module("managerApp").service("TelecomTelephonyBillingAccountOrderAliasSe
     this.getOfferDetails = function (billingAccount, country, idsParam, filter) {
         TELEPHONY_NUMBER_OFFER.detail.international.clarification = "(" + generateInternationalClarification(country) + ")";
         var ids = _.isArray(idsParam) ? idsParam : [idsParam];
-        return Telephony.Number().Aapi().prices(
+        return OvhApiTelephony.Number().Aapi().prices(
             {
                 billingAccount: billingAccount,
                 country: country
@@ -120,7 +120,7 @@ angular.module("managerApp").service("TelecomTelephonyBillingAccountOrderAliasSe
      * @returns {*}
      */
     this.getPredefinedNumbers = function (country, type, zone, range) {
-        return Telephony.Number().Lexi().getSpecificNumbers(
+        return OvhApiTelephony.Number().Lexi().getSpecificNumbers(
             {
                 country: country,
                 type: type,
@@ -179,7 +179,7 @@ angular.module("managerApp").service("TelecomTelephonyBillingAccountOrderAliasSe
     this.getForeignCountries = function () {
         return this.getUser()
             .then(function (user) {
-                return Telephony.Lexi().schema().$promise.then(
+                return OvhApiTelephony.Lexi().schema().$promise.then(
                     function (schema) {
                         return _.pull(schema.models["telephony.NumberCountryEnum"].enum, user.country);
                     }

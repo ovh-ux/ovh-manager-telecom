@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationMembersEasyHuntingCtrl", function ($stateParams, $q, $translate, $timeout, Telephony, Toast, ToastError) {
+angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationMembersEasyHuntingCtrl", function ($stateParams, $q, $translate, $timeout, OvhApiTelephony, Toast, ToastError) {
     "use strict";
 
     var self = this;
@@ -39,7 +39,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationMembe
     }
 
     self.fetchQueueId = function () {
-        return Telephony.EasyHunting().Hunting().Queue().Lexi().query({
+        return OvhApiTelephony.EasyHunting().Hunting().Queue().Lexi().query({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }).$promise.then(function (result) {
@@ -54,13 +54,13 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationMembe
      **/
 
     self.fetchMembers = function () {
-        Telephony.EasyHunting().Hunting().Agent().Lexi().resetAllCache();
-        return Telephony.EasyHunting().Hunting().Agent().Lexi().query({
+        OvhApiTelephony.EasyHunting().Hunting().Agent().Lexi().resetAllCache();
+        return OvhApiTelephony.EasyHunting().Hunting().Agent().Lexi().query({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }).$promise.then(function (ids) {
             return $q.all(_.map(_.chunk(ids, 50), function (chunkIds) {
-                return Telephony.EasyHunting().Hunting().Agent().Lexi().getBatch({
+                return OvhApiTelephony.EasyHunting().Hunting().Agent().Lexi().getBatch({
                     billingAccount: $stateParams.billingAccount,
                     serviceName: $stateParams.serviceName,
                     agentId: chunkIds
@@ -73,9 +73,9 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationMembe
 
     self.reorderMembers = function (members) {
         var ids = _.pluck(members, "agentId");
-        Telephony.EasyHunting().Hunting().Queue().Agent().Lexi().resetAllCache();
+        OvhApiTelephony.EasyHunting().Hunting().Queue().Agent().Lexi().resetAllCache();
         return $q.all(_.map(_.chunk(ids, 50), function (chunkIds) {
-            return Telephony.EasyHunting().Hunting().Queue().Agent().Lexi().getBatch({
+            return OvhApiTelephony.EasyHunting().Hunting().Queue().Agent().Lexi().getBatch({
                 billingAccount: $stateParams.billingAccount,
                 serviceName: $stateParams.serviceName,
                 queueId: self.queueId,
@@ -95,7 +95,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationMembe
     };
 
     self.fetchMemberDescription = function (member) {
-        return Telephony.Service().Lexi().get({
+        return OvhApiTelephony.Service().Lexi().get({
             billingAccount: $stateParams.billingAccount,
             serviceName: member.number
         }).$promise.then(function (service) {
@@ -104,7 +104,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationMembe
     };
 
     self.swapMembers = function (fromMember, toMember) {
-        return Telephony.EasyHunting().Hunting().Queue().Agent().Lexi().change({
+        return OvhApiTelephony.EasyHunting().Hunting().Queue().Agent().Lexi().change({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName,
             queueId: self.queueId,
@@ -116,7 +116,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationMembe
 
     self.updateMember = function (member) {
         var attrs = ["status", "timeout", "wrapUpTime", "simultaneousLines"];
-        return Telephony.EasyHunting().Hunting().Agent().Lexi().change({
+        return OvhApiTelephony.EasyHunting().Hunting().Agent().Lexi().change({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName,
             agentId: member.agentId
@@ -124,7 +124,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationMembe
     };
 
     self.deleteMember = function (toDelete) {
-        return Telephony.EasyHunting().Hunting().Agent().Lexi().remove({
+        return OvhApiTelephony.EasyHunting().Hunting().Agent().Lexi().remove({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName,
             agentId: toDelete.agentId
@@ -145,12 +145,12 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationMembe
         // create agents sequentialy to preserve order
         _.each(members.reverse(), function (member) {
             promise = promise.then(function () {
-                return Telephony.EasyHunting().Hunting().Agent().Lexi().create({
+                return OvhApiTelephony.EasyHunting().Hunting().Agent().Lexi().create({
                     billingAccount: $stateParams.billingAccount,
                     serviceName: $stateParams.serviceName
                 }, member).$promise.then(function (agent) {
                     // put agent in the queue
-                    return Telephony.EasyHunting().Hunting().Agent().Queue().Lexi().create({
+                    return OvhApiTelephony.EasyHunting().Hunting().Agent().Queue().Lexi().create({
                         billingAccount: $stateParams.billingAccount,
                         serviceName: $stateParams.serviceName,
                         agentId: agent.agentId

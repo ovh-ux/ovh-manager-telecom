@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingSummaryCtrl", function ($q, $filter, $window, $timeout, $stateParams, $translate, TelephonyMediator, Telephony, Toast) {
+angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingSummaryCtrl", function ($q, $filter, $window, $timeout, $stateParams, $translate, TelephonyMediator, OvhApiTelephony, Toast) {
     "use strict";
 
     var self = this;
@@ -23,7 +23,7 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingSu
     ===============================*/
 
     function fetchConsumption () {
-        return Telephony.Service().VoiceConsumption().Aapi().get({
+        return OvhApiTelephony.Service().VoiceConsumption().Aapi().get({
             billingAccount: $stateParams.billingAccount
         }).$promise.then(function (consumption) {
 

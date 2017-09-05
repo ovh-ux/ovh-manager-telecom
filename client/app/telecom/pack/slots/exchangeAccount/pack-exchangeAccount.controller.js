@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("PackExchangeAccountCtrl", function ($scope, $http, $stateParams, PackXdslExchangeAccount, REDIRECT_URLS) {
+angular.module("managerApp").controller("PackExchangeAccountCtrl", function ($scope, $http, $stateParams, OvhApiPackXdslExchangeAccount, REDIRECT_URLS) {
     "use strict";
 
     var self = this;
@@ -11,7 +11,7 @@ angular.module("managerApp").controller("PackExchangeAccountCtrl", function ($sc
             services: true
         };
 
-        return PackXdslExchangeAccount.Services().Lexi().query({
+        return OvhApiPackXdslExchangeAccount.Services().Lexi().query({
             packName: $stateParams.packName
         }).$promise.then(function (serviceIds) {
             return $http.get("/email/exchange/*/service/*/account?$aggreg=1", {

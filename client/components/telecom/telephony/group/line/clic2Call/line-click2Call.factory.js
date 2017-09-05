@@ -1,5 +1,5 @@
 angular.module("managerApp").factory("TelephonyGroupLineClick2Call",
-                                     function (Telephony, TelephonyGroupLineClick2CallUser, $q) {
+                                     function ($q, OvhApiTelephony, TelephonyGroupLineClick2CallUser) {
                                          "use strict";
 
                                          var mandatoriesPhoneOptions = [
@@ -41,7 +41,7 @@ angular.module("managerApp").factory("TelephonyGroupLineClick2Call",
                                              var self = this;
                                              self.users = [];
 
-                                             return Telephony.Line().Click2Call().User().Lexi().query({
+                                             return OvhApiTelephony.Line().Click2Call().User().Lexi().query({
                                                  billingAccount: self.billingAccount,
                                                  serviceName: self.serviceName
                                              }, null).$promise.then(function (users) {
@@ -74,7 +74,7 @@ angular.module("managerApp").factory("TelephonyGroupLineClick2Call",
                                          TelephonyGroupLineClickToCall.prototype.call = function (calledNumber) {
                                              var self = this;
 
-                                             return Telephony.Line().Click2Call().Lexi().post({
+                                             return OvhApiTelephony.Line().Click2Call().Lexi().post({
                                                  billingAccount: self.billingAccount,
                                                  serviceName: self.serviceName
                                              }, {

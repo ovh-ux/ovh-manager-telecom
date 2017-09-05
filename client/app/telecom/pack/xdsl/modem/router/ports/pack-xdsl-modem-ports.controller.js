@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("XdslModemPortsCtrl", function ($stateParams, $translate, $scope, XdslModemPort, Toast, PackXdslModemPortObject, validator, PackXdslModemMediator) {
+angular.module("managerApp").controller("XdslModemPortsCtrl", function ($stateParams, $translate, $scope, OvhApiXdslModemPort, Toast, PackXdslModemPortObject, validator, PackXdslModemMediator) {
     "use strict";
 
     var self = this;
@@ -92,7 +92,7 @@ angular.module("managerApp").controller("XdslModemPortsCtrl", function ($statePa
             }
         });
 
-        XdslModemPort.Aapi().query(
+        OvhApiXdslModemPort.Aapi().query(
             { xdslId: $stateParams.serviceName }
         ).$promise.then(function (data) {
             self.ports = _.map(data, function (port) {

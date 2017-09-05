@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyAliasPortabilityOrderCtrl", function ($scope, $stateParams, $translate, $q, moment, TelephonyMediator, Order, ToastError) {
+angular.module("managerApp").controller("TelecomTelephonyAliasPortabilityOrderCtrl", function ($scope, $stateParams, $translate, $q, moment, TelephonyMediator, OvhApiOrder, ToastError) {
     "use strict";
 
     var self = this;
@@ -127,7 +127,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasPortabilityOrderCt
 
     self.fetchPriceAndContracts = function () {
         self.step = "summary";
-        return Order.Telephony().Lexi().getPortability(self.getOrderParams()).$promise.then(function (result) {
+        return OvhApiOrder.Telephony().Lexi().getPortability(self.getOrderParams()).$promise.then(function (result) {
             self.details = result.details;
             self.contracts = result.contracts;
             self.prices = result.prices;
@@ -139,7 +139,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasPortabilityOrderCt
 
     self.submitOrder = function () {
         self.order.isOrdering = true;
-        return Order.Telephony().Lexi().orderPortability({
+        return OvhApiOrder.Telephony().Lexi().orderPortability({
             billingAccount: self.order.billingAccount
         }, _.omit(self.getOrderParams(), "billingAccount")).$promise.then(function (result) {
             self.order.url = result.url;

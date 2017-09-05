@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("XdslModemWifiCtrl", function ($stateParams, $translate, $q, Xdsl, Toast, PackXdslModemMediator) {
+angular.module("managerApp").controller("XdslModemWifiCtrl", function ($stateParams, $translate, $q, OvhApiXdsl, Toast, PackXdslModemMediator) {
     "use strict";
 
     var self = this;
@@ -15,7 +15,7 @@ angular.module("managerApp").controller("XdslModemWifiCtrl", function ($statePar
             return $q.reject();
         }
         this.loader = true;
-        return Xdsl.Modem().Wifi().Lexi().update(
+        return OvhApiXdsl.Modem().Wifi().Lexi().update(
             {
                 xdslId: $stateParams.serviceName,
                 wifiName: self.wifi.wifiName
@@ -38,7 +38,7 @@ angular.module("managerApp").controller("XdslModemWifiCtrl", function ($statePar
 
     function initModemWifi () {
         self.loader = true;
-        return Xdsl.Modem().Wifi().Aapi().getWifiDetails({
+        return OvhApiXdsl.Modem().Wifi().Aapi().getWifiDetails({
             xdslId: $stateParams.serviceName
         }).$promise.then(
             function (data) {

@@ -1,6 +1,6 @@
 angular.module("managerApp")
-    .controller("TelecomTelephonyLinePhoneProgammableKeysEditCtrl", function ($uibModalInstance, $stateParams, $q, $translate, $timeout, TelephonyGroupLinePhoneFunction, functionKey, TelephonyMediator, User,
-                                                                              TelephonyFax, TelephonyMiniPabx, TelephonyOvhPabx, TelephonyEasyPabx) {
+    .controller("TelecomTelephonyLinePhoneProgammableKeysEditCtrl", function ($uibModalInstance, $stateParams, $q, $translate, $timeout, TelephonyGroupLinePhoneFunction, functionKey, TelephonyMediator, OvhApiMe,
+                                                                              OvhApiTelephonyFax, TelephonyMiniPabx, TelephonyOvhPabx, TelephonyEasyPabx) {
         "use strict";
 
         var self = this;
@@ -164,7 +164,7 @@ angular.module("managerApp")
 
         function getFaxParameters () {
             return $q.all([
-                TelephonyFax.Aapi().getServices().$promise.then(function (faxList) {
+                OvhApiTelephonyFax.Aapi().getServices().$promise.then(function (faxList) {
                     angular.forEach(faxList, function (fax) {
                         self.availableParameters.push({
                             label: fax.label,

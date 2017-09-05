@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("XdslModemMtuCtrl", function ($stateParams, $q, Xdsl, $translate, Toast, PackXdslModemMediator, PACK_XDSL_MODEM) {
+angular.module("managerApp").controller("XdslModemMtuCtrl", function ($stateParams, $q, OvhApiXdsl, $translate, Toast, PackXdslModemMediator, PACK_XDSL_MODEM) {
     "use strict";
 
     var self = this;
@@ -17,7 +17,7 @@ angular.module("managerApp").controller("XdslModemMtuCtrl", function ($statePara
         }
         PackXdslModemMediator.setTask("changeMTU");
         this.loading = true;
-        return Xdsl.Modem().Lexi().update(
+        return OvhApiXdsl.Modem().Lexi().update(
             {
                 xdslId: $stateParams.serviceName
             },

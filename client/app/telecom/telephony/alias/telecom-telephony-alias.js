@@ -19,8 +19,8 @@ angular.module("managerApp").config(function ($stateProvider) {
         },
         translations: ["common", "telecom/telephony/alias"],
         resolve: {
-            $title: function (translations, $translate, $stateParams, Telephony) {
-                return Telephony.Number().Lexi().get({
+            $title: function (translations, $translate, $stateParams, OvhApiTelephony) {
+                return OvhApiTelephony.Number().Lexi().get({
                     billingAccount: $stateParams.billingAccount,
                     serviceName: $stateParams.serviceName
                 }).$promise.then(function (data) {

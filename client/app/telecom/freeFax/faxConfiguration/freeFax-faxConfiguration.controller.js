@@ -1,5 +1,5 @@
 angular.module("managerApp")
-    .controller("FreeFaxConfigurationCtrl", function ($stateParams, $scope, $translate, FreeFax, ToastError) {
+    .controller("FreeFaxConfigurationCtrl", function ($stateParams, $scope, $translate, OvhApiFreeFax, ToastError) {
         "use strict";
         var self = this;
 
@@ -53,7 +53,7 @@ angular.module("managerApp")
 
         this.generatePassword = function () {
             this.generatingPassword = true;
-            FreeFax.Lexi().resetPassword({
+            OvhApiFreeFax.Lexi().resetPassword({
                 serviceName: $stateParams.serviceName
             }, null).$promise.then(function (password) {
                 self.generatedPassword = password.value;
@@ -79,10 +79,9 @@ angular.module("managerApp")
             };
             self.loading = true;
 
-            FreeFax.Lexi().saveConfiguration({
+            OvhApiFreeFax.Lexi().saveConfiguration({
                 serviceName: $stateParams.serviceName
-            },
-                                             formData).$promise.then(
+            }, formData).$promise.then(
                 function () {
                     self.editMode = false;
                 }, function (err) {

@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTaskCtrl", function ($scope, $translate, PackXdslTask, ToastError, TASK_STATUS, PAGINATION_PER_PAGE) {
+angular.module("managerApp").controller("TelecomTaskCtrl", function ($scope, $translate, OvhApiPackXdslTask, ToastError, TASK_STATUS, PAGINATION_PER_PAGE) {
     "use strict";
 
     var self = this;
@@ -30,7 +30,7 @@ angular.module("managerApp").controller("TelecomTaskCtrl", function ($scope, $tr
         }
         tab.loading = true;
         tab.result.data = [];
-        PackXdslTask.Aapi().detailsAll(
+        OvhApiPackXdslTask.Aapi().detailsAll(
             tab.filter,
             function (data) {
                 tab.result.data = data;

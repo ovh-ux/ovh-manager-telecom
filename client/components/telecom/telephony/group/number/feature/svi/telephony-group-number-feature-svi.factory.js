@@ -2,7 +2,7 @@
  *  This factory manages the svi feature of a number (vxml for API)
  *  This manages the svi featureType of /telephony/{billingAccount}/number API.
  */
-angular.module("managerApp").factory("TelephonyGroupNumberSvi", function ($q, Telephony) {
+angular.module("managerApp").factory("TelephonyGroupNumberSvi", function ($q, OvhApiTelephony) {
     "use strict";
 
     /*= ==================================
@@ -119,7 +119,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberSvi", function ($q, Te
     TelephonyGroupNumberSvi.prototype.save = function () {
         var self = this;
 
-        return Telephony.Vxml().Lexi().save({
+        return OvhApiTelephony.Vxml().Lexi().save({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName
         }, {
@@ -133,7 +133,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberSvi", function ($q, Te
     TelephonyGroupNumberSvi.prototype.getSettings = function () {
         var self = this;
 
-        return Telephony.Vxml().Lexi().settings({
+        return OvhApiTelephony.Vxml().Lexi().settings({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName
         }).$promise.then(function (settings) {
@@ -158,7 +158,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberSvi", function ($q, Te
     TelephonyGroupNumberSvi.prototype.init = function () {
         var self = this;
 
-        return Telephony.Vxml().Lexi().get({
+        return OvhApiTelephony.Vxml().Lexi().get({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName
         }).$promise.then(function () {

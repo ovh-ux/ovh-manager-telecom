@@ -1,4 +1,4 @@
-angular.module("managerApp").factory("PackXdslModemLanObject", function (Xdsl, $translate, Toast, $q) {
+angular.module("managerApp").factory("PackXdslModemLanObject", function (OvhApiXdsl, $translate, Toast, $q) {
     "use strict";
 
     var template = {
@@ -31,7 +31,7 @@ angular.module("managerApp").factory("PackXdslModemLanObject", function (Xdsl, $
     PackXdslModemLanObject.prototype.save = function (serviceName) {
         var self = this;
         this.busy = true;
-        return Xdsl.Modem().Lan().Lexi().update(
+        return OvhApiXdsl.Modem().Lan().Lexi().update(
             {
                 xdslId: serviceName,
                 lanName: this.lanName

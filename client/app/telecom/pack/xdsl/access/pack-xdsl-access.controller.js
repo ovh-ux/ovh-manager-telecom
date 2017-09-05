@@ -1,5 +1,6 @@
-angular.module("managerApp").controller("XdslAccessCtrl", function ($scope, $stateParams, $uibModal, $q, $filter, $translate, $templateCache, Xdsl, XdslTasksCurrent, XdslLines, XdslNotifications, XdslModem, XdslIps,
-                                                                    PackXdsl, ToastError, PACK_IP, REDIRECT_URLS) {
+angular.module("managerApp").controller("XdslAccessCtrl", function ($scope, $stateParams, $uibModal, $q, $filter, $translate, $templateCache,
+                                                                    OvhApiXdsl, OvhApiXdslTasksCurrent, OvhApiXdslLines, OvhApiXdslNotifications, OvhApiXdslModem, OvhApiXdslIps, OvhApiPackXdsl,
+                                                                    ToastError, PACK_IP, REDIRECT_URLS) {
     "use strict";
 
     var self = this;
@@ -80,7 +81,7 @@ angular.module("managerApp").controller("XdslAccessCtrl", function ($scope, $sta
     }
 
     function pollTasks () {
-        XdslTasksCurrent.Aapi().poll($scope, {
+        OvhApiXdslTasksCurrent.Aapi().poll($scope, {
             xdslId: $stateParams.serviceName
         }).then(
             success,
@@ -94,7 +95,7 @@ angular.module("managerApp").controller("XdslAccessCtrl", function ($scope, $sta
     };
 
     this.getIps = function () {
-        return XdslIps.Aapi().ips({
+        return OvhApiXdslIps.Aapi().ips({
             xdslId: $stateParams.serviceName
         }).$promise.then(function (ips) {
             self.ips = ips;
@@ -135,7 +136,7 @@ angular.module("managerApp").controller("XdslAccessCtrl", function ($scope, $sta
 
     this.deleteIps = function (ip) {
         ip.deleting = true;
-        XdslIps.Lexi().unOrder({
+        OvhApiXdslIps.Lexi().unOrder({
             xdslId: $stateParams.serviceName,
             ip: ip.ip
         }, null).$promise.then(function () {
@@ -166,7 +167,7 @@ angular.module("managerApp").controller("XdslAccessCtrl", function ($scope, $sta
         $q.allSettled(
             [
                 // Get access Details
-                Xdsl.Lexi().get({
+                OvhApiXdsl.Lexi().get({
                     xdslId: $stateParams.serviceName
                 }).$promise.then(function (access) {
                     $scope.loaders.xdsl = false;
@@ -179,7 +180,7 @@ angular.module("managerApp").controller("XdslAccessCtrl", function ($scope, $sta
                 }),
 
                 // Get line details
-                XdslLines.Lexi().get({
+                OvhApiXdslLines.Lexi().get({
                     xdslId: $stateParams.serviceName,
                     number: $stateParams.number
                 }).$promise.then(function (lineDetails) {
@@ -192,7 +193,7 @@ angular.module("managerApp").controller("XdslAccessCtrl", function ($scope, $sta
                 }),
 
                 // Get MAC Address
-                XdslModem.Lexi().get(
+                OvhApiXdslModem.Lexi().get(
                     {
                         xdslId: $stateParams.serviceName
                     }
@@ -210,14 +211,14 @@ angular.module("managerApp").controller("XdslAccessCtrl", function ($scope, $sta
                 self.getIps(),
 
                 // Get notification number
-                XdslNotifications.Lexi().query({
+                OvhApiXdslNotifications.Lexi().query({
                     xdslId: $stateParams.serviceName
                 }).$promise.then(function (ids) {
                     $scope.access.notificationsCount = ids.length;
                 }, ToastError),
 
                 // Get Order
-                Xdsl.Lexi().getOrder({
+                OvhApiXdsl.Lexi().getOrder({
                     xdslId: $stateParams.serviceName
                 }).$promise.then(function (orders) {
                     self.actualOrder = _.find(orders, function (order) {
@@ -235,7 +236,7 @@ angular.module("managerApp").controller("XdslAccessCtrl", function ($scope, $sta
                     }
                 }, ToastError),
 
-                PackXdsl.Task().Lexi().query({
+                OvhApiPackXdsl.Task().Lexi().query({
                     packName: self.packName,
                     "function": "pendingAddressMove"
                 }).$promise.then(function (result) {

@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("XdslAccessProfileCtrl", function ($stateParams, $scope, $translate, XdslLinesDslamPort, Toast, ToastError) {
+angular.module("managerApp").controller("XdslAccessProfileCtrl", function ($stateParams, $scope, $translate, OvhApiXdslLinesDslamPort, Toast, ToastError) {
     "use strict";
 
     var self = this;
@@ -10,7 +10,7 @@ angular.module("managerApp").controller("XdslAccessProfileCtrl", function ($stat
             Toast.error($translate.instant("xdsl_access_dslam_an_error_ocurred"));
         }
 
-        XdslLinesDslamPort.Lexi().changeProfile(
+        OvhApiXdslLinesDslamPort.Lexi().changeProfile(
             {
                 xdslId: $stateParams.serviceName,
                 number: $stateParams.number
@@ -30,7 +30,7 @@ angular.module("managerApp").controller("XdslAccessProfileCtrl", function ($stat
     };
 
     function init () {
-        XdslLinesDslamPort.Aapi().getProfiles(
+        OvhApiXdslLinesDslamPort.Aapi().getProfiles(
             {
                 xdslId: $stateParams.serviceName,
                 number: $stateParams.number
