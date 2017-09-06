@@ -180,7 +180,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasPortabilityOrderCt
                 self.order.autoPay = false;
             });
         }).catch(function (err) {
-            Toast.erroror([$translate.instant("telephony_alias_portability_order_error"), _.get(err, "data.message")].join(" "));
+            Toast.error([$translate.instant("telephony_alias_portability_order_error"), _.get(err, "data.message")].join(" "));
             return $q.reject(err);
         }).finally(function () {
             self.order.isOrdering = false;
