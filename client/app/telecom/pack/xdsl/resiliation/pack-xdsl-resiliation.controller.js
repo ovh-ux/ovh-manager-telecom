@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("PackXdslResiliationCtrl", function ($scope, $stateParams, $translate, $q, $timeout, $filter, Xdsl, ToastError, XdslResiliation, Toast) {
+angular.module("managerApp").controller("PackXdslResiliationCtrl", function ($scope, $stateParams, $translate, $q, $timeout, $filter, OvhApiXdsl, ToastError, OvhApiXdslResiliation, Toast) {
     "use strict";
     var self = this;
 
@@ -15,7 +15,7 @@ angular.module("managerApp").controller("PackXdslResiliationCtrl", function ($sc
         self.when = null;
         self.followup = null;
 
-        return Xdsl.Lexi().get({ xdslId: $stateParams.serviceName }).$promise.then(function (data) {
+        return OvhApiXdsl.Lexi().get({ xdslId: $stateParams.serviceName }).$promise.then(function (data) {
             self.serviceDescription = $translate.instant("xdsl_resiliation_cancel_really", {
                 description: data.description || data.serviceName
             });
@@ -23,7 +23,7 @@ angular.module("managerApp").controller("PackXdslResiliationCtrl", function ($sc
         }, function (err) {
             return new ToastError(err);
         }).then(function () {
-            return XdslResiliation.Aapi().terms({
+            return OvhApiXdslResiliation.Aapi().terms({
                 serviceName: $stateParams.serviceName
             }).$promise.then(function (data) {
                 self.resiliationTerms = data;
@@ -33,7 +33,7 @@ angular.module("managerApp").controller("PackXdslResiliationCtrl", function ($sc
                 self.when = new Date(self.resiliationTerms.data.resiliationDate);
 
 
-                return XdslResiliation.Lexi().followUp({
+                return OvhApiXdslResiliation.Lexi().followUp({
                     serviceName: $stateParams.serviceName
                 }).$promise.then(function (followUp) {
                     followUp.dateTodo = $filter("date")(followUp.dateTodo, "dd/MM/yyyy");
@@ -61,7 +61,7 @@ angular.module("managerApp").controller("PackXdslResiliationCtrl", function ($sc
     this.resiliateService = function (service, survey, accept) {
         if (accept) {
             self.loading = true;
-            return XdslResiliation.Lexi().resiliate({
+            return OvhApiXdslResiliation.Lexi().resiliate({
                 serviceName: service.id
             }, {
                 resiliationSurvey: survey,
@@ -119,7 +119,7 @@ angular.module("managerApp").controller("PackXdslResiliationCtrl", function ($sc
      */
     this.computePrice = function () {
         self.computingPrice = true;
-        return XdslResiliation.Lexi().resiliationTerms({
+        return OvhApiXdslResiliation.Lexi().resiliationTerms({
             serviceName: $stateParams.serviceName,
             resiliationDate: self.when ? self.when.toISOString() : null
         }).$promise.then(function (data) {
@@ -139,7 +139,7 @@ angular.module("managerApp").controller("PackXdslResiliationCtrl", function ($sc
      */
     this.cancelServiceResiliation = function (service) {
         self.loading = true;
-        return XdslResiliation.Lexi().cancelResiliation({
+        return OvhApiXdslResiliation.Lexi().cancelResiliation({
             serviceName: service.serviceName
         }, null).$promise.then(function () {
             self.init();

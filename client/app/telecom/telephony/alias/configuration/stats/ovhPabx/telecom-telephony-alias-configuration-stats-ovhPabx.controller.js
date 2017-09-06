@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationStatsOvhPabxCtrl", function ($scope, $stateParams, $q, $timeout, Telephony, ToastError) {
+angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationStatsOvhPabxCtrl", function ($scope, $stateParams, $q, $timeout, OvhApiTelephony, ToastError) {
     "use strict";
 
     var self = this;
@@ -6,7 +6,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationStats
     var stopPolling = false;
 
     function init () {
-        self.apiEndpoint = Telephony.OvhPabx();
+        self.apiEndpoint = OvhApiTelephony.OvhPabx();
         self.queues = null;
         self.stats = {
             callsAnswered: 0,
@@ -33,12 +33,12 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationStats
     }
 
     self.fetchQueues = function () {
-        return Telephony.OvhPabx().Hunting().Queue().Lexi().query({
+        return OvhApiTelephony.OvhPabx().Hunting().Queue().Lexi().query({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }).$promise.then(function (ids) {
             return $q.all(_.map(ids, function (id) {
-                return Telephony.OvhPabx().Hunting().Queue().Lexi().get({
+                return OvhApiTelephony.OvhPabx().Hunting().Queue().Lexi().get({
                     billingAccount: $stateParams.billingAccount,
                     serviceName: $stateParams.serviceName,
                     queueId: id
@@ -60,12 +60,12 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationStats
             totalCallDuration: 0,
             totalWaitingDuration: 0
         };
-        return Telephony.OvhPabx().Hunting().Queue().Lexi().query({
+        return OvhApiTelephony.OvhPabx().Hunting().Queue().Lexi().query({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }).$promise.then(function (ids) {
             return $q.all(_.map(ids, function (id) {
-                return Telephony.OvhPabx().Hunting().Queue().Lexi().getLiveStatistics({
+                return OvhApiTelephony.OvhPabx().Hunting().Queue().Lexi().getLiveStatistics({
                     billingAccount: $stateParams.billingAccount,
                     serviceName: $stateParams.serviceName,
                     queueId: id

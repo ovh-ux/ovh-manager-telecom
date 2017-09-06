@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("PackVoipLineActivationCtrl", function ($scope, $stateParams, PackXdsl, PackXdslVoipLine, costs, $q, $translate, ToastError) {
+angular.module("managerApp").controller("PackVoipLineActivationCtrl", function ($scope, $stateParams, OvhApiPackXdsl, OvhApiPackXdslVoipLine, costs, $q, $translate, ToastError) {
     "use strict";
 
     var self = this;
@@ -39,17 +39,17 @@ angular.module("managerApp").controller("PackVoipLineActivationCtrl", function (
     this.loadData = function (id) {
         self.loading = true;
         return $q.all([
-            PackXdsl.Lexi().getServices(
+            OvhApiPackXdsl.Lexi().getServices(
                 {
                     packId: id
                 }
             ).$promise,
-            PackXdslVoipLine.Lexi().getHardwares(
+            OvhApiPackXdslVoipLine.Lexi().getHardwares(
                 {
                     packId: id
                 }
             ).$promise,
-            PackXdslVoipLine.Lexi().getShippingAddresses(
+            OvhApiPackXdslVoipLine.Lexi().getShippingAddresses(
                 {
                     packId: id
                 }
@@ -256,7 +256,7 @@ angular.module("managerApp").controller("PackVoipLineActivationCtrl", function (
                 data.push({ hardwareName: "modem" });
             }
         });
-        PackXdslVoipLine.Aapi().activate({
+        OvhApiPackXdslVoipLine.Aapi().activate({
             packId: $stateParams.packName
         }, { lines: data }).$promise.then(function (order) {
             self.orderDone = true;

@@ -1,4 +1,4 @@
-angular.module("managerApp").service("OverTheBoxSidebar", function ($q, $translate, SidebarMenu, OverTheBox) {
+angular.module("managerApp").service("OverTheBoxSidebar", function ($q, $translate, SidebarMenu, OvhApiOverTheBox) {
     "use strict";
 
     var self = this;
@@ -12,9 +12,9 @@ angular.module("managerApp").service("OverTheBoxSidebar", function ($q, $transla
     self.loadOtbMainSection = function () {
         var requests = [];
 
-        return OverTheBox.Lexi().query().$promise.then(function (serviceNames) {
+        return OvhApiOverTheBox.Lexi().query().$promise.then(function (serviceNames) {
             requests = _.map(serviceNames, function (serviceName) {
-                return OverTheBox.Lexi().get({
+                return OvhApiOverTheBox.Lexi().get({
                     serviceName: serviceName
                 }).$promise;
             });

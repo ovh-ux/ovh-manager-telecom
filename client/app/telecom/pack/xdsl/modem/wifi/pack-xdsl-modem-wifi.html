@@ -2,30 +2,32 @@
     <form name="wifiForm" class="ovh-form-flat">
         <div class="form-group service-item col-xs-12 col-md-6 col-lg-5 left-space-p0 right-space-p0">
 
-            <button
-                type="button"
-                class="service-button service-button-checkbox no-style"
-                data-ng-disabled="!WifiCtrl.mediator.capabilities.canChangeWLAN || (WifiCtrl.mediator.tasks.changeModemConfigWLAN === true)"
-                data-ui-sref="telecom.pack.xdsl.modem.wifi({ wifiName: WifiCtrl.wifi.wifiName })">
+            <button type="button"
+                    class="service-button service-button-checkbox no-style"
+                    data-ng-disabled="!WifiCtrl.wifis.length || (WifiCtrl.wifis.length === 1 && (!WifiCtrl.mediator.capabilities.canChangeWLAN || WifiCtrl.mediator.tasks.changeModemConfigWLAN === true))"
+                    data-ui-sref="telecom.pack.xdsl.modem.wifi">
 
                 <div class="link-name">
-                    <span class="service-button-right-text" data-translate="xdsl_modem_wifi_configure"></span>
+                    <span class="service-button-right-text"
+                          data-translate="{{ WifiCtrl.wifis.length === 1 ? 'xdsl_modem_wifi_configure' : 'xdsl_modem_wifi_configure_many' }}">
+                    </span>
                     <i class="ovh-font ovh-font-arrow-right"></i>
                 </div>
             </button>
 
-            <div class="service-button-description-outside">
-                <flat-checkbox data-ng-hide="WifiCtrl.mediator.tasks.changeModemConfigWLAN">
+            <div class="service-button-description-outside"
+                 data-ng-if="WifiCtrl.wifis.length === 1">
+                <flat-checkbox data-ng-if="!WifiCtrl.mediator.tasks.changeModemConfigWLAN">
                     <input
                         type="checkbox"
                         id="wifiEnabled"
                         name="wifiEnabled"
                         class="form-control"
-                        data-ng-model="WifiCtrl.wifi.enabled"
+                        data-ng-model="WifiCtrl.defaultWifi.enabled"
                         data-ng-disabled="!WifiCtrl.mediator.capabilities.canChangeWLAN"
                         data-ng-really-click="WifiCtrl.update()"
                         data-ng-really-undo="WifiCtrl.undo()"
-                        data-ng-really-message="{{ WifiCtrl.wifi.enabled ? 'xdsl_modem_wifi_really_on' : 'xdsl_modem_wifi_really_off' | translate }}"
+                        data-ng-really-message="{{ WifiCtrl.defaultWifi.enabled ? 'xdsl_modem_wifi_really_on' : 'xdsl_modem_wifi_really_off' | translate }}"
                         data-ng-really-confirm="{{ 'ok' | translate }}"
                         data-ng-really-cancel="{{ 'cancel' | translate }}"
                         data-ng-really-window-class="revert-really-buttons"
@@ -33,10 +35,23 @@
                 </flat-checkbox>
                 <span data-ng-show="WifiCtrl.mediator.tasks.changeModemConfigWLAN">
                     <spinner></spinner>
-                    <label data-ng-show="WifiCtrl.wifi.enabled" for="wifiEnabled">{{ 'xdsl_modem_wifi_success_validation_on' | translate }}</label>
-                    <label data-ng-hide="WifiCtrl.wifi.enabled" for="wifiEnabled">{{ 'xdsl_modem_wifi_success_validation_off' | translate }}</label>
+                    <span data-ng-show="WifiCtrl.defaultWifi.enabled"
+                           data-translate="xdsl_modem_wifi_success_validation_on">
+                    </span>
+                    <span data-ng-hide="WifiCtrl.defaultWifi.enabled"
+                           data-translate="xdsl_modem_wifi_success_validation_off">
+                    </span>
                 </span>
-                <label data-ng-hide="WifiCtrl.mediator.tasks.changeModemConfigWLAN" class="pointer" for="wifiEnabled">{{ 'xdsl_modem_wifi_status' | translate }}</label>
+                <label data-ng-if="!WifiCtrl.mediator.tasks.changeModemConfigWLAN && WifiCtrl.wifis.length === 1"
+                       class="pointer"
+                       for="wifiEnabled"
+                       data-translate="{{ WifiCtrl.defaultWifi.enabled ? 'xdsl_modem_wifi_status_disable' : 'xdsl_modem_wifi_status_enable' }}">
+                </label>
+                <label data-ng-if="!WifiCtrl.mediator.tasks.changeModemConfigWLAN && WifiCtrl.wifis.length > 1"
+                       class="pointer"
+                       for="wifiEnabled"
+                       data-translate="{{ WifiCtrl.defaultWifi.enabled ? 'xdsl_modem_default_wifi_status_disable' : 'xdsl_modem_detault_wifi_status_enable' }}">
+                </label>
             </div>
 
         </div>

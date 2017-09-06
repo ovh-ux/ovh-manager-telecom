@@ -1,19 +1,17 @@
 angular.module("managerApp").controller("TelecomSmsPhonebooksPhonebookContactImportCtrl", class TelecomSmsPhonebooksPhonebookContactImportCtrl {
-    constructor ($q, $stateParams, $timeout, $translate, $uibModalInstance, phonebook, Sms, User, ToastError) {
+    constructor ($q, $stateParams, $timeout, $translate, $uibModalInstance, phonebook, OvhApiSms, OvhApiMe, ToastError) {
         this.$q = $q;
         this.$stateParams = $stateParams;
         this.$timeout = $timeout;
         this.$translate = $translate;
         this.$uibModalInstance = $uibModalInstance;
         this.phonebook = phonebook;
-        this.Sms = Sms;
-        this.User = User;
         this.api = {
             sms: {
-                phonebooks: Sms.Phonebooks().Lexi()
+                phonebooks: OvhApiSms.Phonebooks().Lexi()
             },
             user: {
-                document: User.Document().Lexi()
+                document: OvhApiMe.Document().Lexi()
             }
         };
         this.ToastError = ToastError;

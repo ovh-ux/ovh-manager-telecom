@@ -1,19 +1,19 @@
-angular.module("managerApp").controller("TelecomTelephonyLineRestrictionsCtrl", function ($stateParams, $timeout, $q, $document, Telephony, ToastError, IpAddress, User) {
+angular.module("managerApp").controller("TelecomTelephonyLineRestrictionsCtrl", function ($stateParams, $timeout, $q, $document, OvhApiTelephony, ToastError, IpAddress, OvhApiMe) {
     "use strict";
 
     var self = this;
 
     function fetchLineOptions () {
-        return Telephony.Line().Lexi().getOptions({
+        return OvhApiTelephony.Line().Lexi().getOptions({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }).$promise;
     }
 
     function fetchAccountRestrictions () {
-        return User.Telephony().DefaultIpRestriction().Lexi().query().$promise.then(function (ids) {
+        return OvhApiMe.Telephony().DefaultIpRestriction().Lexi().query().$promise.then(function (ids) {
             return $q.all(ids.map(function (id) {
-                return User.Telephony().DefaultIpRestriction().Lexi().get({
+                return OvhApiMe.Telephony().DefaultIpRestriction().Lexi().get({
                     id: id
                 }).$promise;
             }));
@@ -85,7 +85,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineRestrictionsCtrl", 
         var options = angular.copy(self.lineOptions);
         options.ipRestrictions = self.lineOptionsForm.ipRestrictions;
         self.isChangingLineOptions = true;
-        return Telephony.Line().Lexi().setOptions({
+        return OvhApiTelephony.Line().Lexi().setOptions({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }, options).$promise.then(function () {
@@ -124,13 +124,13 @@ angular.module("managerApp").controller("TelecomTelephonyLineRestrictionsCtrl", 
             return ip.id && !_.find(self.accountRestrictionsForm, { id: ip.id });
         });
         var deletePromise = _.pluck(changes.concat(toDelete), "id").map(function (id) {
-            return User.Telephony().DefaultIpRestriction().Lexi().remove({
+            return OvhApiMe.Telephony().DefaultIpRestriction().Lexi().remove({
                 id: id
             }).$promise;
         });
         var addPromise = _.pluck(changes.concat(toAdd), "subnet").map(function (ip) {
             var subnet = ("" || ip).indexOf("/") >= 0 ? ip : ip + "/32";
-            return User.Telephony().DefaultIpRestriction().Lexi().create({
+            return OvhApiMe.Telephony().DefaultIpRestriction().Lexi().create({
                 subnet: subnet,
                 type: "sip"
             }).$promise;

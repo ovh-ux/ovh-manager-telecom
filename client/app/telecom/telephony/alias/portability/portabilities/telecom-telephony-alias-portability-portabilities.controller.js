@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyAliasPortabilitiesCtrl", function ($stateParams, $q, Telephony, ToastError) {
+angular.module("managerApp").controller("TelecomTelephonyAliasPortabilitiesCtrl", function ($stateParams, $q, OvhApiTelephony, ToastError) {
     "use strict";
 
     var self = this;
@@ -6,15 +6,15 @@ angular.module("managerApp").controller("TelecomTelephonyAliasPortabilitiesCtrl"
     self.serviceName = $stateParams.serviceName;
 
     function fetchPortability () {
-        return Telephony.Portability().Lexi().query({
+        return OvhApiTelephony.Portability().Lexi().query({
             billingAccount: $stateParams.billingAccount
         }).$promise.then(function (ids) {
             return $q.all(_.map(ids, function (id) {
-                return Telephony.Portability().Lexi().get({
+                return OvhApiTelephony.Portability().Lexi().get({
                     billingAccount: $stateParams.billingAccount,
                     id: id
                 }).$promise.then(function (porta) {
-                    return Telephony.Portability().Lexi().getStatus({
+                    return OvhApiTelephony.Portability().Lexi().getStatus({
                         billingAccount: $stateParams.billingAccount,
                         id: id
                     }).$promise.then(function (steps) {

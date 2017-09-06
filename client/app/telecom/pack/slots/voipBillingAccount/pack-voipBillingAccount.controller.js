@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("PackVoipBillingAccountCtrl", function ($scope, PackXdslVoipBillingAccount, $stateParams) {
+angular.module("managerApp").controller("PackVoipBillingAccountCtrl", function ($scope, OvhApiPackXdslVoipBillingAccount, $stateParams) {
     "use strict";
     var self = this;
 
@@ -12,7 +12,7 @@ angular.module("managerApp").controller("PackVoipBillingAccountCtrl", function (
         };
 
         // Get service link to this access from current Pack Xdsl
-        return PackXdslVoipBillingAccount.Lexi().query({
+        return OvhApiPackXdslVoipBillingAccount.Lexi().query({
             packId: $stateParams.packName
         }).$promise.then(
             function (services) {

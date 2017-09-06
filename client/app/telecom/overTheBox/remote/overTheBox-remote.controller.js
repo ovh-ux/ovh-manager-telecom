@@ -1,5 +1,4 @@
-/* global validator */
-angular.module("managerApp").controller("OverTheBoxRemoteCtrl", function ($stateParams, $translate, $scope, $q, URLS, OVER_THE_BOX, OVERTHEBOX_REMOTE_STATUS, OverTheBox, ToastError, Toast, IpAddress) {
+angular.module("managerApp").controller("OverTheBoxRemoteCtrl", function ($stateParams, $translate, $scope, $q, URLS, OVER_THE_BOX, OVERTHEBOX_REMOTE_STATUS, OvhApiOverTheBox, ToastError, Toast, IpAddress) {
     "use strict";
 
     var self = this;
@@ -30,7 +29,7 @@ angular.module("managerApp").controller("OverTheBoxRemoteCtrl", function ($state
         self.loading = true;
         return $q.all([
             /* Load all remotes */
-            OverTheBox.Aapi().remoteAccesses({
+            OvhApiOverTheBox.Aapi().remoteAccesses({
                 serviceName: $stateParams.serviceName
             }, null).$promise.then(
                 function (remotes) {
@@ -47,7 +46,7 @@ angular.module("managerApp").controller("OverTheBoxRemoteCtrl", function ($state
             ),
 
             /* Create tho poller */
-            OverTheBox.Aapi().poll($scope, {
+            OvhApiOverTheBox.Aapi().poll($scope, {
                 serviceName: $stateParams.serviceName
             }).then(
                 function (remotes) {
@@ -96,7 +95,7 @@ angular.module("managerApp").controller("OverTheBoxRemoteCtrl", function ($state
         if (this.newRemote.expirationDate) {
             formData.expirationDate = moment(this.newRemote.expirationDate).toISOString();
         }
-        return OverTheBox.Aapi().createAndAuthorize({
+        return OvhApiOverTheBox.Aapi().createAndAuthorize({
             serviceName: $stateParams.serviceName
         }, formData).$promise.then(
             function () {
@@ -154,7 +153,7 @@ angular.module("managerApp").controller("OverTheBoxRemoteCtrl", function ($state
      */
     this.authorize = function (remote) {
         remote.busy = true;
-        return OverTheBox.Lexi().authorizeRemote(
+        return OvhApiOverTheBox.Lexi().authorizeRemote(
             {
                 serviceName: $stateParams.serviceName,
                 remoteAccessId: remote.remoteAccessId
@@ -175,7 +174,7 @@ angular.module("managerApp").controller("OverTheBoxRemoteCtrl", function ($state
      */
     this.reloadRemote = function (remote) {
         remote.busy = true;
-        return OverTheBox.Lexi().loadRemote({
+        return OvhApiOverTheBox.Lexi().loadRemote({
             serviceName: $stateParams.serviceName,
             remoteAccessId: remote.remoteAccessId
         }, null).$promise.then(function (reloadedRemote) {
@@ -198,7 +197,7 @@ angular.module("managerApp").controller("OverTheBoxRemoteCtrl", function ($state
      */
     this.remove = function (remote) {
         remote.busy = true;
-        return OverTheBox.Lexi().deleteRemote({
+        return OvhApiOverTheBox.Lexi().deleteRemote({
             serviceName: $stateParams.serviceName,
             remoteAccessId: remote.remoteAccessId
         }, null).$promise.then(function () {

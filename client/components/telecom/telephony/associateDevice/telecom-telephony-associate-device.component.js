@@ -4,7 +4,7 @@ angular.module("managerApp").component("telecomTelephonyAssociateDevice", {
         serviceName: "<"
     },
     templateUrl: "components/telecom/telephony/associateDevice/telecom-telephony-associate-device.html",
-    controller: function ($scope, $q, $translatePartialLoader, $translate, Telephony, ToastError) {
+    controller: function ($scope, $q, $translatePartialLoader, $translate, OvhApiTelephony, ToastError) {
         "use strict";
 
         var self = this;
@@ -29,19 +29,19 @@ angular.module("managerApp").component("telecomTelephonyAssociateDevice", {
         };
 
         self.fetchAssociablesPhones = function () {
-            return Telephony.Line().Lexi().listAssociablePhones({
+            return OvhApiTelephony.Line().Lexi().listAssociablePhones({
                 billingAccount: self.billingAccount,
                 serviceName: self.serviceName
             }).$promise.then(function (phones) {
                 return $q.all(_.map(phones, function (phone) {
                     var line = _.first(phone.associatedLines).serviceName;
-                    return Telephony.Line().Phone().Lexi().get({
+                    return OvhApiTelephony.Line().Phone().Lexi().get({
                         billingAccount: self.billingAccount,
                         serviceName: line
                     }).$promise.then(function (details) {
                         return _.assign(phone, details);
                     }).then(function (thePhone) {
-                        return Telephony.Line().Lexi().ips({
+                        return OvhApiTelephony.Line().Lexi().ips({
                             billingAccount: self.billingAccount,
                             serviceName: line
                         }).$promise.then(function (ips) {
@@ -61,7 +61,7 @@ angular.module("managerApp").component("telecomTelephonyAssociateDevice", {
 
         self.attachDevice = function () {
             self.isAttaching = true;
-            return Telephony.Line().Lexi().listAssociablePhones({
+            return OvhApiTelephony.Line().Lexi().listAssociablePhones({
                 billingAccount: self.billingAccount,
                 serviceName: self.serviceName
             }, {
@@ -77,4 +77,3 @@ angular.module("managerApp").component("telecomTelephonyAssociateDevice", {
         };
     }
 });
-

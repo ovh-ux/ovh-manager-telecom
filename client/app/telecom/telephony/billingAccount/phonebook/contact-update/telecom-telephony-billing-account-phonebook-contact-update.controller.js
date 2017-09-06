@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyBillingAccountPhonebookContactUpdateCtrl", function ($q, $stateParams, $timeout, $uibModalInstance, TelephonyMediator, Telephony, Phonebookcontact, data) {
+angular.module("managerApp").controller("TelecomTelephonyBillingAccountPhonebookContactUpdateCtrl", function ($q, $stateParams, $timeout, $uibModalInstance, TelephonyMediator, OvhApiTelephony, Phonebookcontact, data) {
     "use strict";
 
     var self = this;
@@ -40,7 +40,7 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountPhonebook
     self.update = function () {
         self.phonecontactForm.isAdding = true;
         return $q.all([
-            Telephony.Phonebook().PhonebookContact().Lexi().update({
+            OvhApiTelephony.Phonebook().PhonebookContact().Lexi().update({
                 billingAccount: $stateParams.billingAccount,
                 bookKey: self.phonebook.bookKey,
                 id: self.contact.id

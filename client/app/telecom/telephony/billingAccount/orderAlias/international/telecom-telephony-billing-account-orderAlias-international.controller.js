@@ -1,5 +1,5 @@
 angular.module("managerApp")
-    .controller("TelecomTelephonyAliasOrderInternationalCtrl", function ($q, $translate, $stateParams, Telephony, TelephonyNumber, Order, TelecomTelephonyBillingAccountOrderAliasService, Toast, ToastError, TELEPHONY_NUMBER_OFFER) {
+    .controller("TelecomTelephonyAliasOrderInternationalCtrl", function ($q, $translate, $stateParams, OvhApiTelephony, OvhApiTelephonyNumber, OvhApiOrder, TelecomTelephonyBillingAccountOrderAliasService, Toast, ToastError, TELEPHONY_NUMBER_OFFER) {
         "use strict";
 
         var self = this;
@@ -11,7 +11,7 @@ angular.module("managerApp")
      */
         function getSpecificNumbers (country, zone) {
             if (country && zone) {
-                return Telephony.Number().Aapi().orderableByRange({
+                return OvhApiTelephony.Number().Aapi().orderableByRange({
                     country: country,
                     billingAccount: $stateParams.billingAccount,
                     type: "international",
@@ -84,7 +84,7 @@ angular.module("managerApp")
      * @returns {Promise}
      */
         this.getGeographicalZone = function (axiom) {
-            return TelephonyNumber.Lexi().getZones(
+            return OvhApiTelephonyNumber.Lexi().getZones(
                 {
                     country: self.form.country,
                     axiom: axiom
@@ -135,7 +135,7 @@ angular.module("managerApp")
             if (!form.pool) {
                 form.specificNumber = this.form[this.form.numberType];
             }
-            Order.Telephony().Lexi().orderNumberGeographical(
+            OvhApiOrder.Telephony().Lexi().orderNumberGeographical(
                 {
                     billingAccount: self.billingAccount
                 },

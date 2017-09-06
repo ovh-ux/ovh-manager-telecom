@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("XdslAccessPortResetCtrl", function ($stateParams, $scope, $translate, XdslLinesDslamPort, Toast, ToastError) {
+angular.module("managerApp").controller("XdslAccessPortResetCtrl", function ($stateParams, $scope, $translate, OvhApiXdslLinesDslamPort, Toast, ToastError) {
     "use strict";
 
     this.resetDslam = function () {
@@ -6,7 +6,7 @@ angular.module("managerApp").controller("XdslAccessPortResetCtrl", function ($st
             Toast.error($translate.instant("xdsl_access_dslam_reset_an_error_ocurred"));
         }
 
-        XdslLinesDslamPort.Lexi().reset(
+        OvhApiXdslLinesDslamPort.Lexi().reset(
             {
                 xdslId: $stateParams.serviceName,
                 number: $stateParams.number

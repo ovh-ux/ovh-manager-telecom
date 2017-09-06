@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingCreditThresholdCtrl", function ($q, $state, $stateParams, $translate, $timeout, OrderTelephony, Telephony, ToastError) {
+angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingCreditThresholdCtrl", function ($q, $state, $stateParams, $translate, $timeout, OvhApiOrderTelephony, OvhApiTelephony, ToastError) {
     "use strict";
     var self = this;
 
@@ -53,7 +53,7 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingCr
     self.submit = function () {
         self.loading.submit = true;
 
-        return Telephony.Lexi().edit({
+        return OvhApiTelephony.Lexi().edit({
             billingAccount: $stateParams.billingAccount
         }, {
             creditThreshold: self.newCredit
@@ -70,19 +70,19 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingCr
     };
 
     self.getBillingAccount = function () {
-        return Telephony.Lexi().get({
+        return OvhApiTelephony.Lexi().get({
             billingAccount: $stateParams.billingAccount
         }).$promise;
     };
 
     self.getAllowedCreditThreshold = function () {
-        return Telephony.Lexi().allowedCreditThreshold({
+        return OvhApiTelephony.Lexi().allowedCreditThreshold({
             billingAccount: $stateParams.billingAccount
         }).$promise;
     };
 
     self.getContracts = function () {
-        return OrderTelephony.Lexi().getNewBillingAccount().$promise;
+        return OvhApiOrderTelephony.Lexi().getNewBillingAccount().$promise;
     };
 
     init();

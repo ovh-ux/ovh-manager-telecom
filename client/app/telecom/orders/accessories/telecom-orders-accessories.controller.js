@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomOrdersAccessoriesCtrl", function ($q, $state, $translate, Order, Telephony, Toast) {
+angular.module("managerApp").controller("TelecomOrdersAccessoriesCtrl", function ($q, $state, $translate, OvhApiOrder, OvhApiTelephony, Toast) {
     "use strict";
 
     var self = this;
@@ -23,7 +23,7 @@ angular.module("managerApp").controller("TelecomOrdersAccessoriesCtrl", function
         self.loading.submit = true;
         self.orderError = null;
 
-        return Telephony.Line().Lexi().query({
+        return OvhApiTelephony.Line().Lexi().query({
             billingAccount: self.model.billingAccount.billingAccount
         }).$promise.then(function (lines) {
             if (lines.length) {
@@ -52,7 +52,7 @@ angular.module("managerApp").controller("TelecomOrdersAccessoriesCtrl", function
     function init () {
         self.loading.init = true;
 
-        return Order.Telephony().Aapi().billingAccounts().$promise.then(function (billingAccounts) {
+        return OvhApiOrder.Telephony().Aapi().billingAccounts().$promise.then(function (billingAccounts) {
             self.billingAccounts = billingAccounts;
             _.forEach(self.billingAccounts, function (elt) {
                 elt.label = elt.description || elt.billingAccount;

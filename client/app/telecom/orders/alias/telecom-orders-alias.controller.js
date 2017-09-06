@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomOrdersAliasCtrl", function (Order, Toast, $q, $translate, $state) {
+angular.module("managerApp").controller("TelecomOrdersAliasCtrl", function (OvhApiOrder, Toast, $q, $translate, $state) {
     "use strict";
 
     var self = this;
@@ -30,7 +30,7 @@ angular.module("managerApp").controller("TelecomOrdersAliasCtrl", function (Orde
             init: true
         };
 
-        Order.Telephony().Aapi().billingAccounts().$promise.then(
+        OvhApiOrder.Telephony().Aapi().billingAccounts().$promise.then(
             function (billingAccounts) {
                 self.orderAccounts = _.filter(billingAccounts, { status: "enabled" });
                 _.forEach(self.orderAccounts, function (elt) {

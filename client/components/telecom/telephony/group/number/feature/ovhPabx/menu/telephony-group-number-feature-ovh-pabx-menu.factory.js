@@ -1,4 +1,4 @@
-angular.module("managerApp").factory("TelephonyGroupNumberOvhPabxMenu", function ($q, Telephony, TelephonyGroupNumberOvhPabxMenuEntry) {
+angular.module("managerApp").factory("TelephonyGroupNumberOvhPabxMenu", function ($q, OvhApiTelephony, TelephonyGroupNumberOvhPabxMenuEntry) {
     "use strict";
 
     var allDtmfKeys = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "*", "0", "#"];
@@ -73,7 +73,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberOvhPabxMenu", function
 
         self.status = "IN_CREATION";
 
-        return Telephony.OvhPabx().Menu().Lexi().create({
+        return OvhApiTelephony.OvhPabx().Menu().Lexi().create({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName
         }, {
@@ -97,7 +97,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberOvhPabxMenu", function
 
         self.status = "SAVING";
 
-        return Telephony.OvhPabx().Menu().Lexi().save({
+        return OvhApiTelephony.OvhPabx().Menu().Lexi().save({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName,
             menuId: self.menuId
@@ -120,7 +120,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberOvhPabxMenu", function
 
         self.status = "DELETING";
 
-        return Telephony.OvhPabx().Menu().Lexi().remove({
+        return OvhApiTelephony.OvhPabx().Menu().Lexi().remove({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName,
             menuId: self.menuId
@@ -135,13 +135,13 @@ angular.module("managerApp").factory("TelephonyGroupNumberOvhPabxMenu", function
     TelephonyGroupNumberOvhPabxMenu.prototype.getEntries = function () {
         var self = this;
 
-        return Telephony.OvhPabx().Menu().Entry().Lexi().query({
+        return OvhApiTelephony.OvhPabx().Menu().Entry().Lexi().query({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName,
             menuId: self.menuId
         }).$promise.then(function (menuEntryIds) {
             return $q.all(_.map(_.chunk(menuEntryIds, 50), function (chunkIds) {
-                return Telephony.OvhPabx().Menu().Entry().Lexi().getBatch({
+                return OvhApiTelephony.OvhPabx().Menu().Entry().Lexi().getBatch({
                     billingAccount: self.billingAccount,
                     serviceName: self.serviceName,
                     menuId: self.menuId,

@@ -1,4 +1,4 @@
-angular.module("managerApp").service("TelecomMediator", function ($q, $translate, UserVipStatus, PackMediator, TelephonyMediator, SmsMediator, FaxMediator, OverTheBoxMediator, SiteBuildersMediator, Toast) {
+angular.module("managerApp").service("TelecomMediator", function ($q, $translate, OvhApiMeVipStatus, PackMediator, TelephonyMediator, SmsMediator, FaxMediator, OverTheBoxMediator, SiteBuildersMediator, Toast) {
     "use strict";
 
     var self = this;
@@ -25,7 +25,7 @@ angular.module("managerApp").service("TelecomMediator", function ($q, $translate
         self.deferred.vip = $q.defer();
 
         // get vip status of connected user
-        UserVipStatus.Lexi().get().$promise.then(function (vipStatus) {
+        OvhApiMeVipStatus.Lexi().get().$promise.then(function (vipStatus) {
             self.isVip = vipStatus.telecom;
             self.deferred.vip.resolve(self.isVip);
         });

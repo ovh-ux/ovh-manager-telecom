@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("PackVoipLineCtrl", function ($scope, PackXdslVoipLine, $stateParams) {
+angular.module("managerApp").controller("PackVoipLineCtrl", function ($scope, OvhApiPackXdslVoipLine, $stateParams) {
     "use strict";
 
     var self = this;
@@ -13,7 +13,7 @@ angular.module("managerApp").controller("PackVoipLineCtrl", function ($scope, Pa
         };
 
         // Get service link to this access from current Pack Xdsl
-        return PackXdslVoipLine.Aapi().query({
+        return OvhApiPackXdslVoipLine.Aapi().query({
             packId: $stateParams.packName
         }).$promise.then(
             function (services) {

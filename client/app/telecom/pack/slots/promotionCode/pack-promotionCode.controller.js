@@ -4,7 +4,7 @@
  * @description
  * Promotion Code controller
  */
-angular.module("managerApp").controller("PromotionCodeCtrl", function ($scope, $rootScope, $stateParams, $translate, $uibModal, PackXdslPromotionCode, ToastError) {
+angular.module("managerApp").controller("PromotionCodeCtrl", function ($scope, $rootScope, $stateParams, $translate, $uibModal, OvhApiPackXdslPromotionCode, ToastError) {
     "use strict";
     var self = this;
 
@@ -50,7 +50,7 @@ angular.module("managerApp").controller("PromotionCodeCtrl", function ($scope, $
      * Launch the re-engagement of the customer
      */
     this.engageCustomer = function () {
-        PackXdslPromotionCode.Lexi().generate(
+        OvhApiPackXdslPromotionCode.Lexi().generate(
             {
                 packId: $stateParams.packName
             }, null).$promise.then(function () {

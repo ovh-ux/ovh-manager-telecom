@@ -1,16 +1,16 @@
-angular.module("managerApp").controller("TelecomTelephonyServiceConsumptionOutgoingCallsCtrl", function ($stateParams, $q, $translate, $filter, $timeout, Telephony, ToastError) {
+angular.module("managerApp").controller("TelecomTelephonyServiceConsumptionOutgoingCallsCtrl", function ($stateParams, $q, $translate, $filter, $timeout, OvhApiTelephony, ToastError) {
     "use strict";
 
     var self = this;
 
     function fetchOutgoingConsumption () {
-        return Telephony.Service().VoiceConsumption().Lexi().query({
+        return OvhApiTelephony.Service().VoiceConsumption().Lexi().query({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }).$promise.then(function (ids) {
             // single batch is limited to 50 ids, so we might make multiple batch calls
             return $q.all(_.map(_.chunk(ids, 50), function (chunkIds) {
-                return Telephony.Service().VoiceConsumption().Lexi().getBatch({
+                return OvhApiTelephony.Service().VoiceConsumption().Lexi().getBatch({
                     billingAccount: $stateParams.billingAccount,
                     serviceName: $stateParams.serviceName,
                     consumptionId: chunkIds
@@ -99,8 +99,8 @@ angular.module("managerApp").controller("TelecomTelephonyServiceConsumptionOutgo
     }
 
     self.refresh = function () {
-        Telephony.Service().VoiceConsumption().Lexi().resetCache();
-        Telephony.Service().VoiceConsumption().Lexi().resetQueryCache();
+        OvhApiTelephony.Service().VoiceConsumption().Lexi().resetCache();
+        OvhApiTelephony.Service().VoiceConsumption().Lexi().resetQueryCache();
         init();
     };
 

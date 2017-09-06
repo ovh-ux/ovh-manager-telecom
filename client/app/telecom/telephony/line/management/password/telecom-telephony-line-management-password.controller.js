@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyLinePasswordCtrl", function ($scope, $state, $stateParams, Toast, $q, $translate, Telephony) {
+angular.module("managerApp").controller("TelecomTelephonyLinePasswordCtrl", function ($scope, $state, $stateParams, Toast, $q, $translate, OvhApiTelephony) {
     "use strict";
 
     var self = this;
@@ -81,7 +81,7 @@ angular.module("managerApp").controller("TelecomTelephonyLinePasswordCtrl", func
     this.save = function () {
         if (!$scope.passwordForm.$invalid) {
             self.loading.save = true;
-            return Telephony.Line().Lexi().changePassword(
+            return OvhApiTelephony.Line().Lexi().changePassword(
                 {
                     billingAccount: $stateParams.billingAccount,
                     serviceName: $stateParams.serviceName
