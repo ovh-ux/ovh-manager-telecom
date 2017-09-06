@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyAliasPortabilityOrderCtrl", function ($scope, $stateParams, $translate, $q, moment, TelephonyMediator, OvhApiOrder, ToastError) {
+angular.module("managerApp").controller("TelecomTelephonyAliasPortabilityOrderCtrl", function ($scope, $stateParams, $translate, $q, moment, TelephonyMediator, OvhApiMe, OvhApiOrder, ToastError) {
     "use strict";
 
     var self = this;
@@ -23,7 +23,9 @@ angular.module("managerApp").controller("TelecomTelephonyAliasPortabilityOrderCt
             contactNumber: "",
             translatedCountry: $translate.instant("telephony_alias_portability_order_contact_country_france"),
             displayUniversalDirectory: false,
-            numbersList: []
+            numbersList: [],
+            success: false,
+            autoPay: false
         };
 
         self.stepsList = ["number", "contact", "config", "summary"];
@@ -142,8 +144,28 @@ angular.module("managerApp").controller("TelecomTelephonyAliasPortabilityOrderCt
         return OvhApiOrder.Telephony().Lexi().orderPortability({
             billingAccount: self.order.billingAccount
         }, _.omit(self.getOrderParams(), "billingAccount")).$promise.then(function (result) {
-            self.order.url = result.url;
             self.order.success = true;
+            self.order.url = result.url;
+            return OvhApiMe.Order().Lexi().get({
+                orderId: result.orderId
+            }).$promise.then(function () {
+                // in this case it's allowed to auto pay order
+                return OvhApiMe.Order().Lexi().payWithRegisteredPaymentMean({
+                    orderId: result.orderId
+                }, {
+                    paymentMean: "ovhAccount"
+                }).$promise.then(function () {
+                    self.order.autoPay = true;
+                }, function () {
+                    // if it fails no need to reject because portablity order is a success and validation can always be done by clicking
+                    self.order.autoPay = false;
+                });
+            }, function () {
+                // in this case it means that nic bill and connected are not the same
+                // so display a message telling that order must be validated by clicking
+                // no need to reject because portablity order is a success and validation can always be done by clicking
+                self.order.autoPay = false;
+            });
         }).catch(function (err) {
             return new ToastError(err);
         }).finally(function () {

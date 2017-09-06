@@ -17,9 +17,13 @@
                     <h2 class="widget-presentation-title"
                         data-translate="telephony_alias_portability_order_order"></h2>
                 </header>
-                <div class="alert alert-success" role="alert">
+                <div class="alert alert-success"
+                     role="alert">
                     <i class="ovh-font ovh-font-filled-check" aria-hidden="true"></i>
                     <p data-translate="telephony_alias_portability_order_success"></p>
+                    <p data-translate="telephony_alias_portability_order_success_warning"
+                       data-ng-if="!PortabilityOrderCtrl.order.autoPay">
+                    </p>
                 </div>
                 <p>
                     <!-- BC LINK -->
@@ -507,7 +511,7 @@
                                    id="city"
                                    name="city"
                                    class="form-control"
-                                   data-ng-model="PortabilityOrderCtrl.order.city" 
+                                   data-ng-model="PortabilityOrderCtrl.order.city"
                                    required />
                             <div data-ng-messages="portabilityContactForm.city.$error" role="alert">
                                  <label for="city"
