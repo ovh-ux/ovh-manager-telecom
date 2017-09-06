@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyAliasPortabilityOrderCtrl", function ($scope, $stateParams, $translate, $q, moment, TelephonyMediator, OvhApiMe, OvhApiOrder, ToastError) {
+angular.module("managerApp").controller("TelecomTelephonyAliasPortabilityOrderCtrl", function ($scope, $stateParams, $translate, $q, moment, TelephonyMediator, OvhApiMe, OvhApiOrder, Toast, ToastError) {
     "use strict";
 
     var self = this;
@@ -25,7 +25,8 @@ angular.module("managerApp").controller("TelecomTelephonyAliasPortabilityOrderCt
             displayUniversalDirectory: false,
             numbersList: [],
             success: false,
-            autoPay: false
+            autoPay: false,
+            addressTooLong: false
         };
 
         self.stepsList = ["number", "contact", "config", "summary"];
@@ -106,6 +107,18 @@ angular.module("managerApp").controller("TelecomTelephonyAliasPortabilityOrderCt
         return number;
     };
 
+    self.goToConfigStep = function () {
+        self.order.addressTooLong = false;
+
+        if ((_.get(self.order, "streetName", "").length + _.get(self.order, "streetNumber", "").length + _.get(self.order, "streetNumberExtra", "").length + _.get(self.order, "streetType", "").length) >= 35) {
+            self.order.addressTooLong = true;
+            return false;
+        }
+
+        self.step = "config";
+        return true;
+    };
+
     self.getOrderParams = function () {
         var params = _.pick(self.order, sharedAttributes);
 
@@ -150,7 +163,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasPortabilityOrderCt
                 orderId: result.orderId
             }).$promise.then(function () {
                 // in this case it's allowed to auto pay order
-                return OvhApiMe.Order().Lexi().payWithRegisteredPaymentMean({
+                return OvhApiMe.Order().Lexi().payRegisteredPaymentMean({
                     orderId: result.orderId
                 }, {
                     paymentMean: "ovhAccount"
@@ -167,7 +180,8 @@ angular.module("managerApp").controller("TelecomTelephonyAliasPortabilityOrderCt
                 self.order.autoPay = false;
             });
         }).catch(function (err) {
-            return new ToastError(err);
+            Toast.erroror([$translate.instant("telephony_alias_portability_order_error"), _.get(err, "data.message")].join(" "));
+            return $q.reject(err);
         }).finally(function () {
             self.order.isOrdering = false;
         });

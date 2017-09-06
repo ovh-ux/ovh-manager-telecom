@@ -297,7 +297,7 @@
                     <form name="portabilityContactForm"
                           class="ovh-form-flat form-horizontal"
                           data-ng-if="PortabilityOrderCtrl.step === 'contact'"
-                          data-ng-submit="PortabilityOrderCtrl.step = 'config'"
+                          data-ng-submit="PortabilityOrderCtrl.goToConfigStep()"
                           novalidate>
 
                         <div class="form-group">
@@ -305,6 +305,16 @@
                                 <i class="ovh-font ovh-font-info right-space-m4 line-height-normal"></i>
                                 <p data-translate="telephony_alias_portability_order_contact_help"></p>
                             </div>
+
+                            <!-- ADDRESS TOO LONG ERROR -->
+                            <div class="alert alert-danger"
+                                 role="alert"
+                                 data-ng-if="PortabilityOrderCtrl.order.addressTooLong">
+                                <span class="ovh-font ovh-font-filled-error"
+                                      aria-hidden="true">
+                                </span>
+                                <p data-translate="telephony_alias_portability_order_address_too_long"></p>
+                            </div> <!-- End of ADDRESS TOO LONG ERROR -->
                         </div>
 
                         <!-- SOCIAL REASON -->
