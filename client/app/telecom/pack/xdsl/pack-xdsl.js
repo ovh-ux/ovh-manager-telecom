@@ -29,8 +29,8 @@ angular.module("managerApp").config(function ($stateProvider) {
             "telecom/pack/xdsl/orderFollowUp"
         ],
         resolve: {
-            $title: function (translations, $translate, $stateParams, Xdsl) {
-                return Xdsl.Lexi().get({
+            $title: function (translations, $translate, $stateParams, OvhApiXdsl) {
+                return OvhApiXdsl.Lexi().get({
                     xdslId: $stateParams.serviceName
                 }).$promise.then(function (data) {
                     return $translate.instant("xdsl_page_title", { name: data.description || $stateParams.serviceName }, null, null, "escape");

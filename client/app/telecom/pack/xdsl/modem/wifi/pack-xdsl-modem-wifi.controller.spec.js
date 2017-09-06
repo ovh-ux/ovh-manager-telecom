@@ -75,11 +75,11 @@ describe("Controller: XdslModemWifiCtrl", function () {
         });
 
         it(" get the current wifi state ", function () {
-            expect(XdslModemWifiCtrl.wifi.enabled).toBe(false);
+            expect(XdslModemWifiCtrl.defaultWifi.enabled).toBe(false);
         });
 
         it(" change the wifi state ", function () {
-            XdslModemWifiCtrl.wifi.enabled = true;
+            XdslModemWifiCtrl.defaultWifi.enabled = true;
             PackXdslModemMediator.capabilities.canChangeWLAN = true;
             $httpBackend.whenPUT("/apiv6/xdsl/" + xdslPack + "/modem/wifi/defaultWIFI").respond(200, null);
             XdslModemWifiCtrl.update();
@@ -90,7 +90,7 @@ describe("Controller: XdslModemWifiCtrl", function () {
 
         it(" cannot change the wifi state ", function () {
             PackXdslModemMediator.capabilities.canChangeWLAN = false;
-            XdslModemWifiCtrl.wifi.enabled = true;
+            XdslModemWifiCtrl.defaultWifi.enabled = true;
             XdslModemWifiCtrl.update();
 
             expect(XdslModemWifiCtrl.undoData.enabled).toBe(false);

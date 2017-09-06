@@ -1,12 +1,15 @@
-angular.module("managerApp").controller("XdslModemWifiCtrl", function ($stateParams, $translate, $q, Xdsl, Toast, PackXdslModemMediator) {
+angular.module("managerApp").controller("XdslModemWifiCtrl", function ($stateParams, $translate, $q, OvhApiXdsl, Toast, PackXdslModemMediator) {
     "use strict";
 
     var self = this;
     this.loader = true;
     this.mediator = PackXdslModemMediator;
 
+    self.wifis = null;
+    self.defaultWifi = null;
+
     this.undo = function () {
-        self.wifi.enabled = self.undoData.enabled;
+        self.defaultWifi.enabled = self.undoData.enabled;
     };
 
     this.update = function () {
@@ -15,20 +18,20 @@ angular.module("managerApp").controller("XdslModemWifiCtrl", function ($statePar
             return $q.reject();
         }
         this.loader = true;
-        return Xdsl.Modem().Wifi().Lexi().update(
+        return OvhApiXdsl.Modem().Wifi().Lexi().update(
             {
                 xdslId: $stateParams.serviceName,
-                wifiName: self.wifi.wifiName
+                wifiName: self.defaultWifi.wifiName
             },
             {
-                enabled: self.wifi.enabled
+                enabled: self.defaultWifi.enabled
             }).$promise.then(function (data) {
                 PackXdslModemMediator.setTask("changeModemConfigWLAN");
-                Toast.success($translate.instant(self.wifi.enabled ? "xdsl_modem_wifi_success_validation_on" : "xdsl_modem_wifi_success_validation_off"));
-                self.undoData.enabled = self.wifi.enabled;
+                Toast.success($translate.instant(self.defaultWifi.enabled ? "xdsl_modem_wifi_success_validation_on" : "xdsl_modem_wifi_success_validation_off"));
+                self.undoData.enabled = self.defaultWifi.enabled;
                 return data;
             }).catch(function (err) {
-                self.wifi.enabled = self.undoData.enabled;
+                self.defaultWifi.enabled = self.undoData.enabled;
                 Toast.error($translate.instant("xdsl_modem_wifi_update_error"));
                 return $q.reject(err);
             }).finally(function () {
@@ -38,15 +41,17 @@ angular.module("managerApp").controller("XdslModemWifiCtrl", function ($statePar
 
     function initModemWifi () {
         self.loader = true;
-        return Xdsl.Modem().Wifi().Aapi().getWifiDetails({
+        return OvhApiXdsl.Modem().Wifi().Aapi().getWifiDetails({
             xdslId: $stateParams.serviceName
         }).$promise.then(
             function (data) {
-                self.wifi = _.find(data, {
+                self.wifis = data;
+
+                self.defaultWifi = _.find(self.wifis, {
                     wifiName: "defaultWIFI"
                 });
                 self.undoData = {
-                    enabled: self.wifi ? self.wifi.enabled : false
+                    enabled: self.defaultWifi ? self.defaultWifi.enabled : false
                 };
                 return data;
             }

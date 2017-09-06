@@ -1,12 +1,12 @@
 angular.module("managerApp").controller("TelecomSmsUsersCallbackCtrl", class TelecomSmsUsersCallbackCtrl {
-    constructor ($q, $stateParams, $timeout, $uibModalInstance, Sms, user) {
+    constructor ($q, $stateParams, $timeout, $uibModalInstance, OvhApiSms, user) {
         this.$q = $q;
         this.$stateParams = $stateParams;
         this.$timeout = $timeout;
         this.$uibModalInstance = $uibModalInstance;
         this.api = {
             sms: {
-                users: Sms.Users().Lexi()
+                users: OvhApiSms.Users().Lexi()
             }
         };
         this.user = user;

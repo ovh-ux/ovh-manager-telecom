@@ -1,14 +1,14 @@
-angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingBillCtrl", function ($stateParams, $filter, $q, $timeout, $window, Telephony, ToastError) {
+angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingBillCtrl", function ($stateParams, $filter, $q, $timeout, $window, OvhApiTelephony, ToastError) {
     "use strict";
 
     var self = this;
 
     function fetchConsumption () {
-        return Telephony.HistoryConsumption().Lexi().query({
+        return OvhApiTelephony.HistoryConsumption().Lexi().query({
             billingAccount: $stateParams.billingAccount
         }).$promise.then(function (ids) {
             return $q.all(_.map(_.chunk(ids, 50), function (chunkIds) {
-                return Telephony.HistoryConsumption().Lexi().getBatch({
+                return OvhApiTelephony.HistoryConsumption().Lexi().getBatch({
                     billingAccount: $stateParams.billingAccount,
                     date: chunkIds
                 }).$promise;
@@ -64,7 +64,7 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingBi
 
     self.fetchFile = function (consumption, type) {
         var tryDownload = function () {
-            return Telephony.HistoryConsumption().Lexi().getFile({
+            return OvhApiTelephony.HistoryConsumption().Lexi().getFile({
                 billingAccount: $stateParams.billingAccount,
                 date: consumption.date,
                 extension: type

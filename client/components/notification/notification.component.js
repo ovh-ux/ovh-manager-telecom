@@ -8,7 +8,7 @@ angular.module("managerApp")
         },
         controllerAs: "NotificationListCtrl",
         templateUrl: "components/notification/notification-list.html",
-        controller: function ($scope, Sms, XdslNotifications, NotificationElement) {
+        controller: function ($scope, OvhApiSms, OvhApiXdslNotifications, NotificationElement) {
             "use strict";
             var self = this;
 
@@ -96,7 +96,7 @@ angular.module("managerApp")
                  */
             this.destroyElement = function (element) {
                 element.frozen = true;
-                XdslNotifications.Lexi().remove({
+                OvhApiXdslNotifications.Lexi().remove({
                     xdslId: element.xdslService,
                     id: element.id
                 }).$promise.then(
@@ -118,10 +118,9 @@ angular.module("managerApp")
             this.submitElement = function (element) {
                 element.frozen = true;
                 element.editMode = false;
-                XdslNotifications.Lexi().add({
+                OvhApiXdslNotifications.Lexi().add({
                     xdslId: element.xdslService
-                },
-                                             element.getCreationData()).$promise.then(
+                }, element.getCreationData()).$promise.then(
                     function (data) {
                         element.id = data.id;
                         element.editMode = false;
@@ -140,7 +139,7 @@ angular.module("managerApp")
                  */
             this.getNotifications = function () {
                 self.loading = true;
-                XdslNotifications.Aapi().list({
+                OvhApiXdslNotifications.Aapi().list({
                     xdslId: self.xdslService
                 }).$promise.then(
                     function (data) {
@@ -183,7 +182,7 @@ angular.module("managerApp")
                 ];
 
                 // get the SMS accounts
-                Sms.Aapi().query(
+                OvhApiSms.Aapi().query(
                     {}).$promise.then(
                     function (data) {
                         self.accounts = data;

@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyAliasAdministrationConvertToLineCtrl", function ($stateParams, $q, $translate, Telephony, ToastError, Toast) {
+angular.module("managerApp").controller("TelecomTelephonyAliasAdministrationConvertToLineCtrl", function ($stateParams, $q, $translate, OvhApiTelephony, ToastError, Toast) {
     "use strict";
 
     var self = this;
@@ -40,21 +40,21 @@ angular.module("managerApp").controller("TelecomTelephonyAliasAdministrationConv
     };
 
     self.getAvailableOffers = function () {
-        return Telephony.Number().Lexi().convertToLineAvailableOffers({
+        return OvhApiTelephony.Number().Lexi().convertToLineAvailableOffers({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }).$promise;
     };
 
     self.fetchConvertToLineTask = function () {
-        return Telephony.Service().OfferTask().Lexi().query({
+        return OvhApiTelephony.Service().OfferTask().Lexi().query({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName,
             action: "convertToSip",
             type: "offer"
         }).$promise.then(function (taskIds) {
             return $q.all(_.map(taskIds, function (id) {
-                return Telephony.Service().OfferTask().Lexi().get({
+                return OvhApiTelephony.Service().OfferTask().Lexi().get({
                     billingAccount: $stateParams.billingAccount,
                     serviceName: $stateParams.serviceName,
                     taskId: id
@@ -67,7 +67,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasAdministrationConv
 
     self.convertToLine = function () {
         self.isConverting = true;
-        return Telephony.Number().Lexi().convertToLine({
+        return OvhApiTelephony.Number().Lexi().convertToLine({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }, {
@@ -85,7 +85,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasAdministrationConv
 
     self.cancelConvertion = function () {
         self.isCancelling = true;
-        return Telephony.Number().Lexi().cancelConvertToLine({
+        return OvhApiTelephony.Number().Lexi().cancelConvertToLine({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }, {}).$promise.then(function () {

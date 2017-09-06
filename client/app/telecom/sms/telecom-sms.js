@@ -22,8 +22,8 @@ angular.module("managerApp").config(($stateProvider) => {
                 );
                 return $q.when({ init: true });
             },
-            $title: (translations, $translate, Sms, $stateParams) => {
-                Sms.Lexi().get({
+            $title: (translations, $translate, OvhApiSms, $stateParams) => {
+                OvhApiSms.Lexi().get({
                     serviceName: $stateParams.serviceName
                 }).$promise.then((data) =>
                     $translate.instant("sms_page_title", { name: data.description || $stateParams.serviceName }, null, null, "escape")

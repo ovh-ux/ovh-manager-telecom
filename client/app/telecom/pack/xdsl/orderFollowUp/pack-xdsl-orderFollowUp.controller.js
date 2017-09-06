@@ -1,18 +1,18 @@
-angular.module("managerApp").controller("XdslOrderFollowUpCtrl", function ($scope, $stateParams, Xdsl, $q, $translate, Toast, ToastError, ORDER_STATUS) {
+angular.module("managerApp").controller("XdslOrderFollowUpCtrl", function ($scope, $stateParams, OvhApiXdsl, $q, $translate, Toast, ToastError, ORDER_STATUS) {
     "use strict";
     var self = this;
 
     this.loadData = function () {
         $q.all([
             // Get access Details
-            Xdsl.Lexi().get({
+            OvhApiXdsl.Lexi().get({
                 xdslId: self.xdslId
             }, function (access) {
                 self.access = access;
             }).$promise,
 
             // Get orders
-            Xdsl.Lexi().getOrder({ xdslId: self.xdslId }, function (data) {
+            OvhApiXdsl.Lexi().getOrder({ xdslId: self.xdslId }, function (data) {
                 var allSuccessTmp = true;
                 data.forEach(function (elt) {
                     if (elt.status !== "done") {

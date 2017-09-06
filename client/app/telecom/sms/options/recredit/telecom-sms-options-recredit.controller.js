@@ -1,11 +1,11 @@
 angular.module("managerApp").controller("TelecomSmsOptionsRecreditCtrl", class TelecomSmsOptionsRecreditCtrl {
-    constructor ($q, $stateParams, $translate, $uibModal, OrderSms, SmsMediator, Toast, ToastError) {
+    constructor ($q, $stateParams, $translate, $uibModal, OvhApiOrderSms, SmsMediator, Toast, ToastError) {
         this.$q = $q;
         this.$stateParams = $stateParams;
         this.$translate = $translate;
         this.$uibModal = $uibModal;
         this.api = {
-            orderSms: OrderSms.Lexi()
+            orderSms: OvhApiOrderSms.Lexi()
         };
         this.SmsMediator = SmsMediator;
         this.Toast = Toast;

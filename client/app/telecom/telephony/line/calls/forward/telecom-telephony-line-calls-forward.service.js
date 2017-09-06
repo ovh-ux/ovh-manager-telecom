@@ -1,4 +1,4 @@
-angular.module("managerApp").service("TelecomTelephonyLineCallsForwardService", function ($q, Telephony, $translate, TelecomTelephonyLineCallsForwardPhoneNumber, TelecomTelephonyLineCallsForward, TelecomTelephonyLineCallsForwardNature) {
+angular.module("managerApp").service("TelecomTelephonyLineCallsForwardService", function ($q, OvhApiTelephony, $translate, TelecomTelephonyLineCallsForwardPhoneNumber, TelecomTelephonyLineCallsForward, TelecomTelephonyLineCallsForwardNature) {
     "use strict";
 
     /**
@@ -12,7 +12,7 @@ angular.module("managerApp").service("TelecomTelephonyLineCallsForwardService", 
         _.forEach(forwards, function (elt) {
             _.extend(dataToSave, elt.saveData);
         });
-        return Telephony.Line().Options().Lexi().update(
+        return OvhApiTelephony.Line().Options().Lexi().update(
             {
                 billingAccount: billingAccount,
                 serviceName: serviceName
@@ -26,7 +26,7 @@ angular.module("managerApp").service("TelecomTelephonyLineCallsForwardService", 
      * @return {Promise}
      */
     this.loadNatures = function () {
-        return Telephony.Lexi().schema().$promise.then(
+        return OvhApiTelephony.Lexi().schema().$promise.then(
             function (schema) {
                 if (schema.models && schema.models["telephony.LineOptionForwardNatureTypeEnum"] && schema.models["telephony.LineOptionForwardNatureTypeEnum"].enum) {
                     return _.map(
@@ -47,7 +47,7 @@ angular.module("managerApp").service("TelecomTelephonyLineCallsForwardService", 
      * @return {Promise}
      */
     this.loadAllOvhNumbers = function (excludeLine) {
-        return Telephony.Number().Aapi().all().$promise.then(function (ovhNums) {
+        return OvhApiTelephony.Number().Aapi().all().$promise.then(function (ovhNums) {
             if (excludeLine) {
                 _.remove(
                     ovhNums,
@@ -77,7 +77,7 @@ angular.module("managerApp").service("TelecomTelephonyLineCallsForwardService", 
      * @return {Promise}
      */
     this.loadForwards = function (billingAccount, serviceName, lineOptionForwardNatureTypeEnum, allOvhNumbers) {
-        return Telephony.Line().Options().Lexi().get({
+        return OvhApiTelephony.Line().Options().Lexi().get({
             billingAccount: billingAccount,
             serviceName: serviceName
         }).$promise.then(

@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyAliasAdministrationTerminateCtrl", function ($q, $stateParams, $translate, Telephony, TelephonyMediator, Toast, ToastError) {
+angular.module("managerApp").controller("TelecomTelephonyAliasAdministrationTerminateCtrl", function ($q, $stateParams, $translate, OvhApiTelephony, TelephonyMediator, Toast, ToastError) {
     "use strict";
 
     var self = this;
@@ -47,7 +47,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasAdministrationTerm
 
     self.terminate = function () {
         self.isTerminating = true;
-        Telephony.Service().Lexi().delete({
+        OvhApiTelephony.Service().Lexi().delete({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName,
             details: self.details,
@@ -66,7 +66,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasAdministrationTerm
 
     self.cancelTermination = function () {
         self.isCancelling = true;
-        Telephony.Service().Lexi().cancelTermination({
+        OvhApiTelephony.Service().Lexi().cancelTermination({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }, {}).$promise.then(function () {

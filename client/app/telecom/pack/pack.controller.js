@@ -1,7 +1,7 @@
 angular.module("managerApp")
     .controller("PackCtrl", function (
         $scope, $stateParams, $q, $translate,
-        PackXdsl, Toast, SidebarMenu, resiliationNotification,
+        OvhApiPackXdsl, Toast, SidebarMenu, resiliationNotification,
         DASHBOARD, PACK) {
         "use strict";
 
@@ -22,7 +22,7 @@ angular.module("managerApp")
 
             // get all Services
             promises.push(
-                PackXdsl.Lexi().getServices(
+                OvhApiPackXdsl.Lexi().getServices(
                     {
                         packId: packId
                     }
@@ -50,7 +50,7 @@ angular.module("managerApp")
             );
 
             // Append task frame if tasks are pending
-            promises.push(PackXdsl.Tasks().Lexi().query(
+            promises.push(OvhApiPackXdsl.Tasks().Lexi().query(
                 {
                     packName: packId
                 }).$promise.then(
@@ -63,7 +63,7 @@ angular.module("managerApp")
             ));
 
             // Check for a promotion code
-            promises.push(PackXdsl.PromotionCode().Lexi().capabilities(
+            promises.push(OvhApiPackXdsl.PromotionCode().Lexi().capabilities(
                 {
                     packId: $stateParams.packName
                 }).$promise.then(function (capabilities) {
@@ -85,7 +85,7 @@ angular.module("managerApp")
          */
         this.getPackInformation = function () {
             this.loader.page = true;
-            return PackXdsl.Aapi().get({
+            return OvhApiPackXdsl.Aapi().get({
                 packId: $stateParams.packName
             }).$promise.then(function (packInfo) {
                 self.pack = _.extend(
@@ -143,7 +143,7 @@ angular.module("managerApp")
         self.packDescriptionSave = function (newPackDescr) {
             self.loader.save = true;
 
-            return PackXdsl.Lexi().put({
+            return OvhApiPackXdsl.Lexi().put({
                 packId: $stateParams.packName
             }, {
                 description: newPackDescr

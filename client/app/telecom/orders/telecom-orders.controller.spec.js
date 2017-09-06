@@ -10,16 +10,16 @@ describe("Controller: TelecomOrdersCtrl", function () {
     var scope;
     var $controller;
     var $translate;
-    var Xdsl;
+    var OvhApiXdsl;
     var TelecomOrdersCtrl;
 
-    beforeEach(inject(function (_ssoAuthentication_, _$httpBackend_, _$rootScope_, _$controller_, _$translate_, _Xdsl_) {
+    beforeEach(inject(function (_ssoAuthentication_, _$httpBackend_, _$rootScope_, _$controller_, _$translate_, _OvhApiXdsl_) {
         scope = _$rootScope_.$new();
         ssoAuthentication = _ssoAuthentication_;
         $httpBackend = _$httpBackend_;
         $controller = _$controller_;
         $translate = _$translate_;
-        Xdsl = _Xdsl_;
+        OvhApiXdsl = _OvhApiXdsl_;
 
         ssoAuthentication.setIsLoggedIn(true);
         $httpBackend.whenGET(/.*.html/).respond(200, null);
@@ -40,7 +40,7 @@ describe("Controller: TelecomOrdersCtrl", function () {
     function initNewCtrl () {
         TelecomOrdersCtrl = $controller("TelecomOrdersCtrl", {
             $scope: scope,
-            Xdsl: Xdsl,
+            OvhApiXdsl: OvhApiXdsl,
             $translate: $translate
         });
         TelecomOrdersCtrl.init();

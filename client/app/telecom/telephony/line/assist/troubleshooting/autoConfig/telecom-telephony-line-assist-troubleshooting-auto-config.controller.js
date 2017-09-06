@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyLineAssistTroubleshootingAutoConfigCtrl", function ($q, troubleshootingProcess, validator, MyIp) {
+angular.module("managerApp").controller("TelecomTelephonyLineAssistTroubleshootingAutoConfigCtrl", function ($q, troubleshootingProcess, validator, OvhApiMyIp) {
     "use strict";
 
     var self = this;
@@ -60,7 +60,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineAssistTroubleshooti
         self.validator = validator;
 
         return $q.all({
-            myIp: MyIp.Aapi().get().$promise,
+            myIp: OvhApiMyIp.Aapi().get().$promise,
             lineIp: self.process.line.getIps()
         }).then(function (responses) {
             self.myIpInfos = _.get(responses, "myIp[0]");
