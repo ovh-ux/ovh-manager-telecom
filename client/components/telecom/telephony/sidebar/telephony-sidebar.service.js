@@ -38,7 +38,15 @@ angular.module("managerApp").service("TelephonySidebar", function ($q, $translat
             return second.isPlugNFax ? -1 : first.getDisplayedName().localeCompare(second.getDisplayedName());
 
         });
+        var prefix;
         angular.forEach(sortedLines, function (line) {
+            prefix = $translate.instant("telecom_sidebar_section_telephony_line");
+            if (line.isPlugNFax) {
+                prefix = $translate.instant("telecom_sidebar_section_telephony_plug_fax");
+            } else if (line.isTrunk()) {
+                prefix = $translate.instant("telecom_sidebar_section_telephony_trunk");
+            }
+
             SidebarMenu.addMenuItem({
                 id: line.serviceName,
                 title: line.getDisplayedName(),
@@ -47,8 +55,7 @@ angular.module("managerApp").service("TelephonySidebar", function ($q, $translat
                     billingAccount: line.billingAccount,
                     serviceName: line.serviceName
                 },
-                prefix: line.isPlugNFax ? $translate.instant("telecom_sidebar_section_telephony_plug_fax") :
-                    $translate.instant("telecom_sidebar_section_telephony_line")
+                prefix: prefix
             }, subSection);
         });
     }
