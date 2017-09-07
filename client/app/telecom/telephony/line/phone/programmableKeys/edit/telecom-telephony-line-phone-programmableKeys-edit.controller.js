@@ -1,6 +1,6 @@
 angular.module("managerApp")
     .controller("TelecomTelephonyLinePhoneProgammableKeysEditCtrl", function ($uibModalInstance, $stateParams, $q, $translate, $timeout, TelephonyGroupLinePhoneFunction, functionKey, TelephonyMediator, OvhApiMe,
-                                                                              OvhApiTelephonyFax, TelephonyMiniPabx, TelephonyOvhPabx, TelephonyEasyPabx) {
+                                                                              OvhApiTelephonyFax, OvhApiTelephonyMiniPabx, OvhApiTelephonyOvhPabx, OvhApiTelephonyEasyPabx) {
         "use strict";
 
         var self = this;
@@ -201,9 +201,9 @@ angular.module("managerApp")
             return TelephonyMediator.initDeferred.promise.then(function () {
 
                 var pabxState = {
-                    ovh: TelephonyOvhPabx,
-                    easy: TelephonyEasyPabx,
-                    mini: TelephonyMiniPabx,
+                    ovh: OvhApiTelephonyOvhPabx,
+                    easy: OvhApiTelephonyEasyPabx,
+                    mini: OvhApiTelephonyMiniPabx,
                     request: []
                 };
                 var line = TelephonyMediator.getCurrentGroup().getLine($stateParams.serviceName);
