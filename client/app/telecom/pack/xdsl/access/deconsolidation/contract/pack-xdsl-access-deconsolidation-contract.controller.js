@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("XdslDeconsolidationContractCtrl", function ($uibModalInstance, data, ToastError, URLS, XdslDeconsolidation, UserVipStatus, $q) {
+angular.module("managerApp").controller("XdslDeconsolidationContractCtrl", function ($uibModalInstance, data, ToastError, URLS, OvhApiXdslDeconsolidation, OvhApiMeVipStatus, $q) {
     "use strict";
 
     var self = this;
@@ -20,7 +20,7 @@ angular.module("managerApp").controller("XdslDeconsolidationContractCtrl", funct
     };
 
     function getTerms () {
-        return XdslDeconsolidation.Lexi().terms({
+        return OvhApiXdslDeconsolidation.Lexi().terms({
             serviceName: self.serviceName
         }).$promise.then(
             function (terms) {
@@ -33,7 +33,7 @@ angular.module("managerApp").controller("XdslDeconsolidationContractCtrl", funct
     }
 
     function getIsVIP () {
-        return UserVipStatus.Lexi().get().$promise.then(
+        return OvhApiMeVipStatus.Lexi().get().$promise.then(
             function (vipStatus) {
                 self.isVIP = vipStatus.telecom;
             },
@@ -45,7 +45,7 @@ angular.module("managerApp").controller("XdslDeconsolidationContractCtrl", funct
 
     this.confirm = function () {
         self.loading = true;
-        XdslDeconsolidation.Lexi().requestTotalDeconsolidation({
+        OvhApiXdslDeconsolidation.Lexi().requestTotalDeconsolidation({
             serviceName: self.serviceName
         }, self.rio ? { rio: self.rio } : null).$promise.then(function (result) {
             $uibModalInstance.close(result);

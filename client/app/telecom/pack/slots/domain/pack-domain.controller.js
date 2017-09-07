@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("PackDomainCtrl", function ($scope, PackXdslDomainActivation, $stateParams, $window, REDIRECT_URLS) {
+angular.module("managerApp").controller("PackDomainCtrl", function ($scope, OvhApiPackXdslDomainActivation, $stateParams, $window, REDIRECT_URLS) {
     "use strict";
 
     var self = this;
@@ -17,7 +17,7 @@ angular.module("managerApp").controller("PackDomainCtrl", function ($scope, Pack
         };
 
         // Get service link to this access from current Pack Xdsl
-        return PackXdslDomainActivation.Lexi().query({
+        return OvhApiPackXdslDomainActivation.Lexi().query({
             packId: $stateParams.packName
         }).$promise.then(
             function (services) {

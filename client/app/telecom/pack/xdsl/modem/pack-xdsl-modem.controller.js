@@ -1,11 +1,11 @@
 angular.module("managerApp")
-    .controller("XdslModemCtrl", function ($scope, $stateParams, $translate, $q, Xdsl, Toast, PackXdslModemMediator) {
+    .controller("XdslModemCtrl", function ($scope, $stateParams, $translate, $q, OvhApiXdsl, Toast, PackXdslModemMediator) {
         "use strict";
 
         var self = this;
 
         this.getAccessName = function () {
-            return Xdsl.Lexi().get({
+            return OvhApiXdsl.Lexi().get({
                 xdslId: $stateParams.serviceName
             }).$promise.then(
                 function (access) {

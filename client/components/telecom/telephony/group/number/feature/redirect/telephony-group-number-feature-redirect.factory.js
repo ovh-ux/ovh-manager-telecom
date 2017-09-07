@@ -2,7 +2,7 @@
  *  This factory manages the redirect feature of a number.
  *  This manages the redirect and ddi featureType of /telephony/{billingAccount}/number API.
  */
-angular.module("managerApp").factory("TelephonyGroupNumberRedirect", function ($q, Telephony) {
+angular.module("managerApp").factory("TelephonyGroupNumberRedirect", function ($q, OvhApiTelephony) {
     "use strict";
 
     /*= ==================================
@@ -117,7 +117,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberRedirect", function ($
             return $q.when(self);
         }
 
-        return Telephony.Redirect().Lexi().change({
+        return OvhApiTelephony.Redirect().Lexi().change({
             billingAccount: self.billingAccount,
             featureType: self.featureType,
             serviceName: self.serviceName
@@ -144,7 +144,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberRedirect", function ($
     TelephonyGroupNumberRedirect.prototype.init = function () {
         var self = this;
 
-        return Telephony.Redirect().Lexi().get({
+        return OvhApiTelephony.Redirect().Lexi().get({
             billingAccount: self.billingAccount,
             featureType: self.featureType,
             serviceName: self.serviceName

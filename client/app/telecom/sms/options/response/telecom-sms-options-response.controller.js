@@ -1,12 +1,12 @@
 angular.module("managerApp").controller("TelecomSmsOptionsResponseCtrl", class TelecomSmsOptionsResponseCtrl {
-    constructor ($q, $stateParams, $translate, $uibModal, Sms, SmsMediator, Toast, ToastError) {
+    constructor ($q, $stateParams, $translate, $uibModal, OvhApiSms, SmsMediator, Toast, ToastError) {
         this.$q = $q;
         this.$stateParams = $stateParams;
         this.$translate = $translate;
         this.$uibModal = $uibModal;
         this.api = {
-            sms: Sms.Lexi(),
-            smsSenders: Sms.Senders().Lexi()
+            sms: OvhApiSms.Lexi(),
+            smsSenders: OvhApiSms.Senders().Lexi()
         };
         this.SmsMediator = SmsMediator;
         this.Toast = Toast;

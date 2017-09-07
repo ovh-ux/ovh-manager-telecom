@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyServiceFaxSettingsCtrl", function ($q, $stateParams, $timeout, Telephony, ToastError) {
+angular.module("managerApp").controller("TelecomTelephonyServiceFaxSettingsCtrl", function ($q, $stateParams, $timeout, OvhApiTelephony, ToastError) {
     "use strict";
 
     var self = this;
@@ -8,7 +8,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxSettingsCtrl"
     ===============================*/
 
     function fetchEnums () {
-        return Telephony.Lexi().schema({
+        return OvhApiTelephony.Lexi().schema({
             billingAccount: $stateParams.billingAccount
         }).$promise.then(function (schema) {
             return {
@@ -20,15 +20,15 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxSettingsCtrl"
     }
 
     function fetchSettings () {
-        return Telephony.Fax().Lexi().getSettings({
+        return OvhApiTelephony.Fax().Lexi().getSettings({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }).$promise;
     }
 
     function refreshSettings () {
-        Telephony.Fax().Lexi().resetCache();
-        Telephony.Fax().Lexi().resetQueryCache();
+        OvhApiTelephony.Fax().Lexi().resetCache();
+        OvhApiTelephony.Fax().Lexi().resetQueryCache();
         return fetchSettings().then(function (settings) {
             self.settings = settings;
             _.assign(
@@ -81,7 +81,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxSettingsCtrl"
 
         self.generalOptionsForm.isUpdating = true;
 
-        var update = Telephony.Fax().Lexi().setSettings({
+        var update = OvhApiTelephony.Fax().Lexi().setSettings({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }, settings).$promise;
@@ -113,7 +113,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxSettingsCtrl"
 
         self.notificationOptionsForm.isUpdating = true;
 
-        var update = Telephony.Fax().Lexi().setSettings({
+        var update = OvhApiTelephony.Fax().Lexi().setSettings({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }, settings).$promise;
@@ -145,7 +145,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxSettingsCtrl"
 
         self.addressesToNotifyForm.isRemoving = true;
 
-        var update = Telephony.Fax().Lexi().setSettings({
+        var update = OvhApiTelephony.Fax().Lexi().setSettings({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }, settings).$promise;
@@ -172,7 +172,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxSettingsCtrl"
 
         self.addressesToNotifyForm.isAdding = true;
 
-        var update = Telephony.Fax().Lexi().setSettings({
+        var update = OvhApiTelephony.Fax().Lexi().setSettings({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }, settings).$promise;

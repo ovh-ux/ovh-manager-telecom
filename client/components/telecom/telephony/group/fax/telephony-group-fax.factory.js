@@ -1,4 +1,4 @@
-angular.module("managerApp").factory("TelephonyGroupFax", function (Telephony) {
+angular.module("managerApp").factory("TelephonyGroupFax", function (OvhApiTelephony) {
     "use strict";
 
     /*= ==================================
@@ -58,7 +58,7 @@ angular.module("managerApp").factory("TelephonyGroupFax", function (Telephony) {
     TelephonyGroupFax.prototype.save = function () {
         var self = this;
 
-        return Telephony.Fax().Lexi().edit({
+        return OvhApiTelephony.Fax().Lexi().edit({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName
         }, {

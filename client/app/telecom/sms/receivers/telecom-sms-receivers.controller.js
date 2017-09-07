@@ -1,5 +1,5 @@
 angular.module("managerApp").controller("TelecomSmsReceiversCtrl", class TelecomSmsReceiversCtrl {
-    constructor ($scope, $stateParams, $q, $filter, $uibModal, $translate, $timeout, Sms, CSVParser, Toast, ToastError, URLS) {
+    constructor ($scope, $stateParams, $q, $filter, $uibModal, $translate, $timeout, OvhApiSms, CSVParser, Toast, ToastError, URLS) {
         this.$filter = $filter;
         this.$q = $q;
         this.$scope = $scope;
@@ -9,8 +9,8 @@ angular.module("managerApp").controller("TelecomSmsReceiversCtrl", class Telecom
         this.$uibModal = $uibModal;
         this.api = {
             sms: {
-                receivers: Sms.Receivers().Lexi(),
-                task: Sms.Task().Lexi()
+                receivers: OvhApiSms.Receivers().Lexi(),
+                task: OvhApiSms.Task().Lexi()
             }
         };
         this.CSVParser = CSVParser;

@@ -1,6 +1,4 @@
-angular.module("managerApp").service("TelephonyMediator", function ($q, $stateParams, Telephony, TelephonyGroup,
-                                                                    TelephonyLine, TelephonyGroupLinePhone,
-                                                                    REDIRECT_URLS, REDIRECT_V4_HASH) {
+angular.module("managerApp").service("TelephonyMediator", function ($q, $stateParams, OvhApiTelephony, TelephonyGroup, REDIRECT_URLS, REDIRECT_V4_HASH) {
     "use strict";
 
     var self = this;
@@ -13,7 +11,7 @@ angular.module("managerApp").service("TelephonyMediator", function ($q, $statePa
 
     self.getApiScheme = function () {
         if (!self.apiScheme) {
-            return Telephony.Lexi().schema().$promise.then(function (scheme) {
+            return OvhApiTelephony.Lexi().schema().$promise.then(function (scheme) {
                 self.apiScheme = scheme;
                 return self.apiScheme;
             });
@@ -49,7 +47,7 @@ angular.module("managerApp").service("TelephonyMediator", function ($q, $statePa
         ==================================*/
 
     self.getApiModels = function () {
-        return Telephony.Lexi().schema().$promise.then(function (schemas) {
+        return OvhApiTelephony.Lexi().schema().$promise.then(function (schemas) {
             return schemas.models;
         });
     };
@@ -92,8 +90,8 @@ angular.module("managerApp").service("TelephonyMediator", function ($q, $statePa
 
         // get billing accounts and services
         $q.all({
-            groups: Telephony.Aapi().billingAccounts().$promise,
-            services: Telephony.Number().Aapi().all().$promise
+            groups: OvhApiTelephony.Aapi().billingAccounts().$promise,
+            services: OvhApiTelephony.Number().Aapi().all().$promise
         }).then(function (responses) {
             // populate account groups
             var groupServices;
@@ -147,12 +145,12 @@ angular.module("managerApp").service("TelephonyMediator", function ($q, $statePa
     function getLinesBatch (billingAccountKeys) {
         return $q.all(_.map(billingAccountKeys, function (key) {
             // query all line ids
-            return Telephony.Line().Lexi().query({
+            return OvhApiTelephony.Line().Lexi().query({
                 billingAccount: key
             }).$promise.then(function (lineIds) {
                 // batch query lines (max batch size is 50)
                 return $q.all(_.map(_.chunk(lineIds, 50), function (chunkIds) {
-                    return Telephony.Line().Lexi().getBatch({
+                    return OvhApiTelephony.Line().Lexi().getBatch({
                         billingAccount: key,
                         serviceName: chunkIds
                     }).$promise;
@@ -179,12 +177,12 @@ angular.module("managerApp").service("TelephonyMediator", function ($q, $statePa
     function getNumbersBatch (billingAccountKeys) {
         return $q.all(_.map(billingAccountKeys, function (key) {
             // query all line ids
-            return Telephony.Number().Lexi().query({
+            return OvhApiTelephony.Number().Lexi().query({
                 billingAccount: key
             }).$promise.then(function (numberIds) {
                 // batch query lines (max batch size is 50)
                 return $q.all(_.map(_.chunk(numberIds, 50), function (chunkIds) {
-                    return Telephony.Number().Lexi().getBatch({
+                    return OvhApiTelephony.Number().Lexi().getBatch({
                         billingAccount: key,
                         serviceName: chunkIds
                     }).$promise;
@@ -211,12 +209,12 @@ angular.module("managerApp").service("TelephonyMediator", function ($q, $statePa
     function getFaxBatch (billingAccountKeys) {
         return $q.all(_.map(billingAccountKeys, function (key) {
             // query all line ids
-            return Telephony.Fax().Lexi().query({
+            return OvhApiTelephony.Fax().Lexi().query({
                 billingAccount: key
             }).$promise.then(function (faxIds) {
                 // batch query lines (max batch size is 50)
                 return $q.all(_.map(_.chunk(faxIds, 50), function (chunkIds) {
-                    return Telephony.Fax().Lexi().getBatch({
+                    return OvhApiTelephony.Fax().Lexi().getBatch({
                         billingAccount: key,
                         serviceName: chunkIds
                     }).$promise;
@@ -247,13 +245,13 @@ angular.module("managerApp").service("TelephonyMediator", function ($q, $statePa
 
             /** @TODO changes when API V7 available for /telephony */
             promise = $q.all({
-                // lines: Telephony.Line().Erika().query().batch("billingAccount", billingAccountKeys, ",").expand().sort(["description", "serviceName"]).execute().$promise,
+                // lines: OvhApiTelephony.Line().Erika().query().batch("billingAccount", billingAccountKeys, ",").expand().sort(["description", "serviceName"]).execute().$promise,
                 lines: getLinesBatch(billingAccountKeys),
 
-                // numbers: Telephony.Number().Erika().query().batch("billingAccount", billingAccountKeys, ",").expand().sort(["description", "serviceName"]).execute().$promise,
+                // numbers: OvhApiTelephony.Number().Erika().query().batch("billingAccount", billingAccountKeys, ",").expand().sort(["description", "serviceName"]).execute().$promise,
                 numbers: getNumbersBatch(billingAccountKeys),
 
-                // fax: Telephony.Fax().Erika().query().batch("billingAccount", billingAccountKeys, ",").expand().sort(["description", "serviceName"]).execute().$promise
+                // fax: OvhApiTelephony.Fax().Erika().query().batch("billingAccount", billingAccountKeys, ",").expand().sort(["description", "serviceName"]).execute().$promise
                 fax: getFaxBatch(billingAccountKeys)
             }).then(function (response) {
                 if (billingAccounts.length > 1) {
@@ -315,7 +313,7 @@ angular.module("managerApp").service("TelephonyMediator", function ($q, $statePa
     /** @TODO uncommend when API V7 available for /telephony */
     /*
         self.fetchGroup = function (billingAccount) {
-            return Telephony.Erika().get().execute({
+            return OvhApiTelephony.Erika().get().execute({
                 billingAccount: billingAccount
             }).$promise.then(function (groupOptions) {
                 return populateGroupOptions([{
@@ -330,7 +328,7 @@ angular.module("managerApp").service("TelephonyMediator", function ($q, $statePa
 
     /** @TODO delete when API V7 available for /telephony */
     self.fetchGroup = function (billingAccount) {
-        return Telephony.Lexi().get({
+        return OvhApiTelephony.Lexi().get({
             billingAccount: billingAccount
         }).$promise.then(function (groupOptions) {
             return populateGroupOptions([{
@@ -349,7 +347,7 @@ angular.module("managerApp").service("TelephonyMediator", function ($q, $statePa
     /** @TODO uncommend when API V7 available for /telephony */
     /*
         self.fetchGroups = function (offset, limit, searchQuery) {
-            var request = Telephony.Erika().query().expand().sort(["description"]).offset(offset).limit(limit);
+            var request = OvhApiTelephony.Erika().query().expand().sort(["description"]).offset(offset).limit(limit);
             if (searchQuery) {
                 request = request.addFilter("description", "like", "%" + searchQuery + "%");
             }
@@ -367,10 +365,10 @@ angular.module("managerApp").service("TelephonyMediator", function ($q, $statePa
 
     /** @TODO delete when API V7 available for /telephony */
     self.fetchGroups = function (offset, limit) {
-        return Telephony.Lexi().query().$promise.then(function (billingAccountsParam) {
+        return OvhApiTelephony.Lexi().query().$promise.then(function (billingAccountsParam) {
             var billingAccounts = billingAccountsParam.slice(offset, offset + limit);
             var promises = _.map(billingAccounts, function (billingAccount) {
-                return Telephony.Lexi().get({
+                return OvhApiTelephony.Lexi().get({
                     billingAccount: billingAccount
                 }).$promise;
             });
@@ -409,13 +407,13 @@ angular.module("managerApp").service("TelephonyMediator", function ($q, $statePa
     self.resetAllCache = function () {
         // clear group cache ... double cache with lexi + mediator is soooo baaaaad :(
         self.groups = {};
-        Telephony.Lexi().resetCache();
-        Telephony.Lexi().resetQueryCache();
-        Telephony.Line().Lexi().resetAllCache();
+        OvhApiTelephony.Lexi().resetCache();
+        OvhApiTelephony.Lexi().resetQueryCache();
+        OvhApiTelephony.Line().Lexi().resetAllCache();
 
-        // Telephony.Number().resetCache(); // number has currently no cache
-        Telephony.Fax().Lexi().resetCache();
-        Telephony.Fax().Lexi().resetQueryCache();
+        // OvhApiTelephony.Number().resetCache(); // number has currently no cache
+        OvhApiTelephony.Fax().Lexi().resetCache();
+        OvhApiTelephony.Fax().Lexi().resetQueryCache();
     };
 
     /* ----------  CURRENT GROUP  ----------*/
@@ -441,7 +439,7 @@ angular.module("managerApp").service("TelephonyMediator", function ($q, $statePa
     /** @TODO uncommend when API V7 available for /telephony */
     /*
         self.getCount = function () {
-            return Telephony.Erika().query().execute().$promise.then(function (telephonyGroupsIds) {
+            return OvhApiTelephony.Erika().query().execute().$promise.then(function (telephonyGroupsIds) {
                 return telephonyGroupsIds.length;
             });
         };
@@ -449,7 +447,7 @@ angular.module("managerApp").service("TelephonyMediator", function ($q, $statePa
 
     /** @TODO delete when API V7 available for /telephony */
     self.getCount = function () {
-        return Telephony.Lexi().query().$promise.then(function (telephonyGroupsIds) {
+        return OvhApiTelephony.Lexi().query().$promise.then(function (telephonyGroupsIds) {
             return telephonyGroupsIds.length;
         });
     };

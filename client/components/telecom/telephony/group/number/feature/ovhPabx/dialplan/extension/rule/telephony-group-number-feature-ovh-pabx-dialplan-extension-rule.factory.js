@@ -1,4 +1,4 @@
-angular.module("managerApp").factory("TelephonyGroupNumberOvhPabxDialplanExtensionRule", function ($q, Telephony) {
+angular.module("managerApp").factory("TelephonyGroupNumberOvhPabxDialplanExtensionRule", function ($q, OvhApiTelephony) {
     "use strict";
 
     /*= ==================================
@@ -109,7 +109,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberOvhPabxDialplanExtensi
 
         self.status = "SAVING";
 
-        return Telephony.OvhPabx().Dialplan().Extension().Rule().Lexi().save({
+        return OvhApiTelephony.OvhPabx().Dialplan().Extension().Rule().Lexi().save({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName,
             dialplanId: self.dialplanId,
@@ -131,7 +131,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberOvhPabxDialplanExtensi
 
         self.status = "CREATING";
 
-        return Telephony.OvhPabx().Dialplan().Extension().Rule().Lexi().create({
+        return OvhApiTelephony.OvhPabx().Dialplan().Extension().Rule().Lexi().create({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName,
             dialplanId: self.dialplanId,
@@ -155,7 +155,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberOvhPabxDialplanExtensi
 
         self.status = "DELETING";
 
-        return Telephony.OvhPabx().Dialplan().Extension().Rule().Lexi().remove({
+        return OvhApiTelephony.OvhPabx().Dialplan().Extension().Rule().Lexi().remove({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName,
             dialplanId: self.dialplanId,
@@ -174,7 +174,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberOvhPabxDialplanExtensi
 
         self.status = "MOVING";
 
-        return Telephony.OvhPabx().Dialplan().Extension().Rule().Lexi().save({
+        return OvhApiTelephony.OvhPabx().Dialplan().Extension().Rule().Lexi().save({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName,
             dialplanId: self.dialplanId,

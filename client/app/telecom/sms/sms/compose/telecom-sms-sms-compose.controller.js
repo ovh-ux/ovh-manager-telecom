@@ -1,5 +1,5 @@
 angular.module("managerApp").controller("TelecomSmsSmsComposeCtrl", class TelecomSmsSmsComposeCtrl {
-    constructor ($q, $translate, $stateParams, $filter, $uibModal, Sms, SmsMediator, User, atInternet, Toast, ToastError, URLS) {
+    constructor ($q, $translate, $stateParams, $filter, $uibModal, OvhApiSms, SmsMediator, OvhApiMe, atInternet, Toast, ToastError, URLS) {
         this.$q = $q;
         this.$translate = $translate;
         this.$stateParams = $stateParams;
@@ -8,15 +8,15 @@ angular.module("managerApp").controller("TelecomSmsSmsComposeCtrl", class Teleco
         this.SmsMediator = SmsMediator;
         this.api = {
             sms: {
-                jobs: Sms.Jobs().Lexi(),
-                phonebooks: Sms.Phonebooks().Lexi(),
-                receivers: Sms.Receivers().Lexi(),
-                senders: Sms.Senders().Lexi(),
+                jobs: OvhApiSms.Jobs().Lexi(),
+                phonebooks: OvhApiSms.Phonebooks().Lexi(),
+                receivers: OvhApiSms.Receivers().Lexi(),
+                senders: OvhApiSms.Senders().Lexi(),
                 virtualNumbers: {
-                    jobs: Sms.VirtualNumbers().Jobs().Lexi()
+                    jobs: OvhApiSms.VirtualNumbers().Jobs().Lexi()
                 }
             },
-            user: User.Lexi()
+            user: OvhApiMe.Lexi()
         };
         this.atInternet = atInternet;
         this.Toast = Toast;

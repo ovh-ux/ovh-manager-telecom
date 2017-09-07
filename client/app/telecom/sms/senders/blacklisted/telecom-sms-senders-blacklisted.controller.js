@@ -1,5 +1,5 @@
 angular.module("managerApp").controller("TelecomSmsSendersBlacklistedCtrl", class TelecomSmsSendersBlacklistedCtrl {
-    constructor ($stateParams, $q, $filter, $timeout, $uibModal, $translate, Sms, Toast, ToastError) {
+    constructor ($stateParams, $q, $filter, $timeout, $uibModal, $translate, OvhApiSms, Toast, ToastError) {
         this.$stateParams = $stateParams;
         this.$q = $q;
         this.$filter = $filter;
@@ -8,7 +8,7 @@ angular.module("managerApp").controller("TelecomSmsSendersBlacklistedCtrl", clas
         this.$translate = $translate;
         this.api = {
             sms: {
-                blacklists: Sms.Blacklists().Lexi()
+                blacklists: OvhApiSms.Blacklists().Lexi()
             }
         };
         this.Toast = Toast;

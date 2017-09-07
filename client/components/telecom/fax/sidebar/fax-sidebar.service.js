@@ -1,4 +1,4 @@
-angular.module("managerApp").service("FaxSidebar", function ($translate, SidebarMenu, TelephonyFax) {
+angular.module("managerApp").service("FaxSidebar", function ($translate, SidebarMenu, OvhApiTelephonyFax) {
     "use strict";
 
     var self = this;
@@ -10,7 +10,7 @@ angular.module("managerApp").service("FaxSidebar", function ($translate, Sidebar
     ========================================*/
 
     self.loadFaxMainSection = function () {
-        return TelephonyFax.Aapi().getServices().$promise.then(function (faxList) {
+        return OvhApiTelephonyFax.Aapi().getServices().$promise.then(function (faxList) {
             var filteredFax = _.filter(
                 faxList,
                 {

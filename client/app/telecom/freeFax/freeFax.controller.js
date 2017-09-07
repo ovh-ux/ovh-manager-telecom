@@ -1,5 +1,5 @@
 angular.module("managerApp")
-    .controller("FreeFaxCtrl", function ($q, $translate, $scope, FreeFax, $stateParams, Toast) {
+    .controller("FreeFaxCtrl", function ($q, $translate, $scope, OvhApiFreeFax, $stateParams, Toast) {
         "use strict";
         var self = this;
 
@@ -7,11 +7,11 @@ angular.module("managerApp")
         this.serviceName = $stateParams.serviceName;
 
         function init () {
-            FreeFax.Aapi().details({
+            OvhApiFreeFax.Aapi().details({
                 serviceName: self.serviceName
             }).$promise.then(function (freeFax) {
                 $scope.freeFax = freeFax;
-                return FreeFax.Lexi().voiceMailGetRouting({
+                return OvhApiFreeFax.Lexi().voiceMailGetRouting({
                     serviceName: self.serviceName
                 }).$promise.then(function (voiceMail) {
                     $scope.freeFax.voicemailActive = voiceMail.value === "voicemail";

@@ -1,4 +1,4 @@
-angular.module("managerApp").factory("SmsService", function (Sms) {
+angular.module("managerApp").factory("SmsService", function (OvhApiSms) {
     "use strict";
 
     /*= ==================================
@@ -55,7 +55,7 @@ angular.module("managerApp").factory("SmsService", function (Sms) {
     SmsService.prototype.save = function () {
         var self = this;
 
-        return Sms.Lexi().edit({
+        return OvhApiSms.Lexi().edit({
             serviceName: self.name
         }, {
             description: self.description

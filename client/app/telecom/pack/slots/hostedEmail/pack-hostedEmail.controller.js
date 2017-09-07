@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("PackHostedEmailCtrl", function ($q, $translate, $stateParams, Toast, PackXdslHostedEmail) {
+angular.module("managerApp").controller("PackHostedEmailCtrl", function ($q, $translate, $stateParams, Toast, OvhApiPackXdslHostedEmail) {
     "use strict";
 
     var self = this;
@@ -10,7 +10,7 @@ angular.module("managerApp").controller("PackHostedEmailCtrl", function ($q, $tr
     this.loadServices = function () {
         this.loaders.services = true;
 
-        return PackXdslHostedEmail.Lexi().query({
+        return OvhApiPackXdslHostedEmail.Lexi().query({
             packId: $stateParams.packName
         }).$promise.then(
             function (services) {

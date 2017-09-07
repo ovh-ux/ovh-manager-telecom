@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomPackMigrationShippingCtrl", function ($q, $translate, PackMigrationProcess, OvhContact, PackXdsl, Toast) {
+angular.module("managerApp").controller("TelecomPackMigrationShippingCtrl", function ($q, $translate, PackMigrationProcess, OvhContact, OvhApiPackXdsl, Toast) {
     "use strict";
 
     var self = this;
@@ -37,7 +37,7 @@ angular.module("managerApp").controller("TelecomPackMigrationShippingCtrl", func
 
         self.process = PackMigrationProcess.getMigrationProcess();
 
-        return PackXdsl.Lexi().shippingAddresses({
+        return OvhApiPackXdsl.Lexi().shippingAddresses({
             packName: self.process.pack.packName,
             context: "migration"
         }).$promise.then(function (shippingAddresses) {

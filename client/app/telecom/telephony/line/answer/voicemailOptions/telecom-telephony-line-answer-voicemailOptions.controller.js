@@ -1,10 +1,10 @@
-angular.module("managerApp").controller("TelecomTelephonyLineAnswerVoicemailOptionsCtrl", function ($scope, $stateParams, $q, $translate, $timeout, ToastError, Telephony, User) {
+angular.module("managerApp").controller("TelecomTelephonyLineAnswerVoicemailOptionsCtrl", function ($scope, $stateParams, $q, $translate, $timeout, ToastError, OvhApiTelephony, OvhApiMe) {
     "use strict";
 
     var self = this;
 
     function fetchEnums () {
-        return Telephony.Lexi().schema({
+        return OvhApiTelephony.Lexi().schema({
             billingAccount: $stateParams.billingAccount
         }).$promise.then(function (schema) {
             return {
@@ -15,25 +15,25 @@ angular.module("managerApp").controller("TelecomTelephonyLineAnswerVoicemailOpti
     }
 
     function fetchSettings () {
-        return Telephony.Voicemail().Lexi().getSettings({
+        return OvhApiTelephony.Voicemail().Lexi().getSettings({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }).$promise;
     }
 
     function fetchGreetings () {
-        return Telephony.Voicemail().Greetings().Lexi().query({
+        return OvhApiTelephony.Voicemail().Greetings().Lexi().query({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }).$promise.then(function (result) {
             if (result.length) {
                 return $q.all({
-                    greeting: Telephony.Voicemail().Greetings().Lexi().get({
+                    greeting: OvhApiTelephony.Voicemail().Greetings().Lexi().get({
                         billingAccount: $stateParams.billingAccount,
                         serviceName: $stateParams.serviceName,
                         id: result[0]
                     }).$promise,
-                    download: Telephony.Voicemail().Greetings().Lexi().download({
+                    download: OvhApiTelephony.Voicemail().Greetings().Lexi().download({
                         billingAccount: $stateParams.billingAccount,
                         serviceName: $stateParams.serviceName,
                         id: result[0]
@@ -55,8 +55,8 @@ angular.module("managerApp").controller("TelecomTelephonyLineAnswerVoicemailOpti
     }
 
     function refreshSettings () {
-        Telephony.Voicemail().Lexi().resetCache();
-        Telephony.Voicemail().Lexi().resetQueryCache();
+        OvhApiTelephony.Voicemail().Lexi().resetCache();
+        OvhApiTelephony.Voicemail().Lexi().resetQueryCache();
         return fetchSettings().then(function (settings) {
             self.settings = settings;
             _.assign(self.recordingForm, _.pick(settings, ["doNotRecord"]));
@@ -65,8 +65,8 @@ angular.module("managerApp").controller("TelecomTelephonyLineAnswerVoicemailOpti
     }
 
     function refreshGreetings () {
-        Telephony.Voicemail().Greetings().Lexi().resetCache();
-        Telephony.Voicemail().Greetings().Lexi().resetQueryCache();
+        OvhApiTelephony.Voicemail().Greetings().Lexi().resetCache();
+        OvhApiTelephony.Voicemail().Greetings().Lexi().resetQueryCache();
         return fetchGreetings().then(function (greetings) {
             self.greetings = greetings;
             _.assign(self.recordingForm, _.pick(greetings, ["filename", "url", "dir"]));
@@ -163,7 +163,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineAnswerVoicemailOpti
         _.assign(settings, _.pick(self.recordingForm, ["doNotRecord"]));
 
         var update = function () {
-            return Telephony.Voicemail().Lexi().setSettings({
+            return OvhApiTelephony.Voicemail().Lexi().setSettings({
                 billingAccount: $stateParams.billingAccount,
                 serviceName: $stateParams.serviceName
             }, settings).$promise.then(function () {
@@ -174,11 +174,11 @@ angular.module("managerApp").controller("TelecomTelephonyLineAnswerVoicemailOpti
         var uploadFile = $timeout(angular.noop, 1000);
         if (self.recordingForm.uploadedFile) {
             uploadFile = function () {
-                return User.Document().Lexi().upload(
+                return OvhApiMe.Document().Lexi().upload(
                     self.recordingForm.uploadedFile.name,
                     self.recordingForm.uploadedFile
                 ).then(function (doc) {
-                    return Telephony.Voicemail().Greetings().Lexi().create({
+                    return OvhApiTelephony.Voicemail().Greetings().Lexi().create({
                         billingAccount: $stateParams.billingAccount,
                         serviceName: $stateParams.serviceName
                     }, {
@@ -235,7 +235,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineAnswerVoicemailOpti
         self.notificationForm.isUpdating = true;
         self.cancelAddEmail();
 
-        var update = Telephony.Voicemail().Lexi().setSettings({
+        var update = OvhApiTelephony.Voicemail().Lexi().setSettings({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }, settings).$promise;
@@ -270,7 +270,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineAnswerVoicemailOpti
         self.emailForm.isRemoving = true;
         redirection.removing = true;
 
-        var update = Telephony.Voicemail().Lexi().setSettings({
+        var update = OvhApiTelephony.Voicemail().Lexi().setSettings({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }, settings).$promise;
@@ -299,7 +299,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineAnswerVoicemailOpti
 
         self.emailForm.isAdding = true;
 
-        var update = Telephony.Voicemail().Lexi().setSettings({
+        var update = OvhApiTelephony.Voicemail().Lexi().setSettings({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }, settings).$promise;

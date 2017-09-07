@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("XdslAccessLnsRateLimitCtrl", function ($stateParams, $scope, $translate, Xdsl, ToastError) {
+angular.module("managerApp").controller("XdslAccessLnsRateLimitCtrl", function ($stateParams, $scope, $translate, OvhApiXdsl, ToastError) {
     "use strict";
 
     var self = this;
@@ -42,7 +42,7 @@ angular.module("managerApp").controller("XdslAccessLnsRateLimitCtrl", function (
     self.changeRate = function () {
         if (self.rate.canApplyLnsRateLimit) {
             self.doing = true;
-            Xdsl.Lexi().put(
+            OvhApiXdsl.Lexi().put(
                 { xdslId: $stateParams.serviceName },
                 { lnsRateLimit: self.rate.disabled ? null : self.rate.value },
                 function () {
