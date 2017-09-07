@@ -162,10 +162,6 @@ angular.module("managerApp").factory("TelephonyGroup", function ($q, OvhApiTelep
     TelephonyGroup.prototype.getRepaymentConsumption = function () {
         var self = this;
 
-        if (self.calledFees && self.groupRepayments) {
-            return $q.when(self);
-        }
-
         return OvhApiTelephony.Service().RepaymentConsumption().Aapi().repayment({
             billingAccount: self.billingAccount
         }).$promise.then(function (consumptions) {
