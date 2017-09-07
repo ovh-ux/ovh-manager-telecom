@@ -1,4 +1,4 @@
-angular.module("managerApp").factory("TelephonyGroupLineClick2CallUser", function (Telephony, $q) {
+angular.module("managerApp").factory("TelephonyGroupLineClick2CallUser", function ($q, OvhApiTelephony) {
     "use strict";
 
     var mandatoriesPhoneOptions = [
@@ -53,7 +53,7 @@ angular.module("managerApp").factory("TelephonyGroupLineClick2CallUser", functio
 
     TelephonyGroupLineClick2CallUser.prototype.getUser = function () {
         var self = this;
-        return Telephony.Line().Click2Call().User().Lexi().get({
+        return OvhApiTelephony.Line().Click2Call().User().Lexi().get({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName,
             id: self.id
@@ -67,7 +67,7 @@ angular.module("managerApp").factory("TelephonyGroupLineClick2CallUser", functio
     TelephonyGroupLineClick2CallUser.prototype.call = function (calledNumber) {
         var self = this;
 
-        return Telephony.Line().Click2Call().User().Lexi().click2Call({
+        return OvhApiTelephony.Line().Click2Call().User().Lexi().click2Call({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName
         }, {
@@ -90,7 +90,7 @@ angular.module("managerApp").factory("TelephonyGroupLineClick2CallUser", functio
             };
         }
 
-        return Telephony.Line().Click2Call().User().Lexi().post({
+        return OvhApiTelephony.Line().Click2Call().User().Lexi().post({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName
         }, userOptions
@@ -112,7 +112,7 @@ angular.module("managerApp").factory("TelephonyGroupLineClick2CallUser", functio
             };
         }
 
-        return Telephony.Line().Click2Call().User().Lexi().delete({
+        return OvhApiTelephony.Line().Click2Call().User().Lexi().delete({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName,
             id: userOptions.id
@@ -127,7 +127,7 @@ angular.module("managerApp").factory("TelephonyGroupLineClick2CallUser", functio
     TelephonyGroupLineClick2CallUser.prototype.changePassword = function (password) {
         var self = this;
 
-        return Telephony.Line().Click2Call().User().Lexi().changePassword({
+        return OvhApiTelephony.Line().Click2Call().User().Lexi().changePassword({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName,
             id: self.id

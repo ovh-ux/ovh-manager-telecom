@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("PackExchangeLiteCtrl", function ($scope, PackXdslExchangeLite, $stateParams) {
+angular.module("managerApp").controller("PackExchangeLiteCtrl", function ($scope, OvhApiPackXdslExchangeLite, $stateParams) {
     "use strict";
 
     var self = this;
@@ -14,7 +14,7 @@ angular.module("managerApp").controller("PackExchangeLiteCtrl", function ($scope
         };
 
         // Get service link to this access from current Pack Xdsl
-        return PackXdslExchangeLite.Lexi().query({
+        return OvhApiPackXdslExchangeLite.Lexi().query({
             packId: $stateParams.packName
         }).$promise.then(
             function (services) {

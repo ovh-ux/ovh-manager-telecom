@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyLinePhonePhonebookContactImportCtrl", function ($q, $stateParams, $timeout, $translate, $uibModalInstance, bookKey, Telephony, User, ToastError) {
+angular.module("managerApp").controller("TelecomTelephonyLinePhonePhonebookContactImportCtrl", function ($q, $stateParams, $timeout, $translate, $uibModalInstance, bookKey, OvhApiTelephony, OvhApiMe, ToastError) {
     "use strict";
 
     var self = this;
@@ -29,11 +29,11 @@ angular.module("managerApp").controller("TelecomTelephonyLinePhonePhonebookConta
         self.phonecontactForm.isImporting = true;
         return $q.all({
             noop: $timeout(angular.noop, 1000),
-            "import": User.Document().Lexi().upload(
+            "import": OvhApiMe.Document().Lexi().upload(
                 self.phonecontactForm.uploadedFile.name,
                 self.phonecontactForm.uploadedFile
             ).then(function (doc) {
-                return Telephony.Line().Phone().Phonebook().Lexi().import({
+                return OvhApiTelephony.Line().Phone().Phonebook().Lexi().import({
                     billingAccount: $stateParams.billingAccount,
                     serviceName: $stateParams.serviceName,
                     bookKey: bookKey

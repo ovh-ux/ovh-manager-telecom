@@ -1,11 +1,11 @@
 angular.module("managerApp").controller("TelecomSmsSmsHlrCtrl", class TelecomSmsSmsHlrCtrl {
-    constructor ($stateParams, $q, $translate, Sms, SmsMediator, validator, Toast, ToastError, SMS_URL) {
+    constructor ($stateParams, $q, $translate, OvhApiSms, SmsMediator, validator, Toast, ToastError, SMS_URL) {
         this.$stateParams = $stateParams;
         this.$q = $q;
         this.$translate = $translate;
         this.api = {
             sms: {
-                hlr: Sms.Hlr().Lexi()
+                hlr: OvhApiSms.Hlr().Lexi()
             }
         };
         this.SmsMediator = SmsMediator;

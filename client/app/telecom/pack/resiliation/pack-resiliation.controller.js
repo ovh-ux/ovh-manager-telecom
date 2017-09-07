@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("PackResiliationCtrl", function ($stateParams, $state, $translate, ToastError, PackXdslResiliation, Toast, $uibModal, $timeout, $q, User, PackMediator, resiliationNotification) {
+angular.module("managerApp").controller("PackResiliationCtrl", function ($stateParams, $state, $translate, ToastError, OvhApiPackXdslResiliation, Toast, $uibModal, $timeout, $q, OvhApiMe, PackMediator, resiliationNotification) {
     "use strict";
 
     var self = this;
@@ -27,7 +27,7 @@ angular.module("managerApp").controller("PackResiliationCtrl", function ($stateP
         self.model.when = null;
         self.dpOpts = {};
 
-        PackXdslResiliation.Aapi().terms({
+        OvhApiPackXdslResiliation.Aapi().terms({
             packId: $stateParams.packName
         }).$promise.then(function (data) {
             self.dpOpts.minDate = data.data.minResiliationDate ? new Date(data.data.minResiliationDate) : new Date();
@@ -68,7 +68,7 @@ angular.module("managerApp").controller("PackResiliationCtrl", function ($stateP
         self.subServicesTerms = null;
         self.subServicesTermsError = false;
 
-        PackXdslResiliation.Aapi().subServicesTerms({
+        OvhApiPackXdslResiliation.Aapi().subServicesTerms({
             packId: $stateParams.packName
         }).$promise.then(function (data) {
             self.subServicesTerms = data;
@@ -86,7 +86,7 @@ angular.module("managerApp").controller("PackResiliationCtrl", function ($stateP
      * @return promise with the symbol of the current currency
      */
     this.getCurrentCurrencySymbol = function () {
-        return User.Lexi().get().$promise.then(function (me) {
+        return OvhApiMe.Lexi().get().$promise.then(function (me) {
             return me && me.currency ? me.currency.symbol : "";
         });
     };
@@ -206,7 +206,7 @@ angular.module("managerApp").controller("PackResiliationCtrl", function ($stateP
      */
     this.computePrice = function () {
         self.computingPrice = true;
-        return PackXdslResiliation.Lexi().resiliationTerms({
+        return OvhApiPackXdslResiliation.Lexi().resiliationTerms({
             packName: $stateParams.packName,
             resiliationDate: self.model.when ? self.model.when.toISOString() : null
         }, null).$promise.then(function (data) {
@@ -256,7 +256,7 @@ angular.module("managerApp").controller("PackResiliationCtrl", function ($stateP
      */
     this.resiliatePack = function () {
         self.loading = true;
-        return PackXdslResiliation.Lexi().resiliate({
+        return OvhApiPackXdslResiliation.Lexi().resiliate({
             packName: $stateParams.packName
         }, {
             resiliationSurvey: {
@@ -283,7 +283,7 @@ angular.module("managerApp").controller("PackResiliationCtrl", function ($stateP
      */
     this.cancelPackResiliation = function (pack) {
         self.loading = true;
-        return PackXdslResiliation.Lexi().cancelResiliation({
+        return OvhApiPackXdslResiliation.Lexi().cancelResiliation({
             packName: pack.packName
         }, null).$promise.then(function () {
             resiliationNotification.cancelSuccess = true;

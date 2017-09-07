@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyBillingAccountCtrl", function ($q, $translate, $stateParams, TelephonyMediator, SidebarMenu, Toast, Order, Telephony) {
+angular.module("managerApp").controller("TelecomTelephonyBillingAccountCtrl", function ($q, $translate, $stateParams, TelephonyMediator, SidebarMenu, Toast, OvhApiOrder, OvhApiTelephony) {
     "use strict";
 
     var self = this;
@@ -34,11 +34,11 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountCtrl", fu
     /* -----  End of ACTIONS  ------*/
 
     function fetchGroupTerminationTask (group) {
-        return Telephony.OfferTask().Lexi().query({
+        return OvhApiTelephony.OfferTask().Lexi().query({
             billingAccount: group.billingAccount
         }).$promise.then(function (offerTaskIds) {
             return $q.all(_.map(offerTaskIds, function (id) {
-                return Telephony.OfferTask().Lexi().get({
+                return OvhApiTelephony.OfferTask().Lexi().get({
                     billingAccount: group.billingAccount,
                     taskId: id
                 }).$promise;
@@ -69,7 +69,7 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountCtrl", fu
                 Toast.error([$translate.instant("telephony_group_loading_error", $stateParams), error.data.message].join(" "));
                 return $q.reject(error);
             }),
-            Order.Telephony().Lexi().billingAccounts().$promise.then(
+            OvhApiOrder.Telephony().Lexi().billingAccounts().$promise.then(
                 function (allowedBillingAccounts) {
                     self.canOrderAlias = allowedBillingAccounts.indexOf($stateParams.billingAccount) > -1;
                     return self.canOrderAlias;

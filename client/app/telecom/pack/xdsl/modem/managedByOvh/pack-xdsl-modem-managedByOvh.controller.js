@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("XdslModemManagedByCtrl", function ($stateParams, $q, $translate, Xdsl, Toast, PackXdslModemMediator) {
+angular.module("managerApp").controller("XdslModemManagedByCtrl", function ($stateParams, $q, $translate, OvhApiXdsl, Toast, PackXdslModemMediator) {
     "use strict";
 
     var self = this;
@@ -22,7 +22,7 @@ angular.module("managerApp").controller("XdslModemManagedByCtrl", function ($sta
         this.updating = true;
         PackXdslModemMediator.setTask("changeModemConfigManagement");
         PackXdslModemMediator.disableCapabilities();
-        return Xdsl.Modem().Lexi().update(
+        return OvhApiXdsl.Modem().Lexi().update(
             {
                 xdslId: $stateParams.serviceName
             },

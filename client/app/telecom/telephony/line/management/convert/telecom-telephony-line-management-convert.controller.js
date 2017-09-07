@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyLineConvertCtrl", function ($stateParams, $translate, Telephony, TelephonyMediator, Toast, ToastError) {
+angular.module("managerApp").controller("TelecomTelephonyLineConvertCtrl", function ($stateParams, $translate, OvhApiTelephony, TelephonyMediator, Toast, ToastError) {
     "use strict";
 
     var self = this;
@@ -25,7 +25,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineConvertCtrl", funct
 
     self.convertToNumber = function () {
         self.isConverting = true;
-        return Telephony.Line().Lexi().convertToNumber({
+        return OvhApiTelephony.Line().Lexi().convertToNumber({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }, {}).$promise.then(function () {
@@ -42,7 +42,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineConvertCtrl", funct
 
     self.cancelConvertToNumber = function () {
         self.isCancelling = true;
-        return Telephony.Line().Lexi().cancelConvertToNumber({
+        return OvhApiTelephony.Line().Lexi().cancelConvertToNumber({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }, {}).$promise.then(function () {

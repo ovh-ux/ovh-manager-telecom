@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("XdslModemFirewallCtrl", function ($stateParams, $translate, $q, Xdsl, Toast, PackXdslModemMediator) {
+angular.module("managerApp").controller("XdslModemFirewallCtrl", function ($stateParams, $translate, $q, OvhApiXdsl, Toast, PackXdslModemMediator) {
     "use strict";
 
     var self = this;
@@ -11,7 +11,7 @@ angular.module("managerApp").controller("XdslModemFirewallCtrl", function ($stat
             Toast.error($translate.instant("xdsl_modem_firewall_an_error_ocurred"));
             return $q.reject();
         }
-        return Xdsl.Modem().Lexi().update(
+        return OvhApiXdsl.Modem().Lexi().update(
             {
                 xdslId: $stateParams.serviceName
             },

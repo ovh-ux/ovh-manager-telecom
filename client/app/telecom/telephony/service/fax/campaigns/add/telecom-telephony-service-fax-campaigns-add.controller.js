@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyServiceFaxCampaignsAddCtrl", function ($q, $stateParams, $translate, $timeout, $uibModalInstance, Telephony, User, ToastError) {
+angular.module("managerApp").controller("TelecomTelephonyServiceFaxCampaignsAddCtrl", function ($q, $stateParams, $translate, $timeout, $uibModalInstance, OvhApiTelephony, OvhApiMe, ToastError) {
     "use strict";
 
     var self = this;
@@ -8,7 +8,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxCampaignsAddC
     ===============================*/
 
     function fetchEnums () {
-        return Telephony.Lexi().schema({
+        return OvhApiTelephony.Lexi().schema({
             billingAccount: $stateParams.billingAccount
         }).$promise.then(function (schema) {
             return {
@@ -28,7 +28,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxCampaignsAddC
     }
 
     function createCampaign (doc) {
-        return Telephony.Fax().Campaigns().Lexi().create({
+        return OvhApiTelephony.Fax().Campaigns().Lexi().create({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }, {
@@ -72,7 +72,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxCampaignsAddC
 
     self.add = function () {
         self.loading.add = true;
-        return User.Document().Lexi().upload(
+        return OvhApiMe.Document().Lexi().upload(
             self.campaign.uploadedFile.name,
             self.campaign.uploadedFile
         ).then(function (doc) {

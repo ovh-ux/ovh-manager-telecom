@@ -1,4 +1,4 @@
-angular.module("managerApp").factory("TelephonyGroupLinePhone", function ($q, Telephony, TelephonyGroupLinePhoneFunction, TelephonyGroupLinePhoneConfiguration) {
+angular.module("managerApp").factory("TelephonyGroupLinePhone", function ($q, OvhApiTelephony, TelephonyGroupLinePhoneFunction, TelephonyGroupLinePhoneConfiguration) {
     "use strict";
 
     var mandatoriesPhoneOptions = [
@@ -69,7 +69,7 @@ angular.module("managerApp").factory("TelephonyGroupLinePhone", function ($q, Te
     TelephonyGroupLinePhone.prototype.getPhone = function () {
         var self = this;
 
-        return Telephony.Line().Phone().Lexi().get({
+        return OvhApiTelephony.Line().Phone().Lexi().get({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName
         }).$promise.then(function (phoneOptions) {
@@ -82,7 +82,7 @@ angular.module("managerApp").factory("TelephonyGroupLinePhone", function ($q, Te
     TelephonyGroupLinePhone.prototype.getSip = function () {
         var self = this;
 
-        return Telephony.Line().Options().Lexi().get({
+        return OvhApiTelephony.Line().Options().Lexi().get({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName
         }).$promise.then(function (options) {
@@ -101,7 +101,7 @@ angular.module("managerApp").factory("TelephonyGroupLinePhone", function ($q, Te
     TelephonyGroupLinePhone.prototype.getIps = function () {
         var self = this;
 
-        return Telephony.Line().Lexi().ips({
+        return OvhApiTelephony.Line().Lexi().ips({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName
         }).$promise.then(function (ips) {
@@ -117,14 +117,14 @@ angular.module("managerApp").factory("TelephonyGroupLinePhone", function ($q, Te
     TelephonyGroupLinePhone.prototype.getRMAs = function () {
         var self = this;
 
-        return Telephony.Line().Phone().RMA().Lexi().query({
+        return OvhApiTelephony.Line().Phone().RMA().Lexi().query({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName
         }).$promise.then(function (RMAs) {
             var RMADetailsRequests = [];
             angular.forEach(RMAs, function (RMAId) {
                 RMADetailsRequests.push(
-                    Telephony.Line().Phone().RMA().Lexi().get({
+                    OvhApiTelephony.Line().Phone().RMA().Lexi().get({
                         billingAccount: self.billingAccount,
                         serviceName: self.serviceName,
                         id: RMAId
@@ -144,7 +144,7 @@ angular.module("managerApp").factory("TelephonyGroupLinePhone", function ($q, Te
     TelephonyGroupLinePhone.prototype.resetConfig = function (ip) {
         var self = this;
 
-        return Telephony.Line().Phone().Lexi().resetConfig({
+        return OvhApiTelephony.Line().Phone().Lexi().resetConfig({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName
         }, {
@@ -201,7 +201,7 @@ angular.module("managerApp").factory("TelephonyGroupLinePhone", function ($q, Te
             });
         }
 
-        return Telephony.Line().Phone().Lexi().changePhoneConfiguration({
+        return OvhApiTelephony.Line().Phone().Lexi().changePhoneConfiguration({
             serviceName: self.serviceName,
             billingAccount: self.billingAccount
         }, {

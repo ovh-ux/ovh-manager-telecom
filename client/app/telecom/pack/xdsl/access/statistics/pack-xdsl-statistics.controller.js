@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("XdslStatisticsCtrl", function ($q, $scope, $compile, $filter, $templateCache, $stateParams, $http, Xdsl, Toast, XDSL, $translate, PACK_XDSL_STATISTICS, ChartjsFactory) {
+angular.module("managerApp").controller("XdslStatisticsCtrl", function ($q, $scope, $compile, $filter, $templateCache, $stateParams, $http, OvhApiXdsl, Toast, XDSL, $translate, PACK_XDSL_STATISTICS, ChartjsFactory) {
     "use strict";
 
     var self = this;
@@ -57,7 +57,7 @@ angular.module("managerApp").controller("XdslStatisticsCtrl", function ($q, $sco
      * @return {Promise} Promise that is always resolved
      */
     var getLinesStatistics = function (type, period) {
-        return Xdsl.Lines().Lexi().getStatistics({
+        return OvhApiXdsl.Lines().Lexi().getStatistics({
             xdslId: $stateParams.serviceName,
             period: period,
             number: $stateParams.number,
@@ -87,7 +87,7 @@ angular.module("managerApp").controller("XdslStatisticsCtrl", function ($q, $sco
      * @return {Promise} Promise that is always resolved
      */
     var getAccessStatistics = function (type, period) {
-        return Xdsl.Lexi().statistics({
+        return OvhApiXdsl.Lexi().statistics({
             xdslId: $stateParams.serviceName,
             period: period,
             type: type

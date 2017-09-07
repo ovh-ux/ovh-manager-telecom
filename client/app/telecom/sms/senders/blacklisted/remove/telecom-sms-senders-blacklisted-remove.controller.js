@@ -1,12 +1,12 @@
 angular.module("managerApp").controller("TelecomSmsSendersBlacklistedRemoveCtrl", class TelecomSmsSendersBlacklistedRemoveCtrl {
-    constructor ($q, $stateParams, $timeout, $uibModalInstance, Sms, blacklist) {
+    constructor ($q, $stateParams, $timeout, $uibModalInstance, OvhApiSms, blacklist) {
         this.$q = $q;
         this.$stateParams = $stateParams;
         this.$timeout = $timeout;
         this.$uibModalInstance = $uibModalInstance;
         this.api = {
             sms: {
-                blacklists: Sms.Blacklists().Lexi()
+                blacklists: OvhApiSms.Blacklists().Lexi()
             }
         };
         this.blacklist = blacklist;

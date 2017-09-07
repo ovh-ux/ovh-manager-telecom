@@ -1,16 +1,16 @@
-angular.module("managerApp").controller("TelecomTelephonyLineAnswerVoicemailManagementCtrl", function ($scope, $stateParams, $q, $translate, $timeout, $filter, $document, $window, ToastError, Telephony) {
+angular.module("managerApp").controller("TelecomTelephonyLineAnswerVoicemailManagementCtrl", function ($scope, $stateParams, $q, $translate, $timeout, $filter, $document, $window, ToastError, OvhApiTelephony) {
     "use strict";
 
     var self = this;
 
     function fetchMessageList () {
-        return Telephony.Voicemail().Directories().Lexi().query({
+        return OvhApiTelephony.Voicemail().Directories().Lexi().query({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }).$promise.then(function (ids) {
             // max api batch size is 50
             return $q.all(_.map(_.chunk(ids, 50), function (chunkIds) {
-                return Telephony.Voicemail().Directories().Lexi().getBatch({
+                return OvhApiTelephony.Voicemail().Directories().Lexi().getBatch({
                     billingAccount: $stateParams.billingAccount,
                     serviceName: $stateParams.serviceName,
                     id: chunkIds
@@ -80,7 +80,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineAnswerVoicemailMana
          * or until the call fails.
          */
         var tryDownload = function () {
-            return Telephony.Voicemail().Directories().Lexi().download({
+            return OvhApiTelephony.Voicemail().Directories().Lexi().download({
                 billingAccount: $stateParams.billingAccount,
                 serviceName: $stateParams.serviceName,
                 id: message.id
@@ -95,8 +95,8 @@ angular.module("managerApp").controller("TelecomTelephonyLineAnswerVoicemailMana
 
                 // file is not ready to download, just retry
                 return $timeout(function () {
-                    Telephony.Voicemail().Directories().Lexi().resetCache();
-                    Telephony.Voicemail().Directories().Lexi().resetQueryCache();
+                    OvhApiTelephony.Voicemail().Directories().Lexi().resetCache();
+                    OvhApiTelephony.Voicemail().Directories().Lexi().resetQueryCache();
                     return tryDownload();
                 }, 1000);
             });
@@ -142,7 +142,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineAnswerVoicemailMana
 
     this.deleteMessages = function (messageList) {
         var queries = messageList.map(function (message) {
-            return Telephony.Voicemail().Directories().Lexi().delete({
+            return OvhApiTelephony.Voicemail().Directories().Lexi().delete({
                 billingAccount: $stateParams.billingAccount,
                 serviceName: $stateParams.serviceName,
                 id: message.id
@@ -175,8 +175,8 @@ angular.module("managerApp").controller("TelecomTelephonyLineAnswerVoicemailMana
 
     this.refresh = function () {
         self.messages.isLoading = true;
-        Telephony.Voicemail().Directories().Lexi().resetCache();
-        Telephony.Voicemail().Directories().Lexi().resetQueryCache();
+        OvhApiTelephony.Voicemail().Directories().Lexi().resetCache();
+        OvhApiTelephony.Voicemail().Directories().Lexi().resetQueryCache();
         return $q.all({
             noop: $timeout(angular.noop, 1000), // avoid clipping
             messages: fetchMessageList()

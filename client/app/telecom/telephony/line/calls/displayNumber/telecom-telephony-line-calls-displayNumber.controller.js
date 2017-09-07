@@ -1,10 +1,10 @@
-angular.module("managerApp").controller("TelecomTelephonyLineCallsDisplayNumberCtrl", function ($scope, $stateParams, $translate, $timeout, TelephonyLineOptions, Toast, ToastError) {
+angular.module("managerApp").controller("TelecomTelephonyLineCallsDisplayNumberCtrl", function ($scope, $stateParams, $translate, $timeout, OvhApiTelephonyLineOptions, Toast, ToastError) {
     "use strict";
 
     var self = this;
 
     function getLineOptions () {
-        return TelephonyLineOptions.Lexi().get({
+        return OvhApiTelephonyLineOptions.Lexi().get({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }).$promise.then(function (options) {
@@ -67,7 +67,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineCallsDisplayNumberC
         }
 
         self.isUpdating = true;
-        return TelephonyLineOptions.Lexi().update({
+        return OvhApiTelephonyLineOptions.Lexi().update({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }, data).$promise.then(function () {

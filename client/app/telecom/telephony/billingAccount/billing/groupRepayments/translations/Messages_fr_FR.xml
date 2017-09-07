@@ -22,6 +22,10 @@
     <translation id="telephony_group_billing_group_repayments_consumptions_empty">Aucune information.</translation>
     <translation id="telephony_group_billing_group_repayments_ask_new_repayment">Demander le reversement de la somme disponible</translation>
     <translation id="telephony_group_billing_group_repayments_ask_new_repayment_info">La demande de reversement de la somme disponible n’est possible qu’à partir d’un montant de 1&#160;€.</translation>
-    <translation id="telephony_group_billing_group_repayments_ask_new_repayment_label">Numéro personnalisé de facture</translation>
+    <translation id="telephony_group_billing_group_repayments_ask_new_repayment_label">Numéro personnalisé de facture (max. 30 caractères)</translation>
+    <translation id="telephony_group_billing_group_repayments_ask_new_repayment_label_short">Numéro de facture</translation>
     <translation id="telephony_group_billing_group_repayments_ask_new_repayment_error_more_that_one">Désolé, un reversement est déjà en cours…</translation>
+    <translation id="telephony_group_billing_group_repayments_ask_new_repayment_error_more_that_one">Désolé, un reversement est déjà en cours…</translation>
+    <translation id="telephony_group_billing_group_repayments_ask_new_repayment_error">Oups ! Une erreur est survenue lors de la demande de reversement de la somme disponible.</translation>
+    <translation id="telephony_group_billing_group_repayments_ask_new_repayment_success">Votre demande de reversement de la somme disponible a été effectuée avec succès.</translation>
 </translations>

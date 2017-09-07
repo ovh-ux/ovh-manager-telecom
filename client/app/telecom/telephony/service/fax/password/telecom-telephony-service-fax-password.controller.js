@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyServiceFaxPasswordCtrl", function ($stateParams, $translate, $timeout, TelephonyMediator, Telephony, Toast, ToastError) {
+angular.module("managerApp").controller("TelecomTelephonyServiceFaxPasswordCtrl", function ($stateParams, $translate, $timeout, TelephonyMediator, OvhApiTelephony, Toast, ToastError) {
     "use strict";
 
     var self = this;
@@ -16,7 +16,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxPasswordCtrl"
     self.submitPasswordChange = function (form) {
         self.passwordForm.isUpdating = true;
         self.passwordForm.isSuccess = false;
-        return Telephony.Fax().Lexi().changePassword({
+        return OvhApiTelephony.Fax().Lexi().changePassword({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }, _.pick(self.passwordForm, "password")).$promise.then(function () {

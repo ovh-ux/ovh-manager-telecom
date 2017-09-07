@@ -1,14 +1,14 @@
 angular.module("managerApp").controller("TelecomSmsUsersLimitCtrl", class TelecomSmsUsersLimitCtrl {
-    constructor ($q, $stateParams, $timeout, $uibModalInstance, User, Sms, SmsMediator, user, ToastError) {
+    constructor ($q, $stateParams, $timeout, $uibModalInstance, OvhApiMe, OvhApiSms, SmsMediator, user, ToastError) {
         this.$q = $q;
         this.$stateParams = $stateParams;
         this.$timeout = $timeout;
         this.$uibModalInstance = $uibModalInstance;
         this.api = {
             sms: {
-                users: Sms.Users().Lexi()
+                users: OvhApiSms.Users().Lexi()
             },
-            user: User.Lexi()
+            user: OvhApiMe.Lexi()
         };
         this.SmsMediator = SmsMediator;
         this.ToastError = ToastError;
