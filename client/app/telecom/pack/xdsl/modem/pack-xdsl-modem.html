@@ -46,7 +46,8 @@
                     <div class="col-xs-12 col-md-9" data-ui-view="@managedByOvhView"></div>
                 </div>
 
-                <div class="row" data-ng-class="{ 'disabled' : !XdslModem.mediator.capabilities.canChangeWLAN || XdslModem.mediator.tasks.changeModemConfigWLAN }">
+                <div class="row"
+                     data-ng-class="{ 'disabled' : !XdslModem.mediator.capabilities.canChangeWLAN }">
                     <div class="col-xs-12 col-md-3 service-title">
                         <label for="wifiEnabled" data-translate="xdsl_modem_wifi"></label>
                     </div>

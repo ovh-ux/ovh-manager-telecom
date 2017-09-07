@@ -7,15 +7,13 @@
     <div class="telecom-section-header">
         <header role="banner"
                 data-ng-if="!PackXdslCtrl.loading.init">
-            <a data-ng-href="{{ PackXdslCtrl.backState() }}"
-               data-ng-if="PackXdslCtrl.content.back.state &&
-                           PackXdslCtrl.content.status === 'active'">
-                <span class="ovh-font ovh-font-arrow-left" aria-hidden="true"></span>
-                <span data-ng-bind="PackXdslCtrl.pack.general.description ||
-                                    PackXdslCtrl.pack.general.packName ||
-                                    PackXdslCtrl.access.description ||
-                                    PackXdslCtrl.access.accessName">
-                </span>
+            <a class="section-back-link ng-scope"
+               data-ng-href="{{ PackXdslCtrl.backState() }}"
+               data-ng-if="PackXdslCtrl.content.back.state && PackXdslCtrl.content.status === 'active'">
+                <i class="ovh-font ovh-font-arrow-left"
+                   aria-hidden="">
+                </i>
+                <span data-ng-bind="PackXdslCtrl.pack.general.description || PackXdslCtrl.pack.general.packName || PackXdslCtrl.access.description || PackXdslCtrl.access.accessName"></span>
             </a>
             <!-- ACCESS TITLE -->
             <editable-service-name data-editable-service-name-title="PackXdslCtrl.access.description || PackXdslCtrl.access.accessName"
