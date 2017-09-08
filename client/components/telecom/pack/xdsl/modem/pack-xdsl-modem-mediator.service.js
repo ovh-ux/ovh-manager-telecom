@@ -1,4 +1,4 @@
-angular.module("managerApp").service("PackXdslModemMediator", function ($rootScope, $q, $translate, Xdsl, Poller) {
+angular.module("managerApp").service("PackXdslModemMediator", function ($rootScope, $q, $translate, OvhApiXdsl, Poller) {
     "use strict";
 
     var self = this;
@@ -34,7 +34,7 @@ angular.module("managerApp").service("PackXdslModemMediator", function ($rootSco
             }
         }
 
-        Xdsl.Modem().Aapi().poll(null, {
+        OvhApiXdsl.Modem().Aapi().poll(null, {
             xdslId: serviceName,
             namespace: namespace
         }).then(
@@ -53,14 +53,12 @@ angular.module("managerApp").service("PackXdslModemMediator", function ($rootSco
     };
 
     this.disableCapabilities = function () {
-        this.capabilities = _.mapValues(this.capabilities,
-                                        function (val, key) {
-                                            if (key === "canBeManagedByOvh" || key === "canChangeMtu") {
-                                                return val;
-                                            }
-                                            return false;
-                                        }
-        );
+        this.capabilities = _.mapValues(this.capabilities, function (val, key) {
+            if (key === "canBeManagedByOvh" || key === "canChangeMtu") {
+                return val;
+            }
+            return false;
+        });
     };
 
     this.raiseTask = function (name, state, byPassFlag) {
@@ -76,7 +74,7 @@ angular.module("managerApp").service("PackXdslModemMediator", function ($rootSco
     };
 
     this.open = function (serviceName, callbackError) {
-        return Xdsl.Modem().Aapi().get({
+        return OvhApiXdsl.Modem().Aapi().get({
             xdslId: serviceName
         }).$promise.then(function (data) {
             self.capabilities = data.capabilities;

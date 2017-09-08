@@ -1,6 +1,6 @@
 {
   "name": "ovh-manager-telecom",
-  "version": "6.7.8",
+  "version": "7.0.2",
   "description": "OVH Control Panel Telecom UI",
   "authors": [
     "OVH SAS"
@@ -81,7 +81,7 @@
     "ovh-angular-line-diagnostics": "^0.4.0",
     "ovh-angular-manager-navbar": "^6.6.3",
     "ovh-angular-mondial-relay": "^1.2.2",
-    "ovh-angular-otrs": "~1.1.0",
+    "ovh-angular-otrs": "^2.0.1",
     "ovh-angular-pagination-front": "^5.0.0",
     "ovh-angular-q-allsettled": "^0.3.1",
     "ovh-angular-responsive-popover": "^4.0.1",
@@ -89,20 +89,20 @@
     "ovh-angular-sidebar-menu": "^3.3.9",
     "ovh-angular-simple-country-list": "^0.0.9",
     "ovh-angular-sso-auth": "^3.1.2",
-    "ovh-angular-sso-auth-modal-plugin": "^1.0.15",
+    "ovh-angular-sso-auth-modal-plugin": "^2.0.1",
     "ovh-angular-swimming-poll": "^3.0.0",
     "ovh-angular-tail-logs": "^1.1.1",
     "ovh-angular-timeline": "^1.5.2",
     "ovh-angular-toaster": "^0.8.0",
     "ovh-angular-toggleclass": "^1.2.1",
     "ovh-angular-ui-confirm-modal": "^1.0.2",
-    "ovh-api-services": "^1.1.0",
+    "ovh-api-services": "^2.0.1",
     "ovh-common-style": "^3.2.2",
     "ovh-jquery-ui-draggable-ng": "^0.0.5",
     "ovh-manager-webfont": "^1.0.1",
     "ovh-ng-input-password": "^1.2.5",
     "ovh-ngstrap": "^4.0.2",
-    "ovh-ui-kit": "git+https://github.com/ovh-ux/ovh-ui-kit.git#v1.0.0-alpha.7",
+    "ovh-ui-kit": "^1.0.0-alpha.13",
     "validator-js": "3.40.1"
   },
   "devDependencies": {

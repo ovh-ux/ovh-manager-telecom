@@ -1,5 +1,5 @@
 angular.module("managerApp").controller("TelecomSmsReceiversAddCtrl", class TelecomSmsReceiversAddCtrl {
-    constructor ($q, $stateParams, $timeout, $translate, $uibModalInstance, Sms, User, slot, ToastError) {
+    constructor ($q, $stateParams, $timeout, $translate, $uibModalInstance, OvhApiSms, OvhApiMe, slot, ToastError) {
         this.$q = $q;
         this.$stateParams = $stateParams;
         this.$timeout = $timeout;
@@ -7,10 +7,10 @@ angular.module("managerApp").controller("TelecomSmsReceiversAddCtrl", class Tele
         this.$uibModalInstance = $uibModalInstance;
         this.api = {
             sms: {
-                receivers: Sms.Receivers().Lexi()
+                receivers: OvhApiSms.Receivers().Lexi()
             },
             user: {
-                document: User.Document().Lexi()
+                document: OvhApiMe.Document().Lexi()
             }
         };
         this.slot = slot;

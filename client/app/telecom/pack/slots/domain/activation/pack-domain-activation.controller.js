@@ -1,14 +1,14 @@
-angular.module("managerApp").controller("PackDomainActivationController", function ($scope, $stateParams, $translate, $q, $state, $timeout, PackXdslDomainActivation, Toast, User, OvhSimpleCountryList) {
+angular.module("managerApp").controller("PackDomainActivationController", function ($scope, $stateParams, $translate, $q, $state, $timeout, OvhApiPackXdslDomainActivation, Toast, OvhApiMe, OvhSimpleCountryList) {
     "use strict";
 
     var self = this;
 
     function getUser () {
-        return User.Lexi().get().$promise;
+        return OvhApiMe.Lexi().get().$promise;
     }
 
     function loadAvailableTlds () {
-        return PackXdslDomainActivation.Lexi().getTlds({ packId: $scope.locker.packName }, function (data) {
+        return OvhApiPackXdslDomainActivation.Lexi().getTlds({ packId: $scope.locker.packName }, function (data) {
             $scope.locker.tldList = [];
             _.each(data, function (elt) {
                 $scope.locker.tldList.push({
@@ -26,7 +26,7 @@ angular.module("managerApp").controller("PackDomainActivationController", functi
     }
 
     function loadActivatedDomains () {
-        return PackXdslDomainActivation.Lexi().getServices({ packId: $scope.locker.packName }, function (data) {
+        return OvhApiPackXdslDomainActivation.Lexi().getServices({ packId: $scope.locker.packName }, function (data) {
             $scope.locker.activatedDomains = data;
         }, function (err) {
             $scope.errors.push({
@@ -136,7 +136,7 @@ angular.module("managerApp").controller("PackDomainActivationController", functi
         } else {
             $scope.toggles.domainLoading = true;
 
-            PackXdslDomainActivation.Aapi().checkDisponibility({
+            OvhApiPackXdslDomainActivation.Aapi().checkDisponibility({
                 packId: $stateParams.packName,
                 domain: $scope.model.domain,
                 language: "fr"
@@ -211,7 +211,7 @@ angular.module("managerApp").controller("PackDomainActivationController", functi
         );
 
         self.isActivating = true;
-        PackXdslDomainActivation.Lexi().postServices({
+        OvhApiPackXdslDomainActivation.Lexi().postServices({
             packId: $scope.locker.packName
         }, data, function () {
             Toast.update(toaster, $translate.instant("domain_activation_domain_is_saved"),

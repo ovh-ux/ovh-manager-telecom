@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("PackHubicActivationCtrl", function ($scope, $stateParams, PackXdslHubic, ToastError) {
+angular.module("managerApp").controller("PackHubicActivationCtrl", function ($scope, $stateParams, OvhApiPackXdslHubic, ToastError) {
     "use strict";
 
     var self = this;
@@ -6,7 +6,7 @@ angular.module("managerApp").controller("PackHubicActivationCtrl", function ($sc
     this.init = function () {
         self.loading = true;
         self.hubicList = [];
-        return PackXdslHubic.Aapi().query({ packId: $stateParams.packName }).$promise.then(
+        return OvhApiPackXdslHubic.Aapi().query({ packId: $stateParams.packName }).$promise.then(
             function (data) {
                 self.hubicList = data;
             },

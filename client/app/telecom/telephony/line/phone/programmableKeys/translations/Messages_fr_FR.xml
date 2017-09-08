@@ -15,6 +15,7 @@
    <translation id="telephony_line_phone_programmableKeys_available_function_parameter_placeholdel" qtlid="337000">Paramètre</translation>
    <translation id="telephony_line_phone_programmableKeys_available_function_parameter_label" qtlid="337013">Paramètre&#160;:&#160;</translation>
    <translation id="telephony_line_phone_programmableKeys_no_phone" qtlid="337026">Auncun téléphone n'est associé à votre ligne</translation>
+   <translation id="telephony_line_phone_programmableKeys_l1_warning">Veuillez noter que, de base, votre ligne SIP est configurée sur la touche L1 de votre téléphone. Il est fortement déconseillé de programmer une fonction sur celle-ci.</translation>
 
 
    <translation id="telephony_line_phone_programmableKeys_save_error" qtlid="337039">Impossible de sauvegarder la touche de fonction.<br/>{{error}}</translation>

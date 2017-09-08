@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomWelcomingCtrl", function ($q, URLS, REDIRECT_URLS, Telephony, PackXdsl, FreeFax, OverTheBox, Sms) {
+angular.module("managerApp").controller("TelecomWelcomingCtrl", function ($q, URLS, REDIRECT_URLS, OvhApiTelephony, OvhApiPackXdsl, OvhApiFreeFax, OvhApiOverTheBox, OvhApiSms) {
     "use strict";
     var self = this;
     this.servicesCount = 0;
@@ -12,7 +12,7 @@ angular.module("managerApp").controller("TelecomWelcomingCtrl", function ($q, UR
     /** @TODO uncommend when API V7 available for /telephony */
     /*
     self.getTelephonyCount = function getTelephonyCount () {
-        return Telephony.Erika().query().execute().$promise.then(function (telephonyGroupsIds) {
+        return OvhApiTelephony.Erika().query().execute().$promise.then(function (telephonyGroupsIds) {
             return telephonyGroupsIds.length;
         }, function () {
             return 0;
@@ -22,7 +22,7 @@ angular.module("managerApp").controller("TelecomWelcomingCtrl", function ($q, UR
 
     /** @TODO delete when API V7 available for /telephony */
     self.getTelephonyCount = function getTelephonyCount () {
-        return Telephony.Lexi().query().$promise.then(function (telephonyGroupsIds) {
+        return OvhApiTelephony.Lexi().query().$promise.then(function (telephonyGroupsIds) {
             return telephonyGroupsIds.length;
         }, function () {
             return 0;
@@ -30,7 +30,7 @@ angular.module("managerApp").controller("TelecomWelcomingCtrl", function ($q, UR
     };
 
     self.getPackCount = function getPackCount () {
-        return PackXdsl.Erika().query().execute().$promise.then(function (packIds) {
+        return OvhApiPackXdsl.Erika().query().execute().$promise.then(function (packIds) {
             return packIds.length;
         }, function () {
             return 0;
@@ -38,7 +38,7 @@ angular.module("managerApp").controller("TelecomWelcomingCtrl", function ($q, UR
     };
 
     self.getFaxCount = function getFaxCount () {
-        return FreeFax.Erika().query().execute().$promise.then(function (freeFaxIds) {
+        return OvhApiFreeFax.Erika().query().execute().$promise.then(function (freeFaxIds) {
             return freeFaxIds.length;
         }, function () {
             return 0;
@@ -46,7 +46,7 @@ angular.module("managerApp").controller("TelecomWelcomingCtrl", function ($q, UR
     };
 
     self.getOTBCount = function () {
-        return OverTheBox.Lexi().query().$promise.then(function (otbIds) {
+        return OvhApiOverTheBox.Lexi().query().$promise.then(function (otbIds) {
             return otbIds.length;
         }, function () {
             return 0;
@@ -54,7 +54,7 @@ angular.module("managerApp").controller("TelecomWelcomingCtrl", function ($q, UR
     };
 
     self.getSmsCount = function () {
-        return Sms.Lexi().query().$promise.then(function (smsIds) {
+        return OvhApiSms.Lexi().query().$promise.then(function (smsIds) {
             return smsIds.length;
         }, function () {
             return 0;

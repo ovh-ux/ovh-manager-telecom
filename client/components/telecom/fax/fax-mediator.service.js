@@ -1,4 +1,4 @@
-angular.module("managerApp").service("FaxMediator", function (FreeFax) {
+angular.module("managerApp").service("FaxMediator", function (OvhApiFreeFax) {
     "use strict";
 
     var self = this;
@@ -8,7 +8,7 @@ angular.module("managerApp").service("FaxMediator", function (FreeFax) {
     =============================*/
 
     self.getCount = function () {
-        return FreeFax.Erika().query().execute().$promise.then(function (freeFaxIds) {
+        return OvhApiFreeFax.Erika().query().execute().$promise.then(function (freeFaxIds) {
             return freeFaxIds.length;
         });
     };

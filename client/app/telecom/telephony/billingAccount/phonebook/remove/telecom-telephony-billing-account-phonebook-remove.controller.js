@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyBillingAccountPhonebookRemoveCtrl", function ($q, $stateParams, $timeout, $uibModalInstance, Telephony, phonebook) {
+angular.module("managerApp").controller("TelecomTelephonyBillingAccountPhonebookRemoveCtrl", function ($q, $stateParams, $timeout, $uibModalInstance, OvhApiTelephony, phonebook) {
     "use strict";
 
     var self = this;
@@ -14,7 +14,7 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountPhonebook
     self.remove = function () {
         self.isRemoving = true;
         return $q.all([
-            Telephony.Phonebook().Lexi().remove({
+            OvhApiTelephony.Phonebook().Lexi().remove({
                 billingAccount: $stateParams.billingAccount,
                 bookKey: self.phonebook.bookKey
             }).$promise,

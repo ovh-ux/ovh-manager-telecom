@@ -1,5 +1,5 @@
 /* global setTimeout */
-angular.module("managerApp").controller("PackXdslCtrl", function ($q, $scope, $state, $translate, $stateParams, PackXdsl, Xdsl, XdslModem, Toast, smoothScroll, ToastError, SidebarMenu) {
+angular.module("managerApp").controller("PackXdslCtrl", function ($q, $scope, $state, $translate, $stateParams, OvhApiPackXdsl, OvhApiXdsl, OvhApiXdslModem, Toast, smoothScroll, ToastError, SidebarMenu) {
     "use strict";
 
     var animTime = 1500;
@@ -15,13 +15,13 @@ angular.module("managerApp").controller("PackXdslCtrl", function ($q, $scope, $s
     };
 
     function getPackXdsl () {
-        return PackXdsl.Aapi().get({
+        return OvhApiPackXdsl.Aapi().get({
             packId: $stateParams.packName
         }).$promise;
     }
 
     function getXdsl () {
-        return Xdsl.Lexi().get({
+        return OvhApiXdsl.Lexi().get({
             xdslId: $stateParams.serviceName
         }).$promise;
     }
@@ -37,7 +37,7 @@ angular.module("managerApp").controller("PackXdslCtrl", function ($q, $scope, $s
     };
 
     function enableModemIfHaveOne () {
-        return XdslModem.Lexi().get({ xdslId: $stateParams.serviceName }).$promise.then(
+        return OvhApiXdslModem.Lexi().get({ xdslId: $stateParams.serviceName }).$promise.then(
             function () {
                 self.disabledModem = false;
             },
@@ -104,7 +104,7 @@ angular.module("managerApp").controller("PackXdslCtrl", function ($q, $scope, $s
     self.accessDescriptionSave = function (newAccessDescr) {
         self.loading.save = true;
 
-        return Xdsl.Lexi().put({
+        return OvhApiXdsl.Lexi().put({
             xdslId: $stateParams.serviceName
         }, {
             description: newAccessDescr

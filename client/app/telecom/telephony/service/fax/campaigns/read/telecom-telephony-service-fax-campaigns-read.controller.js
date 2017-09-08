@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyServiceFaxCampaignsReadCtrl", function ($stateParams, $q, $uibModalInstance, Telephony, campaign, ToastError) {
+angular.module("managerApp").controller("TelecomTelephonyServiceFaxCampaignsReadCtrl", function ($stateParams, $q, $uibModalInstance, OvhApiTelephony, campaign, ToastError) {
     "use strict";
 
     var self = this;
@@ -8,7 +8,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxCampaignsRead
     ===============================*/
 
     function fetchCampaignDetail (theCampaign) {
-        return Telephony.Fax().Campaigns().Lexi().getDetail({
+        return OvhApiTelephony.Fax().Campaigns().Lexi().getDetail({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName,
             id: theCampaign.id

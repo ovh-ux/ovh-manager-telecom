@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyServiceFaxCampaignsRemoveCtrl", function ($q, $stateParams, $timeout, $uibModalInstance, Telephony, campaign) {
+angular.module("managerApp").controller("TelecomTelephonyServiceFaxCampaignsRemoveCtrl", function ($q, $stateParams, $timeout, $uibModalInstance, OvhApiTelephony, campaign) {
     "use strict";
 
     var self = this;
@@ -19,7 +19,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxCampaignsRemo
         self.loading.removeCampaign = true;
 
         return $q.all([
-            Telephony.Fax().Campaigns().Lexi().delete({
+            OvhApiTelephony.Fax().Campaigns().Lexi().delete({
                 billingAccount: $stateParams.billingAccount,
                 serviceName: $stateParams.serviceName,
                 id: self.campaign.id

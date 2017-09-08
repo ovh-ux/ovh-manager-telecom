@@ -1,7 +1,7 @@
 /**
  *  @todo : manage sip feature type => /screen API
  */
-angular.module("managerApp").factory("VoipScreenScreenList", function (Telephony) {
+angular.module("managerApp").factory("VoipScreenScreenList", function (OvhApiTelephony) {
     "use strict";
 
     /*= ==================================
@@ -78,7 +78,7 @@ angular.module("managerApp").factory("VoipScreenScreenList", function (Telephony
 
         self.state = "CREATING";
 
-        return Telephony.OvhPabx().Dialplan().Extension().ConditionScreenList()
+        return OvhApiTelephony.OvhPabx().Dialplan().Extension().ConditionScreenList()
             .Lexi()
             .create({
                 billingAccount: self.billingAccount,
@@ -104,7 +104,7 @@ angular.module("managerApp").factory("VoipScreenScreenList", function (Telephony
 
         self.state = "DELETING";
 
-        return Telephony.OvhPabx().Dialplan().Extension().ConditionScreenList()
+        return OvhApiTelephony.OvhPabx().Dialplan().Extension().ConditionScreenList()
             .Lexi()
             .remove({
                 billingAccount: self.billingAccount,

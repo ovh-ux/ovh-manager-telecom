@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyLineAssistRmaCtrl", function ($stateParams, $q, $translate, Toast, ToastError, Telephony) {
+angular.module("managerApp").controller("TelecomTelephonyLineAssistRmaCtrl", function ($stateParams, $q, $translate, Toast, ToastError, OvhApiTelephony) {
     "use strict";
 
     var self = this;
@@ -13,14 +13,14 @@ angular.module("managerApp").controller("TelecomTelephonyLineAssistRmaCtrl", fun
     }
 
     self.fetchPhone = function () {
-        return Telephony.Line().Phone().Lexi().get({
+        return OvhApiTelephony.Line().Phone().Lexi().get({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }).$promise;
     };
 
     self.fetchRma = function () {
-        return Telephony.Line().Phone().RMA().Lexi().query({
+        return OvhApiTelephony.Line().Phone().RMA().Lexi().query({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }).$promise.catch(function (err) {
@@ -31,7 +31,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineAssistRmaCtrl", fun
 
         }).then(function (rmaIds) {
             return $q.all(rmaIds.map(function (id) {
-                return Telephony.Line().Phone().RMA().Lexi().get({
+                return OvhApiTelephony.Line().Phone().RMA().Lexi().get({
                     billingAccount: $stateParams.billingAccount,
                     serviceName: $stateParams.serviceName,
                     id: id
@@ -42,7 +42,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineAssistRmaCtrl", fun
 
     self.cancelRma = function (rma) {
         rma.isCancelling = true;
-        return Telephony.Line().Phone().RMA().Lexi().cancel({
+        return OvhApiTelephony.Line().Phone().RMA().Lexi().cancel({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName,
             id: rma.id

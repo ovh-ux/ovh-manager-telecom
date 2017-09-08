@@ -1,13 +1,13 @@
 angular.module("managerApp").controller("TelecomSmsSendersAddCtrl", class TelecomSmsSendersAddCtrl {
-    constructor ($q, $stateParams, $translate, $state, $timeout, Sms, Toast, ToastError) {
+    constructor ($q, $stateParams, $translate, $state, $timeout, OvhApiSms, Toast, ToastError) {
         this.$q = $q;
         this.$stateParams = $stateParams;
         this.$translate = $translate;
         this.$state = $state;
         this.$timeout = $timeout;
         this.api = {
-            sms: Sms.Lexi(),
-            smsSenders: Sms.Senders().Lexi()
+            sms: OvhApiSms.Lexi(),
+            smsSenders: OvhApiSms.Senders().Lexi()
         };
         this.Toast = Toast;
         this.ToastError = ToastError;

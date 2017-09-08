@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("OverTheBoxTasksCtrl", function ($translate, $q, $stateParams, PAGINATION_PER_PAGE, OverTheBox, Toast) {
+angular.module("managerApp").controller("OverTheBoxTasksCtrl", function ($translate, $q, $stateParams, PAGINATION_PER_PAGE, OvhApiOverTheBox, Toast) {
     "use strict";
 
     var self = this;
@@ -25,7 +25,7 @@ angular.module("managerApp").controller("OverTheBoxTasksCtrl", function ($transl
 
     self.getTasks = function () {
         self.loaders.tasks = true;
-        return OverTheBox.Lexi().getTasks({ serviceName: self.serviceName }).$promise.then(
+        return OvhApiOverTheBox.Lexi().getTasks({ serviceName: self.serviceName }).$promise.then(
             function (taskIds) {
                 self.taskIds = taskIds;
             },
@@ -39,7 +39,7 @@ angular.module("managerApp").controller("OverTheBoxTasksCtrl", function ($transl
 
     self.onTransformItem = function (id) {
         self.loaders.init = true;
-        return OverTheBox.Lexi().getTask({ serviceName: $stateParams.serviceName, taskId: id });
+        return OvhApiOverTheBox.Lexi().getTask({ serviceName: $stateParams.serviceName, taskId: id });
     };
 
     self.onTransformItemDone = function () {

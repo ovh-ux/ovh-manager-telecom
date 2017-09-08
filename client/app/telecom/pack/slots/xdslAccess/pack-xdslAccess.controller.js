@@ -1,5 +1,5 @@
 /* global async */
-angular.module("managerApp").controller("PackAccessCtrl", function ($scope, PackXdslAccess, XdslLines, $stateParams) {
+angular.module("managerApp").controller("PackAccessCtrl", function ($scope, OvhApiPackXdslAccess, OvhApiXdslLines, $stateParams) {
     "use strict";
 
     var self = this;
@@ -12,12 +12,12 @@ angular.module("managerApp").controller("PackAccessCtrl", function ($scope, Pack
         };
 
         // Get service link to this access from current Pack Xdsl
-        return PackXdslAccess.Aapi().query({
+        return OvhApiPackXdslAccess.Aapi().query({
             packId: $stateParams.packName
         }).$promise.then(
             function (services) {
                 async.map(services, function (service, callback) {
-                    XdslLines.Lexi().query({
+                    OvhApiXdslLines.Lexi().query({
                         xdslId: service.accessName
                     }).$promise.then(function (lines) {
                         service.lines = lines;

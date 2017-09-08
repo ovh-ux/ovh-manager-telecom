@@ -1,17 +1,17 @@
-angular.module("managerApp").controller("TelecomTelephonyServiceContactCtrl", function ($stateParams, $q, $timeout, $translate, Telephony, Toast, ToastError, Xdsl) {
+angular.module("managerApp").controller("TelecomTelephonyServiceContactCtrl", function ($stateParams, $q, $timeout, $translate, OvhApiTelephony, Toast, ToastError, OvhApiXdsl) {
     "use strict";
 
     var self = this;
 
     function fetchDirectory () {
-        return Telephony.Service().Lexi().directory({
+        return OvhApiTelephony.Service().Lexi().directory({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }).$promise;
     }
 
     function fetchDirectoryServiceCode (ape) {
-        return Telephony.Service().Lexi().getDirectoryServiceCode({
+        return OvhApiTelephony.Service().Lexi().getDirectoryServiceCode({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName,
             apeCode: ape
@@ -90,7 +90,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceContactCtrl", fu
         }
         var modified = _.assign(self.directory, self.directoryForm);
         self.isUpdating = true;
-        return Telephony.Service().Lexi().changeDirectory({
+        return OvhApiTelephony.Service().Lexi().changeDirectory({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }, modified).$promise.then(function () {
@@ -122,7 +122,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceContactCtrl", fu
                     pendingRequest.$cancelRequest();
                 }
                 self.isCityListLoading = true;
-                pendingRequest = Telephony.Number().Lexi().getZones({
+                pendingRequest = OvhApiTelephony.Number().Lexi().getZones({
                     axiom: self.directoryForm.postCode,
                     country: self.directoryForm.country.toLowerCase()
                 });
@@ -158,7 +158,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceContactCtrl", fu
 
                 // we have to poll because api call is not synchronous :(
                 var fetchInfos = function (siret) {
-                    return Telephony.Service().Lexi().fetchDirectoryEntrepriseInformations({
+                    return OvhApiTelephony.Service().Lexi().fetchDirectoryEntrepriseInformations({
                         billingAccount: $stateParams.billingAccount,
                         serviceName: $stateParams.serviceName
                     }, {
@@ -223,7 +223,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceContactCtrl", fu
                 var city = _.find(self.cityList, { name: self.directoryForm.city });
                 if (city) {
                     self.isWayListLoading = true;
-                    pendingRequest = Xdsl.Lexi().eligibilityStreets({
+                    pendingRequest = OvhApiXdsl.Lexi().eligibilityStreets({
                         inseeCode: city.inseeCode,
                         partialName: partialName
                     });

@@ -7,7 +7,7 @@ angular.module("managerApp").component("packMoveEligibilityLineNumber", {
     },
     templateUrl: "app/telecom/pack/move/eligibility/lineNumber/pack-move-eligibility-lineNumber.html",
     controllerAs: "PackMoveEligibilityPhoneNumber",
-    controller: function ($scope, $stateParams, $filter, $translate, ToastError, Toast, PackXdslMove) {
+    controller: function ($scope, $stateParams, $filter, $translate, ToastError, Toast, OvhApiPackXdslMove) {
         "use strict";
 
         var self = this;
@@ -17,7 +17,7 @@ angular.module("managerApp").component("packMoveEligibilityLineNumber", {
             this.loading = true;
             this.lineNumber = self.testLine.lineNumber.replace(/[^0-9]/g, "");
             self.submited();
-            return PackXdslMove.Lexi().pollElligibility($scope, {
+            return OvhApiPackXdslMove.Lexi().pollElligibility($scope, {
                 packName: $stateParams.packName,
                 lineNumber: self.lineNumber
             }).then(

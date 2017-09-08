@@ -1,4 +1,4 @@
-angular.module("managerApp").factory("TelephonyGroupNumberOvhPabxMenuEntry", function ($q, Telephony) {
+angular.module("managerApp").factory("TelephonyGroupNumberOvhPabxMenuEntry", function ($q, OvhApiTelephony) {
     "use strict";
 
     /*= ==================================
@@ -77,7 +77,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberOvhPabxMenuEntry", fun
 
         self.status = "IN_CREATION";
 
-        return Telephony.OvhPabx().Menu().Entry().Lexi().create({
+        return OvhApiTelephony.OvhPabx().Menu().Entry().Lexi().create({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName,
             menuId: self.menuId
@@ -101,7 +101,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberOvhPabxMenuEntry", fun
 
         self.status = "SAVING";
 
-        return Telephony.OvhPabx().Menu().Entry().Lexi().save({
+        return OvhApiTelephony.OvhPabx().Menu().Entry().Lexi().save({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName,
             menuId: self.menuId,
@@ -124,7 +124,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberOvhPabxMenuEntry", fun
 
         self.status = "DELETING";
 
-        return Telephony.OvhPabx().Menu().Entry().Lexi().remove({
+        return OvhApiTelephony.OvhPabx().Menu().Entry().Lexi().remove({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName,
             menuId: self.menuId,

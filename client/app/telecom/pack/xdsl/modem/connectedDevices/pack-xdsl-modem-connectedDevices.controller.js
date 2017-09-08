@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("XdslModemConnectedDevicesCtrl", function ($scope, $stateParams, $q, $translate, Xdsl, Toast, PackXdslModemMediator) {
+angular.module("managerApp").controller("XdslModemConnectedDevicesCtrl", function ($scope, $stateParams, $q, $translate, OvhApiXdsl, Toast, PackXdslModemMediator) {
     "use strict";
 
     var self = this;
@@ -56,7 +56,7 @@ angular.module("managerApp").controller("XdslModemConnectedDevicesCtrl", functio
      * Get All connected devices
      */
     this.getConnectedDevices = function () {
-        return Xdsl.Modem().ConnectedDevices().Aapi().query(
+        return OvhApiXdsl.Modem().ConnectedDevices().Aapi().query(
             {
                 xdslId: $stateParams.serviceName
             }
@@ -80,7 +80,7 @@ angular.module("managerApp").controller("XdslModemConnectedDevicesCtrl", functio
         this.devices = null;
         this.loading = true;
         PackXdslModemMediator.disableCapabilities();
-        return Xdsl.Modem().ConnectedDevices().Aapi().refresh(
+        return OvhApiXdsl.Modem().ConnectedDevices().Aapi().refresh(
             {
                 xdslId: $stateParams.serviceName
             }

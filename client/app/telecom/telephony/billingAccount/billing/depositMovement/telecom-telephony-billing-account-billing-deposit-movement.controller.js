@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingDepositMovementCtrl", function ($q, $state, $timeout, $translate, Telephony, ToastError, Toast) {
+angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingDepositMovementCtrl", function ($q, $state, $timeout, $translate, OvhApiTelephony, ToastError, Toast) {
     "use strict";
     var self = this;
 
@@ -37,7 +37,7 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingDe
     self.submit = function () {
         self.loading.submit = true;
 
-        return Telephony.Lexi().transferSecurityDeposit({
+        return OvhApiTelephony.Lexi().transferSecurityDeposit({
             billingAccount: self.source.billingAccount
         }, {
             amount: self.amount,
@@ -71,7 +71,7 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingDe
                 targets,
                 function (obj, value) {
                     var billingAccount = _.get(value, "value.billingAccount");
-                    obj[billingAccount] = Telephony.Lexi().canTransferSecurityDeposit(
+                    obj[billingAccount] = OvhApiTelephony.Lexi().canTransferSecurityDeposit(
                         {
                             billingAccount: self.source.billingAccount
                         }, {
@@ -100,13 +100,13 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingDe
     };
 
     self.getEnabledBillingAccounts = function () {
-        return Telephony.Aapi().billingAccounts().$promise.then(function (billingAccounts) {
+        return OvhApiTelephony.Aapi().billingAccounts().$promise.then(function (billingAccounts) {
             return _.filter(billingAccounts, { status: "enabled" });
         });
     };
 
     self.getServiceInfos = function (billingAccount) {
-        return Telephony.Lexi().getServiceInfos({
+        return OvhApiTelephony.Lexi().getServiceInfos({
             billingAccount: billingAccount
         }).$promise;
     };

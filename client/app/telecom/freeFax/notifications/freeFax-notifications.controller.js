@@ -1,5 +1,5 @@
 angular.module("managerApp")
-    .controller("FreeFaxNotificationsCtrl", function ($stateParams, FreeFax, Toast, $translate, $q, FREEFAX, FreeFaxNotificationObject) {
+    .controller("FreeFaxNotificationsCtrl", function ($stateParams, OvhApiFreeFax, Toast, $translate, $q, FREEFAX, FreeFaxNotificationObject) {
         "use strict";
         var self = this;
 
@@ -41,7 +41,7 @@ angular.module("managerApp")
                 return elt.email !== notif.email;
             });
             notifications.push(notif.tempValue);
-            return FreeFax.Aapi().notificationsUpdate(
+            return OvhApiFreeFax.Aapi().notificationsUpdate(
                 {
                     serviceName: $stateParams.serviceName
                 }, {
@@ -106,7 +106,7 @@ angular.module("managerApp")
          * @return {Promise}
          */
         function getNotifications () {
-            FreeFax.Aapi().notifications({
+            OvhApiFreeFax.Aapi().notifications({
                 serviceName: $stateParams.serviceName
             }).$promise.then(function (notificationList) {
                 self.notifications = notificationList.map(function (notif) {
@@ -130,7 +130,7 @@ angular.module("managerApp")
          * @return {Promise}
          */
         function getTypeChoices () {
-            return FreeFax.Lexi().schema().$promise.then(function (data) {
+            return OvhApiFreeFax.Lexi().schema().$promise.then(function (data) {
                 self.typeChoices = _.map(data.models["telephony.ServiceVoicemailMailOptionEnum"].enum, function (value) {
                     return {
                         value: value,
