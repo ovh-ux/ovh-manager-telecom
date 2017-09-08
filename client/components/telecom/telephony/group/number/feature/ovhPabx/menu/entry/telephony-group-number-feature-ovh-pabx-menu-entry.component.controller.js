@@ -107,11 +107,6 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxMenuEntryCtrl", f
             initPromise.push(self.menuEntry.menuSub.getEntries());
         }
 
-        // get queues if needed
-        if (self.ovhPabx && self.ovhPabx.featureType === "cloudHunting") {
-            initPromise.push(self.ovhPabx.getQueues());
-        }
-
         return $q.allSettled(initPromise).finally(function () {
             self.loading.init = false;
         });

@@ -68,7 +68,7 @@ angular.module("managerApp").controller("TelephonyNumberOvhPabxCtrl", function (
             ];
 
             if (self.ovhPabx.featureType === "cloudIvr" || (self.ovhPabx.isCCS && self.ovhPabx.featureType === "cloudHunting")) {
-                initPromises.push(self.ovhPabx.getMenus());
+                initPromises.push(self.ovhPabx.getMenus(true));
             }
             if (self.ovhPabx.featureType === "cloudHunting") {
                 initPromises.push(self.ovhPabx.getQueues());
