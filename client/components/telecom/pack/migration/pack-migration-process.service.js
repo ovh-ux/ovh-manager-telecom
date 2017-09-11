@@ -1,7 +1,7 @@
 /**
  *  Service used to share data between differents steps of the pack migration process.
  */
-angular.module("managerApp").service("PackMigrationProcess", function ($q, PackXdsl, Poller) {
+angular.module("managerApp").service("PackMigrationProcess", function ($q, OvhApiPackXdsl, Poller) {
     "use strict";
 
     var self = this;
@@ -51,7 +51,7 @@ angular.module("managerApp").service("PackMigrationProcess", function ($q, PackX
     ========================================*/
 
     function getMigrationTaskByStatus (taskStatus) {
-        return PackXdsl.Task().Lexi().query({
+        return OvhApiPackXdsl.Task().Lexi().query({
             packName: migrationProcess.pack.packName,
             "function": "pendingMigration",
             status: taskStatus
@@ -112,7 +112,7 @@ angular.module("managerApp").service("PackMigrationProcess", function ($q, PackX
             });
         }
 
-        return PackXdsl.Lexi().migrate({
+        return OvhApiPackXdsl.Lexi().migrate({
             packName: migrationProcess.pack.packName
         }, postParams).$promise;
     };
@@ -136,7 +136,7 @@ angular.module("managerApp").service("PackMigrationProcess", function ($q, PackX
     ====================================*/
 
     function getPackService () {
-        return PackXdsl.Lexi().get({
+        return OvhApiPackXdsl.Lexi().get({
             packId: migrationProcess.pack.packName
         }).$promise.then(function (serviceDetails) {
             angular.extend(migrationProcess.pack, serviceDetails);
@@ -144,7 +144,7 @@ angular.module("managerApp").service("PackMigrationProcess", function ($q, PackX
     }
 
     function getPackOptions () {
-        return PackXdsl.Lexi().getServices({
+        return OvhApiPackXdsl.Lexi().getServices({
             packId: migrationProcess.pack.packName
         }).$promise.then(function (packOptions) {
             migrationProcess.pack.options = _.indexBy(packOptions, "name");

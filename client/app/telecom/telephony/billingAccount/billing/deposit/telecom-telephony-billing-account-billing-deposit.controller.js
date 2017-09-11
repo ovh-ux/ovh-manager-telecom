@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingDepositCtrl", function ($filter, $q, $stateParams, $translate, Order, Telephony, ToastError) {
+angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingDepositCtrl", function ($filter, $q, $stateParams, $translate, OvhApiOrder, OvhApiTelephony, ToastError) {
     "use strict";
     var self = this;
 
@@ -37,7 +37,7 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingDe
     self.orderSecurityDeposit = function () {
         self.loading.submit = true;
 
-        return Order.Telephony().Lexi().orderSecurityDeposit({
+        return OvhApiOrder.Telephony().Lexi().orderSecurityDeposit({
             billingAccount: $stateParams.billingAccount
         }, {
             amount: self.securityDepositAmount.value
@@ -57,7 +57,7 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingDe
         self.futureDeposit = null;
         self.contracts = null;
 
-        return Order.Telephony().Lexi().getSecurityDeposit({
+        return OvhApiOrder.Telephony().Lexi().getSecurityDeposit({
             billingAccount: $stateParams.billingAccount,
             amount: self.securityDepositAmount.value
         }).$promise.then(function (data) {
@@ -75,13 +75,13 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingDe
     };
 
     self.getSecurityDepositAmounts = function () {
-        return Telephony.Lexi().getAmountSecurityDeposit({
+        return OvhApiTelephony.Lexi().getAmountSecurityDeposit({
             billingAccount: $stateParams.billingAccount
         }).$promise;
     };
 
     self.getBillingAccount = function () {
-        return Telephony.Lexi().get({
+        return OvhApiTelephony.Lexi().get({
             billingAccount: $stateParams.billingAccount
         }).$promise;
     };

@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyLinePhoneOrderCtrl", function ($scope, $stateParams, $translate, TelephonyMediator, Telephony, Order, ToastError, TELEPHONY_RMA) {
+angular.module("managerApp").controller("TelecomTelephonyLinePhoneOrderCtrl", function ($scope, $stateParams, $translate, TelephonyMediator, OvhApiTelephony, OvhApiOrder, ToastError, TELEPHONY_RMA) {
     "use strict";
 
     var self = this;
@@ -7,14 +7,14 @@ angular.module("managerApp").controller("TelecomTelephonyLinePhoneOrderCtrl", fu
     self.rmaStatusUrl = TelephonyMediator.getV6ToV4RedirectionUrl("line.line_sav_rma_status");
 
     function fetchOfferPhones (offer) {
-        return Telephony.Lexi().getLineOfferPhones({
+        return OvhApiTelephony.Lexi().getLineOfferPhones({
             country: "fr",
             offer: offer
         }).$promise;
     }
 
     function fetchMerchandiseAvailable () {
-        return Telephony.Line().Phone().Lexi().getMerchandiseAvailable({
+        return OvhApiTelephony.Line().Phone().Lexi().getMerchandiseAvailable({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }).$promise.then(function (result) {
@@ -51,7 +51,7 @@ angular.module("managerApp").controller("TelecomTelephonyLinePhoneOrderCtrl", fu
             params.mondialRelayId = order.shipping.relay.id;
         }
         self.isFetchingOrder = true;
-        return Order.Telephony().Lexi().getHardware(params).$promise.finally(function () {
+        return OvhApiOrder.Telephony().Lexi().getHardware(params).$promise.finally(function () {
             self.isFetchingOrder = false;
         });
     }
@@ -116,7 +116,7 @@ angular.module("managerApp").controller("TelecomTelephonyLinePhoneOrderCtrl", fu
         TelephonyMediator.getGroup($stateParams.billingAccount).then(function (group) {
             self.line = group.getLine($stateParams.serviceName);
         }).then(function () {
-            return Telephony.Line().Lexi().get({
+            return OvhApiTelephony.Line().Lexi().get({
                 billingAccount: self.line.billingAccount,
                 serviceName: self.line.serviceName
             }).$promise.then(function (result) {
@@ -198,7 +198,7 @@ angular.module("managerApp").controller("TelecomTelephonyLinePhoneOrderCtrl", fu
 
     self.submitPhoneReturn = function () {
         self.isSubmiting = true;
-        return Telephony.Line().Phone().RMA().Lexi().post({
+        return OvhApiTelephony.Line().Phone().RMA().Lexi().post({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }, {
@@ -230,7 +230,7 @@ angular.module("managerApp").controller("TelecomTelephonyLinePhoneOrderCtrl", fu
             params.shippingContactId = self.order.contact.id;
         }
         self.isSubmiting = true;
-        return Order.Telephony().Lexi().orderHardware({
+        return OvhApiOrder.Telephony().Lexi().orderHardware({
             serviceName: $stateParams.serviceName
         }, params).$promise.then(function (order) {
             self.order.success = true;
@@ -257,7 +257,7 @@ angular.module("managerApp").controller("TelecomTelephonyLinePhoneOrderCtrl", fu
         }
 
         self.isSubmiting = true;
-        return Telephony.Line().Phone().RMA().Lexi().post({
+        return OvhApiTelephony.Line().Phone().RMA().Lexi().post({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }, params).$promise.then(function () {

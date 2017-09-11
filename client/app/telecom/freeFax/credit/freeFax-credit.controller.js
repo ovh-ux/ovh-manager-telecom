@@ -1,5 +1,5 @@
 angular.module("managerApp")
-    .controller("FreeFaxCreditCtrl", function (FREEFAX, $stateParams, ToastError, FreeFax) {
+    .controller("FreeFaxCreditCtrl", function (FREEFAX, $stateParams, ToastError, OvhApiFreeFax) {
         "use strict";
         var self = this;
 
@@ -22,7 +22,7 @@ angular.module("managerApp")
         self.getPrice = function (amount) {
             self.contracts = [];
             self.cost = null;
-            FreeFax.Lexi().getPrice({
+            OvhApiFreeFax.Lexi().getPrice({
                 quantity: amount
             }).$promise.then(function (data) {
                 self.cost = data.prices;
@@ -37,7 +37,7 @@ angular.module("managerApp")
 
         self.order = function (amount) {
             self.orderDone = true;
-            FreeFax.Lexi().orderCredits(null, {
+            OvhApiFreeFax.Lexi().orderCredits(null, {
                 quantity: amount
             }).$promise.then(function (response) {
                 var detail = _.head(response.details);

@@ -1,12 +1,12 @@
 angular.module("managerApp").controller(
     "TelecomTelephonyLineCallsAbbreviatedNumbersCtrl",
-    function ($q, $stateParams, $translate, Telephony, Toast, PAGINATION_PER_PAGE) {
+    function ($q, $stateParams, $translate, OvhApiTelephony, Toast, PAGINATION_PER_PAGE) {
         "use strict";
 
         var self = this;
 
         this.remove = function (abbreviatedNumber) {
-            return Telephony.Line().AbbreviatedNumber().Lexi().remove({
+            return OvhApiTelephony.Line().AbbreviatedNumber().Lexi().remove({
                 billingAccount: $stateParams.billingAccount,
                 serviceName: $stateParams.serviceName,
                 abbreviatedNumber: abbreviatedNumber.abbreviatedNumber
@@ -14,14 +14,14 @@ angular.module("managerApp").controller(
         };
 
         this.insert = function (abbreviatedNumber) {
-            return Telephony.Line().AbbreviatedNumber().Lexi().insert({
+            return OvhApiTelephony.Line().AbbreviatedNumber().Lexi().insert({
                 billingAccount: $stateParams.billingAccount,
                 serviceName: $stateParams.serviceName
             }, abbreviatedNumber).$promise;
         };
 
         this.update = function (abbreviatedNumber) {
-            return Telephony.Line().AbbreviatedNumber().Lexi().update({
+            return OvhApiTelephony.Line().AbbreviatedNumber().Lexi().update({
                 billingAccount: $stateParams.billingAccount,
                 serviceName: $stateParams.serviceName,
                 abbreviatedNumber: abbreviatedNumber.abbreviatedNumber
@@ -33,7 +33,7 @@ angular.module("managerApp").controller(
                 init: true
             };
             this.abbreviatedNumbers = [];
-            return Telephony.Line().AbbreviatedNumber().Aapi().query({
+            return OvhApiTelephony.Line().AbbreviatedNumber().Aapi().query({
                 billingAccount: $stateParams.billingAccount,
                 serviceName: $stateParams.serviceName
             }).$promise.then(
@@ -57,7 +57,7 @@ angular.module("managerApp").controller(
                 perPage: PAGINATION_PER_PAGE
             };
             return $q.all([
-                Telephony.Line().Lexi().get({
+                OvhApiTelephony.Line().Lexi().get({
                     billingAccount: $stateParams.billingAccount,
                     serviceName: $stateParams.serviceName
                 }).$promise.then(

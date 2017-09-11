@@ -1,12 +1,12 @@
 angular.module("managerApp").controller("TelecomSmsSmsPendingRemoveCtrl", class TelecomSmsSmsPendingRemoveCtrl {
-    constructor ($q, $stateParams, $timeout, $uibModalInstance, Sms, pendingSms) {
+    constructor ($q, $stateParams, $timeout, $uibModalInstance, OvhApiSms, pendingSms) {
         this.$q = $q;
         this.$stateParams = $stateParams;
         this.$timeout = $timeout;
         this.$uibModalInstance = $uibModalInstance;
         this.api = {
             sms: {
-                jobs: Sms.Jobs().Lexi()
+                jobs: OvhApiSms.Jobs().Lexi()
             }
         };
         this.pendingSms = pendingSms;

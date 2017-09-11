@@ -2,7 +2,7 @@
  *  This factory manages the conference feature of a number.
  *  This manages the conference of /telephony/{billingAccount}/number API.
  */
-angular.module("managerApp").factory("TelephonyGroupNumberConference", function ($q, $timeout, TelephonyGroupNumberConferenceParticipant, TelephonyMediator, Telephony, User, voipServiceTask) {
+angular.module("managerApp").factory("TelephonyGroupNumberConference", function ($q, $timeout, TelephonyGroupNumberConferenceParticipant, TelephonyMediator, OvhApiTelephony, OvhApiMe, voipServiceTask) {
     "use strict";
 
     var settingsAttributes = ["featureType", "pin", "announceFile", "reportEmail",
@@ -107,7 +107,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberConference", function 
         }
 
         if (featureSettings.announceFilename) {
-            promise.announceFilenameLabel = User.Document().Lexi().get({
+            promise.announceFilenameLabel = OvhApiMe.Document().Lexi().get({
                 id: featureSettings.announceFilename
             }).$promise.then(function (doc) {
                 return doc.name;
@@ -139,7 +139,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberConference", function 
     TelephonyGroupNumberConference.prototype.getInfos = function () {
         var self = this;
 
-        return Telephony.Conference().Lexi().informations({
+        return OvhApiTelephony.Conference().Lexi().informations({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName
         }).$promise.then(function (infos) {
@@ -164,7 +164,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberConference", function 
     TelephonyGroupNumberConference.prototype.getParticipants = function () {
         var self = this;
 
-        return Telephony.Conference().Participants().Aapi().query({
+        return OvhApiTelephony.Conference().Participants().Aapi().query({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName
         }).$promise.then(function (participants) {
@@ -180,7 +180,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberConference", function 
             settings.pin = 0;
         }
 
-        return Telephony.Conference().Lexi().updateSettings({
+        return OvhApiTelephony.Conference().Lexi().updateSettings({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName
         }, _.omit(settings, ["featureType", "eventsChannel", "announceFilename"])).$promise.then(function () {
@@ -191,7 +191,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberConference", function 
     TelephonyGroupNumberConference.prototype.lock = function () {
         var self = this;
 
-        return Telephony.Conference().Lexi().lock({
+        return OvhApiTelephony.Conference().Lexi().lock({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName
         }, {}).$promise;
@@ -200,7 +200,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberConference", function 
     TelephonyGroupNumberConference.prototype.unlock = function () {
         var self = this;
 
-        return Telephony.Conference().Lexi().unlock({
+        return OvhApiTelephony.Conference().Lexi().unlock({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName
         }, {}).$promise;
@@ -209,7 +209,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberConference", function 
     TelephonyGroupNumberConference.prototype.getSettings = function () {
         var self = this;
 
-        return Telephony.Conference().Lexi().settings({
+        return OvhApiTelephony.Conference().Lexi().settings({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName
         }).$promise.then(function (settings) {
@@ -220,12 +220,12 @@ angular.module("managerApp").factory("TelephonyGroupNumberConference", function 
     TelephonyGroupNumberConference.prototype.getWebAccess = function () {
         var self = this;
 
-        return Telephony.Conference().WebAccess().Lexi().query({
+        return OvhApiTelephony.Conference().WebAccess().Lexi().query({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName
         }).$promise.then(function (ids) {
             return $q.all(_.map(ids, function (id) {
-                return Telephony.Conference().WebAccess().Lexi().get({
+                return OvhApiTelephony.Conference().WebAccess().Lexi().get({
                     billingAccount: self.billingAccount,
                     serviceName: self.serviceName,
                     id: id
@@ -241,7 +241,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberConference", function 
 
         return TelephonyMediator.getApiModelEnum("telephony.ConferenceWebAccessTypeEnum").then(function (accessType) {
             return $q.all(_.map(accessType, function (type) {
-                return Telephony.Conference().WebAccess().Lexi().create({
+                return OvhApiTelephony.Conference().WebAccess().Lexi().create({
                     billingAccount: self.billingAccount,
                     serviceName: self.serviceName
                 }, {
@@ -258,7 +258,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberConference", function 
         var ids = [].concat(_.get(self.webAccess, "read.id"), _.get(self.webAccess, "write.id"));
 
         return $q.all(_.map(_.chain(ids).compact().value(), function (id) {
-            return Telephony.Conference().WebAccess().Lexi().remove({
+            return OvhApiTelephony.Conference().WebAccess().Lexi().remove({
                 billingAccount: self.billingAccount,
                 serviceName: self.serviceName,
                 id: id
@@ -274,8 +274,8 @@ angular.module("managerApp").factory("TelephonyGroupNumberConference", function 
     TelephonyGroupNumberConference.prototype.announceUpload = function (file) {
         var self = this;
 
-        return User.Document().Lexi().upload(file.name, file).then(function (doc) {
-            return Telephony.Conference().Lexi().announceUpload({
+        return OvhApiMe.Document().Lexi().upload(file.name, file).then(function (doc) {
+            return OvhApiTelephony.Conference().Lexi().announceUpload({
                 billingAccount: self.billingAccount,
                 serviceName: self.serviceName
             }, {
@@ -414,7 +414,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberConference", function 
     TelephonyGroupNumberConference.prototype.init = function () {
         var self = this;
 
-        return Telephony.Conference().Lexi().get({
+        return OvhApiTelephony.Conference().Lexi().get({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName
         }).$promise.then(function () {

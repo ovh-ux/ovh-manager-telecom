@@ -1,4 +1,4 @@
-angular.module("managerApp").service("PackMediator", function ($q, PackXdsl, Xdsl) {
+angular.module("managerApp").service("PackMediator", function ($q, OvhApiPackXdsl, OvhApiXdsl) {
     "use strict";
 
     var self = this;
@@ -10,7 +10,7 @@ angular.module("managerApp").service("PackMediator", function ($q, PackXdsl, Xds
 
         // chunkify to avoids "request too large" error
         return $q.all(_.map(_.chunk(ids, 200), function (chunkIds) {
-            return Xdsl.Lines().Erika().query().batch("serviceName", [""].concat(chunkIds), ",").expand().execute().$promise;
+            return OvhApiXdsl.Lines().Erika().query().batch("serviceName", [""].concat(chunkIds), ",").expand().execute().$promise;
         })).then(function (chunkResult) {
             return _.flatten(chunkResult);
         }).then(function (result) {
@@ -25,7 +25,7 @@ angular.module("managerApp").service("PackMediator", function ($q, PackXdsl, Xds
 
         // chunkify to avoids "request too large" error
         return $q.all(_.map(_.chunk(ids, 200), function (chunkIds) {
-            return PackXdsl.Erika().access().batch("packName", [""].concat(chunkIds), ",").execute().$promise;
+            return OvhApiPackXdsl.Erika().access().batch("packName", [""].concat(chunkIds), ",").execute().$promise;
         })).then(function (chunkResult) {
             return _.flatten(chunkResult);
         }).then(function (result) {
@@ -40,7 +40,7 @@ angular.module("managerApp").service("PackMediator", function ($q, PackXdsl, Xds
 
         // chunkify to avoids "request too large" error
         return $q.all(_.map(_.chunk(ids, 200), function (chunkIds) {
-            return Xdsl.Erika().query().batch("serviceName", [""].concat(chunkIds), ",").expand().execute().$promise;
+            return OvhApiXdsl.Erika().query().batch("serviceName", [""].concat(chunkIds), ",").expand().execute().$promise;
         })).then(function (chunkResult) {
             return _.flatten(chunkResult);
         }).then(function (result) {
@@ -49,7 +49,7 @@ angular.module("managerApp").service("PackMediator", function ($q, PackXdsl, Xds
     };
 
     self.fetchXdslByNumber = function () {
-        return Xdsl.Lines().Erika().get().aggregate("serviceName").execute().$promise.then(function (result) {
+        return OvhApiXdsl.Lines().Erika().get().aggregate("serviceName").execute().$promise.then(function (result) {
             return self.fetchXdslByIds(_.map(result, function (item) {
                 if (item && item.path) {
                     var match = /\/xdsl\/([^\/]+)/.exec(item.path);
@@ -61,7 +61,7 @@ angular.module("managerApp").service("PackMediator", function ($q, PackXdsl, Xds
     };
 
     self.fetchPacks = function () {
-        var request = PackXdsl.Erika().query().sort(["description", "offerDescription", "packName"]);
+        var request = OvhApiPackXdsl.Erika().query().sort(["description", "offerDescription", "packName"]);
         var packList = [];
         return request.expand().execute().$promise.then(function (result) {
             packList = _.pluck(result, "value");
@@ -120,7 +120,7 @@ angular.module("managerApp").service("PackMediator", function ($q, PackXdsl, Xds
     };
 
     self.fetchXdsl = function (xdslType) {
-        var request = Xdsl.Erika().query().addFilter("accessType", "eq", xdslType).sort(["description", "accessName"]);
+        var request = OvhApiXdsl.Erika().query().addFilter("accessType", "eq", xdslType).sort(["description", "accessName"]);
         var xdslList = [];
         return request.expand().execute().$promise.then(function (result) {
             xdslList = xdslList.concat(_.pluck(result, "value"));
@@ -145,7 +145,7 @@ angular.module("managerApp").service("PackMediator", function ($q, PackXdsl, Xds
     };
 
     self.getPackStatus = function (packId) {
-        return PackXdsl.Lexi().getServiceInfos(
+        return OvhApiPackXdsl.Lexi().getServiceInfos(
             {
                 packId: packId
             }
@@ -162,8 +162,8 @@ angular.module("managerApp").service("PackMediator", function ($q, PackXdsl, Xds
 
     self.getCount = function () {
         return $q.all({
-            pack: PackXdsl.Erika().query().execute().$promise,
-            xdsl: Xdsl.Erika().query().addFilter("status", "ne", "deleting").execute().$promise
+            pack: OvhApiPackXdsl.Erika().query().execute().$promise,
+            xdsl: OvhApiXdsl.Erika().query().addFilter("status", "ne", "deleting").execute().$promise
         }).then(function (result) {
             return result.pack.length + result.xdsl.length;
         });

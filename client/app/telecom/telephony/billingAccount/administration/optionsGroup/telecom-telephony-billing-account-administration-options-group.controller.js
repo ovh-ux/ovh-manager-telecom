@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyBillingAccountAdministrationOptionsGroup", function ($q, $stateParams, $translate, Telephony, User, Toast) {
+angular.module("managerApp").controller("TelecomTelephonyBillingAccountAdministrationOptionsGroup", function ($q, $stateParams, $translate, OvhApiTelephony, OvhApiMe, Toast) {
     "use strict";
 
     var self = this;
@@ -11,11 +11,11 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountAdministr
     ===============================*/
 
     function fetchSettings () {
-        Telephony.Lexi().resetCache();
-        Telephony.Lexi().resetQueryCache();
+        OvhApiTelephony.Lexi().resetCache();
+        OvhApiTelephony.Lexi().resetQueryCache();
         return $q.all({
-            telephony: Telephony.Lexi().get({ billingAccount: $stateParams.billingAccount }).$promise,
-            user: User.Telephony().Settings().Lexi().get().$promise
+            telephony: OvhApiTelephony.Lexi().get({ billingAccount: $stateParams.billingAccount }).$promise,
+            user: OvhApiMe.Telephony().Settings().Lexi().get().$promise
         });
     }
 
@@ -35,10 +35,10 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountAdministr
     self.changeSettings = function () {
         self.isChanging = true;
         return $q.all([
-            Telephony.Lexi().edit({
+            OvhApiTelephony.Lexi().edit({
                 billingAccount: $stateParams.billingAccount
             }, _.pick(self.optionsGroupForm.telephony, telephonyAttributes)).$promise,
-            User.Telephony().Settings().Lexi().change({
+            OvhApiMe.Telephony().Settings().Lexi().change({
                 settings: self.optionsGroupForm.user
             }).$promise
         ]).then(function () {

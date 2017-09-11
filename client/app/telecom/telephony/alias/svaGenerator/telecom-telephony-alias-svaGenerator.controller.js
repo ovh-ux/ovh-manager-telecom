@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyAliasSvaGeneratorCtrl", function ($stateParams, Telephony, ToastError, SvaGeneratorConfig) {
+angular.module("managerApp").controller("TelecomTelephonyAliasSvaGeneratorCtrl", function ($stateParams, OvhApiTelephony, ToastError, SvaGeneratorConfig) {
     "use strict";
 
     var self = this;
@@ -15,7 +15,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasSvaGeneratorCtrl",
         self.notSupported = false;
 
         self.isLoading = true;
-        Telephony.Rsva().Lexi().getCurrentRateCode({
+        OvhApiTelephony.Rsva().Lexi().getCurrentRateCode({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }).$promise.then(function (rate) {

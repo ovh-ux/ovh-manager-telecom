@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyAliasOrderSpecialCtrl", function ($q, $translate, $stateParams, Telephony, Order, TelecomTelephonyBillingAccountOrderAliasService, Toast, ToastError, TELEPHONY_NUMBER_OFFER) {
+angular.module("managerApp").controller("TelecomTelephonyAliasOrderSpecialCtrl", function ($q, $translate, $stateParams, OvhApiTelephony, OvhApiOrder, TelecomTelephonyBillingAccountOrderAliasService, Toast, ToastError, TELEPHONY_NUMBER_OFFER) {
     "use strict";
 
     var self = this;
@@ -9,7 +9,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasOrderSpecialCtrl",
          * @return {Promise}
          */
     function getSpecificNumbers (country, range) {
-        return Telephony.Number().Aapi().orderableByRange({
+        return OvhApiTelephony.Number().Aapi().orderableByRange({
             country: country,
             billingAccount: $stateParams.billingAccount,
             type: "special",
@@ -36,7 +36,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasOrderSpecialCtrl",
     }
 
     function getTypologies (country) {
-        return Order.Lexi().schema().$promise.then(
+        return OvhApiOrder.Lexi().schema().$promise.then(
             function (schema) {
                 if (schema && schema.models["telephony.NumberSpecialTypologyEnum"] && schema.models["telephony.NumberSpecialTypologyEnum"].enum) {
                     var typologies = _.filter(schema.models["telephony.NumberSpecialTypologyEnum"].enum, function (elt) {
@@ -63,7 +63,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasOrderSpecialCtrl",
 
 
     function getRanges (country) {
-        return Telephony.Number().Lexi().getRanges({
+        return OvhApiTelephony.Number().Lexi().getRanges({
             country: country
         }).$promise.then(
             function (ranges) {
@@ -156,7 +156,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasOrderSpecialCtrl",
         if (!form.pool) {
             form.specificNumber = this.form[this.form.numberType];
         }
-        Order.Telephony().Lexi().orderNumberSpecial(
+        OvhApiOrder.Telephony().Lexi().orderNumberSpecial(
             {
                 billingAccount: $stateParams.billingAccount
             },

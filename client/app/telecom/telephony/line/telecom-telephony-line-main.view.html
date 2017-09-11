@@ -62,7 +62,7 @@
 
                 <responsive-tab data-state="telecom.telephony.line.fax"
                                 data-dropdown-title="{{ 'telephony_line_tab_fax' | translate }}"
-                                data-disabled="LineCtrl.loading.init || !(LineCtrl.line.isPlugNFax || LineCtrl.fax)">
+                                data-disabled="LineCtrl.loading.init || !(LineCtrl.line.isPlugNFax || LineCtrl.fax) || LineCtrl.line.isTrunk()">
                     <span data-translate="telephony_line_tab_fax"></span>
                 </responsive-tab>
 

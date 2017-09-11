@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("OverTheBoxLogsCtrl", function ($scope, $stateParams, OverTheBox, OvhTailLogs) {
+angular.module("managerApp").controller("OverTheBoxLogsCtrl", function ($scope, $stateParams, OvhApiOverTheBox, OvhTailLogs) {
     "use strict";
     var self = this;
 
@@ -21,7 +21,7 @@ angular.module("managerApp").controller("OverTheBoxLogsCtrl", function ($scope, 
 
         self.logger = new OvhTailLogs({
             source: function () {
-                return OverTheBox.Lexi().getLogs({
+                return OvhApiOverTheBox.Lexi().getLogs({
                     serviceName: $stateParams.serviceName
                 }, {}).$promise.then(function (logs) {
                     return logs.url;

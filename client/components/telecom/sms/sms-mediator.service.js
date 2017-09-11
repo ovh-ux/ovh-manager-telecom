@@ -1,4 +1,4 @@
-angular.module("managerApp").service("SmsMediator", function ($q, Sms, SmsService, SMS_REGEX, SMS_STOP_CLAUSE) {
+angular.module("managerApp").service("SmsMediator", function ($q, OvhApiSms, SmsService, SMS_REGEX, SMS_STOP_CLAUSE) {
     "use strict";
 
     var self = this;
@@ -18,7 +18,7 @@ angular.module("managerApp").service("SmsMediator", function ($q, Sms, SmsServic
 
     self.getApiScheme = function () {
         if (!self.apiScheme) {
-            return Sms.Lexi().schema().$promise.then(function (scheme) {
+            return OvhApiSms.Lexi().schema().$promise.then(function (scheme) {
                 self.apiScheme = scheme;
                 return self.apiScheme;
             });
@@ -65,8 +65,8 @@ angular.module("managerApp").service("SmsMediator", function ($q, Sms, SmsServic
         =============================*/
 
     self.getCount = function () {
-        // return Sms.Erika().query().execute().$promise.then(function (smsIds) {
-        return Sms.Lexi().query().$promise.then(function (smsIds) {
+        // return OvhApiSms.Erika().query().execute().$promise.then(function (smsIds) {
+        return OvhApiSms.Lexi().query().$promise.then(function (smsIds) {
             return smsIds.length;
         });
     };
@@ -143,8 +143,8 @@ angular.module("managerApp").service("SmsMediator", function ($q, Sms, SmsServic
 
         self.initDeferred = $q.defer();
 
-        Sms.Lexi().query().$promise.then(function (smsIds) {
-            return Sms.Aapi().detail({
+        OvhApiSms.Lexi().query().$promise.then(function (smsIds) {
+            return OvhApiSms.Aapi().detail({
                 smsIds: smsIds
             }).$promise.then(function (smsDetails) {
                 angular.forEach(smsDetails, function (smsDetail) {

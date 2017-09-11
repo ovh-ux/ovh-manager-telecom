@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("XdslModemBridgeModeCtrl", function ($stateParams, $q, $translate, Xdsl, Toast, PackXdslModemMediator) {
+angular.module("managerApp").controller("XdslModemBridgeModeCtrl", function ($stateParams, $q, $translate, OvhApiXdsl, Toast, PackXdslModemMediator) {
     "use strict";
 
     var self = this;
@@ -14,7 +14,7 @@ angular.module("managerApp").controller("XdslModemBridgeModeCtrl", function ($st
             return Toast.error($translate.instant("xdsl_modem_bridge_mode_an_error_ocurred"));
         }
         PackXdslModemMediator.setTask("changeModemConfigBridgeMode");
-        Xdsl.Modem().Lexi().update(
+        OvhApiXdsl.Modem().Lexi().update(
             {
                 xdslId: $stateParams.serviceName
             },

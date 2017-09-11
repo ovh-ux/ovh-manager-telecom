@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyLineCallsForwardCtrl", function ($q, $stateParams, $translate, $state, Toast, Telephony, TelecomTelephonyLineCallsForwardService, validator) {
+angular.module("managerApp").controller("TelecomTelephonyLineCallsForwardCtrl", function ($q, $stateParams, $translate, $state, Toast, TelecomTelephonyLineCallsForwardService, validator) {
     "use strict";
 
     var self = this;

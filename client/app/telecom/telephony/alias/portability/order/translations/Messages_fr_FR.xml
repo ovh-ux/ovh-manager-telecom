@@ -66,7 +66,10 @@
    <translation id="telephony_alias_portability_order_total_tax_free">Total HT</translation>
    <translation id="telephony_alias_portability_order_total_tax">TVA</translation>
    <translation id="telephony_alias_portability_order_total_with_tax">Total TTC</translation>
+   <translation id="telephony_alias_portability_order_error">Oups ! Une erreur est survenue lors de la demande portabilité.</translation>
+   <translation id="telephony_alias_portability_order_address_too_long">L'ensemble des champs "Numéro de la voie", "Complément au numéro de voie", "Type de voie" et "Nom de la voie" ne doit pas dépasser 35 caractères.</translation>
    <translation id="telephony_alias_portability_order_success">Votre demande de portabilité a bien été prise en compte.</translation>
+   <translation id="telephony_alias_portability_order_success_warning"><strong>Attention !</strong> Afin que la portabilité soit lancée, il vous faut valider votre bon de commande en suivant les instructions que vous trouverez en cliquant sur le lien ci-dessous.</translation>
    <translation id="telephony_alias_portability_order_url">Bon de commande</translation>
    <translation id="telephony_alias_portability_order_step">Étape {{ current }}/{{ total }}</translation>
    <translation id="telephony_alias_portability_order_step_1">Numéro à porter</translation>

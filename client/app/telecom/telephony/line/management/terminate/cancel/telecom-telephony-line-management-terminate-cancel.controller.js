@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyLineTerminateCancelCtrl", function ($stateParams, $state, TelephonyMediator, Telephony, Toast, $translate, $filter, $q) {
+angular.module("managerApp").controller("TelecomTelephonyLineTerminateCancelCtrl", function ($stateParams, $state, TelephonyMediator, OvhApiTelephony, Toast, $translate, $filter, $q) {
     "use strict";
 
     var self = this;
@@ -13,7 +13,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineTerminateCancelCtrl
     self.cancelTerminate = function () {
         self.loading.cancelTerminate = true;
         if (self.taskDetails.executionDate) {
-            return Telephony.Service().Lexi().cancelTermination({
+            return OvhApiTelephony.Service().Lexi().cancelTermination({
                 billingAccount: $stateParams.billingAccount,
                 serviceName: $stateParams.serviceName
             }, null).$promise.then(function () {
@@ -39,7 +39,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineTerminateCancelCtrl
             self.line = group.getLine($stateParams.serviceName);
         }).then(function () {
 
-            return Telephony.Service().OfferTask().Lexi().query({
+            return OvhApiTelephony.Service().OfferTask().Lexi().query({
                 billingAccount: $stateParams.billingAccount,
                 serviceName: $stateParams.serviceName,
                 action: "termination",
@@ -52,7 +52,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineTerminateCancelCtrl
 
                 self.taskDetails = {};
 
-                return Telephony.Service().OfferTask().Lexi().get({
+                return OvhApiTelephony.Service().OfferTask().Lexi().get({
                     billingAccount: $stateParams.billingAccount,
                     serviceName: $stateParams.serviceName,
                     action: "termination",

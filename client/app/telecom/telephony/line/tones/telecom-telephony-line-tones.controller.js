@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyLineTonesCtrl", function ($state, $stateParams, $q, $timeout, $translate, Telephony, ToastError, User, TelephonyMediator) {
+angular.module("managerApp").controller("TelecomTelephonyLineTonesCtrl", function ($state, $stateParams, $q, $timeout, $translate, OvhApiTelephony, ToastError, OvhApiMe, TelephonyMediator) {
     "use strict";
 
     var self = this;
@@ -17,7 +17,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineTonesCtrl", functio
     }
 
     function fetchTones () {
-        return Telephony.Line().Lexi().getTones({
+        return OvhApiTelephony.Line().Lexi().getTones({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }).$promise;
@@ -65,7 +65,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineTonesCtrl", functio
             self.tonesForm[toneType + "Updating"] = true;
             return $q.all([
                 $timeout(angular.noop, 500), // avoid clipping
-                Telephony.Line().Lexi().changeTones({
+                OvhApiTelephony.Line().Lexi().changeTones({
                     billingAccount: $stateParams.billingAccount,
                     serviceName: $stateParams.serviceName
                 }, tonesParam).$promise.then(function () {
@@ -85,12 +85,12 @@ angular.module("managerApp").controller("TelecomTelephonyLineTonesCtrl", functio
         self.tonesForm[toneType + "Uploading"] = true;
 
         // upload document
-        return User.Document().Lexi().upload(
+        return OvhApiMe.Document().Lexi().upload(
             self.tonesForm[toneType + "File"].name,
             self.tonesForm[toneType + "File"]
         ).then(function (doc) {
             // upload tone
-            return Telephony.Line().Lexi().toneUpload({
+            return OvhApiTelephony.Line().Lexi().toneUpload({
                 billingAccount: $stateParams.billingAccount,
                 serviceName: $stateParams.serviceName
             }, {
@@ -115,4 +115,3 @@ angular.module("managerApp").controller("TelecomTelephonyLineTonesCtrl", functio
 
     init();
 });
-

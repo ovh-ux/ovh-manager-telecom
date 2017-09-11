@@ -17,9 +17,13 @@
                     <h2 class="widget-presentation-title"
                         data-translate="telephony_alias_portability_order_order"></h2>
                 </header>
-                <div class="alert alert-success" role="alert">
+                <div class="alert alert-success"
+                     role="alert">
                     <i class="ovh-font ovh-font-filled-check" aria-hidden="true"></i>
                     <p data-translate="telephony_alias_portability_order_success"></p>
+                    <p data-translate="telephony_alias_portability_order_success_warning"
+                       data-ng-if="!PortabilityOrderCtrl.order.autoPay">
+                    </p>
                 </div>
                 <p>
                     <!-- BC LINK -->
@@ -293,7 +297,7 @@
                     <form name="portabilityContactForm"
                           class="ovh-form-flat form-horizontal"
                           data-ng-if="PortabilityOrderCtrl.step === 'contact'"
-                          data-ng-submit="PortabilityOrderCtrl.step = 'config'"
+                          data-ng-submit="PortabilityOrderCtrl.goToConfigStep()"
                           novalidate>
 
                         <div class="form-group">
@@ -301,6 +305,16 @@
                                 <i class="ovh-font ovh-font-info right-space-m4 line-height-normal"></i>
                                 <p data-translate="telephony_alias_portability_order_contact_help"></p>
                             </div>
+
+                            <!-- ADDRESS TOO LONG ERROR -->
+                            <div class="alert alert-danger"
+                                 role="alert"
+                                 data-ng-if="PortabilityOrderCtrl.order.addressTooLong">
+                                <span class="ovh-font ovh-font-filled-error"
+                                      aria-hidden="true">
+                                </span>
+                                <p data-translate="telephony_alias_portability_order_address_too_long"></p>
+                            </div> <!-- End of ADDRESS TOO LONG ERROR -->
                         </div>
 
                         <!-- SOCIAL REASON -->
@@ -507,7 +521,7 @@
                                    id="city"
                                    name="city"
                                    class="form-control"
-                                   data-ng-model="PortabilityOrderCtrl.order.city" 
+                                   data-ng-model="PortabilityOrderCtrl.order.city"
                                    required />
                             <div data-ng-messages="portabilityContactForm.city.$error" role="alert">
                                  <label for="city"

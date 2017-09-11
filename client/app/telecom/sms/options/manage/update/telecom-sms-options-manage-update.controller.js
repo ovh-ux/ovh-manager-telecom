@@ -1,11 +1,11 @@
 angular.module("managerApp").controller("TelecomSmsOptionsManageUpdateCtrl", class TelecomSmsOptionsManageUpdateCtrl {
-    constructor ($q, $stateParams, $timeout, $uibModalInstance, Sms, service) {
+    constructor ($q, $stateParams, $timeout, $uibModalInstance, OvhApiSms, service) {
         this.$q = $q;
         this.$stateParams = $stateParams;
         this.$timeout = $timeout;
         this.$uibModalInstance = $uibModalInstance;
         this.api = {
-            sms: Sms.Lexi()
+            sms: OvhApiSms.Lexi()
         };
         this.service = service;
     }

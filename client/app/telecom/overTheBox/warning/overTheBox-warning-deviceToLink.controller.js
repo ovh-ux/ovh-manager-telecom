@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("OrderOverTheBoxDeviceToLinkCtrl", function ($scope, $translate, $state, OverTheBox, Toast, ToastError) {
+angular.module("managerApp").controller("OrderOverTheBoxDeviceToLinkCtrl", function ($scope, $translate, $state, OvhApiOverTheBox, Toast, ToastError) {
     "use strict";
     var parent = $scope.OrderOverTheBox;
     var self = this;
@@ -27,7 +27,7 @@ angular.module("managerApp").controller("OrderOverTheBoxDeviceToLinkCtrl", funct
             return;
         }
         self.loader = true;
-        OverTheBox.Lexi().linkDevice({
+        OvhApiOverTheBox.Lexi().linkDevice({
             serviceName: self.link.service
         }, {
             deviceId: self.link.device

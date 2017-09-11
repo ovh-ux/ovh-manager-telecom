@@ -1,6 +1,6 @@
 angular.module("managerApp").controller(
     "TelecomTelephonyLineCallsLockOutCallCtrl",
-    function ($q, $stateParams, $translate, Toast, ToastError, Telephony) {
+    function ($q, $stateParams, $translate, Toast, ToastError, OvhApiTelephony) {
         "use strict";
 
         var self = this;
@@ -19,7 +19,7 @@ angular.module("managerApp").controller(
 
         this.save = function () {
             self.loading.save = true;
-            Telephony.Line().Options().Lexi().update(
+            OvhApiTelephony.Line().Options().Lexi().update(
                 {
                     billingAccount: $stateParams.billingAccount,
                     serviceName: $stateParams.serviceName
@@ -47,7 +47,7 @@ angular.module("managerApp").controller(
                 lockOutCall: null
             };
             self.saved = angular.copy(self.options);
-            Telephony.Line().Options().Lexi().get({
+            OvhApiTelephony.Line().Options().Lexi().get({
                 billingAccount: $stateParams.billingAccount,
                 serviceName: $stateParams.serviceName
             }).$promise.then(
