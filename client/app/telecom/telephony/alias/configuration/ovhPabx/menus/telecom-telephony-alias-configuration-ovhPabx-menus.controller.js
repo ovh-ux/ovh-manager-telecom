@@ -68,6 +68,8 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationOvhPa
                     return $q.all({
                         menus: self.number.feature.getMenus(),
                         sounds: self.number.feature.getSounds(),
+                        queues: self.number.feature.getQueues(),
+                        tts: self.number.feature.getTts(),
                         jsplumb: jsPlumbService.initJsPlumb()
                     });
                 }

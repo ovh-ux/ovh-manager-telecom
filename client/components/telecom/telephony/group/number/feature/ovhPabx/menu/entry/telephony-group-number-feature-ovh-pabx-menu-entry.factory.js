@@ -57,7 +57,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberOvhPabxMenuEntry", fun
         self.status = menuEntryOptions.status || "OK";
 
         // special rule for action param
-        if (self.action === "playback" || self.action === "menuSub") {
+        if (self.action === "playback" || self.action === "menuSub" || self.action === "callcenter") {
             self.actionParam = menuEntryOptions.actionParam ? parseInt(menuEntryOptions.actionParam, 10) : "";
         } else {
             self.actionParam = menuEntryOptions.actionParam || "";

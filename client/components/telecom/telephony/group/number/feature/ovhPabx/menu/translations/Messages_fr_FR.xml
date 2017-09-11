@@ -52,7 +52,7 @@
     <translation id="telephony_number_feature_ovh_pabx_menu_entry_action_bridge_action_param_required">Veuillez spécifier un numéro vers lequel transférer l'appel.</translation>
     <translation id="telephony_number_feature_ovh_pabx_menu_entry_action_bridge_action_param_bad_format">Le numéro vers lequel transférer l'appel doit être au format international (ex: +33312345678).</translation>
     <!-- CALLCENTER -->
-    <translation id="telephony_number_feature_ovh_pabx_menu_entry_action_callcenter">Faire sonner les membres</translation>
+    <translation id="telephony_number_feature_ovh_pabx_menu_entry_action_callcenter">Faire sonner les membres de la file</translation>
     <translation id="telephony_number_feature_ovh_pabx_menu_entry_action_callcenter_explain">Permet de sélectionner des membres et de les faire sonner simultanément.</translation>
     <!-- MENU BACK -->
     <translation id="telephony_number_feature_ovh_pabx_menu_entry_action_menu_back">Retour au menu précédent</translation>

@@ -13,6 +13,7 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxMenuEntryCtrl", f
         rightPage: null
     };
 
+    self.ovhPabx = null;
     self.popoverTemplateUrl = null;
     self.uuid = null;
     self.parentCtrl = null;
@@ -83,7 +84,7 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxMenuEntryCtrl", f
     ======================================*/
 
     self.$onInit = function () {
-        var initPromise = $q.when(true);
+        var initPromise = [];
 
         // set component to init status
         self.loading.init = true;
@@ -93,6 +94,9 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxMenuEntryCtrl", f
 
         // set parent controller to get parent endpoint uuid
         self.parentCtrl = self.menuCtrl || self.extensionCtrl;
+
+        // set ovh pabx
+        self.ovhPabx = self.parentCtrl.ovhPabx;
         self.uuid = _.uniqueId("ovhPabx_menu_entry_".concat(self.menuEntry.entryId)); // set controller unique id
         // check if popover needs to be opened
         self.popoverStatus.isOpen = self.menuEntry.status === "DRAFT" && self.parentCtrl.popoverStatus.isParentClicked;
@@ -100,10 +104,10 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxMenuEntryCtrl", f
         // set menu sub info if needed
         if (self.menuEntry.action === "menuSub" && self.menuEntry.actionParam) {
             self.menuEntry.menuSub = self.menuCtrl.ovhPabx.getMenu(self.menuEntry.actionParam);
-            initPromise = self.menuEntry.menuSub.getEntries();
+            initPromise.push(self.menuEntry.menuSub.getEntries());
         }
 
-        return initPromise.finally(function () {
+        return $q.allSettled(initPromise).finally(function () {
             self.loading.init = false;
         });
     };

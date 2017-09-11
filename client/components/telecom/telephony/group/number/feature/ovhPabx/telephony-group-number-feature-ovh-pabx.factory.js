@@ -268,7 +268,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberOvhPabx", function ($q
         });
     };
 
-    TelephonyGroupNumberOvhPabx.prototype.getMenus = function () {
+    TelephonyGroupNumberOvhPabx.prototype.getMenus = function (loadEntries) {
         var self = this;
 
         return OvhApiTelephony.OvhPabx().Menu().Lexi().query({
@@ -288,7 +288,19 @@ angular.module("managerApp").factory("TelephonyGroupNumberOvhPabx", function ($q
                     });
                     return self;
                 });
-            }));
+            })).then(function () {
+                var entriesPromises = [];
+
+                // must we also load entries ?
+                if (loadEntries) {
+                    self.menus.forEach(function (menu) {
+                        entriesPromises.push(menu.getEntries());
+                    });
+                    return $q.all(entriesPromises);
+                }
+
+                return self;
+            });
         });
     };
 
