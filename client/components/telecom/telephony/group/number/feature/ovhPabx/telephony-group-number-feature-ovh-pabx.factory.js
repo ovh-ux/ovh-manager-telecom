@@ -293,8 +293,6 @@ angular.module("managerApp").factory("TelephonyGroupNumberOvhPabx", function ($q
 
                 // must we also load entries ?
                 if (loadEntries) {
-                    console.log("get menu entries");
-
                     self.menus.forEach(function (menu) {
                         entriesPromises.push(menu.getEntries());
                     });
