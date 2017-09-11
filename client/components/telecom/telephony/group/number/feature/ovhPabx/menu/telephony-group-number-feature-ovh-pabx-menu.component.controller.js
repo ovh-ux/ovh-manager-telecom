@@ -211,11 +211,6 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxMenuCtrl", functi
         // set controller uuid
         self.uuid = _.uniqueId("ovhPabx_menu_".concat(_.get(self.menu, "menuId", "")));
 
-        initPromises.tts = self.ovhPabx.getTts();
-        if (self.menu && self.menu.status !== "DRAFT") {
-            initPromises.entries = self.menu.getEntries();
-        }
-
         return $q.all(initPromises).finally(function () {
             self.loading.init = false;
         });
