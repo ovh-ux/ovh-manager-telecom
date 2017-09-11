@@ -146,19 +146,13 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationCtrl"
                 });
             }
             return easyHuntingActions;
-        case "conference":
-            return [{
-                name: "number_manage_conference",
-                url: TelephonyMediator.getV6ToV4RedirectionUrl("alias.number_manage_conference"),
-                text: $translate.instant("telephony_alias_configuration_actions_number_manage_conference")
-            }];
         default:
             return [];
         }
     }
 
     self.isSubwayPlanActive = function () {
-        return ["redirect", "svi", "ovhPabx"].indexOf(self.number.getFeatureFamily()) > -1;
+        return ["redirect", "svi", "ovhPabx", "conference"].indexOf(self.number.getFeatureFamily()) > -1;
     };
 
     /* -----  End of HELPERS  ------*/
