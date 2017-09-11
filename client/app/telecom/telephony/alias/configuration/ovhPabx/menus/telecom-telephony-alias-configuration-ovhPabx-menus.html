@@ -15,7 +15,7 @@
 
         <!-- NOT AN OVHPABX -->
         <div class="row"
-             data-ng-if="!$ctrl.loading.init && ($ctrl.number.getFeatureFamily() !== 'ovhPabx' || ($ctrl.number.feature.featureType === 'cloudHunting' && !$ctrl.number.feature.isCCS))">
+             data-ng-if="!$ctrl.loading.init && ($ctrl.number.getFeatureFamily() !== 'ovhPabx' || ($ctrl.number.feature.featureType === 'cloudHunting' && !$ctrl.number.feature.isCcs()))">
             <div class="col-xs-12 col-md-6">
                 <div class="alert alert-warning"
                      role="alert">
@@ -26,7 +26,7 @@
                        data-ng-if="$ctrl.number.getFeatureFamily() !== 'ovhPabx'">
                     </p>
                     <p data-translate="telephony_alias_ovh_pabx_menu_condition"
-                       data-ng-if="$ctrl.number.feature.featureType === 'cloudHunting' && !$ctrl.number.feature.isCCS">
+                       data-ng-if="$ctrl.number.feature.featureType === 'cloudHunting' && !$ctrl.number.feature.isCcs()">
                     </p>
                     <a data-ui-sref="telecom.telephony.alias.configuration.changeType"
                        data-translate="telephony_alias_configuration_change_type"
@@ -38,7 +38,7 @@
 
         <!-- MENU MANAGEMENT -->
         <div class="row"
-             data-ng-if="!$ctrl.loading.init && $ctrl.number.getFeatureFamily() === 'ovhPabx' && !($ctrl.number.feature.featureType === 'cloudHunting' && !$ctrl.number.feature.isCCS)">
+             data-ng-if="!$ctrl.loading.init && $ctrl.number.getFeatureFamily() === 'ovhPabx' && !($ctrl.number.feature.featureType === 'cloudHunting' && !$ctrl.number.feature.isCcs())">
             <div class="col-xs-12 col-md-6 widget-presentation">
                 <header class="widget-presentation-header">
                     <h2 class="widget-presentation-title"

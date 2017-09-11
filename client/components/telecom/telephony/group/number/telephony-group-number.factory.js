@@ -102,10 +102,12 @@ angular.module("managerApp").factory("TelephonyGroupNumber", function ($q, $inje
             return "conference";
         case "cloudIvr":
         case "cloudHunting":
+        case "contactCenterSolutionExpert":
             return "ovhPabx";
         case "svi":
             return "svi";
         case "easyHunting":
+        case "contactCenterSolution":
             return "easyHunting";
         default:
             return "feature";
