@@ -28,7 +28,6 @@ angular.module("managerAppMock").run(function ($q, $httpBackend, TelecomMediator
     /* ----------  2API MOCKS  ----------*/
     $httpBackend.whenGET("/2api/telecom/sidebar/count").respond(200, {});
     $httpBackend.whenGET(/2api\/me\/alerts/).respond(200, []);
-    $httpBackend.whenGET(/2api\/sitebuilders/).respond(200, []);
 
     /* ----------  WS MOCKS  ----------*/
     $httpBackend.whenGET(/ws/).respond(200, {});
