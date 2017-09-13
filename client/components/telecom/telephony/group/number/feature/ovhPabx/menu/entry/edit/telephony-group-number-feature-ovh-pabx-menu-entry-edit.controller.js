@@ -7,6 +7,10 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxMenuEntryEditCtrl
         init: false
     };
 
+    self.model = {
+        singleDigitKey: true
+    };
+
     self.ovhPabx = null;
     self.menuEntryCtrl = null;
     self.availableActions = null;
@@ -53,8 +57,12 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxMenuEntryEditCtrl
     /* ----------  DTMF EVENTS  ----------*/
 
     self.onDtmfKeyButtonClick = function (key) {
-        self.menuEntryCtrl.menuEntry.dtmf = key;
-        self.menuEntryCtrl.popoverStatus.move = false;
+        if (self.model.singleDigitKey) {
+            self.menuEntryCtrl.menuEntry.dtmf = key;
+            self.menuEntryCtrl.popoverStatus.move = false;
+        } else {
+            self.menuEntryCtrl.menuEntry.dtmf += key;
+        }
     };
 
     /* ----------  ACTION EVENTS  ----------*/
@@ -117,6 +125,7 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxMenuEntryEditCtrl
             if (self.menuEntryCtrl.menuEntry.status === "DRAFT") {
                 manageEntryRemove();
             }
+            self.menuEntryCtrl.menuEntry.stopEdition(true);
             return $q.reject(error);
         });
     };
@@ -167,6 +176,9 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxMenuEntryEditCtrl
         self.ovhPabx = self.menuEntryCtrl.menuCtrl.ovhPabx;
 
         return getAvailableActions().then(function () {
+            // set single digit key model
+            self.model.singleDigitKey = self.menuEntryCtrl.menuEntry.dtmf.length === 1;
+
             // start menu entry edition
             self.menuEntryCtrl.menuEntry.startEdition();
         }).finally(function () {

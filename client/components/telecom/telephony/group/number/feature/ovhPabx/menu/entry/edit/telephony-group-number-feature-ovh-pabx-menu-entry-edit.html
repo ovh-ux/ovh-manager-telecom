@@ -22,7 +22,12 @@
                                data-translate="telephony_number_feature_ovh_pabx_menu_entry_edit_dtmf">
                         </label>
                         <span class="block"
-                              data-ng-bind="$ctrl.menuEntryCtrl.menuEntry.dtmf">
+                              data-ng-bind="$ctrl.menuEntryCtrl.menuEntry.dtmf"
+                              data-ng-if="$ctrl.menuEntryCtrl.menuEntry.dtmf">
+                        </span>
+                        <span class="block"
+                              data-translate="telephony_number_feature_ovh_pabx_menu_entry_edit_dtmf_no_selected"
+                              data-ng-if="!$ctrl.menuEntryCtrl.menuEntry.dtmf">
                         </span>
                         <div class="chevron-right">
                             <div class="chevron-wrapper">
@@ -293,6 +298,38 @@
             <section data-ng-switch-when="dtmf"
                      class="dtmf-section">
                 <div class="section-group">
+                    <label class="section-item item-choice full-width pointer dtable">
+                        <div class="dtr">
+                            <div class="dtd vertical-middle radio-content">
+                                <flat-checkbox>
+                                    <input type="checkbox"
+                                           name="menuEntryAction"
+                                           data-ng-model="$ctrl.model.singleDigitKey"
+                                           data-ng-change="$ctrl.menuEntryCtrl.menuEntry.dtmf = ''" />
+                                </flat-checkbox>
+                            </div>
+                            <div class="dtd vertical-middle">
+                                <span class="block"
+                                      data-translate="telephony_number_feature_ovh_pabx_menu_entry_edit_dtmf_single_digit">
+                                </span>
+                            </div>
+                        </div>
+                    </label>
+                    <div class="section-item dtmf-value text-center"
+                         data-uib-collapse="$ctrl.model.singleDigitKey">
+                        <em data-ng-if="!$ctrl.menuEntryCtrl.menuEntry.dtmf"
+                            data-translate="telephony_number_feature_ovh_pabx_menu_entry_edit_dtmf_multi_digit_choose">
+                        </em>
+                        <div data-ng-if="$ctrl.menuEntryCtrl.menuEntry.dtmf">
+                            <span data-ng-bind="$ctrl.menuEntryCtrl.menuEntry.dtmf"></span>
+                            <button type="button"
+                                    class="btn-actions-list"
+                                    data-translate-attr="{ title: 'telephony_number_feature_ovh_pabx_menu_entry_edit_dtmf_multi_digit_reset' }"
+                                    data-ng-click="$ctrl.menuEntryCtrl.menuEntry.dtmf = ''">
+                                <span class="ovh-font ovh-font-wrong"></span>
+                            </button>
+                        </div>
+                    </div>
                     <div class="section-item">
                         <div class="dtable table-fixed full-width">
                             <div class="dtr"
@@ -301,8 +338,9 @@
                                      data-ng-repeat="key in row track by $index">
                                     <button type="button"
                                             class="btn btn-default full-width"
-                                            data-ng-class="{ active: key === $ctrl.menuEntryCtrl.menuEntry.dtmf }"
+                                            data-ng-class="{ active: $ctrl.model.singleDigitKey && key === $ctrl.menuEntryCtrl.menuEntry.dtmf }"
                                             data-ng-bind="key"
+                                            data-ng-disabled="$ctrl.menuEntryCtrl.menuEntry.dtmf.length >= 10"
                                             data-ng-click="$ctrl.onDtmfKeyButtonClick(key)">
                                     </button>
                                 </div>
