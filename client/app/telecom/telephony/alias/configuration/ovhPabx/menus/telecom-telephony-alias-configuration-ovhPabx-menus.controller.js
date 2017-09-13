@@ -68,7 +68,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationOvhPa
             return self.number.feature.init().then(function () {
                 if (self.number.getFeatureFamily() === "ovhPabx") {
                     initPromises = {
-                        menus: self.number.feature.getMenus(),
+                        menus: self.number.feature.getMenus(true),
                         sounds: self.number.feature.getSounds(),
                         tts: self.number.feature.getTts(),
                         jsplumb: jsPlumbService.initJsPlumb()
