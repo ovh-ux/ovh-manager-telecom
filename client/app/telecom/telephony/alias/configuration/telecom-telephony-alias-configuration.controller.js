@@ -26,15 +26,6 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationCtrl"
 
             // add member/agent and queues for cloudHunting
             if (self.number.feature.featureType !== "cloudIvr") {
-                // add link for upgrade to "CCS expert" for "File d'appel expert"
-                if (self.number.feature.featureType !== "contactCenterSolutionExpert") {
-                    ovhPabxActions.unshift({
-                        name: "number_cloud_hunting_beta",
-                        url: TelephonyMediator.getV6ToV4RedirectionUrl("alias.number_cloud_hunting_beta"),
-                        text: $translate.instant("telephony_alias_configuration_actions_number_cloud_hunting_beta")
-                    });
-                }
-
                 // agents for "CCS expert" - members for "File d'appel expert"
                 ovhPabxActions.push(self.number.feature.featureType === "contactCenterSolutionExpert" ? {
                     name: "number_cloud_hunting_agents",
@@ -136,13 +127,6 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationCtrl"
                     name: "number_cloud_hunting_records",
                     sref: "telecom.telephony.alias.configuration.records.ovhPabx",
                     text: $translate.instant("telephony_alias_configuration_actions_number_hunting_records")
-                });
-            } else {
-                // if not a CSS: add possibility to upgrade to
-                easyHuntingActions.unshift({
-                    name: "number_easy_hunting_beta",
-                    url: TelephonyMediator.getV6ToV4RedirectionUrl("alias.number_cloud_hunting_beta"),
-                    text: $translate.instant("telephony_alias_configuration_actions_number_hunting_beta")
                 });
             }
             return easyHuntingActions;
