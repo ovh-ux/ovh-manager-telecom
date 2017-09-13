@@ -74,7 +74,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationOvhPa
                         jsplumb: jsPlumbService.initJsPlumb()
                     };
 
-                    if (self.number.feature.featureType !== "cloudHunting") {
+                    if (self.number.feature.featureType !== "cloudIvr") {
                         initPromises.queues = self.number.feature.getQueues();
                     }
 
