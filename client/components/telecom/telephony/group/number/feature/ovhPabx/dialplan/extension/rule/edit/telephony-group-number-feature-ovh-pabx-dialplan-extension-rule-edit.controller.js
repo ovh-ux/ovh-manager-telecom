@@ -230,7 +230,7 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxDialplanExtension
             self.availableActions = _.chain(enumValues).filter(function (enumVal) {
                 if (self.ovhPabx.featureType === "cloudIvr") {
                     return enumVal !== "hunting" && enumVal !== "tts";
-                } else if (!self.ovhPabx.isCCS) {
+                } else if (!self.ovhPabx.isCcs) {
                     return enumVal !== "ivr" && enumVal !== "tts";
                 }
                 return true;

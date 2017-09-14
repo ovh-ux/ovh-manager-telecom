@@ -43,7 +43,7 @@ angular.module("managerApp").controller("TelephonyNumberOvhPabxCtrl", function (
         $translatePartialLoader.addPart("../components/telecom/telephony/timeCondition/slot");
 
         // load specific types translations
-        $translatePartialLoader.addPart("../components/telecom/telephony/group/number/feature/ovhPabx/types/" + (self.ovhPabx.isCCS ? "ccs" : self.ovhPabx.featureType));
+        $translatePartialLoader.addPart("../components/telecom/telephony/group/number/feature/ovhPabx/types/" + self.ovhPabx.featureType);
         return $translate.refresh().finally(function () {
             self.loading.translations = false;
         });
@@ -67,12 +67,12 @@ angular.module("managerApp").controller("TelephonyNumberOvhPabxCtrl", function (
                 TelephonyMediator.getAll()
             ];
 
-            if (self.ovhPabx.featureType === "cloudIvr" || (self.ovhPabx.isCCS && self.ovhPabx.featureType === "cloudHunting")) {
+            if (self.ovhPabx.featureType === "cloudIvr" || self.ovhPabx.featureType === "contactCenterSolutionExpert") {
                 initPromises.push(self.ovhPabx.getMenus(true));
             }
-            if (self.ovhPabx.featureType === "cloudHunting") {
+            if (self.ovhPabx.featureType !== "cloudIvr") {
                 initPromises.push(self.ovhPabx.getQueues());
-                if (self.ovhPabx.isCCS) {
+                if (self.ovhPabx.isCcs()) {
                     initPromises.push(self.ovhPabx.getTts());
                 }
             }
