@@ -122,8 +122,8 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxDialplanCtrl", fu
         // set sortable options
         self.sortableOptions = {
             axis: "y",
-            handle: ".extension-grip",
-            cancel: ".grip-disabled",
+            handle: ".rule-grip",
+            cancel: ".voip-plan__step-icon--grip-disabled",
             containment: "parent",
             sort: UI_SORTABLE_HELPERS.variableHeightTolerance,
             start: function () {
