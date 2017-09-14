@@ -57,20 +57,24 @@ angular.module("managerApp").factory("TelephonyGroupNumberOvhPabx", function ($q
 
     /* ----------  FEATURE OPTIONS  ----------*/
 
-    TelephonyGroupNumberOvhPabx.prototype.setOptions = function (featureOptions) {
+    TelephonyGroupNumberOvhPabx.prototype.setOptions = function () {
         var self = this;
-
-        self.isCCS = featureOptions.isCCS;
 
         return self;
     };
 
     /* ----------  HELPERS  ----------*/
 
+    TelephonyGroupNumberOvhPabx.prototype.isCcs = function () {
+        var self = this;
+
+        return self.featureType === "contactCenterSolutionExpert";
+    };
+
     TelephonyGroupNumberOvhPabx.prototype.isTtsAvailable = function () {
         var self = this;
 
-        return self.isCCS;
+        return self.isCcs();
     };
 
     /* ----------  EDITION  ----------*/
@@ -268,7 +272,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberOvhPabx", function ($q
         });
     };
 
-    TelephonyGroupNumberOvhPabx.prototype.getMenus = function () {
+    TelephonyGroupNumberOvhPabx.prototype.getMenus = function (loadEntries) {
         var self = this;
 
         return OvhApiTelephony.OvhPabx().Menu().Lexi().query({
@@ -288,7 +292,19 @@ angular.module("managerApp").factory("TelephonyGroupNumberOvhPabx", function ($q
                     });
                     return self;
                 });
-            }));
+            })).then(function () {
+                var entriesPromises = [];
+
+                // must we also load entries ?
+                if (loadEntries) {
+                    self.menus.forEach(function (menu) {
+                        entriesPromises.push(menu.getEntries());
+                    });
+                    return $q.all(entriesPromises);
+                }
+
+                return self;
+            });
         });
     };
 

@@ -48,12 +48,18 @@ angular.module("managerApp").factory("TelephonyGroupNumberEasyHunting", function
 
     /* ----------  FEATURE OPTIONS  ----------*/
 
-    TelephonyGroupNumberEasyHunting.prototype.setOptions = function (featureOptions) {
+    TelephonyGroupNumberEasyHunting.prototype.setOptions = function () {
         var self = this;
 
-        self.isCCS = featureOptions.isCCS;
-
         return self;
+    };
+
+    /* ----------  HELPERS  ----------*/
+
+    TelephonyGroupNumberEasyHunting.prototype.isCcs = function () {
+        var self = this;
+
+        return self.featureType === "contactCenterSolution";
     };
 
     /* ----------  EDITION  ----------*/
@@ -117,7 +123,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberEasyHunting", function
 
         if (!self.timeCondition) {
             self.timeCondition = new VoipTimeCondition({
-                featureType: self.featureType,
+                featureType: "easyHunting",
                 billingAccount: self.billingAccount,
                 serviceName: self.serviceName
             });

@@ -7,6 +7,7 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxMenuEntryEditCtrl
         init: false
     };
 
+    self.ovhPabx = null;
     self.menuEntryCtrl = null;
     self.availableActions = null;
     self.availableDtmfKeys = null;
@@ -16,14 +17,7 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxMenuEntryEditCtrl
     ===============================*/
 
     function getAvailableDtmfKeys () {
-        return _.chain(self.menuEntryCtrl.menuCtrl.menu.getAllDtmfEntryKeys()).map(function (key) {
-            return {
-                key: key,
-                disabled: !!_.find(self.menuEntryCtrl.menuCtrl.menu.entries, function (entry) {
-                    return key === entry.dtmf && entry.status !== "DRAFT" && entry.entryId !== self.menuEntryCtrl.menuEntry.entryId;
-                })
-            };
-        }).chunk(3).value();
+        return _.chunk(self.menuEntryCtrl.menuCtrl.menu.getAllDtmfEntryKeys(), 3);
     }
 
     function manageEntryRemove () {
@@ -168,6 +162,9 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxMenuEntryEditCtrl
 
         // set parent controller
         self.menuEntryCtrl = $scope.$parent.$ctrl;
+
+        // set ovhPabx
+        self.ovhPabx = self.menuEntryCtrl.menuCtrl.ovhPabx;
 
         return getAvailableActions().then(function () {
             // start menu entry edition

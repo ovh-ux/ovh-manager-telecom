@@ -52,6 +52,11 @@
                             </span>
                         </span> <!-- END OF ACTION PARAM DISPLAY : MENUSUB -->
 
+                        <!-- ACTION PARAM DISPLAY : CALLCENTER -->
+                        <span data-ng-switch-when="callcenter"
+                              data-ng-bind="$ctrl.menuCtrl.ovhPabx.getQueue($ctrl.getEntryAttribute('actionParam')).description || $ctrl.menuCtrl.ovhPabx.getQueue($ctrl.getEntryAttribute('actionParam')).queueId">
+                        </span> <!-- END OF ACTION PARAM DISPLAY : CALLCENTER -->
+
                         <!-- ACTION PARAM DISPLAY : DEFAULT -->
                         <span data-ng-switch-default
                               data-ng-bind="$ctrl.getEntryAttribute('actionParam')">
