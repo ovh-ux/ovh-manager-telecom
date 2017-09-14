@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyServiceFaxConvertToVoicefaxCtrl", function ($q, $stateParams, $timeout, $translate, Order, Toast) {
+angular.module("managerApp").controller("TelecomTelephonyServiceFaxConvertToVoicefaxCtrl", function ($q, $stateParams, $timeout, $translate, OvhApiOrder, Toast) {
     "use strict";
 
     var self = this;
@@ -8,9 +8,9 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxConvertToVoic
     =============================== */
 
     function fetchConvertToVoicefaxInformations () {
-        return Order.Freefax().Lexi().query().$promise.then(function (serviceIds) {
+        return OvhApiOrder.Freefax().Lexi().query().$promise.then(function (serviceIds) {
             return $q.all(_.map(serviceIds, function (service) {
-                return Order.Freefax().Lexi().get({
+                return OvhApiOrder.Freefax().Lexi().get({
                     serviceName: service
                 }).$promise.then(function (allowedOptions) {
                     if (_.indexOf(allowedOptions, "convertToVoicefax") >= 0) {
@@ -22,7 +22,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxConvertToVoic
                 });
             })).then(function (services) {
                 return $q.all(_.map(_.compact(services), function (service) {
-                    return Order.Freefax().Lexi().getConvertToVoicefax({
+                    return OvhApiOrder.Freefax().Lexi().getConvertToVoicefax({
                         serviceName: service,
                         billingAccount: $stateParams.billingAccount
                     }).$promise.then(function (informations) {
@@ -57,7 +57,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxConvertToVoic
 
     self.orderConvertToVoicefax = function () {
         self.convertToVoicefaxForm.isOrdering = true;
-        return Order.Freefax().Lexi().orderConvertToVoicefax({
+        return OvhApiOrder.Freefax().Lexi().orderConvertToVoicefax({
             serviceName: _.get(self.convertToVoicefaxForm, "serviceName.service")
         }, _.pick(self.convertToVoicefaxForm, "billingAccount")).$promise.then(function (order) {
             self.convertToVoicefaxForm.prices = order;

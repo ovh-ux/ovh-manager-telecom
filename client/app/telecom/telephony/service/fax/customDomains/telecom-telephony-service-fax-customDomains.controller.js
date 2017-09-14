@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyServiceFaxCustomDomainsCtrl", function ($filter, $q, $stateParams, $timeout, $translate, Domain, TelephonyMediator, Toast, User) {
+angular.module("managerApp").controller("TelecomTelephonyServiceFaxCustomDomainsCtrl", function ($filter, $q, $stateParams, $timeout, $translate, OvhApiDomain, TelephonyMediator, Toast, OvhApiMe) {
     "use strict";
 
     var self = this;
@@ -8,13 +8,13 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxCustomDomains
     =============================== */
 
     function fetchDomains () {
-        return Domain.Erika().query().execute().$promise;
+        return OvhApiDomain.Erika().query().execute().$promise;
     }
 
     function fetchCustomDomains () {
-        return User.Fax().CustomDomains().Lexi().query().$promise.then(function (customDomainsIds) {
+        return OvhApiMe.Fax().CustomDomains().Lexi().query().$promise.then(function (customDomainsIds) {
             return $q.all(_.map(customDomainsIds, function (id) {
-                return User.Fax().CustomDomains().Lexi().get({
+                return OvhApiMe.Fax().CustomDomains().Lexi().get({
                     id: id
                 }).$promise;
             }));
@@ -39,7 +39,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxCustomDomains
 
     self.addCustomDomains = function (form) {
         self.addCustomDomainsForm.isAdding = true;
-        return User.Fax().CustomDomains().Lexi().create(
+        return OvhApiMe.Fax().CustomDomains().Lexi().create(
             {}, _.pick(self.addCustomDomainsForm, "domain")
         ).$promise.then(function () {
             form.$setPristine();
@@ -61,7 +61,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxCustomDomains
     self.removeCustomDomains = function (domain) {
         domain.isDeleting = true;
         return $q.all([
-            User.Fax().CustomDomains().Lexi().remove({
+            OvhApiMe.Fax().CustomDomains().Lexi().remove({
                 id: _.get(domain, "id")
             }).$promise,
             $timeout(angular.noop, 500)

@@ -1,4 +1,4 @@
-angular.module("managerApp").service("voipServiceOfferTask", function ($q, Telephony, Poller) {
+angular.module("managerApp").service("voipServiceOfferTask", function ($q, OvhApiTelephony, Poller) {
     "use strict";
 
     var self = this;
@@ -9,7 +9,7 @@ angular.module("managerApp").service("voipServiceOfferTask", function ($q, Telep
         var taskIds = [];
 
         status.forEach(function (statusVal) {
-            promises.push(Telephony.Service().OfferTask().Lexi().query({
+            promises.push(OvhApiTelephony.Service().OfferTask().Lexi().query({
                 billingAccount: billingAccount,
                 serviceName: serviceName,
                 action: actionParam,
@@ -30,7 +30,7 @@ angular.module("managerApp").service("voipServiceOfferTask", function ($q, Telep
     };
 
     self.getTaskDetails = function (billingAccount, serviceName, taskId) {
-        return Telephony.Service().OfferTask().Lexi().get({
+        return OvhApiTelephony.Service().OfferTask().Lexi().get({
             billingAccount: billingAccount,
             serviceName: serviceName,
             taskId: taskId

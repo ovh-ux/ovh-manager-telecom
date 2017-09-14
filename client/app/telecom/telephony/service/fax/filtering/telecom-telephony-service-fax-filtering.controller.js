@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyServiceFaxFilteringCtrl", function ($filter, $q, $stateParams, $timeout, $translate, TelephonyMediator, Telephony, ToastError, Toast) {
+angular.module("managerApp").controller("TelecomTelephonyServiceFaxFilteringCtrl", function ($filter, $q, $stateParams, $timeout, $translate, TelephonyMediator, OvhApiTelephony, ToastError, Toast) {
     "use strict";
 
     var self = this;
@@ -13,7 +13,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxFilteringCtrl
     =============================== */
 
     function fetchScreenLists () {
-        return Telephony.Fax().Lexi().getScreenLists({
+        return OvhApiTelephony.Fax().Lexi().getScreenLists({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }).$promise.then(function (screenLists) {
@@ -47,7 +47,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxFilteringCtrl
 
     self.updateFilteringList = function () {
         self.screenListsForm.isUpdating = true;
-        return Telephony.Fax().Lexi().createScreenLists({
+        return OvhApiTelephony.Fax().Lexi().createScreenLists({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }, _.pick(self.screenListsForm, "filteringList")).$promise.catch(function (err) {
@@ -65,7 +65,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxFilteringCtrl
         ].join("");
         screenList[screenListType] = [].concat(self.screenListToAdd.number);
         self.screenListsForm.isAdding = true;
-        return Telephony.Fax().Lexi().createScreenLists({
+        return OvhApiTelephony.Fax().Lexi().createScreenLists({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }, screenList).$promise.then(function () {
@@ -99,7 +99,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxFilteringCtrl
 
         if (_.size(listQuery)) {
             queries = {
-                update: Telephony.Fax().Lexi().updateScreenLists({
+                update: OvhApiTelephony.Fax().Lexi().updateScreenLists({
                     billingAccount: $stateParams.billingAccount,
                     serviceName: $stateParams.serviceName
                 }, listQuery).$promise,
