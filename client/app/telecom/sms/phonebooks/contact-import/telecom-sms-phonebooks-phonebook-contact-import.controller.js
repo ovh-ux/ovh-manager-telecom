@@ -36,7 +36,7 @@ angular.module("managerApp").controller("TelecomSmsPhonebooksPhonebookContactImp
         this.phonecontactForm.isImporting = true;
         return this.$q.all({
             noop: this.$timeout(angular.noop, 1000),
-            "import": this.api.user.doucment.upload(
+            "import": this.api.user.document.upload(
                 this.phonecontactForm.uploadedFile.name,
                 this.phonecontactForm.uploadedFile
             ).then((doc) =>
