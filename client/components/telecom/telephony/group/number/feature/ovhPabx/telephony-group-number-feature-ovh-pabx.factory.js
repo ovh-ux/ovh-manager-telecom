@@ -57,20 +57,24 @@ angular.module("managerApp").factory("TelephonyGroupNumberOvhPabx", function ($q
 
     /* ----------  FEATURE OPTIONS  ----------*/
 
-    TelephonyGroupNumberOvhPabx.prototype.setOptions = function (featureOptions) {
+    TelephonyGroupNumberOvhPabx.prototype.setOptions = function () {
         var self = this;
-
-        self.isCCS = featureOptions.isCCS;
 
         return self;
     };
 
     /* ----------  HELPERS  ----------*/
 
+    TelephonyGroupNumberOvhPabx.prototype.isCcs = function () {
+        var self = this;
+
+        return self.featureType === "contactCenterSolutionExpert";
+    };
+
     TelephonyGroupNumberOvhPabx.prototype.isTtsAvailable = function () {
         var self = this;
 
-        return self.isCCS;
+        return self.isCcs();
     };
 
     /* ----------  EDITION  ----------*/
