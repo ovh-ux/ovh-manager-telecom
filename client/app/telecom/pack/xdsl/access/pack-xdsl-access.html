@@ -407,6 +407,15 @@
                             <div class="col-xs-12 col-md-8 service-item"
                                  data-ng-bind="XdslAccess.modem.macAddress"></div>
                         </div>
+
+                        <div class="row" data-ng-if="XdslAccess.modem">
+                            <div class="col-xs-12 col-md-4 service-title">
+                                <span data-translate="xdsl_details_modem_model"></span>
+                            </div>
+                            <div class="col-xs-12 col-md-8 service-item"
+                                 data-ng-bind="XdslAccess.modem.model">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
