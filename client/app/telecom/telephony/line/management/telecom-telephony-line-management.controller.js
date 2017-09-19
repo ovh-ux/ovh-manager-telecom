@@ -47,7 +47,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineManagementCtrl", fu
         }, {
             name: "line_to_number",
             sref: "telecom.telephony.line.convert",
-            disabled: isInXdslPack,
+            disabled: isInXdslPack || self.line.isIndividual(),
             text: $translate.instant("telephony_line_management_actions_line_to_number")
         }];
 
