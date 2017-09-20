@@ -59,9 +59,10 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxMenuEditCtrl", fu
 
     self.isMenuValid = function () {
         if (self.menu.greetSound || self.menu.greetSoundTts) {
-            if (self.model.invalidSoundType !== "none" && !self.menu.invalidSound && !self.menu.invalidSoundTts) {
+            if (self.menuCtrl.ovhPabx.isTtsAvailable() && self.model.invalidSoundType !== "none" && !self.menu.invalidSound && !self.menu.invalidSoundTts) {
                 return false;
             }
+
             return true;
         }
 
