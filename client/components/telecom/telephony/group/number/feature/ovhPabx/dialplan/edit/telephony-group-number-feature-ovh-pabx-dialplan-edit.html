@@ -1,6 +1,7 @@
 <div class="telephony-number-ovh-pabx-config popover-pages"
      data-ng-controller="telephonyNumberOvhPabxDialplanEditCtrl as $ctrl"
-     data-ng-form="dialplanForm">
+     data-ng-form="dialplanForm"
+     data-popover-hide-outside-click="$ctrl.onPopoverOutsideClick()">
 
     <div class="popover-pages-wrapper"
          data-ng-class="{ move: $ctrl.dialplanCtrl.popoverStatus.move }">

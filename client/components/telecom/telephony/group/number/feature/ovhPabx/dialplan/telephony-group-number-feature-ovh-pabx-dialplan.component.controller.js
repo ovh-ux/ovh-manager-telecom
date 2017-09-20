@@ -13,6 +13,11 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxDialplanCtrl", fu
         rightPage: null
     };
 
+    self.displayHelpers = {
+        collapsed: false,
+        expanded: true
+    };
+
     self.sortableOptions = null;
     self.ovhPabx = null;
 
@@ -78,6 +83,30 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxDialplanCtrl", fu
 
     self.onEditDialplanBtnClick = function () {
         self.popoverStatus.isOpen = true;
+    };
+
+    self.onDialplanCollapsed = function () {
+        self.numberCtrl.jsplumbInstance.customRepaint().then(function () {
+            self.numberCtrl.jsplumbInstance.getAllConnections().forEach(function (connection) {
+                connection.setVisible(true);
+            });
+            self.displayHelpers.expanded = false;
+        });
+    };
+
+    self.onDialplanCollapsing = function () {
+        self.numberCtrl.jsplumbInstance.getAllConnections().forEach(function (connection) {
+            connection.setVisible(false);
+        });
+    };
+
+    self.onDialplanExpanding = function () {
+        console.log("coucou ???");
+        self.displayHelpers.expanded = true;
+    };
+
+    self.onDialplanExpanded = function () {
+        self.numberCtrl.jsplumbInstance.customRepaint();
     };
 
     self.onExtensionAddBtnClick = function () {
