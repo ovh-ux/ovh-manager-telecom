@@ -1,4 +1,4 @@
-angular.module("managerApp").factory("TelephonyGroupFax", function (OvhApiTelephony) {
+angular.module("managerApp").factory("TelephonyGroupFax", function ($q, OvhApiTelephony) {
     "use strict";
 
     /*= ==================================
@@ -80,7 +80,7 @@ angular.module("managerApp").factory("TelephonyGroupFax", function (OvhApiTeleph
     TelephonyGroupFax.prototype.terminate = function (reason, details) {
         var self = this;
 
-        return Telephony.Service().Lexi().delete({
+        return OvhApiTelephony.Service().Lexi().delete({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName
         }, {
@@ -92,10 +92,33 @@ angular.module("managerApp").factory("TelephonyGroupFax", function (OvhApiTeleph
     TelephonyGroupFax.prototype.cancelTermination = function () {
         var self = this;
 
-        return Telephony.Service().Lexi().cancelTermination({
+        return OvhApiTelephony.Service().Lexi().cancelTermination({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName
         }, {}).$promise;
+    };
+
+    /* ----------  TASK  ----------*/
+
+    TelephonyGroupFax.prototype.getTerminationTask = function () {
+        var self = this;
+
+        return OvhApiTelephony.Service().OfferTask().Lexi().query({
+            billingAccount: self.billingAccount,
+            serviceName: self.serviceName,
+            action: "termination",
+            type: "offer"
+        }).$promise.then(function (offerTaskIds) {
+            return $q.all(_.map(offerTaskIds, function (id) {
+                return OvhApiTelephony.Service().OfferTask().Lexi().get({
+                    billingAccount: self.billingAccount,
+                    serviceName: self.serviceName,
+                    taskId: id
+                }).$promise;
+            })).then(function (tasks) {
+                return _.head(_.filter(tasks, { status: "todo" }));
+            });
+        });
     };
 
     /* ----------  EDITION  ----------*/

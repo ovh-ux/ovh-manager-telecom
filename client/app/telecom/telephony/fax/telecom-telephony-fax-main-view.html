@@ -56,6 +56,21 @@
         </nav>
     </div><!-- .telecom-section-header -->
 
+    <div class="telecom-section-alert"
+         data-ng-if="!$ctrl.loading.init">
+        <div class="alert alert-warning"
+             role="alert"
+             data-ng-if="$ctrl.terminationTask">
+            <i class="ovh-font ovh-font-filled-warning"></i>
+            <span data-translate="telephony_fax_termination_warning"
+                  data-translate-values="{ date: ($ctrl.terminationTask.executionDate | date) }">
+            </span>
+            <a data-ui-sref="telecom.telephony.fax.management.terminate"
+               data-translate="telephony_fax_termination_warning_cancel">
+            </a>
+        </div>
+    </div>
+
     <main class="telecom-section-content"
           role="main"
           data-ng-if="!$ctrl.loading.init"

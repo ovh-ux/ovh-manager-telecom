@@ -9,6 +9,7 @@ angular.module("managerApp").controller("TelecomTelephonyFaxCtrl", function ($q,
 
     self.fax = null;
     self.actions = null;
+    self.terminationTask = null;
 
     /* ===============================
     =            ACTIONS            =
@@ -40,6 +41,10 @@ angular.module("managerApp").controller("TelecomTelephonyFaxCtrl", function ($q,
 
         return TelephonyMediator.getGroup($stateParams.billingAccount).then(function (group) {
             self.fax = group.getFax($stateParams.serviceName);
+
+            return self.fax.getTerminationTask().then(function (task) {
+                self.terminationTask = task;
+            });
         }).finally(function () {
             self.loading.init = false;
         });

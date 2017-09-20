@@ -115,7 +115,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxSettingsCtrl"
 
         self.faxTagLineForm.isUpdating = true;
 
-        var update = Telephony.Fax().Lexi().setSettings({
+        var update = OvhApiTelephony.Fax().Lexi().setSettings({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }, settings).$promise;
