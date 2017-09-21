@@ -13,7 +13,7 @@
  *  @param  {String} options.title Title of the scheduler event.
  *  @param  {String} options.uid Unique id of the scheduler event.
  */
-angular.module("managerApp").factory("VoipSchedulerEvent", function (Telephony, SCHEDULER_CATEGORY_TO_ICS_VEVENT_CATEGORY) {
+angular.module("managerApp").factory("VoipSchedulerEvent", function (OvhApiTelephony, SCHEDULER_CATEGORY_TO_ICS_VEVENT_CATEGORY) {
     "use strict";
 
     var generateUid = function () {
@@ -165,7 +165,7 @@ angular.module("managerApp").factory("VoipSchedulerEvent", function (Telephony, 
     VoipSchedulerEvent.prototype.save = function () {
         var self = this;
 
-        return Telephony.Scheduler().Events().Lexi().save({
+        return OvhApiTelephony.Scheduler().Events().Lexi().save({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName,
             uid: self.uid
@@ -188,7 +188,7 @@ angular.module("managerApp").factory("VoipSchedulerEvent", function (Telephony, 
     VoipSchedulerEvent.prototype.create = function () {
         var self = this;
 
-        return Telephony.Scheduler().Events().Lexi().create({
+        return OvhApiTelephony.Scheduler().Events().Lexi().create({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName
         }, {
@@ -211,7 +211,7 @@ angular.module("managerApp").factory("VoipSchedulerEvent", function (Telephony, 
     VoipSchedulerEvent.prototype.remove = function () {
         var self = this;
 
-        return Telephony.Scheduler().Events().Lexi().remove({
+        return OvhApiTelephony.Scheduler().Events().Lexi().remove({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName,
             uid: self.uid

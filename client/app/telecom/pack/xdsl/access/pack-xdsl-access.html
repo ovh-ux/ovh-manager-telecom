@@ -118,8 +118,19 @@
                                 <span class="ovh-font ovh-font-info fs16 line-height-normal right-space-m4" aria-hidden="true"></span>
                                 <span class="text-info" data-translate="xdsl_details_button_move_disabled"></span>
                             </div>
+                            <div class="col-xs-12 col-md-8 service-item"
+                                 data-ng-if="access.xdsl.accessType === 'sdsl'">
+                                <div>
+                                    <span data-ng-bind="access.xdsl.address.numberStreet"></span>
+                                    <span data-ng-bind="access.xdsl.address.street"></span>,
+                                </div>
+                                <div>
+                                    <span data-ng-bind="access.xdsl.address.zipCode"></span>
+                                    <span data-ng-bind="access.xdsl.address.city"></span>
+                                </div>
+                            </div>
                             <a class="service-button"
-                               data-ng-if="!XdslAccess.pendingAddressMove"
+                               data-ng-if="!XdslAccess.pendingAddressMove && access.xdsl.accessType !== 'sdsl'"
                                data-ui-sref="telecom.pack.move">
                                 <div class="service-button-description">
                                     <div>
@@ -395,6 +406,15 @@
                             </div>
                             <div class="col-xs-12 col-md-8 service-item"
                                  data-ng-bind="XdslAccess.modem.macAddress"></div>
+                        </div>
+
+                        <div class="row" data-ng-if="XdslAccess.modem">
+                            <div class="col-xs-12 col-md-4 service-title">
+                                <span data-translate="xdsl_details_modem_model"></span>
+                            </div>
+                            <div class="col-xs-12 col-md-8 service-item"
+                                 data-ng-bind="XdslAccess.modem.model">
+                            </div>
                         </div>
                     </div>
                 </div>

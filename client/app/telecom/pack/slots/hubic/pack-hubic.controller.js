@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("PackHubicCtrl", function (PackXdslHubic, $stateParams, URLS, $q, $translate, Toast) {
+angular.module("managerApp").controller("PackHubicCtrl", function (OvhApiPackXdslHubic, $stateParams, URLS, $q, $translate, Toast) {
     "use strict";
 
     var self = this;
@@ -15,7 +15,7 @@ angular.module("managerApp").controller("PackHubicCtrl", function (PackXdslHubic
         this.loaders.services = true;
         this.services = [];
 
-        return PackXdslHubic.Aapi().query({
+        return OvhApiPackXdslHubic.Aapi().query({
             packId: $stateParams.packName
         }).$promise.then(function (services) {
             self.services = _.map(services, function (service) {

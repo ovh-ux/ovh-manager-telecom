@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("XdslModemRebootCtrl", function ($stateParams, $scope, $translate, $q, Xdsl, PackXdslModemMediator, Toast) {
+angular.module("managerApp").controller("XdslModemRebootCtrl", function ($stateParams, $scope, $translate, $q, OvhApiXdsl, PackXdslModemMediator, Toast) {
     "use strict";
 
     this.mediator = PackXdslModemMediator;
@@ -8,7 +8,7 @@ angular.module("managerApp").controller("XdslModemRebootCtrl", function ($stateP
             return Toast.error($translate.instant("xdsl_modem_reboot_an_error_ocurred"));
         }
         PackXdslModemMediator.setTask("rebootModem");
-        Xdsl.Modem().Reboot().Lexi().save(
+        OvhApiXdsl.Modem().Reboot().Lexi().save(
             {
                 xdslId: $stateParams.serviceName
             },

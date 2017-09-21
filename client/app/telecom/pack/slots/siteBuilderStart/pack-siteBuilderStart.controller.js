@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("PackSiteBuilderStartCtrl", function ($scope, $http, $q, PackXdslSiteBuilderStart, $stateParams) {
+angular.module("managerApp").controller("PackSiteBuilderStartCtrl", function ($scope, $http, $q, OvhApiPackXdslSiteBuilderStart, $stateParams) {
     "use strict";
 
     var self = this;
@@ -25,7 +25,7 @@ angular.module("managerApp").controller("PackSiteBuilderStartCtrl", function ($s
         var promises = [];
 
         // Get service link to this access from current Pack Xdsl
-        return PackXdslSiteBuilderStart.Lexi().query({
+        return OvhApiPackXdslSiteBuilderStart.Lexi().query({
             packId: $stateParams.packName
         }).$promise.then(function (services) {
             angular.forEach(services, function (service) {

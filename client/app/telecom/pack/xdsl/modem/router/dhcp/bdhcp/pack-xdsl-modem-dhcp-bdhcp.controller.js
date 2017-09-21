@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("XdslModemDhcpBdhcpCtrl", function ($stateParams, $translate, Toast, validator, PackXdslModemDhcpBdhcpObject, Xdsl, $q, PackXdslModemMediator) {
+angular.module("managerApp").controller("XdslModemDhcpBdhcpCtrl", function ($stateParams, $translate, Toast, validator, PackXdslModemDhcpBdhcpObject, OvhApiXdsl, $q, PackXdslModemMediator) {
     "use strict";
 
     var self = this;
@@ -58,7 +58,7 @@ angular.module("managerApp").controller("XdslModemDhcpBdhcpCtrl", function ($sta
     };
 
     function getDhcp () {
-        return Xdsl.Modem().Lan().Dhcp().Aapi().query(
+        return OvhApiXdsl.Modem().Lan().Dhcp().Aapi().query(
             {
                 xdslId: $stateParams.serviceName
             }

@@ -1,5 +1,5 @@
 angular.module("managerApp").controller("PackMoveCtrl", function ($scope, $compile, $state, $timeout, $translate, $uibModal, $filter, $q, $stateParams,
-                                                                  REDIRECT_URLS, PackXdslMove, Poller, Toast, ToastError, PackXdslTask, PackXdsl, Xdsl, uiCalendarConfig, validator) {
+                                                                  REDIRECT_URLS, OvhApiPackXdslMove, Poller, Toast, ToastError, OvhApiPackXdslTask, OvhApiPackXdsl, OvhApiXdsl, uiCalendarConfig, validator) {
 
     "use strict";
 
@@ -127,7 +127,7 @@ angular.module("managerApp").controller("PackMoveCtrl", function ($scope, $compi
             self.moveValidationPending = true;
         }
 
-        PackXdslMove.Lexi().move({
+        OvhApiPackXdslMove.Lexi().move({
             packName: $stateParams.packName
         }, moveData).$promise.then(function (data) {
 
@@ -308,7 +308,7 @@ angular.module("managerApp").controller("PackMoveCtrl", function ($scope, $compi
      * @returns {Promise}
      */
     function updateOperationAlreadyPending () {
-        return PackXdslTask.Aapi().details({
+        return OvhApiPackXdslTask.Aapi().details({
             packName: $stateParams.packName
         }).$promise.then(function (data) {
             data.forEach(function (task) {
@@ -326,7 +326,7 @@ angular.module("managerApp").controller("PackMoveCtrl", function ($scope, $compi
      * @returns {Promise}
      */
     function updateIsLegacyOffer () {
-        return PackXdsl.Lexi().get({
+        return OvhApiPackXdsl.Lexi().get({
             packId: $stateParams.packName
         }).$promise.then(function (data) {
             self.offer.current.isLegacy = data.capabilities.isLegacyOffer;
@@ -341,13 +341,13 @@ angular.module("managerApp").controller("PackMoveCtrl", function ($scope, $compi
      */
     function getCurrentPackAddress () {
         return $q.all([
-            PackXdsl.Aapi().get({ packId: $stateParams.packName }, null).$promise.then(function (pack) {
+            OvhApiPackXdsl.Aapi().get({ packId: $stateParams.packName }, null).$promise.then(function (pack) {
                 self.packAdress.current = _.head(pack.services);
                 return self.packAdress.current ? self.packAdress.current.accessName : null;
             }, function (err) {
                 return new ToastError(err);
             }),
-            PackXdsl.Aapi().getLines({ packId: $stateParams.packName }, null).$promise.then(function (lines) {
+            OvhApiPackXdsl.Aapi().getLines({ packId: $stateParams.packName }, null).$promise.then(function (lines) {
                 var currentLine = _.head(lines);
                 self.packAdress.lineNumber = currentLine.number;
                 self.packAdress.portability = currentLine.portability;
@@ -365,14 +365,14 @@ angular.module("managerApp").controller("PackMoveCtrl", function ($scope, $compi
      */
     function isSlammingLine () {
         self.slammingCheck = true;
-        return PackXdsl.Erika().access().execute(
+        return OvhApiPackXdsl.Erika().access().execute(
             {
                 packName: $stateParams.packName
             }
         ).$promise.then(
             function (ids) {
                 return $q.all(_.map(_.chunk(ids, 200), function (chunkIds) {
-                    return Xdsl.Erika().query().batch("serviceName", [""].concat(chunkIds), ",").expand().execute().$promise;
+                    return OvhApiXdsl.Erika().query().batch("serviceName", [""].concat(chunkIds), ",").expand().execute().$promise;
                 })).then(function (chunkResult) {
                     return _.flatten(chunkResult);
                 }).then(function (result) {

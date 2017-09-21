@@ -1,9 +1,8 @@
 angular.module("managerApp").controller("TelecomSmsSmsComposeAddReceiversListsCtrl", class TelecomSmsSmsComposeAddReceiversListsCtrl {
-    constructor ($stateParams, $timeout, $uibModalInstance, Sms, SmsMediator, receivers) {
+    constructor ($stateParams, $timeout, $uibModalInstance, SmsMediator, receivers) {
         this.$stateParams = $stateParams;
         this.$timeout = $timeout;
         this.$uibModalInstance = $uibModalInstance;
-        this.Sms = Sms;
         this.SmsMediator = SmsMediator;
         this.receivers = receivers;
     }
@@ -45,7 +44,5 @@ angular.module("managerApp").controller("TelecomSmsSmsComposeAddReceiversListsCt
      */
     hasSelected () {
         return _.some(this.receivers, { isSelected: true });
-
-        // return _.filter(this.receivers, { isSelected: true }).length > 0;
     }
 });

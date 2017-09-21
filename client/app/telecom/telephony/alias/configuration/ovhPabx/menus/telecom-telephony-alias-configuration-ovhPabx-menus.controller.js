@@ -58,6 +58,8 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationOvhPa
     ======================================*/
 
     self.$onInit = function () {
+        var initPromises;
+
         self.loading.init = true;
 
         return TelephonyMediator.getGroup($stateParams.billingAccount).then(function (group) {
@@ -65,11 +67,18 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationOvhPa
 
             return self.number.feature.init().then(function () {
                 if (self.number.getFeatureFamily() === "ovhPabx") {
-                    return $q.all({
-                        menus: self.number.feature.getMenus(),
+                    initPromises = {
+                        menus: self.number.feature.getMenus(true),
                         sounds: self.number.feature.getSounds(),
+                        tts: self.number.feature.getTts(),
                         jsplumb: jsPlumbService.initJsPlumb()
-                    });
+                    };
+
+                    if (self.number.feature.featureType !== "cloudIvr") {
+                        initPromises.queues = self.number.feature.getQueues();
+                    }
+
+                    return $q.all();
                 }
                 return null;
             });

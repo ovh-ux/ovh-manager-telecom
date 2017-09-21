@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyServiceFaxCampaignsCtrl", function ($q, $stateParams, $translate, $filter, $uibModal, Telephony, Toast, ToastError) {
+angular.module("managerApp").controller("TelecomTelephonyServiceFaxCampaignsCtrl", function ($q, $stateParams, $translate, $filter, $uibModal, OvhApiTelephony, Toast, ToastError) {
     "use strict";
 
     var self = this;
@@ -8,12 +8,12 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxCampaignsCtrl
     ===============================*/
 
     function fetchCampaigns () {
-        return Telephony.Fax().Campaigns().Lexi().query({
+        return OvhApiTelephony.Fax().Campaigns().Lexi().query({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }).$promise.then(function (campaignsIds) {
             return $q.all(_.map(campaignsIds, function (id) {
-                return Telephony.Fax().Campaigns().Lexi().get({
+                return OvhApiTelephony.Fax().Campaigns().Lexi().get({
                     billingAccount: $stateParams.billingAccount,
                     serviceName: $stateParams.serviceName,
                     id: id
@@ -65,8 +65,8 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxCampaignsCtrl
 
     self.refresh = function () {
         self.campaigns.isLoading = true;
-        Telephony.Fax().Campaigns().Lexi().resetQueryCache();
-        Telephony.Fax().Campaigns().Lexi().resetCache();
+        OvhApiTelephony.Fax().Campaigns().Lexi().resetQueryCache();
+        OvhApiTelephony.Fax().Campaigns().Lexi().resetCache();
         return fetchCampaigns().then(function (campaigns) {
             self.campaigns.raw = campaigns;
             self.applySorting();
@@ -123,7 +123,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxCampaignsCtrl
             return $q.when(null);
         }
 
-        return Telephony.Fax().Campaigns().Lexi().start({
+        return OvhApiTelephony.Fax().Campaigns().Lexi().start({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName,
             id: campaign.id
@@ -143,7 +143,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxCampaignsCtrl
             return $q.when(null);
         }
 
-        return Telephony.Fax().Campaigns().Lexi().stop({
+        return OvhApiTelephony.Fax().Campaigns().Lexi().stop({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName,
             id: campaign.id

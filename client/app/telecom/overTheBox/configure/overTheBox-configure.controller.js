@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("OverTheBoxConfigureCtrl", function ($translate, $state, OverTheBox, Toast, ToastError) {
+angular.module("managerApp").controller("OverTheBoxConfigureCtrl", function ($translate, $state, OvhApiOverTheBox, Toast, ToastError) {
     "use strict";
 
     var self = this;
@@ -7,7 +7,7 @@ angular.module("managerApp").controller("OverTheBoxConfigureCtrl", function ($tr
 
     function init () {
         self.loading = true;
-        return OverTheBox.Lexi().getServices().$promise.then(function (services) {
+        return OvhApiOverTheBox.Lexi().getServices().$promise.then(function (services) {
             self.services = services;
             if (services.length === 0) {
                 $state.go("order-overTheBox");

@@ -1,5 +1,5 @@
 angular.module("managerApp").controller("TelecomSmsSmsPendingCtrl", class TelecomSmsSmsPendingCtrl {
-    constructor ($stateParams, $q, $filter, $uibModal, $translate, $timeout, Sms, Toast, ToastError) {
+    constructor ($stateParams, $q, $filter, $uibModal, $translate, $timeout, OvhApiSms, Toast, ToastError) {
         this.$stateParams = $stateParams;
         this.$q = $q;
         this.$filter = $filter;
@@ -8,7 +8,7 @@ angular.module("managerApp").controller("TelecomSmsSmsPendingCtrl", class Teleco
         this.$timeout = $timeout;
         this.api = {
             sms: {
-                jobs: Sms.Jobs().Lexi()
+                jobs: OvhApiSms.Jobs().Lexi()
             }
         };
         this.Toast = Toast;

@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyLineAssistLogsCtrl", function ($scope, $q, $translate, $stateParams, TelephonyMediator, Telephony, User, Toast, PAGINATION_PER_PAGE) {
+angular.module("managerApp").controller("TelecomTelephonyLineAssistLogsCtrl", function ($scope, $q, $translate, $stateParams, TelephonyMediator, OvhApiTelephony, OvhApiMe, Toast, PAGINATION_PER_PAGE) {
     "use strict";
 
     var self = this;
@@ -28,7 +28,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineAssistLogsCtrl", fu
     self.refreshLogs = function () {
         self.loading.refresh = true;
 
-        return Telephony.Service().Lexi().diagnosticReports({
+        return OvhApiTelephony.Service().Lexi().diagnosticReports({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName,
             dayInterval: self.model.dayInterval
@@ -50,7 +50,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineAssistLogsCtrl", fu
             self.loading.user = true;
 
             // if request fail - no need to catch it
-            User.Lexi().get().$promise.then(function (user) {
+            OvhApiMe.Lexi().get().$promise.then(function (user) {
                 self.user = user;
                 self.line.notifications.logs.email = self.user.email;
             }).finally(function () {

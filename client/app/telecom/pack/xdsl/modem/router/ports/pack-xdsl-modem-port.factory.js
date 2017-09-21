@@ -1,4 +1,4 @@
-angular.module("managerApp").factory("PackXdslModemPortObject", function (Xdsl, $translate, Toast) {
+angular.module("managerApp").factory("PackXdslModemPortObject", function (OvhApiXdsl, $translate, Toast) {
     "use strict";
 
     var template = {
@@ -38,7 +38,7 @@ angular.module("managerApp").factory("PackXdslModemPortObject", function (Xdsl, 
         var self = this;
         this.busy = true;
         if (this.id) {
-            return Xdsl.Modem().Port().Lexi().update(
+            return OvhApiXdsl.Modem().Port().Lexi().update(
                 {
                     xdslId: serviceName,
                     name: this.name
@@ -55,7 +55,7 @@ angular.module("managerApp").factory("PackXdslModemPortObject", function (Xdsl, 
                 self.busy = false;
             });
         }
-        return Xdsl.Modem().Port().Lexi().post(
+        return OvhApiXdsl.Modem().Port().Lexi().post(
             {
                 xdslId: serviceName
             },
@@ -81,7 +81,7 @@ angular.module("managerApp").factory("PackXdslModemPortObject", function (Xdsl, 
     PackXdslModemPortObject.prototype.remove = function (serviceName) {
         var self = this;
         this.busy = true;
-        return Xdsl.Modem().Port().Lexi().delete(
+        return OvhApiXdsl.Modem().Port().Lexi().delete(
             {
                 xdslId: serviceName,
                 name: this.name

@@ -3,9 +3,10 @@ angular.module("managerApp").controller("TelecomTelephonyLineCallsCtrl", functio
 
     var self = this;
 
-    this.actions = [];
+    self.line = null;
+    self.actions = [];
 
-    this.loading = {
+    self.loading = {
         init: true
     };
 
@@ -75,7 +76,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineCallsCtrl", functio
             sref: "telecom.telephony.line.calls.abbreviatedNumbers",
             text: $translate.instant("telephony_line_calls_actions_line_abbreviated_numbers"),
             display: true,
-            enable: true
+            enable: !self.line.isIndividual()
         }, {
             name: "line_click2call",
             sref: "telecom.telephony.line.click2call",
@@ -95,6 +96,8 @@ angular.module("managerApp").controller("TelecomTelephonyLineCallsCtrl", functio
         return TelephonyMediator.getGroup($stateParams.billingAccount).then(function (group) {
             return group.getLine($stateParams.serviceName);
         }).then(function (line) {
+            self.line = line;
+
             self.actions = _.filter(initActions(), function (action) {
                 var display = action.display === true;
                 var enable = action.enable === true;

@@ -1,4 +1,4 @@
-angular.module("managerApp").service("TelecomMediator", function ($q, $translate, UserVipStatus, PackMediator, TelephonyMediator, SmsMediator, FaxMediator, OverTheBoxMediator, SiteBuildersMediator, Toast) {
+angular.module("managerApp").service("TelecomMediator", function ($q, $translate, OvhApiMeVipStatus, PackMediator, TelephonyMediator, SmsMediator, FaxMediator, OverTheBoxMediator, Toast) {
     "use strict";
 
     var self = this;
@@ -25,7 +25,7 @@ angular.module("managerApp").service("TelecomMediator", function ($q, $translate
         self.deferred.vip = $q.defer();
 
         // get vip status of connected user
-        UserVipStatus.Lexi().get().$promise.then(function (vipStatus) {
+        OvhApiMeVipStatus.Lexi().get().$promise.then(function (vipStatus) {
             self.isVip = vipStatus.telecom;
             self.deferred.vip.resolve(self.isVip);
         });
@@ -54,8 +54,7 @@ angular.module("managerApp").service("TelecomMediator", function ($q, $translate
             telephony: TelephonyMediator.getCount().catch(handleCountError),
             sms: SmsMediator.getCount().catch(handleCountError),
             freefax: FaxMediator.getCount().catch(handleCountError),
-            overTheBox: OverTheBoxMediator.getCount().catch(handleCountError),
-            siteBuilders: SiteBuildersMediator.getCount().catch(handleCountError)
+            overTheBox: OverTheBoxMediator.getCount().catch(handleCountError)
         }).then(function (counts) {
             if (countErrors.length) {
                 $translate.refresh().then(function () {

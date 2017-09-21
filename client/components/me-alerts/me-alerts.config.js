@@ -1,11 +1,11 @@
-angular.module("managerApp").run(function ($translate, $translatePartialLoader, Flash, UserAlertsAapi, REDIRECT_URLS) {
+angular.module("managerApp").run(function ($translate, $translatePartialLoader, Flash, OvhApiMeAlertsAapi, REDIRECT_URLS) {
     "use strict";
 
     $translatePartialLoader.addPart("../components/me-alerts");
 
     $translate.refresh().then(function () {
 
-        return UserAlertsAapi.query(/* {
+        return OvhApiMeAlertsAapi.query(/* {
             target: TARGET
         }*/).$promise.then(function (alerts) {
 

@@ -1,4 +1,4 @@
-angular.module("managerApp").directive("phoneNumber", function ($q, ValidateAapi, TelephonyMediator) {
+angular.module("managerApp").directive("phoneNumber", function ($q, OvhApiValidateAapi, TelephonyMediator) {
     "use strict";
     return {
         require: "ngModel",
@@ -21,7 +21,7 @@ angular.module("managerApp").directive("phoneNumber", function ($q, ValidateAapi
                         return $q.reject();
                     }
 
-                    return ValidateAapi.phone({
+                    return OvhApiValidateAapi.phone({
                         phoneNumber: viewValue,
                         regionCode: attrs.regionCode
                     }).$promise;

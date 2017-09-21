@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("PackTaskCtrl", function ($scope, $translate, PAGINATION_PER_PAGE, TASK_STATUS, PackXdslTask, ToastError) {
+angular.module("managerApp").controller("PackTaskCtrl", function ($scope, $translate, PAGINATION_PER_PAGE, TASK_STATUS, OvhApiPackXdslTask, ToastError) {
     "use strict";
 
     var self = this;
@@ -11,7 +11,7 @@ angular.module("managerApp").controller("PackTaskCtrl", function ($scope, $trans
     };
 
     var getData = function () {
-        return PackXdslTask.Aapi().details({
+        return OvhApiPackXdslTask.Aapi().details({
             packName: $scope.Pack.pack.packName
         }).$promise.then(
             function (data) {

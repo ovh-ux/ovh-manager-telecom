@@ -1,5 +1,5 @@
 angular.module("managerApp").controller("TelecomSmsPhonebooksPhonebookContactCreateCtrl", class TelecomSmsPhonebooksPhonebookContactCreateCtrl {
-    constructor ($q, $stateParams, $timeout, $uibModalInstance, data, Phonebookcontact, Sms, TelephonyMediator) {
+    constructor ($q, $stateParams, $timeout, $uibModalInstance, data, Phonebookcontact, OvhApiSms, TelephonyMediator) {
         this.$q = $q;
         this.$stateParams = $stateParams;
         this.$timeout = $timeout;
@@ -8,7 +8,7 @@ angular.module("managerApp").controller("TelecomSmsPhonebooksPhonebookContactCre
         this.Phonebookcontact = Phonebookcontact;
         this.api = {
             sms: {
-                phonebookContact: Sms.Phonebooks().PhonebookContact().Lexi()
+                phonebookContact: OvhApiSms.Phonebooks().PhonebookContact().Lexi()
             }
         };
         this.TelephonyMediator = TelephonyMediator;

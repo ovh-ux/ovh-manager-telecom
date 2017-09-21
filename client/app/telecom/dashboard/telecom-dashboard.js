@@ -2,7 +2,7 @@ angular.module("managerApp").config(function ($stateProvider) {
     "use strict";
 
     $stateProvider.state("telecom.dashboard", {
-        url: "/dashboard",
+        url: "/",
         views: {
             telecomView: {
                 templateUrl: "app/telecom/dashboard/telecom-dashboard.html",

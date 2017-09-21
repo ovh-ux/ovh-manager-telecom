@@ -5,8 +5,9 @@
         <div class="anchor-cell-container right-space-p16">
             <div class="anchor-container anchor-empty">
                 <div class="anchor"
-                     data-jsplumb-endpoint="$ctrl.menuCtrl.jsPlumbEndpointsOptions.topLeft">
-                    <span class="position-text"
+                     data-jsplumb-endpoint="$ctrl.menuCtrl.jsPlumbEndpointsOptions.topLeft"
+                     data-ng-attr-title="{{ $ctrl.getEntryAttribute('dtmf') }}">
+                    <span class="position-text entry-dtmf elipse"
                           data-jsplumb-connection="$ctrl.isDisabled() ? $ctrl.menuCtrl.jsPlumbConnectionsOptions.disabled : null"
                           data-jsplumb-connection-target="{{ $ctrl.getParentEndpointUuid() }}"
                           data-ng-bind="$ctrl.getEntryAttribute('dtmf')">
@@ -51,6 +52,11 @@
                                   data-ng-bind="$ctrl.menuCtrl.ovhPabx.getMenu($ctrl.getEntryAttribute('actionParam')).name">
                             </span>
                         </span> <!-- END OF ACTION PARAM DISPLAY : MENUSUB -->
+
+                        <!-- ACTION PARAM DISPLAY : CALLCENTER -->
+                        <span data-ng-switch-when="callcenter"
+                              data-ng-bind="$ctrl.menuCtrl.ovhPabx.getQueue($ctrl.getEntryAttribute('actionParam')).description || $ctrl.menuCtrl.ovhPabx.getQueue($ctrl.getEntryAttribute('actionParam')).queueId">
+                        </span> <!-- END OF ACTION PARAM DISPLAY : CALLCENTER -->
 
                         <!-- ACTION PARAM DISPLAY : DEFAULT -->
                         <span data-ng-switch-default

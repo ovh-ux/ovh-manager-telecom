@@ -23,16 +23,6 @@ angular.module("managerApp").config(function (SidebarMenuProvider) {
         });
     }
 
-    function addSitebuilderSection () {
-        return SidebarMenu.addMenuItem({
-            title: $translate.instant("telecom_sidebar_section_site_builders"),
-            category: "siteBuilders",
-            icon: "siteBuilder",
-            state: "telecom.siteBuilders",
-            loadOnState: "telecom.siteBuilders"
-        });
-    }
-
     function addV4Section () {
         return SidebarMenu.addMenuItem({
             title: $translate.instant("telecom_sidebar_section_v4"),
@@ -71,11 +61,6 @@ angular.module("managerApp").config(function (SidebarMenuProvider) {
         // add sidenar otb item
         if (count.overTheBox > 0) {
             OverTheBoxSidebar.init();
-        }
-
-        // add sidebar siteBuilders
-        if (count.siteBuilders > 0) {
-            addSitebuilderSection();
         }
 
         // add sidebar task item

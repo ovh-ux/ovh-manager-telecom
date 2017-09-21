@@ -1,22 +1,22 @@
-angular.module("managerApp").controller("TelecomTelephonyLineAnswerDefaultVoicemailCtrl", function ($scope, $stateParams, $q, $timeout, $filter, ToastError, Telephony) {
+angular.module("managerApp").controller("TelecomTelephonyLineAnswerDefaultVoicemailCtrl", function ($scope, $stateParams, $q, $timeout, $filter, ToastError, OvhApiTelephony) {
     "use strict";
 
     var self = this;
 
     function fetchLines () {
-        return Telephony.Line().Aapi().get().$promise.then(function (result) {
+        return OvhApiTelephony.Line().Aapi().get().$promise.then(function (result) {
             return _.filter(_.flatten(_.pluck(result, "lines")), { serviceType: "line" });
         });
     }
 
     function fetchFax () {
-        return Telephony.Fax().Aapi().getServices().$promise.then(function (result) {
+        return OvhApiTelephony.Fax().Aapi().getServices().$promise.then(function (result) {
             return _.filter(result, { type: "FAX" });
         });
     }
 
     function fetchOptions () {
-        return Telephony.Line().Lexi().getOptions({
+        return OvhApiTelephony.Line().Lexi().getOptions({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }).$promise;
@@ -48,7 +48,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineAnswerDefaultVoicem
 
     self.saveDefaultVoicemail = function () {
         self.saving = true;
-        var save = Telephony.Line().Lexi().setOptions({
+        var save = OvhApiTelephony.Line().Lexi().setOptions({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }, self.options).$promise;

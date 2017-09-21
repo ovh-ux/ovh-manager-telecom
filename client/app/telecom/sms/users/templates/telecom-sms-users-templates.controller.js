@@ -1,11 +1,11 @@
 angular.module("managerApp").controller("TelecomSmsUsersTemplatesCtrl", class TelecomSmsUsersTemplatesCtrl {
-    constructor ($q, $stateParams, $timeout, $uibModalInstance, Sms, service, SMS_ALERTS) {
+    constructor ($q, $stateParams, $timeout, $uibModalInstance, OvhApiSms, service, SMS_ALERTS) {
         this.$q = $q;
         this.$stateParams = $stateParams;
         this.$timeout = $timeout;
         this.$uibModalInstance = $uibModalInstance;
         this.api = {
-            sms: Sms.Lexi()
+            sms: OvhApiSms.Lexi()
         };
         this.service = service;
         this.constant = { SMS_ALERTS };
