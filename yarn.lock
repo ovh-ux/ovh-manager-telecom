@@ -99,6 +99,24 @@ amdefine@>=0.0.4:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
 
+angular-animate@^1.4.0:
+  version "1.6.5"
+  resolved "https://registry.yarnpkg.com/angular-animate/-/angular-animate-1.6.5.tgz#3817c75880d05fc899a6c8d4b09d1cc62a71e93a"
+
+angular-sanitize@^1.x:
+  version "1.6.5"
+  resolved "https://registry.yarnpkg.com/angular-sanitize/-/angular-sanitize-1.6.5.tgz#b5625a817afad2ba58c333e98eef169a1c6f517a"
+
+angular-web-notification@^1.2.22:
+  version "1.2.23"
+  resolved "https://registry.yarnpkg.com/angular-web-notification/-/angular-web-notification-1.2.23.tgz#548b37f18eea2dc0d18222ff4dd52137a2ec0dd1"
+  dependencies:
+    simple-web-notification latest
+
+angular@^1.6.4, angular@^1.x:
+  version "1.6.5"
+  resolved "https://registry.yarnpkg.com/angular/-/angular-1.6.5.tgz#37f788eebec5ce2e3fa02b17bbcb2a231576a0d6"
+
 ansi-escapes@^1.1.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/ansi-escapes/-/ansi-escapes-1.4.0.tgz#d3a8a83b319aa67793662b13e761c7911422306e"
@@ -3632,6 +3650,10 @@ jpegtran-bin@^3.0.0:
     bin-wrapper "^3.0.0"
     logalot "^2.0.0"
 
+jquery-ui@^1.12.1:
+  version "1.12.1"
+  resolved "https://registry.yarnpkg.com/jquery-ui/-/jquery-ui-1.12.1.tgz#bcb4045c8dd0539c134bc1488cdd3e768a7a9e51"
+
 js-base64@^2.1.9:
   version "2.1.9"
   resolved "https://registry.yarnpkg.com/js-base64/-/js-base64-2.1.9.tgz#f0e80ae039a4bd654b5f281fc93f04a914a7fcce"
@@ -4425,6 +4447,13 @@ ng-annotate@^1.0.0:
     stringset "~0.2.1"
     tryor "~0.1.2"
 
+ng-embed@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/ng-embed/-/ng-embed-2.2.0.tgz#c9acb5d549e724ce05bf1f2a7837346c0472d3ac"
+  dependencies:
+    angular "^1.x"
+    angular-sanitize "^1.x"
+
 node-pre-gyp@^0.6.36:
   version "0.6.36"
   resolved "https://registry.yarnpkg.com/node-pre-gyp/-/node-pre-gyp-0.6.36.tgz#db604112cb74e0d477554e9b505b17abddfab786"
@@ -4692,11 +4721,34 @@ osenv@^0.1.4:
     os-homedir "^1.0.0"
     os-tmpdir "^1.0.0"
 
+"ovh-angular-chatbot@git+https://github.com/ovh-ux/ovh-angular-chatbot.git":
+  version "1.0.0"
+  resolved "git+https://github.com/ovh-ux/ovh-angular-chatbot.git#069a9a68325ed8cc6f06687e161da5cc3ad7936d"
+  dependencies:
+    angular "^1.6.4"
+    angular-animate "^1.4.0"
+    angular-web-notification "^1.2.22"
+    debug "^2.6.8"
+    jquery-ui "^1.12.1"
+    ng-embed "^2.2.0"
+    ovh-angular-user-pref "^0.3.1"
+    ovh-ui-kit "git+https://github.com/ovh-ux/ovh-ui-kit.git"
+
+ovh-angular-user-pref@^0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/ovh-angular-user-pref/-/ovh-angular-user-pref-0.3.1.tgz#07f5792513651f3262ae4879c174423649b08307"
+
 ovh-protractor-jasmine2-logs-reporter@~0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/ovh-protractor-jasmine2-logs-reporter/-/ovh-protractor-jasmine2-logs-reporter-0.0.1.tgz#60717603d7419b149482355a7bda25ed109c872a"
   dependencies:
     q "^1.4.1"
+
+"ovh-ui-kit@git+https://github.com/ovh-ux/ovh-ui-kit.git":
+  version "1.0.0-alpha.13"
+  resolved "git+https://github.com/ovh-ux/ovh-ui-kit.git#7edcb7fb529c50eaf99845c8591f24c3268c10c8"
+  dependencies:
+    less-plugin-remcalc "^0.0.1"
 
 pad-stream@^1.0.0:
   version "1.2.0"
@@ -5577,6 +5629,10 @@ simple-fmt@~0.1.0:
 simple-is@~0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/simple-is/-/simple-is-0.2.0.tgz#2abb75aade39deb5cc815ce10e6191164850baf0"
+
+simple-web-notification@latest:
+  version "1.0.20"
+  resolved "https://registry.yarnpkg.com/simple-web-notification/-/simple-web-notification-1.0.20.tgz#7f4a964c40318dfd55ea53cddac534bf6ef687af"
 
 slash@^1.0.0:
   version "1.0.0"
