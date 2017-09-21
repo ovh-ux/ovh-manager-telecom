@@ -1,6 +1,6 @@
 {
   "name": "ovh-manager-telecom",
-  "version": "7.0.8",
+  "version": "7.0.9",
   "description": "OVH Control Panel Telecom UI",
   "authors": [
     "OVH SAS"
@@ -141,6 +141,8 @@
         "ui/minified/widget.js",
         "ui/minified/data.js",
         "ui/minified/scroll-parent.js",
+        "ui/minified/safe-active-element.js",
+        "ui/minified/safe-blur.js",
         "ui/widgets/mouse.js",
         "ui/widgets/sortable.js",
         "ui/widgets/draggable.js",

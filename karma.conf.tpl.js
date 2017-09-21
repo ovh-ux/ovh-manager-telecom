@@ -18,6 +18,13 @@ module.exports = function (config) {
             ".tmp/client/{app,components}/**/*.module.js",
             ".tmp/client/{app,components}/**/*.js",
             ".tmp/client/{app,components}/**/*.html",
+            "client/bower_components/jquery-ui/jquery-ui.js",
+            "node_modules/simple-web-notification/web-notification.js",
+            "node_modules/angular-web-notification/angular-web-notification.js",
+            "node_modules/ng-embed/dist/ng-embed.min.js",
+            "node_modules/ovh-angular-proxy-request/dist/ovh-angular-proxy-request.min.js",
+            "node_modules/ovh-angular-user-pref/dist/ovh-angular-user-pref.min.js",
+            "node_modules/ovh-angular-chatbot/dist/ovh-angular-chatbot.min.js",
 
             { pattern: "client/{app,components,bower_components}/**/*.dt.spec.json", included: false }
         ],

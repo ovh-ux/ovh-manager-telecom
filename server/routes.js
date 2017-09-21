@@ -196,16 +196,19 @@ module.exports = function (app) {
     });
 
     // All undefined asset or api routes should return a 404
-    app.route("/:url(auth|components|app|bower_components|assets|fonts)/*").get(function (req, res) {
+    app.route("/:url(auth|components|app|bower_components|node_modules|assets|fonts)/*").get(function (req, res) {
         if (
             (
                 req.path.match(/Messages_.._..\.json$/) ||
                 req.path.match(/app\.css$/)
             ) && req.path.indexOf("bower_components") === -1
+            && req.path.indexOf("node_modules") === -1
         ) {
             res.sendFile(path.join(path.normalize(__dirname + "/../.tmp"), req.path));
         } else if (req.path.indexOf("bower_components") >= 0) {
             res.sendFile(path.join(path.normalize(__dirname + "/../client"), req.path));
+        } else if (req.path.indexOf("node_modules") >= 0) {
+            res.sendFile(path.join(path.normalize(__dirname + "/.."), req.path));
         } else {
             res.sendFile(path.join(path.normalize(__dirname + "/../dist/client"), req.path));
         }
