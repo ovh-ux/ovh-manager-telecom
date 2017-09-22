@@ -26,6 +26,21 @@
                 <header class="widget-presentation-header">
                     <h2 class="widget-presentation-title" data-translate="telephony_alias_config_change_type_title"></h2>
                 </header>
+
+                <!-- Warning for easy and mini pabx -->
+                <div class="alert alert-warning"
+                     role="alert"
+                     data-ng-if="AliasConfigurationChangeTypeCtrl.number.feature.featureType === 'easyPabx' || AliasConfigurationChangeTypeCtrl.number.feature.featureType === 'miniPabx'">
+                    <span class="ovh-font ovh-font-filled-warning right-space-m8"></span>
+                    <p>
+                        <strong data-translate="telephony_alias_change_type_warning"></strong>
+                        <br />
+                        <span data-translate="telephony_alias_change_type_warning_old_pabx"
+                              data-translate-values="{ featureType: AliasConfigurationChangeTypeCtrl.number.feature.featureType }">
+                        </span>
+                    </p>
+                </div> <!-- End of Warning for easy and mini pabx -->
+
                 <form class="ovh-form-flat"
                       name="changeTypeForm"
                       data-ng-submit="AliasConfigurationChangeTypeCtrl.changeType();"
