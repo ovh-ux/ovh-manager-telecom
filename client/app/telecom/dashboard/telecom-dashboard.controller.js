@@ -10,6 +10,7 @@ angular.module("managerApp").controller("TelecomDashboardCtrl", function (Teleco
     self.expressLiteOrder = URLS.orderExpressLite;
     self.isVip = false;
     self.isMobile = false;
+    self.isFr = false;
 
     matchmedia.on("(max-width: 1279px)", function (mediaQueryList) {
         self.isMobile = mediaQueryList.matches;
@@ -21,6 +22,10 @@ angular.module("managerApp").controller("TelecomDashboardCtrl", function (Teleco
 
     function init () {
         self.loading.vip = true;
+
+        if (localStorage && localStorage.getItem("univers-selected-language")) {
+            self.isFr = _.startsWith(localStorage.getItem("univers-selected-language"), "fr");
+        }
 
         return TelecomMediator.deferred.vip.promise.then(function (vipStatus) {
             self.isVip = vipStatus;
