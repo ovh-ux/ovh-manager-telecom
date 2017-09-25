@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomDashboardCtrl", function (TelecomMediator, ToastError, URLS, matchmedia) {
+angular.module("managerApp").controller("TelecomDashboardCtrl", function (TelecomMediator, ToastError, URLS, matchmedia, atInternet) {
     "use strict";
 
     var self = this;
@@ -15,6 +15,16 @@ angular.module("managerApp").controller("TelecomDashboardCtrl", function (Teleco
     matchmedia.on("(max-width: 1279px)", function (mediaQueryList) {
         self.isMobile = mediaQueryList.matches;
     });
+
+    self.onRegisterLinkClick = function () {
+        atInternet.trackClick({
+            name: "Summit-banner",
+            type: "action",
+            level2: "5"
+        });
+
+        return true;
+    };
 
     /*= =====================================
     =            INITIALIZATION            =
