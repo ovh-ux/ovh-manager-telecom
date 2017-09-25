@@ -44,7 +44,7 @@ angular.module("managerApp").service("PackSidebar", function ($q, $translate, Si
 
                 var packSection = SidebarMenu.addMenuItem({
                     id: pack.packName,
-                    title: pack.description || pack.packName,
+                    title: pack.description || pack.offerDescription || pack.packName,
                     prefix: $translate.instant("back_my_pack"),
                     state: "telecom.pack",
                     stateParams: {
