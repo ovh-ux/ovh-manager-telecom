@@ -1,0 +1,102 @@
+<section class="telephony-group-alias-configuration-mode telephony-group-alias-configuration-mode-easyPabx">
+
+    <header>
+        <section-back-link section-back-link-to-state="telecom.telephony.alias.configuration"
+                           section-back-link-title="{{ 'telephony_alias_configuration_back_link' | translate }}">
+        </section-back-link>
+        <h1 data-translate="telephony_alias_configuration_mode_title"></h1>
+    </header>
+
+    <div class="telecom-section-content"
+         data-ng-if="$ctrl.loading.init">
+        <bouncing-box-loader>
+            <h4 data-translate="loading"></h4>
+        </bouncing-box-loader>
+    </div>
+
+    <div class="telecom-section-content"
+         data-ng-if="!$ctrl.loading.init">
+
+        <div class="row">
+            <!-- Information -->
+            <div class="col-md-6 widget-presentation">
+                <header class="widget-presentation-header">
+                    <h2 class="widget-presentation-title"
+                        data-translate="telephony_alias_configuration_mode_info_title">
+                    </h2>
+                </header>
+                <p data-translate="telephony_alias_configuration_mode_info1"></p>
+                <ul class="left-space-m16">
+                    <li data-translate="telephony_alias_configuration_mode_easy_pabx_anonymous_call_rejection_info"></li>
+                    <li data-translate="telephony_alias_configuration_mode_easy_pabx_no_reply_timer_info"></li>
+                    <li data-translate="telephony_alias_configuration_mode_easy_pabx_voicemail_info"></li>
+                    <li data-translate="telephony_alias_configuration_mode_easy_pabx_number_of_calls_info"></li>
+                    <li data-translate="telephony_alias_configuration_mode_easy_pabx_pattern_strategy_info"></li>
+                </ul>
+            </div> <!-- End of Information -->
+
+            <!-- Configuration -->
+            <div class="col-md-6 widget-presentation">
+                <header class="widget-presentation-header">
+                    <h2 class="widget-presentation-title"
+                        data-translate="telephony_alias_configuration_mode_config_title">
+                    </h2>
+                </header>
+
+                <form class="ovh-form-flat"
+                      name="easyPabxOptionsForm"
+                      data-ng-submit="$ctrl.onOptionsFormSubmit()"
+                      novalidate>
+
+                    <!-- anonymousCallRejection -->
+                    <label class="block pointer top-space-m16 bottom-space-m16">
+                        <flat-checkbox>
+                            <input type="checkbox"
+                                   id="anonymousCallRejection"
+                                   name="anonymousCallRejection"
+                                   data-ng-disabled="$ctrl.loading.save"
+                                   data-ng-model="$ctrl.options.anonymousCallRejection" />
+                        </flat-checkbox>
+                        <span class="left-space-m8" data-translate="telephony_alias_configuration_mode_easy_pabx_anonymous_call_rejection"></span>
+                    </label> <!-- End of anonymousCallRejection -->
+
+                    <!-- noReplyTimer -->
+                    <div class="clearfix top-space-m8">
+                        <label class="block clearfix"
+                               for="noReplyTimer"
+                               data-translate="telephony_alias_configuration_mode_easy_pabx_no_reply_timer">
+                        </label>
+                        <input-number-spinner id="noReplyTimer"
+                                              name="noReplyTimer"
+                                              class="pull-left"
+                                              data-ng-disabled="$ctrl.loading.save"
+                                              data-ng-model="$ctrl.options.noReplyTimer"
+                                              data-input-number-spinner-min="5"
+                                              data-input-number-spinner-max="60">
+                        </input-number-spinner>
+                    </div> <!-- End of noReplyTimer -->
+
+                    <!-- voicemail -->
+                    <div class="clearfix">
+                        <label for="voicemail"
+                               data-translate="telephony_alias_configuration_mode_easy_pabx_voicemail">
+                        </label>
+                        <select flat-select
+                                id="voicemail"
+                                name="voicemail"
+                                class="form-control"
+                                data-ng-disabled="$ctrl.loading.save"
+                                data-ng-model="$ctrl.options.voicemail"
+                                data-ng-options="number as (number | phoneNumber) for number in $ctrl.voicemail"
+                                required>
+                            <option value="" data-translate="telephony_alias_configuration_mode_easyhunting_none"></option>
+                        </select>
+                    </div> <!-- End of voicemail -->
+
+                </form>
+            </div> <!-- End of Configuration -->
+        </div>
+
+    </div>
+
+</section>

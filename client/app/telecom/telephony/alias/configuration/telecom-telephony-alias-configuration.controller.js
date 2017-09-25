@@ -130,6 +130,12 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationCtrl"
                 });
             }
             return easyHuntingActions;
+        case "easyPabx":
+            return [{
+                name: "number_old_pabx_mode",
+                sref: "telecom.telephony.alias.configuration.mode.easyPabx",
+                text: $translate.instant("telephony_alias_configuration_actions_number_hunting_mode")
+            }];
         default:
             return [];
         }
