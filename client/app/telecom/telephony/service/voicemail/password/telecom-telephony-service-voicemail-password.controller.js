@@ -6,7 +6,10 @@ angular.module("managerApp").controller("TelecomTelephonyServiceVoicemailPasswor
     function init () {
         self.options = null;
         self.loading = true;
-        OvhApiTelephony.Line().Lexi().getOptions({
+        self.submitting = false;
+        self.reset();
+
+        return OvhApiTelephony.Voicemail().Lexi().getNumbersSettings({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }).$promise.then(function (options) {
@@ -16,8 +19,6 @@ angular.module("managerApp").controller("TelecomTelephonyServiceVoicemailPasswor
         }).finally(function () {
             self.loading = false;
         });
-        self.submitting = false;
-        self.reset();
     }
 
     self.checkPasswordConfirm = function (form) {
