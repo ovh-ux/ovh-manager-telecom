@@ -22,6 +22,10 @@ angular.module("managerApp").controller("TelecomTelephonyFaxVoicemailCtrl", func
             picto: "ovh-font-messagesRead",
             text: $translate.instant("telephony_group_fax_voicemail_action_management")
         }, {
+            name: "fax_voicemail_status",
+            url: TelephonyMediator.getV6ToV4RedirectionUrl("line.line_voicemail_status"),
+            text: $translate.instant("telephony_group_fax_voicemail_action_status")
+        }, {
             name: "fax_voicemail_password",
             sref: "telecom.telephony.fax.voicemail.password",
             text: $translate.instant("telephony_group_fax_voicemail_action_password")

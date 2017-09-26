@@ -92,6 +92,8 @@ angular.module("managerApp").constant("REDIRECT_V4_HASH", {
         // DIRECTORY MANAGEMENT
         line_manage_directory: "#rdm/53580/grp/{billingAccount}/num/{lineNumber}/menu/line/grp/all/page/line_manage_directory",
 
+        line_voicemail_status: "#rdm/29185/menu/line/grp/{billingAccount}/num/{lineNumber}/page/line_voicemail_activate_desactivate",
+
         // ASSIST
         line_view_logs_new: "#rdm/95634/menu/line/grp/{billingAccount}/num/{lineNumber}/page/line_view_logs_new",
         line_phone_assistance: "#rdm/62433/menu/line/grp/{billingAccount}/num/{lineNumber}/page/line_phone_assistance",
