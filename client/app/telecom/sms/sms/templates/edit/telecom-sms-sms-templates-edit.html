@@ -135,7 +135,9 @@
                         data-ng-model="TemplateEditCtrl.model.template.status"
                         data-ng-checked="TemplateEditCtrl.model.template.status"
                         data-ng-true-value="'enable'"
-                        data-ng-false-value="'disable'" />
+                        data-ng-false-value="'disable'"
+                        data-ng-disabled="TemplateEditCtrl.model.template.status === 'waitingValidation' ||
+                                          TemplateEditCtrl.model.template.status === 'refused'" />
                 </flat-checkbox>
                 <span class="left-space-m8"
                       data-translate="sms_sms_templates_edit_status_label">
