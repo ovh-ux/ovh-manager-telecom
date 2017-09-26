@@ -97,20 +97,20 @@
                     </div>
 
                     <div class="clearfix top-space-m16">
-                        <label for="strategy" data-translate="telephony_alias_configuration_mode_easyhunting_strategy"></label>
+                        <label for="strategy" data-translate="telephony_alias_configuration_mode_pabx_strategy"></label>
                         <select flat-select
                             id="strategy"
                             name="strategy"
                             class="form-control"
                             data-ng-disabled="ModeEasyHuntingCtrl.isUpdating"
                             data-ng-model="ModeEasyHuntingCtrl.optionsForm.strategy"
-                            data-ng-options="strategy as ('telephony_alias_configuration_mode_easyhunting_strategy_' + strategy | translate) for strategy in ModeEasyHuntingCtrl.enums.strategy"
+                            data-ng-options="strategy as ('telephony_alias_configuration_mode_pabx_strategy_' + strategy | translate) for strategy in ModeEasyHuntingCtrl.enums.strategy"
                             required>
                         </select>
                         <p>
                             <small>
                                 <i class="ovh-font ovh-font-info"></i>
-                                <span data-translate="{{ 'telephony_alias_configuration_mode_easyhunting_strategy_' + ModeEasyHuntingCtrl.optionsForm.strategy + '_info' | translate }}"></span>
+                                <span data-translate="{{ 'telephony_alias_configuration_mode_pabx_strategy_' + ModeEasyHuntingCtrl.optionsForm.strategy + '_info' | translate }}"></span>
                             </small>
                         </p>
                     </div>

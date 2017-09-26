@@ -11,13 +11,14 @@
 
     <translation id="telephony_alias_configuration_mode_easy_pabx_voicemail">Répondeur</translation>
     <translation id="telephony_alias_configuration_mode_easy_pabx_voicemail_info"><strong>Répondeur</strong> : répondeur sur lequel renvoyer en cas de non-réponse.</translation>
+    <translation id="telephony_alias_configuration_mode_easy_pabx_no_voicemail">Aucun</translation>
 
-    <translation id="telephony_alias_configuration_mode_easy_pabx_pattern">Mode de sonnerie</translation>
-
-    <translation id="telephony_alias_configuration_mode_easy_pabx_strategy">Nombre d'appels simultanés</translation>
+    <translation id="telephony_alias_configuration_mode_easy_pabx_numberOfCalls">Nombre d'appels simultanés</translation>
 
     <translation id="telephony_alias_configuration_mode_easy_pabx_pattern_strategy_info"><strong>Stratégie et mode de sonnerie</strong> : stratégie des sonneries des membres du groupe d'appel.</translation>
 
-    <translation id="telephony_alias_configuration_mode_easy_pabx_loading_error">Une erreur est survenue lors du chargement des options de votre miniPabx.</translation>
+    <translation id="telephony_alias_configuration_mode_easy_pabx_loading_error">Une erreur est survenue lors du chargement des options de votre easyPabx.</translation>
+    <translation id="telephony_alias_configuration_mode_easy_pabx_save_success">Les modifications apportées à votre easyPabx ont été appliquées avec succès.</translation>
+    <translation id="telephony_alias_configuration_mode_easy_pabx_save_error">Oups ! Une erreur est survenue lors de la modification des options de votre easyPabx.</translation>
 
 </translations>
