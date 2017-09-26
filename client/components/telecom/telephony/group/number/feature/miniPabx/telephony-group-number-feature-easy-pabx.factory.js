@@ -1,26 +1,26 @@
-angular.module("managerApp").factory("TelephonyGroupNumberEasyPabx", function ($q, VoipScheduler, VoipTimeCondition, OvhApiTelephonyEasyPabx) {
+angular.module("managerApp").factory("TelephonyGroupNumberMiniPabx", function ($q, VoipScheduler, VoipTimeCondition, OvhApiTelephonyMiniPabx) {
     "use strict";
 
     /*= ==================================
     =            CONSTRUCTOR            =
     ===================================*/
 
-    function TelephonyGroupNumberEasyPabx (featureOptions) {
+    function TelephonyGroupNumberMiniPabx (featureOptions) {
 
         // check for mandatory options
         if (!featureOptions) {
-            throw new Error("mandatory options must be specified when creating a new TelephonyGroupNumberEasyPabx");
+            throw new Error("mandatory options must be specified when creating a new TelephonyGroupNumberMiniPabx");
         } else {
             if (!featureOptions.billingAccount) {
-                throw new Error("billingAccount option must be specified when creating a new TelephonyGroupNumberEasyPabx");
+                throw new Error("billingAccount option must be specified when creating a new TelephonyGroupNumberMiniPabx");
             }
 
             if (!featureOptions.serviceName) {
-                throw new Error("serviceName option must be specified when creating a new TelephonyGroupNumberEasyPabx");
+                throw new Error("serviceName option must be specified when creating a new TelephonyGroupNumberMiniPabx");
             }
 
             if (!featureOptions.featureType) {
-                throw new Error("featureType option must be specified when creating a new TelephonyGroupNumberEasyPabx");
+                throw new Error("featureType option must be specified when creating a new TelephonyGroupNumberMiniPabx");
             }
         }
 
@@ -48,7 +48,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberEasyPabx", function ($
 
     /* ----------  FEATURE OPTIONS  ----------*/
 
-    TelephonyGroupNumberEasyPabx.prototype.setOptions = function () {
+    TelephonyGroupNumberMiniPabx.prototype.setOptions = function () {
         var self = this;
 
         return self;
@@ -58,7 +58,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberEasyPabx", function ($
 
     /* ----------  EDITION  ----------*/
 
-    TelephonyGroupNumberEasyPabx.prototype.startEdition = function () {
+    TelephonyGroupNumberMiniPabx.prototype.startEdition = function () {
         var self = this;
 
         self.inEdition = true;
@@ -69,7 +69,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberEasyPabx", function ($
         return self;
     };
 
-    TelephonyGroupNumberEasyPabx.prototype.stopEdition = function (cancel) {
+    TelephonyGroupNumberMiniPabx.prototype.stopEdition = function (cancel) {
         var self = this;
 
         if (self.saveForEdition && cancel) {
@@ -82,7 +82,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberEasyPabx", function ($
         return self;
     };
 
-    TelephonyGroupNumberEasyPabx.prototype.hasChange = function (attr) {
+    TelephonyGroupNumberMiniPabx.prototype.hasChange = function (attr) {
         var self = this;
 
         if (!self.inEdition || !self.saveForEdition) {
@@ -97,7 +97,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberEasyPabx", function ($
 
     /* ----------  SCHEDULER  ----------*/
 
-    TelephonyGroupNumberEasyPabx.prototype.getScheduler = function () {
+    TelephonyGroupNumberMiniPabx.prototype.getScheduler = function () {
         var self = this;
 
         if (!self.scheduler) {
@@ -112,7 +112,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberEasyPabx", function ($
 
     /* ----------  TIMECONDITION  ----------*/
 
-    TelephonyGroupNumberEasyPabx.prototype.getTimeCondition = function () {
+    TelephonyGroupNumberMiniPabx.prototype.getTimeCondition = function () {
         var self = this;
 
         if (!self.timeCondition) {
@@ -128,16 +128,16 @@ angular.module("managerApp").factory("TelephonyGroupNumberEasyPabx", function ($
 
     /* ----------  HELPERS  ----------*/
 
-    TelephonyGroupNumberEasyPabx.prototype.inPendingState = function () {
+    TelephonyGroupNumberMiniPabx.prototype.inPendingState = function () {
         return false;
     };
 
     /* ----------  INITIALIZATION  ----------*/
 
-    TelephonyGroupNumberEasyPabx.prototype.init = function () {
+    TelephonyGroupNumberMiniPabx.prototype.init = function () {
         var self = this;
 
-        return OvhApiTelephonyEasyPabx.Lexi().get({
+        return OvhApiTelephonyMiniPabx.Lexi().get({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName
         }).$promise.then(function (featureOptions) {
@@ -147,6 +147,6 @@ angular.module("managerApp").factory("TelephonyGroupNumberEasyPabx", function ($
 
     /* -----  End of PROTOTYPE METHODS  ------*/
 
-    return TelephonyGroupNumberEasyPabx;
+    return TelephonyGroupNumberMiniPabx;
 
 });

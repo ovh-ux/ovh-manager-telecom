@@ -60,4 +60,15 @@
    <translation id="telephony_alias_configuration_mode_pabx_pattern_sequential">Séquentiel</translation>
    <translation id="telephony_alias_configuration_mode_pabx_pattern_sequential_info">Les uns après les autres</translation>
 
+   <!-- CALL REJECTION -->
+   <translation id="telephony_alias_configuration_mode_pabx_anonymous_call_rejection">Rejet des appels anonymes</translation>
+   <translation id="telephony_alias_configuration_mode_pabx_anonymous_call_rejection_info"><strong>Rejet des appels anonymes</strong> : permet de rejeter les appels anonymes.</translation>
+
+   <!-- NUMBER OF CALLS -->
+   <translation id="telephony_alias_configuration_mode_pabx_number_of_calls">Nombre d'appels simultanés</translation>
+   <translation id="telephony_alias_configuration_mode_pabx_number_of_calls_info"><strong>Nombre d'appels simultanés</strong> : nombre maximum d'appels simultanés par membre du groupe d'appel.</translation>
+
+   <!-- STRATEGY AND PATTERN -->
+   <translation id="telephony_alias_configuration_mode_pabx_pattern_strategy_info"><strong>Stratégie et mode de sonnerie</strong> : stratégie des sonneries des membres du groupe d'appel.</translation>
+
 </translations>

@@ -111,6 +111,8 @@ angular.module("managerApp").factory("TelephonyGroupNumber", function ($q, $inje
             return "easyHunting";
         case "easyPabx":
             return "easyPabx";
+        case "miniPabx":
+            return "miniPabx";
         default:
             return "feature";
         }
