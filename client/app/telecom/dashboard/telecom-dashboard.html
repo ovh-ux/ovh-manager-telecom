@@ -26,12 +26,28 @@
     <div class="telecom-section-content">
 
         <div class="row">
-            <div class="col-xs-12 col-md-6"
+            <div class="col-xs-12"
+                 data-ng-class="!TelecomDashboardCtrl.isMobile ? 'col-md-5' : 'col-md-6'"
                  data-ui-view="@billsView">
             </div>
 
-            <div class="col-xs-12 col-md-6"
+            <div class="col-xs-12"
+                 data-ng-class="!TelecomDashboardCtrl.isMobile ? 'col-md-5' : 'col-md-6'"
                  data-ui-view="@guidesView">
+            </div>
+
+            <div class="col-xs-12 col-md-2"
+                 data-ng-if="!TelecomDashboardCtrl.isMobile">
+                <a data-ng-href="{{ TelecomDashboardCtrl.isFr ? 'https://summit.ovh.com/fr/#xtor=CS4-32-[tel-banner]' : 'https://summit.ovh.com/en/#xtor=CS4-32-[tel-banner]' }}"
+                   target="_blank"
+                   data-ng-attr-title="{{ TelecomDashboardCtrl.isFr ? 'Je participe !' : 'Register for free' }}"
+                   data-ng-click="TelecomDashboardCtrl.onRegisterLinkClick()"
+                   rel="noopener">
+                    <img class="img-responsive"
+                         data-ng-src="{{ 'assets/images/ovh-summit-2017-' + (TelecomDashboardCtrl.isFr ? 'fr' : 'en') + '.png' }}"
+                         alt="OVH Summit 2017"
+                         style="margin: 0 auto;" />
+                </a>
             </div>
         </div>
 
