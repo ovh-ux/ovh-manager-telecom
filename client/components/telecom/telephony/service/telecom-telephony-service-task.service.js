@@ -1,4 +1,4 @@
-angular.module("managerApp").service("voipServiceTask", function (Poller, $q) {
+angular.module("managerApp").service("voipServiceTask", function ($q, Poller) {
     "use strict";
 
     var self = this;

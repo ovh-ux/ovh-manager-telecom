@@ -146,8 +146,11 @@
                                 <td data-title="{{ 'telephony_service_fax_campaigns_list_title_name' | translate }}"
                                     data-ng-bind="campaign.name">
                                 </td>
-                                <td data-title="{{ 'telephony_service_fax_campaigns_list_title_status' | translate }}"
-                                    data-ng-bind="'telephony_service_fax_campaigns_status_' + campaign.status | translate">
+                                <td data-title="{{ 'telephony_service_fax_campaigns_list_title_status' | translate }}">
+                                    <span data-ng-if="campaign.status"
+                                          data-ng-bind="'telephony_service_fax_campaigns_status_' + campaign.status | translate">
+                                    </span>
+                                    <span data-ng-if="!campaign.status">-</span>
                                 </td>
                                 <td data-title="{{ 'telephony_service_fax_campaigns_list_title_success' | translate }}">
                                     <span data-ng-if="campaign.dateEnd"

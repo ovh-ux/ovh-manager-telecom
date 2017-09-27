@@ -37,7 +37,8 @@
 
             <!-- STATUS -->
             <dt data-translate="telephony_service_fax_campaigns_list_title_status"></dt>
-            <dd data-ng-bind="'telephony_service_fax_campaigns_status_' + CampaignsReadCtrl.campaign.status | translate"></dd>
+            <dd data-ng-if="CampaignsReadCtrl.campaign.status" data-ng-bind="'telephony_service_fax_campaigns_status_' + CampaignsReadCtrl.campaign.status | translate"></dd>
+            <dd data-ng-if="!CampaignsReadCtrl.campaign.status">-</dd>
 
             <!-- MESSAGE -->
             <dt data-ng-if="CampaignsReadCtrl.campaign.status === 'error'"
