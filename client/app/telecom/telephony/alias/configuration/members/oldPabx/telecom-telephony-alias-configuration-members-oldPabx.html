@@ -1,0 +1,192 @@
+<section class="telephony-group-alias-configuration-members telephony-group-alias-configuration-members-oldPabx">
+
+    <header>
+        <section-back-link section-back-link-to-state="telecom.telephony.alias.configuration"
+                           section-back-link-title="{{ 'telephony_alias_configuration_back_link' | translate }}">
+        </section-back-link>
+        <h1 data-translate="telephony_alias_configuration_members_title"></h1>
+    </header>
+
+    <div class="telecom-section-content" data-ng-if="$ctrl.loaders.init">
+        <bouncing-box-loader>
+            <h4 data-translate="loading"></h4>
+        </bouncing-box-loader>
+    </div>
+
+    <div class="telecom-section-content" data-ng-if="!$ctrl.loaders.init">
+
+        <div class="alert alert-info"
+             role="alert">
+            <span class="ovh-font ovh-font-filled-info"
+               aria-hidden="true">
+            </span>
+            <p data-translate="telephony_alias_configuration_members_old_pabx_info_1"></p>
+            <p data-translate="telephony_alias_configuration_members_old_pabx_info_2"></p>
+        </div>
+
+        <div class="row">
+
+            <!-- MEMBERS LIST -->
+            <div class="col-md-6 widget-presentation telecom-telephony-alias-members">
+                <header class="widget-presentation-header">
+                    <h2 class="widget-presentation-title"
+                        data-translate="telephony_alias_configuration_members_list">
+                    </h2>
+                </header>
+
+                <p class="text-center top-space-m32"
+                   data-ng-if="$ctrl.agents.length === 0"
+                   data-translate="telephony_alias_members_empty">
+                </p>
+
+                <p class="text-info bottom-space-m32"
+                   data-ng-if="$ctrl.agents.length >= 2">
+                    <i class="ovh-font ovh-font-info line-height-normal left-space-m4"></i>
+                    <span data-translate="telephony_alias_members_drag1"></span>
+                    <i class="ovh-font ovh-font-grip fs10"></i>
+                    <span data-translate="telephony_alias_members_drag2"></span>
+                </p>
+
+                <ul class="top-space-m4"
+                    data-ng-if="$ctrl.agents.length > 0"
+                    data-ui-sortable="$ctrl.sortableAgentsOpts"
+                    data-ng-model="$ctrl.agents">
+
+                    <li class="well"
+                        data-position="{{ $index }}"
+                        data-ng-repeat="agent in $ctrl.agents track by agent.agentNumber">
+
+                        <!-- CONTROLS -->
+                        <div class="pull-left">
+                            <button class="no-style space-p0"
+                                    data-ng-disabled="$index === 0 || $ctrl.sortableAgentsOpts.disabled"
+                                    data-ng-click="$ctrl.onSwapAgents(agent, $ctrl.agents[$index - 1])">
+                                <i class="ovh-font ovh-font-arrow-up block opacity5"
+                                   data-ng-if="!$ctrl.agentInEdition && !$ctrl.agentToDelete">
+                                </i>
+                            </button>
+                            <i class="ovh-font ovh-font-grip opacity5 cursor-move block top-space-m4 bottom-space-m4"
+                               data-ng-if="!$ctrl.agentInEdition && !$ctrl.agentToDelete"></i>
+                            <button class="no-style space-p0"
+                                    data-ng-disabled="$index === $ctrl.agents.length - 1 || $ctrl.sortableAgentsOpts.disabled"
+                                    data-ng-click="$ctrl.onSwapAgents(agent, $ctrl.agents[$index + 1])">
+                                <i class="ovh-font ovh-font-arrow-down block opacity5"
+                                   data-ng-if="!$ctrl.agentInEdition && !$ctrl.agentToDelete"></i>
+                            </button>
+                        </div>
+                        <button class="no-style no-outline pull-right"
+                                data-ng-click="$ctrl.agentToDelete = agent"
+                                data-ng-if="!$ctrl.agentInEdition && !$ctrl.agentToDelete">
+                            <i class="ovh-font ovh-font-bin"></i>
+                        </button>
+                        <button class="no-style pull-right"
+                                data-ng-click="$ctrl.onAgentEditBtnClick(agent)"
+                                data-ng-if="!$ctrl.agentInEdition && !$ctrl.agentToDelete">
+                            <i class="ovh-font ovh-font-editer"></i>
+                        </button> <!-- End of CONTROLS -->
+
+                        <!-- MEMBER CONTENTS -->
+                        <div class="member-contents"
+                             data-in-view="$ctrl.updateMemberDescription(agent)">
+                            <strong class="member-description word-wrap">
+                                <spinner data-ng-if="agent.description === undefined"></spinner>
+                                <span data-ng-if="agent.description !== undefined"
+                                      data-ng-bind="agent.description || ('telephony_alias_members_number_external' | translate)"></span>
+                            </strong>
+                            <strong class="memberPhoneNumber" data-ng-bind="agent.agentNumber | phoneNumber"></strong>
+                            <div class="row top-space-m16"
+                                 data-ng-if="!$ctrl.agentInEdition || $ctrl.agentInEdition.agentNumber !== agent.agentNumber">
+                                <small class="col-md-3 text-nowrap text-capitalize bold"
+                                       data-ng-class="agent.logged ? 'text-success' : 'text-danger'">
+                                    <i class="ovh-font ovh-font-activer"></i>
+                                    <span data-translate="{{ agent.logged ? 'telephony_alias_configuration_members_old_pabx_logged' : 'telephony_alias_configuration_members_old_pabx_unlogged' }}"></span>
+                                </small>
+                                <small class="col-md-3 text-nowrap"
+                                       data-translate="telephony_alias_members_timeout_val"
+                                       data-translate-values="{ timeout: agent.noReplyTimer }">
+                                </small>
+                            </div>
+
+                            <!-- MEMBER EDITION -->
+                            <form id="agentEditForm"
+                                  name="agentEditForm"
+                                  data-ng-if="$ctrl.agentInEdition.agentNumber === agent.agentNumber"
+                                  data-ng-submit="$ctrl.onAgentFormSubmit()">
+
+                                <!-- LOGGED -->
+                                <label class="block pointer top-space-m16 bottom-space-m16">
+                                    <flat-checkbox>
+                                        <input type="checkbox"
+                                               id="editLogged"
+                                               name="editLogged"
+                                               data-ng-model="$ctrl.agentInEdition.logged" />
+                                    </flat-checkbox>
+                                    <span class="left-space-m8" data-translate="telephony_alias_configuration_members_old_pabx_logged_label"></span>
+                                </label>
+
+                                <!-- NO REPLY TIMER -->
+                                <div class="clearfix top-space-m8">
+                                    <label for="editNoReplyTimer"
+                                           class="block control-label"
+                                           data-translate="telephony_alias_members_timeout"></label>
+                                    <input-number-spinner id="editNoReplyTimer"
+                                                          class="pull-left"
+                                                          data-ng-model="$ctrl.agentInEdition.noReplyTimer"
+                                                          data-input-number-spinner-min="5"
+                                                          data-input-number-spinner-max="60">
+                                    </input-number-spinner>
+                                </div>
+
+                                <!-- ACTION BUTTONS -->
+                                <div class="top-space-m16 text-center">
+                                    <button type="button"
+                                            class="btn btn-default"
+                                            data-translate="cancel"
+                                            data-ng-disabled="$ctrl.loaders.editing"
+                                            data-ng-click="$ctrl.onAgentEditCancelBtnClick()">
+                                    </button>
+                                    <button type="submit"
+                                            class="btn btn-primary"
+                                            data-ng-disabled="$ctrl.loaders.editing || !$ctrl.hasAgentEditedChanged(agent)">
+                                        <span data-translate="submit"></span>
+                                        <spinner class="left-space-m4"
+                                                 data-ng-if="$ctrl.loaders.editing">
+                                        </spinner>
+                                    </button>
+                                </div>
+                            </form>
+
+                            <!-- CONFIRM DELETION -->
+                            <div class="top-space-m16 text-center"
+                                 data-ng-if="$ctrl.agentToDelete === agent">
+                                <button type="button"
+                                        class="btn btn-default"
+                                        data-translate="cancel"
+                                        data-ng-disabled="$ctrl.loaders.deleting"
+                                        data-ng-click="$ctrl.agentToDelete = null">
+                                </button>
+                                <button type="button"
+                                        class="btn btn-danger"
+                                        data-ng-disabled="$ctrl.loaders.deleting"
+                                        data-ng-click="$ctrl.onConfirmAgentDeleteBtnClick(agent)">
+                                    <span data-translate="delete"></span>
+                                    <spinner class="left-space-m4" data-ng-if="$ctrl.loaders.deleting"></spinner>
+                                </button>
+                            </div>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+
+            <!-- ADD MEMBER -->
+            <div class="col-md-6 widget-presentation">
+                <header class="widget-presentation-header">
+                    <h2 class="widget-presentation-title" data-translate="telephony_alias_configuration_members_add"></h2>
+                </header>
+            </div>
+
+        </div><!-- row -->
+    </div><!-- section content -->
+
+</section>

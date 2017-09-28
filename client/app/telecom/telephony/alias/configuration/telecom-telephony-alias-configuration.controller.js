@@ -136,6 +136,10 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationCtrl"
                 name: "number_old_pabx_mode",
                 sref: "telecom.telephony.alias.configuration.mode." + self.number.feature.featureType,
                 text: $translate.instant("telephony_alias_configuration_actions_number_hunting_mode")
+            }, {
+                name: "number_old_pabx_members",
+                sref: "telecom.telephony.alias.configuration.members.oldPabx",
+                text: $translate.instant("telephony_alias_configuration_actions_number_hunting_members")
             }];
         default:
             return [];
