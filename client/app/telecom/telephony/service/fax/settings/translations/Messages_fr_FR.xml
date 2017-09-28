@@ -8,6 +8,21 @@
    <translation id="telephony_service_fax_settings_general_options_fax_quality_best" qtlid="356927">Meilleure</translation>
    <translation id="telephony_service_fax_settings_general_options_fax_max_call" qtlid="356940">Nombre de tentatives d’envoi&#160;:</translation>
    <translation id="telephony_service_fax_settings_header" qtlid="356953">Entête des fax émis</translation>
+   <translation id="telephony_service_fax_settings_header_help">Aide entête des fax</translation>
+   <translation id="telephony_service_fax_settings_header_help_info0">Sépare le texte en multiples colonnes de taille égale</translation>
+   <translation id="telephony_service_fax_settings_header_help_info1">Identifiant de la tâche</translation>
+   <translation id="telephony_service_fax_settings_header_help_info2">Fax émission Id. Si vide : numéro de fax</translation>
+   <translation id="telephony_service_fax_settings_header_help_info3">Nom de la pièce jointe</translation>
+   <translation id="telephony_service_fax_settings_header_help_info4">Mail de l’expéditeur</translation>
+   <translation id="telephony_service_fax_settings_header_help_info5">Numéro de fax</translation>
+   <translation id="telephony_service_fax_settings_header_help_info6">Numéro de page de la tâche</translation>
+   <translation id="telephony_service_fax_settings_header_help_info7">Fax réception Id du destinataire</translation>
+   <translation id="telephony_service_fax_settings_header_help_info8">Nombre de pages total de la tâche</translation>
+   <translation id="telephony_service_fax_settings_header_help_info9">Numéro de fax du destinataire</translation>
+   <translation id="telephony_service_fax_settings_header_help_info10">Nom du destinataire</translation>
+   <translation id="telephony_service_fax_settings_header_update">Appliquer l’entête</translation>
+   <translation id="telephony_service_fax_settings_header_update_success">Entête enregistrée</translation>
+   <translation id="telephony_service_fax_settings_header_error_maxlength">Le champ "Entête des fax émis" ne doit pas dépasser les 50 caractères.</translation>
    <translation id="telephony_service_fax_settings_notification_options" qtlid="356966">Options de notifications</translation>
    <translation id="telephony_service_fax_settings_notification_options_from_name" qtlid="356979">Nom de l’éxpéditeur&#160;:</translation>
    <translation id="telephony_service_fax_settings_notification_options_from_name_error_required" qtlid="356992">Le champ "Nom de l’éxpéditeur" est obligatoire.</translation>
