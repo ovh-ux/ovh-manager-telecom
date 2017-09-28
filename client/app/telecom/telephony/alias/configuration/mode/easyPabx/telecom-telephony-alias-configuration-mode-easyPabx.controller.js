@@ -36,8 +36,25 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationModeE
     }
 
     function fetchVoicemail () {
-        return OvhApiTelephony.Voicemail().Lexi().query({
-            billingAccount: $stateParams.billingAccount
+        var voiceMailPromises = [];
+        var voicemails = [];
+        return OvhApiTelephony.Lexi().query().$promise.then(function (billingAccounts) {
+            billingAccounts.forEach(function (billingAccount) {
+                voiceMailPromises.push(OvhApiTelephony.Voicemail().Lexi().query({
+                    billingAccount: billingAccount
+                }).$promise.then(function (response) {
+                    voicemails = voicemails.concat(response);
+                }).catch(function (error) {
+                    if (error.status === 460) {
+                        return [];
+                    }
+                    return $q.reject(error);
+                }));
+            });
+
+            return $q.all(voiceMailPromises).then(function () {
+                return voicemails;
+            });
         });
     }
 
