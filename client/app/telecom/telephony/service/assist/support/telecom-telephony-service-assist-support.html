@@ -1,0 +1,61 @@
+<section class="telephony-group-service-assist-support">
+
+    <bouncing-box-loader data-ng-if="SupportCtrl.loading.init">
+        <h3 data-translate="loading"></h3>
+    </bouncing-box-loader>
+
+    <div data-ng-if="!SupportCtrl.loading.init">
+        <header>
+            <section-back-link section-back-link-to-state="{{ SupportCtrl.service.isFax ? 'telecom.telephony.fax.assist' : 'telecom.telephony.line.assist' }}"
+                section-back-link-title="{{ 'telephony_service_assist_support_logs_title' | translate }}">
+            </section-back-link>
+            <h1 data-translate="telephony_line_assist_support_title"></h1>
+        </header>
+
+        <div class="telecom-section-content">
+
+            <div class="row">
+
+                <section class="col-xs-12 col-md-6 widget-presentation">
+
+                    <header class="widget-presentation-header">
+                        <h2 class="widget-presentation-title"
+                            data-translate="telephony_line_assist_support_guides_title">
+                        </h2>
+                    </header>
+
+                    <p data-translate="telephony_line_assist_support_guides_explain"
+                       data-translate-values="{ url : SupportCtrl.guideUrl }">
+                    </p>
+
+                </section>
+
+                <section class="col-xs-12 col-md-6 widget-presentation">
+
+                    <header class="widget-presentation-header">
+                        <h2 class="widget-presentation-title"
+                            data-translate="telephony_line_assist_support_support_title">
+                        </h2>
+                    </header>
+
+                    <p data-translate="telephony_line_assist_support_header"></p>
+                    <ul class="left-space-m32 contact-options">
+                        <li data-translate="telephony_line_assist_support_contact_by_phone"></li>
+                        <li>
+                            <button type="button"
+                                    class="btn btn-link no-space btn-ticket"
+                                    data-translate="telephony_line_assist_support_contact_ticket"
+                                    data-ng-click="SupportCtrl.openSupportTicket()">
+                            </button>
+                        </li>
+                    </ul>
+
+                </section>
+
+            </div>
+        </div>
+    </div>
+
+
+
+</section>
