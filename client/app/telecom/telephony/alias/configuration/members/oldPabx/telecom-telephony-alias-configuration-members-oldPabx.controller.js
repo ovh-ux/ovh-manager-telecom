@@ -7,7 +7,8 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationMembe
     self.loaders = {
         init: false,
         editing: false,
-        deleting: false
+        deleting: false,
+        adding: false
     };
 
     self.sortableAgentsOpts = {
@@ -27,12 +28,23 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationMembe
     self.agentInEdition = null;
     self.agentToDelete = null;
     self.agentsBeforeDrag = null;
+    self.addAgentForm = {
+        numbers: [null],
+        options: {
+            noReplyTimer: 20
+        }
+    };
+    self.servicesToExclude = [];
 
     /* ==============================
     =            HELPERS            =
     =============================== */
 
     function fetchDescription (serviceName) {
+        if (serviceName.length < 5) {
+            return $q.when(null);
+        }
+
         return OvhApiTelephony.Lexi().searchService({
             axiom: serviceName
         }).$promise.then(function (result) {
@@ -56,7 +68,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationMembe
         }).$promise.then(function (agent) {
             if (checkDescription) {
                 fetchDescription(agent.agentNumber).then(function (service) {
-                    agent.description = service && service.description !== agent.agentNumber ? service.description : "";
+                    agent.description = service && service.description !== agent.agentNumber ? service.description : agent.agentNumber;
                 });
             }
 
@@ -92,6 +104,10 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationMembe
         }, {
             position: agent.position
         }).$promise;
+    }
+
+    function getServicesToExclude () {
+        self.servicesToExclude = _.pluck(self.agents, "agentNumber").concat(self.addAgentForm.numbers);
     }
 
     self.hasAgentEditedChanged = function (agent) {
@@ -171,6 +187,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationMembe
             _.remove(self.agents, function (a) {
                 return a.agentNumber === agent.agentNumber;
             });
+            getServicesToExclude();
             return self.reorderAgents(agent.position);
         }, function (error) {
             Toast.error([$translate.instant("an_error_occured"), _.get(error, "data.message")].join(" "));
@@ -221,6 +238,65 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationMembe
         });
     };
 
+    /* ----------  Agent add  ---------- */
+
+    self.onChooseServicePopover = function (service, pos) {
+        self.addAgentForm.numbers[pos] = service.serviceName;
+        getServicesToExclude();
+    };
+
+    self.addAgents = function (form) {
+        var addPromises = [];
+
+        self.loaders.adding = true;
+
+        _.filter(self.addAgentForm.numbers, function (number) {
+            return number && number.length;
+        }).forEach(function (number, index) {
+            addPromises.push(apiService.Lexi().createAgent({
+                billingAccount: $stateParams.billingAccount,
+                serviceName: $stateParams.serviceName
+            }, {
+                logged: true,
+                agentNumber: number,
+                noReplyTimer: self.addAgentForm.options.noReplyTimer,
+                position: self.agents.length + (index + 1)
+            }).$promise.then(function (agent) {
+                self.agents.push(agent);
+                self.agents = _.sortBy(self.agents, "position");
+                fetchDescription(agent.agentNumber).then(function (service) {
+                    agent.description = service && service.description !== agent.agentNumber ? service.description : agent.agentNumber;
+                });
+            }));
+        });
+
+        return $q.all(addPromises).then(function () {
+            Toast.success($translate.instant("telephony_alias_members_add_success"));
+            self.resetAgentAddForm();
+            form.$setPristine();
+            getServicesToExclude();
+        }).catch(function (error) {
+            Toast.error([$translate.instant("an_error_occured"), _.get(error, "data.message")].join(" "));
+        }).finally(function () {
+            self.loaders.adding = false;
+        });
+    };
+
+    self.resetAgentAddForm = function () {
+        self.addAgentForm.numbers = [null];
+        self.addAgentForm.options = {
+            noReplyTimer: 20
+        };
+    };
+
+    self.removeAgentAt = function (index) {
+        if (index === 0 && self.addAgentForm.numbers.length === 1) {
+            self.addAgentForm.numbers[0] = null;
+        } else {
+            _.pullAt(self.addAgentForm.numbers, index);
+        }
+    };
+
     /* -----  End of EVENTS  ------ */
 
     /* =====================================
@@ -234,7 +310,9 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationMembe
             self.number = group.getNumber($stateParams.serviceName);
             apiService = self.number.feature.featureType === "easyPabx" ? OvhApiTelephonyEasyPabx : OvhApiTelephonyMiniPabx;
 
-            return fetchAgents();
+            return fetchAgents().then(function () {
+                getServicesToExclude();
+            });
         }).catch(function (error) {
             Toast.error([$translate.instant("telephony_alias_configuration_members_old_pabx_load_error"), _.get(error, "data.message")].join(" "));
             return $q.reject(error);

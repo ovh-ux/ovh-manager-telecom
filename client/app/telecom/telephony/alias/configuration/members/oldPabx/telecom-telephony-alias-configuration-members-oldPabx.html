@@ -184,6 +184,99 @@
                 <header class="widget-presentation-header">
                     <h2 class="widget-presentation-title" data-translate="telephony_alias_configuration_members_add"></h2>
                 </header>
+
+                <form id="agentAddForm"
+                      name="agentAddForm"
+                      data-ng-submit="$ctrl.addAgents(agentAddForm)"
+                      novalidate>
+
+                    <!-- NUMBER -->
+                    <div flat-input-container>
+                        <label for="memberNumber"
+                               class="control-label"
+                               data-translate="telephony_alias_members_number"></label>
+                        <div class="input-group top-space-m4"
+                             data-ng-repeat="number in $ctrl.addAgentForm.numbers track by $index">
+                            <input id="memberNumber"
+                                   class="form-control"
+                                   type="text"
+                                   placeholder="{{:: 'telephony_alias_members_number_placeholder' | translate }}"
+                                   required
+                                   data-ng-pattern="/^.*$/"
+                                   data-ng-model="$ctrl.addAgentForm.numbers[$index]" />
+                            <span class="input-group-btn">
+                                <button type="button"
+                                        class="btn btn-default"
+                                        aria-label="{{:: 'common_search' | translate }}"
+                                        data-voip-service-choice-popover="{
+                                            popoverPlacement: 'auto left',
+                                            popoverClass: 'pretty-popover telephony-service-choice-popover',
+                                            popoverAppendToBody: true,
+                                            popoverIsOpen: false
+                                        }"
+                                        data-choice-args="$index"
+                                        data-exclude-services="$ctrl.servicesToExclude"
+                                        data-available-types="['sip', 'fax', 'trunk']"
+                                        data-on-choice-validated="$ctrl.onChooseServicePopover"
+                                        data-on-choice-cancel="">
+                                    <i class="ovh-font ovh-font-search"></i>
+                                </button>
+                                <button type="button"
+                                        class="btn btn-default"
+                                        aria-label="{{:: 'delete' | translate }}"
+                                        data-ng-disabled="$index === 0 && !$ctrl.addAgentForm.numbers[0]"
+                                        data-ng-click="$ctrl.removeAgentAt($index)">
+                                    <i class="ovh-font ovh-font-wrong"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- ADD MORE NUMBERS -->
+                    <div class="top-space-m16 clearfix"
+                         data-ng-if="$ctrl.addAgentForm.numbers[0]">
+                        <button type="button"
+                                class="btn btn-default"
+                                data-ng-click="$ctrl.addAgentForm.numbers.push(null)"
+                                data-translate="telephony_alias_members_number_add"
+                                data-ng-disabled="!$ctrl.addAgentForm.numbers[$ctrl.addAgentForm.numbers.length - 1]">
+                        </button>
+                    </div>
+
+                    <!-- NO REPLY TIMER -->
+                    <div class="clearfix top-space-m8">
+                        <label for="addNoReplyTimer"
+                               class="block control-label"
+                               data-translate="telephony_alias_members_timeout">
+                        </label>
+                        <input-number-spinner id="addNoReplyTimer"
+                                              class="pull-left"
+                                              data-ng-model="$ctrl.addAgentForm.options.noReplyTimer"
+                                              data-input-number-spinner-min="5"
+                                              data-input-number-spinner-max="60">
+                        </input-number-spinner>
+                    </div>
+
+                    <!-- ADD FORM BUTTONS -->
+                    <div class="top-space-m32">
+                        <button type="button"
+                                class="btn btn-default no-transition"
+                                data-translate="cancel"
+                                data-ng-click="$ctrl.resetAgentAddForm()"
+                                data-ng-if="$ctrl.addAgentForm.numbers[0]">
+                        </button>
+                        <button type="submit"
+                                class="btn btn-primary no-transition"
+                                data-ng-disabled="agentAddForm.$invalid || $ctrl.loaders.adding">
+                            <span data-ng-if="$ctrl.addAgentForm.numbers.length <= 1"
+                                  data-translate="telephony_alias_members_add"></span>
+                            <span data-ng-if="$ctrl.addAgentForm.numbers.length > 1"
+                                  data-translate="telephony_alias_members_add_multiple"
+                                  data-translate-values="{ count: $ctrl.addAgentForm.numbers.length }"></span>
+                            <spinner class="left-space-m4" data-ng-if="$ctrl.loaders.adding"></spinner>
+                        </button>
+                    </div>
+                </form>
             </div>
 
         </div><!-- row -->
