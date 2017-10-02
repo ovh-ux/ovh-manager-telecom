@@ -140,6 +140,10 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationCtrl"
                 name: "number_old_pabx_members",
                 sref: "telecom.telephony.alias.configuration.members.oldPabx",
                 text: $translate.instant("telephony_alias_configuration_actions_number_hunting_members")
+            }, {
+                name: "number_old_pabx_tones",
+                sref: "telecom.telephony.alias.configuration.tones.oldPabx",
+                text: $translate.instant("telephony_alias_configuration_actions_music_management")
             }];
         default:
             return [];

@@ -6,6 +6,10 @@
         <ng-transclude></ng-transclude>
     </div>
 
+    <em data-ng-if="!selected && fileExplain"
+        data-ng-bind="fileExplain">
+    </em>
+
     <!-- display selected file name -->
     <div class="ng-hide" data-ng-show="selected">
         <div flat-input-container class="pull-left input-group">
