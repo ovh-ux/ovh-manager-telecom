@@ -152,6 +152,10 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationCtrl"
                 name: "number_old_pabx_scheduler",
                 sref: "telecom.telephony.alias.configuration.scheduler.oldPabx",
                 text: $translate.instant("telephony_alias_configuration_actions_number_hunting_events")
+            }, {
+                name: "number_old_pabx_screen_list",
+                sref: "telecom.telephony.alias.configuration.callsFiltering.oldPabx",
+                text: $translate.instant("telephony_alias_configuration_actions_number_hunting_filtering")
             }];
         default:
             return [];
