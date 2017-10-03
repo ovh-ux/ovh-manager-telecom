@@ -117,7 +117,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberEasyPabx", function ($
 
         if (!self.timeCondition) {
             self.timeCondition = new VoipTimeCondition({
-                featureType: "easyHunting",
+                featureType: "sip",
                 billingAccount: self.billingAccount,
                 serviceName: self.serviceName
             });

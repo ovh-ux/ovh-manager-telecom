@@ -144,6 +144,14 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationCtrl"
                 name: "number_old_pabx_tones",
                 sref: "telecom.telephony.alias.configuration.tones.oldPabx",
                 text: $translate.instant("telephony_alias_configuration_actions_music_management")
+            }, {
+                name: "number_old_pabx_time_condition",
+                sref: "telecom.telephony.alias.configuration.timeCondition.oldPabx",
+                text: $translate.instant("telephony_alias_configuration_actions_number_hunting_slots")
+            }, {
+                name: "number_old_pabx_scheduler",
+                sref: "telecom.telephony.alias.configuration.scheduler.oldPabx",
+                text: $translate.instant("telephony_alias_configuration_actions_number_hunting_events")
             }];
         default:
             return [];
