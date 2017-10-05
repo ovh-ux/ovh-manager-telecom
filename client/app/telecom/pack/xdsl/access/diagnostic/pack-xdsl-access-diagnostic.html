@@ -168,11 +168,36 @@
                     <span class="left-space-m4" data-translate="pack_xdsl_access_diagnostic_wizard_radio_probleme3"></span>
                 </label>
             </div>
+            <div>
+                <label class="pointer">
+                    <flat-radio>
+                        <input type="radio"
+                            name="wizardType"
+                            value="type4"
+                            data-ng-model="XdslDiagnostic.wizardTypeSelection">
+                    </flat-radio>
+                    <span class="left-space-m4" data-translate="pack_xdsl_access_diagnostic_wizard_radio_probleme4"></span>
+                </label>
+            </div>
+            <div>
+                <label class="pointer">
+                    <flat-radio>
+                        <input type="radio"
+                            name="wizardType"
+                            value="type5"
+                            data-ng-model="XdslDiagnostic.wizardTypeSelection">
+                    </flat-radio>
+                    <span class="left-space-m4" data-translate="pack_xdsl_access_diagnostic_wizard_radio_probleme5"></span>
+                </label>
+            </div>
 
-            <a data-ng-disabled="!XdslDiagnostic.wizardTypeSelection"
-                data-ui-sref="telecom.pack.xdsl.line-diagnostic({'type':XdslDiagnostic.wizardTypeSelection!=='type3'?'noSync':'alignment'})"
-                class="btn btn-primary top-space-m16"
-                data-translate="pack_xdsl_access_diagnostic_assistant_launch"></a>
+            <button type="button"
+                    class="btn btn-primary top-space-m16"
+                    data-translate="pack_xdsl_access_diagnostic_assistant_launch"
+                    data-ng-disabled="!XdslDiagnostic.wizardTypeSelection"
+                    data-ng-click="XdslDiagnostic.launchWidzard()">
+
+            </button>
         </div>
 
     </div>

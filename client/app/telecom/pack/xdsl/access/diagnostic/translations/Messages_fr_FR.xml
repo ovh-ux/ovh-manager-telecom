@@ -9,6 +9,8 @@
    <translation id="pack_xdsl_access_diagnostic_wizard_radio_probleme1" qtlid="384844">Le diagnostic de ligne indique un problème de synchronisation.</translation>
    <translation id="pack_xdsl_access_diagnostic_wizard_radio_probleme2" qtlid="384857">J'ai une perte de connexion totale.</translation>
    <translation id="pack_xdsl_access_diagnostic_wizard_radio_probleme3" qtlid="384870">Mon opérateur détecte une connexion mais je ne peux pas me connecter.</translation>
+   <translation id="pack_xdsl_access_diagnostic_wizard_radio_probleme4">J'ai des coupures de connexion assez fréquentes.</translation>
+   <translation id="pack_xdsl_access_diagnostic_wizard_radio_probleme5">Le débit de ma ligne est faible par rapport à celui prévu.</translation>
    <translation id="pack_xdsl_access_diagnostic_general" qtlid="310439">Rapport de ligne</translation>
 
    <translation id="pack_xdsl_access_diagnostic_time" qtlid="310452">Heure du diagnostic</translation>

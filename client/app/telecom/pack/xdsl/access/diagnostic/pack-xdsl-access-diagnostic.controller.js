@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("XdslDiagnosticCtrl", function ($q, $scope, $stateParams, $translate, OvhApiXdslDiagnostic, Poller, Toast, OvhApiMeVipStatus) {
+angular.module("managerApp").controller("XdslDiagnosticCtrl", function ($q, $scope, $state, $stateParams, $translate, OvhApiXdslDiagnostic, Poller, Toast, OvhApiMeVipStatus) {
     "use strict";
     var self = this;
 
@@ -106,6 +106,25 @@ angular.module("managerApp").controller("XdslDiagnosticCtrl", function ($q, $sco
                 self.pollerSuccess
             );
         }
+    };
+
+    self.launchWidzard = function () {
+        var diagType;
+        switch (self.wizardTypeSelection) {
+        case "type3":
+            diagType = "noSync";
+            break;
+        case "type4":
+        case "type5":
+            diagType = "syncLossOrLowBandwidth";
+            break;
+        default:
+            diagType = "alignment";
+            break;
+        }
+        return $state.go("telecom.pack.xdsl.line-diagnostic", {
+            type: diagType
+        });
     };
 
     self.init();
