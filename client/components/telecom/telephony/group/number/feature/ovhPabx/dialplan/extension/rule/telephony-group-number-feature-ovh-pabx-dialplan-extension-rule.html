@@ -2,7 +2,6 @@
     <!-- RULE BLOCK -->
          <!-- POSITION -->
          <div class="voip-plan__step-icon voip-plan__step-icon--grip hover-grip rule-grip"
-              data-ng-class="{ 'voip-plan__step-icon--grip-disabled': $ctrl.isActionsDisabled() }"
               data-jsplumb-endpoint="$ctrl.numberCtrl.jsPlumbEndpointsOptions.topLeft">
              <span data-jsplumb-connection="!$ctrl.extension.enabled ? $ctrl.numberCtrl.jsPlumbConnectionsOptions.disabled : null"
                    data-jsplumb-connection-target="{{ $ctrl.rule.negativeAction ? $ctrl.extensionCtrl.uuid + '-condition' : $ctrl.extensionCtrl.uuid }}"
@@ -19,7 +18,8 @@
              data-popover-trigger="none"
              data-popover-is-open="$ctrl.popoverStatus.isOpen"
              data-popover-class="pretty-popover telephony-number-feature-popover telephony-number-ovh-pabx-actions-popup"
-             data-ng-class="{ 'voip-plan__step-content--delete-anim': $ctrl.deletePending }">
+             data-ng-class="{ 'voip-plan__step-content--delete-anim': $ctrl.deletePending }"
+             data-hide-outside-click="$ctrl.onRuleOutsideClick()">
             <div class="voip-plan__step-description"
                  data-ng-switch="$ctrl.getActionFamily()">
                 <span class="voip-plan__step-name voip-plan__step-name--has-info"
@@ -83,7 +83,6 @@
                  <button type="button"
                          class="voip-plan__step-btn voip-plan__step-btn--default"
                          data-attr-id="extension-rule-{{ $ctrl.rule.ruleId }}-actions"
-                         data-ng-disabled="$ctrl.isActionsDisabled()"
                          data-uib-dropdown-toggle>
                      <span class="ovh-font ovh-font-dots vertical-top" aria-hidden="true"></span>
                  </button>

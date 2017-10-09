@@ -13,12 +13,18 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxDialplanExtension
         move: false
     };
 
+    self.displayHelpers = {
+        collapsed: true,
+        expanded: false,
+        negativeCollapsed: true,
+        negativeExpanded: false
+    };
+
     self.ovhPabx = null;
     self.dialplan = null;
 
     self.rulesSortableOptions = null;
     self.negativeRulesSortableOptions = null;
-    self.collapsed = false;
     self.uuid = null;
 
     /*= ==============================
@@ -31,10 +37,6 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxDialplanExtension
         }) || _.some(self.extension.timeConditions, function (timeCondition) {
             return ["CREATING", "DELETING"].indexOf(timeCondition.state) !== -1;
         })));
-    };
-
-    self.isActionsDisabled = function () {
-        return self.extension && (self.extension.inEdition || self.isLoading() || _.some(self.extension.rules, { inEdition: true }) || _.some(self.extension.negativeRules, { inEdition: true }) || self.dialplanCtrl.isActionsDisabled());
     };
 
     self.startRedraw = function () {
@@ -84,11 +86,28 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxDialplanExtension
         return self.uuid;
     };
 
+    function setConnectionVisibility (visibility) {
+        $timeout(function () {
+            self.numberCtrl.jsplumbInstance.getAllConnections().forEach(function (connection) {
+                connection.setVisible(visibility);
+            });
+        }, 99);
+    }
+
     /* -----  End of HELPERS  ------*/
 
     /*= ==============================
     =            ACTIONS            =
     ===============================*/
+
+    self.onExtensionOutsideClick = function () {
+        if (self.extension.status !== "DELETE_PENDING") {
+            return;
+        }
+
+        // cancel deletion confirm
+        self.extension.status = "OK";
+    };
 
     /* ----------  ACTIVATE/DESACTIVATE  ----------*/
 
@@ -133,12 +152,37 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxDialplanExtension
             // check for other extensions that position needs to be updated
             // self.extension is not destroyed yet so use it to determine which extensions needs to update their positions
             self.dialplan.updateExtensionsPositions(self.extension.position);
+
+            console.log(self.dialplanCtrl);
         }, function (error) {
             Toast.error([$translate.instant("telephony_number_feature_ovh_pabx_step_remove_error"), (error.data && error.data.message) || ""].join(" "));
             return $q.reject(error);
         }).finally(function () {
             self.loading.save = false;
         });
+    };
+
+    /* ----------  COLLAPSE  ---------- */
+
+    self.onExtensionCollapsed = function (isNegative) {
+        self.numberCtrl.jsplumbInstance.customRepaint().then(function () {
+            setConnectionVisibility(true);
+            _.set(self.displayHelpers, isNegative ? "negativeExpanded" : "expanded", false);
+        });
+    };
+
+    self.onExtensionExpanded = function () {
+        self.numberCtrl.jsplumbInstance.customRepaint().then(function () {
+            setConnectionVisibility(true);
+        });
+    };
+
+    self.onExtensionCollapsing = function () {
+        setConnectionVisibility(false);
+    };
+
+    self.onExtensionExpanding = function (isNegative) {
+        _.set(self.displayHelpers, isNegative ? "negativeExpanded" : "expanded", true);
     };
 
     /* -----  End of ACTIONS  ------*/

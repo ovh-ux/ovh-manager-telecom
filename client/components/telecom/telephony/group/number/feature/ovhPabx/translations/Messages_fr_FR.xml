@@ -18,6 +18,11 @@
     <translation id="telephony_number_feature_ovh_pabx_dialplan_show_caller_number_both_explain">Le téléphone cible (qui reçoit l'appel) verra sur son écran le numéro de l'alias (numéro qui est composé par l’appelant).</translation>
     <translation id="telephony_number_feature_ovh_pabx_dialplan_show_caller_number_caller">Le numéro de l'appelant</translation>
     <translation id="telephony_number_feature_ovh_pabx_dialplan_show_caller_number_caller_explain">Le téléphone cible (qui reçoit l'appel) verra sur son écran la ligne qui compose l'appel ainsi que le numéro alias qui est composé.</translation>
+    <translation id="telephony_number_feature_ovh_pabx_dialplan_step_none">Aucune étape configurée</translation>
+    <translation id="telephony_number_feature_ovh_pabx_dialplan_step_count">{{ count }} étapes configurées</translation>
+    <translation id="telephony_number_feature_ovh_pabx_dialplan_step_count_single">1 étape configurée</translation>
+    <translation id="telephony_number_feature_ovh_pabx_dialplan_action_show_steps">Afficher les étapes</translation>
+    <translation id="telephony_number_feature_ovh_pabx_dialplan_action_hide_steps">Cacher les étapes</translation>
 
     <!-- STEPS -->
     <translation id="telephony_number_feature_ovh_pabx_step_add">Ajouter une étape</translation>
@@ -34,12 +39,19 @@
     <translation id="telephony_number_feature_ovh_pabx_step_add_rule_invalid">Ajouter une action si condition non vérifiée</translation>
     <translation id="telephony_number_feature_ovh_pabx_step_advanced">Configuration avancée</translation>
     <translation id="telephony_number_feature_ovh_pabx_step_remove">Supprimer l'étape</translation>
-    <translation id="telephony_number_feature_ovh_pabx_step_collapse">Cacher le détail</translation>
-    <translation id="telephony_number_feature_ovh_pabx_step_expand">Voir le détail</translation>
+    <translation id="telephony_number_feature_ovh_pabx_step_collapse">Cacher les actions</translation>
+    <translation id="telephony_number_feature_ovh_pabx_step_expand">Afficher les actions</translation>
+    <translation id="telephony_number_feature_ovh_pabx_step_count">{{ count }} actions configurées</translation>
+    <translation id="telephony_number_feature_ovh_pabx_step_count_single">1 action configurée</translation>
+    <translation id="telephony_number_feature_ovh_pabx_step_">Afficher les actions</translation>
     <translation id="telephony_number_feature_ovh_pabx_step_condition">Conditions :</translation>
     <translation id="telephony_number_feature_ovh_pabx_step_no_condition">Pas de conditions</translation>
     <translation id="telephony_number_feature_ovh_pabx_step_remove_error">Oups ! Une erreur est survenue lors de la suppression de l'étape.</translation>
-    <translation id="telephony_number_feature_ovh_pabx_step_invalid_actions">Action(s) si condition(s) non vérifiée(s)</translation>
+    <translation id="telephony_number_feature_ovh_pabx_step_invalid_actions">{{count}} actions si condition(s) non vérifiée(s)</translation>
+    <translation id="telephony_number_feature_ovh_pabx_step_invalid_actions_single">1 action si condition(s) non vérifiée(s)</translation>
+    <translation id="telephony_number_feature_ovh_pabx_step_no_invalid_actions">Aucune action si condition(s) non vérifiée(s)</translation>
+    <translation id="telephony_number_feature_ovh_pabx_step_invalid_actions_show">Afficher les actions si condition(s) non vérifiée(s)</translation>
+    <translation id="telephony_number_feature_ovh_pabx_step_invalid_actions_hide">Cacher les actions si condition(s) non vérifiée(s)</translation>
     <!-- STEPS CONDITIONS -->
     <translation id="telephony_number_feature_ovh_pabx_step_conditions_infos">La configuration avancée vous permet d'établir des conditions selon lesquelles la stratégie jouée sera différente.</translation>
     <translation id="telephony_number_feature_ovh_pabx_step_conditions_none">Aucune condition définie</translation>

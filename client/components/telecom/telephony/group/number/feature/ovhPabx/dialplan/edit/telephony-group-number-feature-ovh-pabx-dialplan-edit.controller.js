@@ -13,10 +13,6 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxDialplanEditCtrl"
     =            EVENTS            =
     ==============================*/
 
-    self.onPopoverOutsideClick = function () {
-        self.dialplanCtrl.popoverStatus.isOpen = false;
-    };
-
     /**
      *  Called on form submit
      */

@@ -25,10 +25,6 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxDialplanExtension
         return ["SAVING", "CREATING", "DELETING", "MOVING"].indexOf(self.rule.status) > -1;
     };
 
-    self.isActionsDisabled = function () {
-        return self.rule && (self.rule.inEdition || self.isLoading() || self.dialplanCtrl.isActionsDisabled() || self.extensionCtrl.isActionsDisabled());
-    };
-
     self.getActionFamily = function () {
         return self.rule.getActionFamily(self.rule.inEdition ? self.rule.saveForEdition.action : self.rule.action);
     };
@@ -73,6 +69,15 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxDialplanExtension
             return $q.reject(error);
         });
 
+    };
+
+    self.onRuleOutsideClick = function () {
+        if (!self.deletePending) {
+            return;
+        }
+
+        // cancel delete confirm
+        self.deletePending = false;
     };
 
     /* -----  End of EVENTS  ------*/

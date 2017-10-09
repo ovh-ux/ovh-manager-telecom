@@ -54,10 +54,6 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxMenuCtrl", functi
         return entry.inEdition || (menuSub && (menuSub.inEdition || _.some(menuSub.entries, hasSubMenuEntryInEdition)));
     }
 
-    self.isActionsDisabled = function () {
-        return self.menu && (self.menu.inEdition || self.isLoading() || _.some(self.menu.entries, hasSubMenuEntryInEdition) || (self.menuCtrl && self.menuCtrl.isActionsDisabled()) || (self.dialplanCtrl && self.dialplanCtrl.isActionsDisabled()));
-    };
-
     self.getEntryAttr = function (attr, entryParam) {
         var entry = entryParam;
         if (!entry) {

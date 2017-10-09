@@ -55,7 +55,6 @@
                 <button type="button"
                         class="voip-plan__step-btn voip-plan__step-btn--included"
                         data-ng-click="$ctrl.openConfigPopover()"
-                        data-ng-disabled="$ctrl.isActionsDisabled()"
                         data-ng-attr-id="menu-{{ $ctrl.menu.menuId }}-actions"
                         data-uib-dropdown-toggle>
                     <span class="ovh-font ovh-font-dots" aria-hidden="true"></span>
@@ -192,7 +191,6 @@
                         class="voip-plan__step-btn voip-plan__step-btn--primary voip-plan__step-btn--add"
                         data-jsplumb-endpoint="$ctrl.jsPlumbEndpointsOptions.topLeft"
                         data-translate-attr="{ title: 'telephony_number_feature_ovh_pabx_menu_action_add_entry' }"
-                        data-ng-disabled="$ctrl.isActionsDisabled() || !$ctrl.menu.hasAvailableDtmfEntryKey()"
                         data-ng-click="$ctrl.addMenuEntry()">
                     <span class="ovh-font ovh-font-ajouter"
                        data-jsplumb-connection="$ctrl.isDisabled() ? $ctrl.jsPlumbConnectionsOptions.disabled : null"

@@ -34,23 +34,6 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxDialplanCtrl", fu
         return entry.inEdition || (menuSub && (menuSub.inEdition || _.some(menuSub.entries, hasSubMenuEntryInEdition)));
     }
 
-    function hasRuleMenuInEdition (rule) {
-        var menu = rule.action === "ivr" && (rule.ivrMenu || self.ovhPabx.getMenu(rule.actionParam));
-        return rule.inEdition || (menu && (menu.inEdition || _.some(menu.entries, hasSubMenuEntryInEdition)));
-    }
-
-    function hasExtensionRuleInEdition (extension) {
-        return extension.inEdition || _.some(extension.rules, hasRuleMenuInEdition) || _.some(extension.negativeRules, hasRuleMenuInEdition);
-    }
-
-    self.isActionsDisabled = function () {
-        var isActionsDisabled = self.dialplan && (self.dialplan.inEdition || self.isLoading() || _.some(self.dialplan.extensions, hasExtensionRuleInEdition));
-
-        // self.sortableOptions.disabled = isActionsDisabled;
-
-        return isActionsDisabled;
-    };
-
     self.hasInCreationExtension = function () {
         return _.some(self.dialplan.extensions, {
             status: "IN_CREATION"
@@ -75,11 +58,28 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxDialplanCtrl", fu
         });
     }
 
+    function setConnectionVisibility (visibility) {
+        $timeout(function () {
+            self.numberCtrl.jsplumbInstance.getAllConnections().forEach(function (connection) {
+                connection.setVisible(visibility);
+            });
+        }, 99);
+    }
+
     /* -----  End of HELPERS  ------*/
 
     /*= =============================
     =            EVENTS            =
     ==============================*/
+
+    self.onDialplanOutsideClick = function () {
+        if (self.dialplan.status !== "DELETE_PENDING") {
+            return;
+        }
+
+        // cancel delete confirm
+        self.dialplan.status = "OK";
+    };
 
     self.onEditDialplanBtnClick = function () {
         self.popoverStatus.isOpen = true;
@@ -87,29 +87,29 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxDialplanCtrl", fu
 
     self.onDialplanCollapsed = function () {
         self.numberCtrl.jsplumbInstance.customRepaint().then(function () {
-            self.numberCtrl.jsplumbInstance.getAllConnections().forEach(function (connection) {
-                connection.setVisible(true);
-            });
+            setConnectionVisibility(true);
             self.displayHelpers.expanded = false;
         });
     };
 
-    self.onDialplanCollapsing = function () {
-        self.numberCtrl.jsplumbInstance.getAllConnections().forEach(function (connection) {
-            connection.setVisible(false);
+    self.onDialplanExpanded = function () {
+        self.numberCtrl.jsplumbInstance.customRepaint().then(function () {
+            setConnectionVisibility(true);
         });
     };
 
+    self.onDialplanCollapsing = function () {
+        setConnectionVisibility(false);
+    };
+
     self.onDialplanExpanding = function () {
-        console.log("coucou ???");
         self.displayHelpers.expanded = true;
     };
 
-    self.onDialplanExpanded = function () {
-        self.numberCtrl.jsplumbInstance.customRepaint();
-    };
-
     self.onExtensionAddBtnClick = function () {
+        self.displayHelpers.collapsed = false;
+        self.displayHelpers.expanded = true;
+
         var addedExtension = self.dialplan.addExtension({
             position: self.dialplan.extensions.length + 1,
             status: "DRAFT"
@@ -151,7 +151,7 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxDialplanCtrl", fu
         // set sortable options
         self.sortableOptions = {
             axis: "y",
-            handle: ".rule-grip",
+            handle: ".extension-grip",
             cancel: ".voip-plan__step-icon--grip-disabled",
             containment: "parent",
             sort: UI_SORTABLE_HELPERS.variableHeightTolerance,
@@ -188,7 +188,12 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxDialplanCtrl", fu
             initPromise = createDialplan();
         }
 
-        return initPromise.finally(function () {
+        return initPromise.then(function () {
+            if (!self.dialplan.extensions.length) {
+                self.displayHelpers.collapsed = true;
+                self.displayHelpers.expanded = false;
+            }
+        }).finally(function () {
             self.loading.init = false;
         }).catch(function (error) {
             Toast.error([$translate.instant("telephony_number_feature_ovh_pabx_load_error"), _.get(error, "data.message") || ""].join(" "));

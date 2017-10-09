@@ -30,10 +30,6 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxMenuEntryCtrl", f
         return self.extensionCtrl && !self.extensionCtrl.extension.enabled;
     };
 
-    self.isActionsDisabled = function () {
-        return self.menuEntry.inEdition || self.isLoading() || (self.menuCtrl && self.menuCtrl.isActionsDisabled());
-    };
-
     self.getEntryAttribute = function (attr) {
         if (self.menuEntry.status === "MENUSUB_PENDING") {
             return _.get(self.menuEntry, attr);
