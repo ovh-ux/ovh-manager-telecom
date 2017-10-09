@@ -1,14 +1,14 @@
-angular.module("managerApp").controller("TelecomTelephonyServiceFaxSettingsCtrl", function ($q, $stateParams, $timeout, Telephony, ToastError) {
+angular.module("managerApp").controller("TelecomTelephonyServiceFaxSettingsCtrl", function ($q, $stateParams, $timeout, OvhApiTelephony, ToastError) {
     "use strict";
 
     var self = this;
 
-    /*= ==============================
+    /* ===============================
     =            HELPERS            =
-    ===============================*/
+    =============================== */
 
     function fetchEnums () {
-        return Telephony.Lexi().schema({
+        return OvhApiTelephony.Lexi().schema({
             billingAccount: $stateParams.billingAccount
         }).$promise.then(function (schema) {
             return {
@@ -20,15 +20,15 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxSettingsCtrl"
     }
 
     function fetchSettings () {
-        return Telephony.Fax().Lexi().getSettings({
+        return OvhApiTelephony.Fax().Lexi().getSettings({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }).$promise;
     }
 
     function refreshSettings () {
-        Telephony.Fax().Lexi().resetCache();
-        Telephony.Fax().Lexi().resetQueryCache();
+        OvhApiTelephony.Fax().Lexi().resetCache();
+        OvhApiTelephony.Fax().Lexi().resetQueryCache();
         return fetchSettings().then(function (settings) {
             self.settings = settings;
             _.assign(
@@ -38,6 +38,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxSettingsCtrl"
                     return sourceValue.toString();
                 }
             );
+            _.assign(self.faxTagLineForm, _.pick(settings, "faxTagLine"));
             _.assign(self.notificationOptionsForm, _.pick(settings, ["fromName", "fromEmail", "mailFormat"]));
         });
     }
@@ -46,6 +47,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxSettingsCtrl"
         return _.pick(settings, [
             "fromName",
             "faxQuality",
+            "faxTagLine",
             "faxMaxCall",
             "fromEmail",
             "redirectionEmail",
@@ -55,7 +57,11 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxSettingsCtrl"
 
     self.generalOptionsChanged = function () {
         return self.generalOptionsForm.faxQuality !== self.settings.faxQuality ||
-            _.parseInt(self.generalOptionsForm.faxMaxCall) !== self.settings.faxMaxCall;
+            _.parseInt(self.generalOptionsForm.faxMaxCall, 10) !== self.settings.faxMaxCall;
+    };
+
+    self.faxTagLineChanged = function () {
+        return self.faxTagLineForm.faxTagLine !== self.settings.faxTagLine;
     };
 
     self.notificationOptionsChanged = function () {
@@ -64,11 +70,11 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxSettingsCtrl"
             self.notificationOptionsForm.mailFormat !== self.settings.mailFormat;
     };
 
-    /* -----  End of HELPERS  ------*/
+    /* -----  End of HELPERS  ------ */
 
-    /*= ==============================
+    /* ===============================
     =            ACTIONS            =
-    ===============================*/
+    =============================== */
 
     self.cancelAddAddressesToNotifyForm = function () {
         self.addressesToNotifyForm.email = null;
@@ -81,7 +87,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxSettingsCtrl"
 
         self.generalOptionsForm.isUpdating = true;
 
-        var update = Telephony.Fax().Lexi().setSettings({
+        var update = OvhApiTelephony.Fax().Lexi().setSettings({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }, settings).$promise;
@@ -89,22 +95,46 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxSettingsCtrl"
         return $q.all({
             noop: $timeout(angular.noop, 1000),
             update: update
-        })
-            .then(function () {
-                return refreshSettings();
-            })
-            .then(function () {
-                self.generalOptionsForm.isSuccess = true;
-                $timeout(function () {
-                    self.generalOptionsForm.isSuccess = false;
-                }, 3000);
-            })
-            .catch(function (err) {
-                return new ToastError(err);
-            })
-            .finally(function () {
-                self.generalOptionsForm.isUpdating = false;
-            });
+        }).then(function () {
+            return refreshSettings();
+        }).then(function () {
+            self.generalOptionsForm.isSuccess = true;
+            $timeout(function () {
+                self.generalOptionsForm.isSuccess = false;
+            }, 3000);
+        }).catch(function (err) {
+            return new ToastError(err);
+        }).finally(function () {
+            self.generalOptionsForm.isUpdating = false;
+        });
+    };
+
+    self.updatefaxTagLine = function () {
+        var settings = pickEditableSettings(self.settings);
+        _.assign(settings, _.pick(self.faxTagLineForm, "faxTagLine"));
+
+        self.faxTagLineForm.isUpdating = true;
+
+        var update = OvhApiTelephony.Fax().Lexi().setSettings({
+            billingAccount: $stateParams.billingAccount,
+            serviceName: $stateParams.serviceName
+        }, settings).$promise;
+
+        return $q.all({
+            noop: $timeout(angular.noop, 1000),
+            update: update
+        }).then(function () {
+            return refreshSettings();
+        }).then(function () {
+            self.faxTagLineForm.isSuccess = true;
+            $timeout(function () {
+                self.faxTagLineForm.isSuccess = false;
+            }, 3000);
+        }).catch(function (err) {
+            return new ToastError(err);
+        }).finally(function () {
+            self.faxTagLineForm.isUpdating = false;
+        });
     };
 
     self.updateNotificationOptions = function () {
@@ -113,7 +143,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxSettingsCtrl"
 
         self.notificationOptionsForm.isUpdating = true;
 
-        var update = Telephony.Fax().Lexi().setSettings({
+        var update = OvhApiTelephony.Fax().Lexi().setSettings({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }, settings).$promise;
@@ -121,22 +151,18 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxSettingsCtrl"
         return $q.all({
             noop: $timeout(angular.noop, 1000),
             update: update
-        })
-            .then(function () {
-                return refreshSettings();
-            })
-            .then(function () {
-                self.notificationOptionsForm.isSuccess = true;
-                $timeout(function () {
-                    self.notificationOptionsForm.isSuccess = false;
-                }, 3000);
-            })
-            .catch(function (err) {
-                return new ToastError(err);
-            })
-            .finally(function () {
-                self.notificationOptionsForm.isUpdating = false;
-            });
+        }).then(function () {
+            return refreshSettings();
+        }).then(function () {
+            self.notificationOptionsForm.isSuccess = true;
+            $timeout(function () {
+                self.notificationOptionsForm.isSuccess = false;
+            }, 3000);
+        }).catch(function (err) {
+            return new ToastError(err);
+        }).finally(function () {
+            self.notificationOptionsForm.isUpdating = false;
+        });
     };
 
     self.removeRedirectionEmail = function (email) {
@@ -145,7 +171,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxSettingsCtrl"
 
         self.addressesToNotifyForm.isRemoving = true;
 
-        var update = Telephony.Fax().Lexi().setSettings({
+        var update = OvhApiTelephony.Fax().Lexi().setSettings({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }, settings).$promise;
@@ -153,16 +179,13 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxSettingsCtrl"
         return $q.all({
             noop: $timeout(angular.noop, 1000),
             update: update
-        })
-            .then(function () {
-                return refreshSettings();
-            })
-            .catch(function (err) {
-                return new ToastError(err);
-            })
-            .finally(function () {
-                self.addressesToNotifyForm.isRemoving = false;
-            });
+        }).then(function () {
+            return refreshSettings();
+        }).catch(function (err) {
+            return new ToastError(err);
+        }).finally(function () {
+            self.addressesToNotifyForm.isRemoving = false;
+        });
     };
 
     self.addRedirectionEmail = function () {
@@ -172,7 +195,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxSettingsCtrl"
 
         self.addressesToNotifyForm.isAdding = true;
 
-        var update = Telephony.Fax().Lexi().setSettings({
+        var update = OvhApiTelephony.Fax().Lexi().setSettings({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }, settings).$promise;
@@ -180,27 +203,23 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxSettingsCtrl"
         return $q.all({
             noop: $timeout(angular.noop, 500),
             update: update
-        })
-            .then(function () {
-                return refreshSettings();
-            })
-            .then(function () {
-                self.addressesToNotifyForm.redirectionEmail = null;
-                self.addressesToNotifyForm.isShown = false;
-            })
-            .catch(function (err) {
-                return new ToastError(err);
-            })
-            .finally(function () {
-                self.addressesToNotifyForm.isAdding = false;
-            });
+        }).then(function () {
+            return refreshSettings();
+        }).then(function () {
+            self.addressesToNotifyForm.redirectionEmail = null;
+            self.addressesToNotifyForm.isShown = false;
+        }).catch(function (err) {
+            return new ToastError(err);
+        }).finally(function () {
+            self.addressesToNotifyForm.isAdding = false;
+        });
     };
 
-    /* -----  End of ACTIONS  ------*/
+    /* -----  End of ACTIONS  ------ */
 
-    /*= =====================================
+    /* ======================================
     =            INITIALIZATION            =
-    ======================================*/
+    ====================================== */
 
     function init () {
         self.loading = {
@@ -213,6 +232,12 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxSettingsCtrl"
         self.generalOptionsForm = {
             faxQuality: null,
             faxMaxCall: null,
+            isUpdating: false,
+            isSuccess: false
+        };
+
+        self.faxTagLineForm = {
+            faxTagLine: null,
             isUpdating: false,
             isSuccess: false
         };
@@ -245,7 +270,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxSettingsCtrl"
         });
     }
 
-    /* -----  End of INITIALIZATION  ------*/
+    /* -----  End of INITIALIZATION  ------ */
 
     init();
 });

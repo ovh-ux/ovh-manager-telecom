@@ -14,7 +14,10 @@
 @import 'ovh-common-style/less/animation.less';
 @import "ovh-angular-sso-auth-modal-plugin/less/ovh-angular-sso-auth-modal-plugin.less";
 @import "ovh-angular-contact/less/ovh-angular-contact.less";
+// Convert oui kit to boostrap base
+@rem-base: rem-base(10px);
 @import "ovh-ui-kit/packages/oui/stylekit.less";
+@import "ovh-angular-chatbot/src/ovh-angular-chatbot.less";
 
 
 @icon-font-path: '../bower_components/bootstrap/fonts/';
@@ -23,6 +26,7 @@
 @ovh-font-path:'../bower_components/ovh-manager-webfont/dist/fonts/';
 @ovh-common-style-font-path: "../bower_components/ovh-common-style/fonts";
 @oui-icon-dist-folder: "../bower_components/ovh-ui-kit/dist/icons";
+@oui-font-source-sans-pro-folder: "../bower_components/ovh-ui-kit/packages/oui-typography/fonts/source-sans-pro";
 
 /* ovh-common-style */
 @space-value : 0, 2, 4, 8, 12, 16, 20, 24, 32;

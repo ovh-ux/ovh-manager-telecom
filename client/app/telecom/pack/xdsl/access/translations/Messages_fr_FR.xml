@@ -19,6 +19,7 @@
 
    <translation id="xdsl_details_caracteristics" qtlid="309568">Caractéristiques</translation>
    <translation id="xdsl_details_mac_address" qtlid="42562">Adresse MAC</translation>
+   <translation id="xdsl_details_modem_model">Modèle du modem</translation>
    <translation id="xdsl_details_mac_address_description" qtlid="309581">Adresse physique de l'équipement</translation>
    <translation id="xdsl_details_sync_label" qtlid="60698">Synchronisation</translation>
    <translation id="xdsl_details_concentrationPoint_lineHead_label" qtlid="309594">Tête</translation>

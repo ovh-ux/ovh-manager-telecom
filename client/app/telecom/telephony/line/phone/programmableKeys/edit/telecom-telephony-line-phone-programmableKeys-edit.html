@@ -10,6 +10,16 @@
     </div>
 
     <div class="modal-body" data-ng-if="!ProgammableKeysEditCtrl.loading.save && !ProgammableKeysEditCtrl.saved">
+        <!-- L1 KEY WARNING -->
+        <div class="alert alert-warning"
+             role="alert"
+             data-ng-if="ProgammableKeysEditCtrl.initialFunctionKey.label === 'L1'">
+            <span class="ovh-font ovh-font-filled-warning"
+                  aria-hidden="true">
+            </span>
+            <p data-translate="telephony_line_phone_programmableKeys_l1_warning"></p>
+        </div> <!-- End of L1 KEY WARNING -->
+
         <div class="form-group" data-ng-if="!ProgammableKeysEditCtrl.loading.init">
             <!-- Function -->
             <div class="row">

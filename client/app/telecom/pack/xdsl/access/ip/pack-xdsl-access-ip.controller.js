@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("XdslAccessIpCtrl", function ($stateParams, XdslIps, ToastError, IpAddress) {
+angular.module("managerApp").controller("XdslAccessIpCtrl", function ($stateParams, OvhApiXdslIps, ToastError, IpAddress) {
     "use strict";
 
     var self = this;
@@ -14,7 +14,7 @@ angular.module("managerApp").controller("XdslAccessIpCtrl", function ($statePara
         self.loading = true;
 
         // Get notification number
-        XdslIps.Aapi().reverse({
+        OvhApiXdslIps.Aapi().reverse({
             ipBlock: $stateParams.block
         }).$promise.then(function (ips) {
             self.ips = ips;
@@ -80,7 +80,7 @@ angular.module("managerApp").controller("XdslAccessIpCtrl", function ($statePara
      */
     this.delete = function (ip) {
         ip.updating = true;
-        XdslIps.Lexi().deleteReverse({
+        OvhApiXdslIps.Lexi().deleteReverse({
             ipBlock: decodeURIComponent($stateParams.block),
             ipReverse: ip.ipReverse
         }, null).$promise.then(function () {
@@ -97,7 +97,7 @@ angular.module("managerApp").controller("XdslAccessIpCtrl", function ($statePara
      */
     this.create = function (ip) {
         ip.updating = true;
-        XdslIps.Lexi().createReverse({
+        OvhApiXdslIps.Lexi().createReverse({
             ipBlock: decodeURIComponent($stateParams.block)
         }, {
             ipReverse: ip.ipReverse,

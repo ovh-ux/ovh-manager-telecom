@@ -1,0 +1,13 @@
+<div class="telephony-group-line-voicemail">
+
+    <bouncing-box-loader data-ng-if="$ctrl.loading.init">
+        <h2 class="top-space-m16"
+            data-translate="loading">
+        </h2>
+    </bouncing-box-loader>
+
+    <telecom-v4-links data-ng-if="!$ctrl.loading.init"
+                      data-telecom-v4-links="$ctrl.actions">
+    </telecom-v4-links>
+
+</div>

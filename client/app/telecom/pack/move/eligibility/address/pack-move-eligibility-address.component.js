@@ -7,7 +7,7 @@ angular.module("managerApp").component("packMoveEligibilityAddress", {
     },
     templateUrl: "app/telecom/pack/move/eligibility/address/pack-move-eligibility-address.html",
     controllerAs: "PackMoveEligibilityAddress",
-    controller: function ($scope, $stateParams, $translate, $filter, validator, XdslEligibility, PackXdslMove, ToastError, costs) {
+    controller: function ($scope, $stateParams, $translate, $filter, validator, OvhApiXdslEligibility, OvhApiPackXdslMove, ToastError, costs) {
         "use strict";
 
         var self = this;
@@ -26,7 +26,7 @@ angular.module("managerApp").component("packMoveEligibilityAddress", {
             if (validator.isZipcode(zipcode, ["metropolitanFrance"])) {
                 self.loaders.cities = true;
                 self.loading = true;
-                XdslEligibility.Lexi().getCities(
+                OvhApiXdslEligibility.Lexi().getCities(
                     {
                         zipCode: zipcode
                     }
@@ -54,7 +54,7 @@ angular.module("managerApp").component("packMoveEligibilityAddress", {
             if (partialStreet.length > 2) {
                 self.loaders.streets = true;
                 self.loading = true;
-                return XdslEligibility.Lexi().getStreets(
+                return OvhApiXdslEligibility.Lexi().getStreets(
                     {
                         inseeCode: self.address.city.inseeCode,
                         partialName: partialStreet
@@ -90,7 +90,7 @@ angular.module("managerApp").component("packMoveEligibilityAddress", {
             this.loading = true;
             self.submited();
 
-            return PackXdslMove.Lexi().pollElligibility($scope, {
+            return OvhApiPackXdslMove.Lexi().pollElligibility($scope, {
                 packName: $stateParams.packName,
                 address: self.address
             }).then(

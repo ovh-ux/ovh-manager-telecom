@@ -1,4 +1,4 @@
-angular.module("managerApp").factory("TelephonyGroupNumber", function ($q, $injector, Telephony, voipServiceTask) {
+angular.module("managerApp").factory("TelephonyGroupNumber", function ($q, $injector, OvhApiTelephony, voipServiceTask) {
     "use strict";
 
     /*= ==================================
@@ -56,7 +56,7 @@ angular.module("managerApp").factory("TelephonyGroupNumber", function ($q, $inje
         var savePromises = [];
 
         if (self.hasChange("description")) {
-            savePromises.push(Telephony.Number().Lexi().edit({
+            savePromises.push(OvhApiTelephony.Number().Lexi().edit({
                 billingAccount: self.billingAccount,
                 serviceName: self.serviceName
             }, {
@@ -102,10 +102,12 @@ angular.module("managerApp").factory("TelephonyGroupNumber", function ($q, $inje
             return "conference";
         case "cloudIvr":
         case "cloudHunting":
+        case "contactCenterSolutionExpert":
             return "ovhPabx";
         case "svi":
             return "svi";
         case "easyHunting":
+        case "contactCenterSolution":
             return "easyHunting";
         default:
             return "feature";
@@ -115,7 +117,7 @@ angular.module("managerApp").factory("TelephonyGroupNumber", function ($q, $inje
     TelephonyGroupNumber.prototype.changeFeatureType = function () {
         var self = this;
 
-        return Telephony.Number().Lexi().changeFeatureType({
+        return OvhApiTelephony.Number().Lexi().changeFeatureType({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName
         }, {
@@ -138,14 +140,14 @@ angular.module("managerApp").factory("TelephonyGroupNumber", function ($q, $inje
 
     TelephonyGroupNumber.prototype.getTerminationTask = function () {
         var self = this;
-        return Telephony.Service().OfferTask().Lexi().query({
+        return OvhApiTelephony.Service().OfferTask().Lexi().query({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName,
             action: "termination",
             type: "offer"
         }).$promise.then(function (offerTaskIds) {
             return $q.all(_.map(offerTaskIds, function (id) {
-                return Telephony.Service().OfferTask().Lexi().get({
+                return OvhApiTelephony.Service().OfferTask().Lexi().get({
                     billingAccount: self.billingAccount,
                     serviceName: self.serviceName,
                     taskId: id
@@ -158,14 +160,14 @@ angular.module("managerApp").factory("TelephonyGroupNumber", function ($q, $inje
 
     TelephonyGroupNumber.prototype.getConvertToLineTask = function () {
         var self = this;
-        return Telephony.Service().OfferTask().Lexi().query({
+        return OvhApiTelephony.Service().OfferTask().Lexi().query({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName,
             action: "convertToSip",
             type: "offer"
         }).$promise.then(function (offerTaskIds) {
             return $q.all(_.map(offerTaskIds, function (id) {
-                return Telephony.Service().OfferTask().Lexi().get({
+                return OvhApiTelephony.Service().OfferTask().Lexi().get({
                     billingAccount: self.billingAccount,
                     serviceName: self.serviceName,
                     taskId: id

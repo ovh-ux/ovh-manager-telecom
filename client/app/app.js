@@ -56,7 +56,11 @@ angular.module("managerApp", [
     "ngPassword",
     "matchmedia-ng",
     "ui.sortable",
-    "angular-inview"
+    "angular-inview",
+    "angular-web-notification",
+    "ngEmbed",
+    "ovh-angular-user-pref",
+    "ovh-angular-chatbot"
 ])
 
 /*= =========  GLOBAL OPTIONS  ==========*/
@@ -287,13 +291,13 @@ angular.module("managerApp", [
     })
 
 /*= =========  LOAD NAVBAR AND SIDEBAR  ==========*/
-    .run(function (atInternet, managerNavbar, ssoAuthentication, $translate, $translatePartialLoader, $q, OtrsPopupService, User, $uibModal, MANAGER_URLS, REDIRECT_URLS, URLS, LANGUAGES) {
+    .run(function (atInternet, managerNavbar, ssoAuthentication, $translate, $translatePartialLoader, $q, OtrsPopupService, OvhApiMe, $uibModal, MANAGER_URLS, REDIRECT_URLS, URLS, LANGUAGES) {
         "use strict";
 
         $translatePartialLoader.addPart("common");
         $translatePartialLoader.addPart("components");
 
-        $q.allSettled([$translate.refresh(), User.Lexi().get().$promise]).then(function (data) {
+        $q.allSettled([$translate.refresh(), OvhApiMe.Lexi().get().$promise]).then(function (data) {
             var user = data[1];
 
             var universKeys = [

@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyAliasPortabilityOrderCtrl", function ($scope, $stateParams, $translate, $q, moment, TelephonyMediator, Order, ToastError) {
+angular.module("managerApp").controller("TelecomTelephonyAliasPortabilityOrderCtrl", function ($scope, $stateParams, $translate, $q, moment, TelephonyMediator, OvhApiMe, OvhApiOrder, Toast, ToastError) {
     "use strict";
 
     var self = this;
@@ -23,7 +23,10 @@ angular.module("managerApp").controller("TelecomTelephonyAliasPortabilityOrderCt
             contactNumber: "",
             translatedCountry: $translate.instant("telephony_alias_portability_order_contact_country_france"),
             displayUniversalDirectory: false,
-            numbersList: []
+            numbersList: [],
+            success: false,
+            autoPay: false,
+            addressTooLong: false
         };
 
         self.stepsList = ["number", "contact", "config", "summary"];
@@ -104,6 +107,18 @@ angular.module("managerApp").controller("TelecomTelephonyAliasPortabilityOrderCt
         return number;
     };
 
+    self.goToConfigStep = function () {
+        self.order.addressTooLong = false;
+
+        if ((_.get(self.order, "streetName", "").length + _.get(self.order, "streetNumber", "").length + _.get(self.order, "streetNumberExtra", "").length + _.get(self.order, "streetType", "").length) >= 35) {
+            self.order.addressTooLong = true;
+            return false;
+        }
+
+        self.step = "config";
+        return true;
+    };
+
     self.getOrderParams = function () {
         var params = _.pick(self.order, sharedAttributes);
 
@@ -127,7 +142,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasPortabilityOrderCt
 
     self.fetchPriceAndContracts = function () {
         self.step = "summary";
-        return Order.Telephony().Lexi().getPortability(self.getOrderParams()).$promise.then(function (result) {
+        return OvhApiOrder.Telephony().Lexi().getPortability(self.getOrderParams()).$promise.then(function (result) {
             self.details = result.details;
             self.contracts = result.contracts;
             self.prices = result.prices;
@@ -139,13 +154,34 @@ angular.module("managerApp").controller("TelecomTelephonyAliasPortabilityOrderCt
 
     self.submitOrder = function () {
         self.order.isOrdering = true;
-        return Order.Telephony().Lexi().orderPortability({
+        return OvhApiOrder.Telephony().Lexi().orderPortability({
             billingAccount: self.order.billingAccount
         }, _.omit(self.getOrderParams(), "billingAccount")).$promise.then(function (result) {
-            self.order.url = result.url;
             self.order.success = true;
+            self.order.url = result.url;
+            return OvhApiMe.Order().Lexi().get({
+                orderId: result.orderId
+            }).$promise.then(function () {
+                // in this case it's allowed to auto pay order
+                return OvhApiMe.Order().Lexi().payRegisteredPaymentMean({
+                    orderId: result.orderId
+                }, {
+                    paymentMean: "ovhAccount"
+                }).$promise.then(function () {
+                    self.order.autoPay = true;
+                }, function () {
+                    // if it fails no need to reject because portablity order is a success and validation can always be done by clicking
+                    self.order.autoPay = false;
+                });
+            }, function () {
+                // in this case it means that nic bill and connected are not the same
+                // so display a message telling that order must be validated by clicking
+                // no need to reject because portablity order is a success and validation can always be done by clicking
+                self.order.autoPay = false;
+            });
         }).catch(function (err) {
-            return new ToastError(err);
+            Toast.error([$translate.instant("telephony_alias_portability_order_error"), _.get(err, "data.message")].join(" "));
+            return $q.reject(err);
         }).finally(function () {
             self.order.isOrdering = false;
         });

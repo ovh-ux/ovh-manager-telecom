@@ -52,7 +52,7 @@
     <translation id="telephony_number_feature_ovh_pabx_menu_entry_action_bridge_action_param_required">Veuillez spécifier un numéro vers lequel transférer l'appel.</translation>
     <translation id="telephony_number_feature_ovh_pabx_menu_entry_action_bridge_action_param_bad_format">Le numéro vers lequel transférer l'appel doit être au format international (ex: +33312345678).</translation>
     <!-- CALLCENTER -->
-    <translation id="telephony_number_feature_ovh_pabx_menu_entry_action_callcenter">Faire sonner les membres</translation>
+    <translation id="telephony_number_feature_ovh_pabx_menu_entry_action_callcenter">Faire sonner les membres de la file</translation>
     <translation id="telephony_number_feature_ovh_pabx_menu_entry_action_callcenter_explain">Permet de sélectionner des membres et de les faire sonner simultanément.</translation>
     <!-- MENU BACK -->
     <translation id="telephony_number_feature_ovh_pabx_menu_entry_action_menu_back">Retour au menu précédent</translation>
@@ -88,8 +88,11 @@
     <translation id="telephony_number_feature_ovh_pabx_menu_entry_create_error">Oups ! Une erreur est survenue lors de la création de l'entrée du menu interactif.</translation>
     <!-- DTMF -->
     <translation id="telephony_number_feature_ovh_pabx_menu_entry_edit_dtmf">Touche</translation>
+    <translation id="telephony_number_feature_ovh_pabx_menu_entry_edit_dtmf_no_selected">Aucune touche sélectionnée</translation>
     <translation id="telephony_number_feature_ovh_pabx_menu_entry_edit_dtmf_change">Changement de la touche</translation>
-    <translation id="telephony_number_feature_ovh_pabx_menu_entry_edit_dtmf_in_use">Cette touche est déjà utilisée pour une autre entrée du menu interactif.</translation>
+    <translation id="telephony_number_feature_ovh_pabx_menu_entry_edit_dtmf_single_digit">Touche à 1 chiffre</translation>
+    <translation id="telephony_number_feature_ovh_pabx_menu_entry_edit_dtmf_multi_digit_choose">Entrez une touche d'entrée</translation>
+    <translation id="telephony_number_feature_ovh_pabx_menu_entry_edit_dtmf_multi_digit_reset">Effacer la touche actuelle</translation>
     <!-- ACTION TO EXECUTE -->
     <translation id="telephony_number_feature_ovh_pabx_menu_entry_edit_action">Action à exécuter</translation>
     <translation id="telephony_number_feature_ovh_pabx_menu_entry_edit_action_change">Modifier l'action</translation>

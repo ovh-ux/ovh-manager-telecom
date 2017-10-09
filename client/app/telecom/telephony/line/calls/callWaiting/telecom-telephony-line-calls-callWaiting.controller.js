@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyLineCallsCallWaitingCtrl", function ($q, $stateParams, $translate, Toast, ToastError, Telephony, TelephonyMediator) {
+angular.module("managerApp").controller("TelecomTelephonyLineCallsCallWaitingCtrl", function ($q, $stateParams, $translate, Toast, ToastError, OvhApiTelephony, TelephonyMediator) {
     "use strict";
 
     var self = this;
@@ -34,7 +34,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineCallsCallWaitingCtr
 
         self.loading.save = true;
 
-        Telephony.Line().Options().Lexi().update({
+        OvhApiTelephony.Line().Options().Lexi().update({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }, data).$promise.then(function () {
@@ -72,7 +72,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineCallsCallWaitingCtr
                 return phone;
             });
         }).then(function () {
-            return Telephony.Line().Options().Lexi().get({
+            return OvhApiTelephony.Line().Options().Lexi().get({
                 billingAccount: $stateParams.billingAccount,
                 serviceName: $stateParams.serviceName
             }).$promise;

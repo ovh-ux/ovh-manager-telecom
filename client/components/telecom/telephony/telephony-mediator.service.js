@@ -1,4 +1,4 @@
-angular.module("managerApp").service("TelephonyMediator", function ($q, $stateParams, Telephony, TelephonyVoipService, REDIRECT_URLS, REDIRECT_V4_HASH) {
+angular.module("managerApp").service("TelephonyMediator", function ($q, $stateParams, OvhApiTelephony, TelephonyVoipService, REDIRECT_URLS, REDIRECT_V4_HASH) {
     "use strict";
 
     var self = this;
@@ -15,7 +15,7 @@ angular.module("managerApp").service("TelephonyMediator", function ($q, $statePa
 
     self.getApiScheme = function () {
         if (!self.apiScheme) {
-            return Telephony.Lexi().schema().$promise.then(function (scheme) {
+            return OvhApiTelephony.Lexi().schema().$promise.then(function (scheme) {
                 self.apiScheme = scheme;
                 return self.apiScheme;
             });

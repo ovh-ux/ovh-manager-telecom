@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationRecordsOvhPabxCtrl", function ($q, $stateParams, TelephonyMediator, Telephony, ToastError) {
+angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationRecordsOvhPabxCtrl", function ($q, $stateParams, TelephonyMediator, OvhApiTelephony, ToastError) {
     "use strict";
 
     var self = this;
@@ -8,13 +8,13 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationRecor
     ===============================*/
 
     self.fetchQueues = function () {
-        return Telephony.OvhPabx().Hunting().Queue().Lexi()
+        return OvhApiTelephony.OvhPabx().Hunting().Queue().Lexi()
             .query({
                 billingAccount: $stateParams.billingAccount,
                 serviceName: $stateParams.serviceName
             }).$promise.then(function (ids) {
                 return $q.all(_.map(ids, function (id) {
-                    return Telephony.OvhPabx().Hunting().Queue().Lexi()
+                    return OvhApiTelephony.OvhPabx().Hunting().Queue().Lexi()
                         .get({
                             billingAccount: $stateParams.billingAccount,
                             serviceName: $stateParams.serviceName,
@@ -27,13 +27,13 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationRecor
     };
 
     self.fetchRecords = function () {
-        Telephony.OvhPabx().Records().Lexi().resetAllCache();
-        return Telephony.OvhPabx().Records().Lexi().query({
+        OvhApiTelephony.OvhPabx().Records().Lexi().resetAllCache();
+        return OvhApiTelephony.OvhPabx().Records().Lexi().query({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }).$promise.then(function (recordsIds) {
             return $q.all(_.map(_.chunk(recordsIds, 50), function (chunkIds) {
-                return Telephony.OvhPabx().Records().Lexi().getBatch({
+                return OvhApiTelephony.OvhPabx().Records().Lexi().getBatch({
                     billingAccount: $stateParams.billingAccount,
                     serviceName: $stateParams.serviceName,
                     id: chunkIds
@@ -52,7 +52,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationRecor
 
     self.updateQueue = function (queue) {
         var attrs = ["record", "askForRecordDisabling", "recordDisablingLanguage", "recordDisablingDigit"];
-        return Telephony.OvhPabx().Hunting().Queue().Lexi()
+        return OvhApiTelephony.OvhPabx().Hunting().Queue().Lexi()
             .change({
                 billingAccount: $stateParams.billingAccount,
                 serviceName: $stateParams.serviceName,
@@ -62,7 +62,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationRecor
 
     self.deleteSelectedRecords = function (records) {
         return $q.all(_.map(records, function (record) {
-            return Telephony.OvhPabx().Records().Lexi().remove({
+            return OvhApiTelephony.OvhPabx().Records().Lexi().remove({
                 billingAccount: $stateParams.billingAccount,
                 serviceName: $stateParams.serviceName,
                 id: record.id

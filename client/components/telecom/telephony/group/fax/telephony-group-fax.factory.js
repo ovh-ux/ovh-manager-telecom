@@ -1,4 +1,4 @@
-angular.module("managerApp").factory("TelephonyGroupFax", function (Telephony) {
+angular.module("managerApp").factory("TelephonyGroupFax", function ($q, OvhApiTelephony) {
     "use strict";
 
     /*= ==================================
@@ -30,6 +30,16 @@ angular.module("managerApp").factory("TelephonyGroupFax", function (Telephony) {
         this.description = options.description;
         this.offers = options.offers;
 
+        // managing notifications object
+        this.notifications = options.notifications || {};
+        if (_.isNull(_.get(this.notifications, "logs")) || _.isUndefined(_.get(this.notifications, "logs"))) {
+            this.notifications.logs = {
+                email: null,
+                frequency: "Never",
+                sendIfNull: false
+            };
+        }
+
         // custom attributes
         this.inEdition = false;
         this.saveForEdition = null;
@@ -58,12 +68,57 @@ angular.module("managerApp").factory("TelephonyGroupFax", function (Telephony) {
     TelephonyGroupFax.prototype.save = function () {
         var self = this;
 
-        return Telephony.Fax().Lexi().edit({
+        return OvhApiTelephony.Fax().Lexi().edit({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName
         }, {
-            description: self.description
+            description: self.description,
+            notifications: self.notifications
         }).$promise;
+    };
+
+    TelephonyGroupFax.prototype.terminate = function (reason, details) {
+        var self = this;
+
+        return OvhApiTelephony.Service().Lexi().delete({
+            billingAccount: self.billingAccount,
+            serviceName: self.serviceName
+        }, {
+            reason: reason,
+            details: details
+        }).$promise;
+    };
+
+    TelephonyGroupFax.prototype.cancelTermination = function () {
+        var self = this;
+
+        return OvhApiTelephony.Service().Lexi().cancelTermination({
+            billingAccount: self.billingAccount,
+            serviceName: self.serviceName
+        }, {}).$promise;
+    };
+
+    /* ----------  TASK  ----------*/
+
+    TelephonyGroupFax.prototype.getTerminationTask = function () {
+        var self = this;
+
+        return OvhApiTelephony.Service().OfferTask().Lexi().query({
+            billingAccount: self.billingAccount,
+            serviceName: self.serviceName,
+            action: "termination",
+            type: "offer"
+        }).$promise.then(function (offerTaskIds) {
+            return $q.all(_.map(offerTaskIds, function (id) {
+                return OvhApiTelephony.Service().OfferTask().Lexi().get({
+                    billingAccount: self.billingAccount,
+                    serviceName: self.serviceName,
+                    taskId: id
+                }).$promise;
+            })).then(function (tasks) {
+                return _.head(_.filter(tasks, { status: "todo" }));
+            });
+        });
     };
 
     /* ----------  EDITION  ----------*/
@@ -74,7 +129,8 @@ angular.module("managerApp").factory("TelephonyGroupFax", function (Telephony) {
         self.inEdition = true;
 
         self.saveForEdition = {
-            description: angular.copy(self.description)
+            description: angular.copy(self.description),
+            notifications: angular.copy(self.notifications)
         };
 
         return self;
@@ -85,12 +141,19 @@ angular.module("managerApp").factory("TelephonyGroupFax", function (Telephony) {
 
         if (self.saveForEdition && cancel) {
             self.description = angular.copy(self.saveForEdition.description);
+            self.notifications = angular.copy(self.saveForEdition.notifications);
         }
 
         self.saveForEdition = null;
         self.inEdition = false;
 
         return self;
+    };
+
+    TelephonyGroupFax.prototype.hasChange = function (path) {
+        var self = this;
+
+        return _.get(self.saveForEdition, path) !== _.get(self, path);
     };
 
     /* -----  End of PROTOTYPE METHODS  ------*/

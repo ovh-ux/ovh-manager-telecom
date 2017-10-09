@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyLinePhoneRebootCtrl", function ($q, $stateParams, $translate, $timeout, Toast, ToastError, Telephony, TelephonyMediator) {
+angular.module("managerApp").controller("TelecomTelephonyLinePhoneRebootCtrl", function ($q, $stateParams, $translate, $timeout, Toast, ToastError, OvhApiTelephony, TelephonyMediator) {
     "use strict";
 
     var self = this;
@@ -19,7 +19,7 @@ angular.module("managerApp").controller("TelecomTelephonyLinePhoneRebootCtrl", f
 
     self.reboot = function () {
         self.isRebooting = true;
-        Telephony.Line().Phone().Lexi().reboot({
+        OvhApiTelephony.Line().Phone().Lexi().reboot({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }, {}).$promise.then(function () {

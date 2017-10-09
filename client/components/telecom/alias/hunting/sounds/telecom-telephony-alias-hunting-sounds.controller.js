@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyAliasHuntingSoundsCtrl", function ($stateParams, $uibModalInstance, $timeout, $q, $translate, $translatePartialLoader, params, User, ToastError, voipServiceTask) {
+angular.module("managerApp").controller("TelecomTelephonyAliasHuntingSoundsCtrl", function ($stateParams, $uibModalInstance, $timeout, $q, $translate, $translatePartialLoader, params, OvhApiMe, ToastError, voipServiceTask) {
     "use strict";
 
     var self = this;
@@ -35,7 +35,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasHuntingSoundsCtrl"
         self.isUploading = true;
 
         // first, upload document to get a file url
-        return User.Document().Lexi().upload(
+        return OvhApiMe.Document().Lexi().upload(
             name,
             self.toUpload
         ).then(function (doc) {

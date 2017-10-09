@@ -1,4 +1,4 @@
-angular.module("managerApp").factory("TelephonyGroupNumberOvhPabxDialplan", function ($q, Telephony, TelephonyGroupNumberOvhPabxDialplanExtension) {
+angular.module("managerApp").factory("TelephonyGroupNumberOvhPabxDialplan", function ($q, OvhApiTelephony, TelephonyGroupNumberOvhPabxDialplanExtension) {
     "use strict";
 
     /*= ==================================
@@ -120,7 +120,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberOvhPabxDialplan", func
 
         self.status = "IN_CREATION";
 
-        return Telephony.OvhPabx().Dialplan().Lexi().create({
+        return OvhApiTelephony.OvhPabx().Dialplan().Lexi().create({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName
         }, {
@@ -146,7 +146,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberOvhPabxDialplan", func
 
         self.status = "SAVING";
 
-        return Telephony.OvhPabx().Dialplan().Lexi().save({
+        return OvhApiTelephony.OvhPabx().Dialplan().Lexi().save({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName,
             dialplanId: self.dialplanId
@@ -168,7 +168,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberOvhPabxDialplan", func
 
         self.status = "DELETING";
 
-        return Telephony.OvhPabx().Dialplan().Lexi().remove({
+        return OvhApiTelephony.OvhPabx().Dialplan().Lexi().remove({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName,
             dialplanId: self.dialplanId
@@ -183,13 +183,13 @@ angular.module("managerApp").factory("TelephonyGroupNumberOvhPabxDialplan", func
     TelephonyGroupNumberOvhPabxDialplan.prototype.getExtensions = function () {
         var self = this;
 
-        return Telephony.OvhPabx().Dialplan().Extension().Lexi().query({
+        return OvhApiTelephony.OvhPabx().Dialplan().Extension().Lexi().query({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName,
             dialplanId: self.dialplanId
         }).$promise.then(function (extensionIds) {
             return $q.all(_.map(_.chunk(extensionIds, 50), function (chunkIds) {
-                return Telephony.OvhPabx().Dialplan().Extension().Lexi().getBatch({
+                return OvhApiTelephony.OvhPabx().Dialplan().Extension().Lexi().getBatch({
                     billingAccount: self.billingAccount,
                     serviceName: self.serviceName,
                     dialplanId: self.dialplanId,

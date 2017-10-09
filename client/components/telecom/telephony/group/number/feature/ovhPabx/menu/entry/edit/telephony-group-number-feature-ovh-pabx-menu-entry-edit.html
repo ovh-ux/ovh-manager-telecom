@@ -22,7 +22,12 @@
                                data-translate="telephony_number_feature_ovh_pabx_menu_entry_edit_dtmf">
                         </label>
                         <span class="block"
-                              data-ng-bind="$ctrl.menuEntryCtrl.menuEntry.dtmf">
+                              data-ng-bind="$ctrl.menuEntryCtrl.menuEntry.dtmf"
+                              data-ng-if="$ctrl.menuEntryCtrl.menuEntry.dtmf">
+                        </span>
+                        <span class="block"
+                              data-translate="telephony_number_feature_ovh_pabx_menu_entry_edit_dtmf_no_selected"
+                              data-ng-if="!$ctrl.menuEntryCtrl.menuEntry.dtmf">
                         </span>
                         <div class="chevron-right">
                             <div class="chevron-wrapper">
@@ -210,6 +215,29 @@
                                 </label>
                             </div>
                         </div> <!-- END OF READ DTMF -->
+
+                        <!-- QUEUE MEMBER (callcenter) -->
+                        <button type="button"
+                                class="section-item no-style full-width text-left"
+                                data-ng-switch-when="callcenter"
+                                data-ng-click="$ctrl.onLeftPageButtonClick('callcenter')">
+                            <label class="pointer radio-label-main required"
+                                   data-translate="telephony_number_feature_ovh_pabx_step_rule_hunting">
+                            </label>
+                            <span class="block"
+                                  data-translate="telephony_number_feature_ovh_pabx_step_rule_hunting_no_queue"
+                                  data-ng-if="!$ctrl.menuEntryCtrl.menuEntry.actionParam">
+                            </span>
+                            <span class="block"
+                                  data-ng-if="$ctrl.menuEntryCtrl.menuEntry.actionParam"
+                                  data-ng-bind="$ctrl.ovhPabx.getQueue($ctrl.menuEntryCtrl.menuEntry.actionParam).description || $ctrl.ovhPabx.getQueue($ctrl.menuEntryCtrl.menuEntry.actionParam).queueId">
+                            </span>
+                            <div class="chevron-right">
+                                <div class="chevron-wrapper">
+                                    <i class="ovh-font ovh-font-arrow-right"></i>
+                                </div>
+                            </div>
+                        </button> <!-- END OF QUEUE MEMBER (callcenter) -->
                     </div> <!-- END OF SWITCH ACTION FOR ACTION PARAM -->
                 </div>
             </section>
@@ -260,12 +288,48 @@
                     data-translate="telephony_number_feature_ovh_pabx_menu_entry_edit_menu_sub">
                 </h2>
 
+                <h2 data-ng-switch-when="callcenter"
+                    data-translate="telephony_number_feature_ovh_pabx_step_rule_hunting_choice">
+                </h2>
+
             </header>
 
             <!-- DTMF KEY CHOICE -->
             <section data-ng-switch-when="dtmf"
                      class="dtmf-section">
                 <div class="section-group">
+                    <label class="section-item item-choice full-width pointer dtable">
+                        <div class="dtr">
+                            <div class="dtd vertical-middle radio-content">
+                                <flat-checkbox>
+                                    <input type="checkbox"
+                                           name="menuEntryAction"
+                                           data-ng-model="$ctrl.model.singleDigitKey"
+                                           data-ng-change="$ctrl.menuEntryCtrl.menuEntry.dtmf = ''" />
+                                </flat-checkbox>
+                            </div>
+                            <div class="dtd vertical-middle">
+                                <span class="block"
+                                      data-translate="telephony_number_feature_ovh_pabx_menu_entry_edit_dtmf_single_digit">
+                                </span>
+                            </div>
+                        </div>
+                    </label>
+                    <div class="section-item dtmf-value text-center"
+                         data-uib-collapse="$ctrl.model.singleDigitKey">
+                        <em data-ng-if="!$ctrl.menuEntryCtrl.menuEntry.dtmf"
+                            data-translate="telephony_number_feature_ovh_pabx_menu_entry_edit_dtmf_multi_digit_choose">
+                        </em>
+                        <div data-ng-if="$ctrl.menuEntryCtrl.menuEntry.dtmf">
+                            <strong data-ng-bind="$ctrl.menuEntryCtrl.menuEntry.dtmf"></strong>
+                            <button type="button"
+                                    class="btn-actions-list"
+                                    data-translate-attr="{ title: 'telephony_number_feature_ovh_pabx_menu_entry_edit_dtmf_multi_digit_reset' }"
+                                    data-ng-click="$ctrl.menuEntryCtrl.menuEntry.dtmf = ''">
+                                <span class="ovh-font ovh-font-wrong"></span>
+                            </button>
+                        </div>
+                    </div>
                     <div class="section-item">
                         <div class="dtable table-fixed full-width">
                             <div class="dtr"
@@ -274,11 +338,10 @@
                                      data-ng-repeat="key in row track by $index">
                                     <button type="button"
                                             class="btn btn-default full-width"
-                                            data-ng-class="{ active: key.key === $ctrl.menuEntryCtrl.menuEntry.dtmf }"
-                                            data-ng-disabled="key.disabled"
-                                            data-translate-attr="{ title: key.disabled ? 'telephony_number_feature_ovh_pabx_menu_entry_edit_dtmf_in_use' : '' }"
-                                            data-ng-bind="key.key"
-                                            data-ng-click="$ctrl.onDtmfKeyButtonClick(key.key)">
+                                            data-ng-class="{ active: $ctrl.model.singleDigitKey && key === $ctrl.menuEntryCtrl.menuEntry.dtmf }"
+                                            data-ng-bind="key"
+                                            data-ng-disabled="$ctrl.menuEntryCtrl.menuEntry.dtmf.length >= 10"
+                                            data-ng-click="$ctrl.onDtmfKeyButtonClick(key)">
                                     </button>
                                 </div>
                             </div>
@@ -358,6 +421,43 @@
                     </div>
                 </div>
             </section> <!-- END OF MENU CHOICE -->
+
+            <!-- HUNTING CHOICE -->
+            <section data-ng-switch-when="callcenter">
+                <!-- HUNTING INFOS -->
+                <div class="alert alert-info bottom-space-m0"
+                     role="alert">
+                    <i class="ovh-font ovh-font-filled-info right-space-m8"
+                       aria-hidden="true">
+                    </i>
+                    <p data-translate="telephony_number_feature_ovh_pabx_step_rule_hunting_info"
+                       data-translate-compile>
+                    </p>
+                </div> <!-- END OF HUNTING INFOS -->
+
+                <!-- QUEUE SELECTION -->
+                <div class="section-group">
+                    <label class="section-item item-choice full-width pointer dtable"
+                           data-ng-repeat="queue in $ctrl.ovhPabx.queues | orderBy:['queueId', 'description'] track by $index">
+                        <div class="dtr">
+                            <div class="dtd vertical-middle radio-content">
+                                <flat-radio>
+                                    <input type="radio"
+                                           name="ruleAction"
+                                           data-ng-model="$ctrl.menuEntryCtrl.menuEntry.actionParam"
+                                           data-ng-value="queue.queueId"
+                                           data-ng-change="$ctrl.menuEntryCtrl.popoverStatus.move = false" />
+                                </flat-radio>
+                            </div>
+                            <div class="dtd vertical-middle">
+                                <span class="block radio-label-main"
+                                      data-ng-bind="queue.description || queue.queueId">
+                                </span>
+                            </div>
+                        </div>
+                    </label>
+                </div> <!-- END OF QUEUE SELECTION -->
+            </section> <!-- END OF HUNTING CHOICE -->
 
         </section> <!-- END OF RIGHT PAGE -->
 

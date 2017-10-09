@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("PackHostedEmailDetailCtrl", function ($q, $stateParams, $state, $http, $translate, Toast, PackXdsl) {
+angular.module("managerApp").controller("PackHostedEmailDetailCtrl", function ($q, $stateParams, $state, $http, $translate, Toast, OvhApiPackXdsl) {
     "use strict";
     var self = this;
 
@@ -32,7 +32,7 @@ angular.module("managerApp").controller("PackHostedEmailDetailCtrl", function ($
      * @return {Promise}
      */
     this.loadPackInfo = function () {
-        return PackXdsl.Aapi().get({
+        return OvhApiPackXdsl.Aapi().get({
             packId: $stateParams.packName
         }).$promise.then(function (packInfo) {
             self.pack = packInfo.general;

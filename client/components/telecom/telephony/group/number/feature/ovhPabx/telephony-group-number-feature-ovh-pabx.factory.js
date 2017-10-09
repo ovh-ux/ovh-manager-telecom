@@ -1,4 +1,5 @@
-angular.module("managerApp").factory("TelephonyGroupNumberOvhPabx", function ($q, VoipScheduler, TelephonyGroupNumberOvhPabxDialplan, TelephonyGroupNumberOvhPabxSound, TelephonyGroupNumberOvhPabxMenu, TelephonyGroupNumberOvhPabxTts, Telephony) {
+angular.module("managerApp").factory("TelephonyGroupNumberOvhPabx", function ($q, VoipScheduler, TelephonyGroupNumberOvhPabxDialplan, TelephonyGroupNumberOvhPabxSound,
+                                                                              TelephonyGroupNumberOvhPabxMenu, TelephonyGroupNumberOvhPabxTts, OvhApiTelephony) {
     "use strict";
 
     /*= ==================================
@@ -56,20 +57,24 @@ angular.module("managerApp").factory("TelephonyGroupNumberOvhPabx", function ($q
 
     /* ----------  FEATURE OPTIONS  ----------*/
 
-    TelephonyGroupNumberOvhPabx.prototype.setOptions = function (featureOptions) {
+    TelephonyGroupNumberOvhPabx.prototype.setOptions = function () {
         var self = this;
-
-        self.isCCS = featureOptions.isCCS;
 
         return self;
     };
 
     /* ----------  HELPERS  ----------*/
 
+    TelephonyGroupNumberOvhPabx.prototype.isCcs = function () {
+        var self = this;
+
+        return self.featureType === "contactCenterSolutionExpert";
+    };
+
     TelephonyGroupNumberOvhPabx.prototype.isTtsAvailable = function () {
         var self = this;
 
-        return self.isCCS;
+        return self.isCcs();
     };
 
     /* ----------  EDITION  ----------*/
@@ -132,12 +137,12 @@ angular.module("managerApp").factory("TelephonyGroupNumberOvhPabx", function ($q
     TelephonyGroupNumberOvhPabx.prototype.getDialplans = function () {
         var self = this;
 
-        return Telephony.OvhPabx().Dialplan().Lexi().query({
+        return OvhApiTelephony.OvhPabx().Dialplan().Lexi().query({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName
         }).$promise.then(function (dialplanIds) {
             return $q.all(_.map(_.chunk(dialplanIds, 50), function (chunkIds) {
-                return Telephony.OvhPabx().Dialplan().Lexi().getBatch({
+                return OvhApiTelephony.OvhPabx().Dialplan().Lexi().getBatch({
                     billingAccount: self.billingAccount,
                     serviceName: self.serviceName,
                     dialplanId: chunkIds
@@ -194,12 +199,12 @@ angular.module("managerApp").factory("TelephonyGroupNumberOvhPabx", function ($q
     TelephonyGroupNumberOvhPabx.prototype.getSounds = function () {
         var self = this;
 
-        return Telephony.OvhPabx().Sound().Lexi().query({
+        return OvhApiTelephony.OvhPabx().Sound().Lexi().query({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName
         }).$promise.then(function (soundIds) {
             return $q.all(_.map(_.chunk(soundIds, 50), function (chunkIds) {
-                return Telephony.OvhPabx().Sound().Lexi().getBatch({
+                return OvhApiTelephony.OvhPabx().Sound().Lexi().getBatch({
                     billingAccount: self.billingAccount,
                     serviceName: self.serviceName,
                     soundId: chunkIds
@@ -267,15 +272,15 @@ angular.module("managerApp").factory("TelephonyGroupNumberOvhPabx", function ($q
         });
     };
 
-    TelephonyGroupNumberOvhPabx.prototype.getMenus = function () {
+    TelephonyGroupNumberOvhPabx.prototype.getMenus = function (loadEntries) {
         var self = this;
 
-        return Telephony.OvhPabx().Menu().Lexi().query({
+        return OvhApiTelephony.OvhPabx().Menu().Lexi().query({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName
         }).$promise.then(function (menuIds) {
             return $q.all(_.map(_.chunk(menuIds, 50), function (chunkIds) {
-                return Telephony.OvhPabx().Menu().Lexi().getBatch({
+                return OvhApiTelephony.OvhPabx().Menu().Lexi().getBatch({
                     billingAccount: self.billingAccount,
                     serviceName: self.serviceName,
                     menuId: chunkIds
@@ -287,7 +292,19 @@ angular.module("managerApp").factory("TelephonyGroupNumberOvhPabx", function ($q
                     });
                     return self;
                 });
-            }));
+            })).then(function () {
+                var entriesPromises = [];
+
+                // must we also load entries ?
+                if (loadEntries) {
+                    self.menus.forEach(function (menu) {
+                        entriesPromises.push(menu.getEntries());
+                    });
+                    return $q.all(entriesPromises);
+                }
+
+                return self;
+            });
         });
     };
 
@@ -349,12 +366,12 @@ angular.module("managerApp").factory("TelephonyGroupNumberOvhPabx", function ($q
     TelephonyGroupNumberOvhPabx.prototype.getQueues = function () {
         var self = this;
 
-        return Telephony.OvhPabx().Hunting().Queue().Lexi().query({
+        return OvhApiTelephony.OvhPabx().Hunting().Queue().Lexi().query({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName
         }).$promise.then(function (queueIds) {
             return $q.all(_.map(_.chunk(queueIds, 50), function (chunkIds) {
-                return Telephony.OvhPabx().Hunting().Queue().Lexi().getBatch({
+                return OvhApiTelephony.OvhPabx().Hunting().Queue().Lexi().getBatch({
                     billingAccount: self.billingAccount,
                     serviceName: self.serviceName,
                     queueId: chunkIds
@@ -385,12 +402,12 @@ angular.module("managerApp").factory("TelephonyGroupNumberOvhPabx", function ($q
     TelephonyGroupNumberOvhPabx.prototype.getTts = function () {
         var self = this;
 
-        return Telephony.OvhPabx().Tts().Lexi().query({
+        return OvhApiTelephony.OvhPabx().Tts().Lexi().query({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName
         }).$promise.then(function (ttsIds) {
             return $q.all(_.map(_.chunk(ttsIds, 50), function (chunkIds) {
-                return Telephony.OvhPabx().Tts().Lexi().getBatch({
+                return OvhApiTelephony.OvhPabx().Tts().Lexi().getBatch({
                     billingAccount: self.billingAccount,
                     serviceName: self.serviceName,
                     id: chunkIds
@@ -456,10 +473,10 @@ angular.module("managerApp").factory("TelephonyGroupNumberOvhPabx", function ($q
         var self = this;
 
         if (resetCache) {
-            Telephony.OvhPabx().resetCache();
+            OvhApiTelephony.OvhPabx().resetCache();
         }
 
-        return Telephony.OvhPabx().Lexi().get({
+        return OvhApiTelephony.OvhPabx().Lexi().get({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName
         }).$promise.then(function (featureOptions) {

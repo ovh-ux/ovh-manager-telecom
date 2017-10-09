@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelephonySchedulerCtrl", function ($q, $locale, $translate, $translatePartialLoader, $uibModal, Telephony, User, VoipSchedulerEvent, Poller, Toast, uiCalendarConfig, matchmedia) {
+angular.module("managerApp").controller("TelephonySchedulerCtrl", function ($q, $locale, $translate, $translatePartialLoader, $uibModal, OvhApiTelephony, OvhApiMe, VoipSchedulerEvent, Poller, Toast, uiCalendarConfig, matchmedia) {
     "use strict";
 
     var self = this;
@@ -194,7 +194,7 @@ angular.module("managerApp").controller("TelephonySchedulerCtrl", function ($q, 
             self.loading.import = true;
 
             startImportTaskPolling(importDatas.importTask.taskId).then(function () {
-                Telephony.Scheduler().Events().Lexi().resetAllCache();
+                OvhApiTelephony.Scheduler().Events().Lexi().resetAllCache();
                 $(uiCalendarConfig.calendars.eventsCalendar).fullCalendar("refetchEvents");
                 Toast.success($translate.instant("telephony_scheduler_import_success"));
             }, function (error) {
@@ -205,7 +205,7 @@ angular.module("managerApp").controller("TelephonySchedulerCtrl", function ($q, 
 
                 // try to delete uploaded document
                 if (importDatas.uploadedDocument) {
-                    User.Document().Lexi().delete({
+                    OvhApiMe.Document().Lexi().delete({
                         id: importDatas.uploadedDocument.id
                     });
                 }

@@ -4,12 +4,12 @@ angular.module("managerApp")
         $state,
         $timeout,
         $translate,
-        Xdsl,
+        OvhApiXdsl,
         Toast,
         $uibModal,
         ToastError,
         REDIRECT_URLS,
-        PackXdsl,
+        OvhApiPackXdsl,
         validator,
         $stateParams) {
         "use strict";
@@ -58,7 +58,7 @@ angular.module("managerApp")
         };
 
         function updateIsLegacyOffer () {
-            return PackXdsl.Lexi().get({
+            return OvhApiPackXdsl.Lexi().get({
                 packId: $stateParams.packName
             }).$promise.then(
                 function (data) {

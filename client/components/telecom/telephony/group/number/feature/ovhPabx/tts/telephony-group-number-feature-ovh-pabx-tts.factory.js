@@ -1,4 +1,4 @@
-angular.module("managerApp").factory("TelephonyGroupNumberOvhPabxTts", function ($q, Telephony) {
+angular.module("managerApp").factory("TelephonyGroupNumberOvhPabxTts", function ($q, OvhApiTelephony) {
     "use strict";
 
     /*= ==================================
@@ -60,7 +60,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberOvhPabxTts", function 
 
         self.status = "CREATING";
 
-        return Telephony.OvhPabx().Tts().Lexi().create({
+        return OvhApiTelephony.OvhPabx().Tts().Lexi().create({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName
         }, {
@@ -82,7 +82,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberOvhPabxTts", function 
 
         self.status = "DELETING";
 
-        return Telephony.OvhPabx().Tts().Lexi().remove({
+        return OvhApiTelephony.OvhPabx().Tts().Lexi().remove({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName,
             id: self.id

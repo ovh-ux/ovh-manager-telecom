@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("OverTheBoxCtrl", function ($stateParams, $translate, $q, OverTheBox, SidebarMenu, Toast, URLS) {
+angular.module("managerApp").controller("OverTheBoxCtrl", function ($stateParams, $translate, $q, OvhApiOverTheBox, SidebarMenu, Toast, URLS) {
     "use strict";
     var self = this;
 
@@ -9,7 +9,7 @@ angular.module("managerApp").controller("OverTheBoxCtrl", function ($stateParams
     this.disabledRemote = true;
 
     this.checkDevices = function () {
-        return OverTheBox.Lexi().getDevice({
+        return OvhApiOverTheBox.Lexi().getDevice({
             serviceName: $stateParams.serviceName
         }).$promise.then(function () {
             self.disabledRemote = false;
@@ -28,7 +28,7 @@ angular.module("managerApp").controller("OverTheBoxCtrl", function ($stateParams
     self.updateName = function (str) {
         self.nameUpdating = true;
 
-        return OverTheBox.Lexi().putService({
+        return OvhApiOverTheBox.Lexi().putService({
             serviceName: $stateParams.serviceName
         }, {
             customerDescription: str
@@ -50,7 +50,7 @@ angular.module("managerApp").controller("OverTheBoxCtrl", function ($stateParams
      * Load services
      */
     this.getService = function () {
-        return OverTheBox.Lexi().get({ serviceName: $stateParams.serviceName }).$promise.then(
+        return OvhApiOverTheBox.Lexi().get({ serviceName: $stateParams.serviceName }).$promise.then(
             function (service) {
                 self.service = service;
             },

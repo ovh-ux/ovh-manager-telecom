@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyLineManagementCtrl", function ($q, $translate, $stateParams, TelecomMediator, TelephonyMediator, Telephony) {
+angular.module("managerApp").controller("TelecomTelephonyLineManagementCtrl", function ($q, $translate, $stateParams, TelecomMediator, TelephonyMediator, OvhApiTelephony) {
     "use strict";
 
     var self = this;
@@ -47,7 +47,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineManagementCtrl", fu
         }, {
             name: "line_to_number",
             sref: "telecom.telephony.line.convert",
-            disabled: isInXdslPack,
+            disabled: isInXdslPack || self.line.isIndividual(),
             text: $translate.instant("telephony_line_management_actions_line_to_number")
         }];
 
@@ -68,7 +68,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineManagementCtrl", fu
     }
 
     function getTasks () {
-        return Telephony.Service().OfferTask().Lexi().query({
+        return OvhApiTelephony.Service().OfferTask().Lexi().query({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName,
             action: "termination",
@@ -98,7 +98,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineManagementCtrl", fu
                 getOffers().then(function (offers) {
                     offerCount = offers.length;
                 }),
-                Telephony.Line().Lexi().canChangePassword(
+                OvhApiTelephony.Line().Lexi().canChangePassword(
                     {
                         billingAccount: $stateParams.billingAccount,
                         serviceName: $stateParams.serviceName

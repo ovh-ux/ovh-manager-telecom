@@ -5,10 +5,14 @@ angular.module("managerApp").config(function ($stateProvider) {
         views: {
             "@lineView": {
                 templateUrl: "app/telecom/telephony/line/answer/defaultVoicemail/telecom-telephony-line-answer-defaultVoicemail.html",
-                controller: "TelecomTelephonyLineAnswerDefaultVoicemailCtrl",
+                noTranslations: true
+            },
+            "@voicemailView": {
+                templateUrl: "app/telecom/telephony/service/voicemail/default/telecom-telephony-service-voicemail-default.html",
+                controller: "TelecomTelephonyServiceVoicemailDefaultCtrl",
                 controllerAs: "DefaultVoicemailCtrl"
             }
         },
-        translations: ["common"]
+        translations: ["common", "telecom/telephony/line/answer"]
     });
 });

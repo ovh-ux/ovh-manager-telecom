@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomOrdersCtrl", function (XdslOrderFollowup, ToastError, ORDER_STATUS, PAGINATION_PER_PAGE) {
+angular.module("managerApp").controller("TelecomOrdersCtrl", function (OvhApiXdslOrderFollowup, ToastError, ORDER_STATUS, PAGINATION_PER_PAGE) {
     "use strict";
 
     var self = this;
@@ -24,7 +24,7 @@ angular.module("managerApp").controller("TelecomOrdersCtrl", function (XdslOrder
 
     self.init = function () {
         self.loading = true;
-        XdslOrderFollowup.Aapi().query().$promise.then(function (result) {
+        OvhApiXdslOrderFollowup.Aapi().query().$promise.then(function (result) {
             self.orders = result;
             result.forEach(function (access) {
                 if (access.lastTask) {

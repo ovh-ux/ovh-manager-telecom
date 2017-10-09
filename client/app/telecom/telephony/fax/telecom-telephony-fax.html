@@ -1,32 +1,3 @@
-<section class="telecom-telephony-inner">
-
-    <section class="telecom-telephony-fax">
-
-        <bouncing-box-loader data-ng-if="FaxCtrl.loading.init">
-            <h1 data-translate="loading"></h1>
-        </bouncing-box-loader>
-
-        <div class="telecom-section-header">
-
-            <header data-ng-if="!FaxCtrl.loading.init">
-                <!-- TITLE -->
-                <editable-service-name data-editable-service-name-title="FaxCtrl.fax.getDisplayedName()"
-                                       data-editable-service-name-title-on-save="FaxCtrl.faxNameSave"
-                                       data-editable-service-name-service-name="FaxCtrl.fax.serviceName"
-                                       data-maxlength="25">
-                </editable-service-name>
-            </header>
-
-        </div><!-- .telecom-section-header -->
-
-        <div class="telecom-section-content">
-
-            <telecom-v4-links data-ng-if="!FaxCtrl.loading.init"
-                              data-telecom-v4-links="FaxCtrl.actions">
-            </telecom-v4-links>
-
-        </div><!-- .telecom-section-content -->
-
-    </section><!-- .telecom-telephony-fax -->
-
-</section><!-- .telecom-telephony-inner -->
+<section class="telecom-telephony-inner"
+         data-ui-view="@faxView">
+</section>

@@ -1,10 +1,10 @@
 angular.module("managerApp").controller("TelecomSmsPhonebooksCreateCtrl", class TelecomSmsPhonebooksCreateCtrl {
-    constructor ($state, $stateParams, Sms, ToastError) {
+    constructor ($state, $stateParams, OvhApiSms, ToastError) {
         this.$state = $state;
         this.$stateParams = $stateParams;
         this.api = {
             sms: {
-                phonebooks: Sms.Phonebooks().Lexi()
+                phonebooks: OvhApiSms.Phonebooks().Lexi()
             }
         };
         this.ToastError = ToastError;

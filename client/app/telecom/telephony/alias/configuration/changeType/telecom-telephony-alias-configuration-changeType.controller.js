@@ -53,6 +53,8 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationChang
                 { id: "svi", label: $translate.instant("telephony_alias_config_change_type_label_svi") },
                 { id: "easyHunting", label: $translate.instant("telephony_alias_config_change_type_label_easyHunting") },
                 { id: "cloudHunting", label: $translate.instant("telephony_alias_config_change_type_label_cloudHunting") },
+                { id: "contactCenterSolution", label: $translate.instant("telephony_alias_config_change_type_label_contactCenterSolution") },
+                { id: "contactCenterSolutionExpert", label: $translate.instant("telephony_alias_config_change_type_label_contactCenterSolutionExpert") },
                 { id: "empty", label: $translate.instant("telephony_alias_config_change_type_label_empty") }
             ];
 
