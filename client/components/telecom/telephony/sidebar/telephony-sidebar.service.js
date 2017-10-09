@@ -1,4 +1,4 @@
-angular.module("managerApp").service("TelephonySidebar", function ($q, $translate, SidebarMenu, OvhApiTelephony, TelephonyMediator) {
+angular.module("managerApp").service("TelephonySidebar", function ($q, $translate, SidebarMenu, TelephonyMediator) {
     "use strict";
 
     var self = this;
