@@ -85,7 +85,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineCallsCtrl", functio
             enable: ["sipfax", "priceplan", "voicefax"]
         }, {
             name: "line_external_number_display",
-            url: TelephonyMediator.getV6ToV4RedirectionUrl("line.line_external_number_display"),
+            sref: "telecom.telephony.line.calls.externalNumber",
             text: $translate.instant("telephony_line_calls_actions_line_external_number_display"),
             display: ["trunk"],
             enable: ["trunk"]

@@ -64,7 +64,8 @@
             class="btn btn-primary"
             data-ng-disabled="importPhonebookContactForm.$invalid ||
                               ContactImportCtrl.phonecontactForm.isImporting ||
-                              ContactImportCtrl.phonecontactForm.hasBeenImported"
+                              ContactImportCtrl.phonecontactForm.hasBeenImported ||
+                              !ContactImportCtrl.phonecontactForm.uploadedFile"
             data-translate="submit">
         </button>
     </div>

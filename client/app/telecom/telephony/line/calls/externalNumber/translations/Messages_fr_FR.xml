@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<translations>
+    <translation id="telephony_trunk_external_number_info1">Votre offre SIP trunk vous permet de présenter des numéros externes au réseau OVH sur votre ligne.</translation>
+    <translation id="telephony_trunk_external_number_info2">Votre nombre de lignes simultanées vous permet de configurer jusqu'à {{ count }} numéros externes.</translation>
+    <translation id="telephony_trunk_external_number_info2_single">Votre nombre de lignes simultanées vous permet de configurer jusqu'à 1 numéro externe.</translation>
+    <translation id="telephony_trunk_external_number_info3">Une validation automatique par téléphone aura lieu à chaque ajout de numéro externe.</translation>
+    <translation id="telephony_trunk_external_number_info4">Veuillez également noter que les numéros de portables ne sont pas autorisés pour cette fonctionnalité.</translation>
+
+    <translation id="telephony_trunk_external_number_presented">Numéros présentés</translation>
+    <translation id="telephony_trunk_external_number_presented_list_no_number">Aucun numéro externe configuré</translation>
+    <translation id="telephony_trunk_external_number_presented_list_number_status">Statut</translation>
+    <translation id="telephony_trunk_external_number_presented_list_number_status_waiting_validation">En cours de validation</translation>
+    <translation id="telephony_trunk_external_number_presented_list_number_status_enabled">Validé</translation>
+    <translation id="telephony_trunk_external_number_presented_list_number_status_refused">Numéro refusé</translation>
+    <translation id="telephony_trunk_external_number_presented_list_number_status_to_delete">Numéro à supprimer</translation>
+    <translation id="telephony_trunk_external_number_presented_list_number_delete">Supprimer le numéro externe de la liste</translation>
+
+    <translation id="telephony_trunk_external_number_add">Ajouter un numéro externe</translation>
+    <translation id="telephony_trunk_external_number_add_number">Numéro externe</translation>
+    <translation id="telephony_trunk_external_number_add_auto_validate">Auto-validation</translation>
+    <translation id="telephony_trunk_external_number_add_auto_validate_explain">L'auto-validation vous est proposée car vous êtes partenaire OVH. En cochant cette option, vous vous engagez à être titulaire du numéro externe.</translation>
+    <translation id="telephony_trunk_external_number_add_number_required">Veuillez spécifier un numéro externe.</translation>
+    <translation id="telephony_trunk_external_number_add_number_pattern">Veuillez spécifier un numéro externe au format international (ex : +33123456789).</translation>
+    <translation id="telephony_trunk_external_number_add_number_prefix">Le pays du numéro externe doit être le même que le numéro de la ligne trunk ({{ prefix }}).</translation>
+
+    <translation id="telephony_trunk_external_number_add_validation_success1">Une validation du numéro va avoir lieu dans quelques instants.</translation>
+    <translation id="telephony_trunk_external_number_add_validation_success2">Lors de la validation, veuillez entrer le code suivant : <strong>{{ validationCode }}</strong>.</translation>
+    <translation id="telephony_trunk_external_number_add_validation_success_add_new_number">Ajouter un nouveau numéro</translation>
+
+    <translation id="telephony_trunk_external_number_load_error">Oups ! Une erreur est survenue lors du chargement de vos numéros externes.</translation>
+    <translation id="telephony_trunk_external_number_delete_success">Le numéro externe a été supprimé avec succès.</translation>
+    <translation id="telephony_trunk_external_number_add_error">Oups ! Une erreur est survenue lors de l'ajout du numéro externe.</translation>
+    <translation id="telephony_trunk_external_number_delete_error">Oups ! Une erreur est survenue lors de la suppression du numéro externe.</translation>
+</translations>
