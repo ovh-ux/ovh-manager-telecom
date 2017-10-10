@@ -63,7 +63,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationCalls
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }, {
-            status: self.screenStatus.modified
+            incomingScreenList: self.screenStatus.modified
         }).$promise.then(function () {
             self.screenStatus.raw = angular.copy(self.screenStatus.modified);
         }).catch(function (err) {
