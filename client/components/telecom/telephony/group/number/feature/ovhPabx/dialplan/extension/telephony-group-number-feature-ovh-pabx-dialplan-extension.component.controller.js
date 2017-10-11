@@ -94,6 +94,18 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxDialplanExtension
         }, 99);
     }
 
+    /**
+     *  Used to determine if rules must be displayed or not.
+     *  Used by telephonyNumberOvhPabxDialplanExtensionRuleEditCtrl when a rule edition is canceled.
+     *  Used by telephonyNumberOvhPabxDialplanExtensionRuleCtrl when a rule is deleted.
+     */
+    self.checkForDisplayHelpers = function () {
+        if (!self.extension.rules.length) {
+            self.displayHelpers.collapsed = true;
+            self.displayHelpers.expanded = false;
+        }
+    };
+
     /* -----  End of HELPERS  ------*/
 
     /*= ==============================
@@ -126,6 +138,14 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxDialplanExtension
     /* ----------  ADD RULE  ----------*/
 
     self.addRule = function (isNegative) {
+        if (!isNegative) {
+            self.displayHelpers.collapsed = false;
+            self.displayHelpers.expanded = true;
+        } else {
+            self.displayHelpers.negativeCollapsed = false;
+            self.displayHelpers.negativeExpanded = true;
+        }
+
         self.extension.addRule({
             position: isNegative ? self.extension.negativeRules.length + 1 : self.extension.rules.length + 1,
             status: "DRAFT",
@@ -153,7 +173,8 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxDialplanExtension
             // self.extension is not destroyed yet so use it to determine which extensions needs to update their positions
             self.dialplan.updateExtensionsPositions(self.extension.position);
 
-            console.log(self.dialplanCtrl);
+            // display information about extension count
+            self.dialplanCtrl.checkForDisplayHelpers();
         }, function (error) {
             Toast.error([$translate.instant("telephony_number_feature_ovh_pabx_step_remove_error"), (error.data && error.data.message) || ""].join(" "));
             return $q.reject(error);

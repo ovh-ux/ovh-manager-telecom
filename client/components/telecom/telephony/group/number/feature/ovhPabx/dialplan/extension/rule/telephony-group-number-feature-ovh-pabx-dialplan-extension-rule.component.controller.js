@@ -64,6 +64,9 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxDialplanExtension
         return self.rule.remove().then(function () {
             refreshSubwayPlan();
             self.extensionCtrl.extension.updateRulesPositions(self.rule.position, self.rule.negativeAction);
+
+            // display information about rule count
+            self.extensionCtrl.checkForDisplayHelpers();
         }, function (error) {
             Toast.error([$translate.instant("telephony_number_feature_ovh_pabx_step_rule_action_delete_error"), _.get(error, "data.message") || ""].join(" "));
             return $q.reject(error);

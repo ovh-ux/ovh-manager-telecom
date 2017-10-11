@@ -66,6 +66,17 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxDialplanCtrl", fu
         }, 99);
     }
 
+    /**
+     *  Used to determine if extensions must be displayed or not.
+     *  Used by telephonyNumberOvhPabxDialplanExtensionCtrl when an extension is deleted.
+     */
+    self.checkForDisplayHelpers = function () {
+        if (!self.dialplan.extensions.length) {
+            self.displayHelpers.collapsed = true;
+            self.displayHelpers.expanded = false;
+        }
+    };
+
     /* -----  End of HELPERS  ------*/
 
     /*= =============================
@@ -189,10 +200,7 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxDialplanCtrl", fu
         }
 
         return initPromise.then(function () {
-            if (!self.dialplan.extensions.length) {
-                self.displayHelpers.collapsed = true;
-                self.displayHelpers.expanded = false;
-            }
+            self.checkForDisplayHelpers();
         }).finally(function () {
             self.loading.init = false;
         }).catch(function (error) {

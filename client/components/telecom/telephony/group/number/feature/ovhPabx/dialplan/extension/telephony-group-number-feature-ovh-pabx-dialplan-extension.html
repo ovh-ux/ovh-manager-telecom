@@ -141,7 +141,8 @@
                         <button type="button"
                                 class="btn btn-link full-width"
                                 data-translate="{{ $ctrl.displayHelpers.collapsed ? 'telephony_number_feature_ovh_pabx_step_expand' : 'telephony_number_feature_ovh_pabx_step_collapse'}}"
-                                data-ng-click="$ctrl.displayHelpers.collapsed = !$ctrl.displayHelpers.collapsed">
+                                data-ng-click="$ctrl.displayHelpers.collapsed = !$ctrl.displayHelpers.collapsed"
+                                data-ng-disabled="!$ctrl.extension.rules.length">
                         </button>
                     </li> <!-- COLLAPSE/EXPAND -->
                     <li class="divider"></li>
@@ -225,7 +226,8 @@
                  style="margin-bottom: 64px;"
                  data-ng-if="!$ctrl.displayHelpers.expanded">
                 <div class="voip-plan__step-content voip-plan__step-content--after-grip voip-plan__step-content--node">
-                    <div class="voip-plan__step-description">
+                    <div class="voip-plan__step-description"
+                         data-ng-if="$ctrl.extension.rules.length">
                         <span class="voip-plan__step-info"
                               data-translate="{{ $ctrl.extension.rules.length === 1 ? 'telephony_number_feature_ovh_pabx_step_count_single' : 'telephony_number_feature_ovh_pabx_step_count' }}"
                               data-translate-values="{ count: $ctrl.extension.rules.length }">
@@ -233,8 +235,14 @@
                         <button type="button"
                                 class="btn btn-link no-space"
                                 data-ng-click="$ctrl.displayHelpers.collapsed = false"
-                                data-translate="telephony_number_feature_ovh_pabx_dialplan_action_show_steps">
+                                data-translate="telephony_number_feature_ovh_pabx_step_expand">
                         </button>
+                    </div>
+                    <div class="voip-plan__step-description"
+                         data-ng-if="!$ctrl.extension.rules.length">
+                        <span class="voip-plan__step-info"
+                              data-translate="telephony_number_feature_ovh_pabx_step_count_none">
+                        </span>
                     </div>
                 </div>
             </div>

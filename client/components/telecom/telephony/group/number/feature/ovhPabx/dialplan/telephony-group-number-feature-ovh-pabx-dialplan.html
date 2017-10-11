@@ -50,14 +50,15 @@
                              data-ng-click="$ctrl.onExtensionAddBtnClick()">
                      </button>
                  </li> <!-- End of ADD EXTENSION BTN -->
-                 <!-- ADD EXTENSION BTN -->
+                 <!-- COLLAPSE BUTTON -->
                  <li role="menuitem">
                      <button type="button"
                              class="btn btn-link full-width"
                              data-translate="{{ $ctrl.displayHelpers.collapsed ? 'telephony_number_feature_ovh_pabx_dialplan_action_show_steps' : 'telephony_number_feature_ovh_pabx_dialplan_action_hide_steps' }}"
-                             data-ng-click="$ctrl.displayHelpers.collapsed = !$ctrl.displayHelpers.collapsed">
+                             data-ng-click="$ctrl.displayHelpers.collapsed = !$ctrl.displayHelpers.collapsed"
+                             data-ng-disabled="!$ctrl.dialplan.extensions.length">
                      </button>
-                 </li> <!-- End of ADD EXTENSION BTN -->
+                 </li> <!-- End of COLLAPSE BUTTON -->
                  <li class="divider"></li>
                  <!-- DELETE DIALPLAN BTN -->
                  <li role="menuitem">

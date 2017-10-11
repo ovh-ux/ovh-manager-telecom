@@ -43,7 +43,7 @@
     <translation id="telephony_number_feature_ovh_pabx_step_expand">Afficher les actions</translation>
     <translation id="telephony_number_feature_ovh_pabx_step_count">{{ count }} actions configurées</translation>
     <translation id="telephony_number_feature_ovh_pabx_step_count_single">1 action configurée</translation>
-    <translation id="telephony_number_feature_ovh_pabx_step_">Afficher les actions</translation>
+    <translation id="telephony_number_feature_ovh_pabx_step_count_none">Aucune action configurée</translation>
     <translation id="telephony_number_feature_ovh_pabx_step_condition">Conditions :</translation>
     <translation id="telephony_number_feature_ovh_pabx_step_no_condition">Pas de conditions</translation>
     <translation id="telephony_number_feature_ovh_pabx_step_remove_error">Oups ! Une erreur est survenue lors de la suppression de l'étape.</translation>
