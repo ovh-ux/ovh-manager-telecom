@@ -6,6 +6,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineDetailsCtrl", funct
     self.loading = {
         init: false
     };
+    self.lastRegistration = null;
 
     /*= =====================================
     =            INITIALIZATION            =
@@ -24,6 +25,12 @@ angular.module("managerApp").controller("TelecomTelephonyLineDetailsCtrl", funct
                 options: self.line.getOptions(),
                 ips: self.line.getIps(),
                 lastRegistrations: self.line.getLastRegistrations()
+            }).then(function () {
+                if (self.line.lastRegistrations && self.line.lastRegistrations.length) {
+                    self.lastRegistration = _.last(_.sortBy(self.line.lastRegistrations, function (reg) {
+                        return new Date(reg.datetime);
+                    }));
+                }
             });
 
         }).finally(function () {

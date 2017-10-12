@@ -169,19 +169,19 @@
                         <sup>1</sup>
                     </dt>
                     <dd class="bottom-space-m8"
-                        data-ng-bind="::DetailsOfferCtrl.line.lastRegistrations && DetailsOfferCtrl.line.lastRegistrations.length ? (DetailsOfferCtrl.line.lastRegistrations[0].datetime | date:'short') : '-'">
+                        data-ng-bind="::DetailsOfferCtrl.lastRegistration ? (DetailsOfferCtrl.lastRegistration.datetime | date:'short') : '-'">
                     </dd>
 
                     <!-- IP LOC -->
                     <dt data-translate="telephony_line_details_sip_ip_local"></dt>
                     <dd class="bottom-space-m8"
-                        data-ng-bind="::DetailsOfferCtrl.line.phone.sip.localIp || '-'">
+                        data-ng-bind=":: DetailsOfferCtrl.lastRegistration ? DetailsOfferCtrl.lastRegistration.localIp + ':' + DetailsOfferCtrl.lastRegistration.localPort : '-'">
                     </dd>
 
                     <!-- IP PUB-->
                     <dt data-translate="telephony_line_details_sip_ip_public"></dt>
                     <dd class="bottom-space-m8"
-                        data-ng-bind=":: DetailsOfferCtrl.line.ips && DetailsOfferCtrl.line.ips.length ? DetailsOfferCtrl.line.ips[0].ip : '-'">
+                        data-ng-bind=":: DetailsOfferCtrl.lastRegistration ? DetailsOfferCtrl.lastRegistration.ip + ':' + DetailsOfferCtrl.lastRegistration.port : '-'">
                     </dd>
                 </dl>
 
