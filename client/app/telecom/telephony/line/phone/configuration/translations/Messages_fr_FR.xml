@@ -42,9 +42,20 @@
    <translation id="telephony_line_phone_configuration_group_call_pickup">Décrochage</translation>
    <translation id="telephony_line_phone_configuration_group_transfer">Gestion des transferts d'appels</translation>
    <translation id="telephony_line_phone_configuration_group_blf">Supervision silencieuse</translation>
+   <translation id="telephony_line_phone_configuration_group_directory">Répertoire</translation>
+   <translation id="telephony_line_phone_configuration_group_ldap">LDAP</translation>
    <translation id="telephony_line_phone_configuration_group_keep_alive">Connexions latentes</translation>
    <translation id="telephony_line_phone_configuration_group_other">Autre</translation>
    <translation id="telephony_line_phone_configuration_group_sip_local_port">Port SIP local</translation>
+
+<!-- HANDSET FOR IP -->
+   <translation id="telephony_line_phone_configuration_config_disable_enquiry_call">Désactiver le double appel</translation>
+   <translation id="telephony_line_phone_configuration_config_handset_for_ip_1">HandsetForIP1</translation>
+   <translation id="telephony_line_phone_configuration_config_handset_for_ip_2">HandsetForIP2</translation>
+   <translation id="telephony_line_phone_configuration_config_handset_for_ip_3">HandsetForIP3</translation>
+   <translation id="telephony_line_phone_configuration_config_handset_for_ip_4">HandsetForIP4</translation>
+   <translation id="telephony_line_phone_configuration_config_handset_for_ip_5">HandsetForIP5</translation>
+   <translation id="telephony_line_phone_configuration_config_handset_for_ip_6">HandsetForIP6</translation>
 
 <!-- CONFIGURATION NAMES -->
    <translation id="telephony_line_phone_configuration_config_lcd_back_ligth_saving">Activer l'économie d'énergie du rétro-éclairage</translation>
