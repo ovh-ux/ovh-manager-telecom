@@ -113,12 +113,6 @@ angular.module("managerApp").factory("TelephonyGroupNumberFeature", function ($q
 
     /* ----------  HELPERS  ----------*/
 
-    TelephonyGroupNumberFeature.prototype.hasConsumption = function () {
-        var self = this;
-
-        return ["redirect", "ddiCirpack", "conference", "svi"].indexOf(self.featureType) === -1;
-    };
-
     TelephonyGroupNumberFeature.prototype.inPendingState = function () {
         return false;
     };

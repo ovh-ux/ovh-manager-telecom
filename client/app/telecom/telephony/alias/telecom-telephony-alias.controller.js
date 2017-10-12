@@ -13,6 +13,16 @@ angular.module("managerApp").controller("TelecomTelephonyAliasCtrl", function ($
     self.terminationTask = null;
     self.serviceName = $stateParams.serviceName !== "default" ? $stateParams.serviceName : null;
 
+    /* ==============================
+    =            HELPERS            =
+    =============================== */
+
+    self.hasConsumption = function () {
+        return ["redirect", "ddiCirpack", "conference", "svi"].indexOf(self.number.feature.featureType) === -1;
+    };
+
+    /* -----  End of HELPERS  ------ */
+
     /*= ==============================
     =            ACTIONS            =
     ===============================*/
