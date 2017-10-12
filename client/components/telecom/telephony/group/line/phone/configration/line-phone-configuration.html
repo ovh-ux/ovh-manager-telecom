@@ -4,6 +4,7 @@
     <dl data-ng-if="!$ctrl.editMode">
         <dt data-ng-repeat-start="config in $ctrl.configGroup.configs track by $index"
             data-translate="{{ ['telephony_line_phone_configuration_config', config.name].join('_') | snakeCase }}"
+            data-translate-default="{{ config.name }}"
             data-ng-if="$ctrl.expertMode || (!$ctrl.expertMode && config.level === null)">
         </dt>
         <dd data-ng-repeat-end
@@ -22,7 +23,8 @@
              class="bottom-space-m8">
             <label data-ng-if="config.type !== 'ipv4' && config.type !== 'string'"
                    for="{{ config.name }}"
-                   data-translate="{{ ['telephony_line_phone_configuration_config', config.name].join('_') | snakeCase }}">
+                   data-translate="{{ ['telephony_line_phone_configuration_config', config.name].join('_') | snakeCase }}"
+                   data-translate-default="{{ config.name }}">
             </label>
 
             <!-- BOOLEAN TYPE -->
@@ -84,7 +86,7 @@
                                data-ng-blur="$ctrl.onTextInputBlur(config)"
                                data-ng-model="config.value"
                                data-ui-validate="{ ipv4: '$ctrl.validator.isIP($value, 4)' }"
-                               placeholder="{{ ['telephony_line_phone_configuration_config', config.name].join('_') | snakeCase | translate }}"
+                               placeholder="{{ $ctrl.getPlaceholderTranslation(config.name) }}"
                                class="form-control">
                     </div>
                 </div>
@@ -102,7 +104,8 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <label for="{{ config.name }}"
-                               data-translate="{{ ['telephony_line_phone_configuration_config', config.name].join('_') | snakeCase }}">
+                               data-translate="{{ ['telephony_line_phone_configuration_config', config.name].join('_') | snakeCase }}"
+                               data-translate-default="{{ config.name }}">
                         </label>
                     </div>
                 </div>
@@ -113,7 +116,8 @@
                                 name="{{ config.name }}"
                                 data-ng-model="config.value"
                                 class="form-control"
-                                placeholder="{{ ['telephony_line_phone_configuration_config', config.name].join('_') | snakeCase | translate }}"
+                                placeholder="{{ $ctrl.getPlaceholderTranslation(config.name) }}"
+                                data-translate-default="{{ config.name }}"
                                 data-ng-maxlength="{{ config.maxlength }}">
                     </div>
                 </div>
