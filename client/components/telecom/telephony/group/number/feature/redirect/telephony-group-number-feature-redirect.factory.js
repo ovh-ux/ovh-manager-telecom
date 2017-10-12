@@ -133,12 +133,6 @@ angular.module("managerApp").factory("TelephonyGroupNumberRedirect", function ($
         return self.destination === "pending";
     };
 
-    TelephonyGroupNumberRedirect.prototype.hasConsumption = function () {
-        var self = this;
-
-        return ["redirect", "ddiCirpack", "conference", "svi"].indexOf(self.featureType) === -1;
-    };
-
     /* ----------  INITIALIZATION  ----------*/
 
     TelephonyGroupNumberRedirect.prototype.init = function () {

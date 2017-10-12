@@ -70,7 +70,8 @@
                  data-ng-switch="configGroup.name">
 
                 <h2 class="widget-presentation-title"
-                    data-translate="{{ ['telephony_line_phone_configuration_group', configGroup.name].join('_') | snakeCase }}">
+                    data-translate="{{ ['telephony_line_phone_configuration_group', configGroup.name].join('_') | snakeCase }}"
+                    data-translate-default="{{ configGroup.name }}">
                 </h2>
 
                 <line-phone-configuration-user-interface data-ng-switch-when="UserInterface"
