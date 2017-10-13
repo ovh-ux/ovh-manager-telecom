@@ -2,9 +2,9 @@
 
     <div data-ng-class="{ 'voip-plan__step': $ctrl.hasMenuEntryOrDialPlanExtension() }">
         <!-- DISPLAY POSITION OR ENTRY DTMF -->
-        <div class="voip-plan__step-icon voip-plan__step-icon--grip"
+        <div class="voip-plan__step-icon"
              data-ng-if="$ctrl.hasMenuEntryOrDialPlanExtension()"
-             data-ng-class="{ 'hover-grip rule-grip': $ctrl.dialplanRule }"
+             data-ng-class="$ctrl.dialplanRule ? 'hover-grip rule-grip voip-plan__step-icon--grip' : 'voip-plan__step-icon--basic'"
              data-jsplumb-endpoint="$ctrl.jsPlumbEndpointsOptions.topLeft">
              <span data-jsplumb-connection="$ctrl.isDisabled() ? $ctrl.numberCtrl.jsPlumbConnectionsOptions.disabled : null"
                    data-jsplumb-connection-target="{{ $ctrl.getParentEndpointUuid() }}">
@@ -25,7 +25,8 @@
             data-popover-placement="auto right"
             data-popover-trigger="none"
             data-popover-is-open="$ctrl.popoverStatus.isOpen"
-            data-popover-class="pretty-popover telephony-number-feature-popover telephony-number-ovh-pabx-actions-popup">
+            data-popover-class="pretty-popover telephony-number-feature-popover telephony-number-ovh-pabx-actions-popup"
+            data-hide-outside-click="$ctrl.onMenuOutsideClick()">
             <div class="voip-plan__step-icon voip-plan__step-icon--included"
                  data-jsplumb-endpoint
                  data-jsplumb-endpoint-uuid="{{ $ctrl.getEndpointUuid() }}">
@@ -82,6 +83,15 @@
                                 data-ng-click="$ctrl.addMenuEntry()">
                         </button>
                     </li> <!-- END OF ADD MENU ENTRY -->
+                    <!-- COLLAPSE/EXPAND -->
+                    <li role="menuitem">
+                        <button type="button"
+                                class="btn btn-link full-width"
+                                data-translate="{{ $ctrl.displayHelpers.collapsed ? 'telephony_number_feature_ovh_pabx_menu_entry_expand' : 'telephony_number_feature_ovh_pabx_menu_entry_collapse' }}"
+                                data-ng-disabled="!$ctrl.menu.entries.length"
+                                data-ng-click="$ctrl.displayHelpers.collapsed = !$ctrl.displayHelpers.collapsed">
+                        </button>
+                    </li> <!-- END OF COLLAPSE/EXPAND -->
                     <li class="divider"></li>
                     <!-- DELETE MENU -->
                     <li role="menuitem">
@@ -173,18 +183,52 @@
         <!-- MENU ENTRY DISPLAY -->
         <div data-ng-if="!$ctrl.loading.init">
             <!-- ENTRY LIST -->
-            <div data-ng-repeat="entry in $ctrl.menu.entries track by $index"
-                 data-smooth-scroll
-                 data-scroll-if="{{ entry.status === 'DRAFT' && $ctrl.popoverStatus.isParentClicked }}"
-                 data-offset="550">
-                <telephony-number-ovh-pabx-menu-entry data-ng-if="$ctrl.getEntryAttr('action', entry) !== 'menuSub'"
-                                                      data-menu-entry="entry">
-                </telephony-number-ovh-pabx-menu-entry>
-                <telephony-number-ovh-pabx-menu data-ng-if="$ctrl.getEntryAttr('action', entry) === 'menuSub'"
-                                                data-ovh-pabx-menu="$ctrl.getEntryMenu(entry)"
-                                                data-ovh-pabx-menu-entry="entry">
-                </telephony-number-ovh-pabx-menu>
+            <div data-uib-collapse="$ctrl.displayHelpers.collapsed"
+                 data-collapsing="$ctrl.onEntryCollapsing()"
+                 data-expanding="$ctrl.onEntryExpanding()"
+                 data-collapsed="$ctrl.onEntryCollapsed()"
+                 data-expanded="$ctrl.onEntryExpanded()">
+                <div data-ng-repeat="entry in $ctrl.menu.entries track by $index"
+                     data-smooth-scroll
+                     data-scroll-if="{{ entry.status === 'DRAFT' && $ctrl.popoverStatus.isParentClicked }}"
+                     data-offset="550"
+                     data-ng-if="$ctrl.displayHelpers.expanded">
+                    <telephony-number-ovh-pabx-menu-entry data-ng-if="$ctrl.getEntryAttr('action', entry) !== 'menuSub'"
+                                                          data-menu-entry="entry">
+                    </telephony-number-ovh-pabx-menu-entry>
+                    <telephony-number-ovh-pabx-menu data-ng-if="$ctrl.getEntryAttr('action', entry) === 'menuSub'"
+                                                    data-ovh-pabx-menu="$ctrl.getEntryMenu(entry)"
+                                                    data-ovh-pabx-menu-entry="entry">
+                    </telephony-number-ovh-pabx-menu>
+                </div>
             </div> <!-- END OF ENTRY LIST -->
+
+            <!-- Entries count and collapse -->
+            <div class="voip-plan__step"
+                 style="margin-bottom: 64px;"
+                 data-ng-if="!$ctrl.displayHelpers.expanded">
+                <div class="voip-plan__step-content voip-plan__step-content--after-grip voip-plan__step-content--node">
+                    <div class="voip-plan__step-description"
+                         data-ng-if="$ctrl.menu.entries.length">
+                        <span class="voip-plan__step-info"
+                              data-translate="{{ $ctrl.menu.entries.length === 1 ? 'telephony_number_feature_ovh_pabx_menu_entry_count_single' : 'telephony_number_feature_ovh_pabx_menu_entry_count' }}"
+                              data-translate-values="{ count: $ctrl.menu.entries.length }">
+                        </span>
+                        <button type="button"
+                                class="btn btn-link no-space"
+                                data-ng-click="$ctrl.displayHelpers.collapsed = false"
+                                data-translate="telephony_number_feature_ovh_pabx_menu_entry_expand">
+                        </button>
+                    </div>
+                    <div class="voip-plan__step-description"
+                         data-ng-if="!$ctrl.menu.entries.length">
+                        <span class="voip-plan__step-info"
+                              data-translate="telephony_number_feature_ovh_pabx_menu_entry_none">
+                        </span>
+                    </div>
+                </div>
+            </div> <!-- End of Entries count and collapse -->
+
             <!-- ADD ENTRY BTN -->
             <div class="voip-plan__step">
                 <button type="button"

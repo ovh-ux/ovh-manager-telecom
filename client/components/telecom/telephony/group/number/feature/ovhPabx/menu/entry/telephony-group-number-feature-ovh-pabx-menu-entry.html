@@ -3,7 +3,7 @@
     <div class="voip-plan__step-icon voip-plan__step-icon--basic"
          data-jsplumb-endpoint="$ctrl.menuCtrl.jsPlumbEndpointsOptions.topLeft">
          <span class="position-text entry-dtmf elipse text-center"
-			   data-jsplumb-connection="$ctrl.isDisabled() ? $ctrl.menuCtrl.jsPlumbConnectionsOptions.disabled : null"
+               data-jsplumb-connection="$ctrl.isDisabled() ? $ctrl.menuCtrl.jsPlumbConnectionsOptions.disabled : null"
                data-jsplumb-connection-target="{{ $ctrl.getParentEndpointUuid() }}"
                data-ng-bind="$ctrl.getEntryAttribute('dtmf')">
          </span>
@@ -16,7 +16,8 @@
         data-popover-trigger="none"
         data-popover-is-open="$ctrl.popoverStatus.isOpen"
         data-popover-class="pretty-popover telephony-number-feature-popover telephony-number-ovh-pabx-actions-popup"
-        data-ng-class="{ 'voip-plan__step-content--delete-anim': $ctrl.menuEntry.status === 'DELETE_PENDING' }">
+        data-ng-class="{ 'voip-plan__step-content--delete-anim': $ctrl.menuEntry.status === 'DELETE_PENDING' }"
+        data-hide-outside-click="$ctrl.onEntryOutsideClick()">
         <!-- ENTRY ACTION -->
         <div class="voip-plan__step-description"
              data-ng-switch="$ctrl.getEntryAttribute('action')">
@@ -85,7 +86,7 @@
                 </li> <!-- END OF DELETE ACTION -->
             </ul>
         </div> <!-- AVAILABLE ENTRY ACTIONS -->
-        <div class="voip-plan__step-confirm"
+        <div class="voip-plan__step-confirm voip-plan__step-confirm--has-border"
              data-ng-if="$ctrl.menuEntry.status === 'DELETE_PENDING'">
             <div class="voip-plan__step-confirm-overlay"></div>
             <div class="voip-plan__step-confirm-content text-center animated fadeInRight flex-row-center">

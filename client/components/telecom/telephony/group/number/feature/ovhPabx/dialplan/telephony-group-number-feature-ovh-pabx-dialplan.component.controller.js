@@ -29,11 +29,6 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxDialplanCtrl", fu
         return self.loading.init || (self.dialplan && ["OK", "DRAFT", "DELETE_PENDING"].indexOf(self.dialplan.status) === -1);
     };
 
-    function hasSubMenuEntryInEdition (entry) {
-        var menuSub = entry.action === "menuSub" && (entry.menuSub || self.ovhPabx.getMenu(entry.actionParam));
-        return entry.inEdition || (menuSub && (menuSub.inEdition || _.some(menuSub.entries, hasSubMenuEntryInEdition)));
-    }
-
     self.hasInCreationExtension = function () {
         return _.some(self.dialplan.extensions, {
             status: "IN_CREATION"

@@ -10,7 +10,7 @@ angular.module("managerApp").directive("hideOutsideClick", function ($parse, $ti
         restrict: "A",
         link: function (scope, element, attrs) {
             var handler = function (event) {
-                if(!$(event.target).closest(element).length) {
+                if (!$(event.target).closest(element).length) {
                     scope.$apply(function () {
                         $parse(attrs.hideOutsideClick)(scope);
                     });

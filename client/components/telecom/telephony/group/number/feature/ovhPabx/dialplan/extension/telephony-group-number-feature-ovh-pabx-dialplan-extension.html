@@ -302,13 +302,13 @@
             <div class="voip-plan__subpart"
                  data-ng-if="$ctrl.extensionHasConditions()">
                 <!-- RULE LIST -->
-                <div data-ui-sortable="$ctrl.negativeRulesSortableOptions"
-                     data-ng-model="$ctrl.extension.negativeRules">
-                    <div data-uib-collapse="$ctrl.displayHelpers.negativeCollapsed"
-                         data-collapsing="$ctrl.onExtensionCollapsing()"
-                         data-expanding="$ctrl.onExtensionExpanding(true)"
-                         data-collapsed="$ctrl.onExtensionCollapsed(true)"
-                         data-expanded="$ctrl.onExtensionExpanded()">
+                <div data-uib-collapse="$ctrl.displayHelpers.negativeCollapsed"
+                     data-collapsing="$ctrl.onExtensionCollapsing()"
+                     data-expanding="$ctrl.onExtensionExpanding(true)"
+                     data-collapsed="$ctrl.onExtensionCollapsed(true)"
+                     data-expanded="$ctrl.onExtensionExpanded()">
+                    <div data-ui-sortable="$ctrl.negativeRulesSortableOptions"
+                         data-ng-model="$ctrl.extension.negativeRules">
                         <!-- ADDED EXTENSIONS -->
                         <div data-ng-repeat="rule in $ctrl.extension.negativeRules track by rule.ruleId"
                              data-smooth-scroll
