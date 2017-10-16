@@ -1,182 +1,185 @@
 <div class="telephony-number-conference">
 
     <!-- CONFERENCE BLOCK -->
-    <div class="anchor-container anchor-rectangle clearfix">
-        <div class="anchor-wrapper pull-left">
-            <div class="anchor"
+    <div class="voip-plan__step">
+        <div class="voip-plan__step-content voip-plan__step-content--node">
+            <div class="voip-plan__step-icon voip-plan__step-icon--included"
                  data-jsplumb-endpoint>
-                <i data-ng-class="{
+                <span data-ng-class="{
                        'ovh-font ovh-font-contacts': !$ctrl.numberCtrl.loading.save,
                        'fa fa-spinner fa-pulse': $ctrl.numberCtrl.loading.save
                    }"
                    data-jsplumb-connection
-                   data-jsplumb-connection-target="incoming-call-{{ $ctrl.numberCtrl.number.serviceName }}">
-                </i>
-                <span class="sr-only" data-translate="telephony_number_feature_conference"></span>
+                   data-jsplumb-connection-target="incoming-call-{{ $ctrl.numberCtrl.number.serviceName }}"
+                   aria-hidden="true">
+               </span>
             </div>
-            <div class="anchor-content">
-                <span class="content-label block"
+
+            <div class="voip-plan__step-description">
+                <span class="voip-plan__step-name"
                       data-translate="telephony_number_feature_conference">
                 </span>
             </div>
 
-            <div class="anchor-actions">
-                <button type="button"
-                        class="btn btn-link btn-feature-actions"
-                        data-ng-click="$ctrl.togglePopover()"
-                        data-translate-attr="{ title: 'telephony_number_feature_conference_edit' }"
-                        data-responsive-popover="'components/telecom/telephony/group/number/feature/conference/telephony-group-number-feature-conference-configuration.html'"
-                        data-popover-placement="right"
-                        data-popover-append-to-body="true"
-                        data-popover-class="pretty-popover telephony-number-feature-popover telephony-number-conference-config-popup"
-                        data-popover-is-open="$ctrl.popoverOpen">
-                    <i class="ovh-font ovh-font-config" aria-hidden="true"></i>
-                </button>
-            </div>
+            <button type="button"
+                    class="voip-plan__step-btn voip-plan__step-btn--included"
+                    data-ng-click="$ctrl.togglePopover()"
+                    data-translate-attr="{ title: 'telephony_number_feature_conference_edit' }"
+                    data-responsive-popover="'components/telecom/telephony/group/number/feature/conference/telephony-group-number-feature-conference-configuration.html'"
+                    data-popover-placement="right"
+                    data-popover-append-to-body="true"
+                    data-popover-class="pretty-popover telephony-number-feature-popover telephony-number-conference-config-popup"
+                    data-popover-is-open="$ctrl.popoverOpen">
+                <span class="ovh-font ovh-font-config" aria-hidden="true"></span>
+            </button>
         </div>
 
-        <div class="telephony-number-conference-actions top-space-m8 clearfix"
+        <div class="voip-plan__step-config"
              data-ng-if="$ctrl.numberCtrl.number.feature.hasParticipants()">
-            <div class="telephony-number-conference-actions-item left-space-m16">
+            <div class="voip-plan__step-config-item">
                 <button
                     type="button"
-                    class="no-style"
+                    class="voip-plan__step-btn voip-plan__step-btn--switch"
                     data-ng-click="$ctrl.setLockStatus(false)"
                     data-translate-attr="{ 'title': 'telephony_number_feature_conference_general_unlock' }">
-                    <i class="ovh-font ovh-font-lockOpened fs20" aria-hidden="true"></i>
+                    <span class="ovh-font ovh-font-lockOpened" aria-hidden="true"></span>
                 </button>
-                <flat-switch class="inline-block vertical-middle">
+                <flat-switch class="inline-block">
                     <input type="checkbox"
                            data-ng-model="$ctrl.model.lockState"
                            data-ng-change="$ctrl.toggleLockStatus()" />
                 </flat-switch>
                 <button
                     type="button"
-                    class="no-style"
+                    class="voip-plan__step-btn voip-plan__step-btn--switch"
                     data-ng-click="$ctrl.setLockStatus(true)"
                     data-translate-attr="{ 'title': 'telephony_number_feature_conference_general_lock' }">
-                    <i class="ovh-font ovh-font-lock fs20" aria-hidden="true"></i>
+                    <span class="ovh-font ovh-font-lock" aria-hidden="true"></span>
                 </button>
             </div>
-            <div class="telephony-number-conference-actions-item left-space-m16">
+            <div class="voip-plan__step-config-item">
                 <button
                     type="button"
-                    class="no-style"
+                    class="voip-plan__step-btn voip-plan__step-btn--switch"
                     data-ng-click="$ctrl.setMuteAll(false)"
                     data-translate-attr="{ 'title': 'telephony_number_feature_conference_general_unmute_all_members' }">
-                    <i class="ovh-font ovh-font-microphone fs20" aria-hidden="true"></i>
+                    <span class="ovh-font ovh-font-microphone" aria-hidden="true"></span>
                 </button>
-                <flat-switch class="inline-block vertical-middle">
+                <flat-switch class="inline-block">
                     <input type="checkbox"
                            data-ng-model="$ctrl.model.muteAllState"
                            data-ng-change="$ctrl.toggleMuteAll()" />
                 </flat-switch>
                 <button
                     type="button"
-                    class="no-style"
+                    class="voip-plan__step-btn voip-plan__step-btn--switch"
                     data-ng-click="$ctrl.setMuteAll(true)"
                     data-translate-attr="{ 'title': 'telephony_number_feature_conference_general_mute_all_members' }">
-                    <i class="ovh-font ovh-font-microphoneOff fs20" aria-hidden="true"></i>
+                    <span class="ovh-font ovh-font-microphoneOff" aria-hidden="true"></span>
                 </button>
             </div>
         </div>
     </div> <!-- CONFERENCE BLOCK -->
 
     <!-- FEATURE IS LOADING -->
-    <div class="anchor-container anchor-loading anchor-point-x2"
+    <div class="voip-plan__step"
          data-ng-if="$ctrl.numberCtrl.loading.feature || $ctrl.numberCtrl.loading.save">
-        <div class="anchor"
+        <div class="voip-plan__step-icon voip-plan__step-icon--basic"
              data-jsplumb-endpoint
              data-jsplumb-endpoint-uuid="redirect-loading">
-            <i class="fa fa-spinner fa-pulse"
+            <span class="fa fa-spinner fa-pulse"
                data-jsplumb-connection
-               data-jsplumb-connection-target="incoming-call-{{ $ctrl.numberCtrl.number.serviceName }}">
-            </i>
+               data-jsplumb-connection-target="incoming-call-{{ $ctrl.numberCtrl.number.serviceName }}"
+               aria-hidden="true">
+           </span>
         </div>
-        <div class="anchor-content service-presentation">
-            <span class="service-label"
+        <div class="voip-plan__step-description">
+            <span class="voip-plan__step-info"
                   data-translate="{{ $ctrl.numberCtrl.loading.save ? 'telephony_number_save_doing' : 'loading' }}">
             </span>
         </div>
     </div> <!-- FEATURE IS LOADING -->
 
     <!-- NO PARTICIPANTS -->
-    <div class="participants-list"
+    <div class="voip-plan__subpart"
          data-ng-if="!$ctrl.numberCtrl.loading.feature && !$ctrl.numberCtrl.number.feature.participants.length">
-        <div class="anchor-group-container">
-            <div class="anchor-container anchor-point-x2 disabled">
-                <div class="anchor"
+        <div class="voip-plan__step">
+            <div class="voip-plan__step-content">
+                <div class="voip-plan__step-icon voip-plan__step-icon--basic"
                      data-jsplumb-endpoint="$ctrl.numberCtrl.jsPlumbEndpointsOptions.topLeft"
                      data-jsplumb-endpoint-uuid="conference-participant-empty">
-                    <i class="ovh-font ovh-font-forbidUser"
+                    <span class="ovh-font ovh-font-forbidUser"
                         data-jsplumb-connection
-                        data-jsplumb-connection-target="incoming-call-{{ $ctrl.numberCtrl.number.serviceName }}">
-                    </i>
+                        data-jsplumb-connection-target="incoming-call-{{ $ctrl.numberCtrl.number.serviceName }}"
+                        aria-hidden="true">
+                    </span>
                 </div>
-                <div class="anchor-content service-presentation"
-                     data-translate="telephony_number_feature_conference_participants_emprty">
+                <div class="voip-plan__step-description">
+                     <span class="voip-plan__step-info"
+                           data-translate="telephony_number_feature_conference_participants_empty"></span>
                 </div>
             </div>
         </div>
      </div>
     <!-- PARTICIPANTS -->
-    <div class="participants-list"
+    <div class="voip-plan__subpart"
          data-ng-if="!$ctrl.numberCtrl.loading.feature && $ctrl.numberCtrl.number.feature.participants.length">
-        <div class="anchor-group-container"
+        <div class="voip-plan__step voip-plan__step--point"
              data-ng-repeat="participant in $ctrl.numberCtrl.number.feature.participants track by participant.id">
 
-            <div class="anchor-container anchor-point-x2"
+            <div class="voip-plan__step-content"
                  data-ng-class="{ disabled: !participant.hear || !participant.speak }">
 
-                <div class="anchor"
+                <div class="voip-plan__step-icon voip-plan__step-icon--basic"
                      data-jsplumb-endpoint="$ctrl.numberCtrl.jsPlumbEndpointsOptions.topLeft"
                      data-jsplumb-endpoint-uuid="conference-participant-{{ participant.id }}">
-                    <i class="ovh-font ovh-font-user"
+                    <span class="ovh-font ovh-font-user"
                         data-jsplumb-connection
-                        data-jsplumb-connection-target="incoming-call-{{ $ctrl.numberCtrl.number.serviceName }}">
-                    </i>
+                        data-jsplumb-connection-target="incoming-call-{{ $ctrl.numberCtrl.number.serviceName }}"
+                        aria-hidden="true">
+                    </span>
                 </div>
 
-                <div class="anchor-content service-presentation">
-                    <span class="service-label"
+                <div class="voip-plan__step-description">
+                    <span class="voip-plan__step-name voip-plan__step-name--has-info"
                           data-ng-bind="participant.callerName">
                     </span>
-                    <span class="service-number"
+                    <span class="voip-plan__step-info"
                           data-translate="telephony_number_feature_conference_participants_connected_since"
                           data-translate-values="{ date: $ctrl.connectedSince(participant) }">
                     </span>
                 </div>
 
-                <div class="anchor-actions">
-                    <button class="participant-actions"
-                            type="button"
-                            data-ng-click="$ctrl.manageSound = false;"
-                            data-responsive-popover="'components/telecom/telephony/group/number/feature/conference/partiticipant/telephony-group-number-feature-conference-participant-actions.html'"
-                            data-popover-placement="bottom-right"
-                            data-popover-append-to-body="true"
-                            data-popover-class="ovh-angular-actions-menu telephony-number-conference-participant-actions-menu"
-                            data-popover-trigger="outsideClick">
-                        <i class="ovh-font ovh-font-dots" aria-hidden="true"></i>
-                        <span class="sr-only" data-translate="common_actions"></span>
-                    </button>
+                <button class="voip-plan__step-btn voip-plan__step-btn--default"
+                        type="button"
+                        data-ng-click="$ctrl.manageSound = false;"
+                        data-responsive-popover="'components/telecom/telephony/group/number/feature/conference/partiticipant/telephony-group-number-feature-conference-participant-actions.html'"
+                        data-popover-placement="bottom-right"
+                        data-popover-append-to-body="true"
+                        data-popover-class="ovh-angular-actions-menu telephony-number-conference-participant-actions-menu"
+                        data-popover-trigger="outsideClick"
+                        data-translate-attr="{ 'title' : common_actions }">
+                    <span class="ovh-font ovh-font-dots" aria-hidden="true"></span>
+                </button>
 
-                    <i class="ovh-font ovh-font-speaker left-space-m8 vertical-middle"
+                <div class="voip-plan__step-icon--indicators left-space-m8">
+                    <span class="ovh-font ovh-font-speaker"
                        aria-hidden="true"
                        data-ng-if="participant.talking"
                        data-translate-attr="{ title: 'telephony_number_feature_conference_participants_state_talking' }">
-                    </i>
+                    </span>
 
-                    <i class="fa fa-deaf left-space-m8 vertical-middle"
+                    <span class="fa fa-deaf fs16 left-space-m8"
                        aria-hidden="true"
                        data-ng-if="!participant.hear"
                        data-translate-attr="{ title: 'telephony_number_feature_conference_participants_state_deaf' }">
-                    </i>
+                    </span>
 
-                    <i class="ovh-font ovh-font-noneSpeaker left-space-m8 vertical-middle"
+                    <span class="ovh-font ovh-font-noneSpeaker left-space-m8"
                        aria-hidden="true"
                        data-ng-if="!participant.speak"
                        data-translate-attr="{ title: 'telephony_number_feature_conference_participants_state_muted' }">
-                    </i>
+                   </span>
                 </div>
             </div> <!-- PARTICIPANTS -->
 

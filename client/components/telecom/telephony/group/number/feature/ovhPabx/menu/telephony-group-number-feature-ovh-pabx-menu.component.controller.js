@@ -16,6 +16,11 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxMenuCtrl", functi
         isParentClicked: false
     };
 
+    self.displayHelpers = {
+        collapsed: true,
+        expanded: false
+    };
+
     self.jsPlumbEndpointsOptions = TELEPHONY_NUMBER_JSPLUMB_ENDPOINTS_OPTIONS;
     self.jsPlumbConnectionsOptions = TELEPHONY_NUMBER_JSPLUMB_CONNECTIONS_OPTIONS;
     self.uuid = _.uniqueId("ovhPabx_menu_");
@@ -49,15 +54,6 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxMenuCtrl", functi
         return self.uuid;
     };
 
-    function hasSubMenuEntryInEdition (entry) {
-        var menuSub = entry.action === "menuSub" && (entry.menuSub || self.ovhPabx.getMenu(entry.actionParam));
-        return entry.inEdition || (menuSub && (menuSub.inEdition || _.some(menuSub.entries, hasSubMenuEntryInEdition)));
-    }
-
-    self.isActionsDisabled = function () {
-        return self.menu && (self.menu.inEdition || self.isLoading() || _.some(self.menu.entries, hasSubMenuEntryInEdition) || (self.menuCtrl && self.menuCtrl.isActionsDisabled()) || (self.dialplanCtrl && self.dialplanCtrl.isActionsDisabled()));
-    };
-
     self.getEntryAttr = function (attr, entryParam) {
         var entry = entryParam;
         if (!entry) {
@@ -84,6 +80,27 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxMenuCtrl", functi
         }
         return entry.menuSub;
 
+    };
+
+    function setConnectionVisibility (visibility) {
+        $timeout(function () {
+            self.jsplumbInstance.getAllConnections().forEach(function (connection) {
+                connection.setVisible(visibility);
+            });
+        }, 99);
+    }
+
+    /**
+     *  Used to determine if extensions must be displayed or not.
+     *  Used by telephonyNumberOvhPabxMenuEditCtrl when an entry is deleted/cancelled.
+     */
+    self.checkForDisplayHelpers = function () {
+        if (self.menu && !self.menu.entries.length) {
+            self.displayHelpers.collapsed = true;
+            self.displayHelpers.expanded = false;
+        } else if (!self.menu) {
+            self.parentCtrl.checkForDisplayHelpers();
+        }
     };
 
     /* -----  End of HELPERS  ------*/
@@ -135,6 +152,7 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxMenuCtrl", functi
             return self.menuEntry.remove().then(function () {
                 self.menuCtrl.menu.removeEntry(self.menuEntry);
                 self.menuEntry = null;
+                self.menuCtrl.checkForDisplayHelpers();
             }).catch(function (error) {
                 Toast.error([$translate.instant("telephony_number_feature_ovh_pabx_menu_entry_delete_error"), _.get(error, "data.message") || ""].join(" "));
                 return $q.reject(error);
@@ -143,6 +161,7 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxMenuCtrl", functi
             return self.dialplanRule.remove().then(function () {
                 self.extensionCtrl.extension.removeRule(self.dialplanRule);
                 self.dialplanRule = null;
+                self.extensionCtrl.checkForDisplayHelpers();
             }).catch(function (error) {
                 Toast.error([$translate.instant("telephony_number_feature_ovh_pabx_menu_entry_delete_error"), _.get(error, "data.message") || ""].join(" "));
                 return $q.reject(error);
@@ -153,12 +172,46 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxMenuCtrl", functi
 
     self.addMenuEntry = function () {
         self.popoverStatus.isParentClicked = true;
+        self.displayHelpers.collapsed = false;
+        self.displayHelpers.expanded = true;
 
         return self.menu.addEntry({
             position: self.menu.entries.length + 1,
             dtmf: self.menu.getFirstAvailableDtmfEntryKey(),
             status: "DRAFT"
         });
+    };
+
+    /* ----------  COLLAPSE  ---------- */
+
+    self.onEntryCollapsed = function () {
+        self.jsplumbInstance.customRepaint().then(function () {
+            setConnectionVisibility(true);
+            self.displayHelpers.expanded = false;
+        });
+    };
+
+    self.onEntryExpanded = function () {
+        self.jsplumbInstance.customRepaint().then(function () {
+            setConnectionVisibility(true);
+        });
+    };
+
+    self.onEntryCollapsing = function () {
+        setConnectionVisibility(false);
+    };
+
+    self.onEntryExpanding = function () {
+        self.displayHelpers.expanded = true;
+    };
+
+    self.onMenuOutsideClick = function () {
+        if ((self.menuEntry && self.menuEntry.status !== "DELETE_PENDING") || (self.dialplanRule && self.dialplanRule.status !== "DELETE_PENDING")) {
+            return;
+        }
+
+        // cancel the deletion conirm
+        self.onDeleteCancelBtnClick();
     };
 
     /* -----  End of EVENTS  ------*/

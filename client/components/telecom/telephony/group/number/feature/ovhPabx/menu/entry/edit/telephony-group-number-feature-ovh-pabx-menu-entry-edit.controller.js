@@ -133,10 +133,12 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxMenuEntryEditCtrl
     self.onCancelBtnClick = function () {
         // close popover
         self.menuEntryCtrl.popoverStatus.isOpen = false;
+        self.menuEntryCtrl.popoverStatus.move = false;
 
         // remove entry if status is DRAFT
         if (self.menuEntryCtrl.menuEntry.status === "DRAFT") {
             manageEntryRemove();
+            self.menuEntryCtrl.menuCtrl.checkForDisplayHelpers();
         } else {
             self.menuEntryCtrl.menuEntry.stopEdition(true);
         }

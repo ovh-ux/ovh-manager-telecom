@@ -1,6 +1,7 @@
 <div data-ng-controller="telephonyNumberOvhPabxDialplanExtensionRuleEditCtrl as $ctrl"
      class="telephony-number-ovh-pabx-extension-rule-edit popover-pages"
-     data-ng-form="$ctrl.extensionRuleForm">
+     data-ng-form="$ctrl.extensionRuleForm"
+     data-hide-outside-click="$ctrl.onCancelBtnClick()">
 
     <div class="popover-pages-wrapper"
          data-ng-class="{ move: $ctrl.parentCtrl.popoverStatus.move }">
@@ -106,37 +107,27 @@
                         </div> <!-- END OF SLEEP -->
 
                         <!-- VOICEMAIL -->
-                        <div class="section-item form-group"
-                             data-ng-switch-when="voicemail">
-                            <label class="control-label"
+                        <button type="button"
+                                class="section-item no-style full-width text-left"
+                                data-ng-switch-when="voicemail"
+                                data-ng-click="$ctrl.onVoicemailActionParamButtonClick()">
+                            <label class="pointer radio-label-main required"
                                    data-translate="telephony_number_feature_ovh_pabx_step_rule_voicemail_line">
                             </label>
-                            <ui-select data-ng-model="$ctrl.rule.actionParamInfos"
-                                       data-translate-attr="{ title: 'telephony_number_feature_ovh_pabx_step_rule_voicemail_line_choice' }"
-                                       data-append-to-body="true"
-                                       data-on-select="$ctrl.onVoicemailActionParamChange($item)">
-                                <ui-select-match data-placeholder="{{ 'telephony_number_feature_ovh_pabx_step_rule_voicemail_line_choice' | translate }}">
-                                    <div data-ng-if="$ctrl.rule.actionParamInfos">
-                                        <div class="inline-block right-space-m8"
-                                             data-translate="{{ 'telecom_sidebar_section_telephony_' + $ctrl.getServiceType($ctrl.rule.actionParamInfos) }}">
-                                        </div>
-                                        <div class="inline-block"
-                                             data-ng-bind="$ctrl.getServiceDisplayedName($ctrl.rule.actionParamInfos)">
-                                        </div>
-                                    </div>
-                                    <div data-ng-if="!$ctrl.rule.actionParamInfos"
-                                          data-translate="telephony_number_feature_ovh_pabx_step_rule_voicemail_line_choice">
-                                    </div>
-                                </ui-select-match>
-                                <ui-select-choices data-repeat="service in $ctrl.services | propsFilter: {serviceName: $select.search, description: $select.search} track by $index"
-                                                   data-group-by="$ctrl.getServiceGroupName">
-                                    <span class="inline-block right-space-m8"
-                                          data-translate="{{ 'telecom_sidebar_section_telephony_' + $ctrl.getServiceType(service) }}">
-                                    </span>
-                                    <span data-ng-bind="$ctrl.getServiceDisplayedName(service)"></span>
-                                </ui-select-choices>
-                            </ui-select>
-                        </div> <!-- END OF VOICEMAIL -->
+                            <span class="block"
+                                  data-translate="telephony_number_feature_ovh_pabx_step_rule_voicemail_no_line"
+                                  data-ng-if="!$ctrl.rule.actionParam">
+                            </span>
+                            <span class="block"
+                                  data-ng-if="$ctrl.rule.actionParam"
+                                  data-ng-bind="$ctrl.getServiceDisplayedName($ctrl.rule.actionParamInfos)">
+                            </span>
+                            <div class="chevron-right">
+                                <div class="chevron-wrapper">
+                                    <i class="ovh-font ovh-font-arrow-right"></i>
+                                </div>
+                            </div>
+                        </button>  <!-- END OF VOICEMAIL -->
 
                         <!-- BRIDGE -->
                         <div class="section-item form-group"
@@ -329,6 +320,10 @@
                     data-translate="telephony_number_feature_ovh_pabx_step_rule_playback_sound_to_play">
                 </h2>
 
+                <h2 data-ng-switch-when="voicemail"
+                    data-translate="telephony_number_feature_ovh_pabx_step_rule_voicemail_line_choice">
+                </h2>
+
                 <h2 data-ng-switch-when="ivr"
                     data-translate="telephony_number_feature_ovh_pabx_step_rule_ivr_menu_to_launch">
                 </h2>
@@ -376,6 +371,61 @@
                                                              data-selected-sound-id="$ctrl.rule.actionParam"
                                                              data-on-sound-change="$ctrl.onSoundSelected">
             </telephony-number-ovh-pabx-sound-popover-section> <!-- END OF SOUND CHOICE FOR PLAYBACK -->
+
+            <!-- VOICEMAIL -->
+            <section data-ng-switch-when="voicemail">
+                <!-- Search field -->
+                <div class="section-group">
+                    <div class="section-item form-group">
+                        <div class="stylish-input-group search-input-group">
+                            <label class="icon-container"
+                                   for="searchService">
+                                <i class="ovh-font ovh-font-search"></i>
+                            </label>
+                            <input type="text"
+                                   class="form-control"
+                                   name="searchService"
+                                   id="searchService"
+                                   data-ng-model="$ctrl.model.search"
+                                   data-translate-attr="{ placeholder: 'common_search' }" />
+                        </div>
+                    </div>
+                </div> <!-- End of Search field -->
+
+                <!-- Search result -->
+                <div class="section-group"
+                     data-ng-repeat="group in $ctrl.groups | filter:$ctrl.filterDisplayedGroup track by $index">
+                    <div class="group-title">
+                        <span data-ng-bind="group.getDisplayedName()"></span>
+                    </div>
+                    <label data-ng-repeat="service in $ctrl.filterGroupServices(group) | propsFilter: {serviceName: $ctrl.model.search, description: $ctrl.model.search} track by $index"
+                           class="section-item item-choice full-width pointer dtable">
+                        <div class="dtr">
+                            <div class="dtd vertical-middle radio-content">
+                                <flat-radio>
+                                    <input type="radio"
+                                           name="ruleNumber"
+                                           data-ng-model="$ctrl.rule.actionParam"
+                                           data-ng-value="service.serviceName"
+                                           data-ng-change="$ctrl.onVoicemailActionParamChange(service)" />
+                                </flat-radio>
+                            </div>
+                            <div class="dtd vertical-middle">
+                                <span class="block radio-label-main"
+                                      data-ng-bind="service.getDisplayedName()">
+                                </span>
+                                <span class="small normal">
+                                    <i data-translate="{{ 'telecom_sidebar_section_telephony_filter_' + $ctrl.getServiceType(service) }}"></i>
+                                    <i data-ng-if="service.serviceName !== service.description"
+                                       data-ng-bind="' - ' + service.serviceName">
+                                    </i>
+                                </span>
+                            </div>
+                        </div>
+                    </label>
+                </div> <!-- End of Search result -->
+            </section>
+            <!-- End of VOICEMAIL -->
 
             <!-- IVR CHOICE -->
             <section data-ng-switch-when="ivr">
