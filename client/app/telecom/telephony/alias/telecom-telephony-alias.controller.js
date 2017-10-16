@@ -18,7 +18,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasCtrl", function ($
     =============================== */
 
     self.hasConsumption = function () {
-        return ["redirect", "ddiCirpack", "conference", "svi"].indexOf(self.number.feature.featureType) === -1;
+        return ["redirect", "ddi", "conference", "svi"].indexOf(self.number.feature.featureType) === -1;
     };
 
     /* -----  End of HELPERS  ------ */
