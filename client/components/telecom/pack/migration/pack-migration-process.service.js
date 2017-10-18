@@ -94,7 +94,7 @@ angular.module("managerApp").service("PackMigrationProcess", function ($q, OvhAp
         if (migrationProcess.selectedOffer.needNewModem && migrationProcess.shipping.mode === "mondialRelay") {
             postParams.mondialRelayId = migrationProcess.shipping.relay.id;
         } else if (migrationProcess.selectedOffer.needNewModem && migrationProcess.shipping.mode === "transporter") {
-            postParams.nicShipping = migrationProcess.shipping.address.shippingId;
+            postParams.nicShipping = migrationProcess.shipping.address.id;
         }
 
         // sub service to delete post params
