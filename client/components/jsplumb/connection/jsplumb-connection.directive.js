@@ -19,7 +19,8 @@ angular.module("managerApp").directive("jsplumbConnection", function () {
             jsplumbCtrl.instance.setSuspendDrawing(true);
 
             connectionCtrl.connection = jsplumbCtrl.instance.connect(angular.extend({
-                uuids: [endpointCtrl.uuid, connectionCtrl.target]
+                uuids: [endpointCtrl.uuid, connectionCtrl.target],
+                deleteEndpointsOnDetach: false
             }, connectionCtrl.options || {}));
 
             jsplumbCtrl.instance.customRepaint();

@@ -123,9 +123,18 @@
                                 data-ng-value="offer.brand">
                         </option>
                     </select>
+                    <div class="alert alert-warning alert-xs top-space-m16"
+                         role="alert"
+                         data-ng-if="PhoneOrderCtrl.isSamePhone()">
+                        <i class="ovh-font ovh-font-filled-warning"
+                           aria-hidden="true">
+                        </i>
+                        <p data-translate="telephony_line_phone_change_same_current_phone"></p>
+                    </div>
                     <button type="button"
                             class="btn btn-primary pull-right top-space-m8"
                             data-translate="telephony_line_phone_order_order_next"
+                            data-ng-disabled="PhoneOrderCtrl.isSamePhone()"
                             data-ng-click="PhoneOrderCtrl.orderStep = PhoneOrderCtrl.order.phone ? 'shipping' : 'returnOnly'">
                     </button>
                     <div class="alert alert-info"

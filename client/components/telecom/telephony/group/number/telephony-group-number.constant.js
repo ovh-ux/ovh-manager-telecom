@@ -4,7 +4,7 @@
     angular.module("managerApp").constant("TELPHONY_NUMBER_JSPLUMB_INSTANCE_OPTIONS", {
         PaintStyle: {
             strokeWidth: 2,
-            stroke: "#354291"
+            stroke: "#122844"
         },
         HoverPaintStyle: {
             strokeWidth: 4

@@ -30,10 +30,6 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxMenuEntryCtrl", f
         return self.extensionCtrl && !self.extensionCtrl.extension.enabled;
     };
 
-    self.isActionsDisabled = function () {
-        return self.menuEntry.inEdition || self.isLoading() || (self.menuCtrl && self.menuCtrl.isActionsDisabled());
-    };
-
     self.getEntryAttribute = function (attr) {
         if (self.menuEntry.status === "MENUSUB_PENDING") {
             return _.get(self.menuEntry, attr);
@@ -74,7 +70,17 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxMenuEntryCtrl", f
         return self.menuEntry.remove().then(function () {
             self.menuCtrl.menu.removeEntry(self.menuEntry);
             self.menuEntry = null;
+            self.menuCtrl.checkForDisplayHelpers();
         });
+    };
+
+    self.onEntryOutsideClick = function () {
+        if (self.menuEntry.status !== "DELETE_PENDING") {
+            return;
+        }
+
+        // cancel delete confirm
+        self.menuEntry.status = "OK";
     };
 
     /* -----  End of EVENTS  ------*/
