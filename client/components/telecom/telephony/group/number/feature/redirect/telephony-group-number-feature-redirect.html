@@ -1,163 +1,158 @@
 <div class="telephony-number-redirect">
 
     <!-- REDIRECT TO BLOCK -->
-    <div class="anchor-container anchor-rectangle">
-        <div class="anchor-wrapper">
-            <div class="anchor">
-                <i class="ovh-font ovh-font-redirect"></i>
+    <div class="voip-plan__step">
+        <div class="voip-plan__step-content voip-plan__step-content--node">
+            <div class="voip-plan__step-icon voip-plan__step-icon--included">
+                <span class="ovh-font ovh-font-redirect" aria-hidden="true"></span>
             </div>
-            <div class="anchor-content">
-                <span class="content-label"
+            <div class="voip-plan__step-description">
+                <span class="voip-plan__step-name"
                       data-translate="telephony_number_feature_redirect_to">
                 </span>
             </div>
-            <div class="anchor-actions">
+            <div class="voip-plan__step-btn-container">
                 <button type="button"
-                        class="btn btn-link btn-feature-actions"
+                        class="voip-plan__step-btn voip-plan__step-btn--included"
                         data-translate-attr="{ title: 'telephony_number_feature_redirect_action_edit' }"
                         data-ng-click="$ctrl.numberCtrl.number.feature.startEdition()"
                         data-ng-disabled="$ctrl.numberCtrl.number.feature.inEdition">
-                    <i class="ovh-font ovh-font-editer"></i>
+                    <span class="ovh-font ovh-font-editer"></span>
                 </button>
             </div>
         </div>
     </div> <!-- REDIRECT TO BLOCK -->
 
     <!-- FEATURE IS LOADING -->
-    <div class="anchor-container anchor-loading anchor-point-x2"
+    <div class="voip-plan__step"
          data-ng-if="$ctrl.numberCtrl.loading.feature || $ctrl.numberCtrl.loading.save">
-        <div class="anchor"
+        <div class="voip-plan__step-icon voip-plan__step-icon--basic"
              data-jsplumb-endpoint
              data-jsplumb-endpoint-uuid="redirect-loading">
-            <i class="fa fa-spinner fa-pulse"
+            <span class="fa fa-spinner fa-pulse"
                data-jsplumb-connection
-               data-jsplumb-connection-target="incoming-call-{{ $ctrl.numberCtrl.number.serviceName }}">
-            </i>
+               data-jsplumb-connection-target="incoming-call-{{ $ctrl.numberCtrl.number.serviceName }}"
+               aria-hidden="true">
+           </span>
         </div>
-        <div class="anchor-content service-presentation">
-            <span class="service-label"
+        <div class="voip-plan__step-description">
+            <span class="voip-plan__step-info"
                   data-translate="{{ $ctrl.numberCtrl.loading.save ? 'telephony_number_save_doing' : 'loading' }}">
             </span>
         </div>
     </div> <!-- FEATURE IS LOADING -->
 
     <!-- NOT IN EDITION -->
-    <div class="anchor-container anchor-point-x2"
+    <div class="voip-plan__step"
          data-ng-if="!$ctrl.numberCtrl.number.feature.inEdition && !$ctrl.numberCtrl.loading.feature && !$ctrl.numberCtrl.loading.save"
          data-ng-init="$ctrl.onFeatureStopEdit()"
          data-ng-class="{ disabled: !$ctrl.destinationService }">
-        <div class="anchor"
+        <div class="voip-plan__step-icon voip-plan__step-icon--basic"
              data-jsplumb-endpoint
              data-jsplumb-endpoint-uuid="redirectTo-service-{{ $ctrl.numberCtrl.number.serviceName }}">
-            <i class="ovh-font ovh-font-phone"
+            <span class="ovh-font ovh-font-phone"
                data-jsplumb-connection
-               data-jsplumb-connection-target="incoming-call-{{ $ctrl.numberCtrl.number.serviceName }}">
-            </i>
+               data-jsplumb-connection-target="incoming-call-{{ $ctrl.numberCtrl.number.serviceName }}"
+               aria-hidden="true">
+           </span>
         </div>
-        <div class="anchor-content service-presentation"
+        <div class="voip-plan__step-description"
              data-ng-if="$ctrl.destinationService">
-            <span class="service-label"
+            <span class="voip-plan__step-name"
                   data-ng-bind="$ctrl.destinationService.getDisplayedName()">
             </span>
-            <span class="service-number"
+            <span class="voip-plan__step-info"
                   data-ng-bind="$ctrl.destinationService.serviceName | phoneNumber">
             </span>
         </div>
-        <div class="anchor-content service-presentation"
+        <div class="voip-plan__step-description"
              data-ng-if="!$ctrl.destinationService">
-            <span class="service-label"
+            <span class="voip-plan__step-name"
                   data-translate="telephony_number_feature_redirect_not_set">
             </span>
-            <span class="service-number"
+            <span class="voip-plan__step-info"
                   data-translate="telephony_number_feature_redirect_not_set_explain">
             </span>
         </div>
     </div> <!-- NOT IN EDITION -->
 
     <!-- IN EDITION -->
-    <div class="redirect-in-edition"
+    <div class="voip-plan__subpart bottom-space-p32"
          data-ng-if="$ctrl.numberCtrl.number.feature.inEdition && !$ctrl.numberCtrl.loading.feature && !$ctrl.numberCtrl.loading.save"
          data-ng-init="$ctrl.onFeatureStartEdit()">
         <!-- CHOOSE INTO AVAILABLE SERVICES -->
-        <div class="anchor-group-container"
+        <div class="voip-plan__step"
              data-ng-repeat="service in $ctrl.availableServices track by service.serviceName">
             <!-- RADIO -->
-            <div class="anchor-container anchor-radio">
-                <div class="anchor">
-                    <input type="radio"
-                           data-ng-attr-id="radio-redirectTo-{{ service.serviceName }}"
-                           name="redirectTo"
-                           data-ng-model="$ctrl.numberCtrl.number.feature.destination"
-                           data-ng-change="$ctrl.onDestinationChange()"
-                           data-ng-value="'{{ service.serviceName }}'" />
-                    <label for="radio-redirectTo-{{ service.serviceName }}"></label>
-                </div>
-            </div> <!-- RADIO -->
+            <div data-jsplumb-endpoint="$ctrl.numberCtrl.jsPlumbEndpointsOptions.topLeft"
+                 data-jsplumb-endpoint-uuid="anchor-service-{{ service.serviceName }}">
+                 <input class="voip-plan__step-radio"
+                        type="radio"
+                        data-ng-attr-id="radio-redirectTo-{{ service.serviceName }}"
+                        name="redirectTo"
+                        data-ng-model="$ctrl.numberCtrl.number.feature.destination"
+                        data-ng-change="$ctrl.onDestinationChange()"
+                        data-ng-value="'{{ service.serviceName }}'"
+                        data-jsplumb-connection
+                        data-jsplumb-connection-target="incoming-call-{{ $ctrl.numberCtrl.number.serviceName }}" />
+            </div>
+
+            <!-- RADIO -->
             <!-- SERVICE DISPLAY -->
-            <div class="anchor-container anchor-point-x2"
+            <label class="voip-plan__step-content voip-plan__step-content--after-grip"
+                 for="radio-redirectTo-{{ service.serviceName }}"
                  data-ng-class="{ disabled: $ctrl.numberCtrl.number.feature.destination !== service.serviceName }">
-                <label class="anchor pointer"
-                       data-ng-attr-for="radio-redirectTo-{{ service.serviceName }}"
-                       data-jsplumb-endpoint="$ctrl.numberCtrl.jsPlumbEndpointsOptions.topLeft"
-                       data-jsplumb-endpoint-uuid="anchor-service-{{ service.serviceName }}">
-                    <i class="ovh-font ovh-font-phone"
-                       data-jsplumb-connection
-                       data-jsplumb-connection-target="incoming-call-{{ $ctrl.numberCtrl.number.serviceName }}">
-                    </i>
-                </label>
-                <label class="anchor-content service-presentation pointer normal"
+                <div class="voip-plan__step-icon voip-plan__step-icon--basic pointer"
+                     data-ng-attr-for="radio-redirectTo-{{ service.serviceName }}">
+                     <span class="ovh-font ovh-font-phone" aria-hidden="true"></span>
+               </div>
+                <div class="voip-plan__step-description pointer"
                        data-ng-attr-for="radio-redirectTo-{{ service.serviceName }}">
-                    <span class="service-label"
+                    <span class="voip-plan__step-name"
                           data-ng-bind="service.getDisplayedName()">
                     </span>
-                    <span class="service-number"
+                    <span class="voip-plan__step-info"
                           data-ng-bind="service.serviceName | phoneNumber">
                     </span>
-                </label>
-            </div> <!-- SERVICE DISPLAY -->
+                </div>
+            </label> <!-- SERVICE DISPLAY -->
         </div> <!-- CHOOSE INTO AVAILABLE SERVICES -->
 
         <!-- CHOOSE IN OTHER GROUPS -->
-        <div class="anchor-group-container"
+        <div class="voip-plan__step"
              data-ng-if="$ctrl.displayHelpers.hasOtherGroups">
             <!-- RADIO -->
-            <div class="anchor-container anchor-radio">
-                <div class="anchor">
-                    <input type="radio"
-                           id="anchor-radio-other-service"
-                           name="redirectTo"
-                           data-ng-model="$ctrl.numberCtrl.number.feature.destination"
-                           data-ng-change="$ctrl.onDestinationChange()"
-                           value="pending" />
-                    <label for="anchor-radio-other-service"></label>
-                </div>
-            </div> <!-- RADIO -->
+            <div data-jsplumb-endpoint="$ctrl.numberCtrl.jsPlumbEndpointsOptions.topLeft"
+                 data-jsplumb-endpoint-uuid="anchor-other-service">
+                 <input type="radio"
+                        class="voip-plan__step-radio"
+                        id="anchor-radio-other-service"
+                        name="redirectTo"
+                        data-ng-model="$ctrl.numberCtrl.number.feature.destination"
+                        data-ng-change="$ctrl.onDestinationChange()"
+                        value="pending"
+                        data-jsplumb-connection
+                        data-jsplumb-connection-target="incoming-call-{{ $ctrl.numberCtrl.number.serviceName }}"/>
+            </div>
+             <!-- RADIO -->
             <!-- SERVICE DISPLAY -->
-            <div class="anchor-container anchor-point-x2"
-                 data-ng-class="{ disabled: $ctrl.numberCtrl.number.feature.destination !== 'pending' }">
-                <label class="anchor pointer"
-                       for="anchor-radio-other-service"
-                       data-jsplumb-endpoint="$ctrl.numberCtrl.jsPlumbEndpointsOptions.topLeft"
-                       data-jsplumb-endpoint-uuid="anchor-other-service">
-                    <i class="anchor-inner"
-                       data-voip-service-choice-popover="$ctrl.displayHelpers.serviceChoicePopoverOptions"
-                       data-available-types="$ctrl.displayHelpers.availableTypes"
-                       data-hidden-groups="$ctrl.displayHelpers.hiddenGroups"
-                       data-on-choice-validated="$ctrl.manageValidateChoice"
-                       data-on-choice-cancel="$ctrl.manageCancelChoice">
-                    </i>
-
-                    <i data-jsplumb-connection
-                       data-jsplumb-connection-target="incoming-call-{{ $ctrl.numberCtrl.number.serviceName }}">
-                    </i>
-                </label>
-                <label class="anchor-content service-presentation pointer normal"
-                       for="anchor-radio-other-service">
-                    <span class="service-label"
-                          data-translate="telephony_number_feature_redirect_to_another_group">
-                    </span>
-                </label>
-            </div> <!-- SERVICE DISPLAY -->
+            <label class="voip-plan__step-content voip-plan__step-content--after-grip"
+                   for="anchor-radio-other-service"
+                   data-ng-class="{ disabled: $ctrl.numberCtrl.number.feature.destination !== 'pending' }">
+                <div class="voip-plan__step-icon voip-plan__step-icon--basic"
+                     data-voip-service-choice-popover="$ctrl.displayHelpers.serviceChoicePopoverOptions"
+                     data-available-types="$ctrl.displayHelpers.availableTypes"
+                     data-hidden-groups="$ctrl.displayHelpers.hiddenGroups"
+                     data-on-choice-validated="$ctrl.manageValidateChoice"
+                     data-on-choice-cancel="$ctrl.manageCancelChoice">
+                     <span class="ovh-font ovh-font-phoneAlt" aria-hidden="true"></span>
+                </div>
+                <div class="voip-plan__step-description pointer">
+                     <span class="voip-plan__step-info"
+                           data-translate="telephony_number_feature_redirect_to_another_group">
+                     </span>
+                </div>
+            </label> <!-- SERVICE DISPLAY -->
         </div> <!-- CHOOSE IN OTHER GROUPS -->
     </div> <!-- IN EDITION -->
 

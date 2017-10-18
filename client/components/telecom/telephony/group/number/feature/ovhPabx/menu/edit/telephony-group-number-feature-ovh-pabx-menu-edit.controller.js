@@ -90,6 +90,7 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxMenuEditCtrl", fu
      */
     self.onCancelBtnClick = function () {
         self.menuCtrl.popoverStatus.isOpen = false;
+        self.menuCtrl.popoverStatus.move = false;
         self.menu.stopEdition(true);
 
         if (self.menu.status === "DRAFT") {
@@ -113,6 +114,9 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxMenuEditCtrl", fu
                 self.menuCtrl.dialplanRule.stopEdition(true);
                 self.menuCtrl.dialplanRule.ivrMenu = null;
             }
+
+            // check for collapsing or not the rules into extension component view
+            self.menuCtrl.checkForDisplayHelpers();
         }
     };
 

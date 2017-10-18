@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("telephonyNumberOvhPabxDialplanExtensionRuleEditCtrl", function ($scope, $q, $translate, TelephonyMediator, Toast) {
+angular.module("managerApp").controller("telephonyNumberOvhPabxDialplanExtensionRuleEditCtrl", function ($scope, $q, $filter, $translate, TelephonyMediator, Toast) {
     "use strict";
 
     var self = this;
@@ -11,11 +11,15 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxDialplanExtension
         collapse: false
     };
 
+    self.model = {
+        search: ""
+    };
+
     self.parentCtrl = null;
     self.ovhPabx = null;
     self.rule = null;
     self.availableActions = null;
-    self.services = [];
+    self.groups = null;
 
     /*= ==============================
     =            HELPERS            =
@@ -79,6 +83,19 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxDialplanExtension
         }), true);
     };
 
+    /* ----------  Voicemail selection  ---------- */
+
+    self.filterGroupServices = function (group) {
+        return [].concat(group.lines, group.fax);
+    };
+
+    self.filterDisplayedGroup = function (group) {
+        return $filter("propsFilter")(self.filterGroupServices(group), {
+            serviceName: self.model.search,
+            description: self.model.search
+        }).length;
+    };
+
     /* -----  End of HELPERS  ------*/
 
     /*= =============================
@@ -110,8 +127,14 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxDialplanExtension
 
     /* ----------  VOICEMAIL ACTIONS  ----------*/
 
+    self.onVoicemailActionParamButtonClick = function () {
+        self.parentCtrl.popoverStatus.rightPage = "voicemail";
+        self.parentCtrl.popoverStatus.move = true;
+    };
+
     self.onVoicemailActionParamChange = function (service) {
-        self.rule.actionParam = service.serviceName;
+        self.parentCtrl.popoverStatus.move = false;
+        self.rule.actionParamInfos = service;
     };
 
     /* ----------  IVR ACTIONS  ----------*/
@@ -191,9 +214,13 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxDialplanExtension
 
     self.onCancelBtnClick = function () {
         self.parentCtrl.popoverStatus.isOpen = false;
+        self.parentCtrl.popoverStatus.move = false;
 
         if (self.rule.status === "DRAFT") {
             self.parentCtrl.extensionCtrl.extension.removeRule(self.rule);
+
+            // check for collapsing or not the rules into extension component view
+            self.parentCtrl.extensionCtrl.checkForDisplayHelpers();
         }
     };
 
@@ -220,11 +247,6 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxDialplanExtension
         // start rule edition
         self.rule.startEdition();
 
-        // get available services through billing accounts
-        angular.forEach(TelephonyMediator.groups, function (group) {
-            self.services = self.services.concat(group.fax, group.lines);
-        });
-
         // get available actions
         return TelephonyMediator.getApiModelEnum("telephony.OvhPabxDialplanExtensionRuleActionEnum").then(function (enumValues) {
             self.availableActions = _.chain(enumValues).filter(function (enumVal) {
@@ -241,6 +263,14 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxDialplanExtension
                     label: $translate.instant("telephony_number_feature_ovh_pabx_step_rule_" + _.snakeCase(enumVal)),
                     explain: $translate.instant("telephony_number_feature_ovh_pabx_step_rule_" + _.snakeCase(enumVal) + "_explain")
                 };
+            }).value();
+
+            // sort and filter groups and reject groups that don't have any service
+            // used for voicemail selection
+            self.groups = _.chain(TelephonyMediator.groups).filter(function (group) {
+                return group.getAllServices().length > 0;
+            }).sortBy(function (group) {
+                return group.getDisplayedName();
             }).value();
         }).finally(function () {
             self.loading.init = false;

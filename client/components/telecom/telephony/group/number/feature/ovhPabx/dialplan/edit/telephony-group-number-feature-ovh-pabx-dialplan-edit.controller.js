@@ -42,6 +42,7 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxDialplanEditCtrl"
     self.onCancelBtnClick = function () {
         // close popover
         self.dialplanCtrl.popoverStatus.isOpen = false;
+        self.dialplanCtrl.popoverStatus.move = false;
 
         // if draft => remove from ovh pabx dialplans list and refresh current displayed dialplan
         if (self.dialplan.status === "DRAFT") {

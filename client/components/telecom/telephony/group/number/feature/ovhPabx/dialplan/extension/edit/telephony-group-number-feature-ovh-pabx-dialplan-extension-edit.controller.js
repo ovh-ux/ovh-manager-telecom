@@ -357,6 +357,7 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxDialplanExtension
 
     self.onCancelBtnClick = function () {
         self.parentCtrl.popoverStatus.isOpen = false;
+        self.parentCtrl.popoverStatus.move = false;
 
         self.extension.stopEdition(true);
     };

@@ -3,7 +3,7 @@
       data-ng-submit="$ctrl.saveNumber()"
       novalidate>
 
-    <div class="telephony-number-plan voip-metro-plan"
+    <div class="voip-plan"
          data-ng-if="!$ctrl.loading.init"
          data-jsplumb="$ctrl.jsPlumbInstanceOptions"
          data-jsplumb-instance="$ctrl.jsplumbInstance">
@@ -12,49 +12,44 @@
         <div class="number-header">
 
             <!-- INCOMING CALL -->
-            <div class="anchor-container anchor-point top-space-m0">
-                <div class="anchor"
+            <div class="voip-plan__step voip-plan__step--point">
+                <div class="voip-plan__start"
                      data-jsplumb-endpoint
                      data-jsplumb-endpoint-uuid="incoming-call-{{ $ctrl.number.serviceName }}">
                 </div>
-                <div class="anchor-content">
-                    <span data-translate="telephony_number_incoming_calls"></span>
-                </div>
+                <h2 class="voip-plan__title" data-translate="telephony_number_incoming_calls"></h2>
             </div> <!-- INCOMING CALL -->
 
             <!-- NUMBER DISPLAY -->
-            <div class="anchor-container anchor-point-x2 anchor-number-container">
-                <div class="anchor">
-                    <i class="ovh-font ovh-font-hashtag"></i>
+            <div class="voip-plan__step voip-plan__step--point">
+                <div class="voip-plan__step-icon voip-plan__step-icon--basic">
+                    <span class="ovh-font ovh-font-hashtag" aria-hidden="true"></span>
                 </div>
-                <div class="anchor-content service-presentation">
-                    <span class="service-label"
+                <div class="voip-plan__step-description">
+                    <span class="voip-plan__step-name voip-plan__step-name--has-info"
                           data-ng-bind="$ctrl.number.getDisplayedName()">
                     </span>
-                    <span class="service-number"
+                    <span class="voip-plan__step-info"
                           data-ng-bind="$ctrl.number.serviceName | phoneNumber">
                     </span>
                 </div>
                 <!-- ONLY ONE ACTION => CHANGE FEATURE TYPE -->
-                <div class="anchor-actions"
-                     data-ng-if="$ctrl.featureActions.length === 1">
-                    <a class="btn-actions"
-                       data-ui-sref="{{ $ctrl.featureActions[0].sref }}"
-                       data-ng-attr-title="{{ $ctrl.featureActions[0].text }}">
-                        <i class="ovh-font ovh-font-editer"></i>
-                    </a>
-                </div> <!-- ONLY ONE ACTION => CHANGE FEATURE TYPE -->
+                <a data-ng-if="$ctrl.featureActions.length === 1"
+                   class="voip-plan__step-btn voip-plan__step-btn--primary"
+                   data-ui-sref="{{ $ctrl.featureActions[0].sref }}"
+                   data-ng-attr-title="{{ $ctrl.featureActions[0].text }}">
+                    <span class="ovh-font ovh-font-editer" aria-hidden="true"></span>
+                </a> <!-- ONLY ONE ACTION => CHANGE FEATURE TYPE -->
 
                 <!-- MORE ACTIONS -->
-                <div class="anchor-actions"
-                     data-ng-if="$ctrl.featureActions.length > 1"
+                <div data-ng-if="$ctrl.featureActions.length > 1"
                      data-uib-dropdown>
                     <button type="button"
                             id="number-actions"
-                            class="btn-actions"
+                            class="voip-plan__step-btn voip-plan__step-btn--primary"
                             data-ng-disabled="$ctrl.number.inEdition"
                             data-uib-dropdown-toggle>
-                        <i class="ovh-font ovh-font-dots vertical-top"></i>
+                        <span class="ovh-font ovh-font-dots vertical-top" aria-hidden="true"></span>
                     </button>
                     <ul class="dropdown-menu ovh-dropdown-menu"
                         role="menu"
