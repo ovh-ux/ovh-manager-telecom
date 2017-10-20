@@ -34,6 +34,12 @@ angular.module("managerApp").component("linePhoneConfiguration", {
             }
         };
 
+        self.getPlaceholderTranslation = function (configName) {
+            var trKey = ["telephony_line_phone_configuration_config", _.snakeCase(configName)].join("_");
+            var translated = $translate.instant(trKey);
+            return translated !== trKey ? translated : configName;
+        };
+
         /* -----  End of HELPERS  ------*/
 
         /*= =============================
