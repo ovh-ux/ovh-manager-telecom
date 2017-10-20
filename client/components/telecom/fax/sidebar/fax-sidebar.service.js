@@ -47,7 +47,7 @@ angular.module("managerApp").service("FaxSidebar", function ($translate, Sidebar
             title: $translate.instant("telecom_sidebar_section_fax"),
             error: $translate.instant("telecom_sidebar_load_error"),
             category: "freefax",
-            icon: "print",
+            icon: "ovh-font ovh-font-print",
             allowSubItems: true,
             onLoad: self.loadFaxMainSection,
             loadOnState: "telecom.freefax"

@@ -99,7 +99,7 @@ angular.module("managerApp").service("TelephonySidebar", function ($q, $translat
             error: $translate.instant("telecom_sidebar_load_error"),
             id: "telecom-telephony-section",
             category: "telephony",
-            icon: "phone",
+            icon: "ovh-font ovh-font-phone",
             allowSubItems: true,
             onLoad: self.initTelephonySubsection,
             loadOnState: "telecom.telephony",
