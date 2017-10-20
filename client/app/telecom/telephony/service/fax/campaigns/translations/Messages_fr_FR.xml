@@ -37,7 +37,7 @@
    <translation id="telephony_service_fax_campaigns_add_campaign_label_name" qtlid="391488">Nom de la campagne</translation>
    <translation id="telephony_service_fax_campaigns_add_campaign_name_error_required" qtlid="391501">Le champ "Nom de campagne" est obligatoire.</translation>
    <translation id="telephony_service_fax_campaigns_add_campaign_name_error_maxlength" qtlid="391514">Le nom de la campagne doit faire moins de 24 caractères.</translation>
-   <translation id="telephony_service_fax_campaigns_add_campaign_label_document" qtlid="391527">Document à faxer</translation>
+   <translation id="telephony_service_fax_campaigns_add_campaign_label_document">Document à faxer (format pdf)</translation>
    <translation id="telephony_service_fax_campaigns_add_campaign_label_file" qtlid="391540">Fichier…</translation>
    <translation id="telephony_service_fax_campaigns_add_campaign_file_invalid" qtlid="337845">Format de fichier non supporté.</translation>
    <translation id="telephony_service_fax_campaigns_add_campaign_label_quality" qtlid="391553">Qualité d’envoi</translation>
@@ -54,11 +54,7 @@
    <translation id="telephony_service_fax_campaigns_add_campaign_send_date_error_date" qtlid="391618">La date renseignée n’est pas valide.</translation>
    <translation id="telephony_service_fax_campaigns_add_campaign_label_send_date_time" qtlid="391631">Heure d’envoi</translation>
    <translation id="telephony_service_fax_campaigns_add_campaign_label_recipients_type_list" qtlid="391644">Entrer les destinataires manuellement</translation>
-   <translation id="telephony_service_fax_campaigns_add_campaign_label_recipients_type_document" qtlid="391657">URL vers un fichier de destinataires</translation>
-   <translation id="telephony_service_fax_campaigns_add_campaign_placeholder_recipients_doc_id" qtlid="339795">Lien (au format http:// ou https://)</translation>
-   <translation id="telephony_service_fax_campaigns_add_campaign_recipients_doc_id_error_required" qtlid="391670">Le champ "URL vers un fichier de destinataires" est obligatoire.</translation>
-   <translation id="telephony_service_fax_campaigns_add_campaign_recipients_doc_id_error_pattern" qtlid="339314">Le lien doit commencer par http:// ou https://.</translation>
-   <translation id="telephony_service_fax_campaigns_add_campaign_recipients_doc_id_error_url" qtlid="339327">L’URL renseignée n’est pas valide.</translation>
+   <translation id="telephony_service_fax_campaigns_add_campaign_label_recipients_type_document">Fichier de destinataires (format txt)</translation>
    <translation id="telephony_service_fax_campaigns_add_campaign_label_recipients_list" qtlid="68981">Destinataires</translation>
    <translation id="telephony_service_fax_campaigns_add_campaign_palceholder_recipients_list_first" qtlid="391683">Liste de numéros séparée par une virgule, point-virgule ou retour à la ligne.</translation>
    <translation id="telephony_service_fax_campaigns_add_campaign_palceholder_recipients_list_second" qtlid="391696">Composition des numéros : 6 à 17 chiffres pouvant commencer par un +</translation>

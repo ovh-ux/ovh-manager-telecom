@@ -78,7 +78,7 @@ angular.module("managerApp").controller("TelecomSmsOrderCtrl", class TelecomSmsO
             this.loading.init = false;
         });
 
-        this.getDebouncedPrices = this.debounce(this.getPrices, 500, false);
+        this.getDebouncedPrices = this.debounce(() => this.getPrices(), 500, false);
     }
 
     /**

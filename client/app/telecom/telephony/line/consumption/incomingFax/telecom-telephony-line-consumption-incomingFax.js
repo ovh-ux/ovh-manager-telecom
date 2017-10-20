@@ -6,7 +6,12 @@ angular.module("managerApp").config(function ($stateProvider) {
             "@lineView": {
                 templateUrl: "app/telecom/telephony/line/consumption/incomingFax/telecom-telephony-line-consumption-incomingFax.html",
                 controller: "TelecomTelephonyLineConsumptionIncomingFaxCtrl",
-                controllerAs: "IncomingFaxCtrl"
+                controllerAs: "$ctrl"
+            },
+            "@consumptionView": {
+                templateUrl: "app/telecom/telephony/service/consumption/incomingFax/telecom-telephony-service-consumption-incomingFax.html",
+                controller: "TelecomTelephonyServiceConsumptionIncomingFaxCtrl",
+                controllerAs: "$ctrl"
             }
         },
         translations: ["common"]

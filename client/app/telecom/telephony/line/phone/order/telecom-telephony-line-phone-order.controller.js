@@ -285,5 +285,9 @@ angular.module("managerApp").controller("TelecomTelephonyLinePhoneOrderCtrl", fu
         return [name, price].join(" ");
     };
 
+    self.isSamePhone = function () {
+        return self.phone && self.order.phone && ("phone." + self.order.phone) === self.phone.brand;
+    };
+
     init();
 });

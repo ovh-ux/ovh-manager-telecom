@@ -1,6 +1,5 @@
 angular.module("managerApp").config(function ($stateProvider) {
     "use strict";
-
     $stateProvider.state("telecom.telephony.line.fax", {
         url: "/fax",
         views: {
@@ -10,6 +9,9 @@ angular.module("managerApp").config(function ($stateProvider) {
                 controllerAs: "LineFaxCtrl"
             }
         },
-        translations: ["common", "telecom/telephony/line/fax"]
+        translations: [
+            "common",
+            "telecom/telephony/line/fax"
+        ]
     });
 });

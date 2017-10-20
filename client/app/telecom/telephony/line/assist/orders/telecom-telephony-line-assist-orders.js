@@ -4,11 +4,11 @@ angular.module("managerApp").config(function ($stateProvider) {
         url: "/orders",
         views: {
             "@lineView": {
-                templateUrl: "app/telecom/telephony/line/assist/orders/telecom-telephony-line-assist-orders.html",
-                controller: "TelecomTelephonyLineAssistOrdersCtrl",
+                templateUrl: "app/telecom/telephony/service/assist/orders/telecom-telephony-service-assist-orders.html",
+                controller: "TelecomTelephonyServiceAssistOrdersCtrl",
                 controllerAs: "OrdersCtrl"
             }
         },
-        translations: ["common", "telecom/telephony/line/assist/orders"]
+        translations: ["common", "telecom/telephony/service/assist/orders"]
     });
 });
