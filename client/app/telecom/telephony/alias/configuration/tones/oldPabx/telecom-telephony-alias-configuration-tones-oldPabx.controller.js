@@ -18,12 +18,6 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationTones
         tones: [
             "None",
             "Custom sound"
-        ],
-        onHold: [
-            "None",
-            "Predefined 1",
-            "Predefined 2",
-            "Custom sound"
         ]
     };
 
@@ -64,7 +58,8 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationTones
     };
 
     self.hasChanges = function () {
-        return !angular.equals(self.tones, _.pick(self.formOptions, ["ringback", "onHold", "endCall"]));
+        var attrs = ["ringback", "onHold", "endCall"];
+        return !angular.equals(_.pick(self.tones, attrs), _.pick(self.formOptions, attrs));
     };
 
     self.isFormValid = function () {
@@ -120,7 +115,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationTones
         self.loaders.save = true;
 
         ["ringback", "onHold", "endCall"].forEach(function (toneType) {
-            if (_.get(self.formOptions, toneType) === "Custom sound") {
+            if (_.get(self.formOptions, toneType) === "Custom sound" && self.formOptions[toneType + "Custom"]) {
                 savePromises.push(uploadFile(toneType));
             } else {
                 _.set(otherTypes, toneType, _.get(self.formOptions, toneType));
@@ -138,6 +133,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationTones
         return $q.all(savePromises).then(function () {
             self.tones = angular.copy(_.pick(self.formOptions, ["ringback", "onHold", "endCall"]));
             Toast.success($translate.instant("telephony_alias_configuration_tones_old_pabx_save_success"));
+            self.$onInit();
         }).catch(function (error) {
             Toast.error([$translate.instant("telephony_alias_configuration_tones_old_pabx_save_error"), _.get(error, "data.message")].join(" "));
             return $q.reject(error);
