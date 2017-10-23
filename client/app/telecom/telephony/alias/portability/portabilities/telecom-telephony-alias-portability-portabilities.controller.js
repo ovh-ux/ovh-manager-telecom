@@ -69,7 +69,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasPortabilitiesCtrl"
         return OvhApiTelephony.Portability().Lexi().cancel({
             billingAccount: $stateParams.billingAccount,
             id: portability.id
-        }).$promise.then(function () {
+        }, {}).$promise.then(function () {
             Toast.success($translate.instant("telephony_alias_portabilities_cancel_success"));
             return init();
         }).catch(function (error) {
