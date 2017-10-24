@@ -5,6 +5,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationTones
 
     var self = this;
     var apiService;
+    var attrs;
 
     self.loaders = {
         init: false,
@@ -41,6 +42,10 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationTones
         });
     }
 
+    function hasAttrChange (attr) {
+        return !angular.equals(_.get(self.tones, attr), _.get(self.formOptions, attr));
+    }
+
     self.checkValidSound = function (file, toneType) {
         // reset errors for tone type
         _.set(self.formErrors, toneType, {});
@@ -57,14 +62,9 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationTones
         return !self.formErrors[toneType].format && !self.formErrors[toneType].size;
     };
 
-    self.hasChanges = function () {
-        var attrs = ["ringback", "onHold", "endCall"];
-        return !angular.equals(_.pick(self.tones, attrs), _.pick(self.formOptions, attrs));
-    };
-
     self.isFormValid = function () {
-        return _.some(["ringback", "onHold", "endCall"], function (tone) {
-            return self.formOptions[tone] === "Custom sound" && self.formOptions[tone + "Custom"];
+        return _.some(attrs, function (tone) {
+            return (hasAttrChange(tone) && self.formOptions[tone] !== "Custom sound") || (self.formOptions[tone] === "Custom sound" && hasAttrChange(tone) && self.formOptions[tone + "Custom"]);
         });
     };
 
@@ -114,10 +114,10 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationTones
 
         self.loaders.save = true;
 
-        ["ringback", "onHold", "endCall"].forEach(function (toneType) {
+        attrs.forEach(function (toneType) {
             if (_.get(self.formOptions, toneType) === "Custom sound" && self.formOptions[toneType + "Custom"]) {
                 savePromises.push(uploadFile(toneType));
-            } else {
+            } else if (_.get(self.formOptions, toneType) !== "Custom sound") {
                 _.set(otherTypes, toneType, _.get(self.formOptions, toneType));
             }
         });
@@ -131,7 +131,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationTones
         }
 
         return $q.all(savePromises).then(function () {
-            self.tones = angular.copy(_.pick(self.formOptions, ["ringback", "onHold", "endCall"]));
+            self.tones = angular.copy(_.pick(self.formOptions, attrs));
             Toast.success($translate.instant("telephony_alias_configuration_tones_old_pabx_save_success"));
             self.$onInit();
         }).catch(function (error) {
@@ -158,6 +158,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationTones
         return TelephonyMediator.getGroup($stateParams.billingAccount).then(function (group) {
             self.number = group.getNumber($stateParams.serviceName);
             apiService = self.number.feature.featureType === "easyPabx" ? OvhApiTelephonyEasyPabx : OvhApiTelephonyMiniPabx;
+            attrs = self.number.feature.featureType === "easyPabx" ? ["ringback", "endCall"] : ["ringback", "onHold", "endCall"];
 
             return fetchTones().then(function (result) {
                 self.tones = result;
