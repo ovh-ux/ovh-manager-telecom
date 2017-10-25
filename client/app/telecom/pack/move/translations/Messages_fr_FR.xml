@@ -27,6 +27,8 @@
    <translation id="pack_move_eligibility_unbundling_createNeighbour" qtlid="312727">Création de voisinage</translation>
    <translation id="pack_move_eligibility_unbundling_creation" qtlid="312740">Création de ligne</translation>
    <translation id="pack_move_eligibility_unbundling_partial" qtlid="79350">Dégroupage partiel</translation>
+   <translation id="pack_move_eligibility_line_status_active">Ligne active</translation>
+   <translation id="pack_move_eligibility_line_status_inactive">Ligne inactive</translation>
    <translation id="pack_move_eligibility_provider" qtlid="312753">Fournisseur: {{provider}}</translation>
    <translation id="pack_move_keepLine" qtlid="312766">Je souhaite conserver le numéro :</translation>
    <translation id="pack_move_portLine">Je souhaite conserver mon numéro :</translation>

@@ -46,7 +46,7 @@ angular.module("managerApp").service("OverTheBoxSidebar", function ($q, $transla
             error: $translate.instant("telecom_sidebar_load_error"),
             id: "telecom-otb-section",
             category: "overTheBox",
-            icon: "overTheBox",
+            icon: "ovh-font ovh-font-overTheBox",
             allowSubItems: true,
             onLoad: self.loadOtbMainSection,
             loadOnState: "telecom.overTheBox"
