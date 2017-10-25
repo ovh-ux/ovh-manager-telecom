@@ -41,6 +41,16 @@ angular.module("managerApp").service("PackSidebar", function ($q, $translate, Si
             });
 
             getPackStatus(pack).then(function (packStatus) {
+                var packIconClass = ["ovh-font"];
+                if (packStatus === "error") {
+                    packIconClass.push("ovh-font-failure", "text-danger");
+                } else if (packStatus === "warning") {
+                    packIconClass.push("ovh-font-warning", "text-warning");
+                } else if (packStatus === "inCreation") {
+                    packIconClass.push("ovh-font-inprogress");
+                } else {
+                    packIconClass.push("ovh-font-success");
+                }
 
                 var packSection = SidebarMenu.addMenuItem({
                     id: pack.packName,
@@ -51,14 +61,16 @@ angular.module("managerApp").service("PackSidebar", function ($q, $translate, Si
                         packName: pack.packName
                     },
                     allowSubItems: hasLine,
-                    icon: packStatus === "error" ? "failure" : packStatus === "warning" ? "warning" : packStatus === "inCreation" ? "inprogress" : "success",
-                    iconClass: packStatus === "error" ? "text-danger" : packStatus === "warning" ? "text-warning" : null
+                    icon: packIconClass.join(" ")
                 }, self.mainSectionItem);
 
                 if (hasLine) {
                     // for each pack add line sub section
                     angular.forEach(pack.xdsl, function (xdsl) {
                         if (xdsl.line) {
+                            var accessIconClass = ["ovh-font"];
+                            accessIconClass = accessIconClass.concat(accessErrorStates.indexOf(xdsl.status) > -1 ? ["ovh-font-failure", "text-danger"] : ["ovh-font-success"]);
+
                             var elt = SidebarMenu.addMenuItem({
                                 id: xdsl.accessName,
                                 title: xdsl.description || xdsl.accessName,
@@ -70,8 +82,7 @@ angular.module("managerApp").service("PackSidebar", function ($q, $translate, Si
                                     number: xdsl.line.number
                                 },
                                 allowSubItems: false,
-                                icon: accessErrorStates.indexOf(xdsl.status) > -1 ? "failure" : "success",
-                                iconClass: accessErrorStates.indexOf(xdsl.status) > -1 ? "text-danger" : null
+                                icon: accessIconClass.join(" ")
                             }, packSection);
 
                             elt.addSearchKey(xdsl.line.number);
@@ -111,6 +122,9 @@ angular.module("managerApp").service("PackSidebar", function ($q, $translate, Si
         });
 
         angular.forEach(xdslList, function (xdsl) {
+            var xdslIconClass = ["ovh-font"];
+            xdslIconClass = xdslIconClass.concat(accessErrorStates.indexOf(xdsl.status) > -1 ? ["ovh-font-failure", "text-danger"] : ["ovh-font-success"]);
+
             var xdslSection = SidebarMenu.addMenuItem({
                 id: xdsl.accessName,
                 title: xdsl.description || xdsl.accessName,
@@ -121,12 +135,14 @@ angular.module("managerApp").service("PackSidebar", function ($q, $translate, Si
                     serviceName: xdsl.accessName
                 },
                 allowSubItems: xdsl.lines.length > 0,
-                icon: accessErrorStates.indexOf(xdsl.status) > -1 ? "failure" : "success",
-                iconClass: accessErrorStates.indexOf(xdsl.status) > -1 ? "text-danger" : null
+                icon: xdslIconClass.join(" ")
             }, self.mainSectionItem);
 
             // for each sdsl add line subsection
             angular.forEach(xdsl.lines, function (line) {
+                var xdslAccessIconClass = ["ovh-font"];
+                xdslAccessIconClass = xdslAccessIconClass.concat(accessErrorStates.indexOf(xdsl.status) > -1 ? ["ovh-font-failure", "text-danger"] : ["ovh-font-success"]);
+
                 var elt = SidebarMenu.addMenuItem({
                     id: line.number,
                     title: line.number,
@@ -137,8 +153,7 @@ angular.module("managerApp").service("PackSidebar", function ($q, $translate, Si
                         number: line.number
                     },
                     allowSubItems: false,
-                    icon: accessErrorStates.indexOf(xdsl.status) > -1 ? "failure" : "success",
-                    iconClass: accessErrorStates.indexOf(xdsl.status) > -1 ? "text-danger" : null
+                    icon: xdslAccessIconClass.join(" ")
                 }, xdslSection);
 
                 elt.addSearchKey(line.number);
@@ -202,7 +217,7 @@ angular.module("managerApp").service("PackSidebar", function ($q, $translate, Si
             title: $translate.instant("telecom_sidebar_section_pack"),
             error: $translate.instant("telecom_sidebar_load_error"),
             category: "xdsl",
-            icon: "telecom-ethernet",
+            icon: "ovh-font ovh-font-telecom-ethernet",
             allowSubItems: true,
             onLoad: self.fetchData,
             loadOnState: "telecom.pack",
