@@ -2,28 +2,27 @@
 
     <div class="widget-presentation">
         <h2 class="widget-presentation-title"
-            data-translate="telephony_service_consumption_incoming_all"></h2>
-    </div>
+            data-translate="telephony_service_consumption_incoming_all">
+        </h2>
 
-    <toast-message></toast-message>
+        <toast-message></toast-message>
 
-    <div class="row">
-        <div class="col-sm-6">
-            <div data-translate="telephony_service_consumption_incoming_period"
-                 data-translate-values="{ start: IncomingCallsCtrl.period.start.format('DD/MM/YYYY'),
-                                          end: IncomingCallsCtrl.period.end.format('DD/MM/YYYY') }">
-            </div>
-            <div data-ng-if="IncomingCallsCtrl.consumption.raw.length"
-                 data-translate="telephony_service_consumption_incoming_summary"
-                 data-translate-values="{ calls: IncomingCallsCtrl.consumption.raw.length,
-                                          duration: (IncomingCallsCtrl.consumption.durationSum | date: 'HH:mm:ss': 'UTC') }">
-            </div>
-        </div>
-    </div>
-    <div class="row"
-         data-ng-if="IncomingCallsCtrl.consumption.raw.length">
-        <div class="col-xs-12">
-            <button class="btn btn-default float-right"
+        <p data-translate="telephony_service_consumption_incoming_period"
+           data-translate-values="{
+               start: IncomingCallsCtrl.period.start.format('DD/MM/YYYY'),
+               end: IncomingCallsCtrl.period.end.format('DD/MM/YYYY')
+           }">
+        </p>
+        <p data-ng-if="IncomingCallsCtrl.consumption.raw.length"
+           data-translate="telephony_service_consumption_incoming_summary"
+           data-translate-values="{
+               calls: IncomingCallsCtrl.consumption.raw.length,
+               duration: (IncomingCallsCtrl.consumption.durationSum | date: 'HH:mm:ss': 'UTC')
+           }">
+        </p>
+        <div class="text-right mb-3"
+             data-ng-if="IncomingCallsCtrl.consumption.raw.length">
+            <button class="btn btn-default"
                     type="button"
                     data-ng-click="IncomingCallsCtrl.toggleShowFilter()">
                 <i data-ng-if="!IncomingCallsCtrl.consumption.showFilter"
@@ -34,205 +33,197 @@
                       data-translate="telephony_service_consumption_filter"></span>
             </button>
         </div>
-    </div>
-    <div class="mt-2"
-         data-ng-if="IncomingCallsCtrl.consumption.showFilter">
-        <div class="row mb-2">
-            <div class="col-sm-3 col-sm-offset-3">
-                <div class="input-group">
-                    <span class="input-group-addon">
-                        <i class="ovh-font ovh-font-phone"></i>
-                    </span>
-                    <input class="form-control"
-                           type="text"
-                           data-ng-model="IncomingCallsCtrl.consumption.filterBy.calling"
-                           data-ng-change="IncomingCallsCtrl.applySorting()"
-                           placeholder="{{:: 'telephony_service_consumption_calling' | translate }}"
-                           autofocus />
+        <div class="mt-2"
+             data-ng-if="IncomingCallsCtrl.consumption.showFilter">
+            <div class="row mb-3">
+                <div class="col-sm-3 col-sm-offset-3">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="ovh-font ovh-font-phone"></i>
+                        </span>
+                        <input class="form-control"
+                               type="text"
+                               data-ng-model="IncomingCallsCtrl.consumption.filterBy.calling"
+                               data-ng-change="IncomingCallsCtrl.applySorting()"
+                               placeholder="{{:: 'telephony_service_consumption_calling' | translate }}"
+                               autofocus />
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="ovh-font ovh-font-phone"></i>
+                        </span>
+                        <input class="form-control"
+                               type="text"
+                               data-ng-change="IncomingCallsCtrl.applySorting()"
+                               data-ng-model="IncomingCallsCtrl.consumption.filterBy.dialed"
+                               placeholder="{{:: 'telephony_service_consumption_dialed' | translate }}" />
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <select class="form-control"
+                            data-ng-change="IncomingCallsCtrl.applySorting()"
+                            data-ng-model="IncomingCallsCtrl.consumption.filterBy.wayType"
+                            required>
+                        <option value="" data-translate="telephony_service_consumption_type_any"></option>
+                        <option value="transfer" data-translate="telephony_service_consumption_type_transfer"></option>
+                        <option value="missing" data-translate="telephony_service_consumption_type_missing"></option>
+                        <option value="incoming" data-translate="telephony_service_consumption_type_incoming"></option>
+                    </select>
                 </div>
             </div>
-            <div class="col-sm-3">
-                <div class="input-group">
-                    <span class="input-group-addon">
-                        <i class="ovh-font ovh-font-phone"></i>
-                    </span>
-                    <input class="form-control"
-                           type="text"
-                           data-ng-change="IncomingCallsCtrl.applySorting()"
-                           data-ng-model="IncomingCallsCtrl.consumption.filterBy.dialed"
-                           placeholder="{{:: 'telephony_service_consumption_dialed' | translate }}" />
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <select class="form-control"
-                        data-ng-change="IncomingCallsCtrl.applySorting()"
-                        data-ng-model="IncomingCallsCtrl.consumption.filterBy.wayType"
-                        required>
-                    <option value="" data-translate="telephony_service_consumption_type_any"></option>
-                    <option value="transfer" data-translate="telephony_service_consumption_type_transfer"></option>
-                    <option value="missing" data-translate="telephony_service_consumption_type_missing"></option>
-                    <option value="incoming" data-translate="telephony_service_consumption_type_incoming"></option>
-                </select>
-            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table"
+                   data-ng-class="{
+                       'table-hover table-striped': IncomingCallsCtrl.consumption.raw.length > 1
+                   }">
+                <thead>
+                    <tr>
+                        <th>
+                            <button class="btn btn-link p-0"
+                                    type="button"
+                                    data-ng-disabled="!IncomingCallsCtrl.consumption.paginated.length"
+                                    data-ng-click="IncomingCallsCtrl.orderBy('creationDatetime')">
+                                <span data-translate="telephony_service_consumption_date"></span>
+                                <span class="oui-icon align-baseline"
+                                      aria-hidden="true"
+                                      data-ng-class="{
+                                          'oui-icon-arrow-down': IncomingCallsCtrl.consumption.orderBy !== 'creationDatetime',
+                                          'oui-icon-arrow-down': IncomingCallsCtrl.consumption.orderBy === 'creationDatetime' && IncomingCallsCtrl.consumption.orderDesc,
+                                          'oui-icon-arrow-up': IncomingCallsCtrl.consumption.orderBy === 'creationDatetime' && !IncomingCallsCtrl.consumption.orderDesc
+                                      }">
+                                </span>
+                            </button>
+                        </th>
+                        <th>
+                            <button class="btn btn-link p-0"
+                                    type="button"
+                                    data-ng-disabled="!IncomingCallsCtrl.consumption.paginated.length"
+                                    data-ng-click="IncomingCallsCtrl.orderBy('calling')">
+                                <span data-translate="telephony_service_consumption_calling"></span>
+                                <span class="oui-icon align-baseline"
+                                      aria-hidden="true"
+                                      data-ng-class="{
+                                          'oui-icon-arrow-down': IncomingCallsCtrl.consumption.orderBy !== 'calling',
+                                          'oui-icon-arrow-down': IncomingCallsCtrl.consumption.orderBy === 'calling' && IncomingCallsCtrl.consumption.orderDesc,
+                                          'oui-icon-arrow-up': IncomingCallsCtrl.consumption.orderBy === 'calling' && !IncomingCallsCtrl.consumption.orderDesc
+                                      }">
+                                </span>
+                            </button>
+                        </th>
+                        <th>
+                            <button class="btn btn-link p-0"
+                                    type="button"
+                                    data-ng-disabled="!IncomingCallsCtrl.consumption.paginated.length"
+                                    data-ng-click="IncomingCallsCtrl.orderBy('dialed')">
+                                <span data-translate="telephony_service_consumption_dialed"></span>
+                                <span class="oui-icon align-baseline"
+                                      aria-hidden="true"
+                                      data-ng-class="{
+                                          'oui-icon-arrow-down': IncomingCallsCtrl.consumption.orderBy !== 'dialed',
+                                          'oui-icon-arrow-down': IncomingCallsCtrl.consumption.orderBy === 'dialed' && IncomingCallsCtrl.consumption.orderDesc,
+                                          'oui-icon-arrow-up': IncomingCallsCtrl.consumption.orderBy === 'dialed' && !IncomingCallsCtrl.consumption.orderDesc
+                                      }">
+                                </span>
+                            </button>
+                        </th>
+                        <th>
+                            <button class="btn btn-link p-0"
+                                    type="button"
+                                    data-ng-disabled="!IncomingCallsCtrl.consumption.paginated.length"
+                                    data-ng-click="IncomingCallsCtrl.orderBy('durationAsDate')">
+                                <span data-translate="telephony_service_consumption_duration"></span>
+                                <span class="oui-icon align-baseline"
+                                      aria-hidden="true"
+                                      data-ng-class="{
+                                          'oui-icon-arrow-down': IncomingCallsCtrl.consumption.orderBy !== 'durationAsDate',
+                                          'oui-icon-arrow-down': IncomingCallsCtrl.consumption.orderBy === 'durationAsDate' && IncomingCallsCtrl.consumption.orderDesc,
+                                          'oui-icon-arrow-up': IncomingCallsCtrl.consumption.orderBy === 'durationAsDate' && !IncomingCallsCtrl.consumption.orderDesc
+                                      }">
+                                </span>
+                            </button>
+                        </th>
+                        <th>
+                            <button class="btn btn-link p-0"
+                                    type="button"
+                                    data-ng-disabled="!IncomingCallsCtrl.consumption.paginated.length"
+                                    data-ng-click="IncomingCallsCtrl.orderBy('wayType')">
+                                <span data-translate="telephony_service_consumption_type"></span>
+                                <span class="oui-icon align-baseline"
+                                      aria-hidden="true"
+                                      data-ng-class="{
+                                          'oui-icon-arrow-down': IncomingCallsCtrl.consumption.orderBy !== 'wayType',
+                                          'oui-icon-arrow-down': IncomingCallsCtrl.consumption.orderBy === 'wayType' && IncomingCallsCtrl.consumption.orderDesc,
+                                          'oui-icon-arrow-up': IncomingCallsCtrl.consumption.orderBy === 'wayType' && !IncomingCallsCtrl.consumption.orderDesc
+                                      }">
+                                </span>
+                            </button>
+                            <button class="btn btn-link float-right p-0"
+                                    type="button"
+                                    data-ng-disabled="IncomingCallsCtrl.consumption.isLoading"
+                                    data-ng-click="IncomingCallsCtrl.refresh()">
+                                <i class="fa fa-refresh"></i>
+                            </button>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody data-ng-if="!IncomingCallsCtrl.consumption.isLoading">
+                    <tr data-ng-repeat="conso in IncomingCallsCtrl.consumption.paginated | orderBy:IncomingCallsCtrl.order.by:IncomingCallsCtrl.order.reverse">
+                        <td>
+                            <span data-ng-bind="::conso.creationDatetime | date: 'dd/MM/yyyy'"></span>
+                            <span data-ng-bind="::conso.creationDatetime | date: 'HH:mm:ss'"></span>
+                        </td>
+                        <td>
+                            <span data-ng-if="conso.calling" data-ng-bind="::conso.calling | phoneNumber"></span>
+                            <span data-ng-if="!conso.calling" data-translate="telephony_service_consumption_calling_unknown"></span>
+                        </td>
+                        <td data-ng-bind=":: conso.dialed === IncomingCallsCtrl.serviceName ? '-' : conso.dialed | phoneNumber"></td>
+                        <td data-ng-bind="::conso.durationAsDate | date: 'HH:mm:ss': 'UTC'"></td>
+                        <td data-ng-bind="::'telephony_service_consumption_type_' + conso.wayType | translate"></td>
+                    </tr>
+                </tbody>
+                <tbody data-ng-if="IncomingCallsCtrl.consumption.isLoading">
+                    <tr>
+                        <td colspan="5">
+                            <bouncing-box-loader data-size="m"></bouncing-box-loader>
+                        </td>
+                    </tr>
+                </tbody>
+                <tbody data-ng-if="!IncomingCallsCtrl.consumption.isLoading && !IncomingCallsCtrl.consumption.raw.length">
+                    <tr>
+                        <td colspan="5"
+                            class="text-center"
+                            data-translate="telephony_service_consumption_incoming_empty">
+                        </td>
+                    </tr>
+                </tbody>
+                <tbody data-ng-if="!IncomingCallsCtrl.consumption.isLoading &&
+                                   IncomingCallsCtrl.consumption.raw.length &&
+                                   !IncomingCallsCtrl.consumption.paginated.length">
+                    <tr>
+                        <td colspan="5"
+                            class="text-center"
+                            data-translate="telephony_service_consumption_incoming_not_found">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="mt-2"
+             data-ng-if="!IncomingCallsCtrl.consumption.isLoading && IncomingCallsCtrl.consumption.raw.length"
+             data-pagination-front
+             data-items="IncomingCallsCtrl.consumption.sorted"
+             data-paginated-items="IncomingCallsCtrl.consumption.paginated"
+             data-current-page="currentPage"
+             data-nb-pages="nbPages"
+             data-items-per-page="itemsPerPage"
+             data-page-placeholder="{{'common_pagination_page' | translate: {currentPage:currentPage, nbPages:nbPages} }}"
+             data-item-per-page-placeholder="{{'common_pagination_display' | translate}}">
         </div>
     </div>
-    <div class="row">
-        <div class="col-xs-12 mt-1">
-            <div class="table-responsive">
-                <table class="table"
-                       data-ng-class="{
-                           'table-hover table-striped': IncomingCallsCtrl.consumption.raw.length > 1
-                       }">
-                    <thead>
-                        <tr>
-                            <th>
-                                <button class="btn btn-link pl-0"
-                                        type="button"
-                                        data-ng-disabled="!IncomingCallsCtrl.consumption.paginated.length"
-                                        data-ng-click="IncomingCallsCtrl.orderBy('creationDatetime')">
-                                    <span data-translate="telephony_service_consumption_date"></span>
-                                    <span class="oui-icon align-baseline"
-                                          aria-hidden="true"
-                                          data-ng-class="{
-                                              'oui-icon-arrow-down': IncomingCallsCtrl.consumption.orderBy !== 'creationDatetime',
-                                              'oui-icon-arrow-down': IncomingCallsCtrl.consumption.orderBy === 'creationDatetime' && IncomingCallsCtrl.consumption.orderDesc,
-                                              'oui-icon-arrow-up': IncomingCallsCtrl.consumption.orderBy === 'creationDatetime' && !IncomingCallsCtrl.consumption.orderDesc
-                                          }">
-                                    </span>
-                                </button>
-                            </th>
-                            <th>
-                                <button class="btn btn-link pl-0"
-                                        type="button"
-                                        data-ng-disabled="!IncomingCallsCtrl.consumption.paginated.length"
-                                        data-ng-click="IncomingCallsCtrl.orderBy('calling')">
-                                    <span data-translate="telephony_service_consumption_calling"></span>
-                                    <span class="oui-icon align-baseline"
-                                          aria-hidden="true"
-                                          data-ng-class="{
-                                              'oui-icon-arrow-down': IncomingCallsCtrl.consumption.orderBy !== 'calling',
-                                              'oui-icon-arrow-down': IncomingCallsCtrl.consumption.orderBy === 'calling' && IncomingCallsCtrl.consumption.orderDesc,
-                                              'oui-icon-arrow-up': IncomingCallsCtrl.consumption.orderBy === 'calling' && !IncomingCallsCtrl.consumption.orderDesc
-                                          }">
-                                    </span>
-                                </button>
-                            </th>
-                            <th>
-                                <button class="btn btn-link pl-0"
-                                        type="button"
-                                        data-ng-disabled="!IncomingCallsCtrl.consumption.paginated.length"
-                                        data-ng-click="IncomingCallsCtrl.orderBy('dialed')">
-                                    <span data-translate="telephony_service_consumption_dialed"></span>
-                                    <span class="oui-icon align-baseline"
-                                          aria-hidden="true"
-                                          data-ng-class="{
-                                              'oui-icon-arrow-down': IncomingCallsCtrl.consumption.orderBy !== 'dialed',
-                                              'oui-icon-arrow-down': IncomingCallsCtrl.consumption.orderBy === 'dialed' && IncomingCallsCtrl.consumption.orderDesc,
-                                              'oui-icon-arrow-up': IncomingCallsCtrl.consumption.orderBy === 'dialed' && !IncomingCallsCtrl.consumption.orderDesc
-                                          }">
-                                    </span>
-                                </button>
-                            </th>
-                            <th>
-                                <button class="btn btn-link pl-0"
-                                        type="button"
-                                        data-ng-disabled="!IncomingCallsCtrl.consumption.paginated.length"
-                                        data-ng-click="IncomingCallsCtrl.orderBy('durationAsDate')">
-                                    <span data-translate="telephony_service_consumption_duration"></span>
-                                    <span class="oui-icon align-baseline"
-                                          aria-hidden="true"
-                                          data-ng-class="{
-                                              'oui-icon-arrow-down': IncomingCallsCtrl.consumption.orderBy !== 'durationAsDate',
-                                              'oui-icon-arrow-down': IncomingCallsCtrl.consumption.orderBy === 'durationAsDate' && IncomingCallsCtrl.consumption.orderDesc,
-                                              'oui-icon-arrow-up': IncomingCallsCtrl.consumption.orderBy === 'durationAsDate' && !IncomingCallsCtrl.consumption.orderDesc
-                                          }">
-                                    </span>
-                                </button>
-                            </th>
-                            <th>
-                                <button class="btn btn-link pl-0"
-                                        type="button"
-                                        data-ng-disabled="!IncomingCallsCtrl.consumption.paginated.length"
-                                        data-ng-click="IncomingCallsCtrl.orderBy('wayType')">
-                                    <span data-translate="telephony_service_consumption_type"></span>
-                                    <span class="oui-icon align-baseline"
-                                          aria-hidden="true"
-                                          data-ng-class="{
-                                              'oui-icon-arrow-down': IncomingCallsCtrl.consumption.orderBy !== 'wayType',
-                                              'oui-icon-arrow-down': IncomingCallsCtrl.consumption.orderBy === 'wayType' && IncomingCallsCtrl.consumption.orderDesc,
-                                              'oui-icon-arrow-up': IncomingCallsCtrl.consumption.orderBy === 'wayType' && !IncomingCallsCtrl.consumption.orderDesc
-                                          }">
-                                    </span>
-                                </button>
-                                <button class="btn btn-link pl-0 ml-2"
-                                        type="button"
-                                        data-ng-disabled="IncomingCallsCtrl.consumption.isLoading"
-                                        data-ng-click="IncomingCallsCtrl.refresh()">
-                                    <i class="fa fa-refresh"></i>
-                                </button>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody data-ng-if="!IncomingCallsCtrl.consumption.isLoading">
-                        <tr data-ng-repeat="conso in IncomingCallsCtrl.consumption.paginated | orderBy:IncomingCallsCtrl.order.by:IncomingCallsCtrl.order.reverse">
-                            <td data-title="{{:: 'telephony_service_consumption_date' | translate }}">
-                                <span class="text-nowrap mr-3" data-ng-bind="::conso.creationDatetime | date: 'dd/MM/yyyy'"></span>
-                                <span class="text-nowrap mr-3" data-ng-bind="::conso.creationDatetime | date: 'HH:mm:ss'"></span>
-                            </td>
-                            <td data-title="{{:: 'telephony_service_consumption_calling' | translate }}">
-                                <span class="text-nowrap" data-ng-if="conso.calling" data-ng-bind="::conso.calling | phoneNumber"></span>
-                                <span class="text-nowrap" data-ng-if="!conso.calling" data-translate="telephony_service_consumption_calling_unknown"></span>
-                            </td>
-                            <td data-title="{{:: 'telephony_service_consumption_dialed' | translate }}">
-                                <span class="text-nowrap" data-ng-bind=":: conso.dialed === IncomingCallsCtrl.serviceName ? '-' : conso.dialed | phoneNumber"></span>
-                            </td>
-                            <td data-title="{{:: 'telephony_service_consumption_duration' | translate }}">
-                                <span class="text-nowrap mr-3" data-ng-bind="::conso.durationAsDate | date: 'HH:mm:ss': 'UTC'"></span>
-                            </td>
-                            <td data-title="{{:: 'telephony_service_consumption_type' | translate }}">
-                                <span class="text-nowrap" data-ng-bind="::'telephony_service_consumption_type_' + conso.wayType | translate"></span>
-                            </td>
-                        </tr>
-                    </tbody>
-                    <tbody data-ng-if="IncomingCallsCtrl.consumption.isLoading">
-                        <tr>
-                            <td class="text-center py-3" colspan="5">
-                                <bouncing-box-loader class="d-inline-block align-middle"
-                                                     data-size="s">
-                                </bouncing-box-loader>
-                            </td>
-                        </tr>
-                    </tbody>
-                    <tbody data-ng-if="!IncomingCallsCtrl.consumption.isLoading && !IncomingCallsCtrl.consumption.raw.length">
-                        <tr>
-                            <td class="text-center py-3" colspan="5">
-                                <span data-translate="telephony_service_consumption_incoming_empty"></span>
-                            </td>
-                        </tr>
-                    </tbody>
-                    <tbody data-ng-if="!IncomingCallsCtrl.consumption.isLoading &&
-                                       IncomingCallsCtrl.consumption.raw.length &&
-                                       !IncomingCallsCtrl.consumption.paginated.length">
-                        <tr>
-                            <td class="text-center py-3" colspan="5">
-                                <span data-translate="telephony_service_consumption_incoming_not_found"></span>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="mt-2"
-                 data-ng-if="!IncomingCallsCtrl.consumption.isLoading && IncomingCallsCtrl.consumption.raw.length"
-                 data-pagination-front
-                 data-items="IncomingCallsCtrl.consumption.sorted"
-                 data-paginated-items="IncomingCallsCtrl.consumption.paginated"
-                 data-current-page="currentPage"
-                 data-nb-pages="nbPages"
-                 data-items-per-page="itemsPerPage"
-                 data-page-placeholder="{{'common_pagination_page' | translate: {currentPage:currentPage, nbPages:nbPages} }}"
-                 data-item-per-page-placeholder="{{'common_pagination_display' | translate}}">
-            </div>
-        </div>
-    </div>
+    <!-- /.widget-presentation -->
 
 </div>
+<!-- /.telephony-group-service-consumption-incoming-calls -->
