@@ -1,4 +1,4 @@
-<section class="telephony-group-alias-configuration-mode-easyHunting">
+<section class="telephony-group-alias-configuration-mode telephony-group-alias-configuration-mode-easyHunting">
 
     <header>
         <section-back-link section-back-link-to-state="telecom.telephony.alias.configuration"
@@ -234,11 +234,11 @@
                         </button>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group"
+                         data-ng-if="ModeEasyHuntingCtrl.hasChanges()">
                         <button type="submit"
                                 class="btn btn-primary"
-                                data-ng-disabled="ModeEasyHuntingCtrl.isUpdating"
-                                data-ng-if="ModeEasyHuntingCtrl.hasChanges()">
+                                data-ng-disabled="ModeEasyHuntingCtrl.isUpdating">
                             <bouncing-box-loader class="d-inline-block align-middle mr-2"
                                                  data-ng-if="ModeEasyHuntingCtrl.isUpdating"
                                                  data-size="s">
@@ -248,7 +248,6 @@
                         <button type="button"
                                 class="btn btn-default"
                                 data-ng-disabled="ModeEasyHuntingCtrl.isUpdating"
-                                data-ng-if="ModeEasyHuntingCtrl.hasChanges()"
                                 data-ng-click="ModeEasyHuntingCtrl.undoChanges()"
                                 data-translate="cancel">
                         </button>

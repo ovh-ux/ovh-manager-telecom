@@ -7,15 +7,15 @@
         <h1 data-translate="telephony_alias_configuration_mode_title"></h1>
     </header>
 
-    <div class="telecom-section-content"
-         data-ng-if="$ctrl.loading.init">
-        <bouncing-box-loader>
-            <h4 data-translate="loading"></h4>
-        </bouncing-box-loader>
-    </div>
+    <bouncing-box-loader data-ng-if="$ctrl.loading.init"
+                         data-size="m">
+        <h2 data-translate="loading"></h2>
+    </bouncing-box-loader>
 
     <div class="telecom-section-content"
          data-ng-if="!$ctrl.loading.init">
+
+        <toast-message></toast-message>
 
         <div class="row">
             <!-- Information -->
@@ -26,7 +26,7 @@
                     </h2>
                 </header>
                 <p data-translate="telephony_alias_configuration_mode_info1"></p>
-                <ul class="left-space-m16">
+                <ul>
                     <li data-translate="telephony_alias_configuration_mode_pabx_anonymous_call_rejection_info"></li>
                     <li data-translate="telephony_alias_configuration_mode_easy_pabx_no_reply_timer_info"></li>
                     <li data-translate="telephony_alias_configuration_mode_easy_pabx_voicemail_info"></li>
@@ -43,32 +43,31 @@
                     </h2>
                 </header>
 
-                <form class="ovh-form-flat"
-                      name="easyPabxOptionsForm"
+                <form name="easyPabxOptionsForm"
                       data-ng-submit="$ctrl.onOptionsFormSubmit()"
                       novalidate>
 
                     <!-- anonymousCallRejection -->
-                    <label class="block pointer top-space-m16 bottom-space-m16">
-                        <flat-checkbox>
+                    <div class="checkbox">
+                        <label>
                             <input type="checkbox"
                                    id="anonymousCallRejection"
                                    name="anonymousCallRejection"
                                    data-ng-disabled="$ctrl.loading.save"
                                    data-ng-model="$ctrl.formOptions.anonymousCallRejection" />
-                        </flat-checkbox>
-                        <span class="left-space-m8" data-translate="telephony_alias_configuration_mode_pabx_anonymous_call_rejection"></span>
-                    </label> <!-- End of anonymousCallRejection -->
+                            <span data-translate="telephony_alias_configuration_mode_pabx_anonymous_call_rejection"></span>
+                        </label>
+                    </div> <!-- End of anonymousCallRejection -->
 
                     <!-- noReplyTimer -->
-                    <div class="clearfix top-space-m16">
-                        <label class="block clearfix"
+                    <div class="form-group">
+                        <label class="control-label"
                                for="noReplyTimer"
                                data-translate="telephony_alias_configuration_mode_easy_pabx_no_reply_timer">
                         </label>
                         <input-number-spinner id="noReplyTimer"
                                               name="noReplyTimer"
-                                              class="pull-left"
+                                              class="d-inline-block"
                                               data-ng-disabled="$ctrl.loading.save"
                                               data-ng-model="$ctrl.formOptions.noReplyTimer"
                                               data-input-number-spinner-min="5"
@@ -77,12 +76,12 @@
                     </div> <!-- End of noReplyTimer -->
 
                     <!-- voicemail -->
-                    <div class="clearfix top-space-m16">
+                    <div class="form-group">
                         <label for="voicemail"
+                               class="control-label"
                                data-translate="telephony_alias_configuration_mode_easy_pabx_voicemail">
                         </label>
-                        <select flat-select
-                                id="voicemail"
+                        <select id="voicemail"
                                 name="voicemail"
                                 class="form-control"
                                 data-ng-disabled="$ctrl.loading.save"
@@ -94,14 +93,14 @@
                     </div> <!-- End of voicemail -->
 
                     <!-- numberOfCalls -->
-                    <div class="clearfix top-space-m16">
-                        <label class="block clearfix"
+                    <div class="form-group">
+                        <label class="control-label"
                                for="numberOfCalls"
                                data-translate="telephony_alias_configuration_mode_pabx_number_of_calls">
                         </label>
                         <input-number-spinner id="numberOfCalls"
                                               name="numberOfCalls"
-                                              class="pull-left"
+                                              class="d-inline-block"
                                               data-ng-disabled="$ctrl.loading.save"
                                               data-ng-model="$ctrl.formOptions.numberOfCalls"
                                               data-input-number-spinner-min="1"
@@ -110,12 +109,12 @@
                     </div> <!-- End of numberOfCalls -->
 
                     <!-- strategy -->
-                    <div class="clearfix top-space-m16">
+                    <div class="form-group">
                         <label for="strategy"
+                               class="control-label"
                                data-translate="telephony_alias_configuration_mode_pabx_strategy">
                         </label>
-                        <select flat-select
-                                id="strategy"
+                        <select id="strategy"
                                 name="strategy"
                                 class="form-control"
                                 data-ng-disabled="$ctrl.loading.save"
@@ -123,22 +122,20 @@
                                 data-ng-options="strategy as ('telephony_alias_configuration_mode_pabx_strategy_' + strategy | translate) for strategy in $ctrl.enums.strategy"
                                 required>
                         </select>
-                        <p>
-                            <small class="top-space-m4 inline-block">
-                                <i class="ovh-font ovh-font-info"></i>
-                                <span data-translate="{{ 'telephony_alias_configuration_mode_pabx_strategy_' + $ctrl.formOptions.strategy + '_info' | translate }}"></span>
-                            </small>
-                        </p>
+                        <span class="help-block">
+                            <i class="ovh-font ovh-font-info"></i>
+                            <span data-translate="{{ 'telephony_alias_configuration_mode_pabx_strategy_' + $ctrl.formOptions.strategy + '_info' | translate }}"></span>
+                        </span>
                     </div> <!-- End of strategy -->
 
                     <!-- pattern -->
-                    <div class="clearfix top-space-m16"
+                    <div class="form-group"
                          data-ng-if="$ctrl.formOptions.strategy !== 'parallel'">
                         <label for="pattern"
+                               class="control-label"
                                data-translate="telephony_alias_configuration_mode_pabx_pattern">
                         </label>
-                        <select flat-select
-                                id="pattern"
+                        <select id="pattern"
                                 name="pattern"
                                 class="form-control"
                                 data-ng-disabled="$ctrl.loading.save"
@@ -146,29 +143,27 @@
                                 data-ng-options="soundPattern as ('telephony_alias_configuration_mode_pabx_pattern_' + soundPattern | translate) for soundPattern in $ctrl.enums.pattern"
                                 required>
                         </select>
-                        <p>
-                            <small class="top-space-m4 inline-block">
-                                <i class="ovh-font ovh-font-info"></i>
-                                <span data-translate="{{ 'telephony_alias_configuration_mode_pabx_pattern_' + $ctrl.formOptions.pattern + '_info' | translate }}"></span>
-                            </small>
-                        </p>
+                        <span class="help-block">
+                            <i class="ovh-font ovh-font-info"></i>
+                            <span data-translate="{{ 'telephony_alias_configuration_mode_pabx_pattern_' + $ctrl.formOptions.pattern + '_info' | translate }}"></span>
+                        </span>
                     </div> <!-- End of pattern -->
 
                     <!-- Bottom buttons -->
-                    <div class="clearfix top-space-m16">
+                    <div class="form-group"
+                         data-ng-if="$ctrl.hasChanges()">
                         <button type="submit"
-                                class="btn btn-primary pull-right no-transition"
-                                data-ng-disabled="$ctrl.loader.save"
-                                data-ng-if="$ctrl.hasChanges()">
+                                class="btn btn-primary"
+                                data-ng-disabled="$ctrl.loader.save">
+                            <bouncing-box-loader class="d-inline-block align-middle mr-2"
+                                                 data-ng-if="$ctrl.loader.save"
+                                                 data-size="s">
+                            </bouncing-box-loader>
                             <span data-translate="telephony_alias_configuration_mode_pabx_apply_changes"></span>
-                            <spinner class="left-space-m4"
-                                     data-ng-if="$ctrl.loader.save">
-                            </spinner>
                         </button>
                         <button type="button"
-                                class="btn btn-default pull-right right-space-m4 no-transition"
+                                class="btn btn-default"
                                 data-ng-disabled="$ctrl.loader.save"
-                                data-ng-if="$ctrl.hasChanges()"
                                 data-ng-click="$ctrl.onCancelBtnClick()">
                             <span data-translate="cancel"></span>
                         </button>

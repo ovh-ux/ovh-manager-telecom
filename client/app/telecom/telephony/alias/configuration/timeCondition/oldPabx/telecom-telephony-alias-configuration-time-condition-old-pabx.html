@@ -7,33 +7,33 @@
         <h1 data-translate="telephony_alias_configuration_time_condition_title"></h1>
     </header>
 
-    <bouncing-box-loader data-ng-if="$ctrl.loading.init">
+    <bouncing-box-loader data-ng-if="$ctrl.loading.init"
+                         data-size="m">
         <h2 data-translate="loading"></h2>
     </bouncing-box-loader>
 
-    <form class="telecom-section-content bottom-space-m32"
+    <form class="telecom-section-content mb-4"
           name="timeConditionForm"
           data-ng-if="!$ctrl.loading.init"
           data-ng-submit="$ctrl.onTimeConditionFormSubmit()">
 
+        <toast-message></toast-message>
+
         <!-- FEATURE INFORMATIONS -->
         <div class="alert alert-info"
              role="alert">
-            <i class="ovh-font ovh-font-filled-info right-space-m8"></i>
             <p data-translate="telephony_alias_configuration_time_condition_info1"></p>
             <p data-translate="telephony_alias_configuration_time_condition_info2"
                data-translate-values="{ sref: 'telecom.telephony.alias.configuration.scheduler.oldPabx' }"
                data-translate-compile>
             </p>
-            <p>
-                <button type="button"
-                        class="btn btn-link no-space"
-                        data-ng-click="$ctrl.helpCollapsed = !$ctrl.helpCollapsed"
-                        data-translate="{{ $ctrl.helpCollapsed ? 'telephony_alias_configuration_time_condition_need_help' : 'telephony_alias_configuration_time_condition_hide_help'}}">
-                </button>
-            </p>
+            <button type="button"
+                    class="btn btn-link p-0"
+                    data-ng-click="$ctrl.helpCollapsed = !$ctrl.helpCollapsed"
+                    data-translate="{{ $ctrl.helpCollapsed ? 'telephony_alias_configuration_time_condition_need_help' : 'telephony_alias_configuration_time_condition_hide_help'}}">
+            </button>
             <div data-uib-collapse="$ctrl.helpCollapsed"
-                 class="top-space-m4">
+                 class="mt-1">
                 <p data-translate="telephony_alias_configuration_time_condition_help_1"></p>
                 <p data-translate="telephony_alias_configuration_time_condition_help_2"></p>
                 <ul>
@@ -42,7 +42,7 @@
                     <li data-translate="telephony_alias_configuration_time_condition_help_5"></li>
                 </ul>
                 <p data-translate="telephony_alias_configuration_time_condition_help_6"></p>
-                <p class="bottom-space-m0"
+                <p class="mb-0"
                    data-translate="telephony_alias_configuration_time_condition_help_7">
                 </p>
             </div>
