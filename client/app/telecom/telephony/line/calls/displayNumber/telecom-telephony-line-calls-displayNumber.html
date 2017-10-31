@@ -9,7 +9,8 @@
 
 </section>
 
-<bouncing-box-loader data-ng-if="LineDisplayNumberCtrl.isLoading">
+<bouncing-box-loader data-size="m"
+                     data-ng-if="LineDisplayNumberCtrl.isLoading">
     <h1 data-translate="loading"></h1>
 </bouncing-box-loader>
 
@@ -24,50 +25,53 @@
 
             <div class="row">
                 <div class="col-md-6">
-                    <p class="text-info">
-                        <i class="ovh-font ovh-font-info line-height-normal right-space-m4"></i>
-                        <span data-translate="telephony_line_actions_line_calls_display_number_info"></span>
-                    </p>
+                    <toast-message></toast-message>
+                    <div class="alert alert-info"
+                         role="alert">
+                        <p data-translate="telephony_line_actions_line_calls_display_number_info"></p>
+                    </div>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-md-6">
-                    <div flat-input-container>
-                        <flat-checkbox class="top-space-m4">
-                            <input id="anonymous"
-                                name="anonymous"
-                                type="checkbox"
-                                class="form-control"
-                                data-ng-model="LineDisplayNumberCtrl.form.identificationRestriction" />
-                        </flat-checkbox>
-                        <label for="anonymous"
-                            class="service-item left-space-p8 pointer"
-                            data-translate="telephony_line_actions_line_calls_identificationRestriction_checkbox_label">
+                    <div class="oui-checkbox">
+                        <input type="checkbox"
+                               class="oui-checkbox__input"
+                               id="anonymous"
+                               name="anonymous"
+                               data-ng-model="LineDisplayNumberCtrl.form.identificationRestriction">
+                        <label class="oui-checkbox__label-container" for="anonymous">
+                            <span class="oui-checkbox__label"
+                                  data-translate="telephony_line_actions_line_calls_identificationRestriction_checkbox_label">
+                            </span>
+                            <span class="oui-checkbox__icon">
+                              <i class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></i>
+                              <i class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></i>
+                              <i class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></i>
+                            </span>
                         </label>
                     </div>
                 </div>
             </div>
+
         </div>
 
         <div class="form-group">
             <div class="row">
                 <div class="col-md-6">
-                    <label for="displayNumber"
-                           class="control-label"
-                           data-translate="telephony_line_actions_line_calls_display_number_label"></label>
-                    <p style="font-size: 1.5rem"
-                       data-ng-if="LineDisplayNumberCtrl.form.identificationRestriction"
+                    <strong class="control-label"
+                            data-translate="telephony_line_actions_line_calls_display_number_label">
+                    </strong>
+                    <p data-ng-if="LineDisplayNumberCtrl.form.identificationRestriction"
                        data-translate="telephony_line_actions_line_calls_anonymous"></p>
-                    <p style="font-size: 1.5rem"
-                       data-ng-if="!LineDisplayNumberCtrl.form.identificationRestriction"
+                    <p data-ng-if="!LineDisplayNumberCtrl.form.identificationRestriction"
                        data-ng-bind="LineDisplayNumberCtrl.form.displayedService"></p>
-                    <br />
                     <button type="button"
                             class="btn btn-default no-transition"
                             data-voip-service-choice-popover="{
                                 popoverPlacement: 'right auto',
-                                popoverClass: 'pretty-popover telephony-service-choice-popover',
+                                popoverClass: 'telephony-service-choice-popover pretty-popover',
                                 popoverAppendToBody: true,
                                 popoverIsOpen: false
                             }"
@@ -81,22 +85,24 @@
             </div>
         </div>
 
-        <div class="form-group top-space-m32">
+        <div class="form-group mt-4">
             <div class="row">
                 <div class="col-md-6">
-                    <button
-                        type="reset"
-                        data-translate="cancel"
-                        class="btn btn-sm btn-cancel btn-default"
-                        data-ng-click="LineDisplayNumberCtrl.reset()"
-                        data-ng-disabled="!LineDisplayNumberCtrl.hasChanges() || LineDisplayNumberCtrl.isUpdating">
-                    </button>
+                    <hr />
                     <button type="submit"
-                            class="btn btn-sm btn-primary pull-right"
+                            class="btn btn-primary"
                             data-ng-disabled="!displayNumberForm.$valid || !LineDisplayNumberCtrl.hasChanges() || LineDisplayNumberCtrl.isUpdating">
+                        <bouncing-box-loader class="d-inline-block align-middle ml-2"
+                                             data-ng-if="LineDisplayNumberCtrl.isUpdating"
+                                             data-size="s">
+                        </bouncing-box-loader>
                         <span data-translate="telephony_line_actions_line_calls_submit_changes"></span>
-                        <spinner class="left-space-m8"
-                                 data-ng-if="LineDisplayNumberCtrl.isUpdating"></spinner>
+                    </button>
+                    <button type="reset"
+                            data-translate="cancel"
+                            class="btn btn-default"
+                            data-ng-click="LineDisplayNumberCtrl.reset()"
+                            data-ng-disabled="!LineDisplayNumberCtrl.hasChanges() || LineDisplayNumberCtrl.isUpdating">
                     </button>
                 </div>
             </div>

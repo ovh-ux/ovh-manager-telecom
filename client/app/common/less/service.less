@@ -18,7 +18,7 @@
 }
 
 .service-title {
-    font-size: @FONT-SIZE-MAININFO;
+    font-size: @font-size-base;
     text-align: left !important;
     font-weight: 400;
 }
@@ -26,17 +26,10 @@
 .service-item {
     position: relative;
     line-height: 25px;
-    color: @text-color-content;
+    color: @gray-base;
 
     &:last-child {
         margin-bottom: 0px;
-    }
-
-    .service-button-description-outside {
-        top: 14px;
-        position: absolute;
-        left: 16px;
-        z-index: 1;
     }
 }
 
@@ -69,19 +62,20 @@
     padding: 12px;
     position: relative;
     background-color: @service-button-bg-color;
-    color: @text-color-content;
+    color: @gray-base;
     font-size: @font-size-base;
     font-weight: 400;
 
     &.disabled {
         cursor: default;
+        opacity: 0.5;
 
         .ovh-font {
-            color: @text-color-content;
+            color: @gray-base;
         }
         .service-button-description {
             .description-subtext {
-                color: @text-color-content;
+                color: @gray-base;
             }
         }
         .link-name {
@@ -90,11 +84,11 @@
 
         &:hover, &:focus, &:active {
             .ovh-font {
-                color: @text-color-content;
+                color: @gray-base;
             }
             .service-button-description {
                 .description-subtext {
-                    color: @text-color-content;
+                    color: @gray-base;
                 }
             }
         }
@@ -104,16 +98,11 @@
     &:focus:not(span),
     &:active:not(span) {
         text-decoration: none;
-        color: @text-color-content;
+        color: @gray-base;
 
-        .link-name, .ovh-font {
-            color: darken(@UNIVERS, 16%);
-        }
-
-        .service-button-description {
-            .description-subtext {
-                color: darken(@UNIVERS, 16%);
-            }
+        .link-name,
+        .ovh-font {
+            color: @oui-link-font-color_hover;
         }
 
         .ovh-font-arrow-right {
@@ -130,19 +119,14 @@
     }
 
     .ovh-font {
-        color: @UNIVERS;
+        color: @oui-color-brand;
 
         &.text-success {
-            color: @brand-success;
+            color: @oui-color-success-dark;
         }
 
         &.text-danger {
-            color: @brand-danger;
-        }
-
-        &:first-child {
-            font-size: 36px;
-            display: inline-block;
+            color: @oui-color-error-dark;
         }
     }
 
@@ -154,9 +138,8 @@
         line-height: 1.5em;
 
         .description-title, .description-subtext {
-            font-size: @FONT-SIZE-MAININFO;
-            color: @text-color-mainInfo;
-            font-weight: @font-weight-h3;
+            font-size: @font-size-base;
+            color: @gray-dark;
             line-height: 18px;
             padding-left: 12px;
             overflow: hidden;
@@ -164,13 +147,11 @@
         }
 
         .description-subtext {
-            color: @UNIVERS;
+            color: @oui-color-dodger;
         }
     }
 
     .link-name, .ovh-font-arrow-right {
-        font-size: @font-size-base;
-        color: @UNIVERS;
         position: absolute;
         right: 12px;
         top: 50%;
@@ -189,7 +170,6 @@
             position: static;
             margin-left: 2px;
             margin-top: -2px;
-            font-size: @font-size-base;
         }
     }
 }

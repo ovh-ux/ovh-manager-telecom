@@ -9,11 +9,13 @@
 
 </section>
 
-<bouncing-box-loader data-ng-if="LineAbbreviatedNumbersCtrl.loading.init">
+<bouncing-box-loader data-size="m"
+                     data-ng-if="LineAbbreviatedNumbersCtrl.loading.init">
     <h2 data-translate="loading"></h2>
 </bouncing-box-loader>
 
-<div class="telecom-section-content" data-ng-hide="LineAbbreviatedNumbersCtrl.loading.init">
+<div class="telecom-section-content"
+     data-ng-hide="LineAbbreviatedNumbersCtrl.loading.init">
     <p data-translate="telephony_line_actions_line_calls_abbreviated_numbers_explaination"></p>
 
     <telecom-telephony-abbreviated-numbers

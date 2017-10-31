@@ -1,10 +1,13 @@
 <div class="telephony-group-line-phone">
 
-    <bouncing-box-loader data-ng-if="LinePhoneCtrl.loading.init">
-        <h2 class="top-space-m16"
+    <bouncing-box-loader data-size="m"
+                         data-ng-if="LinePhoneCtrl.loading.init">
+        <h2 class="mt-3"
             data-translate="loading">
         </h2>
     </bouncing-box-loader>
+
+    <toast-message></toast-message>
 
     <telecom-v4-links data-ng-if="!LinePhoneCtrl.loading.init"
                       data-telecom-v4-links="LinePhoneCtrl.actions">

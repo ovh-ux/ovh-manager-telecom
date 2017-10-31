@@ -5,163 +5,164 @@
 
     <div class="telecom-section-content">
 
-        <spinner data-ng-show="OrderOverTheBox.loaders.checking"></spinner>
+        <toast-message></toast-message>
+
+        <bouncing-box-loader data-ng-show="OrderOverTheBox.loaders.checking">
+            <h3 data-translate="loading"></h3>
+        </bouncing-box-loader>
 
         <!-- warning -->
-        <div class="row" data-ng-show="!OrderOverTheBox.loaders.checking && !OrderOverTheBox.states.orderDone">
-            <div class="col-md-12">
+        <div class="mb-3"
+             data-ng-show="!OrderOverTheBox.loaders.checking && !OrderOverTheBox.states.orderDone">
 
-                <div data-ng-if="!OrderOverTheBox.hasDefaultPaymentMeans"
-                     data-ng-include="'app/telecom/overTheBox/warning/overTheBox-warning-noPaymentMeans.html'"></div>
-
-                <div data-ng-if="OrderOverTheBox.devices.length === 0"
-                    data-ng-include="'app/telecom/overTheBox/warning/overTheBox-warning-notFound.html'"></div>
-
-                <div data-ng-if="(OrderOverTheBox.orphanDevices.length) && (!OrderOverTheBox.unlinkedServices.length)"
-                     data-ng-include="'app/telecom/overTheBox/warning/overTheBox-warning-noSubscription.html'"></div>
-
-                <div data-ng-if="(OrderOverTheBox.orphanDevices.length) && (OrderOverTheBox.unlinkedServices.length)"
-                     data-ng-include="'app/telecom/overTheBox/warning/overTheBox-warning-deviceToLink.html'"></div>
-
-                <div class="row">
-                    <div class="col-md-12">
-                        <button class="btn btn-sm btn-primary"
-                                type="button"
-                                data-ng-show="!OrderOverTheBox.states.order"
-                                data-ng-disabled="!OrderOverTheBox.hasDefaultPaymentMeans"
-                                data-ng-click="OrderOverTheBox.startOrder()">
-                            <i class="ovh-font ovh-font-1x6 ovh-font-cart right-space-m4"></i>
-                            <strong class="fs12" data-translate="order_overTheBox_subscription_request"></strong>
-                            <spinner data-ng-show="OrderOverTheBox.paymentMeansChecking"></spinner>
-                        </button>
-
-                    </div>
-                </div>
-
+            <div data-ng-if="!OrderOverTheBox.hasDefaultPaymentMeans"
+                 data-ng-include="'app/telecom/overTheBox/warning/overTheBox-warning-noPaymentMeans.html'">
             </div>
+
+            <div data-ng-if="OrderOverTheBox.devices.length === 0"
+                data-ng-include="'app/telecom/overTheBox/warning/overTheBox-warning-notFound.html'">
+            </div>
+
+            <div data-ng-if="(OrderOverTheBox.orphanDevices.length) && (!OrderOverTheBox.unlinkedServices.length)"
+                 data-ng-include="'app/telecom/overTheBox/warning/overTheBox-warning-noSubscription.html'">
+            </div>
+
+            <div data-ng-if="(OrderOverTheBox.orphanDevices.length) && (OrderOverTheBox.unlinkedServices.length)"
+                 data-ng-include="'app/telecom/overTheBox/warning/overTheBox-warning-deviceToLink.html'">
+            </div>
+
+            <button class="btn btn-primary"
+                    type="button"
+                    data-ng-show="!OrderOverTheBox.states.order"
+                    data-ng-disabled="!OrderOverTheBox.hasDefaultPaymentMeans"
+                    data-ng-click="OrderOverTheBox.startOrder()">
+                <i class="ovh-font ovh-font-cart mr-2 my-0"
+                    data-ng-if="!OrderOverTheBox.paymentMeansChecking">
+                </i>
+                <bouncing-box-loader class="d-inline-block align-middle mr-2"
+                                     data-ng-if="OrderOverTheBox.paymentMeansChecking"
+                                     data-size="s">
+                </bouncing-box-loader>
+                <span data-translate="order_overTheBox_subscription_request"></span>
+            </button>
+
         </div>
 
-        <spinner data-ng-show="OrderOverTheBox.loaders.order"></spinner>
+        <bouncing-box-loader data-ng-show="OrderOverTheBox.loaders.order">
+            <h3 data-translate="loading"></h3>
+        </bouncing-box-loader>
 
-        <form name="formOrder" novalidate class="ovh-form-flat"
-              data-ng-show="!OrderOverTheBox.loaders.order &&
-                            (OrderOverTheBox.states.order || OrderOverTheBox.states.orderDone)">
-            <!-- Options -->
-            <div class="row" >
-                <div class="col-md-12">
-
+        <div class="row">
+            <div class="col-xs-12 col-md-6">
+                <form class="mb-5"
+                      name="formOrder"
+                      novalidate
+                      data-ng-show="!OrderOverTheBox.loaders.order &&
+                                    (OrderOverTheBox.states.order || OrderOverTheBox.states.orderDone)">
+                    <!-- Options -->
                     <div class="widget-presentation">
-                        <h2 class="widget-presentation-title" data-translate="order_overTheBox_offer_options"></h2>
-                        <div class="row top-space-m16">
-                            <div class="col-xs-12 col-md-4 service-title data-ng-scope">
-                                <label for="select-offer" class="control-label"
-                                       data-translate="order_overTheBox_offer_type"></label>
-                            </div>
-                            <div class="col-xs-12 col-md-8 service-item">
-                                <div flat-input-container class="input-group">
-                                    <select flat-select name="select-offer" id="select-offer" class="form-control"
-                                            data-ng-model="OrderOverTheBox.orderModel.offer"
-                                            data-ng-change="OrderOverTheBox.getOrderDurations()"
-                                            data-ng-disabled="OrderOverTheBox.states.orderDone"
-                                            data-ng-options="offer for offer in OrderOverTheBox.offers">
-                                    </select>
-                                </div>
-                            </div>
+                        <h2 class="widget-presentation-title"
+                            data-translate="order_overTheBox_offer_options">
+                        </h2>
+                        <div class="form-group">
+                            <label for="select-offer"
+                                   class="control-label"
+                                   data-translate="order_overTheBox_offer_type">
+                            </label>
+                            <select class="form-control"
+                                    id="select-offer"
+                                    name="select-offer"
+                                    data-ng-model="OrderOverTheBox.orderModel.offer"
+                                    data-ng-options="offer for offer in OrderOverTheBox.offers"
+                                    data-ng-change="OrderOverTheBox.getOrderDurations()"
+                                    data-ng-disabled="OrderOverTheBox.states.orderDone">
+                            </select>
                         </div>
-
-                        <div class="row top-space-m16"
+                        <div class="form-group"
                              data-ng-show="OrderOverTheBox.durations.length > 0">
-                            <div class="col-xs-12 col-md-4 service-title data-ng-scope">
-                                <label for="select-duration" class="control-label"
-                                       data-translate="order_overTheBox_offer_duration"></label>
-                            </div>
-                            <div class="col-xs-12 col-md-8 service-item">
-                                <div flat-input-container class="input-group">
-                                    <select flat-select name="select-durations" class="form-control" id="select-duration"
-                                            data-ng-disabled="OrderOverTheBox.durations.length === 0 || OrderOverTheBox.loaders.durations || OrderOverTheBox.states.orderDone"
-                                            data-ng-model="OrderOverTheBox.orderModel.duration"
-                                            data-ng-options="duration for duration in OrderOverTheBox.durations">
-                                    </select>
-                                </div>
-                            </div>
+                            <label for="select-duration"
+                                   class="control-label"
+                                   data-translate="order_overTheBox_offer_duration">
+                            </label>
+                            <select class="form-control"
+                                    id="select-duration"
+                                    name="select-durations"
+                                    data-ng-model="OrderOverTheBox.orderModel.duration"
+                                    data-ng-options="duration for duration in OrderOverTheBox.durations"
+                                    data-ng-disabled="OrderOverTheBox.durations.length === 0 || OrderOverTheBox.loaders.durations || OrderOverTheBox.states.orderDone">
+                            </select>
                         </div>
-
-                        <div class="row top-space-m16"
+                        <div class="form-group"
                              data-ng-show="OrderOverTheBox.orderModel.offer && OrderOverTheBox.orderModel.duration">
-                            <div class="col-xs-12 col-md-4 service-title data-ng-scope">
-                                <label for="input-voucher" class="tooltip-label"
-                                       data-uib-tooltip="{{ 'order_overTheBox_voucher_informations' | translate}}"
-                                       data-translate="order_overTheBox_voucher"></label>
-                            </div>
-                            <div class="col-xs-12 col-md-8 service-item">
-                                <div flat-input-container class="input-group">
-                                    <input id="input-voucher"
-                                           name="input-voucher"
-                                           class="form-control"
-                                           data-ng-model="OrderOverTheBox.orderModel.voucher"
-                                           data-ng-disabled="OrderOverTheBox.states.orderDone"
-                                           data-ng-minlength="8"
-                                           data-ng-model-options="{debounce: {'default': 5000}}"
-                                           placeholder="{{'order_overTheBox_voucher_placeholder' | translate}}" />
-                                </div>
-                            </div>
+                            <label for="input-voucher"
+                                   class="control-label"
+                                   data-uib-tooltip="{{:: 'order_overTheBox_voucher_informations' | translate }}"
+                                   data-tooltip-append-to-body="true"
+                                   data-translate="order_overTheBox_voucher">
+                            </label>
+                            <input class="form-control"
+                                   id="input-voucher"
+                                   name="input-voucher"
+                                   data-ng-model="OrderOverTheBox.orderModel.voucher"
+                                   data-ng-model-options="{debounce: {'default': 5000}}"
+                                   data-ng-minlength="8"
+                                   data-ng-disabled="OrderOverTheBox.states.orderDone"
+                                   data-translate-attr="{ 'placeholder': 'order_overTheBox_voucher_placeholder' }" />
                         </div>
-
-                        <div class="row top-space-m16"
+                        <div class="form-group"
                              data-ng-show="OrderOverTheBox.orderModel.offer && OrderOverTheBox.orderModel.duration">
-                            <div class="col-xs-12 col-md-4 service-title data-ng-scope">
-                                <label for="input-voucher" class="tooltip-label"
-                                       data-uib-tooltip="{{ 'order_overTheBox_deviceId_informations' | translate}}"
-                                       data-translate="order_overTheBox_deviceId"></label>
-                            </div>
-                            <div class="col-xs-12 col-md-8 service-item">
-                                <div flat-input-container class="input-group">
-                                    <input id="input-deviceId"
-                                           name="input-deviceId"
-                                           class="form-control"
-                                           data-ng-model="OrderOverTheBox.orderModel.deviceId"
-                                           data-ng-model-options="{debounce: {'default': 800}}"
-                                           data-ng-disabled="OrderOverTheBox.states.orderDone"
-                                           list="devicesList"
-                                           placeholder="{{'order_overTheBox_deviceId_placeholder' | translate}}" />
-                                    <datalist id="devicesList">
-                                        <option data-ng-repeat="device in OrderOverTheBox.devices track by device.deviceId"
-                                                value="{{device.deviceId}}">
-                                        </option>
-                                    </datalist>
-                                </div>
+                            <label for="input-deviceId"
+                                   class="control-label"
+                                   data-uib-tooltip="{{:: 'order_overTheBox_deviceId_informations' | translate }}"
+                                   data-tooltip-append-to-body="true"
+                                   data-translate="order_overTheBox_deviceId">
+                            </label>
+                            <div class="input-group">
+                                <input id="input-deviceId"
+                                       name="input-deviceId"
+                                       class="form-control"
+                                       data-ng-model="OrderOverTheBox.orderModel.deviceId"
+                                       data-ng-model-options="{debounce: {'default': 800}}"
+                                       data-ng-disabled="OrderOverTheBox.states.orderDone"
+                                       list="devicesList"
+                                       placeholder="{{'order_overTheBox_deviceId_placeholder' | translate}}" />
+                                <datalist id="devicesList">
+                                    <option data-ng-repeat="device in OrderOverTheBox.devices track by device.deviceId"
+                                            value="{{device.deviceId}}">
+                                    </option>
+                                </datalist>
                             </div>
                         </div>
-
                     </div>
-                </div>
-            </div>
+                    <!-- /.widget-presentation -->
 
-            <!-- Information -->
-            <div class="row top-space-m32" >
-                <div class="col-md-12" data-ng-if="OrderOverTheBox.orderInformations">
-                    <div class="widget-presentation">
-                        <h2 class="widget-presentation-title" data-translate="order_overTheBox_offer_informations"></h2>
-                        <div class="table-responsive-vertical">
-                            <table class="table table-hover table-condensed ovh-form-flat table-form table-pretty">
+                    <!-- Information -->
+                    <div class="widget-presentation"
+                         data-ng-if="OrderOverTheBox.orderInformations">
+                        <h2 class="widget-presentation-title"
+                            data-translate="order_overTheBox_offer_informations">
+                        </h2>
+                        <div class="table-responsive">
+                            <table class="table table-hover table-condensed">
                                 <thead>
                                     <th data-translate="order_overTheBox_order_description"></th>
                                     <th data-translate="order_overTheBox_order_quantity"></th>
-                                    <th data-translate="order_overTheBox_order_price"></th>
+                                    <th class="text-right" data-translate="order_overTheBox_order_price"></th>
                                 </thead>
                                 <tbody>
                                     <tr data-ng-repeat="detail in OrderOverTheBox.orderInformations.details">
-                                        <td data-title="{{order_overTheBox_order_description | translate}}"
+                                        <td data-title="{{:: 'order_overTheBox_order_description' | translate }}"
                                             data-ng-bind="detail.description"></td>
-                                        <td data-title="{{order_overTheBox_order_quantity | translate}}"
+                                        <td data-title="{{:: 'order_overTheBox_order_quantity' | translate }}"
                                             data-ng-bind="detail.quantity"></td>
-                                        <td data-title="{{order_overTheBox_order_price | translate}}"
-                                            data-ng-bind="detail.totalPrice.text"></td>
+                                        <td class="text-right" data-title="{{:: 'order_overTheBox_order_price' | translate }}"
+                                            data-ng-bind="detail.totalPrice.text">
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td></td>
                                         <td></td>
-                                        <td>
+                                        <td class="text-right">
                                             <p>
                                                 <strong data-ng-bind="OrderOverTheBox.orderInformations.prices.withoutTax.text"></strong>
                                                 <span data-translate="order_overTheBox_price_ht"></span>
@@ -171,51 +172,48 @@
                                                 <span data-translate="order_overTheBox_price_ttc"></span>
                                             </p>
                                         </td>
-
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
-                </div>
-            </div>
+                    <!-- /.widget-presentation -->
 
-            <!-- Contracts -->
-            <div class="row" data-ng-hide="OrderOverTheBox.states.orderDone">
-                <div class="col-md-12" data-ng-if="OrderOverTheBox.orderInformations && OrderOverTheBox.orderInformations.contracts && OrderOverTheBox.orderInformations.contracts.length > 0">
-                    <div class="widget-presentation">
-                        <h2 class="widget-presentation-title" data-translate="order_overTheBox_offer_contracts"></h2>
-                        <div class="col-xs-12"
-                             data-contracts="OrderOverTheBox.orderInformations.contracts"
-                             data-full-text="false"
-                             data-contracts-validated="OrderOverTheBox.contractsAccepted">
+                    <!-- Contracts -->
+                    <div data-ng-hide="OrderOverTheBox.states.orderDone">
+                        <div class="widget-presentation"
+                             data-ng-if="OrderOverTheBox.orderInformations && OrderOverTheBox.orderInformations.contracts && OrderOverTheBox.orderInformations.contracts.length > 0">
+                            <h2 class="widget-presentation-title"
+                                data-translate="order_overTheBox_offer_contracts">
+                            </h2>
+                            <div class="col-xs-12"
+                                 data-contracts="OrderOverTheBox.orderInformations.contracts"
+                                 data-full-text="false"
+                                 data-contracts-validated="OrderOverTheBox.contractsAccepted">
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
 
-            <!-- Order accepted -->
-            <div class="row bottom-space-m32" data-ng-show="OrderOverTheBox.states.orderDone">
-                <div class="col-md-12">
-                    <p data-translate="order_overTheBox_orderDone"
-                          data-translate-values="{bcUrl: OrderOverTheBox.bcUrl}"></p>
-                </div>
-            </div>
+                    <!-- Order accepted -->
+                    <p data-ng-show="OrderOverTheBox.states.orderDone"
+                        data-translate="order_overTheBox_orderDone"
+                       data-translate-values="{bcUrl: OrderOverTheBox.bcUrl}">
+                    </p>
 
-            <!-- Submit -->
-            <div class="row bottom-space-m8 right-space-m8 text-center">
-                <button type="button"
-                        class="btn btn-primary btn-xs"
-                        title="{{'common_generate_order' | translate}}"
-                        data-ng-click="OrderOverTheBox.order()"
-                        data-ng-hide="OrderOverTheBox.states.orderDone"
-                        data-ng-disabled="!OrderOverTheBox.contractsAccepted || OrderOverTheBox.loaders.create"
-                    >
-                    <i class="ovh-font ovh-font-cart"></i>
-                    {{:: 'common_generate_order' | translate }}
-                </button>
+                    <!-- Submit -->
+                    <button type="button"
+                            class="btn btn-primary"
+                            data-ng-hide="OrderOverTheBox.states.orderDone"
+                            data-ng-click="OrderOverTheBox.order()"
+                            data-ng-disabled="!OrderOverTheBox.contractsAccepted || OrderOverTheBox.loaders.create"
+                            data-translate-attr="{ 'title': 'common_generate_order' }">
+                        <i class="ovh-font ovh-font-cart mr-2" aria-hidden="true"></i>
+                        <span data-translate="common_generate_order"></span>
+                    </button>
+                </form>
             </div>
-        </form>
+        </div>
+        <!-- /.row -->
 
     </div>
 

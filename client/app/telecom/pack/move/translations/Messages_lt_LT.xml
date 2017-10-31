@@ -36,7 +36,6 @@
    <translation id="pack_move_cannot_validate_move" qtlid="312831">Negalima perkelti paketo: {{message}}</translation>
    <translation id="pack_move_line_current_address" qtlid="312844">Dabartinis adresas</translation>
    <translation id="pack_move_line_future_address" qtlid="312857">Būsimas adresas</translation>
-   <translation id="pack_move_portLine_cost" qtlid="312870">Perkeliamumas kainuos <span class="bold red">50€</span></translation>
 
    <translation id="pack_move_eligibility_error" qtlid="312883">Perkeliamumo testas šiuo metu neprieinamas. Prašome pabandyti vėliau.</translation>
    <translation id="pack_move_eligibility_no_offers" qtlid="385975">Linija{{ number }} nesuderinama su pasiūlymais.</translation>

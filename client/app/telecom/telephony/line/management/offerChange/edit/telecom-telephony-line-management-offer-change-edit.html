@@ -3,11 +3,8 @@
       name="offerChangeEditForm">
 
     <div class="modal-header">
-        <h3 class="modal-title pull-left"
-            data-translate="telephony_line_management_change_offer_change_edit_title">
-        </h3>
         <button type="button"
-                class="close pull-right"
+                class="close float-right"
                 aria-label="{{'cancel'|translate}}"
                 data-ng-click="OfferChangeEditCtrl.cancel()">
             <span aria-hidden="true">&times;</span>
@@ -17,8 +14,8 @@
     <div class="modal-body"
          data-ng-if="OfferChangeEditCtrl.loading.init">
 
-        <bouncing-box-loader>
-            <h4 class="top-space-m16"
+        <bouncing-box-loader data-size="m">
+            <h4 class="mt-3"
                 data-translate="loading">
             </h4>
         </bouncing-box-loader>
@@ -27,6 +24,10 @@
 
     <div class="modal-body"
          data-ng-if="!OfferChangeEditCtrl.loading.init && !OfferChangeEditCtrl.loading.save && !OfferChangeEditCtrl.status.saved">
+
+            <h3 class="modal-title"
+                data-translate="telephony_line_management_change_offer_change_edit_title">
+            </h3>
 
             <div class="form-group">
                 <div class="col-xs-12">
@@ -53,7 +54,7 @@
 
     <div class="modal-body"
          data-ng-if="OfferChangeEditCtrl.loading.save && !OfferChangeEditCtrl.status.saved">
-        <bouncing-box-loader>
+        <bouncing-box-loader data-size="m">
             <h4 data-translate="telephony_line_management_change_offer_change_doing"></h4>
         </bouncing-box-loader>
     </div>

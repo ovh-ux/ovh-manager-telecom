@@ -9,14 +9,6 @@
 
 .telecom-telephony {
 
-    .tab-container {
-        .nav.nav-tabs {
-            > li a i {
-                font-size: 18px;
-            }
-        }
-    }
-
     header.telecom-nav {
       margin-top: 0px;
     }
@@ -25,7 +17,7 @@
         margin-bottom: 15px;
 
         .service-button-description{
-          color: @text-color-mainInfo;
+          color: @gray-dark;
 
           .action-icon{
             font-size: 16px;
@@ -46,29 +38,18 @@
           }
         }
 
-        &.main-service{
-          .service-button-description{
-            font-size: 14px;
-            font-weight: 700;
-
-            .action-icon{
-              font-size: 32px;
-              color: @UNIVERS;
-            }
-          }
-        }
-    }
-
-    .tab-container {
-        .nav.nav-tabs {
-            > li a i {
-                font-size: 18px;
+        &.main-service {
+            .service-button-description {
+                .action-icon {
+                    font-size: 32px;
+                    color: @oui-color-dodger;
+                }
             }
         }
     }
 
     footer.voip-action-bar {
-        background-color: @action-bar-bg-color;
+        background-color: rgba(70, 70, 70, 0.9);
         position: fixed;
 
         right: 0;
@@ -112,7 +93,7 @@
             line-height: 14px;
 
             &.voip-cancel {
-                background-color: @buttonFace;
+                background-color: #ddd;
             }
 
             &.voip-accept {
@@ -154,37 +135,5 @@
 
     .form-group {
         margin-bottom: 0;
-    }
-}
-
-#addPhonecontactForm,
-#updatePhonecontactForm {
-    .input-group-btn {
-        .flat-shadow;
-
-        border: inherit;
-
-        > button {
-            border-color: transparent;
-        }
-    }
-
-    .flat-valid,
-    .flat-invalid {
-        .input-group-btn {
-            background-color: inherit;
-        }
-    }
-
-    .dropdown-menu {
-        > li {
-            display: inherit;
-        }
-    }
-
-    .open > .dropdown-menu {
-        height: auto;
-        max-height: 150px;
-        overflow-x: hidden;
     }
 }

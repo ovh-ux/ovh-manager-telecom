@@ -22,24 +22,26 @@
                             <div class="row">
                                 <!-- TIME SLOT BTN -->
                                 <button type="button"
-                                        class="no-style col-xs-5 text-center space-p0"
-                                        data-ng-class="{ bold: !$ctrl.event.allDay }"
+                                        class="col-xs-5 text-center btn btn-link"
+                                        data-ng-class="{ 'font-weight-bold': !$ctrl.event.allDay }"
                                         data-ng-click="$ctrl.setAllDay(false)"
                                         data-translate="telephony_scheduler_events_time_slot">
                                 </button> <!-- TIME SLOT BTN -->
 
-                                <div class="col-xs-2">
-                                    <flat-switch class="inline-block vertical-middle">
+                                <div class="col-xs-2 mt-3 px-2">
+                                    <label class="oui-switch">
                                         <input type="checkbox"
+                                               class="oui-switch__checkbox"
                                                data-ng-model="$ctrl.event.allDay"
-                                               data-ng-change="$ctrl.manageOnAllDayChange()" />
-                                    </flat-switch>
+                                               data-ng-change="$ctrl.manageOnAllDayChange()">
+                                        <div class="oui-switch__slider"></div>
+                                    </label>
                                 </div>
 
                                 <!-- ALL DAY BTN -->
                                 <button type="button"
-                                        class="no-style col-xs-5 text-center space-p0"
-                                        data-ng-class="{ bold: $ctrl.event.allDay }"
+                                        class="col-xs-5 text-center btn btn-link"
+                                        data-ng-class="{ 'font-weight-bold': $ctrl.event.allDay }"
                                         data-ng-click="$ctrl.setAllDay(true)"
                                         data-translate="telephony_scheduler_events_all_day">
                                 </button> <!-- ALL DAY BTN -->
@@ -49,26 +51,25 @@
 
                     <div class="section-group">
                         <!-- TITLE -->
-                        <div class="section-item event-title">
-                            <div data-flat-input-container>
-                                <label for="title"
-                                       data-translate="telephony_scheduler_events_title">
-                                </label>
-                                <input type="text"
-                                       id="title"
-                                       class="form-control"
-                                       data-ng-model="$ctrl.event.title"
-                                       data-translate-attr="{ placeholder: 'telephony_scheduler_events_title' }" />
-                            </div>
+                        <div class="section-item event-title form-group">
+                            <label for="title"
+                                   class="control-label"
+                                   data-translate="telephony_scheduler_events_title">
+                            </label>
+                            <input type="text"
+                                   id="title"
+                                   class="form-control"
+                                   data-ng-model="$ctrl.event.title"
+                                   data-translate-attr="{ placeholder: 'telephony_scheduler_events_title' }" />
                         </div> <!-- TITLE -->
 
                         <!-- CATEGORY -->
                         <button type="button"
-                                class="section-item no-style full-width text-left"
+                                class="section-item w-100 text-left"
                                 data-ng-click="$ctrl.model.specialEdit = { attr: 'categories', move: true }"
                                 data-ng-disabled="!$ctrl.event.categories">
                             <label data-translate="telephony_scheduler_events_category"></label>
-                            <div class="event-category dtable telephony-scheduler-time-condition-slots"
+                            <div class="event-category telephony-scheduler-time-condition-slots"
                                  data-ng-if="$ctrl.event.categories">
                                 <voip-time-condition-slot data-time-condition-slot="$ctrl.convertCategoryToSlot()"
                                                           data-is-scheduler="true">
@@ -109,8 +110,7 @@
 
                                 <!-- FROM HOUR -->
                                 <div class="col-xs-5 event-date-hour">
-                                    <select flat-select
-                                            name="event-hour-from"
+                                    <select name="event-hour-from"
                                             class="form-control"
                                             data-ng-model="$ctrl.parseFromHour"
                                             data-ng-model-options="{ getterSetter: true }"
@@ -146,8 +146,7 @@
 
                                 <!-- TO HOUR -->
                                 <div class="col-xs-5 event-date-hour">
-                                    <select flat-select
-                                            name="event-hour-to"
+                                    <select name="event-hour-to"
                                             class="form-control"
                                             data-ng-model="$ctrl.parseToHour"
                                             data-ng-model-options="{ getterSetter: true }"
@@ -158,39 +157,37 @@
                         </div> <!-- TO -->
 
                         <!-- DESCRIPTION -->
-                        <div class="section-item event-description">
-                            <div data-flat-input-container>
-                                <label for="description"
-                                       data-translate="telephony_scheduler_events_description">
-                                </label>
-                                <textarea id="description"
-                                          name="eventDescription"
-                                          class="form-control"
-                                          data-ng-model="$ctrl.event.description"
-                                          data-translate-attr="{ placeholder: 'telephony_scheduler_events_description' }">
-                                </textarea>
-                            </div>
+                        <div class="section-item event-description form-group">
+                            <label for="description"
+                                   class="control-label"
+                                   data-translate="telephony_scheduler_events_description">
+                            </label>
+                            <textarea id="description"
+                                      name="eventDescription"
+                                      class="form-control"
+                                      data-ng-model="$ctrl.event.description"
+                                      data-translate-attr="{ placeholder: 'telephony_scheduler_events_description' }">
+                            </textarea>
                         </div> <!-- DESCRIPTION -->
                     </div>
 
                 </section>
 
-                <footer class="clearfix"
-                        data-ng-class="$ctrl.event.status !== 'CREATING' ? 'tripple-choice' : 'double-choice'">
+                <footer data-ng-class="$ctrl.event.status !== 'CREATING' ? 'tripple-choice' : 'double-choice'">
                     <button type="submit"
-                            class="btn btn-primary"
+                            class="btn btn-primary px-2 my-2"
                             data-translate="{{ $ctrl.event.status === 'CREATING' ? 'telephony_scheduler_events_create' : 'telephony_scheduler_events_save' }}"
                             data-ng-disabled="!$ctrl.event.hasChange() || !$ctrl.event.categories">
                     </button>
 
                     <button type="reset"
-                            class="btn btn-default"
+                            class="btn btn-default px-2 my-2"
                             data-ng-click="$ctrl.manageCancel()"
                             data-translate="cancel">
                     </button>
 
                     <button type="button"
-                            class="btn btn-danger"
+                            class="btn btn-danger px-2 my-2"
                             data-ng-click="$ctrl.manageDeleteConfirmation()"
                             data-ng-if="$ctrl.event.status !== 'CREATING'"
                             data-translate="delete">
@@ -203,10 +200,10 @@
             <section class="page-section page-right event-page"
                      data-ng-switch="$ctrl.model.specialEdit.attr">
 
-                <div class="scheduler-overlay full-width full-height"
+                <div class="scheduler-overlay w-100 h-100"
                      data-ng-if="$ctrl.loading.init">
-                    <div class="scheduler-overlay-backdrop full-width full-height"></div>
-                    <div class="scheduler-overlay-loader flex-col-center">
+                    <div class="scheduler-overlay-backdrop w-100 h-100"></div>
+                    <div class="scheduler-overlay-loader d-flex flex-column align-items-center justify-content-center">
                         <bouncing-box-loader>
                             <h3 data-translate="loading"></h3>
                         </bouncing-box-loader>
@@ -215,10 +212,10 @@
 
                 <header>
                     <button type="button"
-                            class="back-btn no-style no-space fs20"
+                            class="back-btn btn btn-link"
                             data-ng-click="$ctrl.model.specialEdit.move = false"
                             data-translate-attr="{ title: 'telephony_scheduler_events_back' }">
-                        <i class="ovh-font ovh-font-arrow-left"></i>
+                        <i class="ovh-font ovh-font-arrow-left" aria-hidden="true"></i>
                     </button>
 
                     <h2 data-ng-switch-when="categories"
@@ -239,31 +236,22 @@
                 <section data-ng-switch-when="categories"
                          class="telephony-scheduler-time-condition-slots">
 
-                    <div class="section-group">
-                        <label class="section-item full-width pointer dtable"
+                    <div class="section-group form-group">
+                        <label class="section-item w-100"
                                data-ng-class="{ 'text-muted': $ctrl.isCategoryAvailable(category) && category !== $ctrl.event.categories }"
                                data-ng-repeat="category in $ctrl.categories track by $index"
                                for="category-{{ category }}">
-                            <div class="event-category dtr">
-                                <div class="dtd vertical-middle category-radio">
-                                    <flat-radio>
-                                        <input type="radio"
-                                               name="eventCategories"
-                                               id="category-{{ category }}"
-                                               data-ng-model="$ctrl.event.categories"
-                                               data-ng-value="category"
-                                               data-ng-change="$ctrl.model.specialEdit.move = false"
-                                               data-ng-disabled="$ctrl.isCategoryAvailable(category) && category !== $ctrl.event.categories" />
-                                    </flat-radio>
-                                </div>
-                                <div class="dtd">
-                                    <div class="dtable">
-                                        <voip-time-condition-slot data-time-condition-slot="$ctrl.convertCategoryToSlot(category)"
-                                                                  data-is-scheduler="true">
-                                        </voip-time-condition-slot>
-                                    </div>
-                                </div>
-                            </div>
+                                <input type="radio"
+                                       name="eventCategories"
+                                       id="category-{{ category }}"
+                                       data-ng-model="$ctrl.event.categories"
+                                       data-ng-value="category"
+                                       data-ng-change="$ctrl.model.specialEdit.move = false"
+                                       data-ng-disabled="$ctrl.isCategoryAvailable(category) && category !== $ctrl.event.categories" />
+                                <voip-time-condition-slot class="d-inline-block mx-3"
+                                                          data-time-condition-slot="$ctrl.convertCategoryToSlot(category)"
+                                                          data-is-scheduler="true">
+                                </voip-time-condition-slot>
                         </label>
                     </div>
 
@@ -276,7 +264,7 @@
                         <div class="section-item">
                             <p data-translate="telephony_scheduler_events_delete_explain"></p>
 
-                            <footer class="double-choice clearfix no-space">
+                            <footer class="double-choice m-0 p-0">
                                 <button type="button"
                                         class="btn btn-danger"
                                         data-translate="common_confirm"

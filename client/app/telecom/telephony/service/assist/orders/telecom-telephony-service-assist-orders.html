@@ -1,9 +1,7 @@
 <section class="telecom-telephony-service-assist-orders">
 
     <bouncing-box-loader data-ng-if="OrdersCtrl.orders.isLoading">
-        <h3 data-translate="loading"
-            class="top-space-m24">
-        </h3>
+        <h2 data-translate="loading"></h2>
     </bouncing-box-loader>
 
     <div data-ng-if="!OrdersCtrl.orders.isLoading">
@@ -15,65 +13,65 @@
         </header>
 
         <div class="telecom-section-content">
-            <div class="table-responsive-vertical">
-                <table class="table table-pretty table-hover table-striped no-space">
+            <div class="table-responsive">
+                <table class="table"
+                       data-ng-class="{
+                           'table-hover table-striped': OrdersCtrl.orders.raw.length > 1
+                       }">
                     <thead>
                         <tr>
                             <th scope="col">
                                 <button
                                     type="button"
-                                    class="no-style no-outline left-space-p0"
+                                    class="btn btn-link p-0"
                                     data-ng-disabled="!OrdersCtrl.orders.paginated.length"
                                     data-ng-click="OrdersCtrl.orderBy('date')">
-                                    <label class="pointer"
-                                           data-translate="telephony_line_assist_orders_column_date">
-                                    </label>
-                                    <span class="table-pretty-filter">
-                                        <i class="fa" data-ng-class="{
-                                            'fa-sort': OrdersCtrl.orders.orderBy !== 'date',
-                                            'fa-sort-desc': OrdersCtrl.orders.orderBy === 'date' && OrdersCtrl.orders.orderDesc,
-                                            'fa-sort-asc': OrdersCtrl.orders.orderBy === 'date' && !OrdersCtrl.orders.orderDesc
-                                        }"></i>
+                                    <span data-translate="telephony_line_assist_orders_column_date"></span>
+                                    <span class="oui-icon align-baseline"
+                                          aria-hidden="true"
+                                          data-ng-class="{
+                                              'oui-icon-arrow-down': OrdersCtrl.orders.orderBy !== 'date',
+                                              'oui-icon-arrow-down': OrdersCtrl.orders.orderBy === 'date' && OrdersCtrl.orders.orderDesc,
+                                              'oui-icon-arrow-up': OrdersCtrl.orders.orderBy === 'date' && !OrdersCtrl.orders.orderDesc
+                                          }">
                                     </span>
                                 </button>
                             </th>
                             <th scope="col">
                                 <button
                                     type="button"
-                                    class="no-style no-outline left-space-p0"
+                                    class="btn btn-link p-0"
                                     data-ng-disabled="!OrdersCtrl.orders.paginated.length"
                                     data-ng-click="OrdersCtrl.orderBy('id')">
-                                    <label class="pointer"
-                                           data-translate="telephony_line_assist_orders_column_id">
-                                    </label>
-                                    <span class="table-pretty-filter">
-                                        <i class="fa" data-ng-class="{
-                                            'fa-sort': OrdersCtrl.orders.orderBy !== 'id',
-                                            'fa-sort-desc': OrdersCtrl.orders.orderBy === 'id' && OrdersCtrl.orders.orderDesc,
-                                            'fa-sort-asc': OrdersCtrl.orders.orderBy === 'id' && !OrdersCtrl.orders.orderDesc
-                                        }"></i>
+                                    <span data-translate="telephony_line_assist_orders_column_id"></span>
+                                    <span class="oui-icon align-baseline"
+                                          aria-hidden="true"
+                                          data-ng-class="{
+                                              'oui-icon-arrow-down': OrdersCtrl.orders.orderBy !== 'id',
+                                              'oui-icon-arrow-down': OrdersCtrl.orders.orderBy === 'id' && OrdersCtrl.orders.orderDesc,
+                                              'oui-icon-arrow-up': OrdersCtrl.orders.orderBy === 'id' && !OrdersCtrl.orders.orderDesc
+                                          }">
                                     </span>
                                 </button>
                             </th>
-                            <th scope="col">
+                            <th scope="col"
+                                colspan="2">
                                 <button
                                     type="button"
-                                    class="no-style no-outline left-space-p0"
+                                    class="btn btn-link p-0"
                                     data-ng-disabled="!OrdersCtrl.orders.paginated.length"
                                     data-ng-click="OrdersCtrl.orderBy('statusText')">
-                                    <label class="pointer"
-                                           data-translate="telephony_line_assist_orders_column_status">
-                                    </label>
-                                    <span class="table-pretty-filter">
-                                        <i class="fa" data-ng-class="{
-                                            'fa-sort': OrdersCtrl.orders.orderBy !== 'statusText',
-                                            'fa-sort-desc': OrdersCtrl.orders.orderBy === 'statusText' && OrdersCtrl.orders.orderDesc,
-                                            'fa-sort-asc': OrdersCtrl.orders.orderBy === 'statusText' && !OrdersCtrl.orders.orderDesc
-                                        }"></i>
+                                    <span data-translate="telephony_line_assist_orders_column_status"></span>
+                                    <span class="oui-icon align-baseline"
+                                          aria-hidden="true"
+                                          data-ng-class="{
+                                              'oui-icon-arrow-down': OrdersCtrl.orders.orderBy !== 'statusText',
+                                              'oui-icon-arrow-down': OrdersCtrl.orders.orderBy === 'statusText' && OrdersCtrl.orders.orderDesc,
+                                              'oui-icon-arrow-up': OrdersCtrl.orders.orderBy === 'statusText' && !OrdersCtrl.orders.orderDesc
+                                          }">
                                     </span>
                                 </button>
                             </th>
-                            <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody data-ng-if="!OrdersCtrl.orders.isLoading">
@@ -81,7 +79,7 @@
                             <td data-ng-bind="order.date | date:'mediumDate'"></td>
                             <td data-ng-bind="order.orderId"></td>
                             <td data-ng-bind="order.statusText"></td>
-                            <td>
+                            <td class="text-right">
                                 <a class="btn btn-default"
                                    target="_blank"
                                    data-ng-href="{{:: order.url }}"
@@ -98,30 +96,31 @@
                     </tbody>
                     <tbody data-ng-if="OrdersCtrl.orders.isLoading">
                         <tr>
-                            <td class="text-center top-space-p16 bottom-space-p16" colspan="4">
-                                <spinner></spinner>
+                            <td colspan="4">
+                                <bouncing-box-loader data-size="m"></bouncing-box-loader>
                             </td>
                         </tr>
                     </tbody>
                     <tbody data-ng-if="!OrdersCtrl.orders.isLoading && !OrdersCtrl.orders.raw.length">
                         <tr>
-                            <td class="text-center top-space-p16 bottom-space-p16" colspan="4">
-                                <span data-translate="telephony_line_assist_orders_empty"></span>
+                            <td colspan="4"
+                                class="text-center"
+                                data-translate="telephony_line_assist_orders_empty">
                             </td>
                         </tr>
                     </tbody>
                 </table>
-                <div class="table-pretty-pagination top-space-m8"
-                     data-ng-if="!OrdersCtrl.orders.isLoading && OrdersCtrl.orders.raw.length"
-                     data-pagination-front
-                     data-items="OrdersCtrl.orders.sorted"
-                     data-paginated-items="OrdersCtrl.orders.paginated"
-                     data-current-page="currentPage"
-                     data-nb-pages="nbPages"
-                     data-items-per-page="itemsPerPage"
-                     data-page-placeholder="{{'common_pagination_page' | translate: {currentPage:currentPage, nbPages:nbPages} }}"
-                     data-item-per-page-placeholder="{{'common_pagination_display' | translate}}">
-                </div>
+            </div>
+            <div class="mt-2"
+                 data-ng-if="!OrdersCtrl.orders.isLoading && OrdersCtrl.orders.raw.length"
+                 data-pagination-front
+                 data-items="OrdersCtrl.orders.sorted"
+                 data-paginated-items="OrdersCtrl.orders.paginated"
+                 data-current-page="currentPage"
+                 data-nb-pages="nbPages"
+                 data-items-per-page="itemsPerPage"
+                 data-page-placeholder="{{'common_pagination_page' | translate: {currentPage:currentPage, nbPages:nbPages} }}"
+                 data-item-per-page-placeholder="{{'common_pagination_display' | translate}}">
             </div>
         </div>
         <!-- /.telecom-section-content -->

@@ -152,11 +152,9 @@
 
    <translation id="common_menu_changelog" qtlid="260971">Changelog</translation>
 
-   <translation id="common_express_lite_banner_desc" qtlid="304875">Express Lite includes a modem providing internet access and a VoIP line for <span class="ad-price bold fs14">€22.99 excl. GST</span>&#160;/&#160;month.</translation>
    <translation id="common_express_lite_banner_title" qtlid="304888">OVH is launching a new ADSL and VDSL connection service. </translation>
    <translation id="common_generate_order" qtlid="186219">Generate purchase order</translation>
    <translation id="common_boost_banner_title" qtlid="304901">OVH has released two "Internet Only" limited ranges to offer maximum speed.</translation>
-   <translation id="common_boost_banner_desc" qtlid="304914">Secure your connection with the <span class="ad-price bold fs14">CONNECT</span> offer or double your speed with the <span class="ad-price bold fs14">BOOST</span> service which includes the hardware and the <span class="ad-price bold fs14">OVER THE BOX</span> service.<br/><small>Offer limited to 240 orders.</small></translation>
    <translation id="common_banner_discover" qtlid="304927">Find out more </translation>
    <translation id="common_service_name_edit_title" qtlid="331683">{{ title }} : éditer le nom du service</translation>
 

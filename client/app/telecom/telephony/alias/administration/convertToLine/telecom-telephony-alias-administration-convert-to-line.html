@@ -7,50 +7,48 @@
         <h1 data-translate="telephony_alias_administration_convert_title"></h1>
     </header>
 
-    <div class="telecom-section-content" data-ng-if="AliasConvertCtrl.isLoading">
-        <bouncing-box-loader>
-            <h4 data-translate="loading"></h4>
-        </bouncing-box-loader>
-    </div>
+    <bouncing-box-loader data-ng-if="AliasConvertCtrl.isLoading"
+                         data-size="m">
+        <h2 data-translate="loading"></h2>
+    </bouncing-box-loader>
 
-    <div class="telecom-section-content" data-ng-if="!AliasConvertCtrl.isLoading">
-        <div class="row" class="bottom-space-m32">
+    <div class="telecom-section-content"
+         data-ng-if="!AliasConvertCtrl.isLoading">
 
-            <div data-ng-if="AliasConvertCtrl.isLoading">
-                <bouncing-box-loader>
-                    <h2 class="top-space-m16" data-translate="loading"></h2>
-                </bouncing-box-loader>
-            </div>
+        <toast-message></toast-message>
+
+        <div class="row">
 
             <!-- OFFER SELECTION -->
             <div class="col-md-6 widget-presentation">
                 <header class="widget-presentation-header">
                     <h2 class="widget-presentation-title"
                         data-ng-if="!AliasConvertCtrl.convertTask"
-                        data-translate="telephony_alias_administration_convert_offers_title"></h2>
+                        data-translate="telephony_alias_administration_convert_offers_title">
+                    </h2>
                     <h2 class="widget-presentation-title"
                         data-ng-if="AliasConvertCtrl.convertTask"
-                        data-translate="telephony_alias_administration_convert_task_title"></h2>
+                        data-translate="telephony_alias_administration_convert_task_title">
+                    </h2>
                 </header>
 
-                <div class="alert alert-danger" role="alert"
-                     data-ng-if="AliasConvertCtrl.offerError">
-                    <i class="ovh-font ovh-font-filled-error right-space-m8"></i>
-                    <p data-ng-bind="AliasConvertCtrl.offerError"></p>
+                <div class="alert alert-danger"
+                     role="alert"
+                     data-ng-if="AliasConvertCtrl.offerError"
+                     data-ng-bind="AliasConvertCtrl.offerError">
                 </div>
 
                 <form name="offerSelectForm"
                       id="offerSelectForm"
                       data-ng-if="!AliasConvertCtrl.convertTask && AliasConvertCtrl.offers"
                       data-ng-submit="AliasConvertCtrl.convertToLine()">
-                    <div class="form-group bottom-space-m16 clearfix">
+                    <div class="form-group">
                         <label for="offerSelect"
                                class="control-label"
                                data-translate="telephony_alias_administration_convert_offers">
                         </label>
                         <div class="input-group">
                             <select
-                                flat-select
                                 name="offerSelect"
                                 id="offerSelect"
                                 class="form-control"
@@ -58,7 +56,7 @@
                                 data-ng-model="AliasConvertCtrl.offer"
                                 data-ng-options="offer.description for offer in AliasConvertCtrl.offers">
                             </select>
-                            <span class="input-group-addon text-price bold"
+                            <span class="input-group-addon text-price font-weight-bold"
                                 data-translate="telephony_alias_administration_convert_monthly_price_tax_free"
                                 data-translate-values="{ price: AliasConvertCtrl.offer.price.text }">
                             </span>
@@ -68,42 +66,54 @@
                          data-contracts-validated="AliasConvertCtrl.contractsAccepted">
                     </div>
                     <button type="submit"
-                            class="btn btn-primary pull-right"
+                            class="btn btn-primary"
                             data-ng-disabled="!AliasConvertCtrl.contractsAccepted || AliasConvertCtrl.isConverting">
+                        <bouncing-box-loader class="d-inline-block align-middle"
+                                             data-size="s"
+                                             data-ng-if="AliasConvertCtrl.isConverting">
+                        </bouncing-box-loader>
                         <span data-translate="telephony_alias_administration_convert_submit"></span>
-                        <spinner class="left-space-m4" data-ng-if="AliasConvertCtrl.isConverting"></spinner>
                     </button>
                 </form>
 
                 <div data-ng-if="AliasConvertCtrl.convertTask">
                     <p class="text-danger">
-                        <i class="ovh-font ovh-font-warning fs16 line-height-normal right-space-m4"></i>
+                        <i class="ovh-font ovh-font-warning mr-1" aria-hidden="true"></i>
                         <span data-translate="telephony_alias_administration_convert_task"
                               data-translate-values="{
                                   number: (AliasConvertCtrl.serviceName | phoneNumber),
-                                  date: (AliasConvertCtrl.convertTask.executionDate | date) }"></span>
+                                  date: (AliasConvertCtrl.convertTask.executionDate | date)
+                              }">
+                        </span>
                     </p>
                     <button type="button"
-                            class="btn btn-default top-space-m4 pull-right"
+                            class="btn btn-default"
                             data-ng-disabled="AliasConvertCtrl.isCancelling"
                             data-ng-click="AliasConvertCtrl.cancelConvertion()">
+                        <bouncing-box-loader class="d-inline-block align-middle"
+                                             data-size="s"
+                                             data-ng-if="AliasConvertCtrl.isCancelling">
+                        </bouncing-box-loader>
                         <span data-translate="telephony_alias_administration_convert_cancel"></span>
-                        <spinner class="left-space-m4" data-ng-if="AliasConvertCtrl.isCancelling"></spinner>
                     </button>
                 </div>
-
-
             </div>
+            <!-- /.widget-presentation -->
 
             <!-- INFORMATIONS -->
             <div class="col-md-6 widget-presentation">
                 <header class="widget-presentation-header">
-                    <h2 class="widget-presentation-title" data-translate="telephony_alias_administration_convert_info_subtitle"></h2>
+                    <h2 class="widget-presentation-title"
+                        data-translate="telephony_alias_administration_convert_info_subtitle">
+                    </h2>
                 </header>
                 <p data-translate="telephony_alias_administration_convert_info"></p>
             </div>
+            <!-- /.widget-presentation -->
 
-        </div><!-- row -->
-    </div><!-- offer selection -->
+        </div>
+    </div>
+    <!-- /.telecom-section-content -->
 
 </section>
+<!-- /.telephony-group-alias-convertToLine -->

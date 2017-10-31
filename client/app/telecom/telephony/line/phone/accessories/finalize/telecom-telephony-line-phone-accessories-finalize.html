@@ -1,17 +1,17 @@
 <div class="telecom-telephony-line-phone-accessories-finalize">
 
-    <bouncing-box-loader data-ng-if="AccessoriesFinalizeCtrl.loading.init">
-        <h3 class="top-space-m16"
+    <bouncing-box-loader data-size="m"
+                         data-ng-if="AccessoriesFinalizeCtrl.loading.init">
+        <h3 class="mt-3"
             data-translate="loading">
         </h3>
     </bouncing-box-loader>
 
     <form data-ng-if="!AccessoriesFinalizeCtrl.loading.init">
 
-        <div data-ng-if="AccessoriesFinalizeCtrl.error"
+        <div class="alert alert-danger"
              role="alert"
-             class="alert alert-danger">
-             <i class="ovh-font ovh-font-filled-error"></i>
+             data-ng-if="AccessoriesFinalizeCtrl.error">
             <p>
                 <span data-translate="telephony_line_phone_accessories_finalize_error"></span>
                 <span data-ng-bind="AccessoriesFinalizeCtrl.error.data.message"></span>
@@ -26,9 +26,8 @@
             </h2>
 
             <p class="alert alert-success"
-               role="alert">
-                <i class="ovh-font ovh-font-filled-check" aria-hidden="true"></i>
-                <span data-translate="telephony_line_phone_accessories_finalize_success"></span>
+               role="alert"
+               data-translate="telephony_line_phone_accessories_finalize_success">
             </p>
 
             <dl class="dl-horizontal">

@@ -7,23 +7,26 @@
         <h1 data-translate="telephony_group_billing_called_fees_title"></h1>
     </header>
 
-    <bouncing-box-loader data-ng-if="CalledFeesCtrl.consumptions.isLoading">
+    <bouncing-box-loader data-size="m"
+                         data-ng-if="CalledFeesCtrl.consumptions.isLoading">
         <h2 data-translate="loading"></h2>
     </bouncing-box-loader>
 
     <div class="telecom-section-content"
          data-ng-if="!CalledFeesCtrl.consumptions.isLoading">
 
+        <toast-message></toast-message>
+
         <div class="row">
 
-            <div class="col-xs-12 col-sm-4 pull-right widget-presentation">
+            <div class="col-xs-12 col-sm-4 float-right widget-presentation">
                 <header class="widget-presentation-header">
                     <h2 class="widget-presentation-title"
                         data-translate="telephony_group_billing_called_fees_total_title">
                     </h2>
                 </header>
-                <ul class="list-unstyled bottom-space-m32">
-                    <li class="fs22 bold"
+                <ul class="list-unstyled mb-5">
+                    <li class="h2"
                         data-translate="telephony_group_billing_called_fees_total_price"
                         data-translate-values="{ totalPrice: CalledFeesCtrl.consumptions.totalPrice }">
                     </li>
@@ -53,10 +56,10 @@
                 </p>
                 <ul class="list-unstyled"
                     data-ng-if="CalledFeesCtrl.consumptions.groupedByDialedNumber.length">
-                    <li class="well bottom-space-m16"
+                    <li class="well mb-3"
                         data-ng-repeat="group in CalledFeesCtrl.consumptions.groupedByDialedNumber track by group.dialed">
                         <h3 data-ng-bind="group.dialed | phoneNumber"></h3>
-                        <ul class="list-unstyled bottom-space-m16 left-space-m12">
+                        <ul class="list-unstyled mb-3 ml-3">
                             <li data-ng-repeat="detail in group.details track by $index">
                                 <span data-ng-if="detail.operator === 'other'"
                                       data-translate="telephony_group_billing_called_fees_detail_operator_other">

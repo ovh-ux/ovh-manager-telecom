@@ -1,20 +1,20 @@
 <form name="limitUserForm"
       id="limitUserForm"
-      class="ovh-form-flat"
       data-ng-submit="UsersLimitCtrl.limit()">
 
     <div class="modal-header">
-        <h3 class="modal-title pull-left" data-translate="sms_users_limit_user_title"></h3>
         <button
             type="button"
-            class="close pull-right"
+            class="close float-right"
             aria-label="{{ ::'cancel' | translate }}"
             data-ng-click="UsersLimitCtrl.cancel()">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
 
-    <div class="modal-body" data-ng-if="!UsersLimitCtrl.loading.init && !UsersLimitCtrl.loading.limitUser && !UsersLimitCtrl.limited">
+    <div class="modal-body"
+         data-ng-if="!UsersLimitCtrl.loading.init && !UsersLimitCtrl.loading.limitUser && !UsersLimitCtrl.limited">
+        <h3 data-translate="sms_users_limit_user_title"></h3>
 
         <p class="word-break"
            data-translate="sms_users_limit_user_info"
@@ -22,154 +22,154 @@
         </p>
 
         <!-- LIMIT STATUS -->
-        <div class="form-group bottom-space-m16">
-            <label class="block pointer">
-                <flat-checkbox>
-                    <input
-                        type="checkbox"
-                        name="limitStatus"
-                        id="limitStatus"
-                        class="form-control"
-                        autofocus
-                        data-ng-model="UsersLimitCtrl.model.user.alertThresholdInformations.limitStatus"
-                        data-ng-checked="UsersLimitCtrl.model.user.alertThresholdInformations.limitStatus === 'active'"
-                        data-ng-true-value="'active'"
-                        data-ng-false-value="'inactive'" />
-                </flat-checkbox>
-                <span class="left-space-m8" data-translate="sms_users_limit_user_alert_activate_label"></span>
+        <div class="checkbox">
+            <label>
+                <input
+                    type="checkbox"
+                    name="limitStatus"
+                    id="limitStatus"
+                    autofocus
+                    data-ng-model="UsersLimitCtrl.model.user.alertThresholdInformations.limitStatus"
+                    data-ng-checked="UsersLimitCtrl.model.user.alertThresholdInformations.limitStatus === 'active'"
+                    data-ng-true-value="'active'"
+                    data-ng-false-value="'inactive'" />
+                <span data-translate="sms_users_limit_user_alert_activate_label"></span>
             </label>
         </div>
 
         <!-- ALERT THRESHOLD -->
-        <div class="form-group bottom-space-m16">
-            <div data-flat-input-container>
-                <label for="alertThreshold"
-                       class="control-label"
-                       data-translate="sms_users_limit_user_alert_threshold_label">
-                </label>
-                <input
-                    type="number"
-                    name="alertThreshold"
-                    id="alertThreshold"
-                    class="form-control"
-                    min="1"
-                    data-ng-model="UsersLimitCtrl.alertThreshold"
-                    data-ng-required="UsersLimitCtrl.model.user.alertThresholdInformations.limitStatus === 'active'"
-                    data-ng-disabled="UsersLimitCtrl.model.user.alertThresholdInformations.limitStatus === 'inactive'"
-                    data-translate-attr="{ placeholder: 'sms_users_limit_user_alert_threshold_placeholder' }" />
-                <div role="alert"
-                     data-ng-messages="limitUserForm.alertThreshold.$error">
-                    <p class="text-danger"
-                       data-ng-message="required"
-                       data-translate="sms_users_limit_user_alert_threshold_error_required">
-                    </p>
-                    <p class="text-danger"
-                       data-ng-message="min"
-                       data-translate="sms_users_limit_user_alert_threshold_error_min">
-                    </p>
-                </div>
-            </div>
+        <div class="form-group"
+             data-ng-class="{
+                 'has-error': limitUserForm.alertThreshold.$touched && limitUserForm.alertThreshold.$invalid
+             }">
+            <label for="alertThreshold"
+                   class="control-label"
+                   data-translate="sms_users_limit_user_alert_threshold_label">
+            </label>
+            <input
+                type="number"
+                name="alertThreshold"
+                id="alertThreshold"
+                class="form-control"
+                min="1"
+                data-ng-model="UsersLimitCtrl.alertThreshold"
+                data-ng-required="UsersLimitCtrl.model.user.alertThresholdInformations.limitStatus === 'active'"
+                data-ng-disabled="UsersLimitCtrl.model.user.alertThresholdInformations.limitStatus === 'inactive'"
+                data-translate-attr="{ placeholder: 'sms_users_limit_user_alert_threshold_placeholder' }" />
+            <span class="help-block"
+                  role="alert"
+                  data-ng-if="limitUserForm.alertThreshold.$touched"
+                  data-ng-messages="limitUserForm.alertThreshold.$error">
+                <span data-ng-message="required"
+                      data-translate="sms_users_limit_user_alert_threshold_error_required">
+                </span>
+                <span data-ng-message="min"
+                      data-translate="sms_users_limit_user_alert_threshold_error_min">
+                </span>
+            </span>
         </div>
 
         <!-- SUPPORT -->
-        <div class="form-group bottom-space-m16 clearfix">
+        <div class="form-group">
             <label for="support"
                    class="control-label"
                    data-translate="sms_users_limit_user_support_label">
             </label>
-            <div data-flat-input-container>
-                <select
-                    name="support"
-                    id="support"
-                    class="form-control"
-                    data-flat-select
-                    data-ng-model="UsersLimitCtrl.model.user.alertThresholdInformations.support"
-                    data-ng-options="support as ('sms_users_limit_user_support_' + support | translate) for support in UsersLimitCtrl.enums"
-                    data-ng-disabled="UsersLimitCtrl.model.user.alertThresholdInformations.limitStatus === 'inactive'">
-                </select>
-            </div>
+            <select
+                name="support"
+                id="support"
+                class="form-control"
+                data-ng-model="UsersLimitCtrl.model.user.alertThresholdInformations.support"
+                data-ng-options="support as ('sms_users_limit_user_support_' + support | translate) for support in UsersLimitCtrl.enums"
+                data-ng-disabled="UsersLimitCtrl.model.user.alertThresholdInformations.limitStatus === 'inactive'">
+            </select>
         </div>
 
         <!-- ALERT EMAIL -->
-        <div class="form-group bottom-space-m16"
+        <div class="form-group"
              data-ng-if="UsersLimitCtrl.model.user.alertThresholdInformations.support === 'mail' ||
-                         UsersLimitCtrl.model.user.alertThresholdInformations.support === 'both'">
-            <div data-flat-input-container>
-                <label for="alertEmail"
-                       class="control-label"
-                       data-translate="sms_users_limit_user_alert_email_label">
-                </label>
-                <input
-                    type="email"
-                    name="alertEmail"
-                    id="alertEmail"
-                    class="form-control"
-                    placeholder="{{ ::'sms_users_limit_user_alert_email_placehoder' | translate }}"
-                    data-ng-model="UsersLimitCtrl.model.user.alertThresholdInformations.alertEmail"
-                    data-ng-required="UsersLimitCtrl.model.user.alertThresholdInformations.support === 'mail' ||
-                                      UsersLimitCtrl.model.user.alertThresholdInformations.support === 'both'" />
-                <div role="alert"
-                     data-ng-messages="limitUserForm.alertEmail.$error">
-                    <p class="text-danger"
-                       data-ng-message="required"
-                       data-translate="sms_users_limit_user_alert_email_error_required">
-                    </p>
-                    <p class="text-danger"
-                       data-ng-message="email"
-                       data-translate="sms_users_limit_user_alert_email_error_email">
-                    </p>
-                </div>
-            </div>
+                         UsersLimitCtrl.model.user.alertThresholdInformations.support === 'both'"
+             data-ng-class="{
+                 'has-error': limitUserForm.alertEmail.$touched && limitUserForm.alertEmail.$invalid
+             }">
+            <label for="alertEmail"
+                   class="control-label"
+                   data-translate="sms_users_limit_user_alert_email_label">
+            </label>
+            <input
+                type="email"
+                name="alertEmail"
+                id="alertEmail"
+                class="form-control"
+                placeholder="{{ ::'sms_users_limit_user_alert_email_placehoder' | translate }}"
+                data-ng-model="UsersLimitCtrl.model.user.alertThresholdInformations.alertEmail"
+                data-ng-required="UsersLimitCtrl.model.user.alertThresholdInformations.support === 'mail' ||
+                                  UsersLimitCtrl.model.user.alertThresholdInformations.support === 'both'" />
+            <span class="help-block"
+                  role="alert"
+                  data-ng-if="limitUserForm.alertEmail.$touched"
+                  data-ng-messages="limitUserForm.alertEmail.$error">
+                <span data-ng-message="required"
+                     data-translate="sms_users_limit_user_alert_email_error_required">
+                </span>
+                <span data-ng-message="email"
+                     data-translate="sms_users_limit_user_alert_email_error_email">
+                </span>
+            </span>
         </div>
 
         <!-- ALERT NUMBER -->
-        <div class="form-group bottom-space-m16"
+        <div class="form-group"
              data-ng-if="UsersLimitCtrl.model.user.alertThresholdInformations.support === 'sms' ||
-                         UsersLimitCtrl.model.user.alertThresholdInformations.support === 'both'">
-            <div data-flat-input-container>
-                <label for="alertNumber"
-                       class="control-label"
-                       data-translate="sms_users_limit_user_alert_number_label">
-                </label>
-                <input
-                    type="tel"
-                    name="alertNumber"
-                    id="alertNumber"
-                    class="form-control"
-                    data-translate-attr="{ placeholder: 'sms_users_limit_user_alert_number_placeholder' }"
-                    data-ng-pattern="UsersLimitCtrl.numberPattern"
-                    data-ng-model="UsersLimitCtrl.model.user.alertThresholdInformations.alertNumber"
-                    data-ng-required="UsersLimitCtrl.model.user.alertThresholdInformations.support === 'sms' ||
-                                      UsersLimitCtrl.model.user.alertThresholdInformations.support === 'both'" />
-                <div role="alert"
-                     data-ng-messages="(limitUserForm.$invalid && limitUserForm.alertNumber.$dirty) && limitUserForm.alertNumber.$error">
-                    <p class="text-danger"
-                       data-ng-message="required"
-                       data-translate="sms_users_limit_user_alert_number_error_required">
-                    </p>
-                    <p class="text-danger"
-                       data-ng-message="pattern"
-                       data-translate="sms_users_limit_user_alert_number_error_pattern">
-                    </p>
-                </div>
-            </div>
+                         UsersLimitCtrl.model.user.alertThresholdInformations.support === 'both'"
+             data-ng-class="{
+                 'has-error': limitUserForm.alertNumber.$touched && limitUserForm.alertNumber.$invalid
+             }">
+            <label for="alertNumber"
+                   class="control-label"
+                   data-translate="sms_users_limit_user_alert_number_label">
+            </label>
+            <input
+                type="tel"
+                name="alertNumber"
+                id="alertNumber"
+                class="form-control"
+                data-translate-attr="{ placeholder: 'sms_users_limit_user_alert_number_placeholder' }"
+                data-ng-pattern="UsersLimitCtrl.numberPattern"
+                data-ng-model="UsersLimitCtrl.model.user.alertThresholdInformations.alertNumber"
+                data-ng-required="UsersLimitCtrl.model.user.alertThresholdInformations.support === 'sms' ||
+                                  UsersLimitCtrl.model.user.alertThresholdInformations.support === 'both'" />
+            <span class="help-block"
+                  role="alert"
+                  data-ng-if="limitUserForm.alertNumber.$touched"
+                  data-ng-messages="limitUserForm.alertNumber.$error">
+                <span data-ng-message="required"
+                     data-translate="sms_users_limit_user_alert_number_error_required">
+                </span>
+                <span data-ng-message="pattern"
+                     data-translate="sms_users_limit_user_alert_number_error_pattern">
+                </span>
+            </span>
         </div>
 
     </div>
 
-    <div class="modal-body" data-ng-if="UsersLimitCtrl.loading.init">
-        <bouncing-box-loader>
+    <div class="modal-body"
+         data-ng-if="UsersLimitCtrl.loading.init">
+        <bouncing-box-loader data-size="m">
             <h4 data-translate="loading"></h4>
         </bouncing-box-loader>
     </div>
 
-    <div class="modal-body" data-ng-if="UsersLimitCtrl.loading.limitUser && !UsersLimitCtrl.limited">
-        <bouncing-box-loader>
+    <div class="modal-body"
+         data-ng-if="UsersLimitCtrl.loading.limitUser && !UsersLimitCtrl.limited">
+        <bouncing-box-loader data-size="m">
             <h4 data-translate="sms_users_limit_user_adding"></h4>
         </bouncing-box-loader>
     </div>
 
-    <div class="modal-body" data-ng-if="UsersLimitCtrl.limited">
+    <div class="modal-body"
+         data-ng-if="UsersLimitCtrl.limited">
         <success-drawing-check data-draw-success-check="UsersLimitCtrl.limited">
             <h4 data-translate="sms_users_limit_user_added"></h4>
         </success-drawing-check>
@@ -186,7 +186,10 @@
         <button
             type="submit"
             class="btn btn-primary"
-            data-ng-disabled="limitUserForm.$invalid || !UsersLimitCtrl.hasChanged() || UsersLimitCtrl.loading.limitUser || UsersLimitCtrl.limited"
+            data-ng-disabled="limitUserForm.$invalid ||
+                              !UsersLimitCtrl.hasChanged() ||
+                              UsersLimitCtrl.loading.limitUser ||
+                              UsersLimitCtrl.limited"
             data-translate="submit">
         </button>
     </div>

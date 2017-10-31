@@ -1,7 +1,8 @@
 <div class="telecom-pack-migration-offers">
 
-    <bouncing-box-loader data-ng-if="OffersCtrl.loading.init">
-        <h2 class="top-space-m16"
+    <bouncing-box-loader data-size="m"
+                         data-ng-if="OffersCtrl.loading.init">
+        <h2 class="mt-3"
             data-translate="loading">
         </h2>
     </bouncing-box-loader>
@@ -12,7 +13,6 @@
         <div class="alert alert-danger"
              role="alert"
              data-ng-if="OffersCtrl.process.migrationOffers.error">
-             <span class="ovh-font ovh-font-filled-error" aria-hidden="true"></span>
              <p>
                  <span data-translate="telecom_pack_migration_offer_choice_error_loading"></span>
                  <span data-ng-bind="OffersCtrl.process.migrationOffers.error"></span>
@@ -25,15 +25,14 @@
             <!-- NO OFFERS AVAILABLE -->
             <div class="alert alert-info"
                  role="alert"
-                 data-ng-if="OffersCtrl.process.migrationOffers.result.offers.length === 0">
-                 <span class="ovh-font ovh-font-filled-info" aria-hidden="true"></span>
-                 <p data-translate="telecom_pack_migration_offer_choice_no_offers"></p>
+                 data-ng-if="OffersCtrl.process.migrationOffers.result.offers.length === 0"
+                 data-translate="telecom_pack_migration_offer_choice_no_offers">
             </div>
 
             <!-- OFFERS LIST -->
             <div data-ng-if="OffersCtrl.process.migrationOffers.result.offers.length > 0">
 
-                <div class="table-responsive-vertical">
+                <div class="table-responsive">
                     <table class="table table-comparison">
                         <thead class="table-comparison__head">
                             <tr>
@@ -48,7 +47,7 @@
                                        target="_blank"
                                        title="{{ 'telecom_pack_migration_offer_choice_offer_more_infos' | translate:offer }}">
                                         <span data-ng-bind="offer.description"></span>
-                                        <span class="ovh-font ovh-font-newtab fs16 left-space-m4"></span>
+                                        <span class="ovh-font ovh-font-newtab ml-2"></span>
                                     </a>
                                 </th>
                             </tr>
@@ -87,7 +86,7 @@
                                 data-ng-if="OffersCtrl.hasOfferWithSubServicesToDelete()">
                                 <th class="table-comparison__cell table-comparison__cell--border table-comparison__property-name" scope="row">
                                     <span data-translate="telecom_pack_migration_services_to_delete"></span>
-                                    <span class="pointer ovh-font ovh-font-info"
+                                    <span class="ovh-font ovh-font-info"
                                         aria-hidden="true"
                                         data-uib-tooltip="{{ 'telecom_pack_migration_services_to_delete_explain' | translate }}">
                                    </span>
@@ -98,8 +97,8 @@
                                     data-title="{{ offer.description }}"
                                     data-ng-repeat="offer in OffersCtrl.process.migrationOffers.result.offers track by $index">
                                     <span data-ng-bind="offer.totalSubServiceToDelete"
-                                          class="inline-block vertical-middle"></span>
-                                    <span class="pointer ovh-font ovh-font-info"
+                                          class="d-inline-block align-middle"></span>
+                                    <span class="ovh-font ovh-font-info"
                                           aria-hidden="true"
                                           data-uib-tooltip="{{ 'telecom_pack_migration_offer_services_to_delete_explain' | translate }}">
                                    </span>
@@ -121,16 +120,16 @@
                                 <td class="table-comparison__cell table-comparison__value table-comparison--item-base" data-translate-attr="{ 'data-title' : 'telecom_pack_migration_current_offer' }"
                                     data-translate-values="{ offerName : OffersCtrl.process.pack.offerDescription }">
                                     <div data-ng-if="OffersCtrl.process.pack.options.voipLine">
-                                        <strong class="block"
+                                        <strong class="d-block"
                                                 data-translate="{{ OffersCtrl.process.pack.options.voipLine.total > 1 ? 'telecom_pack_migration_lines_included' : 'telecom_pack_migration_line_included' }}"
                                                 data-translate-values="{ number : OffersCtrl.process.pack.options.voipLine.total }">
                                         </strong>
-                                        <span class="block"
+                                        <span class="d-block"
                                               data-translate="{{ OffersCtrl.process.pack.options.voipLine.used > 1 ? 'telecom_pack_migration_lines_activated' : 'telecom_pack_migration_line_activated' }}"
                                               data-translate-values="{ number : OffersCtrl.process.pack.options.voipLine.used }">
                                         </span>
                                     </div>
-                                    <strong class="block text-muted"
+                                    <strong class="d-block text-muted"
                                             data-ng-if="!OffersCtrl.process.pack.options.voipLine"
                                             data-translate="telecom_pack_migration_option_unavailable">
                                     </strong>
@@ -139,12 +138,12 @@
                                     data-title="{{ offer.description }}"
                                     data-ng-repeat="offer in OffersCtrl.process.migrationOffers.result.offers track by $index">
                                     <div data-ng-if="offer.options.voip_line">
-                                        <strong class="block"
+                                        <strong class="d-block"
                                                 data-translate="{{ offer.options.voip_line.included > 1 ? 'telecom_pack_migration_lines_included' : 'telecom_pack_migration_line_included' }}"
                                                 data-translate-values="{ number : offer.options.voip_line.included }">
                                         </strong>
                                         <div data-ng-if="offer.options.voip_line.optional > 0">
-                                            <span class="block top-space-m4 bottom-space-m4"
+                                            <span class="d-block my-2"
                                                   data-translate="telecom_pack_migration_add_lines_upto"
                                                   data-translate-values="{ max : offer.options.voip_line.optional }">
                                             </span>
@@ -154,13 +153,13 @@
                                                                   data-input-number-spinner-max="offer.options.voip_line.optional"
                                                                   data-input-number-spinner-on-change="OffersCtrl.updateOfferDisplayedPrice(offer, offer.options.voip_line)">
                                             </input-number-spinner>
-                                            <small class="block top-space-m4"
+                                            <small class="d-block mt-2"
                                                    data-ng-init="offer.options.voip_line.formatPriceOptions = { withoutTax : true, addBrackets : true, additionalText : ('telecom_pack_migration_line_additional_text' | translate ) }"
                                                    data-ng-bind-html="offer.options.voip_line.optionalPrice.text | formatPrice:offer.options.voip_line.formatPriceOptions">
                                             </small>
                                         </div>
                                     </div>
-                                    <strong class="block text-muted"
+                                    <strong class="d-block text-muted"
                                             data-ng-if="!offer.options.voip_line"
                                             data-translate="telecom_pack_migration_option_unavailable">
                                     </strong>
@@ -175,16 +174,16 @@
                                 <td class="table-comparison__cell table-comparison__value table-comparison--item-base" data-translate-attr="{ 'data-title' : 'telecom_pack_migration_current_offer' }"
                                     data-translate-values="{ offerName : OffersCtrl.process.pack.offerDescription }">
                                     <div data-ng-if="OffersCtrl.process.pack.options.exchangeAccount">
-                                        <strong class="block"
+                                        <strong class="d-block"
                                                 data-translate="{{ OffersCtrl.process.pack.options.exchangeAccount.total > 1 ? 'telecom_pack_migration_exchange_accounts_included' : 'telecom_pack_migration_exchange_account_included' }}"
                                                 data-translate-values="{ number : OffersCtrl.process.pack.options.exchangeAccount.total }">
                                         </strong>
-                                        <span class="block"
+                                        <span class="d-block"
                                               data-translate="{{ OffersCtrl.process.pack.options.exchangeAccount.used > 1 ? 'telecom_pack_migration_accounts_activated' : 'telecom_pack_migration_account_activated' }}"
                                               data-translate-values="{ number : OffersCtrl.process.pack.options.exchangeAccount.used }">
                                         </span>
                                     </div>
-                                    <strong class="block text-muted"
+                                    <strong class="d-block text-muted"
                                             data-ng-if="!OffersCtrl.process.pack.options.exchange_account"
                                             data-translate="telecom_pack_migration_option_unavailable">
                                     </strong>
@@ -193,12 +192,12 @@
                                     data-title="{{ offer.description }}"
                                     data-ng-repeat="offer in OffersCtrl.process.migrationOffers.result.offers track by $index">
                                     <div data-ng-if="offer.options.exchange_account">
-                                        <strong class="block"
+                                        <strong class="d-block"
                                                 data-translate="{{ offer.options.exchange_account.included > 1 ? 'telecom_pack_migration_exchange_accounts_included' : 'telecom_pack_migration_exchange_account_included' }}"
                                                 data-translate-values="{ number : offer.options.exchange_account.included }">
                                         </strong>
                                         <div data-ng-if="offer.options.exchange_account.optional > 0">
-                                            <span class="block top-space-m4 bottom-space-m4"
+                                            <span class="d-block my-2"
                                                   data-translate="telecom_pack_migration_add_exchange_account_upto"
                                                   data-translate-values="{ max : offer.options.exchange_account.optional }">
                                             </span>
@@ -208,13 +207,13 @@
                                                                   data-input-number-spinner-max="offer.options.exchange_account.optional"
                                                                   data-input-number-spinner-on-change="OffersCtrl.updateOfferDisplayedPrice(offer, offer.options.exchange_account)">
                                             </input-number-spinner>
-                                            <small class="block top-space-m4"
+                                            <small class="d-block mt-2"
                                                    data-ng-init="offer.options.exchange_account.formatPriceOptions = { withoutTax : true, addBrackets : true, additionalText : ('telecom_pack_migration_account_additional_text' | translate ) }"
                                                    data-ng-bind-html="offer.options.exchange_account.optionalPrice.text | formatPrice:offer.options.exchange_account.formatPriceOptions">
                                             </small>
                                         </div>
                                     </div>
-                                    <strong class="block text-muted"
+                                    <strong class="d-block text-muted"
                                             data-ng-if="!offer.options.exchange_account"
                                             data-translate="telecom_pack_migration_option_unavailable">
                                     </strong>
@@ -231,16 +230,16 @@
                                     data-translate-attr="{ 'data-title' : 'telecom_pack_migration_current_offer' }"
                                     data-translate-values="{ offerName : OffersCtrl.process.pack.offerDescription }">
                                     <div data-ng-if="OffersCtrl.process.pack.options.hubic">
-                                        <strong class="block"
+                                        <strong class="d-block"
                                                 data-translate="{{ OffersCtrl.process.pack.options.hubic.total > 1 ? 'telecom_pack_migration_hubic_accounts_included' : 'telecom_pack_migration_hubic_account_included' }}"
                                                 data-translate-values="{ number : OffersCtrl.process.pack.options.hubic.total }">
                                         </strong>
-                                        <span class="block"
+                                        <span class="d-block"
                                               data-translate="{{ OffersCtrl.process.pack.options.hubic.used > 1 ? 'telecom_pack_migration_accounts_activated' : 'telecom_pack_migration_account_activated' }}"
                                               data-translate-values="{ number : OffersCtrl.process.pack.options.hubic.used }">
                                         </span>
                                     </div>
-                                    <strong class="block text-muted"
+                                    <strong class="d-block text-muted"
                                             data-ng-if="!OffersCtrl.process.pack.options.hubic"
                                             data-translate="telecom_pack_migration_option_unavailable">
                                     </strong>
@@ -248,12 +247,12 @@
                                 <td class="table-comparison__cell table-comparison__value"
                                     data-title="{{ offer.description }}"
                                     data-ng-repeat="offer in OffersCtrl.process.migrationOffers.result.offers track by $index">
-                                    <strong class="block"
+                                    <strong class="d-block"
                                             data-ng-if="offer.options.hubic_perso"
                                             data-translate="{{ offer.options.hubic_perso.included > 1 ? 'telecom_pack_migration_hubic_accounts_included' : 'telecom_pack_migration_hubic_account_included' }}"
                                             data-translate-values="{ number : offer.options.hubic_perso.included }">
                                     </strong>
-                                    <strong class="block text-muted"
+                                    <strong class="d-block text-muted"
                                             data-ng-if="!offer.options.hubic_perso"
                                             data-translate="telecom_pack_migration_option_unavailable">
                                     </strong>
@@ -269,16 +268,16 @@
                                     data-translate-attr="{ 'data-title' : 'telecom_pack_migration_current_offer' }"
                                     data-translate-values="{ offerName : OffersCtrl.process.pack.offerDescription }">
                                     <div data-ng-if="OffersCtrl.process.pack.options.voipEcoFax">
-                                        <strong class="block"
+                                        <strong class="d-block"
                                                 data-translate="{{ OffersCtrl.process.pack.options.voipEcoFax.total > 1 ? 'telecom_pack_migration_ecofax_lines_included' : 'telecom_pack_migration_ecofax_line_included' }}"
                                                 data-translate-values="{ number : OffersCtrl.process.pack.options.voipEcoFax.total }">
                                         </strong>
-                                        <span class="block"
+                                        <span class="d-block"
                                               data-translate="{{ OffersCtrl.process.pack.options.voipEcoFax.used > 1 ? 'telecom_pack_migration_lines_activated' : 'telecom_pack_migration_line_activated' }}"
                                               data-translate-values="{ number : OffersCtrl.process.pack.options.voipEcoFax.used }">
                                         </span>
                                     </div>
-                                    <strong class="block text-muted"
+                                    <strong class="d-block text-muted"
                                             data-ng-if="!OffersCtrl.process.pack.options.voipEcoFax"
                                             data-translate="telecom_pack_migration_option_unavailable">
                                     </strong>
@@ -287,12 +286,12 @@
                                     data-title="{{ offer.description }}"
                                     data-ng-repeat="offer in OffersCtrl.process.migrationOffers.result.offers track by $index">
                                     <div data-ng-if="offer.options.voip_ecofax">
-                                        <strong class="block top-space-m4 bottom-space-m4"
+                                        <strong class="d-block my-2"
                                                 data-translate="{{ offer.options.voip_ecofax.included > 1 ? 'telecom_pack_migration_ecofax_lines_included' : 'telecom_pack_migration_ecofax_line_included' }}"
                                                 data-translate-values="{ number : offer.options.voip_ecofax.included }">
                                         </strong>
                                         <div data-ng-if="offer.options.voip_ecofax.optional > 0">
-                                            <span class="block top-space-m4 bottom-space-m4"
+                                            <span class="d-block my-2"
                                                   data-translate="telecom_pack_migration_add_lines_upto"
                                                   data-translate-values="{ max : offer.options.voip_ecofax.optional }">
                                             </span>
@@ -302,13 +301,13 @@
                                                                   data-input-number-spinner-max="offer.options.voip_ecofax.optional"
                                                                   data-input-number-spinner-on-change="OffersCtrl.updateOfferDisplayedPrice(offer, offer.options.voip_ecofax)">
                                             </input-number-spinner>
-                                            <small class="block top-space-m4"
+                                            <small class="d-block mt-2"
                                                    data-ng-init="offer.options.voip_ecofax.formatPriceOptions = { withoutTax : true, addBrackets : true, additionalText : ('telecom_pack_migration_line_additional_text' | translate ) }"
                                                    data-ng-bind-html="offer.options.voip_ecofax.optionalPrice.text | formatPrice:offer.options.voip_ecofax.formatPriceOptions">
                                             </small>
                                         </div>
                                     </div>
-                                    <strong class="block text-muted"
+                                    <strong class="d-block text-muted"
                                             data-ng-if="!offer.options.voip_ecofax"
                                             data-translate="telecom_pack_migration_option_unavailable">
                                     </strong>
@@ -324,16 +323,16 @@
                                     data-translate-attr="{ 'data-title' : 'telecom_pack_migration_current_offer' }"
                                     data-translate-values="{ offerName : OffersCtrl.process.pack.offerDescription }">
                                     <div data-ng-if="OffersCtrl.process.pack.options.domain">
-                                        <strong class="block"
+                                        <strong class="d-block"
                                                 data-translate="{{ OffersCtrl.process.pack.options.domain.total > 1 ? 'telecom_pack_migration_domains_included' : 'telecom_pack_migration_domain_included' }}"
                                                 data-translate-values="{ number : OffersCtrl.process.pack.options.domain.total }">
                                         </strong>
-                                        <span class="block"
+                                        <span class="d-block"
                                               data-translate="{{ OffersCtrl.process.pack.options.domain.used > 1 ? 'telecom_pack_migration_accounts_activated' : 'telecom_pack_migration_account_activated' }}"
                                               data-translate-values="{ number : OffersCtrl.process.pack.options.domain.used }">
                                         </span>
                                     </div>
-                                    <strong class="block text-muted"
+                                    <strong class="d-block text-muted"
                                             data-ng-if="!OffersCtrl.process.pack.options.domain"
                                             data-translate="telecom_pack_migration_option_unavailable">
                                     </strong>
@@ -342,12 +341,12 @@
                                     data-title="{{ offer.description }}"
                                     data-ng-repeat="offer in OffersCtrl.process.migrationOffers.result.offers track by $index">
                                     <div data-ng-if="offer.options.dom1">
-                                        <strong class="block"
+                                        <strong class="d-block"
                                                 data-translate="{{ offer.options.dom1.included > 1 ? 'telecom_pack_migration_domains_included' : 'telecom_pack_migration_domain_included' }}"
                                                 data-translate-values="{ number : offer.options.dom1.included }">
                                         </strong>
                                         <div data-ng-if="offer.options.dom1.optional > 0">
-                                            <span class="block top-space-m4 bottom-space-m4"
+                                            <span class="d-block my-2"
                                                   data-translate="telecom_pack_migration_add_domains_upto"
                                                   data-translate-values="{ max : offer.options.dom1.optional }">
                                             </span>
@@ -357,13 +356,13 @@
                                                                   data-input-number-spinner-max="offer.options.dom1.optional"
                                                                   data-input-number-spinner-on-change="OffersCtrl.updateOfferDisplayedPrice(offer, offer.options.dom1)">
                                             </input-number-spinner>
-                                            <small class="block top-space-m4"
+                                            <small class="d-block mt-2"
                                                   data-ng-init="offer.options.dom1.formatPriceOptions = { withoutTax : true, addBrackets : true, additionalText : ('telecom_pack_migration_domain_additional_text' | translate ) }"
                                                   data-ng-bind-html="offer.options.dom1.optionalPrice.text | formatPrice:offer.options.dom1.formatPriceOptions">
                                             </small>
                                         </div>
                                     </div>
-                                    <strong class="block text-muted"
+                                    <strong class="d-block text-muted"
                                             data-ng-if="!offer.options.dom1"
                                             data-translate="telecom_pack_migration_option_unavailable">
                                     </strong>
@@ -378,7 +377,7 @@
                                 <td class="table-comparison__cell table-comparison__cell--border table-comparison__value table-comparison--item-base"
                                     data-translate-attr="{ 'data-title' : 'telecom_pack_migration_current_offer' }"
                                     data-translate-values="{ offerName : OffersCtrl.process.pack.offerDescription }">
-                                    <strong class="block text-muted"
+                                    <strong class="d-block text-muted"
                                             data-translate="telecom_pack_migration_option_unavailable">
                                     </strong>
                                 </td>
@@ -386,25 +385,22 @@
                                     data-title="{{ offer.description }}"
                                     data-ng-repeat="offer in OffersCtrl.process.migrationOffers.result.offers track by $index">
                                     <div data-ng-if="offer.options.gtr_ovh">
-                                        <strong class="block"
+                                        <strong class="d-block"
                                                 data-translate="telecom_pack_migration_gtr_available">
                                         </strong>
-                                        <label class="block">
-                                            <div flat-input-container
-                                                 class="input-group inline-block vertical-middle right-space-m8">
-                                                <flat-checkbox>
-                                                    <input type="checkbox"
-                                                           data-ng-model="offer.options.gtr_ovh.selected"
-                                                           data-ng-change="OffersCtrl.updateOfferDisplayedPrice(offer, offer.options.gtr_ovh)">
-                                                </flat-checkbox>
+                                        <label class="d-block">
+                                            <div class="input-group d-inline-block align-middle mr-2">
+                                                <input type="checkbox"
+                                                       data-ng-model="offer.options.gtr_ovh.selected"
+                                                       data-ng-change="OffersCtrl.updateOfferDisplayedPrice(offer, offer.options.gtr_ovh)">
                                             </div>
-                                            <small class="inline-block vertical-middle">
+                                            <small class="d-inline-block align-middle">
                                                 <span data-translate="telecom_pack_migration_gtr_add"></span>
                                                 <span data-ng-bind-html="offer.options.gtr_ovh.optionalPrice.text | formatPrice:{ addBrackets : true }"></span>
                                             </small>
                                         </label>
                                     </div>
-                                    <strong class="block text-muted"
+                                    <strong class="d-block text-muted"
                                             data-ng-if="!offer.options.gtr_ovh"
                                             data-translate="telecom_pack_migration_option_unavailable">
                                     </strong>

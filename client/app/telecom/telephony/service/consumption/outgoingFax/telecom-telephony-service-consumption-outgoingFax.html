@@ -7,6 +7,8 @@
             </h2>
         </header>
 
+        <toast-message></toast-message>
+
         <div class="row">
             <div class="col-sm-6">
                 <div data-translate="telephony_service_consumption_outgoing_fax_period"
@@ -21,165 +23,190 @@
                 </div>
             </div>
         </div>
-        <div class="row" data-ng-if="$ctrl.consumption.raw.length">
+        <div class="row"
+             data-ng-if="$ctrl.consumption.raw.length">
             <div class="col-xs-12">
-                <button class="btn btn-sm btn-default no-outline pull-right"
+                <button class="btn btn-default float-right"
                         type="button"
                         data-ng-click="$ctrl.toggleShowFilter()">
-                    <i data-ng-if="!$ctrl.consumption.showFilter" class="ovh-font ovh-font-search"></i>
-                    <i data-ng-if="$ctrl.consumption.showFilter" class="ovh-font ovh-font-wrong"></i>
-                    <span class="left-space-m4" data-translate="common_search"></span>
+                    <i data-ng-if="!$ctrl.consumption.showFilter"
+                       class="ovh-font ovh-font-search"></i>
+                    <i data-ng-if="$ctrl.consumption.showFilter"
+                       class="ovh-font ovh-font-wrong"></i>
+                    <span class="ml-1"
+                          data-translate="common_search"></span>
                 </button>
             </div>
         </div>
-        <div class="top-space-m8" data-ng-if="$ctrl.consumption.showFilter">
-            <div flat-input-container class="pull-right right-space-m4 telephony-consumption-filter-input">
-                <div class="input-group">
-                    <span class="input-group-addon">
-                        <i class="ovh-font ovh-font-phone fs16"></i>
-                    </span>
-                    <input class="form-control"
-                           type="text"
-                           data-ng-model="$ctrl.consumption.filterBy.called"
-                           data-ng-change="$ctrl.applySorting()"
-                           placeholder="{{:: 'telephony_service_consumption_destination' | translate }}"
-                           autofocus />
+        <div class="mt-2"
+             data-ng-if="$ctrl.consumption.showFilter">
+            <div class="row">
+                <div class="col-sm-4 col-sm-offset-8">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="ovh-font ovh-font-phone"></i>
+                        </span>
+                        <input class="form-control"
+                               type="text"
+                               data-ng-model="$ctrl.consumption.filterBy.called"
+                               data-ng-change="$ctrl.applySorting()"
+                               placeholder="{{:: 'telephony_service_consumption_destination' | translate }}"
+                               autofocus />
+                    </div>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-xs-12 table-responsive-vertical top-space-m4">
-                <table class="table table-pretty table-hover table-striped no-space">
-                    <thead>
-                        <tr>
-                            <th>
-                                <button class="no-style no-outline left-space-p0"
-                                        type="button"
-                                        data-ng-disabled="!$ctrl.consumption.paginated.length"
-                                        data-ng-click="$ctrl.orderBy('creationDatetime')">
-                                    <label class="pointer" data-translate="telephony_service_consumption_date"></label>
-                                    <span class="table-pretty-filter">
-                                        <i class="fa" data-ng-class="{
-                                            'fa-sort': $ctrl.consumption.orderBy !== 'creationDatetime',
-                                            'fa-sort-desc': $ctrl.consumption.orderBy === 'creationDatetime' && $ctrl.consumption.orderDesc,
-                                            'fa-sort-asc': $ctrl.consumption.orderBy === 'creationDatetime' && !$ctrl.consumption.orderDesc
-                                        }"></i>
-                                    </span>
-                                </button>
-                            </th>
-                            <th>
-                                <button class="no-style no-outline left-space-p0"
-                                        type="button"
-                                        data-ng-disabled="!$ctrl.consumption.paginated.length"
-                                        data-ng-click="$ctrl.orderBy('pages')">
-                                    <label class="pointer" data-translate="telephony_service_consumption_outgoing_fax_pages"></label>
-                                    <span class="table-pretty-filter">
-                                        <i class="fa" data-ng-class="{
-                                            'fa-sort': $ctrl.consumption.orderBy !== 'pages',
-                                            'fa-sort-desc': $ctrl.consumption.orderBy === 'pages' && $ctrl.consumption.orderDesc,
-                                            'fa-sort-asc': $ctrl.consumption.orderBy === 'pages' && !$ctrl.consumption.orderDesc
-                                        }"></i>
-                                    </span>
-                                </button>
-                            </th>
-                            <th>
-                                <button class="no-style no-outline left-space-p0"
-                                        type="button"
-                                        data-ng-disabled="!$ctrl.consumption.paginated.length"
-                                        data-ng-click="$ctrl.orderBy('wayType')">
-                                    <label class="pointer" data-translate="telephony_service_consumption_type"></label>
-                                    <span class="table-pretty-filter">
-                                        <i class="fa" data-ng-class="{
-                                            'fa-sort': $ctrl.consumption.orderBy !== 'wayType',
-                                            'fa-sort-desc': $ctrl.consumption.orderBy === 'wayType' && $ctrl.consumption.orderDesc,
-                                            'fa-sort-asc': $ctrl.consumption.orderBy === 'wayType' && !$ctrl.consumption.orderDesc
-                                        }"></i>
-                                    </span>
-                                </button>
-                            </th>
-                            <th>
-                                <button class="no-style no-outline left-space-p0"
-                                        type="button"
-                                        data-ng-disabled="!$ctrl.consumption.paginated.length"
-                                        data-ng-click="$ctrl.orderBy('called')">
-                                    <label class="pointer" data-translate="telephony_service_consumption_destination"></label>
-                                    <span class="table-pretty-filter">
-                                        <i class="fa" data-ng-class="{
-                                            'fa-sort': $ctrl.consumption.orderBy !== 'called',
-                                            'fa-sort-desc': $ctrl.consumption.orderBy === 'called' && $ctrl.consumption.orderDesc,
-                                            'fa-sort-asc': $ctrl.consumption.orderBy === 'called' && !$ctrl.consumption.orderDesc
-                                        }"></i>
-                                    </span>
-                                </button>
-                            </th>
-                            <th>
-                                <button class="no-style no-outline left-space-p0"
-                                        type="button"
-                                        data-ng-disabled="!$ctrl.consumption.paginated.length"
-                                        data-ng-click="$ctrl.orderBy('priceWithoutTax.value')">
-                                    <label class="pointer" data-translate="telephony_service_consumption_price_ht"></label>
-                                    <span class="table-pretty-filter">
-                                        <i class="fa" data-ng-class="{
-                                            'fa-sort': $ctrl.consumption.orderBy !== 'priceWithoutTax.value',
-                                            'fa-sort-desc': $ctrl.consumption.orderBy === 'priceWithoutTax.value' && $ctrl.consumption.orderDesc,
-                                            'fa-sort-asc': $ctrl.consumption.orderBy === 'priceWithoutTax.value' && !$ctrl.consumption.orderDesc
-                                        }"></i>
-                                    </span>
-                                </button>
-                                <button class="no-style no-outline left-space-p0 left-space-m8"
-                                        type="button"
-                                        data-ng-disabled="$ctrl.consumption.isLoading"
-                                        data-ng-click="$ctrl.refresh()">
-                                    <i class="fa fa-refresh"></i>
-                                </button>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody data-ng-if="!$ctrl.consumption.isLoading">
-                        <tr data-ng-repeat="conso in $ctrl.consumption.paginated | orderBy:$ctrl.order.by:$ctrl.order.reverse">
-                            <td data-title="{{:: 'telephony_service_consumption_date' | translate }}">
-                                <span class="text-nowrap right-space-m16" data-ng-bind="::conso.creationDatetime | date: 'dd/MM/yyyy'"></span>
-                                <span class="text-nowrap right-space-m16" data-ng-bind="::conso.creationDatetime | date: 'HH:mm:ss'"></span>
-                            </td>
-                            <td data-title="{{:: 'telephony_service_consumption_outgoing_fax_pages' | translate }}">
-                                <span class="text-nowrap" data-ng-bind="::conso.pages"></span>
-                            </td>
-                            <td data-title="{{:: 'telephony_service_consumption_type' | translate }}">
-                                <span class="text-nowrap" data-ng-bind="::'telephony_service_consumption_type_' + conso.wayType | translate"></span>
-                            </td>
-                            <td data-title="{{:: 'telephony_service_consumption_destination' | translate }}">
-                                <span class="text-nowrap" data-ng-bind="::conso.called | phoneNumber"></span>
-                            </td>
-                            <td data-title="{{:: 'telephony_service_consumption_price_ht' | translate }}">
-                                <span class="text-nowrap" data-ng-bind="::conso.priceWithoutTax.text"></span>
-                            </td>
-                        </tr>
-                    </tbody>
-                    <tbody data-ng-if="$ctrl.consumption.isLoading">
-                        <tr>
-                            <td class="text-center top-space-p16 bottom-space-p16" colspan="5">
-                                <spinner class="left-space-m4"></spinner>
-                            </td>
-                        </tr>
-                    </tbody>
-                    <tbody data-ng-if="!$ctrl.consumption.isLoading && !$ctrl.consumption.raw.length">
-                        <tr>
-                            <td class="text-center top-space-p16 bottom-space-p16" colspan="5">
-                                <span data-translate="telephony_service_consumption_outgoing_fax_empty"></span>
-                            </td>
-                        </tr>
-                    </tbody>
-                    <tbody data-ng-if="!$ctrl.consumption.isLoading &&
-                                       $ctrl.consumption.raw.length &&
-                                       !$ctrl.consumption.paginated.length">
-                        <tr>
-                            <td class="text-center top-space-p16 bottom-space-p16" colspan="5">
-                                <span data-translate="telephony_service_consumption_outgoing_fax_not_found"></span>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="table-pretty-pagination top-space-m8"
+            <div class="col-xs-12 mt-1">
+                <div class="table-responsive">
+                    <table class="table"
+                           data-ng-class="{
+                               'table-hover table-striped': $ctrl.consumption.raw.length > 1
+                           }">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <button class="btn btn-link pl-0"
+                                            type="button"
+                                            data-ng-disabled="!$ctrl.consumption.paginated.length"
+                                            data-ng-click="$ctrl.orderBy('creationDatetime')">
+                                        <span data-translate="telephony_service_consumption_date"></span>
+                                        <span class="oui-icon align-baseline"
+                                              aria-hidden="true"
+                                              data-ng-class="{
+                                                  'oui-icon-arrow-down': $ctrl.consumption.orderBy !== 'creationDatetime',
+                                                  'oui-icon-arrow-down': $ctrl.consumption.orderBy === 'creationDatetime' && $ctrl.consumption.orderDesc,
+                                                  'oui-icon-arrow-up': $ctrl.consumption.orderBy === 'creationDatetime' && !$ctrl.consumption.orderDesc
+                                              }">
+                                        </span>
+                                    </button>
+                                </th>
+                                <th>
+                                    <button class="btn btn-link pl-0"
+                                            type="button"
+                                            data-ng-disabled="!$ctrl.consumption.paginated.length"
+                                            data-ng-click="$ctrl.orderBy('pages')">
+                                        <span data-translate="telephony_service_consumption_outgoing_fax_pages"></span>
+                                        <span class="oui-icon align-baseline"
+                                              aria-hidden="true"
+                                              data-ng-class="{
+                                                  'oui-icon-arrow-down': $ctrl.consumption.orderBy !== 'pages',
+                                                  'oui-icon-arrow-down': $ctrl.consumption.orderBy === 'pages' && $ctrl.consumption.orderDesc,
+                                                  'oui-icon-arrow-up': $ctrl.consumption.orderBy === 'pages' && !$ctrl.consumption.orderDesc
+                                              }">
+                                        </span>
+                                    </button>
+                                </th>
+                                <th>
+                                    <button class="btn btn-link pl-0"
+                                            type="button"
+                                            data-ng-disabled="!$ctrl.consumption.paginated.length"
+                                            data-ng-click="$ctrl.orderBy('wayType')">
+                                        <span data-translate="telephony_service_consumption_type"></span>
+                                        <span class="oui-icon align-baseline"
+                                              aria-hidden="true"
+                                              data-ng-class="{
+                                                  'oui-icon-arrow-down': $ctrl.consumption.orderBy !== 'wayType',
+                                                  'oui-icon-arrow-down': $ctrl.consumption.orderBy === 'wayType' && $ctrl.consumption.orderDesc,
+                                                  'oui-icon-arrow-up': $ctrl.consumption.orderBy === 'wayType' && !$ctrl.consumption.orderDesc
+                                              }">
+                                        </span>
+                                    </button>
+                                </th>
+                                <th>
+                                    <button class="btn btn-link pl-0"
+                                            type="button"
+                                            data-ng-disabled="!$ctrl.consumption.paginated.length"
+                                            data-ng-click="$ctrl.orderBy('called')">
+                                        <span data-translate="telephony_service_consumption_destination"></span>
+                                        <span class="oui-icon align-baseline"
+                                              aria-hidden="true"
+                                              data-ng-class="{
+                                                  'oui-icon-arrow-down': $ctrl.consumption.orderBy !== 'called',
+                                                  'oui-icon-arrow-down': $ctrl.consumption.orderBy === 'called' && $ctrl.consumption.orderDesc,
+                                                  'oui-icon-arrow-up': $ctrl.consumption.orderBy === 'called' && !$ctrl.consumption.orderDesc
+                                              }">
+                                        </span>
+                                    </button>
+                                </th>
+                                <th>
+                                    <button class="btn btn-link pl-0"
+                                            type="button"
+                                            data-ng-disabled="!$ctrl.consumption.paginated.length"
+                                            data-ng-click="$ctrl.orderBy('priceWithoutTax.value')">
+                                        <span data-translate="telephony_service_consumption_price_ht"></span>
+                                        <span class="oui-icon align-baseline"
+                                              aria-hidden="true"
+                                              data-ng-class="{
+                                                  'oui-icon-arrow-down': $ctrl.consumption.orderBy !== 'priceWithoutTax.value',
+                                                  'oui-icon-arrow-down': $ctrl.consumption.orderBy === 'priceWithoutTax.value' && $ctrl.consumption.orderDesc,
+                                                  'oui-icon-arrow-up': $ctrl.consumption.orderBy === 'priceWithoutTax.value' && !$ctrl.consumption.orderDesc
+                                              }">
+                                        </span>
+                                    </button>
+                                    <button class="btn btn-link pl-0 ml-2"
+                                            type="button"
+                                            data-ng-disabled="$ctrl.consumption.isLoading"
+                                            data-ng-click="$ctrl.refresh()">
+                                        <i class="fa fa-refresh"></i>
+                                    </button>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody data-ng-if="!$ctrl.consumption.isLoading">
+                            <tr data-ng-repeat="conso in $ctrl.consumption.paginated | orderBy:$ctrl.order.by:$ctrl.order.reverse">
+                                <td data-title="{{:: 'telephony_service_consumption_date' | translate }}">
+                                    <span class="text-nowrap mr-3"
+                                          data-ng-bind="::conso.creationDatetime | date: 'dd/MM/yyyy'"></span>
+                                    <span class="text-nowrap mr-3"
+                                          data-ng-bind="::conso.creationDatetime | date: 'HH:mm:ss'"></span>
+                                </td>
+                                <td data-title="{{:: 'telephony_service_consumption_outgoing_fax_pages' | translate }}">
+                                    <span class="text-nowrap"
+                                          data-ng-bind="::conso.pages"></span>
+                                </td>
+                                <td data-title="{{:: 'telephony_service_consumption_type' | translate }}">
+                                    <span class="text-nowrap"
+                                          data-ng-bind="::'telephony_service_consumption_type_' + conso.wayType | translate"></span>
+                                </td>
+                                <td data-title="{{:: 'telephony_service_consumption_destination' | translate }}">
+                                    <span class="text-nowrap"
+                                          data-ng-bind="::conso.called | phoneNumber"></span>
+                                </td>
+                                <td data-title="{{:: 'telephony_service_consumption_price_ht' | translate }}">
+                                    <span class="text-nowrap"
+                                          data-ng-bind="::conso.priceWithoutTax.text"></span>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tbody data-ng-if="$ctrl.consumption.isLoading">
+                            <tr>
+                                <td class="text-center my-3" colspan="5">
+                                    <bouncing-box-loader class="d-inline-block align-middle"
+                                                         data-size="s">
+                                    </bouncing-box-loader>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tbody data-ng-if="!$ctrl.consumption.isLoading && !$ctrl.consumption.raw.length">
+                            <tr>
+                                <td class="text-center my-3" colspan="5">
+                                    <span data-translate="telephony_service_consumption_outgoing_fax_empty"></span>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tbody data-ng-if="!$ctrl.consumption.isLoading &&
+                                           $ctrl.consumption.raw.length &&
+                                           !$ctrl.consumption.paginated.length">
+                            <tr>
+                                <td class="text-center my-3" colspan="5">
+                                    <span data-translate="telephony_service_consumption_outgoing_fax_not_found"></span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="mt-2"
                      data-ng-if="!$ctrl.consumption.isLoading && $ctrl.consumption.raw.length"
                      data-pagination-front
                      data-items="$ctrl.consumption.sorted"

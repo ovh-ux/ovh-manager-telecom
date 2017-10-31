@@ -152,11 +152,9 @@
 
    <translation id="common_menu_changelog" qtlid="260971">Muutosloki</translation>
 
-   <translation id="common_express_lite_banner_desc" qtlid="304875">Express Lite sisältää modeemin, joka tarjoaa Internet-yhteyden sekä VoIP-linjan hintaan <span class="ad-price bold fs14">22,99€ ALV0</span>&#160;/kk.</translation>
    <translation id="common_express_lite_banner_title" qtlid="304888">OVH lanseeraa uuden ADSL ja VDSL-yhteyspalvelun.</translation>
    <translation id="common_generate_order" qtlid="186219">Luo tilaus</translation>
    <translation id="common_boost_banner_title" qtlid="304901">OVH lanseeraa kaksi rajoitettua "Interent Only" -sarjaa, jotka tarjoavat maksimaalista nopeutta.</translation>
-   <translation id="common_boost_banner_desc" qtlid="304914">Suojaa yhteytesi <span class="ad-price bold fs14">CONNECT</span> -palvelulla tai tuplaa tiedonsiirtosi <span class="ad-price bold fs14">BOOST</span> -palvelulla, joka sisältää <span class="ad-price bold fs14">OVER THE BOX</span> -laitteen ja palvelun.<br/><small>Rajoitettu tarjous 240 ensimmäiselle tilaukselle.</small></translation>
    <translation id="common_banner_discover" qtlid="304927">Tutustu tuotteeseen</translation>
    <translation id="common_service_name_edit_title" qtlid="331683">{{ title }} : muokkaa palvelun nimeä</translation>
 

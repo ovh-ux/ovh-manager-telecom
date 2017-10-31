@@ -7,14 +7,17 @@
         <h1 data-translate="telephony_line_management_change_offer_title"></h1>
     </header>
 
-    <bouncing-box-loader data-ng-if="OfferChangeCtrl.loading.init">
-        <h3 class="top-space-m16"
+    <bouncing-box-loader data-size="m"
+                         data-ng-if="OfferChangeCtrl.loading.init">
+        <h3 class="mt-3"
             data-translate="loading">
         </h3>
     </bouncing-box-loader>
 
     <div class="telecom-section-content"
          data-ng-if="!OfferChangeCtrl.loading.init">
+
+        <toast-message></toast-message>
 
         <section class="widget-presentation">
             <header class="widget-presentation-header">
@@ -23,7 +26,7 @@
                 </h2>
             </header>
 
-            <dl class="dl-horizontal">
+            <dl>
                 <dt data-translate="telephony_line_management_change_offer_informations_group"></dt>
                 <dd data-ng-bind="OfferChangeCtrl.group.getDisplayedName()"></dd>
 
@@ -35,7 +38,7 @@
             </dl>
 
             <button type="button"
-                    class="btn btn-primary top-space-m16"
+                    class="btn btn-primary mt-3"
                     data-translate="telephony_line_management_change_offer_change_button"
                     data-ng-click="OfferChangeCtrl.changeOffer()"
                     data-ng-if="!OfferChangeCtrl.line.pendingOfferChange && !OfferChangeCtrl.initError">
@@ -43,9 +46,8 @@
 
             <div data-ng-if="OfferChangeCtrl.line.pendingOfferChange && !OfferChangeCtrl.loading.cancel">
 
-                <div class="alert alert-info top-space-m16"
+                <div class="alert alert-info mt-3"
                      role="alert">
-                     <i class="ovh-font ovh-font-filled-info"></i>
                     <p data-translate="telephony_line_management_change_offer_change_pending"
                         data-translate-values="{ date: (OfferChangeCtrl.line.nextBill | date:'shortDate') }"></p>
                     <p data-translate="telephony_line_management_change_offer_change_pending_new_offer"
@@ -54,14 +56,13 @@
                 </div>
 
                 <button type="button"
-                        class="btn btn-primary animate-fadeInLeft-enter"
+                        class="btn btn-primary"
                         data-ng-if="!OfferChangeCtrl.confirmCancel"
                         data-translate="telephony_line_management_change_offer_change_pending_cancel"
                         data-ng-click="OfferChangeCtrl.confirmCancel = true">
                 </button>
 
-                <div data-ng-if="OfferChangeCtrl.confirmCancel"
-                     class="animate-fadeInRight-enter">
+                <div data-ng-if="OfferChangeCtrl.confirmCancel">
                     <span data-translate="telephony_line_management_change_offer_change_pending_cancel_confirm"></span>
                     <button class="btn btn-default"
                             type="button"
@@ -77,8 +78,9 @@
 
             </div>
 
-            <bouncing-box-loader data-ng-if="OfferChangeCtrl.loading.cancel">
-                <h3 class="top-space-m16"
+            <bouncing-box-loader data-size="m"
+                                 data-ng-if="OfferChangeCtrl.loading.cancel">
+                <h3 class="mt-3"
                     data-translate="telephony_line_management_change_offer_change_pending_cancel_doing">
                 </h3>
             </bouncing-box-loader>

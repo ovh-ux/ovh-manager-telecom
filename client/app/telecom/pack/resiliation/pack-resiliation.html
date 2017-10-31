@@ -10,120 +10,123 @@
 
         <div data-flash-message="20000" ></div>
 
-        <div class="alert alert-info" role="alert"
-             data-ng-if="!PackResiliation.loading && !PackResiliation.resiliationTerms.onGoingResiliation">
-            <span class="ovh-font ovh-font-filled-info" aria-hidden="true"></span>
-            <p data-translate="pack_resiliation_infos"></p>
+        <div class="alert alert-info"
+             role="alert"
+             data-ng-if="!PackResiliation.loading && !PackResiliation.resiliationTerms.onGoingResiliation"
+             data-translate="pack_resiliation_infos">
         </div>
 
-        <bouncing-box-loader data-ng-if="PackResiliation.loading">
+        <toast-message></toast-message>
+
+        <bouncing-box-loader data-size="m"
+                             data-ng-if="PackResiliation.loading">
             <h3 data-translate="loading"></h3>
         </bouncing-box-loader>
 
         <form name="resiliationForm"
-              class="form-horizontal top-space-m16 ovh-form-flat"
+              class="form-vertical mt-3"
               data-ng-if="!PackResiliation.loading && !PackResiliation.resiliationTerms.onGoingResiliation">
-            <fieldset class="widget-presentation top-space-m16">
-                <legend class="widget-presentation-title" data-ng-bind="'1. ' + ('pack_resiliation_reason_title' | translate)"></legend>
+            <fieldset class="widget-presentation mt-3">
+                <legend class="h2 widget-presentation-title" data-ng-bind="'1. ' + ('pack_resiliation_reason_title' | translate)"></legend>
 
-                <div class="form-group top-space-m12"
-                     data-nf-if="PackResiliation.resiliationTerms.data.due.value">
-                    <label class="col-xs-12 col-md-4 service-title"
+                <div class="form-group mt-3"
+                     data-ng-if="PackResiliation.resiliationTerms.data.due.value">
+                    <label class="control-label"
                            data-translate="pack_resiliation_engaged"></label>
-                    <div class="col-xs-12 col-md-8">
-                        <p class="form-control-static service-item"
-                           data-ng-if="PackResiliation.resiliationTerms.data.engaged"
-                           data-ng-bind="PackResiliation.resiliationTerms.data.engageDate | date:'dd/MM/yyyy'"></p>
-                        <p class="form-control-static service-item"
-                           data-ng-if="!PackResiliation.resiliationTerms.data.engaged"
-                           data-translate="pack_resiliation_not_engaged"></p>
-                    </div>
+                    <p class="form-control-static service-item"
+                       data-ng-if="PackResiliation.resiliationTerms.data.engaged"
+                       data-ng-bind="PackResiliation.resiliationTerms.data.engageDate | date:'dd/MM/yyyy'"></p>
+                    <p class="form-control-static service-item"
+                       data-ng-if="!PackResiliation.resiliationTerms.data.engaged"
+                       data-translate="pack_resiliation_not_engaged"></p>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-xs-12 col-md-4 service-title"
+                    <label class="control-label"
                            data-translate="pack_resiliation_due"></label>
-                    <div class="col-xs-12 col-md-8">
-                        <p class="form-control-static">
-                            <strong class="text-price"
-                                    data-ng-if="!PackResiliation.computingPrice"
-                                    data-ng-bind="PackResiliation.resiliationTerms.data.due.text"></strong>
-                            <spinner data-ng-if="PackResiliation.computingPrice"></spinner>
-                        </p>
-                    </div>
+                    <p class="form-control-static">
+                        <strong class="text-price"
+                                data-ng-if="!PackResiliation.computingPrice"
+                                data-ng-bind="PackResiliation.resiliationTerms.data.due.text"></strong>
+                        <bouncing-box-loader class="d-inline-block align-middle ml-2"
+                                             data-ng-if="PackResiliation.computingPrice"
+                                             data-size="s"></bouncing-box-loader>
+                    </p>
                 </div>
 
                 <div class="form-group">
-                    <label for="resiliationDateElem"
-                           class="col-xs-12 col-md-4 service-title text-left control-label"
+                    <label for="resiliationNativeDateElem"
+                           class="control-label"
                            data-translate="pack_resiliation_resiliation_date"></label>
-                    <div class="col-xs-12 col-md-8 date-picker-input">
-                        <input name="expirationNativeDate"
-                            id="resiliationNativeDateElem"
-                            placeholder="{{ 'pack_resiliation_date_format' | translate }}"
-                            class="form-control input-sm"
-                            data-datepicker-options="PackResiliation.dpOpts"
-                            data-uib-datepicker-popup="dd/MM/yyyy"
-                            data-min-date="PackResiliation.minResiliationDate"
-                            data-ui-validate="'PackResiliation.checkDate()'"
-                            data-is-open="PackResiliation.pickerOpened"
-                            data-ng-disabled="PackResiliation.loading"
-                            data-show-button-bar="false"
-                            current-text="{{:: 'today' | translate }}"
-                            clear-text="{{:: 'reset' | translate }}"
-                            close-text="{{:: 'close' | translate }}"
-                            min="{{PackResiliation.minResiliationDate.toISOString()}}"
-                            data-ng-focus="PackResiliation.openDatePicker($event)"
-                            data-ng-click="PackResiliation.switchDatePickerState($event)"
-                            data-ng-model="PackResiliation.model.when"
-                            data-ng-change="PackResiliation.computePrice()">
-                        <small data-ng-if="reasonForm.expirationNativeDate.$error.date || !PackResiliation.checkDate()">
-                            <span class="ovh-font ovh-font-failure text-danger" aria-hidden="true"></span>
-                            <span data-translate="pack_resiliation_date_format_error"></span>
-                            <span data-translate="pack_resiliation_date_format"></span>
-                        </small>
-                    </div>
+                    <input name="expirationNativeDate"
+                        id="resiliationNativeDateElem"
+                        placeholder="{{ 'pack_resiliation_date_format' | translate }}"
+                        class="form-control input-sm"
+                        data-datepicker-options="PackResiliation.dpOpts"
+                        data-uib-datepicker-popup="dd/MM/yyyy"
+                        data-min-date="PackResiliation.minResiliationDate"
+                        data-ui-validate="'PackResiliation.checkDate()'"
+                        data-is-open="PackResiliation.pickerOpened"
+                        data-ng-disabled="PackResiliation.loading"
+                        data-show-button-bar="false"
+                        current-text="{{:: 'today' | translate }}"
+                        clear-text="{{:: 'reset' | translate }}"
+                        close-text="{{:: 'close' | translate }}"
+                        min="{{PackResiliation.minResiliationDate.toISOString()}}"
+                        data-ng-focus="PackResiliation.openDatePicker($event)"
+                        data-ng-click="PackResiliation.switchDatePickerState($event)"
+                        data-ng-model="PackResiliation.model.when"
+                        data-ng-change="PackResiliation.computePrice()">
+                    <span class="help-block"
+                          role="alert"
+                          data-ng-if="reasonForm.expirationNativeDate.$error.date || !PackResiliation.checkDate()">
+                        <span class="ovh-font ovh-font-failure text-danger" aria-hidden="true"></span>
+                        <span data-translate="pack_resiliation_date_format_error"></span>
+                        <span data-translate="pack_resiliation_date_format"></span>
+                    </span>
                 </div>
 
-                <div class="form-group top-space-m12">
-                    <label for="resiliationReasonElem"
-                           class="col-xs-12 col-md-4 control-label service-title text-left required"
+                <div class="form-group mt-3">
+                    <label class="control-label"
+                           for="resiliationReasonElem"
                            data-translate="resiliation_reason"></label>
-                    <div class="col-xs-12 col-md-4 input-select-container">
-                        <select flat-select
-                                name="reason"
-                                class="form-control"
-                                data-ng-model="PackResiliation.model.reason"
-                                data-ng-options="reason.label for reason in PackResiliation.resiliationTerms.data.resiliationReasons track by reason.value"
-                                id="resiliationReasonElem"
-                                required>
-                        </select>
-                        <p class="top-space-m8"
-                           data-ng-if="PackResiliation.model.reason.value !== 'other'"
-                           data-translate="pack_resiliation_comment2"></p>
-                        <strong data-ng-if="PackResiliation.model.reason.value === 'other'" data-translate="pack_resiliation_comment_required"></strong>
-                        <textarea class="form-control"
-                                  name="comment"
-                                  rows="7"
-                                  data-ng-model="PackResiliation.model.comment"></textarea>
-                    </div>
+                    <select name="reason"
+                            class="form-control"
+                            data-ng-model="PackResiliation.model.reason"
+                            data-ng-options="reason.label for reason in PackResiliation.resiliationTerms.data.resiliationReasons track by reason.value"
+                            id="resiliationReasonElem"
+                            required>
+                    </select>
+                </div>
+
+                <div class="form-group mt-3">
+                    <label data-ng-if="PackResiliation.model.reason.value !== 'other'"
+                           for="comment"
+                           data-translate="pack_resiliation_comment2"></label>
+                    <label data-ng-if="PackResiliation.model.reason.value === 'other'"
+                           for="comment"
+                           data-translate="pack_resiliation_comment_required"></label>
+                    <textarea class="form-control"
+                              name="comment"
+                              id="comment"
+                              rows="7"
+                              data-ng-model="PackResiliation.model.comment"></textarea>
                 </div>
             </fieldset>
 
-            <fieldset class="widget-presentation top-space-m32">
-                <legend class="widget-presentation-title" data-ng-bind="'2. ' + ('pack_resiliation_services_to_keep' | translate)"></legend>
+            <fieldset class="widget-presentation mt-5">
+                <legend class="h2 widget-presentation-title" data-ng-bind="'2. ' + ('pack_resiliation_services_to_keep' | translate)"></legend>
 
                 <div data-ng-if="PackResiliation.subServicesTermsLoading">
-                    <bouncing-box-loader>
+                    <bouncing-box-loader data-size="m">
                         <h4 data-translate="loading"></h4>
                     </bouncing-box-loader>
                 </div>
 
-                <div data-ng-if="PackResiliation.subServicesTermsError && !PackResiliation.subServicesTermsLoading"
-                     class="alert alert-warning"
-                     role="alert">
-                     <span class="ovh-font ovh-font-filled-warning" aria-hidden="true"></span>
-                     <span data-translate="pack_resiliation_subservices_load_error"></span>
+                <div class="alert alert-warning"
+                     role="alert"
+                     data-ng-if="PackResiliation.subServicesTermsError && !PackResiliation.subServicesTermsLoading"
+                     data-translate="pack_resiliation_subservices_load_error">
                 </div>
 
                 <div data-ng-if="PackResiliation.subServicesTerms && !PackResiliation.subServicesTermsLoading">
@@ -132,56 +135,50 @@
                          data-ng-if="serviceType !== 'xdslAccess'">
                         <div data-ng-if="PackResiliation.subServicesTerms[serviceType]">
                             <div class="form-group">
-                                <label for="{{::serviceType + 'Elem'}}"
-                                       class="col-xs-12 col-sm-4 service-title control-label"
-                                       data-translate="{{serviceType}}"></label>
-                                <div class="col-xs-12 col-sm-8 service-item">
-                                    <div class="service-select-all clearfix ovh-form-flat bottom-space-m8"
+                                <div class="h6 mb-3" data-translate="{{serviceType}}"></div>
+                                <div class="service-item">
+                                    <div class="service-select-all clearfix mb-2 px-3"
                                          data-ng-if="!PackResiliation.config[serviceType].cannotBeKept && PackResiliation.hasKeepableSubServices(serviceType)">
-                                        <div flat-input-container class="left-space-m16 top-space-m8 bottom-space-m4">
-                                            <flat-checkbox>
+                                        <div class="checkbox">
+                                            <label for="{{::serviceType + 'Elem'}}">
                                                 <input name="{{::serviceType}}"
                                                     id="{{::serviceType + 'Elem'}}"
                                                     data-ng-model="PackResiliation.switch[serviceType]"
                                                     data-ng-change="PackResiliation.switchApply(serviceType)"
                                                     type="checkbox">
-                                            </flat-checkbox>
-                                            <label for="{{::serviceType + 'Elem'}}"
-                                                   data-translate="{{'pack_resiliation_check_all_' + serviceType}}"></label>
+                                                <span data-translate="{{'pack_resiliation_check_all_' + serviceType}}"></span>
+                                            </label>
                                         </div>
                                     </div>
 
-                                    <div class="service-select-all clearfix bottom-space-m16"
+                                    <div class="service-select-all clearfix mb-3"
                                          data-ng-if="!PackResiliation.hasKeepableSubServices(serviceType)">
-                                        <div class="left-space-m16 bottom-space-m4"
+                                        <div class="ml-3 my-2"
                                              data-ng-if="!PackResiliation.hasKeepableSubServices(serviceType)">
                                             <strong data-translate="{{'pack_resiliation_delete_all_' + serviceType}}"></strong>
                                         </div>
                                     </div>
 
-                                    <div data-ng-repeat="service in PackResiliation.subServicesTerms[serviceType] track by service.id">
+                                    <div class="pl-4" data-ng-repeat="service in PackResiliation.subServicesTerms[serviceType] track by service.id">
                                         <div class="row service-select-single">
-                                            <div class="col-xs-7 ovh-form-flat"
+                                            <div class="col-xs-7 checkbox my-1"
                                                  data-tooltip-append-to-body="true"
                                                  data-uib-tooltip-html-unsafe="{{ service.keepServiceTerms.isAllowed ?
                                                  null : '<strong class=\'text-warning\'>' +
                                                  ('pack_resiliation_services_cannot_keep' | translate) + '</strong>'}}">
-                                                <div flat-input-container>
-                                                     <flat-checkbox class="left-space-m16 top-space-m4">
-                                                         <input name="{{::service.domain}}"
-                                                             id="{{::service.domain + 'Elem'}}"
-                                                             data-ng-disabled="!service.keepServiceTerms.isAllowed"
-                                                             data-ng-model="PackResiliation.model.subServicesToKeep[service.id]"
-                                                             data-ng-change="PackResiliation.updateAllInfluencedByCheckedSubServices(serviceType)"
-                                                             value="true"
-                                                             type="checkbox">
-                                                     </flat-checkbox>
-                                                     <label for="{{::service.domain + 'Elem'}}"
-                                                            data-ng-class="{ text-muted: !service.keepServiceTerms.isAllowed }"
-                                                            data-ng-bind="::service.domain"></label>
-                                                </div>
+                                                <label for="{{::service.domain + 'Elem'}}"
+                                                       data-ng-class="{ 'text-muted': !service.keepServiceTerms.isAllowed }">
+													 <input name="{{::service.domain}}"
+														 id="{{::service.domain + 'Elem'}}"
+														 data-ng-disabled="!service.keepServiceTerms.isAllowed"
+														 data-ng-model="PackResiliation.model.subServicesToKeep[service.id]"
+														 data-ng-change="PackResiliation.updateAllInfluencedByCheckedSubServices(serviceType)"
+														 value="true"
+														 type="checkbox">
+												    <span data-ng-bind="::service.domain"></span>
+												 </label>
                                             </div>
-                                            <div class="col-xs-5 text-right">
+                                            <div class="col-xs-5 text-right my-1">
                                                 <div data-ng-if="service.keepServiceTerms.price.value">
                                                     <span data-translate="pack_resiliation_keeping_fee"></span>
                                                     <strong class="text-nowrap"
@@ -210,15 +207,15 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="alert alert-info top-space-m32">
-                        <span class="ovh-font ovh-font-filled-info" aria-hidden="true"></span>
-                        <p data-translate="pack_resiliation_hubic_disclamer"></p>
-                    </div>
                 </div>
             </fieldset>
 
-            <div class="widget-presentation top-space-m32">
+            <div class="alert alert-info mt-5"
+                 role="alert"
+                 data-translate="pack_resiliation_hubic_disclamer">
+            </div>
+
+            <div class="widget-presentation mt-5">
                 <h2 class="widget-presentation-title"
                     data-ng-bind="'3. ' + ('pack_resiliation_fee_summary_total_title' | translate)"></h2>
                 <div class="row">
@@ -261,7 +258,7 @@
                      </strong>
                 </div>
 
-                <button class="btn btn-primary top-space-m32"
+                <button class="btn btn-primary mt-5"
                     data-ng-click="PackResiliation.openConfirmation()"
                     data-ng-disabled="resiliationForm.expirationNativeDate.$error.date || !PackResiliation.model.reason || (PackResiliation.model.reason.value === 'other' && !PackResiliation.model.comment)"
                     type="button"
@@ -281,7 +278,7 @@
                     <strong class="resiliation-date col-md-8" data-ng-bind="PackResiliation.resiliationTerms.onGoingResiliation.dateTodo | date"></strong>
                 </div>
 
-                <button class="btn btn-primary top-space-m32"
+                <button class="btn btn-primary mt-5"
                     data-ng-really-click="PackResiliation.cancelPackResiliation(PackResiliation.resiliationTerms)"
                     data-ng-really-message="{{ 'pack_resiliation_cancel_really' | translate:PackResiliation.resiliationTerms}}"
                     data-ng-really-confirm="{{:: 'ok' | translate }}"

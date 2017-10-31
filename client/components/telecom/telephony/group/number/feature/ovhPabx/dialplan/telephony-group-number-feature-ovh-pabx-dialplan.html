@@ -36,7 +36,7 @@
                  <!-- EDIT MENU BTN -->
                  <li role="menuitem">
                      <button type="button"
-                             class="btn btn-link full-width"
+                             class="btn btn-link w-100"
                              data-translate="telephony_number_feature_ovh_pabx_dialplan_action_edit"
                              data-ng-click="$ctrl.onEditDialplanBtnClick()">
                      </button>
@@ -45,7 +45,7 @@
                  <!-- ADD EXTENSION BTN -->
                  <li role="menuitem">
                      <button type="button"
-                             class="btn btn-link full-width"
+                             class="btn btn-link w-100"
                              data-translate="telephony_number_feature_ovh_pabx_step_add"
                              data-ng-click="$ctrl.onExtensionAddBtnClick()">
                      </button>
@@ -53,7 +53,7 @@
                  <!-- COLLAPSE BUTTON -->
                  <li role="menuitem">
                      <button type="button"
-                             class="btn btn-link full-width"
+                             class="btn btn-link w-100"
                              data-translate="{{ $ctrl.displayHelpers.collapsed ? 'telephony_number_feature_ovh_pabx_dialplan_action_show_steps' : 'telephony_number_feature_ovh_pabx_dialplan_action_hide_steps' }}"
                              data-ng-click="$ctrl.displayHelpers.collapsed = !$ctrl.displayHelpers.collapsed"
                              data-ng-disabled="!$ctrl.dialplan.extensions.length">
@@ -63,7 +63,7 @@
                  <!-- DELETE DIALPLAN BTN -->
                  <li role="menuitem">
                      <button type="button"
-                             class="btn btn-link full-width"
+                             class="btn btn-link w-100"
                              data-translate="telephony_number_feature_ovh_pabx_dialplan_action_delete"
                              data-ng-click="$ctrl.dialplan.status = 'DELETE_PENDING'">
                      </button>
@@ -145,7 +145,7 @@
                           data-translate-values="{ count: $ctrl.dialplan.extensions.length }">
                     </span>
                     <button type="button"
-                            class="btn btn-link no-space"
+                            class="btn btn-link p-0 m-0"
                             data-ng-click="$ctrl.displayHelpers.collapsed = false"
                             data-translate="telephony_number_feature_ovh_pabx_dialplan_action_show_steps">
                     </button>

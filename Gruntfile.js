@@ -137,6 +137,13 @@ module.exports = function (grunt) {
                 tasks: ["injector:less", "less", "postcss"]
             },
 
+            sass: {
+                files: [
+                    "<%= yeoman.client %>/app/**/*.scss"
+                ],
+                tasks: ["sass", "postcss"]
+            },
+
             htmlTemplates: {
                 files: [
                     "<%= yeoman.client %>/{app,components}/**/!(*.tpl).html"
@@ -247,7 +254,10 @@ module.exports = function (grunt) {
             },
             dist: {
                 files: {
-                    "<%= yeoman.tmp %>/app/app.css": ["<%= yeoman.tmp %>/app/app.css"]
+                    "<%= yeoman.tmp %>/app/app.css": [
+                        "<%= yeoman.tmp %>/app/app-scss.css",
+                        "<%= yeoman.tmp %>/app/app.css"
+                    ]
                 }
             }
         },
@@ -547,6 +557,7 @@ module.exports = function (grunt) {
             ],
             dist: [
                 "less",
+                "sass",
                 "imagemin",
                 "svgmin"
             ]
@@ -602,11 +613,11 @@ module.exports = function (grunt) {
         less: {
             options: {
                 paths: [
+                    "node_modules",
                     "<%= yeoman.client %>/bower_components",
                     "<%= yeoman.client %>/app",
                     "<%= yeoman.client %>/components",
-                    "<%= yeoman.client %>/assets/styles",
-                    "node_modules"
+                    "<%= yeoman.client %>/assets/styles"
                 ],
                 plugins: [
                     require("less-plugin-remcalc")
@@ -615,6 +626,19 @@ module.exports = function (grunt) {
             server: {
                 files: {
                     "<%= yeoman.tmp %>/app/app.css": "<%= yeoman.client %>/app/app.less"
+                }
+            }
+        },
+
+        sass: {
+            options: {
+                sourceMap: true,
+                includePaths: ["."],
+                outputStyle: "expanded"
+            },
+            dist: {
+                files: {
+                    "<%= yeoman.tmp %>/app/app-scss.css": "<%= yeoman.client %>/app/app-scss.scss"
                 }
             }
         },
@@ -865,6 +889,7 @@ module.exports = function (grunt) {
             "wiredep:less",
             "wiredep:client",
             "less",
+            "sass",
             "postcss",
             "ovhTranslation",
             "json_merge",

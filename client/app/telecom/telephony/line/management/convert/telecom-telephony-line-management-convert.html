@@ -11,41 +11,53 @@
 
 <div class="telecom-section-content">
 
+    <toast-message></toast-message>
+
     <div data-ng-if="LineConvertCtrl.isLoading">
-        <bouncing-box-loader>
-            <h3 class="top-space-m16" data-translate="loading"></h3>
+        <bouncing-box-loader data-size="m">
+            <h3 class="mt-3"
+                data-translate="loading"></h3>
         </bouncing-box-loader>
     </div>
 
-    <div class="row" data-ng-if="!LineConvertCtrl.isLoading">
+    <div class="row"
+         data-ng-if="!LineConvertCtrl.isLoading">
         <div class="col-md-6 widget-presentation">
             <header class="widget-presentation-header">
-                <h2 class="widget-presentation-title" data-translate="telephony_line_convert_info_title"></h2>
+                <h2 class="widget-presentation-title"
+                    data-translate="telephony_line_convert_info_title"></h2>
             </header>
             <p data-translate="telephony_line_convert_info1"></p>
             <p data-translate="telephony_line_convert_info2"></p>
-            <p class="bottom-space-m16" data-translate="telephony_line_convert_info3"></p>
+            <p class="mb-2"
+               data-translate="telephony_line_convert_info3"></p>
         </div>
     </div>
-    <div class="row" data-ng-if="!LineConvertCtrl.isLoading">
+    <div class="row"
+         data-ng-if="!LineConvertCtrl.isLoading">
         <div class="col-md-6 widget-presentation">
             <header class="widget-presentation-header">
-                <h2 class="widget-presentation-title" data-translate="telephony_line_convert_title"></h2>
+                <h2 class="widget-presentation-title"
+                    data-translate="telephony_line_convert_title"></h2>
             </header>
-            <p class="text-danger" data-ng-if="LineConvertCtrl.task">
-                <i class="ovh-font ovh-font-warning fs16 line-height-normal right-space-m4"></i>
+            <p class="text-danger"
+               data-ng-if="LineConvertCtrl.task">
+                <i class="ovh-font ovh-font-warning mr-1"></i>
                 <span data-translate="telephony_line_convert_warning"
                       data-translate-values="{ line: (LineConvertCtrl.line.serviceName | phoneNumber), date: (LineConvertCtrl.task.executionDate | date) }"></span>
             </p>
             <div data-ng-if="!LineConvertCtrl.task">
                 <button type="button"
-                        class="btn btn-default"
+                        class="btn btn-primary"
                         data-ng-disabled="LineConvertCtrl.isInXdslPack || LineConvertCtrl.isConverting"
                         data-ng-click="LineConvertCtrl.convertToNumber()">
+                    <bouncing-box-loader class="d-inline-block align-middle mr-2"
+                                         data-ng-if="LineConvertCtrl.isConverting"
+                                         data-size="s">
+                    </bouncing-box-loader>
                     <span data-translate="telephony_line_convert_convert"
                           data-translate-values="{ line: (LineConvertCtrl.line.serviceName | phoneNumber) }">
                     </span>
-                    <spinner data-ng-if="LineConvertCtrl.isConverting" class="left-space-m4"></spinner>
                 </button>
             </div>
             <div data-ng-if="LineConvertCtrl.task">
@@ -53,8 +65,11 @@
                         class="btn btn-default"
                         data-ng-disabled="LineConvertCtrl.isCancelling"
                         data-ng-click="LineConvertCtrl.cancelConvertToNumber()">
+                    <bouncing-box-loader class="d-inline-block align-middle mr-2"
+                                         data-ng-if="LineConvertCtrl.isCancelling"
+                                         data-size="s">
+                    </bouncing-box-loader>
                     <span data-translate="telephony_line_convert_cancel_convert"></span>
-                    <spinner data-ng-if="LineConvertCtrl.isCancelling" class="left-space-m4"></spinner>
                 </button>
             </div>
         </div>

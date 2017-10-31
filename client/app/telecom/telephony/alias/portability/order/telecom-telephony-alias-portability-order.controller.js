@@ -52,7 +52,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasPortabilityOrderCt
         }, true);
 
         // fetch list of billing accounts
-        return TelephonyMediator.getGroups().then(function (groups) {
+        return TelephonyMediator.getAll().then(function (groups) {
             self.billingAccounts = groups;
             self.order.billingAccount = $stateParams.billingAccount;
         }).catch(function (err) {
