@@ -2,7 +2,7 @@
 
     <div class="row">
         <div class="col-xs-12">
-            <div class="widget-presentation bottom-space-m32">
+            <div class="widget-presentation mb-4">
 
                 <header class="widget-presentation-header">
                     <h2 class="widget-presentation-title"
@@ -10,12 +10,15 @@
                     </h2>
                 </header>
 
-                <div class="bottom-space-m16">
+                <toast-message></toast-message>
+
+                <div class="mb-3">
                     <button
                         type="button"
                         class="btn btn-primary btn-block-xs-only"
                         data-ng-click="CampaignsCtrl.addCampaign()">
-                        <i class="ovh-font ovh-font-ajouter right-space-m4" aria-hidden="true"></i>
+                        <i class="ovh-font ovh-font-ajouter mr-1"
+                           aria-hidden="true"></i>
                         <span data-translate="telephony_service_fax_campaigns_add_title"></span>
                     </button>
                     <button
@@ -23,7 +26,8 @@
                         class="btn btn-default btn-block-xs-only"
                         data-ng-click="CampaignsCtrl.toggleShowFilter()"
                         data-ng-disabled="!CampaignsCtrl.campaigns.raw.length">
-                        <i class="ovh-font ovh-font-filter right-space-m4" aria-hidden="true"></i>
+                        <i class="ovh-font ovh-font-filter mr-1"
+                           aria-hidden="true"></i>
                         <span data-ng-if="!CampaignsCtrl.campaigns.showFilter"
                               data-translate="telephony_service_fax_campaigns_filter">
                         </span>
@@ -33,10 +37,10 @@
                     </button>
                 </div>
 
-                <div class="row bottom-space-m16" data-ng-if="CampaignsCtrl.campaigns.showFilter">
+                <div class="row mb-3"
+                     data-ng-if="CampaignsCtrl.campaigns.showFilter">
                     <div class="col-xs-12 col-sm-4 col-sm-push-8">
                         <select
-                            flat-select
                             class="form-control"
                             required
                             data-ng-change="CampaignsCtrl.applySorting()"
@@ -53,49 +57,52 @@
                     </div>
                 </div><!-- .row -->
 
-                <div class="table-responsive-vertical">
-                    <table class="table table-pretty table-hover table-stripped no-space">
+                <div class="table-responsive">
+                    <table class="table"
+                           data-ng-class="{
+                               'table-hover table-striped': CampaignsCtrl.campaigns.raw.length > 1
+                           }">
                         <thead>
                             <tr>
                                 <th scope="col">
                                     <button
                                         type="button"
-                                        class="no-style left-space-p0"
+                                        class="btn btn-link pl-0"
                                         data-ng-click="CampaignsCtrl.orderBy('name')">
-                                        <label class="pointer"
-                                               data-translate="telephony_service_fax_campaigns_list_title_name">
-                                        </label>
-                                        <span class="table-pretty-filter">
-                                            <i class="fa" data-ng-class="{
-                                                'fa-sort': CampaignsCtrl.campaigns.orderBy !== 'name',
-                                                'fa-sort-desc': CampaignsCtrl.campaigns.orderBy === 'name' && CampaignsCtrl.campaigns.orderDesc,
-                                                'fa-sort-asc': CampaignsCtrl.campaigns.orderBy === 'name' && !CampaignsCtrl.campaigns.orderDesc
-                                            }"></i>
+                                        <span data-translate="telephony_service_fax_campaigns_list_title_name"></span>
+                                        <span class="oui-icon align-baseline"
+                                              aria-hidden="true"
+                                              data-ng-class="{
+                                                  'oui-icon-arrow-down': CampaignsCtrl.campaigns.orderBy !== 'name',
+                                                  'oui-icon-arrow-down': CampaignsCtrl.campaigns.orderBy === 'name' && CampaignsCtrl.campaigns.orderDesc,
+                                                  'oui-icon-arrow-up': CampaignsCtrl.campaigns.orderBy === 'name' && !CampaignsCtrl.campaigns.orderDesc
+                                              }">
                                         </span>
                                     </button>
                                 </th>
                                 <th scope="col">
                                     <button
                                         type="button"
-                                        class="no-style left-space-p0"
+                                        class="btn btn-link pl-0"
                                         data-ng-click="CampaignsCtrl.orderBy('status')">
-                                        <label class="pointer"
-                                               data-translate="telephony_service_fax_campaigns_list_title_status">
-                                        </label>
-                                        <span class="table-pretty-filter">
-                                            <i class="fa" data-ng-class="{
-                                                'fa-sort': CampaignsCtrl.campaigns.orderBy !== 'status',
-                                                'fa-sort-desc': CampaignsCtrl.campaigns.orderBy === 'status' && CampaignsCtrl.campaigns.orderDesc,
-                                                'fa-sort-asc': CampaignsCtrl.campaigns.orderBy === 'status' && !CampaignsCtrl.campaigns.orderDesc
-                                            }"></i>
+                                        <span data-translate="telephony_service_fax_campaigns_list_title_status"></span>
+                                        <span class="oui-icon align-baseline"
+                                              aria-hidden="true"
+                                              data-ng-class="{
+                                                  'oui-icon-arrow-down': CampaignsCtrl.campaigns.orderBy !== 'status',
+                                                  'oui-icon-arrow-down': CampaignsCtrl.campaigns.orderBy === 'status' && CampaignsCtrl.campaigns.orderDesc,
+                                                  'oui-icon-arrow-up': CampaignsCtrl.campaigns.orderBy === 'status' && !CampaignsCtrl.campaigns.orderDesc
+                                              }">
                                         </span>
                                     </button>
                                 </th>
-                                <th scope="col">
-                                    <label data-translate="telephony_service_fax_campaigns_list_title_success"></label>
-                                    <i class="fa fa-info-circle fs14"
+                                <th class="align-middle"
+                                    scope="col">
+                                    <span data-translate="telephony_service_fax_campaigns_list_title_success"></span>
+                                    <i class="fa fa-info-circle"
                                        aria-hidden="true"
                                        data-uib-tooltip="{{ 'telephony_service_fax_campaigns_list_title_success_info' | translate }}"
+                                       data-tooltip-append-to-body="true"
                                        data-tooltip-class="word-break">
                                     </i>
                                     <span class="sr-only"
@@ -105,7 +112,7 @@
                                 <th scope="col">
                                     <button
                                         type="button"
-                                        class="no-style right-space-m4"
+                                        class="btn btn-link ml-1"
                                         data-ng-disabled="CampaignsCtrl.campaigns.isLoading"
                                         data-ng-click="CampaignsCtrl.refresh()">
                                         <i class="fa fa-refresh"
@@ -118,16 +125,20 @@
                         </thead>
                         <tbody data-ng-if="CampaignsCtrl.campaigns.isLoading">
                             <tr>
-                                <td class="text-center top-space-p16 bottom-space-p16" colspan="4">
-                                    <span class="right-space-m4" data-translate="loading"></span>
-                                    <spinner></spinner>
+                                <td class="text-center my-3"
+                                    colspan="4">
+                                    <span class="mr-1"
+                                          data-translate="loading"></span>
+                                    <bouncing-box-loader class="d-inline-block align-middle"
+                                                         data-size="s">
+                                    </bouncing-box-loader>
                                 </td>
                             </tr>
                         </tbody>
                         <tbody data-ng-if="!CampaignsCtrl.campaigns.isLoading && !CampaignsCtrl.campaigns.raw.length">
                             <tr>
                                 <td colspan="4"
-                                    class="text-center top-space-p16 bottom-space-p16"
+                                    class="text-center my-3"
                                     data-translate="telephony_service_fax_campaigns_list_empty">
                                 </td>
                             </tr>
@@ -136,7 +147,8 @@
                                            CampaignsCtrl.campaigns.raw.length &&
                                            !CampaignsCtrl.campaigns.paginated.length">
                             <tr>
-                                <td class="text-center top-space-p16 bottom-space-p16" colspan="4">
+                                <td class="text-center my-3"
+                                    colspan="4">
                                     <span data-translate="telephony_service_fax_campaigns_list_not_found"></span>
                                 </td>
                             </tr>
@@ -170,17 +182,21 @@
                                     </em>
                                 </td>
                                 <td class="text-right">
-                                    <div class="inline-block" data-uib-dropdown>
-                                        <button
-                                            type="button"
-                                            class="btn btn-default btn-xs"
-                                            data-uib-dropdown-toggle>
-                                            <i class="ovh-font ovh-font-dots" aria-hidden="true"></i>
+                                    <div class="btn-group"
+                                         data-uib-dropdown
+                                         data-dropdown-append-to-body>
+                                        <button type="button"
+                                                class="btn btn-link"
+                                                data-uib-dropdown-toggle>
+                                            <span class="ovh-font ovh-font-dots"
+                                                  aria-hidden="true"></span>
                                             <span class="sr-only"
                                                   data-translate="telephony_service_fax_campaigns_sr_only_actions">
                                             </span>
                                         </button>
-                                        <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                                        <ul class="dropdown-menu dropdown-menu-right"
+                                            data-uib-dropdown-menu
+                                            role="menu">
                                             <li role="menuitem"
                                                 data-ng-class="{ 'disabled': campaign.status === 'stop' }">
                                                 <a href="#"
@@ -223,17 +239,17 @@
                             </tr>
                         </tbody>
                     </table>
-                    <div class="table-pretty-pagination top-space-m8"
-                         data-ng-if="!CampaignsCtrl.campaigns.isLoading && CampaignsCtrl.campaigns.raw.length"
-                         data-pagination-front
-                         data-items="CampaignsCtrl.campaigns.sorted"
-                         data-paginated-items="CampaignsCtrl.campaigns.paginated"
-                         data-current-page="currentPage"
-                         data-nb-pages="nbPages"
-                         data-items-per-page="CampaignsCtrl.campaigns.perPage"
-                         data-page-placeholder="{{ 'common_pagination_page' | translate: { currentPage: currentPage, nbPages: nbPages } }}"
-                         data-item-per-page-placeholder="{{ 'common_pagination_display' | translate }}">
-                    </div>
+                </div>
+                <div class="mt-2"
+                     data-ng-if="!CampaignsCtrl.campaigns.isLoading && CampaignsCtrl.campaigns.raw.length"
+                     data-pagination-front
+                     data-items="CampaignsCtrl.campaigns.sorted"
+                     data-paginated-items="CampaignsCtrl.campaigns.paginated"
+                     data-current-page="currentPage"
+                     data-nb-pages="nbPages"
+                     data-items-per-page="CampaignsCtrl.campaigns.perPage"
+                     data-page-placeholder="{{ 'common_pagination_page' | translate: { currentPage: currentPage, nbPages: nbPages } }}"
+                     data-item-per-page-placeholder="{{ 'common_pagination_display' | translate }}">
                 </div>
 
             </div>

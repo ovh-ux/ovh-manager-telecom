@@ -44,11 +44,16 @@
                     data-translate-attr="{ 'title': 'telephony_number_feature_conference_general_unlock' }">
                     <span class="ovh-font ovh-font-lockOpened" aria-hidden="true"></span>
                 </button>
-                <flat-switch class="inline-block">
+                <label class="oui-switch">
                     <input type="checkbox"
-                           data-ng-model="$ctrl.model.lockState"
-                           data-ng-change="$ctrl.toggleLockStatus()" />
-                </flat-switch>
+                           class="oui-switch__checkbox"
+                           id="lockStatus"
+                           data-ng-change="$ctrl.toggleLockStatus()"
+                           data-ng-model="$ctrl.model.lockState">
+                    <div class="oui-switch__slider"></div>
+                    <i class="oui-icon oui-icon-success" aria-hidden="true"></i>
+                    <i class="oui-icon oui-icon-error" aria-hidden="true"></i>
+                </label>
                 <button
                     type="button"
                     class="voip-plan__step-btn voip-plan__step-btn--switch"
@@ -65,11 +70,16 @@
                     data-translate-attr="{ 'title': 'telephony_number_feature_conference_general_unmute_all_members' }">
                     <span class="ovh-font ovh-font-microphone" aria-hidden="true"></span>
                 </button>
-                <flat-switch class="inline-block">
+                <label class="oui-switch">
                     <input type="checkbox"
-                           data-ng-model="$ctrl.model.muteAllState"
-                           data-ng-change="$ctrl.toggleMuteAll()" />
-                </flat-switch>
+                           class="oui-switch__checkbox"
+                           id="muteAll"
+                           data-ng-change="$ctrl.toggleMuteAll()"
+                           data-ng-model="$ctrl.model.muteAllState">
+                    <div class="oui-switch__slider"></div>
+                    <i class="oui-icon oui-icon-success" aria-hidden="true"></i>
+                    <i class="oui-icon oui-icon-error" aria-hidden="true"></i>
+                </label>
                 <button
                     type="button"
                     class="voip-plan__step-btn voip-plan__step-btn--switch"
@@ -162,20 +172,20 @@
                     <span class="ovh-font ovh-font-dots" aria-hidden="true"></span>
                 </button>
 
-                <div class="voip-plan__step-icon--indicators left-space-m8">
+                <div class="voip-plan__step-icon--indicators ml-2">
                     <span class="ovh-font ovh-font-speaker"
                        aria-hidden="true"
                        data-ng-if="participant.talking"
                        data-translate-attr="{ title: 'telephony_number_feature_conference_participants_state_talking' }">
                     </span>
 
-                    <span class="fa fa-deaf fs16 left-space-m8"
+                    <span class="fa fa-deaf ml-2"
                        aria-hidden="true"
                        data-ng-if="!participant.hear"
                        data-translate-attr="{ title: 'telephony_number_feature_conference_participants_state_deaf' }">
                     </span>
 
-                    <span class="ovh-font ovh-font-noneSpeaker left-space-m8"
+                    <span class="ovh-font ovh-font-noneSpeaker ml-2"
                        aria-hidden="true"
                        data-ng-if="!participant.speak"
                        data-translate-attr="{ title: 'telephony_number_feature_conference_participants_state_muted' }">

@@ -1,6 +1,6 @@
 <div data-ng-controller="XdslModemLanCtrl as LanCtrl">
 
-    <div class="table-responsive-vertical">
+    <div class="table-responsive">
         <h3>
             <span class="tooltip-label"
                 data-uib-tooltip="{{'xdsl_modem_lan_description' | translate}}"
@@ -11,10 +11,10 @@
         </h3>
 
         <div data-ng-if="LanCtrl.loader">
-            <spinner></spinner>
+            <bouncing-box-loader data-size="m"></bouncing-box-loader>
         </div>
 
-        <table class="table table-hover table-condensed ovh-form-flat table-form table-pretty" data-ng-hide="LanCtrl.loader">
+        <table class="table table-hover table-condensed" data-ng-hide="LanCtrl.loader">
             <thead>
                 <tr>
                     <th scope="col">
@@ -35,7 +35,7 @@
                             data-tooltip-append-to-body="true"
                             data-translate="xdsl_modem_lan_subnetMask"></span>
                     </th>
-                    <th></th>
+                    <th data-translate="common_actions"></th>
                 </tr>
             </thead>
             <tbody data-ng-repeat="lan in LanCtrl.lans track by lan.IPAddress">
@@ -46,11 +46,11 @@
                         data-ng-bind="lan.IPAddress"></th>
                     <td data-title="{{ 'xdsl_modem_lan_subnetMask' | translate }}" data-ng-bind="lan.subnetMask"></td>
                     <td class="col-mobile-button-big">
-                        <button class="btn btn-xs btn-link"
+                        <button class="btn btn-default"
                             title="{{lan.IPAddress}} : {{ 'common_table_edit' | translate }}"
                             data-ng-click="lan.edit()"
                             data-ng-disabled="!LanCtrl.mediator.capabilities.canChangeLAN">
-                            <span class="ovh-font ovh-font-editer fs16" aria-hidden="true"></span>
+                            <span class="ovh-font ovh-font-editer" aria-hidden="true"></span>
                         </button>
                     </td>
                 </tr>
@@ -64,61 +64,55 @@
                         <label for="lanAddressingType"
                                data-translate="xdsl_modem_lan_addressingType"
                                class="sr-only"></label>
-                        <div flat-input-container>
-                            <select flat-select
-                                name="lanAddressingType"
-                                id="lanAddressingType"
-                                class="form-control"
-                                data-ng-model="lan.tempValue.addressingType">
-                                <option value="DHCP" data-translate="xdsl_modem_lan_addressingType_DHCP"></option>
-                                <option value="Static" data-translate="xdsl_modem_lan_addressingType_Static"></option>
-                            </select>
-                        </div>
+						<select
+							name="lanAddressingType"
+							id="lanAddressingType"
+							class="form-control"
+							data-ng-model="lan.tempValue.addressingType">
+							<option value="DHCP" data-translate="xdsl_modem_lan_addressingType_DHCP"></option>
+							<option value="Static" data-translate="xdsl_modem_lan_addressingType_Static"></option>
+						</select>
                     </td>
 
                     <td class="form-group" data-title="{{ 'xdsl_modem_lan_ip' | translate }}">
                         <label for="lanIPAddress"
                                data-translate="xdsl_modem_lan_ip"
                                class="sr-only"></label>
-                        <div flat-input-container>
-                            <input name="lanIPAddress"
-                                id="lanIPAddress"
-                                type="text"
-                                class="form-control input-sm"
-                                data-ng-model="lan.tempValue.IPAddress"
-                                maxlength="15"
-                                placeholder="192.168.1.254"
-                                data-ui-validate="'LanCtrl.validator.isIP($value)'"/>
-                        </div>
+						<input name="lanIPAddress"
+							id="lanIPAddress"
+							type="text"
+							class="form-control"
+							data-ng-model="lan.tempValue.IPAddress"
+							maxlength="15"
+							placeholder="192.168.1.254"
+							data-ui-validate="'LanCtrl.validator.isIP($value)'"/>
                     </td>
 
                     <td class="form-group" data-title="{{ 'xdsl_modem_lan_subnetMask' | translate }}">
                         <label for="lanSubnetMask"
                                data-translate="xdsl_modem_lan_subnetMask"
                                class="sr-only"></label>
-                        <div flat-input-container>
-                            <input name="lanSubnetMask"
-                                id="lanSubnetMask"
-                                type="text"
-                                class="form-control input-sm"
-                                data-ng-model="lan.tempValue.subnetMask"
-                                maxlength="15"
-                                placeholder="255.255.255.0"
-                                data-ui-validate="'LanCtrl.validator.isIP($value)'"/>
-                        </div>
+						<input name="lanSubnetMask"
+							id="lanSubnetMask"
+							type="text"
+							class="form-control"
+							data-ng-model="lan.tempValue.subnetMask"
+							maxlength="15"
+							placeholder="255.255.255.0"
+							data-ui-validate="'LanCtrl.validator.isIP($value)'"/>
                     </td>
 
                     <td class="form-group col-mobile-button-big">
                         <button type="submit"
                             title="{{lan.IPAddress}} {{ 'common_table_validate_modifications' | translate }}"
-                            class="btn btn-xs btn-primary"
+                            class="btn btn-primary"
                             data-ng-click="LanCtrl.submit(lan)"
                             data-ng-disabled="localForm.$invalid">
                             <span class="ovh-font ovh-font-check" aria-hidden="true"></span>
                         </button>
                         <button type="reset"
                             title="{{lan.IPAddress}} {{ 'common_table_cancel_modifications' | translate }}"
-                            class="btn btn-xs btn-default"
+                            class="btn btn-default"
                             data-ng-click="lan.cancel()">
                             <span class="ovh-font ovh-font-wrong" aria-hidden="true"></span>
                         </button>

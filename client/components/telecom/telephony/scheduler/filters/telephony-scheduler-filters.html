@@ -7,8 +7,8 @@
              data-ng-repeat="category in chunkedCategories track by $index">
 
             <button type="button"
-                    class="no-style full-width text-left"
-                    data-ng-class="{ 'active-slot': category.active }"
+                    class="btn btn-link w-100 text-left"
+                    data-ng-class="{ 'active': category.active }"
                     data-ng-click="$ctrl.toggleCategoryDisplay(category)">
 
                 <voip-time-condition-slot data-time-condition-slot="$ctrl.convertCategoryToSlot(category.value)"

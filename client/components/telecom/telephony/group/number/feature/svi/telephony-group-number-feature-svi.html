@@ -15,9 +15,9 @@
                 <span class="voip-plan__step-name"
                       data-translate="telephony_number_feature_svi">
                 </span>
-                <dl class="voip-plan__step-info bottom-space-m0"
+                <dl class="voip-plan__step-info mb-0"
                     data-ng-if="!$ctrl.numberCtrl.number.feature.inEdition && ($ctrl.numberCtrl.number.feature.url || $ctrl.numberCtrl.number.feature.urlRecord)">
-                    <dt class="top-space-m4"
+                    <dt class="mt-2"
                         data-translate="telephony_number_feature_svi_url"
                         data-ng-if="$ctrl.numberCtrl.number.feature.url">
                     </dt>
@@ -26,7 +26,7 @@
                         data-ng-bind="$ctrl.numberCtrl.number.feature.url"
                         data-ng-attr-title="{{ $ctrl.numberCtrl.number.feature.url }}">
                     </dd>
-                    <dt class="top-space-m4"
+                    <dt class="mt-2"
                         data-translate="telephony_number_feature_svi_url_record"
                         data-ng-if="$ctrl.numberCtrl.number.feature.urlRecord">
                     </dt>
@@ -36,9 +36,9 @@
                         data-ng-attr-title="{{ $ctrl.numberCtrl.number.feature.urlRecord }}">
                     </dd>
                 </dl>
-                <dl class="voip-plan__step-info bottom-space-m0"
+                <dl class="voip-plan__step-info mb-0"
                     data-ng-if="$ctrl.numberCtrl.number.feature.inEdition && ($ctrl.numberCtrl.number.feature.saveForEdition.url || $ctrl.numberCtrl.number.feature.saveForEdition.urlRecord)">
-                    <dt class="top-space-m4"
+                    <dt class="mt-2"
                         data-translate="telephony_number_feature_svi_url"
                         data-ng-if="$ctrl.numberCtrl.number.feature.saveForEdition.url">
                     </dt>
@@ -47,7 +47,7 @@
                         data-ng-bind="$ctrl.numberCtrl.number.feature.saveForEdition.url"
                         data-ng-attr-title="{{ $ctrl.numberCtrl.number.feature.saveForEdition.url }}">
                     </dd>
-                    <dt class="top-space-m4"
+                    <dt class="mt-2"
                         data-translate="telephony_number_feature_svi_url_record"
                         data-ng-if="$ctrl.numberCtrl.number.feature.saveForEdition.urlRecord">
                     </dt>

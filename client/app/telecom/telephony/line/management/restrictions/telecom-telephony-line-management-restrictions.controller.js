@@ -94,7 +94,6 @@ angular.module("managerApp").controller("TelecomTelephonyLineRestrictionsCtrl", 
                 self.lineOptionsForm = angular.copy(self.lineOptions);
             });
         }).then(function () {
-            self.lineOptions.ipRestrictions = angular.copy(options.ipRestrictions);
             self.changeLineSuccess = true;
             $timeout(function () {
                 self.changeLineSuccess = false;

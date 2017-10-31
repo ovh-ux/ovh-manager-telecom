@@ -1,39 +1,46 @@
 <form name="removePhonebookForm"
       id="removePhonebookForm"
-      class="ovh-form-flat"
       data-ng-submit="PhonebookRemoveCtrl.remove()">
 
     <div class="modal-header">
-        <h3 class="modal-title pull-left"
-            data-translate="telephony_phonebook_delete_label">
-        </h3>
         <button
             type="button"
-            class="close pull-right"
+            class="close float-right"
             aria-label="{{ ::'cancel' | translate }}"
             data-ng-click="PhonebookRemoveCtrl.cancel()">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
 
-    <div class="modal-body" data-ng-if="!PhonebookRemoveCtrl.isRemoving && !PhonebookRemoveCtrl.removed">
-        <div class="alert alert-info" role="alert">
-            <i class="ovh-font ovh-font-info" aria-hidden="true"></i>
-            <p data-translate="telephony_phonebook_delete_info"></p>
+    <div class="modal-body"
+         data-ng-if="!PhonebookRemoveCtrl.isRemoving && !PhonebookRemoveCtrl.removed">
+        <h3 class="modal-title"
+            data-translate="telephony_phonebook_delete_label">
+        </h3>
+        <div class="alert alert-info"
+             role="alert"
+             data-translate="telephony_phonebook_delete_info">
         </div>
-        <p class="word-break"
-           data-translate="telephony_phonebook_delete_confirm"
+        <p data-translate="telephony_phonebook_delete_confirm"
            data-translate-values="{ name: PhonebookRemoveCtrl.phonebook.name }">
         </p>
     </div>
 
-    <div class="modal-body" data-ng-if="PhonebookRemoveCtrl.isRemoving">
-        <bouncing-box-loader>
+    <div class="modal-body"
+         data-ng-if="PhonebookRemoveCtrl.isRemoving">
+        <h3 class="modal-title"
+            data-translate="telephony_phonebook_delete_label">
+        </h3>
+        <bouncing-box-loader data-size="m">
             <h4 data-translate="telephony_phonebook_deleting"></h4>
         </bouncing-box-loader>
     </div>
 
-    <div class="modal-body" data-ng-if="PhonebookRemoveCtrl.removed">
+    <div class="modal-body"
+         data-ng-if="PhonebookRemoveCtrl.removed">
+        <h3 class="modal-title"
+            data-translate="telephony_phonebook_delete_label">
+        </h3>
         <success-drawing-check  data-draw-success-check="PhonebookRemoveCtrl.removed">
             <h4 data-translate="telephony_phonebook_deleted"></h4>
         </success-drawing-check>

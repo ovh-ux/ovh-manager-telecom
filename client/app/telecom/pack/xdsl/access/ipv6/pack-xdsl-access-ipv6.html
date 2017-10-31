@@ -1,35 +1,34 @@
 <div data-ng-controller="XdslAccessIpv6Ctrl as IpCtrl">
-    <form name="IpForm" class="ovh-form-flat">
-        <div class="form-group">
-            <flat-checkbox data-ng-if="!access.tasks.current.routingIpv6">
-                <input type="checkbox"
-                    id="ipv6"
-                    name="ipv6"
-                    class="form-control pointer"
-                    data-ng-model="access.xdsl.ipv6Enabled"
-                    data-ng-disabled="access.tasks.current.routingIpv6"
-                    data-ng-really-click="IpCtrl.submitIp()"
-                    data-ng-really-undo="IpCtrl.undo()"
-                    data-ng-really-title="{{ 'xdsl_access_ipv6_status' | translate }}"
-                    data-ng-really-message="{{ access.xdsl.ipv6Enabled ? 'xdsl_access_ipv6_really_on' : 'xdsl_access_ipv6_really_off' | translate }}
+    <form name="IpForm">
+        <div class="form-group checkbox mt-0">
+            <label for="ipv6">
+                <div data-ng-if="!access.tasks.current.routingIpv6">
+                    <input type="checkbox"
+                           id="ipv6"
+                           name="ipv6"
+                           data-ng-model="access.xdsl.ipv6Enabled"
+                           data-ng-disabled="access.tasks.current.routingIpv6"
+                           data-ng-really-click="IpCtrl.submitIp()"
+                           data-ng-really-undo="IpCtrl.undo()"
+                           data-ng-really-title="&#8203;"
+                           data-ng-really-message="<h3>{{ 'xdsl_access_ipv6_status' | translate }}</h3>{{ access.xdsl.ipv6Enabled ? 'xdsl_access_ipv6_really_on' : 'xdsl_access_ipv6_really_off' | translate }}
                                             <div class='text-warning'>{{ 'xdsl_access_ipv6_warning' | translate }}</div>"
-                    data-ng-really-confirm="{{ 'ok' | translate }}"
-                    data-ng-really-cancel="{{ 'cancel' | translate }}"
-                    data-ng-really-window-class="revert-really-buttons"/>
-            </flat-checkbox>
-            <div data-ng-if="access.tasks.current.routingIpv6">
-                <spinner></spinner>
-                <label data-ng-if="access.xdsl.ipv6Enabled"
-                       for="ipv6"
-                       data-translate="xdsl_access_ipv6_success_validation_on"></label>
-                <label data-ng-if="!access.xdsl.ipv6Enabled"
-                       for="ipv6"
-                       data-translate="xdsl_access_ipv6_success_validation_off"></label>
-            </div>
-            <label data-ng-if="!access.tasks.current.routingIpv6"
-                   for="ipv6"
-                   data-uib-tooltip-html-unsafe="<div class='text-warning'>{{ 'xdsl_access_ipv6_warning' | translate }}</div>"
-                   data-translate="xdsl_access_ipv6_status"></label>
+                           data-ng-really-confirm="{{ 'ok' | translate }}"
+                           data-ng-really-cancel="{{ 'cancel' | translate }}"
+                           data-ng-really-window-class="revert-really-buttons"/>
+                </div>
+                <div data-ng-if="access.tasks.current.routingIpv6">
+                    <bouncing-box-loader class="d-inline-block align-middle ml-2"
+                                         data-size="s"></bouncing-box-loader>
+                    <span data-ng-if="access.xdsl.ipv6Enabled"
+                           data-translate="xdsl_access_ipv6_success_validation_on"></span>
+                    <span data-ng-if="!access.xdsl.ipv6Enabled"
+                           data-translate="xdsl_access_ipv6_success_validation_off"></span>
+                </div>
+                <span data-ng-if="!access.tasks.current.routingIpv6"
+                      data-uib-tooltip-html-unsafe="<div class='text-warning'>{{ 'xdsl_access_ipv6_warning' | translate }}</div>"
+                      data-translate="xdsl_access_ipv6_status"></span>
+            </label>
         </div>
     </form>
 </div>

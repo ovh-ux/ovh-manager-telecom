@@ -36,7 +36,6 @@
    <translation id="pack_move_cannot_validate_move" qtlid="312831">Pakettiasi ei voida muuttaa: {{message}}</translation>
    <translation id="pack_move_line_current_address" qtlid="312844">Nykyinen osoite</translation>
    <translation id="pack_move_line_future_address" qtlid="312857">Tuleva osoite</translation>
-   <translation id="pack_move_portLine_cost" qtlid="312870">La portabilité vous sera facturée <span class="bold red">50€</span></translation>
 
    <translation id="pack_move_eligibility_error" qtlid="312883">Kelpoisuustesti ei ole tällä hetkellä saatavilla. Ole hyvä ja yritä myöhemmin uudelleen.</translation>
    <translation id="pack_move_eligibility_no_offers" qtlid="385975">La ligne {{ number }} n'est éligible à aucune de nos offres.</translation>

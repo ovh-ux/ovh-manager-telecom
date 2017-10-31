@@ -15,7 +15,7 @@
 @timeline-panel-arrow-right-width: 16px;
 
 .border-arrow() {
-    border-color: transparent @telecom-table-background-color;
+    border-color: transparent @gray-lighter;
     top: calc(~"50% - "@timeline-panel-arrow-top-width);
     border-top-width: @timeline-panel-arrow-top-width;
     border-right-width: @timeline-panel-arrow-right-width;
@@ -27,7 +27,7 @@
 .telecom-pack-xdsl-orderFollowUp {
     .timeline-success {
         ul.timeline::before {
-            background-color: @brand-success;
+            background-color: @oui-color-success-dark;
         }
     }
     ul.timeline {
@@ -54,20 +54,20 @@
                 line-height: @timeline-circle-width;
 
                 &.success {
-                    background-color: @brand-success !important;
+                    background-color: @oui-color-success-dark !important;
                 }
                 &.warning {
-                    background-color: @brand-warning !important;
+                    background-color: @oui-color-warning-dark !important;
                 }
                 &.danger {
-                    background-color: @brand-danger !important;
+                    background-color: @oui-color-error-dark !important;
                 }
                 &.info {
-                    background-color: @brand-info !important;
+                    background-color: @oui-color-fiord !important;
                 }
             }
             timeline-panel {
-                background-color: @telecom-table-background-color;
+                background-color: @gray-lighter;
                 box-shadow: none;
                 border: none;
                 float: left;

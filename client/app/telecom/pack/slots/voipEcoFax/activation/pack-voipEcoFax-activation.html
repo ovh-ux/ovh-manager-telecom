@@ -21,17 +21,15 @@
 
         <div class="alert alert-xs alert-success"
             role="alert"
-            data-ng-if="PackFaxActivationCtrl.message">
-           <span class="ovh-font ovh-font-filled-check" aria-hidden="true"></span>
-          <p data-ng-bind-html="PackFaxActivationCtrl.message | translate"></p>
+            data-ng-if="PackFaxActivationCtrl.message"
+            data-ng-bind-html="PackFaxActivationCtrl.message | translate">
         </div>
 
         <div class="alert alert-xs alert-danger"
             role="alert"
             data-ng-if="PackFaxActivationCtrl.error">
-          <span class="ovh-font ovh-font-filled-error" aria-hidden="true"></span>
-          <p data-ng-bind-html="PackFaxActivationCtrl.error.key| translate"></p>
-          {{PackFaxActivationCtrl.error.data}}
+            <p data-ng-bind-html="PackFaxActivationCtrl.error.key| translate"></p>
+            <span data-ng-bind="PackFaxActivationCtrl.error.data"></span>
         </div>
 
         <button type="button"

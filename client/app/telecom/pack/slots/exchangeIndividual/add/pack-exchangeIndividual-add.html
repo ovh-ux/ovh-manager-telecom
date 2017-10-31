@@ -14,11 +14,11 @@
                     <span>* </span>
                     <span data-translate="all_fields_are_required"></span>
                 </em>
-                <form name="accountForm" data-ng-submit="ctrl.add()" class="form-horizontal ovh-form-flat">
+                <form name="accountForm" data-ng-submit="ctrl.add()">
                     <div class="form-group">
                         <div class="row">
                             <div class="col-xs-12 input-select">
-                                <div flat-input-container>
+                                <div>
                                     <div class="row">
                                         <div class="col-xs-12">
                                             <label class="control-label">{{ 'account_name' | translate }} *</label>
@@ -27,31 +27,27 @@
                                     <div class="row">
                                         <div class="col-xs-10">
                                             <div class="input-select-container">
-                                                <div class="input-group col-xs-8">
+                                                <div class="input-group">
                                                     <input
                                                         name="accountName"
                                                         class="form-control"
-                                                        ng-model="ctrl.account.name"
+                                                        data-ng-model="ctrl.account.name"
                                                         pattern=".{3,}"
                                                         title="{{ 'title_min_size' | translate }}"
                                                         required
                                                         placeholder="{{ 'account_name' | translate }} *"
-                                                        maxlength="50"
-                                                        >
+                                                        maxlength="50">
                                                     <span class="input-group-addon">@</span>
-                                                </div>
-                                                <div class="col-xs-4 no-margin">
-                                                    <select flat-select
-                                                            name="accountDomain"
+                                                    <select name="accountDomain"
                                                             class="form-control"
-                                                            ng-model="ctrl.account.domain"
-                                                            ng-options="item.value as item.label for item in ctrl.availablesDomains"
+                                                            data-ng-model="ctrl.account.domain"
+                                                            data-ng-options="item.value as item.label for item in ctrl.availablesDomains"
                                                             required>
                                                     </select>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="input-icons col-xs-2">
+                                        <div class="input-icons col-xs-2 my-2">
                                             <span data-ng-show="accountForm.accountName.$dirty
                                                         && accountForm.accountName.$valid
                                                         && accountForm.accountDomain.$dirty
@@ -72,12 +68,11 @@
                     </div>
                     <div data-ovh-password
                          data-ovh-pwd="ctrl.account.password"
-                         data-ovh-pwd-confirm="ctrl.account.passwordConfirmation"
-                         >
+                         data-ovh-pwd-confirm="ctrl.account.passwordConfirmation">
                     </div>
 
                     <div class="form-group">
-                        <div class="col-xs-10 text-center top-space-m20">
+                        <div class="col-xs-10 text-center mt-4">
                             <input class="btn btn-primary" type="submit" id="submit" data-ng-disabled="ctrl.pendingOrder" value="{{ 'submit'|translate }}" />
                         </div>
                     </div>

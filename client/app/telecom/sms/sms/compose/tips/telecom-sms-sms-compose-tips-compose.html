@@ -1,9 +1,8 @@
 <div class="telecom-sms-sms-compose-tips">
     <div class="modal-header">
-        <h3 class="modal-title pull-left" data-translate="sms_sms_compose_tip_compose_title"></h3>
         <button
             type="button"
-            class="close pull-right"
+            class="close float-right"
             aria-label="{{ 'cancel' | translate }}"
             data-ng-click="ComposeTipsCtrl.close()">
             <span aria-hidden="true">&times;</span>
@@ -11,11 +10,12 @@
     </div>
 
     <div class="modal-body">
-        <p class="lh22" data-translate="sms_sms_compose_tip_size_paragraphe_1"></p>
-        <p class="lh22" data-translate="sms_sms_compose_tip_size_paragraphe_2"></p>
-        <p class="lh22" data-translate="sms_sms_compose_tip_size_paragraphe_3"></p>
+        <h3 data-translate="sms_sms_compose_tip_compose_title"></h3>
+        <p data-translate="sms_sms_compose_tip_size_paragraphe_1"></p>
+        <p data-translate="sms_sms_compose_tip_size_paragraphe_2"></p>
+        <p data-translate="sms_sms_compose_tip_size_paragraphe_3"></p>
         <div class="table-responsive">
-            <table class="table table-bordered table-pretty text-center">
+            <table class="table table-bordered text-center">
                 <thead>
                     <tr>
                         <th colspan="8" data-translate="sms_sms_compose_tip_size_characters_basics"></th>
@@ -186,7 +186,7 @@
             </table>
         </div>
         <div class="table-responsive">
-            <table class="table table-bordered table-pretty text-center">
+            <table class="table table-bordered text-center">
                 <thead>
                     <tr>
                         <th colspan="5" data-translate="sms_sms_compose_tip_size_characters_extensions"></th>

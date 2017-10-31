@@ -1,57 +1,87 @@
 <div class="widget-presentation">
 
+    <toast-message></toast-message>
+
     <!-- REMOTES LIST -->
-    <div class="table-responsive-vertical ">
+    <div class="mb-3 clearfix">
+        <div class="btn-group float-left mr-3"
+             data-uib-dropdown
+             data-dropdown-append-to-body>
 
-        <ul table-action class="bottom-space-m8">
-            <li>
-                <button type="button"
-                    data-ng-click="$ctrl.add()"
-                    data-uib-tooltip="{{ 'telephony_abbreviated_numbers_add_tooltip' | translate}}"
-                    data-tooltip-placement="right"
-                    data-tooltip-append-to-body="true"
-                    data-ng-disabled="$ctrl.loading.init">
-                    <i class="ovh-font ovh-font-add-circle"></i>
-                    <label data-translate="common_add"></label>
-                </button>
-            </li><li>
-                <a href="#"
-                    data-ng-click="$event.preventDefault()"
-                    data-ng-csv="$ctrl.abbreviatedNumbers"
-                    data-csv-header="$ctrl.getCsvHeader()"
-                    csv-column-order="$ctrl.getCsvOrder()"
-                    data-ng-disabled="$ctrl.loading.init || !$ctrl.abbreviatedNumbers.length"
-                    data-uib-tooltip="{{ 'telephony_abbreviated_numbers_export_tooltip' | translate}}"
-                    data-tooltip-placement="right"
-                    data-tooltip-append-to-body="true"
-                    data-filename="{{ $ctrl.exportFilename || 'abbreviated-numbers.csv' }}">
-                    <i class="fa fa-download" aria-hidden="true"></i>
-                    <label data-translate="telephony_abbreviated_numbers_download_label"></label>
-                </a>
-            </li><li>
-                <button type="button"
-                    data-ng-click="$ctrl.openImport()"
-                    data-uib-tooltip="{{ 'telephony_abbreviated_numbers_import_tooltip' | translate}}"
-                    data-tooltip-placement="right"
-                    data-tooltip-append-to-body="true"
-                    data-ng-disabled="$ctrl.loading.init">
-                    <i class="fa fa-upload" aria-hidden="true"></i>
-                    <label data-translate="telephony_abbreviated_numbers_import_label"></label>
-                </button>
-            </li><li>
-                <button type="button"
-                    data-ng-click="$ctrl.trashAll()"
-                    data-uib-tooltip="{{ 'telephony_abbreviated_numbers_trash_all_tooltip' | translate}}"
-                    data-tooltip-append-to-body="true"
-                    data-tooltip-placement="right"
-                    data-ng-disabled="$ctrl.loading.init || !$ctrl.abbreviatedNumbers.length">
-                    <i class="ovh-font ovh-font-bin" aria-hidden="true"></i>
-                    <label data-translate="telephony_abbreviated_numbers_trash_all_label"></label>
-                </button>
-            </li>
-        </ul>
+            <button id="btn-sms-abbreviated-numbers-actions"
+                    type="button"
+                    class="btn btn-default"
+                    data-uib-dropdown-toggle>
+                <span class="fa fa-bars" aria-hidden="true"></span>
+                <span data-translate="common_actions"></span>
+                <span class="ovh-font ovh-font-small-arrow-down" aria-hidden="true"></span>
+            </button>
 
-        <table class="table table-pretty table-hover table-striped">
+            <ul class="dropdown-menu"
+                role="menu"
+                aria-labelledby="btn-sms-abbreviated-numbers-actions"
+                data-uib-dropdown-menu>
+                <li role="menuitem">
+                    <i class="ovh-font ovh-font-add-circle mr-2" aria-hidden="true"></i>
+                    <button type="button"
+                            class="btn btn-link"
+                            data-ng-click="$ctrl.add()"
+                            data-uib-tooltip="{{ 'telephony_abbreviated_numbers_add_tooltip' | translate}}"
+                            data-tooltip-placement="right"
+                            data-tooltip-append-to-body="true"
+                            data-ng-disabled="$ctrl.loading.init"
+                            data-translate="common_add">
+                    </button>
+                </li>
+                <li role="menuitem">
+                    <i class="fa fa-download mr-2" aria-hidden="true"></i>
+                    <a href="#"
+                       class="btn btn-link"
+                       data-ng-click="$event.preventDefault()"
+                       data-ng-csv="$ctrl.abbreviatedNumbers"
+                       data-csv-header="$ctrl.getCsvHeader()"
+                       data-csv-column-order="$ctrl.getCsvOrder()"
+                       data-ng-disabled="$ctrl.loading.init || !$ctrl.abbreviatedNumbers.length"
+                       data-uib-tooltip="{{ 'telephony_abbreviated_numbers_export_tooltip' | translate}}"
+                       data-tooltip-placement="right"
+                       data-tooltip-append-to-body="true"
+                       data-filename="{{ $ctrl.exportFilename || 'abbreviated-numbers.csv' }}">
+                        <span data-translate="telephony_abbreviated_numbers_download_label"></span>
+                    </a>
+                </li>
+                <li role="menuitem">
+                    <i class="fa fa-upload mr-2" aria-hidden="true"></i>
+                    <button type="button"
+                            class="btn btn-link"
+                            data-ng-click="$ctrl.openImport()"
+                            data-uib-tooltip="{{ 'telephony_abbreviated_numbers_import_tooltip' | translate}}"
+                            data-tooltip-placement="right"
+                            data-tooltip-append-to-body="true"
+                            data-ng-disabled="$ctrl.loading.init"
+                            data-translate="telephony_abbreviated_numbers_import_label">
+                    </button>
+                </li>
+                <li role="menuitem">
+                    <i class="ovh-font ovh-font-bin mr-2" aria-hidden="true"></i>
+                    <button type="button"
+                            class="btn btn-link"
+                            data-ng-click="$ctrl.trashAll()"
+                            data-uib-tooltip="{{ 'telephony_abbreviated_numbers_trash_all_tooltip' | translate}}"
+                            data-tooltip-append-to-body="true"
+                            data-tooltip-placement="right"
+                            data-ng-disabled="$ctrl.loading.init || !$ctrl.abbreviatedNumbers.length"
+                            data-translate="telephony_abbreviated_numbers_trash_all_label">
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table"
+               data-ng-class="{
+                   'table-hover table-striped': $ctrl.abbreviatedNumbers.length > 1
+               }">
             <thead>
                 <tr>
                     <th scope="col" data-translate="telephony_abbreviated_numbers_id"></th>
@@ -68,44 +98,69 @@
             <tbody>
                 <tr data-ng-repeat="abbreviated in $ctrl.paginatedAbbreviatedNumbers track by abbreviated.abbreviatedNumber">
                     <td>
-                        <span data-ng-bind="abbreviated.abbreviatedNumber"></span>
+                        <span class="word-break"
+                              data-ng-bind="abbreviated.abbreviatedNumber"></span>
                     </td>
                     <td>
-                        <span data-ng-bind="abbreviated.destinationNumber"></span>
+                        <span class="word-break"
+                              data-ng-bind="abbreviated.destinationNumber"></span>
                     </td>
                     <td>
-                        <span data-ng-bind="abbreviated.surname"></span>
+                        <span class="word-break"
+                              data-ng-bind="abbreviated.surname"></span>
                     </td>
                     <td>
-                        <span data-ng-bind="abbreviated.name"></span>
+                        <span class="word-break"
+                              data-ng-bind="abbreviated.name"></span>
                     </td>
                     <td>
-                        <spinner data-ng-show="abbreviated.removing"></spinner>
-                        <ul table-action-line data-ng-hide="abbreviated.removing">
-                            <li>
-                                <button type="button"
-                                        data-ng-disabled="abbreviated.updating"
-                                        data-ng-click="$ctrl.update(abbreviated)">
-                                    <i class="ovh-font ovh-font-editer"></i>
-                                    <label data-translate="edit"></label>
-                                </button>
-                            </li><li>
-                                <button type="button"
-                                        data-ng-disabled="abbreviated.removing"
-                                        data-ng-click="$ctrl.remove(abbreviated)">
-                                    <i class="ovh-font ovh-font-bin"></i>
-                                    <label data-translate="delete"></label>
-                                </button>
-                            </li>
-                        </ul>
-
+                        <bouncing-box-loader class="d-inline-block align-middle"
+                                             data-ng-if="abbreviated.removing"
+                                             data-size="s">
+                        </bouncing-box-loader>
+                        <div class="btn-group float-right"
+                             data-uib-dropdown
+                             data-dropdown-append-to-body>
+                            <button id="btn-sms-abbreviated-numbers-action-{{ index }}"
+                                    type="button"
+                                    class="btn btn-link"
+                                    data-uib-dropdown-toggle>
+                                <span class="ovh-font ovh-font-dots mr-2" aria-hidden="true"></span>
+                                <span class="sr-only"
+                                      data-translate="common_actions">
+                                </span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-right"
+                                role="menu"
+                                aria-labelledby="btn-sms-abbreviated-numbers-action-{{ index }}"
+                                data-uib-dropdown-menu>
+                                <li role="menuitem">
+                                    <i class="ovh-font ovh-font-editer mr-2" aria-hidden="true"></i>
+                                    <button type="button"
+                                            class="btn btn-link"
+                                            data-ng-disabled="abbreviated.updating"
+                                            data-ng-click="$ctrl.update(abbreviated)"
+                                            data-translate="edit">
+                                    </button>
+                                </li>
+                                <li role="menuitem">
+                                    <i class="ovh-font ovh-font-bin mr-2" aria-hidden="true"></i>
+                                    <button type="button"
+                                            class="btn btn-link"
+                                            data-ng-disabled="abbreviated.removing"
+                                            data-ng-click="$ctrl.remove(abbreviated)"
+                                            data-translate="delete">
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
                     </td>
                 </tr>
             </tbody>
         </table>
     </div>
 
-    <div class="table table-pretty"
+    <div class="mt-2"
          data-ng-show="$ctrl.abbreviatedNumbers > $ctrl.paginatedAbbreviatedNumbers"
          data-pagination-front
          data-go-to-page="false"

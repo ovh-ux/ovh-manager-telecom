@@ -15,21 +15,17 @@
 
             <section>
 
-                <div class="alert alert-info bottom-space-m0"
-                     role="alert">
-                    <i class="ovh-font ovh-font-filled-info right-space-m8"
-                       aria-hidden="true">
-                    </i>
-                    <p data-translate="telephony_number_feature_ovh_pabx_step_conditions_infos"></p>
+                <div class="alert alert-info mb-0"
+                     role="alert"
+                     data-translate="telephony_number_feature_ovh_pabx_step_conditions_infos">
                 </div>
 
                 <div class="section-group">
                     <!-- SCHEDULER -->
                     <button type="button"
-                            class="section-item no-style full-width text-left"
+                            class="section-item large-popover-item text-left"
                             data-ng-click="$ctrl.onConditionTypeBtnClick('scheduler')">
-                        <label class="pointer"
-                               data-translate="telephony_number_feature_ovh_pabx_step_conditions_scheduler">
+                        <label data-translate="telephony_number_feature_ovh_pabx_step_conditions_scheduler">
                         </label>
 
                         <div class="telephony-scheduler-time-condition-slots">
@@ -39,7 +35,7 @@
                             </voip-time-condition-slot>
                         </div>
 
-                        <span class="block"
+                        <span class="d-block"
                               data-ng-if="!$ctrl.extension.schedulerCategory"
                               data-translate="telephony_number_feature_ovh_pabx_step_conditions_none">
                         </span>
@@ -53,23 +49,22 @@
 
                     <!-- TIME CONDITION -->
                     <button type="button"
-                            class="section-item no-style full-width text-left"
+                            class="section-item large-popover-item text-left"
                             data-ng-click="$ctrl.onConditionTypeBtnClick('timeConditions')">
-                        <label class="pointer"
-                               data-translate="telephony_number_feature_ovh_pabx_step_conditions_time_condition">
+                        <label data-translate="telephony_number_feature_ovh_pabx_step_conditions_time_condition">
                         </label>
 
-                        <span class="block"
+                        <span class="d-block"
                               data-ng-if="$ctrl.getTimeConditionList().length > 1"
                               data-translate="telephony_number_feature_ovh_pabx_step_conditions_time_condition_slot_count"
                               data-translate-values="{ count: $ctrl.getTimeConditionList().length }">
                         </span>
-                        <span class="block"
+                        <span class="d-block"
                               data-ng-if="$ctrl.getTimeConditionList().length === 1"
                               data-translate="telephony_number_feature_ovh_pabx_step_conditions_time_condition_slot_count"
                               data-translate-values="{ count: $ctrl.getTimeConditionList().length }">
                         </span>
-                        <span class="block"
+                        <span class="d-block"
                               data-ng-if="!$ctrl.getTimeConditionList().length"
                               data-translate="telephony_number_feature_ovh_pabx_step_conditions_none">
                         </span>
@@ -83,13 +78,12 @@
 
                     <!-- CALL FILTERING -->
                     <button type="button"
-                            class="section-item no-style full-width text-left"
+                            class="section-item large-popover-item text-left"
                             data-ng-click="$ctrl.onConditionTypeBtnClick('screenList')">
-                        <label class="pointer"
-                               data-translate="telephony_number_feature_ovh_pabx_step_conditions_screen_list">
+                        <label data-translate="telephony_number_feature_ovh_pabx_step_conditions_screen_list">
                         </label>
 
-                        <span class="block elipse no-wrap"
+                        <span class="d-block elipse no-wrap"
                               data-ng-if="$ctrl.extension.screenListType">
                             <span data-translate="{{ 'telephony_number_feature_ovh_pabx_step_conditions_screen_list_type_' + ($ctrl.extension.screenListType | snakeCase) }}"></span>
                             <span data-ng-if="$ctrl.getScreenListConditionList().length">
@@ -104,7 +98,7 @@
                                 </span>
                             </span>
                         </span>
-                        <span class="block"
+                        <span class="d-block"
                               data-ng-if="!$ctrl.extension.screenListType"
                               data-translate="telephony_number_feature_ovh_pabx_step_conditions_none">
                         </span>
@@ -121,18 +115,19 @@
 
             <!-- FOOTER ACTIONS -->
             <footer class="clearfix double-choice">
-                <button type="submit"
-                        class="btn btn-primary"
-                        data-ng-disabled="!$ctrl.extension.hasChange() || extensionConditionsForm.$invalid"
-                        data-translate="{{ $ctrl.extension.status === 'DRAFT' ? 'common_create' : 'modify' }}"
-                        data-ng-click="$ctrl.onValidateBtnClick()">
-                </button>
-
-                <button type="button"
-                        class="btn btn-default"
-                        data-translate="cancel"
-                        data-ng-click="$ctrl.onCancelBtnClick()">
-                </button>
+                <div class="btn-group float-right">
+                    <button type="button"
+                            class="oui-button oui-button_secondary m-3"
+                            data-translate="cancel"
+                            data-ng-click="$ctrl.onCancelBtnClick()">
+                    </button>
+                    <button type="submit"
+                            class="oui-button oui-button_primary m-3"
+                            data-ng-disabled="!$ctrl.extension.hasChange() || extensionConditionsForm.$invalid"
+                            data-translate="{{ $ctrl.extension.status === 'DRAFT' ? 'common_create' : 'modify' }}"
+                            data-ng-click="$ctrl.onValidateBtnClick()">
+                    </button>
+                </div>
             </footer> <!-- FOOTER ACTIONS -->
 
         </section> <!-- LEFT PAGE -->
@@ -143,7 +138,7 @@
 
             <header>
                 <button type="button"
-                        class="back-btn no-style no-space fs20"
+                        class="btn btn-link back-btn p-0 m-0"
                         data-ng-click="$ctrl.parentCtrl.popoverStatus.move = false"
                         data-translate-attr="{ title: 'back' }">
                     <i class="ovh-font ovh-font-arrow-left"></i>
@@ -164,53 +159,41 @@
 
             <!-- SCHEDULER CATEGORY CONDITION -->
             <section data-ng-if="$ctrl.parentCtrl.popoverStatus.rightPage === 'scheduler'">
-                <div class="alert alert-info bottom-space-m0"
-                     role="alert">
-                    <i class="ovh-font ovh-font-filled-info right-space-m8"
-                       aria-hidden="true">
-                    </i>
-                    <p data-translate="telephony_number_feature_ovh_pabx_step_conditions_scheduler_infos"
-                       data-translate-compile>
-                    </p>
+                <div class="alert alert-info mb-0"
+                     role="alert"
+                     data-translate="telephony_number_feature_ovh_pabx_step_conditions_scheduler_infos"
+                     data-translate-compile>
                 </div>
 
                 <div class="section-group telephony-scheduler-time-condition-slots">
                     <!-- NO SCHEDULER CONDITION -->
-                    <label class="section-item item-choice full-width pointer dtable">
-                        <div class="dtr">
-                            <div class="dtd vertical-middle radio-content">
-                                <flat-radio>
-                                    <input type="radio"
-                                           name="eventCategories"
-                                           data-ng-model="$ctrl.extension.schedulerCategory"
-                                           data-ng-value="null"
-                                           data-ng-change="$ctrl.parentCtrl.popoverStatus.move = false" />
-                                </flat-radio>
-                            </div>
-                            <div class="dtd vertical-middle">
-                                <span data-translate="telephony_number_feature_ovh_pabx_step_no_conditions"></span>
-                            </div>
+                    <label class="section-item item-choice w-100 d-table">
+                        <div class="d-table-cell align-middle radio-content">
+                            <input type="radio"
+                                   name="eventCategories"
+                                   data-ng-model="$ctrl.extension.schedulerCategory"
+                                   data-ng-value="null"
+                                   data-ng-change="$ctrl.parentCtrl.popoverStatus.move = false" />
+                        </div>
+                        <div class="d-table-cell align-middle">
+                            <span data-translate="telephony_number_feature_ovh_pabx_step_no_conditions"></span>
                         </div>
                     </label> <!-- END OF NO SCHEDULER CONDITION -->
 
                     <!-- AVAILABLE CATEGORIES -->
-                    <label class="section-item item-choice full-width pointer dtable"
+                    <label class="section-item item-choice w-100 d-table"
                            data-ng-repeat="category in $ctrl.schedulerCategories track by $index">
-                        <div class="dtr">
-                            <div class="dtd vertical-middle radio-content">
-                                <flat-radio>
-                                    <input type="radio"
-                                           name="eventCategories"
-                                           data-ng-model="$ctrl.extension.schedulerCategory"
-                                           data-ng-value="category"
-                                           data-ng-change="$ctrl.parentCtrl.popoverStatus.move = false" />
-                                </flat-radio>
-                            </div>
-                            <div class="dtd vertical-middle">
-                                <voip-time-condition-slot data-time-condition-slot="$ctrl.convertCategoryToSlot(category)"
-                                                          data-is-scheduler="true">
-                                </voip-time-condition-slot>
-                            </div>
+                        <div class="d-table-cell align-middle radio-content">
+                            <input type="radio"
+                                   name="eventCategories"
+                                   data-ng-model="$ctrl.extension.schedulerCategory"
+                                   data-ng-value="category"
+                                   data-ng-change="$ctrl.parentCtrl.popoverStatus.move = false" />
+                        </div>
+                        <div class="d-table-cell align-middle">
+                            <voip-time-condition-slot data-time-condition-slot="$ctrl.convertCategoryToSlot(category)"
+                                                      data-is-scheduler="true">
+                            </voip-time-condition-slot>
                         </div>
                     </label> <!-- END OF AVAILABLE CATEGORIES -->
                 </div>
@@ -222,7 +205,7 @@
                 <div class="section-group"
                      data-ng-if="!$ctrl.groupedTimeConditions.length">
                     <div class="section-item">
-                        <i class="block"
+                        <i class="d-block"
                            data-translate="telephony_number_feature_ovh_pabx_step_conditions_time_condition_no_slot">
                         </i>
                     </div>
@@ -233,7 +216,7 @@
 
                     <div class="group-title group-title-btn">
                         <button type="button"
-                                class="btn btn-link full-width text-left no-space"
+                                class="btn btn-link w-100 text-left p-0 m-0"
                                 data-ng-click="conditionsGroup.collapsed = !conditionsGroup.collapsed">
                             <span data-translate="telephony_number_feature_ovh_pabx_step_conditions_time_condition_slot"
                                   data-translate-values="{ index: $index + 1 }"
@@ -242,7 +225,7 @@
                             <span data-ng-bind="conditionsGroup.getDisplayedText()"
                                   data-ng-if="conditionsGroup.slots.length">
                             </span>
-                            <i class="pull-right ovh-font"
+                            <i class="float-right ovh-font"
                                data-ng-class="{ 'ovh-font-small-arrow-right': conditionsGroup.collapsed, 'ovh-font-small-arrow-down': !conditionsGroup.collapsed }">
                             </i>
                         </button>
@@ -251,7 +234,7 @@
                     <div data-uib-collapse="conditionsGroup.collapsed">
                         <!-- DAY CHOICE -->
                         <div class="section-item">
-                            <div class="btn-group full-width">
+                            <div class="btn-group w-100">
                                 <button type="button"
                                         class="btn btn-default"
                                         data-ng-repeat="day in conditionsGroup.dayModel track by $index"
@@ -266,28 +249,28 @@
                         <!-- DAY CONDITIONS -->
                         <div class="section-item condition-list-container"
                              data-ng-repeat="slot in conditionsGroup.slots | filter:{ condition: { state: '!TO_DELETE' } } | orderBy:$ctrl.orderConditionTimeByTimeFrom track by $index">
-                            <div class="dtable full-width fixed-layout">
-                                <div class="dtd text-left">
+                            <div class="d-table w-100 fixed-layout">
+                                <div class="d-table-cell text-left">
                                     <div data-ng-class="{ 'opacity2-leave': slot.condition.state === 'DELETE_PENDING', 'opacity2-enter': slot.condition.state !== 'DELETE_PENDING' }">
                                         <span data-ng-bind="slot.condition.getTimeMoment('from').format('HH:mm')"></span>
                                         -
                                         <span data-ng-bind="slot.condition.getTimeMoment('to').add(1, 'second').format('HH:mm')"></span>
                                     </div>
                                 </div>
-                                <div class="dtd text-right">
-                                    <div class="confirm-container text-center animate-fadeInRight-enter animate-fadeOutLeft-leave full-width"
+                                <div class="d-table-cell text-right">
+                                    <div class="confirm-container text-center animate-fadeInRight-enter animate-fadeOutLeft-leave w-100"
                                          data-ng-show="slot.condition.state === 'DELETE_PENDING'">
                                         <button type="button"
                                                 class="btn btn-default"
                                                 data-ng-click="slot.condition.state = 'OK'">
-                                            <i class="ovh-font ovh-font-wrong right-space-m8"></i>
+                                            <i class="ovh-font ovh-font-wrong mr-2"></i>
                                             <span data-translate="cancel"></span>
                                         </button>
 
                                         <button type="button"
                                                 class="btn btn-danger"
                                                 data-ng-click="$ctrl.onTimeConditionDeleteConfirmBtnClick(slot, conditionsGroup)">
-                                            <i class="ovh-font ovh-font-bin right-space-m8"></i>
+                                            <i class="ovh-font ovh-font-bin mr-2"></i>
                                             <span data-translate="delete"></span>
                                         </button>
                                     </div>
@@ -306,46 +289,44 @@
 
                         <!-- ADD CONDITION -->
                         <div class="section-item relative-container form-inline">
-                            <div class="dtable">
-                                <div class="dtr">
-                                    <div class="dtd vertical-middle">
-                                        <input type="text"
-                                               class="form-control full-width"
-                                               data-ng-model="conditionsGroup.slotTimeModel.timeFrom"
-                                               data-translate-attr="{ placeholder: 'telephony_number_feature_ovh_pabx_step_conditions_time_condition_slot_from' }"
-                                               data-uib-typeahead="hour for hour in $ctrl.availableHours | filter:$viewValue:$ctrl.hourStartWith | limitTo:4"
-                                               data-typeahead-select-on-blur="true"
-                                               data-typeahead-show-hint="true"
-                                               data-typeahead-no-results="conditionsGroup.errors.timeFrom" />
-                                    </div>
-                                    <div class="dtd vertical-middle left-space-p16 right-space-p16">
-                                        -
-                                    </div>
-                                    <div class="dtd vertical-middle">
-                                        <input type="text"
-                                               class="form-control full-width"
-                                               data-ng-model="conditionsGroup.slotTimeModel.timeTo"
-                                               data-translate-attr="{ placeholder: 'telephony_number_feature_ovh_pabx_step_conditions_time_condition_slot_to' }"
-                                               data-uib-typeahead="hour for hour in $ctrl.availableHours | filter:$viewValue:$ctrl.hourStartWith | limitTo:4"
-                                               data-typeahead-select-on-blur="true"
-                                               data-typeahead-show-hint="true"
-                                               data-typeahead-no-results="conditionsGroup.errors.timeTo" />
-                                    </div>
-                                    <div class="left-space-p32 right-space-p32">&nbsp;</div>
-                                    <div class="dtd vertical-middle left-space-p32">
-                                        <button type="button"
-                                                class="btn-actions-list"
-                                                data-ng-disabled="!$ctrl.isConditionGroupValid(conditionsGroup)"
-                                                data-ng-click="$ctrl.onConditionAddBtnClick(conditionsGroup)">
-                                            <i class="ovh-font ovh-font-ajouter"></i>
-                                        </button>
-                                    </div>
+                            <div class="d-table">
+                                <div class="d-table-cell align-middle">
+                                    <input type="text"
+                                           class="form-control w-100"
+                                           data-ng-model="conditionsGroup.slotTimeModel.timeFrom"
+                                           data-translate-attr="{ placeholder: 'telephony_number_feature_ovh_pabx_step_conditions_time_condition_slot_from' }"
+                                           data-uib-typeahead="hour for hour in $ctrl.availableHours | filter:$viewValue:$ctrl.hourStartWith | limitTo:4"
+                                           data-typeahead-select-on-blur="true"
+                                           data-typeahead-show-hint="true"
+                                           data-typeahead-no-results="conditionsGroup.errors.timeFrom" />
+                                </div>
+                                <div class="d-table-cell align-middle px-3">
+                                    -
+                                </div>
+                                <div class="d-table-cell align-middle">
+                                    <input type="text"
+                                           class="form-control w-100"
+                                           data-ng-model="conditionsGroup.slotTimeModel.timeTo"
+                                           data-translate-attr="{ placeholder: 'telephony_number_feature_ovh_pabx_step_conditions_time_condition_slot_to' }"
+                                           data-uib-typeahead="hour for hour in $ctrl.availableHours | filter:$viewValue:$ctrl.hourStartWith | limitTo:4"
+                                           data-typeahead-select-on-blur="true"
+                                           data-typeahead-show-hint="true"
+                                           data-typeahead-no-results="conditionsGroup.errors.timeTo" />
+                                </div>
+                                <div class="px-5">&nbsp;</div>
+                                <div class="d-table-cell align-middle pl-5">
+                                    <button type="button"
+                                            class="btn-actions-list"
+                                            data-ng-disabled="!$ctrl.isConditionGroupValid(conditionsGroup)"
+                                            data-ng-click="$ctrl.onConditionAddBtnClick(conditionsGroup)">
+                                        <i class="ovh-font ovh-font-ajouter"></i>
+                                    </button>
                                 </div>
                             </div>
                         </div> <!-- END OF ADD CONDITION -->
 
                         <!-- ERROR DISPLAY -->
-                        <div class="alert alert-danger bottom-space-m0 left-space-p12"
+                        <div class="alert alert-danger mb-0 pl-3"
                              role="alert"
                              data-ng-if="conditionsGroup.errors.timeFrom || conditionsGroup.errors.timeTo || conditionsGroup.errors.collision || conditionsGroup.errors.badSlot">
                             <!-- BAD HOUR SELECTION ERROR -->
@@ -367,7 +348,7 @@
                 <div class="section-group">
                     <div class="group-title">
                         <button type="button"
-                                class="btn btn-link full-width text-left left-space-p0 right-space-p0 top-space-p0"
+                                class="btn btn-link w-100 text-left px-0 pt-0"
                                 data-translate="telephony_number_feature_ovh_pabx_step_conditions_time_condition_slot_add"
                                 data-ng-click="$ctrl.onConditionGroupAddBtnClick()">
                         </button>
@@ -378,15 +359,12 @@
             <!-- SCREEN LIST CONDITIONS -->
             <section data-ng-if="$ctrl.parentCtrl.popoverStatus.rightPage === 'screenList'">
                 <!-- INFOS -->
-                <div class="alert alert-info bottom-space-m0"
+                <div class="alert alert-info mb-0"
                      role="alert">
-                    <i class="ovh-font ovh-font-filled-info right-space-m8"
-                       aria-hidden="true">
-                    </i>
-                    <p class="bottom-space-m4"
+                    <p class="mb-2"
                        data-translate="telephony_number_feature_ovh_pabx_step_conditions_screen_list_infos">
                     </p>
-                    <ul class="left-space-p16">
+                    <ul class="pl-3">
                         <li data-translate="telephony_number_feature_ovh_pabx_step_conditions_screen_list_infos1"></li>
                         <li data-translate="telephony_number_feature_ovh_pabx_step_conditions_screen_list_infos2"></li>
                     </ul>
@@ -399,9 +377,8 @@
                                data-translate="telephony_number_feature_ovh_pabx_step_conditions_screen_list_type"
                                for="screenListTypeSelect">
                         </label>
-                        <div class="clearfix">
-                            <select data-flat-select
-                                    class="form-control"
+
+                            <select class="form-control"
                                     name="screenListTypeSelect"
                                     id="screenListTypeSelect"
                                     data-ng-model="$ctrl.extension.screenListType"
@@ -410,7 +387,7 @@
                                         data-translate="telephony_number_feature_ovh_pabx_step_no_conditions">
                                 </option>
                             </select>
-                        </div>
+
                     </div>
                 </div> <!-- END OF SCREEN LIST TYPE -->
 
@@ -419,8 +396,8 @@
                      data-uib-collapse="$ctrl.extension.screenListType === null"
                      data-ng-form="$ctrl.addScreenListConditionForm">
 
-                    <div class="section-item dtable full-width">
-                        <div class="dtd vertical-middle form-group"
+                    <div class="section-item d-table w-100">
+                        <div class="d-table-cell align-middle form-group"
                              data-ng-class="{ 'has-error': $ctrl.addScreenListConditionForm.callerIdNumber.$invalid && $ctrl.addScreenListConditionForm.callerIdNumber.$dirty }">
                             <input type="text"
                                    class="form-control"
@@ -432,7 +409,7 @@
                                    data-ng-keydown="$ctrl.onCallerIdNumberAddKeyDown($event)"
                                    autocomplete="off" />
                         </div>
-                        <div class="dtd text-right vertical-middle">
+                        <div class="d-table-cell text-right align-middle">
                             <button type="button"
                                     class="btn btn-primary"
                                     data-translate="common_add"
@@ -443,7 +420,7 @@
                         </div>
                     </div>
 
-                    <div class="alert alert-danger bottom-space-m0 left-space-p12"
+                    <div class="alert alert-danger mb-0 pl-3"
                          role="alert"
                          data-ng-messages="$ctrl.addScreenListConditionForm.callerIdNumber.$error"
                          data-ng-if="$ctrl.addScreenListConditionForm.callerIdNumber.$invalid && $ctrl.addScreenListConditionForm.callerIdNumber.$dirty">
@@ -456,7 +433,7 @@
                         </p>
                     </div>
 
-                    <div class="group-title top-space-p8">
+                    <div class="group-title pt-2">
                         <span data-translate="telephony_number_feature_ovh_pabx_step_conditions_screen_list_numbers"></span>
                     </div>
 
@@ -468,26 +445,26 @@
                     <div data-ng-if="$ctrl.getScreenListConditionList().length">
                         <div class="section-item condition-list-container"
                              data-ng-repeat="screenList in $ctrl.getScreenListConditionList() track by $index">
-                            <div class="dtable full-width fixed-layout">
-                                <div class="dtd text-left">
+                            <div class="d-table w-100 fixed-layout">
+                                <div class="d-table-cell text-left">
                                     <div data-ng-class="{ 'opacity2-leave': screenList.state === 'DELETE_PENDING', 'opacity2-enter': screenList.state !== 'DELETE_PENDING' }">
                                         <span data-ng-bind="screenList.callNumber"></span>
                                     </div>
                                 </div>
-                                <div class="dtd text-right">
-                                    <div class="confirm-container text-center animate-fadeInRight-enter animate-fadeOutLeft-leave full-width"
+                                <div class="d-table-cell text-right">
+                                    <div class="confirm-container text-center animate-fadeInRight-enter animate-fadeOutLeft-leave w-100"
                                          data-ng-show="screenList.state === 'DELETE_PENDING'">
                                         <button type="button"
                                                 class="btn btn-default"
                                                 data-ng-click="screenList.state = 'OK'">
-                                            <i class="ovh-font ovh-font-wrong right-space-m8"></i>
+                                            <i class="ovh-font ovh-font-wrong mr-2"></i>
                                             <span data-translate="cancel"></span>
                                         </button>
 
                                         <button type="button"
                                                 class="btn btn-danger"
                                                 data-ng-click="$ctrl.onScreenListDeleteConfirmBtnClick(screenList)">
-                                            <i class="ovh-font ovh-font-bin right-space-m8"></i>
+                                            <i class="ovh-font ovh-font-bin mr-2"></i>
                                             <span data-translate="delete"></span>
                                         </button>
                                     </div>
