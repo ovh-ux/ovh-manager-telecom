@@ -7,14 +7,15 @@
         <h1 data-translate="telephony_alias_configuration_actions_music_management"></h1>
     </header>
 
-    <div class="telecom-section-content" data-ng-if="$ctrl.loaders.init">
-        <bouncing-box-loader>
-            <h4 data-translate="loading"></h4>
-        </bouncing-box-loader>
-    </div>
+    <bouncing-box-loader data-ng-if="$ctrl.loaders.init"
+                         data-size="m">
+        <h2 data-translate="loading"></h2>
+    </bouncing-box-loader>
 
     <div class="telecom-section-content"
          data-ng-if="!$ctrl.loaders.init">
+
+        <toast-message></toast-message>
 
         <div class="row">
 
@@ -30,14 +31,13 @@
                 <!-- Alert -->
                 <div class="alert alert-info"
                      role="alert">
-                    <span class="ovh-font ovh-font-filled-info right-space-m8"></span>
                     <p>
                         <span class="block"
                               data-translate="telephony_alias_configuration_tones_old_pabx_info_1">
                         </span>
                         <span data-translate="{{ $ctrl.number.feature.featureType === 'easyPabx' ? 'telephony_alias_configuration_tones_old_pabx_info_2' : 'telephony_alias_configuration_tones_old_pabx_info_3' }}"></span>
                     </p>
-                    <ul class="top-space-m8 left-space-m16">
+                    <ul>
                         <li>
                             <span data-translate="telephony_alias_configuration_tones_old_pabx_ring_back_info"></span>
                             <br />
@@ -72,12 +72,12 @@
 
                     <!-- ringBack -->
                     <div>
-                        <div class="clearfix top-space-m16">
-                            <label for="ringBack"
+                        <div class="form-group">
+                            <label class="control-label"
+                                   for="ringBack"
                                    data-translate="telephony_alias_configuration_tones_old_pabx_ring_back">
                             </label>
-                            <select flat-select
-                                    id="ringBack"
+                            <select id="ringBack"
                                     name="ringBack"
                                     class="form-control"
                                     data-ng-disabled="$ctrl.loading.save"
@@ -87,10 +87,11 @@
                             </select>
                         </div>
 
-                        <div class="clearfix top-space-m16"
+                        <div class="form-group"
                              data-uib-collapse="$ctrl.formOptions.ringback !== 'Custom sound'"
                              data-ng-class="{ 'has-error': $ctrl.formErrors.ringback.format }">
-                            <label for="ringBackFile"
+                            <label class="control-label"
+                                   for="ringBackFile"
                                    data-translate="telephony_alias_configuration_tones_old_pabx_ring_back_custom">
                             </label>
                             <div>
@@ -98,11 +99,11 @@
                                             data-ng-accept="audio/*"
                                             data-ng-accept-filter="$ctrl.checkValidSound(file, 'ringback')"
                                             data-file-explain="{{ 'telephony_alias_configuration_tones_old_pabx_type_custom_sound_file_explain' | translate }}">
-                                    <i class="fa fa-upload right-space-m4"></i>
+                                    <i class="fa fa-upload mr-2"></i>
                                     <span data-translate="telephony_alias_configuration_tones_old_pabx_type_custom_sound_add_file"></span>
                                 </input-file>
                             </div>
-                            <div class="top-space-m8"
+                            <div class="mb-3"
                                  role="alert"
                                  data-ng-messages="$ctrl.formErrors.ringback">
                                 <span data-ng-message="format"
@@ -117,12 +118,12 @@
 
                     <!-- onHold -->
                     <div data-ng-if="$ctrl.number.feature.featureType === 'miniPabx'">
-                        <div class="clearfix top-space-m16">
-                            <label for="onHold"
+                        <div class="form-group">
+                            <label class="control-label"
+                                   for="onHold"
                                    data-translate="telephony_alias_configuration_tones_old_pabx_on_hold">
                             </label>
-                            <select flat-select
-                                    id="onHold"
+                            <select id="onHold"
                                     name="onHold"
                                     class="form-control"
                                     data-ng-disabled="$ctrl.loading.save"
@@ -132,10 +133,11 @@
                             </select>
                         </div>
 
-                        <div class="clearfix top-space-m16"
+                        <div class="form-group"
                              data-uib-collapse="$ctrl.formOptions.onHold !== 'Custom sound'"
                              data-ng-class="{ 'has-error': $ctrl.formErrors.onHold.format }">
-                            <label for="onHoldFile"
+                            <label class="control-label"
+                                   for="onHoldFile"
                                    data-translate="telephony_alias_configuration_tones_old_pabx_on_hold_custom">
                             </label>
                             <div>
@@ -143,11 +145,11 @@
                                             data-ng-accept="audio/*"
                                             data-ng-accept-filter="$ctrl.checkValidSound(file, 'onHold')"
                                             data-file-explain="{{ 'telephony_alias_configuration_tones_old_pabx_type_custom_sound_file_explain' | translate }}">
-                                    <i class="fa fa-upload right-space-m4"></i>
+                                    <i class="fa fa-upload mr-2"></i>
                                     <span data-translate="telephony_alias_configuration_tones_old_pabx_type_custom_sound_add_file"></span>
                                 </input-file>
                             </div>
-                            <div class="top-space-m8"
+                            <div class="mb-3"
                                  role="alert"
                                  data-ng-messages="$ctrl.formErrors.onHold">
                                 <span data-ng-message="format"
@@ -162,12 +164,12 @@
 
                     <!-- endCall -->
                     <div>
-                        <div class="clearfix top-space-m16">
-                            <label for="endCall"
+                        <div class="form-group">
+                            <label class="control-label"
+                                   for="endCall"
                                    data-translate="telephony_alias_configuration_tones_old_pabx_end_call">
                             </label>
-                            <select flat-select
-                                    id="endCall"
+                            <select id="endCall"
                                     name="endCall"
                                     class="form-control"
                                     data-ng-disabled="$ctrl.loading.save"
@@ -177,10 +179,11 @@
                             </select>
                         </div>
 
-                        <div class="clearfix top-space-m16"
+                        <div class="form-group"
                              data-uib-collapse="$ctrl.formOptions.endCall !== 'Custom sound'"
                              data-ng-class="{ 'has-error': $ctrl.formErrors.endCall.format }">
-                            <label for="endCallFile"
+                            <label class="control-label"
+                                   for="endCallFile"
                                    data-translate="telephony_alias_configuration_tones_old_pabx_end_call_custom">
                             </label>
                             <div>
@@ -188,11 +191,11 @@
                                             data-ng-accept="audio/*"
                                             data-ng-accept-filter="$ctrl.checkValidSound(file, 'endCall')"
                                             data-file-explain="{{ 'telephony_alias_configuration_tones_old_pabx_type_custom_sound_file_explain' | translate }}">
-                                    <i class="fa fa-upload right-space-m4"></i>
+                                    <i class="fa fa-upload mr-2"></i>
                                     <span data-translate="telephony_alias_configuration_tones_old_pabx_type_custom_sound_add_file"></span>
                                 </input-file>
                             </div>
-                            <div class="top-space-m8"
+                            <div class="mb-3"
                                  role="alert"
                                  data-ng-messages="$ctrl.formErrors.endCall">
                                 <span data-ng-message="format"
@@ -206,17 +209,18 @@
                     </div> <!-- End of endCall -->
 
                     <!-- Bottom buttons -->
-                    <div class="clearfix top-space-m16">
+                    <div class="form-group">
                         <button type="submit"
-                                class="btn btn-primary pull-right no-transition"
+                                class="btn btn-primary no-transition"
                                 data-ng-disabled="$ctrl.loaders.save || !$ctrl.isFormValid()">
-                            <spinner class="left-space-m4"
-                                     data-ng-if="$ctrl.loaders.save">
-                            </spinner>
+                            <bouncing-box-loader class="d-inline-block align-middle mr-2"
+                                                 data-ng-if="$ctrl.loaders.save"
+                                                 data-size="s">
+                            </bouncing-box-loader>
                             <span data-translate="telephony_alias_configuration_tones_old_pabx_save_tones"></span>
                         </button>
                         <button type="button"
-                                class="btn btn-default pull-right right-space-m4 no-transition"
+                                class="btn btn-default no-transition"
                                 data-ng-disabled="$ctrl.loaders.save"
                                 data-ng-click="$ctrl.onCancelBtnClick()">
                             <span data-translate="cancel"></span>
