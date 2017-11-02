@@ -266,7 +266,7 @@
                                                title="{{ip.ip}} / {{ip.range}} : {{::'xdsl_details_ips_manage' | translate }}"
                                                data-ui-sref="telecom.pack.xdsl.access-ip({block:ip.getBlock()})"
                                                class="btn btn-default">
-                                               <span class="ovh-font ovh-font-config" aria-hidden="true"></span>
+                                                <span class="oui-icon oui-icon-gear_line" aria-hidden="true"></span>
                                             </a>
                                             <button type="button"
                                                     data-ng-disabled="ip.deleting || ip.range === constants.rangeOfBaseIpv4IP"
@@ -281,7 +281,7 @@
                                                     data-tooltip-enable="ip.range === constants.rangeOfBaseIpv4IP"
                                                     data-tooltip-append-to-body="true"
                                                     data-tooltip-placement="left">
-                                                    <span class="ovh-font ovh-font-bin" aria-hidden="true"></span>
+                                                <span class="oui-icon oui-icon-trash_line" aria-hidden="true"></span>
                                             </button>
                                         </div>
                                     </li>
@@ -312,7 +312,7 @@
                                                data-ui-sref="telecom.pack.xdsl.access-ip({block:ip.getBlock()})"
                                                title="{{ip.ip}} / {{ip.range}} : {{::'xdsl_details_ips_manage' | translate }}"
                                                class="btn btn-default">
-                                               <span class="ovh-font ovh-font-config"></span>
+                                                <span class="oui-icon oui-icon-gear_line"></span>
                                             </a>
                                             <button type="button"
                                                     data-ng-disabled="true"
@@ -321,7 +321,7 @@
                                                     data-tooltip-enable="true"
                                                     data-tooltip-placement="left"
                                                     data-tooltip-append-to-body="true">
-                                                    <span class="ovh-font ovh-font-bin"></span>
+                                                <span class="oui-icon oui-icon-trash_line"></span>
                                             </button>
                                         </div>
                                     </li>
@@ -330,9 +330,9 @@
                         </div>
 
                         <button type="button"
-                            class="btn btn-primary"
-                            data-ng-disabled="!XdslAccess.canOrderIps()"
-                            data-ng-click="XdslAccess.orderIps()">
+                                class="btn btn-primary"
+                                data-ng-disabled="!XdslAccess.canOrderIps()"
+                                data-ng-click="XdslAccess.orderIps()">
                             <span class="ovh-font ovh-font-cart mr-2" aria-hidden="true"></span>
                             <span data-translate="xdsl_details_ips_order"></span>
                         </button>
