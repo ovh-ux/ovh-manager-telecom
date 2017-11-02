@@ -1,16 +1,13 @@
 <div class="telecom-telephony-service-assist-logs">
 
-    <bouncing-box-loader data-size="m"
-                         data-ng-if="LogsCtrl.loading.init">
-        <h3 data-translate="loading"
-            class="mt-3">
-        </h3>
+    <bouncing-box-loader data-ng-if="LogsCtrl.loading.init">
+        <h2 data-translate="loading"></h2>
     </bouncing-box-loader>
 
     <div data-ng-if="!LogsCtrl.loading.init">
         <header>
             <section-back-link section-back-link-to-state="{{ LogsCtrl.service.isFax ? 'telecom.telephony.fax.assist' : 'telecom.telephony.line.assist' }}"
-                section-back-link-title="{{ 'telephony_service_assist_support_logs_title' | translate }}">
+                               section-back-link-title="{{ 'telephony_service_assist_support_logs_title' | translate }}">
             </section-back-link>
             <h1 data-translate="telephony_line_assist_support_logs_title"></h1>
         </header>
@@ -19,69 +16,57 @@
 
             <toast-message></toast-message>
 
-            <div class="alert alert-info">
-                <p data-translate="telephony_line_assist_support_logs_infos"></p>
+            <div class="alert alert-info"
+                 role="alert"
+                 data-translate="telephony_line_assist_support_logs_infos">
             </div>
 
             <div class="row">
 
                 <section class="col-xs-12 col-sm-6 widget-presentation">
-
                     <header class="widget-presentation-header">
                         <h2 class="widget-presentation-title"
                             data-translate="telephony_line_assist_support_logs_configs">
                         </h2>
                     </header>
-
-                    <bouncing-box-loader data-size="m"
-                                         data-ng-if="LogsCtrl.loading.user || LogsCtrl.loading.save">
-                        <h3 data-translate="{{ LogsCtrl.loading.user ? 'loading' : 'telephony_line_assist_support_logs_configs_save' }}"
-                            class="mt-3">
-                        </h3>
+                    <bouncing-box-loader data-ng-if="LogsCtrl.loading.user || LogsCtrl.loading.save"
+                                         data-size="m">
+                        <h2 data-translate="{{ LogsCtrl.loading.user ? 'loading' : 'telephony_line_assist_support_logs_configs_save' }}"></h2>
                     </bouncing-box-loader>
-
                     <div data-ng-if="!LogsCtrl.model.configEdit">
-
-                        <dl class="dl-telecom">
+                        <dl>
                             <dt data-translate="telephony_line_assist_support_logs_configs_frequency"></dt>
-                            <dd class="mb-2"
-                                data-translate="{{ LogsCtrl.service.notifications.logs ? (['telephony_line_assist_support_logs_configs_frequency', LogsCtrl.service.notifications.logs.frequency].join('_') | snakeCase) : 'telephony_line_assist_support_logs_configs_frequency_never' }}">
-                            </dd>
+                            <dd data-translate="{{ LogsCtrl.service.notifications.logs ? (['telephony_line_assist_support_logs_configs_frequency', LogsCtrl.service.notifications.logs.frequency].join('_') | snakeCase) : 'telephony_line_assist_support_logs_configs_frequency_never' }}"></dd>
 
                             <dt data-translate="telephony_line_assist_support_logs_configs_send_even_no_logs"
                                 data-ng-if="LogsCtrl.service.notifications.logs.frequency !== 'Never'">
                             </dt>
-                            <dd class="mb-2"
-                                data-translate="{{ LogsCtrl.service.notifications.logs.sendIfNull ? 'telephony_line_assist_support_logs_configs_send_even_no_logs_yes' : 'telephony_line_assist_support_logs_configs_send_even_no_logs_no' }}"
+                            <dd data-translate="{{ LogsCtrl.service.notifications.logs.sendIfNull ? 'telephony_line_assist_support_logs_configs_send_even_no_logs_yes' : 'telephony_line_assist_support_logs_configs_send_even_no_logs_no' }}"
                                 data-ng-if="LogsCtrl.service.notifications.logs.frequency !== 'Never'">
                             </dd>
 
                             <dt data-translate="telephony_line_assist_support_logs_configs_email"
                                 data-ng-if="LogsCtrl.service.notifications.logs.frequency !== 'Never'">
                             </dt>
-                            <dd class="mb-2"
-                                data-ng-bind="LogsCtrl.service.notifications.logs.email"
+                            <dd data-ng-bind="LogsCtrl.service.notifications.logs.email"
                                 data-ng-if="LogsCtrl.service.notifications.logs.frequency !== 'Never'">
                             </dd>
                         </dl>
-
                         <button class="btn btn-primary"
                                 type="button"
-                                data-translate="telephony_line_assist_support_logs_configs_manage"
-                                data-ng-click="LogsCtrl.startNotificationsChange()">
+                                data-ng-click="LogsCtrl.startNotificationsChange()"
+                                data-translate="telephony_line_assist_support_logs_configs_manage">
                         </button>
-
                     </div>
-
-
-                    <form data-ng-if="LogsCtrl.model.configEdit && !LogsCtrl.loading.user && !LogsCtrl.loading.save"
-                          data-ng-submit="LogsCtrl.saveLogsNotifications()"
-                          name="notificationEditForm"
-                          novalidate>
+                    <form name="notificationEditForm"
+                          novalidate
+                          data-ng-if="LogsCtrl.model.configEdit && !LogsCtrl.loading.user && !LogsCtrl.loading.save"
+                          data-ng-submit="LogsCtrl.saveLogsNotifications()">
 
                         <!-- FREQUENCY -->
                         <div class="form-group">
                             <label for="frequency-select"
+                                   class="control-label"
                                    data-translate="telephony_line_assist_support_logs_configs_frequency">
                             </label>
                             <select class="form-control"
@@ -93,9 +78,11 @@
                         </div> <!-- FREQUENCY -->
 
                         <!-- SENDIFNULL -->
-                        <div class="form-group"
+                        <div class="form-group clearfix"
                              data-ng-if="LogsCtrl.service.notifications.logs.frequency !== 'Never'">
-                            <label data-translate="telephony_line_assist_support_logs_configs_send_even_no_logs"></label>
+                            <label class="control-label"
+                                   data-translate="telephony_line_assist_support_logs_configs_send_even_no_logs">
+                            </label>
                             <div class="btn-group d-block">
                                 <label class="btn btn-default"
                                        data-ng-model="LogsCtrl.service.notifications.logs.sendIfNull"
@@ -118,6 +105,7 @@
                                 'has-error': notificationEditForm.email.$touched && notificationEditForm.email.$invalid
                              }">
                             <label for="email-input"
+                                   class="control-label"
                                    data-translate="telephony_line_assist_support_logs_configs_email">
                             </label>
                             <input type="email"
@@ -146,17 +134,15 @@
                                     data-ng-disabled="notificationEditForm.$pristine || notificationEditForm.$invalid"
                                     data-translate="telephony_line_assist_support_logs_configs_validate">
                             </button>
-
                             <button type="button"
                                     class="btn btn-default"
                                     data-translate="cancel"
                                     data-ng-click="LogsCtrl.cancelNotificationsChange()">
                             </button>
                         </div>
-
                     </form>
-
                 </section>
+                <!-- /.widget-presentation -->
 
                 <section class="col-xs-12 col-sm-6 widget-presentation">
 
@@ -166,10 +152,10 @@
                         </h2>
                     </header>
 
-                    <form name="consultDayForm"
-                          class="mb-3">
+                    <form name="consultDayForm">
                         <div class="form-group">
                             <label for="dayInterval-select"
+                                   class="control-label"
                                    data-translate="telephony_line_assist_support_logs_list_days">
                             </label>
                             <select class="form-control"
@@ -182,22 +168,19 @@
                         </div>
                     </form>
 
-                    <bouncing-box-loader data-size="m"
-                                         data-ng-if="LogsCtrl.loading.refresh">
-                        <h3 data-translate="telephony_line_assist_support_logs_list_loading"
-                            class="mt-3">
-                        </h3>
+                    <bouncing-box-loader data-ng-if="LogsCtrl.loading.refresh"
+                                         data-size="m">
+                        <h2 data-translate="telephony_line_assist_support_logs_list_loading"></h2>
                     </bouncing-box-loader>
 
                     <div data-ng-if="!LogsCtrl.loading.refresh">
 
-                        <em class="d-block text-center mt-4"
+                        <em class="d-block text-center"
                             data-ng-if="LogsCtrl.logs.length === 0"
                             data-translate="telephony_line_assist_support_logs_list_no_logs">
                         </em>
 
                         <div data-ng-if="LogsCtrl.logs.length > 0">
-
                             <div class="logs-list">
                                 <div class="media"
                                      data-ng-repeat="log in LogsCtrl.pageLogs track by $index">
@@ -214,21 +197,16 @@
                                         <h4 class="media-heading"
                                             data-ng-bind="log.name | words:'true'">
                                         </h4>
-                                        <p data-ng-bind="log.datetime | date:'short'"
-                                           class="text-muted">
+                                        <p class="text-muted"
+                                           data-ng-bind="log.datetime | date:'short'">
                                         </p>
                                         <p class="text-muted">
-                                            <span class="d-block"
-                                                  data-ng-bind="log.report">
-                                            </span>
-                                            <span class="d-block"
-                                                  data-ng-bind="log.description">
-                                            </span>
+                                            <span data-ng-bind="log.report"></span><br>
+                                            <span data-ng-bind="log.description"></span>
                                         </p>
                                     </div>
                                 </div>
                             </div>
-
                             <div class="mt-3 text-left"
                                  data-ng-show="LogsCtrl.logs.length > LogsCtrl.logsPerPage"
                                  data-ng-init="logsPerPage = LogsCtrl.logsPerPage"
@@ -240,18 +218,19 @@
                                  data-items-per-page="logsPerPage"
                                  data-go-to-page="false">
                             </div>
-
                         </div>
 
                     </div>
 
                 </section>
+                <!-- /.widget-presentation -->
 
             </div>
 
         </div>
+        <!-- /.telecom-section-content -->
 
     </div>
 
-
 </div>
+<!-- /.telecom-telephony-service-assist-logs -->
