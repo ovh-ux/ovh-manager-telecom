@@ -1,9 +1,8 @@
 #content {
     :not(.widget-presentation) {
-        header:not(.widget-presentation-header) {
-            margin: @md-margin-base @md-margin-base (@md-margin-base / 2);
+        header:not(.widget-presentation-header):not(.page-header) {
+            margin: 32px 32px 16px;
             h1 {
-                font-weight: 400;
                 line-height: inherit;
             }
             dl {
@@ -13,7 +12,7 @@
                 }
 
                 dd {
-                    color: @text-color-content;
+                    color: @gray-base;
                 }
 
                 dt {
@@ -26,25 +25,5 @@
                 }
             }
         }
-
-        h2 {
-            font-weight: @font-weight-h2;
-        }
-
-        h3 {
-            font-weight: @font-weight-h3;
-            margin-top: 2px;
-            font-size: 17px;
-        }
 	}
-}
-
-@media (max-width: @screen-sm-max) {
-    #content {
-        :not(.widget-presentation) {
-            header:not(.widget-presentation-header) {
-                margin: @sm-margin-top @sm-margin-side @sm-margin-bottom @sm-margin-side;
-            }
-        }
-    }
 }

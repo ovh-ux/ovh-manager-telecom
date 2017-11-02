@@ -31,7 +31,7 @@ angular.module("managerApp").controller(
                     Toast.success($translate.instant("telephony_line_actions_line_calls_out_lock_call_save_success"));
                 },
                 function () {
-                    ToastError($translate.instant("telephony_line_actions_line_calls_out_lock_call_save_error"));
+                    return new ToastError($translate.instant("telephony_line_actions_line_calls_out_lock_call_save_error"));
                 }
             ).finally(function () {
                 self.loading.save = false;
@@ -56,7 +56,7 @@ angular.module("managerApp").controller(
                     self.saved = angular.copy(self.options);
                 },
                 function () {
-                    ToastError($translate.instant("telephony_line_actions_line_calls_out_lock_call_load_error"));
+                    return new ToastError($translate.instant("telephony_line_actions_line_calls_out_lock_call_load_error"));
                 }
             ).finally(function () {
                 self.loading.init = false;

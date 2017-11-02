@@ -1,6 +1,6 @@
 <div class="telecom-pack-migration-service-delete">
 
-    <p class="bottom-space-m32" data-translate="telecom_pack_migration_service_delete_explain"></p>
+    <p class="mb-5" data-translate="telecom_pack_migration_service_delete_explain"></p>
 
     <div class="row"
          data-ng-repeat="subServiceChunk in ServiceDeleteCtrl.chunkedSubServices track by $index">
@@ -17,14 +17,11 @@
 
             <ul class="list-unstyled">
                 <li data-ng-repeat="service in subService.services track by $index">
-                    <label class="top-space-m8 bottom-space-m8">
-                        <div flat-input-container
-                             class="inline-block vertical-middle right-space-m8">
-                            <flat-checkbox>
-                                <input type="checkbox"
-                                       data-ng-model="service.selected"
-                                       data-ng-disabled="subService.services.length === subService.numberToDelete || (ServiceDeleteCtrl.selectedSubServiceToDeleteReached(subService) && !service.selected)">
-                            </flat-checkbox>
+                    <label class="my-2">
+                        <div class="d-inline-block align-middle mr-2">
+                            <input type="checkbox"
+                                   data-ng-model="service.selected"
+                                   data-ng-disabled="subService.services.length === subService.numberToDelete || (ServiceDeleteCtrl.selectedSubServiceToDeleteReached(subService) && !service.selected)">
                         </div>
                         <span data-ng-bind="service.name"></span>
                     </label>
@@ -35,7 +32,7 @@
 
     </div>
 
-    <div class="bottom-space-m32">
+    <div class="mb-5">
         <a class="btn btn-default"
            data-translate="telecom_pack_migration_confirm_cancel_button"
            data-ui-sref="telecom.pack">

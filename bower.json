@@ -50,6 +50,7 @@
     "async": "0.9.2",
     "at-internet-ui-router-plugin": "^0.1.2",
     "bootstrap": "3.3.6",
+    "bootstrap4": "boostrap#4.0.0-beta",
     "chart.js": "~2.6.0",
     "crypto": "3.46.1",
     "cryptojs": "latest",
@@ -75,14 +76,13 @@
     "ovh-angular-browser-alert": "^0.0.5",
     "ovh-angular-checkbox-table": "^0.1.2",
     "ovh-angular-contact": "^1.0.0",
-    "ovh-angular-contracts": "^1.1.1",
-    "ovh-angular-form-flat": "^3.2.2",
-    "ovh-angular-input-number-spinner": "^2.0.0",
+    "ovh-angular-contracts": "^2.0.0",
+    "ovh-angular-input-number-spinner": "^2.1.0",
     "ovh-angular-line-diagnostics": "^0.4.0",
     "ovh-angular-manager-navbar": "^6.6.3",
     "ovh-angular-mondial-relay": "^2.0.0",
     "ovh-angular-otrs": "^3.0.0",
-    "ovh-angular-pagination-front": "^5.0.0",
+    "ovh-angular-pagination-front": "^6.0.0",
     "ovh-angular-q-allsettled": "^0.3.1",
     "ovh-angular-responsive-popover": "^4.0.1",
     "ovh-angular-responsive-tabs": "^3.1.4",
@@ -93,17 +93,16 @@
     "ovh-angular-swimming-poll": "^3.0.0",
     "ovh-angular-tail-logs": "^1.1.1",
     "ovh-angular-timeline": "^1.5.2",
-    "ovh-angular-toaster": "^0.8.0",
     "ovh-angular-toggleclass": "^1.2.1",
     "ovh-angular-ui-confirm-modal": "^1.0.2",
     "ovh-api-services": "^2.0.1",
-    "ovh-common-style": "^3.2.2",
     "ovh-jquery-ui-draggable-ng": "^0.0.5",
     "ovh-manager-webfont": "^1.0.1",
     "ovh-ng-input-password": "^1.2.5",
     "ovh-ngstrap": "^4.0.2",
-    "ovh-ui-kit": "^1.0.0-alpha.13",
-    "validator-js": "3.40.1"
+    "ovh-ui-kit": "^1.0.0-alpha.20",
+    "validator-js": "3.40.1",
+    "ovh-ui-angular": "^1.1.1"
   },
   "devDependencies": {
     "angular-mocks": "~1.5.x",
@@ -173,6 +172,9 @@
       "dependencies": {
         "moment": "^2.15.2"
       }
+    },
+    "bootstrap4": {
+      "main": []
     }
   },
   "private": true

@@ -18,8 +18,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineTerminateCtrl", fun
         self.loading.terminate = true;
 
         return self.line.terminate(self.reason).then(function () {
-            Toast.success($translate.instant("telephony_group_line_terminating_ok"));
-            $state.go(".cancel");
+            $state.go(".cancel").then(() => Toast.success($translate.instant("telephony_group_line_terminating_ok")));
         }).catch(function (error) {
             Toast.error($translate.instant("telephony_group_line_terminating_ko", { error: error.data.message }));
         }).finally(function () {

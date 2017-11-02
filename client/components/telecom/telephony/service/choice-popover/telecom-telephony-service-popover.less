@@ -1,51 +1,44 @@
 .telephony-service-choice-popover {
-    .makeTwoPagePopover(350px);
+    .makeTwoPagePopover();
 
-    // FILTERS
-    .filter-list {
-        .filter-item {
-            padding: 0 8px 0 16px;
-            background-color: #F3F3F3;
-            border-radius: 18px;
-            color: @BRAND_DARK;
-            cursor: default;
-            margin-right: 8px;
-
-            .item-label {
-                line-height: 40px;
-                display: inline-block;
-                max-width: 85px;
-                white-space: nowrap;
-                text-overflow: ellipsis;
-                overflow: hidden;
-            }
-
-            button.item-remove {
-                font-size: 16px;
-                padding: 6px;
-                transition: transform .5s;
-
-                &:hover {
-                    transform: scale(1.25);
-                }
-            }
+    &.popover-full-screen {
+        .popover-inner {
+            height: 100%;
         }
     }
 
     &:not(.popover-full-screen) {
-        .popover-pages {
-            .page-left .filter-list {
-                max-height: 100px;
+        max-height: 520px;
+
+        section.page-section {
+            section {
+                height: 360px;
                 overflow-y: auto;
             }
+        }
+    }
 
-            .page-section section {
-                min-height: 350px;
-            }
+    .section-item {
+        border-top: none !important;
+    }
 
-            .page-right section {
-                max-height: 410px;
-                overflow-y: auto;
+    .btn {
+        padding: 5px 13px;
+    }
+
+    .search-results {
+        margin-top: 8px !important;
+
+        label {
+            position: relative;
+            padding-left: 50px !important;
+
+            input {
+                &[type="radio"]{
+                    position: absolute;
+                    top: 25px;
+                    left: 15px;
+                }
             }
         }
     }

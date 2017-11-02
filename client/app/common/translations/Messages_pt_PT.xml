@@ -152,11 +152,9 @@
 
    <translation id="common_menu_changelog" qtlid="260971">Changelog</translation>
 
-   <translation id="common_express_lite_banner_desc" qtlid="304875">Express Lite comprend donc un modem offrant un accès à internet et une ligne VoIP pour <span class="ad-price bold fs14">22,99€ HT</span>&#160;/&#160;mois.</translation>
    <translation id="common_express_lite_banner_title" qtlid="304888">OVH lance une nouvelle offre de connexion ADSL et VDSL incluant l'essentiel.</translation>
    <translation id="common_generate_order" qtlid="186219">Gerar a nota de encomenda</translation>
    <translation id="common_boost_banner_title" qtlid="304901">OVH lance deux séries limitées de connexion seule pour profiter d'un meilleur débit.</translation>
-   <translation id="common_boost_banner_desc" qtlid="304914">Sécurisez votre connexion avec l'offre <span class="ad-price bold fs14">CONNECT</span> ou doublez votre débit avec l'offre <span class="ad-price bold fs14">BOOST</span> qui inclut le matériel et le service <span class="ad-price bold fs14">OVER THE BOX</span>.<br/><small>Offre limitée aux 240 premières commandes.</small></translation>
    <translation id="common_banner_discover" qtlid="304927">Découvrir l'offre</translation>
    <translation id="common_service_name_edit_title" qtlid="331683">{{ title }} : éditer le nom du service</translation>
 

@@ -16,17 +16,16 @@
                 <span data-translate="all_fields_are_required"></span>
 
                 <form name="accountForm"
-                      data-ng-submit="ctrl.add()"
-                      class="form-horizontal ovh-form-flat">
+                      data-ng-submit="ctrl.add()">
                     <div class="form-group">
                         <div class="row">
                             <div class="col-xs-12 input-select">
-                                <div flat-input-container>
+                                <div>
                                     <label class="control-label" data-translate="account_name"></label>
                                     <div class="row">
                                         <div class="col-xs-10">
                                             <div class="input-select-container">
-                                                <div class="input-group col-xs-8">
+                                                <div class="input-group">
                                                     <input name="accountName"
                                                         class="form-control"
                                                         data-ng-model="ctrl.account.name"
@@ -36,10 +35,7 @@
                                                         maxlength="50"
                                                         placeholder="{{ 'account_name' | translate }}">
                                                     <span class="input-group-addon">@</span>
-                                                </div>
-                                                <div class="col-xs-4 no-margin">
-                                                    <select flat-select
-                                                            name="accountDomain"
+                                                    <select name="accountDomain"
                                                             class="form-control"
                                                             data-ng-model="ctrl.account.domain"
                                                             data-ng-options="item.value as item.label for item in ctrl.availablesDomains"
@@ -53,14 +49,14 @@
                                                         && accountForm.accountName.$valid
                                                         && accountForm.accountDomain.$dirty
                                                         && accountForm.accountDomain.$valid"
-                                                  class="ovh-font ovh-font-success fs20 text-success"
+                                                  class="ovh-font ovh-font-success h5 text-success"
                                                   aria-hidden="true">
                                             </span>
                                             <span data-ng-show="(accountForm.accountName.$dirty
                                                         && accountForm.accountName.$invalid)
                                                         || (accountForm.accountName.$dirty
                                                         &&  accountForm.accountDomain.$invalid)"
-                                                  class="ovh-font ovh-font-failure fs20 text-danger"
+                                                  class="ovh-font ovh-font-failure h5 text-danger"
                                                   aria-hidden="true">
                                             </span>
                                         </div>
@@ -74,7 +70,7 @@
                          data-ovh-pwd="ctrl.account.password"
                          data-ovh-pwd-confirm="ctrl.account.passwordConfirmation">
                     </div>
-                    <div class="form-group top-space-m20">
+                    <div class="form-group mt-4">
                         <button class="btn btn-primary"
                                 type="submit"
                                 id="submit"

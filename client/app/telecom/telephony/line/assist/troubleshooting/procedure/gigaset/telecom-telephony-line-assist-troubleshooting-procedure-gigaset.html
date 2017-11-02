@@ -3,28 +3,23 @@
     <!-- UPGRADE -->
     <div data-ng-if="ProcedureCtrl.process.problem === 'upgrade'">
 
-        <div class="row bottom-space-m24">
+        <div class="row mb-3">
 
-            <div class="row-height">
+            <div class="col-md-6">
+                <div class="content-container">
+                    <p class="mb-3"
+                       data-translate="telephony_line_assist_troubleshooting_procedure_gigaset_upgrade_main_explain">
+                    </p>
 
-                <div class="col-md-6 col-height col-middle">
-                    <div class="content-container">
-                        <p class="bottom-space-m16"
-                           data-translate="telephony_line_assist_troubleshooting_procedure_gigaset_upgrade_main_explain">
-                        </p>
-
-                        <p data-translate="telephony_line_assist_troubleshooting_procedure_gigaset_upgrade_step1"></p>
-                    </div>
+                    <p data-translate="telephony_line_assist_troubleshooting_procedure_gigaset_upgrade_step1"></p>
                 </div>
+            </div>
 
-                <div class="col-md-6 col-height col-middle text-center">
-                    <div class="image-container full-height full-width dtable">
-                        <div class="dtd full-height col-middle">
-                            <img data-ng-src="assets/images/troubleshooting/gigaset/de410_waiting_upgrade.jpg"
-                                 data-ng-attr-alt="{{ :: ProcedureCtrl.process.line.phone.description }}"
-                                 data-ng-attr-title="{{ :: ProcedureCtrl.process.line.phone.description }}" />
-                        </div>
-                    </div>
+            <div class="col-md-6 text-center">
+                <div class="image-container">
+                    <img data-ng-src="assets/images/troubleshooting/gigaset/de410_waiting_upgrade.jpg"
+                         data-ng-attr-alt="{{ :: ProcedureCtrl.process.line.phone.description }}"
+                         data-ng-attr-title="{{ :: ProcedureCtrl.process.line.phone.description }}" />
                 </div>
             </div>
 

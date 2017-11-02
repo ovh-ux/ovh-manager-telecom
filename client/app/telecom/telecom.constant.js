@@ -173,4 +173,6 @@ angular.module("managerApp").constant("REDIRECT_V4_HASH", {
         // NUMBER DIRECTORY
         number_manage_directory: "#rdm/55079/menu/number/grp/{billingAccount}/num/{lineNumber}/page/number_manage_directory"
     }
+}).constant("uibButtonConfig", {
+    activeClass: "btn-primary"
 });

@@ -43,13 +43,14 @@
         </nav>
 
         <!-- GROUP TITLE -->
-        <h1 data-ng-if="!TelecomTelephonyBillingAccountManageCtrl.loading.init" class="left-space-m32">
+        <h1 data-ng-if="!TelecomTelephonyBillingAccountManageCtrl.loading.init" class="ml-5">
             <span data-ng-hide="TelecomTelephonyBillingAccountManageCtrl.group.inEdition">{{ (TelecomTelephonyBillingAccountManageCtrl.group.name || ('telephony_default_title' | translate )) | characters:25 :true}}</span>
         </h1>
     </header>
 
     <!-- LOADING -->
-    <bouncing-box-loader data-ng-if="TelecomTelephonyBillingAccountManageCtrl.loading.init">
+    <bouncing-box-loader data-size="m"
+                         data-ng-if="TelecomTelephonyBillingAccountManageCtrl.loading.init">
         <h1 data-translate="loading"></h1>
     </bouncing-box-loader>
 

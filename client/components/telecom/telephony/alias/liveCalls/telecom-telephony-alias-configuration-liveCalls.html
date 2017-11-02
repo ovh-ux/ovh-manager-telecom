@@ -46,8 +46,11 @@
             <span data-ng-if="!$ctrl.getMaxWaitTime()">-</span>
         </dd>
     </dl>
-    <div class="table-responsive-vertical">
-        <table class="table table-pretty table-hover table-striped">
+    <div class="table-responsive">
+        <table class="table"
+               data-ng-class="{
+                   'table-hover table-striped': $ctrl.callsPaginated.length > 1
+               }">
             <thead>
                 <tr>
                     <th scope="col" data-translate="telephony_alias_configuration_mode_calls_number"></th>
@@ -60,9 +63,9 @@
             <tbody data-ng-if="!$ctrl.isLoading">
                 <tr data-ng-repeat="call in $ctrl.callsPaginated track by call.id">
                     <th scope="row" data-title="{{:: 'telephony_alias_configuration_mode_calls_number' | translate }}">
-                        <span class="text-nowrap right-space-m16 text-capitalize"
+                        <span class="text-nowrap mr-3 text-capitalize"
                               data-ng-bind="call.callerIdNumber | phoneNumber"></span>
-                        <span class="text-nowrap right-space-m16"
+                        <span class="text-nowrap mr-3"
                               data-ng-if="call.callerIdName"
                               data-ng-bind="'(' + call.callerIdName + ')'"></span>
                     </th>
@@ -70,14 +73,14 @@
                         <elapsed-time data-from="call.begin"></elapsed-time>
                     </td>
                     <td data-title="{{:: 'telephony_alias_configuration_mode_calls_time' | translate }}">
-                        <span class="text-nowrap right-space-m16 text-capitalize"
+                        <span class="text-nowrap mr-3 text-capitalize"
                               data-ng-if="!call.answered"
                               data-ng-bind="call.answered ? 'yes' : 'no' | translate"></span>
                         <elapsed-time data-ng-if="call.answered"
                                       data-from="call.answered"></elapsed-time>
                     </td>
                     <td data-title="{{:: 'telephony_alias_configuration_mode_calls_agent' | translate }}">
-                        <span class="text-nowrap right-space-m16" data-ng-bind="call.agent || '-'"></span>
+                        <span class="text-nowrap mr-3" data-ng-bind="call.agent || '-'"></span>
                     </td>
                     <td data-title="{{:: 'telephony_alias_configuration_mode_calls_action' | translate }}">
                         <button type="button"
@@ -113,20 +116,20 @@
             </tbody>
             <tbody data-ng-if="$ctrl.isLoading">
                 <tr>
-                    <td class="text-center top-space-p16 bottom-space-p16" colspan="5">
+                    <td class="text-center py-3" colspan="5">
                         <spinner></spinner>
                     </td>
                 </tr>
             </tbody>
             <tbody data-ng-if="!$ctrl.isLoading && !$ctrl.calls.length">
                 <tr>
-                    <td class="text-center top-space-p16 bottom-space-p16" colspan="5">
+                    <td class="text-center py-3" colspan="5">
                         <span data-translate="telephony_alias_configuration_mode_calls_empty"></span>
                     </td>
                 </tr>
             </tbody>
         </table>
-        <div class="table-pretty-pagination top-space-m8 bottom-space-m16"
+        <div class="table-pretty-pagination mt-2 mb-3"
              data-ng-show="!$ctrl.isLoading && $ctrl.calls.length"
              data-pagination-front
              data-items="$ctrl.calls"
@@ -153,8 +156,11 @@
         <dt data-translate="telephony_alias_configuration_mode_agents_pending"></dt>
         <dd data-ng-bind="$ctrl.getWaitingAgentsCount()"></dd>
     </dl>
-    <div class="table-responsive-vertical">
-        <table class="table table-pretty table-hover table-striped">
+    <div class="table-responsive">
+        <table class="table"
+               data-ng-class="{
+                   'table-hover table-striped': $ctrl.agentsStatusPaginated.length > 1
+               }">
             <thead>
                 <tr>
                     <th scope="col" data-translate="telephony_alias_configuration_mode_calls_agent"></th>
@@ -165,10 +171,10 @@
             <tbody data-ng-if="!$ctrl.isLoading">
                 <tr data-ng-repeat="agent in $ctrl.agentsStatusPaginated track by agent.agentId">
                     <th scope="row" data-title="{{:: 'telephony_alias_configuration_mode_calls_agent' | translate }}">
-                        <span class="text-nowrap right-space-m16" data-ng-bind="agent.agentId"></span>
+                        <span class="text-nowrap mr-3" data-ng-bind="agent.agentId"></span>
                     </th>
                     <td data-title="{{:: 'telephony_alias_configuration_mode_calls_agent_status' | translate }}">
-                        <span class="text-nowrap right-space-m16" data-ng-bind="'telephony_alias_configuration_mode_calls_agent_status_' + agent.status | translate"></span>
+                        <span class="text-nowrap mr-3" data-ng-bind="'telephony_alias_configuration_mode_calls_agent_status_' + agent.status | translate"></span>
                     </td>
                     <td data-title="{{:: 'telephony_alias_configuration_mode_calls_agent_updated' | translate }}">
                         <span data-translate="telephony_alias_configuration_mode_calls_agent_updated_ago"></span>
@@ -179,20 +185,20 @@
             </tbody>
             <tbody data-ng-if="$ctrl.isLoading">
                 <tr>
-                    <td class="text-center top-space-p16 bottom-space-p16" colspan="3">
+                    <td class="text-center py-3" colspan="3">
                         <spinner></spinner>
                     </td>
                 </tr>
             </tbody>
             <tbody data-ng-if="!$ctrl.isLoading && !$ctrl.agentsStatus.length">
                 <tr>
-                    <td class="text-center top-space-p16 bottom-space-p16" colspan="3">
+                    <td class="text-center py-3" colspan="3">
                         <span data-translate="telephony_alias_configuration_mode_agents_empty"></span>
                     </td>
                 </tr>
             </tbody>
         </table>
-        <div class="table-pretty-pagination top-space-m8 bottom-space-m16"
+        <div class="mt-2 mb-3"
              data-ng-show="!$ctrl.isLoading && $ctrl.agentsStatus.length"
              data-pagination-front
              data-items="$ctrl.agentsStatus"

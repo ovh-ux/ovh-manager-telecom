@@ -1,7 +1,6 @@
-<form name="MtuForm" class="ovh-form-flat" data-ng-submit="MtuCtrl.changeMtuSize()">
+<form name="MtuForm" data-ng-submit="MtuCtrl.changeMtuSize()">
     <div class="form-group">
-
-        <select flat-select
+        <select
             class="form-control"
             name="configMtu"
             id="configMtu"
@@ -9,16 +8,14 @@
             data-ng-options="data.value for data in MtuCtrl.mtuValues"
             data-ng-disabled="!MtuCtrl.mediator.capabilities.canChangeMtu || MtuCtrl.mediator.tasks.changeMTU || MtuCtrl.loading">
         </select>
-
-        <button class="btn btn-primary left-space-m8"
-                type="submit"
-                data-ng-disabled="!MtuCtrl.mediator.capabilities.canChangeMtu || MtuCtrl.mtuCurrentValue === MtuCtrl.mtuCurrentValueTmp">
+    </div>
+    <button class="btn btn-primary mt-1"
+            type="submit"
+            data-ng-disabled="!MtuCtrl.mediator.capabilities.canChangeMtu || MtuCtrl.mtuCurrentValue === MtuCtrl.mtuCurrentValueTmp">
             <span data-ng-if="MtuCtrl.mediator.tasks.changeMTU">
-                <spinner></spinner>
+                <bouncing-box-loader data-size="s"></bouncing-box-loader>
                 <span data-translate="xdsl_modem_mtu_doing"></span>
             </span>
-            <span data-ng-if="!MtuCtrl.mediator.tasks.changeMTU" data-translate="xdsl_modem_mtu_submit"></span>
-        </button>
-
-    </div>
+        <span data-ng-if="!MtuCtrl.mediator.tasks.changeMTU" data-translate="xdsl_modem_mtu_submit"></span>
+    </button>
 </form>

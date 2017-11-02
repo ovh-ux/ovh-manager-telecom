@@ -49,7 +49,7 @@
                             class="voip-plan__step-btn voip-plan__step-btn--primary"
                             data-ng-disabled="$ctrl.number.inEdition"
                             data-uib-dropdown-toggle>
-                        <span class="ovh-font ovh-font-dots vertical-top" aria-hidden="true"></span>
+                        <span class="ovh-font ovh-font-dots align-top" aria-hidden="true"></span>
                     </button>
                     <ul class="dropdown-menu ovh-dropdown-menu"
                         role="menu"
@@ -59,20 +59,20 @@
                             data-ng-class="{ divider: action.divider }"
                             data-ng-repeat="action in $ctrl.featureActions track by $index">
                             <!-- ACTION WITH SREF -->
-                            <a class="btn btn-link full-width"
+                            <a class="btn btn-link w-100"
                                data-ui-sref="{{ action.sref }}"
                                data-ng-if="action.sref"
                                data-ng-bind="action.text">
                             </a> <!-- END OF ACTION WITH SREF -->
 
                             <!-- ACTION WITH URL -->
-                            <a class="btn btn-link full-width"
+                            <a class="btn btn-link w-100"
                                data-ng-href="{{ action.url }}"
                                data-ng-if="action.url"
                                target="_blank"
                                rel="nofollow">
                                 <span data-ng-bind="action.text"></span>
-                                <span class="ovh-font ovh-font-backToV4 left-space-m8"></span>
+                                <span class="ovh-font ovh-font-backToV4 ml-2"></span>
                             </a> <!-- END OF ACTION WITH URL -->
                         </li>
                     </ul>
@@ -108,7 +108,7 @@
            data-translate="telephony_number_footer_question">
         </p>
 
-        <div class="button-container inline-block">
+        <div class="button-container d-inline-block">
             <button type="submit"
                     class="btn btn-primary pull-rigth"
                     data-ng-disabled="!$ctrl.number.feature.hasChange() || $ctrl.loading.save || $ctrl.loading.feature">
@@ -118,7 +118,7 @@
                 <span data-translate="submit"></span>
             </button>
             <button type="button"
-                    class="btn voip-cancel pull-left"
+                    class="btn voip-cancel float-left"
                     data-translate="cancel"
                     data-ng-click="$ctrl.number.stopEdition(true, true)"
                     data-ng-disabled="$ctrl.loading.save">

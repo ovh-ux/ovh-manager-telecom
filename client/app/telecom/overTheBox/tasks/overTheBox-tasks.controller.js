@@ -39,11 +39,9 @@ angular.module("managerApp").controller("OverTheBoxTasksCtrl", function ($transl
 
     self.onTransformItem = function (id) {
         self.loaders.init = true;
-        return OvhApiOverTheBox.Lexi().getTask({ serviceName: $stateParams.serviceName, taskId: id });
-    };
-
-    self.onTransformItemDone = function () {
-        self.loaders.init = false;
+        return OvhApiOverTheBox.Lexi().getTask({ serviceName: $stateParams.serviceName, taskId: id }).$promise.finally(function () {
+            self.loaders.init = false;
+        });
     };
 
     init();

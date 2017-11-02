@@ -13,7 +13,7 @@
 
             &-icon {
                 font-size: 2.4rem;
-                color: @UNIVERS;
+                color: @oui-color-dodger;
                 margin-right: 8px;
             }
 
@@ -26,14 +26,19 @@
         &__cell {
             border: none;
             vertical-align: middle;
+            color: @gray-dark;
 
             &--border {
-                border-bottom: solid 1px @UNIVERS;
+                border-bottom: solid 1px @oui-table-cell-border-color;
             }
 
             &--head {
-                border-bottom: 2px solid @UNIVERS;
+                border-bottom: 2px solid @oui-table-cell-border-color;
                 text-align: center;
+            }
+
+            &--empty {
+                border-top: solid 1px @oui-table-cell-border-color;
             }
 
             .text-price {
@@ -41,17 +46,15 @@
                 font-size: @font-size-h3;
             }
 
-            small {
-                .text-price {
-                    font-size: 1em;
-                }
+            small .text-price {
+                font-size: 1em;
             }
 
             strong {
-                font-size: @FONT-SIZE-MAININFO;
+                font-size: @font-size-base;
 
                 &:not(.text-muted) {
-                    color: @UNIVERS;
+                    color: @oui-color-dodger;
                 }
             }
         }
@@ -59,86 +62,10 @@
         &__value {
             text-align: center;
         }
-
-        @media screen and (max-width: @table-header-width-sm) {
-            display: block;
-            margin: 0 0 16px 0;
-            width: 100%;
-
-            &__cell {
-                display: block;
-
-                &--head {
-                    display: none;
-                }
-
-                &--empty {
-                    display: none;
-                }
-            }
-
-            &__property {
-                display: block;
-                text-align: right;
-
-                &-name {
-                    padding: 8px 0;
-                    margin-top: 24px;
-                    border-bottom: 2px solid @UNIVERS;
-
-                    &--sublevel {
-                        padding: 8px 0;
-                        margin-top: 24px;
-                        border-bottom: 2px solid @UNIVERS;
-                    }
-                }
-
-                &-category {
-                    padding-bottom: 0;
-                    border-bottom: 0;
-                }
-            }
-
-            &__value {
-                padding: 8px 16px;
-                border-bottom: 1px solid #bbbdbf;
-                text-align: right;
-
-                &::before {
-                    content: attr(data-title);
-                    display: block;
-                    text-align: left;
-                }
-
-                &--button {
-                    padding: 16px 0;
-                    border-bottom: none;
-
-                    &::before {
-                        display: inline-block;
-                        margin-right: 16px;
-                        font-size: @FONT-SIZE-MAININFO;
-                        font-weight: bold;
-                    }
-                }
-
-                .input-number-spinner {
-                    float: right;
-                }
-            }
-
-            &__body, &__foot {
-                display: block;
-            }
-
-            &__foot {
-                margin-top: 32px;
-            }
-        }
     }
 
     .text-asterisk {
-        &:before {
+        &::before {
             display: inline-block;
             content: "*";
             padding-right: 4px;

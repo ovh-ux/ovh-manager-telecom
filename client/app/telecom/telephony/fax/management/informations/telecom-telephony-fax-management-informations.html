@@ -10,8 +10,9 @@
     <div class="telecom-section-content">
 
         <!-- LOADING -->
-        <bouncing-box-loader data-ng-if="$ctrl.loading.init">
-            <h2 class="top-space-m16"
+        <bouncing-box-loader data-size="m"
+                             data-ng-if="$ctrl.loading.init">
+            <h2 class="mt-3"
                 data-translate="loading">
             </h2>
         </bouncing-box-loader> <!-- Enf of LOADING -->
@@ -28,13 +29,13 @@
                 <dl class="dl-telecom">
                     <!-- description -->
                     <dt data-translate="telephony_group_fax_management_informations_service_name"></dt>
-                    <dd class="bottom-space-m8"
+                    <dd class="mb-2"
                         data-ng-bind="$ctrl.fax.getDisplayedName()">
                     </dd>
 
                     <!-- country code -->
                     <dt data-translate="telephony_group_fax_management_informations_country_code"></dt>
-                    <dd class="bottom-space-m8">
+                    <dd class="mb-2">
                         <span class="flag-icon" data-ng-class="['flag-icon-'+$ctrl.plan.country]"></span>
                         /
                         <span data-ng-bind="$ctrl.plan.prefix || '-'">
@@ -51,13 +52,13 @@
                 <dl class="dl-telecom">
                     <!-- description -->
                     <dt data-translate="telephony_group_fax_management_informations_group_name"></dt>
-                    <dd class="bottom-space-m8"
+                    <dd class="mb-2"
                         data-ng-bind="$ctrl.group.billingAccount">
                     </dd>
 
                     <!-- country code -->
                     <dt data-translate="telephony_group_fax_management_informations_group_description"></dt>
-                    <dd class="bottom-space-m8"
+                    <dd class="mb-2"
                         data-ng-bind="$ctrl.group.description">
                     </dd>
                 </dl>

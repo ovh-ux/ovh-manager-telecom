@@ -37,12 +37,8 @@
         color: @gray-base;
     }
 
-    button.legend-edit {
-        .makeRoundedButton(@btnSize: 30px, @boxShadowSize: 5px, @iconFontSize: 1.3em);
-    }
-
-    &.dtable {
-        .dtd {
+    &.d-table {
+        .d-table-cell {
             padding: 0.5em;
             vertical-align: middle;
 
@@ -71,10 +67,8 @@
                         }
                     }
 
-                    &:first-child {
-                        section {
-                            min-height: @section-height - 60px;     // 60px is the height of the footer
-                        }
+                    .numberChoice {
+                        max-height: 304px !important;
                     }
 
                     &:last-child {
@@ -86,6 +80,10 @@
             }
         }
 
+        .section-item {
+            border-top: none;
+            border-right: none;
+        }
     }
 }
 
@@ -116,7 +114,7 @@ div.voip-time-condition-calendar {
         background-color: transparent;
         border-radius: initial;
         border: none;
-        color: @text-color-mainInfo;
+        color: @gray-dark;
         opacity: 1;
         box-shadow: none;
         transition: box-shadow .4s ease-out, transform .4s ease-out, opacity .4s ease-out;
@@ -211,7 +209,7 @@ div.voip-time-condition-calendar {
         text-align: center;
         border-bottom: solid 1px #ddd;
         letter-spacing: -3px;
-        color: @FormTextColor;
+        color: @oui-color-regent;
         margin-bottom: 90px;
     }
 }
@@ -226,20 +224,14 @@ div.voip-time-condition-calendar {
     }
 
     &:not(.popover-full-screen) {
-        @section-height: 450px;
-        max-height: 520px;
+        @section-height: 1450px;
+        max-height: 1520px;
 
         .voip-time-condition-slots-edit {
             section.page-section {
 
                 section {
                     overflow-y: auto;
-                }
-
-                &:first-child {
-                    section {
-                        min-height: @section-height - 60px;     // 60px is the height of the footer
-                    }
                 }
 
                 &:last-child {
@@ -249,6 +241,11 @@ div.voip-time-condition-calendar {
                 }
             }
         }
+    }
+
+    .section-item {
+        border-top: none;
+        border-right: none;
     }
 }
 

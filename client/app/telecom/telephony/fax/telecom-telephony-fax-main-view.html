@@ -1,12 +1,14 @@
 <section class="telecom-telephony-fax">
 
     <!-- LOADING -->
-    <bouncing-box-loader data-ng-if="$ctrl.loading.init">
+    <bouncing-box-loader data-size="m"
+                         data-ng-if="$ctrl.loading.init">
         <h1 data-translate="loading"></h1>
     </bouncing-box-loader>
 
     <div class="telecom-section-header" data-ng-if="!$ctrl.loading.init">
-        <header role="banner">
+        <header class="page-header"
+                role="banner">
             <!-- GROUP TITLE -->
             <editable-service-name data-editable-service-name-title="$ctrl.fax.getDisplayedName()"
                                    data-editable-service-name-title-on-save="$ctrl.faxNameSave"

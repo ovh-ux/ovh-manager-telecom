@@ -42,7 +42,6 @@
    <translation id="telecom_dashboard_services_incidents_other" qtlid="305187">incidents detected </translation>
 
    <translation id="telecom_dashboard_auth_failed" qtlid="305200">User information cannot be retrieved </translation>
-   <translation id="telecom_dashboard_express_lite_desc" qtlid="304875">Express Lite includes a modem providing internet access and a VoIP line for <span class="ad-price bold fs14">€22.99 excl. GST</span>&#160;/&#160;month.</translation>
    <translation id="telecom_dashboard_express_lite_title" qtlid="304888">OVH is launching a new ADSL and VDSL connection service. </translation>
    <translation id="telecom_dashboard_discover" qtlid="304927">Find out more </translation>
 </translations>

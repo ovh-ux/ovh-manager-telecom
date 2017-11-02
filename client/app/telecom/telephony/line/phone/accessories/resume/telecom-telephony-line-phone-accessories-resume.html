@@ -1,7 +1,8 @@
 <div class="telecom-telephony-line-phone-accessories-resume">
 
-    <bouncing-box-loader data-ng-if="AccessoriesResumeCtrl.loading.init">
-        <h3 class="top-space-m16"
+    <bouncing-box-loader data-size="m"
+                         data-ng-if="AccessoriesResumeCtrl.loading.init">
+        <h3 class="mt-3"
             data-translate="loading">
         </h3>
     </bouncing-box-loader>
@@ -9,11 +10,10 @@
     <form data-ng-submit="AccessoriesResumeCtrl.process.currentView = 'finalize'"
           data-ng-if="!AccessoriesResumeCtrl.loading.init">
 
-        <div data-ng-if="AccessoriesResumeCtrl.error"
+        <div class="alert alert-danger"
              role="alert"
-             class="alert alert-danger">
+             data-ng-if="AccessoriesResumeCtrl.error">
             <p>
-                <i class="ovh-font ovh-font-wrong"></i>
                 <span data-translate="telephony_line_phone_accessories_resume_load_error"></span>
                 <span data-ng-bind="AccessoriesResumeCtrl.error.data.message"></span>
             </p>
@@ -27,20 +27,28 @@
                     data-translate="telephony_line_phone_accessories_resume_title">
                 </h2>
 
-                <div class="responsive-table-line">
-                    <table class="table table-condensed">
+                <div class="table-responsive">
+                    <table class="table"
+                           data-ng-class="{
+                               'table-hover table-striped': AccessoriesResumeCtrl.order.details.length > 1
+                           }">
                         <thead>
                             <tr>
-                                <th data-translate="telephony_line_phone_accessories_resume_table_description"></th>
-                                <th class="text-right-sm"
+                                <th scope="col"
+                                    data-translate="telephony_line_phone_accessories_resume_table_description">
+                                </th>
+                                <th scope="col"
+                                    class="text-right-sm"
                                     data-translate="telephony_line_phone_accessories_resume_table_unit_price"
                                     style="width:15%;">
                                 </th>
-                                <th class="text-right-sm"
+                                <th scope="col"
+                                    class="text-right-sm"
                                     data-translate="telephony_line_phone_accessories_resume_table_quantity"
                                     style="width:12%;">
                                 </th>
-                                <th class="text-right-sm"
+                                <th scope="col"
+                                    class="text-right-sm"
                                     data-translate="telephony_line_phone_accessories_resume_table_total"
                                     style="width:15%;">
                                 </th>
@@ -48,9 +56,10 @@
                         </thead>
                         <tbody>
                             <tr data-ng-repeat="detail in AccessoriesResumeCtrl.order.details track by $index">
-                                <td data-ng-bind="detail.description"
+                                <th scope="row"
+                                    data-ng-bind="detail.description"
                                     data-title="{{ :: 'telephony_line_phone_accessories_resume_table_description' | translate }}">
-                                </td>
+                                </th>
                                 <td class="text-right-sm text-price"
                                     data-ng-bind="detail.unitPrice.text"
                                     data-title="{{ :: 'telephony_line_phone_accessories_resume_table_unit_price' | translate }}">
@@ -97,10 +106,10 @@
                 </h2>
 
                 <div>
-                    <div class="badge inline-block vertical-top right-space-m16">
+                    <div class="badge d-inline-block align-top mr-3">
                         <i class="fa fa-user fa-5x"></i>
                     </div>
-                    <div class="inline-block">
+                    <div class="d-inline-block">
                         <p data-ng-bind="AccessoriesResumeCtrl.process.shipping.contact.lastName + ' ' + AccessoriesResumeCtrl.process.shipping.contact.firstName"></p>
                         <p data-ng-bind="AccessoriesResumeCtrl.process.shipping.contact.address.line1"></p>
                         <p data-ng-bind="AccessoriesResumeCtrl.process.shipping.contact.address.zip + ' ' + AccessoriesResumeCtrl.process.shipping.contact.address.city"></p>
@@ -133,7 +142,7 @@
 
         </div>
 
-        <div class="footer-button-container clearfix top-space-m16 bottom-space-m32">
+        <div class="footer-button-container clearfix mt-3 mb-4">
             <button type="submit"
                     class="btn btn-primary"
                     data-translate="telephony_line_phone_accessories_resume_validate"

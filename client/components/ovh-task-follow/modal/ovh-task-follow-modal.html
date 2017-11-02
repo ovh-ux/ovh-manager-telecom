@@ -1,10 +1,10 @@
 <div>
     <div class="modal-header">
-        <h3 class="modal-title pull-left"
+        <h3 class="modal-title float-left"
             data-translate="ovh_task_follow_modal_title">
         </h3>
         <button type="button"
-                class="close pull-right"
+                class="close float-right"
                 aria-label="{{ ::'cancel' | translate }}"
                 data-ng-click="$ctrl.cancel()">
             <span aria-hidden="true">&times;</span>
@@ -19,10 +19,10 @@
                  data-is-open="$ctrl.isOpenState[task.task_id]">
                 <uib-accordion-heading>
                     <div class="clearfix">
-                        <span class="pull-left"
+                        <span class="float-left"
                               data-ng-bind="task.item_summary">
                         </span>
-                        <i class="pull-right ovh-font"
+                        <i class="float-right ovh-font"
                            data-ng-class="{ 'ovh-font-small-arrow-down': $ctrl.isOpenState[task.task_id], 'ovh-font-small-arrow-right': !$ctrl.isOpenState[task.task_id] }">
                         </i>
                     </div>

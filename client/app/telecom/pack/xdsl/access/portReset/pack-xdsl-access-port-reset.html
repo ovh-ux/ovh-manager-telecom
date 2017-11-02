@@ -12,7 +12,8 @@
         data-ng-really-window-class="revert-really-buttons"
         data-ng-disabled="!access.xdsl.capabilities.canResetDslamPort || access.tasks.current.dslamPortReset">
         <div data-ng-if="access.tasks.current.dslamPortReset">
-            <spinner></spinner>
+            <bouncing-box-loader class="d-inline-block align-middle ml-2"
+                                 data-size="s"></bouncing-box-loader>
             <span data-translate="xdsl_access_dslam_reset_success"></span>
         </div>
         <div data-ng-if="!access.tasks.current.dslamPortReset" data-translate="xdsl_access_dslam_reset"></div>

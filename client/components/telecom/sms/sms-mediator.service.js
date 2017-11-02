@@ -42,6 +42,7 @@ angular.module("managerApp").service("SmsMediator", function ($q, OvhApiSms, Sms
     };
 
     self.getCurrentSmsService = function () {
+        if (!currentSms) { throw new Error("SMS service is not set"); }
         return currentSms;
     };
 
