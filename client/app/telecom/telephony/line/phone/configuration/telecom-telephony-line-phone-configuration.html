@@ -46,7 +46,8 @@
                 <label class="oui-switch oui-switch-toggle">
                     <input type="checkbox"
                            class="oui-switch oui-switch__checkbox"
-                           data-ng-model="PhoneConfigCtrl.model.expertMode" />
+                           data-ng-model="PhoneConfigCtrl.model.expertMode"
+                           data-ng-change="PhoneConfigCtrl.onExpertModeChange()" />
                     <div class="oui-switch__slider"></div>
                     <i class="oui-icon oui-icon-success" aria-hidden="true"></i>
                     <i class="oui-icon oui-icon-error" aria-hidden="true"></i>
