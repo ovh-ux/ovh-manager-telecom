@@ -26,6 +26,7 @@
    <translation id="xdsl_details_concentrationPoint_lineInitialSectionPair_label" qtlid="309607">Paire</translation>
    <translation id="xdsl_details_concentrationPoint_lineInitialSection_label" qtlid="309620">Amorce</translation>
    <translation id="xdsl_details_followUp_label" qtlid="78870">Suivi de commande</translation>
+   <translation id="xdsl_details_followUp_label_step_name_detail">Afficher le suivi</translation>
    <translation id="xdsl_details_details_label" qtlid="37527">Détails</translation>
    <translation id="xdsl_details_status_label" qtlid="33790">État</translation>
    <translation id="xdsl_details_type_label" qtlid="2642">Type</translation>
@@ -76,6 +77,7 @@
    <translation id="xdsl_details_notif_show_none_part2" qtlid="309841">et / ou SMS lorsque l'accès ne répond plus.</translation>
    <translation id="xdsl_details_notif_show_many" qtlid="309854">{{count}} alertes programmées</translation>
    <translation id="xdsl_details_notif_show_one" qtlid="309867">{{count}} alerte programmée</translation>
+   <translation id="xdsl_details_notif_show_alerts">Afficher les alertes</translation>
 
 <!-- collecte -->
    <translation id="xdsl_connection_ovh" qtlid="309880">Dégroupé OVH</translation>
