@@ -99,15 +99,11 @@
                                            data-uib-tooltip-template="'pack-xdsl-access-tooltip-deconsolidation.html'"
                                            data-tooltip-enable="XdslAccess.lineDetails.deconsolidation"
                                            data-tooltip-placement="right">
-                                            <div
-                                                class="service-button-description description-title-small description-title-fullHeight"
-                                                data-translate="xdsl_access_deconsolidation_{{XdslAccess.lineDetails.deconsolidation}}">
+                                            <div data-translate="xdsl_access_deconsolidation_{{XdslAccess.lineDetails.deconsolidation}}">
                                             </div>
 
-                                            <div class="link-name">
-                                                <span data-translate="xdsl_details_button_deconsolidation"></span>
-                                                <span class="ovh-font ovh-font-arrow-right" aria-hidden="true"></span>
-                                            </div>
+                                            <span data-translate="xdsl_details_button_deconsolidation"></span>
+                                            <span class="ovh-font ovh-font-arrow-right" aria-hidden="true"></span>
                                         </a>
                                     </div>
                                 </div>
@@ -123,7 +119,7 @@
                                             <span data-ng-bind="access.xdsl.address.street"></span>,
                                             <span data-ng-bind="access.xdsl.address.zipCode"></span>
                                             <span data-ng-bind="access.xdsl.address.city"></span>
-                                            <span class="ovh-font ovh-font-info h6 mr-2" aria-hidden="true"></span>
+                                            <span class="ovh-font ovh-font-info mr-2" aria-hidden="true"></span>
                                             <span class="text-info"
                                                   data-translate="xdsl_details_button_move_disabled"></span>
                                         </div>
@@ -210,7 +206,7 @@
 
                             <li class="oui-tile__item">
                                 <div class="oui-tile__definition">
-                                    <a class="btn btn-default btn-block ng-scope"
+                                    <a class="btn btn-default btn-block"
                                        data-ui-sref="telecom.pack.xdsl.access-resiliation"
                                        data-translate="xdsl_resiliate"
                                        data-translate-attr="{title: 'common_resiliation'}"></a>
@@ -230,63 +226,63 @@
                         <ul class="list-unstyled">
                             <li class="oui-tile__item">
                                 <div class="oui-tile__definition">
-                                    <div class="h5"
-                                         data-translate="xdsl_details_NRA_title"></div>
+                                    <h5 data-translate="xdsl_details_NRA_title"></h5>
 
-                                    <div class="oui-tile__term"
-                                         data-translate="xdsl_details_NRA_name"></div>
-                                    <div class="oui-tile__description mb-2"
-                                         data-ng-bind="access.xdsl.nra"></div>
+                                    <dl>
+                                        <dt class="oui-tile__term"
+                                            data-translate="xdsl_details_NRA_name"></dt>
+                                        <dd class="oui-tile__description"
+                                            data-ng-bind="access.xdsl.nra"></dd>
 
-                                    <div class="oui-tile__term"
-                                         data-translate="xdsl_details_NRA_distance"></div>
-                                    <div class="oui-tile__description mb-2"
-                                         data-translate="xdsl_details_metters"
-                                         data-translate-values="{ distance: XdslAccess.lineDetails.distance }">
-                                    </div>
+                                        <dt class="oui-tile__term"
+                                            data-translate="xdsl_details_NRA_distance"></dt>
+                                        <dd class="oui-tile__description"
+                                            data-translate="xdsl_details_metters"
+                                            data-translate-values="{ distance: XdslAccess.lineDetails.distance }">
+                                        </dd>
 
-                                    <div class="oui-tile__term"
-                                         data-translate="xdsl_details_cable_type"></div>
-                                    <div class="oui-tile__description mb-2"
-                                         data-ng-if="XdslAccess.lineDetails.lineSectionsLength.length"
-                                         data-translate="xdsl_details_sectionLength_values"
-                                         data-translate-values="{ diameter: XdslAccess.lineDetails.lineSectionsLength[0].diameter, length: XdslAccess.lineDetails.lineSectionsLength[0].length }">
-                                    </div>
-                                    <div class="oui-tile__description mb-2"
-                                         data-ng-if="!XdslAccess.lineDetails.lineSectionsLength.length">-
-                                    </div>
+                                        <dt class="oui-tile__term"
+                                            data-translate="xdsl_details_cable_type"></dt>
+                                        <dd class="oui-tile__description"
+                                            data-ng-if="XdslAccess.lineDetails.lineSectionsLength.length"
+                                            data-translate="xdsl_details_sectionLength_values"
+                                            data-translate-values="{ diameter: XdslAccess.lineDetails.lineSectionsLength[0].diameter, length: XdslAccess.lineDetails.lineSectionsLength[0].length }">
+                                        </dd>
+                                        <dd class="oui-tile__description"
+                                            data-ng-if="!XdslAccess.lineDetails.lineSectionsLength.length">-
+                                        </dd>
 
-                                    <div class="oui-tile__term"
-                                         data-translate="xdsl_details_concentrationPoint_lineHead_label"></div>
-                                    <div class="oui-tile__description mb-2"
-                                         data-ng-if="XdslAccess.lineDetails.concentrationPoint.lineHead"
-                                         data-ng-bind="XdslAccess.lineDetails.concentrationPoint.lineHead">
-                                    </div>
-                                    <div class="oui-tile__description mb-2"
-                                         data-ng-if="!XdslAccess.lineDetails.concentrationPoint.lineHead">-
-                                    </div>
+                                        <dt class="oui-tile__term"
+                                            data-translate="xdsl_details_concentrationPoint_lineHead_label"></dt>
+                                        <dd class="oui-tile__description"
+                                            data-ng-if="XdslAccess.lineDetails.concentrationPoint.lineHead"
+                                            data-ng-bind="XdslAccess.lineDetails.concentrationPoint.lineHead">
+                                        </dd>
+                                        <dd class="oui-tile__description"
+                                            data-ng-if="!XdslAccess.lineDetails.concentrationPoint.lineHead">-
+                                        </dd>
 
-                                    <div class="oui-tile__term"
-                                         data-translate="xdsl_details_concentrationPoint_lineInitialSection_label"></div>
-                                    <div class="oui-tile__description mb-2"
-                                         data-ng-if="XdslAccess.lineDetails.concentrationPoint.lineInitialSection"
-                                         data-ng-bind="XdslAccess.lineDetails.concentrationPoint.lineInitialSection">
-                                    </div>
-                                    <div class="oui-tile__description mb-2"
-                                         data-ng-if="!XdslAccess.lineDetails.concentrationPoint.lineInitialSection">-
-                                    </div>
+                                        <dt class="oui-tile__term"
+                                            data-translate="xdsl_details_concentrationPoint_lineInitialSection_label"></dt>
+                                        <dd class="oui-tile__description"
+                                            data-ng-if="XdslAccess.lineDetails.concentrationPoint.lineInitialSection"
+                                            data-ng-bind="XdslAccess.lineDetails.concentrationPoint.lineInitialSection">
+                                        </dd>
+                                        <dd class="oui-tile__description"
+                                            data-ng-if="!XdslAccess.lineDetails.concentrationPoint.lineInitialSection">-
+                                        </dd>
 
-                                    <div class="oui-tile__term"
-                                         data-translate="xdsl_details_concentrationPoint_lineInitialSectionPair_label"></div>
-                                    <div class="oui-tile__description mb-2"
-                                         data-ng-if="XdslAccess.lineDetails.concentrationPoint.lineInitialSectionPair"
-                                         data-ng-bind="XdslAccess.lineDetails.concentrationPoint.lineInitialSectionPair">
-                                    </div>
-                                    <div class="oui-tile__description"
-                                         data-ng-if="!XdslAccess.lineDetails.concentrationPoint.lineInitialSectionPair">
-                                        -
-                                    </div>
-
+                                        <dt class="oui-tile__term"
+                                            data-translate="xdsl_details_concentrationPoint_lineInitialSectionPair_label"></dt>
+                                        <dd class="oui-tile__description"
+                                            data-ng-if="XdslAccess.lineDetails.concentrationPoint.lineInitialSectionPair"
+                                            data-ng-bind="XdslAccess.lineDetails.concentrationPoint.lineInitialSectionPair">
+                                        </dd>
+                                        <dd class="oui-tile__description"
+                                            data-ng-if="!XdslAccess.lineDetails.concentrationPoint.lineInitialSectionPair">
+                                            -
+                                        </dd>
+                                    </dl>
                                 </div>
                             </li>
 
@@ -294,8 +290,7 @@
                             <!-- IPS -->
                             <li class="oui-tile__item">
                                 <div class="oui-tile__definition">
-                                    <div class="h5"
-                                         data-translate="xdsl_details_ips_title"></div>
+                                    <h5 data-translate="xdsl_details_ips_title"></h5>
                                     <!-- IP V4 -->
                                     <div data-ng-if="XdslAccess.ipsV4.length > 0">
                                         <div class="oui-tile__term"
@@ -385,8 +380,7 @@
                             <!-- Connexion -->
                             <li class="oui-tile__item">
                                 <div class="oui-tile__definition">
-                                    <div class="h5"
-                                         data-translate="xdsl_details_connection_title"></div>
+                                    <h5 data-translate="xdsl_details_connection_title"></h5>
 
                                     <div class="oui-tile__term" data-translate="xdsl_details_connection"></div>
                                     <div class="oui-tile__description">
