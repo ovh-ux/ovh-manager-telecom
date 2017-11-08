@@ -2,6 +2,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceVoicemailOptions
     "use strict";
 
     var self = this;
+    var removeRecord = null;
 
     function fetchEnums () {
         return OvhApiTelephony.Lexi().schema({
@@ -45,7 +46,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceVoicemailOptions
                     })
                 }).then(function (data) {
                     var res = {};
-                    _.assign(res, _.pick(data.greeting, ["dir"]));
+                    _.assign(res, _.pick(data.greeting, ["dir", "id"]));
                     _.assign(res, _.pick(data.download, ["filename", "url"]));
                     return res;
                 });
@@ -141,7 +142,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceVoicemailOptions
     };
 
     self.recordingChanged = function () {
-        return (self.recordingForm.doNotRecord !== self.settings.doNotRecord) || self.recordingForm.uploadedFile;
+        return (self.recordingForm.doNotRecord !== self.settings.doNotRecord) || self.recordingForm.uploadedFile || removeRecord;
     };
 
     self.checkValidAudioExtention = function (file) {
@@ -163,12 +164,26 @@ angular.module("managerApp").controller("TelecomTelephonyServiceVoicemailOptions
         _.assign(settings, _.pick(self.recordingForm, ["doNotRecord"]));
 
         var update = function () {
-            return OvhApiTelephony.Voicemail().Lexi().setSettings({
-                billingAccount: $stateParams.billingAccount,
-                serviceName: $stateParams.serviceName
-            }, settings).$promise.then(function () {
-                return refreshSettings();
-            });
+            var promises = {
+                settings: OvhApiTelephony.Voicemail().Lexi().setSettings({
+                    billingAccount: $stateParams.billingAccount,
+                    serviceName: $stateParams.serviceName
+                }, settings).$promise.then(function () {
+                    return refreshSettings();
+                })
+            };
+
+            if (removeRecord) {
+                promises.greetings = OvhApiTelephony.Voicemail().Greetings().Lexi().delete({
+                    billingAccount: $stateParams.billingAccount,
+                    serviceName: $stateParams.serviceName,
+                    id: removeRecord
+                }).$promise.then(function () {
+                    removeRecord = null;
+                });
+            }
+
+            return $q.all(promises);
         };
 
         var uploadFile = $timeout(angular.noop, 1000);
@@ -325,6 +340,12 @@ angular.module("managerApp").controller("TelecomTelephonyServiceVoicemailOptions
         self.emailForm.email = null;
         self.emailForm.type = null;
         self.emailForm.isShown = false;
+    };
+
+    self.removeRecordSound = function () {
+        self.settings.annouceMessage = null;
+        removeRecord = self.greetings.id;
+        self.greetings = null;
     };
 
     init();
