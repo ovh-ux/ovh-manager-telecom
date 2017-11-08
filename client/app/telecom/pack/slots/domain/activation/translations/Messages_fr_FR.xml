@@ -9,10 +9,10 @@
    <translation id="domain_activation_no_tld" qtlid="307436">Aucun TLD disponible. Si aucune erreur n’est survenue, ceci peut être dû à une lenteur de chargement des données ou votre Pack ne permet pas d’activer des domaines.</translation>
    <translation id="domain_activation_error_on_check_disponibility" qtlid="307449">Une erreur bloque la vérification de la disponibilité du nom de domaine.</translation>
    <translation id="domain_activation_check_dispo" qtlid="307462">Vérification de la disponibilité</translation>
-   <translation id="domain_activation_is_already_in_pack" qtlid="307475">est déjà activé dans votre Pack. Veuillez choisir un autre nom de domaine.</translation>
-   <translation id="domain_activation_is_available" qtlid="307488">est disponible.</translation>
+   <translation id="domain_activation_is_already_in_pack">{{ domain }} est déjà activé dans votre Pack. Veuillez choisir un autre nom de domaine.</translation>
+   <translation id="domain_activation_is_available">{{ domain }} est disponible.</translation>
    <translation id="domain_activation_fill_form" qtlid="307501">Vous pouvez compléter le formulaire ci-dessous.</translation>
-   <translation id="domain_activation_is_unavailable" qtlid="307514">est déjà pris.</translation>
+   <translation id="domain_activation_is_unavailable">{{domain}} est déjà pris.</translation>
    <translation id="domain_activation_do_you_transfert" qtlid="307527">Souhaitez-vous le transférer :</translation>
    <translation id="domain_activation_do_transfert_yes" qtlid="50134">oui</translation>
    <translation id="domain_activation_do_transfert_no" qtlid="50602">non</translation>
@@ -53,8 +53,8 @@ Il s’agit d’un numéro d’identifiant que possède votre ancien registrar (
    <translation id="domain_activation_city_birth" qtlid="163856">Ville de naissance</translation>
    <translation id="domain_activation_organisation" qtlid="32278">Organisation</translation>
    <translation id="domain_activation_organisation_complement" qtlid="307878">Complément</translation>
-   <translation id="domain_activation_unable_to_save_domain" qtlid="307891">Impossible d’enregistrer le domaine</translation>
-   <translation id="domain_activation_domain_is_saved" qtlid="307904">Domaine enregistré</translation>
+   <translation id="domain_activation_unable_to_save_domain" qtlid="307891">Impossible d’enregistrer le domaine.</translation>
+   <translation id="domain_activation_domain_is_saved">Domaine enregistré avec succès. Vous allez être redirigé vers la vue globale de votre pack.</translation>
    <translation id="domain_activation_saving_domain" qtlid="307917">Enregistrement du domaine</translation>
    <translation id="domain_activation_please_wait" qtlid="307930">veuillez patienter</translation>
    <translation id="domain_activation_required_fields" qtlid="386834">Champs obligatoires</translation>

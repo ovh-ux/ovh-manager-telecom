@@ -142,8 +142,8 @@ angular.module("managerApp")
          * And get maxLine to generere available params for EXT function...
         **/
         function getDynamicParameters () {
-            return TelephonyMediator.initDeferred.promise.then(function () {
-                var line = TelephonyMediator.getCurrentGroup().getLine($stateParams.serviceName);
+            return TelephonyMediator.getGroup($stateParams.billingAccount).then(function (group) {
+                var line = group.getLine($stateParams.serviceName);
                 var phone = line.phone;
                 var extValues = [];
 
@@ -156,8 +156,8 @@ angular.module("managerApp")
         }
 
         function getSiblingParameters () {
-            return TelephonyMediator.initDeferred.promise.then(function () {
-                self.availableParameters = TelephonyMediator.getCurrentGroup().lines;
+            return TelephonyMediator.getGroup($stateParams.billingAccount).then(function (group) {
+                self.availableParameters = group.lines;
                 return self.availableParameters;
             });
         }
@@ -198,7 +198,7 @@ angular.module("managerApp")
         }
 
         function getHuntingParameter () {
-            return TelephonyMediator.initDeferred.promise.then(function () {
+            return TelephonyMediator.getGroup($stateParams.billingAccount).then(function (curGroup) {
 
                 var pabxState = {
                     ovh: OvhApiTelephonyOvhPabx,
@@ -206,7 +206,7 @@ angular.module("managerApp")
                     mini: OvhApiTelephonyMiniPabx,
                     request: []
                 };
-                var line = TelephonyMediator.getCurrentGroup().getLine($stateParams.serviceName);
+                var line = curGroup.getLine($stateParams.serviceName);
 
                 /** TODO Optimize **/
                 angular.forEach(TelephonyMediator.groups, function (group) {
@@ -221,7 +221,7 @@ angular.module("managerApp")
                                     serviceName: abx
                                 }).$promise.then(function (agents) {
                                     angular.forEach(agents, function (agent) {
-                                        if (agent.indexOf(line.serviceName) > -1) {
+                                        if (agent.toString().indexOf(line.serviceName) > -1) {
                                             var numberDetail;
                                             angular.forEach(group.numbers, function (detail) {
                                                 if (detail.serviceName === abx) {
@@ -249,7 +249,7 @@ angular.module("managerApp")
         }
 
         function getCloudHuntingParameter () {
-            return TelephonyMediator.initDeferred.promise.then(function () {
+            return TelephonyMediator.getGroup($stateParams.billingAccount).then(function () {
                 angular.forEach(TelephonyMediator.groups, function (group) {
                     angular.forEach(group.numbers, function (number) {
                         if (number.feature.featureType === "cloudHunting") {
