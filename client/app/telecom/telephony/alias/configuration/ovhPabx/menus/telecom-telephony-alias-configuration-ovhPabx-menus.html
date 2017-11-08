@@ -9,7 +9,8 @@
 
     <div class="telecom-section-content">
         <!-- SHOW LOADING -->
-        <bouncing-box-loader data-ng-if="$ctrl.loading.init">
+        <bouncing-box-loader data-ng-if="$ctrl.loading.init"
+                             data-size="m">
             <h2 data-translate="loading"></h2>
         </bouncing-box-loader> <!-- END OF SHOW LOADING -->
 
@@ -19,9 +20,6 @@
             <div class="col-xs-12 col-md-6">
                 <div class="alert alert-warning"
                      role="alert">
-                    <i class="ovh-font ovh-font-filled-warning"
-                       aria-hidden="true">
-                    </i>
                     <p data-translate="telephony_alias_ovh_pabx_condition"
                        data-ng-if="$ctrl.number.getFeatureFamily() !== 'ovhPabx'">
                     </p>
@@ -31,7 +29,7 @@
                     <a data-ui-sref="telecom.telephony.alias.configuration.changeType"
                        data-translate="telephony_alias_configuration_change_type"
                        data-translate-attr="{ title: 'telephony_alias_configuration_change_type' }">
-                   </a>
+                    </a>
                 </div>
             </div>
         </div> <!-- END OF NOT AN OVHPABX -->
@@ -48,12 +46,12 @@
 
                 <!-- ADD NEW MENU -->
                 <button type="button"
-                        class="btn btn-primary bottom-space-m16"
+                        class="btn btn-primary mb-3"
                         data-ng-click="$ctrl.onAddMenuBtnClick()">
-                    <i class="ovh-font ovh-font-ajouter inline-block vertical-middle"
+                    <i class="ovh-font ovh-font-ajouter d-inline-block align-middle"
                        aria-hidden="true">
                     </i>
-                    <span class="inline-block vertical-middle left-space-p4"
+                    <span class="d-inline-block align-middle ml-1"
                           data-translate="telephony_alias_ovh_pabx_menus_add_menu">
                     </span>
                 </button> <!-- END OF ADD NEW MENU -->
@@ -88,5 +86,7 @@
             </div>
         </div> <!-- END OF MENU IN EDITION -->
     </div>
+    <!-- /.telecom-section-content -->
 
 </div>
+<!-- /.telecom-telephony-alias-configuration-ovhPabx-menus -->

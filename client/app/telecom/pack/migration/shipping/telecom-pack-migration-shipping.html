@@ -13,10 +13,9 @@
                 <p data-translate="telecom_pack_migration_shipping_explain2"></p>
 
                 <!-- LOADER -->
-                <bouncing-box-loader data-ng-if="ShippingCtrl.loading.init">
-                    <h3 class="top-space-m16"
-                        data-translate="loading">
-                    </h3>
+                <bouncing-box-loader data-size="m"
+                                     data-ng-if="ShippingCtrl.loading.init">
+                    <h3 data-translate="loading"></h3>
                 </bouncing-box-loader>
 
                 <div data-ng-if="!ShippingCtrl.loading.init">
@@ -24,23 +23,21 @@
                     <!-- CONTACT CHOICE -->
                     <div class="contact-choice">
                         <h3 data-translate="telecom_pack_migration_shipping_contact"
-                            class="bottom-space-m16 top-space-m32">
+                            class="mb-3 mt-5">
                         </h3>
 
                         <ovh-contact data-ng-model="ShippingCtrl.process.shipping.address"
                                      data-ovh-contact-choice-options="ShippingCtrl.ovhContactOptions">
-                            <bouncing-box-loader>
-                                <h3 class="top-space-m16"
-                                    data-translate="loading">
-                                </h3>
+                            <bouncing-box-loader data-size="m">
+                                <h3 data-translate="loading"></h3>
                             </bouncing-box-loader>
                         </ovh-contact>
                     </div> <!-- CONTACT CHOICE -->
 
                     <!-- SHIPPING MODE CHOICE -->
-                    <div class="shipping-choice top-space-m32">
+                    <div class="shipping-choice mt-5">
                         <h3 data-translate="telecom_pack_migration_shipping_mode"
-                            class="bottom-space-m16">
+                            class="mb-3">
                         </h3>
 
                         <shipping-mode-selection data-ng-model="ShippingCtrl.process.shipping.mode"
@@ -50,7 +47,7 @@
 
                 </div>
 
-                <div class="top-space-m32"
+                <div class="mt-5"
                      data-ng-if="!ShippingCtrl.loading.init">
                     <a class="btn btn-default"
                        data-translate="telecom_pack_migration_confirm_cancel_button"

@@ -1,10 +1,13 @@
-<button type="button"
+<button class="btn btn-link p-0"
         data-ng-click="sortableCtrl.sortElement()"
-        data-uib-tooltip="{{ this.title }}"
-        class="no-style no-space no-outline">
+        data-uib-tooltip="{{ this.title }}">
     <ng-transclude></ng-transclude>
+    <span class="oui-icon align-middle"
+          aria-hidden="true"
+          data-ng-class="{
+              'invisible': sortableCtrl.getSort().fieldName !== sortableCtrl.fieldName,
+              'oui-icon-arrow-up': !sortableCtrl.getSort().descending,
+              'oui-icon-arrow-down': sortableCtrl.getSort().descending
+          }">
+    </span>
 </button>
-<span data-ng-class="{'no-sort':sortableCtrl.getSort().fieldName!==sortableCtrl.fieldName}">
-    <i class="fa"
-       data-ng-class="{'fa-sort-amount-asc': !sortableCtrl.getSort().descending, 'fa-sort-amount-desc': sortableCtrl.getSort().descending}"></i>
-</span>

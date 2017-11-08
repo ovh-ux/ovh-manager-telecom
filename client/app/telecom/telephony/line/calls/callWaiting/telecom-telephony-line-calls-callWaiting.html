@@ -7,97 +7,109 @@
         <h1 data-translate="telephony_line_actions_line_calls_call_waiting_title"></h1>
     </header>
 
+    <bouncing-box-loader data-ng-if="LineCallWaitingCtrl.loading.init"
+                         data-size="m">
+        <h2 data-translate="loading"></h2>
+    </bouncing-box-loader>
+
+    <div class="telecom-section-content"
+         data-ng-hide="LineCallWaitingCtrl.loading.init">
+
+        <toast-message></toast-message>
+
+        <div class="row">
+            <div class="col-xs-12 col-md-8">
+
+                <form name="lockCallWaitingForm"
+                      data-ng-submit="LineCallWaitingCtrl.save()">
+
+                    <div class="form-group"
+                         data-ng-if="LineCallWaitingCtrl.phone.protocol === 'mgcp'">
+
+                        <div class="widget-presentation">
+                            <h2 class="widget-presentation-title"
+                                data-translate="telephony_line_actions_line_calls_call_waiting_cw_title">
+                            </h2>
+
+                            <div class="alert alert-info"
+                                 role="alert">
+                                <p data-translate="telephony_line_actions_line_calls_call_waiting_cw_explain"></p>
+                                <p data-translate="telephony_line_actions_line_calls_call_waiting_cw_explain1"></p>
+                            </div>
+
+                            <span data-translate="telephony_line_actions_line_calls_call_waiting_cw_checkbox_label"></span>
+                            <label class="oui-switch align-middle ml-2">
+                                <input id="callWaiting"
+                                       name="callWaiting"
+                                       type="checkbox"
+                                       class="oui-switch__checkbox"
+                                       data-ng-disabled="LineCallWaitingCtrl.loading.save"
+                                       data-ng-model="LineCallWaitingCtrl.options.callWaiting" />
+                                <div class="oui-switch__slider"></div>
+                                <i class="oui-icon oui-icon-success" aria-hidden="true"></i>
+                                <i class="oui-icon oui-icon-error" aria-hidden="true"></i>
+                            </label>
+                        </div><!-- /.widget-presentation -->
+                    </div>
+
+                    <div class="form-group">
+                        <div class="widget-presentation">
+                            <h2 class="widget-presentation-title"
+                                data-translate="telephony_line_actions_line_calls_call_waiting_intercom_title">
+                            </h2>
+
+                            <div class="alert alert-info"
+                                 role="alert">
+                                <p data-translate="telephony_line_actions_line_calls_call_waiting_intercom_explain"></p>
+                                <p data-translate="telephony_line_actions_line_calls_call_waiting_intercom_detail"></p>
+                            </div>
+
+                            <div class="oui-checkbox">
+                                <input type="checkbox"
+                                       class="oui-checkbox__input"
+                                       id="intercomSwitch"
+                                       name="intercomSwitch"
+                                       data-ng-disabled="LineCallWaitingCtrl.loading.save"
+                                       data-ng-model="LineCallWaitingCtrl.options.intercomSwitch">
+                                <label class="oui-checkbox__label-container" for="intercomSwitch">
+                                    <span class="oui-checkbox__label"
+                                          data-translate="telephony_line_actions_line_calls_call_waiting_intercom_checkbox_label">
+                                    </span>
+                                    <span class="oui-checkbox__icon">
+                                        <i class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></i>
+                                        <i class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></i>
+                                        <i class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></i>
+                                    </span>
+                                </label>
+                            </div><!-- /.widget-presentation -->
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit"
+                                class="btn btn-primary"
+                                data-ng-disabled="LineCallWaitingCtrl.loading.save || !LineCallWaitingCtrl.needSave()">
+                            <bouncing-box-loader class="d-inline-block align-middle ml-2"
+                                                 data-ng-if="LineDisplayNumberCtrl.loading.save"
+                                                 data-size="s">
+                            </bouncing-box-loader>
+                            <span data-translate="submit"></span>
+                        </button>
+                        <button type="button"
+                                data-translate="cancel"
+                                class="btn btn-default"
+                                data-ng-click="LineCallWaitingCtrl.cancel()"
+                                data-ng-disabled="LineCallWaitingCtrl.loading.save">
+                        </button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+    <!-- /.telecom-section-content -->
+
 </section>
-
-<bouncing-box-loader data-ng-if="LineCallWaitingCtrl.loading.init">
-    <h2 data-translate="loading"></h2>
-</bouncing-box-loader>
-
-<div class="telecom-section-content" data-ng-hide="LineCallWaitingCtrl.loading.init">
-    <form class="form-horizontal"
-          name="lockCallWaitingForm"
-          data-ng-submit="LineCallWaitingCtrl.save()">
-
-        <div class="form-group" data-ng-if="LineCallWaitingCtrl.phone.protocol === 'mgcp'">
-            <div class="col-md-6">
-
-                <div class="widget-presentation">
-                    <h2 class="widget-presentation-title"
-                        data-translate="telephony_line_actions_line_calls_call_waiting_cw_title"></h2>
-                </div>
-
-                <p class="text-info">
-                    <i class="ovh-font ovh-font-info line-height-normal right-space-m4"></i>
-                    <span data-translate="telephony_line_actions_line_calls_call_waiting_cw_explain"></span>
-                </p>
-
-                <p class="text-info" data-translate="telephony_line_actions_line_calls_call_waiting_cw_explain1"></p>
-
-                <div flat-input-container class="top-space-m16">
-                    <flat-checkbox class="top-space-m4">
-                        <input id="callWaiting"
-                            name="callWaiting"
-                            type="checkbox"
-                            data-ng-disabled="LineCallWaitingCtrl.loading.save"
-                            data-ng-model="LineCallWaitingCtrl.options.callWaiting" />
-                    </flat-checkbox>
-                    <label for="callWaiting"
-                        class="service-item left-space-p8 pointer"
-                        data-translate="telephony_line_actions_line_calls_call_waiting_cw_checkbox_label">
-                    </label>
-                </div>
-
-            </div>
-        </div>
-
-        <div class="form-group top-space-m32">
-            <div class="col-md-6">
-
-                <div class="widget-presentation">
-                    <h2 class="widget-presentation-title"
-                        data-translate="telephony_line_actions_line_calls_call_waiting_intercom_title"></h2>
-                </div>
-
-                <p class="text-info">
-                    <i class="ovh-font ovh-font-info line-height-normal right-space-m4"></i>
-                    <span data-translate="telephony_line_actions_line_calls_call_waiting_intercom_explain"></span>
-                </p>
-                <p class="text-info" data-translate="telephony_line_actions_line_calls_call_waiting_intercom_detail"></p>
-
-                <div flat-input-container class="top-space-m16">
-                    <flat-checkbox class="top-space-m4">
-                        <input id="intercomSwitch"
-                            name="intercomSwitch"
-                            type="checkbox"
-                            data-ng-disabled="LineCallWaitingCtrl.loading.save"
-                            data-ng-model="LineCallWaitingCtrl.options.intercomSwitch"/>
-                    </flat-checkbox>
-                    <label for="intercomSwitch"
-                        class="service-item left-space-p8 pointer"
-                        data-translate="telephony_line_actions_line_calls_call_waiting_intercom_checkbox_label">
-                    </label>
-                </div>
-
-            </div>
-        </div>
-
-        <div class="form-group top-space-m32">
-            <div class="col-md-6">
-                <button
-                    type="button"
-                    data-translate="cancel"
-                    class="btn btn-sm btn-cancel btn-default"
-                    data-ng-click="LineCallWaitingCtrl.cancel()"
-                    data-ng-disabled="LineCallWaitingCtrl.loading.save">
-                </button>
-                <button
-                    type="submit"
-                    data-translate="submit"
-                    class="btn btn-sm btn-primary pull-right"
-                    data-ng-disabled="LineCallWaitingCtrl.loading.save || !LineCallWaitingCtrl.needSave()">
-                </button>
-                <spinner class="left-space-m8" data-ng-if="LineDisplayNumberCtrl.loading.save"></spinner>
-            </div>
-        </div>
-    </form>
-</div>
+<!-- /.telephony-group-line-callWaiting -->

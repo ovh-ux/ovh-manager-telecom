@@ -1,15 +1,11 @@
 <form name="addPhonebookContactForm"
       id="addPhonebookContactForm"
-      class="ovh-form-flat"
       data-ng-submit="AddPhonebookContactCtrl.add()">
 
     <div class="modal-header">
-        <h3 class="modal-title pull-left"
-            data-translate="sms_sms_compose_add_phonebook_contact_title">
-        </h3>
         <button
             type="button"
-            class="close pull-right"
+            class="close float-right"
             aria-label="{{ ::'cancel' | translate }}"
             data-ng-click="AddPhonebookContactCtrl.cancel()">
             <span aria-hidden="true">&times;</span>
@@ -17,65 +13,65 @@
     </div>
     <!-- /.modal-header -->
 
-    <div class="modal-body" data-ng-if="!AddPhonebookContactCtrl.phonebookContact.isAdding && !AddPhonebookContactCtrl.phonebookContact.hasBeenAdded">
+    <div class="modal-body"
+         data-ng-if="!AddPhonebookContactCtrl.phonebookContact.isAdding && !AddPhonebookContactCtrl.phonebookContact.hasBeenAdded">
+        <h3 data-translate="sms_sms_compose_add_phonebook_contact_title"></h3>
         <div class="alert alert-info"
-             role="alert">
-            <i class="ovh-font ovh-font-filled-info" aria-hidden="true"></i>
-            <p data-translate="sms_sms_compose_add_phonebook_contact_info"></p>
+             role="alert"
+             data-translate="sms_sms_compose_add_phonebook_contact_info">
         </div>
-        <div class="form-group bottom-space-m20">
+        <div class="form-group">
             <div class="row">
                 <div class="col-xs-12 col-sm-6"
                      data-ng-if="AddPhonebookContactCtrl.phonebooks.raw.length > 1">
-                    <div class="clearfix" >
-                        <label for="phonebook"
-                               class="pointer"
-                               data-translate="sms_sms_compose_add_phonebook_contact_phonebook_select_label">
-                        </label>
-                        <select
-                            name="phonebook"
-                            id="phonebook"
-                            class="form-control"
-                            autofocus
-                            data-flat-select
-                            data-ng-model="AddPhonebookContactCtrl.phonebooks.current"
-                            data-ng-options="phonebook as phonebook.name for phonebook in AddPhonebookContactCtrl.phonebooks.raw"
-                            data-ng-change="AddPhonebookContactCtrl.refresh()"
-                            data-ng-disabled="AddPhonebookContactCtrl.phonebookContact.isLoading">
-                        </select>
-                    </div>
+                    <label for="phonebook"
+                           class="control-label"
+                           data-translate="sms_sms_compose_add_phonebook_contact_phonebook_select_label">
+                    </label>
+                    <select
+                        name="phonebook"
+                        id="phonebook"
+                        class="form-control"
+                        autofocus
+                        data-ng-model="AddPhonebookContactCtrl.phonebooks.current"
+                        data-ng-options="phonebook as phonebook.name for phonebook in AddPhonebookContactCtrl.phonebooks.raw"
+                        data-ng-change="AddPhonebookContactCtrl.refresh()"
+                        data-ng-disabled="AddPhonebookContactCtrl.phonebookContact.isLoading">
+                    </select>
                 </div>
                 <div class="col-xs-12 col-sm-6">
-                    <div class="clearfix">
-                        <label for="type"
-                               class="pointer"
-                               data-translate="sms_sms_compose_add_phonebook_contact_filter_select_label">
-                        </label>
-                        <select
-                            name="type"
-                            id="type"
-                            class="form-control"
-                            data-flat-select
-                            data-ng-model="AddPhonebookContactCtrl.type"
-                            data-ng-options="type as ( 'sms_sms_compose_add_phonebook_contact_filter_select_' + type | translate ) for type in AddPhonebookContactCtrl.availableTypes"
-                            data-ng-disabled="AddPhonebookContactCtrl.phonebookContact.isLoading">
-                            <option value="" data-translate="sms_sms_compose_add_phonebook_contact_filter_select_all"></option>
-                        </select>
-                    </div>
+                    <label for="type"
+                           class="control-label"
+                           data-translate="sms_sms_compose_add_phonebook_contact_filter_select_label">
+                    </label>
+                    <select
+                        name="type"
+                        id="type"
+                        class="form-control"
+                        data-ng-model="AddPhonebookContactCtrl.type"
+                        data-ng-options="type as ( 'sms_sms_compose_add_phonebook_contact_filter_select_' + type | translate ) for type in AddPhonebookContactCtrl.availableTypes"
+                        data-ng-disabled="AddPhonebookContactCtrl.phonebookContact.isLoading">
+                        <option value=""
+                                data-translate="sms_sms_compose_add_phonebook_contact_filter_select_all">
+                        </option>
+                    </select>
                 </div>
             </div>
         </div>
 
-        <div class="form-group bottom-space-m12">
-            <div class="table-responsive-vertical">
-                <table class="table table-hover table-striped table-condensed table-pretty table--header-fixed no-space">
+        <div class="form-group">
+            <div class="table-responsive">
+                <table class="table table-hover table-condensed table--header-fixed"
+                       data-ng-class="{
+                           'table-striped': AddPhonebookContactCtrl.phonebookContact.sorted.length > 1
+                       }">
                     <thead>
                         <tr>
                             <th>&nbsp;</th>
-                            <th data-translate="sms_sms_compose_add_phonebook_contact_column_surname"></th>
-                            <th data-translate="sms_sms_compose_add_phonebook_contact_column_name"></th>
-                            <th data-translate="sms_sms_compose_add_phonebook_contact_column_phonenumber"></th>
-                            <th data-translate="sms_sms_compose_add_phonebook_contact_column_type"></th>
+                            <th scope="col" data-translate="sms_sms_compose_add_phonebook_contact_column_surname"></th>
+                            <th scope="col" data-translate="sms_sms_compose_add_phonebook_contact_column_name"></th>
+                            <th scope="col" data-translate="sms_sms_compose_add_phonebook_contact_column_phonenumber"></th>
+                            <th scope="col" data-translate="sms_sms_compose_add_phonebook_contact_column_type"></th>
                         </tr>
                     </thead>
                     <tbody data-ng-if="!AddPhonebookContactCtrl.phonebookContact.isLoading">
@@ -111,16 +107,20 @@
                     </tbody>
                     <tbody data-ng-if="AddPhonebookContactCtrl.phonebookContact.isLoading">
                         <tr>
-                            <td class="text-center top-space-p8 bottom-space-p8" colspan="5">
+                            <td class="text-center"
+                                colspan="5">
+                                <bouncing-box-loader class="d-inline-block align-middle mr-2"
+                                                     data-size="s">
+                                </bouncing-box-loader>
                                 <span data-translate="sms_sms_compose_add_phonebook_contact_loading"></span>
-                                <spinner class="left-space-m4"></spinner>
                             </td>
                         </tr>
                     </tbody>
                     <tbody data-ng-if="!AddPhonebookContactCtrl.phonebookContact.isLoading && !AddPhonebookContactCtrl.phonebookContact.sorted.length">
                         <tr>
-                            <td class="text-center top-space-p8 bottom-space-p8" colspan="5">
-                                <span data-translate="sms_sms_compose_add_phonebook_contact_empty"></span>
+                            <td class="text-center py-2"
+                                colspan="5"
+                                data-translate="sms_sms_compose_add_phonebook_contact_empty">
                             </td>
                         </tr>
                     </tbody>
@@ -130,13 +130,15 @@
     </div>
     <!-- /.modal-body -->
 
-    <div class="modal-body" data-ng-if="AddPhonebookContactCtrl.phonebookContact.isAdding && !AddPhonebookContactCtrl.phonebookContact.hasBeenAdded">
-        <bouncing-box-loader>
+    <div class="modal-body"
+         data-ng-if="AddPhonebookContactCtrl.phonebookContact.isAdding && !AddPhonebookContactCtrl.phonebookContact.hasBeenAdded">
+        <bouncing-box-loader data-size="m">
             <h4 data-translate="sms_sms_compose_add_phonebook_contact_adding"></h4>
         </bouncing-box-loader>
     </div>
 
-    <div class="modal-body" data-ng-if="AddPhonebookContactCtrl.phonebookContact.hasBeenAdded">
+    <div class="modal-body"
+         data-ng-if="AddPhonebookContactCtrl.phonebookContact.hasBeenAdded">
         <success-drawing-check data-draw-success-check="AddPhonebookContactCtrl.phonebookContact.hasBeenAdded">
             <h4 data-translate="sms_sms_compose_add_phonebook_contact_added"></h4>
         </success-drawing-check>

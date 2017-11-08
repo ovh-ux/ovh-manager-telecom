@@ -7,44 +7,52 @@
         <h1 data-translate="telephony_add_group_title"></h1>
     </header>
 
-    <div class="telecom-section-content">
+    <bouncing-box-loader data-ng-if="AddGroupCtrl.loading"
+                         data-size="m">
+        <h2 data-translate="loading"></h2>
+    </bouncing-box-loader>
 
-        <div data-ng-if="AddGroupCtrl.loading">
-            <bouncing-box-loader>
-                <h2 class="top-space-m16" data-translate="loading"></h2>
-            </bouncing-box-loader>
-        </div>
+    <div class="telecom-section-content"
+         data-ng-if="!AddGroupCtrl.loading">
 
-        <div class="row telecom-telephony-addGroup" data-ng-if="!AddGroupCtrl.loading">
+        <toast-message></toast-message>
 
-            <div class="col-md-6 bottom-space-m32">
+        <div class="row">
+            <div class="col-md-6 mb-5">
+
                 <div data-ng-if="!AddGroupCtrl.order">
-                    <p class="alert alert-info">
-                        <i class="ovh-font ovh-font-info" aria-hidden="true"></i>
-                        <span data-translate="telephony_add_group_infos"></span>
+                    <p class="alert alert-info"
+                       role="alert"
+                       data-translate="telephony_add_group_infos">
                     </p>
-                    <p class="top-space-m32" data-translate="telephony_add_group_contracts"></p>
+                    <p data-translate="telephony_add_group_contracts"></p>
                     <div data-contracts="AddGroupCtrl.contracts"
                          data-full-text="true"
                          data-contracts-validated="AddGroupCtrl.contractsAccepted">
                     </div>
                     <button type="button"
-                            class="btn btn-sm btn-primary no-transition"
+                            class="btn btn-primary"
                             data-ng-disabled="!AddGroupCtrl.contractsAccepted || AddGroupCtrl.ordering"
                             data-ng-click="AddGroupCtrl.orderGroup()">
+                        <bouncing-box-loader class="d-inline-block align-middle mr-2"
+                                             data-ng-if="AddGroupCtrl.ordering"
+                                             data-size="s">
+                        </bouncing-box-loader>
                         <span data-translate="telephony_add_group_order"></span>
                         <span>({{ AddGroupCtrl.getDisplayedPrice() }})</span>
-                        <spinner class="left-space-m4" data-ng-if="AddGroupCtrl.ordering"></span>
                     </button>
                 </div>
+
                 <div data-ng-if="AddGroupCtrl.order">
                     <p>
-                        <i class="ovh-font ovh-font-success text-success fs16"></i>
+                        <i class="ovh-font ovh-font-success text-success h3 mb-0 mr-2"></i>
                         <span data-translate="telephony_add_group_success"></span>
                     </p>
                     <p>
                         <span data-translate="telephony_add_group_success_bc"></span>
-                        <a target="_blank" data-ng-href="{{ AddGroupCtrl.order.url }}">
+                        <a target="_blank"
+                           rel="noopener"
+                           data-ng-href="{{ AddGroupCtrl.order.url }}">
                             <span data-translate="telephony_add_group_success_bc2"></span>
                             <i class="fa fa-external-link"></i>
                         </a>
@@ -52,9 +60,10 @@
                     </p>
                 </div>
             </div>
+        </div>
+        <!-- /.row -->
 
-        </div><!-- row -->
-
-    </div><!-- section content -->
+    </div>
+    <!-- /.telecom-section-content -->
 
 </section>

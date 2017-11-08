@@ -1,32 +1,46 @@
-<div class="dashboard-guides widget-presentation">
-
-    <h2 class="widget-presentation-title"
+<div class="oui-tile h-100">
+    <h2 class="oui-header_2 oui-tile__title"
         data-translate="telecom_dashboard_FAQ_title">
     </h2>
-
-    <div class="list-group">
-        <a title="{{::'telecom_dashboard_FAQ_Activate' | translate}} {{::'common_newtab' | translate}}"
-           class="list-group-item"
-           data-ng-href="{{ GuidesCtrl.links.packActivate }}"
-           target="_blank">
-            <span data-translate="telecom_dashboard_FAQ_Activate"></span>
-            <span class="ovh-font ovh-font-newtab ovh-font-1x4 pull-right" aria-hidden="true"></span>
-        </a>
-
-        <a title="{{::'telecom_dashboard_FAQ_managed_modem' | translate}} {{::'common_newtab' | translate}}"
-           class="list-group-item"
-           data-ng-href="{{ GuidesCtrl.links.modemConfig }}"
-           target="_blank">
-            <span data-translate="telecom_dashboard_FAQ_managed_modem"></span>
-            <span class="ovh-font ovh-font-newtab ovh-font-1x4 pull-right" aria-hidden="true"></span>
-        </a>
-
-        <a title="{{::'telecom_dashboard_FAQ_init_modem' | translate}} {{::'common_newtab' | translate}}"
-           class="list-group-item"
-           data-ng-href="{{ GuidesCtrl.links.modemReinit }}"
-           target="_blank">
-            <span data-translate="telecom_dashboard_FAQ_init_modem"></span>
-            <span class="ovh-font ovh-font-newtab ovh-font-1x4 pull-right" aria-hidden="true"></span>
-        </a>
-    </div>
+    <ul class="oui-tile__body list-unstyled">
+        <li class="oui-tile__item oui-tile__item_button">
+            <a class="oui-tile__button oui-button oui-button_link oui-button_icon-right oui-button_full-width"
+               title="{{ ::'telecom_dashboard_FAQ_Activate' | translate }} {{ ::'common_newtab' | translate }}"
+               target="_blank"
+               rel="noopener"
+               data-ng-href="{{ GuidesCtrl.links.packActivate }}">
+                <span class="text-link"
+                      data-translate="telecom_dashboard_FAQ_Activate">
+                </span>
+                <i class="fa fa-icon fa-external-link" aria-hidden="true"></i>
+                <i class="oui-icon oui-icon-chevron-right" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="oui-tile__item oui-tile__item_button">
+            <a class="oui-tile__button oui-button oui-button_link oui-button_icon-right oui-button_full-width"
+               title="{{ ::'telecom_dashboard_FAQ_managed_modem' | translate }} {{ ::'common_newtab' | translate }}"
+               target="_blank"
+               rel="noopener"
+               data-ng-href="{{ GuidesCtrl.links.modemConfig }}">
+                <span class="text-link"
+                      data-translate="telecom_dashboard_FAQ_managed_modem">
+                </span>
+                <i class="fa fa-icon fa-external-link" aria-hidden="true"></i>
+                <i class="oui-icon oui-icon-chevron-right" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="oui-tile__item oui-tile__item_button">
+            <a class="oui-tile__button oui-button oui-button_link oui-button_icon-right oui-button_full-width"
+               title="{{ ::'telecom_dashboard_FAQ_init_modem' | translate }} {{ ::'common_newtab' | translate }}"
+               target="_blank"
+               rel="noopener"
+               data-ng-href="{{ GuidesCtrl.links.modemReinit }}">
+                <span class="text-link"
+                      data-translate="telecom_dashboard_FAQ_init_modem">
+                </span>
+                <i class="fa fa-icon fa-external-link" aria-hidden="true"></i>
+                <i class="oui-icon oui-icon-chevron-right" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
 </div>

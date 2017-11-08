@@ -1,10 +1,10 @@
-<div class="telephony-time-condition-slot dtable slot-legend full-width">
-    <div class="dtd">
+<div class="telephony-time-condition-slot slot-legend w-100 my-3 d-table">
+    <div class="d-table-cell">
         <div class="legend-color"
              data-ng-class="$ctrl.slot.name">
         </div>
     </div>
-    <div class="dtd">
+    <div class="d-table-cell ml-3">
         <div data-ng-if="$ctrl.isScheduler && $ctrl.slot.name === 'unavailable'"
              data-translate="voip_time_condition_slots_type_scheduler_unavailable">
         </div>
@@ -17,12 +17,12 @@
             <!-- SLOT NOT DEFINED -->
             <span data-ng-if="!$ctrl.getSlotDetail('number')"
                   data-translate="voip_time_condition_slots_undefined"
-                  class="legend-description small normal">
+                  class="legend-description small font-weight-normal">
             </span> <!-- END OF SLOT NOT DEFINED -->
 
             <!-- SLOT DEFINED -->
             <span data-ng-if="$ctrl.getSlotDetail('number')"
-                  class="legend-description small normal">
+                  class="legend-description small font-weight-normal">
 
                 <span data-ng-if="$ctrl.slot.name !== 'available'"
                       data-translate="{{ 'voip_time_condition_slots_redirect_type_' + $ctrl.getSlotDetail('type') }}"
@@ -36,10 +36,10 @@
             </span> <!-- END OF SLOT DEFINED -->
         </div>
     </div>
-    <div class="dtd text-right"
+    <div class="d-table-cell text-right"
          data-ng-if="$ctrl.enableEdition && $ctrl.slot.name !== 'available'">
         <button type="button"
-                class="legend-edit"
+                class="btn btn-default legend-edit"
                 data-ng-disabled="$ctrl.timeCondition.status === 'SAVING'"
                 data-responsive-popover="'components/telecom/telephony/timeCondition/slot/edit/telephony-time-condition-slot-edit.html'"
                 data-popover-placement="right auto"

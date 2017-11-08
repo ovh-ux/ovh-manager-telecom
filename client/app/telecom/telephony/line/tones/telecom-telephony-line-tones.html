@@ -1,147 +1,183 @@
 <div data-ng-if="LineTonesCtrl.isLoading">
-    <bouncing-box-loader>
-        <h2 class="top-space-m16" data-translate="loading"></h2>
+    <bouncing-box-loader data-size="m">
+        <h2 data-translate="loading"></h2>
     </bouncing-box-loader>
 </div>
 
-<div class="row" data-ng-if="!LineTonesCtrl.isLoading">
+<div class="row">
+    <div class="col-xs-12">
+        <toast-message></toast-message>
+    </div>
+</div>
+
+<div class="row mb-4"
+     data-ng-if="!LineTonesCtrl.isLoading">
+
     <div class="col-md-6">
         <div class="widget-presentation">
             <h2 class="widget-presentation-title"
-                data-translate="telephony_line_tones_title"></h2>
-        </div>
-        <p>
-            <i class="ovh-font ovh-font-info line-height-normal right-space-m4 text-info"></i>
-            <span data-translate="telephony_line_tones_info1"></span>
-            <ul>
-                <li class="top-space-m4" data-translate="telephony_line_tones_info2"></li>
-                <li class="top-space-m4" data-translate="telephony_line_tones_info3"></li>
-                <li class="top-space-m4" data-translate="telephony_line_tones_info4"></li>
-            </ul>
-        </p>
+                data-translate="telephony_line_tones_title">
+            </h2>
+            <p>
+                <span data-translate="telephony_line_tones_info1"></span>
+                <ul>
+                    <li data-translate="telephony_line_tones_info2"></li>
+                    <li data-translate="telephony_line_tones_info3"></li>
+                    <li data-translate="telephony_line_tones_info4"></li>
+                </ul>
+            </p>
 
-        <!-- RINGBACK -->
-        <div class="row top-space-m32">
-            <span class="col-md-6 top-space-m4">
-                <span data-translate="telephony_line_tones_ringback"></span>
-                <spinner class="pull-right" data-ng-if="LineTonesCtrl.tonesForm.ringbackUpdating"></spinner>
-            </span>
-            <div class="col-md-6">
-                <select flat-select
-                    class="form-control"
-                    data-ng-model="LineTonesCtrl.tonesForm.ringback"
-                    data-ng-disabled="LineTonesCtrl.tonesForm.ringbackUpdating || LineTonesCtrl.tonesForm.ringbackUploading || LineTonesCtrl.tonesForm.ringbackUploadSuccess"
-                    data-ng-options="type as LineTonesCtrl.getToneTypeLabel(type) for type in ['None', 'Custom sound']"
-                    data-ng-change="LineTonesCtrl.updateTone('ringback')"
-                    required>
-                </select>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-offset-6 col-md-6 top-space-m4">
-                <input-file data-ng-if="LineTonesCtrl.tonesForm.ringback === 'Custom sound' && !LineTonesCtrl.tonesForm.ringbackUploading && !LineTonesCtrl.tonesForm.ringbackUploadSuccess"
-                            data-ng-model="LineTonesCtrl.tonesForm.ringbackFile"
-                            data-ng-accept="audio/*"
-                            data-ng-accept-filter="LineTonesCtrl.filterValidExtension">
-                    <i class="fa fa-upload right-space-m4"></i>
-                    <span data-translate="telephony_line_tones_choose_file"></span>
-                </input-file>
-            </div>
-            <div class="col-md-offset-6 col-md-6 top-space-m4">
-                <button type="button no-transition"
-                        class="btn btn-default no-transition"
-                        data-ng-click="LineTonesCtrl.uploadTone('ringback')"
-                        data-ng-disabled="LineTonesCtrl.tonesForm.ringbackUploading || LineTonesCtrl.tonesForm.ringbackUploadSuccess"
-                        data-ng-show="LineTonesCtrl.tonesForm.ringbackFile">
-                    <span data-ng-if="!LineTonesCtrl.tonesForm.ringbackUploadSuccess" data-translate="telephony_line_tones_choose_file_confirm"></span>
-                    <span data-ng-if="LineTonesCtrl.tonesForm.ringbackUploadSuccess" data-translate="telephony_line_tones_choose_file_ring_success"></span>
-                    <i data-ng-if="LineTonesCtrl.tonesForm.ringbackUploadSuccess" class="ovh-font ovh-font-success fs14 left-space-m4"></i>
-                    <spinner data-ng-if="LineTonesCtrl.tonesForm.ringbackUploading" class="left-space-m4"></spinner>
-                </button>
-            </div>
-        </div>
+            <form class="mt-5">
+                <!-- RINGBACK -->
+                <div class="form-group">
+                    <label for="ringback"
+                           class="control-label">
+                        <span data-translate="telephony_line_tones_ringback"></span>
+                        <bouncing-box-loader class="float-right"
+                                             data-ng-if="LineTonesCtrl.tonesForm.ringbackUpdating"
+                                             data-size="s">
+                        </bouncing-box-loader>
+                    </label>
+                    <select class="form-control"
+                            id="ringback"
+                            name="ringback"
+                            required
+                            data-ng-model="LineTonesCtrl.tonesForm.ringback"
+                            data-ng-disabled="LineTonesCtrl.tonesForm.ringbackUpdating || LineTonesCtrl.tonesForm.ringbackUploading || LineTonesCtrl.tonesForm.ringbackUploadSuccess"
+                            data-ng-options="type as LineTonesCtrl.getToneTypeLabel(type) for type in ['None', 'Custom sound']"
+                            data-ng-change="LineTonesCtrl.updateTone('ringback')">
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input-file data-ng-if="LineTonesCtrl.tonesForm.ringback === 'Custom sound' && !LineTonesCtrl.tonesForm.ringbackUploading && !LineTonesCtrl.tonesForm.ringbackUploadSuccess"
+                                data-ng-model="LineTonesCtrl.tonesForm.ringbackFile"
+                                data-ng-accept="audio/*"
+                                data-ng-accept-filter="LineTonesCtrl.filterValidExtension">
+                        <i class="fa fa-upload mr-1" aria-hidden="true"></i>
+                        <span data-translate="telephony_line_tones_choose_file"></span>
+                    </input-file>
+                    <button type="button"
+                            class="btn btn-default"
+                            data-ng-click="LineTonesCtrl.uploadTone('ringback')"
+                            data-ng-disabled="LineTonesCtrl.tonesForm.ringbackUploading || LineTonesCtrl.tonesForm.ringbackUploadSuccess"
+                            data-ng-show="LineTonesCtrl.tonesForm.ringbackFile">
+                        <span data-ng-if="!LineTonesCtrl.tonesForm.ringbackUploadSuccess"
+                              data-translate="telephony_line_tones_choose_file_confirm">
+                        </span>
+                        <span data-ng-if="LineTonesCtrl.tonesForm.ringbackUploadSuccess"
+                              data-translate="telephony_line_tones_choose_file_ring_success">
+                        </span>
+                        <i class="ovh-font ovh-font-success ml-1"
+                           aria-hidden="true"
+                           data-ng-if="LineTonesCtrl.tonesForm.ringbackUploadSuccess">
+                        </i>
+                        <bouncing-box-loader class="d-inline-block align-middle ml-2"
+                                             data-ng-if="LineTonesCtrl.tonesForm.ringbackUploading"
+                                             data-size="s">
+                        </bouncing-box-loader>
+                    </button>
+                </div>
 
-        <!-- ON HOLD -->
-        <div class="row top-space-m8">
-            <span class="col-md-6 top-space-m4">
-                <span data-translate="telephony_line_tones_onhold"></span>
-                <spinner class="pull-right" data-ng-if="LineTonesCtrl.tonesForm.onHoldUpdating"></spinner>
-            </span>
-            <div class="col-md-6">
-                <select flat-select
-                    class="form-control"
-                    data-ng-model="LineTonesCtrl.tonesForm.onHold"
-                    data-ng-disabled="LineTonesCtrl.tonesForm.onHoldUpdating || LineTonesCtrl.tonesForm.onHoldUploading || LineTonesCtrl.tonesForm.onHoldUploadSuccess"
-                    data-ng-options="type as LineTonesCtrl.getToneTypeLabel(type) for type in LineTonesCtrl.tonesEnum"
-                    data-ng-change="LineTonesCtrl.updateTone('onHold')"
-                    required>
-                </select>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-offset-6 col-md-6 top-space-m4">
-                <input-file data-ng-if="LineTonesCtrl.tonesForm.onHold === 'Custom sound' && !LineTonesCtrl.tonesForm.onHoldUploading && !LineTonesCtrl.tonesForm.onHoldUploadSuccess"
-                            data-ng-model="LineTonesCtrl.tonesForm.onHoldFile"
-                            data-ng-accept="audio/*"
-                            data-ng-accept-filter="LineTonesCtrl.filterValidExtension">
-                    <i class="fa fa-upload right-space-m4"></i>
-                    <span data-translate="telephony_line_tones_choose_file"></span>
-                </input-file>
-            </div>
-            <div class="col-md-offset-6 col-md-6 top-space-m4">
-                <button type="button no-transition"
-                        class="btn btn-default no-transition"
-                        data-ng-click="LineTonesCtrl.uploadTone('onHold')"
-                        data-ng-disabled="LineTonesCtrl.tonesForm.onHoldUploading || LineTonesCtrl.tonesForm.onHoldUploadSuccess"
-                        data-ng-show="LineTonesCtrl.tonesForm.onHoldFile">
-                    <span data-ng-if="!LineTonesCtrl.tonesForm.onHoldUploadSuccess" data-translate="telephony_line_tones_choose_file_confirm"></span>
-                    <span data-ng-if="LineTonesCtrl.tonesForm.onHoldUploadSuccess" data-translate="telephony_line_tones_choose_file_sound_success"></span>
-                    <i data-ng-if="LineTonesCtrl.tonesForm.onHoldUploadSuccess" class="ovh-font ovh-font-success fs14 left-space-m4"></i>
-                    <spinner data-ng-if="LineTonesCtrl.tonesForm.onHoldUploading" class="left-space-m4"></spinner>
-                </button>
-            </div>
-        </div>
+                <!-- ON HOLD -->
+                <div class="form-group">
+                    <label for="onHold">
+                        <span data-translate="telephony_line_tones_onhold"></span>
+                        <bouncing-box-loader class="float-right"
+                                             data-ng-if="LineTonesCtrl.tonesForm.onHoldUpdating"
+                                             data-size="s">
+                        </bouncing-box-loader>
+                    </label>
+                    <select class="form-control"
+                            id="onHold"
+                            name="onHold"
+                            required
+                            data-ng-model="LineTonesCtrl.tonesForm.onHold"
+                            data-ng-disabled="LineTonesCtrl.tonesForm.onHoldUpdating || LineTonesCtrl.tonesForm.onHoldUploading || LineTonesCtrl.tonesForm.onHoldUploadSuccess"
+                            data-ng-options="type as LineTonesCtrl.getToneTypeLabel(type) for type in LineTonesCtrl.tonesEnum"
+                            data-ng-change="LineTonesCtrl.updateTone('onHold')">
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input-file data-ng-if="LineTonesCtrl.tonesForm.onHold === 'Custom sound' && !LineTonesCtrl.tonesForm.onHoldUploading && !LineTonesCtrl.tonesForm.onHoldUploadSuccess"
+                                data-ng-model="LineTonesCtrl.tonesForm.onHoldFile"
+                                data-ng-accept="audio/*"
+                                data-ng-accept-filter="LineTonesCtrl.filterValidExtension">
+                        <i class="fa fa-upload mr-1" aria-hidden="true"></i>
+                        <span data-translate="telephony_line_tones_choose_file"></span>
+                    </input-file>
+                    <button type="button"
+                            class="btn btn-default"
+                            data-ng-click="LineTonesCtrl.uploadTone('onHold')"
+                            data-ng-disabled="LineTonesCtrl.tonesForm.onHoldUploading || LineTonesCtrl.tonesForm.onHoldUploadSuccess"
+                            data-ng-show="LineTonesCtrl.tonesForm.onHoldFile">
+                        <span data-ng-if="!LineTonesCtrl.tonesForm.onHoldUploadSuccess"
+                              data-translate="telephony_line_tones_choose_file_confirm">
+                        </span>
+                        <span data-ng-if="LineTonesCtrl.tonesForm.onHoldUploadSuccess"
+                              data-translate="telephony_line_tones_choose_file_sound_success">
+                        </span>
+                        <i class="ovh-font ovh-font-success ml-1"
+                           aria-hidden="true"
+                           data-ng-if="LineTonesCtrl.tonesForm.onHoldUploadSuccess">
+                        </i>
+                        <bouncing-box-loader class="d-inline-block align-middle ml-2"
+                                             data-ng-if="LineTonesCtrl.tonesForm.onHoldUploading"
+                                             data-size="s">
+                        </bouncing-box-loader>
+                    </button>
+                </div>
 
-        <!-- CALL WAITING -->
-        <div class="row top-space-m8">
-            <span class="col-md-6 top-space-m4">
-                <span data-translate="telephony_line_tones_callwaiting"></span>
-                <spinner class="pull-right" data-ng-if="LineTonesCtrl.tonesForm.callWaitingUpdating"></spinner>
-            </span>
-            <div class="col-md-6">
-                <select flat-select
-                    class="form-control"
-                    data-ng-model="LineTonesCtrl.tonesForm.callWaiting"
-                    data-ng-disabled="LineTonesCtrl.tonesForm.callWaitingUpdating || LineTonesCtrl.tonesForm.callWaitingUploading || LineTonesCtrl.tonesForm.callWaitingUploadSuccess"
-                    data-ng-options="type as LineTonesCtrl.getToneTypeLabel(type) for type in ['None', 'Custom sound']"
-                    data-ng-change="LineTonesCtrl.updateTone('callWaiting')"
-                    required>
-                </select>
-            </div>
+                <!-- CALL WAITING -->
+                <div class="form-group">
+                    <label for="callWaiting">
+                        <span data-translate="telephony_line_tones_callwaiting"></span>
+                        <bouncing-box-loader class="float-right"
+                                             data-ng-if="LineTonesCtrl.tonesForm.callWaitingUpdating"
+                                             data-size="s">
+                        </bouncing-box-loader>
+                    </label>
+                    <select class="form-control"
+                            id="callWaiting"
+                            name="callWaiting"
+                            required
+                            data-ng-model="LineTonesCtrl.tonesForm.callWaiting"
+                            data-ng-disabled="LineTonesCtrl.tonesForm.callWaitingUpdating || LineTonesCtrl.tonesForm.callWaitingUploading || LineTonesCtrl.tonesForm.callWaitingUploadSuccess"
+                            data-ng-options="type as LineTonesCtrl.getToneTypeLabel(type) for type in ['None', 'Custom sound']"
+                            data-ng-change="LineTonesCtrl.updateTone('callWaiting')">
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input-file data-ng-if="LineTonesCtrl.tonesForm.callWaiting === 'Custom sound' && !LineTonesCtrl.tonesForm.callWaitingUploading && !LineTonesCtrl.tonesForm.callWaitingUploadSuccess"
+                                data-ng-model="LineTonesCtrl.tonesForm.callWaitingFile"
+                                data-ng-accept="audio/*"
+                                data-ng-accept-filter="LineTonesCtrl.filterValidExtension">
+                        <i class="fa fa-upload mr-1" aria-hidden="true"></i>
+                        <span data-translate="telephony_line_tones_choose_file"></span>
+                    </input-file>
+                    <button type="button"
+                            class="btn btn-default"
+                            data-ng-click="LineTonesCtrl.uploadTone('callWaiting')"
+                            data-ng-disabled="LineTonesCtrl.tonesForm.callWaitingUploading || LineTonesCtrl.tonesForm.callWaitingUploadSuccess"
+                            data-ng-show="LineTonesCtrl.tonesForm.callWaitingFile">
+                        <span data-ng-if="!LineTonesCtrl.tonesForm.callWaitingUploadSuccess"
+                              data-translate="telephony_line_tones_choose_file_confirm">
+                        </span>
+                        <span data-ng-if="LineTonesCtrl.tonesForm.callWaitingUploadSuccess"
+                              data-translate="telephony_line_tones_choose_file_announce_success">
+                        </span>
+                        <i class="ovh-font ovh-font-success ml-1"
+                           aria-hidden="true"
+                           data-ng-if="LineTonesCtrl.tonesForm.callWaitingUploadSuccess">
+                        </i>
+                        <bouncing-box-loader class="d-inline-block align-middle ml-2"
+                                             data-ng-if="LineTonesCtrl.tonesForm.callWaitingUploading"
+                                             data-size="s">
+                        </bouncing-box-loader>
+                    </button>
+                </div>
+            </form>
         </div>
-        <div class="row">
-            <div class="col-md-offset-6 col-md-6 top-space-m4">
-                <input-file data-ng-if="LineTonesCtrl.tonesForm.callWaiting === 'Custom sound' && !LineTonesCtrl.tonesForm.callWaitingUploading && !LineTonesCtrl.tonesForm.callWaitingUploadSuccess"
-                            data-ng-model="LineTonesCtrl.tonesForm.callWaitingFile"
-                            data-ng-accept="audio/*"
-                            data-ng-accept-filter="LineTonesCtrl.filterValidExtension">
-                    <i class="fa fa-upload right-space-m4"></i>
-                    <span data-translate="telephony_line_tones_choose_file"></span>
-                </input-file>
-            </div>
-            <div class="col-md-offset-6 col-md-6 top-space-m4">
-                <button type="button no-transition"
-                        class="btn btn-default no-transition"
-                        data-ng-click="LineTonesCtrl.uploadTone('callWaiting')"
-                        data-ng-disabled="LineTonesCtrl.tonesForm.callWaitingUploading || LineTonesCtrl.tonesForm.callWaitingUploadSuccess"
-                        data-ng-show="LineTonesCtrl.tonesForm.callWaitingFile">
-                    <span data-ng-if="!LineTonesCtrl.tonesForm.callWaitingUploadSuccess" data-translate="telephony_line_tones_choose_file_confirm"></span>
-                    <span data-ng-if="LineTonesCtrl.tonesForm.callWaitingUploadSuccess" data-translate="telephony_line_tones_choose_file_announce_success"></span>
-                    <i data-ng-if="LineTonesCtrl.tonesForm.callWaitingUploadSuccess" class="ovh-font ovh-font-success fs14 left-space-m4"></i>
-                    <spinner data-ng-if="LineTonesCtrl.tonesForm.callWaitingUploading" class="left-space-m4"></spinner>
-                </button>
-            </div>
-        </div>
+        <!-- /.widget-presentation -->
 
     </div>
 </div>

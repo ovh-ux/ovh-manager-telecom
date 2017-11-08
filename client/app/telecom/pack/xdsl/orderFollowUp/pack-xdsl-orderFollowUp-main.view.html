@@ -5,14 +5,13 @@
             data-translate="telecom_pack_xdsl_order_follow_up_intro">
         </h2>
 
-        <bouncing-box-loader data-ng-if="OrderFollowUpCtrl.loading">
-            <h3 class="top-space-m16"
-                data-translate="loading">
-            </h3>
+        <bouncing-box-loader data-size="m"
+                             data-ng-if="OrderFollowUpCtrl.loading">
+            <h3 data-translate="loading"></h3>
         </bouncing-box-loader>
 
         <div data-ng-if="!OrderFollowUpCtrl.loading">
-            <h3 class="top-space-m32 bottom-space-m32">
+            <h3 class="my-5">
                 <span data-translate="telecom_pack_xdsl_order_follow_up_header_status"></span>
                 {{'telecom_common_pack_xdsl_order_status_'+ OrderFollowUpCtrl.orderStatus | translate }}
             </h3>
@@ -25,14 +24,14 @@
 
                     <timeline-panel data-ng-class="'{{event.badgeClass}}'">
                         <div class="timeline-panel-status">
-                            <span class="ovh-font fs20"
+                            <span class="ovh-font h5"
                                data-ng-class="['text-{{event.badgeClass}}', '{{event.badgeIconClass}}']"
                                aria-hidden="true"></span>
                         </div>
                         <div class="timeline-panel-content">
                             <timeline-heading>
                                 <div class="service-title"
-                                     data-ng-class="{ 'top-space-p0' : event.when || event.titleContentHtml || event.footerContentHtml || event.contentHtml }">
+                                     data-ng-class="{ 'pt-0' : event.when || event.titleContentHtml || event.footerContentHtml || event.contentHtml }">
                                     {{ 'telecom_common_pack_xdsl_order_step_name_' + event.name | translate}}
                                 </div>
                                 <div class="service-item">

@@ -12,48 +12,60 @@
         <h1 data-translate="telephony_alias_portabilities_title"></h1>
     </header>
 
-    <div class="telecom-section-content" data-ng-if="PortabilitiesCtrl.isLoading">
-        <bouncing-box-loader>
-            <h2 data-translate="loading"></h2>
-        </bouncing-box-loader>
-    </div>
+    <bouncing-box-loader data-ng-if="PortabilitiesCtrl.isLoading"
+                         data-size="m">
+        <h2 data-translate="loading"></h2>
+    </bouncing-box-loader>
 
-    <div class="telecom-section-content" data-ng-if="!PortabilitiesCtrl.isLoading">
+    <div class="telecom-section-content"
+         data-ng-if="!PortabilitiesCtrl.isLoading">
         <div class="row" >
             <div class="col-md-6 widget-presentation">
                 <header class="widget-presentation-header">
-                    <h2 class="widget-presentation-title" data-translate="telephony_alias_portabilities_subtitle"></h2>
+                    <h2 class="widget-presentation-title"
+                        data-translate="telephony_alias_portabilities_subtitle">
+                    </h2>
                 </header>
 
-                <div class="top-space-m32" data-ng-if="PortabilitiesCtrl.numbers.length === 0">
-                    <span data-translate="telephony_alias_portabilities_empty"></span>
+                <div class="mt-4"
+                     data-ng-if="PortabilitiesCtrl.numbers.length === 0"
+                     data-translate="telephony_alias_portabilities_empty">
                 </div>
 
-                <div class="top-space-m32">
+                <div class="mt-4">
                     <uib-accordion data-ng-repeat="number in PortabilitiesCtrl.numbers track by $index">
-                        <div uib-accordion-group class="panel-default" is-open="number.isOpen">
+                        <div uib-accordion-group
+                             class="panel-default"
+                             is-open="number.isOpen">
                             <uib-accordion-heading>
                                 <div class="accordion-heading-container">
-                                    <span class="inline-block fs12" style="min-width: 110px" data-ng-bind="number.number | phoneNumber"></span>
-                                    <span class="fs10 left-space-m8" data-translate="telephony_alias_portabilities_planed_on" data-translate-values="{  date: (number.portability.desiredExecutionDate | date) }"></span>
-                                    <span data-ng-if="number.lastStepDone" class="left-space-m8 right-space-m8">-</span>
-                                    <span class="fs10" data-ng-if="number.lastStepDone" data-ng-bind="'telephony_alias_portabilities_step_name_' + number.lastStepDone.name | translate"></span>
-                                    <i class="pull-right glyphicon" data-ng-class="{'glyphicon-chevron-up': number.isOpen, 'glyphicon-chevron-down': !number.isOpen}"></i>
+                                    <span class="d-inline-block"
+                                          style="min-width: 110px"
+                                          data-ng-bind="number.number | phoneNumber"></span>
+                                    <span class="ml-2"
+                                          data-translate="telephony_alias_portabilities_planed_on"
+                                          data-translate-values="{  date: (number.portability.desiredExecutionDate | date) }"></span>
+                                    <span data-ng-if="number.lastStepDone"
+                                          class="mx-2">-</span>
+                                    <span data-ng-if="number.lastStepDone"
+                                          data-ng-bind="'telephony_alias_portabilities_step_name_' + number.lastStepDone.name | translate"></span>
+                                    <i class="float-right glyphicon"
+                                       data-ng-class="{'glyphicon-chevron-up': number.isOpen, 'glyphicon-chevron-down': !number.isOpen}"></i>
                                 </div>
                             </uib-accordion-heading>
 
                             <!-- PORTABILITY DETAILS -->
-                            <dl class="dl-telecom" data-ng-init="porta = number.portability">
+                            <dl data-ng-init="porta = number.portability">
                                 <dt data-translate="telephony_alias_portabilities_operator"></dt>
-                                <dd class="bottom-space-m8" data-ng-bind="porta.operator || '-'"></dd>
+                                <dd data-ng-bind="porta.operator || '-'"></dd>
                                 <dt data-translate="telephony_alias_portabilities_creation_date"></dt>
-                                <dd class="bottom-space-m8" data-ng-bind="(porta.creationDate | date) || '-'"></dd>
+                                <dd data-ng-bind="(porta.creationDate | date) || '-'"></dd>
                                 <dt data-translate="telephony_alias_portabilities_desired_date"></dt>
-                                <dd class="bottom-space-m8" data-ng-bind="(porta.desiredExecutionDate | date) || '-'"></dd>
+                                <dd data-ng-bind="(porta.desiredExecutionDate | date) || '-'"></dd>
                             </dl>
 
                             <!-- PORTABILITY STEPS TIMELINE -->
-                            <ul class="top-space-m16">
+                            <ul>
                                 <li data-ng-repeat="step in porta.steps track by $index"
                                     data-ng-class="{
                                         'doing': step.status === 'doing',
@@ -61,14 +73,23 @@
                                         'error': step.status === 'error'
                                     }">
                                     <span>{{ 'telephony_alias_portabilities_step_name_' + step.name | translate }}</span>
-                                    <span class="left-space-m8 fs10" data-ng-if="step.duration.quantity > 0 && step.duration.unit !== 'NA'">
+                                    <span class="ml-2"
+                                          data-ng-if="step.duration.quantity > 0 && step.duration.unit !== 'NA'">
                                         {{ step.duration.quantity }}&nbsp;{{ 'telephony_alias_portabilities_step_duration_' + step.duration.unit | translate }}
                                     </span>
-                                    <span class="pull-right text-success" data-ng-if="step.doneDate && step.status === 'done'" data-translate="telephony_alias_portabilities_step_done_on" data-translate-values="{ date: (step.doneDate | date) }">
+                                    <span class="float-right text-success"
+                                          data-ng-if="step.doneDate && step.status === 'done'"
+                                          data-translate="telephony_alias_portabilities_step_done_on" data-translate-values="{ date: (step.doneDate | date) }">
                                     </span>
-                                    <span class="pull-right text-info" data-ng-if="step.status === 'doing'" data-translate="telephony_alias_portabilities_step_status_doing"></span>
-                                    <span class="pull-right text-danger" data-ng-if="step.status === 'error'" data-translate="telephony_alias_portabilities_step_status_error"></span>
-                                    <span class="pull-right text-danger" data-ng-if="step.status === 'cancelled'" data-translate="telephony_alias_portabilities_step_status_error"></span>
+                                    <span class="float-right text-info"
+                                          data-ng-if="step.status === 'doing'"
+                                          data-translate="telephony_alias_portabilities_step_status_doing"></span>
+                                    <span class="float-right text-danger"
+                                          data-ng-if="step.status === 'error'"
+                                          data-translate="telephony_alias_portabilities_step_status_error"></span>
+                                    <span class="float-right text-danger"
+                                          data-ng-if="step.status === 'cancelled'"
+                                          data-translate="telephony_alias_portabilities_step_status_error"></span>
                                 </li>
                             </ul><!-- timeline -->
 
@@ -99,3 +120,4 @@
     </div>
 
 </section>
+<!-- /.telephony-portabilities -->

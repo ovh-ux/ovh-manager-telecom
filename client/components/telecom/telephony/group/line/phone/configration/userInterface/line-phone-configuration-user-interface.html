@@ -8,15 +8,16 @@
     </line-phone-configuration>
 
     <!-- SCREEN CHOICE -->
-    <div class="btn-group bottom-space-m16"
+    <div class="btn-group mb-3"
          data-ng-if="$ctrl.screenPages.length > 1">
-        <label class="btn btn-default"
-               data-ng-repeat="screen in $ctrl.screenPages track by $index"
-               data-ng-model="$ctrl.currentScreenPage"
-               data-uib-btn-radio="$index"
-               data-translate="telephony_line_phone_configuration_user_interface_screen"
-               data-translate-values="{ number: $index + 1 }">
-        </label>
+        <button class="btn btn-default"
+                type="button"
+                data-ng-repeat="screen in $ctrl.screenPages track by $index"
+                data-ng-model="$ctrl.currentScreenPage"
+                data-uib-btn-radio="$index"
+                data-translate="telephony_line_phone_configuration_user_interface_screen"
+                data-translate-values="{ number: $index + 1 }">
+        </button>
     </div>
 
     <!-- CONSULT MODE -->
@@ -27,7 +28,7 @@
             data-ng-if="$ctrl.expertMode || (!$ctrl.expertMode && config.level === null)">
         </dt>
         <dd data-ng-repeat-end
-            class="bottom-space-m8"
+            class="mb-2"
             data-ng-bind="config.value || '-'"
             data-ng-if="$ctrl.expertMode || (!$ctrl.expertMode && config.level === null)">
         </dd>
@@ -37,7 +38,7 @@
     <div data-ng-if="$ctrl.editMode">
         <div data-ng-repeat="config in $ctrl.screenPages[$ctrl.currentScreenPage] track by $index"
              data-ng-if="$ctrl.expertMode || (!$ctrl.expertMode && config.level === null)"
-             class="bottom-space-m8">
+             class="mb-2">
 
             <div flat-input-container>
                 <div class="row">

@@ -12,48 +12,55 @@
         <h1 data-translate="telephony_line_phone_configuration_title"></h1>
     </header>
 
-    <bouncing-box-loader data-ng-if="PhoneConfigCtrl.loading.init">
-        <h3 class="top-space-m16"
+    <bouncing-box-loader data-size="m"
+                         data-ng-if="PhoneConfigCtrl.loading.init">
+        <h3 class="mt-3"
             data-translate="loading">
         </h3>
     </bouncing-box-loader>
 
-    <bouncing-box-loader data-ng-if="PhoneConfigCtrl.loading.save">
-        <h3 class="top-space-m16"
+    <bouncing-box-loader data-size="m"
+                         data-ng-if="PhoneConfigCtrl.loading.save">
+        <h3 class="mt-3"
             data-translate="telephony_line_phone_configuration_saving">
         </h3>
     </bouncing-box-loader>
 
     <form data-ng-if="!PhoneConfigCtrl.loading.init && !PhoneConfigCtrl.loading.save"
-          class="telecom-section-content ovh-form-flat"
+          class="telecom-section-content"
           data-ng-submit="PhoneConfigCtrl.saveNewConfigurations()"
           name="configurationForm">
 
-        <!-- DISPLAY MODE -->
-        <div class="bottom-space-m16">
+        <toast-message></toast-message>
 
-            <div class="expert-mode bottom-space-m16"
+        <!-- DISPLAY MODE -->
+        <div class="mb-3">
+
+            <div class="expert-mode mb-3 align-middle"
                  data-ng-if="PhoneConfigCtrl.hasExpertConfigs">
-                <label class="inline-block vertical-middle fs14 top-space-m4"
-                       data-ng-class="{ 'bold': !PhoneConfigCtrl.model.expertMode }"
+                <label class="d-inline-block align-middle mt-1"
+                       data-ng-class="{ 'font-weight-bold': !PhoneConfigCtrl.model.expertMode }"
                        for="display-mode"
                        data-translate="telephony_line_phone_configuration_mode_standard">
                 </label>
-                <flat-switch class="inline-block vertical-middle">
+                <label class="oui-switch oui-switch-toggle">
                     <input type="checkbox"
-                           id="display-mode"
+                           class="oui-switch oui-switch__checkbox"
                            data-ng-model="PhoneConfigCtrl.model.expertMode"
-                           data-ng-change="PhoneConfigCtrl.onExpertModeChange()">
-                </flat-switch>
-                <label class="inline-block vertical-middle fs14 top-space-m4"
-                       data-ng-class="{ 'bold': PhoneConfigCtrl.model.expertMode }"
+                           data-ng-change="PhoneConfigCtrl.onExpertModeChange()" />
+                    <div class="oui-switch__slider"></div>
+                    <i class="oui-icon oui-icon-success" aria-hidden="true"></i>
+                    <i class="oui-icon oui-icon-error" aria-hidden="true"></i>
+                </label>
+                <label class="d-inline-block align-middle mt-1"
+                       data-ng-class="{ 'font-weight-bold': PhoneConfigCtrl.model.expertMode }"
                        for="display-mode"
                        data-translate="telephony_line_phone_configuration_mode_expert">
                 </label>
             </div>
 
             <button type="button"
-                    class="btn btn-primary"
+                    class="btn btn-primary no-transition mb-4"
                     data-ng-click="PhoneConfigCtrl.reinitValues()"
                     data-translate="telephony_line_phone_configuration_mode_manage_button"
                     data-ng-if="!PhoneConfigCtrl.model.manage">
@@ -105,20 +112,15 @@
                     data-translate="telephony_line_phone_configuration_reboot_title">
                 </h2>
 
-                <label class="block">
-                    <div flat-input-container
-                         class="input-group inline-block vertical-middle right-space-m8">
-                        <flat-checkbox>
-                            <input type="checkbox"
-                                   data-ng-model="PhoneConfigCtrl.model.reboot">
-                        </flat-checkbox>
-                    </div>
+                <label class="d-block">
+                    <input type="checkbox"
+                           data-ng-model="PhoneConfigCtrl.model.reboot">
                     <span data-translate="telephony_line_phone_configuration_reboot"></span>
                 </label>
             </div>
         </div>
 
-        <footer class="row top-space-m16 clearfix bottom-space-m32"
+        <footer class="row mt-3 clearfix mt-4"
                 data-ng-if="PhoneConfigCtrl.model.manage">
             <div class="col-xs-12 col-md-6">
                 <button type="submit"

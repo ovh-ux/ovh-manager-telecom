@@ -4,28 +4,23 @@
     <div class="row"
          data-ng-if="ProcedureCtrl.process.problem === 'callout'">
 
-        <div class="row-height">
-
-            <div class="col-md-6 col-height">
-                <div class="content-container">
-                    <p data-translate="telephony_line_assist_troubleshooting_procedure_siemens_callout_step1"></p>
-                    <p data-translate="telephony_line_assist_troubleshooting_procedure_siemens_callout_step2"></p>
-                    <p data-translate="telephony_line_assist_troubleshooting_procedure_siemens_callout_step3"></p>
-                    <p data-translate="telephony_line_assist_troubleshooting_procedure_siemens_callout_step4"></p>
-                    <p data-translate="telephony_line_assist_troubleshooting_procedure_siemens_callout_step5"></p>
-                    <p data-translate="telephony_line_assist_troubleshooting_procedure_siemens_callout_step6"></p>
-                    <p data-translate="telephony_line_assist_troubleshooting_procedure_siemens_callout_step7"></p>
-                </div>
+        <div class="col-md-6">
+            <div class="content-container">
+                <p data-translate="telephony_line_assist_troubleshooting_procedure_siemens_callout_step1"></p>
+                <p data-translate="telephony_line_assist_troubleshooting_procedure_siemens_callout_step2"></p>
+                <p data-translate="telephony_line_assist_troubleshooting_procedure_siemens_callout_step3"></p>
+                <p data-translate="telephony_line_assist_troubleshooting_procedure_siemens_callout_step4"></p>
+                <p data-translate="telephony_line_assist_troubleshooting_procedure_siemens_callout_step5"></p>
+                <p data-translate="telephony_line_assist_troubleshooting_procedure_siemens_callout_step6"></p>
+                <p data-translate="telephony_line_assist_troubleshooting_procedure_siemens_callout_step7"></p>
             </div>
+        </div>
 
-            <div class="col-md-6 col-height col-middle text-center">
-                <div class="image-container full-height full-width dtable">
-                    <div class="dtd full-height col-middle">
-                        <img src="assets/images/troubleshooting/siemens/C530IP-ecran-connexion-2.jpg"
-                             data-ng-attr-alt="{{ ProcedureCtrl.line.phone.description }}"
-                             data-ng-attr-title="{{ ProcedureCtrl.line.phone.description }}" />
-                    </div>
-                </div>
+        <div class="col-md-6 text-center">
+            <div class="image-container">
+                <img src="assets/images/troubleshooting/siemens/C530IP-ecran-connexion-2.jpg"
+                     data-ng-attr-alt="{{ ProcedureCtrl.line.phone.description }}"
+                     data-ng-attr-title="{{ ProcedureCtrl.line.phone.description }}" />
             </div>
         </div>
 
@@ -34,7 +29,7 @@
     <!-- CALLIN -->
     <div data-ng-if="ProcedureCtrl.process.problem === 'callin'">
 
-        <p class="no-space"
+        <p class="p-0 m-0"
            data-translate="telephony_line_assist_troubleshooting_procedure_siemens_callin_main_explain">
         </p>
 
@@ -50,7 +45,7 @@
         <p data-translate="telephony_line_assist_troubleshooting_procedure_siemens_callin_step9"></p>
         <p data-translate="telephony_line_assist_troubleshooting_procedure_siemens_callin_step10"></p>
 
-        <p class="top-space-m24"
+        <p class="mt-3"
            data-translate="telephony_line_assist_troubleshooting_procedure_siemens_callin_check_params">
         </p>
         <ul class="troubleshooting-list">
@@ -80,7 +75,7 @@
     <!-- BLUEBUTTON -->
     <div data-ng-if="ProcedureCtrl.process.problem === 'blueButton'">
 
-        <p class="no-space"
+        <p class="p-0 m-0"
            data-translate="telephony_line_assist_troubleshooting_procedure_siemens_callin_main_explain">
         </p>
         <ul class="troubleshooting-list">
@@ -98,7 +93,7 @@
     <div data-ng-if="ProcedureCtrl.process.problem === 'nobase'">
 
         <p data-translate="telephony_line_assist_troubleshooting_procedure_siemens_nobase_main_explain"></p>
-        <p class="no-space"
+        <p class="p-0 m-0"
            data-translate="telephony_line_assist_troubleshooting_procedure_siemens_nobase_causes">
         </p>
         <ul class="troubleshooting-list">
@@ -122,7 +117,7 @@
     <div data-ng-if="ProcedureCtrl.process.problem === 'register' && !ProcedureCtrl.show.resetConfig">
 
         <p data-translate="telephony_line_assist_troubleshooting_procedure_siemens_register_main_explain"></p>
-        <p class="no-space"
+        <p class="p-0 m-0"
            data-translate="telephony_line_assist_troubleshooting_procedure_siemens_register_check">
         </p>
         <ul class="troubleshooting-list">
@@ -143,111 +138,99 @@
     <div data-ng-if="ProcedureCtrl.process.problem === 'phoneBookGigaset'">
 
         <div class="row">
-            <div class="row-height">
-                <div class="col-md-6 col-height">
-                    <div class="content-container">
-                        <p data-translate="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_get_ip"></p>
-                        <ul class="troubleshooting-list">
-                            <li>
-                                <span data-translate="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_get_ip_step1"></span>
-                            </li>
-                            <li>
-                                <span data-translate="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_get_ip_step2"></span>
-                            </li>
-                            <li>
-                                <span data-translate="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_get_ip_step3"></span>
-                            </li>
-                        </ul>
-                        <p class="top-space-m24"
-                           data-translate="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_step1"></p>
-                    </div>
+            <div class="col-md-6">
+                <div class="content-container">
+                    <p data-translate="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_get_ip"></p>
+                    <ul class="troubleshooting-list">
+                        <li>
+                            <span data-translate="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_get_ip_step1"></span>
+                        </li>
+                        <li>
+                            <span data-translate="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_get_ip_step2"></span>
+                        </li>
+                        <li>
+                            <span data-translate="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_get_ip_step3"></span>
+                        </li>
+                    </ul>
+                    <p class="mt-3"
+                       data-translate="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_step1"></p>
                 </div>
+            </div>
 
-                <div class="col-md-6 col-height col-middle text-center">
-                    <div class="image-container full-height full-width dtable">
-                        <div class="dtd full-height col-middle">
-                            <img src="assets/images/troubleshooting/siemens/pb_gigaset_login.png"
-                                 data-ng-attr-alt="{{ ProcedureCtrl.line.phone.description }}"
-                                 data-ng-attr-title="{{ ProcedureCtrl.line.phone.description }}" />
-                        </div>
-                    </div>
+            <div class="col-md-6 text-center">
+                <div class="image-container">
+                    <img src="assets/images/troubleshooting/siemens/pb_gigaset_login.png"
+                         data-ng-attr-alt="{{ ProcedureCtrl.line.phone.description }}"
+                         data-ng-attr-title="{{ ProcedureCtrl.line.phone.description }}" />
                 </div>
             </div>
         </div>
 
-        <div class="row top-space-m24">
-            <div class="row-height">
-                <div class="col-md-6 col-height">
-                    <div class="content-container">
-                        <p data-translate="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_step2"></p>
-                        <p data-translate="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_step3"></p>
-                    </div>
+        <div class="row mt-3">
+            <div class="col-md-6">
+                <div class="content-container">
+                    <p data-translate="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_step2"></p>
+                    <p data-translate="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_step3"></p>
                 </div>
+            </div>
 
-                <div class="col-md-6 col-height col-middle text-center">
-                    <div class="image-container full-height full-width dtable">
-                        <div class="dtd full-height col-middle">
-                            <img src="assets/images/troubleshooting/siemens/pb_gigaset_eeprom.png"
-                                 data-ng-attr-alt="{{ ProcedureCtrl.line.phone.description }}"
-                                 data-ng-attr-title="{{ ProcedureCtrl.line.phone.description }}" />
-                        </div>
-                    </div>
+            <div class="col-md-6 text-center">
+                <div class="image-container">
+                    <img src="assets/images/troubleshooting/siemens/pb_gigaset_eeprom.png"
+                         data-ng-attr-alt="{{ ProcedureCtrl.line.phone.description }}"
+                         data-ng-attr-title="{{ ProcedureCtrl.line.phone.description }}" />
                 </div>
             </div>
         </div>
 
-        <div class="row top-space-m24">
-            <div class="row-height">
-                <div class="col-md-6 col-height">
-                    <div class="content-container">
-                        <p data-translate="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_step4"></p>
-                        <p data-translate="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_step5"></p>
-                        <p data-translate="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_step6"></p>
-                        <p data-translate="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_step7"></p>
-                        <p data-translate="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_step8"></p>
-                        <p data-translate="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_step9"></p>
-                        <p data-translate="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_step10"></p>
+        <div class="row mt-3">
+            <div class="col-md-6">
+                <div class="content-container">
+                    <p data-translate="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_step4"></p>
+                    <p data-translate="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_step5"></p>
+                    <p data-translate="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_step6"></p>
+                    <p data-translate="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_step7"></p>
+                    <p data-translate="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_step8"></p>
+                    <p data-translate="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_step9"></p>
+                    <p data-translate="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_step10"></p>
 
-                        <ul class="troubleshooting-list bottom-space-m8">
-                            <li>
-                                <span data-translate="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_step10_choice1"></span>
-                            </li>
-                            <li>
-                                <span data-translate="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_step10_choice2"></span>
-                            </li>
-                            <li>
-                                <span data-translate="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_step10_choice3"></span>
-                            </li>
-                            <li>
-                                <span data-translate="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_step10_choice4"></span>
-                            </li>
-                            <li>
-                                <span data-translate="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_step10_choice5"></span>
-                            </li>
-                            <li>
-                                <span data-translate="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_step10_choice6"></span>
-                            </li>
-                            <li>
-                                <span data-translate="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_step10_choice7"></span>
-                            </li>
-                        </ul>
+                    <ul class="troubleshooting-list mb-2">
+                        <li>
+                            <span data-translate="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_step10_choice1"></span>
+                        </li>
+                        <li>
+                            <span data-translate="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_step10_choice2"></span>
+                        </li>
+                        <li>
+                            <span data-translate="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_step10_choice3"></span>
+                        </li>
+                        <li>
+                            <span data-translate="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_step10_choice4"></span>
+                        </li>
+                        <li>
+                            <span data-translate="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_step10_choice5"></span>
+                        </li>
+                        <li>
+                            <span data-translate="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_step10_choice6"></span>
+                        </li>
+                        <li>
+                            <span data-translate="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_step10_choice7"></span>
+                        </li>
+                    </ul>
 
-                        <p data-translate="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_step11"></p>
-                        <p data-translate="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_step12"></p>
-                        <p data-translate="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_step13"></p>
-                        <p data-translate="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_step14"></p>
-                        <p data-translate="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_step15"></p>
-                    </div>
+                    <p data-translate="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_step11"></p>
+                    <p data-translate="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_step12"></p>
+                    <p data-translate="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_step13"></p>
+                    <p data-translate="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_step14"></p>
+                    <p data-translate="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_step15"></p>
                 </div>
+            </div>
 
-                <div class="col-md-6 col-height col-middle text-center">
-                    <div class="image-container full-height full-width dtable">
-                        <div class="dtd full-height col-middle">
-                            <img src="assets/images/troubleshooting/siemens/pb_gigaset_last_step.png"
-                                 data-ng-attr-alt="{{ ProcedureCtrl.line.phone.description }}"
-                                 data-ng-attr-title="{{ ProcedureCtrl.line.phone.description }}" />
-                        </div>
-                    </div>
+            <div class="col-md-6 text-center">
+                <div class="image-container">
+                    <img src="assets/images/troubleshooting/siemens/pb_gigaset_last_step.png"
+                         data-ng-attr-alt="{{ ProcedureCtrl.line.phone.description }}"
+                         data-ng-attr-title="{{ ProcedureCtrl.line.phone.description }}" />
                 </div>
             </div>
         </div>

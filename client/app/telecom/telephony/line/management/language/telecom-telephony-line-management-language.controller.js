@@ -23,7 +23,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineManagementLanguageC
             self.changeSuccess = true;
             $timeout(function () {
                 self.changeSuccess = false;
-            }, 3000);
+            }, 2000);
             Toast.success($translate.instant("telephony_line_language_ok_change"), { hideAfter: 3 });
         }).catch(function (err) {
             Toast.error($translate.instant("telephony_line_language_error_change"), err);

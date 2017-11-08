@@ -67,6 +67,10 @@ angular.module("managerApp").controller("TelecomTelephonyServiceVoicemailDefault
         });
     };
 
+    self.cancel = function () {
+        self.options.defaultVoicemail = self.defaultVoicemail;
+    };
+
     self.formatNumber = function (number) {
         var formatted = $filter("phoneNumber")(number.serviceName);
         if (number.description) {

@@ -1,75 +1,79 @@
 <form name="editReceiverForm"
       id="editReceiverForm"
-      class="ovh-form-flat"
       data-ng-submit="ReceiversEditCtrl.edit()">
 
     <div class="modal-header">
-        <h3 class="modal-title pull-left" data-translate="edit"></h3>
         <button
             type="button"
-            class="close pull-right"
+            class="close float-right"
             aria-label="{{ ::'cancel' | translate }}"
             data-ng-click="ReceiversEditCtrl.cancel()">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
 
-    <div class="modal-body" data-ng-if="!ReceiversEditCtrl.loading.editReceiver && !ReceiversEditCtrl.edited || ReceiversEditCtrl.requirement">
+    <div class="modal-body"
+         data-ng-if="!ReceiversEditCtrl.loading.editReceiver && !ReceiversEditCtrl.edited || ReceiversEditCtrl.requirement">
+
+        <h3 data-translate="edit"></h3>
 
         <!-- DESCRIPTION -->
-        <div class="form-group bottom-space-m16">
-            <div data-flat-input-container>
-                <label for="description"
-                       class="control-label"
-                       data-translate="sms_receivers_add_description_label">
-                </label>
-                <input
-                    type="text"
-                    name="description"
-                    id="description"
-                    class="form-control"
-                    required
-                    data-ng-model="ReceiversEditCtrl.model.receiver.description"
-                    data-ng-maxlength="40"
-                    data-translate-attr="{ placeholder: 'sms_receivers_add_description_placeholder' }" />
-                <div data-ng-messages="editReceiverForm.description.$error && editReceiverForm.$dirty">
-                    <p class="text-danger"
-                       data-ng-message="required"
-                       data-translate="sms_receivers_add_description_error_required">
-                    </p>
-                    <p class="text-danger"
-                       data-ng-message="maxlength"
-                       data-translate="sms_receivers_add_description_error_maxlength">
-                    </p>
-                </div>
-            </div>
+        <div class="form-group"
+             data-ng-class="{
+                 'has-error': editReceiverForm.description.$touched && editReceiverForm.description.$invalid
+             }">
+            <label for="description"
+                   class="control-label"
+                   data-translate="sms_receivers_add_description_label">
+            </label>
+            <input
+                type="text"
+                name="description"
+                id="description"
+                class="form-control"
+                autofocus
+                required
+                data-ng-model="ReceiversEditCtrl.model.receiver.description"
+                data-ng-maxlength="40"
+                data-translate-attr="{ placeholder: 'sms_receivers_add_description_placeholder' }" />
+            <span class="help-block"
+                  role="alert"
+                  data-ng-if="editReceiverForm.description.$touched"
+                  data-ng-messages="editReceiverForm.description.$error">
+                <span data-ng-message="required"
+                      data-translate="sms_receivers_add_description_error_required">
+                </span>
+                <span data-ng-message="maxlength"
+                      data-translate="sms_receivers_add_description_error_maxlength">
+                </span>
+            </span>
         </div>
 
         <!-- AUTO-UPDATE -->
-        <div class="form-group" data-ng-if="ReceiversEditCtrl.receiver.canAutoUpdate">
-            <label class="block pointer">
-                <flat-checkbox>
-                    <input
-                        type="checkbox"
-                        name="autoUpdate"
-                        id="autoUpdate"
-                        class="form-control"
-                        data-ng-model="ReceiversEditCtrl.model.receiver.autoUpdate"
-                        data-ng-checked="ReceiversEditCtrl.model.receiver.autoUpdate" />
-                </flat-checkbox>
-                <span class="left-space-m8" data-translate="sms_receivers_add_auto_update_label"></span>
+        <div class="checkbox"
+             data-ng-if="ReceiversEditCtrl.receiver.canAutoUpdate">
+            <label>
+                <input
+                    type="checkbox"
+                    name="autoUpdate"
+                    id="autoUpdate"
+                    data-ng-model="ReceiversEditCtrl.model.receiver.autoUpdate"
+                    data-ng-checked="ReceiversEditCtrl.model.receiver.autoUpdate" />
+                <span data-translate="sms_receivers_add_auto_update_label"></span>
             </label>
         </div>
 
     </div>
 
-    <div class="modal-body" data-ng-if="ReceiversEditCtrl.loading.editReceiver && !ReceiversEditCtrl.edited">
-        <bouncing-box-loader>
+    <div class="modal-body"
+         data-ng-if="ReceiversEditCtrl.loading.editReceiver && !ReceiversEditCtrl.edited">
+        <bouncing-box-loader data-size="m">
             <h4 data-translate="sms_receivers_edit_receiver_editing"></h4>
         </bouncing-box-loader>
     </div>
 
-    <div class="modal-body" data-ng-if="ReceiversEditCtrl.edited && !ReceiversEditCtrl.requirement">
+    <div class="modal-body"
+         data-ng-if="ReceiversEditCtrl.edited && !ReceiversEditCtrl.requirement">
         <success-drawing-check data-draw-success-check="ReceiversEditCtrl.edited">
             <h4 data-translate="sms_receivers_edit_receiver_edited"></h4>
         </success-drawing-check>
@@ -86,7 +90,10 @@
         <button
             type="submit"
             class="btn btn-primary"
-            data-ng-disabled="editReceiverForm.$invalid || !ReceiversEditCtrl.hasChanged() || ReceiversEditCtrl.loading.editReceiver || ReceiversEditCtrl.edited"
+            data-ng-disabled="editReceiverForm.$invalid ||
+                              !ReceiversEditCtrl.hasChanged() ||
+                              ReceiversEditCtrl.loading.editReceiver ||
+                              ReceiversEditCtrl.edited"
             data-translate="submit">
         </button>
     </div>

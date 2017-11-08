@@ -7,197 +7,230 @@
         <h1 data-translate="telephony_lines_group_title"></h1>
     </header>
 
-    <div class="telecom-section-content">
+    <bouncing-box-loader data-size="m"
+                         data-ng-if="LinesGroupCtrl.loading">
+        <h3 data-translate="loading"></h3>
+    </bouncing-box-loader>
 
-        <div data-ng-if="LinesGroupCtrl.loading">
-            <bouncing-box-loader>
-                <h3 class="top-space-m16" data-translate="loading"></h3>
-            </bouncing-box-loader>
-        </div>
+    <div class="telecom-section-content"
+         data-ng-if="!LinesGroupCtrl.loading">
 
-        <div class="row" data-ng-if="!LinesGroupCtrl.loading">
+        <toast-message></toast-message>
 
-            <!-- INFORMATIONS -->
-            <div class="col-md-6 bottom-space-m32">
-                <div class="widget-presentation">
-                    <h2 class="widget-presentation-title" data-translate="telephony_lines_group_info"></h2>
+        <div class="row">
+            <div class="col-xs-12 col-md-8">
+
+                <!-- INFORMATIONS -->
+                <div class="widget-presentation mb-5">
+                    <h2 class="widget-presentation-title"
+                        data-translate="telephony_lines_group_info">
+                    </h2>
+                    <p data-translate="telephony_lines_group_line_count"
+                       data-translate-values="{ lines: LinesGroupCtrl.lineCount }">
+                    </p>
+                    <p data-translate="telephony_lines_group_number_count"
+                       data-translate-values="{ numbers: LinesGroupCtrl.numberCount }">
+                    </p>
                 </div>
-                <p data-translate="telephony_lines_group_line_count"
-                   data-translate-values="{ lines: LinesGroupCtrl.lineCount }"></p>
-                <p data-translate="telephony_lines_group_number_count"
-                   data-translate-values="{ numbers: LinesGroupCtrl.numberCount }"></p>
-            </div>
 
-            <!-- BILLING ACCOUNT SELECTION -->
-            <div class="col-md-6 bottom-space-m32"
-                 data-ng-if="!LinesGroupCtrl.billingAccounts.selected">
-                <div class="widget-presentation">
-                    <h2 class="widget-presentation-title" data-translate="telephony_lines_group_select"></h2>
-                </div>
-                <p data-translate="telephony_lines_group_select_ba_help"></p>
+                <!-- BILLING ACCOUNT SELECTION -->
+                <div class="widget-presentation mb-5"
+                     data-ng-if="!LinesGroupCtrl.billingAccounts.selected">
+                    <h2 class="widget-presentation-title"
+                        data-translate="telephony_lines_group_select">
+                    </h2>
+                    <p data-translate="telephony_lines_group_select_ba_help"></p>
+                    <!-- BILLING ACCOUNT TABLE -->
+                    <div class="table-responsive">
+                        <table class="table"
+                               data-ng-class="{
+                                   'table-hover table-striped': LinesGroupCtrl.billingAccounts.paginated.length > 1
+                               }">
+                            <thead>
+                                <tr>
+                                    <th colspan="2"
+                                        data-translate="telephony_lines_group_telephony_group">
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody data-ng-if="!LinesGroupCtrl.loading">
+                                <tr data-ng-repeat="ba in LinesGroupCtrl.billingAccounts.paginated track by ba.billingAccount">
+                                    <td data-ng-class="{
+                                            'text-muted': ba.status !== 'enabled' || ba.billingAccount === LinesGroupCtrl.billingAccounts.current
+                                        }">
+                                        <button class="btn btn-link"
+                                                data-ng-click="LinesGroupCtrl.selectBillingAccount(ba)"
+                                                data-ng-bind=":: ba.description || ba.billingAccount">
+                                        </button>
+                                        <span class="text-nowrap ml-2"
+                                              data-ng-if="ba.status !== 'enabled'"
+                                              data-ng-bind=":: '(' + ba.status + ')'">
+                                        </span>
+                                    </td>
+                                    <td data-ng-class="{
+                                            'text-muted': ba.status !== 'enabled' || ba.billingAccount === LinesGroupCtrl.billingAccounts.current
+                                        }">
+                                        <em class="text-lowercase"
+                                            data-ng-bind=":: ba.billingAccount">
+                                        </em>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tbody data-ng-if="LinesGroupCtrl.billingAccounts.ids.length && !LinesGroupCtrl.billingAccounts.paginated.length">
+                                <tr>
+                                    <td colspan="2">
+                                        <bouncing-box-loader data-size="s"></bouncing-box-loader>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="mt-2"
+                         data-ng-if="!LinesGroupCtrl.billingAccounts.isLoading && LinesGroupCtrl.billingAccounts.ids.length"
+                         data-pagination-front
+                         data-items="LinesGroupCtrl.billingAccounts.ids"
+                         data-paginated-items="LinesGroupCtrl.billingAccounts.paginated"
+                         data-transform-item="LinesGroupCtrl.fetchBillingAccountDetails(item)"
+                         data-current-page="currentPage"
+                         data-nb-pages="nbPages"
+                         data-items-per-page="itemsPerPage"
+                         data-page-placeholder="{{'common_pagination_page' | translate: {currentPage:currentPage, nbPages:nbPages} }}"
+                         data-item-per-page-placeholder="{{'common_pagination_display' | translate}}">
+                    </div>
+                </div><!-- billing account -->
 
-                <!-- BILLING ACCOUNT TABLE -->
-                <div class="table-responsive-vertical">
-                    <table class="table table-pretty table-hover table-striped no-space">
-                        <thead>
-                            <tr>
-                                <th>
-                                    <label class="pull-left" data-translate="telephony_lines_group_telephony_group"></label>
-                                </th>
-                                <th>&nbsp;</th>
-                            </tr>
-                        </thead>
-                        <tbody data-ng-if="!LinesGroupCtrl.loading">
-                            <tr data-ng-repeat="ba in LinesGroupCtrl.billingAccounts.paginated track by ba.billingAccount"
-                                data-ng-class="{ 'pointer': ba.status === 'enabled' && ba.billingAccount !== LinesGroupCtrl.billingAccounts.current }"
-                                data-ng-click="LinesGroupCtrl.selectBillingAccount(ba)">
-                                <td data-ng-class="{'opacity5': ba.status !== 'enabled' || ba.billingAccount === LinesGroupCtrl.billingAccounts.current }">
-                                    <span class="text-nowrap"
-                                          data-ng-bind=":: ba.description || ba.billingAccount"></span>
-                                    <span class="text-nowrap left-space-m4"
-                                            data-ng-if="ba.status !== 'enabled'"
-                                            data-ng-bind=":: '(' + ba.status + ')'"></span>
-                                </td>
-                                <td data-ng-class="{'opacity5': ba.status !== 'enabled' || ba.billingAccount === LinesGroupCtrl.billingAccounts.current }">
-                                    <em class="text-nowrap text-lowercase pull-left"
-                                        data-ng-bind=":: ba.billingAccount"></em>
-                                </td>
-                            </tr>
-                        </tbody>
-                        <tbody data-ng-if="LinesGroupCtrl.billingAccounts.ids.length && !LinesGroupCtrl.billingAccounts.paginated.length">
-                            <tr>
-                                <td class="text-center top-space-p16 bottom-space-p16" colspan="2">
-                                    <spinner></spinner>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="table-pretty-pagination top-space-m8"
-                     data-ng-if="!LinesGroupCtrl.billingAccounts.isLoading && LinesGroupCtrl.billingAccounts.ids.length"
-                     data-pagination-front
-                     data-items="LinesGroupCtrl.billingAccounts.ids"
-                     data-paginated-items="LinesGroupCtrl.billingAccounts.paginated"
-                     data-transform-item="LinesGroupCtrl.fetchBillingAccountDetails(item)"
-                     data-current-page="currentPage"
-                     data-nb-pages="nbPages"
-                     data-items-per-page="itemsPerPage"
-                     data-page-placeholder="{{'common_pagination_page' | translate: {currentPage:currentPage, nbPages:nbPages} }}"
-                     data-item-per-page-placeholder="{{'common_pagination_display' | translate}}">
-                </div>
-            </div><!-- billing account -->
+                <!-- SERVICE SELECTION -->
+                <div class="widget-presentation mb-5"
+                      data-ng-if="LinesGroupCtrl.billingAccounts.selected">
+                    <h2 class="widget-presentation-title"
+                        data-translate="telephony_lines_group_select">
+                    </h2>
+                    <p data-translate="telephony_lines_group_select_help"></p>
 
-            <!-- SERVICE SELECTION -->
-            <div class="col-md-6 bottom-space-m32"
-                 data-ng-if="LinesGroupCtrl.billingAccounts.selected">
-                <div class="widget-presentation">
-                    <h2 class="widget-presentation-title" data-translate="telephony_lines_group_select"></h2>
-                </div>
-                <p data-translate="telephony_lines_group_select_help"></p>
-
-                <div data-ng-if="!LinesGroupCtrl.services">
-                    <bouncing-box-loader>
-                        <h3 class="top-space-m16" data-translate="loading"></h3>
+                    <bouncing-box-loader data-size="m"
+                                         data-ng-if="!LinesGroupCtrl.services">
+                        <h3 data-translate="loading"></h3>
                     </bouncing-box-loader>
+
+                    <!-- LIST OF SELECTABLE SERVICES -->
+                    <dl data-ng-if="LinesGroupCtrl.services">
+
+                        <!-- LINES -->
+                        <dt class="mb-2"
+                            data-ng-if="LinesGroupCtrl.services.lines.length"
+                            data-translate="telephony_lines_group_line"></dt>
+                        <dd class="ml-5"
+                            data-ng-if="LinesGroupCtrl.services.lines.length"
+                            data-ng-repeat="line in LinesGroupCtrl.services.lines track by $index">
+                            <i class="ovh-font ovh-font-success"
+                               data-ng-if="LinesGroupCtrl.serviceAttachSuccess[line.serviceName]">
+                            </i>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox"
+                                           data-ng-if="!LinesGroupCtrl.serviceAttachSuccess[line.serviceName]"
+                                           data-ng-true-value="{{ line }}"
+                                           data-ng-model="LinesGroupCtrl.servicesToAttach[line.serviceName]" />
+                                    <span data-ng-bind="line.serviceName | phoneNumber"></span>
+                                    <span class="ml-2 text-muted"
+                                          data-ng-if="line.description && line.description !== line.serviceName"
+                                          data-ng-bind="line.description">
+                                    </span>
+                                </label>
+                            </div>
+                            <i class="h3 text-danger line-height-normal ml-2 ovh-font ovh-font-warning"
+                               data-ng-if="LinesGroupCtrl.serviceAttachErrors[line.serviceName]"
+                               data-uib-tooltip="{{ LinesGroupCtrl.serviceAttachErrors[line.serviceName] | errorMessage }}">
+                            </i>
+                        </dd>
+
+                        <!-- ALIASES -->
+                        <dt class="mb-2"
+                            data-ng-if="LinesGroupCtrl.services.aliases.length"
+                            data-translate="telephony_lines_group_alias"></dt>
+                        <dd class="ml-5"
+                            data-ng-if="LinesGroupCtrl.services.aliases.length"
+                            data-ng-repeat="alias in LinesGroupCtrl.services.aliases track by $index">
+                            <i class="ovh-font ovh-font-success"
+                               data-ng-if="LinesGroupCtrl.serviceAttachSuccess[alias.serviceName]">
+                            </i>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox"
+                                           data-ng-if="!LinesGroupCtrl.serviceAttachSuccess[alias.serviceName]"
+                                           data-ng-true-value="{{ alias }}"
+                                           data-ng-model="LinesGroupCtrl.servicesToAttach[alias.serviceName]" />
+                                    <span data-ng-bind="alias.serviceName | phoneNumber"></span>
+                                    <span class="ml-2 text-muted"
+                                          data-ng-if="alias.description && alias.description !== alias.serviceName"
+                                          data-ng-bind="alias.description">
+                                    </span>
+                                </label>
+                            </div>
+                            <i class="h3 text-danger line-height-normal ml-2 ovh-font ovh-font-warning"
+                               data-ng-if="LinesGroupCtrl.serviceAttachErrors[alias.serviceName]"
+                               data-uib-tooltip="{{ LinesGroupCtrl.serviceAttachErrors[alias.serviceName] | errorMessage }}">
+                            </i>
+                        </dd>
+
+                        <!-- ALIAS POOLS -->
+                        <dt class="mb-2"
+                            data-ng-if="LinesGroupCtrl.services.pools.length"
+                            data-translate="telephony_lines_group_pool"></dt>
+                        <dd class="ml-5"
+                            data-ng-if="LinesGroupCtrl.services.pools.length"
+                            data-ng-repeat="pool in LinesGroupCtrl.services.pools track by $index">
+                            <i class="ovh-font ovh-font-success"
+                               data-ng-if="LinesGroupCtrl.serviceAttachSuccess[pool.serviceName]">
+                            </i>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox"
+                                           data-ng-if="!LinesGroupCtrl.serviceAttachSuccess[pool.serviceName]"
+                                           data-ng-true-value="{{ pool }}"
+                                           data-ng-model="LinesGroupCtrl.servicesToAttach[pool.id]" />
+                                    <span data-ng-bind="pool.id"></span>
+                                </label>
+                            </div>
+                            <i class="h3 text-danger line-height-normal ml-2 ovh-font ovh-font-warning"
+                               data-ng-if="LinesGroupCtrl.serviceAttachErrors[pool.serviceName]"
+                               data-uib-tooltip="{{ LinesGroupCtrl.serviceAttachErrors[pool.serviceName] | errorMessage }}">
+                            </i>
+                        </dd>
+                    </dl>
+
+                    <!-- NO SERVICES -->
+                    <p class="text-center mt-5 mb-5"
+                       data-ng-if="LinesGroupCtrl.services.lines.length === 0 &&
+                                   LinesGroupCtrl.services.aliases.length === 0 &&
+                                   LinesGroupCtrl.services.pools.length === 0"
+                       data-translate="telephony_lines_group_service_none"
+                       data-translate-values="{ group: LinesGroupCtrl.billingAccounts.selected.description ||
+                                                       LinesGroupCtrl.billingAccounts.selected.billingAccount }">
+                    </p>
+
+                    <button type="button"
+                            class="btn btn-primary"
+                            data-ng-click="LinesGroupCtrl.attachSelectedServices()"
+                            data-ng-disabled="LinesGroupCtrl.isAttaching || LinesGroupCtrl.getServicesToAttachList().length < 1">
+                        <bouncing-box-loader class="d-inline-block align-middle mr-2"
+                                             data-ng-if="LinesGroupCtrl.isAttaching"
+                                             data-size="s">
+                        </bouncing-box-loader>
+                        <span data-translate="telephony_lines_group_attach"></span>
+                    </button>
+                    <button type="button"
+                            class="btn btn-default"
+                            data-ng-click="LinesGroupCtrl.cancelBillingAccountSelection()"
+                            data-translate="telephony_lines_group_select_another">
+                    </button>
                 </div>
 
-                <!-- LIST OF SELECTABLE SERVICES -->
-                <dl data-ng-if="LinesGroupCtrl.services">
-
-                    <!-- LINES -->
-                    <dt class="bottom-space-m8"
-                        data-ng-if="LinesGroupCtrl.services.lines.length"
-                        data-translate="telephony_lines_group_line"></dt>
-                    <dd class="left-space-m32"
-                        data-ng-if="LinesGroupCtrl.services.lines.length"
-                        data-ng-repeat="line in LinesGroupCtrl.services.lines track by $index">
-                        <i data-ng-if="LinesGroupCtrl.serviceAttachSuccess[line.serviceName]" class="ovh-font ovh-font-success"></i>
-                        <label class="pointer">
-                            <flat-checkbox data-ng-if="!LinesGroupCtrl.serviceAttachSuccess[line.serviceName]">
-                                <input type="checkbox"
-                                       data-ng-true-value="{{ line }}"
-                                       data-ng-model="LinesGroupCtrl.servicesToAttach[line.serviceName]" />
-                            </flat-checkbox>
-                            <span class="left-space-m4" data-ng-bind="line.serviceName | phoneNumber"></span>
-                            <span class="left-space-m4 opacity7"
-                                  data-ng-if="line.description && line.description !== line.serviceName"
-                                  data-ng-bind="line.description"></span>
-                        </label>
-                        <i data-ng-if="LinesGroupCtrl.serviceAttachErrors[line.serviceName]"
-                           class="fs16 text-danger line-height-normal left-space-m4 ovh-font ovh-font-warning"
-                           data-uib-tooltip="{{ LinesGroupCtrl.serviceAttachErrors[line.serviceName] | errorMessage }}"></i>
-                    </dd>
-
-                    <!-- ALIASES -->
-                    <dt class="bottom-space-m8"
-                        data-ng-if="LinesGroupCtrl.services.aliases.length"
-                        data-translate="telephony_lines_group_alias"></dt>
-                    <dd class="left-space-m32"
-                        data-ng-if="LinesGroupCtrl.services.aliases.length"
-                        data-ng-repeat="alias in LinesGroupCtrl.services.aliases track by $index">
-                        <i data-ng-if="LinesGroupCtrl.serviceAttachSuccess[alias.serviceName]" class="ovh-font ovh-font-success"></i>
-                        <label class="pointer">
-                            <flat-checkbox data-ng-if="!LinesGroupCtrl.serviceAttachSuccess[alias.serviceName]">
-                                <input type="checkbox"
-                                       data-ng-true-value="{{ alias }}"
-                                       data-ng-model="LinesGroupCtrl.servicesToAttach[alias.serviceName]" />
-                            </flat-checkbox>
-                            <span class="left-space-m4" data-ng-bind="alias.serviceName | phoneNumber"></span>
-                            <span class="left-space-m4 opacity7"
-                                  data-ng-if="alias.description && alias.description !== alias.serviceName"
-                                  data-ng-bind="alias.description"></span>
-                        </label>
-                        <i data-ng-if="LinesGroupCtrl.serviceAttachErrors[alias.serviceName]"
-                           class="fs16 text-danger line-height-normal left-space-m4 ovh-font ovh-font-warning"
-                           data-uib-tooltip="{{ LinesGroupCtrl.serviceAttachErrors[alias.serviceName] | errorMessage }}"></i>
-                    </dd>
-
-                    <!-- ALIAS POOLS -->
-                    <dt class="bottom-space-m8"
-                        data-ng-if="LinesGroupCtrl.services.pools.length"
-                        data-translate="telephony_lines_group_pool"></dt>
-                    <dd class="left-space-m32"
-                        data-ng-if="LinesGroupCtrl.services.pools.length"
-                        data-ng-repeat="pool in LinesGroupCtrl.services.pools track by $index">
-                        <i data-ng-if="LinesGroupCtrl.serviceAttachSuccess[pool.serviceName]" class="ovh-font ovh-font-success"></i>
-                        <label class="pointer">
-                            <flat-checkbox data-ng-if="!LinesGroupCtrl.serviceAttachSuccess[pool.serviceName]">
-                                <input type="checkbox"
-                                       data-ng-true-value="{{ pool }}"
-                                       data-ng-model="LinesGroupCtrl.servicesToAttach[pool.id]" />
-                            </flat-checkbox>
-                            <span class="left-space-m4" data-ng-bind="pool.id"></span>
-                        </label>
-                        <i data-ng-if="LinesGroupCtrl.serviceAttachErrors[pool.serviceName]"
-                           class="fs16 text-danger line-height-normal left-space-m4 ovh-font ovh-font-warning"
-                           data-uib-tooltip="{{ LinesGroupCtrl.serviceAttachErrors[pool.serviceName] | errorMessage }}"></i>
-                    </dd>
-                </dl>
-
-                <!-- NO SERVICES -->
-                <p data-ng-if="LinesGroupCtrl.services.lines.length === 0 &&
-                               LinesGroupCtrl.services.aliases.length === 0 &&
-                               LinesGroupCtrl.services.pools.length === 0"
-                   class="text-center top-space-m32 bottom-space-m32"
-                   data-translate="telephony_lines_group_service_none"
-                   data-translate-values="{ group: LinesGroupCtrl.billingAccounts.selected.description ||
-                                                   LinesGroupCtrl.billingAccounts.selected.billingAccount }"></p>
-
-                <button type="button"
-                        class="btn btn-default"
-                        data-translate="telephony_lines_group_select_another"
-                        data-ng-click="LinesGroupCtrl.cancelBillingAccountSelection()">
-                </button>
-                <button type="button"
-                        class="btn btn-primary pull-right"
-                        data-ng-disabled="LinesGroupCtrl.isAttaching || LinesGroupCtrl.getServicesToAttachList().length < 1"
-                        data-ng-click="LinesGroupCtrl.attachSelectedServices()">
-                    <span data-translate="telephony_lines_group_attach"></span>
-                    <spinner class="left-space-m4" data-ng-if="LinesGroupCtrl.isAttaching"></spinner>
-                </button>
             </div>
+        </div>
+        <!-- /.row -->
 
-        </div><!-- row -->
-    </div><!-- section content -->
+    </div>
+    <!-- /.telecom-section-content -->
 
 </section>

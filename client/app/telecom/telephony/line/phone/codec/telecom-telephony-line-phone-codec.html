@@ -7,24 +7,27 @@
         <h1 data-translate="telephony_line_phone_codec_title"></h1>
     </header>
 
-    <bouncing-box-loader data-ng-if="CodecCtrl.loading.init">
-        <h3 class="top-space-m16"
+    <bouncing-box-loader data-size="m"
+                         data-ng-if="CodecCtrl.loading.init">
+        <h3 class="mt-3"
             data-translate="loading">
         </h3>
     </bouncing-box-loader>
 
+    <toast-message></toast-message>
+
     <div data-ng-if="!CodecCtrl.loading.init"
          class="telecom-section-content">
 
-        <div class="alert alert-info">
-            <i class="ovh-font ovh-font-filled-info"></i>
+        <div class="alert alert-info"
+             role="alert">
             <p data-translate="telephony_line_phone_codec_info1"></p>
             <p data-translate="telephony_line_phone_codec_info2"></p>
             <p data-translate="telephony_line_phone_codec_info3"></p>
             <p data-translate="telephony_line_phone_codec_info4"></p>
         </div>
 
-        <dl class="dl-horizontal">
+        <dl>
             <dt data-translate="telephony_line_phone_codec_current"></dt>
             <dd data-ng-bind="CodecCtrl.codecs ? CodecCtrl.codecs.value.split('_').join(', ') : ('telephony_line_phone_codec_no_selected' | translate )"></dd>
 

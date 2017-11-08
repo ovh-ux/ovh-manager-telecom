@@ -14,7 +14,7 @@
 
         <p data-translate="telephony_line_assist_troubleshooting_procedure_cisco_network_main_explain"></p>
 
-        <p class="no-space"
+        <p class="p-0 m-0"
            data-translate="telephony_line_assist_troubleshooting_procedure_cisco_network_checks">
         </p>
         <ul class="troubleshooting-list">
@@ -47,7 +47,7 @@
         <p data-translate="telephony_line_assist_troubleshooting_procedure_cisco_led_orange_main_explain"></p>
         <p data-translate="telephony_line_assist_troubleshooting_procedure_cisco_led_orange_check1"></p>
 
-        <p class="no-space"
+        <p class="p-0 m-0"
            data-translate="telephony_line_assist_troubleshooting_procedure_cisco_led_orange_check2">
         </p>
         <ul class="troubleshooting-list">
@@ -77,34 +77,29 @@
     <!-- CALLIN -->
     <div data-ng-if="ProcedureCtrl.process.problem === 'callin'">
 
-        <div class="row bottom-space-m24">
+        <div class="row mb-3">
 
-            <div class="row-height">
+            <div class="col-md-6">
+                <div class="content-container">
+                    <p class="mb-3"
+                       data-translate="telephony_line_assist_troubleshooting_procedure_cisco_callin_main_explain">
+                    </p>
 
-                <div class="col-md-6 col-height col-middle">
-                    <div class="content-container">
-                        <p class="bottom-space-m16"
-                           data-translate="telephony_line_assist_troubleshooting_procedure_cisco_callin_main_explain">
-                        </p>
-
-                        <p data-translate="telephony_line_assist_troubleshooting_procedure_cisco_callin_check_1"></p>
-                        <p data-translate="telephony_line_assist_troubleshooting_procedure_cisco_callin_step_1"></p>
-                    </div>
+                    <p data-translate="telephony_line_assist_troubleshooting_procedure_cisco_callin_check_1"></p>
+                    <p data-translate="telephony_line_assist_troubleshooting_procedure_cisco_callin_step_1"></p>
                 </div>
+            </div>
 
-                <div class="col-md-6 col-height col-middle text-center">
-                    <div class="image-container full-height full-width dtable">
-                        <div class="dtd full-height col-middle">
-                            <img data-ng-src="assets/images/troubleshooting/{{ :: ProcedureCtrl.process.phoneType }}/spa_dnd.jpg"
-                                 data-ng-attr-alt="{{ :: ProcedureCtrl.process.line.phone.description }}"
-                                 data-ng-attr-title="{{ :: ProcedureCtrl.process.line.phone.description }}"
-                                 width="200"
-                                 class="right-space-m32" />
-                            <img data-ng-src="assets/images/troubleshooting/{{ :: ProcedureCtrl.process.phoneType }}/spa_dnd_press.jpg"
-                                 data-ng-attr-alt="{{ :: ProcedureCtrl.process.line.phone.description }}"
-                                 data-ng-attr-title="{{ :: ProcedureCtrl.process.line.phone.description }}" />
-                        </div>
-                    </div>
+            <div class="col-md-6 text-center">
+                <div class="image-container">
+                    <img data-ng-src="assets/images/troubleshooting/{{ :: ProcedureCtrl.process.phoneType }}/spa_dnd.jpg"
+                         data-ng-attr-alt="{{ :: ProcedureCtrl.process.line.phone.description }}"
+                         data-ng-attr-title="{{ :: ProcedureCtrl.process.line.phone.description }}"
+                         width="200"
+                         class="mr-4" />
+                    <img data-ng-src="assets/images/troubleshooting/{{ :: ProcedureCtrl.process.phoneType }}/spa_dnd_press.jpg"
+                         data-ng-attr-alt="{{ :: ProcedureCtrl.process.line.phone.description }}"
+                         data-ng-attr-title="{{ :: ProcedureCtrl.process.line.phone.description }}" />
                 </div>
             </div>
 

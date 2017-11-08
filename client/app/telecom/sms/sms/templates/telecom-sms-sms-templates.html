@@ -8,255 +8,298 @@
     </header>
 
     <!-- LOADING -->
-    <bouncing-box-loader data-ng-if="SmsTemplates.loading.init">
+    <bouncing-box-loader data-size="m"
+                         data-ng-if="SmsTemplates.loading.init">
         <h2 data-translate="loading"></h2>
     </bouncing-box-loader>
 
-    <div class="telecom-section-content" data-ng-if="!SmsTemplates.loading.init">
+    <div class="telecom-section-content"
+         data-ng-if="!SmsTemplates.loading.init">
+
+        <toast-message></toast-message>
+
         <div class="row">
-            <div class="col-xs-12 col-md-6">
-                <div class="widget-presentation bottom-space-m32">
+            <div class="col-xs-12 col-md-6 mb-5">
+                <div class="widget-presentation">
                     <header class="widget-presentation-header">
                         <h2 class="widget-presentation-title"
-                        data-translate="sms_sms_templates_title_informations"></h2>
+                            data-translate="sms_sms_templates_title_informations">
+                        </h2>
                     </header>
-                    <div class="row">
-                        <p class="col-xs-12 bottom-space-m0" data-translate="sms_sms_templates_informations_text_1"></p>
-                        <p class="col-xs-12 bottom-space-m0" data-translate="sms_sms_templates_informations_text_2"></p>
-                        <p class="col-xs-12 bottom-space-m0" data-translate="sms_sms_templates_informations_text_3"></p>
-                    </div>
-                    <div class="row top-space-m16">
-                        <p class="col-xs-12 bottom-space-m0" data-translate="sms_sms_templates_informations_text_4"></p>
-                    </div>
+                    <p data-translate="sms_sms_templates_informations_text_1"></p>
+                    <p data-translate="sms_sms_templates_informations_text_2"></p>
+                    <p data-translate="sms_sms_templates_informations_text_3"></p>
+                    <p data-translate="sms_sms_templates_informations_text_4"></p>
                 </div>
             </div>
             <div class="col-xs-12 col-md-6">
-                <div class="widget-presentation bottom-space-m32">
+                <div class="widget-presentation">
                     <header class="widget-presentation-header">
                         <h2 class="widget-presentation-title"
-                        data-translate="sms_sms_templates_informations_example_title"></h2>
+                            data-translate="sms_sms_templates_informations_example_title">
+                        </h2>
                     </header>
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <dl class="dl-horizontal">
-                                <dt data-translate="sms_sms_templates_informations_example_dt_1"></dt>
-                                <dd data-translate="sms_sms_templates_informations_example_dd_1"></dd>
-                                <dt data-translate="sms_sms_templates_informations_example_dt_2"></dt>
-                                <dd data-translate="sms_sms_templates_informations_example_dd_2"></dd>
-                                <dt data-translate="sms_sms_templates_informations_example_dt_3"></dt>
-                                <dd data-translate="sms_sms_templates_informations_example_dd_3"></dd>
-                            </dl>
-                        </div>
-                    </div>
+                    <dl>
+                        <dt data-translate="sms_sms_templates_informations_example_dt_1"></dt>
+                        <dd data-translate="sms_sms_templates_informations_example_dd_1"></dd>
+                        <dt data-translate="sms_sms_templates_informations_example_dt_2"></dt>
+                        <dd data-translate="sms_sms_templates_informations_example_dd_2"></dd>
+                        <dt data-translate="sms_sms_templates_informations_example_dt_3"></dt>
+                        <dd data-translate="sms_sms_templates_informations_example_dd_3"></dd>
+                    </dl>
                 </div>
             </div>
         </div>
 
-        <div class="table-responsive-vertical">
-            <ul class="list-unstyled"
-                role="menu"
-                data-table-action>
-                <li role="menuitem">
-                    <button
+        <div class="mb-3 clearfix">
+            <div class="btn-group float-left mr-3"
+                 data-uib-dropdown
+                 data-dropdown-append-to-body>
+                <button id="btn-sms-templates-actions"
                         type="button"
-                        class="no-style"
-                        data-ng-click="SmsTemplates.add()"
-                        data-uib-tooltip="{{:: 'sms_sms_templates_add' | translate }}"
-                        data-tooltip-placement="right"
-                        data-tooltip-append-to-body="true">
+                        class="btn btn-default"
+                        data-uib-dropdown-toggle>
+                    <span class="fa fa-bars" aria-hidden="true"></span>
+                    <span data-translate="common_actions"></span>
+                    <span class="ovh-font ovh-font-small-arrow-down" aria-hidden="true"></span>
+                </button>
+                <ul class="dropdown-menu"
+                    role="menu"
+                    aria-labelledby="btn-sms-templates-actions"
+                    data-uib-dropdown-menu>
+                    <li role="menuitem">
                         <i class="ovh-font ovh-font-add-circle" aria-hidden="true"></i>
-                        <label data-translate="common_add"></label>
-                    </button>
-                </li>
-                <li role="menuitem">
-                    <button
-                        type="button"
-                        class="no-style"
-                        data-ng-click="SmsTemplates.refresh()"
-                        data-uib-tooltip="{{:: 'common_refresh_data' | translate }}"
-                        data-tooltip-placement="right"
-                        data-tooltip-append-to-body="true">
+                        <button
+                            type="button"
+                            class="btn btn-link"
+                            data-ng-click="SmsTemplates.add()"
+                            data-translate="common_add"
+                            data-uib-tooltip="{{:: 'sms_sms_templates_add' | translate }}"
+                            data-tooltip-placement="right"
+                            data-tooltip-append-to-body="true">
+                        </button>
+                    </li>
+                    <li role="menuitem">
                         <i class="ovh-font ovh-font-arrow-rotate" aria-hidden="true"></i>
-                        <label data-translate="common_refresh"></label>
-                    </button>
-                </li>
-            </ul>
-            <table class="table table-pretty table-hover table-striped no-space">
+                        <button
+                            type="button"
+                            class="btn btn-link"
+                            data-ng-click="SmsTemplates.refresh()"
+                            data-translate="common_refresh"
+                            data-uib-tooltip="{{:: 'common_refresh_data' | translate }}"
+                            data-tooltip-placement="right"
+                            data-tooltip-append-to-body="true">
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table"
+                   data-ng-class="{
+                       'table-hover table-striped': SmsTemplates.templates.raw.length > 1
+                   }">
                 <thead>
                     <tr>
                         <th scope="col">
                             <button
                                 type="button"
-                                class="no-style left-space-p0"
+                                class="btn btn-link p-0"
                                 data-ng-click="SmsTemplates.orderBy('name')">
-                                <label class="pointer" data-translate="sms_sms_templates_list_title_name"></label>
-                                <span class="table-pretty-filter">
-                                    <i class="fa" data-ng-class="{
-                                        'fa-sort': SmsTemplates.templates.orderBy !== 'name',
-                                        'fa-sort-desc': SmsTemplates.templates.orderBy === 'name' && SmsTemplates.templates.orderDesc,
-                                        'fa-sort-asc': SmsTemplates.templates.orderBy === 'name' && !SmsTemplates.templates.orderDesc
-                                    }"></i>
+                                <span data-translate="sms_sms_templates_list_title_name"></span>
+                                <span class="oui-icon align-baseline"
+                                      aria-hidden="true"
+                                      data-ng-class="{
+                                          'oui-icon-arrow-down': SmsTemplates.templates.orderBy !== 'name',
+                                          'oui-icon-arrow-down': SmsTemplates.templates.orderBy === 'name' && SmsTemplates.templates.orderDesc,
+                                          'oui-icon-arrow-up': SmsTemplates.templates.orderBy === 'name' && !SmsTemplates.templates.orderDesc
+                                      }">
                                 </span>
                             </button>
                         </th>
                         <th scope="col">
                             <button
                                 type="button"
-                                class="no-style left-space-p0"
+                                class="btn btn-link p-0"
                                 data-ng-click="SmsTemplates.orderBy('datetime')">
-                                <label class="pointer" data-translate="sms_sms_templates_list_title_date"></label>
-                                <span class="table-pretty-filter">
-                                    <i class="fa" data-ng-class="{
-                                        'fa-sort': SmsTemplates.templates.orderBy !== 'datetime',
-                                        'fa-sort-desc': SmsTemplates.templates.orderBy === 'datetime' && SmsTemplates.templates.orderDesc,
-                                        'fa-sort-asc': SmsTemplates.templates.orderBy === 'datetime' && !SmsTemplates.templates.orderDesc
-                                    }"></i>
+                                <span data-translate="sms_sms_templates_list_title_date"></span>
+                                <span class="oui-icon align-baseline"
+                                      aria-hidden="true"
+                                      data-ng-class="{
+                                          'oui-icon-arrow-down': SmsTemplates.templates.orderBy !== 'datetime',
+                                          'oui-icon-arrow-down': SmsTemplates.templates.orderBy === 'datetime' && SmsTemplates.templates.orderDesc,
+                                          'oui-icon-arrow-up': SmsTemplates.templates.orderBy === 'datetime' && !SmsTemplates.templates.orderDesc
+                                      }">
                                 </span>
                             </button>
                         </th>
                         <th scope="col">
                             <button
                                 type="button"
-                                class="no-style left-space-p0"
+                                class="btn btn-link p-0"
                                 data-ng-click="SmsTemplates.orderBy('activity')">
-                                <label class="pointer" data-translate="sms_sms_templates_list_title_type"></label>
-                                <span class="table-pretty-filter">
-                                    <i class="fa" data-ng-class="{
-                                        'fa-sort': SmsTemplates.templates.orderBy !== 'activity',
-                                        'fa-sort-desc': SmsTemplates.templates.orderBy === 'activity' && SmsTemplates.templates.orderDesc,
-                                        'fa-sort-asc': SmsTemplates.templates.orderBy === 'activity' && !SmsTemplates.templates.orderDesc
-                                    }"></i>
+                                <span data-translate="sms_sms_templates_list_title_type"></span>
+                                <span class="oui-icon align-baseline"
+                                      aria-hidden="true"
+                                      data-ng-class="{
+                                          'oui-icon-arrow-down': SmsTemplates.templates.orderBy !== 'activity',
+                                          'oui-icon-arrow-down': SmsTemplates.templates.orderBy === 'activity' && SmsTemplates.templates.orderDesc,
+                                          'oui-icon-arrow-up': SmsTemplates.templates.orderBy === 'activity' && !SmsTemplates.templates.orderDesc
+                                      }">
                                 </span>
                             </button>
                         </th>
                         <th scope="col">
                             <button
                                 type="button"
-                                class="no-style left-space-p0"
+                                class="btn btn-link p-0"
                                 data-ng-click="SmsTemplates.orderBy('description')">
-                                <label class="pointer" data-translate="sms_sms_templates_list_title_description"></label>
-                                <span class="table-pretty-filter">
-                                    <i class="fa" data-ng-class="{
-                                        'fa-sort': SmsTemplates.templates.orderBy !== 'description',
-                                        'fa-sort-desc': SmsTemplates.templates.orderBy === 'description' && SmsTemplates.templates.orderDesc,
-                                        'fa-sort-asc': SmsTemplates.templates.orderBy === 'description' && !SmsTemplates.templates.orderDesc
-                                    }"></i>
+                                <span data-translate="sms_sms_templates_list_title_description"></span>
+                                <span class="oui-icon align-baseline"
+                                      aria-hidden="true"
+                                      data-ng-class="{
+                                          'oui-icon-arrow-down': SmsTemplates.templates.orderBy !== 'description',
+                                          'oui-icon-arrow-down': SmsTemplates.templates.orderBy === 'description' && SmsTemplates.templates.orderDesc,
+                                          'oui-icon-arrow-up': SmsTemplates.templates.orderBy === 'description' && !SmsTemplates.templates.orderDesc
+                                      }">
                                 </span>
                             </button>
                         </th>
                         <th scope="col">
                             <button
                                 type="button"
-                                class="no-style left-space-p0"
+                                class="btn btn-link p-0"
                                 data-ng-click="SmsTemplates.orderBy('message')">
-                                <label class="pointer" data-translate="sms_sms_templates_list_title_message"></label>
-                                <span class="table-pretty-filter">
-                                    <i class="fa" data-ng-class="{
-                                        'fa-sort': SmsTemplates.templates.orderBy !== 'message',
-                                        'fa-sort-desc': SmsTemplates.templates.orderBy === 'message' && SmsTemplates.templates.orderDesc,
-                                        'fa-sort-asc': SmsTemplates.templates.orderBy === 'message' && !SmsTemplates.templates.orderDesc
-                                    }"></i>
+                                <span data-translate="sms_sms_templates_list_title_message"></span>
+                                <span class="oui-icon align-baseline"
+                                      aria-hidden="true"
+                                      data-ng-class="{
+                                          'oui-icon-arrow-down': SmsTemplates.templates.orderBy !== 'message',
+                                          'oui-icon-arrow-down': SmsTemplates.templates.orderBy === 'message' && SmsTemplates.templates.orderDesc,
+                                          'oui-icon-arrow-up': SmsTemplates.templates.orderBy === 'message' && !SmsTemplates.templates.orderDesc
+                                      }">
                                 </span>
                             </button>
                         </th>
                         <th scope="col">
                             <button
                                 type="button"
-                                class="no-style left-space-p0"
+                                class="btn btn-link p-0"
                                 data-ng-click="SmsTemplates.orderBy('status')">
-                                <label class="pointer" data-translate="sms_sms_templates_list_title_status"></label>
-                                <span class="table-pretty-filter">
-                                    <i class="fa" data-ng-class="{
-                                        'fa-sort': SmsTemplates.templates.orderBy !== 'status',
-                                        'fa-sort-desc': SmsTemplates.templates.orderBy === 'status' && SmsTemplates.templates.orderDesc,
-                                        'fa-sort-asc': SmsTemplates.templates.orderBy === 'status' && !SmsTemplates.templates.orderDesc
-                                    }"></i>
+                                <span data-translate="sms_sms_templates_list_title_status"></span>
+                                <span class="oui-icon align-baseline"
+                                      aria-hidden="true"
+                                      data-ng-class="{
+                                          'oui-icon-arrow-down': SmsTemplates.templates.orderBy !== 'status',
+                                          'oui-icon-arrow-down': SmsTemplates.templates.orderBy === 'status' && SmsTemplates.templates.orderDesc,
+                                          'oui-icon-arrow-up': SmsTemplates.templates.orderBy === 'status' && !SmsTemplates.templates.orderDesc
+                                      }">
                                 </span>
                             </button>
                         </th>
-                        <th scope="col">
-                            <label data-translate="common_actions"></label>
+                        <th scope="col"
+                            class="text-right"
+                            data-translate="common_actions">
                         </th>
                     </tr>
                 </thead>
                 <tbody data-ng-if="SmsTemplates.templates.isLoading">
                     <tr>
-                        <td class="text-center top-space-p16 bottom-space-p16" colspan="7">
-                            <spinner></spinner>
+                        <td colspan="7">
+                            <bouncing-box-loader data-size="m"></bouncing-box-loader>
                         </td>
                     </tr>
                 </tbody>
                 <tbody data-ng-if="!SmsTemplates.templates.isLoading && !SmsTemplates.templates.raw.length">
                     <tr>
                         <td colspan="7"
-                            class="text-center top-space-p16 bottom-space-p16"
+                            class="text-center"
                             data-translate="sms_sms_templates_list_empty">
                         </td>
                     </tr>
                 </tbody>
                 <tbody data-ng-if="!SmsTemplates.templates.isLoading && SmsTemplates.templates.raw.length">
                     <tr data-ng-repeat="template in SmsTemplates.templates.paginated | orderBy:SmsTemplates.templates.orderBy:SmsTemplates.templates.orderDesc track by template.name">
-                        <td data-title="{{'sms_sms_templates_list_title_name'|translate}}"><span class="text-nowrap" data-ng-bind="template.name || '-'" /></td>
-                        <td data-title="{{'sms_sms_templates_list_title_date'|translate}}" data-ng-bind="template.datetime | date:'shortDate' || '-'"></td>
-                        <td data-title="{{'sms_sms_templates_list_title_type'|translate}}"><span class="text-nowrap" data-ng-bind="(('sms_sms_templates_add_activity_type_' + template.activity) | translate) || '-'"/></td>
-                        <td data-title="{{'sms_sms_templates_list_title_description'|translate}}" data-ng-bind="template.description || '-'"></td>
-                        <td data-title="{{'sms_sms_templates_list_title_message'|translate}}" data-ng-bind="template.message || '-'"></td>
-                        <td data-title="{{'sms_sms_templates_list_title_status'|translate}}">
-                            <i class="ovh-font fs20" data-ng-class="{
-                                'ovh-font-inprogress text-info' : template.status === 'waitingValidation',
-                                'ovh-font-activer' : template.status === 'disable',
-                                'ovh-font-success text-success' : template.status === 'enable',
-                                'ovh-font-failure text-danger' : template.status === 'refused'
-                            }"></i>
-                        </td>
+                        <td data-ng-bind="template.name || '-'"></td>
+                        <td data-ng-bind="template.datetime | date:'shortDate' || '-'"></td>
+                        <td data-ng-bind="(('sms_sms_templates_add_activity_type_' + template.activity) | translate) || '-'"></td>
+                        <td data-ng-bind="template.description || '-'"></td>
+                        <td data-ng-bind="template.message || '-'"></td>
                         <td>
-                            <ul role="menu"
-                                data-table-action-line>
-                                <li role="menuitem">
-                                    <button
+                            <i class="ovh-font"
+                               data-ng-class="{
+                                   'ovh-font-inprogress text-info' : template.status === 'waitingValidation',
+                                   'ovh-font-activer' : template.status === 'disable',
+                                   'ovh-font-success text-success' : template.status === 'enable',
+                                   'ovh-font-failure text-danger' : template.status === 'refused'
+                               }">
+                           </i>
+                        </td>
+                        <td class="text-right">
+                            <div class="btn-group"
+                                 data-uib-dropdown
+                                 data-dropdown-append-to-body>
+                                <button id="btn-sms-templates-action-{{ index }}"
                                         type="button"
-                                        class="no-style"
-                                        data-ng-click="SmsTemplates.edit(template)">
+                                        class="btn btn-link"
+                                        data-uib-dropdown-toggle>
+                                    <span class="ovh-font ovh-font-dots" aria-hidden="true"></span>
+                                    <span class="sr-only"
+                                          data-translate="common_actions">
+                                    </span>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-right"
+                                    role="menu"
+                                    aria-labelledby="btn-sms-templates-action-{{ index }}"
+                                    data-uib-dropdown-menu>
+                                    <li role="menuitem">
                                         <i class="ovh-font ovh-font-editer" aria-hidden="true"></i>
-                                        <label data-translate="edit"></label>
-                                    </button>
-                                </li>
-                                <li role="menuitem">
-                                    <button
-                                        type="button"
-                                        class="no-style"
-                                        data-ng-click="SmsTemplates.relaunch(template)"
-                                        data-ng-disabled="template.status === 'waitingValidation'">
+                                        <button
+                                            type="button"
+                                            class="btn btn-link"
+                                            data-ng-click="SmsTemplates.edit(template)"
+                                            data-translate="edit">
+                                        </button>
+                                    </li>
+                                    <li role="menuitem">
                                         <i class="ovh-font ovh-font-play" aria-hidden="true"></i>
-                                        <label data-translate="common_relaunch"></label>
-                                    </button>
-                                </li>
-                                <li role="menuitem">
-                                    <button
-                                        type="button"
-                                        class="no-style"
-                                        data-ng-click="SmsTemplates.remove(template)">
+                                        <button
+                                            type="button"
+                                            class="btn btn-link"
+                                            data-ng-click="SmsTemplates.relaunch(template)"
+                                            data-ng-disabled="template.status === 'waitingValidation'"
+                                            data-translate="common_relaunch">
+                                        </button>
+                                    </li>
+                                    <li role="menuitem">
                                         <i class="ovh-font ovh-font-bin" aria-hidden="true"></i>
-                                        <label data-translate="delete"></label>
-                                    </button>
-                                </li>
-                            </ul>
+                                        <button
+                                            type="button"
+                                            class="btn btn-link"
+                                            data-ng-click="SmsTemplates.remove(template)"
+                                            data-translate="delete">
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
                         </td>
                     </tr>
                 </tbody>
             </table>
-            <div class="table-pretty-pagination top-space-m8"
-                 data-pagination-front
-                 data-items="SmsTemplates.templates.raw"
-                 data-paginated-items="SmsTemplates.templates.paginated"
-                 data-current-page="currentPage"
-                 data-nb-pages="nbPages"
-                 data-items-per-page="SmsTemplates.templates.perPage"
-                 data-transform-item="SmsTemplates.getDetails(item)"
-                 data-on-transform-item-done="SmsTemplates.onTransformItemDone(items)"
-                 data-page-placeholder="{{ 'common_pagination_page' | translate: { currentPage: currentPage, nbPages: nbPages } }}"
-                 data-item-per-page-placeholder="{{ 'common_pagination_display' | translate }}">
-            </div>
+        </div>
+        <div class="mt-2"
+             data-pagination-front
+             data-items="SmsTemplates.templates.raw"
+             data-paginated-items="SmsTemplates.templates.paginated"
+             data-current-page="currentPage"
+             data-nb-pages="nbPages"
+             data-items-per-page="SmsTemplates.templates.perPage"
+             data-transform-item="SmsTemplates.getDetails(item)"
+             data-on-transform-item-done="SmsTemplates.onTransformItemDone(items)"
+             data-page-placeholder="{{ 'common_pagination_page' | translate: { currentPage: currentPage, nbPages: nbPages } }}"
+             data-item-per-page-placeholder="{{ 'common_pagination_display' | translate }}">
         </div>
     </div>
 </section>
+<!-- /.telecom-sms-sms-templates -->
