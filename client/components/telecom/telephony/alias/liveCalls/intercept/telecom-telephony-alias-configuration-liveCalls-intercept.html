@@ -40,8 +40,11 @@
                 <button type="submit"
                         class="btn btn-primary float-right mt-2"
                         data-ng-disabled="interceptForm.$invalid">
+                    <bouncing-box-loader class="d-inline-block align-middle mr-2"
+                                         data-ng-if="$ctrl.isSubmitting"
+                                         data-size="s">
+                    </bouncing-box-loader>
                     <span data-translate="telephony_alias_configuration_mode_calls_action_intercept_confirm"></span>
-                    <spinner data-ng-if="$ctrl.isSubmitting" class="ml-2"></spinner>
                 </button>
             </div>
         </form>
