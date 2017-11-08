@@ -46,6 +46,16 @@
                         <a data-ng-href="{{ VoicemailOptionsCtrl.greetings.url }}">
                            <span data-ng-bind="VoicemailOptionsCtrl.settings.annouceMessage"></span>
                         </a>
+                        <br/>
+                        <button type="button"
+                                class="btn btn-danger"
+                                data-translate="telephony_line_answer_voicemail_options_recording_delete"
+                                data-ng-really-click="VoicemailOptionsCtrl.removeRecordSound()"
+                                data-ng-really-message="{{ 'telephony_line_answer_voicemail_options_recording_delete_confirm' | translate }}"
+                                data-ng-really-confirm="{{ 'common_yes_capitalized' | translate }}"
+                                data-ng-really-cancel="{{ 'common_no_capitalized' | translate }}"
+                                data-ng-really-window-class="revert-really-buttons">
+                        </button>
                     </div>
                     <div class="mt-2">
                         <input-file data-ng-model="VoicemailOptionsCtrl.recordingForm.uploadedFile"
