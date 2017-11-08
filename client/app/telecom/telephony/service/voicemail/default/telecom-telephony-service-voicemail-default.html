@@ -1,58 +1,57 @@
 <section class="telephony-group-service-voicemail-default">
 
-    <toast-message></toast-message>
+    <bouncing-box-loader data-ng-if="DefaultVoicemailCtrl.loading"
+                         data-size="m">
+    </bouncing-box-loader>
 
-    <div class="row">
+    <div class="row"
+         data-ng-if="!DefaultVoicemailCtrl.loading">
+        <div class="col-xs-12 col-md-8">
 
-        <div class="col-md-6 text-center"
-             data-ng-if="DefaultVoicemailCtrl.loading">
-            <bouncing-box-loader data-size="m"></bouncing-box-loader>
-        </div>
-
-        <div class="col-md-6"
-             data-ng-if="!DefaultVoicemailCtrl.loading">
+            <toast-message></toast-message>
 
             <form name="defaultVoicemailForm"
-                  class="form-horizontal"
-                  data-ng-submit="DefaultVoicemailCtrl.saveDefaultVoicemail()"
-                  novalidate>
+                  novalidate
+                  data-ng-submit="DefaultVoicemailCtrl.saveDefaultVoicemail()">
                 <div class="form-group">
-                    <label class="control-label float-left"
+                    <label class="control-label"
                            for="default"
                            data-translate="telephony_line_answer_default_voicemail_label">
                     </label>
                     <select id="default"
                             name="default"
                             class="form-control"
+                            required
                             data-ng-model="DefaultVoicemailCtrl.options.defaultVoicemail"
                             data-ng-change="DefaultVoicemailCtrl.success = false"
-                            data-ng-options="number.serviceName as DefaultVoicemailCtrl.formatNumber(number) for number in DefaultVoicemailCtrl.numbers | orderBy: ['description', 'label', 'serviceName']"
-                            required>
+                            data-ng-options="number.serviceName as DefaultVoicemailCtrl.formatNumber(number) for number in DefaultVoicemailCtrl.numbers | orderBy: ['description', 'label', 'serviceName']">
                     </select>
                 </div>
                 <div class="form-group">
+                    <button type="submit"
+                            class="btn btn-primary"
+                            data-ng-disabled="DefaultVoicemailCtrl.options.defaultVoicemail === DefaultVoicemailCtrl.defaultVoicemail || DefaultVoicemailCtrl.saving">
+                        <span data-translate="telephony_line_answer_default_voicemail_change"></span>
+                        <i class="ovh-font ovh-font-success ml-2"
+                           data-ng-if="DefaultVoicemailCtrl.success">
+                        </i>
+                        <bouncing-box-loader class="d-inline-block align-middle ml-2"
+                                             data-ng-if="DefaultVoicemailCtrl.saving"
+                                             data-size="s">
+                        </bouncing-box-loader>
+                    </button>
                     <button type="reset"
                             class="btn btn-default"
                             data-ng-click="DefaultVoicemailCtrl.cancel()"
                             data-ng-disabled="DefaultVoicemailCtrl.options.defaultVoicemail === DefaultVoicemailCtrl.defaultVoicemail || DefaultVoicemailCtrl.saving"
                             data-translate="cancel">
                     </button>
-                    <button type="submit"
-                            class="btn btn-primary float-right"
-                            data-ng-disabled="DefaultVoicemailCtrl.options.defaultVoicemail === DefaultVoicemailCtrl.defaultVoicemail || DefaultVoicemailCtrl.saving">
-                        <span data-translate="telephony_line_answer_default_voicemail_change"></span>
-                        <i data-ng-if="DefaultVoicemailCtrl.success"
-                           class="ovh-font ovh-font-success fs16 ml-2"></i>
-                        <bouncing-box-loader class="d-inline-block align-middle ml-2"
-                                             data-ng-if="DefaultVoicemailCtrl.saving"
-                                             data-size="s">
-                        </bouncing-box-loader>
-                    </button>
                 </div>
             </form>
 
         </div>
-
-    </div><!-- row -->
+    </div>
+    <!-- /.row -->
 
 </section>
+<!-- /.telephony-group-service-voicemail-default -->

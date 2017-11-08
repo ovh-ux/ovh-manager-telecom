@@ -1,7 +1,7 @@
 <div class="telephonyCallsFilteringTable"
      data-ng-if="$ctrl.isInitialized">
 
-    <div class="clearfix mb-1">
+    <div class="clearfix mb-3">
         <div class="float-left">
             <button class="btn btn-default"
                     type="button"
@@ -152,7 +152,7 @@
                                   }">
                             </span>
                         </button>
-                        <button class="btn btn-link p-0"
+                        <button class="btn btn-link p-0 float-right"
                                 type="button"
                                 title="{{:: 'telephony_answer_voicemail_directories_refresh_message' | translate }}"
                                 data-ng-disabled="$ctrl.screenLists.isDeleting"
@@ -170,24 +170,21 @@
                                data-ng-disabled="$ctrl.screenLists.isDeleting"
                                data-ng-model="$ctrl.screenLists.selected[screen.id]" />
                     </td>
-                    <td data-title="{{:: 'telephony_calls_filtering_table_number' | translate }}">
-                        <span class="text-nowrap" data-ng-bind="screen.callNumber | phoneNumber"></span>
-                    </td>
-                    <td data-title="{{:: 'telephony_calls_filtering_table_nature' | translate }}">
-                        <span class="text-nowrap" data-ng-bind="'telephony_calls_filtering_table_nature_' + screen.nature | translate"></span>
-                    </td>
-                    <td data-title="{{:: 'telephony_calls_filtering_table_type' | translate }}">
-                        <span class="text-nowrap" data-ng-bind="'telephony_calls_filtering_table_type_' + screen.shortType | translate"></span>
-                    </td>
-                    <td data-title="{{:: 'telephony_calls_filtering_table_list' | translate }}">
-                        <span class="text-nowrap"
-                              data-ng-bind="'telephony_calls_filtering_table_list_' + screen.list | translate"></span>
-                    </td>
-                    <td data-title="{{:: 'telephony_calls_filtering_table_status' | translate }}">
-                        <span class="mr-4">
-                            <span data-ng-if="screen.status === 'new'" data-translate="telephony_calls_filtering_table_status_new"></span>
-                            <span data-ng-if="screen.status === 'delete'" data-translate="telephony_calls_filtering_table_status_delete"></span>
-                            <i data-ng-if="screen.status === 'active'" class="text-success ovh-font ovh-font-success"></i>
+                    <td data-ng-bind="screen.callNumber | phoneNumber"></td>
+                    <td data-ng-bind="'telephony_calls_filtering_table_nature_' + screen.nature | translate"></td>
+                    <td data-ng-bind="'telephony_calls_filtering_table_type_' + screen.shortType | translate"></td>
+                    <td data-ng-bind="'telephony_calls_filtering_table_list_' + screen.list | translate"></td>
+                    <td>
+                        <span>
+                            <span data-ng-if="screen.status === 'new'"
+                                  data-translate="telephony_calls_filtering_table_status_new">
+                            </span>
+                            <span data-ng-if="screen.status === 'delete'"
+                                  data-translate="telephony_calls_filtering_table_status_delete">
+                            </span>
+                            <i class="text-success ovh-font ovh-font-success"
+                               data-ng-if="screen.status === 'active'">
+                            </i>
                             <bouncing-box-loader class="d-inline-block align-middle ml-1"
                                                  data-ng-if="screen.status !== 'active'"
                                                  data-size="s">
@@ -198,7 +195,8 @@
             </tbody>
             <tbody data-ng-if="$ctrl.isLoading">
                 <tr>
-                    <td class="text-center my-3" colspan="6">
+                    <td colspan="6"
+                        class="text-center">
                         <span data-translate="telephony_calls_filtering_table_loading"></span>
                         <bouncing-box-loader class="d-inline-block align-middle ml-1"
                                              data-size="s">
@@ -208,8 +206,9 @@
             </tbody>
             <tbody data-ng-if="!$ctrl.isLoading && !$ctrl.screenLists.paginated.length">
                 <tr>
-                    <td class="text-center my-3" colspan="6">
-                        <span data-translate="telephony_calls_filtering_table_empty"></span>
+                    <td colspan="6"
+                       class="text-center"
+                       data-translate="telephony_calls_filtering_table_empty">
                     </td>
                 </tr>
             </tbody>

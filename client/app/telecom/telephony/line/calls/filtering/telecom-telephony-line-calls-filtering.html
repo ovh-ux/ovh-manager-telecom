@@ -26,7 +26,7 @@
                         data-translate="telephony_line_calls_filtering_enable">
                     </h2>
                     <p data-translate="telephony_line_calls_filtering_info"></p>
-                    <form class="mb-3">
+                    <form>
                         <div class="form-group">
                             <label for="incomingScreenList"
                                    class="control-label">
@@ -69,43 +69,76 @@
                                 <option value="blacklist" data-translate="telephony_line_calls_filtering_list_black"></option>
                             </select>
                         </div>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox"
-                                       data-ng-disabled="CallsFilteringCtrl.options.isUpdating"
-                                       data-ng-change="CallsFilteringCtrl.changeOption('anonymousCallRejection')"
-                                       data-ng-model="CallsFilteringCtrl.options.modified.anonymousCallRejection" />
-                                <span data-translate="telephony_line_calls_filtering_anonymous_reject"></span>
-                                <bouncing-box-loader class="d-inline-block align-middle ml-2"
-                                                     data-ng-if="CallsFilteringCtrl.options.isUpdating.anonymousCallRejection"
-                                                     data-size="s">
-                                </bouncing-box-loader>
-                           </label>
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox"
-                                       data-ng-disabled="CallsFilteringCtrl.options.isUpdating"
-                                       data-ng-change="CallsFilteringCtrl.changeOption('doNotDisturb')"
-                                       data-ng-model="CallsFilteringCtrl.options.modified.doNotDisturb" />
-                                <span data-translate="telephony_line_calls_filtering_do_not_disturb"></span>
-                                <bouncing-box-loader class="d-inline-block align-middle ml-2"
-                                                     data-ng-if="CallsFilteringCtrl.options.isUpdating.doNotDisturb"
-                                                     data-size="s">
-                                </bouncing-box-loader>
+                        <div class="oui-checkbox">
+                            <input class="oui-checkbox__input"
+                                   id="anonymousCallRejection"
+                                   name="anonymousCallRejection"
+                                   type="checkbox"
+                                   data-ng-disabled="CallsFilteringCtrl.options.isUpdating"
+                                   data-ng-change="CallsFilteringCtrl.changeOption('anonymousCallRejection')"
+                                   data-ng-model="CallsFilteringCtrl.options.modified.anonymousCallRejection">
+                            <label class="oui-checkbox__label-container"
+                                  for="anonymousCallRejection">
+                                <span class="oui-checkbox__label">
+                                    <span data-translate="telephony_line_calls_filtering_anonymous_reject"></span>
+                                    <bouncing-box-loader class="d-inline-block align-middle ml-2"
+                                                         data-ng-if="CallsFilteringCtrl.options.isUpdating.anonymousCallRejection"
+                                                         data-size="s">
+                                    </bouncing-box-loader>
+                                </span>
+                                <span class="oui-checkbox__icon">
+                                    <i class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></i>
+                                    <i class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></i>
+                                    <i class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></i>
+                                </span>
                             </label>
                         </div>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox"
-                                       data-ng-disabled="CallsFilteringCtrl.options.isUpdating"
-                                       data-ng-change="CallsFilteringCtrl.changeOption('absentSubscriber')"
-                                       data-ng-model="CallsFilteringCtrl.options.modified.absentSubscriber" />
-                                <span data-translate="telephony_line_calls_filtering_absent"></span>
-                                <bouncing-box-loader class="d-inline-block align-middle ml-2"
-                                                     data-ng-if="CallsFilteringCtrl.options.isUpdating.absentSubscriber"
-                                                     data-size="s">
-                                </bouncing-box-loader>
+                        <div class="oui-checkbox">
+                            <input class="oui-checkbox__input"
+                                   id="doNotDisturb"
+                                   name="doNotDisturb"
+                                   type="checkbox"
+                                   data-ng-disabled="CallsFilteringCtrl.options.isUpdating"
+                                   data-ng-change="CallsFilteringCtrl.changeOption('doNotDisturb')"
+                                   data-ng-model="CallsFilteringCtrl.options.modified.doNotDisturb">
+                            <label class="oui-checkbox__label-container"
+                                  for="doNotDisturb">
+                                <span class="oui-checkbox__label">
+                                    <span data-translate="telephony_line_calls_filtering_do_not_disturb"></span>
+                                    <bouncing-box-loader class="d-inline-block align-middle ml-2"
+                                                         data-ng-if="CallsFilteringCtrl.options.isUpdating.doNotDisturb"
+                                                         data-size="s">
+                                    </bouncing-box-loader>
+                                </span>
+                                <span class="oui-checkbox__icon">
+                                    <i class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></i>
+                                    <i class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></i>
+                                    <i class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></i>
+                                </span>
+                            </label>
+                        </div>
+                        <div class="oui-checkbox">
+                            <input class="oui-checkbox__input"
+                                   id="absentSubscriber"
+                                   name="absentSubscriber"
+                                   type="checkbox"
+                                   data-ng-disabled="CallsFilteringCtrl.options.isUpdating"
+                                   data-ng-change="CallsFilteringCtrl.changeOption('absentSubscriber')"
+                                   data-ng-model="CallsFilteringCtrl.options.modified.absentSubscriber">
+                            <label class="oui-checkbox__label-container"
+                                  for="absentSubscriber">
+                                <span class="oui-checkbox__label">
+                                    <span data-translate="telephony_line_calls_filtering_absent"></span>
+                                    <bouncing-box-loader class="d-inline-block align-middle ml-2"
+                                                         data-ng-if="CallsFilteringCtrl.options.isUpdating.absentSubscriber"
+                                                         data-size="s">
+                                    </bouncing-box-loader>
+                                </span>
+                                <span class="oui-checkbox__icon">
+                                    <i class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></i>
+                                    <i class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></i>
+                                    <i class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></i>
+                                </span>
                             </label>
                         </div>
                     </form>
