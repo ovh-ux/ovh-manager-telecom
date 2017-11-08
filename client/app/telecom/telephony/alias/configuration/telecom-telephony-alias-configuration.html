@@ -1,7 +1,8 @@
 <div class="telephony-group-alias-configuration">
 
-    <bouncing-box-loader data-ng-if="AliasConfigurationCtrl.loading.init">
-        <h1 data-translate="loading"></h1>
+    <bouncing-box-loader data-ng-if="AliasConfigurationCtrl.loading.init"
+                         data-size="m">
+        <h2 data-translate="loading"></h2>
     </bouncing-box-loader>
 
     <div data-ng-if="!AliasConfigurationCtrl.loading.init">
@@ -18,3 +19,4 @@
     </div>
 
 </div>
+<!-- /.telephony-group-alias-configuration -->

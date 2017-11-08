@@ -9,6 +9,7 @@
     <!-- DIALPLAN OPTIONS -->
     <translation id="telephony_number_feature_ovh_pabx_dialplan_name_bad_format">Le nom ne peut contenir que des lettres (sans accents), chiffres, tirets bas ou des espaces.</translation>
     <translation id="telephony_number_feature_ovh_pabx_dialplan_transfer_timeout">Timeout de transfert d'appel (en s.)</translation>
+    <translation id="telephony_number_feature_ovh_pabx_dialplan_anonymous_acceptation">Accepter les appels masqués</translation>
     <translation id="telephony_number_feature_ovh_pabx_dialplan_anonymous_rejection">Rejet d'appel masqué</translation>
     <translation id="telephony_number_feature_ovh_pabx_dialplan_anonymous_rejection_active">Rejeter les appels masqués</translation>
     <translation id="telephony_number_feature_ovh_pabx_dialplan_anonymous_rejection_inactive">Ne pas rejeter les appels masqués</translation>

@@ -42,7 +42,6 @@
    <translation id="telecom_dashboard_services_incidents_other" qtlid="305187">havaittuja häiriöitä</translation>
 
    <translation id="telecom_dashboard_auth_failed" qtlid="305200">Käyttäjätietojen hakeminen ei onnistu.</translation>
-   <translation id="telecom_dashboard_express_lite_desc" qtlid="304875">Express Lite sisältää modeemin, joka tarjoaa Internet-yhteyden sekä VoIP-linjan hintaan <span class="ad-price bold fs14">22,99€ ALV0</span>&#160;/kk.</translation>
    <translation id="telecom_dashboard_express_lite_title" qtlid="304888">OVH lanseeraa uuden ADSL ja VDSL-yhteyspalvelun.</translation>
    <translation id="telecom_dashboard_discover" qtlid="304927">Tutustu tuotteeseen</translation>
 </translations>

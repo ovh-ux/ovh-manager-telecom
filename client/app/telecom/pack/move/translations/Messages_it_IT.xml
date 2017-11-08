@@ -36,7 +36,6 @@
    <translation id="pack_move_cannot_validate_move" qtlid="312831">Impossibile trasferire il tuo pack: {{message}}</translation>
    <translation id="pack_move_line_current_address" qtlid="312844">Indirizzo attuale</translation>
    <translation id="pack_move_line_future_address" qtlid="312857">Nuovo indirizzo</translation>
-   <translation id="pack_move_portLine_cost" qtlid="312870">La portabilità ti sarà fatturata <span class="bold red">50€</span></translation>
 
    <translation id="pack_move_eligibility_error" qtlid="312883">Il test di compatibilità al momento non è disponibile, ti preghiamo di riprovare.</translation>
    <translation id="pack_move_eligibility_no_offers" qtlid="385975">La ligne {{ number }} n'est éligible à aucune de nos offres.</translation>

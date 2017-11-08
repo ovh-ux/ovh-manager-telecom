@@ -1,33 +1,35 @@
 <form name="removeSenderForm"
       id="removeSenderForm"
-      class="ovh-form-flat"
       data-ng-submit="SendersRemoveCtrl.remove()">
 
     <div class="modal-header">
-        <h3 class="modal-title pull-left" data-translate="sms_senders_remove_sender_title"></h3>
         <button
             type="button"
-            class="close pull-right"
+            class="close float-right"
             aria-label="{{ ::'cancel' | translate }}"
             data-ng-click="SendersRemoveCtrl.cancel()">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
 
-    <div class="modal-body" data-ng-if="!SendersRemoveCtrl.loading.removeSender && !SendersRemoveCtrl.removed">
+    <div class="modal-body"
+         data-ng-if="!SendersRemoveCtrl.loading.removeSender && !SendersRemoveCtrl.removed">
+        <h3 data-translate="sms_senders_remove_sender_title"></h3>
         <p data-translate="sms_senders_remove_sender_confirm"
            data-translate-values="{ sender: SendersRemoveCtrl.sender.sender }">
         </p>
     </div>
 
-    <div class="modal-body" data-ng-if="SendersRemoveCtrl.loading.removeSender">
-        <bouncing-box-loader>
+    <div class="modal-body"
+         data-ng-if="SendersRemoveCtrl.loading.removeSender">
+        <bouncing-box-loader data-size="m">
             <h4 data-translate="sms_senders_remove_sender_removing"></h4>
         </bouncing-box-loader>
     </div>
 
-    <div class="modal-body" data-ng-if="SendersRemoveCtrl.removed">
-        <success-drawing-check  data-draw-success-check="SendersRemoveCtrl.removed">
+    <div class="modal-body"
+          data-ng-if="SendersRemoveCtrl.removed">
+        <success-drawing-check data-draw-success-check="SendersRemoveCtrl.removed">
             <h4 data-translate="sms_senders_remove_sender_removed"></h4>
         </success-drawing-check>
     </div>

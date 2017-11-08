@@ -36,7 +36,7 @@ angular.module("managerApp").service("SmsSidebar", function ($translate, Sidebar
             error: $translate.instant("telecom_sidebar_load_error"),
             id: "telecom-sms-section",
             category: "sms",
-            icon: "message",
+            icon: "ovh-font ovh-font-message",
             allowSubItems: true,
             onLoad: self.loadSmsMainSection,
             loadOnState: "telecom.sms"

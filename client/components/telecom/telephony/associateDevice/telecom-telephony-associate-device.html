@@ -7,48 +7,51 @@
      <div class="alert alert-success"
           role="alert"
           data-ng-if="$ctrl.attachSuccess && $ctrl.isInitialized">
-         <i class="ovh-font ovh-font-filled-check" aria-hidden="true"></i>
-         <p data-translate="telephony_device_associate_attach_success"></p>
+          <p data-translate="telephony_device_associate_attach_success"></p>
      </div>
 
      <div class="alert alert-info"
           role="alert"
           data-ng-if="!$ctrl.phones.length && $ctrl.isInitialized">
-         <i class="ovh-font ovh-font-filled-info" aria-hidden="true"></i>
-         <p data-translate="telephony_device_associate_attach_empty"></p>
+          <p data-translate="telephony_device_associate_attach_empty"></p>
      </div>
 
      <form data-ng-if="$ctrl.isInitialized && !$ctrl.attachSuccess && $ctrl.phones.length"
            data-ng-submit="$ctrl.attachDevice()">
-        <label class="block bottom-space-m12 pointer"
-               data-ng-repeat="phone in $ctrl.phones">
-            <flat-radio>
-                <input type="radio"
-                       data-ng-attr-id="{{ 'phone' + phone.macAddress }}"
-                       data-ng-attr-name="{{ 'phone' + phone.macAddress }}"
-                       data-ng-attr-value="{{ phone.macAddress }}"
-                       data-ng-model="$ctrl.selectedMac" />
-            </flat-radio>
-            <span class="left-space-m8"
-                  data-ng-bind="phone.description">
-            </span>
-            <span class="normal left-space-m16" data-ng-bind="phone.macAddress"></span>
-            <div class="left-space-m32">
-                <span class="normal"
-                      data-translate="telephony_device_associate_line_count"
-                      data-translate-values="{
-                          count: phone.associatedLines.length,
-                          total: phone.maxline
-                      }">
-                </span>
-                <ul class="normal left-space-m16">
-                    <li data-ng-repeat="line in phone.associatedLines">
-                        <span data-ng-bind="line.serviceName | phoneNumber"></span>
-                    </li>
-                </ul>
+
+        <div class="form-group">
+            <div data-ng-repeat="phone in $ctrl.phones">
+                <div class="radio">
+                    <label>
+                        <input type="radio"
+                               data-ng-attr-id="{{ 'phone' + phone.macAddress }}"
+                               data-ng-attr-name="{{ 'phone' + phone.macAddress }}"
+                               data-ng-attr-value="{{ phone.macAddress }}"
+                               data-ng-model="$ctrl.selectedMac" />
+                        <span class="ml-2"
+                              data-ng-bind="phone.description">
+                        </span>
+                        <span class="ml-2"
+                              data-ng-bind="phone.macAddress"></span>
+                        <div class="ml-4"
+                             data-ng-if="phone.associatedLines.length">
+                            <span data-translate="telephony_device_associate_line_count"
+                                  data-translate-values="{
+                                      count: phone.associatedLines.length,
+                                      total: phone.maxline
+                                  }">
+                            </span>
+                            <ul class="ml-2">
+                                <li data-ng-repeat="line in phone.associatedLines">
+                                    <span data-ng-bind="line.serviceName | phoneNumber"></span>
+                                </li>
+                            </ul>
+                        </div>
+                    </label>
+                </div>
             </div>
-        </label>
-        <hr />
+        </div>
+
         <div class="form-group">
             <label for="ipAddress"
                    class="control-label"
@@ -60,13 +63,16 @@
                    data-ng-model="$ctrl.ipAddress" />
         </div>
         <button type="submit"
-                class="btn btn-primary pull-right"
+                class="btn btn-primary float-right"
                 data-ng-disabled="$ctrl.isAttaching || !$ctrl.selectedMac || !$ctrl.ipAddress">
+            <bouncing-box-loader class="d-inline-block align-middle mr-2"
+                                 data-ng-if="$ctrl.isAttaching"
+                                 data-size="s">
+            </bouncing-box-loader>
             <span data-translate="telephony_device_associate_attach"></span>
-            <spinner class="left-space-m8" data-ng-if="$ctrl.isAttaching"></spinner>
         </button>
-        <button type="button"
-                class="btn btn-default right-space-m8 pull-right no-transition"
+        <button type="reset"
+                class="btn btn-default mr-2 float-right no-transition"
                 data-ng-if="$ctrl.selectedMac"
                 data-ng-click="$ctrl.selectedMac = null"
                 data-translate="cancel">

@@ -1,28 +1,26 @@
 <form name="availabilityForm"
-      class="ovh-form-flat"
       data-ng-submit="PackMoveEligibilityPhoneNumber.updateLineAccessibility()">
-      <div class="form-inline bottom-space-m16">
-          <div class="form-group bottom-space-m8">
-              <label class="sr-only"
-                     for="phoneNumber"
-                     data-translate="pack_move_eligibility_number"></label>
-              <input type="text"
-                     id="phoneNumber"
-                     name="phoneNumber"
-                     data-ng-pattern="PackMoveEligibilityPhoneNumber.phoneNumberRegex"
-                     data-translate-attr="{ placeholder : 'pack_move_eligibility_number' }"
-                     class="form-control"
-                     data-ng-model="PackMoveEligibilityPhoneNumber.testLine.lineNumber"
-                     data-ng-disabled="PackMoveEligibilityPhoneNumber.method !== 'number'"
-                     required>
-          </div>
-          <button type="submit"
-                  class="btn btn-primary bottom-space-m8"
-                  data-translate="submit"
-                  data-ng-disabled="PackMoveEligibilityPhoneNumber.loading || availabilityForm.phoneNumber.$invalid || PackMoveEligibilityPhoneNumber.method !== 'number'">
-          </button>
-          <spinner data-ng-if="PackMoveEligibilityPhoneNumber.loading" class="left-space-m8"></spinner>
+      <div class="form-group">
+          <label for="phoneNumber"
+                 data-translate="pack_move_eligibility_number"></label>
+          <input type="text"
+                 id="phoneNumber"
+                 name="phoneNumber"
+                 data-ng-pattern="PackMoveEligibilityPhoneNumber.phoneNumberRegex"
+                 data-translate-attr="{ placeholder : 'pack_move_eligibility_number' }"
+                 class="form-control"
+                 data-ng-model="PackMoveEligibilityPhoneNumber.testLine.lineNumber"
+                 data-ng-disabled="PackMoveEligibilityPhoneNumber.method !== 'number'"
+                 required>
       </div>
+      <button type="submit"
+              class="btn btn-primary"
+              data-translate="submit"
+              data-ng-disabled="PackMoveEligibilityPhoneNumber.loading || availabilityForm.phoneNumber.$invalid || PackMoveEligibilityPhoneNumber.method !== 'number'">
+      </button>
+      <bouncing-box-loader class="d-inline-block align-middle ml-2"
+                           data-ng-if="PackMoveEligibilityPhoneNumber.loading"
+                           data-size="s"></bouncing-box-loader>
 
       <div data-ng-if="availabilityForm.phoneNumber.$error.pattern"
             class="text-error"

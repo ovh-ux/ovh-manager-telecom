@@ -7,33 +7,29 @@
         <h1 data-translate="telephony_alias_configuration_time_condition_title"></h1>
     </header>
 
-    <bouncing-box-loader data-ng-if="$ctrl.loading.init">
+    <bouncing-box-loader data-ng-if="$ctrl.loading.init"
+                         data-size="m">
         <h2 data-translate="loading"></h2>
     </bouncing-box-loader>
 
-    <form class="telecom-section-content bottom-space-m32"
+    <form class="telecom-section-content mb-4"
           name="timeConditionForm"
           data-ng-if="!$ctrl.loading.init"
           data-ng-submit="$ctrl.onTimeConditionFormSubmit()">
 
+        <toast-message></toast-message>
+
         <!-- FEATURE INFORMATIONS -->
         <div class="alert alert-info"
              role="alert">
-            <i class="ovh-font ovh-font-filled-info right-space-m8"></i>
             <p data-translate="telephony_alias_configuration_time_condition_info1"></p>
-            <!-- <p data-translate="telephony_alias_configuration_time_condition_info2"
-               data-translate-values="{ sref: 'telecom.telephony.line.calls.events' }"
-               data-translate-compile>
-            </p> -->
-            <p>
-                <button type="button"
-                        class="btn btn-link no-space"
-                        data-ng-click="$ctrl.helpCollapsed = !$ctrl.helpCollapsed"
-                        data-translate="{{ $ctrl.helpCollapsed ? 'telephony_alias_configuration_time_condition_need_help' : 'telephony_alias_configuration_time_condition_hide_help'}}">
-                </button>
-            </p>
+            <button type="button"
+                    class="btn btn-link p-0"
+                    data-ng-click="$ctrl.helpCollapsed = !$ctrl.helpCollapsed"
+                    data-translate="{{ $ctrl.helpCollapsed ? 'telephony_alias_configuration_time_condition_need_help' : 'telephony_alias_configuration_time_condition_hide_help'}}">
+            </button>
             <div data-uib-collapse="$ctrl.helpCollapsed"
-                 class="top-space-m4">
+                 class="mt-1">
                 <p data-translate="telephony_alias_configuration_time_condition_help_1"></p>
                 <p data-translate="telephony_alias_configuration_time_condition_help_2"></p>
                 <ul>
@@ -42,7 +38,7 @@
                     <li data-translate="telephony_alias_configuration_time_condition_help_5"></li>
                 </ul>
                 <p data-translate="telephony_alias_configuration_time_condition_help_6"></p>
-                <p class="bottom-space-m0"
+                <p class="mb-0"
                    data-translate="telephony_alias_configuration_time_condition_help_7">
                 </p>
             </div>
@@ -59,23 +55,22 @@
 
                 <!-- ENABLE / DISABLE -->
                 <div class="form-group clearfix">
-                    <label class="service-title"
+                    <label class="control-label"
                            data-translate="telephony_alias_configuration_time_condition_params_enable">
                     </label>
-                    <div class="btn-group block">
-                        <label class="btn btn-default"
-                               data-ng-model="$ctrl.number.feature.timeCondition.enable"
-                               data-uib-btn-radio="true"
-                               data-ng-disabled="$ctrl.number.feature.timeCondition.status === 'SAVING'"
-                               data-translate="common_yes_capitalized">
-                        </label>
-
-                        <label class="btn btn-default"
-                               data-ng-model="$ctrl.number.feature.timeCondition.enable"
-                               data-uib-btn-radio="false"
-                               data-ng-disabled="$ctrl.number.feature.timeCondition.status === 'SAVING'"
-                               data-translate="common_no_capitalized">
-                        </label>
+                    <div class="btn-group">
+                        <a class="btn btn-default"
+                           data-ng-model="$ctrl.number.feature.timeCondition.enable"
+                           data-uib-btn-radio="true"
+                           data-ng-disabled="$ctrl.number.feature.timeCondition.status === 'SAVING'"
+                           data-translate="common_yes_capitalized">
+                        </a>
+                        <a class="btn btn-default"
+                           data-ng-model="$ctrl.number.feature.timeCondition.enable"
+                           data-uib-btn-radio="false"
+                           data-ng-disabled="$ctrl.number.feature.timeCondition.status === 'SAVING'"
+                           data-translate="common_no_capitalized">
+                        </a>
                     </div>
                 </div> <!-- END OF ENABLE / DISABLE -->
             </div> <!-- END OF GLOBAL PARAMETERS -->
@@ -113,16 +108,16 @@
                data-translate="telephony_alias_configuration_time_condition_footer_save_question">
             </p>
 
-            <div class="button-container inline-block">
+            <div class="button-container d-inline-block">
                 <button type="submit"
-                        class="btn btn-primary pull-rigth">
+                        class="btn btn-primary float-rigth">
                     <i data-ng-if="$ctrl.number.feature.timeCondition.status === 'SAVING'"
                        class="fa fa-spinner fa-pulse">
                     </i>
                     <span data-translate="submit"></span>
                 </button>
                 <button type="reset"
-                        class="btn voip-cancel pull-left"
+                        class="btn voip-cancel float-left"
                         data-translate="cancel"
                         data-ng-click="$ctrl.onTimeConditionFormReset()"
                         data-ng-disabled="$ctrl.loading.save">
@@ -134,3 +129,4 @@
     </form>
 
 </section>
+<!-- /.telecom-telephony-alias-configuration-timeCondition-easy-hunting -->

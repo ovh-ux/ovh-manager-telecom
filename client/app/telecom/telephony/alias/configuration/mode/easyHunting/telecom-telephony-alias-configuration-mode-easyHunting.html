@@ -7,119 +7,123 @@
         <h1 data-translate="telephony_alias_configuration_mode_title"></h1>
     </header>
 
-    <div class="telecom-section-content" data-ng-if="ModeEasyHuntingCtrl.isLoading">
-        <bouncing-box-loader>
-            <h4 data-translate="loading"></h4>
-        </bouncing-box-loader>
-    </div>
+    <bouncing-box-loader data-ng-if="ModeEasyHuntingCtrl.isLoading"
+                         data-size="m">
+        <h2 data-translate="loading"></h2>
+    </bouncing-box-loader>
 
-    <div class="telecom-section-content" data-ng-if="!ModeEasyHuntingCtrl.isLoading">
+    <div class="telecom-section-content"
+         data-ng-if="!ModeEasyHuntingCtrl.isLoading">
+
+        <toast-message></toast-message>
 
         <div class="row">
 
             <div class="col-md-6 widget-presentation">
                 <header class="widget-presentation-header">
-                    <h2 class="widget-presentation-title" data-translate="telephony_alias_configuration_mode_info_title"></h2>
+                    <h2 class="widget-presentation-title"
+                        data-translate="telephony_alias_configuration_mode_info_title">
+                    </h2>
                 </header>
                 <p data-translate="telephony_alias_configuration_mode_easyhunting_info1"></p>
-                <ul class="left-space-m16">
-                    <li data-translate="telephony_alias_configuration_mode_easyhunting_info2"></li>
-                    <li data-translate="telephony_alias_configuration_mode_easyhunting_info3"></li>
-                    <li data-translate="telephony_alias_configuration_mode_easyhunting_info4"></li>
-                    <li data-translate="telephony_alias_configuration_mode_easyhunting_info5"></li>
-                    <li data-translate="telephony_alias_configuration_mode_easyhunting_info6"></li>
-                    <li data-translate="telephony_alias_configuration_mode_easyhunting_info7"></li>
-                    <li data-translate="telephony_alias_configuration_mode_easyhunting_info8"></li>
-                    <li data-translate="telephony_alias_configuration_mode_easyhunting_info9"></li>
-                    <li data-translate="telephony_alias_configuration_mode_easyhunting_info10"></li>
-                    <li data-translate="telephony_alias_configuration_mode_easyhunting_info11"></li>
-                    <li data-translate="telephony_alias_configuration_mode_easyhunting_info12"></li>
+                <ul>
+                    <li data-ng-repeat="i in [2,3,4,5,6,7,8,9,10,11,12] track by $index"
+                        data-translate="{{'telephony_alias_configuration_mode_easyhunting_info' + i}}">
+                    </li>
                 </ul>
             </div>
 
             <div class="col-md-6 widget-presentation">
                 <header class="widget-presentation-header">
-                    <h2 class="widget-presentation-title" data-translate="telephony_alias_configuration_mode_config_title"></h2>
+                    <h2 class="widget-presentation-title"
+                        data-translate="telephony_alias_configuration_mode_config_title">
+                    </h2>
                 </header>
                 <form id="easyHuntingOptionsForm"
                       name="easyHuntingOptionsForm"
-                      class="ovh-form-flat"
                       data-ng-submit="ModeEasyHuntingCtrl.updateOptions()"
                       novalidate>
 
-                    <div class="clearfix">
-                        <label for="showCallerNumber" data-translate="telephony_alias_configuration_mode_easyhunting_caller"></label>
-                        <select flat-select
-                            id="showCallerNumber"
-                            name="showCallerNumber"
-                            class="form-control"
-                            data-ng-model="ModeEasyHuntingCtrl.optionsForm.showCallerNumber"
-                            data-ng-disabled="ModeEasyHuntingCtrl.isUpdating"
-                            data-ng-options="type as ('telephony_alias_configuration_mode_easyhunting_caller_' + type | translate) for type in ModeEasyHuntingCtrl.enums.caller"
-                            required>
+                    <div class="form-group">
+                        <label for="showCallerNumber"
+                               class="control-label"
+                               data-translate="telephony_alias_configuration_mode_easyhunting_caller">
+                        </label>
+                        <select id="showCallerNumber"
+                                name="showCallerNumber"
+                                class="form-control"
+                                required
+                                data-ng-model="ModeEasyHuntingCtrl.optionsForm.showCallerNumber"
+                                data-ng-disabled="ModeEasyHuntingCtrl.isUpdating"
+                                data-ng-options="type as ('telephony_alias_configuration_mode_easyhunting_caller_' + type | translate) for type in ModeEasyHuntingCtrl.enums.caller">
                         </select>
                     </div>
 
-                    <label class="block pointer top-space-m16 bottom-space-m16">
-                        <flat-checkbox>
+                    <div class="checkbox">
+                        <label>
                             <input type="checkbox"
                                    id="anonymousRejection"
                                    name="anonymousRejection"
                                    data-ng-disabled="ModeEasyHuntingCtrl.isUpdating"
                                    data-ng-model="ModeEasyHuntingCtrl.optionsForm.anonymousRejection" />
-                        </flat-checkbox>
-                        <span class="left-space-m8" data-translate="telephony_alias_configuration_mode_easyhunting_anonymous_rejection"></span>
-                    </label>
+                            <span data-translate="telephony_alias_configuration_mode_easyhunting_anonymous_rejection"></span>
+                        </label>
+                    </div>
 
-                    <label class="block pointer top-space-m16 bottom-space-m16">
-                        <flat-checkbox>
+                    <div class="checkbox">
+                        <label>
                             <input type="checkbox"
                                    id="followCall"
                                    name="followCall"
                                    data-ng-disabled="ModeEasyHuntingCtrl.isUpdating"
                                    data-ng-model="ModeEasyHuntingCtrl.queueOptionsForm.followCallForwards" />
-                        </flat-checkbox>
-                        <span class="left-space-m8" data-translate="telephony_alias_configuration_mode_easyhunting_call_follow"></span>
-                    </label>
+                            <span data-translate="telephony_alias_configuration_mode_easyhunting_call_follow"></span>
+                        </label>
+                    </div>
 
-                    <div class="clearfix">
-                        <label for="voicemail" data-translate="telephony_alias_configuration_mode_easyhunting_answer"></label>
-                        <select flat-select
-                            id="voicemail"
-                            name="voicemail"
-                            class="form-control"
-                            data-ng-disabled="ModeEasyHuntingCtrl.isUpdating"
-                            data-ng-model="ModeEasyHuntingCtrl.optionsForm.voicemail"
-                            data-ng-options="number as (number | phoneNumber) for number in ModeEasyHuntingCtrl.voicemail"
-                            required>
+                    <div class="form-group">
+                        <label for="voicemail"
+                               class="control-label"
+                               data-translate="telephony_alias_configuration_mode_easyhunting_answer">
+                        </label>
+                        <select id="voicemail"
+                                name="voicemail"
+                                class="form-control"
+                                required
+                                data-ng-disabled="ModeEasyHuntingCtrl.isUpdating"
+                                data-ng-model="ModeEasyHuntingCtrl.optionsForm.voicemail"
+                                data-ng-options="number as (number | phoneNumber) for number in ModeEasyHuntingCtrl.voicemail">
                             <option value="" data-translate="telephony_alias_configuration_mode_easyhunting_none"></option>
                         </select>
                     </div>
 
-                    <div class="clearfix top-space-m16">
-                        <label for="strategy" data-translate="telephony_alias_configuration_mode_easyhunting_strategy"></label>
-                        <select flat-select
-                            id="strategy"
-                            name="strategy"
-                            class="form-control"
-                            data-ng-disabled="ModeEasyHuntingCtrl.isUpdating"
-                            data-ng-model="ModeEasyHuntingCtrl.optionsForm.strategy"
-                            data-ng-options="strategy as ('telephony_alias_configuration_mode_easyhunting_strategy_' + strategy | translate) for strategy in ModeEasyHuntingCtrl.enums.strategy"
-                            required>
+                    <div class="form-group">
+                        <label for="strategy"
+                               class="control-label"
+                               data-translate="telephony_alias_configuration_mode_easyhunting_strategy">
+                        </label>
+                        <select id="strategy"
+                                name="strategy"
+                                class="form-control"
+                                required
+                                data-ng-disabled="ModeEasyHuntingCtrl.isUpdating"
+                                data-ng-model="ModeEasyHuntingCtrl.optionsForm.strategy"
+                                data-ng-options="strategy as ('telephony_alias_configuration_mode_easyhunting_strategy_' + strategy | translate) for strategy in ModeEasyHuntingCtrl.enums.strategy">
                         </select>
-                        <p>
-                            <small>
-                                <i class="ovh-font ovh-font-info"></i>
-                                <span data-translate="{{ 'telephony_alias_configuration_mode_easyhunting_strategy_' + ModeEasyHuntingCtrl.optionsForm.strategy + '_info' | translate }}"></span>
-                            </small>
-                        </p>
+                        <span class="help-block">
+                            <i class="ovh-font ovh-font-info"></i>
+                            <span data-translate="{{ 'telephony_alias_configuration_mode_easyhunting_strategy_' + ModeEasyHuntingCtrl.optionsForm.strategy + '_info' | translate }}"></span>
+                        </span>
                     </div>
 
-                    <div class="clearfix top-space-m8">
-                        <label class="block clearfix" for="queueSize" data-translate="telephony_alias_configuration_mode_easyhunting_queue_size"></label>
+                    <div class="form-group">
+                        <label class="control-label"
+                               for="queueSize"
+                               data-translate="telephony_alias_configuration_mode_easyhunting_queue_size">
+                        </label>
                         <input-number-spinner id="queueSize"
                                               name="queueSize"
-                                              class="pull-left"
+                                              class="d-inline-block"
                                               data-ng-disabled="ModeEasyHuntingCtrl.isUpdating"
                                               data-ng-model="ModeEasyHuntingCtrl.optionsForm.queueSize"
                                               data-input-number-spinner-min="0"
@@ -127,11 +131,14 @@
                         </input-number-spinner>
                     </div>
 
-                    <div class="clearfix top-space-m8">
-                        <label class="block clearfix" for="waitTime" data-translate="telephony_alias_configuration_mode_easyhunting_max_wait_time"></label>
+                    <div class="form-group">
+                        <label class="control-label"
+                               for="waitTime"
+                               data-translate="telephony_alias_configuration_mode_easyhunting_max_wait_time">
+                        </label>
                         <input-number-spinner id="waitTime"
                                               name="waitTime"
-                                              class="pull-left"
+                                              class="d-inline-block"
                                               data-ng-disabled="ModeEasyHuntingCtrl.isUpdating"
                                               data-ng-model="ModeEasyHuntingCtrl.optionsForm.maxWaitTime"
                                               data-input-number-spinner-min="0"
@@ -139,126 +146,121 @@
                         </input-number-spinner>
                     </div>
 
-                    <div class="clearfix top-space-m8">
-                        <label for="toneOnOverflow" data-translate="telephony_alias_configuration_mode_easyhunting_tone_on_overflow"></label>
-                        <div class="row">
-                            <div class="col-xs-10">
-                                <select flat-select
-                                    id="toneOnOverflow"
-                                    name="toneOnOverflow"
-                                    class="form-control"
-                                    data-ng-disabled="ModeEasyHuntingCtrl.isUpdating"
-                                    data-ng-model="ModeEasyHuntingCtrl.queueOptionsForm.actionOnOverflowParam"
-                                    data-ng-options="sound.soundId as sound.name for sound in ModeEasyHuntingCtrl.sounds"
-                                    required>
-                                    <option value="" data-translate="telephony_alias_configuration_mode_easyhunting_none"></option>
-                                </select>
-                            </div>
-                            <button type="button"
-                                    class="btn btn-default col-xs-2"
-                                    data-ng-disabled="ModeEasyHuntingCtrl.managingSounds || ModeEasyHuntingCtrl.isUpdating"
-                                    data-ng-click="ModeEasyHuntingCtrl.openManageSoundsHelper('toneOnOverflow')">
-                                <span data-translate="telephony_alias_configuration_mode_file"></span>
-                            </button>
-                        </div>
+                    <div class="form-group">
+                        <label class="control-label"
+                               for="toneOnOverflow"
+                               data-translate="telephony_alias_configuration_mode_easyhunting_tone_on_overflow">
+                        </label>
+                        <select id="toneOnOverflow"
+                                name="toneOnOverflow"
+                                class="form-control"
+                                required
+                                data-ng-disabled="ModeEasyHuntingCtrl.isUpdating"
+                                data-ng-model="ModeEasyHuntingCtrl.queueOptionsForm.actionOnOverflowParam"
+                                data-ng-options="sound.soundId as sound.name for sound in ModeEasyHuntingCtrl.sounds">
+                            <option value="" data-translate="telephony_alias_configuration_mode_easyhunting_none"></option>
+                        </select>
+                        <button type="button"
+                                class="btn btn-default mt-2"
+                                data-ng-disabled="ModeEasyHuntingCtrl.managingSounds || ModeEasyHuntingCtrl.isUpdating"
+                                data-ng-click="ModeEasyHuntingCtrl.openManageSoundsHelper('toneOnOverflow')"
+                                data-translate="telephony_alias_configuration_mode_file">
+                        </button>
                     </div>
 
-                    <div class="clearfix top-space-m8">
-                        <label for="toneOnOpening" data-translate="telephony_alias_configuration_mode_easyhunting_tone_on_opening"></label>
-                        <div class="row">
-                            <div class="col-xs-10">
-                                <select flat-select
-                                    id="toneOnOpening"
-                                    name="toneOnOpening"
-                                    class="form-control"
-                                    data-ng-disabled="ModeEasyHuntingCtrl.isUpdating"
-                                    data-ng-model="ModeEasyHuntingCtrl.optionsForm.toneOnOpening"
-                                    data-ng-options="sound.soundId as sound.name for sound in ModeEasyHuntingCtrl.sounds"
-                                    required>
-                                    <option value="" data-translate="telephony_alias_configuration_mode_easyhunting_none"></option>
-                                </select>
-                            </div>
-                            <button type="button"
-                                    class="btn btn-default col-xs-2"
-                                    data-ng-disabled="ModeEasyHuntingCtrl.managingSounds || ModeEasyHuntingCtrl.isUpdating"
-                                    data-ng-click="ModeEasyHuntingCtrl.openManageSoundsHelper('toneOnOpening')">
-                                <span data-translate="telephony_alias_configuration_mode_file"></span>
-                            </button>
-                        </div>
+                    <div class="form-group">
+                        <label class="control-label"
+                               for="toneOnOpening"
+                               data-translate="telephony_alias_configuration_mode_easyhunting_tone_on_opening">
+                        </label>
+                        <select id="toneOnOpening"
+                                name="toneOnOpening"
+                                class="form-control"
+                                required
+                                data-ng-disabled="ModeEasyHuntingCtrl.isUpdating"
+                                data-ng-model="ModeEasyHuntingCtrl.optionsForm.toneOnOpening"
+                                data-ng-options="sound.soundId as sound.name for sound in ModeEasyHuntingCtrl.sounds">
+                            <option value="" data-translate="telephony_alias_configuration_mode_easyhunting_none"></option>
+                        </select>
+                        <button type="button"
+                                class="btn btn-default mt-2"
+                                data-ng-disabled="ModeEasyHuntingCtrl.managingSounds || ModeEasyHuntingCtrl.isUpdating"
+                                data-ng-click="ModeEasyHuntingCtrl.openManageSoundsHelper('toneOnOpening')"
+                                data-translate="telephony_alias_configuration_mode_file">
+                        </button>
                     </div>
 
-                    <div class="clearfix top-space-m8">
-                        <label for="toneOnHold" data-translate="telephony_alias_configuration_mode_easyhunting_tone_on_hold"></label>
-                        <div class="row">
-                            <div class="col-xs-10">
-                                <select flat-select
-                                    id="toneOnHold"
-                                    name="toneOnHold"
-                                    class="form-control"
-                                    data-ng-disabled="ModeEasyHuntingCtrl.isUpdating"
-                                    data-ng-model="ModeEasyHuntingCtrl.optionsForm.toneOnHold"
-                                    data-ng-options="sound.soundId as sound.name for sound in ModeEasyHuntingCtrl.sounds"
-                                    required>
-                                    <option value="" data-translate="telephony_alias_configuration_mode_easyhunting_none"></option>
-                                </select>
-                            </div>
-                            <button type="button"
-                                    class="btn btn-default col-xs-2"
-                                    data-ng-disabled="ModeEasyHuntingCtrl.managingSounds || ModeEasyHuntingCtrl.isUpdating"
-                                    data-ng-click="ModeEasyHuntingCtrl.openManageSoundsHelper('toneOnHold')">
-                                <span data-translate="telephony_alias_configuration_mode_file"></span>
-                            </button>
-                        </div>
+                    <div class="form-group">
+                        <label class="control-label"
+                               for="toneOnHold"
+                               data-translate="telephony_alias_configuration_mode_easyhunting_tone_on_hold">
+                        </label>
+                        <select id="toneOnHold"
+                                name="toneOnHold"
+                                class="form-control"
+                                required
+                                data-ng-disabled="ModeEasyHuntingCtrl.isUpdating"
+                                data-ng-model="ModeEasyHuntingCtrl.optionsForm.toneOnHold"
+                                data-ng-options="sound.soundId as sound.name for sound in ModeEasyHuntingCtrl.sounds">
+                            <option value="" data-translate="telephony_alias_configuration_mode_easyhunting_none"></option>
+                        </select>
+                        <button type="button"
+                                class="btn btn-default mt-2"
+                                data-ng-disabled="ModeEasyHuntingCtrl.managingSounds || ModeEasyHuntingCtrl.isUpdating"
+                                data-ng-click="ModeEasyHuntingCtrl.openManageSoundsHelper('toneOnHold')"
+                                data-translate="telephony_alias_configuration_mode_file">
+                        </button>
                     </div>
 
-                    <div class="clearfix top-space-m8">
-                        <label for="toneOnClosing" data-translate="telephony_alias_configuration_mode_easyhunting_tone_on_closing"></label>
-                        <div class="row">
-                            <div class="col-xs-10">
-                                <select flat-select
-                                    id="toneOnClosing"
-                                    name="toneOnClosing"
-                                    class="form-control"
-                                    data-ng-disabled="ModeEasyHuntingCtrl.isUpdating"
-                                    data-ng-model="ModeEasyHuntingCtrl.optionsForm.toneOnClosing"
-                                    data-ng-options="sound.soundId as sound.name for sound in ModeEasyHuntingCtrl.sounds"
-                                    required>
-                                    <option value="" data-translate="telephony_alias_configuration_mode_easyhunting_none"></option>
-                                </select>
-                            </div>
-                            <button type="button"
-                                    class="btn btn-default col-xs-2"
-                                    data-ng-disabled="ModeEasyHuntingCtrl.managingSounds || ModeEasyHuntingCtrl.isUpdating"
-                                    data-ng-click="ModeEasyHuntingCtrl.openManageSoundsHelper('toneOnClosing')">
-                                <span data-translate="telephony_alias_configuration_mode_file"></span>
-                            </button>
-                        </div>
+                    <div class="form-group">
+                        <label class="control-label"
+                               for="toneOnClosing"
+                               data-translate="telephony_alias_configuration_mode_easyhunting_tone_on_closing">
+                        </label>
+                        <select id="toneOnClosing"
+                                name="toneOnClosing"
+                                class="form-control"
+                                required
+                                data-ng-disabled="ModeEasyHuntingCtrl.isUpdating"
+                                data-ng-model="ModeEasyHuntingCtrl.optionsForm.toneOnClosing"
+                                data-ng-options="sound.soundId as sound.name for sound in ModeEasyHuntingCtrl.sounds">
+                            <option value="" data-translate="telephony_alias_configuration_mode_easyhunting_none"></option>
+                        </select>
+                        <button type="button"
+                                class="btn btn-default mt-2"
+                                data-ng-disabled="ModeEasyHuntingCtrl.managingSounds || ModeEasyHuntingCtrl.isUpdating"
+                                data-ng-click="ModeEasyHuntingCtrl.openManageSoundsHelper('toneOnClosing')"
+                                data-translate="telephony_alias_configuration_mode_file">
+                        </button>
                     </div>
 
-                    <div class="clearfix top-space-m16">
-                        <div class="row">
-                            <button type="submit"
-                                    class="btn btn-primary pull-right no-transition"
-                                    data-ng-disabled="ModeEasyHuntingCtrl.isUpdating"
-                                    data-ng-if="ModeEasyHuntingCtrl.hasChanges()">
-                                <span data-translate="telephony_alias_configuration_mode_easyhunting_change"></span>
-                                <spinner class="left-space-m4" data-ng-if="ModeEasyHuntingCtrl.isUpdating"></spinner>
-                            </button>
-                            <button type="button"
-                                    class="btn btn-default pull-right right-space-m4 no-transition"
-                                    data-ng-disabled="ModeEasyHuntingCtrl.isUpdating"
-                                    data-ng-if="ModeEasyHuntingCtrl.hasChanges()"
-                                    data-ng-click="ModeEasyHuntingCtrl.undoChanges()">
-                                <span data-translate="cancel"></span>
-                            </button>
-                        </div>
+                    <div class="form-group">
+                        <button type="submit"
+                                class="btn btn-primary"
+                                data-ng-disabled="ModeEasyHuntingCtrl.isUpdating"
+                                data-ng-if="ModeEasyHuntingCtrl.hasChanges()">
+                            <bouncing-box-loader class="d-inline-block align-middle mr-2"
+                                                 data-ng-if="ModeEasyHuntingCtrl.isUpdating"
+                                                 data-size="s">
+                            </bouncing-box-loader>
+                            <span data-translate="telephony_alias_configuration_mode_easyhunting_change"></span>
+                        </button>
+                        <button type="button"
+                                class="btn btn-default"
+                                data-ng-disabled="ModeEasyHuntingCtrl.isUpdating"
+                                data-ng-if="ModeEasyHuntingCtrl.hasChanges()"
+                                data-ng-click="ModeEasyHuntingCtrl.undoChanges()"
+                                data-translate="cancel">
+                        </button>
                     </div>
 
                 </form>
             </div>
 
-        </div><!-- row -->
+        </div>
 
-    </div><!-- section content -->
+    </div>
+    <!-- /.telecom-section-content -->
 
 </section>
+<!-- /.telephony-group-alias-configuration-mode-easyHunting -->

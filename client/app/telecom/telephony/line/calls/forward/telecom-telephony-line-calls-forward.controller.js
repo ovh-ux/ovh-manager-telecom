@@ -15,13 +15,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineCallsForwardCtrl", 
         }).then(
             function () {
                 Toast.success($translate.instant("telephony_line_actions_line_calls_forward_save_success"));
-                return $state.go(
-                    $state.current.name.split(".").slice(0, -1).join("."),
-                    $stateParams,
-                    {
-                        reload: true
-                    }
-                );
+                self.saved = angular.copy(self.forwards);
             },
             function (err) {
                 Toast.error($translate.instant("telephony_line_actions_line_calls_forward_save_error"));

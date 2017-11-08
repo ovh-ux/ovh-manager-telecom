@@ -19,6 +19,8 @@ angular.module("managerApp").controller("TelecomSmsCtrl", class TelecomSmsCtrl {
         this.SmsMediator.initDeferred.promise.then(() => {
             this.service = this.SmsMediator.getCurrentSmsService();
             this.serviceNameSave = this.updateServiceNameSave.bind(this);
+        }).catch((error) => {
+            this.Toast.error(`${this.$translate.instant("sms_loading_error", this.$stateParams.serviceNameSave)} ${_.get(error, "data.message", "")}`);
         }).finally(() => {
             this.loading.init = false;
         });
@@ -38,8 +40,8 @@ angular.module("managerApp").controller("TelecomSmsCtrl", class TelecomSmsCtrl {
                 title: this.service.getDisplayedName()
             }, this.service.name, "telecom-sms-section");
         }).catch((error) => {
-            this.service.stopEdition(true);
             this.Toast.error(`${this.$translate.instant("sms_rename_error", this.$stateParams.serviceNameSave)} ${_.get(error, "data.message", "")}`);
+            this.service.stopEdition(true);
             return this.$q.reject(error);
         });
     }

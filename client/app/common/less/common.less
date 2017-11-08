@@ -1,8 +1,11 @@
 @text-disabled-color: #757575;
-@sides-margin: 2%;
 
 .no-wrap {
     white-space: nowrap;
+}
+
+.no-transition {
+    transition: none !important;
 }
 
 .disabled-underline-link() {
@@ -29,7 +32,7 @@
     &__icon {
         &--main {
             font-size: 3em;
-            color: @UNIVERS;
+            color: @oui-color-dodger;
         }
     }
 }
@@ -40,34 +43,6 @@ div.ui-select-choices-group {
     background-color: white;
 }
 
-div.ui-select-container {
-    cursor: pointer;
-}
-
-.text-disabled {
-    color: @text-disabled-color !important;
-}
-
-.text-warning {
-    font-weight: bold;
-}
-
-.text-default {
-    color: @text-color;
-}
-
-.text-base {
-    color: @gray-base;
-}
-
-.text-muted {
-    color: #999;
-}
-
-.text-price {
-    color: #d30d33 !important;
-}
-
 .required::after {
     content: "*";
     display: inline-block;
@@ -75,9 +50,7 @@ div.ui-select-container {
 }
 
 a.telecom-link,
-button.telecom-link,
-a.btn-link,
-button.btn-link {
+button.telecom-link {
     .disabled-underline-link();
 
     span:not(.ovh-font) {
@@ -97,46 +70,6 @@ button.btn-link {
     line-height: 30px;
 }
 
-.alert {
-    &.alert-ovh {
-        &.alert-ad {
-            background-color: @gray-lighter;
-            border-color: @UNIVERS;
-            color: @text-color-mainInfo;
-            .master{
-                .ad-price {
-                    color: @UNIVERS;
-                }
-            }
-        }
-    }
-}
-
-.no-transition {
-    transition: none !important;
-}
-
-.line-height-normal {
-    line-height: normal !important;
-}
-
-[data-ng-messages][role=alert] {
-    color: @alert-danger-text;
-}
-
-dl.dl-telecom {
-    color: @gray-base;
-
-    > dt {
-        font-weight: normal;
-    }
-
-    > dd {
-        font-weight: bold;
-        margin-bottom: 8px;
-    }
-}
-
 .table-fixed {
     table-layout: fixed;
 }
@@ -148,4 +81,34 @@ dl.dl-telecom {
         font-size: 1.2rem;
         font-weight: 500;
     }
+}
+
+.word-break {
+    word-break: break-all !important;
+}
+
+label.oui-switch.oui-switch-toggle {
+    margin: 0px 10px -7px 10px !important;
+}
+
+.text-price {
+    color: @oui-color-pomegranate !important;
+}
+
+.intl-tel-input {
+    input {
+        padding-left: 5rem;
+    }
+}
+
+.dropdown-menu {
+    li.disabled {
+        a {
+            opacity: 0.5;
+        }
+    }
+}
+
+ul.dropdown-menu {
+    z-index: 1100;
 }

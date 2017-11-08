@@ -7,73 +7,62 @@
         <h1 data-translate="sms_options_manage_title"></h1>
     </header>
 
-    <div class="telecom-section-content">
+    <main class="telecom-section-content"
+          role="main">
+
+        <toast-message></toast-message>
 
         <div class="row">
-            <div class="col-xs-12 widget-presentation">
+            <div class="col-xs-12 col-md-6 widget-presentation">
 
                 <header class="widget-presentation-header">
-                    <h2 class="widget-presentation-title" data-translate="sms_options_manage_information_title"></h2>
+                    <h2 class="widget-presentation-title"
+                        data-translate="sms_options_manage_information_title">
+                    </h2>
                 </header>
 
-                <p class="bottom-space-m12"
-                   data-translate="sms_options_manage_information_text">
-                </p>
-                <p class="bottom-space-m12"
-                   data-translate="sms_options_manage_information_types_available">
-                </p>
-                <ul class="bottom-space-m12 lh22">
+                <p data-translate="sms_options_manage_information_text"></p>
+                <p data-translate="sms_options_manage_information_types_available"></p>
+                <ul>
                     <li data-translate="sms_options_manage_information_type_callback"></li>
                     <li data-translate="sms_options_manage_information_type_stop_callback"></li>
                 </ul>
 
             </div>
-        </div>
 
-        <div class="row">
-            <div class="col-xs-12 widget-presentation">
+            <div class="col-xs-12 col-md-6 widget-presentation">
 
                 <header class="widget-presentation-header">
-                    <h2 class="widget-presentation-title" data-translate="sms_options_manage_configure_title"></h2>
+                    <h2 class="widget-presentation-title"
+                        data-translate="sms_options_manage_configure_title">
+                    </h2>
                 </header>
 
-                <div class="text-center" data-ng-if="TelecomSmsOptionsManageCtrl.loading.init">
-                    <spinner></spinner>
-                </div>
+                <bouncing-box-loader data-size="m"
+                                     data-ng-if="TelecomSmsOptionsManageCtrl.loading.init">
+                    <h3 data-translate="loading"></h3>
+                </bouncing-box-loader>
 
-                <ul class="list-unstyled bottom-space-m20 lh22"
-                    data-ng-if="!TelecomSmsOptionsManageCtrl.loading.init">
-                    <li class="bottom-space-m12">
-                        <div class="row">
-                            <div class="col-xs-12 col-md-4">
-                                <strong data-translate="sms_options_manage_configure_callback_label"></strong>
-                            </div>
-                            <div class="col-xs-12 col-md-8">
-                                <span data-ng-if="TelecomSmsOptionsManageCtrl.service.callBack"
-                                      data-ng-bind="TelecomSmsOptionsManageCtrl.service.callBack">
-                                </span>
-                                <span data-ng-if="!TelecomSmsOptionsManageCtrl.service.callBack"
-                                      data-translate="sms_options_manage_configure_callback_empty">
-                                </span>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="row">
-                            <div class="col-xs-12 col-md-4">
-                                <strong data-translate="sms_options_manage_configure_stop_callback_label"></strong>
-                            </div>
-                            <div class="col-xs-12 col-md-8">
-                                <span data-ng-if="TelecomSmsOptionsManageCtrl.service.stopCallBack"
-                                      data-ng-bind="TelecomSmsOptionsManageCtrl.service.stopCallBack">
-                                </span>
-                                <span data-ng-if="!TelecomSmsOptionsManageCtrl.service.stopCallBack"
-                                      data-translate="sms_options_manage_configure_callback_empty">
-                                </span>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
+                <dl data-ng-if="!TelecomSmsOptionsManageCtrl.loading.init">
+                    <dt data-translate="sms_options_manage_configure_callback_label"></dt>
+                    <dd>
+                        <span data-ng-if="TelecomSmsOptionsManageCtrl.service.callBack"
+                              data-ng-bind="TelecomSmsOptionsManageCtrl.service.callBack">
+                        </span>
+                        <span data-ng-if="!TelecomSmsOptionsManageCtrl.service.callBack"
+                              data-translate="sms_options_manage_configure_callback_empty">
+                        </span>
+                    </dd>
+                    <dt class="mt-3" data-translate="sms_options_manage_configure_stop_callback_label"></dt>
+                    <dd>
+                        <span data-ng-if="TelecomSmsOptionsManageCtrl.service.stopCallBack"
+                              data-ng-bind="TelecomSmsOptionsManageCtrl.service.stopCallBack">
+                        </span>
+                        <span data-ng-if="!TelecomSmsOptionsManageCtrl.service.stopCallBack"
+                              data-translate="sms_options_manage_configure_callback_empty">
+                        </span>
+                    </dd>
+                </dl>
 
                 <button
                     type="button"
@@ -85,8 +74,9 @@
 
             </div>
         </div>
+        <!-- /.row -->
 
-    </div>
+    </main>
     <!-- /.telecom-section-content -->
 
 </section>

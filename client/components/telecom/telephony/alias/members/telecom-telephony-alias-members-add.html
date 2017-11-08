@@ -5,11 +5,11 @@
       novalidate>
 
     <!-- NUMBER -->
-    <div flat-input-container>
+    <div class="form-group">
         <label for="memberNumber"
                class="control-label"
                data-translate="telephony_alias_members_number"></label>
-        <div class="input-group top-space-m4"
+        <div class="input-group"
              data-ng-repeat="number in $ctrl.addMemberForm.numbers track by $index">
             <input id="memberNumber"
                    class="form-control"
@@ -47,7 +47,7 @@
     </div>
 
     <!-- ADD MORE NUMBERS -->
-    <div class="top-space-m16 clearfix"
+    <div class="form-group"
          data-ng-if="$ctrl.addMemberForm.numbers[0]">
         <button type="button"
                 class="btn btn-default"
@@ -58,12 +58,12 @@
     </div>
 
     <!-- TIMEOUT -->
-    <div class="clearfix top-space-m8">
+    <div class="form-group">
         <label for="timeoutInput"
-               class="block control-label"
+               class="control-label"
                data-translate="telephony_alias_members_timeout"></label>
-        <input-number-spinner id="timeoutInput"
-                              class="pull-left"
+        <input-number-spinner class="d-inline-block text-left"
+                              id="timeoutInput"
                               data-ng-model="$ctrl.addMemberForm.options.timeout"
                               data-input-number-spinner-min="1"
                               data-input-number-spinner-max="99999">
@@ -71,12 +71,12 @@
     </div>
 
     <!-- WRAP UP TIME -->
-    <div class="clearfix top-space-m8">
+    <div class="form-group">
         <label for="wrapUpTimeInput"
-               class="block control-label"
+               class="control-label"
                data-translate="telephony_alias_members_wrap_up_time"></label>
-        <input-number-spinner id="wrapUpTimeInput"
-                              class="pull-left"
+        <input-number-spinner class="d-inline-block text-left"
+                              id="wrapUpTimeInput"
                               data-ng-model="$ctrl.addMemberForm.options.wrapUpTime"
                               data-input-number-spinner-min="0"
                               data-input-number-spinner-max="99999">
@@ -84,34 +84,36 @@
     </div>
 
     <!-- SIMULTANEOUS LINES -->
-    <div class="clearfix top-space-m8">
+    <div class="form-group">
         <label for="simultaneousLinesInput"
-               class="block control-label"
+               class="control-label"
                data-translate="telephony_alias_members_simultaneous_lines"></label>
-        <input-number-spinner id="simultaneousLinesInput"
-                              class="pull-left"
+        <input-number-spinner class="d-inline-block text-left"
+                              id="simultaneousLinesInput"
                               data-ng-model="$ctrl.addMemberForm.options.simultaneousLines"
                               data-input-number-spinner-min="1"
                               data-input-number-spinner-max="10">
         </input-number-spinner>
     </div>
 
-    <div class="top-space-m32">
+    <div class="form-group">
         <button type="button"
-                class="btn btn-default no-transition"
+                class="btn btn-default"
                 data-translate="cancel"
                 data-ng-click="$ctrl.resetMemberAddForm()"
                 data-ng-if="$ctrl.addMemberForm.numbers[0]">
         </button>
         <button type="submit"
-                class="btn btn-primary no-transition"
+                class="btn btn-primary"
                 data-ng-disabled="memberAddForm.$invalid || $ctrl.loaders.adding">
             <span data-ng-if="$ctrl.addMemberForm.numbers.length <= 1"
                   data-translate="telephony_alias_members_add"></span>
             <span data-ng-if="$ctrl.addMemberForm.numbers.length > 1"
                   data-translate="telephony_alias_members_add_multiple"
                   data-translate-values="{ count: $ctrl.addMemberForm.numbers.length }"></span>
-            <spinner class="left-space-m4" data-ng-if="$ctrl.loaders.adding"></spinner>
+            <bouncing-box-loader class="d-inline-block align-middle mr-2"
+                                 data-size="s"
+                                 data-ng-if="$ctrl.loaders.adding"></bouncing-box-loader>
         </button>
     </div>
 

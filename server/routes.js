@@ -200,7 +200,8 @@ module.exports = function (app) {
         if (
             (
                 req.path.match(/Messages_.._..\.json$/) ||
-                req.path.match(/app\.css$/)
+                req.path.match(/app\.css$/) ||
+                req.path.match(/app-scss\.css$/)
             ) && req.path.indexOf("bower_components") === -1
             && req.path.indexOf("node_modules") === -1
         ) {

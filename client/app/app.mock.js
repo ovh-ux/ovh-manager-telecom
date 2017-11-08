@@ -24,6 +24,7 @@ angular.module("managerAppMock").run(function ($q, $httpBackend, TelecomMediator
     $httpBackend.whenGET(/^\/apiv\d+\/freefax$/).respond(200, []);
     $httpBackend.whenGET(/^\/apiv\d+\/overTheBox$/).respond(200, []);
     $httpBackend.whenGET(/^\/apiv7\/pack\/xdsl/).respond(200, []);
+    $httpBackend.whenGET(/^\/apiv7\/telephony/).respond(200, []);
 
     /* ----------  2API MOCKS  ----------*/
     $httpBackend.whenGET("/2api/telecom/sidebar/count").respond(200, {});

@@ -152,11 +152,9 @@
 
    <translation id="common_menu_changelog" qtlid="260971">Changelog</translation>
 
-   <translation id="common_express_lite_banner_desc" qtlid="304875">Express Lite yra modemas, suteikiantis galimybę jungtis prie interneto ir VoIP linijos už <span class="ad-price bold fs14">22,99€ be PVM</span>&#160;/&#160;mėn.</translation>
    <translation id="common_express_lite_banner_title" qtlid="304888">OVH pateikė naują ADSL pasiūlymą, į kurį įtrauktas VDSL.</translation>
    <translation id="common_generate_order" qtlid="186219">Kurti užsakymą</translation>
    <translation id="common_boost_banner_title" qtlid="304901">OVH pateikė dviejų serijų jungtį, kad būtų gaunamas geriausias ryšys.</translation>
-   <translation id="common_boost_banner_desc" qtlid="304914">Apsaugokite savo jungtį su <span class="ad-price bold fs14">CONNECT</span> planu arba padvigubinkite srautą su planu <span class="ad-price bold fs14">BOOST</span>, kuris suteikiamas su įranga ir <span class="ad-price bold fs14">OVER THE BOX</span> paslauga.<br/><small>Pasiūlymas ribojamas iki 240 užsakymų.</small></translation>
    <translation id="common_banner_discover" qtlid="304927">Susipažinti su paslauga</translation>
    <translation id="common_service_name_edit_title" qtlid="331683">{{ title }}: keisti paslaugos pavadinimą</translation>
 

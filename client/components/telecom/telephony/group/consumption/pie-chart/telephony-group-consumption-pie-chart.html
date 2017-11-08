@@ -1,5 +1,5 @@
 <div class="pie__legend">
-    <ul class="dl-horizontal" data-ng-if="!PieCtrl.loading.translations">
+    <ul data-ng-if="!PieCtrl.loading.translations">
         <li data-ng-repeat="set in PieCtrl.dataset">
             <i class="pie__legend__badge" aria-hidden="true" data-role="button"
                 data-ng-class="'pie__legend__badge--' + set.label">
@@ -24,7 +24,8 @@
             <span class="pie__legend__value" data-ng-bind="PieCtrl.getTotal();"></span>
         </li>
     </ul>
-    <bouncing-box-loader data-ng-if="PieCtrl.loading.translations">
+    <bouncing-box-loader data-ng-if="PieCtrl.loading.translations"
+                         data-size="m">
         <p data-translate="loading"></p>
     </bouncing-box-loader>
 </div>

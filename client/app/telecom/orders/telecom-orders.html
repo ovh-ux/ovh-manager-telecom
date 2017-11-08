@@ -7,64 +7,83 @@
 
     <div class="telecom-section-content">
         <div class="widget-presentation">
-            <h2 class="widget-presentation-title" data-translate="telecom_orders_follow_up_intro"></h2>
-
-            <div class="table-responsive-vertical ovh-form-flat">
-                <table class="table table-hover table-condensed ovh-form-flat table-form table-pretty">
+            <h2 class="widget-presentation-title"
+                data-translate="telecom_orders_follow_up_intro">
+            </h2>
+            <div class="table-responsive">
+                <table class="table"
+                       data-ng-class="{
+                           'table-hover table-striped': OrdersCtrl.ordersDetails.length > 1
+                       }">
                     <thead>
-                    <tr>
-                        <th>{{'telecom_orders_follow_up_header_service' | translate}}</th>
-                        <th>{{'telecom_orders_follow_up_header_type' | translate}}</th>
-                        <th>{{'telecom_orders_follow_up_header_status' | translate}}</th>
-                        <th>{{'telecom_orders_follow_up_header_step' | translate}}</th>
-                        <th>{{'telecom_orders_follow_up_header_state' | translate}}</th>
-                    </tr>
+                        <tr>
+                            <th scope="col"
+                                data-translate="telecom_orders_follow_up_header_service">
+                            </th>
+                            <th scope="col"
+                                data-translate="telecom_orders_follow_up_header_type">
+                            </th>
+                            <th scope="col"
+                                data-translate="telecom_orders_follow_up_header_status">
+                            </th>
+                            <th scope="col"
+                                data-translate="telecom_orders_follow_up_header_step">
+                            </th>
+                            <th scope="col"
+                                data-translate="telecom_orders_follow_up_header_state">
+                            </th>
+                        </tr>
                     </thead>
                     <tbody>
-                    <tr data-ng-repeat="order in OrdersCtrl.ordersDetails">
-                        <td data-title="{{'telecom_orders_follow_up_header_service' | translate}}">
-                            <a data-ui-sref="telecom.orders.show({serviceName : order.xdsl })"> {{order.name | limitTo : 25}} </a>
-                        </td>
-                        <td data-title="{{'telecom_orders_follow_up_header_type' | translate}}">{{'telecom_orders_follow_up_type_' + order.accessType | translate}}</td>
-                        <td data-title="{{'telecom_orders_follow_up_header_status' | translate}}">{{ 'status_' + order.lineStatus | translate}}</td>
-                        <td data-title="{{'telecom_orders_follow_up_header_step' | translate}}">
-                            <span data-ng-if="order.lastTask">{{ 'telecom_common_pack_xdsl_order_step_name_' + order.lastTask.name | translate}}</span>
-                        </td>
-                        <td data-title="{{'telecom_orders_follow_up_header_state' | translate}}">
-                            <i class="ovh-font fs20 text-{{order.badgeClass}} {{order.badgeIconClass}}"
-                               data-uib-tooltip="{{ ('telecom_common_pack_xdsl_order_status_' + order.lastTask.status) | translate}}"></i>
-                        </td>
-                    </tr>
-
-                    <tr data-ng-show="OrdersCtrl.loading">
-                        <td colspan="5" class="pull-left">
-                            <div data-spinner></div>
-                        </td>
-                    </tr>
-
-                    <tr data-ng-if="OrdersCtrl.ordersDetails.length == 0 && !OrdersCtrl.loading">
-                        <td data-title="{{'telecom_orders_follow_up_no_orders' | translate}}" colspan="5" data-translate="telecom_orders_follow_up_no_orders">
-                        </td>
-                    </tr>
+                        <tr data-ng-repeat="order in OrdersCtrl.ordersDetails track by $index">
+                            <td>
+                                <a data-ui-sref="telecom.orders.show({serviceName: order.xdsl })"
+                                   data-ng-bind="order.name | limitTo: 25">
+                                </a>
+                            </td>
+                            <td data-ng-bind="'telecom_orders_follow_up_type_' + order.accessType | translate"></td>
+                            <td data-ng-bind="'status_' + order.lineStatus | translate"></td>
+                            <td>
+                                <span data-ng-if="order.lastTask"
+                                      data-ng-bind="'telecom_common_pack_xdsl_order_step_name_' + order.lastTask.name | translate">
+                                </span>
+                            </td>
+                            <td>
+                                <i class="ovh-font ovh-font-1x4 my-0 text-{{ order.badgeClass }} {{ order.badgeIconClass }}"
+                                   data-uib-tooltip="{{ 'telecom_common_pack_xdsl_order_status_' + order.lastTask.status | translate }}"
+                                   data-tooltip-append-to-body="true">
+                                </i>
+                            </td>
+                        </tr>
+                        <tr data-ng-show="OrdersCtrl.loading">
+                            <td colspan="5">
+                                <bouncing-box-loader data-size="m"></bouncing-box-loader>
+                            </td>
+                        </tr>
+                        <tr data-ng-if="OrdersCtrl.ordersDetails.length == 0 && !OrdersCtrl.loading">
+                            <td colspan="5"
+                                class="text-center"
+                                data-translate="telecom_orders_follow_up_no_orders">
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
-
-                <div data-ng-show="OrdersCtrl.orders.length > OrdersCtrl.perPage"
-                     class="table table-pretty space-p8"
-                     data-pagination-front
-                     data-go-to-page="false"
-                     data-items="OrdersCtrl.orders"
-                     data-paginated-items="OrdersCtrl.ordersDetails"
-                     data-current-page="OrdersCtrl.currentPage"
-                     data-items-per-page="OrdersCtrl.perPage"
-                     data-nb-pages="OrdersCtrl.nbPages"
-                     data-on-transform-item-notify="OrdersCtrl.onTransformItemNotify(item)"
-                     data-page-placeholder="{{currentPage}} / {{nbPages}}"
-                     data-item-per-page-placeholder="{{'telecom_orders_follow_up_items_per_view' | translate}}">
-                </div>
+            </div>
+            <div class="mt-2"
+                 data-ng-show="OrdersCtrl.orders.length > OrdersCtrl.perPage"
+                 data-pagination-front
+                 data-go-to-page="false"
+                 data-items="OrdersCtrl.orders"
+                 data-paginated-items="OrdersCtrl.ordersDetails"
+                 data-current-page="OrdersCtrl.currentPage"
+                 data-items-per-page="OrdersCtrl.perPage"
+                 data-nb-pages="OrdersCtrl.nbPages"
+                 data-on-transform-item-notify="OrdersCtrl.onTransformItemNotify(item)"
+                 data-page-placeholder="{{currentPage}} / {{nbPages}}"
+                 data-item-per-page-placeholder="{{'telecom_orders_follow_up_items_per_view' | translate}}">
             </div>
         </div>
     </div>
 
-
 </div>
+<!-- /.telecom-orders -->
