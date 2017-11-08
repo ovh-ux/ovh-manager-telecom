@@ -19,8 +19,8 @@
 
     <div class="telecom-section-content"
          data-ng-if="!PortabilitiesCtrl.isLoading">
-        <div class="row" >
-            <div class="col-md-6 widget-presentation">
+        <div class="row">
+            <div class="col-xs-12 col-md-8 widget-presentation">
                 <header class="widget-presentation-header">
                     <h2 class="widget-presentation-title"
                         data-translate="telephony_alias_portabilities_subtitle">
@@ -65,8 +65,9 @@
                             </dl>
 
                             <!-- PORTABILITY STEPS TIMELINE -->
-                            <ul>
-                                <li data-ng-repeat="step in porta.steps track by $index"
+                            <ul class="list-unstyled pl-5">
+                                <li class="pt-4 pl-3"
+                                    data-ng-repeat="step in porta.steps track by $index"
                                     data-ng-class="{
                                         'doing': step.status === 'doing',
                                         'done': step.status === 'done',
@@ -79,35 +80,40 @@
                                     </span>
                                     <span class="float-right text-success"
                                           data-ng-if="step.doneDate && step.status === 'done'"
-                                          data-translate="telephony_alias_portabilities_step_done_on" data-translate-values="{ date: (step.doneDate | date) }">
+                                          data-translate="telephony_alias_portabilities_step_done_on"
+                                          data-translate-values="{ date: (step.doneDate | date) }">
                                     </span>
                                     <span class="float-right text-info"
                                           data-ng-if="step.status === 'doing'"
-                                          data-translate="telephony_alias_portabilities_step_status_doing"></span>
+                                          data-translate="telephony_alias_portabilities_step_status_doing">
+                                    </span>
                                     <span class="float-right text-danger"
                                           data-ng-if="step.status === 'error'"
-                                          data-translate="telephony_alias_portabilities_step_status_error"></span>
+                                          data-translate="telephony_alias_portabilities_step_status_error">
+                                    </span>
                                     <span class="float-right text-danger"
                                           data-ng-if="step.status === 'cancelled'"
-                                          data-translate="telephony_alias_portabilities_step_status_error"></span>
+                                          data-translate="telephony_alias_portabilities_step_status_error">
+                                    </span>
                                 </li>
                             </ul><!-- timeline -->
 
                             <!-- Cancel portability -->
-                            <div class="clearfix">
-                                <button type="button"
-                                        class="btn btn-primary pull-right"
-                                        data-ng-if="porta.canBeCancelled"
-                                        data-ng-disabled="PortabilitiesCtrl.loading.cancel"
-                                        data-ng-really-click="PortabilitiesCtrl.confirmCancelPortability(porta)"
-                                        data-ng-really-message="{{ 'telephony_alias_portabilities_cancel_confirm' | translate }}"
-                                        data-ng-really-confirm="{{ 'common_yes_capitalized' | translate }}"
-                                        data-ng-really-cancel="{{ 'common_no_capitalized' | translate }}"
-                                        data-ng-really-window-class="revert-really-buttons">
-                                    <spinner data-ng-if="PortabilitiesCtrl.loading.cancel"></spinner>
-                                    <span data-translate="{{ !PortabilitiesCtrl.loading.cancel ? 'telephony_alias_portabilities_cancel' : 'telephony_alias_portabilities_cancel_doing' }}"></span>
-                                </button>
-                            </div>
+                            <button type="button"
+                                    class="btn btn-primary"
+                                    data-ng-if="porta.canBeCancelled"
+                                    data-ng-disabled="PortabilitiesCtrl.loading.cancel"
+                                    data-ng-really-click="PortabilitiesCtrl.confirmCancelPortability(porta)"
+                                    data-ng-really-message="{{ 'telephony_alias_portabilities_cancel_confirm' | translate }}"
+                                    data-ng-really-confirm="{{ 'common_yes_capitalized' | translate }}"
+                                    data-ng-really-cancel="{{ 'common_no_capitalized' | translate }}"
+                                    data-ng-really-window-class="revert-really-buttons">
+                                <bouncing-box-loader class="d-inline-block align-middle mr-2"
+                                                     data-ng-if="PortabilitiesCtrl.loading.cancel"
+                                                     data-size="s">
+                                </bouncing-box-loader>
+                                <span data-translate="{{ !PortabilitiesCtrl.loading.cancel ? 'telephony_alias_portabilities_cancel' : 'telephony_alias_portabilities_cancel_doing' }}"></span>
+                            </button>
                             <!-- End of Cancel portability -->
 
                         </div>

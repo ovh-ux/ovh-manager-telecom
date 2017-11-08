@@ -102,7 +102,7 @@ angular.module("managerApp").controller("FreeFaxVoicemailConfigurationCtrl", fun
             }).$promise
         ];
 
-        if (conf.activateVoiceMail !== initialActivateVoiceMail) {
+        if ((conf.activateVoiceMail && initialActivateVoiceMail !== "voicemail") || (!conf.activateVoiceMail && initialActivateVoiceMail !== "fax")) {
             tasks.push(
                 OvhApiFreeFax.Lexi().voiceMailChangeRouting({
                     serviceName: $stateParams.serviceName

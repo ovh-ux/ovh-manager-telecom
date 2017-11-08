@@ -229,7 +229,7 @@ angular.module("managerApp").constant("LANGUAGES", {
         ],
         maxNotifications: 5,
         audioFormat: [
-            "aiif",
+            "aiff",
             "au",
             "flac",
             "mp3",
