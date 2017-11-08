@@ -1,13 +1,12 @@
 <div data-ng-controller="XdslAccessLnsRateLimitCtrl as LnsRateLimitCtrl">
     <form name="remoteControlForm"
-          data-ng-submit="LnsRateLimitCtrl.changeRate()"
-          class="ovh-form-flat">
+          data-ng-submit="LnsRateLimitCtrl.changeRate()">
         <div class="row">
             <div class="col-xs-9">
                 <slider data-floor="{{LnsRateLimitCtrl.min}}"
                         data-ceiling="{{LnsRateLimitCtrl.max}}"
                         data-step="{{LnsRateLimitCtrl.step}}"
-                        class="left-space-m0 bottom-space-m0"
+                        class="my-0"
                         data-ng-model="LnsRateLimitCtrl.rate.value"
                         data-refresh-trigger="LnsRateLimitCtrl.rate.disabled"
                         data-display-callback="LnsRateLimitCtrl.reformatValue(value)"
@@ -18,19 +17,17 @@
                  data-ng-bind="LnsRateLimitCtrl.reformatValue(LnsRateLimitCtrl.rate.value)">
             </div>
         </div>
-        <div class="top-space-m8">
-            <flat-checkbox>
-                <input type="checkbox"
-                    id="limitRateEnabled"
-                    name="limitRateEnabled"
-                    class="form-control pointer"
-                    data-ng-model="LnsRateLimitCtrl.rate.disabled"
-                    data-ng-disabled="access.tasks.current.lnsApplyRateLimit || !LnsRateLimitCtrl.rate.canApplyLnsRateLimit">
-            </flat-checkbox>
+        <div class="mt-2">
+            <input type="checkbox"
+                id="limitRateEnabled"
+                name="limitRateEnabled"
+                class="form-control"
+                data-ng-model="LnsRateLimitCtrl.rate.disabled"
+                data-ng-disabled="access.tasks.current.lnsApplyRateLimit || !LnsRateLimitCtrl.rate.canApplyLnsRateLimit">
             <label for="limitRateEnabled"
                    data-translate="xdsl_access_lns_ratelimit_activate"></label>
         </div>
-        <button class="btn btn-primary top-space-m8"
+        <button class="btn btn-primary mt-2"
                 type="submit"
                 data-ng-disabled="!LnsRateLimitCtrl.rate.canApplyLnsRateLimit || access.tasks.current.lnsApplyRateLimit || !LnsRateLimitCtrl.valueChanged() || (LnsRateLimitCtrl.rate.disabled === true && LnsRateLimitCtrl.undoRate.disabled === true)"
                 data-ng-if="!access.tasks.current.lnsApplyRateLimit"
@@ -38,7 +35,7 @@
                 data-translate="submit">
         </button>
         <div data-ng-if="access.tasks.current.lnsApplyRateLimit">
-            <spinner></spinner>
+            <bouncing-box-loader data-size="m"></bouncing-box-loader>
             <span data-translate="xdsl_access_lns_ratelimit_doing"></span>
         </div>
     </form>

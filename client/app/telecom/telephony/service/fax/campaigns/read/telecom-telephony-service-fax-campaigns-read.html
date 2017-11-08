@@ -1,10 +1,9 @@
 <div class="telecom-telephony-service-fax-campaigns-read">
 
     <div class="modal-header">
-        <h3 class="modal-title pull-left" data-translate="telephony_service_fax_campaigns_read_campaign_title"></h3>
         <button
             type="button"
-            class="close pull-right"
+            class="close float-right"
             aria-label="{{ ::'cancel' | translate }}"
             data-ng-click="CampaignsReadCtrl.close()">
             <span aria-hidden="true">&times;</span>
@@ -12,6 +11,7 @@
     </div>
 
     <div class="modal-body" data-ng-if="!CampaignsReadCtrl.loading.init">
+        <h3 data-translate="telephony_service_fax_campaigns_read_campaign_title"></h3>
         <dl class="dl-horizontal">
             <!-- NAME -->
             <dt data-translate="telephony_service_fax_campaigns_add_campaign_label_name"></dt>
@@ -19,8 +19,9 @@
 
             <!-- REFERENCE -->
             <dt data-translate="telephony_service_fax_campaigns_read_campaign_reference"></dt>
-            <dd class="word-wrap">
-                <span data-ng-bind="CampaignsReadCtrl.campaign.reference | date:'short'"></span>
+            <dd>
+                <span class="word-break"
+                      data-ng-bind="CampaignsReadCtrl.campaign.reference | date:'short'"></span>
             </dd>
 
             <!-- SUCCESS -->
@@ -84,11 +85,12 @@
             <dd data-ng-bind="CampaignsReadCtrl.details.failed.length || 0"></dd>
         </dl>
 
-        <div class="row bottom-space-m8" data-ng-if="CampaignsReadCtrl.details.todo.length">
+        <div class="row mb-2"
+             data-ng-if="CampaignsReadCtrl.details.todo.length">
             <div class="col-xs-12">
                 <button
                     type="button"
-                    class="btn btn-link no-style space-p0 telecom-link"
+                    class="btn btn-link p-0 telecom-link"
                     data-ng-click="CampaignsReadCtrl.list.todo = !CampaignsReadCtrl.list.todo">
                     <i class="ovh-font"
                        aria-hidden="true"
@@ -98,11 +100,11 @@
                     }"></i>
                     <span data-translate="telephony_service_fax_campaigns_read_campaign_details_todo"></span>
                 </button>
-                <ul class="list-group top-space-m12"
+                <ul class="list-group mt-4"
                     data-ng-show="CampaignsReadCtrl.list.todo">
                     <li class="list-group-item">
                         <div class="row todos-list">
-                            <div class="col-xs-6 col-sm-3 text-center lh22"
+                            <div class="col-xs-6 col-sm-3 text-center"
                                  data-ng-repeat="number in CampaignsReadCtrl.details.todo track by $index">
                                 <span data-ng-bind="number"></span>
                             </div>
@@ -112,11 +114,12 @@
             </div>
         </div>
 
-        <div class="row bottom-space-m8" data-ng-if="CampaignsReadCtrl.details.success.length">
+        <div class="row mb-2"
+             data-ng-if="CampaignsReadCtrl.details.success.length">
             <div class="col-xs-12">
                 <button
                     type="button"
-                    class="btn btn-link no-style space-p0 telecom-link"
+                    class="btn btn-link p-0 telecom-link"
                     data-ng-click="CampaignsReadCtrl.list.success = !CampaignsReadCtrl.list.success">
                     <i class="ovh-font"
                        aria-hidden="true"
@@ -126,11 +129,11 @@
                     }"></i>
                     <span data-translate="telephony_service_fax_campaigns_read_campaign_details_success"></span>
                 </button>
-                <ul class="list-group top-space-m12"
+                <ul class="list-group mt-2"
                     data-ng-show="CampaignsReadCtrl.list.success">
                     <li class="list-group-item">
                         <div class="row todos-list">
-                            <div class="col-xs-6 col-sm-3 text-center lh22"
+                            <div class="col-xs-6 col-sm-3 text-center"
                                  data-ng-repeat="number in CampaignsReadCtrl.details.success track by $index">
                                 <span data-ng-bind="number"></span>
                             </div>
@@ -140,11 +143,12 @@
             </div>
         </div>
 
-        <div class="row bottom-space-m8" data-ng-if="CampaignsReadCtrl.details.failed.length">
+        <div class="row mb-2"
+             data-ng-if="CampaignsReadCtrl.details.failed.length">
             <div class="col-xs-12">
                 <button
                     type="button"
-                    class="btn btn-link no-style space-p0 telecom-link"
+                    class="btn btn-link p-0 telecom-link"
                     data-ng-click="CampaignsReadCtrl.list.failed = !CampaignsReadCtrl.list.failed">
                     <i class="ovh-font"
                        aria-hidden="true"
@@ -154,11 +158,11 @@
                     }"></i>
                     <span data-translate="telephony_service_fax_campaigns_read_campaign_details_failed"></span>
                 </button>
-                <ul class="list-group top-space-m12"
+                <ul class="list-group mt-2"
                     data-ng-show="CampaignsReadCtrl.list.failed">
                     <li class="list-group-item">
                         <div class="row todos-list">
-                            <div class="col-xs-6 col-sm-3 text-center lh22"
+                            <div class="col-xs-6 col-sm-3 text-center"
                                  data-ng-repeat="number in CampaignsReadCtrl.details.failed track by $index">
                                 <span data-ng-bind="number"></span>
                             </div>
@@ -170,7 +174,7 @@
     </div>
 
     <div class="modal-body" data-ng-if="CampaignsReadCtrl.loading.init">
-        <bouncing-box-loader>
+        <bouncing-box-loader data-size="m">
             <h4 data-translate="loading"></h4>
         </bouncing-box-loader>
     </div>

@@ -15,6 +15,7 @@
         <link rel="stylesheet" href="node_modules/ng-embed/dist/ng-embed.min.css">
         <!-- endbuild -->
         <!-- build:css({.tmp,client}) app/app.css -->
+        <link rel="stylesheet" href="app/app-scss.css">
         <link rel="stylesheet" href="app/app.css">
         <!-- injector:css -->
         <!-- endinjector -->
@@ -22,29 +23,54 @@
     </head>
     <body class="ng-cloak" data-ng-cloak>
 
-        <!-- TOP MENU -->
-        <manager-navbar></manager-navbar>
+        <div class="col-container">
 
-        <div class="container-fluid">
-            <div class="row" style="position: relative;">
+            <!-- TOP MENU -->
+            <manager-navbar></manager-navbar>
 
-                <!-- SIDE MENU -->
-                <div data-sidebar-menu
-                     class="col-sm-3 col-md-2">
+            <div class="container-fluid h-100 w-100" style="overflow: auto">
+                <div class="row">
+
+                    <!-- SIDE MENU -->
+                    <div data-sidebar-menu
+                         class="col-sm-3 col-md-2">
+                    </div>
+
+                    <!-- CONTENT -->
+                    <div id="content" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
+
+                        <flash-message duration="600000" class="flash"></flash-message>
+                        <ovh-browser-alert></ovh-browser-alert>
+                        <ovh-task-follow></ovh-task-follow>
+
+                        <div ui-view=""></div>
+                    </div>
+
                 </div>
-
-                <!-- CONTENT -->
-                <div id="content" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
-
-                    <flash-message duration="600000" class="flash"></flash-message>
-                    <ovh-browser-alert></ovh-browser-alert>
-                    <ovh-task-follow></ovh-task-follow>
-
-                    <div ui-view=""></div>
-                </div>
-
+                <!-- <chatbot></chatbot> -->
             </div>
-            <chatbot></chatbot>
+
+        </div>
+
+        <div class="d-flex text-center"
+             id="managerPreload"
+             data-ng-class="managerPreloadHide">
+            <div class="m-auto">
+                <p class="lead mb-3"
+                   data-translate="preload_welcome">
+                </p>
+                <hr class="my-0" />
+                <h1 class="mt-3"
+                   data-translate="preload_manager_ovh">
+                </h1>
+                <div class="mt-5">
+                    <div class="oui-loader oui-loader_l">
+                        <div class="oui-loader__container mx-auto">
+                            <div class="oui-loader__image"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!--[if lt IE 9]>

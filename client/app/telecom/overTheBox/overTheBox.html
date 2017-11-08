@@ -2,14 +2,19 @@
 
     <div class="telecom-section-header">
 
-        <header role="banner">
+        <header class="page-header"
+                role="banner">
             <editable-service-name data-editable-service-name-title="OverTheBox.service.customerDescription || ('overTheBox_dashboard_title' | translate)"
                                    data-disabled="false"
                                    data-editable-service-name-title-on-save="OverTheBox.updateName">
             </editable-service-name>
             <div>
-                <span class="service-title" data-translate="overTheBox_dashboard_service_label"></span>
-                <span class="service-item" data-ng-bind="OverTheBox.service.serviceName | characters:50:true"></span>
+                <span class="service-title"
+                      data-translate="overTheBox_dashboard_service_label">
+                </span>
+                <span class="service-item"
+                      data-ng-bind="OverTheBox.service.serviceName | characters:50:true">
+                </span>
             </div>
         </header>
 
@@ -40,10 +45,12 @@
             </responsive-tabs>
         </nav>
 
-    </div><!-- .telecom-section-header -->
+    </div>
+    <!-- /.telecom-section-header -->
 
     <main class="ui-view-container"
          role="main"
          data-ui-view="otbView">
     </main>
 </section>
+<!-- /.over-the-box -->

@@ -1,9 +1,8 @@
 <div class="telecom-pack-migration-confirm">
 
-    <bouncing-box-loader data-ng-if="ConfirmCtrl.loading.migrate">
-        <h3 class="top-space-m16"
-            data-translate="telecom_pack_migration_doing">
-        </h3>
+    <bouncing-box-loader data-size="m"
+                         data-ng-if="ConfirmCtrl.loading.migrate">
+        <h3 data-translate="telecom_pack_migration_doing"></h3>
     </bouncing-box-loader>
 
     <div class="widget-presentation"
@@ -17,7 +16,7 @@
         </p>
 
         <div data-ng-if="ConfirmCtrl.choosedAdditionalOptions.length > 0 || (ConfirmCtrl.process.selectedOffer.options.gtr_ovh && ConfirmCtrl.process.selectedOffer.options.gtr_ovh.selected)">
-            <div class="responsive-table-line top-space-m16 bottom-space-m16">
+            <div class="responsive-table-line my-3">
                 <table class="table table-condensed">
                     <thead>
                         <tr>
@@ -138,7 +137,7 @@
            data-translate-values="{ count : ConfirmCtrl.process.selectedOffer.totalSubServiceToDelete }">
         </p>
 
-        <div class="responsive-table-line top-space-m16 bottom-space-m16">
+        <div class="responsive-table-line my-3">
             <table class="table table-condensed">
                 <thead>
                     <tr>
@@ -178,23 +177,22 @@
             data-translate="telecom_pack_migration_confirm_contracts_accept_title"></h2>
 
         <form data-ng-submit="ConfirmCtrl.startMigration()">
-            <label class="top-space-m16 bottom-space-m16">
-                <div flat-input-container
-                     class="input-group inline-block vertical-middle right-space-m8">
-                    <flat-checkbox>
-                        <input type="checkbox"
-                               data-ng-model="ConfirmCtrl.model.acceptContracts">
-                    </flat-checkbox>
-                </div>
-                <span data-translate="telecom_pack_migration_confirm_contracts_accept_explain"></span>
-            </label>
-            <ul class="list-unstyled bottom-space-m32">
+            <div class="checkbox">
+                <label for="acceptContracts">
+                    <input type="checkbox"
+                           id="acceptContracts"
+                           name="acceptContracts"
+                           data-ng-model="ConfirmCtrl.model.acceptContracts">
+                    <span data-translate="telecom_pack_migration_confirm_contracts_accept_explain"></span>
+                </label>
+            </div>
+            <ul class="list-unstyled mb-5">
                 <li data-ng-repeat="contract in ConfirmCtrl.process.selectedOffer.contracts track by $index">
                     <a data-ng-href="{{ contract.url }}"
                        target="_blank"
                        title="{{ contract.name }} {{::'common_newtab' | translate }}">
                        <span data-ng-bind="contract.name"></span>
-                       <span class="ovh-font ovh-font-newtab fs16 left-space-m4" aria-hidden="true"></span>
+                       <span class="ovh-font ovh-font-newtab ml-2" aria-hidden="true"></span>
                     </a>
                 </li>
             </ul>

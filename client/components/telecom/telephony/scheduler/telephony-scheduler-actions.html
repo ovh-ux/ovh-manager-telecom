@@ -3,21 +3,21 @@
     <div class="actions-menu-pages">
 
         <div class="actions-menu-page main-page">
-            <ul class="actions-list list-unstyled clearfix no-space">
+            <ul class="actions-list list-unstyled p-0 m-0">
                 <li class="actions-list-item">
-                    <button class="actions-menu-item-link no-style block full-width"
+                    <button class="actions-menu-item-link d-block w-100"
                             type="button"
                             data-ng-click="$ctrl.manageAdd()"
                             data-ng-disabled="$ctrl.status.deleteConfirm">
 
-                        <span class="inline-block item-icon"
+                        <span class="d-inline-block item-icon"
                               aria-hidden>
                             <i class="ovh-font ovh-font-ajouter"
                                aria-hidden>
                             </i>
                         </span>
 
-                        <span class="block item-title"
+                        <span class="d-block item-title"
                               data-translate="telephony_scheduler_actions_add">
                         </span>
 
@@ -25,19 +25,19 @@
                 </li>
 
                 <li class="actions-list-item">
-                    <button class="actions-menu-item-link no-style block full-width"
+                    <button class="actions-menu-item-link d-block w-100"
                             type="button"
                             data-ng-click="$ctrl.manageImport()"
                             data-ng-disabled="$ctrl.status.deleteConfirm || $ctrl.scheduler.hasChange()">
 
-                        <span class="inline-block item-icon"
+                        <span class="d-inline-block item-icon"
                               aria-hidden>
                             <i class="ovh-font ovh-font-download"
                                aria-hidden>
                             </i>
                         </span>
 
-                        <span class="block item-title"
+                        <span class="d-block item-title"
                               data-translate="telephony_scheduler_actions_import">
                         </span>
 
@@ -45,19 +45,19 @@
                 </li>
 
                 <li class="actions-list-item">
-                    <button class="actions-menu-item-link no-style block full-width"
+                    <button class="actions-menu-item-link d-block w-100"
                             type="button"
                             data-ng-click="$ctrl.manageExport()"
                             data-ng-disabled="$ctrl.status.deleteConfirm || $ctrl.scheduler.hasChange()">
 
-                        <span class="inline-block item-icon"
+                        <span class="d-inline-block item-icon"
                               aria-hidden>
                             <i class="ovh-font ovh-font-upload"
                                aria-hidden>
                             </i>
                         </span>
 
-                        <span class="block item-title"
+                        <span class="d-block item-title"
                               data-translate="telephony_scheduler_actions_export">
                         </span>
 
@@ -65,19 +65,19 @@
                 </li>
 
                 <li class="actions-list-item">
-                    <button class="actions-menu-item-link no-style block full-width"
+                    <button class="actions-menu-item-link d-block w-100"
                             type="button"
                             data-ng-click="$ctrl.manageBankHolidays()"
                             data-ng-disabled="$ctrl.status.deleteConfirm">
 
-                        <span class="inline-block item-icon"
+                        <span class="d-inline-block item-icon"
                               aria-hidden>
                             <i class="ovh-font ovh-font-palmTree"
                                aria-hidden>
                             </i>
                         </span>
 
-                        <span class="block item-title"
+                        <span class="d-block item-title"
                               data-translate="telephony_scheduler_actions_bank_holidays">
                         </span>
 
@@ -85,18 +85,18 @@
                 </li>
 
                 <li class="actions-list-item">
-                    <button class="actions-menu-item-link no-style block full-width"
+                    <button class="actions-menu-item-link d-block w-100"
                             type="button"
                             data-ng-click="$ctrl.status.deleteConfirm = true">
 
-                        <span class="inline-block item-icon"
+                        <span class="d-inline-block item-icon"
                               aria-hidden>
                             <i class="ovh-font ovh-font-bin"
                                aria-hidden>
                             </i>
                         </span>
 
-                        <span class="block item-title"
+                        <span class="d-block item-title"
                               data-translate="telephony_scheduler_actions_bank_delete_all">
                         </span>
 
@@ -107,22 +107,23 @@
             <footer class="bottom-action"
                     data-ng-show="$ctrl.status.deleteConfirm">
 
-                <div class="confirm-inner clearfix">
+                <div class="confirm-inner">
 
                     <p data-translate="telephony_scheduler_delete_all_confirm_question"></p>
 
                     <div class="button-container">
                         <button type="button"
-                                class="btn btn-primary pull-right left-space-m4"
+                                class="btn btn-primary float-right ml-2"
                                 data-ng-click="$ctrl.manageDeleteAll()">
-                            <spinner data-ng-if="$ctrl.loading.deleteAll"
-                                     data-name="bubbles-fff-222-16">
-                            </spinner>
+                            <bouncing-box-loader data-ng-if="$ctrl.loading.deleteAll"
+                                                 data-ng-size="s"
+                                                 class="d-inline-block align-middle mr-2">
+                            </bouncing-box-loader>
                             <span data-translate="delete"></span>
                         </button>
 
                         <button type="button"
-                                class="btn btn-default pull-right"
+                                class="btn btn-default float-right"
                                 data-translate="cancel"
                                 data-ng-click="$ctrl.status.deleteConfirm = false"
                                 data-ng-disabled="$ctrl.loading.deleteAll">

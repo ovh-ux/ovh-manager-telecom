@@ -1,13 +1,10 @@
-<form class="ovh-form-flat telecom-scheduler-bank-holidays"
+<form class="telecom-scheduler-bank-holidays"
       name="schdulerBankHolidaysForm"
       data-ng-submit="SchedulerHolidaysCtrl.manageInject()">
 
     <div class="modal-header">
-        <h3 class="modal-title pull-left"
-            data-translate="telephony_scheduler_bank_holidays_title">
-        </h3>
         <button type="button"
-                class="close pull-right"
+                class="close float-right"
                 aria-label="{{'cancel'|translate}}"
                 data-ng-click="SchedulerHolidaysCtrl.cancel()"
                 data-ng-disabled="SchedulerHolidaysCtrl.loading.export || SchedulerHolidaysCtrl.status.exported">
@@ -15,19 +12,21 @@
         </button>
     </div>
 
-    <div class="modal-body clearfix"
+    <div class="modal-body"
          data-ng-if="!SchedulerHolidaysCtrl.loading.init">
+
+        <h3 data-translate="telephony_scheduler_bank_holidays_title">
+        </h3>
 
         <div class="row">
             <!-- "FILTERS" -->
             <div class="col-xs-3">
                 <!-- COUNTRY -->
-                <div class="form-group clearfix">
+                <div class="form-group">
                     <label for="countryChoice"
                            data-translate="common_country">
                     </label>
-                    <select data-flat-select
-                            id="countryChoice"
+                    <select id="countryChoice"
                             name="countryChoice"
                             class="form-control"
                             data-ng-model="SchedulerHolidaysCtrl.model.country"
@@ -37,9 +36,9 @@
                 </div> <!-- COUNTRY -->
 
                 <!-- YEAR -->
-                <div class="form-group clearfix">
+                <div class="form-group">
                     <label data-translate="telephony_scheduler_bank_holidays_year"></label>
-                    <div class="btn-group-vertical full-width"
+                    <div class="btn-group-vertical w-100"
                          role="group"
                          data-translate-attr="{ 'aria-label': 'telephony_scheduler_bank_holidays_year_aria_label' }">
                         <button class="btn btn-default"
@@ -57,25 +56,19 @@
 
             <!-- BANK HOLIDAYS LIST -->
             <div class="col-xs-9">
-                <ul class="bank-holidays-list list-group dtable full-width no-space">
-                    <li class="bank-holiday-item dtr"
+                <ul class="bank-holidays-list list-group w-100 p-0 m-0">
+                    <li class="bank-holiday-item checkbox"
                         data-ng-repeat="bankHoliday in SchedulerHolidaysCtrl.holidaysLists[SchedulerHolidaysCtrl.model.year] track by $index">
-                        <label class="full-width"
+                        <label for="bankHoliday-{{ bankHoliday.name }}"
                                data-translate-attr="{ title: bankHoliday.disabled ? 'telephony_scheduler_bank_holidays_already_in_schedular' : '' }">
-                            <div class="dtd vertical-middle text-center">
-                                <flat-checkbox>
-                                    <input type="checkbox"
-                                           name="bankHoliday-{{ bankHoliday.name }}"
-                                           data-ng-model="bankHoliday.active"
-                                           data-ng-disabled="bankHoliday.disabled" />
-                                </flat-checkbox>
-                            </div>
-                            <div class="dtd vertical-middle">
-                                <strong class="block"
-                                        data-translate="{{ 'telephony_scheduler_bank_holidays_' + bankHoliday.name }}">
-                                </strong>
-                                <span data-ng-bind="bankHoliday.date.format() | date:'fullDate'"></span>
-                            </div>
+                            <input type="checkbox"
+                                   name="bankHoliday-{{ bankHoliday.name }}"
+                                   id="bankHoliday-{{ bankHoliday.name }}"
+                                   data-ng-model="bankHoliday.active"
+                                   data-ng-disabled="bankHoliday.disabled" />
+                            <span data-translate="{{ 'telephony_scheduler_bank_holidays_' + bankHoliday.name }}">
+                            </span>
+                            <span data-ng-bind="bankHoliday.date.format() | date:'fullDate'"></span>
                         </label>
                     </li>
                 </ul>
@@ -85,23 +78,23 @@
 
     </div>
 
-    <div class="modal-body clearfix"
+    <div class="modal-body"
          data-ng-if="SchedulerHolidaysCtrl.loading.init">
         <bouncing-box-loader>
             <h4 data-translate="telephony_scheduler_export_doing"></h4>
         </bouncing-box-loader>
     </div>
 
-    <div class="modal-footer top-space-m4">
+    <div class="modal-footer mt-2">
         <button type="submit"
-                class="btn btn-primary pull-right left-space-m4"
+                class="btn btn-primary float-right ml-2"
                 data-translate="telephony_scheduler_bank_holidays_inject"
                 data-translate-values="{ count: SchedulerHolidaysCtrl.filterEvents().length }"
                 data-ng-disabled="SchedulerHolidaysCtrl.loading.init">
         </button>
 
         <button type="button"
-                class="btn btn-default pull-right"
+                class="btn btn-default float-right"
                 data-translate="cancel"
                 data-ng-click="SchedulerHolidaysCtrl.cancel()"
                 data-ng-disabled="SchedulerHolidaysCtrl.loading.init">

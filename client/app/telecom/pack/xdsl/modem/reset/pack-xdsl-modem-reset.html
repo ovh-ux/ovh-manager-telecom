@@ -1,5 +1,5 @@
 <button type="button"
-    class="btn btn-primary bottom-space-m16"
+    class="btn btn-primary mb-3"
     data-ng-really-click="ResetCtrl.resetModem()"
     data-ng-really-message="{{ 'xdsl_modem_reset_really' | translate }}"
     data-ng-really-confirm="{{ 'ok' | translate }}"
@@ -7,7 +7,7 @@
     data-ng-really-window-class="revert-really-buttons"
     data-ng-disabled="!ResetCtrl.mediator.capabilities.canReset">
     <span data-ng-if="ResetCtrl.mediator.tasks.resetModem">
-        <spinner></spinner>
+        <bouncing-box-loader data-size="s"></bouncing-box-loader>
         <span data-translate="xdsl_modem_reset_success"></span>
     </span>
     <span data-ng-if="!ResetCtrl.mediator.tasks.resetModem" data-translate="xdsl_modem_reset"></span>

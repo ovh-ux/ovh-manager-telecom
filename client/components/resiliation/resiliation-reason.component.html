@@ -1,6 +1,6 @@
 <div>
     <button
-        class="pull-left telecom-link btn-link"
+        class="float-left telecom-link btn-link"
         data-ng-if="!ResiliationReasonCtrl.panel"
         data-ng-click="ResiliationReasonCtrl.panel=true"
         title="{{ 'resiliation_resiliate' | translate:ResiliationReasonCtrl.resiliationReason }}">
@@ -9,7 +9,7 @@
     <form name="reasonForm" data-ng-show="ResiliationReasonCtrl.panel" data-ng-submit="ResiliationReasonCtrl.openConfirmation()">
         <div class="form-group">
             <div class="radio" data-ng-repeat="choice in ResiliationReasonCtrl.resiliationChoices">
-                <label class="right-space-m16">
+                <label class="mr-3">
                     <input type="radio" value="{{choice.name}}" data-ng-model="ResiliationReasonCtrl.resiliationReasonModel.type">
                     {{ choice.caption | translate}}
                 </label>
@@ -17,7 +17,7 @@
             </div>
         </div>
         <button
-            class="pull-left telecom-link btn-link"
+            class="float-left telecom-link btn-link"
             type="submit"
             data-ng-disabled="!ResiliationReasonCtrl.canResiliate()"
             title="{{ 'resiliation_resiliate' | translate:{name:resiliationReason.name, type:resiliationReason.typeName} }}">

@@ -38,7 +38,7 @@
    <translation id="pack_move_cannot_validate_move" qtlid="312831">Il nous est impossible de déménager votre pack: {{message}}</translation>
    <translation id="pack_move_line_current_address" qtlid="312844">Adresse actuelle</translation>
    <translation id="pack_move_line_future_address" qtlid="312857">Adresse future</translation>
-   <translation id="pack_move_portLine_cost">La conservation vous sera facturée <span class="bold text-price">50€</span></translation>
+   <translation id="pack_move_portLine_cost">La conservation vous sera facturée <span class="font-weight-bold text-price">50€</span></translation>
 
    <translation id="pack_move_eligibility_error" qtlid="312883">Le test d'éligibilité est indisponible pour le moment. Veuillez ré-essayer plus tard.</translation>
    <translation id="pack_move_eligibility_no_offers" qtlid="385975">La ligne {{ number }} n'est éligible à aucune de nos offres.</translation>

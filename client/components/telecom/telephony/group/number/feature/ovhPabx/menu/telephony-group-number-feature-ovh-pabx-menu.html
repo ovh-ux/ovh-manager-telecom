@@ -68,7 +68,7 @@
                     <!-- EDIT MENU BTN -->
                     <li role="menuitem">
                         <button type="button"
-                                class="btn btn-link full-width"
+                                class="btn btn-link w-100"
                                 data-translate="telephony_number_feature_ovh_pabx_menu_action_edit"
                                 data-ng-click="$ctrl.onEditMenuBtnClick()">
                         </button>
@@ -77,7 +77,7 @@
                     <!-- ADD MENU ENTRY -->
                     <li role="menuitem">
                         <button type="button"
-                                class="btn btn-link full-width"
+                                class="btn btn-link w-100"
                                 data-translate="telephony_number_feature_ovh_pabx_menu_action_add_entry"
                                 data-ng-disabled="!$ctrl.menu.hasAvailableDtmfEntryKey()"
                                 data-ng-click="$ctrl.addMenuEntry()">
@@ -86,7 +86,7 @@
                     <!-- COLLAPSE/EXPAND -->
                     <li role="menuitem">
                         <button type="button"
-                                class="btn btn-link full-width"
+                                class="btn btn-link w-100"
                                 data-translate="{{ $ctrl.displayHelpers.collapsed ? 'telephony_number_feature_ovh_pabx_menu_entry_expand' : 'telephony_number_feature_ovh_pabx_menu_entry_collapse' }}"
                                 data-ng-disabled="!$ctrl.menu.entries.length"
                                 data-ng-click="$ctrl.displayHelpers.collapsed = !$ctrl.displayHelpers.collapsed">
@@ -96,7 +96,7 @@
                     <!-- DELETE MENU -->
                     <li role="menuitem">
                         <button type="button"
-                                class="btn btn-link full-width"
+                                class="btn btn-link w-100"
                                 data-translate="telephony_number_feature_ovh_pabx_menu_action_delete"
                                 data-ng-click="$ctrl.menu.status = 'DELETE_PENDING'"
                                 data-ng-if="!$ctrl.hasMenuEntryOrDialPlanExtension()">
@@ -105,7 +105,7 @@
                     <!-- EDIT MENU ENTRY -->
                     <li role="menuitem">
                         <button type="button"
-                                class="btn btn-link full-width"
+                                class="btn btn-link w-100"
                                 data-translate="telephony_number_feature_ovh_pabx_menu_entry_edit"
                                 data-ng-if="$ctrl.menuEntry"
                                 data-ng-click="$ctrl.onEditMenuEntryBtnClick()">
@@ -114,7 +114,7 @@
                     <!-- DELETE MENU ENTRY -->
                     <li role="menuitem">
                         <button type="button"
-                                class="btn btn-link full-width"
+                                class="btn btn-link w-100"
                                 data-translate="telephony_number_feature_ovh_pabx_menu_entry_delete"
                                 data-ng-if="$ctrl.menuEntry"
                                 data-ng-click="$ctrl.menuEntry.status = 'DELETE_PENDING'">
@@ -123,7 +123,7 @@
                     <!-- EDIT DIALPLAN RULE -->
                     <li role="menuitem">
                         <button type="button"
-                                class="btn btn-link full-width"
+                                class="btn btn-link w-100"
                                 data-translate="telephony_number_feature_ovh_pabx_step_rule_action_edit"
                                 data-ng-if="$ctrl.dialplanRule"
                                 data-ng-click="$ctrl.onDialplanRuleEditBtnClick()">
@@ -132,7 +132,7 @@
                     <!-- DELETE DIALPLAN RULE -->
                     <li role="menuitem">
                         <button type="button"
-                                class="btn btn-link full-width"
+                                class="btn btn-link w-100"
                                 data-translate="telephony_number_feature_ovh_pabx_step_rule_action_delete"
                                 data-ng-if="$ctrl.dialplanRule"
                                 data-ng-click="$ctrl.dialplanRule.status = 'DELETE_PENDING'">

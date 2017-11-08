@@ -1,20 +1,15 @@
 div.telephony-order {
-    border-bottom: solid 1px @table-border-color;
+    border-bottom: solid 1px @gray-light;
 
-    h3 {
-        font-weight: 700;
-        margin-bottom: 5px;
-
-        em {
-            font-style: normal;
-            color: @state-info-text;
-            font-weight: 600;
-        }
+    .oui-header_5 em {
+        font-style: normal;
+        color: @state-info-text;
+        font-weight: 600;
     }
 
     div.description {
         font-size: 1.2em;
-        color: @text-color-content;
+        color: @gray-base;
         margin-bottom: 10px;
     }
 
@@ -28,7 +23,7 @@ div.telephony-order {
             div.pricing {
                 text-align: right;
                 font-size: 1.2em;
-                color: @text-color-content;
+                color: @gray-base;
 
                 span.cost {
                     font-size: 1.1em;
@@ -41,7 +36,7 @@ div.telephony-order {
             }
             div.with-tax {
                 text-align: right;
-                color: @text-color-content;
+                color: @gray-base;
             }
         }
 
@@ -52,6 +47,7 @@ div.telephony-order {
 
         a {
             font-size: 1.8em;
+            max-width: inherit;
         }
     }
 }
@@ -88,5 +84,5 @@ section.telephony-group-order {
                 width: initial;
             }
         }
-    } 
+    }
 }

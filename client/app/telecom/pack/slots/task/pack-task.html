@@ -1,56 +1,60 @@
-<div class="table-responsive-vertical" data-ng-controller="PackTaskCtrl as PackTask" data-ng-show="PackTask.allTasks.length">
-    <table class="table table-pretty table-hover table-condensed ovh-form-flat">
-        <thead>
-            <tr>
-                <th scope="col" data-translate="telecom_task_function"></th>
-                <th class="text-center-md" scope="col">
-                    <ui-select data-ng-model="PackTask.filterSelect.status"
-                               theme="selectize"
-                               on-select="PackTask.filterTasksByStatus($item)">
-                        <ui-select-match>
-                            <span class="ovh-font"
-                                  data-ng-class="$select.selected.icon"
-                                  aria-hidden="true"></span>
-                            <span>{{ $select.selected.title || $select.selected.tip }}</span>
-                        </ui-select-match>
-                        <ui-select-choices repeat="status in PackTask.filterChoices | propsFilter: {tip: $select.search}">
-                            <div data-ng-selected="status.default">
+<div class="oui-tile__definition">
+    <div class="table-responsive"
+         data-ng-controller="PackTaskCtrl as PackTask"
+         data-ng-show="PackTask.allTasks.length">
+        <table class="table table-hover table-condensed">
+            <thead>
+                <tr>
+                    <th scope="col" data-translate="telecom_task_function"></th>
+                    <th class="text-center-md" scope="col">
+                        <ui-select data-ng-model="PackTask.filterSelect.status"
+                                   theme="selectize"
+                                   on-select="PackTask.filterTasksByStatus($item)">
+                            <ui-select-match>
                                 <span class="ovh-font"
-                                      data-ng-class="status.icon"
+                                      data-ng-class="$select.selected.icon"
                                       aria-hidden="true"></span>
-                                {{status.tip}}
-                            </div>
-                        </ui-select-choices>
-                    </ui-select>
-                </th>
-                <th scope="col" data-translate="telecom_task_date"></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr data-ng-repeat="task in PackTask.paginatedTasks track by task.id">
-                <th scope="row"
-                    data-translate-attr="{title:'telecom_task_function'}"
-                    data-translate="task.function"></th>
-                <td data-title="{{'telecom_task_status' | translate}}" class="text-center-md">
-                    <spinner data-ng-show="task.status.spinner"></spinner>
-                    <span data-ng-if="task.status.icon && !task.status.spinner"
-                          class="ovh-font fs16"
-                          data-ng-class="task.status.icon"
-                          data-uib-tooltip="{{ task.status.tip }}"
-                          aria-hidden="true"></span>
-                </td>
-                <td data-translate-attr="{title:'telecom_task_date'}"
-                    data-ng-bind="(task.updateDate | date:'dd/MM/yyyy')"></td>
-            </tr>
-        </tbody>
-    </table>
+                                <span>{{ $select.selected.title || $select.selected.tip }}</span>
+                            </ui-select-match>
+                            <ui-select-choices repeat="status in PackTask.filterChoices | propsFilter: {tip: $select.search}">
+                                <div data-ng-selected="status.default">
+                                    <span class="ovh-font"
+                                          data-ng-class="status.icon"
+                                          aria-hidden="true"></span>
+                                    {{status.tip}}
+                                </div>
+                            </ui-select-choices>
+                        </ui-select>
+                    </th>
+                    <th scope="col" data-translate="telecom_task_date"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-ng-repeat="task in PackTask.paginatedTasks track by task.id">
+                    <th scope="row"
+                        data-translate-attr="{title:'telecom_task_function'}"
+                        data-translate="task.function"></th>
+                    <td data-title="{{'telecom_task_status' | translate}}" class="text-center-md">
+                        <bouncing-box-loader data-ng-show="task.status.bouncing-box-loader"
+                                             data-size="s"></bouncing-box-loader>
+                        <span data-ng-if="task.status.icon && !task.status.bouncing-box-loader"
+                              class="ovh-font h6"
+                              data-ng-class="task.status.icon"
+                              data-uib-tooltip="{{ task.status.tip }}"
+                              aria-hidden="true"></span>
+                    </td>
+                    <td data-translate-attr="{title:'telecom_task_date'}"
+                        data-ng-bind="(task.updateDate | date:'dd/MM/yyyy')"></td>
+                </tr>
+            </tbody>
+        </table>
 
-    <div class="table table-pretty"
-         data-pagination-front
-         data-go-to-page="false"
-         data-items="PackTask.statusFilteredTasks"
-         data-paginated-items="PackTask.paginatedTasks"
-         data-items-per-page="PackTask.filter.perPage"
-         data-go-to-page="false">
+        <div class="mt-2"
+             data-pagination-front
+             data-items="PackTask.statusFilteredTasks"
+             data-paginated-items="PackTask.paginatedTasks"
+             data-items-per-page="PackTask.filter.perPage"
+             data-go-to-page="false">
+        </div>
     </div>
 </div>

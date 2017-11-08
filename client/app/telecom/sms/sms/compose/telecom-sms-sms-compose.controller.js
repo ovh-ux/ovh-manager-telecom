@@ -299,6 +299,7 @@ angular.module("managerApp").controller("TelecomSmsSmsComposeCtrl", class Teleco
         // hide the options panel
         this.moreOptions = false;
         form.$setPristine(true);
+        form.$setUntouched(true);
     }
 
     /**

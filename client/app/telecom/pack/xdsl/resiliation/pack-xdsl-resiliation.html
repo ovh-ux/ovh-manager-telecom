@@ -1,10 +1,9 @@
 <div class="telecom-pack-resiliation">
 
-    <div class="telecom-section-content left-space-m0">
+    <div class="telecom-section-content ml-0">
 
-        <div data-flash-message="20000" ></div>
-
-        <spinner data-ng-if="PackXdslResiliation.loading"></spinner>
+        <bouncing-box-loader data-size="m"
+                             data-ng-if="PackXdslResiliation.loading"></bouncing-box-loader>
 
         <div class="row" data-ng-if="!PackXdslResiliation.loading">
 
@@ -16,7 +15,7 @@
 
                 <div data-ng-show="PackXdslResiliation.resiliationTerms.status">
 
-                    <div class="row top-space-m12 top-space-p0">
+                    <div class="row mt-3 pt-0">
                         <span class="col-xs-12 col-md-4 service-title" data-translate="xdsl_resiliation_engaged"></span>
                         <div class="col-xs-12 col-md-4 service-item">
                             <span data-ng-if="PackXdslResiliation.resiliationTerms.data.engaged"
@@ -26,21 +25,21 @@
                         </div>
                     </div>
 
-                    <div class="row top-space-m12 top-space-p0">
+                    <div class="row mt-3 pt-0">
                         <span class="col-xs-12 col-md-4 service-title"
                             data-translate="xdsl_resiliation_due"></span>
                         <div class="col-xs-12 col-md-4 service-item">
                             <span data-ng-if="!PackXdslResiliation.computingPrice"
                                 data-ng-bind="PackXdslResiliation.resiliationTerms.data.due.text"></span>
-                            <spinner data-ng-if="PackXdslResiliation.computingPrice"></spinner>
+                            <bouncing-box-loader data-size="m"
+                                                 data-ng-if="PackXdslResiliation.computingPrice"></bouncing-box-loader>
                         </div>
                     </div>
 
 
-                    <form class="form-horizontal ovh-form-flat"
-                        name="dateForm"
+                    <form name="dateForm"
                         data-ng-hide="PackXdslResiliation.resiliationTerms.onGoingResiliation">
-                        <div class="row top-space-m12 top-space-p0">
+                        <div class="row mt-3 pt-0">
                             <label class="col-xs-12 col-md-4 service-title"
                                 for="expirationDate"
                                 data-translate="xdsl_resiliation_resiliation_date"></label>
@@ -65,7 +64,7 @@
                         </div>
                     </form>
 
-                    <div class="row top-space-m12" data-ng-if="!PackXdslResiliation.resiliationTerms.onGoingResiliation">
+                    <div class="row mt-3" data-ng-if="!PackXdslResiliation.resiliationTerms.onGoingResiliation">
                         <div class="col-xs-12 col-md-4">
                             <resiliation-reason
                                 data-ng-show="PackXdslResiliation.resiliationTerms.status"
@@ -77,16 +76,16 @@
                     </div>
                 </div>
 
-                <div class="row top-space-m12 top-space-p0"
+                <div class="row mt-3 pt-0"
                     data-ng-if="PackXdslResiliation.resiliationTerms.onGoingResiliation">
                     <div class="col-xs-12">
                         <p data-translate="xdsl_resiliation_terminate_info_1"
                             data-translate-values="{'date' : PackXdslResiliation.resiliationTerms.onGoingResiliation.dateTodo}"></p>
                     </div>
-                    <div class="col-xs-12 top-space-m12">
+                    <div class="col-xs-12 mt-3">
                         <button
                             data-ng-really-click="PackXdslResiliation.cancelServiceResiliation(PackXdslResiliation.resiliationTerms)"
-                            class="pull-left btn btn-primary"
+                            class="float-left btn btn-primary"
                             data-ng-really-message="{{PackXdslResiliation.serviceDescription}}"
                             data-ng-really-confirm="{{:: 'ok' | translate }}"
                             data-ng-really-cancel="{{:: 'cancel' | translate }}"

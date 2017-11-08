@@ -17,11 +17,6 @@ angular.module("managerApp").controller("TelecomSmsSendersCtrl", class TelecomSm
     }
 
     $onInit () {
-        this.actions = [{
-            name: "manage_blacklisted_senders",
-            sref: "telecom.sms.senders.blacklisted",
-            text: this.$translate.instant("sms_senders_manage_blacklisted")
-        }];
         this.senders = {
             raw: [],
             paginated: null,

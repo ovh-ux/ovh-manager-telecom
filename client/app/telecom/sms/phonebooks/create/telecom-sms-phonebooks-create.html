@@ -10,13 +10,17 @@
     <main class="telecom-section-content"
           role="main">
 
+        <toast-message></toast-message>
+
         <div class="row">
             <div class="col-xs-12 col-sm-6">
                 <form name="phonebookCreateForm"
-                      class="ovh-form-flat"
                       novalidate
                       data-ng-submit="PhonebooksCreateCtrl.create()">
-                    <div class="form-group bottom-space-m16" data-flat-input-container>
+                    <div class="form-group"
+                         data-ng-class="{
+                             'has-error': phonebookCreateForm.name.$touched && phonebookCreateForm.name.$invalid
+                         }">
                         <label for="name"
                                class="control-label"
                                data-translate="sms_phonebooks_phonebook_create_name_placeholder">
@@ -32,32 +36,32 @@
                             data-ng-pattern="/^[\w\s.\-À-ú]*$/"
                             data-ng-maxlength="50"
                             data-translate-attr="{ placeholder: 'sms_phonebooks_phonebook_create_name_placeholder' }" />
-                        <div role="alert"
-                             data-ng-messages="phonebookCreateForm.name.$dirty && phonebookCreateForm.name.$error">
-                            <p class="text-danger"
-                               data-ng-message="required"
-                               data-translate="sms_phonebooks_phonebook_create_name_error_required">
-                            </p>
-                            <p class="text-danger"
-                               data-ng-message="pattern"
-                               data-translate="sms_phonebooks_phonebook_create_name_error_pattern">
-                            </p>
-                            <p class="text-danger"
-                               data-ng-message="maxlength"
-                               data-translate="sms_phonebooks_phonebook_create_name_error_maxlength">
-                            </p>
-                        </div>
+                        <span class="help-block"
+                              role="alert"
+                              data-ng-if="phonebookCreateForm.name.$touched"
+                              data-ng-messages="phonebookCreateForm.name.$error">
+                            <span data-ng-message="required"
+                                  data-translate="sms_phonebooks_phonebook_create_name_error_required">
+                            </span>
+                            <span data-ng-message="pattern"
+                                  data-translate="sms_phonebooks_phonebook_create_name_error_pattern">
+                            </span>
+                            <span data-ng-message="maxlength"
+                                  data-translate="sms_phonebooks_phonebook_create_name_error_maxlength">
+                            </span>
+                        </span>
                     </div>
-                    <div class="form-group bottom-space-m16">
+                    <div class="form-group">
                         <button
                             type="submit"
                             class="btn btn-primary"
                             data-ng-disabled="phonebookCreateForm.$invalid || PhonebooksCreateCtrl.phonebookToAdd.isAdding">
                             <span data-translate="sms_phonebooks_create"></span>
-                            <spinner class="left-space-m4"
-                                     data-ng-if="PhonebooksCreateCtrl.phonebookToAdd.isAdding">
-                            </spinner>
                         </button>
+                        <bouncing-box-loader class="d-inline-block align-middle ml-2"
+                                             data-ng-if="PhonebooksCreateCtrl.phonebookToAdd.isAdding"
+                                             data-size="s">
+                        </bouncing-box-loader>
                     </div>
                 </form>
             </div>

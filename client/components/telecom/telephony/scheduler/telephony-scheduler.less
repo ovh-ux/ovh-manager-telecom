@@ -50,6 +50,8 @@
         button {
             padding: @padding-base-vertical @padding-base-horizontal;
             color: @text-disabled-color;
+            text-decoration: none;
+            opacity: 0.5;
 
             &:hover {
                 .telephony-time-condition-slot {
@@ -69,6 +71,11 @@
                         color: @text-color !important;
                     }
                 }
+                opacity: 1;
+            }
+
+            &.active {
+                opacity: 1;
             }
         }
     }
@@ -215,7 +222,7 @@
                                 }
 
                                 .btn-info {
-                                    background-color: fadeout(@MANAGER_BUTTON_COLOR, 88%);
+                                    // background-color: fadeout(@MANAGER_BUTTON_COLOR, 88%);
                                 }
                             }
                         }
@@ -280,6 +287,7 @@
             overflow: hidden;
             max-height: 150px;
             transition: max-height .5s;
+            padding-bottom: 1rem;
 
             .confirm-inner {
                 padding: 12px;
@@ -306,8 +314,11 @@
                 font-weight: bold;
             }
 
+            opacity: 0.5;
+
             &.active-slot {
                 color: @text-color;
+                opacity: 1;
             }
         }
     }

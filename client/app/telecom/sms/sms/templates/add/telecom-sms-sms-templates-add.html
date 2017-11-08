@@ -1,55 +1,57 @@
 <form name="addSmsTemplateForm"
       id="addSmsTemplateForm"
-      class="ovh-form-flat"
       data-ng-submit="TemplateAddCtrl.add()">
 
     <div class="modal-header">
-        <h3 class="modal-title pull-left" data-translate="sms_sms_templates_add"></h3>
         <button
             type="button"
-            class="close pull-right"
+            class="close float-right"
             aria-label="{{ ::'cancel' | translate }}"
             data-ng-click="TemplateAddCtrl.cancel()">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
 
-    <div class="modal-body" data-ng-if="!TemplateAddCtrl.loading.add && !TemplateAddCtrl.added && !TemplateAddCtrl.loading.init">
+    <div class="modal-body"
+         data-ng-if="!TemplateAddCtrl.loading.add && !TemplateAddCtrl.added && !TemplateAddCtrl.loading.init">
+        <h3 data-translate="sms_sms_templates_add"></h3>
+
         <!-- name -->
-        <div class="form-group bottom-space-m16">
-            <div flat-input-container>
-                <label for="name"
-                       class="control-label"
-                       data-translate="sms_sms_templates_add_name_label">
-                </label>
-                <input
-                    type="text"
-                    name="name"
-                    id="name"
-                    class="form-control"
-                    autofocus
-                    required
-                    data-ng-model="TemplateAddCtrl.template.name"
-                    data-ng-maxlength="249"
-                    data-translate-attr="{ placeholder: 'sms_sms_templates_add_name_placeholder' }" />
-                <div role="alert"
-                     data-ng-messages="(addSmsTemplateForm.$invalid && addSmsTemplateForm.name.$dirty) && addSmsTemplateForm.name.$error">
-                    <p class="text-danger"
-                        data-ng-message="maxlength"
-                        data-translate="sms_sms_templates_add_name_error_maxlength">
-                    </p>
-                </div>
-            </div>
+        <div class="form-group"
+             data-ng-class="{
+                 'has-error': addSmsTemplateForm.name.$touched && addSmsTemplateForm.name.$invalid
+             }">
+            <label for="name"
+                   class="control-label"
+                   data-translate="sms_sms_templates_add_name_label">
+            </label>
+            <input
+                type="text"
+                name="name"
+                id="name"
+                class="form-control"
+                autofocus
+                required
+                data-ng-model="TemplateAddCtrl.template.name"
+                data-ng-maxlength="249"
+                data-translate-attr="{ placeholder: 'sms_sms_templates_add_name_placeholder' }" />
+            <span class="help-block"
+                  role="alert"
+                  data-ng-if="addSmsTemplateForm.name.$touched"
+                  data-ng-messages="addSmsTemplateForm.name.$error">
+                <span data-ng-message="maxlength"
+                      data-translate="sms_sms_templates_add_name_error_maxlength">
+                </span>
+            </span>
         </div>
 
         <!-- activity -->
-        <div class="form-group bottom-space-m16 clearfix">
+        <div class="form-group">
             <label for="activity"
                    class="control-label"
                    data-translate="sms_sms_templates_add_activity_placeholder">
             </label>
             <select
-                flat-select
                 name="activity"
                 id="activity"
                 class="form-control"
@@ -60,83 +62,88 @@
         </div>
 
         <!-- Description -->
-        <div class="form-group bottom-space-m16">
-            <div flat-input-container>
-                <label for="description"
-                       class="control-label"
-                       data-translate="sms_sms_templates_add_description_label">
-                </label>
-                <input
-                    type="text"
-                    name="description"
-                    id="description"
-                    class="form-control"
-                    required
-                    data-ng-maxlength="249"
-                    data-ng-minlength="31"
-                    data-translate-attr="{ placeholder :'sms_sms_templates_add_description_placeholder' }"
-                    data-ng-model="TemplateAddCtrl.template.description" />
-                <div role="alert"
-                     data-ng-messages="(addSmsTemplateForm.$invalid && addSmsTemplateForm.description.$dirty) && addSmsTemplateForm.description.$error">
-                    <p class="text-danger"
-                        data-ng-message="maxlength"
-                        data-translate="sms_sms_templates_add_description_error_maxlength">
-                    </p>
-                    <p class="text-danger"
-                        data-ng-message="minlength"
-                        data-translate="sms_sms_templates_add_description_error_minlength">
-                    </p>
-                </div>
-            </div>
+        <div class="form-group"
+             data-ng-class="{
+                 'has-error': addSmsTemplateForm.description.$touched && addSmsTemplateForm.description.$invalid
+             }">
+            <label for="description"
+                   class="control-label"
+                   data-translate="sms_sms_templates_add_description_label">
+            </label>
+            <input
+                type="text"
+                name="description"
+                id="description"
+                class="form-control"
+                required
+                data-ng-maxlength="249"
+                data-ng-minlength="31"
+                data-translate-attr="{ placeholder :'sms_sms_templates_add_description_placeholder' }"
+                data-ng-model="TemplateAddCtrl.template.description" />
+            <span class="help-block"
+                  role="alert"
+                  data-ng-if="addSmsTemplateForm.description.$touched"
+                  data-ng-messages="addSmsTemplateForm.description.$error">
+                <span data-ng-message="maxlength"
+                      data-translate="sms_sms_templates_add_description_error_maxlength">
+                </span>
+                <span data-ng-message="minlength"
+                      data-translate="sms_sms_templates_add_description_error_minlength">
+                </span>
+            </span>
         </div>
 
         <!-- message -->
-        <div class="form-group bottom-space-m16">
-            <div flat-input-container>
-                <label for="message"
-                       class="control-label"
-                       data-translate="sms_sms_templates_add_message_label">
-                </label>
-                <textarea
-                    name="message"
-                    id="message"
-                    class="form-control resizable-vertical"
-                    rows="10"
-                    required
-                    data-ng-model="TemplateAddCtrl.template.message"
-                    data-ng-maxlength="249"
-                    data-ng-minlength="31"
-                    data-translate-attr="{ placeholder: 'sms_sms_templates_add_message_placeholder' }">
-                </textarea>
-                <div role="alert"
-                     data-ng-messages="addSmsTemplateForm.message.$error">
-                    <p class="text-danger"
-                        data-ng-message="maxlength"
-                        data-translate="sms_sms_templates_add_message_error_maxlength">
-                    </p>
-                    <p class="text-danger"
-                        data-ng-message="minlength"
-                        data-translate="sms_sms_templates_add_message_error_minlength">
-                    </p>
-                </div>
-            </div>
+        <div class="form-group"
+             data-ng-class="{
+                 'has-error': addSmsTemplateForm.message.$touched && addSmsTemplateForm.message.$invalid
+             }">
+            <label for="message"
+                   class="control-label"
+                   data-translate="sms_sms_templates_add_message_label">
+            </label>
+            <textarea
+                name="message"
+                id="message"
+                class="form-control resizable-vertical"
+                rows="6"
+                required
+                data-ng-model="TemplateAddCtrl.template.message"
+                data-ng-maxlength="249"
+                data-ng-minlength="31"
+                data-translate-attr="{ placeholder: 'sms_sms_templates_add_message_placeholder' }">
+            </textarea>
+            <span class="help-block"
+                  role="alert"
+                  data-ng-if="addSmsTemplateForm.message.$touched"
+                  data-ng-messages="addSmsTemplateForm.message.$error">
+                <span data-ng-message="maxlength"
+                      data-translate="sms_sms_templates_add_message_error_maxlength">
+                </span>
+                <span data-ng-message="minlength"
+                      data-translate="sms_sms_templates_add_message_error_minlength">
+                </span>
+            </span>
         </div>
 
     </div>
 
-    <div class="modal-body" data-ng-if="TemplateAddCtrl.loading.add && !TemplateAddCtrl.added">
-        <bouncing-box-loader>
+    <div class="modal-body"
+         data-ng-if="TemplateAddCtrl.loading.add && !TemplateAddCtrl.added">
+        <bouncing-box-loader data-size="m">
             <h4 data-translate="sms_sms_templates_adding"></h4>
         </bouncing-box-loader>
     </div>
 
-    <div class="modal-body" data-ng-if="TemplateAddCtrl.loading.init">
-        <bouncing-box-loader>
+    <div class="modal-body"
+         data-ng-if="TemplateAddCtrl.loading.init">
+        <bouncing-box-loader data-size="m">
             <h4 data-translate="sms_sms_templates_init"></h4>
         </bouncing-box-loader>
     </div>
 
-    <div class="modal-body" data-ng-if="TemplateAddCtrl.added">
+    <div class="modal-body"
+         data-ng-if="TemplateAddCtrl.added">
         <success-drawing-check data-draw-success-check="TemplateAddCtrl.added">
             <h4 data-translate="sms_sms_templates_added"></h4>
         </success-drawing-check>
@@ -153,7 +160,9 @@
         <button
             type="submit"
             class="btn btn-primary"
-            data-ng-disabled="addSmsTemplateForm.$invalid || TemplateAddCtrl.loading.add || TemplateAddCtrl.added"
+            data-ng-disabled="addSmsTemplateForm.$invalid ||
+                              TemplateAddCtrl.loading.add ||
+                              TemplateAddCtrl.added"
             data-translate="submit">
         </button>
     </div>

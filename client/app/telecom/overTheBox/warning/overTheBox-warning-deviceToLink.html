@@ -1,7 +1,6 @@
 <div class="alert alert-info"
      role="alert"
      data-ng-controller="OrderOverTheBoxDeviceToLinkCtrl as DeviceToLink">
-    <span class="ovh-font ovh-font-filled-info" aria-hidden="true"></span>
     <h3 data-ng-if="DeviceToLink.deviceCount === 1"
         data-translate="order_overTheBox_device_detected_title">
     </h3>
@@ -11,23 +10,34 @@
     </h3>
     <p data-translate="order_overTheBox_device_detected_link_needed"></p>
     <button type="button"
+            class="btn btn-primary mt-2"
             data-ng-if="DeviceToLink.link"
-            class="btn btn-sm btn-primary top-space-m4"
-            data-ng-disabled="DeviceToLink.loader"
-            data-ng-click="DeviceToLink.autoLink()">
-        <span class="fa fa-link" aria-hidden="true"></span>
+            data-ng-click="DeviceToLink.autoLink()"
+            data-ng-disabled="DeviceToLink.loader">
+        <span class="fa fa-link"
+              aria-hidden="true"
+              data-ng-if="!DeviceToLink.loader">
+        </span>
+        <bouncing-box-loader class="d-inline-block align-middle"
+                             data-ng-if="DeviceToLink.loader"
+                             data-size="s">
+        </bouncing-box-loader>
         <span data-translate="order_overTheBox_device_to_link_link"></span>
-        <spinner data-ng-if="DeviceToLink.loader"></spinner>
     </button>
     <p data-ng-if="DeviceToLink.configService"
        data-translate="order_overTheBox_device_detected_service_config_needed"
-       data-translate-values="DeviceToLink.configService"></p>
-    <p data-ng-if="DeviceToLink.unknown" data-translate="order_overTheBox_device_detected_something_needed"></p>
-    <ul data-ng-if="DeviceToLink.unknown" class="list-unstyled">
+       data-translate-values="DeviceToLink.configService">
+    </p>
+    <p data-ng-if="DeviceToLink.unknown"
+       data-translate="order_overTheBox_device_detected_something_needed">
+    </p>
+    <ul class="list-unstyled"
+        data-ng-if="DeviceToLink.unknown" >
         <li data-ng-repeat="service in DeviceToLink.unknown">
             <a class="service-button"
                data-ui-sref="telecom.overTheBox.details({serviceName:service.service})"
-               data-ng-bind="service.service"></a>
+               data-ng-bind="service.service">
+            </a>
         </li>
     </ul>
 </div>

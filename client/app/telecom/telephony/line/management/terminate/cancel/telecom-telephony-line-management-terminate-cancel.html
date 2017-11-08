@@ -11,13 +11,17 @@
 
     <div class="telecom-section-content">
 
-        <bouncing-box-loader data-ng-if="TerminateCancelCtrl.loading.init">
-            <h3 class="top-space-m16"
+        <toast-message></toast-message>
+
+        <bouncing-box-loader data-size="m"
+                             data-ng-if="TerminateCancelCtrl.loading.init">
+            <h3 class="mt-3"
                 data-translate="loading">
             </h3>
         </bouncing-box-loader>
 
-        <div class="row" data-ng-if="!TerminateCancelCtrl.loading.init">
+        <div class="row"
+             data-ng-if="!TerminateCancelCtrl.loading.init">
             <!-- GROUPE INFORMATIONS-->
             <div class="col-xs-12 col-md-6 widget-presentation">
                 <header class="widget-presentation-header">
@@ -25,7 +29,7 @@
                         data-translate="telephony_group_line_cancel_terminate_action_title"></h2>
                 </header>
 
-                <form name="terminateFrom" class="ovh-form-flat"
+                <form name="terminateFrom"
                       data-ng-submit="TerminateCancelCtrl.cancelTerminate()">
                     <div class="form-group">
                         <label for="reason"
@@ -34,9 +38,9 @@
                         </label>
 
                         <button type="submit"
-                            class="btn btn-sm btn-primary pull-right top-space-m16"
-                            data-ng-disabled="TerminateCancelCtrl.loading.cancelTerminate"
-                            data-translate="telephony_group_line_cancel_terminate_terminate">
+                                class="btn btn-primary float-right mt-3"
+                                data-ng-disabled="TerminateCancelCtrl.loading.cancelTerminate"
+                                data-translate="telephony_group_line_cancel_terminate_terminate">
                         </button>
                     </div>
                 </form>

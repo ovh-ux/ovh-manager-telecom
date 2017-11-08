@@ -1,11 +1,12 @@
 <div data-ng-controller="XdslAccessProfileCtrl as ProfileCtrl">
-    <spinner data-ng-if="ProfileCtrl.loader"></spinner>
+    <bouncing-box-loader data-size="m"
+                         data-ng-if="ProfileCtrl.loader"></bouncing-box-loader>
 
     <form name="DslamProfilForm"
-        class="ovh-form-flat clearfix"
+        class="clearfix"
         data-ng-submit="ProfileCtrl.changeProfile()"
         data-ng-if="ProfileCtrl.profiles">
-        <select flat-select
+        <select
             class="form-control"
             id="newProfil"
             name="newProfil"
@@ -14,15 +15,15 @@
             data-ng-disabled="access.tasks.current.dslamProfileChange">
         </select>
 
-        <button class="btn btn-primary left-space-m8"
+        <button class="btn btn-primary mt-1"
                 type="submit"
                 data-ng-if="!access.tasks.current.dslamProfileChange"
                 data-ng-disabled="!ProfileCtrl.profiles || access.tasks.current.dslamProfileChange || ProfileCtrl.currentProfile === ProfileCtrl.currentProfileTmp"
                 data-translate="submit">
         </button>
     </form>
-    <div class="top-space-m8" data-ng-if="access.tasks.current.dslamProfileChange">
-        <spinner></spinner>
+    <div class="mt-2" data-ng-if="access.tasks.current.dslamProfileChange">
+        <bouncing-box-loader data-size="m"></bouncing-box-loader>
         <span data-translate="xdsl_access_profile_doing"></span>
     </div>
 </div>
