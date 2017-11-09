@@ -18,35 +18,29 @@
                     <!-- NAME -->
                     <div class="section-item form-group"
                          data-ng-class="{ 'has-error': $ctrl.menuOptionsForm.menuName.$invalid && $ctrl.menuOptionsForm.menuName.$dirty }">
-                        <div data-flat-input-container>
-                            <label for="menuName"
-                                   class="control-label required"
-                                   data-translate="{{ 'telephony_number_feature_ovh_pabx_menu_options_name' }}">
-                            </label>
-                            <input type="text"
-                                   class="form-control"
-                                   name="menuName"
-                                   id="menuName"
-                                   data-ng-model="$ctrl.menu.name"
-                                   data-translate-attr="{ placeholder: 'telephony_number_feature_ovh_pabx_menu_options_name' }"
-                                   data-required
-                                   data-ng-pattern="/^[\w\s]+$/" />
-                        </div>
-                        <div data-ng-messages="$ctrl.menuOptionsForm.menuName.$error"
-                             data-ng-if="$ctrl.menuOptionsForm.menuName.$invalid && $ctrl.menuOptionsForm.menuName.$dirty"
-                             role="alert"
-                             class="mt-2">
-                            <label for="menuName"
-                                   class="small font-weight-normal"
-                                   data-ng-message="required"
-                                   data-translate="telephony_number_feature_ovh_pabx_menu_options_name_required">
-                            </label>
-                            <label for="menuName"
-                                   class="small font-weight-normal"
-                                   data-ng-message="pattern"
-                                   data-translate="telephony_number_feature_ovh_pabx_menu_options_name_bad_format">
-                            </label>
-                        </div>
+                        <label for="menuName"
+                               class="control-label required"
+                               data-translate="{{ 'telephony_number_feature_ovh_pabx_menu_options_name' }}">
+                        </label>
+                        <input type="text"
+                               class="form-control"
+                               name="menuName"
+                               id="menuName"
+                               data-ng-model="$ctrl.menu.name"
+                               data-translate-attr="{ placeholder: 'telephony_number_feature_ovh_pabx_menu_options_name' }"
+                               data-required
+                               data-ng-pattern="/^[\w\s]+$/" />
+                        <span class="help-block"
+                              role="alert"
+                              data-ng-if="$ctrl.menuOptionsForm.menuName.$invalid && $ctrl.menuOptionsForm.menuName.$dirty"
+                              data-ng-messages="$ctrl.menuOptionsForm.menuName.$error">
+                            <span data-ng-message="required"
+                                  data-translate="telephony_number_feature_ovh_pabx_menu_options_name_required">
+                            </span>
+                            <span data-ng-message="pattern"
+                                  data-translate="telephony_number_feature_ovh_pabx_menu_options_name_bad_format">
+                            </span>
+                        </span>
                     </div> <!-- End of NAME -->
 
                     <!-- GREET SOUND TYPE -->
@@ -203,13 +197,13 @@
                     <label class="section-item item-choice w-100 d-table"
                            data-ng-if="$ctrl.menuCtrl.popoverStatus.rightPage === 'invalidSoundType'">
                         <div class="d-table-cell align-middle radio-content">
-                            <flat-radio>
+                            <div class="radio">
                                 <input type="radio"
                                        name="soundTypeChoice"
                                        data-ng-model="$ctrl.model[$ctrl.menuCtrl.popoverStatus.rightPage === 'greetSoundType' ? 'greetSoundType' : 'invalidSoundType']"
                                        data-ng-value="'none'"
                                        data-ng-change="$ctrl.onSoudTypeChange()" />
-                            </flat-radio>
+                            </div>
                         </div>
                         <div class="d-table-cell align-middle">
                             <span class="block"
@@ -220,13 +214,13 @@
                     <label class="section-item item-choice w-100 d-table"
                            data-ng-repeat="soundType in $ctrl.availableSoundTypes track by $index">
                         <div class="d-table-cell align-middle radio-content">
-                            <flat-radio>
+                            <div class="radio">
                                 <input type="radio"
                                        name="soundTypeChoice"
                                        data-ng-model="$ctrl.model[$ctrl.menuCtrl.popoverStatus.rightPage === 'greetSoundType' ? 'greetSoundType' : 'invalidSoundType']"
                                        data-ng-value="soundType"
                                        data-ng-change="$ctrl.onSoudTypeChange()" />
-                            </flat-radio>
+                            </div>
                         </div>
                         <div class="d-table-cell align-middle">
                             <span class="block"
@@ -295,13 +289,13 @@
                            data-ng-repeat="tts in $ctrl.menuCtrl.ovhPabx.tts | orderBy:'text' track by $index">
                         <div class="dtr">
                             <div class="d-table-cell align-middle radio-content">
-                                <flat-radio>
+                                <div class="radio">
                                     <input type="radio"
                                            name="ruleAction"
                                            data-ng-model="$ctrl.menu[$ctrl.menuCtrl.popoverStatus.rightPage]"
                                            data-ng-value="tts.id"
                                            data-ng-change="$ctrl.menuCtrl.popoverStatus.move = false" />
-                                </flat-radio>
+                                </div>
                             </div>
                             <div class="d-table-cell align-middle">
                                 <span class="d-block radio-label-main elipse no-wrap"

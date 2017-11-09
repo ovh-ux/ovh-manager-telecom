@@ -1,6 +1,6 @@
 {
   "name": "ovh-manager-telecom",
-  "version": "7.1.1",
+  "version": "8.0.3",
   "description": "OVH Control Panel Telecom UI",
   "authors": [
     "OVH SAS"
@@ -75,12 +75,12 @@
     "ovh-angular-apiv7": "^1.1.1",
     "ovh-angular-browser-alert": "^1.0.0",
     "ovh-angular-checkbox-table": "^0.1.2",
-    "ovh-angular-contact": "^1.0.0",
+    "ovh-angular-contact": "^2.0.0",
     "ovh-angular-contracts": "^2.0.0",
     "ovh-angular-input-number-spinner": "^2.1.0",
     "ovh-angular-line-diagnostics": "^0.4.0",
     "ovh-angular-manager-navbar": "^6.6.3",
-    "ovh-angular-mondial-relay": "^2.0.0",
+    "ovh-angular-mondial-relay": "^3.0.0",
     "ovh-angular-otrs": "^3.0.0",
     "ovh-angular-pagination-front": "^6.0.0",
     "ovh-angular-q-allsettled": "^0.3.1",

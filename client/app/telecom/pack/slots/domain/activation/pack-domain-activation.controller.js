@@ -8,7 +8,9 @@ angular.module("managerApp").controller("PackDomainActivationController", functi
     }
 
     function loadAvailableTlds () {
-        return OvhApiPackXdslDomainActivation.Lexi().getTlds({ packId: $scope.locker.packName }, function (data) {
+        return OvhApiPackXdslDomainActivation.Lexi().getTlds({
+            packId: $scope.locker.packName
+        }, function (data) {
             $scope.locker.tldList = [];
             _.each(data, function (elt) {
                 $scope.locker.tldList.push({
@@ -17,29 +19,18 @@ angular.module("managerApp").controller("PackDomainActivationController", functi
                 });
             });
             $scope.model.tld = _.first(data);
-        }, function (err) {
-            $scope.errors.push({
-                key: "error_" + err.status,
-                data: err.data
-            });
         }).$promise;
     }
 
     function loadActivatedDomains () {
-        return OvhApiPackXdslDomainActivation.Lexi().getServices({ packId: $scope.locker.packName }, function (data) {
+        return OvhApiPackXdslDomainActivation.Lexi().getServices({
+            packId: $scope.locker.packName
+        }, function (data) {
             $scope.locker.activatedDomains = data;
-        }, function (err) {
-            $scope.errors.push({
-                key: "error_" + err.status,
-                data: err.data
-            });
         }).$promise;
     }
 
     function init () {
-        /* For errors */
-        $scope.errors = [];
-
         /* Only for submitted data */
         $scope.model = {
             action: null, // Enum: [create | transfert | trade]
@@ -66,35 +57,26 @@ angular.module("managerApp").controller("PackDomainActivationController", functi
         };
 
         if (_.isEmpty($stateParams.packName)) {
-            $scope.errors.push({
-                key: "domain_activation_total_error"
-            });
-        } else {
-            $scope.locker.packName = $stateParams.packName;
-            $scope.locker.activatedDomains = [];
-            $scope.errors = [];
-
-            self.countries = OvhSimpleCountryList.asDataForSelect;
-
-            self.isLoading = true;
-            return $q.all([
-                getUser(),
-                loadActivatedDomains(),
-                loadAvailableTlds()
-            ]).finally(function () {
-                self.isLoading = false;
-            });
+            Toast.error($translate.instant("domain_activation_total_error"));
+            return $q.when(null);
         }
 
-        $scope.$watch("toggles.authMethod", function () {
-            if ($scope.toggles.authMethod === "none") {
-                $scope.model.noId = true;
-            } else {
-                $scope.model.noId = false;
-            }
-        });
+        $scope.locker.packName = $stateParams.packName;
+        $scope.locker.activatedDomains = [];
 
-        return $q.when(null);
+        self.countries = OvhSimpleCountryList.asDataForSelect;
+
+        self.isLoading = true;
+        return $q.all([
+            getUser(),
+            loadActivatedDomains(),
+            loadAvailableTlds()
+        ]).catch(function (error) {
+            Toast.error([$translate.instant("domain_activation_total_error"), _.get(error, "data.message")].join(" "));
+            return $q.reject(error);
+        }).finally(function () {
+            self.isLoading = false;
+        });
     }
 
     var setDomainIsAvailable = function () {
@@ -140,15 +122,12 @@ angular.module("managerApp").controller("PackDomainActivationController", functi
                 packId: $stateParams.packName,
                 domain: $scope.model.domain,
                 language: "fr"
-            }, function (data) {
+            }).$promise.then(function (data) {
                 // if the model still match the request
                 if (data && data.domain === $scope.model.domain) {
 
                     if (!data.search) {
-                        $scope.errors.push({
-                            key: "error_417",
-                            data: "Expectation Failed."
-                        });
+                        Toast.error($translate.instant("domain_activation_error_on_check_disponibility"));
                         return;
                     }
 
@@ -156,45 +135,17 @@ angular.module("managerApp").controller("PackDomainActivationController", functi
                     _.each(data.search, function (search) {
                         if (search.available && search.tld === $scope.model.tld) {
                             setDomainIsAvailable();
-
                         }
                     });
 
                     // TODO: IF NOT $scope.toggles.domainStatus THEN ERROR !!
                 }
+            }).catch(function (err) {
+                Toast.error([$translate.instant("domain_activation_error_on_check_disponibility"), _.get(err, "data.message")].join(" "));
+                return $q.reject(err);
+            }).finally(function () {
                 $scope.toggles.domainLoading = false;
-            }, function (err) {
-                var status;
-                var message;
-
-                if (err && err.status) {
-                    status = err.status;
-
-                    /* if the status of error is not set, it's probably a client side error */
-                } else {
-                    status = 456; // Unrecoverable Error
-                }
-
-                if (err && err.data) {
-                    message = err.data; /* sever side error */
-                } else if (err && err.message) {
-                    message = err.message; /* client side error */
-                } else {
-                    message = "Unrecoverable Error";
-                }
-
-                $scope.toggles.domainLoading = false;
-                $scope.errors.push({
-                    key: "error_" + status,
-                    data: message
-                });
             });
-        }
-    };
-
-    $scope.closeThisError = function (index) {
-        if (index >= 0 && index < $scope.errors.length) {
-            $scope.errors.splice(index, 1);
         }
     };
 
@@ -204,37 +155,22 @@ angular.module("managerApp").controller("PackDomainActivationController", functi
 
     $scope.submit = function () {
         var data = _.pick($scope.model, ["packName", "action", "authInfo", "domain", "tld"]);
-        var toaster = Toast.infoWithInProgress(
-            $translate.instant("domain_activation_please_wait"),
-            $translate.instant("domain_activation_saving_domain"),
-            { type: "info", hideAfter: false }
-        );
 
         self.isActivating = true;
         OvhApiPackXdslDomainActivation.Lexi().postServices({
             packId: $scope.locker.packName
-        }, data, function () {
-            Toast.update(toaster, $translate.instant("domain_activation_domain_is_saved"),
-                         { type: "success", hideAfter: 7 });
+        }, data).$promise.then(function () {
+            Toast.success($translate.instant("domain_activation_domain_is_saved"));
 
             $timeout(function () {
                 $state.go("telecom.pack", {
                     packName: $stateParams.packName
                 });
             }, 2000);
-
-        }, function (err) {
-
-            $scope.errors.push({
-                key: "error_" + err.status,
-                data: err.data
-            });
-
-            Toast.update(toaster, "(" + err.status + ") " +
-                    $translate.instant("domain_activation_unable_to_save_domain"),
-                         { type: "error", hideAfter: 10 }
-            );
-        }).$promise.finally(function () {
+        }).catch(function (err) {
+            Toast.error([$translate.instant("domain_activation_unable_to_save_domain"), _.get(err, "data.message")].join(" "));
+            return $q.reject(err);
+        }).finally(function () {
             self.isActivating = false;
         });
     };

@@ -67,7 +67,7 @@ describe("Controller: XdslModemResetCtrl", function () {
     describe("- Reset Modem -", function () {
 
         beforeEach(function () {
-            $httpBackend.whenPOST("/apiv6/xdsl/" + xdslPack + "/modem/reset").respond(201, null);
+            $httpBackend.whenPOST("/apiv6/xdsl/" + xdslPack + "/modem/reset?resetOvhConfig=0").respond(201, null);
             initNewCtrl(xdslPack);
         });
 
