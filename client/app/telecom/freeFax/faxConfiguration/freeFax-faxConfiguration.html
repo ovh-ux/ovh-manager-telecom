@@ -5,9 +5,7 @@
         </h3>
         <div class="oui-tile__body"
              data-ng-if="loading">
-            <bouncing-box-loader data-size="m">
-                <h4 data-translate="loading"></h4>
-            </bouncing-box-loader>
+            <oui-loader data-size="m"></oui-loader>
         </div>
         <div class="oui-tile__body"
              data-ng-if="!loading && freeFax && !FaxConfCtrl.editMode">
@@ -180,10 +178,10 @@
                                     data-ng-really-window-class="revert-really-buttons"
                                     data-ng-disabled="FaxConfCtrl.generatingPassword">
                             </button>
-                            <bouncing-box-loader class="d-inline-block align-middle ml-2"
+                            <oui-loader class="d-inline-block align-middle ml-2"
                                                  data-ng-if="FaxConfCtrl.generatingPassword"
                                                  data-size="s">
-                            </bouncing-box-loader>
+                            </oui-loader>
                             <div class="input-group"
                                  data-ng-if="FaxConfCtrl.generatedPassword">
                                 <input class="form-control"
@@ -240,10 +238,10 @@
                                     data-ng-disabled="FaxConfCtrl.loading"
                                     data-translate="cancel">
                             </button>
-                            <bouncing-box-loader class="d-inline-block align-middle ml-2"
+                            <oui-loader class="d-inline-block align-middle ml-2"
                                                  data-ng-if="FaxConfCtrl.loading"
                                                  data-size="s">
-                            </bouncing-box-loader>
+                            </oui-loader>
                         </div>
                     </form>
                 </div>

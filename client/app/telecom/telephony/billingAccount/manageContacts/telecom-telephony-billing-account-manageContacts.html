@@ -2,10 +2,9 @@
 
     <toast-message></toast-message>
 
-    <bouncing-box-loader data-size="m"
-                         data-ng-if="ManageContactsCtrl.isLoading">
-        <h2 data-translate="loading"></h2>
-    </bouncing-box-loader>
+    <oui-loader data-ng-if="ManageContactsCtrl.isLoading"
+                data-size="m">
+    </oui-loader>
 
     <section class="widget-presentation"
              data-ng-if="!ManageContactsCtrl.isLoading">
@@ -114,10 +113,10 @@
                                         data-ng-if="contact.editing"
                                         data-ng-disabled="contact.submiting || !ManageContactsCtrl.hasChanges(contact) || !ManageContactsCtrl.isContactValid(contact)"
                                         data-ng-click="ManageContactsCtrl.submitChanges(contact)">
-                                    <bouncing-box-loader class="d-inline-block align-middle mr-2"
-                                                         data-ng-if="contact.submiting"
-                                                         data-size="s">
-                                    </bouncing-box-loader>
+                                    <oui-loader class="mr-2"
+                                                data-ng-if="contact.submiting"
+                                                data-size="s">
+                                    </oui-loader>
                                     <span data-translate="submit"></span>
                                 </button>
                             </div>

@@ -8,7 +8,10 @@
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
-    <bouncing-box-loader class="text-center pt-4" data-ng-if="PackMoveContract.loading"></bouncing-box-loader>
+    <div class="text-center"
+         data-ng-if="PackMoveContract.loading">
+        <oui-loader data-size="m"></oui-loader>
+    </div>
 
     <div class="modal-body" data-ng-if="!PackMoveContract.loading">
         <h3 data-translate="pack_move_contract_title"></h3>

@@ -58,10 +58,10 @@
                             data-ng-disabled="phonebookCreateForm.$invalid || PhonebooksCreateCtrl.phonebookToAdd.isAdding">
                             <span data-translate="sms_phonebooks_create"></span>
                         </button>
-                        <bouncing-box-loader class="d-inline-block align-middle ml-2"
-                                             data-ng-if="PhonebooksCreateCtrl.phonebookToAdd.isAdding"
-                                             data-size="s">
-                        </bouncing-box-loader>
+                        <oui-loader class="ml-2"
+                                    data-ng-if="PhonebooksCreateCtrl.phonebookToAdd.isAdding"
+                                    data-size="s">
+                        </oui-loader>
                     </div>
                 </form>
             </div>

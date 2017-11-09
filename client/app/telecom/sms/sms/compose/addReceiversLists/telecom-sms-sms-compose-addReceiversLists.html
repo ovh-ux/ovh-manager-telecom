@@ -36,11 +36,10 @@
 
     </div>
 
-    <div class="modal-body"
+    <div class="modal-body text-center"
          data-ng-if="AddReceiversListsCtrl.loading.addReceiversLists && !AddReceiversListsCtrl.added">
-        <bouncing-box-loader data-size="m">
-            <h4 data-translate="sms_sms_compose_add_receivers_adding"></h4>
-        </bouncing-box-loader>
+        <oui-loader data-size="m"></oui-loader>
+        <h4 data-translate="sms_sms_compose_add_receivers_adding"></h4>
     </div>
 
     <div class="modal-body"

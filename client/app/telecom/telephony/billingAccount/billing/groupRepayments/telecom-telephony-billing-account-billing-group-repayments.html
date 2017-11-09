@@ -7,10 +7,9 @@
         <h1 data-translate="telephony_group_billing_group_repayments_title"></h1>
     </header>
 
-    <bouncing-box-loader data-size="m"
-                         data-ng-if="GroupRepaymentsCtrl.consumptions.isLoading">
-        <h2 data-translate="loading"></h2>
-    </bouncing-box-loader>
+    <oui-loader data-ng-if="GroupRepaymentsCtrl.consumptions.isLoading"
+                data-size="m">
+    </oui-loader>
 
     <div class="telecom-section-content"
          data-ng-if="!GroupRepaymentsCtrl.consumptions.isLoading">
@@ -194,11 +193,11 @@
                         <button type="submit"
                                 class="btn btn-primary"
                                 data-ng-disabled="groupRepaymentsForm.$invalid || GroupRepaymentsCtrl.groupRepaymentsForm.isAsking">
+                            <oui-loader class="mr-2"
+                                        data-ng-if="GroupRepaymentsCtrl.groupRepaymentsForm.isAsking"
+                                        data-size="s">
+                            </oui-loader>
                             <span data-translate="submit"></span>
-                            <bouncing-box-loader class="d-inline-block align-middle ml-2"
-                                                 data-ng-if="GroupRepaymentsCtrl.groupRepaymentsForm.isAsking"
-                                                 data-size="s">
-                            </bouncing-box-loader>
                         </button>
                     </form>
                 </div>

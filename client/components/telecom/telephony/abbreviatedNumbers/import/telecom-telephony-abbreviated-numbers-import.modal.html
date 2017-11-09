@@ -99,16 +99,13 @@
 
      <div class="modal-body"
           data-ng-if="AbbreviatedNumberModal.loading.getFile && !AbbreviatedNumberModal.errorLoading">
-        <bouncing-box-loader>
-            <h3 class="mt-3"
-                data-translate="loading"></h3>
-        </bouncing-box-loader>
+        <oui-loader data-size="m"></oui-loader>
     </div>
 
     <div class="modal-body"
          data-ng-if="AbbreviatedNumberModal.loading.getFile && !AbbreviatedNumberModal.errorLoading">
         <uib-progressbar class="progress-striped"
-                         max="AbbreviatedNumberModal.total" 
+                         max="AbbreviatedNumberModal.total"
                          value="AbbreviatedNumberModal.progress">
         </uib-progressbar>
     </div>
@@ -116,7 +113,7 @@
     <div class="modal-body"
          data-ng-if="AbbreviatedNumberModal.importing">
         <uib-progressbar class="progress-striped"
-                         max="AbbreviatedNumberModal.total" 
+                         max="AbbreviatedNumberModal.total"
                          value="AbbreviatedNumberModal.progress">
             {{AbbreviatedNumberModal.progress}}
         </uib-progressbar>

@@ -28,10 +28,10 @@
                 <button type="submit"
                         class="btn btn-primary float-right mt-2"
                         data-ng-disabled="hangupForm.$invalid">
-                    <bouncing-box-loader class="d-inline-block align-middle mr-2"
-                                         data-ng-if="$ctrl.isSubmitting"
-                                         data-size="s">
-                    </bouncing-box-loader>
+                    <oui-loader class="mr-2"
+                                data-ng-if="$ctrl.isSubmitting"
+                                data-size="s">
+                    </oui-loader>
                     <span data-translate="telephony_alias_configuration_mode_calls_action_hangup_confirm"></span>
                 </button>
             </div>

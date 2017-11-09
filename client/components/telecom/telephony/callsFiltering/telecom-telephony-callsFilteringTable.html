@@ -7,10 +7,10 @@
                     type="button"
                     data-ng-disabled="$ctrl.getSelection().length === 0 || $ctrl.screenLists.isDeleting"
                     data-ng-click="$ctrl.removeSelectedScreenLists()">
-                <bouncing-box-loader class="d-inline-block align-middle mr-2"
-                                     data-ng-if="$ctrl.screenLists.isDeleting"
-                                     data-size="s">
-                </bouncing-box-loader>
+                <oui-loader class="mr-2"
+                            data-ng-if="$ctrl.screenLists.isDeleting"
+                            data-size="s">
+                </oui-loader>
                 <i class="ovh-font ovh-font-bin mr-2"></i>
                 <span data-ng-if="$ctrl.getSelection().length <= 1"
                       data-translate="telephony_calls_filtering_table_delete">
@@ -185,22 +185,18 @@
                             <i class="text-success ovh-font ovh-font-success"
                                data-ng-if="screen.status === 'active'">
                             </i>
-                            <bouncing-box-loader class="d-inline-block align-middle ml-1"
-                                                 data-ng-if="screen.status !== 'active'"
-                                                 data-size="s">
-                            </bouncing-box-loader>
+                            <oui-loader class="ml-1"
+                                        data-ng-if="screen.status !== 'active'"
+                                        data-size="s">
+                            </oui-loader>
                         </span>
                     </td>
                 </tr>
             </tbody>
             <tbody data-ng-if="$ctrl.isLoading">
                 <tr>
-                    <td colspan="6"
-                        class="text-center">
-                        <span data-translate="telephony_calls_filtering_table_loading"></span>
-                        <bouncing-box-loader class="d-inline-block align-middle ml-1"
-                                             data-size="s">
-                        </bouncing-box-loader>
+                    <td colspan="6">
+                        <oui-loader data-size="m"></oui-loader>
                     </td>
                 </tr>
             </tbody>

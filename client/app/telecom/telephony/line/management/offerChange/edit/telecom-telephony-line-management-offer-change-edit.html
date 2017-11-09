@@ -11,15 +11,10 @@
         </button>
     </div>
 
-    <div class="modal-body"
+    <div class="modal-body text-center"
          data-ng-if="OfferChangeEditCtrl.loading.init">
-
-        <bouncing-box-loader data-size="m">
-            <h4 class="mt-3"
-                data-translate="loading">
-            </h4>
-        </bouncing-box-loader>
-
+        <oui-loader data-size="m"></oui-loader>
+        <h4 data-translate="loading"></h4>
     </div>
 
     <div class="modal-body"
@@ -52,11 +47,10 @@
 
     </div>
 
-    <div class="modal-body"
+    <div class="modal-body text-center"
          data-ng-if="OfferChangeEditCtrl.loading.save && !OfferChangeEditCtrl.status.saved">
-        <bouncing-box-loader data-size="m">
-            <h4 data-translate="telephony_line_management_change_offer_change_doing"></h4>
-        </bouncing-box-loader>
+        <oui-loader data-size="m"></oui-loader>
+        <h4 data-translate="telephony_line_management_change_offer_change_doing"></h4>
     </div>
 
     <div class="modal-body"

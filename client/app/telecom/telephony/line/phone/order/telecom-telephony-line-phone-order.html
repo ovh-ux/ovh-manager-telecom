@@ -12,14 +12,13 @@
         </h1>
     </header>
 
-    <bouncing-box-loader data-ng-if="PhoneOrderCtrl.isLoading"
-                         data-size="m">
-        <h2 data-translate="loading"></h2>
-    </bouncing-box-loader>
-
     <div class="telecom-section-content">
 
         <toast-message></toast-message>
+
+        <oui-loader data-ng-if="PhoneOrderCtrl.isLoading"
+                    data-size="m">
+        </oui-loader>
 
         <div class="row"
              data-ng-if="!PhoneOrderCtrl.isLoading && PhoneOrderCtrl.hasPendingOfferTasks">
@@ -107,14 +106,13 @@
                     </h2>
                 </header>
                 <p data-ng-if="PhoneOrderCtrl.merchandise.length || PhoneOrderCtrl.phoneOffers.length"
-                   data-translate="telephony_line_phone_order_order_prompt">
-                </p>
-                <bouncing-box-loader data-ng-if="PhoneOrderCtrl.isStepLoading"
-                                     data-size="m">
-                    <h2 data-translate="loading"></h2>
-                </bouncing-box-loader>
-                <div class="form-group"
-                     data-ng-if="!PhoneOrderCtrl.isStepLoading">
+                   data-translate="telephony_line_phone_order_order_prompt"></p>
+
+                <oui-loader data-ng-if="PhoneOrderCtrl.isStepLoading"
+                            data-size="m">
+                </oui-loader>
+
+                <div data-ng-if="!PhoneOrderCtrl.isStepLoading">
                     <select class="form-control"
                             data-ng-if="PhoneOrderCtrl.merchandise.length || PhoneOrderCtrl.phoneOffers.length"
                             data-ng-model="PhoneOrderCtrl.order.phone">
@@ -170,9 +168,7 @@
                 <ovh-contact data-ng-model="PhoneOrderCtrl.order.contact"
                              data-ovh-contact-choice-options="PhoneOrderCtrl.contactChoiceOptions"
                              data-ovh-contact-init-deferred="PhoneOrderCtrl.contactDeferred">
-                    <bouncing-box-loader data-size="m">
-                        <h2 data-translate="loading"></h2>
-                    </bouncing-box-loader>
+                    <oui-loader data-size="m"></oui-loader>
                 </ovh-contact>
 
                 <h3 class="mt-4"
@@ -223,15 +219,11 @@
                         class="oui-button oui-button_primary oui-button_icon-right float-right mt-2"
                         data-ng-disabled="PhoneOrderCtrl.isSubmiting"
                         data-ng-click="PhoneOrderCtrl.submitPhoneReturn()">
+                    <oui-loader class="mr-2"
+                                data-ng-if="PhoneOrderCtrl.isSubmiting"
+                                data-size="s">
+                    </oui-loader>
                     <span data-translate="telephony_line_phone_order_return_confirm"></span>
-                    <i class="oui-icon oui-icon_circle oui-icon-chevron-right"
-                       aria-hidden="true"
-                       data-ng-if="!PhoneOrderCtrl.isSubmiting">
-                    </i>
-                    <bouncing-box-loader class="d-inline-block align-middle mr-2"
-                                         data-ng-if="PhoneOrderCtrl.isSubmiting"
-                                         data-size="s">
-                    </bouncing-box-loader>
                 </button>
             </section>
 
@@ -244,10 +236,9 @@
                     </h2>
                 </header>
 
-                <bouncing-box-loader data-ng-if="PhoneOrderCtrl.isStepLoading"
-                                     data-size="m">
-                    <h2 data-translate="loading"></h2>
-                </bouncing-box-loader>
+                <oui-loader data-ng-if="PhoneOrderCtrl.isStepLoading"
+                            data-size="m">
+                </oui-loader>
 
                 <div data-ng-if="!PhoneOrderCtrl.isStepLoading">
 

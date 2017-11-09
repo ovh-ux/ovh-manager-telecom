@@ -9,10 +9,10 @@
                 role="banner">
             <h1>
                 <span data-translate="telecom_dashboard_title"></span>
-                <bouncing-box-loader class="d-inline-block float-right"
-                                     data-ng-if="TelecomDashboardCtrl.loading.vip"
-                                     data-size="m">
-                </bouncing-box-loader>
+                <oui-loader class="float-right"
+                            data-ng-if="TelecomDashboardCtrl.loading.vip"
+                            data-size="m">
+                </oui-loader>
                 <span class="dashboard-vip-icon float-right m-3"
                       data-ng-if="!TelecomDashboardCtrl.loading.vip && TelecomDashboardCtrl.isVip">
                     <span class="sr-only"

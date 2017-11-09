@@ -7,10 +7,9 @@
         <h1 data-translate="telephony_line_calls_filtering_title"></h1>
     </header>
 
-    <bouncing-box-loader data-ng-if="CallsFilteringCtrl.isInitializing"
-                         data-size="m">
-        <h2 data-translate="loading"></h2>
-    </bouncing-box-loader>
+    <oui-loader data-ng-if="CallsFilteringCtrl.isInitializing"
+                data-size="m">
+    </oui-loader>
 
     <div class="telecom-section-content"
          data-ng-if="!CallsFilteringCtrl.isInitializing">
@@ -31,10 +30,10 @@
                             <label for="incomingScreenList"
                                    class="control-label">
                                 <span data-translate="telephony_line_calls_filtering_incoming"></span>
-                                <bouncing-box-loader class="float-right"
-                                                     data-ng-if="CallsFilteringCtrl.screen.isIncomingLoading"
-                                                     data-size="s">
-                                </bouncing-box-loader>
+                                <oui-loader class="float-right"
+                                            data-ng-if="CallsFilteringCtrl.screen.isIncomingLoading"
+                                            data-size="s">
+                                </oui-loader>
                             </label>
                             <select class="form-control"
                                     id="incomingScreenList"
@@ -52,10 +51,10 @@
                             <label for="outgoingScreenList"
                                    class="control-label">
                                 <span data-translate="telephony_line_calls_filtering_outgoing"></span>
-                                <bouncing-box-loader class="float-right"
-                                                     data-ng-if="CallsFilteringCtrl.screen.isOutgoingLoading"
-                                                     data-size="s">
-                                </bouncing-box-loader>
+                                <oui-loader class="float-right"
+                                            data-ng-if="CallsFilteringCtrl.screen.isOutgoingLoading"
+                                            data-size="s">
+                                </oui-loader>
                             </label>
                             <select class="form-control"
                                     id="outgoingScreenList"
@@ -81,10 +80,10 @@
                                   for="anonymousCallRejection">
                                 <span class="oui-checkbox__label">
                                     <span data-translate="telephony_line_calls_filtering_anonymous_reject"></span>
-                                    <bouncing-box-loader class="d-inline-block align-middle ml-2"
-                                                         data-ng-if="CallsFilteringCtrl.options.isUpdating.anonymousCallRejection"
-                                                         data-size="s">
-                                    </bouncing-box-loader>
+                                    <oui-loader class="ml-2"
+                                                data-ng-if="CallsFilteringCtrl.options.isUpdating.anonymousCallRejection"
+                                                data-size="s">
+                                    </oui-loader>
                                 </span>
                                 <span class="oui-checkbox__icon">
                                     <i class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></i>
@@ -105,10 +104,10 @@
                                   for="doNotDisturb">
                                 <span class="oui-checkbox__label">
                                     <span data-translate="telephony_line_calls_filtering_do_not_disturb"></span>
-                                    <bouncing-box-loader class="d-inline-block align-middle ml-2"
-                                                         data-ng-if="CallsFilteringCtrl.options.isUpdating.doNotDisturb"
-                                                         data-size="s">
-                                    </bouncing-box-loader>
+                                    <oui-loader class="ml-2"
+                                                data-ng-if="CallsFilteringCtrl.options.isUpdating.doNotDisturb"
+                                                data-size="s">
+                                    </oui-loader>
                                 </span>
                                 <span class="oui-checkbox__icon">
                                     <i class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></i>
@@ -129,10 +128,10 @@
                                   for="absentSubscriber">
                                 <span class="oui-checkbox__label">
                                     <span data-translate="telephony_line_calls_filtering_absent"></span>
-                                    <bouncing-box-loader class="d-inline-block align-middle ml-2"
-                                                         data-ng-if="CallsFilteringCtrl.options.isUpdating.absentSubscriber"
-                                                         data-size="s">
-                                    </bouncing-box-loader>
+                                    <oui-loader class="ml-2"
+                                                data-ng-if="CallsFilteringCtrl.options.isUpdating.absentSubscriber"
+                                                data-size="s">
+                                    </oui-loader>
                                 </span>
                                 <span class="oui-checkbox__icon">
                                     <i class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></i>

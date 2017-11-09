@@ -1,11 +1,8 @@
 <div class="telecom-telephony-line-phone-accessories-finalize">
 
-    <bouncing-box-loader data-size="m"
-                         data-ng-if="AccessoriesFinalizeCtrl.loading.init">
-        <h3 class="mt-3"
-            data-translate="loading">
-        </h3>
-    </bouncing-box-loader>
+    <oui-loader data-ng-if="AccessoriesFinalizeCtrl.loading.init"
+                data-size="m">
+    </oui-loader>
 
     <form data-ng-if="!AccessoriesFinalizeCtrl.loading.init">
 
