@@ -16,7 +16,7 @@
 
    <translation id="telephony_alias_config_change_type_label_select" qtlid="333009">Choisissez une fonctionnalité</translation>
 
-   <translation id="telephony_alias_config_change_type_label_redirect" qtlid="333022">Redirection avec supervision redirect</translation>
+   <translation id="telephony_alias_config_change_type_label_redirect">Redirection avec supervision</translation>
    <translation id="telephony_alias_config_change_type_desc_redirect" qtlid="333035">Permet de rediriger les appels reçus vers la ligne ou numéro de votre choix.<br/><br/>Cette configuration permet la supervision des appels depuis un autre poste, ainsi que la modification de la présentation du numéro à la volée.</translation>
 
    <translation id="telephony_alias_config_change_type_label_ddi">Redirection avec présentation de ce numéro sur ma ligne SIP ou mon Trunk</translation>
