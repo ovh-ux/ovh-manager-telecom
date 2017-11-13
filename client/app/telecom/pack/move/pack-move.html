@@ -6,8 +6,9 @@
 
     <div class="telecom-section-content">
 
-        <bouncing-box-loader data-size="m"
-                             data-ng-if="PackMove.loading"></bouncing-box-loader>
+        <oui-loader data-ng-if="PackMove.loading"
+                    data-size="m">
+        </oui-loader>
 
         <!-- BEGIN: end of loading -->
         <div data-ng-if="!PackMove.loading">

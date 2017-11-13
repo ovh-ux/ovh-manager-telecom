@@ -7,10 +7,9 @@
         <h1 data-translate="telephony_alias_configuration_mode_title"></h1>
     </header>
 
-    <bouncing-box-loader data-ng-if="ModeEasyHuntingCtrl.isLoading"
-                         data-size="m">
-        <h2 data-translate="loading"></h2>
-    </bouncing-box-loader>
+    <oui-loader data-ng-if="ModeEasyHuntingCtrl.isLoading"
+                data-size="m">
+    </oui-loader>
 
     <div class="telecom-section-content"
          data-ng-if="!ModeEasyHuntingCtrl.isLoading">
@@ -239,10 +238,10 @@
                         <button type="submit"
                                 class="btn btn-primary"
                                 data-ng-disabled="ModeEasyHuntingCtrl.isUpdating">
-                            <bouncing-box-loader class="d-inline-block align-middle mr-2"
-                                                 data-ng-if="ModeEasyHuntingCtrl.isUpdating"
-                                                 data-size="s">
-                            </bouncing-box-loader>
+                            <oui-loader class="mr-2"
+                                        data-ng-if="ModeEasyHuntingCtrl.isUpdating"
+                                        data-size="s">
+                            </oui-loader>
                             <span data-translate="telephony_alias_configuration_mode_easyhunting_change"></span>
                         </button>
                         <button type="button"

@@ -7,9 +7,9 @@
 
         <toast-message></toast-message>
 
-        <bouncing-box-loader data-ng-show="OrderOverTheBox.loaders.checking">
-            <h3 data-translate="loading"></h3>
-        </bouncing-box-loader>
+        <oui-loader data-ng-show="OrderOverTheBox.loaders.checking"
+                    data-size="m">
+        </oui-loader>
 
         <!-- warning -->
         <div class="mb-3"
@@ -39,18 +39,18 @@
                 <i class="ovh-font ovh-font-cart mr-2 my-0"
                     data-ng-if="!OrderOverTheBox.paymentMeansChecking">
                 </i>
-                <bouncing-box-loader class="d-inline-block align-middle mr-2"
-                                     data-ng-if="OrderOverTheBox.paymentMeansChecking"
-                                     data-size="s">
-                </bouncing-box-loader>
+                <oui-loader class="mr-2"
+                            data-ng-if="OrderOverTheBox.paymentMeansChecking"
+                            data-size="s">
+                </oui-loader>
                 <span data-translate="order_overTheBox_subscription_request"></span>
             </button>
 
         </div>
 
-        <bouncing-box-loader data-ng-show="OrderOverTheBox.loaders.order">
-            <h3 data-translate="loading"></h3>
-        </bouncing-box-loader>
+        <oui-loader data-ng-show="OrderOverTheBox.loaders.order"
+                    data-size="m">
+        </oui-loader>
 
         <div class="row">
             <div class="col-xs-12 col-md-6">

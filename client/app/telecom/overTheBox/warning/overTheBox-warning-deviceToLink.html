@@ -18,10 +18,9 @@
               aria-hidden="true"
               data-ng-if="!DeviceToLink.loader">
         </span>
-        <bouncing-box-loader class="d-inline-block align-middle"
-                             data-ng-if="DeviceToLink.loader"
-                             data-size="s">
-        </bouncing-box-loader>
+        <oui-loader data-ng-if="DeviceToLink.loader"
+                    data-size="s">
+        </oui-loader>
         <span data-translate="order_overTheBox_device_to_link_link"></span>
     </button>
     <p data-ng-if="DeviceToLink.configService"

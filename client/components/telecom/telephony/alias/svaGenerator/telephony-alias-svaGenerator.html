@@ -1,6 +1,7 @@
 <div class="sva-generator">
-    <bouncing-box-loader data-size="s"
-                         data-ng-if="isLoading"></bouncing-box-loader>
+    <oui-loader data-ng-if="isLoading"
+                data-size="m">
+    </oui-loader>
     <div class="sva-container" data-ng-show="!isLoading"></div>
     <p data-ng-if="imageHref">
         <span data-translate="telecom_sva_generator_download"></span>

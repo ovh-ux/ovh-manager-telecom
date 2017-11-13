@@ -9,10 +9,9 @@
 
 </section>
 
-<bouncing-box-loader data-size="m"
-                     data-ng-if="LineLockOutCallCtrl.loading.init">
-    <h2 data-translate="loading"></h2>
-</bouncing-box-loader>
+<oui-loader data-ng-if="LineLockOutCallCtrl.loading.init"
+            data-size="m">
+</oui-loader>
 
 <div class="telecom-section-content"
      data-ng-hide="LineLockOutCallCtrl.loading.init">
@@ -76,10 +75,10 @@
                     <button type="submit"
                             class="btn btn-primary"
                             data-ng-disabled="LineLockOutCallCtrl.updating || !lockOutCallForm.$valid || !LineLockOutCallCtrl.needSave()">
-                        <bouncing-box-loader class="d-inline-block align-middle mr-2"
-                                             data-ng-if="LineDisplayNumberCtrl.updating"
-                                             data-size="s">
-                        </bouncing-box-loader>
+                        <oui-loader class="mr-2"
+                                    data-ng-if="LineDisplayNumberCtrl.updating"
+                                    data-size="s">
+                        </oui-loader>
                         <span data-translate="submit"></span>
                     </button>
                     <button type="button"

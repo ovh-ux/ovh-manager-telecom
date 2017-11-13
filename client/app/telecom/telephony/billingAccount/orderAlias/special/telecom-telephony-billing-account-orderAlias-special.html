@@ -74,9 +74,9 @@
                         <h2 class="widget-presentation-title"
                             data-translate="telephony_order_specific_title">
                         </h2>
-                        <bouncing-box-loader data-ng-if="!AliasOrderSpecialCtrl.prices"
-                                             data-size="m">
-                        </bouncing-box-loader>
+                        <oui-loader data-ng-if="!AliasOrderSpecialCtrl.prices"
+                                    data-size="m">
+                        </oui-loader>
                         <telecom-telephony-billing-account-order-alias-number-choice
                             name="offerChoice"
                             data-ng-model="AliasOrderSpecialCtrl.form"
@@ -127,10 +127,10 @@
                         data-translate="telephony_order_confirm"
                         data-translate-values="{ total: AliasOrderSpecialCtrl.getTotal() }">
                     </button>
-                    <bouncing-box-loader class="d-inline-block align-middle mr-2"
-                                         data-ng-if="AliasOrderSpecialCtrl.loading.order"
-                                         data-size="s">
-                    </bouncing-box-loader>
+                    <oui-loader class="mr-2"
+                                data-ng-if="AliasOrderSpecialCtrl.loading.order"
+                                data-size="s">
+                    </oui-loader>
 
                 </div>
             </form>

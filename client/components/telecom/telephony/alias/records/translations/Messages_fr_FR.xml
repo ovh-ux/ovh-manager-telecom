@@ -14,7 +14,6 @@
     <translation id="telephony_alias_configuration_records_form_record_disabling_digit">Choix du chiffre</translation>
     <translation id="telephony_alias_configuration_records_form_submit">Appliquer les modifications</translation>
     <translation id="telephony_alias_configuration_records_list_title">Liste des enregistrements</translation>
-    <translation id="telephony_alias_configuration_records_list_loading">Chargement des enregistrements</translation>
     <translation id="telephony_alias_configuration_records_list_empty">Aucun enregistrement</translation>
     <translation id="telephony_alias_configuration_records_list_delete">Supprimer l’enregistrement sélectionné</translation>
     <translation id="telephony_alias_configuration_records_list_delete_plural">Supprimer les {{ nb }} enregistrements sélectionnés</translation>

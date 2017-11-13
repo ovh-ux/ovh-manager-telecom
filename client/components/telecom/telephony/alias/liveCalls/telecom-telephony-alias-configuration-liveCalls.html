@@ -1,7 +1,6 @@
-<div class="telecom-section-content" data-ng-if="$ctrl.isLoading">
-    <bouncing-box-loader>
-        <h4 data-translate="loading"></h4>
-    </bouncing-box-loader>
+<div class="telecom-section-content text-center" data-ng-if="$ctrl.isLoading">
+    <oui-loader data-size="l"></oui-loader>
+    <h2 data-translate="loading"></h2>
 </div>
 
 <!-- STATS -->
@@ -116,9 +115,8 @@
             </tbody>
             <tbody data-ng-if="$ctrl.isLoading">
                 <tr>
-                    <td colspan="5"
-                        class="text-center">
-                        <bouncing-box-loader data-size="m"></bouncing-box-loader>
+                    <td colspan="5">
+                        <oui-loader data-size="m"></oui-loader>
                     </td>
                 </tr>
             </tbody>
@@ -131,7 +129,7 @@
                 </tr>
             </tbody>
         </table>
-        <div class="table-pretty-pagination mt-2 mb-3"
+        <div class="mt-2 mb-3"
              data-ng-show="!$ctrl.isLoading && $ctrl.calls.length"
              data-pagination-front
              data-items="$ctrl.calls"
@@ -187,9 +185,8 @@
             </tbody>
             <tbody data-ng-if="$ctrl.isLoading">
                 <tr>
-                    <td colspan="3"
-                        class="text-center">
-                        <bouncing-box-loader data-size="m"></bouncing-box-loader>
+                    <td colspan="3">
+                        <oui-loader data-size="m"></oui-loader>
                     </td>
                 </tr>
             </tbody>

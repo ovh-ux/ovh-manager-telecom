@@ -45,11 +45,10 @@
 
     </div>
 
-    <div class="modal-body clearfix"
+    <div class="modal-body clearfix text-center"
          data-ng-if="SchedulerExportCtrl.loading.init || SchedulerExportCtrl.loading.export">
-        <bouncing-box-loader>
-            <h4 data-translate="{{ SchedulerExportCtrl.loading.init ? 'loading' : 'telephony_scheduler_export_doing' }}"></h4>
-        </bouncing-box-loader>
+        <oui-loader data-size="m"></oui-loader>
+        <h4 data-translate="{{ SchedulerExportCtrl.loading.init ? 'loading' : 'telephony_scheduler_export_doing' }}"></h4>
     </div>
 
     <div class="modal-body clearfix"

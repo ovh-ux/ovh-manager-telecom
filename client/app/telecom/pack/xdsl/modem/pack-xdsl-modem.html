@@ -1,10 +1,9 @@
 <section class="telecom-pack-xdsl-modem"
          data-ui-view="modemView">
 
-    <bouncing-box-loader data-size="m"
-                         data-ng-if="XdslModem.loaders.modem">
-        <h3 data-translate="loading" class="mt-3"></h3>
-    </bouncing-box-loader>
+    <oui-loader data-ng-if="XdslModem.loaders.modem"
+                data-size="m">
+    </oui-loader>
 
     <div data-ng-if="!XdslModem.loaders.modem">
         <div class="alert alert-warning"
@@ -18,14 +17,14 @@
             <div class="alert alert-warning"
                  role="alert"
                  data-ng-if="XdslModem.mediator.info.isBridged">
-                <span scroll-to="bridgeModeA"
+                <span data-scroll-to="bridgeModeA"
                       data-ng-bind-html="'xdsl_modem_warning_bridge' | translate"></span>
           </div>
 
             <div class="alert alert-warning"
                  role="alert"
                  data-ng-if="!XdslModem.mediator.info.managedByOvh">
-              <span scroll-to="managedByA"
+              <span data-scroll-to="managedByA"
                     data-ng-bind-html="'xdsl_modem_warning_managedBy' | translate"></span>
           </div>
 
@@ -116,7 +115,7 @@
                                 <div class="service-button-description">
                                     <div class="description-title-small description-title-fullHeight">
                                         {{ XdslModem.mediator.info.dmzIP || ('xdsl_modem_dmz_none' | translate) }}
-                                        <bouncing-box-loader data-ng-show="XdslModem.mediator.tasks.changeModemConfigDMZ"></bouncing-box-loader>
+                                        <oui-loader data-ng-show="XdslModem.mediator.tasks.changeModemConfigDMZ"></oui-loader>
                                     </div>
                                 </div>
 

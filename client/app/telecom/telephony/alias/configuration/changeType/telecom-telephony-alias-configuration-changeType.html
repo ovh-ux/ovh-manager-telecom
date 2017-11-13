@@ -8,10 +8,9 @@
 
     </header>
 
-    <bouncing-box-loader data-ng-if="AliasConfigurationChangeTypeCtrl.loading.line"
-                         data-size="m">
-        <h2 data-translate="loading"></h2>
-    </bouncing-box-loader>
+    <oui-loader data-ng-if="AliasConfigurationChangeTypeCtrl.loading.line"
+                data-size="m">
+    </oui-loader>
 
     <div class="telecom-section-content"
          data-ng-if="!AliasConfigurationChangeTypeCtrl.loading.line">
@@ -68,10 +67,11 @@
                             data-translate="submit">
                     </button>
                 </form>
-                <bouncing-box-loader data-size="m"
-                                     data-ng-if="AliasConfigurationChangeTypeCtrl.loading.changing">
+                <div class="text-center"
+                     data-ng-if="AliasConfigurationChangeTypeCtrl.loading.changing">
+                    <oui-loader data-size="m"></oui-loader>
                     <h4 data-translate="telephony_alias_config_change_type_doing"></h4>
-                </bouncing-box-loader>
+                </div>
             </div>
             <div class="col-xs-12 col-md-6 widget-presentation">
                 <header class="widget-presentation-header">

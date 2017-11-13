@@ -1,9 +1,8 @@
 <section class="telecom-telephony-billing-account-phonebook">
 
-    <bouncing-box-loader data-size="m"
-                         data-ng-if="PhonebookCtrl.phonebook.isLoading">
-        <h2 data-translate="loading"></h2>
-    </bouncing-box-loader>
+    <oui-loader data-ng-if="PhonebookCtrl.phonebook.isLoading"
+                data-size="m">
+    </oui-loader>
 
     <toast-message></toast-message>
 
@@ -62,10 +61,10 @@
                             class="btn btn-primary mt-3"
                             data-ng-disabled="phonebookCreateForm.$invalid ||
                                               PhonebookCtrl.phonebookToAdd.isAdding">
-                            <bouncing-box-loader class="d-inline-block align-middle mr-2"
-                                                 data-ng-if="PhonebookCtrl.phonebookToAdd.isAdding"
-                                                 data-size="s">
-                            </bouncing-box-loader>
+                            <oui-loader class="mr-2"
+                                        data-ng-if="PhonebookCtrl.phonebookToAdd.isAdding"
+                                        data-size="s">
+                            </oui-loader>
                             <span data-translate="telephony_phonebook_create_submit"></span>
                         </button>
                     </form>
@@ -250,10 +249,10 @@
                                aria-hidden="true"
                                data-ng-if="!PhonebookCtrl.phonebookContact.isDeleting">
                             </i>
-                            <bouncing-box-loader class="d-inline-block align-middle mr-2"
-                                                 data-ng-if="PhonebookCtrl.phonebookContact.isDeleting"
-                                                 data-size="s">
-                            </bouncing-box-loader>
+                            <oui-loader class="mr-2"
+                                        data-ng-if="PhonebookCtrl.phonebookContact.isDeleting"
+                                        data-size="s">
+                            </oui-loader>
                             <span data-ng-pluralize
                                   data-count="PhonebookCtrl.getSelection().length"
                                   data-when="{
@@ -491,24 +490,21 @@
                             </tbody>
                             <tbody data-ng-if="PhonebookCtrl.phonebookContact.isLoading">
                                 <tr>
-                                    <td class="text-center"
-                                        colspan="9">
-                                        <bouncing-box-loader class="d-inline-block align-middle"
-                                                             data-size="s">
-                                        </bouncing-box-loader>
-                                        <span data-translate="telephony_phonebook_contact_loading"></span>
+                                    <td colspan="9">
+                                        <oui-loader data-size="m"></oui-loader>
                                     </td>
                                 </tr>
                             </tbody>
                             <tbody data-ng-if="!PhonebookCtrl.phonebookContact.isLoading && !PhonebookCtrl.phonebookContact.paginated.length">
                                 <tr>
-                                    <td class="text-center pt-3 pb-3" colspan="9">
-                                        <span data-translate="telephony_phonebook_contact_empty"></span>
+                                    <td colspan="9"
+                                        class="text-center py-3"
+                                        data-translate="telephony_phonebook_contact_empty">
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
-                        <div class="table-pretty-pagination mt-2"
+                        <div class="mt-2"
                              data-ng-if="!PhonebookCtrl.phonebookContact.isLoading && PhonebookCtrl.phonebookContact.raw.length"
                              data-pagination-front
                              data-items="PhonebookCtrl.phonebookContact.sorted"

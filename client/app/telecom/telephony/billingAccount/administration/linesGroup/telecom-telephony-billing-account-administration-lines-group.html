@@ -7,10 +7,9 @@
         <h1 data-translate="telephony_lines_group_title"></h1>
     </header>
 
-    <bouncing-box-loader data-size="m"
-                         data-ng-if="LinesGroupCtrl.loading">
-        <h3 data-translate="loading"></h3>
-    </bouncing-box-loader>
+    <oui-loader data-ng-if="LinesGroupCtrl.loading"
+                data-size="m">
+    </oui-loader>
 
     <div class="telecom-section-content"
          data-ng-if="!LinesGroupCtrl.loading">
@@ -79,7 +78,7 @@
                             <tbody data-ng-if="LinesGroupCtrl.billingAccounts.ids.length && !LinesGroupCtrl.billingAccounts.paginated.length">
                                 <tr>
                                     <td colspan="2">
-                                        <bouncing-box-loader data-size="s"></bouncing-box-loader>
+                                        <oui-loader data-size="m"></oui-loader>
                                     </td>
                                 </tr>
                             </tbody>
@@ -107,10 +106,9 @@
                     </h2>
                     <p data-translate="telephony_lines_group_select_help"></p>
 
-                    <bouncing-box-loader data-size="m"
-                                         data-ng-if="!LinesGroupCtrl.services">
-                        <h3 data-translate="loading"></h3>
-                    </bouncing-box-loader>
+                    <oui-loader data-ng-if="!LinesGroupCtrl.services"
+                                data-size="m">
+                    </oui-loader>
 
                     <!-- LIST OF SELECTABLE SERVICES -->
                     <dl data-ng-if="LinesGroupCtrl.services">
@@ -213,10 +211,10 @@
                             class="btn btn-primary"
                             data-ng-click="LinesGroupCtrl.attachSelectedServices()"
                             data-ng-disabled="LinesGroupCtrl.isAttaching || LinesGroupCtrl.getServicesToAttachList().length < 1">
-                        <bouncing-box-loader class="d-inline-block align-middle mr-2"
-                                             data-ng-if="LinesGroupCtrl.isAttaching"
-                                             data-size="s">
-                        </bouncing-box-loader>
+                        <oui-loader class="mr-2"
+                                    data-ng-if="LinesGroupCtrl.isAttaching"
+                                    data-size="s">
+                        </oui-loader>
                         <span data-translate="telephony_lines_group_attach"></span>
                     </button>
                     <button type="button"

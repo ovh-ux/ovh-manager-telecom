@@ -33,9 +33,11 @@
     </div>
 
     <div class="modal-body">
-        <bouncing-box-loader data-ng-if="SchedulerImportCtrl.loading.import && !SchedulerImportCtrl.status.uploaded">
+        <div class="text-center"
+             data-ng-if="SchedulerImportCtrl.loading.import && !SchedulerImportCtrl.status.uploaded">
+            <oui-loader data-size="m"></oui-loader>
             <h4 data-translate="telephony_scheduler_import_upload_doing"></h4>
-        </bouncing-box-loader>
+        </div>
         <success-drawing-check data-draw-success-check="SchedulerImportCtrl.status.uploaded"
                                data-ng-if="SchedulerImportCtrl.status.uploaded">
             <h4 data-translate="telephony_scheduler_import_upload_success"></h4>

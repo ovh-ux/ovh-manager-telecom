@@ -9,10 +9,9 @@
 
 </section>
 
-<bouncing-box-loader data-size="m"
-                     data-ng-if="LineDisplayNumberCtrl.isLoading">
-    <h1 data-translate="loading"></h1>
-</bouncing-box-loader>
+<oui-loader data-ng-if="LineDisplayNumberCtrl.isLoading"
+            data-size="m">
+</oui-loader>
 
 <div class="telecom-section-content"
      data-ng-if="!LineDisplayNumberCtrl.isLoading">
@@ -92,10 +91,10 @@
                     <button type="submit"
                             class="btn btn-primary"
                             data-ng-disabled="!displayNumberForm.$valid || !LineDisplayNumberCtrl.hasChanges() || LineDisplayNumberCtrl.isUpdating">
-                        <bouncing-box-loader class="d-inline-block align-middle ml-2"
-                                             data-ng-if="LineDisplayNumberCtrl.isUpdating"
-                                             data-size="s">
-                        </bouncing-box-loader>
+                        <oui-loader class="mr-2"
+                                    data-ng-if="LineDisplayNumberCtrl.isUpdating"
+                                    data-size="s">
+                        </oui-loader>
                         <span data-translate="telephony_line_actions_line_calls_submit_changes"></span>
                     </button>
                     <button type="reset"
