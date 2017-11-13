@@ -53,27 +53,23 @@
                         <h3 data-translate="telefony_activation_hardware_line"
                             data-translate-values="{ index: hardware.index }">
                         </h3>
-                        <div data-uib-tooltip="{{!PackVoipLineActivationCtrl.canUncheckOrderablePhones &&
-                                hardware.line.needHardware ?
-                                'telefony_activation_no_more_port_modem' :
-                                null | translate}}">
-                            <input
-                                type="checkbox"
-                                id="{{'lineOrder-' + hardware.index}}"
-                                name="{{'lineOrder-' + hardware.index}}"
-                                class="form-control"
-                                data-ng-model="hardware.line.needHardware"
-                                data-ng-disabled="!PackVoipLineActivationCtrl.canUncheckOrderablePhones
-                                    && hardware.line.needHardware"
-                                data-ng-change="PackVoipLineActivationCtrl.checkIfStillCanUncheckOrderablePhones()">
-                            <label for="{{'lineOrder-' + hardware.index}}"
-                                class="ml-2">
-                                <span data-translate="telefony_activation_with_phone_header"></span>
-                                <span class="text-info ovh-font ovh-font-info hidden-xs" aria-hidden="true"></span>
+                        <div class="checkbox"
+                             data-uib-tooltip="{{ !PackVoipLineActivationCtrl.canUncheckOrderablePhones && hardware.line.needHardware ? 'telefony_activation_no_more_port_modem' : null | translate }}">
+                            <label>
+                                <input
+                                    type="checkbox"
+                                    id="{{'lineOrder-' + hardware.index}}"
+                                    name="{{'lineOrder-' + hardware.index}}"
+                                    data-ng-model="hardware.line.needHardware"
+                                    data-ng-disabled="!PackVoipLineActivationCtrl.canUncheckOrderablePhones && hardware.line.needHardware"
+                                    data-ng-change="PackVoipLineActivationCtrl.checkIfStillCanUncheckOrderablePhones()">
+                                <span>
+                                    <span data-translate="telefony_activation_with_phone_header"></span>
+                                    <span class="text-info ovh-font ovh-font-info hidden-xs" aria-hidden="true"></span>
+                                </span>
                             </label>
                             <div class="text-info visible-xs"
-                                data-ng-if="!PackVoipLineActivationCtrl.canUncheckOrderablePhones
-                                        && hardware.line.needHardware">
+                                data-ng-if="!PackVoipLineActivationCtrl.canUncheckOrderablePhones && hardware.line.needHardware">
                                 <span class="ovh-font ovh-font-info" aria-hidden="true"></span>
                                 <span data-translate="telefony_activation_no_more_port_modem"></span>
                             </div>
