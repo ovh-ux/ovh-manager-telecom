@@ -18,14 +18,14 @@
             <div class="alert alert-warning"
                  role="alert"
                  data-ng-if="XdslModem.mediator.info.isBridged">
-                <span scroll-to="bridgeModeA"
+                <span data-scroll-to="bridgeModeA"
                       data-ng-bind-html="'xdsl_modem_warning_bridge' | translate"></span>
           </div>
 
             <div class="alert alert-warning"
                  role="alert"
                  data-ng-if="!XdslModem.mediator.info.managedByOvh">
-              <span scroll-to="managedByA"
+              <span data-scroll-to="managedByA"
                     data-ng-bind-html="'xdsl_modem_warning_managedBy' | translate"></span>
           </div>
 
