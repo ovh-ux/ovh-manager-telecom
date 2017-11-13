@@ -7,10 +7,9 @@
         <h1 data-translate="telephony_line_calls_actions_line_external_number_display"></h1>
     </header>
 
-    <bouncing-box-loader data-size="m"
-                         data-ng-if="$ctrl.loading.init">
-        <h1 data-translate="loading"></h1>
-    </bouncing-box-loader>
+    <oui-loader data-ng-if="$ctrl.loading.init"
+                data-size="m">
+    </oui-loader>
 
     <div class="telecom-section-content"
          data-ng-if="!$ctrl.loading.init">
@@ -67,10 +66,10 @@
                                     <button type="button"
                                             class="btn btn-block btn-danger"
                                             data-ng-click="$ctrl.onConfirmDeleteNumberBtnClick()">
-                                        <bouncing-box-loader class="d-inline-block align-middle mr-2"
-                                                             data-ng-if="$ctrl.loading.remove"
-                                                             data-size="s">
-                                        </bouncing-box-loader>
+                                        <oui-loader class="mr-2"
+                                                    data-ng-if="$ctrl.loading.remove"
+                                                    data-size="s">
+                                        </oui-loader>
                                         <i class="ovh-font ovh-font-bin mr-2"
                                            data-ng-if="!$ctrl.loading.remove"></i>
                                         <span data-translate="delete"></span>
@@ -172,10 +171,10 @@
                         <button type="submit"
                                 class="btn btn-primary float-right"
                                 data-ng-disabled="$ctrl.externalNumberAddForm.$invalid || $ctrl.loading.add || $ctrl.list.length >= $ctrl.line.simultaneousLines">
-                            <bouncing-box-loader class="d-inline-block align-middle mr-2"
-                                                 data-ng-if="$ctrl.loading.add"
-                                                 data-size="s">
-                            </bouncing-box-loader>
+                            <oui-loader class="mr-2"
+                                        data-ng-if="$ctrl.loading.add"
+                                        data-size="s">
+                            </oui-loader>
                             <span data-translate="common_add"></span>
                         </button>
                         <button type="reset"

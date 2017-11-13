@@ -1,9 +1,8 @@
 <section class="telecom-sms-guides">
 
-    <bouncing-box-loader data-size="m"
-                         data-ng-if="SmsGuidesCtrl.loading.init">
-        <h2 data-translate="loading"></h2>
-    </bouncing-box-loader>
+    <oui-loader data-ng-if="SmsGuidesCtrl.loading.init"
+                data-size="m">
+    </oui-loader>
 
     <div class="row"
          data-ng-if="!SmsGuidesCtrl.loading.init">

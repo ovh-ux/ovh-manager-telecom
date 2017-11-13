@@ -27,12 +27,9 @@
         </div>
     </div>
 
-    <div class="clearfix"
-         data-ng-if="AutoConfigCtrl.loading.init || AutoConfigCtrl.loading.resetConfig">
-        <bouncing-box-loader data-size="m">
-            <h4 data-translate="loading"></h4>
-        </bouncing-box-loader>
-    </div>
+    <oui-loader data-ng-if="AutoConfigCtrl.loading.init || AutoConfigCtrl.loading.resetConfig"
+                data-size="m">
+    </oui-loader>
 
     <div data-ng-if="!AutoConfigCtrl.loading.init && !AutoConfigCtrl.loading.resetConfig">
 

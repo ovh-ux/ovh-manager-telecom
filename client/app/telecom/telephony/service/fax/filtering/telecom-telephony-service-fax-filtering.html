@@ -1,15 +1,10 @@
 <section class="telecom-telephony-service-fax-filtering">
 
-    <bouncing-box-loader data-size="m"
-                         data-ng-if="$ctrl.loading.init">
-        <h2 data-translate="loading"></h2>
-    </bouncing-box-loader>
+    <oui-loader data-ng-if="$ctrl.loading.init"
+                data-size="m">
+    </oui-loader>
 
-    <div class="row">
-        <div class="col-xs-12">
-            <toast-message></toast-message>
-        </div>
-    </div>
+    <toast-message></toast-message>
 
     <div class="row"
          data-ng-if="!$ctrl.loading.init">
@@ -23,10 +18,10 @@
                 <div class="form-group">
                     <label for="filteringList">
                         <span data-translate="telephony_service_fax_filtering_list_label"></span>
-                        <bouncing-box-loader class="d-inline-block align-middle float-right"
-                                             data-ng-if="$ctrl.screenListsForm.isUpdating"
-                                             data-size="s">
-                        </bouncing-box-loader>
+                        <oui-loader class="float-right"
+                                    data-ng-if="$ctrl.screenListsForm.isUpdating"
+                                    data-size="s">
+                        </oui-loader>
                     </label>
                     <select
                         class="form-control"
@@ -89,10 +84,10 @@
                     <button type="submit"
                             class="btn btn-primary"
                             data-ng-disabled="$ctrl.screenListsForm.isAdding || filteringAddForm.$invalid">
-                        <bouncing-box-loader class="d-inline-block align-middle mr-2"
-                                             data-ng-if="$ctrl.screenListsForm.isAdding"
-                                             data-size="s">
-                        </bouncing-box-loader>
+                        <oui-loader class="mr-2"
+                                    data-ng-if="$ctrl.screenListsForm.isAdding"
+                                    data-size="s">
+                        </oui-loader>
                         <span data-translate="common_add"></span>
                     </button>
                 </form>
@@ -118,10 +113,10 @@
                                   data-ng-if="!$ctrl.screenLists.isDeleting"
                                   aria-hidden="true">
                             </span>
-                            <bouncing-box-loader class="d-inline-block align-middle mr-2"
-                                                 data-ng-if="$ctrl.screenLists.isDeleting"
-                                                 data-size="s">
-                            </bouncing-box-loader>
+                            <oui-loader class="mr-2"
+                                        data-ng-if="$ctrl.screenLists.isDeleting"
+                                        data-size="s">
+                            </oui-loader>
                             <span data-ng-if="$ctrl.getSelection().length <= 1"
                                   data-translate="telephony_service_fax_filtering_table_delete">
                             </span>
@@ -242,18 +237,16 @@
                         </tbody>
                         <tbody data-ng-if="$ctrl.screenLists.isLoading">
                             <tr>
-                                <td class="text-center" colspan="4">
-                                    <span data-translate="telephony_service_fax_filtering_table_loading"></span>
-                                    <bouncing-box-loader class="d-inline-block align-middle ml-2"
-                                                         data-size="s">
-                                    </bouncing-box-loader>
+                                <td colspan="4">
+                                    <oui-loader data-size="m"></oui-loader>
                                 </td>
                             </tr>
                         </tbody>
                         <tbody data-ng-if="!$ctrl.screenLists.isLoading && !$ctrl.screenLists.paginated.length">
                             <tr>
-                                <td class="text-center my-3" colspan="4">
-                                    <span data-translate="telephony_service_fax_filtering_table_empty"></span>
+                                <td colspan="4"
+                                    class="text-center"
+                                    data-translate="telephony_service_fax_filtering_table_empty">
                                 </td>
                             </tr>
                         </tbody>

@@ -24,10 +24,9 @@
                           aria-hidden="true"
                           data-ng-if="!SmsIncomingCtrl.incoming.isExporting">
                     </span>
-                    <bouncing-box-loader class="d-inline-block align-middle"
-                                         data-ng-if="SmsIncomingCtrl.incoming.isExporting"
-                                         data-size="s">
-                    </bouncing-box-loader>
+                    <oui-loader data-ng-if="SmsIncomingCtrl.incoming.isExporting"
+                                data-size="s">
+                    </oui-loader>
                     <span data-translate="common_actions"></span>
                     <span class="ovh-font ovh-font-small-arrow-down" aria-hidden="true"></span>
                 </button>
@@ -72,10 +71,10 @@
                       aria-hidden="true"
                       data-ng-if="!SmsIncomingCtrl.incoming.isDeleting">
                 </span>
-                <bouncing-box-loader class="d-inline-block align-middle mr-2"
-                                     data-ng-if="SmsIncomingCtrl.incoming.isDeleting"
-                                     data-size="s">
-                </bouncing-box-loader>
+                <oui-loader class="mr-2"
+                            data-ng-if="SmsIncomingCtrl.incoming.isDeleting"
+                            data-size="s">
+                </oui-loader>
                 <span data-ng-pluralize
                       data-count="SmsIncomingCtrl.getSelection().length"
                       data-when="{
@@ -85,10 +84,10 @@
                       }">
                 </span>
             </button>
-            <bouncing-box-loader class="d-inline-block align-middle mt-2 ml-2"
-                                 data-ng-if="SmsIncomingCtrl.incoming.isReading"
-                                 data-size="s">
-            </bouncing-box-loader>
+            <oui-loader class="mt-2 ml-2"
+                        data-ng-if="SmsIncomingCtrl.incoming.isReading"
+                        data-size="s">
+            </oui-loader>
             <button
                 type="button"
                 class="btn btn-default float-right"
@@ -261,7 +260,7 @@
                 <tbody data-ng-if="SmsIncomingCtrl.incoming.isLoading">
                     <tr>
                         <td colspan="5">
-                            <bouncing-box-loader data-size="m"></bouncing-box-loader>
+                            <oui-loader data-size="m"></oui-loader>
                         </td>
                     </tr>
                 </tbody>

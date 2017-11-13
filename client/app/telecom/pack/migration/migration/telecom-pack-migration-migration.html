@@ -6,12 +6,11 @@
          span data-translate="telecom_pack_migration_already_pending">
     </div>
 
-    <bouncing-box-loader data-size="m"
-                         data-ng-if="MigrationCtrl.loading.migrate">
-        <h2 class="mt-3"
-            data-translate="telecom_pack_migration_doing">
-        </h2>
-    </bouncing-box-loader>
+    <div class="text-center"
+         data-ng-if="MigrationCtrl.loading.migrate">
+        <oui-loader data-size="m"></oui-loader>
+        <h2 data-translate="telecom_pack_migration_doing"></h2>
+    </div>
 
     <div data-ng-if="!MigrationCtrl.loading.migrate">
 

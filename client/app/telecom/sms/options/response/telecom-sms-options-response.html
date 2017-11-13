@@ -43,10 +43,9 @@
                     </h2>
                 </header>
 
-                <bouncing-box-loader data-size="m"
-                                     data-ng-if="TelecomSmsOptionsResponseCtrl.loading.init">
-                    <h3 data-translate="loading"></h3>
-                </bouncing-box-loader>
+                <oui-loader data-ng-if="TelecomSmsOptionsResponseCtrl.loading.init"
+                            data-size="m">
+                </oui-loader>
 
                 <form name="smsResponseActionForm"
                       id="smsResponseActionForm"
@@ -159,10 +158,10 @@
                             data-ng-disabled="smsResponseActionForm.$invalid || !TelecomSmsOptionsResponseCtrl.hasChanged() || TelecomSmsOptionsResponseCtrl.loading.action"
                             data-translate="submit">
                         </button>
-                        <bouncing-box-loader class="d-inline-block align-middle ml-2"
-                                             data-ng-if="TelecomSmsOptionsResponseCtrl.loading.action"
-                                             data-size="s">
-                        </bouncing-box-loader>
+                        <oui-loader class="ml-2"
+                                    data-ng-if="TelecomSmsOptionsResponseCtrl.loading.action"
+                                    data-size="s">
+                        </oui-loader>
                     </div>
 
                 </form>
@@ -256,7 +255,7 @@
                         <tbody data-ng-if="TelecomSmsOptionsResponseCtrl.loading.init">
                             <tr>
                                 <td colspan="3">
-                                    <bouncing-box-loader data-size="m"></bouncing-box-loader>
+                                    <oui-loader data-size="m"></oui-loader>
                                 </td>
                             </tr>
                         </tbody>

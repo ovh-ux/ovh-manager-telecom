@@ -1,9 +1,8 @@
 <section class="telecom-pack-xdsl-access" data-ui-view="accessView">
 
-    <bouncing-box-loader data-size="m"
-                         data-ng-if="loaders.details || loaders.tasks">
-        <h3 data-translate="loading"></h3>
-    </bouncing-box-loader>
+    <oui-loader data-ng-if="loaders.details || loaders.tasks"
+                data-size="m">
+    </oui-loader>
 
     <div data-ng-if="!loaders.details && !loaders.tasks">
 

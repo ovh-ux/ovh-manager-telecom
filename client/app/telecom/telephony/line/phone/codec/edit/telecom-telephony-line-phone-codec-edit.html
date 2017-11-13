@@ -38,11 +38,10 @@
         </div>
     </div>
 
-    <div class="modal-body"
+    <div class="modal-body text-center"
          data-ng-if="CodecEditCtrl.loading.save && !CodecEditCtrl.saved">
-        <bouncing-box-loader data-size="m">
-            <h4 data-translate="telephony_line_phone_codec_edit_codec_saving"></h4>
-        </bouncing-box-loader>
+        <oui-loader data-size="m"></oui-loader>
+        <h4 data-translate="telephony_line_phone_codec_edit_codec_saving"></h4>
     </div>
 
     <div class="modal-body"

@@ -19,10 +19,9 @@
 
                 <toast-message></toast-message>
 
-                <bouncing-box-loader data-size="m"
-                                     data-ng-if="PackResiliation.loading">
-                    <h3 data-translate="loading"></h3>
-                </bouncing-box-loader>
+                <oui-loader data-ng-if="PackResiliation.loading"
+                            data-size="m">
+                </oui-loader>
 
                 <form name="resiliationForm"
                       class="form-vertical mt-3"
@@ -49,9 +48,10 @@
                                 <strong class="text-price"
                                         data-ng-if="!PackResiliation.computingPrice"
                                         data-ng-bind="PackResiliation.resiliationTerms.data.due.text"></strong>
-                                <bouncing-box-loader class="d-inline-block align-middle ml-2"
-                                                     data-ng-if="PackResiliation.computingPrice"
-                                                     data-size="s"></bouncing-box-loader>
+                                <oui-loader class="ml-2"
+                                            data-ng-if="PackResiliation.computingPrice"
+                                            data-size="s">
+                                </oui-loader>
                             </p>
                         </div>
 
@@ -118,11 +118,9 @@
                     <fieldset class="widget-presentation mt-5">
                         <legend class="h2 widget-presentation-title" data-ng-bind="'2. ' + ('pack_resiliation_services_to_keep' | translate)"></legend>
 
-                        <div data-ng-if="PackResiliation.subServicesTermsLoading">
-                            <bouncing-box-loader data-size="m">
-                                <h4 data-translate="loading"></h4>
-                            </bouncing-box-loader>
-                        </div>
+                        <oui-loader data-ng-if="PackResiliation.subServicesTermsLoading"
+                                    data-size="m">
+                        </oui-loader>
 
                         <div class="alert alert-warning"
                              role="alert"

@@ -1,6 +1,7 @@
 <div data-ng-controller="XdslAccessProfileCtrl as ProfileCtrl">
-    <bouncing-box-loader data-size="m"
-                         data-ng-if="ProfileCtrl.loader"></bouncing-box-loader>
+    <oui-loader data-ng-if="ProfileCtrl.loader"
+                data-size="m">
+    </oui-loader>
 
     <form name="DslamProfilForm"
         class="clearfix"
@@ -22,8 +23,9 @@
                 data-translate="submit">
         </button>
     </form>
-    <div class="mt-2" data-ng-if="access.tasks.current.dslamProfileChange">
-        <bouncing-box-loader data-size="m"></bouncing-box-loader>
+    <div class="mt-2 text-center"
+         data-ng-if="access.tasks.current.dslamProfileChange">
+        <oui-loader data-size="m"></oui-loader>
         <span data-translate="xdsl_access_profile_doing"></span>
     </div>
 </div>

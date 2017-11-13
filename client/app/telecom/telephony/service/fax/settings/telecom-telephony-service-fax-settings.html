@@ -1,15 +1,10 @@
 <section class="telecom-telephony-service-fax-settings">
 
-    <bouncing-box-loader data-size="m"
-                         data-ng-if="SettingsCtrl.loading.init">
-        <h2 data-translate="loading"></h2>
-    </bouncing-box-loader>
+    <oui-loader data-ng-if="SettingsCtrl.loading.init"
+                data-size="m">
+    </oui-loader>
 
-    <div class="row">
-        <div class="col-xs-12">
-            <toast-message></toast-message>
-        </div>
-    </div>
+    <toast-message></toast-message>
 
     <div class="row"
          data-ng-if="!SettingsCtrl.loading.init && SettingsCtrl.settings">
@@ -74,10 +69,10 @@
                             <i class="ovh-font ovh-font-success ml-1"
                                data-ng-if="SettingsCtrl.generalOptionsForm.isSuccess">
                             </i>
-                            <bouncing-box-loader class="d-inline-block align-middle ml-2"
-                                                 data-ng-if="SettingsCtrl.generalOptionsForm.isUpdating"
-                                                 data-size="s">
-                            </bouncing-box-loader>
+                            <oui-loader class="ml-2"
+                                        data-ng-if="SettingsCtrl.generalOptionsForm.isUpdating"
+                                        data-size="s">
+                            </oui-loader>
                         </button>
                     </div>
 
@@ -199,10 +194,10 @@
                         <i class="ovh-font ovh-font-success fs14 ml-2"
                            data-ng-if="SettingsCtrl.faxTagLineForm.isSuccess">
                         </i>
-                        <bouncing-box-loader class="d-inline-block align-middle ml-2"
-                                             data-ng-if="SettingsCtrl.faxTagLineForm.isUpdating"
-                                             data-size="s">
-                        </bouncing-box-loader>
+                        <oui-loader class="ml-2"
+                                    data-ng-if="SettingsCtrl.faxTagLineForm.isUpdating"
+                                    data-size="s">
+                        </oui-loader>
                     </button>
                 </form>
             </div>
@@ -306,10 +301,10 @@
                         <i class="ovh-font ovh-font-success ml-1"
                            data-ng-if="SettingsCtrl.notificationOptionsForm.isSuccess">
                         </i>
-                        <bouncing-box-loader class="d-inline-block align-middle ml-2"
-                                             data-ng-if="SettingsCtrl.notificationOptionsForm.isUpdating"
-                                             data-size="s">
-                        </bouncing-box-loader>
+                        <oui-loader class="ml-2"
+                                    data-ng-if="SettingsCtrl.notificationOptionsForm.isUpdating"
+                                    data-size="s">
+                        </oui-loader>
                     </button>
 
                 </form>
@@ -392,10 +387,10 @@
                             type="submit"
                             class="btn btn-primary"
                             data-ng-disabled="faxAddressesToNotifyForm.$invalid || SettingsCtrl.addressesToNotifyForm.isAdding || SettingsCtrl.addressesToNotifyForm.isRemoving">
-                            <bouncing-box-loader class="d-inline-block align-middle mr-2"
-                                                 data-ng-if="SettingsCtrl.addressesToNotifyForm.isAdding"
-                                                 data-size="s">
-                            </bouncing-box-loader>
+                            <oui-loader class="mr-2"
+                                        data-ng-if="SettingsCtrl.addressesToNotifyForm.isAdding"
+                                        data-size="s">
+                            </oui-loader>
                             <span data-translate="common_add"></span>
                         </button>
                     </div>

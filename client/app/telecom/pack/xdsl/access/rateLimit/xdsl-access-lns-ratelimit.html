@@ -34,8 +34,9 @@
                 data-uib-tooltip-html-unsafe="<strong class='text-warning'>{{ 'xdsl_access_lns_ratelimit_warning' | translate }}</strong>"
                 data-translate="submit">
         </button>
-        <div data-ng-if="access.tasks.current.lnsApplyRateLimit">
-            <bouncing-box-loader data-size="m"></bouncing-box-loader>
+        <div class="text-center"
+             data-ng-if="access.tasks.current.lnsApplyRateLimit">
+            <oui-loader data-size="m"></oui-loader>
             <span data-translate="xdsl_access_lns_ratelimit_doing"></span>
         </div>
     </form>

@@ -7,10 +7,9 @@
         <h1 data-translate="telephony_group_billing_tollfree_history_title"></h1>
     </header>
 
-    <bouncing-box-loader data-size="m"
-                         data-ng-if="TollfreeHistoryCtrl.loading.init">
-        <h2 data-translate="loading"></h2>
-    </bouncing-box-loader>
+    <oui-loader data-ng-if="TollfreeHistoryCtrl.loading.init"
+                data-size="m">
+    </oui-loader>
 
     <div class="telecom-section-content"
          data-ng-if="!TollfreeHistoryCtrl.loading.init">
@@ -88,10 +87,9 @@
                                             <i data-ng-if="!consumption.downloading"
                                                class="fa fa-file-excel-o">
                                             </i>
-                                            <bouncing-box-loader class="d-inline-block align-middle"
-                                                                 data-ng-if="consumption.downloading"
-                                                                 data-size="s">
-                                            </bouncing-box-loader>
+                                            <oui-loader data-ng-if="consumption.downloading"
+                                                        data-size="s">
+                                            </oui-loader>
                                         </button>
                                     </td>
                                 </tr>
@@ -99,8 +97,8 @@
                             <tbody data-ng-if="!TollfreeHistoryCtrl.loading.init && !TollfreeHistoryCtrl.consumption.paginated.length">
                                 <tr>
                                     <td class="text-center py-3"
-                                        colspan="3">
-                                        <span data-translate="telephony_group_billing_tollfree_history_list_no_results"></span>
+                                        colspan="3"
+                                        data-translate="telephony_group_billing_tollfree_history_list_no_results">
                                     </td>
                                 </tr>
                             </tbody>

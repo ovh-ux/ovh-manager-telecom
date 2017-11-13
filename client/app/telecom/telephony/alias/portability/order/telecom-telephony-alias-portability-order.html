@@ -781,11 +781,9 @@
                       data-ng-submit="PortabilityOrderCtrl.submitOrder()"
                       novalidate>
 
-                    <div data-ng-if="!PortabilityOrderCtrl.details">
-                        <bouncing-box-loader data-size="m">
-                            <h3 class="mt-3" data-translate="loading"></h3>
-                        </bouncing-box-loader>
-                    </div>
+                    <oui-loader data-ng-if="!PortabilityOrderCtrl.details"
+                                data-size="m">
+                    </oui-loader>
 
                     <!-- PRICES AND CONTRACTS -->
                     <div class="form-group"
@@ -873,10 +871,10 @@
                         <button type="submit"
                                 class="btn btn-primary float-right"
                                 data-ng-disabled="portabilityOrderForm.$invalid || !PortabilityOrderCtrl.order.isContractsAccepted || PortabilityOrderCtrl.order.isOrdering">
-                            <bouncing-box-loader class="d-inline-block align-middle mr-2"
-                                                 data-ng-if="PortabilityOrderCtrl.order.isOrdering"
-                                                 data-size="s">
-                            </bouncing-box-loader>
+                            <oui-loader class="mr-2"
+                                        data-ng-if="PortabilityOrderCtrl.order.isOrdering"
+                                        data-size="s">
+                            </oui-loader>
                             <span data-translate="telephony_alias_portability_order_order"></span>
                         </button>
                     </div>

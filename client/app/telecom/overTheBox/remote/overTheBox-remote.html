@@ -27,7 +27,7 @@
                     <tbody data-ng-if="OverTheBoxRemote.remotes.length === 0">
                         <tr data-ng-show="OverTheBoxRemote.loading">
                             <td colspan="5">
-                                <bouncing-box-loader data-size="m"></bouncing-box-loader>
+                                <oui-loader data-size="m"></oui-loader>
                             </td>
                         </tr>
                         <tr data-ng-hide="OverTheBoxRemote.loading">
@@ -50,10 +50,10 @@
                                 </button>
                             </td>
                             <td>
-                                <bouncing-box-loader class="d-inline-block align-middle mr-2"
-                                                     data-ng-show="remote.status !== 'active'"
-                                                     data-size="s">
-                                </bouncing-box-loader>
+                                <oui-loader class="mr-2"
+                                            data-ng-show="remote.status !== 'active'"
+                                            data-size="s">
+                                </oui-loader>
                                 <span data-ng-bind="'overTheBox_status_' + remote.status | translate"></span>
                             </td>
                             <td data-ng-bind="remote.authorizedBy"></td>
@@ -270,10 +270,10 @@
                                 data-ng-disabled="OverTheBoxRemote.adding || overTheBoxAdd.$invalid"
                                 data-translate="submit">
                             </button>
-                            <bouncing-box-loader class="d-inline-block align-middle ml-2"
-                                                 data-ng-show="FaxConfCtrl.loading"
-                                                 data-size="s">
-                            </bouncing-box-loader>
+                            <oui-loader class="ml-2"
+                                        data-ng-show="FaxConfCtrl.loading"
+                                        data-size="s">
+                            </oui-loader>
                         </div>
                     </form>
                 </div>

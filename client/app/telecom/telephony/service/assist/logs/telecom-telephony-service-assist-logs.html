@@ -1,8 +1,8 @@
 <div class="telecom-telephony-service-assist-logs">
 
-    <bouncing-box-loader data-ng-if="LogsCtrl.loading.init">
-        <h2 data-translate="loading"></h2>
-    </bouncing-box-loader>
+    <oui-loader data-ng-if="LogsCtrl.loading.init"
+                data-size="l">
+    </oui-loader>
 
     <div data-ng-if="!LogsCtrl.loading.init">
         <header>
@@ -29,10 +29,10 @@
                             data-translate="telephony_line_assist_support_logs_configs">
                         </h2>
                     </header>
-                    <bouncing-box-loader data-ng-if="LogsCtrl.loading.user || LogsCtrl.loading.save"
-                                         data-size="m">
+                    <div data-ng-if="LogsCtrl.loading.user || LogsCtrl.loading.save">
+                        <oui-loader data-size="m"></oui-loader>
                         <h2 data-translate="{{ LogsCtrl.loading.user ? 'loading' : 'telephony_line_assist_support_logs_configs_save' }}"></h2>
-                    </bouncing-box-loader>
+                    </div>
                     <div data-ng-if="!LogsCtrl.model.configEdit">
                         <dl>
                             <dt data-translate="telephony_line_assist_support_logs_configs_frequency"></dt>
@@ -168,10 +168,11 @@
                         </div>
                     </form>
 
-                    <bouncing-box-loader data-ng-if="LogsCtrl.loading.refresh"
-                                         data-size="m">
+                    <div class="text-center"
+                         data-ng-if="LogsCtrl.loading.refresh">
+                        <oui-loader data-size="m"></oui-loader>
                         <h2 data-translate="telephony_line_assist_support_logs_list_loading"></h2>
-                    </bouncing-box-loader>
+                    </div>
 
                     <div data-ng-if="!LogsCtrl.loading.refresh">
 
