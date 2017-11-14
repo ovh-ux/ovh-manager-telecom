@@ -7,10 +7,9 @@
         <h1 data-translate="telephony_alias_configuration_actions_music_management"></h1>
     </header>
 
-    <bouncing-box-loader data-ng-if="$ctrl.loaders.init"
-                         data-size="m">
-        <h2 data-translate="loading"></h2>
-    </bouncing-box-loader>
+    <oui-loader data-ng-if="$ctrl.loaders.init"
+                data-size="m">
+    </oui-loader>
 
     <div class="telecom-section-content"
          data-ng-if="!$ctrl.loaders.init">
@@ -213,10 +212,10 @@
                         <button type="submit"
                                 class="btn btn-primary no-transition"
                                 data-ng-disabled="$ctrl.loaders.save || !$ctrl.isFormValid()">
-                            <bouncing-box-loader class="d-inline-block align-middle mr-2"
-                                                 data-ng-if="$ctrl.loaders.save"
-                                                 data-size="s">
-                            </bouncing-box-loader>
+                            <oui-loader class="mr-2"
+                                        data-ng-if="$ctrl.loaders.save"
+                                        data-size="s">
+                            </oui-loader>
                             <span data-translate="telephony_alias_configuration_tones_old_pabx_save_tones"></span>
                         </button>
                         <button type="button"
