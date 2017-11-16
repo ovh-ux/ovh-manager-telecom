@@ -123,7 +123,7 @@ angular.module("managerApp").factory("VoipTimeCondition", function ($q, voipTime
 
         // set timeout option for sip feature type and enable state
         if (self.featureType === "sip") {
-            self.timeout = opts.timeout;
+            self.timeout = opts.timeout || 45;
             self.enable = opts.status === "enabled";
         } else {
             self.enable = opts.enable || false;
