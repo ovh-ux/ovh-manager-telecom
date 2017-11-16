@@ -1,7 +1,7 @@
 <div class="telephony-number-ovh-pabx-tts-create">
 
-    <oui-loader data-ng-if="$ctrl.loading.init">
-        <h2 data-translate="loading"></h2>
+    <oui-loader data-ng-if="$ctrl.loading.init"
+                data-size="m">
     </oui-loader>
 
     <!-- CREATION FORM -->
@@ -51,9 +51,9 @@
             </span>
         </div> <!-- END OF TEXT -->
 
-        <div class="clearfix">
+        <div class="text-sm-right">
             <button type="submit"
-                    class="btn btn-primary float-right"
+                    class="btn btn-primary float-right ml-sm-2"
                     data-ng-disabled="$ctrl.loading.creating || !$ctrl.ttsCreateForm.$valid">
                 <oui-loader class="mr-2"
                             data-ng-show="$ctrl.loading.creating"
@@ -63,7 +63,7 @@
             </button>
 
             <button type="button"
-                    class="btn btn-default float-left ml-0"
+                    class="btn btn-default"
                     data-translate="cancel"
                     data-ng-click="$ctrl.onCancelTtsBtnClick()"
                     data-ng-disabled="$ctrl.loading.creating">
