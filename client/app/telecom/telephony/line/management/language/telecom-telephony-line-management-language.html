@@ -6,10 +6,9 @@
         <h1 data-translate="telephony_line_language_title"></h1>
     </header>
 
-    <bouncing-box-loader data-ng-if="LineLanguage.loaders.init"
-                         data-size="m">
-        <h2 data-translate="loading"></h2>
-    </bouncing-box-loader>
+    <oui-loader data-ng-if="LineLanguage.loaders.init"
+                data-size="m">
+    </oui-loader>
 
 
     <div class="telecom-section-content"
@@ -52,10 +51,10 @@
                             <i data-ng-if="LineLanguage.changeSuccess"
                                class="ovh-font ovh-font-success ml-1">
                             </i>
-                            <bouncing-box-loader class="d-inline-block align-middle ml-2"
-                                                 data-ng-if="LineLanguage.loaders.change"
-                                                 data-size="s">
-                            </bouncing-box-loader>
+                            <oui-loader class="ml-2"
+                                        data-ng-if="LineLanguage.loaders.change"
+                                        data-size="s">
+                            </oui-loader>
                         </button>
                     </form>
                 </section>

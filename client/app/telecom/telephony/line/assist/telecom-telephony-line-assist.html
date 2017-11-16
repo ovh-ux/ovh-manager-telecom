@@ -1,11 +1,8 @@
 <div class="telephony-group-line-assist">
 
-    <bouncing-box-loader data-size="m"
-                         data-ng-if="LineAssistCtrl.loading.init">
-        <h3 class="mt-3"
-            data-translate="loading">
-        </h3>
-    </bouncing-box-loader>
+    <oui-loader data-ng-if="LineAssistCtrl.loading.init"
+                data-size="m">
+    </oui-loader>
 
     <toast-message></toast-message>
 

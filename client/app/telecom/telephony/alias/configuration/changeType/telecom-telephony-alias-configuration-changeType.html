@@ -8,10 +8,9 @@
 
     </header>
 
-    <bouncing-box-loader data-ng-if="AliasConfigurationChangeTypeCtrl.loading.line"
-                         data-size="m">
-        <h2 data-translate="loading"></h2>
-    </bouncing-box-loader>
+    <oui-loader data-ng-if="AliasConfigurationChangeTypeCtrl.loading.line"
+                data-size="m">
+    </oui-loader>
 
     <div class="telecom-section-content"
          data-ng-if="!AliasConfigurationChangeTypeCtrl.loading.line">
@@ -31,6 +30,20 @@
                         data-translate="telephony_alias_config_change_type_title">
                     </h2>
                 </header>
+
+                <!-- Warning for easy and mini pabx -->
+                <div class="alert alert-warning"
+                     role="alert"
+                     data-ng-if="AliasConfigurationChangeTypeCtrl.number.feature.featureType === 'easyPabx' || AliasConfigurationChangeTypeCtrl.number.feature.featureType === 'miniPabx'">
+                    <p>
+                        <strong data-translate="telephony_alias_change_type_warning"></strong>
+                        <br />
+                        <span data-translate="telephony_alias_change_type_warning_old_pabx"
+                              data-translate-values="{ featureType: AliasConfigurationChangeTypeCtrl.number.feature.featureType }">
+                        </span>
+                    </p>
+                </div> <!-- End of Warning for easy and mini pabx -->
+
                 <form name="changeTypeForm"
                       data-ng-submit="AliasConfigurationChangeTypeCtrl.changeType();"
                       data-ng-if="!AliasConfigurationChangeTypeCtrl.loading.changing">
@@ -54,10 +67,11 @@
                             data-translate="submit">
                     </button>
                 </form>
-                <bouncing-box-loader data-size="m"
-                                     data-ng-if="AliasConfigurationChangeTypeCtrl.loading.changing">
+                <div class="text-center"
+                     data-ng-if="AliasConfigurationChangeTypeCtrl.loading.changing">
+                    <oui-loader data-size="m"></oui-loader>
                     <h4 data-translate="telephony_alias_config_change_type_doing"></h4>
-                </bouncing-box-loader>
+                </div>
             </div>
             <div class="col-xs-12 col-md-6 widget-presentation">
                 <header class="widget-presentation-header">

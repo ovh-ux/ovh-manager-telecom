@@ -20,9 +20,9 @@
             </p>
         </div>
 
-        <div data-ng-if="PortCtrl.loader">
-            <bouncing-box-loader data-size="m"></bouncing-box-loader>
-        </div>
+        <oui-loader data-ng-if="PortCtrl.loader"
+                    data-size="m">
+        </oui-loader>
 
         <table class="table table-hover table-condensed" data-ng-if="!PortCtrl.loader">
             <thead>

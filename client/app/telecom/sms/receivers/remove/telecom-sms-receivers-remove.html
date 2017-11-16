@@ -21,11 +21,10 @@
         </p>
     </div>
 
-    <div class="modal-body"
+    <div class="modal-body text-center"
          data-ng-if="ReceiversRemoveCtrl.loading.removeReceiver">
-        <bouncing-box-loader data-size="m">
-            <h4 data-translate="sms_receivers_remove_receiver_removing"></h4>
-        </bouncing-box-loader>
+        <oui-loader data-size="m"></oui-loader>
+        <h4 data-translate="sms_receivers_remove_receiver_removing"></h4>
     </div>
 
     <div class="modal-body"

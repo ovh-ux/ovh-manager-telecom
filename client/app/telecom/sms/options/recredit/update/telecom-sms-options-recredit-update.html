@@ -83,18 +83,16 @@
 
     </div>
 
-    <div class="modal-body"
+    <div class="modal-body text-center"
          data-ng-if="OptionsRecreditUpdateCtrl.loading.init">
-        <bouncing-box-loader data-size="m">
-            <h4 data-translate="loading"></h4>
-        </bouncing-box-loader>
+        <oui-loader data-size="m"></oui-loader>
+        <h4 data-translate="loading"></h4>
     </div>
 
-    <div class="modal-body"
+    <div class="modal-body text-center"
          data-ng-if="OptionsRecreditUpdateCtrl.loading.updateOptions">
-        <bouncing-box-loader data-size="m">
-            <h4 data-translate="sms_options_recredit_updating"></h4>
-        </bouncing-box-loader>
+        <oui-loader data-size="m"></oui-loader>
+        <h4 data-translate="sms_options_recredit_updating"></h4>
     </div>
 
     <div class="modal-body"

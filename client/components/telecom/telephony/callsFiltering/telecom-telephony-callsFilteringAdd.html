@@ -97,10 +97,10 @@
             <button type="submit"
                     class="btn btn-primary"
                     data-ng-disabled="$ctrl.screenListToAdd.isAdding || filteringAddForm.$invalid || $ctrl.isScreenListsAlreadyExisting()">
-                <bouncing-box-loader class="d-inline-block align-middle mr-2"
-                                     data-ng-if="$ctrl.screenListToAdd.isAdding"
-                                     data-size="s">
-                </bouncing-box-loader>
+                <oui-loader class="mr-2"
+                            data-ng-if="$ctrl.screenListToAdd.isAdding"
+                            data-size="s">
+                </oui-loader>
                 <span data-translate="telephony_calls_filtering_add"></span>
             </button>
         </div>

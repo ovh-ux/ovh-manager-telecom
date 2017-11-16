@@ -154,18 +154,16 @@
 
     </div>
 
-    <div class="modal-body"
+    <div class="modal-body text-center"
          data-ng-if="UsersLimitCtrl.loading.init">
-        <bouncing-box-loader data-size="m">
-            <h4 data-translate="loading"></h4>
-        </bouncing-box-loader>
+        <oui-loader data-size="m"></oui-loader>
+        <h4 data-translate="loading"></h4>
     </div>
 
-    <div class="modal-body"
+    <div class="modal-body text-center"
          data-ng-if="UsersLimitCtrl.loading.limitUser && !UsersLimitCtrl.limited">
-        <bouncing-box-loader data-size="m">
-            <h4 data-translate="sms_users_limit_user_adding"></h4>
-        </bouncing-box-loader>
+        <oui-loader data-size="m"></oui-loader>
+        <h4 data-translate="sms_users_limit_user_adding"></h4>
     </div>
 
     <div class="modal-body"

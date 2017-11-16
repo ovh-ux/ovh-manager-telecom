@@ -242,16 +242,16 @@
 
     </div>
 
-    <div class="modal-body" data-ng-if="CampaignsAddCtrl.loading.init">
-        <bouncing-box-loader data-size="m">
-            <h4 data-translate="loading"></h4>
-        </bouncing-box-loader>
+    <div class="modal-body text-center"
+         data-ng-if="CampaignsAddCtrl.loading.init">
+        <oui-loader data-size="m"></oui-loader>
+        <h4 data-translate="loading"></h4>
     </div>
 
-    <div class="modal-body" data-ng-if="CampaignsAddCtrl.loading.add && !CampaignsAddCtrl.added">
-        <bouncing-box-loader data-size="m">
-            <h4 data-translate="telephony_service_fax_campaigns_add_campaign_adding"></h4>
-        </bouncing-box-loader>
+    <div class="modal-body text-center"
+         data-ng-if="CampaignsAddCtrl.loading.add && !CampaignsAddCtrl.added">
+        <oui-loader data-size="m"></oui-loader>
+        <h4 data-translate="telephony_service_fax_campaigns_add_campaign_adding"></h4>
     </div>
 
     <div class="modal-body" data-ng-if="CampaignsAddCtrl.added">

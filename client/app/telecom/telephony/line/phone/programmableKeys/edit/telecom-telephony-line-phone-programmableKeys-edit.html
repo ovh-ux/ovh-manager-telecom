@@ -164,24 +164,19 @@
                 </div>
             </div>
         </div>
-        <div class="row"
-             data-ng-if="ProgammableKeysEditCtrl.loading.parameters || ProgammableKeysEditCtrl.loading.init">
-            <div class="col-xs-12">
-                <bouncing-box-loader data-size="m">
-                    <p class="mt-3"
-                       data-translate="loading"></p>
-                </bouncing-box-loader>
-            </div>
-        </div>
+        <oui-loader data-ng-if="ProgammableKeysEditCtrl.loading.parameters || ProgammableKeysEditCtrl.loading.init"
+                    data-size="m">
+        </oui-loader>
     </div>
 
     <div class="modal-body"
          data-ng-if="ProgammableKeysEditCtrl.loading.save && !ProgammableKeysEditCtrl.saved">
         <h3 class="modal-title"
             data-translate="telephony_line_phone_programmableKeys_keys_add_title"></h3>
-        <bouncing-box-loader data-size="m">
+        <div class="text-center">
+            <oui-loader data-size="m"></oui-loader>
             <h4 data-translate="telephony_line_phone_programmableKeys_saving"></h4>
-        </bouncing-box-loader>
+        </div>
     </div>
 
     <div class="modal-body"

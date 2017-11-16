@@ -35,9 +35,10 @@
                         data-translate-attr="{title:'telecom_task_function'}"
                         data-translate="task.function"></th>
                     <td data-title="{{'telecom_task_status' | translate}}" class="text-center-md">
-                        <bouncing-box-loader data-ng-show="task.status.bouncing-box-loader"
-                                             data-size="s"></bouncing-box-loader>
-                        <span data-ng-if="task.status.icon && !task.status.bouncing-box-loader"
+                        <oui-loader data-ng-show="task.status.spinner"
+                                    data-size="s">
+                        </oui-loader>
+                        <span data-ng-if="task.status.icon && !task.status.spinner"
                               class="ovh-font h6"
                               data-ng-class="task.status.icon"
                               data-uib-tooltip="{{ task.status.tip }}"

@@ -1,9 +1,10 @@
 <div class="telecom-pack-migration-confirm">
 
-    <bouncing-box-loader data-size="m"
-                         data-ng-if="ConfirmCtrl.loading.migrate">
+    <div class="text-center"
+         data-ng-if="ConfirmCtrl.loading.migrate">
+        <oui-loader data-size="m"></oui-loader>
         <h3 data-translate="telecom_pack_migration_doing"></h3>
-    </bouncing-box-loader>
+    </div>
 
     <div class="widget-presentation"
          data-ng-if="!ConfirmCtrl.loading.migrate">

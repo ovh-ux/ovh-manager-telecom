@@ -1,7 +1,9 @@
 <div class="telecom-pack">
-    <bouncing-box-loader data-ng-if="Pack.loader.page && !Pack.inError">
+    <div class="text-center"
+         data-ng-if="Pack.loader.page && !Pack.inError">
+        <oui-loader data-size="m"></oui-loader>
         <h2 data-translate="pack_xdsl_loading"></h2>
-    </bouncing-box-loader>
+    </div>
 
 
     <div class="oui-message oui-message_warning oui-message_l"

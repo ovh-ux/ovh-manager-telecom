@@ -38,10 +38,9 @@
                     </h2>
                 </header>
 
-                <bouncing-box-loader data-size="m"
-                                     data-ng-if="TelecomSmsOptionsManageCtrl.loading.init">
-                    <h3 data-translate="loading"></h3>
-                </bouncing-box-loader>
+                <oui-loader data-ng-if="TelecomSmsOptionsManageCtrl.loading.init"
+                            data-size="m">
+                </oui-loader>
 
                 <dl data-ng-if="!TelecomSmsOptionsManageCtrl.loading.init">
                     <dt data-translate="sms_options_manage_configure_callback_label"></dt>

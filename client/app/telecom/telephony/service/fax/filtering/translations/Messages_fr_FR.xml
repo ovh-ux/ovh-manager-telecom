@@ -24,7 +24,6 @@
     <translation id="telephony_service_fax_filtering_filter_type_blacklistedTSI">Liste noire - Identifiants</translation>
     <translation id="telephony_service_fax_filtering_column_number">Numéros</translation>
     <translation id="telephony_service_fax_filtering_column_type">Type</translation>
-    <translation id="telephony_service_fax_filtering_table_loading">Chargement en cours</translation>
     <translation id="telephony_service_fax_filtering_table_empty">Aucun filtre trouvé</translation>
     <translation id="telephony_service_fax_filtering_table_export">Exporter</translation>
     <translation id="telephony_service_fax_filtering_table_delete">Supprimer le filtre sélectionné</translation>

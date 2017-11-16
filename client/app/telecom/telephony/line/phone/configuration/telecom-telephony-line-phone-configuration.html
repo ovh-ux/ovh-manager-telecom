@@ -12,19 +12,16 @@
         <h1 data-translate="telephony_line_phone_configuration_title"></h1>
     </header>
 
-    <bouncing-box-loader data-size="m"
-                         data-ng-if="PhoneConfigCtrl.loading.init">
-        <h3 class="mt-3"
-            data-translate="loading">
-        </h3>
-    </bouncing-box-loader>
+    <oui-loader data-ng-if="PhoneConfigCtrl.loading.init"
+                data-size="m">
+    </oui-loader>
 
-    <bouncing-box-loader data-size="m"
-                         data-ng-if="PhoneConfigCtrl.loading.save">
-        <h3 class="mt-3"
-            data-translate="telephony_line_phone_configuration_saving">
-        </h3>
-    </bouncing-box-loader>
+    <div class="text-center"
+         data-ng-if="PhoneConfigCtrl.loading.save">
+        <oui-loader data-size="m"></oui-loader>
+        <h3 data-translate="telephony_line_phone_configuration_saving"></h3>
+    </div>
+
 
     <form data-ng-if="!PhoneConfigCtrl.loading.init && !PhoneConfigCtrl.loading.save"
           class="telecom-section-content"
