@@ -1,19 +1,19 @@
 <div class="telephonyAssociateDevice">
 
-     <bouncing-box-loader data-ng-if="!$ctrl.isInitialized">
-         <h2 data-translate="loading"></h2>
-     </bouncing-box-loader>
+     <oui-loader data-ng-if="!$ctrl.isInitialized"
+                 data-size="l">
+     </oui-loader>
 
      <div class="alert alert-success"
           role="alert"
-          data-ng-if="$ctrl.attachSuccess && $ctrl.isInitialized">
-          <p data-translate="telephony_device_associate_attach_success"></p>
+          data-ng-if="$ctrl.attachSuccess && $ctrl.isInitialized"
+          data-translate="telephony_device_associate_attach_success">
      </div>
 
      <div class="alert alert-info"
           role="alert"
-          data-ng-if="!$ctrl.phones.length && $ctrl.isInitialized">
-          <p data-translate="telephony_device_associate_attach_empty"></p>
+          data-ng-if="!$ctrl.phones.length && $ctrl.isInitialized"
+          data-translate="telephony_device_associate_attach_empty">
      </div>
 
      <form data-ng-if="$ctrl.isInitialized && !$ctrl.attachSuccess && $ctrl.phones.length"
@@ -65,10 +65,10 @@
         <button type="submit"
                 class="btn btn-primary float-right"
                 data-ng-disabled="$ctrl.isAttaching || !$ctrl.selectedMac || !$ctrl.ipAddress">
-            <bouncing-box-loader class="d-inline-block align-middle mr-2"
-                                 data-ng-if="$ctrl.isAttaching"
-                                 data-size="s">
-            </bouncing-box-loader>
+            <oui-loader class="mr-2"
+                        data-ng-if="$ctrl.isAttaching"
+                        data-size="s">
+            </oui-loader>
             <span data-translate="telephony_device_associate_attach"></span>
         </button>
         <button type="reset"

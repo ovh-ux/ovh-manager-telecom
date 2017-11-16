@@ -2,7 +2,7 @@
     <div class="oui-tile__body"
          data-ng-if="loaders.services">
         <div class="oui-tile__definition">
-            <bouncing-box-loader data-size="m"></bouncing-box-loader>
+            <oui-loader data-size="m"></oui-loader>
         </div>
     </div>
     <div class="oui-tile__body"
@@ -12,8 +12,9 @@
         </div>
     </div>
     <div class="oui-tile__body"
-         data-ng-if="!loaders.services && VoipEcoFax.services.length > 0">
+         data-ng-if="!loaders.services">
         <div class="oui-tile__item oui-tile__item_button"
+             data-ng-if="VoipEcoFax.services.length > 0"
              data-ng-repeat="service in VoipEcoFax.services">
             <a class="oui-tile__button oui-button oui-button_link oui-button_icon-right oui-button_full-width"
                target="_blank"

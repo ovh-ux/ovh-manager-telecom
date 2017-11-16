@@ -8,10 +8,9 @@
     </header>
 
     <!-- LOADING -->
-    <bouncing-box-loader data-size="m"
-                         data-ng-if="SmsSendersAddCtrl.loading.init">
-        <h2 data-translate="loading"></h2>
-    </bouncing-box-loader>
+    <oui-loader data-ng-if="SmsSendersAddCtrl.loading.init"
+                data-size="m">
+    </oui-loader>
 
     <div class="telecom-section-content" data-ng-if="!SmsSendersAddCtrl.loading.init">
 
@@ -179,10 +178,10 @@
                             data-ng-disabled="addSenderForm.$invalid || SmsSendersAddCtrl.loading.adding"
                             data-translate="submit">
                         </button>
-                        <bouncing-box-loader class="d-inline-block align-middle ml-2"
-                                             data-ng-if="SmsSendersAddCtrl.loading.adding"
-                                             data-size="s">
-                        </bouncing-box-loader>
+                        <oui-loader class="ml-2"
+                                    data-ng-if="SmsSendersAddCtrl.loading.adding"
+                                    data-size="s">
+                        </oui-loader>
                     </div>
 
                 </form>
@@ -210,10 +209,10 @@
                               }">
                         </span>
                     </button>
-                    <bouncing-box-loader class="d-inline-block align-middle ml-2"
-                                         data-ng-if="SmsSendersAddCtrl.senders.availableForValidation.nichandle.isDeleting"
-                                         data-size="s">
-                    </bouncing-box-loader>
+                    <oui-loader class="ml-2"
+                                data-ng-if="SmsSendersAddCtrl.senders.availableForValidation.nichandle.isDeleting"
+                                data-size="s">
+                    </oui-loader>
 
                     <div class="table-responsive">
                         <table class="table table-hover"
@@ -234,10 +233,10 @@
                                     </th>
                                     <th scope="col" data-translate="sms_senders_add_sender_placeholder"></th>
                                     <th class="text-right" scope="col">
-                                        <bouncing-box-loader class="d-inline-block align-middle mr-3"
-                                                             data-ng-if="SmsSendersAddCtrl.loading.adding"
-                                                             data-size="s">
-                                        </bouncing-box-loader>
+                                        <oui-loader class="mr-3"
+                                                    data-ng-if="SmsSendersAddCtrl.loading.adding"
+                                                    data-size="s">
+                                        </oui-loader>
                                     </th>
                                 </tr>
                             </thead>
@@ -301,10 +300,10 @@
                               }">
                         </span>
                     </button>
-                    <bouncing-box-loader class="d-inline-block align-middle ml-2"
-                                         data-ng-if="SmsSendersAddCtrl.senders.availableForValidation.domains.isDeleting"
-                                         data-size="s">
-                    </bouncing-box-loader>
+                    <oui-loader class="ml-2"
+                                data-ng-if="SmsSendersAddCtrl.senders.availableForValidation.domains.isDeleting"
+                                data-size="s">
+                    </oui-loader>
 
                     <table class="table table-hover"
                            data-ng-class="{
@@ -325,10 +324,10 @@
                                 <th scope="col"
                                     data-translate="sms_senders_add_sender_placeholder"></th>
                                 <th class="text-right" scope="col">
-                                    <bouncing-box-loader class="d-inline-block align-middle mr-3"
-                                                         data-ng-if="SmsSendersAddCtrl.loading.adding"
-                                                         data-size="s">
-                                    </bouncing-box-loader>
+                                    <oui-loader class="mr-3"
+                                                data-ng-if="SmsSendersAddCtrl.loading.adding"
+                                                data-size="s">
+                                    </oui-loader>
                                 </th>
                             </tr>
                         </thead>

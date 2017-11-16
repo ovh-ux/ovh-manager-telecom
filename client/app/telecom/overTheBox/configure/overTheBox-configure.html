@@ -8,9 +8,9 @@
 
         <toast-message></toast-message>
 
-        <bouncing-box-loader data-ng-show="OverTheBoxConfigure.loading">
-            <h3 data-translate="loading"></h3>
-        </bouncing-box-loader>
+        <oui-loader data-ng-show="OverTheBoxConfigure.loading"
+                    data-size="m">
+        </oui-loader>
 
         <div class="widget-presentation mb-5"
              data-ng-hide="OverTheBoxConfigure.loading || !OverTheBoxConfigure.services.length">

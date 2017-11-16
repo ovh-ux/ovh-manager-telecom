@@ -10,12 +10,9 @@
     <div class="telecom-section-content">
 
         <!-- LOADING -->
-        <bouncing-box-loader data-size="m"
-                             data-ng-if="$ctrl.loading.init">
-            <h2 class="mt-3"
-                data-translate="loading">
-            </h2>
-        </bouncing-box-loader> <!-- Enf of LOADING -->
+        <oui-loader data-ng-if="$ctrl.loading.init"
+                    data-size="m">
+        </oui-loader> <!-- Enf of LOADING -->
 
         <div class="row"
              data-ng-if="!$ctrl.loading.init">

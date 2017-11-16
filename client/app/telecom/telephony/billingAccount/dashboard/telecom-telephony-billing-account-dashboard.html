@@ -1,9 +1,8 @@
 <div class="telephony-group-dashboard">
 
-    <bouncing-box-loader data-size="m"
-                         data-ng-if="DashboardCtrl.loading.init">
-        <h2 data-translate="loading"></h2>
-    </bouncing-box-loader>
+    <oui-loader data-ng-if="DashboardCtrl.loading.init"
+                data-size="m">
+    </oui-loader>
 
     <toast-message></toast-message>
 
@@ -34,10 +33,10 @@
                                   data-ng-if="!DashboardCtrl.loading.portability"
                                   data-ng-bind="DashboardCtrl.portabilities">
                             </span>
-                            <bouncing-box-loader class="d-inline-block align-middle ml-2"
-                                                 data-ng-if="DashboardCtrl.loading.portability"
-                                                 data-size="s">
-                            </bouncing-box-loader>
+                            <oui-loader class="ml-2"
+                                        data-ng-if="DashboardCtrl.loading.portability"
+                                        data-size="s">
+                            </oui-loader>
                             <i class="oui-icon oui-icon-chevron-right" aria-hidden="true"></i>
                         </a>
                     </div>
@@ -180,14 +179,9 @@
                     </div>
                 </div>
 
-                <div class="row"
-                     data-ng-if="DashboardCtrl.loading.phones">
-                    <div class="col-xs-12">
-                        <bouncing-box-loader data-size="m">
-                            <p data-translate="loading"></p>
-                        </bouncing-box-loader>
-                    </div>
-                </div>
+                <oui-loader data-ng-if="DashboardCtrl.loading.phones"
+                            data-size="m">
+                </oui-loader>
 
                 <div class="mt-2"
                      data-ng-if="DashboardCtrl.group.lines.length"
@@ -252,10 +246,9 @@
                                                   aria-hidden="true"
                                                   data-ng-if="!consumption.downloading">
                                             </span>
-                                            <bouncing-box-loader class="d-inline-block align-middle"
-                                                                 data-ng-if="consumption.downloading"
-                                                                 data-size="s">
-                                            </bouncing-box-loader>
+                                            <oui-loader data-ng-if="consumption.downloading"
+                                                        data-size="s">
+                                            </oui-loader>
                                             <span class="sr-only"
                                                   data-translate="common_actions">
                                             </span>
@@ -296,10 +289,7 @@
                         <tbody data-ng-if="DashboardCtrl.loading.bills">
                             <tr>
                                 <td colspan="4">
-                                    <bouncing-box-loader class="d-inline-block align-middle mr-2"
-                                                         data-size="s">
-                                    </bouncing-box-loader>
-                                    <span data-translate="telephony_group_billing_dashboard_bill_loading"></span>
+                                    <oui-loader data-size="m"></oui-loader>
                                 </td>
                             </tr>
                         </tbody>

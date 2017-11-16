@@ -197,11 +197,10 @@
         </div>
     </div>
 
-    <div class="modal-body"
+    <div class="modal-body text-center"
          data-ng-if="UsersTemplatesCtrl.loading.updateTemplates && !UsersTemplatesCtrl.updated">
-        <bouncing-box-loader data-size="m">
-            <h4 data-translate="sms_users_templates_adding"></h4>
-        </bouncing-box-loader>
+        <oui-loader data-size="m"></oui-loader>
+        <h4 data-translate="sms_users_templates_adding"></h4>
     </div>
 
     <div class="modal-body"

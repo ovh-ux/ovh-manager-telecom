@@ -5,10 +5,9 @@
             data-translate="telecom_pack_xdsl_order_follow_up_intro">
         </h2>
 
-        <bouncing-box-loader data-size="m"
-                             data-ng-if="OrderFollowUpCtrl.loading">
-            <h3 data-translate="loading"></h3>
-        </bouncing-box-loader>
+        <oui-loader data-ng-if="OrderFollowUpCtrl.loading"
+                    data-size="m">
+        </oui-loader>
 
         <div data-ng-if="!OrderFollowUpCtrl.loading">
             <h3 class="my-5">

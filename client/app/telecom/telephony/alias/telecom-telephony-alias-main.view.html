@@ -1,10 +1,9 @@
 <section class="telecom-telephony-alias">
 
     <!-- LOADING -->
-    <bouncing-box-loader data-ng-if="AliasCtrl.loading.init"
-                         data-size="m">
-        <h2 data-translate="loading"></h2>
-    </bouncing-box-loader>
+    <oui-loader data-ng-if="AliasCtrl.loading.init"
+                data-size="l">
+    </oui-loader>
 
     <div class="telecom-section-header"
          data-ng-if="!AliasCtrl.loading.init">

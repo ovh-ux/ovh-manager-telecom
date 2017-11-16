@@ -7,10 +7,9 @@
         <h1 data-translate="telephony_alias_configuration_time_condition_title"></h1>
     </header>
 
-    <bouncing-box-loader data-ng-if="$ctrl.loading.init"
-                         data-size="m">
-        <h2 data-translate="loading"></h2>
-    </bouncing-box-loader>
+    <oui-loader data-ng-if="$ctrl.loading.init"
+                data-size="m">
+    </oui-loader>
 
     <form class="telecom-section-content mb-4"
           name="timeConditionForm"

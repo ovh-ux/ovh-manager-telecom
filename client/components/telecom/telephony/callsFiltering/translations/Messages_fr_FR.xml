@@ -20,7 +20,6 @@
     <translation id="telephony_calls_filtering_table_list_black">Noire</translation>
     <translation id="telephony_calls_filtering_table_list_none">Aucune liste active</translation>
     <translation id="telephony_calls_filtering_table_empty">Aucun filtre trouvé</translation>
-    <translation id="telephony_calls_filtering_table_loading">Chargement en cours</translation>
     <translation id="telephony_calls_filtering_table_delete">Supprimer le filtre sélectionné</translation>
     <translation id="telephony_calls_filtering_table_delete_plural">Supprimer les {{ nb }} filtres sélectionnés</translation>
     <translation id="telephony_calls_filtering_table_export">Exporter</translation>

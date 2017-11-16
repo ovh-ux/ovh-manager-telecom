@@ -30,11 +30,8 @@
     </thead>
     <tbody data-ng-if="$ctrl.loading.init">
         <tr>
-            <td colspan="3"
-                class="text-center">
-                <bouncing-box-loader>
-                    <h2 data-translate="loading"></h2>
-                </bouncing-box-loader>
+            <td colspan="3">
+                <oui-loader data-size="m"></oui-loader>
             </td>
         </tr>
     </tbody>
@@ -109,7 +106,7 @@
 </table>
 
 <!-- FOOTER PAGINATION -->
-<div class="table-pretty-pagination mt-2"
+<div class="mt-2"
      data-ng-if="!$ctrl.loading.init && $ctrl.menus.raw.length"
      data-pagination-front
      data-items="$ctrl.menus.raw"

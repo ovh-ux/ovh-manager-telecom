@@ -1,14 +1,8 @@
-<div data-ng-if="LineTonesCtrl.isLoading">
-    <bouncing-box-loader data-size="m">
-        <h2 data-translate="loading"></h2>
-    </bouncing-box-loader>
-</div>
+<oui-loader data-ng-if="LineTonesCtrl.isLoading"
+            data-size="m">
+</oui-loader>
 
-<div class="row">
-    <div class="col-xs-12">
-        <toast-message></toast-message>
-    </div>
-</div>
+<toast-message></toast-message>
 
 <div class="row mb-4"
      data-ng-if="!LineTonesCtrl.isLoading">
@@ -33,10 +27,10 @@
                     <label for="ringback"
                            class="control-label">
                         <span data-translate="telephony_line_tones_ringback"></span>
-                        <bouncing-box-loader class="float-right"
-                                             data-ng-if="LineTonesCtrl.tonesForm.ringbackUpdating"
-                                             data-size="s">
-                        </bouncing-box-loader>
+                        <oui-loader class="float-right"
+                                    data-ng-if="LineTonesCtrl.tonesForm.ringbackUpdating"
+                                    data-size="s">
+                        </oui-loader>
                     </label>
                     <select class="form-control"
                             id="ringback"
@@ -71,10 +65,10 @@
                            aria-hidden="true"
                            data-ng-if="LineTonesCtrl.tonesForm.ringbackUploadSuccess">
                         </i>
-                        <bouncing-box-loader class="d-inline-block align-middle ml-2"
-                                             data-ng-if="LineTonesCtrl.tonesForm.ringbackUploading"
-                                             data-size="s">
-                        </bouncing-box-loader>
+                        <oui-loader class="ml-2"
+                                    data-ng-if="LineTonesCtrl.tonesForm.ringbackUploading"
+                                    data-size="s">
+                        </oui-loader>
                     </button>
                 </div>
 
@@ -82,10 +76,10 @@
                 <div class="form-group">
                     <label for="onHold">
                         <span data-translate="telephony_line_tones_onhold"></span>
-                        <bouncing-box-loader class="float-right"
-                                             data-ng-if="LineTonesCtrl.tonesForm.onHoldUpdating"
-                                             data-size="s">
-                        </bouncing-box-loader>
+                        <oui-loader class="float-right"
+                                    data-ng-if="LineTonesCtrl.tonesForm.onHoldUpdating"
+                                    data-size="s">
+                        </oui-loader>
                     </label>
                     <select class="form-control"
                             id="onHold"
@@ -120,10 +114,10 @@
                            aria-hidden="true"
                            data-ng-if="LineTonesCtrl.tonesForm.onHoldUploadSuccess">
                         </i>
-                        <bouncing-box-loader class="d-inline-block align-middle ml-2"
-                                             data-ng-if="LineTonesCtrl.tonesForm.onHoldUploading"
-                                             data-size="s">
-                        </bouncing-box-loader>
+                        <oui-loader class="ml-2"
+                                    data-ng-if="LineTonesCtrl.tonesForm.onHoldUploading"
+                                    data-size="s">
+                        </oui-loader>
                     </button>
                 </div>
 
@@ -131,10 +125,10 @@
                 <div class="form-group">
                     <label for="callWaiting">
                         <span data-translate="telephony_line_tones_callwaiting"></span>
-                        <bouncing-box-loader class="float-right"
-                                             data-ng-if="LineTonesCtrl.tonesForm.callWaitingUpdating"
-                                             data-size="s">
-                        </bouncing-box-loader>
+                        <oui-loader class="float-right"
+                                    data-ng-if="LineTonesCtrl.tonesForm.callWaitingUpdating"
+                                    data-size="s">
+                        </oui-loader>
                     </label>
                     <select class="form-control"
                             id="callWaiting"
@@ -169,10 +163,10 @@
                            aria-hidden="true"
                            data-ng-if="LineTonesCtrl.tonesForm.callWaitingUploadSuccess">
                         </i>
-                        <bouncing-box-loader class="d-inline-block align-middle ml-2"
-                                             data-ng-if="LineTonesCtrl.tonesForm.callWaitingUploading"
-                                             data-size="s">
-                        </bouncing-box-loader>
+                        <oui-loader class="ml-2"
+                                    data-ng-if="LineTonesCtrl.tonesForm.callWaitingUploading"
+                                    data-size="s">
+                        </oui-loader>
                     </button>
                 </div>
             </form>

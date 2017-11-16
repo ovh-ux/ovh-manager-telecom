@@ -95,10 +95,10 @@
                           aria-hidden="true"
                           data-ng-if="!SmsReceiversCtrl.receivers.isDeleting">
                     </span>
-                    <bouncing-box-loader class="d-inline-block align-middle mr-2"
-                                         data-ng-if="SmsReceiversCtrl.receivers.isDeleting"
-                                         data-size="s">
-                    </bouncing-box-loader>
+                    <oui-loader class="mr-2"
+                                data-ng-if="SmsReceiversCtrl.receivers.isDeleting"
+                                data-size="s">
+                    </oui-loader>
                     <span data-ng-pluralize
                           data-count="SmsReceiversCtrl.getSelection().length"
                           data-when="{
@@ -108,10 +108,10 @@
                           }">
                     </span>
                 </button>
-                <bouncing-box-loader class="d-inline-block align-middle ml-2"
-                                     data-ng-if="SmsReceiversCtrl.receivers.isReading"
-                                     data-size="s">
-                </bouncing-box-loader>
+                <oui-loader class="ml-2"
+                            data-ng-if="SmsReceiversCtrl.receivers.isReading"
+                            data-size="s">
+                </oui-loader>
             </div>
 
             <div class="table-responsive">
@@ -292,7 +292,7 @@
                     <tbody data-ng-if="SmsReceiversCtrl.receivers.isLoading">
                         <tr>
                             <td colspan="6">
-                                <bouncing-box-loader data-size="m"></bouncing-box-loader>
+                                <oui-loader data-size="m"></oui-loader>
                             </td>
                         </tr>
                     </tbody>

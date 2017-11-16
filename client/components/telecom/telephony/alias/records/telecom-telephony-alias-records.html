@@ -7,9 +7,9 @@
         <p data-translate="telephony_alias_configuration_records_info2"></p>
     </div>
 
-    <bouncing-box-loader data-ng-if="$ctrl.queues.isLoading">
-        <h3 data-translate="loading"></h3>
-    </bouncing-box-loader>
+    <oui-loader data-ng-if="$ctrl.queues.isLoading"
+                data-size="m">
+    </oui-loader>
 
     <div class="row"
         data-ng-if="!$ctrl.queues.isLoading">
@@ -110,8 +110,10 @@
                         class="btn btn-primary float-right no-transition"
                         data-ng-disabled="ovhPabxRecordsOptionsForm.$invalid || $ctrl.queues.isUpdating"
                         data-ng-if="$ctrl.hasChanges()">
-                        <bouncing-box-loader class="d-inline-block align-middle ml-2"
-                                             data-ng-if="$ctrl.isUpdating"></bouncing-box-loader>
+                        <oui-loader class="mr-2"
+                                    data-ng-if="$ctrl.isUpdating"
+                                    data-size="s">
+                        </oui-loader>
                         <span data-translate="telephony_alias_configuration_records_form_submit"></span>
                     </button>
                     <button
@@ -140,8 +142,10 @@
                 class="btn btn-default mb-3"
                 data-ng-disabled="$ctrl.getSelection().length === 0 || $ctrl.records.isDeleting"
                 data-ng-click="$ctrl.deleteSelectedRecords()">
-                <bouncing-box-loader class="d-inline-block align-middle ml-2"
-                                     data-ng-if="$ctrl.records.isDeleting"></bouncing-box-loader>
+                <oui-loader class="mr-2"
+                            data-ng-if="$ctrl.records.isDeleting"
+                            data-size="s">
+                </oui-loader>
                 <i class="ovh-font ovh-font-bin line-height-normal mr-2"
                    aria-hidden="true"
                    data-ng-if="!$ctrl.records.isDeleting"></i>
@@ -309,9 +313,8 @@
                     </tbody>
                     <tbody data-ng-if="$ctrl.records.isLoading">
                         <tr>
-                            <td class="text-center py-3" colspan="7">
-                                <span data-translate="telephony_aspan danfiguration_records_list_loading"></span>
-                                <bouncing-box-loader class="ml-2"></bouncing-box-loader>
+                            <td colspan="7">
+                                <oui-loader data-size="m"></oui-loader>
                             </td>
                         </tr>
                     </tbody>

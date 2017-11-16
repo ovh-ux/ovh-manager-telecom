@@ -106,14 +106,15 @@
         <button type="submit"
                 class="btn btn-primary"
                 data-ng-disabled="memberAddForm.$invalid || $ctrl.loaders.adding">
+            <oui-loader class="mr-2"
+                        data-ng-if="$ctrl.loaders.adding"
+                        data-size="s">
+            </oui-loader>
             <span data-ng-if="$ctrl.addMemberForm.numbers.length <= 1"
                   data-translate="telephony_alias_members_add"></span>
             <span data-ng-if="$ctrl.addMemberForm.numbers.length > 1"
                   data-translate="telephony_alias_members_add_multiple"
                   data-translate-values="{ count: $ctrl.addMemberForm.numbers.length }"></span>
-            <bouncing-box-loader class="d-inline-block align-middle mr-2"
-                                 data-size="s"
-                                 data-ng-if="$ctrl.loaders.adding"></bouncing-box-loader>
         </button>
     </div>
 

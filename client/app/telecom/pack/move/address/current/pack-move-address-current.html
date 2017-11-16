@@ -6,8 +6,9 @@
             </div>
             <div class="block-emphasis__column">
                 <h3 data-translate="pack_move_line_current_address"></h3>
-                <bouncing-box-loader data-size="m"
-                                     data-ng-if="PackMoveAddressCurrent.loading"></bouncing-box-loader>
+                <oui-loader data-ng-if="PackMoveAddressCurrent.loading"
+                            data-size="m">
+                </oui-loader>
                 <div data-ng-if="PackMoveAddressCurrent.address.address.floor && PackMoveAddressCurrent.address.address.door && PackMoveAddressCurrent.address.address.stairs">
                     <span data-ng-if="PackMoveAddressCurrent.address.address.door">
                         <span data-translate="pack_move_line_address_door"></span>

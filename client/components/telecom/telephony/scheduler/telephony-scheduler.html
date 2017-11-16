@@ -269,10 +269,10 @@
             <button type="submit"
                     class="btn btn-primary"
                     data-ng-disabled="$ctrl.loading.save">
-                <bouncing-box-loader class="d-inline-block align-middle mr-2"
-                                     data-size="s"
-                                     data-ng-if="$ctrl.loading.save">
-                </bouncing-box-loader>
+                <oui-loader class="mr-2"
+                            data-ng-if="$ctrl.loading.save"
+                            data-size="s">
+                </oui-loader>
                 <span data-translate="submit"></span>
             </button>
             <button type="button"

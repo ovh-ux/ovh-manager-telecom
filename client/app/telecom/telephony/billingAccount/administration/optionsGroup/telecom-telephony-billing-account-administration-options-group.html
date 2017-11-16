@@ -7,10 +7,9 @@
         <h1 data-translate="telephony_options_group_title"></h1>
     </header>
 
-    <bouncing-box-loader data-ng-if="OptionsGroupCtrl.isLoading"
-                         data-size="m">
-        <h2 data-translate="loading"></h2>
-    </bouncing-box-loader>
+    <oui-loader data-ng-if="OptionsGroupCtrl.isLoading"
+                data-size="m">
+    </oui-loader>
 
     <div class="telecom-section-content"
          data-ng-if="!OptionsGroupCtrl.isLoading">
@@ -124,11 +123,11 @@
                             type="submit"
                             class="btn btn-primary"
                             data-ng-disabled="optionsGroupSettings.$invalid || !OptionsGroupCtrl.hasChanges() || OptionsGroupCtrl.isChanging">
+                            <oui-loader class="mr-2"
+                                        data-ng-if="OptionsGroupCtrl.isChanging"
+                                        data-size="s">
+                            </oui-loader>
                             <span data-translate="submit"></span>
-                            <bouncing-box-loader class="d-inline-block align-middle ml-2"
-                                                 data-ng-if="OptionsGroupCtrl.isChanging"
-                                                 data-size="s">
-                            </bouncing-box-loader>
                         </button>
                         <button
                             type="button"
