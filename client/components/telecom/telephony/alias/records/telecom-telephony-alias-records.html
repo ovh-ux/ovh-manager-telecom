@@ -47,27 +47,41 @@
                   name="ovhPabxRecordsOptionsForm"
                   data-ng-submit="$ctrl.submitQueueChanges()">
 
-                <div class="form-group">
-                    <label class="checkbox">
-                        <input
-                            type="checkbox"
-                            name="record"
-                            id="record"
-                            data-ng-model="$ctrl.queueForm.record" />
-                        <span data-translate="telephony_alias_configuration_records_form_record">
+                <div class="oui-checkbox">
+                    <input type="checkbox"
+                           class="oui-checkbox__input"
+                           id="record"
+                           name="record"
+                           data-ng-model="$ctrl.queueForm.record" />
+                    <label class="oui-checkbox__label-container"
+                           for="record">
+                        <span class="oui-checkbox__label"
+                              data-translate="telephony_alias_configuration_records_form_record">
+                        </span>
+                        <span class="oui-checkbox__icon">
+                            <i class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></i>
+                            <i class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></i>
+                            <i class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></i>
                         </span>
                     </label>
                 </div>
 
-                <div class="form-group">
-                    <label class="checkbox">
-                        <input
-                            type="checkbox"
-                            name="askForRecordDisabling"
-                            id="askForRecordDisabling"
-                            data-ng-model="$ctrl.queueForm.askForRecordDisabling"
-                            data-ng-disabled="!$ctrl.queueForm.record" />
-                        <span data-translate="telephony_alias_configuration_records_form_ask_for_record_disabling">
+                <div class="oui-checkbox">
+                    <input type="checkbox"
+                           class="oui-checkbox__input"
+                           id="askForRecordDisabling"
+                           name="askForRecordDisabling"
+                           data-ng-model="$ctrl.queueForm.askForRecordDisabling"
+                           data-ng-disabled="!$ctrl.queueForm.record" />
+                    <label class="oui-checkbox__label-container"
+                           for="askForRecordDisabling">
+                        <span class="oui-checkbox__label"
+                              data-translate="telephony_alias_configuration_records_form_ask_for_record_disabling">
+                        </span>
+                        <span class="oui-checkbox__icon">
+                            <i class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></i>
+                            <i class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></i>
+                            <i class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></i>
                         </span>
                     </label>
                 </div>
@@ -104,12 +118,12 @@
                     </select>
                 </div>
 
-                <div class="form-group mt-3">
+                <div class="form-group">
                     <button
                         type="submit"
-                        class="btn btn-primary float-right no-transition"
-                        data-ng-disabled="ovhPabxRecordsOptionsForm.$invalid || $ctrl.queues.isUpdating"
-                        data-ng-if="$ctrl.hasChanges()">
+                        class="btn btn-primary no-transition"
+                        data-ng-if="$ctrl.hasChanges()"
+                        data-ng-disabled="ovhPabxRecordsOptionsForm.$invalid || $ctrl.queues.isUpdating">
                         <oui-loader class="mr-2"
                                     data-ng-if="$ctrl.isUpdating"
                                     data-size="s">
@@ -118,11 +132,11 @@
                     </button>
                     <button
                         type="button"
-                        class="btn btn-default float-right mr-2 no-transition"
-                        data-ng-disabled="$ctrl.queues.isUpdating"
+                        class="btn btn-link no-transition"
                         data-ng-if="$ctrl.hasChanges()"
-                        data-ng-click="$ctrl.undoChanges()">
-                        <span data-translate="cancel"></span>
+                        data-ng-click="$ctrl.undoChanges()"
+                        data-ng-disabled="$ctrl.queues.isUpdating"
+                        data-translate="cancel">
                     </button>
                 </div>
             </form>

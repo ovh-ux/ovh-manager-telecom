@@ -1,6 +1,3 @@
-@telephony-action-save-color         : #00bda4;
-@telephony-action-bar-height         : 85px;
-
 // slots colors definition
 @telephony-slot1-color: rgb(150, 150, 150);
 @telephony-slot2-color: rgb(134, 108, 200);
@@ -8,10 +5,6 @@
 @telephony-slot-available-color: rgb(26, 227, 135);
 
 .telecom-telephony {
-
-    header.telecom-nav {
-      margin-top: 0px;
-    }
 
     .service-item {
         margin-bottom: 15px;
@@ -51,56 +44,11 @@
     footer.voip-action-bar {
         background-color: rgba(70, 70, 70, 0.9);
         position: fixed;
-
         right: 0;
         bottom: 0;
-
-        height: @telephony-action-bar-height;
-        padding-left: 20px;
-
-        z-index: 1050;
+        padding: @padding-large-horizontal;
+        z-index: @zindex-modal;
         font-size: 1.2em;
-
-
-        &.ng-animate {
-            transition: all 1s ease;
-        }
-
-        &.ng-hide-remove, &.ng-enter {
-            max-height: 0;
-            &.ng-hide-remove-active, &.ng-enter-active {
-                max-height: @telephony-action-bar-height;
-            }
-        }
-
-        &.ng-hide-add, &.ng-leave {
-            max-height: @telephony-action-bar-height;
-            &.ng-hide-add-active, &.ng-leave-active {
-                max-height: 0;
-            }
-        }
-
-        .question {
-            margin: 10px 0 10px 0;
-            color: #fff;
-            font-weight: bold;
-        }
-
-        button.btn {
-            width: 160px;
-            height: 26px;
-            margin-right: 15px;
-            line-height: 14px;
-
-            &.voip-cancel {
-                background-color: #ddd;
-            }
-
-            &.voip-accept {
-                color: #fff;
-                background-color: @telephony-action-save-color;
-            }
-        }
     }
 
     /*----------  Special rules for action-bar  ----------*/
@@ -123,17 +71,5 @@
         footer.voip-action-bar {
             left: 0;
         }
-    }
-}
-
-#updatePhonebookForm {
-    min-height: 32px;
-
-    .phonebook-name {
-        vertical-align: middle;
-    }
-
-    .form-group {
-        margin-bottom: 0;
     }
 }
