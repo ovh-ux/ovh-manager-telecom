@@ -25,11 +25,17 @@
 
 .service-item {
     position: relative;
+    margin-bottom: 16px;
     line-height: 25px;
     color: @gray-base;
 
-    &:last-child {
-        margin-bottom: 0px;
+    &.main-service {
+        .service-button-description {
+            .action-icon {
+                font-size: 32px;
+                color: @oui-color-dodger;
+            }
+        }
     }
 }
 
