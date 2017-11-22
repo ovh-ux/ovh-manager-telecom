@@ -378,7 +378,7 @@ angular.module("managerApp").controller("OverTheBoxDetailsCtrl", function ($scop
                 self.kpiInterfaces = devices.networkInterfaces.filter(function (netInterface) {
                     return netInterface.gateway != null;
                 }).map(function (netInterface) {
-                    return netInterface.name;
+                    return netInterface.device ? netInterface.device : netInterface.name;
                 });
                 return devices;
             }
