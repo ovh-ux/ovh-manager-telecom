@@ -31,16 +31,4 @@ angular.module("managerApp").service("telecomVoip", class {
         );
     }
 
-    /**
-     *  @description
-     *  Get the list of services of given billing accounts.
-     *
-     *  @param  {Array.<VoipBillingAccount>} billingAccounts An array of VoipBillingAccount instances that you want to get services.
-     *
-     *  @return {Array.<VoipService>}   The concatenated array of VoipService instances.
-     */
-    static concatServices (billingAccounts) {
-        return _.chain(billingAccounts).map("services").flatten().value();
-    }
-
 });

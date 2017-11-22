@@ -6,7 +6,12 @@
             serviceType: "@",
             billingAccount: "@",
             serviceName: "@",
-            customClass: "@?"
+            customClass: "@?",
+            ngDisabled: "=?",
+            bulkInfos: "<",
+            getBulkParams: "&",
+            onSuccess: "&?",
+            onError: "&?"
         },
         templateUrl: "components/telecom/telephony/bulkAction/telephony-bulk-action.html",
         controller: "telephonyBulkActionCtrl"

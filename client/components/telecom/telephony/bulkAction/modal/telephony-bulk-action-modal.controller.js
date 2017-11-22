@@ -1,7 +1,8 @@
-angular.module("managerApp").controller("telephonyBulkActionModalCtrl", function ($filter, $translate, $uibModalInstance, modalBindings, telecomVoip) {
+angular.module("managerApp").controller("telephonyBulkActionModalCtrl", function ($http, $filter, $translate, $uibModalInstance, modalBindings, telecomVoip) {
     "use strict";
 
     var self = this;
+    var allServices;
 
     self.loading = {
         init: false,
@@ -20,6 +21,7 @@ angular.module("managerApp").controller("telephonyBulkActionModalCtrl", function
 
     self.bindings = null;
     self.billingAccounts = null;
+    self.serviceList = null;
 
     /* ==============================
     =            HELPERS            =
@@ -29,7 +31,7 @@ angular.module("managerApp").controller("telephonyBulkActionModalCtrl", function
         var services = null;
 
         if (!self.model.billingAccount) {
-            services = telecomVoip.concatServices(self.billingAccounts);
+            services = allServices;
         } else {
             services = _.find(self.billingAccounts, {
                 billingAccount: self.model.billingAccount
@@ -60,6 +62,23 @@ angular.module("managerApp").controller("telephonyBulkActionModalCtrl", function
         return count;
     };
 
+    self.getSelectedServices = function () {
+        var selectedServices = [];
+
+        _.keys(self.model.selection).forEach(function (serviceName) {
+            if (self.model.selection[serviceName] === true && self.bindings.serviceName !== serviceName) {
+                selectedServices.push({
+                    billingAccount: _.find(allServices, {
+                        serviceName: serviceName
+                    }).billingAccount,
+                    serviceName: serviceName
+                });
+            }
+        });
+
+        return selectedServices;
+    };
+
     /* -----  End of HELPERS  ------ */
 
 
@@ -67,8 +86,8 @@ angular.module("managerApp").controller("telephonyBulkActionModalCtrl", function
     =            EVENTS            =
     ============================== */
 
-    self.cancel = function (message) {
-        return $uibModalInstance.dismiss(message);
+    self.cancel = function (reason) {
+        return $uibModalInstance.dismiss(reason);
     };
 
     self.onBillingAccountSelectChange = function () {
@@ -90,6 +109,34 @@ angular.module("managerApp").controller("telephonyBulkActionModalCtrl", function
         self.serviceList = getFilteredServiceList();
     };
 
+    self.onBulkServiceChoiceFormSubmit = function () {
+        self.loading.bulk = true;
+
+        return $http.post("/" + ["telephony", self.bindings.billingAccount, "service", self.bindings.serviceName, "bulk"].join("/"), {
+            bulkInfos: self.bindings.bulkInfos,
+            bulkParams: self.bindings.getBulkParams(),
+            bulkServices: self.getSelectedServices()
+        }, {
+            serviceType: "aapi"
+        }).then(function (result) {
+            var partitionedResult = _.partition(result.data, function (res) {
+                return res.error !== null;
+            });
+
+            return $uibModalInstance.close({
+                success: _.last(partitionedResult),
+                error: _.first(partitionedResult)
+            });
+        }).catch(function (error) {
+            return self.cancel({
+                type: "API",
+                msg: error
+            });
+        }).finally(function () {
+            self.loading.bulk = false;
+        });
+    };
+
     /* -----  End of EVENTS  ------ */
 
     /* =====================================
@@ -106,8 +153,8 @@ angular.module("managerApp").controller("telephonyBulkActionModalCtrl", function
             self.billingAccounts = _.sortBy(billingAccounts, function (billingAccount) {
                 return billingAccount.getDisplayedName();
             });
+            allServices = _.chain(self.billingAccounts).map("services").flatten().value();
             self.serviceList = getFilteredServiceList();
-            console.log(self.serviceList);
 
             // set current serviceName as selected
             _.set(self.model.selection, self.bindings.serviceName, true);

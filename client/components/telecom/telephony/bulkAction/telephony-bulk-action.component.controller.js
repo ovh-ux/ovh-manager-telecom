@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("telephonyBulkActionCtrl", function ($translate, $translatePartialLoader, $uibModal) {
+angular.module("managerApp").controller("telephonyBulkActionCtrl", function ($q, $translate, $translatePartialLoader, $uibModal) {
     "use strict";
 
     var self = this;
@@ -12,7 +12,7 @@ angular.module("managerApp").controller("telephonyBulkActionCtrl", function ($tr
     ============================== */
 
     self.onBulkActionBtnClick = function () {
-        $uibModal.open({
+        return $uibModal.open({
             templateUrl: "components/telecom/telephony/bulkAction/modal/telephony-bulk-action-modal.html",
             controller: "telephonyBulkActionModalCtrl",
             controllerAs: "$ctrl",
@@ -20,9 +20,20 @@ angular.module("managerApp").controller("telephonyBulkActionCtrl", function ($tr
                 modalBindings: {
                     serviceType: self.serviceType,
                     billingAccount: self.billingAccount,
-                    serviceName: self.serviceName
+                    serviceName: self.serviceName,
+                    bulkInfos: self.bulkInfos,
+                    getBulkParams: self.getBulkParams
                 }
             }
+        }).result.then(function (data) {
+            if (self.onSuccess && _.isFunction(self.onSuccess())) {
+                self.onSuccess()(data);
+            }
+        }).catch(function (error) {
+            if (_.get(error, "type") === "API" && self.onError && _.isFunction(self.onError())) {
+                self.onError()(error);
+            }
+            return $q.reject(error);
         });
     };
 

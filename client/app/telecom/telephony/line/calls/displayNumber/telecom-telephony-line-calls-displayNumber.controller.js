@@ -3,6 +3,16 @@ angular.module("managerApp").controller("TelecomTelephonyLineCallsDisplayNumberC
 
     var self = this;
 
+    self.bulkDatas = {
+        billingAccount: $stateParams.billingAccount,
+        serviceName: $stateParams.serviceName,
+        infos: {
+            name: "displayNumber",
+            type: "PUT",
+            apiRoute: "/telephony/{billingAccount}/line/{serviceName}/options"
+        }
+    };
+
     function getLineOptions () {
         return OvhApiTelephonyLineOptions.Lexi().get({
             billingAccount: $stateParams.billingAccount,
@@ -79,6 +89,18 @@ angular.module("managerApp").controller("TelecomTelephonyLineCallsDisplayNumberC
         }).finally(function () {
             self.isUpdating = false;
         });
+    };
+
+    self.getBulkParams = function () {
+        var data = {
+            identificationRestriction: self.form.identificationRestriction
+        };
+
+        if (!data.identificationRestriction && self.form.displayedService) {
+            data.displayNumber = self.form.displayedService;
+        }
+
+        return data;
     };
 
     init();
