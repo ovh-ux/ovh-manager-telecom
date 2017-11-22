@@ -17,7 +17,7 @@ angular.module("managerApp").component("toastMessage", {
 
         this.updateMessages = (messages) => {
             // update messages timestamp
-            let pendingMessages = _.filter(Toast.getMessages(), (m) => !m.timestamp);
+            let pendingMessages = _.filter(messages, (m) => !m.timestamp);
 
             if (pendingMessages.length) {
                 this.hasNewMessages = true;

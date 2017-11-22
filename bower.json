@@ -1,6 +1,6 @@
 {
   "name": "ovh-manager-telecom",
-  "version": "8.0.3",
+  "version": "8.0.4",
   "description": "OVH Control Panel Telecom UI",
   "authors": [
     "OVH SAS"
@@ -172,6 +172,9 @@
       "dependencies": {
         "moment": "^2.15.2"
       }
+    },
+    "bootstrap": {
+      "main": []
     },
     "bootstrap4": {
       "main": []
