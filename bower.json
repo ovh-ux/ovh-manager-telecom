@@ -173,6 +173,9 @@
         "moment": "^2.15.2"
       }
     },
+    "bootstrap": {
+      "main": []
+    },
     "bootstrap4": {
       "main": []
     }
