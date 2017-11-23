@@ -146,9 +146,7 @@
 
     <div class="modal-body"
          data-ng-if="AbbreviatedNumberModal.loading.updating">
-        <bouncing-box-loader>
-            <h3 data-translate="loading"></h3>
-        </bouncing-box-loader>
+        <oui-loader data-size="m"></oui-loader>
     </div>
 
     <div class="modal-footer">
@@ -156,8 +154,7 @@
             type="button"
             class="btn btn-default"
             data-ng-click="AbbreviatedNumberModal.cancel()"
-            data-translate="cancel"
-            data-ng-disabled="">
+            data-translate="cancel">
         </button>
         <button
             type="submit"

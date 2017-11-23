@@ -11,8 +11,9 @@
 
     <main class="telecom-section-content" role="main">
 
-        <bouncing-box-loader data-size="m"
-                             data-ng-if="DetailCtrl.loading"></bouncing-box-loader>
+        <oui-loader data-ng-if="DetailCtrl.loading"
+                    data-size="m">
+        </oui-loader>
 
         <div class="row"
              data-ng-if="!DetailCtrl.loading">
@@ -158,8 +159,9 @@
                             type="submit"
                             data-ng-disabled="passwordChange.$invalid || DetailCtrl.changingPassword">
                             <span data-translate="hosted_email_detail_client_change_password_submit"></span>
-                            <bouncing-box-loader data-size="s"
-                                                 data-ng-if="DetailCtrl.changingPassword"></bouncing-box-loader>
+                            <oui-loader data-ng-if="DetailCtrl.changingPassword"
+                                        data-size="s">
+                            </oui-loader>
                     </button>
                 </form>
             </div>
@@ -193,8 +195,10 @@
                             class="btn btn-primary"
                             data-ng-disabled="DetailCtrl.accountDeleting"
                             data-ng-click="DetailCtrl.onDeleteAccountConfirmClick()">
-                        <bouncing-box-loader data-size="s"
-                                             data-ng-if="DetailCtrl.accountDeleting"></bouncing-box-loader>
+                        <oui-loader class="mr-2"
+                                    data-ng-if="DetailCtrl.accountDeleting"
+                                    data-size="s">
+                        </oui-loader>
                         <span data-translate="hosted_email_detail_client_delete_account_confirm"></span>
                     </button>
                 </div>

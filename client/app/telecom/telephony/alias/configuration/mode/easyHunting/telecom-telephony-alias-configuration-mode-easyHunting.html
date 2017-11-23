@@ -1,4 +1,4 @@
-<section class="telephony-group-alias-configuration-mode-easyHunting">
+<section class="telephony-group-alias-configuration-mode telephony-group-alias-configuration-mode-easyHunting">
 
     <header>
         <section-back-link section-back-link-to-state="telecom.telephony.alias.configuration"
@@ -7,10 +7,9 @@
         <h1 data-translate="telephony_alias_configuration_mode_title"></h1>
     </header>
 
-    <bouncing-box-loader data-ng-if="ModeEasyHuntingCtrl.isLoading"
-                         data-size="m">
-        <h2 data-translate="loading"></h2>
-    </bouncing-box-loader>
+    <oui-loader data-ng-if="ModeEasyHuntingCtrl.isLoading"
+                data-size="m">
+    </oui-loader>
 
     <div class="telecom-section-content"
          data-ng-if="!ModeEasyHuntingCtrl.isLoading">
@@ -234,21 +233,20 @@
                         </button>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group"
+                         data-ng-if="ModeEasyHuntingCtrl.hasChanges()">
                         <button type="submit"
                                 class="btn btn-primary"
-                                data-ng-disabled="ModeEasyHuntingCtrl.isUpdating"
-                                data-ng-if="ModeEasyHuntingCtrl.hasChanges()">
-                            <bouncing-box-loader class="d-inline-block align-middle mr-2"
-                                                 data-ng-if="ModeEasyHuntingCtrl.isUpdating"
-                                                 data-size="s">
-                            </bouncing-box-loader>
+                                data-ng-disabled="ModeEasyHuntingCtrl.isUpdating">
+                            <oui-loader class="mr-2"
+                                        data-ng-if="ModeEasyHuntingCtrl.isUpdating"
+                                        data-size="s">
+                            </oui-loader>
                             <span data-translate="telephony_alias_configuration_mode_easyhunting_change"></span>
                         </button>
                         <button type="button"
                                 class="btn btn-default"
                                 data-ng-disabled="ModeEasyHuntingCtrl.isUpdating"
-                                data-ng-if="ModeEasyHuntingCtrl.hasChanges()"
                                 data-ng-click="ModeEasyHuntingCtrl.undoChanges()"
                                 data-translate="cancel">
                         </button>

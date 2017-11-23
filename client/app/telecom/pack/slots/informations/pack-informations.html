@@ -1,9 +1,9 @@
 <div id="pack-informations"
      data-ng-controller="PackInformationCtrl as PackInformation">
 
-    <div class="text-center" data-ng-if="PackInformation.isLoading">
-        <bouncing-box-loader data-size="m"></bouncing-box-loader>
-    </div>
+    <oui-loader data-ng-if="PackInformation.isLoading"
+                data-size="m">
+    </oui-loader>
 
     <div data-ng-if="!PackInformation.isLoading">
 

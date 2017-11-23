@@ -11,11 +11,9 @@
 
         <toast-message></toast-message>
 
-        <div data-ng-if="MgcpIpRestrictionCtrl.isLoading">
-            <bouncing-box-loader data-size="m">
-                <h2 data-translate="loading"></h2>
-            </bouncing-box-loader>
-        </div>
+        <oui-loader data-ng-if="MgcpIpRestrictionCtrl.isLoading"
+                    data-size="m">
+        </oui-loader>
 
         <div class="row"
              data-ng-if="!MgcpIpRestrictionCtrl.isLoading">
@@ -59,10 +57,10 @@
                                 data-ng-disabled="mgcpIpRestrictionForm.$invalid ||
                                                   !MgcpIpRestrictionCtrl.hasMgcpIpRestrictionChanged() ||
                                                   MgcpIpRestrictionCtrl.isChangingMgcpIpRestriction">
-                                <bouncing-box-loader class="d-inline-block align-middle mr-2"
-                                                     data-ng-if="MgcpIpRestrictionCtrl.isChangingMgcpIpRestriction"
-                                                     data-size="s">
-                                </bouncing-box-loader>
+                                <oui-loader class="mr-2"
+                                            data-ng-if="MgcpIpRestrictionCtrl.isChangingMgcpIpRestriction"
+                                            data-size="s">
+                                </oui-loader>
                                 <span data-translate="telephony_line_phone_mgcp_ip_restriction_submit"></span>
                             </button>
                         </div>
@@ -109,10 +107,10 @@
                                 data-ng-disabled="mgcpDefaultIpRestrictionForm.$invalid ||
                                                   !MgcpIpRestrictionCtrl.hasMgcpDefaultIpRestrictionChanged() ||
                                                   MgcpIpRestrictionCtrl.isChangingMgcpDefaultIpRestriction">
-                                <bouncing-box-loader class="d-inline-block align-middle mr-2"
-                                                     data-ng-if="MgcpIpRestrictionCtrl.isChangingMgcpDefaultIpRestriction"
-                                                     data-size="s">
-                                </bouncing-box-loader>
+                                <oui-loader class="mr-2"
+                                            data-ng-if="MgcpIpRestrictionCtrl.isChangingMgcpDefaultIpRestriction"
+                                            data-size="s">
+                                </oui-loader>
                                 <span data-translate="telephony_line_phone_mgcp_ip_restriction_submit"></span>
                             </button>
                         </div>

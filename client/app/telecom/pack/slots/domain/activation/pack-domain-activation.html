@@ -9,11 +9,9 @@
 
         <toast-message></toast-message>
 
-        <div class="text-center" data-ng-if="PackDomainActivation.isLoading">
-            <bouncing-box-loader data-size="m">
-                <h3 data-translate="loading"></h3>
-            </bouncing-box-loader>
-        </div>
+        <oui-loader data-ng-if="PackDomainActivation.isLoading"
+                    data-size="m">
+        </oui-loader>
 
         <div class="row" data-ng-if="!PackDomainActivation.isLoading && locker.activatedDomains.length !== 0">
             <section class="widget-presentation col-xs-12 col-md-6" data-ng-if="locker.activatedDomains.length !== 0">
@@ -73,10 +71,11 @@
                             </select>
                         </div>
                     </div>
-                    <div class="mt-2" data-ng-if="toggles.domainLoading">
-                        <bouncing-box-loader data-size="s"
-                                             class="d-inline-block">
-                        </bouncing-box-loader>
+                    <div class="mt-2"
+                         data-ng-if="toggles.domainLoading">
+                        <oui-loader class="mr-2"
+                                    data-size="s">
+                        </oui-loader>
                         <span data-translate="domain_activation_check_dispo"></span>
                     </div>
 
@@ -181,10 +180,9 @@
                                 class="btn btn-primary mt-5"
                                 data-ng-click="submit()"
                                 data-ng-disabled="PackDomainActivation.isActivating || !domainActivation.$valid || toggles.domainLoading || toggles.loading > 0">
-                            <bouncing-box-loader data-size="s"
-                                                 data-ng-if="PackDomainActivation.isActivating"
-                                                 class="d-inline-block">
-                            </bouncing-box-loader>
+                            <oui-loader data-ng-if="PackDomainActivation.isActivating"
+                                        data-size="s">
+                            </oui-loader>
                             <span data-ng-if="toggles.transfertWanted" data-translate="domain_activation_form_ok_transfert_button"></span>
                             <span data-ng-if="model.action === 'create'" data-translate="domain_activation_form_ok_activate_button"></span>
                         </button>

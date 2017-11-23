@@ -11,10 +11,9 @@
 
         <toast-message></toast-message>
 
-        <bouncing-box-loader data-ng-if="LineRestrictionsCtrl.isLoading"
-                             data-size="m">
-            <h2 data-translate="loading"></h2>
-        </bouncing-box-loader>
+        <oui-loader data-ng-if="LineRestrictionsCtrl.isLoading"
+                    data-size="m">
+        </oui-loader>
 
         <div class="row"
              data-ng-if="!LineRestrictionsCtrl.isLoading">
@@ -79,13 +78,13 @@
                                 <i data-ng-if="LineRestrictionsCtrl.changeLineSuccess"
                                    aria-hidden="true"
                                    class="ovh-font ovh-font-success ml-1"></i>
-                                <bouncing-box-loader class="d-inline-block align-middle ml-2"
-                                                     data-ng-if="LineRestrictionsCtrl.isChangingLineOptions"
-                                                     data-size="s">
-                                </bouncing-box-loader>
+                                <oui-loader class="ml-2"
+                                            data-ng-if="LineRestrictionsCtrl.isChangingLineOptions"
+                                            data-size="s">
+                                </oui-loader>
                             </button>
                             <button type="button"
-                                    class="btn btn-default no-transition"
+                                    class="btn btn-link no-transition"
                                     data-translate="telephony_line_restrictions_cancel"
                                     data-ng-if="LineRestrictionsCtrl.hasLineRestrictionChanged() && !LineRestrictionsCtrl.isChangingLineOptions"
                                     data-ng-click="LineRestrictionsCtrl.cancelLineChanges()">
@@ -149,13 +148,13 @@
                                 <i data-ng-if="LineRestrictionsCtrl.changeAccountSuccess"
                                    aria-hidden="true"
                                    class="ovh-font ovh-font-success ml-1"></i>
-                                <bouncing-box-loader class="d-inline-block align-middle ml-2"
-                                                     data-ng-if="LineRestrictionsCtrl.isChangingAccountOptions"
-                                                     data-size="s">
-                                </bouncing-box-loader>
+                                <oui-loader class="ml-2"
+                                            data-ng-if="LineRestrictionsCtrl.isChangingAccountOptions"
+                                            data-size="s">
+                                </oui-loader>
                             </button>
                             <button type="button"
-                                    class="btn btn-default no-transition"
+                                    class="btn btn-link no-transition"
                                     data-translate="telephony_line_restrictions_cancel"
                                     data-ng-if="LineRestrictionsCtrl.hasAccountRestrictionChanged() && !LineRestrictionsCtrl.isChangingAccountOptions"
                                     data-ng-click="LineRestrictionsCtrl.cancelAccountChanges()">

@@ -7,12 +7,9 @@
         <h1 data-translate="telephony_line_management_sip_domain_title"></h1>
     </header>
 
-    <bouncing-box-loader data-size="m"
-                         data-ng-if="DomainCtrl.loading.init">
-        <h3 class="mt-2"
-            data-translate="loading">
-        </h3>
-    </bouncing-box-loader>
+    <oui-loader data-ng-if="DomainCtrl.loading.init"
+                data-size="m">
+    </oui-loader>
 
     <div class="telecom-section-content"
          data-ng-if="!DomainCtrl.loading.init">
@@ -32,12 +29,11 @@
                      data-translate="telephony_line_management_sip_domain_line_info">
                 </div>
 
-                <bouncing-box-loader data-size="m"
-                                     data-ng-if="DomainCtrl.loading.saveLine">
-                    <h3 class="mt-2"
-                        data-translate="telephony_line_management_sip_domain_save_loading">
-                    </h3>
-                </bouncing-box-loader>
+                <div class="text-center"
+                     data-ng-if="DomainCtrl.loading.saveLine">
+                    <oui-loader data-size="m"></oui-loader>
+                    <h3 data-translate="telephony_line_management_sip_domain_save_loading"></h3>
+                </div>
 
                 <!-- CONSULT MODE -->
                 <div data-ng-if="!DomainCtrl.model.lineSipEdit && !DomainCtrl.loading.saveLine">
@@ -105,12 +101,11 @@
                      data-translate="telephony_line_management_sip_domain_client_info">
                 </div>
 
-                <bouncing-box-loader data-size="m"
-                                     data-ng-if="DomainCtrl.loading.saveClient">
-                    <h3 class="mt-3"
-                        data-translate="telephony_line_management_sip_domain_save_loading">
-                    </h3>
-                </bouncing-box-loader>
+                <div class="text-center"
+                     data-ng-if="DomainCtrl.loading.saveClient">
+                    <oui-loader data-size="m"></oui-loader>
+                    <h3 data-translate="telephony_line_management_sip_domain_save_loading"></h3>
+                </div>
 
                 <!-- CONSULT MODE -->
                 <div data-ng-if="!DomainCtrl.model.clientSipEdit && !DomainCtrl.loading.saveClient">

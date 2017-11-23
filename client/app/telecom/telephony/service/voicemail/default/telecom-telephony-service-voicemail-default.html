@@ -1,8 +1,8 @@
 <section class="telephony-group-service-voicemail-default">
 
-    <bouncing-box-loader data-ng-if="DefaultVoicemailCtrl.loading"
-                         data-size="m">
-    </bouncing-box-loader>
+    <oui-loader data-ng-if="DefaultVoicemailCtrl.loading"
+                data-size="m">
+    </oui-loader>
 
     <div class="row"
          data-ng-if="!DefaultVoicemailCtrl.loading">
@@ -35,13 +35,13 @@
                         <i class="ovh-font ovh-font-success ml-2"
                            data-ng-if="DefaultVoicemailCtrl.success">
                         </i>
-                        <bouncing-box-loader class="d-inline-block align-middle ml-2"
-                                             data-ng-if="DefaultVoicemailCtrl.saving"
-                                             data-size="s">
-                        </bouncing-box-loader>
+                        <oui-loader class="ml-2"
+                                    data-ng-if="DefaultVoicemailCtrl.saving"
+                                    data-size="s">
+                        </oui-loader>
                     </button>
                     <button type="reset"
-                            class="btn btn-default"
+                            class="btn btn-link"
                             data-ng-click="DefaultVoicemailCtrl.cancel()"
                             data-ng-disabled="DefaultVoicemailCtrl.options.defaultVoicemail === DefaultVoicemailCtrl.defaultVoicemail || DefaultVoicemailCtrl.saving"
                             data-translate="cancel">

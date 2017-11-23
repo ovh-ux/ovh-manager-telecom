@@ -1,9 +1,8 @@
 <section class="telecom-pack-xdsl">
 
-    <bouncing-box-loader data-size="m"
-                         data-ng-if="PackXdslCtrl.loading.init">
-        <h1 data-translate="loading"></h1>
-    </bouncing-box-loader>
+    <oui-loader data-ng-if="PackXdslCtrl.loading.init"
+                data-size="m">
+    </oui-loader>
 
     <div class="telecom-section-header">
         <header class="page-header"
@@ -27,7 +26,7 @@
                 </responsive-tab>
                 <responsive-tab data-state="telecom.pack.xdsl.modem"
                                 disabled="PackXdslCtrl.disabledModem"
-                                data-ng-if="PackXdslCtrl.content.status === 'active'"
+                                data-ng-if="PackXdslCtrl.content.status === 'active' || PackXdslCtrl.content.status === 'migration'"
                                 data-dropdown-title="{{ 'xdsl_tabs_modem' | translate }}">
                     <span data-translate="xdsl_tabs_modem"></span>
                 </responsive-tab>

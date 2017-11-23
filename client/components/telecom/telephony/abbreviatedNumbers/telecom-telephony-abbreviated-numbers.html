@@ -114,10 +114,9 @@
                               data-ng-bind="abbreviated.name"></span>
                     </td>
                     <td>
-                        <bouncing-box-loader class="d-inline-block align-middle"
-                                             data-ng-if="abbreviated.removing"
-                                             data-size="s">
-                        </bouncing-box-loader>
+                        <oui-loader data-ng-if="abbreviated.removing"
+                                    data-size="s">
+                        </oui-loader>
                         <div class="btn-group float-right"
                              data-uib-dropdown
                              data-dropdown-append-to-body>

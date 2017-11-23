@@ -1,11 +1,8 @@
 <div class="telecom-telephony-line-phone-accessories-choice">
 
-    <bouncing-box-loader data-size="m"
-                         data-ng-if="AccessoriesChoiceCtrl.loading.init">
-        <h3 class="mt-3"
-            data-translate="loading">
-        </h3>
-    </bouncing-box-loader>
+    <oui-loader data-ng-if="AccessoriesChoiceCtrl.loading.init"
+                data-size="m">
+    </oui-loader>
 
     <div class="widget-presentation"
          data-ng-if="!AccessoriesChoiceCtrl.loading.init">
@@ -83,7 +80,7 @@
                         data-ng-disabled="!AccessoriesChoiceCtrl.hasAtLeastOneAccessory()">
                 </button>
 
-                <a class="btn btn-default"
+                <a class="btn btn-link"
                    data-ui-sref="telecom.telephony.line.phone"
                    data-translate="telephony_line_phone_accessories_cancel_order">
                 </a>

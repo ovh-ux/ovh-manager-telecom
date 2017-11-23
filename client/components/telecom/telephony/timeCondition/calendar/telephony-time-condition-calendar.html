@@ -1,8 +1,8 @@
 <div class="voip-time-condition-calendar">
 
-    <bouncing-box-loader data-ng-if="$ctrl.loading.init">
-        <h2 data-translate="loading"></h2>
-    </bouncing-box-loader>
+    <oui-loader data-ng-if="$ctrl.loading.init"
+                data-size="m">
+    </oui-loader>
 
     <div data-ng-if="!$ctrl.loading.init">
         <div class="voip-time-condition-ui-calendar"

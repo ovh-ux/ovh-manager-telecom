@@ -1,0 +1,295 @@
+<section class="telephony-group-alias-configuration-members telephony-group-alias-configuration-members-oldPabx">
+
+    <header>
+        <section-back-link section-back-link-to-state="telecom.telephony.alias.configuration"
+                           section-back-link-title="{{ 'telephony_alias_configuration_back_link' | translate }}">
+        </section-back-link>
+        <h1 data-translate="telephony_alias_configuration_members_title"></h1>
+    </header>
+
+    <oui-loader data-ng-if="$ctrl.loaders.init"
+                data-size="m">
+    </oui-loader>
+
+    <div class="telecom-section-content"
+         data-ng-if="!$ctrl.loaders.init">
+
+        <toast-message></toast-message>
+
+        <div class="alert alert-info"
+             role="alert">
+            <p data-translate="telephony_alias_configuration_members_old_pabx_info_1"></p>
+            <p data-translate="telephony_alias_configuration_members_old_pabx_info_2"></p>
+        </div>
+
+        <div class="row">
+
+            <!-- MEMBERS LIST -->
+            <div class="col-md-6 widget-presentation telecom-telephony-alias-members">
+                <header class="widget-presentation-header">
+                    <h2 class="widget-presentation-title"
+                        data-translate="telephony_alias_configuration_members_list">
+                    </h2>
+                </header>
+
+                <p class="text-center mt-5"
+                   data-ng-if="$ctrl.agents.length === 0"
+                   data-translate="telephony_alias_members_empty">
+                </p>
+
+                <p class="text-info mb-5"
+                   data-ng-if="$ctrl.agents.length >= 2">
+                    <i class="ovh-font ovh-font-info line-height-normal ml-2"></i>
+                    <span data-translate="telephony_alias_members_drag1"></span>
+                    <i class="ovh-font ovh-font-grip"></i>
+                    <span data-translate="telephony_alias_members_drag2"></span>
+                </p>
+
+                <ul class="mt-2"
+                    data-ng-if="$ctrl.agents.length > 0"
+                    data-ui-sortable="$ctrl.sortableAgentsOpts"
+                    data-ng-model="$ctrl.agents">
+
+                    <li class="well"
+                        data-position="{{ $index }}"
+                        data-ng-repeat="agent in $ctrl.agents track by agent.agentNumber">
+
+                        <!-- CONTROLS -->
+                        <div class="float-left">
+                            <button class="btn btn-link p-0"
+                                    data-ng-if="!$ctrl.agentInEdition && !$ctrl.agentToDelete"
+                                    data-ng-disabled="$index === 0 || $ctrl.sortableAgentsOpts.disabled"
+                                    data-ng-click="$ctrl.onSwapAgents(agent, $ctrl.agents[$index - 1])">
+                                <i class="ovh-font ovh-font-arrow-up d-block"></i>
+                            </button>
+                            <i class="ovh-font ovh-font-grip cursor-move d-block my-2 text-center"
+                               data-ng-if="!$ctrl.agentInEdition && !$ctrl.agentToDelete"></i>
+                            <button class="btn btn-link p-0"
+                                    data-ng-if="!$ctrl.agentInEdition && !$ctrl.agentToDelete"
+                                    data-ng-disabled="$index === $ctrl.agents.length - 1 || $ctrl.sortableAgentsOpts.disabled"
+                                    data-ng-click="$ctrl.onSwapAgents(agent, $ctrl.agents[$index + 1])">
+                                <i class="ovh-font ovh-font-arrow-down d-block"></i>
+                            </button>
+                        </div>
+                        <div class="float-right">
+                            <button class="btn btn-link"
+                                    data-ng-click="$ctrl.onAgentEditBtnClick(agent)"
+                                    data-ng-if="!$ctrl.agentInEdition && !$ctrl.agentToDelete">
+                                <i class="ovh-font ovh-font-editer"></i>
+                            </button>
+                            <button class="btn btn-link"
+                                    data-ng-click="$ctrl.agentToDelete = agent"
+                                    data-ng-if="!$ctrl.agentInEdition && !$ctrl.agentToDelete">
+                                <i class="ovh-font ovh-font-bin"></i>
+                            </button>
+                        </div> <!-- End of CONTROLS -->
+
+                        <!-- MEMBER CONTENTS -->
+                        <div class="px-3"
+                             data-in-view="$ctrl.updateMemberDescription(agent)"
+                             data-ng-class="{'pl-5': !$ctrl.agentInEdition && !$ctrl.agentToDelete}">
+                            <strong class="member-description my-3 align-middle"
+                                    data-ng-class="{'px-3': !$ctrl.memberInEdition && !$ctrl.memberToDelete}">
+                                <oui-loader data-size="s"
+                                            data-ng-if="agent.description === undefined">
+                                </oui-loader>
+                                <span data-ng-if="agent.description !== undefined"
+                                      data-ng-bind="agent.description || ('telephony_alias_members_number_external' | translate)"></span>
+                            </strong>
+                            <strong class="memberPhoneNumber px-4" data-ng-bind="agent.agentNumber | phoneNumber"></strong>
+                            <div class="row mt-3"
+                                 data-ng-if="!$ctrl.agentInEdition || $ctrl.agentInEdition.agentNumber !== agent.agentNumber">
+                                <small class="col-md-3 text-nowrap text-capitalize font-weight-bold"
+                                       data-ng-class="agent.logged ? 'text-success' : 'text-danger'">
+                                    <i class="ovh-font ovh-font-activer"></i>
+                                    <span data-translate="{{ agent.logged ? 'telephony_alias_configuration_members_old_pabx_logged' : 'telephony_alias_configuration_members_old_pabx_unlogged' }}"></span>
+                                </small>
+                                <small class="col-md-3 text-nowrap"
+                                       data-translate="telephony_alias_members_timeout_val"
+                                       data-translate-values="{ timeout: agent.noReplyTimer }">
+                                </small>
+                            </div>
+
+                            <!-- MEMBER EDITION -->
+                            <form id="agentEditForm"
+                                  name="agentEditForm"
+                                  data-ng-if="$ctrl.agentInEdition.agentNumber === agent.agentNumber"
+                                  data-ng-submit="$ctrl.onAgentFormSubmit()">
+
+                                <!-- LOGGED -->
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox"
+                                               id="editLogged"
+                                               name="editLogged"
+                                               data-ng-model="$ctrl.agentInEdition.logged" />
+                                        <span data-translate="telephony_alias_configuration_members_old_pabx_logged_label"></span>
+                                    </label>
+                                </div>
+
+                                <!-- NO REPLY TIMER -->
+                                <div class="form-group">
+                                    <label for="editTimeoutInput"
+                                           class="control-label"
+                                           data-translate="telephony_alias_members_timeout"></label>
+                                    <input-number-spinner id="editNoReplyTimer"
+                                                          class="d-inline-block text-left"
+                                                          data-ng-model="$ctrl.agentInEdition.noReplyTimer"
+                                                          data-input-number-spinner-min="5"
+                                                          data-input-number-spinner-max="60">
+                                    </input-number-spinner>
+                                </div>
+
+                                <!-- ACTION BUTTONS -->
+                                <div class="my-3">
+                                    <button type="submit"
+                                            class="btn btn-primary"
+                                            data-ng-disabled="$ctrl.loaders.editing || !$ctrl.hasAgentEditedChanged(agent)">
+                                        <oui-loader class="mr-2"
+                                                    data-ng-if="$ctrl.loaders.editing"
+                                                    data-size="s">
+                                        </oui-loader>
+                                        <span data-translate="submit"></span>
+                                    </button>
+                                    <button type="button"
+                                            class="btn btn-default"
+                                            data-translate="cancel"
+                                            data-ng-disabled="$ctrl.loaders.editing"
+                                            data-ng-click="$ctrl.onAgentEditCancelBtnClick()">
+                                    </button>
+                                </div>
+                            </form>
+
+                            <!-- CONFIRM DELETION -->
+                            <div class="my-3"
+                                 data-ng-if="$ctrl.agentToDelete === agent">
+                                <button type="button"
+                                        class="btn btn-danger"
+                                        data-ng-disabled="$ctrl.loaders.deleting"
+                                        data-ng-click="$ctrl.onConfirmAgentDeleteBtnClick(agent)">
+                                    <oui-loader class="mr-2"
+                                                data-ng-if="$ctrl.loaders.deleting"
+                                                data-size="s">
+                                    </oui-loader>
+                                    <span data-translate="delete"></span>
+                                </button>
+                                <button type="button"
+                                        class="btn btn-default"
+                                        data-translate="cancel"
+                                        data-ng-disabled="$ctrl.loaders.deleting"
+                                        data-ng-click="$ctrl.agentToDelete = null">
+                                </button>
+                            </div>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+
+            <!-- ADD MEMBER -->
+            <div class="col-md-6 widget-presentation">
+                <header class="widget-presentation-header">
+                    <h2 class="widget-presentation-title" data-translate="telephony_alias_configuration_members_add"></h2>
+                </header>
+
+                <form id="agentAddForm"
+                      name="agentAddForm"
+                      data-ng-submit="$ctrl.addAgents(agentAddForm)"
+                      novalidate>
+
+                    <!-- NUMBER -->
+                    <div class="form-group">
+                        <label for="memberNumber"
+                               class="control-label"
+                               data-translate="telephony_alias_members_number"></label>
+                        <div class="input-group pb-2"
+                             data-ng-repeat="number in $ctrl.addAgentForm.numbers track by $index">
+                            <input id="memberNumber"
+                                   class="form-control"
+                                   type="text"
+                                   placeholder="{{:: 'telephony_alias_members_number_placeholder' | translate }}"
+                                   required
+                                   data-ng-pattern="/^.*$/"
+                                   data-ng-model="$ctrl.addAgentForm.numbers[$index]" />
+                            <span class="input-group-btn">
+                                <button type="button"
+                                        class="btn btn-default"
+                                        aria-label="{{:: 'common_search' | translate }}"
+                                        data-voip-service-choice-popover="{
+                                            popoverPlacement: 'auto left',
+                                            popoverClass: 'pretty-popover telephony-service-choice-popover',
+                                            popoverAppendToBody: true,
+                                            popoverIsOpen: false
+                                        }"
+                                        data-choice-args="$index"
+                                        data-exclude-services="$ctrl.servicesToExclude"
+                                        data-available-types="['sip', 'fax', 'trunk']"
+                                        data-on-choice-validated="$ctrl.onChooseServicePopover"
+                                        data-on-choice-cancel="">
+                                    <i class="ovh-font ovh-font-search"></i>
+                                </button>
+                                <button type="button"
+                                        class="btn btn-default"
+                                        aria-label="{{:: 'delete' | translate }}"
+                                        data-ng-disabled="$index === 0 && !$ctrl.addAgentForm.numbers[0]"
+                                        data-ng-click="$ctrl.removeAgentAt($index)">
+                                    <i class="ovh-font ovh-font-wrong"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- ADD MORE NUMBERS -->
+                    <div class="form-group"
+                         data-ng-if="$ctrl.addAgentForm.numbers[0]">
+                        <button type="button"
+                                class="btn btn-default"
+                                data-ng-click="$ctrl.addAgentForm.numbers.push(null)"
+                                data-translate="telephony_alias_members_number_add"
+                                data-ng-disabled="!$ctrl.addAgentForm.numbers[$ctrl.addAgentForm.numbers.length - 1]">
+                        </button>
+                    </div>
+
+                    <!-- NO REPLY TIMER -->
+                    <div class="form-group">
+                        <label for="addNoReplyTimer"
+                               class="control-label"
+                               data-translate="telephony_alias_members_timeout">
+                        </label>
+                        <input-number-spinner id="addNoReplyTimer"
+                                              class="d-inline-block text-left"
+                                              data-ng-model="$ctrl.addAgentForm.options.noReplyTimer"
+                                              data-input-number-spinner-min="5"
+                                              data-input-number-spinner-max="60">
+                        </input-number-spinner>
+                    </div>
+
+                    <!-- ADD FORM BUTTONS -->
+                    <div class="top-space-m32">
+                        <button type="submit"
+                                class="btn btn-primary no-transition"
+                                data-ng-disabled="agentAddForm.$invalid || $ctrl.loaders.adding">
+                            <oui-loader class="mr-2"
+                                        data-size="s"
+                                        data-ng-if="$ctrl.loaders.adding">
+                            </oui-loader>
+                            <span data-ng-if="$ctrl.addAgentForm.numbers.length <= 1"
+                                  data-translate="telephony_alias_members_add"></span>
+                            <span data-ng-if="$ctrl.addAgentForm.numbers.length > 1"
+                                  data-translate="telephony_alias_members_add_multiple"
+                                  data-translate-values="{ count: $ctrl.addAgentForm.numbers.length }"></span>
+                        </button>
+                        <button type="button"
+                                class="btn btn-default no-transition"
+                                data-translate="cancel"
+                                data-ng-click="$ctrl.resetAgentAddForm()"
+                                data-ng-if="$ctrl.addAgentForm.numbers[0]">
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+        </div><!-- row -->
+    </div><!-- section content -->
+
+</section>

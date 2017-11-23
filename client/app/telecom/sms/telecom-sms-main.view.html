@@ -1,10 +1,9 @@
 <section class="telecom-sms">
 
     <!-- LOADING -->
-    <bouncing-box-loader data-size="m"
-                         data-ng-if="TelecomSmsCtrl.loading.init">
-        <h1 data-translate="loading"></h1>
-    </bouncing-box-loader>
+    <oui-loader data-ng-if="TelecomSmsCtrl.loading.init"
+                data-size="m">
+    </oui-loader>
 
     <div class="telecom-section-header"
          data-ng-if="!TelecomSmsCtrl.loading.init">

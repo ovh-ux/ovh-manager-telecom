@@ -173,24 +173,24 @@
 
                 </section>
 
-                <footer data-ng-class="$ctrl.event.status !== 'CREATING' ? 'tripple-choice' : 'double-choice'">
+                <footer class="float-sm-right">
                     <button type="submit"
-                            class="btn btn-primary px-2 my-2"
+                            class="btn btn-primary"
                             data-translate="{{ $ctrl.event.status === 'CREATING' ? 'telephony_scheduler_events_create' : 'telephony_scheduler_events_save' }}"
                             data-ng-disabled="!$ctrl.event.hasChange() || !$ctrl.event.categories">
                     </button>
 
-                    <button type="reset"
-                            class="btn btn-default px-2 my-2"
-                            data-ng-click="$ctrl.manageCancel()"
-                            data-translate="cancel">
-                    </button>
-
                     <button type="button"
-                            class="btn btn-danger px-2 my-2"
+                            class="btn btn-danger mr-sm-4 float-left"
                             data-ng-click="$ctrl.manageDeleteConfirmation()"
                             data-ng-if="$ctrl.event.status !== 'CREATING'"
                             data-translate="delete">
+                    </button>
+
+                    <button type="reset"
+                            class="btn btn-default mr-sm-2 float-left"
+                            data-ng-click="$ctrl.manageCancel()"
+                            data-translate="cancel">
                     </button>
                 </footer>
 
@@ -204,15 +204,13 @@
                      data-ng-if="$ctrl.loading.init">
                     <div class="scheduler-overlay-backdrop w-100 h-100"></div>
                     <div class="scheduler-overlay-loader d-flex flex-column align-items-center justify-content-center">
-                        <bouncing-box-loader>
-                            <h3 data-translate="loading"></h3>
-                        </bouncing-box-loader>
+                        <oui-loader data-size="m"></oui-loader>
                     </div>
                 </div>
 
                 <header>
                     <button type="button"
-                            class="back-btn btn btn-link"
+                            class="btn btn-link"
                             data-ng-click="$ctrl.model.specialEdit.move = false"
                             data-translate-attr="{ title: 'telephony_scheduler_events_back' }">
                         <i class="ovh-font ovh-font-arrow-left" aria-hidden="true"></i>
@@ -235,24 +233,29 @@
                 <!-- CATEGORIES -->
                 <section data-ng-switch-when="categories"
                          class="telephony-scheduler-time-condition-slots">
-
                     <div class="section-group form-group">
-                        <label class="section-item w-100"
-                               data-ng-class="{ 'text-muted': $ctrl.isCategoryAvailable(category) && category !== $ctrl.event.categories }"
-                               data-ng-repeat="category in $ctrl.categories track by $index"
-                               for="category-{{ category }}">
+                        <div class="section-item"
+                             data-ng-repeat="category in $ctrl.categories track by $index"
+                             data-ng-class="{ 'text-muted': $ctrl.isCategoryAvailable(category) && category !== $ctrl.event.categories }">
+                            <div class="oui-radio">
                                 <input type="radio"
-                                       name="eventCategories"
-                                       id="category-{{ category }}"
+                                       class="oui-radio__input"
+                                       name="eventCategories-{{ $index }}"
+                                       id="eventCategories-{{ $index }}"
                                        data-ng-model="$ctrl.event.categories"
                                        data-ng-value="category"
                                        data-ng-change="$ctrl.model.specialEdit.move = false"
                                        data-ng-disabled="$ctrl.isCategoryAvailable(category) && category !== $ctrl.event.categories" />
-                                <voip-time-condition-slot class="d-inline-block mx-3"
-                                                          data-time-condition-slot="$ctrl.convertCategoryToSlot(category)"
-                                                          data-is-scheduler="true">
-                                </voip-time-condition-slot>
-                        </label>
+                                <label class="oui-radio__label-container"
+                                       for="eventCategories-{{ $index }}">
+                                    <span class="oui-radio__label">
+                                        <voip-time-condition-slot data-time-condition-slot="$ctrl.convertCategoryToSlot(category)"
+                                                                  data-is-scheduler="true">
+                                        </voip-time-condition-slot>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
                     </div>
 
                 </section> <!-- CATEGORIES -->
@@ -264,17 +267,17 @@
                         <div class="section-item">
                             <p data-translate="telephony_scheduler_events_delete_explain"></p>
 
-                            <footer class="double-choice m-0 p-0">
+                            <footer class="text-right">
                                 <button type="button"
-                                        class="btn btn-danger"
-                                        data-translate="common_confirm"
-                                        data-ng-click="$ctrl.manageDelete()">
+                                        class="btn btn-primary float-right ml-md-2"
+                                        data-ng-click="$ctrl.manageDelete()"
+                                        data-translate="common_confirm">
                                 </button>
 
                                 <button type="button"
                                         class="btn btn-default"
-                                        data-translate="cancel"
-                                        data-ng-click="$ctrl.model.specialEdit.move = false">
+                                        data-ng-click="$ctrl.model.specialEdit.move = false"
+                                        data-translate="cancel">
                                 </button>
                             </footer>
                         </div>

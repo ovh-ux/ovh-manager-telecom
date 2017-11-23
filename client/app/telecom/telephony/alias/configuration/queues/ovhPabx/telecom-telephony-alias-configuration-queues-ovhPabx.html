@@ -7,10 +7,9 @@
         <h1 data-translate="telephony_alias_configuration_queues_title"></h1>
     </header>
 
-    <bouncing-box-loader data-ng-if="QueuesOvhPabxCtrl.loaders.init"
-                         data-size="m">
-        <h2 data-translate="loading"></h2>
-    </bouncing-box-loader>
+    <oui-loader data-ng-if="QueuesOvhPabxCtrl.loaders.init"
+                data-size="m">
+    </oui-loader>
 
     <div class="telecom-section-content"
          data-ng-if="!QueuesOvhPabxCtrl.loaders.init">
@@ -28,10 +27,10 @@
                     class="btn btn-default mb-1"
                     data-ng-click="QueuesOvhPabxCtrl.createQueue()"
                     data-ng-disabled="QueuesOvhPabxCtrl.isCreating">
-                <bouncing-box-loader class="d-inline-block align-middle mr-2"
-                                     data-ng-if="QueuesOvhPabxCtrl.isCreating"
-                                     data-size="s">
-                </bouncing-box-loader>
+                <oui-loader class="mr-2"
+                            data-ng-if="QueuesOvhPabxCtrl.isCreating"
+                            data-size="s">
+                </oui-loader>
                 <span data-translate="telephony_alias_configuration_queues_queue_create"></span>
             </button>
 
@@ -236,10 +235,10 @@
                             <button type="submit"
                                     data-ng-disabled="queue.isAdding || agentAdd.$invalid"
                                     class="btn btn-primary mt-1 ml-1 float-right">
-                                <bouncing-box-loader class="d-inline-block align-middle mr-2"
-                                                     data-ng-if="queue.isAdding"
-                                                     data-size="s">
-                                </bouncing-box-loader>
+                                <oui-loader class="mr-2"
+                                            data-ng-if="queue.isAdding"
+                                            data-size="s">
+                                </oui-loader>
                                 <span data-translate="telephony_alias_configuration_queues_agent_select_add"></span>
                             </button>
                             <button type="button"
@@ -260,10 +259,10 @@
                             class="btn btn-danger float-right"
                             data-ng-click="QueuesOvhPabxCtrl.deleteQueue(queue)"
                             data-ng-disabled="QueuesOvhPabxCtrl.isDeleting || QueuesOvhPabxCtrl.queues.length <= 1">
-                        <bouncing-box-loader class="d-inline-block align-middle mr-2"
-                                             data-ng-if="QueuesOvhPabxCtrl.isDeleting"
-                                             data-size="s">
-                        </bouncing-box-loader>
+                        <oui-loader class="mr-2"
+                                    data-ng-if="QueuesOvhPabxCtrl.isDeleting"
+                                    data-size="s">
+                        </oui-loader>
                         <span data-translate="telephony_alias_configuration_queues_queue_delete"></span>
                     </button>
 

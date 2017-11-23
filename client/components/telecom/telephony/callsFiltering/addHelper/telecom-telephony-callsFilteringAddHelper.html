@@ -60,13 +60,12 @@
         <button type="submit"
                 class="btn btn-default"
                 data-ng-disabled="filteringHelperAddForm.$invalid || FilteringHelperCtrl.isLoading">
-            <bouncing-box-loader class="d-inline-block align-middle mr-2"
-                                 data-ng-if="FilteringHelperCtrl.isLoading"
-                                 data-size="s">
-            </bouncing-box-loader>
+            <oui-loader class="mr-2"
+                        data-ng-if="FilteringHelperCtrl.isLoading"
+                        data-size="s">
+            </oui-loader>
             <span data-translate="telephony_calls_filtering_apply"></span>
         </button>
     </div>
 
 </form>
-

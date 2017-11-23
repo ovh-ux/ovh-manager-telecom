@@ -37,10 +37,10 @@
                           aria-hidden="true"
                           data-ng-if="!SmsSendersBlacklistedCtrl.blacklists.isDeleting">
                     </span>
-                    <bouncing-box-loader class="d-inline-block align-middle mr-2"
-                                         data-ng-if="SmsSendersBlacklistedCtrl.blacklists.isDeleting"
-                                         data-size="s">
-                    </bouncing-box-loader>
+                    <oui-loader class="mr-2"
+                                data-ng-if="SmsSendersBlacklistedCtrl.blacklists.isDeleting"
+                                data-size="s">
+                    </oui-loader>
                     <span data-ng-pluralize
                           data-count="SmsSendersBlacklistedCtrl.getSelection().length"
                           data-when="{
@@ -134,7 +134,7 @@
                 <tbody data-ng-if="SmsSendersBlacklistedCtrl.blacklists.isLoading">
                     <tr>
                         <td colspan="4">
-                            <bouncing-box-loader data-size="s"></bouncing-box-loader>
+                            <oui-loader data-size="m"></oui-loader>
                         </td>
                     </tr>
                 </tbody>

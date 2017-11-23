@@ -10,12 +10,9 @@
     <div class="telecom-section-content">
 
         <!-- LOADING -->
-        <bouncing-box-loader data-size="m"
-                             data-ng-if="$ctrl.loading.init">
-            <h2 class="mt-3"
-                data-translate="loading">
-            </h2>
-        </bouncing-box-loader> <!-- Enf of LOADING -->
+        <oui-loader data-ng-if="$ctrl.loading.init"
+                    data-size="m">
+        </oui-loader> <!-- Enf of LOADING -->
 
         <toast-message></toast-message>
 
@@ -43,14 +40,11 @@
                         data-translate="telephony_group_fax_management_action_terminate">
                     </h2>
                 </header>
-
-                <bouncing-box-loader data-size="m"
-                                     data-ng-if="$ctrl.loading.terminate">
-                    <h2 class="mt-3"
-                        data-translate="telephony_group_fax_management_terminate_loading">
-                    </h2>
-                </bouncing-box-loader>
-
+                <div class="text-center"
+                    data-ng-if="$ctrl.loading.terminate">
+                    <oui-loader data-size="m"></oui-loader>
+                    <h2 data-translate="telephony_group_fax_management_terminate_loading"></h2>
+                </div>
                 <form novalidate
                       name="terminateForm"
                       data-ng-if="!$ctrl.loading.terminate"
@@ -108,12 +102,11 @@
                     </h2>
                 </header>
 
-                <bouncing-box-loader data-size="m"
-                                     data-ng-if="$ctrl.loading.cancel">
-                    <h2 class="mt-3"
-                        data-translate="telephony_group_fax_management_terminate_cancel_loading">
-                    </h2>
-                </bouncing-box-loader>
+                <div class="text-center"
+                     data-ng-if="$ctrl.loading.cancel">
+                    <oui-loader data-size="m"></oui-loader>
+                    <h2 data-translate="telephony_group_fax_management_terminate_cancel_loading"></h2>
+                </div>
 
                 <div data-ng-if="!$ctrl.loading.cancel">
                     <p data-translate="telephony_group_fax_management_terminate_cancel_doing"

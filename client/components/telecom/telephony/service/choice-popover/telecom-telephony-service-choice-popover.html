@@ -4,9 +4,7 @@
 
         <div class="my-3"
              data-ng-if="$ctrl.loading.init">
-            <bouncing-box-loader data-size="m">
-                <h2 data-translate="loading"></h2>
-            </bouncing-box-loader>
+            <oui-loader data-size="m"></oui-loader>
         </div>
 
         <div class="popover-pages-wrapper"
@@ -40,33 +38,41 @@
                     </div>
 
                     <!-- SEARCH RESULTS -->
-                    <div class="section-group search-results"
+                    <div class="section-group"
                          data-ng-repeat="group in $ctrl.groupList track by $index">
                         <div data-ng-repeat="service in group.getAllServices() | filter:$ctrl.excludeFilter | filter:$ctrl.availableFilter | propsFilter: { serviceName: $ctrl.search, description: $ctrl.search } track by $index">
                             <div class="group-title text-capitalize"
                                  data-ng-if="$index === 0">
                                 <span data-ng-bind="group.getDisplayedName()"></span>
                             </div>
-                            <label class="section-item item-choice w-100">
-                                <input type="radio"
-                                       class="from-control"
-                                       name="ruleNumber"
-                                       data-ng-model="$ctrl.selectedService"
-                                       data-ng-value="service" />
-                                <strong data-ng-bind="service.getDisplayedName()"></strong>
-                                <p class="small mb-0">
-                                    <i data-translate="{{ 'telephony_service_choice_filter_type_' + $ctrl.getServiceType(service) }}"></i>
-                                    <i data-ng-if="service.serviceName !== service.description"
-                                       data-ng-bind="' - ' + service.serviceName">
-                                    </i>
-                                </p>
-                            </label>
+                            <div class="section-item">
+                                <div class="oui-radio">
+                                    <input type="radio"
+                                           class="oui-radio__input"
+                                           id="ruleNumber-{{ $index }}"
+                                           name="ruleNumber-{{ $index }}"
+                                           data-ng-model="$ctrl.selectedService"
+                                           data-ng-value="service" />
+                                    <label class="oui-radio__label-container"
+                                           for="ruleNumber-{{ $index }}">
+                                        <span class="oui-radio__label"
+                                              data-ng-bind="service.getDisplayedName()">
+                                        </span>
+                                        <span class="oui-radio__description">
+                                            <i data-translate="{{ 'telephony_service_choice_filter_type_' + $ctrl.getServiceType(service) }}"></i>
+                                            <i data-ng-if="service.serviceName !== service.description"
+                                               data-ng-bind="' - ' + service.serviceName">
+                                            </i>
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
                 </section>
 
-                <footer class="clearfix double-choice">
+                <footer class="clearfix float-sm-right">
                     <button type="submit"
                             class="btn btn-primary"
                             data-translate="submit"
@@ -74,7 +80,7 @@
                             data-ng-click="$ctrl.onValidate()">
                     </button>
                     <button type="reset"
-                            class="btn btn-default"
+                            class="btn btn-default mr-sm-2 float-left"
                             data-translate="cancel"
                             data-ng-click="$ctrl.onCancel()">
                     </button>

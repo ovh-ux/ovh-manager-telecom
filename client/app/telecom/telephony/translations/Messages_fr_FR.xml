@@ -87,7 +87,6 @@
    <translation id="telephony_phonebook_contact_column_work_mobile_title">Mobile (professionnel)</translation>
    <translation id="telephony_phonebook_contact_refresh">Rafraîchir</translation>
    <translation id="telephony_phonebook_contact_empty">Aucun contact trouvé.</translation>
-   <translation id="telephony_phonebook_contact_loading">Chargement en cours…</translation>
    <translation id="telephony_phonebook_contact_add">Ajouter un contact</translation>
    <translation id="telephony_phonebook_contact_add_surname_placeholder">Nom (champ requis)</translation>
    <translation id="telephony_phonebook_contact_add_surname_error_required">Le champ "Nom" est obligatoire.</translation>

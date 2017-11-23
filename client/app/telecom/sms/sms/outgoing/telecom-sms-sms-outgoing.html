@@ -64,10 +64,10 @@
                       aria-hidden="true"
                       data-ng-if="!SmsOutgoingCtrl.outgoing.isDeleting">
                 </span>
-                <bouncing-box-loader class="d-inline-block align-middle ml-2"
-                                     data-ng-if="SmsOutgoingCtrl.outgoing.isDeleting"
-                                     data-size="s">
-                </bouncing-box-loader>
+                <oui-loader class="ml-2"
+                            data-ng-if="SmsOutgoingCtrl.outgoing.isDeleting"
+                            data-size="s">
+                </oui-loader>
                 <span data-ng-pluralize
                       data-count="SmsOutgoingCtrl.getSelection().length"
                       data-when="{
@@ -270,7 +270,7 @@
                 <tbody data-ng-if="SmsOutgoingCtrl.outgoing.isLoading">
                     <tr>
                         <td colspan="8">
-                            <bouncing-box-loader data-size="m"></bouncing-box-loader>
+                            <oui-loader data-size="m"></oui-loader>
                         </td>
                     </tr>
                 </tbody>

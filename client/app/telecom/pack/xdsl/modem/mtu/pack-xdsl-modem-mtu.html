@@ -13,7 +13,9 @@
             type="submit"
             data-ng-disabled="!MtuCtrl.mediator.capabilities.canChangeMtu || MtuCtrl.mtuCurrentValue === MtuCtrl.mtuCurrentValueTmp">
             <span data-ng-if="MtuCtrl.mediator.tasks.changeMTU">
-                <bouncing-box-loader data-size="s"></bouncing-box-loader>
+                <oui-loader class="mr-2"
+                            data-size="s">
+                </oui-loader>
                 <span data-translate="xdsl_modem_mtu_doing"></span>
             </span>
         <span data-ng-if="!MtuCtrl.mediator.tasks.changeMTU" data-translate="xdsl_modem_mtu_submit"></span>

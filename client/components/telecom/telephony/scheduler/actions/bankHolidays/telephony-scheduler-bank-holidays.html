@@ -15,8 +15,7 @@
     <div class="modal-body"
          data-ng-if="!SchedulerHolidaysCtrl.loading.init">
 
-        <h3 data-translate="telephony_scheduler_bank_holidays_title">
-        </h3>
+        <h3 data-translate="telephony_scheduler_bank_holidays_title"></h3>
 
         <div class="row">
             <!-- "FILTERS" -->
@@ -56,20 +55,29 @@
 
             <!-- BANK HOLIDAYS LIST -->
             <div class="col-xs-9">
-                <ul class="bank-holidays-list list-group w-100 p-0 m-0">
-                    <li class="bank-holiday-item checkbox"
-                        data-ng-repeat="bankHoliday in SchedulerHolidaysCtrl.holidaysLists[SchedulerHolidaysCtrl.model.year] track by $index">
-                        <label for="bankHoliday-{{ bankHoliday.name }}"
-                               data-translate-attr="{ title: bankHoliday.disabled ? 'telephony_scheduler_bank_holidays_already_in_schedular' : '' }">
+                <ul class="list-unstyled">
+                    <li data-ng-repeat="bankHoliday in SchedulerHolidaysCtrl.holidaysLists[SchedulerHolidaysCtrl.model.year] track by $index">
+                        <div class="oui-checkbox">
                             <input type="checkbox"
-                                   name="bankHoliday-{{ bankHoliday.name }}"
+                                   class="oui-checkbox__input"
                                    id="bankHoliday-{{ bankHoliday.name }}"
+                                   name="bankHoliday-{{ bankHoliday.name }}"
                                    data-ng-model="bankHoliday.active"
                                    data-ng-disabled="bankHoliday.disabled" />
-                            <span data-translate="{{ 'telephony_scheduler_bank_holidays_' + bankHoliday.name }}">
-                            </span>
-                            <span data-ng-bind="bankHoliday.date.format() | date:'fullDate'"></span>
-                        </label>
+                            <label class="oui-checkbox__label-container"
+                                   for="bankHoliday-{{ bankHoliday.name }}"
+                                   data-translate-attr="{ title: bankHoliday.disabled ? 'telephony_scheduler_bank_holidays_already_in_schedular' : '' }">
+                                <span class="oui-checkbox__label">
+                                    <span data-translate="{{ 'telephony_scheduler_bank_holidays_' + bankHoliday.name }}"></span>
+                                    <span data-ng-bind="bankHoliday.date.format() | date:'fullDate'"></span>
+                                </span>
+                                <span class="oui-checkbox__icon">
+                                    <i class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></i>
+                                    <i class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></i>
+                                    <i class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></i>
+                                </span>
+                            </label>
+                        </div>
                     </li>
                 </ul>
             </div> <!-- BANK HOLIDAYS LIST -->
@@ -78,11 +86,10 @@
 
     </div>
 
-    <div class="modal-body"
+    <div class="modal-body text-center"
          data-ng-if="SchedulerHolidaysCtrl.loading.init">
-        <bouncing-box-loader>
-            <h4 data-translate="telephony_scheduler_export_doing"></h4>
-        </bouncing-box-loader>
+        <oui-loader data-size="m"></oui-loader>
+        <h4 data-translate="telephony_scheduler_export_doing"></h4>
     </div>
 
     <div class="modal-footer mt-2">
