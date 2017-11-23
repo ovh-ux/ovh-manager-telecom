@@ -1,20 +1,16 @@
 <section class="telecom-pack-xdsl">
 
-    <bouncing-box-loader data-ng-if="PackXdslCtrl.loading.init">
-        <h1 data-translate="loading"></h1>
-    </bouncing-box-loader>
+    <oui-loader data-ng-if="PackXdslCtrl.loading.init"
+                data-size="m">
+    </oui-loader>
 
     <div class="telecom-section-header">
-        <header role="banner"
+        <header class="page-header"
+                role="banner"
                 data-ng-if="!PackXdslCtrl.loading.init">
-            <a class="section-back-link ng-scope"
-               data-ng-href="{{ PackXdslCtrl.backState() }}"
-               data-ng-if="PackXdslCtrl.content.back.state && PackXdslCtrl.content.status === 'active'">
-                <i class="ovh-font ovh-font-arrow-left"
-                   aria-hidden="">
-                </i>
-                <span data-ng-bind="PackXdslCtrl.pack.general.description || PackXdslCtrl.pack.general.packName || PackXdslCtrl.access.description || PackXdslCtrl.access.accessName"></span>
-            </a>
+            <section-back-link data-ng-if="PackXdslCtrl.content.back.state && PackXdslCtrl.content.status === 'active'"
+                               data-ng-click="PackXdslCtrl.backState()"
+                               section-back-link-title="{{ PackXdslCtrl.pack.general.description || PackXdslCtrl.pack.general.packName || PackXdslCtrl.access.description || PackXdslCtrl.access.accessName }}"></section-back-link>
             <!-- ACCESS TITLE -->
             <editable-service-name data-editable-service-name-title="PackXdslCtrl.access.description || PackXdslCtrl.access.accessName"
                                    data-editable-service-name-service-name="PackXdslCtrl.access.accessName"
@@ -30,7 +26,7 @@
                 </responsive-tab>
                 <responsive-tab data-state="telecom.pack.xdsl.modem"
                                 disabled="PackXdslCtrl.disabledModem"
-                                data-ng-if="PackXdslCtrl.content.status === 'active'"
+                                data-ng-if="PackXdslCtrl.content.status === 'active' || PackXdslCtrl.content.status === 'migration'"
                                 data-dropdown-title="{{ 'xdsl_tabs_modem' | translate }}">
                     <span data-translate="xdsl_tabs_modem"></span>
                 </responsive-tab>
@@ -43,6 +39,8 @@
         </nav>
 
     </div><!-- .telecom-section-header -->
+
+    <toast-message></toast-message>
 
     <div class="telecom-section-content ui-view-container"
          data-ng-class="PackXdslCtrl.content.back.class"

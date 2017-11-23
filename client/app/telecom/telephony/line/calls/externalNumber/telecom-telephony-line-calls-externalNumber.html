@@ -7,12 +7,14 @@
         <h1 data-translate="telephony_line_calls_actions_line_external_number_display"></h1>
     </header>
 
-    <bouncing-box-loader data-ng-if="$ctrl.loading.init">
-        <h1 data-translate="loading"></h1>
-    </bouncing-box-loader>
+    <oui-loader data-ng-if="$ctrl.loading.init"
+                data-size="m">
+    </oui-loader>
 
     <div class="telecom-section-content"
          data-ng-if="!$ctrl.loading.init">
+
+        <toast-message></toast-message>
 
         <div class="row">
             <!-- Presented numbers -->
@@ -28,54 +30,55 @@
                    data-translate="telephony_trunk_external_number_presented_list_no_number">
                 </p>
 
-                <table class="table table-pretty table-hover table-striped"
+                <table class="table"
+                       data-ng-class="{
+                           'table-hover table-striped': $ctrl.list.length > 1
+                       }"
                        data-ng-if="$ctrl.list.length">
                     <thead>
                         <tr>
                             <th data-translate="telephony_trunk_external_number_add_number"></th>
                             <th data-translate="telephony_trunk_external_number_presented_list_number_status"></th>
-                            <th style="width: 10%;"></th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr data-ng-repeat="number in $ctrl.list track by $index">
-                            <td>
-                                <div data-ng-class="{ 'opacity2-leave': $ctrl.toDelete.number === number.number, 'opacity2-enter': $ctrl.toDelete.number !== number.number }">
-                                    <span data-ng-bind="number.number | phoneNumber"></span>
-                                </div>
+                            <td class="align-middle">
+                                <span data-ng-bind="number.number | phoneNumber"></span>
                             </td>
-                            <td>
-                                <div data-ng-class="{ 'opacity2-leave': $ctrl.toDelete.number === number.number, 'opacity2-enter': $ctrl.toDelete.number !== number.number }">
-                                    <span class="normal"
-                                          data-ng-class="{ 'text-danger': number.status === 'refused' || number.status === 'toDelete', 'text-warning': number.status === 'waitingValidation', 'text-success': number.status === 'enabled' }"
-                                          data-translate="{{ 'telephony_trunk_external_number_presented_list_number_status_' + (number.status | snakeCase) }}"></span>
-                                </div>
+                            <td class="align-middle">
+                                <span class="font-weight-normal"
+                                      data-ng-class="{
+                                          'text-danger': number.status === 'refused' || number.status === 'toDelete',
+                                          'text-warning': number.status === 'waitingValidation', 'text-success': number.status === 'enabled' }"
+                                      data-translate="{{ 'telephony_trunk_external_number_presented_list_number_status_' + (number.status | snakeCase) }}"></span>
                             </td>
                             <td>
                                 <!-- Delete confirmation -->
-                                <div class="pretty-table-confirm-container text-center animate-fadeInRight-enter animate-fadeOutLeft-leave full-width"
-                                     data-ng-show="$ctrl.toDelete.number === number.number">
+                                <div data-ng-if="$ctrl.toDelete.number === number.number">
                                     <button type="button"
-                                            class="btn btn-default"
+                                            class="btn btn-block btn-default"
                                             data-ng-click="$ctrl.toDelete = null">
-                                        <i class="ovh-font ovh-font-wrong right-space-m8"></i>
+                                        <i class="ovh-font ovh-font-wrong mr-2"></i>
                                         <span data-translate="cancel"></span>
                                     </button>
-
                                     <button type="button"
-                                            class="btn btn-danger"
+                                            class="btn btn-block btn-danger"
                                             data-ng-click="$ctrl.onConfirmDeleteNumberBtnClick()">
-                                        <i class="ovh-font ovh-font-bin right-space-m8"></i>
+                                        <oui-loader class="mr-2"
+                                                    data-ng-if="$ctrl.loading.remove"
+                                                    data-size="s">
+                                        </oui-loader>
+                                        <i class="ovh-font ovh-font-bin mr-2"
+                                           data-ng-if="!$ctrl.loading.remove"></i>
                                         <span data-translate="delete"></span>
-                                        <spinner name="bubbles-fff-d34936-16"
-                                                 data-ng-show="$ctrl.loading.remove">
-                                        </spinner>
                                     </button>
                                 </div> <!-- End of Delete confirmation -->
 
-                                <div data-ng-class="{ 'opacity2-leave': $ctrl.toDelete.number === number.number, 'opacity2-enter': $ctrl.toDelete.number !== number.number }">
+                                <div data-ng-if="$ctrl.toDelete.number !== number.number">
                                     <button type="button"
-                                            class="btn-actions-list"
+                                            class="btn btn-default float-right"
                                             data-ng-click="$ctrl.toDelete = number"
                                             data-ng-disabled="$ctrl.loading.remove"
                                             data-translate-attr="{ title: 'telephony_trunk_external_number_presented_list_number_delete' }">
@@ -98,7 +101,6 @@
 
                 <div class="alert alert-info"
                      role="alert">
-                    <i class="ovh-font ovh-font-filled-info right-space-m8"></i>
                     <p data-translate="telephony_trunk_external_number_info1"></p>
                     <p data-translate="{{ $ctrl.line.simultaneousLines > 1 ? 'telephony_trunk_external_number_info2' : 'telephony_trunk_external_number_info2_single' }}"
                        data-translate-values="{ count: $ctrl.line.simultaneousLines }"></p>
@@ -113,7 +115,9 @@
 
                     <!-- Number -->
                     <div class="form-group"
-                         data-ng-class="{ 'has-error': $ctrl.externalNumberAddForm.number.$invalid && $ctrl.externalNumberAddForm.number.$dirty }">
+                         data-ng-class="{
+                             'has-error': $ctrl.externalNumberAddForm.number.$invalid && $ctrl.externalNumberAddForm.number.$touched
+                         }">
                         <label for="number"
                                data-translate="telephony_trunk_external_number_add_number">
                         </label>
@@ -127,57 +131,54 @@
                                data-required
                                data-ng-pattern="/^(00|\+)([0-9]{2}\d+)$/"
                                data-ui-validate="{ samePrefix: '$ctrl.checkSamePrefix($value)' }">
-                        <div data-ng-messages="$ctrl.externalNumberAddForm.number.$error"
-                             data-ng-if="$ctrl.externalNumberAddForm.number.$invalid && $ctrl.externalNumberAddForm.number.$dirty"
-                             role="alert"
-                             class="top-space-m8">
-                            <label for="number"
-                                   class="normal"
-                                   data-ng-message="required"
-                                   data-translate="telephony_trunk_external_number_add_number_required">
-                            </label>
-                            <label for="number"
-                                   class="normal"
-                                   data-ng-message="pattern"
-                                   data-translate="telephony_trunk_external_number_add_number_pattern">
-                            </label>
-                            <label for="number"
-                                   class="normal"
-                                   data-ng-message="samePrefix"
-                                   data-translate="telephony_trunk_external_number_add_number_prefix"
-                                   data-translate-values="{ prefix: $ctrl.plan.prefix }">
-                            </label>
-                        </div>
+                        <span class="help-block"
+                              role="alert"
+                              data-ng-messages="$ctrl.externalNumberAddForm.number.$error"
+                              data-ng-if="$ctrl.externalNumberAddForm.number.$touched">
+                            <span data-ng-message="required"
+                                  data-translate="telephony_trunk_external_number_add_number_required">
+                            </span>
+                            <span data-ng-message="pattern"
+                                  data-translate="telephony_trunk_external_number_add_number_pattern">
+                            </span>
+                            <span data-ng-message="samePrefix"
+                                  data-translate="telephony_trunk_external_number_add_number_prefix"
+                                  data-translate-values="{ prefix: $ctrl.plan.prefix }">
+                            </span>
+                        </span>
                     </div> <!-- End of Number -->
 
                     <!-- Auto validation -->
-                    <label class="block pointer top-space-m16 bottom-space-m16"
-                           data-ng-if="$ctrl.isVip">
-                        <flat-checkbox>
+                    <div class="checkbox">
+                        <label class="my-3"
+                               data-ng-if="$ctrl.isVip">
                             <input type="checkbox"
                                    id="autoValidation"
                                    name="autoValidation"
                                    data-ng-disabled="$ctrl.loading.add || $ctrl.list.length >= $ctrl.line.simultaneousLines"
                                    data-ng-model="$ctrl.model.autoValidation" />
-                        </flat-checkbox>
-                        <span class="left-space-m8"
-                              data-translate="telephony_trunk_external_number_add_auto_validate">
-                        </span>
-                        <span class="ovh-font ovh-font-filled-info"
-                              data-uib-tooltip="{{ 'telephony_trunk_external_number_add_auto_validate_explain' | translate }}">
-                        </span>
-                    </label> <!-- End of Auto validation -->
+                            <span class="ml-2"
+                                  data-translate="telephony_trunk_external_number_add_auto_validate">
+                            </span>
+                            <span class="ovh-font ovh-font-filled-info"
+                                  data-uib-tooltip="{{ 'telephony_trunk_external_number_add_auto_validate_explain' | translate }}">
+                            </span>
+                        </label>
+                    </div> <!-- End of Auto validation -->
 
                     <!-- Form buttons -->
-                    <div class="clearfix top-space-m16 bottom-space-m16">
+                    <div class="form-group">
                         <button type="submit"
-                                class="btn btn-primary pull-right"
+                                class="btn btn-primary float-right"
                                 data-ng-disabled="$ctrl.externalNumberAddForm.$invalid || $ctrl.loading.add || $ctrl.list.length >= $ctrl.line.simultaneousLines">
+                            <oui-loader class="mr-2"
+                                        data-ng-if="$ctrl.loading.add"
+                                        data-size="s">
+                            </oui-loader>
                             <span data-translate="common_add"></span>
-                            <spinner data-ng-if="$ctrl.loading.add"></spinner>
                         </button>
-                        <button type="button"
-                                class="btn btn-default left-space-m0"
+                        <button type="reset"
+                                class="btn btn-default ml-0"
                                 data-translate="cancel"
                                 data-ng-click="$ctrl.onCancelBtnClick()"
                                 data-ng-disabled="$ctrl.loading.add || $ctrl.list.length >= $ctrl.line.simultaneousLines">
@@ -190,7 +191,6 @@
                 <div data-ng-if="$ctrl.validationCode">
                     <div class="alert alert-success"
                          role="alert">
-                        <i class="ovh-font ovh-font-filled-check"></i>
                         <p data-translate="telephony_trunk_external_number_add_validation_success1"></p>
                         <p data-translate="telephony_trunk_external_number_add_validation_success2"
                            data-translate-values="{ validationCode: $ctrl.validationCode }">

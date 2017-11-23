@@ -9,10 +9,13 @@
 
     <div class="telecom-section-content">
 
-        <div class="row bottom-space-m16">
+        <toast-message></toast-message>
+
+        <div class="row mb-3">
             <div class="col-xs-12 widget-presentation">
 
-                <div class="alert alert-ovh" role="alert"
+                <div class="alert alert-info"
+                     role="alert"
                      data-ng-if="SmsHlrCtrl.service.creditsLeft <= 0">
                     <p data-translate="sms_sms_hlr_alert_not_enough_credits"></p>
                     <a title="{{ ::'sms_actions_credit_account' | translate }}"
@@ -34,7 +37,7 @@
             </div><!-- .widget-presentation -->
         </div><!-- .row -->
 
-        <div class="row bottom-space-m16">
+        <div class="row mb-3">
             <div class="col-xs-12 widget-presentation">
 
                 <header class="widget-presentation-header">
@@ -48,76 +51,79 @@
 
                         <form name="sendHlrQueryForm"
                               id="sendHlrQueryForm"
-                              class="ovh-form-flat"
                               data-ng-submit="SmsHlrCtrl.send()">
 
                             <!-- Number -->
-                            <div class="form-group bottom-space-m16">
-                                <div flat-input-container>
-                                    <label for="receiver"
-                                           class="control-label"
-                                           data-translate="sms_sms_hlr_query_label_number">
-                                    </label>
-                                    <input
-                                        type="tel"
-                                        name="receiver"
-                                        id="receiver"
-                                        class="form-control"
-                                        autofocus
-                                        required
-                                        data-ng-model="SmsHlrCtrl.receiver"
-                                        data-ng-change="SmsHlrCtrl.restrictInput()"
-                                        data-ng-blur="SmsHlrCtrl.computeReceiver()"
-                                        data-ng-disabled="SmsHlrCtrl.service.creditsLeft <= 0"
-                                        data-translate-attr="{ placeholder: 'sms_sms_hlr_query_label_number' }" />
-                                    <div role="alert"
-                                         data-ng-messages="(sendHlrQueryForm.$invalid && sendHlrQueryForm.receiver.$dirty) && sendHlrQueryForm.receiver.$error">
-                                        <p class="text-danger"
-                                           data-ng-message="required"
-                                           data-translate="sms_sms_hlr_query_number_error_required">
-                                        </p>
-                                    </div>
-                                </div>
+                            <div class="form-group"
+                                 data-ng-class="{
+                                     'has-error': sendHlrQueryForm.receiver.$touched && sendHlrQueryForm.receiver.$invalid
+                                 }">
+                                <label for="receiver"
+                                       class="control-label"
+                                       data-translate="sms_sms_hlr_query_label_number">
+                                </label>
+                                <input
+                                    type="tel"
+                                    name="receiver"
+                                    id="receiver"
+                                    class="form-control"
+                                    autofocus
+                                    required
+                                    data-ng-model="SmsHlrCtrl.receiver"
+                                    data-ng-change="SmsHlrCtrl.restrictInput()"
+                                    data-ng-blur="SmsHlrCtrl.computeReceiver()"
+                                    data-ng-disabled="SmsHlrCtrl.service.creditsLeft <= 0"
+                                    data-translate-attr="{ placeholder: 'sms_sms_hlr_query_label_number' }" />
+                                <span class="help-block"
+                                      role="alert"
+                                      data-ng-if="sendHlrQueryForm.receiver.$touched"
+                                      data-ng-messages="sendHlrQueryForm.receiver.$error">
+                                    <span data-ng-message="required"
+                                          data-translate="sms_sms_hlr_query_number_error_required">
+                                    </span>
+                                </span>
                             </div>
 
                             <!-- CGU -->
-                            <div class="form-group bottom-space-m16">
-                                <p data-translate="sms_sms_hlr_query_cgu_text"
-                                   data-translate-values="{ url: SmsHlrCtrl.getHlrTermsOfUse() }">
-                                </p>
-                                <flat-checkbox>
+                            <p data-translate="sms_sms_hlr_query_cgu_text"
+                               data-translate-values="{ url: SmsHlrCtrl.getHlrTermsOfUse() }">
+                            </p>
+                            <div class="checkbox">
+                                <label>
                                     <input
                                         type="checkbox"
                                         name="cgu"
                                         id="cgu"
-                                        class="form-control"
                                         data-ng-init="SmsHlrCtrl.cgu = false"
                                         data-ng-model="SmsHlrCtrl.cgu"
                                         data-ng-disabled="SmsHlrCtrl.service.creditsLeft <= 0" />
-                                </flat-checkbox>
-                                <label for="cgu" class="inline pointer"
-                                       data-translate="sms_sms_hlr_query_label_cgu">
+                                    <span data-translate="sms_sms_hlr_query_label_cgu"></span>
                                 </label>
                             </div>
 
-                            <div class="form-group bottom-space-m16">
+                            <div class="form-group">
                                 <button
                                     type="submit"
                                     class="btn btn-primary"
                                     data-ng-disabled="sendHlrQueryForm.$invalid || SmsHlrCtrl.hlr.isSending || !SmsHlrCtrl.cgu"
                                     data-translate="sms_sms_hlr_query_send">
                                 </button>
-                                <spinner class="left-space-m8" data-ng-if="SmsHlrCtrl.hlr.isSending"></spinner>
+                                <oui-loader class="ml-2"
+                                            data-ng-if="SmsHlrCtrl.hlr.isSending"
+                                            data-size="s">
+                                </oui-loader>
                             </div>
-
                         </form>
 
                     </div>
                     <div class="col-xs-12 col-md-6">
-                        <p class="top-space-m20" data-translate="sms_sms_hlr_query_text_1"></p>
+                        <p data-translate="sms_sms_hlr_query_text_1"></p>
                         <p>
                             <span data-translate="sms_sms_hlr_query_text_2"></span>
-                            <a href="#" data-ui-sref="telecom.sms.receivers" data-translate="sms_sms_hlr_query_text_3"></a>.
+                            <a href="#"
+                               data-ui-sref="telecom.sms.receivers"
+                               data-translate="sms_sms_hlr_query_text_3">
+                            </a>.
                         </p>
                     </div>
                 </div>
@@ -125,7 +131,7 @@
             </div><!-- .widget-presentation -->
         </div><!-- .row -->
 
-        <div class="row bottom-space-m16">
+        <div class="row mb-3">
             <div class="col-xs-12 widget-presentation">
 
                 <header class="widget-presentation-header">
@@ -134,142 +140,154 @@
                     </h2>
                 </header>
 
-                <div class="table-responsive-vertical">
-                    <table class="table table-pretty table-hover table-striped no-space">
+                <div class="table-responsive">
+                    <table class="table"
+                           data-ng-class="{
+                               'table-hover table-striped': SmsHlrCtrl.hlr.raw.length > 1
+                           }">
                         <thead>
                             <tr>
                                 <th scope="col">
                                     <button
                                         type="button"
-                                        class="no-style left-space-p0"
+                                        class="btn btn-link p-0"
                                         data-ng-click="SmsHlrCtrl.orderBy('datetime')">
-                                        <label class="pointer" data-translate="sms_sms_hlr_read_label_date"></label>
-                                        <span class="table-pretty-filter">
-                                            <i class="fa" data-ng-class="{
-                                                'fa-sort': SmsHlrCtrl.hlr.orderBy !== 'datetime',
-                                                'fa-sort-desc': SmsHlrCtrl.hlr.orderBy === 'datetime' && SmsHlrCtrl.hlr.orderDesc,
-                                                'fa-sort-asc': SmsHlrCtrl.hlr.orderBy === 'datetime' && !SmsHlrCtrl.hlr.orderDesc
-                                            }"></i>
+                                        <span data-translate="sms_sms_hlr_read_label_date"></span>
+                                        <span class="oui-icon align-baseline"
+                                              aria-hidden="true"
+                                              data-ng-class="{
+                                                  'oui-icon-arrow-down': SmsHlrCtrl.hlr.orderBy !== 'datetime',
+                                                  'oui-icon-arrow-down': SmsHlrCtrl.hlr.orderBy === 'datetime' && SmsHlrCtrl.hlr.orderDesc,
+                                                  'oui-icon-arrow-up': SmsHlrCtrl.hlr.orderBy === 'datetime' && !SmsHlrCtrl.hlr.orderDesc
+                                              }">
                                         </span>
                                     </button>
                                 </th>
                                 <th scope="col">
                                     <button
                                         type="button"
-                                        class="no-style left-space-p0"
+                                        class="btn btn-link p-0"
                                         data-ng-click="SmsHlrCtrl.orderBy('cost')">
-                                        <label class="pointer" data-translate="sms_sms_hlr_read_label_cost"></label>
-                                        <span class="table-pretty-filter">
-                                            <i class="fa" data-ng-class="{
-                                                'fa-sort': SmsHlrCtrl.hlr.orderBy !== 'cost',
-                                                'fa-sort-desc': SmsHlrCtrl.hlr.orderBy === 'cost' && SmsHlrCtrl.hlr.orderDesc,
-                                                'fa-sort-asc': SmsHlrCtrl.hlr.orderBy === 'cost' && !SmsHlrCtrl.hlr.orderDesc
-                                            }"></i>
+                                        <span data-translate="sms_sms_hlr_read_label_cost"></span>
+                                        <span class="oui-icon align-baseline"
+                                              aria-hidden="true"
+                                              data-ng-class="{
+                                                  'oui-icon-arrow-down': SmsHlrCtrl.hlr.orderBy !== 'cost',
+                                                  'oui-icon-arrow-down': SmsHlrCtrl.hlr.orderBy === 'cost' && SmsHlrCtrl.hlr.orderDesc,
+                                                  'oui-icon-arrow-up': SmsHlrCtrl.hlr.orderBy === 'cost' && !SmsHlrCtrl.hlr.orderDesc
+                                              }">
                                         </span>
                                     </button>
                                 </th>
                                 <th scope="col">
                                     <button
                                         type="button"
-                                        class="no-style left-space-p0"
+                                        class="btn btn-link p-0"
                                         data-ng-click="SmsHlrCtrl.orderBy('status')">
-                                        <label class="pointer" data-translate="sms_sms_hlr_read_label_status"></label>
-                                        <span class="table-pretty-filter">
-                                            <i class="fa" data-ng-class="{
-                                                'fa-sort': SmsHlrCtrl.hlr.orderBy !== 'status',
-                                                'fa-sort-desc': SmsHlrCtrl.hlr.orderBy === 'status' && SmsHlrCtrl.hlr.orderDesc,
-                                                'fa-sort-asc': SmsHlrCtrl.hlr.orderBy === 'status' && !SmsHlrCtrl.hlr.orderDesc
-                                            }"></i>
+                                        <span data-translate="sms_sms_hlr_read_label_status"></span>
+                                        <span class="oui-icon align-baseline"
+                                              aria-hidden="true"
+                                              data-ng-class="{
+                                                  'oui-icon-arrow-down': SmsHlrCtrl.hlr.orderBy !== 'status',
+                                                  'oui-icon-arrow-down': SmsHlrCtrl.hlr.orderBy === 'status' && SmsHlrCtrl.hlr.orderDesc,
+                                                  'oui-icon-arrow-up': SmsHlrCtrl.hlr.orderBy === 'status' && !SmsHlrCtrl.hlr.orderDesc
+                                              }">
                                         </span>
                                     </button>
                                 </th>
                                 <th scope="col">
                                     <button
                                         type="button"
-                                        class="no-style left-space-p0"
+                                        class="btn btn-link p-0"
                                         data-ng-click="SmsHlrCtrl.orderBy('msisdn')">
-                                        <label class="pointer" data-translate="sms_sms_hlr_read_label_number"></label>
-                                        <span class="table-pretty-filter">
-                                            <i class="fa" data-ng-class="{
-                                                'fa-sort': SmsHlrCtrl.hlr.orderBy !== 'msisdn',
-                                                'fa-sort-desc': SmsHlrCtrl.hlr.orderBy === 'msisdn' && SmsHlrCtrl.hlr.orderDesc,
-                                                'fa-sort-asc': SmsHlrCtrl.hlr.orderBy === 'msisdn' && !SmsHlrCtrl.hlr.orderDesc
-                                            }"></i>
+                                        <span data-translate="sms_sms_hlr_read_label_number"></span>
+                                        <span class="oui-icon align-baseline"
+                                              aria-hidden="true"
+                                              data-ng-class="{
+                                                  'oui-icon-arrow-down': SmsHlrCtrl.hlr.orderBy !== 'msisdn',
+                                                  'oui-icon-arrow-down': SmsHlrCtrl.hlr.orderBy === 'msisdn' && SmsHlrCtrl.hlr.orderDesc,
+                                                  'oui-icon-arrow-up': SmsHlrCtrl.hlr.orderBy === 'msisdn' && !SmsHlrCtrl.hlr.orderDesc
+                                              }">
                                         </span>
                                     </button>
                                 </th>
                                 <th scope="col">
                                     <button
                                         type="button"
-                                        class="no-style left-space-p0"
+                                        class="btn btn-link p-0"
                                         data-ng-click="SmsHlrCtrl.orderBy('operatorCode')">
-                                        <label class="pointer" data-translate="sms_sms_hlr_read_label_operator_code"></label>
-                                        <span class="table-pretty-filter">
-                                            <i class="fa" data-ng-class="{
-                                                'fa-sort': SmsHlrCtrl.hlr.orderBy !== 'operatorCode',
-                                                'fa-sort-desc': SmsHlrCtrl.hlr.orderBy === 'operatorCode' && SmsHlrCtrl.hlr.orderDesc,
-                                                'fa-sort-asc': SmsHlrCtrl.hlr.orderBy === 'operatorCode' && !SmsHlrCtrl.hlr.orderDesc
-                                            }"></i>
+                                        <span data-translate="sms_sms_hlr_read_label_operator_code"></span>
+                                        <span class="oui-icon align-baseline"
+                                              aria-hidden="true"
+                                              data-ng-class="{
+                                                  'oui-icon-arrow-down': SmsHlrCtrl.hlr.orderBy !== 'operatorCode',
+                                                  'oui-icon-arrow-down': SmsHlrCtrl.hlr.orderBy === 'operatorCode' && SmsHlrCtrl.hlr.orderDesc,
+                                                  'oui-icon-arrow-up': SmsHlrCtrl.hlr.orderBy === 'operatorCode' && !SmsHlrCtrl.hlr.orderDesc
+                                              }">
                                         </span>
                                     </button>
                                 </th>
                                 <th scope="col">
                                     <button
                                         type="button"
-                                        class="no-style left-space-p0"
+                                        class="btn btn-link p-0"
                                         data-ng-click="SmsHlrCtrl.orderBy('valid')">
-                                        <label class="pointer" data-translate="sms_sms_hlr_read_label_valid"></label>
-                                        <span class="table-pretty-filter">
-                                            <i class="fa" data-ng-class="{
-                                                'fa-sort': SmsHlrCtrl.hlr.orderBy !== 'valid',
-                                                'fa-sort-desc': SmsHlrCtrl.hlr.orderBy === 'valid' && SmsHlrCtrl.hlr.orderDesc,
-                                                'fa-sort-asc': SmsHlrCtrl.hlr.orderBy === 'valid' && !SmsHlrCtrl.hlr.orderDesc
-                                            }"></i>
+                                        <span data-translate="sms_sms_hlr_read_label_valid"></span>
+                                        <span class="oui-icon align-baseline"
+                                              aria-hidden="true"
+                                              data-ng-class="{
+                                                  'oui-icon-arrow-down': SmsHlrCtrl.hlr.orderBy !== 'valid',
+                                                  'oui-icon-arrow-down': SmsHlrCtrl.hlr.orderBy === 'valid' && SmsHlrCtrl.hlr.orderDesc,
+                                                  'oui-icon-arrow-up': SmsHlrCtrl.hlr.orderBy === 'valid' && !SmsHlrCtrl.hlr.orderDesc
+                                              }">
                                         </span>
                                     </button>
                                 </th>
                                 <th scope="col">
                                     <button
                                         type="button"
-                                        class="no-style left-space-p0"
+                                        class="btn btn-link p-0"
                                         data-ng-click="SmsHlrCtrl.orderBy('reachable')">
-                                        <label class="pointer" data-translate="sms_sms_hlr_read_label_reachable"></label>
-                                        <span class="table-pretty-filter">
-                                            <i class="fa" data-ng-class="{
-                                                'fa-sort': SmsHlrCtrl.hlr.orderBy !== 'reachable',
-                                                'fa-sort-desc': SmsHlrCtrl.hlr.orderBy === 'reachable' && SmsHlrCtrl.hlr.orderDesc,
-                                                'fa-sort-asc': SmsHlrCtrl.hlr.orderBy === 'reachable' && !SmsHlrCtrl.hlr.orderDesc
-                                            }"></i>
+                                        <span data-translate="sms_sms_hlr_read_label_reachable"></span>
+                                        <span class="oui-icon align-baseline"
+                                              aria-hidden="true"
+                                              data-ng-class="{
+                                                  'oui-icon-arrow-down': SmsHlrCtrl.hlr.orderBy !== 'reachable',
+                                                  'oui-icon-arrow-down': SmsHlrCtrl.hlr.orderBy === 'reachable' && SmsHlrCtrl.hlr.orderDesc,
+                                                  'oui-icon-arrow-up': SmsHlrCtrl.hlr.orderBy === 'reachable' && !SmsHlrCtrl.hlr.orderDesc
+                                              }">
                                         </span>
                                     </button>
                                 </th>
                                 <th scope="col">
                                     <button
                                         type="button"
-                                        class="no-style left-space-p0"
+                                        class="btn btn-link p-0"
                                         data-ng-click="SmsHlrCtrl.orderBy('ported')">
-                                        <label class="pointer" data-translate="sms_sms_hlr_read_label_ported"></label>
-                                        <span class="table-pretty-filter">
-                                            <i class="fa" data-ng-class="{
-                                                'fa-sort': SmsHlrCtrl.hlr.orderBy !== 'ported',
-                                                'fa-sort-desc': SmsHlrCtrl.hlr.orderBy === 'ported' && SmsHlrCtrl.hlr.orderDesc,
-                                                'fa-sort-asc': SmsHlrCtrl.hlr.orderBy === 'ported' && !SmsHlrCtrl.hlr.orderDesc
-                                            }"></i>
+                                        <span data-translate="sms_sms_hlr_read_label_ported"></span>
+                                        <span class="oui-icon align-baseline"
+                                              aria-hidden="true"
+                                              data-ng-class="{
+                                                  'oui-icon-arrow-down': SmsHlrCtrl.hlr.orderBy !== 'ported',
+                                                  'oui-icon-arrow-down': SmsHlrCtrl.hlr.orderBy === 'ported' && SmsHlrCtrl.hlr.orderDesc,
+                                                  'oui-icon-arrow-up': SmsHlrCtrl.hlr.orderBy === 'ported' && !SmsHlrCtrl.hlr.orderDesc
+                                              }">
                                         </span>
                                     </button>
                                 </th>
                                 <th scope="col">
                                     <button
                                         type="button"
-                                        class="no-style left-space-p0"
+                                        class="btn btn-link p-0"
                                         data-ng-click="SmsHlrCtrl.orderBy('roaming')">
-                                        <label class="pointer" data-translate="sms_sms_hlr_read_label_roaming"></label>
-                                        <span class="table-pretty-filter">
-                                            <i class="fa" data-ng-class="{
-                                                'fa-sort': SmsHlrCtrl.hlr.orderBy !== 'roaming',
-                                                'fa-sort-desc': SmsHlrCtrl.hlr.orderBy === 'roaming' && SmsHlrCtrl.hlr.orderDesc,
-                                                'fa-sort-asc': SmsHlrCtrl.hlr.orderBy === 'roaming' && !SmsHlrCtrl.hlr.orderDesc
-                                            }"></i>
+                                        <span data-translate="sms_sms_hlr_read_label_roaming"></span>
+                                        <span class="oui-icon align-baseline"
+                                              aria-hidden="true"
+                                              data-ng-class="{
+                                                  'oui-icon-arrow-down': SmsHlrCtrl.hlr.orderBy !== 'roaming',
+                                                  'oui-icon-arrow-down': SmsHlrCtrl.hlr.orderBy === 'roaming' && SmsHlrCtrl.hlr.orderDesc,
+                                                  'oui-icon-arrow-up': SmsHlrCtrl.hlr.orderBy === 'roaming' && !SmsHlrCtrl.hlr.orderDesc
+                                              }">
                                         </span>
                                     </button>
                                 </th>
@@ -277,74 +295,68 @@
                         </thead>
                         <tbody data-ng-if="!SmsHlrCtrl.hlr.isLoading && SmsHlrCtrl.hlr.raw.length">
                             <tr data-ng-repeat="hlr in SmsHlrCtrl.hlr.paginated | orderBy:SmsHlrCtrl.hlr.orderBy:SmsHlrCtrl.hlr.orderDesc track by hlr.id">
-                                <td data-title="{{ ::'sms_sms_hlr_read_label_date' | translate }}">
-                                    <span class="text-nowrap" data-ng-bind="hlr.datetime | date: 'dd/MM/yyyy'"></span>
-                                    <span class="text-nowrap" data-ng-bind="hlr.datetime | date: 'HH:mm:ss'"></span>
+                                <td>
+                                    <span data-ng-bind="hlr.datetime | date: 'dd/MM/yyyy'"></span>
+                                    <span data-ng-bind="hlr.datetime | date: 'HH:mm:ss'"></span>
                                 </td>
-                                <td data-title="{{ ::'sms_sms_hlr_read_label_cost' | translate }}">
-                                    <span class="text-nowrap"
-                                          data-translate="sms_sms_hlr_read_cost_value"
-                                          data-translate-values="{ credit: hlr.status === 'done' ? 0.1 : 0 }">
-                                    </span>
+                                <td data-translate="sms_sms_hlr_read_cost_value"
+                                    data-translate-values="{ credit: hlr.status === 'done' ? 0.1 : 0 }">
                                 </td>
-                                <td data-title="{{ ::'sms_sms_hlr_read_label_status' | translate }}">
-                                    <i class="ovh-font fs20" data-ng-class="{
-                                        'ovh-font-inprogress text-info': hlr.status === 'doing',
-                                        'ovh-font-success text-success': hlr.status === 'done',
-                                        'ovh-font-failure text-danger': hlr.status === 'error',
-                                        'ovh-font-arrow-rotate text-info': hlr.status === 'todo'
-                                    }">
+                                <td>
+                                    <i class="ovh-font"
+                                       data-ng-class="{
+                                           'ovh-font-inprogress text-info': hlr.status === 'doing',
+                                           'ovh-font-success text-success': hlr.status === 'done',
+                                           'ovh-font-failure text-danger': hlr.status === 'error',
+                                           'ovh-font-arrow-rotate text-info': hlr.status === 'todo'
+                                       }">
                                     </i>
                                 </td>
-                                <td data-title="{{ ::'sms_sms_hlr_read_label_number' | translate }}">
-                                    <span class="text-nowrap" data-ng-bind="hlr.msisdn"></span>
+                                <td data-ng-bind="hlr.msisdn"></td>
+                                <td data-ng-bind="hlr.operatorName || '-'"></td>
+                                <td class="text-capitalize"
+                                    data-ng-bind="hlr.valid ? 'yes' : 'no' | translate">
                                 </td>
-                                <td data-title="{{ ::'sms_sms_hlr_read_label_operator_code' | translate }}">
-                                    <span class="text-nowrap" data-ng-bind="hlr.operatorName || '-'"></span>
+                                <td class="text-capitalize"
+                                    data-ng-bind="hlr.reachable ? 'yes' : 'no' | translate">
                                 </td>
-                                <td data-title="{{ ::'sms_sms_hlr_read_label_valid' | translate }}">
-                                    <span class="text-nowrap text-capitalize" data-ng-bind="hlr.valid ? 'yes' : 'no' | translate"></span>
+                                <td class="text-capitalize"
+                                    data-ng-bind="hlr.ported ? 'yes' : 'no' | translate">
                                 </td>
-                                <td data-title="{{ ::'sms_sms_hlr_read_label_reachable' | translate }}">
-                                    <span class="text-nowrap text-capitalize" data-ng-bind="hlr.reachable ? 'yes' : 'no' | translate"></span>
-                                </td>
-                                <td data-title="{{ ::'sms_sms_hlr_read_label_ported' | translate }}">
-                                    <span class="text-nowrap text-capitalize" data-ng-bind="hlr.ported ? 'yes' : 'no' | translate"></span>
-                                </td>
-                                <td data-title="{{ ::'sms_sms_hlr_read_label_roaming' | translate }}">
-                                    <span class="text-nowrap text-capitalize" data-ng-bind="hlr.roaming ? 'yes' : 'no' | translate"></span>
+                                <td class="text-capitalize"
+                                    data-ng-bind="hlr.roaming ? 'yes' : 'no' | translate">
                                 </td>
                             </tr>
                         </tbody>
                         <tbody data-ng-if="SmsHlrCtrl.hlr.isLoading">
                             <tr>
-                                <td class="text-center top-space-p16 bottom-space-p16" colspan="9">
-                                    <spinner></spinner>
+                                <td colspan="9">
+                                    <oui-loader data-size="m"></oui-loader>
                                 </td>
                             </tr>
                         </tbody>
                         <tbody data-ng-if="!SmsHlrCtrl.hlr.isLoading && !SmsHlrCtrl.hlr.raw.length">
                             <tr>
-                                <td class="text-center top-space-p16 bottom-space-p16" colspan="9">
-                                    <span data-translate="sms_sms_hlr_read_empty"></span>
+                                <td class="text-center"
+                                    colspan="9"
+                                    data-translate="sms_sms_hlr_read_empty">
                                 </td>
                             </tr>
                         </tbody>
                     </table>
-                    <div class="table-pretty-pagination top-space-m8"
-                         data-ng-show="!SmsHlrCtrl.hlr.isLoading && SmsHlrCtrl.hlr.raw.length"
-                         data-pagination-front
-                         data-items="SmsHlrCtrl.hlr.raw"
-                         data-paginated-items="SmsHlrCtrl.hlr.paginated"
-                         data-current-page="currentPage"
-                         data-nb-pages="nbPages"
-                         data-items-per-page="SmsHlrCtrl.hlr.perPage"
-                         data-transform-item="SmsHlrCtrl.getDetails(item)"
-                         data-on-transform-item-done="SmsHlrCtrl.onTransformItemDone(items)"
-                         data-page-placeholder="{{ 'common_pagination_page' | translate: { currentPage: currentPage, nbPages: nbPages } }}"
-                         data-item-per-page-placeholder="{{ 'common_pagination_display' | translate }}">
-                    </div>
-
+                </div>
+                <div class="mt-2"
+                     data-ng-show="!SmsHlrCtrl.hlr.isLoading && SmsHlrCtrl.hlr.raw.length"
+                     data-pagination-front
+                     data-items="SmsHlrCtrl.hlr.raw"
+                     data-paginated-items="SmsHlrCtrl.hlr.paginated"
+                     data-current-page="currentPage"
+                     data-nb-pages="nbPages"
+                     data-items-per-page="SmsHlrCtrl.hlr.perPage"
+                     data-transform-item="SmsHlrCtrl.getDetails(item)"
+                     data-on-transform-item-done="SmsHlrCtrl.onTransformItemDone(items)"
+                     data-page-placeholder="{{ 'common_pagination_page' | translate: { currentPage: currentPage, nbPages: nbPages } }}"
+                     data-item-per-page-placeholder="{{ 'common_pagination_display' | translate }}">
                 </div>
 
             </div><!-- .widget-presentation -->

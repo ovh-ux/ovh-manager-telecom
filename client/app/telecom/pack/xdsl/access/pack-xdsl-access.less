@@ -13,15 +13,9 @@
         }
     }
 
-    @media (min-width: @screen-sm-min) {
-        .table-action-buttons {
-            .fa-check {
-                width: 10px;
-            }
+    .table-action-buttons thead th > .btn > .fa {
+        &[class*="-selected"] {
+            color: @oui-color-dodger;
         }
-    }
-
-    div.row {
-        padding: 6px 0;
     }
 }

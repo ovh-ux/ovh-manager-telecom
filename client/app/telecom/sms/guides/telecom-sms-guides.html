@@ -1,29 +1,32 @@
 <section class="telecom-sms-guides">
 
-    <bouncing-box-loader data-ng-if="SmsGuidesCtrl.loading.init">
-        <h2 data-translate="loading"></h2>
-    </bouncing-box-loader>
+    <oui-loader data-ng-if="SmsGuidesCtrl.loading.init"
+                data-size="m">
+    </oui-loader>
 
-    <div class="row" data-ng-if="!SmsGuidesCtrl.loading.init">
+    <div class="row"
+         data-ng-if="!SmsGuidesCtrl.loading.init">
         <div class="col-xs-12 col-md-6">
 
             <div class="alert alert-info"
                  role="alert"
-                 data-ng-if="!SmsGuidesCtrl.hasGuides()">
-                 <i class="ovh-font ovh-font-filled-info"></i>
-                <p data-translate="sms_guides_empty"></p>
+                 data-ng-if="!SmsGuidesCtrl.hasGuides()"
+                 data-translate="sms_guides_empty">
             </div>
 
             <section class="widget-presentation"
                      data-ng-if="SmsGuidesCtrl.hasGuides()"
                      data-ng-repeat="section in SmsGuidesCtrl.guides.sections track by section.label">
                 <header class="widget-presentation-header">
-                    <h2 class="widget-presentation-title" data-translate="{{ section.label }}"></h2>
+                    <h2 class="widget-presentation-title"
+                        data-translate="{{ section.label }}">
+                    </h2>
                 </header>
                 <ul>
                     <li data-ng-repeat="guide in section.guides track by guide.label">
                         <a title="{{ guide.label | translate }} ({{:: 'common_open_new_tab' | translate }})"
                            target="_blank"
+                           rel="noopener"
                            data-ng-if="guide.url[SmsGuidesCtrl.language]"
                            data-ng-href="{{ guide.url[SmsGuidesCtrl.language] }}">
                             <span data-translate="{{ guide.label | translate }}"></span>
@@ -32,8 +35,11 @@
                     </li>
                 </ul>
             </section>
+            <!-- /.widget-presentation -->
 
         </div>
-    </div><!-- .row -->
+    </div>
+    <!-- /.row -->
 
 </section>
+<!-- /.telecom-sms-guides -->

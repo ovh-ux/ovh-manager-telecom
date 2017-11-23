@@ -1,15 +1,11 @@
 <form name="terminateSenderForm"
       id="terminateSenderForm"
-      class="ovh-form-flat"
       data-ng-submit="SendersTerminateCtrl.terminate()">
 
     <div class="modal-header">
-        <h3 class="modal-title pull-left"
-            data-translate="sms_senders_terminate_sender_title">
-        </h3>
         <button
             type="button"
-            class="close pull-right"
+            class="close float-right"
             aria-label="{{ ::'cancel' | translate }}"
             data-ng-click="SendersTerminateCtrl.cancel()">
             <span aria-hidden="true">&times;</span>
@@ -18,6 +14,7 @@
 
     <div class="modal-body"
          data-ng-if="!SendersTerminateCtrl.loading.terminate && !SendersTerminateCtrl.terminated">
+        <h3 data-translate="sms_senders_terminate_sender_title"></h3>
         <p data-ng-if="!SendersTerminateCtrl.sender.serviceInfos.renew.deleteAtExpiration"
            data-translate="sms_senders_terminate_sender_info"
            data-translate-values="{
@@ -31,11 +28,10 @@
         </p>
     </div>
 
-    <div class="modal-body"
+    <div class="modal-body text-center"
          data-ng-if="SendersTerminateCtrl.loading.terminate && !SendersTerminateCtrl.terminated">
-        <bouncing-box-loader>
-            <h4 data-ng-bind="SendersTerminateCtrl.sender.serviceInfos.renew.deleteAtExpiration ? 'sms_senders_terminate_sender_cancelling' : 'sms_senders_terminate_sender_terminating' | translate"></h4>
-        </bouncing-box-loader>
+        <oui-loader data-size="m"></oui-loader>
+        <h4 data-ng-bind="SendersTerminateCtrl.sender.serviceInfos.renew.deleteAtExpiration ? 'sms_senders_terminate_sender_cancelling' : 'sms_senders_terminate_sender_terminating' | translate"></h4>
     </div>
 
     <div class="modal-body"

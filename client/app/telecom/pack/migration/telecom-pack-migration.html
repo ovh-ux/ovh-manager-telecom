@@ -9,11 +9,11 @@
     <div class="telecom-section-content">
 
         <!-- LOADER -->
-        <bouncing-box-loader data-ng-if="PackMigrationCtrl.loading.init">
-            <h2 class="top-space-m16"
-                data-translate="loading">
-            </h2>
-        </bouncing-box-loader>
+        <oui-loader data-ng-if="PackMigrationCtrl.loading.init"
+                    data-size="m">
+        </oui-loader>
+
+        <toast-message></toast-message>
 
         <!-- OFFER CHOICE STEP -->
         <div data-ng-if="!PackMigrationCtrl.loading.init && PackMigrationCtrl.process.currentStep === 'offers'"

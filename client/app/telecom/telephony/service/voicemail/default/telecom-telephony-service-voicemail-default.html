@@ -1,44 +1,57 @@
 <section class="telephony-group-service-voicemail-default">
 
-    <div class="row">
+    <oui-loader data-ng-if="DefaultVoicemailCtrl.loading"
+                data-size="m">
+    </oui-loader>
 
-        <div class="col-md-6 text-center" data-ng-if="DefaultVoicemailCtrl.loading">
-            <spinner></spinner>
-        </div>
-        <div class="col-md-6" data-ng-if="!DefaultVoicemailCtrl.loading">
+    <div class="row"
+         data-ng-if="!DefaultVoicemailCtrl.loading">
+        <div class="col-xs-12 col-md-8">
+
+            <toast-message></toast-message>
+
             <form name="defaultVoicemailForm"
-                  class="form-horizontal ovh-form-flat"
-                  data-ng-submit="DefaultVoicemailCtrl.saveDefaultVoicemail()"
-                  novalidate>
-                <div class="row">
-                    <div class="col-md-4">
-                        <span data-translate="telephony_line_answer_default_voicemail_label"></span>
-                    </div>
-                    <div class="col-md-6">
-                        <select flat-select
+                  novalidate
+                  data-ng-submit="DefaultVoicemailCtrl.saveDefaultVoicemail()">
+                <div class="form-group">
+                    <label class="control-label"
+                           for="default"
+                           data-translate="telephony_line_answer_default_voicemail_label">
+                    </label>
+                    <select id="default"
+                            name="default"
                             class="form-control"
+                            required
                             data-ng-model="DefaultVoicemailCtrl.options.defaultVoicemail"
                             data-ng-change="DefaultVoicemailCtrl.success = false"
-                            data-ng-options="number.serviceName as DefaultVoicemailCtrl.formatNumber(number) for number in DefaultVoicemailCtrl.numbers | orderBy: ['description', 'label', 'serviceName']"
-                            required>
-                        </select>
-                    </div>
+                            data-ng-options="number.serviceName as DefaultVoicemailCtrl.formatNumber(number) for number in DefaultVoicemailCtrl.numbers | orderBy: ['description', 'label', 'serviceName']">
+                    </select>
                 </div>
-                <div class="row top-space-m16">
-                    <div class="col-md-6 col-md-offset-4">
-                        <button type="submit"
-                                data-ng-disabled="DefaultVoicemailCtrl.options.defaultVoicemail === DefaultVoicemailCtrl.defaultVoicemail || DefaultVoicemailCtrl.saving"
-                                class="btn btn-sm btn-primary">
-                                <span data-translate="telephony_line_answer_default_voicemail_change"></span>
-                                <i data-ng-if="DefaultVoicemailCtrl.success"
-                                   class="ovh-font ovh-font-success left-space-m4 fs16"></i>
-                            <spinner class="left-space-m4" data-ng-if="DefaultVoicemailCtrl.saving"></spinner>
-                        </button>
-                    </div>
+                <div class="form-group">
+                    <button type="submit"
+                            class="btn btn-primary"
+                            data-ng-disabled="DefaultVoicemailCtrl.options.defaultVoicemail === DefaultVoicemailCtrl.defaultVoicemail || DefaultVoicemailCtrl.saving">
+                        <span data-translate="telephony_line_answer_default_voicemail_change"></span>
+                        <i class="ovh-font ovh-font-success ml-2"
+                           data-ng-if="DefaultVoicemailCtrl.success">
+                        </i>
+                        <oui-loader class="ml-2"
+                                    data-ng-if="DefaultVoicemailCtrl.saving"
+                                    data-size="s">
+                        </oui-loader>
+                    </button>
+                    <button type="reset"
+                            class="btn btn-link"
+                            data-ng-click="DefaultVoicemailCtrl.cancel()"
+                            data-ng-disabled="DefaultVoicemailCtrl.options.defaultVoicemail === DefaultVoicemailCtrl.defaultVoicemail || DefaultVoicemailCtrl.saving"
+                            data-translate="cancel">
+                    </button>
                 </div>
             </form>
-        </div>
 
-    </div><!-- row -->
+        </div>
+    </div>
+    <!-- /.row -->
 
 </section>
+<!-- /.telephony-group-service-voicemail-default -->

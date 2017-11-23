@@ -129,7 +129,7 @@ angular.module("managerApp").factory("TelephonyGroupLine", function ($q, $filter
     };
 
     TelephonyGroupLine.prototype.isTrunk = function () {
-        return this.isOffer("trunk");
+        return _.get(this, "getPublicOffer.name") === "trunk" || this.isOffer("trunk");
     };
 
     /* ----------  API CALLS  ----------*/

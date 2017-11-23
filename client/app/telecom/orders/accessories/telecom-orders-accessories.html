@@ -4,18 +4,15 @@
         <h1 data-translate="telecom_orders_accessories_title"></h1>
     </header>
 
-    <bouncing-box-loader data-ng-if="AccessoriesOrderCtrl.loading.init || AccessoriesOrderCtrl.loading.submit">
-        <h3 class="top-space-m16"
-            data-translate="loading">
-        </h3>
-    </bouncing-box-loader>
+    <oui-loader data-ng-if="AccessoriesOrderCtrl.loading.init || AccessoriesOrderCtrl.loading.submit"
+                data-size="m">
+    </oui-loader>
 
     <div class="telecom-section-content"
          data-ng-if="!AccessoriesOrderCtrl.loading.init && !AccessoriesOrderCtrl.loading.submit">
 
         <div class="widget-presentation row">
             <div class="col-xs-12 col-md-6">
-
                 <div class="widget-presentation-header">
                     <h2 class="widget-presentation-title"
                         data-translate="telecom_orders_accessories_group_choice">
@@ -23,34 +20,35 @@
                 </div>
 
                 <form novalidate
-                      class="ovh-form-flat"
                       name="accessoriesOrderForm">
-
-                    <label for="billingAccountSelect"
-                           data-translate="telecom_orders_accessories_group_choice_label">
-                   </label>
-                   <div class="row">
-                       <div class="col-xs-12 col-md-6">
-                           <select data-flat-select
-                                   id="billingAccountSelect"
-                                   name="billingAccount"
-                                   class="form-control"
-                                   data-ng-model="AccessoriesOrderCtrl.model.billingAccount"
-                                   data-ng-change="AccessoriesOrderCtrl.orderAccessories()"
-                                   data-ng-options="billingAccount as billingAccount.label for billingAccount in AccessoriesOrderCtrl.billingAccounts track by billingAccount.billingAccount">
-                            </select>
-                        </div>
+                    <div class="form-group"
+                         data-ng-class="{
+                             'has-error': (accessoriesOrderForm.billingAccount.$touched && accessoriesOrderForm.billingAccount.$invalid) || AccessoriesOrderCtrl.orderError !== null
+                         }">
+                        <label for="billingAccountSelect"
+                               class="control-label"
+                               data-translate="telecom_orders_accessories_group_choice_label">
+                        </label>
+                        <select class="form-control"
+                               id="billingAccountSelect"
+                               name="billingAccount"
+                               data-ng-model="AccessoriesOrderCtrl.model.billingAccount"
+                               data-ng-change="AccessoriesOrderCtrl.orderAccessories()"
+                               data-ng-options="billingAccount as billingAccount.label for billingAccount in AccessoriesOrderCtrl.billingAccounts track by billingAccount.billingAccount">
+                        </select>
+                        <span class="help-block"
+                              role="alert"
+                              data-ng-if="AccessoriesOrderCtrl.orderError !== null"
+                              data-translate="telecom_orders_accessories_order_error">
+                        </span>
                     </div>
-                    <label for="billingAccountSelect"
-                           class="text-danger top-space-m4"
-                           data-ng-if="AccessoriesOrderCtrl.orderError !== null"
-                           data-translate="telecom_orders_accessories_order_error">
-                    </label>
                 </form>
-
             </div>
         </div>
+        <!-- /.widget-presentation -->
 
     </div>
+    <!-- /.telecom-section-content -->
 
 </section>
+<!-- /.telecom-orders-accessories -->

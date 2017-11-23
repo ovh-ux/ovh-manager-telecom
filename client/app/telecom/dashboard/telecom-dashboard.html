@@ -5,36 +5,38 @@
     </div>
 
     <div class="telecom-section-header">
-        <!-- HEADER -->
-        <header role="banner">
+        <header class="page-header"
+                role="banner">
             <h1>
                 <span data-translate="telecom_dashboard_title"></span>
-                <span class="dashboard-vip-icon pull-right"
+                <oui-loader class="float-right"
+                            data-ng-if="TelecomDashboardCtrl.loading.vip"
+                            data-size="m">
+                </oui-loader>
+                <span class="dashboard-vip-icon float-right m-3"
                       data-ng-if="!TelecomDashboardCtrl.loading.vip && TelecomDashboardCtrl.isVip">
-                    <!-- is vip status -->
-                    <span class="sr-only" data-translate="common_vip"></span>
+                    <span class="sr-only"
+                          data-translate="common_vip">
+                    </span>
                     <span class="ovh-font ovh-font-statutVIP" aria-hidden="true"></span>
-                    <!-- loading -->
-                    <spinner data-ng-if="TelecomDashboardCtrl.loading.vip"></spinner>
                 </span>
             </h1>
         </header>
     </div>
-    <!-- .telecom-section-header -->
+    <!-- /.telecom-section-header -->
 
-    <!-- CONTENT -->
     <div class="telecom-section-content">
-
-        <div class="row">
-            <div class="col-xs-12 col-md-6"
+        <div class="row d-md-flex">
+            <div class="col-xs-12 col-md-8"
                  data-ui-view="@billsView">
             </div>
 
-            <div class="col-xs-12 col-md-6"
+            <div class="col-xs-12 col-md-4"
                  data-ui-view="@guidesView">
             </div>
         </div>
-
     </div>
+    <!-- /.telecom-section-content -->
 
 </div>
+<!-- /.telecom-dashboard -->

@@ -8,6 +8,7 @@
     <translation id="telephony_service_contact_legalform_individual">Particulier</translation>
     <translation id="telephony_service_contact_legalform_professional">Professionnel</translation>
     <translation id="telephony_service_contact_legalform_corporation">Entreprise</translation>
+    <translation id="telephony_service_contact_legalform_association">Association</translation>
     <translation id="telephony_service_contact_lastname">Nom</translation>
     <translation id="telephony_service_contact_firstname">Prénom</translation>
     <translation id="telephony_service_contact_occupation">Profession</translation>

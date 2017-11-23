@@ -1,10 +1,10 @@
 <div class="telephony-group-line-assist">
 
-    <bouncing-box-loader data-ng-if="LineAssistCtrl.loading.init">
-        <h3 class="top-space-m16"
-            data-translate="loading">
-        </h3>
-    </bouncing-box-loader>
+    <oui-loader data-ng-if="LineAssistCtrl.loading.init"
+                data-size="m">
+    </oui-loader>
+
+    <toast-message></toast-message>
 
     <telecom-v4-links data-ng-if="!LineAssistCtrl.loading.init"
                       data-telecom-v4-links="LineAssistCtrl.actions">

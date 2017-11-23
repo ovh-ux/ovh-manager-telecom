@@ -7,11 +7,11 @@
         <h1 data-translate="telephony_line_phone_accessories_title"></h1>
     </header>
 
-    <bouncing-box-loader data-ng-if="AccessoriesCtrl.loading.init">
-        <h3 class="top-space-m16"
-            data-translate="loading">
-        </h3>
-    </bouncing-box-loader>
+    <oui-loader data-ng-if="AccessoriesCtrl.loading.init"
+                data-size="m">
+    </oui-loader>
+
+    <toast-message></toast-message>
 
     <div data-ng-if="!AccessoriesCtrl.loading.init"
          class="telecom-section-content">

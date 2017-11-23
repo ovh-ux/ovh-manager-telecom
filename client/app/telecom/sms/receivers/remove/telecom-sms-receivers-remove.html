@@ -1,33 +1,35 @@
 <form name="removeReceiverForm"
       id="removeReceiverForm"
-      class="ovh-form-flat"
       data-ng-submit="ReceiversRemoveCtrl.remove()">
 
     <div class="modal-header">
-        <h3 class="modal-title pull-left" data-translate="sms_receivers_remove_receiver_title"></h3>
         <button
             type="button"
-            class="close pull-right"
+            class="close float-right"
             aria-label="{{ ::'cancel' | translate }}"
             data-ng-click="ReceiversRemoveCtrl.cancel()">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
 
-    <div class="modal-body" data-ng-if="!ReceiversRemoveCtrl.loading.removeReceiver && !ReceiversRemoveCtrl.removed">
+    <div class="modal-body"
+         data-ng-if="!ReceiversRemoveCtrl.loading.removeReceiver && !ReceiversRemoveCtrl.removed">
+
+        <h3 data-translate="sms_receivers_remove_receiver_title"></h3>
         <p data-translate="sms_receivers_remove_receiver_confirm"
            data-translate-values="{ receiver: ReceiversRemoveCtrl.receiver.description }">
         </p>
     </div>
 
-    <div class="modal-body" data-ng-if="ReceiversRemoveCtrl.loading.removeReceiver">
-        <bouncing-box-loader>
-            <h4 data-translate="sms_receivers_remove_receiver_removing"></h4>
-        </bouncing-box-loader>
+    <div class="modal-body text-center"
+         data-ng-if="ReceiversRemoveCtrl.loading.removeReceiver">
+        <oui-loader data-size="m"></oui-loader>
+        <h4 data-translate="sms_receivers_remove_receiver_removing"></h4>
     </div>
 
-    <div class="modal-body" data-ng-if="ReceiversRemoveCtrl.removed">
-        <success-drawing-check  data-draw-success-check="ReceiversRemoveCtrl.removed">
+    <div class="modal-body"
+         data-ng-if="ReceiversRemoveCtrl.removed">
+        <success-drawing-check data-draw-success-check="ReceiversRemoveCtrl.removed">
             <h4 data-translate="sms_receivers_remove_receiver_removed"></h4>
         </success-drawing-check>
     </div>

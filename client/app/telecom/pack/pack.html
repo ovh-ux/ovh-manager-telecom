@@ -1,83 +1,88 @@
 <div class="telecom-pack">
-    <div data-ng-if="Pack.loader.page && !Pack.inError" class="important-message important-message-loading">
-        <spinner size="64"></spinner>
-        <p class="master top-space-m20" data-translate="pack_xdsl_loading"></p>
+    <div class="text-center"
+         data-ng-if="Pack.loader.page && !Pack.inError">
+        <oui-loader data-size="m"></oui-loader>
+        <h2 data-translate="pack_xdsl_loading"></h2>
     </div>
 
-    <div data-ng-if="!Pack.loader.page && Pack.inError" class="important-message important-message-warning">
-        <span class="ovh-font ovh-font-warning text-warning" aria-hidden="true"></span>
-        <p class="master top-space-m20">{{:: 'pack_xdsl_oops_an_error_is_occured' | translate }}</p>
-        <p data-translate="pack_xdsl_this_pack_seems_to_be_unavailable"></p>
+
+    <div class="oui-message oui-message_warning oui-message_l"
+         role="alert"
+         data-ng-if="!Pack.loader.page && Pack.inError">
+        <i class="oui-message_l-icon" aria-hidden="true"></i>
+        <h1 class="oui-message__title"
+            data-translate="pack_xdsl_oops_an_error_is_occured">
+        </h1>
+        <p class="oui-message__body"
+           data-translate="pack_xdsl_this_pack_seems_to_be_unavailable">
+        </p>
     </div>
 
     <div data-ng-if="!Pack.loader.page && !Pack.inError">
         <div class="telecom-section-header">
 
-            <header role="banner">
+            <header class="page-header"
+                    role="banner">
                 <editable-service-name data-editable-service-name-title="Pack.pack.description || Pack.pack.offerDescription"
                                        data-editable-service-name-service-name="Pack.pack.packName"
                                        data-editable-service-name-title-on-save="Pack.packDescriptionSave">
                 </editable-service-name>
             </header>
 
-        </div><!-- .telecom-section-header -->
+        </div>
+        <!-- /.telecom-section-header -->
 
         <div class="telecom-section-content">
 
-            <div class="alert alert-xs alert-success" data-ng-if="Pack.resiliationSuccess" role="alert">
-                    <span class="ovh-font ovh-font-filled-check" aria-hidden="true"></span>
-                    <p data-translate="pack_xdsl_resiliation_success_notification"></p>
+            <toast-message></toast-message>
+
+            <div class="alert alert-xs alert-success"
+                 role="alert"
+                 data-ng-if="Pack.resiliationSuccess"
+                 data-translate="pack_xdsl_resiliation_success_notification">
             </div>
 
-            <div class="alert alert-xs alert-success" data-ng-if="Pack.cancelResiliationSuccess" role="alert">
-                    <span class="ovh-font ovh-font-filled-check" aria-hidden="true"></span>
-                    <p data-translate="pack_xdsl_resiliation_cancel_success_notification"></p>
+            <div class="alert alert-xs alert-success"
+                 role="alert"
+                 data-ng-if="Pack.cancelResiliationSuccess"
+                 data-translate="pack_xdsl_resiliation_cancel_success_notification">
             </div>
 
-            <div data-ng-if="Pack.services.length === 0" class="row text-center">
-                {{:: 'pack_xdsl_no_service_available' | translate }}
+            <div class="text-center"
+                 data-ng-if="!Pack.services.length"
+                 data-translate="pack_xdsl_no_service_available">
             </div>
 
             <div data-ng-if="Pack.services.length > 0 && !Pack.loader.service">
-                <div class="row"
+                <div class="row d-md-flex mb-5"
                      data-ng-repeat="row in Pack.services">
-                    <section data-ng-repeat="service in row track by service.name"
-                                     class="col-md-6 service col-xs-12 widget-presentation pack-item flex-center"
-                                     data-ng-class="'service-' + service.name">
-
-                            <header class="widget-presentation-header">
-                                <h2 class="widget-presentation-title" data-translate="{{ service.name }}"></h2>
-
-                                <div class="pack-item-count right-space-m24" data-ng-if="service.used || service.total">
+                    <div class="col-xs-12 col-md-6"
+                         data-ng-repeat="service in row track by service.name">
+                        <div class="oui-tile h-100 mb-5">
+                            <h3 class="oui-header_3 oui-tile__title">
+                                <span data-translate="{{ service.name }}"></span>
+                                <span class="float-right h6"
+                                      data-ng-if="service.used || service.total">
                                     <span data-ng-pluralize-html
-                                        data-count="service.used"
-                                        data-when="{
-                                            '0': ('used_one' | translate : {count: service.used + ' / ' +
-                                            ((service.total > service.used) ? service.total : service.used) }),
-                                            'one': ('used_one' | translate : {count: service.used + ' / ' +
-                                            ((service.total > service.used) ? service.total : service.used) }),
-                                            'other': ('used_many' | translate : {count: service.used + ' / ' +
-                                            ((service.total > service.used) ? service.total : service.used) }),
-                                        }"
-                                    ></span>
-                                </div>
-
-                                <div data-ng-if="service.inCreation > 0" class="pack-item-count">
-                                    <strong data-ng-bind="service.inCreation"></strong>
-                                    <span data-translate="still_pending"></span>
-                                </div>
-
-                            </header>
-
-                            <div class="service-content"
-                                 data-ng-include="'app/telecom/pack/slots/' + service.name + '/pack-' + service.name + '.html'"
+                                          data-count="service.used"
+                                          data-when="{
+                                              '0': ('used_one' | translate : { count: service.used + ' / ' + ((service.total > service.used) ? service.total : service.used) }),
+                                              'one': ('used_one' | translate : { count: service.used + ' / ' + ((service.total > service.used) ? service.total : service.used) }),
+                                              'other': ('used_many' | translate : { count: service.used + ' / ' + ((service.total > service.used) ? service.total : service.used) }),
+                                          }">
+                                    </span>
+                                </span>
+                            </h3>
+                            <div data-ng-include="'app/telecom/pack/slots/' + service.name + '/pack-' + service.name + '.html'"
                                  data-ng-init="data = Pack.services[2 * rKey + sKey]">
                             </div>
-
-                    </section>
+                        </div>
+                    </div>
                 </div>
             </div>
+
         </div>
+        <!-- /.telecom-section-content -->
 
     </div>
 </div>

@@ -1,62 +1,66 @@
 <form name="restrictUserForm"
       id="restrictUserForm"
-      class="ovh-form-flat"
       data-ng-submit="UsersRestrictByIpCtrl.restrict()">
 
     <div class="modal-header">
-        <h3 class="modal-title pull-left" data-translate="sms_users_restrict_user_title"></h3>
         <button
             type="button"
-            class="close pull-right"
+            class="close float-right"
             aria-label="{{ ::'cancel' | translate }}"
             data-ng-click="UsersRestrictByIpCtrl.cancel()">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
 
-    <div class="modal-body" data-ng-if="!UsersRestrictByIpCtrl.loading.restrictByIpUser && !UsersRestrictByIpCtrl.restricted">
+    <div class="modal-body"
+         data-ng-if="!UsersRestrictByIpCtrl.loading.restrictByIpUser && !UsersRestrictByIpCtrl.restricted">
+        <h3 data-translate="sms_users_restrict_user_title"></h3>
 
         <p class="word-break"
            data-translate="sms_users_restrict_user_info"
            data-translate-values="{ login: UsersRestrictByIpCtrl.model.user.login }">
         </p>
 
-        <div class="form-group bottom-space-m16" data-ng-repeat="ip in UsersRestrictByIpCtrl.model.user.ipRestrictions track by $index">
-            <div data-flat-input-container>
-                <label for="restriction{{ $index }}"
-                       class="control-label"
-                       data-translate="sms_users_restrict_user_restrict_label"
-                       data-translate-values="{ index: $index + 1 }">
-                </label>
-                <input
-                    type="text"
-                    name="restriction{{ $index }}"
-                    id="restriction{{ $index }}"
-                    class="form-control"
-                    autofocus
-                    data-ng-model="UsersRestrictByIpCtrl.model.user.ipRestrictions[$index]"
-                    data-ng-pattern="UsersRestrictByIpCtrl.ipRestrictions.pattern"
-                    data-translate-attr="{ placeholder: 'sms_users_restrict_user_restrict_placeholder' }"
-                    data-translate-values="{ index: $index + 1 }" />
-                <div role="alert"
-                     data-ng-if="restrictUserForm.$invalid && restrictUserForm.$dirty">
-                    <p class="text-danger"
-                       data-ng-if="restrictUserForm['restriction' + $index].$dirty && restrictUserForm['restriction' + $index].$error.pattern"
-                       data-translate="sms_users_restrict_user_restrict_error_pattern">
-                    </p>
-                </div>
-            </div>
+        <div class="form-group"
+             data-ng-repeat="ip in UsersRestrictByIpCtrl.model.user.ipRestrictions track by $index"
+             data-ng-class="{
+                 'has-error': restrictUserForm['restriction' + $index].$touched && restrictUserForm['restriction' + $index].$invalid
+             }">
+            <label for="restriction{{ $index }}"
+                   class="control-label"
+                   data-translate="sms_users_restrict_user_restrict_label"
+                   data-translate-values="{ index: $index + 1 }">
+            </label>
+            <input
+                type="text"
+                name="restriction{{ $index }}"
+                id="restriction{{ $index }}"
+                class="form-control"
+                autofocus
+                data-ng-model="UsersRestrictByIpCtrl.model.user.ipRestrictions[$index]"
+                data-ng-pattern="UsersRestrictByIpCtrl.ipRestrictions.pattern"
+                data-translate-attr="{ placeholder: 'sms_users_restrict_user_restrict_placeholder' }"
+                data-translate-values="{ index: $index + 1 }" />
+            <span class="help-block"
+                  role="alert"
+                  data-ng-if="restrictUserForm['restriction' + $index].$touched"
+                  data-ng-messages="restrictUserForm['restriction' + $index].$error">
+                <span data-ng-message="pattern"
+                      data-translate="sms_users_restrict_user_restrict_error_pattern">
+                </span>
+            </span>
         </div>
 
     </div>
 
-    <div class="modal-body" data-ng-if="UsersRestrictByIpCtrl.loading.restrictByIpUser && !UsersRestrictByIpCtrl.restricted">
-        <bouncing-box-loader>
-            <h4 data-translate="sms_users_restrict_user_adding"></h4>
-        </bouncing-box-loader>
+    <div class="modal-body text-center"
+         data-ng-if="UsersRestrictByIpCtrl.loading.restrictByIpUser && !UsersRestrictByIpCtrl.restricted">
+        <oui-loader data-size="m"></oui-loader>
+        <h4 data-translate="sms_users_restrict_user_adding"></h4>
     </div>
 
-    <div class="modal-body" data-ng-if="UsersRestrictByIpCtrl.restricted">
+    <div class="modal-body"
+         data-ng-if="UsersRestrictByIpCtrl.restricted">
         <success-drawing-check data-draw-success-check="UsersRestrictByIpCtrl.restricted">
             <h4 data-translate="sms_users_restrict_user_added"></h4>
         </success-drawing-check>
@@ -68,12 +72,16 @@
             class="btn btn-default"
             data-ng-click="UsersRestrictByIpCtrl.cancel()"
             data-translate="cancel"
-            data-ng-disabled="UsersRestrictByIpCtrl.loading.restrictByIpUser || UsersRestrictByIpCtrl.restricted">
+            data-ng-disabled="UsersRestrictByIpCtrl.loading.restrictByIpUser ||
+                              UsersRestrictByIpCtrl.restricted">
         </button>
         <button
             type="submit"
             class="btn btn-primary"
-            data-ng-disabled="restrictUserForm.$invalid || !UsersRestrictByIpCtrl.hasChanged() || UsersRestrictByIpCtrl.loading.restrictByIpUser || UsersRestrictByIpCtrl.restricted"
+            data-ng-disabled="restrictUserForm.$invalid ||
+                              !UsersRestrictByIpCtrl.hasChanged() ||
+                              UsersRestrictByIpCtrl.loading.restrictByIpUser ||
+                              UsersRestrictByIpCtrl.restricted"
             data-translate="submit">
         </button>
     </div>

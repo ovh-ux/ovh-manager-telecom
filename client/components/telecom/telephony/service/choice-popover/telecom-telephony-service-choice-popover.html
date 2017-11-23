@@ -1,187 +1,94 @@
-<form class="popover-pages ovh-form-flat"
-      name="serviceChoiceForm"
-      data-ng-submit="$ctrl.onValidate()">
+<div class="telephony-service-choice-popover">
 
-    <div class="popover-pages-wrapper"
-         data-ng-class="{ move: $ctrl.status.move }">
+    <div class="popover-pages">
 
-        <section class="popover-page page-left page-section">
+        <div class="my-3"
+             data-ng-if="$ctrl.loading.init">
+            <oui-loader data-size="m"></oui-loader>
+        </div>
 
-            <div data-ng-if="$ctrl.loading.init">
-                <bouncing-box-loader>
-                    <h2 data-translate="loading"></h2>
-                </bouncing-box-loader>
-            </div>
+        <div class="popover-pages-wrapper"
+             data-ng-class="{ move: $ctrl.popoverStatus.move }"
+             data-ng-if="!$ctrl.loading.init">
 
-            <div data-ng-if="!$ctrl.loading.init">
+            <section class="popover-page page-section">
+
                 <header>
                     <h2 data-translate="telephony_service_choice_title"></h2>
                 </header>
 
                 <section>
 
+                    <!-- SEARCH BAR -->
                     <div class="section-group">
-                        <!-- FILTER BY -->
-                        <div class="section-item">
-                            <span class="block bottom-space-m4"
-                                  data-translate="telephony_service_choice_filter_by">
-                            </span>
-
-                            <ul class="filter-list list-inline no-space">
-                                <li data-ng-repeat="type in $ctrl.filters.types | filter:{ active: true } track by type.value"
-                                    class="filter-item clearfix">
-                                    <span data-translate="{{ 'telephony_service_choice_filter_type_' + type.value }}"
-                                          class="item-label pull-left">
-                                    </span>
-                                    <button type="button"
-                                            class="item-remove no-style pull-right"
-                                            data-ng-click="type.active = false">
-                                        <i class="ovh-font ovh-font-failure"></i>
-                                    </button>
-                                </li>
-                                <li data-ng-repeat="group in $ctrl.filters.groups | filter:{ active: true } track by group.value"
-                                    class="filter-item clearfix"
-                                    data-ng-init="curGroup = $ctrl.getGroup(group.value)"
-                                    data-ng-attr-title="{{ $ctrl.getServiceDisplayedName(curGroup, true) }}">
-                                    <span data-ng-bind="curGroup.getDisplayedName()"
-                                          class="item-label pull-left">
-                                    </span>
-                                    <button type="button"
-                                            data-ng-click="group.active = false"
-                                            class="item-remove no-style pull-right">
-                                        <i class="ovh-font ovh-font-failure"></i>
-                                    </button>
-                                </li>
-                            </ul>
-                        </div> <!-- FILTER BY -->
-
-                        <!-- FILTER BY TYPES BUTTON -->
-                        <button type="button"
-                                class="section-item no-style full-width text-left"
-                                data-ng-click="$ctrl.status.move = true; $ctrl.status.toShow = 'types';">
-                            <label data-translate="telephony_service_choice_filter_by_type"
-                                   class="top-space-m4 bottom-space-m0 pointer">
-                            </label>
-                            <div class="chevron-right">
-                                <div class="chevron-wrapper">
-                                    <i class="ovh-font ovh-font-arrow-right"></i>
-                                </div>
+                        <div class="section-item form-group">
+                            <div class="stylish-input-group search-input-group">
+                                <label class="icon-container"
+                                       for="searchService">
+                                    <i class="ovh-font ovh-font-search"></i>
+                                </label>
+                                <input type="text"
+                                       class="form-control"
+                                       name="searchService"
+                                       id="searchService"
+                                       data-ng-model="$ctrl.search"
+                                       data-translate-attr="{ placeholder: 'common_search' }" />
                             </div>
-                        </button> <!-- FILTER BY TYPES BUTTON -->
-
-                        <!-- FILTER BY GROUPS BUTTON -->
-                        <button type="button"
-                                class="section-item no-style full-width text-left"
-                                data-ng-click="$ctrl.status.move = true; $ctrl.status.toShow = 'groups';">
-                            <label data-translate="telephony_service_choice_filter_by_group"
-                                   class="top-space-m4 bottom-space-m0 pointer">
-                            </label>
-                            <div class="chevron-right">
-                                <div class="chevron-wrapper">
-                                    <i class="ovh-font ovh-font-arrow-right"></i>
-                                </div>
-                            </div>
-                        </button> <!-- FILTER BY GROUPS BUTTON -->
+                        </div>
                     </div>
 
-                    <div class="section-group">
-
-                        <!-- LINE CHOICE -->
-                        <div class="section-item">
-                            <ui-select data-ng-model="$ctrl.selectedService"
-                                       data-translate-attr="{ title: 'telephony_service_choice_destination' }"
-                                       data-append-to-body="true">
-                                <ui-select-match data-placeholder="{{ 'telephony_service_choice_destination' | translate }}">
-                                    <div data-ng-if="$ctrl.selectedService">
-                                        <div class="inline-block right-space-m8"
-                                             data-translate="{{ 'telecom_sidebar_section_telephony_' + $ctrl.getServiceType($ctrl.selectedService) }}">
-                                        </div>
-                                        <div class="inline-block"
-                                             data-ng-bind="$ctrl.getServiceDisplayedName($ctrl.selectedService)">
-                                        </div>
-                                    </div>
-                                    <div data-ng-if="!$ctrl.selectedService"
-                                          data-translate="telephony_service_choice_destination">
-                                    </div>
-                                </ui-select-match>
-                                <ui-select-choices data-repeat="service in $ctrl.serviceList | filter:$ctrl.excludeFilter | filter:$ctrl.applyFilter | propsFilter: {serviceName: $select.search, description: $select.search} track by $index"
-                                                   data-group-by="$ctrl.getServiceGroupName">
-                                    <span class="inline-block right-space-m8"
-                                          data-translate="{{ 'telecom_sidebar_section_telephony_' + $ctrl.getServiceType(service) }}">
-                                    </span>
-                                    <span data-ng-bind="$ctrl.getServiceDisplayedName(service)"></span>
-                                </ui-select-choices>
-                            </ui-select>
-                        </div> <!-- LINE CHOICE -->
-
+                    <!-- SEARCH RESULTS -->
+                    <div class="section-group"
+                         data-ng-repeat="group in $ctrl.groupList track by $index">
+                        <div data-ng-repeat="service in group.getAllServices() | filter:$ctrl.excludeFilter | filter:$ctrl.availableFilter | propsFilter: { serviceName: $ctrl.search, description: $ctrl.search } track by $index">
+                            <div class="group-title text-capitalize"
+                                 data-ng-if="$index === 0">
+                                <span data-ng-bind="group.getDisplayedName()"></span>
+                            </div>
+                            <div class="section-item">
+                                <div class="oui-radio">
+                                    <input type="radio"
+                                           class="oui-radio__input"
+                                           id="ruleNumber-{{ $index }}"
+                                           name="ruleNumber-{{ $index }}"
+                                           data-ng-model="$ctrl.selectedService"
+                                           data-ng-value="service" />
+                                    <label class="oui-radio__label-container"
+                                           for="ruleNumber-{{ $index }}">
+                                        <span class="oui-radio__label"
+                                              data-ng-bind="service.getDisplayedName()">
+                                        </span>
+                                        <span class="oui-radio__description">
+                                            <i data-translate="{{ 'telephony_service_choice_filter_type_' + $ctrl.getServiceType(service) }}"></i>
+                                            <i data-ng-if="service.serviceName !== service.description"
+                                               data-ng-bind="' - ' + service.serviceName">
+                                            </i>
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                 </section>
 
-                <footer class="clearfix double-choice">
+                <footer class="clearfix float-sm-right">
                     <button type="submit"
                             class="btn btn-primary"
+                            data-translate="submit"
                             data-ng-disabled="!$ctrl.selectedService"
-                            data-translate="submit">
+                            data-ng-click="$ctrl.onValidate()">
                     </button>
-
-                    <button type="button"
-                            class="btn btn-default"
+                    <button type="reset"
+                            class="btn btn-default mr-sm-2 float-left"
                             data-translate="cancel"
                             data-ng-click="$ctrl.onCancel()">
                     </button>
                 </footer>
-            </div>
 
-        </section>
-
-        <section class="popover-page page-right page-section">
-
-            <header>
-                <button type="button"
-                        class="back-btn no-style no-space fs20"
-                        data-ng-click="$ctrl.status.move = false"
-                        data-translate-attr="{ title: 'back' }">
-                    <i class="ovh-font ovh-font-arrow-left"></i>
-                </button>
-
-                <h2 data-translate="{{ $ctrl.status.toShow === 'types' ? 'telephony_service_choice_filter_by_type' : 'telephony_service_choice_filter_by_group' }}"></h2>
-            </header>
-
-            <section data-ng-if="$ctrl.status.toShow === 'types'">
-                <div class="section-group">
-                    <label class="section-item full-width pointer"
-                           data-ng-repeat="type in $ctrl.filters.types track by $index">
-                        <flat-checkbox>
-                            <input type="checkbox"
-                                   name="serviceTypeFilter"
-                                   data-ng-model="type.active" />
-                        </flat-checkbox>
-                        <span class="inline-block vertical-middle left-space-m16 top-space-m2"
-                              data-translate="{{ 'telephony_service_choice_filter_type_' + type.value }}">
-                        </span>
-                    </label>
-                </div>
             </section>
 
-            <section data-ng-if="$ctrl.status.toShow === 'groups'">
-                <div class="section-group">
-                    <label class="section-item full-width pointer"
-                           data-ng-repeat="group in $ctrl.filters.groups track by $index"
-                           data-ng-init="curFilterGroup = $ctrl.getGroup(group.value)">
-                        <flat-checkbox>
-                            <input type="checkbox"
-                                   name="serviceGroupFilter"
-                                   data-ng-model="group.active" />
-                        </flat-checkbox>
-                        <span class="inline-block vertical-middle left-space-m16 top-space-m2"
-                              data-ng-bind="curFilterGroup.getDisplayedName()">
-                        </span>
-                    </label>
-                </div>
-            </section>
+        </div>
 
-        </section>
     </div>
-
-</form>
+</div>

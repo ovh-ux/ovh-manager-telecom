@@ -1,13 +1,16 @@
 <section class="telecom-sms">
 
     <!-- LOADING -->
-    <bouncing-box-loader data-ng-if="TelecomSmsCtrl.loading.init">
-        <h1 data-translate="loading"></h1>
-    </bouncing-box-loader>
+    <oui-loader data-ng-if="TelecomSmsCtrl.loading.init"
+                data-size="m">
+    </oui-loader>
 
-    <div class="telecom-section-header" data-ng-if="!TelecomSmsCtrl.loading.init">
-        <header role="banner">
-            <!-- TITLE -->
+    <div class="telecom-section-header"
+         data-ng-if="!TelecomSmsCtrl.loading.init">
+
+        <!-- TITLE -->
+        <header class="page-header"
+                role="banner">
             <editable-service-name data-editable-service-name-title="TelecomSmsCtrl.service.getDisplayedName()"
                                    data-editable-service-name-title-on-save="TelecomSmsCtrl.serviceNameSave"
                                    data-editable-service-name-service-name="TelecomSmsCtrl.service.name"
@@ -63,12 +66,17 @@
                 </responsive-tab-more>
             </responsive-tabs>
         </nav>
-    </div><!-- .telecom-section-header -->
 
-    <main class="telecom-section-content"
-         role="main"
-         data-ng-if="!TelecomSmsCtrl.loading.init"
-         data-ui-view="smsInnerView">
-    </main><!-- .telecom-section-content -->
+    </div>
+    <!-- .telecom-section-header -->
+
+    <main class="telecom-section-content" role="main">
+          <toast-message></toast-message>
+          <div data-ng-if="!TelecomSmsCtrl.loading.init"
+               data-ui-view="smsInnerView">
+          </div>
+    </main>
+    <!-- .telecom-section-content -->
 
 </section>
+<!-- /.telecom-sms -->

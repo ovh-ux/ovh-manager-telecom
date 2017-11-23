@@ -1,18 +1,30 @@
 <div data-ng-controller="PackVoipBillingAccountCtrl as VoipBillingAccount">
-
-    <div data-ng-include="'app/common/dashboard/service/loading.html'" data-ng-if="loaders.services"></div>
-    <div data-ng-include="'app/common/dashboard/service/no-element.html'" data-ng-if="!loaders.services && VoipBillingAccount.services.length == 0"></div>
-
-    <ul class="services-list" data-ng-if="!loaders.services && VoipBillingAccount.services.length > 0">
-        <li class="service-item" data-ng-repeat="service in VoipBillingAccount.services track by service.domain">
-            <span class="service-button">
-                <span class="ovh-font ovh-font-phone" aria-hidden="true"></span>
-
-                <div class="service-button-description">
-                    <div class="description-title" data-ng-bind="service"></div>
-                    <div class="description-subtext" data-ng-bind="service"></div>
+    <div class="oui-tile__body"
+         data-ng-if="loaders.services">
+        <div class="oui-tile__definition">
+            <oui-loader data-size="m"></oui-loader>
+        </div>
+    </div>
+    <div class="oui-tile__body"
+         data-ng-if="!loaders.services && VoipBillingAccount.services.length == 0">
+        <div class="oui-tile__definition"
+             data-ng-include="'app/common/dashboard/service/no-element.html'">
+        </div>
+    </div>
+    <div class="oui-tile__body"
+         data-ng-if="!loaders.services && VoipBillingAccount.services.length > 0">
+        <ul class="list-unstyled">
+            <li class="oui-tile__item oui-tile__item_button"
+                 data-ng-repeat="service in VoipBillingAccount.services track by service.domain">
+                <div class="oui-tile__definition">
+                    <strong class="oui-tile__term d-block"
+                            data-ng-bind="service">
+                    </strong>
+                    <span class="oui-tile__description"
+                          data-ng-bind="service">
+                    </span>
                 </div>
-            </span>
-        </li>
-    </ul>
+            </li>
+        </ul>
+    </div>
 </div>

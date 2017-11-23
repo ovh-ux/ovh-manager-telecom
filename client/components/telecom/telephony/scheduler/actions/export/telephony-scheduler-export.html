@@ -1,13 +1,10 @@
-<form class="ovh-form-flat telecom-scheduler-export"
+<form class="telecom-scheduler-export"
       name="schdulerExportForm"
       data-ng-submit="SchedulerExportCtrl.startExport()">
 
     <div class="modal-header">
-        <h3 class="modal-title pull-left"
-            data-translate="telephony_scheduler_export_title">
-        </h3>
         <button type="button"
-                class="close pull-right"
+                class="close float-right"
                 aria-label="{{'cancel'|translate}}"
                 data-ng-click="SchedulerExportCtrl.cancel()"
                 data-ng-disabled="SchedulerExportCtrl.loading.export || SchedulerExportCtrl.status.exported">
@@ -15,9 +12,11 @@
         </button>
     </div>
 
-    <div class="modal-body clearfix"
+    <div class="modal-body"
          data-ng-if="!SchedulerExportCtrl.loading.init && !SchedulerExportCtrl.loading.export && !SchedulerExportCtrl.status.exported">
 
+        <h3 data-translate="telephony_scheduler_export_title">
+        </h3>
         <div class="category-filters telephony-scheduler-time-condition-slots">
             <label data-translate="telephony_scheduler_export_filters"></label>
 
@@ -25,11 +24,11 @@
             <div class="filters-category row"
                  data-ng-repeat="chunkedCategories in SchedulerExportCtrl.chunkedCategories track by $index">
 
-                <div class="col-xs-12 col-sm-6"
+                <div class="col-xs-12"
                      data-ng-repeat="category in chunkedCategories track by $index">
 
                     <button type="button"
-                            class="no-style full-width text-left"
+                            class="btn btn-default w-100 text-left"
                             data-ng-class="{ 'active-slot': category.active }"
                             data-ng-click="category.active = !category.active;">
 
@@ -46,11 +45,10 @@
 
     </div>
 
-    <div class="modal-body clearfix"
+    <div class="modal-body clearfix text-center"
          data-ng-if="SchedulerExportCtrl.loading.init || SchedulerExportCtrl.loading.export">
-        <bouncing-box-loader>
-            <h4 data-translate="{{ SchedulerExportCtrl.loading.init ? 'loading' : 'telephony_scheduler_export_doing' }}"></h4>
-        </bouncing-box-loader>
+        <oui-loader data-size="m"></oui-loader>
+        <h4 data-translate="{{ SchedulerExportCtrl.loading.init ? 'loading' : 'telephony_scheduler_export_doing' }}"></h4>
     </div>
 
     <div class="modal-body clearfix"
@@ -60,15 +58,14 @@
         </success-drawing-check>
     </div>
 
-    <div class="modal-footer top-space-m4">
+    <div class="modal-footer mt-2">
         <button type="submit"
-                class="btn btn-primary pull-right left-space-m4"
+                class="btn btn-primary float-right ml-2"
                 data-translate="telephony_scheduler_actions_export"
                 data-ng-disabled="SchedulerExportCtrl.loading.init || SchedulerExportCtrl.loading.export || SchedulerExportCtrl.status.exported">
         </button>
-
         <button type="button"
-                class="btn btn-default pull-right"
+                class="btn btn-default float-right"
                 data-ng-click="SchedulerExportCtrl.cancel()"
                 data-translate="cancel"
                 data-ng-disabled="SchedulerExportCtrl.loading.export || SchedulerExportCtrl.status.exported">

@@ -1,286 +1,303 @@
 <section class="telecom-sms-users">
 
-    <div class="widget-presentation bottom-space-m16">
-        <h2 class="widget-presentation-title" data-translate="sms_users_manage_title"></h2>
+    <div class="widget-presentation mb-3">
+        <h2 class="widget-presentation-title"
+            data-translate="sms_users_manage_title">
+        </h2>
 
-        <div class="table-responsive-vertical bottom-space-m16">
-            <ul class="bottom-space-m12"
-                role="menu"
-                data-table-action>
-                <li role="menuitem">
-                    <button
+        <div class="mb-3 clearfix">
+            <div class="btn-group float-left mr-3"
+                 data-uib-dropdown
+                 data-dropdown-append-to-body>
+                <button id="btn-sms-users-actions"
                         type="button"
-                        class="no-style"
-                        data-ng-click="SmsUsersCtrl.add()">
+                        class="btn btn-default"
+                        data-uib-dropdown-toggle>
+                    <span class="fa fa-bars" aria-hidden="true"></span>
+                    <span data-translate="common_actions"></span>
+                    <span class="ovh-font ovh-font-small-arrow-down" aria-hidden="true"></span>
+                </button>
+                <ul class="dropdown-menu"
+                    role="menu"
+                    aria-labelledby="btn-sms-users-actions"
+                    data-uib-dropdown-menu>
+                    <li role="menuitem">
                         <i class="ovh-font ovh-font-add-circle" aria-hidden="true"></i>
-                        <label data-translate="common_add"></label>
-                    </button>
-                </li>
-                <li role="menuitem">
-                    <button
-                        type="button"
-                        class="no-style"
-                        data-ng-click="SmsUsersCtrl.templates()"
-                        data-uib-tooltip="{{:: 'sms_users_templates_title' | translate }}"
-                        data-tooltip-placement="right"
-                        data-tooltip-append-to-body="true">
+                        <button
+                            type="button"
+                            class="btn btn-link"
+                            data-ng-click="SmsUsersCtrl.add()"
+                            data-translate="common_add">
+                        </button>
+                    </li>
+                    <li role="menuitem">
                         <i class="ovh-font ovh-font-warning" aria-hidden="true"></i>
-                        <label data-translate="sms_users_actions_templates"></label>
-                    </button>
-                </li>
-                <li role="menuitem">
-                    <button
-                        type="button"
-                        class="no-style"
-                        data-ng-click="SmsUsersCtrl.refresh()">
+                        <button
+                            type="button"
+                            class="btn btn-link"
+                            data-ng-click="SmsUsersCtrl.templates()"
+                            data-translate="sms_users_actions_templates"
+                            data-uib-tooltip="{{:: 'sms_users_templates_title' | translate }}"
+                            data-tooltip-placement="right"
+                            data-tooltip-append-to-body="true">
+                        </button>
+                    </li>
+                    <li role="menuitem">
                         <i class="ovh-font ovh-font-arrow-rotate" aria-hidden="true"></i>
-                        <label data-translate="common_refresh"></label>
-                    </button>
-                </li>
-            </ul>
-            <table class="table table-pretty table-hover table-striped no-space">
+                        <button
+                            type="button"
+                            class="btn btn-link"
+                            data-ng-click="SmsUsersCtrl.refresh()"
+                            data-translate="common_refresh">
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table"
+                   data-ng-class="{
+                       'table-hover table-striped': SmsUsersCtrl.users.raw.length > 1
+                   }">
                 <thead>
                     <tr>
                         <th scope="col">
                             <button
                                 type="button"
-                                class="no-style left-space-p0"
+                                class="btn btn-link p-0"
                                 data-ng-disabled="!SmsUsersCtrl.users.sorted.length"
                                 data-ng-click="SmsUsersCtrl.orderBy('login')">
-                                <label class="pointer" data-translate="sms_users_label_id"></label>
-                                <span class="table-pretty-filter">
-                                    <i class="fa" data-ng-class="{
-                                        'fa-sort': SmsUsersCtrl.users.orderBy !== 'login',
-                                        'fa-sort-desc': SmsUsersCtrl.users.orderBy === 'login' && SmsUsersCtrl.users.orderDesc,
-                                        'fa-sort-asc': SmsUsersCtrl.users.orderBy === 'login' && !SmsUsersCtrl.users.orderDesc
-                                    }"></i>
+                                <span data-translate="sms_users_label_id"></span>
+                                <span class="oui-icon align-baseline"
+                                      aria-hidden="true"
+                                      data-ng-class="{
+                                          'oui-icon-arrow-down': SmsUsersCtrl.users.orderBy !== 'login',
+                                          'oui-icon-arrow-down': SmsUsersCtrl.users.orderBy === 'login' && SmsUsersCtrl.users.orderDesc,
+                                          'oui-icon-arrow-up': SmsUsersCtrl.users.orderBy === 'login' && !SmsUsersCtrl.users.orderDesc
+                                      }">
                                 </span>
                             </button>
                         </th>
                         <th scope="col">
                             <button
                                 type="button"
-                                class="no-style left-space-p0"
+                                class="btn btn-link p-0"
                                 data-ng-disabled="!SmsUsersCtrl.users.sorted.length"
                                 data-ng-click="SmsUsersCtrl.orderBy('quotaInformations.quotaStatus')">
-                                <label class="pointer" data-translate="sms_users_label_quota_status"></label>
-                                <span class="table-pretty-filter">
-                                    <i class="fa" data-ng-class="{
-                                        'fa-sort': SmsUsersCtrl.users.orderBy !== 'quotaInformations.quotaStatus',
-                                        'fa-sort-desc': SmsUsersCtrl.users.orderBy === 'quotaInformations.quotaStatus' && SmsUsersCtrl.users.orderDesc,
-                                        'fa-sort-asc': SmsUsersCtrl.users.orderBy === 'quotaInformations.quotaStatus' && !SmsUsersCtrl.users.orderDesc
-                                    }"></i>
+                                <span data-translate="sms_users_label_quota_status"></span>
+                                <span class="oui-icon align-baseline"
+                                      aria-hidden="true"
+                                      data-ng-class="{
+                                          'oui-icon-arrow-down': SmsUsersCtrl.users.orderBy !== 'quotaInformations.quotaStatus',
+                                          'oui-icon-arrow-down': SmsUsersCtrl.users.orderBy === 'quotaInformations.quotaStatus' && SmsUsersCtrl.users.orderDesc,
+                                          'oui-icon-arrow-up': SmsUsersCtrl.users.orderBy === 'quotaInformations.quotaStatus' && !SmsUsersCtrl.users.orderDesc
+                                      }">
                                 </span>
                             </button>
                         </th>
                         <th scope="col">
                             <button
                                 type="button"
-                                class="no-style left-space-p0"
+                                class="btn btn-link p-0"
                                 data-ng-disabled="!SmsUsersCtrl.users.sorted.length"
                                 data-ng-click="SmsUsersCtrl.orderBy('quotaInformations.quotaLeft')">
-                                <label class="pointer" data-translate="sms_users_label_quota"></label>
-                                <span class="table-pretty-filter">
-                                    <i class="fa" data-ng-class="{
-                                        'fa-sort': SmsUsersCtrl.users.orderBy !== 'quotaInformations.quotaLeft',
-                                        'fa-sort-desc': SmsUsersCtrl.users.orderBy === 'quotaInformations.quotaLeft' && SmsUsersCtrl.users.orderDesc,
-                                        'fa-sort-asc': SmsUsersCtrl.users.orderBy === 'quotaInformations.quotaLeft' && !SmsUsersCtrl.users.orderDesc
-                                    }"></i>
+                                <span data-translate="sms_users_label_quota"></span>
+                                <span class="oui-icon align-baseline"
+                                      aria-hidden="true"
+                                      data-ng-class="{
+                                          'oui-icon-arrow-down': SmsUsersCtrl.users.orderBy !== 'quotaInformations.quotaLeft',
+                                          'oui-icon-arrow-down': SmsUsersCtrl.users.orderBy === 'quotaInformations.quotaLeft' && SmsUsersCtrl.users.orderDesc,
+                                          'oui-icon-arrow-up': SmsUsersCtrl.users.orderBy === 'quotaInformations.quotaLeft' && !SmsUsersCtrl.users.orderDesc
+                                      }">
                                 </span>
                             </button>
                         </th>
                         <th scope="col">
                             <button
                                 type="button"
-                                class="no-style left-space-p0"
+                                class="btn btn-link p-0"
                                 data-ng-disabled="!SmsUsersCtrl.users.sorted.length"
                                 data-ng-click="SmsUsersCtrl.orderBy('alertThresholdInformations.alertThreshold')">
-                                <label class="pointer" data-translate="sms_users_label_alert"></label>
-                                <span class="table-pretty-filter">
-                                    <i class="fa" data-ng-class="{
-                                        'fa-sort': SmsUsersCtrl.users.orderBy !== 'alertThresholdInformations.alertThreshold',
-                                        'fa-sort-desc': SmsUsersCtrl.users.orderBy === 'alertThresholdInformations.alertThreshold' && SmsUsersCtrl.users.orderDesc,
-                                        'fa-sort-asc': SmsUsersCtrl.users.orderBy === 'alertThresholdInformations.alertThreshold' && !SmsUsersCtrl.users.orderDesc
-                                    }"></i>
+                                <span data-translate="sms_users_label_alert"></span>
+                                <span class="oui-icon align-baseline"
+                                      aria-hidden="true"
+                                      data-ng-class="{
+                                          'oui-icon-arrow-down': SmsUsersCtrl.users.orderBy !== 'alertThresholdInformations.alertThreshold',
+                                          'oui-icon-arrow-down': SmsUsersCtrl.users.orderBy === 'alertThresholdInformations.alertThreshold' && SmsUsersCtrl.users.orderDesc,
+                                          'oui-icon-arrow-up': SmsUsersCtrl.users.orderBy === 'alertThresholdInformations.alertThreshold' && !SmsUsersCtrl.users.orderDesc
+                                      }">
                                 </span>
                             </button>
+                        </th>
+                        <th scope="col"
+                            data-translate="sms_users_label_threshold">
                         </th>
                         <th scope="col">
                             <button
                                 type="button"
-                                class="no-style left-space-p0"
-                                data-ng-disabled="!SmsUsersCtrl.users.sorted.length"
-                                data-ng-click="SmsUsersCtrl.orderBy('alertThresholdInformations.alertThreshold')">
-                                <label class="pointer" data-translate="sms_users_label_threshold"></label>
-                                <span class="table-pretty-filter">
-                                    <i class="fa" data-ng-class="{
-                                        'fa-sort': SmsUsersCtrl.users.orderBy !== 'alertThresholdInformations.alertThreshold',
-                                        'fa-sort-desc': SmsUsersCtrl.users.orderBy === 'alertThresholdInformations.alertThreshold' && SmsUsersCtrl.users.orderDesc,
-                                        'fa-sort-asc': SmsUsersCtrl.users.orderBy === 'alertThresholdInformations.alertThreshold' && !SmsUsersCtrl.users.orderDesc
-                                    }"></i>
-                                </span>
-                            </button>
-                        </th>
-                        <th scope="col">
-                            <button
-                                type="button"
-                                class="no-style left-space-p0"
+                                class="btn btn-link p-0"
                                 data-ng-disabled="!SmsUsersCtrl.users.sorted.length"
                                 data-ng-click="SmsUsersCtrl.orderBy('alertThresholdInformations.support')">
-                                <label class="pointer" data-translate="sms_users_label_notification"></label>
-                                <span class="table-pretty-filter">
-                                    <i class="fa" data-ng-class="{
-                                        'fa-sort': SmsUsersCtrl.users.orderBy !== 'alertThresholdInformations.support',
-                                        'fa-sort-desc': SmsUsersCtrl.users.orderBy === 'alertThresholdInformations.support' && SmsUsersCtrl.users.orderDesc,
-                                        'fa-sort-asc': SmsUsersCtrl.users.orderBy === 'alertThresholdInformations.support' && !SmsUsersCtrl.users.orderDesc
-                                    }"></i>
+                                <span data-translate="sms_users_label_notification"></span>
+                                <span class="oui-icon align-baseline"
+                                      aria-hidden="true"
+                                      data-ng-class="{
+                                          'oui-icon-arrow-down': SmsUsersCtrl.users.orderBy !== 'alertThresholdInformations.support',
+                                          'oui-icon-arrow-down': SmsUsersCtrl.users.orderBy === 'alertThresholdInformations.support' && SmsUsersCtrl.users.orderDesc,
+                                          'oui-icon-arrow-up': SmsUsersCtrl.users.orderBy === 'alertThresholdInformations.support' && !SmsUsersCtrl.users.orderDesc
+                                      }">
                                 </span>
                             </button>
                         </th>
-                        <th>
-                            <label data-translate="common_actions"></label>
+                        <th class="text-right"
+                            data-translate="common_actions">
                         </th>
                     </tr>
                 </thead>
                 <tbody data-ng-if="SmsUsersCtrl.users.sorted.length > 0 && !SmsUsersCtrl.users.isLoading">
                     <tr data-ng-repeat="user in SmsUsersCtrl.users.paginated | orderBy:SmsUsersCtrl.users.orderBy:SmsUsersCtrl.users.orderDesc track by $index">
-                        <td data-title="{{ ::'sms_users_label_id' | translate }}">
+                        <td>
                             <span data-ng-if="user.login.length >= 25">
-                                <span class="text-nowrap"
-                                      data-ng-bind="user.login | limitTo: 25"
+                                <span data-ng-bind="user.login | limitTo: 25"
                                       data-uib-tooltip="{{ user.login }}"
-                                      data-tooltip-class="word-break">
+                                      data-tooltip-class="word-break"
+                                      data-tooltip-append-to-body="true">
                                 </span>…
                             </span>
-                            <span class="text-nowrap" data-ng-if="user.login.length < 25" data-ng-bind="user.login"></span>
+                            <span data-ng-if="user.login.length < 25"
+                                  data-ng-bind="user.login">
+                            </span>
                         </td>
-                        <td class="text-capitalize" data-title="{{ ::'sms_users_label_quota_status' | translate }}">
-                            <span class="text-nowrap"
-                                  data-ng-if="user.quotaInformations.quotaStatus === 'active'"
+                        <td class="text-capitalize">
+                            <span data-ng-if="user.quotaInformations.quotaStatus === 'active'"
                                   data-translate="yes">
                             </span>
-                            <span class="text-nowrap"
-                                  data-ng-if="user.quotaInformations.quotaStatus === 'inactive'"
+                            <span data-ng-if="user.quotaInformations.quotaStatus === 'inactive'"
                                   data-translate="no">
                             </span>
                         </td>
-                        <td data-title="{{ ::'sms_users_label_quota' | translate }}">
-                            <span class="text-nowrap" data-ng-bind="user.quotaInformations.quotaLeft | number : 2"></span>
+                        <td data-ng-bind="user.quotaInformations.quotaLeft | number : 2"></td>
+                        <td class="text-capitalize"
+                            data-translate="{{:: (user.alertThresholdInformations.alertThreshold === -1) ? 'no' : 'yes' }}">
                         </td>
-                        <td class="text-capitalize" data-title="{{ ::'sms_users_label_alert' | translate }}">
-                            <span class="text-nowrap"
-                                  data-translate="{{:: (user.alertThresholdInformations.alertThreshold === -1) ? 'no' : 'yes' }}">
-                            </span>
+                        <td data-ng-bind="(user.alertThresholdInformations.alertThreshold === -1) ? '-' : user.alertThresholdInformations.alertThreshold"></td>
+                        <td data-ng-bind="::'sms_users_limit_user_support_' + user.alertThresholdInformations.support | translate"
+                            data-uib-tooltip="{{ user.alertThresholdInformations.alertEmail }}"
+                            data-tooltip-append-to-body="true">
                         </td>
-                        <td data-title="{{ ::'sms_users_label_threshold' | translate }}">
-                            <span class="text-nowrap"
-                                  data-ng-bind="(user.alertThresholdInformations.alertThreshold === -1) ? '-' : user.alertThresholdInformations.alertThreshold">
-                            </span>
-                        </td>
-                        <td data-title="{{ ::'sms_users_label_notification' | translate }}">
-                            <span class="text-nowrap"
-                                  data-ng-bind="::'sms_users_limit_user_support_' + user.alertThresholdInformations.support | translate"
-                                  data-uib-tooltip="{{ user.alertThresholdInformations.alertEmail }}">
-                            </span>
-                        </td>
-                        <td>
-                            <ul role="menu"
-                                data-table-action-line>
-                                <li role="menuitem">
-                                    <button
+                        <td class="text-right">
+                            <div class="btn-group"
+                                 data-uib-dropdown
+                                 data-dropdown-append-to-body>
+                                <button id="btn-sms-users-action-{{ index }}"
                                         type="button"
-                                        class="no-style"
-                                        data-ng-click="SmsUsersCtrl.changePassword(user)"
-                                        data-uib-tooltip="{{:: 'sms_users_action_change_password' | translate }}"
-                                        data-tooltip-append-to-body="true">
+                                        class="btn btn-link"
+                                        data-uib-dropdown-toggle>
+                                    <span class="ovh-font ovh-font-dots" aria-hidden="true"></span>
+                                    <span class="sr-only"
+                                          data-translate="common_actions">
+                                    </span>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-right"
+                                    role="menu"
+                                    aria-labelledby="btn-sms-users-action-{{ index }}"
+                                    data-uib-dropdown-menu>
+                                    <li role="menuitem">
                                         <i class="ovh-font ovh-font-key" aria-hidden="true"></i>
-                                        <label data-translate="sms_users_action_change_password_label"></label>
-                                    </button>
-                                </li>
-                                <li role="menuitem">
-                                    <button
-                                        type="button"
-                                        class="no-style"
-                                        data-ng-click="SmsUsersCtrl.quota(user)"
-                                        data-uib-tooltip="{{:: 'sms_users_action_quota' | translate }}"
-                                        data-tooltip-append-to-body="true">
+                                        <button
+                                            type="button"
+                                            class="btn btn-link"
+                                            data-ng-click="SmsUsersCtrl.changePassword(user)"
+                                            data-translate="sms_users_action_change_password_label"
+                                            data-uib-tooltip="{{:: 'sms_users_action_change_password' | translate }}"
+                                            data-tooltip-append-to-body="true">
+                                        </button>
+                                    </li>
+                                    <li role="menuitem">
                                         <i class="ovh-font ovh-font-pieChart" aria-hidden="true"></i>
-                                        <label data-translate="sms_users_action_quota"></label>
-                                    </button>
-                                </li>
-                                <li role="menuitem">
-                                    <button
-                                        type="button"
-                                        class="no-style"
-                                        data-ng-click="SmsUsersCtrl.limit(user)"
-                                        data-uib-tooltip="{{:: 'sms_users_action_limit' | translate }}"
-                                        data-tooltip-append-to-body="true">
+                                        <button
+                                            type="button"
+                                            class="btn btn-link"
+                                            data-ng-click="SmsUsersCtrl.quota(user)"
+                                            data-translate="sms_users_action_quota"
+                                            data-uib-tooltip="{{:: 'sms_users_action_quota' | translate }}"
+                                            data-tooltip-append-to-body="true">
+                                        </button>
+                                    </li>
+                                    <li role="menuitem">
                                         <i class="ovh-font ovh-font-gauge-full" aria-hidden="true"></i>
-                                        <label data-translate="sms_users_action_limit"></label>
-                                    </button>
-                                </li>
-                                <li role="menuitem">
-                                    <button
-                                        type="button"
-                                        class="no-style"
-                                        data-ng-click="SmsUsersCtrl.restrict(user)"
-                                        data-uib-tooltip="{{:: 'sms_users_action_restriction_ip' | translate }}"
-                                        data-tooltip-append-to-body="true">
+                                        <button
+                                            type="button"
+                                            class="btn btn-link"
+                                            data-ng-click="SmsUsersCtrl.limit(user)"
+                                            data-translate="sms_users_action_limit"
+                                            data-uib-tooltip="{{:: 'sms_users_action_limit' | translate }}"
+                                            data-tooltip-append-to-body="true">
+                                        </button>
+                                    </li>
+                                    <li role="menuitem">
                                         <i class="ovh-font ovh-font-lock" aria-hidden="true"></i>
-                                        <label data-translate="sms_users_action_restriction_ip_label"></label>
-                                    </button>
-                                </li>
-                                <li role="menuitem">
-                                    <button
-                                        type="button"
-                                        class="no-style"
-                                        data-ng-click="SmsUsersCtrl.callback(user)"
-                                        data-uib-tooltip="{{:: 'sms_users_action_url_callback' | translate }}"
-                                        data-tooltip-append-to-body="true">
+                                        <button
+                                            type="button"
+                                            class="btn btn-link"
+                                            data-ng-click="SmsUsersCtrl.restrict(user)"
+                                            data-translate="sms_users_action_restriction_ip_label"
+                                            data-uib-tooltip="{{:: 'sms_users_action_restriction_ip' | translate }}"
+                                            data-tooltip-append-to-body="true">
+                                        </button>
+                                    </li>
+                                    <li role="menuitem">
                                         <i class="ovh-font ovh-font-domain" aria-hidden="true"></i>
-                                        <label data-translate="sms_users_action_url_callback_label"></label>
-                                    </button>
-                                </li>
-                                <li role="menuitem">
-                                    <button
-                                        type="button"
-                                        class="no-style"
-                                        data-ng-click="SmsUsersCtrl.remove(user)">
+                                        <button
+                                            type="button"
+                                            class="btn btn-link"
+                                            data-ng-click="SmsUsersCtrl.callback(user)"
+                                            data-translate="sms_users_action_url_callback_label"
+                                            data-uib-tooltip="{{:: 'sms_users_action_url_callback' | translate }}"
+                                            data-tooltip-append-to-body="true">
+                                        </button>
+                                    </li>
+                                    <li role="menuitem">
                                         <i class="ovh-font ovh-font-bin" aria-hidden="true"></i>
-                                        <label data-translate="delete"></label>
-                                    </button>
-                                </li>
-                            </ul>
+                                        <button
+                                            type="button"
+                                            class="btn btn-link"
+                                            data-ng-click="SmsUsersCtrl.remove(user)"
+                                            data-translate="delete">
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
                         </td>
                     </tr>
                 </tbody>
                 <tbody data-ng-if="SmsUsersCtrl.users.isLoading">
                     <tr>
-                        <td class="text-center top-space-p16 bottom-space-p16" colspan="7">
-                            <spinner></spinner>
+                        <td colspan="7">
+                            <oui-loader data-size="m"></oui-loader>
                         </td>
                     </tr>
                 </tbody>
                 <tbody data-ng-if="!SmsUsersCtrl.users.isLoading && !SmsUsersCtrl.users.raw.length">
                     <tr>
                         <td colspan="7"
-                            class="text-center top-space-p16 bottom-space-p16"
+                            class="text-center"
                             data-translate="sms_users_empty">
                         </td>
                     </tr>
                 </tbody>
             </table>
-            <div class="table-pretty-pagination top-space-m8"
-                 data-ng-show="!SmsUsersCtrl.users.isLoading && SmsUsersCtrl.users.raw.length"
-                 data-pagination-front
-                 data-items="SmsUsersCtrl.users.sorted"
-                 data-paginated-items="SmsUsersCtrl.users.paginated"
-                 data-current-page="currentPage"
-                 data-nb-pages="nbPages"
-                 data-items-per-page="itemsPerPage"
-                 data-page-placeholder="{{ 'common_pagination_page' | translate: { currentPage: currentPage, nbPages: nbPages } }}"
-                 data-item-per-page-placeholder="{{ 'common_pagination_display' | translate }}">
-            </div>
+        </div>
+        <div class="mt-2"
+             data-ng-show="!SmsUsersCtrl.users.isLoading && SmsUsersCtrl.users.raw.length"
+             data-pagination-front
+             data-items="SmsUsersCtrl.users.sorted"
+             data-paginated-items="SmsUsersCtrl.users.paginated"
+             data-current-page="currentPage"
+             data-nb-pages="nbPages"
+             data-items-per-page="itemsPerPage"
+             data-page-placeholder="{{ 'common_pagination_page' | translate: { currentPage: currentPage, nbPages: nbPages } }}"
+             data-item-per-page-placeholder="{{ 'common_pagination_display' | translate }}">
         </div>
     </div>
 

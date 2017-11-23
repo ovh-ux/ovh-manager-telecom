@@ -1,11 +1,8 @@
 <div class="xdsl-line-diagnostic">
 
-    <div data-ng-if="PackxdslaccesslinediagnosticCtrl.loading.init">
-        <h2>
-            <spinner class="left-space-m4"></spinner>
-            <span data-translate="loading"></span>
-        </h2>
-    </div>
+    <oui-loader data-ng-if="PackxdslaccesslinediagnosticCtrl.loading.init"
+                data-size="m">
+    </oui-loader>
 
     <div data-ng-if="!PackxdslaccesslinediagnosticCtrl.loading.init && PackxdslaccesslinediagnosticCtrl.isVIP"
          data-line-diagnostics="{{ PackxdslaccesslinediagnosticCtrl.lineNumber }}"

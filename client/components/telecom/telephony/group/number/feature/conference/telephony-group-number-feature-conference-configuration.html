@@ -1,7 +1,7 @@
 <form class="telephony-number-conference-config popover-pages"
       name="$ctrl.conferenceSettingsForm"
-      data-ng-submit="$ctrl.onPopoverValidate()"
-      novalidate>
+      novalidate
+      data-ng-submit="$ctrl.onPopoverValidate()">
 
     <div class="popover-pages-wrapper"
          data-ng-class="{ move: $ctrl.status.move }">
@@ -15,7 +15,7 @@
                 <div class="section-group">
                     <!-- LANGUAGE -->
                     <div class="section-item">
-                        <div class="form-group no-space">
+                        <div class="form-group mb-0">
                             <label class="control-label"
                                    for="conferenceSettingsLanguage"
                                    data-translate="telephony_number_feature_conference_general_settings_language">
@@ -31,10 +31,9 @@
 
                     <!-- PIN -->
                     <div class="section-item">
-                        <div class="form-group no-space"
+                        <div class="form-group mb-0"
                              data-ng-class="{
-                                 'has-error': $ctrl.conferenceSettingsForm.conferenceSettingsPin.$invalid && $ctrl.conferenceSettingsForm.conferenceSettingsPin.$dirty,
-                                 'has-success': $ctrl.conferenceSettingsForm.conferenceSettingsPin.$valid && $ctrl.conferenceSettingsForm.conferenceSettingsPin.$viewValue
+                                 'has-error': $ctrl.conferenceSettingsForm.conferenceSettingsPin.$invalid && $ctrl.conferenceSettingsForm.conferenceSettingsPin.$touched
                              }">
                             <label class="control-label"
                                    for="conferenceSettingsPin"
@@ -48,29 +47,30 @@
                                    data-translate-attr="{ placeholder: 'telephony_number_feature_conference_general_settings_pin' }"
                                    data-ng-model="$ctrl.numberCtrl.number.feature.pin"
                                    data-ng-pattern="/^\d{1,8}$/" />
-                            <span class="help-block small"
-                                  id="conferenceSettingsPinHelp"
-                                  data-translate="telephony_number_feature_conference_general_settings_pin_help">
+                            <span class="help-block"
+                                  role="alert"
+                                  id="conferenceSettingsPinHelp">
+                                <span data-translate="telephony_number_feature_conference_general_settings_pin_help"></span><br>
+                                <span data-ng-if="$ctrl.conferenceSettingsForm.conferenceSettingsPin.$touched"
+                                      data-ng-messages="$ctrl.conferenceSettingsForm.conferenceSettingsPin.$error">
+                                    <span data-ng-message="pattern"
+                                          data-translate="telephony_number_feature_conference_general_settings_pin_invalid">
+                                    </span>
+                                </span>
                             </span>
-                            <div data-ng-messages="$ctrl.conferenceSettingsForm.conferenceSettingsPin.$error">
-                                <label for="conferenceSettingsPin"
-                                    data-ng-message="pattern"
-                                    data-translate="telephony_number_feature_conference_general_settings_pin_invalid">
-                                </label>
-                            </div>
                         </div>
                     </div> <!-- PIN -->
 
-                    <div class="section-item">
-                        <div class="row bottom-space-m12">
+                    <div class="section-item" style="overflow: hidden;">
+                        <div class="row mb-3">
                             <div class="col-xs-6">
                                 <!-- ANNOUCEMENT -->
-                                <div class="form-group no-space">
+                                <div class="form-group mb-0">
                                     <label class="control-label"
                                            for="conferenceSettingsAnnoucement"
                                            data-translate="telephony_number_feature_conference_general_settings_annoucement">
                                     </label>
-                                    <div class="btn-group block clearfix">
+                                    <div class="d-block btn-group clearfix">
                                         <label class="btn btn-default"
                                                data-ng-model="$ctrl.numberCtrl.number.feature.announceFile"
                                                data-uib-btn-radio="true"
@@ -86,12 +86,12 @@
                             </div>
                             <div class="col-xs-6">
                                 <!-- RECORD -->
-                                <div class="form-group no-space">
+                                <div class="form-group mb-0">
                                     <label class="control-label"
                                            for="conferenceSettingsRecord"
                                            data-translate="telephony_number_feature_conference_general_settings_record">
                                     </label>
-                                    <div class="btn-group block clearfix">
+                                    <div class="d-block btn-group clearfix">
                                         <label class="btn btn-default"
                                                data-ng-model="$ctrl.numberCtrl.number.feature.recordStatus"
                                                data-uib-btn-radio="true"
@@ -109,12 +109,12 @@
                         <div class="row">
                             <div class="col-xs-6">
                                 <!-- ENTER MUTED -->
-                                <div class="form-group no-space">
+                                <div class="form-group mb-0">
                                     <label class="control-label"
                                            for="conferenceSettingsEnterMuted"
                                            data-translate="telephony_number_feature_conference_general_settings_enter_muted">
                                     </label>
-                                    <div class="btn-group block clearfix">
+                                    <div class="d-block btn-group clearfix">
                                         <label class="btn btn-default"
                                                data-ng-model="$ctrl.numberCtrl.number.feature.enterMuted"
                                                data-uib-btn-radio="true"
@@ -130,12 +130,12 @@
                             </div>
                             <div class="col-xs-6">
                                 <!-- REJECT ANONYMOUS -->
-                                <div class="form-group no-space">
+                                <div class="form-group mb-0">
                                     <label class="control-label"
                                            for="conferenceSettingsRejectAnonymous"
                                            data-translate="telephony_number_feature_conference_general_settings_reject_anonymous">
                                     </label>
-                                    <div class="btn-group block clearfix">
+                                    <div class="d-block btn-group clearfix">
                                         <label class="btn btn-default"
                                                data-ng-model="$ctrl.numberCtrl.number.feature.anonymousRejection"
                                                data-uib-btn-radio="true"
@@ -155,11 +155,9 @@
                     <!-- WEBACCESS BUTTON -->
                     <button
                         type="button"
-                        class="section-item no-style full-width text-left"
+                        class="section-item large-popover-item text-left"
                         data-ng-click="$ctrl.status.move = true; $ctrl.status.toShow = 'webAccess';">
-                        <label class="top-space-m4 bottom-space-m0 pointer radio-label-main"
-                               data-translate="telephony_number_feature_conference_general_settings_public_address_label">
-                        </label>
+                        <label data-translate="telephony_number_feature_conference_general_settings_public_address_label"></label>
                         <div class="chevron-right">
                             <div class="chevron-wrapper">
                                 <i class="ovh-font ovh-font-arrow-right" aria-hidden="true"></i>
@@ -170,11 +168,9 @@
                     <!-- ANNOUNCEMENT BUTTON -->
                     <button
                         type="button"
-                        class="section-item no-style full-width text-left"
+                        class="section-item large-popover-item text-left"
                         data-ng-click="$ctrl.status.move = true; $ctrl.status.toShow = 'announcement';">
-                        <label class="top-space-m4 bottom-space-m0 pointer radio-label-main"
-                               data-translate="telephony_number_feature_conference_announcement">
-                        </label>
+                        <label data-translate="telephony_number_feature_conference_announcement"></label>
                         <div class="chevron-right">
                             <div class="chevron-wrapper">
                                 <i class="ovh-font ovh-font-arrow-right" aria-hidden="true"></i>
@@ -185,11 +181,9 @@
                     <!-- REPORT BUTTON -->
                     <button
                         type="button"
-                        class="section-item no-style full-width text-left"
+                        class="section-item large-popover-item text-left"
                         data-ng-click="$ctrl.status.move = true; $ctrl.status.toShow = 'report';">
-                        <label class="top-space-m4 bottom-space-m0 pointer radio-label-main"
-                               data-translate="telephony_number_feature_conference_report">
-                        </label>
+                        <label data-translate="telephony_number_feature_conference_report"></label>
                         <div class="chevron-right">
                             <div class="chevron-wrapper">
                                 <i class="ovh-font ovh-font-arrow-right" aria-hidden="true"></i>
@@ -199,17 +193,16 @@
                 </div>
             </section>
 
-            <footer class="clearfix double-choice">
+            <footer class="text-right">
                 <button type="submit"
-                        class="btn btn-primary"
+                        class="btn btn-primary float-right ml-md-2"
                         data-ng-disabled="$ctrl.conferenceSettingsForm.$invalid || !$ctrl.numberCtrl.number.feature.hasChange()"
                         data-translate="submit">
                 </button>
-
                 <button type="button"
                         class="btn btn-default"
-                        data-translate="cancel"
-                        data-ng-click="$ctrl.onPopoverCancel()">
+                        data-ng-click="$ctrl.onPopoverCancel()"
+                        data-translate="cancel">
                 </button>
             </footer>
 
@@ -219,7 +212,7 @@
 
             <header>
                 <button type="button"
-                        class="back-btn no-style no-space fs20"
+                        class="btn btn-link"
                         data-ng-click="$ctrl.status.move = false"
                         data-ng-disabled="$ctrl.conferenceSettingsForm.$invalid"
                         data-translate-attr="{ title: 'back' }">
@@ -241,10 +234,10 @@
                     <div class="section-item">
                         <div class="form-group">
                             <label for="conferenceSettingsPublicAddress"
-                                   class="block radio-label-main"
+                                   class="d-block radio-label-main"
                                    data-translate="telephony_number_feature_conference_general_settings_public_address">
                             </label>
-                            <a class="word-wrap"
+                            <a class="word-break"
                                target="_blank"
                                rel="noopener"
                                data-ng-if="$ctrl.numberCtrl.number.feature.webAccess.read"
@@ -256,16 +249,18 @@
                                   data-translate="none">
                             </span>
                             <div data-ng-if="$ctrl.loading.webAccess">
+                                <oui-loader class="mr-2"
+                                            data-size="s">
+                                </oui-loader>
                                 <span data-translate="telephony_number_feature_conference_general_settings_public_address_generating"></span>
-                                <spinner class="left-space-m4"></spinner>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="conferenceSettingsPublicAddress"
-                                   class="block radio-label-main"
+                                   class="d-block radio-label-main"
                                    data-translate="telephony_number_feature_conference_general_settings_public_control_address">
                             </label>
-                            <a class="word-wrap"
+                            <a class="word-break"
                                target="_blank"
                                rel="noopener"
                                data-ng-if="$ctrl.numberCtrl.number.feature.webAccess.write"
@@ -277,8 +272,10 @@
                                   data-translate="none">
                             </span>
                             <div data-ng-if="$ctrl.loading.webAccess">
+                                <oui-loader class="mr-2"
+                                            data-size="s">
+                                </oui-loader>
                                 <span data-translate="telephony_number_feature_conference_general_settings_public_address_generating"></span>
-                                <spinner class="left-space-m4"></spinner>
                             </div>
                         </div>
                         <div class="text-center">
@@ -313,13 +310,12 @@
             <!-- ANNOUNCEMENT -->
             <section data-ng-if="$ctrl.status.toShow === 'announcement'">
                 <div class="section-group">
-                    <div class="alert alert-info bottom-space-m0"
-                         role="alert">
-                        <i class="ovh-font ovh-font-filled-info right-space-m8"></i>
-                        <p data-translate="telephony_number_feature_conference_announcement_info"></p>
+                    <div class="alert alert-info mb-0"
+                         role="alert"
+                         data-translate="telephony_number_feature_conference_announcement_info">
                     </div>
                     <div class="section-item">
-                        <div class="form-group no-space">
+                        <div class="form-group p-0 m-0">
                             <label class="control-label"
                                    for="conferenceAnnouncementFile"
                                    data-translate="telephony_number_feature_conference_announcement_file_label">
@@ -334,22 +330,24 @@
                             </div>
                         </div>
                     </div>
-                    <label class="section-item full-width pointer input-file"
+                    <label class="section-item large-popover-item input-file"
                            data-ng-class="{ 'text-danger': $ctrl.model.soundFile && $ctrl.hasSoundFileError() }">
                         <input type="file"
                                accept="audio/*"
                                data-ng-model="$ctrl.model.announceUploadedFile"
                                data-input-file-change="$ctrl.onSoundFileChoosed" />
-                        <div class="dtable">
-                            <div class="dtd vertical-middle left-space-p16 right-space-p16">
+                        <div class="d-table">
+                            <div class="d-table-cell align-middle px-3">
                                 <i class="ovh-font ovh-font-upload fs18" data-ng-if="!$ctrl.loading.announceUpload"></i>
-                                <spinner data-ng-if="$ctrl.loading.announceUpload"></spinner>
+                                <oui-loader data-ng-if="$ctrl.loading.announceUpload"
+                                            data-size="s">
+                                </oui-loader>
                             </div>
-                            <div class="dtd vertical-middle">
-                                <span class="block radio-label-main"
+                            <div class="d-table-cell align-middle">
+                                <span class="d-block radio-label-main"
                                       data-translate="telephony_number_feature_conference_announcement_file_upload">
                                 </span>
-                                <span class="small normal"
+                                <span class="small font-weight-normal"
                                       data-translate="telephony_number_feature_conference_announcement_file_supported">
                                 </span>
                             </div>
@@ -363,7 +361,7 @@
                 <div class="section-group">
                     <!-- STATUS -->
                     <div class="section-item">
-                        <div class="form-group no-space">
+                        <div class="form-group mb-0">
                             <label class="control-label"
                                    for="conferenceReportStatus"
                                    data-translate="telephony_number_feature_conference_report_status">
@@ -380,10 +378,9 @@
                     <!-- EMAIL -->
                     <div class="section-item"
                          data-ng-if="$ctrl.numberCtrl.number.feature.reportStatus === 'other'">
-                        <div class="form-group no-space"
+                        <div class="form-group mb-0"
                              data-ng-class="{
-                                 'has-error': $ctrl.conferenceSettingsForm.conferenceReportEmail.$invalid && $ctrl.conferenceSettingsForm.conferenceReportEmail.$dirty,
-                                 'has-success': $ctrl.conferenceSettingsForm.conferenceReportEmail.$valid && $ctrl.conferenceSettingsForm.conferenceReportEmail.$viewValue
+                                 'has-error': $ctrl.conferenceSettingsForm.conferenceReportEmail.$invalid && $ctrl.conferenceSettingsForm.conferenceReportEmail.$touched
                              }">
                             <label class="control-label"
                                    for="conferenceReportEmail"
@@ -396,15 +393,17 @@
                                    data-translate-attr="{ placeholder: 'telephony_number_feature_conference_report_email' }"
                                    data-ng-model="$ctrl.numberCtrl.number.feature.reportEmail"
                                    data-ng-required="$ctrl.numberCtrl.number.feature.reportStatus === 'other'" />
-                            <div role="alert"
-                                 data-ng-messages="$ctrl.conferenceSettingsForm.conferenceReportEmail.$error">
+                            <span class="help-block"
+                                  role="alert"
+                                  data-ng-if="$ctrl.conferenceSettingsForm.conferenceReportEmail.$touched"
+                                  data-ng-messages="$ctrl.conferenceSettingsForm.conferenceReportEmail.$error">
                                 <span data-ng-message="required"
                                       data-translate="telephony_number_feature_conference_report_email_required">
-                                 </span>
+                                </span>
                                 <span data-ng-message="email"
                                       data-translate="telephony_number_feature_conference_report_email_bad">
                                 </span>
-                            </div>
+                            </span>
                         </div>
                     </div> <!-- EMAIL -->
 
@@ -416,7 +415,7 @@
                                    for="conferenceReportWhiteLabel"
                                    data-translate="telephony_number_feature_conference_report_white_label">
                             </label>
-                            <div class="btn-group block clearfix">
+                            <div class="d-block btn-group clearfix">
                                 <label class="btn btn-default"
                                        data-ng-model="$ctrl.numberCtrl.number.feature.whiteLabelReport"
                                        data-uib-btn-radio="true"
@@ -434,10 +433,10 @@
                 </div>
             </section> <!-- REPORT -->
 
-            <footer class="clearfix double-choice"
+            <footer class="text-right"
                     data-ng-if="$ctrl.status.toShow === 'report'">
                 <button type="button"
-                        class="btn btn-primary pull-right"
+                        class="btn btn-primary"
                         data-ng-click="$ctrl.status.move = false"
                         data-ng-disabled="$ctrl.conferenceSettingsForm.$invalid"
                         data-translate="common_confirm">

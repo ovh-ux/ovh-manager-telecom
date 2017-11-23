@@ -77,7 +77,7 @@
     </div> <!-- NOT IN EDITION -->
 
     <!-- IN EDITION -->
-    <div class="voip-plan__subpart bottom-space-p32"
+    <div class="voip-plan__subpart pb-5"
          data-ng-if="$ctrl.numberCtrl.number.feature.inEdition && !$ctrl.numberCtrl.loading.feature && !$ctrl.numberCtrl.loading.save"
          data-ng-init="$ctrl.onFeatureStartEdit()">
         <!-- CHOOSE INTO AVAILABLE SERVICES -->
@@ -102,11 +102,11 @@
             <label class="voip-plan__step-content voip-plan__step-content--after-grip"
                  for="radio-redirectTo-{{ service.serviceName }}"
                  data-ng-class="{ disabled: $ctrl.numberCtrl.number.feature.destination !== service.serviceName }">
-                <div class="voip-plan__step-icon voip-plan__step-icon--basic pointer"
+                <div class="voip-plan__step-icon voip-plan__step-icon--basic"
                      data-ng-attr-for="radio-redirectTo-{{ service.serviceName }}">
                      <span class="ovh-font ovh-font-phone" aria-hidden="true"></span>
                </div>
-                <div class="voip-plan__step-description pointer"
+                <div class="voip-plan__step-description"
                        data-ng-attr-for="radio-redirectTo-{{ service.serviceName }}">
                     <span class="voip-plan__step-name"
                           data-ng-bind="service.getDisplayedName()">
@@ -120,7 +120,7 @@
 
         <!-- CHOOSE IN OTHER GROUPS -->
         <div class="voip-plan__step"
-             data-ng-if="$ctrl.displayHelpers.hasOtherGroups">
+             data-ng-if="$ctrl.displayHelpers.hasOtherGroups || $ctrl.displayHelpers.currentGroupServiceCount > 4">
             <!-- RADIO -->
             <div data-jsplumb-endpoint="$ctrl.numberCtrl.jsPlumbEndpointsOptions.topLeft"
                  data-jsplumb-endpoint-uuid="anchor-other-service">
@@ -147,7 +147,7 @@
                      data-on-choice-cancel="$ctrl.manageCancelChoice">
                      <span class="ovh-font ovh-font-phoneAlt" aria-hidden="true"></span>
                 </div>
-                <div class="voip-plan__step-description pointer">
+                <div class="voip-plan__step-description">
                      <span class="voip-plan__step-info"
                            data-translate="telephony_number_feature_redirect_to_another_group">
                      </span>

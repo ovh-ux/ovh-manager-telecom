@@ -1,18 +1,16 @@
 
 <div id="pack-xdsl-diagnostic">
     <!-- LOADING -->
-    <bouncing-box-loader data-ng-if="XdslDiagnostic.status.init">
-        <h3 class="top-space-m16"
-            data-translate="loading">
-        </h3>
-    </bouncing-box-loader>
+    <oui-loader data-ng-if="XdslDiagnostic.status.init"
+                data-size="m">
+    </oui-loader>
 
     <!-- DIAG -->
     <div class="widget-presentation" data-ng-if="!XdslDiagnostic.status.init">
         <h2 class="widget-presentation-title" data-translate="pack_xdsl_access_diagnostic_title"></h2>
 
         <button type="button"
-                class="btn btn-primary bottom-space-m16"
+                class="btn btn-primary mb-3"
                 data-ng-click="XdslDiagnostic.launchDiagnostic()"
                 data-ng-disabled="(XdslDiagnostic.status.diagnosticRunning) || (XdslDiagnostic.diagnostic.remaining === 0)">
             <span data-translate="pack_xdsl_access_diagnostic_launch"></span>
@@ -22,8 +20,6 @@
                       data-translate-values="{value:XdslDiagnostic.diagnostic.remaining}"></span>
             </span>
         </button>
-
-        <spinner class="left-space-m4" data-ng-if="XdslDiagnostic.status.diagnosticRunning"></spinner>
 
         <div data-ng-if="XdslDiagnostic.diagnostic">
             <!-- General diagnostic -->
@@ -40,14 +36,16 @@
             <div class="row" data-ng-if="XdslDiagnostic.diagnostic.capabilities.isModemConnected">
                 <div class="col-xs-12 col-md-3 service-title" data-translate="pack_xdsl_access_diagnostic_modem_connected"></div>
                 <div class="col-xs-12 col-md-9 service-item">
-                    <spinner data-ng-if="XdslDiagnostic.diagnostic.isModemConnected===null"></spinner>
+                    <oui-loader data-ng-if="XdslDiagnostic.diagnostic.isModemConnected===null"
+                                data-size="s">
+                    </oui-loader>
                     <div data-ng-if="XdslDiagnostic.diagnostic.isModemConnected===false">
-                        <span class="ovh-font ovh-font-failure text-danger fs16"
+                        <span class="ovh-font ovh-font-failure text-danger h6"
                               aria-hidden="true"></span>
                          <span data-translate="pack_xdsl_access_diagnostic_modem_state_disconnected"></span>
                     </div>
                     <div data-ng-if="XdslDiagnostic.diagnostic.isModemConnected===true">
-                        <span class="ovh-font ovh-font-success text-success fs16"
+                        <span class="ovh-font ovh-font-success text-success h6"
                               aria-hidden="true"></span>
                          <span data-translate="pack_xdsl_access_diagnostic_modem_state_connected"></span>
                     </div>
@@ -58,14 +56,16 @@
             <div class="row" data-ng-if="XdslDiagnostic.diagnostic.capabilities.isActiveOnLns">
                 <div class="col-xs-12 col-md-3 service-title" data-translate="pack_xdsl_access_diagnostic_active_on_lns"></div>
                 <div class="col-xs-12 col-md-9 service-item">
-                    <spinner data-ng-if="XdslDiagnostic.diagnostic.isActiveOnLns===null"></spinner>
+                    <oui-loader data-ng-if="XdslDiagnostic.diagnostic.isActiveOnLns===null"
+                                data-size="s">
+                    </oui-loader>
                     <div data-ng-if="XdslDiagnostic.diagnostic.isActiveOnLns===false">
-                        <span class="ovh-font ovh-font-failure text-danger fs16"
+                        <span class="ovh-font ovh-font-failure text-danger h6"
                               aria-hidden="true"></span>
                          <span data-translate="pack_xdsl_access_diagnostic_lns_active_ko"></span>
                     </div>
                     <div data-ng-if="XdslDiagnostic.diagnostic.isActiveOnLns===true">
-                        <span class="ovh-font ovh-font-success text-success fs16"
+                        <span class="ovh-font ovh-font-success text-success h6"
                               aria-hidden="true"></span>
                          <span data-translate="pack_xdsl_access_diagnostic_lns_active_ok"></span>
                     </div>
@@ -76,14 +76,16 @@
             <div class="row" data-ng-if="XdslDiagnostic.diagnostic.capabilities.ping">
                 <div class="col-xs-12 col-md-3 service-title" data-translate="pack_xdsl_access_diagnostic_ping"></div>
                 <div class="col-xs-12 col-md-9 service-item">
-                    <spinner data-ng-if="XdslDiagnostic.diagnostic.ping===null"></spinner>
+                    <oui-loader data-ng-if="XdslDiagnostic.diagnostic.ping===null"
+                                data-size="s">
+                    </oui-loader>
                     <div data-ng-if="XdslDiagnostic.diagnostic.ping===false">
-                        <span class="ovh-font ovh-font-failure text-danger fs16"
+                        <span class="ovh-font ovh-font-failure text-danger h6"
                               aria-hidden="true"></span>
                          <span data-translate="pack_xdsl_access_diagnostic_ping_ko"></span>
                     </div>
                     <div data-ng-if="XdslDiagnostic.diagnostic.ping===true">
-                        <span class="ovh-font ovh-font-success text-success fs16"
+                        <span class="ovh-font ovh-font-success text-success h6"
                               aria-hidden="true"></span>
                          <span data-translate="pack_xdsl_access_diagnostic_ping_ok"></span>
                     </div>
@@ -95,14 +97,16 @@
                 <div class="row" data-ng-if="XdslDiagnostic.diagnostic.capabilities.sync">
                     <div class="col-xs-12 col-md-3 service-title" data-translate="pack_xdsl_access_diagnostic_line_sync"></div>
                     <div class="col-xs-12 col-md-9 service-item">
-                        <spinner data-ng-if="XdslDiagnostic.diagnostic.mainLine===null"></spinner>
+                        <oui-loader data-ng-if="XdslDiagnostic.diagnostic.mainLine===null"
+                                    data-size="s">
+                        </oui-loader>
                         <div data-ng-if="XdslDiagnostic.diagnostic.mainLine.sync===false">
-                            <span class="ovh-font ovh-font-failure text-danger fs16"
+                            <span class="ovh-font ovh-font-failure text-danger h6"
                                   aria-hidden="true"></span>
                              <span data-translate="pack_xdsl_access_diagnostic_line_sync_ko"></span>
                         </div>
                         <div data-ng-if="XdslDiagnostic.diagnostic.mainLine.sync===true">
-                            <span class="ovh-font ovh-font-success text-success fs16"
+                            <span class="ovh-font ovh-font-success text-success h6"
                                   aria-hidden="true"></span>
                              <span data-translate="pack_xdsl_access_diagnostic_line_sync_ok"></span>
                         </div>
@@ -133,45 +137,39 @@
             </div>
         </div>
 
-        <div class="top-space-m32" data-ng-if="XdslDiagnostic.isVIP">
+        <div class="mt-5" data-ng-if="XdslDiagnostic.isVIP">
             <h2 class="widget-presentation-title" data-translate="pack_xdsl_access_diagnostic_wizard_title"></h2>
             <div>
-                <label class="pointer">
-                    <flat-radio>
-                        <input type="radio"
-                            name="wizardType"
-                            value="type1"
-                            data-ng-model="XdslDiagnostic.wizardTypeSelection">
-                    </flat-radio>
-                    <span class="left-space-m4" data-translate="pack_xdsl_access_diagnostic_wizard_radio_probleme1"></span>
+                <label>
+                    <input type="radio"
+                        name="wizardType"
+                        value="type1"
+                        data-ng-model="XdslDiagnostic.wizardTypeSelection">
+                    <span class="ml-2" data-translate="pack_xdsl_access_diagnostic_wizard_radio_probleme1"></span>
                 </label>
             </div>
             <div>
-                <label class="pointer">
-                    <flat-radio>
-                        <input type="radio"
-                            name="wizardType"
-                            value="type2"
-                            data-ng-model="XdslDiagnostic.wizardTypeSelection">
-                    </flat-radio>
-                    <span class="left-space-m4" data-translate="pack_xdsl_access_diagnostic_wizard_radio_probleme2"></span>
+                <label>
+                    <input type="radio"
+                        name="wizardType"
+                        value="type2"
+                        data-ng-model="XdslDiagnostic.wizardTypeSelection">
+                    <span class="ml-2" data-translate="pack_xdsl_access_diagnostic_wizard_radio_probleme2"></span>
                 </label>
             </div>
             <div>
-                <label class="pointer">
-                    <flat-radio>
-                        <input type="radio"
-                            name="wizardType"
-                            value="type3"
-                            data-ng-model="XdslDiagnostic.wizardTypeSelection">
-                    </flat-radio>
-                    <span class="left-space-m4" data-translate="pack_xdsl_access_diagnostic_wizard_radio_probleme3"></span>
+                <label>
+                    <input type="radio"
+                        name="wizardType"
+                        value="type3"
+                        data-ng-model="XdslDiagnostic.wizardTypeSelection">
+                    <span class="ml-2" data-translate="pack_xdsl_access_diagnostic_wizard_radio_probleme3"></span>
                 </label>
             </div>
 
             <a data-ng-disabled="!XdslDiagnostic.wizardTypeSelection"
                 data-ui-sref="telecom.pack.xdsl.line-diagnostic({'type':XdslDiagnostic.wizardTypeSelection!=='type3'?'noSync':'alignment'})"
-                class="btn btn-primary top-space-m16"
+                class="btn btn-primary mt-3"
                 data-translate="pack_xdsl_access_diagnostic_assistant_launch"></a>
         </div>
 

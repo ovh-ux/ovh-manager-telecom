@@ -1,33 +1,45 @@
 <div data-ng-controller="PackDomainCtrl as PackDomain">
-
-    <div data-ng-include="'app/common/dashboard/service/loading.html'" data-ng-if="loaders.services"></div>
-    <div data-ng-include="'app/common/dashboard/service/no-element.html'" data-ng-if="!loaders.services && PackDomain.services.length == 0"></div>
-
-    <ul class="services-list" data-ng-if="!loaders.services && PackDomain.services.length > 0">
-        <li class="service-item" data-ng-repeat="service in PackDomain.services track by service.name">
-
-            <a data-ng-href="{{PackDomain.getWebDomain(service.name)}}"
-               class="service-button"
+    <div class="oui-tile__body"
+         data-ng-if="loaders.services">
+        <div class="oui-tile__definition">
+            <oui-loader data-size="m"></oui-loader>
+        </div>
+    </div>
+    <div class="oui-tile__body"
+         data-ng-if="!loaders.services && PackDomain.services.length == 0">
+        <div class="oui-tile__definition"
+             data-ng-include="'app/common/dashboard/service/no-element.html'">
+        </div>
+    </div>
+    <div class="oui-tile__body"
+         data-ng-if="!loaders.services && PackDomain.services.length > 0">
+        <div class="oui-tile__item oui-tile__item_button"
+             data-ng-repeat="service in PackDomain.services track by service.name">
+            <a class="oui-tile__button oui-button oui-button_link oui-button_icon-right oui-button_full-width"
                target="_blank"
-               rel="noopener">
-                <span class="ovh-font ovh-font-domain" aria-hidden="true"></span>
-
-                <div class="service-button-description">
-                    <div class="description-title">{{ service.name }}</div>
-                    <div class="description-subtext">{{ service.tld }}</div>
-                </div>
-
-                <span class="ovh-font ovh-font-arrow-right" aria-hidden="true"></span>
+               rel="noopener"
+               data-ng-href="{{ PackDomain.getWebDomain(service.name) }}">
+                <span class="d-inline-block">
+                    <span class="text-secondary"
+                          data-ng-bind="service.name">
+                    </span>
+                    <span class="d-block"
+                          data-ng-bind="service.tld">
+                    </span>
+                </span>
+                <i class="oui-icon oui-icon-chevron-right" aria-hidden="true"></i>
             </a>
-        </li>
-    </ul>
-
-    <div class="order-service">
-        <a data-ng-if="service.available > 0"
-           data-ui-sref="telecom.pack.domain-activation"
-           class="btn btn-link">
-            <span class="ovh-font ovh-font-activer fs16 right-space-m4" aria-hidden="true"></span>
-            <span class="data-ng-binding" data-translate="common_order_activate_service"></span>
-        </a>
+        </div>
+    </div>
+    <div class="oui-tile__body"
+         data-ng-if="service.available > 0">
+        <div class="oui-tile__item">
+            <div class="oui-tile__definition">
+                <a class="btn btn-default btn-block"
+                   data-ui-sref="telecom.pack.domain-activation"
+                   data-translate="common_order_activate_service">
+                </a>
+            </div>
+        </div>
     </div>
 </div>

@@ -9,10 +9,14 @@
 
     <div class="telecom-section-content">
 
+        <toast-message></toast-message>
+
         <!-- AGENT ADD -->
         <div class="widget-presentation">
             <header class="widget-presentation-header">
-                <h2 class="widget-presentation-title" data-translate="telephony_alias_configuration_agents_add"></h2>
+                <h2 class="widget-presentation-title"
+                    data-translate="telephony_alias_configuration_agents_add">
+                </h2>
             </header>
 
             <form id="agentAddForm"
@@ -21,11 +25,12 @@
                   novalidate>
 
                 <!-- NUMBER -->
-                <div data-flat-input-container>
+                <div class="form-group">
                     <label for="agentNumber"
                            class="control-label"
-                           data-translate="telephony_alias_configuration_agents_number"></label>
-                    <div class="input-group top-space-m4"
+                           data-translate="telephony_alias_configuration_agents_number">
+                    </label>
+                    <div class="input-group mt-1"
                          data-ng-repeat="number in AgentsOvhPabxCtrl.addAgentForm.numbers track by $index">
                         <input id="agentNumber"
                                class="form-control"
@@ -39,7 +44,7 @@
                                     class="btn btn-default"
                                     data-voip-service-choice-popover="{
                                         popoverPlacement: 'auto left',
-                                        popoverClass: 'pretty-popover telephony-service-choice-popover',
+                                        popoverClass: 'telephony-service-choice-popover pretty-popover',
                                         popoverAppendToBody: true,
                                         popoverIsOpen: false
                                     }"
@@ -61,7 +66,7 @@
                 </div>
 
                 <!-- ADD MORE NUMBERS -->
-                <div class="top-space-m16 clearfix"
+                <div class="form-group"
                      data-ng-if="AgentsOvhPabxCtrl.addAgentForm.numbers[0]">
                     <button type="button"
                             class="btn btn-default"
@@ -71,7 +76,7 @@
                     </button>
                 </div>
 
-                <div class="top-space-m32">
+                <div class="form-group">
                     <button type="button"
                             class="btn btn-default"
                             data-translate="cancel"
@@ -81,37 +86,54 @@
                     <button type="submit"
                             class="btn btn-primary"
                             data-ng-disabled="agentAddForm.$invalid || AgentsOvhPabxCtrl.addAgentForm.isAdding">
+                        <oui-loader class="mr-2"
+                                    data-ng-if="AgentsOvhPabxCtrl.addAgentForm.isAdding"
+                                    data-size="s">
+                        </oui-loader>
                         <span data-ng-if="AgentsOvhPabxCtrl.addAgentForm.numbers.length <= 1"
-                              data-translate="telephony_alias_configuration_agents_add"></span>
+                              data-translate="telephony_alias_configuration_agents_add">
+                        </span>
                         <span data-ng-if="AgentsOvhPabxCtrl.addAgentForm.numbers.length > 1"
                               data-translate="telephony_alias_configuration_agents_add_multiple"
-                              data-translate-values="{ count: AgentsOvhPabxCtrl.addAgentForm.numbers.length }"></span>
-                        <spinner class="left-space-m4" data-ng-if="AgentsOvhPabxCtrl.addAgentForm.isAdding"></spinner>
+                              data-translate-values="{ count: AgentsOvhPabxCtrl.addAgentForm.numbers.length }">
+                        </span>
                     </button>
                 </div>
+
             </form><!-- agent add form -->
         </div>
+        <!-- /.widget-presentation -->
 
         <!-- AGENT LIST -->
         <div class="widget-presentation">
             <header class="widget-presentation-header">
-                <h2 class="widget-presentation-title" data-translate="telephony_alias_configuration_agents_list"></h2>
+                <h2 class="widget-presentation-title"
+                    data-translate="telephony_alias_configuration_agents_list">
+                </h2>
             </header>
 
             <button type="button"
-                    class="btn btn-default bottom-space-m4"
+                    class="btn btn-default mb-1"
                     data-ng-disabled="AgentsOvhPabxCtrl.agents.isDeleting || !AgentsOvhPabxCtrl.getSelectedAgentIds().length"
                     data-ng-click="AgentsOvhPabxCtrl.deleteAgents()">
+                <oui-loader class="mr-2"
+                            data-ng-if="AgentsOvhPabxCtrl.agents.isDeleting"
+                            data-size="s">
+                </oui-loader>
                 <span data-translate="telephony_alias_configuration_agents_delete_one"
-                      data-ng-if="AgentsOvhPabxCtrl.getSelectedAgentIds().length <= 1"></span>
+                      data-ng-if="AgentsOvhPabxCtrl.getSelectedAgentIds().length <= 1">
+                </span>
                 <span data-translate="telephony_alias_configuration_agents_delete_n"
                       data-translate-values="{ count: AgentsOvhPabxCtrl.getSelectedAgentIds().length }"
-                      data-ng-if="AgentsOvhPabxCtrl.getSelectedAgentIds().length > 1"></span>
-                <spinner class="left-space-m4" data-ng-if="AgentsOvhPabxCtrl.agents.isDeleting"></spinner>
+                      data-ng-if="AgentsOvhPabxCtrl.getSelectedAgentIds().length > 1">
+                </span>
             </button>
 
-            <div class="table-responsive-vertical">
-                <table class="table table-pretty table-hover table-striped no-space">
+            <div class="table-responsive">
+                <table class="table"
+                       data-ng-class="{
+                           'table-hover table-striped': AgentsOvhPabxCtrl.agents.ids.length > 1
+                       }">
                     <thead>
                         <tr>
                             <th scope="col" width="40px">
@@ -125,84 +147,74 @@
                                     data-ovh-checkbox-table-ids-selected="AgentsOvhPabxCtrl.agents.selected"
                                     data-ovh-checkbox-table-id="agentId" />
                             </th>
-                            <th scope="col">
-                                <label data-translate="telephony_alias_configuration_agents_agent"></label>
+                            <th scope="col"
+                                data-translate="telephony_alias_configuration_agents_agent">
                             </th>
-                            <th scope="col">
-                                <label data-translate="telephony_alias_configuration_agents_timeout"></label>
+                            <th scope="col"
+                                data-translate="telephony_alias_configuration_agents_timeout">
                             </th>
-                            <th scope="col">
-                                <label data-translate="telephony_alias_configuration_agents_wrapUpTime"></label>
+                            <th scope="col"
+                                data-translate="telephony_alias_configuration_agents_wrapUpTime">
                             </th>
-                            <th scope="col">
-                                <label data-translate="telephony_alias_configuration_agents_simultaneousLines"></label>
+                            <th scope="col"
+                                data-translate="telephony_alias_configuration_agents_simultaneousLines">
                             </th>
-                            <th scope="col">
-                                <label data-translate="telephony_alias_configuration_agents_status"></label>
-                            </th>
-                            <th scope="col">
-                                <label data-translate=""></label>
+                            <th scope="col"
+                                colspan="2"
+                                data-translate="telephony_alias_configuration_agents_status">
                             </th>
                         </tr>
                     </thead>
                     <tbody data-ng-if="!AgentsOvhPabxCtrl.agents.isLoading && AgentsOvhPabxCtrl.agents.ids.length">
                         <tr data-ng-repeat="agent in AgentsOvhPabxCtrl.agents.paginated">
-                            <td>
+                            <td class="align-middle">
                                 <input type="checkbox"
                                        data-ng-disabled="AgentsOvhPabxCtrl.agents.isDeleting"
                                        data-ng-model="AgentsOvhPabxCtrl.agents.selected[agent.agentId]" />
                             </td>
-                            <td data-title="{{:: 'telephony_alias_configuration_agents_agent' | translate }}">
-                                <span class="text-nowrap"
-                                      data-ng-if="!agent.inEdition"
-                                      data-ng-bind="agent.number | phoneNumber"></span>
-                                <div data-flat-input-container
-                                     data-ng-if="agent.inEdition">
-                                    <input type="text"
-                                           class="form-control"
-                                           data-ng-model="agent.inEdition.number" />
-                                </div>
+                            <td class="align-middle">
+                                <span data-ng-if="!agent.inEdition"
+                                      data-ng-bind="agent.number | phoneNumber">
+                                </span>
+                                <input type="text"
+                                       class="form-control no-transition"
+                                       data-ng-if="agent.inEdition"
+                                       data-ng-model="agent.inEdition.number" />
                             </td>
-                            <td data-title="{{:: 'telephony_alias_configuration_agents_timeout' | translate }}">
-                                <span class="text-nowrap"
-                                      data-ng-if="!agent.inEdition"
-                                      data-ng-bind="agent.timeout"></span>
-                                <div data-flat-input-container
-                                     data-ng-if="agent.inEdition">
-                                    <input type="number"
-                                           class="form-control"
-                                           data-ng-model="agent.inEdition.timeout" />
-                                </div>
+                            <td class="align-middle">
+                                <span data-ng-if="!agent.inEdition"
+                                      data-ng-bind="agent.timeout">
+                                </span>
+                                <input type="number"
+                                       class="form-control no-transition"
+                                       data-ng-if="agent.inEdition"
+                                       data-ng-model="agent.inEdition.timeout" />
                             </td>
-                            <td data-title="{{:: 'telephony_alias_configuration_agents_wrapUpTime' | translate }}">
-                                <span class="text-nowrap"
-                                      data-ng-if="!agent.inEdition"
-                                      data-ng-bind="agent.wrapUpTime"></span>
-                                <div data-flat-input-container
-                                     data-ng-if="agent.inEdition">
-                                    <input type="number"
-                                           class="form-control"
-                                           data-ng-model="agent.inEdition.wrapUpTime" />
-                                </div>
+                            <td class="align-middle">
+                                <span data-ng-if="!agent.inEdition"
+                                      data-ng-bind="agent.wrapUpTime">
+                                </span>
+                                <input type="number"
+                                       class="form-control no-transition"
+                                       data-ng-if="agent.inEdition"
+                                       data-ng-model="agent.inEdition.wrapUpTime" />
                             </td>
-                            <td data-title="{{:: 'telephony_alias_configuration_agents_simultaneousLines' | translate }}">
-                                <span class="text-nowrap"
-                                      data-ng-if="!agent.inEdition"
-                                      data-ng-bind="agent.simultaneousLines"></span>
-                                <div data-flat-input-container
-                                     data-ng-if="agent.inEdition">
-                                    <input type="number"
-                                           class="form-control"
-                                           min="1"
-                                           max="10"
-                                           data-ng-model="agent.inEdition.simultaneousLines" />
-                                </div>
+                            <td class="align-middle">
+                                <span data-ng-if="!agent.inEdition"
+                                      data-ng-bind="agent.simultaneousLines">
+                                </span>
+                                <input type="number"
+                                       class="form-control no-transition"
+                                       min="1"
+                                       max="10"
+                                       data-ng-if="agent.inEdition"
+                                       data-ng-model="agent.inEdition.simultaneousLines" />
                             </td>
-                            <td data-title="{{:: 'telephony_alias_configuration_agents_status' | translate }}">
-                                <span class="text-nowrap"
-                                      data-ng-if="!agent.inEdition"
-                                      data-ng-bind="'telephony_alias_configuration_agents_status_' + agent.status | translate"></span>
-                                <select class="form-control"
+                            <td class="align-middle">
+                                <span data-ng-if="!agent.inEdition"
+                                      data-ng-bind="'telephony_alias_configuration_agents_status_' + agent.status | translate">
+                                </span>
+                                <select class="form-control no-transition"
                                         data-ng-if="agent.inEdition"
                                         data-ng-model="agent.inEdition.status">
                                     <option value="available" data-translate="telephony_alias_configuration_agents_status_available"></option>
@@ -211,27 +223,30 @@
                             </td>
                             <td>
                                 <button type="button"
-                                        class="no-style"
+                                        class="btn btn-link no-transition"
                                         aria-label="{{:: 'edit' | translate }}"
                                         data-ng-if="!agent.inEdition"
                                         data-ng-click="AgentsOvhPabxCtrl.startEdition(agent)">
                                      <i class="ovh-font ovh-font-editer"></i>
                                 </button>
-                                <div data-ng-if="agent.inEdition" style="width: 200px">
+                                <div data-ng-if="agent.inEdition">
                                     <button type="button"
-                                            class="btn btn-default"
+                                            class="btn btn-block btn-default"
                                             data-ng-if="agent.inEdition"
                                             data-ng-click="agent.inEdition = null"
                                             data-translate="cancel"
                                             data-ng-disabled="agent.isUpdating">
                                     </button>
                                     <button type="button"
-                                            class="btn btn-primary left-space-m4"
+                                            class="btn btn-block btn-primary"
                                             data-ng-if="agent.inEdition"
                                             data-ng-click="AgentsOvhPabxCtrl.updateAgent(agent)"
                                             data-ng-disabled="agent.isUpdating || !AgentsOvhPabxCtrl.isValidAgent(agent.inEdition)">
+                                        <oui-loader class="mr-2"
+                                                    data-ng-if="agent.isUpdating"
+                                                    data-size="s">
+                                        </oui-loader>
                                         <span data-translate="submit"></span>
-                                        <spinner class="left-space-m4" data-ng-if="agent.isUpdating"></spinner>
                                     </button>
                                 </div>
                             </td>
@@ -239,33 +254,39 @@
                     </tbody>
                     <tbody data-ng-if="AgentsOvhPabxCtrl.agents.isLoading || (!AgentsOvhPabxCtrl.agents.paginated.length && AgentsOvhPabxCtrl.agents.ids.length)">
                         <tr>
-                            <td class="text-center top-space-p16 bottom-space-p16" colspan="7">
-                                <spinner></spinner>
+                            <td colspan="7">
+                                <oui-loader data-size="m"></oui-loader>
                             </td>
                         </tr>
                     </tbody>
                     <tbody data-ng-if="!AgentsOvhPabxCtrl.agents.isLoading && !AgentsOvhPabxCtrl.agents.ids.length">
                         <tr>
-                            <td class="text-center top-space-p16 bottom-space-p16" colspan="7">
-                                <span data-translate="telephony_alias_configuration_agents_empty"></span>
+                            <td colspan="7"
+                                class="text-center"
+                                data-translate="telephony_alias_configuration_agents_empty">
                             </td>
                         </tr>
                     </tbody>
                 </table>
-                <div class="table-pretty-pagination top-space-m8"
-                     data-ng-show="!AgentsOvhPabxCtrl.agents.isLoading && AgentsOvhPabxCtrl.agents.ids.length"
-                     data-pagination-front
-                     data-items="AgentsOvhPabxCtrl.agents.ids"
-                     data-paginated-items="AgentsOvhPabxCtrl.agents.paginated"
-                     data-current-page="currentPage"
-                     data-nb-pages="nbPages"
-                     data-items-per-page="AgentsOvhPabxCtrl.agents.perPage"
-                     data-transform-item="AgentsOvhPabxCtrl.fetchAgent(item)"
-                     data-on-transform-item-done="AgentsOvhPabxCtrl.onTransformItemDone(items)"
-                     data-page-placeholder="{{ 'common_pagination_page' | translate: { currentPage: currentPage, nbPages: nbPages } }}"
-                     data-item-per-page-placeholder="{{ 'common_pagination_display' | translate }}">
-                </div>
             </div><!-- table responsive vertical -->
+            <div class="mt-2"
+                 data-ng-show="!AgentsOvhPabxCtrl.agents.isLoading && AgentsOvhPabxCtrl.agents.ids.length"
+                 data-pagination-front
+                 data-items="AgentsOvhPabxCtrl.agents.ids"
+                 data-paginated-items="AgentsOvhPabxCtrl.agents.paginated"
+                 data-current-page="currentPage"
+                 data-nb-pages="nbPages"
+                 data-items-per-page="AgentsOvhPabxCtrl.agents.perPage"
+                 data-transform-item="AgentsOvhPabxCtrl.fetchAgent(item)"
+                 data-on-transform-item-done="AgentsOvhPabxCtrl.onTransformItemDone(items)"
+                 data-page-placeholder="{{ 'common_pagination_page' | translate: { currentPage: currentPage, nbPages: nbPages } }}"
+                 data-item-per-page-placeholder="{{ 'common_pagination_display' | translate }}">
+            </div>
         </div><!-- agent list -->
-    </div><!-- section content -->
+        <!-- /.widget-presentation -->
+
+    </div>
+    <!-- /.telecom-section-content -->
+
 </section>
+<!-- /.telephony-group-alias-configuration-agents-ovhpabx -->

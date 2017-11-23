@@ -17,7 +17,7 @@ angular.module("managerApp").config(function (SidebarMenuProvider) {
         return SidebarMenu.addMenuItem({
             title: $translate.instant("telecom_sidebar_section_task"),
             category: "task",
-            icon: "tasks",
+            icon: "ovh-font ovh-font-tasks",
             state: "telecom.task",
             loadOnState: "telecom.task"
         });
@@ -27,7 +27,7 @@ angular.module("managerApp").config(function (SidebarMenuProvider) {
         return SidebarMenu.addMenuItem({
             title: $translate.instant("telecom_sidebar_section_v4"),
             category: "backToV4",
-            icon: "backToV4",
+            icon: "ovh-font ovh-font-backToV4",
             url: REDIRECT_URLS.telephonyV4
         });
     }
@@ -77,17 +77,17 @@ angular.module("managerApp").config(function (SidebarMenuProvider) {
     function initSidebarMenuActionsOptions () {
         SidebarMenu.addActionsMenuOptions([{
             title: $translate.instant("telecom_sidebar_actions_menu_number"),
-            icon: "hashtag",
+            icon: "ovh-font ovh-font-hashtag",
             state: "telecom.orders.alias"
         }, {
             title: $translate.instant("telecom_sidebar_actions_menu_domain"),
-            icon: "domain",
+            icon: "ovh-font ovh-font-domain",
             href: ORDER_URLS.domain,
             target: "_blank",
             external: true
         }, {
             title: $translate.instant("telecom_sidebar_actions_menu_internet"),
-            icon: "telecom-ethernet",
+            icon: "ovh-font ovh-font-telecom-ethernet",
             subActions: [{
                 title: $translate.instant("telecom_sidebar_actions_menu_internet_xdsl"),
                 href: ORDER_URLS.internet.xdsl,
@@ -119,7 +119,7 @@ angular.module("managerApp").config(function (SidebarMenuProvider) {
             }]
         }, {
             title: $translate.instant("telecom_sidebar_actions_menu_telephony"),
-            icon: "phone",
+            icon: "ovh-font ovh-font-phone",
             subActions: [{
                 title: $translate.instant("telecom_sidebar_actions_menu_telephony_voip"),
                 href: ORDER_URLS.telephony.voip,
@@ -141,7 +141,7 @@ angular.module("managerApp").config(function (SidebarMenuProvider) {
             }]
         }, {
             title: $translate.instant("telecom_sidebar_actions_menu_email"),
-            icon: "mail",
+            icon: "ovh-font ovh-font-mail",
             subActions: [{
                 title: $translate.instant("telecom_sidebar_actions_menu_email_exchange"),
                 href: ORDER_URLS.email.exchange,
@@ -175,13 +175,13 @@ angular.module("managerApp").config(function (SidebarMenuProvider) {
             }]
         }, {
             title: $translate.instant("telecom_sidebar_actions_menu_hubic"),
-            icon: "cloud",
+            icon: "ovh-font ovh-font-cloud",
             href: ORDER_URLS.hubic,
             target: "_blank",
             external: true
         }, {
             title: $translate.instant("telecom_sidebar_actions_menu_sms"),
-            icon: "message",
+            icon: "ovh-font ovh-font-message",
             subActions: [{
                 title: $translate.instant("telecom_sidebar_actions_menu_sms"),
                 state: "telecom.orders-sms"
@@ -193,7 +193,7 @@ angular.module("managerApp").config(function (SidebarMenuProvider) {
             }]
         }, {
             title: $translate.instant("telecom_sidebar_actions_menu_fax"),
-            icon: "print",
+            icon: "ovh-font ovh-font-print",
             href: ORDER_URLS.fax,
             target: "_blank",
             external: true

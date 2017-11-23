@@ -1,15 +1,11 @@
 <form name="importPhonebookContactForm"
       id="importPhonebookContactForm"
-      class="ovh-form-flat"
       data-ng-submit="ContactImportCtrl.importContact()">
 
     <div class="modal-header">
-        <h3 class="modal-title pull-left"
-            data-translate="telephony_phonebook_contact_action_import_title">
-        </h3>
         <button
             type="button"
-            class="close pull-right"
+            class="close float-right"
             aria-label="{{ ::'cancel' | translate }}"
             data-ng-click="ContactImportCtrl.cancel()">
             <span aria-hidden="true">&times;</span>
@@ -19,32 +15,44 @@
 
     <div class="modal-body"
          data-ng-if="!ContactImportCtrl.phonecontactForm.isImporting && !ContactImportCtrl.phonecontactForm.hasBeenImported">
+        <h3 class="modal-title"
+            data-translate="telephony_phonebook_contact_action_import_title">
+        </h3>
         <!-- FILE -->
-        <div class="form-group clearfix bottom-space-m16">
+        <div class="form-group clearfix mb-3">
             <p class="alert alert-info"
-               role="alert">
-                <i class="ovh-font ovh-font-filled-info" aria-hidden="true"></i>
-                <span data-translate="telephony_phonebook_contact_action_import_info"></span>
+               role="alert"
+               data-translate="telephony_phonebook_contact_action_import_info">
             </p>
             <input-file
                 data-ng-model="ContactImportCtrl.phonecontactForm.uploadedFile"
                 data-ng-accept="text/*"
                 data-ng-accept-filter="ContactImportCtrl.checkValidTextExtention(file)">
-                <i class="fa fa-upload right-space-m4" aria-hidden="true"></i>
+                <i class="fa fa-upload mr-1"
+                   aria-hidden="true"></i>
                 <span data-translate="telephony_phonebook_contact_action_import_file_label"></span>
             </input-file>
         </div>
     </div>
     <!-- /.modal-body -->
 
-    <div class="modal-body" data-ng-if="ContactImportCtrl.phonecontactForm.isImporting">
-        <bouncing-box-loader>
+    <div class="modal-body"
+         data-ng-if="ContactImportCtrl.phonecontactForm.isImporting">
+        <h3 class="modal-title"
+            data-translate="telephony_phonebook_contact_action_import_title">
+        </h3>
+        <div class="text-center">
+            <oui-loader data-size="m"></oui-loader>
             <h4 data-translate="telephony_phonebook_contact_action_importing"></h4>
-        </bouncing-box-loader>
+        </div>
     </div>
     <!-- /.modal-body -->
 
-    <div class="modal-body" data-ng-if="ContactImportCtrl.phonecontactForm.hasBeenImported">
+    <div class="modal-body"
+         data-ng-if="ContactImportCtrl.phonecontactForm.hasBeenImported">
+        <h3 class="modal-title"
+            data-translate="telephony_phonebook_contact_action_import_title">
+        </h3>
         <success-drawing-check data-draw-success-check="ContactImportCtrl.phonecontactForm.hasBeenImported">
             <h4 data-translate="telephony_phonebook_contact_action_imported"></h4>
         </success-drawing-check>

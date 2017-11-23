@@ -1,26 +1,29 @@
-<form id="editFunctionKeyForm" name="editFunctionKeyForm" class="ovh-form-flat" data-ng-submit="ProgammableKeysEditCtrl.save()">
+<form id="editFunctionKeyForm"
+      name="editFunctionKeyForm"
+      data-ng-submit="ProgammableKeysEditCtrl.save()">
 
     <div class="modal-header">
-        <h3 class="modal-title pull-left" data-translate="telephony_line_phone_programmableKeys_keys_add_title"></h3>
-        <button type="button" class="close pull-right"
-            aria-label="{{'cancel'|translate}}"
-            data-ng-click="ProgammableKeysEditCtrl.cancel()">
+        <button type="button"
+                class="close float-right"
+                aria-label="{{'cancel'|translate}}"
+                data-ng-click="ProgammableKeysEditCtrl.cancel()">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
 
-    <div class="modal-body" data-ng-if="!ProgammableKeysEditCtrl.loading.save && !ProgammableKeysEditCtrl.saved">
+    <div class="modal-body"
+         data-ng-if="!ProgammableKeysEditCtrl.loading.save && !ProgammableKeysEditCtrl.saved">
+        <h3 class="modal-title"
+            data-translate="telephony_line_phone_programmableKeys_keys_add_title"></h3>
         <!-- L1 KEY WARNING -->
         <div class="alert alert-warning"
              role="alert"
-             data-ng-if="ProgammableKeysEditCtrl.initialFunctionKey.label === 'L1'">
-            <span class="ovh-font ovh-font-filled-warning"
-                  aria-hidden="true">
-            </span>
-            <p data-translate="telephony_line_phone_programmableKeys_l1_warning"></p>
+             data-ng-if="ProgammableKeysEditCtrl.initialFunctionKey.label === 'L1'"
+             data-translate="telephony_line_phone_programmableKeys_l1_warning">
         </div> <!-- End of L1 KEY WARNING -->
 
-        <div class="form-group" data-ng-if="!ProgammableKeysEditCtrl.loading.init">
+        <div class="form-group"
+             data-ng-if="!ProgammableKeysEditCtrl.loading.init">
             <!-- Function -->
             <div class="row">
                 <div class="col-xs-12">
@@ -29,7 +32,8 @@
             </div>
             <div class="row">
                 <div class="col-xs-6">
-                    <select flat-select class="form-control"
+                    <select
+                        class="form-control"
                         id="function"
                         name="function"
                         required
@@ -42,31 +46,39 @@
                 </div>
             </div>
             <!-- parametre -->
-            <div flat-input-container data-ng-if="ProgammableKeysEditCtrl.getParameterFunctions()">
-                <div class="row top-space-m12" data-ng-if="!ProgammableKeysEditCtrl.loading.parameters">
+            <div data-ng-if="ProgammableKeysEditCtrl.getParameterFunctions()">
+                <div class="row mt-2"
+                     data-ng-if="!ProgammableKeysEditCtrl.loading.parameters">
                     <div class="col-xs-12">
-                        <label class="control-label" for="parameter" data-translate="telephony_line_phone_programmableKeys_available_function_parameter_label"></label>
+                        <label class="control-label"
+                               for="parameter"
+                               data-translate="telephony_line_phone_programmableKeys_available_function_parameter_label">
+                        </label>
                     </div>
                 </div>
                 <!-- NEED TO SHOW GOOD INPUT FOR PARAMETERS -->
-                <div class="row" data-ng-switch on="ProgammableKeysEditCtrl.getParameterFunctions()">
+                <div class="row"
+                     data-ng-switch on="ProgammableKeysEditCtrl.getParameterFunctions()">
                     <!-- PHONE NUMBER -->
-                    <div class="col-xs-12" data-ng-switch-when="number" >
+                    <div class="col-xs-12"
+                         data-ng-switch-when="number">
                         <input id="parameter"
-                            type="text"
-                            name="parameter"
-                            class="form-control"
-                            placeholder="{{ 'telephony_line_phone_programmableKeys_available_function_parameter_placeholdel' | translate }}"
-                            data-ng-model="ProgammableKeysEditCtrl.FunctionKey.parameter"
-                            data-ng-minlength="2"
-                            data-ng-maxlength="26"
-                            data-ng-pattern="ProgammableKeysEditCtrl.numberPattern"
-                            required/>
+                               type="text"
+                               name="parameter"
+                               class="form-control"
+                               placeholder="{{ 'telephony_line_phone_programmableKeys_available_function_parameter_placeholdel' | translate }}"
+                               data-ng-model="ProgammableKeysEditCtrl.FunctionKey.parameter"
+                               data-ng-minlength="2"
+                               data-ng-maxlength="26"
+                               data-ng-pattern="ProgammableKeysEditCtrl.numberPattern"
+                               required />
                     </div>
 
                     <!-- EXT DYNAMIC -->
-                    <div class="col-xs-12" data-ng-switch-when="dynamic">
-                        <select flat-select class="form-control"
+                    <div class="col-xs-12"
+                         data-ng-switch-when="dynamic">
+                         <select
+                            class="form-control"
                             id="parameter"
                             name="parameter"
                             data-ng-if="!ProgammableKeysEditCtrl.loading.parameters"
@@ -78,8 +90,10 @@
                     </div>
 
                     <!-- SIBLING -->
-                    <div class="col-xs-12" data-ng-switch-when="sibling">
-                        <select flat-select class="form-control"
+                    <div class="col-xs-12"
+                         data-ng-switch-when="sibling">
+                        <select
+                            class="form-control"
                             id="parameter"
                             name="parameter"
                             data-ng-if="!ProgammableKeysEditCtrl.loading.parameters"
@@ -91,8 +105,10 @@
                     </div>
 
                     <!-- VOICE FAX -->
-                    <div class="col-xs-12" data-ng-switch-when="voicefax">
-                        <select flat-select class="form-control"
+                    <div class="col-xs-12"
+                         data-ng-switch-when="voicefax">
+                        <select
+                            class="form-control"
                             id="parameter"
                             name="parameter"
                             data-ng-if="!ProgammableKeysEditCtrl.loading.parameters"
@@ -104,8 +120,10 @@
                     </div>
 
                     <!-- HUNTING -->
-                    <div class="col-xs-12" data-ng-switch-when="hunting">
-                        <select flat-select class="form-control"
+                    <div class="col-xs-12"
+                         data-ng-switch-when="hunting">
+                        <select
+                            class="form-control"
                             id="parameter"
                             name="parameter"
                             data-ng-if="!ProgammableKeysEditCtrl.loading.parameters"
@@ -117,8 +135,10 @@
                     </div>
 
                     <!-- cloudHunting -->
-                    <div class="col-xs-12" data-ng-switch-when="cloudhunting">
-                        <select flat-select class="form-control"
+                    <div class="col-xs-12"
+                         data-ng-switch-when="cloudhunting">
+                        <select
+                            class="form-control"
                             id="parameter"
                             name="parameter"
                             data-ng-if="!ProgammableKeysEditCtrl.loading.parameters"
@@ -130,44 +150,53 @@
                     </div>
 
                     <!-- URL -->
-                    <div class="col-xs-12" data-ng-switch-when="url">
+                    <div class="col-xs-12"
+                         data-ng-switch-when="url">
                         <input id="parameter"
-                            type="url"
-                            name="parameter"
-                            class="form-control"
-                            placeholder="{{ 'telephony_line_phone_programmableKeys_available_function_parameter_placeholdel' | translate }}"
-                            data-ng-model="ProgammableKeysEditCtrl.FunctionKey.parameter"
-                            data-ng-pattern="ProgammableKeysEditCtrl.urlPattern"
-                            required/>
+                               type="url"
+                               name="parameter"
+                               class="form-control"
+                               placeholder="{{ 'telephony_line_phone_programmableKeys_available_function_parameter_placeholdel' | translate }}"
+                               data-ng-model="ProgammableKeysEditCtrl.FunctionKey.parameter"
+                               data-ng-pattern="ProgammableKeysEditCtrl.urlPattern"
+                               required />
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row" data-ng-if="ProgammableKeysEditCtrl.loading.parameters || ProgammableKeysEditCtrl.loading.init">
-            <div class="col-xs-12">
-                <bouncing-box-loader>
-                    <p class="top-space-m16" data-translate="loading"></p>
-                </bouncing-box-loader>
-            </div>
+        <oui-loader data-ng-if="ProgammableKeysEditCtrl.loading.parameters || ProgammableKeysEditCtrl.loading.init"
+                    data-size="m">
+        </oui-loader>
+    </div>
+
+    <div class="modal-body"
+         data-ng-if="ProgammableKeysEditCtrl.loading.save && !ProgammableKeysEditCtrl.saved">
+        <h3 class="modal-title"
+            data-translate="telephony_line_phone_programmableKeys_keys_add_title"></h3>
+        <div class="text-center">
+            <oui-loader data-size="m"></oui-loader>
+            <h4 data-translate="telephony_line_phone_programmableKeys_saving"></h4>
         </div>
     </div>
 
-    <div class="modal-body" data-ng-if="ProgammableKeysEditCtrl.loading.save && !ProgammableKeysEditCtrl.saved">
-        <bouncing-box-loader>
-            <h4 data-translate="telephony_line_phone_programmableKeys_saving"></h4>
-        </bouncing-box-loader>
-    </div>
-
-    <div class="modal-body" data-ng-if="ProgammableKeysEditCtrl.saved">
+    <div class="modal-body"
+         data-ng-if="ProgammableKeysEditCtrl.saved">
+        <h3 class="modal-title"
+            data-translate="telephony_line_phone_programmableKeys_keys_add_title"></h3>
         <success-drawing-check data-draw-success-check="ProgammableKeysEditCtrl.saved">
             <h4 data-translate="telephony_line_phone_programmableKeys_save_success"></h4>
         </success-drawing-check>
     </div>
 
     <div class="modal-footer">
-        <button class="btn btn-default" type="button"
-            data-ng-click="ProgammableKeysEditCtrl.cancel()" data-translate="cancel"></button>
-        <button class="btn btn-primary" data-ng-click="ProgammableKeysEditCtrl.save()" type="button"
-            data-translate="submit" data-ng-disabled="editFunctionKeyForm.$invalid || ProgammableKeysEditCtrl.loading.save || ProgammableKeysEditCtrl.saved"></button>
+        <button class="btn btn-default"
+                type="button"
+                data-ng-click="ProgammableKeysEditCtrl.cancel()"
+                data-translate="cancel"></button>
+        <button class="btn btn-primary"
+                data-ng-click="ProgammableKeysEditCtrl.save()" type="button"
+                data-translate="submit"
+                data-ng-disabled="editFunctionKeyForm.$invalid || ProgammableKeysEditCtrl.loading.save || ProgammableKeysEditCtrl.saved">
+        </button>
     </div>
 </form>

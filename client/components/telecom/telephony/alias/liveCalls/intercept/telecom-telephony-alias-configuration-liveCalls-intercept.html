@@ -1,10 +1,10 @@
 <div>
     <div class="modal-header">
-        <h3 class="modal-title pull-left"
+        <h3 class="modal-title float-left"
             data-translate="telephony_alias_configuration_mode_calls_action_intercept">
         </h3>
         <button type="button"
-                class="close pull-right"
+                class="close float-right"
                 aria-label="{{ ::'cancel' | translate }}"
                 data-ng-click="$ctrl.cancel()">
             <span aria-hidden="true">&times;</span>
@@ -12,9 +12,9 @@
     </div>
 
     <div class="modal-body">
-        <p class="alert alert-info" role="alert">
-            <i class="ovh-font ovh-font-info" aria-hidden="true"></i>
-            <span data-translate="telephony_alias_configuration_mode_calls_action_intercept_help"></span>
+        <p class="alert alert-info"
+           role="alert"
+           data-translate="telephony_alias_configuration_mode_calls_action_intercept_help">
         </p>
         <form name="interceptForm"
               data-ng-submit="$ctrl.submit()"
@@ -32,17 +32,19 @@
                        data-ng-pattern="/^\+?\d+$/"
                        autofocus
                        required />
-                <p class="alert alert-danger top-space-m16"
+                <p class="alert alert-danger mt-3"
+                   role="alert"
                    data-ng-if="$ctrl.error"
-                   role="alert">
-                    <i class="ovh-font ovh-font-filled-error" aria-hidden="true"></i>
-                    <span data-ng-bind="$ctrl.error"></span>
+                   data-ng-bind="$ctrl.error">
                 </p>
                 <button type="submit"
-                        class="btn btn-primary pull-right top-space-m8"
+                        class="btn btn-primary float-right mt-2"
                         data-ng-disabled="interceptForm.$invalid">
+                    <oui-loader class="mr-2"
+                                data-ng-if="$ctrl.isSubmitting"
+                                data-size="s">
+                    </oui-loader>
                     <span data-translate="telephony_alias_configuration_mode_calls_action_intercept_confirm"></span>
-                    <spinner data-ng-if="$ctrl.isSubmitting" class="left-space-m4"></spinner>
                 </button>
             </div>
         </form>

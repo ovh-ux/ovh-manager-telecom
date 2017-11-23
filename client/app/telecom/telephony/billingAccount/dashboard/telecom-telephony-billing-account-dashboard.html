@@ -1,126 +1,156 @@
 <div class="telephony-group-dashboard">
 
-    <bouncing-box-loader data-ng-if="DashboardCtrl.loading.init">
-        <h2 data-translate="loading"></h2>
-    </bouncing-box-loader>
+    <oui-loader data-ng-if="DashboardCtrl.loading.init"
+                data-size="m">
+    </oui-loader>
 
-    <div class="row" data-ng-if="!DashboardCtrl.loading.init && DashboardCtrl.group">
+    <toast-message></toast-message>
 
-        <div class="col-xs-12 col-md-4 bottom-space-m16">
-            <div class="widget-presentation">
-                <header class="widget-presentation-header">
-                    <h2 class="widget-presentation-title" data-translate="group_dashboard_actions"></h2>
-                </header>
+    <div class="row d-md-flex mb-5"
+         data-ng-if="!DashboardCtrl.loading.init && DashboardCtrl.group">
 
-                <telecom-v4-link data-ng-repeat="action in DashboardCtrl.actions track by $index"
-                     data-action="action">
-                </telecom-v4-link>
-
-                <div class="service-item">
-                    <a class="service-button" data-ui-sref="telecom.telephony.alias.portabilities({ serviceName: 'default'})">
-                        <p class="service-button-description"
-                            data-translate="telephony_group_billing_dashboard_actions_portabilities">
-                        </p>
-
-                        <strong class="service-button-description"
-                            data-ng-if="!DashboardCtrl.loading.portability"
-                            data-ng-bind="DashboardCtrl.portabilities"></strong>
-                        <spinner class="left-space-m4" data-ng-if="DashboardCtrl.loading.portability"></spinner>
-                        <span class="service-button-icon service-button-right-icon ovh-font ovh-font-arrow-right" aria-hidden="true"></span>
-                    </a>
-                </div>
-
-                <div class="service-item">
-                    <a class="service-button"
-                       data-ui-sref="telecom.telephony.portabilityOrder">
-                        <p class="service-button-description"
-                            data-translate="telephony_group_billing_dashboard_actions_portabilities_create">
-                        </p>
-                        <span class="service-button-icon service-button-right-icon ovh-font ovh-font-arrow-right" aria-hidden="true"></span>
-                    </a>
+        <div class="col-xs-12 col-md-4">
+            <div class="oui-tile h-100 mb-5">
+                <h3 class="oui-header_3 oui-tile__title"
+                    data-translate="group_dashboard_actions">
+                </h3>
+                <div class="oui-tile__body">
+                    <div class="oui-tile__item oui-tile__item_button"
+                         data-ng-repeat="action in DashboardCtrl.actions track by $index">
+                        <a class="oui-tile__button oui-button oui-button_link oui-button_icon-right oui-button_full-width"
+                           data-ui-sref="{{ action.sref }}">
+                            <span data-ng-bind="action.text"></span>
+                            <i class="oui-icon oui-icon-chevron-right" aria-label="{{ action.text }}"></i>
+                        </a>
+                    </div>
+                    <div class="oui-tile__item oui-tile__item_button">
+                        <a class="oui-tile__button oui-button oui-button_link oui-button_icon-right oui-button_full-width"
+                           data-ui-sref="telecom.telephony.alias.portabilities({ serviceName: 'default'})">
+                            <span class="d-block"
+                                  data-translate="telephony_group_billing_dashboard_actions_portabilities">
+                            </span>
+                            <span class="label label-default"
+                                  data-ng-if="!DashboardCtrl.loading.portability"
+                                  data-ng-bind="DashboardCtrl.portabilities">
+                            </span>
+                            <oui-loader class="ml-2"
+                                        data-ng-if="DashboardCtrl.loading.portability"
+                                        data-size="s">
+                            </oui-loader>
+                            <i class="oui-icon oui-icon-chevron-right" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                    <div class="oui-tile__item oui-tile__item_button">
+                        <a class="oui-tile__button oui-button oui-button_link oui-button_icon-right oui-button_full-width"
+                           data-ui-sref="telecom.telephony.portabilityOrder">
+                            <span data-translate="telephony_group_billing_dashboard_actions_portabilities_create"></span>
+                            <i class="oui-icon oui-icon-chevron-right" aria-hidden="true"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
 
         <div class="col-xs-12 col-md-4">
-            <div class="widget-presentation">
-                <header class="widget-presentation-header">
-                    <h2 class="widget-presentation-title" data-translate="telephony_group_billing_dashboard_information_title"></h2>
-                </header>
-                <div class="row">
-                    <div class="col-xs-12">
-                        <dl class="dl-horizontal">
-                            <dt data-translate="telephony_group_billing_dashboard_status"></dt>
-                            <dd data-ng-bind="('telephony_group_billing_dashboard_status_' + DashboardCtrl.group.status) | translate"></dd>
-                        </dl>
-                    </div>
-
-                    <div class="col-xs-12">
-
-                        <dl class="dl-horizontal">
-                            <dt data-ng-init="
-                                plr_line = 'telephony_group_billing_dashboard_line';
-                                plr_lines = 'telephony_group_billing_dashboard_lines'"
-                                data-ng-pluralize
-                                data-count="DashboardCtrl.group.lines.length"
-                                data-when="{
-                                    '0' : '{{ plr_line | translate }}',
-                                    '1' : '{{ plr_line | translate }}',
-                                    'other' : '{{ plr_lines | translate }}'
-                                }"></dt>
-                            <dd data-ng-bind="DashboardCtrl.group.lines.length"></dd>
-                            <dt data-ng-init="
-                                plr_num = 'telephony_group_billing_dashboard_alias';
-                                plr_nums = 'telephony_group_billing_dashboard_aliases'"
-                                data-ng-pluralize
-                                data-count="DashboardCtrl.group.numbers.length"
-                                data-when="{
-                                    '0' : '{{ plr_num | translate }}',
-                                    '1' : '{{ plr_num | translate }}',
-                                    'other' : '{{ plr_nums | translate }}'
-                                }"></dt>
-                            <dd data-ng-bind="DashboardCtrl.group.numbers.length"></dd>
-                            <dt data-translate="telephony_group_billing_dashboard_fax"></dt>
-                            <dd data-ng-bind="DashboardCtrl.group.fax.length"></dd>
-                        </dl>
-                    </div>
+            <div class="oui-tile h-100 mb-5">
+                <h3 class="oui-header_3 oui-tile__title"
+                    data-translate="telephony_group_billing_dashboard_information_title">
+                </h3>
+                <div class="oui-tile__body">
+                    <ul class="list-unstyled">
+                        <li class="oui-tile__item">
+                            <div class="oui-tile__definition">
+                                <strong class="oui-tile__term d-block"
+                                        data-translate="telephony_group_billing_dashboard_status">
+                                </strong>
+                                <span class="oui-tile__description"
+                                      data-ng-bind="('telephony_group_billing_dashboard_status_' + DashboardCtrl.group.status) | translate">
+                                </span>
+                            </div>
+                        </li>
+                        <li class="oui-tile__item">
+                            <div class="oui-tile__definition">
+                                <strong class="oui-tile__term d-block"
+                                        data-ng-init="plr_line = 'telephony_group_billing_dashboard_line'; plr_lines = 'telephony_group_billing_dashboard_lines'"
+                                        data-ng-pluralize
+                                        data-count="DashboardCtrl.group.lines.length"
+                                        data-when="{
+                                            '0' : '{{ plr_line | translate }}',
+                                            '1' : '{{ plr_line | translate }}',
+                                            'other' : '{{ plr_lines | translate }}'
+                                        }">
+                                </strong>
+                                <span class="oui-tile__description"
+                                      data-ng-bind="DashboardCtrl.group.lines.length">
+                                </span>
+                            </div>
+                        </li>
+                        <li class="oui-tile__item">
+                            <div class="oui-tile__definition">
+                                <strong class="oui-tile__term d-block"
+                                        data-ng-init=" plr_num = 'telephony_group_billing_dashboard_alias'; plr_nums = 'telephony_group_billing_dashboard_aliases'"
+                                        data-ng-pluralize
+                                        data-count="DashboardCtrl.group.numbers.length"
+                                        data-when="{
+                                            '0' : '{{ plr_num | translate }}',
+                                            '1' : '{{ plr_num | translate }}',
+                                            'other' : '{{ plr_nums | translate }}'
+                                        }">
+                                </strong>
+                                <span class="oui-tile__description"
+                                      data-ng-bind="DashboardCtrl.group.numbers.length">
+                                </span>
+                            </div>
+                        </li>
+                        <li class="oui-tile__item">
+                            <div class="oui-tile__definition">
+                                <strong class="oui-tile__term d-block"
+                                        data-translate="telephony_group_billing_dashboard_fax">
+                                </strong>
+                                <span class="oui-tile__description"
+                                      data-ng-bind="DashboardCtrl.group.fax.length">
+                                </span>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
-             </div>
+            </div>
         </div>
 
         <div class="col-xs-12 col-md-4">
-            <div class="widget-presentation bottom-space-m12">
-                <header class="widget-presentation-header">
-                    <h2 class="widget-presentation-title" data-translate="telephony_group_billing_dashboard_consumption_title"></h2>
-                </header>
-
-                <div class="row">
-                    <div class="col-xs-12 text-center bottom-space-m12">
-                        <strong data-translate="telephony_group_billing_dashboard_calls"></strong>
-                    </div>
-                    <div class="col-xs-12 text-center">
-                        <group-consumption-pie-chart
-                            data-dataset="DashboardCtrl.consumption">
-                        </group-consumption-pie-chart>
-                        <span data-ng-if="!DashboardCtrl.loading.consumption">
-                            <span data-translate="telephony_group_billing_dashboard_credit_current_out_plan"></span>
-                            <span class="text-danger" data-ng-bind="DashboardCtrl.group.currentOutplan.text"></span>
-                        </span>
+            <div class="oui-tile h-100 mb-5">
+                <h3 class="oui-header_3 oui-tile__title"
+                    data-translate="telephony_group_billing_dashboard_consumption_title">
+                </h3>
+                <div class="oui-tile__body">
+                    <div class="oui-tile__item">
+                        <div class="oui-tile__definition text-center">
+                            <group-consumption-pie-chart
+                                data-dataset="DashboardCtrl.consumption">
+                            </group-consumption-pie-chart>
+                            <span data-ng-if="!DashboardCtrl.loading.consumption">
+                                <span data-translate="telephony_group_billing_dashboard_credit_current_out_plan"></span>
+                                <span class="text-danger" data-ng-bind="DashboardCtrl.group.currentOutplan.text"></span>
+                            </span>
+                        </div>
                     </div>
                 </div>
-             </div>
+            </div>
         </div>
 
-        <div class="col-xs-12 col-md-8 pull-right" data-ng-if="DashboardCtrl.group.lines.length">
-            <div class="widget-presentation">
+    </div>
 
-                <header class="widget-presentation-header">
-                    <h2 class="widget-presentation-title" data-translate="telephony_group_billing_dashboard_network_title"></h2>
-                </header>
+    <div class="oui-tile mb-5"
+         data-ng-if="!DashboardCtrl.loading.init && DashboardCtrl.group && DashboardCtrl.group.lines.length">
+        <h3 class="oui-header_3 oui-tile__title"
+            data-translate="telephony_group_billing_dashboard_network_title">
+        </h3>
+        <div class="oui-tile__body">
+            <div class="oui-tile__definition">
 
                 <div class="row"
-                    data-ng-if="!DashboardCtrl.loading.phones"
-                    data-ng-repeat="line in DashboardCtrl.phoneDetails.paginated track by $index">
+                     data-ng-if="!DashboardCtrl.loading.phones"
+                     data-ng-repeat="line in DashboardCtrl.phoneDetails.paginated track by $index">
 
                     <div class="col-xs-12 telephony-card">
                         <div class="telephony-card__wrapper">
@@ -132,7 +162,7 @@
                             <div class="telephony-card__ctnr telephony-card__description">
                                 <strong class="telephony-card__title"
                                     data-ng-bind="line.phone.description || ('telephony_group_billing_dashboard_no_phone' | translate)"></strong>
-                                <dl class="dl-horizontal">
+                                <dl>
                                     <dt data-translate="telephony_group_billing_dashboard_line"></dt>
                                     <dd>
                                         <span data-ng-if="line.description" data-ng-bind="line.description"></span>
@@ -149,118 +179,134 @@
                     </div>
                 </div>
 
-                <div class="row"
-                    data-ng-if="DashboardCtrl.loading.phones">
-                    <div class="col-xs-12">
-                        <bouncing-box-loader>
-                            <p data-translate="loading"></p>
-                        </bouncing-box-loader>
-                    </div>
-                </div>
+                <oui-loader data-ng-if="DashboardCtrl.loading.phones"
+                            data-size="m">
+                </oui-loader>
 
-                <div class="table-pretty-pagination top-space-m8"
-                    data-ng-if="DashboardCtrl.group.lines.length"
-                    data-pagination-front
-                    data-items="DashboardCtrl.phoneDetails.raw"
-                    data-paginated-items="DashboardCtrl.phoneDetails.paginated"
-                    data-transform-item="DashboardCtrl.fetchPhones(item)"
-                    data-on-transform-item-done="DashboardCtrl.fetchPhonesDone(items)"
-                    data-current-page="currentPage"
-                    data-nb-pages="nbPages"
-                    data-items-per-page="itemsPerPage"
-                    data-page-placeholder="{{'common_pagination_page' | translate: {currentPage:currentPage, nbPages:nbPages} }}"
-                    data-item-per-page-placeholder="{{'common_pagination_display' | translate}}">
+                <div class="mt-2"
+                     data-ng-if="DashboardCtrl.group.lines.length"
+                     data-pagination-front
+                     data-items="DashboardCtrl.phoneDetails.raw"
+                     data-paginated-items="DashboardCtrl.phoneDetails.paginated"
+                     data-transform-item="DashboardCtrl.fetchPhones(item)"
+                     data-on-transform-item-done="DashboardCtrl.fetchPhonesDone(items)"
+                     data-current-page="currentPage"
+                     data-nb-pages="nbPages"
+                     data-items-per-page="itemsPerPage"
+                     data-page-placeholder="{{'common_pagination_page' | translate: {currentPage:currentPage, nbPages:nbPages} }}"
+                     data-item-per-page-placeholder="{{'common_pagination_display' | translate}}">
                 </div>
-
             </div>
         </div>
+    </div>
 
-        <div class="col-xs-12 col-md-8 pull-right">
-            <div class="widget-presentation">
-                <header class="widget-presentation-header">
-                    <h2 class="widget-presentation-title" data-translate="telephony_group_billing_dashboard_bill_title"></h2>
-                </header>
-                <div class="row">
-                    <div class="col-xs-12 table-responsive-vertical">
-                        <table class="table table-pretty table-hover table-striped no-space">
-                            <thead>
-                                <tr>
-                                    <th data-translate="telephony_group_billing_dashboard_bill_date" />
-                                    <th data-translate="telephony_group_billing_dashboard_bill_amount" />
-                                    <th data-translate="telephony_group_billing_dashboard_bill_paid" />
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody data-ng-if="!DashboardCtrl.loading.bills">
-                                <tr data-ng-repeat="consumption in ::DashboardCtrl.bills | orderBy:'date':true track by $index">
-                                    <td data-title="{{:: 'telephony_group_billing_dashboard_bill_date' | translate }}">
-                                        <span class="text-nowrap" data-ng-bind="consumption.date | date"></span>
-                                    </td>
-                                    <td data-title="{{:: 'telephony_group_billing_dashboard_bill_amount' | translate }}">
-                                        <span class="text-nowrap" data-ng-bind="consumption.price.text"></span>
-                                    </td>
-                                    <td data-title="{{:: 'telephony_group_billing_dashboard_bill_paid' | translate }}">
-                                        <span class="text-nowrap text-capitalize"
-                                            data-ng-bind="(consumption.status === 'done' ? 'yes' : 'no') | translate"></span>
-                                    </td>
-                                    <td>
-                                        <span data-uib-dropdown>
-                                            <button class="btn btn-default fs12"
-                                                    type="button"
-                                                    data-uib-dropdown-toggle
-                                                    data-ng-disabled="consumption.downloading">
-                                                <i data-ng-if="!consumption.downloading" class="ovh-font ovh-font-dots"></i>
-                                                <spinner data-ng-if="consumption.downloading"></spinner>
-                                            </button>
-                                            <ul data-uib-dropdown-menu class="dropdown-menu-right" role="menu">
-                                                <li>
-                                                    <button type="button"
-                                                            class="no-style no-outline text-nowrap"
-                                                            data-ng-click="DashboardCtrl.download(consumption, 'pdf')">
-                                                        <i class="fa fa-file-pdf-o right-space-m4"></i>
-                                                        <span data-translate="telephony_group_billing_dashboard_bill_download_pdf"></span>
-                                                    </button>
-                                                </li>
-                                                <li>
-                                                    <button type="button"
-                                                            class="no-style no-outline top-space-m8 text-nowrap"
-                                                            data-ng-click="DashboardCtrl.download(consumption, 'csv')">
-                                                        <i class="fa fa-file-code-o right-space-m4"></i>
-                                                        <span data-translate="telephony_group_billing_dashboard_bill_download_csv_emited"></span>
-                                                    </button>
-                                                </li>
-                                                <li>
-                                                    <button type="button"
-                                                            class="no-style no-outline top-space-m8 text-nowrap"
-                                                            data-ng-click="DashboardCtrl.download(consumption, 'received.csv')">
-                                                        <i class="fa fa-file-code-o right-space-m4"></i>
-                                                        <span data-translate="telephony_group_billing_dashboard_bill_download_csv_received"></span>
-                                                    </button>
-                                                </li>
-                                            </ul>
-                                        </span>
-                                    </td>
-                                </tr>
-                            </tbody>
-                            <tbody data-ng-if="DashboardCtrl.loading.bills">
-                                <tr>
-                                    <td class="text-center top-space-p16 bottom-space-p16" colspan="4">
-                                        <span data-translate="telephony_group_billing_dashboard_bill_loading"></span>
-                                        <spinner class="left-space-m4"></spinner>
-                                    </td>
-                                </tr>
-                            </tbody>
-                            <tbody data-ng-if="!DashboardCtrl.loading.bills && !DashboardCtrl.bills.length">
-                                <tr>
-                                    <td class="text-center top-space-p16 bottom-space-p16" colspan="4">
-                                        <span data-translate="telephony_group_billing_dashboard_bill_empty"></span>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+    <div class="oui-tile mb-5">
+        <h3 class="oui-header_3 oui-tile__title"
+            data-translate="telephony_group_billing_dashboard_bill_title">
+        </h3>
+        <div class="oui-tile__body">
+            <div class="oui-tile__definition">
+                <div class="table-responsive">
+                    <table class="table"
+                           data-ng-class="{
+                               'table-hover table-striped': DashboardCtrl.bills.length > 1
+                           }">
+                        <thead>
+                            <tr>
+                                <th scope="col"
+                                    data-translate="telephony_group_billing_dashboard_bill_date">
+                                </th>
+                                <th scope="col"
+                                    data-translate="telephony_group_billing_dashboard_bill_amount">
+                                </th>
+                                <th scope="col"
+                                    colspan="2"
+                                    data-translate="telephony_group_billing_dashboard_bill_paid">
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody data-ng-if="!DashboardCtrl.loading.bills">
+                            <tr data-ng-repeat="consumption in ::DashboardCtrl.bills | orderBy:'date':true track by $index">
+                                <th scope="row"
+                                    data-ng-bind="consumption.date | date">
+                                </th>
+                                <td data-ng-bind="consumption.price.text"></td>
+                                <td class="text-capitalize"
+                                    data-ng-bind="(consumption.status === 'done' ? 'yes' : 'no') | translate">
+                                </td>
+                                <td class="text-right">
+                                    <div class="btn-group"
+                                         data-uib-dropdown
+                                         data-dropdown-append-to-body>
+                                        <button id="btn-telephony-billing-account-dashboard-action-{{ index }}"
+                                                type="button"
+                                                class="btn btn-link"
+                                                data-uib-dropdown-toggle>
+                                            <span class="ovh-font ovh-font-dots"
+                                                  aria-hidden="true"
+                                                  data-ng-if="!consumption.downloading">
+                                            </span>
+                                            <oui-loader data-ng-if="consumption.downloading"
+                                                        data-size="s">
+                                            </oui-loader>
+                                            <span class="sr-only"
+                                                  data-translate="common_actions">
+                                            </span>
+                                        </button>
+                                        <ul class="dropdown-menu dropdown-menu-right"
+                                            role="menu"
+                                            aria-labelledby="btn-sms-incoming-action-{{ index }}"
+                                            data-uib-dropdown-menu>
+                                            <li role="menuitem">
+                                                <i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>
+                                                <button type="button"
+                                                        class="btn btn-link"
+                                                        data-ng-click="DashboardCtrl.download(consumption, 'pdf')"
+                                                        data-translate="telephony_group_billing_dashboard_bill_download_pdf">
+                                                </button>
+                                            </li>
+                                            <li role="menuitem">
+                                                <i class="fa fa-file-code-o mr-2" aria-hidden="true"></i>
+                                                <button type="button"
+                                                        class="btn btn-link"
+                                                        data-ng-click="DashboardCtrl.download(consumption, 'csv')"
+                                                        data-translate="telephony_group_billing_dashboard_bill_download_csv_emited">
+                                                </button>
+                                            </li>
+                                            <li role="menuitem">
+                                                <i class="fa fa-file-code-o mr-2" aria-hidden="true"></i>
+                                                <button type="button"
+                                                        class="btn btn-link"
+                                                        data-ng-click="DashboardCtrl.download(consumption, 'received.csv')"
+                                                        data-translate="telephony_group_billing_dashboard_bill_download_csv_received">
+                                                </button>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tbody data-ng-if="DashboardCtrl.loading.bills">
+                            <tr>
+                                <td colspan="4">
+                                    <oui-loader data-size="m"></oui-loader>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tbody data-ng-if="!DashboardCtrl.loading.bills && !DashboardCtrl.bills.length">
+                            <tr>
+                                <td class="text-center"
+                                    colspan="4"
+                                    data-translate="telephony_group_billing_dashboard_bill_empty">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-             </div>
+            </div>
         </div>
     </div>
+    <!-- /.widget-presentation -->
+
 </div>
+<!-- /.telephony-group-dashboard -->

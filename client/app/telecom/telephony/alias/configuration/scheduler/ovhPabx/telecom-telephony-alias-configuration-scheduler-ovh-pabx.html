@@ -5,33 +5,31 @@
             section-back-link-title="{{ 'telephony_alias_configuration_back_link' | translate }}">
         </section-back-link>
         <h1 data-translate="telephony_alias_configuration_scheduler_title"></h1>
-
     </header>
 
-    <div class="telecom-section-content bottom-space-m32">
+
+    <div class="telecom-section-content mb-4">
+
+        <toast-message></toast-message>
+
         <!-- INFO -->
         <div class="alert alert-info"
-             role="alert">
-            <i class="ovh-font ovh-font-filled-info right-space-m8"></i>
-            <p data-translate="telephony_alias_configuration_scheduler_info"></p>
+             role="alert"
+             data-translate="telephony_alias_configuration_scheduler_info">
         </div> <!-- INFO -->
 
-        <bouncing-box-loader data-ng-if="$ctrl.loading.init">
-            <h3 data-translate="loading"
-                class="top-space-m24">
-            </h3>
-        </bouncing-box-loader>
+        <oui-loader data-ng-if="$ctrl.loading.init"
+                    data-size="m">
+        </oui-loader>
 
         <div data-ng-if="!$ctrl.loading.init">
             <telephony-scheduler data-telephony-scheduler="$ctrl.number.feature.scheduler">
-                <bouncing-box-loader>
-                    <h3 data-translate="loading"
-                        class="top-space-m24">
-                    </h3>
-                </bouncing-box-loader>
+                <oui-loader data-size="m"></oui-loader>
             </telephony-scheduler>
         </div>
 
     </div>
+    <!-- /.telecom-section-content -->
 
 </section>
+<!-- /.telecom-telephony-alias-configuration-scheduler -->

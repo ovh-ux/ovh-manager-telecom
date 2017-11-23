@@ -8,23 +8,19 @@
         </h1>
 
         <div class="alert alert-info"
-             role="alert">
-            <i class="ovh-font ovh-font-filled-info right-space-m8"></i>
-            <p>
-                <span data-translate="telephony_line_assist_troubleshooting_informations_message"></span>
-            </p>
+             role="alert"
+             data-translate="telephony_line_assist_troubleshooting_informations_message">
         </div>
     </header>
 
-    <div class="telecom-section-content"
-         data-ng-if="TroubleshootingCtrl.loading.init">
-        <bouncing-box-loader>
-            <h4 data-translate="loading"></h4>
-        </bouncing-box-loader>
-    </div>
+    <oui-loader data-ng-if="TroubleshootingCtrl.loading.init"
+                data-size="m">
+    </oui-loader>
 
     <div class="telecom-section-content"
          data-ng-if="!TroubleshootingCtrl.loading.init">
+
+        <toast-message></toast-message>
 
         <!-- PROBLEM CHOICE -->
         <section class="telecom-troubleshooting-step widget-presentation">
@@ -37,54 +33,41 @@
 
             <div class="row problems-list-container">
 
-                <div class="row-height">
-                    <div class="col-md-6 col-height col-middle text-center">
-                        <div class="image-container full-height full-width dtable">
-                            <div class="dtd full-height col-middle">
-                                <img data-ng-if="TroubleshootingCtrl.imgScr"
-                                     data-ng-src="{{ TroubleshootingCtrl.imgScr }}"
-                                     data-ng-attr-alt="{{ TroubleshootingCtrl.process.line.phone.description }}" />
-                                <i class="ovh-font ovh-font-phone"
-                                   data-ng-if="!TroubleshootingCtrl.imgScr">
-                                </i>
-                                <span class="block top-space-m8"
-                                      data-ng-bind="TroubleshootingCtrl.process.line.phone.description">
-                                </span>
-                                <span data-translate="telephony_line_assist_troubleshooting_problem_phone_mac_address"
-                                      data-translate-values="{ macAddress: TroubleshootingCtrl.process.line.phone.macAddress }">
-                                </span>
-                            </div>
-                        </div>
-                    </div>
+                <div class="col-md-6 text-center">
+                    <img data-ng-if="TroubleshootingCtrl.imgScr"
+                         data-ng-src="{{ TroubleshootingCtrl.imgScr }}"
+                         data-ng-attr-alt="{{ TroubleshootingCtrl.process.line.phone.description }}" />
+                    <i class="ovh-font ovh-font-phone"
+                       data-ng-if="!TroubleshootingCtrl.imgScr">
+                    </i>
+                    <span class="d-block mt-2"
+                          data-ng-bind="TroubleshootingCtrl.process.line.phone.description">
+                    </span>
+                    <span data-translate="telephony_line_assist_troubleshooting_problem_phone_mac_address"
+                          data-translate-values="{ macAddress: TroubleshootingCtrl.process.line.phone.macAddress }">
+                    </span>
+                </div>
 
-                    <div class="col-md-6 col-height"
-                         data-ng-class="{ 'col-middle': TroubleshootingCtrl.problemsList.length === 0 }">
-                        <div class="content-container">
-                            <ul class="problem-list dtable full-width"
-                                data-ng-if="TroubleshootingCtrl.problemsList.length">
-                                <li class="problem-item dtr"
-                                    data-ng-repeat="problem in TroubleshootingCtrl.problemsList track by $index">
-                                    <label class="full-width">
-                                        <div class="dtd text-center vertical-middle">
-                                            <flat-radio>
-                                                <input type="radio"
-                                                       name="phoneProblem"
-                                                       value="{{ problem.name }}"
-                                                       data-ng-model="TroubleshootingCtrl.process.problem"
-                                                       data-ng-change="TroubleshootingCtrl.refreshSteps()" />
-                                            </flat-radio>
-                                        </div>
-                                        <div class="dtd vertical-middle">
-                                            <span data-translate="{{ 'telephony_line_assist_troubleshooting_problem_' + problem.name }}"></span>
-                                        </div>
-                                    </label>
-                                </li>
-                            </ul>
+                <div class="col-md-6">
+                    <div class="content-container">
+                        <ul class="problem-list list-unstyled"
+                            data-ng-if="TroubleshootingCtrl.problemsList.length">
+                            <li class="problem-item"
+                                data-ng-repeat="problem in TroubleshootingCtrl.problemsList track by $index">
+                                <label>
+                                    <input type="radio"
+                                           name="phoneProblem"
+                                           value="{{ problem.name }}"
+                                           data-ng-model="TroubleshootingCtrl.process.problem"
+                                           data-ng-change="TroubleshootingCtrl.refreshSteps()" />
+                                    <span data-translate="{{ 'telephony_line_assist_troubleshooting_problem_' + problem.name }}"></span>
+                                </label>
+                            </li>
+                        </ul>
 
-                            <em data-ng-if="TroubleshootingCtrl.problemsList.length === 0"
-                                data-translate="telephony_line_assist_troubleshooting_no_problems_category">
-                            </em>
-                        </div>
+                        <em data-ng-if="TroubleshootingCtrl.problemsList.length === 0"
+                            data-translate="telephony_line_assist_troubleshooting_no_problems_category">
+                        </em>
                     </div>
                 </div>
 
@@ -112,25 +95,21 @@
         </div> <!-- STEPS -->
 
         <!-- FOOTER BUTTONS -->
-        <footer class="footer-button-container bottom-space-m32 clearfix"
+        <footer class="mb-4 clearfix"
                 data-ng-if="TroubleshootingCtrl.process.problem && !TroubleshootingCtrl.isCurrentStepLastStep() && TroubleshootingCtrl.process.activeStep.isFinalized">
-
-            <div class="inline-block">
-                <button type="button"
-                        class="btn btn-primary pull-right left-space-m8"
-                        data-translate="telephony_line_assist_troubleshooting_it_works"
-                        data-ng-click="TroubleshootingCtrl.manageItWorks()">
-                </button>
-
-                <button type="reset"
-                        class="btn btn-default pull-left left-space-m0"
-                        data-translate="telephony_line_assist_troubleshooting_it_still_dont_works"
-                        data-ng-click="TroubleshootingCtrl.manageItStillDoesnttWork()">
-                </button>
-            </div>
-
+            <button type="button"
+                    class="btn btn-primary"
+                    data-translate="telephony_line_assist_troubleshooting_it_works"
+                    data-ng-click="TroubleshootingCtrl.manageItWorks()">
+            </button>
+            <button type="reset"
+                    class="btn btn-default"
+                    data-translate="telephony_line_assist_troubleshooting_it_still_dont_works"
+                    data-ng-click="TroubleshootingCtrl.manageItStillDoesnttWork()">
+            </button>
         </footer> <!-- FOOTER BUTTONS -->
 
     </div>
 
 </div>
+<!-- /.telecom-telephony-line-assist-troubleshooting -->

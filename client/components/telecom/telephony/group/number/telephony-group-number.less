@@ -1,5 +1,5 @@
 // COLORS
-@voip-plan-main-color : @BRAND_DARK;
+@voip-plan-main-color : @oui-color-primary;
 @voip-plan-secondary-color : @oui-color-shuttle;
 @voip-plan-border-color : @oui-color-mischka;
 @voip-plan-secondary-background-color : @oui-color-foam;
@@ -55,7 +55,7 @@
             &--grip {
                 width: @voip-plan-main-elements-size - 2;
                 height: @voip-plan-main-elements-size - 2;
-                border: solid 1px @brand-primary;
+                border: solid 1px @oui-color-secondary;
                 background-color: @voip-plan-secondary-background-color;
                 color: @voip-plan-main-color;
                 font-size: @voip-plan-icons-font-size;
@@ -63,7 +63,7 @@
                 cursor: move;
 
                 &:hover {
-                    background-color: lighten(@brand-primary, 25%);
+                    background-color: lighten(@oui-color-secondary, 25%);
                 }
 
                 &-disabled {
@@ -168,7 +168,7 @@
 
         &-name {
             display: block;
-            font-size: @FONT-SIZE-MAININFO;
+            font-size: @font-size-base;
             color: @voip-plan-main-color;
 
             &--has-info {
@@ -207,27 +207,27 @@
                 width: @voip-plan-main-elements-size;
                 height: @voip-plan-main-elements-size;
                 border: none;
-                background-color: @brand-primary;
+                background-color: @oui-color-secondary;
                 border-radius: 50%;
 
                 &:hover,
                 &:focus,
                 &:active {
-                    background-color: darken(@brand-primary, 15%);
+                    background-color: darken(@oui-color-secondary, 15%);
                 }
             }
 
             &--default {
                 width: @voip-plan-main-elements-size - 2;
                 height: @voip-plan-main-elements-size - 2;
-                border: solid 1px @brand-primary;
+                border: solid 1px @oui-color-secondary;
                 background-color: transparent;
                 border-radius: 50%;
 
                 &:hover,
                 &:focus,
                 &:active {
-                    background-color: fadeout(@brand-primary, 85%);
+                    background-color: fadeout(@oui-color-secondary, 85%);
                 }
             }
 
@@ -240,7 +240,7 @@
                 &:hover,
                 &:focus,
                 &:active {
-                    background-color: lighten(@brand-primary, 25%);
+                    background-color: lighten(@oui-color-secondary, 25%);
                 }
             }
 
@@ -275,6 +275,9 @@
             }
 
             &-content {
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
                 width: 100%;
                 height: 100%;
                 position: absolute;
@@ -443,17 +446,6 @@
 .telephony-number-feature-popover {
     .makeTwoPagePopover();
 
-    &.telephony-number-svi-config-popup,
-    &.telephony-number-conference-config-popup {
-        div.flat-select {
-            float: none;
-
-            select {
-                height: @input-height-base;
-            }
-        }
-    }
-
     &.telephony-number-ovh-pabx-actions-popup {
         section.page-section {
             section {
@@ -497,7 +489,6 @@
 
         &:not(.popover-full-screen) {
             @section-height: 450px;
-            max-height: 520px;
 
             section.page-section {
 

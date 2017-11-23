@@ -1,32 +1,33 @@
 <form name="removeTelephonyFaxCampaignForm"
       id="removeTelephonyFaxCampaignForm"
-      class="ovh-form-flat"
       data-ng-submit="CampaignsRemoveCtrl.remove()">
 
     <div class="modal-header">
-        <h3 class="modal-title pull-left" data-translate="telephony_service_fax_campaigns_remove"></h3>
         <button
             type="button"
-            class="close pull-right"
+            class="close float-right"
             aria-label="{{ ::'cancel' | translate }}"
             data-ng-click="CampaignsRemoveCtrl.cancel()">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
 
-    <div class="modal-body" data-ng-if="!CampaignsRemoveCtrl.loading.removeCampaign && !CampaignsRemoveCtrl.removed">
+    <div class="modal-body"
+         data-ng-if="!CampaignsRemoveCtrl.loading.removeCampaign && !CampaignsRemoveCtrl.removed">
+        <h3 data-translate="telephony_service_fax_campaigns_remove"></h3>
         <p data-translate="telephony_service_fax_campaigns_remove_campaign_confirm"
            data-translate-values="{ campaign: CampaignsRemoveCtrl.campaign.name }">
         </p>
     </div>
 
-    <div class="modal-body" data-ng-if="CampaignsRemoveCtrl.loading.removeCampaign && !CampaignsRemoveCtrl.removed">
-        <bouncing-box-loader>
-            <h4 data-translate="telephony_service_fax_campaigns_removing"></h4>
-        </bouncing-box-loader>
+    <div class="modal-body text-center"
+         data-ng-if="CampaignsRemoveCtrl.loading.removeCampaign && !CampaignsRemoveCtrl.removed">
+        <oui-loader data-size="m"></oui-loader>
+        <h4 data-translate="telephony_service_fax_campaigns_removing"></h4>
     </div>
 
-    <div class="modal-body" data-ng-if="CampaignsRemoveCtrl.removed">
+    <div class="modal-body"
+         data-ng-if="CampaignsRemoveCtrl.removed">
         <success-drawing-check data-draw-success-check="CampaignsRemoveCtrl.removed">
             <h4 data-translate="telephony_service_fax_campaigns_removed"></h4>
         </success-drawing-check>

@@ -5,28 +5,28 @@
         <!-- NOT IN EDITION -->
         <span data-ng-if="!$ctrl.inEdition">
             <span data-ng-bind="$ctrl.title"
-                  class="editable-service-name-title inline-block vertical-middle">
+                  class="editable-service-name-title d-inline-block align-middle">
             </span>
             <button type="button"
-                    class="btn btn-editable inline-block vertical-middle"
+                    class="btn btn-editable d-inline-block align-middle"
                     data-ng-click="$ctrl.startEdition()"
                     data-ng-disabled="$ctrl.disabled"
                     title="{{$ctrl.getTitle()}}">
-                <i class="ovh-font ovh-font-editer"></i>
+                <i class="oui-icon oui-icon-pen_line" aria-hidden="true"></i>
             </button>
         </span>
 
         <!-- IN EDITION -->
         <span data-ng-if="$ctrl.inEdition"
               class="clearfix">
-            <input class="service-name-edit-input inline-block vertical-middle"
+            <input class="service-name-edit-input d-inline-block align-middle"
                    name="editableServiceNameInput"
                    data-ng-maxlength="$ctrl.maxlength"
                    data-ng-model="$ctrl.model.serviceName"
                    data-ng-readonly="$ctrl.loading.save"
                    type="text"/>
 
-            <span class="edit-button-container inline-block vertical-middle">
+            <span class="edit-button-container d-inline-block align-middle">
                 <button type="submit"
                         class="btn btn-editable"
                         data-ng-disabled="$ctrl.loading.save || !editableServiceNameForm.editableServiceNameInput.$valid">
@@ -42,7 +42,7 @@
             </span>
         </span>
     </h1>
-    <em class="vertical-middle"
+    <em class="align-middle"
         data-ng-if="$ctrl.serviceName !== $ctrl.title || $ctrl.inEdition"
         data-ng-bind="$ctrl.serviceName"></em>
 

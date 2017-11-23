@@ -1,66 +1,66 @@
 <form name="cleanReceiverForm"
       id="cleanReceiverForm"
-      class="ovh-form-flat"
       data-ng-submit="ReceiversCleanCtrl.cleanReceivers()">
 
     <div class="modal-header">
-        <h3 class="modal-title pull-left" data-translate="sms_receivers_clean_receiver_title"></h3>
         <button
             type="button"
-            class="close pull-right"
+            class="close float-right"
             aria-label="{{ ::'cancel' | translate }}"
             data-ng-click="ReceiversCleanCtrl.close()">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
 
-    <div class="modal-body" data-ng-if="!ReceiversCleanCtrl.loading.clean && !ReceiversCleanCtrl.cleaned">
+    <div class="modal-body"
+         data-ng-if="!ReceiversCleanCtrl.loading.clean && !ReceiversCleanCtrl.cleaned">
 
-        <p class="bottom-space-m16 bold" data-translate="sms_receivers_clean_receiver_confirm"></p>
+        <h3 data-translate="sms_receivers_clean_receiver_title"></h3>
+        <p class="font-weight-bold"
+           data-translate="sms_receivers_clean_receiver_confirm">
+        </p>
         <p data-translate="sms_receivers_clean_receiver_options_available_text"></p>
 
-        <div class="form-group">
-            <label class="block pointer">
-                <flat-radio>
-                    <input
-                        type="radio"
-                        name="choice"
-                        id="freemium"
-                        value="freemium"
-                        data-ng-model="ReceiversCleanCtrl.clean.choice" />
-                </flat-radio>
-                <span class="left-space-m8" data-translate="sms_receivers_clean_receiver_options_freemium_label"></span>
+        <div class="radio">
+            <label>
+                <input
+                    type="radio"
+                    name="choice"
+                    id="freemium"
+                    value="freemium"
+                    data-ng-model="ReceiversCleanCtrl.clean.choice" />
+                <span data-translate="sms_receivers_clean_receiver_options_freemium_label"></span>
+                <span class="d-block font-weight-normal"
+                      data-translate="sms_receivers_clean_receiver_options_freemium_text">
+                </span>
             </label>
-            <p class="lh18 left-space-p24" data-translate="sms_receivers_clean_receiver_options_freemium_text"></p>
         </div>
 
-        <div class="form-group">
-            <label class="block pointer">
-                <flat-radio>
-                    <input
-                        type="radio"
-                        name="choice"
-                        id="premium"
-                        value="premium"
-                        data-ng-model="ReceiversCleanCtrl.clean.choice" />
-                </flat-radio>
-                <span class="left-space-m8" data-translate="sms_receivers_clean_receiver_options_premium_label"></span>
+        <div class="radio">
+            <label>
+                <input
+                    type="radio"
+                    name="choice"
+                    id="premium"
+                    value="premium"
+                    data-ng-model="ReceiversCleanCtrl.clean.choice" />
+                <span data-translate="sms_receivers_clean_receiver_options_premium_label"></span>
+                <span class="d-block font-weight-normal"
+                   data-translate="sms_receivers_clean_receiver_options_premium_text"
+                   data-translate-values="{ credit: ReceiversCleanCtrl.clean.price }">
+                </span>
             </label>
-            <p class="lh18 left-space-p24"
-               data-translate="sms_receivers_clean_receiver_options_premium_text"
-               data-translate-values="{ credit: ReceiversCleanCtrl.clean.price }">
-            </p>
         </div>
-
     </div>
 
-    <div class="modal-body" data-ng-if="ReceiversCleanCtrl.loading.clean && !ReceiversCleanCtrl.cleaned">
-        <bouncing-box-loader>
-            <h4 data-translate="sms_receivers_clean_receiver_cleaning"></h4>
-        </bouncing-box-loader>
+    <div class="modal-body text-center"
+         data-ng-if="ReceiversCleanCtrl.loading.clean && !ReceiversCleanCtrl.cleaned">
+        <oui-loader data-size="m"></oui-loader>
+        <h4 data-translate="sms_receivers_clean_receiver_cleaning"></h4>
     </div>
 
-    <div class="modal-body" data-ng-if="ReceiversCleanCtrl.cleaned">
+    <div class="modal-body"
+         data-ng-if="ReceiversCleanCtrl.cleaned">
         <success-drawing-check data-draw-success-check="ReceiversCleanCtrl.cleaned">
             <h4 data-translate="sms_receivers_clean_receiver_cleaning_started"></h4>
         </success-drawing-check>
@@ -77,7 +77,9 @@
         <button
             type="submit"
             class="btn btn-primary"
-            data-ng-disabled="cleanReceiverForm.$invalid || ReceiversCleanCtrl.loading.clean || ReceiversCleanCtrl.cleaned"
+            data-ng-disabled="cleanReceiverForm.$invalid ||
+                              ReceiversCleanCtrl.loading.clean ||
+                              ReceiversCleanCtrl.cleaned"
             data-translate="submit">
         </button>
     </div>

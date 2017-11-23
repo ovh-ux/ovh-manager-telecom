@@ -1,111 +1,93 @@
-<table class="table table-pretty table-hover table-striped no-space">
+<table class="table"
+       data-ng-class="{
+           'table-hover table-striped': $ctrl.ovhPabx.sounds.length > 1
+       }">
     <thead>
         <tr>
-            <th scope="col"
-                data-ng-if="$ctrl.withChoice">
-                &nbsp;
-            </th>
-            <th scope="col">
+            <th colspan="3"
+                scope="col">
                 <button type="button"
-                        class="no-style left-space-p0"
+                        class="btn btn-link p-0"
                         data-translate-attr="{ title: 'common_lastname' }"
                         data-ng-disabled="$ctrl.loading.init || !$ctrl.ovhPabx.sounds.length"
                         data-ng-click="$ctrl.orderDesc = !$ctrl.orderDesc">
-                    <label class="pointer"
-                           data-translate="common_lastname">
-                    </label>
-                    <span class="table-pretty-filter">
-                        <i class="fa fa-sort" data-ng-class="{
-                            'fa-sort-desc': $ctrl.orderDesc,
-                            'fa-sort-asc': !$ctrl.orderDesc
-                        }"></i>
+                    <span data-translate="common_lastname"></span>
+                    <span class="oui-icon align-baseline"
+                          aria-hidden="true"
+                          data-ng-class="{
+                              'oui-icon-arrow-down': $ctrl.orderDesc,
+                              'oui-icon-arrow-up': !$ctrl.orderDesc
+                          }">
                     </span>
                 </button>
             </th>
-            <th>&nbsp;</th>
         </tr>
     </thead>
     <tbody data-ng-if="$ctrl.loading.init">
         <tr>
-            <td colspan="3"
-                class="text-center">
-                <bouncing-box-loader>
-                    <h2 data-translate="loading"></h2>
-                </bouncing-box-loader>
+            <td colspan="3">
+                <oui-loader data-size="m"></oui-loader>
             </td>
         </tr>
     </tbody>
     <tbody data-ng-if="!$ctrl.loading.init && $ctrl.ovhPabx.sounds.length === 0">
         <tr>
             <td colspan="3"
-                class="text-center">
-                <em data-translate="telephony_number_feature_ovh_pabx_sound_no_file"></em>
+                class="text-center font-italic"
+                data-translate="telephony_number_feature_ovh_pabx_sound_no_file">
             </td>
         </tr>
     </tbody>
     <tbody data-ng-if="!$ctrl.loading.init && $ctrl.ovhPabx.sounds.length > 0">
         <tr data-ng-repeat="sound in $ctrl.ovhPabx.sounds | orderBy:'name':$ctrl.orderDesc track by $index">
-            <td class="cell-label"
-                data-ng-if="$ctrl.withChoice">
-                <div data-ng-class="{ 'opacity2-leave': $ctrl.askedSoundDelete === sound.soundId, 'opacity2-enter': $ctrl.askedSoundDelete !== sound.soundId }">
-                    <label class="pointer">
-                        <flat-radio>
-                            <input type="radio"
-                                   name="playbackSoundId"
-                                   data-ng-attr-id="sound-choice-{{ sound.soundId }}"
-                                   data-ng-model="$ctrl.selectedSound"
-                                   data-ng-value="sound.soundId"
-                                   data-ng-change="$ctrl.onSelectedSoundChanged(sound)" />
-                        </flat-radio>
+            <td data-ng-if="$ctrl.withChoice">
+                <div class="radio">
+                    <label>
+                        <input type="radio"
+                               name="playbackSoundId"
+                               data-ng-attr-id="sound-choice-{{ sound.soundId }}"
+                               data-ng-model="$ctrl.selectedSound"
+                               data-ng-value="sound.soundId"
+                               data-ng-change="$ctrl.onSelectedSoundChanged(sound)" />
                     </label>
                 </div>
             </td>
-            <td class="text-left"
-                data-ng-class="{ 'cell-label': $ctrl.withChoice }">
-                <div data-ng-class="{ 'opacity2-leave': $ctrl.askedSoundDelete === sound.soundId, 'opacity2-enter': $ctrl.askedSoundDelete !== sound.soundId }">
-                    <span data-ng-if="!$ctrl.withChoice"
-                          data-ng-bind="sound.name">
-                    </span>
-                    <label data-ng-if="$ctrl.withChoice"
-                           data-ng-attr-for="sound-choice-{{ sound.soundId }}"
-                           data-ng-bind="sound.name"
-                           class="pointer">
-                    </label>
-                </div>
+            <td class="align-middle">
+                <span data-ng-if="!$ctrl.withChoice"
+                      data-ng-bind="sound.name">
+                </span>
+                <label data-ng-if="$ctrl.withChoice"
+                       data-ng-attr-for="sound-choice-{{ sound.soundId }}"
+                       data-ng-bind="sound.name">
+                </label>
             </td>
-            <td class="text-right">
-                <div class="pretty-table-confirm-container text-center animate-fadeInRight-enter animate-fadeOutLeft-leave full-width"
-                     data-ng-show="$ctrl.askedSoundDelete === sound.soundId">
+            <td class="text-right align-middle">
+                <div class="btn-group"
+                     data-uib-dropdown
+                     data-dropdown-append-to-body>
                     <button type="button"
-                            class="btn btn-default"
-                            data-ng-click="$ctrl.askedSoundDelete = null">
-                        <i class="ovh-font ovh-font-wrong right-space-m8"></i>
-                        <span data-translate="cancel"></span>
+                            id="btn-delete-tts"
+                            class="btn btn-link py-0"
+                            data-uib-dropdown-toggle>
+                        <span class="ovh-font ovh-font-dots" aria-hidden="true"></span>
+                        <span class="sr-only"
+                              data-translate="common_actions">
+                        </span>
                     </button>
-
-                    <button type="button"
-                            class="btn btn-danger"
-                            data-ng-click="$ctrl.onSoundeDeleteConfirm(sound)">
-                        <i class="ovh-font ovh-font-bin right-space-m8"></i>
-                        <span data-translate="delete"></span>
-                        <spinner name="bubbles-fff-d34936-16"
-                                 data-ng-show="sound.status === 'DELETING'">
-                        </spinner>
-                    </button>
-                </div>
-
-                <div data-ng-class="{ 'opacity2-leave': $ctrl.askedSoundDelete === sound.soundId, 'opacity2-enter': $ctrl.askedSoundDelete !== sound.soundId }">
-                    <button type="button"
-                            data-ng-if="sound.status !== 'IN_CREATION'"
-                            class="btn-actions-list"
-                            data-ng-click="$ctrl.askedSoundDelete = sound.soundId"
-                            data-translate-attr="{ title: 'telephony_number_feature_ovh_pabx_sound_delete_title' }">
-                        <i class="ovh-font ovh-font-bin"></i>
-                    </button>
-
-                    <spinner data-ng-if="sound.status === 'IN_CREATION'"
-                             class="right-space-m8">
-                    </spinner>
+                    <ul class="dropdown-menu dropdown-menu-right"
+                        role="menu"
+                        aria-labelledby="btn-delete-tts"
+                        data-uib-dropdown-menu>
+                        <li role="menuitem">
+                            <i class="ovh-font ovh-font-bin" aria-hidden="true"></i>
+                            <button
+                                type="button"
+                                class="btn btn-link"
+                                data-ng-click="$ctrl.onSoundeDeleteConfirm(sound)"
+                                data-translate="delete">
+                            </button>
+                        </li>
+                    </ul>
                 </div>
             </td>
         </tr>

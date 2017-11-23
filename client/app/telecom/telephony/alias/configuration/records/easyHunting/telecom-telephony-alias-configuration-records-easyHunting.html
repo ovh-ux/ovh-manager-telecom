@@ -9,14 +9,13 @@
 
     <div class="telecom-section-content">
 
-        <bouncing-box-loader data-ng-if="RecordsEasyHuntingCtrl.isLoading">
-            <h2 data-translate="loading"></h2>
-        </bouncing-box-loader>
+        <oui-loader data-ng-if="RecordsEasyHuntingCtrl.isLoading"
+                    data-size="m">
+        </oui-loader>
 
         <div class="alert alert-warning"
              role="alert"
              data-ng-if="!RecordsOvhPabxCtrl.isLoading && RecordsEasyHuntingCtrl.number.getFeatureFamily() !== 'easyHunting'">
-            <i class="ovh-font ovh-font-filled-warning" aria-hidden="true"></i>
             <p data-translate="telephony_alias_configuration_records_condition"></p>
             <a data-ui-sref="telecom.telephony.alias.configuration.changeType"
                data-translate="telephony_alias_configuration_actions_number_modification_new"

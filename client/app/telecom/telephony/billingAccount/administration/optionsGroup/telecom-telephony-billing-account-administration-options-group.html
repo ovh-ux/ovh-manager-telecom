@@ -7,15 +7,17 @@
         <h1 data-translate="telephony_options_group_title"></h1>
     </header>
 
-    <bouncing-box-loader data-ng-if="OptionsGroupCtrl.isLoading">
-        <h2 data-translate="loading"></h2>
-    </bouncing-box-loader>
+    <oui-loader data-ng-if="OptionsGroupCtrl.isLoading"
+                data-size="m">
+    </oui-loader>
 
     <div class="telecom-section-content"
          data-ng-if="!OptionsGroupCtrl.isLoading">
 
-        <div class="row">
-            <div class="col-md-6">
+        <toast-message></toast-message>
+
+        <div class="row mb-5">
+            <div class="col-xs-12 col-md-8">
 
                 <form name="optionsGroupSettings"
                       data-ng-submit="OptionsGroupCtrl.changeSettings()">
@@ -30,9 +32,10 @@
                         <div class="widget-presentation-content">
                             <div class="form-group">
                                 <label for="hiddenExternalNumber"
+                                       class="control-label"
                                        data-translate="telephony_billing_account_administration_options_group_hiddenExternalNumber_label">
                                 </label>
-                                <div class="btn-group block clearfix">
+                                <div class="btn-group d-block clearfix">
                                     <label class="btn btn-default"
                                            data-ng-model="OptionsGroupCtrl.optionsGroupForm.telephony.hiddenExternalNumber"
                                            data-uib-btn-radio="true"
@@ -57,15 +60,15 @@
                             </h2>
                         </header>
                         <div class="widget-presentation-content">
-                            <div class="alert alert-info" role="alert">
-                                <i class="ovh-font ovh-font-filled-info" aria-hidden="true"></i>
-                                <span data-translate="telephony_billing_account_administration_options_group_overrideDisplayedNumber_info"></span>
+                            <div class="oui-box mb-3"
+                                 data-translate="telephony_billing_account_administration_options_group_overrideDisplayedNumber_info">
                             </div>
                             <div class="form-group">
                                 <label for="overrideDisplayedNumber"
+                                       class="control-label"
                                        data-translate="telephony_billing_account_administration_options_group_overrideDisplayedNumber_label">
                                 </label>
-                                <div class="btn-group block clearfix">
+                                <div class="btn-group d-block clearfix">
                                     <label class="btn btn-default"
                                            data-ng-model="OptionsGroupCtrl.optionsGroupForm.telephony.overrideDisplayedNumber"
                                            data-uib-btn-radio="true"
@@ -90,15 +93,15 @@
                             </h2>
                         </header>
                         <div class="widget-presentation-content">
-                            <div class="alert alert-info" role="alert">
-                                <i class="ovh-font ovh-font-filled-info" aria-hidden="true"></i>
-                                <span data-translate="telephony_billing_account_administration_options_group_displayOnIncomingCall_info"></span>
+                            <div class="oui-box mb-3"
+                                 data-translate="telephony_billing_account_administration_options_group_displayOnIncomingCall_info">
                             </div>
                             <div class="form-group">
                                 <label for="displayOnIncomingCall"
+                                       class="control-label"
                                        data-translate="telephony_billing_account_administration_options_group_displayOnIncomingCall_label">
                                 </label>
-                                <div class="btn-group block clearfix">
+                                <div class="btn-group d-block clearfix">
                                     <label class="btn btn-default"
                                            data-ng-model="OptionsGroupCtrl.optionsGroupForm.user.lineDescriptionPolicies.displayOnIncomingCall"
                                            data-uib-btn-radio="true"
@@ -117,18 +120,20 @@
 
                     <footer>
                         <button
-                            type="button"
-                            class="btn btn-default"
-                            data-ng-click="OptionsGroupCtrl.cancelChange()"
-                            data-translate="cancel">
-                        </button>
-
-                        <button
                             type="submit"
                             class="btn btn-primary"
                             data-ng-disabled="optionsGroupSettings.$invalid || !OptionsGroupCtrl.hasChanges() || OptionsGroupCtrl.isChanging">
+                            <oui-loader class="mr-2"
+                                        data-ng-if="OptionsGroupCtrl.isChanging"
+                                        data-size="s">
+                            </oui-loader>
                             <span data-translate="submit"></span>
-                            <spinner data-ng-if="OptionsGroupCtrl.isChanging"></spinner>
+                        </button>
+                        <button
+                            type="button"
+                            class="btn btn-link"
+                            data-ng-click="OptionsGroupCtrl.cancelChange()"
+                            data-translate="cancel">
                         </button>
                     </footer>
 

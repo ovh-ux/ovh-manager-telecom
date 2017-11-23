@@ -152,11 +152,9 @@
 
    <translation id="common_menu_changelog" qtlid="260971">ChangeLog</translation>
 
-   <translation id="common_express_lite_banner_desc" qtlid="304875">Express Lite comprende un modem che include un accesso Internet e una linea VoIP a <span class="ad-price bold fs14">22,99 € +IVA</span>/mese.</translation>
    <translation id="common_express_lite_banner_title" qtlid="304888">OVH ti propone una nuova offerta base con connessione ADSL e VDSL.</translation>
    <translation id="common_generate_order" qtlid="186219">Genera ordine</translation>
    <translation id="common_boost_banner_title" qtlid="304901">OVH offre due gamme limitate di offerte "solo Internet" per la massima velocità.</translation>
-   <translation id="common_boost_banner_desc" qtlid="304914">Rendi sicura la tua connessione con l'offerta <span class="ad-price bold fs14">CONNECT</span> o raddoppia la velocità con l'offerta <span class="ad-price bold fs14">BOOST</span>, che include il dispositivo e il servizio<span class="ad-price bold fs14">OVER THE BOX</span>.<br/><small>Offerta limitata ai primi 240 ordini.</small></translation>
    <translation id="common_banner_discover" qtlid="304927">Scopri l'offerta</translation>
    <translation id="common_service_name_edit_title" qtlid="331683">{{ title }}: modifica il nome del servizio</translation>
 

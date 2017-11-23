@@ -7,16 +7,18 @@
         <h1 data-translate="telephony_group_billing_group_repayments_title"></h1>
     </header>
 
-    <bouncing-box-loader data-ng-if="GroupRepaymentsCtrl.consumptions.isLoading">
-        <h2 data-translate="loading"></h2>
-    </bouncing-box-loader>
+    <oui-loader data-ng-if="GroupRepaymentsCtrl.consumptions.isLoading"
+                data-size="m">
+    </oui-loader>
 
     <div class="telecom-section-content"
          data-ng-if="!GroupRepaymentsCtrl.consumptions.isLoading">
 
+        <toast-message></toast-message>
+
         <!-- ALERT -->
-        <div class="alert alert-info" role="alert">
-            <i class="ovh-font ovh-font-filled-info" aria-hidden="true"></i>
+        <div class="alert alert-info"
+             role="alert">
             <p data-translate="telephony_group_billing_group_repayments_info1"></p>
             <p>
                 <span data-translate="telephony_group_billing_group_repayments_info2"></span>
@@ -28,7 +30,7 @@
 
         <div class="row">
 
-            <div class="col-xs-12 col-sm-4 pull-right">
+            <div class="col-xs-12 col-sm-4 float-right">
                 <div class="widget-presentation all-group-repayment">
                     <header class="widget-presentation-header">
                         <h2 class="widget-presentation-title"
@@ -36,8 +38,8 @@
                         </h2>
                     </header>
                     <h3 data-translate="telephony_group_billing_group_repayments_total_differed_label"></h3>
-                    <ul class="list-unstyled bottom-space-m24 left-space-p12">
-                        <li class="fs18 bold"
+                    <ul class="list-unstyled mb-5 pl-3">
+                        <li class="h3"
                             data-translate="telephony_group_billing_group_repayments_total_price"
                             data-translate-values="{ price: (GroupRepaymentsCtrl.consumptions.deferred.price | number:2) }">
                         </li>
@@ -53,8 +55,8 @@
                         </li>
                     </ul>
                     <h3 data-translate="telephony_group_billing_group_repayments_total_repayable_label"></h3>
-                    <ul class="list-unstyled bottom-space-m24 left-space-p12">
-                        <li class="fs18 bold"
+                    <ul class="list-unstyled mb-5 pl-3">
+                        <li class="h3"
                             data-translate="telephony_group_billing_group_repayments_total_price"
                             data-translate-values="{ price: (GroupRepaymentsCtrl.consumptions.repayable.price | number:2) }">
                         </li>
@@ -70,8 +72,8 @@
                         </li>
                     </ul>
                     <h3 data-translate="telephony_group_billing_group_repayments_total_total_label"></h3>
-                    <ul class="list-unstyled bottom-space-m24 left-space-p12">
-                        <li class="fs18 bold"
+                    <ul class="list-unstyled mb-5 pl-3">
+                        <li class="h3"
                             data-translate="telephony_group_billing_group_repayments_total_price"
                             data-translate-values="{ price: (GroupRepaymentsCtrl.consumptions.total.price | number:2) }">
                         </li>
@@ -103,10 +105,10 @@
                     </p>
                     <ul class="list-unstyled"
                         data-ng-if="GroupRepaymentsCtrl.consumptions.groupedByDialedNumber.length">
-                        <li class="well bottom-space-m16"
+                        <li class="well mb-3"
                             data-ng-repeat="group in GroupRepaymentsCtrl.consumptions.groupedByDialedNumber track by group.dialed">
                             <h3 data-ng-bind="group.dialed | phoneNumber"></h3>
-                            <ul class="list-unstyled bottom-space-m16 left-space-m12">
+                            <ul class="list-unstyled mb-3 ml-3">
                                 <li data-ng-repeat="detail in group.details track by $index">
                                     <span data-ng-if="detail.operator === 'other'"
                                           data-translate="telephony_group_billing_group_repayments_detail_operator_other">
@@ -163,11 +165,11 @@
                        data-ng-if="!GroupRepaymentsCtrl.consumptions.hasAmountAvailable"
                        data-translate="telephony_group_billing_group_repayments_no_amount_available">
                     </p>
-                    <div class="text-info bottom-space-m16"
+                    <div class="text-info mb-3"
                          data-ng-if="GroupRepaymentsCtrl.consumptions.total.price < 1">
-                        <div class="alert alert-info" role="alert">
-                            <i class="ovh-font ovh-font-filled-info" aria-hidden="true"></i>
-                            <p data-translate="telephony_group_billing_group_repayments_ask_new_repayment_info"></p>
+                        <div class="alert alert-info"
+                             role="alert"
+                             data-translate="telephony_group_billing_group_repayments_ask_new_repayment_info">
                         </div>
                     </div>
 
@@ -191,8 +193,11 @@
                         <button type="submit"
                                 class="btn btn-primary"
                                 data-ng-disabled="groupRepaymentsForm.$invalid || GroupRepaymentsCtrl.groupRepaymentsForm.isAsking">
+                            <oui-loader class="mr-2"
+                                        data-ng-if="GroupRepaymentsCtrl.groupRepaymentsForm.isAsking"
+                                        data-size="s">
+                            </oui-loader>
                             <span data-translate="submit"></span>
-                            <spinner data-ng-if="GroupRepaymentsCtrl.groupRepaymentsForm.isAsking"></spinner>
                         </button>
                     </form>
                 </div>

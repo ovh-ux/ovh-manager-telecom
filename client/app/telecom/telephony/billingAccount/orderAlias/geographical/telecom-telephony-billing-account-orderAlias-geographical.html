@@ -4,147 +4,158 @@
         <section-back-link section-back-link-to-state="telecom.telephony.orderAlias"
                            section-back-link-title="{{ 'telephony_order_back_link' | translate }}">
         </section-back-link>
-        <h1 data-translate="telephony_order_geographical_title_country" data-translate-values="{country: AliasOrderGeographicalCtrl.user.country}"></h1>
+        <h1 data-translate="telephony_order_geographical_title_country"
+            data-translate-values="{country: AliasOrderGeographicalCtrl.user.country}">
+        </h1>
     </header>
 
-    <div class="row" data-ng-hide="AliasOrderGeographicalCtrl.orderDone">
-        <div class="col-md-12 col-xs-12">
+    <toast-message></toast-message>
+
+    <div class="row"
+         data-ng-hide="AliasOrderGeographicalCtrl.orderDone">
+        <div class="col-xs-12 col-md-8">
             <form name="orderNumberForm"
+                  class="mb-5"
                   id="orderNumberForm"
-                  data-ng-submit="AliasOrderGeographicalCtrl.order()"
-                  class="flex-center form-horizontal ovh-form-flat">
+                  data-ng-submit="AliasOrderGeographicalCtrl.order()">
                 <!-- Order -->
-                <div class="widget-presentation top-space-m4">
-                    <h2 class="widget-presentation-title" data-translate="telephony_order_amount_title"></h2>
-                    <div class="row">
-                        <div class="col-xs-12 col-md-3">
-                            <label class="service-title pointer"
-                                   for="amount"
-                                   data-translate="telephony_order_amount_title">
-                            </label>
-                        </div>
-                        <div flat-input class="col-xs-12 col-md-3 service-item">
-                            <select name="amount"
-                                    id="amount"
-                                    class="form-control flat-select"
-                                    data-ng-disabled="AliasOrderGeographicalCtrl.loading.init || AliasOrderGeographicalCtrl.loading.order"
-                                    data-ng-change="AliasOrderGeographicalCtrl.changeQty()"
-                                    data-ng-options="item as item.label for item in AliasOrderGeographicalCtrl.preAmount track by item.value"
-                                    data-ng-model="AliasOrderGeographicalCtrl.form.amount">
-                            </select>
-                        </div>
+                <div class="widget-presentation mt-2">
+                    <h2 class="widget-presentation-title"
+                        data-translate="telephony_order_amount_title">
+                    </h2>
+                    <div class="form-group">
+                        <label class="control-label"
+                               for="amount"
+                               data-translate="telephony_order_amount_title">
+                        </label>
+                        <select name="amount"
+                                id="amount"
+                                class="form-control"
+                                data-ng-model="AliasOrderGeographicalCtrl.form.amount"
+                                data-ng-options="item as item.label for item in AliasOrderGeographicalCtrl.preAmount track by item.value"
+                                data-ng-change="AliasOrderGeographicalCtrl.changeQty()"
+                                data-ng-disabled="AliasOrderGeographicalCtrl.loading.init || AliasOrderGeographicalCtrl.loading.order">
+                        </select>
                     </div>
-                    <div class="row">
-                        <div class="col-xs-12 col-md-3">
-                            <label class="service-title pointer" data-translate="telephony_order_zone_title" for="zone"></label>
-                        </div>
-                        <div flat-input class="col-xs-12 col-md-3 service-item">
-                            <label class="control-label" data-ng-if="orderNumberForm.zone.$invalid" for="zone">
-                                {{ 'telephony_order_zone_error' | translate }}<span class="red"> *</span>
-                            </label>
-                            <input name="zone"
-                                   id="zone"
-                                   autocomplete="off"
-                                   data-ng-disabled="AliasOrderGeographicalCtrl.loading.init || AliasOrderGeographicalCtrl.loading.order"
-                                   class="form-control"
-                                   placeholder="{{ 'telephony_order_zone_tip' | translate }}"
-                                   data-uib-typeahead="item for item in AliasOrderGeographicalCtrl.getGeographicalZone($viewValue)"
-                                   data-typeahead-focus-first="true"
-                                   data-typeahead-editable="false"
-                                   data-typeahead-select-on-exact="true"
-                                   data-typeahead-min-length="3"
-                                   data-typeahead-on-select="AliasOrderGeographicalCtrl.changeZone()"
-                                   data-ng-change="AliasOrderGeographicalCtrl.changeZone()"
-                                   data-ng-model="AliasOrderGeographicalCtrl.form.zone" />
-                        </div>
+                    <div class="form-group"
+                         data-ng-class="{
+                             'has-error': orderNumberForm.zone.$touched && orderNumberForm.zone.$invalid
+                         }">
+                        <label class="control-label"
+                               for="zone"
+                               data-translate="telephony_order_zone_title">
+                        </label>
+                        <input class="form-control"
+                               id="zone"
+                               name="zone"
+                               autocomplete="off"
+                               data-ng-model="AliasOrderGeographicalCtrl.form.zone"
+                               data-ng-change="AliasOrderGeographicalCtrl.changeZone()"
+                               data-ng-disabled="AliasOrderGeographicalCtrl.loading.init || AliasOrderGeographicalCtrl.loading.order"
+                               data-uib-typeahead="item for item in AliasOrderGeographicalCtrl.getGeographicalZone($viewValue)"
+                               data-typeahead-focus-first="true"
+                               data-typeahead-editable="false"
+                               data-typeahead-select-on-exact="true"
+                               data-typeahead-min-length="3"
+                               data-typeahead-on-select="AliasOrderGeographicalCtrl.changeZone()"
+                               data-translate-attr="{ 'placeholder': 'telephony_order_zone_tip' }" />
+                        <span class="help-block"
+                              data-ng-if="orderNumberForm.zone.$touched && orderNumberForm.zone.$invalid">
+                               <span data-translate="telephony_order_zone_error"></span> *
+                        </span>
                     </div>
                 </div>
 
                 <!-- Specific / std -->
                 <div data-ng-if="AliasOrderGeographicalCtrl.form.zone">
-                    <div class="widget-presentation top-space-m8" data-ng-if="AliasOrderGeographicalCtrl.form.amount.value === 1">
-                        <h2 class="widget-presentation-title" data-translate="telephony_order_specific_title"></h2>
-                        <spinner data-ng-if="!AliasOrderGeographicalCtrl.prices"></spinner>
-                        <telecom-telephony-billing-account-order-alias-number-choice data-ng-model="AliasOrderGeographicalCtrl.form"
-                                                                              name="offerChoice"
-                                                                              class="row top-space-m8"
-                                                                              data-ng-if="AliasOrderGeographicalCtrl.prices"
-                                                                              data-choices="AliasOrderGeographicalCtrl.predefinedNumbers"
-                                                                              data-prices="AliasOrderGeographicalCtrl.prices"
-                                                                              data-type="geographical"
-                                                                              data-billing-account="{{AliasOrderGeographicalCtrl.billingAccount}}"
-                                                                              data-ng-disabled="AliasOrderGeographicalCtrl.loading.init || AliasOrderGeographicalCtrl.loading.numbers  || AliasOrderGeographicalCtrl.loading.order">
+                    <div class="widget-presentation mt-2"
+                         data-ng-if="AliasOrderGeographicalCtrl.form.amount.value === 1">
+                        <h2 class="widget-presentation-title"
+                            data-translate="telephony_order_specific_title">
+                        </h2>
+                        <oui-loader data-ng-if="!AliasOrderGeographicalCtrl.prices"
+                                    data-size="m">
+                        </oui-loader>
+                        <telecom-telephony-billing-account-order-alias-number-choice
+                            name="offerChoice"
+                            data-ng-if="AliasOrderGeographicalCtrl.prices"
+                            data-ng-model="AliasOrderGeographicalCtrl.form"
+                            data-ng-disabled="AliasOrderGeographicalCtrl.loading.init || AliasOrderGeographicalCtrl.loading.numbers  || AliasOrderGeographicalCtrl.loading.order"
+                            data-choices="AliasOrderGeographicalCtrl.predefinedNumbers"
+                            data-prices="AliasOrderGeographicalCtrl.prices"
+                            data-type="geographical"
+                            data-billing-account="{{AliasOrderGeographicalCtrl.billingAccount}}">
                         </telecom-telephony-billing-account-order-alias-number-choice>
                     </div>
 
                     <!-- Address -->
-                    <div class="widget-presentation top-space-m32">
-                        <h2 class="widget-presentation-title" data-translate="telephony_order_address_title"></h2>
-                        <telecom-telephony-billing-account-order-alias-coordinate data-ng-disabled="AliasOrderGeographicalCtrl.loading.init || AliasOrderGeographicalCtrl.loading.order"
-                                                                           data-region-code="{{AliasOrderGeographicalCtrl.user.country}}"
-                                                                           data-ng-model="AliasOrderGeographicalCtrl.form">
+                    <div class="widget-presentation">
+                        <h2 class="widget-presentation-title"
+                            data-translate="telephony_order_address_title">
+                        </h2>
+                        <telecom-telephony-billing-account-order-alias-coordinate
+                            data-ng-model="AliasOrderGeographicalCtrl.form"
+                            data-ng-disabled="AliasOrderGeographicalCtrl.loading.init || AliasOrderGeographicalCtrl.loading.order"
+                            data-region-code="{{AliasOrderGeographicalCtrl.user.country}}">
                         </telecom-telephony-billing-account-order-alias-coordinate>
                     </div>
 
                     <!-- Retractation -->
-                    <div class="widget-presentation top-space-m32">
-                        <h2 class="widget-presentation-title" data-translate="telephony_order_geographical_submit_title"></h2>
-                        <telecom-telephony-billing-account-order-alias-number-choice-retractation data-ng-model="AliasOrderGeographicalCtrl.form.retractation"
-                                                                                           data-ng-disabled="AliasOrderGeographicalCtrl.loading.init || AliasOrderGeographicalCtrl.loading.order">
-
+                    <div class="widget-presentation">
+                        <h2 class="widget-presentation-title"
+                            data-translate="telephony_order_geographical_submit_title">
+                        </h2>
+                        <telecom-telephony-billing-account-order-alias-number-choice-retractation
+                            data-ng-model="AliasOrderGeographicalCtrl.form.retractation"
+                            data-ng-disabled="AliasOrderGeographicalCtrl.loading.init || AliasOrderGeographicalCtrl.loading.order">
                         </telecom-telephony-billing-account-order-alias-number-choice-retractation>
                     </div>
 
-                    <div class="widget-presentation" data-ng-if="AliasOrderGeographicalCtrl.contracts">
-                        <div class="row">
-                            <div class="col-xs-12"
-                                 data-contracts="AliasOrderGeographicalCtrl.contracts"
-                                 data-full-text="false"
-                                 data-contracts-validated="AliasOrderGeographicalCtrl.contractsAccepted">
-                            </div>
-                        </div>
+                    <div data-ng-if="AliasOrderGeographicalCtrl.contracts"
+                         data-contracts="AliasOrderGeographicalCtrl.contracts"
+                         data-full-text="false"
+                         data-contracts-validated="AliasOrderGeographicalCtrl.contractsAccepted">
                     </div>
 
                     <!-- Accept -->
-                    <div class="widget-presentation top-space-m8">
-                        <div class="row top-space-m32">
-                            <div class="col-xs-12 col-md-12">
-                                <button
-                                    type="submit"
-                                    data-translate="telephony_order_confirm"
-                                    data-translate-values="{total:AliasOrderGeographicalCtrl.getTotal()}"
-                                    class="btn btn-sm btn-primary pull-right"
-                                    data-ng-disabled="!AliasOrderGeographicalCtrl.contractsAccepted || AliasOrderGeographicalCtrl.loading.order || !orderNumberForm.$valid || AliasOrderGeographicalCtrl.loading.order"
-                                    >
-                                </button>
-                                <spinner class="left-space-m8" data-ng-if="AliasOrderGeographicalCtrl.loading.order"></spinner>
-                            </div>
-                        </div>
-                    </div>
+                    <button
+                        class="btn btn-primary"
+                        type="submit"
+                        data-ng-disabled="!AliasOrderGeographicalCtrl.contractsAccepted || AliasOrderGeographicalCtrl.loading.order || !orderNumberForm.$valid || AliasOrderGeographicalCtrl.loading.order"
+                        data-translate="telephony_order_confirm"
+                        data-translate-values="{ total: AliasOrderGeographicalCtrl.getTotal() }">
+                    </button>
+                    <oui-loader class="ml-2"
+                                data-ng-if="AliasOrderGeographicalCtrl.loading.order"
+                                data-size="s">
+                    </oui-loader>
 
                 </div>
             </form>
         </div>
     </div>
+
     <!-- Contracts -->
-    <div class="row top-space-m32" data-ng-show="AliasOrderGeographicalCtrl.orderDone">
-        <div class="col-md-12" data-ng-if="AliasOrderGeographicalCtrl.orderInformations && AliasOrderGeographicalCtrl.orderInformations.contracts && AliasOrderGeographicalCtrl.orderInformations.contracts.length > 0">
+    <div class="row mt-5"
+         data-ng-show="AliasOrderGeographicalCtrl.orderDone">
+        <div class="col-xs-12 col-md-8"
+             data-ng-if="AliasOrderGeographicalCtrl.orderInformations && AliasOrderGeographicalCtrl.orderInformations.contracts && AliasOrderGeographicalCtrl.orderInformations.contracts.length > 0">
             <div class="widget-presentation">
-                <h2 class="widget-presentation-title" data-translate="telephony_order_legal"></h2>
-                <div class="row">
-                    <div class="col-xs-12 col-md-12 top-space-m32"
-                         data-ng-if="AliasOrderGeographicalCtrl.contractsAccepted">
-                        <a data-ng-href="{{AliasOrderGeographicalCtrl.orderInformations.url}}"
-                           title="{{:: 'telephony_order_validate_order_tip' | translate }}"
-                           target="_blank"
-                           class="fs12 btn btn-xs btn-primary">
-                            <span data-translate="telephony_order_validate_order"></span>
-                            <i class="fa fa-external-link left-space-m4"></i>
-                        </a>
-                    </div>
-                </div>
+                <h2 class="widget-presentation-title"
+                    data-translate="telephony_order_legal">
+                </h2>
+                <a class="btn btn-primary"
+                   target="_blank"
+                   rel="noopener"
+                   data-ng-if="AliasOrderGeographicalCtrl.contractsAccepted"
+                   data-ng-href="{{AliasOrderGeographicalCtrl.orderInformations.url}}"
+                   data-translate-attr="{ 'title': 'telephony_order_validate_order_tip' }">
+                    <span data-translate="telephony_order_validate_order"></span>
+                    <i class="fa fa-external-link ml-2" aria-hidden="true"></i>
+                </a>
             </div>
         </div>
     </div>
 
 </section>
+<!-- /.telephony-group-order -->

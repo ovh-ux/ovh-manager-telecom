@@ -21,9 +21,7 @@ angular.module("managerApp", [
     "ngSanitize",
     "ngAria",
     "ovh-api-services",
-    "ovh-common-style",
     "ovh-angular-checkbox-table",
-    "ovh-angular-form-flat",
     "ovh-ngStrap",
     "ovh-angular-tail-logs",
     "ovhPassword",
@@ -38,7 +36,6 @@ angular.module("managerApp", [
     "smoothScroll",
     "ovh-angular-swimming-poll",
     "tmh.dynamicLocale",
-    "ovh-angular-toaster",
     "ovh-angular-toggleClass",
     "ovh-angular-otrs",
     "ui.bootstrap",
@@ -60,16 +57,13 @@ angular.module("managerApp", [
     "angular-web-notification",
     "ngEmbed",
     "ovh-angular-user-pref",
-    "ovh-angular-chatbot"
+    "ovh-angular-chatbot",
+    "oui"
 ])
 
 /*= =========  GLOBAL OPTIONS  ==========*/
-    .config(function ($urlRouterProvider, $locationProvider, $compileProvider, $logProvider, telecomConfig, ToastProvider) {
+    .config(function ($urlRouterProvider, $locationProvider, $compileProvider, $logProvider, telecomConfig) {
         "use strict";
-
-        // Toaster
-        ToastProvider.setExtraClasses("messenger-fixed messenger-on-bottom messenger-on-right");
-        ToastProvider.setTheme("air");
 
         $urlRouterProvider.otherwise("/");
 
@@ -359,9 +353,6 @@ angular.module("managerApp", [
                             }
                         }
                     ]
-                }, {
-                    label: $translate.instant("common_menu_billing"),
-                    url: REDIRECT_URLS.billing
                 }, {
                     label: (function () {
                         var selectedLang;

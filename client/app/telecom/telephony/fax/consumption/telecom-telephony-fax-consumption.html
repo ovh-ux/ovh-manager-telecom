@@ -1,10 +1,8 @@
 <div class="telephony-group-fax-consumption">
 
-    <bouncing-box-loader data-ng-if="$ctrl.loading.init">
-        <h2 class="top-space-m16"
-            data-translate="loading">
-        </h2>
-    </bouncing-box-loader>
+    <oui-loader data-ng-if="$ctrl.loading.init"
+                data-size="m">
+    </oui-loader>
 
     <telecom-v4-links data-ng-if="!$ctrl.loading.init"
                       data-telecom-v4-links="$ctrl.actions">

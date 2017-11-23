@@ -14,22 +14,23 @@
                 <div class="section-group">
                     <!-- URL -->
                     <div class="section-item">
-                        <div class="form-group no-space"
-                             data-ng-class="{ 'has-error': $ctrl.sviConfigForm.url.$invalid && $ctrl.sviConfigForm.url.$dirty, 'has-success': $ctrl.sviConfigForm.url.$valid && $ctrl.sviConfigForm.url.$viewValue }">
+                        <div class="form-group mb-0"
+                             data-ng-class="{
+                                'has-error': $ctrl.sviConfigForm.url.$invalid && $ctrl.sviConfigForm.url.$touched
+                             }">
                             <label class="control-label"
                                    for="url"
                                    data-translate="telephony_number_feature_svi_url">
                             </label>
-                            <div class="dtable full-width">
-                                <div class="dtd right-space-p4">
-                                    <select data-flat-select
-                                            class="form-control"
+                            <div class="d-table w-100">
+                                <div class="d-table-cell mr-1">
+                                    <select class="form-control"
                                             data-ng-change="$ctrl.updateUrlProtocol()"
                                             data-ng-model="$ctrl.model.urlProtocol"
                                             data-ng-options="protocol for protocol in $ctrl.urlProtocols">
                                     </select>
                                 </div>
-                                <div class="dtd vertical-bottom">
+                                <div class="d-table-cell align-bottom">
                                     <input type="text"
                                            id="url"
                                            name="url"
@@ -41,41 +42,39 @@
                                            data-translate-attr="{ placeholder: 'telephony_number_feature_svi_url' }" />
                                 </div>
                             </div>
-                            <div data-ng-messages="$ctrl.sviConfigForm.url.$error"
-                                 data-ng-if="$ctrl.sviConfigForm.url.$invalid && $ctrl.sviConfigForm.url.$dirty"
-                                 role="alert">
-                                <label for="url"
-                                       class="normal small"
-                                       data-ng-message="required"
-                                       data-translate="telephony_number_feature_svi_required_url">
-                                </label>
-                                <label for="url"
-                                       class="normal small"
-                                       data-ng-message="url"
-                                       data-translate="telephony_number_feature_svi_bad_url_format">
-                                </label>
-                            </div>
+                            <span class="help-block"
+                                  role="alert"
+                                  data-ng-messages="$ctrl.sviConfigForm.url.$error"
+                                  data-ng-if="$ctrl.sviConfigForm.url.$invalid && $ctrl.sviConfigForm.url.$touched">
+                                <span data-ng-message="required"
+                                      data-translate="telephony_number_feature_svi_required_url">
+                                </span>
+                                <span data-ng-message="url"
+                                      data-translate="telephony_number_feature_svi_bad_url_format">
+                                </span>
+                            </span>
                         </div>
                     </div> <!-- URL -->
 
                     <!-- RECORD -->
-                    <div class="section-item input-select clearfix">
-                        <div class="form-group no-space"
-                             data-ng-class="{ 'has-error': $ctrl.sviConfigForm.urlRecord.$invalid && $ctrl.sviConfigForm.urlRecord.$dirty, 'has-success': $ctrl.sviConfigForm.urlRecord.$valid && $ctrl.sviConfigForm.urlRecord.$viewValue }">
+                    <div class="section-item">
+                        <div class="form-group mb-0"
+                             data-ng-class="{
+                                'has-error': $ctrl.sviConfigForm.urlRecord.$invalid && $ctrl.sviConfigForm.urlRecord.$touched
+                             }">
                             <label class="control-label"
                                    for="urlRecord"
                                    data-translate="telephony_number_feature_svi_url_record">
                             </label>
-                            <div class="dtable full-width">
-                                <div class="dtd right-space-p4">
-                                    <select data-flat-select
-                                            class="form-control"
+                            <div class="d-table w-100">
+                                <div class="d-table-cell">
+                                    <select class="form-control"
                                             data-ng-change="$ctrl.updateUrlRecordProtocol()"
                                             data-ng-model="$ctrl.model.urlRecordProtocol"
                                             data-ng-options="protocol for protocol in $ctrl.urlRecordProtocols">
                                     </select>
                                 </div>
-                                <div class="dtd vertical-bottom">
+                                <div class="d-table-cell align-bottom">
                                     <input type="text"
                                            id="urlRecord"
                                            name="urlRecord"
@@ -88,16 +87,16 @@
                                            aria-describedby="urlRecordHelp" />
                                 </div>
                             </div>
-                            <span class="help-block small"
+                            <small class="help-block"
                                   id="urlRecordHelp"
                                   data-translate="telephony_number_feature_svi_url_record_help">
-                            </span>
-                            <div data-ng-messages="$ctrl.sviConfigForm.urlRecord.$error"
-                                 data-ng-if="$ctrl.sviConfigForm.urlRecord.$invalid && $ctrl.sviConfigForm.urlRecord.$dirty"
-                                 role="alert">
-                                <label for="urlRecord"
+                            </small>
+                            <span class="help-block"
+                                  data-ng-messages="$ctrl.sviConfigForm.urlRecord.$error"
+                                  data-ng-if="$ctrl.sviConfigForm.urlRecord.$invalid && $ctrl.sviConfigForm.urlRecord.$touched"
+                                  role="alert">
+                                <span for="urlRecord"
                                        data-ng-message="url"
-                                       class="normal small"
                                        data-ng-switch="$ctrl.model.urlRecordProtocol">
                                     <span data-translate="telephony_number_feature_svi_bad_url_format"
                                           data-ng-switch-when="http://">
@@ -108,22 +107,21 @@
                                     <span data-translate="telephony_number_feature_svi_bad_url_mailto_format"
                                           data-ng-switch-when="mailto:">
                                     </span>
-                                </label>
-                            </div>
+                                </span>
+                            </span>
                         </div>
                     </div> <!-- RECORD -->
                 </div>
             </section>
 
-            <footer class="clearfix double-choice">
+            <footer class="clearfix float-sm-right">
                 <button type="submit"
                         class="btn btn-primary"
                         data-ng-disabled="$ctrl.sviConfigForm.$invalid || !$ctrl.numberCtrl.number.feature.hasChange()"
                         data-translate="submit">
                 </button>
-
-                <button type="button"
-                        class="btn btn-default"
+                <button type="reset"
+                        class="btn btn-default mr-sm-2 float-left"
                         data-translate="cancel"
                         data-ng-click="$ctrl.onPopoverCancel()">
                 </button>

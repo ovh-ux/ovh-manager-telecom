@@ -7,20 +7,21 @@
         <h1 data-translate="telephony_group_billing_summary_title"></h1>
     </header>
 
-    <bouncing-box-loader data-ng-if="SummaryCtrl.loading.init">
-        <h2 class="top-space-m16"
-            data-translate="loading">
-        </h2>
-    </bouncing-box-loader>
 
-    <div data-ng-if="!SummaryCtrl.loading.init"
-        class="telecom-section-content">
+    <oui-loader data-ng-if="SummaryCtrl.loading.init"
+                data-size="m">
+    </oui-loader>
+
+    <div class="telecom-section-content"
+         data-ng-if="!SummaryCtrl.loading.init">
+
+        <toast-message></toast-message>
 
         <div class="row">
             <div class="col-xs-12 col-md-10 widget-presentation">
                 <h2 class="widget-presentation-title"
                     data-translate="telephony_group_billing_summary_consumption_summary_title"></h2>
-                <dl class="dl-horizontal top-space-32">
+                <dl>
                     <dt data-translate="telephony_group_billing_summary_consumption_total_label"></dt>
                     <dd data-translate="{{ SummaryCtrl.consumptionSummary.total > 1 ? 'telephony_group_billing_summary_calls_number' : 'telephony_group_billing_summary_calls_number_single' }}"
                         data-translate-values="{ count: SummaryCtrl.consumptionSummary.total }">
@@ -49,82 +50,90 @@
                 <h2 class="widget-presentation-title"
                     data-translate="telephony_group_billing_summary_consumption_details_title">
                 </h2>
-                <div class="table-responsive-vertical top-space-m4">
-                    <table class="table table-pretty table-hover table-striped no-space">
+                <div class="table-responsive">
+                    <table class="table"
+                            data-ng-class="{
+                                'table-hover table-striped': SummaryCtrl.consumptionDetails.raw.length > 1
+                            }">
                         <thead>
                             <tr>
                                 <th>
-                                    <button class="no-style no-outline left-space-p0 btn-block text-left"
-                                        type="button"
-                                        data-ng-disabled="!SummaryCtrl.consumptionDetails.paginated.length"
-                                        data-ng-click="SummaryCtrl.orderBy('description')">
-                                        <label class="pointer" data-translate="telephony_group_billing_summary_consumption_service_label"></label>
-                                        <span class="table-pretty-filter">
-                                            <i class="fa" data-ng-class="{
-                                                'fa-sort': SummaryCtrl.consumptionDetails.orderBy !== 'service',
-                                                'fa-sort-desc': SummaryCtrl.consumptionDetails.orderBy === 'service' && SummaryCtrl.consumptionDetails.orderDesc,
-                                                'fa-sort-asc': SummaryCtrl.consumptionDetails.orderBy === 'service' && !SummaryCtrl.consumptionDetails.orderDesc
-                                            }"></i>
+                                    <button class="btn btn-link p-0"
+                                            type="button"
+                                            data-ng-click="SummaryCtrl.orderBy('description')"
+                                            data-ng-disabled="!SummaryCtrl.consumptionDetails.paginated.length">
+                                        <span data-translate="telephony_group_billing_summary_consumption_service_label"></span>
+                                        <span class="oui-icon align-baseline"
+                                              aria-hidden="true"
+                                              data-ng-class="{
+                                                  'oui-icon-arrow-down': SummaryCtrl.consumptionDetails.orderBy !== 'description',
+                                                  'oui-icon-arrow-down': SummaryCtrl.consumptionDetails.orderBy === 'description' && SummaryCtrl.consumptionDetails.orderDesc,
+                                                  'oui-icon-arrow-up': SummaryCtrl.consumptionDetails.orderBy === 'description' && !SummaryCtrl.consumptionDetails.orderDesc
+                                              }">
                                         </span>
                                     </button>
                                 </th>
                                 <th>
-                                    <button class="no-style no-outline left-space-p0 btn-block text-right"
-                                        type="button"
-                                        data-ng-disabled="!SummaryCtrl.consumptionDetails.paginated.length"
-                                        data-ng-click="SummaryCtrl.orderBy('total')">
-                                        <label class="pointer" data-translate="telephony_group_billing_summary_consumption_total_label"></label>
-                                        <span class="table-pretty-filter">
-                                            <i class="fa" data-ng-class="{
-                                                'fa-sort': SummaryCtrl.consumptionDetails.orderBy !== 'total',
-                                                'fa-sort-desc': SummaryCtrl.consumptionDetails.orderBy === 'total' && SummaryCtrl.consumptionDetails.orderDesc,
-                                                'fa-sort-asc': SummaryCtrl.consumptionDetails.orderBy === 'total' && !SummaryCtrl.consumptionDetails.orderDesc
-                                            }"></i>
+                                    <button class="btn btn-link p-0"
+                                            type="button"
+                                            data-ng-click="SummaryCtrl.orderBy('total')"
+                                            data-ng-disabled="!SummaryCtrl.consumptionDetails.paginated.length">
+                                        <span data-translate="telephony_group_billing_summary_consumption_total_label"></span>
+                                        <span class="oui-icon align-baseline"
+                                              aria-hidden="true"
+                                              data-ng-class="{
+                                                  'oui-icon-arrow-down': SummaryCtrl.consumptionDetails.orderBy !== 'total',
+                                                  'oui-icon-arrow-down': SummaryCtrl.consumptionDetails.orderBy === 'total' && SummaryCtrl.consumptionDetails.orderDesc,
+                                                  'oui-icon-arrow-up': SummaryCtrl.consumptionDetails.orderBy === 'total' && !SummaryCtrl.consumptionDetails.orderDesc
+                                              }">
                                         </span>
                                     </button>
                                 </th>
                                 <th>
-                                    <button class="no-style no-outline left-space-p0 btn-block text-right"
+                                    <button class="btn btn-link p-0"
                                         type="button"
-                                        data-ng-disabled="!SummaryCtrl.consumptionDetails.paginated.length"
-                                        data-ng-click="SummaryCtrl.orderBy('incoming')">
-                                        <label class="pointer" data-translate="telephony_group_billing_summary_consumption_incoming_label"></label>
-                                        <span class="table-pretty-filter">
-                                            <i class="fa" data-ng-class="{
-                                                'fa-sort': SummaryCtrl.consumptionDetails.orderBy !== 'incoming',
-                                                'fa-sort-desc': SummaryCtrl.consumptionDetails.orderBy === 'incoming' && SummaryCtrl.consumptionDetails.orderDesc,
-                                                'fa-sort-asc': SummaryCtrl.consumptionDetails.orderBy === 'incoming' && !SummaryCtrl.consumptionDetails.orderDesc
-                                            }"></i>
+                                        data-ng-click="SummaryCtrl.orderBy('incoming')"
+                                        data-ng-disabled="!SummaryCtrl.consumptionDetails.paginated.length">
+                                        <span data-translate="telephony_group_billing_summary_consumption_incoming_label"></span>
+                                        <span class="oui-icon align-baseline"
+                                              aria-hidden="true"
+                                              data-ng-class="{
+                                                  'oui-icon-arrow-down': SummaryCtrl.consumptionDetails.orderBy !== 'incoming',
+                                                  'oui-icon-arrow-down': SummaryCtrl.consumptionDetails.orderBy === 'incoming' && SummaryCtrl.consumptionDetails.orderDesc,
+                                                  'oui-icon-arrow-up': SummaryCtrl.consumptionDetails.orderBy === 'incoming' && !SummaryCtrl.consumptionDetails.orderDesc
+                                              }">
                                         </span>
                                     </button>
                                 </th>
                                 <th>
-                                    <button class="no-style no-outline left-space-p0 btn-block text-right"
-                                        type="button"
-                                        data-ng-disabled="!SummaryCtrl.consumptionDetails.paginated.length"
-                                        data-ng-click="SummaryCtrl.orderBy('outgoing')">
-                                        <label class="pointer" data-translate="telephony_group_billing_summary_consumption_outgoing_label"></label>
-                                        <span class="table-pretty-filter">
-                                            <i class="fa" data-ng-class="{
-                                                'fa-sort': SummaryCtrl.consumptionDetails.orderBy !== 'outgoing',
-                                                'fa-sort-desc': SummaryCtrl.consumptionDetails.orderBy === 'outgoing' && SummaryCtrl.consumptionDetails.orderDesc,
-                                                'fa-sort-asc': SummaryCtrl.consumptionDetails.orderBy === 'outgoing' && !SummaryCtrl.consumptionDetails.orderDesc
-                                            }"></i>
+                                    <button class="btn btn-link p-0"
+                                           type="button"
+                                           data-ng-click="SummaryCtrl.orderBy('outgoing')"
+                                           data-ng-disabled="!SummaryCtrl.consumptionDetails.paginated.length">
+                                        <span data-translate="telephony_group_billing_summary_consumption_outgoing_label"></span>
+                                        <span class="oui-icon align-baseline"
+                                              aria-hidden="true"
+                                              data-ng-class="{
+                                                  'oui-icon-arrow-down': SummaryCtrl.consumptionDetails.orderBy !== 'outgoing',
+                                                  'oui-icon-arrow-down': SummaryCtrl.consumptionDetails.orderBy === 'outgoing' && SummaryCtrl.consumptionDetails.orderDesc,
+                                                  'oui-icon-arrow-up': SummaryCtrl.consumptionDetails.orderBy === 'outgoing' && !SummaryCtrl.consumptionDetails.orderDesc
+                                              }">
                                         </span>
                                     </button>
                                 </th>
                                 <th>
-                                    <button class="no-style no-outline left-space-p0 btn-block text-right"
+                                    <button class="btn btn-link p-0"
                                         type="button"
                                         data-ng-disabled="!SummaryCtrl.consumptionDetails.paginated.length"
                                         data-ng-click="SummaryCtrl.orderBy('transfer')">
-                                        <label class="pointer" data-translate="telephony_group_billing_summary_consumption_transfer_label"></label>
-                                        <span class="table-pretty-filter">
-                                            <i class="fa" data-ng-class="{
-                                                'fa-sort': SummaryCtrl.consumptionDetails.orderBy !== 'transfer',
-                                                'fa-sort-desc': SummaryCtrl.consumptionDetails.orderBy === 'transfer' && SummaryCtrl.consumptionDetails.orderDesc,
-                                                'fa-sort-asc': SummaryCtrl.consumptionDetails.orderBy === 'transfer' && !SummaryCtrl.consumptionDetails.orderDesc
-                                            }"></i>
+                                        <span data-translate="telephony_group_billing_summary_consumption_transfer_label"></span>
+                                        <span class="oui-icon align-baseline"
+                                              aria-hidden="true"
+                                              data-ng-class="{
+                                                  'oui-icon-arrow-down': SummaryCtrl.consumptionDetails.orderBy !== 'transfer',
+                                                  'oui-icon-arrow-down': SummaryCtrl.consumptionDetails.orderBy === 'transfer' && SummaryCtrl.consumptionDetails.orderDesc,
+                                                  'oui-icon-arrow-up': SummaryCtrl.consumptionDetails.orderBy === 'transfer' && !SummaryCtrl.consumptionDetails.orderDesc
+                                              }">
                                         </span>
                                     </button>
                                 </th>
@@ -133,8 +142,10 @@
                         <tbody data-ng-if="!SummaryCtrl.loading.init && SummaryCtrl.consumptionSummary.total > 0">
                             <tr data-ng-repeat="conso in SummaryCtrl.consumptionDetails.paginated">
                                 <td class="text-left">
-                                    <p class="no-space" data-ng-bind="conso.description"></p>
-                                    <small data-ng-if="conso.description !== conso.service" data-ng-bind="conso.service"></small>
+                                    <p data-ng-bind="conso.description"></p>
+                                    <small data-ng-if="conso.description !== conso.service"
+                                           data-ng-bind="conso.service">
+                                    </small>
                                 </td>
                                 <td class="text-right" data-ng-bind="conso.total"></td>
                                 <td class="text-right" data-ng-bind="conso.incoming"></td>
@@ -142,27 +153,31 @@
                                 <td class="text-right" data-ng-bind="conso.transfer"></td>
                             </tr>
                         </tbody>
-                        <tbody  data-ng-if="!SummaryCtrl.loading.init && SummaryCtrl.consumptionSummary.total == 0">
+                        <tbody data-ng-if="!SummaryCtrl.loading.init && SummaryCtrl.consumptionSummary.total == 0">
                             <tr>
-                                <td class="text-center top-space-p16 bottom-space-p16" colspan="5">
-                                    <span data-translate="telephony_group_billing_summary_consumptioninit_no_results"></span>
+                                <td colspan="5"
+                                    class="text-center"
+                                    data-translate="telephony_group_billing_summary_consumptioninit_no_results">
                                 </td>
                             </tr>
                         </tbody>
                     </table>
-                    <div class="table-pretty-pagination top-space-m8"
-                        data-ng-if="SummaryCtrl.consumptionDetails.raw.length"
-                        data-pagination-front
-                        data-items="SummaryCtrl.consumptionDetails.sorted"
-                        data-paginated-items="SummaryCtrl.consumptionDetails.paginated"
-                        data-current-page="currentPage"
-                        data-nb-pages="nbPages"
-                        data-items-per-page="itemsPerPage"
-                        data-page-placeholder="{{'common_pagination_page' | translate: {currentPage:currentPage, nbPages:nbPages} }}"
-                        data-item-per-page-placeholder="{{'common_pagination_display' | translate}}">
-                    </div>
+                </div>
+                <div class="mt-2"
+                    data-ng-if="SummaryCtrl.consumptionDetails.raw.length"
+                    data-pagination-front
+                    data-items="SummaryCtrl.consumptionDetails.sorted"
+                    data-paginated-items="SummaryCtrl.consumptionDetails.paginated"
+                    data-current-page="currentPage"
+                    data-nb-pages="nbPages"
+                    data-items-per-page="itemsPerPage"
+                    data-page-placeholder="{{'common_pagination_page' | translate: {currentPage:currentPage, nbPages:nbPages} }}"
+                    data-item-per-page-placeholder="{{'common_pagination_display' | translate}}">
                 </div>
             </div>
         </div>
     </div>
+    <!-- /.telecom-section-content -->
+
 </section>
+<!-- /.telecom-telephony-billing-account-billing-summary -->

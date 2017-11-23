@@ -1,4 +1,4 @@
-<section class="telephony-group-alias-configuration-members-easyHunting">
+<section class="telephony-group-alias-configuration-members telephony-group-alias-configuration-members-easyHunting">
 
     <header>
         <section-back-link section-back-link-to-state="telecom.telephony.alias.configuration"
@@ -7,20 +7,23 @@
         <h1 data-translate="telephony_alias_configuration_members_title"></h1>
     </header>
 
-    <div class="telecom-section-content" data-ng-if="MembersEasyHuntingCtrl.loaders.init">
-        <bouncing-box-loader>
-            <h4 data-translate="loading"></h4>
-        </bouncing-box-loader>
-    </div>
+    <oui-loader data-ng-if="MembersEasyHuntingCtrl.loaders.init"
+                data-size="m">
+    </oui-loader>
 
-    <div class="telecom-section-content" data-ng-if="!MembersEasyHuntingCtrl.loaders.init">
+    <div class="telecom-section-content"
+         data-ng-if="!MembersEasyHuntingCtrl.loaders.init">
+
+        <toast-message></toast-message>
 
         <div class="row">
 
             <!-- MEMBERS LIST -->
             <div class="col-md-6 widget-presentation">
                 <header class="widget-presentation-header">
-                    <h2 class="widget-presentation-title" data-translate="telephony_alias_configuration_members_list"></h2>
+                    <h2 class="widget-presentation-title"
+                        data-translate="telephony_alias_configuration_members_list">
+                    </h2>
                 </header>
                 <telecom-telephony-alias-members data-api="MembersEasyHuntingCtrl.membersApi">
                 </telecom-telephony-alias-members>
@@ -29,14 +32,18 @@
             <!-- ADD MEMBER -->
             <div class="col-md-6 widget-presentation">
                 <header class="widget-presentation-header">
-                    <h2 class="widget-presentation-title" data-translate="telephony_alias_configuration_members_add"></h2>
+                    <h2 class="widget-presentation-title"
+                        data-translate="telephony_alias_configuration_members_add">
+                    </h2>
                 </header>
                 <p data-translate="telephony_alias_members_explanation"></p>
                 <telecom-telephony-alias-members-add data-api="MembersEasyHuntingCtrl.membersAddApi">
                 </telecom-telephony-alias-members-add>
             </div>
 
-        </div><!-- row -->
-    </div><!-- section content -->
+        </div>
+    </div>
+    <!-- /.telecom-section-content -->
 
 </section>
+<!-- /.telephony-group-alias-configuration-members-easyHunting -->

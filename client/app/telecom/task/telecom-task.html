@@ -1,123 +1,139 @@
 <div class="telecom-task">
 
     <div class="telecom-section-header">
-        <header>
+        <header class="page-header"
+                role="banner">
             <h1 data-translate="telecom_task_service"></h1>
         </header>
-    </div><!-- .telecom-section-header -->
+    </div>
+    <!-- /.telecom-section-header -->
 
-    <div class="telecom-section-content table-responsive-vertical">
-
-            <table class="table table-pretty table-hover table-condensed ovh-form-flat table-form task-table">
+    <div class="telecom-section-content">
+        <div class="table-responsive">
+            <table class="table"
+                   data-ng-class="{
+                       'table-hover table-striped': TaskCtrl.allTasks.result.data.length > 1
+                   }">
                 <thead>
-                <tr>
-                    <th scope="col">
-                        <a data-ng-click="TaskCtrl.allTasks.sortby = 'pack'; TaskCtrl.allTasks.reverse=!TaskCtrl.allTasks.reverse; TaskCtrl.getData(TaskCtrl.allTasks);"
-                           title="{{'telecom_task_pack' | translate}}">
-
-                            <span data-translate="telecom_task_pack"></span>
-                            <i class="fa fa-sort-asc"
-                               data-ng-class="{'asc-selected': TaskCtrl.allTasks.reverse && TaskCtrl.allTasks.sortby === 'pack'}">
-                            </i>
-                            <i class="fa fa-sort-desc sort-desc-left"
-                               data-ng-class="{'desc-selected': !TaskCtrl.allTasks.reverse && TaskCtrl.allTasks.sortby === 'pack'}">
-                            </i>
-
-                        </a>
-                    </th>
-                    <th class="text-center-md" scope="col">
-                        <a data-ng-click="TaskCtrl.allTasks.sortby = 'status'; TaskCtrl.allTasks.reverse=!TaskCtrl.allTasks.reverse; TaskCtrl.getData(TaskCtrl.allTasks);"
-                           title="{{'telecom_task_status' | translate}}">
-
-                            <span data-translate="telecom_task_status"></span>
-                            <i class="fa fa-sort-asc"
-                               data-ng-class="{'asc-selected': TaskCtrl.allTasks.reverse && TaskCtrl.allTasks.sortby === 'status'}">
-                            </i>
-                            <i class="fa fa-sort-desc sort-desc-left"
-                               data-ng-class="{'desc-selected': !TaskCtrl.allTasks.reverse && TaskCtrl.allTasks.sortby === 'status'}">
-                            </i>
-
-                        </a>
-                    </th>
-                    <th scope="col">
-                        <a data-ng-click="TaskCtrl.allTasks.sortby = 'function'; TaskCtrl.allTasks.reverse=!TaskCtrl.allTasks.reverse; TaskCtrl.getData(TaskCtrl.allTasks);"
-                           title="{{'telecom_task_function' | translate}}">
-
-                            <span data-translate="telecom_task_function"></span>
-                            <i class="fa fa-sort-asc"
-                               data-ng-class="{'asc-selected': TaskCtrl.allTasks.reverse && TaskCtrl.allTasks.sortby === 'function'}">
-                            </i>
-                            <i class="fa fa-sort-desc sort-desc-left"
-                               data-ng-class="{'desc-selected': !TaskCtrl.allTasks.reverse && TaskCtrl.allTasks.sortby === 'function'}">
-                            </i>
-
-                        </a>
-                    </th>
-                    <th>
-                        <a data-ng-click="TaskCtrl.allTasks.sortby = 'updateDate'; TaskCtrl.allTasks.reverse=!TaskCtrl.allTasks.reverse; TaskCtrl.getData(TaskCtrl.allTasks);"
-                           title="{{'telecom_task_date' | translate}}">
-
-                            <span data-translate="telecom_task_date"></span>
-                            <i class="fa fa-sort-asc"
-                               data-ng-class="{'asc-selected': TaskCtrl.allTasks.reverse && TaskCtrl.allTasks.sortby === 'updateDate'}">
-                            </i>
-                            <i class="fa fa-sort-desc sort-desc-left"
-                               data-ng-class="{'desc-selected': !TaskCtrl.allTasks.reverse && TaskCtrl.allTasks.sortby === 'updateDate'}">
-                            </i>
-
-                        </a>
-                    </th>
-                </tr>
+                    <tr>
+                        <th scope="col">
+                            <button type="button"
+                                    class="btn btn-link p-0"
+                                    data-ng-click="TaskCtrl.allTasks.sortby = 'pack'; TaskCtrl.allTasks.reverse=!TaskCtrl.allTasks.reverse; TaskCtrl.getData(TaskCtrl.allTasks);"
+                                    data-translate-attr="{ 'title': 'telecom_task_pack' }">
+                                <span data-translate="telecom_task_pack"></span>
+                                <span class="oui-icon align-baseline"
+                                      aria-hidden="true"
+                                      data-ng-class="{
+                                          'oui-icon-arrow-down': !TaskCtrl.allTasks.reverse && TaskCtrl.allTasks.sortby === 'pack',
+                                          'oui-icon-arrow-down': !TaskCtrl.allTasks.reverse && TaskCtrl.allTasks.sortby === 'pack',
+                                          'oui-icon-arrow-up': TaskCtrl.allTasks.reverse && TaskCtrl.allTasks.sortby === 'pack'
+                                      }">
+                                </span>
+                            </button>
+                        </th>
+                        <th class="text-center-md"
+                            scope="col">
+                            <button type="button"
+                                    class="btn btn-link p-0"
+                                    data-ng-click="TaskCtrl.allTasks.sortby = 'status'; TaskCtrl.allTasks.reverse=!TaskCtrl.allTasks.reverse; TaskCtrl.getData(TaskCtrl.allTasks);"
+                                    data-translate-attr="{ 'title': 'telecom_task_status' }">
+                                <span data-translate="telecom_task_status"></span>
+                                <span class="oui-icon align-baseline"
+                                      aria-hidden="true"
+                                      data-ng-class="{
+                                          'oui-icon-arrow-down': !TaskCtrl.allTasks.reverse && TaskCtrl.allTasks.sortby === 'status',
+                                          'oui-icon-arrow-down': !TaskCtrl.allTasks.reverse && TaskCtrl.allTasks.sortby === 'status',
+                                          'oui-icon-arrow-up': TaskCtrl.allTasks.reverse && TaskCtrl.allTasks.sortby === 'status'
+                                      }">
+                                </span>
+                            </button>
+                        </th>
+                        <th scope="col">
+                            <button type="button"
+                                    class="btn btn-link p-0"
+                                    data-ng-click="TaskCtrl.allTasks.sortby = 'function'; TaskCtrl.allTasks.reverse=!TaskCtrl.allTasks.reverse; TaskCtrl.getData(TaskCtrl.allTasks);"
+                                    data-translate-attr="{ 'title': 'telecom_task_function' }">
+                                <span data-translate="telecom_task_function"></span>
+                                <span class="oui-icon align-baseline"
+                                      aria-hidden="true"
+                                      data-ng-class="{
+                                          'oui-icon-arrow-down': !TaskCtrl.allTasks.reverse && TaskCtrl.allTasks.sortby === 'function',
+                                          'oui-icon-arrow-down': !TaskCtrl.allTasks.reverse && TaskCtrl.allTasks.sortby === 'function',
+                                          'oui-icon-arrow-up': TaskCtrl.allTasks.reverse && TaskCtrl.allTasks.sortby === 'function'
+                                      }">
+                                </span>
+                            </button>
+                        </th>
+                        <th>
+                            <button type="button"
+                                    class="btn btn-link p-0"
+                                    data-ng-click="TaskCtrl.allTasks.sortby = 'updateDate'; TaskCtrl.allTasks.reverse=!TaskCtrl.allTasks.reverse; TaskCtrl.getData(TaskCtrl.allTasks);"
+                                    data-translate-attr="{ 'title': 'telecom_task_date' }">
+                                <span data-translate="telecom_task_date"></span>
+                                <span class="oui-icon align-baseline"
+                                      aria-hidden="true"
+                                      data-ng-class="{
+                                          'oui-icon-arrow-down': !TaskCtrl.allTasks.reverse && TaskCtrl.allTasks.sortby === 'updateDate',
+                                          'oui-icon-arrow-down': !TaskCtrl.allTasks.reverse && TaskCtrl.allTasks.sortby === 'updateDate',
+                                          'oui-icon-arrow-up': TaskCtrl.allTasks.reverse && TaskCtrl.allTasks.sortby === 'updateDate'
+                                      }">
+                                </span>
+                            </button>
+                        </th>
+                    </tr>
                 </thead>
-                <tbody>
-                <tr data-ng-repeat="task in TaskCtrl.allTasks.result.data track by task.id">
-                    <td data-title="{{'telecom_task_pack' | translate}}">{{task.pack}}</td>
-                    <td data-title="{{ 'telecom_task_status' | translate }}"
-                        class="text-center-md">
-                        <span>
-                            <i data-ng-show="task.status.icon"
-                               class="ovh-font fs20 pointer"
-                               data-ng-class="task.status.icon"
-                               data-uib-tooltip="{{ task.status.tip }}">
-                            </i>
-                        </span>
-                    </td>
-                    <td data-title="{{'telecom_task_function' | translate}}">{{task.function | translate}}</td>
-                    <td data-title="{{'telecom_task_date' | translate}}">{{task.updateDate | date:'dd/MM/yyyy'}}</td>
-                </tr>
+                <tbody data-ng-if="!TaskCtrl.allTasks.loading">
+                    <tr data-ng-repeat="task in TaskCtrl.allTasks.result.data track by task.id">
+                        <td data-ng-bind="task.pack"></td>
+                        <td class="text-center-md">
+                            <span>
+                                <i data-ng-show="task.status.icon"
+                                   class="ovh-font ovh-font-1x4 my-0"
+                                   data-ng-class="task.status.icon"
+                                   data-uib-tooltip="{{ task.status.tip }}"
+                                   data-tooltip-append-to-body="true">
+                                </i>
+                            </span>
+                        </td>
+                        <td data-ng-bind="task.function | translate"></td>
+                        <td data-ng-bind="task.updateDate | date:'dd/MM/yyyy'"></td>
+                    </tr>
+                </tbody>
+                <tbody data-ng-if="TaskCtrl.allTasks.loading">
+                    <tr>
+                        <td colspan="4">
+                            <oui-loader data-size="m"></oui-loader>
+                        </td>
+                    </tr>
+                </tbody>
+                <tbody data-ng-if="!TaskCtrl.allTasks.loading && !TaskCtrl.allTasks.result.data.length">
+                    <tr>
+                        <td colspan="4"
+                            class="text-center"
+                            data-translate="telecom_task_none">
+                        </td>
+                    </tr>
                 </tbody>
             </table>
+        </div>
 
-            <div class="row"
-                 data-ng-if="TaskCtrl.allTasks.loading">
-                <div class="col-xs-12 text-center table-pretty-no-content"
-                     data-spinner>
-                </div>
-            </div>
+        <uib-pagination
+            data-ng-show="TaskCtrl.allTasks.result.count>TaskCtrl.allTasks.filter.perPage"
+            data-ng-model="TaskCtrl.allTasks.filter.page"
+            data-total-items="TaskCtrl.allTasks.result.count"
+            data-boundary-links="true"
+            data-rotate="false"
+            data-items-per-page="TaskCtrl.allTasks.filter.perPage"
+            data-previous-text="&lsaquo;"
+            data-next-text="&rsaquo;"
+            data-first-text="&laquo;"
+            data-last-text="&raquo;"
+            data-max-size="5">
+        </uib-pagination>
 
-            <div class="row"
-                 data-ng-if="!TaskCtrl.allTasks.loading && TaskCtrl.allTasks.result.data.length == 0">
-                <div class="col-xs-12 text-center table-pretty-no-content"
-                     data-translate="telecom_task_none">
-                </div>
-            </div>
-
-            <uib-pagination
-                data-ng-show="TaskCtrl.allTasks.result.count>TaskCtrl.allTasks.filter.perPage"
-                total-items="TaskCtrl.allTasks.result.count"
-                data-ng-model="TaskCtrl.allTasks.filter.page"
-                class="pagination-sm"
-                boundary-links="true"
-                rotate="false"
-                items-per-page="TaskCtrl.allTasks.filter.perPage"
-                previous-text="&lsaquo;"
-                next-text="&rsaquo;"
-                first-text="&laquo;"
-                last-text="&raquo;"
-                max-size="5"
-                >
-            </uib-pagination>
-
-    </div><!-- .telecom-section-content -->
+    </div>
+    <!-- /.telecom-section-content -->
 
 </div>
+<!-- /.telecom-task -->

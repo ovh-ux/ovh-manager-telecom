@@ -9,9 +9,9 @@
 
     <div class="telecom-section-content">
         <!-- SHOW LOADING -->
-        <bouncing-box-loader data-ng-if="$ctrl.loading.init">
-            <h2 data-translate="loading"></h2>
-        </bouncing-box-loader> <!-- END OF SHOW LOADING -->
+        <oui-loader data-ng-if="$ctrl.loading.init"
+                    data-size="m">
+        </oui-loader> <!-- END OF SHOW LOADING -->
 
         <!-- NOT AN OVHPABX -->
         <div class="row"
@@ -19,9 +19,6 @@
             <div class="col-xs-12 col-md-6">
                 <div class="alert alert-warning"
                      role="alert">
-                    <i class="ovh-font ovh-font-filled-warning"
-                       aria-hidden="true">
-                    </i>
                     <p data-translate="telephony_alias_ovh_pabx_condition"></p>
                     <a data-ui-sref="telecom.telephony.alias.configuration.changeType"
                        data-translate="telephony_alias_configuration_change_type"
@@ -43,27 +40,26 @@
 
                 <form novalidate
                       name="ovhPabxSound"
-                      class="bottom-space-m16">
+                      class="mb-3">
                     <!-- ADD SOUND -->
-                    <label class="btn btn-primary pointer input-file"
+                    <label class="btn btn-primary input-file"
                            data-telephony-number-ovh-pabx-sound-uploader
                            data-ovh-pabx="$ctrl.number.feature"
                            data-ng-model="$ctrl.model.file"
                            data-upload-errors="$ctrl.uploadErrors">
-                        <i class="ovh-font ovh-font-upload inline-block vertical-middle fs18"></i>
-                        <span class="inline-block vertical-middle left-space-m8"
+                        <i class="ovh-font ovh-font-upload d-inline-block align-middle"></i>
+                        <span class="d-inline-block align-middle ml-2"
                               data-translate="telephony_alias_ovh_pabx_sounds_add">
                         </span>
                     </label>
-                    <em class="block top-space-m8 bottom-space-m8"
+                    <em class="d-block my-2"
                           data-translate="telephony_alias_ovh_pabx_sounds_add_limitations">
                     </em>
                     <div data-ng-if="$ctrl.hasError()"
                          class="text-danger">
-                        <span class="block top-space-m8 bottom-space-m8"
-                              data-translate="telephony_alias_ovh_pabx_sounds_add_selected_file"
-                              data-translate-values="{ file: $ctrl.model.file.name }">
-                        </span>
+                        <p data-translate="telephony_alias_ovh_pabx_sounds_add_selected_file"
+                           data-translate-values="{ file: $ctrl.model.file.name }">
+                        </p>
                         <span data-ng-if="$ctrl.uploadErrors.extension"
                               data-translate="telephony_alias_ovh_pabx_sounds_add_bad_extension">
                         </span>
@@ -85,3 +81,4 @@
     </div>
 
 </div>
+<!-- /.telecom-telephony-alias-configuration-ovhPabx-sounds -->

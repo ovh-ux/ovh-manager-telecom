@@ -1,5 +1,6 @@
 .telecom-pack-voipLine-activation {
-    .voipLine-hardware-image, .carousel-caption{
+    .voipLine-hardware-image,
+    .carousel-caption {
         display: inline-block;
         width: 35%;
         min-height: 120px;
@@ -7,19 +8,17 @@
         margin-bottom: 32px;
     }
 
-    .voipLine-hardware-image {
-        img{
-            max-width: 90%;
-            max-height: 120px;
-            margin-left: 0;
-        }
+    .voipLine-hardware-image img {
+        max-width: 90%;
+        max-height: 120px;
+        margin-left: 0;
     }
 
     .carousel-caption {
         padding: 0;
         position: static;
         text-shadow: none;
-        color:@text-color-mainInfo;
+        color: @gray-dark;
         text-align: left;
 
         h4 {
@@ -28,17 +27,19 @@
     }
 
     .carousel-control {
-        text-shadow : none;
-        cursor : pointer;
+        text-shadow: none;
+        cursor: pointer;
 
-        &.left, &.right {
+        &.left,
+        &.right {
             background-image: none;
             background-repeat: no-repeat;
         }
 
-        .glyphicon-chevron-left, .glyphicon-chevron-right {
-            &:before {
-                color : @UNIVERS;
+        .glyphicon-chevron-left,
+        .glyphicon-chevron-right {
+            &::before {
+                color: @oui-color-dodger;
             }
         }
     }
@@ -48,49 +49,19 @@
 
         li {
             border: none;
-            background-color: fadeout(@UNIVERS, 85%);
+            background-color: fadeout(@oui-color-dodger, 85%);
 
             &.active {
-                background-color: @UNIVERS;
+                background-color: @oui-color-dodger;
             }
         }
     }
 
     .selected-hardware {
-        .voipLine-hardware-image, .carousel-caption {
+        .voipLine-hardware-image,
+        .carousel-caption {
             margin-bottom: 0;
         }
     }
 
-    .animate-mondial-relay, .animate-addresses {
-        overflow: hidden;
-
-        &.ng-hide-animate {
-            -webkit-transition: 1s ease all;
-            -moz-transition: 1s ease all;
-            -ms-transition: 1s ease all;
-            -o-transition: 1s ease all;
-            transition: 1s ease all;
-        }
-
-        &.ng-hide-remove {
-            max-height: 0;
-            opacity: 0;
-
-            &.ng-hide-remove-active {
-                max-height: 600px;
-                opacity:1;
-            }
-        }
-
-        &.ng-hide-add {
-            max-height: 600px;
-            opacity:1;
-
-            &.ng-hide-add-active {
-                max-height: 0;
-                opacity:0;
-            }
-        }
-    }
 }

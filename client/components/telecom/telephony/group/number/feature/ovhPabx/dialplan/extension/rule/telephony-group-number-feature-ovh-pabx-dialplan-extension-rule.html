@@ -84,7 +84,7 @@
                          class="voip-plan__step-btn voip-plan__step-btn--default"
                          data-attr-id="extension-rule-{{ $ctrl.rule.ruleId }}-actions"
                          data-uib-dropdown-toggle>
-                     <span class="ovh-font ovh-font-dots vertical-top" aria-hidden="true"></span>
+                     <span class="ovh-font ovh-font-dots align-top" aria-hidden="true"></span>
                  </button>
                  <!-- ACTIONS LIST -->
                  <ul class="dropdown-menu ovh-dropdown-menu"
@@ -94,7 +94,7 @@
                      <!-- EDIT ACTION -->
                      <li role="menuitem">
                          <button type="button"
-                                 class="btn btn-link full-width"
+                                 class="btn btn-link w-100"
                                  data-translate="telephony_number_feature_ovh_pabx_step_rule_action_edit"
                                  data-ng-click="$ctrl.popoverStatus.isOpen = true">
                          </button>
@@ -103,7 +103,7 @@
                      <!-- DELETE ACTION -->
                      <li role="menuitem">
                          <button type="button"
-                                class="btn btn-link full-width"
+                                class="btn btn-link w-100"
                                 data-translate="telephony_number_feature_ovh_pabx_step_rule_action_delete"
                                 data-ng-click="$ctrl.deletePending = true">
                         </button>

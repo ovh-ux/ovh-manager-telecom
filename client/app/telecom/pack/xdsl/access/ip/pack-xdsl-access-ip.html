@@ -8,8 +8,11 @@
         </h2>
 
         <div class="row">
-            <div class="col-md-8 table-responsive-vertical">
-                <table class="table table-pretty table-hover table-stripped ovh-form-flat table-action-buttons">
+            <div class="col-md-8 table-responsive">
+                <table class="table table-action-buttons"
+                       data-ng-class="{
+                           'table-hover table-striped': ConfigWifiCtrl.wifis.length > 1
+                       }">
                     <caption class="sr-only">
                         <span data-translate="pack_xdsl_access_ip_title"></span>
                         <span> - </span>
@@ -19,28 +22,32 @@
                         <tr>
                             <th scope="col">
                                 <button type="button"
-                                        class="btn btn-default"
+                                        class="btn btn-link p-0"
                                         data-ng-click="XdslAccessIp.sortBy = 'ipReverse'; XdslAccessIp.revertSort=!XdslAccessIp.revertSort;XdslAccessIp.refresh();">
                                         <span data-translate="pack_xdsl_access_ip_ip"></span>
-                                        <span class="fa fa-sort-asc"
+                                        <span class="oui-icon oui-icon-arrow-down align-baseline"
                                               aria-hidden="true"
-                                              data-ng-class="{'asc-selected': XdslAccessIp.revertSort && XdslAccessIp.sortBy === 'ipReverse'}"></span>
-                                        <span class="fa fa-sort-desc sort-desc-left"
-                                              aria-hidden="true"
-                                              data-ng-class="{'desc-selected': !XdslAccessIp.revertSort && XdslAccessIp.sortBy === 'ipReverse'}"></span>
+                                              data-ng-class="{
+                                                'oui-icon-arrow-down': XdslAccessIp.sortBy === 'ipReverse',
+                                                'oui-icon-arrow-down': !XdslAccessIp.revertSort && XdslAccessIp.sortBy === 'ipReverse',
+                                                'oui-icon-arrow-up': XdslAccessIp.revertSort && XdslAccessIp.sortBy === 'ipReverse'
+                                        }">
+                                        </span>
                                 </button>
                             </th>
                             <th scope="col">
                                 <button type="button"
-                                        class="btn btn-default"
+                                        class="btn btn-link p-0"
                                         data-ng-click="XdslAccessIp.sortBy = 'reverse'; XdslAccessIp.revertSort=!XdslAccessIp.revertSort;XdslAccessIp.refresh();">
                                         <span data-translate="pack_xdsl_access_ip_dns"></span>
-                                        <span class="fa fa-sort-asc"
+                                        <span class="oui-icon oui-icon-arrow-down align-baseline"
                                               aria-hidden="true"
-                                              data-ng-class="{'asc-selected': XdslAccessIp.revertSort && XdslAccessIp.sortBy === 'reverse'}"></span>
-                                        <span class="fa fa-sort-desc sort-desc-left"
-                                              aria-hidden="true"
-                                              data-ng-class="{'desc-selected': !XdslAccessIp.revertSort && XdslAccessIp.sortBy === 'reverse'}"></span>
+                                              data-ng-class="{
+                                                'oui-icon-arrow-down': XdslAccessIp.sortBy === 'reverse',
+                                                'oui-icon-arrow-down': !XdslAccessIp.revertSort && XdslAccessIp.sortBy === 'reverse',
+                                                'oui-icon-arrow-up': XdslAccessIp.revertSort && XdslAccessIp.sortBy === 'reverse'
+                                        }">
+                                        </span>
                                 </button>
                             </th>
                             <th>
@@ -53,7 +60,7 @@
                             <th scope="row">
                                 <span data-ng-if="!ip.editing" data-ng-bind="ip.ipReverse"></span>
 
-                                <div flat-input-container data-ng-if="ip.editing">
+                                <div data-ng-if="ip.editing">
                                     <input name="ipReverse"
                                         data-ng-disabled="ip.updating"
                                         aria-labelledby="ipReverse"
@@ -68,7 +75,7 @@
                             <td>
                                 <span data-ng-if="!ip.editing" data-ng-bind="ip.reverse"></span>
 
-                                <div flat-input-container data-ng-if="ip.editing">
+                                <div data-ng-if="ip.editing">
                                     <input
                                         name="reverse"
                                         data-ng-disabled="ip.updating"
@@ -80,11 +87,11 @@
                                         maxlength="40"/>
                                 </div>
                             </td>
-                            <td>
+                            <td class="text-right">
                                 <button type="button"
                                         data-ng-show="ip.editing"
                                         data-ng-disabled="ip.updating || !ip.ipReverse"
-                                        class="btn btn-primary btn-xs"
+                                        class="btn btn-primary"
                                         title="{{ip.ipReverse}} {{::'common_table_validate_entry' | translate}}"
                                         data-ng-click="XdslAccessIp.create(ip)">
                                     <span class="fa fa-check" aria-hidden="true"></span>
@@ -92,7 +99,7 @@
                                 <button type="button"
                                         data-ng-show="ip.editing"
                                         data-ng-disabled="ip.updating"
-                                        class="btn btn-default btn-xs"
+                                        class="btn btn-default"
                                         title="{{ip.ipReverse}} {{::'common_table_cancel_entry' | translate}}"
                                         data-ng-click="XdslAccessIp.undo(ip)">
                                     <span class="fa fa-times" aria-hidden="true"></span>
@@ -100,14 +107,14 @@
                                 <button type="button"
                                         data-ng-hide="ip.editing"
                                         data-ng-disabled="ip.updating"
-                                        class="btn btn-link btn-xs"
+                                        class="btn btn-link py-0"
                                         title="{{ip.ipReverse}} {{::'common_table_delete' | translate}}"
                                         data-ng-really-click="XdslAccessIp.delete(ip)"
                                         data-ng-really-message="{{ 'pack_xdsl_access_ip_delete_really' | translate:ip }}"
                                         data-ng-really-confirm="{{::'ok' | translate }}"
                                         data-ng-really-cancel="{{::'cancel' | translate }}"
                                         data-ng-really-window-class="revert-really-buttons">
-                                    <span class="ovh-font ovh-font-bin fs16" aria-hidden="true"></span>
+                                    <span class="ovh-font ovh-font-bin" aria-hidden="true"></span>
                                 </button>
                             </td>
                         </tr>
@@ -116,7 +123,7 @@
                         <tr data-ng-if="!XdslAccessIp.loading">
                             <td colspan="3">
                                 <button type="button"
-                                        class="btn btn-primary btn-xs"
+                                        class="btn btn-primary"
                                         data-translate-attr="{title : 'pack_xdsl_access_ip_add_entry'}"
                                         data-ng-disabled="!XdslAccessIp.canAdd()"
                                         data-ng-click="XdslAccessIp.add()">
@@ -126,7 +133,7 @@
                         </tr>
                         <tr data-ng-if="XdslAccessIp.loading">
                             <td colspan="3">
-                                <spinner></spinner>
+                                <oui-loader data-size="s"></oui-loader>
                             </td>
                         </tr>
                     </tfoot>

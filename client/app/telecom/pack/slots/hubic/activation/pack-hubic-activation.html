@@ -9,24 +9,27 @@
 
         <div class="widget-presentation">
 
-            <div class="alert alert-ovh">
-                <p data-translate="hubic_activation_widget-intro"></p>
+            <div class="alert alert-info"
+                 role="alert"
+                 data-translate="hubic_activation_widget-intro">
             </div>
 
-            <spinner data-ng-if="PackHubicActivationCtrl.loading"></spinner>
+            <oui-loader data-ng-if="PackHubicActivationCtrl.loading"
+                        data-size="m">
+            </oui-loader>
 
             <div class="row">
                 <div class="col-xs-12 col-md-6">
 
-                    <div class="table-responsive-vertical ovh-form-flat col-" data-ng-if="!PackHubicActivation.loading && PackHubicActivation.hubicList.length">
-                        <table class="table table-hover table-condensed ovh-form-flat table-form table-pretty">
+                    <div class="table-responsive" data-ng-if="!PackHubicActivation.loading && PackHubicActivation.hubicList.length">
+                        <table class="table table-hover table-condensed">
                             <thead>
-                            <tr>
-                                <th scope="col"
-                                    data-translate="hubic_activation_widget_hubic_header"></th>
-                                <th scope="col"
-                                    data-translate="hubic_activation_widget_voucher_header"></th>
-                            </tr>
+                                <tr>
+                                    <th scope="col"
+                                        data-translate="hubic_activation_widget_hubic_header"></th>
+                                    <th scope="col"
+                                        data-translate="hubic_activation_widget_voucher_header"></th>
+                                </tr>
                             </thead>
 
                             <tbody>

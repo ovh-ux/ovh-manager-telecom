@@ -10,11 +10,11 @@
     <div class="telecom-section-content">
 
         <!-- LOADING -->
-        <bouncing-box-loader data-ng-if="$ctrl.loading.init">
-            <h2 class="top-space-m16"
-                data-translate="loading">
-            </h2>
-        </bouncing-box-loader> <!-- Enf of LOADING -->
+        <oui-loader data-ng-if="$ctrl.loading.init"
+                    data-size="m">
+        </oui-loader> <!-- Enf of LOADING -->
+
+        <toast-message></toast-message>
 
         <div class="row"
              data-ng-if="!$ctrl.loading.init">
@@ -28,9 +28,6 @@
 
                 <div class="alert alert-info"
                      role="alert">
-                    <span class="ovh-font ovh-font-filled-info"
-                          aria-hidden="true">
-                    </span>
                     <p data-translate="telephony_group_fax_management_terminate_info1"></p>
                     <p data-translate="telephony_group_fax_management_terminate_info2"></p>
                 </div>
@@ -43,13 +40,11 @@
                         data-translate="telephony_group_fax_management_action_terminate">
                     </h2>
                 </header>
-
-                <bouncing-box-loader data-ng-if="$ctrl.loading.terminate">
-                    <h2 class="top-space-m16"
-                        data-translate="telephony_group_fax_management_terminate_loading">
-                    </h2>
-                </bouncing-box-loader>
-
+                <div class="text-center"
+                    data-ng-if="$ctrl.loading.terminate">
+                    <oui-loader data-size="m"></oui-loader>
+                    <h2 data-translate="telephony_group_fax_management_terminate_loading"></h2>
+                </div>
                 <form novalidate
                       name="terminateForm"
                       data-ng-if="!$ctrl.loading.terminate"
@@ -59,22 +54,17 @@
                         <label for="terminateReason"
                                data-translate="telephony_group_fax_management_terminate_reason">
                         </label>
-                        <div class="row">
-                            <div class="col-xs-12 col-md-6">
-                                <select data-flat-select
-                                        class="form-control"
-                                        id="terminateReason"
-                                        name="terminateReason"
-                                        required
-                                        data-ng-model="$ctrl.model.reason"
-                                        data-ng-options="reason.value as reason.label for reason in $ctrl.availableReasons | orderBy:'label'">
-                                    <option value=""
-                                            data-translate="telephony_group_fax_management_terminate_reason_choose"
-                                            disabled>
-                                    </option>
-                                </select>
-                            </div>
-                        </div>
+                        <select class="form-control"
+                                id="terminateReason"
+                                name="terminateReason"
+                                required
+                                data-ng-model="$ctrl.model.reason"
+                                data-ng-options="reason.value as reason.label for reason in $ctrl.availableReasons | orderBy:'label'">
+                            <option value=""
+                                    data-translate="telephony_group_fax_management_terminate_reason_choose"
+                                    disabled>
+                            </option>
+                        </select>
                     </div> <!-- End of REASON -->
 
                     <!-- DETAILS -->
@@ -86,16 +76,16 @@
                         <textarea id="terminateDetails"
                                   name="terminateDetails"
                                   class="form-control"
-                                  rows="10"
+                                  rows="5"
                                   data-ng-required="$ctrl.model.reason === 'other'"
                                   data-translate-attr="{ placeholder: 'telephony_group_fax_management_terminate_details' }"
                                   data-ng-model="$ctrl.model.details">
                         </textarea>
                     </div> <!-- End of DETAILS -->
 
-                    <div class="form-group bottom-space-m16 clearfix">
+                    <div class="form-group">
                         <button type="submit"
-                                class="btn btn-sm btn-primary pull-right"
+                                class="btn btn-primary float-right"
                                 data-ng-disabled="!terminateForm.$valid"
                                 data-translate="telephony_group_fax_management_terminate_button">
                         </button>
@@ -112,24 +102,21 @@
                     </h2>
                 </header>
 
-                <bouncing-box-loader data-ng-if="$ctrl.loading.cancel">
-                    <h2 class="top-space-m16"
-                        data-translate="telephony_group_fax_management_terminate_cancel_loading">
-                    </h2>
-                </bouncing-box-loader>
+                <div class="text-center"
+                     data-ng-if="$ctrl.loading.cancel">
+                    <oui-loader data-size="m"></oui-loader>
+                    <h2 data-translate="telephony_group_fax_management_terminate_cancel_loading"></h2>
+                </div>
 
                 <div data-ng-if="!$ctrl.loading.cancel">
                     <p data-translate="telephony_group_fax_management_terminate_cancel_doing"
                        data-translate-values="{ serviceName: $ctrl.fax.serviceName, date: ($ctrl.nextBillDate | date:'shortDate') }"></p>
                     <p data-translate="telephony_group_fax_management_terminate_cancel_explain"></p>
-
-                    <div class="text-right">
-                        <button type="button"
-                                class="btn btn-sm btn-primary pull-right"
-                                data-translate="telephony_group_fax_management_terminate_cancel_button"
-                                data-ng-click="$ctrl.onCancelTerminationClick()">
-                        </button>
-                    </div>
+                    <button type="button"
+                            class="btn btn-primary float-right"
+                            data-translate="telephony_group_fax_management_terminate_cancel_button"
+                            data-ng-click="$ctrl.onCancelTerminationClick()">
+                    </button>
                 </div>
             </section> <!-- End of CANCEL -->
 

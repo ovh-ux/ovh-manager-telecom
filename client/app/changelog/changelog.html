@@ -1,7 +1,12 @@
-<div class="modal-header">
-    {{"common_menu_changelog" | translate}}
-</div>
-<div class="modal-body changelog" data-ng-controller="ChangelogCtrl as Changelog">
-    <spinner data-ng-if="!Changelog.content"></spinner>
-    <div data-ng-repeat="line in Changelog.content" data-ng-bind-html="line"></div>
+<div data-ng-controller="ChangelogCtrl as Changelog">
+    <div class="modal-header"></div>
+    <div class="modal-body">
+        <oui-loader data-ng-if="!Changelog.content"
+                    data-size="m">
+        </oui-loader>
+        <div data-translate="common_menu_changelog"></div>
+        <div data-ng-repeat="line in Changelog.content track by $index"
+             data-ng-bind-html="line">
+        </div>
+    </div>
 </div>

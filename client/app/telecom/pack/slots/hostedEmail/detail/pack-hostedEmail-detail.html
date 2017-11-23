@@ -11,7 +11,9 @@
 
     <main class="telecom-section-content" role="main">
 
-        <spinner data-ng-if="DetailCtrl.loading"></spinner>
+        <oui-loader data-ng-if="DetailCtrl.loading"
+                    data-size="m">
+        </oui-loader>
 
         <div class="row"
              data-ng-if="!DetailCtrl.loading">
@@ -53,7 +55,7 @@
                            rel="noopener"
                            target="_blank">
                             <span data-ng-bind="DetailCtrl.configuration.webmailUrl"></span>
-                            <span class="ovh-font ovh-font-newtab fs16" aria-hidden="true"></span>
+                            <span class="ovh-font ovh-font-newtab" aria-hidden="true"></span>
                         </a>
                     </dd> <!-- END OF WEBMAIL -->
 
@@ -90,11 +92,17 @@
                 <h2 class="widget-presentation-title"
                     data-translate="hosted_email_detail_client_configuration">
                 </h2>
-                <div data-ng-repeat="service in DetailCtrl.configuration.services track by service.type" class="bottom-space-m16">
+                <div data-ng-repeat="service in DetailCtrl.configuration.services track by service.type" class="mb-3">
                     <button type="button"
-                            class="btn btn-link no-space bottom-space-p8 top-space-p8"
+                            class="btn btn-link m-0 p-0 py-2"
                             data-ng-click="service.visible = !service.visible">
-                        <span class="ovh-font fs8" data-ng-class="{'ovh-font-disclosure-right': !service.visible, 'ovh-font-disclosure-down': service.visible}" aria-hidden="true"></span>
+                        <i class="ovh-font"
+                           aria-hidden="true"
+                           data-ng-class="{
+                              'ovh-font-disclosure-right': !service.visible,
+                              'ovh-font-disclosure-down': service.visible
+                           }">
+                        </i>
                         <span data-ng-bind="('hosted_email_detail_server_' + service.type) | translate"></span>
                     </button>
                     <div data-uib-collapse="!service.visible">
@@ -151,7 +159,9 @@
                             type="submit"
                             data-ng-disabled="passwordChange.$invalid || DetailCtrl.changingPassword">
                             <span data-translate="hosted_email_detail_client_change_password_submit"></span>
-                            <spinner data-ng-if="DetailCtrl.changingPassword"></spinner>
+                            <oui-loader data-ng-if="DetailCtrl.changingPassword"
+                                        data-size="s">
+                            </oui-loader>
                     </button>
                 </form>
             </div>
@@ -162,9 +172,8 @@
                 </h2>
 
                 <div class="alert alert-warning"
-                     role="alert">
-                    <span class="ovh-font ovh-font-filled-warning" aria-hidden="true"></span>
-                    <p data-translate="hosted_email_detail_client_delete_account_warning"></p>
+                     role="alert"
+                     data-translate="hosted_email_detail_client_delete_account_warning">
                 </div>
 
                 <button type="button"
@@ -186,7 +195,10 @@
                             class="btn btn-primary"
                             data-ng-disabled="DetailCtrl.accountDeleting"
                             data-ng-click="DetailCtrl.onDeleteAccountConfirmClick()">
-                        <spinner data-ng-if="DetailCtrl.accountDeleting"></spinner>
+                        <oui-loader class="mr-2"
+                                    data-ng-if="DetailCtrl.accountDeleting"
+                                    data-size="s">
+                        </oui-loader>
                         <span data-translate="hosted_email_detail_client_delete_account_confirm"></span>
                     </button>
                 </div>

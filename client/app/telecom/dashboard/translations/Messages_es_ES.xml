@@ -42,7 +42,6 @@
    <translation id="telecom_dashboard_services_incidents_other" qtlid="305187">incidencias detectadas</translation>
 
    <translation id="telecom_dashboard_auth_failed" qtlid="305200">No se ha podido cargar la información del usuario.</translation>
-   <translation id="telecom_dashboard_express_lite_desc" qtlid="304875">Express Lite incluye un módem que proporciona acceso a internet y una línea de VoIP por <span class="ad-price bold fs14">22,99 €</span>/mes + IVA.</translation>
    <translation id="telecom_dashboard_express_lite_title" qtlid="304888">OVH lanza una nueva oferta de conexión ADSL y VDSL que incluye lo esencial.</translation>
    <translation id="telecom_dashboard_discover" qtlid="304927">Descubrir la oferta</translation>
 </translations>

@@ -1,56 +1,36 @@
-@telecom-dashboard-status-size: @TopNavHeight;
-
 .telecom-dashboard {
-
-    .alert {
-        &.alert-ovh {
-            &.alert-ad {
-                background-color: @gray-lighter;
-                border-color: @UNIVERS;
-                color: @gray-dark;
-                .master{
-                    .ad-price {
-                        color: @UNIVERS;
-                    }
-                }
-            }
-        }
-    }
-
-    header {
-        .dashboard-vip-icon {
-            padding: 0rem 0.7rem 0.6rem 0.9rem;
-            overflow: hidden;
-            border-radius: 50%;
-            text-align: center;
-            color: white;
-            font-size: 2.4rem;
-            background-color: @UNIVERS;
-        }
-
-        @media (max-width: @screen-sm-max) {
-            .dashboard-vip-icon{
-                display: none;
-            }
-        }
-    }
 
     div.flash {
         div.alert {
-            margin: @md-margin-base @md-margin-base 0 @md-margin-base;
-            //float: right;
+            margin: 32px 32px 0;
             z-index: 9999;
         }
+
         .balance-price {
-            color: @brand-danger;
+            color: @oui-color-error-dark;
             font-weight: bold;
         }
 
         @media (max-width: @screen-sm-max) {
             div.alert {
-                margin: @sm-margin-top @sm-margin-side @sm-margin-bottom @sm-margin-side;
+                margin: 16px 12px 24px;
             }
         }
     }
 
+    .dashboard-vip-icon {
+        padding: 0 .7rem .6rem .9rem;
+        font-size: 2.4rem;
+        color: white;
+        background-color: @oui-color-dodger;
+        border-radius: 50%;
+        text-align: center;
+        overflow: hidden;
+    }
+
+    @media (max-width: @screen-sm-max) {
+        .dashboard-vip-icon {
+            display: none;
+        }
+    }
 }

@@ -9,27 +9,27 @@
 
     <div class="telecom-section-content">
 
-        <div data-ng-if="MgcpIpRestrictionCtrl.isLoading">
-            <bouncing-box-loader>
-                <h2 data-translate="loading"></h2>
-            </bouncing-box-loader>
-        </div>
+        <toast-message></toast-message>
 
-        <div class="row" data-ng-if="!MgcpIpRestrictionCtrl.isLoading">
+        <oui-loader data-ng-if="MgcpIpRestrictionCtrl.isLoading"
+                    data-size="m">
+        </oui-loader>
+
+        <div class="row"
+             data-ng-if="!MgcpIpRestrictionCtrl.isLoading">
             <div class="col-xs-12 col-md-6">
                 <section class="widget-presentation">
                     <h2 class="widget-presentation-title"
                         data-translate="telephony_line_phone_mgcp_ip_restriction_line_title">
                     </h2>
-                    <p class="alert alert-info" role="alert">
-                        <i class="ovh-font ovh-font-filled-info" aria-hidden="true"></i>
-                        <span data-translate="telephony_line_phone_mgcp_ip_restriction_line_info"></span>
+                    <p class="alert alert-info"
+                       role="alert"
+                       data-translate="telephony_line_phone_mgcp_ip_restriction_line_info">
                     </p>
                     <form name="mgcpIpRestrictionForm"
                           id="mgcpIpRestrictionForm"
-                          class="ovh-form-flat"
                           data-ng-submit="MgcpIpRestrictionCtrl.setMgcpIpRestriction()">
-                        <div class="form-group bottom-space-m20" data-flat-input-container>
+                        <div class="form-group mb-3">
                             <label for="mgcpIpRestriction"
                                    data-translate="telephony_line_phone_mgcp_ip_restriction_label">
                             </label>
@@ -57,10 +57,11 @@
                                 data-ng-disabled="mgcpIpRestrictionForm.$invalid ||
                                                   !MgcpIpRestrictionCtrl.hasMgcpIpRestrictionChanged() ||
                                                   MgcpIpRestrictionCtrl.isChangingMgcpIpRestriction">
+                                <oui-loader class="mr-2"
+                                            data-ng-if="MgcpIpRestrictionCtrl.isChangingMgcpIpRestriction"
+                                            data-size="s">
+                                </oui-loader>
                                 <span data-translate="telephony_line_phone_mgcp_ip_restriction_submit"></span>
-                                <spinner class="left-space-m4"
-                                         data-ng-if="MgcpIpRestrictionCtrl.isChangingMgcpIpRestriction">
-                                </spinner>
                             </button>
                         </div>
                     </form>
@@ -71,15 +72,14 @@
                     <h2 class="widget-presentation-title"
                         data-translate="telephony_line_phone_mgcp_ip_restriction_customer_code_title">
                     </h2>
-                    <p class="alert alert-info" role="alert">
-                        <i class="ovh-font ovh-font-filled-info" aria-hidden="true"></i>
-                        <span data-translate="telephony_line_phone_mgcp_ip_restriction_customer_code_info"></span>
+                    <p class="alert alert-info"
+                       role="alert"
+                       data-translate="telephony_line_phone_mgcp_ip_restriction_customer_code_info">
                     </p>
                     <form name="mgcpDefaultIpRestrictionForm"
                           id="mgcpDefaultIpRestrictionForm"
-                          class="ovh-form-flat"
                           data-ng-submit="MgcpIpRestrictionCtrl.setMgcpDefaultIpRestriction()">
-                        <div class="form-group bottom-space-m20" data-flat-input-container>
+                        <div class="form-group mb-3">
                             <label for="mgcpDefaultIpRestriction"
                                    data-translate="telephony_line_phone_mgcp_ip_restriction_label">
                             </label>
@@ -107,10 +107,11 @@
                                 data-ng-disabled="mgcpDefaultIpRestrictionForm.$invalid ||
                                                   !MgcpIpRestrictionCtrl.hasMgcpDefaultIpRestrictionChanged() ||
                                                   MgcpIpRestrictionCtrl.isChangingMgcpDefaultIpRestriction">
+                                <oui-loader class="mr-2"
+                                            data-ng-if="MgcpIpRestrictionCtrl.isChangingMgcpDefaultIpRestriction"
+                                            data-size="s">
+                                </oui-loader>
                                 <span data-translate="telephony_line_phone_mgcp_ip_restriction_submit"></span>
-                                <spinner class="left-space-m4"
-                                         data-ng-if="MgcpIpRestrictionCtrl.isChangingMgcpDefaultIpRestriction">
-                                </spinner>
                             </button>
                         </div>
                     </form>

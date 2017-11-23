@@ -1,123 +1,131 @@
 <section class="telecom-telephony-billing-account-manage-contacts">
 
-    <div>
+    <toast-message></toast-message>
 
-        <div data-ng-if="ManageContactsCtrl.isLoading">
-            <bouncing-box-loader>
-                <h2 class="top-space-m16" data-translate="loading"></h2>
-            </bouncing-box-loader>
+    <oui-loader data-ng-if="ManageContactsCtrl.isLoading"
+                data-size="m">
+    </oui-loader>
+
+    <section class="widget-presentation"
+             data-ng-if="!ManageContactsCtrl.isLoading">
+        <h2 class="widget-presentation-title"
+            data-translate="telephony_group_manage_contacts_title">
+        </h2>
+        <p class="mb-5"
+           data-translate="telephony_group_manage_contacts_change_info">
+        </p>
+        <div class="table-responsive">
+            <table class="table table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th>
+                            <span>&nbsp;</span>
+                        </th>
+                        <th>
+                            <span data-translate="telephony_group_manage_contacts_nic_admin"></span>
+                        </th>
+                        <th>
+                            <span data-translate="telephony_group_manage_contacts_nic_tech"></span>
+                        </th>
+                        <th>
+                            <span data-translate="telephony_group_manage_contacts_nic_billing"></span>
+                        </th>
+                        <th>
+                            <span>&nbsp;</span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="serviceType" data-ng-repeat-start="sectionId in ManageContactsCtrl.sections">
+                        <td class="text-left" colspan="5">
+                            <strong class="ml-3"
+                                    data-ng-bind="'telephony_group_manage_contacts_' + sectionId | translate">
+                            </strong>
+                        </td>
+                    </tr>
+                    <tr data-ng-repeat="contact in ManageContactsCtrl.section[sectionId]" data-ng-repeat-end>
+                        <td data-title="{{:: '' | translate }}">
+                            <span class="ml-2 text-nowrap"
+                                  data-ng-if="contact.serviceName"
+                                  data-ng-bind="contact.serviceName | phoneNumber">
+                            </span>
+                            <span class="ml-2 text-nowrap"
+                                  data-ng-if="!contact.serviceName"
+                                  data-ng-bind="ManageContactsCtrl.billingAccount.getDisplayedName()">
+                            </span>
+                        </td>
+                        <td data-title="{{:: 'telephony_group_manage_contacts_nic_admin' | translate }}">
+                            <span data-ng-if="!contact.editing || sectionId !== 'group'"
+                                  data-ng-bind="contact.value.contactAdmin">
+                            </span>
+                            <div data-ng-if="contact.editing && sectionId === 'group'">
+                                <input type="text"
+                                       class="form-control"
+                                       data-ng-model="contact.modified.contactAdmin" />
+                            </div>
+                        </td>
+                        <td data-title="{{:: 'telephony_group_manage_contacts_nic_tech' | translate }}">
+                            <span data-ng-if="!contact.editing"
+                                  data-ng-bind="contact.value.contactTech">
+                            </span>
+                            <div data-ng-if="contact.editing">
+                                <input type="text"
+                                       class="form-control"
+                                       data-ng-model="contact.modified.contactTech" />
+                            </div>
+                        </td>
+                        <td data-title="{{:: 'telephony_group_manage_contacts_nic_billing' | translate }}">
+                            <span data-ng-if="!contact.editing || sectionId !== 'group'"
+                                  data-ng-bind="contact.value.contactBilling">
+                            </span>
+                            <div data-ng-if="contact.editing && sectionId === 'group'">
+                                <input type="text"
+                                       class="form-control"
+                                       data-ng-model="contact.modified.contactBilling" />
+                            </div>
+                        </td>
+                        <td>
+                            <span data-ng-if="contact.pendingTask">
+                                <i class="ovh-font ovh-font-info line-height-normal"></i>
+                                <span data-translate="telephony_group_manage_contacts_pending_task"></span>
+                            </span>
+                            <div data-ng-if="!contact.pendingTask">
+                                <div class="tooltip-wrapper"
+                                     data-uib-tooltip="{{ contact.isModifiable ? '' : ('telephony_group_manage_contacts_disabled' | translate) }}"
+                                     data-tooltip-append-to-body="true">
+                                    <button type="button"
+                                            class="btn btn-default no-transition"
+                                            data-ng-if="!contact.editing && !ManageContactsCtrl.isEditing"
+                                            data-ng-click="ManageContactsCtrl.editContact(contact)"
+                                            data-ng-disabled="!contact.isModifiable"
+                                            data-translate="modify">
+                                    </button>
+                                </div>
+                                <button type="button"
+                                        class="btn btn-default no-transition"
+                                        data-ng-if="contact.editing"
+                                        data-ng-click="ManageContactsCtrl.cancelEdition(contact)"
+                                        data-ng-disabled="contact.submiting"
+                                        data-translate="cancel">
+                                </button>
+                                <button type="button"
+                                        class="btn btn-primary no-transition"
+                                        data-ng-if="contact.editing"
+                                        data-ng-disabled="contact.submiting || !ManageContactsCtrl.hasChanges(contact) || !ManageContactsCtrl.isContactValid(contact)"
+                                        data-ng-click="ManageContactsCtrl.submitChanges(contact)">
+                                    <oui-loader class="mr-2"
+                                                data-ng-if="contact.submiting"
+                                                data-size="s">
+                                    </oui-loader>
+                                    <span data-translate="submit"></span>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-
-        <div class="row" data-ng-if="!ManageContactsCtrl.isLoading">
-            <div class="col-xs-12">
-                <section class="widget-presentation table-responsive-vertical">
-                    <h2 class="widget-presentation-title"
-                        data-translate="telephony_group_manage_contacts_title">
-                    </h2>
-                    <p class="bottom-space-m32" data-translate="telephony_group_manage_contacts_change_info"></p>
-                    <table class="table table-pretty table-hover no-space">
-                        <thead>
-                            <tr>
-                                <th class="fs12">
-                                    <span>&nbsp;</span>
-                                </th>
-                                <th class="fs12">
-                                    <span data-translate="telephony_group_manage_contacts_nic_admin"></span>
-                                </th>
-                                <th class="fs12">
-                                    <span data-translate="telephony_group_manage_contacts_nic_tech"></span>
-                                </th>
-                                <th class="fs12">
-                                    <span data-translate="telephony_group_manage_contacts_nic_billing"></span>
-                                </th>
-                                <th class="fs12">
-                                    <span>&nbsp;</span>
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="serviceType" data-ng-repeat-start="sectionId in ManageContactsCtrl.sections">
-                                <td class="text-left" colspan="5">
-                                    <strong class="left-space-m16" data-ng-bind="'telephony_group_manage_contacts_' + sectionId | translate"></strong>
-                                </td>
-                            </tr>
-                            <tr data-ng-repeat="contact in ManageContactsCtrl.section[sectionId]" data-ng-repeat-end>
-                                <td data-title="{{:: '' | translate }}">
-                                    <span class="left-space-m8 text-nowrap"
-                                          data-ng-if="contact.serviceName"
-                                          data-ng-bind="contact.serviceName | phoneNumber"></span>
-                                    <span class="left-space-m8 text-nowrap"
-                                          data-ng-if="!contact.serviceName"
-                                          data-ng-bind="ManageContactsCtrl.billingAccount.getDisplayedName()"></span>
-                                </td>
-                                <td data-title="{{:: 'telephony_group_manage_contacts_nic_admin' | translate }}">
-                                    <span data-ng-if="!contact.editing || sectionId !== 'group'"
-                                          data-ng-bind="contact.value.contactAdmin"></span>
-                                    <div data-ng-if="contact.editing && sectionId === 'group'" flat-input-container>
-                                        <input type="text"
-                                               class="form-control"
-                                               data-ng-model="contact.modified.contactAdmin">
-                                    </div>
-                                </td>
-                                <td data-title="{{:: 'telephony_group_manage_contacts_nic_tech' | translate }}">
-                                    <span data-ng-if="!contact.editing"
-                                          data-ng-bind="contact.value.contactTech"></span>
-                                    <div data-ng-if="contact.editing" flat-input-container>
-                                        <input type="text"
-                                               class="form-control"
-                                               data-ng-model="contact.modified.contactTech">
-                                    </div>
-                                </td>
-                                <td data-title="{{:: 'telephony_group_manage_contacts_nic_billing' | translate }}">
-                                    <span data-ng-if="!contact.editing || sectionId !== 'group'"
-                                          data-ng-bind="contact.value.contactBilling"></span>
-                                    <div data-ng-if="contact.editing && sectionId === 'group'" flat-input-container>
-                                        <input type="text"
-                                               class="form-control"
-                                               data-ng-model="contact.modified.contactBilling">
-                                    </div>
-                                </td>
-                                <td>
-                                    <span data-ng-if="contact.pendingTask">
-                                        <i class="ovh-font ovh-font-info line-height-normal"></i>
-                                        <span data-translate="telephony_group_manage_contacts_pending_task"></span>
-                                    </span>
-                                    <div data-ng-if="!contact.pendingTask">
-                                        <div class="tooltip-wrapper"
-                                             data-uib-tooltip="{{ contact.isModifiable ? '' : ('telephony_group_manage_contacts_disabled' | translate) }}"
-                                             data-tooltip-append-to-body="true">
-                                            <button type="button"
-                                                    class="btn btn-default no-transition"
-                                                    data-ng-if="!contact.editing && !ManageContactsCtrl.isEditing"
-                                                    data-ng-disabled="!contact.isModifiable"
-                                                    data-ng-click="ManageContactsCtrl.editContact(contact)">
-                                                <span data-translate="modify"></span>
-                                            </button>
-                                        </div>
-                                        <button type="button"
-                                                class="btn btn-default no-transition"
-                                                data-ng-if="contact.editing"
-                                                data-ng-disabled="contact.submiting"
-                                                data-ng-click="ManageContactsCtrl.cancelEdition(contact)">
-                                            <span data-translate="cancel"></span>
-                                        </button>
-                                        <button type="button"
-                                                class="btn btn-primary no-transition"
-                                                data-ng-if="contact.editing"
-                                                data-ng-disabled="contact.submiting || !ManageContactsCtrl.hasChanges(contact) || !ManageContactsCtrl.isContactValid(contact)"
-                                                data-ng-click="ManageContactsCtrl.submitChanges(contact)">
-                                            <span data-translate="submit"></span>
-                                            <spinner class="left-space-m4" data-ng-if="contact.submiting"></spinner>
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </section>
-            </div>
-        </div>
-
-    </div><!-- section content -->
+    </section>
 
 </section>
+<!-- /.telecom-telephony-billing-account-manage-contacts -->

@@ -1,173 +1,170 @@
 <section class="telephony-group-order">
+
     <header class="widget-presentation-header">
         <section-back-link section-back-link-to-state="telecom.telephony.orderAlias"
                            section-back-link-title="{{ 'telephony_order_back_link' | translate }}">
         </section-back-link>
         <h1 data-translate="telephony_order_international_title"></h1>
     </header>
-    <div class="row" data-ng-hide="AliasOrderInternationalCtrl.orderDone">
-        <div class="col-xs-12">
+
+    <toast-message></toast-message>
+
+    <div class="row"
+         data-ng-hide="AliasOrderInternationalCtrl.orderDone">
+        <div class="col-xs-12 col-md-8">
             <form name="orderNumberForm"
                   id="orderNumberForm"
-                  data-ng-submit="AliasOrderInternationalCtrl.order()"
-                  class="flex-center form-horizontal ovh-form-flat">
+                  class="mb-5"
+                  data-ng-submit="AliasOrderInternationalCtrl.order()">
                   <!-- Order -->
-                <div class="widget-presentation top-space-m4">
-                    <h2 class="widget-presentation-title" data-translate="telephony_order_amount_title"></h2>
-                    <div class="row">
-                        <div class="col-xs-12 col-md-3">
-                            <label class="service-title pointer"
-                                 for="amount"
-                                 data-translate="telephony_order_amount_title">
-                            </label>
-                        </div>
-                        <div flat-input class="col-xs-12 col-md-3 service-item">
-                            <select name="amount"
-                                  id="amount"
-                                  class="form-control flat-select"
-                                  data-ng-disabled="AliasOrderInternationalCtrl.loading.init || AliasOrderInternationalCtrl.loading.order"
-                                  data-ng-change="AliasOrderInternationalCtrl.changeQty()"
-                                  data-ng-options="item as item.label for item in AliasOrderInternationalCtrl.preAmount track by item.value"
-                                  data-ng-model="AliasOrderInternationalCtrl.form.amount">
-                            </select>
-                        </div>
+                <div class="widget-presentation mt-2">
+                    <h2 class="widget-presentation-title"
+                        data-translate="telephony_order_amount_title">
+                    </h2>
+                    <div class="form-group">
+                        <label class="control-label"
+                             for="amount"
+                             data-translate="telephony_order_amount_title">
+                        </label>
+                        <select name="amount"
+                                id="amount"
+                                class="form-control"
+                                data-ng-model="AliasOrderInternationalCtrl.form.amount"
+                                data-ng-options="item as item.label for item in AliasOrderInternationalCtrl.preAmount track by item.value"
+                                data-ng-change="AliasOrderInternationalCtrl.changeQty()"
+                                data-ng-disabled="AliasOrderInternationalCtrl.loading.init || AliasOrderInternationalCtrl.loading.order">
+                        </select>
                     </div>
-
-                    <div class="row">
-                        <div class="col-xs-12 col-md-3">
-                            <label class="service-title pointer"
-                                   for="country"
-                                   data-translate="telephony_order_country_title">
-                            </label>
-                        </div>
-                        <div flat-input class="col-xs-12 col-md-3 service-item">
-                            <ui-select name="country"
-                                       id="country"
-                                       data-ng-model="AliasOrderInternationalCtrl.country"
-                                       data-ng-disabled="AliasOrderInternationalCtrl.loading.init || AliasOrderInternationalCtrl.loading.order"
-                                       data-on-select="AliasOrderInternationalCtrl.resetZone($item)">
-                                <ui-select-match>
-                                    <span data-ng-class="$select.selected.class"></span>
-                                    <span class="left-space-m8 country-name" data-ng-bind="$select.selected.name"></span>
-                                </ui-select-match>
-                                <ui-select-choices repeat="item in AliasOrderInternationalCtrl.countries track by item.code">
-                                    <span data-ng-class="item.class"></span>
-                                    <span class="left-space-m8" data-ng-bind="item.name"></span>
-                                </ui-select-choices>
-                            </ui-select>
-                        </div>
+                    <div class="form-group">
+                        <label class="control-label"
+                               for="country"
+                               data-translate="telephony_order_country_title">
+                        </label>
+                        <ui-select name="country"
+                                   id="country"
+                                   data-ng-model="AliasOrderInternationalCtrl.country"
+                                   data-ng-disabled="AliasOrderInternationalCtrl.loading.init || AliasOrderInternationalCtrl.loading.order"
+                                   data-on-select="AliasOrderInternationalCtrl.resetZone($item)">
+                            <ui-select-match>
+                                <span data-ng-class="$select.selected.class"></span>
+                                <span class="ml-2 country-name" data-ng-bind="$select.selected.name"></span>
+                            </ui-select-match>
+                            <ui-select-choices data-repeat="item in AliasOrderInternationalCtrl.countries track by item.code">
+                                <span data-ng-class="item.class"></span>
+                                <span class="ml-2" data-ng-bind="item.name"></span>
+                            </ui-select-choices>
+                        </ui-select>
                     </div>
-
-                    <div class="row" data-ng-if="AliasOrderInternationalCtrl.form.country">
-                        <div class="col-xs-12 col-md-3">
-                            <label class="service-title"
-                                   for="zone"
-                                   data-translate="telephony_order_zone_title">
-                           </label>
-                        </div>
-                        <div flat-input class="col-xs-12 col-md-3 service-item">
-                            <label class="control-label" data-ng-if="orderNumberForm.zone.$invalid" for="zone">
-                                {{ 'telephony_order_zone_error' | translate }}<span class="red"> *</span>
-                            </label>
-                            <input name="zone"
-                                 id="zone"
-                                 data-ng-disabled="AliasOrderInternationalCtrl.loading.init || AliasOrderInternationalCtrl.loading.order"
-                                 class="form-control"
-                                 autocomplete="off"
-                                 placeholder="{{ 'telephony_order_zone_tip' | translate }}"
-                                 data-uib-typeahead="item for item in AliasOrderInternationalCtrl.getGeographicalZone($viewValue)"
-                                 data-typeahead-focus-first="true"
-                                 data-typeahead-editable="false"
-                                 data-typeahead-select-on-exact="true"
-                                 data-typeahead-min-length="3"
-                                 data-typeahead-on-select="AliasOrderInternationalCtrl.changeZone()"
-                                 data-ng-change="AliasOrderInternationalCtrl.changeZone()"
-                                 data-ng-model="AliasOrderInternationalCtrl.form.zone" />
-                        </div>
+                    <div class="form-group"
+                         data-ng-if="AliasOrderInternationalCtrl.form.country">
+                        <label class="control-label"
+                               for="zone"
+                               data-translate="telephony_order_zone_title">
+                        </label>
+                        <input name="zone"
+                             id="zone"
+                             data-ng-disabled="AliasOrderInternationalCtrl.loading.init || AliasOrderInternationalCtrl.loading.order"
+                             class="form-control"
+                             autocomplete="off"
+                             placeholder="{{ 'telephony_order_zone_tip' | translate }}"
+                             data-uib-typeahead="item for item in AliasOrderInternationalCtrl.getGeographicalZone($viewValue)"
+                             data-typeahead-focus-first="true"
+                             data-typeahead-editable="false"
+                             data-typeahead-select-on-exact="true"
+                             data-typeahead-min-length="3"
+                             data-typeahead-on-select="AliasOrderInternationalCtrl.changeZone()"
+                             data-ng-change="AliasOrderInternationalCtrl.changeZone()"
+                             data-ng-model="AliasOrderInternationalCtrl.form.zone" />
+                        <span class="help-block"
+                              role="alert"
+                              data-ng-if="orderNumberForm.zone.$invalid">
+                            <span data-translate="telephony_order_zone_error"></span> *
+                        </span>
                     </div>
                 </div>
 
                 <div data-ng-if="AliasOrderInternationalCtrl.form.zone">
-                    <div class="widget-presentation top-space-m8" data-ng-if="AliasOrderInternationalCtrl.form.amount.value === 1">
-                        <h2 class="widget-presentation-title" data-translate="telephony_order_specific_title"></h2>
-                        <spinner data-ng-if="!AliasOrderInternationalCtrl.prices"></spinner>
-                        <telecom-telephony-billing-account-order-alias-number-choice data-ng-model="AliasOrderInternationalCtrl.form"
-                                                                              class="row top-space-m8"
-                                                                              name="offerChoice"
-                                                                              data-ng-if="AliasOrderInternationalCtrl.prices"
-                                                                              data-choices="AliasOrderInternationalCtrl.predefinedNumbers"
-                                                                              data-prices="AliasOrderInternationalCtrl.prices"
-                                                                              data-type="geographical"
-                                                                              data-billing-account="{{AliasOrderInternationalCtrl.billingAccount}}"
-                                                                              data-ng-disabled="AliasOrderInternationalCtrl.loading.init || AliasOrderInternationalCtrl.loading.numbers  || AliasOrderGeographicalCtrl.loading.order">
+                    <div class="widget-presentation mt-2"
+                         data-ng-if="AliasOrderInternationalCtrl.form.amount.value === 1">
+                        <h2 class="widget-presentation-title"
+                            data-translate="telephony_order_specific_title">
+                        </h2>
+                        <oui-loader data-ng-if="!AliasOrderInternationalCtrl.prices"
+                                    data-size="m">
+                        </oui-loader>
+                        <telecom-telephony-billing-account-order-alias-number-choice
+                            name="offerChoice"
+                            data-ng-model="AliasOrderInternationalCtrl.form"
+                            data-ng-if="AliasOrderInternationalCtrl.prices"
+                            data-choices="AliasOrderInternationalCtrl.predefinedNumbers"
+                            data-prices="AliasOrderInternationalCtrl.prices"
+                            data-type="geographical"
+                            data-billing-account="{{AliasOrderInternationalCtrl.billingAccount}}"
+                            data-ng-disabled="AliasOrderInternationalCtrl.loading.init || AliasOrderInternationalCtrl.loading.numbers  || AliasOrderGeographicalCtrl.loading.order">
                         </telecom-telephony-billing-account-order-alias-number-choice>
                     </div>
 
                     <!-- Address -->
-                    <div class="widget-presentation top-space-m32">
-                        <h2 class="widget-presentation-title" data-translate="telephony_order_address_title"></h2>
+                    <div class="widget-presentation mt-5">
+                        <h2 class="widget-presentation-title"
+                            data-translate="telephony_order_address_title">
+                        </h2>
                         <p data-translate="telephony_order_international_address_message"></p>
-                        <telecom-telephony-billing-account-order-alias-coordinate data-ng-disabled="AliasOrderInternationalCtrl.loading.init || AliasOrderInternationalCtrl.loading.order"
-                                                                           data-region-code="{{AliasOrderInternationalCtrl.form.country}}"
-                                                                           data-ng-model="AliasOrderInternationalCtrl.form">
+                        <telecom-telephony-billing-account-order-alias-coordinate
+                            data-ng-disabled="AliasOrderInternationalCtrl.loading.init || AliasOrderInternationalCtrl.loading.order"
+                            data-region-code="{{AliasOrderInternationalCtrl.form.country}}"
+                            data-ng-model="AliasOrderInternationalCtrl.form">
                         </telecom-telephony-billing-account-order-alias-coordinate>
                     </div>
 
                     <!-- Retractation -->
-                    <div class="widget-presentation top-space-m32">
-                        <h2 class="widget-presentation-title" data-translate="telephony_order_retractation_title"></h2>
-                        <telecom-telephony-billing-account-order-alias-number-choice-retractation data-ng-model="AliasOrderInternationalCtrl.form.retractation"
-                                                                                           data-ng-disabled="AliasOrderInternationalCtrl.loading.init || AliasOrderGeographicalCtrl.loading.order">
-
+                    <div class="widget-presentation mt-5">
+                        <h2 class="widget-presentation-title"
+                            data-translate="telephony_order_retractation_title">
+                        </h2>
+                        <telecom-telephony-billing-account-order-alias-number-choice-retractation
+                            data-ng-model="AliasOrderInternationalCtrl.form.retractation"
+                            data-ng-disabled="AliasOrderInternationalCtrl.loading.init || AliasOrderGeographicalCtrl.loading.order">
                         </telecom-telephony-billing-account-order-alias-number-choice-retractation>
                     </div>
 
-                    <div class="widget-presentation" data-ng-if="AliasOrderInternationalCtrl.contracts">
-                        <div class="row">
-                            <div class="col-xs-12"
-                                 data-contracts="AliasOrderInternationalCtrl.contracts"
-                                 data-full-text="false"
-                                 data-contracts-validated="AliasOrderInternationalCtrl.contractsAccepted">
-                            </div>
-                        </div>
+                    <div data-ng-if="AliasOrderInternationalCtrl.contracts"
+                         data-contracts="AliasOrderInternationalCtrl.contracts"
+                         data-full-text="false"
+                         data-contracts-validated="AliasOrderInternationalCtrl.contractsAccepted">
                     </div>
 
                     <!-- Accept -->
-                    <div class="widget-presentation top-space-m8">
-                        <div class="row top-space-m32">
-                            <div class="col-xs-12">
-                                <button
-                                    type="submit"
-                                    data-translate="telephony_order_confirm"
-                                    data-translate-values="{total:AliasOrderInternationalCtrl.getTotal()}"
-                                    class="btn btn-sm btn-primary pull-right"
-                                    data-ng-disabled="!AliasOrderInternationalCtrl.contractsAccepted || AliasOrderInternationalCtrl.loading.order || !orderNumberForm.$valid || AliasOrderInternationalCtrl.loading.init"
-                                    >
-                                </button>
-                                <spinner class="left-space-m8" data-ng-if="AliasOrderInternationalCtrl.loading.order"></spinner>
-                            </div>
-                        </div>
-                    </div>
-
+                    <button
+                        class="btn btn-primary"
+                        type="submit"
+                        data-ng-disabled="!AliasOrderInternationalCtrl.contractsAccepted || AliasOrderInternationalCtrl.loading.order || !orderNumberForm.$valid || AliasOrderInternationalCtrl.loading.init"
+                        data-translate="telephony_order_confirm"
+                        data-translate-values="{ total: AliasOrderInternationalCtrl.getTotal() }">
+                    </button>
+                    <oui-loader class="ml-2"
+                                data-ng-if="AliasOrderInternationalCtrl.loading.order"
+                                data-size="s">
+                    </oui-loader>
                 </div>
-
             </form>
         </div>
     </div>
+
     <!-- Contracts -->
-    <div class="row top-space-m32" data-ng-show="AliasOrderInternationalCtrl.orderDone">
+    <div class="row mt-5" data-ng-show="AliasOrderInternationalCtrl.orderDone">
         <div class="col-xs-12" data-ng-if="AliasOrderInternationalCtrl.orderInformations && AliasOrderInternationalCtrl.orderInformations.contracts && AliasOrderInternationalCtrl.orderInformations.contracts.length > 0">
             <div class="widget-presentation">
                 <h2 class="widget-presentation-title" data-translate="telephony_order_legal"></h2>
                 <div class="row">
-                    <div class="col-xs-12 top-space-m32"
+                    <div class="col-xs-12 mt-5"
                          data-ng-if="AliasOrderInternationalCtrl.contractsAccepted">
                         <a data-ng-href="{{AliasOrderInternationalCtrl.orderInformations.url}}"
                            title="{{:: 'telephony_order_validate_order_tip' | translate }}"
                            target="_blank"
-                           class="fs12 btn btn-xs btn-primary">
+                           class="btn btn-primary">
                             <span data-translate="telephony_order_validate_order"></span>
-                            <i class="fa fa-external-link left-space-m4"></i>
+                            <i class="fa fa-external-link ml-2"></i>
                         </a>
                     </div>
                 </div>

@@ -7,11 +7,9 @@
         <h1 data-translate="telephony_line_management_sip_domain_title"></h1>
     </header>
 
-    <bouncing-box-loader data-ng-if="DomainCtrl.loading.init">
-        <h3 class="top-space-m16"
-            data-translate="loading">
-        </h3>
-    </bouncing-box-loader>
+    <oui-loader data-ng-if="DomainCtrl.loading.init"
+                data-size="m">
+    </oui-loader>
 
     <div class="telecom-section-content"
          data-ng-if="!DomainCtrl.loading.init">
@@ -27,16 +25,15 @@
                 </header>
 
                 <div class="alert alert-info"
-                     role="alert">
-                     <i class="ovh-font ovh-font-filled-info"></i>
-                    <p data-translate="telephony_line_management_sip_domain_line_info"></p>
+                     role="alert"
+                     data-translate="telephony_line_management_sip_domain_line_info">
                 </div>
 
-                <bouncing-box-loader data-ng-if="DomainCtrl.loading.saveLine">
-                    <h3 class="top-space-m16"
-                        data-translate="telephony_line_management_sip_domain_save_loading">
-                    </h3>
-                </bouncing-box-loader>
+                <div class="text-center"
+                     data-ng-if="DomainCtrl.loading.saveLine">
+                    <oui-loader data-size="m"></oui-loader>
+                    <h3 data-translate="telephony_line_management_sip_domain_save_loading"></h3>
+                </div>
 
                 <!-- CONSULT MODE -->
                 <div data-ng-if="!DomainCtrl.model.lineSipEdit && !DomainCtrl.loading.saveLine">
@@ -56,43 +53,36 @@
                 </div> <!-- CONSULT MODE -->
 
                 <!-- EDIT MODE -->
-                <form class="ovh-form-flat"
-                      name="lineSipDomainForm"
+                <form name="lineSipDomainForm"
                       data-ng-submit="DomainCtrl.validateLineDomain()"
                       data-ng-if="DomainCtrl.model.lineSipEdit && !DomainCtrl.loading.saveLine"
                       novalidate>
 
-                    <label for="line-domain-select"
-                           data-translate="telephony_line_management_sip_domain_line_registered">
-                    </label>
-                    <div class="row">
-                        <div class="col-xs-12 col-md-6">
-                            <select data-flat-select
-                                    class="form-control col-xs-6"
-                                    id="line-domain-select"
-                                    name="lineDomain"
-                                    data-ng-model="DomainCtrl.line.options.domain"
-                                    data-ng-options="domain as domain for domain in DomainCtrl.availableSipDomains.line">
-                            </select>
-                        </div>
+                    <div class="form-group">
+                        <label for="line-domain-select"
+                               data-translate="telephony_line_management_sip_domain_line_registered">
+                        </label>
+                        <select class="form-control"
+                                id="line-domain-select"
+                                name="lineDomain"
+                                data-ng-model="DomainCtrl.line.options.domain"
+                                data-ng-options="domain as domain for domain in DomainCtrl.availableSipDomains.line">
+                        </select>
                     </div>
 
-                    <footer class="row top-space-m16 clearfix bottom-space-m32">
-                        <div class="col-xs-12">
-                            <button type="submit"
-                                    class="btn btn-primary"
-                                    data-ng-disabled="DomainCtrl.loading.saveLine || !DomainCtrl.line.hasChange('options.domain')"
-                                    data-translate="telephony_line_management_sip_domain_save_button">
-                            </button>
-
-                            <button type="button"
-                                    class="btn btn-default"
-                                    data-ng-click="DomainCtrl.cancelLineDomainEdit()"
-                                    data-ng-disabled="DomainCtrl.loading.saveLine"
-                                    data-translate="cancel">
-                            </button>
-                        </div>
-                    </footer>
+                    <div class="form-group">
+                        <button type="reset"
+                                class="btn btn-default"
+                                data-ng-click="DomainCtrl.cancelLineDomainEdit()"
+                                data-ng-disabled="DomainCtrl.loading.saveLine"
+                                data-translate="cancel">
+                        </button>
+                        <button type="submit"
+                                class="btn btn-primary"
+                                data-ng-disabled="DomainCtrl.loading.saveLine || !DomainCtrl.line.hasChange('options.domain')"
+                                data-translate="telephony_line_management_sip_domain_save_button">
+                        </button>
+                    </div>
 
                 </form> <!-- EDIT MODE -->
 
@@ -107,16 +97,15 @@
                 </header>
 
                 <div class="alert alert-info"
-                     role="alert">
-                     <i class="ovh-font ovh-font-filled-info"></i>
-                    <p data-translate="telephony_line_management_sip_domain_client_info"></p>
+                     role="alert"
+                     data-translate="telephony_line_management_sip_domain_client_info">
                 </div>
 
-                <bouncing-box-loader data-ng-if="DomainCtrl.loading.saveClient">
-                    <h3 class="top-space-m16"
-                        data-translate="telephony_line_management_sip_domain_save_loading">
-                    </h3>
-                </bouncing-box-loader>
+                <div class="text-center"
+                     data-ng-if="DomainCtrl.loading.saveClient">
+                    <oui-loader data-size="m"></oui-loader>
+                    <h3 data-translate="telephony_line_management_sip_domain_save_loading"></h3>
+                </div>
 
                 <!-- CONSULT MODE -->
                 <div data-ng-if="!DomainCtrl.model.clientSipEdit && !DomainCtrl.loading.saveClient">
@@ -140,47 +129,38 @@
                 </div> <!-- CONSULT MODE -->
 
                 <!-- EDIT MODE -->
-                <form class="ovh-form-flat"
-                      name="clientSipDomainForm"
+                <form name="clientSipDomainForm"
                       data-ng-submit="DomainCtrl.validateClientDomain()"
                       data-ng-if="DomainCtrl.model.clientSipEdit && !DomainCtrl.loading.saveClient"
                       novalidate>
 
-                    <div data-ng-repeat="domain in DomainCtrl.availableSipDomains.client track by $index"
-                         class="bottom-space-m8">
+                    <div class="form-group"
+                         data-ng-repeat="domain in DomainCtrl.availableSipDomains.client track by $index">
                         <label for="client-domain-select-{{ domain.country }}"
                                data-translate="telephony_line_management_sip_domain_client_country"
                                data-translate-values="{ country: domain.country }">
                         </label>
-                        <div class="row">
-                            <div class="col-xs-12 col-md-6">
-                                <select data-flat-select
-                                        class="form-control col-xs-6"
-                                        id="client-domain-select-{{ domain.country }}"
-                                        data-ng-name="{{ 'clientDomain' + domain.country }}"
-                                        data-ng-model="domain.currentDomain"
-                                        data-ng-options="domainItem as domainItem for domainItem in domain.list">
-                                </select>
-                            </div>
-                        </div>
+                        <select class="form-control"
+                                id="client-domain-select-{{ domain.country }}"
+                                data-ng-name="{{ 'clientDomain' + domain.country }}"
+                                data-ng-model="domain.currentDomain"
+                                data-ng-options="domainItem as domainItem for domainItem in domain.list">
+                        </select>
                     </div>
 
-                    <footer class="row top-space-m16 clearfix bottom-space-m32">
-                        <div class="col-xs-12">
-                            <button type="submit"
-                                    class="btn btn-primary"
-                                    data-ng-disabled="DomainCtrl.loading.saveClient || !DomainCtrl.hasClientDomainChange()"
-                                    data-translate="telephony_line_management_sip_domain_save_button">
-                            </button>
-
-                            <button type="button"
-                                    class="btn btn-default"
-                                    data-ng-click="DomainCtrl.cancelClientDomainEdit()"
-                                    data-ng-disabled="DomainCtrl.loading.saveClient"
-                                    data-translate="cancel">
-                            </button>
-                        </div>
-                    </footer>
+                    <div class="form-group">
+                        <button type="reset"
+                                class="btn btn-default"
+                                data-ng-click="DomainCtrl.cancelClientDomainEdit()"
+                                data-ng-disabled="DomainCtrl.loading.saveClient"
+                                data-translate="cancel">
+                        </button>
+                        <button type="submit"
+                                class="btn btn-primary"
+                                data-ng-disabled="DomainCtrl.loading.saveClient || !DomainCtrl.hasClientDomainChange()"
+                                data-translate="telephony_line_management_sip_domain_save_button">
+                        </button>
+                    </div>
 
                 </form> <!-- EDIT MODE -->
 

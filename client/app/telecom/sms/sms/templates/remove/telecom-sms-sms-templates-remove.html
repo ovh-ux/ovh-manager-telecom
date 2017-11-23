@@ -1,20 +1,20 @@
 <form name="removeSmsTemplateForm"
       id="removeSmsTemplateForm"
-      class="ovh-form-flat"
       data-ng-submit="TemplateRemoveCtrl.remove()">
 
     <div class="modal-header">
-        <h3 class="modal-title pull-left" data-translate="sms_sms_templates_remove"></h3>
         <button
             type="button"
-            class="close pull-right"
+            class="close float-right"
             aria-label="{{ ::'cancel' | translate }}"
             data-ng-click="TemplateRemoveCtrl.cancel()">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
 
-    <div class="modal-body" data-ng-if="!TemplateRemoveCtrl.loading.removeTemplate && !TemplateRemoveCtrl.removed">
+    <div class="modal-body"
+         data-ng-if="!TemplateRemoveCtrl.loading.removeTemplate && !TemplateRemoveCtrl.removed">
+        <h3 data-translate="sms_sms_templates_remove"></h3>
         <dl class="dl-horizontal">
             <!-- NAME -->
             <dt data-translate="sms_sms_templates_list_title_name"></dt>
@@ -34,13 +34,14 @@
         </dl>
     </div>
 
-    <div class="modal-body" data-ng-if="TemplateRemoveCtrl.loading.removeTemplate && !TemplateRemoveCtrl.removed">
-        <bouncing-box-loader>
-            <h4 data-translate="sms_sms_templates_removing"></h4>
-        </bouncing-box-loader>
+    <div class="modal-body text-center"
+         data-ng-if="TemplateRemoveCtrl.loading.removeTemplate && !TemplateRemoveCtrl.removed">
+        <oui-loader data-size="m"></oui-loader>
+        <h4 data-translate="sms_sms_templates_removing"></h4>
     </div>
 
-    <div class="modal-body" data-ng-if="TemplateRemoveCtrl.removed">
+    <div class="modal-body"
+         data-ng-if="TemplateRemoveCtrl.removed">
         <success-drawing-check data-draw-success-check="TemplateRemoveCtrl.removed">
             <h4 data-translate="sms_sms_templates_removed"></h4>
         </success-drawing-check>
@@ -57,7 +58,9 @@
         <button
             type="submit"
             class="btn btn-primary"
-            data-ng-disabled="removeSmsTemplateForm.$invalid || TemplateRemoveCtrl.loading.removeTemplate || TemplateRemoveCtrl.removed"
+            data-ng-disabled="removeSmsTemplateForm.$invalid ||
+                              TemplateRemoveCtrl.loading.removeTemplate ||
+                              TemplateRemoveCtrl.removed"
             data-translate="submit">
         </button>
     </div>

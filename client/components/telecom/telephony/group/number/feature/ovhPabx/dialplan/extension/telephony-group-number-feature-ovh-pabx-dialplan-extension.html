@@ -55,10 +55,10 @@
                 <!-- CONDITIONS RESUME -->
                 <div data-ng-if="$ctrl.extensionHasConditions()"
                      class="voip-plan__step-info">
-                    <div class="bold top-space-m4"
+                    <div class="font-weight-bold mt-2"
                           data-translate="telephony_number_feature_ovh_pabx_step_condition">
                     </div>
-                    <ul class="list-unstyled bottom-space-m0">
+                    <ul class="list-unstyled mb-0">
                         <li class="elipse no-wrap"
                             data-ng-if="$ctrl.getExtensionAttr('schedulerCategory')"
                             data-translate-attr="{ title: 'telephony_number_feature_ovh_pabx_step_conditions_scheduler_' + $ctrl.getExtensionAttr('schedulerCategory') }">
@@ -113,7 +113,7 @@
                     <!-- ACTIVATE/DESACTIVATE -->
                     <li role="menuitem">
                         <button type="button"
-                                class="btn btn-link full-width"
+                                class="btn btn-link w-100"
                                 data-translate="{{ !$ctrl.extension.enabled ? 'telephony_number_feature_ovh_pabx_step_activate' : 'telephony_number_feature_ovh_pabx_step_desactivate' }}"
                                 data-ng-click="$ctrl.toggleEnabledState()">
                         </button>
@@ -122,7 +122,7 @@
                     <!-- ADD RULE -->
                     <li role="menuitem">
                         <button type="button"
-                                class="btn btn-link full-width"
+                                class="btn btn-link w-100"
                                 data-translate="telephony_number_feature_ovh_pabx_step_add_rule"
                                 data-ng-click="$ctrl.addRule()">
                         </button>
@@ -130,7 +130,7 @@
                     <!-- MANAGE CONDITIONS -->
                     <li role="menuitem">
                         <button type="button"
-                                class="btn btn-link full-width"
+                                class="btn btn-link w-100"
                                 data-translate="telephony_number_feature_ovh_pabx_step_advanced"
                                 data-ng-click="$ctrl.onManageConditionBtnClick()">
                         </button>
@@ -139,7 +139,7 @@
                     <!-- COLLAPSE/EXPAND -->
                     <li role="menuitem">
                         <button type="button"
-                                class="btn btn-link full-width"
+                                class="btn btn-link w-100"
                                 data-translate="{{ $ctrl.displayHelpers.collapsed ? 'telephony_number_feature_ovh_pabx_step_expand' : 'telephony_number_feature_ovh_pabx_step_collapse'}}"
                                 data-ng-click="$ctrl.displayHelpers.collapsed = !$ctrl.displayHelpers.collapsed"
                                 data-ng-disabled="!$ctrl.extension.rules.length">
@@ -149,7 +149,7 @@
                     <!-- DELETE STEP -->
                     <li role="menuitem">
                         <button type="button"
-                                class="btn btn-link full-width text-danger"
+                                class="btn btn-link w-100 text-danger"
                                 data-translate="telephony_number_feature_ovh_pabx_step_remove"
                                 data-ng-click="$ctrl.extension.status = 'DELETE_PENDING'">
                         </button>
@@ -233,7 +233,7 @@
                               data-translate-values="{ count: $ctrl.extension.rules.length }">
                         </span>
                         <button type="button"
-                                class="btn btn-link no-space"
+                                class="btn btn-link p-0 m-0"
                                 data-ng-click="$ctrl.displayHelpers.collapsed = false"
                                 data-translate="telephony_number_feature_ovh_pabx_step_expand">
                         </button>
@@ -289,7 +289,7 @@
                               data-translate-values="{ count: $ctrl.extension.negativeRules.length }">
                         </span>
                         <button type="button"
-                                class="btn btn-link no-space"
+                                class="btn btn-link p-0 m-0"
                                 data-ng-if="$ctrl.extension.negativeRules.length > 0"
                                 data-ng-click="$ctrl.displayHelpers.negativeCollapsed = !$ctrl.displayHelpers.negativeCollapsed"
                                 data-translate="{{ $ctrl.displayHelpers.negativeCollapsed ? 'telephony_number_feature_ovh_pabx_step_invalid_actions_show' : 'telephony_number_feature_ovh_pabx_step_invalid_actions_hide' }}">

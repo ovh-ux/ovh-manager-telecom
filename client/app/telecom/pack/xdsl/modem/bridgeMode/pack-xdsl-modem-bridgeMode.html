@@ -1,10 +1,10 @@
-<form name="bridgeForm" class="ovh-form-flat">
-    <div class="form-group">
-        <flat-checkbox data-ng-hide="BridgeCtrl.mediator.tasks.changeModemConfigBridgeMode">
+<form name="bridgeForm">
+    <div class="form-group checkbox">
+        <label data-ng-if="!BridgeCtrl.mediator.tasks.changeModemConfigBridgeMode"
+               for="bridgeMode">
             <input type="checkbox"
                 id="bridgeMode"
                 name="bridgeMode"
-                class="form-control"
                 data-ng-model="BridgeCtrl.isBridged"
                 data-ng-disabled="!BridgeCtrl.mediator.capabilities.canChangeBridgeMode"
                 data-ng-really-click="BridgeCtrl.changeBridgeMode()"
@@ -14,17 +14,16 @@
                 data-ng-really-confirm="{{ 'ok' | translate }}"
                 data-ng-really-cancel="{{ 'cancel' | translate }}"
                 data-ng-really-window-class="revert-really-buttons">
-        </flat-checkbox>
-        <div data-ng-if="BridgeCtrl.mediator.tasks.changeModemConfigBridgeMode">
-            <spinner></spinner>
-            <label data-ng-if="BridgeCtrl.isBridged" for="bridgeMode" data-translate="xdsl_modem_bridge_mode_success_validation_on"></label>
-            <label data-ng-if="!BridgeCtrl.isBridged" for="bridgeMode" data-translate="xdsl_modem_bridge_mode_success_validation_off"></label>
-        </div>
-        <label data-ng-if="!BridgeCtrl.mediator.tasks.changeModemConfigBridgeMode"
-            class="pointer"
-            for="bridgeMode"
-            data-translate="xdsl_modem_bridge_mode_status">
+            <span data-translate="xdsl_modem_bridge_mode_status"></span>
         </label>
+        <div data-ng-if="BridgeCtrl.mediator.tasks.changeModemConfigBridgeMode">
+            <oui-loader data-size="m"></oui-loader>
+            <p data-ng-if="BridgeCtrl.isBridged"
+               class="form-control-static"
+               data-translate="xdsl_modem_bridge_mode_success_validation_on"></p>
+            <p data-ng-if="!BridgeCtrl.isBridged"
+               class="form-control-static"
+               data-translate="xdsl_modem_bridge_mode_success_validation_off"></p>
+        </div>
     </div>
-
 </form>

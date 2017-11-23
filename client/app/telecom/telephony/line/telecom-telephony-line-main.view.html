@@ -1,12 +1,14 @@
 <section class="telecom-telephony-line">
 
     <!-- LOADING -->
-    <bouncing-box-loader data-ng-if="LineCtrl.loading.init">
-        <h1 data-translate="loading"></h1>
-    </bouncing-box-loader>
+    <oui-loader data-ng-if="LineCtrl.loading.init"
+                data-size="l">
+    </oui-loader>
 
-    <div class="telecom-section-header" data-ng-if="!LineCtrl.loading.init">
-        <header role="banner">
+    <div class="telecom-section-header"
+         data-ng-if="!LineCtrl.loading.init">
+        <header class="page-header"
+                role="banner">
             <!-- GROUP TITLE -->
             <editable-service-name data-editable-service-name-title="LineCtrl.line.getDisplayedName()"
                                    data-editable-service-name-title-on-save="LineCtrl.lineNameSave"
@@ -75,15 +77,25 @@
 
     <div class="telecom-section-alert"
          data-ng-if="!LineCtrl.loading.init">
-        <div class="alert alert-xs alert-warning" role="alert" data-ng-if="LineCtrl.terminating">
-            <i class="ovh-font ovh-font-filled-warning line-height-normal right-space-m4 text-warning"></i>
-            <span data-translate="telephony_line_expire_date" data-translate-values="{date: LineCtrl.terminating.executionDate}"></span>
-            <a data-ui-sref="telecom.telephony.line.terminate.cancel" data-translate="telephony_line_expire_link"></a>
+        <div class="alert alert-xs alert-warning"
+             role="alert"
+             data-ng-if="LineCtrl.terminating">
+            <span data-translate="telephony_line_expire_date"
+                  data-translate-values="{date: LineCtrl.terminating.executionDate}">
+            </span>
+            <a data-ui-sref="telecom.telephony.line.terminate.cancel"
+               data-translate="telephony_line_expire_link">
+            </a>
         </div>
-        <div class="alert alert-xs alert-warning" role="alert" data-ng-if="LineCtrl.converting">
-            <i class="ovh-font ovh-font-filled-warning line-height-normal right-space-m4 text-warning"></i>
-            <span data-translate="telephony_line_convert_date" data-translate-values="{ date: (LineCtrl.converting.executionDate | date) }"></span>
-            <a data-ui-sref="telecom.telephony.line.convert" data-translate="telephony_line_convert_link"></a>
+        <div class="alert alert-xs alert-warning"
+             role="alert"
+             data-ng-if="LineCtrl.converting">
+            <span data-translate="telephony_line_convert_date"
+                  data-translate-values="{ date: (LineCtrl.converting.executionDate | date) }">
+            </span>
+            <a data-ui-sref="telecom.telephony.line.convert"
+               data-translate="telephony_line_convert_link">
+            </a>
         </div>
     </div><!-- .telecom-section-alert -->
 

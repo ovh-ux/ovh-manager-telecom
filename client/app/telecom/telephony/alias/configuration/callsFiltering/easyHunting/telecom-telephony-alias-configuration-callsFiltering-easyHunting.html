@@ -7,68 +7,76 @@
         <h1 data-translate="telephony_alias_configuration_calls_filtering_title"></h1>
     </header>
 
-    <div class="telecom-section-content" data-ng-if="MembersEasyHuntingCtrl.loaders.init">
-        <bouncing-box-loader>
-            <h4 data-translate="loading"></h4>
-        </bouncing-box-loader>
-    </div>
+    <oui-loader data-ng-if="MembersEasyHuntingCtrl.loaders.init"
+                data-size="m">
+    </oui-loader>
 
-    <div class="telecom-section-content" data-ng-if="!MembersEasyHuntingCtrl.loaders.init">
+    <div class="telecom-section-content"
+         data-ng-if="!MembersEasyHuntingCtrl.loaders.init">
 
         <div class="row">
 
             <!-- FILTERING ENABLE -->
             <div class="col-md-6">
                 <div class="widget-presentation">
-                    <h2 class="widget-presentation-title" data-translate="telephony_alias_configuration_calls_filtering_enable"></h2>
-                </div>
-                <div class="row">
-                    <span class="col-md-6 top-space-m4">
-                        <span data-translate="telephony_alias_configuration_calls_filtering_incoming"></span>
-                        <spinner class="pull-right" data-ng-if="CallsFilteringEasyHuntingCtrl.screenStatus.isLoading"></spinner>
-                    </span>
-                    <div class="col-md-6">
-                        <select flat-select
-                            class="form-control"
-                            data-ng-model="CallsFilteringEasyHuntingCtrl.screenStatus.modified"
-                            data-ng-change="CallsFilteringEasyHuntingCtrl.updateScreen()"
-                            data-ng-disabled="CallsFilteringEasyHuntingCtrl.screenStatus.isLoading"
-                            required>
+                    <h2 class="widget-presentation-title"
+                        data-translate="telephony_alias_configuration_calls_filtering_enable">
+                    </h2>
+                    <div class="form-group">
+                        <label class="control-label"
+                               for="callFilteringStatus"
+                               data-translate="telephony_alias_configuration_calls_filtering_incoming">
+                        </label>
+                        <select class="form-control"
+                                id="callFilteringStatus"
+                                required
+                                data-ng-model="CallsFilteringEasyHuntingCtrl.screenStatus.modified"
+                                data-ng-change="CallsFilteringEasyHuntingCtrl.updateScreen()"
+                                data-ng-disabled="CallsFilteringEasyHuntingCtrl.screenStatus.isLoading">
                             <option value="disabled" data-translate="telephony_alias_configuration_calls_filtering_list_none"></option>
                             <option value="incomingWhiteList" data-translate="telephony_alias_configuration_calls_filtering_list_white"></option>
                             <option value="incomingBlackList" data-translate="telephony_alias_configuration_calls_filtering_list_black"></option>
                         </select>
                     </div>
+                    <oui-loader data-ng-if="CallsFilteringEasyHuntingCtrl.screenStatus.isLoading"
+                                data-size="m">
+                    </oui-loader>
                 </div>
+                <!-- /.widget-presentation -->
             </div>
 
             <!-- FILTERING ADD -->
             <div class="col-md-6">
                 <div class="widget-presentation">
-                    <h2 class="widget-presentation-title" data-translate="telephony_alias_configuration_calls_filtering_new"></h2>
+                    <h2 class="widget-presentation-title"
+                        data-translate="telephony_alias_configuration_calls_filtering_new">
+                    </h2>
+                    <telecom-telephony-calls-filtering-add
+                        data-add-screen-list="CallsFilteringEasyHuntingCtrl.addScreenList(screen)"
+                        data-get-screen-list="CallsFilteringEasyHuntingCtrl.screenLists.getList()"
+                        data-on-screen-list-added="CallsFilteringEasyHuntingCtrl.onScreenListAdded(screen)"
+                        data-disable-outgoing="true"
+                        data-disable-nature="true">
+                    </telecom-telephony-calls-filtering-add>
                 </div>
-                <telecom-telephony-calls-filtering-add
-                    data-add-screen-list="CallsFilteringEasyHuntingCtrl.addScreenList(screen)"
-                    data-get-screen-list="CallsFilteringEasyHuntingCtrl.screenLists.getList()"
-                    data-on-screen-list-added="CallsFilteringEasyHuntingCtrl.onScreenListAdded(screen)"
-                    data-disable-outgoing="true"
-                    data-disable-nature="true">
-                </telecom-telephony-calls-filtering-add>
+                <!-- /.widget-presentation -->
             </div>
 
-        </div><!-- row -->
-
-        <div class="row">
-            <div class="col-xs-12 top-space-m32">
-                <div class="widget-presentation">
-                    <h2 class="widget-presentation-title" data-translate="telephony_alias_configuration_calls_filtering_config"></h2>
-                </div>
-                <telecom-telephony-calls-filtering-table
-                    data-api="CallsFilteringEasyHuntingCtrl.screenLists">
-                </telecom-telephony-calls-filtering-table>
-            </div>
         </div>
+        <!-- /.row -->
 
-    </div><!-- section content -->
+        <div class="widget-presentation">
+            <h2 class="widget-presentation-title"
+                data-translate="telephony_alias_configuration_calls_filtering_config">
+            </h2>
+            <telecom-telephony-calls-filtering-table
+                data-api="CallsFilteringEasyHuntingCtrl.screenLists">
+            </telecom-telephony-calls-filtering-table>
+        </div>
+        <!-- /.widget-presentation -->
+
+    </div>
+    <!-- /.telecom-section-content -->
 
 </section>
+<!-- /.telephony-group-alias-configuration-callsFiltering-easyHunting -->

@@ -1,10 +1,8 @@
 <div class="telecom-telephony-line-phone-accessories-choice">
 
-    <bouncing-box-loader data-ng-if="AccessoriesChoiceCtrl.loading.init">
-        <h3 class="top-space-m16"
-            data-translate="loading">
-        </h3>
-    </bouncing-box-loader>
+    <oui-loader data-ng-if="AccessoriesChoiceCtrl.loading.init"
+                data-size="m">
+    </oui-loader>
 
     <div class="widget-presentation"
          data-ng-if="!AccessoriesChoiceCtrl.loading.init">
@@ -15,9 +13,8 @@
 
         <!-- LOADING ERROR -->
         <div class="alert alert-danger"
-             data-ng-if="AccessoriesChoiceCtrl.error.loading"
-             role="alert">
-             <i class="ovh-font ovh-font-wrong" aria-hidden="true"></i>
+             role="alert"
+             data-ng-if="AccessoriesChoiceCtrl.error.loading">
             <p>
                 <span data-translate="telephony_line_phone_accessories_choice_load_error"></span>
                 <span data-ng-bind="AccessoriesChoiceCtrl.error.loading.data.message"></span>
@@ -28,9 +25,8 @@
 
             <!-- INFO -->
             <div class="alert alert-info"
-                 role="alert">
-                 <i class="ovh-font ovh-font-info" aria-hidden="true"></i>
-                <p data-translate="telephony_line_phone_accessories_choice_info"></p>
+                 role="alert"
+                 data-translate="telephony_line_phone_accessories_choice_info">
             </div>
 
             <!-- LIST OF ACCESSORIES -->
@@ -53,9 +49,9 @@
                             </span>
                         </a>
                         <div class="caption">
-                            <h4 class="text-center"
+                            <p class="text-center"
                                 data-ng-bind="accessory.description">
-                            </h4>
+                            </p>
                             <p class="text-center">
                                <span data-ng-bind-html="accessory.price.text | formatPrice:{ withoutTax : false }"></span>
                                <span data-translate="common_without_tax"></span>
@@ -76,7 +72,7 @@
                 <span data-translate="common_without_tax"></span>
             </p>
 
-            <div class="footer-button-container clearfix top-space-m16 bottom-space-m32">
+            <div class="mt-3 mb-4">
                 <button type="submit"
                         class="btn btn-primary"
                         data-translate="telephony_line_phone_accessories_choice_validate"
@@ -84,7 +80,7 @@
                         data-ng-disabled="!AccessoriesChoiceCtrl.hasAtLeastOneAccessory()">
                 </button>
 
-                <a class="btn btn-default"
+                <a class="btn btn-link"
                    data-ui-sref="telecom.telephony.line.phone"
                    data-translate="telephony_line_phone_accessories_cancel_order">
                 </a>

@@ -3,11 +3,8 @@
       name="phoneCodecEditForm">
 
     <div class="modal-header">
-        <h3 class="modal-title pull-left"
-            data-translate="telephony_line_phone_codec_edit_title">
-        </h3>
         <button type="button"
-                class="close pull-right"
+                class="close float-right"
                 aria-label="{{'cancel'|translate}}"
                 data-ng-click="CodecEditCtrl.cancel()">
             <span aria-hidden="true">&times;</span>
@@ -16,48 +13,35 @@
 
     <div class="modal-body"
          data-ng-if="!CodecEditCtrl.loading.save && !CodecEditCtrl.saved">
+        <h3 data-translate="telephony_line_phone_codec_edit_title"></h3>
         <p data-translate="telephony_line_phone_codec_edit_codec_priority"></p>
 
-        <ul>
-            <li data-ng-repeat="codec in CodecEditCtrl.line.availableCodecs track by $index">
-                <label class="normal">
-                    <div flat-input-container
-                         class="input-group inline-block vertical-middle right-space-m8">
-                        <flat-radio>
-                            <input type="radio"
-                                   name="newCodec"
-                                   data-ng-model="CodecEditCtrl.model.codecs"
-                                   data-ng-value="codec"/>
-                        </flat-radio>
-                    </div>
-                    <span data-ng-bind="codec.value.split('_').join(', ')"
-                          class="vertical-middle">
-                    </span>
-                </label>
-            </li>
-        </ul>
+        <div class="radio"
+             data-ng-repeat="codec in CodecEditCtrl.line.availableCodecs track by $index">
+            <label>
+                <input type="radio"
+                       name="newCodec"
+                       data-ng-model="CodecEditCtrl.model.codecs"
+                       data-ng-value="codec"/>
+                <span data-ng-bind="codec.value.split('_').join(', ')"></span>
+            </label>
+        </div>
 
-        <label data-ng-if="CodecEditCtrl.isAutomaticCodecEnabled()"
-               class="normal">
-            <div flat-input-container
-                 class="input-group inline-block vertical-middle right-space-m8">
-                <flat-checkbox>
-                    <input type="checkbox"
-                           name="automaticCodec"
-                           data-ng-model="CodecEditCtrl.model.auto"/>
-                </flat-checkbox>
-            </div>
-            <span data-translate="telephony_line_phone_codec_edit_codec_auto_choice"
-                  class="vertical-middle">
-            </span>
-        </label>
+        <div class="checkbox mt-5"
+             data-ng-if="CodecEditCtrl.isAutomaticCodecEnabled()">
+            <label>
+                <input type="checkbox"
+                       name="automaticCodec"
+                       data-ng-model="CodecEditCtrl.model.auto"/>
+                <span data-translate="telephony_line_phone_codec_edit_codec_auto_choice"></span>
+            </label>
+        </div>
     </div>
 
-    <div class="modal-body"
+    <div class="modal-body text-center"
          data-ng-if="CodecEditCtrl.loading.save && !CodecEditCtrl.saved">
-        <bouncing-box-loader>
-            <h4 data-translate="telephony_line_phone_codec_edit_codec_saving"></h4>
-        </bouncing-box-loader>
+        <oui-loader data-size="m"></oui-loader>
+        <h4 data-translate="telephony_line_phone_codec_edit_codec_saving"></h4>
     </div>
 
     <div class="modal-body"

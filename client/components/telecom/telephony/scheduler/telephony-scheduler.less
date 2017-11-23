@@ -50,6 +50,8 @@
         button {
             padding: @padding-base-vertical @padding-base-horizontal;
             color: @text-disabled-color;
+            text-decoration: none;
+            opacity: 0.5;
 
             &:hover {
                 .telephony-time-condition-slot {
@@ -69,6 +71,11 @@
                         color: @text-color !important;
                     }
                 }
+                opacity: 1;
+            }
+
+            &.active {
+                opacity: 1;
             }
         }
     }
@@ -98,7 +105,7 @@
         right: 0;
         margin: auto;
 
-        bouncing-box-loader,
+        oui-loader,
         success-drawing-check {
             height: auto;
             width: 100%;
@@ -125,6 +132,15 @@
                     height: 100%;
                     float: left;
 
+                    .telephony-time-condition-slot {
+                        margin: 0 !important;
+
+                        .slot-name {
+                            padding-top: 0;
+                            padding-bottom: 0;
+                        }
+                    }
+
                     .event-category {
                         .dtd {
                             padding: 0 0 0 @padding-base-horizontal;
@@ -146,12 +162,14 @@
 
                     &.page-left {
                         .event-duration {
+                            overflow: hidden;
                             button {
                                 line-height: 26px;
                             }
                         }
 
                         .event-date {
+                            overflow: hidden;
                             transition-duration: .5s;
 
                             &.all-day {
@@ -174,19 +192,6 @@
                                 label.input-group-addon {
                                     vertical-align: middle;
                                     cursor: pointer;
-                                }
-                            }
-
-                            .event-date-hour {
-                                .flat-select{
-                                    text-align-last: center;    // to center selected option
-
-                                    &:after {
-                                        content: "\f017";
-                                        font-size: 1.7em;
-                                        top: 4px;
-                                        right: 4px;
-                                    }
                                 }
                             }
                         }
@@ -215,7 +220,7 @@
                                 }
 
                                 .btn-info {
-                                    background-color: fadeout(@MANAGER_BUTTON_COLOR, 88%);
+                                    // background-color: fadeout(@MANAGER_BUTTON_COLOR, 88%);
                                 }
                             }
                         }
@@ -276,10 +281,11 @@
 
     .popover-content {
         .bottom-action {
-            background-color: @gray-light;
+            background-color: @gray-lighter;
             overflow: hidden;
             max-height: 150px;
             transition: max-height .5s;
+            padding-bottom: 1rem;
 
             .confirm-inner {
                 padding: 12px;
@@ -306,31 +312,11 @@
                 font-weight: bold;
             }
 
+            opacity: 0.5;
+
             &.active-slot {
                 color: @text-color;
-            }
-        }
-    }
-}
-
-.telecom-scheduler-bank-holidays {
-    .bank-holidays-list {
-        .bank-holiday-item {
-            &:not(:last-child) {
-                border-bottom: 1px solid @gray-light;
-            }
-
-            label {
-                padding: 10px 15px;
-                cursor: pointer;
-
-                strong {
-                    color: @gray-base;
-                }
-
-                .dtd:first-child {
-                    width: 30px;
-                }
+                opacity: 1;
             }
         }
     }

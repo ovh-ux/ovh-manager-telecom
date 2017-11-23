@@ -1,10 +1,8 @@
 <div class="telecom-telephony-line-phone-accessories-shipping">
 
-    <bouncing-box-loader data-ng-if="AccessoriesShippingCtrl.loading.init">
-        <h3 class="top-space-m16"
-            data-translate="loading">
-        </h3>
-    </bouncing-box-loader>
+    <oui-loader data-ng-if="AccessoriesShippingCtrl.loading.init"
+                data-size="m">
+    </oui-loader>
 
     <div class="row"
          data-ng-show="!AccessoriesShippingCtrl.loading.init">
@@ -20,25 +18,21 @@
                 <!-- CONTACT CHOICE -->
                 <div class="contact-choice">
                     <h3 data-translate="telephony_line_phone_accessories_shipping_contact"
-                        class="bottom-space-m16">
+                        class="mb-3">
                     </h3>
 
                     <ovh-contact data-ng-model="AccessoriesShippingCtrl.process.shipping.contact"
                                  data-ovh-contact-choice-options="AccessoriesShippingCtrl.contactChoiceOptions"
                                  data-ovh-contact-init-deferred="AccessoriesShippingCtrl.contactDeferred">
-                        <bouncing-box-loader>
-                            <h3 class="top-space-m16"
-                                data-translate="loading">
-                            </h3>
-                        </bouncing-box-loader>
+                        <oui-loader data-size="m"></oui-loader>
                     </ovh-contact>
                 </div> <!-- CONTACT CHOICE -->
 
                 <!-- SHIPPING MODE CHOICE -->
-                <div class="shipping-choice top-space-m16"
+                <div class="shipping-choice mt-3"
                      data-ng-if="!AccessoriesShippingCtrl.process.shipping.contact.inEdition && !AccessoriesShippingCtrl.loading.init">
                     <h3 data-translate="telephony_line_phone_accessories_shipping_mode"
-                        class="bottom-space-m16">
+                        class="mb-3">
                     </h3>
 
                     <shipping-mode-selection data-ng-model="AccessoriesShippingCtrl.process.shipping.mode"
@@ -50,7 +44,7 @@
                 <form data-ng-if="!AccessoriesShippingCtrl.process.shipping.contact.inEdition"
                       data-ng-submit="AccessoriesShippingCtrl.process.currentView = 'resume'">
 
-                    <div class="footer-button-container clearfix top-space-m16 bottom-space-m32">
+                    <div class="footer-button-container clearfix mt-3 mb-4">
                         <button type="submit"
                                 class="btn btn-primary"
                                 data-translate="telephony_line_phone_accessories_shipping_validate"

@@ -1,8 +1,8 @@
 <div class="telephony-number-ovh-pabx-tts-create">
 
-    <bouncing-box-loader data-ng-if="$ctrl.loading.init">
-        <h2 data-translate="loading"></h2>
-    </bouncing-box-loader>
+    <oui-loader data-ng-if="$ctrl.loading.init"
+                data-size="m">
+    </oui-loader>
 
     <!-- CREATION FORM -->
     <form novalidate
@@ -10,21 +10,17 @@
           data-ng-submit="$ctrl.onTtsCreateFormSubmit()">
         <!-- VOICE -->
         <div class="form-group">
-            <label for="ttsVoice"
+            <label class="control-label"
+                   for="ttsVoice"
                    data-translate="telephony_number_feature_ovh_pabx_tts_voice">
             </label>
-            <div class="row">
-                <div class="col-sm-6 voice-select-container">
-                    <select class="form-control"
-                            id="ttsVoice"
-                            name="ttsVoice"
-                            data-flat-select
-                            data-ng-model="$ctrl.model.voice"
-                            data-ng-disabled="$ctrl.loading.creating"
-                            data-ng-options="voice.value as voice.label for voice in $ctrl.availableVoices">
-                    </select>
-                </div>
-            </div>
+            <select class="form-control"
+                    id="ttsVoice"
+                    name="ttsVoice"
+                    data-ng-model="$ctrl.model.voice"
+                    data-ng-disabled="$ctrl.loading.creating"
+                    data-ng-options="voice.value as voice.label for voice in $ctrl.availableVoices">
+            </select>
         </div> <!-- END OF VOICE -->
 
         <!-- TEXT -->
@@ -33,7 +29,7 @@
             <label for="ttsText"
                    data-translate="telephony_number_feature_ovh_pabx_tts_text">
             </label>
-            <textarea class="form-control vertical-resize"
+            <textarea class="form-control"
                       id="ttsText"
                       name="ttsText"
                       rows="5"
@@ -42,35 +38,32 @@
                       data-ng-required="true"
                       data-ng-disabled="$ctrl.loading.creating">
             </textarea>
-            <div data-ng-messages="$ctrl.ttsCreateForm.ttsText.$error"
-                 data-ng-if="$ctrl.ttsCreateForm.ttsText.$invalid && $ctrl.ttsCreateForm.ttsText.$dirty"
-                 role="alert"
-                 class="top-space-m8">
-                <label for="ttsText"
-                       class="normal small"
-                       data-ng-message="required"
-                       data-translate="telephony_number_feature_ovh_pabx_tts_create_text_required">
-                </label>
-                <label for="ttsText"
-                       class="normal small"
-                       data-ng-message="maxlength"
-                       data-translate="telephony_number_feature_ovh_pabx_tts_create_text_too_long">
-                </label>
-            </div>
+            <span class="help-block"
+                  role="alert"
+                  data-ng-if="$ctrl.ttsCreateForm.ttsText.$touched"
+                  data-ng-messages="$ctrl.ttsCreateForm.ttsText.$error">
+                <span data-ng-message="required"
+                      data-translate="telephony_number_feature_ovh_pabx_tts_create_text_required">
+                </span>
+                <span data-ng-message="maxlength"
+                      data-translate="telephony_number_feature_ovh_pabx_tts_create_text_too_long">
+                </span>
+            </span>
         </div> <!-- END OF TEXT -->
 
-        <div class="clearfix">
+        <div class="text-sm-right">
             <button type="submit"
-                    class="btn btn-primary pull-right"
+                    class="btn btn-primary float-right ml-sm-2"
                     data-ng-disabled="$ctrl.loading.creating || !$ctrl.ttsCreateForm.$valid">
+                <oui-loader class="mr-2"
+                            data-ng-show="$ctrl.loading.creating"
+                            data-size="s">
+                </oui-loader>
                 <span data-translate="common_create"></span>
-                <spinner name="bubbles-fff-d34936-16"
-                         data-ng-show="$ctrl.loading.creating">
-                </spinner>
             </button>
 
             <button type="button"
-                    class="btn btn-default pull-left left-space-m0"
+                    class="btn btn-default"
                     data-translate="cancel"
                     data-ng-click="$ctrl.onCancelTtsBtnClick()"
                     data-ng-disabled="$ctrl.loading.creating">

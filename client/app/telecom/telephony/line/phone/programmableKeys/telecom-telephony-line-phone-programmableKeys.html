@@ -1,4 +1,4 @@
-<section class="telecom-telephony-line-management-detailsOffer">
+<section class="telecom-telephony-line-phone-programmableKeys">
 
     <header>
         <section-back-link section-back-link-to-state="telecom.telephony.line.phone"
@@ -10,59 +10,75 @@
         </h1>
     </header>
 
-    <bouncing-box-loader data-ng-if="ProgrammableKeysCtrl.loading.init">
-        <h4 data-translate="loading"></h4>
-    </bouncing-box-loader>
+    <oui-loader data-ng-if="ProgrammableKeysCtrl.loading.init"
+                data-size="m">
+    </oui-loader>
 
-    <div class="telecom-section-content" data-ng-if="ProgrammableKeysCtrl.line.hasPhone && !ProgrammableKeysCtrl.loading.init">
-        <div class="widget-presentation">
-            <h2 class="widget-presentation-title" data-translate="telephony_line_phone_programmableKeys_title_2"></h2>
-        </div>
-        <div class="row">
-            <div class="col-xs-12 table-responsive-vertical" data-ng-if="!ProgrammableKeysCtrl.loading.init">
-                <table class="table table-pretty table-hover table-striped no-space" summary="{{'telephony_line_phone_programmableKeys_summary'|translate}}">
-                    <caption class="sr-only" data-translate="telephony_line_phone_programmableKeys_caption"></caption>
+    <div class="telecom-section-content">
+
+        <toast-message></toast-message>
+
+        <div class="widget-presentation"
+             data-ng-if="ProgrammableKeysCtrl.line.hasPhone && !ProgrammableKeysCtrl.loading.init">
+            <h2 class="widget-presentation-title"
+                data-translate="telephony_line_phone_programmableKeys_title_2">
+            </h2>
+            <div class="table-responsive"
+                 data-ng-if="!ProgrammableKeysCtrl.loading.init">
+                <table class="table"
+                       summary="{{'telephony_line_phone_programmableKeys_summary'|translate}}"
+                       data-ng-class="{
+                           'table-hover table-striped': ProgrammableKeysCtrl.functionKeys.raw.length > 1
+                       }">
+                    <caption class="sr-only"
+                             data-translate="telephony_line_phone_programmableKeys_caption"></caption>
                     <thead>
                         <th id="keys">
-                            <button class="no-style no-outline left-space-p0" data-role="button"
-                                data-ng-click="ProgrammableKeysCtrl.orderBy('keyNum')">
-                                <label class="pointer" data-translate="telephony_line_phone_programmableKeys_keys_title"></label>
-                                <span class="table-pretty-filter">
-                                    <i class="fa" data-ng-class="{
-                                        'fa-sort': ProgrammableKeysCtrl.order.by !== 'keyNum',
-                                        'fa-sort-desc': ProgrammableKeysCtrl.order.by === 'keyNum' && ProgrammableKeysCtrl.order.desc,
-                                        'fa-sort-asc': ProgrammableKeysCtrl.order.by === 'keyNum' && !ProgrammableKeysCtrl.order.desc
-                                    }"></i>
+                            <button class="btn btn-link p-0"
+                                    data-role="button"
+                                    data-ng-click="ProgrammableKeysCtrl.orderBy('keyNum')">
+                                <span data-translate="telephony_line_phone_programmableKeys_keys_title"></span>
+                                <span class="oui-icon align-baseline"
+                                      aria-hidden="true"
+                                      data-ng-class="{
+                                          'oui-icon-arrow-down': ProgrammableKeysCtrl.order.by !== 'keyNum',
+                                          'oui-icon-arrow-down': ProgrammableKeysCtrl.order.by === 'keyNum' && ProgrammableKeysCtrl.order.desc,
+                                          'oui-icon-arrow-up': ProgrammableKeysCtrl.order.by === 'keyNum' && !ProgrammableKeysCtrl.order.desc
+                                      }">
                                 </span>
                             </button>
                         </th>
                         <th id="function">
-                            <button class="no-style no-outline left-space-p0" data-role="button"
-                                data-ng-click="ProgrammableKeysCtrl.orderBy('functionLabel')">
-                                <label data-translate="telephony_line_phone_programmableKeys_function_title"></label>
-                                <span class="table-pretty-filter">
-                                    <i class="fa" data-ng-class="{
-                                        'fa-sort': ProgrammableKeysCtrl.order.by !== 'functionLabel',
-                                        'fa-sort-desc': ProgrammableKeysCtrl.order.by === 'functionLabel' && ProgrammableKeysCtrl.order.desc,
-                                        'fa-sort-asc': ProgrammableKeysCtrl.order.by === 'functionLabel' && !ProgrammableKeysCtrl.order.desc
-                                    }"></i>
+                            <button class="btn btn-link p-0"
+                                    data-role="button"
+                                    data-ng-click="ProgrammableKeysCtrl.orderBy('functionLabel')">
+                                <span data-translate="telephony_line_phone_programmableKeys_function_title"></span>
+                                <span class="oui-icon align-baseline"
+                                      aria-hidden="true"
+                                      data-ng-class="{
+                                          'oui-icon-arrow-down': ProgrammableKeysCtrl.order.by !== 'functionLabel',
+                                          'oui-icon-arrow-down': ProgrammableKeysCtrl.order.by === 'functionLabel' && ProgrammableKeysCtrl.order.desc,
+                                          'oui-icon-arrow-up': ProgrammableKeysCtrl.order.by === 'functionLabel' && !ProgrammableKeysCtrl.order.desc
+                                      }">
                                 </span>
                             </button>
                         </th>
-                        <th id="params">
-                            <button class="no-style no-outline left-space-p0" data-role="button"
-                                data-ng-click="ProgrammableKeysCtrl.orderBy('parameter')">
-                                <label data-translate="telephony_line_phone_programmableKeys_supp_param_title"></label>
-                                <span class="table-pretty-filter">
-                                    <i class="fa" data-ng-class="{
-                                        'fa-sort': ProgrammableKeysCtrl.order.by !== 'parameter',
-                                        'fa-sort-desc': ProgrammableKeysCtrl.order.by === 'parameter' && ProgrammableKeysCtrl.order.desc,
-                                        'fa-sort-asc': ProgrammableKeysCtrl.order.by === 'parameter' && !ProgrammableKeysCtrl.order.desc
-                                    }"></i>
+                        <th colspan="2"
+                            id="params">
+                            <button class="btn btn-link p-0"
+                                    data-role="button"
+                                    data-ng-click="ProgrammableKeysCtrl.orderBy('parameter')">
+                                <span data-translate="telephony_line_phone_programmableKeys_supp_param_title"></span>
+                                <span class="oui-icon align-baseline"
+                                      aria-hidden="true"
+                                      data-ng-class="{
+                                          'oui-icon-arrow-down': ProgrammableKeysCtrl.order.by !== 'parameter',
+                                          'oui-icon-arrow-down': ProgrammableKeysCtrl.order.by === 'parameter' && ProgrammableKeysCtrl.order.desc,
+                                          'oui-icon-arrow-up': ProgrammableKeysCtrl.order.by === 'parameter' && !ProgrammableKeysCtrl.order.desc
+                                      }">
                                 </span>
                             </button>
                         </th>
-                        <th>&#160;</th>
                     </thead>
                     <tbody data-ng-if="ProgrammableKeysCtrl.functionKeys.raw.length && !ProgrammableKeysCtrl.loading.keys">
                         <tr data-ng-repeat="key in ProgrammableKeysCtrl.functionKeys.raw | orderBy:ProgrammableKeysCtrl.order.by:ProgrammableKeysCtrl.order.desc track by $index">
@@ -70,29 +86,33 @@
                             <td headers="function" data-ng-bind="(key.function && ('telephony_line_phone_programmableKeys_' + key.function) | translate) || '-'"></td>
                             <td headers="params" data-ng-bind="key.parameter || '-'"></td>
                             <td>
-                                <button type="button" class="btn btn-default pull-right" data-ng-click="ProgrammableKeysCtrl.edit(key);">
+                                <button type="button"
+                                        class="btn btn-default float-right"
+                                        data-ng-click="ProgrammableKeysCtrl.edit(key);">
                                     <i class="ovh-font ovh-font-editer"></i>
-                                    <span class="sr-only" data-ng-bind="user.login + '-' + ('edit' | translate)"></span>
+                                    <span class="sr-only"
+                                          data-ng-bind="user.login + '-' + ('edit' | translate)"></span>
                                 </button>
                             </td>
                         </tr>
                     </tbody>
                     <tbody data-ng-if="!ProgrammableKeysCtrl.functionKeys.raw.length && !ProgrammableKeysCtrl.loading.keys">
                         <tr>
-                            <td class="text-center" colspan="3">
-                                <span data-translate="telephony_line_phone_programmableKeys_no_key"></span>
+                            <td class="text-center"
+                                colspan="4"
+                                data-translate="telephony_line_phone_programmableKeys_no_key">
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
+        <p class="text-danger text-center font-weight-bold"
+           data-ng-if="!ProgrammableKeysCtrl.line.hasPhone && !ProgrammableKeysCtrl.loading.init"
+           data-translate="telephony_line_phone_programmableKeys_no_phone">
+        </p>
     </div>
-    <div class="telecom-section-content" data-ng-if="!ProgrammableKeysCtrl.line.hasPhone && !ProgrammableKeysCtrl.loading.init">
-        <div class="row">
-            <div class="col-xs-12">
-                <p class="text-danger text-center fs14 bold" data-translate="telephony_line_phone_programmableKeys_no_phone"></p>
-            </div>
-        </div>
-    </div>
+    <!-- /.telecom-section-content -->
+
 </section>
+<!-- /.telecom-telephony-line-phone-programmableKeys -->

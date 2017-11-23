@@ -1,14 +1,15 @@
 <section class="telecom-telephony-group">
 
     <!-- LOADING -->
-    <bouncing-box-loader data-ng-if="BillingAccountCtrl.loading.init">
-        <h1 data-translate="loading"></h1>
-    </bouncing-box-loader>
+    <oui-loader data-ng-if="BillingAccountCtrl.loading.init"
+                data-size="l">
+    </oui-loader>
 
     <div data-ng-if="!BillingAccountCtrl.loading.init">
         <div class="telecom-section-header">
 
-            <header role="banner">
+            <header class="page-header"
+                    role="banner">
                 <!-- GROUP TITLE -->
                 <editable-service-name data-editable-service-name-title="BillingAccountCtrl.group.getDisplayedName()"
                                        data-editable-service-name-title-on-save="BillingAccountCtrl.groupNameSave"
@@ -66,13 +67,13 @@
                 </responsive-tabs>
             </nav>
 
-        </div><!-- .telecom-section-header -->
+        </div>
+        <!-- /.telecom-section-header -->
 
         <div class="telecom-section-alert">
             <div class="alert alert-xs alert-warning"
                  role="alert"
                  data-ng-if="!BillingAccountCtrl.loading.init && BillingAccountCtrl.terminationTask">
-                <span class="ovh-font ovh-font-filled-warning" aria-hidden="true"></span>
                 <span data-translate="telephony_group_termination_warning"
                       data-translate-values="{ date: (BillingAccountCtrl.terminationTask.executionDate | date) }"
                       data-translate-compile>
@@ -81,15 +82,17 @@
                    data-translate="telephony_group_termination_warning_link">
                 </a>.
             </div>
-        </div><!-- .telecom-section-alert -->
+        </div>
+        <!-- /.telecom-section-alert -->
 
         <main class="telecom-section-content"
-             role="main"
-             data-ng-if="!BillingAccountCtrl.loading.init"
-             data-ui-view="groupInnerView">
+              role="main"
+              data-ng-if="!BillingAccountCtrl.loading.init"
+              data-ui-view="groupInnerView">
         </main>
-        <!-- .telecom-section-content -->
+        <!-- /.telecom-section-content -->
 
     </div>
 
 </section>
+<!-- /.telecom-telephony-group -->

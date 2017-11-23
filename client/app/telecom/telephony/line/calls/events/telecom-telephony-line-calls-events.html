@@ -5,32 +5,27 @@
             section-back-link-title="{{ 'telephony_line_calls_back_link' | translate }}">
         </section-back-link>
         <h1 data-translate="telephony_line_calls_events_title"></h1>
-
-        <div class="alert alert-info"
-             role="alert">
-            <i class="ovh-font ovh-font-filled-info right-space-m8"></i>
-            <p data-translate="telephony_line_calls_events_info"></p>
-        </div>
     </header>
 
-    <bouncing-box-loader data-ng-if="EventsCtrl.loading.init">
-        <h3 data-translate="loading"
-            class="top-space-m24">
-        </h3>
-    </bouncing-box-loader>
+    <oui-loader data-ng-if="EventsCtrl.loading.init"
+                data-size="m">
+    </oui-loader>
 
-    <div class="telecom-section-content bottom-space-m32"
+    <div class="telecom-section-content"
          data-ng-if="!EventsCtrl.loading.init">
+
+        <div class="alert alert-info"
+             role="alert"
+             data-translate="telephony_line_calls_events_info">
+        </div>
 
         <telephony-scheduler data-telephony-scheduler="EventsCtrl.line.scheduler"
                              data-telephony-time-condition="EventsCtrl.line.timeCondition">
-            <bouncing-box-loader>
-                <h3 data-translate="loading"
-                    class="top-space-m24">
-                </h3>
-            </bouncing-box-loader>
+            <oui-loader data-size="m"></oui-loader>
         </telephony-scheduler>
 
     </div>
+    <!-- /.telecom-section-content -->
 
 </section>
+<!-- /.telecom-telephony-line-calls-events -->
