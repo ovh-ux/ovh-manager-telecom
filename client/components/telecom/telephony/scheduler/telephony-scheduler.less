@@ -162,12 +162,14 @@
 
                     &.page-left {
                         .event-duration {
+                            overflow: hidden;
                             button {
                                 line-height: 26px;
                             }
                         }
 
                         .event-date {
+                            overflow: hidden;
                             transition-duration: .5s;
 
                             &.all-day {
@@ -279,7 +281,7 @@
 
     .popover-content {
         .bottom-action {
-            background-color: @gray-light;
+            background-color: @gray-lighter;
             overflow: hidden;
             max-height: 150px;
             transition: max-height .5s;
@@ -315,29 +317,6 @@
             &.active-slot {
                 color: @text-color;
                 opacity: 1;
-            }
-        }
-    }
-}
-
-.telecom-scheduler-bank-holidays {
-    .bank-holidays-list {
-        .bank-holiday-item {
-            &:not(:last-child) {
-                border-bottom: 1px solid @gray-light;
-            }
-
-            label {
-                padding: 10px 15px;
-                cursor: pointer;
-
-                strong {
-                    color: @gray-base;
-                }
-
-                .dtd:first-child {
-                    width: 30px;
-                }
             }
         }
     }

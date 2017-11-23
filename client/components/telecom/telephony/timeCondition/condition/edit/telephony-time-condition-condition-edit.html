@@ -74,27 +74,26 @@
             </section>
 
             <!-- FOOTER ACTIONS -->
-            <footer class="clearfix"
-                    data-ng-class="$ctrl.condition.state !== 'DRAFT' ? 'tripple-choice' : 'double-choice'"
+            <footer class="float-sm-right"
                     data-ng-if="!$ctrl.loading.init">
                 <button type="button"
-                        class="btn btn-primary px-2"
-                        data-translate="{{ $ctrl.condition.state === 'DRAFT' ? 'common_add' : 'modify' }}"
+                        class="btn btn-primary"
+                        data-ng-click="$ctrl.onValidateBtnClick()"
                         data-ng-disabled="!$ctrl.isConditionValid() || conditionEditForm.$invalid || !$ctrl.condition.hasChange()"
-                        data-ng-click="$ctrl.onValidateBtnClick()">
+                        data-translate="{{ $ctrl.condition.state === 'DRAFT' ? 'common_add' : 'modify' }}">
                 </button>
 
                 <button type="button"
-                        class="btn btn-default px-2"
-                        data-translate="cancel"
-                        data-ng-click="$ctrl.onCancelBtnClick()">
-                </button>
-
-                <button type="button"
-                        class="btn btn-danger px-2"
-                        data-ng-click="$ctrl.onDeleteBtnClick()"
+                        class="btn btn-danger mr-sm-4 float-left"
                         data-ng-if="$ctrl.condition.state !== 'DRAFT'"
+                        data-ng-click="$ctrl.onDeleteBtnClick()"
                         data-translate="delete">
+                </button>
+
+                <button type="button"
+                        class="btn btn-default mr-sm-2 float-left"
+                        data-ng-click="$ctrl.onCancelBtnClick()"
+                        data-translate="cancel">
                 </button>
             </footer> <!-- FOOTER ACTIONS -->
         </section>
@@ -103,14 +102,13 @@
 
             <header>
                 <button type="button"
-                        class="back-btn btn btn-link my-4 p-0"
+                        class="btn btn-link"
                         data-ng-click="$ctrl.popoverStatus.move = false"
                         data-translate-attr="{ title: 'back' }">
-                    <i class="ovh-font ovh-font-arrow-left"></i>
+                    <i class="ovh-font ovh-font-arrow-left" aria-hidden="true"></i>
                 </button>
 
-                <h2 class="px-5"
-                    data-ng-if="$ctrl.popoverStatus.rightPage === 'policy'"
+                <h2 data-ng-if="$ctrl.popoverStatus.rightPage === 'policy'"
                     data-translate="voip_time_condition_condition_popover_policy">
                 </h2>
 
@@ -122,17 +120,23 @@
             <!-- POLICY CHOICE -->
             <section data-ng-if="$ctrl.popoverStatus.rightPage === 'policy'">
                 <div class="section-group form-group">
-                    <div class="section-item item-choice w-100 radio my-0 py-0"
-                           data-ng-repeat="slot in $ctrl.timeCondition.slots | filter:{ name: '!unavailable' } track by $index">
-                        <label>
+                    <div class="section-item"
+                         data-ng-repeat="slot in $ctrl.timeCondition.slots | filter:{ name: '!unavailable' } track by $index">
+                        <div class="oui-radio">
                             <input type="radio"
-                                   class="my-4"
-                                   name="policy"
+                                   class="oui-radio__input"
+                                   name="policy-{{ $index }}"
+                                   id="policy-{{ $index }}"
                                    data-ng-model="$ctrl.condition.policy"
                                    data-ng-value="slot.name"
                                    data-ng-change="$ctrl.onSlotTypeChange()" />
-                            <voip-time-condition-slot data-time-condition-slot="slot"></voip-time-condition-slot>
-                        </label>
+                            <label class="oui-radio__label-container"
+                                   for="policy-{{ $index }}">
+                                <span class="oui-radio__label">
+                                    <voip-time-condition-slot data-time-condition-slot="slot"></voip-time-condition-slot>
+                                </span>
+                            </label>
+                        </div>
                     </div>
                 </div>
             </section> <!-- END OF POLICY CHOICE -->
@@ -143,17 +147,17 @@
                     <div class="section-item">
                         <p data-translate="voip_time_condition_condition_popover_delete_confirm"></p>
 
-                        <footer class="double-choice clearfix">
+                        <footer class="text-right">
                             <button type="button"
-                                    class="btn btn-danger px-2"
-                                    data-translate="common_confirm"
-                                    data-ng-click="$ctrl.onDeleteConfirmBtnClick()">
+                                    class="btn btn-primary float-right ml-md-2"
+                                    data-ng-click="$ctrl.onDeleteConfirmBtnClick()"
+                                    data-translate="common_confirm">
                             </button>
 
                             <button type="button"
-                                    class="btn btn-default px-2"
-                                    data-translate="cancel"
-                                    data-ng-click="$ctrl.popoverStatus.move = false">
+                                    class="btn btn-default"
+                                    data-ng-click="$ctrl.popoverStatus.move = false"
+                                    data-translate="cancel">
                             </button>
                         </footer>
                     </div>

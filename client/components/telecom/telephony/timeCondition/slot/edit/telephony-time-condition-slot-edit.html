@@ -50,8 +50,10 @@
 
                     <!-- REDIRECT TO NUMBER -->
                     <div class="section-item form-group"
-                         data-ng-class="{ 'has-error': slotEditForm.number.$invalid && slotEditForm.number.$dirty }"
-                         data-ng-if="$ctrl.model.slotType === 'number'">
+                         data-ng-if="$ctrl.model.slotType === 'number'"
+                         data-ng-class="{
+                             'has-error': slotEditForm.number.$invalid && slotEditForm.number.$touched
+                         }">
                         <label for="number"
                                class="control-label"
                                data-translate="voip_time_condition_slots_redirect_popover_number_to_redirect">
@@ -65,9 +67,9 @@
                                data-required
                                data-ng-pattern="/^\+(?:[0-9]){6,14}[0-9]$/" />
                         <span class="help-block"
-                              data-ng-messages="slotEditForm.number.$error"
+                              role="alert"
                               data-ng-if="slotEditForm.number.$touched"
-                              role="alert">
+                              data-ng-messages="slotEditForm.number.$error">
                             <span data-ng-message="required"
                                   data-translate="voip_time_condition_slots_redirect_popover_number_to_redirect_required">
                             </span>
@@ -79,7 +81,7 @@
 
                     <!-- VOICEMAIL OR OVH NUMBER -->
                     <button type="button"
-                            class="section-item w-100  text-left"
+                            class="section-item w-100 text-left"
                             data-ng-if="$ctrl.model.slotType !== 'number'"
                             data-ng-click="$ctrl.onSlotNumberBtnClick()">
                         <label class="required"
@@ -112,18 +114,18 @@
             </section>
 
             <!-- FOOTER ACTIONS -->
-            <footer class="clearfix double-choice">
+            <footer class="clearfix float-sm-right">
                 <button type="button"
-                        class="btn btn-primary px-2"
-                        data-translate="modify"
+                        class="btn btn-primary"
                         data-ng-disabled="slotEditForm.$invalid || !$ctrl.slot.hasChange() || !$ctrl.isSlotValid()"
-                        data-ng-click="$ctrl.onValidateBtnClick()">
+                        data-ng-click="$ctrl.onValidateBtnClick()"
+                        data-translate="modify">
                 </button>
 
                 <button type="button"
-                        class="btn btn-default px-2"
-                        data-translate="cancel"
-                        data-ng-click="$ctrl.onCancelBtnClick()">
+                        class="btn btn-default mr-sm-2 float-left"
+                        data-ng-click="$ctrl.onCancelBtnClick()"
+                        data-translate="cancel">
                 </button>
             </footer> <!-- FOOTER ACTIONS -->
 
@@ -132,10 +134,10 @@
         <section class="popover-page page-section">
             <header>
                 <button type="button"
-                        class="back-btn btn btn-link my-4 p-0"
+                        class="btn btn-link"
                         data-ng-click="$ctrl.popoverStatus.move = false"
                         data-translate-attr="{ title: 'voip_time_condition_slots_redirect_popover_back_btn_title' }">
-                    <i class="ovh-font ovh-font-arrow-left"></i>
+                    <i class="ovh-font ovh-font-arrow-left" aria-hidden="true"></i>
                 </button>
 
                 <h2 data-ng-if="$ctrl.popoverStatus.rightPage === 'slotType'"
@@ -150,20 +152,26 @@
             <!-- SLOT TYPE CHOICE -->
             <section data-ng-if="$ctrl.popoverStatus.rightPage === 'slotType'">
                 <div class="section-group form-group">
-                    <div class="section-item item-choice w-100 radio my-0"
+                    <div class="section-item"
                          data-ng-repeat="slotType in $ctrl.availableSlotTypes track by $index">
-                        <label>
-                                <input type="radio"
-                                       name="ruleAction"
-                                       data-ng-model="$ctrl.model.slotType"
-                                       data-ng-value="slotType"
-                                       data-ng-change="$ctrl.onSlotTypeChange()" />
-                                <span data-translate="{{ 'voip_time_condition_slots_redirect_popover_redirect_type_' + slotType }}">
+                        <div class="oui-radio">
+                            <input type="radio"
+                                   class="oui-radio__input"
+                                   id="ruleAction-{{ $index }}"
+                                   name="ruleAction-{{ $index }}"
+                                   data-ng-model="$ctrl.model.slotType"
+                                   data-ng-value="slotType"
+                                   data-ng-change="$ctrl.onSlotTypeChange()" />
+                            <label class="oui-radio__label-container"
+                                   for="ruleAction-{{ $index }}">
+                                <span class="oui-radio__label"
+                                      data-translate="{{ 'voip_time_condition_slots_redirect_popover_redirect_type_' + slotType }}">
                                 </span>
-                                <span class="radio-description"
+                                <span class="oui-radio__description"
                                       data-translate="{{ 'voip_time_condition_slots_redirect_popover_redirect_type_' + slotType + '_explain' }}">
                                 </span>
-                        </label>
+                            </label>
+                        </div>
                     </div>
                 </div>
             </section> <!-- END OF SLOT TYPE CHOICE -->
@@ -196,23 +204,29 @@
                     <div class="group-title">
                         <span data-ng-bind="group.getDisplayedName()"></span>
                     </div>
-                    <div data-ng-repeat="service in $ctrl.filterGroupServices(group) | propsFilter: {serviceName: $ctrl.model.search, description: $ctrl.model.search} track by $index"
-                         class="section-item item-choice w-100 radio my-0">
-                        <label>
+                    <div class="section-item"
+                         data-ng-repeat="service in $ctrl.filterGroupServices(group) | propsFilter: {serviceName: $ctrl.model.search, description: $ctrl.model.search} track by $index">
+                        <div class="oui-radio">
                             <input type="radio"
-                                   name="ruleNumber"
+                                   class="oui-radio__input"
+                                   id="ruleNumber-{{ $index }}"
+                                   name="ruleNumber-{{ $index }}"
                                    data-ng-model="$ctrl.slot.number"
                                    data-ng-value="service.serviceName"
                                    data-ng-change="$ctrl.onSlotNumberChange()" />
-                            <span data-ng-bind="service.getDisplayedName()">
-                            </span>
-                            <span class="radio-description">
-                                <i data-translate="{{ 'telecom_sidebar_section_telephony_filter_' + $ctrl.getServiceType(service) }}"></i>
-                                <i data-ng-if="service.serviceName !== service.description"
-                                   data-ng-bind="' - ' + service.serviceName">
-                                </i>
-                            </span>
-                        </label>
+                            <label class="oui-radio__label-container"
+                                   for="ruleNumber-{{ $index }}">
+                                <span class="oui-radio__label"
+                                      data-ng-bind="service.getDisplayedName()">
+                                </span>
+                                <span class="oui-radio__description">
+                                    <i data-translate="{{ 'telecom_sidebar_section_telephony_filter_' + $ctrl.getServiceType(service) }}"></i>
+                                    <i data-ng-if="service.serviceName !== service.description"
+                                       data-ng-bind="' - ' + service.serviceName">
+                                    </i>
+                                </span>
+                            </label>
+                        </div>
                     </div>
                 </div> <!-- END OF SEARCH RESULTS -->
             </section> <!-- END OF OVH NUMBER CHOICE -->

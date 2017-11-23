@@ -14,7 +14,7 @@
                 <div class="section-group">
                     <!-- URL -->
                     <div class="section-item">
-                        <div class="form-group p-0 m-0"
+                        <div class="form-group mb-0"
                              data-ng-class="{
                                 'has-error': $ctrl.sviConfigForm.url.$invalid && $ctrl.sviConfigForm.url.$touched
                              }">
@@ -43,9 +43,9 @@
                                 </div>
                             </div>
                             <span class="help-block"
+                                  role="alert"
                                   data-ng-messages="$ctrl.sviConfigForm.url.$error"
-                                  data-ng-if="$ctrl.sviConfigForm.url.$invalid && $ctrl.sviConfigForm.url.$touched"
-                                  role="alert">
+                                  data-ng-if="$ctrl.sviConfigForm.url.$invalid && $ctrl.sviConfigForm.url.$touched">
                                 <span data-ng-message="required"
                                       data-translate="telephony_number_feature_svi_required_url">
                                 </span>
@@ -58,7 +58,7 @@
 
                     <!-- RECORD -->
                     <div class="section-item">
-                        <div class="form-group p-0 m-0"
+                        <div class="form-group mb-0"
                              data-ng-class="{
                                 'has-error': $ctrl.sviConfigForm.urlRecord.$invalid && $ctrl.sviConfigForm.urlRecord.$touched
                              }">
@@ -114,14 +114,14 @@
                 </div>
             </section>
 
-            <footer class="clearfix double-choice">
+            <footer class="clearfix float-sm-right">
                 <button type="submit"
-                        class="btn btn-primary px-3"
+                        class="btn btn-primary"
                         data-ng-disabled="$ctrl.sviConfigForm.$invalid || !$ctrl.numberCtrl.number.feature.hasChange()"
                         data-translate="submit">
                 </button>
                 <button type="reset"
-                        class="btn btn-default px-3"
+                        class="btn btn-default mr-sm-2 float-left"
                         data-translate="cancel"
                         data-ng-click="$ctrl.onPopoverCancel()">
                 </button>

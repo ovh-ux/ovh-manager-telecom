@@ -103,14 +103,22 @@ angular.module("managerApp").controller("TelecomTelephonyLineCallsCtrl", functio
                 var enable = action.enable === true;
                 if (action.display !== true) {
                     _.forEach(action.display, function (offer) {
-                        if (line.isOffer(offer)) {
+                        if (offer === "trunk") {
+                            if (line.isTrunk()) {
+                                display = true;
+                            }
+                        } else if (line.isOffer(offer)) {
                             display = true;
                         }
                     });
                 }
                 if (action.enable !== true) {
                     _.forEach(action.enable, function (offer) {
-                        if (line.isOffer(offer)) {
+                        if (offer === "trunk") {
+                            if (line.isTrunk()) {
+                                enable = true;
+                            }
+                        } else if (line.isOffer(offer)) {
                             enable = true;
                         }
                     });
