@@ -112,9 +112,14 @@ angular.module("managerApp").controller("telephonyBulkActionModalCtrl", function
     self.onBulkServiceChoiceFormSubmit = function () {
         self.loading.bulk = true;
 
+        // build params for each actions
+        self.bindings.bulkInfos.actions.forEach(function (info) {
+            info.params = self.bindings.getBulkParams()(info.name);
+        });
+
+        // call 2API endpoint
         return $http.post("/" + ["telephony", self.bindings.billingAccount, "service", self.bindings.serviceName, "bulk"].join("/"), {
             bulkInfos: self.bindings.bulkInfos,
-            bulkParams: self.bindings.getBulkParams(),
             bulkServices: self.getSelectedServices()
         }, {
             serviceType: "aapi"

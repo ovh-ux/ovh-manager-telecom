@@ -8,8 +8,17 @@ angular.module("managerApp").controller("TelecomTelephonyLineCallsDisplayNumberC
         serviceName: $stateParams.serviceName,
         infos: {
             name: "displayNumber",
-            type: "PUT",
-            apiRoute: "/telephony/{billingAccount}/line/{serviceName}/options"
+            actions: [{
+                name: "options",
+                route: "/telephony/{billingAccount}/line/{serviceName}/options",
+                method: "PUT",
+                params: null
+            }, {
+                name: "options2",
+                route: "/telephony/{billingAccount}/line/{serviceName}/options",
+                method: "PUT",
+                params: null
+            }]
         }
     };
 

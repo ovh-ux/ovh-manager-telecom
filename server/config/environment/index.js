@@ -34,8 +34,7 @@ module.exports = {
         url : process.env.NODE_URL || "http://localhost:6969"
     },
     aapi : {
-        // url : "https://www.ovhtelecom.fr/engine/2api"
-        url : (process.env.NODE_ENV === "production") ? "https://www.ovhtelecom.fr/espaceclient/2api" : "http://localhost:8080"
+        url : "https://www.ovhtelecom.fr/engine/2api"
     },
     ws : {
         url: "https://www.ovhtelecom.fr/ws"
