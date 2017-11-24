@@ -27,21 +27,6 @@ angular.module("managerApp").controller("TelephonyNumberRedirectCtrl", function 
     ===============================*/
 
     /**
-     *  Get the connection ids
-     */
-    self.getConnectionIds = function (idPrefix) {
-        var connectionIds = [];
-
-        if (selectedService) {
-            connectionIds.push("redirectTo-radio-all");
-        }
-
-        return connectionIds.concat(_.map(self.availableServices, function (service) {
-            return idPrefix + service.serviceName;
-        }));
-    };
-
-    /**
      *  Get the destination service
      */
     function getDestinationService (destinationServiceNameParam) {

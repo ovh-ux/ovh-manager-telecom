@@ -2,12 +2,13 @@
     font-family: inherit;
     max-width: inherit !important;
 
-    button {
+    button:not(.btn-actions-list) {
         padding: @padding-base-vertical @padding-base-horizontal;
-    }
 
-    button:hover {
-        text-decoration: none;
+        &:hover,
+        &:focus {
+            text-decoration: none;
+        }
     }
 
     .popover-inner {
@@ -30,19 +31,6 @@
             padding: 0;
         }
 
-        label, .label-like {
-            color: @gray-base;
-
-            &.required::after {
-                content: " *";
-                color: @oui-color-error-dark;
-            }
-
-            &.text-danger {
-                color: @oui-color-error-dark;
-            }
-        }
-
         section.page-section {
             header {
                 position: relative;
@@ -52,17 +40,21 @@
                     text-align: center;
                     font-size: 2.5rem;
                     padding: 0 (@padding-large-horizontal * 2);
+                    margin-bottom: 0;
                 }
 
-                .back-btn {
+                .btn.btn-link {
                     position: absolute;
-                    left: 12px;
-                    top: -12px;
+                    left: 0;
+                    top: 2px;
                     font-size: 20px;
+                    padding: 0 @padding-base-horizontal;
                 }
             }
 
             section {
+                overflow-y: auto;
+
                 .alert {
                     padding-top: 10px;
                     padding-right: 10px;
@@ -101,7 +93,7 @@
                     .section-item {
                         border-bottom: 1px solid @pretty-popover-border-color;
                         background-color: #FFF;
-                        padding: @padding-base-horizontal;
+                        padding: @padding-base-vertical @padding-base-horizontal;
 
                         .input-number-spinner {
                             width: 100%;
@@ -113,23 +105,7 @@
                             }
                         }
 
-                        label.radio-label-main,
-                        label.control-label {
-                            font-weight: bold;
-                        }
-
-                        &.btn-item,
                         &.item-choice {
-                            .radio-label-main {
-                                font-weight: bold;
-                            }
-                        }
-
-                        &.item-choice {
-                            .radio-label-main {
-                                color: @gray-dark;
-                                font-weight: bold;
-                            }
 
                             .dtd {
                                 padding: 0 0 0 @padding-base-horizontal;
@@ -164,10 +140,11 @@
                             padding-left: 35px;
                         }
 
-                        &:focus, &:hover {
-                            .chevron-right, .chevron-left {
+                        &:focus,
+                        &:hover {
+                            .chevron-right,
+                            .chevron-left {
                                 opacity: 1;
-                                // background-color: lighten(@flat-switch-background-color-active, 40%);
                             }
                         }
 
@@ -210,40 +187,6 @@
 
             footer {
                 padding: 20px 10px 10px;
-
-                @media (min-width: @screen-sm-min) {
-                    &.double-choice {
-                        > button:first-child {
-                            float: right;
-                        }
-                        > button:last-child {
-                            float: left;
-                            margin: 0;
-                        }
-                    }
-
-                    &.tripple-choice {
-                        > button:first-child,
-                        > button:nth-child(2) {
-                            float: right;
-                            margin-left: 10px;
-                        }
-                        > button:last-child {
-                            float: left;
-                            margin: 0;
-                        }
-                    }
-                }
-                @media (max-width: (@screen-sm-min - 1)) {
-                    > button {
-                        width: 100%;
-                        margin-left: 0;
-
-                        &:not(:last-child) {
-                            margin-bottom: 10px;
-                        }
-                    }
-                }
             }
         }
     }

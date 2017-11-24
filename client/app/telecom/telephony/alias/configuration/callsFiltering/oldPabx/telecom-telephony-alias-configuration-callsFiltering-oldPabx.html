@@ -1,0 +1,72 @@
+<section class="telephony-group-alias-configuration-callsFiltering-easyHunting">
+
+    <header>
+        <section-back-link section-back-link-to-state="telecom.telephony.alias.configuration"
+                           section-back-link-title="{{ 'telephony_alias_configuration_back_link' | translate }}">
+        </section-back-link>
+        <h1 data-translate="telephony_alias_configuration_calls_filtering_title"></h1>
+    </header>
+
+    <oui-loader data-ng-if="$ctrl.loaders.init"
+                data-size="m">
+    </oui-loader>
+
+    <div class="telecom-section-content" data-ng-if="!$ctrl.loaders.init">
+
+        <div class="row">
+
+            <!-- FILTERING ENABLE -->
+            <div class="col-xs-12 col-md-8">
+                <div class="widget-presentation">
+                    <h2 class="widget-presentation-title" data-translate="telephony_alias_configuration_calls_filtering_enable"></h2>
+                </div>
+                <div class="form-group">
+                    <label class="control-label"
+                           for="modified"
+                           data-translate="telephony_alias_configuration_calls_filtering_incoming">
+                    </label>
+                    <select class="form-control"
+                            name="modified"
+                            id="modified"
+                            data-ng-model="$ctrl.screenStatus.modified"
+                            data-ng-change="$ctrl.updateScreen()"
+                            data-ng-disabled="$ctrl.screenStatus.isLoading"
+                            required>
+                        <option value="disabled" data-translate="telephony_alias_configuration_calls_filtering_list_none"></option>
+                        <option value="whitelist" data-translate="telephony_alias_configuration_calls_filtering_list_white"></option>
+                        <option value="blacklist" data-translate="telephony_alias_configuration_calls_filtering_list_black"></option>
+                    </select>
+                </div>
+            </div>
+
+        </div> <!-- row -->
+
+        <div class="row">
+
+            <!-- FILTERING ADD -->
+            <div class="col-xs-12 col-md-8">
+                <div class="widget-presentation">
+                    <h2 class="widget-presentation-title" data-translate="telephony_alias_configuration_calls_filtering_new"></h2>
+                </div>
+                <telecom-telephony-calls-filtering-add
+                    data-add-screen-list="$ctrl.addScreenList(screen)"
+                    data-get-screen-list="$ctrl.screenLists.getList()"
+                    data-on-screen-list-added="$ctrl.onScreenListAdded(screen)"
+                    data-disable-outgoing="true">
+                </telecom-telephony-calls-filtering-add>
+            </div>
+
+        </div> <!-- row -->
+
+        <div>
+            <div class="widget-presentation">
+                <h2 class="widget-presentation-title" data-translate="telephony_alias_configuration_calls_filtering_config"></h2>
+            </div>
+            <telecom-telephony-calls-filtering-table
+                data-api="$ctrl.screenLists">
+            </telecom-telephony-calls-filtering-table>
+        </div>
+
+    </div><!-- section content -->
+
+</section>

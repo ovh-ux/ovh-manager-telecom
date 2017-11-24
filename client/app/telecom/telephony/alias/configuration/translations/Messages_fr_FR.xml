@@ -29,7 +29,7 @@
    <translation id="telephony_alias_configuration_actions_number_manage_conference" qtlid="356862">Conférence téléphonique</translation>
 
 <!-- EASYPABX -->
-   <translation id="telephony_alias_configuration_actions_number_easy_pabx_music" qtlid="356875">Gérer les musiques</translation>
+   <translation id="telephony_alias_configuration_actions_music_management" qtlid="356875">Gérer les musiques</translation>
    <translation id="telephony_alias_configuration_actions_sounds_management">Gérer les sons</translation>
    <translation id="telephony_alias_configuration_actions_menus_management">Gérer les menus interactifs</translation>
    <translation id="telephony_alias_configuration_actions_tts_management">Gérer les TTS</translation>

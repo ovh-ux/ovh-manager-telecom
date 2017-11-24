@@ -269,12 +269,9 @@ module.exports = function (grunt) {
         wiredep: {
             options: {
                 exclude: [
-                    "/bootstrap-sass-official/",
                     "bower_components/flag-icon-css/css/flag-icon.min.css",
                     "/json3/",
                     "/es5-shim/",
-                    "bower_components/bootstrap/dist/css/bootstrap.css",
-                    "bower_components/bootstrap/dist/js/bootstrap.js",
                     "/cryptojs/",
                     "bower_components/messenger/build/css/messenger-theme-air.css",
                     "bower_components/messenger/build/css/messenger-theme-ice.css"

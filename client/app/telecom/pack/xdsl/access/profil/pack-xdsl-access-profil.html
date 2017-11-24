@@ -7,16 +7,18 @@
         class="clearfix"
         data-ng-submit="ProfileCtrl.changeProfile()"
         data-ng-if="ProfileCtrl.profiles">
-        <select
-            class="form-control"
-            id="newProfil"
-            name="newProfil"
-            data-ng-model="ProfileCtrl.currentProfileTmp"
-            data-ng-options="profil.name for profil in ProfileCtrl.profiles"
-            data-ng-disabled="access.tasks.current.dslamProfileChange">
-        </select>
+        <div class="form-group">
+            <select
+                class="form-control"
+                id="newProfil"
+                name="newProfil"
+                data-ng-model="ProfileCtrl.currentProfileTmp"
+                data-ng-options="profil.name for profil in ProfileCtrl.profiles"
+                data-ng-disabled="access.tasks.current.dslamProfileChange">
+            </select>
+        </div>
 
-        <button class="btn btn-primary mt-1"
+        <button class="oui-button oui-button_full-width oui-button_primary"
                 type="submit"
                 data-ng-if="!access.tasks.current.dslamProfileChange"
                 data-ng-disabled="!ProfileCtrl.profiles || access.tasks.current.dslamProfileChange || ProfileCtrl.currentProfile === ProfileCtrl.currentProfileTmp"

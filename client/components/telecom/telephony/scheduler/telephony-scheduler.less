@@ -105,7 +105,7 @@
         right: 0;
         margin: auto;
 
-        bouncing-box-loader,
+        oui-loader,
         success-drawing-check {
             height: auto;
             width: 100%;
@@ -132,6 +132,15 @@
                     height: 100%;
                     float: left;
 
+                    .telephony-time-condition-slot {
+                        margin: 0 !important;
+
+                        .slot-name {
+                            padding-top: 0;
+                            padding-bottom: 0;
+                        }
+                    }
+
                     .event-category {
                         .dtd {
                             padding: 0 0 0 @padding-base-horizontal;
@@ -153,12 +162,14 @@
 
                     &.page-left {
                         .event-duration {
+                            overflow: hidden;
                             button {
                                 line-height: 26px;
                             }
                         }
 
                         .event-date {
+                            overflow: hidden;
                             transition-duration: .5s;
 
                             &.all-day {
@@ -270,7 +281,7 @@
 
     .popover-content {
         .bottom-action {
-            background-color: @gray-light;
+            background-color: @gray-lighter;
             overflow: hidden;
             max-height: 150px;
             transition: max-height .5s;
@@ -306,29 +317,6 @@
             &.active-slot {
                 color: @text-color;
                 opacity: 1;
-            }
-        }
-    }
-}
-
-.telecom-scheduler-bank-holidays {
-    .bank-holidays-list {
-        .bank-holiday-item {
-            &:not(:last-child) {
-                border-bottom: 1px solid @gray-light;
-            }
-
-            label {
-                padding: 10px 15px;
-                cursor: pointer;
-
-                strong {
-                    color: @gray-base;
-                }
-
-                .dtd:first-child {
-                    width: 30px;
-                }
             }
         }
     }
