@@ -386,13 +386,13 @@
                         <div class="oui-radio">
                             <input type="radio"
                                    class="oui-radio__input"
-                                   id="ruleNumber-{{ $index }}"
-                                   name="ruleNumber-{{ $index }}"
+                                   id="ruleNumber-{{ service.serviceName }}"
+                                   name="ruleNumber"
                                    data-ng-model="$ctrl.rule.actionParam"
                                    data-ng-value="service.serviceName"
                                    data-ng-change="$ctrl.onVoicemailActionParamChange(service)" />
                             <label class="oui-radio__label-container"
-                                   for="ruleNumber-{{ $index }}">
+                                   for="ruleNumber-{{ service.serviceName }}">
                                 <span class="oui-radio__label"
                                       data-ng-bind="service.getDisplayedName()">
                                 </span>
