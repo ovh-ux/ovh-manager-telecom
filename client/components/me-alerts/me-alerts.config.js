@@ -1,13 +1,15 @@
-angular.module("managerApp").run(function ($translate, $translatePartialLoader, Flash, OvhApiMeAlertsAapi, REDIRECT_URLS) {
+angular.module("managerApp").run(function ($translate, $translatePartialLoader, Flash, OvhApiMeAlertsAapi, REDIRECT_URLS, TARGET, UNIVERSE) {
     "use strict";
 
     $translatePartialLoader.addPart("../components/me-alerts");
 
     $translate.refresh().then(function () {
 
-        return OvhApiMeAlertsAapi.query(/* {
-            target: TARGET
-        }*/).$promise.then(function (alerts) {
+        return OvhApiMeAlertsAapi.query({
+            lang: $translate.preferredLanguage(),
+            target: TARGET,
+            universe: UNIVERSE
+        }).$promise.then(function (alerts) {
 
             if (alerts && alerts.length) {
                 var messages = [];
