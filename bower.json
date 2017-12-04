@@ -68,7 +68,7 @@
     "matchmedia-ng": "^1.0.8",
     "messenger": "1.4.1",
     "moment": "^2.15.2",
-    "ng-at-internet": "^2.2.1",
+    "ng-at-internet": "^3.0.0",
     "ng-csv": "^0.3.6",
     "ngSmoothScroll": "~1.7.1",
     "oclazyload": "0.5.2",
@@ -128,6 +128,7 @@
     "jquery-ui": ">=1.12.x",
     "lodash": "~3.10.1",
     "moment": "^2.15.2",
+    "ng-at-internet": "^3.0.0",
     "ovh-font": "~0.15.x",
     "responsive-popover": "^4.0.0",
     "uri.js": "^1.18.1"
