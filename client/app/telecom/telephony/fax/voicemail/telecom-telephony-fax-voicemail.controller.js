@@ -23,7 +23,7 @@ angular.module("managerApp").controller("TelecomTelephonyFaxVoicemailCtrl", func
             text: $translate.instant("telephony_group_fax_voicemail_action_management")
         }, {
             name: "fax_voicemail_status",
-            url: TelephonyMediator.getV6ToV4RedirectionUrl("line.line_voicemail_status"),
+            sref: "telecom.telephony.fax.voicemail.activation",
             text: $translate.instant("telephony_group_fax_voicemail_action_status")
         }, {
             name: "fax_voicemail_password",
