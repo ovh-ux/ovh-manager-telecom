@@ -120,7 +120,7 @@ angular.module("managerApp").service("voipTimeCondition", function ($q, $transla
 
         // set slot values
         _.filter(timeCondition.slots, function (slot) {
-            return slot.name !== "available";
+            return slot.name !== "available" && !_.isEmpty(slot.number);
         }).forEach(function (slot) {
             _.set(actionParams, slot.name + "Type", slot.type);
             _.set(actionParams, slot.name + "Number", slot.number);
