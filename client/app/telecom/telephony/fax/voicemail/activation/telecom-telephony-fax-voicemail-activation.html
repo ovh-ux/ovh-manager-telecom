@@ -1,0 +1,40 @@
+<section class="telephony-group-fax-voicemail-activation">
+
+    <header>
+        <section-back-link section-back-link-to-state="telecom.telephony.fax.voicemail"
+                           section-back-link-title="{{ 'telephony_group_fax_voicemail_back_link' | translate }}">
+        </section-back-link>
+        <h1 data-translate="telephony_group_fax_voicemail_action_status"></h1>
+    </header>
+
+    <oui-loader data-size="m"
+                data-ng-if="$ctrl.loading.init">
+    </oui-loader>
+
+    <div class="telecom-section-content"
+         data-ng-if="!$ctrl.loading.init">
+
+        <toast-message></toast-message>
+
+        <div class="row">
+            <div class="col-xs-12 col-md-6">
+                <div class="alert alert-info alert-xs"
+                     role="alert"
+                     data-translate="{{ $ctrl.isVoicemailActive ? 'telephony_group_fax_voicemail_activation_active' : 'telephony_group_fax_voicemail_activation_inactive' }}">
+                </div>
+
+                <button type="button"
+                        class="btn btn-primary"
+                        data-ng-disabled="$ctrl.loading.save"
+                        data-ng-click="$ctrl.onChangeRoutingBtnClick()">
+                    <oui-loader data-size="s"
+                                data-ng-if="$ctrl.loading.save">
+                    </oui-loader>
+                    <span data-translate="{{ $ctrl.isVoicemailActive ? 'telephony_group_fax_voicemail_activation_desactivate' : 'telephony_group_fax_voicemail_activation_activate' }}"></span>
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+</section>
