@@ -14,10 +14,13 @@
     <div class="telecom-section-content"
          data-ng-if="!DomainCtrl.loading.init">
 
+        <toast-message></toast-message>
+
         <div class="row">
+            <div class="col-md-8">
 
             <!-- CURRENT LINE SIP DOMAIN -->
-            <section class="col-xs-12 col-md-6 widget-presentation">
+            <section class="widget-presentation">
                 <header class="widget-presentation-header">
                     <h2 class="widget-presentation-title"
                         data-translate="telephony_line_management_sip_domain_line_title">
@@ -38,8 +41,7 @@
                 <!-- CONSULT MODE -->
                 <div data-ng-if="!DomainCtrl.model.lineSipEdit && !DomainCtrl.loading.saveLine">
 
-                    <dl class="dl-telecom"
-                        data-ng-if="!DomainCtrl.model.lineSipEdit">
+                    <dl data-ng-if="!DomainCtrl.model.lineSipEdit">
                         <dt data-translate="telephony_line_management_sip_domain_line_registered"></dt>
                         <dd data-ng-bind="DomainCtrl.line.options.domain"></dd>
                     </dl>
@@ -60,6 +62,7 @@
 
                     <div class="form-group">
                         <label for="line-domain-select"
+                               class="control-label"
                                data-translate="telephony_line_management_sip_domain_line_registered">
                         </label>
                         <select class="form-control"
@@ -71,16 +74,16 @@
                     </div>
 
                     <div class="form-group">
-                        <button type="reset"
-                                class="btn btn-default"
-                                data-ng-click="DomainCtrl.cancelLineDomainEdit()"
-                                data-ng-disabled="DomainCtrl.loading.saveLine"
-                                data-translate="cancel">
-                        </button>
                         <button type="submit"
                                 class="btn btn-primary"
                                 data-ng-disabled="DomainCtrl.loading.saveLine || !DomainCtrl.line.hasChange('options.domain')"
                                 data-translate="telephony_line_management_sip_domain_save_button">
+                        </button>
+                        <button type="reset"
+                                class="btn btn-link"
+                                data-ng-click="DomainCtrl.cancelLineDomainEdit()"
+                                data-ng-disabled="DomainCtrl.loading.saveLine"
+                                data-translate="cancel">
                         </button>
                     </div>
 
@@ -89,7 +92,7 @@
             </section> <!-- CURRENT LINE SIP DOMAIN -->
 
             <!-- CLIENT SIP DOMAIN -->
-            <section class="col-xs-12 col-md-6 widget-presentation">
+            <section class="widget-presentation">
                 <header class="widget-presentation-header">
                     <h2 class="widget-presentation-title"
                         data-translate="telephony_line_management_sip_domain_client_title">
@@ -110,7 +113,7 @@
                 <!-- CONSULT MODE -->
                 <div data-ng-if="!DomainCtrl.model.clientSipEdit && !DomainCtrl.loading.saveClient">
 
-                    <dl class="dl-telecom">
+                    <dl>
                         <dt data-ng-repeat-start="domain in DomainCtrl.availableSipDomains.client track by $index"
                             data-translate="telephony_line_management_sip_domain_client_country"
                             data-translate-values="{ country: domain.country }">
@@ -137,6 +140,7 @@
                     <div class="form-group"
                          data-ng-repeat="domain in DomainCtrl.availableSipDomains.client track by $index">
                         <label for="client-domain-select-{{ domain.country }}"
+                               class="control-label"
                                data-translate="telephony_line_management_sip_domain_client_country"
                                data-translate-values="{ country: domain.country }">
                         </label>
@@ -149,16 +153,16 @@
                     </div>
 
                     <div class="form-group">
-                        <button type="reset"
-                                class="btn btn-default"
-                                data-ng-click="DomainCtrl.cancelClientDomainEdit()"
-                                data-ng-disabled="DomainCtrl.loading.saveClient"
-                                data-translate="cancel">
-                        </button>
                         <button type="submit"
                                 class="btn btn-primary"
                                 data-ng-disabled="DomainCtrl.loading.saveClient || !DomainCtrl.hasClientDomainChange()"
                                 data-translate="telephony_line_management_sip_domain_save_button">
+                        </button>
+                        <button type="reset"
+                                class="btn btn-link"
+                                data-ng-click="DomainCtrl.cancelClientDomainEdit()"
+                                data-ng-disabled="DomainCtrl.loading.saveClient"
+                                data-translate="cancel">
                         </button>
                     </div>
 
@@ -166,7 +170,9 @@
 
             </section> <!-- CLIENT SIP DOMAIN -->
 
+            </div>
         </div>
+        <!-- /.row -->
 
     </div>
 
