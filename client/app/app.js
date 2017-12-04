@@ -160,17 +160,30 @@ angular.module("managerApp", [
     })
 
 /*= =========  PAGE TRACKING  ==========*/
-    .config(function (atInternetProvider, atInternetUiRouterPluginProvider, telecomConfig, TRACKING) {
+    .config(function (atInternetProvider, atInternetUiRouterPluginProvider, telecomConfig) {
         "use strict";
 
         var trackingEnabled = telecomConfig.env === "prod";
         atInternetProvider.setEnabled(trackingEnabled);
-        atInternetProvider.setDefaults(TRACKING.atInternetConfiguration);
+        atInternetProvider.setDebug(!trackingEnabled);
         atInternetUiRouterPluginProvider.setTrackStateChange(trackingEnabled);
         atInternetUiRouterPluginProvider.addStateNameFilter(function (routeName) {
             return routeName ? routeName.replace(/\./g, "::") : "";
         });
 
+    })
+    .run(function (atInternet, TRACKING, OvhApiMe) {
+        "use strict";
+
+        var config = TRACKING.atInternetConfiguration;
+
+        OvhApiMe.Lexi().get().$promise
+            .then(function (me) {
+                config.countryCode = me.country;
+                config.currencyCode = me.currency && me.currency.code;
+                config.visitorId = me.customerCode;
+                atInternet.setDefaults(config);
+            });
     })
 
 /*= =========  INTERCEPT ERROR IF NO TRANSLATION FOUND  ==========*/
