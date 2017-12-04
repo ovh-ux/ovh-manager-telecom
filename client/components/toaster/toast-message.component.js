@@ -15,11 +15,9 @@ angular.module("managerApp").component("toastMessage", {
             "success"
         ];
 
-        this.getMessagesByType = (type) => {
-            let messages = Toast.getMessagesByType(type);
-
+        this.updateMessages = (messages) => {
             // update messages timestamp
-            let pendingMessages = _.filter(Toast.getMessages(), (m) => !m.timestamp);
+            let pendingMessages = _.filter(messages, (m) => !m.timestamp);
 
             if (pendingMessages.length) {
                 this.hasNewMessages = true;
@@ -31,12 +29,25 @@ angular.module("managerApp").component("toastMessage", {
             _.each(pendingMessages, (m) => {
                 m.timestamp = timestamp;
             });
+        };
+
+        this.getMessagesByType = (type) => {
+            let messages = Toast.getMessagesByType(type);
+
+            this.updateMessages(messages);
 
             // do not display old messages
             return _.filter(messages, (m) => m.timestamp >= timestamp);
         };
 
-        this.getAllMessages = () => Toast.getMessages();
+        this.getAllMessages = () => {
+            let messages = Toast.getMessages();
+
+            this.updateMessages(messages);
+
+            // do not display old messages
+            return _.filter(messages, (m) => m.timestamp >= timestamp);
+        };
 
         this.hasMessagesOfType = (type) => this.getMessagesByType(type).length > 0;
 

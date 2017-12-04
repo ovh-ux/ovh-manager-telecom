@@ -19,7 +19,7 @@
         <div class="col-xs-12 col-md-3">
 
             <!-- SCHEDULER PARAMS -->
-            <div class="widget-presentation">
+            <div class="widget-presentation clearfix">
                 <h2 class="widget-presentation-title"
                     data-translate="telephony_scheduler_params_title">
                 </h2>
@@ -28,7 +28,9 @@
                      data-ng-if="$ctrl.loading.params">
                 </div>
 
-                <telephony-scheduler-params data-ng-show="!$ctrl.loading.params"></telephony-scheduler-params>
+                <telephony-scheduler-params class="clearfix"
+                                            data-ng-show="!$ctrl.loading.params">
+                </telephony-scheduler-params>
             </div> <!-- SCHEDULER PARAMS -->
 
             <!-- SCHEDULER FILTERS -->
@@ -261,11 +263,11 @@
     <footer class="voip-action-bar"
             data-ng-if="$ctrl.hasChange() && !$ctrl.loading.edit">
 
-        <p class="question"
+        <p class="mb-3 font-weight-bold text-white"
            data-translate="telephony_scheduler_save">
         </p>
 
-        <div class="button-container d-inline-block">
+        <div class="d-inline-block">
             <button type="submit"
                     class="btn btn-primary"
                     data-ng-disabled="$ctrl.loading.save">
@@ -276,10 +278,10 @@
                 <span data-translate="submit"></span>
             </button>
             <button type="button"
-                    class="btn btn-default voip-cancel"
-                    data-translate="cancel"
+                    class="btn btn-default"
                     data-ng-click="$ctrl.cancelEdition()"
-                    data-ng-disabled="$ctrl.loading.save">
+                    data-ng-disabled="$ctrl.loading.save"
+                    data-translate="cancel">
             </button>
         </div>
 

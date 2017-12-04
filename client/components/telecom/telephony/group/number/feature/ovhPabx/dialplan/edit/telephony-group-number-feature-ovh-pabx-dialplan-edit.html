@@ -110,20 +110,18 @@
                 </div>
             </section>
 
-            <footer class="clearfix">
-                <div class="btn-group float-right">
-                    <button type="button"
-                            class="oui-button oui-button_secondary m-3"
-                            data-translate="cancel"
-                            data-ng-click="$ctrl.onCancelBtnClick()">
-                    </button>
-                    <button type="submit"
-                            class="oui-button oui-button_primary m-3"
-                            data-ng-click="$ctrl.onValidateBtnClick()"
-                            data-ng-disabled="($ctrl.dialplan.status !== 'DRAFT' && !$ctrl.dialplan.hasChange()) || dialplanForm.$invalid"
-                            data-translate="{{ $ctrl.dialplan.status === 'DRAFT' ? 'common_create' : 'modify' }}">
-                    </button>
-                </div>
+            <footer class="text-sm-right">
+                <button type="submit"
+                        class="btn btn-primary float-right ml-sm-2"
+                        data-ng-click="$ctrl.onValidateBtnClick()"
+                        data-ng-disabled="($ctrl.dialplan.status !== 'DRAFT' && !$ctrl.dialplan.hasChange()) || dialplanForm.$invalid"
+                        data-translate="{{ $ctrl.dialplan.status === 'DRAFT' ? 'common_create' : 'modify' }}">
+                </button>
+                <button type="button"
+                        class="btn btn-default"
+                        data-translate="cancel"
+                        data-ng-click="$ctrl.onCancelBtnClick()">
+                </button>
             </footer>
 
         </section>
@@ -131,7 +129,7 @@
         <section class="popover-page page-section">
             <header>
                 <button type="button"
-                        class="btn btn-link back-btn p-0 m-0"
+                        class="btn btn-link"
                         data-ng-click="$ctrl.dialplanCtrl.popoverStatus.move = false"
                         data-translate-attr="{ title: 'telephony_scheduler_events_back' }">
                     <i class="ovh-font ovh-font-arrow-left"></i>
@@ -157,24 +155,27 @@
 
                 <div class="section-group">
                     <!-- CHOICES -->
-                    <label class="section-item item-choice w-100 d-table"
-                           data-ng-repeat="callerNumber in $ctrl.availableCallerNumberTypes track by $index">
-                        <div class="d-table-cell align-middle radio-content">
+                    <div class="section-item"
+                         data-ng-repeat="callerNumber in $ctrl.availableCallerNumberTypes track by $index">
+                        <div class="oui-radio">
                             <input type="radio"
-                                   name="showCallerNumber"
+                                   class="oui-radio__input"
+                                   id="showCallerNumber-{{ $index }}"
+                                   name="showCallerNumber-{{ $index }}"
                                    data-ng-model="$ctrl.dialplan.showCallerNumber"
                                    data-ng-value="callerNumber"
                                    data-ng-change="$ctrl.dialplanCtrl.popoverStatus.move = false" />
+                            <label class="oui-radio__label-container"
+                                   for="showCallerNumber-{{ $index }}">
+                                <span class="oui-radio__label"
+                                      data-translate="{{ 'telephony_number_feature_ovh_pabx_dialplan_show_caller_number_' + callerNumber }}">
+                                </span>
+                                <span class="oui-radio__description"
+                                      data-translate="{{ 'telephony_number_feature_ovh_pabx_dialplan_show_caller_number_' + callerNumber + '_explain' }}">
+                                </span>
+                            </label>
                         </div>
-                        <div class="d-table-cell align-middle">
-                            <span class="d-block radio-label-main"
-                                  data-translate="{{ 'telephony_number_feature_ovh_pabx_dialplan_show_caller_number_' + callerNumber }}">
-                            </span>
-                            <span class="small font-normal-weight"
-                                  data-translate="{{ 'telephony_number_feature_ovh_pabx_dialplan_show_caller_number_' + callerNumber + '_explain' }}">
-                            </span>
-                        </div>
-                    </label> <!-- CHOICES -->
+                    </div> <!-- CHOICES -->
                 </div>
 
             </section> <!-- CALLER NUMBER CHOICE -->

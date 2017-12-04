@@ -29,7 +29,7 @@
    <translation id="telephony_group_billing_dashboard_bill_download_csv_received" qtlid="334608">Listing de vos appels reçus au format CSV</translation>
    <translation id="telephony_group_billing_dashboard_credit_current_out_plan" qtlid="386352">Hors forfait&#160;:&#160;</translation>
    <translation id="telephony_group_billing_dashboard_bill_empty" qtlid="386365">Aucun rélevé de consommation</translation>
-   <translation id="telephony_group_billing_dashboard_go_to_my_bills" qtlid="386378">Voir mes rélevés de consommation</translation>
+   <translation id="telephony_group_billing_dashboard_go_to_my_bills">Voir mes relevés de consommation</translation>
    <translation id="telephony_group_billing_dashboard_network_title" qtlid="386391">Mon parc VoIP</translation>
    <translation id="telephony_group_billing_dashboard_RMA_status_open" qtlid="386404">Ouverture du ticket</translation>
    <translation id="telephony_group_billing_dashboard_RMA_status_closed" qtlid="8662">Terminé</translation>

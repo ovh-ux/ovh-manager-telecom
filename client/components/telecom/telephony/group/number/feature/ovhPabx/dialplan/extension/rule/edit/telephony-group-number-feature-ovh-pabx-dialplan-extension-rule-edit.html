@@ -125,8 +125,10 @@
 
                         <!-- BRIDGE -->
                         <div class="section-item form-group"
-                             data-ng-class="{ 'has-error': $ctrl.extensionRuleForm.setBridgeActionParam.$invalid && $ctrl.extensionRuleForm.setBridgeActionParam.$dirty }"
-                             data-ng-switch-when="bridge">
+                             data-ng-switch-when="bridge"
+                             data-ng-class="{
+                                 'has-error': $ctrl.extensionRuleForm.setBridgeActionParam.$invalid && $ctrl.extensionRuleForm.setBridgeActionParam.$touched
+                             }">
                             <label for="setBridgeActionParam"
                                    class="control-label required"
                                    data-translate="{{ 'telephony_number_feature_ovh_pabx_step_rule_bridge_to_number' }}">
@@ -181,8 +183,10 @@
 
                         <!-- READ DTMF -->
                         <div class="section-item form-group"
-                             data-ng-class="{ 'has-error': $ctrl.extensionRuleForm.setReadDtmfActionParam.$invalid && $ctrl.extensionRuleForm.setReadDtmfActionParam.$dirty }"
-                             data-ng-switch-when="readDtmf">
+                             data-ng-switch-when="readDtmf"
+                             data-ng-class="{
+                                 'has-error': $ctrl.extensionRuleForm.setReadDtmfActionParam.$invalid && $ctrl.extensionRuleForm.setReadDtmfActionParam.$touched
+                             }">
                             <label for="setReadDtmfActionParam"
                                    class="control-label required"
                                    data-translate="{{ 'telephony_number_feature_ovh_pabx_step_rule_read_dtmf_var' }}">
@@ -263,20 +267,18 @@
             </section>
 
             <!-- FOOTER ACTIONS -->
-            <footer class="clearfix">
-                <div class="btn-group float-right">
-                    <button type="button"
-                            class="oui-button oui-button_secondary m-3"
-                            data-translate="cancel"
-                            data-ng-click="$ctrl.onCancelBtnClick()">
-                    </button>
-                    <button type="submit"
-                            class="oui-button oui-button_primary m-3"
-                            data-ng-disabled="!$ctrl.rule.hasChange() || !$ctrl.isRuleValid() || !$ctrl.isFormValid()"
-                            data-translate="{{ $ctrl.rule.status === 'DRAFT' ? 'common_create' : 'modify' }}"
-                            data-ng-click="$ctrl.onValidateBtnClick()">
-                    </button>
-                </div>
+            <footer class="text-sm-right">
+                <button type="submit"
+                        class="btn btn-primary float-right ml-sm-2"
+                        data-ng-click="$ctrl.onValidateBtnClick()"
+                        data-ng-disabled="!$ctrl.rule.hasChange() || !$ctrl.isRuleValid() || !$ctrl.isFormValid()"
+                        data-translate="{{ $ctrl.rule.status === 'DRAFT' ? 'common_create' : 'modify' }}">
+                </button>
+                <button type="button"
+                        class="btn btn-default"
+                        data-ng-click="$ctrl.onCancelBtnClick()"
+                        data-translate="cancel">
+                </button>
             </footer> <!-- FOOTER ACTIONS -->
 
         </section> <!-- LEFT PAGE -->
@@ -287,10 +289,10 @@
 
             <header>
                 <button type="button"
-                        class="btn btn-link back-btn p-0 m-0"
+                        class="btn btn-link"
                         data-ng-click="$ctrl.parentCtrl.popoverStatus.move = false; $ctrl.state.collapse = false"
                         data-translate-attr="{ title: 'back' }">
-                    <i class="ovh-font ovh-font-arrow-left"></i>
+                    <i class="ovh-font ovh-font-arrow-left" aria-hidden="true"></i>
                 </button>
 
                 <h2 data-ng-switch-when="actions"
@@ -321,24 +323,27 @@
             <!-- ACTION CHOICE SECTION -->
             <section data-ng-switch-when="actions">
                 <div class="section-group">
-                    <label class="section-item item-choice large-popover-item d-table"
-                           data-ng-repeat="action in $ctrl.availableActions | orderBy:'label' track by $index">
-                        <div class="d-table-cell align-middle radio-content">
+                    <div class="section-item"
+                         data-ng-repeat="action in $ctrl.availableActions | orderBy:'label' track by $index">
+                        <div class="oui-radio">
                             <input type="radio"
-                                   name="ruleAction"
+                                   class="oui-radio__input"
+                                   id="ruleAction-{{ $index }}"
+                                   name="ruleAction-{{ $index }}"
                                    data-ng-model="$ctrl.rule.action"
                                    data-ng-value="action.value"
                                    data-ng-change="$ctrl.onRuleActionChange()" />
+                            <label class="oui-radio__label-container"
+                                   for="ruleAction-{{ $index }}">
+                                <span class="oui-radio__label"
+                                      data-ng-bind="action.label">
+                                </span>
+                                <span class="oui-radio__description"
+                                      data-ng-bind="action.explain">
+                                </span>
+                            </label>
                         </div>
-                        <div class="d-table-cell align-middle">
-                            <span class="d-block radio-label-main"
-                                  data-ng-bind="action.label">
-                            </span>
-                            <span class="small font-weight-normal"
-                                  data-ng-bind="action.explain">
-                            </span>
-                        </div>
-                    </label>
+                    </div>
                 </div>
             </section> <!-- ACTION CHOICE SECTION -->
 
@@ -375,27 +380,31 @@
                     <div class="group-title">
                         <span data-ng-bind="group.getDisplayedName()"></span>
                     </div>
-                    <label data-ng-repeat="service in $ctrl.filterGroupServices(group) | propsFilter: {serviceName: $ctrl.model.search, description: $ctrl.model.search} track by $index"
-                           class="section-item item-choice large-popover-item d-table">
-                        <div class="d-table-cell align-middle radio-content">
+
+                    <div class="section-item"
+                         data-ng-repeat="service in $ctrl.filterGroupServices(group) | propsFilter: {serviceName: $ctrl.model.search, description: $ctrl.model.search} track by $index">
+                        <div class="oui-radio">
                             <input type="radio"
+                                   class="oui-radio__input"
+                                   id="ruleNumber-{{ service.serviceName }}"
                                    name="ruleNumber"
                                    data-ng-model="$ctrl.rule.actionParam"
                                    data-ng-value="service.serviceName"
                                    data-ng-change="$ctrl.onVoicemailActionParamChange(service)" />
+                            <label class="oui-radio__label-container"
+                                   for="ruleNumber-{{ service.serviceName }}">
+                                <span class="oui-radio__label"
+                                      data-ng-bind="service.getDisplayedName()">
+                                </span>
+                                <span class="oui-radio__description">
+                                    <i data-translate="{{ 'telecom_sidebar_section_telephony_filter_' + $ctrl.getServiceType(service) }}"></i>
+                                    <i data-ng-if="service.serviceName !== service.description"
+                                       data-ng-bind="' - ' + service.serviceName">
+                                    </i>
+                                </span>
+                            </label>
                         </div>
-                        <div class="d-table-cell align-middle">
-                            <span class="d-block radio-label-main"
-                                  data-ng-bind="service.getDisplayedName()">
-                            </span>
-                            <span class="small font-weight-normal">
-                                <i data-translate="{{ 'telecom_sidebar_section_telephony_filter_' + $ctrl.getServiceType(service) }}"></i>
-                                <i data-ng-if="service.serviceName !== service.description"
-                                   data-ng-bind="' - ' + service.serviceName">
-                                </i>
-                            </span>
-                        </div>
-                    </label>
+                    </div>
                 </div> <!-- End of Search result -->
             </section>
             <!-- End of VOICEMAIL -->
@@ -445,21 +454,24 @@
 
                 <!-- QUEUE SELECTION -->
                 <div class="section-group">
-                    <label class="section-item item-choice large-popover-item d-table"
-                           data-ng-repeat="queue in $ctrl.ovhPabx.queues | orderBy:['queueId', 'description'] track by $index">
-                        <div class="d-table-cell align-middle radio-content">
+                    <div class="section-item"
+                         data-ng-repeat="queue in $ctrl.ovhPabx.queues | orderBy:['queueId', 'description'] track by $index">
+                        <div class="oui-radio">
                             <input type="radio"
-                                   name="ruleAction"
+                                   class="oui-radio__input"
+                                   id="ruleAction-{{ $index }}"
+                                   name="ruleAction-{{ $index }}"
                                    data-ng-model="$ctrl.rule.actionParam"
                                    data-ng-value="queue.queueId"
                                    data-ng-change="$ctrl.parentCtrl.popoverStatus.move = false" />
+                            <label class="oui-radio__label-container"
+                                   for="ruleAction-{{ $index }}">
+                                <span class="oui-radio__label"
+                                      data-ng-bind="queue.description || queue.queueId">
+                                </span>
+                            </label>
                         </div>
-                        <div class="d-table-cell align-middle">
-                            <span class="d-block radio-label-main"
-                                  data-ng-bind="queue.description || queue.queueId">
-                            </span>
-                        </div>
-                    </label>
+                    </div>
                 </div> <!-- END OF QUEUE SELECTION -->
             </section> <!-- END OF HUNTING CHOICE -->
 
@@ -506,34 +518,37 @@
 
                 <!-- TTS LIST -->
                 <div class="section-group">
-                    <div class="group-title">
-                        <span data-translate="telephony_number_feature_ovh_pabx_step_rule_tts_list"></span>
+                    <div class="group-title"
+                         data-translate="telephony_number_feature_ovh_pabx_step_rule_tts_list">
+                    </div>
+
+                    <div class="section-item font-italic"
+                         data-ng-if="$ctrl.ovhPabx.tts.length === 0"
+                         data-translate="telephony_number_feature_ovh_pabx_step_rule_no_tts_added">
                     </div>
 
                     <div class="section-item"
-                         data-ng-if="$ctrl.ovhPabx.tts.length === 0">
-                        <em data-translate="telephony_number_feature_ovh_pabx_step_rule_no_tts_added"></em>
-                    </div>
-
-                    <label class="section-item item-choice large-popover-item d-table table-fixed"
-                           data-ng-if="$ctrl.ovhPabx.tts.length > 0"
-                           data-ng-repeat="tts in $ctrl.ovhPabx.tts | orderBy:'text' track by $index">
-                        <div class="d-table-cell align-middle radio-content">
+                         data-ng-if="$ctrl.ovhPabx.tts.length > 0"
+                         data-ng-repeat="tts in $ctrl.ovhPabx.tts | orderBy:'text' track by $index">
+                        <div class="oui-radio">
                             <input type="radio"
-                                   name="ruleAction"
+                                   class="oui-radio__input"
+                                   id="ruleAction-{{ $index }}"
+                                   name="ruleAction-{{ $index }}"
                                    data-ng-model="$ctrl.rule.actionParam"
                                    data-ng-value="tts.id"
                                    data-ng-change="$ctrl.parentCtrl.popoverStatus.move = false" />
+                            <label class="oui-radio__label-container"
+                                   for="ruleAction-{{ $index }}">
+                                <span class="oui-radio__label"
+                                      data-ng-bind="tts.text">
+                                </span>
+                                <span class="oui-radio__description"
+                                      data-translate="{{ 'telephony_number_feature_ovh_pabx_tts_voice_' + tts.voice.toLowerCase() }}">
+                                </span>
+                            </label>
                         </div>
-                        <div class="d-table-cell align-middle">
-                            <span class="d-block radio-label-main elipse no-wrap"
-                                  data-ng-bind="tts.text">
-                            </span>
-                            <span class="small font-weight-normal"
-                                  data-translate="{{ 'telephony_number_feature_ovh_pabx_tts_voice_' + tts.voice.toLowerCase() }}">
-                            </span>
-                        </div>
-                    </label>
+                    </div>
                 </div> <!-- End of TTS LIST -->
             </section> <!-- End of TTS -->
 

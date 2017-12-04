@@ -120,7 +120,7 @@
 
         <!-- CHOOSE IN OTHER GROUPS -->
         <div class="voip-plan__step"
-             data-ng-if="$ctrl.displayHelpers.hasOtherGroups">
+             data-ng-if="$ctrl.displayHelpers.hasOtherGroups || $ctrl.displayHelpers.currentGroupServiceCount > 4">
             <!-- RADIO -->
             <div data-jsplumb-endpoint="$ctrl.numberCtrl.jsPlumbEndpointsOptions.topLeft"
                  data-jsplumb-endpoint-uuid="anchor-other-service">

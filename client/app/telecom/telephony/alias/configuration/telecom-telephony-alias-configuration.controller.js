@@ -130,6 +130,33 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationCtrl"
                 });
             }
             return easyHuntingActions;
+        case "easyPabx":
+        case "miniPabx":
+            return [{
+                name: "number_old_pabx_mode",
+                sref: "telecom.telephony.alias.configuration.mode." + self.number.feature.featureType,
+                text: $translate.instant("telephony_alias_configuration_actions_number_hunting_mode")
+            }, {
+                name: "number_old_pabx_members",
+                sref: "telecom.telephony.alias.configuration.members.oldPabx",
+                text: $translate.instant("telephony_alias_configuration_actions_number_hunting_members")
+            }, {
+                name: "number_old_pabx_tones",
+                sref: "telecom.telephony.alias.configuration.tones.oldPabx",
+                text: $translate.instant("telephony_alias_configuration_actions_music_management")
+            }, {
+                name: "number_old_pabx_time_condition",
+                sref: "telecom.telephony.alias.configuration.timeCondition.oldPabx",
+                text: $translate.instant("telephony_alias_configuration_actions_number_hunting_slots")
+            }, {
+                name: "number_old_pabx_scheduler",
+                sref: "telecom.telephony.alias.configuration.scheduler.oldPabx",
+                text: $translate.instant("telephony_alias_configuration_actions_number_hunting_events")
+            }, {
+                name: "number_old_pabx_screen_list",
+                sref: "telecom.telephony.alias.configuration.callsFiltering.oldPabx",
+                text: $translate.instant("telephony_alias_configuration_actions_number_hunting_filtering")
+            }];
         default:
             return [];
         }

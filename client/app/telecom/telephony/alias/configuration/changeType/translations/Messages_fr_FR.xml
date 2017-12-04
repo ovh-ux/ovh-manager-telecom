@@ -5,6 +5,8 @@
    <translation id="telephony_alias_change_type_info_text_1" qtlid="332931">Configurez votre numéro comme bon vous semble.</translation>
    <translation id="telephony_alias_change_type_info_title" qtlid="26551">Informations</translation>
    <translation id="telephony_alias_change_type_info_text_2" qtlid="332944">Par défaut, votre numéro n'est pas configuré et ne permet aucune action, mais OVH vous offre une multitude de services, de la redirection au serveur vocal interactif, en passant par la conférence ou la file d'appels.</translation>
+   <translation id="telephony_alias_change_type_warning">Attention !</translation>
+   <translation id="telephony_alias_change_type_warning_old_pabx">En modifiant ce type de configuration ({{ featureType }}) vers un autre type de configuration, vous ne pourrez plus revenir en arrière !</translation>
    <translation id="telephony_alias_config_change_type_title" qtlid="4406">Configuration</translation>
    <translation id="telephony_alias_config_change_type_label" qtlid="332957">Fonctionnalité du numéro&#160;:&#160;</translation>
    <translation id="telephony_alias_config_change_type_desc" qtlid="332970">Description de la solution sélectionnée</translation>
@@ -16,7 +18,7 @@
 
    <translation id="telephony_alias_config_change_type_label_select" qtlid="333009">Choisissez une fonctionnalité</translation>
 
-   <translation id="telephony_alias_config_change_type_label_redirect" qtlid="333022">Redirection avec supervision redirect</translation>
+   <translation id="telephony_alias_config_change_type_label_redirect">Redirection avec supervision</translation>
    <translation id="telephony_alias_config_change_type_desc_redirect" qtlid="333035">Permet de rediriger les appels reçus vers la ligne ou numéro de votre choix.<br/><br/>Cette configuration permet la supervision des appels depuis un autre poste, ainsi que la modification de la présentation du numéro à la volée.</translation>
 
    <translation id="telephony_alias_config_change_type_label_ddi">Redirection avec présentation de ce numéro sur ma ligne SIP ou mon Trunk</translation>

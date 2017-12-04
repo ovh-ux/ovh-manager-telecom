@@ -71,7 +71,7 @@
    <translation id="telephony_phonebook_contact_action_imported">Importation des contacts terminée&#160;!</translation>
    <translation id="telephony_phonebook_contact_action_import_ko">Oups ! Impossible d’importer vos contacts.<br/>{{ error }}</translation>
    <translation id="telephony_phonebook_contact_action_import_alert_task">Une tâche d’importation de contact est actuellement en cours…</translation>
-   <translation id="telephony_phonebook_contact_action_export">Expoter</translation>
+   <translation id="telephony_phonebook_contact_action_export">Exporter</translation>
    <translation id="telephony_phonebook_contact_action_export_ok">Exportation des contacts terminée&#160;!</translation>
    <translation id="telephony_phonebook_contact_action_export_ko">Oups ! Impossible d’exporter vos contacts.</translation>
    <translation id="telephony_phonebook_contact_column_surname">Nom</translation>

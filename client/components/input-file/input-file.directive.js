@@ -8,7 +8,8 @@ angular.module("managerApp").directive("inputFile", function () {
             ngModel: "=",
             ngAccept: "@",
             ngAcceptFilter: "&",
-            change: "&"
+            change: "&",
+            fileExplain: "@"
         },
         templateUrl: "components/input-file/input-file.html",
         link: function (scope, element, attrs, controller) {
