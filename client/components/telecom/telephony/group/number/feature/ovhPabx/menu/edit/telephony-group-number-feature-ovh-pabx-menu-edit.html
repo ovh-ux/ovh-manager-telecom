@@ -64,16 +64,16 @@
                     <!-- GREET SOUND -->
                     <button type="button"
                             class="section-item large-popover-item text-left"
-                            data-ng-click="$ctrl.onSoundChoiceButtonClick(!$ctrl.menuCtrl.ovhPabx.isTtsAvailable() || $ctrl.model.greetSoundType === 'sound' ? 'greetSound' : 'greetSoundTts')">
-                        <label class="radio-label-main required">
-                            <span data-translate="telephony_number_feature_ovh_pabx_menu_options_greet_sound"></span>
-                            <span class="btn btn-link p-0"
-                                  data-uib-tooltip="{{ 'telephony_number_feature_ovh_pabx_menu_options_greet_sound_explain' | translate }}"
-                                  data-tooltip-append-to-body="true">
-                                <i class="ovh-font ovh-font-filled-question"></i>
+                            data-ng-click="$ctrl.onSoundChoiceButtonClick(!$ctrl.menuCtrl.ovhPabx.isTtsAvailable() || $ctrl.model.greetSoundType === 'sound' ? 'greetSound' : 'greetSoundTts')"
+                            data-uib-tooltip="{{ 'telephony_number_feature_ovh_pabx_menu_options_greet_sound_explain' | translate }}"
+                            data-tooltip-append-to-body="true">
+                        <span class="required">
+                            <span class="align-middle"
+                                  data-translate="telephony_number_feature_ovh_pabx_menu_options_greet_sound">
                             </span>
-                        </label>
-                        <span class="block"
+                            <span class="btn btn-link p-0"><i class="ovh-font ovh-font-filled-question"></i></span>
+                        </span>
+                        <span class="d-block"
                               data-ng-if="!$ctrl.menu.greetSound && !$ctrl.menu.greetSoundTts"
                               data-translate="telephony_number_feature_ovh_pabx_menu_options_no_sound_selected">
                         </span>
@@ -82,11 +82,11 @@
                               data-ng-bind="$ctrl.getSoundInfos($ctrl.model.greetSoundType === 'sound' ? 'greetSound' : 'greetSoundTts')"
                               data-ng-attr-title="{{ $ctrl.getSoundInfos($ctrl.model.greetSoundType === 'sound' ? 'greetSound' : 'greetSoundTts') }}">
                         </span>
-                        <div class="chevron-right">
-                            <div class="chevron-wrapper">
+                        <span class="chevron-right">
+                            <span class="chevron-wrapper">
                                 <i class="ovh-font ovh-font-arrow-right"></i>
-                            </div>
-                        </div>
+                            </span>
+                        </span>
                     </button> <!-- End of GREET SOUND -->
 
                     <!-- INVALID SOUND TYPE -->
@@ -111,16 +111,16 @@
                     <button type="button"
                             class="section-item large-popover-item text-left"
                             data-ng-click="$ctrl.onSoundChoiceButtonClick(!$ctrl.menuCtrl.ovhPabx.isTtsAvailable() || $ctrl.model.invalidSoundType === 'sound' ? 'invalidSound' : 'invalidSoundTts')"
-                            data-ng-if="!$ctrl.menuCtrl.ovhPabx.isTtsAvailable() || ($ctrl.menuCtrl.ovhPabx.isTtsAvailable() && $ctrl.model.invalidSoundType !== 'none')">
-                        <label class="radio-label-main">
-                            <span data-translate="telephony_number_feature_ovh_pabx_menu_options_invalid_sound"></span>
-                            <span class="btn btn-link p-0"
-                                  data-uib-tooltip="{{ 'telephony_number_feature_ovh_pabx_menu_options_invalid_sound_explain' | translate }}"
-                                  data-tooltip-append-to-body="true">
-                                <i class="ovh-font ovh-font-filled-question"></i>
+                            data-ng-if="!$ctrl.menuCtrl.ovhPabx.isTtsAvailable() || ($ctrl.menuCtrl.ovhPabx.isTtsAvailable() && $ctrl.model.invalidSoundType !== 'none')"
+                            data-uib-tooltip="{{ 'telephony_number_feature_ovh_pabx_menu_options_invalid_sound_explain' | translate }}"
+                            data-tooltip-append-to-body="true">
+                        <span>
+                            <span class="align-middle"
+                                  data-translate="telephony_number_feature_ovh_pabx_menu_options_invalid_sound">
                             </span>
-                        </label>
-                        <span class="block"
+                            <span class="btn btn-link p-0"><i class="ovh-font ovh-font-filled-question"></i></span>
+                        </span>
+                        <span class="d-block"
                               data-ng-if="!$ctrl.menu.invalidSound && !$ctrl.menu.invalidSoundTts"
                               data-translate="telephony_number_feature_ovh_pabx_menu_options_no_sound_selected">
                         </span>
@@ -129,11 +129,11 @@
                               data-ng-bind="$ctrl.getSoundInfos($ctrl.model.invalidSoundType === 'sound' ? 'invalidSound' : 'invalidSoundTts')"
                               data-ng-attr-title="{{ $ctrl.getSoundInfos($ctrl.model.invalidSoundType === 'sound' ? 'invalidSound' : 'invalidSoundTts') }}">
                         </span>
-                        <div class="chevron-right">
-                            <div class="chevron-wrapper">
+                        <span class="chevron-right">
+                            <span class="chevron-wrapper">
                                 <i class="ovh-font ovh-font-arrow-right"></i>
-                            </div>
-                        </div>
+                            </span>
+                        </span>
                     </button> <!-- End of INVALID SOUND -->
                 </div>
             </section>
