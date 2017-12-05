@@ -32,11 +32,23 @@
     .list-group {
         max-height: 350px;
         overflow-y: auto;
+        border-top: 1px solid #DDD;
+        border-bottom: 1px solid #DDD;
 
-        .list-group-item .oui-checkbox .extra-description::before {
-            display: inline-block;
-            content: '-';
-            margin-right: 3px;
+        .list-group-item {
+            &:first-child {
+                border-top: 0;
+            }
+
+            &:last-child {
+                border-bottom: 0;
+            }
+
+            .oui-checkbox .extra-description::before {
+                display: inline-block;
+                content: '-';
+                margin-right: 3px;
+            }
         }
     }
 }

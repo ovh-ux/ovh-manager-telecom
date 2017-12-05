@@ -125,12 +125,12 @@ angular.module("managerApp").controller("telephonyBulkActionModalCtrl", function
             serviceType: "aapi"
         }).then(function (result) {
             var partitionedResult = _.partition(result.data, function (res) {
-                return res.error !== null;
+                return res.errors.length === 0;
             });
 
             return $uibModalInstance.close({
-                success: _.last(partitionedResult),
-                error: _.first(partitionedResult)
+                success: _.first(partitionedResult),
+                error: _.last(partitionedResult)
             });
         }).catch(function (error) {
             return self.cancel({

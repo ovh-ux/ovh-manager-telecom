@@ -11,4 +11,9 @@
    <translation id="telephony_line_actions_line_calls_identificationRestriction_checkbox_label" qtlid="387055">Rester anonyme</translation>
    <translation id="telephony_line_actions_line_calls_submit_changes">Appliquer les modifications</translation>
    <translation id="telephony_line_actions_line_calls_anonymous">Numéro masqué</translation>
+
+   <translation id="telephony_line_actions_line_calls_display_number_bulk_all_success">La modification de la présentation du numéro a bien été appliquée aux services sélectionnés.</translation>
+   <translation id="telephony_line_actions_line_calls_display_number_bulk_some_success">La modification de la présentation du numéro a bien été appliquée à {{ count }} des services sélectionnés.</translation>
+   <translation id="telephony_line_actions_line_calls_display_number_bulk_error">La modification de la présentation du numéro n'a pu être appliquée au(x) service(s) suivant(s) :</translation>
+   <translation id="telephony_line_actions_line_calls_display_number_bulk_on_error">Oups ! Une erreur est survenue lors de la modification de la présentation du numéro.</translation>
 </translations>
