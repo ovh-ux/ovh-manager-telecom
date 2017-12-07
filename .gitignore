@@ -30,4 +30,3 @@ server/certificate/server.crt
 server/certificate/server.csr
 server/certificate/server.key
 tools/
-package-lock.json
