@@ -488,6 +488,23 @@
                         </span>
                     </div>
 
+                    <!-- ADDRESS EXTRA-->
+                    <div class="form-group">
+                      <label for="contactAddressExtra"
+                        class="control-label">
+                        <span data-translate="telephony_service_contact_addressextra"></span>
+                      </label>
+                      <input type="text" 
+                        id="contactAddressExtra" 
+                        name="contactAddressExtra"
+                        class="form-control"                                
+                        data-ng-if="ServiceContactCtrl.isEditing"
+                        data-ng-model="ServiceContactCtrl.directoryForm.addressExtra" />
+                        <p class="form-control-static"
+                           data-ng-if="!ServiceContactCtrl.isEditing"
+                           data-ng-bind="ServiceContactCtrl.directoryForm.addressExtra || '-'">
+                        </p>
+                    </div>
                 </div> <!-- End of ADDRESS -->
                 <!-- /.widget-presentation -->
 
