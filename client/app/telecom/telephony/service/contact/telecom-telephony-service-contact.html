@@ -489,7 +489,10 @@
                     </div>
 
                     <!-- ADDRESS EXTRA-->
-                    <div class="form-group">
+                    <div class="form-group"
+                         data-ng-class="{
+                            'has-error': contactForm.contactAddressExtra.$invalid && contactForm.contactAddressExtra.$touched
+                         }">
                         <label for="contactAddressExtra"
                                class="control-label"
                                data-translate="telephony_service_contact_addressextra">
@@ -499,11 +502,23 @@
                                name="contactAddressExtra"
                                class="form-control"                                
                                data-ng-if="ServiceContactCtrl.isEditing"
-                               data-ng-model="ServiceContactCtrl.directoryForm.addressExtra" />
+                               data-ng-model="ServiceContactCtrl.directoryForm.addressExtra"
+                               data-ng-pattern="/^[A-Za-z0-9 ]*$/" />
                         <p class="form-control-static"
                            data-ng-if="!ServiceContactCtrl.isEditing"
                            data-ng-bind="ServiceContactCtrl.directoryForm.addressExtra || '-'">
                         </p>
+                        <span class="help-block"
+                              role="alert"
+                              data-ng-if="contactForm.contactAddressExtra.$invalid && contactForm.contactAddressExtra.$touched"
+                              data-ng-messages="contactForm.contactAddressExtra.$error">
+                            <span data-ng-message="addressExtra"
+                                  data-translate="telephony_service_contact_addressextra_invalid">
+                            </span>
+                            <span data-ng-message="pattern"
+                                  data-translate="telephony_service_contact_addressextra_invalid">
+                            </span>
+                        </span>
                     </div>
                 </div> <!-- End of ADDRESS -->
                 <!-- /.widget-presentation -->
