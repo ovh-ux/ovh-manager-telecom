@@ -22,7 +22,8 @@ angular.module("managerApp").controller("telephonyBulkActionCtrl", function ($q,
                     billingAccount: self.billingAccount,
                     serviceName: self.serviceName,
                     bulkInfos: self.bulkInfos,
-                    getBulkParams: self.getBulkParams
+                    getBulkParams: self.getBulkParams,
+                    filterServices: self.filterServices
                 }
             }
         }).result.then(function (data) {

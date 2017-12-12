@@ -99,6 +99,12 @@ angular.module("managerApp").controller("TelecomTelephonyLineCallsDisplayNumberC
         }
     };
 
+    self.filterServices = function (services) {
+        return _.filter(services, function (service) {
+            return ["sip", "mgcp"].indexOf(service.featureType) > -1;
+        });
+    };
+
     self.getBulkParams = function () {
         var data = {
             identificationRestriction: self.form.identificationRestriction

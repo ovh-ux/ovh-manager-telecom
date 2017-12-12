@@ -33,14 +33,10 @@ angular.module("managerApp").controller("telephonyBulkActionModalCtrl", function
         if (!self.model.billingAccount) {
             services = allServices;
         } else {
-            services = _.find(self.billingAccounts, {
+            services = _.filter(allServices, {
                 billingAccount: self.model.billingAccount
-            }).services;
+            });
         }
-
-        services = _.filter(services, {
-            serviceType: self.bindings.serviceType
-        });
 
         if (self.model.searchService !== "") {
             return $filter("propsFilter")(services, {
@@ -158,7 +154,18 @@ angular.module("managerApp").controller("telephonyBulkActionModalCtrl", function
             self.billingAccounts = _.sortBy(billingAccounts, function (billingAccount) {
                 return billingAccount.getDisplayedName();
             });
-            allServices = _.chain(self.billingAccounts).map("services").flatten().value();
+
+            // get all services of each billingAccounts and apply a first filter based on serviceType
+            allServices = _.chain(self.billingAccounts).map("services").flatten().filter({
+                serviceType: self.bindings.serviceType
+            }).value();
+
+            // apply custom filter if provided
+            if (self.bindings.filterServices && _.isFunction(self.bindings.filterServices())) {
+                allServices = self.bindings.filterServices()(allServices);
+            }
+
+            // filter service with the modal filters
             self.serviceList = getFilteredServiceList();
 
             // set current serviceName as selected

@@ -11,7 +11,8 @@
             bulkInfos: "<",
             getBulkParams: "&",
             onSuccess: "&?",
-            onError: "&?"
+            onError: "&?",
+            filterServices: "&?"
         },
         templateUrl: "components/telecom/telephony/bulkAction/telephony-bulk-action.html",
         controller: "telephonyBulkActionCtrl"
