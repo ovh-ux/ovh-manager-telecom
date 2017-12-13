@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyServiceContactCtrl", function ($stateParams, $q, $timeout, $translate, OvhApiTelephony, Toast, ToastError, OvhApiXdsl) {
+angular.module("managerApp").controller("TelecomTelephonyServiceContactCtrl", function ($stateParams, $q, $timeout, $translate, OvhApiTelephony, Toast, ToastError, OvhApiXdsl, telephonyBulk) {
     "use strict";
 
     var self = this;
@@ -102,6 +102,45 @@ angular.module("managerApp").controller("TelecomTelephonyServiceContactCtrl", fu
         }).finally(function () {
             self.isUpdating = false;
         });
+    };
+
+    self.bulkDatas = {
+        billingAccount: $stateParams.billingAccount,
+        serviceName: $stateParams.serviceName,
+        infos: {
+            name: "contact",
+            actions: [{
+                name: "directory",
+                route: "/telephony/{billingAccount}/service/{serviceName}/directory",
+                method: "PUT",
+                params: null
+            }]
+        }
+    };
+
+    self.getBulkParams = function () {
+        return self.directoryForm;
+    };
+
+    self.onBulkSuccess = function (bulkResult) {
+        // display message of success or error
+        telephonyBulk.getToastInfos(bulkResult, {
+            fullSuccess: $translate.instant("telephony_service_contact_bulk_all_success"),
+            partialSuccess: $translate.instant("telephony_service_contact_bulk_some_success", {
+                count: bulkResult.success.length
+            }),
+            error: $translate.instant("telephony_service_contact_bulk_error")
+        }).forEach(function (toastInfo) {
+            Toast[toastInfo.type](toastInfo.message, {
+                hideAfter: null
+            });
+        });
+
+        init();
+    };
+
+    self.onBulkError = function (error) {
+        Toast.error([$translate.instant("telephony_service_contact_bulk_on_error"), _.get(error, "msg.data")].join(" "));
     };
 
     self.onPostCodeChange = (function () {
