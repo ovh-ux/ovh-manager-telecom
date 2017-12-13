@@ -164,7 +164,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineDomainCtrl", functi
     =            INITIALIZATION            =
     ======================================*/
 
-    function init() {
+    function init () {
         self.loading.init = true;
 
         return TelephonyMediator.getGroup($stateParams.billingAccount, true).then(function (group) {
