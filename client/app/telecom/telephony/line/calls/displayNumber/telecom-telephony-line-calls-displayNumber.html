@@ -88,6 +88,18 @@
             <div class="row">
                 <div class="col-md-6">
                     <hr />
+
+                    <telephony-bulk-action data-billing-account="{{ LineDisplayNumberCtrl.bulkDatas.billingAccount }}"
+                                           data-service-name="{{ LineDisplayNumberCtrl.bulkDatas.serviceName }}"
+                                           data-custom-class="link d-block pl-0 mb-3"
+                                           data-ng-disabled="!displayNumberForm.$valid || !LineDisplayNumberCtrl.hasChanges() || LineDisplayNumberCtrl.isUpdating"
+                                           data-bulk-infos="LineDisplayNumberCtrl.bulkDatas.infos"
+                                           data-filter-services="LineDisplayNumberCtrl.filterServices"
+                                           data-get-bulk-params="LineDisplayNumberCtrl.getBulkParams"
+                                           data-on-success="LineDisplayNumberCtrl.onBulkSuccess"
+                                           data-on-error="LineDisplayNumberCtrl.onBulkError">
+                    </telephony-bulk-action>
+
                     <button type="submit"
                             class="btn btn-primary"
                             data-ng-disabled="!displayNumberForm.$valid || !LineDisplayNumberCtrl.hasChanges() || LineDisplayNumberCtrl.isUpdating">

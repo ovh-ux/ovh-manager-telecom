@@ -112,6 +112,17 @@
    <translation id="telephony_phonebook_contact_delete_plural">Supprimer les {{ count }} contacts sélectionnés</translation>
    <translation id="telephony_phonebook_contact_delete_contacts_success">Suppression en cours…</translation>
 
+<!-- SERVICE TYPES -->
+   <translation id="telephony_service_type_alias">Numéro</translation>
+   <translation id="telephony_service_type_line">Ligne</translation>
+<!-- FEATURE TYPES -->
+   <translation id="telephony_service_feature_type_sip">Ligne SIP</translation>
+   <translation id="telephony_service_feature_type_mgcp">Ligne SIP</translation>
+   <translation id="telephony_service_feature_type_fax">FAX</translation>
+   <translation id="telephony_service_feature_type_freefax">FreeFax</translation>
+   <translation id="telephony_service_feature_type_trunk">Trunk</translation>
+   <translation id="telephony_service_feature_type_plugAndFax">Plug & Fax</translation>
+
 <!-- TIMECONDITION -->
    <translation id="telephony_common_time_condition_slot_from">de</translation>
    <translation id="telephony_common_time_condition_slot_to">à</translation>
