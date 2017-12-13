@@ -22,8 +22,8 @@ module.exports = {
     port : process.env.PORT || 8080,
 
     api  : {
-        // url: 'https://www.ovhtelecom.fr/manager-preprod/apiv6',
-        // url: 'https://www.ovhtelecom.fr/manager/apiv6',
+        // url: "https://www.ovhtelecom.fr/manager-preprod/apiv6",
+        // url: "https://www.ovhtelecom.fr/manager/apiv6",
         url: "https://www.ovhtelecom.fr/engine/apiv6",
         loginUrl: "https://www.ovhtelecom.fr/manager/apiv6/session"
     },
