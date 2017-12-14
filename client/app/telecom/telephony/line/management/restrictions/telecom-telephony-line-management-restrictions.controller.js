@@ -206,7 +206,6 @@ angular.module("managerApp").controller("TelecomTelephonyLineRestrictionsCtrl", 
             });
         });
 
-        self.applyLineChanges();
         // reset initial values to be able to modify again the options
         OvhApiTelephony.Line().Lexi().resetAllCache();
         init();
