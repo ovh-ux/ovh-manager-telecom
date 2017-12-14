@@ -1,8 +1,10 @@
 angular.module("managerApp").service("voipService", class {
 
-    constructor (OvhApiTelephony, VoipService) {
+    constructor (OvhApiTelephony, VoipService, VoipServiceAlias, VoipServiceLine) {
         this.ovhApiTelephony = OvhApiTelephony;
         this.VoipService = VoipService;
+        this.VoipServiceAlias = VoipServiceAlias;
+        this.VoipServiceLine = VoipServiceLine;
     }
 
     /**
@@ -32,10 +34,59 @@ angular.module("managerApp").service("voipService", class {
                     });
                 }
 
+                // ensure that billingAccount option is setted
                 _.set(res.value, "billingAccount", billingAccount);
-                return new this.VoipService(res.value);
+                return this._constructService(res.value);
             }).value()
         );
     }
+
+    /**
+     *  @description
+     *  Get a single service.
+     *
+     *  @param  {[type]} billingAccount [description]
+     *  @param  {[type]} serviceName    [description]
+     *
+     *  @return {[type]}                [description]
+     */
+    getService (billingAccount, serviceName) {
+        return this.ovhApiTelephony.Service().Lexi().get({
+            billingAccount: billingAccount,
+            serviceName: serviceName
+        }).$promise.then((result) =>{
+            // ensure billingAccount is setted
+            _.set(result, "billingAccount", billingAccount);
+            return this._constructService(result);
+        });
+    }
+
+    /* ==============================
+    =            Private            =
+    =============================== */
+
+    /**
+     *  @description
+     *  Construct the good service type instance from the serviceTypeOptions.
+     *  An error is throwned if the serviceType is not supported.
+     *
+     *  @private
+     *
+     *  @param  {Object} options The options needed for creating a new VoipService instance (see VoipService constructor for more details).
+     *  @return {VoipService}    The good instance type of VoipService.
+     */
+    _constructService (options) {
+        switch (options.serviceType) {
+        case "alias":
+            return new this.VoipServiceAlias(options);
+        case "line":
+            return new this.VoipServiceLine(options);
+        default:
+            throw new Error(`${options.serviceType} serviceType is not supported`);
+        }
+    }
+
+    /* -----  End of Private  ------ */
+
 
 });
