@@ -46,7 +46,6 @@ angular.module("managerApp").controller("TelecomTelephonyServiceContactCtrl", fu
         }).catch(function (err) {
             return new ToastError(err);
         }).finally(function () {
-            self.getFilteredDirectoryForm();
             self.isLoading = false;
         });
     }
