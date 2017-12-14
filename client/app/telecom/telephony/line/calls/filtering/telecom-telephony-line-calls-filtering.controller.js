@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyLineCallsFilteringCtrl", function ($stateParams, $q, $timeout, Toast, ToastError, OvhApiTelephony) {
+angular.module("managerApp").controller("TelecomTelephonyLineCallsFilteringCtrl", function ($stateParams, $q, $timeout, Toast, ToastError, OvhApiTelephony, $translate, telephonyBulk) {
     "use strict";
 
     var self = this;
@@ -87,6 +87,53 @@ angular.module("managerApp").controller("TelecomTelephonyLineCallsFilteringCtrl"
             self.isInitializing = false;
         });
     }
+
+    self.bulkDatas = {
+        billingAccount: $stateParams.billingAccount,
+        serviceName: $stateParams.serviceName,
+        infos: {
+            name: "screen",
+            actions: [{
+                name: "screen",
+                route: "/telephony/{billingAccount}/screen/{serviceName}",
+                method: "PUT",
+                params: null
+            }, {
+                name: "options",
+                route: "/telephony/{billingAccount}/line/{serviceName}/options",
+                method: "PUT",
+                params: null
+            }]
+        }
+    };
+
+    self.getBulkParams = function () {
+        return {
+            outgoingScreenList: self.screen && self.screen.modified && self.screen.modified.outgoingScreenList,
+            incomingScreenList: self.screen && self.screen.modified && self.screen.modified.incomingScreenList
+        } || self.options && self.options.modified;
+    };
+
+    self.onBulkSuccess = function (bulkResult) {
+        // display message of success or error
+        telephonyBulk.getToastInfos(bulkResult, {
+            fullSuccess: $translate.instant("telephony_line_calls_filtering_bulk_all_success"),
+            partialSuccess: $translate.instant("telephony_line_calls_filtering_bulk_some_success", {
+                count: bulkResult.success.length
+            }),
+            error: $translate.instant("telephony_line_calls_filtering_bulk_error")
+        }).forEach(function (toastInfo) {
+            Toast[toastInfo.type](toastInfo.message, {
+                hideAfter: null
+            });
+        });
+
+        init();
+    };
+
+    self.onBulkError = function (error) {
+        Toast.error([$translate.instant("telephony_line_calls_filtering_bulk_on_error"), _.get(error, "msg.data")].join(" "));
+    };
 
     self.updateScreen = function (type) {
         self.screen.isLoading = true;
