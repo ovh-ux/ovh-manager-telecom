@@ -111,7 +111,6 @@ angular.module("managerApp").controller("TelecomTelephonyServiceContactCtrl", fu
         }, {}).$promise.then(function (infos) {
             const properties = infos.models && infos.models && infos.models["telephony.DirectoryInfo"] && infos.models["telephony.DirectoryInfo"].properties;
             self.filteredDirectoryForm = _.pick(self.directoryForm, (v, k) => _.get(properties, [k, "readOnly"]) === 0);
-            return self.filteredDirectoryForm;
         });
     };
 
