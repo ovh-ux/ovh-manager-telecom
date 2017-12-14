@@ -46,6 +46,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceContactCtrl", fu
         }).catch(function (err) {
             return new ToastError(err);
         }).finally(function () {
+            self.getFilteredDirectoryForm();
             self.isLoading = false;
         });
     }
@@ -104,6 +105,18 @@ angular.module("managerApp").controller("TelecomTelephonyServiceContactCtrl", fu
         });
     };
 
+    self.getFilteredDirectoryForm = function () {
+        OvhApiTelephony.Lexi().schema({
+            billingAccount: $stateParams.billingAccount,
+            serviceName: $stateParams.serviceName
+        }, {}).$promise.then(function (infos) {
+            const properties = infos.models && infos.models && infos.models["telephony.DirectoryInfo"] && infos.models["telephony.DirectoryInfo"].properties;
+            self.filteredDirectoryForm = _.pick(self.directoryForm, (v, k) => _.get(properties, [k, "readOnly"]) === 0);
+            console.log(self.filteredDirectoryForm);
+            return self.filteredDirectoryForm;
+        });
+    };
+
     self.bulkDatas = {
         billingAccount: $stateParams.billingAccount,
         serviceName: $stateParams.serviceName,
@@ -119,7 +132,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceContactCtrl", fu
     };
 
     self.getBulkParams = function () {
-        return self.directoryForm;
+        return self.filteredDirectoryForm;
     };
 
     self.onBulkSuccess = function (bulkResult) {

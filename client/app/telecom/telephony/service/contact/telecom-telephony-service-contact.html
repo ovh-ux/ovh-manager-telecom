@@ -721,8 +721,8 @@
                                                        data-service-name="{{ ServiceContactCtrl.bulkDatas.serviceName }}"
                                                        data-custom-class="link d-block pl-0 mb-3"
                                                        data-bulk-infos="ServiceContactCtrl.bulkDatas.infos"
-                                                       data-ng-if="ServiceContactCtrl.isEditing"
                                                        data-get-bulk-params="ServiceContactCtrl.getBulkParams"
+                                                       data-on-open="ServiceContactCtrl.applyChanges() && ServiceContactCtrl.getFilteredDirectoryForm()"
                                                        data-on-success="ServiceContactCtrl.onBulkSuccess"
                                                        data-on-error="ServiceContactCtrl.onBulkError">
                                 </telephony-bulk-action>
