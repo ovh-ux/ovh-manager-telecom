@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyLineTonesCtrl", function ($state, $stateParams, $q, $timeout, $translate, OvhApiTelephony, ToastError, OvhApiMe, TelephonyMediator) {
+angular.module("managerApp").controller("TelecomTelephonyLineTonesCtrl", function ($state, $stateParams, $q, $timeout, $translate, OvhApiTelephony, ToastError, OvhApiMe, TelephonyMediator, telephonyBulk, Toast) {
     "use strict";
 
     var self = this;
@@ -33,6 +33,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineTonesCtrl", functio
             return err === disabledFeatureError ? err : new ToastError(err);
         }).finally(function () {
             self.isLoading = false;
+            self.toneHandling = false;
         });
     }
 
@@ -58,8 +59,9 @@ angular.module("managerApp").controller("TelecomTelephonyLineTonesCtrl", functio
     };
 
     self.updateTone = function (toneType) {
-        // only update tone if it is not a file upload and if tone changed
         if (self.tonesForm[toneType] !== "Custom sound" && self.tonesForm[toneType] !== self.tones[toneType]) {
+            // only update tone if it is not a file upload and if tone changed
+            self.toneHandling = true;
             var tonesParam = self.tones;
             _.assign(tonesParam, _.pick(self.tonesForm, toneType));
             self.tonesForm[toneType + "Updating"] = true;
@@ -75,6 +77,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineTonesCtrl", functio
             ]).catch(function (err) {
                 return new ToastError(err);
             }).finally(function () {
+                self.toneHandling = false;
                 self.tonesForm[toneType + "Updating"] = false;
             });
         }
@@ -82,6 +85,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineTonesCtrl", functio
     };
 
     self.uploadTone = function (toneType) {
+        self.toneHandling = true;
         self.tonesForm[toneType + "Uploading"] = true;
 
         // upload document
@@ -109,8 +113,60 @@ angular.module("managerApp").controller("TelecomTelephonyLineTonesCtrl", functio
         }).catch(function (err) {
             return new ToastError(err);
         }).finally(function () {
+            self.toneHandling = false;
             self.tonesForm[toneType + "Uploading"] = false;
         });
+    };
+
+    self.bulkDatas = {
+        billingAccount: $stateParams.billingAccount,
+        serviceName: $stateParams.serviceName,
+        infos: {
+            name: "tones",
+            actions: [{
+                name: "tones",
+                route: "/telephony/{billingAccount}/line/{serviceName}/tones",
+                method: "PUT",
+                params: null
+            }]
+        }
+    };
+
+    self.getBulkParams = function () {
+        return self.tones;
+    };
+
+    self.onBulkSuccess = function (bulkResult) {
+        // display message of success or error
+        telephonyBulk.getToastInfos(bulkResult, {
+            fullSuccess: $translate.instant("telephony_line_tones_bulk_all_success"),
+            partialSuccess: $translate.instant("telephony_line_tones_bulk_some_success", {
+                count: bulkResult.success.length
+            }),
+            error: $translate.instant("telephony_line_tones_bulk_error")
+        }).forEach(function (toastInfo) {
+            Toast[toastInfo.type](toastInfo.message, {
+                hideAfter: null
+            });
+        });
+
+        // reset initial values to be able to modify again the options
+        self.init();
+    };
+
+    self.onBulkError = function (error) {
+        Toast.error([$translate.instant("telephony_line_tones_bulk_on_error"), _.get(error, "msg.data")].join(" "));
+    };
+
+    self.checkNewTones = function () {
+        var customTones = _.keys(_.pick(self.tones, function(val) {
+            return val === "Custom sound";
+        }));
+        if (customTones.length) {
+            _.map(customTones, function (item) {
+                console.log(item);
+            });
+        }
     };
 
     init();

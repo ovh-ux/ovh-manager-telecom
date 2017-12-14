@@ -169,6 +169,24 @@
                         </oui-loader>
                     </button>
                 </div>
+                <div class="form-group mt-4">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <hr/>
+                            <telephony-bulk-action
+                                data-billing-account="{{ LineTonesCtrl.bulkDatas.billingAccount }}"
+                                data-service-name="{{ LineTonesCtrl.bulkDatas.serviceName }}"
+                                data-custom-class="link d-block pl-0 mb-3"
+                                data-ng-disabled="LineTonesCtrl.toneHandling"
+                                data-bulk-infos="LineTonesCtrl.bulkDatas.infos"
+                                data-on-open="LineTonesCtrl.checkNewTones"
+                                data-get-bulk-params="LineTonesCtrl.getBulkParams"
+                                data-on-success="LineTonesCtrl.onBulkSuccess"
+                                data-on-error="LineTonesCtrl.onBulkError">
+                            </telephony-bulk-action>
+                        </div>
+                    </div>
+                </div>
             </form>
         </div>
         <!-- /.widget-presentation -->
