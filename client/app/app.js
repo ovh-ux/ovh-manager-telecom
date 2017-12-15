@@ -432,10 +432,11 @@ angular.module("managerApp", [
         $logProvider.debugEnabled(false);
     })
 
-    .run(function ($rootScope, $title) {
+    .run(function ($rootScope, $title, telephonyBulkActionUpdatedServicesContainer) {
         "use strict";
 
         $rootScope.$on("$stateChangeSuccess", function () {
             $rootScope.fullTitle = _.map($title.breadCrumbs(), "title").join(" &#62; ");
+            telephonyBulkActionUpdatedServicesContainer.clearUpdatedServices();
         });
     });
