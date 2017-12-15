@@ -82,6 +82,12 @@ angular.module("managerApp").factory("VoipBillingAccount", function (VoipService
             return this.services;
         }
 
+        getAlias () {
+            return _.filter(this.services, {
+                serviceType: "alias"
+            });
+        }
+
         /* -----  End of Service section  ------ */
 
     }

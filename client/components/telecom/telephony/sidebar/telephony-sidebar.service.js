@@ -30,6 +30,27 @@ angular.module("managerApp").service("TelephonySidebar", function ($q, $translat
                     },
                     allowSubItems: billingAccount.services.length > 0
                 }, self.mainSectionItem);
+
+                /* ----------  Number (alias) display  ---------- */
+
+                // first sort numbers of the billingAccount
+                let sortedAlias = billingAccount.getAlias().sort(function (first, second) {
+                    return first.getDisplayedName().localeCompare(second.getDisplayedName());
+                });
+
+                // add number subsections to billingAccount subsection
+                sortedAlias.forEach(function (aliasService) {
+                    SidebarMenu.addMenuItem({
+                        id: aliasService.serviceName,
+                        title: aliasService.getDisplayedName(),
+                        state: "telecom.telephony.alias",
+                        stateParams: {
+                            billingAccount: aliasService.billingAccount,
+                            serviceName: aliasService.serviceName
+                        },
+                        prefix: $translate.instant("telecom_sidebar_section_telephony_number")
+                    }, billingAccountSubSection);
+                });
             });
         });
 
