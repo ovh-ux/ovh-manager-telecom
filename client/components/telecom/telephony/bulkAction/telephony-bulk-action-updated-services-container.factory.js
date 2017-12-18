@@ -6,7 +6,7 @@ angular.module("managerApp").factory("telephonyBulkActionUpdatedServicesContaine
     self._updatedServices = [];
 
     function clearUpdatedServices () {
-        self._updatedServices = []
+        self._updatedServices = [];
     }
 
     function storeUpdatedServices (data) {

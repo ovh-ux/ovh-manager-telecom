@@ -81,7 +81,7 @@ angular.module("managerApp").controller("telephonyBulkActionModalCtrl", function
     self.highlightUpdatedServices = function (services) {
         _.forEach(services, function (service) {
             _.forEach(self.billingAccounts, function (billingAccount) {
-                var findService =_.find(billingAccount.services, "serviceName", service.serviceName);
+                var findService = _.find(billingAccount.services, "serviceName", service.serviceName);
                 if (findService) {
                     findService.hasUpdate = true;
                 }
