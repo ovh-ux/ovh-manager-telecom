@@ -437,6 +437,5 @@ angular.module("managerApp", [
 
         $rootScope.$on("$stateChangeSuccess", function () {
             $rootScope.fullTitle = _.map($title.breadCrumbs(), "title").join(" &#62; ");
-            telephonyBulkActionUpdatedServicesContainer.clearUpdatedServices();
         });
     });
