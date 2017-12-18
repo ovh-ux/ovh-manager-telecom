@@ -182,7 +182,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineRestrictionsCtrl", 
 
     self.filterServices = function (services) {
         return _.filter(services, function (service) {
-            return ["sip", "mgcp"].indexOf(service.featureType) > -1;
+            return ["sip"].indexOf(service.featureType) > -1;
         });
     };
 
