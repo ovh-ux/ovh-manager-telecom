@@ -18,7 +18,8 @@ module.exports = {
         "no-underscore-dangle": 0,
         "prefer-arrow-callback": 0,
         "prefer-template": 0,
-        "object-shorthand": 0
+        "object-shorthand": 0,
+        "class-methods-use-this": 0
     },
     "globals": {
         "_": true,

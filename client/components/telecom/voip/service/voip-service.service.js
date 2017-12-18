@@ -43,23 +43,89 @@ angular.module("managerApp").service("voipService", class {
 
     /**
      *  @description
-     *  Get a single service.
+     *  Use API to get single service of given billingAccount and serviceName
      *
-     *  @param  {[type]} billingAccount [description]
-     *  @param  {[type]} serviceName    [description]
+     *  @param  {String} billingAccount The billingAccount to which is attached the service.
+     *  @param  {String} serviceName    The unique id of the service.
      *
-     *  @return {[type]}                [description]
+     *  @return {Promise}   That returns a VoipService instance representing the service fetched.
      */
-    getService (billingAccount, serviceName) {
+    fecthSingleService (billingAccount, serviceName) {
         return this.ovhApiTelephony.Service().Lexi().get({
             billingAccount: billingAccount,
             serviceName: serviceName
-        }).$promise.then((result) =>{
+        }).$promise.then((result) => {
             // ensure billingAccount is setted
             _.set(result, "billingAccount", billingAccount);
             return this._constructService(result);
         });
     }
+
+    /* ==============================
+    =            Filters            =
+    =============================== */
+
+    /* ----------  By service type  ---------- */
+
+    /**
+     *  @description
+     *  Filter the services of given services list that match alias serviceType.
+     *
+     *  @param  {Array.<VoipSercice>} services The services list to filter.
+     *
+     *  @return {Array.<VoipSercice>} The filtered list of aliases.
+     */
+    filterAliasServices (services) {
+        return _.filter(services, {
+            serviceType: "alias"
+        });
+    }
+
+    /**
+     *  @description
+     *  Filter the services of given services list that match line serviceType.
+     *
+     *  @param  {Array.<VoipSercice>} services The services list to filter.
+     *
+     *  @return {Array.<VoipSercice>} The filtered list of lines.
+     */
+    filterLineServices (services) {
+        return _.filter(services, {
+            serviceType: "line"
+        });
+    }
+
+    /* ----------  By feature type  ---------- */
+
+    /**
+     *  @description
+     *  Filter the services of given services list that match plugAndFax featureType.
+     *
+     *  @param  {Array.<VoipSercice>} services The services list to filter.
+     *
+     *  @return {Array.<VoipSercice>} The filtered list of plugAndFax.
+     */
+    filterPlugAndFaxServices (services) {
+        return _.filter(services, {
+            featureType: "plugAndFax"
+        });
+    }
+
+    /**
+     *  @description
+     *  Filter the services of given services list that match fax featureType.
+     *
+     *  @param  {Array.<VoipSercice>} services The services list to filter.
+     *
+     *  @return {Array.<VoipSercice>} The filtered list of fax.
+     */
+    filterFaxServices (services) {
+        return _.filter(services, {
+            featureType: "fax"
+        });
+    }
+
+    /* -----  End of Filters  ------ */
 
     /* ==============================
     =            Private            =

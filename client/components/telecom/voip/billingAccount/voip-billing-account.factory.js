@@ -1,4 +1,4 @@
-angular.module("managerApp").factory("VoipBillingAccount", function (VoipService) {
+angular.module("managerApp").factory("VoipBillingAccount", function (VoipService, voipService) {
     "use strict";
 
     const mandatoryOptions = ["billingAccount"];
@@ -82,13 +82,37 @@ angular.module("managerApp").factory("VoipBillingAccount", function (VoipService
             return this.services;
         }
 
+        /* -----  End of Service section  ------ */
+
+        /* ==============================
+        =            Filters            =
+        =============================== */
+
+        /* ----------  By service type  ---------- */
+
+        /**
+         *  @description
+         *  Get the services of the billingAccount that match alias serviceType.
+         *
+         *  @return {Array.<VoipSercice>} The list of all services with serviceType alias of the billing account.
+         */
         getAlias () {
-            return _.filter(this.services, {
-                serviceType: "alias"
-            });
+            return voipService.filterAliasServices(this.services);
         }
 
-        /* -----  End of Service section  ------ */
+        /**
+         *  @description
+         *  Get the services of the billingAccount that match line serviceType.
+         *
+         *  @return {Array.<VoipSercice>} The list of all services with serviceType line of the billing account.
+         */
+        getLines () {
+            return voipService.filterLineServices(this.services);
+        }
+
+        /* ----------  By feature type  ---------- */
+
+        /* -----  End of Filters  ------ */
 
     }
 
