@@ -30,7 +30,7 @@
 
         <div data-ng-repeat="forward in LineForwardCtrl.forwards track by forward.type">
 
-            <!-- no reply forward -->
+            <!-- no reply forward <--></-->
             <div class="row"
                  data-ng-class="{
                     'mt-4' : !$first
@@ -139,6 +139,19 @@
         <div class="row my-4">
             <div class="col-xs-12 col-sm-6">
                 <hr />
+
+                <telephony-bulk-action data-billing-account="{{ LineForwardCtrl.bulkDatas.billingAccount }}"
+                                       data-service-name="{{ LineForwardCtrl.bulkDatas.serviceName }}"
+                                       data-custom-class="link d-block pl-0 mb-3"
+                                       data-ng-disabled="!forwardForm.$valid || !LineForwardCtrl.forwards || LineForwardCtrl.forwards.count < 0"
+                                       data-bulk-infos="LineForwardCtrl.bulkDatas.infos"
+                                       data-filter-services="LineForwardCtrl.filterServices"
+                                       data-get-bulk-params="LineForwardCtrl.getBulkParams"
+                                       data-on-success="LineForwardCtrl.onBulkSuccess"
+                                       data-on-error="LineForwardCtrl.onBulkError"
+                                       data-on-open="LineForwardCtrl.save">
+                </telephony-bulk-action>
+
                 <button type="submit"
                         class="btn btn-primary"
                         data-ng-disabled="!LineForwardCtrl.needSave() || !forwardForm.$valid || LineForwardCtrl.loading.save">
