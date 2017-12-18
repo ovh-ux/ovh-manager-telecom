@@ -432,7 +432,7 @@ angular.module("managerApp", [
         $logProvider.debugEnabled(false);
     })
 
-    .run(function ($rootScope, $title, telephonyBulkActionUpdatedServicesContainer) {
+    .run(function ($rootScope, $title) {
         "use strict";
 
         $rootScope.$on("$stateChangeSuccess", function () {
