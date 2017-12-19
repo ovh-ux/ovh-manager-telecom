@@ -4,6 +4,21 @@ angular.module("managerApp").service("TelephonySidebar", function ($translate, S
     var self = this;
     self.mainSectionItem = null;
 
+    function addServiceMenuItems (services, options, billingAccountSubSection) {
+        services.forEach(function (service) {
+            SidebarMenu.addMenuItem({
+                id: service.serviceName,
+                title: service.getDisplayedName(),
+                state: options.state,
+                stateParams: {
+                    billingAccount: service.billingAccount,
+                    serviceName: service.serviceName
+                },
+                prefix: options.prefix && angular.isFunction(options.prefix) ? options.prefix(service) : options.prefix
+            }, billingAccountSubSection);
+        });
+    }
+
     /*
      * Telephony sidebar initilization
      */
@@ -34,30 +49,18 @@ angular.module("managerApp").service("TelephonySidebar", function ($translate, S
                 /* ----------  Numbers (alias) display  ---------- */
 
                 // first sort numbers of the billingAccount
-                let sortedAlias = billingAccount.getAlias().sort(function (first, second) {
-                    return first.getDisplayedName().localeCompare(second.getDisplayedName());
-                });
+                let sortedAlias = voipService.sortServicesByDisplayedName(billingAccount.getAlias());
 
                 // add number subsections to billingAccount subsection
-                sortedAlias.forEach(function (aliasService) {
-                    SidebarMenu.addMenuItem({
-                        id: aliasService.serviceName,
-                        title: aliasService.getDisplayedName(),
-                        state: "telecom.telephony.alias",
-                        stateParams: {
-                            billingAccount: aliasService.billingAccount,
-                            serviceName: aliasService.serviceName
-                        },
-                        prefix: $translate.instant("telecom_sidebar_section_telephony_number")
-                    }, billingAccountSubSection);
-                });
+                addServiceMenuItems(sortedAlias, {
+                    state: "telecom.telephony.alias",
+                    prefix: $translate.instant("telecom_sidebar_section_telephony_number")
+                }, billingAccountSubSection);
 
                 /* ----------  Lines display  ---------- */
 
                 // first sort lines of the billingAccount
-                let sortedLines = billingAccount.getLines().sort(function (first, second) {
-                    return first.getDisplayedName().localeCompare(second.getDisplayedName());
-                });
+                let sortedLines = voipService.sortServicesByDisplayedName(billingAccount.getLines());
 
                 // display lines except plugAndFax and fax
                 let sortedSipLines = _.filter(sortedLines, function (line) {
@@ -65,53 +68,33 @@ angular.module("managerApp").service("TelephonySidebar", function ($translate, S
                 });
 
                 // add line subsections to billingAccount subsection
-                sortedSipLines.forEach(function (lineService) {
-                    SidebarMenu.addMenuItem({
-                        id: lineService.serviceName,
-                        title: lineService.getDisplayedName(),
-                        state: "telecom.telephony.line",
-                        stateParams: {
-                            billingAccount: lineService.billingAccount,
-                            serviceName: lineService.serviceName
-                        },
-                        prefix: lineService.isSipTrunk() ? $translate.instant("telecom_sidebar_section_telephony_trunk") : $translate.instant("telecom_sidebar_section_telephony_line")
-                    }, billingAccountSubSection);
-                });
+                let sipTrunkPrefix = $translate.instant("telecom_sidebar_section_telephony_trunk");
+                let sipPrefix = $translate.instant("telecom_sidebar_section_telephony_line");
+
+                addServiceMenuItems(sortedSipLines, {
+                    state: "telecom.telephony.line",
+                    prefix: function (lineService) {
+                        return lineService.isSipTrunk() ? sipTrunkPrefix : sipPrefix;
+                    }
+                }, billingAccountSubSection);
 
                 // second get plugAndFax
                 let sortedPlugAndFaxLines = voipService.filterPlugAndFaxServices(sortedLines);
 
                 // add plugAndFax subsections to billingAccount subsection
-                sortedPlugAndFaxLines.forEach(function (plugAndFaxService) {
-                    SidebarMenu.addMenuItem({
-                        id: plugAndFaxService.serviceName,
-                        title: plugAndFaxService.getDisplayedName(),
-                        state: "telecom.telephony.line",
-                        stateParams: {
-                            billingAccount: plugAndFaxService.billingAccount,
-                            serviceName: plugAndFaxService.serviceName
-                        },
-                        prefix: $translate.instant("telecom_sidebar_section_telephony_plug_fax")
-                    }, billingAccountSubSection);
-                });
+                addServiceMenuItems(sortedPlugAndFaxLines, {
+                    state: "telecom.telephony.line",
+                    prefix: $translate.instant("telecom_sidebar_section_telephony_plug_fax")
+                }, billingAccountSubSection);
 
                 // then get fax
                 let sortedFaxLines = voipService.filterFaxServices(sortedLines);
 
                 // add fax subsections to billingAccount subsection
-                sortedFaxLines.forEach(function (faxService) {
-                    SidebarMenu.addMenuItem({
-                        id: faxService.serviceName,
-                        title: faxService.getDisplayedName(),
-                        state: "telecom.telephony.fax",
-                        stateParams: {
-                            billingAccount: faxService.billingAccount,
-                            serviceName: faxService.serviceName
-                        },
-                        prefix: $translate.instant("telecom_sidebar_section_telephony_fax")
-                    }, billingAccountSubSection);
-                });
-
+                addServiceMenuItems(sortedFaxLines, {
+                    state: "telecom.telephony.fax",
+                    prefix: $translate.instant("telecom_sidebar_section_telephony_fax")
+                }, billingAccountSubSection);
             });
         });
     };

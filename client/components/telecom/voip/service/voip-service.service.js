@@ -52,8 +52,8 @@ angular.module("managerApp").service("voipService", class {
      */
     fecthSingleService (billingAccount, serviceName) {
         return this.ovhApiTelephony.Service().Lexi().get({
-            billingAccount: billingAccount,
-            serviceName: serviceName
+            billingAccount,
+            serviceName
         }).$promise.then((result) => {
             // ensure billingAccount is setted
             _.set(result, "billingAccount", billingAccount);
@@ -126,6 +126,20 @@ angular.module("managerApp").service("voipService", class {
     }
 
     /* -----  End of Filters  ------ */
+
+    /**
+     *  @description
+     *  Sort given services list by displayed name.
+     *
+     *  @param  {Array.<VoipSercice>} services List of services to be sorted.
+     *
+     *  @return {Array.<VoipSercice>}   The sorted list of services.
+     */
+    sortServicesByDisplayedName (services) {
+        return angular.copy(services).sort((first, second) =>
+            first.getDisplayedName().localeCompare(second.getDisplayedName())
+        );
+    }
 
     /* ==============================
     =            Private            =

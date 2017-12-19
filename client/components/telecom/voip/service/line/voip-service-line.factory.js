@@ -23,7 +23,7 @@ angular.module("managerApp").factory("VoipServiceLine", function (VoipService) {
          *  @return {Boolean}
          */
         isSipTrunk () {
-            var publicOfferName = _.get(this.getPublicOffer, "name");
+            const publicOfferName = _.get(this.getPublicOffer, "name");
             return publicOfferName === "trunk" || _.get(publicOfferName.split("."), "[0]") === "trunk";
         }
     }
