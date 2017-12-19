@@ -1,6 +1,6 @@
 {
   "name": "ovh-manager-telecom",
-  "version": "8.0.7",
+  "version": "8.1.0",
   "description": "OVH Control Panel Telecom UI",
   "author": "OVH SAS",
   "license": "BSD-3-Clause",
@@ -52,7 +52,6 @@
     "connect-livereload": "~0.4.0",
     "eslint": "^4.1.1",
     "eslint-config-ovh": "^0.1.1",
-    "eslint-plugin-react": "^7.1.0",
     "grunt": "~0.4.5",
     "grunt-angular-templates": "^0.5.4",
     "grunt-babel": "^6.0.0",

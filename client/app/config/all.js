@@ -46,6 +46,7 @@ angular.module("managerApp").constant("LANGUAGES", {
     fallback: "fr_FR"
 })
     .constant("UNIVERSE", "TELECOM")
+    .constant("TARGET", "EU")
     .constant("DASHBOARD", {
         services: [
             "xdslAccess",
