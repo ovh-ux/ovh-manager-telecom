@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyLineRestrictionsCtrl", function ($stateParams, $timeout, $q, $document, $translate, OvhApiTelephony, OvhApiTelephonyLineOptions, ToastError, IpAddress, OvhApiMe, Toast, telephonyBulk) {
+angular.module("managerApp").controller("TelecomTelephonyLineRestrictionsCtrl", function ($stateParams, $timeout, $q, $document, $translate, OvhApiTelephony, ToastError, IpAddress, OvhApiMe, Toast, telephonyBulk) {
     "use strict";
 
     var self = this;
@@ -188,7 +188,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineRestrictionsCtrl", 
 
     self.getBulkParams = function () {
         return {
-            ipRestrictions: self.lineOptions.ipRestrictions
+            ipRestrictions: self.lineOptionsForm.ipRestrictions
         };
     };
 
@@ -205,6 +205,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineRestrictionsCtrl", 
                 hideAfter: null
             });
         });
+        self.applyLineChanges();
 
         // reset initial values to be able to modify again the options
         OvhApiTelephony.Line().Lexi().resetAllCache();
