@@ -107,11 +107,18 @@ angular.module("managerApp").controller("TelecomTelephonyLineCallsFilteringCtrl"
         }
     };
 
-    self.getBulkParams = function () {
-        return {
-            outgoingScreenList: self.screen && self.screen.modified && self.screen.modified.outgoingScreenList,
-            incomingScreenList: self.screen && self.screen.modified && self.screen.modified.incomingScreenList
-        } || self.options && self.options.modified;
+    self.getBulkParams = function (action) {
+        switch (action) {
+        case "screen":
+            return {
+                outgoingScreenList: _.get(self, "screen.modified.outgoingScreenList"),
+                incomingScreenList: _.get(self, "screen.modified.incomingScreenList")
+            };
+        case "options":
+            return _.get(self, "options.modified");
+        default:
+            return false;
+        }
     };
 
     self.onBulkSuccess = function (bulkResult) {
@@ -127,6 +134,9 @@ angular.module("managerApp").controller("TelecomTelephonyLineCallsFilteringCtrl"
                 hideAfter: null
             });
         });
+
+        // reset initial values to be able to modify again the options
+        OvhApiTelephony.Line().Lexi().resetAllCache();
 
         init();
     };
