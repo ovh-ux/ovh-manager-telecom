@@ -191,6 +191,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineCallsForwardCtrl", 
                 hideAfter: null
             });
         });
+        self.save();
 
         // reset initial values to be able to modify again the options
         TelecomTelephonyLineCallsForwardService.resetAllCache();

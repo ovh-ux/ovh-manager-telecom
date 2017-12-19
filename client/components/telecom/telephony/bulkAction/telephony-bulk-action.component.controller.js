@@ -12,9 +12,6 @@ angular.module("managerApp").controller("telephonyBulkActionCtrl", function ($q,
     ============================== */
 
     self.onBulkActionBtnClick = function () {
-        if (self.onOpen && _.isFunction(self.onOpen())) {
-            self.onOpen()();
-        }
         return $uibModal.open({
             templateUrl: "components/telecom/telephony/bulkAction/modal/telephony-bulk-action-modal.html",
             controller: "telephonyBulkActionModalCtrl",

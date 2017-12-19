@@ -10,7 +10,6 @@
             ngDisabled: "=?",
             bulkInfos: "<",
             getBulkParams: "&",
-            onOpen: "&?",
             onSuccess: "&?",
             onError: "&?",
             filterServices: "&?"
