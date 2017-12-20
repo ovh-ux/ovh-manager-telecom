@@ -108,7 +108,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationChang
 
         // check if server tasks are all successful
         self.checkServerTasksStatus(bulkResult.success).then(function (errorCount) {
-            if(errorCount > 0) {
+            if (errorCount > 0) {
                 Toast.warn([$translate.instant("telephony_alias_config_change_type_bulk_server_tasks_some_error")]);
             }
 
@@ -126,6 +126,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationChang
 
             self.changeType();
             self.noCache = true;
+
             // reset initial values to be able to modify again the options
             init();
         }, function () {
@@ -161,14 +162,14 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationChang
         });
 
         // return deferred.promise;
-        $q.all(promises).then(function (results) {
+        $q.all(promises).then(function () {
             deferred.resolve();
         }, function (errors) {
             var nbTasksInError = _.sumBy(errors, function (e) {
-                return (e.status.toLowerCase() !== "done" && e.status.toLowerCase() !== "cancelled") ? 1 : 0;
+                return e.status.toLowerCase() !== "done" && e.status.toLowerCase() !== "cancelled" ? 1 : 0;
             });
 
-            if(nbTasksInError < errors.length) {
+            if (nbTasksInError < errors.length) {
                 deferred.resolve(nbTasksInError);
             } else {
                 deferred.reject();
