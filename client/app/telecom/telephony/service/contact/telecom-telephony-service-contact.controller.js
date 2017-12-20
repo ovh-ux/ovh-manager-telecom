@@ -48,10 +48,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceContactCtrl", fu
             return new ToastError(err);
         }).finally(function () {
             OvhApiTelephony.Lexi().schema({}, {}).$promise.then(function (infos) {
-                var properties = _.get(infos, "models['telephony.DirectoryInfo'].properties");
-                self.filteredDirectoryForm = _.pick(self.directoryForm, function (v, k) {
-                    return _.get(properties, [k, "readOnly"]) === 0;
-                });
+                self.directoryProperties = _.get(infos, "models['telephony.DirectoryInfo'].properties");
                 self.isBulkLoading = false;
             });
             self.isLoading = false;
@@ -127,7 +124,9 @@ angular.module("managerApp").controller("TelecomTelephonyServiceContactCtrl", fu
     };
 
     self.getBulkParams = function () {
-        return self.filteredDirectoryForm;
+        return _.pick(self.directory, function (value, key) {
+            return _.get(self.directoryProperties, [key, "readOnly"]) === 0;
+        });
     };
 
     self.onBulkSuccess = function (bulkResult) {
