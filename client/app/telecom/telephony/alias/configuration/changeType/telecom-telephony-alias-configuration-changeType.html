@@ -61,6 +61,18 @@
                                 <option value="" data-translate="telephony_alias_config_change_type_label_select" disabled></option>
                         </select>
                     </div>
+
+                    <telephony-bulk-action data-service-type="alias"
+                                           data-billing-account="{{ AliasConfigurationChangeTypeCtrl.bulkDatas.billingAccount }}"
+                                           data-service-name="{{ AliasConfigurationChangeTypeCtrl.bulkDatas.serviceName }}"
+                                           data-custom-class="link d-block pl-0 mb-3"
+                                           data-bulk-infos="AliasConfigurationChangeTypeCtrl.bulkDatas.infos"
+                                           data-ng-disabled="!changeTypeForm.$valid"
+                                           data-get-bulk-params="AliasConfigurationChangeTypeCtrl.getBulkParams"
+                                           data-on-success="AliasConfigurationChangeTypeCtrl.onBulkSuccess"
+                                           data-on-error="AliasConfigurationChangeTypeCtrl.onBulkError">
+                    </telephony-bulk-action>
+
                     <button type="submit"
                             class="btn btn-primary"
                             data-ng-disabled="!changeTypeForm.$valid || AliasConfigurationChangeTypeCtrl.loading.changing || !AliasConfigurationChangeTypeCtrl.number.feature.hasChange()"
