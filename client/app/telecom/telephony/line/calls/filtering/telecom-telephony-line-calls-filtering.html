@@ -140,6 +140,20 @@
                                 </span>
                             </label>
                         </div>
+                        <div class="form-group mt-4">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <telephony-bulk-action data-billing-account="{{ CallsFilteringCtrl.bulkDatas.billingAccount }}"
+                                                           data-service-name="{{ CallsFilteringCtrl.bulkDatas.serviceName }}"
+                                                           data-custom-class="link d-block pl-0 mb-3"
+                                                           data-bulk-infos="CallsFilteringCtrl.bulkDatas.infos"
+                                                           data-get-bulk-params="CallsFilteringCtrl.getBulkParams"
+                                                           data-on-success="CallsFilteringCtrl.onBulkSuccess"
+                                                           data-on-error="CallsFilteringCtrl.onBulkError">
+                                    </telephony-bulk-action>
+                                </div>
+                            </div>
+                        </div>
                     </form>
                 </div>
                 <!-- /.widget-presentation -->
@@ -172,21 +186,6 @@
             </div>
         </div>
         <!-- /.widget-presentation -->
-        <div class="form-group mt-4">
-            <div class="row">
-                <div class="col-md-6">
-                    <hr/>
-                    <telephony-bulk-action data-billing-account="{{ CallsFilteringCtrl.bulkDatas.billingAccount }}"
-                                           data-service-name="{{ CallsFilteringCtrl.bulkDatas.serviceName }}"
-                                           data-custom-class="link d-block pl-0 mb-3"
-                                           data-bulk-infos="CallsFilteringCtrl.bulkDatas.infos"
-                                           data-get-bulk-params="CallsFilteringCtrl.getBulkParams"
-                                           data-on-success="CallsFilteringCtrl.onBulkSuccess"
-                                           data-on-error="CallsFilteringCtrl.onBulkError">
-                    </telephony-bulk-action>
-                </div>
-            </div>
-        </div>
 
     </div>
     <!-- /.telecom-section-content -->
