@@ -151,12 +151,12 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationChang
 
         _.forEach(updatedServices, function (service) {
             var id = _.head(_.chain(service.values).map("value").filter(function (val) {
-                    return val.action === "changeType";
-                }).value()).taskId;
+                return val.action === "changeType";
+            }).value()).taskId;
 
             // chaining each promises
             chain = chain.then(function (result) {
-                if(result){
+                if (result) {
                     self.successfulTasks.push(result);
                 }
             }).then(runPollOnTask(service.billingAccount, service.serviceName, id));
