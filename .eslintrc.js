@@ -1,5 +1,4 @@
 module.exports = {
-    "plugins": ["react"],
     "env": {
         "browser": true,
         "es6": true,

@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyLineRestrictionsCtrl", function ($stateParams, $timeout, $q, $document, OvhApiTelephony, ToastError, IpAddress, OvhApiMe) {
+angular.module("managerApp").controller("TelecomTelephonyLineRestrictionsCtrl", function ($stateParams, $timeout, $q, $document, $translate, OvhApiTelephony, ToastError, IpAddress, OvhApiMe, Toast, telephonyBulk) {
     "use strict";
 
     var self = this;
@@ -161,6 +161,62 @@ angular.module("managerApp").controller("TelecomTelephonyLineRestrictionsCtrl", 
             }
         };
     })();
+
+    /* ===========================
+    =            BULK            =
+    ============================ */
+
+    self.bulkDatas = {
+        billingAccount: $stateParams.billingAccount,
+        serviceName: $stateParams.serviceName,
+        infos: {
+            name: "ipRestrictions",
+            actions: [{
+                name: "options",
+                route: "/telephony/{billingAccount}/line/{serviceName}/options",
+                method: "PUT",
+                params: null
+            }]
+        }
+    };
+
+    self.filterServices = function (services) {
+        return _.filter(services, function (service) {
+            return ["sip"].indexOf(service.featureType) > -1;
+        });
+    };
+
+    self.getBulkParams = function () {
+        return {
+            ipRestrictions: self.lineOptionsForm.ipRestrictions
+        };
+    };
+
+    self.onBulkSuccess = function (bulkResult) {
+        // display message of success or error
+        telephonyBulk.getToastInfos(bulkResult, {
+            fullSuccess: $translate.instant("telephony_line_restrictions_ip_bulk_all_success"),
+            partialSuccess: $translate.instant("telephony_line_restrictions_ip_bulk_some_success", {
+                count: bulkResult.success.length
+            }),
+            error: $translate.instant("telephony_line_restrictions_ip_bulk_error")
+        }).forEach(function (toastInfo) {
+            Toast[toastInfo.type](toastInfo.message, {
+                hideAfter: null
+            });
+        });
+        self.applyLineChanges();
+
+        // reset initial values to be able to modify again the options
+        OvhApiTelephony.Line().Lexi().resetAllCache();
+        init();
+    };
+
+    self.onBulkError = function (error) {
+        Toast.error([$translate.instant("telephony_line_restrictions_ip_bulk_on_error"), _.get(error, "msg.data")].join(" "));
+    };
+
+    /* -----  End of BULK  ------ */
 
     init();
 });
