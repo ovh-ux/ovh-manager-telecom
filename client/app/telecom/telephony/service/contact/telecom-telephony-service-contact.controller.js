@@ -25,7 +25,6 @@ angular.module("managerApp").controller("TelecomTelephonyServiceContactCtrl", fu
 
     function init () {
         self.isLoading = true;
-        self.isBulkLoading = true;
         self.isEditing = false;
         self.wayNumberExtraEnum = [
             "bis", "ter", "quater", "quinquies", "sexto", "septimo", "octimo", "nono",
@@ -33,8 +32,11 @@ angular.module("managerApp").controller("TelecomTelephonyServiceContactCtrl", fu
             "W", "X", "Y", "Z"
         ];
         self.directoryCodes = null;
-        return fetchDirectory().then(function (directory) {
-            self.directory = directory;
+        return $q.all({
+            infos: OvhApiTelephony.Lexi().schema().$promise,
+            directory: fetchDirectory()
+        }).then(function (res) {
+            self.directory = res.directory;
             self.directoryForm = angular.copy(self.directory);
             self.cityList = [{ name: self.directory.city }];
             self.onPostCodeChange();
@@ -43,14 +45,12 @@ angular.module("managerApp").controller("TelecomTelephonyServiceContactCtrl", fu
                     self.directoryCodes = result;
                 });
             }
+
+            self.directoryProperties = _.get(res.infos, "models['telephony.DirectoryInfo'].properties");
             return null;
         }).catch(function (err) {
             return new ToastError(err);
         }).finally(function () {
-            OvhApiTelephony.Lexi().schema({}, {}).$promise.then(function (infos) {
-                self.directoryProperties = _.get(infos, "models['telephony.DirectoryInfo'].properties");
-                self.isBulkLoading = false;
-            });
             self.isLoading = false;
         });
     }
@@ -124,7 +124,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceContactCtrl", fu
     };
 
     self.getBulkParams = function () {
-        return _.pick(self.directory, function (value, key) {
+        return _.pick(self.directoryForm, function (value, key) {
             return _.get(self.directoryProperties, [key, "readOnly"]) === 0;
         });
     };
