@@ -159,8 +159,6 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationChang
                 if(result){
                     self.successfulTasks.push(result);
                 }
-            }, function (error) {
-                console.error(error);
             }).then(runPollOnTask(service.billingAccount, service.serviceName, id));
         });
 
