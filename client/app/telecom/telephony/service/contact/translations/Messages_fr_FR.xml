@@ -16,7 +16,7 @@
     <translation id="telephony_service_contact_siret_invalid">Le numéro de SIRET saisi est invalide</translation>
     <translation id="telephony_service_contact_ape">APE / NAF</translation>
     <translation id="telephony_service_contact_ape_invalid">Le code APE doit comporter 4 chiffres et 1 lettre.</translation>
-    <translation id="telephony_service_contact_social_nomination">Dénomination de l'entreprise</translation>
+    <translation id="telephony_service_contact_social_nomination">Dénomination de l’entreprise</translation>
     <translation id="telephony_service_contact_social_nomination_extra">Complément de désignation (Sigle, SARL, …)</translation>
     <translation id="telephony_service_contact_email">Adresse email</translation>
     <translation id="telephony_service_contact_country">Pays</translation>
@@ -26,22 +26,24 @@
     <translation id="telephony_service_contact_urbandistrict">Arrondissement (pour Paris, Lyon et Marseille)</translation>
     <translation id="telephony_service_contact_waynumber">Numéro de voie</translation>
     <translation id="telephony_service_contact_wayname">Nom de la voie</translation>
+    <translation id="telephony_service_contact_addressextra">Complément d’adresse</translation>
+    <translation id="telephony_service_contact_addressextra_invalid">Le complément d’adresse ne doit contenir ni caractères spéciaux ni accents</translation>
     <translation id="telephony_service_contact_waynumberextra">Complément du numéro dans la voie</translation>
     <translation id="telephony_service_contact_waynumberextra_short">Complément</translation>
     <translation id="telephony_service_contact_address2">Complément du numéro dans la voie</translation>
     <translation id="telephony_service_contact_universal_directory">Parution dans les annuaires</translation>
-    <translation id="telephony_service_contact_universal_directory_publish">Publication dans l'annuaire</translation>
+    <translation id="telephony_service_contact_universal_directory_publish">Publication dans l’annuaire</translation>
     <translation id="telephony_service_contact_display_marketing">Démarchage téléphonique accepté</translation>
-    <translation id="telephony_service_contact_search_reverse">Publication dans l'annuaire inversé</translation>
+    <translation id="telephony_service_contact_search_reverse">Publication dans l’annuaire inversé</translation>
     <translation id="telephony_service_contact_display_name">Affichage du nom</translation>
-    <translation id="telephony_service_contact_address_publish">Publication de l'adresse</translation>
+    <translation id="telephony_service_contact_address_publish">Publication de l’adresse</translation>
     <translation id="telephony_service_contact_address_publish_full">Complète</translation>
     <translation id="telephony_service_contact_address_publish_city">Ville uniquement</translation>
-    <translation id="telephony_service_contact_terminal_type">Type d'équipement</translation>
+    <translation id="telephony_service_contact_terminal_type">Type d’équipement</translation>
     <translation id="telephony_service_contact_service_description">Désignation de la ligne</translation>
-    <translation id="telephony_service_contact_service_description_help">Ce champ permet de préciser l'affectation générale de la ligne (standard, accueil, SAV, …) mais ne doit pas être utilisé pour faire paraître une seconde dénomination, information publicitaire ou décrire l'activité de l'entreprise.</translation>
+    <translation id="telephony_service_contact_service_description_help">Ce champ permet de préciser l’affectation générale de la ligne (standard, accueil, SAV, …) mais ne doit pas être utilisé pour faire paraître une seconde dénomination, information publicitaire ou décrire l’activité de l’entreprise.</translation>
     <translation id="telephony_service_contact_pjdenomination">Dénomination Pages jaunes / 118712</translation>
-    <translation id="telephony_service_contact_pjdenomination_help">Sur 100 caractères. Si vide : identique à la dénomination de l'entreprise.</translation>
+    <translation id="telephony_service_contact_pjdenomination_help">Sur 100 caractères. Si vide : identique à la dénomination de l’entreprise.</translation>
     <translation id="telephony_service_contact_directory_code">Rubrique</translation>
     <translation id="telephony_service_contact_directory_code_siret_warn">Vous devez saisir un numéro de SIRET.</translation>
     <translation id="telephony_service_contact_sync">Synchronisé</translation>
@@ -52,6 +54,6 @@
     <translation id="telephony_service_contact_status_done">Effectué</translation>
     <translation id="telephony_service_contact_apply">Appliquer les modifications</translation>
     <translation id="telephony_service_contact_must_fill">Ce champ est obligatoire.</translation>
-    <translation id="telephony_service_contact_city_not_found">Aucune ville n'a été trouvée pour ce code postal.</translation>
+    <translation id="telephony_service_contact_city_not_found">Aucune ville n’a été trouvée pour ce code postal.</translation>
     <translation id="telephony_service_contact_success">Vos coordonnées ont bien été mises à jour.</translation>
 </translations>
