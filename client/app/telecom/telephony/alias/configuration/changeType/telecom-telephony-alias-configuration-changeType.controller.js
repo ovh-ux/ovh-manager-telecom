@@ -10,6 +10,8 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationChang
         line: true
     };
 
+    self.successfulTasks = [];
+
     /*= ==============================
     =            ACTIONS            =
     ===============================*/
@@ -107,8 +109,11 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationChang
     self.onBulkSuccess = function (bulkResult) {
 
         // check if server tasks are all successful
-        self.checkServerTasksStatus(bulkResult.success).then(function (errorCount) {
-            if (errorCount > 0) {
+        self.checkServerTasksStatus(bulkResult.success).then(function (result) {
+            self.successfulTasks = self.successfulTasks.concat(result);
+
+            // if one of the promises fails, the failed result won't be store in tasksChecked
+            if (self.successfulTasks.length < bulkResult.success.length) {
                 Toast.warn([$translate.instant("telephony_alias_config_change_type_bulk_server_tasks_some_error")]);
             }
 
@@ -131,6 +136,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationChang
             init();
         }, function () {
             Toast.error([$translate.instant("telephony_alias_config_change_type_bulk_server_tasks_all_error")]);
+            self.loading.changing = false;
         });
     };
 
@@ -141,46 +147,33 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationChang
     self.checkServerTasksStatus = function (updatedServices) {
         self.loading.changing = true;
 
-        var deferred = $q.defer();
-        var promises = [];
-        var tasksAndServicesInfos = [];
+        var chain = $q.when();
 
         _.forEach(updatedServices, function (service) {
-            var info = {
-                billingAccount: service.billingAccount,
-                serviceName: service.serviceName,
-                id: _.chain(service.values).map("value").filter(function (val) {
+            var id = _.head(_.chain(service.values).map("value").filter(function (val) {
                     return val.action === "changeType";
-                }).value()[0].taskId
-            };
+                }).value()).taskId;
 
-            tasksAndServicesInfos.push(info);
+            // chaining each promises
+            chain = chain.then(function (result) {
+                if(result){
+                    self.successfulTasks.push(result);
+                }
+            }, function (error) {
+                console.error(error);
+            }).then(runPollOnTask(service.billingAccount, service.serviceName, id));
         });
 
-        _.forEach(tasksAndServicesInfos, function (task) {
-            promises.push(voipServiceTask.startPolling(task.billingAccount, task.serviceName, task.id));
-        });
-
-        // return deferred.promise;
-        $q.all(promises).then(function () {
-            deferred.resolve();
-        }, function (errors) {
-            var nbTasksInError = _.sumBy(errors, function (e) {
-                return e.status.toLowerCase() !== "done" && e.status.toLowerCase() !== "cancelled" ? 1 : 0;
-            });
-
-            if (nbTasksInError < errors.length) {
-                deferred.resolve(nbTasksInError);
-            } else {
-                deferred.reject();
-            }
-        });
-
-        return deferred.promise;
+        return chain;
     };
+
+    function runPollOnTask (billingAccount, serviceName, taskId) {
+        return function () {
+            return voipServiceTask.startPolling(billingAccount, serviceName, taskId);
+        };
+    }
 
     /* -----  End of BULK  ------ */
 
     init();
-
 });
