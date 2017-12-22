@@ -7,4 +7,9 @@
    <translation id="telephony_line_actions_line_calls_out_lock_call_save_error" qtlid="334712">Impossible de sauvegarder la configuration. Veuillez réessayer ultérieurement.</translation>
    <translation id="telephony_line_actions_line_calls_out_lock_call_save_success" qtlid="334725">Votre configuration a été mise à jour.</translation>
    <translation id="telephony_line_actions_line_calls_out_lock_call_explain" qtlid="334738">Vous avez ici la possibilité de verrouiller ou déverrouiller votre téléphone afin d'en restreindre son utilisation et n'autoriser que les appels entrants.</translation>
+
+   <translation id="telephony_line_actions_line_calls_out_lock_call_bulk_all_success">Le verrouillage des appels sortants a bien été appliqué aux services sélectionnés.</translation>
+   <translation id="telephony_line_actions_line_calls_out_lock_call_bulk_some_success">Le verrouillage des appels sortants a bien été appliqué à {{ count }} des services sélectionnés.</translation>
+   <translation id="telephony_line_actions_line_calls_out_lock_call_bulk_error">Le verrouillage des appels sortants n'a pas pu être appliqué au(x) service(s) suivant(s) :</translation>
+   <translation id="telephony_line_actions_line_calls_out_lock_call_bulk_on_error">Oups ! Une erreur est survenue lors de l'application du verrouillage des appels sortants.</translation>
 </translations>
