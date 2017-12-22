@@ -109,8 +109,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationChang
     self.onBulkSuccess = function (bulkResult) {
 
         // check if server tasks are all successful
-        self.checkServerTasksStatus(bulkResult.success).then(function (result) {
-            self.successfulTasks = self.successfulTasks.concat(result);
+        self.checkServerTasksStatus(bulkResult.success).then(function () {
 
             // if one of the promises fails, the failed result won't be store in tasksChecked
             if (self.successfulTasks.length < bulkResult.success.length) {
@@ -155,11 +154,11 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationChang
             }).value()).taskId;
 
             // chaining each promises
-            chain = chain.then(function (result) {
+            chain = chain.then(runPollOnTask(service.billingAccount, service.serviceName, id)).then(function (result) {
                 if (result) {
                     self.successfulTasks.push(result);
                 }
-            }).then(runPollOnTask(service.billingAccount, service.serviceName, id));
+            });
         });
 
         return chain;
