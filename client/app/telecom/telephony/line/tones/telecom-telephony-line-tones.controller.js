@@ -33,6 +33,8 @@ angular.module("managerApp").controller("TelecomTelephonyLineTonesCtrl", functio
             return err === disabledFeatureError ? err : new ToastError(err);
         }).finally(function () {
             self.isLoading = false;
+            self.customToneUrl = {};
+            self.bulkParameters = [];
             self.toneHandling = false;
         });
     }
@@ -93,6 +95,8 @@ angular.module("managerApp").controller("TelecomTelephonyLineTonesCtrl", functio
             self.tonesForm[toneType + "File"].name,
             self.tonesForm[toneType + "File"]
         ).then(function (doc) {
+            self.customToneUrl[toneType] = doc.getUrl;
+
             // upload tone
             return OvhApiTelephony.Line().Lexi().toneUpload({
                 billingAccount: $stateParams.billingAccount,
@@ -123,17 +127,12 @@ angular.module("managerApp").controller("TelecomTelephonyLineTonesCtrl", functio
         serviceName: $stateParams.serviceName,
         infos: {
             name: "tones",
-            actions: [{
-                name: "tones",
-                route: "/telephony/{billingAccount}/line/{serviceName}/tones",
-                method: "PUT",
-                params: null
-            }]
+            actions: self.bulkActions || []
         }
     };
 
-    self.getBulkParams = function () {
-        return self.tones;
+    self.getBulkParams = function (action) {
+        return ~action.indexOf("toneUpload") ? self.bulkParameters[action.replace(/toneUpload/g, "")] : self.tones;
     };
 
     self.onBulkSuccess = function (bulkResult) {
@@ -151,7 +150,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineTonesCtrl", functio
         });
 
         // reset initial values to be able to modify again the options
-        self.init();
+        init();
     };
 
     self.onBulkError = function (error) {
@@ -159,14 +158,33 @@ angular.module("managerApp").controller("TelecomTelephonyLineTonesCtrl", functio
     };
 
     self.checkNewTones = function () {
-        var customTones = _.keys(_.pick(self.tones, function(val) {
-            return val === "Custom sound";
-        }));
-        if (customTones.length) {
-            _.map(customTones, function (item) {
-                console.log(item);
-            });
+        self.bulkActions = [];
+        if (self.customToneUrl.length) {
+            var customTones = _.keys(_.pick(self.tones, function (val) {
+                return val === "Custom sound";
+            }));
+            if (customTones.length) {
+                _.map(customTones, function (item) {
+                    self.bulkActions.push({
+                        name: "toneUpload" + item,
+                        route: "/telephony/{billingAccount}/line/{serviceName}/tones/toneUpload",
+                        method: "POST",
+                        params: null
+                    });
+                    self.bulkParameters[item] = {
+                        type: item,
+                        url: self.customToneUrl[item]
+                    };
+                });
+            }
         }
+        self.bulkActions.push({
+            name: "tones",
+            route: "/telephony/{billingAccount}/line/{serviceName}/tones",
+            method: "PUT",
+            params: null
+        });
+        self.bulkDatas.infos.actions = self.bulkActions;
     };
 
     init();
