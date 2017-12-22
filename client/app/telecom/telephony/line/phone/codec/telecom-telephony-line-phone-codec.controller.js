@@ -56,10 +56,10 @@ angular.module("managerApp").controller("TelecomTelephonyLinePhoneCodecCtrl", fu
             refreshCodecs();
 
         }, function (error) {
-            if (error.type === "API" && !error.init) {
-                Toast.error([$translate.instant("telephony_line_phone_codec_edit_codec_save_error"), (error.data && error.data.message) || ""].join(" "));
-            } else if (error.type === "API" && error.init) {
+            if (error.init) {
                 Toast.error([$translate.instant("telephony_line_phone_codec_edit_codec_load_error"), (error.data && error.data.message) || ""].join(" "));
+            } else {
+                Toast.error([$translate.instant("telephony_line_phone_codec_edit_codec_save_error"), (error.data && error.data.message) || ""].join(" "));
             }
         }).finally(function () {
             self.loading.save = false;
