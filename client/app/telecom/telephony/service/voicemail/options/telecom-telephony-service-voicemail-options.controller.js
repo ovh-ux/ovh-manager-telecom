@@ -256,15 +256,11 @@ angular.module("managerApp").controller("TelecomTelephonyServiceVoicemailOptions
     };
 
     self.getBulkParams = function () {
-        return {
-            audioFormat: self.notificationForm.audioFormat,
-            doNotRecord: self.recordingForm.doNotRecord,
-            forcePassword: self.recordingForm.forcePassword,
-            fromEmail: self.notificationForm.fromEmail,
-            fromName: self.notificationForm.fromName,
-            keepMessage: self.notificationForm.keepMessage,
-            redirectionEmails: self.settings.redirectionEmails
-        };
+        var data = {};
+        _.assign(data, _.pick(self.notificationForm, ["audioFormat", "fromEmail", "fromName", "keepMessage"]));
+        _.assign(data, _.pick(self.recordingForm, ["doNotRecord", "forcePassword"]));
+        _.assign(data, _.pick(self.settings, ["redirectionEmails"]));
+        return data;
     };
 
     self.onBulkSuccess = function (bulkResult) {
