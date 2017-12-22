@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyLinePhoneCodecCtrl", function ($q, $stateParams, $uibModal, $translate, TelephonyMediator, Toast, OvhApiTelephonyLinePhoneLexi, telephonyBulk, telecomVoip) {
+angular.module("managerApp").controller("TelecomTelephonyLinePhoneCodecCtrl", function ($q, $stateParams, $translate, TelephonyMediator, Toast, OvhApiTelephonyLinePhoneLexi, telephonyBulk, telecomVoip) {
     "use strict";
 
     var self = this;
