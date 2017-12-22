@@ -127,8 +127,8 @@ angular.module("managerApp").controller("TelecomTelephonyLinePhoneCodecCtrl", fu
 
     function testServiceHasPhone (billingAccount, serviceName) {
         return function () {
-            return OvhApiTelephonyLinePhoneLexi.get({billingAccount: billingAccount, serviceName: serviceName}).$promise;
-        }
+            return OvhApiTelephonyLinePhoneLexi.get({ billingAccount: billingAccount, serviceName: serviceName }).$promise;
+        };
     }
 
     /* -----  End of INITIALIZATION  ------*/
@@ -151,7 +151,7 @@ angular.module("managerApp").controller("TelecomTelephonyLinePhoneCodecCtrl", fu
         }
     };
 
-    self.filterServices = function (services) {
+    self.filterServices = function () {
         return self.servicesWithPhone;
     };
 
@@ -176,6 +176,8 @@ angular.module("managerApp").controller("TelecomTelephonyLinePhoneCodecCtrl", fu
                 hideAfter: null
             });
         });
+
+        TelephonyMediator.resetAllCache();
         self.saveNewCodec();
 
         // reset initial values to be able to modify again the options, without re-checking for service with phones
