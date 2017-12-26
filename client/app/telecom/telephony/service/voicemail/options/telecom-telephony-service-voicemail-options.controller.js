@@ -89,6 +89,8 @@ angular.module("managerApp").controller("TelecomTelephonyServiceVoicemailOptions
         self.settings = {}; // current settings from API
         self.greetings = {};
 
+        self.bulkUploadFile = {};
+
         // recording options form
         self.recordingForm = {
             doNotRecord: null,
@@ -193,6 +195,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceVoicemailOptions
                     self.recordingForm.uploadedFile.name,
                     self.recordingForm.uploadedFile
                 ).then(function (doc) {
+                    self.fileId = doc.id;
                     return OvhApiTelephony.Voicemail().Greetings().Lexi().create({
                         billingAccount: $stateParams.billingAccount,
                         serviceName: $stateParams.serviceName
@@ -246,21 +249,23 @@ angular.module("managerApp").controller("TelecomTelephonyServiceVoicemailOptions
         serviceName: $stateParams.serviceName,
         infos: {
             name: "settings",
-            actions: [{
-                name: "settings",
-                route: "/telephony/{billingAccount}/voicemail/{serviceName}/settings",
-                method: "PUT",
-                params: null
-            }]
+            actions: self.bulkActions || []
         }
     };
 
-    self.getBulkParams = function () {
-        var data = {};
-        _.assign(data, _.pick(self.notificationForm, ["audioFormat", "fromEmail", "fromName", "keepMessage"]));
-        _.assign(data, _.pick(self.recordingForm, ["doNotRecord", "forcePassword"]));
-        _.assign(data, _.pick(self.settings, ["redirectionEmails"]));
-        return data;
+    self.getBulkParams = function (action) {
+        switch(action) {
+        case "fileUpload":
+            return self.bulkUploadFile;
+        case "settings":
+            var data = {};
+            _.assign(data, _.pick(self.notificationForm, ["audioFormat", "fromEmail", "fromName", "keepMessage"]));
+            _.assign(data, _.pick(self.recordingForm, ["doNotRecord", "forcePassword"]));
+            _.assign(data, _.pick(self.settings, ["redirectionEmails"]));
+            return data;
+        default:
+            return false;
+        }
     };
 
     self.onBulkSuccess = function (bulkResult) {
@@ -380,6 +385,30 @@ angular.module("managerApp").controller("TelecomTelephonyServiceVoicemailOptions
         }).finally(function () {
             self.emailForm.isAdding = false;
         });
+    };
+
+    self.checkNewFiles = function () {
+        self.bulkActions = [];
+        if (self.fileId) {
+            self.bulkActions.push({
+                name: "fileUpload",
+                route: "/telephony/{billingAccount}/voicemail/{serviceName}/greetings",
+                method: "POST",
+                params: null
+            });
+            self.bulkUploadFile = {
+                documentId: self.fileId,
+                dir: self.recordingForm.dir
+            };
+        }
+        self.bulkActions.push({
+            name: "settings",
+            route: "/telephony/{billingAccount}/voicemail/{serviceName}/settings",
+            method: "PUT",
+            params: null
+        });
+        console.info("self.bulkActions : ", self.bulkActions);
+        self.bulkDatas.infos.actions = self.bulkActions;
     };
 
     // cancel creation of new notification email

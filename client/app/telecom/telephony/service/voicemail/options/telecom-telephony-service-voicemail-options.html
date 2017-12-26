@@ -106,7 +106,7 @@
 
             <div class="row mb-2"
                  data-ng-repeat="redirection in VoicemailOptionsCtrl.settings.redirectionEmails">
-                <span class="col-xs-5 mt-1"
+                <span class="col-xs-5 mt-1 word-break"
                       data-ng-bind="redirection.email"></span>
                 <span class="col-xs-5 mt-1"
                       data-ng-bind="'telephony_line_answer_voicemail_options_mail_type_' + redirection.type | translate"></span>
@@ -239,7 +239,10 @@
                            data-ng-model="VoicemailOptionsCtrl.notificationForm.fromName"
                            data-ng-disabled="VoicemailOptionsCtrl.notificationForm.isSuccess" />
                 </div>
-                <div class="form-group">
+                <div class="form-group"
+                     data-ng-class="{
+                         'has-error': voicemailNotificationForm.fromEmail.$touched && voicemailNotificationForm.fromEmail.$invalid
+                     }">
                     <label class="control-label"
                            for="fromEmail"
                            data-translate="telephony_line_answer_voicemail_options_sender_mail">
@@ -258,7 +261,8 @@
                                               VoicemailOptionsCtrl.notificationForm.isUpdating ||
                                               VoicemailOptionsCtrl.notificationForm.isSuccess ||
                                               VoicemailOptionsCtrl.emailForm.isAdding ||
-                                              VoicemailOptionsCtrl.emailForm.isRemoving">
+                                              VoicemailOptionsCtrl.emailForm.isRemoving ||
+                                              voicemailNotificationForm.fromEmail.$invalid">
                         <span data-ng-if="!VoicemailOptionsCtrl.notificationForm.isSuccess"
                               data-translate="telephony_line_answer_voicemail_options_update"></span>
                         <span data-ng-if="VoicemailOptionsCtrl.notificationForm.isSuccess"
@@ -279,6 +283,7 @@
                                                    data-service-name="{{ VoicemailOptionsCtrl.bulkDatas.serviceName }}"
                                                    data-custom-class="link d-block pl-0 mb-3"
                                                    data-bulk-infos="VoicemailOptionsCtrl.bulkDatas.infos"
+                                                   data-on-open="VoicemailOptionsCtrl.checkNewFiles"
                                                    data-get-bulk-params="VoicemailOptionsCtrl.getBulkParams"
                                                    data-on-success="VoicemailOptionsCtrl.onBulkSuccess"
                                                    data-on-error="VoicemailOptionsCtrl.onBulkError">
