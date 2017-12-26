@@ -101,6 +101,7 @@ angular.module("managerApp").controller(
             });
 
             OvhApiTelephony.Line().Lexi().resetAllCache();
+            self.save();
         };
 
         self.onBulkError = function (error) {
