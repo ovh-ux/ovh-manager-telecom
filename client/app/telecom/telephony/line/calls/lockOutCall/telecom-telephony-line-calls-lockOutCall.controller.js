@@ -78,12 +78,14 @@ angular.module("managerApp").controller(
                 }]
             }
         };
+
         self.getBulkParams = function () {
             return {
                 lockOutCall: self.options.lockOutCall,
                 lockOutCallPassword: self.options.lockOutCallPassword
             };
         };
+
         self.onBulkSuccess = function (bulkResult) {
             // display message of success or error
             telephonyBulk.getToastInfos(bulkResult, {
@@ -100,6 +102,7 @@ angular.module("managerApp").controller(
 
             OvhApiTelephony.Line().Lexi().resetAllCache();
         };
+
         self.onBulkError = function (error) {
             Toast.error([$translate.instant("telephony_line_actions_line_calls_out_lock_call_bulk_on_error"), _.get(error, "msg.data")].join(" "));
         };
