@@ -254,7 +254,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceVoicemailOptions
     };
 
     self.getBulkParams = function (action) {
-        switch(action) {
+        switch (action) {
         case "fileUpload":
             return self.bulkUploadFile;
         case "settings":
