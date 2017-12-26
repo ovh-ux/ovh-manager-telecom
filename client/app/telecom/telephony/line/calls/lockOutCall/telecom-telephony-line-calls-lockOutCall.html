@@ -27,6 +27,11 @@
                  role="alert"
                  data-translate="telephony_line_actions_line_calls_out_lock_call_explain">
             </div>
+            <div class="alert alert-info"
+                 role="alert"
+                 data-ng-if="lockOutCallForm.lockOutCallPassword.$dirty && !lockOutCallForm.$submitted && !LineLockOutCallCtrl.needSave()">
+                <span data-translate="telephony_line_actions_line_calls_out_lock_call_pin_same"></span>
+            </div>
 
             <div class="oui-checkbox">
                 <input type="checkbox"
@@ -50,7 +55,7 @@
             <div class="form-group"
                  data-ng-show="LineLockOutCallCtrl.options.lockOutCall"
                  data-ng-class="{
-                     'has-error': lockOutCallForm.lockOutCallPassword.$touched && lockOutCallForm.lockOutCallPassword.$invalid
+                     'has-error': lockOutCallForm.lockOutCallPassword.$dirty && lockOutCallForm.lockOutCallPassword.$invalid
                  }">
                 <label class="control-label"
                        for="lockOutCallPassword"
@@ -68,7 +73,7 @@
                        maxlength="4">
                 <span class="help-block"
                       role="alert"
-                      data-ng-if="lockOutCallForm.lockOutCallPassword.$touched && lockOutCallForm.lockOutCallPassword.$invalid">
+                      data-ng-if="lockOutCallForm.lockOutCallPassword.$dirty && lockOutCallForm.lockOutCallPassword.$invalid">
                     <span data-translate="telephony_line_actions_line_calls_out_lock_call_pin_error"></span>
                 </span>
             </div>
@@ -81,14 +86,14 @@
                                                data-service-name="{{ LineLockOutCallCtrl.bulkDatas.serviceName }}"
                                                data-custom-class="link d-block pl-0 mb-3"
                                                data-bulk-infos="LineLockOutCallCtrl.bulkDatas.infos"
-                                               data-ng-disabled="LineLockOutCallCtrl.updating || !lockOutCallForm.$valid || !LineLockOutCallCtrl.needSave()"
+                                               data-ng-disabled="LineLockOutCallCtrl.updating || !lockOutCallForm.$valid"
                                                data-get-bulk-params="LineLockOutCallCtrl.getBulkParams"
                                                data-on-success="LineLockOutCallCtrl.onBulkSuccess"
                                                data-on-error="LineLockOutCallCtrl.onBulkError">
                         </telephony-bulk-action>
                         <button type="submit"
                                 class="btn btn-primary"
-                                data-ng-disabled="LineLockOutCallCtrl.updating || !lockOutCallForm.$valid || !LineLockOutCallCtrl.needSave()">
+                                data-ng-disabled="LineLockOutCallCtrl.updating || !lockOutCallForm.$valid">
                             <oui-loader class="mr-2"
                                         data-ng-if="LineDisplayNumberCtrl.updating"
                                         data-size="s">
