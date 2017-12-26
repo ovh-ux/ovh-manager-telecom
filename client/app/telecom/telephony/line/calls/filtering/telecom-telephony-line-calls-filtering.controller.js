@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyLineCallsFilteringCtrl", function ($stateParams, $q, $timeout, Toast, ToastError, OvhApiTelephony, $translate, telephonyBulk) {
+angular.module("managerApp").controller("TelecomTelephonyLineCallsFilteringCtrl", function ($stateParams, $q, $timeout, $translate, Toast, ToastError, OvhApiTelephony, telephonyBulk) {
     "use strict";
 
     var self = this;
