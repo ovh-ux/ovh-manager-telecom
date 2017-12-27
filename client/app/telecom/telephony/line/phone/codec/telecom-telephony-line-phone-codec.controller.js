@@ -3,6 +3,7 @@ angular.module("managerApp").controller("TelecomTelephonyLinePhoneCodecCtrl", fu
 
     var self = this;
     var mustCheckPhones = true;
+    var codecsAuto = null;
 
     self.loading = {
         init: false
@@ -22,11 +23,19 @@ angular.module("managerApp").controller("TelecomTelephonyLinePhoneCodecCtrl", fu
 
     function refreshCodecs () {
         if (self.line.options.codecs) {
+            self.model.codecs = _.find(self.line.availableCodecs, {
+                value: _.trim(self.line.options.codecs, "_a")
+            });
+
+            codecsAuto = _.endsWith(self.line.options.codecs, "_a");
+
             self.codecs = angular.extend({
                 isAutomaticActivated: _.endsWith(self.line.options.codecs, "_a")
             }, _.find(self.line.availableCodecs, {
                 value: self.line.options.codecs.replace("_a", "")
             }));
+
+            self.model.auto = !!self.codecs.isAutomaticActivated;
         }
     }
 
@@ -37,7 +46,7 @@ angular.module("managerApp").controller("TelecomTelephonyLinePhoneCodecCtrl", fu
     };
 
     self.hasChanged = function () {
-        return self.model.codecs && self.codecs.value !== self.model.codecs.value;
+        return (self.model.codecs && self.codecs.value !== self.model.codecs.value) || self.model.auto != codecsAuto;
     };
 
     /* -----  End of HELPERS  ------*/
