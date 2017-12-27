@@ -46,7 +46,7 @@ angular.module("managerApp").controller("TelecomTelephonyLinePhoneCodecCtrl", fu
     };
 
     self.hasChanged = function () {
-        return (self.model.codecs && self.codecs.value !== self.model.codecs.value) || self.model.auto != codecsAuto;
+        return (self.model.codecs && self.codecs.value !== self.model.codecs.value) || self.model.auto !== codecsAuto;
     };
 
     /* -----  End of HELPERS  ------*/
