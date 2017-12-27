@@ -251,6 +251,7 @@
                            name="fromEmail"
                            type="email"
                            class="form-control"
+                           data-ng-pattern="/^([\w\.\-_]+)?\w+@[\w-_]+(\.\w+){1,}$/"
                            data-ng-model="VoicemailOptionsCtrl.notificationForm.fromEmail"
                            data-ng-disabled="VoicemailOptionsCtrl.notificationForm.isSuccess" />
                 </div>
