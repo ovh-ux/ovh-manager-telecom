@@ -35,7 +35,7 @@ angular.module("managerApp").controller("TelecomTelephonyLinePhoneCodecCtrl", fu
                 value: self.line.options.codecs.replace("_a", "")
             }));
 
-            self.model.auto = !!self.codecs.isAutomaticActivated;
+            self.model.auto = self.codecs.isAutomaticActivated;
         }
     }
 
