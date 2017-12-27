@@ -1,7 +1,7 @@
 angular.module("managerApp").service("voipService", class {
 
     constructor (OvhApiTelephony, VoipService, VoipServiceAlias, VoipServiceLine) {
-        this.ovhApiTelephony = OvhApiTelephony;
+        this.OvhApiTelephony = OvhApiTelephony;
         this.VoipService = VoipService;
         this.VoipServiceAlias = VoipServiceAlias;
         this.VoipServiceLine = VoipServiceLine;
@@ -16,7 +16,7 @@ angular.module("managerApp").service("voipService", class {
      *  @return {Promise} That return an Array of VoipService instances.
      */
     getAll (withError = true) {
-        return this.ovhApiTelephony.Service().Erika().query().aggregate("billingAccount").expand().execute().$promise.then((result) =>
+        return this.OvhApiTelephony.Service().Erika().query().aggregate("billingAccount").expand().execute().$promise.then((result) =>
             _.chain(result).filter((res) =>
 
                 // bug on APIv7 ? Sometimes res.error is null but res.value.message contains the error message...
@@ -51,7 +51,7 @@ angular.module("managerApp").service("voipService", class {
      *  @return {Promise}   That returns a VoipService instance representing the service fetched.
      */
     fecthSingleService (billingAccount, serviceName) {
-        return this.ovhApiTelephony.Service().Lexi().get({
+        return this.OvhApiTelephony.Service().Lexi().get({
             billingAccount,
             serviceName
         }).$promise.then((result) => {
@@ -60,6 +60,24 @@ angular.module("managerApp").service("voipService", class {
             return this._constructService(result);
         });
     }
+
+    /* =========================================
+    =            Diagnostic reports            =
+    ========================================== */
+
+    fetchDiagnosticReports (billingAccount, serviceName, dayInterval) {
+        return this.OvhApiTelephony.Service().Lexi().diagnosticReports({
+            billingAccount,
+            serviceName,
+            dayInterval
+        }).$promise;
+    }
+
+    fetchServiceDiagnosticReports (service, dayInterval) {
+        return this.fetchDiagnosticReports(service.billingAccount, service.serviceName, dayInterval);
+    }
+
+    /* -----  End of Diagnostic reports  ------ */
 
     /* ==============================
     =            Filters            =
@@ -120,9 +138,9 @@ angular.module("managerApp").service("voipService", class {
      *  @return {Array.<VoipSercice>} The filtered list of fax.
      */
     filterFaxServices (services) {
-        return _.filter(services, {
-            featureType: "fax"
-        });
+        return _.filter(services, (service) =>
+            ["fax", "voicefax"].indexOf(service.featureType) > -1
+        );
     }
 
     /* -----  End of Filters  ------ */
