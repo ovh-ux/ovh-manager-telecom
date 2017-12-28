@@ -157,6 +157,30 @@ angular.module("managerApp").factory("TelephonyGroup", function ($q, OvhApiTelep
         });
     };
 
+
+    TelephonyGroup.prototype.fetchService = function (serviceName) {
+        var self = this;
+        var number;
+
+        // TODO : handle when group is form other service than alias
+        return OvhApiTelephony.Number().Lexi().get({
+            billingAccount: self.billingAccount,
+            serviceName: serviceName
+        }).$promise.then(function (numberOptions) {
+            number = new TelephonyGroupNumber(angular.extend(numberOptions, {
+                billingAccount: self.billingAccount
+            }));
+
+            if (self.numbers.indexOf(number)) {
+                self.numbers.splice(self.numbers.indexOf(number), 1, number);
+            } else {
+                self.addNumber(number);
+            }
+
+            return number;
+        });
+    };
+
     /* ----------  REPAYMENT CONSUMPTION  ----------*/
 
     TelephonyGroup.prototype.getRepaymentConsumption = function () {

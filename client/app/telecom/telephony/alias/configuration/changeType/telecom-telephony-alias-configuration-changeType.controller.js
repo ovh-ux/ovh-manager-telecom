@@ -128,11 +128,10 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationChang
                 });
             });
 
-            self.changeType();
-            self.noCache = true;
-
-            // reset initial values to be able to modify again the options
-            init();
+            // force v7 reset cache
+            TelephonyMediator.getAll(true).then(function () {
+                $state.go("telecom.telephony.alias.configuration");
+            });
         }, function () {
             Toast.error([$translate.instant("telephony_alias_config_change_type_bulk_server_tasks_all_error")]);
             self.loading.changing = false;
