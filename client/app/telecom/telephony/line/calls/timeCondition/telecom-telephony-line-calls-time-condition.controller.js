@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyLineCallsTimeConditionCtrl", function ($q, $stateParams, $translate, TelephonyMediator, Toast, uiCalendarConfig) {
+angular.module("managerApp").controller("TelecomTelephonyLineCallsTimeConditionCtrl", function ($q, $stateParams, $translate, TelephonyMediator, Toast, uiCalendarConfig, telephonyBulk) {
     "use strict";
 
     var self = this;
@@ -104,5 +104,109 @@ angular.module("managerApp").controller("TelecomTelephonyLineCallsTimeConditionC
     };
 
     /* -----  End of INITIALIZATION  ------*/
+
+    self.bulkDatas = {
+        billingAccount: $stateParams.billingAccount,
+        serviceName: $stateParams.serviceName,
+        conditions: self.line && self.line.timeCondition || [],
+        infos: {
+            name: "timeCondition",
+            actions: [
+                {
+                    name: "deleteSrcConditions",
+                    route: "/telephony/{billingAccount}/timeCondition/{serviceName}/condition/{id}",
+                    method: "DELETE",
+                    params: null
+                },
+                {
+                    name: "editSrcConditions",
+                    route: "/telephony/{billingAccount}/timeCondition/{serviceName}/condition/{id}",
+                    method: "PUT",
+                    params: null
+                },
+                {
+                    name: "options",
+                    route: "/telephony/{billingAccount}/timeCondition/{serviceName}/options",
+                    method: "PUT",
+                    params: null
+                }
+            ]
+        }
+    };
+
+    self.getBulkParams = function (action) {
+        switch (action) {
+        case "deleteSrcConditions":
+        case "editSrcConditions":
+            return false;
+        case "options":
+            var condition = self.line.timeCondition;
+            return {
+                slot1Number: condition.slots[1].number,
+                slot1Type: condition.slots[1].type,
+                slot2Number: condition.slots[2].number,
+                slot2Type: condition.slots[2].type,
+                slot3Number: condition.slots[3].number,
+                slot3Type: condition.slots[3].type,
+                status: condition.enable ? "enabled" : "disabled",
+                timeout: condition.timeout,
+                unavailableNumber: condition.slots[4].number,
+                unavailableType: condition.slots[4].type
+            };
+        default:
+            return false;
+        }
+    };
+
+    self.onBulkSuccess = function (bulkResult) {
+        // display message of success or error
+        telephonyBulk.getToastInfos(bulkResult, {
+            fullSuccess: $translate.instant("telephony_line_calls_time_condition_bulk_all_success"),
+            partialSuccess: $translate.instant("telephony_line_calls_time_condition_bulk_some_success", {
+                count: bulkResult.success.length
+            }),
+            error: $translate.instant("telephony_line_calls_time_condition_bulk_error")
+        }).forEach(function (toastInfo) {
+            Toast[toastInfo.type](toastInfo.message, {
+                hideAfter: null
+            });
+        });
+    };
+
+    self.onBulkError = function (error) {
+        Toast.error([$translate.instant("telephony_line_calls_time_condition_bulk_on_error"), _.get(error, "msg.data")].join(" "));
+    };
+
+    self.getTimeConditions = function () {
+        self.bulkActions = [];
+        self.timeConditions = [];
+        _.map(self.line.timeCondition.conditions, function (item) {
+            var id = item.conditionId,
+                timeCondition = {
+                    day: item.weekDay,
+                    hourBegin: item.timeFrom,
+                    hourEnd: item.timeTo,
+                    policy: item.policy,
+                    status: item.status
+                };
+            self.timeConditions.push(timeCondition);
+            self.bulkActions.push({
+                name: "deleteTC" + id,
+                route: "/telephony/{billingAccount}/timeCondition/{serviceName}/condition/" + id,
+                method: "DELETE",
+                params: null
+            });
+        });
+        _.map(self.timeConditions, function (item, key) {
+            self.bulkActions.push({
+                name: "addTC" + key,
+                route: "/telephony/{billingAccount}/timeCondition/{serviceName}/condition",
+                method: "POST",
+                params: null
+            });
+        });
+        self.bulkActions.push();
+        self.bulkDatas.infos.actions = self.bulkActions;
+    };
 
 });
