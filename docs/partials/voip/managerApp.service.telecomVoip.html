@@ -1,0 +1,25 @@
+<a href="https://github.com/ovh-ux/ovh-manager-telecom/tree/master/client/components/telecom/voip/telecom-voip.service.js#L24" class="view-source"><i class="icon-eye-open"> </i>View source</a><h1><code ng:non-bindable="">telecomVoip</code>
+<div><span class="hint">service in module <code ng:non-bindable="">managerApp</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="managerapp-service-page managerapp-service-telecomvoip-page"><p>This service is the beginning of everything :-) This service will allow you to fetch all billingAccounts and their services in one API call. It&#39;s used for example to display sidebar menu.</p>
+<p>This will be used to replace telecom/telephony factories and services like it has been done in a bad way :-)</p>
+<p>Groups cache will be removed and everything will be refreshed by APIv7 calls.</p></div></div>
+<h2 id="dependencies">Dependencies</h2>
+<ul class="dependencies"><li><code ng:non-bindable=""><a href="voip/managerApp.service:voipBillingAccount">voipBillingAccount</a></code>
+</li>
+<li><code ng:non-bindable=""><a href="voip/managerApp.service:voipService">voipService</a></code>
+</li>
+</ul>
+<div class="member method"><h2 id="methods">Methods</h2>
+<ul class="methods"><li><a href="https://github.com/ovh-ux/ovh-manager-telecom/tree/master/client/components/telecom/voip/telecom-voip.service.js#L43" class="view-source icon-eye-open"> </a><h3 id="methods_fetchall">fetchAll(withError)</h3>
+<div class="fetchall"><div class="managerapp-service-page managerapp-service-telecomvoip-fetchall-page"><p>Fetch all (billing accounts and associated services) of connected user.</p>
+</div><h5 id="methods_fetchall_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>withError</td><td><a href="" class="label type-hint type-hint-boolean">Boolean</a></td><td><div class="managerapp-service-page managerapp-service-telecomvoip-fetchall-page"><p>Either return billingAccounts and services with error or not. Should be replaced with better filters when APIv7 will be able to filter by status code (SOON !!!).</p>
+</div> <p><em>(default: true)</em></p></td></tr></tbody></table><h5 id="methods_fetchall_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-promise">Promise</a></td><td><div class="managerapp-service-page managerapp-service-telecomvoip-fetchall-page"><p>That returns all services grouped by billing accounts.</p>
+</div></td></tr></table></div>
+</li>
+</ul>
+</div>
+</div>

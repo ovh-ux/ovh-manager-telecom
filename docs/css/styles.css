@@ -30,10 +30,31 @@
     color: #FFF !important;
 }
 
-.type-hint + .type-hint {
+ul.methods,
+ul.properties {
+    padding: 0;
+}
+
+.type-hint {
     background: #999;
 }
 
-ul.methods {
-    padding: 0;
+.type-hint.type-hint-string {
+    background: #3a87ad;
+}
+
+.type-hint.type-hint-object {
+    background: #999;
+}
+
+.type-hint.type-hint-array {
+    background: #F90;;
+}
+
+.type-hint.type-hint-boolean {
+    background: rgb(18, 131, 39);
+}
+
+.type-hint.type-hint-number {
+    background: rgb(189, 63, 66);
 }

@@ -231,7 +231,8 @@ module.exports = function (grunt) {
                     }
                 ]
             },
-            server: "<%= yeoman.tmp %>"
+            server: "<%= yeoman.tmp %>",
+            ngdocs: "docs"
         },
 
         //#######################################################################################
@@ -545,7 +546,7 @@ module.exports = function (grunt) {
                     expand: true,
                     dot: true,
                     cwd: "node_modules/ovh-ui-kit-bs/dist/",
-                    dest: "docs/dist/css",
+                    dest: "docs/css",
                     src: [
                         "**/*"
                     ]
@@ -862,17 +863,17 @@ module.exports = function (grunt) {
         //#######################################################################################
         ngdocs: {
             options: {
-                dest: "docs/dist",
-                html5Mode: false,
-                title: "OVH Control Panel Telecom UI - Documentation",
+                dest: "docs/",
+                title: "Telecom - Documentation",
                 titleLink: "#voip/managerApp",
                 startPage: "voip/managerApp",
-                template: "docs/custom/index-bs3.tmpl",
+                template: "tasks/docs/index-bs3.tmpl",
                 styles: [
-                    "docs/custom/css/styles.css",
-                    "docs/custom/css/ovh-ui-kit-bs.css"
-                ]
-                // sourceLink: "https://github.com/ovh-ux/ovh-manager-telecom/tree/master/{{file}}#L{{codeline}}"       to uncomment when merged on master
+                    "tasks/docs/css/styles.css",
+                    "tasks/docs/css/ovh-ui-kit-bs.css"
+                ],
+                // to uncomment when merged on master
+                sourceLink: "https://github.com/ovh-ux/ovh-manager-telecom/tree/master/{{file}}#L{{codeline}}"
             },
             voip: {
                 src: ["client/components/telecom/voip/**/*.js"],
@@ -913,7 +914,7 @@ module.exports = function (grunt) {
         }
 
         grunt.task.run([
-            "clean",
+            "clean:dist",
             "env:all",
             "babel:dist",
             "ngconstant",
@@ -941,7 +942,7 @@ module.exports = function (grunt) {
 
     grunt.registerTask("test", function (target, option) {
         return grunt.task.run([
-            "clean",
+            "clean:dist",
             "env:all",
             "babel:test",
             "ngconstant",
@@ -951,6 +952,14 @@ module.exports = function (grunt) {
             "wiredep:test",
             "eslint:all",
             "karma:unit"
+        ]);
+    });
+
+    grunt.registerTask("docs", function (target, option) {
+        return grunt.task.run([
+            "clean:ngdocs",
+            "ngdocs",
+            "copy:ngdocs"
         ]);
     });
 
