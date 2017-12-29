@@ -539,6 +539,17 @@ module.exports = function (grunt) {
                         "{app,components}/**/!(*.tpl).html"
                     ]
                 }]
+            },
+            ngdocs: {
+                files: [{
+                    expand: true,
+                    dot: true,
+                    cwd: "node_modules/ovh-ui-kit-bs/dist/",
+                    dest: "docs/dist/css",
+                    src: [
+                        "**/*"
+                    ]
+                }]
             }
         },
 
@@ -843,6 +854,31 @@ module.exports = function (grunt) {
                 }
             },
             build: {}
+        },
+
+        //#######################################################################################
+        //##      TASK: ngdocs                                                                 ##
+        //##            Build some documentation.                                              ##
+        //#######################################################################################
+        ngdocs: {
+            options: {
+                dest: "docs/dist",
+                html5Mode: false,
+                title: "OVH Control Panel Telecom UI - Documentation",
+                titleLink: "#voip/managerApp",
+                startPage: "voip/managerApp",
+                template: "docs/custom/index-bs3.tmpl",
+                styles: [
+                    "docs/custom/css/styles.css",
+                    "docs/custom/css/ovh-ui-kit-bs.css"
+                ]
+                // sourceLink: "https://github.com/ovh-ux/ovh-manager-telecom/tree/master/{{file}}#L{{codeline}}"       to uncomment when merged on master
+            },
+            voip: {
+                src: ["client/components/telecom/voip/**/*.js"],
+                title: "Telephony API",
+                api: true
+            }
         }
     });
 

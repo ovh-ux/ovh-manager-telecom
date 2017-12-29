@@ -1,0 +1,39 @@
+.navbar.navbar-oui {
+    background: #122844;
+    border: none;
+    border-radius: 0;
+}
+
+.navbar.navbar-oui .navbar-header,
+.navbar.navbar-oui .navbar-header a,
+.navbar.navbar-oui .navbar-header .navbar-brand i {
+    color:  #FFF;
+}
+
+.navbar.navbar-oui .nav.navbar-nav li,
+.navbar.navbar-oui .nav.navbar-nav li a {
+    color: #FFF;
+}
+
+.navbar.navbar-oui .nav.navbar-nav li.active,
+.navbar.navbar-oui .nav.navbar-nav li.active a {
+    color: #59d2ef;
+    background-color: #273b54;
+}
+
+.breadcrumb li > * {
+    float: none !important;
+    margin: 0 !important;
+}
+
+.label {
+    color: #FFF !important;
+}
+
+.type-hint + .type-hint {
+    background: #999;
+}
+
+ul.methods {
+    padding: 0;
+}

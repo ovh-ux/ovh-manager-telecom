@@ -1,3 +1,15 @@
+/**
+ *  @ngdoc service
+ *  @name managerApp.service:voipService
+ *
+ *  @requires OvhApiTelephony from ovh-api-services
+ *  @requires managerApp.object:VoipService
+ *  @requires managerApp.object:VoipServiceAlias
+ *  @requires managerApp.object:VoipServiceLine
+ *
+ *  @description
+ *  Service that manage API calls to `/telephony/{billingAccount}/service/{serviceName}`. It will differenciate alias and line service types.
+ */
 angular.module("managerApp").service("voipService", class {
 
     constructor (OvhApiTelephony, VoipService, VoipServiceAlias, VoipServiceLine) {
@@ -8,14 +20,18 @@ angular.module("managerApp").service("voipService", class {
     }
 
     /**
-     *  @description
-     *  Get all the service of connected user.
+     *  @ngdoc method
+     *  @name managerApp.service:voipService#fetchAll
+     *  @methodOf managerApp.service:voipService
      *
-     *  @param {Boolean} [withError=true]   Either return billingAccounts and services with error or not. Should be replaced with better filters when APIv7 will be able to filter by status code (SOON !!!).
+     *  @description
+     *  Get all the service of connected user using API v7.
+     *
+     *  @param {Boolean} [withError=true]   Either return services with error or not. Should be replaced with better filters when APIv7 will be able to filter by status code (SOON !!!).
      *
      *  @return {Promise} That return an Array of VoipService instances.
      */
-    getAll (withError = true) {
+    fetchAll (withError = true) {
         return this.OvhApiTelephony.Service().Erika().query().aggregate("billingAccount").expand().execute().$promise.then((result) =>
             _.chain(result).filter((res) =>
 
@@ -42,13 +58,18 @@ angular.module("managerApp").service("voipService", class {
     }
 
     /**
+     *  @ngdoc method
+     *  @name managerApp.service:voipService#fecthSingleService
+     *  @methodOf managerApp.service:voipService
+     *
      *  @description
-     *  Use API to get single service of given billingAccount and serviceName
+     *  <p>Use API to get single service of given billingAccount and serviceName.</p>
+     *  <p>Make a call to *GET* `/telephony/{billingAccount}/service/{serviceName}` API route.</p>
      *
      *  @param  {String} billingAccount The billingAccount to which is attached the service.
      *  @param  {String} serviceName    The unique id of the service.
      *
-     *  @return {Promise}   That returns a VoipService instance representing the service fetched.
+     *  @return {Promise}   That returns a VoipService instance representing the fetched service.
      */
     fecthSingleService (billingAccount, serviceName) {
         return this.OvhApiTelephony.Service().Lexi().get({
@@ -65,6 +86,21 @@ angular.module("managerApp").service("voipService", class {
     =            Diagnostic reports            =
     ========================================== */
 
+    /**
+     *  @ngdoc method
+     *  @name managerApp.service:voipService#fetchDiagnosticReports
+     *  @methodOf managerApp.service:voipService
+     *
+     *  @description
+     *  <p>Use API to fetch relevant informations of the service detected from the MOS or the signal leg in SIP/MGCP protocol.</p>
+     *  <p>Make a call to *GET* `/telephony/{billingAccount}/service/{serviceName}/diagnosticReports` API route.</p>
+     *
+     *  @param  {String} billingAccount The billingAccount to which is attached the service.
+     *  @param  {String} serviceName    The unique id of the service.
+     *  @param  {String} dayInterval    Number of days from now that you want to get report.
+     *
+     *  @return {Promise}   That returns an Array of {@link https://eu.api.ovh.com/console/#/telephony/%7BbillingAccount%7D/service/%7BserviceName%7D/diagnosticReports#GET `telephony.DiagnosticReport`} objects.
+     */
     fetchDiagnosticReports (billingAccount, serviceName, dayInterval) {
         return this.OvhApiTelephony.Service().Lexi().diagnosticReports({
             billingAccount,
@@ -73,6 +109,19 @@ angular.module("managerApp").service("voipService", class {
         }).$promise;
     }
 
+    /**
+     *  @ngdoc method
+     *  @name managerApp.service:voipService#fetchServiceDiagnosticReports
+     *  @methodOf managerApp.service:voipService
+     *
+     *  @description
+     *  <p>Same as `fetchDiagnosticReports` but taking in argument a VoipService instance.</p>
+     *
+     *  @param  {VoipService} service   The VoipService instance you want to fetch diagnostic reports.
+     *  @param  {String} dayInterval    Number of days from now that you want to get report.
+     *
+     *  @return {Promise}   That returns an Array of {@link http://jean-baptiste.devs.ria.ovh.net/rico/#/telephony/%7BbillingAccount%7D/service/%7BserviceName%7D/diagnosticReports#GET `telephony.DiagnosticReport`} objects.
+     */
     fetchServiceDiagnosticReports (service, dayInterval) {
         return this.fetchDiagnosticReports(service.billingAccount, service.serviceName, dayInterval);
     }
@@ -86,6 +135,10 @@ angular.module("managerApp").service("voipService", class {
     /* ----------  By service type  ---------- */
 
     /**
+     *  @ngdoc method
+     *  @name managerApp.service:voipService#filterAliasServices
+     *  @methodOf managerApp.service:voipService
+     *
      *  @description
      *  Filter the services of given services list that match alias serviceType.
      *
@@ -100,6 +153,10 @@ angular.module("managerApp").service("voipService", class {
     }
 
     /**
+     *  @ngdoc method
+     *  @name managerApp.service:voipService#filterLineServices
+     *  @methodOf managerApp.service:voipService
+     *
      *  @description
      *  Filter the services of given services list that match line serviceType.
      *
@@ -116,6 +173,10 @@ angular.module("managerApp").service("voipService", class {
     /* ----------  By feature type  ---------- */
 
     /**
+     *  @ngdoc method
+     *  @name managerApp.service:voipService#filterPlugAndFaxServices
+     *  @methodOf managerApp.service:voipService
+     *
      *  @description
      *  Filter the services of given services list that match plugAndFax featureType.
      *
@@ -130,6 +191,10 @@ angular.module("managerApp").service("voipService", class {
     }
 
     /**
+     *  @ngdoc method
+     *  @name managerApp.service:voipService#filterFaxServices
+     *  @methodOf managerApp.service:voipService
+     *
      *  @description
      *  Filter the services of given services list that match fax featureType.
      *
@@ -146,6 +211,10 @@ angular.module("managerApp").service("voipService", class {
     /* -----  End of Filters  ------ */
 
     /**
+     *  @ngdoc method
+     *  @name managerApp.service:voipService#sortServicesByDisplayedName
+     *  @methodOf managerApp.service:voipService
+     *
      *  @description
      *  Sort given services list by displayed name.
      *
