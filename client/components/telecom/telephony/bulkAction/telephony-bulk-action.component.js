@@ -13,7 +13,8 @@
             onOpen: "&?",
             onSuccess: "&?",
             onError: "&?",
-            filterServices: "&?"
+            filterServices: "&?",
+            filterServicesAsync: "&?"
         },
         templateUrl: "components/telecom/telephony/bulkAction/telephony-bulk-action.html",
         controller: "telephonyBulkActionCtrl"

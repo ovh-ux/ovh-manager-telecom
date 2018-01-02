@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyLineManagementOfferChangeCtrl", function ($q, $stateParams, $translate, TelephonyMediator, Toast) {
+angular.module("managerApp").controller("TelecomTelephonyLineManagementOfferChangeCtrl", function ($q, $stateParams, $translate, TelephonyMediator, Toast, OvhApiTelephony, telephonyBulk) {
     "use strict";
 
     var self = this;
@@ -96,6 +96,102 @@ angular.module("managerApp").controller("TelecomTelephonyLineManagementOfferChan
     };
 
     /* -----  End of EVENTS  ------ */
+
+    /* ===========================
+    =            BULK            =
+    ============================ */
+
+    self.bulkDatas = {
+        billingAccount: $stateParams.billingAccount,
+        serviceName: $stateParams.serviceName,
+        infos: {
+            name: "offerChange",
+            actions: [{
+                name: "offerChange",
+                route: "/telephony/{billingAccount}/service/{serviceName}/offerChange",
+                method: "POST",
+                params: null
+            }]
+        }
+    };
+
+    self.filterServices = function (services) {
+        return _.filter(services, function (service) {
+            return service.isEditable;
+        });
+    };
+
+    self.getBulkParams = function () {
+        return {
+            offer: self.model.offer.name
+        };
+    };
+
+    self.onBulkSuccess = function (bulkResult) {
+
+        // display message of success or error
+        telephonyBulk.getToastInfos(bulkResult, {
+            fullSuccess: $translate.instant("telephony_line_management_change_offer_bulk_all_success"),
+            partialSuccess: $translate.instant("telephony_line_management_change_offer_bulk_some_success", {
+                count: bulkResult.success.length
+            }),
+            error: $translate.instant("telephony_line_management_change_offer_bulk_error")
+        }).forEach(function (toastInfo) {
+            Toast[toastInfo.type](toastInfo.message, {
+                hideAfter: null
+            });
+        });
+
+        // reset initial values to be able to modify again the options
+        init();
+        self.model.isCanceling = false;
+    };
+
+    self.onBulkError = function (error) {
+        Toast.error([$translate.instant("telephony_line_management_change_offer_bulk_on_error"), _.get(error, "msg.data")].join(" "));
+    };
+
+    self.serviceCanChangeToOffer = function (services) {
+        var chosenOffer = self.model.offer;
+        var promises = [];
+
+        var filteredServices = _.filter(services, function (service) {
+            return ["sip", "mgcp"].indexOf(service.featureType) > -1;
+        });
+
+        _.forEach(filteredServices, function (service) {
+            promises.push(callGetOfferChanges(service.billingAccount, service.serviceName));
+        });
+
+        return $q.allSettled(promises).then(function (listOffers) {
+            _.times(listOffers.length, function (index) {
+                if (listOffers[index]) {
+                    angular.extend(filteredServices[index], {
+                        isEditable: _.find(listOffers[index], function (offer) {
+                            return offer.name === chosenOffer.name;
+                        })
+                    });
+                }
+            });
+
+            filteredServices = _.filter(filteredServices, function (service) {
+                return service.isEditable;
+            });
+
+            return $q.when(filteredServices);
+        }).catch(function () {
+            return $q.reject();
+        });
+    };
+
+    function callGetOfferChanges (billingAccount, serviceName) {
+        return OvhApiTelephony.Service().Lexi().offerChanges({
+            billingAccount: billingAccount,
+            serviceName: serviceName
+        }).$promise;
+    }
+
+    /* -----  End of BULK  ------ */
 
     /* =====================================
     =            INITIALIZATION            =
