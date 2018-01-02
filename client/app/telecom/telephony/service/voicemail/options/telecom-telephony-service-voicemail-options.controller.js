@@ -407,7 +407,6 @@ angular.module("managerApp").controller("TelecomTelephonyServiceVoicemailOptions
             method: "PUT",
             params: null
         });
-        console.info("self.bulkActions : ", self.bulkActions);
         self.bulkDatas.infos.actions = self.bulkActions;
     };
 
