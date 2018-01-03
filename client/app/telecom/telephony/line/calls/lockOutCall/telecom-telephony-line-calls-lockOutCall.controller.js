@@ -69,7 +69,7 @@ angular.module("managerApp").controller(
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName,
             infos: {
-                name: "options",
+                name: "lockOutCall",
                 actions: [{
                     name: "options",
                     route: "/telephony/{billingAccount}/line/{serviceName}/options",
