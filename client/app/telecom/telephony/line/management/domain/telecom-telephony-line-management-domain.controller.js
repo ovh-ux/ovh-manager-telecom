@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyLineDomainCtrl", function ($q, $stateParams, $translate, TelephonyMediator, OvhApiTelephony, Toast) {
+angular.module("managerApp").controller("TelecomTelephonyLineDomainCtrl", function ($q, $stateParams, $translate, TelephonyMediator, OvhApiTelephony, OvhApiTelephonyLineOptions, Toast, telephonyBulk) {
     "use strict";
 
     var self = this;
@@ -101,6 +101,63 @@ angular.module("managerApp").controller("TelecomTelephonyLineDomainCtrl", functi
         });
     };
 
+    /* ===========================
+    =            BULK            =
+    ============================ */
+
+    self.bulkDatas = {
+        billingAccount: $stateParams.billingAccount,
+        serviceName: $stateParams.serviceName,
+        infos: {
+            name: "domain",
+            actions: [{
+                name: "options",
+                route: "/telephony/{billingAccount}/line/{serviceName}/options",
+                method: "PUT",
+                params: null
+            }]
+        }
+    };
+
+    self.filterServices = function (services) {
+        return _.filter(services, function (service) {
+            return ["sip", "mgcp"].indexOf(service.featureType) > -1;
+        });
+    };
+
+    self.getBulkParams = function () {
+        return {
+            domain: self.line.options.domain
+        };
+    };
+
+    self.onBulkSuccess = function (bulkResult) {
+        // display message of success or error
+        telephonyBulk.getToastInfos(bulkResult, {
+            fullSuccess: $translate.instant("telephony_line_management_sip_domain_bulk_all_success"),
+            partialSuccess: $translate.instant("telephony_line_management_sip_domain_bulk_some_success", {
+                count: bulkResult.success.length
+            }),
+            error: $translate.instant("telephony_line_management_sip_domain_bulk_error")
+        }).forEach(function (toastInfo) {
+            Toast[toastInfo.type](toastInfo.message, {
+                hideAfter: null
+            });
+        });
+
+        self.validateLineDomain();
+
+        // reset initial values to be able to modify again the options
+        OvhApiTelephonyLineOptions.resetCache();
+        init();
+    };
+
+    self.onBulkError = function (error) {
+        Toast.error([$translate.instant("telephony_line_management_sip_domain_bulk_on_error"), _.get(error, "msg.data")].join(" "));
+    };
+
+    /* -----  End of BULK  ------ */
+
     /* -----  End of ACTIONS  ------*/
 
     /*= =====================================
@@ -110,7 +167,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineDomainCtrl", functi
     function init () {
         self.loading.init = true;
 
-        return TelephonyMediator.getGroup($stateParams.billingAccount).then(function (group) {
+        return TelephonyMediator.getGroup($stateParams.billingAccount, true).then(function (group) {
             self.line = group.getLine($stateParams.serviceName);
 
             return $q.all({

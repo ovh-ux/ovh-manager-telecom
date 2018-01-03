@@ -177,13 +177,12 @@ angular.module("managerApp", [
 
         var config = TRACKING.atInternetConfiguration;
 
-        OvhApiMe.Lexi().get().$promise
-            .then(function (me) {
-                config.countryCode = me.country;
-                config.currencyCode = me.currency && me.currency.code;
-                config.visitorId = me.customerCode;
-                atInternet.setDefaults(config);
-            });
+        atInternet.setDefaultsPromise(OvhApiMe.Lexi().get().$promise.then(function (me) {
+            config.countryCode = me.country;
+            config.currencyCode = me.currency && me.currency.code;
+            config.visitorId = me.customerCode;
+            return config;
+        }));
     })
 
 /*= =========  INTERCEPT ERROR IF NO TRANSLATION FOUND  ==========*/
