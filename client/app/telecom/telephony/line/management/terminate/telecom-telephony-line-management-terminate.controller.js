@@ -98,6 +98,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineTerminateCtrl", fun
             fullSuccess: $translate.instant("telephony_group_line_terminating_bulk_all_success"),
             partialSuccess: $translate.instant("telephony_group_line_terminating_bulk_some_success", {
                 count: bulkResult.success.length
+
             }),
             error: $translate.instant("telephony_group_line_terminating_bulk_error")
         }).forEach(function (toastInfo) {
