@@ -162,7 +162,7 @@ angular.module("managerApp").factory("TelephonyGroup", function ($q, OvhApiTelep
         var self = this;
         var number;
 
-        // TODO : handle when group is form other service than alias
+        // TODO : handle when service is not an alias
         return OvhApiTelephony.Number().Lexi().get({
             billingAccount: self.billingAccount,
             serviceName: serviceName
@@ -171,8 +171,10 @@ angular.module("managerApp").factory("TelephonyGroup", function ($q, OvhApiTelep
                 billingAccount: self.billingAccount
             }));
 
-            if (self.numbers.indexOf(number)) {
-                self.numbers.splice(self.numbers.indexOf(number), 1, number);
+            if (self.getNumber(number.serviceName)) {
+                self.numbers.splice(_.findIndex(self.numbers, function (n) {
+                    return n.serviceName === number.serviceName;
+                }), 1, number);
             } else {
                 self.addNumber(number);
             }
