@@ -80,25 +80,23 @@
                         </textarea>
                     </div>
                     <div class="form-group mt-4">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <hr/>
-                                <telephony-bulk-action
-                                    data-billing-account="{{ TerminateCtrl.bulkDatas.billingAccount }}"
-                                    data-service-name="{{ TerminateCtrl.bulkDatas.serviceName }}"
-                                    data-custom-class="link d-block pl-0 mb-3"
+                        <div class="col-md-6">
+                            <hr/>
+                            <telephony-bulk-action
+                                data-billing-account="{{ TerminateCtrl.bulkDatas.billingAccount }}"
+                                data-service-name="{{ TerminateCtrl.bulkDatas.serviceName }}"
+                                data-custom-class="link d-block pl-0 mb-3"
+                                data-ng-disabled="!terminateFrom.$valid || TerminateCtrl.loading.terminate"
+                                data-bulk-infos="TerminateCtrl.bulkDatas.infos"
+                                data-get-bulk-params="TerminateCtrl.getBulkParams"
+                                data-on-success="TerminateCtrl.onBulkSuccess"
+                                data-on-error="TerminateCtrl.onBulkError">
+                            </telephony-bulk-action>
+                            <button type="submit"
+                                    class="btn btn-primary"
                                     data-ng-disabled="!terminateFrom.$valid || TerminateCtrl.loading.terminate"
-                                    data-bulk-infos="TerminateCtrl.bulkDatas.infos"
-                                    data-get-bulk-params="TerminateCtrl.getBulkParams"
-                                    data-on-success="TerminateCtrl.onBulkSuccess"
-                                    data-on-error="TerminateCtrl.onBulkError">
-                                </telephony-bulk-action>
-                                <button type="submit"
-                                        class="btn btn-primary"
-                                        data-ng-disabled="!terminateFrom.$valid || TerminateCtrl.loading.terminate"
-                                        data-translate="telephony_group_line_terminate_terminate">
-                                </button>
-                            </div>
+                                    data-translate="telephony_group_line_terminate_terminate">
+                            </button>
                         </div>
                     </div>
                 </form>
