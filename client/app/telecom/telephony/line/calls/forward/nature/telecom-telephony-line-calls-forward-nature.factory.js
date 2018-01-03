@@ -21,5 +21,4 @@ angular.module("managerApp").factory("TelecomTelephonyLineCallsForwardNature", f
     };
 
     return TelecomTelephonyLineCallsForwardNature;
-}
-);
+});
