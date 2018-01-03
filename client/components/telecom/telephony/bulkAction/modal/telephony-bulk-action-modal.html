@@ -85,7 +85,8 @@
             <!-- Service list -->
             <ul class="list-group">
                 <li class="list-group-item"
-                    data-ng-repeat="service in $ctrl.serviceList | orderBy:'getDisplayedName()' track by service.serviceName">
+                    data-ng-repeat="service in $ctrl.serviceList | orderBy:'getDisplayedName()' track by service.serviceName"
+                    data-ng-class="{'has-update': service.hasUpdate}">
                     <div class="oui-checkbox">
                         <input type="checkbox"
                                class="oui-checkbox__input"
@@ -103,6 +104,9 @@
                                       data-ng-if="!service.isDescriptionSameAsServiceName()"
                                       data-ng-bind="service.serviceName">
                                 </span>
+                                <span class="has-update_description"
+                                      data-translate="telephony_bulk_action_modal_service_updated"
+                                      data-ng-if="service.hasUpdate"></span>
                             </span>
                             <span class="oui-checkbox__icon">
                                 <i class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></i>
