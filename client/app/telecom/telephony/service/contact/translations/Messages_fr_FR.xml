@@ -56,4 +56,9 @@
     <translation id="telephony_service_contact_must_fill">Ce champ est obligatoire.</translation>
     <translation id="telephony_service_contact_city_not_found">Aucune ville n’a été trouvée pour ce code postal.</translation>
     <translation id="telephony_service_contact_success">Vos coordonnées ont bien été mises à jour.</translation>
+
+    <translation id="telephony_service_contact_bulk_all_success">La modification des coordonnées a bien été appliquée aux services sélectionnés.</translation>
+    <translation id="telephony_service_contact_bulk_some_success">La modification des coordonnées a bien été appliquée à {{ count }} des services sélectionnés.</translation>
+    <translation id="telephony_service_contact_bulk_error">La modification des coordonnées n'a pu être appliquée au(x) service(s) suivant(s) :</translation>
+    <translation id="telephony_service_contact_bulk_on_error">Oups ! Une erreur est survenue lors de la modification des coordonnées.</translation>
 </translations>

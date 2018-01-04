@@ -184,10 +184,12 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationCtrl"
         self.loading.init = true;
 
         return TelephonyMediator.getGroup($stateParams.billingAccount).then(function (group) {
-            self.number = group.getNumber($stateParams.serviceName);
+            return group.fetchService($stateParams.serviceName).then(function (number) {
+                self.number = number;
 
-            return self.number.feature.init().then(function () {
-                self.actions = initActions();
+                return self.number.feature.init().then(function () {
+                    self.actions = initActions();
+                });
             });
         }).catch(function (error) {
             Toast.error([$translate.instant("telephony_alias_configuration_load_error"), _.get(error, "data.message", "")].join(" "));
