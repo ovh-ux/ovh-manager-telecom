@@ -1,3 +1,17 @@
+/**
+ *  @ngdoc object
+ *  @name managerApp.object:VoipService
+ *
+ *  @description
+ *  <p>Factory that describes a service with attributes returned by `/telephony/{billingAccount}/service/{serviceName}` API.</p>
+ *  <p>See {@link https://eu.api.ovh.com/console/#/telephony/%7BbillingAccount%7D/service/%7BserviceName%7D#GET `telephony.TelephonyService` enum} for available properties.</p>
+ *
+ *  @constructor
+ *  @param {Object} options Options required for creating a new instance of VoipService (see {@link https://eu.api.ovh.com/console/#/telephony/%7BbillingAccount%7D/service/%7BserviceName%7D#GET `telephony.TelephonyService` enum}
+ *  for availables options properties).
+ *
+ *  Note that `billingAccount` and `serviceName` options are mandatory.
+ */
 angular.module("managerApp").factory("VoipService", function () {
     "use strict";
 
@@ -40,6 +54,10 @@ angular.module("managerApp").factory("VoipService", function () {
         ==================================== */
 
         /**
+         *  @ngdoc method
+         *  @name managerApp.object:VoipService#getDisplayedName
+         *  @propertyOf managerApp.object:VoipService
+         *
          *  @description
          *  Get the displayed name of the service.
          *
@@ -50,10 +68,14 @@ angular.module("managerApp").factory("VoipService", function () {
         }
 
         /**
+         *  @ngdoc method
+         *  @name managerApp.object:VoipService#isDescriptionSameAsServiceName
+         *  @propertyOf managerApp.object:VoipService
+         *
          *  @description
          *  Helper that check if the description is the same as serviceName.
          *
-         *  @return {Boolean}
+         *  @return {Boolean}   `true` if description is the same that serviceName.
          */
         isDescriptionSameAsServiceName () {
             return this.description === this.serviceName;

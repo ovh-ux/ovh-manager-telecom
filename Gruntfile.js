@@ -964,7 +964,7 @@ module.exports = function (grunt) {
     });
 
     grunt.registerTask("buildProd", [
-        "clean:dist",
+        "clean",
         "babel:dist",
         "ngconstant",
         "concurrent:templates",
@@ -983,7 +983,8 @@ module.exports = function (grunt) {
         "cssmin",
         "uglify",
         "rev",
-        "usemin"
+        "usemin",
+        "ngdocs"
     ]);
 
     grunt.registerTask("default", [

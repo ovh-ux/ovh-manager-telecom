@@ -1,7 +1,13 @@
 /**
+ *  @ngdoc service
+ *  @name managerApp.service:voipFax
+ *
+ *  @requires OvhApiTelephony from ovh-api-services
+ *  @requires managerApp.object:VoipLineFeature
+ *
  *  @description
- *  Describe a service that manage fax and freefax feature types.
- *  API side, it's /telephony/{billingAccount}/fax/{serviceName} that manage these types.
+ *  <p>Describe a service that manage fax and freefax feature types.</p>
+ *  <p>This service will manage API calls to `/telephony/{billingAccount}/fax/{serviceName}` (see {@link https://eu.api.ovh.com/console/#/telephony/%7BbillingAccount%7D/fax#GET telephony fax APIs})</p>
  */
 angular.module("managerApp").service("voipFax", class {
 
@@ -10,6 +16,19 @@ angular.module("managerApp").service("voipFax", class {
         this.VoipLineFeature = VoipLineFeature;
     }
 
+    /**
+     *  @ngdoc method
+     *  @name managerApp.service:voipFax#fetchFeature
+     *  @methodOf managerApp.service:voipFax
+     *
+     *  @description
+     *  <p>Fetch a fax feature from a service.</p>
+     *  <p>Manage call to `GET /telephony/{billingAccount}/fax/{serviceName}`.</p>
+     *
+     *  @param {VoipService} service    A `VoipService` instance.
+     *
+     *  @return {Promise}   That return a `VoipLineFeature` instance.
+     */
     fetchFeature (service) {
         return this.OvhApiTelephony.Fax().Lexi().get({
             billingAccount: service.billingAccount,
@@ -28,6 +47,20 @@ angular.module("managerApp").service("voipFax", class {
         });
     }
 
+    /**
+     *  @ngdoc method
+     *  @name managerApp.service:voipFax#saveFeature
+     *  @methodOf managerApp.service:voipFax
+     *
+     *  @description
+     *  <p>Save a fax feature.</p>
+     *  <p>Manage call to `PUT /telephony/{billingAccount}/fax/{serviceName}`.</p>
+     *
+     *  @param {VoipLineFeature}    feature    The `VoipLineFeature` instance to save.
+     *  @param {Object}             options    The new options of the `VoipLineFeature` instance.
+     *
+     *  @return {Promise}   That return the `VoipLineFeature` instance with saved value.
+     */
     saveFeature (feature, featureOptions) {
         return this.OvhApiTelephony.Fax().Lexi().edit({
             billingAccount: feature.billingAccount,
