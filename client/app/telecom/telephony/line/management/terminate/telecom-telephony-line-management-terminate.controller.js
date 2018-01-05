@@ -86,10 +86,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineTerminateCtrl", fun
     };
 
     self.getBulkParams = function () {
-        return {
-            details: self.reason.details,
-            reason: self.reason.id
-        };
+        return _.pick(self.reason, ["details", "id"]);
     };
 
     self.onBulkSuccess = function (bulkResult) {
