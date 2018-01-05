@@ -25,4 +25,9 @@
    <translation id="telephony_alias_administration_terminate_success" qtlid="392073">Résiliation planifiée avec succès.</translation>
    <translation id="telephony_alias_administration_cancel_termination" qtlid="285350">Annuler la résiliation</translation>
    <translation id="telephony_alias_administration_cancel_termination_success" qtlid="392086">Résiliation annulée.</translation>
+
+   <translation id="telephony_alias_administration_terminate_bulk_all_success">La résiliation a bien été appliquée aux services sélectionnés.</translation>
+   <translation id="telephony_alias_administration_terminate_bulk_some_success">La résiliation a bien été appliquée à {{ count }} des services sélectionnés.</translation>
+   <translation id="telephony_alias_administration_terminate_bulk_error">La résiliation n'a pu être appliquée au(x) service(s) suivant(s) :</translation>
+   <translation id="telephony_alias_administration_terminate_bulk_on_error">Oups ! Une erreur est survenue lors de la résiliation.</translation>
 </translations>

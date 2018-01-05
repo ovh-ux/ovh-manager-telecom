@@ -90,16 +90,29 @@
                                    data-translate-attr="{ 'placeholder': 'telephony_alias_administration_terminate_details' }">
                         </textarea>
                     </div>
-                    <button type="button"
-                            class="btn btn-default"
+                    <div class="form-group mt-4">
+                        <hr/>
+                        <telephony-bulk-action
+                            data-billing-account="{{ AliasTerminateCtrl.bulkDatas.billingAccount }}"
+                            data-service-name="{{ AliasTerminateCtrl.bulkDatas.serviceName }}"
+                            data-custom-class="link d-block pl-0 mb-3"
                             data-ng-disabled="!AliasTerminateCtrl.hasValidReason() || AliasTerminateCtrl.isTerminating"
-                            data-ng-click="AliasTerminateCtrl.terminate()">
-                        <oui-loader class="mr-2"
-                                    data-ng-if="AliasTerminateCtrl.isTerminating"
-                                    data-size="s">
-                        </oui-loader>
-                        <span data-translate="telephony_alias_administration_terminate"></span>
-                    </button>
+                            data-bulk-infos="AliasTerminateCtrl.bulkDatas.infos"
+                            data-get-bulk-params="AliasTerminateCtrl.getBulkParams"
+                            data-on-success="AliasTerminateCtrl.onBulkSuccess"
+                            data-on-error="AliasTerminateCtrl.onBulkError">
+                        </telephony-bulk-action>
+                        <button type="button"
+                                class="btn btn-default"
+                                data-ng-disabled="!AliasTerminateCtrl.hasValidReason() || AliasTerminateCtrl.isTerminating"
+                                data-ng-click="AliasTerminateCtrl.terminate()">
+                            <oui-loader class="mr-2"
+                                        data-ng-if="AliasTerminateCtrl.isTerminating"
+                                        data-size="s">
+                            </oui-loader>
+                            <span data-translate="telephony_alias_administration_terminate"></span>
+                        </button>
+                    </div>
                 </form>
             </div>
             <!-- /.widget-presentation -->

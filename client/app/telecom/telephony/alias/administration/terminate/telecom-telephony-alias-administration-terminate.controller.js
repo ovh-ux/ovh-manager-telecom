@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyAliasAdministrationTerminateCtrl", function ($q, $stateParams, $translate, OvhApiTelephony, TelephonyMediator, Toast, ToastError) {
+angular.module("managerApp").controller("TelecomTelephonyAliasAdministrationTerminateCtrl", function ($q, $stateParams, $translate, OvhApiTelephony, TelephonyMediator, Toast, ToastError, telephonyBulk) {
     "use strict";
 
     var self = this;
@@ -79,6 +79,49 @@ angular.module("managerApp").controller("TelecomTelephonyAliasAdministrationTerm
         }).finally(function () {
             self.isCancelling = false;
         });
+    };
+
+    self.bulkDatas = {
+        billingAccount: $stateParams.billingAccount,
+        serviceName: $stateParams.serviceName,
+        infos: {
+            name: "terminate",
+            actions: [{
+                name: "service",
+                route: "/telephony/{billingAccount}/service/{serviceName}",
+                method: "DELETE",
+                params: null
+            }]
+        }
+    };
+
+    self.getBulkParams = function () {
+        return _.pick(self, ["details", "reason"]);
+    };
+
+    self.onBulkSuccess = function (bulkResult) {
+        // display message of success or error
+        telephonyBulk.getToastInfos(bulkResult, {
+            fullSuccess: $translate.instant("telephony_alias_administration_terminate_bulk_all_success"),
+            partialSuccess: $translate.instant("telephony_alias_administration_terminate_bulk_some_success", {
+                count: bulkResult.success.length
+
+            }),
+            error: $translate.instant("telephony_alias_administration_terminate_bulk_error")
+        }).forEach(function (toastInfo) {
+            Toast[toastInfo.type](toastInfo.message, {
+                hideAfter: null
+            });
+        });
+
+        // reset initial values to be able to modify again the options
+        OvhApiTelephony.Line().Lexi().resetAllCache();
+
+        init();
+    };
+
+    self.onBulkError = function (error) {
+        Toast.error([$translate.instant("telephony_alias_administration_terminate_bulk_on_error"), _.get(error, "msg.data")].join(" "));
     };
 
     init();
