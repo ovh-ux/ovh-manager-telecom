@@ -119,7 +119,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationCalls
 
     self.filterServices = function (services) {
         return _.filter(services, function (service) {
-            return ["contactCenterSolution"].indexOf(service.featureType) > -1;
+            return ["easyHunting", "contactCenterSolution"].indexOf(service.featureType) > -1;
         });
     };
 
@@ -144,7 +144,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationCalls
         });
 
         // reset initial values to be able to modify again the options
-        OvhApiTelephony.Line().Lexi().resetAllCache();
+        OvhApiTelephony.EasyHunting().Lexi().resetAllCache();
 
         init();
     };
