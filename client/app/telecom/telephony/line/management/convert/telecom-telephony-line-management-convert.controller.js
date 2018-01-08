@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyLineConvertCtrl", function ($stateParams, $translate, OvhApiTelephony, TelephonyMediator, Toast, ToastError) {
+angular.module("managerApp").controller("TelecomTelephonyLineConvertCtrl", function ($stateParams, $translate, OvhApiTelephony, TelephonyMediator, Toast, ToastError, telephonyBulk) {
     "use strict";
 
     var self = this;
@@ -56,6 +56,57 @@ angular.module("managerApp").controller("TelecomTelephonyLineConvertCtrl", funct
             self.isCancelling = false;
         });
     };
+
+    /* ===========================
+    =            BULK            =
+    ============================ */
+
+    self.bulkDatas = {
+        infos: {
+            name: "convertToNumber",
+            actions: [{
+                name: "convertToNumber",
+                route: "/telephony/{billingAccount}/line/{serviceName}/convertToNumber",
+                method: "POST",
+                params: null
+            }]
+        }
+    };
+
+    self.filterServices = function (services) {
+        return _.filter(services, function (service) {
+            return ["sip", "mgcp"].indexOf(service.featureType) > -1;
+        });
+    };
+
+    self.getBulkParams = function () {
+        return {};
+    };
+
+    self.onBulkSuccess = function (bulkResult) {
+        // display message of success or error
+        telephonyBulk.getToastInfos(bulkResult, {
+            fullSuccess: $translate.instant("telephony_line_convert_bulk_all_success"),
+            partialSuccess: $translate.instant("telephony_line_convert_bulk_some_success", {
+                count: bulkResult.success.length
+            }),
+            error: $translate.instant("telephony_line_convert_bulk_error")
+        }).forEach(function (toastInfo) {
+            Toast[toastInfo.type](toastInfo.message, {
+                hideAfter: null
+            });
+        });
+
+        return self.line.getConvertionTask().then(function (task) {
+            self.task = task;
+        });
+    };
+
+    self.onBulkError = function (error) {
+        Toast.error([$translate.instant("telephony_line_convert_bulk_on_error"), _.get(error, "msg.data")].join(" "));
+    };
+
+    /* -----  End of BULK  ------ */
 
     init();
 });
