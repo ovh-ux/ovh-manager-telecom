@@ -117,6 +117,12 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationCalls
         }
     };
 
+    self.filterServices = function (services) {
+        return _.filter(services, function (service) {
+            return ["contactCenterSolution"].indexOf(service.featureType) > -1;
+        });
+    };
+
     self.getBulkParams = function () {
         return {
             status: _.get(self, "screenStatus.modified")

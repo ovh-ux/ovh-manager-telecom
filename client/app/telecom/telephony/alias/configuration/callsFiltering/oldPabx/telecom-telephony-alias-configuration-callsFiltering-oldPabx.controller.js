@@ -121,6 +121,12 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationCalls
         };
     };
 
+    self.filterServices = function (services) {
+        return _.filter(services, function (service) {
+            return ["easyPabx", "miniPabx"].indexOf(service.featureType) > -1;
+        });
+    };
+
     self.onBulkSuccess = function (bulkResult) {
         // display message of success or error
         telephonyBulk.getToastInfos(bulkResult, {
