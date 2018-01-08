@@ -26,7 +26,7 @@
         <p data-ng-if="LineSimultaneousLinesCtrl.options.simultaneousLines >= 100" data-translate="telephony_line_actions_line_calls_simultaneous_line_support"></p>
 
         <div class="row"
-             data-ng-if="LineSimultaneousLinesCtrl.options.simultaneousLines < 100">
+             data-ng-if="LineSimultaneousLinesCtrl.options.simultaneousLines < 100 && !LineSimultaneousLinesCtrl.showBulkOrderSummary">
             <div class="col-xs-12 col-md-6">
 
                 <form name="simultaneousLinesCtrlForm"
@@ -152,6 +152,84 @@
                         </div>
                     </div>
                 </form>
+
+                <telephony-bulk-action data-billing-account="{{ LineSimultaneousLinesCtrl.bulkDatas.billingAccount }}"
+                                       data-service-name="{{ LineSimultaneousLinesCtrl.bulkDatas.serviceName }}"
+                                       data-custom-class="link d-block pl-0 mb-3"
+                                       data-bulk-infos="LineSimultaneousLinesCtrl.bulkDatas.infos"
+                                       data-ng-disabled="!LineSimultaneousLinesCtrl.contractsAccepted && !LineSimultaneousLinesCtrl.showDoRemoveButtons"
+                                       data-filter-services="LineSimultaneousLinesCtrl.filterServices"
+                                       data-get-bulk-params="LineSimultaneousLinesCtrl.getBulkParams"
+                                       data-on-success="LineSimultaneousLinesCtrl.onBulkSuccess"
+                                       data-on-error="LineSimultaneousLinesCtrl.onBulkError">
+                </telephony-bulk-action>
+            </div>
+        </div>
+
+        <div ng-if="LineSimultaneousLinesCtrl.showBulkOrderSummary">
+            <div class="widget-presentation">
+                <h2 class="widget-presentation-title"
+                    data-translate="telephony_line_actions_line_calls_simultaneous_line_summary">
+                </h2>
+                <div ng-repeat="bulkOrder in LineSimultaneousLinesCtrl.bulkOrders track by bulkOrder.orderId">
+                    <div class="col-xs-12">
+                        <div class="form-group mb-3">
+                            <label class="col-xs-3 control-label text-left p-0"
+                                   data-translate="telephony_line_actions_line_calls_simultaneous_line_order_id"></label>
+                            <div class="col-xs-9">
+                                <p class="form-control-static p-0 font-weight-bold"
+                                   data-ng-bind="bulkOrder.orderId"></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12">
+                        <div class="form-group mb-3">
+                            <label class="col-xs-3 control-label text-left p-0"
+                                   data-translate="telephony_line_actions_line_calls_simultaneous_line_order_link"></label>
+                            <div class="col-xs-9">
+                                <a target="_blank" title="{{'telephony_line_actions_line_calls_simultaneous_order' | translate}}"
+                                data-ng-href="{{bulkOrder.url}}">
+                                    <span data-translate="telephony_line_actions_line_calls_simultaneous_line_order_click"></span>
+                                    <i class="ovh-font ovh-font-newtab ml-1"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 mb-3"
+                             data-ng-if="LineSimultaneousLinesCtrl.prices.url">
+                            <span data-translate="telephony_line_actions_line_calls_simultaneous_bc"></span>
+                            <a target="_blank"
+                                title="{{'telephony_line_actions_line_calls_simultaneous_order' | translate}}"
+                                data-ng-href="{{LineSimultaneousLinesCtrl.prices.url}}">
+                                <span data-translate="telephony_line_actions_line_calls_simultaneous_url"></span>
+                                <i class="ovh-font ovh-font-newtab ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12">
+                        <div class="form-group mb-3">
+                            <label class="col-xs-3 control-label text-left p-0"
+                                   data-translate="telephony_line_actions_line_calls_simultaneous_line_price_without_vat"></label>
+                            <div class="col-xs-9">
+                                <p class="form-control-static p-0 font-weight-bold text-danger"
+                                   data-ng-bind="bulkOrder.prices.withoutTax.text"></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12">
+                        <div class="form-group mb-3">
+                            <label class="col-xs-3 control-label text-left p-0"
+                                   data-translate="telephony_line_actions_line_calls_simultaneous_line_price_total"></label>
+                            <div class="col-xs-9">
+                                <p class="form-control-static p-0 font-weight-bold text-danger"
+                                   data-ng-bind="bulkOrder.prices.withTax.text"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
