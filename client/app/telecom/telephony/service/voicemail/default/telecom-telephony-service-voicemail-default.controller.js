@@ -104,6 +104,12 @@ angular.module("managerApp").controller("TelecomTelephonyServiceVoicemailDefault
         };
     };
 
+    self.filterServices = function (services) {
+        return _.filter(services, function (service) {
+            return ["sip", "mgcp"].indexOf(service.featureType) > -1;
+        });
+    };
+
     self.onBulkSuccess = function (bulkResult) {
         // display message of success or error
         telephonyBulk.getToastInfos(bulkResult, {
