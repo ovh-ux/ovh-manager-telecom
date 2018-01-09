@@ -123,9 +123,11 @@ angular.module("managerApp").controller("telephonyBulkActionModalCtrl", function
         self.loading.bulk = true;
 
         // build params for each actions
-        self.bindings.bulkInfos.actions.forEach(function (info) {
-            info.params = self.bindings.getBulkParams()(info.name);
-        });
+        if (self.bindings.getBulkParams && _.isFunction(self.bindings.getBulkParams())) {
+            self.bindings.bulkInfos.actions.forEach(function (info) {
+                info.params = self.bindings.getBulkParams()(info.name);
+            });
+        }
 
         // call 2API endpoint
         return $http.post("/" + ["telephony", self.bindings.billingAccount, "service", self.bindings.serviceName, "bulk"].join("/"), {
@@ -187,7 +189,6 @@ angular.module("managerApp").controller("telephonyBulkActionModalCtrl", function
                 self.loading.init = false;
             }
         });
-
     };
 
     function completeServiceListDetails () {
