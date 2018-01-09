@@ -29,6 +29,7 @@ angular.module("managerApp").controller("telephonyBulkActionCtrl", function ($q,
                     bulkInfos: self.bulkInfos,
                     getBulkParams: self.getBulkParams,
                     filterServices: self.filterServices,
+                    filterServicesAsync: self.filterServicesAsync,
                     previouslyUpdatedServices: self.previouslyUpdatedServices
                 }
             }

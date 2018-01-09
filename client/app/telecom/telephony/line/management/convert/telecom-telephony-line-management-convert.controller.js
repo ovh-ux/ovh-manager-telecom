@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyLineConvertCtrl", function ($stateParams, $translate, OvhApiTelephony, TelephonyMediator, Toast, ToastError, telephonyBulk) {
+angular.module("managerApp").controller("TelecomTelephonyLineConvertCtrl", function ($q, $stateParams, $translate, OvhApiPackXdslVoipLine, OvhApiTelephony, TelephonyMediator, Toast, ToastError, telephonyBulk) {
     "use strict";
 
     var self = this;
@@ -74,13 +74,27 @@ angular.module("managerApp").controller("TelecomTelephonyLineConvertCtrl", funct
     };
 
     self.filterServices = function (services) {
-        return _.filter(services, function (service) {
-            return ["sip", "mgcp"].indexOf(service.featureType) > -1;
+        var filteredServices = _.filter(services, function (service) {
+            return !_.some(service.offers, _.method("includes", "individual"));
+        });
+
+        return _.filter(filteredServices, function (service) {
+            return ["sip", "mgcp", "voicefax"].indexOf(service.featureType) > -1;
+        });
+    };
+
+    self.filterServicesAsync = function (services) {
+        return OvhApiPackXdslVoipLine.Erika().services().aggregate("packName").execute().$promise.then(function (lines) {
+            var filteredServices = _.filter(services, function (service) {
+                return !_.some(lines, { key: service.serviceName });
+            });
+
+            return $q.when(filteredServices);
         });
     };
 
     self.getBulkParams = function () {
-        return {};
+        return { };
     };
 
     self.onBulkSuccess = function (bulkResult) {

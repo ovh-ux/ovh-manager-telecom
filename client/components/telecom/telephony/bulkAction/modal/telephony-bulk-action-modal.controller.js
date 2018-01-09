@@ -174,24 +174,38 @@ angular.module("managerApp").controller("telephonyBulkActionModalCtrl", function
                 serviceType: self.bindings.serviceType
             }).value();
 
-            // apply custom filter if provided
-            if (self.bindings.filterServices && _.isFunction(self.bindings.filterServices())) {
-                allServices = self.bindings.filterServices()(allServices);
+            // custom filter asynchronous
+            if (self.bindings.filterServicesAsync && _.isFunction(self.bindings.filterServicesAsync())) {
+                self.bindings.filterServicesAsync()(allServices).then((updatedServices) => {
+                    allServices = updatedServices;
+                }).finally(() => {
+                    completeServiceListDetails();
+                    self.loading.init = false;
+                });
+            } else {
+                completeServiceListDetails();
+                self.loading.init = false;
             }
-
-            // filter service with the modal filters
-            self.serviceList = getFilteredServiceList();
-
-            // set current serviceName as selected
-            _.set(self.model.selection, self.bindings.serviceName, true);
-
-            if (self.bindings.previouslyUpdatedServices.length > 0) {
-                self.highlightUpdatedServices(self.bindings.previouslyUpdatedServices);
-            }
-        }).finally(function () {
-            self.loading.init = false;
         });
+
     };
+
+    function completeServiceListDetails () {
+        // apply custom filter if provided
+        if (self.bindings.filterServices && _.isFunction(self.bindings.filterServices())) {
+            allServices = self.bindings.filterServices()(allServices);
+        }
+
+        // filter service with the modal filters
+        self.serviceList = getFilteredServiceList();
+
+        // set current serviceName as selected
+        _.set(self.model.selection, self.bindings.serviceName, true);
+
+        if (self.bindings.previouslyUpdatedServices.length > 0) {
+            self.highlightUpdatedServices(self.bindings.previouslyUpdatedServices);
+        }
+    }
 
     /* -----  End of INITIALIZATION  ------ */
 
