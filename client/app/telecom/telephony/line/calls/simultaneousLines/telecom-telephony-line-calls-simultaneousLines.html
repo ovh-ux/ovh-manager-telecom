@@ -50,20 +50,19 @@
                         </div>
                     </div>
 
-                    <div data-ng-if="LineSimultaneousLinesCtrl.showDoRemoveButtons">
-                        <div class="row mb-3">
-                            <div class="col-xs-12">
-                                <telephony-bulk-action data-billing-account="{{ LineSimultaneousLinesCtrl.bulkDatas.billingAccount }}"
-                                                       data-service-name="{{ LineSimultaneousLinesCtrl.bulkDatas.serviceName }}"
-                                                       data-custom-class="link d-block pl-0 mb-3"
-                                                       data-bulk-infos="LineSimultaneousLinesCtrl.bulkDatas.infos"
-                                                       data-filter-services="LineSimultaneousLinesCtrl.filterServices"
-                                                       data-get-bulk-params="LineSimultaneousLinesCtrl.getBulkParams"
-                                                       data-on-success="LineSimultaneousLinesCtrl.onBulkSuccess"
-                                                       data-on-error="LineSimultaneousLinesCtrl.onBulkError">
-                                </telephony-bulk-action>
-                            </div>
+                    <div class="row mb-3" data-ng-if="LineSimultaneousLinesCtrl.showDoRemoveButtons">
+                        <div class="col-xs-12">
+                            <telephony-bulk-action data-billing-account="{{ LineSimultaneousLinesCtrl.bulkDatas.billingAccount }}"
+                                                   data-service-name="{{ LineSimultaneousLinesCtrl.bulkDatas.serviceName }}"
+                                                   data-custom-class="link d-block pl-0 mb-3"
+                                                   data-bulk-infos="LineSimultaneousLinesCtrl.bulkDatas.infos"
+                                                   data-filter-services="LineSimultaneousLinesCtrl.filterServices"
+                                                   data-get-bulk-params="LineSimultaneousLinesCtrl.getBulkParams"
+                                                   data-on-success="LineSimultaneousLinesCtrl.onBulkSuccess"
+                                                   data-on-error="LineSimultaneousLinesCtrl.onBulkError">
+                            </telephony-bulk-action>
                         </div>
+<<<<<<< 3ab70f2ff37d24d0cbf436b7656b7010c9e971c6
 
                         <div class="row mb-3">
                             <div class="col-xs-6">
@@ -88,6 +87,29 @@
                                     <span data-translate="telephony_line_actions_line_calls_simultaneous_remove_validate"></span>
                                 </button>
                             </div>
+=======
+                        <div class="col-xs-6">
+                            <button type="button"
+                                    role="button"
+                                    class="btn btn-default"
+                                    data-ng-disabled="LineSimultaneousLinesCtrl.loading.save"
+                                    data-ng-click="LineSimultaneousLinesCtrl.cancelRemove()">
+                                <span data-translate="telephony_line_actions_line_calls_simultaneous_remove_cancel"></span>
+                            </button>
+                        </div>
+                        <div class="col-xs-6">
+                            <button type="button"
+                                    role="button"
+                                    class="btn btn-primary float-right"
+                                    data-ng-disabled="LineSimultaneousLinesCtrl.loading.save"
+                                    data-ng-click="LineSimultaneousLinesCtrl.doRemoveSimultaneousLines()">
+                                <oui-loader class="mr-2"
+                                            data-ng-if="LineSimultaneousLinesCtrl.loading.save"
+                                            data-size="s">
+                                </oui-loader>
+                                <span data-translate="telephony_line_actions_line_calls_simultaneous_remove_validate"></span>
+                            </button>
+>>>>>>> feat(bulk): space
                         </div>
                     </div>
 
@@ -180,7 +202,6 @@
                         </div>
                     </div>
                 </form>
-
             </div>
         </div>
 
