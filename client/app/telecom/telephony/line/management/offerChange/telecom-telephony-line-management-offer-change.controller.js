@@ -142,9 +142,11 @@ angular.module("managerApp").controller("TelecomTelephonyLineManagementOfferChan
             });
         });
 
+        self.toggleEditMode();
+
         // reset initial values to be able to modify again the options
-        init();
         self.model.isCanceling = false;
+        init();
     };
 
     self.onBulkError = function (error) {
