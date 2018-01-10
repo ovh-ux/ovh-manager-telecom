@@ -47,17 +47,6 @@
                             <dd data-ng-bind="OfferChangeCtrl.line.offerInformations.getFullDescription()"></dd>
                         </dl>
 
-                        <telephony-bulk-action data-billing-account="{{ OfferChangeCtrl.bulkDatas.billingAccount }}"
-                                               data-service-name="{{ OfferChangeCtrl.bulkDatas.serviceName }}"
-                                               data-custom-class="link d-block pl-0 mb-3"
-                                               data-bulk-infos="OfferChangeCtrl.bulkDatas.infos"
-                                               data-filter-services="OfferChangeCtrl.filterServices"
-                                               data-filter-services-async="OfferChangeCtrl.serviceCanChangeToOffer"
-                                               data-get-bulk-params="OfferChangeCtrl.getBulkParams"
-                                               data-on-success="OfferChangeCtrl.onBulkSuccess"
-                                               data-on-error="OfferChangeCtrl.onBulkError">
-                        </telephony-bulk-action>
-
                         <button type="button"
                                 class="btn btn-primary no-transition mt-3"
                                 data-ng-if="!OfferChangeCtrl.line.pendingOfferChange && !OfferChangeCtrl.initError"
@@ -100,6 +89,18 @@
                             </p>
                         </div>
 
+                        <div class="form-group">
+                            <telephony-bulk-action data-billing-account="{{ OfferChangeCtrl.bulkDatas.billingAccount }}"
+                                                   data-service-name="{{ OfferChangeCtrl.bulkDatas.serviceName }}"
+                                                   data-custom-class="link d-block pl-0 mb-3"
+                                                   data-bulk-infos="OfferChangeCtrl.bulkDatas.infos"
+                                                   data-filter-services="OfferChangeCtrl.filterServices"
+                                                   data-filter-services-async="OfferChangeCtrl.serviceCanChangeToOffer"
+                                                   data-get-bulk-params="OfferChangeCtrl.getBulkParams"
+                                                   data-on-success="OfferChangeCtrl.onBulkSuccess"
+                                                   data-on-error="OfferChangeCtrl.onBulkError">
+                            </telephony-bulk-action>
+                        </div>
 
                         <div class="form-group">
                             <button type="submit"
