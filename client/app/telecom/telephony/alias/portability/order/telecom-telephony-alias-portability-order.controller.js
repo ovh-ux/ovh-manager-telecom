@@ -42,13 +42,12 @@ angular.module("managerApp").controller("TelecomTelephonyAliasPortabilityOrderCt
         });
 
         $scope.$watch("PortabilityOrderCtrl.order", function () {
-            self.order.offer = self.order.socialReason === "corporation" ? "company" : "individual";
             self.order.contactName = self.order.name;
             self.onNumberChange();
         }, true);
 
         $scope.$watch("PortabilityOrderCtrl.isSDA", function () {
-            self.order.socialReason = self.isSDA ? "corporation" : "individual";
+            self.order.offer = self.isSDA ? "company" : "individual";
         }, true);
 
         // fetch list of billing accounts
