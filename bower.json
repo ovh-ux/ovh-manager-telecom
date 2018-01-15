@@ -100,9 +100,9 @@
     "ovh-manager-webfont": "^1.0.1",
     "ovh-ng-input-password": "^1.2.5",
     "ovh-ngstrap": "^4.0.2",
-    "ovh-ui-kit": "^1.0.0-alpha.20",
+    "ovh-ui-kit": "^2.0.x",
     "validator-js": "3.40.1",
-    "ovh-ui-angular": "^1.1.1"
+    "ovh-ui-angular": "^2.0.x"
   },
   "devDependencies": {
     "angular-mocks": "~1.5.x",
