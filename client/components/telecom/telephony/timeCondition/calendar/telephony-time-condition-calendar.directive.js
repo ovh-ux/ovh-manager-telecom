@@ -45,6 +45,12 @@ angular.module("managerApp").directive("voipTimeConditionCalendar", function ($c
                     conditionDropped.timeFrom = event.start.format("HH:mm:ss");
                     conditionDropped.timeTo = event.end.format("HH:mm:ss");
                     conditionDropped.stopEdition();
+
+                    if (conditionDropped.hasChange(null, true)) {
+                        conditionDropped.state = "TO_EDIT";
+                    } else {
+                        conditionDropped.state = "OK";
+                    }
                 }
             }
 

@@ -117,6 +117,8 @@ angular.module("managerApp").controller("voipTimeConditionConditionCtrl", functi
     self.onValidateBtnClick = function () {
         if (self.condition.state === "DRAFT") {
             self.condition.state = "TO_CREATE";
+        } else {
+            self.condition.state = self.condition.hasChange(null, true) ? "TO_EDIT" : "OK";
         }
 
         self.condition.stopEdition();

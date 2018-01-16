@@ -1,7 +1,13 @@
-angular.module("managerApp").controller("TelecomTelephonyLineCallsTimeConditionCtrl", function ($q, $stateParams, $translate, TelephonyMediator, Toast, uiCalendarConfig, telephonyBulk) {
+angular.module("managerApp").controller("TelecomTelephonyLineCallsTimeConditionCtrl", function ($q, $stateParams, $translate, OvhApiTelephony, TelephonyMediator, Toast, uiCalendarConfig, telephonyBulk) {
     "use strict";
 
     var self = this;
+    var bulkActionNames = {
+        createCondition: "createSrcCondition",
+        deleteCondition: "deleteSrcCondition",
+        editCondition: "editSrcCondition",
+        options: "options"
+    };
 
     self.loading = {
         init: false
@@ -105,27 +111,47 @@ angular.module("managerApp").controller("TelecomTelephonyLineCallsTimeConditionC
 
     /* -----  End of INITIALIZATION  ------*/
 
+    /* ===========================
+    =            BULK            =
+    ============================ */
+
+    self.filterServices = function (services) {
+        var filteredServices = _.filter(services, function (service) {
+            return !_.some(service.offers, _.method("includes", "individual"));
+        });
+
+        return _.filter(filteredServices, function (service) {
+            return ["sip", "mgcp"].indexOf(service.featureType) > -1;
+        });
+    };
+
     self.bulkDatas = {
         billingAccount: $stateParams.billingAccount,
         serviceName: $stateParams.serviceName,
-        conditions: self.line && self.line.timeCondition || [],
+        conditions: (self.line && self.line.timeCondition) || [],
         infos: {
             name: "timeCondition",
             actions: [
                 {
-                    name: "deleteSrcConditions",
+                    name: bulkActionNames.deleteCondition,
                     route: "/telephony/{billingAccount}/timeCondition/{serviceName}/condition/{id}",
                     method: "DELETE",
                     params: null
                 },
                 {
-                    name: "editSrcConditions",
+                    name: bulkActionNames.createCondition,
+                    route: "/telephony/{billingAccount}/timeCondition/{serviceName}/condition",
+                    method: "POST",
+                    params: null
+                },
+                {
+                    name: bulkActionNames.editCondition,
                     route: "/telephony/{billingAccount}/timeCondition/{serviceName}/condition/{id}",
                     method: "PUT",
                     params: null
                 },
                 {
-                    name: "options",
+                    name: bulkActionNames.options,
                     route: "/telephony/{billingAccount}/timeCondition/{serviceName}/options",
                     method: "PUT",
                     params: null
@@ -136,10 +162,11 @@ angular.module("managerApp").controller("TelecomTelephonyLineCallsTimeConditionC
 
     self.getBulkParams = function (action) {
         switch (action) {
-        case "deleteSrcConditions":
-        case "editSrcConditions":
-            return false;
-        case "options":
+        case bulkActionNames.createCondition:
+        case bulkActionNames.deleteCondition:
+        case bulkActionNames.editCondition:
+            return self.getTimeConditions(action);
+        case bulkActionNames.options:
             var condition = self.line.timeCondition;
             return {
                 slot1Number: condition.slots[1].number,
@@ -171,42 +198,32 @@ angular.module("managerApp").controller("TelecomTelephonyLineCallsTimeConditionC
                 hideAfter: null
             });
         });
+
+        self.line.timeCondition.stopEdition().stopSlotsEdition(false, false, true).stopConditionsEdition(true, true).startEdition();
+        OvhApiTelephony.TimeCondition().resetCache();
+        TelephonyMediator.resetAllCache();
     };
 
     self.onBulkError = function (error) {
         Toast.error([$translate.instant("telephony_line_calls_time_condition_bulk_on_error"), _.get(error, "msg.data")].join(" "));
     };
 
-    self.getTimeConditions = function () {
-        self.bulkActions = [];
-        self.timeConditions = [];
-        _.map(self.line.timeCondition.conditions, function (item) {
-            var id = item.conditionId,
-                timeCondition = {
-                    day: item.weekDay,
-                    hourBegin: item.timeFrom,
-                    hourEnd: item.timeTo,
-                    policy: item.policy,
-                    status: item.status
-                };
-            self.timeConditions.push(timeCondition);
-            self.bulkActions.push({
-                name: "deleteTC" + id,
-                route: "/telephony/{billingAccount}/timeCondition/{serviceName}/condition/" + id,
-                method: "DELETE",
-                params: null
-            });
+    self.getTimeConditions = function (action) {
+        var conditions = _.filter(self.line.timeCondition.conditions, function (condition) {
+            switch (action) {
+            case bulkActionNames.createCondition:
+                return condition.state === "TO_CREATE";
+            case bulkActionNames.deleteCondition:
+                return condition.state === "TO_DELETE";
+            case bulkActionNames.editCondition:
+                return condition.state === "TO_EDIT";
+            default:
+                return false;
+            }
         });
-        _.map(self.timeConditions, function (item, key) {
-            self.bulkActions.push({
-                name: "addTC" + key,
-                route: "/telephony/{billingAccount}/timeCondition/{serviceName}/condition",
-                method: "POST",
-                params: null
-            });
-        });
-        self.bulkActions.push();
-        self.bulkDatas.infos.actions = self.bulkActions;
+
+        return conditions;
     };
 
+    /* -----  End of BULK  ------ */
 });
