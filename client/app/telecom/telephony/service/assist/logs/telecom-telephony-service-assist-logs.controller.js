@@ -119,7 +119,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceAssistLogsCtrl",
     self.$onInit = function () {
         self.loading.init = true;
 
-        return voipService.fecthSingleService($stateParams.billingAccount, $stateParams.serviceName).then(function (service) {
+        return voipService.fetchSingleService($stateParams.billingAccount, $stateParams.serviceName).then(function (service) {
             self.service = service;
 
             return $q.all({

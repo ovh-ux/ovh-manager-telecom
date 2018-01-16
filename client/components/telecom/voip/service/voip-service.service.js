@@ -59,7 +59,7 @@ angular.module("managerApp").service("voipService", class {
 
     /**
      *  @ngdoc method
-     *  @name managerApp.service:voipService#fecthSingleService
+     *  @name managerApp.service:voipService#fetchSingleService
      *  @methodOf managerApp.service:voipService
      *
      *  @description
@@ -71,7 +71,7 @@ angular.module("managerApp").service("voipService", class {
      *
      *  @return {Promise}   That returns a VoipService instance representing the fetched service.
      */
-    fecthSingleService (billingAccount, serviceName) {
+    fetchSingleService (billingAccount, serviceName) {
         return this.OvhApiTelephony.Service().Lexi().get({
             billingAccount,
             serviceName

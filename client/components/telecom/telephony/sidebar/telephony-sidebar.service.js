@@ -64,7 +64,7 @@ angular.module("managerApp").service("TelephonySidebar", function ($translate, S
 
                 // display lines except plugAndFax and fax
                 let sortedSipLines = _.filter(sortedLines, function (line) {
-                    return line.featureType !== "plugAndFax" && line.featureType !== "fax" && line.featureType !== "voicefax";
+                    return ["plugAndFax", "fax", "voicefax"].indexOf(line.featureType) === -1;
                 });
 
                 // add line subsections to billingAccount subsection
