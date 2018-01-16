@@ -75,6 +75,20 @@ angular.module("managerApp").controller("telephonyBulkActionModalCtrl", function
         return selectedServices;
     };
 
+    /*
+     * Highlight services on which a previous succesful bulk action had been made
+     */
+    self.highlightUpdatedServices = function (services) {
+        _.forEach(services, function (service) {
+            _.forEach(self.billingAccounts, function (billingAccount) {
+                var findService = _.find(billingAccount.services, "serviceName", service.serviceName);
+                if (findService) {
+                    findService.hasUpdate = true;
+                }
+            });
+        });
+    };
+
     /* -----  End of HELPERS  ------ */
 
 
@@ -170,6 +184,10 @@ angular.module("managerApp").controller("telephonyBulkActionModalCtrl", function
 
             // set current serviceName as selected
             _.set(self.model.selection, self.bindings.serviceName, true);
+
+            if (self.bindings.previouslyUpdatedServices.length > 0) {
+                self.highlightUpdatedServices(self.bindings.previouslyUpdatedServices);
+            }
         }).finally(function () {
             self.loading.init = false;
         });
