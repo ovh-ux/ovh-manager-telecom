@@ -9,32 +9,25 @@
         </button>
     </div>
     <div class="modal-body">
-        <ul class="list-unstyled">
-            <li>
-                <label class="my-2">
-                    <div class="d-inline-block align-middle mr-2">
-                        <input type="checkbox"
-                               id="reengage_message1"
-                               name="reengage_message1"
-                               class="form-control"
-                               data-ng-model="promotion.confirm">
-                    </div>
-                    <span data-ng-bind-html="ctrl.condition"></span>
-                </label>
-            </li>
-        </ul>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox"
+                       id="reengage_message1"
+                       name="reengage_message1"
+                       data-ng-model="promotion.confirm" />
+                <span data-ng-bind-html="ctrl.condition"></span>
+            </label>
+        </div>
     </div>
     <div role="group" class="modal-footer">
-        <div role="group" class="clearfix">
-            <button type="button"
-                    class="btn btn-default"
-                    data-ng-click="$dismiss('cancel')"
-                    data-translate="cancel"></button>
-            <button type="button"
-                    class="btn btn-primary"
-                    data-ng-click="$close('ok')"
-                    data-ng-show="promotion.confirm"
-                    data-translate="pack_promotion_code_confirm"></button>
-        </div>
+        <button type="button"
+                class="btn btn-default"
+                data-ng-click="$dismiss('cancel')"
+                data-translate="cancel"></button>
+        <button type="button"
+                class="btn btn-primary"
+                data-ng-click="$close('ok')"
+                data-ng-show="promotion.confirm"
+                data-translate="pack_promotion_code_confirm"></button>
     </div>
 </div>
