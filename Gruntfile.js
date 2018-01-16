@@ -872,7 +872,6 @@ module.exports = function (grunt) {
                     "tasks/docs/css/styles.css",
                     "tasks/docs/css/ovh-ui-kit-bs.css"
                 ],
-                // to uncomment when merged on master
                 sourceLink: "https://github.com/ovh-ux/ovh-manager-telecom/tree/master/{{file}}#L{{codeline}}"
             },
             voip: {
