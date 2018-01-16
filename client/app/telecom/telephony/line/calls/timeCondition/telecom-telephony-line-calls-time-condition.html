@@ -128,13 +128,12 @@
 
             <voip-time-condition-calendar data-voip-time-condition="$ctrl.line.timeCondition"></voip-time-condition-calendar>
 
-
             <telephony-bulk-action data-billing-account="{{ $ctrl.bulkDatas.billingAccount }}"
                                    data-service-name="{{ $ctrl.bulkDatas.serviceName }}"
                                    data-custom-class="link d-block pl-0 mt-4 mb-2"
                                    data-bulk-infos="$ctrl.bulkDatas.infos"
-                                   data-on-open="$ctrl.getTimeConditions"
                                    data-get-bulk-params="$ctrl.getBulkParams"
+                                   data-filter-services="$ctrl.filterServices"
                                    data-on-success="$ctrl.onBulkSuccess"
                                    data-on-error="$ctrl.onBulkError">
             </telephony-bulk-action>
@@ -169,6 +168,7 @@
                                    data-custom-class="link d-block pl-0 mt-4 mb-2"
                                    data-bulk-infos="$ctrl.bulkDatas.infos"
                                    data-get-bulk-params="$ctrl.getBulkParams"
+                                   data-filter-services="$ctrl.filterServices"
                                    data-on-success="$ctrl.onBulkSuccess"
                                    data-on-error="$ctrl.onBulkError">
             </telephony-bulk-action>
