@@ -78,14 +78,12 @@ angular.module("managerApp").controller("TelecomTelephonyLineConvertCtrl", funct
             return !_.some(service.offers, _.method("includes", "individual"));
         });
 
-        return _.filter(filteredServices, function (service) {
-            return ["sip", "mgcp", "voicefax"].indexOf(service.featureType) > -1;
+        filteredServices = _.filter(filteredServices, function (service) {
+            return ["sip", "mgcp"].indexOf(service.featureType) > -1;
         });
-    };
 
-    self.filterServicesAsync = function (services) {
         return OvhApiPackXdslVoipLine.Erika().services().aggregate("packName").execute().$promise.then(function (lines) {
-            var filteredServices = _.filter(services, function (service) {
+            filteredServices = _.filter(filteredServices, function (service) {
                 return !_.some(lines, { key: service.serviceName });
             });
 
