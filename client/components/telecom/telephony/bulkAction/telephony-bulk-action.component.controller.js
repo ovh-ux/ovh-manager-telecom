@@ -81,9 +81,4 @@ angular.module("managerApp").controller("telephonyBulkActionCtrl", function ($q,
     /* -----  End of INITIALIZATION  ------ */
 
 });
-   });
-    };
 
-    /* -----  End of INITIALIZATION  ------ */
-
-});

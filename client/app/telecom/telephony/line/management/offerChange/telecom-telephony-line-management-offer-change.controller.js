@@ -118,7 +118,6 @@ angular.module("managerApp").controller("TelecomTelephonyLineManagementOfferChan
     self.filterServices = function (services) {
 
         function filterServicesByOffer (paramServices, listOffers) {
-            var chosenOffer = self.model.offer;
             var servicesFiltered = [];
 
             _.times(listOffers.length, function (index) {
