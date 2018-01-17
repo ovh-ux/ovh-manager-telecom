@@ -24,8 +24,8 @@ angular.module("managerApp").controller("telephonyBulkActionModalCtrl", function
     self.serviceList = null;
 
     /* ==============================
-    =            HELPERS            =
-    =============================== */
+     =            HELPERS            =
+     =============================== */
 
     function getFilteredServiceList () {
         var services = null;
@@ -93,8 +93,8 @@ angular.module("managerApp").controller("telephonyBulkActionModalCtrl", function
 
 
     /* =============================
-    =            EVENTS            =
-    ============================== */
+     =            EVENTS            =
+     ============================== */
 
     self.cancel = function (reason) {
         return $uibModalInstance.dismiss(reason);
@@ -123,9 +123,11 @@ angular.module("managerApp").controller("telephonyBulkActionModalCtrl", function
         self.loading.bulk = true;
 
         // build params for each actions
-        self.bindings.bulkInfos.actions.forEach(function (info) {
-            info.params = self.bindings.getBulkParams()(info.name);
-        });
+        if (self.bindings.getBulkParams && _.isFunction(self.bindings.getBulkParams())) {
+            self.bindings.bulkInfos.actions.forEach(function (info) {
+                info.params = self.bindings.getBulkParams()(info.name);
+            });
+        }
 
         // call 2API endpoint
         return $http.post("/" + ["telephony", self.bindings.billingAccount, "service", self.bindings.serviceName, "bulk"].join("/"), {
@@ -155,8 +157,20 @@ angular.module("managerApp").controller("telephonyBulkActionModalCtrl", function
     /* -----  End of EVENTS  ------ */
 
     /* =====================================
-    =            INITIALIZATION            =
-    ====================================== */
+     =            INITIALIZATION            =
+     ====================================== */
+
+    function completeServiceListDetails () {
+        // filter service with the modal filters
+        self.serviceList = getFilteredServiceList();
+
+        // set current serviceName as selected
+        _.set(self.model.selection, self.bindings.serviceName, true);
+
+        if (self.bindings.previouslyUpdatedServices.length > 0) {
+            self.highlightUpdatedServices(self.bindings.previouslyUpdatedServices);
+        }
+    }
 
     self.$onInit = function () {
         self.loading.init = true;
@@ -174,22 +188,23 @@ angular.module("managerApp").controller("telephonyBulkActionModalCtrl", function
                 serviceType: self.bindings.serviceType
             }).value();
 
-            // apply custom filter if provided
             if (self.bindings.filterServices && _.isFunction(self.bindings.filterServices())) {
-                allServices = self.bindings.filterServices()(allServices);
+                // filter function can be asynchronous
+                if (_.isFunction(self.bindings.filterServices()(allServices).then)) {
+                    self.bindings.filterServices()(allServices).then((updatedServices) => {
+                        allServices = updatedServices;
+                        completeServiceListDetails();
+                        self.loading.init = false;
+                    });
+                } else {
+                    allServices = self.bindings.filterServices()(allServices);
+                    completeServiceListDetails();
+                    self.loading.init = false;
+                }
+            } else {
+                completeServiceListDetails();
+                self.loading.init = false;
             }
-
-            // filter service with the modal filters
-            self.serviceList = getFilteredServiceList();
-
-            // set current serviceName as selected
-            _.set(self.model.selection, self.bindings.serviceName, true);
-
-            if (self.bindings.previouslyUpdatedServices.length > 0) {
-                self.highlightUpdatedServices(self.bindings.previouslyUpdatedServices);
-            }
-        }).finally(function () {
-            self.loading.init = false;
         });
     };
 

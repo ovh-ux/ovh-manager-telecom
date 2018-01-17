@@ -64,6 +64,21 @@
                     <div data-contracts="AliasConvertCtrl.contracts"
                          data-contracts-validated="AliasConvertCtrl.contractsAccepted">
                     </div>
+                    <div class="mt-4">
+                        <hr/>
+                        <telephony-bulk-action
+                            data-service-type="alias"
+                            data-billing-account="{{ AliasConvertCtrl.bulkDatas.billingAccount }}"
+                            data-service-name="{{ AliasConvertCtrl.bulkDatas.serviceName }}"
+                            data-custom-class="link d-block pl-0 mb-3"
+                            data-ng-disabled="!AliasConvertCtrl.contractsAccepted || AliasConvertCtrl.isConverting"
+                            data-bulk-infos="AliasConvertCtrl.bulkDatas.infos"
+                            data-filter-services="AliasConvertCtrl.filterServices"
+                            data-get-bulk-params="AliasConvertCtrl.getBulkParams"
+                            data-on-success="AliasConvertCtrl.onBulkSuccess"
+                            data-on-error="AliasConvertCtrl.onBulkError">
+                        </telephony-bulk-action>
+                    </div>
                     <button type="submit"
                             class="btn btn-primary"
                             data-ng-disabled="!AliasConvertCtrl.contractsAccepted || AliasConvertCtrl.isConverting">

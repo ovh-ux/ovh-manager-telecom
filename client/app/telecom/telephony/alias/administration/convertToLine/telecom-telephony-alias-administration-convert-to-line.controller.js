@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyAliasAdministrationConvertToLineCtrl", function ($stateParams, $q, $translate, OvhApiTelephony, ToastError, Toast) {
+angular.module("managerApp").controller("TelecomTelephonyAliasAdministrationConvertToLineCtrl", function ($stateParams, $q, $translate, OvhApiTelephony, ToastError, Toast, telephonyBulk) {
     "use strict";
 
     var self = this;
@@ -27,7 +27,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasAdministrationConv
         return self.fetchConvertToLineTask().then(function (task) {
             self.convertTask = task;
             if (!task) {
-                return self.getAvailableOffers().then(function (availableOffers) {
+                return self.getAvailableOffers($stateParams).then(function (availableOffers) {
                     self.offers = availableOffers.offers;
                     self.offer = _.first(self.offers);
                     self.contracts = availableOffers.contracts;
@@ -39,10 +39,10 @@ angular.module("managerApp").controller("TelecomTelephonyAliasAdministrationConv
         });
     };
 
-    self.getAvailableOffers = function () {
+    self.getAvailableOffers = function (service) {
         return OvhApiTelephony.Number().Lexi().convertToLineAvailableOffers({
-            billingAccount: $stateParams.billingAccount,
-            serviceName: $stateParams.serviceName
+            billingAccount: service.billingAccount,
+            serviceName: service.serviceName
         }).$promise;
     };
 
@@ -97,6 +97,75 @@ angular.module("managerApp").controller("TelecomTelephonyAliasAdministrationConv
         }).finally(function () {
             self.isCancelling = false;
         });
+    };
+
+    self.bulkDatas = {
+        billingAccount: $stateParams.billingAccount,
+        serviceName: $stateParams.serviceName,
+        infos: {
+            name: "terminate",
+            actions: [{
+                name: "service",
+                route: "/telephony/{billingAccount}/number/{serviceName}/convertToLine",
+                method: "POST",
+                params: null
+            }]
+        }
+    };
+
+    self.filterServices = function (services) {
+
+        function setServicesWithOffer (paramServices, listOffers) {
+            var servicesFiltered = [];
+
+            _.times(listOffers.length, function (index) {
+                if (listOffers[index].status !== 404 || listOffers[index].status !== 400) {
+                    if (_.some(listOffers[index].offers, "name", self.offer.name)) {
+                        servicesFiltered.push(paramServices[index]);
+                    }
+                }
+            });
+
+            return $q.when(servicesFiltered);
+        }
+
+        var promises = [];
+
+        _.forEach(services, function (service) {
+            promises.push(self.getAvailableOffers(service));
+        });
+
+        return $q.allSettled(promises).then(function (listOffers) {
+            return setServicesWithOffer(services, listOffers);
+        }).catch(function (listOffers) {
+            return setServicesWithOffer(services, listOffers);
+        });
+    };
+
+    self.getBulkParams = function () {
+        return self.offer.name;
+    };
+
+    self.onBulkSuccess = function (bulkResult) {
+        // display message of success or error
+        telephonyBulk.getToastInfos(bulkResult, {
+            fullSuccess: $translate.instant("telephony_alias_administration_convert_bulk_all_success"),
+            partialSuccess: $translate.instant("telephony_alias_administration_convert_bulk_some_success", {
+                count: bulkResult.success.length
+
+            }),
+            error: $translate.instant("telephony_alias_administration_convert_bulk_error")
+        }).forEach(function (toastInfo) {
+            Toast[toastInfo.type](toastInfo.message, {
+                hideAfter: null
+            });
+        });
+
+        init();
+    };
+
+    self.onBulkError = function (error) {
+        Toast.error([$translate.instant("telephony_alias_administration_convert_bulk_on_error"), _.get(error, "msg.data")].join(" "));
     };
 
     init();
