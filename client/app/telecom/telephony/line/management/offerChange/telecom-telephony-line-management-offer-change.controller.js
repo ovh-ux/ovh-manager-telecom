@@ -154,7 +154,27 @@ angular.module("managerApp").controller("TelecomTelephonyLineManagementOfferChan
     };
 
     self.serviceCanChangeToOffer = function (services) {
-        var chosenOffer = self.model.offer;
+
+        function setServicesEditable (paramServices, listOffers) {
+            var chosenOffer = self.model.offer;
+
+            _.times(listOffers.length, function (index) {
+                if (listOffers[index]) {
+                    angular.extend(paramServices[index], {
+                        isEditable: _.find(listOffers[index], function (offer) {
+                            return offer.name === chosenOffer.name;
+                        })
+                    });
+                }
+            });
+
+            var servicesFiltered = _.filter(paramServices, function (service) {
+                return service.isEditable;
+            });
+
+            return $q.when(servicesFiltered);
+        }
+
         var promises = [];
 
         var filteredServices = _.filter(services, function (service) {
@@ -166,23 +186,9 @@ angular.module("managerApp").controller("TelecomTelephonyLineManagementOfferChan
         });
 
         return $q.allSettled(promises).then(function (listOffers) {
-            _.times(listOffers.length, function (index) {
-                if (listOffers[index]) {
-                    angular.extend(filteredServices[index], {
-                        isEditable: _.find(listOffers[index], function (offer) {
-                            return offer.name === chosenOffer.name;
-                        })
-                    });
-                }
-            });
-
-            filteredServices = _.filter(filteredServices, function (service) {
-                return service.isEditable;
-            });
-
-            return $q.when(filteredServices);
-        }).catch(function () {
-            return $q.reject();
+            return setServicesEditable(filteredServices, listOffers);
+        }).catch(function (listOffers) {
+            return setServicesEditable(filteredServices, listOffers);
         });
     };
 
