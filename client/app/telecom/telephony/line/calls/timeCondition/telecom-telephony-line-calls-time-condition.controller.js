@@ -126,8 +126,6 @@ angular.module("managerApp").controller("TelecomTelephonyLineCallsTimeConditionC
     };
 
     self.bulkDatas = {
-        billingAccount: $stateParams.billingAccount,
-        serviceName: $stateParams.serviceName,
         conditions: (self.line && self.line.timeCondition) || [],
         infos: {
             name: "timeCondition",
