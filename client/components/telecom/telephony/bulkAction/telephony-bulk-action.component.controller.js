@@ -30,7 +30,6 @@ angular.module("managerApp").controller("telephonyBulkActionCtrl", function ($q,
                     bulkInfos: self.bulkInfos,
                     getBulkParams: self.getBulkParams,
                     filterServices: self.filterServices,
-                    filterServicesAsync: self.filterServicesAsync,
                     previouslyUpdatedServices: self.previouslyUpdatedServices
                 }
             }
@@ -77,6 +76,12 @@ angular.module("managerApp").controller("telephonyBulkActionCtrl", function ($q,
         return getTranslations().finally(function () {
             self.loading.init = false;
         });
+    };
+
+    /* -----  End of INITIALIZATION  ------ */
+
+});
+   });
     };
 
     /* -----  End of INITIALIZATION  ------ */

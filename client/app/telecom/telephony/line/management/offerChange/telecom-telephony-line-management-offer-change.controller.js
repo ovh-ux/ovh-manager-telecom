@@ -116,9 +116,43 @@ angular.module("managerApp").controller("TelecomTelephonyLineManagementOfferChan
     };
 
     self.filterServices = function (services) {
-        return _.filter(services, function (service) {
-            return service.isEditable;
+
+        function filterServicesByOffer (paramServices, listOffers) {
+            var chosenOffer = self.model.offer;
+            var servicesFiltered = [];
+
+            _.times(listOffers.length, function (index) {
+                if (_.some(listOffers[index], "name", self.model.offer.name)) {
+                    servicesFiltered.push(paramServices[index]);
+                }
+            });
+
+            return $q.when(servicesFiltered);
+        }
+
+        function callGetOfferChanges (billingAccount, serviceName) {
+            return OvhApiTelephony.Service().Lexi().offerChanges({
+                billingAccount: billingAccount,
+                serviceName: serviceName
+            }).$promise;
+        }
+
+
+        var promises = [];
+        var filteredServices = _.filter(services, function (service) {
+            return ["sip", "mgcp"].indexOf(service.featureType) > -1;
         });
+
+        _.forEach(filteredServices, function (service) {
+            promises.push(callGetOfferChanges(service.billingAccount, service.serviceName));
+        });
+
+        return $q.allSettled(promises).then(function (listOffers) {
+            return filterServicesByOffer(filteredServices, listOffers);
+        }).catch(function (listOffers) {
+            return filterServicesByOffer(filteredServices, listOffers);
+        });
+
     };
 
     self.getBulkParams = function () {
@@ -152,52 +186,6 @@ angular.module("managerApp").controller("TelecomTelephonyLineManagementOfferChan
     self.onBulkError = function (error) {
         Toast.error([$translate.instant("telephony_line_management_change_offer_bulk_on_error"), _.get(error, "msg.data")].join(" "));
     };
-
-    self.serviceCanChangeToOffer = function (services) {
-
-        function setServicesEditable (paramServices, listOffers) {
-            var chosenOffer = self.model.offer;
-
-            _.times(listOffers.length, function (index) {
-                if (listOffers[index]) {
-                    angular.extend(paramServices[index], {
-                        isEditable: _.find(listOffers[index], function (offer) {
-                            return offer.name === chosenOffer.name;
-                        })
-                    });
-                }
-            });
-
-            var servicesFiltered = _.filter(paramServices, function (service) {
-                return service.isEditable;
-            });
-
-            return $q.when(servicesFiltered);
-        }
-
-        var promises = [];
-
-        var filteredServices = _.filter(services, function (service) {
-            return ["sip", "mgcp"].indexOf(service.featureType) > -1;
-        });
-
-        _.forEach(filteredServices, function (service) {
-            promises.push(callGetOfferChanges(service.billingAccount, service.serviceName));
-        });
-
-        return $q.allSettled(promises).then(function (listOffers) {
-            return setServicesEditable(filteredServices, listOffers);
-        }).catch(function (listOffers) {
-            return setServicesEditable(filteredServices, listOffers);
-        });
-    };
-
-    function callGetOfferChanges (billingAccount, serviceName) {
-        return OvhApiTelephony.Service().Lexi().offerChanges({
-            billingAccount: billingAccount,
-            serviceName: serviceName
-        }).$promise;
-    }
 
     /* -----  End of BULK  ------ */
 
