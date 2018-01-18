@@ -15,4 +15,9 @@
    <translation id="telephony_line_answer_voicemail_password_change_success" qtlid="337715">Mot de passe modifié avec succès.</translation>
    <translation id="telephony_line_answer_voicemail_password_change_error" qtlid="337728">Oups, nous n'arrivons pas à changer le mot de passe de votre répondeur.</translation>
    <translation id="telephony_line_answer_voicemail_password_info" qtlid="337741">Mot de passe demandé lors de la consultation des messages depuis l'extérieur uniquement.</translation>
+
+   <translation id="telephony_line_answer_voicemail_password_bulk_all_success">Le mot de passe a bien été appliqué aux services sélectionnés.</translation>
+   <translation id="telephony_line_answer_voicemail_password_bulk_some_success">Le mot de passe a bien été appliqué à {{ count }} des services sélectionnés.</translation>
+   <translation id="telephony_line_answer_voicemail_password_bulk_error">Le mot de passe n'a pas pu être appliqué au(x) service(s) suivant(s) :</translation>
+   <translation id="telephony_line_answer_voicemail_password_bulk_on_error">Oups ! Une erreur est survenue lors de l'application du mot de passe.</translation>
 </translations>
