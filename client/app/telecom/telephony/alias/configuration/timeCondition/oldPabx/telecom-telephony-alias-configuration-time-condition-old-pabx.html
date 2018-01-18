@@ -122,30 +122,53 @@
             </header>
 
             <voip-time-condition-calendar data-voip-time-condition="$ctrl.number.feature.timeCondition"></voip-time-condition-calendar>
+
+            <telephony-bulk-action data-service-type="alias"
+                                   data-billing-account="{{ $ctrl.number.billingAccount }}"
+                                   data-service-name="{{ $ctrl.number.serviceName }}"
+                                   data-custom-class="link d-block pl-0 mt-4 mb-2"
+                                   data-bulk-infos="$ctrl.bulkDatas.infos"
+                                   data-get-bulk-params="$ctrl.getBulkParams"
+                                   data-filter-services="$ctrl.filterServices"
+                                   data-on-success="$ctrl.onBulkSuccess"
+                                   data-on-error="$ctrl.onBulkError">
+            </telephony-bulk-action>
         </div> <!-- CONDITIONS -->
 
         <footer class="voip-action-bar"
                 data-ng-if="$ctrl.hasChange()">
-            <p class="question"
+
+            <p class="mb-3 font-weight-bold text-white"
                data-translate="telephony_alias_configuration_time_condition_footer_save_question">
             </p>
 
-            <div class="button-container inline-block">
+            <div class="d-inline-block">
                 <button type="submit"
-                        class="btn btn-primary pull-rigth">
-                    <i data-ng-if="$ctrl.number.feature.timeCondition.status === 'SAVING'"
-                       class="fa fa-spinner fa-pulse">
-                    </i>
+                        class="btn btn-primary">
+                    <oui-loader class="mr-2"
+                                data-ng-if="$ctrl.number.feature.timeCondition.status === 'SAVING'"
+                                data-size="s">
+                    </oui-loader>
                     <span data-translate="submit"></span>
                 </button>
                 <button type="reset"
-                        class="btn voip-cancel pull-left"
-                        data-translate="cancel"
+                        class="btn btn-default"
                         data-ng-click="$ctrl.onTimeConditionFormReset()"
-                        data-ng-disabled="$ctrl.loading.save">
+                        data-ng-disabled="$ctrl.loading.save"
+                        data-translate="cancel">
                 </button>
             </div>
 
+            <telephony-bulk-action data-service-type="alias"
+                                   data-billing-account="{{ $ctrl.number.billingAccount }}"
+                                   data-service-name="{{ $ctrl.number.serviceName }}"
+                                   data-custom-class="link d-block pl-0 mt-4 mb-2"
+                                   data-bulk-infos="$ctrl.bulkDatas.infos"
+                                   data-get-bulk-params="$ctrl.getBulkParams"
+                                   data-filter-services="$ctrl.filterServices"
+                                   data-on-success="$ctrl.onBulkSuccess"
+                                   data-on-error="$ctrl.onBulkError">
+            </telephony-bulk-action>
         </footer>
 
     </form>
