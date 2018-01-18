@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyServiceAssistLogsCtrl", function ($q, $translate, $stateParams, voipService, voipLineFeature, OvhApiMe, Toast, PAGINATION_PER_PAGE) {
+angular.module("managerApp").controller("TelecomTelephonyServiceAssistLogsCtrl", function ($q, $translate, $stateParams, voipService, voipLineFeature, OvhApiMe, Toast, PAGINATION_PER_PAGE, telephonyBulk) {
     "use strict";
 
     var self = this;
@@ -135,5 +135,56 @@ angular.module("managerApp").controller("TelecomTelephonyServiceAssistLogsCtrl",
     };
 
     /* -----  End of INITIALIZATION  ------*/
+
+
+    self.bulkDatas = {
+        billingAccount: $stateParams.billingAccount,
+        serviceName: $stateParams.serviceName,
+        infos: {
+            name: "assistLogs",
+            actions: [{
+                name: "assistLogs",
+                route: "/telephony/{billingAccount}/line/{serviceName}",
+                method: "PUT",
+                params: null
+            }]
+        }
+    };
+
+    self.filterServices = function (services) {
+        return _.filter(services, function (service) {
+            return ["sip", "mgcp"].indexOf(service.featureType) > -1;
+        });
+    };
+
+    self.getBulkParams = function () {
+        return {
+            notifications: {
+                logs: self.edition.mode ? _.pick(self.edition.notifications.logs, ["frequency", "sendIfNull", "email"]) : _.pick(self.service.feature.notifications.logs, ["frequency", "sendIfNull", "email"])
+            }
+        };
+    };
+
+    self.onBulkSuccess = function (bulkResult) {
+        // display message of success or error
+        telephonyBulk.getToastInfos(bulkResult, {
+            fullSuccess: $translate.instant("telephony_line_assist_support_logs_bulk_all_success"),
+            partialSuccess: $translate.instant("telephony_line_assist_support_logs_bulk_some_success", {
+                count: bulkResult.success.length
+
+            }),
+            error: $translate.instant("telephony_line_assist_support_logs_bulk_error")
+        }).forEach(function (toastInfo) {
+            Toast[toastInfo.type](toastInfo.message, {
+                hideAfter: null
+            });
+        });
+
+        self.$onInit();
+    };
+
+    self.onBulkError = function (error) {
+        Toast.error([$translate.instant("telephony_line_assist_support_logs_bulk_on_error"), _.get(error, "msg.data")].join(" "));
+    };
 
 });
