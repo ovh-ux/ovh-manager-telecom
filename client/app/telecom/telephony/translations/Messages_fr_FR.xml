@@ -122,6 +122,7 @@
    <translation id="telephony_service_feature_type_freefax">FreeFax</translation>
    <translation id="telephony_service_feature_type_trunk">Trunk</translation>
    <translation id="telephony_service_feature_type_plugAndFax">Plug & Fax</translation>
+   <translation id="telephony_service_feature_type_voicefax">Fax</translation>
 
 <!-- TIMECONDITION -->
    <translation id="telephony_common_time_condition_slot_from">de</translation>

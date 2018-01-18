@@ -167,9 +167,9 @@ angular.module("managerApp").constant("LANGUAGES", {
         guides: {
             home: "https://docs.ovh.com",
             telephony: "https://docs.ovh.com/pages/releaseview.action?pageId=7536707",
-            packActivate: "http://www.ovhtelecom.fr/g1315.activation",
-            modemConfig: "http://www.ovhtelecom.fr/g1372.modem",
-            modemReinit: "http://www.ovhtelecom.fr/g1377.reinitialiser-modem",
+            packActivate: "https://docs.ovh.com/fr/xdsl/comment-activer-mes-lignes-telephoniques-offre-adsl-vdsl/",
+            modemConfig: "https://docs.ovh.com/fr/xdsl/configuration-modem-xdsl/",
+            modemReinit: "https://docs.ovh.com/fr/xdsl/reinitialisation-du-modem/",
             overTheBox: "https://docs.ovh.com/display/public/CRXDSL/Accueil+xDSL",
             sms: {
                 receivers: "https://www.ovh.com/fr/g2402.liste_de_destinataire_sms"

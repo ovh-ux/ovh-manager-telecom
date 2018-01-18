@@ -54,6 +54,20 @@ The manager is running on [https://localhost:8181](https://localhost:8181)
 
 And start developing.
 
+## Documentation
+
+There is a begining of documentation available. To build docs, run :
+
+```bash
+grunt docs
+```
+
+To see the generated documentation, you need `npm serve` installed globally (`npm install -g serve`). Once installed, run :
+
+```bash
+serve docs
+```
+
 ## Related links
 
  * Contribute: https://github.com/ovh-ux/ovh-ux-guidelines/blob/master/.github/CONTRIBUTING.md
