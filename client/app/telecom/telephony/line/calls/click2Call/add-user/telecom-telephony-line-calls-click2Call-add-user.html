@@ -42,6 +42,17 @@
                     </div>
 
                     <div class="form-group">
+                        <telephony-bulk-action data-billing-account="{{ Click2CallAddUserCtrl.bulkDatas.billingAccount }}"
+                                               data-service-name="{{ Click2CallAddUserCtrl.bulkDatas.serviceName }}"
+                                               data-custom-class="link d-block pl-0 mb-3"
+                                               data-ng-disabled="!addUserForm.$valid"
+                                               data-bulk-infos="Click2CallAddUserCtrl.bulkDatas.infos"
+                                               data-filter-services="Click2CallAddUserCtrl.filterServices"
+                                               data-get-bulk-params="Click2CallAddUserCtrl.getBulkParams"
+                                               data-on-success="Click2CallAddUserCtrl.onBulkSuccess"
+                                               data-on-error="Click2CallAddUserCtrl.onBulkError">
+                        </telephony-bulk-action>
+
                         <button class="btn btn-default"
                                 type="reset"
                                 data-ng-click="Click2CallAddUserCtrl.close()"
