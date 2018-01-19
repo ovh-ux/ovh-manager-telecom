@@ -4,6 +4,8 @@
                 data-size="m">
     </oui-loader>
 
+    <toast-message></toast-message>
+
     <div data-ng-if="!loaders.details && !loaders.tasks">
 
         <div class="row d-md-flex mb-5">
@@ -300,6 +302,8 @@
                                                 <div class="d-inline-block my-2"
                                                      data-ng-bind="ip.ip + '&nbsp;/&nbsp;' + ip.range">
                                                 </div>
+                                                <span class="being_deleted" data-ng-if="ip.status === 'toDelete'"
+                                                           data-translate="xdsl_access_ip_is_being_deleted"></span>
                                                 <div class="float-right">
                                                     <a data-ng-disabled="ip.deleting"
                                                        title="{{ip.ip}} / {{ip.range}} : {{::'xdsl_details_ips_manage' | translate }}"
