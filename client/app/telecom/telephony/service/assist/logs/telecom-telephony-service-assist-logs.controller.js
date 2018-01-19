@@ -138,8 +138,8 @@ angular.module("managerApp").controller("TelecomTelephonyServiceAssistLogsCtrl",
 
 
     self.bulkDatas = {
-        billingAccount: $stateParams.billingAccount,
-        serviceName: $stateParams.serviceName,
+        billingAccount: self.service.billingAccount,
+        serviceName: self.service.serviceName,
         infos: {
             name: "assistLogs",
             actions: [{
