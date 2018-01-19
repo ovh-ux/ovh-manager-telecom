@@ -313,7 +313,7 @@
                                                               aria-hidden="true"></span>
                                                     </a>
                                                     <button type="button"
-                                                            data-ng-disabled="ip.deleting || ip.range === constants.rangeOfBaseIpv4IP"
+                                                            data-ng-disabled="ip.deleting || ip.range === constants.rangeOfBaseIpv4IP || ip.status === 'toDelete'"
                                                             class="btn btn-default"
                                                             title="{{ip.ip}} / {{ip.range}} {{:: 'common_table_delete' | translate }}"
                                                             data-ng-really-click="XdslAccess.deleteIps(ip)"

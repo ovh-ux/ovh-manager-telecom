@@ -135,11 +135,6 @@ angular.module("managerApp").controller("XdslAccessCtrl", function ($scope, $sta
     };
 
     this.deleteIps = function (ip) {
-        if (ip.status === "toDelete") {
-            Toast.error($translate.instant("xdsl_access_ip_block_delete_already_in_deletion", { ip: ip.ip }));
-            return;
-        }
-
         ip.deleting = true;
         OvhApiXdslIps.Lexi().unOrder({
             xdslId: $stateParams.serviceName,
