@@ -1,6 +1,6 @@
 angular.module("managerApp").controller("XdslAccessCtrl", function ($scope, $stateParams, $uibModal, $q, $filter, $translate, $templateCache,
                                                                     OvhApiXdsl, OvhApiXdslTasksCurrent, OvhApiXdslLines, OvhApiXdslNotifications, OvhApiXdslModem, OvhApiXdslIps, OvhApiPackXdsl,
-                                                                    ToastError, PACK_IP, REDIRECT_URLS) {
+                                                                    Toast, ToastError, PACK_IP, REDIRECT_URLS) {
     "use strict";
 
     var self = this;
@@ -142,11 +142,11 @@ angular.module("managerApp").controller("XdslAccessCtrl", function ($scope, $sta
         }, null).$promise.then(function () {
             self.getIps();
             ip.deleting = false;
+            Toast.success($translate.instant("xdsl_access_ip_block_delete_success", { ip: ip.ip }));
         }, function (err) {
             ip.deleting = false;
             ToastError(err);
         });
-
     };
 
     $scope.notificationsChanged = function (elements) {
