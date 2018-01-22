@@ -42,7 +42,7 @@ angular.module("managerApp").controller("XdslAccessIpOrderCtrl", ["$translate", 
         OvhApiXdslIps.Lexi().order({
             xdslId: self.constants.xdslId
         }, null).$promise.then(function (result) {
-            Toast.success($translate.instant("pack_xdsl_access_ips_order_validation"));
+            Toast.success($translate.instant("pack_xdsl_access_ip_order_validation"));
             $uibModalInstance.close(result);
         }, ToastError).finally(function () {
             self.loading = false;

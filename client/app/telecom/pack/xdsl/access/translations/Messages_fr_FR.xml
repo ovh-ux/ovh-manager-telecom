@@ -55,7 +55,6 @@
    <translation id="xdsl_details_ips_delete">supprimer ce bloc d'IPs</translation>
    <translation id="xdsl_details_ips_notifications" qtlid="72797">Alertes</translation>
    <translation id="xdsl_details_ips_title" qtlid="309750">IPs</translation>
-   <translation id="xdsl_details_ips_block_pending_order">Une commande de bloc d'IP est en cours</translation>
    <translation id="xdsl_details_ips_order" qtlid="43558">Commander</translation>
    <translation id="xdsl_access_ip_delete_really" qtlid="309763">Voulez-vous vraiment supprimer le block d'IP <b>{{ip}}/{{range}}</b></translation>
 
