@@ -109,7 +109,11 @@ angular.module("managerApp").controller("XdslAccessCtrl", function ($scope, $sta
         }, ToastError);
     };
 
-    this.canOrderIps = function () {
+    this.hasPendingOrderAdditionalIpOption = function () {
+        return $scope.access.tasks.current.pendingOrderAdditionalIpOption;
+    };
+
+    this.canHaveMoreIps = function () {
         return _.filter(self.ipsV4, function (ip) {
             return ip.range !== PACK_IP.baseIpv4Range;
         }).length === 0;

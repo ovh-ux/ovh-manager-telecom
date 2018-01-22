@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("XdslAccessIpOrderCtrl", ["$uibModalInstance", "data", "OvhApiXdslIps", "ToastError", "URLS", function ($uibModalInstance, data, OvhApiXdslIps, ToastError, URLS) {
+angular.module("managerApp").controller("XdslAccessIpOrderCtrl", ["$translate", "$uibModalInstance", "data", "OvhApiXdslIps", "Toast", "ToastError", "URLS", function ($translate, $uibModalInstance, data, OvhApiXdslIps, Toast, ToastError, URLS) {
     "use strict";
 
     var self = this;
@@ -42,6 +42,7 @@ angular.module("managerApp").controller("XdslAccessIpOrderCtrl", ["$uibModalInst
         OvhApiXdslIps.Lexi().order({
             xdslId: self.constants.xdslId
         }, null).$promise.then(function (result) {
+            Toast.success($translate.instant("pack_xdsl_access_ips_order_validation"));
             $uibModalInstance.close(result);
         }, ToastError).finally(function () {
             self.loading = false;

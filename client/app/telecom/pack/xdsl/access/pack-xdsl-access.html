@@ -4,6 +4,8 @@
                 data-size="m">
     </oui-loader>
 
+    <toast-message></toast-message>
+
     <div data-ng-if="!loaders.details && !loaders.tasks">
 
         <div class="row d-md-flex mb-5">
@@ -365,9 +367,11 @@
                                         </div>
                                     </div>
 
+                                    <em class="text-warning pl-1" data-ng-if="XdslAccess.hasPendingOrderAdditionalIpOption() && XdslAccess.canHaveMoreIps()" data-translate="xdsl_details_ips_block_pending_order"></em>
+
                                     <button type="button"
                                             class="oui-button oui-button_full-width oui-button_icon-left oui-button_primary mt-3"
-                                            data-ng-disabled="!XdslAccess.canOrderIps()"
+                                            data-ng-disabled="!XdslAccess.canHaveMoreIps() || XdslAccess.hasPendingOrderAdditionalIpOption()"
                                             data-ng-click="XdslAccess.orderIps()">
                                         <span class="ovh-font ovh-font-cart mr-2"
                                               aria-hidden="true"></span>
