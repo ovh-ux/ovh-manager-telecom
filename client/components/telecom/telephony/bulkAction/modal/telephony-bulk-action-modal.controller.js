@@ -190,6 +190,7 @@ angular.module("managerApp").controller("telephonyBulkActionModalCtrl", function
 
             if (self.bindings.filterServices && _.isFunction(self.bindings.filterServices())) {
                 allServices = self.bindings.filterServices()(allServices);
+
                 // filter function can be asynchronous
                 if (_.isFunction(allServices.then)) {
                     allServices.then((filteredServices) => {
