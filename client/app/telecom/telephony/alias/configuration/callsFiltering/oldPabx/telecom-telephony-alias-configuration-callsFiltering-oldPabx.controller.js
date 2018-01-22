@@ -141,10 +141,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationCalls
             });
         });
 
-        // reset initial values to be able to modify again the options
-        OvhApiTelephony.Screen().ScreenLists().Lexi().resetAllCache();
-
-        init();
+        window.location.reload();
     };
 
     self.onBulkError = function (error) {
