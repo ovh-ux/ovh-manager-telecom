@@ -121,6 +121,8 @@ angular.module("managerApp").controller("TelecomTelephonyServiceAssistLogsCtrl",
 
         return voipService.fetchSingleService($stateParams.billingAccount, $stateParams.serviceName).then(function (service) {
             self.service = service;
+            self.bulkDatas.billingAccount = self.service.billingAccount;
+            self.bulkDatas.serviceName = self.service.serviceName;
 
             return $q.all({
                 feature: voipLineFeature.fetchFeature(service),
@@ -138,8 +140,6 @@ angular.module("managerApp").controller("TelecomTelephonyServiceAssistLogsCtrl",
 
 
     self.bulkDatas = {
-        billingAccount: self.service.billingAccount,
-        serviceName: self.service.serviceName,
         infos: {
             name: "assistLogs",
             actions: [{
@@ -158,9 +158,10 @@ angular.module("managerApp").controller("TelecomTelephonyServiceAssistLogsCtrl",
     };
 
     self.getBulkParams = function () {
+        var logs = self.edition.mode ? self.edition.notifications.logs : self.service.feature.notifications.logs;
         return {
             notifications: {
-                logs: self.edition.mode ? _.pick(self.edition.notifications.logs, ["frequency", "sendIfNull", "email"]) : _.pick(self.service.feature.notifications.logs, ["frequency", "sendIfNull", "email"])
+                logs: _.pick(logs, ["frequency", "sendIfNull", "email"])
             }
         };
     };
