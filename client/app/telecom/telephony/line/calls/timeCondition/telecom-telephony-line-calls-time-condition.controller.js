@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyLineCallsTimeConditionCtrl", function ($q, $stateParams, $translate, OvhApiTelephony, TelephonyMediator, Toast, uiCalendarConfig, telephonyBulk) {
+angular.module("managerApp").controller("TelecomTelephonyLineCallsTimeConditionCtrl", function ($q, $stateParams, $translate, OvhApiTelephony, TelephonyMediator, Toast, uiCalendarConfig, telephonyBulk, voipTimeCondition) {
     "use strict";
 
     var self = this;
@@ -214,13 +214,17 @@ angular.module("managerApp").controller("TelecomTelephonyLineCallsTimeConditionC
             case bulkActionNames.deleteCondition:
                 return condition.state === "TO_DELETE";
             case bulkActionNames.editCondition:
-                return condition.state === "TO_EDIT";
+                return condition.state === "OK" && condition.hasChange(null, true);
             default:
                 return false;
             }
         });
 
-        return conditions;
+        return _.map(conditions, function (condition) {
+            condition.timeFrom = voipTimeCondition.getSipTime(condition.timeFrom);
+            condition.timeTo = voipTimeCondition.getSipTime(condition.timeTo, true);
+            return condition;
+        });
     };
 
     /* -----  End of BULK  ------ */
