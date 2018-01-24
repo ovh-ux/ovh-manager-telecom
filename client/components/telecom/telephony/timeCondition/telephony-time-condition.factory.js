@@ -168,7 +168,7 @@ angular.module("managerApp").factory("VoipTimeCondition", function ($q, voipTime
                     self.removeCondition(condition);
                 });
                 savePromises.push(actionPromise);
-            } else if (condition.state === "OK" || condition.state === "TO_EDIT") {
+            } else if (condition.state === "OK") {
                 actionPromise = condition.save().then(function () {
                     condition.stopEdition(false, false, true);
                 });
@@ -301,7 +301,7 @@ angular.module("managerApp").factory("VoipTimeCondition", function ($q, voipTime
             if (condition.state === "TO_CREATE" || condition.state === "DRAFT") {
                 self.removeCondition(condition);
             } else {
-                if (condition.state === "TO_DELETE" || condition.state === "TO_EDIT") {
+                if (condition.state === "TO_DELETE") {
                     condition.state = "OK";
                 }
                 condition.stopEdition(cancel, cancelOriginalSave, resetOriginalSave);
