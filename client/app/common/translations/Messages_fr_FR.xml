@@ -11,8 +11,8 @@
    <translation id="table_sort" qtlid="94699">Trier</translation>
 
    <translation id="common_datagrid_nodata">Aucun résultat</translation>
-   <translation id="common_pagination_ofnresults">sur {{totalItems}} résultats</translation>
-   <translation id="common_pagination_currentpageofpagecount">Page {{currentPage}} sur {{pageCount}}</translation>
+   <translation id="common_pagination_ofnresults">sur TOTAL_ITEMS résultats</translation>
+   <translation id="common_pagination_currentpageofpagecount">Page CURRENT_PAGE sur PAGE_COUNT</translation>
 
    <translation id="yes" qtlid="50134">oui</translation>
    <translation id="common_yes_capitalized">Oui</translation>
