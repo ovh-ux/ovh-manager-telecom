@@ -115,7 +115,7 @@
     "lodash": "^3.0.1",
     "open": "~0.0.4",
     "ovh-protractor-jasmine2-logs-reporter": "~0.0.1",
-    "ovh-ui-kit": "~2.0.0",
+    "ovh-ui-kit": "^2.0.x",
     "ovh-ui-kit-bs": "git+https://github.com/ovh-ux/ovh-ui-kit-bs.git#v0.5.0",
     "phantomjs-prebuilt": "^2.1.7",
     "pixrem": "^3.0.0",
