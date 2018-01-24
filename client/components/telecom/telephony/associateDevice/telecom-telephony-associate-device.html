@@ -1,8 +1,8 @@
 <div class="telephonyAssociateDevice">
 
-     <oui-loader data-ng-if="!$ctrl.isInitialized"
-                 data-size="l">
-     </oui-loader>
+     <div class="text-center" data-ng-if="!$ctrl.isInitialized">
+        <oui-spinner data-size="l"></oui-spinner>
+     </div>
 
      <div class="alert alert-success"
           role="alert"
@@ -65,10 +65,10 @@
         <button type="submit"
                 class="btn btn-primary float-right"
                 data-ng-disabled="$ctrl.isAttaching || !$ctrl.selectedMac || !$ctrl.ipAddress">
-            <oui-loader class="mr-2"
+            <oui-spinner class="mr-2"
                         data-ng-if="$ctrl.isAttaching"
                         data-size="s">
-            </oui-loader>
+            </oui-spinner>
             <span data-translate="telephony_device_associate_attach"></span>
         </button>
         <button type="reset"

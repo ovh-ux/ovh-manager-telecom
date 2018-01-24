@@ -1,8 +1,8 @@
 <div class="telephony-number-ovh-pabx-tts-create">
-
-    <oui-loader data-ng-if="$ctrl.loading.init"
-                data-size="m">
-    </oui-loader>
+    
+    <div class="text-center" data-ng-if="$ctrl.loading.init">
+        <oui-spinner></oui-spinner>
+    </div>
 
     <!-- CREATION FORM -->
     <form novalidate
@@ -55,10 +55,10 @@
             <button type="submit"
                     class="btn btn-primary float-right ml-sm-2"
                     data-ng-disabled="$ctrl.loading.creating || !$ctrl.ttsCreateForm.$valid">
-                <oui-loader class="mr-2"
+                <oui-spinner class="mr-2"
                             data-ng-show="$ctrl.loading.creating"
                             data-size="s">
-                </oui-loader>
+                </oui-spinner>
                 <span data-translate="common_create"></span>
             </button>
 

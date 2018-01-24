@@ -7,9 +7,9 @@
         <p data-translate="telephony_alias_configuration_records_info2"></p>
     </div>
 
-    <oui-loader data-ng-if="$ctrl.queues.isLoading"
-                data-size="m">
-    </oui-loader>
+    <div class="text-center" data-ng-if="$ctrl.queues.isLoading">
+        <oui-spinner></oui-spinner>
+    </div>
 
     <div class="row"
         data-ng-if="!$ctrl.queues.isLoading">
@@ -126,10 +126,10 @@
                         class="btn btn-primary no-transition"
                         data-ng-if="$ctrl.hasChanges()"
                         data-ng-disabled="ovhPabxRecordsOptionsForm.$invalid || $ctrl.queues.isUpdating">
-                        <oui-loader class="mr-2"
+                        <oui-spinner class="mr-2"
                                     data-ng-if="$ctrl.isUpdating"
                                     data-size="s">
-                        </oui-loader>
+                        </oui-spinner>
                         <span data-translate="telephony_alias_configuration_records_form_submit"></span>
                     </button>
                     <button
@@ -158,10 +158,10 @@
                 class="btn btn-default mb-3"
                 data-ng-disabled="$ctrl.getSelection().length === 0 || $ctrl.records.isDeleting"
                 data-ng-click="$ctrl.deleteSelectedRecords()">
-                <oui-loader class="mr-2"
+                <oui-spinner class="mr-2"
                             data-ng-if="$ctrl.records.isDeleting"
                             data-size="s">
-                </oui-loader>
+                </oui-spinner>
                 <i class="ovh-font ovh-font-bin line-height-normal mr-2"
                    aria-hidden="true"
                    data-ng-if="!$ctrl.records.isDeleting"></i>
@@ -330,7 +330,9 @@
                     <tbody data-ng-if="$ctrl.records.isLoading">
                         <tr>
                             <td colspan="7">
-                                <oui-loader data-size="m"></oui-loader>
+                                <div class="text-center">
+                                    <oui-spinner></oui-spinner>
+                                </div>
                             </td>
                         </tr>
                     </tbody>
