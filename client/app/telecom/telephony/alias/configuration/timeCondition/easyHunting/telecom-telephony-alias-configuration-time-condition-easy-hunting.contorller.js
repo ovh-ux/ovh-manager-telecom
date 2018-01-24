@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationTimeConditionEasyHuntingCtrl", function ($q, $stateParams, $translate, OvhApiTelephony, TelephonyMediator, Toast, uiCalendarConfig, telephonyBulk, voipTimeCondition) {
+angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationTimeConditionEasyHuntingCtrl", function ($q, $stateParams, $translate, OvhApiTelephony, TelephonyMediator, Toast, uiCalendarConfig, telephonyBulk) {
     "use strict";
 
     var self = this;
@@ -192,9 +192,17 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationTimeC
             }
         });
 
-        return conditions;
+        return _.map(conditions, function (condition) {
+            return {
+                conditionId: condition.conditionId,
+                weekDay: condition.weekDay,
+                timeFrom: condition.timeFrom,
+                timeTo: condition.timeTo,
+                policy: condition.policy,
+                status: condition.status
+            };
+        });
     };
 
     /* -----  End of BULK  ------ */
-
 });

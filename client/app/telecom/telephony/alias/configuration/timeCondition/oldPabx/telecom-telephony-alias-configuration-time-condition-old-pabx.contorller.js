@@ -215,7 +215,16 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationTimeC
             }
         });
 
-        return conditions;
+        return _.map(conditions, function (condition) {
+            return {
+                id: condition.conditionId,
+                day: condition.weekDay,
+                hourBegin: voipTimeCondition.getSipTime(condition.timeFrom),
+                hourEnd: voipTimeCondition.getSipTime(condition.timeTo, true),
+                policy: condition.policy,
+                status: condition.status
+            };
+        });
     };
 
     /* -----  End of BULK  ------ */
