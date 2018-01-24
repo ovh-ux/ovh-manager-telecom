@@ -221,9 +221,14 @@ angular.module("managerApp").controller("TelecomTelephonyLineCallsTimeConditionC
         });
 
         return _.map(conditions, function (condition) {
-            condition.timeFrom = voipTimeCondition.getSipTime(condition.timeFrom);
-            condition.timeTo = voipTimeCondition.getSipTime(condition.timeTo, true);
-            return condition;
+            return {
+                id: condition.conditionId,
+                day: condition.weekDay,
+                hourBegin: voipTimeCondition.getSipTime(condition.timeFrom),
+                hourEnd: voipTimeCondition.getSipTime(condition.timeTo, true),
+                policy: condition.policy,
+                status: condition.status
+            };
         });
     };
 
