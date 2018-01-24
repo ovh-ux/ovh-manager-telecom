@@ -14,7 +14,7 @@ angular.module("managerApp").controller("OverTheBoxTasksCtrl", function ($transl
         perPage: PAGINATION_PER_PAGE
     };
 
-    this.$onInit = function () {
+    self.$onInit = function () {
         $q.all([
             self.getTasks()
         ]);
