@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationTimeConditionOldPabxCtrl", function ($q, $stateParams, $translate, OvhApiTelephony, TelephonyMediator, Toast, uiCalendarConfig, telephonyBulk) {
+angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationTimeConditionOldPabxCtrl", function ($q, $stateParams, $translate, OvhApiTelephony, TelephonyMediator, Toast, uiCalendarConfig, telephonyBulk, voipTimeCondition) {
     "use strict";
 
     var self = this;
