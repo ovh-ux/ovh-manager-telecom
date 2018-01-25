@@ -25,7 +25,7 @@
                           data-ng-if="!SmsIncomingCtrl.incoming.isExporting">
                     </span>
                     <oui-spinner data-ng-if="SmsIncomingCtrl.incoming.isExporting"
-                                data-size="s">
+                                 data-size="s">
                     </oui-spinner>
                     <span data-translate="common_actions"></span>
                     <span class="ovh-font ovh-font-small-arrow-down" aria-hidden="true"></span>
@@ -259,10 +259,8 @@
                 </tbody>
                 <tbody data-ng-if="SmsIncomingCtrl.incoming.isLoading">
                     <tr>
-                        <td colspan="5">
-                            <div class="text-center">
-                                <oui-spinner data-size="s"></oui-spinner>
-                            </div>
+                        <td colspan="5" class="text-center">
+                            <oui-spinner data-size="s"></oui-spinner>
                         </td>
                     </tr>
                 </tbody>
