@@ -43,9 +43,9 @@
                     </h2>
                 </header>
 
-                <oui-loader data-ng-if="TelecomSmsOptionsResponseCtrl.loading.init"
-                            data-size="m">
-                </oui-loader>
+                <div class="text-center" data-ng-if="TelecomSmsOptionsResponseCtrl.loading.init">
+                    <oui-spinner></oui-spinner>
+                </div>
 
                 <form name="smsResponseActionForm"
                       id="smsResponseActionForm"
@@ -158,10 +158,10 @@
                             data-ng-disabled="smsResponseActionForm.$invalid || !TelecomSmsOptionsResponseCtrl.hasChanged() || TelecomSmsOptionsResponseCtrl.loading.action"
                             data-translate="submit">
                         </button>
-                        <oui-loader class="ml-2"
-                                    data-ng-if="TelecomSmsOptionsResponseCtrl.loading.action"
-                                    data-size="s">
-                        </oui-loader>
+                        <oui-spinner class="ml-2"
+                                     data-ng-if="TelecomSmsOptionsResponseCtrl.loading.action"
+                                     data-size="s">
+                        </oui-spinner>
                     </div>
 
                 </form>
@@ -255,7 +255,9 @@
                         <tbody data-ng-if="TelecomSmsOptionsResponseCtrl.loading.init">
                             <tr>
                                 <td colspan="3">
-                                    <oui-loader data-size="m"></oui-loader>
+                                    <div class="text-center">
+                                        <oui-spinner data-size="s"></oui-spinner>
+                                    </div>
                                 </td>
                             </tr>
                         </tbody>

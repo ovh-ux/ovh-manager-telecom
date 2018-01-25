@@ -95,10 +95,10 @@
                           aria-hidden="true"
                           data-ng-if="!SmsReceiversCtrl.receivers.isDeleting">
                     </span>
-                    <oui-loader class="mr-2"
-                                data-ng-if="SmsReceiversCtrl.receivers.isDeleting"
-                                data-size="s">
-                    </oui-loader>
+                    <oui-spinner class="mr-2"
+                                 data-ng-if="SmsReceiversCtrl.receivers.isDeleting"
+                                 data-size="s">
+                    </oui-spinner>
                     <span data-ng-pluralize
                           data-count="SmsReceiversCtrl.getSelection().length"
                           data-when="{
@@ -108,10 +108,10 @@
                           }">
                     </span>
                 </button>
-                <oui-loader class="ml-2"
-                            data-ng-if="SmsReceiversCtrl.receivers.isReading"
-                            data-size="s">
-                </oui-loader>
+                <oui-spinner class="ml-2"
+                             data-ng-if="SmsReceiversCtrl.receivers.isReading"
+                             data-size="s">
+                </oui-spinner>
             </div>
 
             <div class="table-responsive">
@@ -292,7 +292,9 @@
                     <tbody data-ng-if="SmsReceiversCtrl.receivers.isLoading">
                         <tr>
                             <td colspan="6">
-                                <oui-loader data-size="m"></oui-loader>
+                                <div class="text-center">
+                                    <oui-spinner data-size="s"></oui-spinner>
+                                </div>
                             </td>
                         </tr>
                     </tbody>

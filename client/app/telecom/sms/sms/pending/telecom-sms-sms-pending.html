@@ -64,10 +64,10 @@
                       aria-hidden="true"
                       data-ng-if="!SmsPendingCtrl.pending.isDeleting">
                 </span>
-                <oui-loader class="mr-2"
-                            data-ng-if="SmsPendingCtrl.pending.isDeleting"
-                            data-size="s">
-                </oui-loader>
+                <oui-spinner class="mr-2"
+                             data-ng-if="SmsPendingCtrl.pending.isDeleting"
+                             data-size="s">
+                </oui-spinner>
                 <span data-ng-pluralize
                       data-count="SmsPendingCtrl.getSelection().length"
                       data-when="{
@@ -77,10 +77,10 @@
                       }">
                 </span>
             </button>
-            <oui-loader class="ml-2"
-                        data-ng-if="SmsPendingCtrl.loading.read || SmsPendingCtrl.loading.cancelAll"
-                        data-size="s">
-            </oui-loader>
+            <oui-spinner class="ml-2"
+                         data-ng-if="SmsPendingCtrl.loading.read || SmsPendingCtrl.loading.cancelAll"
+                         data-size="s">
+            </oui-spinner>
         </div>
         <div class="table-responsive">
             <table class="table"
@@ -297,7 +297,9 @@
                 <tbody data-ng-if="SmsPendingCtrl.pending.isLoading">
                     <tr>
                         <td colspan="8">
-                            <oui-loader data-size="m"></oui-loader>
+                            <div class="text-center">
+                                <oui-spinner data-size="s"></oui-spinner>
+                            </div>
                         </td>
                     </tr>
                 </tbody>

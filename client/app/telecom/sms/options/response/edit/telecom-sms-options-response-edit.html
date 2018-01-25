@@ -142,18 +142,17 @@
                 </span>
             </span>
         </div>
-
     </div>
 
     <div class="modal-body text-center"
          data-ng-if="OptionsResponseEditCtrl.loading.init">
-        <oui-loader data-size="m"></oui-loader>
+        <oui-spinner></oui-spinner>
         <h4 data-translate="loading"></h4>
     </div>
 
     <div class="modal-body text-center"
          data-ng-if="OptionsResponseEditCtrl.loading.editTrackingOption && !OptionsResponseEditCtrl.edited">
-        <oui-loader data-size="m"></oui-loader>
+        <oui-spinner></oui-spinner>
         <h4 data-translate="sms_options_response_tracking_edit_option_editing"></h4>
     </div>
 

@@ -1,9 +1,9 @@
 <section class="telecom-sms-dashboard">
 
     <!-- LOADING -->
-    <oui-loader data-ng-if="SmsDashboardCtrl.loading.init"
-                data-size="m">
-    </oui-loader>
+    <div class="text-center" data-ng-if="SmsDashboardCtrl.loading.init">
+        <oui-spinner></oui-spinner>
+    </div>
 
     <div class="row d-md-flex"
          data-ng-if="!SmsDashboardCtrl.loading.init">
@@ -67,7 +67,7 @@
                 </h3>
                 <div class="oui-tile__body"
                      data-ng-show="SmsDashboardCtrl.loading.stats">
-                    <oui-loader data-size="m"></oui-loader>
+                    <oui-spinner></oui-spinner>
                 </div>
                 <div class="oui-tile__body"
                      data-ng-hide="SmsDashboardCtrl.loading.stats">

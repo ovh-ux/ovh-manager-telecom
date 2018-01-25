@@ -1,8 +1,8 @@
 <section class="telecom-sms-phonebooks">
 
-    <oui-loader data-ng-if="PhonebooksCtrl.phonebooks.isLoading"
-                data-size="m">
-    </oui-loader>
+    <div class="text-center" data-ng-if="PhonebooksCtrl.phonebooks.isLoading">
+        <oui-spinner></oui-spinner>
+    </div>
 
     <div data-ng-if="!PhonebooksCtrl.phonebooks.isLoading">
 
@@ -172,9 +172,9 @@
                                           aria-hidden="true"
                                           data-ng-if="!PhonebooksCtrl.phonebookContact.isExporting">
                                     </span>
-                                    <oui-loader data-ng-if="PhonebooksCtrl.phonebookContact.isExporting"
-                                                data-size="s">
-                                    </oui-loader>
+                                    <oui-spinner data-ng-if="PhonebooksCtrl.phonebookContact.isExporting"
+                                                 data-size="s">
+                                    </oui-spinner>
                                     <span data-translate="common_actions"></span>
                                     <span class="ovh-font ovh-font-small-arrow-down" aria-hidden="true"></span>
                                 </button>
@@ -242,9 +242,9 @@
                                 <span class="oui-icon oui-icon-trash_line mr-2" aria-hidden="true"
                                       data-ng-if="!PhonebooksCtrl.phonebookContact.isDeleting">
                                 </span>
-                                <oui-loader data-ng-if="PhonebooksCtrl.phonebookContact.isDeleting"
-                                            data-size="s">
-                                </oui-loader>
+                                <oui-spinner data-ng-if="PhonebooksCtrl.phonebookContact.isDeleting"
+                                             data-size="s">
+                                </oui-spinner>
                                 <span data-ng-pluralize
                                       data-count="PhonebooksCtrl.getSelection().length"
                                       data-when="{
@@ -470,7 +470,9 @@
                                 <tbody data-ng-if="PhonebooksCtrl.phonebookContact.isLoading">
                                     <tr>
                                         <td colspan="9">
-                                            <oui-loader data-size="m"></oui-loader>
+                                            <div class="text-center">
+                                                <oui-spinner data-size="s"></oui-spinner>
+                                            </div>
                                         </td>
                                     </tr>
                                 </tbody>

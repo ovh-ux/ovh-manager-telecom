@@ -1,8 +1,8 @@
 <section class="telecom-sms-order">
 
-    <oui-loader data-ng-if="SmsOrder.loading.init"
-                data-size="m">
-    </oui-loader>
+    <div class="text-center" data-ng-if="SmsOrder.loading.init">
+        <oui-spinner></oui-spinner>
+    </div>
 
     <div class="widget-presentation"
          data-ng-if="!SmsOrder.loading.init">
@@ -114,9 +114,9 @@
                 </div>
             </div>
 
-            <oui-loader data-ng-if="SmsOrder.loading.prices"
-                        data-size="m">
-            </oui-loader>
+            <div class="text-center" data-ng-if="SmsOrder.loading.prices">
+                    <oui-spinner></oui-spinner>
+            </div>
 
             <div data-ng-if="!SmsOrder.loading.prices">
 
@@ -159,10 +159,10 @@
                               aria-hidden="true"
                               data-ng-if="!SmsOrder.loading.order">
                         </span>
-                        <oui-loader class="mr-2"
-                                    data-ng-if="SmsOrder.loading.order"
-                                    data-size="s">
-                        </oui-loader>
+                        <oui-spinner class="mr-2"
+                                     data-ng-if="SmsOrder.loading.order"
+                                     data-size="s">
+                        </oui-spinner>
                         <span data-translate="sms_order_order"></span>
                     </button>
                 </div>
