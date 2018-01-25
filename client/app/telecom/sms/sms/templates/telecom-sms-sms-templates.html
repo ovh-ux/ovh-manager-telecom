@@ -8,9 +8,9 @@
     </header>
 
     <!-- LOADING -->
-    <oui-loader data-ng-if="SmsTemplates.loading.init"
-                data-size="m">
-    </oui-loader>
+    <div class="text-center" data-ng-if="SmsTemplates.loading.init">
+        <oui-spinner></oui-spinner>
+    </div>
 
     <div class="telecom-section-content"
          data-ng-if="!SmsTemplates.loading.init">
@@ -205,8 +205,8 @@
                 </thead>
                 <tbody data-ng-if="SmsTemplates.templates.isLoading">
                     <tr>
-                        <td colspan="7">
-                            <oui-loader data-size="m"></oui-loader>
+                        <td colspan="7" class="text-center">
+                            <oui-spinner data-size="s"></oui-spinner>
                         </td>
                     </tr>
                 </tbody>
