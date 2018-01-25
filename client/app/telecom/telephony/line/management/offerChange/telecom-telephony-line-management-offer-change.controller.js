@@ -136,7 +136,6 @@ angular.module("managerApp").controller("TelecomTelephonyLineManagementOfferChan
             }).$promise;
         }
 
-
         var promises = [];
         var filteredServices = _.filter(services, function (service) {
             return ["sip", "mgcp"].indexOf(service.featureType) > -1;
@@ -151,7 +150,6 @@ angular.module("managerApp").controller("TelecomTelephonyLineManagementOfferChan
         }).catch(function (listOffers) {
             return filterServicesByOffer(filteredServices, listOffers);
         });
-
     };
 
     self.getBulkParams = function () {
@@ -161,7 +159,6 @@ angular.module("managerApp").controller("TelecomTelephonyLineManagementOfferChan
     };
 
     self.onBulkSuccess = function (bulkResult) {
-
         // display message of success or error
         telephonyBulk.getToastInfos(bulkResult, {
             fullSuccess: $translate.instant("telephony_line_management_change_offer_bulk_all_success"),
