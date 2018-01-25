@@ -131,7 +131,8 @@
     "ng-at-internet": "^3.0.0",
     "ovh-font": "~0.15.x",
     "responsive-popover": "^4.0.0",
-    "uri.js": "^1.18.1"
+    "uri.js": "^1.18.1",
+    "ovh-ui-kit": "^2.0.x"
   },
   "overrides": {
     "jquery-ui": {
