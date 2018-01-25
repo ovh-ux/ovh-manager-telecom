@@ -1,0 +1,28 @@
+<a href="https://github.com/ovh-ux/ovh-manager-telecom/tree/master/client/components/telecom/voip/service/voip-service.factory.js#L15" class="view-source"><i class="icon-eye-open"> </i>View source</a><h1><code ng:non-bindable="">VoipService</code>
+<div><span class="hint">object in module <code ng:non-bindable="">managerApp</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="managerapp-object-page managerapp-object-voipservice-page"><p>Factory that describes a service with attributes returned by <code>/telephony/{billingAccount}/service/{serviceName}</code> API.</p>
+<p>See <a href="https://eu.api.ovh.com/console/#/telephony/%7BbillingAccount%7D/service/%7BserviceName%7D#GET"><code>telephony.TelephonyService</code> enum</a> for available properties.</p></div></div>
+<h2 id="usage">Usage</h2>
+<div class="usage"><pre class="prettyprint linenums">VoipService(options);</pre>
+<h4 id="usage_parameters">Parameters</h4><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>options</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="managerapp-object-page managerapp-object-voipservice-page"><p>Options required for creating a new instance of VoipService (see <a href="https://eu.api.ovh.com/console/#/telephony/%7BbillingAccount%7D/service/%7BserviceName%7D#GET"><code>telephony.TelephonyService</code> enum</a>
+for availables options properties).</p>
+<p>Note that <code>billingAccount</code> and <code>serviceName</code> options are mandatory.</p>
+</div></td></tr></tbody></table></div>
+<div class="member property"><h2 id="properties">Properties</h2>
+<ul class="properties"><li><h3 id="properties_getdisplayedname">getDisplayedName</h3>
+<div class="getdisplayedname"><div class="managerapp-object-page managerapp-object-voipservice-getdisplayedname-page"><p>Get the displayed name of the service.</p>
+</div><h5 id="properties_getdisplayedname_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-string">String</a></td><td><div class="managerapp-object-page managerapp-object-voipservice-getdisplayedname-page"><p>The displayedName of the service (the description if provided, the serviceName value otherwise).</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="properties_isdescriptionsameasservicename">isDescriptionSameAsServiceName</h3>
+<div class="isdescriptionsameasservicename"><div class="managerapp-object-page managerapp-object-voipservice-isdescriptionsameasservicename-page"><p>Helper that check if the description is the same as serviceName.</p>
+</div><h5 id="properties_isdescriptionsameasservicename_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-boolean">Boolean</a></td><td><div class="managerapp-object-page managerapp-object-voipservice-isdescriptionsameasservicename-page"><p><code>true</code> if description is the same that serviceName.</p>
+</div></td></tr></table></div>
+</li>
+</ul>
+</div>
+</div>
