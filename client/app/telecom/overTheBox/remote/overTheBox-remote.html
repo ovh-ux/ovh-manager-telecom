@@ -26,10 +26,8 @@
                     </thead>
                     <tbody data-ng-if="OverTheBoxRemote.remotes.length === 0">
                         <tr data-ng-show="OverTheBoxRemote.loading">
-                            <td colspan="5">
-                                <div class="text-center">
-                                    <oui-spinner data-size="s"></oui-spinner>
-                                </div>
+                            <td colspan="5" class="text-center">
+                                <oui-spinner data-size="s"></oui-spinner>
                             </td>
                         </tr>
                         <tr data-ng-hide="OverTheBoxRemote.loading">

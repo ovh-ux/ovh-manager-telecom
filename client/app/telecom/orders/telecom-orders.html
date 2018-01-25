@@ -56,10 +56,8 @@
                             </td>
                         </tr>
                         <tr data-ng-show="OrdersCtrl.loading">
-                            <td colspan="5">
-                                <div class="text-center">
-                                    <oui-spinner data-size="s"></oui-spinner>
-                                </div>
+                            <td colspan="5" class="text-center">
+                                <oui-spinner data-size="s"></oui-spinner>
                             </td>
                         </tr>
                         <tr data-ng-if="OrdersCtrl.ordersDetails.length == 0 && !OrdersCtrl.loading">
