@@ -127,8 +127,8 @@
                         data-ng-if="$ctrl.hasChanges()"
                         data-ng-disabled="ovhPabxRecordsOptionsForm.$invalid || $ctrl.queues.isUpdating">
                         <oui-spinner class="mr-2"
-                                    data-ng-if="$ctrl.isUpdating"
-                                    data-size="s">
+                                     data-ng-if="$ctrl.isUpdating"
+                                     data-size="s">
                         </oui-spinner>
                         <span data-translate="telephony_alias_configuration_records_form_submit"></span>
                     </button>
@@ -159,8 +159,8 @@
                 data-ng-disabled="$ctrl.getSelection().length === 0 || $ctrl.records.isDeleting"
                 data-ng-click="$ctrl.deleteSelectedRecords()">
                 <oui-spinner class="mr-2"
-                            data-ng-if="$ctrl.records.isDeleting"
-                            data-size="s">
+                             data-ng-if="$ctrl.records.isDeleting"
+                             data-size="s">
                 </oui-spinner>
                 <i class="ovh-font ovh-font-bin line-height-normal mr-2"
                    aria-hidden="true"
@@ -331,7 +331,7 @@
                         <tr>
                             <td colspan="7">
                                 <div class="text-center">
-                                    <oui-spinner></oui-spinner>
+                                    <oui-spinner data-size="s"></oui-spinner>
                                 </div>
                             </td>
                         </tr>

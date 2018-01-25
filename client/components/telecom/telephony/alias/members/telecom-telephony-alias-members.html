@@ -60,7 +60,7 @@
                 <strong class="member-description my-3  align-middle"
                         data-ng-class="{'px-4': !$ctrl.memberInEdition && !$ctrl.memberToDelete}">
                     <oui-spinner data-ng-if="member.description === undefined"
-                                data-size="s">
+                                 data-size="s">
                     </oui-spinner>
                     <span data-ng-if="member.description !== undefined"
                           data-ng-bind="member.description || ('telephony_alias_members_number_external' | translate)"></span>
@@ -150,8 +150,8 @@
                                 class="btn btn-primary"
                                 data-ng-disabled="$ctrl.loaders.editing">
                             <oui-spinner class="mr-2"
-                                        data-ng-if="$ctrl.loaders.editing"
-                                        data-size="s">
+                                         data-ng-if="$ctrl.loaders.editing"
+                                         data-size="s">
                             </oui-spinner>
                             <span data-translate="submit"></span>
                         </button>
@@ -172,8 +172,8 @@
                             data-ng-click="$ctrl.deleteMember(member)"
                             data-ng-disabled="$ctrl.loaders.deleting">
                         <oui-spinner class="mr-2"
-                                    data-ng-if="$ctrl.loaders.deleting"
-                                    data-size="s">
+                                     data-ng-if="$ctrl.loaders.deleting"
+                                     data-size="s">
                         </oui-spinner>
                         <span data-translate="delete"></span>
                     </button>
