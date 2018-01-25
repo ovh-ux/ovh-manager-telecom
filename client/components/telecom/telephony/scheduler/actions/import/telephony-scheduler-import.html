@@ -35,7 +35,7 @@
     <div class="modal-body">
         <div class="text-center"
              data-ng-if="SchedulerImportCtrl.loading.import && !SchedulerImportCtrl.status.uploaded">
-            <oui-loader data-size="m"></oui-loader>
+            <oui-spinner data-size="m"></oui-spinner>
             <h4 data-translate="telephony_scheduler_import_upload_doing"></h4>
         </div>
         <success-drawing-check data-draw-success-check="SchedulerImportCtrl.status.uploaded"

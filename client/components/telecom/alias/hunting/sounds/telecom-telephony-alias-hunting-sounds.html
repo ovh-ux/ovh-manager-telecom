@@ -27,10 +27,10 @@
                 class="btn btn-default mt-2 float-right no-transition"
                 data-ng-disabled="$ctrl.isUploading"
                 data-ng-if="$ctrl.toUpload">
-            <oui-loader class="mr-2"
-                        data-ng-if="$ctrl.isUploading"
-                        data-size="s">
-            </oui-loader>
+            <oui-spinner class="mr-2"
+                         data-ng-if="$ctrl.isUploading"
+                         data-size="s">
+            </oui-spinner>
             <span data-translate="submit"></span>
         </button>
 
@@ -52,9 +52,9 @@
                         title="{{:: 'telephony_alias_hunting_sounds_delete' | translate }}"
                         data-ng-disabled="sound.isDeleting"
                         data-ng-click="$ctrl.deleteSound(sound)">
-                    <oui-loader data-ng-if="sound.isDeleting"
-                                data-size="s">
-                    </oui-loader>
+                    <oui-spinner data-ng-if="sound.isDeleting"
+                                 data-size="s">
+                    </oui-spinner>
                     <i class="ovh-font ovh-font-wrong"
                        data-ng-if="!sound.isDeleting"></i>
                 </button>
