@@ -56,7 +56,10 @@
    <translation id="xdsl_details_ips_notifications" qtlid="72797">Alertes</translation>
    <translation id="xdsl_details_ips_title" qtlid="309750">IPs</translation>
    <translation id="xdsl_details_ips_order" qtlid="43558">Commander</translation>
-   <translation id="xdsl_access_ip_delete_really" qtlid="309763">Voulez-vous vraiment supprimer le block d'IP <b>{{ip}}/{{range}}</b></translation>
+   <translation id="xdsl_access_ip_delete_really" qtlid="309763">Voulez-vous vraiment supprimer le bloc d'IP <b>{{ip}}/{{range}}</b></translation>
+   <translation id="xdsl_access_ip_block_delete_success">Votre demande de suppression du bloc d'IP <b>{{ip}}</b> a bien été prise en compte.</translation>
+   <translation id="xdsl_access_ip_block_delete_error">Une erreur est survenue lors de la demande de suppression du bloc d'IP.</translation>
+   <translation id="xdsl_access_ip_is_being_deleted">en cours de suppression</translation>
 
 <!-- status -->
    <translation id="xdsl_details_status_active" qtlid="55133">Actif</translation>
