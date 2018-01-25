@@ -237,7 +237,8 @@ angular.module("managerApp")
 
         self.filterServices = function (services) {
             return _.filter(services, function (service) {
-                return ["sip", "mgcp"].indexOf(service.featureType) > -1;
+                return ["sip", "mgcp"].indexOf(service.featureType) > -1 &&
+                    service.getPublicOffer.description !== "This Service has an error";
             });
         };
 
