@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("telephonyBulkActionModalCtrl", function ($http, $filter, $translate, $uibModalInstance, modalBindings, telecomVoip) {
+angular.module("managerApp").controller("telephonyBulkActionModalCtrl", function ($http, $filter, $q, $translate, $uibModalInstance, modalBindings, telecomVoip) {
     "use strict";
 
     var self = this;
@@ -24,8 +24,8 @@ angular.module("managerApp").controller("telephonyBulkActionModalCtrl", function
     self.serviceList = null;
 
     /* ==============================
-     =            HELPERS            =
-     =============================== */
+    =            HELPERS            =
+    =============================== */
 
     function getFilteredServiceList () {
         var services = null;
@@ -93,8 +93,8 @@ angular.module("managerApp").controller("telephonyBulkActionModalCtrl", function
 
 
     /* =============================
-     =            EVENTS            =
-     ============================== */
+    =            EVENTS            =
+    ============================== */
 
     self.cancel = function (reason) {
         return $uibModalInstance.dismiss(reason);
@@ -157,8 +157,8 @@ angular.module("managerApp").controller("telephonyBulkActionModalCtrl", function
     /* -----  End of EVENTS  ------ */
 
     /* =====================================
-     =            INITIALIZATION            =
-     ====================================== */
+    =            INITIALIZATION            =
+    ====================================== */
 
     function completeServiceListDetails () {
         // filter service with the modal filters
@@ -189,18 +189,15 @@ angular.module("managerApp").controller("telephonyBulkActionModalCtrl", function
             }).value();
 
             if (self.bindings.filterServices && _.isFunction(self.bindings.filterServices())) {
-                // filter function can be asynchronous
-                if (_.isFunction(self.bindings.filterServices()(allServices).then)) {
-                    self.bindings.filterServices()(allServices).then((updatedServices) => {
-                        allServices = updatedServices;
-                        completeServiceListDetails();
-                        self.loading.init = false;
-                    });
-                } else {
-                    allServices = self.bindings.filterServices()(allServices);
+                allServices = self.bindings.filterServices()(allServices);
+                var filterPromise = _.isFunction(allServices.then) ? allServices : $q.when(allServices);
+
+                filterPromise.then((filteredServices) => {
+                    allServices = filteredServices;
                     completeServiceListDetails();
                     self.loading.init = false;
-                }
+                });
+
             } else {
                 completeServiceListDetails();
                 self.loading.init = false;
