@@ -3,9 +3,8 @@
         <h3 class="oui-header_3 oui-tile__title"
             data-translate="freefax_fax_configuration">
         </h3>
-        <div class="oui-tile__body"
-             data-ng-if="loading">
-            <oui-loader data-size="m"></oui-loader>
+        <div class="oui-tile__body" data-ng-if="loading">
+            <oui-spinner></oui-spinner>
         </div>
         <div class="oui-tile__body"
              data-ng-if="!loading && freeFax && !FaxConfCtrl.editMode">
@@ -178,10 +177,10 @@
                                     data-ng-really-window-class="revert-really-buttons"
                                     data-ng-disabled="FaxConfCtrl.generatingPassword">
                             </button>
-                            <oui-loader class="d-inline-block align-middle ml-2"
-                                                 data-ng-if="FaxConfCtrl.generatingPassword"
-                                                 data-size="s">
-                            </oui-loader>
+                            <oui-spinner class="d-inline-block align-middle ml-2"
+                                         data-ng-if="FaxConfCtrl.generatingPassword"
+                                         data-size="s">
+                            </oui-spinner>
                             <div class="input-group"
                                  data-ng-if="FaxConfCtrl.generatedPassword">
                                 <input class="form-control"
@@ -238,10 +237,10 @@
                                     data-ng-disabled="FaxConfCtrl.loading"
                                     data-translate="cancel">
                             </button>
-                            <oui-loader class="d-inline-block align-middle ml-2"
-                                                 data-ng-if="FaxConfCtrl.loading"
-                                                 data-size="s">
-                            </oui-loader>
+                            <oui-spinner class="d-inline-block align-middle ml-2"
+                                         data-ng-if="FaxConfCtrl.loading"
+                                         data-size="s">
+                            </oui-spinner>
                         </div>
                     </form>
                 </div>
