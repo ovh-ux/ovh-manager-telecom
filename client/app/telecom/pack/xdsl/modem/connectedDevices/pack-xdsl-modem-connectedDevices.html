@@ -51,12 +51,12 @@
                 <tbody>
                 <tr data-ng-repeat="device in DeviceCtrl.devices track by device.macAddress">
                     <td>
-                        <span class="ovh-font h5"
+                        <h5 class="ovh-font"
                            data-ng-class="DeviceCtrl.getConnectionIcon(device)"
-                           title="{{device.interfaceType}}"></span>
-                        <span class="ovh-font h5"
+                           title="{{device.interfaceType}}"></h5>
+                        <h5 class="ovh-font"
                            data-ng-class="DeviceCtrl.getDeviceInfo(device).icon"
-                           title="{{DeviceCtrl.getDeviceInfo(device).tooltip | translate}}"></span>
+                           title="{{DeviceCtrl.getDeviceInfo(device).tooltip | translate}}"></h5>
                     </td>
                     <th scope="row" data-translate-attr="{ title : 'xdsl_modem_device_mac' }" data-ng-bind="device.macAddress"></th>
                     <td data-translate-attr="{ title : 'xdsl_modem_device_ip' }" data-ng-bind="device.ipAddress"></td>
