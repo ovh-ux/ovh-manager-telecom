@@ -6,7 +6,7 @@
 
     <div class="row"
          data-ng-if="!DefaultVoicemailCtrl.loading">
-        <div class="col-xs-12 col-md-8">
+        <div class="col-xs-12 col-md-6">
 
             <toast-message></toast-message>
 
@@ -27,7 +27,19 @@
                             data-ng-options="number.serviceName as DefaultVoicemailCtrl.formatNumber(number) for number in DefaultVoicemailCtrl.numbers | orderBy: ['description', 'label', 'serviceName']">
                     </select>
                 </div>
-                <div class="form-group">
+                <div class="form-group mt-4">
+                    <hr/>
+                    <telephony-bulk-action data-billing-account="{{ DefaultVoicemailCtrl.bulkDatas.billingAccount }}"
+                                           data-service-name="{{ DefaultVoicemailCtrl.bulkDatas.serviceName }}"
+                                           data-custom-class="link d-block pl-0 mb-3"
+                                           data-bulk-infos="DefaultVoicemailCtrl.bulkDatas.infos"
+                                           data-filter-services="DefaultVoicemailCtrl.filterServices"
+                                           data-ng-disabled="DefaultVoicemailCtrl.saving"
+                                           data-get-bulk-params="DefaultVoicemailCtrl.getBulkParams"
+                                           data-on-success="DefaultVoicemailCtrl.onBulkSuccess"
+                                           data-on-error="DefaultVoicemailCtrl.onBulkError">
+                    </telephony-bulk-action>
+
                     <button type="submit"
                             class="btn btn-primary"
                             data-ng-disabled="DefaultVoicemailCtrl.options.defaultVoicemail === DefaultVoicemailCtrl.defaultVoicemail || DefaultVoicemailCtrl.saving">
