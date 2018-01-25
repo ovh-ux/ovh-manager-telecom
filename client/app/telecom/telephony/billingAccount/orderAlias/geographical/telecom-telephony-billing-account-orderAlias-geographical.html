@@ -4,9 +4,9 @@
         <section-back-link section-back-link-to-state="telecom.telephony.orderAlias"
                            section-back-link-title="{{ 'telephony_order_back_link' | translate }}">
         </section-back-link>
-        <h1 data-translate="telephony_order_geographical_title_country"
+        <h2 data-translate="telephony_order_geographical_title_country"
             data-translate-values="{country: AliasOrderGeographicalCtrl.user.country}">
-        </h1>
+        </h2>
     </header>
 
     <toast-message></toast-message>
@@ -20,9 +20,9 @@
                   data-ng-submit="AliasOrderGeographicalCtrl.order()">
                 <!-- Order -->
                 <div class="widget-presentation mt-2">
-                    <h2 class="widget-presentation-title"
+                    <h3 class="widget-presentation-title"
                         data-translate="telephony_order_amount_title">
-                    </h2>
+                    </h3>
                     <div class="form-group">
                         <label class="control-label"
                                for="amount"
@@ -70,9 +70,9 @@
                 <div data-ng-if="AliasOrderGeographicalCtrl.form.zone">
                     <div class="widget-presentation mt-2"
                          data-ng-if="AliasOrderGeographicalCtrl.form.amount.value === 1">
-                        <h2 class="widget-presentation-title"
+                        <h3 class="widget-presentation-title"
                             data-translate="telephony_order_specific_title">
-                        </h2>
+                        </h3>
                         <oui-loader data-ng-if="!AliasOrderGeographicalCtrl.prices"
                                     data-size="m">
                         </oui-loader>
@@ -90,9 +90,9 @@
 
                     <!-- Address -->
                     <div class="widget-presentation">
-                        <h2 class="widget-presentation-title"
+                        <h3 class="widget-presentation-title"
                             data-translate="telephony_order_address_title">
-                        </h2>
+                        </h3>
                         <telecom-telephony-billing-account-order-alias-coordinate
                             data-ng-model="AliasOrderGeographicalCtrl.form"
                             data-ng-disabled="AliasOrderGeographicalCtrl.loading.init || AliasOrderGeographicalCtrl.loading.order"
@@ -102,9 +102,9 @@
 
                     <!-- Retractation -->
                     <div class="widget-presentation">
-                        <h2 class="widget-presentation-title"
+                        <h3 class="widget-presentation-title"
                             data-translate="telephony_order_geographical_submit_title">
-                        </h2>
+                        </h3>
                         <telecom-telephony-billing-account-order-alias-number-choice-retractation
                             data-ng-model="AliasOrderGeographicalCtrl.form.retractation"
                             data-ng-disabled="AliasOrderGeographicalCtrl.loading.init || AliasOrderGeographicalCtrl.loading.order">
@@ -141,9 +141,9 @@
         <div class="col-xs-12 col-md-8"
              data-ng-if="AliasOrderGeographicalCtrl.orderInformations && AliasOrderGeographicalCtrl.orderInformations.contracts && AliasOrderGeographicalCtrl.orderInformations.contracts.length > 0">
             <div class="widget-presentation">
-                <h2 class="widget-presentation-title"
+                <h3 class="widget-presentation-title"
                     data-translate="telephony_order_legal">
-                </h2>
+                </h3>
                 <a class="btn btn-primary"
                    target="_blank"
                    rel="noopener"
