@@ -81,15 +81,15 @@
                                             data-ng-disabled="!DmzCtrl.mediator.capabilities.canChangeDMZ || !DmzCtrl.modemLan || DmzCtrl.mediator.tasks.changeModemConfigDMZ">
                                         </button>
                                     </li>
-                                    <li role="menuitem">
+                                    <li role="menuitem"
+                                        data-ng-show="DmzCtrl.mediator.info.dmzIP">
                                         <i class="ovh-font ovh-font-bin" aria-hidden="true"></i>
                                         <button
                                             type="button"
                                             class="btn btn-link"
                                             data-ng-click="DmzCtrl.delete()"
-                                            data-translate="delete"
-                                            data-ng-show="DmzCtrl.mediator.info.dmzIP"
-                                            title="{{DmzCtrl.modemLan.IPAddress}} {{ 'common_table_delete' | translate }}">
+                                            title="{{DmzCtrl.modemLan.IPAddress}} {{ 'common_table_delete' | translate }}"
+                                            data-translate="delete">
                                         </button>
                                     </li>
                                 </ul>
