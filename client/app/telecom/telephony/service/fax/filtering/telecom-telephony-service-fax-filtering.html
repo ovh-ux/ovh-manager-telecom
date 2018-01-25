@@ -1,8 +1,8 @@
 <section class="telecom-telephony-service-fax-filtering">
 
-    <oui-loader data-ng-if="$ctrl.loading.init"
-                data-size="m">
-    </oui-loader>
+    <div class="text-center" data-ng-if="$ctrl.loading.init">
+        <oui-spinner></oui-spinner>
+    </div>
 
     <toast-message></toast-message>
 
@@ -18,10 +18,10 @@
                 <div class="form-group">
                     <label for="filteringList">
                         <span data-translate="telephony_service_fax_filtering_list_label"></span>
-                        <oui-loader class="float-right"
-                                    data-ng-if="$ctrl.screenListsForm.isUpdating"
-                                    data-size="s">
-                        </oui-loader>
+                        <oui-spinner class="float-right"
+                                     data-ng-if="$ctrl.screenListsForm.isUpdating"
+                                     data-size="s">
+                        </oui-spinner>
                     </label>
                     <select
                         class="form-control"
@@ -84,10 +84,10 @@
                     <button type="submit"
                             class="btn btn-primary"
                             data-ng-disabled="$ctrl.screenListsForm.isAdding || filteringAddForm.$invalid">
-                        <oui-loader class="mr-2"
-                                    data-ng-if="$ctrl.screenListsForm.isAdding"
-                                    data-size="s">
-                        </oui-loader>
+                        <oui-spinner class="mr-2"
+                                     data-ng-if="$ctrl.screenListsForm.isAdding"
+                                     data-size="s">
+                        </oui-spinner>
                         <span data-translate="common_add"></span>
                     </button>
                 </form>
@@ -113,10 +113,10 @@
                                   data-ng-if="!$ctrl.screenLists.isDeleting"
                                   aria-hidden="true">
                             </span>
-                            <oui-loader class="mr-2"
-                                        data-ng-if="$ctrl.screenLists.isDeleting"
-                                        data-size="s">
-                            </oui-loader>
+                            <oui-spinner class="mr-2"
+                                         data-ng-if="$ctrl.screenLists.isDeleting"
+                                         data-size="s">
+                            </oui-spinner>
                             <span data-ng-if="$ctrl.getSelection().length <= 1"
                                   data-translate="telephony_service_fax_filtering_table_delete">
                             </span>
@@ -237,8 +237,8 @@
                         </tbody>
                         <tbody data-ng-if="$ctrl.screenLists.isLoading">
                             <tr>
-                                <td colspan="4">
-                                    <oui-loader data-size="m"></oui-loader>
+                                <td colspan="4" class="text-center">
+                                    <oui-spinner data-size="s"></oui-spinner>
                                 </td>
                             </tr>
                         </tbody>

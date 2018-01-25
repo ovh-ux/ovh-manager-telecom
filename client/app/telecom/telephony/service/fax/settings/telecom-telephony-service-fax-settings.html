@@ -1,8 +1,8 @@
 <section class="telecom-telephony-service-fax-settings">
 
-    <oui-loader data-ng-if="SettingsCtrl.loading.init"
-                data-size="m">
-    </oui-loader>
+    <div class="text-center" data-ng-if="SettingsCtrl.loading.init">
+        <oui-spinner></oui-spinner>
+    </div>
 
     <toast-message></toast-message>
 
@@ -69,10 +69,10 @@
                             <i class="ovh-font ovh-font-success ml-1"
                                data-ng-if="SettingsCtrl.generalOptionsForm.isSuccess">
                             </i>
-                            <oui-loader class="ml-2"
-                                        data-ng-if="SettingsCtrl.generalOptionsForm.isUpdating"
-                                        data-size="s">
-                            </oui-loader>
+                            <oui-spinner class="ml-2"
+                                         data-ng-if="SettingsCtrl.generalOptionsForm.isUpdating"
+                                         data-size="s">
+                            </oui-spinner>
                         </button>
                     </div>
 
@@ -194,10 +194,10 @@
                         <i class="ovh-font ovh-font-success fs14 ml-2"
                            data-ng-if="SettingsCtrl.faxTagLineForm.isSuccess">
                         </i>
-                        <oui-loader class="ml-2"
-                                    data-ng-if="SettingsCtrl.faxTagLineForm.isUpdating"
-                                    data-size="s">
-                        </oui-loader>
+                        <oui-spinner class="ml-2"
+                                     data-ng-if="SettingsCtrl.faxTagLineForm.isUpdating"
+                                     data-size="s">
+                        </oui-spinner>
                     </button>
                 </form>
             </div>
@@ -301,10 +301,10 @@
                         <i class="ovh-font ovh-font-success ml-1"
                            data-ng-if="SettingsCtrl.notificationOptionsForm.isSuccess">
                         </i>
-                        <oui-loader class="ml-2"
-                                    data-ng-if="SettingsCtrl.notificationOptionsForm.isUpdating"
-                                    data-size="s">
-                        </oui-loader>
+                        <oui-spinner class="ml-2"
+                                     data-ng-if="SettingsCtrl.notificationOptionsForm.isUpdating"
+                                     data-size="s">
+                        </oui-spinner>
                     </button>
 
                 </form>
@@ -387,10 +387,10 @@
                             type="submit"
                             class="btn btn-primary"
                             data-ng-disabled="faxAddressesToNotifyForm.$invalid || SettingsCtrl.addressesToNotifyForm.isAdding || SettingsCtrl.addressesToNotifyForm.isRemoving">
-                            <oui-loader class="mr-2"
-                                        data-ng-if="SettingsCtrl.addressesToNotifyForm.isAdding"
-                                        data-size="s">
-                            </oui-loader>
+                            <oui-spinner class="mr-2"
+                                         data-ng-if="SettingsCtrl.addressesToNotifyForm.isAdding"
+                                         data-size="s">
+                            </oui-spinner>
                             <span data-translate="common_add"></span>
                         </button>
                     </div>

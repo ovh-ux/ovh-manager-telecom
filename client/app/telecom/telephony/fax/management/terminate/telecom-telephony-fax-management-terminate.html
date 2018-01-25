@@ -10,9 +10,10 @@
     <div class="telecom-section-content">
 
         <!-- LOADING -->
-        <oui-loader data-ng-if="$ctrl.loading.init"
-                    data-size="m">
-        </oui-loader> <!-- Enf of LOADING -->
+        <div class="text-center" data-ng-if="$ctrl.loading.init">
+            <oui-spinner></oui-spinner>
+        </div>
+        <!-- Enf of LOADING -->
 
         <toast-message></toast-message>
 
@@ -42,7 +43,7 @@
                 </header>
                 <div class="text-center"
                     data-ng-if="$ctrl.loading.terminate">
-                    <oui-loader data-size="m"></oui-loader>
+                    <oui-spinner></oui-spinner>
                     <h2 data-translate="telephony_group_fax_management_terminate_loading"></h2>
                 </div>
                 <form novalidate
@@ -104,7 +105,7 @@
 
                 <div class="text-center"
                      data-ng-if="$ctrl.loading.cancel">
-                    <oui-loader data-size="m"></oui-loader>
+                    <oui-spinner></oui-spinner>
                     <h2 data-translate="telephony_group_fax_management_terminate_cancel_loading"></h2>
                 </div>
 

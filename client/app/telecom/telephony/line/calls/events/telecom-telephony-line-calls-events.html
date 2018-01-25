@@ -7,9 +7,9 @@
         <h1 data-translate="telephony_line_calls_events_title"></h1>
     </header>
 
-    <oui-loader data-ng-if="EventsCtrl.loading.init"
-                data-size="m">
-    </oui-loader>
+    <div class="text-center" data-ng-if="EventsCtrl.loading.init">
+        <oui-spinner></oui-spinner>
+    </div>
 
     <div class="telecom-section-content"
          data-ng-if="!EventsCtrl.loading.init">
@@ -21,7 +21,7 @@
 
         <telephony-scheduler data-telephony-scheduler="EventsCtrl.line.scheduler"
                              data-telephony-time-condition="EventsCtrl.line.timeCondition">
-            <oui-loader data-size="m"></oui-loader>
+            <oui-spinner></oui-spinner>
         </telephony-scheduler>
 
     </div>
