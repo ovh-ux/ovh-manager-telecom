@@ -1,8 +1,7 @@
-angular.module("managerApp").controller("TelecomTelephonyLinePhoneCodecCtrl", function ($q, $stateParams, $translate, TelephonyMediator, Toast, OvhApiTelephonyLinePhoneLexi, telephonyBulk, telecomVoip) {
+angular.module("managerApp").controller("TelecomTelephonyLinePhoneCodecCtrl", function ($q, $stateParams, $translate, TelephonyMediator, Toast, OvhApiTelephony, telephonyBulk, voipLinePhone) {
     "use strict";
 
     var self = this;
-    var mustCheckPhones = true;
     var codecsAuto = null;
 
     self.loading = {
@@ -96,48 +95,8 @@ angular.module("managerApp").controller("TelecomTelephonyLinePhoneCodecCtrl", fu
             Toast.error([$translate.instant("telephony_line_phone_codec_load_error"), (error.data && error.data.message) || ""].join(" "));
             return error;
         }).finally(function () {
-
-            if (mustCheckPhones) {
-                // parallel filtering services with phone(s)
-                telecomVoip.fetchAll().then(function (billingAccounts) {
-
-                    self.servicesWithPhone = _.chain(billingAccounts).map("services").flatten().filter(function (service) {
-                        return ["sip", "mgcp"].indexOf(service.featureType) > -1;
-                    }).value();
-
-                    self.getServicesWithPhone().then(function () {
-                        self.isCheckingPhones = false;
-                        self.servicesWithPhone = _.filter(self.servicesWithPhone, function (service) {
-                            return service.hasPhone;
-                        });
-                    });
-                }).finally(function () {
-                    self.loading.init = false;
-                });
-            } else {
-                self.loading.init = false;
-            }
+            self.loading.init = false;
         });
-    }
-
-    // chain calls to check services with phone
-    self.getServicesWithPhone = function () {
-        self.isCheckingPhones = true;
-        var chain = $q.when();
-
-        _.forEach(self.servicesWithPhone, function (service) {
-            chain = chain.then(testServiceHasPhone(service.billingAccount, service.serviceName)).then(function () {
-                service.hasPhone = true;
-            }, angular.noop);
-        });
-
-        return chain;
-    };
-
-    function testServiceHasPhone (billingAccount, serviceName) {
-        return function () {
-            return OvhApiTelephonyLinePhoneLexi.get({ billingAccount: billingAccount, serviceName: serviceName }).$promise;
-        };
     }
 
     /* -----  End of INITIALIZATION  ------*/
@@ -160,8 +119,17 @@ angular.module("managerApp").controller("TelecomTelephonyLinePhoneCodecCtrl", fu
         }
     };
 
-    self.filterServices = function () {
-        return self.servicesWithPhone;
+    self.filterServices = function (services) {
+        var filteredServices = _.filter(services, function (service) {
+            return ["sip", "mgcp"].indexOf(service.featureType) > -1;
+        });
+
+        return voipLinePhone.fetchAll().then((voipLinePhones) => {
+            filteredServices = _.filter(filteredServices, function (service) {
+                return _.some(voipLinePhones, { serviceName: service.serviceName, billingAccount: service.billingAccount });
+            });
+            return $q.when(filteredServices);
+        });
     };
 
     self.getBulkParams = function () {
@@ -186,11 +154,10 @@ angular.module("managerApp").controller("TelecomTelephonyLinePhoneCodecCtrl", fu
             });
         });
 
+        OvhApiTelephony.Line().Options().resetCache();
         TelephonyMediator.resetAllCache();
-        self.saveNewCodec();
+        TelephonyMediator.init();
 
-        // reset initial values to be able to modify again the options, without re-checking for service with phones
-        mustCheckPhones = false;
         init();
     };
 
