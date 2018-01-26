@@ -20,37 +20,21 @@
 
             <div class="row">
                 <div class="col-xs-12 col-md-6">
-
-                    <div class="table-responsive" data-ng-if="!PackHubicActivation.loading && PackHubicActivation.hubicList.length">
-                        <table class="table table-hover table-condensed">
-                            <thead>
-                                <tr>
-                                    <th scope="col"
-                                        data-translate="hubic_activation_widget_hubic_header"></th>
-                                    <th scope="col"
-                                        data-translate="hubic_activation_widget_voucher_header"></th>
-                                </tr>
-                            </thead>
-
-                            <tbody>
-                            <tr class="active" data-ng-repeat="hubic in PackHubicActivation.hubicList track by hubic.domain">
-                                <th scope="row">
-                                    <strong data-ng-bind="hubic.domain"></strong>
-                                    ( <span data-ng-bind="hubic.size"></span> )
-                                </th>
-                                <td>
-                                    <span data-ng-if="hubic.voucher" data-ng-bind="hubic.voucher"></span>
-                                    <span data-ng-if="!hubic.voucher">-</span>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                    <oui-datagrid data-rows="PackHubicActivation.hubicList"
+                                  data-ng-if="!PackHubicActivation.loading && PackHubicActivation.hubicList.length">
+                        <oui-column data-title="'hubic_activation_widget_hubic_header' | translate" 
+                                    data-property="domain" data-sortable="asc">
+                            <strong data-ng-bind="$row.domain"></strong>
+                            ( {{$row.size}} )                            
+                        </oui-column>
+                        <oui-column data-title="'hubic_activation_widget_voucher_header' | translate" 
+                                    data-property="voucher">
+                            <span data-ng-if="$row.voucher" data-ng-bind="$row.voucher"></span>
+                            <span data-ng-if="!$row.voucher">-</span>
+                        </oui-column>    
+                    </oui-datagrid>
                 </div>
             </div>
-
         </div>
-
     </div>
-
 </div>

@@ -2,6 +2,7 @@ angular.module("managerApp").controller("XdslModemConnectedDevicesCtrl", functio
     "use strict";
 
     var self = this;
+    self.devices = null;
 
     /**
      * Get the tooltip and the icon for the device based on the hostname
@@ -100,7 +101,7 @@ angular.module("managerApp").controller("XdslModemConnectedDevicesCtrl", functio
     /**
      * Controller initialization
      */
-    var init = function () {
+    this.$onInit = function () {
         self.devices = null;
         self.refreshWatcher = angular.noop;
         self.getConnectedDevices();
@@ -114,6 +115,4 @@ angular.module("managerApp").controller("XdslModemConnectedDevicesCtrl", functio
             }
         });
     };
-
-    init();
 });

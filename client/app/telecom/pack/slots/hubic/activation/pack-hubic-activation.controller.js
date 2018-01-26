@@ -3,7 +3,7 @@ angular.module("managerApp").controller("PackHubicActivationCtrl", function ($sc
 
     var self = this;
 
-    this.init = function () {
+    this.$onInit = function () {
         self.loading = true;
         self.hubicList = [];
         return OvhApiPackXdslHubic.Aapi().query({ packId: $stateParams.packName }).$promise.then(
@@ -15,9 +15,6 @@ angular.module("managerApp").controller("PackHubicActivationCtrl", function ($sc
             }
         ).finally(function () {
             self.loading = false;
-        }
-        );
+        });
     };
-
-    this.init();
 });
