@@ -1,8 +1,8 @@
-angular.module("managerApp").controller("TelecomTaskCtrl", function ($scope, $translate, OvhApiPackXdslTask, ToastError, TASK_STATUS, PAGINATION_PER_PAGE) {
+angular.module("managerApp").controller("TelecomTaskCtrl", function ($scope, $translate, OvhApiPackXdslTask, ToastError, TASK_STATUS, PAGINATION_PER_PAGE, ouiDatagridConfiguration) {
     "use strict";
 
-    var self = this;
-    var statusInfo = TASK_STATUS;
+    const self = this;
+    const statusInfo = TASK_STATUS;
 
     self.allTasks = {
         sortby: "pack",
@@ -34,7 +34,8 @@ angular.module("managerApp").controller("TelecomTaskCtrl", function ($scope, $tr
             tab.filter,
             function (data) {
                 tab.result.data = data;
-                for (var i = 0; i < tab.result.data.length; i++) {
+
+                for (let i = 0; i < tab.result.data.length; i++) {
                     data[i].status = {
                         icon: statusInfo[data[i].status].icon,
                         name: data[i].status,
@@ -50,8 +51,7 @@ angular.module("managerApp").controller("TelecomTaskCtrl", function ($scope, $tr
     /*= =====================================
     =            INITIALIZATION            =
     ======================================*/
-
-    var init = function () {
+    this.$onInit = function () {
         self.getData(self.allTasks);
 
         $scope.$watch("TaskCtrl.allTasks.filter.page", function (newPage, oldPage) {
@@ -61,7 +61,4 @@ angular.module("managerApp").controller("TelecomTaskCtrl", function ($scope, $tr
         });
     };
 
-    /* -----  End of INITIALIZATION  ------*/
-
-    init();
 });
