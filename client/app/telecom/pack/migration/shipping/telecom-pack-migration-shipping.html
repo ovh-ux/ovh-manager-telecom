@@ -13,9 +13,9 @@
                 <p data-translate="telecom_pack_migration_shipping_explain2"></p>
 
                 <!-- LOADER -->
-                <oui-loader data-ng-if="ShippingCtrl.loading.init"
-                            data-size="m">
-                </oui-loader>
+                <div class="text-center" data-ng-if="ShippingCtrl.loading.init">
+                    <oui-spinner></oui-spinner>
+                </div>
 
                 <div data-ng-if="!ShippingCtrl.loading.init">
 
@@ -27,7 +27,7 @@
 
                         <ovh-contact data-ng-model="ShippingCtrl.process.shipping.address"
                                      data-ovh-contact-choice-options="ShippingCtrl.ovhContactOptions">
-                            <oui-loader data-size="m"></oui-loader>
+                            <oui-spinner></oui-spinner>
                         </ovh-contact>
                     </div> <!-- CONTACT CHOICE -->
 
