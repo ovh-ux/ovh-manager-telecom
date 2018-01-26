@@ -20,8 +20,7 @@
 
             <div class="row">
                 <div class="col-xs-12 col-md-6">
-                    <oui-datagrid data-rows="PackHubicActivation.hubicList"
-                                  data-ng-if="!PackHubicActivation.loading && PackHubicActivation.hubicList.length">
+                    <oui-datagrid data-rows="PackHubicActivation.hubicList">
                         <oui-column data-title="'hubic_activation_widget_hubic_header' | translate" 
                                     data-property="domain" data-sortable="asc">
                             <strong data-ng-bind="$row.domain"></strong>
