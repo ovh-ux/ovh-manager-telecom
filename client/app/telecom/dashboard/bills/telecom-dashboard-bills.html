@@ -4,95 +4,35 @@
         data-translate="telecom_dashboard_bill_title">
     </h2>
 
-    <div class="table-responsive">
-        <table class="table"
-               data-ng-class="{
-                   'table-hover table-stripped': BillsCtrl.last.length > 1
-               }">
-            <caption class="sr-only"
-                     data-translate="telecom_dashboard_bill_title">
-            </caption>
-            <thead>
-                <tr>
-                    <th scope="col">
-                        <button type="button"
-                                class="btn btn-link p-0"
-                                data-ng-click="BillsCtrl.sortby = 'date'; BillsCtrl.reverse = !BillsCtrl.reverse"
-                                data-translate-attr="{ 'title': 'telecom_dashboard_date' }">
-                            <span data-translate="telecom_dashboard_date"></span>
-                            <span class="oui-icon align-baseline"
-                                  aria-hidden="true"
-                                  data-ng-class="{
-                                      'oui-icon-arrow-down': !BillsCtrl.reverse && BillsCtrl.sortby === 'date',
-                                      'oui-icon-arrow-down': !BillsCtrl.reverse && BillsCtrl.sortby === 'date',
-                                      'oui-icon-arrow-up': BillsCtrl.reverse && BillsCtrl.sortby === 'date'
-                                  }">
-                            </span>
-                        </button>
-                    </th>
-                    <th scope="col"
-                        data-translate="telecom_dashboard_references">
-                    </th>
-                    <th scope="col"
-                        data-translate="telecom_dashboard_total_price">
-                    </th>
-                    <th scope="col"
-                        class="text-right"
-                        data-translate="telecom_dashboard_download">
-                    </th>
-                </tr>
-            </thead>
-            <tbody data-ng-if="!BillsCtrl.loaders.bills && BillsCtrl.last.length">
-                <tr data-ng-repeat="lastBill in BillsCtrl.last | orderBy:BillsCtrl.sortby:BillsCtrl.reverse track by lastBill.billId">
-                    <th scope="row"
-                        data-ng-bind="lastBill.date | date:'shortDate'">
-                    </th>
-                    <td class="word-break"
-                        data-ng-bind="lastBill.billId">
-                    </td>
-                    <td data-ng-bind="lastBill.priceWithTax.text"></td>
-                    <td class="text-right">
-                        <a class="telecom-link"
-                           target=_blank
-                           rel="noopener"
-                           data-ng-href="{{ lastBill.url }}"
-                           data-translate-attr="{ 'title': 'telecom_dashboard_bill_url' }">
-                            <span class="ovh-font ovh-font-newtab ovh-font-1x4 my-0 mx-2" aria-hidden="true"></span>
-                        </a>
-                        <a class="telecom-link"
-                           target=_blank
-                           rel="noopener"
-                           data-ng-href="{{ lastBill.pdfUrl }}"
-                           data-translate-attr="{ 'title': 'telecom_dashboard_bill_pdf' }">
-                            <span class="ovh-font ovh-font-export-pdf ovh-font-1x4 my-0 mx-2" aria-hidden="true"></span>
-                        </a>
-                    </td>
-                </tr>
-            </tbody>
-            <tbody data-ng-if="BillsCtrl.loaders.bills">
-                <tr>
-                    <td colspan="4" class="text-center">
-                        <oui-spinner data-size="s"></oui-spinner>
-                    </td>
-                </tr>
-            </tbody>
-            <tbody data-ng-if="!BillsCtrl.loaders.bills && !BillsCtrl.last.length">
-                <tr>
-                    <td colspan="4"
-                        class="text-center"
-                        data-translate="telecom_dashboard_bill_none">
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+    <oui-datagrid data-rows="BillsCtrl.lastBills" data-page-size="BillsCtrl.amountBillsDisplayed">
+        <oui-column data-title="'telecom_dashboard_date' | translate" data-property="date" data-sortable="desc">
+            {{$row.date | date:'shortDate'}}
+        </oui-column>
+        <oui-column data-title="'telecom_dashboard_references' | translate" data-property="billId" data-sortable></oui-column>
+        <oui-column data-title="'telecom_dashboard_total_price' | translate" data-property="priceWithTax.text" data-sortable></oui-column>
+        <oui-column data-title="'telecom_dashboard_download' | translate" data-property="url" data-sortable>
+            <div class="float-right">
+                <a class="telecom-link" target="_blank"rel="noopener"
+                   data-ng-href="{{ $row.url }}"
+                   data-translate-attr="{ 'title': 'telecom_dashboard_bill_url' }">
+                    <span class="ovh-font ovh-font-newtab ovh-font-1x4 my-0 mx-2" aria-hidden="true"></span>
+                </a>
+                <a class="telecom-link" target="_blank" rel="noopener"
+                   data-ng-href="{{ $row.pdfUrl }}"
+                   data-translate-attr="{ 'title': 'telecom_dashboard_bill_pdf' }">
+                    <span class="ovh-font ovh-font-export-pdf ovh-font-1x4 my-0 mx-2" aria-hidden="true"></span>
+                </a>
+            </div>
+        </oui-column>
+    </oui-datagrid>
+
 
     <a class="oui-button oui-button_link oui-button_icon-right float-right"
-       target="_blank"
-       rel="noopener"
-       data-ng-if="BillsCtrl.last.length === BillsCtrl.amountBillsDisplayed"
-       data-ng-href="{{ BillsCtrl.links.billing }}"
-       data-translate-attr="{ 'title': 'telecom_dashboard_bill_more' }">
+           target="_blank"
+           rel="noopener"
+           data-ng-if="BillsCtrl.lastBills.length === BillsCtrl.amountBillsDisplayed"
+           data-ng-href="{{ BillsCtrl.links.billing }}"
+           data-translate-attr="{ 'title': 'telecom_dashboard_bill_more' }">
         <span data-translate="telecom_dashboard_bill_more"></span>
         <i class="oui-icon oui-icon-chevron-right" aria-hidden="true"></i>
     </a>
