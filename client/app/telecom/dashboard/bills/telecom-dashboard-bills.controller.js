@@ -13,9 +13,9 @@ angular.module("managerApp").controller("TelecomDashboardBillsCtrl", function (O
     =================================*/
 
     function getLastBills () {
-        return OvhApiMeBill.Aapi().last().$promise.then(function (bills) {          
+        return OvhApiMeBill.Aapi().last().$promise.then(function (bills) {
             self.lastBills = bills;
-        }, function (err) {
+        }).catch((err) => {
             ToastError(err);
         });
     }
