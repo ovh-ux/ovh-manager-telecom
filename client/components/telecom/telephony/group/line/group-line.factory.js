@@ -121,7 +121,7 @@ angular.module("managerApp").factory("TelephonyGroupLine", function ($q, $filter
     };
 
     TelephonyGroupLine.prototype.isVoicefax = function () {
-        return this.isOffer("voicefax");
+        return _.get(this, "getPublicOffer.name") === "voicefax" || this.isOffer("voicefax");
     };
 
     TelephonyGroupLine.prototype.isPriceplan = function () {
