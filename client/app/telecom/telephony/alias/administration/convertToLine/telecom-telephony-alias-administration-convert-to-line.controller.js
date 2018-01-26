@@ -143,7 +143,9 @@ angular.module("managerApp").controller("TelecomTelephonyAliasAdministrationConv
     };
 
     self.getBulkParams = function () {
-        return self.offer.name;
+        return {
+            offer: self.offer.name
+        };
     };
 
     self.onBulkSuccess = function (bulkResult) {
