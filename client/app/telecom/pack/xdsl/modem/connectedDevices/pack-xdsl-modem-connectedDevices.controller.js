@@ -2,7 +2,7 @@ angular.module("managerApp").controller("XdslModemConnectedDevicesCtrl", functio
     "use strict";
 
     var self = this;
-    self.devices = null;
+    self.devices = [];
 
     /**
      * Get the tooltip and the icon for the device based on the hostname
