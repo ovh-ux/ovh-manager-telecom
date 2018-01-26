@@ -176,99 +176,41 @@
                     </h2>
                 </header>
 
-                <div class="table-responsive">
-                    <table class="table"
-                           data-ng-class="{
-                               'table-hover table-striped': TelecomSmsOptionsResponseCtrl.smsResponse.trackingOptions.length > 1
-                           }">
-                        <thead>
-                            <tr>
-                                <th class="text-left"
-                                    scope="col"
-                                    colspan="3">
-                                    <strong data-translate="sms_options_response_tracking_media_label"></strong>
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody data-ng-if="!TelecomSmsOptionsResponseCtrl.loading.init && TelecomSmsOptionsResponseCtrl.smsResponse.trackingOptions.length">
-                            <tr data-ng-repeat="option in TelecomSmsOptionsResponseCtrl.smsResponse.trackingOptions">
-                                <td>
-                                    <span class="text-capitalize visible-xs"
-                                          data-ng-bind="option.media">
-                                    </span>
-                                    <i class="ovh-font ovh-font-1x4 ml-2 hidden-xs"
-                                       title="{{ option.media }}"
-                                       data-ng-class="{
-                                           'ovh-font-mail': option.media === 'email',
-                                           'ovh-font-message': option.media === 'sms'
-                                       }">
-                                     </i>
-                                </td>
-                                <td>
-                                    <strong class="d-block"
-                                            data-ng-bind="option.target">
-                                    </strong>
-                                    <span data-translate="sms_options_response_tracking_email_sender_label"
-                                          data-translate-values="{ sender: option.sender }">
-                                    </span>
-                                </td>
-                                <td class="text-right">
-                                    <div class="btn-group"
-                                         data-uib-dropdown
-                                         data-dropdown-append-to-body>
-                                        <button id="btn-sms-options-response-action-{{ index }}"
-                                                type="button"
-                                                class="btn btn-link"
-                                                data-uib-dropdown-toggle>
-                                            <span class="ovh-font ovh-font-dots" aria-hidden="true"></span>
-                                            <span class="sr-only"
-                                                  data-translate="common_actions">
-                                            </span>
-                                        </button>
-                                        <ul class="dropdown-menu dropdown-menu-right"
-                                            role="menu"
-                                            aria-labelledby="btn-sms-options-response-action-{{ index }}"
-                                            data-uib-dropdown-menu>
-                                            <li role="menuitem">
-                                                <i class="ovh-font ovh-font-editer" aria-hidden="true"></i>
-                                                <button
-                                                    type="button"
-                                                    class="btn btn-link"
-                                                    data-ng-click="TelecomSmsOptionsResponseCtrl.editTrackingOptions($index, option)"
-                                                    data-translate="edit">
-                                                </button>
-                                            </li>
-                                            <li role="menuitem">
-                                                <i class="ovh-font ovh-font-bin" aria-hidden="true"></i>
-                                                <button
-                                                    type="button"
-                                                    class="btn btn-link"
-                                                    data-ng-click="TelecomSmsOptionsResponseCtrl.removeTrackingOptions($index, option)"
-                                                    data-translate="delete">
-                                                </button>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                        <tbody data-ng-if="TelecomSmsOptionsResponseCtrl.loading.init">
-                            <tr>
-                                <td colspan="3" class="text-center">
-                                    <oui-spinner data-size="s"></oui-spinner>
-                                </td>
-                            </tr>
-                        </tbody>
-                        <tbody data-ng-if="!TelecomSmsOptionsResponseCtrl.loading.init && !TelecomSmsOptionsResponseCtrl.smsResponse.trackingOptions.length">
-                            <tr>
-                                <td class="text-center"
-                                    colspan="3"
-                                    data-translate="sms_options_response_tracking_empty">
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                <oui-datagrid class="reduce-padding" data-rows="TelecomSmsOptionsResponseCtrl.smsResponse.trackingOptions">
+                    <oui-column data-title="'sms_options_response_tracking_media_label' | translate" data-property="media" data-sortable="asc">
+                        <span class="text-capitalize visible-xs"
+                              data-ng-bind="$row.media">
+                        </span>
+                        <i class="ovh-font ovh-font-1x4 ml-2 hidden-xs"
+                            data-ng-attr-title="{{ $row.media }}"
+                            data-ng-class="{
+                                'ovh-font-mail': $row.media === 'email',
+                                'ovh-font-message': $row.media === 'sms'
+                            }">
+                        </i>
+                    </oui-column>
+
+                    <oui-column data-property="target">
+                        <strong class="d-block"
+                                data-ng-bind="$row.target">
+                        </strong>
+                        <span data-translate="sms_options_response_tracking_email_sender_label"
+                            data-translate-values="{ sender: $row.sender }">
+                        </span>
+                    </oui-column>
+
+                    <oui-action-menu data-align="end" data-compact>
+                            <oui-action-menu-item
+                                data-text="{{'edit' | translate}}"
+                                on-click="TelecomSmsOptionsResponseCtrl.editTrackingOptions($index, $row)">
+                            </oui-action-menu-item>
+
+                            <oui-action-menu-item
+                                data-text="{{'delete' | translate}}"
+                                on-click="TelecomSmsOptionsResponseCtrl.removeTrackingOptions($index, $row)">
+                            </oui-action-menu-item>
+                    </oui-action-menu>
+                </oui-datagrid>
 
                 <div class="form-group">
                     <button
@@ -278,7 +220,6 @@
                         data-translate="sms_options_response_tracking_add">
                     </button>
                 </div>
-
             </div>
         </div>
         <!-- /.row -->
