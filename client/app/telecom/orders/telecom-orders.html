@@ -11,7 +11,7 @@
                 data-translate="telecom_orders_follow_up_intro">
             </h2>
 
-            <oui-datagrid data-rows="OrdersCtrl.ordersDetails">
+            <oui-datagrid data-rows="OrdersCtrl.ordersDetails" data-page-size="{{OrdersCtrl.perPage}}">
                 <oui-column data-title="'telecom_orders_follow_up_header_service' | translate" 
                             data-property="name" data-sortable="asc">
                     <a data-ui-sref="telecom.orders.show({serviceName: $row.xdsl })"
@@ -34,7 +34,7 @@
                 </oui-column>
                 <oui-column data-title="'telecom_orders_follow_up_header_state' | translate" 
                             data-property="lastTask.status" data-sortable>
-                    <i data-ng-class="ovh-font ovh-font-1x4 my-0 text-{{ $row.badgeClass }} {{ $row.badgeIconClass }}"
+                    <i class="ovh-font ovh-font-1x4 my-0 text-{{ $row.badgeClass }} {{ $row.badgeIconClass }}"
                        data-uib-tooltip="{{'telecom_common_pack_xdsl_order_status_' + $row.lastTask.status | translate}}"
                        data-tooltip-append-to-body="true">
                     </i>
