@@ -126,8 +126,6 @@
                 </h2>
             </header>
 
-            <voip-time-condition-calendar data-voip-time-condition="$ctrl.line.timeCondition"></voip-time-condition-calendar>
-
             <telephony-bulk-action data-billing-account="{{ $ctrl.line.billingAccount }}"
                                    data-service-name="{{ $ctrl.line.serviceName }}"
                                    data-custom-class="link d-block pl-0 mt-4 mb-2"
@@ -137,6 +135,8 @@
                                    data-on-success="$ctrl.onBulkSuccess"
                                    data-on-error="$ctrl.onBulkError">
             </telephony-bulk-action>
+
+            <voip-time-condition-calendar data-voip-time-condition="$ctrl.line.timeCondition"></voip-time-condition-calendar>
         </div> <!-- CONDITIONS -->
 
         <footer class="voip-action-bar"
