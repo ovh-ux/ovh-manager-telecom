@@ -1,7 +1,7 @@
 angular.module("managerApp").controller("OverTheBoxTasksCtrl", function ($translate, $q, $stateParams, PAGINATION_PER_PAGE, OvhApiOverTheBox, Toast) {
     "use strict";
 
-    var self = this;
+    const self = this;
 
     self.loaders = {
         init: true
@@ -14,36 +14,22 @@ angular.module("managerApp").controller("OverTheBoxTasksCtrl", function ($transl
         perPage: PAGINATION_PER_PAGE
     };
 
-    function init () {
-        self.loaders.init = true;
+    this.$onInit = function () {
         $q.all([
             self.getTasks()
-        ]).finally(function () {
-            self.loaders.init = false;
-        });
-    }
+        ]);
+    };
 
     self.getTasks = function () {
-        self.loaders.tasks = true;
-        return OvhApiOverTheBox.Lexi().getTasks({ serviceName: self.serviceName }).$promise.then(
-            function (taskIds) {
-                self.taskIds = taskIds;
-            },
-            function (error) {
-                Toast.error([$translate.instant("an_error_occured"), error.data.message].join(" "));
-            }
-        ).finally(function () {
-            self.loaders.tasks = false;
-        });
+        OvhApiOverTheBox.Lexi().getTasks({ serviceName: $stateParams.serviceName }).$promise
+            .then((taskIds) => {
+                self.taskIds = taskIds.map((id) => ({ id }));
+            })
+            .catch((error) => Toast.error(`${$translate.instant("an_error_occured")} ${error.data.message}`));
     };
 
-    self.onTransformItem = function (id) {
-        self.loaders.init = true;
-        return OvhApiOverTheBox.Lexi().getTask({ serviceName: $stateParams.serviceName, taskId: id }).$promise.finally(function () {
-            self.loaders.init = false;
-        });
+    self.transformItem = function (row) {
+        return OvhApiOverTheBox.Lexi().getTask({ serviceName: $stateParams.serviceName, taskId: row.id }).$promise
+            .catch((error) => Toast.error(`${$translate.instant("an_error_occured")} ${error.data.message}`));
     };
-
-    init();
-
 });
