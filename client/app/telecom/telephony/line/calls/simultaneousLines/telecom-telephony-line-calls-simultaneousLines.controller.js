@@ -148,7 +148,7 @@ angular.module("managerApp")
             }
 
             return $q.when(null);
-        }, 200, false);
+        }, 600, false);
 
         function init () {
 

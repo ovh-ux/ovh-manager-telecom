@@ -5,7 +5,7 @@
    <translation id="telephony_line_actions_line_calls_simultaneous_line_write_error" qtlid="387068">Oups ! Impossible de modifier le nombre d'appels simultanés.</translation>
    <translation id="telephony_line_actions_line_calls_simultaneous_line_order_error" qtlid="387081">Impossible de générer le bon de commande.</translation>
    <translation id="telephony_line_actions_line_calls_simultaneous_line_label" qtlid="335206">Nombre d'appels simultanés</translation>
-   <translation id="telephony_line_actions_line_calls_maximum_simultaneous_line_label" qtlid="335206">Nombre d'appels simultanés maximum de la ligne:</translation>
+   <translation id="telephony_line_actions_line_calls_maximum_simultaneous_line_label" qtlid="335206">Nombre d'appels simultanés maximum de la ligne :</translation>
    <translation id="telephony_line_actions_line_calls_simultaneous_line_support" qtlid="387094">Votre configuration accepte plus de 100 appels simultanés. Pour changer cette valeur, merci de contacter le support au 1007.</translation>
    <translation id="telephony_line_actions_line_calls_simultaneous_line_price_vat" qtlid="360190">TVA&#160;:&#160;</translation>
    <translation id="telephony_line_actions_line_calls_simultaneous_line_price_without_vat" qtlid="360164">Prix&#160;(HT)&#160;:&#160;</translation>

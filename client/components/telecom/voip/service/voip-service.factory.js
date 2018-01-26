@@ -102,6 +102,16 @@ angular.module("managerApp").factory("VoipService", function () {
             return publicOfferName === "trunk" || _.get(publicOfferName.split("."), "[0]") === "trunk";
         }
 
+        /**
+         * @description
+         * Helper that check if service public offer is valid
+         *
+         * @return {Boolean}
+         */
+        hasValidPublicOffer () {
+            return this.getPublicOffer.name !== "" && this.getPublicOffer.description !== "The Service has an error";
+        }
+
         /* -----  End of Some Helpers  ------ */
 
     }
