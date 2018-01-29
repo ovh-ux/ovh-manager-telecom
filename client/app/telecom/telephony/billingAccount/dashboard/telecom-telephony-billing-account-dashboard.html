@@ -206,103 +206,38 @@
         </h3>
         <div class="oui-tile__body">
             <div class="oui-tile__definition">
-                <div class="table-responsive">
-                    <table class="table"
-                           data-ng-class="{
-                               'table-hover table-striped': DashboardCtrl.bills.length > 1
-                           }">
-                        <thead>
-                            <tr>
-                                <th scope="col"
-                                    data-translate="telephony_group_billing_dashboard_bill_date">
-                                </th>
-                                <th scope="col"
-                                    data-translate="telephony_group_billing_dashboard_bill_amount">
-                                </th>
-                                <th scope="col"
-                                    colspan="2"
-                                    data-translate="telephony_group_billing_dashboard_bill_paid">
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody data-ng-if="!DashboardCtrl.loading.bills">
-                            <tr data-ng-repeat="consumption in ::DashboardCtrl.bills | orderBy:'date':true track by $index">
-                                <th scope="row"
-                                    data-ng-bind="consumption.date | date">
-                                </th>
-                                <td data-ng-bind="consumption.price.text"></td>
-                                <td class="text-capitalize"
-                                    data-ng-bind="(consumption.status === 'done' ? 'yes' : 'no') | translate">
-                                </td>
-                                <td class="text-right">
-                                    <div class="btn-group"
-                                         data-uib-dropdown
-                                         data-dropdown-append-to-body>
-                                        <button id="btn-telephony-billing-account-dashboard-action-{{ index }}"
-                                                type="button"
-                                                class="btn btn-link"
-                                                data-uib-dropdown-toggle>
-                                            <span class="ovh-font ovh-font-dots"
-                                                  aria-hidden="true"
-                                                  data-ng-if="!consumption.downloading">
-                                            </span>
-                                            <oui-spinner data-ng-if="consumption.downloading"
-                                                         data-size="s">
-                                            </oui-spinner>
-                                            <span class="sr-only"
-                                                  data-translate="common_actions">
-                                            </span>
-                                        </button>
-                                        <ul class="dropdown-menu dropdown-menu-right"
-                                            role="menu"
-                                            aria-labelledby="btn-sms-incoming-action-{{ index }}"
-                                            data-uib-dropdown-menu>
-                                            <li role="menuitem">
-                                                <i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>
-                                                <button type="button"
-                                                        class="btn btn-link"
-                                                        data-ng-click="DashboardCtrl.download(consumption, 'pdf')"
-                                                        data-translate="telephony_group_billing_dashboard_bill_download_pdf">
-                                                </button>
-                                            </li>
-                                            <li role="menuitem">
-                                                <i class="fa fa-file-code-o mr-2" aria-hidden="true"></i>
-                                                <button type="button"
-                                                        class="btn btn-link"
-                                                        data-ng-click="DashboardCtrl.download(consumption, 'csv')"
-                                                        data-translate="telephony_group_billing_dashboard_bill_download_csv_emited">
-                                                </button>
-                                            </li>
-                                            <li role="menuitem">
-                                                <i class="fa fa-file-code-o mr-2" aria-hidden="true"></i>
-                                                <button type="button"
-                                                        class="btn btn-link"
-                                                        data-ng-click="DashboardCtrl.download(consumption, 'received.csv')"
-                                                        data-translate="telephony_group_billing_dashboard_bill_download_csv_received">
-                                                </button>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                        <tbody data-ng-if="DashboardCtrl.loading.bills">
-                            <tr>
-                                <td colspan="4" class="text-center">
-                                    <oui-spinner data-size="s"></oui-spinner>
-                                </td>
-                            </tr>
-                        </tbody>
-                        <tbody data-ng-if="!DashboardCtrl.loading.bills && !DashboardCtrl.bills.length">
-                            <tr>
-                                <td class="text-center"
-                                    colspan="4"
-                                    data-translate="telephony_group_billing_dashboard_bill_empty">
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+
+                <oui-datagrid data-rows="DashboardCtrl.bills" data-page-size="5">
+                    <oui-column data-title="'telephony_group_billing_dashboard_bill_date' | translate" data-property="date" data-sortable="desc">
+                            {{$row.date | date}}
+                    </oui-column>
+                    <oui-column data-title="'telephony_group_billing_dashboard_bill_amount' | translate" data-property="price.text" data-sortable>
+                            {{$row.price.text}}
+                    </oui-column>
+                    <oui-column data-title="'telephony_group_billing_dashboard_bill_paid' | translate" data-property="status" data-sortable>
+                        <span class="text-capitalize"
+                              data-ng-bind="($row.status === 'done' ? 'yes' : 'no') | translate">
+                        </span>
+                    </oui-column>
+
+                    <oui-action-menu data-align="end" data-compact>
+                        <oui-action-menu-item
+                                data-text="{{'telephony_group_billing_dashboard_bill_download_pdf' | translate}}"
+                                on-click="DashboardCtrl.download($row, 'pdf')">
+                        </oui-action-menu-item>
+        
+                        <oui-action-menu-item
+                                data-text="{{'telephony_group_billing_dashboard_bill_download_csv_emited' | translate}}"
+                                on-click="DashboardCtrl.download($row, 'csv')">
+                        </oui-action-menu-item>
+
+                        <oui-action-menu-item
+                                data-text="{{'telephony_group_billing_dashboard_bill_download_csv_received' | translate}}"
+                                on-click="DashboardCtrl.download($row, 'received.csv')">
+                        </oui-action-menu-item>
+                    </oui-action-menu>
+                </oui-datagrid>
+
             </div>
         </div>
     </div>
