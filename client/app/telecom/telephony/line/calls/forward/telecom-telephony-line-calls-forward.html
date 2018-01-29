@@ -9,9 +9,9 @@
 
 </section>
 
-<oui-loader data-ng-if="LineForwardCtrl.loading.init"
-            data-size="m">
-</oui-loader>
+<div class="text-center" data-ng-if="LineForwardCtrl.loading.init">
+    <oui-spinner></oui-spinner>
+</div>
 
 <div class="telecom-section-content telephony-group-line-forward"
      data-ng-hide="LineForwardCtrl.loading.init">
@@ -155,10 +155,10 @@
                 <button type="submit"
                         class="btn btn-primary"
                         data-ng-disabled="!LineForwardCtrl.needSave() || !forwardForm.$valid || LineForwardCtrl.loading.save">
-                    <oui-loader class="mr-2"
-                                data-ng-if="LineForwardCtrl.loading.save"
-                                data-size="s">
-                    </oui-loader>
+                    <oui-spinner class="mr-2"
+                                 data-ng-if="LineForwardCtrl.loading.save"
+                                 data-size="s">
+                    </oui-spinner>
                     <span data-translate="submit"></span>
                 </button>
                 <button type="button"

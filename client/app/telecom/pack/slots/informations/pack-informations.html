@@ -1,12 +1,11 @@
 <div id="pack-informations"
      data-ng-controller="PackInformationCtrl as PackInformation">
 
-    <oui-loader data-ng-if="PackInformation.isLoading"
-                data-size="m">
-    </oui-loader>
+     <div class="text-center" data-ng-if="PackInformation.isLoading">
+        <oui-spinner></oui-spinner>
+    </div>
 
     <div data-ng-if="!PackInformation.isLoading">
-
         <div class="oui-tile__body">
             <ul class="list-unstyled">
                 <!-- PACK STATE -->

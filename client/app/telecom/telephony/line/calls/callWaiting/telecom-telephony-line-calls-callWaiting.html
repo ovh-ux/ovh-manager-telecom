@@ -7,9 +7,9 @@
         <h1 data-translate="telephony_line_actions_line_calls_call_waiting_title"></h1>
     </header>
 
-    <oui-loader data-ng-if="LineCallWaitingCtrl.loading.init"
-                data-size="m">
-    </oui-loader>
+    <div class="text-center" data-ng-if="LineCallWaitingCtrl.loading.init">
+        <oui-spinner></oui-spinner>
+    </div>
 
     <div class="telecom-section-content"
          data-ng-hide="LineCallWaitingCtrl.loading.init">
@@ -100,10 +100,10 @@
                         <button type="submit"
                                 class="btn btn-primary"
                                 data-ng-disabled="LineCallWaitingCtrl.loading.save || !LineCallWaitingCtrl.needSave()">
-                            <oui-loader class="mr-2"
-                                        data-ng-if="LineDisplayNumberCtrl.loading.save"
-                                        data-size="s">
-                            </oui-loader>
+                            <oui-spinner class="mr-2"
+                                         data-ng-if="LineDisplayNumberCtrl.loading.save"
+                                         data-size="s">
+                            </oui-spinner>
                             <span data-translate="submit"></span>
                         </button>
                         <button type="button"

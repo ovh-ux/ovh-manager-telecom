@@ -164,9 +164,9 @@
                 </div>
             </div>
         </div>
-        <oui-loader data-ng-if="ProgammableKeysEditCtrl.loading.parameters || ProgammableKeysEditCtrl.loading.init"
-                    data-size="m">
-        </oui-loader>
+        <div class="text-center" data-ng-if="ProgammableKeysEditCtrl.loading.parameters || ProgammableKeysEditCtrl.loading.init">
+            <oui-spinner></oui-spinner>
+        </div>
     </div>
 
     <div class="modal-body"
@@ -174,7 +174,7 @@
         <h3 class="modal-title"
             data-translate="telephony_line_phone_programmableKeys_keys_add_title"></h3>
         <div class="text-center">
-            <oui-loader data-size="m"></oui-loader>
+            <oui-spinner></oui-spinner>
             <h4 data-translate="telephony_line_phone_programmableKeys_saving"></h4>
         </div>
     </div>

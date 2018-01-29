@@ -7,9 +7,9 @@
         <h1 data-translate="telephony_line_assist_support_logs_title"></h1>
     </header>
 
-    <oui-loader data-ng-if="LogsCtrl.loading.init"
-                data-size="l">
-    </oui-loader>
+    <div class="text-center" data-ng-if="LogsCtrl.loading.init">
+        <oui-spinner data-size="l"></oui-spinner>
+    </div>
 
     <div data-ng-if="!LogsCtrl.loading.init">
 
@@ -31,8 +31,8 @@
                         </h2>
                     </header>
 
-                    <div data-ng-if="LogsCtrl.loading.user || LogsCtrl.loading.save">
-                        <oui-loader data-size="m"></oui-loader>
+                    <div class="text-center" data-ng-if="LogsCtrl.loading.user || LogsCtrl.loading.save">
+                        <oui-spinner></oui-spinner>
                     </div>
 
                     <div data-ng-if="!LogsCtrl.edition.mode">
@@ -187,7 +187,7 @@
 
                     <div class="text-center"
                          data-ng-if="LogsCtrl.loading.refresh">
-                        <oui-loader data-size="m"></oui-loader>
+                        <oui-spinner></oui-spinner>
                     </div>
 
                     <div data-ng-if="!LogsCtrl.loading.refresh">

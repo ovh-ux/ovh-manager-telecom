@@ -1,9 +1,9 @@
 <section class="telecom-pack-xdsl-modem"
          data-ui-view="modemView">
 
-    <oui-loader data-ng-if="XdslModem.loaders.modem"
-                data-size="m">
-    </oui-loader>
+    <div class="text-center" data-ng-if="XdslModem.loaders.modem">
+        <oui-spinner></oui-spinner>
+    </div>
 
     <div data-ng-if="!XdslModem.loaders.modem">
         <div class="alert alert-warning"
@@ -113,7 +113,9 @@
                                 <div class="service-button-description">
                                     <div class="description-title-small description-title-fullHeight">
                                         {{ XdslModem.mediator.info.dmzIP || ('xdsl_modem_dmz_none' | translate) }}
-                                        <oui-loader data-ng-show="XdslModem.mediator.tasks.changeModemConfigDMZ"></oui-loader>
+                                        <oui-spinner data-ng-show="XdslModem.mediator.tasks.changeModemConfigDMZ" 
+                                                     data-size="s">
+                                        </oui-spinner>
                                     </div>
                                 </div>
 

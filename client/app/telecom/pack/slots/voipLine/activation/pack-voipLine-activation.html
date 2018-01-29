@@ -10,9 +10,9 @@
         <div data-ng-hide="PackVoipLineActivationCtrl.orderDone">
             <div class="widget-presentation">
                 <h2 class="widget-presentation-title" data-translate="telefony_activation_widget_free_slot"></h2>
-                <oui-loader data-ng-if="PackVoipLineActivationCtrl.loading"
-                            data-size="m">
-                </oui-loader>
+                <div class="text-center" data-ng-if="PackVoipLineActivationCtrl.loading">
+                    <oui-spinner></oui-spinner>
+                </div>
                 <div data-ng-if="!PackVoipLineActivationCtrl.loading &&
                         PackVoipLineActivationCtrl.orderCountSelect.length === 0"
                       data-translate="telefony_activation_widget_free_slot_zero">
@@ -249,10 +249,10 @@
                         class="btn btn-primary btn-lg"
                         data-ng-click="PackVoipLineActivationCtrl.launchOrder()"
                         data-ng-disabled="!PackVoipLineActivationCtrl.isOrderReady() || PackVoipLineActivationCtrl.orderPending">
-                    <oui-loader class="mr-2"
-                                data-ng-if="PackVoipLineActivationCtrl.orderPending"
-                                data-size="s">
-                    </oui-loader>
+                    <oui-spinner class="mr-2"
+                                 data-ng-if="PackVoipLineActivationCtrl.orderPending"
+                                 data-size="s">
+                    </oui-spinner>
                     <span data-translate="telefony_activation_widget_activate_button_label"></span>
                 </button>
             </div>
