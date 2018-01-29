@@ -21,7 +21,7 @@ angular.module("managerApp").controller("PackHostedEmailAddCtrl", function ($q, 
             },
             accountTmp).$promise.then(function (data) {
                 Toast.success($translate.instant("success_validation"));
-                $location.path("/pack/xdsl/" + $stateParams.packName);
+                $location.path("/pack/" + $stateParams.packName);
                 return data;
             }).catch(function (error) {
                 Toast.error([$translate.instant("an_error_ocurred"), _.get(error, "data.message", "")].join(" "));

@@ -1,16 +1,17 @@
 <div class="telecom-telephony-service-assist-logs">
 
+    <header>
+        <section-back-link section-back-link-to-state="^"
+                           section-back-link-title="{{ 'telephony_service_assist_support_logs_title' | translate }}">
+        </section-back-link>
+        <h1 data-translate="telephony_line_assist_support_logs_title"></h1>
+    </header>
+
     <oui-loader data-ng-if="LogsCtrl.loading.init"
                 data-size="l">
     </oui-loader>
 
     <div data-ng-if="!LogsCtrl.loading.init">
-        <header>
-            <section-back-link section-back-link-to-state="{{ LogsCtrl.service.isFax ? 'telecom.telephony.fax.assist' : 'telecom.telephony.line.assist' }}"
-                               section-back-link-title="{{ 'telephony_service_assist_support_logs_title' | translate }}">
-            </section-back-link>
-            <h1 data-translate="telephony_line_assist_support_logs_title"></h1>
-        </header>
 
         <div class="telecom-section-content">
 
@@ -29,39 +30,40 @@
                             data-translate="telephony_line_assist_support_logs_configs">
                         </h2>
                     </header>
+
                     <div data-ng-if="LogsCtrl.loading.user || LogsCtrl.loading.save">
                         <oui-loader data-size="m"></oui-loader>
-                        <h2 data-translate="{{ LogsCtrl.loading.user ? 'loading' : 'telephony_line_assist_support_logs_configs_save' }}"></h2>
                     </div>
-                    <div data-ng-if="!LogsCtrl.model.configEdit">
+
+                    <div data-ng-if="!LogsCtrl.edition.mode">
                         <dl>
                             <dt data-translate="telephony_line_assist_support_logs_configs_frequency"></dt>
-                            <dd data-translate="{{ LogsCtrl.service.notifications.logs ? (['telephony_line_assist_support_logs_configs_frequency', LogsCtrl.service.notifications.logs.frequency].join('_') | snakeCase) : 'telephony_line_assist_support_logs_configs_frequency_never' }}"></dd>
+                            <dd data-translate="{{ LogsCtrl.service.feature.notifications.logs ? (['telephony_line_assist_support_logs_configs_frequency', LogsCtrl.service.feature.notifications.logs.frequency].join('_') | snakeCase) : 'telephony_line_assist_support_logs_configs_frequency_never' }}"></dd>
 
                             <dt data-translate="telephony_line_assist_support_logs_configs_send_even_no_logs"
-                                data-ng-if="LogsCtrl.service.notifications.logs.frequency !== 'Never'">
+                                data-ng-if="LogsCtrl.service.feature.notifications.logs.frequency !== 'Never'">
                             </dt>
-                            <dd data-translate="{{ LogsCtrl.service.notifications.logs.sendIfNull ? 'telephony_line_assist_support_logs_configs_send_even_no_logs_yes' : 'telephony_line_assist_support_logs_configs_send_even_no_logs_no' }}"
-                                data-ng-if="LogsCtrl.service.notifications.logs.frequency !== 'Never'">
+                            <dd data-translate="{{ LogsCtrl.service.feature.notifications.logs.sendIfNull ? 'telephony_line_assist_support_logs_configs_send_even_no_logs_yes' : 'telephony_line_assist_support_logs_configs_send_even_no_logs_no' }}"
+                                data-ng-if="LogsCtrl.service.feature.notifications.logs.frequency !== 'Never'">
                             </dd>
 
                             <dt data-translate="telephony_line_assist_support_logs_configs_email"
-                                data-ng-if="LogsCtrl.service.notifications.logs.frequency !== 'Never'">
+                                data-ng-if="LogsCtrl.service.feature.notifications.logs.frequency !== 'Never'">
                             </dt>
-                            <dd data-ng-bind="LogsCtrl.service.notifications.logs.email"
-                                data-ng-if="LogsCtrl.service.notifications.logs.frequency !== 'Never'">
+                            <dd data-ng-bind="LogsCtrl.service.feature.notifications.logs.email || '-'"
+                                data-ng-if="LogsCtrl.service.feature.notifications.logs.frequency !== 'Never'">
                             </dd>
                         </dl>
                         <button class="btn btn-primary"
                                 type="button"
-                                data-ng-click="LogsCtrl.startNotificationsChange()"
+                                data-ng-click="LogsCtrl.onStartEditBtnClick()"
                                 data-translate="telephony_line_assist_support_logs_configs_manage">
                         </button>
                     </div>
                     <form name="notificationEditForm"
                           novalidate
-                          data-ng-if="LogsCtrl.model.configEdit && !LogsCtrl.loading.user && !LogsCtrl.loading.save"
-                          data-ng-submit="LogsCtrl.saveLogsNotifications()">
+                          data-ng-if="LogsCtrl.edition.mode && !LogsCtrl.loading.user && !LogsCtrl.loading.save"
+                          data-ng-submit="LogsCtrl.onNotificationsEditFormSubmit()">
 
                         <!-- FREQUENCY -->
                         <div class="form-group">
@@ -72,26 +74,26 @@
                             <select class="form-control"
                                     id="frequency-select"
                                     name="frequency"
-                                    data-ng-model="LogsCtrl.service.notifications.logs.frequency"
+                                    data-ng-model="LogsCtrl.edition.notifications.logs.frequency"
                                     data-ng-options="frequency as (['telephony_line_assist_support_logs_configs_frequency', frequency].join('_') | snakeCase | translate ) for frequency in LogsCtrl.availableLogsFrequencies">
                             </select>
                         </div> <!-- FREQUENCY -->
 
                         <!-- SENDIFNULL -->
                         <div class="form-group clearfix"
-                             data-ng-if="LogsCtrl.service.notifications.logs.frequency !== 'Never'">
+                             data-ng-if="LogsCtrl.edition.notifications.logs.frequency !== 'Never'">
                             <label class="control-label"
                                    data-translate="telephony_line_assist_support_logs_configs_send_even_no_logs">
                             </label>
                             <div class="btn-group d-block">
                                 <label class="btn btn-default"
-                                       data-ng-model="LogsCtrl.service.notifications.logs.sendIfNull"
+                                       data-ng-model="LogsCtrl.edition.notifications.logs.sendIfNull"
                                        data-uib-btn-radio="true"
                                        data-translate="telephony_line_assist_support_logs_configs_send_even_no_logs_yes">
                                 </label>
 
                                 <label class="btn btn-default"
-                                       data-ng-model="LogsCtrl.service.notifications.logs.sendIfNull"
+                                       data-ng-model="LogsCtrl.edition.notifications.logs.sendIfNull"
                                        data-uib-btn-radio="false"
                                        data-translate="telephony_line_assist_support_logs_configs_send_even_no_logs_no">
                                 </label>
@@ -100,7 +102,7 @@
 
                         <!-- EMAIL -->
                         <div class="form-group"
-                             data-ng-if="LogsCtrl.service.notifications.logs.frequency !== 'Never'"
+                             data-ng-if="LogsCtrl.edition.notifications.logs.frequency !== 'Never'"
                              data-ng-class="{
                                 'has-error': notificationEditForm.email.$touched && notificationEditForm.email.$invalid
                              }">
@@ -113,8 +115,8 @@
                                    name="email"
                                    class="form-control"
                                    data-translate-attr="{ placeholder: 'telephony_line_assist_support_logs_configs_email' }"
-                                   data-ng-model="LogsCtrl.service.notifications.logs.email"
-                                   data-ng-required="LogsCtrl.service.notifications.logs.frequency !== 'Never'"/>
+                                   data-ng-model="LogsCtrl.edition.notifications.logs.email"
+                                   data-ng-required="LogsCtrl.edition.notifications.logs.frequency !== 'Never'"/>
                             <span class="help-block"
                                   role="alert"
                                   data-ng-if="notificationEditForm.email.$touched"
@@ -136,11 +138,26 @@
                             </button>
                             <button type="button"
                                     class="btn btn-link"
-                                    data-ng-click="LogsCtrl.cancelNotificationsChange()"
+                                    data-ng-click="LogsCtrl.onCancelEditionBtnClick()"
                                     data-translate="cancel">
                             </button>
                         </div>
                     </form>
+                    <div class="form-group">
+                        <div class="mt-4">
+                            <hr/>
+                            <telephony-bulk-action
+                                data-billing-account="{{ LogsCtrl.bulkDatas.billingAccount }}"
+                                data-service-name="{{ LogsCtrl.bulkDatas.serviceName }}"
+                                data-custom-class="link d-block pl-0 mb-3"
+                                data-bulk-infos="LogsCtrl.bulkDatas.infos"
+                                data-filter-services="LogsCtrl.filterServices"
+                                data-get-bulk-params="LogsCtrl.getBulkParams"
+                                data-on-success="LogsCtrl.onBulkSuccess"
+                                data-on-error="LogsCtrl.onBulkError">
+                            </telephony-bulk-action>
+                        </div>
+                    </div>
                 </section>
                 <!-- /.widget-presentation -->
 
@@ -162,7 +179,7 @@
                                     id="dayInterval-select"
                                     name="dayInterval"
                                     data-ng-model="LogsCtrl.model.dayInterval"
-                                    data-ng-change="LogsCtrl.refreshLogs()"
+                                    data-ng-change="LogsCtrl.onLogsFrequencySelectChange()"
                                     data-ng-options="dayInterval as (['telephony_line_assist_support_logs_list_days', dayInterval].join('_') | snakeCase | translate ) for dayInterval in LogsCtrl.availableDayInterval">
                             </select>
                         </div>
@@ -171,7 +188,6 @@
                     <div class="text-center"
                          data-ng-if="LogsCtrl.loading.refresh">
                         <oui-loader data-size="m"></oui-loader>
-                        <h2 data-translate="telephony_line_assist_support_logs_list_loading"></h2>
                     </div>
 
                     <div data-ng-if="!LogsCtrl.loading.refresh">

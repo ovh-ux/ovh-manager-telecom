@@ -114,4 +114,10 @@ angular.module("managerApp").service("TelecomTelephonyLineCallsForwardService", 
         );
     };
 
+    this.resetAllCache = function () {
+        OvhApiTelephony.Number().resetCache();
+        OvhApiTelephony.Line().Options().resetCache();
+        OvhApiTelephony.Lexi().resetCache();
+    };
+
 });

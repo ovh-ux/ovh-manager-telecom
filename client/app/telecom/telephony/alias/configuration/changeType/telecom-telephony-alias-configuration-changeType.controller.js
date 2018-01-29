@@ -85,8 +85,6 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationChang
     ============================ */
 
     self.bulkDatas = {
-        billingAccount: $stateParams.billingAccount,
-        serviceName: $stateParams.serviceName,
         infos: {
             name: "configurationNumberChangeType",
             actions: [{
@@ -142,7 +140,15 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationChang
         Toast.error([$translate.instant("telephony_alias_config_change_type_bulk_on_error"), _.get(error, "msg.data")].join(" "));
     };
 
+
     self.checkServerTasksStatus = function (updatedServices) {
+
+        function runPollOnTask (billingAccount, serviceName, taskId) {
+            return function () {
+                return voipServiceTask.startPolling(billingAccount, serviceName, taskId);
+            };
+        }
+
         self.loading.changing = true;
 
         var chain = $q.when();
@@ -162,12 +168,6 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationChang
 
         return chain;
     };
-
-    function runPollOnTask (billingAccount, serviceName, taskId) {
-        return function () {
-            return voipServiceTask.startPolling(billingAccount, serviceName, taskId);
-        };
-    }
 
     /* -----  End of BULK  ------ */
 

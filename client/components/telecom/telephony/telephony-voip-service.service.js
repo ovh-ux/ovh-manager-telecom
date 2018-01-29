@@ -32,7 +32,7 @@ angular.module("managerApp").service("TelephonyVoipService", function ($q, OvhAp
                         service.billingAccount = billingAccount;
 
                         // create the service
-                        if (service.featureType === "fax") {
+                        if (service.featureType === "fax" || service.featureType === "voicefax") {
                             const fax = new TelephonyGroupFax(service);
                             groups[billingAccount].fax.push(fax);
                         } else {
