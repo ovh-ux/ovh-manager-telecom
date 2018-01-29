@@ -1,7 +1,7 @@
 angular.module("managerApp").controller("TelecomTelephonyBillingAccountAdministrationAddGroup", function ($stateParams, $translate, $timeout, OvhApiOrderTelephony, ToastError) {
     "use strict";
 
-    var self = this;
+    const self = this;
 
     function init () {
         self.loading = true;
@@ -18,10 +18,10 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountAdministr
     }
 
     self.getDisplayedPrice = function () {
-        if (self.prices.withTax.value === 0) {
+        if (_.has(self, "prices.withTax.value") && self.prices.withTax.value === 0) {
             return $translate.instant("telephony_add_group_free");
         }
-        return self.prices.withTax.text;
+        return _.get(self, "a.b.c", "prices.withTax.text", "-");
 
     };
 
