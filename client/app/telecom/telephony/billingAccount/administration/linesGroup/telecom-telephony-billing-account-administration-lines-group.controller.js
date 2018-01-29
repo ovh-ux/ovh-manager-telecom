@@ -1,9 +1,9 @@
 angular.module("managerApp").controller("TelecomTelephonyBillingAccountAdministrationLinesGroup", function ($scope, $stateParams, $q, $translate, TelephonyMediator, TelephonySidebar, OvhApiTelephony, Toast, ToastError) {
     "use strict";
 
-    var self = this;
+    const self = this;
 
-    function init () {
+    this.$onInit = function () {
 
         self.billingAccounts = {
             ids: [],
@@ -17,33 +17,30 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountAdministr
         self.serviceAttachSuccess = {};
         self.serviceAttachErrors = {};
 
-        var getNumberCount = OvhApiTelephony.Number().Lexi().query({
+        const getNumberCount = OvhApiTelephony.Number().Lexi().query({
             billingAccount: $stateParams.billingAccount
         }).$promise.then(_.size);
 
-        var getLineCount = OvhApiTelephony.Line().Lexi().query({
+        const getLineCount = OvhApiTelephony.Line().Lexi().query({
             billingAccount: $stateParams.billingAccount
         }).$promise.then(_.size);
 
-        self.loading = true;
         return $q.all({
             billingAccounts: OvhApiTelephony.Lexi().query().$promise,
             numberCount: getNumberCount,
             lineCount: getLineCount
         }).then(function (result) {
-            self.billingAccounts.ids = result.billingAccounts;
+            self.billingAccounts.ids = result.billingAccounts.map((billingAccount) => ({ id: billingAccount }));
             self.numberCount = result.numberCount;
             self.lineCount = result.lineCount;
         }).catch(function (err) {
             return new ToastError(err);
-        }).finally(function () {
-            self.loading = false;
         });
-    }
+    };
 
     self.fetchBillingAccountDetails = function (billingAccount) {
         return OvhApiTelephony.Lexi().get({
-            billingAccount: billingAccount
+            billingAccount: billingAccount.id
         }).$promise;
     };
 
@@ -63,7 +60,7 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountAdministr
         self.services = null;
 
         // get batch line details
-        var lines = OvhApiTelephony.Line().Lexi().query({
+        const lines = OvhApiTelephony.Line().Lexi().query({
             billingAccount: ba.billingAccount
         }).$promise.then(function (ids) {
             return $q.all(_.map(_.chunk(ids, 50), function (chunkIds) {
@@ -77,7 +74,7 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountAdministr
         });
 
         // get batch alias details
-        var aliases = OvhApiTelephony.Number().Lexi().query({
+        const aliases = OvhApiTelephony.Number().Lexi().query({
             billingAccount: ba.billingAccount
         }).$promise.then(function (ids) {
             return $q.all(_.map(_.chunk(ids, 50), function (chunkIds) {
@@ -94,12 +91,13 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountAdministr
             lines: lines,
             aliases: aliases
         }).then(function (result) {
-            var pools = [];
+            result.lines = _.compact(result.lines);
 
             // handle pool of aliases
+            const pools = [];
             result.aliases = _.filter(result.aliases, function (alias) {
                 if (alias.partOfPool) {
-                    var pool = _.find(pools, { id: alias.partOfPool });
+                    let pool = _.find(pools, { id: alias.partOfPool });
                     if (!pool) {
                         pool = {
                             id: alias.partOfPool,
@@ -125,7 +123,7 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountAdministr
     };
 
     self.attachSelectedServices = function () {
-        var errorList = [];
+        const errorList = [];
         self.isAttaching = true;
 
         return $q.all(_.map(self.getServicesToAttachList(), function (service) {
@@ -165,6 +163,4 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountAdministr
             TelephonySidebar.reset();
         });
     };
-
-    init();
 });

@@ -7,12 +7,7 @@
         <h1 data-translate="telephony_lines_group_title"></h1>
     </header>
 
-    <div class="text-center" data-ng-if="LinesGroupCtrl.loading">
-        <oui-spinner></oui-spinner>
-    </div>
-
-    <div class="telecom-section-content"
-         data-ng-if="!LinesGroupCtrl.loading">
+    <div class="telecom-section-content">
 
         <toast-message></toast-message>
 
@@ -40,63 +35,35 @@
                     </h2>
                     <p data-translate="telephony_lines_group_select_ba_help"></p>
                     <!-- BILLING ACCOUNT TABLE -->
-                    <div class="table-responsive">
-                        <table class="table"
-                               data-ng-class="{
-                                   'table-hover table-striped': LinesGroupCtrl.billingAccounts.paginated.length > 1
-                               }">
-                            <thead>
-                                <tr>
-                                    <th colspan="2"
-                                        data-translate="telephony_lines_group_telephony_group">
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody data-ng-if="!LinesGroupCtrl.loading">
-                                <tr data-ng-repeat="ba in LinesGroupCtrl.billingAccounts.paginated track by ba.billingAccount">
-                                    <td data-ng-class="{
-                                            'text-muted': ba.status !== 'enabled' || ba.billingAccount === LinesGroupCtrl.billingAccounts.current
-                                        }">
-                                        <button class="btn btn-link"
-                                                data-ng-click="LinesGroupCtrl.selectBillingAccount(ba)"
-                                                data-ng-bind=":: ba.description || ba.billingAccount">
-                                        </button>
-                                        <span class="text-nowrap ml-2"
-                                              data-ng-if="ba.status !== 'enabled'"
-                                              data-ng-bind=":: '(' + ba.status + ')'">
-                                        </span>
-                                    </td>
-                                    <td data-ng-class="{
-                                            'text-muted': ba.status !== 'enabled' || ba.billingAccount === LinesGroupCtrl.billingAccounts.current
-                                        }">
-                                        <em class="text-lowercase"
-                                            data-ng-bind=":: ba.billingAccount">
-                                        </em>
-                                    </td>
-                                </tr>
-                            </tbody>
-                            <tbody data-ng-if="LinesGroupCtrl.billingAccounts.ids.length && !LinesGroupCtrl.billingAccounts.paginated.length">
-                                <tr>
-                                    <td colspan="2" class="text-center">
-                                        <oui-spinner data-size="s"></oui-spinner>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="mt-2"
-                         data-ng-if="!LinesGroupCtrl.billingAccounts.isLoading && LinesGroupCtrl.billingAccounts.ids.length"
-                         data-pagination-front
-                         data-items="LinesGroupCtrl.billingAccounts.ids"
-                         data-paginated-items="LinesGroupCtrl.billingAccounts.paginated"
-                         data-transform-item="LinesGroupCtrl.fetchBillingAccountDetails(item)"
-                         data-current-page="currentPage"
-                         data-nb-pages="nbPages"
-                         data-items-per-page="itemsPerPage"
-                         data-page-placeholder="{{'common_pagination_page' | translate: {currentPage:currentPage, nbPages:nbPages} }}"
-                         data-item-per-page-placeholder="{{'common_pagination_display' | translate}}">
-                    </div>
-                </div><!-- billing account -->
+
+                    <oui-datagrid data-rows="LinesGroupCtrl.billingAccounts.ids" data-row-loader="LinesGroupCtrl.fetchBillingAccountDetails($row)" page-size="5" >
+                        <oui-column data-title="'telephony_lines_group_telephony_group' | translate" data-property="status" data-sortable="asc"
+                        data-ng-class="{
+                            'text-muted': $row.status !== 'enabled' || $row.billingAccount === LinesGroupCtrl.billingAccounts.current
+                        }">
+
+                                <button class="btn btn-link"
+                                        data-ng-click="LinesGroupCtrl.selectBillingAccount($row)"
+                                        data-ng-bind=":: $row.description || $row.billingAccount">
+                                </button>
+                                <span class="text-nowrap ml-2"
+                                      data-ng-if="$row.status !== 'enabled'"
+                                      data-ng-bind=":: '(' + $row.status + ')'">
+                                </span>
+
+                        </oui-column>
+
+                        <oui-column data-property="billingAccount"
+                                    data-ng-class="{
+                                        'text-muted': ba.status !== 'enabled' || ba.billingAccount === LinesGroupCtrl.billingAccounts.current
+                                    }">
+                            <em class="text-lowercase"
+                                data-ng-bind=":: $row.billingAccount">
+                            </em>
+                        </oui-column>
+
+                    </oui-datagrid>
+                </div>
 
                 <!-- SERVICE SELECTION -->
                 <div class="widget-presentation mb-5"
