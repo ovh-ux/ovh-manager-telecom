@@ -8,9 +8,9 @@
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
-    <oui-spinner class="mt-4"
-                 data-ng-if="XdslDeconsolidationContract.loading">
-    </oui-spinner>
+    <div class="text-center" data-ng-if="XdslDeconsolidationContract.loading">
+        <oui-spinner class="mt-4"></oui-spinner>
+    </div>
 
     <div class="modal-body" data-ng-if="!XdslDeconsolidationContract.loading">
         <h3 data-translate="xdsl_access_deconsolidation_contract_title"></h3>
