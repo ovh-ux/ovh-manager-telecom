@@ -143,6 +143,21 @@
                             </button>
                         </div>
                     </form>
+                    <div class="form-group">
+                        <div class="mt-4">
+                            <hr/>
+                            <telephony-bulk-action
+                                data-billing-account="{{ LogsCtrl.bulkDatas.billingAccount }}"
+                                data-service-name="{{ LogsCtrl.bulkDatas.serviceName }}"
+                                data-custom-class="link d-block pl-0 mb-3"
+                                data-bulk-infos="LogsCtrl.bulkDatas.infos"
+                                data-filter-services="LogsCtrl.filterServices"
+                                data-get-bulk-params="LogsCtrl.getBulkParams"
+                                data-on-success="LogsCtrl.onBulkSuccess"
+                                data-on-error="LogsCtrl.onBulkError">
+                            </telephony-bulk-action>
+                        </div>
+                    </div>
                 </section>
                 <!-- /.widget-presentation -->
 
