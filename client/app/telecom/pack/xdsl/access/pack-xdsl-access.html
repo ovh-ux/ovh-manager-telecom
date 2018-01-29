@@ -1,8 +1,8 @@
 <section class="telecom-pack-xdsl-access" data-ui-view="accessView">
 
-    <oui-loader data-ng-if="loaders.details || loaders.tasks"
-                data-size="m">
-    </oui-loader>
+    <div class="text-center" data-ng-if="loaders.details || loaders.tasks">
+        <oui-spinner></oui-spinner>
+    </div>
 
     <toast-message></toast-message>
 

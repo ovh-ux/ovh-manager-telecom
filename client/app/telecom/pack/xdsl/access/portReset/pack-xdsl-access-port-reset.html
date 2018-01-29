@@ -12,9 +12,9 @@
         data-ng-really-window-class="revert-really-buttons"
         data-ng-disabled="!access.xdsl.capabilities.canResetDslamPort || access.tasks.current.dslamPortReset">
         <div data-ng-if="access.tasks.current.dslamPortReset">
-            <oui-loader class="mr-2"
-                        data-size="s">
-            </oui-loader>
+            <oui-spinner class="mr-2"
+                         data-size="s">
+            </oui-spinner>
             <span data-translate="xdsl_access_dslam_reset_success"></span>
         </div>
         <span data-ng-if="!access.tasks.current.dslamPortReset"

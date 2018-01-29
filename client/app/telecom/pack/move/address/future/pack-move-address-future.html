@@ -6,9 +6,9 @@
             </div>
             <div class="block-emphasis__column">
                 <h3 data-translate="pack_move_line_future_address"></h3>
-                <oui-loader data-ng-if="PackMoveAddressFuture.loading"
-                            data-size="m">
-                </oui-loader>
+                <div class="text-center" data-ng-if="PackMoveAddressFuture.loading">
+                    <oui-spinner></oui-spinner>
+                </div>
                 <div data-ng-bind="PackMoveAddressFuture.address.street.name"></div>
                 <div>
                     <span data-ng-bind="PackMoveAddressFuture.address.city.zipCode"></span>
