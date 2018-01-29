@@ -15,154 +15,39 @@
             <h2 class="widget-presentation-title"
                 data-translate="telephony_group_billing_bill_subtitle">
             </h2>
-            <div class="table-responsive">
-                <table class="table"
-                       data-ng-class="{
-                           'table-hover table-striped': BillingAccountBillCtrl.consumption.paginated.length > 1
-                       }">
-                    <thead>
-                        <tr>
-                            <th>
-                                <button class="btn btn-link p-0"
-                                        type="button"
-                                        data-ng-click="BillingAccountBillCtrl.orderBy('date')"
-                                        data-ng-disabled="!BillingAccountBillCtrl.consumption.paginated.length">
-                                    <span data-translate="telephony_group_billing_bill_date"></span>
-                                    <span class="oui-icon align-baseline"
-                                          aria-hidden="true"
-                                          data-ng-class="{
-                                              'oui-icon-arrow-down': BillingAccountBillCtrl.consumption.orderBy !== 'date',
-                                              'oui-icon-arrow-down': BillingAccountBillCtrl.consumption.orderBy === 'date' && BillingAccountBillCtrl.consumption.orderDesc,
-                                              'oui-icon-arrow-up': BillingAccountBillCtrl.consumption.orderBy === 'date' && !BillingAccountBillCtrl.consumption.orderDesc
-                                          }">
-                                    </span>
-                                </button>
-                            </th>
-                            <th>
-                                <button class="btn btn-link p-0"
-                                        type="button"
-                                        data-ng-click="BillingAccountBillCtrl.orderBy('priceValue')"
-                                        data-ng-disabled="!BillingAccountBillCtrl.consumption.paginated.length">
-                                    <span data-translate="telephony_group_billing_bill_amount"></span>
-                                    <span class="oui-icon align-baseline"
-                                          aria-hidden="true"
-                                          data-ng-class="{
-                                              'oui-icon-arrow-down': BillingAccountBillCtrl.consumption.orderBy !== 'priceValue',
-                                              'oui-icon-arrow-down': BillingAccountBillCtrl.consumption.orderBy === 'priceValue' && BillingAccountBillCtrl.consumption.orderDesc,
-                                              'oui-icon-arrow-up': BillingAccountBillCtrl.consumption.orderBy === 'priceValue' && !BillingAccountBillCtrl.consumption.orderDesc
-                                          }">
-                                    </span>
-                                </button>
-                            </th>
-                            <th>
-                                <button class="btn btn-link p-0"
-                                        type="button"
-                                        data-ng-disabled="!BillingAccountBillCtrl.consumption.paginated.length"
-                                        data-ng-click="BillingAccountBillCtrl.orderBy('status')">
-                                    <span data-translate="telephony_group_billing_bill_paid"></span>
-                                    <span class="oui-icon align-baseline"
-                                          aria-hidden="true"
-                                          data-ng-class="{
-                                              'oui-icon-arrow-down': BillingAccountBillCtrl.consumption.orderBy !== 'status',
-                                              'oui-icon-arrow-down': BillingAccountBillCtrl.consumption.orderBy === 'status' && BillingAccountBillCtrl.consumption.orderDesc,
-                                              'oui-icon-arrow-up': BillingAccountBillCtrl.consumption.orderBy === 'status' && !BillingAccountBillCtrl.consumption.orderDesc
-                                          }">
-                                    </span>
-                                </button>
-                            </th>
-                            <th class="text-right">
-                                <button class="btn btn-link py-0"
-                                        type="button"
-                                        data-ng-click="BillingAccountBillCtrl.refresh()"
-                                        data-translate-attr="{ 'title': 'telephony_group_billing_bill_refresh' }">
-                                    <i class="text-default fa fa-refresh"></i>
-                                </button>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody data-ng-if="!BillingAccountBillCtrl.isLoading">
-                        <tr data-ng-repeat="consumption in BillingAccountBillCtrl.consumption.paginated">
-                            <td data-ng-bind="consumption.date"></td>
-                            <td data-ng-bind="consumption.price.text"></td>
-                            <td class="text-capitalize"
-                                data-ng-bind="(consumption.status === 'done' ? 'yes' : 'no') | translate">
-                            </td>
-                            <td class="text-right">
-                                <div class="btn-group"
-                                     data-uib-dropdown
-                                     data-dropdown-append-to-body>
-                                    <button id="btn-telephony-billing-bill-{{ index }}"
-                                            type="button"
-                                            class="btn btn-link"
-                                            data-uib-dropdown-toggle>
-                                        <span class="ovh-font ovh-font-dots" aria-hidden="true"></span>
-                                        <span class="sr-only"
-                                              data-translate="common_actions">
-                                        </span>
-                                    </button>
-                                    <ul class="dropdown-menu dropdown-menu-right"
-                                        role="menu"
-                                        aria-labelledby="btn-telephony-billing-bill-action-{{ index }}"
-                                        data-uib-dropdown-menu>
-                                        <li role="menuitem">
-                                            <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
-                                            <button type="button"
-                                                    class="btn btn-link"
-                                                    data-ng-click="BillingAccountBillCtrl.download(consumption, 'pdf')"
-                                                    data-translate="telephony_group_billing_bill_download_pdf">
-                                            </button>
-                                        </li>
-                                        <li role="menuitem">
-                                            <i class="fa fa-file-code-o" aria-hidden="true"></i>
-                                            <button type="button"
-                                                    class="btn btn-link"
-                                                    data-ng-click="BillingAccountBillCtrl.download(consumption, 'csv')"
-                                                    data-translate="telephony_group_billing_bill_download_csv_emited">
-                                            </button>
-                                        </li>
-                                        <li role="menuitem">
-                                            <i class="fa fa-file-code-o" aria-hidden="true"></i>
-                                            <button type="button"
-                                                    class="btn btn-link"
-                                                    data-ng-click="BillingAccountBillCtrl.download(consumption, 'received.csv')"
-                                                    data-translate="telephony_group_billing_bill_download_csv_received">
-                                            </button>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                    <tbody data-ng-if="BillingAccountBillCtrl.isLoading">
-                        <tr>
-                            <td colspan="4" class="text-center">
-                                <oui-spinner data-size="s"></oui-spinner>
-                            </td>
-                        </tr>
-                    </tbody>
-                    <tbody data-ng-if="!BillingAccountBillCtrl.isLoading && !BillingAccountBillCtrl.consumption.paginated.length">
-                        <tr>
-                            <td colspan="4"
-                                class="text-center"
-                                data-translate="telephony_group_billing_bill_empty">
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="mt-2"
-                 data-ng-show="!BillingAccountBillCtrl.isLoading && BillingAccountBillCtrl.consumption.raw.length"
-                 data-pagination-front
-                 data-items="BillingAccountBillCtrl.consumption.sorted"
-                 data-paginated-items="BillingAccountBillCtrl.consumption.paginated"
-                 data-current-page="currentPage"
-                 data-nb-pages="nbPages"
-                 data-items-per-page="itemsPerPage"
-                 data-page-placeholder="{{'common_pagination_page' | translate: {currentPage:currentPage, nbPages:nbPages} }}"
-                 data-item-per-page-placeholder="{{'common_pagination_display' | translate}}">
-            </div>
-        </div>
-        <!-- /.widget-presentation -->
+
+            <oui-datagrid data-rows="BillingAccountBillCtrl.consumption.raw">
+                <oui-column data-title="'telephony_group_billing_bill_date' | translate" data-property="date" data-sortable="desc">
+                    {{$row.date | date}}
+                </oui-column>
+                <oui-column data-title="'telephony_group_billing_bill_amount' | translate" data-property="price.value" data-sortable>
+                    {{$row.price.text}}
+                </oui-column>
+                <oui-column data-title="'telephony_group_billing_bill_paid' | translate" data-property="status" data-sortable>
+                    <span class="text-capitalize"
+                          data-ng-bind="($row.status === 'done' ? 'yes' : 'no') | translate">
+                    </span>
+                </oui-column>
+
+                <oui-action-menu data-align="end" data-compact>
+                    <oui-action-menu-item
+                            data-text="{{'telephony_group_billing_bill_download_pdf' | translate}}"
+                            on-click="BillingAccountBillCtrl.download($row, 'pdf')">
+                    </oui-action-menu-item>
+
+                    <oui-action-menu-item
+                            data-text="{{'telephony_group_billing_bill_download_csv_emited' | translate}}"
+                            on-click="BillingAccountBillCtrl.download($row, 'csv')">
+                    </oui-action-menu-item>
+
+                    <oui-action-menu-item
+                            data-text="{{'telephony_group_billing_bill_download_csv_received' | translate}}"
+                            on-click="BillingAccountBillCtrl.download($row, 'received.csv')">
+                    </oui-action-menu-item>
+                </oui-action-menu>
+            </oui-datagrid>
+
+
 
     </div>
     <!-- /.telecom-section-content -->

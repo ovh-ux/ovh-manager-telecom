@@ -1,7 +1,7 @@
 angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingBillCtrl", function ($stateParams, $filter, $q, $timeout, $window, OvhApiTelephony, ToastError) {
     "use strict";
 
-    var self = this;
+    const self = this;
 
     function fetchConsumption () {
         return OvhApiTelephony.HistoryConsumption().Lexi().query({
@@ -13,7 +13,7 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingBi
                     date: chunkIds
                 }).$promise;
             })).then(function (chunkResult) {
-                var result = _.pluck(_.flatten(chunkResult), "value");
+                const result = _.pluck(_.flatten(chunkResult), "value");
                 return _.each(result, function (consumption) {
                     consumption.priceValue = consumption.price ? consumption.price.value : null;
                 });
@@ -21,49 +21,24 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingBi
         });
     }
 
-    function init () {
-        self.isLoading = true;
+
+    this.$onInit = function () {
         self.consumption = {
-            raw: null,
-            paginated: null,
-            sorted: null,
-            orderBy: "date",
-            orderDesc: true
+            raw: null
         };
         self.refresh();
-    }
-
-    self.sortConsumption = function () {
-        self.consumption.sorted = $filter("orderBy")(
-            self.consumption.raw,
-            self.consumption.orderBy,
-            self.consumption.orderDesc
-        );
-    };
-
-    self.orderBy = function (by) {
-        if (self.consumption.orderBy === by) {
-            self.consumption.orderDesc = !self.consumption.orderDesc;
-        } else {
-            self.consumption.orderBy = by;
-        }
-        self.sortConsumption();
     };
 
     self.refresh = function () {
-        self.isLoading = true;
         fetchConsumption().then(function (result) {
             self.consumption.raw = result;
-            self.sortConsumption();
         }).catch(function (err) {
             return new ToastError(err);
-        }).finally(function () {
-            self.isLoading = false;
         });
     };
 
     self.fetchFile = function (consumption, type) {
-        var tryDownload = function () {
+        const tryDownload = function () {
             return OvhApiTelephony.HistoryConsumption().Lexi().getFile({
                 billingAccount: $stateParams.billingAccount,
                 date: consumption.date,
@@ -95,5 +70,4 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingBi
         });
     };
 
-    init();
 });
