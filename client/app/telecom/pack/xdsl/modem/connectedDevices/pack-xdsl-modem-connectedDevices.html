@@ -39,20 +39,23 @@
 
         <div class="description mt-2">
             <oui-datagrid data-rows="DeviceCtrl.devices">
-                <oui-column data-title="'common_table_header_type' | translate" 
-                            data-property="interfaceType" data-sortable="asc"> 
-                    <span class="ovh-font h5"
-                        data-ng-class="DeviceCtrl.getConnectionIcon($row)"
-                        data-ng-attr-title="{{$row.interfaceType}}"></span>
+                <oui-column data-title="'common_table_header_type' | translate"
+                            data-property="interfaceType" data-sortable="asc">
+                    <span class="ovh-font ovh-font-1x8"
+                          data-ng-class="DeviceCtrl.getConnectionIcon($row)"
+                          data-ng-attr-title="{{$row.interfaceType}}"></span>
                      <span class="ovh-font h5"
-                        data-ng-class="DeviceCtrl.getDeviceInfo($row).icon"
-                        data-ng-attr-title="{{DeviceCtrl.getDeviceInfo($row).tooltip | translate}}"></span>          
+                           data-ng-class="DeviceCtrl.getDeviceInfo($row).icon"
+                           data-ng-attr-title="{{DeviceCtrl.getDeviceInfo($row).tooltip | translate}}"></span>
                 </oui-column>
                 <oui-column data-title="'xdsl_modem_device_mac' | translate" data-property="macAddress">
+                    {{$row.macAddress}}
                 </oui-column>
                 <oui-column data-title="'xdsl_modem_device_ip' | translate" data-property="ipAddress" data-sortable>
+                    {{$row.ipAddress}}
                 </oui-column>
                 <oui-column data-title="'xdsl_modem_device_host' | translate" data-property="hostName">
+                    {{$row.hostName}}
                 </oui-column>
             </oui-datagrid>
         </div>

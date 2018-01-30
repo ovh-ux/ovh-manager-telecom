@@ -1,7 +1,7 @@
 angular.module("managerApp").controller("XdslModemConnectedDevicesCtrl", function ($scope, $stateParams, $q, $translate, OvhApiXdsl, Toast, PackXdslModemMediator) {
     "use strict";
 
-    var self = this;
+    const self = this;
     self.devices = [];
 
     /**
