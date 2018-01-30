@@ -16,19 +16,16 @@ angular.module("managerApp").controller("TelecomDashboardBillsCtrl", function (O
         return OvhApiMeBill.Aapi().last().$promise.then(function (bills) {
             self.lastBills = bills;
         }).catch((err) => {
-            ToastError(err);
+            self.lastBills = [];
+            return new ToastError(err);
         });
     }
-
-    /* -----  End of API CALLS  ------*/
 
     /*= =====================================
     =            INITIALIZATION            =
     ======================================*/
-    this.$onInit = function () {
+    self.$onInit = function () {
         getLastBills();
     };
-
-    /* -----  End of INITIALIZATION  ------*/
 
 });
