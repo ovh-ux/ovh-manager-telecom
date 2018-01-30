@@ -1,9 +1,8 @@
 <div class="telecom-pack-xdsl-deconsolidation">
 
-    <oui-loader class="mt-4"
-                data-ng-if="loaders.deconsolidation || loaders.xdsl || DeconCtrl.loading"
-                data-size="l">
-    </oui-loader>
+    <div class="text-center" data-ng-if="loaders.deconsolidation || loaders.xdsl || DeconCtrl.loading">
+        <oui-spinner class="mt-4" data-size="l"></oui-spinner>
+    </div>
 
     <div class="widget-presentation">
 

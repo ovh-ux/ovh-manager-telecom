@@ -1,9 +1,9 @@
 <section class="telecom-telephony-line">
 
     <!-- LOADING -->
-    <oui-loader data-ng-if="LineCtrl.loading.init"
-                data-size="l">
-    </oui-loader>
+    <div class="text-center" data-ng-if="LineCtrl.loading.init">
+        <oui-spinner data-size="l"></oui-spinner>
+    </div>
 
     <div class="telecom-section-header"
          data-ng-if="!LineCtrl.loading.init">

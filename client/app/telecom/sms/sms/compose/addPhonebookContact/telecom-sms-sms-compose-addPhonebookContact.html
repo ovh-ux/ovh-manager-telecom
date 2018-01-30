@@ -107,8 +107,8 @@
                     </tbody>
                     <tbody data-ng-if="AddPhonebookContactCtrl.phonebookContact.isLoading">
                         <tr>
-                            <td colspan="5">
-                                <oui-loader data-size="m"></oui-loader>
+                            <td colspan="5" class="text-center">
+                                <oui-spinner data-size="s"></oui-spinner>
                             </td>
                         </tr>
                     </tbody>
@@ -128,7 +128,7 @@
 
     <div class="modal-body text-center"
          data-ng-if="AddPhonebookContactCtrl.phonebookContact.isAdding && !AddPhonebookContactCtrl.phonebookContact.hasBeenAdded">
-        <oui-loader data-size="m"></oui-loader>
+        <oui-spinner></oui-spinner>
         <h4 data-translate="sms_sms_compose_add_phonebook_contact_adding"></h4>
     </div>
 

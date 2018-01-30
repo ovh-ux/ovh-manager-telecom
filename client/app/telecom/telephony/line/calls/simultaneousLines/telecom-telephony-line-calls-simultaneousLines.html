@@ -6,9 +6,9 @@
         <h1 data-translate="telephony_line_actions_line_calls_simultaneous_line_title"></h1>
     </header>
 
-    <oui-loader data-ng-if="LineSimultaneousLinesCtrl.loading.init"
-                data-size="m">
-    </oui-loader>
+    <div class="text-center" data-ng-if="LineSimultaneousLinesCtrl.loading.init">
+        <oui-spinner></oui-spinner>
+    </div>
 
     <div class="telecom-section-content"
          data-ng-hide="LineSimultaneousLinesCtrl.loading.init">
@@ -67,18 +67,18 @@
                                     class="btn btn-primary float-right"
                                     data-ng-disabled="LineSimultaneousLinesCtrl.loading.save"
                                     data-ng-click="LineSimultaneousLinesCtrl.doRemoveSimultaneousLines()">
-                                <oui-loader class="mr-2"
-                                            data-ng-if="LineSimultaneousLinesCtrl.loading.save"
-                                            data-size="s">
-                                </oui-loader>
+                                <oui-spinner class="mr-2"
+                                             data-ng-if="LineSimultaneousLinesCtrl.loading.save"
+                                             data-size="s">
+                                </oui-spinner>
                                 <span data-translate="telephony_line_actions_line_calls_simultaneous_remove_validate"></span>
                             </button>
                         </div>
                     </div>
 
-                    <oui-loader data-ng-if="!LineSimultaneousLinesCtrl.contracts && LineSimultaneousLinesCtrl.loading.order"
-                                data-size="m">
-                    </oui-loader>
+                    <div class="text-center" data-ng-if="!LineSimultaneousLinesCtrl.contracts && LineSimultaneousLinesCtrl.loading.order">
+                        <oui-spinner></oui-spinner>
+                    </div>
 
                     <div class="row mb-4"
                          data-ng-if="LineSimultaneousLinesCtrl.prices && !LineSimultaneousLinesCtrl.loading.order">
@@ -131,10 +131,10 @@
                                      class="btn btn-primary"
                                      data-ng-disabled="LineSimultaneousLinesCtrl.loading.doOrder || !LineSimultaneousLinesCtrl.contractsAccepted"
                                      data-ng-click="LineSimultaneousLinesCtrl.doOrder()">
-                                <oui-loader class="mr-2"
-                                            data-ng-if="LineSimultaneousLinesCtrl.loading.doOrder"
-                                            data-size="s">
-                                </oui-loader>
+                                <oui-spinner class="mr-2"
+                                             data-ng-if="LineSimultaneousLinesCtrl.loading.doOrder"
+                                             data-size="s">
+                                </oui-spinner>
                                 <span data-translate="telephony_line_actions_line_calls_simultaneous_order"></span>
                                 <i class="ovh-font ovh-font-1x6 ovh-font-cart ml-1"></i>
                             </button>

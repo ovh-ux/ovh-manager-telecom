@@ -12,13 +12,13 @@
         <h1 data-translate="telephony_line_phone_configuration_title"></h1>
     </header>
 
-    <oui-loader data-ng-if="PhoneConfigCtrl.loading.init"
-                data-size="m">
-    </oui-loader>
+    <div class="text-center" data-ng-if="PhoneConfigCtrl.loading.init">
+        <oui-spinner></oui-spinner>
+    </div>
 
     <div class="text-center"
          data-ng-if="PhoneConfigCtrl.loading.save">
-        <oui-loader data-size="m"></oui-loader>
+        <oui-spinner></oui-spinner>
         <h3 data-translate="telephony_line_phone_configuration_saving"></h3>
     </div>
 

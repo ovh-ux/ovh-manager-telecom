@@ -64,10 +64,10 @@
                       aria-hidden="true"
                       data-ng-if="!SmsOutgoingCtrl.outgoing.isDeleting">
                 </span>
-                <oui-loader class="ml-2"
+                <oui-spinner class="ml-2"
                             data-ng-if="SmsOutgoingCtrl.outgoing.isDeleting"
                             data-size="s">
-                </oui-loader>
+                </oui-spinner>
                 <span data-ng-pluralize
                       data-count="SmsOutgoingCtrl.getSelection().length"
                       data-when="{
@@ -269,8 +269,8 @@
                 </tbody>
                 <tbody data-ng-if="SmsOutgoingCtrl.outgoing.isLoading">
                     <tr>
-                        <td colspan="8">
-                            <oui-loader data-size="m"></oui-loader>
+                        <td colspan="8" class="text-center">
+                            <oui-spinner data-size="s"></oui-spinner>
                         </td>
                     </tr>
                 </tbody>

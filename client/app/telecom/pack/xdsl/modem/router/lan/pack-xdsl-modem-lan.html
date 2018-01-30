@@ -10,9 +10,9 @@
             </span>
         </h3>
 
-        <oui-loader data-ng-if="LanCtrl.loader"
-                    data-size="m">
-        </oui-loader>
+        <div class="text-center" data-ng-if="LanCtrl.loader">
+            <oui-spinner></oui-spinner>
+        </div>
 
         <table class="table table-hover table-condensed" data-ng-hide="LanCtrl.loader">
             <thead>

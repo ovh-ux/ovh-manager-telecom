@@ -22,9 +22,9 @@
                         <span data-ng-if="Credit.cost">
                             {{ 'freefax_credit_unit' | translate:{ quantity: Credit.quantity, fax:Credit.quantity/2 } }} / {{ Credit.cost.withTax.text }} {{:: 'ttc' | translate }}
                         </span>
-                        <oui-loader data-ng-if="Credit.cost === null"
-                                    data-size="s">
-                        </oui-loader>
+                        <oui-spinner data-ng-if="Credit.cost === null"
+                                     data-size="s">
+                        </oui-spinner>
                     </span>
                 </div>
                 <div class="mb-3"
@@ -46,9 +46,8 @@
          data-ng-if="Credit.orderDone">
         <div class="oui-tile__item">
             <div class="oui-tile__definition">
-                <oui-loader data-ng-if="!Credit.bill"
-                            data-size="m">
-                </oui-loader>
+                <oui-spinner data-ng-if="!Credit.bill">
+                </oui-spinner>
                 <div data-ng-if="Credit.bill">
                     <p data-translate="freefax_credit_loaded"
                        data-translate-values="{

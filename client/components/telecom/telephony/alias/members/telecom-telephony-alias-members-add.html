@@ -106,10 +106,10 @@
         <button type="submit"
                 class="btn btn-primary"
                 data-ng-disabled="memberAddForm.$invalid || $ctrl.loaders.adding">
-            <oui-loader class="mr-2"
-                        data-ng-if="$ctrl.loaders.adding"
-                        data-size="s">
-            </oui-loader>
+            <oui-spinner class="mr-2"
+                         data-ng-if="$ctrl.loaders.adding"
+                         data-size="s">
+            </oui-spinner>
             <span data-ng-if="$ctrl.addMemberForm.numbers.length <= 1"
                   data-translate="telephony_alias_members_add"></span>
             <span data-ng-if="$ctrl.addMemberForm.numbers.length > 1"

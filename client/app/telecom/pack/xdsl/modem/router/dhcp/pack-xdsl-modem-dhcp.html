@@ -10,9 +10,9 @@
             </span>
         </h3>
 
-        <oui-loader data-ng-if="DhcpCtrl.loader"
-                    data-size="m">
-        </oui-loader>
+        <div class="text-center" data-ng-if="DhcpCtrl.loader">
+            <oui-spinner></oui-spinner>
+        </div>
 
         <table class="table table-hover table-condensed" data-ng-if="!DhcpCtrl.loader">
             <thead>
