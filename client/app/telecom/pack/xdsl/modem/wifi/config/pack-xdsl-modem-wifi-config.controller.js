@@ -2,15 +2,10 @@ angular.module("managerApp")
     .controller("XdslModemWifiConfigCtrl", function ($state, $q, $timeout, $stateParams, $translate, Toast, OvhApiXdsl, PackXdslModemMediator) {
         "use strict";
 
-        var self = this;
+        const self = this;
         this.mediator = PackXdslModemMediator;
         this.wifi = null;
         this.modem = null;
-
-        this.loaders = {
-            wifi: true,
-            completed: false
-        };
 
         this.errors = {
             wifi: false
@@ -21,7 +16,7 @@ angular.module("managerApp")
             channelMode: _.flatten(["Auto", _.range(1, 14)])
         };
 
-        var wifiFields = [
+        const wifiFields = [
             "SSID",
             "SSIDAdvertisementEnabled",
             "channel",
@@ -41,9 +36,7 @@ angular.module("managerApp")
                 return;
             }
 
-            this.loaders.completed = true;
-
-            var wifiTmp = {};
+            let wifiTmp = {};
 
             wifiFields.forEach(function (field) {
                 if (self.hasConfigFieldChanged(field)) {
@@ -80,8 +73,6 @@ angular.module("managerApp")
             }).catch(function (err) {
                 Toast.error([$translate.instant("xdsl_modem_wifi_write_error"), _.get(err, "data.message")].join(" "));
                 return $q.reject(err);
-            }).finally(function () {
-                self.loaders.completed = false;
             });
         };
 
@@ -103,7 +94,7 @@ angular.module("managerApp")
         };
 
         self.hasConfigFieldChanged = function (field, originalWifi) {
-            var original = originalWifi;
+            let original = originalWifi;
             if (!original) {
                 original = _.find(self.wifis, {
                     wifiName: self.wifi.wifiName
@@ -114,7 +105,7 @@ angular.module("managerApp")
         };
 
         self.hasConfigChange = function () {
-            var original = _.find(self.wifis, {
+            const original = _.find(self.wifis, {
                 wifiName: self.wifi.wifiName
             });
 
@@ -148,9 +139,7 @@ angular.module("managerApp")
             }).$promise;
         }
 
-        function init () {
-
-
+        this.$onInit = function () {
             return $q.all({
                 modem: getModem(),
                 wifi: getWifi()
@@ -174,10 +163,7 @@ angular.module("managerApp")
             }).catch(function (err) {
                 Toast.error($translate.instant("xdsl_modem_wifi_read_error"));
                 return $q.reject(err);
-            }).finally(function () {
-                self.loaders.wifi = false;
             });
-        }
+        };
 
-        init();
     });
