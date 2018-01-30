@@ -125,10 +125,9 @@ angular.module("managerApp").controller("TelecomTelephonyLinePhoneCodecCtrl", fu
         });
 
         return voipLinePhone.fetchAll().then((voipLinePhones) => {
-            filteredServices = _.filter(filteredServices, function (service) {
+            return _.filter(filteredServices, function (service) {
                 return _.some(voipLinePhones, { serviceName: service.serviceName, billingAccount: service.billingAccount });
             });
-            return $q.when(filteredServices);
         });
     };
 
