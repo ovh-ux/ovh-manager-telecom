@@ -1,20 +1,11 @@
 angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingTollfreeHistoryCtrl", function ($q, $filter, $window, $timeout, $stateParams, $translate, TelephonyMediator, OvhApiTelephony, Toast) {
     "use strict";
 
-    var self = this;
+    const self = this;
 
     self.group = null;
-
-    self.loading = {
-        init: false
-    };
-
     self.consumption = {
-        raw: null,
-        paginated: null,
-        sorted: null,
-        orderBy: "date",
-        orderDesc: true
+        raw: null
     };
 
     /*= ==============================
@@ -31,7 +22,7 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingTo
                     date: chunkDates
                 }).$promise;
             })).then(function (chunkResult) {
-                var result = _.pluck(_.flatten(chunkResult), "value");
+                const result = _.pluck(_.flatten(chunkResult), "value");
                 return _.each(result, function (consumption) {
                     consumption.priceValue = consumption.price ? consumption.price.value : null;
                 });
@@ -39,25 +30,8 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingTo
         });
     }
 
-    self.sortConsumption = function () {
-        self.consumption.sorted = $filter("orderBy")(
-            self.consumption.raw,
-            self.consumption.orderBy,
-            self.consumption.orderDesc
-        );
-    };
-
-    self.orderBy = function (by) {
-        if (self.consumption.orderBy === by) {
-            self.consumption.orderDesc = !self.consumption.orderDesc;
-        } else {
-            self.consumption.orderBy = by;
-        }
-        self.sortConsumption();
-    };
-
     self.fetchFile = function (consumption) {
-        var tryDownload = function () {
+        const tryDownload = function () {
             return OvhApiTelephony.HistoryTollfreeConsumption().Lexi().getDocument({
                 billingAccount: $stateParams.billingAccount,
                 date: consumption.date
@@ -102,26 +76,16 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingTo
     =            INITIALIZATION            =
     ======================================*/
 
-    function init () {
-        self.loading.init = true;
-
+    this.$onInit = function () {
         return TelephonyMediator.getGroup($stateParams.billingAccount).then(function (group) {
             self.group = group;
-
             return fetchHistory().then(function (consumptions) {
                 self.consumption.raw = consumptions;
-                self.sortConsumption();
             });
         }).catch(function (error) {
             Toast.error([$translate.instant("telephony_group_billing_tollfree_history_init_error"), (error.data && error.data.message) || ""].join(" "));
             return $q.reject(error);
-        }).finally(function () {
-            self.loading.init = false;
         });
-    }
-
-    /* -----  End of INITIALIZATION  ------*/
-
-    init();
+    };
 
 });

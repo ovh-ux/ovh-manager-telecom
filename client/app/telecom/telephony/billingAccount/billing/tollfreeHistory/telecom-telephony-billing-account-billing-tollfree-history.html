@@ -22,99 +22,31 @@
 
             <div class="row">
                 <div class="col-xs-12">
-                    <div class="table-responsive">
-                        <table class="table"
-                               data-ng-class="{
-                                   'table-hover table-striped': TollfreeHistoryCtrl.consumption.raw.length > 1
-                               }">
-                            <thead>
-                                <tr>
-                                    <th>
-                                        <button class="btn btn-link p-0"
-                                                type="button"
-                                                data-ng-click="TollfreeHistoryCtrl.orderBy('date')"
-                                                data-ng-disabled="!TollfreeHistoryCtrl.consumption.paginated.length">
-                                            <span data-translate="telephony_group_billing_tollfree_history_list_date"></span>
-                                            <span class="oui-icon align-baseline"
-                                                  aria-hidden="true"
-                                                  data-ng-class="{
-                                                      'oui-icon-arrow-down': TollfreeHistoryCtrl.consumption.orderBy !== 'date',
-                                                      'oui-icon-arrow-down': TollfreeHistoryCtrl.consumption.orderBy === 'date' && TollfreeHistoryCtrl.consumption.orderDesc,
-                                                      'oui-icon-arrow-up': TollfreeHistoryCtrl.consumption.orderBy === 'date' && !TollfreeHistoryCtrl.consumption.orderDesc
-                                                  }">
-                                            </span>
-                                        </button>
-                                    </th>
-                                    <th>
-                                        <button class="btn btn-link p-0"
-                                                type="button"
-                                                data-ng-disabled="!TollfreeHistoryCtrl.consumption.paginated.length"
-                                                data-ng-click="TollfreeHistoryCtrl.orderBy('priceValue')">
-                                            <span data-translate="telephony_group_billing_tollfree_history_list_price"></span>
-                                            <span class="oui-icon align-baseline"
-                                                  aria-hidden="true"
-                                                  data-ng-class="{
-                                                      'oui-icon-arrow-down': TollfreeHistoryCtrl.consumption.orderBy !== 'priceValue',
-                                                      'oui-icon-arrow-down': TollfreeHistoryCtrl.consumption.orderBy === 'priceValue' && TollfreeHistoryCtrl.consumption.orderDesc,
-                                                      'oui-icon-arrow-up': TollfreeHistoryCtrl.consumption.orderBy === 'priceValue' && !TollfreeHistoryCtrl.consumption.orderDesc
-                                                  }">
-                                            </span>
-                                        </button>
-                                    </th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody data-ng-if="!TollfreeHistoryCtrl.loading.init">
-                                <tr data-ng-repeat="consumption in TollfreeHistoryCtrl.consumption.paginated">
-                                    <td data-title="{{:: 'telephony_group_billing_tollfree_history_list_date' | translate }}">
-                                        <span class="text-nowrap"
-                                              data-ng-bind="consumption.date | date:'shortDate'">
-                                        </span>
-                                    </td>
-                                    <td data-title="{{:: 'telephony_group_billing_tollfree_history_list_price' | translate }}">
-                                        <span class="text-nowrap"
-                                              data-ng-bind="consumption.price.text.replace('-', '')">
-                                        </span>
-                                    </td>
-                                    <td>
-                                        <button class="btn btn-default"
-                                                type="button"
-                                                data-translate-attr="{
-                                                    'title': 'telephony_group_billing_tollfree_history_list_download_csv'
-                                                }"
-                                                data-ng-disabled="consumption.downloading"
-                                                data-ng-click="TollfreeHistoryCtrl.download(consumption)">
-                                            <i data-ng-if="!consumption.downloading"
-                                               class="fa fa-file-excel-o">
-                                            </i>
-                                            <oui-spinner data-ng-if="consumption.downloading"
-                                                         data-size="s">
-                                            </oui-spinner>
-                                        </button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                            <tbody data-ng-if="!TollfreeHistoryCtrl.loading.init && !TollfreeHistoryCtrl.consumption.paginated.length">
-                                <tr>
-                                    <td class="text-center py-3"
-                                        colspan="3"
-                                        data-translate="telephony_group_billing_tollfree_history_list_no_results">
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="mt-2"
-                         data-ng-if="!TollfreeHistoryCtrl.loading.init && TollfreeHistoryCtrl.consumption.raw.length"
-                         data-pagination-front
-                         data-items="TollfreeHistoryCtrl.consumption.sorted"
-                         data-paginated-items="TollfreeHistoryCtrl.consumption.paginated"
-                         data-current-page="currentPage"
-                         data-nb-pages="nbPages"
-                         data-items-per-page="itemsPerPage"
-                         data-page-placeholder="{{'common_pagination_page' | translate: {currentPage:currentPage, nbPages:nbPages} }}"
-                         data-item-per-page-placeholder="{{'common_pagination_display' | translate}}">
-                    </div>
+
+                    <oui-datagrid data-rows="TollfreeHistoryCtrl.consumption.raw" data-page-size="10">
+                        <oui-column data-title="'telephony_group_billing_tollfree_history_list_date' | translate" 
+                                    data-property="date" data-sortable="desc">
+                            <span class="text-nowrap"
+                                data-ng-bind="$row.date | date:'shortDate'">
+                            </span>
+                        </oui-column>
+                        <oui-column data-title="'telephony_group_billing_tollfree_history_list_price' | translate" 
+                                    data-property="date" data-sortable>
+                            <span class="text-nowrap"
+                                  data-ng-bind="$row.price.text.replace('-', '')">
+                            </span>
+                        </oui-column>
+
+                        <oui-action-menu data-align="end" data-compact>
+                            <oui-action-menu-item
+                                    data-text="{{'telephony_group_billing_tollfree_history_list_download_csv' | translate}}"
+                                    on-click="TollfreeHistoryCtrl.download($row)">
+                            </oui-action-menu-item>
+                        </oui-action-menu>
+
+                    </oui-datagrid>
+
+
                 </div>
             </div>
         </div>
