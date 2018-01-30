@@ -717,7 +717,8 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <hr/>
-                                <telephony-bulk-action data-billing-account="{{ ServiceContactCtrl.bulkDatas.billingAccount }}"
+                                <telephony-bulk-action data-ng-if="!ServiceContactCtrl.isFax"
+                                                       data-billing-account="{{ ServiceContactCtrl.bulkDatas.billingAccount }}"
                                                        data-service-name="{{ ServiceContactCtrl.bulkDatas.serviceName }}"
                                                        data-custom-class="link d-block pl-0 mb-3"
                                                        data-ng-disabled="ServiceContactCtrl.isLoading"
