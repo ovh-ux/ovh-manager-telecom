@@ -1,8 +1,8 @@
 <div class="telecom-telephony-line-phone-accessories-resume">
 
-    <oui-loader data-ng-if="AccessoriesResumeCtrl.loading.init"
-                data-size="m">
-    </oui-loader>
+    <div class="text-center" data-ng-if="AccessoriesResumeCtrl.loading.init">
+        <oui-spinner></oui-spinner>
+    </div>
 
     <form data-ng-submit="AccessoriesResumeCtrl.process.currentView = 'finalize'"
           data-ng-if="!AccessoriesResumeCtrl.loading.init">

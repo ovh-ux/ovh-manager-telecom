@@ -7,9 +7,9 @@
         <h1 data-translate="telephony_line_calls_time_condition_title"></h1>
     </header>
 
-    <oui-loader data-ng-if="$ctrl.loading.init"
-                data-size="m">
-    </oui-loader>
+    <div class="text-center" data-ng-if="$ctrl.loading.init">
+        <oui-spinner></oui-spinner>
+    </div>
 
     <form class="telecom-section-content mb-4"
           name="timeConditionForm"
@@ -149,10 +149,10 @@
             <div class="d-inline-block">
                 <button type="submit"
                         class="btn btn-primary">
-                    <oui-loader class="mr-2"
-                                data-ng-if="$ctrl.line.timeCondition.status === 'SAVING'"
-                                data-size="s">
-                    </oui-loader>
+                    <oui-spinner class="mr-2"
+                                 data-ng-if="$ctrl.line.timeCondition.status === 'SAVING'"
+                                 data-size="s">
+                    </oui-spinner>
                     <span data-translate="submit"></span>
                 </button>
                 <button type="reset"

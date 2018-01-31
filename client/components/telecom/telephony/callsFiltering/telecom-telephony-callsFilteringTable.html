@@ -7,10 +7,10 @@
                     type="button"
                     data-ng-disabled="$ctrl.getSelection().length === 0 || $ctrl.screenLists.isDeleting"
                     data-ng-click="$ctrl.removeSelectedScreenLists()">
-                <oui-loader class="mr-2"
-                            data-ng-if="$ctrl.screenLists.isDeleting"
-                            data-size="s">
-                </oui-loader>
+                <oui-spinner class="mr-2"
+                             data-ng-if="$ctrl.screenLists.isDeleting"
+                             data-size="s">
+                </oui-spinner>
                 <i class="ovh-font ovh-font-bin mr-2"></i>
                 <span data-ng-if="$ctrl.getSelection().length <= 1"
                       data-translate="telephony_calls_filtering_table_delete">
@@ -185,10 +185,10 @@
                             <i class="text-success ovh-font ovh-font-success"
                                data-ng-if="screen.status === 'active'">
                             </i>
-                            <oui-loader class="ml-1"
-                                        data-ng-if="screen.status !== 'active'"
-                                        data-size="s">
-                            </oui-loader>
+                            <oui-spinner class="ml-1"
+                                         data-ng-if="screen.status !== 'active'"
+                                         data-size="s">
+                            </oui-spinner>
                         </span>
                     </td>
                 </tr>
@@ -196,7 +196,9 @@
             <tbody data-ng-if="$ctrl.isLoading">
                 <tr>
                     <td colspan="6">
-                        <oui-loader data-size="m"></oui-loader>
+                        <div class="text-center">
+                            <oui-spinner></oui-spinner>
+                        </div>
                     </td>
                 </tr>
             </tbody>

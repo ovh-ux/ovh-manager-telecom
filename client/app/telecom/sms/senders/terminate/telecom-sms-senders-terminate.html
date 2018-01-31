@@ -30,7 +30,7 @@
 
     <div class="modal-body text-center"
          data-ng-if="SendersTerminateCtrl.loading.terminate && !SendersTerminateCtrl.terminated">
-        <oui-loader data-size="m"></oui-loader>
+        <oui-spinner></oui-spinner>
         <h4 data-ng-bind="SendersTerminateCtrl.sender.serviceInfos.renew.deleteAtExpiration ? 'sms_senders_terminate_sender_cancelling' : 'sms_senders_terminate_sender_terminating' | translate"></h4>
     </div>
 

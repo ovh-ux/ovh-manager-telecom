@@ -100,8 +100,10 @@ angular.module("managerApp").controller("XdslDiagnosticCtrl", function ($q, $sco
                 xdslId: $stateParams.serviceName
             }).then(
                 self.pollerSuccess,
-                function () {
-                    Toast.error($translate.instant("pack_xdsl_access_diagnostic_line_error_diag_poll"));
+                function (error) {
+                    if (!_.isObject(error)) {
+                        Toast.error($translate.instant("pack_xdsl_access_diagnostic_line_error_diag_poll"));
+                    }
                 },
                 self.pollerSuccess
             );

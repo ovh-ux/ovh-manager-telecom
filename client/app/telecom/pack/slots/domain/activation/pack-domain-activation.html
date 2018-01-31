@@ -9,9 +9,9 @@
 
         <toast-message></toast-message>
 
-        <oui-loader data-ng-if="PackDomainActivation.isLoading"
-                    data-size="m">
-        </oui-loader>
+        <div class="text-center" data-ng-if="PackDomainActivation.isLoading">
+            <oui-spinner></oui-spinner>
+        </div>
 
         <div class="row" data-ng-if="!PackDomainActivation.isLoading && locker.activatedDomains.length !== 0">
             <section class="widget-presentation col-xs-12 col-md-6" data-ng-if="locker.activatedDomains.length !== 0">
@@ -73,15 +73,15 @@
                     </div>
                     <div class="mt-2"
                          data-ng-if="toggles.domainLoading">
-                        <oui-loader class="mr-2"
-                                    data-size="s">
-                        </oui-loader>
+                        <oui-spinner class="mr-2"
+                                     data-size="s">
+                        </oui-spinner>
                         <span data-translate="domain_activation_check_dispo"></span>
                     </div>
 
                     <!-- already in pack-->
                     <div data-ng-if="toggles.domainStatus === 'alreadyActivated'">
-                        <span class="ovh-font ovh-font-warning text-warning h6" aria-hidden="true"></span>
+                        <h6 class="ovh-font ovh-font-warning text-warning " aria-hidden="true"></h6>
                         <span data-translate="domain_activation_is_already_in_pack"
                               data-translate-values="{ domain: model.domain + '.' + model.tld }">
                         </span>
@@ -90,7 +90,7 @@
                     <!-- available -->
                     <div data-ng-if="toggles.domainStatus === 'available'">
                         <div>
-                            <span class="ovh-font ovh-font-success text-success h6" aria-hidden="true"></span>
+                            <h6 class="ovh-font ovh-font-success text-success " aria-hidden="true"></h6>
                             <span data-translate="domain_activation_is_available"
                                   data-translate-values="{ domain : locker.fqdn }">
                             </span>
@@ -131,7 +131,7 @@
                     <!-- unavailable -->
                     <div data-ng-if="toggles.domainStatus === 'unavailable'">
                         <div>
-                            <span class="ovh-font ovh-font-warning text-warning h6" aria-hidden="true"></span>
+                            <h6 class="ovh-font ovh-font-warning text-warning " aria-hidden="true"></h6>
                             <span data-translate="domain_activation_is_unavailable"
                                   data-translate-values="{ domain: model.domain + '.' + model.tld }">
                             </span>
@@ -180,9 +180,9 @@
                                 class="btn btn-primary mt-5"
                                 data-ng-click="submit()"
                                 data-ng-disabled="PackDomainActivation.isActivating || !domainActivation.$valid || toggles.domainLoading || toggles.loading > 0">
-                            <oui-loader data-ng-if="PackDomainActivation.isActivating"
-                                        data-size="s">
-                            </oui-loader>
+                            <oui-spinner data-ng-if="PackDomainActivation.isActivating"
+                                         data-size="s">
+                            </oui-spinner>
                             <span data-ng-if="toggles.transfertWanted" data-translate="domain_activation_form_ok_transfert_button"></span>
                             <span data-ng-if="model.action === 'create'" data-translate="domain_activation_form_ok_activate_button"></span>
                         </button>

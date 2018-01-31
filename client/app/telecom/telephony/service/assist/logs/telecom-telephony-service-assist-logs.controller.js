@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyServiceAssistLogsCtrl", function ($scope, $q, $translate, $stateParams, TelephonyMediator, OvhApiTelephony, OvhApiMe, Toast, PAGINATION_PER_PAGE) {
+angular.module("managerApp").controller("TelecomTelephonyServiceAssistLogsCtrl", function ($q, $translate, $state, $stateParams, voipService, voipLineFeature, OvhApiMe, Toast, PAGINATION_PER_PAGE, telephonyBulk) {
     "use strict";
 
     var self = this;
@@ -7,119 +7,188 @@ angular.module("managerApp").controller("TelecomTelephonyServiceAssistLogsCtrl",
     self.logs = null;
     self.logsPerPage = PAGINATION_PER_PAGE;
 
+    // TODO : remove once bulk action for fax is available
+    self.isFax = $state.current.name.indexOf("fax") > -1;
+
+    // notifications edit
+    self.edition = {
+        active: false,
+        notifications: null
+    };
+
+    // logs
     self.availableDayInterval = ["today", "yesterday", "2 days ago", "3 days ago"];
     self.availableLogsFrequencies = ["Never", "Twice a day", "Once a day"];
+
     self.loading = {
         init: false,
         refresh: false,
         user: false,
         save: false
     };
+
     self.model = {
-        dayInterval: self.availableDayInterval[0],
-        configEdit: false
+        dayInterval: self.availableDayInterval[0]
     };
     self.user = null;
-    self.backSref = null;
 
-    /*= ==============================
-    =            ACTIONS            =
-    ===============================*/
+    /* =============================
+    =            EVENTS            =
+    ============================== */
 
-    self.refreshLogs = function () {
+    /**
+     *  Refresh service logs.
+     */
+    self.onLogsFrequencySelectChange = function () {
         self.loading.refresh = true;
 
-        return OvhApiTelephony.Service().Lexi().diagnosticReports({
-            billingAccount: $stateParams.billingAccount,
-            serviceName: $stateParams.serviceName,
-            dayInterval: self.model.dayInterval
-        }).$promise.then(function (logs) {
+        return voipService.fetchServiceDiagnosticReports(self.service, self.model.dayInterval).then(function (logs) {
             self.logs = logs;
-        }, function (error) {
-            Toast.error([$translate.instant("telephony_line_assist_support_logs_refresh_error"), (error.data && error.data.message) || ""].join(" "));
+        }).catch(function (error) {
+            Toast.error([$translate.instant("telephony_line_assist_support_logs_refresh_error"), _.get(error, "data.message", "")].join(" "));
             return $q.reject(error);
         }).finally(function () {
             self.loading.refresh = false;
         });
     };
 
-    self.startNotificationsChange = function () {
-        self.service.startEdition();
-        self.model.configEdit = true;
+    /* ----------  NOTIFICATIONS EDITION  ---------- */
 
-        if (!self.user && !self.service.notifications.logs.email) {
+    /**
+     *  Start edition of the feature notifications.
+     */
+    self.onStartEditBtnClick = function () {
+        // copy notifications from fetched feature
+        self.edition.notifications = angular.copy(self.service.feature.notifications);
+
+        // start edition mode
+        self.edition.mode = true;
+
+        // fetch user if not already done
+        if (!self.user && !self.edition.notifications.logs.email) {
             self.loading.user = true;
 
             // if request fail - no need to catch it
             OvhApiMe.Lexi().get().$promise.then(function (user) {
                 self.user = user;
-                self.service.notifications.logs.email = self.user.email;
+                self.edition.notifications.logs.email = self.user.email;
             }).finally(function () {
                 self.loading.user = false;
             });
-        } else if (!self.service.notifications.logs.email) {
-            self.service.notifications.logs.email = self.user.email;
+        } else if (!self.edition.notifications.logs.email) {
+            self.edition.notifications.logs.email = self.user.email;
         }
     };
 
-    self.cancelNotificationsChange = function () {
-        self.service.stopEdition(true);
-        self.model.configEdit = false;
+    /**
+     *  Cancel all the modifications made to feature notifications.
+     */
+    self.onCancelEditionBtnClick = function () {
+        self.edition.notifications = null;
+        self.edition.mode = false;
     };
 
-    self.saveLogsNotifications = function () {
+    /**
+     *  Launch the feature notifications save.
+     */
+    self.onNotificationsEditFormSubmit = function () {
         self.loading.save = true;
 
         // reset email and sendIfNull if frequency is "Never"
-        if (self.service.notifications.logs.frequency === "Never") {
-            self.service.notifications.logs.email = null;
-            self.service.notifications.logs.sendIfNull = false;
+        if (self.edition.notifications.logs.frequency === "Never") {
+            self.edition.notifications.logs.email = null;
+            self.edition.notifications.logs.sendIfNull = false;
         }
 
-        return self.service.save().then(function () {
-            self.service.stopEdition();
+        // save notifications
+        return voipLineFeature.saveFeature(self.service.feature, {
+            notifications: self.edition.notifications
         }).catch(function (error) {
-            self.service.stopEdition(true);
-            Toast.error([$translate.instant("telephony_line_assist_support_logs_save_error"), (error.data && error.data.message) || ""].join(" "));
+            Toast.error([$translate.instant("telephony_line_assist_support_logs_save_error"), _.get(error, "data.message", "")].join(" "));
             return $q.reject(error);
         }).finally(function () {
             self.loading.save = false;
-            self.model.configEdit = false;
+            self.edition.mode = false;
+            self.edition.notifications = null;
         });
     };
 
-    /* -----  End of ACTIONS  ------*/
+    /* -----  End of EVENTS  ------ */
 
     /*= =====================================
     =            INITIALIZATION            =
     ======================================*/
 
-    function init () {
+    self.$onInit = function () {
         self.loading.init = true;
 
-        return TelephonyMediator.getGroup($stateParams.billingAccount).then(function () {
-            self.service = TelephonyMediator.findService($stateParams.serviceName);
+        return voipService.fetchSingleService($stateParams.billingAccount, $stateParams.serviceName).then(function (service) {
+            self.service = service;
+            self.bulkDatas.billingAccount = self.service.billingAccount;
+            self.bulkDatas.serviceName = self.service.serviceName;
 
-            self.backSref = self.service.isFax ? "telecom.telephony.fax.assist" : "telecom.telephony.line.assist";
-
-            return self.refreshLogs();
-        }, function (error) {
-            Toast.error([$translate.instant("telephony_line_assist_support_logs_init_error"), (error.data && error.data.message) || ""].join(" "));
+            return $q.all({
+                feature: voipLineFeature.fetchFeature(service),
+                logs: self.onLogsFrequencySelectChange()
+            });
+        }).catch(function (error) {
+            Toast.error([$translate.instant("telephony_line_assist_support_logs_init_error"), _.get(error, "data.message", "")].join(" "));
             return $q.reject(error);
         }).finally(function () {
             self.loading.init = false;
         });
-    }
-
-    // in case we don't click on cancel button
-    $scope.$on("$destroy", function () {
-        if (self.service) {
-            self.service.stopEdition(true);
-        }
-    });
+    };
 
     /* -----  End of INITIALIZATION  ------*/
 
-    init();
+
+    self.bulkDatas = {
+        infos: {
+            name: "assistLogs",
+            actions: [{
+                name: "assistLogs",
+                route: "/telephony/{billingAccount}/line/{serviceName}",
+                method: "PUT",
+                params: null
+            }]
+        }
+    };
+
+    self.filterServices = function (services) {
+        return _.filter(services, function (service) {
+            return ["sip", "mgcp"].indexOf(service.featureType) > -1;
+        });
+    };
+
+    self.getBulkParams = function () {
+        var logs = self.edition.mode ? self.edition.notifications.logs : self.service.feature.notifications.logs;
+        return {
+            notifications: {
+                logs: _.pick(logs, ["frequency", "sendIfNull", "email"])
+            }
+        };
+    };
+
+    self.onBulkSuccess = function (bulkResult) {
+        // display message of success or error
+        telephonyBulk.getToastInfos(bulkResult, {
+            fullSuccess: $translate.instant("telephony_line_assist_support_logs_bulk_all_success"),
+            partialSuccess: $translate.instant("telephony_line_assist_support_logs_bulk_some_success", {
+                count: bulkResult.success.length
+
+            }),
+            error: $translate.instant("telephony_line_assist_support_logs_bulk_error")
+        }).forEach(function (toastInfo) {
+            Toast[toastInfo.type](toastInfo.message, {
+                hideAfter: null
+            });
+        });
+
+        self.$onInit();
+    };
+
+    self.onBulkError = function (error) {
+        Toast.error([$translate.instant("telephony_line_assist_support_logs_bulk_on_error"), _.get(error, "msg.data")].join(" "));
+    };
 
 });
