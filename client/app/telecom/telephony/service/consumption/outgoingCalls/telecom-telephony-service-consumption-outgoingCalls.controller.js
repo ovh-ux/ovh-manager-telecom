@@ -1,7 +1,7 @@
 angular.module("managerApp").controller("TelecomTelephonyServiceConsumptionOutgoingCallsCtrl", function ($stateParams, $q, $translate, $filter, $timeout, OvhApiTelephony, ToastError) {
     "use strict";
 
-    var self = this;
+    const self = this;
 
     function fetchOutgoingConsumption () {
         return OvhApiTelephony.Service().VoiceConsumption().Lexi().query({
@@ -39,7 +39,6 @@ angular.module("managerApp").controller("TelecomTelephonyServiceConsumptionOutgo
             sorted: null,
             paginated: null,
             selected: null,
-            isLoading: false,
             orderBy: "creationDatetime",
             orderDesc: true,
             filterBy: {
@@ -64,9 +63,9 @@ angular.module("managerApp").controller("TelecomTelephonyServiceConsumptionOutgo
             end: moment().endOf("month")
         };
 
-        self.consumption.isLoading = true;
         fetchOutgoingConsumption().then(function (result) {
             self.consumption.raw = angular.copy(result);
+            self.consumption.sorted = angular.copy(result);
             self.applySorting();
             self.consumption.sum.pricePlan.calls = _.sum(self.consumption.raw, function (conso) {
                 return conso.planType === "priceplan" ? 1 : 0;
@@ -80,7 +79,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceConsumptionOutgo
             self.consumption.sum.outPlan.durationAsDate = new Date(_.sum(self.consumption.raw, function (conso) {
                 return conso.planType === "outplan" ? conso.duration : 0;
             }) * 1000);
-            var priceSuffix = "";
+            let priceSuffix = "";
             self.consumption.sum.outPlan.price = _.sum(self.consumption.raw, function (conso) {
                 if (conso.planType === "outplan" && conso.priceWithoutTax) {
                     // since we compute the sum manually we must guess and add the currency symbol
@@ -93,8 +92,6 @@ angular.module("managerApp").controller("TelecomTelephonyServiceConsumptionOutgo
             self.consumption.sum.outPlan.price = (Math.floor(self.consumption.sum.outPlan.price * 100.0, 2) / 100.0) + " " + priceSuffix;
         }).catch(function (err) {
             return new ToastError(err);
-        }).finally(function () {
-            self.consumption.isLoading = false;
         });
     }
 
@@ -105,7 +102,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceConsumptionOutgo
     };
 
     self.applySorting = function () {
-        var data = angular.copy(self.consumption.raw);
+        let data = angular.copy(self.consumption.raw);
         data = $filter("filter")(data, self.consumption.filterBy);
         data = $filter("orderBy")(
             data,
