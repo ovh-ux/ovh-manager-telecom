@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTaskCtrl", function ($scope, $translate, OvhApiPackXdslTask, ToastError, TASK_STATUS, PAGINATION_PER_PAGE, ouiDatagridConfiguration) {
+angular.module("managerApp").controller("TelecomTaskCtrl", function ($scope, $translate, OvhApiPackXdslTask, ToastError, TASK_STATUS, PAGINATION_PER_PAGE) {
     "use strict";
 
     const self = this;
