@@ -81,8 +81,12 @@ angular.module("managerApp").controller("TelecomTelephonyLineClick2CallAddUserCt
 
         return _.filter(filteredServices, function (service) {
             return _.some(service.offers, _.method("includes", "sipfax")) ||
-                _.some(service.offers, _.method("includes", "priceplan")) ||
-                _.some(service.offers, _.method("includes", "voicefax"));
+                _.some(service.offers, _.method("includes", "priceplan"));
+
+            // TODO : remove once bulk action is available for fax
+            // return _.some(service.offers, _.method("includes", "sipfax")) ||
+            //     _.some(service.offers, _.method("includes", "priceplan")) ||
+            //     _.some(service.offers, _.method("includes", "voicefax"));
         });
     };
 
