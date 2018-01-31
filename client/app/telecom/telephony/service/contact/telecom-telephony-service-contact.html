@@ -1,8 +1,8 @@
 <div class="telecom-telephony-service-contact">
 
-    <oui-loader data-ng-if="ServiceContactCtrl.isLoading"
-                data-size="m">
-    </oui-loader>
+    <div class="text-center" data-ng-if="ServiceContactCtrl.isLoading">
+        <oui-spinner></oui-spinner>
+    </div>
 
     <div class="row"
          data-ng-if="!ServiceContactCtrl.isLoading">
@@ -337,10 +337,10 @@
                         <label for="contactCity"
                                class="control-label">
                             <span data-translate="telephony_service_contact_city"></span>
-                            <oui-loader class="ml-1"
-                                        data-ng-if="ServiceContactCtrl.isCityListLoading"
-                                        data-size="s">
-                            </oui-loader>
+                            <oui-spinner class="ml-1"
+                                         data-ng-if="ServiceContactCtrl.isCityListLoading"
+                                         data-size="s">
+                            </oui-spinner>
                         </label>
                         <input type="text"
                                id="contactCity"
@@ -461,10 +461,10 @@
                         <label for="contactWayname"
                                class="control-label">
                             <span data-translate="telephony_service_contact_wayname"></span>
-                            <oui-loader class="ml-1"
-                                        data-ng-if="ServiceContactCtrl.isWayListLoading"
-                                        data-size="s">
-                            </oui-loader>
+                            <oui-spinner class="ml-1"
+                                         data-ng-if="ServiceContactCtrl.isWayListLoading"
+                                         data-size="s">
+                            </oui-spinner>
                         </label>
                         <input type="text"
                                id="contactWayname"
@@ -737,10 +737,10 @@
                                         class="btn btn-primary"
                                         data-ng-if="ServiceContactCtrl.isEditing"
                                         data-ng-disabled="!ServiceContactCtrl.hasChanges() || ServiceContactCtrl.isUpdating || contactForm.$invalid">
-                                    <oui-loader class="mr-2"
-                                                data-ng-if="ServiceContactCtrl.isUpdating"
-                                                data-size="s">
-                                    </oui-loader>
+                                    <oui-spinner class="mr-2"
+                                                 data-ng-if="ServiceContactCtrl.isUpdating"
+                                                 data-size="s">
+                                    </oui-spinner>
                                     <span data-translate="telephony_service_contact_apply"></span>
                                 </button>
                                 <button type="button"

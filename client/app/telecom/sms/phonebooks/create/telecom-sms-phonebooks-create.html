@@ -58,10 +58,10 @@
                             data-ng-disabled="phonebookCreateForm.$invalid || PhonebooksCreateCtrl.phonebookToAdd.isAdding">
                             <span data-translate="sms_phonebooks_create"></span>
                         </button>
-                        <oui-loader class="ml-2"
-                                    data-ng-if="PhonebooksCreateCtrl.phonebookToAdd.isAdding"
-                                    data-size="s">
-                        </oui-loader>
+                        <oui-spinner class="ml-2"
+                                     data-ng-if="PhonebooksCreateCtrl.phonebookToAdd.isAdding"
+                                     data-size="s">
+                        </oui-spinner>
                     </div>
                 </form>
             </div>

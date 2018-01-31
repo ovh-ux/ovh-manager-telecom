@@ -9,9 +9,9 @@
 
     <toast-message></toast-message>
 
-    <oui-loader data-ng-if="RepaymentHistoryCtrl.loading.init"
-                data-size="m">
-    </oui-loader>
+    <div class="text-center" data-ng-if="RepaymentHistoryCtrl.loading.init">
+        <oui-spinner></oui-spinner>
+    </div>
 
     <div class="telecom-section-content"
          data-ng-if="!RepaymentHistoryCtrl.loading.init">
@@ -98,9 +98,9 @@
                                             <i data-ng-if="!consumption.downloading"
                                                class="fa fa-file-excel-o">
                                             </i>
-                                            <oui-loader data-ng-if="consumption.downloading"
-                                                        data-size="s">
-                                            </oui-loader>
+                                            <oui-spinner data-ng-if="consumption.downloading"
+                                                         data-size="s">
+                                            </oui-spinner>
                                         </button>
                                     </td>
                                 </tr>

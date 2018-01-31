@@ -7,9 +7,9 @@
         <h1 data-translate="telephony_alias_configuration_members_title"></h1>
     </header>
 
-    <oui-loader data-ng-if="$ctrl.loaders.init"
-                data-size="m">
-    </oui-loader>
+    <div class="text-center" data-ng-if="$ctrl.loaders.init">
+        <oui-spinner></oui-spinner>
+    </div>
 
     <div class="telecom-section-content"
          data-ng-if="!$ctrl.loaders.init">
@@ -90,9 +90,9 @@
                              data-ng-class="{'pl-5': !$ctrl.agentInEdition && !$ctrl.agentToDelete}">
                             <strong class="member-description my-3 align-middle"
                                     data-ng-class="{'px-3': !$ctrl.memberInEdition && !$ctrl.memberToDelete}">
-                                <oui-loader data-size="s"
-                                            data-ng-if="agent.description === undefined">
-                                </oui-loader>
+                                <oui-spinner data-size="s"
+                                             data-ng-if="agent.description === undefined">
+                                </oui-spinner>
                                 <span data-ng-if="agent.description !== undefined"
                                       data-ng-bind="agent.description || ('telephony_alias_members_number_external' | translate)"></span>
                             </strong>
@@ -145,10 +145,10 @@
                                     <button type="submit"
                                             class="btn btn-primary"
                                             data-ng-disabled="$ctrl.loaders.editing || !$ctrl.hasAgentEditedChanged(agent)">
-                                        <oui-loader class="mr-2"
-                                                    data-ng-if="$ctrl.loaders.editing"
-                                                    data-size="s">
-                                        </oui-loader>
+                                        <oui-spinner class="mr-2"
+                                                     data-ng-if="$ctrl.loaders.editing"
+                                                     data-size="s">
+                                        </oui-spinner>
                                         <span data-translate="submit"></span>
                                     </button>
                                     <button type="button"
@@ -167,10 +167,10 @@
                                         class="btn btn-danger"
                                         data-ng-disabled="$ctrl.loaders.deleting"
                                         data-ng-click="$ctrl.onConfirmAgentDeleteBtnClick(agent)">
-                                    <oui-loader class="mr-2"
-                                                data-ng-if="$ctrl.loaders.deleting"
-                                                data-size="s">
-                                    </oui-loader>
+                                    <oui-spinner class="mr-2"
+                                                 data-ng-if="$ctrl.loaders.deleting"
+                                                 data-size="s">
+                                    </oui-spinner>
                                     <span data-translate="delete"></span>
                                 </button>
                                 <button type="button"
@@ -269,10 +269,10 @@
                         <button type="submit"
                                 class="btn btn-primary no-transition"
                                 data-ng-disabled="agentAddForm.$invalid || $ctrl.loaders.adding">
-                            <oui-loader class="mr-2"
-                                        data-size="s"
-                                        data-ng-if="$ctrl.loaders.adding">
-                            </oui-loader>
+                            <oui-spinner class="mr-2"
+                                         data-size="s"
+                                         data-ng-if="$ctrl.loaders.adding">
+                            </oui-spinner>
                             <span data-ng-if="$ctrl.addAgentForm.numbers.length <= 1"
                                   data-translate="telephony_alias_members_add"></span>
                             <span data-ng-if="$ctrl.addAgentForm.numbers.length > 1"

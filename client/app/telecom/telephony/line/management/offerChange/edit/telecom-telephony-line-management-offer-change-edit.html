@@ -13,7 +13,7 @@
 
     <div class="modal-body text-center"
          data-ng-if="OfferChangeEditCtrl.loading.init">
-        <oui-loader data-size="m"></oui-loader>
+        <oui-spinner></oui-spinner>
         <h4 data-translate="loading"></h4>
     </div>
 
@@ -49,7 +49,7 @@
 
     <div class="modal-body text-center"
          data-ng-if="OfferChangeEditCtrl.loading.save && !OfferChangeEditCtrl.status.saved">
-        <oui-loader data-size="m"></oui-loader>
+        <oui-spinner></oui-spinner>
         <h4 data-translate="telephony_line_management_change_offer_change_doing"></h4>
     </div>
 
