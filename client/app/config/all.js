@@ -142,6 +142,9 @@ angular.module("managerApp").constant("LANGUAGES", {
     })
     .constant("REDIRECT_URLS", {
         billing: "https://www.ovh.com/manager/dedicated/index.html#/billing/history",
+        consumptionsTelephony: "https://www.ovh.com/manager/dedicated/index.html#/billing/consumptionsTelephony",
+        contacts: "https://www.ovh.com/manager/dedicated/index.html#/useraccount/contacts?tab=SERVICES",
+        listTicket: "https://www.ovh.com/manager/dedicated/index.html#/ticket",
         ordersInProgress: "https://www.ovh.com/manager/dedicated/index.html#/billing/orders?status=in-progress",
         orders: "https://www.ovh.com/manager/dedicated/index.html#/billing/orders?status=all",
         services: "https://www.ovh.com/manager/dedicated/index.html#/billing/autoRenew",
