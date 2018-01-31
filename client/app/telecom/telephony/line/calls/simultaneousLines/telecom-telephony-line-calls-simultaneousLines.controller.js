@@ -8,12 +8,6 @@ angular.module("managerApp")
             orderSimultaneousLines: OvhApiOrderTelephony.Lexi().orderSimultaneousLines
         };
 
-        self.v4redirect = {
-            name: "line_simultaneouslines",
-            url: TelephonyMediator.getV6ToV4RedirectionUrl("line.line_simultaneouslines"),
-            text: $translate.instant("modify")
-        };
-
         self.showBulkOrderSummary = false;
         self.bulkOrders = [];
 
@@ -237,7 +231,7 @@ angular.module("managerApp")
 
         self.filterServices = function (services) {
             return _.filter(services, function (service) {
-                return ["sip", "mgcp"].indexOf(service.featureType) > -1 && service.hasValidPublicOffer();
+                return ["sip", "mgcp"].indexOf(service.featureType) > -1 && service.hasValidPublicOffer() && !service.isSipTrunk();
             });
         };
 
