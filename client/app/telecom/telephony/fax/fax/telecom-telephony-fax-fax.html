@@ -1,8 +1,8 @@
 <div class="telephony-group-fax-fax">
 
-    <oui-loader data-ng-if="$ctrl.loading.init"
-                data-size="m">
-    </oui-loader>
+    <div class="text-center" data-ng-if="$ctrl.loading.init">
+        <oui-spinner></oui-spinner>
+    </div>
 
     <telecom-v4-links data-ng-if="!$ctrl.loading.init"
                       data-telecom-v4-links="$ctrl.actions">

@@ -1,8 +1,8 @@
 <section class="telephony-group-service-voicemail-options">
 
-    <oui-loader data-ng-if="VoicemailOptionsCtrl.loading"
-                data-size="m">
-    </oui-loader>
+    <div class="text-center" data-ng-if="VoicemailOptionsCtrl.loading">
+        <oui-spinner></oui-spinner>
+    </div>
 
     <toast-message></toast-message>
 
@@ -82,10 +82,10 @@
                               data-translate="telephony_line_answer_voicemail_options_update_success"></span>
                         <i data-ng-if="VoicemailOptionsCtrl.recordingForm.isSuccess"
                            class="ovh-font ovh-font-success ml-1"></i>
-                        <oui-loader class="ml-2"
-                                    data-ng-if="VoicemailOptionsCtrl.recordingForm.isUpdating"
-                                    data-size="s">
-                        </oui-loader>
+                        <oui-spinner class="ml-2"
+                                     data-ng-if="VoicemailOptionsCtrl.recordingForm.isUpdating"
+                                     data-size="s">
+                        </oui-spinner>
                     </button>
                 </div>
             </form>
@@ -119,9 +119,9 @@
                             data-ng-click="VoicemailOptionsCtrl.removeEmail(redirection)">
                         <i class="ovh-font ovh-font-bin"
                            data-ng-if="!redirection.removing"></i>
-                        <oui-loader data-ng-if="redirection.removing"
-                                    data-size="s">
-                        </oui-loader>
+                        <oui-spinner data-ng-if="redirection.removing"
+                                     data-size="s">
+                        </oui-spinner>
                     </button>
                 </div>
             </div>
@@ -157,10 +157,10 @@
                                               VoicemailOptionsCtrl.emailForm.isAdding ||
                                               VoicemailOptionsCtrl.emailForm.isRemoving"
                             class="btn btn-primary">
-                        <oui-loader class="ml-2"
-                                    data-ng-if="VoicemailOptionsCtrl.emailForm.isAdding"
-                                    data-size="s">
-                        </oui-loader>
+                        <oui-spinner class="ml-2"
+                                     data-ng-if="VoicemailOptionsCtrl.emailForm.isAdding"
+                                     data-size="s">
+                        </oui-spinner>
                         <span data-translate="telephony_line_answer_voicemail_options_mail_add_confirm"></span>
                     </button>
                     <button type="cancel"
@@ -265,10 +265,10 @@
                               data-translate="telephony_line_answer_voicemail_options_update_success"></span>
                         <i data-ng-if="VoicemailOptionsCtrl.notificationForm.isSuccess"
                            class="ovh-font ovh-font-success ml-1"></i>
-                        <oui-loader class="ml-2"
-                                    data-ng-if="VoicemailOptionsCtrl.notificationForm.isUpdating"
-                                    data-size="s">
-                        </oui-loader>
+                        <oui-spinner class="ml-2"
+                                     data-ng-if="VoicemailOptionsCtrl.notificationForm.isUpdating"
+                                     data-size="s">
+                        </oui-spinner>
                     </button>
                 </div>
             </form>

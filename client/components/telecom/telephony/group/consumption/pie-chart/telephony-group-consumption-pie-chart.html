@@ -24,7 +24,8 @@
             <span class="pie__legend__value" data-ng-bind="PieCtrl.getTotal();"></span>
         </li>
     </ul>
-    <oui-loader data-ng-if="PieCtrl.loading.translations"
-                data-size="m">
-    </oui-loader>
+
+    <div class="text-center" data-ng-if="PieCtrl.loading.translations">
+        <oui-spinner></oui-spinner>
+    </div>
 </div>

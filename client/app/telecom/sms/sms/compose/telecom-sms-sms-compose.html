@@ -8,9 +8,9 @@
     </header>
 
     <!-- LOADING -->
-    <oui-loader data-ng-if="SmsComposeCtrl.loading.init"
-                data-size="m">
-    </oui-loader>
+    <div class="text-center" data-ng-if="SmsComposeCtrl.loading.init">
+        <oui-spinner></oui-spinner>
+    </div>
 
     <div class="telecom-section-content"
          data-ng-if="!SmsComposeCtrl.loading.init">
@@ -500,10 +500,10 @@
                             data-ng-disabled="sendSmsForm.$invalid ||
                                               SmsComposeCtrl.service.creditsLeft === 0 ||
                                               SmsComposeCtrl.loading.send">
-                            <oui-loader class="mr-2"
-                                        data-ng-if="SmsComposeCtrl.loading.send"
-                                        data-size="s">
-                            </oui-loader>
+                            <oui-spinner class="mr-2"
+                                         data-ng-if="SmsComposeCtrl.loading.send"
+                                         data-size="s">
+                            </oui-spinner>
                             <span data-translate="sms_sms_compose_send"></span>
                         </button>
                         <button

@@ -27,9 +27,9 @@
         </div>
     </div>
 
-    <oui-loader data-ng-if="AutoConfigCtrl.loading.init || AutoConfigCtrl.loading.resetConfig"
-                data-size="m">
-    </oui-loader>
+    <div class="text-center" data-ng-if="AutoConfigCtrl.loading.init || AutoConfigCtrl.loading.resetConfig">
+        <oui-spinner></oui-spinner>
+    </div>
 
     <div data-ng-if="!AutoConfigCtrl.loading.init && !AutoConfigCtrl.loading.resetConfig">
 
