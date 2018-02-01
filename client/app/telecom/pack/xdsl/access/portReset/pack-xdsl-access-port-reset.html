@@ -12,12 +12,11 @@
         data-ng-really-cancel="{{ 'cancel' | translate }}"
         data-ng-really-window-class="revert-really-buttons"
         data-ng-disabled="!access.xdsl.capabilities.canResetDslamPort || access.tasks.current.dslamPortReset">
-        <span>
-            <oui-loader class="mr-2"
-                        data-size="s">
-            </oui-loader>
-            <span data-translate="xdsl_access_dslam_reset_success"></span>
-        </div>
+        <oui-spinner class="mr-2"
+                     data-size="s">
+        </oui-spinner>
+        <span data-translate="xdsl_access_dslam_reset_success"></span>
+
         <span data-ng-if="!access.tasks.current.dslamPortReset"
              data-translate="xdsl_access_dslam_reset"></span>
     </button>

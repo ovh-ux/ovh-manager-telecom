@@ -7,9 +7,9 @@
         <h1 data-translate="telephony_line_management_change_offer_title"></h1>
     </header>
 
-    <oui-loader data-ng-if="OfferChangeCtrl.loading.init"
-                data-size="m">
-    </oui-loader>
+    <div class="text-center" data-ng-if="OfferChangeCtrl.loading.init">
+        <oui-spinner></oui-spinner>
+    </div>
 
     <div class="telecom-section-content"
          data-ng-if="!OfferChangeCtrl.loading.init">
@@ -141,7 +141,7 @@
 
                     <div class="text-center"
                          data-ng-if="OfferChangeCtrl.loading.save || OfferChangeCtrl.loading.cancel">
-                        <oui-loader data-size="m"></oui-loader>
+                        <oui-spinner></oui-spinner>
                         <h3 data-ng-if="OfferChangeCtrl.loading.save"
                             data-translate="telephony_line_management_change_offer_change_doing"></h3>
                         <h3 data-ng-if="OfferChangeCtrl.loading.cancel"

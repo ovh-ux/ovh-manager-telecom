@@ -7,9 +7,9 @@
         <h1 data-translate="telephony_billing_actions_billing_deposit_title"></h1>
     </header>
 
-    <oui-loader data-ng-if="BillingDepositCtrl.loading.init"
-                data-size="m">
-    </oui-loader>
+    <div class="text-center" data-ng-if="BillingDepositCtrl.loading.init">
+        <oui-spinner></oui-spinner>
+    </div>
 
     <div class="telecom-section-content"
          data-ng-hide="BillingDepositCtrl.loading.init">

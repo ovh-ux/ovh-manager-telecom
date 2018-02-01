@@ -50,8 +50,8 @@
 									placeholder="000.000.000.000"
 									data-ui-validate="'DmzCtrl.validator.isIP($value)'"/>
                         </td>
-                        <td data-ng-if="DmzCtrl.mediator.tasks.changeModemConfigDMZ">
-                            <oui-loader data-size="s"></oui-loader>
+                        <td data-ng-if="DmzCtrl.mediator.tasks.changeModemConfigDMZ" class="text-center">
+                            <oui-spinner data-size="s"></oui-spinner>
                         </td>
 
                         <td class="col-mobile-button-big" data-ng-if="!DmzCtrl.editing">

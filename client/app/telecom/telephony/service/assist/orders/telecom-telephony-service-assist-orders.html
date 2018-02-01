@@ -1,8 +1,8 @@
 <section class="telecom-telephony-service-assist-orders">
 
-    <oui-loader data-ng-if="OrdersCtrl.orders.isLoading"
-                data-size="l">
-    </oui-loader>
+    <div class="text-center" data-ng-if="OrdersCtrl.orders.isLoading">
+        <oui-spinner data-size="l"></oui-spinner>
+    </div>
 
     <div data-ng-if="!OrdersCtrl.orders.isLoading">
         <header>
@@ -96,8 +96,8 @@
                     </tbody>
                     <tbody data-ng-if="OrdersCtrl.orders.isLoading">
                         <tr>
-                            <td colspan="4">
-                                <oui-loader data-size="m"></oui-loader>
+                            <td colspan="4" class="text-center">
+                                <oui-spinner data-size="s"></oui-spinner>
                             </td>
                         </tr>
                     </tbody>
