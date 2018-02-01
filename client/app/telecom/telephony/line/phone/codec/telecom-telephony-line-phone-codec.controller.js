@@ -124,7 +124,7 @@ angular.module("managerApp").controller("TelecomTelephonyLinePhoneCodecCtrl", fu
             return ["sip", "mgcp"].indexOf(service.featureType) > -1;
         });
 
-        return voipLinePhone.fetchAll().then((voipLinePhones) => {
+        return voipLinePhone.fetchAll().then(function (voipLinePhones) {
             return _.filter(filteredServices, function (service) {
                 return _.some(voipLinePhones, { serviceName: service.serviceName, billingAccount: service.billingAccount });
             });
