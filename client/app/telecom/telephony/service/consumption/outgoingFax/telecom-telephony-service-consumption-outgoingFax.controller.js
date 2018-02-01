@@ -1,7 +1,7 @@
 angular.module("managerApp").controller("TelecomTelephonyServiceConsumptionOutgoingFaxCtrl", function ($stateParams, $q, $translate, $filter, $timeout, OvhApiTelephony, ToastError) {
     "use strict";
 
-    var self = this;
+    const self = this;
 
     function fetchOutgoingConsumption () {
         return OvhApiTelephony.Service().FaxConsumption().Lexi().query({
@@ -18,7 +18,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceConsumptionOutgo
                 return _.flatten(chunkResult);
             });
         }).then(function (resultParam) {
-            var result = _.pluck(resultParam, "value");
+            let result = _.pluck(resultParam, "value");
             result = _.filter(result, function (conso) {
                 return conso.wayType === "sent";
             });
@@ -26,7 +26,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceConsumptionOutgo
         });
     }
 
-    function init () {
+    self.$onInit = function () {
 
         self.consumption = {
             raw: null,
@@ -34,7 +34,6 @@ angular.module("managerApp").controller("TelecomTelephonyServiceConsumptionOutgo
             paginated: null,
             selected: null,
             pagesSum: 0,
-            isLoading: false,
             orderBy: "creationDatetime",
             orderDesc: true,
             filterBy: {
@@ -48,14 +47,13 @@ angular.module("managerApp").controller("TelecomTelephonyServiceConsumptionOutgo
             end: moment().endOf("month")
         };
 
-        self.consumption.isLoading = true;
         fetchOutgoingConsumption().then(function (result) {
             self.consumption.raw = angular.copy(result);
             self.applySorting();
             self.consumption.pagesSum = _.sum(self.consumption.raw, function (conso) {
                 return conso.pages;
             });
-            var priceSuffix = "";
+            let priceSuffix = "";
             self.consumption.priceSum = _.sum(self.consumption.raw, function (conso) {
                 if (conso.priceWithoutTax) {
                     priceSuffix = priceSuffix || conso.priceWithoutTax.text.replace(/[0-9\.\,\s]/g, "");
@@ -67,19 +65,17 @@ angular.module("managerApp").controller("TelecomTelephonyServiceConsumptionOutgo
             self.consumption.priceSum = (Math.floor(self.consumption.priceSum * 100.0, 2) / 100.0) + " " + priceSuffix;
         }).catch(function (err) {
             return new ToastError(err);
-        }).finally(function () {
-            self.consumption.isLoading = false;
         });
-    }
+    };
 
     self.refresh = function () {
         OvhApiTelephony.Service().FaxConsumption().Lexi().resetCache();
         OvhApiTelephony.Service().FaxConsumption().Lexi().resetQueryCache();
-        init();
+        self.$onInit();
     };
 
     self.applySorting = function () {
-        var data = angular.copy(self.consumption.raw);
+        let data = angular.copy(self.consumption.raw);
         data = $filter("filter")(data, self.consumption.filterBy);
         data = $filter("orderBy")(
             data,
@@ -97,14 +93,4 @@ angular.module("managerApp").controller("TelecomTelephonyServiceConsumptionOutgo
         self.applySorting();
     };
 
-    self.orderBy = function (by) {
-        if (self.consumption.orderBy === by) {
-            self.consumption.orderDesc = !self.consumption.orderDesc;
-        } else {
-            self.consumption.orderBy = by;
-        }
-        self.applySorting();
-    };
-
-    init();
 });
