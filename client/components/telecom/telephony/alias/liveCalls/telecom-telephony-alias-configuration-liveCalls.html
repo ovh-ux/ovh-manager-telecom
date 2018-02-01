@@ -45,104 +45,65 @@
             <span data-ng-if="!$ctrl.getMaxWaitTime()">-</span>
         </dd>
     </dl>
-    <div class="table-responsive">
-        <table class="table"
-               data-ng-class="{
-                   'table-hover table-striped': $ctrl.callsPaginated.length > 1
-               }">
-            <thead>
-                <tr>
-                    <th scope="col" data-translate="telephony_alias_configuration_mode_calls_number"></th>
-                    <th scope="col" data-translate="telephony_alias_configuration_mode_calls_queue_time"></th>
-                    <th scope="col" data-translate="telephony_alias_configuration_mode_calls_time"></th>
-                    <th scope="col" data-translate="telephony_alias_configuration_mode_calls_agent"></th>
-                    <th scope="col" data-translate="telephony_alias_configuration_mode_calls_action"></th>
-                </tr>
-            </thead>
-            <tbody data-ng-if="!$ctrl.isLoading">
-                <tr data-ng-repeat="call in $ctrl.callsPaginated track by call.id">
-                    <th scope="row" data-title="{{:: 'telephony_alias_configuration_mode_calls_number' | translate }}">
-                        <span class="text-nowrap mr-3 text-capitalize"
-                              data-ng-bind="call.callerIdNumber | phoneNumber"></span>
-                        <span class="text-nowrap mr-3"
-                              data-ng-if="call.callerIdName"
-                              data-ng-bind="'(' + call.callerIdName + ')'"></span>
-                    </th>
-                    <td data-title="{{:: 'telephony_alias_configuration_mode_calls_queue_time' | translate }}">
-                        <elapsed-time data-from="call.begin"></elapsed-time>
-                    </td>
-                    <td data-title="{{:: 'telephony_alias_configuration_mode_calls_time' | translate }}">
-                        <span class="text-nowrap mr-3 text-capitalize"
-                              data-ng-if="!call.answered"
-                              data-ng-bind="call.answered ? 'yes' : 'no' | translate"></span>
-                        <elapsed-time data-ng-if="call.answered"
-                                      data-from="call.answered"></elapsed-time>
-                    </td>
-                    <td data-title="{{:: 'telephony_alias_configuration_mode_calls_agent' | translate }}">
-                        <span class="text-nowrap mr-3" data-ng-bind="call.agent || '-'"></span>
-                    </td>
-                    <td data-title="{{:: 'telephony_alias_configuration_mode_calls_action' | translate }}">
-                        <button type="button"
-                                class="no-style fs16"
-                                data-ng-if="!call.answered"
-                                data-ng-attr-title="{{:: 'telephony_alias_configuration_mode_calls_action_intercept' | translate }}"
-                                data-ng-click="$ctrl.interceptCall(call)">
-                            <i class="ovh-font ovh-font-callForwarding" aria-hidden="true"></i>
-                        </button>
-                        <button type="button"
-                                class="no-style fs16"
-                                data-ng-if="call.answered"
-                                data-ng-attr-title="{{:: 'telephony_alias_configuration_mode_calls_action_eavesdrop' | translate }}"
-                                data-ng-click="$ctrl.eavesdropCall(call)">
-                            <i class="ovh-font ovh-font-speaker" aria-hidden="true"></i>
-                        </button>
-                        <button type="button"
-                                class="no-style fs16"
-                                data-ng-if="call.answered"
-                                data-ng-attr-title="{{:: 'telephony_alias_configuration_mode_calls_action_transfert' | translate }}"
-                                data-ng-click="$ctrl.transfertCall(call)">
-                            <i class="ovh-font ovh-font-redirect" aria-hidden="true"></i>
-                        </button>
-                        <button type="button"
-                                class="no-style fs16"
-                                data-ng-if="call.answered"
-                                data-ng-attr-title="{{:: 'telephony_alias_configuration_mode_calls_action_hangup' | translate }}"
-                                data-ng-click="$ctrl.hangupCall(call)">
-                            <i class="ovh-font ovh-font-callRestriction" aria-hidden="true"></i>
-                        </button>
-                    </td>
-                </tr>
-            </tbody>
-            <tbody data-ng-if="$ctrl.isLoading">
-                <tr>
-                    <td colspan="5">
-                        <div class="text-center">
-                            <oui-spinner></oui-spinner>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-            <tbody data-ng-if="!$ctrl.isLoading && !$ctrl.calls.length">
-                <tr>
-                    <td colspan="5"
-                        class="text-center"
-                        data-translate="telephony_alias_configuration_mode_calls_empty">
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <div class="mt-2 mb-3"
-             data-ng-show="!$ctrl.isLoading && $ctrl.calls.length"
-             data-pagination-front
-             data-items="$ctrl.calls"
-             data-paginated-items="$ctrl.callsPaginated"
-             data-current-page="currentPage"
-             data-nb-pages="nbPages"
-             data-items-per-page="itemsPerPage"
-             data-page-placeholder="{{ 'common_pagination_page' | translate: { currentPage:currentPage, nbPages:nbPages } }}"
-             data-item-per-page-placeholder="{{ 'common_pagination_display' | translate }}">
-        </div>
-    </div>
+
+
+    <oui-datagrid data-rows="$ctrl.callsPaginated">
+
+        <oui-column data-title="'telephony_alias_configuration_mode_calls_number' | translate"
+                    data-property="callerIdNumber" data-sortable="asc">
+            <span class="text-nowrap mr-3 text-capitalize"
+                  data-ng-bind="$row.callerIdNumber | phoneNumber"></span>
+            <span class="text-nowrap mr-3"
+                  data-ng-if="$row.callerIdName"
+                  data-ng-bind="'(' + $row.callerIdName + ')'"></span>
+        </oui-column>
+
+        <oui-column data-title="'telephony_alias_configuration_mode_calls_queue_time' | translate"
+                    data-property="begin" data-sortable>
+            <elapsed-time data-from="$row.begin"></elapsed-time>
+        </oui-column>
+
+        <oui-column data-title="'telephony_alias_configuration_mode_calls_time' | translate"
+                    data-property="answered" data-sortable>
+            <span class="text-nowrap mr-3 text-capitalize"
+                  data-ng-if="!$row.answered"
+                  data-ng-bind="$row.answered ? 'yes' : 'no' | translate"></span>
+            <elapsed-time data-ng-if="$row.answered"
+                          data-from="$row.answered"></elapsed-time>
+        </oui-column>
+
+        <oui-column data-title="'telephony_alias_configuration_mode_calls_agent' | translate"
+                    data-property="agent" data-sortable>
+            <span class="text-nowrap mr-3" data-ng-bind="$row.agent || '-'"></span>
+        </oui-column>
+
+        <oui-column data-title="'telephony_alias_configuration_mode_calls_action' | translate"
+                    data-property="name" data-sortable>
+            <span class="word-break" data-ng-bind="$row.name"></span>
+        </oui-column>
+
+        <oui-action-menu data-align="end" data-compact>
+            <oui-action-menu-item data-text="{{'telephony_alias_configuration_mode_calls_action_intercept' | translate}}"
+                                  data-ng-if="!$row.answered"
+                                  on-click="$ctrl.interceptCall($row)">
+            </oui-action-menu-item>
+            <oui-action-menu-item data-text="{{'telephony_alias_configuration_mode_calls_action_eavesdrop' | translate}}"
+                                  data-ng-if="$row.answered"
+                                  on-click="$ctrl.eavesdropCall($row)">
+            </oui-action-menu-item>
+            <oui-action-menu-item data-text="{{'telephony_alias_configuration_mode_calls_action_transfert' | translate}}"
+                                  data-ng-if="$row.answered"
+                                  on-click="$ctrl.transfertCall($row)">
+            </oui-action-menu-item>
+            <oui-action-menu-item data-text="{{'telephony_alias_configuration_mode_calls_action_hangup' | translate}}"
+                                  data-ng-if="$row.answered"
+                                  on-click="$ctrl.hangupCall($row)">
+            </oui-action-menu-item>
+        </oui-action-menu>
+
+    </oui-datagrid>
+
+
 </div><!-- calls -->
 
 <!-- AGENTS -->
@@ -158,61 +119,24 @@
         <dt data-translate="telephony_alias_configuration_mode_agents_pending"></dt>
         <dd data-ng-bind="$ctrl.getWaitingAgentsCount()"></dd>
     </dl>
-    <div class="table-responsive">
-        <table class="table"
-               data-ng-class="{
-                   'table-hover table-striped': $ctrl.agentsStatusPaginated.length > 1
-               }">
-            <thead>
-                <tr>
-                    <th scope="col" data-translate="telephony_alias_configuration_mode_calls_agent"></th>
-                    <th scope="col" data-translate="telephony_alias_configuration_mode_calls_agent_status"></th>
-                    <th scope="col" data-translate="telephony_alias_configuration_mode_calls_agent_updated"></th>
-                </tr>
-            </thead>
-            <tbody data-ng-if="!$ctrl.isLoading">
-                <tr data-ng-repeat="agent in $ctrl.agentsStatusPaginated track by agent.agentId">
-                    <th scope="row" data-title="{{:: 'telephony_alias_configuration_mode_calls_agent' | translate }}">
-                        <span class="text-nowrap mr-3" data-ng-bind="agent.agentId"></span>
-                    </th>
-                    <td data-title="{{:: 'telephony_alias_configuration_mode_calls_agent_status' | translate }}">
-                        <span class="text-nowrap mr-3" data-ng-bind="'telephony_alias_configuration_mode_calls_agent_status_' + agent.status | translate"></span>
-                    </td>
-                    <td data-title="{{:: 'telephony_alias_configuration_mode_calls_agent_updated' | translate }}">
-                        <span data-translate="telephony_alias_configuration_mode_calls_agent_updated_ago"></span>
-                        &nbsp;
-                        <elapsed-time data-from="agent.lastStatusChange"></elapsed-time>
-                    </td>
-                </tr>
-            </tbody>
-            <tbody data-ng-if="$ctrl.isLoading">
-                <tr>
-                    <td colspan="3">
-                        <div class="text-center">
-                            <oui-spinner></oui-spinner>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-            <tbody data-ng-if="!$ctrl.isLoading && !$ctrl.agentsStatus.length">
-                <tr>
-                    <td colspan="3"
-                        class="text-center"
-                        data-translate="telephony_alias_configuration_mode_agents_empty">
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <div class="mt-2 mb-3"
-             data-ng-show="!$ctrl.isLoading && $ctrl.agentsStatus.length"
-             data-pagination-front
-             data-items="$ctrl.agentsStatus"
-             data-paginated-items="$ctrl.agentsStatusPaginated"
-             data-current-page="currentPage"
-             data-nb-pages="nbPages"
-             data-items-per-page="itemsPerPage"
-             data-page-placeholder="{{ 'common_pagination_page' | translate: { currentPage:currentPage, nbPages:nbPages } }}"
-             data-item-per-page-placeholder="{{ 'common_pagination_display' | translate }}">
-        </div>
-    </div>
+
+    <oui-datagrid data-rows="$ctrl.agentsStatusPaginated">
+        <oui-column data-title="'telephony_alias_configuration_mode_calls_agent' | translate"
+                    data-property="agentId" data-sortable="asc">
+            <span class="text-nowrap mr-3" data-ng-bind="$row.agentId"></span>
+        </oui-column>
+
+        <oui-column data-title="'telephony_alias_configuration_mode_calls_agent_status' | translate"
+                    data-property="status" data-sortable>
+            <span class="text-nowrap mr-3" data-ng-bind="'telephony_alias_configuration_mode_calls_agent_status_' + $row.status | translate"></span>
+        </oui-column>
+
+        <oui-column data-title="'telephony_alias_configuration_mode_calls_agent_updated' | translate"
+                    data-property="lastStatusChange" data-sortable>
+            <span data-translate="telephony_alias_configuration_mode_calls_agent_updated_ago"></span>
+            &nbsp;
+            <elapsed-time data-from="$row.lastStatusChange"></elapsed-time>
+        </oui-column>
+    </oui-datagrid>
+
 </div><!-- agents -->
