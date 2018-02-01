@@ -51,141 +51,36 @@
                 </div>
             </div>
         </div>
-        <div class="table-responsive">
-            <table class="table"
-                   data-ng-class="{
-                       'table-hover table-striped': $ctrl.consumption.raw.length > 1
-                   }">
-                <thead>
-                    <tr>
-                        <th>
-                            <button class="btn btn-link p-0"
-                                    type="button"
-                                    data-ng-disabled="!$ctrl.consumption.paginated.length"
-                                    data-ng-click="$ctrl.orderBy('creationDatetime')">
-                                <span data-translate="telephony_service_consumption_date"></span>
-                                <span class="oui-icon align-baseline"
-                                      aria-hidden="true"
-                                      data-ng-class="{
-                                          'oui-icon-arrow-down': $ctrl.consumption.orderBy !== 'creationDatetime',
-                                          'oui-icon-arrow-down': $ctrl.consumption.orderBy === 'creationDatetime' && $ctrl.consumption.orderDesc,
-                                          'oui-icon-arrow-up': $ctrl.consumption.orderBy === 'creationDatetime' && !$ctrl.consumption.orderDesc
-                                      }">
-                                </span>
-                            </button>
-                        </th>
-                        <th>
-                            <button class="btn btn-link p-0"
-                                    type="button"
-                                    data-ng-disabled="!$ctrl.consumption.paginated.length"
-                                    data-ng-click="$ctrl.orderBy('calling')">
-                                <span data-translate="telephony_service_consumption_calling"></span>
-                                <span class="oui-icon align-baseline"
-                                      aria-hidden="true"
-                                      data-ng-class="{
-                                          'oui-icon-arrow-down': $ctrl.consumption.orderBy !== 'calling',
-                                          'oui-icon-arrow-down': $ctrl.consumption.orderBy === 'calling' && $ctrl.consumption.orderDesc,
-                                          'oui-icon-arrow-up': $ctrl.consumption.orderBy === 'calling' && !$ctrl.consumption.orderDesc
-                                      }">
-                                </span>
-                            </button>
-                        </th>
-                        <th>
-                            <button class="btn btn-link p-0"
-                                    type="button"
-                                    data-ng-disabled="!$ctrl.consumption.paginated.length"
-                                    data-ng-click="$ctrl.orderBy('pages')">
-                                <span data-translate="telephony_service_consumption_incoming_fax_pages"></span>
-                                <span class="oui-icon align-baseline"
-                                      aria-hidden="true"
-                                      data-ng-class="{
-                                          'oui-icon-arrow-down': $ctrl.consumption.orderBy !== 'pages',
-                                          'oui-icon-arrow-down': $ctrl.consumption.orderBy === 'pages' && $ctrl.consumption.orderDesc,
-                                          'oui-icon-arrow-up': $ctrl.consumption.orderBy === 'pages' && !$ctrl.consumption.orderDesc
-                                      }">
-                                </span>
-                            </button>
-                        </th>
-                        <th>
-                            <button class="btn btn-link p-0"
-                                    type="button"
-                                    data-ng-disabled="!$ctrl.consumption.paginated.length"
-                                    data-ng-click="$ctrl.orderBy('wayType')">
-                                <span data-translate="telephony_service_consumption_type"></span>
-                                <span class="oui-icon align-baseline"
-                                      aria-hidden="true"
-                                      data-ng-class="{
-                                          'oui-icon-arrow-down': $ctrl.consumption.orderBy !== 'wayType',
-                                          'oui-icon-arrow-down': $ctrl.consumption.orderBy === 'wayType' && $ctrl.consumption.orderDesc,
-                                          'oui-icon-arrow-up': $ctrl.consumption.orderBy === 'wayType' && !$ctrl.consumption.orderDesc
-                                      }">
-                                </span>
-                            </button>
-                            <button class="btn btn-link p-0 float-right"
-                                    type="button"
-                                    data-ng-disabled="$ctrl.consumption.isLoading"
-                                    data-ng-click="$ctrl.refresh()">
-                                <i class="fa fa-refresh"></i>
-                            </button>
-                        </th>
-                    </tr>
-                </thead>
-                <tbody data-ng-if="!$ctrl.consumption.isLoading">
-                    <tr data-ng-repeat="conso in $ctrl.consumption.paginated | orderBy:$ctrl.order.by:$ctrl.order.reverse">
-                        <td>
-                            <span data-ng-bind="::conso.creationDatetime | date: 'dd/MM/yyyy'"></span>
-                            <span data-ng-bind="::conso.creationDatetime | date: 'HH:mm:ss'"></span>
-                        </td>
-                        <td>
-                            <span data-ng-if="conso.calling"
-                                  data-ng-bind="::conso.calling | phoneNumber">
-                            </span>
-                            <span data-ng-if="!conso.calling"
-                                  data-translate="telephony_service_consumption_calling_unknown">
-                            </span>
-                        </td>
-                        <td data-ng-bind="::conso.pages"></td>
-                        <td data-ng-bind="::'telephony_service_consumption_type_' + conso.wayType | translate"></td>
-                    </tr>
-                </tbody>
-                <tbody data-ng-if="$ctrl.consumption.isLoading">
-                    <tr>
-                        <td colspan="4" class="text-center">
-                            <oui-spinner data-size="s"></oui-spinner>
-                        </td>
-                    </tr>
-                </tbody>
-                <tbody data-ng-if="!$ctrl.consumption.isLoading && !$ctrl.consumption.raw.length">
-                    <tr>
-                        <td colspan="4"
-                            class="text-center"
-                            data-translate="telephony_service_consumption_incoming_fax_empty">
-                        </td>
-                    </tr>
-                </tbody>
-                <tbody data-ng-if="!$ctrl.consumption.isLoading &&
-                                   $ctrl.consumption.raw.length &&
-                                   !$ctrl.consumption.paginated.length">
-                    <tr>
-                        <td colspan="4"
-                            class="text-center"
-                            data-translate="telephony_service_consumption_incoming_fax_not_found">
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="mt-2"
-             data-ng-if="!$ctrl.consumption.isLoading && $ctrl.consumption.raw.length"
-             data-pagination-front
-             data-items="$ctrl.consumption.sorted"
-             data-paginated-items="$ctrl.consumption.paginated"
-             data-current-page="currentPage"
-             data-nb-pages="nbPages"
-             data-items-per-page="itemsPerPage"
-             data-page-placeholder="{{'common_pagination_page' | translate: {currentPage:currentPage, nbPages:nbPages} }}"
-             data-item-per-page-placeholder="{{'common_pagination_display' | translate}}">
-        </div>
+
+
+
+
+        <oui-datagrid data-rows="$ctrl.consumption.sorted" data-page-size="10">
+            <oui-column data-title="'telephony_service_consumption_date' | translate"
+                        data-property="creationDatetime" data-sortable="desc">
+                <span data-ng-bind="::$row.creationDatetime | date: 'dd/MM/yyyy'"></span>
+                <span data-ng-bind="::$row.creationDatetime | date: 'HH:mm:ss'"></span>
+            </oui-column>
+
+            <oui-column data-title="'telephony_service_consumption_calling' | translate"
+                        data-property="calling">
+                <span data-ng-bind="::$row.calling | phoneNumber"></span>
+                <span data-ng-if="!$row.calling"
+                    data-translate="telephony_service_consumption_calling_unknown">
+                </span>
+            </oui-column>
+
+            <oui-column data-title="'telephony_service_consumption_incoming_fax_pages' | translate"
+                        data-property="pages">
+                <span data-ng-bind="::$row.pages"></span>
+            </oui-column>
+
+            <oui-column data-title="'telephony_service_consumption_type' | translate"
+                        data-property="wayType" data-sortable>
+                <span data-ng-bind="::'telephony_service_consumption_type_' + $row.wayType | translate"></span>
+            </oui-column>
+        </oui-datagrid>
+
     </div>
     <!-- /.widget-presentation -->
 

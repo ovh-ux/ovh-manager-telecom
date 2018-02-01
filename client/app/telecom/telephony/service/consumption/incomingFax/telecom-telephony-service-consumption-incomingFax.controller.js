@@ -1,7 +1,7 @@
 angular.module("managerApp").controller("TelecomTelephonyServiceConsumptionIncomingFaxCtrl", function ($stateParams, $q, $translate, $filter, $timeout, OvhApiTelephony, ToastError) {
     "use strict";
 
-    var self = this;
+    const self = this;
 
     function fetchIncomingConsumption () {
         return OvhApiTelephony.Service().FaxConsumption().Lexi().query({
@@ -18,7 +18,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceConsumptionIncom
                 return _.flatten(chunkResult);
             });
         }).then(function (resultParam) {
-            var result = _.pluck(resultParam, "value");
+            let result = _.pluck(resultParam, "value");
             result = _.filter(result, function (conso) {
                 return conso.wayType === "received";
             });
@@ -26,17 +26,14 @@ angular.module("managerApp").controller("TelecomTelephonyServiceConsumptionIncom
         });
     }
 
-    function init () {
+    self.$onInit = function () {
 
         self.consumption = {
             raw: null,
             sorted: null,
-            paginated: null,
             selected: null,
             pagesSum: 0,
-            isLoading: false,
             orderBy: "creationDatetime",
-            orderDesc: true,
             filterBy: {
                 calling: undefined
             },
@@ -48,7 +45,6 @@ angular.module("managerApp").controller("TelecomTelephonyServiceConsumptionIncom
             end: moment().endOf("month")
         };
 
-        self.consumption.isLoading = true;
         fetchIncomingConsumption().then(function (result) {
             self.consumption.raw = angular.copy(result);
             self.applySorting();
@@ -57,19 +53,17 @@ angular.module("managerApp").controller("TelecomTelephonyServiceConsumptionIncom
             });
         }).catch(function (err) {
             return new ToastError(err);
-        }).finally(function () {
-            self.consumption.isLoading = false;
         });
-    }
+    };
 
     self.refresh = function () {
         OvhApiTelephony.Service().FaxConsumption().Lexi().resetCache();
         OvhApiTelephony.Service().FaxConsumption().Lexi().resetQueryCache();
-        init();
+        self.$onInit();
     };
 
     self.applySorting = function () {
-        var data = angular.copy(self.consumption.raw);
+        let data = angular.copy(self.consumption.raw);
         data = $filter("filter")(data, self.consumption.filterBy);
         data = $filter("orderBy")(
             data,
@@ -86,15 +80,4 @@ angular.module("managerApp").controller("TelecomTelephonyServiceConsumptionIncom
         };
         self.applySorting();
     };
-
-    self.orderBy = function (by) {
-        if (self.consumption.orderBy === by) {
-            self.consumption.orderDesc = !self.consumption.orderDesc;
-        } else {
-            self.consumption.orderBy = by;
-        }
-        self.applySorting();
-    };
-
-    init();
 });
