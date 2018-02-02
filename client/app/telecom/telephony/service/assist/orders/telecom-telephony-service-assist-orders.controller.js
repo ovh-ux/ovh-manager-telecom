@@ -1,7 +1,7 @@
 angular.module("managerApp").controller("TelecomTelephonyServiceAssistOrdersCtrl", function ($filter, $q, $translate, $stateParams, OvhApiTelephony, OvhApiMeOrder, TelephonyMediator) {
     "use strict";
 
-    var self = this;
+    const self = this;
 
     self.service = null;
 
@@ -26,59 +26,24 @@ angular.module("managerApp").controller("TelecomTelephonyServiceAssistOrdersCtrl
 
     /* -----  End of HELPERS  ------*/
 
-    /*= ==============================
-    =            ACTIONS            =
-    ===============================*/
-
-    self.applySorting = function () {
-        var data = angular.copy(self.orders.raw);
-        data = $filter("orderBy")(
-            data,
-            self.orders.orderBy,
-            self.orders.orderDesc
-        );
-        self.orders.sorted = data;
-    };
-
-    self.orderBy = function (by) {
-        if (self.orders.orderBy === by) {
-            self.orders.orderDesc = !self.orders.orderDesc;
-        } else {
-            self.orders.orderBy = by;
-        }
-        self.applySorting();
-    };
-
-    /* -----  End of ACTIONS  ------*/
-
     /*= =====================================
     =            INITIALIZATION            =
     ======================================*/
 
-    function init () {
+    self.$onInit = function () {
         self.orders = {
-            raw: null,
-            sorted: null,
-            paginated: null,
-            isLoading: false,
-            orderBy: "date",
-            orderDesc: true
+            raw: null
         };
-        self.orders.isLoading = true;
 
         return TelephonyMediator.getGroup($stateParams.billingAccount).then(function () {
             self.service = TelephonyMediator.findService($stateParams.serviceName);
 
             return fetchOrders().then(function (orders) {
                 self.orders.raw = orders;
-                self.applySorting();
             });
-        }).finally(function () {
-            self.orders.isLoading = false;
         });
-    }
+    };
 
     /* -----  End of INITIALIZATION  ------*/
 
-    init();
 });
