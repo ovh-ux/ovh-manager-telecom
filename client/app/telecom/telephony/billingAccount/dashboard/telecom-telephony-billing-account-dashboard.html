@@ -209,10 +209,10 @@
 
                 <oui-datagrid data-rows="DashboardCtrl.bills" data-page-size="5">
                     <oui-column data-title="'telephony_group_billing_dashboard_bill_date' | translate" data-property="date" data-sortable="desc">
-                            {{$row.date | date}}
+                        {{$row.date | date}}
                     </oui-column>
                     <oui-column data-title="'telephony_group_billing_dashboard_bill_amount' | translate" data-property="price.text" data-sortable>
-                            {{$row.price.text}}
+                        {{$row.price.text}}
                     </oui-column>
                     <oui-column data-title="'telephony_group_billing_dashboard_bill_paid' | translate" data-property="status" data-sortable>
                         <span class="text-capitalize"
@@ -221,19 +221,16 @@
                     </oui-column>
 
                     <oui-action-menu data-align="end" data-compact>
-                        <oui-action-menu-item
-                                data-text="{{'telephony_group_billing_dashboard_bill_download_pdf' | translate}}"
-                                on-click="DashboardCtrl.download($row, 'pdf')">
+                        <oui-action-menu-item data-text="{{'telephony_group_billing_dashboard_bill_download_pdf' | translate}}"
+                                              on-click="DashboardCtrl.download($row, 'pdf')">
                         </oui-action-menu-item>
         
-                        <oui-action-menu-item
-                                data-text="{{'telephony_group_billing_dashboard_bill_download_csv_emited' | translate}}"
-                                on-click="DashboardCtrl.download($row, 'csv')">
+                        <oui-action-menu-item data-text="{{'telephony_group_billing_dashboard_bill_download_csv_emited' | translate}}"
+                                              on-click="DashboardCtrl.download($row, 'csv')">
                         </oui-action-menu-item>
 
-                        <oui-action-menu-item
-                                data-text="{{'telephony_group_billing_dashboard_bill_download_csv_received' | translate}}"
-                                on-click="DashboardCtrl.download($row, 'received.csv')">
+                        <oui-action-menu-item data-text="{{'telephony_group_billing_dashboard_bill_download_csv_received' | translate}}"
+                                              on-click="DashboardCtrl.download($row, 'received.csv')">
                         </oui-action-menu-item>
                     </oui-action-menu>
                 </oui-datagrid>

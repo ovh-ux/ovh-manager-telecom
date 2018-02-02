@@ -46,15 +46,14 @@
                             'text-muted': $row.status !== 'enabled' || $row.billingAccount === LinesGroupCtrl.billingAccounts.current
                         }">
 
-                                <button class="btn btn-link"
-                                        data-ng-click="LinesGroupCtrl.selectBillingAccount($row)"
-                                        data-ng-bind=":: $row.description || $row.billingAccount">
-                                </button>
-                                <span class="text-nowrap ml-2"
-                                      data-ng-if="$row.status !== 'enabled'"
-                                      data-ng-bind=":: '(' + $row.status + ')'">
-                                </span>
-
+                            <button class="btn btn-link"
+                                    data-ng-click="LinesGroupCtrl.selectBillingAccount($row)"
+                                    data-ng-bind=":: $row.description || $row.billingAccount">
+                            </button>
+                            <span class="text-nowrap ml-2"
+                                  data-ng-if="$row.status !== 'enabled'"
+                                  data-ng-bind=":: '(' + $row.status + ')'">
+                            </span>
                         </oui-column>
 
                         <oui-column data-property="billingAccount"

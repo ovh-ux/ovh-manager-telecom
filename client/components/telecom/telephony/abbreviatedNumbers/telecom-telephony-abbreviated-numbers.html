@@ -96,13 +96,11 @@
                   data-ng-bind="$row.name"></span>
         </oui-column>
         <oui-action-menu data-align="end" data-compact>
-            <oui-action-menu-item
-                    data-text="{{'edit' | translate}}"
-                    on-click="$ctrl.update($row)">
+            <oui-action-menu-item data-text="{{'edit' | translate}}"
+                                  on-click="$ctrl.update($row)">
             </oui-action-menu-item>
-            <oui-action-menu-item
-                    data-text="{{'delete' | translate}}"
-                    on-click="$ctrl.remove($row)">
+            <oui-action-menu-item data-text="{{'delete' | translate}}"
+                                  on-click="$ctrl.remove($row)">
             </oui-action-menu-item>
         </oui-action-menu>
     </oui-datagrid>
