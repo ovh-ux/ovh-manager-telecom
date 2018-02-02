@@ -297,7 +297,7 @@
                                         <div class="oui-tile__term"
                                              data-translate="xdsl_details_ips_v4"></div>
                                         <div class="oui-tile__description">
-                                            <div class="my-2"
+                                            <div class="my-2 ip-row-height"
                                                  data-ng-repeat="ip in XdslAccess.ipsV4 | orderBy:'-range' track by ip.ip">
                                                 <div class="d-inline-block my-2"
                                                      data-ng-bind="ip.ip + '&nbsp;/&nbsp;' + ip.range">
@@ -343,7 +343,7 @@
                                         <div class="oui-tile__description">
                                             <div
                                                 data-ng-include="'app/telecom/pack/xdsl/access/ipv6/pack-xdsl-access-ipv6.html'"></div>
-                                            <div class="my-2"
+                                            <div class="my-2 ip-row-height"
                                                  data-ng-repeat="ip in XdslAccess.ipsV6 | orderBy:'-range' track by ip.ip">
                                                 <div class="d-inline-block my-2"
                                                      data-ng-bind="ip.ip + '&nbsp;/&nbsp;' + ip.range">

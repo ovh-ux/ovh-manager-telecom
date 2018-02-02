@@ -115,8 +115,6 @@
                         </voip-time-condition-slot>
                     </div>
                 </div>
-
-
             </div> <!-- END OF REDIRECT CONFIGURATION -->
         </div>
 
@@ -127,6 +125,16 @@
                     data-translate="telephony_line_calls_time_condition_conditions_title">
                 </h2>
             </header>
+
+            <telephony-bulk-action data-billing-account="{{ $ctrl.line.billingAccount }}"
+                                   data-service-name="{{ $ctrl.line.serviceName }}"
+                                   data-custom-class="link d-block pl-0 mt-4 mb-2"
+                                   data-bulk-infos="$ctrl.bulkDatas.infos"
+                                   data-get-bulk-params="$ctrl.getBulkParams"
+                                   data-filter-services="$ctrl.filterServices"
+                                   data-on-success="$ctrl.onBulkSuccess"
+                                   data-on-error="$ctrl.onBulkError">
+            </telephony-bulk-action>
 
             <voip-time-condition-calendar data-voip-time-condition="$ctrl.line.timeCondition"></voip-time-condition-calendar>
         </div> <!-- CONDITIONS -->
@@ -154,6 +162,16 @@
                         data-translate="cancel">
                 </button>
             </div>
+
+            <telephony-bulk-action data-billing-account="{{ $ctrl.line.billingAccount }}"
+                                   data-service-name="{{ $ctrl.line.serviceName }}"
+                                   data-custom-class="link d-block pl-0 mt-4 mb-2"
+                                   data-bulk-infos="$ctrl.bulkDatas.infos"
+                                   data-get-bulk-params="$ctrl.getBulkParams"
+                                   data-filter-services="$ctrl.filterServices"
+                                   data-on-success="$ctrl.onBulkSuccess"
+                                   data-on-error="$ctrl.onBulkError">
+            </telephony-bulk-action>
 
         </footer>
 
