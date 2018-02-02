@@ -37,65 +37,22 @@
                 <div data-ng-if="!$ctrl.loading.init">
 
                     <!-- TABLE -->
-                    <div class="table-responsive">
-                        <table class="table"
-                               data-ng-class="{
-                                   'table-hover table-striped': $ctrl.customDomains.raw.length > 1
-                               }">
-                            <thead>
-                                <tr>
-                                    <th scope="col"
-                                        data-translate="telephony_service_fax_custom_domains_configuration_table_column_domain">
-                                    </th>
-                                    <th scope="col"
-                                        data-translate="telephony_service_fax_custom_domains_configuration_table_column_action">
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody data-ng-if="!$ctrl.customDomains.isLoading && $ctrl.customDomains.raw.length">
-                                <tr data-ng-repeat="customDomain in $ctrl.customDomains.paginated track by customDomain.id">
-                                    <th scope="row" data-ng-bind="customDomain.domain"></th>
-                                    <td>
-                                        <button
-                                            type="button"
-                                            class="btn btn-default"
-                                            data-ng-click="$ctrl.removeCustomDomains(customDomain)"
-                                            data-ng-disabled="customDomain.isDeleting"
-                                            data-translate-attr="{ title: 'telephony_service_fax_custom_domains_configuration_table_action_delete' }"
-                                            data-translate-values="{ domain: customDomain.domain }">
-                                            <span class="ovh-font ovh-font-bin" aria-hidden="true"></span>
-                                        </button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                            <tbody data-ng-if="$ctrl.customDomains.isLoading">
-                                <tr>
-                                    <td colspan="2" class="text-center">
-                                        <oui-spinner data-size="s"></oui-spinner>
-                                    </td>
-                                </tr>
-                            </tbody>
-                            <tbody data-ng-if="!$ctrl.customDomains.isLoading && !$ctrl.customDomains.raw.length">
-                                <tr>
-                                    <td colspan="2"
-                                        class="text-center"
-                                        data-translate="telephony_service_fax_custom_domains_configuration_table_empty">
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="mt-2"
-                         data-ng-show="!$ctrl.customDomains.isLoading && $ctrl.customDomains.raw.length && $ctrl.customDomains.raw.length > itemsPerPage"
-                         data-pagination-front
-                         data-items="$ctrl.customDomains.sorted"
-                         data-paginated-items="$ctrl.customDomains.paginated"
-                         data-current-page="currentPage"
-                         data-nb-pages="nbPages"
-                         data-items-per-page="itemsPerPage"
-                         data-page-placeholder="{{ 'common_pagination_page' | translate: { currentPage: currentPage, nbPages: nbPages } }}"
-                         data-item-per-page-placeholder="{{ 'common_pagination_display' | translate }}">
-                    </div>
+                    <oui-datagrid data-rows="$ctrl.customDomains.raw">
+                        <oui-column data-title="'telephony_service_fax_custom_domains_configuration_table_column_domain' | translate" data-property="domain" data-sortable="asc">
+                            <span  data-ng-bind="$row.domain"></span>
+                        </oui-column>
+                        <oui-column data-title="'telephony_service_fax_custom_domains_configuration_table_column_action' | translate">
+                            <button
+                                type="button"
+                                class="btn btn-default"
+                                data-ng-click="$ctrl.removeCustomDomains($row)"
+                                data-ng-disabled="$row.isDeleting"
+                                data-translate-attr="{ title: 'telephony_service_fax_custom_domains_configuration_table_action_delete' }"
+                                data-translate-values="{ domain: $row.domain }">
+                                <span class="ovh-font ovh-font-bin" aria-hidden="true"></span>
+                            </button>
+                        </oui-column>
+                    </oui-datagrid>
 
                     <!-- FORM -->
                     <form name="addCustomDomainForm"
