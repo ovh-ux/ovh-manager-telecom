@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationCtrl", function ($q, $stateParams, $translate, TelephonyMediator, Toast) {
+angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationCtrl", function ($q, $stateParams, $translate, atInternet, OvhApiMe, TelephonyMediator, Toast) {
     "use strict";
 
     var self = this;
@@ -189,6 +189,13 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationCtrl"
 
                 return self.number.feature.init().then(function () {
                     self.actions = initActions();
+
+                    atInternet.trackPage({
+                        name: "configuration",
+                        type: "navigation",
+                        level2: "Telecom",
+                        chapter1: "telecom"
+                    });
                 });
             });
         }).catch(function (error) {
