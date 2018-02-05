@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyFaxCtrl", function ($q, $stateParams, $translate, TelecomMediator, TelephonyMediator, SidebarMenu, Toast) {
+angular.module("managerApp").controller("TelecomTelephonyFaxCtrl", function ($q, $stateParams, $translate, atInternet, TelecomMediator, TelephonyMediator, SidebarMenu, Toast) {
     "use strict";
 
     var self = this;
@@ -47,6 +47,13 @@ angular.module("managerApp").controller("TelecomTelephonyFaxCtrl", function ($q,
             });
         }).finally(function () {
             self.loading.init = false;
+
+            atInternet.trackPage({
+                name: "Fax",
+                type: "navigation",
+                level2: "Telecom",
+                chapter: "telecom"
+            });
         });
     };
 

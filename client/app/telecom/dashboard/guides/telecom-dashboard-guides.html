@@ -8,7 +8,8 @@
                title="{{ ::'telecom_dashboard_FAQ_Activate' | translate }} {{ ::'common_newtab' | translate }}"
                target="_blank"
                rel="noopener"
-               data-ng-href="{{ GuidesCtrl.links.packActivate }}">
+               data-ng-href="{{ GuidesCtrl.links.packActivate }}"
+               data-ng-click="GuidesCtrl.trackRedirection(GuidesCtrl.links.packActivate)">
                 <span class="text-link"
                       data-translate="telecom_dashboard_FAQ_Activate">
                 </span>
@@ -21,7 +22,8 @@
                title="{{ ::'telecom_dashboard_FAQ_managed_modem' | translate }} {{ ::'common_newtab' | translate }}"
                target="_blank"
                rel="noopener"
-               data-ng-href="{{ GuidesCtrl.links.modemConfig }}">
+               data-ng-href="{{ GuidesCtrl.links.modemConfig }}"
+               data-ng-click="GuidesCtrl.trackRedirection(GuidesCtrl.links.modemConfig)">
                 <span class="text-link"
                       data-translate="telecom_dashboard_FAQ_managed_modem">
                 </span>
@@ -34,7 +36,8 @@
                title="{{ ::'telecom_dashboard_FAQ_init_modem' | translate }} {{ ::'common_newtab' | translate }}"
                target="_blank"
                rel="noopener"
-               data-ng-href="{{ GuidesCtrl.links.modemReinit }}">
+               data-ng-href="{{ GuidesCtrl.links.modemReinit }}"
+               data-ng-click="GuidesCtrl.trackRedirection(GuidesCtrl.links.modemReinit)">
                 <span class="text-link"
                       data-translate="telecom_dashboard_FAQ_init_modem">
                 </span>

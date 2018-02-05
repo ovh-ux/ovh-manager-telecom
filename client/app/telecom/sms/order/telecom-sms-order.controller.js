@@ -1,5 +1,5 @@
 angular.module("managerApp").controller("TelecomSmsOrderCtrl", class TelecomSmsOrderCtrl {
-    constructor ($q, $translate, $filter, $stateParams, SmsMediator, OvhApiOrder, debounce, Toast, SMS_ORDER_PREFIELDS_VALUES) {
+    constructor ($q, $translate, $filter, $stateParams, atInternet, SmsMediator, OvhApiOrder, debounce, Toast, SMS_ORDER_PREFIELDS_VALUES) {
         this.$q = $q;
         this.$translate = $translate;
         this.$filter = $filter;
@@ -13,6 +13,7 @@ angular.module("managerApp").controller("TelecomSmsOrderCtrl", class TelecomSmsO
         this.debounce = debounce;
         this.Toast = Toast;
         this.constant = { SMS_ORDER_PREFIELDS_VALUES };
+        this.atInternet = atInternet;
     }
 
     $onInit () {
@@ -173,6 +174,13 @@ angular.module("managerApp").controller("TelecomSmsOrderCtrl", class TelecomSmsO
             this.Toast.error(this.$translate.instant("sms_order_ko"))
         ).finally(() => {
             this.loading.order = false;
+            return this.atInternet.trackClick({
+                cta: "Générer le bon de commande",
+                name: "Generate_BC",
+                type: "Générer le bon de commande",
+                level2: "Telecom",
+                chpater1: "telecom"
+            });
         });
     }
 });

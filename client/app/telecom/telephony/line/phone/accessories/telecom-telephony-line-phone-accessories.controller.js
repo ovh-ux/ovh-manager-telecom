@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyLinePhoneAccessoriesCtrl", function ($q, $stateParams, $translate, TelephonyMediator, TelephonyAccessoriesOrderProcess, Toast) {
+angular.module("managerApp").controller("TelecomTelephonyLinePhoneAccessoriesCtrl", function ($q, $stateParams, $translate, atInternet, TelephonyMediator, TelephonyAccessoriesOrderProcess, Toast) {
     "use strict";
 
     var self = this;
@@ -23,6 +23,12 @@ angular.module("managerApp").controller("TelecomTelephonyLinePhoneAccessoriesCtr
             return $q.error(error);
         }).finally(function () {
             self.loading.init = false;
+            return atInternet.trackPage({
+                name: "accessories-Tel",
+                type: "navigation",
+                level2: "Telecom",
+                chapter1: "telecom"
+            });
         });
     }
 
