@@ -11,10 +11,10 @@
         <oui-spinner></oui-spinner>
     </div>
 
-    <toast-message></toast-message>
-
     <div data-ng-if="!CodecCtrl.loading.init"
          class="telecom-section-content">
+
+         <toast-message></toast-message>
 
         <div class="alert alert-info"
              role="alert">
@@ -36,11 +36,62 @@
             </dd>
         </dl>
 
-        <button class="btn btn-primary"
-                type="button"
-                data-translate="telephony_line_phone_codec_edit"
-                data-ng-click="CodecCtrl.editCodec()">
-        </button>
+        <!-- Codec edit form -->
+        <form class="mb-4"
+              data-ng-submit="CodecCtrl.saveNewCodec()"
+              name="phoneCodecEditForm">
+
+            <div class="form-group widget-presentation">
+                <h2 class="widget-presentation-title" data-translate="telephony_line_phone_codec_edit_title"></h2>
+                <p data-translate="telephony_line_phone_codec_edit_codec_priority"></p>
+
+                <div class="radio"
+                     data-ng-repeat="codec in CodecCtrl.line.availableCodecs track by $index">
+                    <label>
+                        <input type="radio"
+                               name="newCodec"
+                               data-ng-model="CodecCtrl.model.codecs"
+                               data-ng-value="codec"/>
+                        <span data-ng-bind="codec.value.split('_').join(', ')"></span>
+                    </label>
+                </div>
+
+                <div class="checkbox mt-5"
+                     data-ng-if="CodecCtrl.isAutomaticCodecEnabled()">
+                    <label>
+                        <input type="checkbox"
+                               name="automaticCodec"
+                               data-ng-model="CodecCtrl.model.auto"/>
+                        <span data-translate="telephony_line_phone_codec_edit_codec_auto_choice"></span>
+                    </label>
+                </div>
+            </div>
+
+            <telephony-bulk-action data-billing-account="{{ CodecCtrl.bulkDatas.billingAccount }}"
+                       data-service-name="{{ CodecCtrl.bulkDatas.serviceName }}"
+                       data-custom-class="link d-block pl-0 mb-3"
+                       data-ng-disabled="!CodecCtrl.model.codecs || CodecCtrl.isCheckingPhones"
+                       data-bulk-infos="CodecCtrl.bulkDatas.infos"
+                       data-filter-services="CodecCtrl.filterServices"
+                       data-get-bulk-params="CodecCtrl.getBulkParams"
+                       data-on-success="CodecCtrl.onBulkSuccess"
+                       data-on-error="CodecCtrl.onBulkError">
+            </telephony-bulk-action>
+
+            <button type="submit"
+                    class="btn btn-primary"
+                    data-ng-disabled="!CodecCtrl.model.codecs || CodecCtrl.loading.save || !CodecCtrl.hasChanged()">
+                    <span data-translate="telephony_line_phone_codec_edit"></span>
+                    <i data-ng-if="CodecCtrl.saved"
+                       aria-hidden="true"
+                       class="ovh-font ovh-font-success ml-1"></i>
+                    <oui-loader class="ml-2"
+                                data-ng-if="CodecCtrl.loading.save"
+                                data-size="s">
+                    </oui-loader>
+            </button>
+
+        </form>
 
     </div>
 
