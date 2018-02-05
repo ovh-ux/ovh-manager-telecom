@@ -1,0 +1,67 @@
+<div class="telecom-pack-missing-rio">
+
+    <div class="telecom-section-content ml-0">
+
+        <oui-loader data-ng-if="PackXdslMissingRio.loading"
+                    data-size="m">
+        </oui-loader>
+
+        <div class="row" data-ng-if="!PackXdslMissingRio.loading">
+
+            <div class="col-xs-12 widget-presentation">
+
+                <toast-message></toast-message>
+
+                <header class="widget-presentation-header">
+                    <h2 class="widget-presentation-title" data-translate="xdsl_missing-rio_title"></h2>
+                </header>
+
+                <form name="missingRioForm"
+                      data-ng-submit="PackXdslMissingRio.sendRio()">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group checkbox">
+                                <label for="xdslPortability">
+                                    <input type="checkbox"
+                                           id="xdslPortability"
+                                           name="xdslPortability"
+                                           data-ng-model="PackXdslMissingRio.missingRioForm.portNumber">
+                                    <span data-translate="xdsl_missing-rio_port-number_label"></span>
+                                </label>
+                            </div>
+                            <div class="form-group"
+                                 data-ng-if="!PackXdslMissingRio.missingRioForm.portNumber"
+                                 data-ng-class="{
+                                     'has-error': missingRioForm.rio.$touched && missingRioForm.rio.$invalid
+                                 }">
+                                <label for="rio"
+                                       class="control-label"
+                                       data-translate="xdsl_missing-rio_label"></label>
+                                <input id="rio"
+                                       name="rio"
+                                       class="form-control"
+                                       data-ng-model="PackXdslMissingRio.missingRioForm.rio"
+                                       required
+                                       type="text" />
+                                <span class="help-block"
+                                      role="alert"
+                                      data-ng-if="missingRioForm.rio.$touched"
+                                      data-ng-messages="missingRioForm.rio.$error">
+                                    <span data-ng-message="required"
+                                          data-translate="xdsl_missing-rio_required">
+                                    </span>
+                                </span>
+                            </div>
+                            <button
+                                type="submit"
+                                data-ng-disabled="missingRioForm.$invalid"
+                                class="btn btn-primary mt-2">
+                                <span data-translate="xdsl_missing-rio_send"></span>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

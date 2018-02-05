@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<translations>
+    <translation id="xdsl_missing-rio_port-number_label"></translation>
+    <translation id="xdsl_missing-rio_title"></translation>
+    <translation id="xdsl_missing-rio_label"></translation>
+    <translation id="xdsl_missing-rio_required"></translation>
+    <translation id="xdsl_missing-rio_send"></translation>
+    <translation id="xdsl_missing-rio_sent"></translation>
+    <translation id="xdsl_missing-rio_error"></translation>
+</translations>
