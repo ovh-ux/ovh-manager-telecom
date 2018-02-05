@@ -175,9 +175,9 @@ angular.module("managerApp").controller("TelecomSmsOrderCtrl", class TelecomSmsO
         ).finally(() => {
             this.loading.order = false;
             return this.atInternet.trackClick({
-                cta: "Générer le bon de commande",
+                cta: "Generate purchase order",
                 name: "Generate_BC",
-                type: "Générer le bon de commande",
+                type: "click",
                 level2: "Telecom",
                 chpater1: "telecom"
             });
