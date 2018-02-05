@@ -15,28 +15,27 @@ angular.module("managerApp").controller("TelecomDashboardGuidesCtrl", function (
 
     self.trackRedirection = function (link) {
         var hit = {
-            type: "action",
+            type: "navigation",
             level2: "Telecom",
             chapter1: "telecom"
         };
 
         switch (link) {
         case URLS.guides.packActivate:
-            hit.cta = "Activation de mes services";
+            hit.cta = "Activate my services";
             hit.name = "Activation_Services";
             break;
         case URLS.guides.modemConfig:
-            hit.cta = "Configurer mon modem";
+            hit.cta = "Configure my modem";
             hit.name = "Setting_Modem";
             break;
         case URLS.guides.modemReinit:
-            hit.cta = "Réinitialiser mon modem";
+            hit.cta = "Restart my modem";
             hit.name = "Reboot_Modem";
             break;
         default: break;
         }
 
-        console.log(hit);
         return atInternet.trackClick(hit);
     };
 
