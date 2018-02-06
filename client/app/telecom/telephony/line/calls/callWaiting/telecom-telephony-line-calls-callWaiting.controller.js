@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyLineCallsCallWaitingCtrl", function ($q, $stateParams, $translate, Toast, ToastError, OvhApiTelephony, TelephonyMediator) {
+angular.module("managerApp").controller("TelecomTelephonyLineCallsCallWaitingCtrl", function ($q, $stateParams, $translate, Toast, ToastError, OvhApiTelephony, TelephonyMediator, telephonyBulk) {
     "use strict";
 
     var self = this;
@@ -92,6 +92,63 @@ angular.module("managerApp").controller("TelecomTelephonyLineCallsCallWaitingCtr
         });
     }
 
+    /* ===========================
+    =            BULK            =
+    ============================ */
+
+    self.bulkDatas = {
+        billingAccount: $stateParams.billingAccount,
+        serviceName: $stateParams.serviceName,
+        infos: {
+            name: "callWaiting",
+            actions: [{
+                name: "options",
+                route: "/telephony/{billingAccount}/line/{serviceName}/options",
+                method: "PUT",
+                params: null
+            }]
+        }
+    };
+
+    self.filterServices = function (services) {
+        return _.filter(services, function (service) {
+            return ["sip", "mgcp"].indexOf(service.featureType) > -1;
+        });
+    };
+
+    self.getBulkParams = function () {
+        var data = {
+            callWaiting: self.options.callWaiting,
+            intercom: self.options.intercom
+        };
+
+        return data;
+    };
+
+    self.onBulkSuccess = function (bulkResult) {
+        // display message of success or error
+        telephonyBulk.getToastInfos(bulkResult, {
+            fullSuccess: $translate.instant("telephony_line_actions_line_calls_cw_intercom_bulk_all_success"),
+            partialSuccess: $translate.instant("telephony_line_actions_line_calls_cw_intercom_bulk_some_success", {
+                count: bulkResult.success.length
+            }),
+            error: $translate.instant("telephony_line_actions_line_calls_cw_intercom_bulk_error")
+        }).forEach(function (toastInfo) {
+            Toast[toastInfo.type](toastInfo.message, {
+                hideAfter: null
+            });
+        });
+
+        // reset initial values to be able to modify again the options
+        OvhApiTelephony.Line().Options().resetCache();
+        init();
+    };
+
+    self.onBulkError = function (error) {
+        Toast.error([$translate.instant("telephony_line_actions_line_calls_cw_intercom_bulk_on_error"), _.get(error, "msg.data")].join(" "));
+    };
+
+    /* -----  End of BULK  ------ */
+
     init();
-}
-);
+});

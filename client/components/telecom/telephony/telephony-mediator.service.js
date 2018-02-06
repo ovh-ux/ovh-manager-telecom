@@ -115,7 +115,9 @@ angular.module("managerApp").service("TelephonyMediator", function ($q, $statePa
      * with force attribute to have fresh data.
      */
     self.resetAllCache = function () {
+        self.getAllDeferred = null;
         self.groups = {};
+        self.getAllDeferred = null;
     };
 
     /* ----------  CURRENT GROUP  ----------*/

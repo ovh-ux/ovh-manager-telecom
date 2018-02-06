@@ -9,9 +9,9 @@
 
     <div class="telecom-section-content">
 
-        <oui-loader data-ng-if="RmaCtrl.rmaList === null"
-                    data-size="m">
-        </oui-loader>
+        <div class="text-center" data-ng-if="RmaCtrl.rmaList === null">
+            <oui-spinner></oui-spinner>
+        </div>
 
         <div class="alert alert-info"
              role="alert"

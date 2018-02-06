@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyServiceContactCtrl", function ($stateParams, $q, $timeout, $translate, OvhApiTelephony, Toast, ToastError, OvhApiXdsl, telephonyBulk) {
+angular.module("managerApp").controller("TelecomTelephonyServiceContactCtrl", function ($state, $stateParams, $q, $timeout, $translate, OvhApiTelephony, Toast, ToastError, OvhApiXdsl, telephonyBulk) {
     "use strict";
 
     var self = this;
@@ -26,6 +26,10 @@ angular.module("managerApp").controller("TelecomTelephonyServiceContactCtrl", fu
     function init () {
         self.isLoading = true;
         self.isEditing = false;
+
+        // TODO : remove once bulk action for fax is available
+        self.isFax = $state.current.name.indexOf("fax") > -1;
+
         self.wayNumberExtraEnum = [
             "bis", "ter", "quater", "quinquies", "sexto", "septimo", "octimo", "nono",
             "A", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "S", "U", "V",

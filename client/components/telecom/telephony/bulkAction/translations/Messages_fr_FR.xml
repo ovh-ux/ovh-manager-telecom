@@ -3,6 +3,7 @@
     <translation id="telephony_bulk_action_apply_to_alias">Appliquer à plusieurs numéros</translation>
     <translation id="telephony_bulk_action_apply_to_line">Appliquer à plusieurs lignes</translation>
     <translation id="telephony_bulk_action_apply_to_number">Appliquer à plusieurs numéros</translation>
+    <translation id="telephony_bulk_action_apply_to_alias">Appliquer à plusieurs numéros</translation>
     <translation id="telephony_bulk_action_apply_to_service_explain">Choisissez les services auxquels appliquer les changements. Cette action remplacera toute configuration existante.</translation>
 
     <translation id="telephony_bulk_action_modal_all_billing_account">Tous les groupes</translation>

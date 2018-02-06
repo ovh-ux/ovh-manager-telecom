@@ -31,8 +31,8 @@
             data-translate="submit"
             data-ng-disabled="PackMoveEligibilityPhoneNumber.loading || availabilityForm.phoneNumber.$invalid || PackMoveEligibilityPhoneNumber.method !== 'number'">
     </button>
-    <oui-loader class="ml-2"
-                data-ng-if="PackMoveEligibilityPhoneNumber.loading"
-                data-size="s">
-    </oui-loader>
+    <oui-spinner class="ml-2"
+                 data-ng-if="PackMoveEligibilityPhoneNumber.loading"
+                 data-size="s">
+    </oui-spinner>
 </form>

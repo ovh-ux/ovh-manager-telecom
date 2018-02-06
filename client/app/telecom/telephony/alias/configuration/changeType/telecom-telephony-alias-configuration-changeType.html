@@ -8,9 +8,9 @@
 
     </header>
 
-    <oui-loader data-ng-if="AliasConfigurationChangeTypeCtrl.loading.line"
-                data-size="m">
-    </oui-loader>
+    <div class="text-center" data-ng-if="AliasConfigurationChangeTypeCtrl.loading.line">
+        <oui-spinner></oui-spinner>
+    </div>
 
     <div class="telecom-section-content"
          data-ng-if="!AliasConfigurationChangeTypeCtrl.loading.line">
@@ -81,7 +81,7 @@
                 </form>
                 <div class="text-center"
                      data-ng-if="AliasConfigurationChangeTypeCtrl.loading.changing">
-                    <oui-loader data-size="m"></oui-loader>
+                    <oui-spinner></oui-spinner>
                     <h4 data-translate="telephony_alias_config_change_type_doing"></h4>
                 </div>
             </div>
