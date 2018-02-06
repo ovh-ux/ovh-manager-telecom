@@ -108,10 +108,10 @@
                                     data-ng-disabled="sendHlrQueryForm.$invalid || SmsHlrCtrl.hlr.isSending || !SmsHlrCtrl.cgu"
                                     data-translate="sms_sms_hlr_query_send">
                                 </button>
-                                <oui-loader class="ml-2"
-                                            data-ng-if="SmsHlrCtrl.hlr.isSending"
-                                            data-size="s">
-                                </oui-loader>
+                                <oui-spinner class="ml-2"
+                                             data-ng-if="SmsHlrCtrl.hlr.isSending"
+                                             data-size="s">
+                                </oui-spinner>
                             </div>
                         </form>
 
@@ -330,8 +330,8 @@
                         </tbody>
                         <tbody data-ng-if="SmsHlrCtrl.hlr.isLoading">
                             <tr>
-                                <td colspan="9">
-                                    <oui-loader data-size="m"></oui-loader>
+                                <td colspan="9" class="text-center">
+                                    <oui-spinner data-size="s"></oui-spinner>
                                 </td>
                             </tr>
                         </tbody>

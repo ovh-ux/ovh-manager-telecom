@@ -7,9 +7,9 @@
         <h1 data-translate="telephony_line_calls_actions_line_external_number_display"></h1>
     </header>
 
-    <oui-loader data-ng-if="$ctrl.loading.init"
-                data-size="m">
-    </oui-loader>
+    <div class="text-center" data-ng-if="$ctrl.loading.init">
+        <oui-spinner></oui-spinner>
+    </div>
 
     <div class="telecom-section-content"
          data-ng-if="!$ctrl.loading.init">
@@ -66,10 +66,10 @@
                                     <button type="button"
                                             class="btn btn-block btn-danger"
                                             data-ng-click="$ctrl.onConfirmDeleteNumberBtnClick()">
-                                        <oui-loader class="mr-2"
-                                                    data-ng-if="$ctrl.loading.remove"
-                                                    data-size="s">
-                                        </oui-loader>
+                                        <oui-spinner class="mr-2"
+                                                     data-ng-if="$ctrl.loading.remove"
+                                                     data-size="s">
+                                        </oui-spinner>
                                         <i class="ovh-font ovh-font-bin mr-2"
                                            data-ng-if="!$ctrl.loading.remove"></i>
                                         <span data-translate="delete"></span>
@@ -171,10 +171,10 @@
                         <button type="submit"
                                 class="btn btn-primary float-right"
                                 data-ng-disabled="$ctrl.externalNumberAddForm.$invalid || $ctrl.loading.add || $ctrl.list.length >= $ctrl.line.simultaneousLines">
-                            <oui-loader class="mr-2"
-                                        data-ng-if="$ctrl.loading.add"
-                                        data-size="s">
-                            </oui-loader>
+                            <oui-spinner class="mr-2"
+                                         data-ng-if="$ctrl.loading.add"
+                                         data-size="s">
+                            </oui-spinner>
                             <span data-translate="common_add"></span>
                         </button>
                         <button type="reset"

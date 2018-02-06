@@ -179,10 +179,12 @@
                                 data-ng-disabled="VoicemailConf.loading"
                                 data-translate="cancel">
                             </button>
-                            <oui-loader class="ml-2"
-                                        data-ng-show="VoicemailConf.loading"
-                                        data-size="s">
-                            </oui-loader>
+                            <div class="text-center">
+                                <oui-spinner class="ml-2"
+                                             data-ng-show="VoicemailConf.loading"
+                                             data-size="s">
+                                </oui-spinner>
+                            </div>
                         </div>
                     </form>
                 </div>

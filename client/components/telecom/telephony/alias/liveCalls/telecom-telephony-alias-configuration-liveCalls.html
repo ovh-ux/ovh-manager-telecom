@@ -1,5 +1,5 @@
 <div class="telecom-section-content text-center" data-ng-if="$ctrl.isLoading">
-    <oui-loader data-size="l"></oui-loader>
+    <oui-spinner data-size="l"></oui-spinner>
     <h2 data-translate="loading"></h2>
 </div>
 
@@ -116,7 +116,9 @@
             <tbody data-ng-if="$ctrl.isLoading">
                 <tr>
                     <td colspan="5">
-                        <oui-loader data-size="m"></oui-loader>
+                        <div class="text-center">
+                            <oui-spinner></oui-spinner>
+                        </div>
                     </td>
                 </tr>
             </tbody>
@@ -186,7 +188,9 @@
             <tbody data-ng-if="$ctrl.isLoading">
                 <tr>
                     <td colspan="3">
-                        <oui-loader data-size="m"></oui-loader>
+                        <div class="text-center">
+                            <oui-spinner></oui-spinner>
+                        </div>
                     </td>
                 </tr>
             </tbody>

@@ -1,7 +1,7 @@
 <div class="sva-generator">
-    <oui-loader data-ng-if="isLoading"
-                data-size="m">
-    </oui-loader>
+    <div class="text-center" data-ng-if="isLoading">
+        <oui-spinner></oui-spinner>
+    </div>
     <div class="sva-container" data-ng-show="!isLoading"></div>
     <p data-ng-if="imageHref">
         <span data-translate="telecom_sva_generator_download"></span>

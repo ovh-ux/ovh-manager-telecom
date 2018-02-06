@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyServiceAssistLogsCtrl", function ($q, $translate, $stateParams, voipService, voipLineFeature, OvhApiMe, Toast, PAGINATION_PER_PAGE, telephonyBulk) {
+angular.module("managerApp").controller("TelecomTelephonyServiceAssistLogsCtrl", function ($q, $translate, $state, $stateParams, voipService, voipLineFeature, OvhApiMe, Toast, PAGINATION_PER_PAGE, telephonyBulk) {
     "use strict";
 
     var self = this;
@@ -6,6 +6,9 @@ angular.module("managerApp").controller("TelecomTelephonyServiceAssistLogsCtrl",
     self.service = null;
     self.logs = null;
     self.logsPerPage = PAGINATION_PER_PAGE;
+
+    // TODO : remove once bulk action for fax is available
+    self.isFax = $state.current.name.indexOf("fax") > -1;
 
     // notifications edit
     self.edition = {

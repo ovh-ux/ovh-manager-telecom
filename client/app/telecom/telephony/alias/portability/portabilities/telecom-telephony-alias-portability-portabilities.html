@@ -12,9 +12,9 @@
         <h1 data-translate="telephony_alias_portabilities_title"></h1>
     </header>
 
-    <oui-loader data-ng-if="PortabilitiesCtrl.isLoading"
-                data-size="m">
-    </oui-loader>
+    <div class="text-center" data-ng-if="PortabilitiesCtrl.isLoading">
+        <oui-spinner></oui-spinner>
+    </div>
 
     <div class="telecom-section-content"
          data-ng-if="!PortabilitiesCtrl.isLoading">
@@ -107,10 +107,10 @@
                                     data-ng-really-confirm="{{ 'common_yes_capitalized' | translate }}"
                                     data-ng-really-cancel="{{ 'common_no_capitalized' | translate }}"
                                     data-ng-really-window-class="revert-really-buttons">
-                                <oui-loader class="mr-2"
-                                            data-ng-if="PortabilitiesCtrl.loading.cancel"
-                                            data-size="s">
-                                </oui-loader>
+                                <oui-spinner class="mr-2"
+                                             data-ng-if="PortabilitiesCtrl.loading.cancel"
+                                             data-size="s">
+                                </oui-spinner>
                                 <span data-translate="{{ !PortabilitiesCtrl.loading.cancel ? 'telephony_alias_portabilities_cancel' : 'telephony_alias_portabilities_cancel_doing' }}"></span>
                             </button>
                             <!-- End of Cancel portability -->

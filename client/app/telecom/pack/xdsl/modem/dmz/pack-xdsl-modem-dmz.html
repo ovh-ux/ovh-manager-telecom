@@ -50,8 +50,8 @@
 									placeholder="000.000.000.000"
 									data-ui-validate="'DmzCtrl.validator.isIP($value)'"/>
                         </td>
-                        <td data-ng-if="DmzCtrl.mediator.tasks.changeModemConfigDMZ">
-                            <oui-loader data-size="s"></oui-loader>
+                        <td data-ng-if="DmzCtrl.mediator.tasks.changeModemConfigDMZ" class="text-center">
+                            <oui-spinner data-size="s"></oui-spinner>
                         </td>
 
                         <td class="col-mobile-button-big" data-ng-if="!DmzCtrl.editing">
@@ -81,15 +81,15 @@
                                             data-ng-disabled="!DmzCtrl.mediator.capabilities.canChangeDMZ || !DmzCtrl.modemLan || DmzCtrl.mediator.tasks.changeModemConfigDMZ">
                                         </button>
                                     </li>
-                                    <li role="menuitem">
+                                    <li role="menuitem"
+                                        data-ng-show="DmzCtrl.mediator.info.dmzIP">
                                         <i class="ovh-font ovh-font-bin" aria-hidden="true"></i>
                                         <button
                                             type="button"
                                             class="btn btn-link"
                                             data-ng-click="DmzCtrl.delete()"
-                                            data-translate="delete"
-                                            data-ng-show="DmzCtrl.mediator.info.dmzIP"
-                                            title="{{DmzCtrl.modemLan.IPAddress}} {{ 'common_table_delete' | translate }}">
+                                            title="{{DmzCtrl.modemLan.IPAddress}} {{ 'common_table_delete' | translate }}"
+                                            data-translate="delete">
                                         </button>
                                     </li>
                                 </ul>

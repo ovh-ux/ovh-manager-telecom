@@ -10,9 +10,10 @@
     <div class="telecom-section-content">
 
         <!-- LOADING -->
-        <oui-loader data-ng-if="$ctrl.loading.init"
-                    data-size="m">
-        </oui-loader> <!-- Enf of LOADING -->
+        <div class="text-center" data-ng-if="$ctrl.loading.init">
+            <oui-spinner></oui-spinner>
+        </div>
+        <!-- Enf of LOADING -->
 
         <div class="row"
              data-ng-if="!$ctrl.loading.init">

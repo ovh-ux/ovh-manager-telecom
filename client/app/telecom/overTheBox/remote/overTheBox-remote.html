@@ -26,8 +26,8 @@
                     </thead>
                     <tbody data-ng-if="OverTheBoxRemote.remotes.length === 0">
                         <tr data-ng-show="OverTheBoxRemote.loading">
-                            <td colspan="5">
-                                <oui-loader data-size="m"></oui-loader>
+                            <td colspan="5" class="text-center">
+                                <oui-spinner data-size="s"></oui-spinner>
                             </td>
                         </tr>
                         <tr data-ng-hide="OverTheBoxRemote.loading">
@@ -50,10 +50,10 @@
                                 </button>
                             </td>
                             <td>
-                                <oui-loader class="mr-2"
-                                            data-ng-show="remote.status !== 'active'"
-                                            data-size="s">
-                                </oui-loader>
+                                <oui-spinner class="mr-2"
+                                             data-ng-show="remote.status !== 'active'"
+                                             data-size="s">
+                                </oui-spinner>
                                 <span data-ng-bind="'overTheBox_status_' + remote.status | translate"></span>
                             </td>
                             <td data-ng-bind="remote.authorizedBy"></td>
@@ -270,10 +270,10 @@
                                 data-ng-disabled="OverTheBoxRemote.adding || overTheBoxAdd.$invalid"
                                 data-translate="submit">
                             </button>
-                            <oui-loader class="ml-2"
-                                        data-ng-show="FaxConfCtrl.loading"
-                                        data-size="s">
-                            </oui-loader>
+                            <oui-spinner class="ml-2"
+                                         data-ng-show="FaxConfCtrl.loading"
+                                         data-size="s">
+                            </oui-spinner>
                         </div>
                     </form>
                 </div>

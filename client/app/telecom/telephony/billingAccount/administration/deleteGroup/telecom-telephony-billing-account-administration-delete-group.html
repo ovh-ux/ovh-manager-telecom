@@ -7,9 +7,9 @@
         <h1 data-translate="telephony_delete_group_title"></h1>
     </header>
 
-    <oui-loader data-ng-if="DeleteGroupCtrl.loading"
-                data-size="m">
-    </oui-loader>
+    <div class="text-center" data-ng-if="DeleteGroupCtrl.loading">
+        <oui-spinner></oui-spinner>
+    </div>
 
     <div class="telecom-section-content"
          data-ng-if="DeleteGroupCtrl.loaded">
@@ -34,10 +34,10 @@
                             class="btn btn-primary"
                             data-ng-click="DeleteGroupCtrl.cancelTermination()"
                             data-ng-disabled="DeleteGroupCtrl.cancelling">
-                        <oui-loader class="mr-2"
-                                    data-ng-if="DeleteGroupCtrl.cancelling"
-                                    data-size="s">
-                        </oui-loader>
+                        <oui-spinner class="mr-2"
+                                     data-ng-if="DeleteGroupCtrl.cancelling"
+                                     data-size="s">
+                        </oui-spinner>
                         <i class="ovh-font ovh-font-wrong mr-2"
                            aria-hidden="true"
                            data-ng-if="!DeleteGroupCtrl.cancelling">
@@ -51,10 +51,10 @@
                             class="btn btn-primary"
                             data-ng-disabled="DeleteGroupCtrl.deleting"
                             data-ng-click="DeleteGroupCtrl.terminate()">
-                        <oui-loader class="mr-2"
-                                    data-ng-if="DeleteGroupCtrl.deleting"
-                                    data-size="s">
-                        </oui-loader>
+                        <oui-spinner class="mr-2"
+                                     data-ng-if="DeleteGroupCtrl.deleting"
+                                     data-size="s">
+                        </oui-spinner>
                         <i class="ovh-font ovh-font-bin mr-2"
                            aria-hidden="true"
                            data-ng-if="!DeleteGroupCtrl.deleting">
