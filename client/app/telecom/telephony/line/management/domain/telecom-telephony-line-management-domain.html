@@ -7,9 +7,9 @@
         <h1 data-translate="telephony_line_management_sip_domain_title"></h1>
     </header>
 
-    <oui-loader data-ng-if="DomainCtrl.loading.init"
-                data-size="m">
-    </oui-loader>
+    <div class="text-center" data-ng-if="DomainCtrl.loading.init">
+        <oui-spinner></oui-spinner>
+    </div>
 
     <div class="telecom-section-content"
          data-ng-if="!DomainCtrl.loading.init">
@@ -34,7 +34,7 @@
 
                 <div class="text-center"
                      data-ng-if="DomainCtrl.loading.saveLine">
-                    <oui-loader data-size="m"></oui-loader>
+                    <oui-spinner></oui-spinner>
                     <h3 data-translate="telephony_line_management_sip_domain_save_loading"></h3>
                 </div>
 
@@ -73,6 +73,26 @@
                         </select>
                     </div>
 
+                    <!-- BULK ACTION -->
+                    <div class="form-group mt-4">
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <telephony-bulk-action data-billing-account="{{ DomainCtrl.bulkDatas.billingAccount }}"
+                                                       data-service-name="{{ DomainCtrl.bulkDatas.serviceName }}"
+                                                       data-custom-class="link d-block pl-0 mb-3"
+                                                       data-bulk-infos="DomainCtrl.bulkDatas.infos"
+                                                       data-ng-disabled="!DomainCtrl.model.lineSipEdit"
+                                                       data-filter-services="DomainCtrl.filterServices"
+                                                       data-get-bulk-params="DomainCtrl.getBulkParams"
+                                                       data-on-success="DomainCtrl.onBulkSuccess"
+                                                       data-on-error="DomainCtrl.onBulkError">
+                                </telephony-bulk-action>
+
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="form-group">
                         <button type="submit"
                                 class="btn btn-primary"
@@ -106,7 +126,7 @@
 
                 <div class="text-center"
                      data-ng-if="DomainCtrl.loading.saveClient">
-                    <oui-loader data-size="m"></oui-loader>
+                    <oui-spinner></oui-spinner>
                     <h3 data-translate="telephony_line_management_sip_domain_save_loading"></h3>
                 </div>
 

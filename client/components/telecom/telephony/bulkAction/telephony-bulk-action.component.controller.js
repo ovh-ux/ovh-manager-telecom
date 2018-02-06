@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("telephonyBulkActionCtrl", function ($q, $translate, $translatePartialLoader, $uibModal) {
+angular.module("managerApp").controller("telephonyBulkActionCtrl", function ($q, $translate, $translatePartialLoader, $uibModal, telephonyBulkActionUpdatedServicesContainer) {
     "use strict";
 
     var self = this;
@@ -7,11 +7,17 @@ angular.module("managerApp").controller("telephonyBulkActionCtrl", function ($q,
         init: false
     };
 
+    self.previouslyUpdatedServices = [];
+
     /* =============================
     =            EVENTS            =
     ============================== */
 
     self.onBulkActionBtnClick = function () {
+        if (self.onOpen && _.isFunction(self.onOpen())) {
+            self.onOpen()();
+        }
+
         return $uibModal.open({
             templateUrl: "components/telecom/telephony/bulkAction/modal/telephony-bulk-action-modal.html",
             controller: "telephonyBulkActionModalCtrl",
@@ -23,12 +29,17 @@ angular.module("managerApp").controller("telephonyBulkActionCtrl", function ($q,
                     serviceName: self.serviceName,
                     bulkInfos: self.bulkInfos,
                     getBulkParams: self.getBulkParams,
-                    filterServices: self.filterServices
+                    filterServices: self.filterServices,
+                    previouslyUpdatedServices: self.previouslyUpdatedServices
                 }
             }
         }).result.then(function (data) {
             if (self.onSuccess && _.isFunction(self.onSuccess())) {
                 self.onSuccess()(data);
+            }
+
+            if (_.isArray(data.success)) {
+                telephonyBulkActionUpdatedServicesContainer.storeUpdatedServices(data.success);
             }
         }).catch(function (error) {
             if (_.get(error, "type") === "API" && self.onError && _.isFunction(self.onError())) {
@@ -53,6 +64,8 @@ angular.module("managerApp").controller("telephonyBulkActionCtrl", function ($q,
     self.$onInit = function () {
         self.loading.init = true;
 
+        self.previouslyUpdatedServices = telephonyBulkActionUpdatedServicesContainer.getUpdatedServices();
+
         // check for attributes
         // check for serviceType : line or number - default to line
         if (["line", "number"].indexOf(self.serviceType)) {
@@ -68,3 +81,4 @@ angular.module("managerApp").controller("telephonyBulkActionCtrl", function ($q,
     /* -----  End of INITIALIZATION  ------ */
 
 });
+

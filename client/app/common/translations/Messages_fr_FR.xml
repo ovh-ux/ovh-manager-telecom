@@ -10,6 +10,11 @@
    <translation id="ttc" qtlid="101385">TTC</translation>
    <translation id="table_sort" qtlid="94699">Trier</translation>
 
+   <translation id="common_datagrid_nodata">Aucun résultat</translation>
+   <translation id="common_pagination_resultsperpage">Résultats par page</translation>
+   <translation id="common_pagination_ofnresults">sur TOTAL_ITEMS résultats</translation>
+   <translation id="common_pagination_currentpageofpagecount">Page CURRENT_PAGE sur PAGE_COUNT</translation>
+
    <translation id="yes" qtlid="50134">oui</translation>
    <translation id="common_yes_capitalized">Oui</translation>
    <translation id="no" qtlid="50602">non</translation>

@@ -67,9 +67,9 @@
                 </header>
 
                 <form name="clickToCallUsersForm" id="clickToCallUsersForm">
-                    <oui-loader data-ng-if="Click2CallCtrl.loading.init"
-                                data-size="m">
-                    </oui-loader>
+                    <div class="text-center" data-ng-if="Click2CallCtrl.loading.init">
+                        <oui-spinner></oui-spinner>
+                    </div>
                     <div data-ng-if="!Click2CallCtrl.line.click2Call.users.length && !Click2CallCtrl.loading.init">
                         <p class="text-center"
                            data-translate="telephony_group_line_calls_click2call_no_users"></p>

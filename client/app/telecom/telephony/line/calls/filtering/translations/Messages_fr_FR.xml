@@ -13,4 +13,10 @@
     <translation id="telephony_line_calls_filtering_absent">Abonné absent</translation>
     <translation id="telephony_line_calls_filtering_new" qtlid="358721">Configurer de nouveaux filtrages</translation>
     <translation id="telephony_line_calls_filtering_config" qtlid="169849">Configuration actuelle</translation>
+
+    <translation id="telephony_line_calls_filtering_bulk_all_success">Le filtrage d'appels a bien été appliqué aux services sélectionnés.</translation>
+    <translation id="telephony_line_calls_filtering_bulk_some_success">Le filtrage d'appels a bien été appliqué à {{ count }} des services sélectionnés.</translation>
+    <translation id="telephony_line_calls_filtering_bulk_error">Le filtrage d'appels n'a pas pu être appliqué au(x) service(s) suivant(s) :</translation>
+    <translation id="telephony_line_calls_filtering_bulk_on_error">Oups ! Une erreur est survenue lors de l'application du filtrage d'appels.</translation>
+
 </translations>

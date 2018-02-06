@@ -1,8 +1,8 @@
 <div class="telecom-telephony-line-phone-accessories-finalize">
 
-    <oui-loader data-ng-if="AccessoriesFinalizeCtrl.loading.init"
-                data-size="m">
-    </oui-loader>
+    <div class="text-center" data-ng-if="AccessoriesFinalizeCtrl.loading.init">
+        <oui-spinner></oui-spinner>
+    </div>
 
     <form data-ng-if="!AccessoriesFinalizeCtrl.loading.init">
 

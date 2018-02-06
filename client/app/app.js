@@ -177,13 +177,12 @@ angular.module("managerApp", [
 
         var config = TRACKING.atInternetConfiguration;
 
-        OvhApiMe.Lexi().get().$promise
-            .then(function (me) {
-                config.countryCode = me.country;
-                config.currencyCode = me.currency && me.currency.code;
-                config.visitorId = me.customerCode;
-                atInternet.setDefaults(config);
-            });
+        atInternet.setDefaultsPromise(OvhApiMe.Lexi().get().$promise.then(function (me) {
+            config.countryCode = me.country;
+            config.currencyCode = me.currency && me.currency.code;
+            config.visitorId = me.customerCode;
+            return config;
+        }));
     })
 
 /*= =========  INTERCEPT ERROR IF NO TRANSLATION FOUND  ==========*/
@@ -430,6 +429,32 @@ angular.module("managerApp", [
         "use strict";
 
         $logProvider.debugEnabled(false);
+    })
+
+    .run(($rootScope, $translate, $translatePartialLoader,
+          ouiDatagridConfiguration, ouiPaginationConfiguration) => {
+        "use strict";
+        $translatePartialLoader.addPart("common");
+        $translatePartialLoader.addPart("components");
+
+        const off = $rootScope.$on("$stateChangeSuccess", () => {
+            ouiDatagridConfiguration.translations = {
+                emptyPlaceholder: $translate.instant("common_datagrid_nodata")
+            };
+
+            ouiPaginationConfiguration.translations = {
+                resultsPerPage: $translate.instant("common_pagination_resultsperpage"),
+                ofNResults: $translate.instant("common_pagination_ofnresults")
+                    .replace("TOTAL_ITEMS", "{{totalItems}}"),
+                currentPageOfPageCount: $translate.instant("common_pagination_currentpageofpagecount")
+                    .replace("CURRENT_PAGE", "{{currentPage}}")
+                    .replace("PAGE_COUNT", "{{pageCount}}"),
+                previousPage: $translate.instant("common_pagination_previous"),
+                nextPage: $translate.instant("common_pagination_next")
+            };
+
+            off();
+        });
     })
 
     .run(function ($rootScope, $title) {

@@ -11,9 +11,9 @@
 
         <toast-message></toast-message>
 
-        <oui-loader data-ng-if="LineRestrictionsCtrl.isLoading"
-                    data-size="m">
-        </oui-loader>
+        <div class="text-center" data-ng-if="LineRestrictionsCtrl.isLoading">
+            <oui-spinner></oui-spinner>
+        </div>
 
         <div class="row"
              data-ng-if="!LineRestrictionsCtrl.isLoading">
@@ -70,6 +70,18 @@
                                     data-ng-click="LineRestrictionsCtrl.addLineRestriction()">
                             </button>
                         </div>
+
+                        <telephony-bulk-action data-billing-account="{{ LineRestrictionsCtrl.bulkDatas.billingAccount }}"
+                                           data-service-name="{{ LineRestrictionsCtrl.bulkDatas.serviceName }}"
+                                           data-custom-class="link d-block pl-0 mb-3"
+                                           data-ng-disabled="lineOptionsForm.$invalid"
+                                           data-bulk-infos="LineRestrictionsCtrl.bulkDatas.infos"
+                                           data-filter-services="LineRestrictionsCtrl.filterServices"
+                                           data-get-bulk-params="LineRestrictionsCtrl.getBulkParams"
+                                           data-on-success="LineRestrictionsCtrl.onBulkSuccess"
+                                           data-on-error="LineRestrictionsCtrl.onBulkError">
+                        </telephony-bulk-action>
+
                         <div class="form-group">
                             <button type="submit"
                                     class="btn btn-primary"
@@ -78,10 +90,10 @@
                                 <i data-ng-if="LineRestrictionsCtrl.changeLineSuccess"
                                    aria-hidden="true"
                                    class="ovh-font ovh-font-success ml-1"></i>
-                                <oui-loader class="ml-2"
-                                            data-ng-if="LineRestrictionsCtrl.isChangingLineOptions"
-                                            data-size="s">
-                                </oui-loader>
+                                <oui-spinner class="ml-2"
+                                             data-ng-if="LineRestrictionsCtrl.isChangingLineOptions"
+                                             data-size="s">
+                                </oui-spinner>
                             </button>
                             <button type="button"
                                     class="btn btn-link no-transition"
@@ -148,10 +160,10 @@
                                 <i data-ng-if="LineRestrictionsCtrl.changeAccountSuccess"
                                    aria-hidden="true"
                                    class="ovh-font ovh-font-success ml-1"></i>
-                                <oui-loader class="ml-2"
-                                            data-ng-if="LineRestrictionsCtrl.isChangingAccountOptions"
-                                            data-size="s">
-                                </oui-loader>
+                                <oui-spinner class="ml-2"
+                                             data-ng-if="LineRestrictionsCtrl.isChangingAccountOptions"
+                                             data-size="s">
+                                </oui-spinner>
                             </button>
                             <button type="button"
                                     class="btn btn-link no-transition"

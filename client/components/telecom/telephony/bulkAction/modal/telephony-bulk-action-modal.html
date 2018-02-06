@@ -16,9 +16,9 @@
          data-ng-if="!$ctrl.loading.bulk">
         <h3 data-translate="{{ 'telephony_bulk_action_apply_to_' + $ctrl.bindings.serviceType }}"></h3>
 
-        <oui-loader data-size="m"
-                    data-ng-if="$ctrl.loading.init">
-        </oui-loader>
+        <div class="text-center" data-ng-if="$ctrl.loading.init">
+            <oui-spinner></oui-spinner>
+        </div>
 
         <div data-ng-if="!$ctrl.loading.init">
 
@@ -85,7 +85,8 @@
             <!-- Service list -->
             <ul class="list-group">
                 <li class="list-group-item"
-                    data-ng-repeat="service in $ctrl.serviceList | orderBy:'getDisplayedName()' track by service.serviceName">
+                    data-ng-repeat="service in $ctrl.serviceList | orderBy:'getDisplayedName()' track by service.serviceName"
+                    data-ng-class="{'has-update': service.hasUpdate}">
                     <div class="oui-checkbox">
                         <input type="checkbox"
                                class="oui-checkbox__input"
@@ -94,8 +95,14 @@
                                data-ng-disabled="service.serviceName === $ctrl.bindings.serviceName" />
                         <label class="oui-checkbox__label-container"
                                data-ng-attr-for="service-{{ service.serviceName }}">
-                            <span class="oui-checkbox__label"
-                                  data-ng-bind="service.getDisplayedName()">
+                            <span class="oui-checkbox__label">
+                                <span data-ng-bind="service.getDisplayedName()"></span>  
+                                <span class="oui-checkbox__icon">
+                                    <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
+                                    <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
+                                    <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
+                                    <span class="oui-icon oui-icon-checkbox-indeterminate" aria-hidden="true"></span>
+                                </span>  
                             </span>
                             <span class="oui-checkbox__description">
                                 <span data-translate="{{ service.serviceType === 'alias' ?  'telephony_service_type_alias' : 'telephony_service_feature_type_' + service.getRealFeatureType()  }}"></span>
@@ -103,11 +110,9 @@
                                       data-ng-if="!service.isDescriptionSameAsServiceName()"
                                       data-ng-bind="service.serviceName">
                                 </span>
-                            </span>
-                            <span class="oui-checkbox__icon">
-                                <i class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></i>
-                                <i class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></i>
-                                <i class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></i>
+                                <span class="has-update_description"
+                                      data-translate="telephony_bulk_action_modal_service_updated"
+                                      data-ng-if="service.hasUpdate"></span>
                             </span>
                         </label>
                     </div>
@@ -120,7 +125,9 @@
 
     <div class="modal-body"
          data-ng-if="$ctrl.loading.bulk">
-        <oui-loader data-size="m"></oui-loader>
+        <div class="text-center">
+            <oui-spinner></oui-spinner>
+        </div>
     </div>
 
     <div class="modal-footer">
