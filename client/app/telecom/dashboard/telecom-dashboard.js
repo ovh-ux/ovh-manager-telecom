@@ -26,6 +26,14 @@ angular.module("managerApp").config(function ($stateProvider) {
         resolve: {
             $title: function (translations, $translate) {
                 return $translate("telecom_dashboard_page_title");
+            },
+            tracking: function (atInternet) {
+                atInternet.trackPage({
+                    name: "dashboard",
+                    type: "navigation",
+                    level2: "Telecom",
+                    chapter1: "telecom"
+                });
             }
         }
     });

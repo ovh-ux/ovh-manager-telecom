@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomDashboardCtrl", function (atInternet, TelecomMediator, ToastError, URLS) {
+angular.module("managerApp").controller("TelecomDashboardCtrl", function (TelecomMediator, ToastError, URLS) {
     "use strict";
 
     var self = this;
@@ -23,13 +23,6 @@ angular.module("managerApp").controller("TelecomDashboardCtrl", function (atInte
             return new ToastError(err, "telecom_dashboard_auth_failed");
         }).finally(function () {
             self.loading.vip = false;
-
-            atInternet.trackPage({
-                name: "dashboard",
-                type: "navigation",
-                level2: "Telecom",
-                chapter1: "telecom"
-            });
         });
     }
 
