@@ -152,7 +152,9 @@ angular.module("managerApp").controller("TelecomTelephonyLinePhoneMgcpIpRestrict
     };
 
     self.getBulkParams = function () {
-        return self.mgcpIpRestrictionForm.mgcpIpRestriction;
+        return {
+            mgcpIpRestriction: self.mgcpIpRestrictionForm.mgcpIpRestriction || null
+        };
     };
 
     self.onBulkSuccess = function (bulkResult) {
@@ -168,9 +170,6 @@ angular.module("managerApp").controller("TelecomTelephonyLinePhoneMgcpIpRestrict
                 hideAfter: null
             });
         });
-
-        // reset initial values to be able to modify again the options
-        self.init();
     };
 
     self.onBulkError = function (error) {
