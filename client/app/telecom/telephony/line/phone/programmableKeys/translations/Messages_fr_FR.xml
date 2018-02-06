@@ -67,6 +67,12 @@
    <translation id="telephony_line_phone_programmableKeys_MENU" qtlid="304576">Menu</translation>
    <translation id="telephony_line_phone_programmableKeys_DIRECTORY" qtlid="61656">Répertoire</translation>
 
+   <translation id="telephony_line_phone_programmableKeys_bulk_all_success">La modification de la présentation du numéro a bien été appliquée aux services sélectionnés.</translation>
+   <translation id="telephony_line_phone_programmableKeys_bulk_some_success">La modification de la présentation du numéro a bien été appliquée à {{ count }} des services sélectionnés.</translation>
+   <translation id="telephony_line_phone_programmableKeys_bulk_error">La modification de la présentation du numéro n'a pu être appliquée au(x) service(s) suivant(s) :</translation>
+   <translation id="telephony_line_phone_programmableKeys_bulk_error_details">Cette fonction n'est pas supportée par ce téléphone</translation>
+   <translation id="telephony_line_phone_programmableKeys_bulk_on_error">Oups ! Une erreur est survenue lors de la modification de la présentation du numéro.</translation>
+
    <translation id="telephony_line_phone_programmableKeys_available_function_param_select" qtlid="337533">Sélectionnez un paramètre</translation>
    <translation id="telephony_line_phone_programmableKeys_FAX" qtlid="32926">Fax</translation>
 </translations>
