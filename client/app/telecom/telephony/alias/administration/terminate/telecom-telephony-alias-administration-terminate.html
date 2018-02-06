@@ -7,9 +7,9 @@
         <h1 data-translate="telephony_alias_administration_terminate_title"></h1>
     </header>
 
-    <oui-loader data-ng-if="AliasTerminateCtrl.isLoading"
-                data-size="m">
-    </oui-loader>
+    <div class="text-center" data-ng-if="AliasTerminateCtrl.isLoading">
+        <oui-spinner></oui-spinner>
+    </div>
 
     <div class="telecom-section-content"
          data-ng-if="!AliasTerminateCtrl.isLoading">
@@ -50,10 +50,10 @@
                             class="btn btn-default"
                             data-ng-disabled="AliasTerminateCtrl.isCancelling"
                             data-ng-click="AliasTerminateCtrl.cancelTermination()">
-                        <oui-loader class="mr-2"
-                                    data-ng-if="AliasTerminateCtrl.isCancelling"
-                                    data-size="s">
-                        </oui-loader>
+                        <oui-spinner class="mr-2"
+                                     data-ng-if="AliasTerminateCtrl.isCancelling"
+                                     data-size="s">
+                        </oui-spinner>
                         <span data-translate="telephony_alias_administration_cancel_termination"></span>
                     </button>
                 </div>
@@ -94,10 +94,10 @@
                             class="btn btn-default"
                             data-ng-disabled="!AliasTerminateCtrl.hasValidReason() || AliasTerminateCtrl.isTerminating"
                             data-ng-click="AliasTerminateCtrl.terminate()">
-                        <oui-loader class="mr-2"
-                                    data-ng-if="AliasTerminateCtrl.isTerminating"
-                                    data-size="s">
-                        </oui-loader>
+                        <oui-spinner class="mr-2"
+                                     data-ng-if="AliasTerminateCtrl.isTerminating"
+                                     data-size="s">
+                        </oui-spinner>
                         <span data-translate="telephony_alias_administration_terminate"></span>
                     </button>
                 </form>

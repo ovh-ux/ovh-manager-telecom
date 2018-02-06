@@ -21,6 +21,12 @@
    <translation id="telephony_alias_portabilities_step_status_error" qtlid="45508">En erreur</translation>
    <translation id="telephony_alias_portabilities_step_status_todo" qtlid="392320">Plannifié</translation>
    <translation id="telephony_alias_portabilities_step_name_acknowledgmentReceivedFromOperator" qtlid="392333">Accusé de l'opérateur reçu</translation>
+   <translation id="telephony_alias_portabilities_step_name_belgiumPortabilityRequestCreated">Envoi de la demande à l'opérateur cédant</translation>
+   <translation id="telephony_alias_portabilities_step_name_belgiumPortabilityRequestExecutionAcked">Exécution de la portabilité effectuée</translation>
+   <translation id="telephony_alias_portabilities_step_name_belgiumPortabilityRequestExecutionAsked">Exécution de la portabilité demandée</translation>
+   <translation id="telephony_alias_portabilities_step_name_belgiumPortabilityRequestExecutionCompleted">Finalisation de la portabilité</translation>
+   <translation id="telephony_alias_portabilities_step_name_belgiumPortabilityRequestValidated">Prise en charge de la demande par l'opérateur cédant</translation>
+   <translation id="telephony_alias_portabilities_step_name_belgiumPortabilityRequestWaitingUntilExec">Portabilité en attente d'exécution</translation>
    <translation id="telephony_alias_portabilities_step_name_customerFormReceived" qtlid="392346">Formulaire reçu</translation>
    <translation id="telephony_alias_portabilities_step_name_customerFormSent" qtlid="392359">Formulaire envoyé</translation>
    <translation id="telephony_alias_portabilities_step_name_customerFormValidated" qtlid="392372">Formulaire validé</translation>

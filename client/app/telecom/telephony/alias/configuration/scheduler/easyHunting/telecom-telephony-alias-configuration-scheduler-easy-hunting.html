@@ -18,14 +18,16 @@
              data-translate="telephony_alias_configuration_scheduler_info">
         </div> <!-- INFO -->
 
-        <oui-loader data-ng-if="$ctrl.loading.init"
-                    data-size="m">
-        </oui-loader>
+        <div class="text-center" data-ng-if="$ctrl.loading.init">
+            <oui-spinner></oui-spinner>
+        </div>
 
         <div data-ng-if="!$ctrl.loading.init">
             <telephony-scheduler data-telephony-scheduler="$ctrl.number.feature.scheduler"
                                  data-telephony-time-condition="$ctrl.number.feature.timeCondition">
-                <oui-loader data-size="m"></oui-loader>
+                <div class="text-center">
+                    <oui-spinner></oui-spinner>
+                </div>
             </telephony-scheduler>
         </div>
 

@@ -9,9 +9,9 @@
 
     <div class="telecom-section-content">
 
-        <oui-loader data-ng-if="RecordsOvhPabxCtrl.isLoading"
-                    data-size="m">
-        </oui-loader>
+        <div class="text-center" data-ng-if="RecordsOvhPabxCtrl.isLoading">
+            <oui-spinner></oui-spinner>
+        </div>
 
         <div class="alert alert-warning"
              role="alert"

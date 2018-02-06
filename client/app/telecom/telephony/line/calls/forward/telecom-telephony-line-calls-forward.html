@@ -9,9 +9,9 @@
 
 </section>
 
-<oui-loader data-ng-if="LineForwardCtrl.loading.init"
-            data-size="m">
-</oui-loader>
+<div class="text-center" data-ng-if="LineForwardCtrl.loading.init">
+    <oui-spinner></oui-spinner>
+</div>
 
 <div class="telecom-section-content telephony-group-line-forward"
      data-ng-hide="LineForwardCtrl.loading.init">
@@ -46,13 +46,14 @@
                                data-ng-disabled="LineForwardCtrl.loading.save"
                                data-ng-model="forward.enable">
                         <label class="oui-checkbox__label-container" for="{{ :: 'forwardNoReply' + forward.type }}">
-                        <span class="oui-checkbox__label"
-                              data-ng-bind="forward.label">
-                        </span>
-                            <span class="oui-checkbox__icon">
-                                <i class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></i>
-                                <i class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></i>
-                                <i class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></i>
+                            <span class="oui-checkbox__label">
+                                <span data-ng-bind="forward.label"></span>
+                                <span class="oui-checkbox__icon">
+                                    <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
+                                    <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
+                                    <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
+                                    <span class="oui-icon oui-icon-checkbox-indeterminate" aria-hidden="true"></span>
+                                </span>
                             </span>
                         </label>
                     </div>
@@ -154,10 +155,10 @@
                 <button type="submit"
                         class="btn btn-primary"
                         data-ng-disabled="!LineForwardCtrl.needSave() || !forwardForm.$valid || LineForwardCtrl.loading.save">
-                    <oui-loader class="mr-2"
-                                data-ng-if="LineForwardCtrl.loading.save"
-                                data-size="s">
-                    </oui-loader>
+                    <oui-spinner class="mr-2"
+                                 data-ng-if="LineForwardCtrl.loading.save"
+                                 data-size="s">
+                    </oui-spinner>
                     <span data-translate="submit"></span>
                 </button>
                 <button type="button"

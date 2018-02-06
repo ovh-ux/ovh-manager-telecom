@@ -2,9 +2,9 @@
      data-ng-controller="voipTimeConditionSlotEditCtrl as $ctrl"
      data-ng-form="slotEditForm">
 
-    <oui-loader data-ng-if="$ctrl.loading.init"
-                data-ng-size="m">
-    </oui-loader>
+    <div class="text-center" data-ng-if="$ctrl.loading.init">
+        <oui-spinner></oui-spinner>
+    </div>
 
     <div class="popover-pages-wrapper"
          data-ng-class="{ move: $ctrl.popoverStatus.move }"

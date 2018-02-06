@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyServiceVoicemailPasswordCtrl", function ($stateParams, $translate, $timeout, OvhApiTelephony, ToastError, telephonyBulk, Toast) {
+angular.module("managerApp").controller("TelecomTelephonyServiceVoicemailPasswordCtrl", function ($state, $stateParams, $translate, $timeout, OvhApiTelephony, ToastError, telephonyBulk, Toast) {
     "use strict";
 
     var self = this;
@@ -8,6 +8,9 @@ angular.module("managerApp").controller("TelecomTelephonyServiceVoicemailPasswor
         self.loading = true;
         self.submitting = false;
         self.reset();
+
+        // TODO : remove once bulk action for fax is available
+        self.isFax = $state.current.name.indexOf("fax") > -1;
 
         return OvhApiTelephony.Voicemail().Lexi().getNumbersSettings({
             billingAccount: $stateParams.billingAccount,

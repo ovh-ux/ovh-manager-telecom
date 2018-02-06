@@ -1,8 +1,8 @@
 <div class="telephony-group-alias-configuration">
 
-    <oui-loader data-ng-if="AliasConfigurationCtrl.loading.init"
-                data-size="m">
-    </oui-loader>
+    <div class="text-center" data-ng-if="AliasConfigurationCtrl.loading.init">
+        <oui-spinner></oui-spinner>
+    </div>
 
     <div data-ng-if="!AliasConfigurationCtrl.loading.init">
 

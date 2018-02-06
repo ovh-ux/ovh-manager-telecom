@@ -13,9 +13,9 @@
         </div>
     </header>
 
-    <oui-loader data-ng-if="TroubleshootingCtrl.loading.init"
-                data-size="m">
-    </oui-loader>
+    <div class="text-center" data-ng-if="TroubleshootingCtrl.loading.init">
+        <oui-spinner></oui-spinner>
+    </div>
 
     <div class="telecom-section-content"
          data-ng-if="!TroubleshootingCtrl.loading.init">
