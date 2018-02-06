@@ -176,27 +176,28 @@
                     </h2>
                 </header>
 
-                <oui-datagrid class="reduce-padding" data-rows="TelecomSmsOptionsResponseCtrl.smsResponse.trackingOptions">
+                <oui-datagrid data-rows="TelecomSmsOptionsResponseCtrl.smsResponse.trackingOptions">
                     <oui-column data-title="'sms_options_response_tracking_media_label' | translate" data-property="media" data-sortable="asc">
                         <span class="text-capitalize visible-xs"
                               data-ng-bind="$row.media">
                         </span>
                         <i class="ovh-font ovh-font-1x4 ml-2 hidden-xs"
-                            data-ng-attr-title="{{ $row.media }}"
-                            data-ng-class="{
-                                'ovh-font-mail': $row.media === 'email',
-                                'ovh-font-message': $row.media === 'sms'
-                            }">
+                           data-ng-attr-title="{{ $row.media }}"
+                           data-ng-class="{
+                               'ovh-font-mail': $row.media === 'email',
+                               'ovh-font-message': $row.media === 'sms'
+                           }">
                         </i>
                     </oui-column>
 
-                    <oui-column data-property="target">
+                    <oui-column data-title="'sms_options_response_tracking_email_number_label' | translate" data-property="target">
                         <strong class="d-block"
                                 data-ng-bind="$row.target">
                         </strong>
-                        <span data-translate="sms_options_response_tracking_email_sender_label"
-                            data-translate-values="{ sender: $row.sender }">
-                        </span>
+                    </oui-column>
+
+                    <oui-column data-title="'sms_options_response_tracking_email_sender_label' | translate" data-property="sender">
+                        <span data-ng-bind="$row.sender"></span>
                     </oui-column>
 
                     <oui-action-menu data-align="end" data-compact>
