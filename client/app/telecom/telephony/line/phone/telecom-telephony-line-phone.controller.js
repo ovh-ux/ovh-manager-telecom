@@ -25,6 +25,7 @@ angular.module("managerApp").controller("TelecomTelephonyLinePhoneCtrl", functio
             text: $translate.instant("telephony_line_phone_actions_line_details_phon_offer")
         }, {
             name: "line_codecs_management",
+            disabled: !self.line.hasPhone,
             sref: "telecom.telephony.line.phone.codec",
             text: $translate.instant("telephony_line_phone_actions_line_codecs_management")
         }, {
