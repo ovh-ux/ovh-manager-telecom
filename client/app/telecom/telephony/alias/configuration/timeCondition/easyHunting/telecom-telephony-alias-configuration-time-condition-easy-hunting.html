@@ -98,6 +98,17 @@
                 </h2>
             </header>
 
+            <telephony-bulk-action data-service-type="alias"
+                                   data-billing-account="{{ $ctrl.number.billingAccount }}"
+                                   data-service-name="{{ $ctrl.number.serviceName }}"
+                                   data-custom-class="link d-block pl-0 mt-4 mb-2"
+                                   data-bulk-infos="$ctrl.bulkDatas.infos"
+                                   data-get-bulk-params="$ctrl.getBulkParams"
+                                   data-filter-services="$ctrl.filterServices"
+                                   data-on-success="$ctrl.onBulkSuccess"
+                                   data-on-error="$ctrl.onBulkError">
+            </telephony-bulk-action>
+
             <voip-time-condition-calendar data-voip-time-condition="$ctrl.number.feature.timeCondition"></voip-time-condition-calendar>
         </div> <!-- CONDITIONS -->
 
@@ -125,6 +136,16 @@
                 </button>
             </div>
 
+            <telephony-bulk-action data-service-type="alias"
+                                   data-billing-account="{{ $ctrl.number.billingAccount }}"
+                                   data-service-name="{{ $ctrl.number.serviceName }}"
+                                   data-custom-class="link d-block pl-0 mt-4 mb-2"
+                                   data-bulk-infos="$ctrl.bulkDatas.infos"
+                                   data-get-bulk-params="$ctrl.getBulkParams"
+                                   data-filter-services="$ctrl.filterServices"
+                                   data-on-success="$ctrl.onBulkSuccess"
+                                   data-on-error="$ctrl.onBulkError">
+            </telephony-bulk-action>
         </footer>
 
     </form>
