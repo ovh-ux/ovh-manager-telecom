@@ -33,7 +33,8 @@ angular.module("managerApp").controller("TelecomDashboardGuidesCtrl", function (
             hit.cta = "Restart my modem";
             hit.name = "Reboot_Modem";
             break;
-        default: break;
+        default:
+            break;
         }
 
         return atInternet.trackClick(hit);
