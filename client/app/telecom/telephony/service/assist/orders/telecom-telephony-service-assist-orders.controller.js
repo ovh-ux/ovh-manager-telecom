@@ -31,15 +31,13 @@ angular.module("managerApp").controller("TelecomTelephonyServiceAssistOrdersCtrl
     ======================================*/
 
     self.$onInit = function () {
-        self.orders = {
-            raw: null
-        };
+        self.ordersRaw = null;
 
         return TelephonyMediator.getGroup($stateParams.billingAccount).then(function () {
             self.service = TelephonyMediator.findService($stateParams.serviceName);
 
             return fetchOrders().then(function (orders) {
-                self.orders.raw = orders;
+                self.ordersRaw = orders;
             });
         });
     };
