@@ -781,9 +781,9 @@
                       data-ng-submit="PortabilityOrderCtrl.submitOrder()"
                       novalidate>
 
-                    <oui-loader data-ng-if="!PortabilityOrderCtrl.details"
-                                data-size="m">
-                    </oui-loader>
+                    <div class="text-center" data-ng-if="!PortabilityOrderCtrl.details">
+                        <oui-spinner></oui-spinner>
+                    </div>
 
                     <!-- PRICES AND CONTRACTS -->
                     <div class="form-group"
@@ -871,10 +871,10 @@
                         <button type="submit"
                                 class="btn btn-primary float-right"
                                 data-ng-disabled="portabilityOrderForm.$invalid || !PortabilityOrderCtrl.order.isContractsAccepted || PortabilityOrderCtrl.order.isOrdering">
-                            <oui-loader class="mr-2"
-                                        data-ng-if="PortabilityOrderCtrl.order.isOrdering"
-                                        data-size="s">
-                            </oui-loader>
+                            <oui-spinner class="mr-2"
+                                         data-ng-if="PortabilityOrderCtrl.order.isOrdering"
+                                         data-size="s">
+                            </oui-spinner>
                             <span data-translate="telephony_alias_portability_order_order"></span>
                         </button>
                     </div>

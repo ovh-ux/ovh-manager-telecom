@@ -23,10 +23,10 @@
                   data-translate="telephony_line_answer_voicemail_directories_delete_message_plural"
                   data-translate-values="{ count: VoicemailManagementCtrl.getSelection().length }">
             </span>
-            <oui-loader class="ml-2"
-                        data-ng-if="VoicemailManagementCtrl.messages.isDeleting"
-                        data-size="s">
-            </oui-loader>
+            <oui-spinner class="ml-2"
+                         data-ng-if="VoicemailManagementCtrl.messages.isDeleting"
+                         data-size="s">
+            </oui-spinner>
         </button>
 
         <div class="table-responsive">
@@ -130,10 +130,10 @@
                                    data-ng-if="VoicemailManagementCtrl.messages.playing !== message && !message.pendingListen"></i>
                                 <i class="fa fa-stop-circle-o"
                                    data-ng-if="VoicemailManagementCtrl.messages.playing === message && !message.pendingListen"></i>
-                                <oui-loader class="ml-2"
-                                            data-ng-if="message.pendingListen"
-                                            data-size="s">
-                                </oui-loader>
+                                <oui-spinner class="ml-2"
+                                             data-ng-if="message.pendingListen"
+                                             data-size="s">
+                                </oui-spinner>
                             </button>
                             <button class="btn btn-link mr-2"
                                     type="button"
@@ -142,10 +142,10 @@
                                     data-ng-click="VoicemailManagementCtrl.downloadMessage(message)">
                                 <i class="fa fa-download"
                                    data-ng-if="!message.pendingDownload"></i>
-                                <oui-loader class="ml-2"
-                                            data-ng-if="message.pendingDownload"
-                                            data-size="s">
-                                </oui-loader>
+                                <oui-spinner class="ml-2"
+                                             data-ng-if="message.pendingDownload"
+                                             data-size="s">
+                                </oui-spinner>
                             </button>
                             <button class="btn btn-link"
                                     type="button"
@@ -154,18 +154,18 @@
                                     data-ng-click="VoicemailManagementCtrl.deleteMessage(message)">
                                 <i class="ovh-font ovh-font-bin align-top"
                                    data-ng-if="!message.isDeleting"></i>
-                                <oui-loader class="ml-2"
-                                            data-ng-if="message.isDeleting"
-                                            data-size="s">
-                                </oui-loader>
+                                <oui-spinner class="ml-2"
+                                             data-ng-if="message.isDeleting"
+                                             data-size="s">
+                                </oui-spinner>
                             </button>
                         </td>
                     </tr>
                 </tbody>
                 <tbody data-ng-if="VoicemailManagementCtrl.messages.isLoading">
                     <tr>
-                        <td colspan="5">
-                            <oui-loader data-size="m"></oui-loader>
+                        <td colspan="5" class="text-center">
+                            <oui-spinner data-size="s"></oui-spinner>
                         </td>
                     </tr>
                 </tbody>

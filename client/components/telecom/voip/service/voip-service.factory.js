@@ -1,3 +1,17 @@
+/**
+ *  @ngdoc object
+ *  @name managerApp.object:VoipService
+ *
+ *  @description
+ *  <p>Factory that describes a service with attributes returned by `/telephony/{billingAccount}/service/{serviceName}` API.</p>
+ *  <p>See {@link https://eu.api.ovh.com/console/#/telephony/%7BbillingAccount%7D/service/%7BserviceName%7D#GET `telephony.TelephonyService` enum} for available properties.</p>
+ *
+ *  @constructor
+ *  @param {Object} options Options required for creating a new instance of VoipService (see {@link https://eu.api.ovh.com/console/#/telephony/%7BbillingAccount%7D/service/%7BserviceName%7D#GET `telephony.TelephonyService` enum}
+ *  for availables options properties).
+ *
+ *  Note that `billingAccount` and `serviceName` options are mandatory.
+ */
 angular.module("managerApp").factory("VoipService", function () {
     "use strict";
 
@@ -40,6 +54,10 @@ angular.module("managerApp").factory("VoipService", function () {
         ==================================== */
 
         /**
+         *  @ngdoc method
+         *  @name managerApp.object:VoipService#getDisplayedName
+         *  @propertyOf managerApp.object:VoipService
+         *
          *  @description
          *  Get the displayed name of the service.
          *
@@ -50,34 +68,27 @@ angular.module("managerApp").factory("VoipService", function () {
         }
 
         /**
+         *  @ngdoc method
+         *  @name managerApp.object:VoipService#isDescriptionSameAsServiceName
+         *  @propertyOf managerApp.object:VoipService
+         *
          *  @description
          *  Helper that check if the description is the same as serviceName.
          *
-         *  @return {Boolean}
+         *  @return {Boolean}   `true` if description is the same that serviceName.
          */
         isDescriptionSameAsServiceName () {
             return this.description === this.serviceName;
         }
 
         /**
-         *  @description
-         *  Get the real feature type of a service. Useful to get trunk lines.
+         * @description
+         * Helper that check if service public offer is valid
          *
-         *  @return {String} The real feature type of the service.
+         * @return {Boolean}
          */
-        getRealFeatureType () {
-            return this.isSipTrunk() ? "trunk" : this.featureType;
-        }
-
-        /**
-         *  @description
-         *  Helper that try to check if the service offer is trunk or not.
-         *
-         *  @return {Boolean}
-         */
-        isSipTrunk () {
-            var publicOfferName = _.get(this.getPublicOffer, "name");
-            return publicOfferName === "trunk" || _.get(publicOfferName.split("."), "[0]") === "trunk";
+        hasValidPublicOffer () {
+            return this.getPublicOffer.name !== "" && this.getPublicOffer.description !== "The Service has an error";
         }
 
         /* -----  End of Some Helpers  ------ */

@@ -9,9 +9,9 @@
 
 </section>
 
-<oui-loader data-ng-if="LineLockOutCallCtrl.loading.init"
-            data-size="m">
-</oui-loader>
+<div class="text-center" data-ng-if="LineLockOutCallCtrl.loading.init">
+    <oui-spinner></oui-spinner>
+</div>
 
 <div class="telecom-section-content"
      data-ng-hide="LineLockOutCallCtrl.loading.init">
@@ -41,13 +41,14 @@
                        data-ng-disabled="LineLockOutCallCtrl.loading.save"
                        data-ng-model="LineLockOutCallCtrl.options.lockOutCall">
                 <label class="oui-checkbox__label-container" for="lockOutCall">
-                    <span class="oui-checkbox__label"
-                          data-translate="telephony_line_actions_line_calls_out_lock_call_checkbox_label">
-                    </span>
+                    <span class="oui-checkbox__label">
+                        <span data-translate="telephony_line_actions_line_calls_out_lock_call_checkbox_label"></span>
                         <span class="oui-checkbox__icon">
-                        <i class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></i>
-                        <i class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></i>
-                        <i class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></i>
+                            <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
+                            <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
+                            <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
+                            <span class="oui-icon oui-icon-checkbox-indeterminate" aria-hidden="true"></span>
+                        </span>
                     </span>
                 </label>
             </div>
@@ -94,10 +95,10 @@
                         <button type="submit"
                                 class="btn btn-primary"
                                 data-ng-disabled="LineLockOutCallCtrl.updating || !lockOutCallForm.$valid">
-                            <oui-loader class="mr-2"
-                                        data-ng-if="LineDisplayNumberCtrl.updating"
-                                        data-size="s">
-                            </oui-loader>
+                            <oui-spinner class="mr-2"
+                                         data-ng-if="LineDisplayNumberCtrl.updating"
+                                         data-size="s">
+                            </oui-spinner>
                             <span data-translate="submit"></span>
                         </button>
                         <button type="button"

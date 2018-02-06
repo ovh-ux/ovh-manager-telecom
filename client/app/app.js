@@ -431,6 +431,32 @@ angular.module("managerApp", [
         $logProvider.debugEnabled(false);
     })
 
+    .run(($rootScope, $translate, $translatePartialLoader,
+          ouiDatagridConfiguration, ouiPaginationConfiguration) => {
+        "use strict";
+        $translatePartialLoader.addPart("common");
+        $translatePartialLoader.addPart("components");
+
+        const off = $rootScope.$on("$stateChangeSuccess", () => {
+            ouiDatagridConfiguration.translations = {
+                emptyPlaceholder: $translate.instant("common_datagrid_nodata")
+            };
+
+            ouiPaginationConfiguration.translations = {
+                resultsPerPage: $translate.instant("common_pagination_resultsperpage"),
+                ofNResults: $translate.instant("common_pagination_ofnresults")
+                    .replace("TOTAL_ITEMS", "{{totalItems}}"),
+                currentPageOfPageCount: $translate.instant("common_pagination_currentpageofpagecount")
+                    .replace("CURRENT_PAGE", "{{currentPage}}")
+                    .replace("PAGE_COUNT", "{{pageCount}}"),
+                previousPage: $translate.instant("common_pagination_previous"),
+                nextPage: $translate.instant("common_pagination_next")
+            };
+
+            off();
+        });
+    })
+
     .run(function ($rootScope, $title) {
         "use strict";
 

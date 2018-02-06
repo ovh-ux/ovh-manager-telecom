@@ -231,7 +231,8 @@ module.exports = function (grunt) {
                     }
                 ]
             },
-            server: "<%= yeoman.tmp %>"
+            server: "<%= yeoman.tmp %>",
+            ngdocs: "docs"
         },
 
         //#######################################################################################
@@ -539,6 +540,17 @@ module.exports = function (grunt) {
                         "{app,components}/**/!(*.tpl).html"
                     ]
                 }]
+            },
+            ngdocs: {
+                files: [{
+                    expand: true,
+                    dot: true,
+                    cwd: "node_modules/ovh-ui-kit-bs/dist/",
+                    dest: "docs/css",
+                    src: [
+                        "**/*"
+                    ]
+                }]
             }
         },
 
@@ -843,6 +855,30 @@ module.exports = function (grunt) {
                 }
             },
             build: {}
+        },
+
+        //#######################################################################################
+        //##      TASK: ngdocs                                                                 ##
+        //##            Build some documentation.                                              ##
+        //#######################################################################################
+        ngdocs: {
+            options: {
+                dest: "docs/",
+                title: "Telecom - Documentation",
+                titleLink: "#voip/managerApp",
+                startPage: "voip/managerApp",
+                template: "tasks/docs/index-bs3.tmpl",
+                styles: [
+                    "tasks/docs/css/styles.css",
+                    "tasks/docs/css/ovh-ui-kit-bs.css"
+                ],
+                sourceLink: "https://github.com/ovh-ux/ovh-manager-telecom/tree/master/{{file}}#L{{codeline}}"
+            },
+            voip: {
+                src: ["client/components/telecom/voip/**/*.js"],
+                title: "Telephony API",
+                api: true
+            }
         }
     });
 
@@ -877,7 +913,7 @@ module.exports = function (grunt) {
         }
 
         grunt.task.run([
-            "clean",
+            "clean:dist",
             "env:all",
             "babel:dist",
             "ngconstant",
@@ -905,7 +941,7 @@ module.exports = function (grunt) {
 
     grunt.registerTask("test", function (target, option) {
         return grunt.task.run([
-            "clean",
+            "clean:dist",
             "env:all",
             "babel:test",
             "ngconstant",
@@ -918,8 +954,16 @@ module.exports = function (grunt) {
         ]);
     });
 
+    grunt.registerTask("docs", function (target, option) {
+        return grunt.task.run([
+            "clean:ngdocs",
+            "ngdocs",
+            "copy:ngdocs"
+        ]);
+    });
+
     grunt.registerTask("buildProd", [
-        "clean:dist",
+        "clean",
         "babel:dist",
         "ngconstant",
         "concurrent:templates",
@@ -938,7 +982,8 @@ module.exports = function (grunt) {
         "cssmin",
         "uglify",
         "rev",
-        "usemin"
+        "usemin",
+        "ngdocs"
     ]);
 
     grunt.registerTask("default", [

@@ -49,7 +49,7 @@ angular.module("managerApp").service("voipTimeCondition", function ($q, $transla
         if (modulo) {
             var minuteInt = parseInt(minute, 10);
             if (minuteInt === 0) {
-                hour = hour - 1;
+                hour = _.padLeft(hour - 1, 2, "0");
                 minute = "59";
                 second = "59";
             } else if (minuteInt % 15 === 0) {
@@ -138,23 +138,23 @@ angular.module("managerApp").service("voipTimeCondition", function ($q, $transla
     };
 
     self.getConditionResourceCallActionParams = function (condition) {
-        var actionAprams = {};
+        var actionParams = {};
 
         // set timeFrom => hourEnd for sip
-        _.set(actionAprams, condition.featureType === "sip" ? "hourBegin" : "timeFrom", condition.featureType === "sip" ? self.getSipTime(condition.timeFrom) : condition.timeFrom);
+        _.set(actionParams, condition.featureType === "sip" ? "hourBegin" : "timeFrom", condition.featureType === "sip" ? self.getSipTime(condition.timeFrom) : condition.timeFrom);
 
         // set timeTo => hourBegin for sip
-        _.set(actionAprams, condition.featureType === "sip" ? "hourEnd" : "timeTo", condition.featureType === "sip" ? self.getSipTime(condition.timeTo, true) : condition.timeTo);
+        _.set(actionParams, condition.featureType === "sip" ? "hourEnd" : "timeTo", condition.featureType === "sip" ? self.getSipTime(condition.timeTo, true) : condition.timeTo);
 
         // set weekDay => day for sip
-        _.set(actionAprams, condition.featureType === "sip" ? "day" : "weekDay", condition.weekDay);
+        _.set(actionParams, condition.featureType === "sip" ? "day" : "weekDay", condition.weekDay);
 
         // set policy if not ovhPabx
         if (condition.featureType !== "ovhPabx") {
-            _.set(actionAprams, "policy", condition.policy);
+            _.set(actionParams, "policy", condition.policy);
         }
 
-        return actionAprams;
+        return actionParams;
     };
 
     /*= ===========================================
