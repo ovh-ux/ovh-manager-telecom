@@ -1,6 +1,6 @@
 angular.module("managerApp").controller("XdslAccessCtrl", function ($scope, $stateParams, $uibModal, $q, $filter, $translate, $templateCache,
                                                                     OvhApiXdsl, OvhApiXdslTasksCurrent, OvhApiXdslLines, OvhApiXdslNotifications, OvhApiXdslModem, OvhApiXdslIps, OvhApiPackXdsl,
-                                                                    ToastError, PACK_IP, REDIRECT_URLS) {
+                                                                    Toast, ToastError, PACK_IP, REDIRECT_URLS) {
     "use strict";
 
     var self = this;
@@ -42,18 +42,18 @@ angular.module("managerApp").controller("XdslAccessCtrl", function ($scope, $sta
     function setStatusLabel (status) {
         switch (status) {
         case "active":
-            self.statusLabel = "<span class=\"ovh-font ovh-font-success text-success h5 mr-2\" aria-hidden=\"true\"></span> " + $translate.instant("xdsl_details_status_" + status);
+            self.statusLabel = "<h5 class=\"ovh-font ovh-font-success text-success mr-2\" aria-hidden=\"true\"></h5> " + $translate.instant("xdsl_details_status_" + status);
             break;
         case "doing":
         case "migration":
         case "upgradeOffer":
-            self.statusLabel = "<span class=\"ovh-font ovh-font-success text-success h5 mr-2\" aria-hidden=\"true\"></span> " + $translate.instant("xdsl_details_status_" + status);
+            self.statusLabel = "<h5 class=\"ovh-font ovh-font-success text-success mr-2\" aria-hidden=\"true\"></h5> " + $translate.instant("xdsl_details_status_" + status);
             break;
         case "cancelled":
         case "close":
         case "deleting":
         case "slamming":
-            self.statusLabel = "<span class=\"ovh-font ovh-font-failure text-danger h5 mr-2\" aria-hidden=\"true\"></span> " + $translate.instant("xdsl_details_status_" + status);
+            self.statusLabel = "<h5 class=\"ovh-font ovh-font-failure text-danger mr-2\" aria-hidden=\"true\"></h5> " + $translate.instant("xdsl_details_status_" + status);
             break;
         default :
             self.statusLabel = status;
@@ -146,11 +146,11 @@ angular.module("managerApp").controller("XdslAccessCtrl", function ($scope, $sta
         }, null).$promise.then(function () {
             self.getIps();
             ip.deleting = false;
+            Toast.success($translate.instant("xdsl_access_ip_block_delete_success", { ip: ip.ip }));
         }, function (err) {
             ip.deleting = false;
             ToastError(err);
         });
-
     };
 
     $scope.notificationsChanged = function (elements) {

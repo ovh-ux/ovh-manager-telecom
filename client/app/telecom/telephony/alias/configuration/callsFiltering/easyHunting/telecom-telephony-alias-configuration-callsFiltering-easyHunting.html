@@ -7,12 +7,14 @@
         <h1 data-translate="telephony_alias_configuration_calls_filtering_title"></h1>
     </header>
 
-    <oui-loader data-ng-if="MembersEasyHuntingCtrl.loaders.init"
-                data-size="m">
-    </oui-loader>
+    <div class="text-center" data-ng-if="MembersEasyHuntingCtrl.loaders.init">
+        <oui-spinner></oui-spinner>
+    </div>
 
     <div class="telecom-section-content"
          data-ng-if="!MembersEasyHuntingCtrl.loaders.init">
+
+        <toast-message></toast-message>
 
         <div class="row">
 
@@ -38,9 +40,25 @@
                             <option value="incomingBlackList" data-translate="telephony_alias_configuration_calls_filtering_list_black"></option>
                         </select>
                     </div>
-                    <oui-loader data-ng-if="CallsFilteringEasyHuntingCtrl.screenStatus.isLoading"
-                                data-size="m">
-                    </oui-loader>
+                    <div class="text-center" data-ng-if="CallsFilteringEasyHuntingCtrl.screenStatus.isLoading">
+                        <oui-spinner></oui-spinner>
+                    </div>
+                    <div class="form-group mt-4">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <telephony-bulk-action data-billing-account="{{ CallsFilteringEasyHuntingCtrl.bulkDatas.billingAccount }}"
+                                                       data-service-type="alias"
+                                                       data-service-name="{{ CallsFilteringEasyHuntingCtrl.bulkDatas.serviceName }}"
+                                                       data-custom-class="link d-block pl-0 mb-3"
+                                                       data-bulk-infos="CallsFilteringEasyHuntingCtrl.bulkDatas.infos"
+                                                       data-filter-services="CallsFilteringEasyHuntingCtrl.filterServices"
+                                                       data-get-bulk-params="CallsFilteringEasyHuntingCtrl.getBulkParams"
+                                                       data-on-success="CallsFilteringEasyHuntingCtrl.onBulkSuccess"
+                                                       data-on-error="CallsFilteringEasyHuntingCtrl.onBulkError">
+                                </telephony-bulk-action>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <!-- /.widget-presentation -->
             </div>

@@ -86,10 +86,10 @@
                     <button type="submit"
                             class="btn btn-primary"
                             data-ng-disabled="agentAddForm.$invalid || AgentsOvhPabxCtrl.addAgentForm.isAdding">
-                        <oui-loader class="mr-2"
-                                    data-ng-if="AgentsOvhPabxCtrl.addAgentForm.isAdding"
-                                    data-size="s">
-                        </oui-loader>
+                        <oui-spinner class="mr-2"
+                                     data-ng-if="AgentsOvhPabxCtrl.addAgentForm.isAdding"
+                                     data-size="s">
+                        </oui-spinner>
                         <span data-ng-if="AgentsOvhPabxCtrl.addAgentForm.numbers.length <= 1"
                               data-translate="telephony_alias_configuration_agents_add">
                         </span>
@@ -116,10 +116,10 @@
                     class="btn btn-default mb-1"
                     data-ng-disabled="AgentsOvhPabxCtrl.agents.isDeleting || !AgentsOvhPabxCtrl.getSelectedAgentIds().length"
                     data-ng-click="AgentsOvhPabxCtrl.deleteAgents()">
-                <oui-loader class="mr-2"
-                            data-ng-if="AgentsOvhPabxCtrl.agents.isDeleting"
-                            data-size="s">
-                </oui-loader>
+                <oui-spinner class="mr-2"
+                             data-ng-if="AgentsOvhPabxCtrl.agents.isDeleting"
+                             data-size="s">
+                </oui-spinner>
                 <span data-translate="telephony_alias_configuration_agents_delete_one"
                       data-ng-if="AgentsOvhPabxCtrl.getSelectedAgentIds().length <= 1">
                 </span>
@@ -242,10 +242,10 @@
                                             data-ng-if="agent.inEdition"
                                             data-ng-click="AgentsOvhPabxCtrl.updateAgent(agent)"
                                             data-ng-disabled="agent.isUpdating || !AgentsOvhPabxCtrl.isValidAgent(agent.inEdition)">
-                                        <oui-loader class="mr-2"
-                                                    data-ng-if="agent.isUpdating"
-                                                    data-size="s">
-                                        </oui-loader>
+                                        <oui-spinner class="mr-2"
+                                                     data-ng-if="agent.isUpdating"
+                                                     data-size="s">
+                                        </oui-spinner>
                                         <span data-translate="submit"></span>
                                     </button>
                                 </div>
@@ -254,8 +254,8 @@
                     </tbody>
                     <tbody data-ng-if="AgentsOvhPabxCtrl.agents.isLoading || (!AgentsOvhPabxCtrl.agents.paginated.length && AgentsOvhPabxCtrl.agents.ids.length)">
                         <tr>
-                            <td colspan="7">
-                                <oui-loader data-size="m"></oui-loader>
+                            <td colspan="7" class="text-center">
+                                <oui-spinner data-size="s"></oui-spinner>
                             </td>
                         </tr>
                     </tbody>

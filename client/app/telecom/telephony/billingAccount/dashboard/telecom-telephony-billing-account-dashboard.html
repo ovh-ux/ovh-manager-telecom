@@ -1,8 +1,8 @@
 <div class="telephony-group-dashboard">
 
-    <oui-loader data-ng-if="DashboardCtrl.loading.init"
-                data-size="m">
-    </oui-loader>
+    <div class="text-center" data-ng-if="DashboardCtrl.loading.init">
+        <oui-spinner></oui-spinner>
+    </div>
 
     <toast-message></toast-message>
 
@@ -33,10 +33,10 @@
                                   data-ng-if="!DashboardCtrl.loading.portability"
                                   data-ng-bind="DashboardCtrl.portabilities">
                             </span>
-                            <oui-loader class="ml-2"
+                            <oui-spinner class="ml-2"
                                         data-ng-if="DashboardCtrl.loading.portability"
                                         data-size="s">
-                            </oui-loader>
+                            </oui-spinner>
                             <i class="oui-icon oui-icon-chevron-right" aria-hidden="true"></i>
                         </a>
                     </div>
@@ -179,9 +179,9 @@
                     </div>
                 </div>
 
-                <oui-loader data-ng-if="DashboardCtrl.loading.phones"
-                            data-size="m">
-                </oui-loader>
+                <div class="text-center" data-ng-if="DashboardCtrl.loading.phones">
+                    <oui-spinner></oui-spinner>
+                </div>
 
                 <div class="mt-2"
                      data-ng-if="DashboardCtrl.group.lines.length"
@@ -246,9 +246,9 @@
                                                   aria-hidden="true"
                                                   data-ng-if="!consumption.downloading">
                                             </span>
-                                            <oui-loader data-ng-if="consumption.downloading"
-                                                        data-size="s">
-                                            </oui-loader>
+                                            <oui-spinner data-ng-if="consumption.downloading"
+                                                         data-size="s">
+                                            </oui-spinner>
                                             <span class="sr-only"
                                                   data-translate="common_actions">
                                             </span>
@@ -288,8 +288,8 @@
                         </tbody>
                         <tbody data-ng-if="DashboardCtrl.loading.bills">
                             <tr>
-                                <td colspan="4">
-                                    <oui-loader data-size="m"></oui-loader>
+                                <td colspan="4" class="text-center">
+                                    <oui-spinner data-size="s"></oui-spinner>
                                 </td>
                             </tr>
                         </tbody>

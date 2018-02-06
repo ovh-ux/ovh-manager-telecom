@@ -2,9 +2,9 @@
 
     <div class="telecom-section-content ml-0">
 
-        <oui-loader data-ng-if="PackXdslResiliation.loading"
-                    data-size="m">
-        </oui-loader>
+        <div class="text-center" data-ng-if="PackXdslResiliation.loading">
+            <oui-spinner></oui-spinner>
+        </div>
 
         <div class="row" data-ng-if="!PackXdslResiliation.loading">
 
@@ -31,10 +31,9 @@
                             data-translate="xdsl_resiliation_due"></span>
                         <div class="col-xs-12 col-md-4 service-item">
                             <span data-ng-if="!PackXdslResiliation.computingPrice"
-                                data-ng-bind="PackXdslResiliation.resiliationTerms.data.due.text"></span>
-                            <oui-loader data-ng-if="PackXdslResiliation.computingPrice"
-                                        data-size="m">
-                            </oui-loader>
+                                  data-ng-bind="PackXdslResiliation.resiliationTerms.data.due.text"></span>
+                            <oui-spinner data-ng-if="PackXdslResiliation.computingPrice">
+                            </oui-spinner>
                         </div>
                     </div>
 

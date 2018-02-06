@@ -156,13 +156,13 @@
 
     <div class="modal-body text-center"
          data-ng-if="UsersLimitCtrl.loading.init">
-        <oui-loader data-size="m"></oui-loader>
+        <oui-spinner></oui-spinner>
         <h4 data-translate="loading"></h4>
     </div>
 
     <div class="modal-body text-center"
          data-ng-if="UsersLimitCtrl.loading.limitUser && !UsersLimitCtrl.limited">
-        <oui-loader data-size="m"></oui-loader>
+        <oui-spinner></oui-spinner>
         <h4 data-translate="sms_users_limit_user_adding"></h4>
     </div>
 

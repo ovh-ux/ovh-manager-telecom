@@ -1,8 +1,10 @@
 <section class="telecom-pack-xdsl-access" data-ui-view="accessView">
 
-    <oui-loader data-ng-if="loaders.details || loaders.tasks"
-                data-size="m">
-    </oui-loader>
+    <div class="text-center" data-ng-if="loaders.details || loaders.tasks">
+        <oui-spinner></oui-spinner>
+    </div>
+
+    <toast-message></toast-message>
 
     <toast-message></toast-message>
 
@@ -297,11 +299,13 @@
                                         <div class="oui-tile__term"
                                              data-translate="xdsl_details_ips_v4"></div>
                                         <div class="oui-tile__description">
-                                            <div class="my-2"
+                                            <div class="my-2 ip-row-height"
                                                  data-ng-repeat="ip in XdslAccess.ipsV4 | orderBy:'-range' track by ip.ip">
                                                 <div class="d-inline-block my-2"
                                                      data-ng-bind="ip.ip + '&nbsp;/&nbsp;' + ip.range">
                                                 </div>
+                                                <em class="text-warning pl-2" data-ng-if="ip.status === 'toDelete'"
+                                                    data-translate="xdsl_access_ip_is_being_deleted"></em>
                                                 <div class="float-right">
                                                     <a data-ng-disabled="ip.deleting"
                                                        title="{{ip.ip}} / {{ip.range}} : {{::'xdsl_details_ips_manage' | translate }}"
@@ -311,7 +315,7 @@
                                                               aria-hidden="true"></span>
                                                     </a>
                                                     <button type="button"
-                                                            data-ng-disabled="ip.deleting || ip.range === constants.rangeOfBaseIpv4IP"
+                                                            data-ng-disabled="ip.deleting || ip.range === constants.rangeOfBaseIpv4IP || ip.status === 'toDelete'"
                                                             class="btn btn-default"
                                                             title="{{ip.ip}} / {{ip.range}} {{:: 'common_table_delete' | translate }}"
                                                             data-ng-really-click="XdslAccess.deleteIps(ip)"
@@ -341,7 +345,7 @@
                                         <div class="oui-tile__description">
                                             <div
                                                 data-ng-include="'app/telecom/pack/xdsl/access/ipv6/pack-xdsl-access-ipv6.html'"></div>
-                                            <div class="my-2"
+                                            <div class="my-2 ip-row-height"
                                                  data-ng-repeat="ip in XdslAccess.ipsV6 | orderBy:'-range' track by ip.ip">
                                                 <div class="d-inline-block my-2"
                                                      data-ng-bind="ip.ip + '&nbsp;/&nbsp;' + ip.range">
