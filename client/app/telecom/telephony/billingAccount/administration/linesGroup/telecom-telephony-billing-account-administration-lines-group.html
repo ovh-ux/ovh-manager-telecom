@@ -46,7 +46,8 @@
                             'text-muted': $row.status !== 'enabled' || $row.billingAccount === LinesGroupCtrl.billingAccounts.current
                         }">
 
-                            <button class="btn btn-link"
+                            <button type="button"
+                                    class="btn btn-link"
                                     data-ng-click="LinesGroupCtrl.selectBillingAccount($row)"
                                     data-ng-bind=":: $row.description || $row.billingAccount">
                             </button>

@@ -21,7 +21,7 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountAdministr
         if (_.has(self, "prices.withTax.value") && self.prices.withTax.value === 0) {
             return $translate.instant("telephony_add_group_free");
         }
-        return _.get(self, "a.b.c", "prices.withTax.text", "-");
+        return _.get(self, "prices.withTax.text", "-");
 
     };
 

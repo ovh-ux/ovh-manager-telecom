@@ -18,10 +18,10 @@
 
             <oui-datagrid data-rows="BillingAccountBillCtrl.consumption.raw">
                 <oui-column data-title="'telephony_group_billing_bill_date' | translate" data-property="date" data-sortable="desc">
-                    {{$row.date | date}}
+                    <span data-ng-bind="$row.date | date"></span>
                 </oui-column>
                 <oui-column data-title="'telephony_group_billing_bill_amount' | translate" data-property="price.value" data-sortable>
-                    {{$row.price.text}}
+                    <span data-ng-bind="$row.price.text"></span>
                 </oui-column>
                 <oui-column data-title="'telephony_group_billing_bill_paid' | translate" data-property="status" data-sortable>
                     <span class="text-capitalize"

@@ -37,8 +37,8 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingSu
     /*= =====================================
     =            INITIALIZATION            =
     ======================================*/
-    this.$onInit = function () {
 
+    this.$onInit = function () {
         return TelephonyMediator.getGroup($stateParams.billingAccount)
             .then(function (group) {
                 self.group = group;
