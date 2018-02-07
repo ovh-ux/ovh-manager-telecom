@@ -1,21 +1,21 @@
 angular.module("managerApp").controller("TelecomTelephonyBillingAccountAdministrationAddGroup", function ($stateParams, $translate, $timeout, OvhApiOrderTelephony, ToastError) {
     "use strict";
 
-    const self = this;
+    var self = this;
 
-    function init () {
+    self.$onInit = function () {
         self.loading = true;
         self.contractsAccepted = false;
         self.order = null;
         OvhApiOrderTelephony.Lexi().getNewBillingAccount().$promise.then(function (result) {
             self.contracts = result.contracts;
             self.prices = result.prices;
-        }).catch(function (err) {
+        }, function (err) {
             return new ToastError(err);
         }).finally(function () {
             self.loading = false;
         });
-    }
+    };
 
     self.getDisplayedPrice = function () {
         if (_.has(self, "prices.withTax.value") && self.prices.withTax.value === 0) {
@@ -29,12 +29,10 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountAdministr
         self.ordering = true;
         return OvhApiOrderTelephony.Lexi().orderNewBillingAccount().$promise.then(function (order) {
             self.order = order;
-        }).catch(function (err) {
+        }, function (err) {
             return new ToastError(err);
         }).finally(function () {
             self.ordering = false;
         });
     };
-
-    init();
 });

@@ -1,7 +1,7 @@
 angular.module("managerApp").controller("TelecomTelephonyBillingAccountAdministrationLinesGroup", function ($scope, $stateParams, $q, $translate, TelephonyMediator, TelephonySidebar, OvhApiTelephony, Toast, ToastError) {
     "use strict";
 
-    const self = this;
+    var self = this;
 
     this.$onInit = function () {
 
@@ -17,11 +17,11 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountAdministr
         self.serviceAttachSuccess = {};
         self.serviceAttachErrors = {};
 
-        const getNumberCount = OvhApiTelephony.Number().Lexi().query({
+        var getNumberCount = OvhApiTelephony.Number().Lexi().query({
             billingAccount: $stateParams.billingAccount
         }).$promise.then(_.size);
 
-        const getLineCount = OvhApiTelephony.Line().Lexi().query({
+        var getLineCount = OvhApiTelephony.Line().Lexi().query({
             billingAccount: $stateParams.billingAccount
         }).$promise.then(_.size);
 
@@ -30,10 +30,12 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountAdministr
             numberCount: getNumberCount,
             lineCount: getLineCount
         }).then(function (result) {
-            self.billingAccounts.ids = result.billingAccounts.map((billingAccount) => ({ id: billingAccount }));
+            self.billingAccounts.ids = result.billingAccounts.map(function (billingAccount) {
+                return { id: billingAccount };
+            });
             self.numberCount = result.numberCount;
             self.lineCount = result.lineCount;
-        }).catch(function (err) {
+        }, function (err) {
             return new ToastError(err);
         });
     };
@@ -60,7 +62,7 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountAdministr
         self.services = null;
 
         // get batch line details
-        const lines = OvhApiTelephony.Line().Lexi().query({
+        var lines = OvhApiTelephony.Line().Lexi().query({
             billingAccount: ba.billingAccount
         }).$promise.then(function (ids) {
             return $q.all(_.map(_.chunk(ids, 50), function (chunkIds) {
@@ -74,7 +76,7 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountAdministr
         });
 
         // get batch alias details
-        const aliases = OvhApiTelephony.Number().Lexi().query({
+        var aliases = OvhApiTelephony.Number().Lexi().query({
             billingAccount: ba.billingAccount
         }).$promise.then(function (ids) {
             return $q.all(_.map(_.chunk(ids, 50), function (chunkIds) {
@@ -94,10 +96,10 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountAdministr
             result.lines = _.compact(result.lines);
 
             // handle pool of aliases
-            const pools = [];
+            var pools = [];
             result.aliases = _.filter(result.aliases, function (alias) {
                 if (alias.partOfPool) {
-                    let pool = _.find(pools, { id: alias.partOfPool });
+                    var pool = _.find(pools, { id: alias.partOfPool });
                     if (!pool) {
                         pool = {
                             id: alias.partOfPool,
@@ -123,7 +125,7 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountAdministr
     };
 
     self.attachSelectedServices = function () {
-        const errorList = [];
+        var errorList = [];
         self.isAttaching = true;
 
         return $q.all(_.map(self.getServicesToAttachList(), function (service) {
@@ -142,7 +144,7 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountAdministr
                 }
                 self.serviceAttachSuccess[service.serviceName] = true;
                 delete self.serviceAttachErrors[service.serviceName];
-            }).catch(function (err) {
+            }, function (err) {
                 errorList.push({
                     service: service,
                     error: err

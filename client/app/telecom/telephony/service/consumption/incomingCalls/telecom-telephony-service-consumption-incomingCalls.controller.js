@@ -1,7 +1,7 @@
 angular.module("managerApp").controller("TelecomTelephonyServiceConsumptionIncomingCallsCtrl", function ($stateParams, $q, $translate, $filter, $timeout, OvhApiTelephony, ToastError) {
     "use strict";
 
-    const self = this;
+    var self = this;
 
     function fetchIncomingConsumption () {
         return OvhApiTelephony.Service().VoiceConsumption().Lexi().query({
@@ -68,7 +68,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceConsumptionIncom
             self.consumption.durationSum = new Date(_.sum(self.consumption.raw, function (conso) {
                 return conso.duration;
             }) * 1000);
-        }).catch(function (err) {
+        }, function (err) {
             return new ToastError(err);
         });
     }
@@ -80,7 +80,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceConsumptionIncom
     };
 
     self.applySorting = function () {
-        let data = angular.copy(self.consumption.raw);
+        var data = angular.copy(self.consumption.raw);
         data = $filter("filter")(data, self.consumption.filterBy);
         data = $filter("orderBy")(
             data,

@@ -1,7 +1,7 @@
 angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingSummaryCtrl", function ($q, $filter, $window, $timeout, $stateParams, $translate, TelephonyMediator, OvhApiTelephony, Toast) {
     "use strict";
 
-    const self = this;
+    var self = this;
 
     self.group = null;
     self.consumptionSummary = null;
@@ -44,10 +44,9 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingSu
                 self.group = group;
                 return self.group;
             })
-            .then(fetchConsumption)
-            .catch(function (error) {
-                Toast.error([$translate.instant("telephony_group_billing_summary_consumptioninit_error"), (error.data && error.data.message) || ""].join(" "));
-                return $q.reject(error);
+            .then(fetchConsumption, function (err) {
+                Toast.error([$translate.instant("telephony_group_billing_summary_consumptioninit_error"), (err.data && err.data.message) || ""].join(" "));
+                return $q.reject(err);
             });
     };
 });

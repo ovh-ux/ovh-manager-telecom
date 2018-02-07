@@ -1,7 +1,7 @@
 angular.module("managerApp").controller("TelecomTelephonyServiceConsumptionIncomingFaxCtrl", function ($stateParams, $q, $translate, $filter, $timeout, OvhApiTelephony, ToastError) {
     "use strict";
 
-    const self = this;
+    var self = this;
 
     function fetchIncomingConsumption () {
         return OvhApiTelephony.Service().FaxConsumption().Lexi().query({
@@ -18,7 +18,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceConsumptionIncom
                 return _.flatten(chunkResult);
             });
         }).then(function (resultParam) {
-            let result = _.pluck(resultParam, "value");
+            var result = _.pluck(resultParam, "value");
             result = _.filter(result, function (conso) {
                 return conso.wayType === "received";
             });
@@ -51,7 +51,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceConsumptionIncom
             self.consumption.pagesSum = _.sum(self.consumption.raw, function (conso) {
                 return conso.pages;
             });
-        }).catch(function (err) {
+        }, function (err) {
             return new ToastError(err);
         });
     };
@@ -63,7 +63,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceConsumptionIncom
     };
 
     self.applySorting = function () {
-        let data = angular.copy(self.consumption.raw);
+        var data = angular.copy(self.consumption.raw);
         data = $filter("filter")(data, self.consumption.filterBy);
         data = $filter("orderBy")(
             data,

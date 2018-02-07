@@ -1,7 +1,7 @@
 angular.module("managerApp").controller("TelecomTelephonyServiceConsumptionOutgoingFaxCtrl", function ($stateParams, $q, $translate, $filter, $timeout, OvhApiTelephony, ToastError) {
     "use strict";
 
-    const self = this;
+    var self = this;
 
     function fetchOutgoingConsumption () {
         return OvhApiTelephony.Service().FaxConsumption().Lexi().query({
@@ -18,7 +18,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceConsumptionOutgo
                 return _.flatten(chunkResult);
             });
         }).then(function (resultParam) {
-            let result = _.pluck(resultParam, "value");
+            var result = _.pluck(resultParam, "value");
             result = _.filter(result, function (conso) {
                 return conso.wayType === "sent";
             });
@@ -53,7 +53,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceConsumptionOutgo
             self.consumption.pagesSum = _.sum(self.consumption.raw, function (conso) {
                 return conso.pages;
             });
-            let priceSuffix = "";
+            var priceSuffix = "";
             self.consumption.priceSum = _.sum(self.consumption.raw, function (conso) {
                 if (conso.priceWithoutTax) {
                     priceSuffix = priceSuffix || conso.priceWithoutTax.text.replace(/[0-9\.\,\s]/g, "");
@@ -63,7 +63,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceConsumptionOutgo
 
             });
             self.consumption.priceSum = (Math.floor(self.consumption.priceSum * 100.0, 2) / 100.0) + " " + priceSuffix;
-        }).catch(function (err) {
+        }, function (err) {
             return new ToastError(err);
         });
     };
@@ -75,7 +75,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceConsumptionOutgo
     };
 
     self.applySorting = function () {
-        let data = angular.copy(self.consumption.raw);
+        var data = angular.copy(self.consumption.raw);
         data = $filter("filter")(data, self.consumption.filterBy);
         data = $filter("orderBy")(
             data,

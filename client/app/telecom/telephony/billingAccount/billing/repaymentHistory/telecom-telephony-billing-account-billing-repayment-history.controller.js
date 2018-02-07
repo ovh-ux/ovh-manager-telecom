@@ -1,7 +1,7 @@
 angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingRepaymentHistoryCtrl", function ($q, $filter, $window, $timeout, $stateParams, $translate, TelephonyMediator, OvhApiTelephony, Toast) {
     "use strict";
 
-    const self = this;
+    var self = this;
 
     self.group = null;
     self.consumption = {
@@ -24,7 +24,7 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingRe
                     date: chunkDates
                 }).$promise;
             })).then(function (chunkResult) {
-                const result = _.pluck(_.flatten(chunkResult), "value");
+                var result = _.pluck(_.flatten(chunkResult), "value");
                 return _.each(result, function (consumption) {
                     consumption.priceValue = consumption.price ? consumption.price.value : null;
                 });
@@ -34,7 +34,7 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingRe
 
 
     self.fetchFile = function (consumption) {
-        const tryDownload = function () {
+        var tryDownload = function () {
             return OvhApiTelephony.HistoryRepaymentConsumption().Lexi().getDocument({
                 billingAccount: $stateParams.billingAccount,
                 date: consumption.date
@@ -65,7 +65,7 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingRe
 
         return self.fetchFile(consumption).then(function (info) {
             $window.location.href = info.url;
-        }).catch(function (error) {
+        }, function (error) {
             Toast.error([$translate.instant("telephony_group_billing_repayment_history_download_error"), (error.data && error.data.message) || ""].join(" "));
             return $q.reject(error);
         }).finally(function () {
@@ -87,7 +87,7 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingRe
             return fetchHistory().then(function (consumptions) {
                 self.consumption.raw = consumptions;
             });
-        }).catch(function (error) {
+        }, function (error) {
             Toast.error([$translate.instant("telephony_group_billing_repayment_history_init_error"), (error.data && error.data.message) || ""].join(" "));
             return $q.reject(error);
         });

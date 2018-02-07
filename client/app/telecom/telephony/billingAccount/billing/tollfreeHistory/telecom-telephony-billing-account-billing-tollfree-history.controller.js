@@ -1,7 +1,7 @@
 angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingTollfreeHistoryCtrl", function ($q, $filter, $window, $timeout, $stateParams, $translate, TelephonyMediator, OvhApiTelephony, Toast) {
     "use strict";
 
-    const self = this;
+    var self = this;
 
     self.group = null;
     self.consumption = {
@@ -22,7 +22,7 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingTo
                     date: chunkDates
                 }).$promise;
             })).then(function (chunkResult) {
-                const result = _.pluck(_.flatten(chunkResult), "value");
+                var result = _.pluck(_.flatten(chunkResult), "value");
                 return _.each(result, function (consumption) {
                     consumption.priceValue = consumption.price ? consumption.price.value : null;
                 });
@@ -31,7 +31,7 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingTo
     }
 
     self.fetchFile = function (consumption) {
-        const tryDownload = function () {
+        var tryDownload = function () {
             return OvhApiTelephony.HistoryTollfreeConsumption().Lexi().getDocument({
                 billingAccount: $stateParams.billingAccount,
                 date: consumption.date
@@ -62,9 +62,9 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingTo
 
         return self.fetchFile(consumption).then(function (info) {
             $window.location.href = info.url;
-        }).catch(function (error) {
-            Toast.error([$translate.instant("telephony_group_billing_tollfree_history_download_error"), (error.data && error.data.message) || ""].join(" "));
-            return $q.reject(error);
+        }, function (err) {
+            Toast.error([$translate.instant("telephony_group_billing_tollfree_history_download_error"), (err.data && err.data.message) || ""].join(" "));
+            return $q.reject(err);
         }).finally(function () {
             consumption.downloading = false;
         });
@@ -82,9 +82,9 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingTo
             return fetchHistory().then(function (consumptions) {
                 self.consumption.raw = consumptions;
             });
-        }).catch(function (error) {
-            Toast.error([$translate.instant("telephony_group_billing_tollfree_history_init_error"), (error.data && error.data.message) || ""].join(" "));
-            return $q.reject(error);
+        }, function (err) {
+            Toast.error([$translate.instant("telephony_group_billing_tollfree_history_init_error"), (err.data && err.data.message) || ""].join(" "));
+            return $q.reject(err);
         });
     };
 

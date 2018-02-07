@@ -1,7 +1,7 @@
 angular.module("managerApp").controller("TelecomTelephonyServiceConsumptionOutgoingCallsCtrl", function ($stateParams, $q, $translate, $filter, $timeout, OvhApiTelephony, ToastError) {
     "use strict";
 
-    const self = this;
+    var self = this;
 
     function fetchOutgoingConsumption () {
         return OvhApiTelephony.Service().VoiceConsumption().Lexi().query({
@@ -79,7 +79,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceConsumptionOutgo
             self.consumption.sum.outPlan.durationAsDate = new Date(_.sum(self.consumption.raw, function (conso) {
                 return conso.planType === "outplan" ? conso.duration : 0;
             }) * 1000);
-            let priceSuffix = "";
+            var priceSuffix = "";
             self.consumption.sum.outPlan.price = _.sum(self.consumption.raw, function (conso) {
                 if (conso.planType === "outplan" && conso.priceWithoutTax) {
                     // since we compute the sum manually we must guess and add the currency symbol
@@ -90,7 +90,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceConsumptionOutgo
                 return null;
             });
             self.consumption.sum.outPlan.price = (Math.floor(self.consumption.sum.outPlan.price * 100.0, 2) / 100.0) + " " + priceSuffix;
-        }).catch(function (err) {
+        }, function (err) {
             return new ToastError(err);
         });
     }
@@ -102,7 +102,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceConsumptionOutgo
     };
 
     self.applySorting = function () {
-        let data = angular.copy(self.consumption.raw);
+        var data = angular.copy(self.consumption.raw);
         data = $filter("filter")(data, self.consumption.filterBy);
         data = $filter("orderBy")(
             data,

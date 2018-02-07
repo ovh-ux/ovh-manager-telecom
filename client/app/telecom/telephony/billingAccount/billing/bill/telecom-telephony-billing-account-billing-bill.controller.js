@@ -1,7 +1,7 @@
 angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingBillCtrl", function ($stateParams, $filter, $q, $timeout, $window, OvhApiTelephony, ToastError) {
     "use strict";
 
-    const self = this;
+    var self = this;
 
     function fetchConsumption () {
         return OvhApiTelephony.HistoryConsumption().Lexi().query({
@@ -13,7 +13,7 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingBi
                     date: chunkIds
                 }).$promise;
             })).then(function (chunkResult) {
-                const result = _.pluck(_.flatten(chunkResult), "value");
+                var result = _.pluck(_.flatten(chunkResult), "value");
                 return _.each(result, function (consumption) {
                     consumption.priceValue = consumption.price ? consumption.price.value : null;
                 });
@@ -32,13 +32,13 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingBi
     self.refresh = function () {
         fetchConsumption().then(function (result) {
             self.consumption.raw = result;
-        }).catch(function (err) {
+        }, function (err) {
             return new ToastError(err);
         });
     };
 
     self.fetchFile = function (consumption, type) {
-        const tryDownload = function () {
+        var tryDownload = function () {
             return OvhApiTelephony.HistoryConsumption().Lexi().getFile({
                 billingAccount: $stateParams.billingAccount,
                 date: consumption.date,
@@ -63,7 +63,7 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingBi
         consumption.downloading = true;
         self.fetchFile(consumption, type).then(function (info) {
             $window.location.href = info.url;
-        }).catch(function (err) {
+        }, function (err) {
             return new ToastError(err);
         }).finally(function () {
             consumption.downloading = false;
