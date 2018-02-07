@@ -6,6 +6,7 @@
     <translation id="common_newtab">(nouvel onglet)</translation>
     <translation id="common_window">(nouvelle fenêtre)</translation>
     <translation id="common_vip">Statut VIP</translation>
+    <translation id="common_table_header_type">Type</translation>
     <translation id="common_table_edit">: éditer</translation>
     <translation id="common_table_delete">: supprimer</translation>
     <translation id="common_table_validate_entry"> : ajouter cette entrée</translation>

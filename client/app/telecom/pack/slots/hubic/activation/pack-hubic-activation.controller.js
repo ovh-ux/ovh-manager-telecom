@@ -2,22 +2,15 @@ angular.module("managerApp").controller("PackHubicActivationCtrl", function ($sc
     "use strict";
 
     var self = this;
+    self.hubicList = [];
 
-    this.init = function () {
-        self.loading = true;
-        self.hubicList = [];
+    self.$onInit = function () {
         return OvhApiPackXdslHubic.Aapi().query({ packId: $stateParams.packName }).$promise.then(
             function (data) {
                 self.hubicList = data;
             },
             function (err) {
                 return new ToastError(err);
-            }
-        ).finally(function () {
-            self.loading = false;
-        }
-        );
+            });
     };
-
-    this.init();
 });
