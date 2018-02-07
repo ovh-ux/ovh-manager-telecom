@@ -6,43 +6,25 @@ angular.module("managerApp").controller("TelecomDashboardBillsCtrl", function (O
     self.links = {
         billing: REDIRECT_URLS.billing
     };
-
-    self.loaders = {
-        bills: true
-    };
-
     self.amountBillsDisplayed = 6;
-    self.sortby = "date";
-    self.reverse = true;
 
     /*= ================================
     =            API CALLS            =
     =================================*/
 
     function getLastBills () {
-        return OvhApiMeBill.Aapi().last().$promise.then(function (lastBills) {
-            self.last = lastBills.slice(Math.max(lastBills.length - self.amountBillsDisplayed, 0));
+        return OvhApiMeBill.Aapi().last().$promise.then(function (bills) {
+            self.lastBills = bills;
         }, function (err) {
+            self.lastBills = [];
             ToastError(err);
         });
     }
 
-    /* -----  End of API CALLS  ------*/
-
     /*= =====================================
     =            INITIALIZATION            =
     ======================================*/
-
-    function init () {
-        self.loaders.bills = true;
-
-        getLastBills().finally(function () {
-            self.loaders.bills = false;
-        });
-    }
-
-    /* -----  End of INITIALIZATION  ------*/
-
-    init();
-
+    self.$onInit = function () {
+        getLastBills();
+    };
 });
