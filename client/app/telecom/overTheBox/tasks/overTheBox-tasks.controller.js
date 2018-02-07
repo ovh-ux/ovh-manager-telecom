@@ -1,7 +1,7 @@
 angular.module("managerApp").controller("OverTheBoxTasksCtrl", function ($translate, $q, $stateParams, PAGINATION_PER_PAGE, OvhApiOverTheBox, Toast) {
     "use strict";
 
-    const self = this;
+    var self = this;
 
     self.loaders = {
         init: true
@@ -21,15 +21,24 @@ angular.module("managerApp").controller("OverTheBoxTasksCtrl", function ($transl
     };
 
     self.getTasks = function () {
-        OvhApiOverTheBox.Lexi().getTasks({ serviceName: $stateParams.serviceName }).$promise
-            .then((taskIds) => {
-                self.taskIds = taskIds.map((id) => ({ id }));
-            })
-            .catch((error) => Toast.error(`${$translate.instant("an_error_occured")} ${error.data.message}`));
+        OvhApiOverTheBox.Lexi().getTasks({ serviceName: $stateParams.serviceName }).$promise.then(
+            function (taskIds) {
+                self.taskIds = taskIds.map(function (taskId) {
+                    return { id: taskId };
+                });
+            },
+            function (error) {
+                Toast.error([$translate.instant("an_error_occured"), error.data.message].join(" "));
+            });
     };
 
     self.transformItem = function (row) {
-        return OvhApiOverTheBox.Lexi().getTask({ serviceName: $stateParams.serviceName, taskId: row.id }).$promise
-            .catch((error) => Toast.error(`${$translate.instant("an_error_occured")} ${error.data.message}`));
+        return OvhApiOverTheBox.Lexi().getTask({ serviceName: $stateParams.serviceName, taskId: row.id }).$promise.then(
+            function (task) {
+                return task;
+            },
+            function (error) {
+                Toast.error([$translate.instant("an_error_occured"), error.data.message].join(" "));
+            });
     };
 });
