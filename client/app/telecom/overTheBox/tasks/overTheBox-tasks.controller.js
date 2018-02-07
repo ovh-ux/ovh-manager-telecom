@@ -14,36 +14,31 @@ angular.module("managerApp").controller("OverTheBoxTasksCtrl", function ($transl
         perPage: PAGINATION_PER_PAGE
     };
 
-    function init () {
-        self.loaders.init = true;
+    self.$onInit = function () {
         $q.all([
             self.getTasks()
-        ]).finally(function () {
-            self.loaders.init = false;
-        });
-    }
+        ]);
+    };
 
     self.getTasks = function () {
-        self.loaders.tasks = true;
-        return OvhApiOverTheBox.Lexi().getTasks({ serviceName: self.serviceName }).$promise.then(
+        OvhApiOverTheBox.Lexi().getTasks({ serviceName: $stateParams.serviceName }).$promise.then(
             function (taskIds) {
-                self.taskIds = taskIds;
+                self.taskIds = taskIds.map(function (taskId) {
+                    return { id: taskId };
+                });
             },
             function (error) {
                 Toast.error([$translate.instant("an_error_occured"), error.data.message].join(" "));
-            }
-        ).finally(function () {
-            self.loaders.tasks = false;
-        });
+            });
     };
 
-    self.onTransformItem = function (id) {
-        self.loaders.init = true;
-        return OvhApiOverTheBox.Lexi().getTask({ serviceName: $stateParams.serviceName, taskId: id }).$promise.finally(function () {
-            self.loaders.init = false;
-        });
+    self.transformItem = function (row) {
+        return OvhApiOverTheBox.Lexi().getTask({ serviceName: $stateParams.serviceName, taskId: row.id }).$promise.then(
+            function (task) {
+                return task;
+            },
+            function (error) {
+                Toast.error([$translate.instant("an_error_occured"), error.data.message].join(" "));
+            });
     };
-
-    init();
-
 });
