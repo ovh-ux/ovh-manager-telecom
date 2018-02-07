@@ -1,7 +1,7 @@
 angular.module("managerApp").controller("XdslModemConnectedDevicesCtrl", function ($scope, $stateParams, $q, $translate, OvhApiXdsl, Toast, PackXdslModemMediator) {
     "use strict";
 
-    const self = this;
+    var self = this;
     self.devices = [];
 
     /**
@@ -9,7 +9,7 @@ angular.module("managerApp").controller("XdslModemConnectedDevicesCtrl", functio
      * @param {object} device Device description
      * @returns {string|null}
      */
-    this.getDeviceInfo = function (device) {
+    self.getDeviceInfo = function (device) {
         switch (true) {
         case (/android/i).test(device.hostName):
             return {
@@ -45,7 +45,7 @@ angular.module("managerApp").controller("XdslModemConnectedDevicesCtrl", functio
      * @param {object} device Device description
      * @returns {string}
      */
-    this.getConnectionIcon = function (device) {
+    self.getConnectionIcon = function (device) {
         if (device.interfaceType.match(/ethernet/i)) {
             return "ovh-font-telecom-ethernet";
         }
@@ -56,7 +56,7 @@ angular.module("managerApp").controller("XdslModemConnectedDevicesCtrl", functio
     /**
      * Get All connected devices
      */
-    this.getConnectedDevices = function () {
+    self.getConnectedDevices = function () {
         return OvhApiXdsl.Modem().ConnectedDevices().Aapi().query(
             {
                 xdslId: $stateParams.serviceName
@@ -77,7 +77,7 @@ angular.module("managerApp").controller("XdslModemConnectedDevicesCtrl", functio
     /**
      * Launch the refresh of the connected devices
      */
-    this.refresh = function () {
+    self.refresh = function () {
         this.devices = null;
         this.loading = true;
         PackXdslModemMediator.disableCapabilities();
@@ -101,7 +101,7 @@ angular.module("managerApp").controller("XdslModemConnectedDevicesCtrl", functio
     /**
      * Controller initialization
      */
-    this.$onInit = function () {
+    self.$onInit = function () {
         self.devices = null;
         self.refreshWatcher = angular.noop;
         self.getConnectedDevices();

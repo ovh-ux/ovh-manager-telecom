@@ -2,21 +2,21 @@ angular.module("managerApp")
     .controller("XdslModemWifiConfigCtrl", function ($state, $q, $timeout, $stateParams, $translate, Toast, OvhApiXdsl, PackXdslModemMediator) {
         "use strict";
 
-        const self = this;
-        this.mediator = PackXdslModemMediator;
-        this.wifi = null;
-        this.modem = null;
+        var self = this;
+        self.mediator = PackXdslModemMediator;
+        self.wifi = null;
+        self.modem = null;
 
-        this.errors = {
+        self.errors = {
             wifi: false
         };
 
-        this.fields = {
+        self.fields = {
             securityType: {},
             channelMode: _.flatten(["Auto", _.range(1, 14)])
         };
 
-        const wifiFields = [
+        var wifiFields = [
             "SSID",
             "SSIDAdvertisementEnabled",
             "channel",
@@ -26,17 +26,17 @@ angular.module("managerApp")
             "securityType"
         ];
 
-        this.resetKey = function () {
+        self.resetKey = function () {
             this.wifi.key = "";
             this.wifi.key2 = "";
         };
 
-        this.update = function () {
+        self.update = function () {
             if (!this.wifi) {
                 return;
             }
 
-            let wifiTmp = {};
+            var wifiTmp = {};
 
             wifiFields.forEach(function (field) {
                 if (self.hasConfigFieldChanged(field)) {
@@ -70,7 +70,7 @@ angular.module("managerApp")
                 }
                 self.mediator.tasks.changeModemConfigWLAN = true;
                 return data;
-            }).catch(function (err) {
+            }, function (err) {
                 Toast.error([$translate.instant("xdsl_modem_wifi_write_error"), _.get(err, "data.message")].join(" "));
                 return $q.reject(err);
             });
@@ -94,7 +94,7 @@ angular.module("managerApp")
         };
 
         self.hasConfigFieldChanged = function (field, originalWifi) {
-            let original = originalWifi;
+            var original = originalWifi;
             if (!original) {
                 original = _.find(self.wifis, {
                     wifiName: self.wifi.wifiName
@@ -105,7 +105,7 @@ angular.module("managerApp")
         };
 
         self.hasConfigChange = function () {
-            const original = _.find(self.wifis, {
+            var original = _.find(self.wifis, {
                 wifiName: self.wifi.wifiName
             });
 
@@ -117,7 +117,7 @@ angular.module("managerApp")
         /**
          *  Used to avoid refresh of name in section header title when editing
          */
-        this.getWifiSsid = function () {
+        self.getWifiSsid = function () {
             return _.find(self.wifis, {
                 wifiName: self.wifi.wifiName
             }).SSID;
@@ -139,7 +139,7 @@ angular.module("managerApp")
             }).$promise;
         }
 
-        this.$onInit = function () {
+        self.$onInit = function () {
             return $q.all({
                 modem: getModem(),
                 wifi: getWifi()
@@ -160,7 +160,7 @@ angular.module("managerApp")
                 }
 
                 self.fields.securityType = self.modem.model === "TG799VAC" ? ["None", "WPA2", "WPAandWPA2"] : ["None", "WEP", "WPA", "WPA2", "WPAandWPA2"];
-            }).catch(function (err) {
+            }, function (err) {
                 Toast.error($translate.instant("xdsl_modem_wifi_read_error"));
                 return $q.reject(err);
             });
