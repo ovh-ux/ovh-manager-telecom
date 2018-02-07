@@ -22,7 +22,7 @@ angular.module("managerApp").component("telecomTelephonyAbbreviatedNumbers", {
             self.loading = {
                 init: true
             };
-            self.paginatedAbbreviatedNumbers = [];
+            self.abbreviatedNumbers = [];
         };
 
 
