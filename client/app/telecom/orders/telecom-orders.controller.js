@@ -1,7 +1,7 @@
 angular.module("managerApp").controller("TelecomOrdersCtrl", function (OvhApiXdslOrderFollowup, ToastError, ORDER_STATUS, PAGINATION_PER_PAGE) {
     "use strict";
 
-    const self = this;
+    var self = this;
 
     self.ordersDetails = null;
     self.orders = [];
@@ -11,7 +11,7 @@ angular.module("managerApp").controller("TelecomOrdersCtrl", function (OvhApiXds
     =            INITIALIZATION            =
     ======================================*/
 
-    this.$onInit = function () {
+    self.$onInit = function () {
         OvhApiXdslOrderFollowup.Aapi().query().$promise.then(function (result) {
             self.orders = result;
 
@@ -26,9 +26,8 @@ angular.module("managerApp").controller("TelecomOrdersCtrl", function (OvhApiXds
 
             // sort: first ERROR, then TODO, then DOING, then DONE
             self.orders = _.sortByOrder(self.orders, ["priority"], ["desc"]);
-
             self.ordersDetails = self.orders;
-        }).catch(function (err) {
+        }, function (err) {
             return new ToastError(err);
         });
     };
