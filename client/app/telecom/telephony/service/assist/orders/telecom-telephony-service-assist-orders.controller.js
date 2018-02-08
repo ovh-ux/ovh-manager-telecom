@@ -1,8 +1,7 @@
 angular.module("managerApp").controller("TelecomTelephonyServiceAssistOrdersCtrl", function ($filter, $q, $translate, $stateParams, OvhApiTelephony, OvhApiMeOrder, TelephonyMediator) {
     "use strict";
 
-    const self = this;
-
+    var self = this;
     self.service = null;
 
     /*= ==============================
