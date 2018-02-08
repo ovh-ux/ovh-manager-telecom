@@ -37,35 +37,18 @@ angular.module("managerApp").controller("TelecomTelephonyLinePasswordCtrl", func
             return ["sip"].indexOf(service.featureType) > -1;
         });
 
-        var promises = [];
-
-        _.forEach(filteredServices, function (service) {
-            promises.push(voipLine.fetchLineInfo(service));
+        var promises = _.map(filteredServices, function (service) {
+            return voipLine.fetchLineInfo(service);
         });
 
-        return $q.allSettled(promises).then(function (listLines) {
-            return _.chain(listLines)
-                .filter(function (line) {
-                    return line.canChangePassword;
-                })
-                .map(function (line) {
-                    return new VoipLine(angular.extend(line, {
-                        billingAccount: $stateParams.billingAccount,
-                        featureType: "sip"
-                    }));
-                }).value();
-        }).catch(function (listLines) {
-            return _.chain(listLines)
-                .filter(function (line) {
-                    return line.canChangePassword;
-                })
-                .map(function (line) {
-                    return new VoipLine(angular.extend(line, {
-                        billingAccount: $stateParams.billingAccount,
-                        featureType: "sip"
-                    }));
-                }).value();
-        });
+        return $q.allSettled(promises)
+            .then(function (listLines) { return listLines; })
+            .catch(function (listLines) { return listLines; })
+            .then(function (listLines) {
+                return $q.when(_.filter(filteredServices, function (service) {
+                    return _.some(listLines, { serviceName: service.serviceName, canChangePassword: true });
+                }));
+            });
     };
 
     self.onBulkSuccess = function (bulkResult) {
