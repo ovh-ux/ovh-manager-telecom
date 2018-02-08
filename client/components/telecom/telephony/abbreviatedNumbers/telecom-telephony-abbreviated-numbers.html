@@ -77,32 +77,97 @@
         </div>
     </div>
 
+    <div class="table-responsive">
+        <table class="table"
+               data-ng-class="{
+                   'table-hover table-striped': $ctrl.abbreviatedNumbers.length > 1
+               }">
+            <thead>
+                <tr>
+                    <th scope="col" data-translate="telephony_abbreviated_numbers_id"></th>
+                    <th scope="col" data-translate="telephony_abbreviated_numbers_number"></th>
+                    <th scope="col" data-translate="telephony_abbreviated_numbers_surname"></th>
+                    <th scope="col" data-translate="telephony_abbreviated_numbers_name" class="text-left" colspan="2"></th>
+                </tr>
+            </thead>
+            <tbody data-ng-if="$ctrl.abbreviatedNumbers.length === 0">
+                <tr data-ng-hide="$ctrl.loading.init">
+                    <td colspan="5" data-translate="telephony_abbreviated_numbers_table_empty" class="text-left"></td>
+                </tr>
+            </tbody>
+            <tbody>
+                <tr data-ng-repeat="abbreviated in $ctrl.paginatedAbbreviatedNumbers track by abbreviated.abbreviatedNumber">
+                    <td>
+                        <span class="word-break"
+                              data-ng-bind="abbreviated.abbreviatedNumber"></span>
+                    </td>
+                    <td>
+                        <span class="word-break"
+                              data-ng-bind="abbreviated.destinationNumber"></span>
+                    </td>
+                    <td>
+                        <span class="word-break"
+                              data-ng-bind="abbreviated.surname"></span>
+                    </td>
+                    <td>
+                        <span class="word-break"
+                              data-ng-bind="abbreviated.name"></span>
+                    </td>
+                    <td>
+                        <oui-spinner data-ng-if="abbreviated.removing"
+                                     data-size="s">
+                        </oui-spinner>
+                        <div class="btn-group float-right"
+                             data-uib-dropdown
+                             data-dropdown-append-to-body>
+                            <button id="btn-sms-abbreviated-numbers-action-{{ index }}"
+                                    type="button"
+                                    class="btn btn-link"
+                                    data-uib-dropdown-toggle>
+                                <span class="ovh-font ovh-font-dots mr-2" aria-hidden="true"></span>
+                                <span class="sr-only"
+                                      data-translate="common_actions">
+                                </span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-right"
+                                role="menu"
+                                aria-labelledby="btn-sms-abbreviated-numbers-action-{{ index }}"
+                                data-uib-dropdown-menu>
+                                <li role="menuitem">
+                                    <i class="ovh-font ovh-font-editer mr-2" aria-hidden="true"></i>
+                                    <button type="button"
+                                            class="btn btn-link"
+                                            data-ng-disabled="abbreviated.updating"
+                                            data-ng-click="$ctrl.update(abbreviated)"
+                                            data-translate="edit">
+                                    </button>
+                                </li>
+                                <li role="menuitem">
+                                    <i class="ovh-font ovh-font-bin mr-2" aria-hidden="true"></i>
+                                    <button type="button"
+                                            class="btn btn-link"
+                                            data-ng-disabled="abbreviated.removing"
+                                            data-ng-click="$ctrl.remove(abbreviated)"
+                                            data-translate="delete">
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
-    <oui-datagrid data-rows="$ctrl.paginatedAbbreviatedNumbers">
-        <oui-column data-title="'telephony_abbreviated_numbers_id' | translate" data-property="abbreviatedNumber" data-sortable="asc">
-            <span class="word-break"
-                  data-ng-bind="$row.abbreviatedNumber"></span>
-        </oui-column>
-        <oui-column data-title="'telephony_abbreviated_numbers_number' | translate" data-property="destinationNumber" data-sortable>
-            <span class="word-break"
-                  data-ng-bind="$row.destinationNumber"></span>
-        </oui-column>
-        <oui-column data-title="'telephony_abbreviated_numbers_surname' | translate" data-property="surname" data-sortable>
-            <span class="word-break"
-                  data-ng-bind="$row.surname"></span>
-        </oui-column>
-        <oui-column data-title="'telephony_abbreviated_numbers_name' | translate" data-property="name" data-sortable>
-            <span class="word-break"
-                  data-ng-bind="$row.name"></span>
-        </oui-column>
-        <oui-action-menu data-align="end" data-compact>
-            <oui-action-menu-item data-text="{{'edit' | translate}}"
-                                  on-click="$ctrl.update($row)">
-            </oui-action-menu-item>
-            <oui-action-menu-item data-text="{{'delete' | translate}}"
-                                  on-click="$ctrl.remove($row)">
-            </oui-action-menu-item>
-        </oui-action-menu>
-    </oui-datagrid>
+    <div class="mt-2"
+         data-ng-show="$ctrl.abbreviatedNumbers > $ctrl.paginatedAbbreviatedNumbers"
+         data-pagination-front
+         data-go-to-page="false"
+         data-items="$ctrl.abbreviatedNumbers"
+         data-paginated-items="$ctrl.paginatedAbbreviatedNumbers"
+         data-items-per-page="$ctrl.filter.perPage"
+         data-page-placeholder="{{ 'common_pagination_go_to_page' | translate }}"
+         data-item-per-page-placeholder="{{'common_pagination_show_by_page' |translate }}">
+    </div>
 
 </div>
