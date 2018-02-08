@@ -3,20 +3,15 @@ angular.module("managerApp")
         "use strict";
 
         var self = this;
-        this.mediator = PackXdslModemMediator;
-        this.wifi = null;
-        this.modem = null;
+        self.mediator = PackXdslModemMediator;
+        self.wifi = null;
+        self.modem = null;
 
-        this.loaders = {
-            wifi: true,
-            completed: false
-        };
-
-        this.errors = {
+        self.errors = {
             wifi: false
         };
 
-        this.fields = {
+        self.fields = {
             securityType: {},
             channelMode: _.flatten(["Auto", _.range(1, 14)])
         };
@@ -31,17 +26,15 @@ angular.module("managerApp")
             "securityType"
         ];
 
-        this.resetKey = function () {
+        self.resetKey = function () {
             this.wifi.key = "";
             this.wifi.key2 = "";
         };
 
-        this.update = function () {
+        self.update = function () {
             if (!this.wifi) {
                 return;
             }
-
-            this.loaders.completed = true;
 
             var wifiTmp = {};
 
@@ -77,11 +70,9 @@ angular.module("managerApp")
                 }
                 self.mediator.tasks.changeModemConfigWLAN = true;
                 return data;
-            }).catch(function (err) {
+            }, function (err) {
                 Toast.error([$translate.instant("xdsl_modem_wifi_write_error"), _.get(err, "data.message")].join(" "));
                 return $q.reject(err);
-            }).finally(function () {
-                self.loaders.completed = false;
             });
         };
 
@@ -126,7 +117,7 @@ angular.module("managerApp")
         /**
          *  Used to avoid refresh of name in section header title when editing
          */
-        this.getWifiSsid = function () {
+        self.getWifiSsid = function () {
             return _.find(self.wifis, {
                 wifiName: self.wifi.wifiName
             }).SSID;
@@ -148,9 +139,7 @@ angular.module("managerApp")
             }).$promise;
         }
 
-        function init () {
-
-
+        self.$onInit = function () {
             return $q.all({
                 modem: getModem(),
                 wifi: getWifi()
@@ -171,13 +160,10 @@ angular.module("managerApp")
                 }
 
                 self.fields.securityType = self.modem.model === "TG799VAC" ? ["None", "WPA2", "WPAandWPA2"] : ["None", "WEP", "WPA", "WPA2", "WPAandWPA2"];
-            }).catch(function (err) {
+            }, function (err) {
                 Toast.error($translate.instant("xdsl_modem_wifi_read_error"));
                 return $q.reject(err);
-            }).finally(function () {
-                self.loaders.wifi = false;
             });
-        }
+        };
 
-        init();
     });

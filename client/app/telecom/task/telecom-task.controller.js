@@ -50,8 +50,7 @@ angular.module("managerApp").controller("TelecomTaskCtrl", function ($scope, $tr
     /*= =====================================
     =            INITIALIZATION            =
     ======================================*/
-
-    var init = function () {
+    self.$onInit = function () {
         self.getData(self.allTasks);
 
         $scope.$watch("TaskCtrl.allTasks.filter.page", function (newPage, oldPage) {
@@ -61,7 +60,4 @@ angular.module("managerApp").controller("TelecomTaskCtrl", function ($scope, $tr
         });
     };
 
-    /* -----  End of INITIALIZATION  ------*/
-
-    init();
 });
