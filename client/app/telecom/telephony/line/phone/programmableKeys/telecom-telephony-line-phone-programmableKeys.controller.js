@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyLinePhoneProgammableKeysCtrl", function ($q, $translate, TelephonyMediator, $stateParams, $uibModal, Toast, OvhApiTelephony, telephonyBulk, voipLinePhoneFunction) {
+angular.module("managerApp").controller("TelecomTelephonyLinePhoneProgammableKeysCtrl", function ($q, $translate, TelephonyMediator, $stateParams, $uibModal, Toast, OvhApiTelephony, telephonyBulk, voipLinePhone) {
     "use strict";
 
     var self = this;
@@ -119,29 +119,10 @@ angular.module("managerApp").controller("TelecomTelephonyLinePhoneProgammableKey
             return ["sip", "mgcp"].indexOf(service.featureType) > -1;
         });
 
-        var sourceKeys = self.functionKeys.raw;
-
-        return voipLinePhoneFunction.fetchAll().then((voipLinePhoneFunctionKeys) => {
-            filteredServices = _.filter(filteredServices, (service) => {
-                var editable = true;
-                var serviceKeys = _.filter(voipLinePhoneFunctionKeys, { serviceName: service.serviceName, billingAccount: service.billingAccount });
-
-                if (serviceKeys.length >= sourceKeys.length) {
-                    _.forEach(sourceKeys, (key) => {
-                        if (!_.some(serviceKeys, function (sKey) {
-                            return sKey.keyNum === key.keyNum;
-                        })) {
-                            editable = false;
-                        }
-                    });
-                } else {
-                    editable = false;
-                }
-
-                return editable;
-            });
-
-            return $q.when(filteredServices);
+        return voipLinePhone.fetchAll().then(function (voipLinePhones) {
+            return $q.when(_.filter(filteredServices, function (service) {
+                return _.find(voipLinePhones, { serviceName: service.serviceName, billingAccount: service.billingAccount });
+            }));
         });
     };
 
@@ -163,7 +144,7 @@ angular.module("managerApp").controller("TelecomTelephonyLinePhoneProgammableKey
                 count: bulkResult.success.length
             }),
             error: $translate.instant("telephony_line_phone_programmableKeys_bulk_error")
-        }).forEach(function (toastInfo) {
+        }, true).forEach(function (toastInfo) {
             Toast[toastInfo.type](toastInfo.message, {
                 hideAfter: null
             });

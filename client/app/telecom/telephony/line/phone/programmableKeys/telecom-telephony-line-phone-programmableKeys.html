@@ -85,7 +85,7 @@
                                            data-service-name="{{ ProgrammableKeysCtrl.line.serviceName }}"
                                            data-custom-class="link d-block pl-0 mb-3"
                                            data-bulk-infos="ProgrammableKeysCtrl.bulkDatas.infos"
-                                           data-ng-disabled="!ProgrammableKeysCtrl.functionKeys.raw.length && !ProgrammableKeysCtrl.loading.keys"
+                                           data-ng-disabled="ProgrammableKeysCtrl.loading.keys"
                                            data-filter-services="ProgrammableKeysCtrl.filterServices"
                                            data-get-bulk-params="ProgrammableKeysCtrl.getBulkParams"
                                            data-on-success="ProgrammableKeysCtrl.onBulkSuccess"
