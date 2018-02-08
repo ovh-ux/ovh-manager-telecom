@@ -43,7 +43,7 @@ describe("Controller: TelecomOrdersCtrl", function () {
             OvhApiXdsl: OvhApiXdsl,
             $translate: $translate
         });
-        TelecomOrdersCtrl.init();
+        TelecomOrdersCtrl.$onInit();
     }
 
     describe("- Initialization of controller in error case : ", function () {

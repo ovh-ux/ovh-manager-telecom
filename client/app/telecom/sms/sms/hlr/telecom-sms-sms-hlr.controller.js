@@ -17,36 +17,20 @@ angular.module("managerApp").controller("TelecomSmsSmsHlrCtrl", class TelecomSms
 
     $onInit () {
         this.hlr = {
-            raw: null,
-            paginated: null,
-            isLoading: false,
-            isSending: false,
-            orderBy: "datetime",
-            orderDesc: true
+            data: null,
+            isSending: false
         };
         this.service = null;
 
-        this.hlr.isLoading = true;
-        return this.SmsMediator.initDeferred.promise.then(() =>
-            this.api.sms.hlr.query({
-                serviceName: this.$stateParams.serviceName
-            }).$promise.then((hlr) => {
-                this.hlr.raw = hlr;
-                this.service = this.SmsMediator.getCurrentSmsService();
-            })
-        ).catch((err) => {
-            this.ToastError(err);
-        }).finally(() => {
-            this.hlr.isLoading = false;
-        });
+        this.refreshHlr();
     }
 
     /**
-     * Fetch operator.
+     * Fetch mobile or landline phone operator.
      * @param  {Object} hlr
      * @return {Promise}
      */
-    fetchOperator (hlr) {
+    fetchPhoneOperator (hlr) {
         return this.api.sms.hlr.getOperator({
             serviceName: this.$stateParams.serviceName,
             id: hlr.id
@@ -62,48 +46,43 @@ angular.module("managerApp").controller("TelecomSmsSmsHlrCtrl", class TelecomSms
         return this.constant.SMS_URL.hlrTermsOfUse;
     }
 
-    refresh () {
-        this.hlr.raw = null;
+    refreshHlr () {
+        this.hlr.data = null;
         this.api.sms.hlr.resetCache();
         this.api.sms.hlr.resetQueryCache();
-        return this.api.sms.hlr.query({
-            serviceName: this.$stateParams.serviceName
-        }).$promise.then((hlr) => {
-            this.hlr.raw = hlr;
+        return this.SmsMediator.initDeferred.promise.then(() =>
+            this.api.sms.hlr.query({
+                serviceName: this.$stateParams.serviceName
+            }).$promise.then((hlrIds) => hlrIds.sort((a, b) => b - a).map((id) => ({ id }))
+            ).then((hlrs) => {
+                this.hlr.data = hlrs;
+                this.service = this.SmsMediator.getCurrentSmsService();
+            })
+        ).catch((err) => {
+            this.ToastError(err);
         });
     }
 
     /**
      * Get details.
-     * @param  {String} id
+     * @param  {Object} hlr item
      * @return {Promise}
      */
-    getDetails (id) {
-        this.hlr.isLoading = true;
+    getDetails (item) {
+        if (item.transformed) {
+            return this.$q((resolve) => resolve(item));
+        }
         return this.api.sms.hlr.get({
             serviceName: this.$stateParams.serviceName,
-            id
-        }).$promise.then((hlr) =>
-            this.fetchOperator(hlr).then((operator) =>
+            id: item.id
+        }).$promise.then((hlr) => {
+            hlr.transformed = true;
+            return hlr;
+        }).then((hlr) =>
+            this.fetchPhoneOperator(hlr).then((operator) =>
                 _.assign(hlr, { operatorName: operator.operator })
             ).catch(() => hlr)
         );
-    }
-
-    onTransformItemDone () {
-        this.hlr.isLoading = false;
-    }
-
-    /**
-     * Order HLR queries' list.
-     * @param  {String} by
-     */
-    orderBy (by) {
-        if (this.hlr.orderBy === by) {
-            this.hlr.orderDesc = !this.hlr.orderDesc;
-        } else {
-            this.hlr.orderBy = by;
-        }
     }
 
     /**
@@ -119,7 +98,7 @@ angular.module("managerApp").controller("TelecomSmsSmsHlrCtrl", class TelecomSms
         }).$promise.then(() => {
             this.service.creditsLeft -= 0.1;
             this.Toast.success(this.$translate.instant("sms_sms_hlr_query_send_success"));
-            return this.refresh();
+            return this.refreshHlr();
         }).catch(() => {
             this.Toast.error(this.$translate.instant("sms_sms_hlr_query_send_failed"));
         }).finally(() => {
