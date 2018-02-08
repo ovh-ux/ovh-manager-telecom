@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyLinePasswordCtrl", function ($scope, $state, $stateParams, Toast, $q, $translate, OvhApiTelephony, telephonyBulk, voipLine, VoipLine) {
+angular.module("managerApp").controller("TelecomTelephonyLinePasswordCtrl", function ($scope, $state, $stateParams, Toast, $q, $translate, OvhApiTelephony, telephonyBulk, voipLine) {
     "use strict";
 
     var self = this;
