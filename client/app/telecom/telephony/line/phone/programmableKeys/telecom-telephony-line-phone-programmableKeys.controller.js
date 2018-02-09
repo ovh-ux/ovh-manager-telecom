@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyLinePhoneProgammableKeysCtrl", function ($q, $translate, TelephonyMediator, $stateParams, $uibModal, Toast, OvhApiTelephony, telephonyBulk, voipLinePhone) {
+angular.module("managerApp").controller("TelecomTelephonyLinePhoneProgammableKeysCtrl", function ($q, $translate, TelephonyMediator, $stateParams, $uibModal, Toast, OvhApiTelephony, telephonyBulk, voipLinePhoneFunction) {
     "use strict";
 
     var self = this;
@@ -119,9 +119,9 @@ angular.module("managerApp").controller("TelecomTelephonyLinePhoneProgammableKey
             return ["sip", "mgcp"].indexOf(service.featureType) > -1;
         });
 
-        return voipLinePhone.fetchAll().then(function (voipLinePhones) {
+        return voipLinePhoneFunction.fetchAll().then(function (voipLinePhoneFunctions) {
             return $q.when(_.filter(filteredServices, function (service) {
-                return _.find(voipLinePhones, { serviceName: service.serviceName, billingAccount: service.billingAccount });
+                return _.find(voipLinePhoneFunctions, { serviceName: service.serviceName, billingAccount: service.billingAccount });
             }));
         });
     };
