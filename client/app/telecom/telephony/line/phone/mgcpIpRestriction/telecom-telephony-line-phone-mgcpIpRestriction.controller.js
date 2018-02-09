@@ -171,7 +171,7 @@ angular.module("managerApp").controller("TelecomTelephonyLinePhoneMgcpIpRestrict
             });
         });
 
-        OvhApiTelephony.Line().Phone().Lexi().resetAllCache();
+        OvhApiTelephony.Line().Lexi().resetAllCache();
         init();
     };
 
