@@ -1,12 +1,10 @@
-angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingTollfreeHistoryCtrl", function ($q, $filter, $window, $timeout, $stateParams, $translate, TelephonyMediator, OvhApiTelephony, Toast) {
+angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingTollfreeHistoryCtrl", function ($q, $filter, $window, $timeout, $stateParams, $translate, TelephonyMediator, OvhApiTelephony, ToastError) {
     "use strict";
 
     var self = this;
 
     self.group = null;
-    self.consumption = {
-        raw: null
-    };
+    self.consumptionData = null;
 
     /*= ==============================
     =            HELPERS            =
@@ -27,6 +25,9 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingTo
                     consumption.priceValue = consumption.price ? consumption.price.value : null;
                 });
             });
+        }, function (err) {
+            self.consumptionData = [];
+            return new ToastError([$translate.instant("telephony_group_billing_tollfree_history_download_error"), (err.data && err.data.message) || ""].join(" "));
         });
     }
 
@@ -58,15 +59,10 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingTo
     ===============================*/
 
     self.download = function (consumption) {
-        consumption.downloading = true;
-
         return self.fetchFile(consumption).then(function (info) {
             $window.location.href = info.url;
         }, function (err) {
-            Toast.error([$translate.instant("telephony_group_billing_tollfree_history_download_error"), (err.data && err.data.message) || ""].join(" "));
-            return $q.reject(err);
-        }).finally(function () {
-            consumption.downloading = false;
+            return new ToastError([$translate.instant("telephony_group_billing_tollfree_history_download_error"), (err.data && err.data.message) || ""].join(" "));
         });
     };
 
@@ -80,11 +76,10 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingTo
         return TelephonyMediator.getGroup($stateParams.billingAccount).then(function (group) {
             self.group = group;
             return fetchHistory().then(function (consumptions) {
-                self.consumption.raw = consumptions;
+                self.consumptionData = consumptions;
             });
         }, function (err) {
-            Toast.error([$translate.instant("telephony_group_billing_tollfree_history_init_error"), (err.data && err.data.message) || ""].join(" "));
-            return $q.reject(err);
+            return new ToastError([$translate.instant("telephony_group_billing_tollfree_history_init_error"), (err.data && err.data.message) || ""].join(" "));
         });
     };
 

@@ -7,12 +7,7 @@
         <h1 data-translate="telephony_group_billing_tollfree_history_title"></h1>
     </header>
 
-    <div class="text-center" data-ng-if="TollfreeHistoryCtrl.loading.init">
-        <oui-spinner></oui-spinner>
-    </div>
-
-    <div class="telecom-section-content"
-         data-ng-if="!TollfreeHistoryCtrl.loading.init">
+    <div class="telecom-section-content">
 
         <div class="widget-presentation">
             <h2 class="widget-presentation-title"
@@ -20,10 +15,12 @@
                 data-translate-values="{ groupName: TollfreeHistoryCtrl.group.getDisplayedName() }">
             </h2>
 
+            <toast-message></toast-message>
+
             <div class="row">
                 <div class="col-xs-12">
 
-                    <oui-datagrid data-rows="TollfreeHistoryCtrl.consumption.raw" data-page-size="10">
+                    <oui-datagrid data-rows="TollfreeHistoryCtrl.consumptionData">
                         <oui-column data-title="'telephony_group_billing_tollfree_history_list_date' | translate" 
                                     data-property="date" data-sortable="desc">
                             <span class="text-nowrap"
