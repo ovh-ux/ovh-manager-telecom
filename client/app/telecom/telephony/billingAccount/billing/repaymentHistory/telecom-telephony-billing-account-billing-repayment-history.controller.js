@@ -29,7 +29,7 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingRe
             });
         }, function (err) {
             self.consumptionData = [];
-            return new ToastError([$translate.instant("telephony_group_billing_tollfree_history_download_error"), (err.data && err.data.message) || ""].join(" "));
+            return new ToastError([$translate.instant("telephony_group_billing_repayment_history_download_error"), (err.data && err.data.message) || ""].join(" "));
         });
     }
 
@@ -86,7 +86,7 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingRe
                 self.consumptionData = consumptions;
             });
         }, function (error) {
-            return new ToastError([$translate.instant("telephony_group_billing_repayment_history_init_error"), (error.data && error.data.message) || ""].join(" "));
+            return new ToastError([$translate.instant("telephony_group_billing_repayment_history_download_error"), (error.data && error.data.message) || ""].join(" "));
         });
     };
 
