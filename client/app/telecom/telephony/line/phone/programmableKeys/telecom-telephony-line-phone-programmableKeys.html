@@ -25,18 +25,18 @@
             </h2>
 
             <oui-datagrid data-rows="ProgrammableKeysCtrl.functionKeys.raw">
-                <oui-column data-title="'telephony_line_phone_programmableKeys_keys_title' | translate" data-property="label" data-sortable="desc">
+                <oui-column data-title="'telephony_line_phone_programmableKeys_keys_title' | translate" data-property="label" data-sortable="asc">
                     <span data-ng-bind="$row.label || '-'"></span>
                 </oui-column>
-                <oui-column data-title="'telephony_line_phone_programmableKeys_function_title' | translate" data-property="unitPrice.value">
+                <oui-column data-title="'telephony_line_phone_programmableKeys_function_title' | translate">
                     <span data-ng-bind="($row.function && ('telephony_line_phone_programmableKeys_' + $row.function) | translate) || '-'"></span>
                 </oui-column>
-                <oui-column data-title="'telephony_line_phone_programmableKeys_supp_param_title' | translate" data-property="quantity">
+                <oui-column data-title="'telephony_line_phone_programmableKeys_supp_param_title' | translate" data-property="parameter">
                     <span data-ng-bind="$row.parameter || '-'"></span>
                 </oui-column>
 
                 <oui-action-menu data-align="end" data-compact>
-                    <oui-action-menu-item data-text="{{user.login + '-' + ('edit' | translate)}}"
+                    <oui-action-menu-item data-text="{{'edit' | translate}}"
                                           on-click="ProgrammableKeysCtrl.edit($row)">
                     </oui-action-menu-item>
                 </oui-action-menu>
