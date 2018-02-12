@@ -184,8 +184,8 @@ angular.module("managerApp").controller("telephonyBulkActionModalCtrl", function
             });
 
             // get all services of each billingAccounts and apply a first filter based on serviceType
-            allServices = _.chain(self.billingAccounts).map("services").flatten().filter({
-                serviceType: self.bindings.serviceType
+            allServices = _.chain(self.billingAccounts).map("services").flatten().filter(function (service) {
+                return self.bindings.serviceType === "all" ? true : service.serviceType === self.bindings.serviceType;
             }).value();
 
             if (self.bindings.filterServices && _.isFunction(self.bindings.filterServices())) {
