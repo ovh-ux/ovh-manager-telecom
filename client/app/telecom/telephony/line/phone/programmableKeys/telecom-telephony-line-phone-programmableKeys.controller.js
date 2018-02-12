@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyLinePhoneProgammableKeysCtrl", function ($q, $translate, TelephonyMediator, $stateParams, $uibModal, Toast, OvhApiTelephony, telephonyBulk, voipLinePhoneFunction) {
+angular.module("managerApp").controller("TelecomTelephonyLinePhoneProgammableKeysCtrl", function ($translate, TelephonyMediator, $stateParams, $uibModal, Toast, OvhApiTelephony, telephonyBulk, voipLinePhoneFunction) {
     "use strict";
 
     var self = this;
@@ -104,7 +104,7 @@ angular.module("managerApp").controller("TelecomTelephonyLinePhoneProgammableKey
         return _.map(self.functionKeys.raw, function (key) {
             return {
                 name: "functionKey",
-                route: `/telephony/{billingAccount}/line/{serviceName}/phone/functionKey/${key.keyNum}`,
+                route: "/telephony/{billingAccount}/line/{serviceName}/phone/functionKey/{keyNum}".replace("{keyNum}", key.keyNum),
                 method: "PUT",
                 params: {
                     "function": key.function,
@@ -120,9 +120,9 @@ angular.module("managerApp").controller("TelecomTelephonyLinePhoneProgammableKey
         });
 
         return voipLinePhoneFunction.fetchAll().then(function (voipLinePhoneFunctions) {
-            return $q.when(_.filter(filteredServices, function (service) {
+            return _.filter(filteredServices, function (service) {
                 return _.find(voipLinePhoneFunctions, { serviceName: service.serviceName, billingAccount: service.billingAccount });
-            }));
+            });
         });
     };
 
@@ -162,5 +162,4 @@ angular.module("managerApp").controller("TelecomTelephonyLinePhoneProgammableKey
     /* -----  End of BULK  ------ */
 
     init();
-}
-);
+});
