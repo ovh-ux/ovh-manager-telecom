@@ -405,9 +405,6 @@ class ManagerNavbarService {
                     title: this.$translate.instant("common_menu_contacts"),
                     url: this.REDIRECT_URLS.contacts
                 }, {
-                    title: this.$translate.instant("common_menu_consumptions"),
-                    url: this.REDIRECT_URLS.consumptionsTelephony
-                }, {
                     title: this.$translate.instant("common_menu_list_ticket"),
                     url: this.REDIRECT_URLS.listTicket
                 }, {

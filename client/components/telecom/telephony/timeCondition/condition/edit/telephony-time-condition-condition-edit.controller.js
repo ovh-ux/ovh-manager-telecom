@@ -53,7 +53,7 @@ angular.module("managerApp").controller("voipTimeConditionConditionCtrl", functi
         var isConditionOverlap = _.some(dayConditions, function (condition) {
             var momentFrom = condition.getTimeMoment("from");
             var momentTo = condition.getTimeMoment("to");
-            return moment(self.model.timeFrom).isBetween(momentFrom, momentTo) || moment(self.model.timeTo).subtract(1, "second").isBetween(momentFrom, momentTo);
+            return (moment(self.model.timeFrom).isBetween(momentFrom, momentTo) || moment(self.model.timeTo).subtract(1, "second").isBetween(momentFrom, momentTo)) && condition.state !== "TO_DELETE";
         });
         if (isConditionOverlap) {
             self.overlapDetected = true;

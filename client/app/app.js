@@ -311,7 +311,7 @@ angular.module("managerApp", [
         // Scroll to anchor id
         $rootScope.scrollTo = (id) => {
             // Set focus to target
-            $document.find(`#${id}`)[0].focus();
+            $document[0].getElementById(id).focus();
         };
     })
 

@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationTimeConditionOldPabxCtrl", function ($q, $stateParams, $translate, OvhApiTelephony, TelephonyMediator, Toast, uiCalendarConfig, telephonyBulk, voipTimeCondition) {
+angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationTimeConditionEasyHuntingCtrl", function ($q, $stateParams, $translate, OvhApiTelephony, TelephonyMediator, Toast, uiCalendarConfig, telephonyBulk) {
     "use strict";
 
     var self = this;
@@ -15,7 +15,6 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationTimeC
 
     self.number = null;
     self.helpCollapsed = true;
-    self.availableTimeoutValues = null;
 
     /*= ==============================
     =            HELPERS            =
@@ -67,24 +66,6 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationTimeC
     =            INITIALIZATION            =
     ======================================*/
 
-    /* ----------  Enums  ----------*/
-
-    function getTimeoutEnum () {
-        return TelephonyMediator.getApiModelEnum("telephony.TimeConditionsTimeoutEnum").then(function (values) {
-            self.availableTimeoutValues = _.chain(values).map(function (valueParam) {
-                var value = parseInt(valueParam, 10);
-                return {
-                    value: value,
-                    label: $translate.instant("telephony_time_condition_old_pabx_params_timeout_choice", {
-                        value: value
-                    })
-                };
-            }).sortBy("value").value();
-        });
-    }
-
-    /* ----------  Controller initialization  ----------*/
-
     self.$onInit = function () {
         self.loading.init = true;
 
@@ -92,10 +73,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationTimeC
             self.number = group.getNumber($stateParams.serviceName);
 
             return self.number.feature.init().then(function () {
-                return $q.all([
-                    self.number.feature.getTimeCondition(),
-                    getTimeoutEnum()
-                ]).then(function () {
+                return self.number.feature.getTimeCondition().then(function () {
                     // start timeCondition edition
                     self.number.feature.timeCondition.startEdition();
                 });
@@ -116,36 +94,36 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationTimeC
 
     self.filterServices = function (services) {
         return _.filter(services, function (service) {
-            return ["easyPabx", "miniPabx"].indexOf(service.featureType) > -1;
+            return ["easyHunting", "contactCenterSolution"].indexOf(service.featureType) > -1;
         });
     };
 
     self.bulkDatas = {
         conditions: (self.number && self.number.feature && self.number.feature.timeCondition) || [],
         infos: {
-            name: "timeCondition",
+            name: "timeConditionEasyHunting",
             actions: [
                 {
                     name: bulkActionNames.deleteCondition,
-                    route: "/telephony/{billingAccount}/timeCondition/{serviceName}/condition/{id}",
+                    route: "/telephony/{billingAccount}/easyHunting/{serviceName}/timeConditions/conditions/{conditionId}",
                     method: "DELETE",
                     params: null
                 },
                 {
                     name: bulkActionNames.createCondition,
-                    route: "/telephony/{billingAccount}/timeCondition/{serviceName}/condition",
+                    route: "/telephony/{billingAccount}/easyHunting/{serviceName}/timeConditions/conditions",
                     method: "POST",
                     params: null
                 },
                 {
                     name: bulkActionNames.editCondition,
-                    route: "/telephony/{billingAccount}/timeCondition/{serviceName}/condition/{id}",
+                    route: "/telephony/{billingAccount}/easyHunting/{serviceName}/timeConditions/conditions/{conditionId}",
                     method: "PUT",
                     params: null
                 },
                 {
                     name: bulkActionNames.options,
-                    route: "/telephony/{billingAccount}/timeCondition/{serviceName}/options",
+                    route: "/telephony/{billingAccount}/easyHunting/{serviceName}/timeConditions",
                     method: "PUT",
                     params: null
                 }
@@ -163,15 +141,14 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationTimeC
             var condition = self.number.feature.timeCondition;
             return {
                 slot1Number: condition.slots[1].number,
-                slot1Type: condition.slots[1].type,
+                slot1Type: !_.isNull(condition.slots[1].number) ? condition.slots[1].type : "",
                 slot2Number: condition.slots[2].number,
-                slot2Type: condition.slots[2].type,
+                slot2Type: !_.isNull(condition.slots[2].number) ? condition.slots[2].type : "",
                 slot3Number: condition.slots[3].number,
-                slot3Type: condition.slots[3].type,
-                status: condition.enable ? "enabled" : "disabled",
-                timeout: condition.timeout,
+                slot3Type: !_.isNull(condition.slots[3].number) ? condition.slots[3].type : "",
+                enable: condition.enable,
                 unavailableNumber: condition.slots[4].number,
-                unavailableType: condition.slots[4].type
+                unavailableType: !_.isNull(condition.slots[4].number) ? condition.slots[4].type : ""
             };
         default:
             return false;
@@ -217,10 +194,10 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationTimeC
 
         return _.map(conditions, function (condition) {
             return {
-                id: condition.conditionId,
-                day: condition.weekDay,
-                hourBegin: voipTimeCondition.getSipTime(condition.timeFrom),
-                hourEnd: voipTimeCondition.getSipTime(condition.timeTo, true),
+                conditionId: condition.conditionId,
+                weekDay: condition.weekDay,
+                timeFrom: condition.timeFrom,
+                timeTo: condition.timeTo,
                 policy: condition.policy,
                 status: condition.status
             };
@@ -228,5 +205,4 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationTimeC
     };
 
     /* -----  End of BULK  ------ */
-
 });
