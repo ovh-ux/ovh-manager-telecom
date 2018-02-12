@@ -6,20 +6,19 @@
 
     <toast-message></toast-message>
 
-    <div class="row"
-         data-ng-if="!SettingsCtrl.loading.init && SettingsCtrl.settings">
+    <form name="SettingsCtrl.faxSettingsForm"
+          data-ng-submit="SettingsCtrl.updateAllSettings()"
+          data-ng-if="!SettingsCtrl.loading.init && SettingsCtrl.settings">
+        <div class="row">
 
-        <div class="col-xs-12 col-md-6">
-            <div class="widget-presentation mb-4">
+            <div class="col-xs-12 col-md-6">
+                <div class="widget-presentation mb-4">
 
-                <header class="widget-presentation-header">
-                    <h2 class="widget-presentation-title"
-                        data-translate="telephony_service_fax_settings_general_options">
-                    </h2>
-                </header>
-
-                <form name="faxGeneralOptionsForm"
-                      data-ng-submit="SettingsCtrl.updateGeneralOptions()">
+                    <header class="widget-presentation-header">
+                        <h2 class="widget-presentation-title"
+                            data-translate="telephony_service_fax_settings_general_options">
+                        </h2>
+                    </header>
 
                     <!-- FAX QUALITY -->
                     <div class="form-group">
@@ -30,7 +29,7 @@
                         <select name="faxQuality"
                                 id="faxQuality"
                                 class="form-control"
-                                data-ng-model="SettingsCtrl.generalOptionsForm.faxQuality"
+                                data-ng-model="SettingsCtrl.settings.faxQuality"
                                 data-ng-options="quality as ('telephony_service_fax_settings_general_options_fax_quality_' + quality | translate) for quality in SettingsCtrl.enums.quality | orderBy:'':true">
                         </select>
                     </div><!-- .row -->
@@ -44,69 +43,32 @@
                         <select name="faxMaxCall"
                                 id="faxMaxCall"
                                 class="form-control"
-                                data-ng-model="SettingsCtrl.generalOptionsForm.faxMaxCall"
+                                data-ng-model="SettingsCtrl.settings.faxMaxCall"
                                 data-ng-options="try as try for try in SettingsCtrl.enums.sendingTries">
                         </select>
                     </div><!-- .row -->
-
-                    <div class="form-group">
-                        <button
-                            type="submit"
-                            class="btn btn-primary"
-                            data-ng-disabled="faxGeneralOptionsForm.$invalid ||
-                                              !SettingsCtrl.generalOptionsChanged() ||
-                                              SettingsCtrl.generalOptionsForm.isUpdating ||
-                                              SettingsCtrl.notificationOptionsForm.isAdding ||
-                                              SettingsCtrl.notificationOptionsForm.isRemoving ||
-                                              SettingsCtrl.addressesToNotifyForm.isAdding ||
-                                              SettingsCtrl.addressesToNotifyForm.isRemoving">
-                            <span data-ng-if="!SettingsCtrl.generalOptionsForm.isSuccess"
-                                  data-translate="telephony_service_fax_settings_notification_options_update">
-                            </span>
-                            <span data-ng-if="SettingsCtrl.generalOptionsForm.isSuccess"
-                                  data-translate="telephony_service_fax_settings_notification_options_update_success">
-                            </span>
-                            <i class="ovh-font ovh-font-success ml-1"
-                               data-ng-if="SettingsCtrl.generalOptionsForm.isSuccess">
-                            </i>
-                            <oui-spinner class="ml-2"
-                                         data-ng-if="SettingsCtrl.generalOptionsForm.isUpdating"
-                                         data-size="s">
-                            </oui-spinner>
-                        </button>
-                    </div>
-
-                </form>
-
+                </div>
             </div>
-        </div>
-        <div class="col-xs-12 col-md-6">
-            <div class="widget-presentation mb-4">
-                <header class="widget-presentation-header">
-                    <h2 class="widget-presentation-title"
-                        data-translate="telephony_service_fax_settings_header">
-                    </h2>
-                </header>
-
-                <form name="faxTagLineForm"
-                      data-ng-submit="SettingsCtrl.updatefaxTagLine()">
+            <div class="col-xs-12 col-md-6">
+                <div class="widget-presentation mb-4">
+                    <header class="widget-presentation-header">
+                        <h2 class="widget-presentation-title"
+                            data-translate="telephony_service_fax_settings_header">
+                        </h2>
+                    </header>
 
                     <!-- FAX TAG LINE -->
-                    <div class="form-group"
-                         data-ng-class="{
-                            'has-error': faxTagLineForm.faxTagLine.$dirty && faxTagLineForm.faxTagLine.$invalid
-                         }">
+                    <div class="form-group" data-ng-class="{ 'has-error': faxTagLineForm.faxTagLine.$dirty && faxTagLineForm.faxTagLine.$invalid }">
                         <label for="faxTagLine"
                                class="control-label"
                                data-translate="telephony_service_fax_settings_header">
                         </label>
-                        <input
-                            type="text"
-                            name="faxTagLine"
-                            id="faxTagLine"
-                            class="form-control"
-                            data-ng-model="SettingsCtrl.faxTagLineForm.faxTagLine"
-                            data-ng-maxlength="50" />
+                        <input type="text"
+                               name="faxTagLine"
+                               id="faxTagLine"
+                               class="form-control"
+                               data-ng-model="SettingsCtrl.settings.faxTagLine"
+                               data-ng-maxlength="50" />
                         <span class="help-block"
                               role="alert"
                               data-ng-if="faxTagLineForm.faxTagLine.$dirty"
@@ -180,43 +142,18 @@
                             </tbody>
                         </table>
                     </div>
-                    <button type="submit"
-                            class="btn btn-primary"
-                            data-ng-disabled="faxTagLineForm.$invalid ||
-                                              !SettingsCtrl.faxTagLineChanged() ||
-                                              SettingsCtrl.faxTagLineForm.isUpdating">
-                        <span data-ng-if="!SettingsCtrl.faxTagLineForm.isSuccess"
-                              data-translate="telephony_service_fax_settings_header_update">
-                        </span>
-                        <span data-ng-if="SettingsCtrl.faxTagLineForm.isSuccess"
-                              data-translate="telephony_service_fax_settings_header_update_success">
-                        </span>
-                        <i class="ovh-font ovh-font-success fs14 ml-2"
-                           data-ng-if="SettingsCtrl.faxTagLineForm.isSuccess">
-                        </i>
-                        <oui-spinner class="ml-2"
-                                     data-ng-if="SettingsCtrl.faxTagLineForm.isUpdating"
-                                     data-size="s">
-                        </oui-spinner>
-                    </button>
-                </form>
+                </div>
             </div>
-        </div>
-    </div><!-- .row -->
+        </div><!-- .row -->
 
-    <div class="row"
-         data-ng-if="!SettingsCtrl.loading.init && SettingsCtrl.settings">
-        <div class="col-xs-12 col-md-6">
-            <div class="widget-presentation mb-4">
-
-                <header class="widget-presentation-header">
-                    <h2 class="widget-presentation-title"
-                        data-translate="telephony_service_fax_settings_notification_options">
-                    </h2>
-                </header>
-
-                <form name="faxNotificationOptionsForm"
-                      data-ng-submit="SettingsCtrl.updateNotificationOptions()">
+        <div class="row" data-ng-if="!SettingsCtrl.loading.init && SettingsCtrl.settings">
+            <div class="col-xs-12 col-md-6">
+                <div class="widget-presentation mb-4">
+                    <header class="widget-presentation-header">
+                        <h2 class="widget-presentation-title"
+                            data-translate="telephony_service_fax_settings_notification_options">
+                        </h2>
+                    </header>
 
                     <!-- FROM NAME -->
                     <div class="form-group"
@@ -227,13 +164,12 @@
                                class="control-label"
                                data-translate="telephony_service_fax_settings_notification_options_from_name">
                         </label>
-                        <input
-                            type="text"
-                            name="fromName"
-                            id="fromName"
-                            class="form-control"
-                            required
-                            data-ng-model="SettingsCtrl.notificationOptionsForm.fromName" />
+                        <input type="text"
+                               name="fromName"
+                               id="fromName"
+                               class="form-control"
+                               required
+                               data-ng-model="SettingsCtrl.settings.fromName" />
                         <span class="help-block"
                               role="alert"
                               data-ng-if="faxNotificationOptionsForm.fromName.$touched"
@@ -253,12 +189,11 @@
                                class="control-label"
                                data-translate="telephony_service_fax_settings_notification_options_from_email">
                         </label>
-                        <input
-                            type="email"
-                            name="fromEmail"
-                            id="fromEmail"
-                            class="form-control"
-                            data-ng-model="SettingsCtrl.notificationOptionsForm.fromEmail" />
+                        <input type="email"
+                               name="fromEmail"
+                               id="fromEmail"
+                               class="form-control"
+                               data-ng-model="SettingsCtrl.settings.fromEmail" />
                         <span class="help-block"
                               role="alert"
                               data-ng-if="faxNotificationOptionsForm.fromEmail.$touched"
@@ -278,139 +213,127 @@
                         <select name="mailFormat"
                                 id="mailFormat"
                                 class="form-control"
-                                data-ng-model="SettingsCtrl.notificationOptionsForm.mailFormat"
+                                data-ng-model="SettingsCtrl.settings.mailFormat"
                                 data-ng-options="format as ('telephony_service_fax_settings_notification_options_mail_format_' + format | translate) for format in SettingsCtrl.enums.mailFormat">
                         </select>
                     </div>
-
-                    <button type="submit"
-                            class="btn btn-primary"
-                            data-ng-disabled="faxNotificationOptionsForm.$invalid ||
-                                              !SettingsCtrl.notificationOptionsChanged() ||
-                                              SettingsCtrl.notificationOptionsForm.isUpdating ||
-                                              SettingsCtrl.generalOptionsForm.isAdding ||
-                                              SettingsCtrl.generalOptionsForm.isRemoving ||
-                                              SettingsCtrl.addressesToNotifyForm.isAdding ||
-                                              SettingsCtrl.addressesToNotifyForm.isRemoving">
-                        <span data-ng-if="!SettingsCtrl.notificationOptionsForm.isSuccess"
-                              data-translate="telephony_service_fax_settings_notification_options_update">
-                        </span>
-                        <span data-ng-if="SettingsCtrl.notificationOptionsForm.isSuccess"
-                              data-translate="telephony_service_fax_settings_notification_options_update_success">
-                        </span>
-                        <i class="ovh-font ovh-font-success ml-1"
-                           data-ng-if="SettingsCtrl.notificationOptionsForm.isSuccess">
-                        </i>
-                        <oui-spinner class="ml-2"
-                                     data-ng-if="SettingsCtrl.notificationOptionsForm.isUpdating"
-                                     data-size="s">
-                        </oui-spinner>
-                    </button>
-
-                </form>
-
+                </div>
             </div>
-        </div>
-        <div class="col-xs-12 col-md-6">
-            <div class="widget-presentation mb-4">
-                <header class="widget-presentation-header">
-                    <h2 class="widget-presentation-title"
-                        data-translate="telephony_service_fax_settings_addresses_to_notify">
-                    </h2>
-                </header>
-                <ul class="list-unstyled"
-                    data-ng-if="SettingsCtrl.settings.redirectionEmail.length">
-                    <li data-ng-repeat="email in SettingsCtrl.settings.redirectionEmail | orderBy track by $index">
-                        <div class="row mb-3">
-                            <div class="col-xs-10">
-                                <span data-ng-bind="email"></span>
-                            </div>
-                            <div class="col-xs-2 text-right">
-                                <button type="button"
+            <div class="col-xs-12 col-md-6">
+                <div class="widget-presentation mb-4">
+                    <header class="widget-presentation-header">
+                        <h2 class="widget-presentation-title"
+                            data-translate="telephony_service_fax_settings_addresses_to_notify">
+                        </h2>
+                    </header>
+                    <ul class="list-unstyled"
+                        data-ng-if="SettingsCtrl.settings.redirectionEmail.length">
+                        <li data-ng-repeat="email in SettingsCtrl.settings.redirectionEmail | orderBy track by $index">
+                            <div class="row mb-3">
+                                <div class="col-xs-10">
+                                    <span data-ng-bind="email"></span>
+                                </div>
+                                <div class="col-xs-2 text-right">
+                                    <button
+                                        type="button"
                                         class="btn btn-link p-0 m-0"
                                         data-ng-disabled="SettingsCtrl.addressesToNotifyForm.isAdding ||
-                                                          SettingsCtrl.addressesToNotifyForm.isRemoving"
+                                                              SettingsCtrl.addressesToNotifyForm.isRemoving"
                                         data-ng-click="SettingsCtrl.removeRedirectionEmail(email)">
-                                    <i class="ovh-font ovh-font-bin"
-                                       aria-hidden="true"></i>
-                                    <span class="sr-only"
-                                          data-translate="delete"></span>
-                                </button>
+                                        <i class="ovh-font ovh-font-bin" aria-hidden="true"></i>
+                                        <span class="sr-only" data-translate="delete"></span>
+                                    </button>
+                                </div>
                             </div>
+                        </li>
+                    </ul>
+                    <div class="alert alert-info"
+                         data-ng-if="!SettingsCtrl.settings.redirectionEmail.length">
+                        <span data-translate="telephony_service_fax_settings_addresses_to_notify_empty"></span>
+                    </div>
+                    <div data-ng-if="SettingsCtrl.addressesToNotifyForm.isShown">
+
+                        <!-- REDIRECTION EMAIL -->
+                        <div class="form-group"
+                             data-ng-class="{
+                                'has-error': faxAddressesToNotifyForm.redirectionEmail.$touched && faxAddressesToNotifyForm.redirectionEmail.$invalid
+                             }">
+                            <input type="email"
+                                   name="redirectionEmail"
+                                   id="redirectionEmail"
+                                   class="form-control"
+                                   required
+                                   autofocus
+                                   data-ng-model="SettingsCtrl.newRedirectionEmail"
+                                   data-translate-attr="{ placeholder: 'telephony_service_fax_settings_addresses_to_notify_placeholder' }" />
+                            <span class="help-block"
+                                  role="alert"
+                                  data-ng-if="faxAddressesToNotifyForm.redirectionEmail.$touched"
+                                  data-ng-messages="faxAddressesToNotifyForm.redirectionEmail.$error">
+                                <span data-ng-message="required"
+                                      data-translate="telephony_service_fax_settings_addresses_to_notify_error_required">
+                                </span>
+                                <span data-ng-message="email"
+                                      data-translate="telephony_service_fax_settings_addresses_to_notify_error_email">
+                                </span>
+                            </span>
                         </div>
-                    </li>
-                </ul>
-                <div class="alert alert-info"
-                     data-ng-if="!SettingsCtrl.settings.redirectionEmail.length">
-                    <span data-translate="telephony_service_fax_settings_addresses_to_notify_empty"></span>
-                </div>
-                <form name="faxAddressesToNotifyForm"
-                      data-ng-submit="SettingsCtrl.addRedirectionEmail()"
-                      data-ng-if="SettingsCtrl.addressesToNotifyForm.isShown">
 
-                    <!-- REDIRECTION EMAIL -->
-                    <div class="form-group"
-                         data-ng-class="{
-                            'has-error': faxAddressesToNotifyForm.redirectionEmail.$touched && faxAddressesToNotifyForm.redirectionEmail.$invalid
-                         }">
-                        <input
-                            type="email"
-                            name="redirectionEmail"
-                            id="redirectionEmail"
-                            class="form-control"
-                            required
-                            autofocus
-                            data-ng-model="SettingsCtrl.addressesToNotifyForm.redirectionEmail"
-                            data-translate-attr="{ placeholder: 'telephony_service_fax_settings_addresses_to_notify_placeholder' }" />
-                        <span class="help-block"
-                              role="alert"
-                              data-ng-if="faxAddressesToNotifyForm.redirectionEmail.$touched"
-                              data-ng-messages="faxAddressesToNotifyForm.redirectionEmail.$error">
-                            <span data-ng-message="required"
-                                  data-translate="telephony_service_fax_settings_addresses_to_notify_error_required">
-                            </span>
-                            <span data-ng-message="email"
-                                  data-translate="telephony_service_fax_settings_addresses_to_notify_error_email">
-                            </span>
-                        </span>
+                        <div class="form-group">
+                            <button type="cancel"
+                                    class="btn btn-default"
+                                    data-ng-disabled="SettingsCtrl.addressesToNotifyForm.isAdding"
+                                    data-ng-click="SettingsCtrl.cancelAddAddressesToNotifyForm()">
+                                <span data-translate="cancel"></span>
+                            </button>
+                            <button
+                                type="button"
+                                class="btn btn-primary"
+                                data-ng-click="SettingsCtrl.addRedirectionEmail(SettingsCtrl.newRedirectionEmail)"
+                                data-ng-disabled="SettingsCtrl.faxSettingsForm.redirectionEmail.$invalid || SettingsCtrl.addressesToNotifyForm.isAdding || SettingsCtrl.addressesToNotifyForm.isRemoving">
+                                <oui-spinner class="mr-2"
+                                             data-ng-if="SettingsCtrl.addressesToNotifyForm.isAdding"
+                                             data-size="s">
+                                </oui-spinner>
+                                <span data-translate="common_add"></span>
+                            </button>
+                        </div>
                     </div>
 
-                    <div class="form-group">
-                        <button
-                            type="cancel"
-                            class="btn btn-default"
-                            data-ng-disabled="SettingsCtrl.addressesToNotifyForm.isAdding"
-                            data-ng-click="SettingsCtrl.cancelAddAddressesToNotifyForm()">
-                            <span data-translate="cancel"></span>
-                        </button>
-                        <button
-                            type="submit"
-                            class="btn btn-primary"
-                            data-ng-disabled="faxAddressesToNotifyForm.$invalid || SettingsCtrl.addressesToNotifyForm.isAdding || SettingsCtrl.addressesToNotifyForm.isRemoving">
-                            <oui-spinner class="mr-2"
-                                         data-ng-if="SettingsCtrl.addressesToNotifyForm.isAdding"
-                                         data-size="s">
-                            </oui-spinner>
-                            <span data-translate="common_add"></span>
-                        </button>
+                    <button type="button"
+                            class="btn btn-primary mt-3 mb-1"
+                            data-ng-if="!SettingsCtrl.addressesToNotifyForm.isShown && SettingsCtrl.settings.redirectionEmail.length < SettingsCtrl.addressesToNotifyForm.threshold"
+                            data-ng-disabled="SettingsCtrl.addressesToNotifyForm.isAdding ||
+                                          SettingsCtrl.addressesToNotifyForm.isRemoving"
+                            data-ng-click="SettingsCtrl.addressesToNotifyForm.isShown = true">
+                        <span data-translate="telephony_service_fax_settings_addresses_to_notify_add"></span>
+                    </button>
+                    <div class="alert alert-info"
+                         data-ng-if="SettingsCtrl.settings.redirectionEmail.length >= 5 && !SettingsCtrl.addressesToNotifyForm.isAdding">
+                        <p data-translate="telephony_service_fax_settings_addresses_to_notify_info_limit"></p>
                     </div>
-                </form>
-
-                <button
-                    type="button"
-                    class="btn btn-primary mt-3 mb-1"
-                    data-ng-if="!SettingsCtrl.addressesToNotifyForm.isShown && SettingsCtrl.settings.redirectionEmail.length < SettingsCtrl.addressesToNotifyForm.threshold"
-                    data-ng-disabled="SettingsCtrl.addressesToNotifyForm.isAdding ||
-                                      SettingsCtrl.addressesToNotifyForm.isRemoving"
-                    data-ng-click="SettingsCtrl.addressesToNotifyForm.isShown = true">
-                    <span data-translate="telephony_service_fax_settings_addresses_to_notify_add"></span>
-                </button>
-                <div class="alert alert-info"
-                     data-ng-if="SettingsCtrl.settings.redirectionEmail.length >= 5 && !SettingsCtrl.addressesToNotifyForm.isAdding">
-                    <p data-translate="telephony_service_fax_settings_addresses_to_notify_info_limit"></p>
                 </div>
             </div>
-        </div>
-    </div><!-- .row -->
+        </div><!-- .row -->
 
+        <div class="form-group">
+            <hr />
+            <telephony-bulk-action data-billing-account="{{ SettingsCtrl.bulkDatas.billingAccount }}"
+                                   data-service-name="{{ SettingsCtrl.bulkDatas.serviceName }}"
+                                   data-custom-class="link d-block pl-0 mb-3"
+                                   data-ng-disabled="SettingsCtrl.faxSettingsForm.$invalid || SettingsCtrl.addressesToNotifyForm.isShown"
+                                   data-bulk-infos="SettingsCtrl.bulkDatas.infos"
+                                   data-filter-services="SettingsCtrl.filterServices"
+                                   data-get-bulk-params="SettingsCtrl.getBulkParams"
+                                   data-on-success="SettingsCtrl.onBulkSuccess"
+                                   data-on-error="SettingsCtrl.onBulkError">
+            </telephony-bulk-action>
+
+            <button type="submit"
+                    class="btn btn-primary"
+                    data-ng-disabled="SettingsCtrl.faxSettingsForm.$invalid || SettingsCtrl.addressesToNotifyForm.isShown">
+                <span data-translate="telephony_service_fax_settings_notification_settings_update"></span>
+            </button>
+        </div>
+    </form>
 </section><!-- .telecom-telephony-service-fax-settings -->
