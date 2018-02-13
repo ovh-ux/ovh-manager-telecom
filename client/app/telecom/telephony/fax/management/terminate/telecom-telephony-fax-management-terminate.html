@@ -85,6 +85,19 @@
                     </div> <!-- End of DETAILS -->
 
                     <div class="form-group">
+                        <div class="row">
+                            <telephony-bulk-action class="float-right"
+                                data-billing-account="{{ $ctrl.fax.billingAccount }}"
+                                data-service-name="{{ $ctrl.fax.serviceName }}"
+                                data-custom-class="link d-block pl-0 mb-3"
+                                data-ng-disabled="!terminateForm.$valid"
+                                data-bulk-infos="$ctrl.bulkDatas.infos"
+                                data-filter-services="$ctrl.filterServices"
+                                data-get-bulk-params="$ctrl.getBulkParams"
+                                data-on-success="$ctrl.onBulkSuccess"
+                                data-on-error="$ctrl.onBulkError">
+                            </telephony-bulk-action>
+                        </div>
                         <button type="submit"
                                 class="btn btn-primary float-right"
                                 data-ng-disabled="!terminateForm.$valid"
