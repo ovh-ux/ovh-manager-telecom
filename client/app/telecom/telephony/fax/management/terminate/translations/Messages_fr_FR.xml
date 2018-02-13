@@ -27,4 +27,9 @@
     <translation id="telephony_group_fax_management_terminate_cancel_explain">Vous pouvez annuler la demande jusqu'à cette date.</translation>
     <translation id="telephony_group_fax_management_terminate_cancel_button">Annuler la résiliation</translation>
     <translation id="telephony_group_fax_management_terminate_cancel_loading">Annulation de la résiliation en cours</translation>
+
+    <translation id="telephony_group_fax_management_terminate_bulk_all_success">La demande de résiliation a bien été appliquée aux services sélectionnés</translation>
+    <translation id="telephony_group_fax_management_terminate_bulk_some_success">La demande de résiliation a bien été appliquée à {{ count}} des services sélectionnés</translation>
+    <translation id="telephony_group_fax_management_terminate_bulk_error">La demande de résiliation n'a pas pu être appliquée aux services suivants :</translation>
+    <translation id="telephony_group_fax_management_terminate_bulk_on_error">Oops ! Une erreur est survenue lors de la demande de résiliation</translation>
 </translations>
