@@ -2,6 +2,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceContactCtrl", fu
     "use strict";
 
     var self = this;
+    self.legalForms = ["individual", "professional", "corporation"];
 
     function fetchDirectory () {
         return OvhApiTelephony.Service().Lexi().directory({
@@ -41,6 +42,8 @@ angular.module("managerApp").controller("TelecomTelephonyServiceContactCtrl", fu
             directory: fetchDirectory()
         }).then(function (res) {
             self.directory = res.directory;
+            self.directory.legalForm = self.legalForms.indexOf(self.directory.legalForm) > -1 ? self.directory.legalForm : self.legalForms[2];
+
             self.directoryForm = angular.copy(self.directory);
             self.cityList = [{ name: self.directory.city }];
             self.onPostCodeChange();
