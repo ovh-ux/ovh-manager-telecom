@@ -1,5 +1,5 @@
 class ManagerNavbarService {
-    constructor ($q, $translate, LANGUAGES, MANAGER_URLS, REDIRECT_URLS, URLS, OvhApiMe, OtrsPopupService, ssoAuthentication, PackMediator, telecomVoip, voipService, SmsMediator, OvhApiTelephonyFax, OvhApiOverTheBox, TelecomMediator) {
+    constructor ($q, $translate, LANGUAGES, MANAGER_URLS, REDIRECT_URLS, URLS, OvhApiMe, OtrsPopupService, ssoAuthentication, PackMediator, telecomVoip, voipService, SmsMediator, OvhApiFreeFax, OvhApiOverTheBox, TelecomMediator) {
         this.$q = $q;
         this.$translate = $translate;
         this.LANGUAGES = LANGUAGES;
@@ -13,7 +13,7 @@ class ManagerNavbarService {
         this.telecomVoip = telecomVoip;
         this.voipService = voipService;
         this.smsMediator = SmsMediator;
-        this.ovhApiTelephonyFax = OvhApiTelephonyFax;
+        this.ovhApiFreeFax = OvhApiFreeFax;
         this.ovhApiOverTheBox = OvhApiOverTheBox;
         this.telecomMediator = TelecomMediator;
     }
@@ -226,18 +226,16 @@ class ManagerNavbarService {
             return this.$q.when(undefined);
         }
 
-        return this.ovhApiTelephonyFax.Aapi()
-            .getServices().$promise
-            .then((faxList) => _.filter(faxList, {
-                type: "FREEFAX"
-            }))
+        return this.ovhApiFreeFax.Lexi()
+            .query().$promise
+            .then((faxList) => _.sortBy(faxList, "number"))
             .then((result) =>
                 _.map(result, (item) => ({
-                    name: item.serviceName,
-                    title: item.label,
+                    name: item,
+                    title: item,
                     state: "telecom.freefax",
                     stateParams: {
-                        serviceName: item.serviceName
+                        serviceName: item
                     }
                 }))
             )
@@ -282,7 +280,7 @@ class ManagerNavbarService {
                 freefax: this.getFaxProducts(count.freefax),
                 overTheBox: this.getOtbProducts(count.overTheBox)
             }))
-            .catch(() => this.$q.when(undefined))
+            .catch(() => this.$q.when(undefined));
     }
 
     getUniverseMenu (products) {
