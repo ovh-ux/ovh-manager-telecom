@@ -237,7 +237,7 @@ class ManagerNavbarService {
                         serviceName: item.serviceName
                     }
                 }))
-            );
+            ).catch(() => this.$q.when(undefined));
     }
 
     getOtbProducts (count) {
