@@ -9,7 +9,11 @@ angular.module("managerApp").controller("PackXdslMissingRioCtrl", function ($sco
 
         self.missingRioForm = {};
 
-        return OvhApiXdsl.Lexi().get({ xdslId: $stateParams.serviceName }).$promise.then(function (data) {
+        self.number = $stateParams.number;
+
+        return OvhApiXdsl.Lexi().get({
+            xdslId: $stateParams.serviceName
+        }).$promise.then(function (data) {
             return data;
         }, function (err) {
             Toast.error(err);

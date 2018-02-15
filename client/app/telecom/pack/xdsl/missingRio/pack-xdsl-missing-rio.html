@@ -26,7 +26,7 @@
                                            id="xdslPortability"
                                            name="xdslPortability"
                                            data-ng-model="PackXdslMissingRio.missingRioForm.portNumber">
-                                    <span data-translate="xdsl_missing-rio_port-number_label"></span>
+                                    {{ 'xdsl_missing-rio_port-number_label' | translate: {num: PackXdslMissingRio.number} }}
                                 </label>
                             </div>
                             <div class="form-group"
@@ -35,8 +35,10 @@
                                      'has-error': missingRioForm.rio.$touched && missingRioForm.rio.$invalid
                                  }">
                                 <label for="rio"
-                                       class="control-label"
+                                       class="control-label d-inline-block"
                                        data-translate="xdsl_missing-rio_label"></label>
+                                <i class="ovh-font ovh-font-question"
+                                   data-uib-tooltip="{{ ::'xdsl_missing-rio_label_tooltip' | translate: {num: PackXdslMissingRio.number} }}"></i>
                                 <input id="rio"
                                        name="rio"
                                        class="form-control"
