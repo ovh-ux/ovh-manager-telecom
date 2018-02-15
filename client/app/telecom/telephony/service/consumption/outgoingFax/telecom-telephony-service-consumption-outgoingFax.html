@@ -55,7 +55,7 @@
             </div>
         </div>
 
-        <oui-datagrid data-rows="$ctrl.consumption.sorted" data-page-size="10">
+        <oui-datagrid data-rows="$ctrl.consumption.sorted">
                 <oui-column data-title="'telephony_service_consumption_date' | translate"
                             data-property="creationDatetime" data-sortable="desc">
                     <span data-ng-bind="::$row.creationDatetime | date: 'dd/MM/yyyy'"></span>

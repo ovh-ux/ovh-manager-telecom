@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingRepaymentHistoryCtrl", function ($q, $filter, $window, $timeout, $stateParams, $translate, TelephonyMediator, OvhApiTelephony, ToastError) {
+angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingRepaymentHistoryCtrl", function ($q, $filter, $window, $timeout, $stateParams, $translate, TelephonyMediator, OvhApiTelephony, Toast) {
     "use strict";
 
     var self = this;
@@ -27,9 +27,10 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingRe
                     consumption.priceValue = consumption.price ? consumption.price.value : null;
                 });
             });
-        }, function (err) {
+        }).catch(function (err) {
             self.consumptionData = [];
-            return new ToastError([$translate.instant("telephony_group_billing_repayment_history_download_error"), (err.data && err.data.message) || ""].join(" "));
+            Toast.error([$translate.instant("telephony_group_billing_repayment_history_download_error"), (err.data && err.data.message) || ""].join(" "));
+            return $q.reject(err);
         });
     }
 
@@ -66,8 +67,9 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingRe
 
         return self.fetchFile(consumption).then(function (info) {
             $window.location.href = info.url;
-        }, function (error) {
-            return new ToastError([$translate.instant("telephony_group_billing_repayment_history_download_error"), (error.data && error.data.message) || ""].join(" "));
+        }).catch(function (error) {
+            Toast.error([$translate.instant("telephony_group_billing_repayment_history_download_error"), (error.data && error.data.message) || ""].join(" "));
+            return $q.reject(error);
         });
     };
 
@@ -85,8 +87,9 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingRe
             return fetchHistory().then(function (consumptions) {
                 self.consumptionData = consumptions;
             });
-        }, function (error) {
-            return new ToastError([$translate.instant("telephony_group_billing_repayment_history_download_error"), (error.data && error.data.message) || ""].join(" "));
+        }).catch(function (error) {
+            Toast.error([$translate.instant("telephony_group_billing_repayment_history_download_error"), (error.data && error.data.message) || ""].join(" "));
+            return $q.reject(error);
         });
     };
 

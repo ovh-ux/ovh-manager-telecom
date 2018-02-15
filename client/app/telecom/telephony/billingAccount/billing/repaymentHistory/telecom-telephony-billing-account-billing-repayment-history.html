@@ -32,13 +32,13 @@
                 <div class="col-xs-12">
 
                     <oui-datagrid data-rows="RepaymentHistoryCtrl.consumptionData">
-                        <oui-column data-title="'telephony_group_billing_repayment_history_list_date' | translate" 
+                        <oui-column data-title="'telephony_group_billing_repayment_history_list_date' | translate"
                                     data-property="date" data-sortable="desc">
                             <span class="text-nowrap"
                                   data-ng-bind="$row.date | date:'shortDate'">
                             </span>
                         </oui-column>
-                        <oui-column data-title="'telephony_group_billing_repayment_history_list_price' | translate" 
+                        <oui-column data-title="'telephony_group_billing_repayment_history_list_price' | translate"
                                     data-property="date" data-sortable>
                             <span class="text-nowrap"
                                   data-ng-bind="$row.price.text.replace('-', '')">
