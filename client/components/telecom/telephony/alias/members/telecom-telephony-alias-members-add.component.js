@@ -69,7 +69,7 @@ angular.module("managerApp").component("telecomTelephonyAliasMembersAdd", {
                 return self.api.addMembers(_(self.addMemberForm.numbers).filter(function (number) {
                     return number && number.length;
                 }).map(function (number) {
-                    return _.assign({number: number}, self.addMemberForm.options);
+                    return _.assign({ number: number }, self.addMemberForm.options);
                 }).value()).then(function () {
                     Toast.success($translate.instant("telephony_alias_members_add_success"));
                     self.resetMemberAddForm();
