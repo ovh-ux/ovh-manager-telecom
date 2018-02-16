@@ -3,7 +3,7 @@
     <translation id="xdsl_missing-rio_title">Portabilité de numéro</translation>
     <translation id="xdsl_missing-rio_port-number_label">Conservez votre numéro de téléphone : {{num}}</translation>
     <translation id="xdsl_missing-rio_label">Veuillez entrer le code RIO afin de porter votre numéro.</translation>
-    <translation id="xdsl_missing-rio_label_tooltip">Comment obtenir un code RIO (Relevé d'identité Opérateur) ? Rien de plus simple. Appelez gratuitement le 3179 depuis votre ligne fixe : {{num}}. Ce numéro est accessible 24 h/24, 7 jours sur 7. Le RIO est un identifiant unique comprenant 12 caractères. Si vous n'avez pas accès à votre ligne téléphonique, consultez la liste des serveurs vocaux RIO des principaux opérateurs</translation>
+    <translation id="xdsl_missing-rio_label_tooltip">Comment obtenir un code RIO (Relevé d'identité Opérateur) ? Rien de plus simple. Appelez gratuitement le 3179 depuis votre ligne fixe : {{num}}. Ce numéro est accessible 24 h/24, 7 jours sur 7. Le RIO est un identifiant unique comprenant 12 caractères.</translation>
     <translation id="xdsl_missing-rio_required">Le champ est obligatoire</translation>
     <translation id="xdsl_missing-rio_send">Valider</translation>
     <translation id="xdsl_missing-rio_sent">Votre portabilité a été envoyée avec succès.</translation>

@@ -20,29 +20,25 @@
                       data-ng-submit="PackXdslMissingRio.sendRio()">
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="form-group checkbox">
-                                <label for="xdslPortability">
-                                    <input type="checkbox"
-                                           id="xdslPortability"
-                                           name="xdslPortability"
-                                           data-ng-model="PackXdslMissingRio.missingRioForm.portNumber">
-                                    {{ 'xdsl_missing-rio_port-number_label' | translate: {num: PackXdslMissingRio.number} }}
-                                </label>
-                            </div>
                             <div class="form-group"
-                                 data-ng-if="!PackXdslMissingRio.missingRioForm.portNumber"
                                  data-ng-class="{
                                      'has-error': missingRioForm.rio.$touched && missingRioForm.rio.$invalid
                                  }">
+                                <div class="h5 mb-3">{{ 'xdsl_missing-rio_port-number_label' | translate: {num: PackXdslMissingRio.number} }}</div>
                                 <label for="rio"
                                        class="control-label d-inline-block"
-                                       data-translate="xdsl_missing-rio_label"></label>
-                                <i class="ovh-font ovh-font-question"
-                                   data-uib-tooltip="{{ ::'xdsl_missing-rio_label_tooltip' | translate: {num: PackXdslMissingRio.number} }}"></i>
+                                       data-tooltip-placement="right"
+                                       data-tooltip-append-to-body="true"
+                                       data-uib-tooltip="{{ ::'xdsl_missing-rio_label_tooltip' | translate: {num: PackXdslMissingRio.number} }}">
+                                    <span data-translate="xdsl_missing-rio_label"></span>
+                                    <i class="ovh-font ovh-font-question ml-1"
+                                       aria-hidden="true"></i>
+                                </label>
                                 <input id="rio"
                                        name="rio"
                                        class="form-control"
                                        data-ng-model="PackXdslMissingRio.missingRioForm.rio"
+                                       maxlength="12"
                                        required
                                        type="text" />
                                 <span class="help-block"
