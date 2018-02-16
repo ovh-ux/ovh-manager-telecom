@@ -42,14 +42,6 @@
             </span>
         </span>
     </h1>
-    <div class="form-group"
-         data-ng-if="$ctrl.serviceName !== $ctrl.title || $ctrl.inEdition">
-        <em class="align-middle"
-            data-ng-bind="$ctrl.serviceName"></em>
-    </div>
-    <div class="form-group"
-         data-ng-if="$ctrl.publicOffer.description">
-        <em class="align-middle"
-            data-ng-bind="$ctrl.publicOffer.description"></em>
-    </div>
+    <em class="align-middle"
+        data-ng-bind="$ctrl.serviceName"></em>
 </form>
