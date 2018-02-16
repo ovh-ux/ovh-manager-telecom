@@ -6,6 +6,7 @@ angular.module("managerApp").directive("editableServiceName", function ($timeout
         templateUrl: "components/editable-service-name/editable-service-name.html",
         scope: {
             title: "=editableServiceNameTitle",
+            publicOffer: "=editableServiceNamePublicOffer",
             serviceName: "=editableServiceNameServiceName",
             onEditStart: "&?editableServiceNameTitleOnEditStart",
             onEditCancel: "&?editableServiceNameTitleOnEditCancel",
