@@ -27,7 +27,7 @@ angular.module("managerApp").config(function ($stateProvider) {
                 }).$promise.then(function (line) {
                     return line;
                 }).catch(function () {
-                    return null;
+                    return {};
                 });
             },
             $title: function (translations, $stateParams, $translate, currentLine) {
