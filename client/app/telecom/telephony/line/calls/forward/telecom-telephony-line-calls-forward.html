@@ -123,7 +123,7 @@
                             id="{{ :: 'forward' + forward.type + 'Number'}}"
                             class="form-control no-transition"
                             data-ng-required="forward.enable"
-                            data-ng-options="preselect as (preselect.labelType + ' ' + preselect.toString()) for preselect in LineForwardCtrl.getFilteredNumbers($select.search, forward.nature.types) track by preselect.description"
+                            data-ng-options="preselect as (preselect.labelType + ' ' + preselect.toString()) for preselect in LineForwardCtrl.getFilteredNumbers($select.search, forward.nature.types) track by preselect.serviceName"
                             data-ng-disabled="LineForwardCtrl.loading.save">
                     </select>
                     <div data-ng-if="forward.nature.value === 'external'">
