@@ -16,7 +16,6 @@ angular.module("managerApp")
             return TelephonyMediator.getGroup($stateParams.billingAccount).then(function (group) {
                 self.group = group;
                 self.phoneDetails.raw = self.group.lines;
-                self.fax = _.head(self.group.fax);
                 return self.group;
             }).catch(function (err) {
                 if (err.status === 404) {
