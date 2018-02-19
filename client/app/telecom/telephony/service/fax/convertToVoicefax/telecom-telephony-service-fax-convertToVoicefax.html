@@ -43,7 +43,8 @@
                     <div data-ng-if="!$ctrl.convertToVoicefaxForm.isChanging">
                         <form name="convertToVoicefaxForm"
                               novalidate
-                              data-ng-submit="$ctrl.orderConvertToVoicefax()">
+                              data-ng-submit="$ctrl.orderConvertToVoicefax()"
+                              data-ng-if="$ctrl.services.length">
                             <div class="form-group">
                                 <label for="service"
                                        class="control-label"
@@ -92,6 +93,11 @@
                                 </a>
                             </div>
                         </form>
+                        <div class="alert alert-warning"
+                             role="alert"
+                             data-ng-if="!$ctrl.services.length">
+                            <p data-translate="telephony_service_fax_convert_to_voicefax_informations_warning"></p>
+                        </div>
                     </div>
                 </div>
                 <!-- /.widget-presentation -->
