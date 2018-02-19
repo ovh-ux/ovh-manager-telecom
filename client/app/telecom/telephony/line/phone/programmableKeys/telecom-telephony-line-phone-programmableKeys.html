@@ -10,9 +10,9 @@
         </h1>
     </header>
 
-    <oui-loader data-ng-if="ProgrammableKeysCtrl.loading.init"
-                data-size="m">
-    </oui-loader>
+    <div class="text-center" data-ng-if="ProgrammableKeysCtrl.loading.init">
+        <oui-spinner></oui-spinner>
+    </div>
 
     <div class="telecom-section-content">
 
@@ -80,6 +80,18 @@
                             </button>
                         </th>
                     </thead>
+
+                    <!-- <telephony-bulk-action data-billing-account="{{ ProgrammableKeysCtrl.line.billingAccount }}"
+                                           data-service-name="{{ ProgrammableKeysCtrl.line.serviceName }}"
+                                           data-custom-class="link d-block pl-0 mb-3"
+                                           data-bulk-infos="ProgrammableKeysCtrl.bulkDatas.infos"
+                                           data-ng-disabled="ProgrammableKeysCtrl.loading.keys || !ProgrammableKeysCtrl.functionKeys.raw.length"
+                                           data-filter-services="ProgrammableKeysCtrl.filterServices"
+                                           data-get-bulk-params="ProgrammableKeysCtrl.getBulkParams"
+                                           data-on-success="ProgrammableKeysCtrl.onBulkSuccess"
+                                           data-on-error="ProgrammableKeysCtrl.onBulkError">
+                    </telephony-bulk-action> -->
+
                     <tbody data-ng-if="ProgrammableKeysCtrl.functionKeys.raw.length && !ProgrammableKeysCtrl.loading.keys">
                         <tr data-ng-repeat="key in ProgrammableKeysCtrl.functionKeys.raw | orderBy:ProgrammableKeysCtrl.order.by:ProgrammableKeysCtrl.order.desc track by $index">
                             <td headers="keys" data-ng-bind="key.label || '-'"></td>

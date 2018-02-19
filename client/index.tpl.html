@@ -25,8 +25,21 @@
 
         <div class="col-container">
 
-            <!-- TOP MENU -->
-            <manager-navbar></manager-navbar>
+            <!-- Skip to main content -->
+            <div class="skipnav">
+                <a class="oui-button oui-button_link" href=""
+                    data-ng-click="scrollTo('maincontent')"
+                    data-translate="common_skip_to_main_content">
+                </a>
+            </div>
+            <!-- /Skip to main content -->
+
+            <oui-navbar fixed
+                data-active-link="telecom"
+                data-brand="::navbar.brand"
+                data-main-links="::navbar.managerLinks"
+                data-aside-links="::navbar.internalLinks">
+            </oui-navbar>
 
             <div class="container-fluid h-100 w-100" style="overflow: auto">
                 <div class="row">
@@ -39,11 +52,17 @@
                     <!-- CONTENT -->
                     <div id="content" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
 
+                        <!-- Skip content target -->
+                        <div class="skiptarget">
+                            <a id="maincontent" href="">-</a>
+                        </div>
+                        <!-- /Skip content target -->
+
                         <flash-message duration="600000" class="flash"></flash-message>
                         <ovh-browser-alert></ovh-browser-alert>
                         <ovh-task-follow></ovh-task-follow>
 
-                        <div ui-view=""></div>
+                        <div data-ui-view></div>
                     </div>
 
                 </div>
@@ -54,7 +73,7 @@
 
         <div class="d-flex text-center"
              id="managerPreload"
-             data-ng-class="managerPreloadHide">
+             data-ng-class="!!navbar && managerPreloadHide">
             <div class="m-auto">
                 <p class="lead mb-3"
                    data-translate="preload_welcome">
@@ -64,9 +83,9 @@
                    data-translate="preload_manager_ovh">
                 </h1>
                 <div class="mt-5">
-                    <div class="oui-loader oui-loader_l">
-                        <div class="oui-loader__container mx-auto">
-                            <div class="oui-loader__image"></div>
+                    <div class="oui-spinner oui-spinner_l">
+                        <div class="oui-spinner__container">
+                            <div class="oui-spinner__image"></div>
                         </div>
                     </div>
                 </div>

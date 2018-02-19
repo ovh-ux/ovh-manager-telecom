@@ -7,9 +7,9 @@
         <h1 data-translate="telephony_line_calls_time_condition_title"></h1>
     </header>
 
-    <oui-loader data-ng-if="$ctrl.loading.init"
-                data-size="m">
-    </oui-loader>
+    <div class="text-center" data-ng-if="$ctrl.loading.init">
+        <oui-spinner></oui-spinner>
+    </div>
 
     <form class="telecom-section-content mb-4"
           name="timeConditionForm"
@@ -115,8 +115,6 @@
                         </voip-time-condition-slot>
                     </div>
                 </div>
-
-
             </div> <!-- END OF REDIRECT CONFIGURATION -->
         </div>
 
@@ -127,6 +125,16 @@
                     data-translate="telephony_line_calls_time_condition_conditions_title">
                 </h2>
             </header>
+
+            <telephony-bulk-action data-billing-account="{{ $ctrl.line.billingAccount }}"
+                                   data-service-name="{{ $ctrl.line.serviceName }}"
+                                   data-custom-class="link d-block pl-0 mt-4 mb-2"
+                                   data-bulk-infos="$ctrl.bulkDatas.infos"
+                                   data-get-bulk-params="$ctrl.getBulkParams"
+                                   data-filter-services="$ctrl.filterServices"
+                                   data-on-success="$ctrl.onBulkSuccess"
+                                   data-on-error="$ctrl.onBulkError">
+            </telephony-bulk-action>
 
             <voip-time-condition-calendar data-voip-time-condition="$ctrl.line.timeCondition"></voip-time-condition-calendar>
         </div> <!-- CONDITIONS -->
@@ -141,10 +149,10 @@
             <div class="d-inline-block">
                 <button type="submit"
                         class="btn btn-primary">
-                    <oui-loader class="mr-2"
-                                data-ng-if="$ctrl.line.timeCondition.status === 'SAVING'"
-                                data-size="s">
-                    </oui-loader>
+                    <oui-spinner class="mr-2"
+                                 data-ng-if="$ctrl.line.timeCondition.status === 'SAVING'"
+                                 data-size="s">
+                    </oui-spinner>
                     <span data-translate="submit"></span>
                 </button>
                 <button type="reset"
@@ -154,6 +162,16 @@
                         data-translate="cancel">
                 </button>
             </div>
+
+            <telephony-bulk-action data-billing-account="{{ $ctrl.line.billingAccount }}"
+                                   data-service-name="{{ $ctrl.line.serviceName }}"
+                                   data-custom-class="link d-block pl-0 mt-4 mb-2"
+                                   data-bulk-infos="$ctrl.bulkDatas.infos"
+                                   data-get-bulk-params="$ctrl.getBulkParams"
+                                   data-filter-services="$ctrl.filterServices"
+                                   data-on-success="$ctrl.onBulkSuccess"
+                                   data-on-error="$ctrl.onBulkError">
+            </telephony-bulk-action>
 
         </footer>
 

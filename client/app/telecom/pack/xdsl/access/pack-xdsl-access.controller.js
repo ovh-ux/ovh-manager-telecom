@@ -42,18 +42,18 @@ angular.module("managerApp").controller("XdslAccessCtrl", function ($scope, $sta
     function setStatusLabel (status) {
         switch (status) {
         case "active":
-            self.statusLabel = "<span class=\"ovh-font ovh-font-success text-success h5 mr-2\" aria-hidden=\"true\"></span> " + $translate.instant("xdsl_details_status_" + status);
+            self.statusLabel = "<h5 class=\"ovh-font ovh-font-success text-success mr-2\" aria-hidden=\"true\"></h5> " + $translate.instant("xdsl_details_status_" + status);
             break;
         case "doing":
         case "migration":
         case "upgradeOffer":
-            self.statusLabel = "<span class=\"ovh-font ovh-font-success text-success h5 mr-2\" aria-hidden=\"true\"></span> " + $translate.instant("xdsl_details_status_" + status);
+            self.statusLabel = "<h5 class=\"ovh-font ovh-font-success text-success mr-2\" aria-hidden=\"true\"></h5> " + $translate.instant("xdsl_details_status_" + status);
             break;
         case "cancelled":
         case "close":
         case "deleting":
         case "slamming":
-            self.statusLabel = "<span class=\"ovh-font ovh-font-failure text-danger h5 mr-2\" aria-hidden=\"true\"></span> " + $translate.instant("xdsl_details_status_" + status);
+            self.statusLabel = "<h5 class=\"ovh-font ovh-font-failure text-danger mr-2\" aria-hidden=\"true\"></h5> " + $translate.instant("xdsl_details_status_" + status);
             break;
         default :
             self.statusLabel = status;
@@ -109,7 +109,11 @@ angular.module("managerApp").controller("XdslAccessCtrl", function ($scope, $sta
         }, ToastError);
     };
 
-    this.canOrderIps = function () {
+    this.hasPendingOrderAdditionalIpOption = function () {
+        return $scope.access.tasks.current.pendingOrderAdditionalIpOption;
+    };
+
+    this.canHaveMoreIps = function () {
         return _.filter(self.ipsV4, function (ip) {
             return ip.range !== PACK_IP.baseIpv4Range;
         }).length === 0;

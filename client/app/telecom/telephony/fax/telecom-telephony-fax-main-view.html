@@ -1,9 +1,9 @@
 <section class="telecom-telephony-fax">
 
     <!-- LOADING -->
-    <oui-loader data-ng-if="$ctrl.loading.init"
-                data-size="l">
-    </oui-loader>
+    <div class="text-center" data-ng-if="$ctrl.loading.init">
+        <oui-spinner data-size="l"></oui-spinner>
+    </div>
 
     <div class="telecom-section-header" data-ng-if="!$ctrl.loading.init">
         <header class="page-header"

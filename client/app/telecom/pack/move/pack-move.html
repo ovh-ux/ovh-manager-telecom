@@ -6,9 +6,9 @@
 
     <div class="telecom-section-content">
 
-        <oui-loader data-ng-if="PackMove.loading"
-                    data-size="m">
-        </oui-loader>
+        <div class="text-center" data-ng-if="PackMove.loading">
+            <oui-spinner></oui-spinner>
+        </div>
 
         <!-- BEGIN: end of loading -->
         <div data-ng-if="!PackMove.loading">

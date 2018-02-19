@@ -7,9 +7,9 @@
         <h1 data-translate="telephony_line_phone_accessories_title"></h1>
     </header>
 
-    <oui-loader data-ng-if="AccessoriesCtrl.loading.init"
-                data-size="m">
-    </oui-loader>
+    <div class="text-center" data-ng-if="AccessoriesCtrl.loading.init">
+        <oui-spinner></oui-spinner>
+    </div>
 
     <toast-message></toast-message>
 

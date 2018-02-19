@@ -7,9 +7,9 @@
         <h1 data-translate="telephony_phonebook_title"></h1>
     </header>
 
-    <oui-loader data-ng-if="PhonebookCtrl.phonebook.isLoading"
-                data-size="m">
-    </oui-loader>
+    <div class="text-center" data-ng-if="PhonebookCtrl.phonebook.isLoading">
+        <oui-spinner></oui-spinner>
+    </div>
 
     <div class="telecom-section-content"
          data-ng-if="!PhonebookCtrl.phonebook.isLoading">
@@ -67,10 +67,10 @@
                             class="btn btn-primary mt-3"
                             data-ng-disabled="phonebookCreateForm.$invalid ||
                                               PhonebookCtrl.phonebookToAdd.isAdding">
-                            <oui-loader class="mr-2"
-                                        data-ng-if="PhonebookCtrl.phonebookToAdd.isAdding"
-                                        data-size="s">
-                            </oui-loader>
+                            <oui-spinner class="mr-2"
+                                         data-ng-if="PhonebookCtrl.phonebookToAdd.isAdding"
+                                         data-size="s">
+                            </oui-spinner>
                             <span data-translate="telephony_phonebook_create_submit"></span>
                         </button>
                     </form>
@@ -256,10 +256,10 @@
                                       'other': ('telephony_phonebook_contact_delete_plural' | translate:{ count: {} })
                                   }">
                             </span>
-                            <oui-loader class="ml-2"
-                                        data-ng-if="PhonebookCtrl.phonebookContact.isDeleting"
-                                        data-size="s">
-                            </oui-loader>
+                            <oui-spinner class="ml-2"
+                                         data-ng-if="PhonebookCtrl.phonebookContact.isDeleting"
+                                         data-size="s">
+                            </oui-spinner>
                         </button>
                     </div>
                     <div class="table-responsive">
@@ -502,8 +502,8 @@
                             </tbody>
                             <tbody data-ng-if="PhonebookCtrl.phonebookContact.isLoading">
                                 <tr>
-                                    <td colspan="9">
-                                        <oui-loader data-size="m"></oui-loader>
+                                    <td colspan="9" class="text-center">
+                                        <oui-spinner data-size="s"></oui-spinner>
                                     </td>
                                 </tr>
                             </tbody>

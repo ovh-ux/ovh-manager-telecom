@@ -1,8 +1,8 @@
 <div class="telecom-pack-xdsl-wifi-config">
 
-    <oui-loader data-ng-if="ConfigWifiCtrl.loaders.wifi"
-                data-size="m">
-    </oui-loader>
+    <div class="text-center" data-ng-if="ConfigWifiCtrl.loaders.wifi">
+        <oui-spinner></oui-spinner>
+    </div>
 
     <div data-ng-if="!ConfigWifiCtrl.loaders.wifi">
 
@@ -25,71 +25,58 @@
                     </header>
                 </div>
 
-                <table class="table"
-                       data-ng-class="{
-                           'table-hover table-striped': ConfigWifiCtrl.wifis.length > 1
-                       }">
-                    <thead>
-                        <tr>
-                            <th scope="col"
-                                data-translate="xdsl_modem_wifi_config_table_ssid"></th>
-                            <th scope="col"
-                                data-translate="xdsl_modem_wifi_config_ssid_table_visibility"></th>
-                            <th scope="col"
-                                data-translate="xdsl_modem_wifi_config_security"></th>
-                            <th scope="col"
-                                data-translate="xdsl_modem_wifi_config_canal"></th>
-                            <th scope="col"
-                                data-translate="xdsl_modem_wifi_config_table_frequency"></th>
-                            <th scope="col"
-                                data-translate="xdsl_modem_wifi_config_table_band_steering"></th>
-                            <th scope="col"
-                                data-translate="xdsl_modem_wifi_config_table_guest"></th>
-                            <th scope="col"
-                                data-translate="xdsl_modem_wifi_config_state"></th>
-                            <th data-translate="common_actions"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr data-ng-repeat="wifi in ConfigWifiCtrl.wifis track by $index">
-                            <th scope="row"
-                                data-translate-attr="{ 'data-title': 'xdsl_modem_wifi_config_table_ssid' }"
-                                data-ng-bind="wifi.SSID">
-                            </th>
-                            <td data-translate-attr="{ 'data-title': 'xdsl_modem_wifi_config_ssid_table_visibility' }"
-                                data-translate="{{ wifi.SSIDAdvertisementEnabled ? 'xdsl_modem_wifi_config_visible' : 'xdsl_modem_wifi_config_hidden' }}">
-                            </td>
-                            <td data-translate-attr="{ 'data-title': 'xdsl_modem_wifi_config_security' }"
-                                data-translate="{{ 'xdsl_modem_wifi_' + wifi.securityType }}">
-                            </td>
-                            <td data-translate-attr="{ 'data-title': 'xdsl_modem_wifi_config_canal' }"
-                                data-ng-bind="wifi.channelCustom">
-                            </td>
-                            <td data-translate-attr="{ 'data-title': 'xdsl_modem_wifi_config_table_frequency' }"
-                                data-ng-bind="wifi.frequency">
-                            </td>
-                            <td data-translate-attr="{ 'data-title': 'xdsl_modem_wifi_config_table_band_steering' }"
-                                data-translate="{{ wifi.bandSteering ? 'common_yes_capitalized' : 'common_no_capitalized' }}">
-                            </td>
-                            <td data-translate-attr="{ 'data-title': 'xdsl_modem_wifi_config_table_guest' }"
-                                data-translate="{{ wifi.guest ? 'common_yes_capitalized' : 'common_no_capitalized' }}">
-                            </td>
-                            <td data-translate-attr="{ 'data-title': 'xdsl_modem_wifi_config_state' }"
-                                data-translate="{{ wifi.enabled ? 'xdsl_modem_wifi_config_state_enabled' : 'xdsl_modem_wifi_config_state_disabled' }}">
-                            </td>
-                            <td data-translate-attr="{ 'data-title': 'common_actions' }">
-                                <button type="button"
-                                        class="btn btn-primary"
-                                        data-ng-click="ConfigWifiCtrl.setSelectedWifi(wifi)"
-                                        data-translate-attr="{ title: 'edit' }">
-                                    <span class="ovh-font ovh-font-editer"
-                                          aria-hidden="true">
-                                    </span>
-                                </button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+
+                <oui-datagrid data-rows="ConfigWifiCtrl.wifis" data-page-size="10">
+                    <oui-column data-title="'xdsl_modem_wifi_config_table_ssid' | translate" 
+                                data-property="SSID" data-sortable="asc">
+                        {{$row.SSID}}
+                    </oui-column>
+                    <oui-column data-title="'xdsl_modem_wifi_config_ssid_table_visibility' | translate" 
+                                data-property="SSIDAdvertisementEnabled" data-sortable>
+                        <span data-translate="{{ $row.SSIDAdvertisementEnabled ? 'xdsl_modem_wifi_config_visible' : 'xdsl_modem_wifi_config_hidden' }}">
+                        </span>
+                    </oui-column>
+                    <oui-column data-title="'xdsl_modem_wifi_config_security' | translate"
+                                data-property="securityType" data-sortable>
+                        <span data-ng-bind="'xdsl_modem_wifi_' + $row.securityType | translate"></span>
+                    </oui-column>
+                    <oui-column data-title="'xdsl_modem_wifi_config_canal' | translate"
+                                data-property="channelCustom" data-sortable>
+                        {{$row.channelCustom}}
+                    </oui-column>
+                    <oui-column data-title="'xdsl_modem_wifi_config_table_frequency' | translate"
+                                data-property="frequency" data-sortable>
+                        {{$row.frequency}}
+                    </oui-column>
+                    <oui-column data-title="'xdsl_modem_wifi_config_table_band_steering' | translate"
+                                data-property="" data-sortable>
+                        <span data-translate="{{ $row.bandSteering ? 'common_yes_capitalized' : 'common_no_capitalized' }}">
+                        </span>
+                    </oui-column>
+
+                    <oui-column data-title="'xdsl_modem_wifi_config_table_guest' | translate"
+                                data-property="guest" data-sortable>
+                        <span data-translate="{{ $row.guest ? 'common_yes_capitalized' : 'common_no_capitalized' }}">
+                        </span>
+                    </oui-column>
+
+                    <oui-column data-title="'xdsl_modem_wifi_config_state' | translate"
+                                data-property="enabled" data-sortable>
+                        <span data-translate="{{ $row.enabled ? 'xdsl_modem_wifi_config_state_enabled' : 'xdsl_modem_wifi_config_state_disabled' }}">
+                        </span>
+                    </oui-column>
+
+                    <oui-action-menu data-align="end" data-compact>
+                        <oui-action-menu-item
+                                data-text="{{'edit' | translate}}"
+                                on-click="ConfigWifiCtrl.setSelectedWifi($row)">
+                        </oui-action-menu-item>
+                    </oui-action-menu>
+
+                </oui-datagrid>
+
+
+
             </div> <!-- End of Wifis list display -->
 
         </div>
@@ -363,10 +350,10 @@
                         <button type="submit"
                                 class="btn btn-primary float-right"
                                 data-ng-disabled="!ConfigWifiCtrl.hasConfigChange() || !wifiConfigForm.$valid">
-                            <oui-loader class="mr-2"
-                                        data-ng-if="ConfigWifiCtrl.loaders.completed"
-                                        data-size="s">
-                            </oui-loader>
+                            <oui-spinner class="mr-2"
+                                         data-ng-if="ConfigWifiCtrl.loaders.completed"
+                                         data-size="s">
+                            </oui-spinner>
                             <span data-translate="submit"></span>
                         </button>
 

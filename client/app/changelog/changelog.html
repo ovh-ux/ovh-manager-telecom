@@ -1,9 +1,9 @@
 <div data-ng-controller="ChangelogCtrl as Changelog">
     <div class="modal-header"></div>
     <div class="modal-body">
-        <oui-loader data-ng-if="!Changelog.content"
-                    data-size="m">
-        </oui-loader>
+        <div class="text-center" data-ng-if="!Changelog.content">
+            <oui-spinner></oui-spinner>
+        </div>
         <div data-translate="common_menu_changelog"></div>
         <div data-ng-repeat="line in Changelog.content track by $index"
              data-ng-bind-html="line">
