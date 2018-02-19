@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyLinePhoneProgammableKeysCtrl", function ($translate, TelephonyMediator, $stateParams, $uibModal, Toast) {
+angular.module("managerApp").controller("TelecomTelephonyLinePhoneProgammableKeysCtrl", function ($translate, TelephonyMediator, $stateParams, $uibModal, Toast, OvhApiTelephony, telephonyBulk, voipLinePhoneFunction) {
     "use strict";
 
     var self = this;
@@ -83,6 +83,83 @@ angular.module("managerApp").controller("TelecomTelephonyLinePhoneProgammableKey
         });
     };
 
+    /* ===========================
+    =            BULK            =
+    ============================ */
+
+    self.bulkDatas = {
+        infos: {
+            name: "functionKeys",
+            actions: [{
+                name: ""
+            }]
+        }
+    };
+
+    self.getBulkParams = function () {
+        self.bulkDatas.infos.actions = self.buildBulkActions();
+    };
+
+    self.buildBulkActions = function () {
+        return _.map(self.functionKeys.raw, function (key) {
+            return {
+                name: "functionKey",
+                route: "/telephony/{billingAccount}/line/{serviceName}/phone/functionKey/{keyNum}".replace("{keyNum}", key.keyNum),
+                method: "PUT",
+                params: {
+                    "function": key.function,
+                    parameter: key.parameter
+                }
+            };
+        });
+    };
+
+    self.filterServices = function (services) {
+        var filteredServices = _.filter(services, function (service) {
+            return ["sip", "mgcp"].indexOf(service.featureType) > -1;
+        });
+
+        return voipLinePhoneFunction.fetchAll().then(function (voipLinePhoneFunctions) {
+            return _.filter(filteredServices, function (service) {
+                return _.find(voipLinePhoneFunctions, { serviceName: service.serviceName, billingAccount: service.billingAccount });
+            });
+        });
+    };
+
+    self.onBulkSuccess = function (bulkResult) {
+        if (bulkResult.error.length) {
+            bulkResult.error = _.map(bulkResult.error, function (error) {
+                let errorDetails = _.get(error, "errors[0]");
+                _.set(error, "errors[0].error", errorDetails.statusCode === 501 ?
+                    $translate.instant("telephony_line_phone_programmableKeys_bulk_error_details") : errorDetails.error);
+
+                return error;
+            });
+        }
+
+        // display message of success or error
+        telephonyBulk.getToastInfos(bulkResult, {
+            fullSuccess: $translate.instant("telephony_line_phone_programmableKeys_bulk_all_success"),
+            partialSuccess: $translate.instant("telephony_line_phone_programmableKeys_bulk_some_success", {
+                count: bulkResult.success.length
+            }),
+            error: $translate.instant("telephony_line_phone_programmableKeys_bulk_error")
+        }, true).forEach(function (toastInfo) {
+            Toast[toastInfo.type](toastInfo.message, {
+                hideAfter: null
+            });
+        });
+
+        // reset initial values to be able to modify again the options
+        TelephonyMediator.resetAllCache();
+        init();
+    };
+
+    self.onBulkError = function (error) {
+        Toast.error([$translate.instant("telephony_line_phone_programmableKeys_bulk_on_error"), _.get(error, "msg.data")].join(" "));
+    };
+
+    /* -----  End of BULK  ------ */
+
     init();
-}
-);
+});
