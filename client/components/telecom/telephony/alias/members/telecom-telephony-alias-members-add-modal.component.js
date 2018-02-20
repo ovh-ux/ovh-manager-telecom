@@ -1,7 +1,6 @@
 angular.module("managerApp").controller("telecomTelephonyAliasMembersAddModal", class telecomTelephonyAliasMembersAddModal {
-    constructor ($timeout, $uibModalInstance) {
+    constructor ($uibModalInstance) {
         this.$uibModalInstance = $uibModalInstance;
-        this.$timeout = $timeout;
     }
 
     cancel (message) {
