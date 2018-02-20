@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyLineDetailsCtrl", function ($q, $stateParams, TelephonyMediator, NumberPlans) {
+angular.module("managerApp").controller("TelecomTelephonyLineDetailsCtrl", function ($q, $stateParams, TelephonyMediator, NumberPlans, currentLine) {
     "use strict";
 
     var self = this;
@@ -17,7 +17,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineDetailsCtrl", funct
 
         TelephonyMediator.getGroup($stateParams.billingAccount).then(function (group) {
             self.group = group;
-            self.line = self.group.getLine($stateParams.serviceName);
+            self.line = _.merge(self.group.getLine($stateParams.serviceName), currentLine || {});
             self.plan = NumberPlans.getPlanByNumber(self.line);
 
             return $q.all({
