@@ -37,8 +37,12 @@
                     <dd data-ng-bind="::DetailsOfferCtrl.line.nextBill | date:'shortDate' || '-'"></dd>
 
                     <!-- Simultaneous calls -->
-                    <dt data-translate="telephony_line_details_silmutaneous_call"></dt>
+                    <dt data-translate="telephony_line_details_simultaneous_call"></dt>
                     <dd data-ng-bind="::DetailsOfferCtrl.line.simultaneousLines || '-'"></dd>
+
+                    <!-- Offer -->
+                    <dt data-translate="telephony_line_details_offer"></dt>
+                    <dd data-ng-bind="::DetailsOfferCtrl.line.getPublicOffer.description || '-'"></dd>
                 </dl>
             </section>
             <!-- /.widget-presentation -->
