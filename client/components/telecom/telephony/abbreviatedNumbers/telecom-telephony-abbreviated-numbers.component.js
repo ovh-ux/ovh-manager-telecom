@@ -22,7 +22,7 @@ angular.module("managerApp").component("telecomTelephonyAbbreviatedNumbers", {
             self.loading = {
                 init: true
             };
-            self.paginatedAbbreviatedNumbers = [];
+            self.abbreviatedNumbers = [];
         };
 
 
@@ -32,20 +32,16 @@ angular.module("managerApp").component("telecomTelephonyAbbreviatedNumbers", {
          * @return {Promise}
          */
         this.remove = function (abbreviatedNumber) {
-            abbreviatedNumber.removing = true;
-            return $q.when(this.removeCallback({ value: abbreviatedNumber })).then(
-                function () {
+            return $q.when(this.removeCallback({ value: abbreviatedNumber }))
+                .then(function () {
                     Toast.success($translate.instant("telephony_abbreviated_numbers_remove_success", abbreviatedNumber));
-                    _.remove(self.abbreviatedNumbers, { abbreviatedNumber: abbreviatedNumber.abbreviatedNumber });
-                    return abbreviatedNumber;
-                },
-                function (err) {
+                    const index = self.abbreviatedNumbers.indexOf(abbreviatedNumber);
+                    self.abbreviatedNumbers.splice(index, 1);
+                })
+                .catch(function (err) {
                     Toast.error($translate.instant("telephony_abbreviated_numbers_remove_error", abbreviatedNumber));
                     return $q.reject(err);
-                }
-            ).finally(function () {
-                delete abbreviatedNumber.removing;
-            });
+                });
         };
 
         /**

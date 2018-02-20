@@ -1,4 +1,4 @@
-angular.module("managerApp").service("FaxSidebar", function ($translate, SidebarMenu, OvhApiTelephonyFax) {
+angular.module("managerApp").service("FaxSidebar", function ($translate, SidebarMenu, OvhApiFreeFax) {
     "use strict";
 
     var self = this;
@@ -10,26 +10,15 @@ angular.module("managerApp").service("FaxSidebar", function ($translate, Sidebar
     ========================================*/
 
     self.loadFaxMainSection = function () {
-        return OvhApiTelephonyFax.Aapi().getServices().$promise.then(function (faxList) {
-            var filteredFax = _.filter(
-                faxList,
-                {
-                    type: "FREEFAX"
-                }
-            );
-            _.forEach(
-                filteredFax,
-                function (elt) {
-                    elt.name = elt.label || elt.serviceName;
-                }
-            );
-            angular.forEach(_.sortBy(filteredFax, "name"), function (fax) {
+        return OvhApiFreeFax.Lexi().query().$promise.then(function (faxList) {
+
+            _.sortBy(faxList, "number").forEach(function (fax) {
                 SidebarMenu.addMenuItem({
-                    title: fax.label,
+                    title: fax,
                     prefix: $translate.instant("telecom_sidebar_fax_prefix_freefax"),
                     state: "telecom.freefax",
                     stateParams: {
-                        serviceName: fax.serviceName
+                        serviceName: fax
                     }
                 }, self.mainSectionItem);
             });
