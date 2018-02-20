@@ -1,5 +1,5 @@
 class ManagerNavbarService {
-    constructor ($q, $translate, LANGUAGES, MANAGER_URLS, REDIRECT_URLS, URLS, OvhApiMe, OtrsPopupService, ssoAuthentication, PackMediator, telecomVoip, voipService, SmsMediator, OvhApiTelephonyFax, OvhApiOverTheBox, TelecomMediator) {
+    constructor ($q, $translate, LANGUAGES, MANAGER_URLS, REDIRECT_URLS, URLS, OvhApiMe, OtrsPopupService, ssoAuthentication, PackMediator, telecomVoip, voipService, SmsMediator, OvhApiFreeFax, OvhApiOverTheBox, TelecomMediator) {
         this.$q = $q;
         this.$translate = $translate;
         this.LANGUAGES = LANGUAGES;
@@ -13,7 +13,7 @@ class ManagerNavbarService {
         this.telecomVoip = telecomVoip;
         this.voipService = voipService;
         this.smsMediator = SmsMediator;
-        this.ovhApiTelephonyFax = OvhApiTelephonyFax;
+        this.ovhApiFreeFax = OvhApiFreeFax;
         this.ovhApiOverTheBox = OvhApiOverTheBox;
         this.telecomMediator = TelecomMediator;
     }
@@ -87,7 +87,8 @@ class ManagerNavbarService {
 
                     return itemLink;
                 })
-            );
+            )
+            .catch(() => this.$q.when(undefined));
     }
 
     getTelephonyGroup (telephony) {
@@ -196,7 +197,8 @@ class ManagerNavbarService {
 
                     return itemLink;
                 })
-            );
+            )
+            .catch(() => this.$q.when(undefined));
     }
 
     getSmsProducts (count) {
@@ -215,7 +217,8 @@ class ManagerNavbarService {
                         serviceName: item.name
                     }
                 }))
-            );
+            )
+            .catch(() => this.$q.when(undefined));
     }
 
     getFaxProducts (count) {
@@ -223,21 +226,20 @@ class ManagerNavbarService {
             return this.$q.when(undefined);
         }
 
-        return this.ovhApiTelephonyFax.Aapi()
-            .getServices().$promise
-            .then((faxList) => _.filter(faxList, {
-                type: "FREEFAX"
-            }))
+        return this.ovhApiFreeFax.Lexi()
+            .query().$promise
+            .then((faxList) => _.sortBy(faxList, "number"))
             .then((result) =>
                 _.map(result, (item) => ({
-                    name: item.serviceName,
-                    title: item.label,
+                    name: item,
+                    title: item,
                     state: "telecom.freefax",
                     stateParams: {
-                        serviceName: item.serviceName
+                        serviceName: item
                     }
                 }))
-            ).catch(() => this.$q.when(undefined));
+            )
+            .catch(() => this.$q.when(undefined));
     }
 
     getOtbProducts (count) {
@@ -264,7 +266,8 @@ class ManagerNavbarService {
                         serviceName: item.serviceName
                     }
                 }))
-            );
+            )
+            .catch(() => this.$q.when(undefined));
     }
 
     getProducts () {
@@ -276,7 +279,8 @@ class ManagerNavbarService {
                 sms: this.getSmsProducts(count.sms),
                 freefax: this.getFaxProducts(count.freefax),
                 overTheBox: this.getOtbProducts(count.overTheBox)
-            }));
+            }))
+            .catch(() => this.$q.when(undefined));
     }
 
     getUniverseMenu (products) {
@@ -430,42 +434,49 @@ class ManagerNavbarService {
             "portal", "web", "dedicated", "cloud", "telecom", "gamma", "partners", "labs"
         ];
 
-        return this.$q.all({
-            products: this.getProducts(),
-            user: this.ovhApiMe.Lexi().get().$promise
-        }).then((result) => ({
-            brand: {
-                title: this.$translate.instant("common_menu_portal"),
-                url: managerUrls.portal,
-                iconAlt: "OVH",
-                iconClass: "navbar-logo",
-                iconSrc: "assets/images/navbar/icon-logo-ovh.svg"
-            },
+        const buildNavbar = (result) => {
+            const products = result[0];
+            const user = result[1];
 
-            // Set Internal Links
-            internalLinks: [
-                this.getAssistanceMenu(result.user),    // Assistance
-                this.getLanguageMenu(),                 // Language
-                this.getUserMenu(result.user)           // User
-            ],
+            return {
+                brand: {
+                    title: this.$translate.instant("common_menu_portal"),
+                    url: managerUrls.portal,
+                    iconAlt: "OVH",
+                    iconClass: "navbar-logo",
+                    iconSrc: "assets/images/navbar/icon-logo-ovh.svg"
+                },
 
-            // Set Manager Links
-            managerLinks: _.map(managerNames, (managerName) => {
-                const managerLink = {
-                    name: managerName,
-                    "class": managerName,
-                    title: this.$translate.instant(`common_menu_${managerName}`),
-                    url: managerUrls[managerName],
-                    isPrimary: ["partners", "labs"].indexOf(managerName) === -1
-                };
+                // Set Internal Links
+                internalLinks: [
+                    this.getAssistanceMenu(user),    // Assistance
+                    this.getLanguageMenu(),          // Language
+                    this.getUserMenu(user)           // User
+                ],
 
-                if (managerName === currentUniverse) {
-                    managerLink.subLinks = this.getUniverseMenu(result.products);
-                }
+                // Set Manager Links
+                managerLinks: _.map(managerNames, (managerName) => {
+                    const managerLink = {
+                        name: managerName,
+                        "class": managerName,
+                        title: this.$translate.instant(`common_menu_${managerName}`),
+                        url: managerUrls[managerName],
+                        isPrimary: ["partners", "labs"].indexOf(managerName) === -1
+                    };
 
-                return managerLink;
-            })
-        }));
+                    if (products && managerName === currentUniverse) {
+                        managerLink.subLinks = this.getUniverseMenu(products);
+                    }
+
+                    return managerLink;
+                })
+            };
+        };
+
+        return this.$q.allSettled([
+            this.getProducts(),                     // Products
+            this.ovhApiMe.Lexi().get().$promise     // User
+        ]).then(buildNavbar, buildNavbar);
     }
 }
 
