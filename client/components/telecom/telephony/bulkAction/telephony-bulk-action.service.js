@@ -3,7 +3,7 @@ angular.module("managerApp").service("telephonyBulk", function () {
 
     var self = this;
 
-    self.getToastInfos = function (bulkResult, messages) {
+    self.getToastInfos = function (bulkResult, messages, noDetails) {
         var infos = [];
 
         // manage full success
@@ -26,7 +26,7 @@ angular.module("managerApp").service("telephonyBulk", function () {
         if (bulkResult.error.length) {
             var errorList = "<ul>";
             bulkResult.error.forEach(function (error) {
-                errorList += "<li>" + [error.serviceName, _.map(error.errors, "error").join(", ")].join(" - ") + "</li>";
+                errorList += "<li>" + (noDetails ? error.serviceName + "</li>" : [error.serviceName, _.map(error.errors, "error").join(", ")].join(" - ") + "</li>");
             });
             errorList += "</ul>";
 

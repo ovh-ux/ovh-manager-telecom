@@ -90,9 +90,12 @@ angular.module("managerApp").controller("TelecomTelephonyLineCallsForwardCtrl", 
          */
     this.getFilteredNumbers = function (search, origin) {
         var searchReg = new RegExp(search, "i");
-        return _.filter(this.allOvhNumbers, function (num) {
+
+        return _.chain(this.allOvhNumbers).filter(function (num) {
             return (searchReg.test(num.serviceName) || searchReg.test(num.description)) && (!origin || origin.indexOf(num.type) > -1);
-        });
+        }).sortBy(function (num) {
+            return num.formatedNumber === $stateParams.serviceName ? 0 : 1;
+        }).value();
     };
 
     /**

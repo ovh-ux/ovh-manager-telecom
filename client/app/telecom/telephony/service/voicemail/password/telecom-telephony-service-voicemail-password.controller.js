@@ -9,7 +9,6 @@ angular.module("managerApp").controller("TelecomTelephonyServiceVoicemailPasswor
         self.submitting = false;
         self.reset();
 
-        // TODO : remove once bulk action for fax is available
         self.isFax = $state.current.name.indexOf("fax") > -1;
 
         return OvhApiTelephony.Voicemail().Lexi().getNumbersSettings({
@@ -74,7 +73,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceVoicemailPasswor
 
     self.filterServices = function (services) {
         return _.filter(services, function (service) {
-            return ["sip", "mgcp"].indexOf(service.featureType) > -1;
+            return ["sip", "mgcp", "fax", "voicefax"].indexOf(service.featureType) > -1;
         });
     };
 

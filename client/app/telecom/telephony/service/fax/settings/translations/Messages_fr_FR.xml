@@ -33,6 +33,9 @@
    <translation id="telephony_service_fax_settings_notification_options_mail_format_text" qtlid="234708">Texte</translation>
    <translation id="telephony_service_fax_settings_notification_options_update" qtlid="337936">Appliquer les options</translation>
    <translation id="telephony_service_fax_settings_notification_options_update_success" qtlid="337949">Options enregistrées</translation>
+   <translation id="telephony_service_fax_settings_notification_settings_update">Appliquer la configuration</translation>
+   <translation id="telephony_service_fax_settings_notification_settings_update_settings_success">Configuration enregistrée</translation>
+   <translation id="telephony_service_fax_settings_notification_settings_update_settings_error">Une erreur est survenue lors de la modification de la configuration.</translation>
    <translation id="telephony_service_fax_settings_addresses_to_notify" qtlid="337975">Adresses e-mail à notifier</translation>
    <translation id="telephony_service_fax_settings_addresses_to_notify_add" qtlid="71357">Ajouter une adresse e-mail</translation>
    <translation id="telephony_service_fax_settings_addresses_to_notify_empty" qtlid="357057">Vous n’avez pas encore configuré d’adresse e-mail à notifier.</translation>
@@ -40,4 +43,9 @@
    <translation id="telephony_service_fax_settings_addresses_to_notify_error_required" qtlid="357070">Le champs "E-mail" est obligatoire</translation>
    <translation id="telephony_service_fax_settings_addresses_to_notify_error_email" qtlid="391215">L’adresse e-mail n’est pas valide.</translation>
    <translation id="telephony_service_fax_settings_addresses_to_notify_info_limit" qtlid="338014">Vous pouvez notifier un maximum de 5 adresses e-mail.</translation>
+
+   <translation id="telephony_service_fax_settings_update_bulk_all_success">La modification de la configuration a bien été appliquée aux services sélectionnés.</translation>
+   <translation id="telephony_service_fax_settings_update_bulk_some_success">La modification de la configuration a bien été appliquée à {{ count }} des services sélectionnés.</translation>
+   <translation id="telephony_service_fax_settings_update_bulk_error">La modification de la configuration n'a pu être appliquée au(x) service(s) suivant(s) :</translation>
+   <translation id="telephony_service_fax_settings_update_bulk_on_error">Oups ! Une erreur est survenue lors de la modification de la configuration.</translation>
 </translations>

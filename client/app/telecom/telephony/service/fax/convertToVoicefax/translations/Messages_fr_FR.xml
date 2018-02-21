@@ -3,7 +3,8 @@
     <translation id="telephony_service_fax_convert_to_voicefax_informations">Informations</translation>
     <translation id="telephony_service_fax_convert_to_voicefax_informations_info1">Les Ecofax perso sont convertibles en Ecofax pro.</translation>
     <translation id="telephony_service_fax_convert_to_voicefax_informations_info2">Veuillez noter qu’après la conversion, le service vous sera facturé 0,99 € HT par mois.</translation>
-    <translation id="telephony_service_fax_convert_to_voicefax_list">Liste des Ecofax convertisibles du groupe</translation>
+    <translation id="telephony_service_fax_convert_to_voicefax_informations_warning">Aucun Ecofax perso n'est disponible pour la conversion.</translation>
+    <translation id="telephony_service_fax_convert_to_voicefax_list">Liste des Ecofax convertibles du groupe</translation>
     <translation id="telephony_service_fax_convert_to_voicefax_list_service_label">Sélectionnez votre numéro :</translation>
     <translation id="telephony_service_fax_convert_to_voicefax_list_service_order">Générer le bon de commande</translation>
     <translation id="telephony_service_fax_convert_to_voicefax_list_service_order_valid">Afin de finaliser votre demande, merci de valider ce</translation>

@@ -29,49 +29,10 @@
 @flag-icon-css-path: "../bower_components/flag-icon-css/flags";
 @ovh-font-path:"../bower_components/ovh-manager-webfont/dist/fonts/";
 
-// Colors
-@UNIVERS_SECONDARY: #354291;
-@blue-dark: @UNIVERS_SECONDARY;
-
-// Z-Index
-@zIndexNavbar: 1050;
-@zIndexSideMenu: 1070;
-@zIndexUISelectBootstrap: 1061;
-
-// Container Fluid
-@TopNavResponsiveLeft: 2%;
-
 // Mobile
 @media (max-width: @screen-sm-max) {
-    #content {
-        margin-top: @MobileTopNavHeight - 1;
-    }
-
     .section-back-link {
         padding-top: 24px;
-    }
-}
-
-
-/*
- * navbar
- */
-
-#manager-navbar {
-    min-height: auto;
-    position: relative;
-
-    .dropdown-menu li {
-        &::before {
-            display: none;
-        }
-
-        & > a,
-        & > button {
-            font-size: inherit;
-            margin-left: inherit;
-            white-space: nowrap;
-        }
     }
 }
 
@@ -89,6 +50,10 @@
     .container-fluid {
         padding-bottom: 32px;
     }
+}
+
+.col-container {
+    padding-top: @NAVBAR_HEIGHT;
 }
 
 .container {
@@ -135,17 +100,6 @@
             }
         }
     }
-}
-
-@font-face {
-    font-family: 'Oui Icons';
-    font-style: normal;
-    font-weight: 400;
-    src:  url("@{oui-icon-dist-folder}/icons.eot?v2.0.1#iefix") format("embedded-opentype"),
-        url("@{oui-icon-dist-folder}/icons.woff?v2.0.1") format("woff"),
-        url("@{oui-icon-dist-folder}/icons.woff2?v2.0.1") format("woff2"),
-        url("@{oui-icon-dist-folder}/icons.ttf?v2.0.1") format("truetype"),
-        url("@{oui-icon-dist-folder}/icons.svg?v2.0.1#icons") format("svg");
 }
 
 // injector
