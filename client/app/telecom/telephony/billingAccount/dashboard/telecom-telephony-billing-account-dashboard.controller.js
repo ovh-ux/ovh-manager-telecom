@@ -16,7 +16,7 @@ angular.module("managerApp")
             return TelephonyMediator.getGroup($stateParams.billingAccount).then(function (group) {
                 self.group = group;
                 self.phoneDetails.raw = self.group.lines;
-                return self.goup;
+                return self.group;
             }).catch(function (err) {
                 if (err.status === 404) {
                     return $state.go("telecom.welcoming");
