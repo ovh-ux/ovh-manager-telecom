@@ -58,7 +58,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasPortabilityOrderCt
             self.billingAccounts = groups;
             self.order.billingAccount = $stateParams.billingAccount;
         }).catch(function (err) {
-            Toast.error(err);
+            Toast.error(_.get(err, "data.message"));
             return $q.reject(err);
         }).then(function () {
             return OvhApiOrder.Lexi().schema().$promise.then(function (schema) {
@@ -85,11 +85,6 @@ angular.module("managerApp").controller("TelecomTelephonyAliasPortabilityOrderCt
     }
 
     self.onSDATypeChange = function () {
-        if (!self.isSDA && self.isSpecialNumber) {
-            self.order.callNumber = self.isSpecialNumber ? "" : self.order.callNumber;
-            self.isSpecialNumber = false;
-        }
-
         self.order.socialReason = self.isSDA ? "corporation" : "individual";
     };
 
@@ -115,9 +110,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasPortabilityOrderCt
         // handle special number
         self.isSpecialNumber = _.some(specialNumberPrefix[self.order.country], function (prefix) { return _.startsWith(number, prefix); });
         self.order.specialNumberCategory = self.isSpecialNumber ? _.head(self.typologies[self.order.country]).value : null;
-        self.isSDA = self.isSpecialNumber ? true : self.isSDA;
         self.order.type = self.isSpecialNumber ? "special" : "landline";
-        self.onSDATypeChange();
 
         self.order.translatedCountry = $translate.instant("telephony_alias_portability_order_contact_country_" + self.order.country);
     };
@@ -193,7 +186,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasPortabilityOrderCt
             self.prices = result.prices;
         }).catch(function (err) {
             self.step = "number";
-            Toast.error(err);
+            Toast.error(_.get(err, "data.message"));
             return $q.return(err);
         });
     };

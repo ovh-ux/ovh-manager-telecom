@@ -135,6 +135,12 @@
                         </span>
                     </div>
 
+                    <div class="alert alert-warning"
+                         role="alert"
+                         data-ng-if="PortabilityOrderCtrl.isSpecialNumber && !PortabilityOrderCtrl.isSDA">
+                        <p data-translate="telephony_alias_portability_order_sda_warning"></p>
+                    </div>
+
                     <div class="form-group"
                          data-ng-if="PortabilityOrderCtrl.isSpecialNumber">
                         <label for="specialNumberCategory"
@@ -299,7 +305,7 @@
                         <button type="submit"
                                 class="btn btn-primary"
                                 data-translate="next"
-                                data-ng-disabled="portabilityNumberForm.$invalid">
+                                data-ng-disabled="portabilityNumberForm.$invalid || (!PortabilityOrderCtrl.isSDA && PortabilityOrderCtrl.isSpecialNumber)">
                         </button>
                     </div>
 
