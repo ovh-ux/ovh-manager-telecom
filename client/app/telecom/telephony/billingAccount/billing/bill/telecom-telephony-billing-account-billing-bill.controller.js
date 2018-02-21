@@ -21,44 +21,19 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingBi
         });
     }
 
-    function init () {
-        self.isLoading = true;
+
+    this.$onInit = function () {
         self.consumption = {
-            raw: null,
-            paginated: null,
-            sorted: null,
-            orderBy: "date",
-            orderDesc: true
+            raw: null
         };
         self.refresh();
-    }
-
-    self.sortConsumption = function () {
-        self.consumption.sorted = $filter("orderBy")(
-            self.consumption.raw,
-            self.consumption.orderBy,
-            self.consumption.orderDesc
-        );
-    };
-
-    self.orderBy = function (by) {
-        if (self.consumption.orderBy === by) {
-            self.consumption.orderDesc = !self.consumption.orderDesc;
-        } else {
-            self.consumption.orderBy = by;
-        }
-        self.sortConsumption();
     };
 
     self.refresh = function () {
-        self.isLoading = true;
         fetchConsumption().then(function (result) {
             self.consumption.raw = result;
-            self.sortConsumption();
-        }).catch(function (err) {
+        }, function (err) {
             return new ToastError(err);
-        }).finally(function () {
-            self.isLoading = false;
         });
     };
 
@@ -88,12 +63,11 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingBi
         consumption.downloading = true;
         self.fetchFile(consumption, type).then(function (info) {
             $window.location.href = info.url;
-        }).catch(function (err) {
+        }, function (err) {
             return new ToastError(err);
         }).finally(function () {
             consumption.downloading = false;
         });
     };
 
-    init();
 });
