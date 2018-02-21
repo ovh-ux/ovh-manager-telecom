@@ -7,7 +7,7 @@ angular.module("managerApp").component("packMoveEligibilityAddress", {
     },
     templateUrl: "app/telecom/pack/move/eligibility/address/pack-move-eligibility-address.html",
     controllerAs: "PackMoveEligibilityAddress",
-    controller: function ($scope, $stateParams, $translate, $filter, validator, OvhApiXdslEligibility, OvhApiPackXdslMove, ToastError, costs) {
+    controller: function ($scope, $stateParams, $translate, $filter, validator, OvhApiXdslEligibility, OvhApiPackXdslMove, Toast, costs) {
         "use strict";
 
         var self = this;
@@ -36,7 +36,7 @@ angular.module("managerApp").component("packMoveEligibilityAddress", {
                         self.address.city = self.cities[0];
                     }
                 }, function () {
-                    return new ToastError($translate.instant("pack_move_eligibility_zipcode_error", { zipcode: zipcode }));
+                    return Toast.error($translate.instant("pack_move_eligibility_zipcode_error", { zipcode: zipcode }));
                 }).finally(function () {
                     delete self.loaders.cities;
                     self.loading = false;
@@ -65,7 +65,7 @@ angular.module("managerApp").component("packMoveEligibilityAddress", {
                         return streets;
                     },
                     function () {
-                        return new ToastError($translate.instant("pack_move_eligibility_street_error", { partial: partial }));
+                        return Toast.error($translate.instant("pack_move_eligibility_street_error", { partial: partial }));
                     }
                 ).finally(function () {
                     delete self.loaders.streets;
@@ -97,8 +97,7 @@ angular.module("managerApp").component("packMoveEligibilityAddress", {
                 function (data) {
                     if (data.error) {
                         self.offersChange({ OFFERS: [] });
-                        self.eligibilityError = data.error;
-                        return new ToastError(data, data.error);
+                        return Toast.error($translate.instant("pack_move_eligibility_address_error" + (data.error.indexOf("error_looking_for_neighbour_number") > -1 ? "_neighbour" : "_pairs")));
                     }
                     if (data.result.offers.length) {
                         _.extend(self.testLine, data);
@@ -123,7 +122,7 @@ angular.module("managerApp").component("packMoveEligibilityAddress", {
                     return data;
                 },
                 function (err) {
-                    return new ToastError(err);
+                    return Toast.error(err);
                 }).finally(function () {
                     self.loading = false;
                 });
