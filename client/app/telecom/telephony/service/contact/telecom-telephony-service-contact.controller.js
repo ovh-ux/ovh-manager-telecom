@@ -89,10 +89,6 @@ angular.module("managerApp").controller("TelecomTelephonyServiceContactCtrl", fu
         }
     };
 
-    self.hasChanges = function () {
-        return !angular.equals(self.directory, self.directoryForm);
-    };
-
     self.applyChanges = function () {
         if (self.directoryForm.legalForm !== "individual") {
             self.directoryForm.PJSocialNomination = self.directoryForm.socialNomination;
