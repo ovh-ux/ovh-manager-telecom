@@ -7,7 +7,7 @@ angular.module("managerApp").component("packMoveEligibilityAddress", {
     },
     templateUrl: "app/telecom/pack/move/eligibility/address/pack-move-eligibility-address.html",
     controllerAs: "PackMoveEligibilityAddress",
-    controller: function ($scope, $stateParams, $translate, $filter, validator, OvhApiXdslEligibility, OvhApiPackXdslMove, Toast, costs) {
+    controller: function ($q, $scope, $stateParams, $translate, $filter, validator, OvhApiXdslEligibility, OvhApiPackXdslMove, Toast, costs) {
         "use strict";
 
         var self = this;
@@ -35,8 +35,9 @@ angular.module("managerApp").component("packMoveEligibilityAddress", {
                     if (self.cities.length === 1) {
                         self.address.city = self.cities[0];
                     }
-                }, function () {
-                    return Toast.error($translate.instant("pack_move_eligibility_zipcode_error", { zipcode: zipcode }));
+                }, function (error) {
+                    Toast.error($translate.instant("pack_move_eligibility_zipcode_error", { zipcode: zipcode }));
+                    return $q.reject(error);
                 }).finally(function () {
                     delete self.loaders.cities;
                     self.loading = false;
@@ -64,8 +65,9 @@ angular.module("managerApp").component("packMoveEligibilityAddress", {
                         self.streets = streets;
                         return streets;
                     },
-                    function () {
-                        return Toast.error($translate.instant("pack_move_eligibility_street_error", { partial: partial }));
+                    function (error) {
+                        Toast.error($translate.instant("pack_move_eligibility_street_error", { partial: partial }));
+                        return $q.reject(error);
                     }
                 ).finally(function () {
                     delete self.loaders.streets;
@@ -97,7 +99,8 @@ angular.module("managerApp").component("packMoveEligibilityAddress", {
                 function (data) {
                     if (data.error) {
                         self.offersChange({ OFFERS: [] });
-                        return Toast.error($translate.instant("pack_move_eligibility_address_error" + (data.error.indexOf("error_looking_for_neighbour_number") > -1 ? "_neighbour" : "_pairs")));
+                        Toast.error($translate.instant("pack_move_eligibility_address_error" + (data.error.indexOf("error_looking_for_neighbour_number") > -1 ? "_neighbour" : "_pairs")));
+                        return $q.reject(data.error);
                     }
                     if (data.result.offers.length) {
                         _.extend(self.testLine, data);
@@ -122,7 +125,8 @@ angular.module("managerApp").component("packMoveEligibilityAddress", {
                     return data;
                 },
                 function (err) {
-                    return Toast.error(err);
+                    Toast.error(err);
+                    return $q.reject(err);
                 }).finally(function () {
                     self.loading = false;
                 });
