@@ -15,10 +15,6 @@
                      class="mr-2"
                      data-size="s">
         </oui-spinner>
-        <span data-ng-if="access.tasks.current.dslamPortReset"
-              data-translate="xdsl_access_dslam_reset_success"></span>
-
-        <span data-ng-if="!access.tasks.current.dslamPortReset"
-             data-translate="xdsl_access_dslam_reset"></span>
+        <span data-translate="{{access.tasks.current.dslamPortReset ? 'xdsl_access_dslam_reset_success' : 'xdsl_access_dslam_reset'}}"></span>
     </button>
 </div>
