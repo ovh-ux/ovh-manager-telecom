@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <translations>
+    <translation id="telephony_bulk_action_apply_to_all">Appliquer à plusieurs services</translation>
     <translation id="telephony_bulk_action_apply_to_alias">Appliquer à plusieurs numéros</translation>
     <translation id="telephony_bulk_action_apply_to_line">Appliquer à plusieurs lignes</translation>
     <translation id="telephony_bulk_action_apply_to_number">Appliquer à plusieurs numéros</translation>

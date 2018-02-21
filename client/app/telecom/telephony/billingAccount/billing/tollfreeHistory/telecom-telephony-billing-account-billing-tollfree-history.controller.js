@@ -4,18 +4,7 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingTo
     var self = this;
 
     self.group = null;
-
-    self.loading = {
-        init: false
-    };
-
-    self.consumption = {
-        raw: null,
-        paginated: null,
-        sorted: null,
-        orderBy: "date",
-        orderDesc: true
-    };
+    self.consumptionData = null;
 
     /*= ==============================
     =            HELPERS            =
@@ -36,25 +25,12 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingTo
                     consumption.priceValue = consumption.price ? consumption.price.value : null;
                 });
             });
+        }).catch(function (err) {
+            self.consumptionData = [];
+            Toast.error([$translate.instant("telephony_group_billing_tollfree_history_download_error"), (err.data && err.data.message) || ""].join(" "));
+            return $q.reject(err);
         });
     }
-
-    self.sortConsumption = function () {
-        self.consumption.sorted = $filter("orderBy")(
-            self.consumption.raw,
-            self.consumption.orderBy,
-            self.consumption.orderDesc
-        );
-    };
-
-    self.orderBy = function (by) {
-        if (self.consumption.orderBy === by) {
-            self.consumption.orderDesc = !self.consumption.orderDesc;
-        } else {
-            self.consumption.orderBy = by;
-        }
-        self.sortConsumption();
-    };
 
     self.fetchFile = function (consumption) {
         var tryDownload = function () {
@@ -84,15 +60,11 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingTo
     ===============================*/
 
     self.download = function (consumption) {
-        consumption.downloading = true;
-
         return self.fetchFile(consumption).then(function (info) {
             $window.location.href = info.url;
-        }).catch(function (error) {
-            Toast.error([$translate.instant("telephony_group_billing_tollfree_history_download_error"), (error.data && error.data.message) || ""].join(" "));
-            return $q.reject(error);
-        }).finally(function () {
-            consumption.downloading = false;
+        }).catch(function (err) {
+            Toast.error([$translate.instant("telephony_group_billing_tollfree_history_download_error"), (err.data && err.data.message) || ""].join(" "));
+            return $q.reject(err);
         });
     };
 
@@ -102,26 +74,16 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingTo
     =            INITIALIZATION            =
     ======================================*/
 
-    function init () {
-        self.loading.init = true;
-
+    this.$onInit = function () {
         return TelephonyMediator.getGroup($stateParams.billingAccount).then(function (group) {
             self.group = group;
-
             return fetchHistory().then(function (consumptions) {
-                self.consumption.raw = consumptions;
-                self.sortConsumption();
+                self.consumptionData = consumptions;
             });
-        }).catch(function (error) {
-            Toast.error([$translate.instant("telephony_group_billing_tollfree_history_init_error"), (error.data && error.data.message) || ""].join(" "));
-            return $q.reject(error);
-        }).finally(function () {
-            self.loading.init = false;
+        }).catch(function (err) {
+            Toast.error([$translate.instant("telephony_group_billing_tollfree_history_init_error"), (err.data && err.data.message) || ""].join(" "));
+            return $q.reject(err);
         });
-    }
-
-    /* -----  End of INITIALIZATION  ------*/
-
-    init();
+    };
 
 });
