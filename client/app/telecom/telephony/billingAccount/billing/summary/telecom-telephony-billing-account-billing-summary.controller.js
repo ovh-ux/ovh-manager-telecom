@@ -4,18 +4,9 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingSu
     var self = this;
 
     self.group = null;
-
-    self.loading = {
-        init: false
-    };
-
     self.consumptionSummary = null;
     self.consumptionDetails = {
-        raw: null,
-        paginated: null,
-        sorted: null,
-        orderBy: "",
-        orderDesc: true
+        raw: null
     };
 
     /*= ==============================
@@ -40,55 +31,22 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingSu
 
             self.consumptionDetails.raw = consumption.details;
             self.consumptionSummary = consumption.summary;
-
-            self.sortConsumption();
         });
     }
-
-    self.sortConsumption = function () {
-        self.consumptionDetails.sorted = $filter("orderBy")(
-            self.consumptionDetails.raw,
-            self.consumptionDetails.orderBy,
-            self.consumptionDetails.orderDesc
-        );
-    };
-
-    self.orderBy = function (by) {
-        if (self.consumptionDetails.orderBy === by) {
-            self.consumptionDetails.orderDesc = !self.consumptionDetails.orderDesc;
-        } else {
-            self.consumptionDetails.orderBy = by;
-        }
-        self.sortConsumption();
-    };
-
-    /* -----  End of HELPERS  ------*/
-
 
     /*= =====================================
     =            INITIALIZATION            =
     ======================================*/
 
-    function init () {
-        self.loading.init = true;
-
+    this.$onInit = function () {
         return TelephonyMediator.getGroup($stateParams.billingAccount)
             .then(function (group) {
                 self.group = group;
                 return self.group;
             })
-            .then(fetchConsumption)
-            .catch(function (error) {
-                Toast.error([$translate.instant("telephony_group_billing_summary_consumptioninit_error"), (error.data && error.data.message) || ""].join(" "));
-                return $q.reject(error);
-            })
-            .finally(function () {
-                self.loading.init = false;
+            .then(fetchConsumption, function (err) {
+                Toast.error([$translate.instant("telephony_group_billing_summary_consumptioninit_error"), (err.data && err.data.message) || ""].join(" "));
+                return $q.reject(err);
             });
-    }
-
-    /* -----  End of INITIALIZATION  ------*/
-
-    init();
-
+    };
 });

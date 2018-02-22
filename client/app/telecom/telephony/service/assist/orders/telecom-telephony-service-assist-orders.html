@@ -13,115 +13,30 @@
         </header>
 
         <div class="telecom-section-content">
-            <div class="table-responsive">
-                <table class="table"
-                       data-ng-class="{
-                           'table-hover table-striped': OrdersCtrl.orders.raw.length > 1
-                       }">
-                    <thead>
-                        <tr>
-                            <th scope="col">
-                                <button
-                                    type="button"
-                                    class="btn btn-link p-0"
-                                    data-ng-disabled="!OrdersCtrl.orders.paginated.length"
-                                    data-ng-click="OrdersCtrl.orderBy('date')">
-                                    <span data-translate="telephony_line_assist_orders_column_date"></span>
-                                    <span class="oui-icon align-baseline"
-                                          aria-hidden="true"
-                                          data-ng-class="{
-                                              'oui-icon-arrow-down': OrdersCtrl.orders.orderBy !== 'date',
-                                              'oui-icon-arrow-down': OrdersCtrl.orders.orderBy === 'date' && OrdersCtrl.orders.orderDesc,
-                                              'oui-icon-arrow-up': OrdersCtrl.orders.orderBy === 'date' && !OrdersCtrl.orders.orderDesc
-                                          }">
-                                    </span>
-                                </button>
-                            </th>
-                            <th scope="col">
-                                <button
-                                    type="button"
-                                    class="btn btn-link p-0"
-                                    data-ng-disabled="!OrdersCtrl.orders.paginated.length"
-                                    data-ng-click="OrdersCtrl.orderBy('id')">
-                                    <span data-translate="telephony_line_assist_orders_column_id"></span>
-                                    <span class="oui-icon align-baseline"
-                                          aria-hidden="true"
-                                          data-ng-class="{
-                                              'oui-icon-arrow-down': OrdersCtrl.orders.orderBy !== 'id',
-                                              'oui-icon-arrow-down': OrdersCtrl.orders.orderBy === 'id' && OrdersCtrl.orders.orderDesc,
-                                              'oui-icon-arrow-up': OrdersCtrl.orders.orderBy === 'id' && !OrdersCtrl.orders.orderDesc
-                                          }">
-                                    </span>
-                                </button>
-                            </th>
-                            <th scope="col"
-                                colspan="2">
-                                <button
-                                    type="button"
-                                    class="btn btn-link p-0"
-                                    data-ng-disabled="!OrdersCtrl.orders.paginated.length"
-                                    data-ng-click="OrdersCtrl.orderBy('statusText')">
-                                    <span data-translate="telephony_line_assist_orders_column_status"></span>
-                                    <span class="oui-icon align-baseline"
-                                          aria-hidden="true"
-                                          data-ng-class="{
-                                              'oui-icon-arrow-down': OrdersCtrl.orders.orderBy !== 'statusText',
-                                              'oui-icon-arrow-down': OrdersCtrl.orders.orderBy === 'statusText' && OrdersCtrl.orders.orderDesc,
-                                              'oui-icon-arrow-up': OrdersCtrl.orders.orderBy === 'statusText' && !OrdersCtrl.orders.orderDesc
-                                          }">
-                                    </span>
-                                </button>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody data-ng-if="!OrdersCtrl.orders.isLoading">
-                        <tr data-ng-repeat="order in OrdersCtrl.orders.paginated | orderBy:OrdersCtrl.orders.by:OrdersCtrl.orders.reverse">
-                            <td data-ng-bind="order.date | date:'mediumDate'"></td>
-                            <td data-ng-bind="order.orderId"></td>
-                            <td data-ng-bind="order.statusText"></td>
-                            <td class="text-right">
-                                <a class="btn btn-default"
-                                   target="_blank"
-                                   data-ng-href="{{:: order.url }}"
-                                   data-translate-attr="{ title: 'telephony_line_assist_orders_order_url_title' }"
-                                   data-translate-values="{ id: order.orderId }">
-                                    <i class="fa fa-file-text-o" aria-hidden="true"></i>
-                                    <span class="sr-only"
-                                          data-translate="telephony_line_assist_orders_order_url_title"
-                                          data-translate-values="{ id: order.orderId }">
-                                    </span>
-                                </a>
-                            </td>
-                        </tr>
-                    </tbody>
-                    <tbody data-ng-if="OrdersCtrl.orders.isLoading">
-                        <tr>
-                            <td colspan="4" class="text-center">
-                                <oui-spinner data-size="s"></oui-spinner>
-                            </td>
-                        </tr>
-                    </tbody>
-                    <tbody data-ng-if="!OrdersCtrl.orders.isLoading && !OrdersCtrl.orders.raw.length">
-                        <tr>
-                            <td colspan="4"
-                                class="text-center"
-                                data-translate="telephony_line_assist_orders_empty">
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="mt-2"
-                 data-ng-if="!OrdersCtrl.orders.isLoading && OrdersCtrl.orders.raw.length"
-                 data-pagination-front
-                 data-items="OrdersCtrl.orders.sorted"
-                 data-paginated-items="OrdersCtrl.orders.paginated"
-                 data-current-page="currentPage"
-                 data-nb-pages="nbPages"
-                 data-items-per-page="itemsPerPage"
-                 data-page-placeholder="{{'common_pagination_page' | translate: {currentPage:currentPage, nbPages:nbPages} }}"
-                 data-item-per-page-placeholder="{{'common_pagination_display' | translate}}">
-            </div>
+            <oui-datagrid data-rows="OrdersCtrl.ordersRaw">
+                <oui-column data-title="'telephony_line_assist_orders_column_date' | translate" data-property="date" data-sortable="desc">
+                    <span data-ng-bind="$row.date | date:'mediumDate'"></span>
+                </oui-column>
+                <oui-column data-title="'telephony_line_assist_orders_column_id' | translate">
+                    <span data-ng-bind="$row.orderId"></span>
+                </oui-column>
+                <oui-column data-title="'telephony_line_assist_orders_column_status' | translate">
+                    <span data-ng-bind="$row.statusText"></span>
+                </oui-column>
+                <oui-column class="text-right">
+                    <a class="btn btn-default pull-right"
+                       target="_blank"
+                       data-ng-href="{{::$row.url}}"
+                       data-translate-attr="{ title: 'telephony_line_assist_orders_order_url_title' }"
+                       data-translate-values="{ id: $row.orderId }">
+                        <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                        <span class="sr-only"
+                            data-translate="telephony_line_assist_orders_order_url_title"
+                            data-translate-values="{ id: $row.orderId }">
+                        </span>
+                    </a>
+                </oui-column>
+            </oui-datagrid>
         </div>
         <!-- /.telecom-section-content -->
     </div>

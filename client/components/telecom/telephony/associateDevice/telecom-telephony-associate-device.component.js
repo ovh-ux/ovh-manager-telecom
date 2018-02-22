@@ -61,7 +61,7 @@ angular.module("managerApp").component("telecomTelephonyAssociateDevice", {
 
         self.attachDevice = function () {
             self.isAttaching = true;
-            return OvhApiTelephony.Line().Lexi().listAssociablePhones({
+            return OvhApiTelephony.Line().Lexi().associateDevice({
                 billingAccount: self.billingAccount,
                 serviceName: self.serviceName
             }, {
