@@ -132,9 +132,26 @@
    <translation id="common_menu_support_assistance" qtlid="52699">Assistance</translation>
    <translation id="common_menu_v3" qtlid="135931">Ancienne interface client</translation>
    <translation id="common_menu_billing" qtlid="32950">Facturation</translation>
+   <translation id="common_menu_billing_history">Mes factures</translation>
+   <translation id="common_menu_billing_payments">Suivi des paiements</translation>
    <translation id="common_menu_language" qtlid="30598">Langue</translation>
    <translation id="common_menu_account" qtlid="157642">Mon compte</translation>
+   <translation id="common_menu_account_infos">Mon profil</translation>
+   <translation id="common_menu_account_security">Sécurité</translation>
+   <translation id="common_menu_account_emails">Emails reçus</translation>
+   <translation id="common_menu_account_subscriptions">Mes abonnements</translation>
+   <translation id="common_menu_account_ssh">Mes clés SSH</translation>
+   <translation id="common_menu_account_advanced">Paramètres avancés</translation>
+   <translation id="common_menu_means">Moyens de paiement</translation>
+   <translation id="common_menu_means_mean">Mes moyens de paiement</translation>
+   <translation id="common_menu_means_ovhaccount">Mon compte prépayé</translation>
+   <translation id="common_menu_means_vouchers">Mes vouchers</translation>
+   <translation id="common_menu_means_refunds">Mes avoirs</translation>
+   <translation id="common_menu_means_fidelity">Mon espace fidélité</translation>
+   <translation id="common_menu_means_credits">Mes crédits</translation>
    <translation id="common_menu_renew">Mes services</translation>
+   <translation id="common_menu_renew_management">Gérer mes services</translation>
+   <translation id="common_menu_renew_agreements">Mes contrats</translation>
    <translation id="common_menu_orders_all">Mes commandes</translation>
    <translation id="common_menu_contacts">Mes contacts</translation>
    <translation id="common_menu_list_ticket">Mes demandes d’assistance</translation>
