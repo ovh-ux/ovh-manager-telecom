@@ -187,7 +187,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasPortabilityOrderCt
         }).catch(function (err) {
             self.step = "number";
             Toast.error(_.get(err, "data.message"));
-            return $q.return(err);
+            return $q.reject(err);
         });
     };
 
