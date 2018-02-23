@@ -1,5 +1,6 @@
 angular.module("managerApp")
-    .controller("TelecomTelephonyLineCallsSimultaneousLinesCtrl", function ($q, $stateParams, $state, $translate, Toast, OvhApiTelephony, OvhApiOrderTelephony, debounce, OvhApiTelephonyService, $filter, TelephonyMediator, telephonyBulk) {
+    .controller("TelecomTelephonyLineCallsSimultaneousLinesCtrl", function ($q, $stateParams, $state, $translate,
+                                                                            Toast, OvhApiTelephony, OvhApiOrderTelephony, debounce, OvhApiTelephonyService, $filter, TelephonyMediator, telephonyBulk, currentLine) {
         "use strict";
 
         var self = this;
@@ -181,6 +182,10 @@ angular.module("managerApp")
                     if (isTrunk) {
                         apiResources.getSimultaneousLines = OvhApiOrderTelephony.Lexi().getSimultaneousTrunkLines;
                         apiResources.orderSimultaneousLines = OvhApiOrderTelephony.Lexi().orderSimultaneousTrunkLines;
+                    }
+
+                    if (currentLine) {
+                        self.options.details = currentLine.simultaneousLinesDetails;
                     }
 
                     self.saved = angular.copy(self.options);
