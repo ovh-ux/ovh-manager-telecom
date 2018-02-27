@@ -11,7 +11,8 @@ angular.module("managerApp").factory("TelecomTelephonyLineCallsForwardPhoneNumbe
             this.description = "";
         }
 
-        if (this.hasPhone && this.type === "line") {
+        // All sip lines with phones will be treated as plug&phone
+        if (this.hasPhone && (this.type === "line" || this.type === "voicemail")) {
             this.type = "plug&phone";
         }
     };

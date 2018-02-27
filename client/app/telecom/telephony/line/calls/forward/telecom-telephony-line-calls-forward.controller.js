@@ -315,8 +315,8 @@ angular.module("managerApp").controller("TelecomTelephonyLineCallsForwardCtrl", 
         self.types = [
             { id: "number", label: "Alias", enable: true },
             { id: "fax", label: "Fax", enable: true },
-            { id: "plug&phone", label: "Plug&Phone", enable: true },
-            { id: "voicemail", label: "SIP", enable: true }
+            { id: "voicemail", label: "SIP", enable: true },
+            { id: "plug&phone", label: "Plug&Phone", enable: true }
         ];
 
         self.filter = {
