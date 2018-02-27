@@ -10,6 +10,10 @@ angular.module("managerApp").factory("TelecomTelephonyLineCallsForwardPhoneNumbe
         if (this.description === this.serviceName) {
             this.description = "";
         }
+
+        if (this.hasPhone && this.type === "line") {
+            this.type = "plug&phone";
+        }
     };
 
     TelecomTelephonyLineCallsForwardPhoneNumber.prototype.toString = function () {
