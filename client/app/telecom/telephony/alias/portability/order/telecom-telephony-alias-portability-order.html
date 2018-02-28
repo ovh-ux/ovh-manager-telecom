@@ -82,6 +82,7 @@
                         <div class="radio">
                             <label>
                                 <input type="radio"
+                                       data-ng-change="PortabilityOrderCtrl.onSDATypeChange()"
                                        data-ng-model="PortabilityOrderCtrl.isSDA"
                                        data-ng-value="false"
                                        name="orderType"
@@ -93,6 +94,7 @@
                         <div class="radio">
                             <label>
                                 <input type="radio"
+                                       data-ng-change="PortabilityOrderCtrl.onSDATypeChange()"
                                        data-ng-model="PortabilityOrderCtrl.isSDA"
                                        data-ng-value="true"
                                        name="orderType"
@@ -118,6 +120,7 @@
                                class="form-control"
                                data-ng-model="PortabilityOrderCtrl.order.callNumber"
                                data-ng-pattern="/^(0033|\+33|0032|\+32|0041|\+41)\d{8,}$/"
+                               data-ng-change="PortabilityOrderCtrl.onNumberChange()"
                                required />
                         <span class="help-block"
                               role="alert"
@@ -132,9 +135,28 @@
                         </span>
                     </div>
 
+                    <div class="alert alert-warning"
+                         role="alert"
+                         data-ng-if="PortabilityOrderCtrl.isSpecialNumber && !PortabilityOrderCtrl.isSDA"
+                         data-translate="telephony_alias_portability_order_sda_warning">
+                    </div>
+
+                    <div class="form-group"
+                         data-ng-if="PortabilityOrderCtrl.isSpecialNumber">
+                        <label for="specialNumberCategory"
+                               class="control-label"
+                               data-translate="telephony_alias_portability_order_number_category">
+                        </label>
+                        <select id="specialNumberCategory"
+                                class="form-control"
+                                name="specialNumberCategory"
+                                data-ng-model="PortabilityOrderCtrl.order.specialNumberCategory"
+                                data-ng-options="typo.value as typo.label for typo in PortabilityOrderCtrl.typologies[PortabilityOrderCtrl.order.country]"></select>
+                    </div>
+
                     <!-- RIO -->
                     <div class="form-group"
-                         data-ng-if="PortabilityOrderCtrl.order.callNumber && !PortabilityOrderCtrl.isSDA && PortabilityOrderCtrl.order.country === 'france'"
+                         data-ng-if="PortabilityOrderCtrl.order.callNumber && !PortabilityOrderCtrl.isSDA && PortabilityOrderCtrl.order.country === 'france' && !PortabilityOrderCtrl.isSpecialNumber"
                          data-ng-class="{
                              'has-error': portabilityNumberForm.rio.$touched && portabilityNumberForm.rio.$invalid
                          }">
@@ -283,7 +305,7 @@
                         <button type="submit"
                                 class="btn btn-primary"
                                 data-translate="next"
-                                data-ng-disabled="portabilityNumberForm.$invalid">
+                                data-ng-disabled="portabilityNumberForm.$invalid || (!PortabilityOrderCtrl.isSDA && PortabilityOrderCtrl.isSpecialNumber)">
                         </button>
                     </div>
 
@@ -833,29 +855,43 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div>
-                            <div class="resume-prices float-right">
-                                <dl>
-                                    <dt data-translate="telephony_alias_portability_order_total_tax_free"></dt>
-                                    <dd class="animate-opacity1-enter text-price font-weight-bold"
-                                        data-ng-bind="PortabilityOrderCtrl.prices.withoutTax.text">
-                                    </dd>
+                        <div class="form-group">
+                            <div class="col-xs-12 pl-3">
+                                <div class="form-group mb-3">
+                                    <label class="col-xs-3 control-label text-left p-0"
+                                           data-translate="telephony_alias_portability_order_total_tax_free"></label>
+                                    <div class="col-xs-9">
+                                        <p class="form-control-static p-0 font-weight-bold text-danger"
+                                           data-ng-bind="PortabilityOrderCtrl.prices.withoutTax.text"></p>
+                                    </div>
+                                </div>
+                            </div>
 
-                                    <dt data-translate="telephony_alias_portability_order_total_tax"></dt>
-                                    <dd class="animate-opacity1-enter text-price font-weight-bold"
-                                        data-ng-bind="PortabilityOrderCtrl.prices.tax.text">
-                                    </dd>
+                            <div class="col-xs-12 pl-3">
+                                <div class="form-group">
+                                    <label class="col-xs-3 control-label text-left p-0"
+                                           data-translate="telephony_alias_portability_order_total_tax"></label>
+                                    <div class="col-xs-9">
+                                        <p class="form-control-static font-weight-bold p-0 text-danger"
+                                           data-ng-bind="PortabilityOrderCtrl.prices.tax.text"></p>
+                                    </div>
+                                </div>
+                            </div>
 
-                                    <dt data-translate="telephony_alias_portability_order_total_with_tax"></dt>
-                                    <dd class="animate-opacity1-enter text-price font-weight-bold"
-                                        data-ng-bind="PortabilityOrderCtrl.prices.withTax.text">
-                                    </dd>
-                                </dl>
+                            <div class="col-xs-12 pl-3">
+                                <div class="form-group">
+                                    <label class="col-xs-3 control-label text-left p-0"
+                                           data-translate="telephony_alias_portability_order_total_with_tax"></label>
+                                    <div class="col-xs-9">
+                                        <p class="form-control-static font-weight-bold p-0 text-danger"
+                                           data-ng-bind="PortabilityOrderCtrl.prices.withTax.text"></p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
                         <div data-contracts="PortabilityOrderCtrl.contracts"
-                             data-full-text="false"
+                             data-full-text="true"
                              data-contracts-validated="PortabilityOrderCtrl.order.isContractsAccepted">
                         </div>
                     </div><!-- prices and contracts -->
