@@ -6,6 +6,7 @@
    <translation id="telephony_line_details_country" qtlid="359488">Pays / Code pays</translation>
    <translation id="telephony_line_details_next_bill" qtlid="359501">Prochaine facturation</translation>
    <translation id="telephony_line_details_simultaneous_call" qtlid="303718">Appels simultanés</translation>
+   <translation id="telephony_line_details_simultaneous_call_details">(dont {{extra}} en option et {{toBeDeleted}} en attente de résiliation) </translation>
    <translation id="telephony_line_details_offer" qtlid="303718">Détails de l'offre</translation>
 
    <translation id="telephony_line_details_global_group_title" qtlid="59627">Informations sur le groupe</translation>

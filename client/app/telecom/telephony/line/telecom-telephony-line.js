@@ -25,7 +25,18 @@ angular.module("managerApp").config(function ($stateProvider) {
                     billingAccount: $stateParams.billingAccount,
                     serviceName: $stateParams.serviceName
                 }).$promise.then(function (line) {
-                    return line;
+                    return OvhApiTelephony.Line().Lexi().simultaneousChannelsDetails({
+                        billingAccount: $stateParams.billingAccount,
+                        serviceName: $stateParams.serviceName
+                    }).$promise.then(function (details) {
+                        return details;
+                    }).catch(function () {
+                        return null;
+                    }).then(function (details) {
+                        return _.merge(line, {
+                            simultaneousLinesDetails: details || null
+                        });
+                    });
                 }).catch(function () {
                     return {};
                 });
