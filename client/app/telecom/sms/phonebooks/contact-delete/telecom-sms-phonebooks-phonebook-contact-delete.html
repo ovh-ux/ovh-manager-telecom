@@ -15,7 +15,9 @@
 
     <div class="modal-body"
          data-ng-if="!ContactDeleteCtrl.isDeleting && !ContactDeleteCtrl.deleted">
-        <h3 data-translate="sms_phonebooks_phonebook_contact_delete"></h3>
+        <h3 class="modal-title"
+            data-translate="sms_phonebooks_phonebook_contact_delete">
+        </h3>
         <p data-translate="sms_phonebooks_phonebook_contact_delete_confirm"
            data-translate-values="{ name: ContactDeleteCtrl.getContactName() }">
         </p>

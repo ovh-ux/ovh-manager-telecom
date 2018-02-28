@@ -18,6 +18,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineDetailsCtrl", funct
         TelephonyMediator.getGroup($stateParams.billingAccount).then(function (group) {
             self.group = group;
             self.line = _.merge(self.group.getLine($stateParams.serviceName), currentLine || {});
+            self.line.getPublicOffer.description = self.line.getPublicOffer.description.replace("The Public Reference has an error", "-");
             self.plan = NumberPlans.getPlanByNumber(self.line);
 
             return $q.all({

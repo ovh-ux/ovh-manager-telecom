@@ -33,10 +33,17 @@
                       data-ng-submit="LineSimultaneousLinesCtrl.save()">
 
                     <div class="row my-4">
-                        <div class="col-xs-12 col-md-6">
+                        <div class="col-xs-12 col-md-9">
                             <label class="control-label"
-                                   for="simultaneousLines"
-                                   data-translate="telephony_line_actions_line_calls_simultaneous_line_label"></label>
+                                   for="simultaneousLines">
+                                <span data-translate="telephony_line_actions_line_calls_simultaneous_line_label"></span>
+                                <span data-ng-if="LineSimultaneousLinesCtrl.options.details"
+                                      data-translate="telephony_line_actions_line_calls_simultaneous_details"
+                                      data-translate-values="{
+                                          'basic': LineSimultaneousLinesCtrl.options.details.basic,
+                                          'extra': LineSimultaneousLinesCtrl.options.details.extra
+                                      }"></span>
+                            </label>
                             <input-number-spinner
                                 class="float-left"
                                 id="simultaneousLines"
