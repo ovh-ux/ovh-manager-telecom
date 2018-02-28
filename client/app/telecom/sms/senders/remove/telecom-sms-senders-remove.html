@@ -14,7 +14,9 @@
 
     <div class="modal-body"
          data-ng-if="!SendersRemoveCtrl.loading.removeSender && !SendersRemoveCtrl.removed">
-        <h3 data-translate="sms_senders_remove_sender_title"></h3>
+        <h3 class="modal-title"
+            data-translate="sms_senders_remove_sender_title">
+        </h3>
         <p data-translate="sms_senders_remove_sender_confirm"
            data-translate-values="{ sender: SendersRemoveCtrl.sender.sender }">
         </p>

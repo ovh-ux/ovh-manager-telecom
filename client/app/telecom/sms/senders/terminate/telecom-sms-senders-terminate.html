@@ -14,7 +14,9 @@
 
     <div class="modal-body"
          data-ng-if="!SendersTerminateCtrl.loading.terminate && !SendersTerminateCtrl.terminated">
-        <h3 data-translate="sms_senders_terminate_sender_title"></h3>
+        <h3 class="modal-title"
+            data-translate="sms_senders_terminate_sender_title">
+        </h3>
         <p data-ng-if="!SendersTerminateCtrl.sender.serviceInfos.renew.deleteAtExpiration"
            data-translate="sms_senders_terminate_sender_info"
            data-translate-values="{
