@@ -14,7 +14,9 @@
 
     <div class="modal-body"
          data-ng-if="!UsersRemoveCtrl.loading.removeUser && !UsersRemoveCtrl.removed">
-        <h3 data-translate="sms_users_remove_user_title"></h3>
+        <h3 class="modal-title"
+            data-translate="sms_users_remove_user_title">
+        </h3>
         <p class="word-break"
            data-translate="sms_users_remove_user_confirm"
            data-translate-values="{ user: UsersRemoveCtrl.user.login }">
