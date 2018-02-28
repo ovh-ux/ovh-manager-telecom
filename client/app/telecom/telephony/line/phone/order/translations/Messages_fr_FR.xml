@@ -54,7 +54,7 @@
    <translation id="telephony_line_phone_order_noretract" qtlid="459222">Vous sollicitez l'exécution immédiate de la prestation et reconnaissez qu'à ce titre, vous ne pourrez exercer votre droit de rétractation conformément aux dispositions de l'article 121-20-2 du code de la consommation.</translation>
    <translation id="telephony_line_phone_order_attach_title" qtlid="459235">Rattacher la ligne à un équipement actuel</translation>
    <translation id="telephony_line_phone_order_detach_title">Détacher la ligne d'un Plug&Phone</translation>
-   <translation id="telephony_line_phone_order_detach_info1">Cette ligne est acutellement rattachée au Plug & Phone : <strong>{{phoneName}} ({{phoneMacAddress}}).</strong></translation>
+   <translation id="telephony_line_phone_order_detach_info1">Cette ligne est actuellement rattachée au Plug & Phone : <strong>{{phoneName}} ({{phoneMacAddress}}).</strong></translation>
    <translation id="telephony_line_phone_order_detach_info2">Pour la détacher, saisissez l'adresse IP publique du Plug & Phone et cliquez sur le bouton <strong>Détacher</strong>.</translation>
    <translation id="telephony_line_phone_order_detach_device">Adresse IP publique</translation>
    <translation id="telephony_line_phone_order_detach_device_action">Détacher</translation>
