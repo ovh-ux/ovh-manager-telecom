@@ -39,7 +39,7 @@
    <translation id="overTheBox_remote_add_allowedIp_error" qtlid="306422">La dirección IP no es correcta.</translation>
    <translation id="overTheBox_remote_add_exposedPort_error" qtlid="166677">El puerto no es válido.</translation>
    <translation id="overTheBox_remote_add_expirationDate_error" qtlid="306435">La fecha de expiración no es válida.</translation>
-   <translation id="overTheBox_remote_add_expirationDate_error_future" qtlid="395804">Spécifiez une date future.</translation>
+   <translation id="overTheBox_remote_add_expirationDate_error_future" qtlid="395804">Indique una fecha futura.</translation>
    <translation id="overTheBox_remote_add_publicKey_error" qtlid="306448">Es obligatoria una clave pública en el puerto 22.</translation>
 
    <translation id="overTheBox_remote_authorize_confirm" qtlid="306461">¿Seguro que quiere autorizar el acceso remoto al puerto {{port}}?</translation>
@@ -53,8 +53,8 @@
 
    <translation id="overTheBox_remote_public_key_tooltip" qtlid="306539">Clave que permite una conexión segura.</translation>
 
-   <translation id="overTheBox_remote_placeholder_ip" qtlid="395817">IP du client</translation>
-   <translation id="overTheBox_remote_error_unknown" qtlid="395830">Impossible d'ajouter un accès à distance. Veuillez recommencer ultérieurement.</translation>
-   <translation id="overTheBox_remote_error_no_contact" qtlid="395843">Impossible de créer un accès à distance. Votre OverTheBox est muette depuis plus de 10 minutes.</translation>
+   <translation id="overTheBox_remote_placeholder_ip" qtlid="395817">IP del cliente</translation>
+   <translation id="overTheBox_remote_error_unknown" qtlid="395830">No se ha podido añadir un acceso remoto. Por favor, vuelva a intentarlo más tarde.</translation>
+   <translation id="overTheBox_remote_error_no_contact" qtlid="395843">No se ha podido crear un acceso remoto. Su OverTheBox está mudo desde hace más de 10 minutos.</translation>
 
 </translations>

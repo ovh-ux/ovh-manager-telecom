@@ -31,11 +31,11 @@
    <translation id="sms_senders_delete_senders" qtlid="393672">Supprimer les {{ count }} expéditeurs sélectionnés</translation>
    <translation id="sms_senders_delete_senders_success" qtlid="393633">Suppression en cours…</translation>
 
-   <translation id="sms_senders_add_sender" qtlid="340627">Ajouter un expéditeur</translation>
+   <translation id="sms_senders_add_sender" qtlid="340627">Absender hinzufügen</translation>
 
    <translation id="sms_senders_edit_sender_title" qtlid="340640">Éditer l’expéditeur</translation>
    <translation id="sms_senders_edit_sender_information" qtlid="340653">Vous éditez actuellement l’expéditeur <b>«{{ sender }}»</b>.</translation>
-   <translation id="sms_senders_edit_sender_description_label" qtlid="340666">Description&#160;:&#160;</translation>
+   <translation id="sms_senders_edit_sender_description_label" qtlid="340666">Beschreibung:&#160;</translation>
    <translation id="sms_senders_edit_sender_description_placeholder" qtlid="9238">Beschreibung</translation>
    <translation id="sms_senders_edit_sender_status_label" qtlid="340679">Activer l’expéditeur</translation>
    <translation id="sms_senders_edit_sender_editing" qtlid="340692">Mise à jour de l’expéditeur…</translation>

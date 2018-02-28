@@ -33,7 +33,7 @@
    <translation id="sms_options_response_tracking_title" qtlid="346144">Notifica alla ricezione</translation>
    <translation id="sms_options_response_tracking_media_label" qtlid="28543">Media</translation>
    <translation id="sms_options_response_tracking_email_number_label" qtlid="346157">Indirizzo email/Numero</translation>
-   <translation id="sms_options_response_tracking_email_sender_label" qtlid="346170">Mittente:&#160;{{ sender }}</translation>
+   <translation id="sms_options_response_tracking_email_sender_label">Expéditeur</translation>
    <translation id="sms_options_response_tracking_empty" qtlid="346183">Nessuna notifica configurata</translation>
    <translation id="sms_options_response_tracking_add" qtlid="346196">Aggiungi una notifica</translation>
 

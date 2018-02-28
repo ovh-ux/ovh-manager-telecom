@@ -9,6 +9,8 @@
    <translation id="xdsl_modem_dhcp_secondary_dns" qtlid="170408">DNS secundario</translation>
    <translation id="xdsl_modem_dhcp_dns_domain" qtlid="311830">Nombre de dominio DHCP</translation>
    <translation id="xdsl_modem_dhcp_playa_dhcp" qtlid="311843">Rango DHCP</translation>
+   <translation id="xdsl_modem_dhcp_playa_dhcp_start">Adresse de début de la plage DHCP</translation>
+   <translation id="xdsl_modem_dhcp_playa_dhcp_end">Adresse de fin de la plage DHCP</translation>
    <translation id="xdsl_modem_dhcp_allocation_time" qtlid="311856">Duración de asignación de una dirección</translation>
 
    <translation id="xdsl_modem_dhcp_gateway_tooltip" qtlid="311869">Dirección IP del dispositivo al que se enviarán los datos antes de acceder a internet (por defecto, la dirección IP LAN del módem)</translation>
@@ -19,6 +21,6 @@
    <translation id="xdsl_modem_dhcp_allocation_time_tooltip" qtlid="311934">Duración de conservación de la dirección IP por el dispositivo antes de que expire (renovación automática)</translation>
 
    <translation id="xdsl_modem_dhcp_success" qtlid="311947">El DHCP <strong>{{ name }}</strong> se ha editado correctamente.</translation>
-   <translation id="xdsl_modem_dhcp_submit_error" qtlid="385273">Oups ! Nous n'avons pas pu mettre à jour le DHCP.</translation>
-   <translation id="xdsl_modem_dhcp_error" qtlid="385286">Oups ! Nous n'avons pas pu récupérer les informations relatives au DHCP.</translation>
+   <translation id="xdsl_modem_dhcp_submit_error" qtlid="385273">¡Vaya! No hemos podido actualizar el DHCP.</translation>
+   <translation id="xdsl_modem_dhcp_error" qtlid="385286">¡Vaya! No hemos podido cargar la información relativa al DHCP.</translation>
 </translations>

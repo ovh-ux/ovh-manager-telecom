@@ -13,5 +13,5 @@
    <translation id="telecom_orders_follow_up_header_step" qtlid="5438">Passaggio</translation>
    <translation id="telecom_orders_follow_up_header_state" qtlid="8230">Stato</translation>
    <translation id="telecom_orders_follow_up_items_per_view" qtlid="305304">Elemento per pagina</translation>
-   <translation id="telecom_orders_follow_up_no_orders" qtlid="305317">Nessun ordine in corso</translation>
+   <translation id="telecom_orders_follow_up_no_orders">Actuellement vous n'avez pas de commandes en cours.</translation>
 </translations>

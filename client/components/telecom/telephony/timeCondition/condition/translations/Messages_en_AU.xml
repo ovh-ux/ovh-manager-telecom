@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<translations>
+<!-- CONDITION EDIT -->
+   <translation id="voip_time_condition_condition_popover_title">Modifier une plage horaire</translation>
+<!-- DAYS -->
+   <translation id="voip_time_condition_condition_popover_days">Jour de la semaine</translation>
+   <translation id="voip_time_condition_condition_popover_days_monday">Lundi</translation>
+   <translation id="voip_time_condition_condition_popover_days_tuesday">Mardi</translation>
+   <translation id="voip_time_condition_condition_popover_days_wednesday">Mercredi</translation>
+   <translation id="voip_time_condition_condition_popover_days_thursday">Jeudi</translation>
+   <translation id="voip_time_condition_condition_popover_days_friday">Vendredi</translation>
+   <translation id="voip_time_condition_condition_popover_days_saturday">Samedi</translation>
+   <translation id="voip_time_condition_condition_popover_days_sunday">Dimanche</translation>
+
+   <translation id="voip_time_condition_condition_popover_policy">Rediriger les appels vers</translation>
+   <translation id="voip_time_condition_condition_popover_time_slot">Plage horaire</translation>
+   <translation id="voip_time_condition_condition_popover_time_slot_from">De</translation>
+   <translation id="voip_time_condition_condition_popover_time_slot_to">à</translation>
+   <translation id="voip_time_condition_condition_popover_time_slot_overlap">Cette plage horaire est en conflit avec une autre !</translation>
+
+   <translation id="voip_time_condition_condition_popover_delete">Suppression</translation>
+   <translation id="voip_time_condition_condition_popover_delete_confirm">Êtes-vous certain de vouloir supprimer cette plage horaire ?</translation>
+</translations>

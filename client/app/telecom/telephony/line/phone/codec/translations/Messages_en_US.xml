@@ -24,4 +24,9 @@
    <translation id="telephony_line_phone_codec_edit_codec_automatic_yes" qtlid="34776">Yes</translation>
    <translation id="telephony_line_phone_codec_edit_codec_automatic_no" qtlid="34788">No</translation>
    <translation id="telephony_line_phone_codec_edit_codec_auto_choice" qtlid="391163">Codecs automatiques <em>(cette option est en test et permet de rendre plus souple la négociation de codecs)</em>.</translation>
+
+   <translation id="telephony_line_phone_codec_bulk_all_success">La modification des codecs a bien été appliquée aux services sélectionnés.</translation>
+   <translation id="telephony_line_phone_codec_bulk_some_success">La modification des codecs a bien été appliquée à {{ count }} des services sélectionnés.</translation>
+   <translation id="telephony_line_phone_codec_bulk_error">La modification des codecs n'a pu être appliquée au(x) service(s) suivant(s) :</translation>
+   <translation id="telephony_line_phone_codec_bulk_on_error">Oups ! Une erreur est survenue lors de la modification des codecs.</translation>
 </translations>

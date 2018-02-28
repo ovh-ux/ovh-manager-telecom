@@ -7,7 +7,7 @@
    <translation id="telephony_group_billing_credit_threshold_current_out_plan" qtlid="357512">Votre hors forfait global actuel est de&#160;:</translation>
    <translation id="telephony_group_billing_credit_threshold_credits_label" qtlid="357525">Modification du crédit&#160;:</translation>
    <translation id="telephony_group_billing_credit_threshold_new_credit" qtlid="357538">Après validation, votre limite sera de&#160;:</translation>
-   <translation id="telephony_group_billing_credit_threshold_without_tax" qtlid="101397">ohne MwSt.</translation>
+   <translation id="telephony_group_billing_credit_threshold_without_tax" qtlid="101397">zzgl. MwSt.</translation>
    <translation id="telephony_group_billing_credit_threshold_contracts_subtitle" qtlid="357551">Verträge akzeptieren </translation>
    <translation id="telephony_group_billing_credit_threshold_contracts" qtlid="357564">Vous devez accepter les contrats OVH avant de valider la demande de dépôt de garantie.</translation>
    <translation id="telephony_group_billing_credit_threshold_submit" qtlid="37875">Ändern</translation>

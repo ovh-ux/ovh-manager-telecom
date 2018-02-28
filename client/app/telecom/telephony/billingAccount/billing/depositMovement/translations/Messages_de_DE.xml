@@ -9,7 +9,7 @@
    <translation id="telephony_group_billing_deposit_movement_amount_label" qtlid="357447">Montant&#160;:</translation>
    <translation id="telephony_group_billing_deposit_movement_destination_subtitle" qtlid="32290">Ziel</translation>
    <translation id="telephony_group_billing_deposit_movement_estimate_label" qtlid="357681">Estimation après validation&#160;:</translation>
-   <translation id="telephony_group_billing_deposit_movement_without_tax" qtlid="101397">ohne MwSt.</translation>
+   <translation id="telephony_group_billing_deposit_movement_without_tax" qtlid="101397">zzgl. MwSt.</translation>
    <translation id="telephony_group_billing_deposit_movement_submit" qtlid="26047">Bestätigen</translation>
    <translation id="telephony_group_billing_deposit_movement_success" qtlid="357694">La demande de mouvement de vos dépôts de garantie à été enregistrée avec succès !</translation>
    <translation id="telephony_group_billing_deposit_movement_error_amount_too_low" qtlid="386547">Pour effectuer un transfert, votre dépôt de garantie source doit être positif !</translation>

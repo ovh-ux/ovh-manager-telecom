@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<translations>
+   <translation id="telephony_alias_configuration_calls_filtering_title">Filtrage d'appels</translation>
+   <translation id="telephony_alias_configuration_calls_filtering_config">Consulter, modifier ou exporter la configuration actuelle</translation>
+   <translation id="telephony_alias_configuration_calls_filtering_new">Configurer de nouveaux filtrages</translation>
+   <translation id="telephony_alias_configuration_calls_filtering_enable">Activation des filtrages</translation>
+   <translation id="telephony_alias_configuration_calls_filtering_incoming">Filtrage appel entrant</translation>
+   <translation id="telephony_alias_configuration_calls_filtering_list_none">Aucune liste active</translation>
+   <translation id="telephony_alias_configuration_calls_filtering_list_white">Liste blanche</translation>
+   <translation id="telephony_alias_configuration_calls_filtering_list_black">Liste noire</translation>
+</translations>

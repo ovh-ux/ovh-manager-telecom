@@ -1,10 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <translations>
-   <translation id="telephony_alias_configuration_mode_back_link" qtlid="332866">Retour à la configuration</translation>
    <translation id="telephony_alias_configuration_mode_title" qtlid="340354">Gérer les options</translation>
    <translation id="telephony_alias_configuration_mode_info_title" qtlid="26551">Informações</translation>
    <translation id="telephony_alias_configuration_mode_config_title" qtlid="4406">Configuração</translation>
-   <translation id="telephony_alias_configuration_mode_apply" qtlid="249107">Aplicar as modificações</translation>
+   <translation id="telephony_alias_configuration_mode_apply" qtlid="249107">Aplicar alterações</translation>
    <translation id="telephony_alias_configuration_mode_cancel" qtlid="172280">Anular as modificações</translation>
    <translation id="telephony_alias_configuration_mode_file" qtlid="392970">Fichier ...</translation>
+
+   <translation id="telephony_alias_configuration_mode_info1" qtlid="392541">Vous pouvez modifier le mode de fonctionnement de votre file d'attente :</translation>
+   <translation id="telephony_alias_configuration_mode_pabx_apply_changes" qtlid="249107">Aplicar alterações</translation>
+
+<!-- STRATEGY -->
+   <translation id="telephony_alias_configuration_mode_pabx_strategy" qtlid="294841">Estratégia</translation>
+   <translation id="telephony_alias_configuration_mode_pabx_strategy_ringAll" qtlid="294906">Tudo ao mesmo tempo</translation>
+   <translation id="telephony_alias_configuration_mode_pabx_strategy_ringAll_info" qtlid="392762">Tous les téléphones sonnent en même temps, le premier qui décroche prend l'appel sur son poste.</translation>
+
+   <translation id="telephony_alias_configuration_mode_pabx_strategy_cumulationByAgentOrder" qtlid="294854">De acordo com a ordem dos membros que foi definida, valor acumulado</translation>
+   <translation id="telephony_alias_configuration_mode_pabx_strategy_cumulationByAgentOrder_info" qtlid="392775">Le premier téléphone de la file d'attente sonne en premier et continu de sonner, le deuxième sonne à son tour après quelques secondes et continu de sonner en même temps que le premier, le troisième commence à sonner quelques seconde après etc.</translation>
+
+   <translation id="telephony_alias_configuration_mode_pabx_strategy_longestHangupAgent" qtlid="294867">O último a atender</translation>
+   <translation id="telephony_alias_configuration_mode_pabx_strategy_longestHangupAgent_info" qtlid="392788">Les téléphones sonnent les uns après les autres en suivant toujours le même ordre.</translation>
+
+   <translation id="telephony_alias_configuration_mode_pabx_strategy_longestIdleAgent" qtlid="294880">Do mais disponível para o menos disponível</translation>
+   <translation id="telephony_alias_configuration_mode_pabx_strategy_longestIdleAgent_info" qtlid="392801">Les téléphones sonneront suivant leur disponibilité depuis l'activation.</translation>
+
+   <translation id="telephony_alias_configuration_mode_pabx_strategy_random" qtlid="294893">Aleatório</translation>
+   <translation id="telephony_alias_configuration_mode_pabx_strategy_random_info" qtlid="392814">les téléphones sonnent les uns après les autres de manière aléatoire.</translation>
+
+   <translation id="telephony_alias_configuration_mode_pabx_strategy_roundRobin" qtlid="294919">Conforme a repartição de carga</translation>
+   <translation id="telephony_alias_configuration_mode_pabx_strategy_roundRobin_info" qtlid="392827">Les téléphones sonneront suivant leur disponibilité depuis le dernier appel : le plus disponible en premier.</translation>
+
+   <translation id="telephony_alias_configuration_mode_pabx_strategy_sequentiallyByAgentOrder" qtlid="294932">Conforme a ordem definidas dos membros</translation>
+   <translation id="telephony_alias_configuration_mode_pabx_strategy_sequentiallyByAgentOrder_info" qtlid="392840">Le premier téléphone de la file d'attente sonne en premier, le deuxième est second, etc.</translation>
+
+   <translation id="telephony_alias_configuration_mode_pabx_strategy_linear">Linéaire</translation>
+   <translation id="telephony_alias_configuration_mode_pabx_strategy_linear_info">Le premier téléphone de la file d'attente sonne en premier, le deuxième est second, etc.</translation>
+
+   <translation id="telephony_alias_configuration_mode_pabx_strategy_cyclic">Cyclique</translation>
+   <translation id="telephony_alias_configuration_mode_pabx_strategy_cyclic_info">Les téléphones sonnent les uns après les autres en suivant toujours le même ordre.</translation>
+
+   <translation id="telephony_alias_configuration_mode_pabx_strategy_mostIdleSinceLogging">Plus disponible depuis activation</translation>
+   <translation id="telephony_alias_configuration_mode_pabx_strategy_mostIdleSinceLogging_info">Les téléphones sonneront suivant leur disponibilité depuis l'activation.</translation>
+
+   <translation id="telephony_alias_configuration_mode_pabx_strategy_mostIdleSinceLastCall">Plus disponible depuis le dernier appel</translation>
+   <translation id="telephony_alias_configuration_mode_pabx_strategy_mostIdleSinceLastCall_info">Les téléphones sonneront suivant leur disponibilité depuis le dernier appel : le plus disponible en premier.</translation>
+
+   <translation id="telephony_alias_configuration_mode_pabx_strategy_parallel">Parallèle</translation>
+   <translation id="telephony_alias_configuration_mode_pabx_strategy_parallel_info">Tous les téléphones sonnent en même temps, le premier qui décroche prend l'appel sur son poste.</translation>
+
+   <translation id="telephony_alias_configuration_mode_pabx_strategy_leastIdleSinceLastCall">Moins disponible depuis le dernier appel</translation>
+   <translation id="telephony_alias_configuration_mode_pabx_strategy_leastIdleSinceLastCall_info">Les téléphones sonneront suivant leur disponibilité depuis le dernier appel : le moins disponible en premier.</translation>
+
+<!-- PATTERN -->
+   <translation id="telephony_alias_configuration_mode_pabx_pattern">Mode de sonnerie</translation>
+
+   <translation id="telephony_alias_configuration_mode_pabx_pattern_cumulated">Cumulé</translation>
+   <translation id="telephony_alias_configuration_mode_pabx_pattern_cumulated_info">Les uns après les autres, en chevauchement.</translation>
+
+   <translation id="telephony_alias_configuration_mode_pabx_pattern_sequential">Séquentiel</translation>
+   <translation id="telephony_alias_configuration_mode_pabx_pattern_sequential_info">Les uns après les autres</translation>
+
+<!-- CALL REJECTION -->
+   <translation id="telephony_alias_configuration_mode_pabx_anonymous_call_rejection">Rejet des appels anonymes</translation>
+   <translation id="telephony_alias_configuration_mode_pabx_anonymous_call_rejection_info"><strong>Rejet des appels anonymes</strong> : permet de rejeter les appels anonymes.</translation>
+
+<!-- NUMBER OF CALLS -->
+   <translation id="telephony_alias_configuration_mode_pabx_number_of_calls">Nombre d'appels simultanés</translation>
+   <translation id="telephony_alias_configuration_mode_pabx_number_of_calls_info"><strong>Nombre d'appels simultanés</strong> : nombre maximum d'appels simultanés par membre du groupe d'appel.</translation>
+
+<!-- STRATEGY AND PATTERN -->
+   <translation id="telephony_alias_configuration_mode_pabx_pattern_strategy_info"><strong>Stratégie et mode de sonnerie</strong> : stratégie des sonneries des membres du groupe d'appel.</translation>
+
 </translations>

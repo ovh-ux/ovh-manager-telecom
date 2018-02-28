@@ -9,7 +9,7 @@
    <translation id="telephony_alias_members_number_external" qtlid="93271">Ulkoinen numero</translation>
    <translation id="telephony_alias_members_status" qtlid="26443">Tila</translation>
    <translation id="telephony_alias_members_status_available" qtlid="99920">Saatavilla</translation>
-   <translation id="telephony_alias_members_status_onBreak" qtlid="397156">En pause</translation>
+   <translation id="telephony_alias_members_status_onBreak" qtlid="397156">Tauolla</translation>
    <translation id="telephony_alias_members_status_loggedOut" qtlid="77154">Kirjautunut ulos</translation>
    <translation id="telephony_alias_members_timeout_val" qtlid="397169">Délai : {{ timeout }} sec.</translation>
    <translation id="telephony_alias_members_wrap_up_time_val" qtlid="397182">Repos : {{ time }} sec.</translation>
@@ -23,4 +23,5 @@
    <translation id="telephony_alias_members_number_add" qtlid="397234">Ajouter un autre numéro</translation>
    <translation id="telephony_alias_members_add" qtlid="392502">Ajouter un membre</translation>
    <translation id="telephony_alias_members_add_multiple" qtlid="397247">Ajouter {{ count }} membres</translation>
+   <translation id="telephony_alias_members_explanation">Pour chaque membre, vous pouvez définir sa position, le nombre d'appels simultanés, le délai durant lequel il sonne et le délai de repos avant la présentation d'un nouvel appel suite à un appel terminé.</translation>
 </translations>

@@ -23,6 +23,7 @@
    <translation id="sms_sms_compose_recipient_label" qtlid="341407">Saisissez le numéro d’un seul destinataire</translation>
    <translation id="sms_sms_compose_recipient_placeholder" qtlid="341420">Numéro du destinataire (exemple : +33601020304)</translation>
    <translation id="sms_sms_compose_recipient_error_required" qtlid="341433">Le champ "Destinataire" est obligatoire.</translation>
+   <translation id="sms_sms_compose_recipient_error_pattern">Le numéro du destinataire doit être au format international.</translation>
 
    <translation id="sms_sms_compose_phonebook_manage" qtlid="341446">Carnets d’adresses</translation>
 
@@ -133,7 +134,6 @@
    <translation id="sms_sms_compose_add_phonebook_contact_phonenumber_type_homePhone" qtlid="394062">Fixe <small>(domicile)</small></translation>
    <translation id="sms_sms_compose_add_phonebook_contact_phonenumber_type_workMobile" qtlid="394101">Mobile <small>(professionnel)</small></translation>
    <translation id="sms_sms_compose_add_phonebook_contact_phonenumber_type_workPhone" qtlid="394088">Fixe <small>(professionnel)</small></translation>
-   <translation id="sms_sms_compose_add_phonebook_contact_loading" qtlid="301695">Loading...</translation>
    <translation id="sms_sms_compose_add_phonebook_contact_empty" qtlid="97964">No contact found.</translation>
    <translation id="sms_sms_compose_add_phonebook_contact_adding" qtlid="395258">Mise à jour des contacts…</translation>
    <translation id="sms_sms_compose_add_phonebook_contact_added" qtlid="395271">Liste des contacts mise à jour&#160;!</translation>

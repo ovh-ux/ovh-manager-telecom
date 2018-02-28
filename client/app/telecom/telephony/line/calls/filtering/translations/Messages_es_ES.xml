@@ -1,61 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <translations>
    <translation id="telephony_line_calls_filtering_title" qtlid="335141">Filtrado de llamadas</translation>
-   <translation id="telephony_line_calls_filtering_info" qtlid="358695">Para que su configuración de filtrado esté activa, seleccione la lista que quiere aplicar a las llamadas entrantes y salientes.</translation>
    <translation id="telephony_line_calls_filtering_enable" qtlid="358708">Activación del filtrado</translation>
-   <translation id="telephony_line_calls_filtering_new" qtlid="358721">Configurar nuevos filtros</translation>
-   <translation id="telephony_line_calls_filtering_add" qtlid="37923">Añadir</translation>
-   <translation id="telephony_line_calls_filtering_apply" qtlid="41326">Aplicar</translation>
-   <translation id="telephony_line_calls_filtering_add_success" qtlid="358734">Añadiendo filtro...</translation>
-   <translation id="telephony_line_calls_filtering_add_plural_success" qtlid="358747">Añadiendo filtros...</translation>
-   <translation id="telephony_line_calls_filtering_add_already_exist" qtlid="358760">Este filtro ya está en la lista.</translation>
-   <translation id="telephony_line_calls_filtering_helper" qtlid="69773">Asistente</translation>
-   <translation id="telephony_line_calls_filtering_helper_title" qtlid="23215">Asistente de configuración</translation>
-   <translation id="telephony_line_calls_filtering_csv_import" qtlid="358773">Importación CSV</translation>
-   <translation id="telephony_line_calls_filtering_csv_filename" qtlid="358786">Filtrado</translation>
-   <translation id="telephony_line_calls_filtering_csv_invalid" qtlid="358799">Seleccione un archivo en formato CSV.</translation>
-   <translation id="telephony_line_calls_filtering_csv_parse_error" qtlid="358812">El formato del archivo CSV no es válido.</translation>
-   <translation id="telephony_line_calls_filtering_csv_import_success" qtlid="358825">Importando...</translation>
-   <translation id="telephony_line_calls_filtering_config" qtlid="169849">Configuración actual</translation>
-   <translation id="telephony_line_calls_filtering_number" qtlid="30778">Número</translation>
-   <translation id="telephony_line_calls_filtering_number_info" qtlid="358838">Tiene la posibilidad de introducir todo el número o una parte de él (por ejemplo, +34123455678 el número completo, o +3412345 los números que empiezan por esas cifras)</translation>
-   <translation id="telephony_line_calls_filtering_number_international" qtlid="358851">En formato internacional</translation>
-   <translation id="telephony_line_calls_filtering_nature" qtlid="93283">Tipo de número</translation>
-   <translation id="telephony_line_calls_filtering_nature_fax" qtlid="32926">Fax</translation>
-   <translation id="telephony_line_calls_filtering_nature_international" qtlid="358864">Internacional</translation>
-   <translation id="telephony_line_calls_filtering_nature_services" qtlid="358877">Servicios OVH</translation>
-   <translation id="telephony_line_calls_filtering_nature_special" qtlid="358890">Número corto</translation>
-   <translation id="telephony_line_calls_filtering_nature_voicemail" qtlid="88956">Contestador</translation>
-   <translation id="telephony_line_calls_filtering_status" qtlid="26443">Estado</translation>
-   <translation id="telephony_line_calls_filtering_status_delete" qtlid="59699">Eliminación</translation>
-   <translation id="telephony_line_calls_filtering_status_delete_success" qtlid="358903">Eliminando...</translation>
-   <translation id="telephony_line_calls_filtering_status_new" qtlid="26791">Creación</translation>
-   <translation id="telephony_line_calls_filtering_type" qtlid="2642">Tipo</translation>
-   <translation id="telephony_line_calls_filtering_type_incoming" qtlid="358916">Llamadas entrantes</translation>
-   <translation id="telephony_line_calls_filtering_type_outgoing" qtlid="358929">Llamadas salientes</translation>
-   <translation id="telephony_line_calls_filtering_list" qtlid="358942">Lista</translation>
+   <translation id="telephony_line_calls_filtering_info" qtlid="358695">Para que su configuración de filtrado esté activa, seleccione la lista que quiere aplicar a las llamadas entrantes y salientes.</translation>
+   <translation id="telephony_line_calls_filtering_incoming" qtlid="359033">Filtrado de las llamadas entrantes</translation>
    <translation id="telephony_line_calls_filtering_list_white" qtlid="358955">Blanca</translation>
    <translation id="telephony_line_calls_filtering_list_black" qtlid="358968">Negra</translation>
    <translation id="telephony_line_calls_filtering_list_none" qtlid="358981">No hay listas activas</translation>
-   <translation id="telephony_line_calls_filtering_empty" qtlid="358994">No se han encontrado filtros.</translation>
-   <translation id="telephony_line_calls_filtering_loading" qtlid="242769">Cargando...</translation>
-   <translation id="telephony_line_calls_filtering_delete" qtlid="359007">Eliminar el filtro seleccionado</translation>
-   <translation id="telephony_line_calls_filtering_delete_plural" qtlid="359020">Eliminar los {{ nb }} filtros seleccionados</translation>
-   <translation id="telephony_line_calls_filtering_export" qtlid="69881">Exportar</translation>
-   <translation id="telephony_line_calls_filtering_incoming" qtlid="359033">Filtrado de las llamadas entrantes</translation>
    <translation id="telephony_line_calls_filtering_outgoing" qtlid="359046">Filtrado de las llamadas salientes</translation>
-   <translation id="telephony_line_calls_filtering_anonymous_reject" qtlid="387185">Rejet des appels anonymes</translation>
-   <translation id="telephony_line_calls_filtering_do_not_disturb" qtlid="387198">Ne pas déranger</translation>
-   <translation id="telephony_line_calls_filtering_absent" qtlid="80058">Suscriptor ausente</translation>
-   <translation id="telephony_line_calls_filtering_disabled" qtlid="359059">Para activar el filtrado, seleccione la lista que quiera aplicar.</translation>
-   <translation id="telephony_line_calls_filtering_list_choose" qtlid="359072">Elegir la lista de filtrado...</translation>
-   <translation id="telephony_line_calls_filtering_type_incomingBlackList" qtlid="359085">Llamadas entrantes, lista negra</translation>
-   <translation id="telephony_line_calls_filtering_type_outgoingBlackList" qtlid="359098">Llamadas salientes, lista negra</translation>
-   <translation id="telephony_line_calls_filtering_type_incomingWhiteList" qtlid="359111">Llamadas entrantes, lista blanca</translation>
-   <translation id="telephony_line_calls_filtering_type_outgoingWhiteList" qtlid="359124">Llamadas salientes, lista blanca</translation>
-   <translation id="telephony_line_calls_filtering_helper_mobile" qtlid="359137">Móviles nacionales</translation>
-   <translation id="telephony_line_calls_filtering_helper_line" qtlid="359150">Fijos nacionales</translation>
-   <translation id="telephony_line_calls_filtering_helper_foreign" qtlid="359163">Números extranjeros</translation>
-   <translation id="telephony_line_calls_filtering_helper_special" qtlid="58991">Números especiales</translation>
-   <translation id="telephony_line_calls_filtering_helper_short" qtlid="359176">Números cortos</translation>
+   <translation id="telephony_line_calls_filtering_anonymous_reject">Rejet des appels anonymes</translation>
+   <translation id="telephony_line_calls_filtering_do_not_disturb">Ne pas déranger</translation>
+   <translation id="telephony_line_calls_filtering_absent">Abonné absent</translation>
+   <translation id="telephony_line_calls_filtering_new" qtlid="358721">Configurar nuevos filtros</translation>
+   <translation id="telephony_line_calls_filtering_config" qtlid="169849">Configuración actual</translation>
+
+   <translation id="telephony_line_calls_filtering_bulk_all_success">Le filtrage d'appels a bien été appliqué aux services sélectionnés.</translation>
+   <translation id="telephony_line_calls_filtering_bulk_some_success">Le filtrage d'appels a bien été appliqué à {{ count }} des services sélectionnés.</translation>
+   <translation id="telephony_line_calls_filtering_bulk_error">Le filtrage d'appels n'a pas pu être appliqué au(x) service(s) suivant(s) :</translation>
+   <translation id="telephony_line_calls_filtering_bulk_on_error">Oups ! Une erreur est survenue lors de l'application du filtrage d'appels.</translation>
+
 </translations>

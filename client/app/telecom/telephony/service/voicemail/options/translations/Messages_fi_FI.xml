@@ -9,6 +9,8 @@
    <translation id="telephony_line_answer_voicemail_options_recording_file" qtlid="337832">Tiedosto...</translation>
    <translation id="telephony_line_answer_voicemail_options_recording_file_invalid" qtlid="337845">Tiedostoformaattia ei tueta.</translation>
    <translation id="telephony_line_answer_voicemail_options_recording_file_download_error" qtlid="337858">Lataamasi pääviesti on saatavilla hetken kuluttua.</translation>
+   <translation id="telephony_line_answer_voicemail_options_recording_delete">Supprimer le message d'accueil</translation>
+   <translation id="telephony_line_answer_voicemail_options_recording_delete_confirm">Êtes-vous certain de vouloir supprimer le message d'accueil ?</translation>
    <translation id="telephony_line_answer_voicemail_options_apply" qtlid="41326">Vahvista</translation>
    <translation id="telephony_line_answer_voicemail_options_notification" qtlid="337871">Ilmoitusvalinnat</translation>
    <translation id="telephony_line_answer_voicemail_options_audioformat" qtlid="337884">Audiotiedostojen formaatit:</translation>

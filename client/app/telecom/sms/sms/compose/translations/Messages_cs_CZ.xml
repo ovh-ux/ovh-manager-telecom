@@ -23,6 +23,7 @@
    <translation id="sms_sms_compose_recipient_label" qtlid="341407">Saisissez le numéro d’un seul destinataire</translation>
    <translation id="sms_sms_compose_recipient_placeholder" qtlid="341420">Numéro du destinataire (exemple : +33601020304)</translation>
    <translation id="sms_sms_compose_recipient_error_required" qtlid="341433">Le champ "Destinataire" est obligatoire.</translation>
+   <translation id="sms_sms_compose_recipient_error_pattern">Le numéro du destinataire doit être au format international.</translation>
 
    <translation id="sms_sms_compose_phonebook_manage" qtlid="341446">Carnets d’adresses</translation>
 
@@ -94,7 +95,7 @@
    <translation id="sms_sms_compose_tip_size_paragraphe_2" qtlid="341888">Les 2 tableaux ci-dessous listent les caractères autorisés.</translation>
    <translation id="sms_sms_compose_tip_size_paragraphe_3" qtlid="341901"><b>Attention&#160;:</b> l’utilisation de caractères ne figurant pas dans ces tableaux provoquera le basculement de l’encodage en Unicode et réduit à 70 caractères la taille maximale d’un SMS.</translation>
    <translation id="sms_sms_compose_tip_size_characters_basics" qtlid="341914">Caractères basiques</translation>
-   <translation id="sms_sms_compose_tip_size_characters_extensions" qtlid="341927">Extensions</translation>
+   <translation id="sms_sms_compose_tip_size_characters_extensions" qtlid="341927">Rozšíření</translation>
    <translation id="sms_sms_compose_tip_size_tooltip_characters_label" qtlid="341940">Caractère&#160;:</translation>
    <translation id="sms_sms_compose_tip_size_tooltip_space" qtlid="342650">[Espace]</translation>
    <translation id="sms_sms_compose_tip_size_tooltip_line_feed" qtlid="342663">[Nouvelle ligne]</translation>
@@ -125,7 +126,7 @@
    <translation id="sms_sms_compose_add_phonebook_contact_filter_select_homePhone" qtlid="394114">Fixe (domicile)</translation>
    <translation id="sms_sms_compose_add_phonebook_contact_filter_select_workMobile" qtlid="394153">Mobile (professionnel)</translation>
    <translation id="sms_sms_compose_add_phonebook_contact_filter_select_workPhone" qtlid="394140">Fixe (professionnel)</translation>
-   <translation id="sms_sms_compose_add_phonebook_contact_column_surname" qtlid="3818">Celé jméno</translation>
+   <translation id="sms_sms_compose_add_phonebook_contact_column_surname" qtlid="3818">Název</translation>
    <translation id="sms_sms_compose_add_phonebook_contact_column_name" qtlid="23323">Jméno</translation>
    <translation id="sms_sms_compose_add_phonebook_contact_column_phonenumber" qtlid="30778">Číslo</translation>
    <translation id="sms_sms_compose_add_phonebook_contact_column_type" qtlid="2642">Typ</translation>
@@ -133,7 +134,6 @@
    <translation id="sms_sms_compose_add_phonebook_contact_phonenumber_type_homePhone" qtlid="394062">Fixe <small>(domicile)</small></translation>
    <translation id="sms_sms_compose_add_phonebook_contact_phonenumber_type_workMobile" qtlid="394101">Mobile <small>(professionnel)</small></translation>
    <translation id="sms_sms_compose_add_phonebook_contact_phonenumber_type_workPhone" qtlid="394088">Fixe <small>(professionnel)</small></translation>
-   <translation id="sms_sms_compose_add_phonebook_contact_loading" qtlid="301695">Nahrávání...</translation>
    <translation id="sms_sms_compose_add_phonebook_contact_empty" qtlid="97964">Nebyla nalezen žádný kontakt.</translation>
    <translation id="sms_sms_compose_add_phonebook_contact_adding" qtlid="395258">Mise à jour des contacts…</translation>
    <translation id="sms_sms_compose_add_phonebook_contact_added" qtlid="395271">Liste des contacts mise à jour&#160;!</translation>

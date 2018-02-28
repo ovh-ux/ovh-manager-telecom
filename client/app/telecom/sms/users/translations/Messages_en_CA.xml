@@ -33,7 +33,7 @@
    <translation id="sms_users_add_user_password_label" qtlid="334894">Mot de passe&#160;:&#160;</translation>
    <translation id="sms_users_add_user_password_placeholder" qtlid="2270">Password</translation>
    <translation id="sms_users_add_user_password_required" qtlid="334946">Le champ "mot de passe" est obligatoire.</translation>
-   <translation id="sms_users_add_user_password_error_minlength" qtlid="338807">Le champ "mot de passe" doit être composé de 8 caractères alphanumériques.</translation>
+   <translation id="sms_users_add_user_password_error_pattern">Le champ "mot de passe" doit être composé de 8 caractères alphanumériques.</translation>
    <translation id="sms_users_add_user_adding" qtlid="393217">Ajout de l’utilisateur…</translation>
    <translation id="sms_users_add_user_added" qtlid="334933">Utilisateur ajouté&#160;!&#160;</translation>
    <translation id="sms_users_add_user_ko" qtlid="338846">Impossible de créer l’utilisateur.<br/>{{error}}</translation>
@@ -71,7 +71,7 @@
    <translation id="sms_users_change_password_user_password_label" qtlid="334894">Mot de passe&#160;:&#160;</translation>
    <translation id="sms_users_change_password_user_password_placeholder" qtlid="2270">Password</translation>
    <translation id="sms_users_change_password_user_password_error_required" qtlid="334946">Le champ "mot de passe" est obligatoire.</translation>
-   <translation id="sms_users_change_password_user_password_error_minlength" qtlid="338807">Le champ "mot de passe" doit être composé de 8 caractères alphanumériques.</translation>
+   <translation id="sms_users_change_password_user_password_error_pattern">Le champ "mot de passe" doit être composé de 8 caractères alphanumériques.</translation>
    <translation id="sms_users_change_password_user_changing" qtlid="338872">Changement du mot de passe…</translation>
    <translation id="sms_users_change_password_user_changed" qtlid="338885">Mot de passe modifié&#160;!&#160;</translation>
    <translation id="sms_users_change_password_user_ko" qtlid="338898">Impossible de changer le mot de passe de l’utilisateur.<br/>{{error}}</translation>
@@ -98,7 +98,7 @@
    <translation id="sms_users_limit_user_alert_threshold_placeholder" qtlid="339054">Seuil d’alerte</translation>
    <translation id="sms_users_limit_user_support_label" qtlid="32386">Notification</translation>
    <translation id="sms_users_limit_user_support_both" qtlid="339080">Mail et SMS</translation>
-   <translation id="sms_users_limit_user_support_mail" qtlid="21679">Mail</translation>
+   <translation id="sms_users_limit_user_support_mail" qtlid="21679">Email</translation>
    <translation id="sms_users_limit_user_support_sms" qtlid="28243">SMS</translation>
    <translation id="sms_users_limit_user_alert_email_label" qtlid="69509">Email</translation>
    <translation id="sms_users_limit_user_alert_email_placehoder" qtlid="11315">E-mail address</translation>
@@ -129,7 +129,7 @@
    <translation id="sms_users_callback_user_added" qtlid="339353">URL de callback ajoutée&#160;!&#160;</translation>
    <translation id="sms_users_callback_user_ko" qtlid="339366">Impossible de changer l’URL de callback.<br/>{{error}}</translation>
 
-   <translation id="sms_users_remove_user_title" qtlid="9983">Confirmation</translation>
+   <translation id="sms_users_remove_user_title" qtlid="9983">Order confirmation </translation>
    <translation id="sms_users_remove_user_confirm" qtlid="339379">Voulez-vous vraiment supprimer l’utilisateur <b>«{{ user }}»</b>&#160;?</translation>
    <translation id="sms_users_remove_user_removing" qtlid="339392">Suppression de l’utilisateur en cours…</translation>
    <translation id="sms_users_remove_user_removed" qtlid="339405">Utilisateur supprimé</translation>

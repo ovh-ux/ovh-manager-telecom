@@ -10,8 +10,17 @@
    <translation id="ttc" qtlid="101385">incl. GST</translation>
    <translation id="table_sort" qtlid="94699">Sort</translation>
 
+   <translation id="common_datagrid_nodata">Aucun résultat</translation>
+   <translation id="common_pagination_resultsperpage">Résultats par page</translation>
+   <translation id="common_pagination_ofnresults">sur TOTAL_ITEMS résultats</translation>
+   <translation id="common_pagination_currentpageofpagecount">Page CURRENT_PAGE sur PAGE_COUNT</translation>
+
    <translation id="yes" qtlid="50134">yes</translation>
+   <translation id="common_yes_capitalized">Oui</translation>
    <translation id="no" qtlid="50602">no</translation>
+   <translation id="common_no_capitalized">Non</translation>
+   <translation id="previous">Précédent</translation>
+   <translation id="next">Suivant</translation>
 
    <translation id="show" qtlid="69353">Display</translation>
    <translation id="hide" qtlid="26539">Cache</translation>
@@ -30,9 +39,10 @@
    <translation id="loading" qtlid="242769">Loading...</translation>
    <translation id="submit" qtlid="26047">Confirm</translation>
    <translation id="edit" qtlid="6766">Edit</translation>
-   <translation id="modify" qtlid="37875">Change</translation>
+   <translation id="modify" qtlid="37875">Edit</translation>
    <translation id="access" qtlid="304524">Access </translation>
    <translation id="edit_name" qtlid="304537">Edit {{name}}</translation>
+   <translation id="common_create">Créer</translation>
    <translation id="cancel" qtlid="37863">Cancel</translation>
    <translation id="delete" qtlid="2414">Delete</translation>
    <translation id="delete_name" qtlid="304550">Delete {{name}}</translation>
@@ -68,8 +78,15 @@
    <translation id="back_my_access" qtlid="82449">Access</translation>
 
    <translation id="sidebar_menu" qtlid="304576">Menu</translation>
-   <translation id="sidebar_placeholder" qtlid="122275">Search...</translation>
+   <translation id="sidebar_placeholder" qtlid="122275">Searching...</translation>
    <translation id="sidebar_no_item_found" qtlid="304589">Nothing matches your search. </translation>
+
+
+   <translation id="browser_alert_not_supported">Votre navigateur n'est pas supporté.</translation>
+   <translation id="browser_alert_deprecated">Votre navigateur n'est pas à jour et peut contenir des failles de sécurité ou de compatibilité.</translation>
+   <translation id="browser_alert_update">Nous vous recommandons de <a href="http://outdatedbrowser.com/fr" class="alert-link" target="_blank" rel="noopener">mettre à jour votre navigateur <i class="fa fa-external-link" aria-hidden="true"></i></a> afin de profiter d'une expérience optimale.</translation>
+   <translation id="browser_alert_close">Fermer cette alerte</translation>
+
 <!-- xdsl/sidebar -->
    <translation id="label-menu-item-ok" qtlid="304602">This line is active. </translation>
    <translation id="label-menu-item-down" qtlid="304615">Problem on the line </translation>
@@ -109,7 +126,6 @@
    <translation id="common_menu_cloud" qtlid="15677">Cloud</translation>
    <translation id="common_menu_telecom" qtlid="135827">Telecom</translation>
    <translation id="common_menu_gamma" qtlid="232401">Sunrise</translation>
-   <translation id="common_menu_telecom" qtlid="158214">Telecom</translation>
 <translation id="common_menu_portal" translate="none">MyOVH</translation>
    <translation id="common_menu_partners" qtlid="383512">Partners </translation>
    <translation id="common_menu_orders" qtlid="42394">Order Tracking</translation>
@@ -118,6 +134,10 @@
    <translation id="common_menu_billing" qtlid="32950">Billing</translation>
    <translation id="common_menu_language" qtlid="30598">Language</translation>
    <translation id="common_menu_account" qtlid="157642">My account</translation>
+   <translation id="common_menu_renew">Mes services</translation>
+   <translation id="common_menu_orders_all">Mes commandes</translation>
+   <translation id="common_menu_contacts">Mes contacts</translation>
+   <translation id="common_menu_list_ticket">Mes demandes d’assistance</translation>
    <translation id="common_menu_support_assistance" qtlid="52699">Help </translation>
    <translation id="common_menu_support_all_guides" qtlid="260788">All guides</translation>
    <translation id="common_menu_support_new_ticket" qtlid="260801">Create a support request</translation>
@@ -126,6 +146,7 @@
    <translation id="common_menu_support_telephony_contact" qtlid="260827">Phone support</translation>
    <translation id="common_menu_telephony_redirection" qtlid="304797">Redirect to telephony manager </translation>
    <translation id="common_menu_support_changelog" qtlid="124964">Changelog</translation>
+   <translation id="common_skip_to_main_content">Aller au contenu principal</translation>
    <translation id="global_logout" qtlid="33658">Log out</translation>
 
    <translation id="common_pagination_page" qtlid="239246">Page {{currentPage}} / {{nbPages}}</translation>
@@ -152,9 +173,11 @@
 
    <translation id="common_menu_changelog" qtlid="260971">Changelog</translation>
 
+   <translation id="common_express_lite_banner_desc">Express Lite comprend donc un modem offrant un accès à internet et une ligne VoIP pour <span class="ad-price font-weight-bold fs14">22,99€ HT</span>&#160;/&#160;mois.</translation>
    <translation id="common_express_lite_banner_title" qtlid="304888">OVH is launching a new ADSL and VDSL connection service. </translation>
    <translation id="common_generate_order" qtlid="186219">Generate purchase order</translation>
    <translation id="common_boost_banner_title" qtlid="304901">OVH has released two "Internet Only" limited ranges to offer maximum speed.</translation>
+   <translation id="common_boost_banner_desc">Sécurisez votre connexion avec l'offre <span class="ad-price font-weight-bold fs14">CONNECT</span> ou doublez votre débit avec l'offre <span class="ad-price font-weight-bold fs14">BOOST</span> qui inclut le matériel et le service <span class="ad-price font-weight-bold fs14">OVER THE BOX</span>.<br/><small>Offre limitée aux 240 premières commandes.</small></translation>
    <translation id="common_banner_discover" qtlid="304927">Find out more </translation>
    <translation id="common_service_name_edit_title" qtlid="331683">{{ title }} : éditer le nom du service</translation>
 
@@ -169,11 +192,26 @@
    <translation id="common_filter" qtlid="59207">Filter</translation>
    <translation id="common_home" qtlid="27643">Home</translation>
 
+<!-- Units -->
+   <translation id="unit_bits_per_sec">{{val}} bits/s</translation>
+   <translation id="unit_kilo_bits_per_sec">{{val}} Kbs/s</translation>
+   <translation id="unit_mega_bits_per_sec">{{val}} Mbs/s</translation>
+   <translation id="unit_giga_bits_per_sec">{{val}} Gbs/s</translation>
+   <translation id="unit_tera_bits_per_sec">{{val}} Tbs/s</translation>
+   <translation id="unit_peta_bits_per_sec">{{val}} Pbs/s</translation>
+
+   <translation id="unit_generic_per_sec">{{val}}</translation>
+   <translation id="unit_kilo_generic_per_sec">{{val}} K</translation>
+   <translation id="unit_mega_generic_per_sec">{{val}} M</translation>
+   <translation id="unit_giga_generic_per_sec">{{val}} G</translation>
+   <translation id="unit_tera_generic_per_sec">{{val}} T</translation>
+   <translation id="unit_peta_generic_per_sec">{{val}} P</translation>
+
 <!-- LANGUAGE LIST -->
    <translation id="language_de_DE" qtlid="31618">German</translation>
    <translation id="language_en_GB" qtlid="33838">English</translation>
-   <translation id="language_en_US" qtlid="377812">Anglais (Etats-Unis)</translation>
-   <translation id="language_en_CA" qtlid="377825">Anglais (Canada)</translation>
+   <translation id="language_en_US" qtlid="377812">English (United States)</translation>
+   <translation id="language_en_CA" qtlid="377825">English (Canada)</translation>
    <translation id="language_es_ES" qtlid="33454">Spanish</translation>
    <translation id="language_fr_FR" qtlid="29684">French</translation>
    <translation id="language_fr_CA" qtlid="324912">French (Canadian) </translation>
@@ -231,7 +269,7 @@
    <translation id="country_CF" qtlid="187391">Central African Republic</translation>
    <translation id="country_CG" qtlid="187404">Congo</translation>
    <translation id="country_CH" qtlid="40954">Switzerland</translation>
-   <translation id="country_CI" qtlid="187417">Côte D'Ivoire</translation>
+   <translation id="country_CI" qtlid="187417">Ivory Coast</translation>
    <translation id="country_CK" qtlid="187430">Cook Islands</translation>
    <translation id="country_CL" qtlid="187443">Chile</translation>
    <translation id="country_CM" qtlid="187456">Cameroon</translation>
@@ -264,7 +302,7 @@
    <translation id="country_FO" qtlid="187729">Faroe Islands</translation>
    <translation id="country_FR" qtlid="29047">France</translation>
    <translation id="country_GA" qtlid="187742">Gabon</translation>
-   <translation id="country_GB" qtlid="386821">Grande-Bretagne</translation>
+   <translation id="country_GB" qtlid="386821">Great Britain</translation>
    <translation id="country_GD" qtlid="187755">Grenada</translation>
    <translation id="country_GE" qtlid="187768">Georgia</translation>
    <translation id="country_GF" qtlid="187781">French Guiana</translation>
@@ -312,7 +350,7 @@
    <translation id="country_KW" qtlid="188262">Kuwait</translation>
    <translation id="country_KY" qtlid="188275">Cayman Islands</translation>
    <translation id="country_KZ" qtlid="188288">Kazakhstan</translation>
-   <translation id="country_LA" qtlid="188301">Lao People's Democratic Republic - </translation>
+   <translation id="country_LA" qtlid="188301">Laos -</translation>
    <translation id="country_LB" qtlid="188314">Lebanon</translation>
    <translation id="country_LC" qtlid="188327">Saint-Lucia</translation>
    <translation id="country_LI" qtlid="188340">Liechtenstein</translation>
@@ -421,7 +459,7 @@
    <translation id="country_UG" qtlid="189432">Uganda</translation>
    <translation id="country_UK" qtlid="29071">United Kingdom</translation>
    <translation id="country_UM" qtlid="189445">United States Minor Outlying Islands</translation>
-   <translation id="country_US" qtlid="108396">USA</translation>
+   <translation id="country_US" qtlid="108396">United States of America</translation>
    <translation id="country_UY" qtlid="189458">Uruguay</translation>
    <translation id="country_UZ" qtlid="189471">Uzbekistan</translation>
    <translation id="country_VA" qtlid="43522">Vatican</translation>

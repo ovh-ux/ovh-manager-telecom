@@ -33,7 +33,7 @@
    <translation id="sms_users_add_user_password_label" qtlid="334894">Mot de passe&#160;:&#160;</translation>
    <translation id="sms_users_add_user_password_placeholder" qtlid="2270">Mot de passe</translation>
    <translation id="sms_users_add_user_password_required" qtlid="334946">Le champ "mot de passe" est obligatoire.</translation>
-   <translation id="sms_users_add_user_password_error_minlength" qtlid="338807">Le champ "mot de passe" doit être composé de 8 caractères alphanumériques.</translation>
+   <translation id="sms_users_add_user_password_error_pattern">Le champ "mot de passe" doit être composé de 8 caractères alphanumériques.</translation>
    <translation id="sms_users_add_user_adding" qtlid="393217">Ajout de l’utilisateur…</translation>
    <translation id="sms_users_add_user_added" qtlid="334933">Utilisateur ajouté&#160;!&#160;</translation>
    <translation id="sms_users_add_user_ko" qtlid="338846">Impossible de créer l’utilisateur.<br/>{{error}}</translation>
@@ -71,7 +71,7 @@
    <translation id="sms_users_change_password_user_password_label" qtlid="334894">Mot de passe&#160;:&#160;</translation>
    <translation id="sms_users_change_password_user_password_placeholder" qtlid="2270">Mot de passe</translation>
    <translation id="sms_users_change_password_user_password_error_required" qtlid="334946">Le champ "mot de passe" est obligatoire.</translation>
-   <translation id="sms_users_change_password_user_password_error_minlength" qtlid="338807">Le champ "mot de passe" doit être composé de 8 caractères alphanumériques.</translation>
+   <translation id="sms_users_change_password_user_password_error_pattern">Le champ "mot de passe" doit être composé de 8 caractères alphanumériques.</translation>
    <translation id="sms_users_change_password_user_changing" qtlid="338872">Changement du mot de passe…</translation>
    <translation id="sms_users_change_password_user_changed" qtlid="338885">Mot de passe modifié&#160;!&#160;</translation>
    <translation id="sms_users_change_password_user_ko" qtlid="338898">Impossible de changer le mot de passe de l’utilisateur.<br/>{{error}}</translation>

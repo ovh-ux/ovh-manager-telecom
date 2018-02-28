@@ -2,7 +2,7 @@
 <translations>
    <translation id="sms_section_back_link" qtlid="341186">Retour aux SMS</translation>
    <translation id="sms_sms_templates_title" qtlid="342070">Modèles de messages</translation>
-   <translation id="sms_sms_templates_title_informations" qtlid="26551">Informations</translation>
+   <translation id="sms_sms_templates_title_informations" qtlid="26551">Informaciones</translation>
    <translation id="sms_sms_templates_informations_text_1" qtlid="342083">Pour envoyer des SMS vers les États-Unis, vous devez au préalable valider des modèles de messages.</translation>
    <translation id="sms_sms_templates_informations_text_2" qtlid="342096">Seuls les messages transactionnels, d'alerte et de double-authentification sont autorisés, et aucun modèle de SMS publicitaire ne sera accepté.</translation>
    <translation id="sms_sms_templates_informations_text_3" qtlid="342109">Une fois vos modèles définis, l'envoi de SMS se fera de la même manière que pour les autres pays, la recherche de compatibilité avec un modèle étant totalement automatique.</translation>
@@ -23,7 +23,7 @@
    <translation id="sms_sms_templates_list_title_message" qtlid="30574">Message</translation>
    <translation id="sms_sms_templates_list_title_description" qtlid="9238">Description</translation>
    <translation id="sms_sms_templates_list_title_status" qtlid="26443">Statut</translation>
-   <translation id="sms_sms_templates_list_title_type" qtlid="2642">Type</translation>
+   <translation id="sms_sms_templates_list_title_type" qtlid="2642">Tipo</translation>
    <translation id="sms_sms_templates_list_empty" qtlid="342252">Vous n'avez aucun modèle.</translation>
    <translation id="sms_sms_templates_sr_only_actions" qtlid="72809">Actions</translation>
    <translation id="sms_sms_templates_action_relaunch" qtlid="31378">Relancer</translation>

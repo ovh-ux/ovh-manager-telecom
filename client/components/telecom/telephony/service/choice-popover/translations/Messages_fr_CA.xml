@@ -8,8 +8,8 @@
    <translation id="telephony_service_choice_filter_by_group" qtlid="32962">Groupes</translation>
    <translation id="telephony_service_choice_filter_type_sip" qtlid="397039">Lignes SIP</translation>
    <translation id="telephony_service_choice_filter_type_trunk" qtlid="397052">Lignes Trunk</translation>
-   <translation id="telephony_service_choice_filter_type_fax" qtlid="32926"></translation>
-   <translation id="telephony_service_choice_filter_type_number" qtlid="386326">Numéros</translation>
+   <translation id="telephony_service_choice_filter_type_fax" qtlid="32926">Télécopieur</translation>
+   <translation id="telephony_service_choice_filter_type_number">Numéro</translation>
 
 <!-- SELECT -->
    <translation id="telephony_service_choice_destination" qtlid="397065">Choisissez un service</translation>

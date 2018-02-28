@@ -1,26 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <translations>
-   <translation id="telephony_alias_members_add_success" qtlid="397078">Membre(s) ajouté(s) avec succès.</translation>
-   <translation id="telephony_alias_members_delete_success" qtlid="397091">Membre supprimé avec succès.</translation>
-   <translation id="telephony_alias_members_change_success" qtlid="397104">Membre mis à jour avec succès.</translation>
-   <translation id="telephony_alias_members_empty" qtlid="397117">La liste ne contient aucun membre.</translation>
-   <translation id="telephony_alias_members_drag1" qtlid="397130">Le pictogramme</translation>
-   <translation id="telephony_alias_members_drag2" qtlid="397143">vous permet d'effectuer un glisser-déposer afin de réordonner la position de vos membres dans la file.</translation>
+   <translation id="telephony_alias_members_add_success" qtlid="397078">Nariai sėkmingai pridėti</translation>
+   <translation id="telephony_alias_members_delete_success" qtlid="397091">Narys sėkmingai ištrintas</translation>
+   <translation id="telephony_alias_members_change_success" qtlid="397104">Narys sėkmingai atnaujintas</translation>
+   <translation id="telephony_alias_members_empty" qtlid="397117">Sąraše nėra narių</translation>
+   <translation id="telephony_alias_members_drag1" qtlid="397130">Piktograma</translation>
+   <translation id="telephony_alias_members_drag2" qtlid="397143">leidžia įjungti "tempk-paleisk" veiksmą narių pergrupavimui eilėje.</translation>
    <translation id="telephony_alias_members_number_external" qtlid="93271">Išorinis numeris</translation>
    <translation id="telephony_alias_members_status" qtlid="26443">Būsena</translation>
    <translation id="telephony_alias_members_status_available" qtlid="99920">Galimi</translation>
-   <translation id="telephony_alias_members_status_onBreak" qtlid="397156">En pause</translation>
+   <translation id="telephony_alias_members_status_onBreak" qtlid="397156">Pristabdyta</translation>
    <translation id="telephony_alias_members_status_loggedOut" qtlid="77154">Neprisijungęs</translation>
-   <translation id="telephony_alias_members_timeout_val" qtlid="397169">Délai : {{ timeout }} sec.</translation>
-   <translation id="telephony_alias_members_wrap_up_time_val" qtlid="397182">Repos : {{ time }} sec.</translation>
-   <translation id="telephony_alias_members_simultaneous_lines_val" qtlid="397195">Appels simult. : {{ count }}</translation>
-   <translation id="telephony_alias_members_timeout" qtlid="303692">Délai</translation>
-   <translation id="telephony_alias_members_wrap_up_time" qtlid="303705">Repos</translation>
-   <translation id="telephony_alias_members_simultaneous_lines" qtlid="303718">Appels simultanés</translation>
-   <translation id="telephony_alias_members_seconds" qtlid="397208">{{ amount }} sec.</translation>
+   <translation id="telephony_alias_members_timeout_val" qtlid="397169">Uždelsimas: {{ timeout }} sek.</translation>
+   <translation id="telephony_alias_members_wrap_up_time_val" qtlid="397182">Liko: {{ time }} sek.</translation>
+   <translation id="telephony_alias_members_simultaneous_lines_val" qtlid="397195">Vienalaikiai skambučiai: {{ count }}</translation>
+   <translation id="telephony_alias_members_timeout" qtlid="303692">Liko</translation>
+   <translation id="telephony_alias_members_wrap_up_time" qtlid="303705">Perkėlimas</translation>
+   <translation id="telephony_alias_members_simultaneous_lines" qtlid="303718">Vienalaikiai skambučiai</translation>
+   <translation id="telephony_alias_members_seconds" qtlid="397208">{{ amount }} sek.</translation>
    <translation id="telephony_alias_members_number" qtlid="30778">Numeris</translation>
-   <translation id="telephony_alias_members_number_placeholder" qtlid="397221">Numéro au format international</translation>
-   <translation id="telephony_alias_members_number_add" qtlid="397234">Ajouter un autre numéro</translation>
-   <translation id="telephony_alias_members_add" qtlid="392502">Ajouter un membre</translation>
-   <translation id="telephony_alias_members_add_multiple" qtlid="397247">Ajouter {{ count }} membres</translation>
+   <translation id="telephony_alias_members_number_placeholder" qtlid="397221">Numeris tarptautiniu formatu</translation>
+   <translation id="telephony_alias_members_number_add" qtlid="397234">Pridėti kitą numerį</translation>
+   <translation id="telephony_alias_members_add" qtlid="392502">Pridėti narį</translation>
+   <translation id="telephony_alias_members_add_multiple" qtlid="397247">Pridėti {{ count }} narius</translation>
+   <translation id="telephony_alias_members_explanation">Pour chaque membre, vous pouvez définir sa position, le nombre d'appels simultanés, le délai durant lequel il sonne et le délai de repos avant la présentation d'un nouvel appel suite à un appel terminé.</translation>
 </translations>

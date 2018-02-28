@@ -16,4 +16,11 @@
    <translation id="xdsl_statistics_preview_label" qtlid="309438">Viimeaikainen</translation>
    <translation id="xdsl_statistics_error" qtlid="309451">Tietoja ei tilapäisesti ole saatavilla</translation>
    <translation id="xdsl_statistics_hour" qtlid="309464">(tunti UTC/GMT ({{-offset}}) h)</translation>
+
+   <translation id="xdsl_statistics_bits_per_sec_legend">bits/s</translation>
+   <translation id="xdsl_statistics_millisecond_legend">ms</translation>
+   <translation id="xdsl_statistics_decibel_legend">dB</translation>
+   <translation id="xdsl_statistics_ping_ms">{{value}} ms</translation>
+   <translation id="xdsl_statistics_ping_s">{{value}} s</translation>
+   <translation id="xdsl_statistics_decibel">{{value}} dB</translation>
 </translations>

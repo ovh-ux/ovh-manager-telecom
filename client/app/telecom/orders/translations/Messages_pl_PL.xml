@@ -13,5 +13,5 @@
    <translation id="telecom_orders_follow_up_header_step" qtlid="5438">Etap</translation>
    <translation id="telecom_orders_follow_up_header_state" qtlid="8230">Status</translation>
    <translation id="telecom_orders_follow_up_items_per_view" qtlid="305304">Jednostki na stronę</translation>
-   <translation id="telecom_orders_follow_up_no_orders" qtlid="305317">Aktualnie nie posiadasz zamówień w trakcie realizacji.</translation>
+   <translation id="telecom_orders_follow_up_no_orders">Actuellement vous n'avez pas de commandes en cours.</translation>
 </translations>

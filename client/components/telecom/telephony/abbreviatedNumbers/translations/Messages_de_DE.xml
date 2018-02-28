@@ -5,8 +5,8 @@
    <translation id="telephony_abbreviated_numbers_write_success" qtlid="334257">Le numéro abrégé {{num}} a été mis à jour.</translation>
    <translation id="telephony_abbreviated_numbers_id" qtlid="334283">Numéro abrégé</translation>
    <translation id="telephony_abbreviated_numbers_number" qtlid="334296">Numéro cible</translation>
-   <translation id="telephony_abbreviated_numbers_name" qtlid="3818">Name</translation>
-   <translation id="telephony_abbreviated_numbers_surname" qtlid="23323">Vorname</translation>
+   <translation id="telephony_abbreviated_numbers_surname">Nom</translation>
+   <translation id="telephony_abbreviated_numbers_name">Prénom</translation>
    <translation id="telephony_abbreviated_numbers_table_empty" qtlid="334309">Vous n'avez aucun numéro abrégé.</translation>
    <translation id="telephony_abbreviated_numbers_remove_success" qtlid="360658">Numéro abrégé {{abbreviatedNumber}} supprimé.</translation>
    <translation id="telephony_abbreviated_numbers_remove_error" qtlid="360671">Impossible de supprimer le numéro abrégé {{abbreviatedNumber}}.</translation>

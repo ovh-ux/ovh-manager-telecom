@@ -1,28 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <translations>
-   <translation id="telephony_calls_filtering_table_csv_filename" qtlid="358786">Filtrage</translation>
-   <translation id="telephony_calls_filtering_table_number" qtlid="30778">Número</translation>
-   <translation id="telephony_calls_filtering_table_nature" qtlid="93283">Tipo de número</translation>
-   <translation id="telephony_calls_filtering_table_nature_fax" qtlid="32926">Fax</translation>
-   <translation id="telephony_calls_filtering_table_nature_international" qtlid="358864">International</translation>
-   <translation id="telephony_calls_filtering_table_nature_services" qtlid="358877">Services OVH</translation>
-   <translation id="telephony_calls_filtering_table_nature_special" qtlid="358890">Numéro court</translation>
-   <translation id="telephony_calls_filtering_table_nature_voicemail" qtlid="88956">Voicemail</translation>
-   <translation id="telephony_calls_filtering_table_status" qtlid="26443">Estado</translation>
-   <translation id="telephony_calls_filtering_table_status_delete" qtlid="59699">Supressão</translation>
-   <translation id="telephony_calls_filtering_table_status_delete_success" qtlid="358903">Suppression en cours ...</translation>
-   <translation id="telephony_calls_filtering_table_status_new" qtlid="26791">Criação</translation>
-   <translation id="telephony_calls_filtering_table_type" qtlid="2642">Tipo</translation>
-   <translation id="telephony_calls_filtering_table_type_incoming" qtlid="358916">Appels entrants</translation>
-   <translation id="telephony_calls_filtering_table_type_outgoing" qtlid="358929">Appels sortants</translation>
-   <translation id="telephony_calls_filtering_table_list" qtlid="358942">Liste</translation>
-   <translation id="telephony_calls_filtering_table_list_white" qtlid="358955">Blanche</translation>
-   <translation id="telephony_calls_filtering_table_list_black" qtlid="358968">Noire</translation>
-   <translation id="telephony_calls_filtering_table_list_none" qtlid="358981">Aucune liste active</translation>
-   <translation id="telephony_calls_filtering_table_empty" qtlid="358994">Aucun filtre trouvé</translation>
-   <translation id="telephony_calls_filtering_table_loading" qtlid="242769">Carregamento em curso</translation>
-   <translation id="telephony_calls_filtering_table_delete" qtlid="359007">Supprimer le filtre sélectionné</translation>
-   <translation id="telephony_calls_filtering_table_delete_plural" qtlid="359020">Supprimer les {{ nb }} filtres sélectionnés</translation>
-   <translation id="telephony_calls_filtering_table_status_delete_success" qtlid="358903">Suppression en cours ...</translation>
-   <translation id="telephony_calls_filtering_table_export" qtlid="69881">Exportar</translation>
+   <translation id="telephony_calls_filtering_table_csv_filename">Filtrage</translation>
+   <translation id="telephony_calls_filtering_table_number">Numéro</translation>
+   <translation id="telephony_calls_filtering_table_nature">Type de numéro</translation>
+   <translation id="telephony_calls_filtering_table_nature_fax">Fax</translation>
+   <translation id="telephony_calls_filtering_table_nature_international">International</translation>
+   <translation id="telephony_calls_filtering_table_nature_services">Services OVH</translation>
+   <translation id="telephony_calls_filtering_table_nature_special">Numéro court</translation>
+   <translation id="telephony_calls_filtering_table_nature_voicemail">Répondeur</translation>
+   <translation id="telephony_calls_filtering_table_status">Statut</translation>
+   <translation id="telephony_calls_filtering_table_status_delete">Suppression</translation>
+   <translation id="telephony_calls_filtering_table_status_delete_success">Suppression en cours ...</translation>
+   <translation id="telephony_calls_filtering_table_status_new">Création</translation>
+   <translation id="telephony_calls_filtering_table_type">Type</translation>
+   <translation id="telephony_calls_filtering_table_type_incoming">Appels entrants</translation>
+   <translation id="telephony_calls_filtering_table_type_outgoing">Appels sortants</translation>
+   <translation id="telephony_calls_filtering_table_list">Liste</translation>
+   <translation id="telephony_calls_filtering_table_list_white">Blanche</translation>
+   <translation id="telephony_calls_filtering_table_list_black">Noire</translation>
+   <translation id="telephony_calls_filtering_table_list_none">Aucune liste active</translation>
+   <translation id="telephony_calls_filtering_table_empty">Aucun filtre trouvé</translation>
+   <translation id="telephony_calls_filtering_table_delete">Supprimer le filtre sélectionné</translation>
+   <translation id="telephony_calls_filtering_table_delete_plural">Supprimer les {{ nb }} filtres sélectionnés</translation>
+   <translation id="telephony_calls_filtering_table_export">Exporter</translation>
+   <translation id="telephony_calls_filtering_add_success">Ajout du filtre en cours</translation>
+   <translation id="telephony_calls_filtering_add_plural_success">Ajout des filtres en cours</translation>
+   <translation id="telephony_calls_filtering_add_csv_import">Import CSV</translation>
+   <translation id="telephony_calls_filtering_add_csv_invalid">Veuillez sélectionner un fichier au format CSV.</translation>
+   <translation id="telephony_calls_filtering_add_csv_parse_error">Le format du fichier CSV est invalide.</translation>
+   <translation id="telephony_calls_filtering_add_csv_import_success">Import en cours ...</translation>
+   <translation id="telephony_calls_filtering_helper">Assistant</translation>
+   <translation id="telephony_calls_filtering_helper_title">Assistant de configuration</translation>
+   <translation id="telephony_calls_filtering_helper_mobile">Mobiles nationaux</translation>
+   <translation id="telephony_calls_filtering_helper_line">Fixes nationaux</translation>
+   <translation id="telephony_calls_filtering_helper_foreign">Numéros étrangers</translation>
+   <translation id="telephony_calls_filtering_helper_special">Numéros spéciaux</translation>
+   <translation id="telephony_calls_filtering_helper_short">Numéros courts</translation>
+   <translation id="telephony_calls_filtering_list">Liste</translation>
+   <translation id="telephony_calls_filtering_list_choose">Choisir la liste de filtrage ...</translation>
+   <translation id="telephony_calls_filtering_type_incomingBlackList">Appels entrants - Liste noire</translation>
+   <translation id="telephony_calls_filtering_type_outgoingBlackList">Appels sortants - Liste noire</translation>
+   <translation id="telephony_calls_filtering_type_incomingWhiteList">Appels entrants - Liste blanche</translation>
+   <translation id="telephony_calls_filtering_type_outgoingWhiteList">Appels sortants - Liste blanche</translation>
+   <translation id="telephony_calls_filtering_nature">Type de numéro</translation>
+   <translation id="telephony_calls_filtering_apply">Appliquer</translation>
+   <translation id="telephony_calls_filtering_number">Numéro</translation>
+   <translation id="telephony_calls_filtering_number_info">Vous avez la possibilité de saisir tout ou partie du numéro. (Exemple : +33123455678 le numéro complet ; +3312345 les numéros commençant par ces chiffres)</translation>
+   <translation id="telephony_calls_filtering_number_international">Au format international</translation>
+   <translation id="telephony_calls_filtering_add_already_exist">Ce filtre est déjà présent dans la liste.</translation>
+   <translation id="telephony_calls_filtering_add">Ajouter</translation>
 </translations>

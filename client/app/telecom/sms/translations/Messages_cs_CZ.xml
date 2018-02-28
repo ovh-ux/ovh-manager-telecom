@@ -8,10 +8,11 @@
    <translation id="sms_tabs_phonebooks" qtlid="394725">Carnet d’adresses</translation>
    <translation id="sms_tabs_senders" qtlid="40490">Odesílatel</translation>
    <translation id="sms_tabs_api_users" qtlid="339431">Utilisateurs API</translation>
-   <translation id="sms_tabs_options" qtlid="23395">Options</translation>
-   <translation id="sms_tabs_guides" qtlid="300370">Průvodci</translation>
+   <translation id="sms_tabs_options" qtlid="23395">Možnosti</translation>
+   <translation id="sms_tabs_guides" qtlid="300370">Příručky</translation>
 
    <translation id="sms_rename_error" qtlid="317633">Impossible de renommer votre pack {{serviceName}}.</translation>
+   <translation id="sms_loading_error">Une erreur est survenue lors du chargement de SMS</translation>
 
    <translation id="sms_feature_soon_available" qtlid="339444">Cette fonctionnalité sera bientôt disponible.</translation>
 </translations>

@@ -4,7 +4,7 @@
 
    <translation id="sms_options_recredit_title" qtlid="339561">Recarga automática</translation>
 
-   <translation id="sms_options_recredit_information_title" qtlid="26551">Datos</translation>
+   <translation id="sms_options_recredit_information_title" qtlid="26551">Información</translation>
    <translation id="sms_options_recredit_information_text" qtlid="340328">Tiene la posibilidad de recargar automáticamente su cuenta de SMS cuando su saldo alcanza un umbral determinado.<br/>Esta recarga automática se cargará a su cuenta de cliente OVH.</translation>
    <translation id="sms_options_recredit_information_note" qtlid="340341">Tenga en cuenta que la recarga solo será posible si el saldo de su cuenta de cliente OVH es positivo o cero. Puede recargar su cuenta de cliente desde el área de cliente Telecom, en la sección «Facturación».</translation>
 

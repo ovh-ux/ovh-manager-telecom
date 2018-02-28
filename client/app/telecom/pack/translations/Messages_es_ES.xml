@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <translations>
-   <translation id="pack_xdsl_page_title" qtlid="384649">Pack "{{name}}"</translation>
+   <translation id="pack_xdsl_page_title" qtlid="384649">Pack «{{name}}»</translation>
    <translation id="pack_xdsl_service_list" qtlid="308437">Gestión del pack {{packName}}</translation>
    <translation id="pack_xdsl_service_more_one" qtlid="308450">{{count}} adicional</translation>
    <translation id="pack_xdsl_service_more_many" qtlid="308463">{{count}} adicionales</translation>
    <translation id="pack_xdsl_access" qtlid="308476">Mis accesos</translation>
    <translation id="pack_xdsl_no_service_available" qtlid="308489">No hay servicios disponibles.</translation>
-   <translation id="pack_xdsl_resiliation_success_notification" qtlid="384662">Votre demande de résiliation est prise en compte. Si vous changez d'avis, sachez que vous pouvez toujours annuler votre demande.</translation>
-   <translation id="pack_xdsl_resiliation_cancel_success_notification" qtlid="384675">Votre demande de résiliation est annulée. Quel plaisir de vous garder parmi nous.</translation>
+   <translation id="pack_xdsl_resiliation_success_notification" qtlid="384662">Su solicitud de baja se ha registrado. Si cambia de opinión, puede cancelar la solicitud.</translation>
+   <translation id="pack_xdsl_resiliation_cancel_success_notification" qtlid="384675">Su solicitud de baja se ha cancelado. Nos alegramos de que siga estando entre nosotros.</translation>
    <translation id="pack_xdsl_avalaibleSlot_0" qtlid="308502">Ha consumido todos sus {{packType}} en este pack.</translation>
    <translation id="pack_xdsl_avalaibleSlot_1" qtlid="308515">{{avalaible}} disponible</translation>
    <translation id="pack_xdsl_avalaibleSlot_n" qtlid="308528">{{avalaible}} disponibles</translation>
@@ -28,16 +28,16 @@
    <translation id="hubic" qtlid="305083">HubiC</translation>
    <translation id="task" qtlid="31078">Operaciones</translation>
    <translation id="pack_xdsl_hubic_activate" qtlid="308580">Disfrutar de mi hubiC</translation>
-   <translation id="pack_xdsl_hubic_loading_error" qtlid="384688">Oups ! Nous n'avons pas pu lister vos services HubiC.</translation>
+   <translation id="pack_xdsl_hubic_loading_error" qtlid="384688">¡Vaya! No se han podido mostrar sus servicios hubiC.</translation>
    <translation id="promotionCode" qtlid="308593">Vale de descuento</translation>
-   <translation id="exchangeAccount" qtlid="384701">Exchange (Compte)</translation>
+   <translation id="exchangeAccount" qtlid="384701">Exchange (cuenta)</translation>
    <translation id="exchangeLite" qtlid="308619">Exchange (Lite)</translation>
-   <translation id="exchangeOrganization" qtlid="384714">Exchange (Organisation)</translation>
-   <translation id="siteBuilderFull" qtlid="384727">Site Builder (Complet)</translation>
+   <translation id="exchangeOrganization" qtlid="384714">Exchange (organización)</translation>
+   <translation id="siteBuilderFull" qtlid="384727">Site Builder (completo)</translation>
    <translation id="siteBuilderStart" qtlid="98852">Site Builder</translation>
    <translation id="voipAlias" qtlid="9466">Alias</translation>
    <translation id="informations" qtlid="306565">Información general</translation>
-   <translation id="exchangeIndividual" qtlid="384740">Exchange (Individuel)</translation>
+   <translation id="exchangeIndividual" qtlid="384740">Exchange (individual)</translation>
    <translation id="add" qtlid="308671">añadir</translation>
    <translation id="no_item" qtlid="308684">no hay elementos</translation>
    <translation id="used" qtlid="308697">utilizado(s)</translation>
@@ -50,7 +50,7 @@
    <translation id="account" qtlid="308762">cuenta</translation>
    <translation id="size" qtlid="308775">tamaño</translation>
    <translation id="move" qtlid="308788">Trasladarme</translation>
-   <translation id="pack_xdsl_information_associated_line" qtlid="384753">Ligne associée</translation>
+   <translation id="pack_xdsl_information_associated_line" qtlid="384753">Línea asociada</translation>
 
 
    <translation id="pack_xdsl_status" qtlid="308801">Estado del pack</translation>
@@ -61,8 +61,8 @@
    <translation id="pack_xdsl_pack_id" qtlid="308853">Identificador del pack</translation>
    <translation id="pack_xdsl_created_date" qtlid="26419">Fecha de creación</translation>
    <translation id="pack_xdsl_engaged_date" qtlid="308866">Compromiso hasta el</translation>
-   <translation id="pack_xdsl_not_engaged" qtlid="384766">Vous n'êtes plus engagé</translation>
-   <translation id="pack_xdsl_resiliation_date" qtlid="384779">Date de résiliation</translation>
+   <translation id="pack_xdsl_not_engaged" qtlid="384766">Ya no tiene compromiso de permanencia</translation>
+   <translation id="pack_xdsl_resiliation_date" qtlid="384779">Fecha de baja</translation>
    <translation id="pack_xdsl_pack_link_address" qtlid="308879">Dirección de conexión</translation>
 
    <translation id="still_pending" qtlid="308892">creando</translation>
@@ -70,8 +70,8 @@
 <!-- EX-EMAIL -->
    <translation id="account_name" qtlid="33598">Correo electrónico</translation>
    <translation id="password" qtlid="2270">Contraseña</translation>
-   <translation id="password_confirmation" qtlid="9983">Repetir contraseña</translation>
-   <translation id="all_fields_are_required">Tous les champs sont obligatoires</translation>
+   <translation id="password_confirmation" qtlid="9983">Confirmar</translation>
+   <translation id="all_fields_are_required" qtlid="297579">Todos los campos son obligatorios.</translation>
    <translation id="required_fields_are_tag_with_a_star" qtlid="342793">&#160;Los campos obligatorios se indican con un asterisco.</translation>
    <translation id="in_validation" qtlid="308931">Su solicitud se está tramitando</translation>
    <translation id="security_level" qtlid="308944">Nivel de seguridad</translation>
@@ -106,5 +106,5 @@
 
    <translation id="pack_offer_migration" qtlid="25783">Cambiar de plan</translation>
 
-   <translation id="pack_xdsl_oops_an_error_is_occured" qtlid="384805">Oups ! Nous n'avons pas pu récupérer les information relatives à votre pack.</translation>
+   <translation id="pack_xdsl_oops_an_error_is_occured">Oups ! Nous n'avons pas pu récupérer les informations relatives à votre pack.</translation>
 </translations>

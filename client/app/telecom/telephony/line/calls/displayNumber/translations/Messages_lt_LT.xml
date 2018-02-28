@@ -4,8 +4,16 @@
    <translation id="telephony_line_actions_line_calls_display_number_read_error" qtlid="336155">Negalima prieiti prie numerio rodymo.</translation>
    <translation id="telephony_line_actions_line_calls_display_number_write_error" qtlid="336168">Negalima atnaujinti numerio rodymo. Jis yra tarptautinio formato arba paslėptas.</translation>
    <translation id="telephony_line_actions_line_calls_display_number_write_success" qtlid="336181">Numerio rodymas atnaujintas.</translation>
-   <translation id="telephony_line_actions_line_calls_display_number_label" qtlid="387029">Je souhaite présenter un numéro lors des appels sortants&#160;:</translation>
+   <translation id="telephony_line_actions_line_calls_display_number_label" qtlid="387029">Noriu rodyti numerį visiems išeinantiems skambučiams:</translation>
+   <translation id="telephony_line_actions_line_calls_display_number_choose">Choisir un autre numéro</translation>
    <translation id="telephony_line_actions_line_calls_display_number_confirm" qtlid="249107">Taikyti keitimus</translation>
-   <translation id="telephony_line_actions_line_calls_display_number_info" qtlid="387042">Lors de vos appels sortants, présentez un numéro de votre groupe de facturation ou choisissez l'anonymat.</translation>
-   <translation id="telephony_line_actions_line_calls_identificationRestriction_checkbox_label" qtlid="387055">Rester anonyme</translation>
+   <translation id="telephony_line_actions_line_calls_display_number_info" qtlid="387042">Pritaikykite grupės numerio rodymą ar slėpimą visiems išeinantiems skambučiams.</translation>
+   <translation id="telephony_line_actions_line_calls_identificationRestriction_checkbox_label" qtlid="387055">Likti anonimu</translation>
+   <translation id="telephony_line_actions_line_calls_submit_changes">Appliquer les modifications</translation>
+   <translation id="telephony_line_actions_line_calls_anonymous">Numéro masqué</translation>
+
+   <translation id="telephony_line_actions_line_calls_display_number_bulk_all_success">La modification de la présentation du numéro a bien été appliquée aux services sélectionnés.</translation>
+   <translation id="telephony_line_actions_line_calls_display_number_bulk_some_success">La modification de la présentation du numéro a bien été appliquée à {{ count }} des services sélectionnés.</translation>
+   <translation id="telephony_line_actions_line_calls_display_number_bulk_error">La modification de la présentation du numéro n'a pu être appliquée au(x) service(s) suivant(s) :</translation>
+   <translation id="telephony_line_actions_line_calls_display_number_bulk_on_error">Oups ! Une erreur est survenue lors de la modification de la présentation du numéro.</translation>
 </translations>

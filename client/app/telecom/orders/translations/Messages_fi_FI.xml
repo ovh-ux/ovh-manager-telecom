@@ -13,5 +13,5 @@
    <translation id="telecom_orders_follow_up_header_step" qtlid="5438">Vaihe</translation>
    <translation id="telecom_orders_follow_up_header_state" qtlid="8230">Tila</translation>
    <translation id="telecom_orders_follow_up_items_per_view" qtlid="305304">Artikkelia per sivu</translation>
-   <translation id="telecom_orders_follow_up_no_orders" qtlid="305317">Sinulla ei ole meneillään olevia tilauksia. </translation>
+   <translation id="telecom_orders_follow_up_no_orders">Actuellement vous n'avez pas de commandes en cours.</translation>
 </translations>

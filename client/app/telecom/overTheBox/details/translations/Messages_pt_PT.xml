@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <translations>
    <translation id="overTheBox_dashboard_title" qtlid="305616">Mon OverTheBox</translation>
-   <translation id="overTheBox_dashboard_service_label" qtlid="266952">Nome do serviço</translation>
+   <translation id="overTheBox_dashboard_service_label" qtlid="266952">Designação do serviço</translation>
    <translation id="overTheBox_device_listing_title" qtlid="289588">Lista dos periféricos</translation>
    <translation id="overTheBox_device_button_add" qtlid="317659">Nouveau périphérique</translation>
    <translation id="overTheBox_device_activation" qtlid="74958">Activação</translation>
@@ -33,6 +33,7 @@
    <translation id="overTheBox_bandwidth" qtlid="89749">Débito</translation>
    <translation id="overTheBox_publicIp" qtlid="317711">Adresse IP publique&#160;:</translation>
    <translation id="overTheBox_deviceId" qtlid="317724">Identifiant du périphérique&#160;:</translation>
+   <translation id="overTheBox_deviceId_button_title">Identifiant du périphérique :</translation>
    <translation id="overTheBox_device_state" qtlid="317737">État du périphérique&#160;:</translation>
    <translation id="overTheBox_expiration_date" qtlid="317750">Prochaine facturation&#160;:</translation>
    <translation id="overTheBox_billing_date" qtlid="317750">Prochaine facturation&#160;:</translation>
@@ -41,7 +42,7 @@
    <translation id="overTheBox_error_rename" qtlid="317763">Impossible de renommer votre service {{serviceName}}.</translation>
 
    <translation id="overTheBox_action_reboot_label" qtlid="33538">Reiniciar </translation>
-   <translation id="overTheBox_action_update_label" qtlid="43462">Actualizar</translation>
+   <translation id="overTheBox_action_update_label" qtlid="43462">Atualizar</translation>
    <translation id="overTheBox_action_launch_success" qtlid="317776">L'action à distance a été transmise à votre appareil avec succès. Cette action peut prendre quelques minutes.</translation>
    <translation id="overTheBox_action_launch_error" qtlid="317789">L'action à distance n'a pas pu être exécutée par votre appareil. Veuillez recommencer.</translation>
 
@@ -72,12 +73,14 @@
    <translation id="overTheBox_interface_lan" qtlid="317919">Interface lan {{num}}</translation>
    <translation id="overTheBox_interface_tun" qtlid="317932">Tunnel {{num}}</translation>
 
-   <translation id="overTheBox_resiliate" qtlid="48646">Rescindir</translation>
-   <translation id="overTheBox_cancel_resiliation" qtlid="285350">Anular o cancelamento do serviço</translation>
+   <translation id="overTheBox_resiliate" qtlid="48646">Cancelar</translation>
+   <translation id="overTheBox_cancel_resiliation" qtlid="285350">Anular cancelamento do serviço</translation>
    <translation id="overTheBox_resiliation_confirm" qtlid="395726">Voulez-vous résilier le service OverTheBox <strong>{{service}}</strong> (La résiliation sera effective le {{date}}) ?</translation>
 
    <translation id="overTheBox_resiliation_error" qtlid="395739">Oups ! Nous n'avons pas pu résilier le service {{service}}.</translation>
    <translation id="overTheBox_resiliation_success" qtlid="395752">Le service {{service}} sera résilié le {{date}}.</translation>
    <translation id="overTheBox_resiliation_cancel_error" qtlid="395765">Oups ! Nous n'avons pas pu annuler la résiliation en cours du service {{service}}.</translation>
    <translation id="overTheBox_cancel_resiliation_success" qtlid="395778">La résiliation de votre service {{service}} vient d'être annulée.</translation>
+
+   <translation id="overTheBox_statistics_bits_per_sec_legend">bits/s</translation>
 </translations>

@@ -2,7 +2,7 @@
 <translations>
    <translation id="sms_section_back_link" qtlid="340159">Volver a las opciones</translation>
 
-   <translation id="sms_options_response_information_title" qtlid="26551">Datos</translation>
+   <translation id="sms_options_response_information_title" qtlid="26551">Información</translation>
    <translation id="sms_options_response_information_text_1" qtlid="345962">Al recibir un SMS tras el envío de un SMS que permita la respuesta, podrá elegir entre tres opciones:</translation>
    <translation id="sms_options_response_information_list_item_1" qtlid="345975">No hacer nada</translation>
    <translation id="sms_options_response_information_list_item_2" qtlid="345988">Llamar un script alojado por usted mismo</translation>
@@ -14,7 +14,7 @@
 
 <!-- ACTION -->
    <translation id="sms_options_response_action_title" qtlid="346040">Acción en la recepción</translation>
-   <translation id="sms_options_response_action_option_none" qtlid="8674">Ninguno </translation>
+   <translation id="sms_options_response_action_option_none" qtlid="8674">Ninguno</translation>
    <translation id="sms_options_response_action_option_cgi" qtlid="346053">Llamar un CGI</translation>
    <translation id="sms_options_response_action_option_text" qtlid="346066">Responder con un mensaje de texto predefinido</translation>
    <translation id="sms_options_response_action_url_cgi_label" qtlid="346079">URL del CGI</translation>
@@ -33,7 +33,7 @@
    <translation id="sms_options_response_tracking_title" qtlid="346144">Notificación a la recepción</translation>
    <translation id="sms_options_response_tracking_media_label" qtlid="28543">Multimedia</translation>
    <translation id="sms_options_response_tracking_email_number_label" qtlid="346157">Dirección de correo / Número</translation>
-   <translation id="sms_options_response_tracking_email_sender_label" qtlid="346170">Remitente:&#160;{{ sender }}</translation>
+   <translation id="sms_options_response_tracking_email_sender_label">Expéditeur</translation>
    <translation id="sms_options_response_tracking_empty" qtlid="346183">No hay ninguna notificación configurada.</translation>
    <translation id="sms_options_response_tracking_add" qtlid="346196">Añadir una notificación</translation>
 

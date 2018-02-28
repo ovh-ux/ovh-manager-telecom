@@ -9,6 +9,8 @@
    <translation id="telephony_line_answer_voicemail_options_recording_file" qtlid="337832">Fichier...</translation>
    <translation id="telephony_line_answer_voicemail_options_recording_file_invalid" qtlid="337845">Format de fichier non supporté.</translation>
    <translation id="telephony_line_answer_voicemail_options_recording_file_download_error" qtlid="337858">Le téléchargement de votre message d'accueil est momentanément indisponible.</translation>
+   <translation id="telephony_line_answer_voicemail_options_recording_delete">Supprimer le message d'accueil</translation>
+   <translation id="telephony_line_answer_voicemail_options_recording_delete_confirm">Êtes-vous certain de vouloir supprimer le message d'accueil ?</translation>
    <translation id="telephony_line_answer_voicemail_options_apply" qtlid="41326">Appliquer</translation>
    <translation id="telephony_line_answer_voicemail_options_notification" qtlid="337871">Options de notification</translation>
    <translation id="telephony_line_answer_voicemail_options_audioformat" qtlid="337884">Format des fichiers audios :</translation>
@@ -19,7 +21,7 @@
    <translation id="telephony_line_answer_voicemail_options_update_success" qtlid="337949">Options enregistrées</translation>
    <translation id="telephony_line_answer_voicemail_options_update_error" qtlid="337962">Oups, nous n'arrivons pas à mettre à jour vos options.</translation>
    <translation id="telephony_line_answer_voicemail_options_mail_add" qtlid="71357">Ajouter une adresse e-mail</translation>
-   <translation id="telephony_line_answer_voicemail_options_mail_add_confirm" qtlid="37923">Ajouter</translation>
+   <translation id="telephony_line_answer_voicemail_options_mail_add_confirm" qtlid="37923">Añadir</translation>
    <translation id="telephony_line_answer_voicemail_options_mail_cancel" qtlid="37863">Cancelar</translation>
    <translation id="telephony_line_answer_voicemail_options_mail" qtlid="69509">E-mail</translation>
    <translation id="telephony_line_answer_voicemail_options_mail_title" qtlid="337975">Adresses e-mail à notifier</translation>

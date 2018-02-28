@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <translations>
-   <translation id="telephony_line_details_global_info_title" qtlid="387341">Informations sur la ligne {{id}}</translation>
+   <translation id="telephony_line_details_global_info_title">Informations sur la ligne</translation>
+   <translation id="telephony_line_details_service_name_label">Numéro</translation>
    <translation id="telephony_line_details_label" qtlid="359475">Intitulé de la ligne</translation>
    <translation id="telephony_line_details_country" qtlid="359488">Pays / Code pays</translation>
    <translation id="telephony_line_details_next_bill" qtlid="359501">Prochaine facturation</translation>
-   <translation id="telephony_line_details_silmutaneous_call" qtlid="303718">Appels simultanés</translation>
+   <translation id="telephony_line_details_simultaneous_call" qtlid="303718">Appels simultanés</translation>
+   <translation id="telephony_line_details_simultaneous_call_details">(dont {{extra}} en option et {{toBeDeleted}} en attente de résiliation)</translation>
+   <translation id="telephony_line_details_offer" qtlid="303718">Appels simultanés</translation>
 
    <translation id="telephony_line_details_global_group_title" qtlid="59627">Information for the group</translation>
    <translation id="telephony_line_details_group_label" qtlid="9238">Description</translation>
@@ -29,4 +32,5 @@
    <translation id="telephony_line_details_sip_last_rec_info" qtlid="359605">Un enregistrement sur le réseau est valable durant une heure.</translation>
    <translation id="telephony_line_details_sip_ip_local" qtlid="359618">Ip / port local</translation>
    <translation id="telephony_line_details_sip_ip_public" qtlid="359631">Ip / port publique</translation>
+
 </translations>

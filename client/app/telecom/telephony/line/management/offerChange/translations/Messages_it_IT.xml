@@ -26,4 +26,10 @@
    <translation id="telephony_line_management_change_offer_change_pending_cancel_confirm" qtlid="359904">Vuoi davvero annullare la modifica dell'offerta?</translation>
    <translation id="telephony_line_management_change_offer_change_pending_cancel_doing" qtlid="359917">Annullamento modifica dell'offerta in corso...</translation>
    <translation id="telephony_line_management_change_offer_change_pending_cancel_error" qtlid="359930">Ops! Si è verificato un errore durante l'annullamento della modifica dell'offerta.</translation>
+
+   <translation id="telephony_line_management_change_offer_bulk_all_success">Le changement d'offre a bien été appliqué aux services sélectionnés.</translation>
+   <translation id="telephony_line_management_change_offer_bulk_some_success">Le changement d'offre a bien été appliqué à {{ count }} des services sélectionnés.</translation>
+   <translation id="telephony_line_management_change_offer_bulk_error">Le changement d'offre n'a pu êtr appliquée au(x) service(s) suivant(s) :</translation>
+   <translation id="telephony_line_management_change_offer_bulk_on_error">Oups ! Une erreur est survenue lors du changement d'offre.</translation>
+
 </translations>

@@ -35,7 +35,7 @@
    <translation id="telephony_order_identity_email" qtlid="393022">Courriel</translation>
    <translation id="telephony_order_identity_phone" qtlid="34174">Telefon</translation>
 
-   <translation id="telephony_order_identity_organisation" qtlid="49022">Enterprise</translation>
+   <translation id="telephony_order_identity_organisation" qtlid="49022">Unternehmen</translation>
    <translation id="telephony_order_identity_ape" qtlid="333789">Code APE</translation>
    <translation id="telephony_order_identity_siret" qtlid="333802">Siret</translation>
    <translation id="telephony_order_identity_nomination" qtlid="307709">Dénomination sociale</translation>
@@ -49,7 +49,7 @@
    <translation id="telephony_order_coordinate_universalDirectory_tip" qtlid="333880">Cochez la case pour une publication dans l'annuaire.</translation>
    <translation id="telephony_order_coordinate_universalDirectory" qtlid="333893">Publiez les coordonnées dans l'annuaire.</translation>
    <translation id="telephony_order_coordinate_legalform_individual" qtlid="33850">Privatperson</translation>
-   <translation id="telephony_order_coordinate_legalform_company" qtlid="49022">Enterprise</translation>
+   <translation id="telephony_order_coordinate_legalform_company" qtlid="49022">Unternehmen</translation>
 
    <translation id="telephony_order_number_type_common_label" qtlid="333906">Numéro standard</translation>
    <translation id="telephony_order_number_type_specific_label" qtlid="333919">Numéro facile à retenir</translation>

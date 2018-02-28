@@ -2,7 +2,7 @@
 <translations>
    <translation id="sms_section_back_link" qtlid="341186">Volver a los SMS</translation>
    <translation id="sms_sms_templates_title" qtlid="342070">Modelos de mensajes</translation>
-   <translation id="sms_sms_templates_title_informations" qtlid="26551">Datos</translation>
+   <translation id="sms_sms_templates_title_informations" qtlid="26551">Información</translation>
    <translation id="sms_sms_templates_informations_text_1" qtlid="342083">Para enviar SMS a Estados Unidos, es necesario validar modelos de mensajes previamente.</translation>
    <translation id="sms_sms_templates_informations_text_2" qtlid="342096">Solo están autorizados los mensajes transaccionales, de alerta y de doble autenticación, y no se aceptará ningún modelo de SMS publicitario.</translation>
    <translation id="sms_sms_templates_informations_text_3" qtlid="342109">Una vez creados los modelos, los SMS se enviarán de la misma forma que para los demás países, ya que la búsqueda de compatibilidad con un modelo es totalmente automática.</translation>
@@ -37,7 +37,7 @@
    <translation id="sms_sms_templates_add_description_placeholder" qtlid="342330">Descripción (obligatorio)</translation>
    <translation id="sms_sms_templates_add_name_label" qtlid="342343">Nombre&#160;(obligatorio)</translation>
    <translation id="sms_sms_templates_add_name_placeholder" qtlid="342356">Nombre (obligatorio)</translation>
-   <translation id="sms_sms_templates_add_name_error_maxlength" qtlid="395011">Le nom doit faire moins de 249 caractères</translation>
+   <translation id="sms_sms_templates_add_name_error_maxlength" qtlid="395011">El nombre debe contener menos de 249 caracteres.</translation>
    <translation id="sms_sms_templates_add_message_label" qtlid="342369">Modelo (obligatorio)</translation>
    <translation id="sms_sms_templates_add_message_placeholder" qtlid="342382">Modelo (obligatorio)</translation>
    <translation id="sms_sms_templates_add_message_error_maxlength" qtlid="342395">El modelo debe debe tener menos de 249 caracteres.</translation>

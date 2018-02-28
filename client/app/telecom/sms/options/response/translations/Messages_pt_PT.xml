@@ -33,14 +33,14 @@
    <translation id="sms_options_response_tracking_title" qtlid="346144">Notification à la réception</translation>
    <translation id="sms_options_response_tracking_media_label" qtlid="28543">Média</translation>
    <translation id="sms_options_response_tracking_email_number_label" qtlid="346157">Adresse email / Numéro</translation>
-   <translation id="sms_options_response_tracking_email_sender_label" qtlid="346170">Expéditeur&#160;:&#160;{{ sender }}</translation>
+   <translation id="sms_options_response_tracking_email_sender_label">Expéditeur</translation>
    <translation id="sms_options_response_tracking_empty" qtlid="346183">Aucune notification configurée.</translation>
    <translation id="sms_options_response_tracking_add" qtlid="346196">Ajouter une notification</translation>
 
 <!-- TRACKING modal ADD -->
    <translation id="sms_options_response_tracking_add_title" qtlid="346209">Ajout d’une notification</translation>
    <translation id="sms_options_response_tracking_add_media_label" qtlid="28543">Média</translation>
-   <translation id="sms_options_response_tracking_add_media_email" qtlid="33598">Email</translation>
+   <translation id="sms_options_response_tracking_add_media_email" qtlid="33598">E-mail</translation>
    <translation id="sms_options_response_tracking_add_media_sms" qtlid="28243">SMS</translation>
    <translation id="sms_options_response_tracking_add_sender_email_label" qtlid="24535">Remetente</translation>
    <translation id="sms_options_response_tracking_add_sender_email_error_required" qtlid="346222">Le champ "Expéditeur" est obligatoire</translation>

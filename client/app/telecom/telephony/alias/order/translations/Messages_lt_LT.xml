@@ -32,7 +32,7 @@
 
    <translation id="telephony_order_identity_first_name" qtlid="23323">Vardas</translation>
    <translation id="telephony_order_identity_name" qtlid="3818">Pavadinimas</translation>
-   <translation id="telephony_order_identity_email" qtlid="393022">Courriel</translation>
+   <translation id="telephony_order_identity_email" qtlid="393022">Paštas</translation>
    <translation id="telephony_order_identity_phone" qtlid="34174">Telefono numeris</translation>
 
    <translation id="telephony_order_identity_organisation" qtlid="49022">Entreprise</translation>
@@ -54,7 +54,7 @@
    <translation id="telephony_order_number_type_common_label" qtlid="333906">Standartinis numeris</translation>
    <translation id="telephony_order_number_type_specific_label" qtlid="333919">Lengvai įsimenamas numeris</translation>
 
-   <translation id="telephony_order_retractation_retract_true" qtlid="393035">Vous souhaitez disposer de la possibilité d'exercer votre droit de rétractation et acceptez qu'à ce titre le début de la prestation n'intervienne qu'à expiration de ce delai.<strong> Mise à disposition du service sous 14 jours</strong>.</translation>
+   <translation id="telephony_order_retractation_retract_true" qtlid="393035">Norite išsaugoti atsisakymo teisę ir sutinkate, kad ji galios tik nustatytą terminą.<strong> Paslaugos suteikimas trunka iki 14 dienų</strong>.</translation>
    <translation id="telephony_order_retractation_retract_false" qtlid="333945">Norite <strong>neatidėlioto vykdymo</strong> ir sutinkate, kad nebus taikoma teisė atsisakyti paslaugos, kaip tai numatyta vartotojų kodekso 121-20-2 straipsnyje.</translation>
 
    <translation id="telephony_order_amount_title" qtlid="333412">Numerių kiekis:</translation>

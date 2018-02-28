@@ -13,5 +13,5 @@
    <translation id="telecom_orders_follow_up_header_step" qtlid="5438">Step</translation>
    <translation id="telecom_orders_follow_up_header_state" qtlid="8230">Status</translation>
    <translation id="telecom_orders_follow_up_items_per_view" qtlid="305304">Items per page </translation>
-   <translation id="telecom_orders_follow_up_no_orders" qtlid="305317">You currently have no ongoing orders.</translation>
+   <translation id="telecom_orders_follow_up_no_orders">Actuellement vous n'avez pas de commandes en cours.</translation>
 </translations>

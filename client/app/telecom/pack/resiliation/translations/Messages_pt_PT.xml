@@ -11,7 +11,7 @@
    <translation id="pack_resiliation_cancel_really" qtlid="385585">Vous êtes sur le point d'annuler votre demande de résiliation. Souhaitez-vous continuer ?</translation>
    <translation id="pack_resiliation_mail" qtlid="310946">Un e-mail de confirmation va vous être envoyé. Cet e-mail contient le bon de retour à joindre dans le colis de retour du modem.</translation>
 
-   <translation id="pack_resiliation_button" qtlid="48646">Rescindir</translation>
+   <translation id="pack_resiliation_button" qtlid="48646">Cancelar</translation>
    <translation id="pack_resiliation_confirm" qtlid="313325">Je résilie</translation>
    <translation id="pack_resiliation_confirm_title" qtlid="313338">Résiliation de mon abonnement</translation>
    <translation id="pack_resiliation_infos" qtlid="385598">La résiliation se fait via cette page. Vous avez la possibilité de conserver certains des produits liés à votre pack. Nul besoin de nous envoyer une procédure papier. Vous recevrez un e-mail à la suite de votre demande de résiliation.</translation>

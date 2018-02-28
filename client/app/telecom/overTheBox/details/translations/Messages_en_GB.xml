@@ -33,6 +33,7 @@
    <translation id="overTheBox_bandwidth" qtlid="89749">Debit</translation>
    <translation id="overTheBox_publicIp" qtlid="317711">Public IP address:</translation>
    <translation id="overTheBox_deviceId" qtlid="317724">Device ID:</translation>
+   <translation id="overTheBox_deviceId_button_title">Identifiant du périphérique :</translation>
    <translation id="overTheBox_device_state" qtlid="317737">Device status:</translation>
    <translation id="overTheBox_expiration_date" qtlid="317750">Next invoice:</translation>
    <translation id="overTheBox_billing_date" qtlid="317750">Next invoice:</translation>
@@ -80,4 +81,6 @@
    <translation id="overTheBox_resiliation_success" qtlid="395752">Le service {{service}} sera résilié le {{date}}.</translation>
    <translation id="overTheBox_resiliation_cancel_error" qtlid="395765">Oups ! Nous n'avons pas pu annuler la résiliation en cours du service {{service}}.</translation>
    <translation id="overTheBox_cancel_resiliation_success" qtlid="395778">La résiliation de votre service {{service}} vient d'être annulée.</translation>
+
+   <translation id="overTheBox_statistics_bits_per_sec_legend">bits/s</translation>
 </translations>

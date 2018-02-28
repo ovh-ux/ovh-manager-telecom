@@ -10,7 +10,7 @@
    <translation id="telephony_alias_members_status" qtlid="26443">Stato</translation>
    <translation id="telephony_alias_members_status_available" qtlid="99920">Disponibile</translation>
    <translation id="telephony_alias_members_status_onBreak" qtlid="397156">In pausa</translation>
-   <translation id="telephony_alias_members_status_loggedOut" qtlid="77154">Disconnettersi</translation>
+   <translation id="telephony_alias_members_status_loggedOut" qtlid="77154">Disconnesso</translation>
    <translation id="telephony_alias_members_timeout_val" qtlid="397169">Tempo di attesa: {{ timeout }} sec.</translation>
    <translation id="telephony_alias_members_wrap_up_time_val" qtlid="397182">Riposo: {{ time }} sec.</translation>
    <translation id="telephony_alias_members_simultaneous_lines_val" qtlid="397195">Chiamate simultanee: {{ count }}</translation>
@@ -23,4 +23,5 @@
    <translation id="telephony_alias_members_number_add" qtlid="397234">Aggiungi un altro numero</translation>
    <translation id="telephony_alias_members_add" qtlid="392502">Aggiungi un membro</translation>
    <translation id="telephony_alias_members_add_multiple" qtlid="397247">Aggiungi {{ count }} membri</translation>
+   <translation id="telephony_alias_members_explanation">Pour chaque membre, vous pouvez définir sa position, le nombre d'appels simultanés, le délai durant lequel il sonne et le délai de repos avant la présentation d'un nouvel appel suite à un appel terminé.</translation>
 </translations>

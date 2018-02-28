@@ -16,7 +16,7 @@
 
    <translation id="telecom_dashboard_task_title" qtlid="305005">Mes tâches</translation>
 
-   <translation id="telecom_dashboard_FAQ_title" qtlid="300370">Průvodci</translation>
+   <translation id="telecom_dashboard_FAQ_title" qtlid="300370">Příručky</translation>
    <translation id="telecom_dashboard_FAQ_Activate" qtlid="305018">Activation de mes services</translation>
    <translation id="telecom_dashboard_FAQ_managed_modem" qtlid="305031">Configurer mon modem</translation>
    <translation id="telecom_dashboard_FAQ_init_modem" qtlid="305044">Réinitialiser mon modem</translation>
@@ -42,6 +42,7 @@
    <translation id="telecom_dashboard_services_incidents_other" qtlid="305187">incidents détectés</translation>
 
    <translation id="telecom_dashboard_auth_failed" qtlid="305200">Impossible de récupérer les informations de l'utilisateur.</translation>
+   <translation id="telecom_dashboard_express_lite_desc">Express Lite comprend donc un modem offrant un accès à internet et une ligne VoIP pour <span class="ad-price font-weight-bold fs14">22,99€ HT</span>&#160;/&#160;mois.</translation>
    <translation id="telecom_dashboard_express_lite_title" qtlid="304888">OVH lance une nouvelle offre de connexion ADSL et VDSL incluant l'essentiel.</translation>
    <translation id="telecom_dashboard_discover" qtlid="304927">Découvrir l'offre</translation>
 </translations>

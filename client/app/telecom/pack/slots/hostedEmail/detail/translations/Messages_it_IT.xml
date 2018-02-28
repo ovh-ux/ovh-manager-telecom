@@ -12,7 +12,7 @@
    <translation id="hosted_email_detail_webmail" qtlid="384337">URL del server Webmail</translation>
    <translation id="hosted_email_detail_client_configuration" qtlid="384350">Configurazione client email</translation>
    <translation id="hosted_email_detail_open_webmail" qtlid="384363">Apri il client Webmail</translation>
-   <translation id="hosted_email_detail_type" qtlid="48938">Tipo di conto</translation>
+   <translation id="hosted_email_detail_type" qtlid="48938">Tipologia di account</translation>
 
    <translation id="hosted_email_detail_quota_value" qtlid="384376">{{value}} {{valueUnit}}/{{total}} {{totalUnit}}</translation>
    <translation id="hosted_email_detail_quota" qtlid="6874">Quota</translation>
@@ -26,30 +26,36 @@
    <translation id="hosted_email_detail_host" qtlid="2678">Host</translation>
    <translation id="hosted_email_detail_ip" qtlid="26191">Indirizzo IP</translation>
    <translation id="hosted_email_detail_port" qtlid="384389">porta</translation>
-   <translation id="hosted_email_detail_smtp_auth" qtlid="384402">Authentification SMTP</translation>
-   <translation id="hosted_email_detail_start_tls" qtlid="384415">Chiffrement TLS</translation>
+   <translation id="hosted_email_detail_smtp_auth" qtlid="384402">Autenticazione SMTP</translation>
+   <translation id="hosted_email_detail_start_tls" qtlid="384415">Crittografia TLS</translation>
 
-   <translation id="hosted_email_detail_av" qtlid="384428">Anti-Virus</translation>
-   <translation id="hosted_email_detail_as" qtlid="384441">Anti-Spam</translation>
+   <translation id="hosted_email_detail_av" qtlid="384428">Antivirus</translation>
+   <translation id="hosted_email_detail_as" qtlid="384441">Antispam</translation>
 
-   <translation id="hosted_email_detail_exchange_25g" qtlid="384454">Exchange 25Go</translation>
+   <translation id="hosted_email_detail_exchange_25g" qtlid="384454">Exchange 25 GB</translation>
    <translation id="hosted_email_detail_exchange_1g" qtlid="384467">Exchange 1 GB</translation>
    <translation id="hosted_email_detail_exchange_2013" qtlid="384480">Exchange 2013</translation>
    <translation id="hosted_email_detail_exchange_standard_1g" qtlid="384467">Exchange 1 GB</translation>
    <translation id="hosted_email_detail_exchange_basic_1g" qtlid="384467">Exchange 1 GB</translation>
-   <translation id="hosted_email_detail_exchange_standard" qtlid="384454">Exchange 25Go</translation>
+   <translation id="hosted_email_detail_exchange_standard" qtlid="384454">Exchange 25 GB</translation>
    <translation id="hosted_email_detail_hostedemail_individual" qtlid="384493">Hosted 25 GB</translation>
 
-   <translation id="hosted_email_detail_server_smtp" qtlid="384506">Serveur courrier sortant (SMTP)</translation>
-   <translation id="hosted_email_detail_server_smtps" qtlid="384519">Serveur courrier sortant (SMTPS)</translation>
-   <translation id="hosted_email_detail_server_imap" qtlid="384532">Serveur courrier entrant (IMAP)</translation>
-   <translation id="hosted_email_detail_server_imaps" qtlid="384545">Serveur courrier entrant (IMAPS)</translation>
-   <translation id="hosted_email_detail_server_pop3" qtlid="384558">Serveur courrier entrant (POP3)</translation>
-   <translation id="hosted_email_detail_server_pop3s" qtlid="384571">Serveur courrier entrant (POP3S)</translation>
-   <translation id="hosted_email_detail_server_submission" qtlid="384584">Serveur Submission</translation>
+   <translation id="hosted_email_detail_server_smtp" qtlid="384506">Server di posta in uscita (SMTP)</translation>
+   <translation id="hosted_email_detail_server_smtps" qtlid="384519">Server di posta in uscita (SMTPS)</translation>
+   <translation id="hosted_email_detail_server_imap" qtlid="384532">Server di posta in entrata (IMAP)</translation>
+   <translation id="hosted_email_detail_server_imaps" qtlid="384545">Server di posta in entrata (IMAPS)</translation>
+   <translation id="hosted_email_detail_server_pop3" qtlid="384558">Server di posta in entrata (POP3)</translation>
+   <translation id="hosted_email_detail_server_pop3s" qtlid="384571">Server di posta in entrata (POP3S)</translation>
+   <translation id="hosted_email_detail_server_submission" qtlid="384584">Server Submission</translation>
 
    <translation id="hosted_email_detail_change_password_rule_size" qtlid="384597">Deve contenere tra 8 e 20 caratteri</translation>
    <translation id="hosted_email_detail_change_password_rule_special" qtlid="384610">Deve contenere cifre, lettere non accentate o {{list}}</translation>
    <translation id="hosted_email_detail_client_change_password_submit" qtlid="8434">Modificare la password</translation>
    <translation id="hosted_email_detail_client_change_password_label" qtlid="17177">Nuova password</translation>
+
+   <translation id="hosted_email_detail_client_delete_account">Supprimer le compte</translation>
+   <translation id="hosted_email_detail_client_delete_account_warning">Attention ! En supprimant votre compte, l'ensemble des messages qu'il contient seront <strong>définitivement</strong> supprimés. Aucune procédure de récupération des données ne sera possible après cette suppression.</translation>
+   <translation id="hosted_email_detail_client_delete_account_confirm">Confirmer la suppression</translation>
+   <translation id="hosted_email_detail_client_delete_account_success">Votre compte {{email}} est en cours de suppression.</translation>
+   <translation id="hosted_email_detail_client_delete_account_error">Oups ! La suppression du compte a échoué.</translation>
 </translations>

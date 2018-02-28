@@ -15,7 +15,7 @@
    <translation id="telephony_group_line_calls_click2call_call_title" qtlid="334803">Appel Click2Call</translation>
    <translation id="telephony_group_line_calls_click2call_call_number_to_call_label" qtlid="334816">Numéro à appeler&#160;:&#160;</translation>
    <translation id="telephony_group_line_calls_click2call_call_number_to_call_placeholder" qtlid="334829">Entrez ici le numéro à appeler</translation>
-   <translation id="telephony_group_line_calls_click2call_call_do_call_label" qtlid="334842">Appeler</translation>
+   <translation id="telephony_group_line_calls_click2call_call_do_call_label" qtlid="334842">Call</translation>
 
    <translation id="telephony_group_line_calls_click2call_call_do_ok" qtlid="334855">L'appel est en cours sur la ligne {{serviceName}}.</translation>
    <translation id="telephony_group_line_calls_click2call_call_do_ko" qtlid="334868">Echec de l'appel.</translation>

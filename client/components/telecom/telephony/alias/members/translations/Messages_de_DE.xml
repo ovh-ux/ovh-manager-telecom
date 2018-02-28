@@ -21,6 +21,7 @@
    <translation id="telephony_alias_members_number" qtlid="30778">Nummer</translation>
    <translation id="telephony_alias_members_number_placeholder" qtlid="397221">Numéro au format international</translation>
    <translation id="telephony_alias_members_number_add" qtlid="397234">Ajouter un autre numéro</translation>
-   <translation id="telephony_alias_members_add" qtlid="392502">Ajouter un membre</translation>
+   <translation id="telephony_alias_members_add" qtlid="392502">Teilnehmer hinzufügen</translation>
    <translation id="telephony_alias_members_add_multiple" qtlid="397247">Ajouter {{ count }} membres</translation>
+   <translation id="telephony_alias_members_explanation">Pour chaque membre, vous pouvez définir sa position, le nombre d'appels simultanés, le délai durant lequel il sonne et le délai de repos avant la présentation d'un nouvel appel suite à un appel terminé.</translation>
 </translations>

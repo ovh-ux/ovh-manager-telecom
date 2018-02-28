@@ -19,9 +19,14 @@
 
 
    <translation id="telephony_line_actions_line_calls_forward_fax" qtlid="32926">Fax</translation>
-   <translation id="telephony_line_actions_line_calls_forward_number" qtlid="34174">Telephone</translation>
+   <translation id="telephony_line_actions_line_calls_forward_number" qtlid="34174">Phone</translation>
    <translation id="telephony_line_actions_line_calls_forward_voicemail" qtlid="88956">Answering machine</translation>
    <translation id="telephony_line_actions_line_calls_forward_external" qtlid="335973">Numéro hors OVH</translation>
 
    <translation id="telephony_line_actions_line_calls_forward_time_range" qtlid="335986">Valeur comprise entre 5 et 60</translation>
+
+   <translation id="telephony_line_actions_line_calls_forward_bulk_all_success">La modification du renvoi d'appel a bien été appliquée aux services sélectionnés</translation>
+   <translation id="telephony_line_actions_line_calls_forward_bulk_some_success">La modification du renvoi d'appel a bien été appliquée à {{ count }} des services sélectionnés</translation>
+   <translation id="telephony_line_actions_line_calls_forward_bulk_error">La modification du renvoi d'appel n'a pu être appliquée au(x) service(s) suivant(s) :</translation>
+   <translation id="telephony_line_actions_line_calls_forward_bulk_on_error">Oups ! Une erreur est survenue lors de la modification du renvoi d'appel</translation>
 </translations>

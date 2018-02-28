@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <translations>
-   <translation id="telephony_alias_configuration_members_back_link" qtlid="332866">Retour à la configuration</translation>
-   <translation id="telephony_alias_configuration_members_title" qtlid="356810">Gérer les membres</translation>
-   <translation id="telephony_alias_configuration_members_list" qtlid="392489">Liste des membres</translation>
-   <translation id="telephony_alias_configuration_members_add" qtlid="392502">Ajouter un membre</translation>
+   <translation id="telephony_alias_configuration_members_title" qtlid="356810">Teilnehmer verwalten</translation>
+   <translation id="telephony_alias_configuration_members_list" qtlid="392489">Teilnehmerliste</translation>
+   <translation id="telephony_alias_configuration_members_add" qtlid="392502">Teilnehmer hinzufügen</translation>
 </translations>

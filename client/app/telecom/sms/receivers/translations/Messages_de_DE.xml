@@ -9,7 +9,7 @@
 
    <translation id="sms_receivers_sr_only_actions" qtlid="72809">Aktionen</translation>
 
-   <translation id="sms_receivers_action_read" qtlid="339639">Consulter</translation>
+   <translation id="sms_receivers_action_read" qtlid="339639">Einsehen</translation>
    <translation id="sms_receivers_action_clean" qtlid="339652">Nettoyer</translation>
    <translation id="sms_receivers_action_export" qtlid="39286">Herunterladen</translation>
 
@@ -54,7 +54,7 @@
    <translation id="sms_receivers_edit_receiver_edited" qtlid="339899">Liste des destinataires mise à jour&#160;!&#160;</translation>
    <translation id="sms_receivers_edit_receiver_ko" qtlid="394907">Impossible d’éditer la liste de destinataires.<br/>{{error}}</translation>
 
-   <translation id="sms_receivers_read_receiver_title" qtlid="339639">Consulter</translation>
+   <translation id="sms_receivers_read_receiver_title" qtlid="339639">Einsehen</translation>
    <translation id="sms_receivers_read_receiver_title_list" qtlid="339912">Nom de la liste&#160;:&#160;</translation>
    <translation id="sms_receivers_read_receiver_truncate_text" qtlid="339925">Consultation des 10 premiers contacts sur {{ receivers }}.</translation>
    <translation id="sms_receivers_read_receiver_export" qtlid="69881">Exportieren</translation>

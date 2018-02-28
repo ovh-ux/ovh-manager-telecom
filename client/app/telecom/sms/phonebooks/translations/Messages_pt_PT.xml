@@ -30,7 +30,7 @@
    <translation id="sms_phonebooks_phonebook_contact_title" qtlid="73073">Gestão dos contactos</translation>
    <translation id="sms_phonebooks_phonebook_contact_column_surname" qtlid="3818">Nome</translation>
    <translation id="sms_phonebooks_phonebook_contact_column_name" qtlid="23323">Nome</translation>
-   <translation id="sms_phonebooks_phonebook_contact_column_group" qtlid="33298">Sociedade</translation>
+   <translation id="sms_phonebooks_phonebook_contact_column_group" qtlid="33298">Empresa</translation>
    <translation id="sms_phonebooks_phonebook_contact_column_home_phone" qtlid="394062">Fixe <small>(domicile)</small></translation>
    <translation id="sms_phonebooks_phonebook_contact_column_home_mobile" qtlid="394075">Mobile <small>(domicile)</small></translation>
    <translation id="sms_phonebooks_phonebook_contact_column_work_phone" qtlid="394088">Fixe <small>(professionnel)</small></translation>
@@ -39,12 +39,11 @@
    <translation id="sms_phonebooks_phonebook_contact_column_home_mobile_title" qtlid="394127">Mobile (domicile)</translation>
    <translation id="sms_phonebooks_phonebook_contact_column_work_phone_title" qtlid="394140">Fixe (professionnel)</translation>
    <translation id="sms_phonebooks_phonebook_contact_column_work_mobile_title" qtlid="394153">Mobile (professionnel)</translation>
-   <translation id="sms_phonebooks_phonebook_contact_loading" qtlid="301695">Carregamento em curso…</translation>
    <translation id="sms_phonebooks_phonebook_contact_empty" qtlid="97964">Não foi encontrado nenhum contacto.</translation>
    <translation id="sms_phonebooks_phonebook_contact_ko" qtlid="394166">Oups ! Impossible de récupérer la liste des contacts.</translation>
 
 <!-- PHONEBOOK CONTACT CREATE -->
-   <translation id="sms_phonebooks_phonebook_contact_create" qtlid="57836">Adicionar um contacto</translation>
+   <translation id="sms_phonebooks_phonebook_contact_create" qtlid="57836">Adicionar contacto</translation>
    <translation id="sms_phonebooks_phonebook_contact_create_surname_placeholder" qtlid="394179">Nom (champ requis)</translation>
    <translation id="sms_phonebooks_phonebook_contact_create_surname_error_required" qtlid="394192">Le champ "Nom" est obligatoire.</translation>
    <translation id="sms_phonebooks_phonebook_contact_create_surname_error_maxlength" qtlid="394205">Le nom du contact doit faire moins de 246 caractères.</translation>

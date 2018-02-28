@@ -11,7 +11,7 @@
    <translation id="pack_xdsl_avalaibleSlot_0" qtlid="308502">Vous avez consommé tout vos {{packType}} sur ce pack</translation>
    <translation id="pack_xdsl_avalaibleSlot_1" qtlid="308515">{{avalaible}} de disponible</translation>
    <translation id="pack_xdsl_avalaibleSlot_n" qtlid="308528">{{avalaible}} de disponibles</translation>
-   <translation id="pack_xdsl_access_services_0" qtlid="308541">Aucun accès</translation>
+   <translation id="pack_xdsl_access_services_0" qtlid="308541">Kein Zugriff</translation>
    <translation id="pack_xdsl_access_description" qtlid="9238">Beschreibung</translation>
    <translation id="pack_xdsl_access_type" qtlid="2642">Typ</translation>
    <translation id="pack_xdsl_access_accessName" qtlid="46792">Kennung</translation>
@@ -49,7 +49,7 @@
    <translation id="manage_my_pack" qtlid="308749">Gérer mon pack</translation>
    <translation id="account" qtlid="308762">compte</translation>
    <translation id="size" qtlid="308775">taille</translation>
-   <translation id="move" qtlid="308788">Déménager</translation>
+   <translation id="move" qtlid="308788">Transfer</translation>
    <translation id="pack_xdsl_information_associated_line" qtlid="384753">Ligne associée</translation>
 
 
@@ -63,7 +63,7 @@
    <translation id="pack_xdsl_engaged_date" qtlid="308866">Engagé jusqu'au</translation>
    <translation id="pack_xdsl_not_engaged" qtlid="384766">Vous n'êtes plus engagé</translation>
    <translation id="pack_xdsl_resiliation_date" qtlid="384779">Date de résiliation</translation>
-   <translation id="pack_xdsl_pack_link_address" qtlid="308879">Adresse de raccordement</translation>
+   <translation id="pack_xdsl_pack_link_address" qtlid="308879">Anschlussadresse</translation>
 
    <translation id="still_pending" qtlid="308892">en cours de création</translation>
 
@@ -71,7 +71,7 @@
    <translation id="account_name" qtlid="33598">E-Mail</translation>
    <translation id="password" qtlid="2270">Passwort</translation>
    <translation id="password_confirmation" qtlid="9983">Bestätigen</translation>
-   <translation id="all_fields_are_required">Tous les champs sont obligatoires</translation>
+   <translation id="all_fields_are_required" qtlid="297579">Alle Felder sind obligatorisch</translation>
    <translation id="required_fields_are_tag_with_a_star" qtlid="342793">&#160;Les champs obligatoires sont signalés par un astérisque</translation>
    <translation id="in_validation" qtlid="308931">Votre demande est en cours</translation>
    <translation id="security_level" qtlid="308944">Niveau de sécurité</translation>
@@ -106,5 +106,5 @@
 
    <translation id="pack_offer_migration" qtlid="25783">Upgraden</translation>
 
-   <translation id="pack_xdsl_oops_an_error_is_occured" qtlid="384805">Oups ! Nous n'avons pas pu récupérer les information relatives à votre pack.</translation>
+   <translation id="pack_xdsl_oops_an_error_is_occured">Oups ! Nous n'avons pas pu récupérer les informations relatives à votre pack.</translation>
 </translations>

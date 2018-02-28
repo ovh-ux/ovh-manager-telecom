@@ -7,7 +7,7 @@
    <translation id="telephony_line_management_change_offer_informations_next_billing" qtlid="359735">Prochaine facturation :</translation>
    <translation id="telephony_line_management_change_offer_informations_offer" qtlid="359748">Offre actuelle :</translation>
 
-   <translation id="telephony_line_management_change_offer_change_button" qtlid="359761">Modifier l'offre</translation>
+   <translation id="telephony_line_management_change_offer_change_button" qtlid="359761">Modify your solution</translation>
    <translation id="telephony_line_management_change_offer_change_edit_title" qtlid="359774">Modification de l'offre</translation>
    <translation id="telephony_line_management_change_offer_change_edit_available_offers" qtlid="359787">Offres disponibles</translation>
    <translation id="telephony_line_management_change_offer_change_edit_selected_price" qtlid="83913">Price</translation>
@@ -26,4 +26,10 @@
    <translation id="telephony_line_management_change_offer_change_pending_cancel_confirm" qtlid="359904">Etes-vous sûr de vouloir annuler ce changement d'offre ?</translation>
    <translation id="telephony_line_management_change_offer_change_pending_cancel_doing" qtlid="359917">Annulation du changement d'offre en cours...</translation>
    <translation id="telephony_line_management_change_offer_change_pending_cancel_error" qtlid="359930">Oups ! Une erreur est survenue lors de l'annulation du changement d'offre.</translation>
+
+   <translation id="telephony_line_management_change_offer_bulk_all_success">Le changement d'offre a bien été appliqué aux services sélectionnés.</translation>
+   <translation id="telephony_line_management_change_offer_bulk_some_success">Le changement d'offre a bien été appliqué à {{ count }} des services sélectionnés.</translation>
+   <translation id="telephony_line_management_change_offer_bulk_error">Le changement d'offre n'a pu êtr appliquée au(x) service(s) suivant(s) :</translation>
+   <translation id="telephony_line_management_change_offer_bulk_on_error">Oups ! Une erreur est survenue lors du changement d'offre.</translation>
+
 </translations>

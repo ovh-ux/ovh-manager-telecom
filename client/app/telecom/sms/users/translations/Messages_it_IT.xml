@@ -20,7 +20,7 @@
    <translation id="sms_users_action_quota" qtlid="6874">Quota</translation>
    <translation id="sms_users_action_limit" qtlid="33562">Limite</translation>
    <translation id="sms_users_action_restriction_ip" qtlid="338729">Restrizioni IP per http2sms</translation>
-   <translation id="sms_users_action_restriction_ip_label" qtlid="393191">Restrictions</translation>
+   <translation id="sms_users_action_restriction_ip_label" qtlid="393191">Restrizioni</translation>
    <translation id="sms_users_action_url_callback" qtlid="338742">URL di callback</translation>
    <translation id="sms_users_action_url_callback_label" qtlid="393204">Callback</translation>
 
@@ -33,45 +33,47 @@
    <translation id="sms_users_add_user_password_label" qtlid="334894">Password:&#160;</translation>
    <translation id="sms_users_add_user_password_placeholder" qtlid="2270">Password</translation>
    <translation id="sms_users_add_user_password_required" qtlid="334946">Il campo "Password" è obbligatorio.</translation>
-   <translation id="sms_users_add_user_password_error_minlength" qtlid="338807">Il campo "Password" deve essere composto da 8 caratteri alfanumerici.</translation>
-   <translation id="sms_users_add_user_adding" qtlid="393217">Ajout de l’utilisateur…</translation>
+   <translation id="sms_users_add_user_password_error_pattern">Le champ "mot de passe" doit être composé de 8 caractères alphanumériques.</translation>
+   <translation id="sms_users_add_user_adding" qtlid="393217">Aggiunta dell'utente...</translation>
    <translation id="sms_users_add_user_added" qtlid="334933">Utente aggiunto!&#160;</translation>
    <translation id="sms_users_add_user_ko" qtlid="338846">Impossibile creare l’utente <br/>{{error}}</translation>
 
-   <translation id="sms_users_templates_title" qtlid="393230">Personnalisation des alertes</translation>
-   <translation id="sms_users_templates_customized_email_mode_label" qtlid="393243">Alertes e-mails</translation>
-   <translation id="sms_users_templates_email_from_label" qtlid="393256">Émetteur de l’e-mail&#160;:</translation>
-   <translation id="sms_users_templates_email_from_placeholder" qtlid="393269">Adresse e-mail (champ requis).</translation>
-   <translation id="sms_users_templates_email_from_error_required" qtlid="393282">Le champ "Adresse e-mail" est obligatoire.</translation>
-   <translation id="sms_users_templates_email_from_error_email" qtlid="393295">Merci de renseigner une adresse e-mail valide.</translation>
-   <translation id="sms_users_templates_email_subject_label" qtlid="393308">Objet&#160;</translation>
-   <translation id="sms_users_templates_email_subject_placeholder" qtlid="393321">Objet de l’e-mail (champ requis).</translation>
-   <translation id="sms_users_templates_email_subject_error_required" qtlid="393334">Le champ "Objet de l’e-mail" est obligatoire.</translation>
-   <translation id="sms_users_templates_email_body_label" qtlid="393347">Corps de l’e-mail (champ requis).</translation>
-   <translation id="sms_users_templates_email_body_placeholder" qtlid="393347">Corps de l’e-mail (champ requis).</translation>
-   <translation id="sms_users_templates_email_body_error_required" qtlid="393360">Le champ "Corps de l’e-mail" est obligatoire.</translation>
-   <translation id="sms_users_templates_customized_sms_mode_label" qtlid="393373">Alertes SMS</translation>
-   <translation id="sms_users_templates_sms_body_label" qtlid="393386">Contenu du SMS&#160;</translation>
-   <translation id="sms_users_templates_sms_body_placeholder" qtlid="393399">Contenu du SMS (champ requis).</translation>
-   <translation id="sms_users_templates_sms_body_error_required" qtlid="393412">Le champ "Contenu du SMS" est obligatoire.</translation>
-   <translation id="sms_users_templates_sms_body_error_maxlength" qtlid="393425">Vous avez dépassé la limite des <b>{{ maxlenght }}</b> caractères.</translation>
+   <translation id="sms_users_templates_title" qtlid="393230">Personalizzazione degli alert</translation>
+   <translation id="sms_users_templates_customized_email_mode_label" qtlid="393243">Notifiche email</translation>
+   <translation id="sms_users_templates_email_from_label" qtlid="393256">Mittente dell’email:</translation>
+   <translation id="sms_users_templates_email_from_placeholder" qtlid="393269">Indirizzo email (campo obbligatorio).</translation>
+   <translation id="sms_users_templates_email_from_error_required" qtlid="393282">Il campo "Indirizzo email" è obbligatorio.</translation>
+   <translation id="sms_users_templates_email_from_error_email" qtlid="393295">Inserisci un indirizzo email valido.</translation>
+   <translation id="sms_users_templates_email_subject_label" qtlid="393308">Oggetto&#160;</translation>
+   <translation id="sms_users_templates_email_subject_placeholder" qtlid="393321">Oggetto dell’email (campo obbligatorio).</translation>
+   <translation id="sms_users_templates_email_subject_error_required" qtlid="393334">Il campo "Oggetto dell’email" è obbligatorio.&#13;
+&#13;
+ </translation>
+   <translation id="sms_users_templates_email_body_label" qtlid="393347">Testo dell’email (campo obbligatorio).</translation>
+   <translation id="sms_users_templates_email_body_placeholder" qtlid="393347">Testo dell’email (campo obbligatorio).</translation>
+   <translation id="sms_users_templates_email_body_error_required" qtlid="393360">Il campo "Testo dell’email" è obbligatorio.</translation>
+   <translation id="sms_users_templates_customized_sms_mode_label" qtlid="393373">Notifiche SMS</translation>
+   <translation id="sms_users_templates_sms_body_label" qtlid="393386">Contenuto dell'SMS&#160;</translation>
+   <translation id="sms_users_templates_sms_body_placeholder" qtlid="393399">Contenuto dell'SMS (campo obbligatorio).</translation>
+   <translation id="sms_users_templates_sms_body_error_required" qtlid="393412">Il campo "Contenuto dell'SMS" è obbligatorio.</translation>
+   <translation id="sms_users_templates_sms_body_error_maxlength" qtlid="393425">Hai superato il limite massimo di <b>{{ maxlenght }}</b> caratteri.</translation>
    <translation id="sms_users_templates_sms_body_characters_left" qtlid="288158">Caratteri rimanenti</translation>
-   <translation id="sms_users_templates_labels_tooltip" qtlid="393438">Les alertes de bases seront remplacées.</translation>
-   <translation id="sms_users_templates_variable_info" qtlid="393451">Les variables sont disponibles pour les champs "Corps de l’e-mail" & "Contenu du SMS".</translation>
-   <translation id="sms_users_templates_variable_user" qtlid="393464">Identifiant&#160;:</translation>
-   <translation id="sms_users_templates_variable_remaining" qtlid="393477">Quota restant&#160;:</translation>
-   <translation id="sms_users_templates_variable_alertthreshold" qtlid="393490">Seuil d’alerte&#160;:</translation>
-   <translation id="sms_users_templates_variable_creditsleft" qtlid="393503">Crédit restant&#160;:</translation>
-   <translation id="sms_users_templates_adding" qtlid="393516">Personnalisation des alertes en cours…</translation>
-   <translation id="sms_users_templates_added" qtlid="393529">Personnalisation des alertes effectuée</translation>
-   <translation id="sms_users_templates_update_ko" qtlid="393542">Impossible de modifier la personnalisation des alertes.</translation>
+   <translation id="sms_users_templates_labels_tooltip" qtlid="393438">Gli alert di base saranno sostituiti.</translation>
+   <translation id="sms_users_templates_variable_info" qtlid="393451">Le variabili sono disponibili per i campi "Testo dell’email" e "Contenuto dell'SMS".</translation>
+   <translation id="sms_users_templates_variable_user" qtlid="393464">Identificativo:</translation>
+   <translation id="sms_users_templates_variable_remaining" qtlid="393477">Quota residua:</translation>
+   <translation id="sms_users_templates_variable_alertthreshold" qtlid="393490">Soglia di alert:</translation>
+   <translation id="sms_users_templates_variable_creditsleft" qtlid="393503">Credito residuo:</translation>
+   <translation id="sms_users_templates_adding" qtlid="393516">Personalizzazione degli alert in corso...</translation>
+   <translation id="sms_users_templates_added" qtlid="393529">Personalizzazione degli alert effettuata!</translation>
+   <translation id="sms_users_templates_update_ko" qtlid="393542">Impossibile modificare la personalizzazione degli alert.</translation>
 
    <translation id="sms_users_change_password_user_title" qtlid="80394">Modifica la password</translation>
    <translation id="sms_users_change_password_user_info" qtlid="338859">Stai modificando la password dell'utente <b>"{{ login }}"</b>.</translation>
    <translation id="sms_users_change_password_user_password_label" qtlid="334894">Password:&#160;</translation>
    <translation id="sms_users_change_password_user_password_placeholder" qtlid="2270">Password</translation>
    <translation id="sms_users_change_password_user_password_error_required" qtlid="334946">Il campo "Password" è obbligatorio.</translation>
-   <translation id="sms_users_change_password_user_password_error_minlength" qtlid="338807">Il campo "Password" deve essere composto da 8 caratteri alfanumerici.</translation>
+   <translation id="sms_users_change_password_user_password_error_pattern">Le champ "mot de passe" doit être composé de 8 caractères alphanumériques.</translation>
    <translation id="sms_users_change_password_user_changing" qtlid="338872">Modifica della password in corso...</translation>
    <translation id="sms_users_change_password_user_changed" qtlid="338885">Password  modificata!&#160;</translation>
    <translation id="sms_users_change_password_user_ko" qtlid="338898">Impossibile modificare la password dell'utente <br/>{{error}}</translation>
@@ -94,7 +96,7 @@
    <translation id="sms_users_limit_user_alert_activate_label" qtlid="339041">Attivare l’alert?</translation>
    <translation id="sms_users_limit_user_alert_threshold_label" qtlid="339054">Soglia di alert</translation>
    <translation id="sms_users_limit_user_alert_threshold_error_required" qtlid="339067">Il campo "Soglia di alert" è obbligatorio.</translation>
-   <translation id="sms_users_limit_user_alert_threshold_error_min" qtlid="393555">La valeur minimum du seuil d’alerte doit être de 1.</translation>
+   <translation id="sms_users_limit_user_alert_threshold_error_min" qtlid="393555">Il valore minimo della soglia di alert deve essere 1.</translation>
    <translation id="sms_users_limit_user_alert_threshold_placeholder" qtlid="339054">Soglia di alert</translation>
    <translation id="sms_users_limit_user_support_label" qtlid="32386">Notifiche</translation>
    <translation id="sms_users_limit_user_support_both" qtlid="339080">Email e SMS</translation>
