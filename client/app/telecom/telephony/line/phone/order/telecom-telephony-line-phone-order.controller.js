@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyLinePhoneOrderCtrl", function ($scope, $stateParams, $translate, TelephonyMediator, OvhApiTelephony, OvhApiOrder, ToastError, TELEPHONY_RMA) {
+angular.module("managerApp").controller("TelecomTelephonyLinePhoneOrderCtrl", function ($q, $scope, $stateParams, $translate, IpAddress, TelephonyMediator, OvhApiTelephony, OvhApiOrder, Toast, ToastError, TELEPHONY_RMA) {
     "use strict";
 
     var self = this;
@@ -120,7 +120,7 @@ angular.module("managerApp").controller("TelecomTelephonyLinePhoneOrderCtrl", fu
                 billingAccount: self.line.billingAccount,
                 serviceName: self.line.serviceName
             }).$promise.then(function (result) {
-                self.line.getPublicOffer = result.getPublicOffer;
+                _.assign(self.line, { getPublicOffer: result.getPublicOffer }, { isAttachedToOtherLinesPhone: result.isAttachedToOtherLinesPhone });
             });
         }).then(function () {
             return self.line.hasPendingOfferTasks();
@@ -287,6 +287,32 @@ angular.module("managerApp").controller("TelecomTelephonyLinePhoneOrderCtrl", fu
 
     self.isSamePhone = function () {
         return self.phone && self.order.phone && ("phone." + self.order.phone) === self.phone.brand;
+    };
+
+    self.ipValidator = (function () {
+        return {
+            test: function (value) {
+                return IpAddress.isValidPublicIp4(value);
+            }
+        };
+    })();
+
+    self.detachPhone = function () {
+        self.isDetaching = true;
+        OvhApiTelephony.Line().Lexi().dissociateDevice({
+            billingAccount: $stateParams.billingAccount,
+            serviceName: $stateParams.serviceName
+        }, {
+            ipAddress: self.attachedPhoneIpAddress,
+            macAddress: self.phone.macAddress
+        }).$promise.then(function () {
+            Toast.success($translate.instant("telephony_line_phone_order_detach_device_success"));
+        }).catch(function (err) {
+            Toast.error($translate.instant("telephony_line_phone_order_detach_device_error"));
+            return $q.reject(err);
+        }).finally(function () {
+            self.isDetaching = false;
+        });
     };
 
     init();
