@@ -1,5 +1,6 @@
 class ManagerNavbarService {
-    constructor ($q, $translate, $translatePartialLoader, LANGUAGES, MANAGER_URLS, REDIRECT_URLS, TARGET, URLS, OvhApiMe, OtrsPopupService, ssoAuthentication, PackMediator, telecomVoip, voipService, SmsMediator, OvhApiFreeFax, OvhApiOverTheBox, TelecomMediator) {
+    constructor ($q, $translate, $translatePartialLoader, LANGUAGES, MANAGER_URLS, REDIRECT_URLS, TARGET, URLS, OvhApiMe, OtrsPopupService, ssoAuthentication, PackMediator, telecomVoip,
+                 voipService, SmsMediator, OvhApiFreeFax, OvhApiOverTheBox, TelecomMediator) {
         this.$q = $q;
         this.$translate = $translate;
         this.$translatePartialLoader = $translatePartialLoader;
@@ -409,12 +410,10 @@ class ManagerNavbarService {
                     }, {
                         title: this.$translate.instant("common_menu_account_security"),
                         url: this.REDIRECT_URLS.userSecurity
-                    },
-                    (this.TARGET === "EU" || this.TARGET === "CA") && {
+                    }, (this.TARGET === "EU" || this.TARGET === "CA") && {
                         title: this.$translate.instant("common_menu_account_emails"),
                         url: this.REDIRECT_URLS.userEmails
-                    },
-                    (this.TARGET === "EU") && {
+                    }, (this.TARGET === "EU") && {
                         title: this.$translate.instant("common_menu_account_subscriptions"),
                         url: this.REDIRECT_URLS.userSubscriptions
                     }, {
@@ -433,10 +432,10 @@ class ManagerNavbarService {
                     url: this.REDIRECT_URLS.billing,
                     subLinks: [{
                         title: this.$translate.instant("common_menu_billing_history"),
-                        url: this.REDIRECT_URLS.billing,
+                        url: this.REDIRECT_URLS.billing
                     }, {
                         title: this.$translate.instant("common_menu_billing_payments"),
-                        url: this.REDIRECT_URLS.billingPayments,
+                        url: this.REDIRECT_URLS.billingPayments
                     }]
                 },
 
@@ -465,25 +464,22 @@ class ManagerNavbarService {
                     subLinks: [{
                         title: this.$translate.instant("common_menu_means_mean"),
                         url: this.REDIRECT_URLS.paymentMeans
-                    },
-                    (this.TARGET === "EU" || this.TARGET === "CA") && {
+                    }, (this.TARGET === "EU" || this.TARGET === "CA") && {
                         title: this.$translate.instant("common_menu_means_ovhaccount"),
                         url: this.REDIRECT_URLS.ovhAccount
-                    },
-                    (this.TARGET === "EU" || this.TARGET === "CA") && {
+                    }, (this.TARGET === "EU" || this.TARGET === "CA") && {
                         title: this.$translate.instant("common_menu_means_vouchers"),
                         url: this.REDIRECT_URLS.billingVouchers
                     }, {
                         title: this.$translate.instant("common_menu_means_refunds"),
                         url: this.REDIRECT_URLS.billingRefunds
-                    },
-                    (this.TARGET === "EU") && {
+                    }, (this.TARGET === "EU") && {
                         title: this.$translate.instant("common_menu_means_fidelity"),
                         url: this.REDIRECT_URLS.billingFidelity
                     }, {
                         title: this.$translate.instant("common_menu_means_credits"),
                         url: this.REDIRECT_URLS.billingCredits
-                        }]
+                    }]
                 },
 
                 // Orders
