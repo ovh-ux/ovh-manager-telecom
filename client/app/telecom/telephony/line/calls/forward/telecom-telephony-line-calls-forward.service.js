@@ -1,4 +1,5 @@
-angular.module("managerApp").service("TelecomTelephonyLineCallsForwardService", function ($q, OvhApiTelephony, $translate, TelecomTelephonyLineCallsForwardPhoneNumber, TelecomTelephonyLineCallsForward, TelecomTelephonyLineCallsForwardNature) {
+angular.module("managerApp").service("TelecomTelephonyLineCallsForwardService", function ($q, $translate,
+                                                                                          OvhApiTelephony, TelecomTelephonyLineCallsForwardPhoneNumber, TelecomTelephonyLineCallsForward, TelecomTelephonyLineCallsForwardNature, voipLinePhone) {
     "use strict";
 
     /**
@@ -37,7 +38,6 @@ angular.module("managerApp").service("TelecomTelephonyLineCallsForwardService", 
                     ).concat(new TelecomTelephonyLineCallsForwardNature("external"));
                 }
                 return $q.reject();
-
             }
         );
     };
@@ -54,17 +54,18 @@ angular.module("managerApp").service("TelecomTelephonyLineCallsForwardService", 
                     { type: "line", serviceName: excludeLine }
                 );
             }
-            var allNumbers = _.map(
-                ovhNums,
-                function (num) {
-                    return new TelecomTelephonyLineCallsForwardPhoneNumber(_.pick(num, ["billingAccount", "description", "serviceName", "type"]));
-                }
-            );
-            var filteredNumber = _.filter(allNumbers, function (num) {
-                return ["fax", "voicemail", "line", "number"].indexOf(num.type) > -1;
-            });
-            var sortedNumber = _.sortByOrder(filteredNumber, ["description", "serviceName"], ["desc", "asc"]);
-            return sortedNumber;
+
+            // look for plug&phone lines
+            return voipLinePhone.fetchAll().then(function (phones) { return phones; }).catch(function () { return null; })
+                .then(function (phones) {
+                    return _.chain(ovhNums).forEach(function (num) {
+                        num.hasPhone = !_.isUndefined(_.find(phones, { serviceName: num.serviceName }));
+                    }).map(function (num) {
+                        return new TelecomTelephonyLineCallsForwardPhoneNumber(_.pick(num, ["billingAccount", "description", "serviceName", "type", "hasPhone"]));
+                    }).filter(function (num) {
+                        return ["fax", "voicemail", "line", "plug&phone", "number"].indexOf(num.type) > -1;
+                    }).sortByOrder(["description", "serviceName"], ["desc", "asc"]).value();
+                });
         });
     };
 
