@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <translations>
    <translation id="telecom_pack_migration_back_link_title" qtlid="331709">Retour vers le détail du pack</translation>
-   <translation id="telecom_pack_migration_title" qtlid="305564">Changement d'offre</translation>
+   <translation id="telecom_pack_migration_title" qtlid="305564">Angebotswechsel</translation>
 
 <!-- TABLE -->
    <translation id="telecom_pack_migration_current_offer" qtlid="331722">Offre actuelle : {{ offerName }}</translation>
@@ -66,7 +66,7 @@
    <translation id="telecom_pack_migration_confirm_resume_title" qtlid="332216">Résumé du changement d'offre :</translation>
    <translation id="telecom_pack_migration_confirm_migrate_to" qtlid="332229">Changement de l'offre "{{ fromOffer }}" pour l'offre "{{ toOffer }}".</translation>
    <translation id="telecom_pack_migration_confirm_header_entitled" qtlid="11027">Bezeichnung</translation>
-   <translation id="telecom_pack_migration_confirm_header_price" qtlid="259961">Stückpreis</translation>
+   <translation id="telecom_pack_migration_confirm_header_price" qtlid="259961">Stückpreis (netto)</translation>
    <translation id="telecom_pack_migration_confirm_header_quantity" qtlid="37107">Anzahl</translation>
    <translation id="telecom_pack_migration_confirm_header_total" qtlid="270007">Preis ohne MwSt / Monat</translation>
 

@@ -19,7 +19,7 @@
    <translation id="sms_senders_referer_virtual" qtlid="360229">Numéro virtuel</translation>
 
    <translation id="sms_senders_status_disable" qtlid="24967">Wyłączony</translation>
-   <translation id="sms_senders_status_enable" qtlid="30250">Aktywne</translation>
+   <translation id="sms_senders_status_enable" qtlid="30250">Aktywny</translation>
    <translation id="sms_senders_status_refused" qtlid="159878">Odrzucony</translation>
    <translation id="sms_senders_status_waitingValidation" qtlid="313169">Validation en cours</translation>
    <translation id="sms_senders_status_delete_at_expiration" qtlid="393646">Résilation en cours</translation>

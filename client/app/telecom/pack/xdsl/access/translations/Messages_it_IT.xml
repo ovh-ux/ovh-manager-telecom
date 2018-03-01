@@ -19,12 +19,14 @@
 
    <translation id="xdsl_details_caracteristics" qtlid="309568">Caratteristiche</translation>
    <translation id="xdsl_details_mac_address" qtlid="42562">Indirizzo MAC</translation>
+   <translation id="xdsl_details_modem_model" qtlid="455998">Modèle du modem</translation>
    <translation id="xdsl_details_mac_address_description" qtlid="309581">Indirizzo fisico del dispositivo</translation>
    <translation id="xdsl_details_sync_label" qtlid="60698">Sincronizzazione</translation>
    <translation id="xdsl_details_concentrationPoint_lineHead_label" qtlid="309594">Testa</translation>
    <translation id="xdsl_details_concentrationPoint_lineInitialSectionPair_label" qtlid="309607">Doppino</translation>
    <translation id="xdsl_details_concentrationPoint_lineInitialSection_label" qtlid="309620">Inizio</translation>
    <translation id="xdsl_details_followUp_label" qtlid="78870">Controllo ordine</translation>
+   <translation id="xdsl_details_followUp_label_step_name_detail" qtlid="456011">Afficher le suivi</translation>
    <translation id="xdsl_details_details_label" qtlid="37527">Dettagli</translation>
    <translation id="xdsl_details_status_label" qtlid="33790">Stato</translation>
    <translation id="xdsl_details_type_label" qtlid="2642">Tipo</translation>
@@ -32,7 +34,7 @@
    <translation id="xdsl_details_dns_really" qtlid="309646">Vuoi davvero modificare il reverse DNS?</translation>
    <translation id="xdsl_details_dns_placeholder" qtlid="44284">Reverse DNS</translation>
    <translation id="xdsl_details_button_move" qtlid="308788">Trasferisci</translation>
-   <translation id="xdsl_details_button_move_disabled" qtlid="384909">Demande de déménagement en cours</translation>
+   <translation id="xdsl_details_button_move_disabled" qtlid="384909">Richiesta di trasferimento in corso...</translation>
    <translation id="xdsl_details_button_deconsolidation" qtlid="79338">Separazione totale</translation>
    <translation id="xdsl_details_button_diagnostic" qtlid="95059">Diagnostica</translation>
    <translation id="xdsl_details_button_ipv4" qtlid="44284">Reverse DNS</translation>
@@ -49,11 +51,16 @@
    <translation id="xdsl_details_ips_v4" qtlid="101781">IPv4</translation>
    <translation id="xdsl_details_ips_v6" qtlid="34126">IPv6</translation>
    <translation id="xdsl_details_ips_remove_only_extra" qtlid="309737">È possibile rimuovere solo i blocchi IP aggiuntivi</translation>
-   <translation id="xdsl_details_ips_manage" qtlid="194216">Gestisci i tuoi indirizzi IP</translation>
+   <translation id="xdsl_details_ips_manage" qtlid="456024">gérer les IPs</translation>
+   <translation id="xdsl_details_ips_delete" qtlid="456037">supprimer ce bloc d'IPs</translation>
    <translation id="xdsl_details_ips_notifications" qtlid="72797">Alert</translation>
    <translation id="xdsl_details_ips_title" qtlid="309750">IP</translation>
    <translation id="xdsl_details_ips_order" qtlid="43558">Ordina</translation>
    <translation id="xdsl_access_ip_delete_really" qtlid="309763">Vuoi davvero eliminare il blocco IP <b>{{ip}}/{{range}}</b></translation>
+   <translation id="xdsl_details_ips_block_pending_order" qtlid="456050">Une commande est en cours de validation</translation>
+   <translation id="xdsl_access_ip_block_delete_success" qtlid="456063">Votre demande de suppression du bloc d'IP <b>{{ip}}</b> a bien été prise en compte.</translation>
+   <translation id="xdsl_access_ip_block_delete_error" qtlid="456076">Une erreur est survenue lors de la demande de suppression du bloc d'IP.</translation>
+   <translation id="xdsl_access_ip_is_being_deleted" qtlid="456089">en cours de suppression</translation>
 
 <!-- status -->
    <translation id="xdsl_details_status_active" qtlid="55133">Attivo</translation>
@@ -69,30 +76,12 @@
    <translation id="xdsl_details_migration" qtlid="305564">Cambia offerta</translation>
    <translation id="xdsl_details_migration_upgrade" qtlid="309815">Cambia offerta</translation>
 
-<!-- Migration PPP -->
-   <translation id="xdsl_details_migration_ppp_title" qtlid="384922">Migration xDSL</translation>
-   <translation id="xdsl_details_migration_ppp_info_text_1" qtlid="384935">Vous pouvez dès à présent passer votre modem sous le protocole PPPoE.</translation>
-   <translation id="xdsl_details_migration_ppp_info_text_2" qtlid="384948">Notez que votre modem redémarrera automatiquement une fois l’opération terminée.</translation>
-   <translation id="xdsl_details_migration_ppp_info_text_3" qtlid="384961">Vous pouvez dès à présent passer votre modem sous le protocole PPPoE en utilisant les identifiants de connexion que vous avez reçu par email. Si vous ne les avez pas reçu cliquez sur le lien ci-dessous pour qu'ils vous soient réenvoyés.</translation>
-   <translation id="xdsl_details_migration_ppp_info_anchor" qtlid="384974">Retrouvez plus d’information sur notre FAQ</translation>
-   <translation id="xdsl_details_migration_ppp_info_button_label" qtlid="384987">Migrer mon accès xDSL</translation>
-   <translation id="xdsl_details_migration_ppp_success" qtlid="385000">Processus de migration enregistré.</translation>
-   <translation id="xdsl_details_migration_ppp_error" qtlid="385013">Oups ! Une erreur est survenue dans l’enregistrement du processus de migration.<br/>{{error}}</translation>
-   <translation id="xdsl_details_migration_ppp_migrating" qtlid="385026">Votre migration est en cours, celle-ci peut prendre quelques minutes.</translation>
-   <translation id="xdsl_details_migration_ppp_migrated" qtlid="385039">Votre migration a été effectuée avec succès.</translation>
-   <translation id="xdsl_details_migration_ppp_request_login_email" qtlid="385052">Vos identifiants viennent de vous être envoyés par e-mail !</translation>
-   <translation id="xdsl_details_migration_ppp_request_login_email_button" qtlid="385065">Envoyer mes identifiants</translation>
-   <translation id="xdsl_details_migration_ppp_modal_title" qtlid="385078">Migration de mon accès xDSL</translation>
-   <translation id="xdsl_details_migration_ppp_modal_info" qtlid="385091">La migration automatique de votre modem va générer une coupure ainsi qu’une resynchronisation. Cette opération prendra 2 à 3 minutes environ.</translation>
-   <translation id="xdsl_details_migration_ppp_modal_migrate" qtlid="171695">Trasferisci</translation>
-   <translation id="xdsl_details_migration_ppp_modal_migrating" qtlid="385104">Lancement du processus de migration…</translation>
-   <translation id="xdsl_details_migration_ppp_modal_migrated" qtlid="385117">Processus de migration lancée !</translation>
-
 <!-- notfications -->
    <translation id="xdsl_details_notif_show_none_part1" qtlid="309828">Crea degli alert per ricevere le notifiche via Email</translation>
    <translation id="xdsl_details_notif_show_none_part2" qtlid="309841">e/o SMS quando l'accesso non risponde.</translation>
    <translation id="xdsl_details_notif_show_many" qtlid="309854">{{count}} alert programmati</translation>
    <translation id="xdsl_details_notif_show_one" qtlid="309867">{{count}} alert programmato</translation>
+   <translation id="xdsl_details_notif_show_alerts" qtlid="456102">Afficher les alertes</translation>
 
 <!-- collecte -->
    <translation id="xdsl_connection_ovh" qtlid="309880">Unbundling OVH</translation>

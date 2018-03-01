@@ -6,7 +6,7 @@
 
    <translation id="sms_sms_hlr_alert_not_enough_credits" qtlid="360385">Su crédito es insuficiente para enviar una consulta HLR.</translation>
 
-   <translation id="sms_sms_hlr_information_title" qtlid="26551">Datos</translation>
+   <translation id="sms_sms_hlr_information_title" qtlid="26551">Información</translation>
    <translation id="sms_sms_hlr_information_text_1" qtlid="360398">Las consultas HLR permiten saber si un número de teléfono móvil es válido antes de enviarle un SMS.</translation>
    <translation id="sms_sms_hlr_information_text_2" qtlid="360411">Si el número es válido, el resultado le permitirá conocer el operador en el que está registrado el teléfono.</translation>
    <translation id="sms_sms_hlr_information_text_3" qtlid="360424">Cada consulta tiene un coste de <b>0,1 créditos</b>.</translation>

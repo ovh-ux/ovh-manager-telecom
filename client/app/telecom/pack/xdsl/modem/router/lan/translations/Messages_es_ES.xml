@@ -14,7 +14,7 @@
    <translation id="xdsl_modem_lan_addressingType_Static" qtlid="312168">Estática</translation>
    <translation id="xdsl_modem_lan_addressingType_DHCP" qtlid="311778">DHCP</translation>
 
-   <translation id="xdsl_modem_lan_success" qtlid="385416">Le LAN <strong>{{ name }}</strong> a été mis à jour.</translation>
-   <translation id="xdsl_modem_lan_error" qtlid="385429">Oups ! Nous n'avons pas pu récupérer les informations relatives à votre LAN.</translation>
-   <translation id="xdsl_modem_lan_submit_error" qtlid="385442">Oups ! Nous n'avons pas pu mettre à jour les informations relatives à votre LAN.</translation>
+   <translation id="xdsl_modem_lan_success" qtlid="385416">Se ha actualizado la LAN <strong>{{ name }}</strong>.</translation>
+   <translation id="xdsl_modem_lan_error" qtlid="385429">¡Vaya! No se ha podido cargar la información relativa a la LAN.</translation>
+   <translation id="xdsl_modem_lan_submit_error" qtlid="385442">¡Vaya! No se ha podido actualizar la información relativa a la LAN.</translation>
 </translations>

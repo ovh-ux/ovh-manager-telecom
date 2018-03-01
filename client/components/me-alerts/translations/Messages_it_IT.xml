@@ -12,10 +12,7 @@
    <translation id="me_alerts_PAYMENTMEAN_CREDITCARD_TOOMANYFAILURES" qtlid="344409"><strong>{{count}}</strong> carte bancarie risultano in errore. Per effettuare una verifica o aggiungere un nuovo metodo di pagamento, accedi alla <a href="{{link}}" class="alert-link">sezione fatturazione</a>.</translation>
    <translation id="me_alerts_PAYMENTMEAN_PAYPAL_TOOMANYFAILURES" qtlid="344422"><strong>{{count}}</strong> conti PayPal risultano in errore. Per effettuare una verifica o aggiungere un nuovo metodo di pagamento, accedi alla <a href="{{link}}" class="alert-link">sezione fatturazione</a>.</translation>
 
-   <translation id="me_alerts_OVHACCOUNT_DEBT" qtlid="384121">Il tuo conto prepagato ha un saldo negativo di <strong>{{value}}</strong> al {{date | date:'medium'}}. Accedi alla <a href="{{link}}" class="alert-link">sezione fatturazione</a> per regolarizzare la tua situazione.&#13;
-&#13;
-&#13;
-</translation>
+   <translation id="me_alerts_OVHACCOUNT_DEBT" qtlid="384121">Il tuo conto prepagato ha un saldo negativo di <strong>{{value}}</strong> al {{date | date:'medium'}}. Accedi alla <a href="{{link}}" class="alert-link">sezione fatturazione</a> per regolarizzare la tua situazione.</translation>
    <translation id="me_alerts_DEBTACCOUNT_DEBT" qtlid="344448">Hai un saldo negativo di <strong>{{value}}</strong>. Accedi alla <a href="{{link}}" class="alert-link">sezione fatturazione</a> per regolarizzare la tua situazione.</translation>
    <translation id="me_alerts_DEBTACCOUNT_DEBT_WITH_UNMATURED_AMOUNT" qtlid="369503">Il tuo account ha un saldo negativo di <strong>{{ dueAmount }}</strong> (di cui un importo di {{ unmaturedAmount }} non scaduto). Accedi alla <a href="#/billing/statements" class="alert-link">sezione fatturazione</a> per regolarizzare la tua situazione.</translation>
 

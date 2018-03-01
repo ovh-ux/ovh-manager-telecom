@@ -27,24 +27,24 @@
    <translation id="pack_move_eligibility_unbundling_createNeighbour" qtlid="312727">Création de voisinage</translation>
    <translation id="pack_move_eligibility_unbundling_creation" qtlid="312740">Création de ligne</translation>
    <translation id="pack_move_eligibility_unbundling_partial" qtlid="79350">Dégroupage partiel</translation>
-   <translation id="pack_move_eligibility_line_status_active">Ligne active</translation>
-   <translation id="pack_move_eligibility_line_status_inactive">Ligne inactive</translation>
+   <translation id="pack_move_eligibility_line_status_active" qtlid="456557">Ligne active</translation>
+   <translation id="pack_move_eligibility_line_status_inactive" qtlid="456570">Ligne inactive</translation>
    <translation id="pack_move_eligibility_provider" qtlid="312753">Fournisseur: {{provider}}</translation>
    <translation id="pack_move_keepLine" qtlid="312766">Je souhaite conserver le numéro :</translation>
-   <translation id="pack_move_portLine">Je souhaite conserver mon numéro :</translation>
+   <translation id="pack_move_portLine" qtlid="456583">Je souhaite conserver mon numéro :</translation>
    <translation id="pack_move_validate" qtlid="312792">Valider le déménagement</translation>
    <translation id="pack_move_success" qtlid="312805">Le déménagement de votre ligne sera effectif dans quelques jours.</translation>
    <translation id="pack_move_cannot_move" qtlid="312818">Il est impossible de déménager votre pack vers la ligne choisie.</translation>
    <translation id="pack_move_cannot_validate_move" qtlid="312831">Il nous est impossible de déménager votre pack: {{message}}</translation>
    <translation id="pack_move_line_current_address" qtlid="312844">Adresse actuelle</translation>
    <translation id="pack_move_line_future_address" qtlid="312857">Adresse future</translation>
-   <translation id="pack_move_portLine_cost">La conservation vous sera facturée <span class="font-weight-bold text-price">50€</span></translation>
+   <translation id="pack_move_portLine_cost" qtlid="456596">La conservation vous sera facturée <span class="font-weight-bold text-price">50€</span></translation>
 
    <translation id="pack_move_eligibility_error" qtlid="312883">Le test d'éligibilité est indisponible pour le moment. Veuillez ré-essayer plus tard.</translation>
    <translation id="pack_move_eligibility_no_offers" qtlid="385975">La ligne {{ number }} n'est éligible à aucune de nos offres.</translation>
 
    <translation id="pack_move_portLine_disabled" qtlid="312896">Vous ne pouvez pas porter votre numéro.</translation>
-   <translation id="pack_move_portLine_warning">La conservation du numéro de téléphone de votre accès entraînera la coupure de l'accès internet lui étant  rattaché.</translation>
+   <translation id="pack_move_portLine_warning" qtlid="456609">La conservation du numéro de téléphone de votre accès entraînera la coupure de l'accès internet lui étant rattaché.</translation>
    <translation id="pack_move_keepLine_disabled" qtlid="312909">Vous ne pouvez pas garder ce numéro.</translation>
 
    <translation id="pack_move_unbundling_total" qtlid="79338">Dégroupage total</translation>
@@ -71,9 +71,9 @@
    <translation id="pack_move_eligibility_residence" qtlid="313039">Résidence</translation>
    <translation id="pack_move_eligibility_stair" qtlid="313052">Escalier</translation>
    <translation id="pack_move_eligibility_error" qtlid="313065">Une erreur est survenue durant le test d’éligibilité:</translation>
-   <translation id="pack_move_eligibility_address_error_pairs">Nous avons enregistré un dysfonctionnement dans l’éligibilité de votre adresse de redirection : le nombre de paires est insuffisant pour créer une nouvelle ligne fixe</translation>
-   <translation id="pack_move_eligibility_address_error_neighbour">Nous avons enregistré un dysfonctionnement dans l’éligibilité de votre adresse de redirection : une erreur est survenue lors de la recherche du numéro de rue</translation>
-   <translation id="pack_move_eligibility_street_error">La rue {{partial}} est introuvable</translation>
+   <translation id="pack_move_eligibility_address_error_pairs" qtlid="456622">Nous avons enregistré un dysfonctionnement dans l’éligibilité de votre adresse de redirection : le nombre de paires est insuffisant pour créer une nouvelle ligne fixe</translation>
+   <translation id="pack_move_eligibility_address_error_neighbour" qtlid="456635">Nous avons enregistré un dysfonctionnement dans l’éligibilité de votre adresse de redirection : une erreur est survenue lors de la recherche du numéro de rue</translation>
+   <translation id="pack_move_eligibility_street_error" qtlid="456648">La rue {{partial}} est introuvable</translation>
 
    <translation id="pack_move_eligibility_creation_price_label" qtlid="313078">frais de mise en service</translation>
 
@@ -91,5 +91,5 @@
    <translation id="pack_move_contact_name_info" qtlid="313221">Veuillez nous communiquer le nom de la personne susceptible d’accueillir le technicien le jour du rendez-vous.</translation>
    <translation id="pack_move_mandatory_field" qtlid="313234">Les champs marqués d’un astérisque sont obligatoires.</translation>
 
-   <translation id="pack_move_slamming_error">Oups ! Nous n'avons pas pu vérifier la portabilité de votre numéro</translation>
+   <translation id="pack_move_slamming_error" qtlid="456661">Oups ! Nous n'avons pas pu vérifier la portabilité de votre numéro</translation>
 </translations>

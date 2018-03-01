@@ -14,7 +14,9 @@
 
     <div class="modal-body"
          data-ng-if="!CampaignsRemoveCtrl.loading.removeCampaign && !CampaignsRemoveCtrl.removed">
-        <h3 data-translate="telephony_service_fax_campaigns_remove"></h3>
+        <h3 class="modal-title"
+            data-translate="telephony_service_fax_campaigns_remove">
+        </h3>
         <p data-translate="telephony_service_fax_campaigns_remove_campaign_confirm"
            data-translate-values="{ campaign: CampaignsRemoveCtrl.campaign.name }">
         </p>

@@ -12,11 +12,11 @@
    <translation id="telecom_task_todo" qtlid="305356">Programmée</translation>
    <translation id="telecom_task_all" qtlid="290472">Todas</translation>
    <translation id="telecom_task_status" qtlid="26443">Estado</translation>
-   <translation id="telecom_task_function" qtlid="56105">Acção</translation>
+   <translation id="telecom_task_function" qtlid="56105">Ação</translation>
    <translation id="telecom_task_pack" qtlid="82929">Pack</translation>
    <translation id="telecom_task_filter_status_placeholder" qtlid="305369">Filtrer par statut</translation>
    <translation id="telecom_task_status" qtlid="26443">Estado</translation>
-   <translation id="telecom_task_function" qtlid="56105">Acção</translation>
+   <translation id="telecom_task_function" qtlid="56105">Ação</translation>
    <translation id="telecom_task_filter_none" qtlid="305382">Toutes les opérations</translation>
    <translation id="telecom_task_none" qtlid="305395">Aucune tâche trouvée</translation>
    <translation id="telecom_task_page" qtlid="305408">Página</translation>
@@ -33,8 +33,8 @@
    <translation id="createExchange" qtlid="305525">Création d'un compte Exchange</translation>
    <translation id="pendingMigration" qtlid="305538">Migration d'offre</translation>
    <translation id="regeneratePromoCode" qtlid="305551">Régénération du code promotionel</translation>
-   <translation id="changePackOffer" qtlid="305564">Changement d'offre</translation>
+   <translation id="changePackOffer" qtlid="305564">Alteração da oferta</translation>
    <translation id="packXdslAddressMove" qtlid="86745">Mudança</translation>
-   <translation id="accessDiagnosticRun" qtlid="309724">Diagnostic de la ligne</translation>
+   <translation id="accessDiagnosticRun" qtlid="309724">Diagnóstico da linha</translation>
 
 </translations>

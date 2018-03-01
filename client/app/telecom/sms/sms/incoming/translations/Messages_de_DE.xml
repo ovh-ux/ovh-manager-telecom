@@ -10,7 +10,7 @@
 
    <translation id="sms_sms_incoming_empty" qtlid="341212">Aucun SMS reçu</translation>
 
-   <translation id="sms_sms_incoming_read_title" qtlid="339639">Consulter</translation>
+   <translation id="sms_sms_incoming_read_title" qtlid="339639">Einsehen</translation>
    <translation id="sms_sms_incoming_read_label_sms_size" qtlid="341225">Taille du SMS</translation>
    <translation id="sms_sms_incoming_read_label_sms_size_text" qtlid="341238">{{ numberOfSms }} SMS (soit {{ credits | number: 2 }} crédits)</translation>
    <translation id="sms_sms_incoming_read_label_message" qtlid="341251">Message complet</translation>

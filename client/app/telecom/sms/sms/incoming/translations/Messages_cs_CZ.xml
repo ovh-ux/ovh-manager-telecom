@@ -10,12 +10,12 @@
 
    <translation id="sms_sms_incoming_empty" qtlid="341212">Aucun SMS reçu</translation>
 
-   <translation id="sms_sms_incoming_read_title" qtlid="339639">Consulter</translation>
+   <translation id="sms_sms_incoming_read_title" qtlid="339639">Zobrazit</translation>
    <translation id="sms_sms_incoming_read_label_sms_size" qtlid="341225">Taille du SMS</translation>
    <translation id="sms_sms_incoming_read_label_sms_size_text" qtlid="341238">{{ numberOfSms }} SMS (soit {{ credits | number: 2 }} crédits)</translation>
    <translation id="sms_sms_incoming_read_label_message" qtlid="341251">Message complet</translation>
 
-   <translation id="sms_sms_incoming_remove_title" qtlid="9983">Potvrzení</translation>
+   <translation id="sms_sms_incoming_remove_title" qtlid="9983">Potvrzení hesla</translation>
    <translation id="sms_sms_incoming_remove_confirm" qtlid="341264">Êtes-vous sûr de vouloir supprimer le SMS affiché ci-dessous&#160;?</translation>
    <translation id="sms_sms_incoming_removing" qtlid="341277">Suppression du SMS en cours…</translation>
    <translation id="sms_sms_incoming_removed" qtlid="341290">SMS supprimé</translation>
