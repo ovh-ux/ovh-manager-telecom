@@ -76,4 +76,6 @@
    <translation id="telephony_alias_portability_order_step_2" qtlid="26551">Informations</translation>
    <translation id="telephony_alias_portability_order_step_3" qtlid="333282">Configuration du numéro</translation>
    <translation id="telephony_alias_portability_order_step_4" qtlid="461133">Finalisation</translation>
+
+   <translation id="telephony_alias_portability_order_number_category">Catégorie du numéro spécial</translation>
 </translations>
