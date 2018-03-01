@@ -9,17 +9,17 @@
    <translation id="telephony_service_consumption_duration" qtlid="8218">Trukmė</translation>
    <translation id="telephony_service_consumption_price_ht" qtlid="133292">Kaina be PVM</translation>
    <translation id="telephony_service_consumption_destination" qtlid="32290">Paskirtis</translation>
-   <translation id="telephony_service_consumption_destination_any" qtlid="336467">Toute destination</translation>
+   <translation id="telephony_service_consumption_destination_any" qtlid="336467">Visi</translation>
    <translation id="telephony_service_consumption_destination_landline" qtlid="247118">Fiksuotas</translation>
    <translation id="telephony_service_consumption_destination_mobile" qtlid="59195">Mobilus ryšys</translation>
-   <translation id="telephony_service_consumption_destination_special" qtlid="336480">Spéciaux</translation>
+   <translation id="telephony_service_consumption_destination_special" qtlid="336480">Specialūs</translation>
    <translation id="telephony_service_consumption_type" qtlid="59171">Kilmė</translation>
-   <translation id="telephony_service_consumption_type_any" qtlid="336493">Nature indifférente</translation>
-   <translation id="telephony_service_consumption_type_transfer" qtlid="336506">Transféré</translation>
-   <translation id="telephony_service_consumption_type_incoming" qtlid="336519">Reçu</translation>
-   <translation id="telephony_service_consumption_type_outgoing" qtlid="336532">Émis</translation>
-   <translation id="telephony_service_consumption_type_received" qtlid="336519">Reçu</translation>
-   <translation id="telephony_service_consumption_type_missing" qtlid="336545">Manqué</translation>
-   <translation id="telephony_service_consumption_type_sent" qtlid="336558">Envoyé</translation>
+   <translation id="telephony_service_consumption_type_any" qtlid="336493">Tokie patys</translation>
+   <translation id="telephony_service_consumption_type_transfer" qtlid="336506">Perkelta</translation>
+   <translation id="telephony_service_consumption_type_incoming" qtlid="336519">Gauti</translation>
+   <translation id="telephony_service_consumption_type_outgoing" qtlid="336532">Išeinantys</translation>
+   <translation id="telephony_service_consumption_type_received" qtlid="336519">Gauti</translation>
+   <translation id="telephony_service_consumption_type_missing" qtlid="336545">Nėra</translation>
+   <translation id="telephony_service_consumption_type_sent" qtlid="336558">Išsiųsta</translation>
    <translation id="telephony_service_consumption_anonymous" qtlid="190082">Anoniminiai skambučiai</translation>
 </translations>

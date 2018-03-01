@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <translations>
    <translation id="order_overTheBox_subscription_request" qtlid="289380">Haluan tilata palvelun</translation>
-   <translation id="order_overTheBox_buy_hardware" qtlid="289393">Haluan ostaa materiaalin OVH:lta.</translation>
+   <translation id="order_overTheBox_buy_hardware" qtlid="289393">Haluan ostaa laitteet OVH:lta.</translation>
    <translation id="order_overTheBox_offer_options" qtlid="289406">Tuotteen lisäpalvelut</translation>
    <translation id="order_overTheBox_offer_informations" qtlid="289419">Tiedot</translation>
    <translation id="order_overTheBox_offer_contracts" qtlid="213336">Sopimusehdot</translation>
@@ -18,8 +18,8 @@
    <translation id="order_overTheBox_voucher" qtlid="306201">Tarjouskoodi:</translation>
    <translation id="order_overTheBox_voucher_placeholder" qtlid="268017">Alennuskoodi</translation>
    <translation id="order_overTheBox_voucher_informations" qtlid="306214">Jos sinulla on tarjouskoodi, syötä se alle.</translation>
-   <translation id="order_overTheBox_price_ht" qtlid="289536">ALV0</translation>
-   <translation id="order_overTheBox_price_ttc" qtlid="289549">sis.ALV</translation>
+   <translation id="order_overTheBox_price_ht" qtlid="289536">ALV 0 %</translation>
+   <translation id="order_overTheBox_price_ttc" qtlid="289549">sis. ALV</translation>
    <translation id="order_overTheBox_orderDone" qtlid="306227">Tilauksesi on rekisteröity.<a href="{{bcUrl}}" target="_blank">Klikkaa tästä päästäksesi tilausvahvistukseen ja vahvistaaksesi se</a>.</translation>
    <translation id="order_overTheBox_offers_error" qtlid="306240">Tuotelistan lataaminen ei onnistu. Ole hyvä ja yritä myöhemmin uudelleen.</translation>
    <translation id="order_overTheBox_sure_want_to_order" qtlid="306253">Olemme havainneet, että yhtä OverTheBox -tuotettasi ei ole liitetty mihinkään palveluun ja että vähintään yksi palveluistasi ei tue OverTheBoxia.</translation>

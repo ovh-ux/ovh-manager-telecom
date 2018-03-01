@@ -98,7 +98,7 @@
 
    <translation id="telecom_pack_migration_confirm_contracts_accept_title" qtlid="213336">Contrats</translation>
    <translation id="telecom_pack_migration_confirm_contracts_accept_button" qtlid="332476">Valider le changement d'offre</translation>
-   <translation id="telecom_pack_migration_confirm_cancel_button" qtlid="332489">Annuler le changement d'offre</translation>
+   <translation id="telecom_pack_migration_confirm_cancel_button" qtlid="332489">Annuler le changement d’offre</translation>
    <translation id="telecom_pack_migration_confirm_contracts_accept_explain" qtlid="332502">En cliquant sur "Valider le changement d'offre", vous reconnaissez avoir pris connaissance et acceptez les contrats suivants :</translation>
    <translation id="telecom_pack_migration_confirm_no_commitment" qtlid="332515">Ce changement d’offre n’est sujet à aucun réengagement.</translation>
    <translation id="telecom_pack_migration_confirm_commitment" qtlid="332528">Un réengagement de {{ month }} mois débutera à la date de facturation.</translation>

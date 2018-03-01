@@ -14,7 +14,7 @@
    <translation id="telecom_common_pack_xdsl_order_step_name_waitingForProviderInstallReport" qtlid="312441">Attente du rapport du fournisseur d'accès</translation>
    <translation id="telecom_common_pack_xdsl_order_step_name_waitingForWithdrawalPeriodToBeOver" qtlid="312454">Attente de la fin de la période de rétractation du client</translation>
 <!-- STATUS -->
-   <translation id="telecom_common_pack_xdsl_order_status_todo" qtlid="312480">Programmé</translation>
+   <translation id="telecom_common_pack_xdsl_order_status_todo" qtlid="312480">Programmed</translation>
    <translation id="telecom_common_pack_xdsl_order_status_doing" qtlid="26383">In progress</translation>
    <translation id="telecom_common_pack_xdsl_order_status_done" qtlid="8662">Done</translation>
    <translation id="telecom_common_pack_xdsl_order_status_error" qtlid="45508">Error</translation>

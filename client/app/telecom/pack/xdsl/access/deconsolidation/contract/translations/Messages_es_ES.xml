@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <translations>
-   <translation id="xdsl_access_deconsolidation_contract_title" qtlid="9983">Repetir contraseña</translation>
+   <translation id="xdsl_access_deconsolidation_contract_title" qtlid="9983">Confirmar</translation>
    <translation id="xdsl_access_deconsolidation_contract_are_you_sure" qtlid="309243">¿Seguro que quiere realizar la siguiente operación:</translation>
    <translation id="xdsl_access_deconsolidation_contract_modification_operation" qtlid="310140">Desagregación total</translation>
    <translation id="xdsl_access_deconsolidation_contract_modified" qtlid="310309">en la siguiente línea: <strong>{{ serviceName }}</strong></translation>

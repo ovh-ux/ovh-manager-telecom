@@ -3,7 +3,7 @@
    <translation id="xdsl_modem_ports_title" qtlid="224646">Redirections van de ports</translation>
    <translation id="xdsl_modem_ports_description" qtlid="312194">Une redirection de port permet de renvoyer vers un port (ou une plage de ports) du modem vers un équipement de votre réseau, sur un port (ou une plage de ports) donné(s). Si votre modem est en mode routeur, les equipements présents sur votre réseau local ne sont pas directement accessibles depuis Internet. Une redirection de port permet ainsi d'y accéder depuis l'extérieur.</translation>
 
-   <translation id="xdsl_modem_ports_name" qtlid="3818">Voor- en achternaam</translation>
+   <translation id="xdsl_modem_ports_name" qtlid="3818">Naam</translation>
    <translation id="xdsl_modem_ip_source" qtlid="138376">IP source</translation>
    <translation id="xdsl_modem_ports_port_begin" qtlid="312207">Port de début</translation>
    <translation id="xdsl_modem_ports_port_end" qtlid="312220">Port de fin</translation>

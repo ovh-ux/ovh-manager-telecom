@@ -28,7 +28,7 @@
    <translation id="telefony_activation_hardware_unselect_label" qtlid="69893">Change</translation>
    <translation id="telefony_activation_hardware_select_all_label" qtlid="308203">Commander cet équipement sur toutes les lignes</translation>
    <translation id="telefony_activation_shipping_price_label" qtlid="308216">Frais de port</translation>
-   <translation id="telefony_activation_total_price_label" qtlid="190459">Total sum</translation>
+   <translation id="telefony_activation_total_price_label" qtlid="190459">Total amount</translation>
    <translation id="telefony_activation_done" qtlid="308229">Votre commande a bien été prise en compte.</translation>
    <translation id="telephony_activation_select_number_of_lines" qtlid="308242">Sélectionnez le nombre de lignes.</translation>
    <translation id="telephony_activation_order_group_none" qtlid="308255">Commande de lignes seules</translation>

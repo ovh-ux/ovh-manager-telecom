@@ -41,7 +41,7 @@
    <translation id="pack_xdsl_access_diagnostic_line_current_profile_id" qtlid="310699">Profil de connexion actuel</translation>
    <translation id="pack_xdsl_access_diagnostic_line_line_test" qtlid="310712">Test de la ligne</translation>
 
-   <translation id="pack_xdsl_access_diagnostic_line_line_test_actionPending" qtlid="26383">W trakcie</translation>
+   <translation id="pack_xdsl_access_diagnostic_line_line_test_actionPending" qtlid="26383">W toku</translation>
    <translation id="pack_xdsl_access_diagnostic_line_line_test_customerSideProblem" qtlid="310725">Problème côté client</translation>
    <translation id="pack_xdsl_access_diagnostic_line_line_test_error" qtlid="26407">Błąd</translation>
    <translation id="pack_xdsl_access_diagnostic_line_line_test_noProblem" qtlid="310738">Fonctionnement OK</translation>

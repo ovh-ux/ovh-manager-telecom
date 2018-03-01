@@ -13,7 +13,7 @@
    <translation id="freefax_voicemail_keep_messages" qtlid="307254">Automatycznie usuwaj wiadomość po wysłaniu</translation>
    <translation id="freefax_voicemail_audio_format" qtlid="307267">Odbieraj wiadomości głosowe w formacie</translation>
    <translation id="freefax_voicemail_redirection_emails" qtlid="307280">Adres elektroniczny, na który będą wysyłane wiadomości</translation>
-   <translation id="freefax_voicemail_redirection_email" qtlid="33598">Email</translation>
+   <translation id="freefax_voicemail_redirection_email" qtlid="33598">E-mail</translation>
    <translation id="freefax_voicemail_redirection_type" qtlid="307293">typ</translation>
    <translation id="freefax_voicemail_success" qtlid="307306">Zaktualizowana konfiguracja</translation>
    <translation id="freefax_voicemail_bad_password" qtlid="307319">Nieprawidłowe hasło</translation>

@@ -9,6 +9,8 @@
    <translation id="telephony_line_answer_voicemail_options_recording_file" qtlid="337832">Failas...</translation>
    <translation id="telephony_line_answer_voicemail_options_recording_file_invalid" qtlid="337845">Nepalaikomas failo formatas.</translation>
    <translation id="telephony_line_answer_voicemail_options_recording_file_download_error" qtlid="337858">Pagrindinės žinutės įkėlimas šiuo metu negalimas.</translation>
+   <translation id="telephony_line_answer_voicemail_options_recording_delete" qtlid="459911">Supprimer le message d'accueil</translation>
+   <translation id="telephony_line_answer_voicemail_options_recording_delete_confirm" qtlid="459924">Êtes-vous certain de vouloir supprimer le message d'accueil ?</translation>
    <translation id="telephony_line_answer_voicemail_options_apply" qtlid="41326">Taikyti</translation>
    <translation id="telephony_line_answer_voicemail_options_notification" qtlid="337871">Pranešimų parinktys</translation>
    <translation id="telephony_line_answer_voicemail_options_audioformat" qtlid="337884">Garso failo formatas:</translation>

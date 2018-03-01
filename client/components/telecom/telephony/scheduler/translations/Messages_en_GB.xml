@@ -111,7 +111,7 @@
    <translation id="telephony_scheduler_events_from" qtlid="88725">From</translation>
    <translation id="telephony_scheduler_events_to" qtlid="88737">To</translation>
    <translation id="telephony_scheduler_events_description" qtlid="9238">Description</translation>
-   <translation id="telephony_scheduler_events_save" qtlid="37875">Change</translation>
+   <translation id="telephony_scheduler_events_save" qtlid="37875">Edit</translation>
    <translation id="telephony_scheduler_events_create" qtlid="396675">Créer l'événement</translation>
    <translation id="telephony_scheduler_events_date_start_edit" qtlid="159176">Start date</translation>
    <translation id="telephony_scheduler_events_date_end_edit" qtlid="299858">End date </translation>
