@@ -6,7 +6,7 @@
    <translation id="overTheBox_tasks_status" qtlid="26443">Status</translation>
    <translation id="overTheBox_no_task" qtlid="217093">Brak zadań</translation>
    <translation id="overTheBox_tasks_status_todo" qtlid="134605">Do wykonania</translation>
-   <translation id="overTheBox_tasks_status_doing" qtlid="26383">W trakcie</translation>
+   <translation id="overTheBox_tasks_status_doing" qtlid="26383">W toku</translation>
    <translation id="overTheBox_tasks_status_done" qtlid="26395">Zakończona</translation>
    <translation id="overTheBox_tasks_status_error" qtlid="26407">Błąd</translation>
 </translations>

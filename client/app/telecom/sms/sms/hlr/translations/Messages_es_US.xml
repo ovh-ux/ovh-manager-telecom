@@ -6,7 +6,7 @@
 
    <translation id="sms_sms_hlr_alert_not_enough_credits" qtlid="360385">Votre crédit est insuffisant pour permettre l’envoi d’une requête HLR.</translation>
 
-   <translation id="sms_sms_hlr_information_title" qtlid="26551">Informations</translation>
+   <translation id="sms_sms_hlr_information_title" qtlid="26551">Informaciones</translation>
    <translation id="sms_sms_hlr_information_text_1" qtlid="360398">Les requêtes HLR vous permettent de savoir si un numéro de téléphone mobile est valide avant de lui envoyer un SMS.</translation>
    <translation id="sms_sms_hlr_information_text_2" qtlid="360411">Si le numéro est valide, le résultat vous permettra de connaître l’opérateur sur lequel le téléphone est enregistré.</translation>
    <translation id="sms_sms_hlr_information_text_3" qtlid="360424">Chaque requête est facturée <b>0,1 crédit</b>.</translation>

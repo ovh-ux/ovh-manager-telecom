@@ -14,7 +14,8 @@
 
    <translation id="me_alerts_OVHACCOUNT_DEBT" qtlid="384121">Záporný zůstatek na Vašem předplaceném účtu je <strong>{{value}}</strong> k datu {{date | date:'medium'}}. Pro vyřešení této situace přejděte prosím do <a href="{{link}}" class="alert-link">sekce "Fakturace"</a>.</translation>
    <translation id="me_alerts_DEBTACCOUNT_DEBT" qtlid="344448">Váš aktuální dluh: <strong>{{value}}</strong>. Pro vyřešení této situace přejděte prosím do <a href="{{link}}" class="alert-link">sekce "Fakturace"</a>.</translation>
-   <translation id="me_alerts_DEBTACCOUNT_DEBT_WITH_UNMATURED_AMOUNT" qtlid="369503">Vous avez une dette de <strong>{{ dueAmount }}</strong> (dont un montant de {{ unmaturedAmount }} non échu). Rendez-vous dans <a href="#/billing/statements" class="alert-link">la section facturation</a> pour régulariser la situation.</translation>
+   <translation id="me_alerts_DEBTACCOUNT_DEBT_WITH_UNMATURED_AMOUNT" qtlid="369503">Na Vašem účtu evidujeme dlužnou částku ve výši <strong>{{ dueAmount }}</strong> (včetně doposud neuhrazené částky {{ unmaturedAmount }}). Pro vyřešení této situace přejděte prosím do <a href="{{link}}" class="alert-link">sekce "Fakturace"</a>.&#13;
+</translation>
 
    <translation id="me_alerts_OVHACCOUNT_ALERTTHRESHOLD" qtlid="384134">Váš předplacený účet dosáhl Vámi stanovené hranice. Pro více informací přejděte prosím do <a href="{{link}}" class="alert-link">sekce "Fakturace"</a>.</translation>
 

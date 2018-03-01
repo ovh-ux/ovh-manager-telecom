@@ -15,11 +15,11 @@
    <translation id="sms_consumed_last_recharge" qtlid="339574">Última recarga</translation>
    <translation id="sms_statistics_title" qtlid="26671">Estadísticas</translation>
    <translation id="sms_statistics_filter_month" qtlid="20203">Mes corriente</translation>
-   <translation id="sms_statistics_filter_sender" qtlid="394647">Tous les expéditeurs</translation>
-   <translation id="sms_statistics_outgoing" qtlid="394660">SMS envoyé</translation>
-   <translation id="sms_statistics_outgoing_plural" qtlid="394673">SMS envoyés</translation>
-   <translation id="sms_statistics_incoming" qtlid="394686">SMS reçu</translation>
+   <translation id="sms_statistics_filter_sender" qtlid="394647">Todos los remitentes</translation>
+   <translation id="sms_statistics_outgoing" qtlid="394660">SMS enviado</translation>
+   <translation id="sms_statistics_outgoing_plural" qtlid="394673">SMS enviados</translation>
+   <translation id="sms_statistics_incoming" qtlid="394686">SMS recibido</translation>
    <translation id="sms_statistics_incoming_plural" qtlid="341199">SMS recibidos</translation>
-   <translation id="sms_statistics_planned" qtlid="394699">SMS planifié</translation>
-   <translation id="sms_statistics_planned_plural" qtlid="342031">SMS planificados</translation>
+   <translation id="sms_statistics_planned" qtlid="394699">SMS programado</translation>
+   <translation id="sms_statistics_planned_plural" qtlid="342031">SMS programados</translation>
 </translations>

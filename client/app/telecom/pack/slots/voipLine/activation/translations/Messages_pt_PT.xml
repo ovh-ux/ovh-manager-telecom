@@ -24,7 +24,7 @@
    <translation id="telefony_activation_hardware_line" qtlid="308177">Ligne {{index}}</translation>
    <translation id="telefony_activation_hardware_caution_label" qtlid="308190">Caução</translation>
    <translation id="telefony_activation_hardware_doc_label" qtlid="79290">Ficha técnica</translation>
-   <translation id="telefony_activation_hardware_select_label" qtlid="84153">Escolha</translation>
+   <translation id="telefony_activation_hardware_select_label" qtlid="84153">Escolher</translation>
    <translation id="telefony_activation_hardware_unselect_label" qtlid="69893">Alterar</translation>
    <translation id="telefony_activation_hardware_select_all_label" qtlid="308203">Commander cet équipement sur toutes les lignes</translation>
    <translation id="telefony_activation_shipping_price_label" qtlid="308216">Frais de port</translation>

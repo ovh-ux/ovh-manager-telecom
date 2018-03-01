@@ -32,7 +32,7 @@
 
    <translation id="telephony_order_identity_first_name" qtlid="23323">Nome</translation>
    <translation id="telephony_order_identity_name" qtlid="3818">Nome</translation>
-   <translation id="telephony_order_identity_email" qtlid="393022">Courriel</translation>
+   <translation id="telephony_order_identity_email" qtlid="393022">Posta</translation>
    <translation id="telephony_order_identity_phone" qtlid="34174">Telefono</translation>
 
    <translation id="telephony_order_identity_organisation" qtlid="49022">Società</translation>
@@ -54,7 +54,10 @@
    <translation id="telephony_order_number_type_common_label" qtlid="333906">Numero standard</translation>
    <translation id="telephony_order_number_type_specific_label" qtlid="333919">Numero facile da ricordare</translation>
 
-   <translation id="telephony_order_retractation_retract_true" qtlid="393035">Vous souhaitez disposer de la possibilité d'exercer votre droit de rétractation et acceptez qu'à ce titre le début de la prestation n'intervienne qu'à expiration de ce delai.<strong> Mise à disposition du service sous 14 jours</strong>.</translation>
+   <translation id="telephony_order_retractation_retract_true" qtlid="393035">Intendi avvalerti della possibilità di esercitare il tuo diritto di recesso e, a questo titolo, accetti che l'esecuzione della prestazione abbia inizio alla scadenza di questo termine.<strong>Attivazione del servizio entro 14 giorni</strong>.&#13;
+&#13;
+&#13;
+ </translation>
    <translation id="telephony_order_retractation_retract_false" qtlid="333945">Richiedi <strong>l'esecuzione immediata della prestazione e,</strong>a questo titolo, riconosci di poter esercitare il tuo diritto di recesso, conformemente alle disposizioni dell'articolo 121-20-2 del "Code de la Consommation" (codice del consumo francese).</translation>
 
    <translation id="telephony_order_amount_title" qtlid="333412">Quantità di numeri:</translation>

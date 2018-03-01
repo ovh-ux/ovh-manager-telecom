@@ -5,7 +5,7 @@
    <translation id="telephony_line_calls_actions_line_manage_filtering_lists_new" qtlid="335141">Filtro chiamate</translation>
    <translation id="telephony_line_calls_actions_line_locking" qtlid="334660">Blocco delle chiamate in uscita</translation>
    <translation id="telephony_line_calls_actions_line_forwardcall" qtlid="93355">Trasferimento di chiamata</translation>
-   <translation id="telephony_line_calls_actions_line_displayNumber" qtlid="58532">Presentazione del numero</translation>
+   <translation id="telephony_line_calls_actions_line_displayNumber" qtlid="58532">Caller ID</translation>
    <translation id="telephony_line_calls_actions_line_simultaneouslines" qtlid="303718">Chiamate simultanee</translation>
    <translation id="telephony_line_calls_actions_line_manage_slots" qtlid="335154">Gestisci le fasce orarie</translation>
    <translation id="telephony_line_calls_actions_line_calendar" qtlid="335167">Gestisci le chiusure eccezionali</translation>

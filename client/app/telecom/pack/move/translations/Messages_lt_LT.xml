@@ -27,20 +27,24 @@
    <translation id="pack_move_eligibility_unbundling_createNeighbour" qtlid="312727">Tinklo kūrimas</translation>
    <translation id="pack_move_eligibility_unbundling_creation" qtlid="312740">Linijos kūrimas</translation>
    <translation id="pack_move_eligibility_unbundling_partial" qtlid="79350">Dalinis pergrupavimas</translation>
+   <translation id="pack_move_eligibility_line_status_active" qtlid="456557">Ligne active</translation>
+   <translation id="pack_move_eligibility_line_status_inactive" qtlid="456570">Ligne inactive</translation>
    <translation id="pack_move_eligibility_provider" qtlid="312753">Teikėjas: {{provider}}</translation>
    <translation id="pack_move_keepLine" qtlid="312766">Pageidauju išsaugoti numerį:</translation>
-   <translation id="pack_move_portLine" qtlid="312779">Pageidauju perkelti numerį:</translation>
+   <translation id="pack_move_portLine" qtlid="456583">Je souhaite conserver mon numéro :</translation>
    <translation id="pack_move_validate" qtlid="312792">Patvirtinti perkėlimą</translation>
    <translation id="pack_move_success" qtlid="312805">Linijos perkėlimas bus baigtas po kelių dienų.</translation>
    <translation id="pack_move_cannot_move" qtlid="312818">Negalima perkelti paketo į pasirinktą liniją.</translation>
    <translation id="pack_move_cannot_validate_move" qtlid="312831">Negalima perkelti paketo: {{message}}</translation>
    <translation id="pack_move_line_current_address" qtlid="312844">Dabartinis adresas</translation>
    <translation id="pack_move_line_future_address" qtlid="312857">Būsimas adresas</translation>
+   <translation id="pack_move_portLine_cost" qtlid="456596">La conservation vous sera facturée <span class="font-weight-bold text-price">50€</span></translation>
 
    <translation id="pack_move_eligibility_error" qtlid="312883">Perkeliamumo testas šiuo metu neprieinamas. Prašome pabandyti vėliau.</translation>
    <translation id="pack_move_eligibility_no_offers" qtlid="385975">Linija{{ number }} nesuderinama su pasiūlymais.</translation>
 
    <translation id="pack_move_portLine_disabled" qtlid="312896">Negalite perkelti savo numerio.</translation>
+   <translation id="pack_move_portLine_warning" qtlid="456609">La conservation du numéro de téléphone de votre accès entraînera la coupure de l'accès internet lui étant rattaché.</translation>
    <translation id="pack_move_keepLine_disabled" qtlid="312909">Negalite išsaugoti šio numerio.</translation>
 
    <translation id="pack_move_unbundling_total" qtlid="79338">Visiškas pergrupavimas</translation>
@@ -67,6 +71,9 @@
    <translation id="pack_move_eligibility_residence" qtlid="313039">Rezidencija</translation>
    <translation id="pack_move_eligibility_stair" qtlid="313052">Laiptinė</translation>
    <translation id="pack_move_eligibility_error" qtlid="313065">Klaida tikrinant perkeliamumą:</translation>
+   <translation id="pack_move_eligibility_address_error_pairs" qtlid="456622">Nous avons enregistré un dysfonctionnement dans l’éligibilité de votre adresse de redirection : le nombre de paires est insuffisant pour créer une nouvelle ligne fixe</translation>
+   <translation id="pack_move_eligibility_address_error_neighbour" qtlid="456635">Nous avons enregistré un dysfonctionnement dans l’éligibilité de votre adresse de redirection : une erreur est survenue lors de la recherche du numéro de rue</translation>
+   <translation id="pack_move_eligibility_street_error" qtlid="456648">La rue {{partial}} est introuvable</translation>
 
    <translation id="pack_move_eligibility_creation_price_label" qtlid="313078">diegimo mokestis</translation>
 
@@ -84,4 +91,5 @@
    <translation id="pack_move_contact_name_info" qtlid="313221">Prašome pateikti asmens vardą, kuris pasitiks technikus.</translation>
    <translation id="pack_move_mandatory_field" qtlid="313234">Žvaigždute pažymėti laukai yra privalomi.</translation>
 
+   <translation id="pack_move_slamming_error" qtlid="456661">Oups ! Nous n'avons pas pu vérifier la portabilité de votre numéro</translation>
 </translations>

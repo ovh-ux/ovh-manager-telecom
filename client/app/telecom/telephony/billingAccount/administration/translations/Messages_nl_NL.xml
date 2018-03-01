@@ -5,4 +5,5 @@
    <translation id="telephony_group_admin_actions_group_new_billing_account" qtlid="44776">Een groep toevoegen</translation>
    <translation id="telephony_group_admin_actions_group_delete_billing_account" qtlid="69929">De groep verwijderen</translation>
    <translation id="telephony_group_admin_actions_portabilities" qtlid="334062">Portabilités en cours</translation>
+   <translation id="telephony_group_admin_group_back_link" qtlid="334075">Retour à l'administration de groupe</translation>
 </translations>

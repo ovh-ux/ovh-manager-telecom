@@ -5,9 +5,9 @@
    <translation id="telephony_group_billing_repayment_history_init_error" qtlid="357291">Ops! Si è verificato un errore durante l'inizializzazione dello storico dei rimborsi.</translation>
    <translation id="telephony_group_billing_repayment_history_download_error" qtlid="357304">Ops! Si è verificato un errore durante il download delle informazioni relative al rimborso.</translation>
 
-   <translation id="telephony_group_billing_repayment_history_informations" qtlid="386781">Cette section concerne les reversements des appels reçus sur les numéros spéciaux de votre groupe. Pour accéder aux coûts générés par les appels entrants,</translation>
+   <translation id="telephony_group_billing_repayment_history_informations" qtlid="386781">Questa sezione è relativa all'inoltro delle chiamate ricevute sui numeri speciali del tuo gruppo. Per accedere ai costi generati dalle chiamate in entrata,</translation>
 
-   <translation id="telephony_group_billing_repayment_history_informations_link" qtlid="386794">accédez aux coûts SVA de votre groupe.</translation>
+   <translation id="telephony_group_billing_repayment_history_informations_link" qtlid="386794">accedi ai costi VAS del tuo gruppo.</translation>
    <translation id="telephony_group_billing_repayment_history_list_title" qtlid="357330">Rimborso del gruppo {{ groupName }}</translation>
    <translation id="telephony_group_billing_repayment_history_list_date" qtlid="259289">Data della richiesta</translation>
    <translation id="telephony_group_billing_repayment_history_list_price" qtlid="45328">Importo</translation>

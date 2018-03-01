@@ -7,7 +7,7 @@
    <translation id="telecom_pack_xdsl_order_follow_up_step_name_configureAccessOnOVH" qtlid="312350">Configuration de l'accès sur les équipements OVH</translation>
    <translation id="telecom_pack_xdsl_order_follow_up_step_name_orderPayed" qtlid="312363">Paiement de la commande</translation>
    <translation id="telecom_pack_xdsl_order_follow_up_step_name_orderReceived" qtlid="312376">Tworzenie zamówienia</translation>
-   <translation id="telecom_pack_xdsl_order_follow_up_step_name_orderTreatment" qtlid="312389">Traitement de la commande</translation>
+   <translation id="telecom_pack_xdsl_order_follow_up_step_name_orderTreatment" qtlid="312389">Przetwarzanie zamówienia</translation>
    <translation id="telecom_pack_xdsl_order_follow_up_step_name_sendModem" qtlid="312402">Envoi du modem</translation>
    <translation id="telecom_pack_xdsl_order_follow_up_step_name_sendOrderToProvider" qtlid="312415">Envoi de la commande au fournisseur d'accès</translation>
    <translation id="telecom_pack_xdsl_order_follow_up_step_name_setupCustomerPremisesEquipment" qtlid="312428">Installation des équiquements</translation>
@@ -22,7 +22,7 @@
    <translation id="telecom_pack_xdsl_order_follow_up_header_estimated_time" qtlid="312467">Estimation durée :</translation>
    <translation id="telecom_pack_xdsl_order_follow_up_header_status" qtlid="317568">Status:</translation>
    <translation id="telecom_pack_xdsl_order_follow_up_status_todo" qtlid="312480">Programmé</translation>
-   <translation id="telecom_pack_xdsl_order_follow_up_status_doing" qtlid="26383">W trakcie</translation>
+   <translation id="telecom_pack_xdsl_order_follow_up_status_doing" qtlid="26383">W toku</translation>
    <translation id="telecom_pack_xdsl_order_follow_up_status_done" qtlid="8662">Zakończone</translation>
    <translation id="telecom_pack_xdsl_order_follow_up_status_error" qtlid="45508">Błąd</translation>
 <translation id="telecom_pack_xdsl_order_follow_up_status_"/>

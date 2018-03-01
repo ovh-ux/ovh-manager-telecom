@@ -12,9 +12,9 @@
    <translation id="freefax_voicemail_sender_email" qtlid="307241">Email de l'expéditeur</translation>
    <translation id="freefax_voicemail_keep_messages" qtlid="307254">Supprimer automatiquement le message après l'envoi</translation>
    <translation id="freefax_voicemail_audio_format" qtlid="307267">Recevoir les messages audio au format</translation>
-   <translation id="freefax_voicemail_redirection_emails" qtlid="307280">Adresses courriel où seront envoyés les messages</translation>
+   <translation id="freefax_voicemail_redirection_emails" qtlid="307280">Email address where messages will be sent to </translation>
    <translation id="freefax_voicemail_redirection_email" qtlid="33598">Email</translation>
    <translation id="freefax_voicemail_redirection_type" qtlid="307293">type</translation>
-   <translation id="freefax_voicemail_success" qtlid="307306">Configuration mise à jour</translation>
-   <translation id="freefax_voicemail_bad_password" qtlid="307319">Mot de passe incorrect</translation>
+   <translation id="freefax_voicemail_success" qtlid="307306">Configuration updated </translation>
+   <translation id="freefax_voicemail_bad_password" qtlid="307319">Incorrect password </translation>
 </translations>

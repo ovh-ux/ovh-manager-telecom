@@ -5,7 +5,7 @@
    <translation id="sms_sms_pending_title" qtlid="342031">Suunnitellut tekstiviestit</translation>
 
    <translation id="sms_sms_pending_label_date" qtlid="24523">Päivämäärä</translation>
-   <translation id="sms_sms_pending_label_scheduled" qtlid="312480">Programmé</translation>
+   <translation id="sms_sms_pending_label_scheduled" qtlid="312480">Suunniteltu</translation>
    <translation id="sms_sms_pending_label_sender" qtlid="24535">Lähettäjä</translation>
    <translation id="sms_sms_pending_label_receiver" qtlid="40442">Vastaanottaja</translation>
    <translation id="sms_sms_pending_label_message" qtlid="30574">Viesti</translation>
@@ -21,7 +21,7 @@
    <translation id="sms_sms_pending_read_label_sms_size_text" qtlid="341238">{{ numberOfSms }} SMS (tai {{ credits | number: 2 }} krediittiä)</translation>
    <translation id="sms_sms_pending_read_label_message" qtlid="341251">Message complet</translation>
 
-   <translation id="sms_sms_pending_remove_title" qtlid="9983">Vahvistus</translation>
+   <translation id="sms_sms_pending_remove_title" qtlid="9983">Vahvista</translation>
    <translation id="sms_sms_pending_remove_confirm" qtlid="341264">Haluatko varmasti poistaa alla näkyvän tekstiviestin?</translation>
    <translation id="sms_sms_pending_removing" qtlid="341277">Poistetaan tekstiviestiä...</translation>
    <translation id="sms_sms_pending_removed" qtlid="341290">Tekstiviesti poistettu</translation>
