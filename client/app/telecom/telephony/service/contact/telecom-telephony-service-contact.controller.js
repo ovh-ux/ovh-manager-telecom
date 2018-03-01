@@ -3,6 +3,24 @@ angular.module("managerApp").controller("TelecomTelephonyServiceContactCtrl", fu
 
     var self = this;
 
+    function buildWayInfo (directory) {
+        if (!directory.wayNumber.length) {
+            directory.wayNumber = directory.address.replace(/\D/g, "");
+        }
+
+        if (!directory.wayNumberExtra.length) {
+            directory.wayNumberExtra = _.find(self.wayNumberExtraEnum, function (extra) {
+                return _.some(_.words(directory.address), function (word) {
+                    return word === extra;
+                });
+            });
+        }
+
+        if (!directory.wayName.length) {
+            directory.wayName = directory.address.replace(/\d+/g, "").replace(directory.wayNumberExtra, "");
+        }
+    }
+
     function fetchDirectory () {
         return OvhApiTelephony.Service().v6().directory({
             billingAccount: $stateParams.billingAccount,
@@ -41,6 +59,8 @@ angular.module("managerApp").controller("TelecomTelephonyServiceContactCtrl", fu
             directory: fetchDirectory()
         }).then(function (res) {
             self.directory = res.directory;
+            buildWayInfo(self.directory);
+
             self.directoryForm = angular.copy(self.directory);
             self.cityList = [{ name: self.directory.city }];
             self.onPostCodeChange();
@@ -305,6 +325,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceContactCtrl", fu
     self.isShortForm = function () {
         return ["fr", "be"].indexOf(self.directory.country) < 0;
     };
+
 
     init();
 });
