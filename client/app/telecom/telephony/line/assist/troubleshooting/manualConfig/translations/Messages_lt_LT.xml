@@ -75,7 +75,7 @@
    <translation id="telephony_line_assist_troubleshooting_manual_config_interface_connection_thomson_step1_password" qtlid="390474">Slaptažodis: <strong>784518</strong>.</translation>
    <translation id="telephony_line_assist_troubleshooting_manual_config_interface_connection_thomson_step2" qtlid="390487">Spauskite <strong>Setup</strong>, po to <strong>Auto Provisioning</strong> ir <strong>Basic Setup</strong>.</translation>
    <translation id="telephony_line_assist_troubleshooting_manual_config_interface_connection_thomson_step3" qtlid="390500">Parinkčiai <strong>Auto Provisioning Setting</strong> nustatykite <strong>HTTP preset</strong>.</translation>
-   <translation id="telephony_line_assist_troubleshooting_manual_config_interface_connection_thomson_step4">Pour l'option <strong>Server IP Address</strong>, entrez la valeur <strong>{{ server }}</strong></translation>
+   <translation id="telephony_line_assist_troubleshooting_manual_config_interface_connection_thomson_step4" qtlid="458819">Pour l'option <strong>Server IP Address</strong>, entrez la valeur <strong>{{ server }}</strong></translation>
    <translation id="telephony_line_assist_troubleshooting_manual_config_interface_connection_thomson_step5" qtlid="390526">Patvirtinkite, kad išsaugotumėte parametrus.</translation>
    <translation id="telephony_line_assist_troubleshooting_manual_config_interface_connection_thomson_step6" qtlid="390539">Spragtelėkite <strong>Restart</strong>, kad pritaikytume parametrus.</translation>
 

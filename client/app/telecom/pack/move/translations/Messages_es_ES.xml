@@ -27,24 +27,24 @@
    <translation id="pack_move_eligibility_unbundling_createNeighbour" qtlid="312727">Creación de vecindad</translation>
    <translation id="pack_move_eligibility_unbundling_creation" qtlid="312740">Creación de línea</translation>
    <translation id="pack_move_eligibility_unbundling_partial" qtlid="79350">"Degrupación" parcial</translation>
-   <translation id="pack_move_eligibility_line_status_active">Ligne active</translation>
-   <translation id="pack_move_eligibility_line_status_inactive">Ligne inactive</translation>
+   <translation id="pack_move_eligibility_line_status_active" qtlid="456557">Ligne active</translation>
+   <translation id="pack_move_eligibility_line_status_inactive" qtlid="456570">Ligne inactive</translation>
    <translation id="pack_move_eligibility_provider" qtlid="312753">Proveedor: {{provider}}</translation>
    <translation id="pack_move_keepLine" qtlid="312766">Quiero conservar el número:</translation>
-   <translation id="pack_move_portLine">Je souhaite conserver mon numéro :</translation>
+   <translation id="pack_move_portLine" qtlid="456583">Je souhaite conserver mon numéro :</translation>
    <translation id="pack_move_validate" qtlid="312792">Aceptar el traslado</translation>
    <translation id="pack_move_success" qtlid="312805">El traslado de su línea será efectivo en unos días.</translation>
    <translation id="pack_move_cannot_move" qtlid="312818">No se ha podido trasladar su pack a la línea elegida.</translation>
    <translation id="pack_move_cannot_validate_move" qtlid="312831">No hemos podido trasladar su pack: {{message}}</translation>
    <translation id="pack_move_line_current_address" qtlid="312844">Dirección actual</translation>
    <translation id="pack_move_line_future_address" qtlid="312857">Dirección futura</translation>
-   <translation id="pack_move_portLine_cost">La conservation vous sera facturée <span class="font-weight-bold text-price">50€</span></translation>
+   <translation id="pack_move_portLine_cost" qtlid="456596">La conservation vous sera facturée <span class="font-weight-bold text-price">50€</span></translation>
 
    <translation id="pack_move_eligibility_error" qtlid="312883">La prueba de compatibilidad no está disponible en este momento. Por favor, vuelva a intentarlo más tarde.</translation>
    <translation id="pack_move_eligibility_no_offers" qtlid="385975">La línea {{ number }} no es compatible con ninguno de nuestros productos.</translation>
 
    <translation id="pack_move_portLine_disabled" qtlid="312896">No puede portar su número.</translation>
-   <translation id="pack_move_portLine_warning">La conservation du numéro de téléphone de votre accès entraînera la coupure de l'accès internet lui étant rattaché.</translation>
+   <translation id="pack_move_portLine_warning" qtlid="456609">La conservation du numéro de téléphone de votre accès entraînera la coupure de l'accès internet lui étant rattaché.</translation>
    <translation id="pack_move_keepLine_disabled" qtlid="312909">No puede conservar el número.</translation>
 
    <translation id="pack_move_unbundling_total" qtlid="79338">"Degrupación" total</translation>
@@ -71,9 +71,9 @@
    <translation id="pack_move_eligibility_residence" qtlid="313039">Residencia</translation>
    <translation id="pack_move_eligibility_stair" qtlid="313052">Escalera</translation>
    <translation id="pack_move_eligibility_error" qtlid="313065">Se ha producido un error durante el test de compatibilidad:</translation>
-   <translation id="pack_move_eligibility_address_error_pairs">Nous avons enregistré un dysfonctionnement dans l’éligibilité de votre adresse de redirection : le nombre de paires est insuffisant pour créer une nouvelle ligne fixe</translation>
-   <translation id="pack_move_eligibility_address_error_neighbour">Nous avons enregistré un dysfonctionnement dans l’éligibilité de votre adresse de redirection : une erreur est survenue lors de la recherche du numéro de rue</translation>
-   <translation id="pack_move_eligibility_street_error">La rue {{partial}} est introuvable</translation>
+   <translation id="pack_move_eligibility_address_error_pairs" qtlid="456622">Nous avons enregistré un dysfonctionnement dans l’éligibilité de votre adresse de redirection : le nombre de paires est insuffisant pour créer une nouvelle ligne fixe</translation>
+   <translation id="pack_move_eligibility_address_error_neighbour" qtlid="456635">Nous avons enregistré un dysfonctionnement dans l’éligibilité de votre adresse de redirection : une erreur est survenue lors de la recherche du numéro de rue</translation>
+   <translation id="pack_move_eligibility_street_error" qtlid="456648">La rue {{partial}} est introuvable</translation>
 
    <translation id="pack_move_eligibility_creation_price_label" qtlid="313078">gastos de puesta en servicio</translation>
 
@@ -91,5 +91,5 @@
    <translation id="pack_move_contact_name_info" qtlid="313221">Por favor, indíquenos el nombre de la persona que va a recibir al técnico el día de la cita.</translation>
    <translation id="pack_move_mandatory_field" qtlid="313234">Los campos marcados con asterisco son obligatorios.</translation>
 
-   <translation id="pack_move_slamming_error">Oups ! Nous n'avons pas pu vérifier la portabilité de votre numéro</translation>
+   <translation id="pack_move_slamming_error" qtlid="456661">Oups ! Nous n'avons pas pu vérifier la portabilité de votre numéro</translation>
 </translations>

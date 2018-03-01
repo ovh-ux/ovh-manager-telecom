@@ -9,7 +9,7 @@
    <translation id="telephony_service_choice_filter_type_sip" qtlid="397039">Líneas SIP</translation>
    <translation id="telephony_service_choice_filter_type_trunk" qtlid="397052">Líneas Trunk</translation>
    <translation id="telephony_service_choice_filter_type_fax" qtlid="32926">Fax</translation>
-   <translation id="telephony_service_choice_filter_type_number">Numéro</translation>
+   <translation id="telephony_service_choice_filter_type_number" qtlid="30778">Número</translation>
 
 <!-- SELECT -->
    <translation id="telephony_service_choice_destination" qtlid="397065">Elija un servicio</translation>

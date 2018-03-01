@@ -8,5 +8,5 @@
    <translation id="pack_move_contract_fake_meeting" qtlid="313273">Verrò contattato da France Telecom per concordare un appuntamento.</translation>
    <translation id="pack_move_contract_meeting" qtlid="313143">L'appuntamento è stato fissato il <strong>{{day}}</strong>, tra le <strong>{{start}}</strong> e le <strong>{{end}}</strong>.</translation>
    <translation id="pack_move_contract_rules" qtlid="313286">Sono consapevole che il trasferimento del mio accesso comporta un nuovo impegno di 12 mesi, a partire dal momento di attivazione del mio nuovo accesso. Il mio accesso attuale verrà disabilitato alla fine del mese in cui il nuovo accesso verrà attivato.</translation>
-   <translation id="pack_move_contract_porta_rules">Je comprends que le déménagement de mon accès engendre un réengagement de 12 mois qui débutetera à l'activation de mon nouvel accès.</translation>
+   <translation id="pack_move_contract_porta_rules" qtlid="456674">Je comprends que le déménagement de mon accès engendre un réengagement de 12 mois qui débutetera à l'activation de mon nouvel accès.</translation>
 </translations>

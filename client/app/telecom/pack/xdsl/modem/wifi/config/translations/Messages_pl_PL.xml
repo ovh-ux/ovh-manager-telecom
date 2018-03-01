@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <translations>
-   <translation id="xdsl_modem_wifi_config_title">Configuration du réseau Wi-Fi {{ ssid }}</translation>
-   <translation id="xdsl_modem_wifi_config_list_title">Liste des réseaux Wi-Fi disponibles</translation>
+   <translation id="xdsl_modem_wifi_config_title" qtlid="456245">Configuration du réseau Wi-Fi {{ ssid }}</translation>
+   <translation id="xdsl_modem_wifi_config_list_title" qtlid="456258">Liste des réseaux Wi-Fi disponibles</translation>
 
-   <translation id="xdsl_modem_wifi_config_wifi">Activer le Wi-Fi :</translation>
-   <translation id="xdsl_modem_wifi_config_state">État</translation>
+   <translation id="xdsl_modem_wifi_config_wifi" qtlid="456271">Activer le Wi-Fi :</translation>
+   <translation id="xdsl_modem_wifi_config_state" qtlid="8230">Status</translation>
 
-   <translation id="xdsl_modem_wifi_config_table_ssid">Identifiant (SSID)</translation>
+   <translation id="xdsl_modem_wifi_config_table_ssid" qtlid="456284">Identifiant (SSID)</translation>
    <translation id="xdsl_modem_wifi_config_ssid" qtlid="317971">Identifiant réseau (SSID)</translation>
-   <translation id="xdsl_modem_wifi_config_ssid_required">L'identifiant réseau est obligatoire.</translation>
-   <translation id="xdsl_modem_wifi_config_ssid_too_short">L'identifiant réseau doit au minimum être composé de 2 caractères.</translation>
-   <translation id="xdsl_modem_wifi_config_ssid_too_long">L'identifiant réseau doit au maximum être composé de 32 caractères.</translation>
-   <translation id="xdsl_modem_wifi_config_ssid_wrong_chars">L'identifiant réseau ne peut pas contenir d'accents.</translation>
+   <translation id="xdsl_modem_wifi_config_ssid_required" qtlid="456297">L'identifiant réseau est obligatoire.</translation>
+   <translation id="xdsl_modem_wifi_config_ssid_too_short" qtlid="456310">L'identifiant réseau doit au minimum être composé de 2 caractères.</translation>
+   <translation id="xdsl_modem_wifi_config_ssid_too_long" qtlid="456323">L'identifiant réseau doit au maximum être composé de 32 caractères.</translation>
+   <translation id="xdsl_modem_wifi_config_ssid_wrong_chars" qtlid="456336">L'identifiant réseau ne peut pas contenir d'accents.</translation>
 
-   <translation id="xdsl_modem_wifi_config_ssid_advertisement">Visibilité du réseau</translation>
-   <translation id="xdsl_modem_wifi_config_ssid_table_visibility">Visibilité</translation>
+   <translation id="xdsl_modem_wifi_config_ssid_advertisement" qtlid="456349">Visibilité du réseau</translation>
+   <translation id="xdsl_modem_wifi_config_ssid_table_visibility" qtlid="106979">Dostępność</translation>
 
    <translation id="xdsl_modem_wifi_config_security" qtlid="125420">Bezpieczeństwo</translation>
-   <translation id="xdsl_modem_wifi_config_type_changed">La modification du type de sécurité necessite l'encodage d'un nouveau mot de passe.</translation>
+   <translation id="xdsl_modem_wifi_config_type_changed" qtlid="456362">La modification du type de sécurité necessite l'encodage d'un nouveau mot de passe.</translation>
 
    <translation id="xdsl_modem_wifi_config_key" qtlid="317997">Clé Wi-Fi</translation>
-   <translation id="xdsl_modem_wifi_config_key_too_short">La clé Wi-Fi doit au minimum être composée de 6 caractères.</translation>
-   <translation id="xdsl_modem_wifi_config_key_required">La clé Wi-Fi est obligatoire.</translation>
+   <translation id="xdsl_modem_wifi_config_key_too_short" qtlid="456375">La clé Wi-Fi doit au minimum être composée de 6 caractères.</translation>
+   <translation id="xdsl_modem_wifi_config_key_required" qtlid="456388">La clé Wi-Fi est obligatoire.</translation>
 
-   <translation id="xdsl_modem_wifi_config_canal">Canal</translation>
-   <translation id="xdsl_modem_wifi_config_table_frequency">Fréquence</translation>
-   <translation id="xdsl_modem_wifi_config_table_band_steering">Agrégée</translation>
-   <translation id="xdsl_modem_wifi_config_table_guest">Invité</translation>
+   <translation id="xdsl_modem_wifi_config_canal" qtlid="279730">Kanał</translation>
+   <translation id="xdsl_modem_wifi_config_table_frequency" qtlid="30442">Częstotliwość</translation>
+   <translation id="xdsl_modem_wifi_config_table_band_steering" qtlid="456401">Agrégée</translation>
+   <translation id="xdsl_modem_wifi_config_table_guest" qtlid="456414">Invité</translation>
 
-   <translation id="xdsl_modem_wifi_config_state_enabled">Activé</translation>
-   <translation id="xdsl_modem_wifi_config_state_disabled">Désactivé</translation>
+   <translation id="xdsl_modem_wifi_config_state_enabled" qtlid="30250">Aktywny</translation>
+   <translation id="xdsl_modem_wifi_config_state_disabled" qtlid="24967">Wyłączony</translation>
 
    <translation id="xdsl_modem_wifi_config_description" qtlid="311427">Tryb Wi-Fi pozwala na skonfigurowanie sieci bez podłączania modemu za pomocą kabla.</translation>
 
@@ -42,14 +42,14 @@
    <translation id="xdsl_modem_wifi_config_new_key" qtlid="303029">Nowy klucz</translation>
    <translation id="xdsl_modem_wifi_config_retype_new_key" qtlid="318088">Ressaisissez la nouvelle clé</translation>
 
-   <translation id="xdsl_modem_wifi_config_key_not_matching">Les clés Wi-Fi ne sont pas identiques !</translation>
+   <translation id="xdsl_modem_wifi_config_key_not_matching" qtlid="456427">Les clés Wi-Fi ne sont pas identiques !</translation>
 
    <translation id="xdsl_modem_wifi_config_visible" qtlid="46300">Widoczne</translation>
    <translation id="xdsl_modem_wifi_config_hidden" qtlid="128274">Ukryte</translation>
 
    <translation id="xdsl_modem_wifi_config_really" qtlid="318114">Êtes-vous sûr(e) de vouloir modifier votre configuration Wi-Fi ?</translation>
 
-   <translation id="xdsl_modem_wifi_config_success">Configuration Wi-Fi mis à jour avec succès !</translation>
+   <translation id="xdsl_modem_wifi_config_success" qtlid="456440">Configuration Wi-Fi mis à jour avec succès !</translation>
    <translation id="xdsl_modem_wifi_config_success_single" qtlid="318127">Configuration Wi-Fi mis à jour avec succès ! Vous allez être redirigé(e).</translation>
 
    <translation id="xdsl_modem_wifi_config_error_missing" qtlid="318140">Wi-Fi non existant!</translation>
@@ -62,6 +62,6 @@
 
    <translation id="xdsl_modem_wifi_read_error" qtlid="385169">Oups ! Nous n'avons pas pu récupérer les informations relatives à votre wifi.</translation>
    <translation id="xdsl_modem_wifi_write_error" qtlid="385182">Oups ! Nous n'avons pas pu mettre à jour votre wifi.</translation>
-   <translation id="xdsl_modem_wifi_config_info">Une modification de configuration d'un réseau Wi-Fi est déjà en cours. Les modifications que vous allez apporter seront appliquées une fois cette modification terminée.</translation>
+   <translation id="xdsl_modem_wifi_config_info" qtlid="456453">Une modification de configuration d'un réseau Wi-Fi est déjà en cours. Les modifications que vous allez apporter seront appliquées une fois cette modification terminée.</translation>
 
 </translations>

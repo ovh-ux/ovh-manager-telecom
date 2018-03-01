@@ -11,5 +11,5 @@
    <translation id="pack_xdsl_access_ip_order_accept_conditions_contract" qtlid="309334">Voir le contrat</translation>
    <translation id="pack_xdsl_access_ip_order_no" qtlid="37863">Abbrechen</translation>
    <translation id="pack_xdsl_access_ip_order_yes" qtlid="43558">Bestellen</translation>
-   <translation id="pack_xdsl_access_ip_order_validation">La commande du bloc d'IP a bien été prise en compte.</translation>
+   <translation id="pack_xdsl_access_ip_order_validation" qtlid="455985">La commande du bloc d'IP a bien été prise en compte.</translation>
 </translations>

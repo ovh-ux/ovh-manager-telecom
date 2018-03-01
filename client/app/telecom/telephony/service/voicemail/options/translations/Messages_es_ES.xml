@@ -9,8 +9,8 @@
    <translation id="telephony_line_answer_voicemail_options_recording_file" qtlid="337832">Archivo...</translation>
    <translation id="telephony_line_answer_voicemail_options_recording_file_invalid" qtlid="337845">Formato de archivo no autorizado.</translation>
    <translation id="telephony_line_answer_voicemail_options_recording_file_download_error" qtlid="337858">La descarga de su mensaje de bienvenida no está disponible temporalmente.</translation>
-   <translation id="telephony_line_answer_voicemail_options_recording_delete">Supprimer le message d'accueil</translation>
-   <translation id="telephony_line_answer_voicemail_options_recording_delete_confirm">Êtes-vous certain de vouloir supprimer le message d'accueil ?</translation>
+   <translation id="telephony_line_answer_voicemail_options_recording_delete" qtlid="459911">Supprimer le message d'accueil</translation>
+   <translation id="telephony_line_answer_voicemail_options_recording_delete_confirm" qtlid="459924">Êtes-vous certain de vouloir supprimer le message d'accueil ?</translation>
    <translation id="telephony_line_answer_voicemail_options_apply" qtlid="41326">Aplicar</translation>
    <translation id="telephony_line_answer_voicemail_options_notification" qtlid="337871">Opciones de notificación</translation>
    <translation id="telephony_line_answer_voicemail_options_audioformat" qtlid="337884">Formato de los archivos de audio:</translation>

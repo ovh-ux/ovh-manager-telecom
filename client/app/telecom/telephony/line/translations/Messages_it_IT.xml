@@ -18,5 +18,5 @@
    <translation id="telephony_line_expire_date" qtlid="358591">Il servizio scade il {{date}}.</translation>
    <translation id="telephony_line_expire_link" qtlid="358604">Per annullare, clicca qui.</translation>
    <translation id="telephony_line_convert_date" qtlid="387367">Questa linea sarà convertita in numero il {{ date }}.</translation>
-   <translation id="telephony_line_convert_link" qtlid="358604">Per annullare, clicca qui.</translation>
+   <translation id="telephony_line_convert_link" qtlid="458195">Vous pourrez annuler dans la section suivante.</translation>
 </translations>

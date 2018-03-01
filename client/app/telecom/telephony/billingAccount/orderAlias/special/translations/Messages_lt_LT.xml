@@ -30,7 +30,7 @@
    <translation id="telephony_order_specific_typology_m2m_label" qtlid="347002">Peer 2 peer paslaugos</translation>
    <translation id="telephony_order_specific_typology_relationship_label" qtlid="347015">Kliento ir įmonės / administracijos / asociacijos bendradarbiavimas</translation>
 
-   <translation id="telephony_order_specific_typology_adults_label">Contenu pour adultes</translation>
+   <translation id="telephony_order_specific_typology_adults_label" qtlid="347028">Turinys suaugusiems</translation>
    <translation id="telephony_order_specific_typology_content_label" qtlid="347041">Garsai, logotipai</translation>
    <translation id="telephony_order_specific_typology_general_label" qtlid="69341">Bendrasis</translation>
    <translation id="telephony_order_specific_typology_relaxing_label" qtlid="347054">Pramogos</translation>

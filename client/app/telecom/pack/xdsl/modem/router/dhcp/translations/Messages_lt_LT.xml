@@ -9,8 +9,8 @@
    <translation id="xdsl_modem_dhcp_secondary_dns" qtlid="170408">Antrinis DNS</translation>
    <translation id="xdsl_modem_dhcp_dns_domain" qtlid="311830">DHCP domenas</translation>
    <translation id="xdsl_modem_dhcp_playa_dhcp" qtlid="311843">DHCP ruožas</translation>
-   <translation id="xdsl_modem_dhcp_playa_dhcp_start">Adresse de début de la plage DHCP</translation>
-   <translation id="xdsl_modem_dhcp_playa_dhcp_end">Adresse de fin de la plage DHCP</translation>
+   <translation id="xdsl_modem_dhcp_playa_dhcp_start" qtlid="456479">Adresse de début de la plage DHCP</translation>
+   <translation id="xdsl_modem_dhcp_playa_dhcp_end" qtlid="456492">Adresse de fin de la plage DHCP</translation>
    <translation id="xdsl_modem_dhcp_allocation_time" qtlid="311856">Adreso suteikimo trukmė</translation>
 
    <translation id="xdsl_modem_dhcp_gateway_tooltip" qtlid="311869">Įrangos IP adresas, į kurį siunčiami paketai iš interneto (pagal nutylėjimą tai yra modemo LAN IP adresas)</translation>

@@ -10,17 +10,17 @@
    <translation id="ttc" qtlid="101385">IVA incl.</translation>
    <translation id="table_sort" qtlid="94699">Ordenar</translation>
 
-   <translation id="common_datagrid_nodata">Aucun résultat</translation>
-   <translation id="common_pagination_resultsperpage">Résultats par page</translation>
-   <translation id="common_pagination_ofnresults">sur TOTAL_ITEMS résultats</translation>
-   <translation id="common_pagination_currentpageofpagecount">Page CURRENT_PAGE sur PAGE_COUNT</translation>
+   <translation id="common_datagrid_nodata" qtlid="197635">Nenhum resultado encontrado</translation>
+   <translation id="common_pagination_resultsperpage" qtlid="433384">Resultados por página</translation>
+   <translation id="common_pagination_ofnresults" qtlid="452982">de TOTAL_ITEMS resultados</translation>
+   <translation id="common_pagination_currentpageofpagecount" qtlid="452995">Página CURRENT_PAGE de PAGE_COUNT</translation>
 
    <translation id="yes" qtlid="50134">sim</translation>
-   <translation id="common_yes_capitalized">Oui</translation>
+   <translation id="common_yes_capitalized" qtlid="34776">Sim</translation>
    <translation id="no" qtlid="50602">não</translation>
-   <translation id="common_no_capitalized">Non</translation>
-   <translation id="previous">Précédent</translation>
-   <translation id="next">Suivant</translation>
+   <translation id="common_no_capitalized" qtlid="34788">Não</translation>
+   <translation id="previous" qtlid="17431">Anterior</translation>
+   <translation id="next" qtlid="17743">Seguinte</translation>
 
    <translation id="show" qtlid="69353">Mostrar</translation>
    <translation id="hide" qtlid="26539">Ocultar</translation>
@@ -42,7 +42,7 @@
    <translation id="modify" qtlid="37875">Alterar</translation>
    <translation id="access" qtlid="304524">Accéder</translation>
    <translation id="edit_name" qtlid="304537">Éditer {{name}}</translation>
-   <translation id="common_create">Créer</translation>
+   <translation id="common_create" qtlid="39226">Criar</translation>
    <translation id="cancel" qtlid="37863">Anular</translation>
    <translation id="delete" qtlid="2414">Eliminar</translation>
    <translation id="delete_name" qtlid="304550">Supprimer {{name}}</translation>
@@ -82,10 +82,10 @@
    <translation id="sidebar_no_item_found" qtlid="304589">Aucun élément ne correspond à votre recherche.</translation>
 
 
-   <translation id="browser_alert_not_supported">Votre navigateur n'est pas supporté.</translation>
-   <translation id="browser_alert_deprecated">Votre navigateur n'est pas à jour et peut contenir des failles de sécurité ou de compatibilité.</translation>
-   <translation id="browser_alert_update">Nous vous recommandons de <a href="http://outdatedbrowser.com/fr" class="alert-link" target="_blank" rel="noopener">mettre à jour votre navigateur <i class="fa fa-external-link" aria-hidden="true"></i></a> afin de profiter d'une expérience optimale.</translation>
-   <translation id="browser_alert_close">Fermer cette alerte</translation>
+   <translation id="browser_alert_not_supported" qtlid="405357">O seu browser não é compatível</translation>
+   <translation id="browser_alert_deprecated" qtlid="405370">O seu browser não está atualizado e pode ter falhas de segurança ou problemas de compatibilidade.</translation>
+   <translation id="browser_alert_update" qtlid="455699">Nous vous recommandons de <a href="http://outdatedbrowser.com/fr" class="alert-link" target="_blank" rel="noopener">mettre à jour votre navigateur <i class="fa fa-external-link" aria-hidden="true"></i></a> afin de profiter d'une expérience optimale.</translation>
+   <translation id="browser_alert_close" qtlid="405396">Fechar este alerta</translation>
 
 <!-- xdsl/sidebar -->
    <translation id="label-menu-item-ok" qtlid="304602">Cette ligne est active.</translation>
@@ -134,10 +134,10 @@
    <translation id="common_menu_billing" qtlid="32950">Faturação</translation>
    <translation id="common_menu_language" qtlid="30598">Idioma</translation>
    <translation id="common_menu_account" qtlid="157642">A minha conta</translation>
-   <translation id="common_menu_renew">Mes services</translation>
-   <translation id="common_menu_orders_all">Mes commandes</translation>
-   <translation id="common_menu_contacts">Mes contacts</translation>
-   <translation id="common_menu_list_ticket">Mes demandes d’assistance</translation>
+   <translation id="common_menu_renew" qtlid="229658">Os meus serviços</translation>
+   <translation id="common_menu_orders_all" qtlid="282809">As minhas encomendas</translation>
+   <translation id="common_menu_contacts" qtlid="70541">Os meus contactos</translation>
+   <translation id="common_menu_list_ticket" qtlid="454039">Os meus tickets</translation>
    <translation id="common_menu_support_assistance" qtlid="52699">Assistência</translation>
    <translation id="common_menu_support_all_guides" qtlid="260788">Manuais OVH</translation>
    <translation id="common_menu_support_new_ticket" qtlid="260801">Criar um ticket</translation>
@@ -146,7 +146,7 @@
    <translation id="common_menu_support_telephony_contact" qtlid="260827">Assistência telefónica</translation>
    <translation id="common_menu_telephony_redirection" qtlid="304797">Redirection vers le manager Téléphonie</translation>
    <translation id="common_menu_support_changelog" qtlid="124964">Histórico das atualizações</translation>
-   <translation id="common_skip_to_main_content">Aller au contenu principal</translation>
+   <translation id="common_skip_to_main_content" qtlid="454052">Aceder ao conteúdo principal</translation>
    <translation id="global_logout" qtlid="33658">Desligar</translation>
 
    <translation id="common_pagination_page" qtlid="239246">Página {{currentPage}} / {{nbPages}}</translation>
@@ -173,11 +173,11 @@
 
    <translation id="common_menu_changelog" qtlid="260971">Changelog</translation>
 
-   <translation id="common_express_lite_banner_desc">Express Lite comprend donc un modem offrant un accès à internet et une ligne VoIP pour <span class="ad-price font-weight-bold fs14">22,99€ HT</span>&#160;/&#160;mois.</translation>
+   <translation id="common_express_lite_banner_desc" qtlid="455712">Express Lite comprend donc un modem offrant un accès à internet et une ligne VoIP pour <span class="ad-price font-weight-bold fs14">22,99€ HT</span>&#160;/&#160;mois.</translation>
    <translation id="common_express_lite_banner_title" qtlid="304888">OVH lance une nouvelle offre de connexion ADSL et VDSL incluant l'essentiel.</translation>
    <translation id="common_generate_order" qtlid="186219">Gerar nota de encomenda</translation>
    <translation id="common_boost_banner_title" qtlid="304901">OVH lance deux séries limitées de connexion seule pour profiter d'un meilleur débit.</translation>
-   <translation id="common_boost_banner_desc">Sécurisez votre connexion avec l'offre <span class="ad-price font-weight-bold fs14">CONNECT</span> ou doublez votre débit avec l'offre <span class="ad-price font-weight-bold fs14">BOOST</span> qui inclut le matériel et le service <span class="ad-price font-weight-bold fs14">OVER THE BOX</span>.<br/><small>Offre limitée aux 240 premières commandes.</small></translation>
+   <translation id="common_boost_banner_desc" qtlid="455725">Sécurisez votre connexion avec l'offre <span class="ad-price font-weight-bold fs14">CONNECT</span> ou doublez votre débit avec l'offre <span class="ad-price font-weight-bold fs14">BOOST</span> qui inclut le matériel et le service <span class="ad-price font-weight-bold fs14">OVER THE BOX</span>.<br/><small>Offre limitée aux 240 premières commandes.</small></translation>
    <translation id="common_banner_discover" qtlid="304927">Découvrir l'offre</translation>
    <translation id="common_service_name_edit_title" qtlid="331683">{{ title }} : éditer le nom du service</translation>
 
@@ -193,19 +193,19 @@
    <translation id="common_home" qtlid="27643">Página Inicial</translation>
 
 <!-- Units -->
-   <translation id="unit_bits_per_sec">{{val}} bits/s</translation>
-   <translation id="unit_kilo_bits_per_sec">{{val}} Kbs/s</translation>
-   <translation id="unit_mega_bits_per_sec">{{val}} Mbs/s</translation>
-   <translation id="unit_giga_bits_per_sec">{{val}} Gbs/s</translation>
-   <translation id="unit_tera_bits_per_sec">{{val}} Tbs/s</translation>
-   <translation id="unit_peta_bits_per_sec">{{val}} Pbs/s</translation>
+   <translation id="unit_bits_per_sec" qtlid="455738">{{val}} bits/s</translation>
+   <translation id="unit_kilo_bits_per_sec" qtlid="455751">{{val}} Kbs/s</translation>
+   <translation id="unit_mega_bits_per_sec" qtlid="455764">{{val}} Mbs/s</translation>
+   <translation id="unit_giga_bits_per_sec" qtlid="455777">{{val}} Gbs/s</translation>
+   <translation id="unit_tera_bits_per_sec" qtlid="455790">{{val}} Tbs/s</translation>
+   <translation id="unit_peta_bits_per_sec" qtlid="455803">{{val}} Pbs/s</translation>
 
-   <translation id="unit_generic_per_sec">{{val}}</translation>
-   <translation id="unit_kilo_generic_per_sec">{{val}} K</translation>
-   <translation id="unit_mega_generic_per_sec">{{val}} M</translation>
-   <translation id="unit_giga_generic_per_sec">{{val}} G</translation>
-   <translation id="unit_tera_generic_per_sec">{{val}} T</translation>
-   <translation id="unit_peta_generic_per_sec">{{val}} P</translation>
+   <translation id="unit_generic_per_sec" qtlid="455816">{{val}}</translation>
+   <translation id="unit_kilo_generic_per_sec" qtlid="455829">{{val}} K</translation>
+   <translation id="unit_mega_generic_per_sec" qtlid="455842">{{val}} M</translation>
+   <translation id="unit_giga_generic_per_sec" qtlid="455855">{{val}} G</translation>
+   <translation id="unit_tera_generic_per_sec" qtlid="455868">{{val}} T</translation>
+   <translation id="unit_peta_generic_per_sec" qtlid="455881">{{val}} P</translation>
 
 <!-- LANGUAGE LIST -->
    <translation id="language_de_DE" qtlid="31618">Alemão</translation>

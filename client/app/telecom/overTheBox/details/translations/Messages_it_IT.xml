@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <translations>
    <translation id="overTheBox_dashboard_title" qtlid="305616">Il tuo OverTheBox</translation>
-   <translation id="overTheBox_dashboard_service_label" qtlid="266952">Nome del servizio</translation>
+   <translation id="overTheBox_dashboard_service_label" qtlid="463382">Nom du service :</translation>
    <translation id="overTheBox_device_listing_title" qtlid="289588">Lista delle periferiche</translation>
    <translation id="overTheBox_device_button_add" qtlid="317659">Nuova periferica</translation>
    <translation id="overTheBox_device_activation" qtlid="74958">Attivazione</translation>
@@ -33,7 +33,7 @@
    <translation id="overTheBox_bandwidth" qtlid="89749">Flusso</translation>
    <translation id="overTheBox_publicIp" qtlid="317711">Indirizzo IP pubblico:</translation>
    <translation id="overTheBox_deviceId" qtlid="317724">Identificativo della periferica:</translation>
-   <translation id="overTheBox_deviceId_button_title">Identifiant du périphérique :</translation>
+   <translation id="overTheBox_deviceId_button_title" qtlid="289471">Identificativo della periferica:</translation>
    <translation id="overTheBox_device_state" qtlid="317737">Stato della periferica:</translation>
    <translation id="overTheBox_expiration_date" qtlid="317750">Prossima fatturazione:</translation>
    <translation id="overTheBox_billing_date" qtlid="317750">Prossima fatturazione:</translation>
@@ -82,5 +82,5 @@
    <translation id="overTheBox_resiliation_cancel_error" qtlid="395765">Ops! Impossibile annullare l'operazione di disattivazione in corso per il servizio {{service}}.</translation>
    <translation id="overTheBox_cancel_resiliation_success" qtlid="395778">La disattivazione del servizio {{service}} è stata annullata.</translation>
 
-   <translation id="overTheBox_statistics_bits_per_sec_legend">bits/s</translation>
+   <translation id="overTheBox_statistics_bits_per_sec_legend" qtlid="456115">bits/s</translation>
 </translations>

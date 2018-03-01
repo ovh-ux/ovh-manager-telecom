@@ -9,8 +9,8 @@
    <translation id="xdsl_modem_dhcp_secondary_dns" qtlid="170408">DNS Secondario</translation>
    <translation id="xdsl_modem_dhcp_dns_domain" qtlid="311830">Dominio DHCP</translation>
    <translation id="xdsl_modem_dhcp_playa_dhcp" qtlid="311843">Intervallo DHCP</translation>
-   <translation id="xdsl_modem_dhcp_playa_dhcp_start">Adresse de début de la plage DHCP</translation>
-   <translation id="xdsl_modem_dhcp_playa_dhcp_end">Adresse de fin de la plage DHCP</translation>
+   <translation id="xdsl_modem_dhcp_playa_dhcp_start" qtlid="456479">Adresse de début de la plage DHCP</translation>
+   <translation id="xdsl_modem_dhcp_playa_dhcp_end" qtlid="456492">Adresse de fin de la plage DHCP</translation>
    <translation id="xdsl_modem_dhcp_allocation_time" qtlid="311856">Durata dell'assegnazione di un indirizzo</translation>
 
    <translation id="xdsl_modem_dhcp_gateway_tooltip" qtlid="311869">Indirizzo IP del dispositivo a cui saranno inviati i tuoi dati prima dell'accesso a Internet (di default l'indirizzo IP LAN del modem)</translation>

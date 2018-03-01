@@ -8,5 +8,5 @@
    <translation id="pack_move_contract_fake_meeting" qtlid="313273">Ich werde von France Telecom angerufen, um ein Treffen zu vereinbaren.</translation>
    <translation id="pack_move_contract_meeting" qtlid="313143">Es ist ein Treffen vorgesehen für den <strong>{{day}}</strong> zwischen <strong>{{start}}</strong> und <strong>{{end}}</strong>.</translation>
    <translation id="pack_move_contract_rules" qtlid="313286">Mir ist bekannt, dass der Umzug meines Zugangs eine automatische Vertragsverlängerung von 12 Monaten bewirkt, die mit der Aktivierung des neuen Zugangs beginnt. Mein aktueller Zugang wird zum Monatsende der Einrichtung des neuen Zugangs geschlossen.</translation>
-   <translation id="pack_move_contract_porta_rules">Je comprends que le déménagement de mon accès engendre un réengagement de 12 mois qui débutetera à l'activation de mon nouvel accès.</translation>
+   <translation id="pack_move_contract_porta_rules" qtlid="456674">Je comprends que le déménagement de mon accès engendre un réengagement de 12 mois qui débutetera à l'activation de mon nouvel accès.</translation>
 </translations>

@@ -75,7 +75,7 @@
    <translation id="telephony_line_assist_troubleshooting_manual_config_interface_connection_thomson_step1_password" qtlid="390474">Contraseña: <strong>784518</strong>.</translation>
    <translation id="telephony_line_assist_troubleshooting_manual_config_interface_connection_thomson_step2" qtlid="390487">Haga clic en <strong>Setup</strong>, y después en <strong>Auto Provisioning</strong> y <strong>Basic Setup</strong>.</translation>
    <translation id="telephony_line_assist_troubleshooting_manual_config_interface_connection_thomson_step3" qtlid="390500">Para la opción <strong>Auto Provisioning Setting</strong>, seleccione <strong>HTTP preset</strong>.</translation>
-   <translation id="telephony_line_assist_troubleshooting_manual_config_interface_connection_thomson_step4">Pour l'option <strong>Server IP Address</strong>, entrez la valeur <strong>{{ server }}</strong></translation>
+   <translation id="telephony_line_assist_troubleshooting_manual_config_interface_connection_thomson_step4" qtlid="458819">Pour l'option <strong>Server IP Address</strong>, entrez la valeur <strong>{{ server }}</strong></translation>
    <translation id="telephony_line_assist_troubleshooting_manual_config_interface_connection_thomson_step5" qtlid="390526">Confirme antes de guardar la configuración.</translation>
    <translation id="telephony_line_assist_troubleshooting_manual_config_interface_connection_thomson_step6" qtlid="390539">Haga clic en <strong>Restart</strong> para aplicar la configuración.</translation>
 

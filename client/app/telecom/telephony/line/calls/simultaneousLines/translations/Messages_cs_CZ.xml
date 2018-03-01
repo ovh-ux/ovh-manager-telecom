@@ -5,15 +5,15 @@
    <translation id="telephony_line_actions_line_calls_simultaneous_line_write_error" qtlid="387068">Oups ! Impossible de modifier le nombre d'appels simultanés.</translation>
    <translation id="telephony_line_actions_line_calls_simultaneous_line_order_error" qtlid="387081">Impossible de générer le bon de commande.</translation>
    <translation id="telephony_line_actions_line_calls_simultaneous_line_label" qtlid="335206">Nombre d'appels simultanés&#160;:</translation>
-   <translation id="telephony_line_actions_line_calls_maximum_simultaneous_line_label" qtlid="335206">Nombre d'appels simultanés&#160;:</translation>
+   <translation id="telephony_line_actions_line_calls_maximum_simultaneous_line_label" qtlid="457428">Nombre d'appels simultanés maximum de la ligne :</translation>
    <translation id="telephony_line_actions_line_calls_simultaneous_line_support" qtlid="387094">Votre configuration accepte plus de 100 appels simultanés. Pour changer cette valeur, merci de contacter le support au 1007.</translation>
    <translation id="telephony_line_actions_line_calls_simultaneous_line_price_vat" qtlid="360190">TVA&#160;:&#160;</translation>
    <translation id="telephony_line_actions_line_calls_simultaneous_line_price_without_vat" qtlid="360164">Prix&#160;(HT)&#160;:&#160;</translation>
    <translation id="telephony_line_actions_line_calls_simultaneous_line_price_total" qtlid="360177">Total&#160;(TTC)&#160;:&#160;</translation>
-   <translation id="telephony_line_actions_line_calls_simultaneous_line_summary">Récapitulatif</translation>
-   <translation id="telephony_line_actions_line_calls_simultaneous_line_order_id">N° de commande</translation>
-   <translation id="telephony_line_actions_line_calls_simultaneous_line_order_link">Bon de commande</translation>
-   <translation id="telephony_line_actions_line_calls_simultaneous_line_order_click">Cliquez ici</translation>
+   <translation id="telephony_line_actions_line_calls_simultaneous_line_summary" qtlid="82725">Shrnutí</translation>
+   <translation id="telephony_line_actions_line_calls_simultaneous_line_order_id" qtlid="457441">N° de commande</translation>
+   <translation id="telephony_line_actions_line_calls_simultaneous_line_order_link" qtlid="35352">Objednávkový formulář</translation>
+   <translation id="telephony_line_actions_line_calls_simultaneous_line_order_click" qtlid="127348">Klikněte zde</translation>
    <translation id="telephony_line_actions_line_calls_simultaneous_order" qtlid="43558">Objednat</translation>
    <translation id="telephony_line_actions_line_calls_simultaneous_bc" qtlid="334387">Afin de finaliser votre demande, merci de valider ce</translation>
    <translation id="telephony_line_actions_line_calls_simultaneous_url" qtlid="292800">objednávka</translation>
@@ -24,8 +24,8 @@
    <translation id="telephony_line_actions_line_calls_simultaneous_remove_cancel" qtlid="37863">Zrušit</translation>
    <translation id="telephony_line_actions_line_calls_simultaneous_line_offer_task_error" qtlid="387133">Impossible de récupérer les tâches en cours.</translation>
 
-   <translation id="telephony_line_actions_line_calls_simultaneous_bulk_all_success">La modification du nombre d'appels simultanés a bien été appliquée aux services sélectionnés.</translation>
-   <translation id="telephony_line_actions_line_calls_simultaneous_bulk_some_success">La modification du nombre d'appels simultanés a bien été appliquée à {{ count }} des services sélectionnés.</translation>
-   <translation id="telephony_line_actions_line_calls_simultaneous_bulk_error">La modification du nombre d'appels simultanés n'a pu être appliquée au(x) service(s) suivant(s) :</translation>
-   <translation id="telephony_line_actions_line_calls_simultaneous_bulk_on_error">Oups ! Une erreur est survenue lors de la modification du nombre d'appels simultanés.</translation>
+   <translation id="telephony_line_actions_line_calls_simultaneous_bulk_all_success" qtlid="457454">La modification du nombre d'appels simultanés a bien été appliquée aux services sélectionnés.</translation>
+   <translation id="telephony_line_actions_line_calls_simultaneous_bulk_some_success" qtlid="457467">La modification du nombre d'appels simultanés a bien été appliquée à {{ count }} des services sélectionnés.</translation>
+   <translation id="telephony_line_actions_line_calls_simultaneous_bulk_error" qtlid="457480">La modification du nombre d'appels simultanés n'a pu être appliquée au(x) service(s) suivant(s) :</translation>
+   <translation id="telephony_line_actions_line_calls_simultaneous_bulk_on_error" qtlid="457493">Oups ! Une erreur est survenue lors de la modification du nombre d'appels simultanés.</translation>
 </translations>

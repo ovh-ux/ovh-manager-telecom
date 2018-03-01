@@ -23,7 +23,7 @@
    <translation id="sms_sms_compose_recipient_label" qtlid="341407">Saisissez le numéro d’un seul destinataire</translation>
    <translation id="sms_sms_compose_recipient_placeholder" qtlid="341420">Numéro du destinataire (exemple : +33601020304)</translation>
    <translation id="sms_sms_compose_recipient_error_required" qtlid="341433">Le champ "Destinataire" est obligatoire.</translation>
-   <translation id="sms_sms_compose_recipient_error_pattern">Le numéro du destinataire doit être au format international.</translation>
+   <translation id="sms_sms_compose_recipient_error_pattern" qtlid="463369">Le numéro du destinataire doit être au format international.</translation>
 
    <translation id="sms_sms_compose_phonebook_manage" qtlid="341446">Carnets d’adresses</translation>
 

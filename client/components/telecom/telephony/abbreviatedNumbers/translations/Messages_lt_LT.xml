@@ -5,8 +5,8 @@
    <translation id="telephony_abbreviated_numbers_write_success" qtlid="334257">Trumpasis numeris {{num}} atnaujintas.</translation>
    <translation id="telephony_abbreviated_numbers_id" qtlid="334283">Trumpasis numeris</translation>
    <translation id="telephony_abbreviated_numbers_number" qtlid="334296">Paskirties numeris</translation>
-   <translation id="telephony_abbreviated_numbers_surname">Nom</translation>
-   <translation id="telephony_abbreviated_numbers_name">Prénom</translation>
+   <translation id="telephony_abbreviated_numbers_surname" qtlid="3818">Pavadinimas</translation>
+   <translation id="telephony_abbreviated_numbers_name" qtlid="23323">Vardas</translation>
    <translation id="telephony_abbreviated_numbers_table_empty" qtlid="334309">Neturite trumpojo numerio.</translation>
    <translation id="telephony_abbreviated_numbers_remove_success" qtlid="360658">Trumpasis numeris {{abbreviatedNumber}} ištrintas.</translation>
    <translation id="telephony_abbreviated_numbers_remove_error" qtlid="360671">Negalima ištrinti trumpojo numerio {{abbreviatedNumber}}.</translation>

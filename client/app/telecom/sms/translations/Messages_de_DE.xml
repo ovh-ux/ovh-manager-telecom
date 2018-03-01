@@ -12,7 +12,7 @@
    <translation id="sms_tabs_guides" qtlid="300370">Hilfen</translation>
 
    <translation id="sms_rename_error" qtlid="317633">Impossible de renommer votre pack {{serviceName}}.</translation>
-   <translation id="sms_loading_error">Une erreur est survenue lors du chargement de SMS</translation>
+   <translation id="sms_loading_error" qtlid="463356">Une erreur est survenue lors du chargement de SMS</translation>
 
    <translation id="sms_feature_soon_available" qtlid="339444">Cette fonctionnalité sera bientôt disponible.</translation>
 </translations>

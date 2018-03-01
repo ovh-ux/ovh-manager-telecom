@@ -8,5 +8,5 @@
    <translation id="pack_move_contract_fake_meeting" qtlid="313273">France Telecom ottaa minuun yhteyttä tapaamisen sopimista varten.</translation>
    <translation id="pack_move_contract_meeting" qtlid="313143">Tapaaminen on sovittu <strong>{{day}}</strong> välillä  <strong>{{start}}</strong> ja <strong>{{end}}</strong>.</translation>
    <translation id="pack_move_contract_rules" qtlid="313286">Ymmärrän, että liittymän siirto johtaa uuteen 12 kuukauden sitoutumiseen, joka alkaa uuden liittymän aktivoinnista. Nykyinen liittymä suljetaan sen kuukauden lopussa jona uusi liittymä aktivoidaan.</translation>
-   <translation id="pack_move_contract_porta_rules">Je comprends que le déménagement de mon accès engendre un réengagement de 12 mois qui débutetera à l'activation de mon nouvel accès.</translation>
+   <translation id="pack_move_contract_porta_rules" qtlid="456674">Je comprends que le déménagement de mon accès engendre un réengagement de 12 mois qui débutetera à l'activation de mon nouvel accès.</translation>
 </translations>

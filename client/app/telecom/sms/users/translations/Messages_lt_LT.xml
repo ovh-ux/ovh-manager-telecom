@@ -33,7 +33,7 @@
    <translation id="sms_users_add_user_password_label" qtlid="334894">Slaptažodis:&#160;</translation>
    <translation id="sms_users_add_user_password_placeholder" qtlid="2270">Slaptažodis</translation>
    <translation id="sms_users_add_user_password_required" qtlid="334946">Laukas "Slaptažodis" yra privalomas</translation>
-   <translation id="sms_users_add_user_password_error_pattern">Le champ "mot de passe" doit être composé de 8 caractères alphanumériques.</translation>
+   <translation id="sms_users_add_user_password_error_pattern" qtlid="338807">Laukas "slaptažodis" turi būti sudarytas iš 8 simbolių</translation>
    <translation id="sms_users_add_user_adding" qtlid="393217">Vartotojas pridedamas...</translation>
    <translation id="sms_users_add_user_added" qtlid="334933">Vartotojas pridėtas!&#160;</translation>
    <translation id="sms_users_add_user_ko" qtlid="338846">Negalima sukurti vartotojo.<br/>{{error}}</translation>
@@ -71,7 +71,7 @@
    <translation id="sms_users_change_password_user_password_label" qtlid="334894">Slaptažodis:&#160;</translation>
    <translation id="sms_users_change_password_user_password_placeholder" qtlid="2270">Slaptažodis</translation>
    <translation id="sms_users_change_password_user_password_error_required" qtlid="334946">Laukas "Slaptažodis" yra privalomas</translation>
-   <translation id="sms_users_change_password_user_password_error_pattern">Le champ "mot de passe" doit être composé de 8 caractères alphanumériques.</translation>
+   <translation id="sms_users_change_password_user_password_error_pattern" qtlid="338807">Laukas "slaptažodis" turi būti sudarytas iš 8 simbolių</translation>
    <translation id="sms_users_change_password_user_changing" qtlid="338872">Slaptažodžio keitimas</translation>
    <translation id="sms_users_change_password_user_changed" qtlid="338885">Slaptažodis pakeistas!&#160;</translation>
    <translation id="sms_users_change_password_user_ko" qtlid="338898">Negalima pakeisti vartotojo slaptažodžio.<br/>{{error}}</translation>

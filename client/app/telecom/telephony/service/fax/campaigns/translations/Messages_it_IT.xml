@@ -37,7 +37,7 @@
    <translation id="telephony_service_fax_campaigns_add_campaign_label_name" qtlid="391488">Nome della campagna</translation>
    <translation id="telephony_service_fax_campaigns_add_campaign_name_error_required" qtlid="391501">Il campo "Nome della campagna" è obbligatorio.</translation>
    <translation id="telephony_service_fax_campaigns_add_campaign_name_error_maxlength" qtlid="391514">Il nome della campagna deve contenere meno di 24 caratteri.</translation>
-   <translation id="telephony_service_fax_campaigns_add_campaign_label_document">Document à faxer (format pdf)</translation>
+   <translation id="telephony_service_fax_campaigns_add_campaign_label_document" qtlid="460548">Document à faxer (format pdf)</translation>
    <translation id="telephony_service_fax_campaigns_add_campaign_label_file" qtlid="391540">File...</translation>
    <translation id="telephony_service_fax_campaigns_add_campaign_file_invalid" qtlid="337845">Formato del file non supportato.</translation>
    <translation id="telephony_service_fax_campaigns_add_campaign_label_quality" qtlid="391553">Qualità di invio</translation>
@@ -54,7 +54,7 @@
    <translation id="telephony_service_fax_campaigns_add_campaign_send_date_error_date" qtlid="391618">La data inserita non è valida.</translation>
    <translation id="telephony_service_fax_campaigns_add_campaign_label_send_date_time" qtlid="391631">Ora di invio</translation>
    <translation id="telephony_service_fax_campaigns_add_campaign_label_recipients_type_list" qtlid="391644">Inserisci manualmente i destinatari</translation>
-   <translation id="telephony_service_fax_campaigns_add_campaign_label_recipients_type_document">Fichier de destinataires (format txt)</translation>
+   <translation id="telephony_service_fax_campaigns_add_campaign_label_recipients_type_document" qtlid="460561">Fichier de destinataires (format txt)</translation>
    <translation id="telephony_service_fax_campaigns_add_campaign_label_recipients_list" qtlid="68981">Destinatari</translation>
    <translation id="telephony_service_fax_campaigns_add_campaign_palceholder_recipients_list_first" qtlid="391683">Lista dei numeri separata da una virgula, punto e virgola o a capo.</translation>
    <translation id="telephony_service_fax_campaigns_add_campaign_palceholder_recipients_list_second" qtlid="391696">Composizione dei numeri: da 6 a 17 cifre che possono iniziare con un +</translation>

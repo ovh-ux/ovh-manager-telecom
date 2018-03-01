@@ -8,5 +8,5 @@
    <translation id="pack_move_contract_fake_meeting" qtlid="313273">Su manim susisieks France Telecom ir suderins susitikimo laiką.</translation>
    <translation id="pack_move_contract_meeting" qtlid="313143">Susitikimas paskirtas <strong>{{day}}</strong>, nuo <strong>{{start}}</strong> iki <strong>{{end}}</strong>.</translation>
    <translation id="pack_move_contract_rules" qtlid="313286">Suprantu, kad prieigos perkėlimas pratęs įsipareigojimą 12 mėnesių, kurie prasidės po perkėlimo. Dabartinė mano prieiga bus uždaryta mėnesio pabaigoje, suteikus naują prieigą.</translation>
-   <translation id="pack_move_contract_porta_rules">Je comprends que le déménagement de mon accès engendre un réengagement de 12 mois qui débutetera à l'activation de mon nouvel accès.</translation>
+   <translation id="pack_move_contract_porta_rules" qtlid="456674">Je comprends que le déménagement de mon accès engendre un réengagement de 12 mois qui débutetera à l'activation de mon nouvel accès.</translation>
 </translations>

@@ -37,7 +37,7 @@
    <translation id="telephony_service_fax_campaigns_add_campaign_label_name" qtlid="391488">Kampanijos pavadinimas</translation>
    <translation id="telephony_service_fax_campaigns_add_campaign_name_error_required" qtlid="391501">Kampanijos pavadinimas yra būtinas</translation>
    <translation id="telephony_service_fax_campaigns_add_campaign_name_error_maxlength" qtlid="391514">Kampanijos pavadinimas turi ūti trumpesnis nei 24 simboliai</translation>
-   <translation id="telephony_service_fax_campaigns_add_campaign_label_document">Document à faxer (format pdf)</translation>
+   <translation id="telephony_service_fax_campaigns_add_campaign_label_document" qtlid="460548">Document à faxer (format pdf)</translation>
    <translation id="telephony_service_fax_campaigns_add_campaign_label_file" qtlid="391540">Failas</translation>
    <translation id="telephony_service_fax_campaigns_add_campaign_file_invalid" qtlid="337845">Nepalaikomas failo formatas.</translation>
    <translation id="telephony_service_fax_campaigns_add_campaign_label_quality" qtlid="391553">Siuntimo kokybė</translation>
@@ -54,7 +54,7 @@
    <translation id="telephony_service_fax_campaigns_add_campaign_send_date_error_date" qtlid="391618">Nurodyta neteisinga data</translation>
    <translation id="telephony_service_fax_campaigns_add_campaign_label_send_date_time" qtlid="391631">Siuntimo valanda</translation>
    <translation id="telephony_service_fax_campaigns_add_campaign_label_recipients_type_list" qtlid="391644">Įvesti gavėjus patiems</translation>
-   <translation id="telephony_service_fax_campaigns_add_campaign_label_recipients_type_document">Fichier de destinataires (format txt)</translation>
+   <translation id="telephony_service_fax_campaigns_add_campaign_label_recipients_type_document" qtlid="460561">Fichier de destinataires (format txt)</translation>
    <translation id="telephony_service_fax_campaigns_add_campaign_label_recipients_list" qtlid="68981">Gavėjai</translation>
    <translation id="telephony_service_fax_campaigns_add_campaign_palceholder_recipients_list_first" qtlid="391683">Numerių sąrašas, atskirtas kableliu, kabliataškiu arba iš naujos eilutės.</translation>
    <translation id="telephony_service_fax_campaigns_add_campaign_palceholder_recipients_list_second" qtlid="391696">Numerių sudarymas: 6 - 17 simbolių, gali prasidėti +</translation>

@@ -16,7 +16,7 @@
    <translation id="telephony_alias_administration_terminate_reason_billingDifficulties" qtlid="338469">Facturación inadecuada</translation>
    <translation id="telephony_alias_administration_terminate_reason_cessationOfActivity" qtlid="313377">Cese de actividad</translation>
    <translation id="telephony_alias_administration_terminate_reason_missingOptions" qtlid="338482">Falta de funcionalidades</translation>
-   <translation id="telephony_alias_administration_terminate_reason_other">Autre</translation>
+   <translation id="telephony_alias_administration_terminate_reason_other" qtlid="19963">Otro</translation>
    <translation id="telephony_alias_administration_terminate_reason_plugAndPhoneDifficulties" qtlid="338495">Problemas con el aparato</translation>
    <translation id="telephony_alias_administration_terminate_reason_technicalDifficulties" qtlid="313429">Problemas técnicos</translation>
    <translation id="telephony_alias_administration_terminate_reason_moveToCompetitor" qtlid="338508">Cambio a otro proveedor</translation>

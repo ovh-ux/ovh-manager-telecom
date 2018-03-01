@@ -3,7 +3,7 @@
    <translation id="telephony_line_assist_support_title" qtlid="336207">Guides et support</translation>
 
    <translation id="telephony_line_assist_support_guides_title" qtlid="300370">Guides</translation>
-   <translation id="telephony_line_assist_support_guides_explain">Pour vous aider dans la configuration et l'utilisation de votre téléphonie, <a href="{{ url }}" target="_blank" title="Accéder à nos guides">nos guides sont à votre disposition<i class="ovh-font ovh-font-newtab ml-4" /></a>.</translation>
+   <translation id="telephony_line_assist_support_guides_explain" qtlid="460002">Pour vous aider dans la configuration et l'utilisation de votre téléphonie, <a href="{{ url }}" target="_blank" title="Accéder à nos guides">nos guides sont à votre disposition<i class="ovh-font ovh-font-newtab ml-4" /></a>.</translation>
 
    <translation id="telephony_line_assist_support_support_title" qtlid="39994">Soutien</translation>
    <translation id="telephony_line_assist_support_header" qtlid="336233">Nous contacter pour toute question :</translation>

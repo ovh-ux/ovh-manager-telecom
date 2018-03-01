@@ -33,7 +33,7 @@
    <translation id="sms_users_add_user_password_label" qtlid="334894">Contraseña:&#160;</translation>
    <translation id="sms_users_add_user_password_placeholder" qtlid="2270">Contraseña</translation>
    <translation id="sms_users_add_user_password_required" qtlid="334946">El campo «Contraseña» es obligatorio.</translation>
-   <translation id="sms_users_add_user_password_error_pattern">Le champ "mot de passe" doit être composé de 8 caractères alphanumériques.</translation>
+   <translation id="sms_users_add_user_password_error_pattern" qtlid="338807">El campo «Contraseña» debe tener 8 caracteres alfanuméricos.</translation>
    <translation id="sms_users_add_user_adding" qtlid="393217">Añadiendo usuario…</translation>
    <translation id="sms_users_add_user_added" qtlid="334933">Se ha añadido el usuario.&#160;</translation>
    <translation id="sms_users_add_user_ko" qtlid="338846">No se ha podido crear el usuario.<br/>{{error}}</translation>
@@ -71,7 +71,7 @@
    <translation id="sms_users_change_password_user_password_label" qtlid="334894">Contraseña:&#160;</translation>
    <translation id="sms_users_change_password_user_password_placeholder" qtlid="2270">Contraseña</translation>
    <translation id="sms_users_change_password_user_password_error_required" qtlid="334946">El campo «Contraseña» es obligatorio.</translation>
-   <translation id="sms_users_change_password_user_password_error_pattern">Le champ "mot de passe" doit être composé de 8 caractères alphanumériques.</translation>
+   <translation id="sms_users_change_password_user_password_error_pattern" qtlid="338807">El campo «Contraseña» debe tener 8 caracteres alfanuméricos.</translation>
    <translation id="sms_users_change_password_user_changing" qtlid="338872">Cambiando la contraseña…</translation>
    <translation id="sms_users_change_password_user_changed" qtlid="338885">Se ha cambiado la contraseña.&#160;</translation>
    <translation id="sms_users_change_password_user_ko" qtlid="338898">No se ha podido cambiar la contraseña del usuario.<br/>{{error}}</translation>

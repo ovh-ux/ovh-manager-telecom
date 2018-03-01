@@ -23,7 +23,7 @@
    <translation id="sms_sms_compose_recipient_label" qtlid="341407">Introduzca el número de un solo destinatario</translation>
    <translation id="sms_sms_compose_recipient_placeholder" qtlid="341420">Número del destinatario (p. ej.: +34601020304)</translation>
    <translation id="sms_sms_compose_recipient_error_required" qtlid="341433">El campo «Destinatario» es obligatorio.</translation>
-   <translation id="sms_sms_compose_recipient_error_pattern">Le numéro du destinataire doit être au format international.</translation>
+   <translation id="sms_sms_compose_recipient_error_pattern" qtlid="463369">Le numéro du destinataire doit être au format international.</translation>
 
    <translation id="sms_sms_compose_phonebook_manage" qtlid="341446">Agenda de direcciones</translation>
 

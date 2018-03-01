@@ -31,8 +31,8 @@
    <translation id="telephony_line_assist_support_logs_list_days_3_days_ago" qtlid="359436">trys dienos</translation>
    <translation id="telephony_line_assist_support_logs_list_no_logs" qtlid="359449">Jokių linijos pranešimų</translation>
 
-   <translation id="telephony_line_assist_support_logs_bulk_all_success">Les paramètres de notification ont bien été appliqués aux services sélectionnés.</translation>
-   <translation id="telephony_line_assist_support_logs_bulk_some_success">Les paramètres de notification ont bien été appliqués à {{ count }} des services sélectionnés.</translation>
-   <translation id="telephony_line_assist_support_logs_bulk_error">Les paramètres de notification n'ont pas pu être appliqués au(x) service(s) suivant(s) :</translation>
-   <translation id="telephony_line_assist_support_logs_bulk_on_error">Oups ! Une erreur est survenue lors de l'application des paramètres de notification.</translation>
+   <translation id="telephony_line_assist_support_logs_bulk_all_success" qtlid="460015">Les paramètres de notification ont bien été appliqués aux services sélectionnés.</translation>
+   <translation id="telephony_line_assist_support_logs_bulk_some_success" qtlid="460028">Les paramètres de notification ont bien été appliqués à {{ count }} des services sélectionnés.</translation>
+   <translation id="telephony_line_assist_support_logs_bulk_error" qtlid="460041">Les paramètres de notification n'ont pas pu être appliqués au(x) service(s) suivant(s) :</translation>
+   <translation id="telephony_line_assist_support_logs_bulk_on_error" qtlid="460054">Oups ! Une erreur est survenue lors de l'application des paramètres de notification.</translation>
 </translations>

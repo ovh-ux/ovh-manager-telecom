@@ -11,6 +11,6 @@
 
    <translation id="telephony_group_loading_error" qtlid="334205">Impossible de charger les informations relatives à votre compte de facturation ({{billingAccount}}).</translation>
    <translation id="telephony_group_rename_error" qtlid="334218">Impossible de renommer votre compte de facturation {{billingAccount}}.</translation>
-   <translation id="telephony_group_termination_warning">Le groupe sera supprimé le <strong>{{ date }}</strong>.</translation>
-   <translation id="telephony_group_termination_warning_link">Vous pouvez annuler en cliquant ici</translation>
+   <translation id="telephony_group_termination_warning" qtlid="456973">Le groupe sera supprimé le <strong>{{ date }}</strong>.</translation>
+   <translation id="telephony_group_termination_warning_link" qtlid="456986">Vous pouvez annuler en cliquant ici</translation>
 </translations>

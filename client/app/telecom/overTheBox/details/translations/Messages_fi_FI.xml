@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <translations>
    <translation id="overTheBox_dashboard_title" qtlid="305616">Oma OverTheBox</translation>
-   <translation id="overTheBox_dashboard_service_label" qtlid="266952">Palvelun nimi</translation>
+   <translation id="overTheBox_dashboard_service_label" qtlid="463382">Nom du service :</translation>
    <translation id="overTheBox_device_listing_title" qtlid="289588">Laitelista</translation>
    <translation id="overTheBox_device_button_add" qtlid="317659">Uusi laite</translation>
    <translation id="overTheBox_device_activation" qtlid="74958">Aktivointi</translation>
@@ -33,7 +33,7 @@
    <translation id="overTheBox_bandwidth" qtlid="89749">Veloitus</translation>
    <translation id="overTheBox_publicIp" qtlid="317711">Julkinen IP-osoite:</translation>
    <translation id="overTheBox_deviceId" qtlid="317724">Laitteen tunniste:</translation>
-   <translation id="overTheBox_deviceId_button_title">Identifiant du périphérique :</translation>
+   <translation id="overTheBox_deviceId_button_title" qtlid="289471">Laitteen ID:</translation>
    <translation id="overTheBox_device_state" qtlid="317737">Laitteen tila:</translation>
    <translation id="overTheBox_expiration_date" qtlid="317750">Seuraava lasku:</translation>
    <translation id="overTheBox_billing_date" qtlid="317750">Seuraava lasku:</translation>
@@ -82,5 +82,5 @@
    <translation id="overTheBox_resiliation_cancel_error" qtlid="395765">Hups! Palvelun {{service}} meneillään olevaa irtisanomista ei voitu peruuttaa.</translation>
    <translation id="overTheBox_cancel_resiliation_success" qtlid="395778">Palvelusi {{service}} irtisanominen on peruutettu.</translation>
 
-   <translation id="overTheBox_statistics_bits_per_sec_legend">bits/s</translation>
+   <translation id="overTheBox_statistics_bits_per_sec_legend" qtlid="456115">bits/s</translation>
 </translations>

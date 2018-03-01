@@ -33,7 +33,7 @@
    <translation id="sms_users_add_user_password_label" qtlid="334894">Password:&#160;</translation>
    <translation id="sms_users_add_user_password_placeholder" qtlid="2270">Password</translation>
    <translation id="sms_users_add_user_password_required" qtlid="334946">Il campo "Password" è obbligatorio.</translation>
-   <translation id="sms_users_add_user_password_error_pattern">Le champ "mot de passe" doit être composé de 8 caractères alphanumériques.</translation>
+   <translation id="sms_users_add_user_password_error_pattern" qtlid="338807">Il campo "Password" deve essere composto da 8 caratteri alfanumerici.</translation>
    <translation id="sms_users_add_user_adding" qtlid="393217">Aggiunta dell'utente...</translation>
    <translation id="sms_users_add_user_added" qtlid="334933">Utente aggiunto!&#160;</translation>
    <translation id="sms_users_add_user_ko" qtlid="338846">Impossibile creare l’utente <br/>{{error}}</translation>
@@ -73,7 +73,7 @@
    <translation id="sms_users_change_password_user_password_label" qtlid="334894">Password:&#160;</translation>
    <translation id="sms_users_change_password_user_password_placeholder" qtlid="2270">Password</translation>
    <translation id="sms_users_change_password_user_password_error_required" qtlid="334946">Il campo "Password" è obbligatorio.</translation>
-   <translation id="sms_users_change_password_user_password_error_pattern">Le champ "mot de passe" doit être composé de 8 caractères alphanumériques.</translation>
+   <translation id="sms_users_change_password_user_password_error_pattern" qtlid="338807">Il campo "Password" deve essere composto da 8 caratteri alfanumerici.</translation>
    <translation id="sms_users_change_password_user_changing" qtlid="338872">Modifica della password in corso...</translation>
    <translation id="sms_users_change_password_user_changed" qtlid="338885">Password  modificata!&#160;</translation>
    <translation id="sms_users_change_password_user_ko" qtlid="338898">Impossibile modificare la password dell'utente <br/>{{error}}</translation>

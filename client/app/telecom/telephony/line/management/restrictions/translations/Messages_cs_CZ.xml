@@ -13,8 +13,8 @@
    <translation id="telephony_line_restrictions_ip" qtlid="26191">Adresa IP</translation>
    <translation id="telephony_line_restrictions_account_missing" qtlid="387757">Bientôt disponible.</translation>
 
-   <translation id="telephony_line_restrictions_ip_bulk_all_success">Les restrictions SIP de la ligne ont bien été appliquées aux services sélectionnés.</translation>
-   <translation id="telephony_line_restrictions_ip_bulk_some_success">Les restrictions SIP de la ligne ont bien été appliquées à {{ count }} des services sélectionnés.</translation>
-   <translation id="telephony_line_restrictions_ip_bulk_error">Les restrictions SIP de la ligne n'ont pas pu être appliquées au(x) service(s) suivant(s) :</translation>
-   <translation id="telephony_line_restrictions_ip_bulk_on_error">Oups ! Une erreur est survenue lors de l'application des restrictions SIP de la ligne.</translation>
+   <translation id="telephony_line_restrictions_ip_bulk_all_success" qtlid="458403">Les restrictions SIP de la ligne ont bien été appliquées aux services sélectionnés.</translation>
+   <translation id="telephony_line_restrictions_ip_bulk_some_success" qtlid="458416">Les restrictions SIP de la ligne ont bien été appliquées à {{ count }} des services sélectionnés.</translation>
+   <translation id="telephony_line_restrictions_ip_bulk_error" qtlid="458429">Les restrictions SIP de la ligne n'ont pas pu être appliquées au(x) service(s) suivant(s) :</translation>
+   <translation id="telephony_line_restrictions_ip_bulk_on_error" qtlid="458442">Oups ! Une erreur est survenue lors de l'application des restrictions SIP de la ligne.</translation>
 </translations>

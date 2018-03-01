@@ -5,8 +5,8 @@
    <translation id="telephony_group_billing_dashboard_actions_group_delete" qtlid="69929">Gruppe löschen</translation>
    <translation id="telephony_group_billing_dashboard_actions_group_last_bill" qtlid="386274">Consulter mes dernières factures</translation>
    <translation id="telephony_group_billing_dashboard_actions_portabilities" qtlid="386287">Consulter mes portabilités en cours</translation>
-   <translation id="telephony_group_billing_dashboard_actions_portabilities_create">Demander une portabilité</translation>
-   <translation id="telephony_group_billing_dashboard_actions_fax_convertion">Convertir des Ecofax perso en Ecofax pro</translation>
+   <translation id="telephony_group_billing_dashboard_actions_portabilities_create" qtlid="334049">Demander une portabilité</translation>
+   <translation id="telephony_group_billing_dashboard_actions_fax_convertion" qtlid="456947">Convertir des Ecofax perso en Ecofax pro</translation>
    <translation id="telephony_group_billing_dashboard_consumption_title" qtlid="25999">Monatsverbrauch</translation>
    <translation id="telephony_group_billing_dashboard_bill_title" qtlid="386300">Mes 5 derniers relevés de conso.</translation>
    <translation id="telephony_group_billing_dashboard_information_title" qtlid="386313">Info. générales</translation>
@@ -30,7 +30,7 @@
    <translation id="telephony_group_billing_dashboard_bill_download_csv_received" qtlid="334608">Listing de vos appels reçus au format CSV</translation>
    <translation id="telephony_group_billing_dashboard_credit_current_out_plan" qtlid="386352">Hors forfait&#160;:&#160;</translation>
    <translation id="telephony_group_billing_dashboard_bill_empty" qtlid="386365">Aucun rélevé de consommation</translation>
-   <translation id="telephony_group_billing_dashboard_go_to_my_bills">Voir mes relevés de consommation</translation>
+   <translation id="telephony_group_billing_dashboard_go_to_my_bills" qtlid="456960">Voir mes relevés de consommation</translation>
    <translation id="telephony_group_billing_dashboard_network_title" qtlid="386391">Mon parc VoIP</translation>
    <translation id="telephony_group_billing_dashboard_RMA_status_open" qtlid="386404">Ouverture du ticket</translation>
    <translation id="telephony_group_billing_dashboard_RMA_status_closed" qtlid="8662">Beendet</translation>

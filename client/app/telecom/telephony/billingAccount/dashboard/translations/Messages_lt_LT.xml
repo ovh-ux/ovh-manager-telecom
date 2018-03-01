@@ -5,8 +5,8 @@
    <translation id="telephony_group_billing_dashboard_actions_group_delete" qtlid="69929">Trinti grupę</translation>
    <translation id="telephony_group_billing_dashboard_actions_group_last_bill" qtlid="386274">Peržiūrėti paskutines sąskaitas</translation>
    <translation id="telephony_group_billing_dashboard_actions_portabilities" qtlid="386287">Peržiūrėti perkeliamumą</translation>
-   <translation id="telephony_group_billing_dashboard_actions_portabilities_create">Demander une portabilité</translation>
-   <translation id="telephony_group_billing_dashboard_actions_fax_convertion">Convertir des Ecofax perso en Ecofax pro</translation>
+   <translation id="telephony_group_billing_dashboard_actions_portabilities_create" qtlid="334049">Užsakyti perkeliamumą</translation>
+   <translation id="telephony_group_billing_dashboard_actions_fax_convertion" qtlid="456947">Convertir des Ecofax perso en Ecofax pro</translation>
    <translation id="telephony_group_billing_dashboard_consumption_title" qtlid="25999">Sunaudojimas per mėnesį</translation>
    <translation id="telephony_group_billing_dashboard_bill_title" qtlid="386300">Paskutinės 5 naudojimo ataskaitos.</translation>
    <translation id="telephony_group_billing_dashboard_information_title" qtlid="386313">Bendra informacija</translation>
@@ -30,7 +30,7 @@
    <translation id="telephony_group_billing_dashboard_bill_download_csv_received" qtlid="334608">Įeinančių skambučių sąrašas CSV formatu</translation>
    <translation id="telephony_group_billing_dashboard_credit_current_out_plan" qtlid="386352">Ne paketas:&#160;</translation>
    <translation id="telephony_group_billing_dashboard_bill_empty" qtlid="386365">Jokios naudojimo ataskaitos</translation>
-   <translation id="telephony_group_billing_dashboard_go_to_my_bills">Voir mes relevés de consommation</translation>
+   <translation id="telephony_group_billing_dashboard_go_to_my_bills" qtlid="456960">Voir mes relevés de consommation</translation>
    <translation id="telephony_group_billing_dashboard_network_title" qtlid="386391">VoIP parkas</translation>
    <translation id="telephony_group_billing_dashboard_RMA_status_open" qtlid="386404">Kvito atidarymas</translation>
    <translation id="telephony_group_billing_dashboard_RMA_status_closed" qtlid="8662">Baigta</translation>

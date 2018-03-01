@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <translations>
    <translation id="overTheBox_dashboard_title" qtlid="305616">Mano OverTheBox</translation>
-   <translation id="overTheBox_dashboard_service_label" qtlid="266952">Paslaugos pavadinimas</translation>
+   <translation id="overTheBox_dashboard_service_label" qtlid="463382">Nom du service :</translation>
    <translation id="overTheBox_device_listing_title" qtlid="289588">Periferinių įrenginių sąrašas</translation>
    <translation id="overTheBox_device_button_add" qtlid="317659">Nauja įranga</translation>
    <translation id="overTheBox_device_activation" qtlid="74958">Įjungimas</translation>
@@ -33,7 +33,7 @@
    <translation id="overTheBox_bandwidth" qtlid="89749">Nuskaityti</translation>
    <translation id="overTheBox_publicIp" qtlid="317711">Viešas IP adresas:</translation>
    <translation id="overTheBox_deviceId" qtlid="317724">Įrangos identifikatorius:</translation>
-   <translation id="overTheBox_deviceId_button_title">Identifiant du périphérique :</translation>
+   <translation id="overTheBox_deviceId_button_title" qtlid="289471">Periferinio įrenginio identifikatorius:</translation>
    <translation id="overTheBox_device_state" qtlid="317737">Įrangos būsena:</translation>
    <translation id="overTheBox_expiration_date" qtlid="317750">Būsima sąskaita:</translation>
    <translation id="overTheBox_billing_date" qtlid="317750">Būsima sąskaita:</translation>
@@ -82,5 +82,5 @@
    <translation id="overTheBox_resiliation_cancel_error" qtlid="395765">Negalima atšaukti paslaugos {{service}} atsisakymo.</translation>
    <translation id="overTheBox_cancel_resiliation_success" qtlid="395778">Paslaugos {{service}} atsisakymas bus atšauktas.</translation>
 
-   <translation id="overTheBox_statistics_bits_per_sec_legend">bits/s</translation>
+   <translation id="overTheBox_statistics_bits_per_sec_legend" qtlid="456115">bits/s</translation>
 </translations>

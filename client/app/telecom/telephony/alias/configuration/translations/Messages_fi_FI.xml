@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <translations>
-   <translation id="telephony_alias_configuration_back_link">Retour à la configuration du numéro</translation>
-   <translation id="telephony_alias_configuration_change_type">Modifier le type du numéro</translation>
+   <translation id="telephony_alias_configuration_back_link" qtlid="462121">Retour à la configuration du numéro</translation>
+   <translation id="telephony_alias_configuration_change_type" qtlid="332827">Numeron tyypin muokkaus</translation>
 
    <translation id="telephony_alias_configuration_actions_number_modification_new" qtlid="332827">Numeron tyypin muokkaus</translation>
    <translation id="telephony_alias_configuration_actions_number_redirect_modification" qtlid="332840">Uudelleenohjausten hallinta</translation>
@@ -10,29 +10,29 @@
    <translation id="telephony_alias_configuration_actions_number_hunting_beta" qtlid="356797">Puhelutiedostojen beta +</translation>
    <translation id="telephony_alias_configuration_actions_number_hunting_mode" qtlid="340354">Lisävalintojen hallinta</translation>
    <translation id="telephony_alias_configuration_actions_number_hunting_members" qtlid="356810">Jäsenten hallinta</translation>
-   <translation id="telephony_alias_configuration_actions_number_hunting_agents">Gérer les agents</translation>
-   <translation id="telephony_alias_configuration_actions_number_hunting_queues">Gérer les files</translation>
+   <translation id="telephony_alias_configuration_actions_number_hunting_agents" qtlid="461367">Gérer les agents</translation>
+   <translation id="telephony_alias_configuration_actions_number_hunting_queues" qtlid="462134">Gérer les files</translation>
    <translation id="telephony_alias_configuration_actions_number_hunting_slots" qtlid="335154">Aikavyöhykkeiden hallinta</translation>
    <translation id="telephony_alias_configuration_actions_number_hunting_events" qtlid="335167">Poikkeuksellisten sulkujen hallinta</translation>
    <translation id="telephony_alias_configuration_actions_number_hunting_filtering" qtlid="356823">Puhelujen suodatuksen hallinnointi</translation>
-   <translation id="telephony_alias_configuration_actions_number_hunting_board">Consulter le tableau de bord</translation>
-   <translation id="telephony_alias_configuration_actions_number_hunting_records">Consulter les enregistrements</translation>
+   <translation id="telephony_alias_configuration_actions_number_hunting_board" qtlid="462147">Consulter le tableau de bord</translation>
+   <translation id="telephony_alias_configuration_actions_number_hunting_records" qtlid="461731">Consulter les enregistrements</translation>
 
 <!-- EASYHUNTING -->
 
 <!-- CLOUDHUNTING -->
-   <translation id="telephony_alias_configuration_actions_number_cloud_hunting_events">Gérer les créneaux exceptionnels</translation>
+   <translation id="telephony_alias_configuration_actions_number_cloud_hunting_events" qtlid="392515">Gérer les créneaux exceptionnels</translation>
    <translation id="telephony_alias_configuration_actions_number_cloud_hunting_configuration" qtlid="356849">Numerointisuunnitelman hallinta</translation>
-   <translation id="telephony_alias_configuration_actions_number_cloud_hunting_beta">Migrer vers Contact Center Solution</translation>
+   <translation id="telephony_alias_configuration_actions_number_cloud_hunting_beta" qtlid="462160">Migrer vers Contact Center Solution</translation>
 
 <!-- CONFERENCE -->
    <translation id="telephony_alias_configuration_actions_number_manage_conference" qtlid="356862">Puhelinkonferenssi</translation>
 
 <!-- EASYPABX -->
    <translation id="telephony_alias_configuration_actions_music_management" qtlid="356875">Musiikkien hallinta</translation>
-   <translation id="telephony_alias_configuration_actions_sounds_management">Gérer les sons</translation>
-   <translation id="telephony_alias_configuration_actions_menus_management">Gérer les menus interactifs</translation>
-   <translation id="telephony_alias_configuration_actions_tts_management">Gérer les TTS</translation>
+   <translation id="telephony_alias_configuration_actions_sounds_management" qtlid="396857">Gérer les sons</translation>
+   <translation id="telephony_alias_configuration_actions_menus_management" qtlid="396844">Gérer les menus interactifs</translation>
+   <translation id="telephony_alias_configuration_actions_tts_management" qtlid="432280">Gérer les TTS</translation>
 
 <!-- SVI -->
    <translation id="telephony_alias_configuration_actions_number_svi_script_address" qtlid="356888">Äänipalvelimen asetusten hallinnointi</translation>

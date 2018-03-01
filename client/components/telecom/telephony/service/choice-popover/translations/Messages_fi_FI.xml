@@ -9,7 +9,7 @@
    <translation id="telephony_service_choice_filter_type_sip" qtlid="397039">SIP-linjat</translation>
    <translation id="telephony_service_choice_filter_type_trunk" qtlid="397052">Trunk-linjat</translation>
    <translation id="telephony_service_choice_filter_type_fax" qtlid="32926">Faksi</translation>
-   <translation id="telephony_service_choice_filter_type_number">Numéro</translation>
+   <translation id="telephony_service_choice_filter_type_number" qtlid="30778">Numero</translation>
 
 <!-- SELECT -->
    <translation id="telephony_service_choice_destination" qtlid="397065">Valitse palvelu</translation>
