@@ -19,8 +19,14 @@
    <translation id="telephony_alias_portabilities_step_status_doing" qtlid="214896">Loading...</translation>
    <translation id="telephony_alias_portabilities_step_status_done" qtlid="8662">Done</translation>
    <translation id="telephony_alias_portabilities_step_status_error" qtlid="45508">Error</translation>
-   <translation id="telephony_alias_portabilities_step_status_todo" qtlid="392320">Plannifié</translation>
+   <translation id="telephony_alias_portabilities_step_status_todo" qtlid="392320">Planned</translation>
    <translation id="telephony_alias_portabilities_step_name_acknowledgmentReceivedFromOperator" qtlid="392333">Accusé de l'opérateur reçu</translation>
+   <translation id="telephony_alias_portabilities_step_name_belgiumPortabilityRequestCreated" qtlid="461146">Envoi de la demande à l'opérateur cédant</translation>
+   <translation id="telephony_alias_portabilities_step_name_belgiumPortabilityRequestExecutionAcked" qtlid="461159">Exécution de la portabilité effectuée</translation>
+   <translation id="telephony_alias_portabilities_step_name_belgiumPortabilityRequestExecutionAsked" qtlid="461172">Exécution de la portabilité demandée</translation>
+   <translation id="telephony_alias_portabilities_step_name_belgiumPortabilityRequestExecutionCompleted" qtlid="461185">Finalisation de la portabilité</translation>
+   <translation id="telephony_alias_portabilities_step_name_belgiumPortabilityRequestValidated" qtlid="461198">Prise en charge de la demande par l'opérateur cédant</translation>
+   <translation id="telephony_alias_portabilities_step_name_belgiumPortabilityRequestWaitingUntilExec" qtlid="461211">Portabilité en attente d'exécution</translation>
    <translation id="telephony_alias_portabilities_step_name_customerFormReceived" qtlid="392346">Formulaire reçu</translation>
    <translation id="telephony_alias_portabilities_step_name_customerFormSent" qtlid="392359">Formulaire envoyé</translation>
    <translation id="telephony_alias_portabilities_step_name_customerFormValidated" qtlid="392372">Formulaire validé</translation>
@@ -33,4 +39,10 @@
    <translation id="telephony_alias_portabilities_step_duration_day" qtlid="392450">jour(s)</translation>
    <translation id="telephony_alias_portabilities_step_duration_hour" qtlid="8902">hour(s)</translation>
    <translation id="telephony_alias_portabilities_step_duration_openday" qtlid="392463">jour(s) ouvré(s)</translation>
+   <translation id="telephony_alias_portabilities_cancel" qtlid="461224">Annuler la portabilité ?</translation>
+   <translation id="telephony_alias_portabilities_cancel_confirm" qtlid="461237">Êtes-vous sûr de vouloir annuler votre demande de portabilité ?</translation>
+   <translation id="telephony_alias_portabilities_cancel_doing" qtlid="394998">Annulation en cours…</translation>
+   <translation id="telephony_alias_portabilities_cancel_success" qtlid="461250">La demande de portabilité a bien été annulée.</translation>
+   <translation id="telephony_alias_portabilities_cancel_error" qtlid="461263">Oups ! Une erreur est survenue lors de l'annulation de votre demande de portabilité.</translation>
+   <translation id="telephony_alias_portabilities_load_error" qtlid="461276">Oups ! Une erreur est survenue lors du chargement des portabilités en cours.</translation>
 </translations>

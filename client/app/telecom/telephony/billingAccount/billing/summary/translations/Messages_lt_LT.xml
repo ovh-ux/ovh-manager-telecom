@@ -6,8 +6,10 @@
    <translation id="telephony_group_billing_summary_consumption_outgoing_label" qtlid="386469">Išeinantys</translation>
    <translation id="telephony_group_billing_summary_consumption_transfer_label" qtlid="190329">peradresuoti</translation>
    <translation id="telephony_group_billing_summary_consumption_summary_title" qtlid="386482">Atkurti grupę</translation>
-   <translation id="telephony_group_billing_summary_consumption_details_title" qtlid="386495">Paslaugų detalės</translation>
+   <translation id="telephony_group_billing_summary_consumption_details_title" qtlid="456999">Détail des services (en nombre d'appels)</translation>
    <translation id="telephony_group_billing_summary_consumption_service_label" qtlid="31042">Paslauga</translation>
    <translation id="telephony_group_billing_summary_consumptioninit_error" qtlid="386508">Klaida nuskaitant naudojimą</translation>
    <translation id="telephony_group_billing_summary_consumptioninit_no_results" qtlid="386521">Jokio naudojimo</translation>
+   <translation id="telephony_group_billing_summary_calls_number_single" qtlid="457012">{{ count }} appel</translation>
+   <translation id="telephony_group_billing_summary_calls_number" qtlid="457025">{{ count }} appels</translation>
 </translations>

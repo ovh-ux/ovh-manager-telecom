@@ -5,8 +5,8 @@
    <translation id="telephony_abbreviated_numbers_write_success" qtlid="334257">Il numero breve {{num}} è stato aggiornato.</translation>
    <translation id="telephony_abbreviated_numbers_id" qtlid="334283">Numero breve</translation>
    <translation id="telephony_abbreviated_numbers_number" qtlid="334296">Numéro di destinazione</translation>
-   <translation id="telephony_abbreviated_numbers_name" qtlid="3818">Nome</translation>
-   <translation id="telephony_abbreviated_numbers_surname" qtlid="23323">Nome</translation>
+   <translation id="telephony_abbreviated_numbers_surname" qtlid="3818">Nome</translation>
+   <translation id="telephony_abbreviated_numbers_name" qtlid="23323">Nome</translation>
    <translation id="telephony_abbreviated_numbers_table_empty" qtlid="334309">Non sono presenti numeri brevi.</translation>
    <translation id="telephony_abbreviated_numbers_remove_success" qtlid="360658">Numero breve {{abbreviatedNumber}} eliminato.</translation>
    <translation id="telephony_abbreviated_numbers_remove_error" qtlid="360671">Impossibile eliminare il numero breve {{abbreviatedNumber}}.</translation>
@@ -18,7 +18,7 @@
    <translation id="telephony_abbreviated_numbers_update_title" qtlid="360749">Modifica un numero breve</translation>
    <translation id="telephony_abbreviated_numbers_export_label" qtlid="360762">Esporta la lista in formato csv</translation>
    <translation id="telephony_abbreviated_numbers_download_label" qtlid="39286">Scarica</translation>
-   <translation id="telephony_abbreviated_numbers_import_label" qtlid="69869">Importare</translation>
+   <translation id="telephony_abbreviated_numbers_import_label" qtlid="69869">Importa</translation>
    <translation id="telephony_abbreviated_numbers_trash_all_label" qtlid="360775">Svuota</translation>
    <translation id="telephony_abbreviated_numbers_import_button_label" qtlid="360788">Seleziona il tuo file</translation>
    <translation id="telephony_abbreviated_numbers_import_modal_tile" qtlid="360801">Importa una lista di numeri brevi</translation>

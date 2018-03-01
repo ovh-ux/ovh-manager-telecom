@@ -9,10 +9,10 @@
    <translation id="domain_activation_no_tld" qtlid="307436">Yhtään TLD:tä ei ole saatavilla. Mikäli mitään virhettä ei ole tapahtunut, voi tämä johtua tietojen lataamisen hitaudesta tai Pakettisi ei salli verkkotunnusten aktivointia.</translation>
    <translation id="domain_activation_error_on_check_disponibility" qtlid="307449">Virhe estää verkkotunnuksen saatavuuden tarkistuksen. </translation>
    <translation id="domain_activation_check_dispo" qtlid="307462">Saatavuuden tarkistus</translation>
-   <translation id="domain_activation_is_already_in_pack" qtlid="307475">on jo aktivoitu Paketissasi. Valitse toinen verkkotunnus.</translation>
-   <translation id="domain_activation_is_available" qtlid="307488">on saatavilla.</translation>
+   <translation id="domain_activation_is_already_in_pack" qtlid="455894">{{ domain }} est déjà activé dans votre Pack. Veuillez choisir un autre nom de domaine.</translation>
+   <translation id="domain_activation_is_available" qtlid="455907">{{ domain }} est disponible.</translation>
    <translation id="domain_activation_fill_form" qtlid="307501">Voit täyttää alla olevan kaavakkeen.</translation>
-   <translation id="domain_activation_is_unavailable" qtlid="307514">on jo käytössä.</translation>
+   <translation id="domain_activation_is_unavailable" qtlid="455920">{{domain}} est déjà pris.</translation>
    <translation id="domain_activation_do_you_transfert" qtlid="307527">Haluatko siirtää sen:</translation>
    <translation id="domain_activation_do_transfert_yes" qtlid="50134">kyllä</translation>
    <translation id="domain_activation_do_transfert_no" qtlid="50602">ei</translation>
@@ -53,7 +53,7 @@
    <translation id="domain_activation_organisation" qtlid="32278">Organisaatio</translation>
    <translation id="domain_activation_organisation_complement" qtlid="307878">Täydennys</translation>
    <translation id="domain_activation_unable_to_save_domain" qtlid="307891">Verkkotunnusta ei voida rekisteröidä</translation>
-   <translation id="domain_activation_domain_is_saved" qtlid="307904">Verkkotunnus rekisteröity</translation>
+   <translation id="domain_activation_domain_is_saved" qtlid="455933">Domaine enregistré avec succès. Vous allez être redirigé vers la vue globale de votre pack.</translation>
    <translation id="domain_activation_saving_domain" qtlid="307917">Verkkotunnuksen rekisteröinti</translation>
    <translation id="domain_activation_please_wait" qtlid="307930">ole hyvä ja odota</translation>
    <translation id="domain_activation_required_fields" qtlid="386834">Champs obligatoires</translation>

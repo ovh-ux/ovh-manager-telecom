@@ -4,7 +4,7 @@
 
    <translation id="sms_options_recredit_title" qtlid="339561">Recharge automatique</translation>
 
-   <translation id="sms_options_recredit_information_title" qtlid="26551">Informations</translation>
+   <translation id="sms_options_recredit_information_title" qtlid="26551">Informaciones</translation>
    <translation id="sms_options_recredit_information_text" qtlid="340328">Vous avez la possibilité de recharger automatiquement votre compte SMS lorsque votre solde franchit un certain seuil.<br/>Cette recharge, qui s'effectue automatiquement, sera prélevée sur votre compte client OVH.</translation>
    <translation id="sms_options_recredit_information_note" qtlid="340341">Veuillez noter que la recharge ne sera possible que si la balance de votre compte client OVH est positive ou nulle. Il vous est possible de créditer votre compte client dans votre Espace Client Télécom section Facturation.</translation>
 

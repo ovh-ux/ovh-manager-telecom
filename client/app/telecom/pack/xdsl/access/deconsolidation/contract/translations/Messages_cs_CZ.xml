@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <translations>
-   <translation id="xdsl_access_deconsolidation_contract_title" qtlid="9983">Potvrzení</translation>
+   <translation id="xdsl_access_deconsolidation_contract_title" qtlid="9983">Potvrzení hesla</translation>
    <translation id="xdsl_access_deconsolidation_contract_are_you_sure" qtlid="309243">Êtes-vous sûr(e) de vouloir effectuer l'opération suivante :</translation>
    <translation id="xdsl_access_deconsolidation_contract_modification_operation" qtlid="310140">Dégroupage Total</translation>
    <translation id="xdsl_access_deconsolidation_contract_modified" qtlid="310309">sur la ligne suivante: <strong>{{ serviceName }}</strong></translation>

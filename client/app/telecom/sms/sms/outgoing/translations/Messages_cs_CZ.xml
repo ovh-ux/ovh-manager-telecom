@@ -4,7 +4,7 @@
 
    <translation id="sms_sms_outgoing_title" qtlid="342018">Historique des envois</translation>
 
-   <translation id="sms_sms_outgoing_label_select" qtlid="386027">Sélection</translation>
+   <translation id="sms_sms_outgoing_label_select" qtlid="386027">Výběr</translation>
    <translation id="sms_sms_outgoing_label_date" qtlid="24523">Datum</translation>
    <translation id="sms_sms_outgoing_label_sender" qtlid="24535">Odesilatel</translation>
    <translation id="sms_sms_outgoing_label_receiver" qtlid="40442">Adresát</translation>
@@ -23,13 +23,13 @@
    <translation id="sms_sms_outgoing_delete_plural" qtlid="394959">Supprimer les {{ count }} SMS sélectionnés</translation>
    <translation id="sms_sms_outgoing_delete_success" qtlid="393633">Suppression en cours…</translation>
 
-   <translation id="sms_sms_outgoing_read_title" qtlid="339639">Consulter</translation>
+   <translation id="sms_sms_outgoing_read_title" qtlid="339639">Zobrazit</translation>
    <translation id="sms_sms_outgoing_read_label_operator" qtlid="342551">Opérateur du destinataire</translation>
    <translation id="sms_sms_outgoing_read_label_sms_size" qtlid="341225">Taille du SMS</translation>
    <translation id="sms_sms_outgoing_read_label_sms_size_text" qtlid="341238">{{ numberOfSms }} SMS (soit {{ credits | number: 2 }} crédits)</translation>
    <translation id="sms_sms_outgoing_read_label_message" qtlid="341251">Message complet</translation>
 
-   <translation id="sms_sms_outgoing_remove_title" qtlid="9983">Potvrzení</translation>
+   <translation id="sms_sms_outgoing_remove_title" qtlid="9983">Potvrzení hesla</translation>
    <translation id="sms_sms_outgoing_remove_confirm" qtlid="341264">Êtes-vous sûr de vouloir supprimer le SMS affiché ci-dessous&#160;?</translation>
    <translation id="sms_sms_outgoing_removing" qtlid="341277">Suppression du SMS en cours…</translation>
    <translation id="sms_sms_outgoing_removed" qtlid="341290">SMS supprimé</translation>

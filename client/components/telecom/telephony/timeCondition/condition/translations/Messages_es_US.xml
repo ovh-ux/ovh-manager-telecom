@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<translations>
+<!-- CONDITION EDIT -->
+   <translation id="voip_time_condition_condition_popover_title" qtlid="466762">Modifier une plage horaire</translation>
+<!-- DAYS -->
+   <translation id="voip_time_condition_condition_popover_days" qtlid="323911">Jour de la semaine</translation>
+   <translation id="voip_time_condition_condition_popover_days_monday" qtlid="6346">Lundi</translation>
+   <translation id="voip_time_condition_condition_popover_days_tuesday" qtlid="6358">Mardi</translation>
+   <translation id="voip_time_condition_condition_popover_days_wednesday" qtlid="6370">Mercredi</translation>
+   <translation id="voip_time_condition_condition_popover_days_thursday" qtlid="6382">Jeudi</translation>
+   <translation id="voip_time_condition_condition_popover_days_friday" qtlid="6394">Vendredi</translation>
+   <translation id="voip_time_condition_condition_popover_days_saturday" qtlid="6406">Samedi</translation>
+   <translation id="voip_time_condition_condition_popover_days_sunday" qtlid="6418">Dimanche</translation>
+
+   <translation id="voip_time_condition_condition_popover_policy" qtlid="335661">Rediriger les appels vers</translation>
+   <translation id="voip_time_condition_condition_popover_time_slot" qtlid="396662">Plage horaire</translation>
+   <translation id="voip_time_condition_condition_popover_time_slot_from" qtlid="69077">De</translation>
+   <translation id="voip_time_condition_condition_popover_time_slot_to" qtlid="8890">à</translation>
+   <translation id="voip_time_condition_condition_popover_time_slot_overlap" qtlid="466775">Cette plage horaire est en conflit avec une autre !</translation>
+
+   <translation id="voip_time_condition_condition_popover_delete" qtlid="59699">Eliminación</translation>
+   <translation id="voip_time_condition_condition_popover_delete_confirm" qtlid="466788">Êtes-vous certain de vouloir supprimer cette plage horaire ?</translation>
+</translations>

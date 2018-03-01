@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <translations>
-   <translation id="xdsl_access_deconsolidation_title" qtlid="310140">Dégroupage Total</translation>
+   <translation id="xdsl_access_deconsolidation_title" qtlid="310140">Vollständige Entbündelung</translation>
    <translation id="xdsl_access_deconsolidation_validate" qtlid="310153">Valider le dégroupage</translation>
 
    <translation id="xdsl_access_deconsolidation_legacy_offer" qtlid="310166">Votre ligne appartient à une offre désuète. Pour être éligible au dégroupage total, vous devez mettre à jour votre pack avec une offre plus récente.</translation>

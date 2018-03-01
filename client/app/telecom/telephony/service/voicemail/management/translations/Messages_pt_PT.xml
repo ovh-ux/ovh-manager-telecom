@@ -3,7 +3,6 @@
    <translation id="telephony_line_answer_voicemail_directories_main_title" qtlid="337546">Ecoute et gestion des messages</translation>
 
    <translation id="telephony_line_answer_voicemail_directories_title" qtlid="337559">Gestion des messages du répondeur</translation>
-   <translation id="telephony_line_answer_voicemail_directories_loading" qtlid="242769">Carregamento em curso</translation>
    <translation id="telephony_line_answer_voicemail_directories_delete_message" qtlid="337572">Supprimer le message</translation>
    <translation id="telephony_line_answer_voicemail_directories_delete_message_plural" qtlid="337585">Supprimer les {{ count }} messages</translation>
    <translation id="telephony_line_answer_voicemail_directories_listen_message" qtlid="337598">Écouter</translation>

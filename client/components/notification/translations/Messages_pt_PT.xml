@@ -14,6 +14,6 @@
    <translation id="components_notification_sms" qtlid="28243">SMS</translation>
    <translation id="components_notification_once" qtlid="345819">Une fois</translation>
    <translation id="components_notification_5m" qtlid="345832">Toutes les 5 minutes</translation>
-   <translation id="components_notification_1h" qtlid="8782">Todas as horas</translation>
+   <translation id="components_notification_1h" qtlid="8782">De hora em hora</translation>
    <translation id="components_notification_6h" qtlid="154130">A cada 6 horas</translation>
 </translations>

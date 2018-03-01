@@ -4,7 +4,7 @@
 
    <translation id="sms_options_manage_title" qtlid="340133">Opciones generales</translation>
 
-   <translation id="sms_options_manage_information_title" qtlid="26551">Datos</translation>
+   <translation id="sms_options_manage_information_title" qtlid="26551">Información</translation>
    <translation id="sms_options_manage_information_text" qtlid="340172">OVH le ofrece configurar URL de callback para recibir notificaciones cuando se produzca un evento en un SMS.</translation>
    <translation id="sms_options_manage_information_types_available" qtlid="340185">Hay dos tipos de callback:</translation>
    <translation id="sms_options_manage_information_type_callback" qtlid="340198"><b>Callback de cambio de estado</b>:&#160;Cuando un SMS enviado cambia de estado (p. ej. de «enviado» a «entregado»).</translation>

@@ -43,7 +43,7 @@
 <!-- General informations -->
    <translation id="freefax_domain" qtlid="66428">Domain name</translation>
    <translation id="freefax_domain_expired" qtlid="395674">(Domaine expiré)</translation>
-   <translation id="freefax_line" qtlid="306799">Numéro de ligne</translation>
+   <translation id="freefax_line" qtlid="306799">Line number</translation>
    <translation id="freefax_fax_remaining" qtlid="306812">Nombre de faxs restants</translation>
    <translation id="freefax_point_remaining" qtlid="89845">Loyalty points</translation>
    <translation id="freefax_voicemail" qtlid="88956">Answering machine</translation>

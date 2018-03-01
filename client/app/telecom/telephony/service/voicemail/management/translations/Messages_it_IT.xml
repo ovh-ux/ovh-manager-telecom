@@ -3,7 +3,6 @@
    <translation id="telephony_line_answer_voicemail_directories_main_title" qtlid="337546">Ascolta e gestisci i messaggi</translation>
 
    <translation id="telephony_line_answer_voicemail_directories_title" qtlid="337559">Gestisci i messaggi della segreteria</translation>
-   <translation id="telephony_line_answer_voicemail_directories_loading" qtlid="242769">Caricamento in corso...</translation>
    <translation id="telephony_line_answer_voicemail_directories_delete_message" qtlid="337572">Elimina il messaggio</translation>
    <translation id="telephony_line_answer_voicemail_directories_delete_message_plural" qtlid="337585">Elimina {{ count }} messaggi</translation>
    <translation id="telephony_line_answer_voicemail_directories_listen_message" qtlid="337598">Ascolta</translation>

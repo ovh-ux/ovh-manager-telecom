@@ -10,7 +10,7 @@
    <translation id="telecom_pack_migration_services_to_delete" qtlid="331761">Services à supprimer</translation>
    <translation id="telecom_pack_migration_services_to_delete_explain" qtlid="331774">Certains services attachés à votre offre actuelle devront être supprimés afin que le changement soit effectif.</translation>
    <translation id="telecom_pack_migration_offer_services_to_delete_explain" qtlid="331787">Le choix des services à supprimer vous sera proposé à l'étape suivante.</translation>
-   <translation id="telecom_pack_migration_options" qtlid="23395">Options</translation>
+   <translation id="telecom_pack_migration_options" qtlid="23395">Možnosti</translation>
    <translation id="telecom_pack_migration_commitment_month" qtlid="331800">{{ number }} mois</translation>
    <translation id="telecom_pack_migration_commitment_none" qtlid="30646">Ne</translation>
    <translation id="telecom_pack_migration_option_unavailable" qtlid="91957">Nedostupný</translation>

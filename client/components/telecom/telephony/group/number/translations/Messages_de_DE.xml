@@ -39,5 +39,5 @@
    <translation id="telephony_number_feature_svi_save_error" qtlid="396987">Oups ! Une erreur est survenue lors de la modification des paramètres de votre serveur vocal.</translation>
 
 <!-- FOOTER -->
-   <translation id="telephony_number_footer_question" qtlid="395934">Sauvegarder ma configuration ?</translation>
+   <translation id="telephony_number_footer_question" qtlid="395934">Konfiguration speichern?</translation>
 </translations>

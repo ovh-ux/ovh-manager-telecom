@@ -14,7 +14,7 @@
    <translation id="telephony_service_consumption_destination_mobile" qtlid="59195">Mobile</translation>
    <translation id="telephony_service_consumption_destination_special" qtlid="336480">Speciali</translation>
    <translation id="telephony_service_consumption_type" qtlid="59171">Natura</translation>
-   <translation id="telephony_service_consumption_type_any" qtlid="336493">Nature indifférente</translation>
+   <translation id="telephony_service_consumption_type_any" qtlid="336493">Tutti</translation>
    <translation id="telephony_service_consumption_type_transfer" qtlid="336506">Inoltrata</translation>
    <translation id="telephony_service_consumption_type_incoming" qtlid="336519">Ricevuta</translation>
    <translation id="telephony_service_consumption_type_outgoing" qtlid="336532">Effettuata</translation>

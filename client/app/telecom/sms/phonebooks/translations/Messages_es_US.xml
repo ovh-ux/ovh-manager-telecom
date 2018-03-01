@@ -29,7 +29,7 @@
 <!-- PHONEBOOKCONTACT -->
    <translation id="sms_phonebooks_phonebook_contact_title" qtlid="73073">Gestion des contacts</translation>
    <translation id="sms_phonebooks_phonebook_contact_column_surname" qtlid="3818">Nombre</translation>
-   <translation id="sms_phonebooks_phonebook_contact_column_name" qtlid="23323">Prénom</translation>
+   <translation id="sms_phonebooks_phonebook_contact_column_name" qtlid="23323">Nombre</translation>
    <translation id="sms_phonebooks_phonebook_contact_column_group" qtlid="33298">Société</translation>
    <translation id="sms_phonebooks_phonebook_contact_column_home_phone" qtlid="394062">Fixe <small>(domicile)</small></translation>
    <translation id="sms_phonebooks_phonebook_contact_column_home_mobile" qtlid="394075">Mobile <small>(domicile)</small></translation>
@@ -39,7 +39,6 @@
    <translation id="sms_phonebooks_phonebook_contact_column_home_mobile_title" qtlid="394127">Mobile (domicile)</translation>
    <translation id="sms_phonebooks_phonebook_contact_column_work_phone_title" qtlid="394140">Fixe (professionnel)</translation>
    <translation id="sms_phonebooks_phonebook_contact_column_work_mobile_title" qtlid="394153">Mobile (professionnel)</translation>
-   <translation id="sms_phonebooks_phonebook_contact_loading" qtlid="301695">Cargando…</translation>
    <translation id="sms_phonebooks_phonebook_contact_empty" qtlid="97964">Aucun contact trouvé.</translation>
    <translation id="sms_phonebooks_phonebook_contact_ko" qtlid="394166">Oups ! Impossible de récupérer la liste des contacts.</translation>
 
