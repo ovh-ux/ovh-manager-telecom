@@ -16,7 +16,9 @@
    <translation id="telephony_alias_portability_order_callNumber" qtlid="460756">Numéro à porter (format international)</translation>
    <translation id="telephony_alias_portability_order_number_international" qtlid="460769">N° au format international</translation>
    <translation id="telephony_alias_portability_order_callNumber_pattern_error" qtlid="460782">Veuillez saisir un numéro au format international (0033… ou +33…).</translation>
-   <translation id="telephony_alias_portability_order_desireDate" qtlid="392255">Date de portabilité souhaitée</translation>
+   <translation id="telephony_alias_portability_order_desireDate" qtlid="392255">Date de portabilité souhaitée :</translation>
+   <translation id="telephony_alias_portability_order_desireDate_sooner">Au plus tôt</translation>
+   <translation id="telephony_alias_portability_order_desireDate_custom">Choisir la date</translation>
    <translation id="telephony_alias_portability_order_desireDate_pattern_error" qtlid="460795">La date saisie est invalide.</translation>
    <translation id="telephony_alias_portability_order_rio" qtlid="310257">RIO</translation>
    <translation id="telephony_alias_portability_order_rio_pattern_error" qtlid="460808">Le RIO saisi est invalide.</translation>
