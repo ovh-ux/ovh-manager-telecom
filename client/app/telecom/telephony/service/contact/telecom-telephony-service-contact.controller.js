@@ -326,6 +326,5 @@ angular.module("managerApp").controller("TelecomTelephonyServiceContactCtrl", fu
         return ["fr", "be"].indexOf(self.directory.country) < 0;
     };
 
-
     init();
 });
