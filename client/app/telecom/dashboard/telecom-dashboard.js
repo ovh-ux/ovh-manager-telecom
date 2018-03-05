@@ -9,13 +9,13 @@ angular.module("managerApp").config(function ($stateProvider) {
                 controller: "TelecomDashboardCtrl",
                 controllerAs: "TelecomDashboardCtrl"
             },
-            "@billsView": {
+            "billsView@telecom.dashboard": {
                 templateUrl: "app/telecom/dashboard/bills/telecom-dashboard-bills.html",
                 controller: "TelecomDashboardBillsCtrl",
                 controllerAs: "BillsCtrl",
                 noTranslations: true
             },
-            "@guidesView": {
+            "guidesView@telecom.dashboard": {
                 templateUrl: "app/telecom/dashboard/guides/telecom-dashboard-guides.html",
                 controller: "TelecomDashboardGuidesCtrl",
                 controllerAs: "GuidesCtrl",

@@ -6,7 +6,7 @@ angular.module("managerApp").config(function ($stateProvider) {
             telecomView: {
                 templateUrl: "app/telecom/telephony/telecom-telephony.html"
             },
-            "@telephonyView": {
+            "telephonyView@telecom.telephony": {
                 templateUrl: "app/telecom/telephony/telecom-telephony-main.view.html"
             },
             "groupView@telecom.telephony": {
