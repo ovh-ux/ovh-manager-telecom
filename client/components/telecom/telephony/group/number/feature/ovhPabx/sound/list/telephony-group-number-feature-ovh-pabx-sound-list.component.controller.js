@@ -61,6 +61,10 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxSoundListCtrl", f
             self.ovhPabx = self.numberCtrl.number.feature;
         }
 
+        if (self.ovhPabx.sounds && self.ovhPabx.sounds.length === 1) {
+            self.selectedSound = self.ovhPabx.sounds[0].soundId;
+        }
+
         return getTranslations().finally(function () {
             self.loading.init = false;
         });
