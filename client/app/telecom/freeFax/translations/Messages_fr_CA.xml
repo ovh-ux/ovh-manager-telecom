@@ -26,7 +26,7 @@
    <translation id="freefax_notification_email" qtlid="33598">Courriel</translation>
    <translation id="freefax_notification_type" qtlid="306708">Notification du répondeur</translation>
    <translation id="freefax_notification_source" qtlid="395596">Source de la notification</translation>
-   <translation id="freefax_notification_source_fax" qtlid="32926"></translation>
+   <translation id="freefax_notification_source_fax" qtlid="32926">Télécopieur</translation>
    <translation id="freefax_notification_source_voicemail" qtlid="88956">Répondeur</translation>
    <translation id="freefax_notification_source_both" qtlid="395609">Fax et répondeur</translation>
    <translation id="freefax_notification_type_simple" qtlid="306734">Notification seule</translation>

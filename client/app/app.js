@@ -295,18 +295,20 @@ angular.module("managerApp", [
     })
 
 /*= =========  LOAD NAVBAR AND SIDEBAR  ==========*/
-    .run(function ($document, $rootScope, $translate, $translatePartialLoader, ManagerNavbarService) {
+    .run(function ($document, $rootScope, ManagerNavbarService) {
         "use strict";
 
-        $translatePartialLoader.addPart("common");
-        $translatePartialLoader.addPart("components");
-
-        // Get structure of the navbar
-        $translate.refresh().then(() =>
-            ManagerNavbarService.getNavbar().then((navbar) => {
+        // Get first base structure of the navbar, to avoid heavy loading
+        ManagerNavbarService.getNavbar()
+            .then((navbar) => {
                 $rootScope.navbar = navbar;
-            })
-        );
+
+                // Then get the products links, to build the reponsive menu
+                ManagerNavbarService.getResponsiveLinks()
+                    .then((responsiveLinks) => {
+                        $rootScope.navbar.responsiveLinks = responsiveLinks;
+                    });
+            });
 
         // Scroll to anchor id
         $rootScope.scrollTo = (id) => {

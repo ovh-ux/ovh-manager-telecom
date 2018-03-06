@@ -16,7 +16,7 @@
    <translation id="sms_users_sr_only_actions" qtlid="72809">Ações</translation>
 
    <translation id="sms_users_action_change_password" qtlid="80394">Alterar a password</translation>
-   <translation id="sms_users_action_change_password_label" qtlid="2270">Password</translation>
+   <translation id="sms_users_action_change_password_label" qtlid="2270">Palavra-passe</translation>
    <translation id="sms_users_action_quota" qtlid="6874">Quota</translation>
    <translation id="sms_users_action_limit" qtlid="33562">Limite</translation>
    <translation id="sms_users_action_restriction_ip" qtlid="338729">Restrictions par IP pour http2sms</translation>
@@ -31,9 +31,9 @@
    <translation id="sms_users_add_user_login_error_required" qtlid="338781">Le champ "identifiant" est obligatoire.</translation>
    <translation id="sms_users_add_user_login_error_maxlength" qtlid="338794">Le champ "identifiant" ne doit pas dépasser les 40 caractères.</translation>
    <translation id="sms_users_add_user_password_label" qtlid="334894">Mot de passe&#160;:&#160;</translation>
-   <translation id="sms_users_add_user_password_placeholder" qtlid="2270">Password</translation>
+   <translation id="sms_users_add_user_password_placeholder" qtlid="2270">Palavra-passe</translation>
    <translation id="sms_users_add_user_password_required" qtlid="334946">Le champ "mot de passe" est obligatoire.</translation>
-   <translation id="sms_users_add_user_password_error_minlength" qtlid="338807">Le champ "mot de passe" doit être composé de 8 caractères alphanumériques.</translation>
+   <translation id="sms_users_add_user_password_error_pattern" qtlid="338807">Le champ "mot de passe" doit être composé de 8 caractères alphanumériques.</translation>
    <translation id="sms_users_add_user_adding" qtlid="393217">Ajout de l’utilisateur…</translation>
    <translation id="sms_users_add_user_added" qtlid="334933">Utilisateur ajouté&#160;!&#160;</translation>
    <translation id="sms_users_add_user_ko" qtlid="338846">Impossible de créer l’utilisateur.<br/>{{error}}</translation>
@@ -69,9 +69,9 @@
    <translation id="sms_users_change_password_user_title" qtlid="80394">Alterar a password</translation>
    <translation id="sms_users_change_password_user_info" qtlid="338859">Vous changez actuellement le mot de passe de l’utilisateur <b>«{{ login }}»</b>.</translation>
    <translation id="sms_users_change_password_user_password_label" qtlid="334894">Mot de passe&#160;:&#160;</translation>
-   <translation id="sms_users_change_password_user_password_placeholder" qtlid="2270">Password</translation>
+   <translation id="sms_users_change_password_user_password_placeholder" qtlid="2270">Palavra-passe</translation>
    <translation id="sms_users_change_password_user_password_error_required" qtlid="334946">Le champ "mot de passe" est obligatoire.</translation>
-   <translation id="sms_users_change_password_user_password_error_minlength" qtlid="338807">Le champ "mot de passe" doit être composé de 8 caractères alphanumériques.</translation>
+   <translation id="sms_users_change_password_user_password_error_pattern" qtlid="338807">Le champ "mot de passe" doit être composé de 8 caractères alphanumériques.</translation>
    <translation id="sms_users_change_password_user_changing" qtlid="338872">Changement du mot de passe…</translation>
    <translation id="sms_users_change_password_user_changed" qtlid="338885">Mot de passe modifié&#160;!&#160;</translation>
    <translation id="sms_users_change_password_user_ko" qtlid="338898">Impossible de changer le mot de passe de l’utilisateur.<br/>{{error}}</translation>

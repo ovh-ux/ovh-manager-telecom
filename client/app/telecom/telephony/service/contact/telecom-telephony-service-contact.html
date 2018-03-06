@@ -717,11 +717,11 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <hr/>
-                                <telephony-bulk-action data-ng-if="!ServiceContactCtrl.isFax"
+                                <telephony-bulk-action data-service-type="all"
                                                        data-billing-account="{{ ServiceContactCtrl.bulkDatas.billingAccount }}"
                                                        data-service-name="{{ ServiceContactCtrl.bulkDatas.serviceName }}"
                                                        data-custom-class="link d-block pl-0 mb-3"
-                                                       data-ng-disabled="ServiceContactCtrl.isLoading"
+                                                       data-ng-disabled="!ServiceContactCtrl.isEditing || ServiceContactCtrl.isLoading ||  contactForm.$invalid"
                                                        data-bulk-infos="ServiceContactCtrl.bulkDatas.infos"
                                                        data-get-bulk-params="ServiceContactCtrl.getBulkParams"
                                                        data-on-success="ServiceContactCtrl.onBulkSuccess"
@@ -736,7 +736,7 @@
                                 <button type="submit"
                                         class="btn btn-primary"
                                         data-ng-if="ServiceContactCtrl.isEditing"
-                                        data-ng-disabled="!ServiceContactCtrl.hasChanges() || ServiceContactCtrl.isUpdating || contactForm.$invalid">
+                                        data-ng-disabled="!ServiceContactCtrl.isEditing || ServiceContactCtrl.isUpdating || contactForm.$invalid">
                                     <oui-spinner class="mr-2"
                                                  data-ng-if="ServiceContactCtrl.isUpdating"
                                                  data-size="s">

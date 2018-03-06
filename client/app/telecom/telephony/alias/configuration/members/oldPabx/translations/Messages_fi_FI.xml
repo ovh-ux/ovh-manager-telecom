@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<translations>
+   <translation id="telephony_alias_configuration_members_old_pabx_info_1" qtlid="461302">Vous pouvez, sur cette page, configurer les membres de votre file d'attente.</translation>
+   <translation id="telephony_alias_configuration_members_old_pabx_info_2" qtlid="461315">Pour chaque membre, vous pouvez définir sa position et le délai durant lequel il sonne.</translation>
+
+   <translation id="telephony_alias_configuration_members_old_pabx_logged" qtlid="99944">Yhdistetty</translation>
+   <translation id="telephony_alias_configuration_members_old_pabx_unlogged" qtlid="77154">Kirjautunut ulos</translation>
+   <translation id="telephony_alias_configuration_members_old_pabx_logged_label" qtlid="461328">Agent connecté</translation>
+
+   <translation id="telephony_alias_configuration_members_old_pabx_load_error" qtlid="461341">Oups une erreur est survenue lors du chargement des membres de votre file d'attente.</translation>
+</translations>

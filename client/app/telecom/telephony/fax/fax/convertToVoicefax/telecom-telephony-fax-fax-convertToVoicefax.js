@@ -5,7 +5,9 @@ angular.module("managerApp").config(function ($stateProvider) {
         views: {
             "@telephonyView": {
                 templateUrl: "app/telecom/telephony/fax/fax/convertToVoicefax/telecom-telephony-fax-fax-convertToVoicefax.html",
-                noTranslations: true
+                noTranslations: true,
+                controller: "TelecomTelephonyFaxFaxConvertToVoiceFaxCtrl",
+                controllerAs: "$ctrl"
             },
             "@faxConvertToVoicefaxView": {
                 templateUrl: "app/telecom/telephony/service/fax/convertToVoicefax/telecom-telephony-service-fax-convertToVoicefax.html",

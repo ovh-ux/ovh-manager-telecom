@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <translations>
-   <translation id="order_overTheBox_no_device_detected_title" qtlid="289289">Yhtään OverTheBox -tuotetta ei havaittu paikallisverkossasi.</translation>
-   <translation id="order_overTheBox_no_device_detected_advise" qtlid="289302">Assurez-vous :</translation>
-   <translation id="order_overTheBox_no_device_detected_advise_internet" qtlid="289315">que celle-ci est connectée à Internet</translation>
-   <translation id="order_overTheBox_no_device_detected_advise_connected" qtlid="289328">que vous êtes connecté à votre espace client depuis le même réseau que votre OverTheBox.</translation>
+   <translation id="order_overTheBox_no_device_detected_title" qtlid="289289">Yhtään OverTheBox-tuotetta ei havaittu paikallisverkossasi.</translation>
+   <translation id="order_overTheBox_no_device_detected_advise" qtlid="289302">Varmistä, että:</translation>
+   <translation id="order_overTheBox_no_device_detected_advise_internet" qtlid="289315">se on kytketty Internetiin</translation>
+   <translation id="order_overTheBox_no_device_detected_advise_connected" qtlid="289328">olet kirjautunut hallintapaneeliin samasta verkosta kuin OverTheBox.</translation>
    <translation id="order_overTheBox_no_device_detected_advise_needed" qtlid="305655">Besoin d'un conseil pour vos branchements ? <a href="{{url}}" target="_blank">Cliquez ici</a> pour accéder aux guides utilisateurs OVH.</translation>
-   <translation id="order_overTheBox_device_detected_title" qtlid="289354">Votre OverTheBox a été détectée sur votre réseau local.</translation>
+   <translation id="order_overTheBox_device_detected_title" qtlid="289354">OverTheBox on löydetty paikallisverkosta.</translation>
    <translation id="order_overTheBox_many_device_detected_title" qtlid="305668">{{count}} OverTheBox ont été détectées sur votre réseau local.</translation>
-   <translation id="order_overTheBox_device_detected_subscription_needed" qtlid="289367">Pour utiliser le matériel, vous devez souscrire au service OVH.</translation>
+   <translation id="order_overTheBox_device_detected_subscription_needed" qtlid="289367">Laitteen käyttämiseksi tilaa OVH:n palvelu.</translation>
    <translation id="overTheBox_device_not_activated" qtlid="289718">OverTheBox -palveluasi ei ole aktivoitu.</translation>
    <translation id="overTheBox_device_not_activated_infos" qtlid="289731">Konfiguraation viimeistelemiseksi:</translation>
    <translation id="overTheBox_device_not_activated_infos_connect" qtlid="305681">Connectez vous à l'<a href="{{url}}" target="_blank" title="Nouvelle fenêtre">interface de gestion</a></translation>

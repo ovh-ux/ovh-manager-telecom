@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <translations>
-   <translation id="telephony_alias_page_title" qtlid="393048">Numéro "{{name}}"</translation>
+   <translation id="telephony_alias_page_title" qtlid="393048">Numero "{{name}}"</translation>
    <translation id="telephony_alias_tab_order" qtlid="333256">Ordina numeri</translation>
    <translation id="telephony_alias_tab_portability" qtlid="333269">Portabilità</translation>
    <translation id="telephony_alias_tab_administrative_management" qtlid="72737">Gestione</translation>
@@ -10,8 +10,8 @@
    <translation id="telephony_alias_tab_number_directory" qtlid="33370">Coordinate</translation>
 
    <translation id="telephony_alias_rename_error" qtlid="333308">Impossibile rinominare il tuo alias {{serviceName}}.</translation>
-   <translation id="telephony_alias_termination_warning" qtlid="393061">Le numéro sera résilié le <strong>{{ date }}</strong>.</translation>
-   <translation id="telephony_alias_termination_warning_cancel" qtlid="358604">Per annullare, clicca qui.</translation>
-   <translation id="telephony_alias_convert_warning" qtlid="393074">Le numéro sera converti en ligne le <strong>{{ date }}</strong>.</translation>
-   <translation id="telephony_alias_load_error" qtlid="393087">Oups ! Une erreur est survenue lors du chargement de votre numéro.</translation>
+   <translation id="telephony_alias_termination_warning" qtlid="393061">Il numero verrà disattivato il <strong>{{ date }}</strong>.</translation>
+   <translation id="telephony_alias_termination_warning_cancel" qtlid="462953">Vous pourrez annuler dans la section suivante.</translation>
+   <translation id="telephony_alias_convert_warning" qtlid="393074">Il numero sarà convertito in linea il <strong>{{ date }}</strong>.</translation>
+   <translation id="telephony_alias_load_error" qtlid="393087">Ops! Si è verificato un errore durante il caricamento del tuo numero.</translation>
 </translations>

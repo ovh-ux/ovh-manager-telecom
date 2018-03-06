@@ -3,7 +3,7 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountAdministr
 
     var self = this;
 
-    function init () {
+    this.$onInit = function () {
 
         self.billingAccounts = {
             ids: [],
@@ -25,25 +25,24 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountAdministr
             billingAccount: $stateParams.billingAccount
         }).$promise.then(_.size);
 
-        self.loading = true;
         return $q.all({
             billingAccounts: OvhApiTelephony.Lexi().query().$promise,
             numberCount: getNumberCount,
             lineCount: getLineCount
         }).then(function (result) {
-            self.billingAccounts.ids = result.billingAccounts;
+            self.billingAccounts.ids = result.billingAccounts.map(function (billingAccount) {
+                return { id: billingAccount };
+            });
             self.numberCount = result.numberCount;
             self.lineCount = result.lineCount;
-        }).catch(function (err) {
+        }, function (err) {
             return new ToastError(err);
-        }).finally(function () {
-            self.loading = false;
         });
-    }
+    };
 
     self.fetchBillingAccountDetails = function (billingAccount) {
         return OvhApiTelephony.Lexi().get({
-            billingAccount: billingAccount
+            billingAccount: billingAccount.id
         }).$promise;
     };
 
@@ -94,9 +93,10 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountAdministr
             lines: lines,
             aliases: aliases
         }).then(function (result) {
-            var pools = [];
+            result.lines = _.compact(result.lines);
 
             // handle pool of aliases
+            var pools = [];
             result.aliases = _.filter(result.aliases, function (alias) {
                 if (alias.partOfPool) {
                     var pool = _.find(pools, { id: alias.partOfPool });
@@ -144,7 +144,7 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountAdministr
                 }
                 self.serviceAttachSuccess[service.serviceName] = true;
                 delete self.serviceAttachErrors[service.serviceName];
-            }).catch(function (err) {
+            }, function (err) {
                 errorList.push({
                     service: service,
                     error: err
@@ -165,6 +165,4 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountAdministr
             TelephonySidebar.reset();
         });
     };
-
-    init();
 });

@@ -28,7 +28,7 @@
    <translation id="hubic" qtlid="305083">HubiC</translation>
    <translation id="task" qtlid="31078">Operazioni</translation>
    <translation id="pack_xdsl_hubic_activate" qtlid="308580">Utilizza la tua offerta hubiC</translation>
-   <translation id="pack_xdsl_hubic_loading_error" qtlid="384688">Oups ! Nous n'avons pas pu lister vos services HubiC.</translation>
+   <translation id="pack_xdsl_hubic_loading_error" qtlid="384688">Ops! Impossibile generare la lista dei tuoi servizi hubiC.</translation>
    <translation id="promotionCode" qtlid="308593">Buono sconto</translation>
    <translation id="exchangeAccount" qtlid="384701">Exchange (Account)</translation>
    <translation id="exchangeLite" qtlid="308619">Exchange (Lite)</translation>
@@ -71,7 +71,7 @@
    <translation id="account_name" qtlid="33598">Email</translation>
    <translation id="password" qtlid="2270">Password</translation>
    <translation id="password_confirmation" qtlid="9983">Conferma</translation>
-   <translation id="all_fields_are_required">Tous les champs sont obligatoires</translation>
+   <translation id="all_fields_are_required" qtlid="297579">Tutti i campi sono obbligatori</translation>
    <translation id="required_fields_are_tag_with_a_star" qtlid="342793">&#160;I campi indicati con un asterisco sono obbligatori</translation>
    <translation id="in_validation" qtlid="308931">La tua richiesta è in corso</translation>
    <translation id="security_level" qtlid="308944">Livello di sicurezza</translation>
@@ -106,5 +106,5 @@
 
    <translation id="pack_offer_migration" qtlid="25783">Cambia offerta </translation>
 
-   <translation id="pack_xdsl_oops_an_error_is_occured" qtlid="384805">Ops! Impossibile recuperare le informazioni relative al tuo pack.</translation>
+   <translation id="pack_xdsl_oops_an_error_is_occured" qtlid="385455">Ops! Impossibile recuperare le informazioni relative al tuo pack.</translation>
 </translations>

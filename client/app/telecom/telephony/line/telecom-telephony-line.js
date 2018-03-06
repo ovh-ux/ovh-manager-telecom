@@ -20,15 +20,29 @@ angular.module("managerApp").config(function ($stateProvider) {
         },
         translations: ["common", "telecom/telephony/line"],
         resolve: {
-            $title: function (translations, $translate, $stateParams, OvhApiTelephony) {
+            currentLine: function ($stateParams, OvhApiTelephony) {
                 return OvhApiTelephony.Line().Lexi().get({
                     billingAccount: $stateParams.billingAccount,
                     serviceName: $stateParams.serviceName
-                }).$promise.then(function (data) {
-                    return $translate.instant("telephony_line_page_title", { name: data.description || $stateParams.serviceName }, null, null, "escape");
+                }).$promise.then(function (line) {
+                    return OvhApiTelephony.Line().Lexi().simultaneousChannelsDetails({
+                        billingAccount: $stateParams.billingAccount,
+                        serviceName: $stateParams.serviceName
+                    }).$promise.then(function (details) {
+                        return details;
+                    }).catch(function () {
+                        return null;
+                    }).then(function (details) {
+                        return _.merge(line, {
+                            simultaneousLinesDetails: details || null
+                        });
+                    });
                 }).catch(function () {
-                    return $translate("telephony_line_page_title", { name: $stateParams.serviceName });
+                    return {};
                 });
+            },
+            $title: function (translations, $stateParams, $translate, currentLine) {
+                return $translate.instant("telephony_line_page_title", { name: currentLine.description || $stateParams.serviceName }, null, null, "escape");
             }
         }
     });

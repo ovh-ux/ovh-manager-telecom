@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <translations>
-   <translation id="sms_section_back_link" qtlid="340874">Retour aux expéditeurs</translation>
+   <translation id="sms_section_back_link" qtlid="340874">Zurück zu den Absendern</translation>
 
    <translation id="sms_senders_blacklisted_manage_title" qtlid="340562">Gérer les expéditeurs blacklistés</translation>
 

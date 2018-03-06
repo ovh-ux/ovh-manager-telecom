@@ -3,7 +3,7 @@
    <translation id="xdsl_modem_bdhcp_title" qtlid="311960">Baux DHCP</translation>
    <translation id="xdsl_modem_bdhcp_description" qtlid="311973">L'adresse MAC permet d'identifier de manière unique un équipement sur le réseau (LAN et Internet). Les baux DHCP servent à assigner une adresse IP fixe à un équipement grâce à cette adresse MAC. Ces baux sont principalements utilisés si vous hébergez des services (serveur web, SSH, etc) et que vous souhaitez les contacter depuis l'extérieur, via des redirections de port (que vous pourrez configurer en parallèle).</translation>
 
-   <translation id="xdsl_modem_bdhcp_name" qtlid="3818">Celé jméno</translation>
+   <translation id="xdsl_modem_bdhcp_name" qtlid="3818">Název</translation>
    <translation id="xdsl_modem_bdhcp_ip" qtlid="26191">Adresa IP</translation>
    <translation id="xdsl_modem_bdhcp_mac" qtlid="42562">MAC adresa</translation>
 

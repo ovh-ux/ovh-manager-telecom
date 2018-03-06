@@ -3,7 +3,7 @@
    <translation id="order_overTheBox_no_device_detected_title" qtlid="289289">No OverTheBox has been detected on your local network. </translation>
    <translation id="order_overTheBox_no_device_detected_advise" qtlid="289302">Check:</translation>
    <translation id="order_overTheBox_no_device_detected_advise_internet" qtlid="289315">that it's connected to the Internet</translation>
-   <translation id="order_overTheBox_no_device_detected_advise_connected" qtlid="289328">that you are connected to your customer account on the same network as OverTheBox.</translation>
+   <translation id="order_overTheBox_no_device_detected_advise_connected" qtlid="289328">that you are connected to your control panel on the same network as OverTheBox.</translation>
    <translation id="order_overTheBox_no_device_detected_advise_needed" qtlid="305655">Do you need help with OverTheBox? <a href="{{url}}" target="_blank">Click here</a> for the OVH user guides. </translation>
    <translation id="order_overTheBox_device_detected_title" qtlid="289354">Your OverTheBox has been detected on your local network. </translation>
    <translation id="order_overTheBox_many_device_detected_title" qtlid="305668">{{count}} OverTheBox have been detected on your local network. </translation>

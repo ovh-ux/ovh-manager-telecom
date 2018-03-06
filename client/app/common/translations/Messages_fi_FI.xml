@@ -7,11 +7,20 @@
    <translation id="status_active" qtlid="55133">Aktiivinen</translation>
    <translation id="status_close" qtlid="66236">Suljettu</translation>
    <translation id="status_deleting" qtlid="134514">Poistettu</translation>
-   <translation id="ttc" qtlid="101385"></translation>
+   <translation id="ttc" qtlid="101385">sis.ALV</translation>
    <translation id="table_sort" qtlid="94699">Suodata</translation>
 
+   <translation id="common_datagrid_nodata" qtlid="197635">Ei tuloksia</translation>
+   <translation id="common_pagination_resultsperpage" qtlid="433384">Tulosta per sivu</translation>
+   <translation id="common_pagination_ofnresults" qtlid="452982">/ TOTAL_ITEMS tulosta</translation>
+   <translation id="common_pagination_currentpageofpagecount" qtlid="452995">Sivu CURRENT_PAGE / PAGE_COUNT</translation>
+
    <translation id="yes" qtlid="50134">kyllä</translation>
+   <translation id="common_yes_capitalized" qtlid="34776">Kyllä</translation>
    <translation id="no" qtlid="50602">ei</translation>
+   <translation id="common_no_capitalized" qtlid="34788">Ei</translation>
+   <translation id="previous" qtlid="17431">Edellinen</translation>
+   <translation id="next" qtlid="17743">Seuraava</translation>
 
    <translation id="show" qtlid="69353">Näytä</translation>
    <translation id="hide" qtlid="26539">Piilota</translation>
@@ -23,7 +32,7 @@
    <translation id="common_error_title" qtlid="26407">Virhe</translation>
 
    <translation id="an_error_occured" qtlid="148981">Tapahtui virhe</translation>
-   <translation id="error_401" qtlid="304472">Ei sallittu pääsy</translation>
+   <translation id="error_401" qtlid="304472">Pääsy kielletty</translation>
    <translation id="error_403" qtlid="304485">Kielletty toimenpide</translation>
    <translation id="error_417" qtlid="304498">Hups! Jotain meni pieleen</translation>
    <translation id="error_456" qtlid="304511">Asiakkaan puolella virhe, jota ei voida korjata.</translation>
@@ -33,10 +42,11 @@
    <translation id="modify" qtlid="37875">Muokkaa</translation>
    <translation id="access" qtlid="304524">Kirjaudu</translation>
    <translation id="edit_name" qtlid="304537">Muokkaa {{name}}</translation>
+   <translation id="common_create" qtlid="39226">Luo</translation>
    <translation id="cancel" qtlid="37863">Peruuta</translation>
    <translation id="delete" qtlid="2414">Poista</translation>
    <translation id="delete_name" qtlid="304550">Poista {{name}}</translation>
-   <translation id="ok" qtlid="224880">OK</translation>
+   <translation id="ok" qtlid="224880">Ok</translation>
    <translation id="more_info" qtlid="34102">Lisätietoja</translation>
    <translation id="configure" qtlid="4010">Konfiguroi</translation>
    <translation id="none" qtlid="8674">Ei mitään</translation>
@@ -70,6 +80,13 @@
    <translation id="sidebar_menu" qtlid="304576">Valikko</translation>
    <translation id="sidebar_placeholder" qtlid="122275">Haetaan…</translation>
    <translation id="sidebar_no_item_found" qtlid="304589">Hakusi ei vastannut yhtään elementtiä.</translation>
+
+
+   <translation id="browser_alert_not_supported" qtlid="405357">Selaintasi ei tueta.</translation>
+   <translation id="browser_alert_deprecated" qtlid="405370">Selaimesi ei ole ajan tasalla ja siinä voi olla tietoturvaheikkouksia tai yhteensopivuusongelmia. </translation>
+   <translation id="browser_alert_update" qtlid="455699">Nous vous recommandons de <a href="http://outdatedbrowser.com/fr" class="alert-link" target="_blank" rel="noopener">mettre à jour votre navigateur <i class="fa fa-external-link" aria-hidden="true"></i></a> afin de profiter d'une expérience optimale.</translation>
+   <translation id="browser_alert_close" qtlid="405396">Sulje tämä varoitus</translation>
+
 <!-- xdsl/sidebar -->
    <translation id="label-menu-item-ok" qtlid="304602">Tämä linja on aktiivinen.</translation>
    <translation id="label-menu-item-down" qtlid="304615">Ongelma linjalla.</translation>
@@ -87,7 +104,7 @@
 
    <translation id="sidebar_xdsl_title" qtlid="110634">Internetyhteys</translation>
    <translation id="sidebar_task_title" qtlid="31078">Operaatiot</translation>
-   <translation id="sidebar_telephony_title" qtlid="29299">Puhelimet</translation>
+   <translation id="sidebar_telephony_title" qtlid="29299">Puhe</translation>
    <translation id="sidebar_telephony_linkToV4" qtlid="304719">Mene hallintapaneeliin</translation>
    <translation id="sidebar_sms_title" qtlid="28243">SMS</translation>
    <translation id="sidebar_fax_title" qtlid="32926">Faksi</translation>
@@ -97,7 +114,7 @@
    <translation id="sidebar-service-view" qtlid="304732">Palvelunäkymä</translation>
    <translation id="sidebar-facturationGroup-view" qtlid="304745">Laskutusryhmänäkymä</translation>
    <translation id="sidebar_deskaas_title" qtlid="304758">Tutustu Deskaas-palveluun</translation>
-   <translation id="sidebar_init_error" qtlid="384155">Oups, certains de vos services n'ont pas pu être chargés :</translation>
+   <translation id="sidebar_init_error" qtlid="384155">Hups, joitain palvelujasi ei voit ladata:</translation>
 
    <translation id="coming_soon" qtlid="304771">Tämä ominaisuus ei ole vielä saatavilla.</translation>
    <translation id="back_home" qtlid="304784">Paluu etusivulle</translation>
@@ -109,7 +126,6 @@
    <translation id="common_menu_cloud" qtlid="15677">Cloud</translation>
    <translation id="common_menu_telecom" qtlid="135827">VoIP</translation>
    <translation id="common_menu_gamma" qtlid="232401">Sunrise</translation>
-   <translation id="common_menu_telecom" qtlid="158214">Telecom</translation>
 <translation id="common_menu_portal" translate="none">MyOVH</translation>
    <translation id="common_menu_partners" qtlid="383512">Yhteistyökumppanit</translation>
    <translation id="common_menu_orders" qtlid="42394">Tilauksen seuranta</translation>
@@ -118,6 +134,10 @@
    <translation id="common_menu_billing" qtlid="32950">Laskutus</translation>
    <translation id="common_menu_language" qtlid="30598">Kieli</translation>
    <translation id="common_menu_account" qtlid="157642">Oma tili</translation>
+   <translation id="common_menu_renew" qtlid="229658">Omat palvelut</translation>
+   <translation id="common_menu_orders_all" qtlid="282809">Omat tilaukset</translation>
+   <translation id="common_menu_contacts" qtlid="70541">Omat kontaktit</translation>
+   <translation id="common_menu_list_ticket" qtlid="454039">Katso kaikki tukipyynnöt</translation>
    <translation id="common_menu_support_assistance" qtlid="52699">Tuki</translation>
    <translation id="common_menu_support_all_guides" qtlid="260788">Kaikki ohjeet</translation>
    <translation id="common_menu_support_new_ticket" qtlid="260801">Luo tukipyyntö</translation>
@@ -126,13 +146,14 @@
    <translation id="common_menu_support_telephony_contact" qtlid="260827">Puhelintuki</translation>
    <translation id="common_menu_telephony_redirection" qtlid="304797">Uudelleenohjaus Telephony-hallintaan</translation>
    <translation id="common_menu_support_changelog" qtlid="124964">Päivityshistoria</translation>
+   <translation id="common_skip_to_main_content" qtlid="454052">Siirry pääsisältöön</translation>
    <translation id="global_logout" qtlid="33658">Kirjaudu ulos</translation>
 
    <translation id="common_pagination_page" qtlid="239246">Sivu {{currentPage}}/{{nbPages}}</translation>
    <translation id="common_pagination_display" qtlid="69353">Näytä</translation>
 
 <!-- Account balance -->
-   <translation id="common_account_balance_warning_flash" qtlid="384181">Votre compte prépayé est débiteur de <span class="balance-price">{{value}}€</span> au {{date | date:'medium'}}. Rendez-vous dans la section <a href="{{link}}">facturation</a> pour le créditer.</translation>
+   <translation id="common_account_balance_warning_flash" qtlid="384181">Prepaid-tilisi saldo on negatiivinen <span class="balance-price">{{value}}€</span> päivänä {{date | date:'medium'}}. Mene <a href="{{link}}">laskutusosioon</a> suorittamaan puuttuva maksu.</translation>
 
 <!-- Default credit car expiry -->
    <translation id="common_account_cb_expire_alert" qtlid="294763">Oletuspankkikorttisi vanhenee {{nbDays}} päivän kuluessa. Mene <a href="{{urlBillingSection}}">laskutusosioon</a> päivittääksesi se.</translation>
@@ -152,22 +173,39 @@
 
    <translation id="common_menu_changelog" qtlid="260971">Muutosloki</translation>
 
+   <translation id="common_express_lite_banner_desc" qtlid="455712">Express Lite comprend donc un modem offrant un accès à internet et une ligne VoIP pour <span class="ad-price font-weight-bold fs14">22,99€ HT</span>&#160;/&#160;mois.</translation>
    <translation id="common_express_lite_banner_title" qtlid="304888">OVH lanseeraa uuden ADSL ja VDSL-yhteyspalvelun.</translation>
    <translation id="common_generate_order" qtlid="186219">Luo tilaus</translation>
    <translation id="common_boost_banner_title" qtlid="304901">OVH lanseeraa kaksi rajoitettua "Interent Only" -sarjaa, jotka tarjoavat maksimaalista nopeutta.</translation>
+   <translation id="common_boost_banner_desc" qtlid="455725">Sécurisez votre connexion avec l'offre <span class="ad-price font-weight-bold fs14">CONNECT</span> ou doublez votre débit avec l'offre <span class="ad-price font-weight-bold fs14">BOOST</span> qui inclut le matériel et le service <span class="ad-price font-weight-bold fs14">OVER THE BOX</span>.<br/><small>Offre limitée aux 240 premières commandes.</small></translation>
    <translation id="common_banner_discover" qtlid="304927">Tutustu tuotteeseen</translation>
    <translation id="common_service_name_edit_title" qtlid="331683">{{ title }} : muokkaa palvelun nimeä</translation>
 
    <translation id="common_monthly_without_tax" qtlid="331696">ALV0/kk</translation>
-   <translation id="common_without_tax" qtlid="101397"></translation>
+   <translation id="common_without_tax" qtlid="101397">HT</translation>
 
    <translation id="common_refresh" qtlid="8182">Päivitä</translation>
-   <translation id="common_refresh_data" qtlid="384194">Actualiser les données</translation>
+   <translation id="common_refresh_data" qtlid="384194">Päivitä tiedot</translation>
    <translation id="common_open_new_tab" qtlid="222176">Uusi ikkuna</translation>
    <translation id="common_download" qtlid="39286">Lataa</translation>
    <translation id="common_relaunch" qtlid="31378">Uudelleenkäynnistä</translation>
    <translation id="common_filter" qtlid="59207">Suodata</translation>
    <translation id="common_home" qtlid="27643">Etusivu</translation>
+
+<!-- Units -->
+   <translation id="unit_bits_per_sec" qtlid="455738">{{val}} bits/s</translation>
+   <translation id="unit_kilo_bits_per_sec" qtlid="455751">{{val}} Kbs/s</translation>
+   <translation id="unit_mega_bits_per_sec" qtlid="455764">{{val}} Mbs/s</translation>
+   <translation id="unit_giga_bits_per_sec" qtlid="455777">{{val}} Gbs/s</translation>
+   <translation id="unit_tera_bits_per_sec" qtlid="455790">{{val}} Tbs/s</translation>
+   <translation id="unit_peta_bits_per_sec" qtlid="455803">{{val}} Pbs/s</translation>
+
+   <translation id="unit_generic_per_sec" qtlid="455816">{{val}}</translation>
+   <translation id="unit_kilo_generic_per_sec" qtlid="455829">{{val}} K</translation>
+   <translation id="unit_mega_generic_per_sec" qtlid="455842">{{val}} M</translation>
+   <translation id="unit_giga_generic_per_sec" qtlid="455855">{{val}} G</translation>
+   <translation id="unit_tera_generic_per_sec" qtlid="455868">{{val}} T</translation>
+   <translation id="unit_peta_generic_per_sec" qtlid="455881">{{val}} P</translation>
 
 <!-- LANGUAGE LIST -->
    <translation id="language_de_DE" qtlid="31618">saksa</translation>
@@ -264,7 +302,7 @@
    <translation id="country_FO" qtlid="187729">Färsaaret</translation>
    <translation id="country_FR" qtlid="29047">Ranska</translation>
    <translation id="country_GA" qtlid="187742">Gabon</translation>
-   <translation id="country_GB" qtlid="386821">Grande-Bretagne</translation>
+   <translation id="country_GB" qtlid="386821">Iso-Britannia</translation>
    <translation id="country_GD" qtlid="187755">Grenada</translation>
    <translation id="country_GE" qtlid="187768">Georgia</translation>
    <translation id="country_GF" qtlid="187781">Ranskan Guayana</translation>
@@ -312,7 +350,7 @@
    <translation id="country_KW" qtlid="188262">Kuwait</translation>
    <translation id="country_KY" qtlid="188275">Caymansaaret</translation>
    <translation id="country_KZ" qtlid="188288">Kazakstan</translation>
-   <translation id="country_LA" qtlid="188301">Laosin demokraattinen kansantasavalta</translation>
+   <translation id="country_LA" qtlid="188301">Laosin demokraattinen kansantasavalta -</translation>
    <translation id="country_LB" qtlid="188314">Libanon</translation>
    <translation id="country_LC" qtlid="188327">Saint Lucia</translation>
    <translation id="country_LI" qtlid="188340">Liechtenstein</translation>
@@ -375,7 +413,7 @@
    <translation id="country_PY" qtlid="188938">Paraguay</translation>
    <translation id="country_QA" qtlid="188951">Qatar</translation>
    <translation id="country_QC" qtlid="188964">Quebec</translation>
-   <translation id="country_RE" qtlid="188977">Réunion</translation>
+   <translation id="country_RE" qtlid="188977">Kokous</translation>
    <translation id="country_RO" qtlid="43666">Romania</translation>
    <translation id="country_RS" qtlid="188990">Serbian tasavalta</translation>
    <translation id="country_RU" qtlid="43618">Venäjä</translation>

@@ -16,13 +16,13 @@
    <translation id="telephony_alias_administration_terminate_reason_billingDifficulties" qtlid="338469">Facturation non adaptée</translation>
    <translation id="telephony_alias_administration_terminate_reason_cessationOfActivity" qtlid="313377">Cessation d'activité</translation>
    <translation id="telephony_alias_administration_terminate_reason_missingOptions" qtlid="338482">Manque de fonctionnalités</translation>
-   <translation id="telephony_alias_administration_terminate_reason_other" qtlid="28603">Outros</translation>
+   <translation id="telephony_alias_administration_terminate_reason_other" qtlid="19963">Outro</translation>
    <translation id="telephony_alias_administration_terminate_reason_plugAndPhoneDifficulties" qtlid="338495">Problèmes liés au matériel</translation>
    <translation id="telephony_alias_administration_terminate_reason_technicalDifficulties" qtlid="313429">Problèmes techniques</translation>
    <translation id="telephony_alias_administration_terminate_reason_moveToCompetitor" qtlid="338508">Départ vers la concurrence</translation>
    <translation id="telephony_alias_administration_terminate_pool_warning" qtlid="392060">Tous les numéros de cette plage seront résiliés.</translation>
-   <translation id="telephony_alias_administration_terminate" qtlid="48646">Rescindir</translation>
+   <translation id="telephony_alias_administration_terminate" qtlid="48646">Cancelar</translation>
    <translation id="telephony_alias_administration_terminate_success" qtlid="392073">Résiliation planifiée avec succès.</translation>
-   <translation id="telephony_alias_administration_cancel_termination" qtlid="285350">Anular o cancelamento do serviço</translation>
+   <translation id="telephony_alias_administration_cancel_termination" qtlid="285350">Anular cancelamento do serviço</translation>
    <translation id="telephony_alias_administration_cancel_termination_success" qtlid="392086">Résiliation annulée.</translation>
 </translations>

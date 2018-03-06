@@ -9,7 +9,7 @@
 
    <translation id="xdsl_modem_device_mac" qtlid="42562">MAC adres</translation>
    <translation id="xdsl_modem_device_ip" qtlid="26191">IP-adres</translation>
-   <translation id="xdsl_modem_device_host" qtlid="3818">Voor- en achternaam</translation>
+   <translation id="xdsl_modem_device_host" qtlid="3818">Naam</translation>
    <translation id="xdsl_modem_device_connection_type" qtlid="307293">type</translation>
    <translation id="xdsl_modem_device_other" qtlid="19963">Anders</translation>
    <translation id="xdsl_modem_device_waiting_refresh" qtlid="311297">En attente de rafraîchissement</translation>

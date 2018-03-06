@@ -3,7 +3,7 @@
    <translation id="telephony_alias_administration_terminate_back_link" qtlid="391943">Retour à l'administration de numéro</translation>
    <translation id="telephony_alias_administration_terminate_title" qtlid="334036">Résilier un numéro</translation>
    <translation id="telephony_alias_administration_terminate_subtitle" qtlid="391956">Résiliation du numéro</translation>
-   <translation id="telephony_alias_administration_terminate_info_subtitle" qtlid="26551">Informations</translation>
+   <translation id="telephony_alias_administration_terminate_info_subtitle" qtlid="26551">Informaciones</translation>
    <translation id="telephony_alias_administration_terminate_info1" qtlid="391969">Cette page vous permet de demander la résiliation de votre numéro.</translation>
    <translation id="telephony_alias_administration_terminate_info2" qtlid="338352">Les demandes de résiliation seront prises en compte lors de votre prochaine facturation. Jusqu'à cette date, l'annulation de la demande restera possible.</translation>
    <translation id="telephony_alias_administration_terminate_info3" qtlid="391982">La résiliation d'un numéro faisant partie d'un pool entraînera la résiliation de l'ensemble du pool.</translation>
@@ -16,7 +16,7 @@
    <translation id="telephony_alias_administration_terminate_reason_billingDifficulties" qtlid="338469">Facturation non adaptée</translation>
    <translation id="telephony_alias_administration_terminate_reason_cessationOfActivity" qtlid="313377">Cessation d'activité</translation>
    <translation id="telephony_alias_administration_terminate_reason_missingOptions" qtlid="338482">Manque de fonctionnalités</translation>
-   <translation id="telephony_alias_administration_terminate_reason_other" qtlid="28603">Autres</translation>
+   <translation id="telephony_alias_administration_terminate_reason_other" qtlid="19963">Autre</translation>
    <translation id="telephony_alias_administration_terminate_reason_plugAndPhoneDifficulties" qtlid="338495">Problèmes liés au matériel</translation>
    <translation id="telephony_alias_administration_terminate_reason_technicalDifficulties" qtlid="313429">Problèmes techniques</translation>
    <translation id="telephony_alias_administration_terminate_reason_moveToCompetitor" qtlid="338508">Départ vers la concurrence</translation>
