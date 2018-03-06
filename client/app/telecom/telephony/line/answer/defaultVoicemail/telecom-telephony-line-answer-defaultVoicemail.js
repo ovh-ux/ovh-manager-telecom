@@ -3,7 +3,7 @@ angular.module("managerApp").config(function ($stateProvider) {
     $stateProvider.state("telecom.telephony.line.defaultVoicemail", {
         url: "/defaultVoicemail",
         views: {
-            "lineView@telecom.telephony.line.defaultVoicemail": {
+            "lineView": {
                 templateUrl: "app/telecom/telephony/line/answer/defaultVoicemail/telecom-telephony-line-answer-defaultVoicemail.html",
                 noTranslations: true
             },
