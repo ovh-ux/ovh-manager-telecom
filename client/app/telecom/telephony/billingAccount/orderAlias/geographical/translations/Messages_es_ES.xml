@@ -13,7 +13,7 @@
    <translation id="telephony_order_geographical_submit_title" qtlid="347119">Contratar un número geográfico</translation>
    <translation id="telephony_order_geographical_zone_tip" qtlid="333477">Localidad o código postal</translation>
    <translation id="telephony_order_geographical_numbers_error" qtlid="333490">No se ha podido cargar la lista de preselecciones de números.</translation>
-   <translation id="telephony_order_geographical_order_error" qtlid="333347">No se ha podido contratar el (los) número(s) geográfico(s). Por favor, vuelva a intentarlo más tarde.</translation>
+   <translation id="telephony_order_geographical_order_error" qtlid="333347">No se ha(n) podido contratar el (los) número(s) geográfico(s). Por favor, vuelva a intentarlo más tarde.</translation>
    <translation id="telephony_order_geographical_order_error_city" qtlid="333503">{{city}} no pertenece a la zona ({{zone}})</translation>
    <translation id="telephony_order_geographical_order_success" qtlid="333516">El pedido de números geográficos se ha enviado. Por favor, acepte las condiciones generales de venta y abone el pedido.</translation>
 </translations>

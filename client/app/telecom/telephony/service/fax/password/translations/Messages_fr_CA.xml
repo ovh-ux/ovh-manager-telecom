@@ -11,4 +11,9 @@
    <translation id="telephony_service_fax_password_apply" qtlid="249107">Appliquer les modifications</translation>
    <translation id="telephony_service_fax_password_change_success" qtlid="337715">Mot de passe modifié avec succès.</translation>
    <translation id="telephony_service_fax_password_change_error" qtlid="357239">Impossible de configurer le mot de passe.<br/>{{ error }}</translation>
+
+   <translation id="telephony_service_fax_password_bulk_all_success" qtlid="458455">La modification du mot de passe a bien été appliquée aux services sélectionnés.</translation>
+   <translation id="telephony_service_fax_password_bulk_some_success" qtlid="458468">La modification du mot de passe a bien été appliquée à {{ count }} des services sélectionnés.</translation>
+   <translation id="telephony_service_fax_password_bulk_error" qtlid="458481">La modification du mot de passe n'a pu être appliquée au(x) service(s) suivant(s) :</translation>
+   <translation id="telephony_service_fax_password_bulk_on_error" qtlid="460574">Oups ! Une erreur est survenue lors de la modification du mot de passe .</translation>
 </translations>

@@ -21,9 +21,9 @@
    <translation id="telecom_pack_xdsl_order_follow_up_step_duration_plurals_day" qtlid="44260">jours</translation>
    <translation id="telecom_pack_xdsl_order_follow_up_header_estimated_time" qtlid="312467">Estimation durée :</translation>
    <translation id="telecom_pack_xdsl_order_follow_up_header_status" qtlid="317568">Estado:</translation>
-   <translation id="telecom_pack_xdsl_order_follow_up_status_todo" qtlid="312480">Programmé</translation>
+   <translation id="telecom_pack_xdsl_order_follow_up_status_todo" qtlid="312480">Programado</translation>
    <translation id="telecom_pack_xdsl_order_follow_up_status_doing" qtlid="26383">En cours</translation>
    <translation id="telecom_pack_xdsl_order_follow_up_status_done" qtlid="8662">Terminé</translation>
-   <translation id="telecom_pack_xdsl_order_follow_up_status_error" qtlid="45508">En erreur</translation>
+   <translation id="telecom_pack_xdsl_order_follow_up_status_error" qtlid="45508">En error</translation>
 <translation id="telecom_pack_xdsl_order_follow_up_status_"/>
 </translations>

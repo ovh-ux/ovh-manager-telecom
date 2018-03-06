@@ -7,9 +7,9 @@
    <translation id="telecom_task_cancelled" qtlid="164623">Cancelada</translation>
    <translation id="telecom_task_doing" qtlid="26383">En cours</translation>
    <translation id="telecom_task_done" qtlid="305343">Réalisée</translation>
-   <translation id="telecom_task_error" qtlid="45508">En erreur</translation>
+   <translation id="telecom_task_error" qtlid="45508">En error</translation>
    <translation id="telecom_task_problem" qtlid="270800">Problema</translation>
-   <translation id="telecom_task_todo" qtlid="305356">Programmée</translation>
+   <translation id="telecom_task_todo" qtlid="305356">Programada</translation>
    <translation id="telecom_task_all" qtlid="290472">Todos</translation>
    <translation id="telecom_task_status" qtlid="26443">Statut</translation>
    <translation id="telecom_task_function" qtlid="56105">Action</translation>

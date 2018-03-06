@@ -33,7 +33,7 @@
    <translation id="sms_users_add_user_password_label" qtlid="334894">Mot de passe&#160;:&#160;</translation>
    <translation id="sms_users_add_user_password_placeholder" qtlid="2270">Mot de passe</translation>
    <translation id="sms_users_add_user_password_required" qtlid="334946">Le champ "mot de passe" est obligatoire.</translation>
-   <translation id="sms_users_add_user_password_error_minlength" qtlid="338807">Le champ "mot de passe" doit être composé de 8 caractères alphanumériques.</translation>
+   <translation id="sms_users_add_user_password_error_pattern" qtlid="338807">Le champ "mot de passe" doit être composé de 8 caractères alphanumériques.</translation>
    <translation id="sms_users_add_user_adding" qtlid="393217">Ajout de l’utilisateur…</translation>
    <translation id="sms_users_add_user_added" qtlid="334933">Utilisateur ajouté&#160;!&#160;</translation>
    <translation id="sms_users_add_user_ko" qtlid="338846">Impossible de créer l’utilisateur.<br/>{{error}}</translation>
@@ -55,7 +55,7 @@
    <translation id="sms_users_templates_sms_body_placeholder" qtlid="393399">Contenu du SMS (champ requis).</translation>
    <translation id="sms_users_templates_sms_body_error_required" qtlid="393412">Le champ "Contenu du SMS" est obligatoire.</translation>
    <translation id="sms_users_templates_sms_body_error_maxlength" qtlid="393425">Vous avez dépassé la limite des <b>{{ maxlenght }}</b> caractères.</translation>
-   <translation id="sms_users_templates_sms_body_characters_left" qtlid="288158">Caractères restants</translation>
+   <translation id="sms_users_templates_sms_body_characters_left" qtlid="288158">Caracteres restantes</translation>
    <translation id="sms_users_templates_labels_tooltip" qtlid="393438">Les alertes de bases seront remplacées.</translation>
    <translation id="sms_users_templates_variable_info" qtlid="393451">Les variables sont disponibles pour les champs "Corps de l’e-mail" & "Contenu du SMS".</translation>
    <translation id="sms_users_templates_variable_user" qtlid="393464">Identifiant&#160;:</translation>
@@ -71,7 +71,7 @@
    <translation id="sms_users_change_password_user_password_label" qtlid="334894">Mot de passe&#160;:&#160;</translation>
    <translation id="sms_users_change_password_user_password_placeholder" qtlid="2270">Mot de passe</translation>
    <translation id="sms_users_change_password_user_password_error_required" qtlid="334946">Le champ "mot de passe" est obligatoire.</translation>
-   <translation id="sms_users_change_password_user_password_error_minlength" qtlid="338807">Le champ "mot de passe" doit être composé de 8 caractères alphanumériques.</translation>
+   <translation id="sms_users_change_password_user_password_error_pattern" qtlid="338807">Le champ "mot de passe" doit être composé de 8 caractères alphanumériques.</translation>
    <translation id="sms_users_change_password_user_changing" qtlid="338872">Changement du mot de passe…</translation>
    <translation id="sms_users_change_password_user_changed" qtlid="338885">Mot de passe modifié&#160;!&#160;</translation>
    <translation id="sms_users_change_password_user_ko" qtlid="338898">Impossible de changer le mot de passe de l’utilisateur.<br/>{{error}}</translation>

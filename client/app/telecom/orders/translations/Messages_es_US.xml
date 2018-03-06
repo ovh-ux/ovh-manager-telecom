@@ -7,11 +7,11 @@
    <translation id="telecom_orders_follow_up_type_vdsl" qtlid="305252">Accès VDSL</translation>
    <translation id="telecom_orders_follow_up_type_sdsl" qtlid="305265">Accès SDSL</translation>
    <translation id="telecom_orders_follow_up_type_adsl" qtlid="305278">Accès ADSL</translation>
-   <translation id="telecom_orders_follow_up_header_type" qtlid="2642">Type</translation>
+   <translation id="telecom_orders_follow_up_header_type" qtlid="2642">Tipo</translation>
    <translation id="telecom_orders_follow_up_header_service" qtlid="305291">Identifiant service</translation>
    <translation id="telecom_orders_follow_up_header_status" qtlid="26443">Statut</translation>
    <translation id="telecom_orders_follow_up_header_step" qtlid="5438">Etape</translation>
    <translation id="telecom_orders_follow_up_header_state" qtlid="8230">Etat</translation>
    <translation id="telecom_orders_follow_up_items_per_view" qtlid="305304">Items par page</translation>
-   <translation id="telecom_orders_follow_up_no_orders" qtlid="305317">Actuellement vous n'avez pas de commandes en en cours.</translation>
+   <translation id="telecom_orders_follow_up_no_orders" qtlid="463395">Actuellement vous n'avez pas de commandes en cours.</translation>
 </translations>

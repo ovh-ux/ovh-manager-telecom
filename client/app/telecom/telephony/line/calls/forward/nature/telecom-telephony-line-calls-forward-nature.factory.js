@@ -10,10 +10,13 @@ angular.module("managerApp").factory("TelecomTelephonyLineCallsForwardNature", f
         this.value = elt;
         switch (elt) {
         case "number":
-            this.types = ["number", "line"];
+            this.types = ["number", "line", "plug&phone", "fax", "voicemail"];
             break;
         case "voicemail":
-            this.types = ["voicemail", "fax"];
+            this.types = ["voicemail", "fax", "plug&phone"];
+            break;
+        case "fax":
+            this.types = ["fax", "plug&phone"];
             break;
         default:
             this.types = [elt];

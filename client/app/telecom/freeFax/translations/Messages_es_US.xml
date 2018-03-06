@@ -31,7 +31,7 @@
    <translation id="freefax_notification_source_both" qtlid="395609">Fax et répondeur</translation>
    <translation id="freefax_notification_type_simple" qtlid="306734">Notification seule</translation>
    <translation id="freefax_notification_type_attachment" qtlid="108287">Pièce jointe</translation>
-   <translation id="freefax_notification_add" qtlid="37923">Ajouter</translation>
+   <translation id="freefax_notification_add" qtlid="37923">Añadir</translation>
    <translation id="freefax_notification_delete" qtlid="306747">Supprimer cette notification</translation>
    <translation id="freefax_notification_confirm" qtlid="395622">Voulez-vous vraiment supprimer la notification <strong>{{email}}</strong> ?</translation>
    <translation id="freefax_notif_show_none" qtlid="306773">Aucun suivi</translation>
@@ -43,7 +43,7 @@
 <!-- General informations -->
    <translation id="freefax_domain" qtlid="66428">Nom de domaine</translation>
    <translation id="freefax_domain_expired" qtlid="395674">(Domaine expiré)</translation>
-   <translation id="freefax_line" qtlid="306799">Numéro de ligne</translation>
+   <translation id="freefax_line" qtlid="306799">Número de línea</translation>
    <translation id="freefax_fax_remaining" qtlid="306812">Nombre de faxs restants</translation>
    <translation id="freefax_point_remaining" qtlid="89845">Points de fidélité</translation>
    <translation id="freefax_voicemail" qtlid="88956">Répondeur</translation>

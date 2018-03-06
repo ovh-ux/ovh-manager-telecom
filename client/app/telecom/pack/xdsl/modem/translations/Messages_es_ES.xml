@@ -19,7 +19,7 @@
    <translation id="xdsl_modem_warning_managedBy" qtlid="345884">La <a href="#">configuración remota</a> no está activa para este módem.</translation>
    <translation id="xdsl_modem_warning_bridge" qtlid="311219">El <a href="#">modo «bridge»</a> ya no le permite acceder a la configuración del módem.</translation>
 
-   <translation id="xdsl_model_access_error" qtlid="385455">Oups ! Nous n'avons pas pu récupérer les informations relatives à votre pack.</translation>
-   <translation id="xdsl_model_task_error" qtlid="385468">Oups ! Nous n'avons pas pu récupérer la pile de tâches en cours.</translation>
-   <translation id="xdsl_modem_modem_error" qtlid="385481">Oups ! Nous n'avons pas pu récupérer les informations relatives à votre modem.</translation>
+   <translation id="xdsl_model_access_error" qtlid="385455">¡Vaya! No hemos podido cargar los datos de su pack.</translation>
+   <translation id="xdsl_model_task_error" qtlid="385468">¡Vaya! No hemos podido cargar la pila de tareas en curso.</translation>
+   <translation id="xdsl_modem_modem_error" qtlid="385481">¡Vaya! No hemos podido cargar los datos de su módem.</translation>
 </translations>

@@ -5,7 +5,7 @@
 
    <translation id="overTheBox_remote_table_id" qtlid="25615">IP</translation>
    <translation id="overTheBox_remote_table_port" qtlid="9034">Portti</translation>
-   <translation id="overTheBox_remote_table_connection" qtlid="55925">Yhteys</translation>
+   <translation id="overTheBox_remote_table_connection" qtlid="55925">Kirjaudu</translation>
    <translation id="overTheBox_remote_table_status" qtlid="26443">Tila</translation>
    <translation id="overTheBox_remote_table_authorized_by" qtlid="306279">Autorisé par</translation>
    <translation id="overTheBox_remote_table_expire" qtlid="30406">Vanhenee</translation>
@@ -27,7 +27,7 @@
    <translation id="overTheBox_remote_detail_public_key" qtlid="306357">Clef publique</translation>
    <translation id="overTheBox_remote_detail_user" qtlid="7450">Käyttäjä</translation>
    <translation id="overTheBox_remote_detail_port" qtlid="9034">Portti</translation>
-   <translation id="overTheBox_remote_connection" qtlid="55925">Yhteys</translation>
+   <translation id="overTheBox_remote_connection" qtlid="55925">Kirjaudu</translation>
 
    <translation id="overTheBox_remote_add" qtlid="306370">Ajouter un accès à distance</translation>
 

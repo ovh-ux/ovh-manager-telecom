@@ -39,7 +39,6 @@
    <translation id="sms_phonebooks_phonebook_contact_column_home_mobile_title" qtlid="394127">Mobile (domicile)</translation>
    <translation id="sms_phonebooks_phonebook_contact_column_work_phone_title" qtlid="394140">Fixe (professionnel)</translation>
    <translation id="sms_phonebooks_phonebook_contact_column_work_mobile_title" qtlid="394153">Mobile (professionnel)</translation>
-   <translation id="sms_phonebooks_phonebook_contact_loading" qtlid="301695">Chargement en cours…</translation>
    <translation id="sms_phonebooks_phonebook_contact_empty" qtlid="97964">Aucun contact trouvé.</translation>
    <translation id="sms_phonebooks_phonebook_contact_ko" qtlid="394166">Oups ! Impossible de récupérer la liste des contacts.</translation>
 
