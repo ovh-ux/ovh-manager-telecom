@@ -1,6 +1,6 @@
 {
   "name": "ovh-manager-telecom",
-  "version": "9.3.2",
+  "version": "9.3.3",
   "description": "OVH Control Panel Telecom UI",
   "authors": [
     "OVH SAS"
@@ -98,7 +98,7 @@
     "ovh-manager-webfont": "^1.0.1",
     "ovh-ng-input-password": "^1.2.5",
     "ovh-ngstrap": "^4.0.2",
-    "ovh-ui-kit": "^2.3.0",
+    "ovh-ui-kit": "^2.4.0",
     "ovh-ui-angular": "^2.3.0",
     "validator-js": "3.40.1"
   },
