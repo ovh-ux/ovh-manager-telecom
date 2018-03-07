@@ -105,6 +105,7 @@ angular.module("managerApp").controller("TelecomTelephonyLinePhoneOrderCtrl", fu
             filter: filterContact
         };
 
+        self.macAddress = null;
         self.line = null;
         self.phone = null;
         self.phoneOffers = null;
