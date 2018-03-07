@@ -136,8 +136,21 @@
                                    data-on-error="$ctrl.onBulkError">
             </telephony-bulk-action>
 
-            <voip-time-condition-calendar data-voip-time-condition="$ctrl.line.timeCondition"></voip-time-condition-calendar>
+            <button type="button"
+                    class="btn btn-primary"
+                    data-ng-click="$ctrl.exportConfiguration()"
+                    data-ng-disabled="$ctrl.loading.save"
+                    data-translate="telephony_common_time_condition_export_configuration">
+            </button>
+            <button type="button"
+                    class="btn btn-primary"
+                    data-ng-click="$ctrl.importConfiguration()"
+                    data-ng-disabled="$ctrl.loading.save"
+                    data-translate="telephony_common_time_condition_import_configuration">
+            </button>
         </div> <!-- CONDITIONS -->
+
+        <voip-time-condition-calendar data-voip-time-condition="$ctrl.line.timeCondition"></voip-time-condition-calendar>
 
         <footer class="voip-action-bar"
                 data-ng-if="$ctrl.hasChange()">
