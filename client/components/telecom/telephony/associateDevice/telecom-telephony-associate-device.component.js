@@ -4,7 +4,7 @@ angular.module("managerApp").component("telecomTelephonyAssociateDevice", {
         serviceName: "<"
     },
     templateUrl: "components/telecom/telephony/associateDevice/telecom-telephony-associate-device.html",
-    controller: function ($scope, $q, $translatePartialLoader, $translate, OvhApiTelephony, ToastError) {
+    controller: function ($scope, $state, $q, $translatePartialLoader, $translate, OvhApiTelephony, TelephonyMediator, ToastError) {
         "use strict";
 
         var self = this;
@@ -69,6 +69,11 @@ angular.module("managerApp").component("telecomTelephonyAssociateDevice", {
                 macAddress: self.selectedMac
             }).$promise.then(function () {
                 self.attachSuccess = true;
+
+                // Refresh cache and state
+                OvhApiTelephony.Line().Lexi().resetAllCache();
+                TelephonyMediator.resetAllCache();
+                $state.reload();
             }).catch(function (err) {
                 return new ToastError(err);
             }).finally(function () {

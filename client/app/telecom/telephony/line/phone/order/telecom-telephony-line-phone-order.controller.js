@@ -307,6 +307,12 @@ angular.module("managerApp").controller("TelecomTelephonyLinePhoneOrderCtrl", fu
             macAddress: self.phone.macAddress
         }).$promise.then(function () {
             Toast.success($translate.instant("telephony_line_phone_order_detach_device_success"));
+
+            // Cache reset
+            OvhApiTelephony.Line().Lexi().resetAllCache();
+            OvhApiTelephony.Line().Phone().Lexi().resetAllCache();
+            TelephonyMediator.resetAllCache();
+            init();
         }).catch(function (err) {
             Toast.error($translate.instant("telephony_line_phone_order_detach_device_error"));
             return $q.reject(err);
