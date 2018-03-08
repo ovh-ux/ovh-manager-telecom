@@ -111,9 +111,9 @@
                class="form-control"
                id="siretElem"
                name="siret"
-               placeholder="{{:: 'telephony_order_identity_siret' | translate }} *"
+               placeholder="{{:: 'telephony_order_identity_siret' | translate }}{{ $ctrl.regionCode !== 'be'? ' *' : ''}}"
                data-ng-model="$ctrl.ngModel.siret"
-               data-ng-required="$ctrl.organisation === 'true'"
+               data-ng-required="$ctrl.organisation === 'true' && $ctrl.regionCode !== 'be'"
                data-ng-disabled="$ctrl.ngDisabled"
                data-ui-validate="'$ctrl.validator.isSiret($value)'" />
     </div>
@@ -132,9 +132,9 @@
                class="form-control"
                id="apeElem"
                name="ape"
-               placeholder="{{:: 'telephony_order_identity_ape' | translate }} *"
+               placeholder="{{:: 'telephony_order_identity_ape' | translate }}{{ $ctrl.regionCode !== 'be'? ' *' : ''}}"
                data-ng-model="$ctrl.ngModel.ape"
-               data-ng-required="$ctrl.organisation === 'true'"
+               data-ng-required="$ctrl.organisation === 'true' && $ctrl.regionCode !== 'be'"
                data-ng-disabled="$ctrl.ngDisabled" />
     </div>
 </div>
