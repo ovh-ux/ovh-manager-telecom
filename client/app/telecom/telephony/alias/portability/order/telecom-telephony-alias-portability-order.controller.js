@@ -12,14 +12,15 @@ angular.module("managerApp").controller("TelecomTelephonyAliasPortabilityOrderCt
     var sharedAttributes = [
         "billingAccount", "building", "callNumber", "city", "comment", "contactName",
         "contactNumber", "country", "desireDate", "displayUniversalDirectory", "door",
-        "firstName", "floor", "groupNumber", "lineToRedirectAliasTo", "name", "offer",
-        "socialReason", "stair", "streetName", "streetNumber", "streetNumberExtra",
+        "executeAsSoonAsPossible", "firstName", "floor", "groupNumber", "lineToRedirectAliasTo",
+        "name", "offer", "socialReason", "stair", "streetName", "streetNumber", "streetNumberExtra",
         "streetType", "type", "zip"
     ];
 
     function init () {
         self.order = {
             // default values
+            executeAsSoonAsPossible: true,
             type: "landline",
             sdatype: "all",
             socialReason: "individual",
