@@ -201,8 +201,10 @@ angular.module("managerApp")
                     serviceName: $stateParams.serviceName
                 }).$promise.then(function (maximumAvailableSimultaneousLines) {
                     self.options.maximumAvailableSimultaneousLines = maximumAvailableSimultaneousLines.maximum;
-                    self.numberLinesTitle = $translate.instant("between") + self.options.minimumAvailableSimultaneousLines + " " +
-                        $translate.instant("and") + self.options.maximumAvailableSimultaneousLines;
+                    self.numberLinesTitle = $translate.instant("common_between_and", {
+                        between: self.options.minimumAvailableSimultaneousLines,
+                        and: self.options.maximumAvailableSimultaneousLines
+                    });
                     return self.options;
                 })
 
