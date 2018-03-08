@@ -260,11 +260,31 @@
 
                     <!-- PORTABILITY DATE -->
                     <div class="form-group">
-                        <label for="desireDate"
-                               class="control-label"
+                        <label class="control-label"
                                data-translate="telephony_alias_portability_order_desireDate">
                         </label>
-                        <div class="input-group date-picker-input">
+                        <div class="radio">
+                            <label>
+                                <input type="radio"
+                                       data-ng-model="PortabilityOrderCtrl.order.executeAsSoonAsPossible"
+                                       data-ng-value="true"
+                                       name="desireDateType"
+                                       required />
+                                <span data-translate="telephony_alias_portability_order_desireDate_sooner"></span>
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio"
+                                       data-ng-model="PortabilityOrderCtrl.order.executeAsSoonAsPossible"
+                                       data-ng-value="false"
+                                       name="desireDateType"
+                                       required />
+                                <span data-translate="telephony_alias_portability_order_desireDate_custom"></span>
+                            </label>
+                        </div>
+                        <div class="input-group date-picker-input"
+                             data-ng-if="!PortabilityOrderCtrl.order.executeAsSoonAsPossible">
                             <input
                                 id="desireDate"
                                 name="desireDate"
