@@ -31,7 +31,7 @@ angular.module("managerApp").controller("PackXdslMissingRioCtrl", function ($sco
         return OvhApiXdsl.Lexi().updateInvalidOrMissingRio({
             xdslId: $stateParams.serviceName
         }, {
-            relaunchWithoutPortability: self.missingRioForm.portNumber,
+            relaunchWithoutPortability: false, // Was a useful checkbox, CX asked to remove it...
             rio: self.missingRioForm.rio
         }).$promise.then(function () {
             Toast.success($translate.instant("xdsl_missing-rio_sent"));
