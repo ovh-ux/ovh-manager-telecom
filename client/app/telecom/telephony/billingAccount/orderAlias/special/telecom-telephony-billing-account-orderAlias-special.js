@@ -3,7 +3,7 @@ angular.module("managerApp").config(function ($stateProvider) {
     $stateProvider.state("telecom.telephony.orderAlias.special", {
         url: "/special",
         views: {
-            "@telecomTelephonyBillingAccountOrderAliasView": {
+            "telecomTelephonyBillingAccountOrderAliasView@telecom.telephony.orderAlias": {
                 templateUrl: "app/telecom/telephony/billingAccount/orderAlias/special/telecom-telephony-billing-account-orderAlias-special.html",
                 controller: "TelecomTelephonyAliasOrderSpecialCtrl",
                 controllerAs: "AliasOrderSpecialCtrl"

@@ -4,7 +4,7 @@ angular.module("managerApp").config(function ($stateProvider) {
         url: "/overTheBox/:serviceName",
         "abstract": true,
         views: {
-            telecomView: {
+            "telecomView@telecom": {
                 templateUrl: "app/telecom/overTheBox/overTheBox.html",
                 controller: "OverTheBoxCtrl",
                 controllerAs: "OverTheBox"

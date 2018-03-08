@@ -3,7 +3,7 @@ angular.module("managerApp").config(function ($stateProvider) {
     $stateProvider.state("telecom.pack.resiliation", {
         url: "/resiliation",
         views: {
-            packView: {
+            "packView@telecom.pack": {
                 templateUrl: "app/telecom/pack/resiliation/pack-resiliation.html",
                 controller: "PackResiliationCtrl",
                 controllerAs: "PackResiliation"

@@ -4,7 +4,7 @@ angular.module("managerApp").config(function ($stateProvider) {
     $stateProvider.state("telecom.dashboard", {
         url: "/",
         views: {
-            telecomView: {
+            "telecomView@telecom": {
                 templateUrl: "app/telecom/dashboard/telecom-dashboard.html",
                 controller: "TelecomDashboardCtrl",
                 controllerAs: "TelecomDashboardCtrl"

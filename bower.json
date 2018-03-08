@@ -42,7 +42,7 @@
     "angular-translate-storage-local": "^2.13.1",
     "angular-ui-calendar": "^1.0.1",
     "angular-ui-router": "^1.0.0",
-    "angular-uirouter-title": "https://github.com/ovh-ux/angular-uirouter-title.git",
+    "angular-uirouter-title": "^1.0.0",
     "angular-ui-select": "0.18.0",
     "angular-ui-sortable": "^0.16.1",
     "angular-ui-utils": "0.2.3",
