@@ -1,6 +1,6 @@
 angular.module("managerApp")
-    .controller("TelecomTelephonyLineCallsSimultaneousLinesCtrl", function ($q, $stateParams, $state, $translate,
-                                                                            Toast, OvhApiTelephony, OvhApiOrderTelephony, debounce, OvhApiTelephonyService, $filter, TelephonyMediator, telephonyBulk, currentLine) {
+    .controller("TelecomTelephonyLineCallsSimultaneousLinesCtrl", function ($filter, $q, $stateParams, $state, $translate, $scope,
+                                                                            Toast, OvhApiTelephony, OvhApiOrderTelephony, OvhApiTelephonyService, TelephonyMediator, telephonyBulk, currentLine) {
         "use strict";
 
         var self = this;
@@ -9,33 +9,14 @@ angular.module("managerApp")
             orderSimultaneousLines: OvhApiOrderTelephony.Lexi().orderSimultaneousLines
         };
 
+        var unitPrices = null;
+
+        self.orderUrl = null;
         self.showBulkOrderSummary = false;
         self.bulkOrders = [];
 
         self.needSave = function () {
             return self.options.simultaneousLines !== self.saved.simultaneousLines;
-        };
-
-        self.showOrder = function () {
-
-            self.loading.order = true;
-
-            return apiResources.getSimultaneousLines({
-                billingAccount: $stateParams.billingAccount,
-                serviceName: $stateParams.serviceName,
-                quantity: self.options.simultaneousLines - self.saved.simultaneousLines
-            }).$promise.then(function (order) {
-                self.contracts = order.contracts;
-                self.prices = order;
-                return order;
-            }).catch(function (err) {
-                return $translate("telephony_line_actions_line_calls_simultaneous_line_write_error").then(function (message) {
-                    Toast.error([message, _.get(err, "data.message")].join(" "));
-                    return $q.reject(err);
-                });
-            }).finally(function () {
-                self.loading.order = false;
-            });
         };
 
         self.doOrder = function () {
@@ -47,8 +28,8 @@ angular.module("managerApp")
                 billingAccount: $stateParams.billingAccount,
                 quantity: self.options.simultaneousLines - self.saved.simultaneousLines
             }).$promise.then(function (order) {
-                self.contracts = order.contracts;
-                self.prices = order;
+                self.orderUrl = order.url;
+                self.prices = order.prices;
                 return order;
             }).catch(function (err) {
                 return $translate("telephony_line_actions_line_calls_simultaneous_line_order_error").then(function (message) {
@@ -60,33 +41,6 @@ angular.module("managerApp")
                 self.loading.doOrder = false;
             });
         };
-
-        function getOfferTasks () {
-            return OvhApiTelephonyService.OfferTask().Lexi().query({
-                billingAccount: $stateParams.billingAccount,
-                serviceName: $stateParams.serviceName,
-                action: "removeSimltaneousLines"
-            }).$promise.then(function (offerTasks) {
-                return $q.all(_.map(offerTasks, function (taskId) {
-                    return OvhApiTelephonyService.OfferTask().Lexi().get({
-                        billingAccount: $stateParams.billingAccount,
-                        serviceName: $stateParams.serviceName,
-                        taskId: taskId
-                    }).$promise.then(function (taskDetail) {
-                        taskDetail.formatedDate = $filter("date")(taskDetail.executionDate, "fullDate");
-                        return taskDetail;
-                    }).catch(function (err) {
-                        return $translate("telephony_line_actions_line_calls_simultaneous_line_offer_task_error").then(function (message) {
-                            Toast.error(message);
-                            return $q.reject(err);
-                        });
-                    });
-                }));
-            }).then(function (offerTasksDetails) {
-                self.offerTasks = offerTasksDetails;
-                return self.offerTasks;
-            });
-        }
 
         self.doRemoveSimultaneousLines = function () {
             self.loading.save = true;
@@ -118,43 +72,90 @@ angular.module("managerApp")
             self.options.simultaneousLines = self.saved.simultaneousLines;
         };
 
-        self.save = debounce(function () {
-
-            self.contracts = null;
+        self.save = function () {
             self.prices = null;
             self.contractsAccepted = false;
+            self.showDoRemoveButtons = false;
 
             if (self.needSave()) {
-
                 if (self.saved.simultaneousLines < self.options.simultaneousLines) {
-                    self.loading.save = true;
                     self.showDoRemoveButtons = false;
-                    return self.showOrder().finally(function () {
-                        self.loading.save = false;
-                    });
+                    self.recalculatePrices();
                 }
-                if (self.saved.simultaneousLines > self.options.simultaneousLines) {
+                if (self.saved.simultaneousLines > self.options.simultaneousLines && self.options.simultaneousLines) {
                     self.showDoRemoveButtons = true;
                 }
-
-
             } else {
                 self.showDoRemoveButtons = false;
             }
+        };
 
-            return $q.when(null);
-        }, 600, false);
+        self.recalculatePrices = function () {
+            var quantity = self.options.simultaneousLines - self.saved.simultaneousLines;
+
+            self.prices = {
+                tax: { text: $filter("currency")(unitPrices.tax.value * quantity) },
+                withTax: { text: $filter("currency")(unitPrices.withTax.value * quantity) },
+                withoutTax: { text: $filter("currency")(unitPrices.withoutTax.value * quantity) }
+            };
+        };
+
+        function getUnitPrices () {
+            return apiResources.getSimultaneousLines({
+                billingAccount: $stateParams.billingAccount,
+                serviceName: $stateParams.serviceName,
+                quantity: 1
+            }).$promise.then(function (order) {
+                self.contracts = order.contracts;
+                unitPrices = order.prices;
+                return order;
+            }).catch(function (err) {
+                return $translate("telephony_line_actions_line_calls_simultaneous_line_write_error").then(function (message) {
+                    Toast.error([message, _.get(err, "data.message")].join(" "));
+                    return $q.reject(err);
+                });
+            });
+        }
+
+        function getOfferTasks () {
+            return OvhApiTelephonyService.OfferTask().Lexi().query({
+                billingAccount: $stateParams.billingAccount,
+                serviceName: $stateParams.serviceName,
+                action: "removeSimltaneousLines"
+            }).$promise.then(function (offerTasks) {
+                return $q.all(_.map(offerTasks, function (taskId) {
+                    return OvhApiTelephonyService.OfferTask().Lexi().get({
+                        billingAccount: $stateParams.billingAccount,
+                        serviceName: $stateParams.serviceName,
+                        taskId: taskId
+                    }).$promise.then(function (taskDetail) {
+                        taskDetail.formatedDate = $filter("date")(taskDetail.executionDate, "fullDate");
+                        return taskDetail;
+                    }).catch(function (err) {
+                        return $translate("telephony_line_actions_line_calls_simultaneous_line_offer_task_error").then(function (message) {
+                            Toast.error(message);
+                            return $q.reject(err);
+                        });
+                    });
+                }));
+            }).then(function (offerTasksDetails) {
+                self.offerTasks = offerTasksDetails;
+                return self.offerTasks;
+            });
+        }
 
         function init () {
 
             self.loading = {
                 init: true,
                 order: false,
+                orderUrl: null,
                 doOrder: false,
                 save: false
             };
             self.contractsAccepted = false;
             self.contracts = null;
+            self.hundredLines = false;
             self.prices = null;
             self.saved = { };
             self.offerTasks = [];
@@ -169,12 +170,15 @@ angular.module("managerApp")
             return $q.all([
 
                 getOfferTasks(),
+                getUnitPrices(),
 
                 OvhApiTelephony.Line().Lexi().get({
                     billingAccount: $stateParams.billingAccount,
                     serviceName: $stateParams.serviceName
                 }).$promise.then(function (options) {
                     self.options.simultaneousLines = options.simultaneousLines;
+                    self.hundredLines = options.simultaneousLines >= 100;
+
                     var isTrunk = _.some(options.offers, function (offer) {
                         return _.startsWith(offer, "voip.main.offer.trunk");
                     });
@@ -197,6 +201,10 @@ angular.module("managerApp")
                     serviceName: $stateParams.serviceName
                 }).$promise.then(function (maximumAvailableSimultaneousLines) {
                     self.options.maximumAvailableSimultaneousLines = maximumAvailableSimultaneousLines.maximum;
+                    self.numberLinesTitle = $translate.instant("common_between_and", {
+                        between: self.options.minimumAvailableSimultaneousLines,
+                        and: self.options.maximumAvailableSimultaneousLines
+                    });
                     return self.options;
                 })
 
