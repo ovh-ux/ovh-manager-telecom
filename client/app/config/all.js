@@ -181,7 +181,7 @@ angular.module("managerApp").constant("LANGUAGES", {
         support_contact: "https://www.ovh.com/fr/support/nous-contacter/",
         guides: {
             home: "https://docs.ovh.com",
-            telephony: "https://docs.ovh.com/pages/releaseview.action?pageId=7536707",
+            telephony: "https://docs.ovh.com/fr/voip/",
             packActivate: "https://docs.ovh.com/fr/xdsl/comment-activer-mes-lignes-telephoniques-offre-adsl-vdsl/",
             modemConfig: "https://docs.ovh.com/fr/xdsl/configuration-modem-xdsl/",
             modemReinit: "https://docs.ovh.com/fr/xdsl/reinitialisation-du-modem/",
