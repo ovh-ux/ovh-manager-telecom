@@ -64,7 +64,7 @@ angular.module("managerApp").component("telecomTelephonyAliasMembersAdd", {
                 controller: "telecomTelephonyAliasMembersAddModal",
                 controllerAs: "$ctrl"
             });
-            modal.result.then(() => {
+            modal.result.then(function () {
                 self.loaders.adding = true;
                 return self.api.addMembers(_(self.addMemberForm.numbers).filter(function (number) {
                     return number && number.length;
