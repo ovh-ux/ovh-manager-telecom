@@ -46,7 +46,7 @@
         </tr>
     </tbody>
     <tbody data-ng-if="!$ctrl.loading.init && $ctrl.menus.raw.length > 0">
-        <tr data-ng-repeat="menu in $ctrl.menus.paginated | filter:{status: '!DRAFT'} | orderBy:$ctrl.menus.orderBy:$ctrl.menus.orderDesc track by $index">
+        <tr data-ng-repeat="menu in $ctrl.menus.paginated | orderBy:$ctrl.menus.orderBy:$ctrl.menus.orderDesc track by $index">
             <td class="cell-label"
                 data-ng-if="$ctrl.withChoice">
                 <div class="radio"
