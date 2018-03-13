@@ -2,13 +2,18 @@
       id="abbreviatedNumberForm"
       novalidate>
     <oui-modal
-        data-title="{{:: AbbreviatedNumberModal.title }}"
         data-primary-action="AbbreviatedNumberModal.send()"
         data-primary-label="{{:: 'submit' | translate }}"
         data-secondary-action="AbbreviatedNumberModal.cancel()"
         data-secondary-label="{{:: 'cancel' | translate }}"
         data-on-dismiss="AbbreviatedNumberModal.cancel()"
         loading="AbbreviatedNumberModal.loading.updating">
+
+        <oui-message type="error" data-ng-if="AbbreviatedNumberModal.errorMessage">
+            <span>{{AbbreviatedNumberModal.errorMessage}}</span>
+        </oui-message>
+
+        <h2 class="oui-modal__title" ng-bind=":: AbbreviatedNumberModal.title"></h2>
 
         <oui-field label="{{:: 'telephony_abbreviated_numbers_id' | translate }}"
                    error-messages="{pattern: AbbreviatedNumberModal.pattern.errorMessage}">
@@ -18,7 +23,6 @@
                 id="abbreviatedNumber"
                 class="oui-input"
                 data-ng-pattern="AbbreviatedNumberModal.pattern.regexp"
-                data-ui-validate="{available: 'true'}"
                 required
                 data-ng-readonly="AbbreviatedNumberModal.readOnly.abbreviatedNumber"
                 data-ng-model="AbbreviatedNumberModal.data.abbreviatedNumber">
