@@ -10,8 +10,6 @@
 
             <div class="col-xs-12 widget-presentation">
 
-                <toast-message></toast-message>
-
                 <header class="widget-presentation-header">
                     <h2 class="widget-presentation-title" data-translate="xdsl_missing-rio_title"></h2>
                 </header>
@@ -20,11 +18,39 @@
                       data-ng-submit="PackXdslMissingRio.sendRio()">
                     <div class="row">
                         <div class="col-md-6">
+                            <div class="form-group">
+
+                                <div class="form-group">
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio"
+                                                   data-ng-model="PackXdslMissingRio.missingRioForm.portNumber"
+                                                   data-ng-value="true"
+                                                   name="xdslPortability"
+                                                   autofocus
+                                                   required />
+                                            <span data-translate="xdsl_missing-rio_leave-number_label"
+                                                  data-translate-values="{ num: PackXdslMissingRio.number }"></span>
+                                        </label>
+                                    </div>
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio"
+                                                   data-ng-model="PackXdslMissingRio.missingRioForm.portNumber"
+                                                   data-ng-value="false"
+                                                   name="xdslPortability"
+                                                   required />
+                                            <span data-translate="xdsl_missing-rio_port-number_label"
+                                                  data-translate-values="{ num: PackXdslMissingRio.number }"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="form-group"
+                                 data-ng-if="!PackXdslMissingRio.missingRioForm.portNumber"
                                  data-ng-class="{
                                      'has-error': missingRioForm.rio.$touched && missingRioForm.rio.$invalid
                                  }">
-                                <div class="h5 mb-3">{{ 'xdsl_missing-rio_port-number_label' | translate: {num: PackXdslMissingRio.number} }}</div>
                                 <label for="rio"
                                        class="control-label d-inline-block"
                                        data-tooltip-placement="right"

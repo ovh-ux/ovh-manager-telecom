@@ -8,6 +8,7 @@ angular.module("managerApp").controller("PackXdslMissingRioCtrl", function ($sco
         self.loading = true;
 
         self.missingRioForm = {};
+        self.missingRioForm.portNumber = true;
 
         self.number = $stateParams.number;
 
