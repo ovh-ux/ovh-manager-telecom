@@ -121,7 +121,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasPortabilityOrderCt
     self.getOrderParams = function () {
         var params = _.pick(self.order, sharedAttributes);
 
-        if (params.socialReason === "individual") {
+        if (params.offer === "individual") {
             params = _.assign(params, _.pick(self.order, "rio"));
         } else {
             params = _.assign(params, _.pick(self.order, "siret"));
