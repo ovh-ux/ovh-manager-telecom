@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationAgentsOvhPabxCtrl", function ($stateParams, $q, $translate, OvhApiTelephony, Toast, ToastError) {
+angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationAgentsOvhPabxCtrl", function ($stateParams, $q, $translate, $uibModal, OvhApiTelephony, Toast, ToastError) {
     "use strict";
 
     var self = this;
@@ -111,31 +111,40 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationAgent
     };
 
     self.addAgents = function () {
-        self.addAgentForm.isAdding = true;
-        return $q.all(self.addAgentForm.numbers.map(function (number) {
-            if (!number || !number.length) {
-                return $q.when(null);
-            }
-            return OvhApiTelephony.OvhPabx().Hunting().Agent().Lexi().create({
-                billingAccount: $stateParams.billingAccount,
-                serviceName: $stateParams.serviceName
-            }, {
-                number: number,
-                simultaneousLines: 1,
-                status: "available",
-                timeout: 20,
-                wrapUpTime: 0
-            }).$promise;
-        })).then(function () {
-            Toast.success($translate.instant("telephony_alias_configuration_agents_add_success"));
-            return self.fetchAgentsIds().then(function (ids) {
-                self.agents.ids = ids;
+        const modal = $uibModal.open({
+            animation: true,
+            templateUrl: "app/telecom/telephony/alias/configuration/agents/ovhPabx/telecom-telephony-alias-configuration-agents-ovhPabx-modal.html",
+            controller: "telecomTelephonyAliasConfigurationAgentsOvhPabxModal",
+            controllerAs: "$ctrl"
+        });
+        modal.result.then(function () {
+            self.addAgentForm.isAdding = true;
+            return $q.all(self.addAgentForm.numbers.map(function (number) {
+                if (!number || !number.length) {
+                    return $q.when(null);
+                }
+                return OvhApiTelephony.OvhPabx().Hunting().Agent().Lexi().create({
+                    billingAccount: $stateParams.billingAccount,
+                    serviceName: $stateParams.serviceName
+                }, {
+                    number: number,
+                    simultaneousLines: 1,
+                    status: "available",
+                    timeout: 20,
+                    wrapUpTime: 0
+                }).$promise;
+            })).then(function () {
+                Toast.success($translate.instant("telephony_alias_configuration_agents_add_success"));
+                return self.fetchAgentsIds().then(function (ids) {
+                    self.agents.ids = ids;
+                });
+            }).catch(function (err) {
+                return new ToastError(err);
+            }).finally(function () {
+                self.addAgentForm.isAdding = false;
+                self.addAgentForm.numbers = [null];
             });
-        }).catch(function (err) {
-            return new ToastError(err);
-        }).finally(function () {
-            self.addAgentForm.isAdding = false;
-            self.addAgentForm.numbers = [null];
+
         });
     };
 
