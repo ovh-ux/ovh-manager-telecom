@@ -324,8 +324,7 @@
             <section data-ng-switch-when="actions">
                 <div class="section-group">
                     <div class="section-item"
-                         data-ng-repeat="action in $ctrl.availableActions | orderBy:'label' track by $index"
-                         data-ng-if="(action.value === 'ivr' && $ctrl.ovhPabx.featureType !== 'cloudHunting') || action.value !== 'ivr'">
+                         data-ng-repeat="action in $ctrl.availableActions | orderBy:'label' track by $index">
                         <div class="oui-radio">
                             <input type="radio"
                                    class="oui-radio__input"
