@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<translations>
+   <translation id="telephony_alias_configuration_time_condition_title" qtlid="335154">Gérer les plages horaires</translation>
+   <translation id="telephony_alias_configuration_time_condition_load_error" qtlid="462485">Oups ! Une erreur est survenue lors du chargement de vos plages horaires.</translation>
+   <translation id="telephony_alias_configuration_time_condition_save_success" qtlid="457545">Vos plages horaires ont été modifiées avec succès.</translation>
+   <translation id="telephony_alias_configuration_time_condition_save_error" qtlid="462498">Oups ! Une erreur est survenue lors de la sauvegarde de vos plages horaires.</translation>
+<!-- HELP -->
+   <translation id="telephony_alias_configuration_time_condition_info1" qtlid="462511">La gestion des plages horaires vous permet de définir les créneaux durant lesquels la file d'attente est disponible ou non.</translation>
+   <translation id="telephony_alias_configuration_time_condition_info2" qtlid="457532">Vous pouvez paramétrer vos jours de fermeture exceptionnelle sur <a data-ui-sref="{{sref}}">cette page</a>.</translation>
+   <translation id="telephony_alias_configuration_time_condition_need_help" qtlid="435497">Masz pytanie?</translation>
+   <translation id="telephony_alias_configuration_time_condition_hide_help" qtlid="457571">Cacher l'aide</translation>
+   <translation id="telephony_alias_configuration_time_condition_help_1" qtlid="457584">Configurez d'abord vos redirections en cliquant sur un des <i class="ovh-font ovh-font-config"></i> dans la section "Configurez vos redirections".</translation>
+   <translation id="telephony_alias_configuration_time_condition_help_2" qtlid="335492">Vous pouvez rediriger vos appels&#160;:</translation>
+   <translation id="telephony_alias_configuration_time_condition_help_3" qtlid="457597">soit vers une de vos lignes VoIP OVH ou un numéro&#160;;</translation>
+   <translation id="telephony_alias_configuration_time_condition_help_4" qtlid="457610">soit vers un numéro externe hors OVH&#160;;</translation>
+   <translation id="telephony_alias_configuration_time_condition_help_5" qtlid="335531">soit le répondeur d'une de vos lignes VoIP.</translation>
+   <translation id="telephony_alias_configuration_time_condition_help_6" qtlid="462524">Ensuite, indiquez vos disponibilités en cliquant et glissant sur l'agenda pour définir les plages horaires pendant lesquelles vous êtes joignable sur votre file d'appel.</translation>
+   <translation id="telephony_alias_configuration_time_condition_help_7" qtlid="462537">Enfin, en dehors des plages horaires que vous avez créées, vous pouvez définir le type de redirection à effectuer.</translation>
+<!-- GLOBAL PARAMETERS -->
+   <translation id="telephony_alias_configuration_time_condition_params_title" qtlid="311102">Configuration générale</translation>
+   <translation id="telephony_alias_configuration_time_condition_params_enable" qtlid="457662">Activer la redirection de vos appels en fonction de la plage horaire</translation>
+<!-- REDIRECT CONFIGURATION -->
+   <translation id="telephony_alias_configuration_time_condition_redirect_config_title" qtlid="457688">Configuration des redirections</translation>
+<!-- CONDITIONS -->
+   <translation id="telephony_alias_configuration_time_condition_conditions_title" qtlid="457701">Configuration des plages horaires</translation>
+<!-- FOOTER -->
+   <translation id="telephony_alias_configuration_time_condition_footer_save_question" qtlid="457649">Sauvegarder la configuration de vos plages horaires ?</translation>
+</translations>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <translations>
-   <translation id="telephony_group_billing_deposit_movement_title" qtlid="386886">Transfert de vos dépôts de garantie entre groupes</translation>
+   <translation id="telephony_group_billing_deposit_movement_title" qtlid="386886">Transferencia de fianzas entre grupos</translation>
    <translation id="telephony_group_billing_deposit_movement_info" qtlid="357655">Gestionar la transferencia de fianzas entre los distintos grupos.</translation>
    <translation id="telephony_group_billing_deposit_movement_source_subtitle" qtlid="97496">Origen</translation>
    <translation id="telephony_group_billing_deposit_movement_groups_label" qtlid="357668">Grupos:</translation>
@@ -12,10 +12,10 @@
    <translation id="telephony_group_billing_deposit_movement_without_tax" qtlid="101397">+ IVA</translation>
    <translation id="telephony_group_billing_deposit_movement_submit" qtlid="26047">Aceptar</translation>
    <translation id="telephony_group_billing_deposit_movement_success" qtlid="357694">La solicitud de transferencia de fianzas se ha enviado correctamente.</translation>
-   <translation id="telephony_group_billing_deposit_movement_error_amount_too_low" qtlid="386547">Pour effectuer un transfert, votre dépôt de garantie source doit être positif !</translation>
-   <translation id="telephony_group_billing_deposit_movement_error_amount_required" qtlid="386560">Le champ "montant" est obligatoire.</translation>
-   <translation id="telephony_group_billing_deposit_movement_error_amount_number" qtlid="386573">Veuillez saisir un montant valide.</translation>
-   <translation id="telephony_group_billing_deposit_movement_error_amount_min" qtlid="386586">La valeur minimum de ce champ est {{ min }}.</translation>
-   <translation id="telephony_group_billing_deposit_movement_error_amount_max" qtlid="386599">La valeur maximum de ce champ est {{ max }}.</translation>
-   <translation id="telephony_group_billing_deposit_movement_capability_error" qtlid="386899">Oups ! Nous n'avons pas pu vérifier les groupes de facturation transférables.</translation>
+   <translation id="telephony_group_billing_deposit_movement_error_amount_too_low" qtlid="386547">Para realizar una transferencia, su fianza de origen debe ser positiva.</translation>
+   <translation id="telephony_group_billing_deposit_movement_error_amount_required" qtlid="386560">El campo «Importe» es obligatorio.</translation>
+   <translation id="telephony_group_billing_deposit_movement_error_amount_number" qtlid="386573">Introduzca un importe válido.</translation>
+   <translation id="telephony_group_billing_deposit_movement_error_amount_min" qtlid="386586">El valor mínimo de este campo es {{ min }}.</translation>
+   <translation id="telephony_group_billing_deposit_movement_error_amount_max" qtlid="386599">El valor máximo de este campo es {{ max }}.</translation>
+   <translation id="telephony_group_billing_deposit_movement_capability_error" qtlid="386899">¡Vaya! No hemos podido verificar los grupos de facturación transferibles.</translation>
 </translations>

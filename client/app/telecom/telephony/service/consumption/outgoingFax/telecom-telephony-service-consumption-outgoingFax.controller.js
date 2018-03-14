@@ -26,7 +26,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceConsumptionOutgo
         });
     }
 
-    function init () {
+    self.$onInit = function () {
 
         self.consumption = {
             raw: null,
@@ -34,7 +34,6 @@ angular.module("managerApp").controller("TelecomTelephonyServiceConsumptionOutgo
             paginated: null,
             selected: null,
             pagesSum: 0,
-            isLoading: false,
             orderBy: "creationDatetime",
             orderDesc: true,
             filterBy: {
@@ -48,7 +47,6 @@ angular.module("managerApp").controller("TelecomTelephonyServiceConsumptionOutgo
             end: moment().endOf("month")
         };
 
-        self.consumption.isLoading = true;
         fetchOutgoingConsumption().then(function (result) {
             self.consumption.raw = angular.copy(result);
             self.applySorting();
@@ -65,17 +63,15 @@ angular.module("managerApp").controller("TelecomTelephonyServiceConsumptionOutgo
 
             });
             self.consumption.priceSum = (Math.floor(self.consumption.priceSum * 100.0, 2) / 100.0) + " " + priceSuffix;
-        }).catch(function (err) {
+        }, function (err) {
             return new ToastError(err);
-        }).finally(function () {
-            self.consumption.isLoading = false;
         });
-    }
+    };
 
     self.refresh = function () {
         OvhApiTelephony.Service().FaxConsumption().Lexi().resetCache();
         OvhApiTelephony.Service().FaxConsumption().Lexi().resetQueryCache();
-        init();
+        self.$onInit();
     };
 
     self.applySorting = function () {
@@ -97,14 +93,4 @@ angular.module("managerApp").controller("TelecomTelephonyServiceConsumptionOutgo
         self.applySorting();
     };
 
-    self.orderBy = function (by) {
-        if (self.consumption.orderBy === by) {
-            self.consumption.orderDesc = !self.consumption.orderDesc;
-        } else {
-            self.consumption.orderBy = by;
-        }
-        self.applySorting();
-    };
-
-    init();
 });

@@ -22,8 +22,8 @@
 
 <!-- MAC ADDRESS -->
    <translation id="telephony_line_assist_troubleshooting_auto_config_mac_address" qtlid="388056">Vérification de l’adresse MAC de votre telephone</translation>
-   <translation id="telephony_line_assist_troubleshooting_auto_config_mac_address_explain" qtlid="388069">Merci de vérifier que l’adresse MAC<span class="custom-asterisk"></span> de votre téléphone est la&#160;:&#160;<strong>{{ macAddress }}</strong></translation>
-   <translation id="telephony_line_assist_troubleshooting_auto_config_mac_address_explain_note">Celle-ci se situe au dos de votre téléphone</translation>
+   <translation id="telephony_line_assist_troubleshooting_auto_config_mac_address_explain" qtlid="397299">Merci de vérifier que l’adresse MAC<span class="custom-asterisk"></span> de votre téléphone est la&#160;:&#160;<strong>{{ macAddress }}</strong></translation>
+   <translation id="telephony_line_assist_troubleshooting_auto_config_mac_address_explain_note" qtlid="397312">Celle-ci se situe au dos de votre téléphone</translation>
 
 <!-- SIEMENS -->
    <translation id="telephony_line_assist_troubleshooting_auto_config_siemens_reset_config" qtlid="387874">Reconfiguration du téléphone.</translation>

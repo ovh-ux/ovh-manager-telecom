@@ -15,7 +15,9 @@
     <div class="modal-body"
          data-ng-if="!SendersEditCtrl.loading.editSender && !SendersEditCtrl.edited">
 
-        <h3 data-translate="sms_senders_edit_sender_title"></h3>
+        <h3 class="modal-title"
+            data-translate="sms_senders_edit_sender_title">
+        </h3>
 
         <p data-translate="sms_senders_edit_sender_information"
            data-translate-values="{ sender: SendersEditCtrl.sender.number || SendersEditCtrl.sender.sender }">

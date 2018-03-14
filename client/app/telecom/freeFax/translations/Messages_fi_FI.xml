@@ -22,7 +22,7 @@
 <!-- notifications -->
    <translation id="freefax_notification_noNotification" qtlid="306682">Il n'y a aucune notification enregistrée.</translation>
    <translation id="freefax_notifications_title" qtlid="306695">Notifications du répondeur/télécopieur {{serviceName}}</translation>
-   <translation id="freefax_notifications" qtlid="33250">Muistutukset</translation>
+   <translation id="freefax_notifications" qtlid="33250">Ilmoitukset</translation>
    <translation id="freefax_notification_email" qtlid="33598">Sähköposti</translation>
    <translation id="freefax_notification_type" qtlid="306708">Notification du répondeur</translation>
    <translation id="freefax_notification_source" qtlid="395596">Source de la notification</translation>

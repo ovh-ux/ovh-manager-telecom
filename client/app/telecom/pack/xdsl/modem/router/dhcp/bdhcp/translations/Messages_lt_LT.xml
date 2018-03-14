@@ -15,7 +15,7 @@
 
    <translation id="xdsl_modem_bdhcp_placeholder_name" qtlid="312025">Susiejimo pavadinimas</translation>
 
-   <translation id="xdsl_modem_bdhcp_add_success" qtlid="397273;385338">Le bail <strong qtlid="385325">{{ name }}</strong> a été ajouté.</translation>
+   <translation id="xdsl_modem_bdhcp_add_success" qtlid="397273;385338">Užstatas <strong qtlid="385325">{{ name }}</strong> pridėtas.</translation>
    <translation id="xdsl_modem_bdhcp_edit_success" qtlid="385351">Užstatas <strong>{{ name }}</strong> atnaujintas.</translation>
    <translation id="xdsl_modem_bdhcp_del_success" qtlid="385364">Užstatas <strong>{{ name }}</strong> ištrintas.</translation>
    <translation id="xdsl_modem_bdhcp_add_error" qtlid="385377">Negalime pridėti užstato <strong>{{ name }}</strong>.</translation>

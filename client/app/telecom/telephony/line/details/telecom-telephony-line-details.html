@@ -37,8 +37,24 @@
                     <dd data-ng-bind="::DetailsOfferCtrl.line.nextBill | date:'shortDate' || '-'"></dd>
 
                     <!-- Simultaneous calls -->
-                    <dt data-translate="telephony_line_details_silmutaneous_call"></dt>
-                    <dd data-ng-bind="::DetailsOfferCtrl.line.simultaneousLines || '-'"></dd>
+                    <dt data-translate="telephony_line_details_simultaneous_call"></dt>
+                    <dd>
+                        <span data-ng-bind="::DetailsOfferCtrl.line.simultaneousLines"></span>
+                        <span data-ng-if="::DetailsOfferCtrl.line.simultaneousLinesDetails"
+                              data-translate="telephony_line_details_simultaneous_call_details"
+                              data-translate-values="{
+                                'extra': DetailsOfferCtrl.line.simultaneousLinesDetails.extra,
+                                'toBeDeleted': DetailsOfferCtrl.line.simultaneousLinesDetails.toBeDeleted
+                              }"></span>
+                        <a class="pl-2"
+                           data-ui-sref="telecom.telephony.line.calls.simultaneousLines({ serviceName: DetailsOfferCtrl.line.serviceName })">
+                            <span class="fa fa-icon fa-external-link" aria-hidden="true"></span>
+                        </a>
+                    </dd>
+
+                    <!-- Offer -->
+                    <dt data-translate="telephony_line_details_offer"></dt>
+                    <dd data-ng-bind="::DetailsOfferCtrl.line.getPublicOffer.description || '-'"></dd>
                 </dl>
             </section>
             <!-- /.widget-presentation -->

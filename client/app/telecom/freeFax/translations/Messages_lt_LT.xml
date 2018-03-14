@@ -7,7 +7,7 @@
    <translation id="freefax_fax_configuration" qtlid="306578">Fakso konfigūravimas</translation>
    <translation id="freefax_voicemail_configuration_title" qtlid="306591">Atsakiklio valdymas</translation>
    <translation id="freefax_change_password" qtlid="80394">Keisti slaptažodį</translation>
-   <translation id="freefax_detail_error" qtlid="395583">Oups ! Nous n'avons pas pu récupérer les information de votre freefax.</translation>
+   <translation id="freefax_detail_error" qtlid="395583">Negalima nuskaityti FreeFAX informacijos</translation>
    <translation id="freefax_expired_error" qtlid="186975">Paslauga negalioja</translation>
 
 <!-- credits -->
@@ -25,24 +25,24 @@
    <translation id="freefax_notifications" qtlid="33250">Pranešimai</translation>
    <translation id="freefax_notification_email" qtlid="33598">El. paštas</translation>
    <translation id="freefax_notification_type" qtlid="306708">Atsakiklio pranešimai</translation>
-   <translation id="freefax_notification_source" qtlid="395596">Source de la notification</translation>
+   <translation id="freefax_notification_source" qtlid="395596">Pranešimo šaltinis</translation>
    <translation id="freefax_notification_source_fax" qtlid="32926">Faksas</translation>
    <translation id="freefax_notification_source_voicemail" qtlid="88956">Atsakiklis</translation>
-   <translation id="freefax_notification_source_both" qtlid="395609">Fax et répondeur</translation>
+   <translation id="freefax_notification_source_both" qtlid="395609">Faksas ir atsakiklis</translation>
    <translation id="freefax_notification_type_simple" qtlid="306734">Tik pranešimai</translation>
-   <translation id="freefax_notification_type_attachment" qtlid="108287">Prisegtas failas</translation>
+   <translation id="freefax_notification_type_attachment" qtlid="108287">Priedas</translation>
    <translation id="freefax_notification_add" qtlid="37923">Pridėti</translation>
    <translation id="freefax_notification_delete" qtlid="306747">Ištrinti šį pranešimą</translation>
-   <translation id="freefax_notification_confirm" qtlid="395622">Voulez-vous vraiment supprimer la notification <strong>{{email}}</strong> ?</translation>
+   <translation id="freefax_notification_confirm" qtlid="395622">Ar tikrai norite ištrinti pranešimą <strong>{{email}}</strong>?</translation>
    <translation id="freefax_notif_show_none" qtlid="306773">Niekas nesekama</translation>
    <translation id="freefax_notif_show_one_or_many" qtlid="306786">sekama: {{count}} </translation>
-   <translation id="freefax_notif_read_error" qtlid="395635">Oups ! Nous n'avons pas pu récupérer les notifications.</translation>
-   <translation id="freefax_notif_save_error" qtlid="395648">Oups ! Nous n'avons pas pu sauvegarder la notification.</translation>
-   <translation id="freefax_notif_save_success" qtlid="395661">Vos notifications ont été mises à jour.</translation>
+   <translation id="freefax_notif_read_error" qtlid="395635">Negalima nuskaityti pranešimo.</translation>
+   <translation id="freefax_notif_save_error" qtlid="395648">Negalima išsaugoti pranešimo.</translation>
+   <translation id="freefax_notif_save_success" qtlid="395661">Pranešimai atnaujinti.</translation>
 
 <!-- General informations -->
    <translation id="freefax_domain" qtlid="66428">Domenas</translation>
-   <translation id="freefax_domain_expired" qtlid="395674">(Domaine expiré)</translation>
+   <translation id="freefax_domain_expired" qtlid="395674">(Domenas nebegalioja)</translation>
    <translation id="freefax_line" qtlid="306799">Linijos numeris</translation>
    <translation id="freefax_fax_remaining" qtlid="306812">Likęs faksų skaičius</translation>
    <translation id="freefax_point_remaining" qtlid="89845">Lojalumo taškai</translation>

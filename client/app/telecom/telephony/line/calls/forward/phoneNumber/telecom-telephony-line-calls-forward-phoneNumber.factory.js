@@ -10,6 +10,11 @@ angular.module("managerApp").factory("TelecomTelephonyLineCallsForwardPhoneNumbe
         if (this.description === this.serviceName) {
             this.description = "";
         }
+
+        // All sip lines with phones will be treated as plug&phone
+        if (this.hasPhone && (this.type === "line" || this.type === "voicemail")) {
+            this.type = "plug&phone";
+        }
     };
 
     TelecomTelephonyLineCallsForwardPhoneNumber.prototype.toString = function () {

@@ -10,7 +10,7 @@
    <translation id="components_notification_account" qtlid="345793">Cuenta:</translation>
    <translation id="components_notification_confirm" qtlid="345806">¿Seguro que quiere eliminar la notificación a {{contact}} sobre el servicio {{service}}?</translation>
    <translation id="components_notification_add" qtlid="274434">Añadir una alerta</translation>
-   <translation id="components_notification_mail" qtlid="69509">Email</translation>
+   <translation id="components_notification_mail" qtlid="69509">Correo electrónico</translation>
    <translation id="components_notification_sms" qtlid="28243">SMS</translation>
    <translation id="components_notification_once" qtlid="345819">Una vez</translation>
    <translation id="components_notification_5m" qtlid="345832">Cada 5 minutos</translation>

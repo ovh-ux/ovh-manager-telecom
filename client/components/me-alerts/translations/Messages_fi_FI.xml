@@ -12,11 +12,11 @@
    <translation id="me_alerts_PAYMENTMEAN_CREDITCARD_TOOMANYFAILURES" qtlid="344409">Sinulla on <strong>{{count}}</strong> virheellistä luottokorttia. Mene <a href="{{link}}" class="alert-link">laskutusosioon</a> tekemään tarkistukset ja/tai rekisteröimään uusi maksutapa.</translation>
    <translation id="me_alerts_PAYMENTMEAN_PAYPAL_TOOMANYFAILURES" qtlid="344422">Sinulla on <strong>{{count}}</strong> virheellistä PayPal-tiliä. Mene <a href="{{link}}" class="alert-link">laskutusosioon</a> tekemään tarkistukset ja/tai rekisteröi uusi maksutapa.</translation>
 
-   <translation id="me_alerts_OVHACCOUNT_DEBT" qtlid="384121">Votre compte prépayé est débiteur de <strong>{{value}}</strong> au {{date | date:'medium'}}. Rendez-vous dans <a href="{{link}}" class="alert-link">la section facturation</a> pour régulariser la situation.</translation>
+   <translation id="me_alerts_OVHACCOUNT_DEBT" qtlid="384121">Prepaid-tilisi saldo on negatiivinen: <strong>{{value}}</strong> päivämäärä{{date | date:'medium'}}. Korjaa tilanne <a href="{{link}}" class="alert-link">laskutusosiossa</a>.</translation>
    <translation id="me_alerts_DEBTACCOUNT_DEBT" qtlid="344448">Sinulla on velkaa <strong>{{value}}</strong>. Mene <a href="{{link}}" class="alert-link">laskutusosioon</a> hoitamaan velanmaksu.</translation>
    <translation id="me_alerts_DEBTACCOUNT_DEBT_WITH_UNMATURED_AMOUNT" qtlid="369503">Sinulla on velkaa <strong>{{ dueAmount }}</strong> (josta summa {{ unmaturedAmount }} ei ole erääntynyt). Mene <a href="#/billing/statements" class="alert-link">laskutusosioon</a> korjaamaan tilanne.</translation>
 
-   <translation id="me_alerts_OVHACCOUNT_ALERTTHRESHOLD" qtlid="384134">Votre compte prépayé a atteint le seuil que vous avez défini. Rendez-vous dans <a href="{{link}}" class="alert-link">la section facturation</a> pour plus d'informations.</translation>
+   <translation id="me_alerts_OVHACCOUNT_ALERTTHRESHOLD" qtlid="384134">Prepaid-tilisi on saavuttanut määrittämäsi kynnysrajan. Katso lisätietoja <a href="{{link}}" class="alert-link">laskutusosiosta</a>.</translation>
 
    <translation id="me_alerts_ORDERS_DOCUMENTSREQUESTED" qtlid="344461">Sinulla on <strong>{{count}}</strong> tilausta odottamassa tarvittavia dokumentteja. Mene <a href="{{link}}" class="alert-link">osioon "Omat tilaukset"</a> päivittämään ne.</translation>
    <translation id="me_alerts_AGREEMENTS_TODO" qtlid="344474">Sinulla on <strong>{{count}}</strong> sopimusta hyväksyttävänä.</translation>

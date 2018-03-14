@@ -1,21 +1,26 @@
-angular.module("managerApp").controller("TelecomTelephonyAliasPortabilityOrderCtrl", function ($scope, $stateParams, $translate, $q, moment, TelephonyMediator, OvhApiMe, OvhApiOrder, Toast, ToastError) {
+angular.module("managerApp").controller("TelecomTelephonyAliasPortabilityOrderCtrl", function ($scope, $stateParams, $translate, $q, moment, TelephonyMediator, OvhApiMe, OvhApiOrder, Toast) {
     "use strict";
 
     var self = this;
+
+    var specialNumberPrefix = {
+        france: ["00338"],
+        belgium: ["0032800", "003278", "0032900", "003270"]
+    };
 
     // attributes shared by 'individual' and 'company' social reason
     var sharedAttributes = [
         "billingAccount", "building", "callNumber", "city", "comment", "contactName",
         "contactNumber", "country", "desireDate", "displayUniversalDirectory", "door",
-        "firstName", "floor", "groupNumber", "lineToRedirectAliasTo", "name", "offer",
-        "socialReason", "stair", "streetName", "streetNumber", "streetNumberExtra",
+        "executeAsSoonAsPossible", "firstName", "floor", "groupNumber", "lineToRedirectAliasTo",
+        "name", "offer", "socialReason", "stair", "streetName", "streetNumber", "streetNumberExtra",
         "streetType", "type", "zip"
     ];
 
     function init () {
-
         self.order = {
             // default values
+            executeAsSoonAsPossible: true,
             type: "landline",
             sdatype: "all",
             socialReason: "individual",
@@ -44,21 +49,45 @@ angular.module("managerApp").controller("TelecomTelephonyAliasPortabilityOrderCt
         $scope.$watch("PortabilityOrderCtrl.order", function () {
             self.order.offer = self.order.socialReason === "corporation" ? "company" : "individual";
             self.order.contactName = self.order.name;
-            self.onNumberChange();
         }, true);
 
-        $scope.$watch("PortabilityOrderCtrl.isSDA", function () {
-            self.order.socialReason = self.isSDA ? "corporation" : "individual";
-        }, true);
+        self.isSpecialNumber = false;
+        self.typologies = { france: [], belgium: [] };
 
         // fetch list of billing accounts
         return TelephonyMediator.getAll().then(function (groups) {
             self.billingAccounts = groups;
             self.order.billingAccount = $stateParams.billingAccount;
         }).catch(function (err) {
-            return new ToastError(err);
+            Toast.error(_.get(err, "data.message"));
+            return $q.reject(err);
+        }).then(function () {
+            return OvhApiOrder.Lexi().schema().$promise.then(function (schema) {
+                if (schema && schema.models["telephony.NumberSpecialTypologyEnum"] && schema.models["telephony.NumberSpecialTypologyEnum"].enum) {
+                    var typologies = _.map(schema.models["telephony.NumberSpecialTypologyEnum"].enum, function (typo) {
+                        return {
+                            value: typo,
+                            label: $translate.instant("telephony_order_specific_typology_" + typo.replace(new RegExp("^be_|fr_"), "") + "_label")
+                        };
+                    });
+
+                    self.typologies.france = _.filter(typologies, function (typo) { return _.startsWith(typo.value, "fr_"); });
+                    self.typologies.belgium = _.filter(typologies, function (typo) { return _.startsWith(typo.value, "be_"); });
+                    return self.typologies;
+                }
+
+                Toast.error($translate.instant("telephony_order_specific_typology_error"));
+                return $q.reject();
+            }).catch(function (error) {
+                Toast.error($translate.instant("telephony_order_specific_typology_error"));
+                return $q.reject(error);
+            });
         });
     }
+
+    self.onSDATypeChange = function () {
+        self.order.socialReason = self.isSDA ? "corporation" : "individual";
+    };
 
     self.openDesireDatePicker = function (ev) {
         ev.preventDefault();
@@ -78,6 +107,12 @@ angular.module("managerApp").controller("TelecomTelephonyAliasPortabilityOrderCt
             self.order.country = "switzerland";
             self.order.rio = null;
         }
+
+        // handle special number
+        self.isSpecialNumber = _.some(specialNumberPrefix[self.order.country], function (prefix) { return _.startsWith(number, prefix); });
+        self.order.specialNumberCategory = self.isSpecialNumber ? _.head(self.typologies[self.order.country]).value : null;
+        self.order.type = self.isSpecialNumber ? "special" : "landline";
+
         self.order.translatedCountry = $translate.instant("telephony_alias_portability_order_contact_country_" + self.order.country);
     };
 
@@ -133,6 +168,10 @@ angular.module("managerApp").controller("TelecomTelephonyAliasPortabilityOrderCt
             params.listNumbers = _.map(self.order.numbersList, self.normalizeNumber).join(",");
         }
 
+        if (self.isSpecialNumber) {
+            params.specialNumberCategory = self.order.specialNumberCategory.replace("fr_", "");
+        }
+
         params.callNumber = self.normalizeNumber(params.callNumber);
         params.contactNumber = self.normalizeNumber(params.contactNumber);
         params.desireDate = moment(params.desireDate).format("Y-MM-DD");
@@ -148,7 +187,8 @@ angular.module("managerApp").controller("TelecomTelephonyAliasPortabilityOrderCt
             self.prices = result.prices;
         }).catch(function (err) {
             self.step = "number";
-            return new ToastError(err);
+            Toast.error(_.get(err, "data.message"));
+            return $q.reject(err);
         });
     };
 

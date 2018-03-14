@@ -49,6 +49,26 @@ angular.module("managerApp").service("voipLine", class {
 
     /**
      *  @ngdoc method
+     *  @name managerApp.service:voipLine#fetchLineInfo
+     *  @methodOf managerApp.service:voipLine
+     *
+     *  @description
+     *  <p>Fetch a line info from a service.</p>
+     *  <p>Manage call to `GET /telephony/{billingAccount}/line`.</p>
+     *
+     *  @param {VoipService} service    A `VoipService` instance.
+     *
+     *  @return {Promise}   That return a `VoipLine` instance.
+     */
+    fetchLineInfo (service) {
+        return this.OvhApiTelephony.Line().Lexi().get({
+            billingAccount: service.billingAccount,
+            serviceName: service.serviceName
+        }).$promise;
+    }
+
+    /**
+     *  @ngdoc method
      *  @name managerApp.service:voipLine#saveFeature
      *  @methodOf managerApp.service:voipLine
      *
