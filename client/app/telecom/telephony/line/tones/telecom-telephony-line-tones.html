@@ -1,6 +1,6 @@
-<oui-loader data-ng-if="LineTonesCtrl.isLoading"
-            data-size="m">
-</oui-loader>
+<div class="text-center" data-ng-if="LineTonesCtrl.isLoading">
+    <oui-spinner></oui-spinner>
+</div>
 
 <toast-message></toast-message>
 
@@ -27,10 +27,10 @@
                     <label for="ringback"
                            class="control-label">
                         <span data-translate="telephony_line_tones_ringback"></span>
-                        <oui-loader class="float-right"
-                                    data-ng-if="LineTonesCtrl.tonesForm.ringbackUpdating"
-                                    data-size="s">
-                        </oui-loader>
+                        <oui-spinner class="float-right"
+                                     data-ng-if="LineTonesCtrl.tonesForm.ringbackUpdating"
+                                     data-size="s">
+                        </oui-spinner>
                     </label>
                     <select class="form-control"
                             id="ringback"
@@ -65,10 +65,10 @@
                            aria-hidden="true"
                            data-ng-if="LineTonesCtrl.tonesForm.ringbackUploadSuccess">
                         </i>
-                        <oui-loader class="ml-2"
-                                    data-ng-if="LineTonesCtrl.tonesForm.ringbackUploading"
-                                    data-size="s">
-                        </oui-loader>
+                        <oui-spinner class="ml-2"
+                                     data-ng-if="LineTonesCtrl.tonesForm.ringbackUploading"
+                                     data-size="s">
+                        </oui-spinner>
                     </button>
                 </div>
 
@@ -76,10 +76,10 @@
                 <div class="form-group">
                     <label for="onHold">
                         <span data-translate="telephony_line_tones_onhold"></span>
-                        <oui-loader class="float-right"
-                                    data-ng-if="LineTonesCtrl.tonesForm.onHoldUpdating"
-                                    data-size="s">
-                        </oui-loader>
+                        <oui-spinner class="float-right"
+                                     data-ng-if="LineTonesCtrl.tonesForm.onHoldUpdating"
+                                     data-size="s">
+                        </oui-spinner>
                     </label>
                     <select class="form-control"
                             id="onHold"
@@ -114,10 +114,10 @@
                            aria-hidden="true"
                            data-ng-if="LineTonesCtrl.tonesForm.onHoldUploadSuccess">
                         </i>
-                        <oui-loader class="ml-2"
-                                    data-ng-if="LineTonesCtrl.tonesForm.onHoldUploading"
-                                    data-size="s">
-                        </oui-loader>
+                        <oui-spinner class="ml-2"
+                                     data-ng-if="LineTonesCtrl.tonesForm.onHoldUploading"
+                                     data-size="s">
+                        </oui-spinner>
                     </button>
                 </div>
 
@@ -125,10 +125,10 @@
                 <div class="form-group">
                     <label for="callWaiting">
                         <span data-translate="telephony_line_tones_callwaiting"></span>
-                        <oui-loader class="float-right"
-                                    data-ng-if="LineTonesCtrl.tonesForm.callWaitingUpdating"
-                                    data-size="s">
-                        </oui-loader>
+                        <oui-spinner class="float-right"
+                                     data-ng-if="LineTonesCtrl.tonesForm.callWaitingUpdating"
+                                     data-size="s">
+                        </oui-spinner>
                     </label>
                     <select class="form-control"
                             id="callWaiting"
@@ -163,10 +163,10 @@
                            aria-hidden="true"
                            data-ng-if="LineTonesCtrl.tonesForm.callWaitingUploadSuccess">
                         </i>
-                        <oui-loader class="ml-2"
-                                    data-ng-if="LineTonesCtrl.tonesForm.callWaitingUploading"
-                                    data-size="s">
-                        </oui-loader>
+                        <oui-spinner class="ml-2"
+                                     data-ng-if="LineTonesCtrl.tonesForm.callWaitingUploading"
+                                     data-size="s">
+                        </oui-spinner>
                     </button>
                 </div>
             </form>

@@ -59,7 +59,7 @@
 
    <translation id="sms_senders_terminate_alert" qtlid="393698">Liste des services expirant prochainement&#160;:</translation>
    <translation id="sms_senders_terminate_alert_list" qtlid="393711">Votre numéro virtuel <b>{{sender}}</b> expire le {{date}}.</translation>
-   <translation id="sms_senders_terminate_cancel" qtlid="285350">Anular o cancelamento do serviço</translation>
+   <translation id="sms_senders_terminate_cancel" qtlid="285350">Anular cancelamento do serviço</translation>
    <translation id="sms_senders_terminate_sender_title" qtlid="393724">Résilier le numéro virtuel</translation>
    <translation id="sms_senders_terminate_sender_terminating" qtlid="393737">Demande de résiliation du numéro virtuel en cours…</translation>
    <translation id="sms_senders_terminate_sender_terminated" qtlid="393750">Demande de résiliation du numéro virtuel enregistrée !</translation>

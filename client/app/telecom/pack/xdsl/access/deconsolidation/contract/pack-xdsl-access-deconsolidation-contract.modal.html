@@ -8,13 +8,14 @@
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
-    <oui-loader class="mt-4"
-                data-ng-if="XdslDeconsolidationContract.loading"
-                data-size="m">
-    </oui-loader>
+    <div class="text-center" data-ng-if="XdslDeconsolidationContract.loading">
+        <oui-spinner class="mt-4"></oui-spinner>
+    </div>
 
     <div class="modal-body" data-ng-if="!XdslDeconsolidationContract.loading">
-        <h3 data-translate="xdsl_access_deconsolidation_contract_title"></h3>
+        <h3 class="modal-title"
+            data-translate="xdsl_access_deconsolidation_contract_title">
+        </h3>
         <p>
             <span data-translate="xdsl_access_deconsolidation_contract_are_you_sure"></span>
             <strong class="text-primary" data-translate="xdsl_access_deconsolidation_contract_modification_operation"></strong>

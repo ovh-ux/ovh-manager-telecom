@@ -5,7 +5,7 @@
 
    <translation id="resiliation_resiliate" qtlid="345715">Résilier {{typeName}} {{name}}</translation>
 
-   <translation id="resiliation_button" qtlid="48646">Rescindir</translation>
+   <translation id="resiliation_button" qtlid="48646">Cancelar</translation>
    <translation id="resiliation_confirm" qtlid="313325">Je résilie</translation>
    <translation id="resiliation_confirm_title" qtlid="313338">Résiliation de mon abonnement</translation>
    <translation id="resiliation_reason" qtlid="313351">Pour quelle raison voulez-vous résilier ?</translation>

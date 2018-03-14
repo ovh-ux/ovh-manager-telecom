@@ -14,7 +14,9 @@
 
     <div class="modal-body"
          data-ng-if="!UsersQuotaCtrl.loading.quotaUser && !UsersQuotaCtrl.quotaApplied">
-        <h3 data-translate="sms_users_quota_user_title"></h3>
+        <h3 class="modal-title"
+            data-translate="sms_users_quota_user_title">
+        </h3>
 
         <p class="word-break"
            data-translate="sms_users_quota_user_info"
@@ -81,7 +83,7 @@
 
     <div class="modal-body text-center"
          data-ng-if="UsersQuotaCtrl.loading.quotaUser && !UsersQuotaCtrl.quotaApplied">
-        <oui-loader data-size="m"></oui-loader>
+        <oui-spinner></oui-spinner>
         <h4 data-translate="sms_users_quota_user_adding"></h4>
     </div>
 

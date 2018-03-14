@@ -1,9 +1,9 @@
 
 <div id="pack-xdsl-diagnostic">
     <!-- LOADING -->
-    <oui-loader data-ng-if="XdslDiagnostic.status.init"
-                data-size="m">
-    </oui-loader>
+    <div class="text-center" data-ng-if="XdslDiagnostic.status.init">
+        <oui-spinner></oui-spinner>
+    </div>
 
     <!-- DIAG -->
     <div class="widget-presentation" data-ng-if="!XdslDiagnostic.status.init">
@@ -36,17 +36,17 @@
             <div class="row" data-ng-if="XdslDiagnostic.diagnostic.capabilities.isModemConnected">
                 <div class="col-xs-12 col-md-3 service-title" data-translate="pack_xdsl_access_diagnostic_modem_connected"></div>
                 <div class="col-xs-12 col-md-9 service-item">
-                    <oui-loader data-ng-if="XdslDiagnostic.diagnostic.isModemConnected===null"
-                                data-size="s">
-                    </oui-loader>
+                    <oui-spinner data-ng-if="XdslDiagnostic.diagnostic.isModemConnected===null"
+                                 data-size="s">
+                    </oui-spinner>
                     <div data-ng-if="XdslDiagnostic.diagnostic.isModemConnected===false">
-                        <span class="ovh-font ovh-font-failure text-danger h6"
-                              aria-hidden="true"></span>
+                        <h6 class="ovh-font ovh-font-failure text-danger "
+                              aria-hidden="true"></h6>
                          <span data-translate="pack_xdsl_access_diagnostic_modem_state_disconnected"></span>
                     </div>
                     <div data-ng-if="XdslDiagnostic.diagnostic.isModemConnected===true">
-                        <span class="ovh-font ovh-font-success text-success h6"
-                              aria-hidden="true"></span>
+                        <h6 class="ovh-font ovh-font-success text-success "
+                              aria-hidden="true"></h6>
                          <span data-translate="pack_xdsl_access_diagnostic_modem_state_connected"></span>
                     </div>
                 </div>
@@ -56,17 +56,17 @@
             <div class="row" data-ng-if="XdslDiagnostic.diagnostic.capabilities.isActiveOnLns">
                 <div class="col-xs-12 col-md-3 service-title" data-translate="pack_xdsl_access_diagnostic_active_on_lns"></div>
                 <div class="col-xs-12 col-md-9 service-item">
-                    <oui-loader data-ng-if="XdslDiagnostic.diagnostic.isActiveOnLns===null"
-                                data-size="s">
-                    </oui-loader>
+                    <oui-spinner data-ng-if="XdslDiagnostic.diagnostic.isActiveOnLns===null"
+                                 data-size="s">
+                    </oui-spinner>
                     <div data-ng-if="XdslDiagnostic.diagnostic.isActiveOnLns===false">
-                        <span class="ovh-font ovh-font-failure text-danger h6"
-                              aria-hidden="true"></span>
+                        <h6 class="ovh-font ovh-font-failure text-danger "
+                              aria-hidden="true"></h6>
                          <span data-translate="pack_xdsl_access_diagnostic_lns_active_ko"></span>
                     </div>
                     <div data-ng-if="XdslDiagnostic.diagnostic.isActiveOnLns===true">
-                        <span class="ovh-font ovh-font-success text-success h6"
-                              aria-hidden="true"></span>
+                        <h6 class="ovh-font ovh-font-success text-success "
+                              aria-hidden="true"></h6>
                          <span data-translate="pack_xdsl_access_diagnostic_lns_active_ok"></span>
                     </div>
                 </div>
@@ -76,17 +76,17 @@
             <div class="row" data-ng-if="XdslDiagnostic.diagnostic.capabilities.ping">
                 <div class="col-xs-12 col-md-3 service-title" data-translate="pack_xdsl_access_diagnostic_ping"></div>
                 <div class="col-xs-12 col-md-9 service-item">
-                    <oui-loader data-ng-if="XdslDiagnostic.diagnostic.ping===null"
-                                data-size="s">
-                    </oui-loader>
+                    <oui-spinner data-ng-if="XdslDiagnostic.diagnostic.ping===null"
+                                 data-size="s">
+                    </oui-spinner>
                     <div data-ng-if="XdslDiagnostic.diagnostic.ping===false">
-                        <span class="ovh-font ovh-font-failure text-danger h6"
-                              aria-hidden="true"></span>
+                        <h6 class="ovh-font ovh-font-failure text-danger "
+                              aria-hidden="true"></h6>
                          <span data-translate="pack_xdsl_access_diagnostic_ping_ko"></span>
                     </div>
                     <div data-ng-if="XdslDiagnostic.diagnostic.ping===true">
-                        <span class="ovh-font ovh-font-success text-success h6"
-                              aria-hidden="true"></span>
+                        <h6 class="ovh-font ovh-font-success text-success "
+                              aria-hidden="true"></h6>
                          <span data-translate="pack_xdsl_access_diagnostic_ping_ok"></span>
                     </div>
                 </div>
@@ -97,17 +97,17 @@
                 <div class="row" data-ng-if="XdslDiagnostic.diagnostic.capabilities.sync">
                     <div class="col-xs-12 col-md-3 service-title" data-translate="pack_xdsl_access_diagnostic_line_sync"></div>
                     <div class="col-xs-12 col-md-9 service-item">
-                        <oui-loader data-ng-if="XdslDiagnostic.diagnostic.mainLine===null"
-                                    data-size="s">
-                        </oui-loader>
+                        <oui-spinner data-ng-if="XdslDiagnostic.diagnostic.mainLine===null"
+                                     data-size="s">
+                        </oui-spinner>
                         <div data-ng-if="XdslDiagnostic.diagnostic.mainLine.sync===false">
-                            <span class="ovh-font ovh-font-failure text-danger h6"
-                                  aria-hidden="true"></span>
+                            <h6 class="ovh-font ovh-font-failure text-danger "
+                                  aria-hidden="true"></h6>
                              <span data-translate="pack_xdsl_access_diagnostic_line_sync_ko"></span>
                         </div>
                         <div data-ng-if="XdslDiagnostic.diagnostic.mainLine.sync===true">
-                            <span class="ovh-font ovh-font-success text-success h6"
-                                  aria-hidden="true"></span>
+                            <h6 class="ovh-font ovh-font-success text-success "
+                                  aria-hidden="true"></h6>
                              <span data-translate="pack_xdsl_access_diagnostic_line_sync_ok"></span>
                         </div>
                     </div>

@@ -19,7 +19,7 @@
    <translation id="sms_statistics_outgoing" qtlid="394660">SMS envoyé</translation>
    <translation id="sms_statistics_outgoing_plural" qtlid="394673">SMS envoyés</translation>
    <translation id="sms_statistics_incoming" qtlid="394686">SMS reçu</translation>
-   <translation id="sms_statistics_incoming_plural" qtlid="341199">SMS reçus</translation>
+   <translation id="sms_statistics_incoming_plural" qtlid="341199">Otrzymane wiadomości SMS</translation>
    <translation id="sms_statistics_planned" qtlid="394699">SMS planifié</translation>
-   <translation id="sms_statistics_planned_plural" qtlid="342031">SMS planifiés</translation>
+   <translation id="sms_statistics_planned_plural" qtlid="342031">Zaplanowane wiadomości SMS</translation>
 </translations>

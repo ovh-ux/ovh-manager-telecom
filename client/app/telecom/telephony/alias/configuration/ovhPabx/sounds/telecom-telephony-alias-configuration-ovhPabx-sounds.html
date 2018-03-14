@@ -9,9 +9,10 @@
 
     <div class="telecom-section-content">
         <!-- SHOW LOADING -->
-        <oui-loader data-ng-if="$ctrl.loading.init"
-                    data-size="m">
-        </oui-loader> <!-- END OF SHOW LOADING -->
+        <div class="text-center" data-ng-if="$ctrl.loading.init">
+            <oui-spinner></oui-spinner>
+        </div>
+         <!-- END OF SHOW LOADING -->
 
         <!-- NOT AN OVHPABX -->
         <div class="row"

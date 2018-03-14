@@ -21,7 +21,7 @@ angular.module("managerApp").controller("TelecomSmsSmsTemplatesCtrl", class Tele
         this.service = null;
         this.templates = {
             raw: null,
-            paginated: null,
+            paginated: [],
             orderBy: "name",
             orderDesc: false,
             isLoading: false
@@ -33,7 +33,7 @@ angular.module("managerApp").controller("TelecomSmsSmsTemplatesCtrl", class Tele
             this.api.sms.templates.query({
                 serviceName: this.$stateParams.serviceName
             }).$promise.then((templates) => {
-                this.templates.raw = templates;
+                this.templates.raw = templates.map((id) => ({ id }));
             });
         }).catch((err) => {
             this.ToastError(err);
@@ -41,6 +41,7 @@ angular.module("managerApp").controller("TelecomSmsSmsTemplatesCtrl", class Tele
             this.loading.init = false;
         });
     }
+
 
     /**
      * Get details.
@@ -51,7 +52,7 @@ angular.module("managerApp").controller("TelecomSmsSmsTemplatesCtrl", class Tele
         this.templates.isLoading = true;
         return this.api.sms.templates.get({
             serviceName: this.$stateParams.serviceName,
-            name
+            name: name.id
         }).$promise;
     }
 
@@ -78,12 +79,13 @@ angular.module("managerApp").controller("TelecomSmsSmsTemplatesCtrl", class Tele
     refresh () {
         this.api.sms.templates.resetCache();
         this.api.sms.templates.resetQueryCache();
+        this.templates.paginated = [];
         this.templates.raw = null;
         this.templates.isLoading = true;
         return this.api.sms.templates.query({
             serviceName: this.$stateParams.serviceName
         }).$promise.then((templates) => {
-            this.templates.raw = templates;
+            this.templates.raw = templates.map((id) => ({ id }));
         }).catch((err) => {
             this.ToastError(err);
         }).finally(() => {

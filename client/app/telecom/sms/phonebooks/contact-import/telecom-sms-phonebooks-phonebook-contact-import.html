@@ -15,7 +15,9 @@
 
     <div class="modal-body"
          data-ng-if="!ContactImportCtrl.phonecontactForm.isImporting && !ContactImportCtrl.phonecontactForm.hasBeenImported">
-        <h3 data-translate="sms_phonebooks_phonebook_contact_import_title"></h3>
+        <h3 class="modal-title"
+            data-translate="sms_phonebooks_phonebook_contact_import_title">
+        </h3>
         <!-- FILE -->
         <div class="form-group clearfix">
             <p class="alert alert-info"
@@ -35,7 +37,7 @@
 
     <div class="modal-body text-center"
          data-ng-if="ContactImportCtrl.phonecontactForm.isImporting">
-        <oui-loader data-size="m"></oui-loader>
+        <oui-spinner></oui-spinner>
         <h4 data-translate="sms_phonebooks_phonebook_contact_importing"></h4>
     </div>
     <!-- /.modal-body -->

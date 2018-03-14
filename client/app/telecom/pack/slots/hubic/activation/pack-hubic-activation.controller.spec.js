@@ -46,7 +46,7 @@ describe("Controller: PackHubicActivationCtrl", function () {
 
     it("should have services data", function () {
         _$httpBackend.expectGET("/2api/pack/xdsl/xxx/hubic").respond(mockServicesApiResponse);
-        PackHubicActivationCtrl.init().then(function () {
+        PackHubicActivationCtrl.$onInit().then(function () {
             expect(PackHubicActivationCtrl.hubicList.length).toEqual(mockServicesApiResponse.length);
         });
         _$httpBackend.flush();

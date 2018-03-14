@@ -12,6 +12,6 @@
    <translation id="telephony_line_assist_orders_order_status_documents_requested" qtlid="282887">Pendiente de documentación</translation>
    <translation id="telephony_line_assist_orders_order_status_not_paid" qtlid="282900">Pendiente</translation>
    <translation id="telephony_line_assist_orders_order_status_unknown" qtlid="77142">Desconocido</translation>
-   <translation id="telephony_line_assist_orders_order_url_title" qtlid="387809">Voir le bon de commande n°{{ id }}</translation>
-   <translation id="telephony_line_assist_orders_empty" qtlid="387822">Aucun bon de commande.</translation>
+   <translation id="telephony_line_assist_orders_order_url_title" qtlid="387809">Ver la orden de pedido n° {{ id }}</translation>
+   <translation id="telephony_line_assist_orders_empty" qtlid="387822">No hay órdenes de pedido.</translation>
 </translations>

@@ -7,9 +7,9 @@
         <h1 data-translate="telephony_group_fax_voicemail_action_status"></h1>
     </header>
 
-    <oui-loader data-size="m"
-                data-ng-if="$ctrl.loading.init">
-    </oui-loader>
+    <div class="text-center" data-ng-if="$ctrl.loading.init">
+        <oui-spinner></oui-spinner>
+    </div>
 
     <div class="telecom-section-content"
          data-ng-if="!$ctrl.loading.init">
@@ -27,9 +27,9 @@
                         class="btn btn-primary"
                         data-ng-disabled="$ctrl.loading.save"
                         data-ng-click="$ctrl.onChangeRoutingBtnClick()">
-                    <oui-loader data-size="s"
-                                data-ng-if="$ctrl.loading.save">
-                    </oui-loader>
+                    <oui-spinner data-size="s"
+                                 data-ng-if="$ctrl.loading.save">
+                    </oui-spinner>
                     <span data-translate="{{ $ctrl.isVoicemailActive ? 'telephony_group_fax_voicemail_activation_desactivate' : 'telephony_group_fax_voicemail_activation_activate' }}"></span>
                 </button>
             </div>

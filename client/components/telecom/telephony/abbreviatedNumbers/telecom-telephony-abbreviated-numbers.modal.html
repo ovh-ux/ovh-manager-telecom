@@ -15,7 +15,9 @@
 
     <div class="modal-body">
 
-        <h3 data-ng-bind="AbbreviatedNumberModal.title"></h3>
+        <h3 class="modal-title"
+            data-ng-bind="AbbreviatedNumberModal.title">
+        </h3>
 
         <!-- Abbreviated number -->
         <div class="form-group"
@@ -146,7 +148,9 @@
 
     <div class="modal-body"
          data-ng-if="AbbreviatedNumberModal.loading.updating">
-        <oui-loader data-size="m"></oui-loader>
+        <div class="text-center">
+            <oui-spinner></oui-spinner>
+        </div>
     </div>
 
     <div class="modal-footer">

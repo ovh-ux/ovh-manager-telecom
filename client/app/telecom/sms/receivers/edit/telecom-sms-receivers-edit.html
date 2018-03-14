@@ -15,7 +15,9 @@
     <div class="modal-body"
          data-ng-if="!ReceiversEditCtrl.loading.editReceiver && !ReceiversEditCtrl.edited || ReceiversEditCtrl.requirement">
 
-        <h3 data-translate="edit"></h3>
+        <h3 class="modal-title"
+            data-translate="edit">
+        </h3>
 
         <!-- DESCRIPTION -->
         <div class="form-group"
@@ -67,7 +69,7 @@
 
     <div class="modal-body text-center"
          data-ng-if="ReceiversEditCtrl.loading.editReceiver && !ReceiversEditCtrl.edited">
-        <oui-loader data-size="m"></oui-loader>
+        <oui-spinner data-size="m"></oui-spinner>
         <h4 data-translate="sms_receivers_edit_receiver_editing"></h4>
     </div>
 

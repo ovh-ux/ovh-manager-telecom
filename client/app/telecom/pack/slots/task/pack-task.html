@@ -35,9 +35,9 @@
                         data-translate-attr="{title:'telecom_task_function'}"
                         data-translate="task.function"></th>
                     <td data-title="{{'telecom_task_status' | translate}}" class="text-center-md">
-                        <oui-loader data-ng-show="task.status.spinner"
-                                    data-size="s">
-                        </oui-loader>
+                        <oui-spinner data-ng-show="task.status.spinner"
+                                     data-size="s">
+                        </oui-spinner>
                         <span data-ng-if="task.status.icon && !task.status.spinner"
                               class="ovh-font h6"
                               data-ng-class="task.status.icon"

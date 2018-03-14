@@ -14,7 +14,9 @@
 
     <div class="modal-body"
          data-ng-if="!ContactUpdateCtrl.phonecontactForm.isAdding && !ContactUpdateCtrl.phonecontactForm.hasBeenAdded">
-        <h3 data-translate="telephony_phonebook_contact_add"></h3>
+        <h3 class="modal-title"
+            data-translate="telephony_phonebook_contact_add">
+        </h3>
 
         <!-- SURNAME -->
         <div class="form-group"
@@ -273,7 +275,7 @@
 
     <div class="modal-body text-center"
          data-ng-if="ContactUpdateCtrl.phonecontactForm.isAdding">
-        <oui-loader data-size="m"></oui-loader>
+        <oui-spinner></oui-spinner>
         <h4 data-translate="telephony_phonebook_contact_updating"></h4>
     </div>
 

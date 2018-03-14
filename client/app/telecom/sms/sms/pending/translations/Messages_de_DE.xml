@@ -16,7 +16,7 @@
    <translation id="sms_sms_pending_number_allowed_response" qtlid="342486">Numéro permettant la réponse</translation>
    <translation id="sms_sms_pending_number_allowed_response_fr_only" qtlid="342499">France uniqument</translation>
 
-   <translation id="sms_sms_pending_read_title" qtlid="339639">Consulter</translation>
+   <translation id="sms_sms_pending_read_title" qtlid="339639">Einsehen</translation>
    <translation id="sms_sms_pending_read_label_sms_size" qtlid="341225">Taille du SMS</translation>
    <translation id="sms_sms_pending_read_label_sms_size_text" qtlid="341238">{{ numberOfSms }} SMS (soit {{ credits | number: 2 }} crédits)</translation>
    <translation id="sms_sms_pending_read_label_message" qtlid="341251">Message complet</translation>

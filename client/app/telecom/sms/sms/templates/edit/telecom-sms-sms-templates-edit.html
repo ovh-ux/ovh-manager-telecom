@@ -14,7 +14,9 @@
 
     <div class="modal-body"
          data-ng-if="!TemplateEditCtrl.loading.edit && !TemplateEditCtrl.edited && !TemplateEditCtrl.loading.init">
-        <h3 data-translate="sms_sms_templates_add"></h3>
+        <h3 class="modal-title"
+            data-translate="sms_sms_templates_add">
+        </h3>
 
         <!-- NAME -->
         <div class="form-group"
@@ -147,13 +149,13 @@
 
     <div class="modal-body text-center"
          data-ng-if="TemplateEditCtrl.loading.edit && !TemplateEditCtrl.edited">
-        <oui-loader data-size="m"></oui-loader>
+        <oui-spinner></oui-spinner>
         <h4 data-translate="sms_sms_templates_editing"></h4>
     </div>
 
     <div class="modal-body text-center"
          data-ng-if="TemplateEditCtrl.loading.init">
-        <oui-loader data-size="m"></oui-loader>
+        <oui-spinner></oui-spinner>
         <h4 data-translate="sms_sms_templates_init"></h4>
     </div>
 

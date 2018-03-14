@@ -16,7 +16,9 @@
 
         <div class="modal-body">
 
-            <h3 data-translate="telephony_abbreviated_numbers_import_modal_tile"></h3>
+            <h3 class="modal-title"
+                data-translate="telephony_abbreviated_numbers_import_modal_tile">
+            </h3>
 
             <div class="form-group">
                     <input-file data-ng-model="AbbreviatedNumberModal.uploadedFile"
@@ -33,73 +35,49 @@
                 </div>
             </div>
 
-            <div class="form-group">
-                <table class="table table-hover table-striped"
-                       data-ng-if="AbbreviatedNumberModal.sample.length">
-                    <thead>
-                        <tr>
-                            <th scope="col" data-translate="telephony_abbreviated_numbers_id"></th>
-                            <th scope="col" data-translate="telephony_abbreviated_numbers_number"></th>
-                            <th scope="col" data-translate="telephony_abbreviated_numbers_name"></th>
-                            <th scope="col" data-translate="telephony_abbreviated_numbers_surname" class="text-left" colspan="2"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr data-ng-repeat="abbreviated in AbbreviatedNumberModal.paginatedSample">
-                            <td>
-                                <span data-ng-if="abbreviated.isValid"
-                                      data-ng-class="{'text-danger': !abbreviated.abbreviatedNumber.isValid}"
-                                      data-ng-bind="abbreviated.abbreviatedNumber.value"></span>
-                                <del data-ng-if="!abbreviated.isValid"
-                                     data-ng-class="{'text-danger': !abbreviated.abbreviatedNumber.isValid}"
-                                     data-ng-bind="abbreviated.abbreviatedNumber.value"></del>
-                            </td>
-                            <td>
-                                <span data-ng-if="abbreviated.isValid"
-                                      data-ng-class="{'text-danger': !abbreviated.destinationNumber.isValid}"
-                                      data-ng-bind="abbreviated.destinationNumber.value"></span>
-                                <del data-ng-if="!abbreviated.isValid"
-                                     data-ng-class="{'text-danger': !abbreviated.destinationNumber.isValid}"
-                                     data-ng-bind="abbreviated.id.value"></del>
-                            </td>
-                            <td>
-                                <span data-ng-if="abbreviated.isValid"
-                                      data-ng-class="{'text-danger': !abbreviated.name.isValid}"
-                                      data-ng-bind="abbreviated.name.value"></span>
-                                <del data-ng-if="!abbreviated.isValid"
-                                     data-ng-class="{'text-danger': !abbreviated.name.isValid}"
-                                     data-ng-bind="abbreviated.name.value"></del>
-                            </td>
-                            <td>
-                                <span data-ng-if="abbreviated.isValid"
-                                      data-ng-class="{'text-danger': !abbreviated.surname.isValid}"
-                                      data-ng-bind="abbreviated.surname.value"></span>
-                                <del data-ng-if="!abbreviated.isValid"
-                                     data-ng-class="{'text-danger': !abbreviated.surname.isValid}"
-                                     data-ng-bind="abbreviated.surname.value"></del>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <div class="mt-1"
-                     data-ng-show="AbbreviatedNumberModal.sample > AbbreviatedNumberModal.paginatedSample"
-                     data-pagination-front
-                     data-go-to-page="false"
-                     data-items="AbbreviatedNumberModal.sample"
-                     data-paginated-items="AbbreviatedNumberModal.paginatedSample"
-                     data-items-per-page="AbbreviatedNumberModal.perPage"
-                     data-page-placeholder="{{ 'common_pagination_go_to_page' | translate }}"
-                     data-item-per-page-placeholder="{{'common_pagination_show_by_page' |translate }}">
-                </div>
-            </div>
+            <oui-datagrid data-rows="AbbreviatedNumberModal.sample" data-ng-if="AbbreviatedNumberModal.sample.length">
+                <oui-column data-title="'telephony_abbreviated_numbers_id' | translate" data-property="abbreviatedNumber.value">
+                    <span data-ng-if="$row.isValid"
+                          data-ng-class="{'text-danger': !$row.abbreviatedNumber.isValid}"
+                          data-ng-bind="$row.abbreviatedNumber.value"></span>
+                    <del data-ng-if="!$row.isValid"
+                         data-ng-class="{'text-danger': !$row.abbreviatedNumber.isValid}"
+                         data-ng-bind="$row.abbreviatedNumber.value"></del>
+                </oui-column>
+                <oui-column data-title="'telephony_abbreviated_numbers_number' | translate" data-property="destinationNumber.value">
+                    <span data-ng-if="$row.isValid"
+                          data-ng-class="{'text-danger': !$row.destinationNumber.isValid}"
+                          data-ng-bind="$row.destinationNumber.value"></span>
+                    <del data-ng-if="!$row.isValid"
+                         data-ng-class="{'text-danger': !$row.destinationNumber.isValid}"
+                         data-ng-bind="$row.id.value"></del>
+                </oui-column>
+                <oui-column data-title="'telephony_abbreviated_numbers_name' | translate" data-property="name.value">
+                    <span data-ng-if="$row.isValid"
+                          data-ng-class="{'text-danger': !$row.name.isValid}"
+                          data-ng-bind="$row.name.value"></span>
+                    <del data-ng-if="!$row.isValid"
+                         data-ng-class="{'text-danger': !$row.name.isValid}"
+                         data-ng-bind="$row.name.value"></del>
+                </oui-column>
+                <oui-column data-title="'telephony_abbreviated_numbers_surname' | translate" data-property="surname.value">
+                    <span data-ng-if="$row.isValid"
+                          data-ng-class="{'text-danger': !$row.surname.isValid}"
+                          data-ng-bind="$row.surname.value"></span>
+                    <del data-ng-if="!$row.isValid"
+                         data-ng-class="{'text-danger': !$row.surname.isValid}"
+                         data-ng-bind="$row.surname.value"></del>
+                </oui-column>
+            </oui-datagrid>
 
         </div>
     </div>
 
      <div class="modal-body"
           data-ng-if="AbbreviatedNumberModal.loading.getFile && !AbbreviatedNumberModal.errorLoading">
-        <oui-loader data-size="m"></oui-loader>
+        <div class="text-center">
+            <oui-spinner></oui-spinner>
+        </div>
     </div>
 
     <div class="modal-body"

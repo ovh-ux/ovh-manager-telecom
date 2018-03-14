@@ -7,9 +7,9 @@
         <p data-translate="telephony_alias_configuration_records_info2"></p>
     </div>
 
-    <oui-loader data-ng-if="$ctrl.queues.isLoading"
-                data-size="m">
-    </oui-loader>
+    <div class="text-center" data-ng-if="$ctrl.queues.isLoading">
+        <oui-spinner></oui-spinner>
+    </div>
 
     <div class="row"
         data-ng-if="!$ctrl.queues.isLoading">
@@ -55,13 +55,14 @@
                            data-ng-model="$ctrl.queueForm.record" />
                     <label class="oui-checkbox__label-container"
                            for="record">
-                        <span class="oui-checkbox__label"
-                              data-translate="telephony_alias_configuration_records_form_record">
-                        </span>
-                        <span class="oui-checkbox__icon">
-                            <i class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></i>
-                            <i class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></i>
-                            <i class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></i>
+                        <span class="oui-checkbox__label">
+                            <span data-translate="telephony_alias_configuration_records_form_record"></span>
+                            <span class="oui-checkbox__icon">
+                                <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
+                                <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
+                                <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
+                                <span class="oui-icon oui-icon-checkbox-indeterminate" aria-hidden="true"></span>
+                            </span>
                         </span>
                     </label>
                 </div>
@@ -75,13 +76,14 @@
                            data-ng-disabled="!$ctrl.queueForm.record" />
                     <label class="oui-checkbox__label-container"
                            for="askForRecordDisabling">
-                        <span class="oui-checkbox__label"
-                              data-translate="telephony_alias_configuration_records_form_ask_for_record_disabling">
-                        </span>
-                        <span class="oui-checkbox__icon">
-                            <i class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></i>
-                            <i class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></i>
-                            <i class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></i>
+                        <span class="oui-checkbox__label">
+                            <span data-translate="telephony_alias_configuration_records_form_ask_for_record_disabling"></span>
+                            <span class="oui-checkbox__icon">
+                                <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
+                                <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
+                                <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
+                                <span class="oui-icon oui-icon-checkbox-indeterminate" aria-hidden="true"></span>
+                            </span>
                         </span>
                     </label>
                 </div>
@@ -124,10 +126,10 @@
                         class="btn btn-primary no-transition"
                         data-ng-if="$ctrl.hasChanges()"
                         data-ng-disabled="ovhPabxRecordsOptionsForm.$invalid || $ctrl.queues.isUpdating">
-                        <oui-loader class="mr-2"
-                                    data-ng-if="$ctrl.isUpdating"
-                                    data-size="s">
-                        </oui-loader>
+                        <oui-spinner class="mr-2"
+                                     data-ng-if="$ctrl.isUpdating"
+                                     data-size="s">
+                        </oui-spinner>
                         <span data-translate="telephony_alias_configuration_records_form_submit"></span>
                     </button>
                     <button
@@ -156,10 +158,10 @@
                 class="btn btn-default mb-3"
                 data-ng-disabled="$ctrl.getSelection().length === 0 || $ctrl.records.isDeleting"
                 data-ng-click="$ctrl.deleteSelectedRecords()">
-                <oui-loader class="mr-2"
-                            data-ng-if="$ctrl.records.isDeleting"
-                            data-size="s">
-                </oui-loader>
+                <oui-spinner class="mr-2"
+                             data-ng-if="$ctrl.records.isDeleting"
+                             data-size="s">
+                </oui-spinner>
                 <i class="ovh-font ovh-font-bin line-height-normal mr-2"
                    aria-hidden="true"
                    data-ng-if="!$ctrl.records.isDeleting"></i>
@@ -328,7 +330,9 @@
                     <tbody data-ng-if="$ctrl.records.isLoading">
                         <tr>
                             <td colspan="7">
-                                <oui-loader data-size="m"></oui-loader>
+                                <div class="text-center">
+                                    <oui-spinner data-size="s"></oui-spinner>
+                                </div>
                             </td>
                         </tr>
                     </tbody>

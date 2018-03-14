@@ -1,8 +1,8 @@
 <section class="telecom-telephony-service-fax-convert-to-voicefax">
 
-    <oui-loader data-ng-if="$ctrl.isLoading"
-                data-size="m">
-    </oui-loader>
+    <div class="text-center" data-ng-if="$ctrl.isLoading">
+        <oui-spinner></oui-spinner>
+    </div>
 
     <div data-ng-if="!$ctrl.isLoading">
         <div class="row">
@@ -37,13 +37,14 @@
                             data-translate="telephony_service_fax_convert_to_voicefax_list">
                         </h2>
                     </header>
-                    <oui-loader data-ng-if="$ctrl.convertToVoicefaxForm.isChanging"
-                                data-size="m">
-                    </oui-loader>
+                    <div class="text-center" data-ng-if="$ctrl.convertToVoicefaxForm.isChanging">
+                        <oui-spinner></oui-spinner>
+                    </div>
                     <div data-ng-if="!$ctrl.convertToVoicefaxForm.isChanging">
                         <form name="convertToVoicefaxForm"
                               novalidate
-                              data-ng-submit="$ctrl.orderConvertToVoicefax()">
+                              data-ng-submit="$ctrl.orderConvertToVoicefax()"
+                              data-ng-if="$ctrl.services.length">
                             <div class="form-group">
                                 <label for="service"
                                        class="control-label"
@@ -69,10 +70,10 @@
                                 <button type="submit"
                                         class="btn btn-primary"
                                         data-ng-disabled="!$ctrl.convertToVoicefaxForm.contracts || $ctrl.convertToVoicefaxForm.isOrdering">
-                                    <oui-loader class="mr-2"
-                                                data-ng-if="$ctrl.convertToVoicefaxForm.isOrdering"
-                                                data-size="s">
-                                    </oui-loader>
+                                    <oui-spinner class="mr-2"
+                                                 data-ng-if="$ctrl.convertToVoicefaxForm.isOrdering"
+                                                 data-size="s">
+                                    </oui-spinner>
                                     <span class="ovh-font ovh-font-cart mr-2"
                                           data-ng-if="!$ctrl.convertToVoicefaxForm.isOrdering"
                                           aria-hidden="true"></span>
@@ -92,6 +93,11 @@
                                 </a>
                             </div>
                         </form>
+                        <div class="alert alert-warning"
+                             role="alert"
+                             data-ng-if="!$ctrl.services.length"
+                             data-translate="telephony_service_fax_convert_to_voicefax_informations_warning">
+                        </div>
                     </div>
                 </div>
                 <!-- /.widget-presentation -->

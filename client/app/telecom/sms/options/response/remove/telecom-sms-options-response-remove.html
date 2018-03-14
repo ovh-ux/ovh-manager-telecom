@@ -14,7 +14,9 @@
 
     <div class="modal-body"
          data-ng-if="!OptionsResponseRemoveCtrl.loading.removeTrackingOption && !OptionsResponseRemoveCtrl.removed">
-        <h3 data-translate="sms_options_response_tracking_remove_title"></h3>
+        <h3 class="modal-title"
+            data-translate="sms_options_response_tracking_remove_title">
+        </h3>
         <p data-translate="sms_options_response_tracking_remove_confirm"></p>
         <dl class="dl-horizontal">
             <!-- MEDIA -->
@@ -40,7 +42,7 @@
 
     <div class="modal-body text-center"
          data-ng-if="OptionsResponseRemoveCtrl.loading.removeTrackingOption">
-        <oui-loader data-size="m"></oui-loader>
+        <oui-spinner></oui-spinner>
         <h4 data-translate="sms_options_response_tracking_remove_option_removing"></h4>
     </div>
 

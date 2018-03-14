@@ -1,8 +1,8 @@
 <div class="telecom-telephony-line-phone-accessories-resume">
 
-    <oui-loader data-ng-if="AccessoriesResumeCtrl.loading.init"
-                data-size="m">
-    </oui-loader>
+    <div class="text-center" data-ng-if="AccessoriesResumeCtrl.loading.init">
+        <oui-spinner></oui-spinner>
+    </div>
 
     <form data-ng-submit="AccessoriesResumeCtrl.process.currentView = 'finalize'"
           data-ng-if="!AccessoriesResumeCtrl.loading.init">
@@ -24,55 +24,30 @@
                     data-translate="telephony_line_phone_accessories_resume_title">
                 </h2>
 
-                <div class="table-responsive">
-                    <table class="table"
-                           data-ng-class="{
-                               'table-hover table-striped': AccessoriesResumeCtrl.order.details.length > 1
-                           }">
-                        <thead>
-                            <tr>
-                                <th scope="col"
-                                    data-translate="telephony_line_phone_accessories_resume_table_description">
-                                </th>
-                                <th scope="col"
-                                    class="text-right-sm"
-                                    data-translate="telephony_line_phone_accessories_resume_table_unit_price"
-                                    style="width:15%;">
-                                </th>
-                                <th scope="col"
-                                    class="text-right-sm"
-                                    data-translate="telephony_line_phone_accessories_resume_table_quantity"
-                                    style="width:12%;">
-                                </th>
-                                <th scope="col"
-                                    class="text-right-sm"
-                                    data-translate="telephony_line_phone_accessories_resume_table_total"
-                                    style="width:15%;">
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr data-ng-repeat="detail in AccessoriesResumeCtrl.order.details track by $index">
-                                <th scope="row"
-                                    data-ng-bind="detail.description"
-                                    data-title="{{ :: 'telephony_line_phone_accessories_resume_table_description' | translate }}">
-                                </th>
-                                <td class="text-right-sm text-price"
-                                    data-ng-bind="detail.unitPrice.text"
-                                    data-title="{{ :: 'telephony_line_phone_accessories_resume_table_unit_price' | translate }}">
-                                </td>
-                                <td class="text-right-sm"
-                                    data-ng-bind="detail.quantity"
-                                    data-title="{{ :: 'telephony_line_phone_accessories_resume_table_quantity' | translate }}">
-                                </td>
-                                <td class="text-right-sm text-price"
-                                    data-ng-bind="detail.totalPrice.text"
-                                    data-title="{{ :: 'telephony_line_phone_accessories_resume_table_total' | translate }}">
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                <oui-datagrid data-rows="AccessoriesResumeCtrl.order.details">
+                     <oui-column data-title="'telephony_line_phone_accessories_resume_table_description' | translate" data-property="description" data-sortable="asc">
+                        <span data-ng-bind="$row.description"
+                              data-ng-attr-title="{{::'telephony_line_phone_accessories_resume_table_description' | translate }}">
+                        </span>
+                    </oui-column>
+                    <oui-column data-title="'telephony_line_phone_accessories_resume_table_unit_price' | translate" data-property="unitPrice.value">
+                        <span data-ng-bind="$row.unitPrice.text"
+                              data-ng-attr-title="{{::'telephony_line_phone_accessories_resume_table_unit_price' | translate }}">
+                        </span>
+                    </oui-column>
+                    <oui-column data-title="'telephony_line_phone_accessories_resume_table_quantity' | translate" data-property="quantity">
+                        <span data-ng-bind="$row.quantity"
+                              data-title="{{::'telephony_line_phone_accessories_resume_table_quantity' | translate }}">
+                        </span>
+                    </oui-column>
+                    <oui-column data-title="'telephony_line_phone_accessories_resume_table_total' | translate" data-property="totalPrice.value" data-sortable>
+                        <span class="text-right-sm text-price"
+                              data-ng-bind="$row.totalPrice.text"
+                              data-title="{{::'telephony_line_phone_accessories_resume_table_total' | translate }}">
+                        </span>
+                    </oui-column>
+                </oui-datagrid>
+
                 <div class="row">
                     <div class="resume-prices col-md-3 col-md-offset-9">
                         <dl>

@@ -15,7 +15,9 @@
     <div class="modal-body"
          data-ng-if="!ReceiversCleanCtrl.loading.clean && !ReceiversCleanCtrl.cleaned">
 
-        <h3 data-translate="sms_receivers_clean_receiver_title"></h3>
+        <h3 class="modal-title"
+            data-translate="sms_receivers_clean_receiver_title">
+        </h3>
         <p class="font-weight-bold"
            data-translate="sms_receivers_clean_receiver_confirm">
         </p>
@@ -55,7 +57,7 @@
 
     <div class="modal-body text-center"
          data-ng-if="ReceiversCleanCtrl.loading.clean && !ReceiversCleanCtrl.cleaned">
-        <oui-loader data-size="m"></oui-loader>
+        <oui-spinner></oui-spinner>
         <h4 data-translate="sms_receivers_clean_receiver_cleaning"></h4>
     </div>
 

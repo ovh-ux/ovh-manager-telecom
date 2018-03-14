@@ -7,9 +7,9 @@
         <h1 data-translate="telephony_line_calls_filtering_title"></h1>
     </header>
 
-    <oui-loader data-ng-if="CallsFilteringCtrl.isInitializing"
-                data-size="m">
-    </oui-loader>
+    <div class="text-center" data-ng-if="CallsFilteringCtrl.isInitializing">
+        <oui-spinner></oui-spinner>
+    </div>
 
     <div class="telecom-section-content"
          data-ng-if="!CallsFilteringCtrl.isInitializing">
@@ -30,10 +30,10 @@
                             <label for="incomingScreenList"
                                    class="control-label">
                                 <span data-translate="telephony_line_calls_filtering_incoming"></span>
-                                <oui-loader class="float-right"
-                                            data-ng-if="CallsFilteringCtrl.screen.isIncomingLoading"
-                                            data-size="s">
-                                </oui-loader>
+                                <oui-spinner class="float-right"
+                                             data-ng-if="CallsFilteringCtrl.screen.isIncomingLoading"
+                                             data-size="s">
+                                </oui-spinner>
                             </label>
                             <select class="form-control"
                                     id="incomingScreenList"
@@ -51,10 +51,10 @@
                             <label for="outgoingScreenList"
                                    class="control-label">
                                 <span data-translate="telephony_line_calls_filtering_outgoing"></span>
-                                <oui-loader class="float-right"
-                                            data-ng-if="CallsFilteringCtrl.screen.isOutgoingLoading"
-                                            data-size="s">
-                                </oui-loader>
+                                <oui-spinner class="float-right"
+                                             data-ng-if="CallsFilteringCtrl.screen.isOutgoingLoading"
+                                             data-size="s">
+                                </oui-spinner>
                             </label>
                             <select class="form-control"
                                     id="outgoingScreenList"
@@ -80,15 +80,16 @@
                                   for="anonymousCallRejection">
                                 <span class="oui-checkbox__label">
                                     <span data-translate="telephony_line_calls_filtering_anonymous_reject"></span>
-                                    <oui-loader class="ml-2"
-                                                data-ng-if="CallsFilteringCtrl.options.isUpdating.anonymousCallRejection"
-                                                data-size="s">
-                                    </oui-loader>
-                                </span>
-                                <span class="oui-checkbox__icon">
-                                    <i class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></i>
-                                    <i class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></i>
-                                    <i class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></i>
+                                    <oui-spinner class="ml-2"
+                                                 data-ng-if="CallsFilteringCtrl.options.isUpdating.anonymousCallRejection"
+                                                 data-size="s">
+                                    </oui-spinner>
+                                    <span class="oui-checkbox__icon">
+                                        <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
+                                        <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
+                                        <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
+                                        <span class="oui-icon oui-icon-checkbox-indeterminate" aria-hidden="true"></span>
+                                    </span>
                                 </span>
                             </label>
                         </div>
@@ -104,15 +105,16 @@
                                   for="doNotDisturb">
                                 <span class="oui-checkbox__label">
                                     <span data-translate="telephony_line_calls_filtering_do_not_disturb"></span>
-                                    <oui-loader class="ml-2"
-                                                data-ng-if="CallsFilteringCtrl.options.isUpdating.doNotDisturb"
-                                                data-size="s">
-                                    </oui-loader>
-                                </span>
-                                <span class="oui-checkbox__icon">
-                                    <i class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></i>
-                                    <i class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></i>
-                                    <i class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></i>
+                                    <oui-spinner class="ml-2"
+                                                 data-ng-if="CallsFilteringCtrl.options.isUpdating.doNotDisturb"
+                                                 data-size="s">
+                                    </oui-spinner>
+                                    <span class="oui-checkbox__icon">
+                                        <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
+                                        <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
+                                        <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
+                                        <span class="oui-icon oui-icon-checkbox-indeterminate" aria-hidden="true"></span>
+                                    </span>
                                 </span>
                             </label>
                         </div>
@@ -128,15 +130,16 @@
                                   for="absentSubscriber">
                                 <span class="oui-checkbox__label">
                                     <span data-translate="telephony_line_calls_filtering_absent"></span>
-                                    <oui-loader class="ml-2"
-                                                data-ng-if="CallsFilteringCtrl.options.isUpdating.absentSubscriber"
-                                                data-size="s">
-                                    </oui-loader>
-                                </span>
-                                <span class="oui-checkbox__icon">
-                                    <i class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></i>
-                                    <i class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></i>
-                                    <i class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></i>
+                                    <oui-spinner class="ml-2"
+                                                 data-ng-if="CallsFilteringCtrl.options.isUpdating.absentSubscriber"
+                                                 data-size="s">
+                                    </oui-spinner>
+                                    <span class="oui-checkbox__icon">
+                                        <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
+                                        <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
+                                        <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
+                                        <span class="oui-icon oui-icon-checkbox-indeterminate" aria-hidden="true"></span>
+                                    </span>
                                 </span>
                             </label>
                         </div>

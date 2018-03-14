@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <translations>
-   <translation id="xdsl_access_deconsolidation_contract_title" qtlid="9983">Vahvistus</translation>
+   <translation id="xdsl_access_deconsolidation_contract_title" qtlid="9983">Vahvista</translation>
    <translation id="xdsl_access_deconsolidation_contract_are_you_sure" qtlid="309243">Haluatko varmasti suorittaa seuraavan operaation:</translation>
    <translation id="xdsl_access_deconsolidation_contract_modification_operation" qtlid="310140">Dégroupage Total</translation>
    <translation id="xdsl_access_deconsolidation_contract_modified" qtlid="310309">sur la ligne suivante: <strong>{{ serviceName }}</strong></translation>

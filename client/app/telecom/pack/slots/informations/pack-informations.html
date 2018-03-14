@@ -1,12 +1,11 @@
 <div id="pack-informations"
      data-ng-controller="PackInformationCtrl as PackInformation">
 
-    <oui-loader data-ng-if="PackInformation.isLoading"
-                data-size="m">
-    </oui-loader>
+     <div class="text-center" data-ng-if="PackInformation.isLoading">
+        <oui-spinner></oui-spinner>
+    </div>
 
     <div data-ng-if="!PackInformation.isLoading">
-
         <div class="oui-tile__body">
             <ul class="list-unstyled">
                 <!-- PACK STATE -->
@@ -16,18 +15,18 @@
                                 data-translate="pack_xdsl_status">
                         </strong>
                         <div class="oui-tile__description">
-                            <span class="ovh-font ovh-font-success text-success h5 mr-2"
+                            <h5 class="ovh-font ovh-font-success text-success mr-2"
                                   aria-hidden="true"
                                   data-ng-if="Pack.pack.informations.status === 'ok'">
-                            </span>
-                            <span class="ovh-font ovh-font-failure text-danger h5 mr-2"
+                            </h5>
+                            <h5 class="ovh-font ovh-font-failure text-danger mr-2"
                                   aria-hidden="true"
                                   data-ng-if="Pack.pack.informations.status === 'expired'">
-                            </span>
-                            <span class="ovh-font ovh-font-inprogress text-info h5 mr-2"
+                            </h5>
+                            <h5 class="ovh-font ovh-font-inprogress text-info mr-2"
                                   data-ng-if="Pack.pack.informations.status === 'inCreation'"
                                   aria-hidden="true">
-                            </span>
+                            </h5>
                             <span data-ng-bind="'pack_xdsl_' + Pack.pack.informations.status | translate"></span>
                         </div>
                     </div>

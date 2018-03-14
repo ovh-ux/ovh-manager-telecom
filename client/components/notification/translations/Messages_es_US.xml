@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <translations>
    <translation id="components_notification_delete" qtlid="2414">Eliminar</translation>
-   <translation id="components_notification_type" qtlid="2642">Type</translation>
+   <translation id="components_notification_type" qtlid="2642">Tipo</translation>
    <translation id="components_notification_error_noSmsAccount" qtlid="345728">Vous n'avez pas de comptes SMS</translation>
    <translation id="components_notification_loading" qtlid="345741">Le chargement de vos alertes est en cours ...</translation>
    <translation id="components_notification_noNotification" qtlid="345754">Il n'y a aucune alerte enregistrée.</translation>

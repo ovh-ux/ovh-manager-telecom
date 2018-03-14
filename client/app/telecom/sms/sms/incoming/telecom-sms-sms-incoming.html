@@ -24,9 +24,9 @@
                           aria-hidden="true"
                           data-ng-if="!SmsIncomingCtrl.incoming.isExporting">
                     </span>
-                    <oui-loader data-ng-if="SmsIncomingCtrl.incoming.isExporting"
-                                data-size="s">
-                    </oui-loader>
+                    <oui-spinner data-ng-if="SmsIncomingCtrl.incoming.isExporting"
+                                 data-size="s">
+                    </oui-spinner>
                     <span data-translate="common_actions"></span>
                     <span class="ovh-font ovh-font-small-arrow-down" aria-hidden="true"></span>
                 </button>
@@ -71,10 +71,10 @@
                       aria-hidden="true"
                       data-ng-if="!SmsIncomingCtrl.incoming.isDeleting">
                 </span>
-                <oui-loader class="mr-2"
-                            data-ng-if="SmsIncomingCtrl.incoming.isDeleting"
-                            data-size="s">
-                </oui-loader>
+                <oui-spinner class="mr-2"
+                             data-ng-if="SmsIncomingCtrl.incoming.isDeleting"
+                             data-size="s">
+                </oui-spinner>
                 <span data-ng-pluralize
                       data-count="SmsIncomingCtrl.getSelection().length"
                       data-when="{
@@ -84,10 +84,10 @@
                       }">
                 </span>
             </button>
-            <oui-loader class="mt-2 ml-2"
-                        data-ng-if="SmsIncomingCtrl.incoming.isReading"
-                        data-size="s">
-            </oui-loader>
+            <oui-spinner class="mt-2 ml-2"
+                         data-ng-if="SmsIncomingCtrl.incoming.isReading"
+                         data-size="s">
+            </oui-spinner>
             <button
                 type="button"
                 class="btn btn-default float-right"
@@ -259,8 +259,8 @@
                 </tbody>
                 <tbody data-ng-if="SmsIncomingCtrl.incoming.isLoading">
                     <tr>
-                        <td colspan="5">
-                            <oui-loader data-size="m"></oui-loader>
+                        <td colspan="5" class="text-center">
+                            <oui-spinner data-size="s"></oui-spinner>
                         </td>
                     </tr>
                 </tbody>

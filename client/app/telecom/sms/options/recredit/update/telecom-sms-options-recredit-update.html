@@ -14,7 +14,9 @@
 
     <div class="modal-body"
          data-ng-if="!OptionsRecreditUpdateCtrl.loading.init && !OptionsRecreditUpdateCtrl.loading.updateOptions && !OptionsRecreditUpdateCtrl.updated">
-        <h3 data-translate="sms_options_recredit_update_title"></h3>
+        <h3 class="modal-title"
+            data-translate="sms_options_recredit_update_title">
+        </h3>
 
         <!-- CREDIT THRESHOLD FOR AUTOMATIC RECREDIT -->
         <div class="form-group"
@@ -85,13 +87,13 @@
 
     <div class="modal-body text-center"
          data-ng-if="OptionsRecreditUpdateCtrl.loading.init">
-        <oui-loader data-size="m"></oui-loader>
+        <oui-spinner></oui-spinner>
         <h4 data-translate="loading"></h4>
     </div>
 
     <div class="modal-body text-center"
          data-ng-if="OptionsRecreditUpdateCtrl.loading.updateOptions">
-        <oui-loader data-size="m"></oui-loader>
+        <oui-spinner></oui-spinner>
         <h4 data-translate="sms_options_recredit_updating"></h4>
     </div>
 

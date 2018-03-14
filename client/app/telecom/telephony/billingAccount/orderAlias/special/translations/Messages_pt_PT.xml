@@ -30,7 +30,7 @@
    <translation id="telephony_order_specific_typology_m2m_label" qtlid="347002">Services de Machine à machine</translation>
    <translation id="telephony_order_specific_typology_relationship_label" qtlid="347015">Relation client entreprise / administration / association</translation>
 
-   <translation id="telephony_order_specific_typology_adult_label" qtlid="347028">Contenu pour adultes</translation>
+   <translation id="telephony_order_specific_typology_adults_label" qtlid="347028">Contenu pour adultes</translation>
    <translation id="telephony_order_specific_typology_content_label" qtlid="347041">Sonneries, logos</translation>
    <translation id="telephony_order_specific_typology_general_label" qtlid="69341">Geral</translation>
    <translation id="telephony_order_specific_typology_relaxing_label" qtlid="347054">Services de détente</translation>

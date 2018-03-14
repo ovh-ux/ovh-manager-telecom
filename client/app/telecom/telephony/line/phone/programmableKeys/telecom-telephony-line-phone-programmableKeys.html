@@ -10,9 +10,9 @@
         </h1>
     </header>
 
-    <oui-loader data-ng-if="ProgrammableKeysCtrl.loading.init"
-                data-size="m">
-    </oui-loader>
+    <div class="text-center" data-ng-if="ProgrammableKeysCtrl.loading.init">
+        <oui-spinner></oui-spinner>
+    </div>
 
     <div class="telecom-section-content">
 
@@ -23,89 +23,36 @@
             <h2 class="widget-presentation-title"
                 data-translate="telephony_line_phone_programmableKeys_title_2">
             </h2>
-            <div class="table-responsive"
-                 data-ng-if="!ProgrammableKeysCtrl.loading.init">
-                <table class="table"
-                       summary="{{'telephony_line_phone_programmableKeys_summary'|translate}}"
-                       data-ng-class="{
-                           'table-hover table-striped': ProgrammableKeysCtrl.functionKeys.raw.length > 1
-                       }">
-                    <caption class="sr-only"
-                             data-translate="telephony_line_phone_programmableKeys_caption"></caption>
-                    <thead>
-                        <th id="keys">
-                            <button class="btn btn-link p-0"
-                                    data-role="button"
-                                    data-ng-click="ProgrammableKeysCtrl.orderBy('keyNum')">
-                                <span data-translate="telephony_line_phone_programmableKeys_keys_title"></span>
-                                <span class="oui-icon align-baseline"
-                                      aria-hidden="true"
-                                      data-ng-class="{
-                                          'oui-icon-arrow-down': ProgrammableKeysCtrl.order.by !== 'keyNum',
-                                          'oui-icon-arrow-down': ProgrammableKeysCtrl.order.by === 'keyNum' && ProgrammableKeysCtrl.order.desc,
-                                          'oui-icon-arrow-up': ProgrammableKeysCtrl.order.by === 'keyNum' && !ProgrammableKeysCtrl.order.desc
-                                      }">
-                                </span>
-                            </button>
-                        </th>
-                        <th id="function">
-                            <button class="btn btn-link p-0"
-                                    data-role="button"
-                                    data-ng-click="ProgrammableKeysCtrl.orderBy('functionLabel')">
-                                <span data-translate="telephony_line_phone_programmableKeys_function_title"></span>
-                                <span class="oui-icon align-baseline"
-                                      aria-hidden="true"
-                                      data-ng-class="{
-                                          'oui-icon-arrow-down': ProgrammableKeysCtrl.order.by !== 'functionLabel',
-                                          'oui-icon-arrow-down': ProgrammableKeysCtrl.order.by === 'functionLabel' && ProgrammableKeysCtrl.order.desc,
-                                          'oui-icon-arrow-up': ProgrammableKeysCtrl.order.by === 'functionLabel' && !ProgrammableKeysCtrl.order.desc
-                                      }">
-                                </span>
-                            </button>
-                        </th>
-                        <th colspan="2"
-                            id="params">
-                            <button class="btn btn-link p-0"
-                                    data-role="button"
-                                    data-ng-click="ProgrammableKeysCtrl.orderBy('parameter')">
-                                <span data-translate="telephony_line_phone_programmableKeys_supp_param_title"></span>
-                                <span class="oui-icon align-baseline"
-                                      aria-hidden="true"
-                                      data-ng-class="{
-                                          'oui-icon-arrow-down': ProgrammableKeysCtrl.order.by !== 'parameter',
-                                          'oui-icon-arrow-down': ProgrammableKeysCtrl.order.by === 'parameter' && ProgrammableKeysCtrl.order.desc,
-                                          'oui-icon-arrow-up': ProgrammableKeysCtrl.order.by === 'parameter' && !ProgrammableKeysCtrl.order.desc
-                                      }">
-                                </span>
-                            </button>
-                        </th>
-                    </thead>
-                    <tbody data-ng-if="ProgrammableKeysCtrl.functionKeys.raw.length && !ProgrammableKeysCtrl.loading.keys">
-                        <tr data-ng-repeat="key in ProgrammableKeysCtrl.functionKeys.raw | orderBy:ProgrammableKeysCtrl.order.by:ProgrammableKeysCtrl.order.desc track by $index">
-                            <td headers="keys" data-ng-bind="key.label || '-'"></td>
-                            <td headers="function" data-ng-bind="(key.function && ('telephony_line_phone_programmableKeys_' + key.function) | translate) || '-'"></td>
-                            <td headers="params" data-ng-bind="key.parameter || '-'"></td>
-                            <td>
-                                <button type="button"
-                                        class="btn btn-default float-right"
-                                        data-ng-click="ProgrammableKeysCtrl.edit(key);">
-                                    <i class="ovh-font ovh-font-editer"></i>
-                                    <span class="sr-only"
-                                          data-ng-bind="user.login + '-' + ('edit' | translate)"></span>
-                                </button>
-                            </td>
-                        </tr>
-                    </tbody>
-                    <tbody data-ng-if="!ProgrammableKeysCtrl.functionKeys.raw.length && !ProgrammableKeysCtrl.loading.keys">
-                        <tr>
-                            <td class="text-center"
-                                colspan="4"
-                                data-translate="telephony_line_phone_programmableKeys_no_key">
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+
+            <telephony-bulk-action data-billing-account="{{ ProgrammableKeysCtrl.line.billingAccount }}"
+                                   data-service-name="{{ ProgrammableKeysCtrl.line.serviceName }}"
+                                   data-custom-class="link d-block pl-0 mb-3"
+                                   data-bulk-infos="ProgrammableKeysCtrl.bulkDatas.infos"
+                                   data-ng-disabled="ProgrammableKeysCtrl.loading.keys || !ProgrammableKeysCtrl.functionKeys.raw.length"
+                                   data-filter-services="ProgrammableKeysCtrl.filterServices"
+                                   data-get-bulk-params="ProgrammableKeysCtrl.getBulkParams"
+                                   data-on-success="ProgrammableKeysCtrl.onBulkSuccess"
+                                   data-on-error="ProgrammableKeysCtrl.onBulkError">
+            </telephony-bulk-action>
+
+            <oui-datagrid data-rows="ProgrammableKeysCtrl.functionKeys.raw">
+                <oui-column data-title="'telephony_line_phone_programmableKeys_keys_title' | translate" data-property="label" data-sortable="asc">
+                    <span data-ng-bind="$row.label || '-'"></span>
+                </oui-column>
+                <oui-column data-title="'telephony_line_phone_programmableKeys_function_title' | translate">
+                    <span data-ng-bind="($row.function && ('telephony_line_phone_programmableKeys_' + $row.function) | translate) || '-'"></span>
+                </oui-column>
+                <oui-column data-title="'telephony_line_phone_programmableKeys_supp_param_title' | translate" data-property="parameter">
+                    <span data-ng-bind="$row.parameter || '-'"></span>
+                </oui-column>
+
+                <oui-action-menu data-align="end" data-compact>
+                    <oui-action-menu-item data-text="{{'edit' | translate}}"
+                                          on-click="ProgrammableKeysCtrl.edit($row)">
+                    </oui-action-menu-item>
+                </oui-action-menu>
+            </oui-datagrid>
+
         </div>
         <p class="text-danger text-center font-weight-bold"
            data-ng-if="!ProgrammableKeysCtrl.line.hasPhone && !ProgrammableKeysCtrl.loading.init"

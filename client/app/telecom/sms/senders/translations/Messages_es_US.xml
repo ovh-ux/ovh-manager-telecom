@@ -5,7 +5,7 @@
    <translation id="sms_senders_manage_title" qtlid="340575">Gérer les expéditeurs</translation>
 
    <translation id="sms_senders_label_sender" qtlid="24535">Expéditeur</translation>
-   <translation id="sms_senders_label_referer" qtlid="2642">Type</translation>
+   <translation id="sms_senders_label_referer" qtlid="2642">Tipo</translation>
    <translation id="sms_senders_label_description" qtlid="9238">Description</translation>
    <translation id="sms_senders_label_status" qtlid="26443">Statut</translation>
 

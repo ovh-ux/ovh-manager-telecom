@@ -10,7 +10,7 @@
    <translation id="sms_options_manage_information_type_callback" qtlid="340198"><b>Callback di cambiamento di stato</b>:&#160;cambiamento di stato di un SMS (ad esempio, da "Inviato" a "Consegnato").</translation>
    <translation id="sms_options_manage_information_type_stop_callback" qtlid="340211"><b>Callback STOP</b>:&#160;un destinatario risponde "STOP" a uno dei tuoi SMS per inserirti in una blacklist.</translation>
 
-   <translation id="sms_options_manage_configure_title" qtlid="4010">Configurare</translation>
+   <translation id="sms_options_manage_configure_title" qtlid="4010">Configura</translation>
 
    <translation id="sms_options_manage_configure_callback_label" qtlid="340224">URL della callback di cambiamento di stato:</translation>
    <translation id="sms_options_manage_configure_stop_callback_label" qtlid="340237">URL della callback STOP:</translation>

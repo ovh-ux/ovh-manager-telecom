@@ -11,7 +11,9 @@
     </div>
 
     <div class="modal-body" data-ng-if="!CampaignsReadCtrl.loading.init">
-        <h3 data-translate="telephony_service_fax_campaigns_read_campaign_title"></h3>
+        <h3 class="modal-title"
+            data-translate="telephony_service_fax_campaigns_read_campaign_title">
+        </h3>
         <dl class="dl-horizontal">
             <!-- NAME -->
             <dt data-translate="telephony_service_fax_campaigns_add_campaign_label_name"></dt>
@@ -175,7 +177,7 @@
 
     <div class="modal-body text-center"
          data-ng-if="CampaignsReadCtrl.loading.init">
-        <oui-loader data-size="m"></oui-loader>
+        <oui-spinner></oui-spinner>
         <h4 data-translate="loading"></h4>
     </div>
 

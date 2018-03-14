@@ -2,9 +2,9 @@
 <translations>
    <translation id="sms_section_back_link" qtlid="341186">Retour aux SMS</translation>
 
-   <translation id="sms_sms_outgoing_title" qtlid="342018">Historique des envois</translation>
+   <translation id="sms_sms_outgoing_title" qtlid="342018">Historia wysyłki</translation>
 
-   <translation id="sms_sms_outgoing_label_select" qtlid="386027">Sélection</translation>
+   <translation id="sms_sms_outgoing_label_select" qtlid="386027">Wybór</translation>
    <translation id="sms_sms_outgoing_label_date" qtlid="24523">Data</translation>
    <translation id="sms_sms_outgoing_label_sender" qtlid="24535">Nadawca</translation>
    <translation id="sms_sms_outgoing_label_receiver" qtlid="40442">Adresat</translation>
@@ -23,7 +23,7 @@
    <translation id="sms_sms_outgoing_delete_plural" qtlid="394959">Supprimer les {{ count }} SMS sélectionnés</translation>
    <translation id="sms_sms_outgoing_delete_success" qtlid="393633">Suppression en cours…</translation>
 
-   <translation id="sms_sms_outgoing_read_title" qtlid="339639">Consulter</translation>
+   <translation id="sms_sms_outgoing_read_title" qtlid="339639">Sprawdź</translation>
    <translation id="sms_sms_outgoing_read_label_operator" qtlid="342551">Opérateur du destinataire</translation>
    <translation id="sms_sms_outgoing_read_label_sms_size" qtlid="341225">Taille du SMS</translation>
    <translation id="sms_sms_outgoing_read_label_sms_size_text" qtlid="341238">{{ numberOfSms }} SMS (soit {{ credits | number: 2 }} crédits)</translation>

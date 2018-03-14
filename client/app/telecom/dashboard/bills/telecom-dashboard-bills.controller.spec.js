@@ -41,16 +41,10 @@ describe("Controller: TelecomdashboardbillsCtrl", function () {
             $scope: scope,
             ToastError: ToastErrorSpy
         });
+        TelecomDashboardBillsCtrl.$onInit();
     }
 
     describe("initialization", function () {
-
-        it("should initialize bills loader variable to true before any API call return", function () {
-            $httpBackend.expectGET(getLastBillsUrl).respond(ok, []);
-            initNewCtrl();
-            expect(TelecomDashboardBillsCtrl.loaders.bills).toBe(true);
-            $httpBackend.flush();
-        });
 
         it("should call ToastError when getLastBill API call fail", function () {
             $httpBackend.expectGET(getLastBillsUrl).respond(error, []);
@@ -67,29 +61,13 @@ describe("Controller: TelecomdashboardbillsCtrl", function () {
             expect(ToastErrorSpy).not.toHaveBeenCalled();
         });
 
-        it("should set bills loader variable to false when api call succeeded", function () {
-            $httpBackend.expectGET(getLastBillsUrl).respond(ok, []);
-            initNewCtrl();
-            $httpBackend.flush();
-
-            expect(TelecomDashboardBillsCtrl.loaders.bills).toBe(false);
-        });
-
-        it("should set bills loader variable to false when api call fail", function () {
-            $httpBackend.expectGET(getLastBillsUrl).respond(error, []);
-            initNewCtrl();
-            $httpBackend.flush();
-
-            expect(TelecomDashboardBillsCtrl.loaders.bills).toBe(false);
-        });
-
         it("should set last variable to returned API value", function () {
             var bills = [{}, {}];
             $httpBackend.expectGET(getLastBillsUrl).respond(ok, bills);
             initNewCtrl();
             $httpBackend.flush();
 
-            expect(TelecomDashboardBillsCtrl.last.length).toEqual(bills.length);
+            expect(TelecomDashboardBillsCtrl.lastBills.length).toEqual(bills.length);
         });
     });
 });

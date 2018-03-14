@@ -1,4 +1,5 @@
-angular.module("managerApp").factory("TelephonyGroupLine", function ($q, $filter, OvhApiTelephony, OvhApiPackXdslVoipLine, VoipScheduler, VoipTimeCondition, TelephonyGroupLinePhone, TelephonyGroupLineClick2Call, TelephonyGroupLineOffer) {
+angular.module("managerApp").factory("TelephonyGroupLine", function ($q, $filter, OvhApiTelephony, OvhApiPackXdslVoipLine, VoipScheduler, VoipTimeCondition,
+                                                                     TelephonyGroupLinePhone, TelephonyGroupLineClick2Call, TelephonyGroupLineOffer, VoipLineOldOffers) {
     "use strict";
 
     /*= ==================================
@@ -72,7 +73,9 @@ angular.module("managerApp").factory("TelephonyGroupLine", function ($q, $filter
 
         // helper
         this.isPlugNFax = _.some(this.offers, function (offer) {
-            return angular.isString(offer) && offer.indexOf("fax") >= 0;
+            return angular.isString(offer) && (offer.indexOf("fax") >= 0 || _.some(VoipLineOldOffers.oldOffers.sipNFax, function (old) {
+                return offer.indexOf(old) > -1;
+            }));
         });
     }
 
@@ -121,7 +124,7 @@ angular.module("managerApp").factory("TelephonyGroupLine", function ($q, $filter
     };
 
     TelephonyGroupLine.prototype.isVoicefax = function () {
-        return this.isOffer("voicefax");
+        return _.get(this, "getPublicOffer.name") === "voicefax" || this.isOffer("voicefax");
     };
 
     TelephonyGroupLine.prototype.isPriceplan = function () {
