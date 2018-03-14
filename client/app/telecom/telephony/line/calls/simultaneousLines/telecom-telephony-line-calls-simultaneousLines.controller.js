@@ -1,6 +1,6 @@
 angular.module("managerApp")
-    .controller("TelecomTelephonyLineCallsSimultaneousLinesCtrl", function ($filter, $q, $stateParams, $state, $translate, $scope,
-                                                                            Toast, OvhApiTelephony, OvhApiOrderTelephony, OvhApiTelephonyService, TelephonyMediator, telephonyBulk, currentLine) {
+    .controller("TelecomTelephonyLineCallsSimultaneousLinesCtrl", function ($filter, $q, $stateParams, $state, $translate,
+                                                                            currentLine, OvhApiOrderTelephony, OvhApiTelephony, OvhApiTelephonyService, telephonyBulk, Toast) {
         "use strict";
 
         var self = this;
@@ -11,9 +11,11 @@ angular.module("managerApp")
 
         var unitPrices = null;
 
+        self.bulkOrders = [];
+        self.isTrunk = false;
+
         self.orderUrl = null;
         self.showBulkOrderSummary = false;
-        self.bulkOrders = [];
 
         self.needSave = function () {
             return self.options.simultaneousLines !== self.saved.simultaneousLines;
@@ -25,8 +27,7 @@ angular.module("managerApp")
             return apiResources.orderSimultaneousLines({
                 serviceName: $stateParams.serviceName
             }, {
-                billingAccount: $stateParams.billingAccount,
-                quantity: self.options.simultaneousLines - self.saved.simultaneousLines
+                quantity: self.options.simultaneousLines
             }).$promise.then(function (order) {
                 self.orderUrl = order.url;
                 self.prices = order.prices;
@@ -102,9 +103,8 @@ angular.module("managerApp")
 
         function getUnitPrices () {
             return apiResources.getSimultaneousLines({
-                billingAccount: $stateParams.billingAccount,
                 serviceName: $stateParams.serviceName,
-                quantity: 1
+                quantity: currentLine.simultaneousLinesDetails.current + 1
             }).$promise.then(function (order) {
                 self.contracts = order.contracts;
                 unitPrices = order.prices;
@@ -146,6 +146,11 @@ angular.module("managerApp")
 
         function init () {
 
+            if (!currentLine) {
+                Toast.error($translate.instant("telephony_line_actions_line_calls_simultaneous_line_load_error"));
+                return $q.when(null);
+            }
+
             self.loading = {
                 init: true,
                 order: false,
@@ -161,52 +166,31 @@ angular.module("managerApp")
             self.offerTasks = [];
             self.options = {
                 simultaneousLines: null,
-                maximumAvailableSimultaneousLines: 0,
+                maximumAvailableSimultaneousLines: currentLine.simultaneousLinesDetails.maximum,
                 minimumAvailableSimultaneousLines: 1
             };
 
             self.showBulkOrderSummary = false;
 
+            self.options.simultaneousLines = currentLine.simultaneousLines;
+            self.hundredLines = currentLine.simultaneousLines >= 100;
+
+            self.isTrunk = _.some(currentLine.offers, function (offer) {
+                return _.startsWith(offer, "voip.main.offer.trunk");
+            });
+
+            if (self.isTrunk) {
+                apiResources.getSimultaneousLines = OvhApiOrderTelephony.v6().getSimultaneousTrunkLines;
+                apiResources.orderSimultaneousLines = OvhApiOrderTelephony.v6().orderSimultaneousTrunkLines;
+            }
+
+            self.options.details = currentLine.simultaneousLinesDetails;
+            self.saved = angular.copy(self.options);
+
             return $q.all([
 
                 getOfferTasks(),
-                getUnitPrices(),
-
-                OvhApiTelephony.Line().v6().get({
-                    billingAccount: $stateParams.billingAccount,
-                    serviceName: $stateParams.serviceName
-                }).$promise.then(function (options) {
-                    self.options.simultaneousLines = options.simultaneousLines;
-                    self.hundredLines = options.simultaneousLines >= 100;
-
-                    var isTrunk = _.some(options.offers, function (offer) {
-                        return _.startsWith(offer, "voip.main.offer.trunk");
-                    });
-
-                    if (isTrunk) {
-                        apiResources.getSimultaneousLines = OvhApiOrderTelephony.v6().getSimultaneousTrunkLines;
-                        apiResources.orderSimultaneousLines = OvhApiOrderTelephony.v6().orderSimultaneousTrunkLines;
-                    }
-
-                    if (currentLine) {
-                        self.options.details = currentLine.simultaneousLinesDetails;
-                    }
-
-                    self.saved = angular.copy(self.options);
-                    return self.options;
-                }),
-
-                OvhApiTelephony.Line().v6().maximumAvailableSimultaneousLines({
-                    billingAccount: $stateParams.billingAccount,
-                    serviceName: $stateParams.serviceName
-                }).$promise.then(function (maximumAvailableSimultaneousLines) {
-                    self.options.maximumAvailableSimultaneousLines = maximumAvailableSimultaneousLines.maximum;
-                    self.numberLinesTitle = $translate.instant("common_between_and", {
-                        between: self.options.minimumAvailableSimultaneousLines,
-                        and: self.options.maximumAvailableSimultaneousLines
-                    });
-                    return self.options;
-                })
+                getUnitPrices()
 
             ]).finally(function () {
                 self.loading.init = false;
@@ -234,8 +218,8 @@ angular.module("managerApp")
                     method: "POST",
                     params: null
                 }, {
-                    name: "addSimultaneousLines",
-                    route: "/order/telephony/lines/{serviceName}/addSimultaneousLines",
+                    name: "updateSimultaneousChannels",
+                    route: "/order/telephony/lines/{serviceName}/updateSimultaneousChannels",
                     method: "POST",
                     params: null
                 }]
@@ -276,7 +260,7 @@ angular.module("managerApp")
         };
 
         self.buildOrderSummary = function (orders) {
-            self.bulkOrders = _.chain(orders).map("values").flatten().filter({ action: "addSimultaneousLines" }).map("value").value();
+            self.bulkOrders = _.chain(orders).map("values").flatten().filter({ action: "updateSimultaneousChannels" }).map("value").value();
 
             self.showBulkOrderSummary = self.bulkOrders.length > 0;
         };
