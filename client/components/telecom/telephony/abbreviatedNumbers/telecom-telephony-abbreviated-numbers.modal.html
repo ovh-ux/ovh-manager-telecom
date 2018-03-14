@@ -1,8 +1,9 @@
 <form name="abbreviatedNumberForm"
       id="abbreviatedNumberForm"
-      novalidate>
+      novalidate
+      data-ng-submit="abbreviatedNumberForm.$valid && AbbreviatedNumberModal.send()">
+
     <oui-modal
-        data-primary-action="AbbreviatedNumberModal.send()"
         data-primary-label="{{:: 'submit' | translate }}"
         data-secondary-action="AbbreviatedNumberModal.cancel()"
         data-secondary-label="{{:: 'cancel' | translate }}"
