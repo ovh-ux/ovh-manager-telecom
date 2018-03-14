@@ -17,7 +17,7 @@ angular.module("managerApp").controller("PackXdslMissingRioCtrl", function ($sco
         }).$promise.then(function (data) {
             return data;
         }, function (err) {
-            Toast.error(err);
+            Toast.error($translate.instant("xdsl_missing-rio_init_error"));
         }).then(function () {
             self.loading = false;
         });
@@ -29,12 +29,14 @@ angular.module("managerApp").controller("PackXdslMissingRioCtrl", function ($sco
     this.sendRio = function () {
         self.loading = true;
 
+        var params = { relaunchWithoutPortability: self.missingRioForm.portNumber };
+        if (!self.missingRioForm.portNumber) {
+            params.rio = self.missingRioForm.rio;
+        }
+
         return OvhApiXdsl.Lexi().updateInvalidOrMissingRio({
             xdslId: $stateParams.serviceName
-        }, {
-            relaunchWithoutPortability: false, // Was a useful checkbox, CX asked to remove it...
-            rio: self.missingRioForm.rio
-        }).$promise.then(function () {
+        }, params).$promise.then(function () {
             Toast.success($translate.instant("xdsl_missing-rio_sent"));
             self.init();
         }, function () {
