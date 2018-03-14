@@ -16,7 +16,7 @@ angular.module("managerApp").controller("PackXdslMissingRioCtrl", function ($sco
             xdslId: $stateParams.serviceName
         }).$promise.then(function (data) {
             return data;
-        }, function (err) {
+        }, function () {
             Toast.error($translate.instant("xdsl_missing-rio_init_error"));
         }).then(function () {
             self.loading = false;
