@@ -126,7 +126,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasPortabilityOrderCt
         } else {
             params = _.assign(params, _.pick(self.order, "siret"));
         }
-        params.firstName = "";
+        params.firstName = params.firstName || "";
 
         if (self.isSDA && self.order.sdatype === "select" && self.order.numbersList.length) {
             params.listNumbers = _.map(self.order.numbersList, self.normalizeNumber).join(",");
