@@ -3298,12 +3298,6 @@ grunt-babel@^6.0.0:
   dependencies:
     babel-core "^6.0.12"
 
-grunt-bump@0.3.1:
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/grunt-bump/-/grunt-bump-0.3.1.tgz#477b8b5692110ffeffc5143d30a700b3906ea14a"
-  dependencies:
-    semver "^4.3.3"
-
 grunt-concurrent@~2.3.0:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/grunt-concurrent/-/grunt-concurrent-2.3.1.tgz#1e3db38ccef5a3da1195e61d631fe7e321344d23"
@@ -6750,7 +6744,7 @@ semver@5.5.0, semver@^5.5.0:
   version "5.5.0"
   resolved "https://registry.yarnpkg.com/semver/-/semver-5.5.0.tgz#dc4bbc7a6ca9d916dee5d43516f0092b58f7b8ab"
 
-semver@^4.0.3, semver@^4.3.3, semver@~4.3.3:
+semver@^4.0.3, semver@~4.3.3:
   version "4.3.6"
   resolved "https://registry.yarnpkg.com/semver/-/semver-4.3.6.tgz#300bc6e0e86374f7ba61068b5b1ecd57fc6532da"
 
