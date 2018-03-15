@@ -25,7 +25,11 @@
   "scripts": {
     "start": "node server/app.js",
     "test": "grunt test",
-    "update-webdriver": "node node_modules/grunt-protractor-runner/node_modules/protractor/bin/webdriver-manager update"
+    "update-webdriver": "node node_modules/grunt-protractor-runner/node_modules/protractor/bin/webdriver-manager update",
+    "commit": "npm-scripts-config commit",
+    "commitmsg": "npm-scripts-config commitmsg",
+    "version": "npm-scripts-config version && npm-bower-sync-ver && git add bower.json",
+    "preview-changelog": "npm-scripts-config preview-changelog"
   },
   "main": "server/app.js",
   "dependencies": {
@@ -113,6 +117,9 @@
     "karma-script-launcher": "~0.1.0",
     "less-plugin-remcalc": "^0.0.1",
     "lodash": "^3.0.1",
+    "npm-bower-sync-ver": "^1.1.2",
+    "npm-scripts-config": "^0.0.2",
+    "npm-scripts-conventional-changelog": "^0.1.0",
     "open": "~0.0.4",
     "ovh-protractor-jasmine2-logs-reporter": "~0.0.1",
     "ovh-ui-kit": "^2.4.x",
@@ -125,5 +132,10 @@
     "supertest": "~0.11.0",
     "time-grunt": "~0.3.1"
   },
-  "private": true
+  "private": true,
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  }
 }
