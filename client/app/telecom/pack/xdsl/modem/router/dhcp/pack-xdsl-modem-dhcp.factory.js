@@ -32,6 +32,8 @@ angular.module("managerApp").factory("PackXdslModemDhcpObject", function (OvhApi
     PackXdslModemDhcpObject.prototype.save = function (serviceName) {
         var self = this;
         this.busy = true;
+        var params = _.pick(this.tempValue, _.without(Object.keys(template), "lanName", "dhcpName"));
+        params.secondaryDNS = params.secondaryDNS || null;
         return OvhApiXdsl.Modem().Lan().Dhcp().Lexi().update(
             {
                 xdslId: serviceName,
