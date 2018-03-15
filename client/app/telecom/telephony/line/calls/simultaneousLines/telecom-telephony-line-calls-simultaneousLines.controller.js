@@ -228,7 +228,7 @@ angular.module("managerApp")
 
         self.filterServices = function (services) {
             return _.filter(services, function (service) {
-                return ["sip", "mgcp"].indexOf(service.featureType) > -1 && service.hasValidPublicOffer() && !service.isSipTrunk();
+                return ["sip", "mgcp"].indexOf(service.featureType) > -1 && service.hasValidPublicOffer() && !service.isSipTrunkRates();
             });
         };
 
