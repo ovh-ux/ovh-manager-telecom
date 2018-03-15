@@ -40,7 +40,7 @@ angular.module("managerApp").factory("PackXdslModemDhcpObject", function (OvhApi
                 lanName: this.lanName,
                 dhcpName: this.dhcpName
             },
-            _.pick(this.tempValue, _.without(Object.keys(template), "lanName", "dhcpName"))
+            params
         ).$promise.then(
             function (data) {
                 _.extend(self, self.tempValue);
