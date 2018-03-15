@@ -10,8 +10,17 @@
    <translation id="ttc" qtlid="101385">IVA incl.</translation>
    <translation id="table_sort" qtlid="94699">Tipo</translation>
 
+   <translation id="common_datagrid_nodata" qtlid="197635">No hay resultados</translation>
+   <translation id="common_pagination_resultsperpage" qtlid="433384">Resultados por página</translation>
+   <translation id="common_pagination_ofnresults" qtlid="452982">de TOTAL_ITEMS resultados</translation>
+   <translation id="common_pagination_currentpageofpagecount" qtlid="452995">Página CURRENT_PAGE de PAGE_COUNT</translation>
+
    <translation id="yes" qtlid="50134">sí</translation>
+   <translation id="common_yes_capitalized" qtlid="34776">Sí</translation>
    <translation id="no" qtlid="50602">no</translation>
+   <translation id="common_no_capitalized" qtlid="34788">No</translation>
+   <translation id="previous" qtlid="17431">Anterior</translation>
+   <translation id="next" qtlid="17743">Siguiente</translation>
 
    <translation id="show" qtlid="69353">Ver</translation>
    <translation id="hide" qtlid="26539">Ocultar</translation>
@@ -33,13 +42,14 @@
    <translation id="modify" qtlid="37875">Editar</translation>
    <translation id="access" qtlid="304524">Acceder</translation>
    <translation id="edit_name" qtlid="304537">Editar {{name}}</translation>
+   <translation id="common_create" qtlid="39226">Crear</translation>
    <translation id="cancel" qtlid="37863">Cancelar</translation>
    <translation id="delete" qtlid="2414">Eliminar</translation>
    <translation id="delete_name" qtlid="304550">Eliminar {{name}}</translation>
-   <translation id="ok" qtlid="224880">Aceptar</translation>
+   <translation id="ok" qtlid="224880">OK</translation>
    <translation id="more_info" qtlid="34102">Más información</translation>
    <translation id="configure" qtlid="4010">Configurar</translation>
-   <translation id="none" qtlid="8674">Ninguno </translation>
+   <translation id="none" qtlid="8674">Ninguno</translation>
    <translation id="active" qtlid="55133">Activo</translation>
    <translation id="inactive" qtlid="105310">Inactivo</translation>
    <translation id="close" qtlid="4670">Cerrar</translation>
@@ -70,6 +80,13 @@
    <translation id="sidebar_menu" qtlid="304576">Menú</translation>
    <translation id="sidebar_placeholder" qtlid="122275">Buscar...</translation>
    <translation id="sidebar_no_item_found" qtlid="304589">No hay elementos que se ajusten a la búsqueda.</translation>
+
+
+   <translation id="browser_alert_not_supported" qtlid="405357">Su navegador no es compatible.</translation>
+   <translation id="browser_alert_deprecated" qtlid="405370">Su&#160;navegador no está actualizado y puede contener fallos de seguridad o compatibilidad.</translation>
+   <translation id="browser_alert_update" qtlid="455699">Nous vous recommandons de <a href="http://outdatedbrowser.com/fr" class="alert-link" target="_blank" rel="noopener">mettre à jour votre navigateur <i class="fa fa-external-link" aria-hidden="true"></i></a> afin de profiter d'une expérience optimale.</translation>
+   <translation id="browser_alert_close" qtlid="405396">Cerrar la alerta</translation>
+
 <!-- xdsl/sidebar -->
    <translation id="label-menu-item-ok" qtlid="304602">Esta línea está activa.</translation>
    <translation id="label-menu-item-down" qtlid="304615">Problema en la línea.</translation>
@@ -97,19 +114,18 @@
    <translation id="sidebar-service-view" qtlid="304732">Vista del servicio</translation>
    <translation id="sidebar-facturationGroup-view" qtlid="304745">Vista del grupo de facturación</translation>
    <translation id="sidebar_deskaas_title" qtlid="304758">Descubra DeskaaS</translation>
-   <translation id="sidebar_init_error" qtlid="384155">Oups, certains de vos services n'ont pas pu être chargés :</translation>
+   <translation id="sidebar_init_error" qtlid="384155">¡Vaya! No se han podido cargar algunos servicios:</translation>
 
    <translation id="coming_soon" qtlid="304771">Esta funcionalidad aún no está disponible.</translation>
    <translation id="back_home" qtlid="304784">Volver a la página de inicio del sitio web</translation>
 
 <!-- Navbar Menu -->
    <translation id="common_menu_web" qtlid="135840">Web</translation>
-   <translation id="common_menu_labs" qtlid="384168">Ux Labs</translation>
+   <translation id="common_menu_labs" qtlid="384168">UX Labs</translation>
    <translation id="common_menu_dedicated" qtlid="31738">Dedicado</translation>
    <translation id="common_menu_cloud" qtlid="15677">Cloud</translation>
    <translation id="common_menu_telecom" qtlid="135827">Telecom</translation>
    <translation id="common_menu_gamma" qtlid="232401">Sunrise</translation>
-   <translation id="common_menu_telecom" qtlid="158214">VoIP</translation>
 <translation id="common_menu_portal" translate="none">MyOVH</translation>
    <translation id="common_menu_partners" qtlid="383512">Partners</translation>
    <translation id="common_menu_orders" qtlid="42394">Seguimiento de pedido</translation>
@@ -118,6 +134,10 @@
    <translation id="common_menu_billing" qtlid="32950">Facturación</translation>
    <translation id="common_menu_language" qtlid="30598">Idioma</translation>
    <translation id="common_menu_account" qtlid="157642">Mi cuenta</translation>
+   <translation id="common_menu_renew" qtlid="229658">Mis servicios</translation>
+   <translation id="common_menu_orders_all" qtlid="282809">Mis pedidos </translation>
+   <translation id="common_menu_contacts" qtlid="70541">Mis contactos</translation>
+   <translation id="common_menu_list_ticket" qtlid="454039">Mis solicitudes de asistencia</translation>
    <translation id="common_menu_support_assistance" qtlid="52699">Soporte</translation>
    <translation id="common_menu_support_all_guides" qtlid="260788">Todas las guías</translation>
    <translation id="common_menu_support_new_ticket" qtlid="260801">Crear una solicitud de asistencia</translation>
@@ -126,13 +146,14 @@
    <translation id="common_menu_support_telephony_contact" qtlid="260827">Soporte telefónico</translation>
    <translation id="common_menu_telephony_redirection" qtlid="304797">Redirección al área de cliente de Telefonía</translation>
    <translation id="common_menu_support_changelog" qtlid="124964">Historial de actualizaciones</translation>
+   <translation id="common_skip_to_main_content" qtlid="454052">Ir al contenido principal</translation>
    <translation id="global_logout" qtlid="33658">Salir</translation>
 
    <translation id="common_pagination_page" qtlid="239246">Página {{currentPage}}/{{nbPages}}</translation>
    <translation id="common_pagination_display" qtlid="69353">Ver</translation>
 
 <!-- Account balance -->
-   <translation id="common_account_balance_warning_flash" qtlid="384181">Votre compte prépayé est débiteur de <span class="balance-price">{{value}}€</span> au {{date | date:'medium'}}. Rendez-vous dans la section <a href="{{link}}">facturation</a> pour le créditer.</translation>
+   <translation id="common_account_balance_warning_flash" qtlid="384181">Su cuenta de prepago tiene un saldo negativo de <span class="balance-price">{{value}} €</span> a fecha {{date | date:'medium'}}. Acceda a la sección «<a href="{{link}}">Facturación</a>» para recargarla.</translation>
 
 <!-- Default credit car expiry -->
    <translation id="common_account_cb_expire_alert" qtlid="294763">Su tarjeta bancaria por defecto expira en {{nbDays}} día(s). Acceda a la sección de <a href="{{urlBillingSection}}">facturación</a> para actualizarla.</translation>
@@ -152,9 +173,11 @@
 
    <translation id="common_menu_changelog" qtlid="260971">Registro de cambios</translation>
 
+   <translation id="common_express_lite_banner_desc" qtlid="455712">Express Lite comprend donc un modem offrant un accès à internet et une ligne VoIP pour <span class="ad-price font-weight-bold fs14">22,99€ HT</span>&#160;/&#160;mois.</translation>
    <translation id="common_express_lite_banner_title" qtlid="304888">OVH lanza una nueva oferta de conexión ADSL y VDSL que incluye lo esencial.</translation>
    <translation id="common_generate_order" qtlid="186219">Generar la orden de pedido</translation>
    <translation id="common_boost_banner_title" qtlid="304901">OVH lanza dos series limitadas de solo conexión para disfrutar de un mayor ancho de banda.</translation>
+   <translation id="common_boost_banner_desc" qtlid="455725">Sécurisez votre connexion avec l'offre <span class="ad-price font-weight-bold fs14">CONNECT</span> ou doublez votre débit avec l'offre <span class="ad-price font-weight-bold fs14">BOOST</span> qui inclut le matériel et le service <span class="ad-price font-weight-bold fs14">OVER THE BOX</span>.<br/><small>Offre limitée aux 240 premières commandes.</small></translation>
    <translation id="common_banner_discover" qtlid="304927">Descubrir la oferta</translation>
    <translation id="common_service_name_edit_title" qtlid="331683">{{ title }}: editar el nombre del servicio</translation>
 
@@ -162,12 +185,27 @@
    <translation id="common_without_tax" qtlid="101397">+ IVA</translation>
 
    <translation id="common_refresh" qtlid="8182">Actualizar</translation>
-   <translation id="common_refresh_data" qtlid="384194">Actualiser les données</translation>
+   <translation id="common_refresh_data" qtlid="384194">Actualizar los datos</translation>
    <translation id="common_open_new_tab" qtlid="222176">Nueva ventana</translation>
    <translation id="common_download" qtlid="39286">Descargar</translation>
    <translation id="common_relaunch" qtlid="31378">Relanzar</translation>
    <translation id="common_filter" qtlid="59207">Filtrar</translation>
    <translation id="common_home" qtlid="27643">Inicio</translation>
+
+<!-- Units -->
+   <translation id="unit_bits_per_sec" qtlid="455738">{{val}} bits/s</translation>
+   <translation id="unit_kilo_bits_per_sec" qtlid="455751">{{val}} Kbs/s</translation>
+   <translation id="unit_mega_bits_per_sec" qtlid="455764">{{val}} Mbs/s</translation>
+   <translation id="unit_giga_bits_per_sec" qtlid="455777">{{val}} Gbs/s</translation>
+   <translation id="unit_tera_bits_per_sec" qtlid="455790">{{val}} Tbs/s</translation>
+   <translation id="unit_peta_bits_per_sec" qtlid="455803">{{val}} Pbs/s</translation>
+
+   <translation id="unit_generic_per_sec" qtlid="455816">{{val}}</translation>
+   <translation id="unit_kilo_generic_per_sec" qtlid="455829">{{val}} K</translation>
+   <translation id="unit_mega_generic_per_sec" qtlid="455842">{{val}} M</translation>
+   <translation id="unit_giga_generic_per_sec" qtlid="455855">{{val}} G</translation>
+   <translation id="unit_tera_generic_per_sec" qtlid="455868">{{val}} T</translation>
+   <translation id="unit_peta_generic_per_sec" qtlid="455881">{{val}} P</translation>
 
 <!-- LANGUAGE LIST -->
    <translation id="language_de_DE" qtlid="31618">Alemán</translation>
@@ -176,7 +214,7 @@
    <translation id="language_en_CA" qtlid="377825">Inglés (Canadá)</translation>
    <translation id="language_es_ES" qtlid="33454">Español</translation>
    <translation id="language_fr_FR" qtlid="29684">Francés</translation>
-   <translation id="language_fr_CA" qtlid="324912">Francés (canadiense)</translation>
+   <translation id="language_fr_CA" qtlid="324912">Francés (Canadá)</translation>
    <translation id="language_fr_MA" qtlid="330058">Francés (Marruecos)</translation>
    <translation id="language_fr_SN" qtlid="330071">Francés (Senegal)</translation>
    <translation id="language_fr_TN" qtlid="330084">Francés (Túnez)</translation>
@@ -264,7 +302,7 @@
    <translation id="country_FO" qtlid="187729">Feroe, Islas</translation>
    <translation id="country_FR" qtlid="29047">Francia</translation>
    <translation id="country_GA" qtlid="187742">Gabón</translation>
-   <translation id="country_GB" qtlid="386821">Grande-Bretagne</translation>
+   <translation id="country_GB" qtlid="386821">Gran Bretaña</translation>
    <translation id="country_GD" qtlid="187755">Granada</translation>
    <translation id="country_GE" qtlid="187768">Georgia</translation>
    <translation id="country_GF" qtlid="187781">Guayana Francesa</translation>
@@ -312,7 +350,7 @@
    <translation id="country_KW" qtlid="188262">Kuwait</translation>
    <translation id="country_KY" qtlid="188275">Caimán, Islas</translation>
    <translation id="country_KZ" qtlid="188288">Kazajistán</translation>
-   <translation id="country_LA" qtlid="188301">Laos, República Democrática Popular de</translation>
+   <translation id="country_LA" qtlid="188301">Laos, República Democrática Popular</translation>
    <translation id="country_LB" qtlid="188314">Líbano</translation>
    <translation id="country_LC" qtlid="188327">Santa Lucía</translation>
    <translation id="country_LI" qtlid="188340">Liechtenstein</translation>

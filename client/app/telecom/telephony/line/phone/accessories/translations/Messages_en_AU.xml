@@ -60,7 +60,7 @@
    <translation id="telephony_line_phone_accessories_resume_retract_title" qtlid="319973"></translation>
 
 <!-- FINALIZE -->
-   <translation id="telephony_line_phone_accessories_finalize_title" qtlid="35352">Order form</translation>
+   <translation id="telephony_line_phone_accessories_finalize_title" qtlid="35352">Purchase order</translation>
    <translation id="telephony_line_phone_accessories_finalize_success" qtlid="391085">Votre commande a bien été prise en compte ! Veuillez régler le bon de commande pour recevoir vos accessoires.</translation>
    <translation id="telephony_line_phone_accessories_finalize_error" qtlid="391098">Oups, une erreur est survenue lors de la création de votre bon de commande.</translation>
    <translation id="telephony_line_phone_accessories_finalize_order_id" qtlid="391111">N° de bon de commande :</translation>

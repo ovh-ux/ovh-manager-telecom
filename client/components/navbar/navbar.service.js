@@ -1,10 +1,13 @@
 class ManagerNavbarService {
-    constructor ($q, $translate, LANGUAGES, MANAGER_URLS, REDIRECT_URLS, URLS, OvhApiMe, OtrsPopupService, ssoAuthentication, PackMediator, telecomVoip, voipService, SmsMediator, OvhApiTelephonyFax, OvhApiOverTheBox, TelecomMediator) {
+    constructor ($q, $translate, $translatePartialLoader, LANGUAGES, MANAGER_URLS, REDIRECT_URLS, TARGET, URLS, OvhApiMe, OtrsPopupService, ssoAuthentication, PackMediator, telecomVoip,
+                 voipService, SmsMediator, OvhApiFreeFax, OvhApiOverTheBox, TelecomMediator) {
         this.$q = $q;
         this.$translate = $translate;
+        this.$translatePartialLoader = $translatePartialLoader;
         this.LANGUAGES = LANGUAGES;
         this.MANAGER_URLS = MANAGER_URLS;
         this.REDIRECT_URLS = REDIRECT_URLS;
+        this.TARGET = TARGET;
         this.URLS = URLS;
         this.ovhApiMe = OvhApiMe;
         this.otrsPopupService = OtrsPopupService;
@@ -13,7 +16,7 @@ class ManagerNavbarService {
         this.telecomVoip = telecomVoip;
         this.voipService = voipService;
         this.smsMediator = SmsMediator;
-        this.ovhApiTelephonyFax = OvhApiTelephonyFax;
+        this.ovhApiFreeFax = OvhApiFreeFax;
         this.ovhApiOverTheBox = OvhApiOverTheBox;
         this.telecomMediator = TelecomMediator;
     }
@@ -87,7 +90,8 @@ class ManagerNavbarService {
 
                     return itemLink;
                 })
-            );
+            )
+            .catch(() => this.$q.when(undefined));
     }
 
     getTelephonyGroup (telephony) {
@@ -196,7 +200,8 @@ class ManagerNavbarService {
 
                     return itemLink;
                 })
-            );
+            )
+            .catch(() => this.$q.when(undefined));
     }
 
     getSmsProducts (count) {
@@ -215,7 +220,8 @@ class ManagerNavbarService {
                         serviceName: item.name
                     }
                 }))
-            );
+            )
+            .catch(() => this.$q.when(undefined));
     }
 
     getFaxProducts (count) {
@@ -223,21 +229,20 @@ class ManagerNavbarService {
             return this.$q.when(undefined);
         }
 
-        return this.ovhApiTelephonyFax.Aapi()
-            .getServices().$promise
-            .then((faxList) => _.filter(faxList, {
-                type: "FREEFAX"
-            }))
+        return this.ovhApiFreeFax.Lexi()
+            .query().$promise
+            .then((faxList) => _.sortBy(faxList, "number"))
             .then((result) =>
                 _.map(result, (item) => ({
-                    name: item.serviceName,
-                    title: item.label,
+                    name: item,
+                    title: item,
                     state: "telecom.freefax",
                     stateParams: {
-                        serviceName: item.serviceName
+                        serviceName: item
                     }
                 }))
-            ).catch(() => this.$q.when(undefined));
+            )
+            .catch(() => this.$q.when(undefined));
     }
 
     getOtbProducts (count) {
@@ -264,7 +269,8 @@ class ManagerNavbarService {
                         serviceName: item.serviceName
                     }
                 }))
-            );
+            )
+            .catch(() => this.$q.when(undefined));
     }
 
     getProducts () {
@@ -276,7 +282,8 @@ class ManagerNavbarService {
                 sms: this.getSmsProducts(count.sms),
                 freefax: this.getFaxProducts(count.freefax),
                 overTheBox: this.getOtbProducts(count.overTheBox)
-            }));
+            }))
+            .catch(() => this.$q.when(undefined));
     }
 
     getUniverseMenu (products) {
@@ -369,9 +376,12 @@ class ManagerNavbarService {
         return {
             name: "languages",
             label: _(currentLanguage).get("name"),
+            "class": "oui-navbar-menu_language",
             title: _(currentLanguage).get("key").replace("_", "-"),
+            headerTitle: this.$translate.instant("common_menu_language"),
             subLinks: _.map(this.LANGUAGES.available, (lang) => ({
                 title: lang.name,
+                isActive: lang.key === currentLanguage.key,
                 click: function () {
                     localStorage["univers-selected-language"] = lang.key;
                     window.location.reload();
@@ -389,25 +399,109 @@ class ManagerNavbarService {
             nichandle: currentUser.nichandle,
             fullName: `${currentUser.firstname} ${currentUser.name}`,
             subLinks: [
+                // My Account
                 {
+                    name: "user.account",
                     title: this.$translate.instant("common_menu_account"),
-                    url: this.REDIRECT_URLS.userInfos
-                }, {
+                    url: this.REDIRECT_URLS.userInfos,
+                    subLinks: [{
+                        title: this.$translate.instant("common_menu_account_infos"),
+                        url: this.REDIRECT_URLS.userInfos
+                    }, {
+                        title: this.$translate.instant("common_menu_account_security"),
+                        url: this.REDIRECT_URLS.userSecurity
+                    }, (this.TARGET === "EU" || this.TARGET === "CA") && {
+                        title: this.$translate.instant("common_menu_account_emails"),
+                        url: this.REDIRECT_URLS.userEmails
+                    }, (this.TARGET === "EU") && {
+                        title: this.$translate.instant("common_menu_account_subscriptions"),
+                        url: this.REDIRECT_URLS.userSubscriptions
+                    }, {
+                        title: this.$translate.instant("common_menu_account_ssh"),
+                        url: this.REDIRECT_URLS.userSSH
+                    }, {
+                        title: this.$translate.instant("common_menu_account_advanced"),
+                        url: this.REDIRECT_URLS.userAdvanced
+                    }]
+                },
+
+                // Billing
+                !currentUser.isEnterprise && {
+                    name: "user.billing",
                     title: this.$translate.instant("common_menu_billing"),
-                    url: this.REDIRECT_URLS.billing
-                }, {
+                    url: this.REDIRECT_URLS.billing,
+                    subLinks: [{
+                        title: this.$translate.instant("common_menu_billing_history"),
+                        url: this.REDIRECT_URLS.billing
+                    }, {
+                        title: this.$translate.instant("common_menu_billing_payments"),
+                        url: this.REDIRECT_URLS.billingPayments
+                    }]
+                },
+
+                // Services
+                (this.TARGET === "EU" || this.TARGET === "CA") && (!currentUser.isEnterprise ? {
+                    name: "user.services",
                     title: this.$translate.instant("common_menu_renew"),
-                    url: this.REDIRECT_URLS.services
-                }, {
+                    url: this.REDIRECT_URLS.services,
+                    subLinks: [{
+                        title: this.$translate.instant("common_menu_renew_management"),
+                        url: this.REDIRECT_URLS.services
+                    }, {
+                        title: this.$translate.instant("common_menu_renew_agreements"),
+                        url: this.REDIRECT_URLS.servicesAgreements
+                    }]
+                } : {
+                    title: this.$translate.instant("common_menu_renew_agreements"),
+                    url: this.REDIRECT_URLS.servicesAgreements
+                }),
+
+                // Payment
+                !currentUser.isEnterprise && {
+                    name: "user.payment",
+                    title: this.$translate.instant("common_menu_means"),
+                    url: this.REDIRECT_URLS.paymentMeans,
+                    subLinks: [{
+                        title: this.$translate.instant("common_menu_means_mean"),
+                        url: this.REDIRECT_URLS.paymentMeans
+                    }, (this.TARGET === "EU" || this.TARGET === "CA") && {
+                        title: this.$translate.instant("common_menu_means_ovhaccount"),
+                        url: this.REDIRECT_URLS.ovhAccount
+                    }, (this.TARGET === "EU" || this.TARGET === "CA") && {
+                        title: this.$translate.instant("common_menu_means_vouchers"),
+                        url: this.REDIRECT_URLS.billingVouchers
+                    }, {
+                        title: this.$translate.instant("common_menu_means_refunds"),
+                        url: this.REDIRECT_URLS.billingRefunds
+                    }, (this.TARGET === "EU") && {
+                        title: this.$translate.instant("common_menu_means_fidelity"),
+                        url: this.REDIRECT_URLS.billingFidelity
+                    }, {
+                        title: this.$translate.instant("common_menu_means_credits"),
+                        url: this.REDIRECT_URLS.billingCredits
+                    }]
+                },
+
+                // Orders
+                (!currentUser.isEnterprise && this.TARGET === "EU" && currentUser.ovhSubsidiary === "FR") && {
                     title: this.$translate.instant("common_menu_orders_all"),
                     url: this.REDIRECT_URLS.orders
-                }, {
+                },
+
+                // Contacts
+                (this.TARGET === "EU") && {
                     title: this.$translate.instant("common_menu_contacts"),
                     url: this.REDIRECT_URLS.contacts
-                }, {
+                },
+
+                // Tickets
+                {
                     title: this.$translate.instant("common_menu_list_ticket"),
                     url: this.REDIRECT_URLS.listTicket
-                }, {
+                },
+
+                // Logout
+                {
                     title: this.$translate.instant("global_logout"),
                     "class": "logout",
                     click: (callback) => {
@@ -422,50 +516,82 @@ class ManagerNavbarService {
         };
     }
 
-    // Get navbar navigation and user infos
-    getNavbar () {
+    loadTranslations () {
+        this.$translatePartialLoader.addPart("common");
+        this.$translatePartialLoader.addPart("components");
+        return this.$translate.refresh();
+    }
+
+    // Get managers links for main-links attribute
+    getManagerLinks (products) {
         const currentUniverse = "telecom";
         const managerUrls = this.MANAGER_URLS;
         const managerNames = [
             "portal", "web", "dedicated", "cloud", "telecom", "gamma", "partners", "labs"
         ];
 
-        return this.$q.all({
-            products: this.getProducts(),
-            user: this.ovhApiMe.Lexi().get().$promise
-        }).then((result) => ({
-            brand: {
-                title: this.$translate.instant("common_menu_portal"),
-                url: managerUrls.portal,
-                iconAlt: "OVH",
-                iconClass: "navbar-logo",
-                iconSrc: "assets/images/navbar/icon-logo-ovh.svg"
-            },
+        return _.map(managerNames, (managerName) => {
+            const managerLink = {
+                name: managerName,
+                "class": managerName,
+                title: this.$translate.instant(`common_menu_${managerName}`),
+                url: managerUrls[managerName],
+                isPrimary: ["partners", "labs"].indexOf(managerName) === -1
+            };
+
+            if (products && managerName === currentUniverse) {
+                managerLink.subLinks = this.getUniverseMenu(products);
+            }
+
+            return managerLink;
+        });
+    }
+
+    // Get products and build responsive menu
+    getResponsiveLinks () {
+        return this.getProducts()
+            .then((products) => this.getManagerLinks(products))
+            .catch(() => this.getManagerLinks());
+    }
+
+    // Get navbar navigation and user infos
+    getNavbar () {
+        const managerUrls = this.MANAGER_URLS;
+
+        // Get base structure for the navbar
+        const getBaseNavbar = (user) => {
+            const baseNavbar = {
+                // Set OVH Logo
+                brand: {
+                    title: this.$translate.instant("common_menu_telecom"),
+                    url: managerUrls.telecom,
+                    iconAlt: "OVH",
+                    iconClass: "navbar-logo",
+                    iconSrc: "assets/images/navbar/icon-logo-ovh.svg"
+                },
+
+                // Set Manager Links
+                managerLinks: this.getManagerLinks()
+            };
 
             // Set Internal Links
-            internalLinks: [
-                this.getAssistanceMenu(result.user),    // Assistance
-                this.getLanguageMenu(),                 // Language
-                this.getUserMenu(result.user)           // User
-            ],
+            if (user) {
+                baseNavbar.internalLinks = [
+                    this.getAssistanceMenu(user), // Assistance
+                    this.getLanguageMenu(), // Language
+                    this.getUserMenu(user) // User
+                ];
+            }
 
-            // Set Manager Links
-            managerLinks: _.map(managerNames, (managerName) => {
-                const managerLink = {
-                    name: managerName,
-                    "class": managerName,
-                    title: this.$translate.instant(`common_menu_${managerName}`),
-                    url: managerUrls[managerName],
-                    isPrimary: ["partners", "labs"].indexOf(managerName) === -1
-                };
+            return baseNavbar;
+        };
 
-                if (managerName === currentUniverse) {
-                    managerLink.subLinks = this.getUniverseMenu(result.products);
-                }
-
-                return managerLink;
-            })
-        }));
+        return this.$q.all({
+            translate: this.loadTranslations(),
+            user: this.ovhApiMe.Lexi().get().$promise
+        })
+            .then(({ user }) => getBaseNavbar(user))
+            .catch(() => getBaseNavbar());
     }
 }
 

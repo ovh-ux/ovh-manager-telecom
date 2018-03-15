@@ -5,7 +5,7 @@
    <translation id="sms_sms_pending_title" qtlid="342031">SMS planifiés</translation>
 
    <translation id="sms_sms_pending_label_date" qtlid="24523">Date</translation>
-   <translation id="sms_sms_pending_label_scheduled" qtlid="312480">Programmé</translation>
+   <translation id="sms_sms_pending_label_scheduled" qtlid="312480">Programado</translation>
    <translation id="sms_sms_pending_label_sender" qtlid="24535">Expéditeur</translation>
    <translation id="sms_sms_pending_label_receiver" qtlid="40442">Destinataire</translation>
    <translation id="sms_sms_pending_label_message" qtlid="30574">Message</translation>
@@ -16,7 +16,7 @@
    <translation id="sms_sms_pending_number_allowed_response" qtlid="342486">Numéro permettant la réponse</translation>
    <translation id="sms_sms_pending_number_allowed_response_fr_only" qtlid="342499">France uniqument</translation>
 
-   <translation id="sms_sms_pending_read_title" qtlid="339639">Consulter</translation>
+   <translation id="sms_sms_pending_read_title" qtlid="339639">Consultar</translation>
    <translation id="sms_sms_pending_read_label_sms_size" qtlid="341225">Taille du SMS</translation>
    <translation id="sms_sms_pending_read_label_sms_size_text" qtlid="341238">{{ numberOfSms }} SMS (soit {{ credits | number: 2 }} crédits)</translation>
    <translation id="sms_sms_pending_read_label_message" qtlid="341251">Message complet</translation>

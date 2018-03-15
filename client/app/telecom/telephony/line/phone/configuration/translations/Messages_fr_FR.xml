@@ -108,7 +108,7 @@
    <translation id="telephony_line_phone_configuration_config_ringer_volume">Volume de la sonnerie</translation>
    <translation id="telephony_line_phone_configuration_config_speaker_tone_volume">Volume sonnerie du haut parleur</translation>
    <translation id="telephony_line_phone_configuration_config_headset_tone_volume">Volume sonnerie du casque</translation>
-   <translation id="telephony_line_phone_configuration_config_speaker_volume">Volume sonnerie du haut parleur</translation>
+   <translation id="telephony_line_phone_configuration_config_speaker_volume">Volume du haut parleur</translation>
    <translation id="telephony_line_phone_configuration_config_handset_tone_volume">Volume sonnerie du combiné</translation>
    <translation id="telephony_line_phone_configuration_config_handset_volume">Volume du combiné</translation>
    <translation id="telephony_line_phone_configuration_config_bluetooth_volume">Volume du bluetooth</translation>

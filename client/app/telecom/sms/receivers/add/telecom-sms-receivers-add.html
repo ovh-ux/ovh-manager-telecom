@@ -14,7 +14,9 @@
 
     <div class="modal-body"
          data-ng-if="!ReceiversAddCtrl.loading.addReceiver && !ReceiversAddCtrl.added || ReceiversAddCtrl.requirement">
-        <h3 data-translate="sms_receivers_add_receiver"></h3>
+        <h3 class="modal-title"
+            data-translate="sms_receivers_add_receiver">
+        </h3>
         <div class="alert alert-danger mb-4"
              role="alert"
              data-ng-if="ReceiversAddCtrl.slot.isFull">

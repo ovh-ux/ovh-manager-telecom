@@ -14,7 +14,9 @@
 
     <div class="modal-body"
          data-ng-if="!$ctrl.loading.bulk">
-        <h3 data-translate="{{ 'telephony_bulk_action_apply_to_' + $ctrl.bindings.serviceType }}"></h3>
+        <h3 class="modal-title"
+            data-translate="{{ 'telephony_bulk_action_apply_to_' + $ctrl.bindings.serviceType }}">
+        </h3>
 
         <div class="text-center" data-ng-if="$ctrl.loading.init">
             <oui-spinner></oui-spinner>

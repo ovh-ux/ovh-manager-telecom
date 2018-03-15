@@ -57,7 +57,7 @@
    <translation id="sms_receivers_read_receiver_title" qtlid="339639">Consulta</translation>
    <translation id="sms_receivers_read_receiver_title_list" qtlid="339912">Nome della lista:&#160;</translation>
    <translation id="sms_receivers_read_receiver_truncate_text" qtlid="339925">Visualizza i primi 10 contatti su {{ receivers }}.</translation>
-   <translation id="sms_receivers_read_receiver_export" qtlid="69881">Esportare</translation>
+   <translation id="sms_receivers_read_receiver_export" qtlid="69881">Esporta</translation>
    <translation id="sms_receivers_read_receiver_parse_error" qtlid="339938">Impossibile generare la lista dei contatti.</translation>
    <translation id="sms_receivers_read_receiver_parse_ko" qtlid="339951">Impossibile generare la lista dei destinatari.</translation>
 

@@ -71,7 +71,7 @@
    <translation id="account_name" qtlid="33598">El. paštas</translation>
    <translation id="password" qtlid="2270">Slaptažodis</translation>
    <translation id="password_confirmation" qtlid="9983">Patvirtinimas</translation>
-   <translation id="all_fields_are_required">Tous les champs sont obligatoires</translation>
+   <translation id="all_fields_are_required" qtlid="297579">Visi laukai privalomi</translation>
    <translation id="required_fields_are_tag_with_a_star" qtlid="342793">&#160;Privalomi laukai pažymėti žvaigždute</translation>
    <translation id="in_validation" qtlid="308931">Jūsų užklausa vykdoma</translation>
    <translation id="security_level" qtlid="308944">Saugumo lygis</translation>
@@ -106,5 +106,5 @@
 
    <translation id="pack_offer_migration" qtlid="25783">Keisti planą</translation>
 
-   <translation id="pack_xdsl_oops_an_error_is_occured" qtlid="384805">Negalima gauti paketo informacijos.</translation>
+   <translation id="pack_xdsl_oops_an_error_is_occured" qtlid="385455">Negalime gauti paketo informacijos.</translation>
 </translations>

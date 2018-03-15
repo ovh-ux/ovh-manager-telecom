@@ -32,7 +32,7 @@
 
    <translation id="telephony_order_identity_first_name" qtlid="23323">Nombre</translation>
    <translation id="telephony_order_identity_name" qtlid="3818">Nombre</translation>
-   <translation id="telephony_order_identity_email" qtlid="393022">Courriel</translation>
+   <translation id="telephony_order_identity_email" qtlid="393022">Correo electrónico</translation>
    <translation id="telephony_order_identity_phone" qtlid="34174">Teléfono</translation>
 
    <translation id="telephony_order_identity_organisation" qtlid="49022">Empresa</translation>
@@ -54,7 +54,7 @@
    <translation id="telephony_order_number_type_common_label" qtlid="333906">Número estándar</translation>
    <translation id="telephony_order_number_type_specific_label" qtlid="333919">Número fácil de recordar</translation>
 
-   <translation id="telephony_order_retractation_retract_true" qtlid="393035">Vous souhaitez disposer de la possibilité d'exercer votre droit de rétractation et acceptez qu'à ce titre le début de la prestation n'intervienne qu'à expiration de ce delai.<strong> Mise à disposition du service sous 14 jours</strong>.</translation>
+   <translation id="telephony_order_retractation_retract_true" qtlid="393035">Quiero tener la posibilidad de ejercer el derecho de desistimiento y, por consiguiente, acepto que la ejecución del servicio comience una vez expirado dicho plazo. <strong>El servicio se activará en 17 días</strong>.</translation>
    <translation id="telephony_order_retractation_retract_false" qtlid="333945">Solicito <strong>la ejecución inmediata de la prestación</strong> y reconozco que no podré ejercer el derecho de desistimiento, con arreglo a lo dispuesto en los artículos 102 y 103 del Real Decreto Legislativo 1/2007 por el que se aprueba el texto refundido de la Ley General para la Defensa de los Consumidores y Usuarios y otras leyes complementarias.</translation>
 
    <translation id="telephony_order_amount_title" qtlid="333412">Cantidad de números:</translation>
