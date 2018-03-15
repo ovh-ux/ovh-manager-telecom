@@ -15,6 +15,7 @@
                         data-translate="telephony_service_fax_filtering_list_title">
                     </h2>
                 </header>
+
                 <div class="form-group">
                     <label for="filteringList">
                         <span data-translate="telephony_service_fax_filtering_list_label"></span>
@@ -33,6 +34,40 @@
                         <option value="whitelist" data-translate="telephony_service_fax_filtering_list_type_whitelist"></option>
                         <option value="blacklist" data-translate="telephony_service_fax_filtering_list_type_blacklist"></option>
                     </select>
+                </div>
+
+                <div class="form-group">
+                    <div class="oui-checkbox">
+                        <input type="checkbox"
+                               class="oui-checkbox__input"
+                               id="faxRejectAnonymous"
+                               name="faxRejectAnonymous"
+                               data-ng-model="$ctrl.rejectAnonymous"
+                               data-ng-change="$ctrl.updateAnonymousRejection()">
+                        <label class="oui-checkbox__label-container" for="faxRejectAnonymous">
+                            <span class="oui-checkbox__label">
+                                <span data-translate="telephony_service_fax_filtering_anonymous_rejection"></span>
+                                <span class="oui-checkbox__icon">
+                                    <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
+                                    <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
+                                    <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
+                                    <span class="oui-icon oui-icon-checkbox-indeterminate" aria-hidden="true"></span>
+                                </span>
+                            </span>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <telephony-bulk-action data-billing-account="{{ $ctrl.bulkDatas.billingAccount }}"
+                                           data-service-name="{{ $ctrl.bulkDatas.serviceName }}"
+                                           data-custom-class="link d-block pl-0 mb-3"
+                                           data-ng-disabled="$ctrl.screenListsForm.isUpdating"
+                                           data-bulk-infos="$ctrl.bulkDatas.infos"
+                                           data-filter-services="$ctrl.filterServices"
+                                           data-get-bulk-params="$ctrl.getBulkParams"
+                                           data-on-success="$ctrl.onBulkSuccess"
+                                           data-on-error="$ctrl.onBulkError">
+                    </telephony-bulk-action>
                 </div>
             </div>
         </div>
