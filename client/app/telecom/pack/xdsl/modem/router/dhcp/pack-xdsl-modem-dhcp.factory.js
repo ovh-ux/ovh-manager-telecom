@@ -5,7 +5,7 @@ angular.module("managerApp").factory("PackXdslModemDhcpObject", function (OvhApi
         serverEnabled: true,
         defaultGateway: "",
         primaryDNS: "",
-        secondaryDNS: "",
+        secondaryDNS: null,
         domainName: "",
         startAddress: "",
         endAddress: "",
