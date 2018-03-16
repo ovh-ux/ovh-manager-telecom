@@ -11,17 +11,13 @@ angular.module("managerApp").controller("TelecomTelephonyLineAssistTroubleshooti
 
     function init () {
         self.process = troubleshootingProcess;
-
-        if (self.process.problem.indexOf("phoneBook")) {
-            OvhApiTelephony.Line().Phone().Phonebook().Lexi().query({
-                billingAccount: $stateParams.billingAccount,
-                serviceName: $stateParams.serviceName
-            }).$promise.then(function (serverUrl) {
-                self.process.siemensServerUrl = _.first(serverUrl);
-            });
-        }
+        OvhApiTelephony.Line().Phone().Phonebook().Lexi().query({
+            billingAccount: $stateParams.billingAccount,
+            serviceName: $stateParams.serviceName
+        }).$promise.then(function (serverUrl) {
+            self.process.siemensServerUrl = _.first(serverUrl);
+        });
     }
-
     /* -----  End of INITIALIZATION  ------*/
 
     init();
