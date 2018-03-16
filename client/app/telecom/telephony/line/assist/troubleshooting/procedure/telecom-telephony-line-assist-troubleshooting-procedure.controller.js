@@ -12,7 +12,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineAssistTroubleshooti
     function init () {
         self.process = troubleshootingProcess;
 
-        if (self.process.problem === "phoneBookGigaset") {
+        if (self.process.problem.indexOf("phoneBook")) {
             OvhApiTelephony.Line().Phone().Phonebook().Lexi().query({
                 billingAccount: $stateParams.billingAccount,
                 serviceName: $stateParams.serviceName
