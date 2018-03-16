@@ -40,7 +40,7 @@ angular.module("managerApp").service("voipTimeConditionConfiguration", class voi
                 id: doc.id
             }).$promise.then((newDoc) =>
                 this.$http.get(newDoc.getUrl)
-                    .success((data) => this.$q.when(data))
+                    .success((data) => data)
                     .error((error) => this.$q.reject(error))
             )
         );
