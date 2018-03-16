@@ -17,7 +17,8 @@
         <h2 class="oui-modal__title" data-ng-bind=":: AbbreviatedNumberModal.title"></h2>
 
         <oui-field data-label="{{:: 'telephony_abbreviated_numbers_id' | translate }}"
-                   data-error-messages="{pattern: AbbreviatedNumberModal.pattern.errorMessage}">
+                   data-error-messages="{pattern: AbbreviatedNumberModal.pattern.errorMessage}"
+                   data-help-text="{{:: 'telephony_abbreviated_numbers_id_help' | translate }}">
             <input
                 type="text"
                 name="abbreviatedNumber"
@@ -30,7 +31,8 @@
         </oui-field>
 
         <oui-field data-label="{{:: 'telephony_abbreviated_numbers_number' | translate }}"
-                   data-error-messages="{pattern: ('telephony_abbreviated_numbers_number_error' | translate) }">
+                   data-error-messages="{pattern: ('telephony_abbreviated_numbers_number_error' | translate) }"
+                   data-help-text="{{:: 'telephony_abbreviated_numbers_number_help' | translate }}">
             <input
                 type="text"
                 name="destinationNumber"
