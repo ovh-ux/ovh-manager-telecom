@@ -16,9 +16,11 @@
 
         <h2 class="oui-modal__title" data-ng-bind=":: AbbreviatedNumberModal.title"></h2>
 
-        <oui-field data-label="{{:: 'telephony_abbreviated_numbers_id' | translate }}"
-                   data-error-messages="{pattern: AbbreviatedNumberModal.pattern.errorMessage}"
-                   data-help-text="{{:: 'telephony_abbreviated_numbers_id_help' | translate }}">
+        <oui-field
+            data-label="{{:: 'telephony_abbreviated_numbers_id' | translate }}"
+            data-error-messages="{pattern: AbbreviatedNumberModal.pattern.errorMessage}"
+            data-help-text="{{:: 'telephony_abbreviated_numbers_id_help' | translate }}"
+            data-size="xl">
             <input
                 type="text"
                 name="abbreviatedNumber"
@@ -30,9 +32,11 @@
                 data-ng-model="AbbreviatedNumberModal.data.abbreviatedNumber">
         </oui-field>
 
-        <oui-field data-label="{{:: 'telephony_abbreviated_numbers_number' | translate }}"
-                   data-error-messages="{pattern: ('telephony_abbreviated_numbers_number_error' | translate) }"
-                   data-help-text="{{:: 'telephony_abbreviated_numbers_number_help' | translate }}">
+        <oui-field
+            data-label="{{:: 'telephony_abbreviated_numbers_number' | translate }}"
+            data-error-messages="{pattern: ('telephony_abbreviated_numbers_number_error' | translate) }"
+            data-help-text="{{:: 'telephony_abbreviated_numbers_number_help' | translate }}"
+            data-size="xl">
             <input
                 type="text"
                 name="destinationNumber"
@@ -44,7 +48,9 @@
                 data-ng-model="AbbreviatedNumberModal.data.destinationNumber">
         </oui-field>
 
-        <oui-field data-label="{{:: 'telephony_abbreviated_numbers_surname' | translate }}">
+        <oui-field
+            data-label="{{:: 'telephony_abbreviated_numbers_surname' | translate }}"
+            data-size="xl">
             <input
                 type="text"
                 name="surname"
@@ -57,7 +63,9 @@
                 data-ng-model="AbbreviatedNumberModal.data.surname">
         </oui-field>
 
-        <oui-field data-label="{{:: 'telephony_abbreviated_numbers_name' | translate }}">
+        <oui-field
+            data-label="{{:: 'telephony_abbreviated_numbers_name' | translate }}"
+            data-size="xl">
             <input
                 type="text"
                 name="name"
