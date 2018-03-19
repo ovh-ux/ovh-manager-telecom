@@ -49,6 +49,7 @@
    <translation id="submit" qtlid="26047">Valider</translation>
    <translation id="edit" qtlid="6766">Éditer</translation>
    <translation id="modify" qtlid="37875">Modifier</translation>
+   <translation id="common_add">Ajouter</translation>
    <translation id="access" qtlid="304524">Accéder</translation>
    <translation id="edit_name" qtlid="304537">Éditer {{name}}</translation>
    <translation id="common_create" qtlid="39226">Créer</translation>
