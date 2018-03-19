@@ -18,6 +18,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineAssistTroubleshooti
             self.process.siemensServerUrl = _.first(serverUrl);
         });
     }
+
     /* -----  End of INITIALIZATION  ------*/
 
     init();
