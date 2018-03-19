@@ -41,7 +41,7 @@ angular.module("managerApp").controller("PackXdslMissingRioCtrl", function ($q, 
             Toast.success($translate.instant("xdsl_missing-rio_sent"));
             self.init();
         }, function (err) {
-            Toast.error($translate.instant("xdsl_missing-rio_init_error") + err);
+            Toast.error($translate.instant("xdsl_missing-rio_error") + err);
             return $q.reject(err);
         }).finally(function () {
             self.loading = false;
