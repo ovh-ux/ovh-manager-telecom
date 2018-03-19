@@ -64,7 +64,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxFilteringCtrl
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }, _.pick(self.screenListsForm, "filteringList")).$promise.catch(function (err) {
-            Toast.error(err);
+            Toast.error([$translate.instant("telephony_service_fax_filtering_list_update_error"), _.get(err, "data.message")].join(" "));
             return $q.reject(err);
         }).finally(function () {
             self.screenListsForm.isUpdating = false;
@@ -81,7 +81,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxFilteringCtrl
         }, param).$promise.then(function () {
             return fetchSettings();
         }).catch(function (error) {
-            Toast.error($translate.instant("telephony_service_fax_filtering_anonymous_rejection_update_error"));
+            Toast.error([$translate.instant("telephony_service_fax_filtering_anonymous_rejection_update_error"), _.get(error, "data.message")].join(" "));
             return $q.reject(error);
         }).finally(function () {
             self.screenListsForm.isUpdating = false;
@@ -105,7 +105,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxFilteringCtrl
             Toast.success($translate.instant("telephony_service_fax_filtering_new_success"));
             return self.refresh();
         }).catch(function (error) {
-            Toast.error(error);
+            Toast.error([$translate.instant("telephony_service_fax_filtering_new_error"), _.get(error, "data.message")].join(" "));
             return $q.reject(error);
         }).finally(function () {
             self.screenListsForm.isAdding = false;
@@ -143,7 +143,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxFilteringCtrl
         return $q.all(queries).then(function () {
             return self.refresh();
         }).catch(function (err) {
-            Toast.error(err);
+            Toast.error([$translate.instant("telephony_service_fax_filtering_table_delete_error"), _.get(err, "data.message")].join(" "));
             return $q.reject(err);
         }).finally(function () {
             self.screenLists.isDeleting = false;
@@ -189,7 +189,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxFilteringCtrl
                 return $q.reject(err);
             });
         }).catch(function (err) {
-            Toast.error(err);
+            Toast.error([$translate.instant("telephony_service_fax_filtering_fetch_lists_error"), _.get(err, "data.message")].join(" "));
             return $q.reject(err);
         }).finally(function () {
             self.screenLists.isLoading = false;
@@ -236,7 +236,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxFilteringCtrl
             self.fax = group.getFax($stateParams.serviceName);
             return self.refresh();
         }).catch(function (err) {
-            Toast.error(err);
+            Toast.error([$translate.instant("an_error_occured"), _.get(err, "data.message")].join(" "));
             return $q.reject(err);
         }).finally(function () {
             self.loading.init = false;
