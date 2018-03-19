@@ -1,10 +1,10 @@
 <section class="telecom-telephony-line-phone-mgcpIpRestriction">
 
     <header>
-        <section-back-link section-back-link-to-state="telecom.telephony.line.phone"
-                           section-back-link-title="{{ 'telephony_group_line_phone_section_back_link' | translate }}">
+        <section-back-link section-back-link-to-state="telecom.telephony.line"
+                           section-back-link-title="{{ ::'telephony_group_line_section_back_link' | translate }}">
         </section-back-link>
-        <h1 data-translate="telephony_line_phone_mgcp_ip_restriction_title"></h1>
+        <h1 data-translate="telephony_line_mgcp_ip_restriction_title"></h1>
     </header>
 
     <div class="telecom-section-content">
@@ -20,18 +20,20 @@
             <div class="col-xs-12 col-md-6">
                 <section class="widget-presentation">
                     <h2 class="widget-presentation-title"
-                        data-translate="telephony_line_phone_mgcp_ip_restriction_line_title">
+                        data-translate="telephony_line_mgcp_ip_restriction_line_title">
                     </h2>
                     <p class="alert alert-info"
                        role="alert"
-                       data-translate="telephony_line_phone_mgcp_ip_restriction_line_info">
+                       data-translate="telephony_line_mgcp_ip_restriction_line_info"
+                       data-translate-values="{restriction: MgcpIpRestrictionCtrl.mgcpIpRestriction.mgcpIpRestriction}">
                     </p>
                     <form name="mgcpIpRestrictionForm"
                           id="mgcpIpRestrictionForm"
                           data-ng-submit="MgcpIpRestrictionCtrl.setMgcpIpRestriction()">
                         <div class="form-group mb-3">
-                            <label for="mgcpIpRestriction"
-                                   data-translate="telephony_line_phone_mgcp_ip_restriction_label">
+                            <label class="control-label"
+                                   for="mgcpIpRestriction"
+                                   data-translate="telephony_line_mgcp_ip_restriction_label">
                             </label>
                             <input
                                 type="text"
@@ -41,12 +43,12 @@
                                 data-ng-model="MgcpIpRestrictionCtrl.mgcpIpRestrictionForm.mgcpIpRestriction"
                                 data-ng-pattern="MgcpIpRestrictionCtrl.ipValidator"
                                 data-ng-disabled="MgcpIpRestrictionCtrl.isChangingMgcpIpRestriction"
-                                data-translate-attr="{ placeholder: 'telephony_line_phone_mgcp_ip_restriction_placeholder' }" />
+                                data-translate-attr="{ placeholder: 'telephony_line_mgcp_ip_restriction_placeholder' }" />
                             <div role="alert"
                                  data-ng-messages="mgcpIpRestrictionForm.$error">
                                 <p class="text-danger"
                                    data-ng-message="pattern"
-                                   data-translate="telephony_line_phone_mgcp_ip_restriction_error_pattern">
+                                   data-translate="telephony_line_mgcp_ip_restriction_error_pattern">
                                 </p>
                             </div>
                         </div>
@@ -76,7 +78,7 @@
                                                      data-ng-if="MgcpIpRestrictionCtrl.isChangingMgcpIpRestriction"
                                                      data-size="s">
                                         </oui-spinner>
-                                        <span data-translate="telephony_line_phone_mgcp_ip_restriction_submit"></span>
+                                        <span data-translate="telephony_line_mgcp_ip_restriction_submit"></span>
                                     </button>
                                 </div>
                             </div>
@@ -87,18 +89,19 @@
             <div class="col-xs-12 col-md-6">
                 <section class="widget-presentation">
                     <h2 class="widget-presentation-title"
-                        data-translate="telephony_line_phone_mgcp_ip_restriction_customer_code_title">
+                        data-translate="telephony_line_mgcp_ip_restriction_customer_code_title">
                     </h2>
                     <p class="alert alert-info"
                        role="alert"
-                       data-translate="telephony_line_phone_mgcp_ip_restriction_customer_code_info">
+                       data-translate="telephony_line_mgcp_ip_restriction_customer_code_info">
                     </p>
                     <form name="mgcpDefaultIpRestrictionForm"
                           id="mgcpDefaultIpRestrictionForm"
                           data-ng-submit="MgcpIpRestrictionCtrl.setMgcpDefaultIpRestriction()">
                         <div class="form-group mb-3">
-                            <label for="mgcpDefaultIpRestriction"
-                                   data-translate="telephony_line_phone_mgcp_ip_restriction_label">
+                            <label class="control-label"
+                                   for="mgcpDefaultIpRestriction"
+                                   data-translate="telephony_line_mgcp_ip_restriction_label">
                             </label>
                             <input
                                 type="text"
@@ -108,12 +111,12 @@
                                 data-ng-model="MgcpIpRestrictionCtrl.mgcpDefaultIpRestrictionForm.subnet"
                                 data-ng-pattern="MgcpIpRestrictionCtrl.ipValidator"
                                 data-ng-disabled="MgcpIpRestrictionCtrl.isChangingMgcpDefaultIpRestriction"
-                                data-translate-attr="{ placeholder: 'telephony_line_phone_mgcp_ip_restriction_default_placeholder' }" />
+                                data-translate-attr="{ placeholder: 'telephony_line_mgcp_ip_restriction_default_placeholder' }" />
                             <div role="alert"
                                  data-ng-messages="mgcpDefaultIpRestrictionForm.$error">
                                 <p class="text-danger"
                                    data-ng-message="pattern"
-                                   data-translate="telephony_line_phone_mgcp_ip_restriction_error_pattern">
+                                   data-translate="telephony_line_mgcp_ip_restriction_error_pattern">
                                 </p>
                             </div>
                         </div>
@@ -128,7 +131,7 @@
                                              data-ng-if="MgcpIpRestrictionCtrl.isChangingMgcpDefaultIpRestriction"
                                              data-size="s">
                                 </oui-spinner>
-                                <span data-translate="telephony_line_phone_mgcp_ip_restriction_submit"></span>
+                                <span data-translate="telephony_line_mgcp_ip_restriction_submit"></span>
                             </button>
                         </div>
                     </form>
