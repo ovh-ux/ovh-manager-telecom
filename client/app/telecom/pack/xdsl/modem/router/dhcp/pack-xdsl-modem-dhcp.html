@@ -129,7 +129,7 @@
 							class="form-control"
 							data-ng-model="dhcp.tempValue.secondaryDNS"
 							placeholder="x.x.x.x"
-							data-ui-validate="'DhcpCtrl.validator.isIP($value)'"
+							data-ui-validate="'DhcpCtrl.validator.isIP($value) || !$value'"
 							data-maxlength="15"/>
                     </td>
 
