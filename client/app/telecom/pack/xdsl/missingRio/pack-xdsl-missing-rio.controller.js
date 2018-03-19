@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("PackXdslMissingRioCtrl", function ($scope, $stateParams, $translate, $q, $timeout, $filter, OvhApiXdsl, Toast) {
+angular.module("managerApp").controller("PackXdslMissingRioCtrl", function ($stateParams, $translate, OvhApiXdsl, Toast) {
     "use strict";
     var self = this;
 
