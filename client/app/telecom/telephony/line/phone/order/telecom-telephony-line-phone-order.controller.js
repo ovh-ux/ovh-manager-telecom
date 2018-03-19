@@ -315,7 +315,7 @@ angular.module("managerApp").controller("TelecomTelephonyLinePhoneOrderCtrl", fu
             TelephonyMediator.resetAllCache();
             init();
         }).catch(function (err) {
-            Toast.error($translate.instant("telephony_line_phone_order_detach_device_error"));
+            Toast.error([$translate.instant("telephony_line_phone_order_detach_device_error"), _.get(err, "data.message")].join(" "));
             return $q.reject(err);
         }).finally(function () {
             self.isDetaching = false;
