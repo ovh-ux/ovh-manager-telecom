@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("PackXdslMissingRioCtrl", function ($stateParams, $translate, OvhApiXdsl, Toast) {
+angular.module("managerApp").controller("PackXdslMissingRioCtrl", function ($q, $stateParams, $translate, OvhApiXdsl, Toast) {
     "use strict";
     var self = this;
 
@@ -16,8 +16,9 @@ angular.module("managerApp").controller("PackXdslMissingRioCtrl", function ($sta
             xdslId: $stateParams.serviceName
         }).$promise.then(function (data) {
             return data;
-        }, function () {
-            Toast.error($translate.instant("xdsl_missing-rio_init_error"));
+        }, function (err) {
+            Toast.error($translate.instant("xdsl_missing-rio_init_error") + err);
+            return $q.reject(err);
         }).then(function () {
             self.loading = false;
         });
@@ -39,8 +40,9 @@ angular.module("managerApp").controller("PackXdslMissingRioCtrl", function ($sta
         }, params).$promise.then(function () {
             Toast.success($translate.instant("xdsl_missing-rio_sent"));
             self.init();
-        }, function () {
-            Toast.error($translate.instant("xdsl_missing-rio_error"));
+        }, function (err) {
+            Toast.error($translate.instant("xdsl_missing-rio_init_error") + err);
+            return $q.reject(err);
         }).finally(function () {
             self.loading = false;
         });
