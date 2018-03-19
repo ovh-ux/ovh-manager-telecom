@@ -3,7 +3,7 @@ angular.module("managerApp").component("telecomTelephonyAliasMembersAdd", {
         api: "="
     },
     templateUrl: "components/telecom/telephony/alias/members/telecom-telephony-alias-members-add.html",
-    controller: function ($q, $translate, $translatePartialLoader, Toast, ToastError) {
+    controller: function ($q, $translate, $translatePartialLoader, $uibModal, Toast, ToastError) {
         "use strict";
 
         var self = this;
@@ -58,20 +58,27 @@ angular.module("managerApp").component("telecomTelephonyAliasMembersAdd", {
         };
 
         self.addMembers = function (form) {
-            self.loaders.adding = true;
-
-            return self.api.addMembers(_(self.addMemberForm.numbers).filter(function (number) {
-                return number && number.length;
-            }).map(function (number) {
-                return _.assign({ number: number }, self.addMemberForm.options);
-            }).value()).then(function () {
-                Toast.success($translate.instant("telephony_alias_members_add_success"));
-                self.resetMemberAddForm();
-                form.$setPristine();
-            }).catch(function (err) {
-                return new ToastError(err);
-            }).finally(function () {
-                self.loaders.adding = false;
+            const modal = $uibModal.open({
+                animation: true,
+                templateUrl: "components/telecom/telephony/alias/members/telecom-telephony-alias-members-add-modal.html",
+                controller: "telecomTelephonyAliasMembersAddModal",
+                controllerAs: "$ctrl"
+            });
+            modal.result.then(function () {
+                self.loaders.adding = true;
+                return self.api.addMembers(_(self.addMemberForm.numbers).filter(function (number) {
+                    return number && number.length;
+                }).map(function (number) {
+                    return _.assign({ number: number }, self.addMemberForm.options);
+                }).value()).then(function () {
+                    Toast.success($translate.instant("telephony_alias_members_add_success"));
+                    self.resetMemberAddForm();
+                    form.$setPristine();
+                }).catch(function (err) {
+                    return new ToastError(err);
+                }).finally(function () {
+                    self.loaders.adding = false;
+                });
             });
         };
 

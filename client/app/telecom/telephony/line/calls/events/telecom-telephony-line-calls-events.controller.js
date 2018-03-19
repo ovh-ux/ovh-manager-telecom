@@ -7,7 +7,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineCallsEventsCtrl", f
         init: false
     };
 
-    /*= =====================================
+    /*= ====================================
     =            INITIALIZATION            =
     ======================================*/
 
