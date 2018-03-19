@@ -39,7 +39,6 @@ angular.module("managerApp").controller("TelecomTelephonyServiceConsumptionOutgo
             sorted: null,
             paginated: null,
             selected: null,
-            isLoading: false,
             orderBy: "creationDatetime",
             orderDesc: true,
             filterBy: {
@@ -64,9 +63,9 @@ angular.module("managerApp").controller("TelecomTelephonyServiceConsumptionOutgo
             end: moment().endOf("month")
         };
 
-        self.consumption.isLoading = true;
         fetchOutgoingConsumption().then(function (result) {
             self.consumption.raw = angular.copy(result);
+            self.consumption.sorted = angular.copy(result);
             self.applySorting();
             self.consumption.sum.pricePlan.calls = _.sum(self.consumption.raw, function (conso) {
                 return conso.planType === "priceplan" ? 1 : 0;
@@ -91,10 +90,8 @@ angular.module("managerApp").controller("TelecomTelephonyServiceConsumptionOutgo
                 return null;
             });
             self.consumption.sum.outPlan.price = (Math.floor(self.consumption.sum.outPlan.price * 100.0, 2) / 100.0) + " " + priceSuffix;
-        }).catch(function (err) {
+        }, function (err) {
             return new ToastError(err);
-        }).finally(function () {
-            self.consumption.isLoading = false;
         });
     }
 

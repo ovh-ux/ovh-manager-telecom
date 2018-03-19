@@ -13,7 +13,7 @@
 <!-- credits -->
    <translation id="freefax_general_credit" qtlid="306604">Commander des fax</translation>
    <translation id="freefax_credit_add_label" qtlid="306617">Quantité de fax à commander</translation>
-   <translation id="freefax_credit_generate_order" qtlid="186219">Gerar a nota de encomenda</translation>
+   <translation id="freefax_credit_generate_order" qtlid="186219">Gerar nota de encomenda</translation>
    <translation id="freefax_credit_pdf" qtlid="306630">Version PDF</translation>
    <translation id="freefax_credit_loaded" qtlid="306643">Votre bon de commande de {{amount}} fax, soit {{quantity}} unités, pour un montant de {{total}} TTC est disponible. Cliquez sur le lien ci-dessous pour valider votre commande.</translation>
    <translation id="freefax_credit_billing" qtlid="306656">Régler votre commande</translation>
@@ -23,7 +23,7 @@
    <translation id="freefax_notification_noNotification" qtlid="306682">Il n'y a aucune notification enregistrée.</translation>
    <translation id="freefax_notifications_title" qtlid="306695">Notifications du répondeur/télécopieur {{serviceName}}</translation>
    <translation id="freefax_notifications" qtlid="33250">Notificações</translation>
-   <translation id="freefax_notification_email" qtlid="33598">Email</translation>
+   <translation id="freefax_notification_email" qtlid="33598">E-mail</translation>
    <translation id="freefax_notification_type" qtlid="306708">Notification du répondeur</translation>
    <translation id="freefax_notification_source" qtlid="395596">Source de la notification</translation>
    <translation id="freefax_notification_source_fax" qtlid="32926">Fax</translation>
@@ -41,7 +41,7 @@
    <translation id="freefax_notif_save_success" qtlid="395661">Vos notifications ont été mises à jour.</translation>
 
 <!-- General informations -->
-   <translation id="freefax_domain" qtlid="66428">Nome de domínio</translation>
+   <translation id="freefax_domain" qtlid="66428">Domínio</translation>
    <translation id="freefax_domain_expired" qtlid="395674">(Domaine expiré)</translation>
    <translation id="freefax_line" qtlid="306799">Numéro de ligne</translation>
    <translation id="freefax_fax_remaining" qtlid="306812">Nombre de faxs restants</translation>

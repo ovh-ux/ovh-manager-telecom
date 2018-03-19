@@ -2,7 +2,7 @@
 <translations>
    <translation id="sms_section_back_link" qtlid="341186">Volver a los SMS</translation>
 
-   <translation id="sms_sms_pending_title" qtlid="342031">SMS planificados</translation>
+   <translation id="sms_sms_pending_title" qtlid="342031">SMS programados</translation>
 
    <translation id="sms_sms_pending_label_date" qtlid="24523">Fecha</translation>
    <translation id="sms_sms_pending_label_scheduled" qtlid="312480">Programado</translation>
@@ -21,7 +21,7 @@
    <translation id="sms_sms_pending_read_label_sms_size_text" qtlid="341238">{{ numberOfSms }} SMS ({{ credits | number: 2 }} créditos)</translation>
    <translation id="sms_sms_pending_read_label_message" qtlid="341251">Mensaje completo</translation>
 
-   <translation id="sms_sms_pending_remove_title" qtlid="9983">Repetir contraseña</translation>
+   <translation id="sms_sms_pending_remove_title" qtlid="9983">Confirmar</translation>
    <translation id="sms_sms_pending_remove_confirm" qtlid="341264">¿Seguro que quiere eliminar el SMS mostrado a continuación?</translation>
    <translation id="sms_sms_pending_removing" qtlid="341277">Eliminando el SMS...</translation>
    <translation id="sms_sms_pending_removed" qtlid="341290">SMS eliminado</translation>
@@ -30,7 +30,7 @@
 
    <translation id="sms_sms_pending_ko" qtlid="342525">No se ha podido eliminar el SMS.</translation>
 
-   <translation id="sms_sms_pending_cancel" qtlid="394972">Annuler le SMS sélectionné</translation>
-   <translation id="sms_sms_pending_cancel_plural" qtlid="394985">Annuler les {{ count }} SMS sélectionnés</translation>
-   <translation id="sms_sms_pending_cancel_success" qtlid="394998">Annulation en cours…</translation>
+   <translation id="sms_sms_pending_cancel" qtlid="394972">Cancelar el SMS seleccionado</translation>
+   <translation id="sms_sms_pending_cancel_plural" qtlid="394985">Cancelar los {{ count }} SMS seleccionados</translation>
+   <translation id="sms_sms_pending_cancel_success" qtlid="394998">Cancelando…</translation>
 </translations>

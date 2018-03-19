@@ -2,14 +2,14 @@
 <translations>
    <translation id="sms_receivers_manage_title" qtlid="339587">Gérer les destinataires</translation>
 
-   <translation id="sms_receivers_label_description" qtlid="3818">Voor- en achternaam</translation>
+   <translation id="sms_receivers_label_description" qtlid="3818">Naam</translation>
    <translation id="sms_receivers_label_date" qtlid="339600">Date d’ajout</translation>
    <translation id="sms_receivers_label_records" qtlid="339613">Nombre de contacts</translation>
    <translation id="sms_receivers_label_auto_update" qtlid="339626">Mise à jour auto</translation>
 
    <translation id="sms_receivers_sr_only_actions" qtlid="72809">Handelingen</translation>
 
-   <translation id="sms_receivers_action_read" qtlid="339639">Consulter</translation>
+   <translation id="sms_receivers_action_read" qtlid="339639">Lezen</translation>
    <translation id="sms_receivers_action_clean" qtlid="339652">Nettoyer</translation>
    <translation id="sms_receivers_action_export" qtlid="39286">Downloaden</translation>
 
@@ -54,7 +54,7 @@
    <translation id="sms_receivers_edit_receiver_edited" qtlid="339899">Liste des destinataires mise à jour&#160;!&#160;</translation>
    <translation id="sms_receivers_edit_receiver_ko" qtlid="394907">Impossible d’éditer la liste de destinataires.<br/>{{error}}</translation>
 
-   <translation id="sms_receivers_read_receiver_title" qtlid="339639">Consulter</translation>
+   <translation id="sms_receivers_read_receiver_title" qtlid="339639">Lezen</translation>
    <translation id="sms_receivers_read_receiver_title_list" qtlid="339912">Nom de la liste&#160;:&#160;</translation>
    <translation id="sms_receivers_read_receiver_truncate_text" qtlid="339925">Consultation des 10 premiers contacts sur {{ receivers }}.</translation>
    <translation id="sms_receivers_read_receiver_export" qtlid="69881">Exporteren</translation>

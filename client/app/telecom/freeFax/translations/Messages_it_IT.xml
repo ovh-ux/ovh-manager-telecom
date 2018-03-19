@@ -7,7 +7,7 @@
    <translation id="freefax_fax_configuration" qtlid="306578">Configura il fax</translation>
    <translation id="freefax_voicemail_configuration_title" qtlid="306591">Configura segreteria telefonica</translation>
    <translation id="freefax_change_password" qtlid="80394">Modifica la password</translation>
-   <translation id="freefax_detail_error" qtlid="395583">Oups ! Nous n'avons pas pu récupérer les information de votre freefax.</translation>
+   <translation id="freefax_detail_error" qtlid="395583">Ops! Impossibile recuperare le informazioni relative al tuo Freefax.</translation>
    <translation id="freefax_expired_error" qtlid="186975">Servizio scaduto</translation>
 
 <!-- credits -->
@@ -25,24 +25,24 @@
    <translation id="freefax_notifications" qtlid="33250">Notifiche</translation>
    <translation id="freefax_notification_email" qtlid="33598">Email</translation>
    <translation id="freefax_notification_type" qtlid="306708">Notifica segreteria telefonica</translation>
-   <translation id="freefax_notification_source" qtlid="395596">Source de la notification</translation>
+   <translation id="freefax_notification_source" qtlid="395596">Sorgente della notifica</translation>
    <translation id="freefax_notification_source_fax" qtlid="32926">Fax</translation>
    <translation id="freefax_notification_source_voicemail" qtlid="88956">Segreteria</translation>
-   <translation id="freefax_notification_source_both" qtlid="395609">Fax et répondeur</translation>
+   <translation id="freefax_notification_source_both" qtlid="395609">Fax e segreteria telefonica</translation>
    <translation id="freefax_notification_type_simple" qtlid="306734">Solo notifica</translation>
    <translation id="freefax_notification_type_attachment" qtlid="108287">Allegato</translation>
    <translation id="freefax_notification_add" qtlid="37923">Aggiungi</translation>
    <translation id="freefax_notification_delete" qtlid="306747">Elimina questa notifica</translation>
-   <translation id="freefax_notification_confirm" qtlid="395622">Voulez-vous vraiment supprimer la notification <strong>{{email}}</strong> ?</translation>
+   <translation id="freefax_notification_confirm" qtlid="395622">Vuoi davvero eliminare la notifica <strong>{{email}}</strong>?</translation>
    <translation id="freefax_notif_show_none" qtlid="306773">Nessun monitoraggio</translation>
    <translation id="freefax_notif_show_one_or_many" qtlid="306786">{{count}} monitorati</translation>
-   <translation id="freefax_notif_read_error" qtlid="395635">Oups ! Nous n'avons pas pu récupérer les notifications.</translation>
-   <translation id="freefax_notif_save_error" qtlid="395648">Oups ! Nous n'avons pas pu sauvegarder la notification.</translation>
-   <translation id="freefax_notif_save_success" qtlid="395661">Vos notifications ont été mises à jour.</translation>
+   <translation id="freefax_notif_read_error" qtlid="395635">Ops! Impossibile recuperare le notifiche.</translation>
+   <translation id="freefax_notif_save_error" qtlid="395648">Ops! Impossibile salvare la notifica.</translation>
+   <translation id="freefax_notif_save_success" qtlid="395661">Le tue notifiche sono state aggiornate.</translation>
 
 <!-- General informations -->
    <translation id="freefax_domain" qtlid="66428">Dominio</translation>
-   <translation id="freefax_domain_expired" qtlid="395674">(Domaine expiré)</translation>
+   <translation id="freefax_domain_expired" qtlid="395674">(Dominio scaduto)</translation>
    <translation id="freefax_line" qtlid="306799">Numero della linea</translation>
    <translation id="freefax_fax_remaining" qtlid="306812">Numero di fax rimanenti</translation>
    <translation id="freefax_point_remaining" qtlid="89845">Punti fedeltà</translation>

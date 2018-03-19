@@ -33,8 +33,8 @@
    <translation id="createExchange" qtlid="305525">Création d'un compte Exchange</translation>
    <translation id="pendingMigration" qtlid="305538">Migration d'offre</translation>
    <translation id="regeneratePromoCode" qtlid="305551">Régénération du code promotionel</translation>
-   <translation id="changePackOffer" qtlid="305564">Changement d'offre</translation>
+   <translation id="changePackOffer" qtlid="305564">Angebotswechsel</translation>
    <translation id="packXdslAddressMove" qtlid="86745">Umzug</translation>
-   <translation id="accessDiagnosticRun" qtlid="309724">Diagnostic de la ligne</translation>
+   <translation id="accessDiagnosticRun" qtlid="309724">Diagnose der Leitung</translation>
 
 </translations>

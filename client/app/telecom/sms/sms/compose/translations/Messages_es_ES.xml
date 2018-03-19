@@ -4,11 +4,11 @@
 
    <translation id="sms_sms_compose_title" qtlid="288145">Enviar un SMS</translation>
 
-   <translation id="sms_sms_compose_section_configure" qtlid="395024">Configurer l’éxpéditeur et le destinataire</translation>
-   <translation id="sms_sms_compose_section_compose" qtlid="395037">Composer un message</translation>
+   <translation id="sms_sms_compose_section_configure" qtlid="395024">Configurar el remitente y el destinatario</translation>
+   <translation id="sms_sms_compose_section_compose" qtlid="395037">Escribir un mensaje</translation>
 
    <translation id="sms_sms_compose_alert_not_enough_credits" qtlid="341329">Su saldo es insuficiente para poder enviar SMS.</translation>
-   <translation id="sms_sms_compose_alert_not_enough_credits_receivers" qtlid="395050">Votre crédit risque d’être insuffisant pour permettre l’envoi à l’ensemble de vos contacts séléctionnés.</translation>
+   <translation id="sms_sms_compose_alert_not_enough_credits_receivers" qtlid="395050">Su saldo podría no ser suficiente para permitir el envío a todos los contactos seleccionados.</translation>
 
    <translation id="sms_sms_compose_sender_label" qtlid="24535">Remitente</translation>
    <translation id="sms_sms_compose_sender_optgroup_label_response" qtlid="341342">Remitentes que permiten responder</translation>
@@ -23,22 +23,23 @@
    <translation id="sms_sms_compose_recipient_label" qtlid="341407">Introduzca el número de un solo destinatario</translation>
    <translation id="sms_sms_compose_recipient_placeholder" qtlid="341420">Número del destinatario (p. ej.: +34601020304)</translation>
    <translation id="sms_sms_compose_recipient_error_required" qtlid="341433">El campo «Destinatario» es obligatorio.</translation>
+   <translation id="sms_sms_compose_recipient_error_pattern" qtlid="463369">Le numéro du destinataire doit être au format international.</translation>
 
    <translation id="sms_sms_compose_phonebook_manage" qtlid="341446">Agenda de direcciones</translation>
 
    <translation id="sms_sms_compose_message_label" qtlid="30574">Mensaje</translation>
    <translation id="sms_sms_compose_message_placeholder" qtlid="67292">Su mensaje</translation>
    <translation id="sms_sms_compose_message_characters_left" qtlid="341459">Caracteres restantes:</translation>
-   <translation id="sms_sms_compose_message_characters_left_warning_8bit" qtlid="395063">Votre message contient un ou plusieurs caractères spéciaux.</translation>
+   <translation id="sms_sms_compose_message_characters_left_warning_8bit" qtlid="395063">El mensaje contiene uno o más caracteres especiales.</translation>
    <translation id="sms_sms_compose_message_sms" qtlid="28243">SMS</translation>
    <translation id="sms_sms_compose_message_equivalent" qtlid="341472">Equivale a:</translation>
-   <translation id="sms_sms_compose_message_info_estimation_title" qtlid="395076">Estimation de l’envoi</translation>
-   <translation id="sms_sms_compose_message_info_estimation_receivers_selected" qtlid="395089">Nombre de destinataires&#160;:</translation>
-   <translation id="sms_sms_compose_message_info_estimation_credits_left" qtlid="393503">Crédit restant&#160;:</translation>
-   <translation id="sms_sms_compose_message_info_estimation_credit_remaining" qtlid="395102">Crédit restant après l’opération&#160;:</translation>
-   <translation id="sms_sms_compose_message_info_estimation_note_1" qtlid="395115">Le coût varie en fonction des destinations.</translation>
-   <translation id="sms_sms_compose_message_info_estimation_note_2" qtlid="395128">Voir les tarifs</translation>
-   <translation id="sms_sms_compose_message_info_estimation_note_3" qtlid="395141">Notez que cette valeur est purement indicative.</translation>
+   <translation id="sms_sms_compose_message_info_estimation_title" qtlid="395076">Estimación del envío</translation>
+   <translation id="sms_sms_compose_message_info_estimation_receivers_selected" qtlid="395089">Número de destinatarios:</translation>
+   <translation id="sms_sms_compose_message_info_estimation_credits_left" qtlid="393503">Saldo restante:</translation>
+   <translation id="sms_sms_compose_message_info_estimation_credit_remaining" qtlid="395102">Saldo restante después de la operación:</translation>
+   <translation id="sms_sms_compose_message_info_estimation_note_1" qtlid="395115">El coste varía en función de los destinos.</translation>
+   <translation id="sms_sms_compose_message_info_estimation_note_2" qtlid="395128">Ver los precios</translation>
+   <translation id="sms_sms_compose_message_info_estimation_note_3" qtlid="395141">Tenga en cuenta que este valor es puramente orientativo.</translation>
    <translation id="sms_sms_compose_message_stop_info_start" qtlid="342637">El mensaje «<b>STOP:[número corto]</b>»</translation>
    <translation id="sms_sms_compose_message_stop_info_tooltip" qtlid="341498">Ejemplo de número corto: 36111</translation>
    <translation id="sms_sms_compose_message_stop_info_end" qtlid="341511">se añade al final del SMS.</translation>
@@ -102,9 +103,9 @@
    <translation id="sms_sms_compose_tip_size_tooltip_carriage_return" qtlid="342689">[Salto de línea]</translation>
    <translation id="sms_sms_compose_tip_size_tooltip_form_feed" qtlid="342702">[Salto de página]</translation>
 
-   <translation id="sms_sms_compose_add_receivers_select" qtlid="395154">Liste des destinataires</translation>
-   <translation id="sms_sms_compose_add_receivers_selected_single" qtlid="395167"><strong>{{ count }}</strong> liste sélectionnée</translation>
-   <translation id="sms_sms_compose_add_receivers_selected_multiple" qtlid="395180"><strong>{{ count }}</strong> listes sélectionnées</translation>
+   <translation id="sms_sms_compose_add_receivers_select" qtlid="395154">Lista de destinatarios</translation>
+   <translation id="sms_sms_compose_add_receivers_selected_single" qtlid="395167"><strong>{{ count }}</strong> lista seleccionada</translation>
+   <translation id="sms_sms_compose_add_receivers_selected_multiple" qtlid="395180"><strong>{{ count }}</strong> listas seleccionadas</translation>
    <translation id="sms_sms_compose_add_receivers_lists_title" qtlid="360307">Añadir una lista de destinatarios</translation>
    <translation id="sms_sms_compose_add_receivers_select_lists" qtlid="360320">Seleccione los archivos que contienen los destinatarios:</translation>
    <translation id="sms_sms_compose_add_receivers_label" qtlid="360333">{{ description }} (<small><b>{{ records }}</b> contacto</small>)</translation>
@@ -113,29 +114,28 @@
    <translation id="sms_sms_compose_add_receivers_added" qtlid="360372">Se han añadido los destinatarios.</translation>
    <translation id="sms_sms_compose_add_receivers_parse_ko" qtlid="339951">No se ha podido generar la lista de destinatarios.</translation>
 
-   <translation id="sms_sms_compose_add_phonebooks_selected_single" qtlid="395193"><strong>{{ count }}</strong> contact sélectionné</translation>
-   <translation id="sms_sms_compose_add_phonebooks_selected_multiple" qtlid="395206"><strong>{{ count }}</strong> contacts sélectionnés</translation>
+   <translation id="sms_sms_compose_add_phonebooks_selected_single" qtlid="395193"><strong>{{ count }}</strong> contacto seleccionado</translation>
+   <translation id="sms_sms_compose_add_phonebooks_selected_multiple" qtlid="395206"><strong>{{ count }}</strong> contactos seleccionados</translation>
 
-   <translation id="sms_sms_compose_add_phonebook_contact_title" qtlid="395219">Ajouter des contacts</translation>
-   <translation id="sms_sms_compose_add_phonebook_contact_info" qtlid="395232">Pour envoyer des campagnes de SMS, utilisez de préférence un fichier CSV de destinataires.</translation>
-   <translation id="sms_sms_compose_add_phonebook_contact_phonebook_select_label" qtlid="393841">Sélectionnez votre carnet d’adresses&#160;:</translation>
-   <translation id="sms_sms_compose_add_phonebook_contact_filter_select_label" qtlid="395245">Filtre&#160;:</translation>
+   <translation id="sms_sms_compose_add_phonebook_contact_title" qtlid="395219">Añadir contactos</translation>
+   <translation id="sms_sms_compose_add_phonebook_contact_info" qtlid="395232">Para enviar campañas de SMS, utilice preferentemente un archivo CSV de destinatarios.</translation>
+   <translation id="sms_sms_compose_add_phonebook_contact_phonebook_select_label" qtlid="393841">Seleccione su agenda de contactos:</translation>
+   <translation id="sms_sms_compose_add_phonebook_contact_filter_select_label" qtlid="395245">Filtro:</translation>
    <translation id="sms_sms_compose_add_phonebook_contact_filter_select_all" qtlid="69173">Todos</translation>
-   <translation id="sms_sms_compose_add_phonebook_contact_filter_select_homeMobile" qtlid="394127">Mobile (domicile)</translation>
-   <translation id="sms_sms_compose_add_phonebook_contact_filter_select_homePhone" qtlid="394114">Fixe (domicile)</translation>
-   <translation id="sms_sms_compose_add_phonebook_contact_filter_select_workMobile" qtlid="394153">Mobile (professionnel)</translation>
-   <translation id="sms_sms_compose_add_phonebook_contact_filter_select_workPhone" qtlid="394140">Fixe (professionnel)</translation>
+   <translation id="sms_sms_compose_add_phonebook_contact_filter_select_homeMobile" qtlid="394127">Móvil (personal)</translation>
+   <translation id="sms_sms_compose_add_phonebook_contact_filter_select_homePhone" qtlid="394114">Fijo (personal)</translation>
+   <translation id="sms_sms_compose_add_phonebook_contact_filter_select_workMobile" qtlid="394153">Móvil (profesional)</translation>
+   <translation id="sms_sms_compose_add_phonebook_contact_filter_select_workPhone" qtlid="394140">Fijo (profesional)</translation>
    <translation id="sms_sms_compose_add_phonebook_contact_column_surname" qtlid="3818">Nombre</translation>
    <translation id="sms_sms_compose_add_phonebook_contact_column_name" qtlid="23323">Nombre</translation>
    <translation id="sms_sms_compose_add_phonebook_contact_column_phonenumber" qtlid="30778">Número</translation>
    <translation id="sms_sms_compose_add_phonebook_contact_column_type" qtlid="2642">Tipo</translation>
-   <translation id="sms_sms_compose_add_phonebook_contact_phonenumber_type_homeMobile" qtlid="394075">Mobile <small>(domicile)</small></translation>
-   <translation id="sms_sms_compose_add_phonebook_contact_phonenumber_type_homePhone" qtlid="394062">Fixe <small>(domicile)</small></translation>
-   <translation id="sms_sms_compose_add_phonebook_contact_phonenumber_type_workMobile" qtlid="394101">Mobile <small>(professionnel)</small></translation>
-   <translation id="sms_sms_compose_add_phonebook_contact_phonenumber_type_workPhone" qtlid="394088">Fixe <small>(professionnel)</small></translation>
-   <translation id="sms_sms_compose_add_phonebook_contact_loading" qtlid="301695">Cargando…</translation>
-   <translation id="sms_sms_compose_add_phonebook_contact_empty" qtlid="97964">Ningún contacto encontrado.</translation>
-   <translation id="sms_sms_compose_add_phonebook_contact_adding" qtlid="395258">Mise à jour des contacts…</translation>
-   <translation id="sms_sms_compose_add_phonebook_contact_added" qtlid="395271">Liste des contacts mise à jour&#160;!</translation>
-   <translation id="sms_sms_compose_add_phonebook_contact_ko" qtlid="394166">Oups ! Impossible de récupérer la liste des contacts.</translation>
+   <translation id="sms_sms_compose_add_phonebook_contact_phonenumber_type_homeMobile" qtlid="394075">Móvil <small>(personal)</small></translation>
+   <translation id="sms_sms_compose_add_phonebook_contact_phonenumber_type_homePhone" qtlid="394062">Fijo <small>(personal)</small></translation>
+   <translation id="sms_sms_compose_add_phonebook_contact_phonenumber_type_workMobile" qtlid="394101">Móvil <small>(personal)</small></translation>
+   <translation id="sms_sms_compose_add_phonebook_contact_phonenumber_type_workPhone" qtlid="394088">Fijo <small>(profesional)</small></translation>
+   <translation id="sms_sms_compose_add_phonebook_contact_empty" qtlid="97964">No se han encontrado contactos.</translation>
+   <translation id="sms_sms_compose_add_phonebook_contact_adding" qtlid="395258">Actualizando los contactos…</translation>
+   <translation id="sms_sms_compose_add_phonebook_contact_added" qtlid="395271">Se ha actualizado la lista de contactos.</translation>
+   <translation id="sms_sms_compose_add_phonebook_contact_ko" qtlid="394166">¡Vaya! No se ha podido cargar la lista de contactos.</translation>
 </translations>

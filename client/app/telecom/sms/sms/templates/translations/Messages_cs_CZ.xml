@@ -18,7 +18,7 @@
    <translation id="sms_sms_templates_informations_example_dd_2" qtlid="342213">Our monitoring system detected your server #SERVER# doesn't respond to ping requests.</translation>
    <translation id="sms_sms_templates_informations_example_dt_3" qtlid="342226">Transactionnel</translation>
    <translation id="sms_sms_templates_informations_example_dd_3" qtlid="342239">Hi #LOGIN#, your account has been created on www.ovh.com!</translation>
-   <translation id="sms_sms_templates_list_title_name" qtlid="3818">Celé jméno</translation>
+   <translation id="sms_sms_templates_list_title_name" qtlid="3818">Název</translation>
    <translation id="sms_sms_templates_list_title_date" qtlid="26419">Datum vytvoření</translation>
    <translation id="sms_sms_templates_list_title_message" qtlid="30574">Zpráva</translation>
    <translation id="sms_sms_templates_list_title_description" qtlid="9238">Popis</translation>

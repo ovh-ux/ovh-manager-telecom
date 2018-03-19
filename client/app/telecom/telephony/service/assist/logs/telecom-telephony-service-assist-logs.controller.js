@@ -7,9 +7,6 @@ angular.module("managerApp").controller("TelecomTelephonyServiceAssistLogsCtrl",
     self.logs = null;
     self.logsPerPage = PAGINATION_PER_PAGE;
 
-    // TODO : remove once bulk action for fax is available
-    self.isFax = $state.current.name.indexOf("fax") > -1;
-
     // notifications edit
     self.edition = {
         active: false,
@@ -126,6 +123,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceAssistLogsCtrl",
             self.service = service;
             self.bulkDatas.billingAccount = self.service.billingAccount;
             self.bulkDatas.serviceName = self.service.serviceName;
+            self.type = self.service.featureType === "fax" ? "fax" : "line";
 
             return $q.all({
                 feature: voipLineFeature.fetchFeature(service),
@@ -140,14 +138,11 @@ angular.module("managerApp").controller("TelecomTelephonyServiceAssistLogsCtrl",
     };
 
     /* -----  End of INITIALIZATION  ------*/
-
-
     self.bulkDatas = {
         infos: {
             name: "assistLogs",
             actions: [{
                 name: "assistLogs",
-                route: "/telephony/{billingAccount}/line/{serviceName}",
                 method: "PUT",
                 params: null
             }]
@@ -161,6 +156,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceAssistLogsCtrl",
     };
 
     self.getBulkParams = function () {
+        self.bulkDatas.infos.actions[0].route = "/telephony/{billingAccount}/" + self.type + "/{serviceName}";
         var logs = self.edition.mode ? self.edition.notifications.logs : self.service.feature.notifications.logs;
         return {
             notifications: {

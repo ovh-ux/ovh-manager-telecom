@@ -5,7 +5,7 @@
    <translation id="sms_sms_pending_title" qtlid="342031">Suplanuotos SMS</translation>
 
    <translation id="sms_sms_pending_label_date" qtlid="24523">Data</translation>
-   <translation id="sms_sms_pending_label_scheduled" qtlid="312480">Programmé</translation>
+   <translation id="sms_sms_pending_label_scheduled" qtlid="312480">Suprogramuota</translation>
    <translation id="sms_sms_pending_label_sender" qtlid="24535">Siuntėjas</translation>
    <translation id="sms_sms_pending_label_receiver" qtlid="40442">Gavėjas</translation>
    <translation id="sms_sms_pending_label_message" qtlid="30574">Pranešimas</translation>
@@ -30,7 +30,7 @@
 
    <translation id="sms_sms_pending_ko" qtlid="342525">Negalima ištrinti SMS.</translation>
 
-   <translation id="sms_sms_pending_cancel" qtlid="394972">Annuler le SMS sélectionné</translation>
-   <translation id="sms_sms_pending_cancel_plural" qtlid="394985">Annuler les {{ count }} SMS sélectionnés</translation>
-   <translation id="sms_sms_pending_cancel_success" qtlid="394998">Annulation en cours…</translation>
+   <translation id="sms_sms_pending_cancel" qtlid="394972">Atšaukti pasirinktą SMS</translation>
+   <translation id="sms_sms_pending_cancel_plural" qtlid="394985">Atšaukti {{ count }} pasirinktus SMS </translation>
+   <translation id="sms_sms_pending_cancel_success" qtlid="394998">Atšaukiama</translation>
 </translations>

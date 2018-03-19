@@ -127,6 +127,6 @@
    <translation id="telecom_pack_migration_service_delete_count_single" qtlid="332762">{{count}} servicio a eliminar</translation>
    <translation id="telecom_pack_migration_service_delete_confirm" qtlid="332775">Confirmar la eliminación de servicios</translation>
 
-   <translation id="telecom_pack_migration_shipping_contact" qtlid="384623">Contact de livraison</translation>
-   <translation id="telecom_pack_migration_shipping_mode" qtlid="384636">Mode de livraison</translation>
+   <translation id="telecom_pack_migration_shipping_contact" qtlid="384623">Contacto de entrega</translation>
+   <translation id="telecom_pack_migration_shipping_mode" qtlid="384636">Modo de entrega</translation>
 </translations>

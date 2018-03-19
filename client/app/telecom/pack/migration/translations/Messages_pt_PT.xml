@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <translations>
    <translation id="telecom_pack_migration_back_link_title" qtlid="331709">Retour vers le détail du pack</translation>
-   <translation id="telecom_pack_migration_title" qtlid="305564">Changement d'offre</translation>
+   <translation id="telecom_pack_migration_title" qtlid="305564">Alteração da oferta</translation>
 
 <!-- TABLE -->
    <translation id="telecom_pack_migration_current_offer" qtlid="331722">Offre actuelle : {{ offerName }}</translation>
@@ -45,7 +45,7 @@
    <translation id="telecom_pack_migration_ecofax_line_included" qtlid="332034">{{ number }} ligne EcoFax incluse</translation>
 
 <!-- DOMAIN -->
-   <translation id="telecom_pack_migration_domain_title" qtlid="66428">Nome de domínio</translation>
+   <translation id="telecom_pack_migration_domain_title" qtlid="66428">Domínio</translation>
    <translation id="telecom_pack_migration_domains_included" qtlid="332047">{{ number }} noms de domaine inclus</translation>
    <translation id="telecom_pack_migration_domain_included" qtlid="332060">{{ number }} nom de domaine inclus</translation>
    <translation id="telecom_pack_migration_add_domains_upto" qtlid="332073">Ajoutez jusqu'à {{ max }} domaines</translation>
@@ -78,7 +78,7 @@
    <translation id="telecom_pack_migration_confirm_resume_gtr_ovh" qtlid="332294">Option GTR OVH (si éligible)</translation>
    <translation id="telecom_pack_migration_confirm_resume_total" qtlid="332307">Soit un total de :</translation>
 
-   <translation id="telecom_pack_migration_confirm_resume_domain" qtlid="66428">Nome de domínio</translation>
+   <translation id="telecom_pack_migration_confirm_resume_domain" qtlid="66428">Domínio</translation>
    <translation id="telecom_pack_migration_confirm_resume_exchangeAccount" qtlid="332320">Compte Exchange</translation>
    <translation id="telecom_pack_migration_confirm_resume_exchangeIndividual" qtlid="332333">Compte Exchange Individuel</translation>
    <translation id="telecom_pack_migration_confirm_resume_exchangeLite" qtlid="332346">Compte Exchange Lite</translation>
