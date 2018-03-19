@@ -14,7 +14,9 @@
 
     <div class="modal-body"
          data-ng-if="!UsersLimitCtrl.loading.init && !UsersLimitCtrl.loading.limitUser && !UsersLimitCtrl.limited">
-        <h3 data-translate="sms_users_limit_user_title"></h3>
+        <h3 class="modal-title"
+            data-translate="sms_users_limit_user_title">
+        </h3>
 
         <p class="word-break"
            data-translate="sms_users_limit_user_info"
@@ -156,13 +158,13 @@
 
     <div class="modal-body text-center"
          data-ng-if="UsersLimitCtrl.loading.init">
-        <oui-loader data-size="m"></oui-loader>
+        <oui-spinner></oui-spinner>
         <h4 data-translate="loading"></h4>
     </div>
 
     <div class="modal-body text-center"
          data-ng-if="UsersLimitCtrl.loading.limitUser && !UsersLimitCtrl.limited">
-        <oui-loader data-size="m"></oui-loader>
+        <oui-spinner></oui-spinner>
         <h4 data-translate="sms_users_limit_user_adding"></h4>
     </div>
 

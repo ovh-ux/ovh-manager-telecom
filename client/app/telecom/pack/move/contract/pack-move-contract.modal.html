@@ -10,11 +10,13 @@
     </div>
     <div class="text-center"
          data-ng-if="PackMoveContract.loading">
-        <oui-loader data-size="m"></oui-loader>
+        <oui-spinner></oui-spinner>
     </div>
 
     <div class="modal-body" data-ng-if="!PackMoveContract.loading">
-        <h3 data-translate="pack_move_contract_title"></h3>
+        <h3 class="modal-title"
+            data-translate="pack_move_contract_title">
+        </h3>
         <p>
             <span data-translate="pack_move_contract_are_you_sure"></span>
             <strong class="text-primary" data-translate="pack_move_contract_move"></strong>

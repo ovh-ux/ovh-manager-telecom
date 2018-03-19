@@ -14,7 +14,9 @@
 
     <div class="modal-body"
          data-ng-if="!TemplateRelaunchCtrl.loading.relaunchTemplate && !TemplateRelaunchCtrl.relaunched">
-        <h3 data-translate="sms_sms_templates_remove"></h3>
+        <h3 class="modal-title"
+            data-translate="sms_sms_templates_remove">
+        </h3>
 
         <!-- NAME -->
         <div class="form-group"
@@ -115,7 +117,7 @@
 
     <div class="modal-body text-center"
          data-ng-if="TemplateRelaunchCtrl.loading.relaunchTemplate && !TemplateRelaunchCtrl.relaunched">
-        <oui-loader data-size="m"></oui-loader>
+        <oui-spinner></oui-spinner>
         <h4 data-translate="sms_sms_templates_relaunching"></h4>
     </div>
 

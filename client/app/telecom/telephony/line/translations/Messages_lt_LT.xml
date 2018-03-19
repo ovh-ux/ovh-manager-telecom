@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <translations>
-   <translation id="telephony_line_page_title" qtlid="387354">Ligne "{{name}}"</translation>
+   <translation id="telephony_line_page_title" qtlid="387354">Linija "{{name}}"</translation>
    <translation id="telephony_line_tab_manage" qtlid="72737">Valdymas</translation>
    <translation id="telephony_line_tab_consumption" qtlid="25639">Sunaudojimas</translation>
    <translation id="telephony_line_tab_call_management" qtlid="334621">Skambučių valdymas</translation>
@@ -17,6 +17,6 @@
    <translation id="telephony_line_offer_type_priceplan" qtlid="358578">SIP Entreprise</translation>
    <translation id="telephony_line_expire_date" qtlid="358591">Paslauga baigėsi {{date}}.</translation>
    <translation id="telephony_line_expire_link" qtlid="358604">Galite atšaukti spragtelėję čia.</translation>
-   <translation id="telephony_line_convert_date" qtlid="387367">Cette ligne sera convertie en numéro le {{ date }}.</translation>
-   <translation id="telephony_line_convert_link" qtlid="358604">Galite atšaukti spragtelėję čia.</translation>
+   <translation id="telephony_line_convert_date" qtlid="387367">Ši linija bus konvertuota į numerį {{ date }}.</translation>
+   <translation id="telephony_line_convert_link" qtlid="458195">Vous pourrez annuler dans la section suivante.</translation>
 </translations>

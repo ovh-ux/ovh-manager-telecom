@@ -231,24 +231,32 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationQueue
     };
 
     self.addAgentToQueue = function (queue) {
-        queue.isAdding = true;
-        return OvhApiTelephony.OvhPabx().Hunting().Agent().Lexi().addToQueue({
-            billingAccount: $stateParams.billingAccount,
-            serviceName: $stateParams.serviceName,
-            agentId: queue.agentToAdd
-        }, {
-            queueId: queue.queueId,
-            position: 0
-        }).$promise.then(function () {
-            var added = _.find(self.agents, { agentId: queue.agentToAdd });
-            queue.agentsApi.addMembersToList([added]);
-            queue.agentToAdd = null;
-            queue.addAgent = false;
-            Toast.success($translate.instant("telephony_alias_configuration_queues_agent_add_success"));
-        }).catch(function (err) {
-            return new ToastError(err);
-        }).finally(function () {
-            queue.isAdding = false;
+        const modal = $uibModal.open({
+            animation: true,
+            templateUrl: "app/telecom/telephony/alias/configuration/queues/ovhPabx/telecom-telephony-alias-configuration-queues-ovhPabx-modal.html",
+            controller: "telecomTelephonyAliasConfigurationQueuesOvhPabxCtrlModal",
+            controllerAs: "$ctrl"
+        });
+        modal.result.then(function () {
+            queue.isAdding = true;
+            return OvhApiTelephony.OvhPabx().Hunting().Agent().Lexi().addToQueue({
+                billingAccount: $stateParams.billingAccount,
+                serviceName: $stateParams.serviceName,
+                agentId: queue.agentToAdd
+            }, {
+                queueId: queue.queueId,
+                position: 0
+            }).$promise.then(function () {
+                var added = _.find(self.agents, { agentId: queue.agentToAdd });
+                queue.agentsApi.addMembersToList([added]);
+                queue.agentToAdd = null;
+                queue.addAgent = false;
+                Toast.success($translate.instant("telephony_alias_configuration_queues_agent_add_success"));
+            }).catch(function (err) {
+                return new ToastError(err);
+            }).finally(function () {
+                queue.isAdding = false;
+            });
         });
     };
 

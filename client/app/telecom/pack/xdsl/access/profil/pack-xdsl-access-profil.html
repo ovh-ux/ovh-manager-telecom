@@ -1,7 +1,7 @@
 <div data-ng-controller="XdslAccessProfileCtrl as ProfileCtrl">
-    <oui-loader data-ng-if="ProfileCtrl.loader"
-                data-size="m">
-    </oui-loader>
+    <div class="text-center" data-ng-if="ProfileCtrl.loader">
+        <oui-spinner></oui-spinner>
+    </div>
 
     <form name="DslamProfilForm"
         class="clearfix"
@@ -27,7 +27,7 @@
     </form>
     <div class="mt-2 text-center"
          data-ng-if="access.tasks.current.dslamProfileChange">
-        <oui-loader data-size="m"></oui-loader>
+        <oui-spinner></oui-spinner>
         <span data-translate="xdsl_access_profile_doing"></span>
     </div>
 </div>

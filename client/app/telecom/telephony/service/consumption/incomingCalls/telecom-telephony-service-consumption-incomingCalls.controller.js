@@ -46,7 +46,6 @@ angular.module("managerApp").controller("TelecomTelephonyServiceConsumptionIncom
             paginated: null,
             selected: null,
             durationSum: 0,
-            isLoading: false,
             orderBy: "creationDatetime",
             orderDesc: true,
             filterBy: {
@@ -63,17 +62,14 @@ angular.module("managerApp").controller("TelecomTelephonyServiceConsumptionIncom
 
         self.serviceName = $stateParams.serviceName;
 
-        self.consumption.isLoading = true;
         fetchIncomingConsumption().then(function (result) {
             self.consumption.raw = angular.copy(result);
-            self.applySorting();
+            self.consumption.sorted = angular.copy(result);
             self.consumption.durationSum = new Date(_.sum(self.consumption.raw, function (conso) {
                 return conso.duration;
             }) * 1000);
-        }).catch(function (err) {
+        }, function (err) {
             return new ToastError(err);
-        }).finally(function () {
-            self.consumption.isLoading = false;
         });
     }
 

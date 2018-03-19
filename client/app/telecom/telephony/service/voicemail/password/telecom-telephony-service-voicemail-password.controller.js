@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyServiceVoicemailPasswordCtrl", function ($stateParams, $translate, $timeout, OvhApiTelephony, ToastError, telephonyBulk, Toast) {
+angular.module("managerApp").controller("TelecomTelephonyServiceVoicemailPasswordCtrl", function ($state, $stateParams, $translate, $timeout, OvhApiTelephony, ToastError, telephonyBulk, Toast) {
     "use strict";
 
     var self = this;
@@ -8,6 +8,8 @@ angular.module("managerApp").controller("TelecomTelephonyServiceVoicemailPasswor
         self.loading = true;
         self.submitting = false;
         self.reset();
+
+        self.isFax = $state.current.name.indexOf("fax") > -1;
 
         return OvhApiTelephony.Voicemail().Lexi().getNumbersSettings({
             billingAccount: $stateParams.billingAccount,
@@ -71,7 +73,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceVoicemailPasswor
 
     self.filterServices = function (services) {
         return _.filter(services, function (service) {
-            return ["sip", "mgcp"].indexOf(service.featureType) > -1;
+            return ["sip", "mgcp", "fax", "voicefax"].indexOf(service.featureType) > -1;
         });
     };
 

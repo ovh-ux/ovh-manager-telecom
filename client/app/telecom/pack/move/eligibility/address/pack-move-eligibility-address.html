@@ -146,16 +146,9 @@
                 data-translate="submit"
                 class="btn btn-primary">
         </button>
-        <oui-loader class="ml-2"
-                    data-ng-if="PackMoveEligibilityAddress.loading"
-                    data-size="s">
-        </oui-loader>
+        <oui-spinner class="ml-2"
+                     data-ng-if="PackMoveEligibilityAddress.loading"
+                     data-size="s">
+        </oui-spinner>
     </div>
 </form>
-
-<div class="alert alert-warning mt-5"
-     role="alert"
-     data-ng-if="PackMoveEligibilityAddress.eligibilityError">
-     <div data-translate="pack_move_eligibility_error"></div>
-     <div data-ng-bind="PackMoveEligibilityAddress.eligibilityError"></div>
-</div>

@@ -30,7 +30,7 @@
 
    <translation id="telephony_order_confirm" qtlid="333776">Commandez ({{total}} TTC)</translation>
 
-   <translation id="telephony_order_identity_first_name" qtlid="23323">Prénom</translation>
+   <translation id="telephony_order_identity_first_name" qtlid="23323">Nombre</translation>
    <translation id="telephony_order_identity_name" qtlid="3818">Nombre</translation>
    <translation id="telephony_order_identity_email" qtlid="393022">Courriel</translation>
    <translation id="telephony_order_identity_phone" qtlid="34174">Téléphone</translation>

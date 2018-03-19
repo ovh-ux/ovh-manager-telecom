@@ -31,15 +31,6 @@ angular.module("managerApp").directive("editableServiceName", function ($timeout
                         editableServiceNameCtrl.cancelEdition();
                         $scope.$apply();
                     }
-                } else if (event.type === "focusout") { // this is the blur event
-                    // As event.relatedTarget is not implemented in all browser we can use document.activeElement with a timeout to know if we have to hide or not input.
-                    // see http://stackoverflow.com/questions/22879572/javascript-focusout-get-the-element-that-receives-focus for more explain.
-                    $timeout(function () {
-                        if (!document.activeElement || (document.activeElement && !$(document.activeElement).is("button.btn-editable"))) {
-                            editableServiceNameCtrl.cancelEdition();
-                        }
-                    });
-
                 }
             });
 

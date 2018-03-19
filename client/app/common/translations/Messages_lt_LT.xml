@@ -10,8 +10,17 @@
    <translation id="ttc" qtlid="101385">su PVM</translation>
    <translation id="table_sort" qtlid="94699">Rikiuoti</translation>
 
+   <translation id="common_datagrid_nodata" qtlid="197635">Jokio rezultato</translation>
+   <translation id="common_pagination_resultsperpage" qtlid="433384">Rezultatai / 1 psl.</translation>
+   <translation id="common_pagination_ofnresults" qtlid="452982">viso rezultatų: TOTAL_ITEMS </translation>
+   <translation id="common_pagination_currentpageofpagecount" qtlid="452995">Puslapis CURRENT_PAGE iš PAGE_COUNT</translation>
+
    <translation id="yes" qtlid="50134">taip</translation>
+   <translation id="common_yes_capitalized" qtlid="34776">Taip</translation>
    <translation id="no" qtlid="50602">ne</translation>
+   <translation id="common_no_capitalized" qtlid="34788">Ne</translation>
+   <translation id="previous" qtlid="17431">Ankstesnis</translation>
+   <translation id="next" qtlid="17743">Toliau</translation>
 
    <translation id="show" qtlid="69353">Rodyti</translation>
    <translation id="hide" qtlid="26539">Paslėpti</translation>
@@ -33,10 +42,11 @@
    <translation id="modify" qtlid="37875">Keisti</translation>
    <translation id="access" qtlid="304524">Pereiti</translation>
    <translation id="edit_name" qtlid="304537">Redaguoti {{name}}</translation>
+   <translation id="common_create" qtlid="39226">Sukurti</translation>
    <translation id="cancel" qtlid="37863">Anuliuoti</translation>
    <translation id="delete" qtlid="2414">Trinti</translation>
    <translation id="delete_name" qtlid="304550">Ištrinti {{name}}</translation>
-   <translation id="ok" qtlid="224880">Ok</translation>
+   <translation id="ok" qtlid="224880">OK</translation>
    <translation id="more_info" qtlid="34102">Daugiau informacijos</translation>
    <translation id="configure" qtlid="4010">Konfigūruoti</translation>
    <translation id="none" qtlid="8674">Tuščia</translation>
@@ -70,6 +80,13 @@
    <translation id="sidebar_menu" qtlid="304576">Meniu</translation>
    <translation id="sidebar_placeholder" qtlid="122275">Ieškoma...</translation>
    <translation id="sidebar_no_item_found" qtlid="304589">Joks elementas neatitinka paieškos.</translation>
+
+
+   <translation id="browser_alert_not_supported" qtlid="405357">Jūsų naršyklė nepalaikoma.</translation>
+   <translation id="browser_alert_deprecated" qtlid="405370">Jūsų naršyklė neatnaujinta, galimos saugumo ar suderinamumo spragos.</translation>
+   <translation id="browser_alert_update" qtlid="455699">Nous vous recommandons de <a href="http://outdatedbrowser.com/fr" class="alert-link" target="_blank" rel="noopener">mettre à jour votre navigateur <i class="fa fa-external-link" aria-hidden="true"></i></a> afin de profiter d'une expérience optimale.</translation>
+   <translation id="browser_alert_close" qtlid="405396">Uždaryti šį įspėjimą</translation>
+
 <!-- xdsl/sidebar -->
    <translation id="label-menu-item-ok" qtlid="304602">Ši linija aktyvi</translation>
    <translation id="label-menu-item-down" qtlid="304615">Problemos linijoje.</translation>
@@ -109,7 +126,6 @@
    <translation id="common_menu_cloud" qtlid="15677">Cloud</translation>
    <translation id="common_menu_telecom" qtlid="135827">Telecom</translation>
    <translation id="common_menu_gamma" qtlid="232401">Sunrise</translation>
-   <translation id="common_menu_telecom" qtlid="158214">Telecom</translation>
 <translation id="common_menu_portal" translate="none">MyOVH</translation>
    <translation id="common_menu_partners" qtlid="383512">Partneriai</translation>
    <translation id="common_menu_orders" qtlid="42394">Užsakymų suvestinė</translation>
@@ -118,6 +134,10 @@
    <translation id="common_menu_billing" qtlid="32950">Sąskaita</translation>
    <translation id="common_menu_language" qtlid="30598">Kalba</translation>
    <translation id="common_menu_account" qtlid="157642">Mano paskyra</translation>
+   <translation id="common_menu_renew" qtlid="229658">Mano paslaugos</translation>
+   <translation id="common_menu_orders_all" qtlid="282809">Mano užsakymai</translation>
+   <translation id="common_menu_contacts" qtlid="70541">Mano kontaktai</translation>
+   <translation id="common_menu_list_ticket" qtlid="454039">Mano pagalbos užklausos</translation>
    <translation id="common_menu_support_assistance" qtlid="52699">Pagalba</translation>
    <translation id="common_menu_support_all_guides" qtlid="260788">Visi gidai</translation>
    <translation id="common_menu_support_new_ticket" qtlid="260801">Sukurti pagalbos užklausą</translation>
@@ -126,6 +146,7 @@
    <translation id="common_menu_support_telephony_contact" qtlid="260827">Pagalba telefonu</translation>
    <translation id="common_menu_telephony_redirection" qtlid="304797">Pereiti į telefonijos valdymo sąsają</translation>
    <translation id="common_menu_support_changelog" qtlid="124964">Atnaujinimų istorija</translation>
+   <translation id="common_skip_to_main_content" qtlid="454052">Eiti į pagrindinį meniu</translation>
    <translation id="global_logout" qtlid="33658">Atjungimas</translation>
 
    <translation id="common_pagination_page" qtlid="239246">Puslapis {{currentPage}} / {{nbPages}}</translation>
@@ -152,9 +173,11 @@
 
    <translation id="common_menu_changelog" qtlid="260971">Changelog</translation>
 
+   <translation id="common_express_lite_banner_desc" qtlid="455712">Express Lite comprend donc un modem offrant un accès à internet et une ligne VoIP pour <span class="ad-price font-weight-bold fs14">22,99€ HT</span>&#160;/&#160;mois.</translation>
    <translation id="common_express_lite_banner_title" qtlid="304888">OVH pateikė naują ADSL pasiūlymą, į kurį įtrauktas VDSL.</translation>
    <translation id="common_generate_order" qtlid="186219">Kurti užsakymą</translation>
    <translation id="common_boost_banner_title" qtlid="304901">OVH pateikė dviejų serijų jungtį, kad būtų gaunamas geriausias ryšys.</translation>
+   <translation id="common_boost_banner_desc" qtlid="455725">Sécurisez votre connexion avec l'offre <span class="ad-price font-weight-bold fs14">CONNECT</span> ou doublez votre débit avec l'offre <span class="ad-price font-weight-bold fs14">BOOST</span> qui inclut le matériel et le service <span class="ad-price font-weight-bold fs14">OVER THE BOX</span>.<br/><small>Offre limitée aux 240 premières commandes.</small></translation>
    <translation id="common_banner_discover" qtlid="304927">Susipažinti su paslauga</translation>
    <translation id="common_service_name_edit_title" qtlid="331683">{{ title }}: keisti paslaugos pavadinimą</translation>
 
@@ -169,11 +192,26 @@
    <translation id="common_filter" qtlid="59207">Filtruoti</translation>
    <translation id="common_home" qtlid="27643">Pradžia</translation>
 
+<!-- Units -->
+   <translation id="unit_bits_per_sec" qtlid="455738">{{val}} bits/s</translation>
+   <translation id="unit_kilo_bits_per_sec" qtlid="455751">{{val}} Kbs/s</translation>
+   <translation id="unit_mega_bits_per_sec" qtlid="455764">{{val}} Mbs/s</translation>
+   <translation id="unit_giga_bits_per_sec" qtlid="455777">{{val}} Gbs/s</translation>
+   <translation id="unit_tera_bits_per_sec" qtlid="455790">{{val}} Tbs/s</translation>
+   <translation id="unit_peta_bits_per_sec" qtlid="455803">{{val}} Pbs/s</translation>
+
+   <translation id="unit_generic_per_sec" qtlid="455816">{{val}}</translation>
+   <translation id="unit_kilo_generic_per_sec" qtlid="455829">{{val}} K</translation>
+   <translation id="unit_mega_generic_per_sec" qtlid="455842">{{val}} M</translation>
+   <translation id="unit_giga_generic_per_sec" qtlid="455855">{{val}} G</translation>
+   <translation id="unit_tera_generic_per_sec" qtlid="455868">{{val}} T</translation>
+   <translation id="unit_peta_generic_per_sec" qtlid="455881">{{val}} P</translation>
+
 <!-- LANGUAGE LIST -->
    <translation id="language_de_DE" qtlid="31618">Vokiečių</translation>
    <translation id="language_en_GB" qtlid="33838">Anglų</translation>
    <translation id="language_en_US" qtlid="377812">Anglų (JAV)</translation>
-   <translation id="language_en_CA" qtlid="377825">Anglų (Canada)</translation>
+   <translation id="language_en_CA" qtlid="377825">Anglų (Kanada)</translation>
    <translation id="language_es_ES" qtlid="33454">Ispanų</translation>
    <translation id="language_fr_FR" qtlid="29684">Prancūzų</translation>
    <translation id="language_fr_CA" qtlid="324912">Prancūzų k. (Kanados)</translation>
@@ -264,7 +302,7 @@
    <translation id="country_FO" qtlid="187729">Feorės salos</translation>
    <translation id="country_FR" qtlid="29047">Prancūzija</translation>
    <translation id="country_GA" qtlid="187742">Gabonas</translation>
-   <translation id="country_GB" qtlid="386821">Grande-Bretagne</translation>
+   <translation id="country_GB" qtlid="386821">Didžioji Britanija</translation>
    <translation id="country_GD" qtlid="187755">Grenada</translation>
    <translation id="country_GE" qtlid="187768">Gruzija</translation>
    <translation id="country_GF" qtlid="187781">Prancūzų Gajana</translation>
@@ -312,7 +350,7 @@
    <translation id="country_KW" qtlid="188262">Kuveitas</translation>
    <translation id="country_KY" qtlid="188275">Kaimanų salos</translation>
    <translation id="country_KZ" qtlid="188288">Kazachstanas</translation>
-   <translation id="country_LA" qtlid="188301">Laosas</translation>
+   <translation id="country_LA" qtlid="188301">Laosas, Liaudies demokratinė respublika -</translation>
    <translation id="country_LB" qtlid="188314">Libanas</translation>
    <translation id="country_LC" qtlid="188327">Sent Liusija</translation>
    <translation id="country_LI" qtlid="188340">Lichtenšteinas</translation>
@@ -375,7 +413,7 @@
    <translation id="country_PY" qtlid="188938">Paragvajus</translation>
    <translation id="country_QA" qtlid="188951">Kvataras</translation>
    <translation id="country_QC" qtlid="188964">Kvebekas</translation>
-   <translation id="country_RE" qtlid="188977">Reunjonas</translation>
+   <translation id="country_RE" qtlid="188977">Susitikimas</translation>
    <translation id="country_RO" qtlid="43666">Rumunija</translation>
    <translation id="country_RS" qtlid="188990">Serbija</translation>
    <translation id="country_RU" qtlid="43618">Rusija</translation>

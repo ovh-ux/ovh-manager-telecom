@@ -10,9 +10,9 @@
             </span>
         </h3>
 
-        <oui-loader data-ng-if="DhcpCtrl.loader"
-                    data-size="m">
-        </oui-loader>
+        <div class="text-center" data-ng-if="DhcpCtrl.loader">
+            <oui-spinner></oui-spinner>
+        </div>
 
         <table class="table table-hover table-condensed" data-ng-if="!DhcpCtrl.loader">
             <thead>
@@ -129,7 +129,7 @@
 							class="form-control"
 							data-ng-model="dhcp.tempValue.secondaryDNS"
 							placeholder="x.x.x.x"
-							data-ui-validate="'DhcpCtrl.validator.isIP($value)'"
+							data-ui-validate="'DhcpCtrl.validator.isIP($value) || !$value'"
 							data-maxlength="15"/>
                     </td>
 

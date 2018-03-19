@@ -9,9 +9,9 @@
     data-ng-really-window-class="revert-really-buttons"
     data-ng-disabled="!RebootCtrl.mediator.capabilities.canReboot">
     <span data-ng-if="RebootCtrl.mediator.tasks.rebootModem">
-        <oui-loader class="mr-2"
-                    data-size="s">
-        </oui-loader>
+        <oui-spinner class="mr-2"
+                     data-size="s">
+        </oui-spinner>
         <span data-translate="xdsl_modem_reboot_success"></span>
     </span>
     <span data-ng-if="!RebootCtrl.mediator.tasks.rebootModem" data-translate="xdsl_modem_reboot"></span>

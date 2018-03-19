@@ -16,4 +16,11 @@
    <translation id="xdsl_statistics_preview_label" qtlid="309438">Dernièrement</translation>
    <translation id="xdsl_statistics_error" qtlid="309451">Les données sont momentanément indisponibles</translation>
    <translation id="xdsl_statistics_hour" qtlid="309464">(heure UTC/GMT ({{-offset}}) h)</translation>
+
+   <translation id="xdsl_statistics_bits_per_sec_legend" qtlid="456115">bits/s</translation>
+   <translation id="xdsl_statistics_millisecond_legend" qtlid="456128">ms</translation>
+   <translation id="xdsl_statistics_decibel_legend" qtlid="456141">dB</translation>
+   <translation id="xdsl_statistics_ping_ms" qtlid="456154">{{value}} ms</translation>
+   <translation id="xdsl_statistics_ping_s" qtlid="456167">{{value}} s</translation>
+   <translation id="xdsl_statistics_decibel" qtlid="456180">{{value}} dB</translation>
 </translations>

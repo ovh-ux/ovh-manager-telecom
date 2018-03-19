@@ -9,9 +9,9 @@
 
 </section>
 
-<oui-loader data-ng-if="LineAbbreviatedNumbersCtrl.loading.init"
-            data-size="m">
-</oui-loader>
+<div class="text-center" data-ng-if="LineAbbreviatedNumbersCtrl.loading.init">
+    <oui-spinner></oui-spinner>
+</div>
 
 <div class="telecom-section-content"
      data-ng-hide="LineAbbreviatedNumbersCtrl.loading.init">

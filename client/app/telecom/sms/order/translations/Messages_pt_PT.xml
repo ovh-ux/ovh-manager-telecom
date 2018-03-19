@@ -6,7 +6,7 @@
    <translation id="sms_order_credit_label" qtlid="346469">Nombre de crédits&#160;:&#160;</translation>
    <translation id="sms_order_credit_custom_label" qtlid="360125">Quantité désirée&#160;:&#160;</translation>
    <translation id="sms_order_credit_custom" qtlid="19963">Outro</translation>
-   <translation id="sms_order_order" qtlid="186219">Gerar a nota de encomenda</translation>
+   <translation id="sms_order_order" qtlid="186219">Gerar nota de encomenda</translation>
    <translation id="sms_order_ko" qtlid="360138">Impossible de générer le bon de commande</translation>
    <translation id="sms_order_order_url" qtlid="360151">bon de commande</translation>
    <translation id="sms_order_order_site" qtlid="346508">Commander sur le site</translation>

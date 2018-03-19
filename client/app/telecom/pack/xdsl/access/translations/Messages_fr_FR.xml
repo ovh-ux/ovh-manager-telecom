@@ -19,14 +19,14 @@
 
    <translation id="xdsl_details_caracteristics" qtlid="309568">Caractéristiques</translation>
    <translation id="xdsl_details_mac_address" qtlid="42562">Adresse MAC</translation>
-   <translation id="xdsl_details_modem_model">Modèle du modem</translation>
+   <translation id="xdsl_details_modem_model" qtlid="455998">Modèle du modem</translation>
    <translation id="xdsl_details_mac_address_description" qtlid="309581">Adresse physique de l'équipement</translation>
    <translation id="xdsl_details_sync_label" qtlid="60698">Synchronisation</translation>
    <translation id="xdsl_details_concentrationPoint_lineHead_label" qtlid="309594">Tête</translation>
    <translation id="xdsl_details_concentrationPoint_lineInitialSectionPair_label" qtlid="309607">Paire</translation>
    <translation id="xdsl_details_concentrationPoint_lineInitialSection_label" qtlid="309620">Amorce</translation>
    <translation id="xdsl_details_followUp_label" qtlid="78870">Suivi de commande</translation>
-   <translation id="xdsl_details_followUp_label_step_name_detail">Afficher le suivi</translation>
+   <translation id="xdsl_details_followUp_label_step_name_detail" qtlid="456011">Afficher le suivi</translation>
    <translation id="xdsl_details_details_label" qtlid="37527">Détails</translation>
    <translation id="xdsl_details_status_label" qtlid="33790">État</translation>
    <translation id="xdsl_details_type_label" qtlid="2642">Type</translation>
@@ -51,15 +51,16 @@
    <translation id="xdsl_details_ips_v4" qtlid="101781">IPv4</translation>
    <translation id="xdsl_details_ips_v6" qtlid="34126">IPv6</translation>
    <translation id="xdsl_details_ips_remove_only_extra" qtlid="309737">Il n'est possible d'enlever que les blocks d'IPs supplémentaires</translation>
-   <translation id="xdsl_details_ips_manage">gérer les IPs</translation>
-   <translation id="xdsl_details_ips_delete">supprimer ce bloc d'IPs</translation>
+   <translation id="xdsl_details_ips_manage" qtlid="456024">gérer les IPs</translation>
+   <translation id="xdsl_details_ips_delete" qtlid="456037">supprimer ce bloc d'IPs</translation>
    <translation id="xdsl_details_ips_notifications" qtlid="72797">Alertes</translation>
    <translation id="xdsl_details_ips_title" qtlid="309750">IPs</translation>
    <translation id="xdsl_details_ips_order" qtlid="43558">Commander</translation>
    <translation id="xdsl_access_ip_delete_really" qtlid="309763">Voulez-vous vraiment supprimer le bloc d'IP <b>{{ip}}/{{range}}</b></translation>
-   <translation id="xdsl_access_ip_block_delete_success">Votre demande de suppression du bloc d'IP <b>{{ip}}</b> a bien été prise en compte.</translation>
-   <translation id="xdsl_access_ip_block_delete_error">Une erreur est survenue lors de la demande de suppression du bloc d'IP.</translation>
-   <translation id="xdsl_access_ip_is_being_deleted">en cours de suppression</translation>
+   <translation id="xdsl_details_ips_block_pending_order" qtlid="456050">Une commande est en cours de validation</translation>
+   <translation id="xdsl_access_ip_block_delete_success" qtlid="456063">Votre demande de suppression du bloc d'IP <b>{{ip}}</b> a bien été prise en compte.</translation>
+   <translation id="xdsl_access_ip_block_delete_error" qtlid="456076">Une erreur est survenue lors de la demande de suppression du bloc d'IP.</translation>
+   <translation id="xdsl_access_ip_is_being_deleted" qtlid="456089">en cours de suppression</translation>
 
 <!-- status -->
    <translation id="xdsl_details_status_active" qtlid="55133">Actif</translation>
@@ -80,7 +81,7 @@
    <translation id="xdsl_details_notif_show_none_part2" qtlid="309841">et / ou SMS lorsque l'accès ne répond plus.</translation>
    <translation id="xdsl_details_notif_show_many" qtlid="309854">{{count}} alertes programmées</translation>
    <translation id="xdsl_details_notif_show_one" qtlid="309867">{{count}} alerte programmée</translation>
-   <translation id="xdsl_details_notif_show_alerts">Afficher les alertes</translation>
+   <translation id="xdsl_details_notif_show_alerts" qtlid="456102">Afficher les alertes</translation>
 
 <!-- collecte -->
    <translation id="xdsl_connection_ovh" qtlid="309880">Dégroupé OVH</translation>

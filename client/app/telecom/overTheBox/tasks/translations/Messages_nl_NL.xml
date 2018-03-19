@@ -2,7 +2,7 @@
 <translations>
    <translation id="overTheBox_tasks_list" qtlid="289575">Overzicht van taken</translation>
    <translation id="overTheBox_tasks_id" qtlid="8194">ID</translation>
-   <translation id="overTheBox_tasks_name" qtlid="3818">Voor- en achternaam</translation>
+   <translation id="overTheBox_tasks_name" qtlid="3818">Naam</translation>
    <translation id="overTheBox_tasks_status" qtlid="26443">Status</translation>
    <translation id="overTheBox_no_task" qtlid="217093">Geen taken</translation>
    <translation id="overTheBox_tasks_status_todo" qtlid="134605">om te doen</translation>

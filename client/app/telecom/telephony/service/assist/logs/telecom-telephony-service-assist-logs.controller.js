@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyServiceAssistLogsCtrl", function ($q, $translate, $stateParams, voipService, voipLineFeature, OvhApiMe, Toast, PAGINATION_PER_PAGE, telephonyBulk) {
+angular.module("managerApp").controller("TelecomTelephonyServiceAssistLogsCtrl", function ($q, $translate, $state, $stateParams, voipService, voipLineFeature, OvhApiMe, Toast, PAGINATION_PER_PAGE, telephonyBulk) {
     "use strict";
 
     var self = this;
@@ -123,6 +123,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceAssistLogsCtrl",
             self.service = service;
             self.bulkDatas.billingAccount = self.service.billingAccount;
             self.bulkDatas.serviceName = self.service.serviceName;
+            self.type = self.service.featureType === "fax" ? "fax" : "line";
 
             return $q.all({
                 feature: voipLineFeature.fetchFeature(service),
@@ -137,14 +138,11 @@ angular.module("managerApp").controller("TelecomTelephonyServiceAssistLogsCtrl",
     };
 
     /* -----  End of INITIALIZATION  ------*/
-
-
     self.bulkDatas = {
         infos: {
             name: "assistLogs",
             actions: [{
                 name: "assistLogs",
-                route: "/telephony/{billingAccount}/line/{serviceName}",
                 method: "PUT",
                 params: null
             }]
@@ -158,6 +156,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceAssistLogsCtrl",
     };
 
     self.getBulkParams = function () {
+        self.bulkDatas.infos.actions[0].route = "/telephony/{billingAccount}/" + self.type + "/{serviceName}";
         var logs = self.edition.mode ? self.edition.notifications.logs : self.service.feature.notifications.logs;
         return {
             notifications: {

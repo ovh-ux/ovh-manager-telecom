@@ -55,9 +55,9 @@
             <span data-translate="overTheBox_expiration_warning_help"></span>
         </div>
 
-        <oui-loader data-ng-if="OverTheBoxDetails.loaders.init"
-                    data-size="m">
-        </oui-loader>
+        <div class="text-center" data-ng-if="OverTheBoxDetails.loaders.init">
+            <oui-spinner></oui-spinner>
+        </div>
 
         <!-- DEVICE LINKED NOT ACTIVATED -->
         <div data-ng-if="!OverTheBoxDetails.loaders.device && OverTheBoxDetails.device && !OverTheBoxDetails.device.activated"
@@ -220,9 +220,9 @@
                         <h3 class="oui-header_3 oui-tile__title"
                             data-translate="overthebox_traffic_download">
                         </h3>
-                        <div class="oui-tile__body"
+                        <div class="oui-tile__body text-center"
                              data-ng-if="OverTheBoxDetails.loaders.graph">
-                            <oui-loader data-size="m"></oui-loader>
+                            <oui-spinner></oui-spinner>
                         </div>
                         <div class="oui-tile__body"
                              data-ng-if="!OverTheBoxDetails.loaders.graph">
@@ -254,9 +254,9 @@
                         <h3 class="oui-header_3 oui-tile__title"
                             data-translate="overthebox_traffic_upload">
                         </h3>
-                        <div class="oui-tile__body"
+                        <div class="oui-tile__body text-center"
                              data-ng-if="OverTheBoxDetails.loaders.graph">
-                            <oui-loader data-size="m"></oui-loader>
+                            <oui-spinner></oui-spinner>
                         </div>
                         <div class="oui-tile__body"
                              data-ng-if="!OverTheBoxDetails.loaders.graph">

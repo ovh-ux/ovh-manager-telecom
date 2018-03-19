@@ -4,5 +4,5 @@
    <translation id="telephony_order_international_order_success" qtlid="333334">Tarptautiniai numeriai užsakyti. Prašome patvirtinti pagrindinę sutartį ir užbaigt užsakymą.</translation>
    <translation id="telephony_order_international_order_error" qtlid="333347">Klaida užsakant geografinius numerius. Prašome pabandyti vėliau.</translation>
    <translation id="telephony_order_international_countries_error" qtlid="333360">Negalima gauti šalių sąrašo.</translation>
-   <translation id="telephony_order_international_address_message" qtlid="386873">Afin de pouvoir disposer de votre numéro, merci de renseigner des coordonnées valides dans le pays concerné.</translation>
+   <translation id="telephony_order_international_address_message" qtlid="386873">Norėdami gauti numerį, įveskite tinkamus šalies duomenis.</translation>
 </translations>

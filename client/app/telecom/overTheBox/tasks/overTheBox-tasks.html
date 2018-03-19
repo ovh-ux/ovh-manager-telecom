@@ -9,77 +9,21 @@
                 data-translate="overTheBox_tasks_list">
             </h2>
 
-            <!-- TASKS LIST -->
-            <div class="table-responsive">
-                <table class="table"
-                       data-ng-class="{
-                           'table-hover table-striped': OverTheBoxTasks.taskIds.length > 1
-                       }">
-                    <thead>
-                        <tr>
-                            <th scope="col"
-                                data-translate="overTheBox_tasks_name">
-                            </th>
-                            <th scope="col"
-                                data-translate="overTheBox_tasks_id">
-                            </th>
-                            <th class="text-right"
-                                scope="col"
-                                data-translate="overTheBox_tasks_status">
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody data-ng-if="OverTheBoxTasks.loaders.init">
-                        <tr>
-                            <td colspan="3">
-                                <oui-loader data-size="m"></oui-loader>
-                            </td>
-                        </tr>
-                    </tbody>
-                    <tbody data-ng-if="OverTheBoxTasks.taskIds.length <= 0 && !OverTheBoxTasks.loaders.init">
-                        <tr>
-                            <td class="text-center"
-                                colspan="3"
-                                data-translate="overTheBox_no_task">
-                            </td>
-                        </tr>
-                    </tbody>
-                    <tbody data-ng-if="OverTheBoxTasks.taskIds.length > 0 && !OverTheBoxTasks.loaders.init">
-                        <tr data-ng-repeat="task in OverTheBoxTasks.tasks track by $index">
-                            <td data-title="{{:: 'overTheBox_tasks_name' | translate}}"
-                                data-ng-bind="task.name">
-                            </td>
-                            <td data-title="{{:: 'overTheBox_tasks_id' | translate}}"
-                                data-ng-bind="task.taskId">
-                            </td>
-                            <td class="text-right"
-                                data-title="{{:: 'overTheBox_tasks_status' | translate}}">
-                                <span class="label"
-                                      data-ng-class="{
-                                          'label-success': task.status === 'done',
-                                          'label-danger': tasks.status === 'error',
-                                          'label-info': tasks.status === 'doing',
-                                          'label-primary': tasks.status === 'todo'
-                                      }">
-                                    {{ 'overTheBox_tasks_status_' + task.status | translate }}
-                                </span>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="mt-2"
-                 data-pagination-front
-                 data-go-to-page="false"
-                 data-items="OverTheBoxTasks.taskIds"
-                 data-paginated-items="OverTheBoxTasks.tasks"
-                 data-current-page="currentPage"
-                 data-nb-pages="maxSize"
-                 data-items-per-page="OverTheBoxTasks.filter.perPage"
-                 data-transform-item="OverTheBoxTasks.onTransformItem(item)"
-                 data-page-placeholder="{{ 'common_pagination_go_to_page' | translate }}"
-                 data-item-per-page-placeholder="{{'common_pagination_show_by_page' |translate }}">
-            </div>
+            <oui-datagrid data-rows="OverTheBoxTasks.taskIds" data-row-loader="OverTheBoxTasks.transformItem($row)">
+                <oui-column data-title="'overTheBox_tasks_name' | translate" data-property="name" data-sortable="asc"></oui-column>
+                <oui-column data-title="'overTheBox_tasks_id' | translate" data-property="taskId" data-sortable></oui-column>
+                <oui-column data-title="'overTheBox_tasks_status' | translate" data-property="status" data-sortable>
+                    <span class="label"
+                          data-ng-class="{
+                                'label-success': $row.status === 'done',
+                                'label-danger': $row.status === 'error',
+                                'label-info': $row.status === 'doing',
+                                'label-primary': $row.status === 'todo'
+                            }">
+                        <span data-ng-bind="'overTheBox_tasks_status_' + $row.status | translate"></span>  
+                    </span>
+                </oui-column>
+            </oui-datagrid>
         </div>
     </div>
 </div>

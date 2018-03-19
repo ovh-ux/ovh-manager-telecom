@@ -14,7 +14,9 @@
 
     <div class="modal-body"
          data-ng-if="!UsersTemplatesCtrl.loading.updateTemplates && !UsersTemplatesCtrl.updated">
-        <h3 data-translate="sms_users_templates_title"></h3>
+        <h3 class="modal-title"
+            data-translate="sms_users_templates_title">
+        </h3>
         <div class="alert alert-info"
              role="alert">
             <p data-translate="sms_users_templates_variable_info"></p>
@@ -199,7 +201,7 @@
 
     <div class="modal-body text-center"
          data-ng-if="UsersTemplatesCtrl.loading.updateTemplates && !UsersTemplatesCtrl.updated">
-        <oui-loader data-size="m"></oui-loader>
+        <oui-spinner></oui-spinner>
         <h4 data-translate="sms_users_templates_adding"></h4>
     </div>
 

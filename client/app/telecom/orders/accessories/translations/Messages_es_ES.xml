@@ -2,7 +2,7 @@
 <translations>
    <translation id="telecom_orders_accessories_title" qtlid="336857">Contratar accesorios</translation>
    <translation id="telecom_orders_accessories_group_choice" qtlid="345910">Grupo de telefonía</translation>
-   <translation id="telecom_orders_accessories_group_choice_label" qtlid="395869">Sélectionnez le groupe de téléphonie auquel lier la commande d'accessoires :</translation>
-   <translation id="telecom_orders_accessories_group_load_error" qtlid="395882">Oups ! Impossible de charger vos groupes de téléphonie.</translation>
-   <translation id="telecom_orders_accessories_order_error" qtlid="395895">Ce groupe ne comporte aucune ligne sur laquelle commander d'accessoire.</translation>
+   <translation id="telecom_orders_accessories_group_choice_label" qtlid="395869">Seleccione el grupo de telefonía al que desea asociar la contratación de accesorios:</translation>
+   <translation id="telecom_orders_accessories_group_load_error" qtlid="395882">¡Vaya! No es posible cargar sus grupos de telefonía.</translation>
+   <translation id="telecom_orders_accessories_order_error" qtlid="395895">Este grupo no incluye ninguna línea para la que contratar accesorios.</translation>
 </translations>

@@ -8,9 +8,9 @@
     </header>
 
     <!-- LOADING -->
-    <oui-loader data-ng-if="SmsSendersAddCtrl.loading.init"
-                data-size="m">
-    </oui-loader>
+    <div class="text-center" data-ng-if="SmsSendersAddCtrl.loading.init">
+        <oui-spinner></oui-spinner>
+    </div>
 
     <div class="telecom-section-content" data-ng-if="!SmsSendersAddCtrl.loading.init">
 
@@ -178,10 +178,10 @@
                             data-ng-disabled="addSenderForm.$invalid || SmsSendersAddCtrl.loading.adding"
                             data-translate="submit">
                         </button>
-                        <oui-loader class="ml-2"
-                                    data-ng-if="SmsSendersAddCtrl.loading.adding"
-                                    data-size="s">
-                        </oui-loader>
+                        <oui-spinner class="ml-2"
+                                     data-ng-if="SmsSendersAddCtrl.loading.adding"
+                                     data-size="s">
+                        </oui-spinner>
                     </div>
 
                 </form>
@@ -209,10 +209,10 @@
                               }">
                         </span>
                     </button>
-                    <oui-loader class="ml-2"
-                                data-ng-if="SmsSendersAddCtrl.senders.availableForValidation.nichandle.isDeleting"
-                                data-size="s">
-                    </oui-loader>
+                    <oui-spinner class="ml-2"
+                                 data-ng-if="SmsSendersAddCtrl.senders.availableForValidation.nichandle.isDeleting"
+                                 data-size="s">
+                    </oui-spinner>
 
                     <div class="table-responsive">
                         <table class="table table-hover"
@@ -233,10 +233,10 @@
                                     </th>
                                     <th scope="col" data-translate="sms_senders_add_sender_placeholder"></th>
                                     <th class="text-right" scope="col">
-                                        <oui-loader class="mr-3"
-                                                    data-ng-if="SmsSendersAddCtrl.loading.adding"
-                                                    data-size="s">
-                                        </oui-loader>
+                                        <oui-spinner class="mr-3"
+                                                     data-ng-if="SmsSendersAddCtrl.loading.adding"
+                                                     data-size="s">
+                                        </oui-spinner>
                                     </th>
                                 </tr>
                             </thead>
@@ -300,10 +300,10 @@
                               }">
                         </span>
                     </button>
-                    <oui-loader class="ml-2"
-                                data-ng-if="SmsSendersAddCtrl.senders.availableForValidation.domains.isDeleting"
-                                data-size="s">
-                    </oui-loader>
+                    <oui-spinner class="ml-2"
+                                 data-ng-if="SmsSendersAddCtrl.senders.availableForValidation.domains.isDeleting"
+                                 data-size="s">
+                    </oui-spinner>
 
                     <table class="table table-hover"
                            data-ng-class="{
@@ -324,10 +324,10 @@
                                 <th scope="col"
                                     data-translate="sms_senders_add_sender_placeholder"></th>
                                 <th class="text-right" scope="col">
-                                    <oui-loader class="mr-3"
-                                                data-ng-if="SmsSendersAddCtrl.loading.adding"
-                                                data-size="s">
-                                    </oui-loader>
+                                    <oui-spinner class="mr-3"
+                                                 data-ng-if="SmsSendersAddCtrl.loading.adding"
+                                                 data-size="s">
+                                    </oui-spinner>
                                 </th>
                             </tr>
                         </thead>

@@ -10,7 +10,6 @@ angular.module("managerApp", [
     "ngFlash",
     "ovh-ng-input-password",
     "ovh-jquery-ui-draggable-ng",
-    "ovh-angular-manager-navbar",
     "ovh-angular-sidebar-menu",
     "momentjs",
     "ovh-angular-mondial-relay",
@@ -36,7 +35,6 @@ angular.module("managerApp", [
     "smoothScroll",
     "ovh-angular-swimming-poll",
     "tmh.dynamicLocale",
-    "ovh-angular-toggleClass",
     "ovh-angular-otrs",
     "ui.bootstrap",
     "ui.router",
@@ -297,138 +295,58 @@ angular.module("managerApp", [
     })
 
 /*= =========  LOAD NAVBAR AND SIDEBAR  ==========*/
-    .run(function (atInternet, managerNavbar, ssoAuthentication, $translate, $translatePartialLoader, $q, OtrsPopupService, OvhApiMe, $uibModal, MANAGER_URLS, REDIRECT_URLS, URLS, LANGUAGES) {
+    .run(function ($document, $rootScope, ManagerNavbarService) {
         "use strict";
 
-        $translatePartialLoader.addPart("common");
-        $translatePartialLoader.addPart("components");
+        // Get first base structure of the navbar, to avoid heavy loading
+        ManagerNavbarService.getNavbar()
+            .then((navbar) => {
+                $rootScope.navbar = navbar;
 
-        $q.allSettled([$translate.refresh(), OvhApiMe.Lexi().get().$promise]).then(function (data) {
-            var user = data[1];
-
-            var universKeys = [
-                "portal", "web", "dedicated", "cloud", "telecom", "gamma", "partners"
-            ];
-            var universes = [];
-
-            for (var i = 0; i < universKeys.length; i++) {
-                universes.push({
-                    universe: universKeys[i],
-                    label: $translate.instant("common_menu_" + universKeys[i]),
-                    url: MANAGER_URLS[universKeys[i]]
-                });
-            }
-
-            universes.push({
-                universe: "labs",
-                icon: "fa fa-flask fs24 white",
-                title: $translate.instant("common_menu_labs"),
-                url: MANAGER_URLS.labs,
-                click: function () {
-                    atInternet.trackClick({
-                        name: "uxlabs_chatbot_menu"
+                // Then get the products links, to build the reponsive menu
+                ManagerNavbarService.getResponsiveLinks()
+                    .then((responsiveLinks) => {
+                        $rootScope.navbar.responsiveLinks = responsiveLinks;
                     });
-                    return true;
-                }
             });
 
-            managerNavbar.setExternalLinks(universes);
-
-            managerNavbar.setInternalLinks([
-                {
-                    label: $translate.instant("common_menu_support_assistance"),
-                    subLinks: [
-                        {
-                            label: $translate.instant("common_menu_support_all_guides"),
-                            url: URLS.guides.home
-                        }, {
-                            label: $translate.instant("common_menu_support_new_ticket"),
-                            click: function () {
-                                if (!OtrsPopupService.isLoaded()) {
-                                    OtrsPopupService.init();
-                                } else {
-                                    OtrsPopupService.toggle();
-                                }
-                            }
-                        }, {
-                            label: $translate.instant("common_menu_support_list_ticket"),
-                            url: "#/support"
-                        }, {
-                            label: $translate.instant("common_menu_support_telephony_contact"),
-                            url: URLS.support_contact
-                        }, {
-                            label: $translate.instant("common_menu_support_changelog"),
-                            click: function () {
-                                $uibModal.open({
-                                    templateUrl: "app/changelog/changelog.html"
-                                });
-                            }
-                        }
-                    ]
-                }, {
-                    label: (function () {
-                        var selectedLang;
-                        if (localStorage["univers-selected-language"]) {
-                            selectedLang = _.find(LANGUAGES.available, function (val) {
-                                return val.key === localStorage["univers-selected-language"];
-                            });
-                        }
-                        return selectedLang ? selectedLang.name : $translate.instant("common_menu_language");
-                    })(),
-                    subLinks: (function () {
-                        var subLinksLang = [];
-                        angular.forEach(LANGUAGES.available, function (lang) {
-                            subLinksLang.push({
-                                label: lang.name,
-                                click: function () {
-                                    localStorage["univers-selected-language"] = lang.key;
-                                    window.location.reload();
-                                },
-                                lang: _.chain(lang.key).words().head().value()
-                            });
-                        });
-                        return subLinksLang;
-                    })()
-                }, {
-                    label: user.firstname + " " + user.name + " (" + user.nichandle + ")",
-                    subLinks: [
-                        {
-                            label: $translate.instant("common_menu_account"),
-                            url: REDIRECT_URLS.userInfos
-                        }, {
-                            label: $translate.instant("common_menu_billing"),
-                            url: REDIRECT_URLS.billing
-                        }, {
-                            label: $translate.instant("common_menu_renew"),
-                            url: REDIRECT_URLS.services
-                        }, {
-                            label: $translate.instant("common_menu_orders_all"),
-                            url: REDIRECT_URLS.orders
-                        }, {
-                            label: $translate.instant("common_menu_orders"),
-                            url: "#/orders"
-                        }, {
-                            label: $translate.instant("global_logout"),
-                            click: function () {
-                                ssoAuthentication.logout();
-                            }
-                        }
-                    ]
-                }
-            ]);
-
-            managerNavbar.setCurrentLink({
-                universe: "telecom",
-                label: $translate.instant("common_menu_telecom"),
-                url: MANAGER_URLS.telecom
-            });
-        });
+        // Scroll to anchor id
+        $rootScope.scrollTo = (id) => {
+            // Set focus to target
+            $document[0].getElementById(id).focus();
+        };
     })
 
     .config(function ($logProvider) {
         "use strict";
 
         $logProvider.debugEnabled(false);
+    })
+
+    .run(($rootScope, $translate, $translatePartialLoader,
+          ouiDatagridConfiguration, ouiPaginationConfiguration) => {
+        "use strict";
+        $translatePartialLoader.addPart("common");
+        $translatePartialLoader.addPart("components");
+
+        const off = $rootScope.$on("$stateChangeSuccess", () => {
+            ouiDatagridConfiguration.translations = {
+                emptyPlaceholder: $translate.instant("common_datagrid_nodata")
+            };
+
+            ouiPaginationConfiguration.translations = {
+                resultsPerPage: $translate.instant("common_pagination_resultsperpage"),
+                ofNResults: $translate.instant("common_pagination_ofnresults")
+                    .replace("TOTAL_ITEMS", "{{totalItems}}"),
+                currentPageOfPageCount: $translate.instant("common_pagination_currentpageofpagecount")
+                    .replace("CURRENT_PAGE", "{{currentPage}}")
+                    .replace("PAGE_COUNT", "{{pageCount}}"),
+                previousPage: $translate.instant("common_pagination_previous"),
+                nextPage: $translate.instant("common_pagination_next")
+            };
+
+            off();
+        });
     })
 
     .run(function ($rootScope, $title) {

@@ -10,6 +10,6 @@ angular.module("managerApp").config(function ($stateProvider) {
                 controllerAs: "PortabilityOrderCtrl"
             }
         },
-        translations: ["common", "telecom/telephony/alias/portability/order"]
+        translations: ["common", "telecom/telephony", "telecom/telephony/alias/portability/order"]
     });
 });

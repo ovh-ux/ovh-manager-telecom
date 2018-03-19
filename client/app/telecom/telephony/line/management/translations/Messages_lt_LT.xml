@@ -3,17 +3,17 @@
    <translation id="telephony_group_line_section_back_link" qtlid="338053">Grįžti prie linijos valdymo</translation>
 
    <translation id="telephony_line_management_actions_line_details_offer" qtlid="27115">Pagrindinė informacija</translation>
-   <translation id="telephony_line_management_actions_line_sip_password" qtlid="338066">Mot de passe SIP</translation>
-   <translation id="telephony_line_management_actions_line_sip_domain_management" qtlid="338079">Domaine SIP</translation>
-   <translation id="telephony_line_management_actions_line_sip_ips_restrictions" qtlid="338092">Restrictions SIP par IP</translation>
-   <translation id="telephony_line_management_actions_line_language" qtlid="338105">Gérer la langue</translation>
+   <translation id="telephony_line_management_actions_line_sip_password" qtlid="338066">SIP slaptažodis</translation>
+   <translation id="telephony_line_management_actions_line_sip_domain_management" qtlid="338079">SIP domenas</translation>
+   <translation id="telephony_line_management_actions_line_sip_ips_restrictions" qtlid="338092">SIP ribojimai pagal IP</translation>
+   <translation id="telephony_line_management_actions_line_language" qtlid="338105">Kalba</translation>
    <translation id="telephony_line_management_actions_line_resume_offer" qtlid="25783">Keisti planą</translation>
-   <translation id="telephony_line_management_actions_line_bannMaker" qtlid="333295">Générateur de cartouche</translation>
-   <translation id="telephony_line_management_actions_line_to_number" qtlid="338118">Convertir la ligne en numéro</translation>
-   <translation id="telephony_line_management_actions_line_delete_line_new" qtlid="338131">Résiliation de la ligne</translation>
-   <translation id="telephony_line_management_actions_line_password_canchange_error" qtlid="387497">Impossible d'autoriser le changement de mot de passe SIP.</translation>
-   <translation id="telephony_line_management_actions_line_password_canchange_SIP_error" qtlid="387510">Le mot de passe ne peut être changé que sur une ligne SIP.</translation>
-   <translation id="telephony_line_management_actions_line_password_canchange_plugnphone_error" qtlid="387523">Le mot de passe ne peut pas être changé sur un Plug'N'Phone.</translation>
-   <translation id="telephony_line_management_actions_line_password_canchange_pack_error" qtlid="387536">Le mot de passe ne peut pas être changé sur une ligne xDSL inclue dans un pack.</translation>
-   <translation id="telephony_line_management_actions_line_cancel_delete_line_new" qtlid="359696">Annuler la résiliation de la ligne</translation>
+   <translation id="telephony_line_management_actions_line_bannMaker" qtlid="333295">Dėžutės generatorius</translation>
+   <translation id="telephony_line_management_actions_line_to_number" qtlid="338118">Konvertuoti liniją į numerį</translation>
+   <translation id="telephony_line_management_actions_line_delete_line_new" qtlid="338131">Linijos atsisakymas</translation>
+   <translation id="telephony_line_management_actions_line_password_canchange_error" qtlid="387497">Negalima autorizuoti SIP linijos slaptažodžio keitimo.</translation>
+   <translation id="telephony_line_management_actions_line_password_canchange_SIP_error" qtlid="387510">Negalima pakeisti SIP linijos slaptažodžio.</translation>
+   <translation id="telephony_line_management_actions_line_password_canchange_plugnphone_error" qtlid="387523">Negalima pakeisti Plug'N'Phone slaptažodžio.</translation>
+   <translation id="telephony_line_management_actions_line_password_canchange_pack_error" qtlid="387536">Negalima pakeisti į paketą įtrauktos xDSL linijos slaptažodžio.</translation>
+   <translation id="telephony_line_management_actions_line_cancel_delete_line_new" qtlid="359696">Atšaukti linijos atsisakymą</translation>
 </translations>

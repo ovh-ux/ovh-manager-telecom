@@ -1,14 +1,18 @@
-angular.module("managerApp").controller("TelecomTelephonyLineCallsForwardCtrl", function ($q, $stateParams, $translate, $state, Toast, TelecomTelephonyLineCallsForwardService, validator, telephonyBulk) {
+angular.module("managerApp").controller("TelecomTelephonyLineCallsForwardCtrl", function ($q, $stateParams, $translate, $state, Toast, TelecomTelephonyLineCallsForwardService, validator, telephonyBulk, telecomVoip) {
     "use strict";
 
     var self = this;
-    this.validator = validator;
+    self.validator = validator;
+
+    function getEnabledTypes (types) {
+        return _.pluck(_.filter(types, { enable: true }), "id");
+    }
 
     /**
          * Save the current forwards
          * @return {Promise}
          */
-    this.save = function () {
+    self.save = function () {
         self.loading.save = true;
         return TelecomTelephonyLineCallsForwardService.saveForwards($stateParams.billingAccount, $stateParams.serviceName, self.forwards).finally(function () {
             self.loading.save = false;
@@ -31,7 +35,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineCallsForwardCtrl", 
          * @param  {[type]} num [description]
          * @return {[type]}     [description]
          */
-    this.seemsPhoneNumber = function (num, forward) {
+    self.seemsPhoneNumber = function (num, forward) {
         if (forward.enable) {
             return /^00[\d\s]*$|^\+\d[\d\s]*$/.test(num);
         }
@@ -42,12 +46,12 @@ angular.module("managerApp").controller("TelecomTelephonyLineCallsForwardCtrl", 
     /**
          * Cancel modifications
          */
-    this.cancel = function () {
-        this.setCancelBuffer(true);
+    self.cancel = function () {
+        self.setCancelBuffer(true);
     };
 
-    this.toggleChecked = function (forward) {
-        _.forEach(this.forwards, function (fwd) {
+    self.toggleChecked = function (forward) {
+        _.forEach(self.forwards, function (fwd) {
             if (forward.type === "Unconditional") {
                 if (fwd.type !== forward.type) {
                     fwd.enable = false;
@@ -63,9 +67,9 @@ angular.module("managerApp").controller("TelecomTelephonyLineCallsForwardCtrl", 
          * Do we need to save ?
          * @return {Bool}
          */
-    this.needSave = function () {
+    self.needSave = function () {
         var toSave = false;
-        _.forEach(this.forwards, function (forward) {
+        _.forEach(self.forwards, function (forward) {
             var saved = _.find(self.saved, { type: forward.type });
             if (!saved || saved.footPrint !== forward.footPrint) {
                 toSave = true;
@@ -78,9 +82,21 @@ angular.module("managerApp").controller("TelecomTelephonyLineCallsForwardCtrl", 
          * Reset the number on nature change (fax -> voicemail, for instance)
          * @param {Object} forward Forward description
          */
-    this.resetNumber = function (forward) {
-        forward.number = null;
+    self.resetNumber = function (forward) {
+        forward.number = _.head(self.getFilteredNumbers("", forward.nature.types));
     };
+
+    /* ===========================
+    =           FILTERS          =
+    ============================ */
+
+    function filterBillingAccount (account) {
+        return self.filter.billingAccount ? account === self.filter.billingAccount : true;
+    }
+
+    function filterType (type) {
+        return self.filter.types.indexOf(type) > -1;
+    }
 
     /**
          * Filter the phone numbers
@@ -88,35 +104,50 @@ angular.module("managerApp").controller("TelecomTelephonyLineCallsForwardCtrl", 
          * @param  {Array} origin fax, line voicemail
          * @return {Array}
          */
-    this.getFilteredNumbers = function (search, origin) {
+    self.getFilteredNumbers = function (search, origin) {
         var searchReg = new RegExp(search, "i");
-        return _.filter(this.allOvhNumbers, function (num) {
-            return (searchReg.test(num.serviceName) || searchReg.test(num.description)) && (!origin || origin.indexOf(num.type) > -1);
-        });
+
+        return _.chain(self.allOvhNumbers).filter(function (num) {
+            return (searchReg.test(num.serviceName) || searchReg.test(num.description)) && (!origin || origin.indexOf(num.type) > -1) &&
+            filterType(num.type) && filterBillingAccount(num.billingAccount);
+        }).sortBy(function (num) {
+            return num.formatedNumber === $stateParams.serviceName ? 0 : 1;
+        }).uniq("serviceName").value();
     };
+
+    self.filterTypes = function () {
+        self.filter.types = getEnabledTypes(self.types);
+        self.resetNumbers();
+    };
+
+    /* ----  End of FILTERS  ---- */
 
     /**
          * Make a save of the current data
          */
-    this.setCancelBuffer = function (restore) {
+    self.setCancelBuffer = function (restore) {
         if (restore) {
-            this.forwards = angular.copy(this.saved);
-            _.forEach(this.forwards, function (forward) {
+            self.forwards = angular.copy(self.saved);
+            _.forEach(self.forwards, function (forward) {
                 forward.nature = _.find(self.lineOptionForwardNatureTypeEnum, { value: forward.nature.value });
                 forward.number = _.find(self.allOvhNumbers, { type: forward.number.type, serviceName: forward.number.serviceName });
             });
         } else {
-            this.saved = angular.copy(this.forwards);
+            self.saved = angular.copy(self.forwards);
         }
-        this.masterForward = _.find(this.forwards, { master: true });
+        self.masterForward = _.find(self.forwards, { master: true });
     };
 
     /**
          * get the cancellation of the data
          * @return {Object} saved data
          */
-    this.getCancelBuffer = function () {
-        return this.saved;
+    self.getCancelBuffer = function () {
+        return self.saved;
+    };
+
+    self.resetNumbers = function () {
+        return _.map(self.forwards, function (forward) { return self.resetNumber(forward); });
     };
 
     /* ===========================
@@ -280,8 +311,27 @@ angular.module("managerApp").controller("TelecomTelephonyLineCallsForwardCtrl", 
             lockOutCallPassword: null,
             lockOutCall: null
         };
+
+        self.types = [
+            { id: "number", label: "Alias", enable: true },
+            { id: "fax", label: "Fax", enable: true },
+            { id: "voicemail", label: "SIP", enable: true },
+            { id: "plug&phone", label: "Plug&Phone", enable: true }
+        ];
+
+        self.filter = {
+            billingAccount: "",
+            types: getEnabledTypes(self.types)
+        };
+
         self.saved = angular.copy(self.options);
-        loadAllOvhNumbers().then(loadNatures).then(loadForwards).finally(function () {
+        telecomVoip.fetchAll().then(function (billingAccounts) {
+            self.listBillingAccounts = billingAccounts;
+            self.listBillingAccounts.unshift({ billingAccount: null, description: "Tous les groupes" });
+            self.filter.billingAccount = _.get(_.find(self.listBillingAccounts, { billingAccount: $stateParams.billingAccount }), "billingAccount", null);
+
+            return billingAccounts;
+        }).then(loadAllOvhNumbers).then(loadNatures).then(loadForwards).finally(function () {
             self.loading.init = false;
         });
     }

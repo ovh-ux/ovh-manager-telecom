@@ -1,7 +1,13 @@
-angular.module("managerApp").controller("TelecomTelephonyLineCallsTimeConditionCtrl", function ($q, $stateParams, $translate, TelephonyMediator, Toast, uiCalendarConfig) {
+angular.module("managerApp").controller("TelecomTelephonyLineCallsTimeConditionCtrl", function ($q, $stateParams, $translate, OvhApiTelephony, TelephonyMediator, Toast, uiCalendarConfig, telephonyBulk, voipTimeCondition) {
     "use strict";
 
     var self = this;
+    var bulkActionNames = {
+        createCondition: "createSrcCondition",
+        deleteCondition: "deleteSrcCondition",
+        editCondition: "editSrcCondition",
+        options: "options"
+    };
 
     self.loading = {
         init: false
@@ -105,4 +111,126 @@ angular.module("managerApp").controller("TelecomTelephonyLineCallsTimeConditionC
 
     /* -----  End of INITIALIZATION  ------*/
 
+    /* ===========================
+    =            BULK            =
+    ============================ */
+
+    self.filterServices = function (services) {
+        var filteredServices = _.filter(services, function (service) {
+            return !_.some(service.offers, _.method("includes", "individual"));
+        });
+
+        return _.filter(filteredServices, function (service) {
+            return ["sip", "mgcp"].indexOf(service.featureType) > -1;
+        });
+    };
+
+    self.bulkDatas = {
+        conditions: (self.line && self.line.timeCondition) || [],
+        infos: {
+            name: "timeCondition",
+            actions: [
+                {
+                    name: bulkActionNames.deleteCondition,
+                    route: "/telephony/{billingAccount}/timeCondition/{serviceName}/condition/{id}",
+                    method: "DELETE",
+                    params: null
+                },
+                {
+                    name: bulkActionNames.createCondition,
+                    route: "/telephony/{billingAccount}/timeCondition/{serviceName}/condition",
+                    method: "POST",
+                    params: null
+                },
+                {
+                    name: bulkActionNames.editCondition,
+                    route: "/telephony/{billingAccount}/timeCondition/{serviceName}/condition/{id}",
+                    method: "PUT",
+                    params: null
+                },
+                {
+                    name: bulkActionNames.options,
+                    route: "/telephony/{billingAccount}/timeCondition/{serviceName}/options",
+                    method: "PUT",
+                    params: null
+                }
+            ]
+        }
+    };
+
+    self.getBulkParams = function (action) {
+        switch (action) {
+        case bulkActionNames.createCondition:
+        case bulkActionNames.deleteCondition:
+        case bulkActionNames.editCondition:
+            return self.getTimeConditions(action);
+        case bulkActionNames.options:
+            var condition = self.line.timeCondition;
+            return {
+                slot1Number: condition.slots[1].number,
+                slot1Type: condition.slots[1].type,
+                slot2Number: condition.slots[2].number,
+                slot2Type: condition.slots[2].type,
+                slot3Number: condition.slots[3].number,
+                slot3Type: condition.slots[3].type,
+                status: condition.enable ? "enabled" : "disabled",
+                timeout: condition.timeout,
+                unavailableNumber: condition.slots[4].number,
+                unavailableType: condition.slots[4].type
+            };
+        default:
+            return false;
+        }
+    };
+
+    self.onBulkSuccess = function (bulkResult) {
+        // display message of success or error
+        telephonyBulk.getToastInfos(bulkResult, {
+            fullSuccess: $translate.instant("telephony_line_calls_time_condition_bulk_all_success"),
+            partialSuccess: $translate.instant("telephony_line_calls_time_condition_bulk_some_success", {
+                count: bulkResult.success.length
+            }),
+            error: $translate.instant("telephony_line_calls_time_condition_bulk_error")
+        }).forEach(function (toastInfo) {
+            Toast[toastInfo.type](toastInfo.message, {
+                hideAfter: null
+            });
+        });
+
+        self.line.timeCondition.stopEdition().stopSlotsEdition(false, false, true).stopConditionsEdition(true, true).startEdition();
+        OvhApiTelephony.TimeCondition().resetCache();
+        TelephonyMediator.resetAllCache();
+    };
+
+    self.onBulkError = function (error) {
+        Toast.error([$translate.instant("telephony_line_calls_time_condition_bulk_on_error"), _.get(error, "msg.data")].join(" "));
+    };
+
+    self.getTimeConditions = function (action) {
+        var conditions = _.filter(self.line.timeCondition.conditions, function (condition) {
+            switch (action) {
+            case bulkActionNames.createCondition:
+                return condition.state === "TO_CREATE";
+            case bulkActionNames.deleteCondition:
+                return condition.state === "TO_DELETE";
+            case bulkActionNames.editCondition:
+                return condition.state === "OK" && condition.hasChange(null, true);
+            default:
+                return false;
+            }
+        });
+
+        return _.map(conditions, function (condition) {
+            return {
+                id: condition.conditionId,
+                day: condition.weekDay,
+                hourBegin: voipTimeCondition.getSipTime(condition.timeFrom),
+                hourEnd: voipTimeCondition.getSipTime(condition.timeTo, true),
+                policy: condition.policy,
+                status: condition.status
+            };
+        });
+    };
+
+    /* -----  End of BULK  ------ */
 });

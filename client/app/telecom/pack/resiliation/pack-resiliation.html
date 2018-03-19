@@ -19,9 +19,9 @@
 
                 <toast-message></toast-message>
 
-                <oui-loader data-ng-if="PackResiliation.loading"
-                            data-size="m">
-                </oui-loader>
+                <div class="text-center" data-ng-if="PackResiliation.loading">
+                    <oui-spinner></oui-spinner>
+                </div>
 
                 <form name="resiliationForm"
                       class="form-vertical mt-3"
@@ -48,10 +48,10 @@
                                 <strong class="text-price"
                                         data-ng-if="!PackResiliation.computingPrice"
                                         data-ng-bind="PackResiliation.resiliationTerms.data.due.text"></strong>
-                                <oui-loader class="ml-2"
-                                            data-ng-if="PackResiliation.computingPrice"
-                                            data-size="s">
-                                </oui-loader>
+                                <oui-spinner class="ml-2"
+                                             data-ng-if="PackResiliation.computingPrice"
+                                             data-size="s">
+                                </oui-spinner>
                             </p>
                         </div>
 
@@ -118,9 +118,9 @@
                     <fieldset class="widget-presentation mt-5">
                         <legend class="h2 widget-presentation-title" data-ng-bind="'2. ' + ('pack_resiliation_services_to_keep' | translate)"></legend>
 
-                        <oui-loader data-ng-if="PackResiliation.subServicesTermsLoading"
-                                    data-size="m">
-                        </oui-loader>
+                        <div class="text-center" data-ng-if="PackResiliation.subServicesTermsLoading">
+                            <oui-spinner></oui-spinner>
+                        </div>
 
                         <div class="alert alert-warning"
                              role="alert"

@@ -5,6 +5,8 @@
    <translation id="telephony_alias_change_type_info_text_1" qtlid="332931">Configurez votre numéro comme bon vous semble.</translation>
    <translation id="telephony_alias_change_type_info_title" qtlid="26551">Informacje</translation>
    <translation id="telephony_alias_change_type_info_text_2" qtlid="332944">Par défaut, votre numéro n'est pas configuré et ne permet aucune action, mais OVH vous offre une multitude de services, de la redirection au serveur vocal interactif, en passant par la conférence ou la file d'appels.</translation>
+   <translation id="telephony_alias_change_type_warning" qtlid="108456">Uwaga!</translation>
+   <translation id="telephony_alias_change_type_warning_old_pabx" qtlid="462550">En modifiant ce type de configuration ({{ featureType }}) vers un autre type de configuration, vous ne pourrez plus revenir en arrière !</translation>
    <translation id="telephony_alias_config_change_type_title" qtlid="4406">Konfiguracja</translation>
    <translation id="telephony_alias_config_change_type_label" qtlid="332957">Fonctionnalité du numéro&#160;:&#160;</translation>
    <translation id="telephony_alias_config_change_type_desc" qtlid="332970">Description de la solution sélectionnée</translation>
@@ -16,10 +18,10 @@
 
    <translation id="telephony_alias_config_change_type_label_select" qtlid="333009">Choisissez une fonctionnalité</translation>
 
-   <translation id="telephony_alias_config_change_type_label_redirect" qtlid="333022">Redirection avec supervision redirect</translation>
+   <translation id="telephony_alias_config_change_type_label_redirect" qtlid="462563">Redirection avec supervision</translation>
    <translation id="telephony_alias_config_change_type_desc_redirect" qtlid="333035">Permet de rediriger les appels reçus vers la ligne ou numéro de votre choix.<br/><br/>Cette configuration permet la supervision des appels depuis un autre poste, ainsi que la modification de la présentation du numéro à la volée.</translation>
 
-   <translation id="telephony_alias_config_change_type_label_ddi" qtlid="393009">Redirection avec présentation de ce numéro sur ma ligne SIP ou mon Trunk (Ddi)</translation>
+   <translation id="telephony_alias_config_change_type_label_ddi" qtlid="462576">Redirection avec présentation de ce numéro sur ma ligne SIP ou mon Trunk</translation>
    <translation id="telephony_alias_config_change_type_desc_ddi" qtlid="333061">Ce mode vous permet de rediriger le numéro vers une ligne SIP ou un Trunk de votre choix.<br/><br/>Ce numéro pourra également être présenté pour les appels sortants de la ligne SIP ou du Trunk que vous choisirez.</translation>
 
    <translation id="telephony_alias_config_change_type_label_conference" qtlid="333074">Conférence</translation>
@@ -43,7 +45,19 @@
    <translation id="telephony_alias_config_change_type_label_miniPabx" qtlid="333204">Mini PABX</translation>
    <translation id="telephony_alias_config_change_type_desc_miniPabx" qtlid="333217">Avec le miniPABX gérez un flux d'appels vers différents services ou collaborateurs en fonction de leur disponibilité. Vous choisissez la répartition des appels, le nombre et le temps maximum des appels dans la file d'appels.</translation>
 
+   <translation id="telephony_alias_config_change_type_label_contactCenterSolution" qtlid="432904">Contact Center Solution</translation>
+   <translation id="telephony_alias_config_change_type_desc_contactCenterSolution" qtlid="462589">Avec Contact Center Solution, vous pouvez gérer le flux de vos appels.<br /><br />Jouez un son d'accueil, personnalisez votre musique d'attente et faites sonner vos collaborateurs ou différents services en fonction de stratégies que vous définissez, sur des plages horaires choisies. Vous pouvez définir le nombre maximum d'appelants dans la file d'attente et le temps d'attente maximum.<br /><br />Si vous ne pouvez pas répondre, votre interlocuteur sera redirigé vers le répondeur d'une ligne OVH.<br /><br />Cette solution est en bêta.</translation>
+
+   <translation id="telephony_alias_config_change_type_label_contactCenterSolutionExpert" qtlid="462602">Contact Center Solution (mode expert)</translation>
+   <translation id="telephony_alias_config_change_type_desc_contactCenterSolutionExpert" qtlid="462615">Avec le mode expert de Contact Center Solution, vous pouvez gérer le flux de vos appels de bout en bout.<br /><br />Sur une interface similaire à celle du serveur vocal interactif, programmez étape par étape le déroulement de vos appels entrants.<br /><br />En fonction des numéros appelants ou de plages horaires, jouez des sons d'accueils, personnalisez votre musique d'attente, faites sonner vos collaborateurs ou différents services suivant des stratégies que vous définissez.<br /><br />Cette solution est en bêta.</translation>
+
    <translation id="telephony_alias_config_change_type_label_empty" qtlid="333230">Aucune fonctionnalité</translation>
    <translation id="telephony_alias_config_change_type_desc_empty" qtlid="333243">Pas de fonctionnalité</translation>
 
+   <translation id="telephony_alias_config_change_type_bulk_all_success" qtlid="462628">La modification du type du numéro a bien été appliquée aux services sélectionnés</translation>
+   <translation id="telephony_alias_config_change_type_bulk_some_success" qtlid="462641">La modification du type du numéro à {{ count }} des services sélectionnés</translation>
+   <translation id="telephony_alias_config_change_type_bulk_error" qtlid="462654">La modification du type du numéro n'a pu être appliquée au(x) service(s) suivant(s) :</translation>
+   <translation id="telephony_alias_config_change_type_bulk_on_error" qtlid="462667">Oups ! Une erreur est survenue lors de la modfication du type du numéro</translation>
+   <translation id="telephony_alias_config_change_type_bulk_server_tasks_some_error" qtlid="462680">Attention : une erreur est survenue lors de la modification du type de numéro sur l'un des services sélectionnés</translation>
+   <translation id="telephony_alias_config_change_type_bulk_server_tasks_all_error" qtlid="462693">Oups ! Une erreur est survenue lors des tâches de modfication du type du numéro</translation>
 </translations>
