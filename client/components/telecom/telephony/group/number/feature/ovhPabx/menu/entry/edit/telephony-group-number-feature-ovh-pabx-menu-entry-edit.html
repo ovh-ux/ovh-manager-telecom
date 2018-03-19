@@ -309,15 +309,16 @@
                         <div data-ng-if="$ctrl.menuEntryCtrl.menuEntry.dtmf">
                             <strong data-ng-bind="$ctrl.menuEntryCtrl.menuEntry.dtmf"></strong>
                             <button type="button"
-                                    class="btn-actions-list"
+                                    class="oui-button oui-button_icon-alone"
                                     data-translate-attr="{ title: 'telephony_number_feature_ovh_pabx_menu_entry_edit_dtmf_multi_digit_reset' }"
                                     data-ng-click="$ctrl.menuEntryCtrl.menuEntry.dtmf = ''">
-                                <span class="ovh-font ovh-font-wrong"></span>
+                                <i class="oui-icon oui-icon-error_circle"
+                                   aria-hidden="true"></i>
                             </button>
                         </div>
                     </div>
                     <div class="section-item">
-                        <div class="container">
+                        <div class="container pt-4">
                             <div class="row" data-ng-repeat="row in $ctrl.availableDtmfKeys track by $index">
                                 <div class="col-sm-4"
                                      data-ng-repeat="key in row track by $index">
