@@ -6,14 +6,13 @@ angular.module("managerApp").controller("TelecomTelephonyLineTrunkSimultaneousLi
         this.$stateParams = $stateParams;
         this.$translate = $translate;
 
+        this.currentLine = currentLine;
         this.ChartjsFactory = ChartjsFactory;
         this.debounce = debounce;
         this.OvhApiTelephony = OvhApiTelephony;
         this.OvhApiOrderTelephony = OvhApiOrderTelephony;
         this.Toast = Toast;
         this.TRUNK_PACK_DETAILS = TRUNK_PACK_DETAILS;
-
-        this.init(currentLine);
 
         this.getNewRepartition = debounce(() => this._getNewRepartition(), 500, false);
     }
@@ -78,8 +77,8 @@ angular.module("managerApp").controller("TelecomTelephonyLineTrunkSimultaneousLi
         return this.trunkRates.change.quantityOptimized > 0 && this.trunkRates.change.quantityWanted > 0;
     }
 
-    init (currentLine) {
-        if (!currentLine) {
+    $onInit () {
+        if (!this.currentLine) {
             this.Toast.error(this.$translate.instant("telephony_line_actions_line_calls_simultaneous_line_load_error"));
             return this.$q.when(null);
         }
@@ -88,7 +87,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineTrunkSimultaneousLi
 
         this.trunkRates = {
             current: {
-                quantity: currentLine.simultaneousLinesDetails.current,
+                quantity: this.currentLine.simultaneousLinesDetails.current,
                 price: null,
                 packsRepartition: []
             },
@@ -105,7 +104,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineTrunkSimultaneousLi
             loading: false,
             order: null,
             pending: {
-                quantity: currentLine.simultaneousLinesDetails.current - currentLine.simultaneousLinesDetails.toBeDeleted,
+                quantity: this.currentLine.simultaneousLinesDetails.current - this.currentLine.simultaneousLinesDetails.toBeDeleted,
                 price: null,
                 packsRepartition: []
             }
@@ -121,7 +120,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineTrunkSimultaneousLi
             this.trunkRates.current.price = packResult.totalPrice.text + this.$translate.instant("telephony_line_actions_line_calls_trunk_simultaneous_channels_price_per_month");
             this.trunkRates.current.packsRepartition = packResult.packsRepartition;
 
-            if (currentLine.simultaneousLinesDetails.toBeDeleted > 0) {
+            if (this.currentLine.simultaneousLinesDetails.toBeDeleted > 0) {
                 return this.OvhApiTelephony.Trunk().Lexi().getChannelsPacksRepartition({
                     billingAccount: this.$stateParams.billingAccount,
                     serviceName: this.$stateParams.serviceName,

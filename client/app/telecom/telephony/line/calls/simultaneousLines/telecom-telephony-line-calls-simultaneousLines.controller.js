@@ -1,5 +1,5 @@
 angular.module("managerApp")
-    .controller("TelecomTelephonyLineCallsSimultaneousLinesCtrl", function ($filter, $q, $stateParams, $state, $translate,
+    .controller("TelecomTelephonyLineCallsSimultaneousLinesCtrl", function ($filter, $q, $stateParams, $translate,
                                                                             currentLine, OvhApiOrderTelephony, OvhApiTelephony, OvhApiTelephonyService, telephonyBulk, Toast) {
         "use strict";
 
