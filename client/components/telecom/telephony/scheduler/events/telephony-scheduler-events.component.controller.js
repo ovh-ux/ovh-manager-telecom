@@ -50,7 +50,6 @@ angular.module("managerApp").controller("TelephonySchedulerEventsCtrl", function
             return createTimeSlots(moment().hour(dateStartToMoment.hour()).minute(dateStartToMoment.minute()).add(15, "minutes"));
         }
         return createTimeSlots();
-
     };
 
     /* ----------  date setter helpers  ----------*/

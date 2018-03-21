@@ -47,12 +47,16 @@ angular.module("managerApp").controller("TelecomTelephonyAliasPortabilityOrderCt
         });
 
         $scope.$watch("PortabilityOrderCtrl.order", function () {
-            self.order.offer = self.order.socialReason === "corporation" ? "company" : "individual";
             self.order.contactName = self.order.name;
+        }, true);
+
+        $scope.$watch("PortabilityOrderCtrl.isSDA", function () {
+            self.order.offer = self.isSDA ? "company" : "individual";
         }, true);
 
         self.isSpecialNumber = false;
         self.typologies = { france: [], belgium: [] };
+
 
         // fetch list of billing accounts
         return TelephonyMediator.getAll().then(function (groups) {
@@ -157,12 +161,12 @@ angular.module("managerApp").controller("TelecomTelephonyAliasPortabilityOrderCt
     self.getOrderParams = function () {
         var params = _.pick(self.order, sharedAttributes);
 
-        if (params.socialReason === "individual") {
+        if (params.offer === "individual") {
             params = _.assign(params, _.pick(self.order, "rio"));
         } else {
             params = _.assign(params, _.pick(self.order, "siret"));
-            params.firstName = "";
         }
+        params.firstName = params.firstName || "";
 
         if (self.isSDA && self.order.sdatype === "select" && self.order.numbersList.length) {
             params.listNumbers = _.map(self.order.numbersList, self.normalizeNumber).join(",");

@@ -254,6 +254,8 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxDialplanExtension
                     return enumVal !== "hunting" && enumVal !== "tts";
                 } else if (!self.ovhPabx.isCcs) {
                     return enumVal !== "ivr" && enumVal !== "tts";
+                } else if (self.ovhPabx.featureType === "cloudHunting") {
+                    return enumVal !== "ivr";
                 }
                 return true;
 
