@@ -178,14 +178,13 @@ angular.module("managerApp").service("TelecomTelephonyBillingAccountOrderAliasSe
      */
     this.getForeignCountries = function () {
         return this.getUser()
-            .then(function (user) {
+            .then(function () {
                 return OvhApiTelephony.Lexi().schema().$promise.then(
                     function (schema) {
-                        return _.pull(schema.models["telephony.NumberCountryEnum"].enum, user.country);
+                        return schema.models["telephony.NumberCountryEnum"].enum;
                     }
                 );
-            }
-            );
+            });
     };
 
 });
