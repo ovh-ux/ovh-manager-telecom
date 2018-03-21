@@ -350,14 +350,10 @@ angular.module("managerApp", [
                     required: $translate.instant("common_field_error_required"),
                     number: $translate.instant("common_field_error_number"),
                     email: $translate.instant("common_field_error_email"),
-                    min: $translate.instant("common_field_error_min")
-                        .replace("MIN_VALUE", "{{min}}"),
-                    max: $translate.instant("common_field_error_max")
-                        .replace("MAX_VALUE", "{{max}}"),
-                    minlength: $translate.instant("common_field_error_minlength")
-                        .replace("MIN_LENGTH_VALUE", "{{minlength}}"),
-                    maxlength: $translate.instant("common_field_error_maxlength")
-                        .replace("MAX_LENGTH_VALUE", "{{maxlength}}"),
+                    min: $translate.instant("common_field_error_min", { min: "{{min}}" }),
+                    max: $translate.instant("common_field_error_max", { max: "{{max}}" }),
+                    minlength: $translate.instant("common_field_error_minlength", { minlength: "{{minlength}}" }),
+                    maxlength: $translate.instant("common_field_error_maxlength", { maxlength: "{{maxlength}}" }),
                     pattern: $translate.instant("common_field_error_pattern")
                 }
             };
