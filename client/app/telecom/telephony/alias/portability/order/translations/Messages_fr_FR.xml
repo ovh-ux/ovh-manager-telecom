@@ -14,6 +14,7 @@
    <translation id="telephony_alias_portability_order_landline" qtlid="460730">Un numéro isolé</translation>
    <translation id="telephony_alias_portability_order_sda" qtlid="460743">Un ou plusieurs numéros appartenant à une tranche de numéros (SDA)</translation>
    <translation id="telephony_alias_portability_order_callNumber" qtlid="460756">Numéro à porter (format international)</translation>
+   <translation id="telephony_alias_portability_order_sda_warning">Les numéros spéciaux ne pouvantt faire l'objet d'une demande de portabilité en numéro isolé, veuillez choisir la portabilité pour une tranche de numéros (SDA)</translation>
    <translation id="telephony_alias_portability_order_number_international" qtlid="460769">N° au format international</translation>
    <translation id="telephony_alias_portability_order_callNumber_pattern_error" qtlid="460782">Veuillez saisir un numéro au format international (0033… ou +33…).</translation>
    <translation id="telephony_alias_portability_order_desireDate">Date de portabilité souhaitée :</translation>
