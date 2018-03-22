@@ -52,6 +52,12 @@ angular.module("managerApp").factory("TelephonyGroupLinePhone", function ($q, Ov
 
     /* ----------  FEATURE OPTIONS  ----------*/
 
+    TelephonyGroupLinePhone.prototype.getFormattedMacAddress = function () {
+        var self = this;
+
+        return self.macAddress !== "" ? self.macAddress.match(/.{2}/g).join(":") : "";
+    };
+
     TelephonyGroupLinePhone.prototype.setPhoneInfos = function (phoneOptions) {
         var self = this;
 
