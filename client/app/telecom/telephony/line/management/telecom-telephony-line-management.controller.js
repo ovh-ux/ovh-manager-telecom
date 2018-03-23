@@ -30,10 +30,15 @@ angular.module("managerApp").controller("TelecomTelephonyLineManagementCtrl", fu
             sref: "telecom.telephony.line.domain",
             disabled: !TelecomMediator.isVip,
             text: $translate.instant("telephony_line_management_actions_line_sip_domain_management")
-        }, {
+        }, _.get(self.line, "phone.protocol") === "mgcp" ? {
+            name: "line_manage_mgcp_ip_restriction",
+            disabled: !self.line.hasPhone,
+            sref: "telecom.telephony.line.mgcpIpRestriction",
+            text: $translate.instant("telephony_line_management_actions_line_mgcp_ip_restriction")
+        } : {
             name: "line_sip_ips_restrictions",
             sref: "telecom.telephony.line.restrictions",
-            disabled: _.has(self.line, "phone.protocol") && self.line.phone.protocol !== "sip",
+            disabled: _.get(self.line, "phone.protocol") !== "sip",
             text: $translate.instant("telephony_line_management_actions_line_sip_ips_restrictions")
         }, {
             name: "line_language",

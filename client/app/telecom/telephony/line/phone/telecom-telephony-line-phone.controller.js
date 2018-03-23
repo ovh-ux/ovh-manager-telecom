@@ -46,11 +46,6 @@ angular.module("managerApp").controller("TelecomTelephonyLinePhoneCtrl", functio
             sref: "telecom.telephony.line.phone.reboot",
             text: $translate.instant("telephony_line_phone_actions_line_phone_reboot")
         }, {
-            name: "line_manage_mgcp_ip_restriction",
-            disabled: !self.line.hasPhone || !(_.has(self.line, "phone.protocol") && self.line.phone.protocol === "mgcp"),
-            sref: "telecom.telephony.line.phone.mgcpIpRestriction",
-            text: $translate.instant("telephony_line_phone_actions_line_manage_mgcp_ip_restriction")
-        }, {
             name: "line_phone_order_plug_and_phone",
             sref: "telecom.telephony.line.phone.order",
             text: self.line.hasPhone ?

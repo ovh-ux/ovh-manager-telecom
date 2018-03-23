@@ -27,7 +27,7 @@
                                data-ng-attr-id="{{ 'phone' + phone.macAddress }}"
                                data-ng-attr-name="{{ 'phone' + phone.macAddress }}"
                                data-ng-attr-value="{{ phone.macAddress }}"
-                               data-ng-model="$ctrl.selectedMac" />
+                               data-ng-model="$ctrl.macAddress" />
                         <span class="ml-2"
                               data-ng-bind="phone.description">
                         </span>
@@ -63,8 +63,8 @@
                    data-ng-model="$ctrl.ipAddress" />
         </div>
         <button type="submit"
-                class="btn btn-primary float-right"
-                data-ng-disabled="$ctrl.isAttaching || !$ctrl.selectedMac || !$ctrl.ipAddress">
+                class="btn btn-primary mb-5 float-right"
+                data-ng-disabled="$ctrl.isAttaching || !$ctrl.macAddress || !$ctrl.ipAddress">
             <oui-spinner class="mr-2"
                          data-ng-if="$ctrl.isAttaching"
                          data-size="s">
@@ -72,9 +72,9 @@
             <span data-translate="telephony_device_associate_attach"></span>
         </button>
         <button type="reset"
-                class="btn btn-default mr-2 float-right no-transition"
-                data-ng-if="$ctrl.selectedMac"
-                data-ng-click="$ctrl.selectedMac = null"
+                class="btn btn-default mr-2 mb-5 float-right no-transition"
+                data-ng-if="$ctrl.macAddress"
+                data-ng-click="$ctrl.macAddress = null; $ctrl.ipAddress = null"
                 data-translate="cancel">
         </button>
     </form>

@@ -36,6 +36,8 @@
    <translation id="common_add" qtlid="37923">Ajouter</translation>
    <translation id="common_actions" qtlid="72809">Actions</translation>
 
+   <translation id="common_between_and">Entre {{between}} et {{and}}</translation>
+
    <translation id="common_search" qtlid="37659">Rechercher</translation>
 
    <translation id="common_error_title" qtlid="26407">Erreur</translation>

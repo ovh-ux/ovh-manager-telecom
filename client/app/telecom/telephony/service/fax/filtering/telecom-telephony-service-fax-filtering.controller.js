@@ -1,8 +1,8 @@
-angular.module("managerApp").controller("TelecomTelephonyServiceFaxFilteringCtrl", function ($filter, $q, $stateParams, $timeout, $translate, TelephonyMediator, OvhApiTelephony, ToastError, Toast) {
+angular.module("managerApp").controller("TelecomTelephonyServiceFaxFilteringCtrl", function ($filter, $q, $stateParams, $timeout, $translate, TelephonyMediator, OvhApiTelephony, Toast, telephonyBulk) {
     "use strict";
 
     var self = this;
-
+    var faxSettings = null;
     var screenListsTypes = [
         "whitelistedNumbers", "whitelistedTSI",
         "blacklistedNumbers", "blacklistedTSI"
@@ -11,6 +11,11 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxFilteringCtrl
     /* ===============================
     =            HELPERS            =
     =============================== */
+
+    function clearCache () {
+        OvhApiTelephony.Fax().Lexi().resetCache();
+        OvhApiTelephony.Fax().Lexi().resetQueryCache();
+    }
 
     function fetchScreenLists () {
         return OvhApiTelephony.Fax().Lexi().getScreenLists({
@@ -33,6 +38,14 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxFilteringCtrl
         });
     }
 
+    function fetchSettings () {
+        clearCache();
+        return OvhApiTelephony.Fax().Lexi().getSettings({
+            billingAccount: $stateParams.billingAccount,
+            serviceName: $stateParams.serviceName
+        }).$promise;
+    }
+
     self.getSelection = function () {
         return _.filter(self.screenLists.raw, function (screen) {
             return screen && self.screenLists.selected && self.screenLists.selected[screen.id];
@@ -51,7 +64,25 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxFilteringCtrl
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }, _.pick(self.screenListsForm, "filteringList")).$promise.catch(function (err) {
-            return new ToastError(err);
+            Toast.error([$translate.instant("telephony_service_fax_filtering_list_update_error"), _.get(err, "data.message")].join(" "));
+            return $q.reject(err);
+        }).finally(function () {
+            self.screenListsForm.isUpdating = false;
+        });
+    };
+
+    self.updateAnonymousRejection = function () {
+        self.screenListsForm.isUpdating = true;
+        var param = _.pick(faxSettings, ["faxMaxCall", "faxQuality", "faxTagLine", "fromEmail", "fromName", "mailFormat", "redirectionEmail"]);
+        param.rejectAnonymous = self.rejectAnonymous;
+        return OvhApiTelephony.Fax().Lexi().setSettings({
+            billingAccount: $stateParams.billingAccount,
+            serviceName: $stateParams.serviceName
+        }, param).$promise.then(function () {
+            return fetchSettings();
+        }).catch(function (error) {
+            Toast.error([$translate.instant("telephony_service_fax_filtering_anonymous_rejection_update_error"), _.get(error, "data.message")].join(" "));
+            return $q.reject(error);
         }).finally(function () {
             self.screenListsForm.isUpdating = false;
         });
@@ -74,7 +105,8 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxFilteringCtrl
             Toast.success($translate.instant("telephony_service_fax_filtering_new_success"));
             return self.refresh();
         }).catch(function (error) {
-            return new ToastError(error);
+            Toast.error([$translate.instant("telephony_service_fax_filtering_new_error"), _.get(error, "data.message")].join(" "));
+            return $q.reject(error);
         }).finally(function () {
             self.screenListsForm.isAdding = false;
         });
@@ -111,7 +143,8 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxFilteringCtrl
         return $q.all(queries).then(function () {
             return self.refresh();
         }).catch(function (err) {
-            return new ToastError(err);
+            Toast.error([$translate.instant("telephony_service_fax_filtering_table_delete_error"), _.get(err, "data.message")].join(" "));
+            return $q.reject(err);
         }).finally(function () {
             self.screenLists.isDeleting = false;
         });
@@ -147,8 +180,17 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxFilteringCtrl
         return fetchScreenLists().then(function (screenLists) {
             self.screenLists.raw = screenLists;
             self.sortScreenLists();
+
+            return fetchSettings().then(function (settings) {
+                faxSettings = settings;
+                self.rejectAnonymous = faxSettings.rejectAnonymous;
+                return settings;
+            }).catch(function (err) {
+                return $q.reject(err);
+            });
         }).catch(function (err) {
-            return new ToastError(err);
+            Toast.error([$translate.instant("telephony_service_fax_filtering_fetch_lists_error"), _.get(err, "data.message")].join(" "));
+            return $q.reject(err);
         }).finally(function () {
             self.screenLists.isLoading = false;
         });
@@ -188,18 +230,85 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxFilteringCtrl
             type: "Numbers",
             number: null
         };
+        self.settings = null;
         self.loading.init = true;
         return TelephonyMediator.getGroup($stateParams.billingAccount).then(function (group) {
             self.fax = group.getFax($stateParams.serviceName);
             return self.refresh();
         }).catch(function (err) {
-            return new ToastError(err);
+            Toast.error([$translate.instant("an_error_occured"), _.get(err, "data.message")].join(" "));
+            return $q.reject(err);
         }).finally(function () {
             self.loading.init = false;
         });
     }
 
     /* -----  End of INITIALIZATION  ------ */
+
+    /* ===========================
+    =            BULK            =
+    ============================ */
+
+    self.bulkDatas = {
+        billingAccount: $stateParams.billingAccount,
+        serviceName: $stateParams.serviceName,
+        infos: {
+            name: "faxFiltering",
+            actions: [{
+                name: "faxScreenLists",
+                route: "/telephony/{billingAccount}/fax/{serviceName}/screenLists",
+                method: "POST",
+                params: null
+            }, {
+                name: "settings",
+                route: "/telephony/{billingAccount}/fax/{serviceName}/settings",
+                method: "PUT",
+                params: null
+            }]
+        }
+    };
+
+    self.filterServices = function (services) {
+        return _.filter(services, function (service) {
+            return ["fax", "voicefax"].indexOf(service.featureType) > -1;
+        });
+    };
+
+    self.getBulkParams = function (action) {
+        switch (action) {
+        case "faxScreenLists":
+            return _.pick(self.screenListsForm, "filteringList");
+        case "settings":
+            var param = _.pick(faxSettings, ["faxMaxCall", "faxQuality", "faxTagLine", "fromEmail", "fromName", "mailFormat", "redirectionEmail"]);
+            param.rejectAnonymous = self.rejectAnonymous;
+            return param;
+        default:
+            return false;
+        }
+    };
+
+    self.onBulkSuccess = function (bulkResult) {
+        // display message of success or error
+        telephonyBulk.getToastInfos(bulkResult, {
+            fullSuccess: $translate.instant("telephony_service_fax_filtering_bulk_all_success"),
+            partialSuccess: $translate.instant("telephony_service_fax_filtering_bulk_some_success", {
+                count: bulkResult.success.length
+            }),
+            error: $translate.instant("telephony_service_fax_filtering_bulk_error")
+        }).forEach(function (toastInfo) {
+            Toast[toastInfo.type](toastInfo.message, {
+                hideAfter: null
+            });
+        });
+
+        self.refresh();
+    };
+
+    self.onBulkError = function (error) {
+        Toast.error([$translate.instant("telephony_service_fax_filtering_bulk_on_error"), _.get(error, "msg.data")].join(" "));
+    };
+
+    /* -----  End of BULK  ------ */
 
     init();
 });
