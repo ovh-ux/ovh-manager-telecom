@@ -1,171 +1,77 @@
 <form name="abbreviatedNumberForm"
       id="abbreviatedNumberForm"
-      data-ng-submit="AbbreviatedNumberModal.send()"
-      novalidate>
+      novalidate
+      data-ng-submit="abbreviatedNumberForm.$valid && AbbreviatedNumberModal.send()">
 
-    <div class="modal-header"
-         data-ng-if="AbbreviatedNumberModal.title">
-         <button type="button"
-                 class="close float-right"
-                 aria-label="{{:: 'cancel' | translate }}"
-                 data-ng-click="AbbreviatedNumberModal.cancel()">
-            <span aria-hidden="true">&times;</span>
-         </button>
-    </div>
+    <oui-modal
+        data-primary-label="{{:: 'common_add' | translate }}"
+        data-secondary-action="AbbreviatedNumberModal.cancel()"
+        data-secondary-label="{{:: 'cancel' | translate }}"
+        data-on-dismiss="AbbreviatedNumberModal.cancel()"
+        data-loading="AbbreviatedNumberModal.loading.updating">
 
-    <div class="modal-body">
+        <oui-message data-type="error" data-ng-if="AbbreviatedNumberModal.errorMessage">
+            <span>{{AbbreviatedNumberModal.errorMessage}}</span>
+        </oui-message>
 
-        <h3 class="modal-title"
-            data-ng-bind="AbbreviatedNumberModal.title">
-        </h3>
+        <h2 class="oui-modal__title" data-ng-bind=":: AbbreviatedNumberModal.title"></h2>
 
-        <!-- Abbreviated number -->
-        <div class="form-group"
-             data-ng-class="{
-                'has-error': abbreviatedNumberForm.abbreviatedNumber.$touched && abbreviatedNumberForm.abbreviatedNumber.$invalid
-             }">
-            <label for="abbreviatedNumber"
-                   class="control-label"
-                   data-translate="telephony_abbreviated_numbers_id">
-            </label>
+        <oui-field
+            data-label="{{:: 'telephony_abbreviated_numbers_id' | translate }}"
+            data-error-messages="{pattern: AbbreviatedNumberModal.pattern.errorMessage}"
+            data-help-text="{{:: 'telephony_abbreviated_numbers_id_help' | translate }}">
             <input
                 type="text"
                 name="abbreviatedNumber"
                 id="abbreviatedNumber"
-                class="form-control"
-                data-translate
-                translate-attr-placeholder="telephony_abbreviated_numbers_id"
+                class="oui-input"
                 data-ng-pattern="AbbreviatedNumberModal.pattern.regexp"
-                data-ui-validate="{available: 'true'}"
                 required
                 data-ng-readonly="AbbreviatedNumberModal.readOnly.abbreviatedNumber"
-                data-ng-model="AbbreviatedNumberModal.data.abbreviatedNumber" />
-            <span class="help-block"
-                  role="alert"
-                  data-ng-if="abbreviatedNumberForm.abbreviatedNumber.$touched"
-                  data-ng-messages="abbreviatedNumberForm.abbreviatedNumber.$error">
-                <span data-ng-message="pattern"
-                      data-ng-bind="AbbreviatedNumberModal.pattern.errorMessage">
-                </span>
-                <span data-ng-message="available"
-                      data-translate="telephony_abbreviated_numbers_not_free_error">
-                </span>
-            </span>
-        </div>
+                data-ng-model="AbbreviatedNumberModal.data.abbreviatedNumber">
+        </oui-field>
 
-        <!-- Number -->
-        <div class="form-group"
-             data-ng-class="{
-                'has-error': abbreviatedNumberForm.destinationNumber.$touched && abbreviatedNumberForm.destinationNumber.$invalid
-             }">
-            <label for="destinationNumber"
-                   class="control-label"
-                   data-translate="telephony_abbreviated_numbers_number">
-            </label>
+        <oui-field
+            data-label="{{:: 'telephony_abbreviated_numbers_number' | translate }}"
+            data-error-messages="{pattern: ('telephony_abbreviated_numbers_number_error' | translate) }"
+            data-help-text="{{:: 'telephony_abbreviated_numbers_number_help' | translate }}">
             <input
                 type="text"
                 name="destinationNumber"
                 id="destinationNumber"
-                class="form-control"
-                data-translate
-                translate-attr-placeholder="telephony_abbreviated_numbers_number"
+                class="oui-input"
                 data-ng-pattern="AbbreviatedNumberModal.numberPattern"
                 required
                 data-ng-readonly="AbbreviatedNumberModal.readOnly.destinationNumber"
-                data-ng-model="AbbreviatedNumberModal.data.destinationNumber"/>
-            <span class="help-block"
-                  role="alert"
-                  data-ng-if="abbreviatedNumberForm.destinationNumber.$touched"
-                  data-ng-messages="abbreviatedNumberForm.destinationNumber.$error">
-                <span data-ng-message="pattern"
-                      data-translate="telephony_abbreviated_numbers_number_error">
-                </span>
-            </span>
-        </div>
+                data-ng-model="AbbreviatedNumberModal.data.destinationNumber">
+        </oui-field>
 
-        <!-- Surname -->
-        <div class="form-group"
-             data-ng-class="{
-                'has-error': abbreviatedNumberForm.surname.$touched && abbreviatedNumberForm.surname.$invalid
-             }">
-            <label for="surname"
-                   class="control-label"
-                   data-translate="telephony_abbreviated_numbers_surname">
-            </label>
+        <oui-field
+            data-label="{{:: 'telephony_abbreviated_numbers_surname' | translate }}">
             <input
                 type="text"
                 name="surname"
                 id="surname"
-                class="form-control"
-                data-translate
-                translate-attr-placeholder="telephony_abbreviated_numbers_surname"
-                maxlength="85"
+                class="oui-input"
+                data-ng-maxlength="85"
                 data-ng-pattern="AbbreviatedNumberModal.namePattern"
                 required
                 data-ng-readonly="AbbreviatedNumberModal.readOnly.surname"
-                data-ng-model="AbbreviatedNumberModal.data.surname"/>
-            <span class="help-block"
-                  role="alert"
-                  data-ng-if="abbreviatedNumberForm.surname.$touched"
-                  data-ng-messages="abbreviatedNumberForm.surname.$error">
-                <span data-ng-message="pattern"
-                      data-translate="telephony_abbreviated_numbers_name_error">
-                </span>
-            </span>
-        </div>
+                data-ng-model="AbbreviatedNumberModal.data.surname">
+        </oui-field>
 
-        <!-- Name -->
-        <div class="form-group"
-             data-ng-class="{
-                'has-error': abbreviatedNumberForm.name.$touched && abbreviatedNumberForm.name.$invalid
-             }">
-            <label for="name"
-                   class="control-label"
-                   data-translate="telephony_abbreviated_numbers_name">
-            </label>
+        <oui-field
+            data-label="{{:: 'telephony_abbreviated_numbers_name' | translate }}">
             <input
                 type="text"
                 name="name"
                 id="name"
-                class="form-control"
-                data-translate
-                translate-attr-placeholder="telephony_abbreviated_numbers_name"
-                maxlength="85"
+                class="oui-input"
+                data-ng-maxlength="85"
                 data-ng-pattern="AbbreviatedNumberModal.namePattern"
                 required
                 data-ng-readonly="AbbreviatedNumberModal.readOnly.name"
-                data-ng-model="AbbreviatedNumberModal.data.name"/>
-            <span class="help-block"
-                  role="alert"
-                  data-ng-if="abbreviatedNumberForm.name.$touched"
-                  data-ng-messages="abbreviatedNumberForm.name.$error">
-                <span data-ng-message="pattern"
-                      data-translate="telephony_abbreviated_numbers_name_error">
-                </span>
-            </span>
-        </div>
-    </div>
-
-    <div class="modal-body"
-         data-ng-if="AbbreviatedNumberModal.loading.updating">
-        <div class="text-center">
-            <oui-spinner></oui-spinner>
-        </div>
-    </div>
-
-    <div class="modal-footer">
-        <button
-            type="button"
-            class="btn btn-default"
-            data-ng-click="AbbreviatedNumberModal.cancel()"
-            data-translate="cancel">
-        </button>
-        <button
-            type="submit"
-            class="btn btn-primary"
-            data-translate="submit"
-            data-ng-disabled="abbreviatedNumberForm.$invalid">
-        </button>
-    </div>
-
+                data-ng-model="AbbreviatedNumberModal.data.name">
+        </oui-field>
+    </oui-modal>
 </form>
