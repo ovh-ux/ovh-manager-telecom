@@ -48,7 +48,7 @@ angular.module("managerApp").factory("VoipServiceLine", function (VoipService) {
 
         /**
          *  @ngdoc method
-         *  @name managerApp.object:VoipServiceLine#isSipTrunk
+         *  @name managerApp.object:VoipServiceLine#isSipTrunkRates
          *  @propertyOf managerApp.object:VoipServiceLine
          *
          *  @description
