@@ -5,8 +5,6 @@ angular.module("managerApp").controller("TelecomTelephonyServiceTimeConditionImp
         this.$uibModalInstance = $uibModalInstance;
         this.Toast = Toast;
         this.voipTimeConditionConfiguration = voipTimeConditionConfiguration;
-
-        this.$onInit();
     }
 
     $onInit () {
