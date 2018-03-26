@@ -16,7 +16,8 @@ angular.module("managerApp").controller("TelecomSmsSmsComposeCtrl", class Teleco
                     jobs: OvhApiSms.VirtualNumbers().Jobs().Lexi()
                 }
             },
-            user: OvhApiMe.Lexi()
+            user: OvhApiMe.Lexi(),
+            smsOffers: OvhApiSms.Lexi()
         };
         this.atInternet = atInternet;
         this.Toast = Toast;
@@ -37,6 +38,7 @@ angular.module("managerApp").controller("TelecomSmsSmsComposeCtrl", class Teleco
             other: [],
             virtual: []
         };
+        this.smsCreditCost = 1;
         this.receivers = {
             raw: [],
             count: 0,
@@ -94,7 +96,11 @@ angular.module("managerApp").controller("TelecomSmsSmsComposeCtrl", class Teleco
                 this.receivers.raw = result.receivers;
                 this.phonebooks.raw = result.phonebooks;
                 this.phonebooks.current = _.head(this.phonebooks.raw);
-                return this.senders.raw;
+
+                return this.fetchSmsOffers().then((creditCost) => {
+                    this.smsCreditCost = creditCost;
+                    return this.senders.raw;
+                });
             }).then((senders) =>
                 _.each(senders, (sender) => {
                     if (sender.type === "virtual") {
@@ -152,6 +158,18 @@ angular.module("managerApp").controller("TelecomSmsSmsComposeCtrl", class Teleco
                 }).$promise
             )).then((senders) => _.filter(senders, { status: "enable" }))
         );
+    }
+
+    /**
+     * Fetch Sms Offers
+     */
+    fetchSmsOffers () {
+        return this.api.smsOffers.seeOffers({
+            serviceName: this.$stateParams.serviceName,
+            countryCurrencyPrice: "fr",
+            countryDestination: this.user.country.toLowerCase(),
+            quantity: 100
+        }).$promise.then((offers) => _.first(offers).quantity / _.first(offers).smsQuantity);
     }
 
     /**
@@ -308,7 +326,7 @@ angular.module("managerApp").controller("TelecomSmsSmsComposeCtrl", class Teleco
      */
     getEstimationCreditRemaining () {
         const totalReceivers = this.receivers.records + this.phonebooks.lists.length + (this.sms.receivers ? 1 : 0);
-        const creditRemaining = this.service.creditsLeft - (totalReceivers * this.message.equivalence);
+        const creditRemaining = this.service.creditsLeft - (totalReceivers * this.message.equivalence * this.smsCreditCost);
         return this.$filter("number")(creditRemaining, 2);
     }
 
