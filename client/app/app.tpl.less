@@ -1,6 +1,11 @@
 // bower:less
 // endbower
 
+@rem-base: rem-base(10px);
+@bs-path: "../bower_components/bootstrap";
+@oui-path: "../bower_components/ovh-ui-kit";
+
+@import "ovh-ui-kit/packages/oui/stylekit";
 @import "ovh-ui-kit-bs/src/ovh-ui-kit-bs";
 @import "ovh-angular-sidebar-menu/less/ovh-angular-sidebar-menu.less";
 @import "ovh-angular-sidebar-menu/less/ovh-angular-sidebar-menu.dependencies.less";
@@ -8,26 +13,20 @@
 @import "ovh-angular-pagination-front/less/ovh-angular-pagination-front.less";
 @import "ovh-angular-sso-auth-modal-plugin/less/ovh-angular-sso-auth-modal-plugin.less";
 @import "ovh-angular-contact/less/ovh-angular-contact.less";
+@import "ovh-manager-webfont/dist/less/ovh-font";
 // @import "ovh-angular-chatbot/src/ovh-angular-chatbot.less"; TODO: uncomment
 
-
-// Paths of dependencies
-@bs-path: "../bower_components/bootstrap";
-@oui-path: "../bower_components/ovh-ui-kit";
-
-// Bootstrap fonts
+// Paths for Icons & Fonts
 @icon-font-path: "../bower_components/bootstrap/dist/fonts/";
-
-// OVH UI icons & fonts
 @oui-icon-dist-folder: "../bower_components/ovh-ui-kit/dist/icons";
 @oui-font-source-sans-pro-folder: "../bower_components/ovh-ui-kit/packages/oui-typography/fonts/source-sans-pro";
+@fa-font-path: "../bower_components/font-awesome/fonts";
+@flag-icon-css-path: "../bower_components/flag-icon-css/flags";
+@ovh-font-path:"../bower_components/ovh-manager-webfont/dist/fonts/";
 
 // OVH Universe
 @ovh-universe-color: @oui-color-dodger;
 
-@fa-font-path: "../bower_components/font-awesome/fonts";
-@flag-icon-css-path: "../bower_components/flag-icon-css/flags";
-@ovh-font-path:"../bower_components/ovh-manager-webfont/dist/fonts/";
 
 // Mobile
 @media (max-width: @screen-sm-max) {
