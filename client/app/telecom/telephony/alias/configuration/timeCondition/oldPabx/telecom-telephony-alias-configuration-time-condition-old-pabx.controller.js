@@ -1,4 +1,6 @@
-angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationTimeConditionOldPabxCtrl", function ($q, $stateParams, $translate, OvhApiTelephony, TelephonyMediator, Toast, uiCalendarConfig, telephonyBulk, voipTimeCondition) {
+angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationTimeConditionOldPabxCtrl", function ($q, $stateParams, $translate, $uibModal,
+                                                                                                                OvhApiTelephony, TelephonyMediator, Toast, uiCalendarConfig, telephonyBulk,
+                                                                                                                voipTimeCondition, VoipTimeConditionCondition, voipTimeConditionConfiguration) {
     "use strict";
 
     var self = this;
@@ -48,7 +50,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationTimeC
             });
         }, function (error) {
             self.number.feature.timeCondition.stopEdition(true).startEdition();
-            Toast.error([$translate.instant("telephony_line_calls_time_condition_save_error"), _.get(error, "data.message")].join(" "));
+            Toast.error([$translate.instant("telephony_alias_configuration_time_condition_save_error"), _.get(error, "data.message")].join(" "));
             return $q.reject(error);
         }).finally(function () {
             self.number.feature.timeCondition.status = "OK";
@@ -109,6 +111,64 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationTimeC
     };
 
     /* -----  End of INITIALIZATION  ------*/
+
+    /* ======================================
+    =      EXPORT/IMPORT CONFIGURATION      =
+    ======================================= */
+
+    self.exportConfiguration = function () {
+        if (self.number.feature.timeCondition.conditions) {
+            voipTimeConditionConfiguration.exportConfiguration(self.number.feature.timeCondition.conditions);
+        }
+    };
+
+    self.importConfiguration = function () {
+        var modal = $uibModal.open({
+            animation: true,
+            templateUrl: "app/telecom/telephony/service/time-condition/import/telecom-telephony-service-time-condition-import.html",
+            controller: "TelecomTelephonyServiceTimeConditionImportCtrl",
+            controllerAs: "TimeConditionImportCtrl"
+        });
+
+        modal.result.then(function (conditions) {
+            // Set existing condition state to delete
+            _.forEach(self.number.feature.timeCondition.conditions, function (condition) {
+                condition.state = "TO_DELETE";
+            });
+
+            return self.number.feature.timeCondition.saveConditions().then(function () {
+                self.number.feature.timeCondition.conditions = self.number.feature.timeCondition.conditions.concat(_.map(conditions, function (condition) {
+                    condition.billingAccount = $stateParams.billingAccount;
+                    condition.serviceName = $stateParams.serviceName;
+                    condition.state = "TO_CREATE";
+                    condition.featureType = "easyHunting";
+
+                    condition.day = condition.weekDay;
+                    condition.hourBegin = condition.timeFrom.split(":").slice(0, 2).join("");
+                    condition.hourEnd = condition.timeTo.split(":").slice(0, 2).join("");
+
+                    condition.featureType = "sip";
+
+                    return new VoipTimeConditionCondition(condition);
+                }));
+
+                uiCalendarConfig.calendars.conditionsCalendar.fullCalendar("refetchEvents");
+                return self.number.feature.timeCondition.saveConditions().then(function () {
+                    Toast.success($translate.instant("telephony_common_time_condition_import_configuration_success"));
+                }).catch(function () {
+                    Toast.error($translate.instant("telephony_common_time_condition_import_configuration_error"));
+                }).finally(function () {
+                    self.$onInit();
+                });
+            });
+        }).catch(function (error) {
+            if (error) {
+                Toast.error($translate.instant("telephony_common_time_condition_import_configuration_error"));
+            }
+        });
+    };
+
+    /* ------ End of EXPORT/IMPORT CONFIGURATION ------ */
 
     /* ===========================
     =            BULK            =
