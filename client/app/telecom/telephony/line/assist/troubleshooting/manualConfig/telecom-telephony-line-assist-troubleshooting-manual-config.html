@@ -64,7 +64,10 @@
                 </div>
 
                 <div data-ng-if="ManualConfigCtrl.process.phoneType === 'thomson'">
-                    <p data-translate="telephony_line_assist_troubleshooting_manual_config_thomson_factory_reset_step1"></p>
+                    <p data-ng-if="ManualConfigCtrl.process.line.phone.brand !== 'phone.thomson.st2030'"
+                       data-translate="{{'telephony_line_assist_troubleshooting_manual_config_thomson_factory_reset_step1'}}"></p>
+                    <p data-ng-if="ManualConfigCtrl.process.line.phone.brand === 'phone.thomson.st2030'"
+                       data-translate="{{'telephony_line_assist_troubleshooting_manual_config_thomson_st2030_factory_reset_step1'}}"></p>
                     <p data-translate="telephony_line_assist_troubleshooting_manual_config_thomson_factory_reset_step2"></p>
                 </div>
             </li>
