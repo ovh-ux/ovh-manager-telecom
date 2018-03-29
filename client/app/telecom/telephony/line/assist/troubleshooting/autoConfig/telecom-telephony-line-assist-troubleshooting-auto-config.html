@@ -44,7 +44,10 @@
                 </p>
                 <em>
                     <span>* </span>
-                    <span data-translate="telephony_line_assist_troubleshooting_auto_config_mac_address_explain_note"></span>
+                    <span data-ng-if="AutoConfigCtrl.process.line.phone.brand !== 'phone.yealink.w56p'"
+                          data-translate="telephony_line_assist_troubleshooting_auto_config_mac_address_explain_note"></span>
+                    <span data-ng-if="AutoConfigCtrl.process.line.phone.brand === 'phone.yealink.w56p'"
+                          data-translate="telephony_line_assist_troubleshooting_auto_config_mac_address_W56P_explain_note"></span>
                 </em>
             </li>
             <li data-ng-if="AutoConfigCtrl.process.phoneType === 'unidata' || AutoConfigCtrl.process.phoneType === 'popc' || AutoConfigCtrl.process.phoneType === 'yealink'">
@@ -56,9 +59,16 @@
                    data-translate="telephony_line_assist_troubleshooting_auto_config_reinit_explain">
                 </p>
 
-                <p data-translate="telephony_line_assist_troubleshooting_auto_config_reinit_step1"></p>
-                <p data-translate="telephony_line_assist_troubleshooting_auto_config_reinit_step2"></p>
-                <p data-translate="telephony_line_assist_troubleshooting_auto_config_reinit_step3"></p>
+                <div data-ng-if="AutoConfigCtrl.process.line.phone.brand !== 'phone.yealink.w56p'">
+                    <p data-translate="telephony_line_assist_troubleshooting_auto_config_reinit_step1"></p>
+                    <p data-translate="telephony_line_assist_troubleshooting_auto_config_reinit_step2"></p>
+                    <p data-translate="telephony_line_assist_troubleshooting_auto_config_reinit_step3"></p>
+                </div>
+                <div data-ng-if="AutoConfigCtrl.process.line.phone.brand === 'phone.yealink.w56p'">
+                    <p data-translate="telephony_line_assist_troubleshooting_auto_config_W56P_reinit_step1"></p>
+                    <p data-translate="telephony_line_assist_troubleshooting_auto_config_W56P_reinit_step2"></p>
+                    <p data-translate="telephony_line_assist_troubleshooting_auto_config_W56P_reinit_step3"></p>
+                </div>
             </li>
             <li>
                 <h4 class="mb-3 lead"

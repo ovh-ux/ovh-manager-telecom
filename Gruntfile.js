@@ -620,11 +620,11 @@ module.exports = function (grunt) {
         less: {
             options: {
                 paths: [
-                    "node_modules",
                     "<%= yeoman.client %>/bower_components",
                     "<%= yeoman.client %>/app",
                     "<%= yeoman.client %>/components",
-                    "<%= yeoman.client %>/assets/styles"
+                    "<%= yeoman.client %>/assets/styles",
+                    "node_modules"
                 ],
                 plugins: [
                     require("less-plugin-remcalc")

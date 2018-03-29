@@ -136,8 +136,44 @@
                                    data-on-error="$ctrl.onBulkError">
             </telephony-bulk-action>
 
-            <voip-time-condition-calendar data-voip-time-condition="$ctrl.line.timeCondition"></voip-time-condition-calendar>
+            <div class="mb-3 clearfix"
+                 data-uib-dropdown
+                 data-dropdown-append-to-body>
+                 <button id="btn-time-conditions-actions"
+                        type="button"
+                        class="btn btn-default"
+                        data-uib-dropdown-toggle>
+                    <span class="fa fa-bars" aria-hidden="true"></span>
+                    <span data-translate="common_actions"></span>
+                    <span class="ovh-font ovh-font-small-arrow-down" aria-hidden="true"></span>
+                </button>
+                <ul class="dropdown-menu"
+                    role="menu"
+                    aria-labelledby="btn-time-conditions-actions"
+                    data-uib-dropdown-menu>
+                    <li role="menuitem">
+                        <i class="ovh-font ovh-font-add-circle" aria-hidden="true"></i>
+                        <button
+                            type="button"
+                            class="btn btn-link"
+                            data-ng-click="$ctrl.exportConfiguration()"
+                            data-translate="telephony_common_time_condition_export_configuration">
+                        </button>
+                    </li>
+                    <li role="menuitem">
+                        <i class="ovh-font ovh-font-arrow-rotate" aria-hidden="true"></i>
+                        <button
+                            type="button"
+                            class="btn btn-link"
+                            data-ng-click="$ctrl.importConfiguration()"
+                            data-translate="telephony_common_time_condition_import_configuration">
+                        </button>
+                    </li>
+                </ul>
+            </div>
         </div> <!-- CONDITIONS -->
+
+        <voip-time-condition-calendar data-voip-time-condition="$ctrl.line.timeCondition"></voip-time-condition-calendar>
 
         <footer class="voip-action-bar"
                 data-ng-if="$ctrl.hasChange()">
