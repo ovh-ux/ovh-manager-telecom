@@ -98,8 +98,9 @@
     "ovh-manager-webfont": "^1.0.1",
     "ovh-ng-input-password": "^1.2.5",
     "ovh-ngstrap": "^4.0.2",
-    "ovh-ui-kit": "^2.4.0",
-    "ovh-ui-angular": "^2.3.0",
+    "ovh-ui-kit": "^2.7.x",
+    "ovh-ui-kit-bs": "~1.1.x",
+    "ovh-ui-angular": "^2.7.x",
     "validator-js": "3.40.1"
   },
   "devDependencies": {
@@ -130,8 +131,8 @@
     "ovh-font": "~0.15.x",
     "responsive-popover": "^4.0.0",
     "uri.js": "^1.18.1",
-    "ovh-ui-kit": "^2.3.0",
-    "ovh-ui-angular": "^2.3.0"
+    "ovh-ui-kit": "^2.7.x",
+    "ovh-ui-angular": "^2.7.x"
   },
   "overrides": {
     "jquery-ui": {

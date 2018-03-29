@@ -10,7 +10,7 @@ angular.module("managerApp").config(function ($stateProvider) {
                 controllerAs: "$ctrl"
             }
         },
-        translations: ["common", "telecom/telephony/alias/configuration/timeCondition", "../components/telecom/telephony/timeCondition/slot"]
+        translations: ["common", "common/telephony", "telecom/telephony/alias/configuration/timeCondition", "../components/telecom/telephony/timeCondition/slot"]
     });
 
 });
