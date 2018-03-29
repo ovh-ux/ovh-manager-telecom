@@ -12,7 +12,7 @@ angular.module("managerApp").controller("PackVoipBillingAccountCtrl", function (
         };
 
         // Get service link to this access from current Pack Xdsl
-        return OvhApiPackXdslVoipBillingAccount.Lexi().query({
+        return OvhApiPackXdslVoipBillingAccount.v6().query({
             packId: $stateParams.packName
         }).$promise.then(
             function (services) {

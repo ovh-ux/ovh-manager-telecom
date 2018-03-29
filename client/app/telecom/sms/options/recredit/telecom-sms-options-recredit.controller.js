@@ -5,7 +5,7 @@ angular.module("managerApp").controller("TelecomSmsOptionsRecreditCtrl", class T
         this.$translate = $translate;
         this.$uibModal = $uibModal;
         this.api = {
-            orderSms: OvhApiOrderSms.Lexi()
+            orderSms: OvhApiOrderSms.v6()
         };
         this.SmsMediator = SmsMediator;
         this.Toast = Toast;

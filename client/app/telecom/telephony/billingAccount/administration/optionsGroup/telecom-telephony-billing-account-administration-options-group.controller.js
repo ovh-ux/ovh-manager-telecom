@@ -11,11 +11,11 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountAdministr
     ===============================*/
 
     function fetchSettings () {
-        OvhApiTelephony.Lexi().resetCache();
-        OvhApiTelephony.Lexi().resetQueryCache();
+        OvhApiTelephony.v6().resetCache();
+        OvhApiTelephony.v6().resetQueryCache();
         return $q.all({
-            telephony: OvhApiTelephony.Lexi().get({ billingAccount: $stateParams.billingAccount }).$promise,
-            user: OvhApiMe.Telephony().Settings().Lexi().get().$promise
+            telephony: OvhApiTelephony.v6().get({ billingAccount: $stateParams.billingAccount }).$promise,
+            user: OvhApiMe.Telephony().Settings().v6().get().$promise
         });
     }
 
@@ -35,10 +35,10 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountAdministr
     self.changeSettings = function () {
         self.isChanging = true;
         return $q.all([
-            OvhApiTelephony.Lexi().edit({
+            OvhApiTelephony.v6().edit({
                 billingAccount: $stateParams.billingAccount
             }, _.pick(self.optionsGroupForm.telephony, telephonyAttributes)).$promise,
-            OvhApiMe.Telephony().Settings().Lexi().change({
+            OvhApiMe.Telephony().Settings().v6().change({
                 settings: self.optionsGroupForm.user
             }).$promise
         ]).then(function () {

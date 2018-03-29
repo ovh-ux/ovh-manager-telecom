@@ -10,7 +10,7 @@ angular.module("managerApp").service("FaxSidebar", function ($translate, Sidebar
     ========================================*/
 
     self.loadFaxMainSection = function () {
-        return OvhApiFreeFax.Lexi().query().$promise.then(function (faxList) {
+        return OvhApiFreeFax.v6().query().$promise.then(function (faxList) {
 
             _.sortBy(faxList, "number").forEach(function (fax) {
                 SidebarMenu.addMenuItem({

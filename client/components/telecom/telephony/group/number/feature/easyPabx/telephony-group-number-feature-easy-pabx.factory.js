@@ -137,7 +137,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberEasyPabx", function ($
     TelephonyGroupNumberEasyPabx.prototype.init = function () {
         var self = this;
 
-        return OvhApiTelephonyEasyPabx.Lexi().get({
+        return OvhApiTelephonyEasyPabx.v6().get({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName
         }).$promise.then(function (featureOptions) {

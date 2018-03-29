@@ -211,12 +211,12 @@ angular.module("managerApp")
                 /** TODO Optimize **/
                 angular.forEach(TelephonyMediator.groups, function (group) {
                     angular.forEach(["ovh", "easy", "mini"], function (type) {
-                        pabxState.request.push(pabxState[type].Lexi().query({
+                        pabxState.request.push(pabxState[type].v6().query({
                             billingAccount: group.billingAccount
                         }).$promise.then(function (pabx) {
                             var request = [];
                             angular.forEach(pabx, function (abx) {
-                                request.push(pabxState[type].Lexi().queryAgent({
+                                request.push(pabxState[type].v6().queryAgent({
                                     billingAccount: group.billingAccount,
                                     serviceName: abx
                                 }).$promise.then(function (agents) {

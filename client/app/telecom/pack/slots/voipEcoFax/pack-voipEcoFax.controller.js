@@ -13,7 +13,7 @@ angular.module("managerApp").controller("PackVoipEcoFaxCtrl", function ($scope, 
         };
 
         // Get service link to this access from current Pack Xdsl
-        return OvhApiPackXdslVoipEcofax.Lexi().query({
+        return OvhApiPackXdslVoipEcofax.v6().query({
             packId: $stateParams.packName
         }).$promise.then(
             function (services) {

@@ -23,7 +23,7 @@ angular.module("managerApp").controller("TelecomOrdersAccessoriesCtrl", function
         self.loading.submit = true;
         self.orderError = null;
 
-        return OvhApiTelephony.Line().Lexi().query({
+        return OvhApiTelephony.Line().v6().query({
             billingAccount: self.model.billingAccount.billingAccount
         }).$promise.then(function (lines) {
             if (lines.length) {

@@ -22,7 +22,7 @@ angular.module("managerApp")
         self.getPrice = function (amount) {
             self.contracts = [];
             self.cost = null;
-            OvhApiFreeFax.Lexi().getPrice({
+            OvhApiFreeFax.v6().getPrice({
                 quantity: amount
             }).$promise.then(function (data) {
                 self.cost = data.prices;
@@ -37,7 +37,7 @@ angular.module("managerApp")
 
         self.order = function (amount) {
             self.orderDone = true;
-            OvhApiFreeFax.Lexi().orderCredits(null, {
+            OvhApiFreeFax.v6().orderCredits(null, {
                 quantity: amount
             }).$promise.then(function (response) {
                 var detail = _.head(response.details);

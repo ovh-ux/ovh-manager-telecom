@@ -5,8 +5,8 @@ angular.module("managerApp")
 
         var self = this;
         var apiResources = {
-            getSimultaneousLines: OvhApiOrderTelephony.Lexi().getSimultaneousLines,
-            orderSimultaneousLines: OvhApiOrderTelephony.Lexi().orderSimultaneousLines
+            getSimultaneousLines: OvhApiOrderTelephony.v6().getSimultaneousLines,
+            orderSimultaneousLines: OvhApiOrderTelephony.v6().orderSimultaneousLines
         };
 
         var unitPrices = null;
@@ -45,7 +45,7 @@ angular.module("managerApp")
         self.doRemoveSimultaneousLines = function () {
             self.loading.save = true;
 
-            return OvhApiTelephony.Line().Lexi().removeSimultaneousLine({
+            return OvhApiTelephony.Line().v6().removeSimultaneousLine({
                 billingAccount: $stateParams.billingAccount,
                 serviceName: $stateParams.serviceName
             }, {
@@ -118,13 +118,13 @@ angular.module("managerApp")
         }
 
         function getOfferTasks () {
-            return OvhApiTelephonyService.OfferTask().Lexi().query({
+            return OvhApiTelephonyService.OfferTask().v6().query({
                 billingAccount: $stateParams.billingAccount,
                 serviceName: $stateParams.serviceName,
                 action: "removeSimltaneousLines"
             }).$promise.then(function (offerTasks) {
                 return $q.all(_.map(offerTasks, function (taskId) {
-                    return OvhApiTelephonyService.OfferTask().Lexi().get({
+                    return OvhApiTelephonyService.OfferTask().v6().get({
                         billingAccount: $stateParams.billingAccount,
                         serviceName: $stateParams.serviceName,
                         taskId: taskId
@@ -172,7 +172,7 @@ angular.module("managerApp")
                 getOfferTasks(),
                 getUnitPrices(),
 
-                OvhApiTelephony.Line().Lexi().get({
+                OvhApiTelephony.Line().v6().get({
                     billingAccount: $stateParams.billingAccount,
                     serviceName: $stateParams.serviceName
                 }).$promise.then(function (options) {
@@ -184,8 +184,8 @@ angular.module("managerApp")
                     });
 
                     if (isTrunk) {
-                        apiResources.getSimultaneousLines = OvhApiOrderTelephony.Lexi().getSimultaneousTrunkLines;
-                        apiResources.orderSimultaneousLines = OvhApiOrderTelephony.Lexi().orderSimultaneousTrunkLines;
+                        apiResources.getSimultaneousLines = OvhApiOrderTelephony.v6().getSimultaneousTrunkLines;
+                        apiResources.orderSimultaneousLines = OvhApiOrderTelephony.v6().orderSimultaneousTrunkLines;
                     }
 
                     if (currentLine) {
@@ -196,7 +196,7 @@ angular.module("managerApp")
                     return self.options;
                 }),
 
-                OvhApiTelephony.Line().Lexi().maximumAvailableSimultaneousLines({
+                OvhApiTelephony.Line().v6().maximumAvailableSimultaneousLines({
                     billingAccount: $stateParams.billingAccount,
                     serviceName: $stateParams.serviceName
                 }).$promise.then(function (maximumAvailableSimultaneousLines) {

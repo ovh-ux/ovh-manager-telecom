@@ -30,7 +30,7 @@ angular.module("managerApp").config(function ($stateProvider) {
         ],
         resolve: {
             $title: function (translations, $translate, $stateParams, OvhApiXdsl) {
-                return OvhApiXdsl.Lexi().get({
+                return OvhApiXdsl.v6().get({
                     xdslId: $stateParams.serviceName
                 }).$promise.then(function (data) {
                     return $translate.instant("xdsl_page_title", { name: data.description || $stateParams.serviceName }, null, null, "escape");

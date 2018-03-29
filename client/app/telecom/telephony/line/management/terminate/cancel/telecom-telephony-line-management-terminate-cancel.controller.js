@@ -13,7 +13,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineTerminateCancelCtrl
     self.cancelTerminate = function () {
         self.loading.cancelTerminate = true;
         if (self.taskDetails.executionDate) {
-            return OvhApiTelephony.Service().Lexi().cancelTermination({
+            return OvhApiTelephony.Service().v6().cancelTermination({
                 billingAccount: $stateParams.billingAccount,
                 serviceName: $stateParams.serviceName
             }, null).$promise.then(function () {
@@ -39,7 +39,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineTerminateCancelCtrl
             self.line = group.getLine($stateParams.serviceName);
         }).then(function () {
 
-            return OvhApiTelephony.Service().OfferTask().Lexi().query({
+            return OvhApiTelephony.Service().OfferTask().v6().query({
                 billingAccount: $stateParams.billingAccount,
                 serviceName: $stateParams.serviceName,
                 action: "termination",
@@ -52,7 +52,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineTerminateCancelCtrl
 
                 self.taskDetails = {};
 
-                return OvhApiTelephony.Service().OfferTask().Lexi().get({
+                return OvhApiTelephony.Service().OfferTask().v6().get({
                     billingAccount: $stateParams.billingAccount,
                     serviceName: $stateParams.serviceName,
                     action: "termination",

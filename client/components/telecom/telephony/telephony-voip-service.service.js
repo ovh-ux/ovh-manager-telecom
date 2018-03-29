@@ -10,7 +10,7 @@ angular.module("managerApp").service("TelephonyVoipService", function ($q, OvhAp
         const groups = {}; // indexed by billing accounts
 
         // fetch all billing accounts
-        return OvhApiTelephony.Erika().query().expand().execute().$promise.then(function (result) {
+        return OvhApiTelephony.v7().query().expand().execute().$promise.then(function (result) {
 
             _.forEach(result, function (item) {
                 if (!item.error) { // how should we handle errors ?
@@ -20,7 +20,7 @@ angular.module("managerApp").service("TelephonyVoipService", function ($q, OvhAp
             });
 
             // fetch all services
-            return OvhApiTelephony.Service().Erika().query().aggregate("billingAccount").expand().execute().$promise.then(function (aggragateResult) {
+            return OvhApiTelephony.Service().v7().query().aggregate("billingAccount").expand().execute().$promise.then(function (aggragateResult) {
 
                 // associate and create service to billing account
                 _.forEach(aggragateResult, function (item) {

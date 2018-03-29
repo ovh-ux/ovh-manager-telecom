@@ -6,7 +6,7 @@ angular.module("managerApp").controller("TelecomSmsSendersBlacklistedRemoveCtrl"
         this.$uibModalInstance = $uibModalInstance;
         this.api = {
             sms: {
-                blacklists: OvhApiSms.Blacklists().Lexi()
+                blacklists: OvhApiSms.Blacklists().v6()
             }
         };
         this.blacklist = blacklist;

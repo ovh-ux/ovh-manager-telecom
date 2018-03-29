@@ -8,7 +8,7 @@ angular.module("managerApp").controller("XdslModemResetCtrl", function ($statePa
             return Toast.error($translate.instant("xdsl_modem_reset_an_error_ocurred"));
         }
         PackXdslModemMediator.setTask("resetModem");
-        OvhApiXdsl.Modem().Reset().Lexi().save({
+        OvhApiXdsl.Modem().Reset().v6().save({
             xdslId: $stateParams.serviceName,
             resetOvhConfig: resetOvhConfig ? 1 : 0
         }, null).$promise.then(function (result) {

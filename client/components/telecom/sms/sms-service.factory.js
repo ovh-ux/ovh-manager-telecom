@@ -55,7 +55,7 @@ angular.module("managerApp").factory("SmsService", function (OvhApiSms) {
     SmsService.prototype.save = function () {
         var self = this;
 
-        return OvhApiSms.Lexi().edit({
+        return OvhApiSms.v6().edit({
             serviceName: self.name
         }, {
             description: self.description

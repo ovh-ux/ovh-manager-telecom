@@ -4,12 +4,12 @@ angular.module("managerApp").controller("TelecomTelephonyServiceConsumptionIncom
     var self = this;
 
     function fetchIncomingConsumption () {
-        return OvhApiTelephony.Service().FaxConsumption().Lexi().query({
+        return OvhApiTelephony.Service().FaxConsumption().v6().query({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }).$promise.then(function (ids) {
             return $q.all(_.map(_.chunk(ids, 50), function (chunkIds) {
-                return OvhApiTelephony.Service().FaxConsumption().Lexi().getBatch({
+                return OvhApiTelephony.Service().FaxConsumption().v6().getBatch({
                     billingAccount: $stateParams.billingAccount,
                     serviceName: $stateParams.serviceName,
                     consumptionId: chunkIds
@@ -57,8 +57,8 @@ angular.module("managerApp").controller("TelecomTelephonyServiceConsumptionIncom
     };
 
     self.refresh = function () {
-        OvhApiTelephony.Service().FaxConsumption().Lexi().resetCache();
-        OvhApiTelephony.Service().FaxConsumption().Lexi().resetQueryCache();
+        OvhApiTelephony.Service().FaxConsumption().v6().resetCache();
+        OvhApiTelephony.Service().FaxConsumption().v6().resetQueryCache();
         self.$onInit();
     };
 

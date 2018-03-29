@@ -16,7 +16,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationLiveC
     self.submit = function () {
         self.isSubmitting = true;
         self.error = null;
-        return params.apiEndpoint.Hunting().Queue().LiveCalls().Lexi().transfer({
+        return params.apiEndpoint.Hunting().Queue().LiveCalls().v6().transfer({
             billingAccount: params.billingAccount,
             serviceName: params.serviceName,
             queueId: params.queueId,

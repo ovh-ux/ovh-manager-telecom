@@ -50,7 +50,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasOrderNonGeographic
      * @returns {Promise}
      */
     this.getGeographicalZone = function (axiom) {
-        return OvhApiTelephony.Number().Lexi().getZones(
+        return OvhApiTelephony.Number().v6().getZones(
             {
                 country: self.user.country,
                 axiom: axiom
@@ -123,7 +123,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasOrderNonGeographic
         if (!form.pool) {
             form.specificNumber = this.form[this.form.numberType];
         }
-        OvhApiOrder.Telephony().Lexi().orderNumberNogeographical(
+        OvhApiOrder.Telephony().v6().orderNumberNogeographical(
             {
                 billingAccount: $stateParams.billingAccount
             },

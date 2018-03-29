@@ -8,9 +8,9 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxConvertToVoic
     =============================== */
 
     function fetchConvertToVoicefaxInformations () {
-        return OvhApiOrder.Freefax().Lexi().query().$promise.then(function (serviceIds) {
+        return OvhApiOrder.Freefax().v6().query().$promise.then(function (serviceIds) {
             return $q.all(_.map(serviceIds, function (service) {
-                return OvhApiOrder.Freefax().Lexi().get({
+                return OvhApiOrder.Freefax().v6().get({
                     serviceName: service
                 }).$promise.then(function (allowedOptions) {
                     if (_.indexOf(allowedOptions, "convertToVoicefax") >= 0) {
@@ -22,7 +22,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxConvertToVoic
                 });
             })).then(function (services) {
                 return $q.all(_.map(_.compact(services), function (service) {
-                    return OvhApiOrder.Freefax().Lexi().getConvertToVoicefax({
+                    return OvhApiOrder.Freefax().v6().getConvertToVoicefax({
                         serviceName: service,
                         billingAccount: $stateParams.billingAccount
                     }).$promise.then(function (informations) {
@@ -57,7 +57,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxConvertToVoic
 
     self.orderConvertToVoicefax = function () {
         self.convertToVoicefaxForm.isOrdering = true;
-        return OvhApiOrder.Freefax().Lexi().orderConvertToVoicefax({
+        return OvhApiOrder.Freefax().v6().orderConvertToVoicefax({
             serviceName: _.get(self.convertToVoicefaxForm, "serviceName.service")
         }, _.pick(self.convertToVoicefaxForm, "billingAccount")).$promise.then(function (order) {
             self.convertToVoicefaxForm.prices = order;

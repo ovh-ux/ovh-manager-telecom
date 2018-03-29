@@ -37,7 +37,7 @@ angular.module("managerApp")
         function fetchPhones (line) {
             self.loading.phones = true;
 
-            return OvhApiTelephony.Line().Phone().Lexi().get({
+            return OvhApiTelephony.Line().Phone().v6().get({
                 billingAccount: line.billingAccount,
                 serviceName: line.serviceName
             }).$promise.then(function (phoneOpts) {
@@ -78,7 +78,7 @@ angular.module("managerApp")
                 return self.portability;
             }
 
-            return OvhApiTelephony.Portability().Lexi().query({
+            return OvhApiTelephony.Portability().v6().query({
                 billingAccount: $stateParams.billingAccount
             }).$promise.then(function (ids) {
                 self.portabilities = ids.length;
@@ -99,11 +99,11 @@ angular.module("managerApp")
                 return self.bills;
             }
 
-            return OvhApiTelephony.HistoryConsumption().Lexi().query({
+            return OvhApiTelephony.HistoryConsumption().v6().query({
                 billingAccount: $stateParams.billingAccount
             }).$promise.then(function (ids) {
                 return $q.all(_.map(_.slice(ids, ids.length - 5), function (chunkIds) {
-                    return OvhApiTelephony.HistoryConsumption().Lexi().getBatch({
+                    return OvhApiTelephony.HistoryConsumption().v6().getBatch({
                         billingAccount: $stateParams.billingAccount,
                         date: chunkIds
                     }).$promise;
@@ -168,7 +168,7 @@ angular.module("managerApp")
 
         function getFile (consumption, type) {
             var tryDownload = function () {
-                return OvhApiTelephony.HistoryConsumption().Lexi().getFile({
+                return OvhApiTelephony.HistoryConsumption().v6().getFile({
                     billingAccount: $stateParams.billingAccount,
                     date: consumption.date,
                     extension: type

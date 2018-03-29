@@ -8,7 +8,7 @@ angular.module("managerApp").controller("TelecomSmsSendersBlacklistedCtrl", clas
         this.$translate = $translate;
         this.api = {
             sms: {
-                blacklists: OvhApiSms.Blacklists().Lexi()
+                blacklists: OvhApiSms.Blacklists().v6()
             }
         };
         this.Toast = Toast;

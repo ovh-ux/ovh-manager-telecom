@@ -37,7 +37,7 @@ angular.module("managerApp").controller("TelecomPackMigrationShippingCtrl", func
 
         self.process = PackMigrationProcess.getMigrationProcess();
 
-        return OvhApiPackXdsl.Lexi().shippingAddresses({
+        return OvhApiPackXdsl.v6().shippingAddresses({
             packName: self.process.pack.packName,
             context: "migration"
         }).$promise.then(function (shippingAddresses) {

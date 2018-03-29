@@ -45,12 +45,12 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationMembe
             return $q.when(null);
         }
 
-        return OvhApiTelephony.Lexi().searchService({
+        return OvhApiTelephony.v6().searchService({
             axiom: serviceName
         }).$promise.then(function (result) {
             var firstMatch = _.first(result);
             if (firstMatch) {
-                return OvhApiTelephony.Service().Lexi().get({
+                return OvhApiTelephony.Service().v6().get({
                     billingAccount: firstMatch.billingAccount,
                     serviceName: firstMatch.domain
                 }).$promise;
@@ -61,7 +61,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationMembe
     }
 
     function fetchAgent (agentNumber, checkDescription) {
-        return apiService.Lexi().getAgent({
+        return apiService.v6().getAgent({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName,
             agentNumber: agentNumber
@@ -77,7 +77,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationMembe
     }
 
     function fetchAgents () {
-        return apiService.Lexi().queryAgent({
+        return apiService.v6().queryAgent({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }).$promise.then(function (agentNumbers) {
@@ -97,7 +97,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationMembe
     }
 
     function changeAgentPosition (agent) {
-        return apiService.Lexi().saveAgent({
+        return apiService.v6().saveAgent({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName,
             agentNumber: agent.agentNumber
@@ -121,7 +121,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationMembe
         _.filter(self.agents, function (agent) {
             return agent.position > fromPosition;
         }).forEach(function (agent) {
-            reorderPromises.push(apiService.Lexi().saveAgent({
+            reorderPromises.push(apiService.v6().saveAgent({
                 billingAccount: $stateParams.billingAccount,
                 serviceName: $stateParams.serviceName,
                 agentNumber: agent.agentNumber
@@ -155,7 +155,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationMembe
 
         self.loaders.editing = true;
 
-        return apiService.Lexi().saveAgent({
+        return apiService.v6().saveAgent({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName,
             agentNumber: self.agentInEdition.agentNumber
@@ -177,7 +177,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationMembe
     self.onConfirmAgentDeleteBtnClick = function (agent) {
         self.loaders.deleting = true;
 
-        return apiService.Lexi().deleteAgent({
+        return apiService.v6().deleteAgent({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName,
             agentNumber: self.agentToDelete.agentNumber
@@ -253,7 +253,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationMembe
         _.filter(self.addAgentForm.numbers, function (number) {
             return number && number.length;
         }).forEach(function (number, index) {
-            addPromises.push(apiService.Lexi().createAgent({
+            addPromises.push(apiService.v6().createAgent({
                 billingAccount: $stateParams.billingAccount,
                 serviceName: $stateParams.serviceName
             }, {

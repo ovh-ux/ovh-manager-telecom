@@ -15,7 +15,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasSvaGeneratorCtrl",
         self.notSupported = false;
 
         self.isLoading = true;
-        OvhApiTelephony.Rsva().Lexi().getCurrentRateCode({
+        OvhApiTelephony.Rsva().v6().getCurrentRateCode({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }).$promise.then(function (rate) {

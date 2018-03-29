@@ -47,7 +47,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasAdministrationTerm
 
     self.terminate = function () {
         self.isTerminating = true;
-        OvhApiTelephony.Service().Lexi().delete({
+        OvhApiTelephony.Service().v6().delete({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName,
             details: self.details,
@@ -66,7 +66,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasAdministrationTerm
 
     self.cancelTermination = function () {
         self.isCancelling = true;
-        OvhApiTelephony.Service().Lexi().cancelTermination({
+        OvhApiTelephony.Service().v6().cancelTermination({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }, {}).$promise.then(function () {

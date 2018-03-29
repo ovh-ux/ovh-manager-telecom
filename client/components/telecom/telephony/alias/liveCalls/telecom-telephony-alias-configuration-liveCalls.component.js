@@ -42,7 +42,7 @@ angular.module("managerApp").component("telecomTelephonyAliasLiveCalls", {
             if (self.queueId) {
                 return $q.when(self.queueId);
             }
-            return self.apiEndpoint.Hunting().Queue().Lexi().query({
+            return self.apiEndpoint.Hunting().Queue().v6().query({
                 billingAccount: $stateParams.billingAccount,
                 serviceName: $stateParams.serviceName
             }).$promise.then(function (ids) {
@@ -74,7 +74,7 @@ angular.module("managerApp").component("telecomTelephonyAliasLiveCalls", {
         };
 
         self.fetchQueueLiveStatistics = function (queueId) {
-            return self.apiEndpoint.Hunting().Queue().Lexi().getLiveStatistics({
+            return self.apiEndpoint.Hunting().Queue().v6().getLiveStatistics({
                 billingAccount: $stateParams.billingAccount,
                 serviceName: $stateParams.serviceName,
                 queueId: queueId
@@ -82,13 +82,13 @@ angular.module("managerApp").component("telecomTelephonyAliasLiveCalls", {
         };
 
         self.fetchQueueLiveCalls = function (queueId) {
-            return self.apiEndpoint.Hunting().Queue().LiveCalls().Lexi().query({
+            return self.apiEndpoint.Hunting().Queue().LiveCalls().v6().query({
                 billingAccount: $stateParams.billingAccount,
                 serviceName: $stateParams.serviceName,
                 queueId: queueId
             }).$promise.then(function (callsIds) {
                 return $q.all(_.map((callsIds || []).reverse(), function (callId) {
-                    return self.apiEndpoint.Hunting().Queue().LiveCalls().Lexi().get({
+                    return self.apiEndpoint.Hunting().Queue().LiveCalls().v6().get({
                         billingAccount: $stateParams.billingAccount,
                         serviceName: $stateParams.serviceName,
                         queueId: queueId,
@@ -99,14 +99,14 @@ angular.module("managerApp").component("telecomTelephonyAliasLiveCalls", {
         };
 
         self.fetchAgentsLiveStatus = function (queueId) {
-            self.apiEndpoint.Hunting().Queue().Agent().Lexi().resetAllCache();
-            return self.apiEndpoint.Hunting().Queue().Agent().Lexi().query({
+            self.apiEndpoint.Hunting().Queue().Agent().v6().resetAllCache();
+            return self.apiEndpoint.Hunting().Queue().Agent().v6().query({
                 billingAccount: $stateParams.billingAccount,
                 serviceName: $stateParams.serviceName,
                 queueId: queueId
             }).$promise.then(function (agentIds) {
                 return $q.all(_.map(agentIds, function (agentId) {
-                    return self.apiEndpoint.Hunting().Queue().Agent().Lexi().getLiveStatus({
+                    return self.apiEndpoint.Hunting().Queue().Agent().v6().getLiveStatus({
                         billingAccount: $stateParams.billingAccount,
                         serviceName: $stateParams.serviceName,
                         queueId: queueId,

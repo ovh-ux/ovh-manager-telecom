@@ -8,7 +8,7 @@ angular.module("managerApp").controller("TelecomSmsSmsPendingCtrl", class Teleco
         this.$timeout = $timeout;
         this.api = {
             sms: {
-                jobs: OvhApiSms.Jobs().Lexi()
+                jobs: OvhApiSms.Jobs().v6()
             }
         };
         this.Toast = Toast;

@@ -8,16 +8,16 @@ angular.module("managerApp").controller("TelecomTelephonyLinePhoneMgcpIpRestrict
     ===============================*/
 
     function fetchPhone () {
-        return OvhApiTelephony.Line().Phone().Lexi().get({
+        return OvhApiTelephony.Line().Phone().v6().get({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }).$promise;
     }
 
     function fetchDefaultMgcpIpRestriction () {
-        return OvhApiMe.Telephony().DefaultIpRestriction().Lexi().query().$promise.then(function (ids) {
+        return OvhApiMe.Telephony().DefaultIpRestriction().v6().query().$promise.then(function (ids) {
             return $q.all(ids.map(function (id) {
-                return OvhApiMe.Telephony().DefaultIpRestriction().Lexi().get({
+                return OvhApiMe.Telephony().DefaultIpRestriction().v6().get({
                     id: id
                 }).$promise;
             }));
@@ -50,7 +50,7 @@ angular.module("managerApp").controller("TelecomTelephonyLinePhoneMgcpIpRestrict
 
     self.setMgcpIpRestriction = function () {
         self.isChangingMgcpIpRestriction = true;
-        return OvhApiTelephony.Line().Phone().Lexi().edit({
+        return OvhApiTelephony.Line().Phone().v6().edit({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }, {
@@ -75,16 +75,16 @@ angular.module("managerApp").controller("TelecomTelephonyLinePhoneMgcpIpRestrict
         var subnet = _.get(self.mgcpDefaultIpRestrictionForm, "subnet");
         subnet = subnet.indexOf("/") >= 0 ? subnet : subnet + "/32";
         if (_.isEmpty(self.mgcpDefaultIpRestriction)) {
-            promise = OvhApiMe.Telephony().DefaultIpRestriction().Lexi().create({
+            promise = OvhApiMe.Telephony().DefaultIpRestriction().v6().create({
                 subnet: subnet,
                 type: "mgcp"
             }).$promise;
         } else {
-            promise = OvhApiMe.Telephony().DefaultIpRestriction().Lexi().remove({
+            promise = OvhApiMe.Telephony().DefaultIpRestriction().v6().remove({
                 id: _.get(self.mgcpDefaultIpRestriction, "id")
             }).$promise.then(function () {
                 if (!_.isEmpty(subnet)) {
-                    return OvhApiMe.Telephony().DefaultIpRestriction().Lexi().create({
+                    return OvhApiMe.Telephony().DefaultIpRestriction().v6().create({
                         subnet: subnet,
                         type: "mgcp"
                     }).$promise;
@@ -171,7 +171,7 @@ angular.module("managerApp").controller("TelecomTelephonyLinePhoneMgcpIpRestrict
             });
         });
 
-        OvhApiTelephony.Line().Phone().Lexi().resetAllCache();
+        OvhApiTelephony.Line().Phone().v6().resetAllCache();
 
         init();
     };

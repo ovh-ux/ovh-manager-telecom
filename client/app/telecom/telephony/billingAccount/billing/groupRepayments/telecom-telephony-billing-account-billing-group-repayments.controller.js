@@ -10,7 +10,7 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingGr
     self.askHistoryRepaymentConsumption = function () {
         self.groupRepaymentsForm.isAsking = true;
 
-        return OvhApiTelephony.HistoryRepaymentConsumption().Lexi().create({
+        return OvhApiTelephony.HistoryRepaymentConsumption().v6().create({
             billingAccount: $stateParams.billingAccount
         }, {
             billingNumber: self.groupRepaymentsForm.billingNumber

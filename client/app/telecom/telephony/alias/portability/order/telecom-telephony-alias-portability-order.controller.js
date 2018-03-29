@@ -66,7 +66,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasPortabilityOrderCt
             Toast.error(_.get(err, "data.message"));
             return $q.reject(err);
         }).then(function () {
-            return OvhApiOrder.Lexi().schema().$promise.then(function (schema) {
+            return OvhApiOrder.v6().schema().$promise.then(function (schema) {
                 if (schema && schema.models["telephony.NumberSpecialTypologyEnum"] && schema.models["telephony.NumberSpecialTypologyEnum"].enum) {
                     var typologies = _.map(schema.models["telephony.NumberSpecialTypologyEnum"].enum, function (typo) {
                         return {
@@ -185,7 +185,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasPortabilityOrderCt
 
     self.fetchPriceAndContracts = function () {
         self.step = "summary";
-        return OvhApiOrder.Telephony().Lexi().getPortability(self.getOrderParams()).$promise.then(function (result) {
+        return OvhApiOrder.Telephony().v6().getPortability(self.getOrderParams()).$promise.then(function (result) {
             self.details = result.details;
             self.contracts = result.contracts;
             self.prices = result.prices;
@@ -198,16 +198,16 @@ angular.module("managerApp").controller("TelecomTelephonyAliasPortabilityOrderCt
 
     self.submitOrder = function () {
         self.order.isOrdering = true;
-        return OvhApiOrder.Telephony().Lexi().orderPortability({
+        return OvhApiOrder.Telephony().v6().orderPortability({
             billingAccount: self.order.billingAccount
         }, _.omit(self.getOrderParams(), "billingAccount")).$promise.then(function (result) {
             self.order.success = true;
             self.order.url = result.url;
-            return OvhApiMe.Order().Lexi().get({
+            return OvhApiMe.Order().v6().get({
                 orderId: result.orderId
             }).$promise.then(function () {
                 // in this case it's allowed to auto pay order
-                return OvhApiMe.Order().Lexi().payRegisteredPaymentMean({
+                return OvhApiMe.Order().v6().payRegisteredPaymentMean({
                     orderId: result.orderId
                 }, {
                     paymentMean: "ovhAccount"

@@ -6,8 +6,8 @@ angular.module("managerApp").controller("TelecomSmsUsersCtrl", class TelecomSmsU
         this.$translate = $translate;
         this.$uibModal = $uibModal;
         this.api = {
-            sms: OvhApiSms.Lexi(),
-            smsUsers: OvhApiSms.Users().Lexi()
+            sms: OvhApiSms.v6(),
+            smsUsers: OvhApiSms.Users().v6()
         };
         this.SmsMediator = SmsMediator;
         this.Toast = Toast;
