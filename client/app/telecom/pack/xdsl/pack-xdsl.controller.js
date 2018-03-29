@@ -71,6 +71,7 @@ angular.module("managerApp").controller("PackXdslCtrl", function ($q, $scope, $s
         case "telecom.pack.xdsl.access-deconsolidation":
         case "telecom.pack.xdsl.access-order":
         case "telecom.pack.xdsl.access-resiliation":
+        case "telecom.pack.xdsl.missing-rio":
         case "telecom.pack.xdsl.line-diagnostic":
             setAnim("invert-anim");
             self.content.back.state = "^";

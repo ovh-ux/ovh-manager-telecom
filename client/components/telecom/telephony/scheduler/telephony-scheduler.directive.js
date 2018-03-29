@@ -56,7 +56,7 @@ angular.module("managerApp").directive("telephonyScheduler", function ($compile,
                     // redraw event
                     getCalendarElem().fullCalendar("updateEvent", uiCalEvent);
                 }
-                if (schedulerEvent.status === "TOCREATE") {
+                if (schedulerEvent.status === "TOCREATE" && !uiCalEvent) {
                     // refresh calendar to display new event to create
                     getCalendarElem().fullCalendar("renderEvent", angular.extend(schedulerEvent.toFullCalendarEvent(), {
                         className: schedulerEvent.categories
