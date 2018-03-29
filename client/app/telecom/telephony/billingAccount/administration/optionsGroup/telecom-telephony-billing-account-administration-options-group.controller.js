@@ -1,7 +1,9 @@
-angular.module("managerApp").controller("TelecomTelephonyBillingAccountAdministrationOptionsGroup", function ($q, $stateParams, $translate, OvhApiTelephony, OvhApiMe, Toast) {
+angular.module("managerApp").controller("TelecomTelephonyBillingAccountAdministrationOptionsGroup", function ($q, $state, $stateParams, $translate, OvhApiTelephony, OvhApiMe, Toast) {
     "use strict";
 
     var self = this;
+
+    this.$state = $state;
 
     var telephonyAttributes = ["creditThreshold", "description",
         "hiddenExternalNumber", "overrideDisplayedNumber"];
@@ -33,6 +35,10 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountAdministr
     ===============================*/
 
     self.changeSettings = function () {
+        if (self.optionsGroupSettings.$invalid || self.isChanging) {
+            return this.$q.reject();
+        }
+
         self.isChanging = true;
         return $q.all([
             OvhApiTelephony.v6().edit({

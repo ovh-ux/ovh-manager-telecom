@@ -1,11 +1,4 @@
-<section class="telecom-telephony-billing-account-administration-options-group">
-
-    <header>
-        <section-back-link section-back-link-to-state="telecom.telephony.administration"
-                           section-back-link-title="{{:: 'telephony_group_admin_group_back_link' | translate }}">
-        </section-back-link>
-        <h1 data-translate="telephony_options_group_title"></h1>
-    </header>
+<section>
 
     <div class="text-center" data-ng-if="OptionsGroupCtrl.isLoading">
         <oui-spinner></oui-spinner>
@@ -16,134 +9,57 @@
 
         <toast-message></toast-message>
 
-        <div class="row mb-5">
-            <div class="col-xs-12 col-md-8">
+        <oui-back-button data-title="{{:: 'telephony_options_group_title' | translate }}"
+                         data-on-click="OptionsGroupCtrl.$state.go('telecom.telephony.administration')">
+        </oui-back-button>
 
-                <form name="optionsGroupSettings"
-                      data-ng-submit="OptionsGroupCtrl.changeSettings()">
+        <form name="OptionsGroupCtrl.optionsGroupSettings"
+              data-ng-submit="OptionsGroupCtrl.changeSettings()">
 
-                    <!-- HIDDEN EXTERNAL NUMBER -->
-                    <div class="widget-presentation">
-                        <header class="widget-presentation-header">
-                            <h2 class="widget-presentation-title"
-                                data-translate="telephony_billing_account_administration_options_group_hiddenExternalNumber">
-                            </h2>
-                        </header>
-                        <div class="widget-presentation-content">
-                            <div class="form-group">
-                                <label for="hiddenExternalNumber"
-                                       class="control-label"
-                                       data-translate="telephony_billing_account_administration_options_group_hiddenExternalNumber_label">
-                                </label>
-                                <div class="btn-group d-block clearfix">
-                                    <label class="btn btn-default"
-                                           data-ng-model="OptionsGroupCtrl.optionsGroupForm.telephony.hiddenExternalNumber"
-                                           data-uib-btn-radio="true"
-                                           data-translate="common_yes_capitalized">
-                                    </label>
-                                    <label class="btn btn-default"
-                                           data-ng-model="OptionsGroupCtrl.optionsGroupForm.telephony.hiddenExternalNumber"
-                                           data-uib-btn-radio="false"
-                                           data-translate="common_no_capitalized">
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div> <!-- END OF HIDDEN EXTERNAL NUMBER -->
-                    <!-- /.widget-presentation -->
+            <oui-field data-label="{{:: 'telephony_billing_account_administration_options_group_hiddenExternalNumber_label' | translate }}">
+                <oui-radio name="hiddenExternalNumber"
+                           data-text="{{:: 'common_yes_capitalized' | translate }}"
+                           data-model="OptionsGroupCtrl.optionsGroupForm.telephony.hiddenExternalNumber"
+                           data-value="true"
+                           required></oui-radio>
+                <oui-radio name="hiddenExternalNumber"
+                           data-text="{{:: 'common_no_capitalized' | translate }}"
+                           data-model="OptionsGroupCtrl.optionsGroupForm.telephony.hiddenExternalNumber"
+                           data-value="false"
+                           required></oui-radio>
+            </oui-field>
+            <oui-field data-label="{{:: 'telephony_billing_account_administration_options_group_overrideDisplayedNumber_label' | translate }}"
+                       data-help-text="{{:: 'telephony_billing_account_administration_options_group_overrideDisplayedNumber_info' | translate }}">
+                <oui-radio name="overrideDisplayedNumber"
+                           text="{{:: 'common_yes_capitalized' | translate }}"
+                           data-model="OptionsGroupCtrl.optionsGroupForm.telephony.overrideDisplayedNumber"
+                           data-value="true"
+                           required></oui-radio>
+                <oui-radio name="overrideDisplayedNumber"
+                           data-text="{{:: 'common_no_capitalized' | translate }}"
+                           data-model="OptionsGroupCtrl.optionsGroupForm.telephony.overrideDisplayedNumber"
+                           data-value="false"
+                           required></oui-radio>
+            </oui-field>
+            <oui-field label="{{:: 'telephony_billing_account_administration_options_group_displayOnIncomingCall_label' | translate }}">
+                <oui-radio name="displayOnIncomingCall"
+                           data-text="{{:: 'common_yes_capitalized' | translate }}"
+                           data-model="OptionsGroupCtrl.optionsGroupForm.user.lineDescriptionPolicies.displayOnIncomingCall"
+                           data-value="true"
+                           required></oui-radio>
+                <oui-radio name="displayOnIncomingCall"
+                           data-text="{{:: 'common_no_capitalized' | translate }}"
+                           data-model="OptionsGroupCtrl.optionsGroupForm.user.lineDescriptionPolicies.displayOnIncomingCall"
+                           data-value="false"
+                           required></oui-radio>
+            </oui-field>
 
-                    <!-- OVERRIDE DISPLAYED NUMBER -->
-                    <div class="widget-presentation">
-                        <header class="widget-presentation-header">
-                            <h2 class="widget-presentation-title"
-                                data-translate="telephony_billing_account_administration_options_group_overrideDisplayedNumber">
-                            </h2>
-                        </header>
-                        <div class="widget-presentation-content">
-                            <div class="oui-box mb-3"
-                                 data-translate="telephony_billing_account_administration_options_group_overrideDisplayedNumber_info">
-                            </div>
-                            <div class="form-group">
-                                <label for="overrideDisplayedNumber"
-                                       class="control-label"
-                                       data-translate="telephony_billing_account_administration_options_group_overrideDisplayedNumber_label">
-                                </label>
-                                <div class="btn-group d-block clearfix">
-                                    <label class="btn btn-default"
-                                           data-ng-model="OptionsGroupCtrl.optionsGroupForm.telephony.overrideDisplayedNumber"
-                                           data-uib-btn-radio="true"
-                                           data-translate="common_yes_capitalized">
-                                    </label>
-                                    <label class="btn btn-default"
-                                           data-ng-model="OptionsGroupCtrl.optionsGroupForm.telephony.overrideDisplayedNumber"
-                                           data-uib-btn-radio="false"
-                                           data-translate="common_no_capitalized">
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div> <!-- END OF OVERRIDE DISPLAYED NUMBER -->
-                    <!-- /.widget-presentation -->
+            <oui-form-actions
+                data-on-cancel="OptionsGroupCtrl.$state.go('telecom.telephony.administration')"
+                data-cancel-text="{{:: 'cancel' | translate }}"
+                data-submit-text="{{:: 'submit' | translate }}" >
+            </oui-form-actions>
 
-                    <!-- DISPLAY ON INCOMING CALL -->
-                    <div class="widget-presentation">
-                        <header class="widget-presentation-header">
-                            <h2 class="widget-presentation-title"
-                                data-translate="telephony_billing_account_administration_options_group_displayOnIncomingCall">
-                            </h2>
-                        </header>
-                        <div class="widget-presentation-content">
-                            <div class="oui-box mb-3"
-                                 data-translate="telephony_billing_account_administration_options_group_displayOnIncomingCall_info">
-                            </div>
-                            <div class="form-group">
-                                <label for="displayOnIncomingCall"
-                                       class="control-label"
-                                       data-translate="telephony_billing_account_administration_options_group_displayOnIncomingCall_label">
-                                </label>
-                                <div class="btn-group d-block clearfix">
-                                    <label class="btn btn-default"
-                                           data-ng-model="OptionsGroupCtrl.optionsGroupForm.user.lineDescriptionPolicies.displayOnIncomingCall"
-                                           data-uib-btn-radio="true"
-                                           data-translate="common_yes_capitalized">
-                                    </label>
-                                    <label class="btn btn-default"
-                                           data-ng-model="OptionsGroupCtrl.optionsGroupForm.user.lineDescriptionPolicies.displayOnIncomingCall"
-                                           data-uib-btn-radio="false"
-                                           data-translate="common_no_capitalized">
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div> <!-- END OF DISPLAY ON INCOMING CALL -->
-                    <!-- /.widget-presentation -->
-
-                    <footer>
-                        <button
-                            type="submit"
-                            class="btn btn-primary"
-                            data-ng-disabled="optionsGroupSettings.$invalid || !OptionsGroupCtrl.hasChanges() || OptionsGroupCtrl.isChanging">
-                            <oui-spinner class="mr-2"
-                                         data-ng-if="OptionsGroupCtrl.isChanging"
-                                         data-size="s">
-                            </oui-spinner>
-                            <span data-translate="submit"></span>
-                        </button>
-                        <button
-                            type="button"
-                            class="btn btn-link"
-                            data-ng-click="OptionsGroupCtrl.cancelChange()"
-                            data-translate="cancel">
-                        </button>
-                    </footer>
-
-                </form>
-
-            </div>
-        </div>
-
+        </form>
     </div>
-    <!-- /.telecom-section-content -->
-
 </section>
-<!-- /.telecom-telephony-billing-account-administration-options-group -->
