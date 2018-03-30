@@ -1,5 +1,5 @@
 /* global setTimeout */
-angular.module("managerApp").controller("PackXdslCtrl", function ($q, $scope, $state, $translate, $stateParams, OvhApiPackXdsl, OvhApiXdsl, OvhApiXdslModem, Toast, smoothScroll, ToastError, SidebarMenu) {
+angular.module("managerApp").controller("PackXdslCtrl", function ($q, $transitions, $state, $translate, $stateParams, OvhApiPackXdsl, OvhApiXdsl, OvhApiXdslModem, Toast, smoothScroll, ToastError, SidebarMenu) {
     "use strict";
 
     var animTime = 1500;
@@ -94,8 +94,8 @@ angular.module("managerApp").controller("PackXdslCtrl", function ($q, $scope, $s
         }
     };
 
-    $scope.$on("$stateChangeSuccess", function (event, toState) {
-        self.updateUIForState(toState);
+    $transitions.onSuccess({}, function (transition) {
+        self.updateUIForState(transition.to());
     });
 
     /*= =============================

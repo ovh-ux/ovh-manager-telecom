@@ -4,10 +4,10 @@ angular.module("managerApp").config(($stateProvider) => {
     $stateProvider.state("telecom.sms", {
         url: "/sms/:serviceName",
         views: {
-            telecomView: {
+            "telecomView@telecom": {
                 templateUrl: "app/telecom/sms/telecom-sms.html"
             },
-            "@smsView": {
+            "smsView@telecom.sms": {
                 templateUrl: "app/telecom/sms/telecom-sms-main.view.html",
                 controller: "TelecomSmsCtrl",
                 controllerAs: "TelecomSmsCtrl"

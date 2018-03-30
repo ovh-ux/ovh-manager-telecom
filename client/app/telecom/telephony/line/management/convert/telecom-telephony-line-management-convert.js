@@ -4,7 +4,7 @@ angular.module("managerApp").config(function ($stateProvider) {
     $stateProvider.state("telecom.telephony.line.convert", {
         url: "/convert",
         views: {
-            "@lineView": {
+            "lineView@telecom.telephony.line": {
                 templateUrl: "app/telecom/telephony/line/management/convert/telecom-telephony-line-management-convert.html",
                 controller: "TelecomTelephonyLineConvertCtrl",
                 controllerAs: "LineConvertCtrl"

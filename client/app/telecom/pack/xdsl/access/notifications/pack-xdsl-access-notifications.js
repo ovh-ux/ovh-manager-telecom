@@ -5,7 +5,7 @@ angular.module("managerApp")
             .state("telecom.pack.xdsl.access-notifications", {
                 url: "/notifications",
                 views: {
-                    accessView: {
+                    "accessView@telecom.pack.xdsl": {
                         controller: "XdslAccessNotificationCtrl",
                         controllerAs: "XdslNotifications",
                         templateUrl: "app/telecom/pack/xdsl/access/notifications/pack-xdsl-access-notifications.html"

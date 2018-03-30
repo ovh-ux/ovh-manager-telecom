@@ -3,7 +3,7 @@ angular.module("managerApp").config(function ($stateProvider) {
     $stateProvider.state("telecom.overTheBox-order", {
         url: "/overTheBox/order",
         views: {
-            telecomView: {
+            "telecomView@telecom": {
                 templateUrl: "app/telecom/overTheBox/order/order-overTheBox.html",
                 controller: "OrderOverTheBoxCtrl",
                 controllerAs: "OrderOverTheBox"

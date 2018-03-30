@@ -350,7 +350,7 @@ class ManagerNavbarService {
         // Tickets list
         assistanceMenu.push({
             title: this.$translate.instant("common_menu_support_list_ticket"),
-            url: "#/support"
+            url: this.REDIRECT_URLS.listTicket
         });
 
         // Telephony (External)

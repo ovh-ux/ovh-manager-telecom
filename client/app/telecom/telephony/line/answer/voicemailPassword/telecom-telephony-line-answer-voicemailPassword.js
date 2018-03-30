@@ -3,11 +3,11 @@ angular.module("managerApp").config(function ($stateProvider) {
     $stateProvider.state("telecom.telephony.line.voicemailPassword", {
         url: "/voicemailPassword",
         views: {
-            "@lineView": {
+            "lineView@telecom.telephony.line": {
                 templateUrl: "app/telecom/telephony/line/answer/voicemailPassword/telecom-telephony-line-answer-voicemailPassword.html",
                 noTranslations: true
             },
-            "@voicemailView": {
+            "voicemailView@telecom.telephony.line.voicemailPassword": {
                 templateUrl: "app/telecom/telephony/service/voicemail/password/telecom-telephony-service-voicemail-password.html",
                 controller: "TelecomTelephonyServiceVoicemailPasswordCtrl",
                 controllerAs: "VoicemailPasswordCtrl"

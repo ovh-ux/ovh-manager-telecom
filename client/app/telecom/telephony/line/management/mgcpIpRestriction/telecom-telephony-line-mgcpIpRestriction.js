@@ -3,7 +3,7 @@ angular.module("managerApp").config(function ($stateProvider) {
     $stateProvider.state("telecom.telephony.line.mgcpIpRestriction", {
         url: "/mgcpIpRestriction",
         views: {
-            "@lineView": {
+            "lineView@telecom.telephony.line": {
                 templateUrl: "app/telecom/telephony/line/management/mgcpIpRestriction/telecom-telephony-line-mgcpIpRestriction.html",
                 controller: "TelecomTelephonyLineMgcpIpRestrictionCtrl",
                 controllerAs: "MgcpIpRestrictionCtrl"

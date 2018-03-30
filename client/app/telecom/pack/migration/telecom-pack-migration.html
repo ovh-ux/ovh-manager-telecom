@@ -17,27 +17,27 @@
 
         <!-- OFFER CHOICE STEP -->
         <div data-ng-if="!PackMigrationCtrl.loading.init && PackMigrationCtrl.process.currentStep === 'offers'"
-             data-ui-view="@offersView">
+             data-ui-view="offersView">
         </div>
 
         <!-- SHIPPING STEP -->
         <div data-ng-if="!PackMigrationCtrl.loading.init && PackMigrationCtrl.process.currentStep === 'shipping'"
-             data-ui-view="@shippingView">
+             data-ui-view="shippingView">
         </div>
 
         <!-- CONFIRM STEP -->
         <div data-ng-if="!PackMigrationCtrl.loading.init && PackMigrationCtrl.process.currentStep === 'confirm'"
-             data-ui-view="@confirmView">
+             data-ui-view="confirmView">
         </div>
 
         <!-- MIGRATION TASK IN PROGRESS -->
         <div data-ng-if="!PackMigrationCtrl.loading.init && PackMigrationCtrl.process.currentStep === 'migration'"
-             data-ui-view="@migrationView">
+             data-ui-view="migrationView">
         </div>
 
         <!-- SERVICE TO DELETE -->
         <div data-ng-if="!PackMigrationCtrl.loading.init && PackMigrationCtrl.process.currentStep === 'serviceDelete'"
-             data-ui-view="@serviceDeleteView">
+             data-ui-view="serviceDeleteView">
         </div>
 
     </div>

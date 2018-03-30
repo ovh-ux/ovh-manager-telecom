@@ -4,7 +4,7 @@ angular.module("managerApp").config(function ($stateProvider) {
     $stateProvider.state("telecom.task", {
         url: "/task",
         views: {
-            telecomView: {
+            "telecomView@telecom": {
                 templateUrl: "app/telecom/task/telecom-task.html",
                 controller: "TelecomTaskCtrl",
                 controllerAs: "TaskCtrl"

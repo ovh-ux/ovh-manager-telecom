@@ -4,7 +4,7 @@ angular.module("managerApp").config(function ($stateProvider) {
     $stateProvider.state("telecom.telephony.billing", {
         url: "/billing",
         views: {
-            groupInnerView: {
+            "groupInnerView@telecom.telephony": {
                 templateUrl: "app/telecom/telephony/billingAccount/billing/telecom-telephony-billing-account-billing.html",
                 controller: "TelecomTelephonyBillingAccountBillingCtrl",
                 controllerAs: "GroupBillingCtrl"

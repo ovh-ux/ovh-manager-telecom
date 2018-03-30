@@ -3,7 +3,7 @@ angular.module("managerApp").config(function ($stateProvider) {
     $stateProvider.state("telecom.pack.xdsl", {
         url: "/xdsl/:serviceName/lines/:number",
         views: {
-            packView: {
+            "packView@telecom.pack": {
                 templateUrl: "app/telecom/pack/xdsl/pack-xdsl.html",
                 controller: "PackXdslCtrl",
                 controllerAs: "PackXdslCtrl"

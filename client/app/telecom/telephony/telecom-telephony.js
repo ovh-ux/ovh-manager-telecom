@@ -3,10 +3,10 @@ angular.module("managerApp").config(function ($stateProvider) {
     $stateProvider.state("telecom.telephony", {
         url: "/telephony/:billingAccount",
         views: {
-            telecomView: {
+            "telecomView@telecom": {
                 templateUrl: "app/telecom/telephony/telecom-telephony.html"
             },
-            "@telephonyView": {
+            "telephonyView@telecom.telephony": {
                 templateUrl: "app/telecom/telephony/telecom-telephony-main.view.html"
             },
             "groupView@telecom.telephony": {
