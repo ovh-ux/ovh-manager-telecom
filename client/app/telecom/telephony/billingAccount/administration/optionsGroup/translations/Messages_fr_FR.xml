@@ -5,10 +5,10 @@
    <translation id="telephony_billing_account_administration_options_group_hiddenExternalNumber_label">Masquer les appels entrants / sortants</translation>
    <translation id="telephony_billing_account_administration_options_group_overrideDisplayedNumber" qtlid="456830">Présentation numéro interne/externe</translation>
    <translation id="telephony_billing_account_administration_options_group_overrideDisplayedNumber_info">Présenter le numéro du standard pour les appels vers l'extérieur et votre propre numéro pour les appels internes.</translation>
-   <translation id="telephony_billing_account_administration_options_group_overrideDisplayedNumber_label" qtlid="456856">Utiliser un affichage distinct</translation>
+   <translation id="telephony_billing_account_administration_options_group_overrideDisplayedNumber_label">Utiliser un affichage distinct</translation>
    <translation id="telephony_billing_account_administration_options_group_displayOnIncomingCall" qtlid="456869">Affichage de la description des lignes</translation>
    <translation id="telephony_billing_account_administration_options_group_displayOnIncomingCall_info" qtlid="456882">Présenter la description des lignes lors des appels.</translation>
-   <translation id="telephony_billing_account_administration_options_group_displayOnIncomingCall_label">Présentation de la description lors des appel</translation>
+   <translation id="telephony_billing_account_administration_options_group_displayOnIncomingCall_label">Présentation de la description lors des appels</translation>
    <translation id="telephony_billing_account_administration_options_group_success_changing" qtlid="456908">Les options du groupe ont été mises à jour.</translation>
    <translation id="telephony_billing_account_administration_options_group_error_loading" qtlid="456921">Oups ! Une erreur est survenue lors de la récupération des options du groupe.</translation>
    <translation id="telephony_billing_account_administration_options_group_error_changing" qtlid="456934">Oups ! Impossible de modifier les options du groupe.</translation>
