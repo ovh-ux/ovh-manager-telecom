@@ -3,7 +3,7 @@ angular.module("managerApp").config(($stateProvider) => {
     $stateProvider.state("telecom.sms.order", {
         url: "/order",
         views: {
-            smsInnerView: {
+            "smsInnerView@telecom.sms": {
                 templateUrl: "app/telecom/sms/order/telecom-sms-order.html",
                 controller: "TelecomSmsOrderCtrl",
                 controllerAs: "SmsOrder"

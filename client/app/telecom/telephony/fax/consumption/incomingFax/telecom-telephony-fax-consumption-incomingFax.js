@@ -3,10 +3,10 @@ angular.module("managerApp").config(function ($stateProvider) {
     $stateProvider.state("telecom.telephony.fax.consumption.incomingFax", {
         url: "/incomingFax",
         views: {
-            "@faxView": {
+            "faxView@telecom.telephony.fax": {
                 templateUrl: "app/telecom/telephony/fax/consumption/incomingFax/telecom-telephony-fax-consumption-incomingFax.html"
             },
-            "@consumptionView": {
+            "consumptionView@telecom.telephony.fax.consumption.incomingFax": {
                 templateUrl: "app/telecom/telephony/service/consumption/incomingFax/telecom-telephony-service-consumption-incomingFax.html",
                 controller: "TelecomTelephonyServiceConsumptionIncomingFaxCtrl",
                 controllerAs: "$ctrl"

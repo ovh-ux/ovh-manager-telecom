@@ -10,7 +10,7 @@ angular.module("managerApp").config(function ($stateProvider) {
                 controllerAs: "OrdersShowCtrl",
                 noTranslations: true
             },
-            "@followUp": {
+            "followUp@telecom.orders.show": {
                 templateUrl: "app/telecom/pack/xdsl/orderFollowUp/pack-xdsl-orderFollowUp-main.view.html",
                 controller: "XdslOrderFollowUpCtrl",
                 controllerAs: "OrderFollowUpCtrl"

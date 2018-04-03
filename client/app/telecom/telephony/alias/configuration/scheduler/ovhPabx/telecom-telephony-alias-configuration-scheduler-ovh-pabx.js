@@ -4,7 +4,7 @@ angular.module("managerApp").config(function ($stateProvider) {
     $stateProvider.state("telecom.telephony.alias.configuration.scheduler.ovhPabx", {
         url: "/ovhPabx",
         views: {
-            "@aliasView": {
+            "aliasView@telecom.telephony.alias": {
                 templateUrl: "app/telecom/telephony/alias/configuration/scheduler/ovhPabx/telecom-telephony-alias-configuration-scheduler-ovh-pabx.html",
                 controller: "TelecomTelephonyAliasConfigurationSchedulerOvhPabxCtrl",
                 controllerAs: "$ctrl"

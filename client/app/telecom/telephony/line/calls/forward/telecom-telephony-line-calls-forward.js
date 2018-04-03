@@ -3,7 +3,7 @@ angular.module("managerApp").config(function ($stateProvider) {
     $stateProvider.state("telecom.telephony.line.calls.forward", {
         url: "/forward",
         views: {
-            "@lineView": {
+            "lineView@telecom.telephony.line": {
                 templateUrl: "app/telecom/telephony/line/calls/forward/telecom-telephony-line-calls-forward.html",
                 controller: "TelecomTelephonyLineCallsForwardCtrl",
                 controllerAs: "LineForwardCtrl"

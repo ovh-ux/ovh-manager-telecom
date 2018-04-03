@@ -3,11 +3,11 @@ angular.module("managerApp").config(function ($stateProvider) {
     $stateProvider.state("telecom.telephony.fax.fax.campaigns", {
         url: "/campaigns",
         views: {
-            "@telephonyView": {
+            "telephonyView@telecom.telephony": {
                 templateUrl: "app/telecom/telephony/fax/fax/campaigns/telecom-telephony-fax-fax-campaigns.html",
                 noTranslations: true
             },
-            "@faxCampaignsView": {
+            "faxCampaignsView@telecom.telephony.fax.fax.campaigns": {
                 templateUrl: "app/telecom/telephony/service/fax/campaigns/telecom-telephony-service-fax-campaigns.html",
                 controller: "TelecomTelephonyServiceFaxCampaignsCtrl",
                 controllerAs: "CampaignsCtrl"

@@ -3,7 +3,7 @@ angular.module("managerApp").config(function ($stateProvider) {
     $stateProvider.state("telecom.telephony.line.calls.externalNumber", {
         url: "/externalNumber",
         views: {
-            "@lineView": {
+            "lineView@telecom.telephony.line": {
                 templateUrl: "app/telecom/telephony/line/calls/externalNumber/telecom-telephony-line-calls-externalNumber.html",
                 controller: "TelecomTelephonyLineCallsExternalNumberCtrl",
                 controllerAs: "$ctrl"

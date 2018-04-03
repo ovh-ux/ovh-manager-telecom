@@ -4,7 +4,7 @@ angular.module("managerApp").config(function ($stateProvider) {
     $stateProvider.state("telecom.telephony.line.phone.order", {
         url: "/order",
         views: {
-            "@lineView": {
+            "lineView@telecom.telephony.line": {
                 templateUrl: "app/telecom/telephony/line/phone/order/telecom-telephony-line-phone-order.html",
                 controller: "TelecomTelephonyLinePhoneOrderCtrl",
                 controllerAs: "PhoneOrderCtrl"

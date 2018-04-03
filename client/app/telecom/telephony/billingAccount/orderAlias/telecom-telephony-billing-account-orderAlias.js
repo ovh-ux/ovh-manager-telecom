@@ -3,10 +3,10 @@ angular.module("managerApp").config(function ($stateProvider) {
     $stateProvider.state("telecom.telephony.orderAlias", {
         url: "/orderAlias",
         views: {
-            groupInnerView: {
+            "groupInnerView@telecom.telephony": {
                 templateUrl: "app/telecom/telephony/billingAccount/orderAlias/telecom-telephony-billing-account-orderAlias.html"
             },
-            "@telecomTelephonyBillingAccountOrderAliasView": {
+            "telecomTelephonyBillingAccountOrderAliasView@telecom.telephony.orderAlias": {
                 templateUrl: "app/telecom/telephony/billingAccount/orderAlias/telecom-telephony-billing-account-orderAlias-main.view.html",
                 controller: "TelecomTelephonyBillingAccountOrderAliasCtrl",
                 controllerAs: "AliasOrderCtrl"

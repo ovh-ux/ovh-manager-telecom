@@ -3,7 +3,7 @@ angular.module("managerApp").config(function ($stateProvider) {
     $stateProvider.state("telecom.telephony.alias.configuration", {
         url: "/configuration",
         views: {
-            aliasInnerView: {
+            "aliasInnerView@telecom.telephony.alias": {
                 templateUrl: "app/telecom/telephony/alias/configuration/telecom-telephony-alias-configuration.html",
                 controller: "TelecomTelephonyAliasConfigurationCtrl",
                 controllerAs: "AliasConfigurationCtrl"
