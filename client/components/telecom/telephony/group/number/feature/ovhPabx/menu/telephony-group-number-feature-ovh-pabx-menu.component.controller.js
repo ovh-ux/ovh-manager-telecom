@@ -98,7 +98,7 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxMenuCtrl", functi
         if (self.menu && !self.menu.entries.length) {
             self.displayHelpers.collapsed = true;
             self.displayHelpers.expanded = false;
-        } else if (!self.menu) {
+        } else if (!self.menu && self.parentCtrl.checkForDisplayHelpers) {
             self.parentCtrl.checkForDisplayHelpers();
         }
     };
@@ -125,12 +125,14 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxMenuCtrl", functi
     };
 
     self.onDeleteCancelBtnClick = function () {
-        if (!self.hasMenuEntryOrDialPlanExtension()) {
-            self.menu.status = "OK";
-        } else if (self.menuEntry) {
-            self.menuEntry.status = "OK";
-        } else if (self.dialplanRule) {
-            self.dialplanRule.status = "OK";
+        if (self.menu.status !== "DRAFT") {
+            if (!self.hasMenuEntryOrDialPlanExtension()) {
+                self.menu.status = "OK";
+            } else if (self.menuEntry) {
+                self.menuEntry.status = "OK";
+            } else if (self.dialplanRule) {
+                self.dialplanRule.status = "OK";
+            }
         }
     };
 
