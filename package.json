@@ -80,7 +80,6 @@
     "grunt-ng-annotate": "~1.0.1",
     "grunt-ng-constant": "^1.1.0",
     "grunt-ngdocs": "^0.2.10",
-    "grunt-open": "~0.2.3",
     "grunt-ovh-translation": "~2.1.0",
     "grunt-postcss": "^0.8.0",
     "grunt-protractor-runner": "^3.0.0",
