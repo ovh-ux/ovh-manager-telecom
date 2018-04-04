@@ -3,6 +3,7 @@ angular.module("managerApp").controller("PackHubicCtrl", function (OvhApiPackXds
 
     var self = this;
     var domainDetailsRoute = "/pack/xdsl/{packName}/hubic/services/{domain}/details";
+    var hubicLoginUrl = "https://hubic.com/home/";
 
     this.loaders = {
         services: true
@@ -61,6 +62,7 @@ angular.module("managerApp").controller("PackHubicCtrl", function (OvhApiPackXds
                 _.times(result.length, function (index) {
                     if (result[index].status !== 404 || result[index].status !== 400) {
                         servicesCodeUsed[index].email = result[index].result.email;
+                        servicesCodeUsed[index].url = hubicLoginUrl;
                     }
                 });
             }).finally(function () {
