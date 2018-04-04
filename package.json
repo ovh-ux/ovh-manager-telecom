@@ -1,6 +1,6 @@
 {
   "name": "ovh-manager-telecom",
-  "version": "9.5.0",
+  "version": "9.6.0",
   "description": "OVH Control Panel Telecom UI",
   "author": "OVH SAS",
   "license": "BSD-3-Clause",
@@ -29,6 +29,7 @@
     "commit": "npm-scripts-config commit",
     "commitmsg": "npm-scripts-config commitmsg",
     "version": "npm-scripts-config version && npm-bower-sync-ver && git add bower.json",
+    "postversion": "git push && git push --tags",
     "preview-changelog": "npm-scripts-config preview-changelog"
   },
   "main": "server/app.js",
