@@ -69,16 +69,6 @@ module.exports = function (grunt) {
         },
 
         //#######################################################################################
-        //##      TASK: open                                                                   ##
-        //##            Open browser when developping                                          ##
-        //#######################################################################################
-        open: {
-            server: {
-                url: "https://localhost:<%= express.options.port %>"
-            }
-        },
-
-        //#######################################################################################
         //##      TASK: watch                                                                  ##
         //##            Watch files and manage task on fil changes                             ##
         //#######################################################################################
@@ -892,7 +882,6 @@ module.exports = function (grunt) {
                 "env:prod",
                 "express:prod",
                 "wait",
-                "open",
                 "express-keepalive"
             ]);
         }
@@ -914,7 +903,6 @@ module.exports = function (grunt) {
             "copy:dev",
             "express:dev",
             "wait",
-            "open",
             "watch"
         ]);
     });
