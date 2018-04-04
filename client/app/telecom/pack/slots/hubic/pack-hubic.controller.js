@@ -49,15 +49,20 @@ angular.module("managerApp").controller("PackHubicCtrl", function (OvhApiPackXds
                 );
             });
 
-            return $q.all(_.map(_.filter(self.services, { isUsed: true }), function (service) {
+            var servicesCodeUsed = _.filter(self.services, { isUsed: true });
+
+            return $q.allSettled(_.map(servicesCodeUsed, function (service) {
                 return getVoucherDetails(service.domain);
             })).then(function (result) {
+                return result;
+            }).catch(function (result) {
+                return result;
+            }).then(function (result) {
                 _.times(result.length, function (index) {
-                    self.services[index].email = result[index].result.email;
+                    if (result[index].status !== 404 || result[index].status !== 400) {
+                        servicesCodeUsed[index].email = result[index].result.email;
+                    }
                 });
-            }).catch(function (error) {
-                Toast.error([$translate.instant("pack_xdsl_hubic_domain_details_error"), error.error]).join(" ");
-                return $q.reject(error);
             }).finally(function () {
                 Poller.kill({
                     scope: $scope.id

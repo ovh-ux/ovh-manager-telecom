@@ -54,6 +54,12 @@
         </div>
     </div>
     <div class="oui-tile__body"
+         data-ng-if="Hubic.loaders.services">
+        <div class="oui-tile__definition text-center">
+            <oui-spinner></oui-spinner>
+        </div>
+    </div>
+    <div class="oui-tile__body"
          data-ng-if="service.available > 0">
         <div class="oui-tile__item">
             <div class="oui-tile__definition">
