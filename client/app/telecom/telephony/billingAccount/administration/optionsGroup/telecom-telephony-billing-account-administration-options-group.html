@@ -14,42 +14,22 @@
         </oui-back-button>
 
         <form name="OptionsGroupCtrl.optionsGroupSettings"
-              data-ng-submit="OptionsGroupCtrl.$valid && OptionsGroupCtrl.changeSettings()"
+              data-ng-submit="OptionsGroupCtrl.optionsGroupSettings.$valid && OptionsGroupCtrl.changeSettings()"
               novalidate>
-            <oui-field data-label="{{:: 'telephony_billing_account_administration_options_group_hiddenExternalNumber_label' | translate }}">
-                <oui-radio-group name="hiddenExternalNumber"
-                                 data-model="OptionsGroupCtrl.optionsGroupForm.telephony.hiddenExternalNumber">
-                    <oui-radio data-text="{{:: 'common_yes_capitalized' | translate }}"
-                               data-value="true"
-                               required></oui-radio>
-                    <oui-radio data-text="{{:: 'common_no_capitalized' | translate }}"
-                               data-value="false"
-                               required></oui-radio>
-                </oui-radio-group>
+            <oui-field>
+                <oui-checkbox name="hiddenExternalNumber"
+                              data-text="{{:: 'telephony_billing_account_administration_options_group_hiddenExternalNumber_label' | translate }}"
+                              model="OptionsGroupCtrl.optionsGroupForm.telephony.hiddenExternalNumber"></oui-checkbox>
             </oui-field>
-            <oui-field data-label="{{:: 'telephony_billing_account_administration_options_group_overrideDisplayedNumber_label' | translate }}"
-                       data-help-text="{{:: 'telephony_billing_account_administration_options_group_overrideDisplayedNumber_info' | translate }}">
-                <oui-radio-group name="overrideDisplayedNumber"
-                                 data-model="OptionsGroupCtrl.optionsGroupForm.telephony.overrideDisplayedNumber">
-                    <oui-radio data-text="{{:: 'common_yes_capitalized' | translate }}"
-                               data-value="true"
-                               required></oui-radio>
-                    <oui-radio data-text="{{:: 'common_no_capitalized' | translate }}"
-                               data-value="false"
-                               required></oui-radio>
-                </oui-radio-group>
-
+            <oui-field data-help-text="{{:: 'telephony_billing_account_administration_options_group_overrideDisplayedNumber_info' | translate }}">
+                <oui-checkbox name="overrideDisplayedNumber"
+                              data-text="{{:: 'telephony_billing_account_administration_options_group_overrideDisplayedNumber_label' | translate }}"
+                              model="OptionsGroupCtrl.optionsGroupForm.telephony.overrideDisplayedNumber"></oui-checkbox>
             </oui-field>
-            <oui-field label="{{:: 'telephony_billing_account_administration_options_group_displayOnIncomingCall_label' | translate }}">
-                <oui-radio-group name="displayOnIncomingCall"
-                                 data-model="OptionsGroupCtrl.optionsGroupForm.user.lineDescriptionPolicies.displayOnIncomingCall">
-                    <oui-radio data-text="{{:: 'common_yes_capitalized' | translate }}"
-                               data-value="true"
-                               required></oui-radio>
-                    <oui-radio data-text="{{:: 'common_no_capitalized' | translate }}"
-                               data-value="false"
-                               required></oui-radio>
-                </oui-radio-group>
+            <oui-field>
+                <oui-checkbox name="displayOnIncomingCall"
+                              data-text="{{:: 'telephony_billing_account_administration_options_group_displayOnIncomingCall_label' | translate }}"
+                              model="OptionsGroupCtrl.optionsGroupForm.user.lineDescriptionPolicies.displayOnIncomingCall"></oui-checkbox>
             </oui-field>
 
             <oui-form-actions
