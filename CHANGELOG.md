@@ -1,3 +1,35 @@
+<a name="10.0.0"></a>
+# [10.0.0](https://github.com/ovh-ux/ovh-manager-telecom/compare/v9.6.0...v10.0.0) (2018-04-05)
+
+
+### Bug Fixes
+
+* **alias menus:** fix metro style display ([0fa7ed1](https://github.com/ovh-ux/ovh-manager-telecom/commit/0fa7ed1))
+* **dialplan menu:** fix display of displan menu ([606e4b9](https://github.com/ovh-ux/ovh-manager-telecom/commit/606e4b9))
+* **hubic:** fix resolve in error, and filtered loop result ([aa5c7c8](https://github.com/ovh-ux/ovh-manager-telecom/commit/aa5c7c8))
+* **Line - Contact:** Allow belgium siret in pattern ([eb55de2](https://github.com/ovh-ux/ovh-manager-telecom/commit/eb55de2))
+* **ui-router:** fix telephone line phone routes. ([077613a](https://github.com/ovh-ux/ovh-manager-telecom/commit/077613a))
+* **ui-router:** fix telephony line answer routes. ([f2a12c0](https://github.com/ovh-ux/ovh-manager-telecom/commit/f2a12c0))
+* **ui-router:** fix telephony line assist routes. ([027d607](https://github.com/ovh-ux/ovh-manager-telecom/commit/027d607))
+* **ui-router:** fix telephony line calls routes. ([919bdf3](https://github.com/ovh-ux/ovh-manager-telecom/commit/919bdf3))
+* **ui-router:** fix telephony line consumption routes. ([e047e3d](https://github.com/ovh-ux/ovh-manager-telecom/commit/e047e3d))
+* **ui-router:** fix telephony line fax routes. ([613ad0c](https://github.com/ovh-ux/ovh-manager-telecom/commit/613ad0c))
+* **ui-router:** fix telephony line management routes. ([2156152](https://github.com/ovh-ux/ovh-manager-telecom/commit/2156152))
+* deleted translation in order portability ([dc5479a](https://github.com/ovh-ux/ovh-manager-telecom/commit/dc5479a))
+* display buttons agent management ([e53f9c5](https://github.com/ovh-ux/ovh-manager-telecom/commit/e53f9c5))
+* missing translations, ticket list url link in navbar ([217e1e4](https://github.com/ovh-ux/ovh-manager-telecom/commit/217e1e4))
+
+
+### Features
+
+* **alias:** add infos to sounds/menus configuration, fix menu creation ([758e0ab](https://github.com/ovh-ux/ovh-manager-telecom/commit/758e0ab))
+* **chore:** bump angular-ui-router to version ^1.0.0. ([6c40f9f](https://github.com/ovh-ux/ovh-manager-telecom/commit/6c40f9f))
+* show app URL on terminal ([b9159f0](https://github.com/ovh-ux/ovh-manager-telecom/commit/b9159f0))
+* **hubic:** additionnal information on hubic voucher ([caba13a](https://github.com/ovh-ux/ovh-manager-telecom/commit/caba13a))
+* **hubic:** set url of used hubic voucher to hubic login page ([197c941](https://github.com/ovh-ux/ovh-manager-telecom/commit/197c941))
+
+
+
 <a name="9.4.0"></a>
 # [9.4.0](https://github.com/ovh-ux/ovh-manager-telecom/compare/v9.3.4...v9.4.0) (2018-03-14)
 
