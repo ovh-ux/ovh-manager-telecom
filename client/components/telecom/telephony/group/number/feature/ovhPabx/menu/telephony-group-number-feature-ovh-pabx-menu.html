@@ -1,6 +1,6 @@
 <div class="telephony-number-ovh-pabx-menu">
 
-    <div data-ng-class="{ 'voip-plan__step': $ctrl.hasMenuEntryOrDialPlanExtension() }">
+    <div class="voip-plan__step">
         <!-- DISPLAY POSITION OR ENTRY DTMF -->
         <div class="voip-plan__step-icon"
              data-ng-if="$ctrl.hasMenuEntryOrDialPlanExtension()"
@@ -20,14 +20,14 @@
         </div> <!-- END OF DISPLAY POSITION OR ENTRY DTMF -->
 
         <!-- MENU DISPLAY -->
-        <div data-ng-class="{ 'voip-plan__step-content voip-plan__step-content--after-grip voip-plan__step-content--node': $ctrl.hasMenuEntryOrDialPlanExtension() }">
+        <div class="voip-plan__step-content voip-plan__step-content--after-grip voip-plan__step-content--node">
             <div class="voip-plan__step-icon voip-plan__step-icon--included"
                  data-jsplumb-endpoint
                  data-jsplumb-endpoint-uuid="{{ $ctrl.getEndpointUuid() }}">
                 <span class="ovh-font ovh-font-programmableKeys" aria-hidden="true"></span>
             </div>
             <!-- MENU NAME -->
-            <div class="voip-plan__step-description ml-5"
+            <div class="voip-plan__step-description"
                  data-responsive-popover="$ctrl.popoverStatus.templateUrl"
                  data-popover-placement="auto right"
                  data-popover-trigger="none"
