@@ -3,7 +3,7 @@ angular.module("managerApp").config(function ($stateProvider) {
     $stateProvider.state("telecom.overTheBox.remote", {
         url: "/remote",
         views: {
-            otbView: {
+            "otbView@telecom.overTheBox": {
                 templateUrl: "app/telecom/overTheBox/remote/overTheBox-remote.html",
                 controller: "OverTheBoxRemoteCtrl",
                 controllerAs: "OverTheBoxRemote"

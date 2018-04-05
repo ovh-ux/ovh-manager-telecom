@@ -4,7 +4,7 @@ angular.module("managerApp").config(function ($stateProvider) {
     $stateProvider.state("telecom.telephony.line.terminate", {
         url: "/terminate",
         views: {
-            "@lineView": {
+            "lineView@telecom.telephony.line": {
                 templateUrl: "app/telecom/telephony/line/management/terminate/telecom-telephony-line-management-terminate.html",
                 controller: "TelecomTelephonyLineTerminateCtrl",
                 controllerAs: "TerminateCtrl"

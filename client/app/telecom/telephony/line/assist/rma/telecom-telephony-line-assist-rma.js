@@ -3,7 +3,7 @@ angular.module("managerApp").config(function ($stateProvider) {
     $stateProvider.state("telecom.telephony.line.assist.rma", {
         url: "/rma",
         views: {
-            "@lineView": {
+            "lineView@telecom.telephony.line": {
                 templateUrl: "app/telecom/telephony/line/assist/rma/telecom-telephony-line-assist-rma.html",
                 controller: "TelecomTelephonyLineAssistRmaCtrl",
                 controllerAs: "RmaCtrl"

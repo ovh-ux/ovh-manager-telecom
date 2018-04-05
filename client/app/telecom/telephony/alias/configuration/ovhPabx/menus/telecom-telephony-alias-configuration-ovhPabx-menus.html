@@ -34,6 +34,17 @@
             </div>
         </div> <!-- END OF NOT AN OVHPABX -->
 
+        <!-- INFO -->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="alert alert-info"
+                     role="alert">
+                    <p data-translate="telephony_alias_ovh_pabx_menus_list_info1"></p>
+                    <p data-translate="telephony_alias_ovh_pabx_menus_list_info2"></p>
+                </div>
+            </div>
+        </div> <!-- END OF INFO -->
+
         <!-- MENU MANAGEMENT -->
         <div class="row"
              data-ng-if="!$ctrl.loading.init && $ctrl.number.getFeatureFamily() === 'ovhPabx' && !($ctrl.number.feature.featureType === 'cloudHunting' && !$ctrl.number.feature.isCcs())">
@@ -76,7 +87,7 @@
                 </h2>
             </header>
 
-            <div class="voip-metro-plan"
+            <div class="voip-plan"
                  data-jsplumb="$ctrl.jsPlumbInstanceOptions"
                  data-jsplumb-instance=$ctrl.jsPlumbInstance>
                 <telephony-number-ovh-pabx-menu data-ovh-pabx="$ctrl.number.feature"

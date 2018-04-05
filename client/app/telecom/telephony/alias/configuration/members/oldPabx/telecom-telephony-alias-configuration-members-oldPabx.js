@@ -4,7 +4,7 @@ angular.module("managerApp").config(function ($stateProvider) {
     $stateProvider.state("telecom.telephony.alias.configuration.members.oldPabx", {
         url: "/oldPabx",
         views: {
-            "@aliasView": {
+            "aliasView@telecom.telephony.alias": {
                 templateUrl: "app/telecom/telephony/alias/configuration/members/oldPabx/telecom-telephony-alias-configuration-members-oldPabx.html",
                 controller: "TelecomTelephonyAliasConfigurationMembersOldPabxCtrl",
                 controllerAs: "$ctrl"

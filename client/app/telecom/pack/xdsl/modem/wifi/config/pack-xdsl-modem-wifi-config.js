@@ -3,7 +3,7 @@ angular.module("managerApp").config(function ($stateProvider) {
     $stateProvider.state("telecom.pack.xdsl.modem.wifi", {
         url: "/wifi",
         views: {
-            modemView: {
+            "modemView@telecom.pack.xdsl.modem": {
                 templateUrl: "app/telecom/pack/xdsl/modem/wifi/config/pack-xdsl-modem-wifi-config.html",
                 controller: "XdslModemWifiConfigCtrl",
                 controllerAs: "ConfigWifiCtrl"
