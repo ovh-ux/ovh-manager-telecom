@@ -221,7 +221,7 @@
                                     <option value="loggedOut" data-translate="telephony_alias_configuration_agents_status_loggedOut"></option>
                                 </select>
                             </td>
-                            <td>
+                            <td class="align-middle">
                                 <button type="button"
                                         class="btn btn-link no-transition"
                                         aria-label="{{:: 'edit' | translate }}"
@@ -231,14 +231,14 @@
                                 </button>
                                 <div data-ng-if="agent.inEdition">
                                     <button type="button"
-                                            class="btn btn-block btn-default"
+                                            class="btn btn-default"
                                             data-ng-if="agent.inEdition"
                                             data-ng-click="agent.inEdition = null"
                                             data-translate="cancel"
                                             data-ng-disabled="agent.isUpdating">
                                     </button>
                                     <button type="button"
-                                            class="btn btn-block btn-primary"
+                                            class="btn btn-primary"
                                             data-ng-if="agent.inEdition"
                                             data-ng-click="AgentsOvhPabxCtrl.updateAgent(agent)"
                                             data-ng-disabled="agent.isUpdating || !AgentsOvhPabxCtrl.isValidAgent(agent.inEdition)">

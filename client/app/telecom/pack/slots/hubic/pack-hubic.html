@@ -33,10 +33,30 @@
                               data-translate="pack_xdsl_hubic_voucher"
                               data-translate-values="{ voucher: service.voucher }">
                         </span>
+                        <em class="text-danger"
+                            data-ng-if="service.isUsed"
+                            data-translate="pack_xdsl_hubic_is_used"></em>
+                    </span>
+                    <span class="text-secondary"
+                          data-ng-if="service.isUsed && service.email"
+                          data-translate="pack_xdsl_hubic_used_email"
+                          data-translate-values="{ 'email': service.email }">
+                    </span>
+                    <span data-ng-if="service.isUsed && !service.email">
+                        <span class="text-secondary"
+                              data-translate="pack_xdsl_hubic_used_voucher_pending_details">
+                        </span>
+                        <oui-spinner size="s"></oui-spinner>
                     </span>
                 </span>
                 <i class="oui-icon oui-icon-chevron-right" aria-hidden="true"></i>
             </a>
+        </div>
+    </div>
+    <div class="oui-tile__body"
+         data-ng-if="Hubic.loaders.services">
+        <div class="oui-tile__definition text-center">
+            <oui-spinner></oui-spinner>
         </div>
     </div>
     <div class="oui-tile__body"

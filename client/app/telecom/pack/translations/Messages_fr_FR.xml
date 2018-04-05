@@ -20,6 +20,10 @@
    <translation id="pack_xdsl_hubic_domain" qtlid="8458">Domaine</translation>
    <translation id="pack_xdsl_hubic_size" qtlid="7726">Taille</translation>
    <translation id="pack_xdsl_hubic_voucher" qtlid="308554">(Code : {{voucher}})</translation>
+   <translation id="pack_xdsl_hubic_is_used">Déja utilisé</translation>
+   <translation id="pack_xdsl_hubic_used_voucher_pending_details">Récupération des données...</translation>
+   <translation id="pack_xdsl_hubic_used_email">Adresse email : {{email}}</translation>
+   <translation id="pack_xdsl_hubic_domain_details_error">Une erreur est survenue lors de la récupération du détail des domaines</translation>
    <translation id="xdslAccess" qtlid="305603">Accès Internet</translation>
    <translation id="xdslAccess_default_sidebar_title" qtlid="308476">Mes accès</translation>
    <translation id="voipLine" qtlid="29299">Téléphonie</translation>
