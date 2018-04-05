@@ -147,7 +147,8 @@
                                data-ng-change="ServiceContactCtrl.onSiretChange(contactForm.contactSiret)"
                                data-ng-model="ServiceContactCtrl.directoryForm.siret"
                                data-ng-model-options="{ debounce: 500 }"
-                               data-ng-pattern="/^\d{9,}$/" />
+                               maxlength="20"
+                               data-ng-pattern="/^(be0)?\d{9,}$/" />
                         <p class="form-control-static"
                            data-ng-if="!ServiceContactCtrl.isEditing"
                            data-ng-bind="ServiceContactCtrl.directoryForm.siret || '-'">
