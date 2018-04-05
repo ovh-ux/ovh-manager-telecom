@@ -3,7 +3,7 @@ angular.module("managerApp").config(function ($stateProvider) {
     $stateProvider.state("telecom.pack", {
         url: "/pack/:packName",
         views: {
-            telecomView: {
+            "telecomView@telecom": {
                 templateUrl: "app/telecom/pack/pack-main.view.html"
             },
             "packView@telecom.pack": {

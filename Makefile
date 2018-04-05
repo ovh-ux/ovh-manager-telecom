@@ -85,7 +85,7 @@ build: deps
 	$(TAR) $(DIST_TAR) $(DIST_DIR)
 
 release: deps
-	$(GRUNT) release --type=$(type)
+	$(NPM) version $(type) -m "chore: release v%s"
 
 ###############
 # Tests tasks #

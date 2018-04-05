@@ -3,7 +3,7 @@ angular.module("managerApp").config(function ($stateProvider) {
     $stateProvider.state("telecom.telephony.line.calls.lockOutCall", {
         url: "/lockOutCall",
         views: {
-            "@lineView": {
+            "lineView@telecom.telephony.line": {
                 templateUrl: "app/telecom/telephony/line/calls/lockOutCall/telecom-telephony-line-calls-lockOutCall.html",
                 controller: "TelecomTelephonyLineCallsLockOutCallCtrl",
                 controllerAs: "LineLockOutCallCtrl"

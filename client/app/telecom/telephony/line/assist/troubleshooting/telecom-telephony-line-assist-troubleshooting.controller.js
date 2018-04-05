@@ -6,7 +6,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineAssistTroubleshooti
     var commonSteps = {
         procedureStep: {
             name: "procedure",
-            view: "@procedureStepView"
+            view: "procedureStepView"
         },
         contactStep: {
             name: "contact",
@@ -15,7 +15,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineAssistTroubleshooti
         autoConfigStep: {
             name: "autoConfig",
             isFinalized: false,
-            view: "@autoConfigStepView"
+            view: "autoConfigStepView"
         }
     };
 
@@ -167,7 +167,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineAssistTroubleshooti
             customSteps: [commonSteps.procedureStep, commonSteps.autoConfigStep, {
                 name: "manualConfig",
                 isFinalized: false,
-                view: "@manualConfigStepView"
+                view: "manualConfigStepView"
             }, commonSteps.contactStep]
         }, {
             name: "callin"
@@ -176,7 +176,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineAssistTroubleshooti
             customSteps: [commonSteps.autoConfigStep, {
                 name: "manualConfig",
                 isFinalized: false,
-                view: "@manualConfigStepView"
+                view: "manualConfigStepView"
             }, commonSteps.contactStep]
         }];
     }
@@ -215,7 +215,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineAssistTroubleshooti
                 name: "manualConfig",
 
                 // isFinalized: false,
-                view: "@manualConfigStepView"
+                view: "manualConfigStepView"
             }, commonSteps.contactStep]
         }, {
             name: "phoneBookGigaset"
@@ -225,7 +225,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineAssistTroubleshooti
                 name: "manualConfig",
 
                 // isFinalized: false,
-                view: "@manualConfigStepView"
+                view: "manualConfigStepView"
             }, commonSteps.contactStep]
         }];
 
@@ -247,7 +247,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineAssistTroubleshooti
             customSteps: [commonSteps.autoConfigStep, {
                 name: "manualConfig",
                 isFinalized: false,
-                view: "@manualConfigStepView"
+                view: "manualConfigStepView"
             }, commonSteps.contactStep]
         }];
     }
@@ -270,7 +270,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineAssistTroubleshooti
             name: "softReinit",
             customSteps: [commonSteps.autoConfigStep, {
                 name: "manualConfig",
-                view: "@manualConfigStepView"
+                view: "manualConfigStepView"
             }, commonSteps.contactStep]
         }];
     }
@@ -287,7 +287,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineAssistTroubleshooti
             customSteps: [commonSteps.autoConfigStep, {
                 name: "manualConfig",
                 isFinalized: false,
-                view: "@manualConfigStepView"
+                view: "manualConfigStepView"
             }, commonSteps.contactStep]
         }];
     }
@@ -302,7 +302,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineAssistTroubleshooti
             customSteps: [commonSteps.autoConfigStep, {
                 name: "manualConfig",
                 isFinalized: false,
-                view: "@manualConfigStepView"
+                view: "manualConfigStepView"
             }, commonSteps.contactStep]
         }];
     }

@@ -3,7 +3,7 @@ angular.module("managerApp").config(function ($stateProvider) {
     $stateProvider.state("telecom.telephony.line.calls.callWaiting", {
         url: "/callWaiting",
         views: {
-            "@lineView": {
+            "lineView@telecom.telephony.line": {
                 templateUrl: "app/telecom/telephony/line/calls/callWaiting/telecom-telephony-line-calls-callWaiting.html",
                 controller: "TelecomTelephonyLineCallsCallWaitingCtrl",
                 controllerAs: "LineCallWaitingCtrl"

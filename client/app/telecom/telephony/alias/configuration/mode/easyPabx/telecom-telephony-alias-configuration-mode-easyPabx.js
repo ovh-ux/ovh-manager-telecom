@@ -4,7 +4,7 @@ angular.module("managerApp").config(function ($stateProvider) {
     $stateProvider.state("telecom.telephony.alias.configuration.mode.easyPabx", {
         url: "/easyPabx",
         views: {
-            "@aliasView": {
+            "aliasView@telecom.telephony.alias": {
                 templateUrl: "app/telecom/telephony/alias/configuration/mode/easyPabx/telecom-telephony-alias-configuration-mode-easyPabx.html",
                 controller: "TelecomTelephonyAliasConfigurationModeEasyPabxCtrl",
                 controllerAs: "$ctrl"
