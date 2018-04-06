@@ -45,7 +45,9 @@ module.exports = function (app) {
 
     app.route("/auth").get((req, res) => {
         let origin = req.headers.host;
-        let headers = req.headers;
+        const headers = {
+            contentType: "application/json"
+        };
         headers.host = "www.ovh.com";
 
         proxy.post({
