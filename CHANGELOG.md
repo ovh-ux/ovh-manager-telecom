@@ -1,3 +1,13 @@
+<a name="10.0.2"></a>
+## [10.0.2](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.0.1...v10.0.2) (2018-04-06)
+
+
+### Bug Fixes
+
+* **xdsl:** display network configuration correctly ([e7adaa2](https://github.com/ovh-ux/ovh-manager-telecom/commit/e7adaa2))
+
+
+
 <a name="10.0.1"></a>
 ## [10.0.1](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.0.0...v10.0.1) (2018-04-06)
 
