@@ -61,6 +61,7 @@ angular.module("managerApp").controller("PackXdslCtrl", function ($q, $transitio
         }
 
         smoothScroll(document.body);
+
         switch (state.name) {
         case "telecom.pack.xdsl.modem.wifi":
         case "telecom.pack.xdsl.modem.dmz":
@@ -97,6 +98,7 @@ angular.module("managerApp").controller("PackXdslCtrl", function ($q, $transitio
     $transitions.onSuccess({}, function (transition) {
         self.updateUIForState(transition.to());
     });
+    self.updateUIForState($state.current);
 
     /*= =============================
     =            ACTION            =
