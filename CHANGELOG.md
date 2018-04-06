@@ -1,3 +1,13 @@
+<a name="10.0.1"></a>
+## [10.0.1](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.0.0...v10.0.1) (2018-04-06)
+
+
+### Bug Fixes
+
+* **xdsl:** fix modem tab ([684ffde](https://github.com/ovh-ux/ovh-manager-telecom/commit/684ffde))
+
+
+
 <a name="10.0.0"></a>
 # [10.0.0](https://github.com/ovh-ux/ovh-manager-telecom/compare/v9.6.0...v10.0.0) (2018-04-05)
 
