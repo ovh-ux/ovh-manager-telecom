@@ -38,11 +38,11 @@
                             data-translate="pack_xdsl_hubic_is_used"></em>
                     </span>
                     <span class="text-secondary"
-                          data-ng-if="service.isUsed && service.email"
+                          data-ng-if="service.isUsed && !Hubic.loaders.voucher"
                           data-translate="pack_xdsl_hubic_used_email"
                           data-translate-values="{ 'email': service.email }">
                     </span>
-                    <span data-ng-if="service.isUsed && !service.email">
+                    <span data-ng-if="service.isUsed && !service.email && Hubic.loaders.voucher">
                         <span class="text-secondary"
                               data-translate="pack_xdsl_hubic_used_voucher_pending_details">
                         </span>

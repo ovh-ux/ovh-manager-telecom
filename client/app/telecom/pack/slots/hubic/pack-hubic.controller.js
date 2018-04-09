@@ -1,21 +1,24 @@
-angular.module("managerApp").controller("PackHubicCtrl", function (OvhApiPackXdslHubic, $scope, $stateParams, URLS, $q, $translate, Toast, Poller) {
-    "use strict";
+angular.module("managerApp").controller("PackHubicCtrl", class {
 
-    var self = this;
-    var domainDetailsRoute = "/pack/xdsl/{packName}/hubic/services/{domain}/details";
-    var hubicLoginUrl = "https://hubic.com/home/";
-
-    this.loaders = {
-        services: true
-    };
+    constructor ($q, $scope, $stateParams, $translate, OvhApiPackXdslHubic, Poller, Toast, URLS) {
+        this.$q = $q;
+        this.$scope = $scope;
+        this.$stateParams = $stateParams;
+        this.$translate = $translate;
+        this.OvhApiPackXdslHubic = OvhApiPackXdslHubic;
+        this.Poller = Poller;
+        this.Toast = Toast;
+        this.URLS = URLS;
+    }
 
     /**
      * Get detail of a domain voucher already used
      * @param  {string} domain
      */
-    function getVoucherDetails (domain) {
-        var url = domainDetailsRoute.replace("{packName}", $stateParams.packName).replace("{domain}", domain);
-        return Poller.poll(
+    getVoucherDetails (domain) {
+        let url = `/pack/xdsl/${this.$stateParams.packName}/hubic/services/${domain}/details`;
+
+        return this.Poller.poll(
             url,
             null,
             {
@@ -25,7 +28,7 @@ angular.module("managerApp").controller("PackHubicCtrl", function (OvhApiPackXds
                 errorRule: {
                     status: "error"
                 },
-                scope: $scope.id
+                scope: this.$scope.id
             });
     }
 
@@ -33,59 +36,64 @@ angular.module("managerApp").controller("PackHubicCtrl", function (OvhApiPackXds
      * Load all hubic services
      * @return {Promise}
      */
-    this.loadHubics = function () {
+    loadHubics () {
         this.loaders.services = true;
         this.services = [];
 
-        return OvhApiPackXdslHubic.Aapi().query({
-            packId: $stateParams.packName
-        }).$promise.then(function (services) {
-            self.services = _.map(services, function (service) {
-                var voucherUrl = [URLS.hubicVoucher, "token=" + service.voucher].join("?");
+        return this.OvhApiPackXdslHubic.Aapi().query({
+            packId: this.$stateParams.packName
+        }).$promise.then((services) => {
+            this.services = _.map(services, (service) => {
+                let voucherUrl = [this.URLS.hubicVoucher, "token=" + service.voucher].join("?");
                 return _.extend(
                     service,
                     {
-                        url: service.voucher ? voucherUrl : URLS.hubicLogin
+                        url: service.voucher ? voucherUrl : this.URLS.hubicLogin
                     }
                 );
             });
 
-            var servicesCodeUsed = _.filter(self.services, { isUsed: true });
+            let servicesCodeUsed = _.filter(this.services, { isUsed: true });
 
-            return $q.allSettled(_.map(servicesCodeUsed, function (service) {
-                return getVoucherDetails(service.domain);
-            })).then(function (result) {
-                return result;
-            }).catch(function (result) {
-                return result;
-            }).then(function (result) {
-                _.times(result.length, function (index) {
-                    if (result[index].status !== 404 || result[index].status !== 400) {
-                        servicesCodeUsed[index].email = result[index].result.email;
-                        servicesCodeUsed[index].url = hubicLoginUrl;
-                    }
+            this.loaders.voucher = !!servicesCodeUsed.length;
+
+            this.$q.allSettled(_.map(servicesCodeUsed, (service) => this.getVoucherDetails(service.domain)))
+                .then((result) => result)
+                .catch((result) => result)
+                .then((result) => {
+                    _.times(result.length, (index) => {
+                        if (result[index].status !== 404 && result[index].status !== 400) {
+                            servicesCodeUsed[index].email = result[index].result.email;
+                            servicesCodeUsed[index].url = this.URLS.hubicLogin;
+                        }
+                    });
+                }).finally(() => {
+                    this.Poller.kill({
+                        scope: this.$scope.id
+                    });
+                    this.loaders.voucher = false;
                 });
-            }).finally(function () {
-                Poller.kill({
-                    scope: $scope.id
-                });
-                return self.services;
-            });
-        }).catch(function (err) {
-            Toast.error($translate.instant("pack_xdsl_hubic_loading_error"));
-            return $q.reject(err);
-        }).finally(function () {
-            self.loaders.services = false;
+
+            return this.services;
+        }).catch((err) => {
+            this.Toast.error([this.$translate.instant("pack_xdsl_hubic_loading_error"), err.message].join(" "));
+            return this.$q.reject(err);
+        }).finally(() => {
+            this.loaders.services = false;
         });
-    };
+    }
 
     /**
      * Initialize controller
      */
-    this.$onInit = function init () {
+    $onInit () {
+        this.loaders = {
+            services: true,
+            voucher: false
+        };
 
         // Get service link to this access from current Pack Xdsl
         this.loadHubics();
-    };
+    }
 
 });
