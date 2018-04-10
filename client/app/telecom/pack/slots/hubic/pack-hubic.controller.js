@@ -64,8 +64,10 @@ angular.module("managerApp").controller("PackHubicCtrl", class {
                     _.times(result.length, (index) => {
                         if (result[index].status !== 404 && result[index].status !== 400) {
                             servicesCodeUsed[index].email = result[index].result.email;
-                            servicesCodeUsed[index].url = this.URLS.hubicLogin;
+                        } else {
+                            servicesCodeUsed[index].email = this.$translate.instant("pack_xdsl_hubic_used_email_unavailable");
                         }
+                        servicesCodeUsed[index].url = this.URLS.hubicLogin;
                     });
                 }).finally(() => {
                     this.Poller.kill({
