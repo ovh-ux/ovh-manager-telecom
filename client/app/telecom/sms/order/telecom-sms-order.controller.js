@@ -177,7 +177,7 @@ angular.module("managerApp").controller("TelecomSmsOrderCtrl", class TelecomSmsO
             return this.atInternet.trackClick({
                 cta: "Generate purchase order",
                 name: "Generate_BC",
-                type: "click",
+                type: "action",
                 level2: "Telecom",
                 chpater1: "telecom"
             });
