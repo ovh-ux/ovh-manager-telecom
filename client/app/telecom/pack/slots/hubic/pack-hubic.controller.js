@@ -16,7 +16,7 @@ angular.module("managerApp").controller("PackHubicCtrl", class {
      * @param  {string} domain
      */
     getVoucherDetails (domain) {
-        let url = `/pack/xdsl/${this.$stateParams.packName}/hubic/services/${domain}/details`;
+        const url = `/pack/xdsl/${this.$stateParams.packName}/hubic/services/${domain}/details`;
 
         return this.Poller.poll(
             url,
@@ -44,7 +44,7 @@ angular.module("managerApp").controller("PackHubicCtrl", class {
             packId: this.$stateParams.packName
         }).$promise.then((services) => {
             this.services = _.map(services, (service) => {
-                let voucherUrl = [this.URLS.hubicVoucher, "token=" + service.voucher].join("?");
+                const voucherUrl = [this.URLS.hubicVoucher, "token=" + service.voucher].join("?");
                 return _.extend(
                     service,
                     {
@@ -53,7 +53,7 @@ angular.module("managerApp").controller("PackHubicCtrl", class {
                 );
             });
 
-            let servicesCodeUsed = _.filter(this.services, { isUsed: true });
+            const servicesCodeUsed = _.filter(this.services, { isUsed: true });
 
             this.loaders.voucher = !!servicesCodeUsed.length;
 
@@ -94,6 +94,12 @@ angular.module("managerApp").controller("PackHubicCtrl", class {
 
         // Get service link to this access from current Pack Xdsl
         this.loadHubics();
+    }
+
+    $onDestroy () {
+        this.Poller.kill({
+            scope: this.$scope.$id
+        });
     }
 
 });
