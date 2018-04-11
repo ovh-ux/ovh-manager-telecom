@@ -14,7 +14,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineManagementLanguageC
     this.changeLanguage = function () {
         self.loaders.change = true;
 
-        return OvhApiTelephony.Line().Options().Lexi().update({
+        return OvhApiTelephony.Line().Options().v6().update({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }, {
@@ -39,7 +39,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineManagementLanguageC
     function init () {
         self.loaders.init = true;
         self.language = null;
-        return OvhApiTelephony.Lexi().schema().$promise.then(function (schema) {
+        return OvhApiTelephony.v6().schema().$promise.then(function (schema) {
             angular.forEach(schema.models["telephony.LineOptionLanguageEnum"].enum, function (language) {
                 self.availableLanguages.push({
                     value: language,
@@ -49,7 +49,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineManagementLanguageC
             self.availableLanguages = $filter("orderBy")(self.availableLanguages, "label");
             return self.availableLanguages;
         }).then(function () {
-            return OvhApiTelephony.Line().Options().Lexi().get({
+            return OvhApiTelephony.Line().Options().v6().get({
                 billingAccount: $stateParams.billingAccount,
                 serviceName: $stateParams.serviceName
             }).$promise.then(function (options) {

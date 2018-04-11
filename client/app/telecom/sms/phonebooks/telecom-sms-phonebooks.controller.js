@@ -11,9 +11,9 @@ angular.module("managerApp").controller("TelecomSmsPhonebooksCtrl", class Teleco
         this.$window = $window;
         this.api = {
             sms: {
-                phonebooks: OvhApiSms.Phonebooks().Lexi(),
-                phonebookContact: OvhApiSms.Phonebooks().PhonebookContact().Lexi(),
-                task: OvhApiSms.Task().Lexi()
+                phonebooks: OvhApiSms.Phonebooks().v6(),
+                phonebookContact: OvhApiSms.Phonebooks().PhonebookContact().v6(),
+                task: OvhApiSms.Task().v6()
             }
         };
         this.Toast = Toast;

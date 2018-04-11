@@ -194,7 +194,7 @@ angular.module("managerApp").controller("TelephonySchedulerCtrl", function ($q, 
             self.loading.import = true;
 
             startImportTaskPolling(importDatas.importTask.taskId).then(function () {
-                OvhApiTelephony.Scheduler().Events().Lexi().resetAllCache();
+                OvhApiTelephony.Scheduler().Events().v6().resetAllCache();
                 $(uiCalendarConfig.calendars.eventsCalendar).fullCalendar("refetchEvents");
                 Toast.success($translate.instant("telephony_scheduler_import_success"));
             }, function (error) {
@@ -205,7 +205,7 @@ angular.module("managerApp").controller("TelephonySchedulerCtrl", function ($q, 
 
                 // try to delete uploaded document
                 if (importDatas.uploadedDocument) {
-                    OvhApiMe.Document().Lexi().delete({
+                    OvhApiMe.Document().v6().delete({
                         id: importDatas.uploadedDocument.id
                     });
                 }

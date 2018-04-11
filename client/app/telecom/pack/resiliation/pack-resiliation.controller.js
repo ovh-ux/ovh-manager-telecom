@@ -86,7 +86,7 @@ angular.module("managerApp").controller("PackResiliationCtrl", function ($stateP
      * @return promise with the symbol of the current currency
      */
     this.getCurrentCurrencySymbol = function () {
-        return OvhApiMe.Lexi().get().$promise.then(function (me) {
+        return OvhApiMe.v6().get().$promise.then(function (me) {
             return me && me.currency ? me.currency.symbol : "";
         });
     };
@@ -206,7 +206,7 @@ angular.module("managerApp").controller("PackResiliationCtrl", function ($stateP
      */
     this.computePrice = function () {
         self.computingPrice = true;
-        return OvhApiPackXdslResiliation.Lexi().resiliationTerms({
+        return OvhApiPackXdslResiliation.v6().resiliationTerms({
             packName: $stateParams.packName,
             resiliationDate: self.model.when ? self.model.when.toISOString() : null
         }, null).$promise.then(function (data) {
@@ -256,7 +256,7 @@ angular.module("managerApp").controller("PackResiliationCtrl", function ($stateP
      */
     this.resiliatePack = function () {
         self.loading = true;
-        return OvhApiPackXdslResiliation.Lexi().resiliate({
+        return OvhApiPackXdslResiliation.v6().resiliate({
             packName: $stateParams.packName
         }, {
             resiliationSurvey: {
@@ -283,7 +283,7 @@ angular.module("managerApp").controller("PackResiliationCtrl", function ($stateP
      */
     this.cancelPackResiliation = function (pack) {
         self.loading = true;
-        return OvhApiPackXdslResiliation.Lexi().cancelResiliation({
+        return OvhApiPackXdslResiliation.v6().cancelResiliation({
             packName: pack.packName
         }, null).$promise.then(function () {
             resiliationNotification.cancelSuccess = true;

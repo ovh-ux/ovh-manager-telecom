@@ -17,7 +17,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineTonesCtrl", functio
     }
 
     function fetchTones () {
-        return OvhApiTelephony.Line().Lexi().getTones({
+        return OvhApiTelephony.Line().v6().getTones({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }).$promise;
@@ -65,7 +65,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineTonesCtrl", functio
             self.tonesForm[toneType + "Updating"] = true;
             return $q.all([
                 $timeout(angular.noop, 500), // avoid clipping
-                OvhApiTelephony.Line().Lexi().changeTones({
+                OvhApiTelephony.Line().v6().changeTones({
                     billingAccount: $stateParams.billingAccount,
                     serviceName: $stateParams.serviceName
                 }, tonesParam).$promise.then(function () {
@@ -85,12 +85,12 @@ angular.module("managerApp").controller("TelecomTelephonyLineTonesCtrl", functio
         self.tonesForm[toneType + "Uploading"] = true;
 
         // upload document
-        return OvhApiMe.Document().Lexi().upload(
+        return OvhApiMe.Document().v6().upload(
             self.tonesForm[toneType + "File"].name,
             self.tonesForm[toneType + "File"]
         ).then(function (doc) {
             // upload tone
-            return OvhApiTelephony.Line().Lexi().toneUpload({
+            return OvhApiTelephony.Line().v6().toneUpload({
                 billingAccount: $stateParams.billingAccount,
                 serviceName: $stateParams.serviceName
             }, {

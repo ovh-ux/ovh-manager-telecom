@@ -5,10 +5,10 @@ angular.module("managerApp").controller("TelecomSmsDashboardCtrl", class Telecom
         this.$translate = $translate;
         this.api = {
             sms: {
-                senders: OvhApiSms.Senders().Lexi(),
-                outgoing: OvhApiSms.Outgoing().Lexi(),
-                incoming: OvhApiSms.Incoming().Lexi(),
-                jobs: OvhApiSms.Jobs().Lexi()
+                senders: OvhApiSms.Senders().v6(),
+                outgoing: OvhApiSms.Outgoing().v6(),
+                incoming: OvhApiSms.Incoming().v6(),
+                jobs: OvhApiSms.Jobs().v6()
             }
         };
         this.SmsMediator = SmsMediator;

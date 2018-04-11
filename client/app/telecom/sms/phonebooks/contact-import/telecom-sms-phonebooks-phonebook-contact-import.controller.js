@@ -8,10 +8,10 @@ angular.module("managerApp").controller("TelecomSmsPhonebooksPhonebookContactImp
         this.phonebook = phonebook;
         this.api = {
             sms: {
-                phonebooks: OvhApiSms.Phonebooks().Lexi()
+                phonebooks: OvhApiSms.Phonebooks().v6()
             },
             user: {
-                document: OvhApiMe.Document().Lexi()
+                document: OvhApiMe.Document().v6()
             }
         };
         this.ToastError = ToastError;

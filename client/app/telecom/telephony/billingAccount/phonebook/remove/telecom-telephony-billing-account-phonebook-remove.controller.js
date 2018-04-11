@@ -14,7 +14,7 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountPhonebook
     self.remove = function () {
         self.isRemoving = true;
         return $q.all([
-            OvhApiTelephony.Phonebook().Lexi().remove({
+            OvhApiTelephony.Phonebook().v6().remove({
                 billingAccount: $stateParams.billingAccount,
                 bookKey: self.phonebook.bookKey
             }).$promise,

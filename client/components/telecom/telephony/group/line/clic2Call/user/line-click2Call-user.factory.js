@@ -53,7 +53,7 @@ angular.module("managerApp").factory("TelephonyGroupLineClick2CallUser", functio
 
     TelephonyGroupLineClick2CallUser.prototype.getUser = function () {
         var self = this;
-        return OvhApiTelephony.Line().Click2Call().User().Lexi().get({
+        return OvhApiTelephony.Line().Click2Call().User().v6().get({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName,
             id: self.id
@@ -67,7 +67,7 @@ angular.module("managerApp").factory("TelephonyGroupLineClick2CallUser", functio
     TelephonyGroupLineClick2CallUser.prototype.call = function (calledNumber) {
         var self = this;
 
-        return OvhApiTelephony.Line().Click2Call().User().Lexi().click2Call({
+        return OvhApiTelephony.Line().Click2Call().User().v6().click2Call({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName
         }, {
@@ -90,7 +90,7 @@ angular.module("managerApp").factory("TelephonyGroupLineClick2CallUser", functio
             };
         }
 
-        return OvhApiTelephony.Line().Click2Call().User().Lexi().post({
+        return OvhApiTelephony.Line().Click2Call().User().v6().post({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName
         }, userOptions
@@ -112,7 +112,7 @@ angular.module("managerApp").factory("TelephonyGroupLineClick2CallUser", functio
             };
         }
 
-        return OvhApiTelephony.Line().Click2Call().User().Lexi().delete({
+        return OvhApiTelephony.Line().Click2Call().User().v6().delete({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName,
             id: userOptions.id
@@ -127,7 +127,7 @@ angular.module("managerApp").factory("TelephonyGroupLineClick2CallUser", functio
     TelephonyGroupLineClick2CallUser.prototype.changePassword = function (password) {
         var self = this;
 
-        return OvhApiTelephony.Line().Click2Call().User().Lexi().changePassword({
+        return OvhApiTelephony.Line().Click2Call().User().v6().changePassword({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName,
             id: self.id

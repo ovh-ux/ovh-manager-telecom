@@ -30,19 +30,19 @@ angular.module("managerApp").component("telecomTelephonyAssociateDevice", {
         };
 
         self.fetchAssociablesPhones = function () {
-            return OvhApiTelephony.Line().Lexi().listAssociablePhones({
+            return OvhApiTelephony.Line().v6().listAssociablePhones({
                 billingAccount: self.billingAccount,
                 serviceName: self.serviceName
             }).$promise.then(function (phones) {
                 return $q.all(_.map(phones, function (phone) {
                     var line = _.first(phone.associatedLines).serviceName;
-                    return OvhApiTelephony.Line().Phone().Lexi().get({
+                    return OvhApiTelephony.Line().Phone().v6().get({
                         billingAccount: self.billingAccount,
                         serviceName: line
                     }).$promise.then(function (details) {
                         return _.assign(phone, details);
                     }).then(function (thePhone) {
-                        return OvhApiTelephony.Line().Lexi().ips({
+                        return OvhApiTelephony.Line().v6().ips({
                             billingAccount: self.billingAccount,
                             serviceName: line
                         }).$promise.then(function (ips) {
@@ -62,7 +62,7 @@ angular.module("managerApp").component("telecomTelephonyAssociateDevice", {
 
         self.attachDevice = function () {
             self.isAttaching = true;
-            return OvhApiTelephony.Line().Lexi().associateDevice({
+            return OvhApiTelephony.Line().v6().associateDevice({
                 billingAccount: self.billingAccount,
                 serviceName: self.serviceName
             }, {
@@ -72,7 +72,7 @@ angular.module("managerApp").component("telecomTelephonyAssociateDevice", {
                 self.attachSuccess = true;
 
                 // Refresh cache and state
-                OvhApiTelephony.Line().Lexi().resetAllCache();
+                OvhApiTelephony.Line().v6().resetAllCache();
                 TelephonyMediator.resetAllCache();
                 $state.reload();
             }).catch(function (err) {

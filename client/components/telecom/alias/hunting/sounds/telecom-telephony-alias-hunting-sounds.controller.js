@@ -35,12 +35,12 @@ angular.module("managerApp").controller("TelecomTelephonyAliasHuntingSoundsCtrl"
         self.isUploading = true;
 
         // first, upload document to get a file url
-        return OvhApiMe.Document().Lexi().upload(
+        return OvhApiMe.Document().v6().upload(
             name,
             self.toUpload
         ).then(function (doc) {
             // second upload the file with given url
-            return self.apiEndpoint.Lexi().soundUpload({
+            return self.apiEndpoint.v6().soundUpload({
                 billingAccount: $stateParams.billingAccount,
                 serviceName: $stateParams.serviceName
             }, {
@@ -85,7 +85,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasHuntingSoundsCtrl"
         sound.isDeleting = true;
         return $q.all([
             $timeout(angular.noop, 500),
-            self.apiEndpoint.Sound().Lexi().remove({
+            self.apiEndpoint.Sound().v6().remove({
                 billingAccount: $stateParams.billingAccount,
                 serviceName: $stateParams.serviceName,
                 soundId: sound.soundId

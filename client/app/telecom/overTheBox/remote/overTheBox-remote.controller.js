@@ -153,7 +153,7 @@ angular.module("managerApp").controller("OverTheBoxRemoteCtrl", function ($state
      */
     this.authorize = function (remote) {
         remote.busy = true;
-        return OvhApiOverTheBox.Lexi().authorizeRemote(
+        return OvhApiOverTheBox.v6().authorizeRemote(
             {
                 serviceName: $stateParams.serviceName,
                 remoteAccessId: remote.remoteAccessId
@@ -174,7 +174,7 @@ angular.module("managerApp").controller("OverTheBoxRemoteCtrl", function ($state
      */
     this.reloadRemote = function (remote) {
         remote.busy = true;
-        return OvhApiOverTheBox.Lexi().loadRemote({
+        return OvhApiOverTheBox.v6().loadRemote({
             serviceName: $stateParams.serviceName,
             remoteAccessId: remote.remoteAccessId
         }, null).$promise.then(function (reloadedRemote) {
@@ -197,7 +197,7 @@ angular.module("managerApp").controller("OverTheBoxRemoteCtrl", function ($state
      */
     this.remove = function (remote) {
         remote.busy = true;
-        return OvhApiOverTheBox.Lexi().deleteRemote({
+        return OvhApiOverTheBox.v6().deleteRemote({
             serviceName: $stateParams.serviceName,
             remoteAccessId: remote.remoteAccessId
         }, null).$promise.then(function () {

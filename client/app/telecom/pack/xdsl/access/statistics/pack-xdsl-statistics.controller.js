@@ -57,7 +57,7 @@ angular.module("managerApp").controller("XdslStatisticsCtrl", function ($q, $sco
      * @return {Promise} Promise that is always resolved
      */
     var getLinesStatistics = function (type, period) {
-        return OvhApiXdsl.Lines().Lexi().getStatistics({
+        return OvhApiXdsl.Lines().v6().getStatistics({
             xdslId: $stateParams.serviceName,
             period: period,
             number: $stateParams.number,
@@ -87,7 +87,7 @@ angular.module("managerApp").controller("XdslStatisticsCtrl", function ($q, $sco
      * @return {Promise} Promise that is always resolved
      */
     var getAccessStatistics = function (type, period) {
-        return OvhApiXdsl.Lexi().statistics({
+        return OvhApiXdsl.v6().statistics({
             xdslId: $stateParams.serviceName,
             period: period,
             type: type

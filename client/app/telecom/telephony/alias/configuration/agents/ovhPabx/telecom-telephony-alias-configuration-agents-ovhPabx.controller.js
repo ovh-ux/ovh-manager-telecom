@@ -26,7 +26,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationAgent
 
     self.fetchAgentsIds = function () {
         self.agents.isLoading = true;
-        return OvhApiTelephony.OvhPabx().Hunting().Agent().Lexi().query({
+        return OvhApiTelephony.OvhPabx().Hunting().Agent().v6().query({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }).$promise.finally(function () {
@@ -35,7 +35,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationAgent
     };
 
     self.fetchAgent = function (id) {
-        return OvhApiTelephony.OvhPabx().Hunting().Agent().Lexi().get({
+        return OvhApiTelephony.OvhPabx().Hunting().Agent().v6().get({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName,
             agentId: id
@@ -49,7 +49,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationAgent
     self.deleteAgents = function () {
         self.agents.isDeleting = true;
         return $q.all(self.getSelectedAgentIds().map(function (id) {
-            return OvhApiTelephony.OvhPabx().Hunting().Agent().Lexi().remove({
+            return OvhApiTelephony.OvhPabx().Hunting().Agent().v6().remove({
                 billingAccount: $stateParams.billingAccount,
                 serviceName: $stateParams.serviceName,
                 agentId: id
@@ -81,7 +81,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationAgent
 
     self.updateAgent = function (agent) {
         agent.isUpdating = true;
-        return OvhApiTelephony.OvhPabx().Hunting().Agent().Lexi().change({
+        return OvhApiTelephony.OvhPabx().Hunting().Agent().v6().change({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName,
             agentId: agent.agentId
@@ -123,7 +123,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationAgent
                 if (!number || !number.length) {
                     return $q.when(null);
                 }
-                return OvhApiTelephony.OvhPabx().Hunting().Agent().Lexi().create({
+                return OvhApiTelephony.OvhPabx().Hunting().Agent().v6().create({
                     billingAccount: $stateParams.billingAccount,
                     serviceName: $stateParams.serviceName
                 }, {

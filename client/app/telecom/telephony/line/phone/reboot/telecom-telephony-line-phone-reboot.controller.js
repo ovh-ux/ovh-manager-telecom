@@ -19,7 +19,7 @@ angular.module("managerApp").controller("TelecomTelephonyLinePhoneRebootCtrl", f
 
     self.reboot = function () {
         self.isRebooting = true;
-        OvhApiTelephony.Line().Phone().Lexi().reboot({
+        OvhApiTelephony.Line().Phone().v6().reboot({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }, {}).$promise.then(function () {

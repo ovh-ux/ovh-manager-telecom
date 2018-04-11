@@ -119,7 +119,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberSvi", function ($q, Ov
     TelephonyGroupNumberSvi.prototype.save = function () {
         var self = this;
 
-        return OvhApiTelephony.Vxml().Lexi().save({
+        return OvhApiTelephony.Vxml().v6().save({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName
         }, {
@@ -133,7 +133,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberSvi", function ($q, Ov
     TelephonyGroupNumberSvi.prototype.getSettings = function () {
         var self = this;
 
-        return OvhApiTelephony.Vxml().Lexi().settings({
+        return OvhApiTelephony.Vxml().v6().settings({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName
         }).$promise.then(function (settings) {
@@ -158,7 +158,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberSvi", function ($q, Ov
     TelephonyGroupNumberSvi.prototype.init = function () {
         var self = this;
 
-        return OvhApiTelephony.Vxml().Lexi().get({
+        return OvhApiTelephony.Vxml().v6().get({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName
         }).$promise.then(function () {

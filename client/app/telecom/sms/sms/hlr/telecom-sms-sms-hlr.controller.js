@@ -5,7 +5,7 @@ angular.module("managerApp").controller("TelecomSmsSmsHlrCtrl", class TelecomSms
         this.$translate = $translate;
         this.api = {
             sms: {
-                hlr: OvhApiSms.Hlr().Lexi()
+                hlr: OvhApiSms.Hlr().v6()
             }
         };
         this.SmsMediator = SmsMediator;

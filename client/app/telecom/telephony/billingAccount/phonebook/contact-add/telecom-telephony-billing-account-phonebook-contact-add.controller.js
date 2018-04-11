@@ -35,7 +35,7 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountPhonebook
     self.add = function () {
         self.phonecontactForm.isAdding = true;
         return $q.all([
-            OvhApiTelephony.Phonebook().PhonebookContact().Lexi().create({
+            OvhApiTelephony.Phonebook().PhonebookContact().v6().create({
                 billingAccount: $stateParams.billingAccount,
                 bookKey: self.phonebook.bookKey
             }, Phonebookcontact.getContactData(self.phonecontactForm)).$promise,

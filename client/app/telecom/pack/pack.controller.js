@@ -22,7 +22,7 @@ angular.module("managerApp")
 
             // get all Services
             promises.push(
-                OvhApiPackXdsl.Lexi().getServices(
+                OvhApiPackXdsl.v6().getServices(
                     {
                         packId: packId
                     }
@@ -50,7 +50,7 @@ angular.module("managerApp")
             );
 
             // Append task frame if tasks are pending
-            promises.push(OvhApiPackXdsl.Tasks().Lexi().query(
+            promises.push(OvhApiPackXdsl.Tasks().v6().query(
                 {
                     packName: packId
                 }).$promise.then(
@@ -63,7 +63,7 @@ angular.module("managerApp")
             ));
 
             // Check for a promotion code
-            promises.push(OvhApiPackXdsl.PromotionCode().Lexi().capabilities(
+            promises.push(OvhApiPackXdsl.PromotionCode().v6().capabilities(
                 {
                     packId: $stateParams.packName
                 }).$promise.then(function (capabilities) {
@@ -143,7 +143,7 @@ angular.module("managerApp")
         self.packDescriptionSave = function (newPackDescr) {
             self.loader.save = true;
 
-            return OvhApiPackXdsl.Lexi().put({
+            return OvhApiPackXdsl.v6().put({
                 packId: $stateParams.packName
             }, {
                 description: newPackDescr

@@ -6,7 +6,7 @@ angular.module("managerApp").controller("TelecomSmsUsersRemoveCtrl", class Telec
         this.$uibModalInstance = $uibModalInstance;
         this.api = {
             sms: {
-                users: OvhApiSms.Users().Lexi()
+                users: OvhApiSms.Users().v6()
             }
         };
         this.user = user;

@@ -4,16 +4,16 @@ angular.module("managerApp").controller("TelecomTelephonyLineRestrictionsCtrl", 
     var self = this;
 
     function fetchLineOptions () {
-        return OvhApiTelephony.Line().Lexi().getOptions({
+        return OvhApiTelephony.Line().v6().getOptions({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }).$promise;
     }
 
     function fetchAccountRestrictions () {
-        return OvhApiMe.Telephony().DefaultIpRestriction().Lexi().query().$promise.then(function (ids) {
+        return OvhApiMe.Telephony().DefaultIpRestriction().v6().query().$promise.then(function (ids) {
             return $q.all(ids.map(function (id) {
-                return OvhApiMe.Telephony().DefaultIpRestriction().Lexi().get({
+                return OvhApiMe.Telephony().DefaultIpRestriction().v6().get({
                     id: id
                 }).$promise;
             }));
@@ -85,7 +85,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineRestrictionsCtrl", 
         var options = angular.copy(self.lineOptions);
         options.ipRestrictions = self.lineOptionsForm.ipRestrictions;
         self.isChangingLineOptions = true;
-        return OvhApiTelephony.Line().Lexi().setOptions({
+        return OvhApiTelephony.Line().v6().setOptions({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }, options).$promise.then(function () {
@@ -123,13 +123,13 @@ angular.module("managerApp").controller("TelecomTelephonyLineRestrictionsCtrl", 
             return ip.id && !_.find(self.accountRestrictionsForm, { id: ip.id });
         });
         var deletePromise = _.pluck(changes.concat(toDelete), "id").map(function (id) {
-            return OvhApiMe.Telephony().DefaultIpRestriction().Lexi().remove({
+            return OvhApiMe.Telephony().DefaultIpRestriction().v6().remove({
                 id: id
             }).$promise;
         });
         var addPromise = _.pluck(changes.concat(toAdd), "subnet").map(function (ip) {
             var subnet = ("" || ip).indexOf("/") >= 0 ? ip : ip + "/32";
-            return OvhApiMe.Telephony().DefaultIpRestriction().Lexi().create({
+            return OvhApiMe.Telephony().DefaultIpRestriction().v6().create({
                 subnet: subnet,
                 type: "sip"
             }).$promise;
@@ -208,7 +208,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineRestrictionsCtrl", 
         self.applyLineChanges();
 
         // reset initial values to be able to modify again the options
-        OvhApiTelephony.Line().Lexi().resetAllCache();
+        OvhApiTelephony.Line().v6().resetAllCache();
         init();
     };
 

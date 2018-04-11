@@ -73,7 +73,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineManagementCtrl", fu
     }
 
     function getTasks () {
-        return OvhApiTelephony.Service().OfferTask().Lexi().query({
+        return OvhApiTelephony.Service().OfferTask().v6().query({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName,
             action: "termination",
@@ -103,7 +103,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineManagementCtrl", fu
                 getOffers().then(function (offers) {
                     offerCount = offers.length;
                 }),
-                OvhApiTelephony.Line().Lexi().canChangePassword(
+                OvhApiTelephony.Line().v6().canChangePassword(
                     {
                         billingAccount: $stateParams.billingAccount,
                         serviceName: $stateParams.serviceName

@@ -32,7 +32,7 @@ angular.module("managerApp").service("voipService", class {
      *  @return {Promise} That return an Array of VoipService instances.
      */
     fetchAll (withError = true) {
-        return this.OvhApiTelephony.Service().Erika().query().aggregate("billingAccount").expand().execute().$promise.then((result) =>
+        return this.OvhApiTelephony.Service().v7().query().aggregate("billingAccount").expand().execute().$promise.then((result) =>
             _.chain(result).filter((res) =>
 
                 // bug on APIv7 ? Sometimes res.error is null but res.value.message contains the error message...
@@ -72,7 +72,7 @@ angular.module("managerApp").service("voipService", class {
      *  @return {Promise}   That returns a VoipService instance representing the fetched service.
      */
     fetchSingleService (billingAccount, serviceName) {
-        return this.OvhApiTelephony.Service().Lexi().get({
+        return this.OvhApiTelephony.Service().v6().get({
             billingAccount,
             serviceName
         }).$promise.then((result) => {
@@ -102,7 +102,7 @@ angular.module("managerApp").service("voipService", class {
      *  @return {Promise}   That returns an Array of {@link https://eu.api.ovh.com/console/#/telephony/%7BbillingAccount%7D/service/%7BserviceName%7D/diagnosticReports#GET `telephony.DiagnosticReport`} objects.
      */
     fetchDiagnosticReports (billingAccount, serviceName, dayInterval) {
-        return this.OvhApiTelephony.Service().Lexi().diagnosticReports({
+        return this.OvhApiTelephony.Service().v6().diagnosticReports({
             billingAccount,
             serviceName,
             dayInterval

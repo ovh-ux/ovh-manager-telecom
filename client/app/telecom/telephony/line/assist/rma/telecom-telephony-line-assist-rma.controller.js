@@ -13,14 +13,14 @@ angular.module("managerApp").controller("TelecomTelephonyLineAssistRmaCtrl", fun
     }
 
     self.fetchPhone = function () {
-        return OvhApiTelephony.Line().Phone().Lexi().get({
+        return OvhApiTelephony.Line().Phone().v6().get({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }).$promise;
     };
 
     self.fetchRma = function () {
-        return OvhApiTelephony.Line().Phone().RMA().Lexi().query({
+        return OvhApiTelephony.Line().Phone().RMA().v6().query({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }).$promise.catch(function (err) {
@@ -31,7 +31,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineAssistRmaCtrl", fun
 
         }).then(function (rmaIds) {
             return $q.all(rmaIds.map(function (id) {
-                return OvhApiTelephony.Line().Phone().RMA().Lexi().get({
+                return OvhApiTelephony.Line().Phone().RMA().v6().get({
                     billingAccount: $stateParams.billingAccount,
                     serviceName: $stateParams.serviceName,
                     id: id
@@ -42,7 +42,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineAssistRmaCtrl", fun
 
     self.cancelRma = function (rma) {
         rma.isCancelling = true;
-        return OvhApiTelephony.Line().Phone().RMA().Lexi().cancel({
+        return OvhApiTelephony.Line().Phone().RMA().v6().cancel({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName,
             id: rma.id

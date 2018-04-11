@@ -6,7 +6,7 @@ angular.module("managerApp").controller("TelecomSmsSmsPendingRemoveCtrl", class 
         this.$uibModalInstance = $uibModalInstance;
         this.api = {
             sms: {
-                jobs: OvhApiSms.Jobs().Lexi()
+                jobs: OvhApiSms.Jobs().v6()
             }
         };
         this.pendingSms = pendingSms;

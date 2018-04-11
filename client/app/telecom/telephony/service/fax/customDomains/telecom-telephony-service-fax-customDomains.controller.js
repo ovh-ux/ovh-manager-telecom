@@ -8,13 +8,13 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxCustomDomains
     =============================== */
 
     function fetchDomains () {
-        return OvhApiDomain.Erika().query().execute().$promise;
+        return OvhApiDomain.v7().query().execute().$promise;
     }
 
     function fetchCustomDomains () {
-        return OvhApiMe.Fax().CustomDomains().Lexi().query().$promise.then(function (customDomainsIds) {
+        return OvhApiMe.Fax().CustomDomains().v6().query().$promise.then(function (customDomainsIds) {
             return $q.all(_.map(customDomainsIds, function (id) {
-                return OvhApiMe.Fax().CustomDomains().Lexi().get({
+                return OvhApiMe.Fax().CustomDomains().v6().get({
                     id: id
                 }).$promise;
             }));
@@ -39,7 +39,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxCustomDomains
 
     self.addCustomDomains = function (form) {
         self.addCustomDomainsForm.isAdding = true;
-        return OvhApiMe.Fax().CustomDomains().Lexi().create(
+        return OvhApiMe.Fax().CustomDomains().v6().create(
             {}, _.pick(self.addCustomDomainsForm, "domain")
         ).$promise.then(function () {
             form.$setPristine();
@@ -61,7 +61,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxCustomDomains
     self.removeCustomDomains = function (domain) {
         domain.isDeleting = true;
         return $q.all([
-            OvhApiMe.Fax().CustomDomains().Lexi().remove({
+            OvhApiMe.Fax().CustomDomains().v6().remove({
                 id: _.get(domain, "id")
             }).$promise,
             $timeout(angular.noop, 500)

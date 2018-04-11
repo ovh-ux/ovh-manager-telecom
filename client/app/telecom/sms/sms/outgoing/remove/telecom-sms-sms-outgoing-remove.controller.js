@@ -6,7 +6,7 @@ angular.module("managerApp").controller("TelecomSmsSmsOutgoingRemoveCtrl", class
         this.$uibModalInstance = $uibModalInstance;
         this.api = {
             sms: {
-                outgoing: OvhApiSms.Outgoing().Lexi()
+                outgoing: OvhApiSms.Outgoing().v6()
             }
         };
         this.outgoingSms = outgoingSms;

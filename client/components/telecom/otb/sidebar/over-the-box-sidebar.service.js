@@ -12,9 +12,9 @@ angular.module("managerApp").service("OverTheBoxSidebar", function ($q, $transla
     self.loadOtbMainSection = function () {
         var requests = [];
 
-        return OvhApiOverTheBox.Lexi().query().$promise.then(function (serviceNames) {
+        return OvhApiOverTheBox.v6().query().$promise.then(function (serviceNames) {
             requests = _.map(serviceNames, function (serviceName) {
-                return OvhApiOverTheBox.Lexi().get({
+                return OvhApiOverTheBox.v6().get({
                     serviceName: serviceName
                 }).$promise;
             });

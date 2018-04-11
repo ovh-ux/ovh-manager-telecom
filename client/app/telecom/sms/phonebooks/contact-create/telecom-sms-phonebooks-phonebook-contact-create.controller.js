@@ -8,7 +8,7 @@ angular.module("managerApp").controller("TelecomSmsPhonebooksPhonebookContactCre
         this.Phonebookcontact = Phonebookcontact;
         this.api = {
             sms: {
-                phonebookContact: OvhApiSms.Phonebooks().PhonebookContact().Lexi()
+                phonebookContact: OvhApiSms.Phonebooks().PhonebookContact().v6()
             }
         };
         this.TelephonyMediator = TelephonyMediator;

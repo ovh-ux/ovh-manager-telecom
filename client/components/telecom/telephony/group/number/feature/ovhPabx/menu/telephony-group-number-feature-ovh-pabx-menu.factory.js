@@ -73,7 +73,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberOvhPabxMenu", function
 
         self.status = "IN_CREATION";
 
-        return OvhApiTelephony.OvhPabx().Menu().Lexi().create({
+        return OvhApiTelephony.OvhPabx().Menu().v6().create({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName
         }, {
@@ -97,7 +97,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberOvhPabxMenu", function
 
         self.status = "SAVING";
 
-        return OvhApiTelephony.OvhPabx().Menu().Lexi().save({
+        return OvhApiTelephony.OvhPabx().Menu().v6().save({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName,
             menuId: self.menuId
@@ -120,7 +120,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberOvhPabxMenu", function
 
         self.status = "DELETING";
 
-        return OvhApiTelephony.OvhPabx().Menu().Lexi().remove({
+        return OvhApiTelephony.OvhPabx().Menu().v6().remove({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName,
             menuId: self.menuId
@@ -135,13 +135,13 @@ angular.module("managerApp").factory("TelephonyGroupNumberOvhPabxMenu", function
     TelephonyGroupNumberOvhPabxMenu.prototype.getEntries = function () {
         var self = this;
 
-        return OvhApiTelephony.OvhPabx().Menu().Entry().Lexi().query({
+        return OvhApiTelephony.OvhPabx().Menu().Entry().v6().query({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName,
             menuId: self.menuId
         }).$promise.then(function (menuEntryIds) {
             return $q.all(_.map(_.chunk(menuEntryIds, 50), function (chunkIds) {
-                return OvhApiTelephony.OvhPabx().Menu().Entry().Lexi().getBatch({
+                return OvhApiTelephony.OvhPabx().Menu().Entry().v6().getBatch({
                     billingAccount: self.billingAccount,
                     serviceName: self.serviceName,
                     menuId: self.menuId,
