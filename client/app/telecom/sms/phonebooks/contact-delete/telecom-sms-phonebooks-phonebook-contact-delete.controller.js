@@ -8,7 +8,7 @@ angular.module("managerApp").controller("TelecomSmsPhonebooksPhonebookContactDel
         this.api = {
             sms: {
                 phonebooks: {
-                    phonebookContact: OvhApiSms.Phonebooks().PhonebookContact().Lexi()
+                    phonebookContact: OvhApiSms.Phonebooks().PhonebookContact().v6()
                 }
             }
         };

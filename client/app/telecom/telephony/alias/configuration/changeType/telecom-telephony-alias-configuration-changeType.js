@@ -3,7 +3,7 @@ angular.module("managerApp").config(function ($stateProvider) {
     $stateProvider.state("telecom.telephony.alias.configuration.changeType", {
         url: "/changeType",
         views: {
-            "@aliasView": {
+            "aliasView@telecom.telephony.alias": {
                 templateUrl: "app/telecom/telephony/alias/configuration/changeType/telecom-telephony-alias-configuration-changeType.html",
                 controller: "TelecomTelephonyAliasConfigurationChangeTypeCtrl",
                 controllerAs: "AliasConfigurationChangeTypeCtrl"

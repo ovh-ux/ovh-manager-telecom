@@ -36,7 +36,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasOrderSpecialCtrl",
     }
 
     function getTypologies (country) {
-        return OvhApiOrder.Lexi().schema().$promise.then(
+        return OvhApiOrder.v6().schema().$promise.then(
             function (schema) {
                 if (schema && schema.models["telephony.NumberSpecialTypologyEnum"] && schema.models["telephony.NumberSpecialTypologyEnum"].enum) {
                     var typologies = _.filter(schema.models["telephony.NumberSpecialTypologyEnum"].enum, function (elt) {
@@ -63,7 +63,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasOrderSpecialCtrl",
 
 
     function getRanges (country) {
-        return OvhApiTelephony.Number().Lexi().getRanges({
+        return OvhApiTelephony.Number().v6().getRanges({
             country: country
         }).$promise.then(
             function (ranges) {
@@ -156,7 +156,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasOrderSpecialCtrl",
         if (!form.pool) {
             form.specificNumber = this.form[this.form.numberType];
         }
-        OvhApiOrder.Telephony().Lexi().orderNumberSpecial(
+        OvhApiOrder.Telephony().v6().orderNumberSpecial(
             {
                 billingAccount: $stateParams.billingAccount
             },

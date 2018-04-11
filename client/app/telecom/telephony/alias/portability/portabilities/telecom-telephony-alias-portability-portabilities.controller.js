@@ -10,20 +10,20 @@ angular.module("managerApp").controller("TelecomTelephonyAliasPortabilitiesCtrl"
     self.serviceName = $stateParams.serviceName;
 
     function fetchPortability () {
-        return OvhApiTelephony.Portability().Lexi().query({
+        return OvhApiTelephony.Portability().v6().query({
             billingAccount: $stateParams.billingAccount
         }).$promise.then(function (ids) {
             return $q.all(_.map(ids, function (id) {
-                return OvhApiTelephony.Portability().Lexi().get({
+                return OvhApiTelephony.Portability().v6().get({
                     billingAccount: $stateParams.billingAccount,
                     id: id
                 }).$promise.then(function (porta) {
                     return $q.all({
-                        steps: OvhApiTelephony.Portability().Lexi().getStatus({
+                        steps: OvhApiTelephony.Portability().v6().getStatus({
                             billingAccount: $stateParams.billingAccount,
                             id: id
                         }).$promise,
-                        canBeCancelled: OvhApiTelephony.Portability().Lexi().canBeCancelled({
+                        canBeCancelled: OvhApiTelephony.Portability().v6().canBeCancelled({
                             billingAccount: $stateParams.billingAccount,
                             id: id
                         }).$promise
@@ -66,7 +66,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasPortabilitiesCtrl"
     self.confirmCancelPortability = function (portability) {
         self.loading.cancel = true;
 
-        return OvhApiTelephony.Portability().Lexi().cancel({
+        return OvhApiTelephony.Portability().v6().cancel({
             billingAccount: $stateParams.billingAccount,
             id: portability.id
         }, {}).$promise.then(function () {

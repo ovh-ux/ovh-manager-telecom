@@ -4,20 +4,20 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationCalls
     var self = this;
 
     self.fetchStatus = function () {
-        return OvhApiTelephony.Screen().Lexi().get({
+        return OvhApiTelephony.Screen().v6().get({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }).$promise;
     };
 
     self.fetchScreenLists = function () {
-        OvhApiTelephony.Screen().ScreenLists().Lexi().resetAllCache();
-        return OvhApiTelephony.Screen().ScreenLists().Lexi().query({
+        OvhApiTelephony.Screen().ScreenLists().v6().resetAllCache();
+        return OvhApiTelephony.Screen().ScreenLists().v6().query({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }).$promise.then(function (ids) {
             return $q.all(_.map(_.chunk(ids, 50), function (chunkIds) {
-                return OvhApiTelephony.Screen().ScreenLists().Lexi().getBatch({
+                return OvhApiTelephony.Screen().ScreenLists().v6().getBatch({
                     billingAccount: $stateParams.billingAccount,
                     serviceName: $stateParams.serviceName,
                     id: chunkIds
@@ -35,7 +35,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationCalls
     };
 
     self.removeScreenList = function (screen) {
-        return OvhApiTelephony.Screen().ScreenLists().Lexi().remove({
+        return OvhApiTelephony.Screen().ScreenLists().v6().remove({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName,
             id: screen.id
@@ -43,7 +43,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationCalls
     };
 
     self.addScreenList = function (screen) {
-        return OvhApiTelephony.Screen().ScreenLists().Lexi().create({
+        return OvhApiTelephony.Screen().ScreenLists().v6().create({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }, {
@@ -59,7 +59,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationCalls
 
     self.updateScreen = function () {
         self.screenStatus.isLoading = true;
-        return OvhApiTelephony.Screen().Lexi().change({
+        return OvhApiTelephony.Screen().v6().change({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }, {

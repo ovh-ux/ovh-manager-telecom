@@ -34,7 +34,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineCallsCallWaitingCtr
 
         self.loading.save = true;
 
-        OvhApiTelephony.Line().Options().Lexi().update({
+        OvhApiTelephony.Line().Options().v6().update({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }, data).$promise.then(function () {
@@ -72,7 +72,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineCallsCallWaitingCtr
                 return phone;
             });
         }).then(function () {
-            return OvhApiTelephony.Line().Options().Lexi().get({
+            return OvhApiTelephony.Line().Options().v6().get({
                 billingAccount: $stateParams.billingAccount,
                 serviceName: $stateParams.serviceName
             }).$promise;

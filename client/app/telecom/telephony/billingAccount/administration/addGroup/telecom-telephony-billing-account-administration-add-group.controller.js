@@ -7,7 +7,7 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountAdministr
         self.loading = true;
         self.contractsAccepted = false;
         self.order = null;
-        OvhApiOrderTelephony.Lexi().getNewBillingAccount().$promise.then(function (result) {
+        OvhApiOrderTelephony.v6().getNewBillingAccount().$promise.then(function (result) {
             self.contracts = result.contracts;
             self.prices = result.prices;
         }, function (err) {
@@ -27,7 +27,7 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountAdministr
 
     self.orderGroup = function () {
         self.ordering = true;
-        return OvhApiOrderTelephony.Lexi().orderNewBillingAccount().$promise.then(function (order) {
+        return OvhApiOrderTelephony.v6().orderNewBillingAccount().$promise.then(function (order) {
             self.order = order;
         }, function (err) {
             return new ToastError(err);

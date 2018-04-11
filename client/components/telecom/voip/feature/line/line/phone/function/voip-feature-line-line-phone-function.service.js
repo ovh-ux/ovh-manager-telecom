@@ -25,7 +25,7 @@ angular.module("managerApp").service("voipLinePhoneFunction", class {
      * @return {Promise}  That return an array of VoipLinePhoneFunction instances.
      */
     fetchAll () {
-        return this.OvhApiTelephony.Line().Phone().FunctionKey().Erika().query().aggregate("billingAccount").aggregate("serviceName").aggregate("keyNum").expand().execute().$promise.then((phoneResults) =>
+        return this.OvhApiTelephony.Line().Phone().FunctionKey().v7().query().aggregate("billingAccount").aggregate("serviceName").aggregate("keyNum").expand().execute().$promise.then((phoneResults) =>
             phoneResults.map((phone) => {
                 let splittedPath = phone.path.split("/");
 

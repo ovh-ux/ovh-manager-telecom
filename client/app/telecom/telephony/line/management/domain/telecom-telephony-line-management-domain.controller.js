@@ -81,7 +81,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineDomainCtrl", functi
         _.chain(self.availableSipDomains.client).filter(function (domain) {
             return !_.isEqual(domain.prevValue, domain.currentDomain);
         }).each(function (domain) {
-            tmpPromise = OvhApiTelephony.Lexi().setDefaultSipDomain({}, {
+            tmpPromise = OvhApiTelephony.v6().setDefaultSipDomain({}, {
                 country: domain.country,
                 domain: domain.currentDomain,
                 type: "sip"
@@ -173,7 +173,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineDomainCtrl", functi
             return $q.all({
                 options: self.line.getOptions(),
                 lineDomains: self.line.getAvailableSipDomains(),
-                clientDomains: OvhApiTelephony.Lexi().availableDefaultSipDomains({
+                clientDomains: OvhApiTelephony.v6().availableDefaultSipDomains({
                     type: "sip"
                 }).$promise
             }).then(function (responses) {

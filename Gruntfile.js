@@ -15,8 +15,6 @@ module.exports = function (grunt) {
         ngtemplates: "grunt-angular-templates",
         protractor: "grunt-protractor-runner",
         ngconstant: "grunt-ng-constant",
-        "bump-only": "grunt-bump",
-        "bump-commit": "grunt-bump",
         postcss: "grunt-postcss"
     });
 
@@ -67,16 +65,6 @@ module.exports = function (grunt) {
                 options: {
                     script: "<%= yeoman.dist %>/<%= yeoman.server %>/app.js"
                 }
-            }
-        },
-
-        //#######################################################################################
-        //##      TASK: open                                                                   ##
-        //##            Open browser when developping                                          ##
-        //#######################################################################################
-        open: {
-            server: {
-                url: "https://localhost:<%= express.options.port %>"
             }
         },
 
@@ -622,11 +610,11 @@ module.exports = function (grunt) {
         less: {
             options: {
                 paths: [
-                    "node_modules",
                     "<%= yeoman.client %>/bower_components",
                     "<%= yeoman.client %>/app",
                     "<%= yeoman.client %>/components",
-                    "<%= yeoman.client %>/assets/styles"
+                    "<%= yeoman.client %>/assets/styles",
+                    "node_modules"
                 ],
                 plugins: [
                     require("less-plugin-remcalc")
@@ -823,19 +811,6 @@ module.exports = function (grunt) {
         },
 
         //#######################################################################################
-        //##      TASK: bump                                                                   ##
-        //##            Bump version                                                           ##
-        //#######################################################################################
-        bump: {
-            options: {
-                pushTo: "origin",
-                files: ["package.json", "bower.json"],
-                updateConfigs: ["pkg"],
-                commitFiles: ["-a"]
-            }
-        },
-
-        //#######################################################################################
         //##      TASK: ngconstant                                                             ##
         //##            Dynamically generate angular constants                                 ##
         //#######################################################################################
@@ -907,7 +882,6 @@ module.exports = function (grunt) {
                 "env:prod",
                 "express:prod",
                 "wait",
-                "open",
                 "express-keepalive"
             ]);
         }
@@ -929,7 +903,6 @@ module.exports = function (grunt) {
             "copy:dev",
             "express:dev",
             "wait",
-            "open",
             "watch"
         ]);
     });
@@ -1006,22 +979,6 @@ module.exports = function (grunt) {
         default:
             grunt.verbose.or.write("You try to build in a weird mode [" + mode + "]").error();
             grunt.fail.warn("Please try with --mode=dev|prod");
-        }
-    });
-
-    /*
-     * --type=patch
-     * --type=minor
-     * --type=major
-     */
-    grunt.registerTask("release", "Release", function () {
-        var type = grunt.option("type");
-        mode = "prod";
-        if (type === "patch" || type === "minor" || type === "major") {
-            grunt.task.run(["bump-only:" + type, "bump-commit"]);
-        } else {
-            grunt.verbose.or.write("You try to release in a weird version type [" + type + "]").error();
-            grunt.fail.warn("Please try with --type=patch|minor|major");
         }
     });
 };

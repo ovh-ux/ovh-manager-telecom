@@ -4,7 +4,7 @@ angular.module("managerApp").config(function ($stateProvider) {
         url: "/overTheBox/:serviceName",
         "abstract": true,
         views: {
-            telecomView: {
+            "telecomView@telecom": {
                 templateUrl: "app/telecom/overTheBox/overTheBox.html",
                 controller: "OverTheBoxCtrl",
                 controllerAs: "OverTheBox"
@@ -18,7 +18,7 @@ angular.module("managerApp").config(function ($stateProvider) {
         ],
         resolve: {
             $title: function (translations, $translate, $stateParams, OvhApiOverTheBox) {
-                return OvhApiOverTheBox.Lexi().get({
+                return OvhApiOverTheBox.v6().get({
                     serviceName: $stateParams.serviceName
                 }).$promise.then(function (data) {
                     return $translate.instant("overTheBox_page_title", { name: data.customerDescription || $stateParams.serviceName }, null, null, "escape");

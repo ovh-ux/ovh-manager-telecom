@@ -4,7 +4,7 @@ angular.module("managerApp").config(function ($stateProvider) {
     $stateProvider.state("telecom.telephony.line.tones", {
         url: "/tones",
         views: {
-            lineInnerView: {
+            "lineInnerView@telecom.telephony.line": {
                 templateUrl: "app/telecom/telephony/line/tones/telecom-telephony-line-tones.html",
                 controller: "TelecomTelephonyLineTonesCtrl",
                 controllerAs: "LineTonesCtrl"

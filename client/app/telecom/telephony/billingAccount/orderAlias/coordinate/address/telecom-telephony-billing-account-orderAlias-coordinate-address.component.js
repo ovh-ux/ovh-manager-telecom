@@ -17,7 +17,7 @@ angular.module("managerApp").component("telecomTelephonyBillingAccountOrderAlias
 
         this.getValidator = function () {
             if (this.regionCode) {
-                OvhApiNewAccount.CreationRules().Lexi().get({
+                OvhApiNewAccount.CreationRules().v6().get({
                     country: this.regionCode === "uk" ? "GB" : this.regionCode.toUpperCase(),
                     legalform: "corporation",
                     ovhCompany: "ovh",

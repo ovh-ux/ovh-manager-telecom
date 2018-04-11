@@ -1,5 +1,5 @@
 /* global setTimeout */
-angular.module("managerApp").controller("PackXdslCtrl", function ($q, $scope, $state, $translate, $stateParams, OvhApiPackXdsl, OvhApiXdsl, OvhApiXdslModem, Toast, smoothScroll, ToastError, SidebarMenu) {
+angular.module("managerApp").controller("PackXdslCtrl", function ($q, $transitions, $state, $translate, $stateParams, OvhApiPackXdsl, OvhApiXdsl, OvhApiXdslModem, Toast, smoothScroll, ToastError, SidebarMenu) {
     "use strict";
 
     var animTime = 1500;
@@ -21,7 +21,7 @@ angular.module("managerApp").controller("PackXdslCtrl", function ($q, $scope, $s
     }
 
     function getXdsl () {
-        return OvhApiXdsl.Lexi().get({
+        return OvhApiXdsl.v6().get({
             xdslId: $stateParams.serviceName
         }).$promise;
     }
@@ -37,7 +37,7 @@ angular.module("managerApp").controller("PackXdslCtrl", function ($q, $scope, $s
     };
 
     function enableModemIfHaveOne () {
-        return OvhApiXdslModem.Lexi().get({ xdslId: $stateParams.serviceName }).$promise.then(
+        return OvhApiXdslModem.v6().get({ xdslId: $stateParams.serviceName }).$promise.then(
             function () {
                 self.disabledModem = false;
             },
@@ -61,6 +61,7 @@ angular.module("managerApp").controller("PackXdslCtrl", function ($q, $scope, $s
         }
 
         smoothScroll(document.body);
+
         switch (state.name) {
         case "telecom.pack.xdsl.modem.wifi":
         case "telecom.pack.xdsl.modem.dmz":
@@ -94,9 +95,10 @@ angular.module("managerApp").controller("PackXdslCtrl", function ($q, $scope, $s
         }
     };
 
-    $scope.$on("$stateChangeSuccess", function (event, toState) {
-        self.updateUIForState(toState);
+    $transitions.onSuccess({}, function (transition) {
+        self.updateUIForState(transition.to());
     });
+    self.updateUIForState($state.current);
 
     /*= =============================
     =            ACTION            =
@@ -105,7 +107,7 @@ angular.module("managerApp").controller("PackXdslCtrl", function ($q, $scope, $s
     self.accessDescriptionSave = function (newAccessDescr) {
         self.loading.save = true;
 
-        return OvhApiXdsl.Lexi().put({
+        return OvhApiXdsl.v6().put({
             xdslId: $stateParams.serviceName
         }, {
             description: newAccessDescr

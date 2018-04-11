@@ -53,7 +53,7 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingCr
     self.submit = function () {
         self.loading.submit = true;
 
-        return OvhApiTelephony.Lexi().edit({
+        return OvhApiTelephony.v6().edit({
             billingAccount: $stateParams.billingAccount
         }, {
             creditThreshold: self.newCredit
@@ -70,19 +70,19 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingCr
     };
 
     self.getBillingAccount = function () {
-        return OvhApiTelephony.Lexi().get({
+        return OvhApiTelephony.v6().get({
             billingAccount: $stateParams.billingAccount
         }).$promise;
     };
 
     self.getAllowedCreditThreshold = function () {
-        return OvhApiTelephony.Lexi().allowedCreditThreshold({
+        return OvhApiTelephony.v6().allowedCreditThreshold({
             billingAccount: $stateParams.billingAccount
         }).$promise;
     };
 
     self.getContracts = function () {
-        return OvhApiOrderTelephony.Lexi().getNewBillingAccount().$promise;
+        return OvhApiOrderTelephony.v6().getNewBillingAccount().$promise;
     };
 
     init();

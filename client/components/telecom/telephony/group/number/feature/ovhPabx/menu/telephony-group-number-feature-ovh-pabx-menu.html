@@ -1,6 +1,6 @@
 <div class="telephony-number-ovh-pabx-menu">
 
-    <div data-ng-class="{ 'voip-plan__step': $ctrl.hasMenuEntryOrDialPlanExtension() }">
+    <div class="voip-plan__step">
         <!-- DISPLAY POSITION OR ENTRY DTMF -->
         <div class="voip-plan__step-icon"
              data-ng-if="$ctrl.hasMenuEntryOrDialPlanExtension()"
@@ -20,20 +20,20 @@
         </div> <!-- END OF DISPLAY POSITION OR ENTRY DTMF -->
 
         <!-- MENU DISPLAY -->
-        <div data-ng-class="{ 'voip-plan__step-content voip-plan__step-content--after-grip voip-plan__step-content--node': $ctrl.hasMenuEntryOrDialPlanExtension() }"
-            data-responsive-popover="$ctrl.popoverStatus.templateUrl"
-            data-popover-placement="auto right"
-            data-popover-trigger="none"
-            data-popover-is-open="$ctrl.popoverStatus.isOpen"
-            data-popover-class="pretty-popover telephony-number-feature-popover telephony-number-ovh-pabx-actions-popup"
-            data-hide-outside-click="$ctrl.onMenuOutsideClick()">
+        <div class="voip-plan__step-content voip-plan__step-content--after-grip voip-plan__step-content--node">
             <div class="voip-plan__step-icon voip-plan__step-icon--included"
                  data-jsplumb-endpoint
                  data-jsplumb-endpoint-uuid="{{ $ctrl.getEndpointUuid() }}">
                 <span class="ovh-font ovh-font-programmableKeys" aria-hidden="true"></span>
             </div>
             <!-- MENU NAME -->
-            <div class="voip-plan__step-description">
+            <div class="voip-plan__step-description"
+                 data-responsive-popover="$ctrl.popoverStatus.templateUrl"
+                 data-popover-placement="auto right"
+                 data-popover-trigger="none"
+                 data-popover-is-open="$ctrl.popoverStatus.isOpen"
+                 data-popover-class="pretty-popover telephony-number-feature-popover telephony-number-ovh-pabx-actions-popup"
+                 data-hide-outside-click="$ctrl.onMenuOutsideClick()">
                 <span class="voip-plan__step-name voip-plan__step-name--has-info"
                       data-ng-if="$ctrl.dialplanRule"
                       data-translate="telephony_number_feature_ovh_pabx_menu_entry_action_launch_menu">
@@ -51,7 +51,7 @@
                 </span>
             </div> <!-- END OF MENU NAME -->
             <!-- AVAILABLE MENU ACTIONS -->
-            <div class="voip-plan__step-btn-container"
+            <div class="voip-plan__step-btn-container ml-5"
                  data-uib-dropdown>
                 <button type="button"
                         class="voip-plan__step-btn voip-plan__step-btn--included"

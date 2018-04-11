@@ -4,10 +4,10 @@ angular.module("managerApp").config(function ($stateProvider) {
     $stateProvider.state("telecom.telephony.line", {
         url: "/line/:serviceName",
         views: {
-            "@telephonyView": {
+            "telephonyView@telecom.telephony": {
                 templateUrl: "app/telecom/telephony/line/telecom-telephony-line.html"
             },
-            "@lineView": {
+            "lineView@telecom.telephony.line": {
                 templateUrl: "app/telecom/telephony/line/telecom-telephony-line-main.view.html",
                 controller: "TelecomTelephonyLineCtrl",
                 controllerAs: "LineCtrl"
@@ -21,11 +21,11 @@ angular.module("managerApp").config(function ($stateProvider) {
         translations: ["common", "telecom/telephony/line"],
         resolve: {
             currentLine: function ($stateParams, OvhApiTelephony) {
-                return OvhApiTelephony.Line().Lexi().get({
+                return OvhApiTelephony.Line().v6().get({
                     billingAccount: $stateParams.billingAccount,
                     serviceName: $stateParams.serviceName
                 }).$promise.then(function (line) {
-                    return OvhApiTelephony.Line().Lexi().simultaneousChannelsDetails({
+                    return OvhApiTelephony.Line().v6().simultaneousChannelsDetails({
                         billingAccount: $stateParams.billingAccount,
                         serviceName: $stateParams.serviceName
                     }).$promise.then(function (details) {

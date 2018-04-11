@@ -92,11 +92,11 @@ angular.module("managerApp").factory("TelephonyGroupLine", function ($q, $filter
     };
 
     TelephonyGroupLine.prototype.getOffers = function (params) {
-        return OvhApiTelephony.Line().Offers().Lexi().query(params).$promise;
+        return OvhApiTelephony.Line().Offers().v6().query(params).$promise;
     };
 
     TelephonyGroupLine.prototype.getOfferPhones = function (params) {
-        return OvhApiTelephony.Line().Offers().Lexi().phones(params).$promise;
+        return OvhApiTelephony.Line().Offers().v6().phones(params).$promise;
     };
 
     TelephonyGroupLine.prototype.getOfferTypes = function () {
@@ -140,7 +140,7 @@ angular.module("managerApp").factory("TelephonyGroupLine", function ($q, $filter
     TelephonyGroupLine.prototype.save = function () {
         var self = this;
 
-        return OvhApiTelephony.Line().Lexi().edit({
+        return OvhApiTelephony.Line().v6().edit({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName
         }, {
@@ -153,7 +153,7 @@ angular.module("managerApp").factory("TelephonyGroupLine", function ($q, $filter
         var self = this;
 
         if (_.isUndefined(self.hasSupportsPhonebook)) {
-            return OvhApiTelephony.Line().Phone().Lexi().supportsPhonebook({
+            return OvhApiTelephony.Line().Phone().v6().supportsPhonebook({
                 billingAccount: self.billingAccount,
                 serviceName: self.serviceName
             }).$promise.then(function (support) {
@@ -171,7 +171,7 @@ angular.module("managerApp").factory("TelephonyGroupLine", function ($q, $filter
         var self = this;
 
         if (!self.phone && _.isUndefined(self.hasPhone)) {
-            return OvhApiTelephony.Line().Phone().Lexi().get({
+            return OvhApiTelephony.Line().Phone().v6().get({
                 billingAccount: self.billingAccount,
                 serviceName: self.serviceName
             }).$promise.then(function (phoneOpts) {
@@ -204,7 +204,7 @@ angular.module("managerApp").factory("TelephonyGroupLine", function ($q, $filter
     };
 
     TelephonyGroupLine.prototype.getAvailableTerminationReasons = function () {
-        return OvhApiTelephony.Line().Lexi().schema().$promise.then(function (schema) {
+        return OvhApiTelephony.Line().v6().schema().$promise.then(function (schema) {
             return schema;
         });
     };
@@ -212,12 +212,12 @@ angular.module("managerApp").factory("TelephonyGroupLine", function ($q, $filter
     TelephonyGroupLine.prototype.hasPendingOfferTasks = function () {
         var self = this;
 
-        return OvhApiTelephony.Service().OfferTask().Lexi().query({
+        return OvhApiTelephony.Service().OfferTask().v6().query({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName
         }).$promise.then(function (taskIds) {
             return $q.all(_.map(taskIds, function (id) {
-                return OvhApiTelephony.Service().OfferTask().Lexi().get({
+                return OvhApiTelephony.Service().OfferTask().v6().get({
                     billingAccount: self.billingAccount,
                     serviceName: self.serviceName,
                     taskId: id
@@ -233,14 +233,14 @@ angular.module("managerApp").factory("TelephonyGroupLine", function ($q, $filter
     TelephonyGroupLine.prototype.getTerminating = function () {
         var self = this;
 
-        return OvhApiTelephony.Service().OfferTask().Lexi().query({
+        return OvhApiTelephony.Service().OfferTask().v6().query({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName,
             action: "termination",
             status: "todo"
         }).$promise.then(function (tasks) {
             if (tasks[0]) {
-                return OvhApiTelephony.Service().OfferTask().Lexi().get({
+                return OvhApiTelephony.Service().OfferTask().v6().get({
                     billingAccount: self.billingAccount,
                     serviceName: self.serviceName,
                     action: "termination",
@@ -259,14 +259,14 @@ angular.module("managerApp").factory("TelephonyGroupLine", function ($q, $filter
     TelephonyGroupLine.prototype.getConvertionTask = function () {
         var self = this;
 
-        return OvhApiTelephony.Service().OfferTask().Lexi().query({
+        return OvhApiTelephony.Service().OfferTask().v6().query({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName,
             action: "convertToAlias",
             status: "todo"
         }).$promise.then(function (tasks) {
             if (tasks[0]) {
-                return OvhApiTelephony.Service().OfferTask().Lexi().get({
+                return OvhApiTelephony.Service().OfferTask().v6().get({
                     billingAccount: self.billingAccount,
                     serviceName: self.serviceName,
                     action: "convertToAlias",
@@ -288,7 +288,7 @@ angular.module("managerApp").factory("TelephonyGroupLine", function ($q, $filter
         if (options.details) {
             params.details = options.details;
         }
-        return OvhApiTelephony.Line().Lexi().terminate({
+        return OvhApiTelephony.Line().v6().terminate({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName
         }, params).$promise;
@@ -298,7 +298,7 @@ angular.module("managerApp").factory("TelephonyGroupLine", function ($q, $filter
     TelephonyGroupLine.prototype.cancelTermination = function () {
         var self = this;
 
-        return OvhApiTelephony.Line().Lexi().cancelTermination({
+        return OvhApiTelephony.Line().v6().cancelTermination({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName
         }).$promise;
@@ -307,7 +307,7 @@ angular.module("managerApp").factory("TelephonyGroupLine", function ($q, $filter
     TelephonyGroupLine.prototype.isIncludedInXdslPack = function () {
         var self = this;
 
-        return OvhApiPackXdslVoipLine.Erika().services().aggregate("packName").execute().$promise.then(function (lines) {
+        return OvhApiPackXdslVoipLine.v7().services().aggregate("packName").execute().$promise.then(function (lines) {
             return _.some(lines, { key: self.serviceName });
         });
     };
@@ -318,7 +318,7 @@ angular.module("managerApp").factory("TelephonyGroupLine", function ($q, $filter
         var self = this;
 
         if (!self.options) {
-            return OvhApiTelephony.Line().Options().Lexi().get({
+            return OvhApiTelephony.Line().Options().v6().get({
                 billingAccount: self.billingAccount,
                 serviceName: self.serviceName
             }).$promise.then(function (lineOptions) {
@@ -326,7 +326,7 @@ angular.module("managerApp").factory("TelephonyGroupLine", function ($q, $filter
 
                 // if no codecs options - get the default
                 if (self.options && !self.options.codecs) {
-                    return OvhApiTelephony.Line().Options().Lexi().defaultCodecs({
+                    return OvhApiTelephony.Line().Options().v6().defaultCodecs({
                         billingAccount: self.billingAccount,
                         serviceName: self.serviceName
                     }).$promise.then(function (defaultCodecs) {
@@ -348,7 +348,7 @@ angular.module("managerApp").factory("TelephonyGroupLine", function ($q, $filter
 
         lineOptions[optionName] = optionValue;
 
-        return OvhApiTelephony.Line().Options().Lexi().update({
+        return OvhApiTelephony.Line().Options().v6().update({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName
         }, lineOptions).$promise.then(function () {
@@ -361,7 +361,7 @@ angular.module("managerApp").factory("TelephonyGroupLine", function ($q, $filter
     TelephonyGroupLine.prototype.getAvailableCodecs = function () {
         var self = this;
 
-        return OvhApiTelephony.Line().Options().Lexi().availableCodecs({
+        return OvhApiTelephony.Line().Options().v6().availableCodecs({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName
         }).$promise.then(function (codecsList) {
@@ -392,7 +392,7 @@ angular.module("managerApp").factory("TelephonyGroupLine", function ($q, $filter
     TelephonyGroupLine.prototype.getIps = function () {
         var self = this;
 
-        return OvhApiTelephony.Line().Lexi().ips({
+        return OvhApiTelephony.Line().v6().ips({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName
         }).$promise.then(function (ips) {
@@ -406,7 +406,7 @@ angular.module("managerApp").factory("TelephonyGroupLine", function ($q, $filter
     TelephonyGroupLine.prototype.getLastRegistrations = function () {
         var self = this;
 
-        return OvhApiTelephony.Line().Lexi().lastRegistrations({
+        return OvhApiTelephony.Line().v6().lastRegistrations({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName
         }).$promise.then(function (lastRegistrations) {
@@ -425,7 +425,7 @@ angular.module("managerApp").factory("TelephonyGroupLine", function ($q, $filter
     TelephonyGroupLine.prototype.getCurrentOfferInformations = function () {
         var self = this;
 
-        return OvhApiTelephony.Line().Lexi().offer({
+        return OvhApiTelephony.Line().v6().offer({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName
         }).$promise.then(function (infos) {
@@ -445,7 +445,7 @@ angular.module("managerApp").factory("TelephonyGroupLine", function ($q, $filter
     TelephonyGroupLine.prototype.getAvailableOffers = function () {
         var self = this;
 
-        return OvhApiTelephony.Service().Lexi().offerChanges({
+        return OvhApiTelephony.Service().v6().offerChanges({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName
         }).$promise.then(function (offers) {
@@ -467,7 +467,7 @@ angular.module("managerApp").factory("TelephonyGroupLine", function ($q, $filter
     TelephonyGroupLine.prototype.changeOffer = function (newOffer) {
         var self = this;
 
-        return OvhApiTelephony.Service().Lexi().changeOffer({
+        return OvhApiTelephony.Service().v6().changeOffer({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName
         }, {
@@ -486,7 +486,7 @@ angular.module("managerApp").factory("TelephonyGroupLine", function ($q, $filter
     TelephonyGroupLine.prototype.getOfferChange = function () {
         var self = this;
 
-        return OvhApiTelephony.Service().Lexi().offerChange({
+        return OvhApiTelephony.Service().v6().offerChange({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName
         }).$promise.then(function (offer) {
@@ -514,7 +514,7 @@ angular.module("managerApp").factory("TelephonyGroupLine", function ($q, $filter
     TelephonyGroupLine.prototype.cancelOfferChange = function () {
         var self = this;
 
-        return OvhApiTelephony.Service().Lexi().cancelOfferChange({
+        return OvhApiTelephony.Service().v6().cancelOfferChange({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName
         }).$promise.then(function () {
@@ -528,7 +528,7 @@ angular.module("managerApp").factory("TelephonyGroupLine", function ($q, $filter
     TelephonyGroupLine.prototype.getAvailableSipDomains = function () {
         var self = this;
 
-        return OvhApiTelephony.Line().Lexi().sipDomains({
+        return OvhApiTelephony.Line().v6().sipDomains({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName
         }).$promise.then(function (availableDomains) {

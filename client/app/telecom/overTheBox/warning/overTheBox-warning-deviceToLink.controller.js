@@ -27,7 +27,7 @@ angular.module("managerApp").controller("OrderOverTheBoxDeviceToLinkCtrl", funct
             return;
         }
         self.loader = true;
-        OvhApiOverTheBox.Lexi().linkDevice({
+        OvhApiOverTheBox.v6().linkDevice({
             serviceName: self.link.service
         }, {
             deviceId: self.link.device

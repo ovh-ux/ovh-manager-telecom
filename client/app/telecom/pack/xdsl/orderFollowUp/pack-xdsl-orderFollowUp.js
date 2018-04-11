@@ -3,10 +3,10 @@ angular.module("managerApp").config(function ($stateProvider) {
     $stateProvider.state("telecom.pack.xdsl.access-order", {
         url: "/order",
         views: {
-            accessView: {
+            "accessView@telecom.pack.xdsl": {
                 templateUrl: "app/telecom/pack/xdsl/orderFollowUp/pack-xdsl-orderFollowUp.html"
             },
-            "@followUp": {
+            "followUp@telecom.pack.xdsl.access-order": {
                 templateUrl: "app/telecom/pack/xdsl/orderFollowUp/pack-xdsl-orderFollowUp-main.view.html",
                 controller: "XdslOrderFollowUpCtrl",
                 controllerAs: "OrderFollowUpCtrl"

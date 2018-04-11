@@ -3,7 +3,7 @@ angular.module("managerApp").config(function ($stateProvider) {
     return $stateProvider.state("telecom.telephony.billing.groupRepayments", {
         url: "/groupRepayments",
         views: {
-            "@telephonyView": {
+            "telephonyView@telecom.telephony": {
                 templateUrl: "app/telecom/telephony/billingAccount/billing/groupRepayments/telecom-telephony-billing-account-billing-group-repayments.html",
                 controller: "TelecomTelephonyBillingAccountBillingGroupRepaymentsCtrl",
                 controllerAs: "GroupRepaymentsCtrl"

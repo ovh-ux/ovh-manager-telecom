@@ -38,7 +38,7 @@ angular.module("managerApp", [
     "ovh-angular-otrs",
     "ui.bootstrap",
     "ui.router",
-    "ui.router.title",
+    "angular.uirouter.title",
     "ui.select",
     "ui.utils",
     "ui.calendar",
@@ -175,7 +175,7 @@ angular.module("managerApp", [
 
         var config = TRACKING.atInternetConfiguration;
 
-        atInternet.setDefaultsPromise(OvhApiMe.Lexi().get().$promise.then(function (me) {
+        atInternet.setDefaultsPromise(OvhApiMe.v6().get().$promise.then(function (me) {
             config.countryCode = me.country;
             config.currencyCode = me.currency && me.currency.code;
             config.visitorId = me.customerCode;
@@ -206,79 +206,78 @@ angular.module("managerApp", [
     })
 
 /*= =========  LOAD TRANSLATIONS  ==========*/
-    .config(function ($stateProvider, $httpProvider) {
+    .config(function ($transitionsProvider, $httpProvider) {
         "use strict";
 
         $httpProvider.interceptors.push("translateInterceptor");
 
-        $stateProvider.decorator("translations", function (state) {
-            var routeOption = state.self;
+        $transitionsProvider.onBefore({}, (transition) => {
+            transition.addResolvable({
+                token: "translations",
+                deps: ["$translate", "$translatePartialLoader"],
+                resolveFn: ($translate, $translatePartialLoader) => {
+                    const state = transition.to();
+                    if (state.translations) {
 
-            if (routeOption.translations) {
+                        var templateUrlTab = [];
+                        var translationsTab = state.translations;
 
-                var templateUrlTab = [];
-                var translationsTab = routeOption.translations;
-
-                if (routeOption.templateUrl) {
-                    templateUrlTab.push(routeOption.templateUrl);
-                }
-
-                if (routeOption.views) {
-                    angular.forEach(routeOption.views, function (value) {
-
-                        if (_.isUndefined(value.noTranslations) && !value.noTranslations) {
-                            if (value.templateUrl) {
-                                templateUrlTab.push(value.templateUrl);
-                            }
-                            if (value.translations) {
-                                translationsTab = _.union(translationsTab, value.translations);
-                            }
+                        if (state.templateUrl) {
+                            templateUrlTab.push(state.templateUrl);
                         }
 
-                    });
-                }
+                        if (state.views) {
+                            angular.forEach(state.views, function (value) {
 
-                angular.forEach(templateUrlTab, function (templateUrl) {
-                    var routeTmp = templateUrl.substring(templateUrl.indexOf("/") + 1, templateUrl.lastIndexOf("/"));
-                    var index = routeTmp.lastIndexOf("/");
+                                if (_.isUndefined(value.noTranslations) && !value.noTranslations) {
+                                    if (value.templateUrl) {
+                                        templateUrlTab.push(value.templateUrl);
+                                    }
+                                    if (value.translations) {
+                                        translationsTab = _.union(translationsTab, value.translations);
+                                    }
+                                }
 
-                    while (index > 0) {
-                        translationsTab.push(routeTmp);
-                        routeTmp = routeTmp.substring(0, index);
-                        index = routeTmp.lastIndexOf("/");
+                            });
+                        }
+
+                        angular.forEach(templateUrlTab, function (templateUrl) {
+                            var routeTmp = templateUrl.substring(templateUrl.indexOf("/") + 1, templateUrl.lastIndexOf("/"));
+                            var index = routeTmp.lastIndexOf("/");
+
+                            while (index > 0) {
+                                translationsTab.push(routeTmp);
+                                routeTmp = routeTmp.substring(0, index);
+                                index = routeTmp.lastIndexOf("/");
+                            }
+
+                            translationsTab.push(routeTmp);
+                        });
+
+                        // mmmhhh... It seems that we have to refresh after each time a part is added
+                        translationsTab = _.uniq(translationsTab);
+
+                        // load translation parts
+                        angular.forEach(translationsTab, function (part) {
+                            $translatePartialLoader.addPart(part);
+                        });
+
+                        return $translate.refresh();
                     }
 
-                    translationsTab.push(routeTmp);
-                });
-
-                // mmmhhh... It seems that we have to refresh after each time a part is added
-
-                translationsTab = _.uniq(translationsTab);
-
-                state.resolve.translations = ["$translate", "$translatePartialLoader", function ($translate, $translatePartialLoader) {
-                    // load translation parts
-                    angular.forEach(translationsTab, function (part) {
-                        $translatePartialLoader.addPart(part);
-                    });
-
-                    return $translate.refresh();
-
-                }];
-
-                return translationsTab;
-
-            }
-
-            return null;
-        });
+                    return null;
+                }
+            }); // transition.addResolvable
+        }); // $transitionsProvider.onBefore
     })
 
 /*= =========  CHECK IF STILL LOGGED IN  ==========*/
-    .run(function (ssoAuthentication, $rootScope) {
+    .run(function (ssoAuthentication, $transitions) {
         "use strict";
 
         ssoAuthentication.login().then(function () {
-            $rootScope.$on("$stateChangeStart", function (event, next) {
+            $transitions.onStart({}, function (transition) {
+                const next = transition.to();
                 var authenticate;
 
                 if (next.authenticate !== undefined) {
@@ -317,19 +316,24 @@ angular.module("managerApp", [
         };
     })
 
+    .config(function (OtrsPopupProvider, REDIRECT_URLS) {
+        OtrsPopupProvider.setBaseUrlTickets(_.get(REDIRECT_URLS, "listTicket", null));
+    })
+
     .config(function ($logProvider) {
         "use strict";
 
         $logProvider.debugEnabled(false);
     })
 
-    .run(($rootScope, $translate, $translatePartialLoader,
-          ouiDatagridConfiguration, ouiPaginationConfiguration) => {
+    .run(($rootScope, $transitions, $translate, $translatePartialLoader,
+          ouiDatagridConfiguration, ouiPaginationConfiguration, ouiFieldConfiguration) => {
+
         "use strict";
         $translatePartialLoader.addPart("common");
         $translatePartialLoader.addPart("components");
 
-        const off = $rootScope.$on("$stateChangeSuccess", () => {
+        const removeHook = $transitions.onSuccess({}, () => {
             ouiDatagridConfiguration.translations = {
                 emptyPlaceholder: $translate.instant("common_datagrid_nodata")
             };
@@ -345,14 +349,19 @@ angular.module("managerApp", [
                 nextPage: $translate.instant("common_pagination_next")
             };
 
-            off();
-        });
-    })
+            ouiFieldConfiguration.translations = {
+                errors: {
+                    required: $translate.instant("common_field_error_required"),
+                    number: $translate.instant("common_field_error_number"),
+                    email: $translate.instant("common_field_error_email"),
+                    min: $translate.instant("common_field_error_min", { min: "{{min}}" }),
+                    max: $translate.instant("common_field_error_max", { max: "{{max}}" }),
+                    minlength: $translate.instant("common_field_error_minlength", { minlength: "{{minlength}}" }),
+                    maxlength: $translate.instant("common_field_error_maxlength", { maxlength: "{{maxlength}}" }),
+                    pattern: $translate.instant("common_field_error_pattern")
+                }
+            };
 
-    .run(function ($rootScope, $title) {
-        "use strict";
-
-        $rootScope.$on("$stateChangeSuccess", function () {
-            $rootScope.fullTitle = _.map($title.breadCrumbs(), "title").join(" &#62; ");
+            removeHook();
         });
     });

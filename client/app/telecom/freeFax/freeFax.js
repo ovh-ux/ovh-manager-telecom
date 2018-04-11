@@ -3,7 +3,7 @@ angular.module("managerApp").config(function ($stateProvider) {
     $stateProvider.state("telecom.freefax", {
         url: "/freefax/:serviceName",
         views: {
-            telecomView: {
+            "telecomView@telecom": {
                 templateUrl: "app/telecom/freeFax/freeFax.html"
             },
             "faxView@telecom.freefax": {

@@ -10,7 +10,7 @@ angular.module("managerApp").controller("PackHostedEmailCtrl", function ($q, $tr
     this.loadServices = function () {
         this.loaders.services = true;
 
-        return OvhApiPackXdslHostedEmail.Lexi().query({
+        return OvhApiPackXdslHostedEmail.v6().query({
             packId: $stateParams.packName
         }).$promise.then(
             function (services) {

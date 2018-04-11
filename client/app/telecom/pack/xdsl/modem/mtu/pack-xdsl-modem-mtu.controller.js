@@ -17,7 +17,7 @@ angular.module("managerApp").controller("XdslModemMtuCtrl", function ($statePara
         }
         PackXdslModemMediator.setTask("changeMTU");
         this.loading = true;
-        return OvhApiXdsl.Modem().Lexi().update(
+        return OvhApiXdsl.Modem().v6().update(
             {
                 xdslId: $stateParams.serviceName
             },

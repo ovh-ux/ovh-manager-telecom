@@ -107,7 +107,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberConference", function 
         }
 
         if (featureSettings.announceFilename) {
-            promise.announceFilenameLabel = OvhApiMe.Document().Lexi().get({
+            promise.announceFilenameLabel = OvhApiMe.Document().v6().get({
                 id: featureSettings.announceFilename
             }).$promise.then(function (doc) {
                 return doc.name;
@@ -139,7 +139,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberConference", function 
     TelephonyGroupNumberConference.prototype.getInfos = function () {
         var self = this;
 
-        return OvhApiTelephony.Conference().Lexi().informations({
+        return OvhApiTelephony.Conference().v6().informations({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName
         }).$promise.then(function (infos) {
@@ -180,7 +180,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberConference", function 
             settings.pin = 0;
         }
 
-        return OvhApiTelephony.Conference().Lexi().updateSettings({
+        return OvhApiTelephony.Conference().v6().updateSettings({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName
         }, _.omit(settings, ["featureType", "eventsChannel", "announceFilename"])).$promise.then(function () {
@@ -191,7 +191,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberConference", function 
     TelephonyGroupNumberConference.prototype.lock = function () {
         var self = this;
 
-        return OvhApiTelephony.Conference().Lexi().lock({
+        return OvhApiTelephony.Conference().v6().lock({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName
         }, {}).$promise;
@@ -200,7 +200,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberConference", function 
     TelephonyGroupNumberConference.prototype.unlock = function () {
         var self = this;
 
-        return OvhApiTelephony.Conference().Lexi().unlock({
+        return OvhApiTelephony.Conference().v6().unlock({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName
         }, {}).$promise;
@@ -209,7 +209,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberConference", function 
     TelephonyGroupNumberConference.prototype.getSettings = function () {
         var self = this;
 
-        return OvhApiTelephony.Conference().Lexi().settings({
+        return OvhApiTelephony.Conference().v6().settings({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName
         }).$promise.then(function (settings) {
@@ -220,12 +220,12 @@ angular.module("managerApp").factory("TelephonyGroupNumberConference", function 
     TelephonyGroupNumberConference.prototype.getWebAccess = function () {
         var self = this;
 
-        return OvhApiTelephony.Conference().WebAccess().Lexi().query({
+        return OvhApiTelephony.Conference().WebAccess().v6().query({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName
         }).$promise.then(function (ids) {
             return $q.all(_.map(ids, function (id) {
-                return OvhApiTelephony.Conference().WebAccess().Lexi().get({
+                return OvhApiTelephony.Conference().WebAccess().v6().get({
                     billingAccount: self.billingAccount,
                     serviceName: self.serviceName,
                     id: id
@@ -241,7 +241,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberConference", function 
 
         return TelephonyMediator.getApiModelEnum("telephony.ConferenceWebAccessTypeEnum").then(function (accessType) {
             return $q.all(_.map(accessType, function (type) {
-                return OvhApiTelephony.Conference().WebAccess().Lexi().create({
+                return OvhApiTelephony.Conference().WebAccess().v6().create({
                     billingAccount: self.billingAccount,
                     serviceName: self.serviceName
                 }, {
@@ -258,7 +258,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberConference", function 
         var ids = [].concat(_.get(self.webAccess, "read.id"), _.get(self.webAccess, "write.id"));
 
         return $q.all(_.map(_.chain(ids).compact().value(), function (id) {
-            return OvhApiTelephony.Conference().WebAccess().Lexi().remove({
+            return OvhApiTelephony.Conference().WebAccess().v6().remove({
                 billingAccount: self.billingAccount,
                 serviceName: self.serviceName,
                 id: id
@@ -274,8 +274,8 @@ angular.module("managerApp").factory("TelephonyGroupNumberConference", function 
     TelephonyGroupNumberConference.prototype.announceUpload = function (file) {
         var self = this;
 
-        return OvhApiMe.Document().Lexi().upload(file.name, file).then(function (doc) {
-            return OvhApiTelephony.Conference().Lexi().announceUpload({
+        return OvhApiMe.Document().v6().upload(file.name, file).then(function (doc) {
+            return OvhApiTelephony.Conference().v6().announceUpload({
                 billingAccount: self.billingAccount,
                 serviceName: self.serviceName
             }, {
@@ -414,7 +414,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberConference", function 
     TelephonyGroupNumberConference.prototype.init = function () {
         var self = this;
 
-        return OvhApiTelephony.Conference().Lexi().get({
+        return OvhApiTelephony.Conference().v6().get({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName
         }).$promise.then(function () {

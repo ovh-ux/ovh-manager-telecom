@@ -128,6 +128,17 @@
    <translation id="telephony_common_time_condition_slot_from">de</translation>
    <translation id="telephony_common_time_condition_slot_to">à</translation>
 
+   <!-- EXPORT / IMPORT CONFIGURATION -->
+   <translation id="telephony_common_time_condition_export_configuration">Exporter</translation>
+   <translation id="telephony_common_time_condition_import_configuration">Importer</translation>
+   <translation id="telephony_common_time_condition_import_configuration_title">Importer des plages horaires</translation>
+   <translation id="telephony_common_time_condition_import_configuration_action">Fichier plage horaire</translation>
+   <translation id="telephony_common_time_condition_import_configuration_file_format">Formats de fichiers supportés : .json</translation>
+   <translation id="telephony_common_time_condition_import_configuration_invalid_format">Format de fichier invalide</translation>
+   <translation id="telephony_common_time_condition_import_configuration_processing">Import des plages horaires en cours</translation>
+   <translation id="telephony_common_time_condition_import_configuration_success">Plages horaires importées.</translation>
+   <translation id="telephony_common_time_condition_import_configuration_error">Echec lors de l'import des plages horaires.</translation>
+
 <!-- SPECIFIC TYPOLOGIES -->
    <translation id="telephony_order_specific_typology_error" qtlid="346898">Impossible de charger les typologies de numéros.</translation>
 

@@ -9,10 +9,10 @@ angular.module("managerApp").controller("TelecomTelephonyServiceAssistOrdersCtrl
     ===============================*/
 
     function fetchOrders () {
-        return OvhApiTelephony.Lexi().getCurrentOrderIds().$promise.then(function (orderIds) {
-            return OvhApiMeOrder.Erika().query().addFilter("orderId", "in", orderIds).expand().execute().$promise.then(function (orders) {
+        return OvhApiTelephony.v6().getCurrentOrderIds().$promise.then(function (orderIds) {
+            return OvhApiMeOrder.v7().query().addFilter("orderId", "in", orderIds).expand().execute().$promise.then(function (orders) {
                 return $q.all(_.map(_.pluck(orders, "value"), function (order) {
-                    return OvhApiMeOrder.Lexi().getStatus({
+                    return OvhApiMeOrder.v6().getStatus({
                         orderId: order.orderId
                     }).$promise.then(function (status) {
                         order.statusText = $translate.instant("telephony_line_assist_orders_order_status_" + _.snakeCase(status.status));

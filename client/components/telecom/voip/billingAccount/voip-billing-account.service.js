@@ -28,7 +28,7 @@ angular.module("managerApp").service("voipBillingAccount", class {
      *  @return {Promise} That return an Array of VoipBillingAccount instances.
      */
     fetchAll (withError = true) {
-        return this.OvhApiTelephony.Erika().query().expand().execute().$promise.then((result) =>
+        return this.OvhApiTelephony.v7().query().expand().execute().$promise.then((result) =>
             _.chain(result).filter((res) =>
                 _.has(res, "value") || (withError && _.has(res, "error"))
             ).map((res) => {

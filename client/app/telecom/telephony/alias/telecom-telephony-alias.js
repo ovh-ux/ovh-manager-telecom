@@ -3,10 +3,10 @@ angular.module("managerApp").config(function ($stateProvider) {
     $stateProvider.state("telecom.telephony.alias", {
         url: "/alias/:serviceName",
         views: {
-            "@telephonyView": {
+            "telephonyView@telecom.telephony": {
                 templateUrl: "app/telecom/telephony/alias/telecom-telephony-alias.html"
             },
-            "@aliasView": {
+            "aliasView@telecom.telephony.alias": {
                 templateUrl: "app/telecom/telephony/alias/telecom-telephony-alias-main.view.html",
                 controller: "TelecomTelephonyAliasCtrl",
                 controllerAs: "AliasCtrl"
@@ -20,7 +20,7 @@ angular.module("managerApp").config(function ($stateProvider) {
         translations: ["common", "telecom/telephony/alias"],
         resolve: {
             $title: function (translations, $translate, $stateParams, OvhApiTelephony) {
-                return OvhApiTelephony.Number().Lexi().get({
+                return OvhApiTelephony.Number().v6().get({
                     billingAccount: $stateParams.billingAccount,
                     serviceName: $stateParams.serviceName
                 }).$promise.then(function (data) {

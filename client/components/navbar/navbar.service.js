@@ -229,7 +229,7 @@ class ManagerNavbarService {
             return this.$q.when(undefined);
         }
 
-        return this.ovhApiFreeFax.Lexi()
+        return this.ovhApiFreeFax.v6()
             .query().$promise
             .then((faxList) => _.sortBy(faxList, "number"))
             .then((result) =>
@@ -250,11 +250,11 @@ class ManagerNavbarService {
             return this.$q.when(undefined);
         }
 
-        return this.ovhApiOverTheBox.Lexi()
+        return this.ovhApiOverTheBox.v6()
             .query().$promise
             .then((serviceNames) => {
                 let requests = _.map(serviceNames, (serviceName) =>
-                    this.ovhApiOverTheBox.Lexi().get({
+                    this.ovhApiOverTheBox.v6().get({
                         serviceName: serviceName
                     }).$promise);
 
@@ -350,7 +350,7 @@ class ManagerNavbarService {
         // Tickets list
         assistanceMenu.push({
             title: this.$translate.instant("common_menu_support_list_ticket"),
-            url: "#/support"
+            url: this.REDIRECT_URLS.listTicket
         });
 
         // Telephony (External)
@@ -588,7 +588,7 @@ class ManagerNavbarService {
 
         return this.$q.all({
             translate: this.loadTranslations(),
-            user: this.ovhApiMe.Lexi().get().$promise
+            user: this.ovhApiMe.v6().get().$promise
         })
             .then(({ user }) => getBaseNavbar(user))
             .catch(() => getBaseNavbar());

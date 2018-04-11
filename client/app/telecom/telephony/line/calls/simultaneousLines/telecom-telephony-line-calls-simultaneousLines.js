@@ -3,7 +3,7 @@ angular.module("managerApp").config(function ($stateProvider) {
     $stateProvider.state("telecom.telephony.line.calls.simultaneousLines", {
         url: "/simultaneousLines",
         views: {
-            "@lineView": {
+            "lineView@telecom.telephony.line": {
                 templateUrl: "app/telecom/telephony/line/calls/simultaneousLines/telecom-telephony-line-calls-simultaneousLines.html",
                 controller: "TelecomTelephonyLineCallsSimultaneousLinesCtrl",
                 controllerAs: "LineSimultaneousLinesCtrl"

@@ -11,7 +11,7 @@ angular.module("managerApp").controller("PackExchangeAccountCtrl", function ($sc
             services: true
         };
 
-        return OvhApiPackXdslExchangeAccount.Services().Lexi().query({
+        return OvhApiPackXdslExchangeAccount.Services().v6().query({
             packName: $stateParams.packName
         }).$promise.then(function (serviceIds) {
             return $http.get("/email/exchange/*/service/*/account?$aggreg=1", {

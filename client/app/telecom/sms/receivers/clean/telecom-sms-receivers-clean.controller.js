@@ -6,7 +6,7 @@ angular.module("managerApp").controller("TelecomSmsReceiversCleanCtrl", class Te
         this.$uibModalInstance = $uibModalInstance;
         this.api = {
             sms: {
-                receivers: OvhApiSms.Receivers().Lexi()
+                receivers: OvhApiSms.Receivers().v6()
             }
         };
         this.SmsMediator = SmsMediator;
