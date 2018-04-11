@@ -6,7 +6,7 @@ angular.module("managerApp").controller("TelecomSmsSmsTemplateRemoveCtrl", class
         this.$uibModalInstance = $uibModalInstance;
         this.api = {
             sms: {
-                templates: OvhApiSms.Templates().Lexi()
+                templates: OvhApiSms.Templates().v6()
             }
         };
         this.template = template;

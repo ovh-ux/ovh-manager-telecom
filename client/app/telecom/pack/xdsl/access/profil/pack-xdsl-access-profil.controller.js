@@ -10,7 +10,7 @@ angular.module("managerApp").controller("XdslAccessProfileCtrl", function ($stat
             Toast.error($translate.instant("xdsl_access_dslam_an_error_ocurred"));
         }
 
-        OvhApiXdslLinesDslamPort.Lexi().changeProfile(
+        OvhApiXdslLinesDslamPort.v6().changeProfile(
             {
                 xdslId: $stateParams.serviceName,
                 number: $stateParams.number

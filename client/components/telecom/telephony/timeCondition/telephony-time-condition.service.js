@@ -5,17 +5,17 @@ angular.module("managerApp").service("voipTimeCondition", function ($q, $transla
 
     var timeConditionResources = {
         sip: {
-            init: OvhApiTelephony.TimeCondition().Lexi().getOptions,
-            save: OvhApiTelephony.TimeCondition().Lexi().setOptions,
-            condition: OvhApiTelephony.TimeCondition().Condition().Lexi()
+            init: OvhApiTelephony.TimeCondition().v6().getOptions,
+            save: OvhApiTelephony.TimeCondition().v6().setOptions,
+            condition: OvhApiTelephony.TimeCondition().Condition().v6()
         },
         easyHunting: {
-            init: OvhApiTelephony.EasyHunting().TimeConditions().Lexi().get,
-            save: OvhApiTelephony.EasyHunting().TimeConditions().Lexi().save,
-            condition: OvhApiTelephony.EasyHunting().TimeConditions().Conditions().Lexi()
+            init: OvhApiTelephony.EasyHunting().TimeConditions().v6().get,
+            save: OvhApiTelephony.EasyHunting().TimeConditions().v6().save,
+            condition: OvhApiTelephony.EasyHunting().TimeConditions().Conditions().v6()
         },
         ovhPabx: {
-            condition: OvhApiTelephony.OvhPabx().Dialplan().Extension().ConditionTime().Lexi()
+            condition: OvhApiTelephony.OvhPabx().Dialplan().Extension().ConditionTime().v6()
         }
     };
 

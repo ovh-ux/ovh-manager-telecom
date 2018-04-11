@@ -23,7 +23,7 @@ angular.module("managerApp").controller("TelephonySchedulerImportCtrl", function
     ===============================*/
 
     function uploadFile () {
-        return OvhApiMe.Document().Lexi().upload(self.model.icsFile.name, self.model.icsFile);
+        return OvhApiMe.Document().v6().upload(self.model.icsFile.name, self.model.icsFile);
     }
 
     self.checkIcsFileType = function (file) {

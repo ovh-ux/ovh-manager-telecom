@@ -20,7 +20,7 @@ angular.module("managerApp").controller("FreeFaxVoicemailConfigurationCtrl", fun
         });
 
 
-        return OvhApiFreeFax.Lexi().voiceMailGet({
+        return OvhApiFreeFax.v6().voiceMailGet({
             serviceName: $stateParams.serviceName
         }).$promise.then(function (voiceMail) {
             self.voiceMail = voiceMail;
@@ -30,7 +30,7 @@ angular.module("managerApp").controller("FreeFaxVoicemailConfigurationCtrl", fun
         }, function (err) {
             return new ToastError(err);
         }).then(function () {
-            return OvhApiFreeFax.Lexi().voiceMailGetRouting({
+            return OvhApiFreeFax.v6().voiceMailGetRouting({
                 serviceName: $stateParams.serviceName
             }).$promise.then(function (routing) {
                 initialActivateVoiceMail = routing.value;
@@ -90,7 +90,7 @@ angular.module("managerApp").controller("FreeFaxVoicemailConfigurationCtrl", fun
 
     this.save = function (conf) {
         var tasks = [
-            OvhApiFreeFax.Lexi().voiceMailPut({
+            OvhApiFreeFax.v6().voiceMailPut({
                 serviceName: $stateParams.serviceName
             }, {
                 audioFormat: conf.audioFormat.value,
@@ -104,7 +104,7 @@ angular.module("managerApp").controller("FreeFaxVoicemailConfigurationCtrl", fun
 
         if ((conf.activateVoiceMail && initialActivateVoiceMail !== "voicemail") || (!conf.activateVoiceMail && initialActivateVoiceMail !== "fax")) {
             tasks.push(
-                OvhApiFreeFax.Lexi().voiceMailChangeRouting({
+                OvhApiFreeFax.v6().voiceMailChangeRouting({
                     serviceName: $stateParams.serviceName
                 }, {
                     routing: conf.activateVoiceMail ? "voicemail" : "fax"
@@ -120,7 +120,7 @@ angular.module("managerApp").controller("FreeFaxVoicemailConfigurationCtrl", fun
                 Toast.error($translate.instant("freefax_voicemail_bad_password"));
                 reject($translate.instant("freefax_voicemail_bad_password"));
             } else {
-                OvhApiFreeFax.Lexi().changePassword({
+                OvhApiFreeFax.v6().changePassword({
                     serviceName: $stateParams.serviceName
                 }, {
                     password: newPassword

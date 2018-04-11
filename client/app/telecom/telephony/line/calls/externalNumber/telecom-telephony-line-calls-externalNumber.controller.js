@@ -24,12 +24,12 @@ angular.module("managerApp").controller("TelecomTelephonyLineCallsExternalNumber
     ============================== */
 
     function fetchExternalDisplayedNumber () {
-        return OvhApiTelephony.Trunk().ExternalDisplayedNumber().Lexi().query({
+        return OvhApiTelephony.Trunk().ExternalDisplayedNumber().v6().query({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }).$promise.then(function (numbers) {
             return $q.all(_.map(_.chunk(numbers, 50), function (chunkNumbers) {
-                return OvhApiTelephony.Trunk().ExternalDisplayedNumber().Lexi().getBatch({
+                return OvhApiTelephony.Trunk().ExternalDisplayedNumber().v6().getBatch({
                     billingAccount: $stateParams.billingAccount,
                     serviceName: $stateParams.serviceName,
                     number: chunkNumbers
@@ -82,13 +82,13 @@ angular.module("managerApp").controller("TelecomTelephonyLineCallsExternalNumber
 
         self.loading.add = true;
 
-        return OvhApiTelephony.Trunk().ExternalDisplayedNumber().Lexi().save({
+        return OvhApiTelephony.Trunk().ExternalDisplayedNumber().v6().save({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }, self.model).$promise.then(function (externalNumber) {
             self.list.push(externalNumber);
             if (!self.model.autoValidation) {
-                validationPromise = OvhApiTelephony.Trunk().ExternalDisplayedNumber().Lexi().validate({
+                validationPromise = OvhApiTelephony.Trunk().ExternalDisplayedNumber().v6().validate({
                     billingAccount: $stateParams.billingAccount,
                     serviceName: $stateParams.serviceName,
                     number: externalNumber.number
@@ -124,7 +124,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineCallsExternalNumber
     self.onConfirmDeleteNumberBtnClick = function () {
         self.loading.remove = true;
 
-        return OvhApiTelephony.Trunk().ExternalDisplayedNumber().Lexi().remove({
+        return OvhApiTelephony.Trunk().ExternalDisplayedNumber().v6().remove({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName,
             number: self.toDelete.number

@@ -4,7 +4,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationModeE
     var self = this;
 
     function fetchEnums () {
-        return OvhApiTelephony.Lexi().schema().$promise.then(function (result) {
+        return OvhApiTelephony.v6().schema().$promise.then(function (result) {
             var enums = {};
             enums.caller = _.get(result, ["models", "telephony.OvhPabxDialplanNumberPresentationEnum", "enum"]);
             enums.strategy = _.get(result, ["models", "telephony.OvhPabxHuntingQueueStrategyEnum", "enum"]);
@@ -13,18 +13,18 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationModeE
     }
 
     function fetchOptions () {
-        return OvhApiTelephony.EasyHunting().Lexi().get({
+        return OvhApiTelephony.EasyHunting().v6().get({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }).$promise;
     }
 
     function fetchQueueOptions () {
-        return OvhApiTelephony.EasyHunting().Hunting().Queue().Lexi().query({
+        return OvhApiTelephony.EasyHunting().Hunting().Queue().v6().query({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }).$promise.then(function (queueId) {
-            return OvhApiTelephony.EasyHunting().Hunting().Queue().Lexi().get({
+            return OvhApiTelephony.EasyHunting().Hunting().Queue().v6().get({
                 billingAccount: $stateParams.billingAccount,
                 serviceName: $stateParams.serviceName,
                 queueId: queueId
@@ -41,9 +41,9 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationModeE
     function fetchVoicemail () {
         var voiceMailPromises = [];
         var voicemails = [];
-        return OvhApiTelephony.Lexi().query().$promise.then(function (billingAccounts) {
+        return OvhApiTelephony.v6().query().$promise.then(function (billingAccounts) {
             billingAccounts.forEach(function (billingAccount) {
-                voiceMailPromises.push(OvhApiTelephony.Voicemail().Lexi().query({
+                voiceMailPromises.push(OvhApiTelephony.Voicemail().v6().query({
                     billingAccount: billingAccount
                 }).$promise.then(function (response) {
                     voicemails = voicemails.concat(response);
@@ -62,12 +62,12 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationModeE
     }
 
     function fetchSounds () {
-        return OvhApiTelephony.EasyHunting().Sound().Lexi().query({
+        return OvhApiTelephony.EasyHunting().Sound().v6().query({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }).$promise.then(function (ids) {
             return $q.all(_.map(ids, function (id) {
-                return OvhApiTelephony.EasyHunting().Sound().Lexi().get({
+                return OvhApiTelephony.EasyHunting().Sound().v6().get({
                     billingAccount: $stateParams.billingAccount,
                     serviceName: $stateParams.serviceName,
                     soundId: id
@@ -163,7 +163,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationModeE
                 self.queueOptionsForm.actionOnOverflow = null;
                 self.queueOptionsForm.actionOnOverflowParam = null;
             }
-            pending.push(OvhApiTelephony.EasyHunting().Hunting().Queue().Lexi().change({
+            pending.push(OvhApiTelephony.EasyHunting().Hunting().Queue().v6().change({
                 billingAccount: $stateParams.billingAccount,
                 serviceName: $stateParams.serviceName,
                 queueId: self.queueOptions.queueId
@@ -187,7 +187,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationModeE
             if (!self.optionsForm.voicemail) {
                 self.optionsForm.voicemail = null;
             }
-            pending.push(OvhApiTelephony.EasyHunting().Lexi().change({
+            pending.push(OvhApiTelephony.EasyHunting().v6().change({
                 billingAccount: $stateParams.billingAccount,
                 serviceName: $stateParams.serviceName
             }, _.pick(self.optionsForm, attrs)).$promise.then(function () {

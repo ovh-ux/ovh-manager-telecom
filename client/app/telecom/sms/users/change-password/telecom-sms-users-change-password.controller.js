@@ -6,7 +6,7 @@ angular.module("managerApp").controller("TelecomSmsUsersChangePasswordCtrl", cla
         this.$uibModalInstance = $uibModalInstance;
         this.api = {
             sms: {
-                users: OvhApiSms.Users().Lexi()
+                users: OvhApiSms.Users().v6()
             }
         };
         this.user = user;

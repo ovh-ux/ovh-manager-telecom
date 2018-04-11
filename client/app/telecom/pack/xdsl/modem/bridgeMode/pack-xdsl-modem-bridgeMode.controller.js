@@ -14,7 +14,7 @@ angular.module("managerApp").controller("XdslModemBridgeModeCtrl", function ($st
             return Toast.error($translate.instant("xdsl_modem_bridge_mode_an_error_ocurred"));
         }
         PackXdslModemMediator.setTask("changeModemConfigBridgeMode");
-        OvhApiXdsl.Modem().Lexi().update(
+        OvhApiXdsl.Modem().v6().update(
             {
                 xdslId: $stateParams.serviceName
             },

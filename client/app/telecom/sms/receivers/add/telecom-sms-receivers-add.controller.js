@@ -7,10 +7,10 @@ angular.module("managerApp").controller("TelecomSmsReceiversAddCtrl", class Tele
         this.$uibModalInstance = $uibModalInstance;
         this.api = {
             sms: {
-                receivers: OvhApiSms.Receivers().Lexi()
+                receivers: OvhApiSms.Receivers().v6()
             },
             user: {
-                document: OvhApiMe.Document().Lexi()
+                document: OvhApiMe.Document().v6()
             }
         };
         this.slot = slot;

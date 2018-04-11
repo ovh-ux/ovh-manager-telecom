@@ -38,7 +38,7 @@ angular.module("managerApp").factory("PackXdslModemPortObject", function (OvhApi
         var self = this;
         this.busy = true;
         if (this.id) {
-            return OvhApiXdsl.Modem().Port().Lexi().update(
+            return OvhApiXdsl.Modem().Port().v6().update(
                 {
                     xdslId: serviceName,
                     name: this.name
@@ -55,7 +55,7 @@ angular.module("managerApp").factory("PackXdslModemPortObject", function (OvhApi
                 self.busy = false;
             });
         }
-        return OvhApiXdsl.Modem().Port().Lexi().post(
+        return OvhApiXdsl.Modem().Port().v6().post(
             {
                 xdslId: serviceName
             },
@@ -81,7 +81,7 @@ angular.module("managerApp").factory("PackXdslModemPortObject", function (OvhApi
     PackXdslModemPortObject.prototype.remove = function (serviceName) {
         var self = this;
         this.busy = true;
-        return OvhApiXdsl.Modem().Port().Lexi().delete(
+        return OvhApiXdsl.Modem().Port().v6().delete(
             {
                 xdslId: serviceName,
                 name: this.name

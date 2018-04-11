@@ -5,14 +5,14 @@ angular.module("managerApp").controller("XdslOrderFollowUpCtrl", function ($scop
     this.loadData = function () {
         $q.all([
             // Get access Details
-            OvhApiXdsl.Lexi().get({
+            OvhApiXdsl.v6().get({
                 xdslId: self.xdslId
             }, function (access) {
                 self.access = access;
             }).$promise,
 
             // Get orders
-            OvhApiXdsl.Lexi().getOrder({ xdslId: self.xdslId }, function (data) {
+            OvhApiXdsl.v6().getOrder({ xdslId: self.xdslId }, function (data) {
                 var allSuccessTmp = true;
                 data.forEach(function (elt) {
                     if (elt.status !== "done") {

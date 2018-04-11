@@ -41,7 +41,7 @@ angular.module("managerApp").factory("TelephonyGroupLineClick2Call",
                                              var self = this;
                                              self.users = [];
 
-                                             return OvhApiTelephony.Line().Click2Call().User().Lexi().query({
+                                             return OvhApiTelephony.Line().Click2Call().User().v6().query({
                                                  billingAccount: self.billingAccount,
                                                  serviceName: self.serviceName
                                              }, null).$promise.then(function (users) {
@@ -74,7 +74,7 @@ angular.module("managerApp").factory("TelephonyGroupLineClick2Call",
                                          TelephonyGroupLineClickToCall.prototype.call = function (calledNumber) {
                                              var self = this;
 
-                                             return OvhApiTelephony.Line().Click2Call().Lexi().post({
+                                             return OvhApiTelephony.Line().Click2Call().v6().post({
                                                  billingAccount: self.billingAccount,
                                                  serviceName: self.serviceName
                                              }, {

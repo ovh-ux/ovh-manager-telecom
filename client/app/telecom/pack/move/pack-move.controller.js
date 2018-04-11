@@ -127,7 +127,7 @@ angular.module("managerApp").controller("PackMoveCtrl", function ($scope, $compi
             self.moveValidationPending = true;
         }
 
-        OvhApiPackXdslMove.Lexi().move({
+        OvhApiPackXdslMove.v6().move({
             packName: $stateParams.packName
         }, moveData).$promise.then(function (data) {
 
@@ -326,7 +326,7 @@ angular.module("managerApp").controller("PackMoveCtrl", function ($scope, $compi
      * @returns {Promise}
      */
     function updateIsLegacyOffer () {
-        return OvhApiPackXdsl.Lexi().get({
+        return OvhApiPackXdsl.v6().get({
             packId: $stateParams.packName
         }).$promise.then(function (data) {
             self.offer.current.isLegacy = data.capabilities.isLegacyOffer;
@@ -365,14 +365,14 @@ angular.module("managerApp").controller("PackMoveCtrl", function ($scope, $compi
      */
     function isSlammingLine () {
         self.slammingCheck = true;
-        return OvhApiPackXdsl.Erika().access().execute(
+        return OvhApiPackXdsl.v7().access().execute(
             {
                 packName: $stateParams.packName
             }
         ).$promise.then(
             function (ids) {
                 return $q.all(_.map(_.chunk(ids, 200), function (chunkIds) {
-                    return OvhApiXdsl.Erika().query().batch("serviceName", [""].concat(chunkIds), ",").expand().execute().$promise;
+                    return OvhApiXdsl.v7().query().batch("serviceName", [""].concat(chunkIds), ",").expand().execute().$promise;
                 })).then(function (chunkResult) {
                     return _.flatten(chunkResult);
                 }).then(function (result) {

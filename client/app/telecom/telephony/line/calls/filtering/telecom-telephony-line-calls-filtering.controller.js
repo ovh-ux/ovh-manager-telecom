@@ -4,13 +4,13 @@ angular.module("managerApp").controller("TelecomTelephonyLineCallsFilteringCtrl"
     var self = this;
 
     self.fetchScreenLists = function () {
-        OvhApiTelephony.Screen().ScreenLists().Lexi().resetAllCache();
-        return OvhApiTelephony.Screen().ScreenLists().Lexi().query({
+        OvhApiTelephony.Screen().ScreenLists().v6().resetAllCache();
+        return OvhApiTelephony.Screen().ScreenLists().v6().query({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }).$promise.then(function (ids) {
             return $q.all(_.map(_.chunk(ids, 50), function (chunkIds) {
-                return OvhApiTelephony.Screen().ScreenLists().Lexi().getBatch({
+                return OvhApiTelephony.Screen().ScreenLists().v6().getBatch({
                     billingAccount: $stateParams.billingAccount,
                     serviceName: $stateParams.serviceName,
                     id: chunkIds
@@ -26,7 +26,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineCallsFilteringCtrl"
     };
 
     self.addScreenList = function (screen) {
-        return OvhApiTelephony.Screen().ScreenLists().Lexi().create({
+        return OvhApiTelephony.Screen().ScreenLists().v6().create({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }, screen).$promise;
@@ -37,7 +37,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineCallsFilteringCtrl"
     };
 
     self.removeScreenList = function (screen) {
-        return OvhApiTelephony.Screen().ScreenLists().Lexi().remove({
+        return OvhApiTelephony.Screen().ScreenLists().v6().remove({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName,
             id: screen.id
@@ -45,14 +45,14 @@ angular.module("managerApp").controller("TelecomTelephonyLineCallsFilteringCtrl"
     };
 
     self.fetchScreen = function () {
-        return OvhApiTelephony.Screen().Lexi().get({
+        return OvhApiTelephony.Screen().v6().get({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }).$promise;
     };
 
     self.fetchOptions = function () {
-        return OvhApiTelephony.Line().Lexi().getOptions({
+        return OvhApiTelephony.Line().v6().getOptions({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }).$promise;
@@ -136,7 +136,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineCallsFilteringCtrl"
         });
 
         // reset initial values to be able to modify again the options
-        OvhApiTelephony.Line().Lexi().resetAllCache();
+        OvhApiTelephony.Line().v6().resetAllCache();
 
         init();
     };
@@ -152,7 +152,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineCallsFilteringCtrl"
         } else {
             self.screen.isOutgoingLoading = true;
         }
-        return OvhApiTelephony.Screen().Lexi().change({
+        return OvhApiTelephony.Screen().v6().change({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }, {
@@ -173,7 +173,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineCallsFilteringCtrl"
     self.changeOption = function (opt) {
         self.options.isUpdating = {};
         self.options.isUpdating[opt] = true;
-        return OvhApiTelephony.Line().Lexi().setOptions({
+        return OvhApiTelephony.Line().v6().setOptions({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }, _.pick(self.options.modified, opt)).$promise.then(function () {

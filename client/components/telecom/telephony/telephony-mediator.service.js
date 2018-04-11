@@ -15,7 +15,7 @@ angular.module("managerApp").service("TelephonyMediator", function ($q, $statePa
 
     self.getApiScheme = function () {
         if (!self.apiScheme) {
-            return OvhApiTelephony.Lexi().schema().$promise.then(function (scheme) {
+            return OvhApiTelephony.v6().schema().$promise.then(function (scheme) {
                 self.apiScheme = scheme;
                 return self.apiScheme;
             });
@@ -52,7 +52,7 @@ angular.module("managerApp").service("TelephonyMediator", function ($q, $statePa
     ==================================*/
 
     self.getApiModels = function () {
-        return OvhApiTelephony.Lexi().schema().$promise.then(function (schemas) {
+        return OvhApiTelephony.v6().schema().$promise.then(function (schemas) {
             return schemas.models;
         });
     };

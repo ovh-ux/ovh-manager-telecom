@@ -13,7 +13,7 @@ angular.module("managerApp").service("TelecomTelephonyLineCallsForwardService", 
         _.forEach(forwards, function (elt) {
             _.extend(dataToSave, elt.saveData);
         });
-        return OvhApiTelephony.Line().Options().Lexi().update(
+        return OvhApiTelephony.Line().Options().v6().update(
             {
                 billingAccount: billingAccount,
                 serviceName: serviceName
@@ -27,7 +27,7 @@ angular.module("managerApp").service("TelecomTelephonyLineCallsForwardService", 
      * @return {Promise}
      */
     this.loadNatures = function () {
-        return OvhApiTelephony.Lexi().schema().$promise.then(
+        return OvhApiTelephony.v6().schema().$promise.then(
             function (schema) {
                 if (schema.models && schema.models["telephony.LineOptionForwardNatureTypeEnum"] && schema.models["telephony.LineOptionForwardNatureTypeEnum"].enum) {
                     return _.map(
@@ -78,7 +78,7 @@ angular.module("managerApp").service("TelecomTelephonyLineCallsForwardService", 
      * @return {Promise}
      */
     this.loadForwards = function (billingAccount, serviceName, lineOptionForwardNatureTypeEnum, allOvhNumbers) {
-        return OvhApiTelephony.Line().Options().Lexi().get({
+        return OvhApiTelephony.Line().Options().v6().get({
             billingAccount: billingAccount,
             serviceName: serviceName
         }).$promise.then(
@@ -118,7 +118,7 @@ angular.module("managerApp").service("TelecomTelephonyLineCallsForwardService", 
     this.resetAllCache = function () {
         OvhApiTelephony.Number().resetCache();
         OvhApiTelephony.Line().Options().resetCache();
-        OvhApiTelephony.Lexi().resetCache();
+        OvhApiTelephony.v6().resetCache();
     };
 
 });
