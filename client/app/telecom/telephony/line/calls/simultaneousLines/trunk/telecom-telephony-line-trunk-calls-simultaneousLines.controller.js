@@ -20,7 +20,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineTrunkSimultaneousLi
     _getNewRepartition () {
         if (this.trunkRates.change.quantityWanted > 0 && this.trunkRates.change.quantityWanted !== this.trunkRates.change.quantityOptimized) {
             this.trunkRates.change.loading = true;
-            return this.OvhApiTelephony.Trunk().Lexi().getChannelsPacksRepartition({
+            return this.OvhApiTelephony.Trunk().v6().getChannelsPacksRepartition({
                 billingAccount: this.$stateParams.billingAccount,
                 serviceName: this.$stateParams.serviceName,
                 quantity: this.trunkRates.change.quantityWanted
@@ -112,7 +112,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineTrunkSimultaneousLi
 
         this.trunkRates.loading = true;
 
-        return this.OvhApiTelephony.Trunk().Lexi().getChannelsPacksRepartition({
+        return this.OvhApiTelephony.Trunk().v6().getChannelsPacksRepartition({
             billingAccount: this.$stateParams.billingAccount,
             serviceName: this.$stateParams.serviceName,
             quantity: this.trunkRates.current.quantity
@@ -121,7 +121,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineTrunkSimultaneousLi
             this.trunkRates.current.packsRepartition = packResult.packsRepartition;
 
             if (this.currentLine.simultaneousLinesDetails.toBeDeleted > 0) {
-                return this.OvhApiTelephony.Trunk().Lexi().getChannelsPacksRepartition({
+                return this.OvhApiTelephony.Trunk().v6().getChannelsPacksRepartition({
                     billingAccount: this.$stateParams.billingAccount,
                     serviceName: this.$stateParams.serviceName,
                     quantity: this.trunkRates.pending.quantity
@@ -149,7 +149,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineTrunkSimultaneousLi
 
     orderPacks () {
         this.trunkRates.loading = true;
-        return this.OvhApiOrderTelephony.Lexi().orderSimultaneousTrunkLines({
+        return this.OvhApiOrderTelephony.v6().orderSimultaneousTrunkLines({
             serviceName: this.$stateParams.serviceName
         }, { quantity: this.trunkRates.change.quantityOptimized }).$promise.then((packOrder) => {
             this.trunkRates.order = packOrder;

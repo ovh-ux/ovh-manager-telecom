@@ -178,7 +178,7 @@ angular.module("managerApp").service("TelecomTelephonyBillingAccountOrderAliasSe
      */
     this.getForeignCountries = function () {
         return this.getUser()
-            .then(function (user) {
+            .then(function () {
                 return OvhApiTelephony.v6().schema().$promise.then(
                     function (schema) {
                         return schema.models["telephony.NumberCountryEnum"].enum;
