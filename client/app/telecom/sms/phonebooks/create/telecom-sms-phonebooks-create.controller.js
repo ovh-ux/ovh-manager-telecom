@@ -4,7 +4,7 @@ angular.module("managerApp").controller("TelecomSmsPhonebooksCreateCtrl", class 
         this.$stateParams = $stateParams;
         this.api = {
             sms: {
-                phonebooks: OvhApiSms.Phonebooks().Lexi()
+                phonebooks: OvhApiSms.Phonebooks().v6()
             }
         };
         this.ToastError = ToastError;

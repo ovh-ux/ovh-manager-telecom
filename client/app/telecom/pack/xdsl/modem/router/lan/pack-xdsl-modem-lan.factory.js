@@ -31,7 +31,7 @@ angular.module("managerApp").factory("PackXdslModemLanObject", function (OvhApiX
     PackXdslModemLanObject.prototype.save = function (serviceName) {
         var self = this;
         this.busy = true;
-        return OvhApiXdsl.Modem().Lan().Lexi().update(
+        return OvhApiXdsl.Modem().Lan().v6().update(
             {
                 xdslId: serviceName,
                 lanName: this.lanName

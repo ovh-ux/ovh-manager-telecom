@@ -9,8 +9,8 @@ angular.module("managerApp").controller("TelecomSmsReceiversCtrl", class Telecom
         this.$uibModal = $uibModal;
         this.api = {
             sms: {
-                receivers: OvhApiSms.Receivers().Lexi(),
-                task: OvhApiSms.Task().Lexi()
+                receivers: OvhApiSms.Receivers().v6(),
+                task: OvhApiSms.Task().v6()
             }
         };
         this.CSVParser = CSVParser;

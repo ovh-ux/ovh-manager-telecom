@@ -40,7 +40,7 @@ angular.module("managerApp").service("TelephonyAccessoriesOrderProcess", functio
 
     self.getAvailableAccessories = function (country) {
         if (!orderProcess.accessoriesList) {
-            return OvhApiTelephony.Lexi().accessories({
+            return OvhApiTelephony.v6().accessories({
                 country: country || "fr"
             }).$promise.then(function (accessoriesList) {
                 orderProcess.accessoriesList = _.map(accessoriesList, function (accessory) {
@@ -66,7 +66,7 @@ angular.module("managerApp").service("TelephonyAccessoriesOrderProcess", functio
     ================================*/
 
     self.getOrderCheckout = function () {
-        return OvhApiOrder.Telephony().Lexi().getAccessories({
+        return OvhApiOrder.Telephony().v6().getAccessories({
             billingAccount: orderProcess.billingAccount,
             accessories: getAccessoryList(),
             retractation: true,
@@ -76,7 +76,7 @@ angular.module("managerApp").service("TelephonyAccessoriesOrderProcess", functio
     };
 
     self.orderCheckout = function () {
-        return OvhApiOrder.Telephony().Lexi().orderAccessories({
+        return OvhApiOrder.Telephony().v6().orderAccessories({
             billingAccount: orderProcess.billingAccount
         }, {
             accessories: getAccessoryList(),

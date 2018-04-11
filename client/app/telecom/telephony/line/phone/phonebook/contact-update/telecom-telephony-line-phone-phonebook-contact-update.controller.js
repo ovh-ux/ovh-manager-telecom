@@ -40,7 +40,7 @@ angular.module("managerApp").controller("TelecomTelephonyLinePhonePhonebookConta
     self.update = function () {
         self.phonecontactForm.isAdding = true;
         return $q.all([
-            OvhApiTelephony.Line().Phone().Phonebook().PhonebookContact().Lexi().update({
+            OvhApiTelephony.Line().Phone().Phonebook().PhonebookContact().v6().update({
                 billingAccount: $stateParams.billingAccount,
                 serviceName: $stateParams.serviceName,
                 bookKey: self.phonebook.bookKey,

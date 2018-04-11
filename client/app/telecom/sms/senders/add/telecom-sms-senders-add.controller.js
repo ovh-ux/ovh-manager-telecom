@@ -6,8 +6,8 @@ angular.module("managerApp").controller("TelecomSmsSendersAddCtrl", class Teleco
         this.$state = $state;
         this.$timeout = $timeout;
         this.api = {
-            sms: OvhApiSms.Lexi(),
-            smsSenders: OvhApiSms.Senders().Lexi()
+            sms: OvhApiSms.v6(),
+            smsSenders: OvhApiSms.Senders().v6()
         };
         this.Toast = Toast;
         this.ToastError = ToastError;

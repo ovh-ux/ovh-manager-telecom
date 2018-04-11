@@ -79,7 +79,7 @@ angular.module("managerApp").factory("VoipScreenScreenList", function (OvhApiTel
         self.state = "CREATING";
 
         return OvhApiTelephony.OvhPabx().Dialplan().Extension().ConditionScreenList()
-            .Lexi()
+            .v6()
             .create({
                 billingAccount: self.billingAccount,
                 serviceName: self.serviceName,
@@ -105,7 +105,7 @@ angular.module("managerApp").factory("VoipScreenScreenList", function (OvhApiTel
         self.state = "DELETING";
 
         return OvhApiTelephony.OvhPabx().Dialplan().Extension().ConditionScreenList()
-            .Lexi()
+            .v6()
             .remove({
                 billingAccount: self.billingAccount,
                 serviceName: self.serviceName,

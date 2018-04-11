@@ -34,11 +34,11 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountCtrl", fu
     /* -----  End of ACTIONS  ------*/
 
     function fetchGroupTerminationTask (group) {
-        return OvhApiTelephony.OfferTask().Lexi().query({
+        return OvhApiTelephony.OfferTask().v6().query({
             billingAccount: group.billingAccount
         }).$promise.then(function (offerTaskIds) {
             return $q.all(_.map(offerTaskIds, function (id) {
-                return OvhApiTelephony.OfferTask().Lexi().get({
+                return OvhApiTelephony.OfferTask().v6().get({
                     billingAccount: group.billingAccount,
                     taskId: id
                 }).$promise;
@@ -69,7 +69,7 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountCtrl", fu
                 Toast.error([$translate.instant("telephony_group_loading_error", $stateParams), error.data.message].join(" "));
                 return $q.reject(error);
             }),
-            OvhApiOrder.Telephony().Lexi().billingAccounts().$promise.then(
+            OvhApiOrder.Telephony().v6().billingAccounts().$promise.then(
                 function (allowedBillingAccounts) {
                     self.canOrderAlias = allowedBillingAccounts.indexOf($stateParams.billingAccount) > -1;
                     return self.canOrderAlias;

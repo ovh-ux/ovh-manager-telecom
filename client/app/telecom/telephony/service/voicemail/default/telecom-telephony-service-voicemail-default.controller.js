@@ -16,7 +16,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceVoicemailDefault
     }
 
     function fetchOptions () {
-        return OvhApiTelephony.Line().Lexi().getOptions({
+        return OvhApiTelephony.Line().v6().getOptions({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }).$promise;
@@ -48,7 +48,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceVoicemailDefault
 
     self.saveDefaultVoicemail = function () {
         self.saving = true;
-        var save = OvhApiTelephony.Line().Lexi().setOptions({
+        var save = OvhApiTelephony.Line().v6().setOptions({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }, self.options).$promise;
@@ -125,7 +125,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceVoicemailDefault
         });
 
         // reset initial values to be able to modify again the options
-        OvhApiTelephony.Line().Lexi().resetAllCache();
+        OvhApiTelephony.Line().v6().resetAllCache();
 
         init();
     };

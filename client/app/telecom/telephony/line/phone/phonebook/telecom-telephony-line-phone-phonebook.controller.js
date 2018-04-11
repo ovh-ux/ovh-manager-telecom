@@ -9,12 +9,12 @@ angular.module("managerApp").controller("TelecomTelephonyLinePhonePhonebookCtrl"
     ===============================*/
 
     function fetchPhonebook () {
-        return OvhApiTelephony.Line().Phone().Phonebook().Lexi().query({
+        return OvhApiTelephony.Line().Phone().Phonebook().v6().query({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }).$promise.then(function (phonebookIds) {
             if (_.size(phonebookIds)) {
-                return OvhApiTelephony.Line().Phone().Phonebook().Lexi().get({
+                return OvhApiTelephony.Line().Phone().Phonebook().v6().get({
                     billingAccount: $stateParams.billingAccount,
                     serviceName: $stateParams.serviceName,
                     bookKey: _.first(phonebookIds)
@@ -25,13 +25,13 @@ angular.module("managerApp").controller("TelecomTelephonyLinePhonePhonebookCtrl"
     }
 
     function fetchPhonebookContact (bookKey) {
-        return OvhApiTelephony.Line().Phone().Phonebook().PhonebookContact().Lexi().query({
+        return OvhApiTelephony.Line().Phone().Phonebook().PhonebookContact().v6().query({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName,
             bookKey: bookKey
         }).$promise.then(function (phonebookContactIds) {
             return $q.all(_.map(_.chunk(phonebookContactIds, 50), function (chunkIds) {
-                return OvhApiTelephony.Line().Phone().Phonebook().PhonebookContact().Lexi().getBatch({
+                return OvhApiTelephony.Line().Phone().Phonebook().PhonebookContact().v6().getBatch({
                     billingAccount: $stateParams.billingAccount,
                     serviceName: $stateParams.serviceName,
                     bookKey: bookKey,
@@ -69,7 +69,7 @@ angular.module("managerApp").controller("TelecomTelephonyLinePhonePhonebookCtrl"
     self.createPhonebook = function (form) {
         self.phonebookToAdd.isAdding = true;
         var name = _.pick(self.phonebookToAdd, "name");
-        return OvhApiTelephony.Line().Phone().Phonebook().Lexi().create({
+        return OvhApiTelephony.Line().Phone().Phonebook().v6().create({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }, name).$promise.then(function (phonebook) {
@@ -99,7 +99,7 @@ angular.module("managerApp").controller("TelecomTelephonyLinePhonePhonebookCtrl"
     };
 
     self.savePhonebook = function () {
-        return OvhApiTelephony.Line().Phone().Phonebook().Lexi().update({
+        return OvhApiTelephony.Line().Phone().Phonebook().v6().update({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName,
             bookKey: self.phonebook.bookKey
@@ -211,7 +211,7 @@ angular.module("managerApp").controller("TelecomTelephonyLinePhonePhonebookCtrl"
     self.exportPhonebookContact = function () {
         self.phonebookContact.isExporting = true;
         var tryGetCsvExport = function () {
-            return OvhApiTelephony.Line().Phone().Phonebook().Lexi().getExport({
+            return OvhApiTelephony.Line().Phone().Phonebook().v6().getExport({
                 billingAccount: $stateParams.billingAccount,
                 serviceName: $stateParams.serviceName,
                 bookKey: _.get(self.phonebook, "bookKey"),
@@ -268,7 +268,7 @@ angular.module("managerApp").controller("TelecomTelephonyLinePhonePhonebookCtrl"
 
     self.removePhonebookContact = function (contact) {
         self.phonebookContact.isDeleting = true;
-        return OvhApiTelephony.Line().Phone().Phonebook().PhonebookContact().Lexi().remove({
+        return OvhApiTelephony.Line().Phone().Phonebook().PhonebookContact().v6().remove({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName,
             bookKey: self.phonebook.bookKey,
@@ -286,7 +286,7 @@ angular.module("managerApp").controller("TelecomTelephonyLinePhonePhonebookCtrl"
     self.deleteSelectedContacts = function () {
         var contacts = self.getSelection();
         var queries = contacts.map(function (contact) {
-            return OvhApiTelephony.Line().Phone().Phonebook().PhonebookContact().Lexi().remove({
+            return OvhApiTelephony.Line().Phone().Phonebook().PhonebookContact().v6().remove({
                 billingAccount: $stateParams.billingAccount,
                 serviceName: $stateParams.serviceName,
                 bookKey: _.get(self.phonebook, "bookKey"),
@@ -341,7 +341,7 @@ angular.module("managerApp").controller("TelecomTelephonyLinePhonePhonebookCtrl"
 
     self.refresh = function () {
         self.phonebookContact.isLoading = true;
-        OvhApiTelephony.Line().Phone().Phonebook().PhonebookContact().Lexi().resetAllCache();
+        OvhApiTelephony.Line().Phone().Phonebook().PhonebookContact().v6().resetAllCache();
         return fetchPhonebookContact(self.phonebook.bookKey).then(function (phonebookContact) {
             self.phonebookContact.raw = phonebookContact;
             self.sortPhonebookContact();

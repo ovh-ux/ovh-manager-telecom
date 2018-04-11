@@ -58,7 +58,7 @@ angular.module("managerApp")
         };
 
         function updateIsLegacyOffer () {
-            return OvhApiPackXdsl.Lexi().get({
+            return OvhApiPackXdsl.v6().get({
                 packId: $stateParams.packName
             }).$promise.then(
                 function (data) {

@@ -34,7 +34,7 @@ angular.module("managerApp").controller("OverTheBoxDetailsCtrl", function ($scop
      */
     function getAvailableAction () {
         self.availableAction = {};
-        return OvhApiOverTheBox.Lexi().getAvailableActions({
+        return OvhApiOverTheBox.v6().getAvailableActions({
             serviceName: $stateParams.serviceName
         }).$promise.then(function (actions) {
             actions.forEach(function (action) {
@@ -248,7 +248,7 @@ angular.module("managerApp").controller("OverTheBoxDetailsCtrl", function ($scop
             self.checkDevices(),
             self.getDevice(),
             self.getTasks(),
-            OvhApiOverTheBox.Lexi().get({
+            OvhApiOverTheBox.v6().get({
                 serviceName: $stateParams.serviceName
             }).$promise.then(function (otb) {
                 self.nameEditable = otb.status === "active";
@@ -271,7 +271,7 @@ angular.module("managerApp").controller("OverTheBoxDetailsCtrl", function ($scop
      */
     self.LaunchAction = function (actionName) {
         self.availableAction = {};
-        return OvhApiOverTheBox.Lexi().launchAction({
+        return OvhApiOverTheBox.v6().launchAction({
             serviceName: $stateParams.serviceName
         }, {
             name: actionName
@@ -297,7 +297,7 @@ angular.module("managerApp").controller("OverTheBoxDetailsCtrl", function ($scop
      */
     self.getServiceInfos = function () {
         self.loaders.infos = true;
-        return OvhApiOverTheBox.Lexi().getServiceInfos({ serviceName: $stateParams.serviceName }).$promise.then(
+        return OvhApiOverTheBox.v6().getServiceInfos({ serviceName: $stateParams.serviceName }).$promise.then(
             function (serviceInfos) {
                 self.serviceInfos = serviceInfos;
                 if (self.serviceInfos && self.serviceInfos.renew) {
@@ -319,7 +319,7 @@ angular.module("managerApp").controller("OverTheBoxDetailsCtrl", function ($scop
      */
     self.getTasks = function () {
         self.loaders.tasks = true;
-        return OvhApiOverTheBox.Lexi().getTasks(
+        return OvhApiOverTheBox.v6().getTasks(
             {
                 serviceName: $stateParams.serviceName
             }
@@ -344,7 +344,7 @@ angular.module("managerApp").controller("OverTheBoxDetailsCtrl", function ($scop
      */
     self.checkDevices = function () {
         self.loaders.checking = true;
-        return OvhApiOverTheBox.Lexi().checkDevices().$promise.then(
+        return OvhApiOverTheBox.v6().checkDevices().$promise.then(
             function (devices) {
                 self.allDevices = devices;
                 self.deviceIds = devices.map(function (device) {
@@ -370,7 +370,7 @@ angular.module("managerApp").controller("OverTheBoxDetailsCtrl", function ($scop
      */
     self.getDevice = function () {
         self.loaders.device = true;
-        return OvhApiOverTheBox.Lexi().getDevice({
+        return OvhApiOverTheBox.v6().getDevice({
             serviceName: $stateParams.serviceName
         }).$promise.then(
             function (devices) {
@@ -400,7 +400,7 @@ angular.module("managerApp").controller("OverTheBoxDetailsCtrl", function ($scop
      */
     self.linkDevice = function (device) {
         self.loaders.device = true;
-        return OvhApiOverTheBox.Lexi().linkDevice({
+        return OvhApiOverTheBox.v6().linkDevice({
             serviceName: $stateParams.serviceName
         }, {
             deviceId: device.deviceId
@@ -451,7 +451,7 @@ angular.module("managerApp").controller("OverTheBoxDetailsCtrl", function ($scop
      */
     self.resiliate = function () {
         self.loaders.resiliating = true;
-        return OvhApiOverTheBox.Lexi().deleteAtExpiration({
+        return OvhApiOverTheBox.v6().deleteAtExpiration({
             serviceName: $stateParams.serviceName
         }, null).$promise.then(self.getServiceInfos).then(
             function (data) {
@@ -487,7 +487,7 @@ angular.module("managerApp").controller("OverTheBoxDetailsCtrl", function ($scop
      */
     self.cancelResiliation = function () {
         self.loaders.cancellingResiliation = true;
-        return OvhApiOverTheBox.Lexi().keepAtExpiration({
+        return OvhApiOverTheBox.v6().keepAtExpiration({
             serviceName: $stateParams.serviceName
         }, null).$promise.then(self.getServiceInfos).then(function (data) {
             Toast.success(

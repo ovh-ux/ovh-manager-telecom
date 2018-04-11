@@ -11,7 +11,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineAssistTroubleshooti
 
     function init () {
         self.process = troubleshootingProcess;
-        OvhApiTelephony.Line().Phone().Phonebook().Lexi().query({
+        OvhApiTelephony.Line().Phone().Phonebook().v6().query({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }).$promise.then(function (serverUrl) {

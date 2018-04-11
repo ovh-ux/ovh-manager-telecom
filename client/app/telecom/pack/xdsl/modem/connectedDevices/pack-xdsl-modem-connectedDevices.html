@@ -37,7 +37,8 @@
             </button>
         </div>
 
-        <div class="description mt-2">
+        <div class="description mt-2"
+             data-ng-if="DeviceCtrl.showDevices">
             <oui-datagrid data-rows="DeviceCtrl.devices">
                 <oui-column data-title="'common_table_header_type' | translate"
                             data-property="interfaceType" data-sortable="asc">

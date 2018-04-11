@@ -8,12 +8,12 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxCampaignsCtrl
     ===============================*/
 
     function fetchCampaigns () {
-        return OvhApiTelephony.Fax().Campaigns().Lexi().query({
+        return OvhApiTelephony.Fax().Campaigns().v6().query({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }).$promise.then(function (campaignsIds) {
             return $q.all(_.map(campaignsIds, function (id) {
-                return OvhApiTelephony.Fax().Campaigns().Lexi().get({
+                return OvhApiTelephony.Fax().Campaigns().v6().get({
                     billingAccount: $stateParams.billingAccount,
                     serviceName: $stateParams.serviceName,
                     id: id
@@ -65,8 +65,8 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxCampaignsCtrl
 
     self.refresh = function () {
         self.campaigns.isLoading = true;
-        OvhApiTelephony.Fax().Campaigns().Lexi().resetQueryCache();
-        OvhApiTelephony.Fax().Campaigns().Lexi().resetCache();
+        OvhApiTelephony.Fax().Campaigns().v6().resetQueryCache();
+        OvhApiTelephony.Fax().Campaigns().v6().resetCache();
         return fetchCampaigns().then(function (campaigns) {
             self.campaigns.raw = campaigns;
             self.applySorting();
@@ -123,7 +123,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxCampaignsCtrl
             return $q.when(null);
         }
 
-        return OvhApiTelephony.Fax().Campaigns().Lexi().start({
+        return OvhApiTelephony.Fax().Campaigns().v6().start({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName,
             id: campaign.id
@@ -143,7 +143,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxCampaignsCtrl
             return $q.when(null);
         }
 
-        return OvhApiTelephony.Fax().Campaigns().Lexi().stop({
+        return OvhApiTelephony.Fax().Campaigns().v6().stop({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName,
             id: campaign.id

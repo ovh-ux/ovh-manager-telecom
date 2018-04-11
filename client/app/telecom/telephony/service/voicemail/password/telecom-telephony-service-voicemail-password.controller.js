@@ -11,7 +11,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceVoicemailPasswor
 
         self.isFax = $state.current.name.indexOf("fax") > -1;
 
-        return OvhApiTelephony.Voicemail().Lexi().getNumbersSettings({
+        return OvhApiTelephony.Voicemail().v6().getNumbersSettings({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }).$promise.then(function (options) {
@@ -39,7 +39,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceVoicemailPasswor
     self.submitPasswordChange = function (form) {
         self.submitting = true;
         self.success = false;
-        return OvhApiTelephony.Voicemail().Lexi().changePassword({
+        return OvhApiTelephony.Voicemail().v6().changePassword({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }, {

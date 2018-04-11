@@ -25,7 +25,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineConvertCtrl", funct
 
     self.convertToNumber = function () {
         self.isConverting = true;
-        return OvhApiTelephony.Line().Lexi().convertToNumber({
+        return OvhApiTelephony.Line().v6().convertToNumber({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }, {}).$promise.then(function () {
@@ -42,7 +42,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineConvertCtrl", funct
 
     self.cancelConvertToNumber = function () {
         self.isCancelling = true;
-        return OvhApiTelephony.Line().Lexi().cancelConvertToNumber({
+        return OvhApiTelephony.Line().v6().cancelConvertToNumber({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }, {}).$promise.then(function () {
@@ -82,7 +82,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineConvertCtrl", funct
             return ["sip", "mgcp"].indexOf(service.featureType) > -1;
         });
 
-        return OvhApiPackXdslVoipLine.Erika().services().aggregate("packName").execute().$promise.then(function (lines) {
+        return OvhApiPackXdslVoipLine.v7().services().aggregate("packName").execute().$promise.then(function (lines) {
             filteredServices = _.filter(filteredServices, function (service) {
                 return !_.some(lines, { key: service.serviceName });
             });

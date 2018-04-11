@@ -11,7 +11,7 @@ angular.module("managerApp").controller("XdslModemFirewallCtrl", function ($stat
             Toast.error($translate.instant("xdsl_modem_firewall_an_error_ocurred"));
             return $q.reject();
         }
-        return OvhApiXdsl.Modem().Lexi().update(
+        return OvhApiXdsl.Modem().v6().update(
             {
                 xdslId: $stateParams.serviceName
             },

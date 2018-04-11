@@ -10,7 +10,7 @@ angular.module("managerApp").service("PackMediator", function ($q, OvhApiPackXds
 
         // chunkify to avoids "request too large" error
         return $q.all(_.map(_.chunk(ids, 200), function (chunkIds) {
-            return OvhApiXdsl.Lines().Erika().query().batch("serviceName", [""].concat(chunkIds), ",").expand().execute().$promise;
+            return OvhApiXdsl.Lines().v7().query().batch("serviceName", [""].concat(chunkIds), ",").expand().execute().$promise;
         })).then(function (chunkResult) {
             return _.flatten(chunkResult);
         }).then(function (result) {
@@ -25,7 +25,7 @@ angular.module("managerApp").service("PackMediator", function ($q, OvhApiPackXds
 
         // chunkify to avoids "request too large" error
         return $q.all(_.map(_.chunk(ids, 200), function (chunkIds) {
-            return OvhApiPackXdsl.Erika().access().batch("packName", [""].concat(chunkIds), ",").execute().$promise;
+            return OvhApiPackXdsl.v7().access().batch("packName", [""].concat(chunkIds), ",").execute().$promise;
         })).then(function (chunkResult) {
             return _.flatten(chunkResult);
         }).then(function (result) {
@@ -40,7 +40,7 @@ angular.module("managerApp").service("PackMediator", function ($q, OvhApiPackXds
 
         // chunkify to avoids "request too large" error
         return $q.all(_.map(_.chunk(ids, 200), function (chunkIds) {
-            return OvhApiXdsl.Erika().query().batch("serviceName", [""].concat(chunkIds), ",").expand().execute().$promise;
+            return OvhApiXdsl.v7().query().batch("serviceName", [""].concat(chunkIds), ",").expand().execute().$promise;
         })).then(function (chunkResult) {
             return _.flatten(chunkResult);
         }).then(function (result) {
@@ -49,7 +49,7 @@ angular.module("managerApp").service("PackMediator", function ($q, OvhApiPackXds
     };
 
     self.fetchXdslByNumber = function () {
-        return OvhApiXdsl.Lines().Erika().get().aggregate("serviceName").execute().$promise.then(function (result) {
+        return OvhApiXdsl.Lines().v7().get().aggregate("serviceName").execute().$promise.then(function (result) {
             return self.fetchXdslByIds(_.map(result, function (item) {
                 if (item && item.path) {
                     var match = /\/xdsl\/([^\/]+)/.exec(item.path);
@@ -61,7 +61,7 @@ angular.module("managerApp").service("PackMediator", function ($q, OvhApiPackXds
     };
 
     self.fetchPacks = function () {
-        var request = OvhApiPackXdsl.Erika().query().sort(["description", "offerDescription", "packName"]);
+        var request = OvhApiPackXdsl.v7().query().sort(["description", "offerDescription", "packName"]);
         var packList = [];
         return request.expand().execute().$promise.then(function (result) {
             packList = _.pluck(result, "value");
@@ -120,7 +120,7 @@ angular.module("managerApp").service("PackMediator", function ($q, OvhApiPackXds
     };
 
     self.fetchXdsl = function (xdslType) {
-        var request = OvhApiXdsl.Erika().query().addFilter("accessType", "eq", xdslType).sort(["description", "accessName"]);
+        var request = OvhApiXdsl.v7().query().addFilter("accessType", "eq", xdslType).sort(["description", "accessName"]);
         var xdslList = [];
         return request.expand().execute().$promise.then(function (result) {
             xdslList = xdslList.concat(_.pluck(result, "value"));
@@ -145,7 +145,7 @@ angular.module("managerApp").service("PackMediator", function ($q, OvhApiPackXds
     };
 
     self.getPackStatus = function (packId) {
-        return OvhApiPackXdsl.Lexi().getServiceInfos(
+        return OvhApiPackXdsl.v6().getServiceInfos(
             {
                 packId: packId
             }
@@ -162,8 +162,8 @@ angular.module("managerApp").service("PackMediator", function ($q, OvhApiPackXds
 
     self.getCount = function () {
         return $q.all({
-            pack: OvhApiPackXdsl.Erika().query().execute().$promise,
-            xdsl: OvhApiXdsl.Erika().query().addFilter("status", "ne", "deleting").execute().$promise
+            pack: OvhApiPackXdsl.v7().query().execute().$promise,
+            xdsl: OvhApiXdsl.v7().query().addFilter("status", "ne", "deleting").execute().$promise
         }).then(function (result) {
             return result.pack.length + result.xdsl.length;
         });

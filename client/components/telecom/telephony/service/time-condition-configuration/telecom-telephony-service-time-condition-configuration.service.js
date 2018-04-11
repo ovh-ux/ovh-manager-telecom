@@ -8,7 +8,7 @@ angular.module("managerApp").service("voipTimeConditionConfiguration", class voi
     }
 
     exportConfiguration (data) {
-        return this.OvhApiMe.Lexi().get().$promise.then((me) => {
+        return this.OvhApiMe.v6().get().$promise.then((me) => {
             let fileName = `${me.nichandle}_${moment().format("YYYY_MM_DD_HHmmss_SSS")}.json`;
             let jsonData = JSON.stringify(data);
 
@@ -35,8 +35,8 @@ angular.module("managerApp").service("voipTimeConditionConfiguration", class voi
     }
 
     importConfiguration (file) {
-        return this.OvhApiMe.Document().Lexi().upload(file.name, file).then((doc) =>
-            this.OvhApiMe.Document().Lexi().get({
+        return this.OvhApiMe.Document().v6().upload(file.name, file).then((doc) =>
+            this.OvhApiMe.Document().v6().get({
                 id: doc.id
             }).$promise.then((newDoc) =>
                 this.$http.get(newDoc.getUrl)

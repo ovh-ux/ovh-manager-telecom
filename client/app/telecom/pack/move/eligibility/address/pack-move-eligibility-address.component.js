@@ -26,7 +26,7 @@ angular.module("managerApp").component("packMoveEligibilityAddress", {
             if (validator.isZipcode(zipcode, ["metropolitanFrance"])) {
                 self.loaders.cities = true;
                 self.loading = true;
-                OvhApiXdslEligibility.Lexi().getCities(
+                OvhApiXdslEligibility.v6().getCities(
                     {
                         zipCode: zipcode
                     }
@@ -55,7 +55,7 @@ angular.module("managerApp").component("packMoveEligibilityAddress", {
             if (partialStreet.length > 2) {
                 self.loaders.streets = true;
                 self.loading = true;
-                return OvhApiXdslEligibility.Lexi().getStreets(
+                return OvhApiXdslEligibility.v6().getStreets(
                     {
                         inseeCode: self.address.city.inseeCode,
                         partialName: partialStreet
@@ -92,7 +92,7 @@ angular.module("managerApp").component("packMoveEligibilityAddress", {
             this.loading = true;
             self.submited();
 
-            return OvhApiPackXdslMove.Lexi().pollElligibility($scope, {
+            return OvhApiPackXdslMove.v6().pollElligibility($scope, {
                 packName: $stateParams.packName,
                 address: self.address
             }).then(

@@ -13,12 +13,12 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxFilteringCtrl
     =============================== */
 
     function clearCache () {
-        OvhApiTelephony.Fax().Lexi().resetCache();
-        OvhApiTelephony.Fax().Lexi().resetQueryCache();
+        OvhApiTelephony.Fax().v6().resetCache();
+        OvhApiTelephony.Fax().v6().resetQueryCache();
     }
 
     function fetchScreenLists () {
-        return OvhApiTelephony.Fax().Lexi().getScreenLists({
+        return OvhApiTelephony.Fax().v6().getScreenLists({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }).$promise.then(function (screenLists) {
@@ -40,7 +40,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxFilteringCtrl
 
     function fetchSettings () {
         clearCache();
-        return OvhApiTelephony.Fax().Lexi().getSettings({
+        return OvhApiTelephony.Fax().v6().getSettings({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }).$promise;
@@ -60,7 +60,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxFilteringCtrl
 
     self.updateFilteringList = function () {
         self.screenListsForm.isUpdating = true;
-        return OvhApiTelephony.Fax().Lexi().createScreenLists({
+        return OvhApiTelephony.Fax().v6().createScreenLists({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }, _.pick(self.screenListsForm, "filteringList")).$promise.catch(function (err) {
@@ -75,7 +75,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxFilteringCtrl
         self.screenListsForm.isUpdating = true;
         var param = _.pick(faxSettings, ["faxMaxCall", "faxQuality", "faxTagLine", "fromEmail", "fromName", "mailFormat", "redirectionEmail"]);
         param.rejectAnonymous = self.rejectAnonymous;
-        return OvhApiTelephony.Fax().Lexi().setSettings({
+        return OvhApiTelephony.Fax().v6().setSettings({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }, param).$promise.then(function () {
@@ -96,7 +96,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxFilteringCtrl
         ].join("");
         screenList[screenListType] = [].concat(self.screenListToAdd.number);
         self.screenListsForm.isAdding = true;
-        return OvhApiTelephony.Fax().Lexi().createScreenLists({
+        return OvhApiTelephony.Fax().v6().createScreenLists({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }, screenList).$promise.then(function () {
@@ -131,7 +131,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxFilteringCtrl
 
         if (_.size(listQuery)) {
             queries = {
-                update: OvhApiTelephony.Fax().Lexi().updateScreenLists({
+                update: OvhApiTelephony.Fax().v6().updateScreenLists({
                     billingAccount: $stateParams.billingAccount,
                     serviceName: $stateParams.serviceName
                 }, listQuery).$promise,

@@ -19,7 +19,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationLiveC
         self.error = null;
 
         if (!self.type) {
-            promise = params.apiEndpoint.Hunting().Queue().LiveCalls().Lexi().eavesdrop({
+            promise = params.apiEndpoint.Hunting().Queue().LiveCalls().v6().eavesdrop({
                 billingAccount: params.billingAccount,
                 serviceName: params.serviceName,
                 queueId: params.queueId,
@@ -28,7 +28,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationLiveC
                 number: self.number
             }).$promise;
         } else {
-            promise = params.apiEndpoint.Hunting().Queue().LiveCalls().Lexi().whisper({
+            promise = params.apiEndpoint.Hunting().Queue().LiveCalls().v6().whisper({
                 billingAccount: params.billingAccount,
                 serviceName: params.serviceName,
                 queueId: params.queueId,

@@ -40,21 +40,21 @@ angular.module("managerApp").controller("TelecomTelephonyAliasAdministrationConv
     };
 
     self.getAvailableOffers = function (service) {
-        return OvhApiTelephony.Number().Lexi().convertToLineAvailableOffers({
+        return OvhApiTelephony.Number().v6().convertToLineAvailableOffers({
             billingAccount: service.billingAccount,
             serviceName: service.serviceName
         }).$promise;
     };
 
     self.fetchConvertToLineTask = function () {
-        return OvhApiTelephony.Service().OfferTask().Lexi().query({
+        return OvhApiTelephony.Service().OfferTask().v6().query({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName,
             action: "convertToSip",
             type: "offer"
         }).$promise.then(function (taskIds) {
             return $q.all(_.map(taskIds, function (id) {
-                return OvhApiTelephony.Service().OfferTask().Lexi().get({
+                return OvhApiTelephony.Service().OfferTask().v6().get({
                     billingAccount: $stateParams.billingAccount,
                     serviceName: $stateParams.serviceName,
                     taskId: id
@@ -67,7 +67,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasAdministrationConv
 
     self.convertToLine = function () {
         self.isConverting = true;
-        return OvhApiTelephony.Number().Lexi().convertToLine({
+        return OvhApiTelephony.Number().v6().convertToLine({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }, {
@@ -85,7 +85,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasAdministrationConv
 
     self.cancelConvertion = function () {
         self.isCancelling = true;
-        return OvhApiTelephony.Number().Lexi().cancelConvertToLine({
+        return OvhApiTelephony.Number().v6().cancelConvertToLine({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }, {}).$promise.then(function () {

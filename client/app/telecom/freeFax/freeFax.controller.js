@@ -11,7 +11,7 @@ angular.module("managerApp")
                 serviceName: self.serviceName
             }).$promise.then(function (freeFax) {
                 $scope.freeFax = freeFax;
-                return OvhApiFreeFax.Lexi().voiceMailGetRouting({
+                return OvhApiFreeFax.v6().voiceMailGetRouting({
                     serviceName: self.serviceName
                 }).$promise.then(function (voiceMail) {
                     $scope.freeFax.voicemailActive = voiceMail.value === "voicemail";

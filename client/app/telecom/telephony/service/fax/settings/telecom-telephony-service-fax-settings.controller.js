@@ -8,7 +8,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxSettingsCtrl"
     =============================== */
 
     function fetchEnums () {
-        return OvhApiTelephony.Lexi().schema({
+        return OvhApiTelephony.v6().schema({
             billingAccount: $stateParams.billingAccount
         }).$promise.then(function (schema) {
             return {
@@ -20,15 +20,15 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxSettingsCtrl"
     }
 
     function fetchSettings () {
-        return OvhApiTelephony.Fax().Lexi().getSettings({
+        return OvhApiTelephony.Fax().v6().getSettings({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }).$promise;
     }
 
     function refreshSettings () {
-        OvhApiTelephony.Fax().Lexi().resetCache();
-        OvhApiTelephony.Fax().Lexi().resetQueryCache();
+        OvhApiTelephony.Fax().v6().resetCache();
+        OvhApiTelephony.Fax().v6().resetQueryCache();
         return fetchSettings().then(function (settings) {
             _.assign(
                 self.settings,
@@ -64,7 +64,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxSettingsCtrl"
     self.updateAllSettings = function () {
         self.updatingSettings = true;
 
-        return OvhApiTelephony.Fax().Lexi().setSettings({
+        return OvhApiTelephony.Fax().v6().setSettings({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }, self.settings).$promise.then(function () {

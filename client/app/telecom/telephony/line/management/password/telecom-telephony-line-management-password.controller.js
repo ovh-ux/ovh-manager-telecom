@@ -147,7 +147,7 @@ angular.module("managerApp").controller("TelecomTelephonyLinePasswordCtrl", func
     this.save = function () {
         if (!$scope.passwordForm.$invalid) {
             self.loading.save = true;
-            return OvhApiTelephony.Line().Lexi().changePassword(
+            return OvhApiTelephony.Line().v6().changePassword(
                 {
                     billingAccount: $stateParams.billingAccount,
                     serviceName: $stateParams.serviceName

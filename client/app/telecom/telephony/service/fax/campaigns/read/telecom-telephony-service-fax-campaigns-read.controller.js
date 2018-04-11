@@ -8,7 +8,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxCampaignsRead
     ===============================*/
 
     function fetchCampaignDetail (theCampaign) {
-        return OvhApiTelephony.Fax().Campaigns().Lexi().getDetail({
+        return OvhApiTelephony.Fax().Campaigns().v6().getDetail({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName,
             id: theCampaign.id

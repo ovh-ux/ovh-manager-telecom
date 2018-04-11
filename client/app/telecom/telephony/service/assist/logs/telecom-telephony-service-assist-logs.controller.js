@@ -66,7 +66,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceAssistLogsCtrl",
             self.loading.user = true;
 
             // if request fail - no need to catch it
-            OvhApiMe.Lexi().get().$promise.then(function (user) {
+            OvhApiMe.v6().get().$promise.then(function (user) {
                 self.user = user;
                 self.edition.notifications.logs.email = self.user.email;
             }).finally(function () {

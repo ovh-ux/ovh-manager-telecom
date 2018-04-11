@@ -19,7 +19,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxCampaignsRemo
         self.loading.removeCampaign = true;
 
         return $q.all([
-            OvhApiTelephony.Fax().Campaigns().Lexi().delete({
+            OvhApiTelephony.Fax().Campaigns().v6().delete({
                 billingAccount: $stateParams.billingAccount,
                 serviceName: $stateParams.serviceName,
                 id: self.campaign.id

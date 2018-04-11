@@ -16,7 +16,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxPasswordCtrl"
     self.submitPasswordChange = function (form) {
         self.passwordForm.isUpdating = true;
         self.passwordForm.isSuccess = false;
-        return OvhApiTelephony.Fax().Lexi().changePassword({
+        return OvhApiTelephony.Fax().v6().changePassword({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }, _.pick(self.passwordForm, "password")).$promise.then(function () {

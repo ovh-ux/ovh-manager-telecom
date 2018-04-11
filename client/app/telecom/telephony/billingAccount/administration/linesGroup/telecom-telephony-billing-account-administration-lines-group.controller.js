@@ -17,16 +17,16 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountAdministr
         self.serviceAttachSuccess = {};
         self.serviceAttachErrors = {};
 
-        var getNumberCount = OvhApiTelephony.Number().Lexi().query({
+        var getNumberCount = OvhApiTelephony.Number().v6().query({
             billingAccount: $stateParams.billingAccount
         }).$promise.then(_.size);
 
-        var getLineCount = OvhApiTelephony.Line().Lexi().query({
+        var getLineCount = OvhApiTelephony.Line().v6().query({
             billingAccount: $stateParams.billingAccount
         }).$promise.then(_.size);
 
         return $q.all({
-            billingAccounts: OvhApiTelephony.Lexi().query().$promise,
+            billingAccounts: OvhApiTelephony.v6().query().$promise,
             numberCount: getNumberCount,
             lineCount: getLineCount
         }).then(function (result) {
@@ -41,7 +41,7 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountAdministr
     };
 
     self.fetchBillingAccountDetails = function (billingAccount) {
-        return OvhApiTelephony.Lexi().get({
+        return OvhApiTelephony.v6().get({
             billingAccount: billingAccount.id
         }).$promise;
     };
@@ -62,11 +62,11 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountAdministr
         self.services = null;
 
         // get batch line details
-        var lines = OvhApiTelephony.Line().Lexi().query({
+        var lines = OvhApiTelephony.Line().v6().query({
             billingAccount: ba.billingAccount
         }).$promise.then(function (ids) {
             return $q.all(_.map(_.chunk(ids, 50), function (chunkIds) {
-                return OvhApiTelephony.Line().Lexi().getBatch({
+                return OvhApiTelephony.Line().v6().getBatch({
                     billingAccount: ba.billingAccount,
                     serviceName: chunkIds
                 }).$promise;
@@ -76,11 +76,11 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountAdministr
         });
 
         // get batch alias details
-        var aliases = OvhApiTelephony.Number().Lexi().query({
+        var aliases = OvhApiTelephony.Number().v6().query({
             billingAccount: ba.billingAccount
         }).$promise.then(function (ids) {
             return $q.all(_.map(_.chunk(ids, 50), function (chunkIds) {
-                return OvhApiTelephony.Number().Lexi().getBatch({
+                return OvhApiTelephony.Number().v6().getBatch({
                     billingAccount: ba.billingAccount,
                     serviceName: chunkIds
                 }).$promise;
@@ -129,7 +129,7 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountAdministr
         self.isAttaching = true;
 
         return $q.all(_.map(self.getServicesToAttachList(), function (service) {
-            return OvhApiTelephony.Service().Lexi().changeOfBillingAccount({
+            return OvhApiTelephony.Service().v6().changeOfBillingAccount({
                 billingAccount: self.billingAccounts.selected.billingAccount,
                 serviceName: service.serviceName
             }, {

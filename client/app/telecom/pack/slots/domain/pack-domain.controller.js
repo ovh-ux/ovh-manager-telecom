@@ -17,7 +17,7 @@ angular.module("managerApp").controller("PackDomainCtrl", function ($scope, OvhA
         };
 
         // Get service link to this access from current Pack Xdsl
-        return OvhApiPackXdslDomainActivation.Lexi().query({
+        return OvhApiPackXdslDomainActivation.v6().query({
             packId: $stateParams.packName
         }).$promise.then(
             function (services) {
