@@ -1,3 +1,24 @@
+<a name="10.1.0"></a>
+# [10.1.0](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.0.2...v10.1.0) (2018-04-11)
+
+
+### Bug Fixes
+
+* rename services to v6 and v7 ([f20da02](https://github.com/ovh-ux/ovh-manager-telecom/commit/f20da02)), closes [ovh-ux/ovh-api-services#68](https://github.com/ovh-ux/ovh-api-services/issues/68)
+* **dhcp:** allow dhcp leases menu even if no dhcp server exists ([c6015b6](https://github.com/ovh-ux/ovh-manager-telecom/commit/c6015b6))
+* **hubic:** add unavailable data text to services with missing email ([841eadc](https://github.com/ovh-ux/ovh-manager-telecom/commit/841eadc))
+* **hubic:** fix loading voucher informations ([da4614b](https://github.com/ovh-ux/ovh-manager-telecom/commit/da4614b))
+* **order alias:** allow user country for international numbers ([1bee010](https://github.com/ovh-ux/ovh-manager-telecom/commit/1bee010))
+* **ui-router:** missing bdhcp menu ([ed7d139](https://github.com/ovh-ux/ovh-manager-telecom/commit/ed7d139))
+* **xdsl:** show/hide modem devices ([f2fbcbf](https://github.com/ovh-ux/ovh-manager-telecom/commit/f2fbcbf))
+
+
+### Features
+
+* **bulk:** trunk simultaneous lines bulk action ([5323739](https://github.com/ovh-ux/ovh-manager-telecom/commit/5323739))
+
+
+
 <a name="10.0.2"></a>
 ## [10.0.2](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.0.1...v10.0.2) (2018-04-06)
 
