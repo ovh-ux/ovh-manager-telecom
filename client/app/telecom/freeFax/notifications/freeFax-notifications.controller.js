@@ -130,7 +130,7 @@ angular.module("managerApp")
          * @return {Promise}
          */
         function getTypeChoices () {
-            return OvhApiFreeFax.Lexi().schema().$promise.then(function (data) {
+            return OvhApiFreeFax.v6().schema().$promise.then(function (data) {
                 self.typeChoices = _.map(data.models["telephony.ServiceVoicemailMailOptionEnum"].enum, function (value) {
                     return {
                         value: value,

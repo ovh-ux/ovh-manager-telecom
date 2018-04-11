@@ -5,7 +5,7 @@ angular.module("managerApp").controller("TelecomSmsSendersTerminateCtrl", class 
         this.$uibModalInstance = $uibModalInstance;
         this.api = {
             sms: {
-                virtualNumbers: OvhApiSms.VirtualNumbers().Lexi()
+                virtualNumbers: OvhApiSms.VirtualNumbers().v6()
             }
         };
         this.sender = sender;

@@ -5,7 +5,7 @@ angular.module("managerApp").controller("XdslAccessIpv6Ctrl", function ($statePa
             Toast.error($translate.instant("xdsl_access_ipv6_an_error_ocurred"));
         }
 
-        OvhApiXdslIps.Lexi().setIpv6(
+        OvhApiXdslIps.v6().setIpv6(
             { xdslId: $stateParams.serviceName },
             { enabled: $scope.access.xdsl.ipv6Enabled },
             function (result) {

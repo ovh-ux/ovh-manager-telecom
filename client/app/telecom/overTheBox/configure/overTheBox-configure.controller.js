@@ -7,7 +7,7 @@ angular.module("managerApp").controller("OverTheBoxConfigureCtrl", function ($tr
 
     function init () {
         self.loading = true;
-        return OvhApiOverTheBox.Lexi().getServices().$promise.then(function (services) {
+        return OvhApiOverTheBox.v6().getServices().$promise.then(function (services) {
             self.services = services;
             if (services.length === 0) {
                 $state.go("order-overTheBox");

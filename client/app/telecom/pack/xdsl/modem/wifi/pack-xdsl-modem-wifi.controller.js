@@ -18,7 +18,7 @@ angular.module("managerApp").controller("XdslModemWifiCtrl", function ($statePar
             return $q.reject();
         }
         this.loader = true;
-        return OvhApiXdsl.Modem().Wifi().Lexi().update(
+        return OvhApiXdsl.Modem().Wifi().v6().update(
             {
                 xdslId: $stateParams.serviceName,
                 wifiName: self.defaultWifi.wifiName

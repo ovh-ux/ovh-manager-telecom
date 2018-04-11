@@ -84,7 +84,7 @@ angular.module("managerApp")
      * @returns {Promise}
      */
         this.getGeographicalZone = function (axiom) {
-            return OvhApiTelephonyNumber.Lexi().getZones(
+            return OvhApiTelephonyNumber.v6().getZones(
                 {
                     country: self.form.country,
                     axiom: axiom
@@ -135,7 +135,7 @@ angular.module("managerApp")
             if (!form.pool) {
                 form.specificNumber = this.form[this.form.numberType];
             }
-            OvhApiOrder.Telephony().Lexi().orderNumberGeographical(
+            OvhApiOrder.Telephony().v6().orderNumberGeographical(
                 {
                     billingAccount: self.billingAccount
                 },

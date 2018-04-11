@@ -39,17 +39,17 @@ angular.module("managerApp").controller("PackVoipLineActivationCtrl", function (
     this.loadData = function (id) {
         self.loading = true;
         return $q.all([
-            OvhApiPackXdsl.Lexi().getServices(
+            OvhApiPackXdsl.v6().getServices(
                 {
                     packId: id
                 }
             ).$promise,
-            OvhApiPackXdslVoipLine.Lexi().getHardwares(
+            OvhApiPackXdslVoipLine.v6().getHardwares(
                 {
                     packId: id
                 }
             ).$promise,
-            OvhApiPackXdslVoipLine.Lexi().getShippingAddresses(
+            OvhApiPackXdslVoipLine.v6().getShippingAddresses(
                 {
                     packId: id
                 }

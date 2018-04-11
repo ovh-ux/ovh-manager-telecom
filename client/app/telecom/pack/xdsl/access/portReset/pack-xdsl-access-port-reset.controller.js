@@ -6,7 +6,7 @@ angular.module("managerApp").controller("XdslAccessPortResetCtrl", function ($st
             Toast.error($translate.instant("xdsl_access_dslam_reset_an_error_ocurred"));
         }
 
-        OvhApiXdslLinesDslamPort.Lexi().reset(
+        OvhApiXdslLinesDslamPort.v6().reset(
             {
                 xdslId: $stateParams.serviceName,
                 number: $stateParams.number

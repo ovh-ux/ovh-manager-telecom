@@ -8,8 +8,8 @@ angular.module("managerApp").controller("TelecomSmsSendersCtrl", class TelecomSm
         this.$translate = $translate;
         this.api = {
             sms: {
-                senders: OvhApiSms.Senders().Lexi(),
-                virtualNumbers: OvhApiSms.VirtualNumbers().Lexi()
+                senders: OvhApiSms.Senders().v6(),
+                virtualNumbers: OvhApiSms.VirtualNumbers().v6()
             }
         };
         this.Toast = Toast;

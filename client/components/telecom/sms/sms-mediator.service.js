@@ -18,7 +18,7 @@ angular.module("managerApp").service("SmsMediator", function ($q, OvhApiSms, Sms
 
     self.getApiScheme = function () {
         if (!self.apiScheme) {
-            return OvhApiSms.Lexi().schema().$promise.then(function (scheme) {
+            return OvhApiSms.v6().schema().$promise.then(function (scheme) {
                 self.apiScheme = scheme;
                 return self.apiScheme;
             });
@@ -66,8 +66,8 @@ angular.module("managerApp").service("SmsMediator", function ($q, OvhApiSms, Sms
         =============================*/
 
     self.getCount = function () {
-        // return OvhApiSms.Erika().query().execute().$promise.then(function (smsIds) {
-        return OvhApiSms.Lexi().query().$promise.then(function (smsIds) {
+        // return OvhApiSms.v7().query().execute().$promise.then(function (smsIds) {
+        return OvhApiSms.v6().query().$promise.then(function (smsIds) {
             return smsIds.length;
         });
     };
@@ -144,7 +144,7 @@ angular.module("managerApp").service("SmsMediator", function ($q, OvhApiSms, Sms
 
         self.initDeferred = $q.defer();
 
-        OvhApiSms.Lexi().query().$promise.then(function (smsIds) {
+        OvhApiSms.v6().query().$promise.then(function (smsIds) {
             return OvhApiSms.Aapi().detail({
                 smsIds: smsIds
             }).$promise.then(function (smsDetails) {

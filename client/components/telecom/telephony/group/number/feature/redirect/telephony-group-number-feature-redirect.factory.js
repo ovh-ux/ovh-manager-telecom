@@ -117,7 +117,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberRedirect", function ($
             return $q.when(self);
         }
 
-        return OvhApiTelephony.Redirect().Lexi().change({
+        return OvhApiTelephony.Redirect().v6().change({
             billingAccount: self.billingAccount,
             featureType: self.featureType,
             serviceName: self.serviceName
@@ -138,7 +138,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberRedirect", function ($
     TelephonyGroupNumberRedirect.prototype.init = function () {
         var self = this;
 
-        return OvhApiTelephony.Redirect().Lexi().get({
+        return OvhApiTelephony.Redirect().v6().get({
             billingAccount: self.billingAccount,
             featureType: self.featureType,
             serviceName: self.serviceName

@@ -18,7 +18,7 @@ angular.module("managerApp").controller("XdslModemDmzCtrl", function ($statePara
             Toast.error($translate.instant("xdsl_modem_dmz_an_error_ocurred"));
             return $q.reject();
         }
-        return OvhApiXdsl.Modem().Lexi().update(
+        return OvhApiXdsl.Modem().v6().update(
             {
                 xdslId: $stateParams.serviceName
             },

@@ -8,15 +8,15 @@ angular.module("managerApp").controller("TelecomSmsSmsComposeCtrl", class Teleco
         this.SmsMediator = SmsMediator;
         this.api = {
             sms: {
-                jobs: OvhApiSms.Jobs().Lexi(),
-                phonebooks: OvhApiSms.Phonebooks().Lexi(),
-                receivers: OvhApiSms.Receivers().Lexi(),
-                senders: OvhApiSms.Senders().Lexi(),
+                jobs: OvhApiSms.Jobs().v6(),
+                phonebooks: OvhApiSms.Phonebooks().v6(),
+                receivers: OvhApiSms.Receivers().v6(),
+                senders: OvhApiSms.Senders().v6(),
                 virtualNumbers: {
-                    jobs: OvhApiSms.VirtualNumbers().Jobs().Lexi()
+                    jobs: OvhApiSms.VirtualNumbers().Jobs().v6()
                 }
             },
-            user: OvhApiMe.Lexi()
+            user: OvhApiMe.v6()
         };
         this.atInternet = atInternet;
         this.Toast = Toast;

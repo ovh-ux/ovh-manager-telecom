@@ -4,11 +4,11 @@ angular.module("managerApp").controller("PackDomainActivationController", functi
     var self = this;
 
     function getUser () {
-        return OvhApiMe.Lexi().get().$promise;
+        return OvhApiMe.v6().get().$promise;
     }
 
     function loadAvailableTlds () {
-        return OvhApiPackXdslDomainActivation.Lexi().getTlds({
+        return OvhApiPackXdslDomainActivation.v6().getTlds({
             packId: $scope.locker.packName
         }, function (data) {
             $scope.locker.tldList = [];
@@ -23,7 +23,7 @@ angular.module("managerApp").controller("PackDomainActivationController", functi
     }
 
     function loadActivatedDomains () {
-        return OvhApiPackXdslDomainActivation.Lexi().getServices({
+        return OvhApiPackXdslDomainActivation.v6().getServices({
             packId: $scope.locker.packName
         }, function (data) {
             $scope.locker.activatedDomains = data;
@@ -157,7 +157,7 @@ angular.module("managerApp").controller("PackDomainActivationController", functi
         var data = _.pick($scope.model, ["packName", "action", "authInfo", "domain", "tld"]);
 
         self.isActivating = true;
-        OvhApiPackXdslDomainActivation.Lexi().postServices({
+        OvhApiPackXdslDomainActivation.v6().postServices({
             packId: $scope.locker.packName
         }, data).$promise.then(function () {
             Toast.success($translate.instant("domain_activation_domain_is_saved"));

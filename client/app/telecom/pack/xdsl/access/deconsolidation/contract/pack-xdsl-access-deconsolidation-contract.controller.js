@@ -20,7 +20,7 @@ angular.module("managerApp").controller("XdslDeconsolidationContractCtrl", funct
     };
 
     function getTerms () {
-        return OvhApiXdslDeconsolidation.Lexi().terms({
+        return OvhApiXdslDeconsolidation.v6().terms({
             serviceName: self.serviceName
         }).$promise.then(
             function (terms) {
@@ -33,7 +33,7 @@ angular.module("managerApp").controller("XdslDeconsolidationContractCtrl", funct
     }
 
     function getIsVIP () {
-        return OvhApiMeVipStatus.Lexi().get().$promise.then(
+        return OvhApiMeVipStatus.v6().get().$promise.then(
             function (vipStatus) {
                 self.isVIP = vipStatus.telecom;
             },
@@ -45,7 +45,7 @@ angular.module("managerApp").controller("XdslDeconsolidationContractCtrl", funct
 
     this.confirm = function () {
         self.loading = true;
-        OvhApiXdslDeconsolidation.Lexi().requestTotalDeconsolidation({
+        OvhApiXdslDeconsolidation.v6().requestTotalDeconsolidation({
             serviceName: self.serviceName
         }, self.rio ? { rio: self.rio } : null).$promise.then(function (result) {
             $uibModalInstance.close(result);

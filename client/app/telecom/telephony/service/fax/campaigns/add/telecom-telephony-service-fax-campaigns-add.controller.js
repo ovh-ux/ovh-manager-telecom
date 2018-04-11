@@ -8,7 +8,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxCampaignsAddC
     =============================== */
 
     function fetchEnums () {
-        return OvhApiTelephony.Lexi().schema({
+        return OvhApiTelephony.v6().schema({
             billingAccount: $stateParams.billingAccount
         }).$promise.then(function (schema) {
             return {
@@ -47,12 +47,12 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxCampaignsAddC
 
     function uploadDocuments () {
         var promise = {};
-        promise.pdf = OvhApiMe.Document().Lexi().upload(
+        promise.pdf = OvhApiMe.Document().v6().upload(
             self.campaign.uploadedFile.name,
             self.campaign.uploadedFile
         );
         if (self.campaign.recipientsType === "document" && self.campaign.recipientsDocFile) {
-            promise.recipientsDoc = OvhApiMe.Document().Lexi().upload(
+            promise.recipientsDoc = OvhApiMe.Document().v6().upload(
                 self.campaign.recipientsDocFile.name,
                 self.campaign.recipientsDocFile
             );
@@ -73,7 +73,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceFaxCampaignsAddC
         if (self.campaign.recipientsType === "document" && _.has(docs, "recipientsDoc.id")) {
             campaign.recipientsDocId = _.get(docs, "recipientsDoc.id");
         }
-        return OvhApiTelephony.Fax().Campaigns().Lexi().create({
+        return OvhApiTelephony.Fax().Campaigns().v6().create({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }, campaign).$promise.catch(function (error) {

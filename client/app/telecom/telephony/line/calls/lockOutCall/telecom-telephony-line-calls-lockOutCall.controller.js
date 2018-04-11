@@ -19,7 +19,7 @@ angular.module("managerApp").controller(
 
         self.save = function () {
             self.loading.save = true;
-            OvhApiTelephony.Line().Options().Lexi().update(
+            OvhApiTelephony.Line().Options().v6().update(
                 {
                     billingAccount: $stateParams.billingAccount,
                     serviceName: $stateParams.serviceName
@@ -47,7 +47,7 @@ angular.module("managerApp").controller(
                 lockOutCall: null
             };
             self.saved = angular.copy(self.options);
-            OvhApiTelephony.Line().Options().Lexi().get({
+            OvhApiTelephony.Line().Options().v6().get({
                 billingAccount: $stateParams.billingAccount,
                 serviceName: $stateParams.serviceName
             }).$promise.then(
@@ -100,7 +100,7 @@ angular.module("managerApp").controller(
                 });
             });
 
-            OvhApiTelephony.Line().Lexi().resetAllCache();
+            OvhApiTelephony.Line().v6().resetAllCache();
             self.save();
         };
 

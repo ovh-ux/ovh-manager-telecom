@@ -75,7 +75,7 @@ angular.module("managerApp").factory("VoipScheduler", function ($q, OvhApiTeleph
     VoipScheduler.prototype.get = function () {
         var self = this;
 
-        return OvhApiTelephony.Scheduler().Lexi().get({
+        return OvhApiTelephony.Scheduler().v6().get({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName
         }).$promise.then(function (schedulerOptions) {
@@ -94,7 +94,7 @@ angular.module("managerApp").factory("VoipScheduler", function ($q, OvhApiTeleph
         var deletePromises = [];
 
         if (self.hasChange("timeZone")) {
-            promises.push(OvhApiTelephony.Scheduler().Lexi().save({
+            promises.push(OvhApiTelephony.Scheduler().v6().save({
                 billingAccount: self.billingAccount,
                 serviceName: self.serviceName
             }, {
@@ -134,7 +134,7 @@ angular.module("managerApp").factory("VoipScheduler", function ($q, OvhApiTeleph
     VoipScheduler.prototype.importIcsCalendar = function (calendarUrl) {
         var self = this;
 
-        return OvhApiTelephony.Scheduler().Lexi().importIcsCalendar({
+        return OvhApiTelephony.Scheduler().v6().importIcsCalendar({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName
         }, {
@@ -154,12 +154,12 @@ angular.module("managerApp").factory("VoipScheduler", function ($q, OvhApiTeleph
     VoipScheduler.prototype.getEvents = function (filters) {
         var self = this;
 
-        return OvhApiTelephony.Scheduler().Events().Lexi().query(angular.extend({
+        return OvhApiTelephony.Scheduler().Events().v6().query(angular.extend({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName
         }, filters || {})).$promise.then(function (eventIds) {
             return $q.all(_.map(_.chunk(eventIds, 50), function (chunkIds) {
-                return OvhApiTelephony.Scheduler().Events().Lexi().getBatch({
+                return OvhApiTelephony.Scheduler().Events().v6().getBatch({
                     billingAccount: self.billingAccount,
                     serviceName: self.serviceName,
                     uid: chunkIds
@@ -259,7 +259,7 @@ angular.module("managerApp").factory("VoipScheduler", function ($q, OvhApiTeleph
         var self = this;
 
         var getImportTask = function (status) {
-            return OvhApiTelephony.Service().Task().Lexi().query({
+            return OvhApiTelephony.Service().Task().v6().query({
                 billingAccount: self.billingAccount,
                 serviceName: self.serviceName,
                 action: "importIcs",

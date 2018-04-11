@@ -6,7 +6,7 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountManageCon
     var contactAttributes = ["contactAdmin", "contactBilling", "contactTech"];
 
     function getGroupContacts () {
-        return OvhApiTelephony.Lexi().getServiceInfos({
+        return OvhApiTelephony.v6().getServiceInfos({
             billingAccount: $stateParams.billingAccount
         }).$promise.then(function (result) {
             return [{
@@ -19,17 +19,17 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountManageCon
     }
 
     function getPackXdslServiceIds () {
-        return OvhApiPackXdslVoipLine.Erika().services().aggregate("packName").execute().$promise.then(function (ids) {
+        return OvhApiPackXdslVoipLine.v7().services().aggregate("packName").execute().$promise.then(function (ids) {
             return _.pluck(ids, "key");
         });
     }
 
     function getLinesContacts () {
-        return OvhApiTelephony.Line().Lexi().query({
+        return OvhApiTelephony.Line().v6().query({
             billingAccount: $stateParams.billingAccount
         }).$promise.then(function (ids) {
             return $q.all(_.map(ids, function (id) {
-                return OvhApiTelephony.Lines().Lexi().getServiceInfos({
+                return OvhApiTelephony.Lines().v6().getServiceInfos({
                     serviceName: id
                 }).$promise.then(function (infos) {
                     return {
@@ -41,7 +41,7 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountManageCon
                 }).catch(function (err) {
                     // if serviceInfos does not exist, service might be a sip trunk
                     if (err.status === 404) {
-                        return OvhApiTelephony.Trunks().Lexi().getServiceInfos({
+                        return OvhApiTelephony.Trunks().v6().getServiceInfos({
                             serviceName: id
                         }).$promise.then(function (infos) {
                             return {
@@ -60,11 +60,11 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountManageCon
     }
 
     function getAliasContacts () {
-        return OvhApiTelephony.Number().Lexi().query({
+        return OvhApiTelephony.Number().v6().query({
             billingAccount: $stateParams.billingAccount
         }).$promise.then(function (ids) {
             return $q.all(_.map(ids, function (id) {
-                return OvhApiTelephony.Aliases().Lexi().getServiceInfos({
+                return OvhApiTelephony.Aliases().v6().getServiceInfos({
                     serviceName: id
                 }).$promise.then(function (infos) {
                     return {
@@ -79,9 +79,9 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountManageCon
     }
 
     function getPendingTasks () {
-        return OvhApiMe.Task().ContactChange().Lexi().query().$promise.then(function (ids) {
+        return OvhApiMe.Task().ContactChange().v6().query().$promise.then(function (ids) {
             return $q.all(_.map(_.chunk(ids, 50), function (chunkIds) {
-                return OvhApiMe.Task().ContactChange().Lexi().getBatch({
+                return OvhApiMe.Task().ContactChange().v6().getBatch({
                     id: chunkIds
                 }).$promise;
             })).then(function (chunkResult) {
@@ -181,22 +181,22 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountManageCon
         contact.submiting = true;
         switch (contact.serviceType) {
         case "group":
-            promise = OvhApiTelephony.Lexi().changeContact({
+            promise = OvhApiTelephony.v6().changeContact({
                 billingAccount: $stateParams.billingAccount
             }, _.pick(contact.modified, contactAttributes)).$promise;
             break;
         case "line":
-            promise = OvhApiTelephony.Lines().Lexi().changeContact({
+            promise = OvhApiTelephony.Lines().v6().changeContact({
                 serviceName: contact.serviceName
             }, _.pick(contact.modified, contactAttributes)).$promise;
             break;
         case "trunk":
-            promise = OvhApiTelephony.Trunks().Lexi().changeContact({
+            promise = OvhApiTelephony.Trunks().v6().changeContact({
                 serviceName: contact.serviceName
             }, _.pick(contact.modified, contactAttributes)).$promise;
             break;
         case "alias":
-            promise = OvhApiTelephony.Aliases().Lexi().changeContact({
+            promise = OvhApiTelephony.Aliases().v6().changeContact({
                 serviceName: contact.serviceName
             }, _.pick(contact.modified, contactAttributes)).$promise;
             break;

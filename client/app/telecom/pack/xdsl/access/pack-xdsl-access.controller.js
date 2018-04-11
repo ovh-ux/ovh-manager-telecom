@@ -140,7 +140,7 @@ angular.module("managerApp").controller("XdslAccessCtrl", function ($scope, $sta
 
     this.deleteIps = function (ip) {
         ip.deleting = true;
-        OvhApiXdslIps.Lexi().unOrder({
+        OvhApiXdslIps.v6().unOrder({
             xdslId: $stateParams.serviceName,
             ip: ip.ip
         }, null).$promise.then(function () {
@@ -171,7 +171,7 @@ angular.module("managerApp").controller("XdslAccessCtrl", function ($scope, $sta
         $q.allSettled(
             [
                 // Get access Details
-                OvhApiXdsl.Lexi().get({
+                OvhApiXdsl.v6().get({
                     xdslId: $stateParams.serviceName
                 }).$promise.then(function (access) {
                     $scope.loaders.xdsl = false;
@@ -184,7 +184,7 @@ angular.module("managerApp").controller("XdslAccessCtrl", function ($scope, $sta
                 }),
 
                 // Get line details
-                OvhApiXdslLines.Lexi().get({
+                OvhApiXdslLines.v6().get({
                     xdslId: $stateParams.serviceName,
                     number: $stateParams.number
                 }).$promise.then(function (lineDetails) {
@@ -197,7 +197,7 @@ angular.module("managerApp").controller("XdslAccessCtrl", function ($scope, $sta
                 }),
 
                 // Get MAC Address
-                OvhApiXdslModem.Lexi().get(
+                OvhApiXdslModem.v6().get(
                     {
                         xdslId: $stateParams.serviceName
                     }
@@ -215,14 +215,14 @@ angular.module("managerApp").controller("XdslAccessCtrl", function ($scope, $sta
                 self.getIps(),
 
                 // Get notification number
-                OvhApiXdslNotifications.Lexi().query({
+                OvhApiXdslNotifications.v6().query({
                     xdslId: $stateParams.serviceName
                 }).$promise.then(function (ids) {
                     $scope.access.notificationsCount = ids.length;
                 }, ToastError),
 
                 // Get Order
-                OvhApiXdsl.Lexi().getOrder({
+                OvhApiXdsl.v6().getOrder({
                     xdslId: $stateParams.serviceName
                 }).$promise.then(function (orders) {
                     self.actualOrder = _.find(orders, function (order) {
@@ -240,7 +240,7 @@ angular.module("managerApp").controller("XdslAccessCtrl", function ($scope, $sta
                     }
                 }, ToastError),
 
-                OvhApiPackXdsl.Task().Lexi().query({
+                OvhApiPackXdsl.Task().v6().query({
                     packName: self.packName,
                     "function": "pendingAddressMove"
                 }).$promise.then(function (result) {

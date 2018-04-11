@@ -21,7 +21,7 @@ angular.module("managerApp").controller("OverTheBoxTasksCtrl", function ($transl
     };
 
     self.getTasks = function () {
-        OvhApiOverTheBox.Lexi().getTasks({ serviceName: $stateParams.serviceName }).$promise.then(
+        OvhApiOverTheBox.v6().getTasks({ serviceName: $stateParams.serviceName }).$promise.then(
             function (taskIds) {
                 self.taskIds = taskIds.map(function (taskId) {
                     return { id: taskId };
@@ -33,7 +33,7 @@ angular.module("managerApp").controller("OverTheBoxTasksCtrl", function ($transl
     };
 
     self.transformItem = function (row) {
-        return OvhApiOverTheBox.Lexi().getTask({ serviceName: $stateParams.serviceName, taskId: row.id }).$promise.then(
+        return OvhApiOverTheBox.v6().getTask({ serviceName: $stateParams.serviceName, taskId: row.id }).$promise.then(
             function (task) {
                 return task;
             },

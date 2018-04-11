@@ -5,7 +5,7 @@ angular.module("managerApp")
         var self = this;
 
         this.getAccessName = function () {
-            return OvhApiXdsl.Lexi().get({
+            return OvhApiXdsl.v6().get({
                 xdslId: $stateParams.serviceName
             }).$promise.then(
                 function (access) {

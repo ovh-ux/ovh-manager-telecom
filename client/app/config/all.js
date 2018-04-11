@@ -328,4 +328,7 @@ angular.module("managerApp").constant("LANGUAGES", {
             hlr: "https://www.ovhtelecom.fr/sms/home-location-register/"
         },
         fax: "https://www.ovhtelecom.fr/fax/"
+    })
+    .constant("REDIRECT_URLS", {
+        listTicket: "https://www.ovh.com/manager/dedicated/index.html#/ticket"
     });

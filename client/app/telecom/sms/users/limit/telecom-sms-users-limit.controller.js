@@ -6,9 +6,9 @@ angular.module("managerApp").controller("TelecomSmsUsersLimitCtrl", class Teleco
         this.$uibModalInstance = $uibModalInstance;
         this.api = {
             sms: {
-                users: OvhApiSms.Users().Lexi()
+                users: OvhApiSms.Users().v6()
             },
-            user: OvhApiMe.Lexi()
+            user: OvhApiMe.v6()
         };
         this.SmsMediator = SmsMediator;
         this.ToastError = ToastError;

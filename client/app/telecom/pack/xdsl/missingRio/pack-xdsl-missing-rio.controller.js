@@ -12,7 +12,7 @@ angular.module("managerApp").controller("PackXdslMissingRioCtrl", function ($q, 
 
         self.number = $stateParams.number;
 
-        return OvhApiXdsl.Lexi().get({
+        return OvhApiXdsl.v6().get({
             xdslId: $stateParams.serviceName
         }).$promise.then(function (data) {
             return data;
@@ -35,7 +35,7 @@ angular.module("managerApp").controller("PackXdslMissingRioCtrl", function ($q, 
             params.rio = self.missingRioForm.rio;
         }
 
-        return OvhApiXdsl.Lexi().updateInvalidOrMissingRio({
+        return OvhApiXdsl.v6().updateInvalidOrMissingRio({
             xdslId: $stateParams.serviceName
         }, params).$promise.then(function () {
             Toast.success($translate.instant("xdsl_missing-rio_sent"));

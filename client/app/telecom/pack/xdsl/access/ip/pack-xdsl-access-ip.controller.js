@@ -80,7 +80,7 @@ angular.module("managerApp").controller("XdslAccessIpCtrl", function ($statePara
      */
     this.delete = function (ip) {
         ip.updating = true;
-        OvhApiXdslIps.Lexi().deleteReverse({
+        OvhApiXdslIps.v6().deleteReverse({
             ipBlock: decodeURIComponent($stateParams.block),
             ipReverse: ip.ipReverse
         }, null).$promise.then(function () {
@@ -97,7 +97,7 @@ angular.module("managerApp").controller("XdslAccessIpCtrl", function ($statePara
      */
     this.create = function (ip) {
         ip.updating = true;
-        OvhApiXdslIps.Lexi().createReverse({
+        OvhApiXdslIps.v6().createReverse({
             ipBlock: decodeURIComponent($stateParams.block)
         }, {
             ipReverse: ip.ipReverse,

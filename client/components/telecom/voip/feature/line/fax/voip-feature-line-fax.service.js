@@ -30,7 +30,7 @@ angular.module("managerApp").service("voipFax", class {
      *  @return {Promise}   That return a `VoipLineFeature` instance.
      */
     fetchFeature (service) {
-        return this.OvhApiTelephony.Fax().Lexi().get({
+        return this.OvhApiTelephony.Fax().v6().get({
             billingAccount: service.billingAccount,
             serviceName: service.serviceName
         }).$promise.then((featureOptions) => {
@@ -62,7 +62,7 @@ angular.module("managerApp").service("voipFax", class {
      *  @return {Promise}   That return the `VoipLineFeature` instance with saved value.
      */
     saveFeature (feature, featureOptions) {
-        return this.OvhApiTelephony.Fax().Lexi().edit({
+        return this.OvhApiTelephony.Fax().v6().edit({
             billingAccount: feature.billingAccount,
             serviceName: feature.serviceName
         }, featureOptions).$promise.then(() =>

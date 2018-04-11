@@ -4,20 +4,20 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationCalls
     var self = this;
 
     self.fetchStatus = function () {
-        return OvhApiTelephony.EasyHunting().ScreenListConditions().Lexi().get({
+        return OvhApiTelephony.EasyHunting().ScreenListConditions().v6().get({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }).$promise;
     };
 
     self.fetchScreenLists = function () {
-        OvhApiTelephony.EasyHunting().ScreenListConditions().Conditions().Lexi().resetAllCache();
-        return OvhApiTelephony.EasyHunting().ScreenListConditions().Conditions().Lexi().query({
+        OvhApiTelephony.EasyHunting().ScreenListConditions().Conditions().v6().resetAllCache();
+        return OvhApiTelephony.EasyHunting().ScreenListConditions().Conditions().v6().query({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }).$promise.then(function (ids) {
             return $q.all(_.map(_.chunk(ids, 50), function (chunkIds) {
-                return OvhApiTelephony.EasyHunting().ScreenListConditions().Conditions().Lexi().getBatch({
+                return OvhApiTelephony.EasyHunting().ScreenListConditions().Conditions().v6().getBatch({
                     billingAccount: $stateParams.billingAccount,
                     serviceName: $stateParams.serviceName,
                     conditionId: chunkIds
@@ -38,7 +38,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationCalls
     };
 
     self.removeScreenList = function (screen) {
-        return OvhApiTelephony.EasyHunting().ScreenListConditions().Conditions().Lexi().remove({
+        return OvhApiTelephony.EasyHunting().ScreenListConditions().Conditions().v6().remove({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName,
             conditionId: screen.id
@@ -46,7 +46,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationCalls
     };
 
     self.addScreenList = function (screen) {
-        return OvhApiTelephony.EasyHunting().ScreenListConditions().Conditions().Lexi().create({
+        return OvhApiTelephony.EasyHunting().ScreenListConditions().Conditions().v6().create({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }, {
@@ -61,7 +61,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationCalls
 
     self.updateScreen = function () {
         self.screenStatus.isLoading = true;
-        return OvhApiTelephony.EasyHunting().ScreenListConditions().Lexi().change({
+        return OvhApiTelephony.EasyHunting().ScreenListConditions().v6().change({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }, {

@@ -27,7 +27,7 @@ angular.module("managerApp").service("TelecomTelephonyBillingAccountOrderAliasSe
      * @returns {Promise}
      */
     this.getUser = function () {
-        return OvhApiMe.Lexi().get().$promise.then(
+        return OvhApiMe.v6().get().$promise.then(
             function (user) {
                 user.country = user.country.toLowerCase();
                 user.legalform = !user.companyNationalIdentificationNumber ? "individual" : "corporation";
@@ -120,7 +120,7 @@ angular.module("managerApp").service("TelecomTelephonyBillingAccountOrderAliasSe
      * @returns {*}
      */
     this.getPredefinedNumbers = function (country, type, zone, range) {
-        return OvhApiTelephony.Number().Lexi().getSpecificNumbers(
+        return OvhApiTelephony.Number().v6().getSpecificNumbers(
             {
                 country: country,
                 type: type,
@@ -179,13 +179,12 @@ angular.module("managerApp").service("TelecomTelephonyBillingAccountOrderAliasSe
     this.getForeignCountries = function () {
         return this.getUser()
             .then(function (user) {
-                return OvhApiTelephony.Lexi().schema().$promise.then(
+                return OvhApiTelephony.v6().schema().$promise.then(
                     function (schema) {
-                        return _.pull(schema.models["telephony.NumberCountryEnum"].enum, user.country);
+                        return schema.models["telephony.NumberCountryEnum"].enum;
                     }
                 );
-            }
-            );
+            });
     };
 
 });

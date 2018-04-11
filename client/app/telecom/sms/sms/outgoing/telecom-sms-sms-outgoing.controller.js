@@ -9,10 +9,10 @@ angular.module("managerApp").controller("TelecomSmsSmsOutgoingCtrl", class Telec
         this.$uibModal = $uibModal;
         this.$translate = $translate;
         this.api = {
-            sms: OvhApiSms.Lexi(),
-            smsOutgoing: OvhApiSms.Outgoing().Lexi(),
-            smsJobs: OvhApiSms.Jobs().Lexi(),
-            userDocument: OvhApiMe.Document().Lexi()
+            sms: OvhApiSms.v6(),
+            smsOutgoing: OvhApiSms.Outgoing().v6(),
+            smsJobs: OvhApiSms.Jobs().v6(),
+            userDocument: OvhApiMe.Document().v6()
         };
         this.debounce = debounce;
         this.Toast = Toast;
