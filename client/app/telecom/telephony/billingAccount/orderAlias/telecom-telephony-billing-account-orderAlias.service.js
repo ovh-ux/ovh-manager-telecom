@@ -181,11 +181,10 @@ angular.module("managerApp").service("TelecomTelephonyBillingAccountOrderAliasSe
             .then(function (user) {
                 return OvhApiTelephony.v6().schema().$promise.then(
                     function (schema) {
-                        return _.pull(schema.models["telephony.NumberCountryEnum"].enum, user.country);
+                        return schema.models["telephony.NumberCountryEnum"].enum;
                     }
                 );
-            }
-            );
+            });
     };
 
 });
