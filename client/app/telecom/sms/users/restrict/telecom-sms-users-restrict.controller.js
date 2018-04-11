@@ -6,7 +6,7 @@ angular.module("managerApp").controller("TelecomSmsUsersRestrictByIpCtrl", class
         this.$uibModalInstance = $uibModalInstance;
         this.api = {
             sms: {
-                users: OvhApiSms.Users().Lexi()
+                users: OvhApiSms.Users().v6()
             }
         };
         this.user = user;

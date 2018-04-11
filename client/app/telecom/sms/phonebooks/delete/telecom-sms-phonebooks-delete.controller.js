@@ -7,7 +7,7 @@ angular.module("managerApp").controller("TelecomSmsPhonebooksDeleteCtrl", class 
         this.phonebook = phonebook;
         this.api = {
             sms: {
-                phonebooks: OvhApiSms.Phonebooks().Lexi()
+                phonebooks: OvhApiSms.Phonebooks().v6()
             }
         };
     }

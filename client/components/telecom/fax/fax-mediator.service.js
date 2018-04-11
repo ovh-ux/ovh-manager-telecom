@@ -8,7 +8,7 @@ angular.module("managerApp").service("FaxMediator", function (OvhApiFreeFax) {
     =============================*/
 
     self.getCount = function () {
-        return OvhApiFreeFax.Erika().query().execute().$promise.then(function (freeFaxIds) {
+        return OvhApiFreeFax.v7().query().execute().$promise.then(function (freeFaxIds) {
             return freeFaxIds.length;
         });
     };

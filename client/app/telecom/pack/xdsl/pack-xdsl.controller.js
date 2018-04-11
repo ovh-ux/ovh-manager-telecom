@@ -21,7 +21,7 @@ angular.module("managerApp").controller("PackXdslCtrl", function ($q, $transitio
     }
 
     function getXdsl () {
-        return OvhApiXdsl.Lexi().get({
+        return OvhApiXdsl.v6().get({
             xdslId: $stateParams.serviceName
         }).$promise;
     }
@@ -37,7 +37,7 @@ angular.module("managerApp").controller("PackXdslCtrl", function ($q, $transitio
     };
 
     function enableModemIfHaveOne () {
-        return OvhApiXdslModem.Lexi().get({ xdslId: $stateParams.serviceName }).$promise.then(
+        return OvhApiXdslModem.v6().get({ xdslId: $stateParams.serviceName }).$promise.then(
             function () {
                 self.disabledModem = false;
             },
@@ -107,7 +107,7 @@ angular.module("managerApp").controller("PackXdslCtrl", function ($q, $transitio
     self.accessDescriptionSave = function (newAccessDescr) {
         self.loading.save = true;
 
-        return OvhApiXdsl.Lexi().put({
+        return OvhApiXdsl.v6().put({
             xdslId: $stateParams.serviceName
         }, {
             description: newAccessDescr

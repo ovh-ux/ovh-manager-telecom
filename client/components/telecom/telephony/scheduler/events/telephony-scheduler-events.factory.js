@@ -165,7 +165,7 @@ angular.module("managerApp").factory("VoipSchedulerEvent", function (OvhApiTelep
     VoipSchedulerEvent.prototype.save = function () {
         var self = this;
 
-        return OvhApiTelephony.Scheduler().Events().Lexi().save({
+        return OvhApiTelephony.Scheduler().Events().v6().save({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName,
             uid: self.uid
@@ -188,7 +188,7 @@ angular.module("managerApp").factory("VoipSchedulerEvent", function (OvhApiTelep
     VoipSchedulerEvent.prototype.create = function () {
         var self = this;
 
-        return OvhApiTelephony.Scheduler().Events().Lexi().create({
+        return OvhApiTelephony.Scheduler().Events().v6().create({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName
         }, {
@@ -211,7 +211,7 @@ angular.module("managerApp").factory("VoipSchedulerEvent", function (OvhApiTelep
     VoipSchedulerEvent.prototype.remove = function () {
         var self = this;
 
-        return OvhApiTelephony.Scheduler().Events().Lexi().remove({
+        return OvhApiTelephony.Scheduler().Events().v6().remove({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName,
             uid: self.uid

@@ -53,7 +53,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberOvhPabxSound", functio
 
         self.status = "DELETING";
 
-        return OvhApiTelephony.OvhPabx().Sound().Lexi().remove({
+        return OvhApiTelephony.OvhPabx().Sound().v6().remove({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName,
             soundId: self.soundId
@@ -67,9 +67,9 @@ angular.module("managerApp").factory("TelephonyGroupNumberOvhPabxSound", functio
         var self = this;
 
         // first upload file to user document
-        return OvhApiMe.Document().Lexi().upload(self.name, file).then(function (doc) {
+        return OvhApiMe.Document().v6().upload(self.name, file).then(function (doc) {
             // second upload the file uploaded with its url to user document
-            return OvhApiTelephony.OvhPabx().Lexi().soundUpload({
+            return OvhApiTelephony.OvhPabx().v6().soundUpload({
                 billingAccount: self.billingAccount,
                 serviceName: self.serviceName
             }, {
@@ -94,7 +94,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberOvhPabxSound", functio
                 }).finally(function () {
                     // to finish delete file uploaded to user document
                     // we don't care about success or fail
-                    OvhApiMe.Document().Lexi().delete({
+                    OvhApiMe.Document().v6().delete({
                         id: doc.id
                     });
                 });

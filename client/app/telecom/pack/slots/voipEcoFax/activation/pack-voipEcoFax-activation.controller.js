@@ -13,7 +13,7 @@ angular.module("managerApp").controller("PackFaxActivationCtrl", function ($stat
                 key: "fax_activation_total_error"
             };
         } else {
-            return OvhApiPackXdsl.Lexi().getServices({ packId: packId }, function (data) {
+            return OvhApiPackXdsl.v6().getServices({ packId: packId }, function (data) {
                 self.loading = false;
                 self.serviceData = _.find(data, { name: "voipEcoFax" });
                 self.error = null;
@@ -33,7 +33,7 @@ angular.module("managerApp").controller("PackFaxActivationCtrl", function ($stat
         self.loading = true;
         self.error = null;
 
-        return OvhApiPackXdslVoipEcofax.Lexi().save({ packId: packId }, null, function () {
+        return OvhApiPackXdslVoipEcofax.v6().save({ packId: packId }, null, function () {
             self.loading = false;
             self.serviceData.available--;
             self.serviceData.inCreation++;

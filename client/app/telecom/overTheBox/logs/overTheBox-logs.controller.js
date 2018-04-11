@@ -21,7 +21,7 @@ angular.module("managerApp").controller("OverTheBoxLogsCtrl", function ($scope, 
 
         self.logger = new OvhTailLogs({
             source: function () {
-                return OvhApiOverTheBox.Lexi().getLogs({
+                return OvhApiOverTheBox.v6().getLogs({
                     serviceName: $stateParams.serviceName
                 }, {}).$promise.then(function (logs) {
                     return logs.url;

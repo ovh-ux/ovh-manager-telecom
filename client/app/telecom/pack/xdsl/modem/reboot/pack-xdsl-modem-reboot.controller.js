@@ -8,7 +8,7 @@ angular.module("managerApp").controller("XdslModemRebootCtrl", function ($stateP
             return Toast.error($translate.instant("xdsl_modem_reboot_an_error_ocurred"));
         }
         PackXdslModemMediator.setTask("rebootModem");
-        OvhApiXdsl.Modem().Reboot().Lexi().save(
+        OvhApiXdsl.Modem().Reboot().v6().save(
             {
                 xdslId: $stateParams.serviceName
             },

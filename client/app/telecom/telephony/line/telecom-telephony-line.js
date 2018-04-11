@@ -21,11 +21,11 @@ angular.module("managerApp").config(function ($stateProvider) {
         translations: ["common", "telecom/telephony/line"],
         resolve: {
             currentLine: function ($stateParams, OvhApiTelephony) {
-                return OvhApiTelephony.Line().Lexi().get({
+                return OvhApiTelephony.Line().v6().get({
                     billingAccount: $stateParams.billingAccount,
                     serviceName: $stateParams.serviceName
                 }).$promise.then(function (line) {
-                    return OvhApiTelephony.Line().Lexi().simultaneousChannelsDetails({
+                    return OvhApiTelephony.Line().v6().simultaneousChannelsDetails({
                         billingAccount: $stateParams.billingAccount,
                         serviceName: $stateParams.serviceName
                     }).$promise.then(function (details) {

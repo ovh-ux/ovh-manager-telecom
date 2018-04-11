@@ -14,7 +14,7 @@ angular.module("managerApp").controller("PackxdslaccesslinediagnosticCtrl", func
         self.loading.init = true;
 
         // if error in API call, you are not VIP by default
-        return OvhApiMeVipStatus.Lexi().get().$promise.then(function () {
+        return OvhApiMeVipStatus.v6().get().$promise.then(function () {
             // self.isVIP = data.telecom;
             self.isVIP = true;
             if (!self.isVIP) {

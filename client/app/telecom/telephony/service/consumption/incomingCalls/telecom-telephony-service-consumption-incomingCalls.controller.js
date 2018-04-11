@@ -4,13 +4,13 @@ angular.module("managerApp").controller("TelecomTelephonyServiceConsumptionIncom
     var self = this;
 
     function fetchIncomingConsumption () {
-        return OvhApiTelephony.Service().VoiceConsumption().Lexi().query({
+        return OvhApiTelephony.Service().VoiceConsumption().v6().query({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }).$promise.then(function (ids) {
             // single batch is limited to 50 ids, so we might make multiple batch calls
             return $q.all(_.map(_.chunk(ids, 50), function (chunkIds) {
-                return OvhApiTelephony.Service().VoiceConsumption().Lexi().getBatch({
+                return OvhApiTelephony.Service().VoiceConsumption().v6().getBatch({
                     billingAccount: $stateParams.billingAccount,
                     serviceName: $stateParams.serviceName,
                     consumptionId: chunkIds
@@ -74,8 +74,8 @@ angular.module("managerApp").controller("TelecomTelephonyServiceConsumptionIncom
     }
 
     self.refresh = function () {
-        OvhApiTelephony.Service().VoiceConsumption().Lexi().resetCache();
-        OvhApiTelephony.Service().VoiceConsumption().Lexi().resetQueryCache();
+        OvhApiTelephony.Service().VoiceConsumption().v6().resetCache();
+        OvhApiTelephony.Service().VoiceConsumption().v6().resetQueryCache();
         init();
     };
 

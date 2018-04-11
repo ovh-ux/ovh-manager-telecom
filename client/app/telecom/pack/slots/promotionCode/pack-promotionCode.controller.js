@@ -50,7 +50,7 @@ angular.module("managerApp").controller("PromotionCodeCtrl", function ($scope, $
      * Launch the re-engagement of the customer
      */
     this.engageCustomer = function () {
-        OvhApiPackXdslPromotionCode.Lexi().generate(
+        OvhApiPackXdslPromotionCode.v6().generate(
             {
                 packId: $stateParams.packName
             }, null).$promise.then(function () {

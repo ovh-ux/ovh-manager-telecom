@@ -4,11 +4,11 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountAdministr
     var self = this;
 
     function getOfferTaskList (billingAccount) {
-        return OvhApiTelephony.OfferTask().Lexi().query({
+        return OvhApiTelephony.OfferTask().v6().query({
             billingAccount: billingAccount
         }).$promise.then(function (offerTaskIds) {
             return $q.all(_.map(offerTaskIds, function (id) {
-                return OvhApiTelephony.OfferTask().Lexi().get({
+                return OvhApiTelephony.OfferTask().v6().get({
                     billingAccount: billingAccount,
                     taskId: id
                 }).$promise;
@@ -24,7 +24,7 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountAdministr
     }
 
     function fetchGroup () {
-        return OvhApiTelephony.Lexi().get({
+        return OvhApiTelephony.v6().get({
             billingAccount: $stateParams.billingAccount
         }).$promise.then(function (group) {
             self.group = group;
@@ -33,7 +33,7 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountAdministr
 
     self.cancelTermination = function () {
         self.cancelling = true;
-        return OvhApiTelephony.Lexi().cancelTermination({
+        return OvhApiTelephony.v6().cancelTermination({
             billingAccount: $stateParams.billingAccount
         }, {}).$promise.then(function () {
             return fetchTerminationTask();
@@ -49,7 +49,7 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountAdministr
 
     self.terminate = function () {
         self.deleting = true;
-        return OvhApiTelephony.Lexi().delete({
+        return OvhApiTelephony.v6().delete({
             billingAccount: $stateParams.billingAccount
         }, {}).$promise.then(function () {
             return fetchTerminationTask();

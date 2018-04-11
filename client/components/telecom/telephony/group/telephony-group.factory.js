@@ -80,7 +80,7 @@ angular.module("managerApp").factory("TelephonyGroup", function ($q, OvhApiTelep
     TelephonyGroup.prototype.save = function () {
         var self = this;
 
-        return OvhApiTelephony.Lexi().edit({
+        return OvhApiTelephony.v6().edit({
             billingAccount: self.billingAccount
         }, {
             description: self.description
@@ -163,7 +163,7 @@ angular.module("managerApp").factory("TelephonyGroup", function ($q, OvhApiTelep
         var number;
 
         // TODO : handle when service is not an alias
-        return OvhApiTelephony.Number().Lexi().get({
+        return OvhApiTelephony.Number().v6().get({
             billingAccount: self.billingAccount,
             serviceName: serviceName
         }).$promise.then(function (numberOptions) {
@@ -287,7 +287,7 @@ angular.module("managerApp").factory("TelephonyGroup", function ($q, OvhApiTelep
         if (self.availableOrders) {
             return $q.when(self.availableOrders);
         }
-        return OvhApiOrder.Telephony().Lexi().get({
+        return OvhApiOrder.Telephony().v6().get({
             billingAccount: self.billingAccount
         }).$promise.then(function (orderNames) {
             self.availableOrders = orderNames;

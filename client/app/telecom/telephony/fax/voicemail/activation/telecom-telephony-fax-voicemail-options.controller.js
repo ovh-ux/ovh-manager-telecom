@@ -17,7 +17,7 @@ angular.module("managerApp").controller("TelecomTelephonyFaxVoicemailActivationC
     self.onChangeRoutingBtnClick = function () {
         self.loading.save = true;
 
-        return OvhApiTelephony.Voicemail().Lexi().changeRouting({
+        return OvhApiTelephony.Voicemail().v6().changeRouting({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }, {
@@ -42,7 +42,7 @@ angular.module("managerApp").controller("TelecomTelephonyFaxVoicemailActivationC
     self.$onInit = function () {
         self.loading.init = true;
 
-        return OvhApiTelephony.Voicemail().Lexi().routing({
+        return OvhApiTelephony.Voicemail().v6().routing({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }).$promise.then(function (routingSetting) {

@@ -5,7 +5,7 @@ angular.module("managerApp").controller("TelecomSmsOptionsResponseAddCtrl", clas
         this.$timeout = $timeout;
         this.$uibModalInstance = $uibModalInstance;
         this.api = {
-            sms: OvhApiSms.Lexi()
+            sms: OvhApiSms.v6()
         };
         this.service = params.service;
         this.senders = params.senders;

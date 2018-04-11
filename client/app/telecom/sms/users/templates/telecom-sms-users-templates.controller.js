@@ -5,7 +5,7 @@ angular.module("managerApp").controller("TelecomSmsUsersTemplatesCtrl", class Te
         this.$timeout = $timeout;
         this.$uibModalInstance = $uibModalInstance;
         this.api = {
-            sms: OvhApiSms.Lexi()
+            sms: OvhApiSms.v6()
         };
         this.service = service;
         this.constant = { SMS_ALERTS };

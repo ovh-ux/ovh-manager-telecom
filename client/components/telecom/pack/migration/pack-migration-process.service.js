@@ -51,7 +51,7 @@ angular.module("managerApp").service("PackMigrationProcess", function ($q, OvhAp
     ========================================*/
 
     function getMigrationTaskByStatus (taskStatus) {
-        return OvhApiPackXdsl.Task().Lexi().query({
+        return OvhApiPackXdsl.Task().v6().query({
             packName: migrationProcess.pack.packName,
             "function": "pendingMigration",
             status: taskStatus
@@ -112,7 +112,7 @@ angular.module("managerApp").service("PackMigrationProcess", function ($q, OvhAp
             });
         }
 
-        return OvhApiPackXdsl.Lexi().migrate({
+        return OvhApiPackXdsl.v6().migrate({
             packName: migrationProcess.pack.packName
         }, postParams).$promise;
     };
@@ -136,7 +136,7 @@ angular.module("managerApp").service("PackMigrationProcess", function ($q, OvhAp
     ====================================*/
 
     function getPackService () {
-        return OvhApiPackXdsl.Lexi().get({
+        return OvhApiPackXdsl.v6().get({
             packId: migrationProcess.pack.packName
         }).$promise.then(function (serviceDetails) {
             angular.extend(migrationProcess.pack, serviceDetails);
@@ -144,7 +144,7 @@ angular.module("managerApp").service("PackMigrationProcess", function ($q, OvhAp
     }
 
     function getPackOptions () {
-        return OvhApiPackXdsl.Lexi().getServices({
+        return OvhApiPackXdsl.v6().getServices({
             packId: migrationProcess.pack.packName
         }).$promise.then(function (packOptions) {
             migrationProcess.pack.options = _.indexBy(packOptions, "name");

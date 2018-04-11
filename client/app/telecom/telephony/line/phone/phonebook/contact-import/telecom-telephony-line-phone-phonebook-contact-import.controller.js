@@ -29,11 +29,11 @@ angular.module("managerApp").controller("TelecomTelephonyLinePhonePhonebookConta
         self.phonecontactForm.isImporting = true;
         return $q.all({
             noop: $timeout(angular.noop, 1000),
-            "import": OvhApiMe.Document().Lexi().upload(
+            "import": OvhApiMe.Document().v6().upload(
                 self.phonecontactForm.uploadedFile.name,
                 self.phonecontactForm.uploadedFile
             ).then(function (doc) {
-                return OvhApiTelephony.Line().Phone().Phonebook().Lexi().import({
+                return OvhApiTelephony.Line().Phone().Phonebook().v6().import({
                     billingAccount: $stateParams.billingAccount,
                     serviceName: $stateParams.serviceName,
                     bookKey: bookKey

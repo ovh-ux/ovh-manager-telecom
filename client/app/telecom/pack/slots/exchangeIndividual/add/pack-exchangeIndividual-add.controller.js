@@ -15,7 +15,7 @@ angular.module("managerApp").controller("PackExchangeIndividualEmailAddCtrl", fu
 
         accountTmp.email = self.account.name + self.account.domain;
 
-        return OvhApiPackXdslExchangeIndividual.Lexi().save(
+        return OvhApiPackXdslExchangeIndividual.v6().save(
             {
                 packId: $stateParams.packName
             },
@@ -33,7 +33,7 @@ angular.module("managerApp").controller("PackExchangeIndividualEmailAddCtrl", fu
     this.init = function () {
         $scope.domains = [];
 
-        OvhApiPackXdslExchangeIndividual.Lexi().getDomains({ packId: $stateParams.packName }, function (domains) {
+        OvhApiPackXdslExchangeIndividual.v6().getDomains({ packId: $stateParams.packName }, function (domains) {
             _.each(domains, function (domain) {
                 $scope.domains.push("@" + domain);
             });

@@ -4,7 +4,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineCallsDisplayNumberC
     var self = this;
 
     function getLineOptions () {
-        return OvhApiTelephonyLineOptions.Lexi().get({
+        return OvhApiTelephonyLineOptions.v6().get({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }).$promise.then(function (options) {
@@ -67,7 +67,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineCallsDisplayNumberC
         }
 
         self.isUpdating = true;
-        return OvhApiTelephonyLineOptions.Lexi().update({
+        return OvhApiTelephonyLineOptions.v6().update({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }, data).$promise.then(function () {

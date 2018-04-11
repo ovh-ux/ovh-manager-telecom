@@ -1,19 +1,21 @@
 angular.module("managerApp")
-    .controller("TelecomTelephonyLineCallsSimultaneousLinesCtrl", function ($filter, $q, $stateParams, $state, $translate, $scope,
-                                                                            Toast, OvhApiTelephony, OvhApiOrderTelephony, OvhApiTelephonyService, TelephonyMediator, telephonyBulk, currentLine) {
+    .controller("TelecomTelephonyLineCallsSimultaneousLinesCtrl", function ($filter, $q, $stateParams, $translate,
+                                                                            currentLine, OvhApiOrderTelephony, OvhApiTelephony, OvhApiTelephonyService, telephonyBulk, Toast) {
         "use strict";
 
         var self = this;
         var apiResources = {
-            getSimultaneousLines: OvhApiOrderTelephony.Lexi().getSimultaneousLines,
-            orderSimultaneousLines: OvhApiOrderTelephony.Lexi().orderSimultaneousLines
+            getSimultaneousLines: OvhApiOrderTelephony.v6().getSimultaneousLines,
+            orderSimultaneousLines: OvhApiOrderTelephony.v6().orderSimultaneousLines
         };
 
         var unitPrices = null;
 
+        self.bulkOrders = [];
+        self.isTrunk = false;
+
         self.orderUrl = null;
         self.showBulkOrderSummary = false;
-        self.bulkOrders = [];
 
         self.needSave = function () {
             return self.options.simultaneousLines !== self.saved.simultaneousLines;
@@ -25,8 +27,7 @@ angular.module("managerApp")
             return apiResources.orderSimultaneousLines({
                 serviceName: $stateParams.serviceName
             }, {
-                billingAccount: $stateParams.billingAccount,
-                quantity: self.options.simultaneousLines - self.saved.simultaneousLines
+                quantity: self.options.simultaneousLines
             }).$promise.then(function (order) {
                 self.orderUrl = order.url;
                 self.prices = order.prices;
@@ -45,7 +46,7 @@ angular.module("managerApp")
         self.doRemoveSimultaneousLines = function () {
             self.loading.save = true;
 
-            return OvhApiTelephony.Line().Lexi().removeSimultaneousLine({
+            return OvhApiTelephony.Line().v6().removeSimultaneousLine({
                 billingAccount: $stateParams.billingAccount,
                 serviceName: $stateParams.serviceName
             }, {
@@ -102,9 +103,8 @@ angular.module("managerApp")
 
         function getUnitPrices () {
             return apiResources.getSimultaneousLines({
-                billingAccount: $stateParams.billingAccount,
                 serviceName: $stateParams.serviceName,
-                quantity: 1
+                quantity: currentLine.simultaneousLinesDetails.current + 1
             }).$promise.then(function (order) {
                 self.contracts = order.contracts;
                 unitPrices = order.prices;
@@ -118,13 +118,13 @@ angular.module("managerApp")
         }
 
         function getOfferTasks () {
-            return OvhApiTelephonyService.OfferTask().Lexi().query({
+            return OvhApiTelephonyService.OfferTask().v6().query({
                 billingAccount: $stateParams.billingAccount,
                 serviceName: $stateParams.serviceName,
                 action: "removeSimltaneousLines"
             }).$promise.then(function (offerTasks) {
                 return $q.all(_.map(offerTasks, function (taskId) {
-                    return OvhApiTelephonyService.OfferTask().Lexi().get({
+                    return OvhApiTelephonyService.OfferTask().v6().get({
                         billingAccount: $stateParams.billingAccount,
                         serviceName: $stateParams.serviceName,
                         taskId: taskId
@@ -146,6 +146,11 @@ angular.module("managerApp")
 
         function init () {
 
+            if (!currentLine) {
+                Toast.error($translate.instant("telephony_line_actions_line_calls_simultaneous_line_load_error"));
+                return $q.when(null);
+            }
+
             self.loading = {
                 init: true,
                 order: false,
@@ -161,52 +166,31 @@ angular.module("managerApp")
             self.offerTasks = [];
             self.options = {
                 simultaneousLines: null,
-                maximumAvailableSimultaneousLines: 0,
+                maximumAvailableSimultaneousLines: currentLine.simultaneousLinesDetails.maximum,
                 minimumAvailableSimultaneousLines: 1
             };
 
             self.showBulkOrderSummary = false;
 
+            self.options.simultaneousLines = currentLine.simultaneousLines;
+            self.hundredLines = currentLine.simultaneousLines >= 100;
+
+            self.isTrunk = _.some(currentLine.offers, function (offer) {
+                return _.startsWith(offer, "voip.main.offer.trunk");
+            });
+
+            if (self.isTrunk) {
+                apiResources.getSimultaneousLines = OvhApiOrderTelephony.v6().getSimultaneousTrunkLines;
+                apiResources.orderSimultaneousLines = OvhApiOrderTelephony.v6().orderSimultaneousTrunkLines;
+            }
+
+            self.options.details = currentLine.simultaneousLinesDetails;
+            self.saved = angular.copy(self.options);
+
             return $q.all([
 
                 getOfferTasks(),
-                getUnitPrices(),
-
-                OvhApiTelephony.Line().Lexi().get({
-                    billingAccount: $stateParams.billingAccount,
-                    serviceName: $stateParams.serviceName
-                }).$promise.then(function (options) {
-                    self.options.simultaneousLines = options.simultaneousLines;
-                    self.hundredLines = options.simultaneousLines >= 100;
-
-                    var isTrunk = _.some(options.offers, function (offer) {
-                        return _.startsWith(offer, "voip.main.offer.trunk");
-                    });
-
-                    if (isTrunk) {
-                        apiResources.getSimultaneousLines = OvhApiOrderTelephony.Lexi().getSimultaneousTrunkLines;
-                        apiResources.orderSimultaneousLines = OvhApiOrderTelephony.Lexi().orderSimultaneousTrunkLines;
-                    }
-
-                    if (currentLine) {
-                        self.options.details = currentLine.simultaneousLinesDetails;
-                    }
-
-                    self.saved = angular.copy(self.options);
-                    return self.options;
-                }),
-
-                OvhApiTelephony.Line().Lexi().maximumAvailableSimultaneousLines({
-                    billingAccount: $stateParams.billingAccount,
-                    serviceName: $stateParams.serviceName
-                }).$promise.then(function (maximumAvailableSimultaneousLines) {
-                    self.options.maximumAvailableSimultaneousLines = maximumAvailableSimultaneousLines.maximum;
-                    self.numberLinesTitle = $translate.instant("common_between_and", {
-                        between: self.options.minimumAvailableSimultaneousLines,
-                        and: self.options.maximumAvailableSimultaneousLines
-                    });
-                    return self.options;
-                })
+                getUnitPrices()
 
             ]).finally(function () {
                 self.loading.init = false;
@@ -234,8 +218,8 @@ angular.module("managerApp")
                     method: "POST",
                     params: null
                 }, {
-                    name: "addSimultaneousLines",
-                    route: "/order/telephony/lines/{serviceName}/addSimultaneousLines",
+                    name: "updateSimultaneousChannels",
+                    route: "/order/telephony/lines/{serviceName}/updateSimultaneousChannels",
                     method: "POST",
                     params: null
                 }]
@@ -244,7 +228,7 @@ angular.module("managerApp")
 
         self.filterServices = function (services) {
             return _.filter(services, function (service) {
-                return ["sip", "mgcp"].indexOf(service.featureType) > -1 && service.hasValidPublicOffer() && !service.isSipTrunk();
+                return ["sip", "mgcp"].indexOf(service.featureType) > -1 && service.hasValidPublicOffer() && !service.isSipTrunkRates();
             });
         };
 
@@ -276,7 +260,7 @@ angular.module("managerApp")
         };
 
         self.buildOrderSummary = function (orders) {
-            self.bulkOrders = _.chain(orders).map("values").flatten().filter({ action: "addSimultaneousLines" }).map("value").value();
+            self.bulkOrders = _.chain(orders).map("values").flatten().filter({ action: "updateSimultaneousChannels" }).map("value").value();
 
             self.showBulkOrderSummary = self.bulkOrders.length > 0;
         };

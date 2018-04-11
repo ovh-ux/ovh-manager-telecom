@@ -120,7 +120,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberOvhPabxDialplan", func
 
         self.status = "IN_CREATION";
 
-        return OvhApiTelephony.OvhPabx().Dialplan().Lexi().create({
+        return OvhApiTelephony.OvhPabx().Dialplan().v6().create({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName
         }, {
@@ -146,7 +146,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberOvhPabxDialplan", func
 
         self.status = "SAVING";
 
-        return OvhApiTelephony.OvhPabx().Dialplan().Lexi().save({
+        return OvhApiTelephony.OvhPabx().Dialplan().v6().save({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName,
             dialplanId: self.dialplanId
@@ -168,7 +168,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberOvhPabxDialplan", func
 
         self.status = "DELETING";
 
-        return OvhApiTelephony.OvhPabx().Dialplan().Lexi().remove({
+        return OvhApiTelephony.OvhPabx().Dialplan().v6().remove({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName,
             dialplanId: self.dialplanId
@@ -183,13 +183,13 @@ angular.module("managerApp").factory("TelephonyGroupNumberOvhPabxDialplan", func
     TelephonyGroupNumberOvhPabxDialplan.prototype.getExtensions = function () {
         var self = this;
 
-        return OvhApiTelephony.OvhPabx().Dialplan().Extension().Lexi().query({
+        return OvhApiTelephony.OvhPabx().Dialplan().Extension().v6().query({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName,
             dialplanId: self.dialplanId
         }).$promise.then(function (extensionIds) {
             return $q.all(_.map(_.chunk(extensionIds, 50), function (chunkIds) {
-                return OvhApiTelephony.OvhPabx().Dialplan().Extension().Lexi().getBatch({
+                return OvhApiTelephony.OvhPabx().Dialplan().Extension().v6().getBatch({
                     billingAccount: self.billingAccount,
                     serviceName: self.serviceName,
                     dialplanId: self.dialplanId,

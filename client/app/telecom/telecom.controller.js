@@ -2,7 +2,7 @@ angular.module("managerApp").controller("TelecomCtrl", class TelecomCtrl {
     constructor ($rootScope, OvhApiMe) {
         this.$rootScope = $rootScope;
         this.api = {
-            me: OvhApiMe.Lexi()
+            me: OvhApiMe.v6()
         };
     }
 

@@ -27,7 +27,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationTones
     =============================== */
 
     function fetchTones () {
-        return apiService.Lexi().getTones({
+        return apiService.v6().getTones({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }).$promise.catch(function (error) {
@@ -75,9 +75,9 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationTones
         var name = (file.name || "").replace(/\s/g, "_");
 
         // first, upload document to get a file url
-        return OvhApiMe.Document().Lexi().upload(name, file).then(function (doc) {
+        return OvhApiMe.Document().v6().upload(name, file).then(function (doc) {
             // second upload the file with given url
-            return apiService.Lexi().uploadTones({
+            return apiService.v6().uploadTones({
                 billingAccount: $stateParams.billingAccount,
                 serviceName: $stateParams.serviceName
             }, {
@@ -124,7 +124,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationTones
 
         // save other types (types without custom sound)
         if (!_.isEmpty(otherTypes)) {
-            savePromises.push(apiService.Lexi().saveTones({
+            savePromises.push(apiService.v6().saveTones({
                 billingAccount: $stateParams.billingAccount,
                 serviceName: $stateParams.serviceName
             }, otherTypes).$promise);

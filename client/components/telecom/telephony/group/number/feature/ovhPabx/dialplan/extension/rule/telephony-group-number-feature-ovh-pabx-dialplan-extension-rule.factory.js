@@ -109,7 +109,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberOvhPabxDialplanExtensi
 
         self.status = "SAVING";
 
-        return OvhApiTelephony.OvhPabx().Dialplan().Extension().Rule().Lexi().save({
+        return OvhApiTelephony.OvhPabx().Dialplan().Extension().Rule().v6().save({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName,
             dialplanId: self.dialplanId,
@@ -131,7 +131,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberOvhPabxDialplanExtensi
 
         self.status = "CREATING";
 
-        return OvhApiTelephony.OvhPabx().Dialplan().Extension().Rule().Lexi().create({
+        return OvhApiTelephony.OvhPabx().Dialplan().Extension().Rule().v6().create({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName,
             dialplanId: self.dialplanId,
@@ -155,7 +155,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberOvhPabxDialplanExtensi
 
         self.status = "DELETING";
 
-        return OvhApiTelephony.OvhPabx().Dialplan().Extension().Rule().Lexi().remove({
+        return OvhApiTelephony.OvhPabx().Dialplan().Extension().Rule().v6().remove({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName,
             dialplanId: self.dialplanId,
@@ -174,7 +174,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberOvhPabxDialplanExtensi
 
         self.status = "MOVING";
 
-        return OvhApiTelephony.OvhPabx().Dialplan().Extension().Rule().Lexi().save({
+        return OvhApiTelephony.OvhPabx().Dialplan().Extension().Rule().v6().save({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName,
             dialplanId: self.dialplanId,

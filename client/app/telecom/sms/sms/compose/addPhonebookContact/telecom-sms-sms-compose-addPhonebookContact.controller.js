@@ -11,7 +11,7 @@ angular.module("managerApp").controller("TelecomSmsSmsComposeAddPhonebookContact
         this.api = {
             sms: {
                 phonebooks: {
-                    phonebookcontact: OvhApiSms.Phonebooks().PhonebookContact().Lexi()
+                    phonebookcontact: OvhApiSms.Phonebooks().PhonebookContact().v6()
                 }
             }
         };

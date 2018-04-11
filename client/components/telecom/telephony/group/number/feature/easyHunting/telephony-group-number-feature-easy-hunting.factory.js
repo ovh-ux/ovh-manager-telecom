@@ -144,10 +144,10 @@ angular.module("managerApp").factory("TelephonyGroupNumberEasyHunting", function
         var self = this;
 
         if (resetCache) {
-            OvhApiTelephony.EasyHunting().Lexi().resetAllCache();
+            OvhApiTelephony.EasyHunting().v6().resetAllCache();
         }
 
-        return OvhApiTelephony.EasyHunting().Lexi().get({
+        return OvhApiTelephony.EasyHunting().v6().get({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName
         }).$promise.then(function (featureOptions) {

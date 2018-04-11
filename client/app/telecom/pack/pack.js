@@ -17,7 +17,7 @@ angular.module("managerApp").config(function ($stateProvider) {
                 return {};
             },
             $title: function (translations, $translate, OvhApiPackXdsl, $stateParams) {
-                return OvhApiPackXdsl.Lexi().get({
+                return OvhApiPackXdsl.v6().get({
                     packId: $stateParams.packName
                 }).$promise.then(function (data) {
                     return $translate.instant("pack_xdsl_page_title", { name: data.description || $stateParams.packName }, null, null, "escape");

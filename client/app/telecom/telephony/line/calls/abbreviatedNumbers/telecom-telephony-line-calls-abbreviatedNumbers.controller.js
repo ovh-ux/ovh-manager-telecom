@@ -6,7 +6,7 @@ angular.module("managerApp").controller(
         var self = this;
 
         this.remove = function (abbreviatedNumber) {
-            return OvhApiTelephony.Line().AbbreviatedNumber().Lexi().remove({
+            return OvhApiTelephony.Line().AbbreviatedNumber().v6().remove({
                 billingAccount: $stateParams.billingAccount,
                 serviceName: $stateParams.serviceName,
                 abbreviatedNumber: abbreviatedNumber.abbreviatedNumber
@@ -14,14 +14,14 @@ angular.module("managerApp").controller(
         };
 
         this.insert = function (abbreviatedNumber) {
-            return OvhApiTelephony.Line().AbbreviatedNumber().Lexi().insert({
+            return OvhApiTelephony.Line().AbbreviatedNumber().v6().insert({
                 billingAccount: $stateParams.billingAccount,
                 serviceName: $stateParams.serviceName
             }, abbreviatedNumber).$promise;
         };
 
         this.update = function (abbreviatedNumber) {
-            return OvhApiTelephony.Line().AbbreviatedNumber().Lexi().update({
+            return OvhApiTelephony.Line().AbbreviatedNumber().v6().update({
                 billingAccount: $stateParams.billingAccount,
                 serviceName: $stateParams.serviceName,
                 abbreviatedNumber: abbreviatedNumber.abbreviatedNumber
@@ -57,7 +57,7 @@ angular.module("managerApp").controller(
                 perPage: PAGINATION_PER_PAGE
             };
             return $q.all([
-                OvhApiTelephony.Line().Lexi().get({
+                OvhApiTelephony.Line().v6().get({
                     billingAccount: $stateParams.billingAccount,
                     serviceName: $stateParams.serviceName
                 }).$promise.then(

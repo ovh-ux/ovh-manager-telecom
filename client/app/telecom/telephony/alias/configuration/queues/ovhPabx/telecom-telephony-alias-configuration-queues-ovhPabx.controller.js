@@ -24,7 +24,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationQueue
     }
 
     self.fetchEnums = function () {
-        return OvhApiTelephony.Lexi().schema().$promise.then(function (result) {
+        return OvhApiTelephony.v6().schema().$promise.then(function (result) {
             return {
                 strategy: _.get(result, ["models", "telephony.OvhPabxHuntingQueueStrategyEnum", "enum"])
             };
@@ -32,12 +32,12 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationQueue
     };
 
     self.fetchQueues = function () {
-        return OvhApiTelephony.OvhPabx().Hunting().Queue().Lexi().query({
+        return OvhApiTelephony.OvhPabx().Hunting().Queue().v6().query({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }).$promise.then(function (ids) {
             return $q.all(_.map(ids, function (id) {
-                return OvhApiTelephony.OvhPabx().Hunting().Queue().Lexi().get({
+                return OvhApiTelephony.OvhPabx().Hunting().Queue().v6().get({
                     billingAccount: $stateParams.billingAccount,
                     serviceName: $stateParams.serviceName,
                     queueId: id
@@ -74,12 +74,12 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationQueue
     };
 
     self.fetchSounds = function () {
-        return OvhApiTelephony.OvhPabx().Sound().Lexi().query({
+        return OvhApiTelephony.OvhPabx().Sound().v6().query({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }).$promise.then(function (ids) {
             return $q.all(_.map(ids, function (id) {
-                return OvhApiTelephony.OvhPabx().Sound().Lexi().get({
+                return OvhApiTelephony.OvhPabx().Sound().v6().get({
                     billingAccount: $stateParams.billingAccount,
                     serviceName: $stateParams.serviceName,
                     soundId: id
@@ -93,12 +93,12 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationQueue
     };
 
     self.fetchAgents = function () {
-        return OvhApiTelephony.OvhPabx().Hunting().Agent().Lexi().query({
+        return OvhApiTelephony.OvhPabx().Hunting().Agent().v6().query({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }).$promise.then(function (ids) {
             return $q.all(_.map(_.chunk(ids, 50), function (chunkIds) {
-                return OvhApiTelephony.OvhPabx().Hunting().Agent().Lexi().getBatch({
+                return OvhApiTelephony.OvhPabx().Hunting().Agent().v6().getBatch({
                     billingAccount: $stateParams.billingAccount,
                     serviceName: $stateParams.serviceName,
                     agentId: chunkIds
@@ -110,13 +110,13 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationQueue
     };
 
     self.fetchAgentsOfQueue = function (queue) {
-        return OvhApiTelephony.OvhPabx().Hunting().Queue().Agent().Lexi().query({
+        return OvhApiTelephony.OvhPabx().Hunting().Queue().Agent().v6().query({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName,
             queueId: queue.queueId
         }).$promise.then(function (ids) {
             return $q.all(_.map(_.chunk(ids, 50), function (chunkIds) {
-                return OvhApiTelephony.OvhPabx().Hunting().Agent().Lexi().getBatch({
+                return OvhApiTelephony.OvhPabx().Hunting().Agent().v6().getBatch({
                     billingAccount: $stateParams.billingAccount,
                     serviceName: $stateParams.serviceName,
                     agentId: chunkIds
@@ -128,7 +128,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationQueue
     };
 
     self.fetchAgentDescription = function (agent) {
-        return OvhApiTelephony.Service().Lexi().get({
+        return OvhApiTelephony.Service().v6().get({
             billingAccount: $stateParams.billingAccount,
             serviceName: agent.number
         }).$promise.then(function (service) {
@@ -138,9 +138,9 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationQueue
 
     self.reorderAgentsOfQueue = function (queue, agents) {
         var ids = _.pluck(agents, "agentId");
-        OvhApiTelephony.OvhPabx().Hunting().Queue().Agent().Lexi().resetAllCache();
+        OvhApiTelephony.OvhPabx().Hunting().Queue().Agent().v6().resetAllCache();
         return $q.all(_.map(_.chunk(ids, 50), function (chunkIds) {
-            return OvhApiTelephony.OvhPabx().Hunting().Queue().Agent().Lexi().getBatch({
+            return OvhApiTelephony.OvhPabx().Hunting().Queue().Agent().v6().getBatch({
                 billingAccount: $stateParams.billingAccount,
                 serviceName: $stateParams.serviceName,
                 queueId: queue.queueId,
@@ -160,7 +160,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationQueue
     };
 
     self.swapAgentsOfQueue = function (queue, fromAgent, toAgent) {
-        return OvhApiTelephony.OvhPabx().Hunting().Queue().Agent().Lexi().change({
+        return OvhApiTelephony.OvhPabx().Hunting().Queue().Agent().v6().change({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName,
             queueId: queue.queueId,
@@ -172,7 +172,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationQueue
 
     self.updateAgent = function (agent) {
         var attrs = ["status", "timeout", "wrapUpTime", "simultaneousLines"];
-        return OvhApiTelephony.OvhPabx().Hunting().Agent().Lexi().change({
+        return OvhApiTelephony.OvhPabx().Hunting().Agent().v6().change({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName,
             agentId: agent.agentId
@@ -180,7 +180,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationQueue
     };
 
     self.deleteAgentFromQueue = function (queue, toDelete) {
-        return OvhApiTelephony.OvhPabx().Hunting().Queue().Agent().Lexi().remove({
+        return OvhApiTelephony.OvhPabx().Hunting().Queue().Agent().v6().remove({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName,
             queueId: queue.queueId,
@@ -190,7 +190,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationQueue
 
     self.createQueue = function () {
         self.isCreating = true;
-        return OvhApiTelephony.OvhPabx().Hunting().Queue().Lexi().create({
+        return OvhApiTelephony.OvhPabx().Hunting().Queue().v6().create({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }, {
@@ -209,7 +209,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationQueue
 
     self.deleteQueue = function (queue) {
         self.isDeleting = true;
-        return OvhApiTelephony.OvhPabx().Hunting().Queue().Lexi().remove({
+        return OvhApiTelephony.OvhPabx().Hunting().Queue().v6().remove({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName,
             queueId: queue.queueId
@@ -239,7 +239,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationQueue
         });
         modal.result.then(function () {
             queue.isAdding = true;
-            return OvhApiTelephony.OvhPabx().Hunting().Agent().Lexi().addToQueue({
+            return OvhApiTelephony.OvhPabx().Hunting().Agent().v6().addToQueue({
                 billingAccount: $stateParams.billingAccount,
                 serviceName: $stateParams.serviceName,
                 agentId: queue.agentToAdd
@@ -287,7 +287,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationQueue
 
     self.updateQueue = function (queue) {
         queue.isUpdating = true;
-        return OvhApiTelephony.OvhPabx().Hunting().Queue().Lexi().change({
+        return OvhApiTelephony.OvhPabx().Hunting().Queue().v6().change({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName,
             queueId: queue.queueId
