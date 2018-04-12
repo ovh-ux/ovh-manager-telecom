@@ -79,19 +79,17 @@
                     </div>
 
                     <div class="row mb-3" data-ng-if="LineSimultaneousLinesCtrl.showDoRemoveButtons">
-                        <!-- TODO: Enable once Aapi endpoints updated-->
-                        <!-- <div class="col-xs-12">
+                        <div class="col-xs-12">
                             <telephony-bulk-action data-billing-account="{{ LineSimultaneousLinesCtrl.bulkDatas.billingAccount }}"
                                                    data-service-name="{{ LineSimultaneousLinesCtrl.bulkDatas.serviceName }}"
                                                    data-custom-class="link d-block pl-0 mb-3"
-                                                   data-ng-disabled="LineSimultaneousLinesCtrl.isTrunk"
                                                    data-bulk-infos="LineSimultaneousLinesCtrl.bulkDatas.infos"
                                                    data-filter-services="LineSimultaneousLinesCtrl.filterServices"
                                                    data-get-bulk-params="LineSimultaneousLinesCtrl.getBulkParams"
                                                    data-on-success="LineSimultaneousLinesCtrl.onBulkSuccess"
                                                    data-on-error="LineSimultaneousLinesCtrl.onBulkError">
                             </telephony-bulk-action>
-                        </div> -->
+                        </div>
                         <div class="col-xs-6 col-md-3">
                             <button type="button"
                                     role="button"
@@ -160,19 +158,18 @@
                             </div>
                         </div>
 
-                        <!-- TODO: Enable once Aapi endpoints updated-->
-                        <!-- <div class="col-xs-12">
+                        <div class="col-xs-12">
                             <telephony-bulk-action data-billing-account="{{ LineSimultaneousLinesCtrl.bulkDatas.billingAccount }}"
                                                    data-service-name="{{ LineSimultaneousLinesCtrl.bulkDatas.serviceName }}"
                                                    data-custom-class="link d-block pl-0 mb-3"
                                                    data-bulk-infos="LineSimultaneousLinesCtrl.bulkDatas.infos"
-                                                   data-ng-disabled="!LineSimultaneousLinesCtrl.contractsAccepted || LineSimultaneousLinesCtrl.isTrunk"
+                                                   data-ng-disabled="!LineSimultaneousLinesCtrl.contractsAccepted"
                                                    data-filter-services="LineSimultaneousLinesCtrl.filterServices"
                                                    data-get-bulk-params="LineSimultaneousLinesCtrl.getBulkParams"
                                                    data-on-success="LineSimultaneousLinesCtrl.onBulkSuccess"
                                                    data-on-error="LineSimultaneousLinesCtrl.onBulkError">
                             </telephony-bulk-action>
-                        </div> -->
+                        </div>
 
                         <div class="col-xs-12 mb-3"
                              data-ng-if="!LineSimultaneousLinesCtrl.orderUrl">

@@ -51,7 +51,7 @@
    <translation id="telephony_line_actions_line_calls_trunk_simultaneous_new_channels_price">Prix optimisé</translation>
    <translation id="telephony_line_actions_line_calls_trunk_simultaneous_new_channels_minimum_bandwidth_recommended">Débit minimum recommandé</translation>
    <translation id="telephony_line_actions_line_calls_trunk_simultaneous_new_get_channels_error">Une erreur est survenue lors de la récupération des canaux</translation>
-   <translation id="telephony_line_actions_line_calls_trunk_simultaneous_new_channels_update_error">Une erreur est survenue lors de la commande des nouveaux canaux</translation>
+   <translation id="telephony_line_actions_line_calls_trunk_simultaneous_new_channels_update_error">Une erreur est survenue lors de la commande des nouveaux canaux. </translation>
    <translation id="telephony_line_actions_line_calls_trunk_simultaneous_chart_channels_label">{{count}} canaux</translation>
 
    <translation id="telephony_line_actions_line_calls_trunk_simultaneous_chart_legend_current">Actuelle</translation>

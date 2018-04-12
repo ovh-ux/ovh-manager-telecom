@@ -94,10 +94,11 @@ angular.module("managerApp").controller("TelecomTelephonyLineTrunkSimultaneousLi
             change: {
                 bandwidth: "--",
                 price: null,
-                packsRepartition: [{ quantity: 0 },
-                                   { quantity: 0 },
-                                   { quantity: 0 },
-                                   { quantity: 0 }],
+                packsRepartition: [
+                    { quantity: 0 },
+                    { quantity: 0 },
+                    { quantity: 0 },
+                    { quantity: 0 }],
                 quantityWanted: null,
                 quantityOptimized: null
             },
@@ -154,7 +155,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineTrunkSimultaneousLi
         }, { quantity: this.trunkRates.change.quantityOptimized }).$promise.then((packOrder) => {
             this.trunkRates.order = packOrder;
         }).catch((error) => {
-            this.Toast.error(this.$translate.instant("telephony_line_actions_line_calls_trunk_simultaneous_new_channels_update_error"));
+            this.Toast.error([this.$translate.instant("telephony_line_actions_line_calls_trunk_simultaneous_new_channels_update_error"), error.data.message].join(" "));
             return error;
         }).finally(() => {
             this.trunkRates.loading = false;
