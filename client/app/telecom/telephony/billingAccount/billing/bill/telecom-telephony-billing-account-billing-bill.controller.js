@@ -4,11 +4,11 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingBi
     var self = this;
 
     function fetchConsumption () {
-        return OvhApiTelephony.HistoryConsumption().Lexi().query({
+        return OvhApiTelephony.HistoryConsumption().v6().query({
             billingAccount: $stateParams.billingAccount
         }).$promise.then(function (ids) {
             return $q.all(_.map(_.chunk(ids, 50), function (chunkIds) {
-                return OvhApiTelephony.HistoryConsumption().Lexi().getBatch({
+                return OvhApiTelephony.HistoryConsumption().v6().getBatch({
                     billingAccount: $stateParams.billingAccount,
                     date: chunkIds
                 }).$promise;
@@ -39,7 +39,7 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingBi
 
     self.fetchFile = function (consumption, type) {
         var tryDownload = function () {
-            return OvhApiTelephony.HistoryConsumption().Lexi().getFile({
+            return OvhApiTelephony.HistoryConsumption().v6().getFile({
                 billingAccount: $stateParams.billingAccount,
                 date: consumption.date,
                 extension: type

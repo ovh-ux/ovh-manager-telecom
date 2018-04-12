@@ -175,7 +175,7 @@ angular.module("managerApp", [
 
         var config = TRACKING.atInternetConfiguration;
 
-        atInternet.setDefaultsPromise(OvhApiMe.Lexi().get().$promise.then(function (me) {
+        atInternet.setDefaultsPromise(OvhApiMe.v6().get().$promise.then(function (me) {
             config.nichandle = me.nichandle;
             config.countryCode = me.country;
             config.currencyCode = me.currency && me.currency.code;
@@ -315,6 +315,10 @@ angular.module("managerApp", [
             // Set focus to target
             $document[0].getElementById(id).focus();
         };
+    })
+
+    .config(function (OtrsPopupProvider, REDIRECT_URLS) {
+        OtrsPopupProvider.setBaseUrlTickets(_.get(REDIRECT_URLS, "listTicket", null));
     })
 
     .config(function ($logProvider) {

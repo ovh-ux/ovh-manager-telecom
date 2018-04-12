@@ -18,7 +18,7 @@ angular.module("managerApp").config(function ($stateProvider) {
         ],
         resolve: {
             $title: function (translations, $translate, $stateParams, OvhApiOverTheBox) {
-                return OvhApiOverTheBox.Lexi().get({
+                return OvhApiOverTheBox.v6().get({
                     serviceName: $stateParams.serviceName
                 }).$promise.then(function (data) {
                     return $translate.instant("overTheBox_page_title", { name: data.customerDescription || $stateParams.serviceName }, null, null, "escape");

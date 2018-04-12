@@ -15,7 +15,7 @@ angular.module("managerApp").controller("PackHostedEmailAddCtrl", function ($q, 
 
         accountTmp.email = self.account.name + self.account.domain;
 
-        return OvhApiPackXdslHostedEmail.Lexi().save(
+        return OvhApiPackXdslHostedEmail.v6().save(
             {
                 packId: $stateParams.packName
             },
@@ -34,7 +34,7 @@ angular.module("managerApp").controller("PackHostedEmailAddCtrl", function ($q, 
     this.init = function () {
         $scope.domains = [];
 
-        OvhApiPackXdslHostedEmail.Lexi().getDomains({ packId: $stateParams.packName }, function (domains) {
+        OvhApiPackXdslHostedEmail.v6().getDomains({ packId: $stateParams.packName }, function (domains) {
             _.each(domains, function (domain) {
                 $scope.domains.push("@" + domain);
             });

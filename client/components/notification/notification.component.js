@@ -96,7 +96,7 @@ angular.module("managerApp")
                  */
             this.destroyElement = function (element) {
                 element.frozen = true;
-                OvhApiXdslNotifications.Lexi().remove({
+                OvhApiXdslNotifications.v6().remove({
                     xdslId: element.xdslService,
                     id: element.id
                 }).$promise.then(
@@ -118,7 +118,7 @@ angular.module("managerApp")
             this.submitElement = function (element) {
                 element.frozen = true;
                 element.editMode = false;
-                OvhApiXdslNotifications.Lexi().add({
+                OvhApiXdslNotifications.v6().add({
                     xdslId: element.xdslService
                 }, element.getCreationData()).$promise.then(
                     function (data) {

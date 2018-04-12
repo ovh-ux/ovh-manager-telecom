@@ -130,7 +130,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineManagementOfferChan
         }
 
         function callGetOfferChanges (billingAccount, serviceName) {
-            return OvhApiTelephony.Service().Lexi().offerChanges({
+            return OvhApiTelephony.Service().v6().offerChanges({
                 billingAccount: billingAccount,
                 serviceName: serviceName
             }).$promise;

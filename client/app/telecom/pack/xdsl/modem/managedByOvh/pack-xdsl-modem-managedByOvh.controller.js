@@ -22,7 +22,7 @@ angular.module("managerApp").controller("XdslModemManagedByCtrl", function ($sta
         this.updating = true;
         PackXdslModemMediator.setTask("changeModemConfigManagement");
         PackXdslModemMediator.disableCapabilities();
-        return OvhApiXdsl.Modem().Lexi().update(
+        return OvhApiXdsl.Modem().v6().update(
             {
                 xdslId: $stateParams.serviceName
             },

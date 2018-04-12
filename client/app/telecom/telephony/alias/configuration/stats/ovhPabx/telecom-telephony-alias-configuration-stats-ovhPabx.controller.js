@@ -33,12 +33,12 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationStats
     }
 
     self.fetchQueues = function () {
-        return OvhApiTelephony.OvhPabx().Hunting().Queue().Lexi().query({
+        return OvhApiTelephony.OvhPabx().Hunting().Queue().v6().query({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }).$promise.then(function (ids) {
             return $q.all(_.map(ids, function (id) {
-                return OvhApiTelephony.OvhPabx().Hunting().Queue().Lexi().get({
+                return OvhApiTelephony.OvhPabx().Hunting().Queue().v6().get({
                     billingAccount: $stateParams.billingAccount,
                     serviceName: $stateParams.serviceName,
                     queueId: id
@@ -60,12 +60,12 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationStats
             totalCallDuration: 0,
             totalWaitingDuration: 0
         };
-        return OvhApiTelephony.OvhPabx().Hunting().Queue().Lexi().query({
+        return OvhApiTelephony.OvhPabx().Hunting().Queue().v6().query({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }).$promise.then(function (ids) {
             return $q.all(_.map(ids, function (id) {
-                return OvhApiTelephony.OvhPabx().Hunting().Queue().Lexi().getLiveStatistics({
+                return OvhApiTelephony.OvhPabx().Hunting().Queue().v6().getLiveStatistics({
                     billingAccount: $stateParams.billingAccount,
                     serviceName: $stateParams.serviceName,
                     queueId: id

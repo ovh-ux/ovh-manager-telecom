@@ -49,7 +49,7 @@ angular.module("managerApp")
                 wifiTmp.securityKey = self.wifi.securityKey;
             }
 
-            OvhApiXdsl.Modem().Wifi().Lexi().update({
+            OvhApiXdsl.Modem().Wifi().v6().update({
                 xdslId: $stateParams.serviceName,
                 wifiName: this.wifi.wifiName
             }, wifiTmp).$promise.then(function (data) {
@@ -128,7 +128,7 @@ angular.module("managerApp")
         };
 
         function getModem () {
-            return OvhApiXdsl.Modem().Lexi().get({
+            return OvhApiXdsl.Modem().v6().get({
                 xdslId: $stateParams.serviceName
             }).$promise;
         }

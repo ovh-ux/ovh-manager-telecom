@@ -8,13 +8,13 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationRecor
     ===============================*/
 
     self.fetchQueues = function () {
-        return OvhApiTelephony.EasyHunting().Hunting().Queue().Lexi()
+        return OvhApiTelephony.EasyHunting().Hunting().Queue().v6()
             .query({
                 billingAccount: $stateParams.billingAccount,
                 serviceName: $stateParams.serviceName
             }).$promise.then(function (ids) {
                 return $q.all(_.map(ids, function (id) {
-                    return OvhApiTelephony.EasyHunting().Hunting().Queue().Lexi()
+                    return OvhApiTelephony.EasyHunting().Hunting().Queue().v6()
                         .get({
                             billingAccount: $stateParams.billingAccount,
                             serviceName: $stateParams.serviceName,
@@ -25,13 +25,13 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationRecor
     };
 
     self.fetchRecords = function () {
-        OvhApiTelephony.EasyHunting().Records().Lexi().resetAllCache();
-        return OvhApiTelephony.EasyHunting().Records().Lexi().query({
+        OvhApiTelephony.EasyHunting().Records().v6().resetAllCache();
+        return OvhApiTelephony.EasyHunting().Records().v6().query({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }).$promise.then(function (recordsIds) {
             return $q.all(_.map(_.chunk(recordsIds, 50), function (chunkIds) {
-                return OvhApiTelephony.EasyHunting().Records().Lexi().getBatch({
+                return OvhApiTelephony.EasyHunting().Records().v6().getBatch({
                     billingAccount: $stateParams.billingAccount,
                     serviceName: $stateParams.serviceName,
                     id: chunkIds
@@ -50,7 +50,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationRecor
 
     self.updateQueue = function (queue) {
         var attrs = ["record", "askForRecordDisabling", "recordDisablingLanguage", "recordDisablingDigit"];
-        return OvhApiTelephony.EasyHunting().Hunting().Queue().Lexi()
+        return OvhApiTelephony.EasyHunting().Hunting().Queue().v6()
             .change({
                 billingAccount: $stateParams.billingAccount,
                 serviceName: $stateParams.serviceName,
@@ -60,7 +60,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationRecor
 
     self.deleteSelectedRecords = function (records) {
         return $q.all(_.map(records, function (record) {
-            return OvhApiTelephony.EasyHunting().Records().Lexi().remove({
+            return OvhApiTelephony.EasyHunting().Records().v6().remove({
                 billingAccount: $stateParams.billingAccount,
                 serviceName: $stateParams.serviceName,
                 id: record.id

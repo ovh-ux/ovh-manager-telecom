@@ -25,7 +25,7 @@ angular.module("managerApp").service("voipLinePhone", class {
      *  @return {Promise}   That return an array of VoipLinePhone instances.
      */
     fetchAll () {
-        return this.OvhApiTelephony.Line().Phone().Erika().query().aggregate("billingAccount").aggregate("serviceName").expand().execute().$promise.then((results) => {
+        return this.OvhApiTelephony.Line().Phone().v7().query().aggregate("billingAccount").aggregate("serviceName").expand().execute().$promise.then((results) => {
             let phoneList = [];
 
             results.forEach((result) => {

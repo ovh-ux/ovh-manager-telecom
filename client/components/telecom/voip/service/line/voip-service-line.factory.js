@@ -45,6 +45,20 @@ angular.module("managerApp").factory("VoipServiceLine", function (VoipService) {
             const publicOfferName = _.get(this.getPublicOffer, "name");
             return publicOfferName === "trunk" || _.get(publicOfferName.split("."), "[0]") === "trunk";
         }
+
+        /**
+         *  @ngdoc method
+         *  @name managerApp.object:VoipServiceLine#isSipTrunkRates
+         *  @propertyOf managerApp.object:VoipServiceLine
+         *
+         *  @description
+         *  Helper that try to check if the service offer is trunk rates or not.
+         *
+         *  @return {Boolean}   `true` if the line service is a sip trunk rates.
+         */
+        isSipTrunkRates () {
+            return _.some(this.offers, (offer) => offer === "voip.main.offer.fr.trunk.rates");
+        }
     }
 
     return VoipServiceLine;

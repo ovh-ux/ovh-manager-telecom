@@ -1,0 +1,210 @@
+<section class="telephony-group-line-simultaneousLines">
+
+    <header>
+        <section-back-link section-back-link-to-state="telecom.telephony.line.calls" section-back-link-title="{{ 'telephony_line_calls_back_link' | translate }}">
+        </section-back-link>
+        <h1 data-translate="telephony_line_actions_line_calls_simultaneous_line_title"></h1>
+    </header>
+
+    <div class="text-center" data-ng-if="TrunkRatesSimultaneousLinesCtrl.trunkRates.loading">
+        <oui-spinner></oui-spinner>
+    </div>
+
+    <div class="telecom-section-content" data-ng-hide="TrunkRatesSimultaneousLinesCtrl.trunkRates.loading">
+
+        <toast-message></toast-message>
+
+        <div class="alert alert-info"
+             role="alert">
+             <p data-translate="telephony_line_actions_line_calls_trunk_simultaneous_info1"></p>
+             <p data-translate="telephony_line_actions_line_calls_trunk_simultaneous_info2"></p>
+             <p data-translate="telephony_line_actions_line_calls_trunk_simultaneous_info3"></p>
+        </div>
+
+        <p data-ng-if="TrunkRatesSimultaneousLinesCtrl.trunkRates.current.quantity > 100" data-translate="telephony_line_actions_line_calls_simultaneous_line_support"></p>
+
+        <div data-ng-if="TrunkRatesSimultaneousLinesCtrl.trunkRates.current.quantity <= 100 && !TrunkRatesSimultaneousLinesCtrl.trunkRates.loading">
+            <form name="simultaneousLinesCtrlForm"
+                  data-ng-if="!TrunkRatesSimultaneousLinesCtrl.trunkRates.order"
+                  data-ng-submit="TrunkRatesSimultaneousLinesCtrl.orderPacks()">
+
+                <div class="text-center" data-ng-if="!TrunkRatesSimultaneousLinesCtrl.contracts && TrunkRatesSimultaneousLinesCtrl.loading.order">
+                    <oui-spinner></oui-spinner>
+                </div>
+
+                <div class="row my-4">
+                    <div class="col-md-6">
+                        <section class="widget-presentation">
+                            <header class="widget-presentation-header">
+                                <h2 class="widget-presentation-title"
+                                    data-translate="telephony_line_actions_line_calls_trunk_simultaneous_current_channels_title">
+                                </h2>
+                            </header>
+
+                            <div class="row">
+                                <label class="control-label col-md-4"
+                                       data-translate="telephony_line_actions_line_calls_trunk_simultaneous_current_channels_quantity"></label>
+                                <div class="col-md-2">
+                                    <p class="form-control-static p-0 font-weight-bold"
+                                       data-ng-bind="TrunkRatesSimultaneousLinesCtrl.trunkRates.current.quantity"></p>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <label class="control-label col-md-4"
+                                       data-translate="telephony_line_actions_line_calls_trunk_simultaneous_current_channels_price"></label>
+                                <div class="col-md-3">
+                                    <p class="form-control-static p-0 font-weight-bold"
+                                       data-ng-bind="TrunkRatesSimultaneousLinesCtrl.trunkRates.current.price"></p>
+                                </div>
+                            </div>
+
+                            <div class="row mt-5"
+                                 data-ng-if="TrunkRatesSimultaneousLinesCtrl.trunkRates.pending.price">
+                                <label class="control-label col-md-4"
+                                       data-translate="telephony_line_actions_line_calls_trunk_simultaneous_pending_channels_quantity"></label>
+                                <div class="col-md-8">
+                                    <p class="form-control-static p-0 font-weight-bold"
+                                       data-ng-bind="TrunkRatesSimultaneousLinesCtrl.trunkRates.current.price"></p>
+                                </div>
+
+                                <label class="control-label col-md-4"
+                                       data-translate="telephony_line_actions_line_calls_trunk_simultaneous_pending_channels_price"></label>
+                                <div class="col-md-8">
+                                    <p class="form-control-static p-0 font-weight-bold"
+                                       data-ng-bind="TrunkRatesSimultaneousLinesCtrl.trunkRates.current.price"></p>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="widget-presentation">
+                            <header class="widget-presentation-header">
+                                <h2 class="widget-presentation-title"
+                                    data-translate="telephony_line_actions_line_calls_trunk_simultaneous_new_channels_title">
+                                </h2>
+                            </header>
+
+                            <div class="row">
+                                <label for="quantityWanted"
+                                       class="control-label col-md-4"
+                                       data-translate="telephony_line_actions_line_calls_trunk_simultaneous_new_channels_quantity_wanted">
+                                </label>
+                                <div class="col-xs-6 col-md-3">
+                                    <input id="quantityWanted"
+                                           name="quantityWantedr"
+                                           class="form-control"
+                                           data-ng-model="TrunkRatesSimultaneousLinesCtrl.trunkRates.change.quantityWanted"
+                                           type="number"
+                                           min="0" max="100" step="5"
+                                           data-ng-min="0" data-ng-max="100" data-ng-step="5"
+                                           data-ng-change="TrunkRatesSimultaneousLinesCtrl.getNewRepartition()" />
+                                </div>
+                            </div>
+
+                            <div class="row mt-3">
+                                <label class="control-label col-md-4"
+                                       data-translate="telephony_line_actions_line_calls_trunk_simultaneous_new_channels_quantity_optimized"></label>
+                                <div class="col-md-2">
+                                    <p class="form-control-static p-0 font-weight-bold"
+                                       data-ng-bind="TrunkRatesSimultaneousLinesCtrl.trunkRates.change.quantityOptimized"></p>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <label class="control-label col-md-4"
+                                       data-translate="telephony_line_actions_line_calls_trunk_simultaneous_new_channels_price"></label>
+                                <div class="col-md-3">
+                                    <p class="form-control-static p-0 font-weight-bold"
+                                       data-ng-bind="TrunkRatesSimultaneousLinesCtrl.trunkRates.change.price"></p>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <label class="control-label col-md-4"
+                                       data-translate="telephony_line_actions_line_calls_trunk_simultaneous_new_channels_minimum_bandwidth_recommended"></label>
+                                <div class="col-md-3">
+                                    <p class="form-control-static p-0 font-weight-bold"
+                                       data-translate="telephony_line_actions_line_calls_trunk_simultaneous_channels_bandwidth_rate"
+                                       data-translate-values="{ bandwidth: TrunkRatesSimultaneousLinesCtrl.trunkRates.change.bandwidth }"></p>
+                                </div>
+                            </div>
+
+                            <div class="float-right">
+                                <button class="btn btn-primary"
+                                        data-ng-disabled="!TrunkRatesSimultaneousLinesCtrl.canOrder() || TrunkRatesSimultaneousLinesCtrl.trunkRates.change.loading">
+                                    <oui-spinner class="mr-2"
+                                                data-ng-if="LineForwardCtrl.loading.save"
+                                                data-size="s">
+                                    </oui-spinner>
+                                    <span data-translate="submit"></span>
+                                </button>
+                            </div>
+                        </section>
+                    </div>
+
+                    <section class="col-md-6 widget-presentation">
+                        <header class="widget-presentation-header">
+                            <h2 class="widget-presentation-title"
+                                data-translate="telephony_line_actions_line_calls_trunk_simultaneous_channels_repartition_title">
+                            </h2>
+                        </header>
+                        <div class="form-group chart-container" 
+                            data-ng-if="!TrunkRatesSimultaneousLinesCtrl.charts.loading">
+                            <p data-chartjs="TrunkRatesSimultaneousLinesCtrl.chart"></p>
+                        </div>
+                    </section>
+                </div>
+            </form>
+
+            <div class="row"
+                 data-ng-if="TrunkRatesSimultaneousLinesCtrl.trunkRates.order.orderId">
+                <section class="col-md-6 widget-presentation">
+                    <header class="widget-presentation-header">
+                        <h2 class="widget-presentation-title"
+                            data-translate="telephony_line_actions_line_calls_simultaneous_line_summary">
+                        </h2>
+                    </header>
+
+                    <div class="row form-group mb-3">
+                        <label class="col-md-3 col-xs-6 control-label text-left"
+                                data-translate="telephony_line_actions_line_calls_simultaneous_line_order_id"></label>
+                        <div class="col-xs-6">
+                            <p class="form-control-static p-0 font-weight-bold"
+                                data-ng-bind="TrunkRatesSimultaneousLinesCtrl.trunkRates.order.orderId"></p>
+                        </div>
+                    </div>
+
+                    <div class="row form-group mb-3">
+                        <label class="col-md-3 col-xs-6 control-label text-left"
+                                data-translate="telephony_line_actions_line_calls_simultaneous_line_order_link"></label>
+                        <div class="col-xs-6">
+                            <a target="_blank" title="{{'telephony_line_actions_line_calls_simultaneous_order' | translate}}"
+                                data-ng-href="{{TrunkRatesSimultaneousLinesCtrl.trunkRates.order.url}}">
+                                <span data-translate="telephony_line_actions_line_calls_simultaneous_line_order_click"></span>
+                                <span class="ovh-font ovh-font-newtab ml-1"></span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="row form-group mb-3">
+                        <label class="col-md-3 col-xs-6 control-label text-left"
+                                data-translate="telephony_line_actions_line_calls_simultaneous_line_price_without_vat"></label>
+                        <div class="col-xs-6">
+                            <p class="form-control-static p-0 font-weight-bold text-danger"
+                                data-ng-bind="TrunkRatesSimultaneousLinesCtrl.trunkRates.order.prices.withoutTax.text"></p>
+                        </div>
+                    </div>
+
+                    <div class="row form-group mb-3">
+                        <label class="col-md-3 col-xs-6 control-label text-left"
+                                data-translate="telephony_line_actions_line_calls_simultaneous_line_price_total"></label>
+                        <div class="col-xs-6">
+                            <p class="form-control-static p-0 font-weight-bold text-danger"
+                                data-ng-bind="TrunkRatesSimultaneousLinesCtrl.trunkRates.order.prices.withTax.text"></p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</section>

@@ -17,7 +17,7 @@ angular.module("managerApp").controller("PackAccessCtrl", function ($scope, OvhA
         }).$promise.then(
             function (services) {
                 async.map(services, function (service, callback) {
-                    OvhApiXdslLines.Lexi().query({
+                    OvhApiXdslLines.v6().query({
                         xdslId: service.accessName
                     }).$promise.then(function (lines) {
                         service.lines = lines;

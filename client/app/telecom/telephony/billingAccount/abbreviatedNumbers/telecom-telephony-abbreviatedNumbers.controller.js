@@ -6,21 +6,21 @@ angular.module("managerApp").controller(
         var self = this;
 
         this.remove = function (abbreviatedNumber) {
-            return OvhApiTelephony.AbbreviatedNumber().Lexi().remove({
+            return OvhApiTelephony.AbbreviatedNumber().v6().remove({
                 billingAccount: $stateParams.billingAccount,
                 abbreviatedNumber: abbreviatedNumber.abbreviatedNumber
             }).$promise;
         };
 
         this.insert = function (abbreviatedNumber) {
-            return OvhApiTelephony.AbbreviatedNumber().Lexi().insert({
+            return OvhApiTelephony.AbbreviatedNumber().v6().insert({
                 billingAccount: $stateParams.billingAccount,
                 serviceName: $stateParams.serviceName
             }, abbreviatedNumber).$promise;
         };
 
         this.update = function (abbreviatedNumber) {
-            return OvhApiTelephony.AbbreviatedNumber().Lexi().update({
+            return OvhApiTelephony.AbbreviatedNumber().v6().update({
                 billingAccount: $stateParams.billingAccount,
                 serviceName: $stateParams.serviceName,
                 abbreviatedNumber: abbreviatedNumber.abbreviatedNumber
@@ -56,7 +56,7 @@ angular.module("managerApp").controller(
             };
 
             return $q.all([
-                OvhApiTelephony.Lexi().get({ billingAccount: $stateParams.billingAccount }).$promise.then(
+                OvhApiTelephony.v6().get({ billingAccount: $stateParams.billingAccount }).$promise.then(
                     function (detail) {
                         self.exportFilename = "ab_num_" + (detail.description || $stateParams.billingAccount) + ".csv";
                     },

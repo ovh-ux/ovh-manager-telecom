@@ -68,7 +68,7 @@ angular.module("managerApp").factory("TelephonyGroupFax", function ($q, OvhApiTe
     TelephonyGroupFax.prototype.save = function () {
         var self = this;
 
-        return OvhApiTelephony.Fax().Lexi().edit({
+        return OvhApiTelephony.Fax().v6().edit({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName
         }, {
@@ -80,7 +80,7 @@ angular.module("managerApp").factory("TelephonyGroupFax", function ($q, OvhApiTe
     TelephonyGroupFax.prototype.terminate = function (reason, details) {
         var self = this;
 
-        return OvhApiTelephony.Service().Lexi().delete({
+        return OvhApiTelephony.Service().v6().delete({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName
         }, {
@@ -92,7 +92,7 @@ angular.module("managerApp").factory("TelephonyGroupFax", function ($q, OvhApiTe
     TelephonyGroupFax.prototype.cancelTermination = function () {
         var self = this;
 
-        return OvhApiTelephony.Service().Lexi().cancelTermination({
+        return OvhApiTelephony.Service().v6().cancelTermination({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName
         }, {}).$promise;
@@ -103,14 +103,14 @@ angular.module("managerApp").factory("TelephonyGroupFax", function ($q, OvhApiTe
     TelephonyGroupFax.prototype.getTerminationTask = function () {
         var self = this;
 
-        return OvhApiTelephony.Service().OfferTask().Lexi().query({
+        return OvhApiTelephony.Service().OfferTask().v6().query({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName,
             action: "termination",
             type: "offer"
         }).$promise.then(function (offerTaskIds) {
             return $q.all(_.map(offerTaskIds, function (id) {
-                return OvhApiTelephony.Service().OfferTask().Lexi().get({
+                return OvhApiTelephony.Service().OfferTask().v6().get({
                     billingAccount: self.billingAccount,
                     serviceName: self.serviceName,
                     taskId: id

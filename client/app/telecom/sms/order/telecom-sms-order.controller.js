@@ -7,7 +7,7 @@ angular.module("managerApp").controller("TelecomSmsOrderCtrl", class TelecomSmsO
         this.SmsMediator = SmsMediator;
         this.api = {
             order: {
-                sms: OvhApiOrder.Sms().Lexi()
+                sms: OvhApiOrder.Sms().v6()
             }
         };
         this.debounce = debounce;

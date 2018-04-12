@@ -25,7 +25,7 @@ angular.module("managerApp").service("TelecomMediator", function ($q, $translate
         self.deferred.vip = $q.defer();
 
         // get vip status of connected user
-        OvhApiMeVipStatus.Lexi().get().$promise.then(function (vipStatus) {
+        OvhApiMeVipStatus.v6().get().$promise.then(function (vipStatus) {
             self.isVip = vipStatus.telecom;
             self.deferred.vip.resolve(self.isVip);
         });

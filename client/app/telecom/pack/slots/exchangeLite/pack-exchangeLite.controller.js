@@ -14,7 +14,7 @@ angular.module("managerApp").controller("PackExchangeLiteCtrl", function ($scope
         };
 
         // Get service link to this access from current Pack Xdsl
-        return OvhApiPackXdslExchangeLite.Lexi().query({
+        return OvhApiPackXdslExchangeLite.v6().query({
             packId: $stateParams.packName
         }).$promise.then(
             function (services) {

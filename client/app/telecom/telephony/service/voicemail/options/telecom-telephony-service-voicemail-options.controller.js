@@ -5,7 +5,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceVoicemailOptions
     var removeRecord = null;
 
     function fetchEnums () {
-        return OvhApiTelephony.Lexi().schema({
+        return OvhApiTelephony.v6().schema({
             billingAccount: $stateParams.billingAccount
         }).$promise.then(function (schema) {
             return {
@@ -16,25 +16,25 @@ angular.module("managerApp").controller("TelecomTelephonyServiceVoicemailOptions
     }
 
     function fetchSettings () {
-        return OvhApiTelephony.Voicemail().Lexi().getSettings({
+        return OvhApiTelephony.Voicemail().v6().getSettings({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }).$promise;
     }
 
     function fetchGreetings () {
-        return OvhApiTelephony.Voicemail().Greetings().Lexi().query({
+        return OvhApiTelephony.Voicemail().Greetings().v6().query({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }).$promise.then(function (result) {
             if (result.length) {
                 return $q.all({
-                    greeting: OvhApiTelephony.Voicemail().Greetings().Lexi().get({
+                    greeting: OvhApiTelephony.Voicemail().Greetings().v6().get({
                         billingAccount: $stateParams.billingAccount,
                         serviceName: $stateParams.serviceName,
                         id: result[0]
                     }).$promise,
-                    download: OvhApiTelephony.Voicemail().Greetings().Lexi().download({
+                    download: OvhApiTelephony.Voicemail().Greetings().v6().download({
                         billingAccount: $stateParams.billingAccount,
                         serviceName: $stateParams.serviceName,
                         id: result[0]
@@ -56,8 +56,8 @@ angular.module("managerApp").controller("TelecomTelephonyServiceVoicemailOptions
     }
 
     function refreshSettings () {
-        OvhApiTelephony.Voicemail().Lexi().resetCache();
-        OvhApiTelephony.Voicemail().Lexi().resetQueryCache();
+        OvhApiTelephony.Voicemail().v6().resetCache();
+        OvhApiTelephony.Voicemail().v6().resetQueryCache();
         return fetchSettings().then(function (settings) {
             self.settings = settings;
             _.assign(self.recordingForm, _.pick(settings, ["doNotRecord"]));
@@ -66,8 +66,8 @@ angular.module("managerApp").controller("TelecomTelephonyServiceVoicemailOptions
     }
 
     function refreshGreetings () {
-        OvhApiTelephony.Voicemail().Greetings().Lexi().resetCache();
-        OvhApiTelephony.Voicemail().Greetings().Lexi().resetQueryCache();
+        OvhApiTelephony.Voicemail().Greetings().v6().resetCache();
+        OvhApiTelephony.Voicemail().Greetings().v6().resetQueryCache();
         return fetchGreetings().then(function (greetings) {
             self.greetings = greetings;
             _.assign(self.recordingForm, _.pick(greetings, ["filename", "url", "dir"]));
@@ -165,7 +165,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceVoicemailOptions
 
         var update = function () {
             var promises = {
-                settings: OvhApiTelephony.Voicemail().Lexi().setSettings({
+                settings: OvhApiTelephony.Voicemail().v6().setSettings({
                     billingAccount: $stateParams.billingAccount,
                     serviceName: $stateParams.serviceName
                 }, settings).$promise.then(function () {
@@ -174,7 +174,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceVoicemailOptions
             };
 
             if (removeRecord) {
-                promises.greetings = OvhApiTelephony.Voicemail().Greetings().Lexi().delete({
+                promises.greetings = OvhApiTelephony.Voicemail().Greetings().v6().delete({
                     billingAccount: $stateParams.billingAccount,
                     serviceName: $stateParams.serviceName,
                     id: removeRecord
@@ -189,11 +189,11 @@ angular.module("managerApp").controller("TelecomTelephonyServiceVoicemailOptions
         var uploadFile = $timeout(angular.noop, 1000);
         if (self.recordingForm.uploadedFile) {
             uploadFile = function () {
-                return OvhApiMe.Document().Lexi().upload(
+                return OvhApiMe.Document().v6().upload(
                     self.recordingForm.uploadedFile.name,
                     self.recordingForm.uploadedFile
                 ).then(function (doc) {
-                    return OvhApiTelephony.Voicemail().Greetings().Lexi().create({
+                    return OvhApiTelephony.Voicemail().Greetings().v6().create({
                         billingAccount: $stateParams.billingAccount,
                         serviceName: $stateParams.serviceName
                     }, {
@@ -250,7 +250,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceVoicemailOptions
         self.notificationForm.isUpdating = true;
         self.cancelAddEmail();
 
-        var update = OvhApiTelephony.Voicemail().Lexi().setSettings({
+        var update = OvhApiTelephony.Voicemail().v6().setSettings({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }, settings).$promise;
@@ -285,7 +285,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceVoicemailOptions
         self.emailForm.isRemoving = true;
         redirection.removing = true;
 
-        var update = OvhApiTelephony.Voicemail().Lexi().setSettings({
+        var update = OvhApiTelephony.Voicemail().v6().setSettings({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }, settings).$promise;
@@ -314,7 +314,7 @@ angular.module("managerApp").controller("TelecomTelephonyServiceVoicemailOptions
 
         self.emailForm.isAdding = true;
 
-        var update = OvhApiTelephony.Voicemail().Lexi().setSettings({
+        var update = OvhApiTelephony.Voicemail().v6().setSettings({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }, settings).$promise;

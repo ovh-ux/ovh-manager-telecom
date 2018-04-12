@@ -8,7 +8,7 @@ angular.module("managerApp").service("OverTheBoxMediator", function (OvhApiOverT
     =============================*/
 
     self.getCount = function () {
-        return OvhApiOverTheBox.Lexi().query().$promise.then(function (otbIds) {
+        return OvhApiOverTheBox.v6().query().$promise.then(function (otbIds) {
             return otbIds.length;
         });
     };

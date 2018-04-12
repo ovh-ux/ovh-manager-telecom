@@ -21,7 +21,7 @@ angular.module("managerApp").controller("XdslAccessIpOrderCtrl", ["$translate", 
 
     this.init = function () {
         self.loading = true;
-        OvhApiXdslIps.Lexi().price({
+        OvhApiXdslIps.v6().price({
             ipRange: ipRange
         }, null).$promise.then(function (result) {
             self.constants.price = result.text;
@@ -39,7 +39,7 @@ angular.module("managerApp").controller("XdslAccessIpOrderCtrl", ["$translate", 
 
     this.confirm = function () {
         self.loading = true;
-        OvhApiXdslIps.Lexi().order({
+        OvhApiXdslIps.v6().order({
             xdslId: self.constants.xdslId
         }, null).$promise.then(function (result) {
             Toast.success($translate.instant("pack_xdsl_access_ip_order_validation"));

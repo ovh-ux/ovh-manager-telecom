@@ -99,7 +99,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberConferenceParticipant"
     TelephonyGroupNumberConferenceParticipant.prototype.mute = function () {
         var self = this;
 
-        return OvhApiTelephony.Conference().Participants().Lexi().mute({
+        return OvhApiTelephony.Conference().Participants().v6().mute({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName,
             id: self.id
@@ -114,7 +114,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberConferenceParticipant"
     TelephonyGroupNumberConferenceParticipant.prototype.unmute = function () {
         var self = this;
 
-        return OvhApiTelephony.Conference().Participants().Lexi().unmute({
+        return OvhApiTelephony.Conference().Participants().v6().unmute({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName,
             id: self.id
@@ -129,7 +129,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberConferenceParticipant"
     TelephonyGroupNumberConferenceParticipant.prototype.kick = function () {
         var self = this;
 
-        return OvhApiTelephony.Conference().Participants().Lexi().kick({
+        return OvhApiTelephony.Conference().Participants().v6().kick({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName,
             id: self.id
@@ -144,7 +144,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberConferenceParticipant"
     TelephonyGroupNumberConferenceParticipant.prototype.deaf = function () {
         var self = this;
 
-        return OvhApiTelephony.Conference().Participants().Lexi().deaf({
+        return OvhApiTelephony.Conference().Participants().v6().deaf({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName,
             id: self.id
@@ -159,7 +159,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberConferenceParticipant"
     TelephonyGroupNumberConferenceParticipant.prototype.undeaf = function () {
         var self = this;
 
-        return OvhApiTelephony.Conference().Participants().Lexi().undeaf({
+        return OvhApiTelephony.Conference().Participants().v6().undeaf({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName,
             id: self.id
@@ -174,7 +174,7 @@ angular.module("managerApp").factory("TelephonyGroupNumberConferenceParticipant"
     TelephonyGroupNumberConferenceParticipant.prototype.updateEnergy = function (value) {
         var self = this;
 
-        return OvhApiTelephony.Conference().Participants().Lexi().energy({
+        return OvhApiTelephony.Conference().Participants().v6().energy({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName,
             id: self.id

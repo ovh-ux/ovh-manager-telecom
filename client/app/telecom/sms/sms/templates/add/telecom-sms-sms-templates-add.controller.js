@@ -7,7 +7,7 @@ angular.module("managerApp").controller("TelecomSmsSmsTemplateAddCtrl", class Te
         this.$uibModalInstance = $uibModalInstance;
         this.api = {
             sms: {
-                templates: OvhApiSms.Templates().Lexi()
+                templates: OvhApiSms.Templates().v6()
             }
         };
         this.SmsMediator = SmsMediator;

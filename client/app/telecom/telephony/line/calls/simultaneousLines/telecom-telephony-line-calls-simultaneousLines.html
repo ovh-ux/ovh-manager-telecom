@@ -6,7 +6,8 @@
         <h1 data-translate="telephony_line_actions_line_calls_simultaneous_line_title"></h1>
     </header>
 
-    <div class="text-center" data-ng-if="LineSimultaneousLinesCtrl.loading.init">
+    <div class="text-center"
+         data-ng-if="LineSimultaneousLinesCtrl.loading.init">
         <oui-spinner></oui-spinner>
     </div>
 
@@ -26,7 +27,7 @@
         <p data-ng-if="LineSimultaneousLinesCtrl.hundredLines" data-translate="telephony_line_actions_line_calls_simultaneous_line_support"></p>
 
         <div class="row"
-             data-ng-if="!LineSimultaneousLinesCtrl.hundredLines && !LineSimultaneousLinesCtrl.showBulkOrderSummary">
+             data-ng-if="!LineSimultaneousLinesCtrl.hundredLines && !LineSimultaneousLinesCtrl.showBulkOrderSummary && LineSimultaneousLinesCtrl.options">
             <div class="col-xs-12 col-md-6">
 
                 <form name="simultaneousLinesCtrlForm"

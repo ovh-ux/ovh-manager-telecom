@@ -9,7 +9,7 @@ angular.module("managerApp").service("voipServiceOfferTask", function ($q, OvhAp
         var taskIds = [];
 
         status.forEach(function (statusVal) {
-            promises.push(OvhApiTelephony.Service().OfferTask().Lexi().query({
+            promises.push(OvhApiTelephony.Service().OfferTask().v6().query({
                 billingAccount: billingAccount,
                 serviceName: serviceName,
                 action: actionParam,
@@ -30,7 +30,7 @@ angular.module("managerApp").service("voipServiceOfferTask", function ($q, OvhAp
     };
 
     self.getTaskDetails = function (billingAccount, serviceName, taskId) {
-        return OvhApiTelephony.Service().OfferTask().Lexi().get({
+        return OvhApiTelephony.Service().OfferTask().v6().get({
             billingAccount: billingAccount,
             serviceName: serviceName,
             taskId: taskId

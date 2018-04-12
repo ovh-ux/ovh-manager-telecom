@@ -5,8 +5,8 @@ angular.module("managerApp").controller("TelecomSmsOptionsRecreditUpdateCtrl", c
         this.$timeout = $timeout;
         this.$uibModalInstance = $uibModalInstance;
         this.api = {
-            sms: OvhApiSms.Lexi(),
-            orderSms: OvhApiOrderSms.Lexi()
+            sms: OvhApiSms.v6(),
+            orderSms: OvhApiOrderSms.v6()
         };
         this.SmsMediator = SmsMediator;
         this.service = service;

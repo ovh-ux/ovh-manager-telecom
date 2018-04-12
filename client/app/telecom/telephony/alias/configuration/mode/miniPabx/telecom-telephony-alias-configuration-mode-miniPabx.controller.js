@@ -18,7 +18,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationModeM
     =============================== */
 
     function fetchEnums () {
-        return OvhApiTelephony.Lexi().schema().$promise.then(function (result) {
+        return OvhApiTelephony.v6().schema().$promise.then(function (result) {
             var enums = {};
             var tmpPatternEnum = _.get(result, ["models", "telephony.EasyMiniPabxHuntingPatternEnum", "enum"]);
             enums.pattern = _.filter(tmpPatternEnum, function (pattern) {
@@ -30,7 +30,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationModeM
     }
 
     function fetchHunting () {
-        return OvhApiTelephonyMiniPabx.Lexi().getHunting({
+        return OvhApiTelephonyMiniPabx.v6().getHunting({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }).$promise;
@@ -51,7 +51,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationModeM
 
         self.loading.save = true;
 
-        return OvhApiTelephonyMiniPabx.Lexi().updateHunting({
+        return OvhApiTelephonyMiniPabx.v6().updateHunting({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }, _.pick(self.formOptions, attrs)).$promise.then(function () {

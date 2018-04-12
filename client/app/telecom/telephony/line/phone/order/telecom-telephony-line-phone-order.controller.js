@@ -7,14 +7,14 @@ angular.module("managerApp").controller("TelecomTelephonyLinePhoneOrderCtrl", fu
     self.rmaStatusUrl = TelephonyMediator.getV6ToV4RedirectionUrl("line.line_sav_rma_status");
 
     function fetchOfferPhones (offer) {
-        return OvhApiTelephony.Lexi().getLineOfferPhones({
+        return OvhApiTelephony.v6().getLineOfferPhones({
             country: "fr",
             offer: offer
         }).$promise;
     }
 
     function fetchMerchandiseAvailable () {
-        return OvhApiTelephony.Line().Phone().Lexi().getMerchandiseAvailable({
+        return OvhApiTelephony.Line().Phone().v6().getMerchandiseAvailable({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }).$promise.then(function (result) {
@@ -51,7 +51,7 @@ angular.module("managerApp").controller("TelecomTelephonyLinePhoneOrderCtrl", fu
             params.mondialRelayId = order.shipping.relay.id;
         }
         self.isFetchingOrder = true;
-        return OvhApiOrder.Telephony().Lexi().getHardware(params).$promise.finally(function () {
+        return OvhApiOrder.Telephony().v6().getHardware(params).$promise.finally(function () {
             self.isFetchingOrder = false;
         });
     }
@@ -117,7 +117,7 @@ angular.module("managerApp").controller("TelecomTelephonyLinePhoneOrderCtrl", fu
         TelephonyMediator.getGroup($stateParams.billingAccount).then(function (group) {
             self.line = group.getLine($stateParams.serviceName);
         }).then(function () {
-            return OvhApiTelephony.Line().Lexi().get({
+            return OvhApiTelephony.Line().v6().get({
                 billingAccount: self.line.billingAccount,
                 serviceName: self.line.serviceName
             }).$promise.then(function (result) {
@@ -199,7 +199,7 @@ angular.module("managerApp").controller("TelecomTelephonyLinePhoneOrderCtrl", fu
 
     self.submitPhoneReturn = function () {
         self.isSubmiting = true;
-        return OvhApiTelephony.Line().Phone().RMA().Lexi().post({
+        return OvhApiTelephony.Line().Phone().RMA().v6().post({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }, {
@@ -231,7 +231,7 @@ angular.module("managerApp").controller("TelecomTelephonyLinePhoneOrderCtrl", fu
             params.shippingContactId = self.order.contact.id;
         }
         self.isSubmiting = true;
-        return OvhApiOrder.Telephony().Lexi().orderHardware({
+        return OvhApiOrder.Telephony().v6().orderHardware({
             serviceName: $stateParams.serviceName
         }, params).$promise.then(function (order) {
             self.order.success = true;
@@ -258,7 +258,7 @@ angular.module("managerApp").controller("TelecomTelephonyLinePhoneOrderCtrl", fu
         }
 
         self.isSubmiting = true;
-        return OvhApiTelephony.Line().Phone().RMA().Lexi().post({
+        return OvhApiTelephony.Line().Phone().RMA().v6().post({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }, params).$promise.then(function () {
@@ -300,7 +300,7 @@ angular.module("managerApp").controller("TelecomTelephonyLinePhoneOrderCtrl", fu
 
     self.detachPhone = function () {
         self.isDetaching = true;
-        OvhApiTelephony.Line().Lexi().dissociateDevice({
+        OvhApiTelephony.Line().v6().dissociateDevice({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName
         }, {
@@ -310,8 +310,8 @@ angular.module("managerApp").controller("TelecomTelephonyLinePhoneOrderCtrl", fu
             Toast.success($translate.instant("telephony_line_phone_order_detach_device_success"));
 
             // Cache reset
-            OvhApiTelephony.Line().Lexi().resetAllCache();
-            OvhApiTelephony.Line().Phone().Lexi().resetAllCache();
+            OvhApiTelephony.Line().v6().resetAllCache();
+            OvhApiTelephony.Line().Phone().v6().resetAllCache();
             TelephonyMediator.resetAllCache();
             init();
         }).catch(function (err) {

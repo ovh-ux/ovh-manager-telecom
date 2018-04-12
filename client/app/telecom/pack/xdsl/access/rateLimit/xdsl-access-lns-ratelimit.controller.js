@@ -42,7 +42,7 @@ angular.module("managerApp").controller("XdslAccessLnsRateLimitCtrl", function (
     self.changeRate = function () {
         if (self.rate.canApplyLnsRateLimit) {
             self.doing = true;
-            OvhApiXdsl.Lexi().put(
+            OvhApiXdsl.v6().put(
                 { xdslId: $stateParams.serviceName },
                 { lnsRateLimit: self.rate.disabled ? null : self.rate.value },
                 function () {

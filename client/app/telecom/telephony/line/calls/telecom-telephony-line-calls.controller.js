@@ -10,6 +10,8 @@ angular.module("managerApp").controller("TelecomTelephonyLineCallsCtrl", functio
         init: true
     };
 
+    var isTrunkRates = false;
+
     /*= =====================================
     =            INITIALIZATION            =
     ======================================*/
@@ -47,7 +49,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineCallsCtrl", functio
             enable: true
         }, {
             name: "line_simultaneouslines",
-            sref: "telecom.telephony.line.calls.simultaneousLines",
+            sref: !isTrunkRates ? "telecom.telephony.line.calls.simultaneousLines" : "telecom.telephony.line.calls.simultaneousLinesTrunk",
             text: $translate.instant("telephony_line_calls_actions_line_simultaneouslines"),
             display: true,
             enable: ["sipfax", "priceplan", "trunk"]
@@ -97,6 +99,10 @@ angular.module("managerApp").controller("TelecomTelephonyLineCallsCtrl", functio
             return group.getLine($stateParams.serviceName);
         }).then(function (line) {
             self.line = line;
+
+            isTrunkRates = _.some(line.offers, function (offer) {
+                return _.startsWith(offer, "voip.main.offer.fr.trunk.rates");
+            });
 
             self.actions = _.filter(initActions(), function (action) {
                 var display = action.display === true;

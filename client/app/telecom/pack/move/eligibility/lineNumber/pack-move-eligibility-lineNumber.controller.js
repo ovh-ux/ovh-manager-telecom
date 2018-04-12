@@ -17,7 +17,7 @@ angular.module("managerApp").component("packMoveEligibilityLineNumber", {
             this.loading = true;
             this.lineNumber = self.testLine.lineNumber.replace(/[^0-9]/g, "");
             self.submited();
-            return OvhApiPackXdslMove.Lexi().pollElligibility($scope, {
+            return OvhApiPackXdslMove.v6().pollElligibility($scope, {
                 packName: $stateParams.packName,
                 lineNumber: self.lineNumber
             }).then(

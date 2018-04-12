@@ -37,7 +37,7 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingDe
     self.submit = function () {
         self.loading.submit = true;
 
-        return OvhApiTelephony.Lexi().transferSecurityDeposit({
+        return OvhApiTelephony.v6().transferSecurityDeposit({
             billingAccount: self.source.billingAccount
         }, {
             amount: self.amount,
@@ -71,7 +71,7 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingDe
                 targets,
                 function (obj, value) {
                     var billingAccount = _.get(value, "value.billingAccount");
-                    obj[billingAccount] = OvhApiTelephony.Lexi().canTransferSecurityDeposit(
+                    obj[billingAccount] = OvhApiTelephony.v6().canTransferSecurityDeposit(
                         {
                             billingAccount: self.source.billingAccount
                         }, {
@@ -106,7 +106,7 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingDe
     };
 
     self.getServiceInfos = function (billingAccount) {
-        return OvhApiTelephony.Lexi().getServiceInfos({
+        return OvhApiTelephony.v6().getServiceInfos({
             billingAccount: billingAccount
         }).$promise;
     };

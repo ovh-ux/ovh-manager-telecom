@@ -53,7 +53,7 @@ angular.module("managerApp")
 
         this.generatePassword = function () {
             this.generatingPassword = true;
-            OvhApiFreeFax.Lexi().resetPassword({
+            OvhApiFreeFax.v6().resetPassword({
                 serviceName: $stateParams.serviceName
             }, null).$promise.then(function (password) {
                 self.generatedPassword = password.value;
@@ -79,7 +79,7 @@ angular.module("managerApp")
             };
             self.loading = true;
 
-            OvhApiFreeFax.Lexi().saveConfiguration({
+            OvhApiFreeFax.v6().saveConfiguration({
                 serviceName: $stateParams.serviceName
             }, formData).$promise.then(
                 function () {
