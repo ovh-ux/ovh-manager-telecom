@@ -223,6 +223,10 @@
                     transform: translateX(-(@page-width));
                 }
 
+                &:not(.move) {
+                    overflow: hidden;
+                }
+
                 .popover-page {
                     width: @page-width;
                 }
