@@ -4,8 +4,25 @@ angular.module("managerApp").config(function (SidebarMenuProvider) {
     // add translation path
     SidebarMenuProvider.addTranslationPath("../components/sidebar");
 
-}).run(function ($q, $sce, $translate, SidebarMenu, PackSidebar, TelephonySidebar, SmsSidebar, FaxSidebar, OverTheBoxSidebar, TelecomMediator, ORDER_URLS, REDIRECT_URLS) {
+}).run(function ($q, $sce, $translate, atInternet, SidebarMenu, PackSidebar, TelephonySidebar, SmsSidebar, FaxSidebar, OverTheBoxSidebar, TelecomMediator, ORDER_URLS, REDIRECT_URLS) {
     "use strict";
+
+    /*= =========================================
+    =                   HELPERS                 =
+    ==========================================*/
+
+    function setTracker (name, navigation, level2, chapter1) {
+        return function () {
+            atInternet.trackClick({
+                name: name,
+                type: navigation,
+                level2: level2,
+                chapter1: chapter1
+            });
+
+            return true;
+        };
+    }
 
     /*= =========================================
     =            SIDEBAR MENU ITEMS            =
@@ -28,7 +45,8 @@ angular.module("managerApp").config(function (SidebarMenuProvider) {
             title: $translate.instant("telecom_sidebar_section_v4"),
             category: "backToV4",
             icon: "ovh-font ovh-font-backToV4",
-            url: REDIRECT_URLS.telephonyV4
+            url: REDIRECT_URLS.telephonyV4,
+            onClick: setTracker("ManagerV4", "navigation", "Telecom", "telecom")
         });
     }
 
@@ -75,6 +93,8 @@ angular.module("managerApp").config(function (SidebarMenuProvider) {
     ============================================*/
 
     function initSidebarMenuActionsOptions () {
+
+
         SidebarMenu.addActionsMenuOptions([{
             title: $translate.instant("telecom_sidebar_actions_menu_number"),
             icon: "ovh-font ovh-font-hashtag",
@@ -84,7 +104,8 @@ angular.module("managerApp").config(function (SidebarMenuProvider) {
             icon: "ovh-font ovh-font-domain",
             href: ORDER_URLS.domain,
             target: "_blank",
-            external: true
+            external: true,
+            onClick: setTracker("DomainsName", "navigation", "Telecom", "telecom")
         }, {
             title: $translate.instant("telecom_sidebar_actions_menu_internet"),
             icon: "ovh-font ovh-font-telecom-ethernet",
@@ -92,27 +113,32 @@ angular.module("managerApp").config(function (SidebarMenuProvider) {
                 title: $translate.instant("telecom_sidebar_actions_menu_internet_xdsl"),
                 href: ORDER_URLS.internet.xdsl,
                 target: "_blank",
-                external: true
+                external: true,
+                onClick: setTracker("order-ADSL_VDSL", "navigation", "Telecom", "telecom")
             }, {
                 title: $translate.instant("telecom_sidebar_actions_menu_internet_enterprise"),
                 href: ORDER_URLS.internet.enterprise,
                 target: "_blank",
-                external: true
+                external: true,
+                onClick: setTracker("order-Pack_ADSL_Entreprise", "navigation", "Telecom", "telecom")
             }, {
                 title: $translate.instant("telecom_sidebar_actions_menu_internet_rescue"),
                 href: ORDER_URLS.internet.rescue,
                 target: "_blank",
-                external: true
+                external: true,
+                onClick: setTracker("order-Lignes_De_Secours", "navigation", "Telecom", "telecom")
             }, {
                 title: $translate.instant("telecom_sidebar_actions_menu_internet_sdsl"),
                 href: ORDER_URLS.internet.sdsl,
                 target: "_blank",
-                external: true
+                external: true,
+                onClick: setTracker("order-SDSL", "navigation", "Telecom", "telecom")
             }, {
                 title: $translate.instant("telecom_sidebar_actions_menu_internet_adsl_creation"),
                 href: ORDER_URLS.internet.adslCreation,
                 target: "_blank",
-                external: true
+                external: true,
+                onClick: setTracker("order-ADSL", "navigation", "Telecom", "telecom")
             }, {
                 title: $translate.instant("telecom_sidebar_actions_menu_internet_otb"),
                 state: "telecom.overTheBox-order"
@@ -124,17 +150,20 @@ angular.module("managerApp").config(function (SidebarMenuProvider) {
                 title: $translate.instant("telecom_sidebar_actions_menu_telephony_voip"),
                 href: ORDER_URLS.telephony.voip,
                 target: "_blank",
-                external: true
+                external: true,
+                onClick: setTracker("order-VOIP", "navigation", "Telecom", "telecom")
             }, {
                 title: $translate.instant("telecom_sidebar_actions_menu_telephony_siptrunk"),
                 href: ORDER_URLS.telephony.siptrunk,
                 target: "_blank",
-                external: true
+                external: true,
+                onClick: setTracker("order-Pack_SIP_Trunk", "navigation", "Telecom", "telecom")
             }, {
                 title: $translate.instant("telecom_sidebar_actions_menu_telephony_siptrunk_call"),
                 href: ORDER_URLS.telephony.siptrunkCall,
                 target: "_blank",
-                external: true
+                external: true,
+                onClick: setTracker("order-SIP_Trunk_Abo", "navigation", "Telecom", "telecom")
             }, {
                 title: $translate.instant("telecom_sidebar_actions_menu_accessories"),
                 state: "telecom.orders.accessories"
@@ -146,12 +175,14 @@ angular.module("managerApp").config(function (SidebarMenuProvider) {
                 title: $translate.instant("telecom_sidebar_actions_menu_email_exchange"),
                 href: ORDER_URLS.email.exchange,
                 target: "_blank",
-                external: true
+                external: true,
+                onClick: setTracker("order-Email_ExchangeHosted", "navigation", "Telecom", "telecom")
             }, {
                 title: $translate.instant("telecom_sidebar_actions_menu_email_sharepoint"),
                 href: ORDER_URLS.email.sharepoint,
                 target: "_blank",
-                external: true
+                external: true,
+                onClick: setTracker("order-Email_Sharepoint", "navigation", "Telecom", "telecom")
             }]
         }, {
             title: $translate.instant("telecom_sidebar_actions_menu_office"),
@@ -166,19 +197,22 @@ angular.module("managerApp").config(function (SidebarMenuProvider) {
                 title: $translate.instant("telecom_sidebar_actions_menu_office_business"),
                 href: ORDER_URLS.office.business,
                 target: "_blank",
-                external: true
+                external: true,
+                onClick: setTracker("order-O365_Business", "navigation", "Telecom", "telecom")
             }, {
                 title: $translate.instant("telecom_sidebar_actions_menu_office_sharepoint"),
                 href: ORDER_URLS.office.sharepoint,
                 target: "_blank",
-                external: true
+                external: true,
+                onClick: setTracker("order-O365_Sharepoint", "navigation", "Telecom", "telecom")
             }]
         }, {
             title: $translate.instant("telecom_sidebar_actions_menu_hubic"),
             icon: "ovh-font ovh-font-cloud",
             href: ORDER_URLS.hubic,
             target: "_blank",
-            external: true
+            external: true,
+            onClick: setTracker("order-HubiC", "navigation", "Telecom", "telecom")
         }, {
             title: $translate.instant("telecom_sidebar_actions_menu_sms"),
             icon: "ovh-font ovh-font-message",
@@ -189,14 +223,16 @@ angular.module("managerApp").config(function (SidebarMenuProvider) {
                 title: $translate.instant("telecom_sidebar_actions_menu_sms_hlr"),
                 href: ORDER_URLS.sms.hlr,
                 target: "_blank",
-                external: true
+                external: true,
+                onClick: setTracker("order-sms-HLR", "navigation", "Telecom", "telecom")
             }]
         }, {
             title: $translate.instant("telecom_sidebar_actions_menu_fax"),
             icon: "ovh-font ovh-font-print",
             href: ORDER_URLS.fax,
             target: "_blank",
-            external: true
+            external: true,
+            onClick: setTracker("Fax", "navigation", "Telecom", "telecom")
         }]);
     }
 
