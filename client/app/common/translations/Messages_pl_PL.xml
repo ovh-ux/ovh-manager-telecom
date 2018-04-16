@@ -15,6 +15,15 @@
    <translation id="common_pagination_ofnresults" qtlid="452982">z TOTAL_ITEMS wyników</translation>
    <translation id="common_pagination_currentpageofpagecount" qtlid="452995">Strona CURRENT_PAGE z PAGE_COUNT</translation>
 
+   <translation id="common_field_error_required">Veuillez compléter ce champ.</translation>
+   <translation id="common_field_error_number">Veuillez saisir une valeur numérique valide.</translation>
+   <translation id="common_field_error_email">Veuillez saisir une adresse e-mail valide.</translation>
+   <translation id="common_field_error_min">Veuillez saisir une valeur plus grande ou égale à {{min}}.</translation>
+   <translation id="common_field_error_max">Veuillez saisir une valeur plus petite ou égale à {{max}}.</translation>
+   <translation id="common_field_error_minlength">Veuillez saisir un minimum de {{minlength}} caractères.</translation>
+   <translation id="common_field_error_maxlength">Veuillez saisir un maximum de {{maxlength}} caractères.</translation>
+   <translation id="common_field_error_pattern">Veuillez saisir un format valide.</translation>
+
    <translation id="yes" qtlid="50134">tak</translation>
    <translation id="common_yes_capitalized" qtlid="34776">Tak</translation>
    <translation id="no" qtlid="50602">nie</translation>
@@ -26,6 +35,8 @@
    <translation id="hide" qtlid="26539">Ukryj</translation>
    <translation id="common_add" qtlid="37923">Dodaj</translation>
    <translation id="common_actions" qtlid="72809">Operacje</translation>
+
+   <translation id="common_between_and">Entre {{between}} et {{and}}</translation>
 
    <translation id="common_search" qtlid="37659">Szukaj</translation>
 
@@ -40,6 +51,7 @@
    <translation id="submit" qtlid="26047">Zatwierdź</translation>
    <translation id="edit" qtlid="6766">Edycja</translation>
    <translation id="modify" qtlid="37875">Zmień</translation>
+   <translation id="common_add">Ajouter</translation>
    <translation id="access" qtlid="304524">Accéder</translation>
    <translation id="edit_name" qtlid="304537">Éditer {{name}}</translation>
    <translation id="common_create" qtlid="39226">Stwórz</translation>
@@ -132,9 +144,26 @@
    <translation id="common_menu_support_assistance" qtlid="52699">Pomoc</translation>
    <translation id="common_menu_v3" qtlid="135931">Poprzednia wersja interfejsu</translation>
    <translation id="common_menu_billing" qtlid="32950">Płatności</translation>
+   <translation id="common_menu_billing_history">Mes factures</translation>
+   <translation id="common_menu_billing_payments">Suivi des paiements</translation>
    <translation id="common_menu_language" qtlid="30598">Język</translation>
    <translation id="common_menu_account" qtlid="157642">Moje konto</translation>
+   <translation id="common_menu_account_infos">Mon profil</translation>
+   <translation id="common_menu_account_security">Sécurité</translation>
+   <translation id="common_menu_account_emails">Emails reçus</translation>
+   <translation id="common_menu_account_subscriptions">Mes abonnements</translation>
+   <translation id="common_menu_account_ssh">Mes clés SSH</translation>
+   <translation id="common_menu_account_advanced">Paramètres avancés</translation>
+   <translation id="common_menu_means">Moyens de paiement</translation>
+   <translation id="common_menu_means_mean">Mes moyens de paiement</translation>
+   <translation id="common_menu_means_ovhaccount">Mon compte prépayé</translation>
+   <translation id="common_menu_means_vouchers">Mes vouchers</translation>
+   <translation id="common_menu_means_refunds">Mes avoirs</translation>
+   <translation id="common_menu_means_fidelity">Mon espace fidélité</translation>
+   <translation id="common_menu_means_credits">Mes crédits</translation>
    <translation id="common_menu_renew" qtlid="229658">Moje usługi</translation>
+   <translation id="common_menu_renew_management">Gérer mes services</translation>
+   <translation id="common_menu_renew_agreements">Mes contrats</translation>
    <translation id="common_menu_orders_all" qtlid="282809">Moje zamówienia</translation>
    <translation id="common_menu_contacts" qtlid="70541">Moje kontakty</translation>
    <translation id="common_menu_list_ticket" qtlid="454039">Moje zgłoszenia wysłane do pomocy technicznej</translation>

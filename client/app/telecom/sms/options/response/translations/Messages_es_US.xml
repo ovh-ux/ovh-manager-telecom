@@ -2,7 +2,7 @@
 <translations>
    <translation id="sms_section_back_link" qtlid="340159">Revenir aux options</translation>
 
-   <translation id="sms_options_response_information_title" qtlid="26551">Informaciones</translation>
+   <translation id="sms_options_response_information_title" qtlid="26551">Información</translation>
    <translation id="sms_options_response_information_text_1" qtlid="345962">Lors de la réception d’un SMS suite à l’envoi d’un SMS permettant la réponse, trois choix s’offrent à vous&#160;:</translation>
    <translation id="sms_options_response_information_list_item_1" qtlid="345975">Ne rien faire</translation>
    <translation id="sms_options_response_information_list_item_2" qtlid="345988">Appeler un script hébergé par vos soins</translation>

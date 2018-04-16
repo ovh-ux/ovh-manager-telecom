@@ -29,7 +29,7 @@
    <translation id="sms_sms_hlr_read_label_status" qtlid="26443">Estado</translation>
    <translation id="sms_sms_hlr_read_label_number" qtlid="30778">Número</translation>
    <translation id="sms_sms_hlr_read_label_operator_code" qtlid="63052">Operador</translation>
-   <translation id="sms_sms_hlr_read_label_valid" qtlid="55133">Ativo</translation>
+   <translation id="sms_sms_hlr_read_label_valid" qtlid="55133">Ativado</translation>
    <translation id="sms_sms_hlr_read_label_reachable" qtlid="360580">Joignable</translation>
    <translation id="sms_sms_hlr_read_label_ported" qtlid="360593">Porté</translation>
    <translation id="sms_sms_hlr_read_label_roaming" qtlid="360606">En itinérance</translation>

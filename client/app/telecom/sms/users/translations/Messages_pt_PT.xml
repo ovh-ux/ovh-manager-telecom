@@ -4,7 +4,7 @@
 
    <translation id="sms_users_actions_templates" qtlid="72797">Alertas</translation>
 
-   <translation id="sms_users_label_id" qtlid="46792">Identificador</translation>
+   <translation id="sms_users_label_id" qtlid="46792">ID utilizador</translation>
    <translation id="sms_users_label_quota_status" qtlid="338703">Activer le quota ?</translation>
    <translation id="sms_users_label_quota" qtlid="6874">Quota</translation>
    <translation id="sms_users_label_alert" qtlid="338716">Activer l’alerte ?</translation>
@@ -15,7 +15,7 @@
 
    <translation id="sms_users_sr_only_actions" qtlid="72809">Ações</translation>
 
-   <translation id="sms_users_action_change_password" qtlid="80394">Alterar a password</translation>
+   <translation id="sms_users_action_change_password" qtlid="80394">Alterar palavra-passe</translation>
    <translation id="sms_users_action_change_password_label" qtlid="2270">Palavra-passe</translation>
    <translation id="sms_users_action_quota" qtlid="6874">Quota</translation>
    <translation id="sms_users_action_limit" qtlid="33562">Limite</translation>
@@ -24,10 +24,10 @@
    <translation id="sms_users_action_url_callback" qtlid="338742">URL de callback</translation>
    <translation id="sms_users_action_url_callback_label" qtlid="393204">Callback</translation>
 
-   <translation id="sms_users_add_user" qtlid="7150">Adicionar um utilizador</translation>
+   <translation id="sms_users_add_user" qtlid="7150">Adicionar utilizador</translation>
    <translation id="sms_users_add_user_title" qtlid="338755">Nouveau compte utilisateur</translation>
    <translation id="sms_users_add_user_login_label" qtlid="338768">Identifiant&#160;:&#160;</translation>
-   <translation id="sms_users_add_user_login_placeholder" qtlid="46792">Identificador</translation>
+   <translation id="sms_users_add_user_login_placeholder" qtlid="46792">ID utilizador</translation>
    <translation id="sms_users_add_user_login_error_required" qtlid="338781">Le champ "identifiant" est obligatoire.</translation>
    <translation id="sms_users_add_user_login_error_maxlength" qtlid="338794">Le champ "identifiant" ne doit pas dépasser les 40 caractères.</translation>
    <translation id="sms_users_add_user_password_label" qtlid="334894">Mot de passe&#160;:&#160;</translation>
@@ -66,7 +66,7 @@
    <translation id="sms_users_templates_added" qtlid="393529">Personnalisation des alertes effectuée</translation>
    <translation id="sms_users_templates_update_ko" qtlid="393542">Impossible de modifier la personnalisation des alertes.</translation>
 
-   <translation id="sms_users_change_password_user_title" qtlid="80394">Alterar a password</translation>
+   <translation id="sms_users_change_password_user_title" qtlid="80394">Alterar palavra-passe</translation>
    <translation id="sms_users_change_password_user_info" qtlid="338859">Vous changez actuellement le mot de passe de l’utilisateur <b>«{{ login }}»</b>.</translation>
    <translation id="sms_users_change_password_user_password_label" qtlid="334894">Mot de passe&#160;:&#160;</translation>
    <translation id="sms_users_change_password_user_password_placeholder" qtlid="2270">Palavra-passe</translation>

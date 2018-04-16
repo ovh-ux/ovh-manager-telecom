@@ -18,20 +18,4 @@
 
    <translation id="telephony_order_special_order_success" qtlid="333516">El pedido de números geográficos se ha enviado. Por favor, acepte las condiciones generales de venta y abone el pedido.</translation>
    <translation id="telephony_order_special_range_error" qtlid="346885">No se han podido cargar los rangos de números.</translation>
-   <translation id="telephony_order_specific_typology_error" qtlid="346898">No se han podido cargar las tipologías de números.</translation>
-
-   <translation id="telephony_order_specific_typology_access_label" qtlid="346911">Servicios que proporcionan códigos de acceso</translation>
-   <translation id="telephony_order_specific_typology_announced_label" qtlid="346924">Anuncios clasificados</translation>
-   <translation id="telephony_order_specific_typology_conferencing_label" qtlid="346937">Servicios de telefonía o conferencia telefónica</translation>
-   <translation id="telephony_order_specific_typology_contentsAuto_label" qtlid="346950">Edición de contenidos automatizada, entregados por un autómata</translation>
-   <translation id="telephony_order_specific_typology_contentsManual_label" qtlid="346963">Edición de contenido de servicios prestados por personas físicas cualificadas</translation>
-   <translation id="telephony_order_specific_typology_games_label" qtlid="346976">Juegos</translation>
-   <translation id="telephony_order_specific_typology_linking_label" qtlid="346989">Servicios de intermediación</translation>
-   <translation id="telephony_order_specific_typology_m2m_label" qtlid="347002">Servicios de máquina a máquina</translation>
-   <translation id="telephony_order_specific_typology_relationship_label" qtlid="347015">Atención al cliente de empresa, administración o asociación</translation>
-
-   <translation id="telephony_order_specific_typology_adults_label" qtlid="347028">Contenido para adultos</translation>
-   <translation id="telephony_order_specific_typology_content_label" qtlid="347041">Timbres de llamada, logos</translation>
-   <translation id="telephony_order_specific_typology_general_label" qtlid="69341">General</translation>
-   <translation id="telephony_order_specific_typology_relaxing_label" qtlid="347054">Servicios de entretenimiento</translation>
 </translations>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <translations>
    <translation id="preload_welcome" qtlid="433576">Welcome to your</translation>
-   <translation id="preload_manager_ovh" qtlid="433589">OVH Control Panel</translation>
+   <translation id="preload_manager_ovh" qtlid="433589">OVH Manager</translation>
    <translation id="common_tabs_more" qtlid="456687">Autres catégories</translation>
    <translation id="common_newtab" qtlid="456700">(nouvel onglet)</translation>
    <translation id="common_window" qtlid="300694">(new window)</translation>

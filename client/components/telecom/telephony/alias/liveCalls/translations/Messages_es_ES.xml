@@ -25,7 +25,7 @@
    <translation id="telephony_alias_configuration_mode_calls_action_hangup_help" qtlid="466905">Vous pouvez raccrocher l'appel en cours</translation>
    <translation id="telephony_alias_configuration_mode_calls_action_hangup_confirm" qtlid="397754">Colgar</translation>
    <translation id="telephony_alias_configuration_mode_calls_action_hangup_success" qtlid="466918">Fin de l'appel en cours</translation>
-   <translation id="telephony_alias_configuration_mode_calls_action_transfert" qtlid="432163">Transférer l'appel</translation>
+   <translation id="telephony_alias_configuration_mode_calls_action_transfert" qtlid="432163">Transferir la llamada</translation>
    <translation id="telephony_alias_configuration_mode_calls_action_transfert_number" qtlid="466931">Numéro de destination</translation>
    <translation id="telephony_alias_configuration_mode_calls_action_transfert_help" qtlid="466944">Vous pouvez transférer une communication en cours. Pour cela, il vous suffit de renseigner un numéro de téléphone vers lequel la communication en cours sera automatiquement transférée.</translation>
    <translation id="telephony_alias_configuration_mode_calls_action_transfert_confirm" qtlid="85869">Transferir</translation>

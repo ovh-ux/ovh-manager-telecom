@@ -66,7 +66,7 @@
    <translation id="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_step4" qtlid="388823">Cochez <strong>Yes</strong> pour l'option <strong>Enable EPROM Phonebook Provider</strong>.</translation>
    <translation id="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_step5" qtlid="388836">Entrez <strong>Entreprise</strong> dans la partie <strong>Provider name</strong></translation>
    <translation id="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_step6" qtlid="388849">Entrez <strong>Carnet d'entreprise</strong> dans la partie <strong>Directory name (Private)</strong>.</translation>
-   <translation id="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_step7" qtlid="388862">Renseignez l'URL suivante dans <strong>Server URL : http://pb.voip.ovh.net/sm/qkRQa5QvHco1JIcG/pb.cgi</strong>.</translation>
+   <translation id="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_step7">Renseignez l'URL suivante dans <strong>Server URL : http://pb.voip.ovh.net/sm/{{serverUrl}}/pb.cgi</strong>.</translation>
    <translation id="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_step8" qtlid="388875">Entrez <strong>FR</strong> dans la partie <strong>Country code</strong>.</translation>
    <translation id="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_step9" qtlid="388888">Sélectionnez <strong>ROM DATA</strong> dans la partie <strong>Authentification mode</strong></translation>
    <translation id="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_step10" qtlid="388901">Parmi les options <strong>Capabilities</strong>, cochez :</translation>

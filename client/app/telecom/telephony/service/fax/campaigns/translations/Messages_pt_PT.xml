@@ -17,7 +17,7 @@
    <translation id="telephony_service_fax_campaigns_status_stop" qtlid="391332">En cours de synchronisation</translation>
    <translation id="telephony_service_fax_campaigns_status_stopTodo" qtlid="391345">Lancement manuel requis</translation>
    <translation id="telephony_service_fax_campaigns_status_stopDoing" qtlid="391358">Stoppé en cours</translation>
-   <translation id="telephony_service_fax_campaigns_status_error" qtlid="45508">Em erro</translation>
+   <translation id="telephony_service_fax_campaigns_status_error" qtlid="45508">Com erro</translation>
    <translation id="telephony_service_fax_campaigns_status_done" qtlid="8662">Concluída </translation>
    <translation id="telephony_service_fax_campaigns_success" qtlid="391371">Succès</translation>
    <translation id="telephony_service_fax_campaigns_success_partial" qtlid="391384">Succès partiel</translation>

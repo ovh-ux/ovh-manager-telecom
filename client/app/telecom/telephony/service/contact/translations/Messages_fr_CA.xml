@@ -18,7 +18,7 @@
    <translation id="telephony_service_contact_ape_invalid" qtlid="459495">Le code APE doit comporter 4 chiffres et 1 lettre.</translation>
    <translation id="telephony_service_contact_social_nomination" qtlid="459508">Dénomination de l’entreprise</translation>
    <translation id="telephony_service_contact_social_nomination_extra" qtlid="459521">Complément de désignation (Sigle, SARL, …)</translation>
-   <translation id="telephony_service_contact_email" qtlid="50686">Adresse email</translation>
+   <translation id="telephony_service_contact_email" qtlid="50686">Adresse courriel</translation>
    <translation id="telephony_service_contact_country" qtlid="25171">Pays</translation>
    <translation id="telephony_service_contact_zipcode" qtlid="30346">Code postal</translation>
    <translation id="telephony_service_contact_city" qtlid="33310">Ville</translation>

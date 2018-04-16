@@ -7,7 +7,7 @@
    <translation id="telephony_group_line_calls_click2call_informations_text_2" qtlid="334777">D'un simple lien sur votre page web, rappelez vos clients. OVH fournit une API pour permettre de passer des appels sans toucher au téléphone&#160;!</translation>
    <translation id="telephony_group_line_calls_click2call_informations_text_3" qtlid="334790">Créez des identifiants afin d'autoriser une application ou une personne à effectuer des appels sur votre compte.</translation>
 
-   <translation id="telephony_group_line_calls_click2call_user_title_id" qtlid="46792">Identificador</translation>
+   <translation id="telephony_group_line_calls_click2call_user_title_id" qtlid="46792">ID utilizador</translation>
    <translation id="telephony_group_line_calls_click2call_user_title_login" qtlid="41062">Login</translation>
    <translation id="telephony_group_line_calls_click2call_user_title_creationDate" qtlid="26419">Data de criação</translation>
    <translation id="telephony_group_line_calls_click2call_no_user" qtlid="215741">Nenhum utilizador</translation>
@@ -34,9 +34,9 @@
    <translation id="telephony_group_line_calls_click2call_removeUser" qtlid="335089">Suppression d'un identifiant</translation>
    <translation id="telephony_group_line_calls_click2call_removeUser_ko" qtlid="335102">Impossible de supprimer l'identifiant.<br/>{{error}}</translation>
 
-   <translation id="telephony_group_line_calls_click2call_changePasswordUser" qtlid="80394">Alterar a password</translation>
+   <translation id="telephony_group_line_calls_click2call_changePasswordUser" qtlid="80394">Alterar palavra-passe</translation>
    <translation id="telephony_group_line_calls_click2call_changePasswordUser_password_label" qtlid="334894">Mot de passe&#160;:&#160;</translation>
    <translation id="telephony_group_line_calls_click2call_changePasswordUser_password_placeholder" qtlid="2270">Palavra-passe</translation>
-   <translation id="telephony_group_line_calls_click2call_changePasswordUser_changingPassword" qtlid="215897">Alteração da password em curso</translation>
+   <translation id="telephony_group_line_calls_click2call_changePasswordUser_changingPassword" qtlid="215897">Alteração da palavra-passe em curso</translation>
    <translation id="telephony_group_line_calls_click2call_changePasswordUser_changedPassword" qtlid="7918">Password alterada com sucesso</translation>
 </translations>

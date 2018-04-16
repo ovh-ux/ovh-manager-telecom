@@ -66,7 +66,7 @@
    <translation id="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_step4" qtlid="388823">Pažymėkite <strong>Yes</strong> ties <strong>Enable EPROM Phonebook Provider</strong>.</translation>
    <translation id="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_step5" qtlid="388836">Laukelyje <strong>Provider name</strong> įveskite <strong>Entreprise</strong></translation>
    <translation id="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_step6" qtlid="388849">Laukelyje <strong>Directory name (Private)</strong> įveskite <strong>Carnet d'entreprise</strong></translation>
-   <translation id="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_step7" qtlid="388862">Įveskite šį URL <strong>Server URL : http://pb.voip.ovh.net:51080/sm/qkRQa5QvHco1JIcG/pb.cgi</strong>.</translation>
+   <translation id="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_step7">Renseignez l'URL suivante dans <strong>Server URL : http://pb.voip.ovh.net/sm/{{serverUrl}}/pb.cgi</strong>.</translation>
    <translation id="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_step8" qtlid="388875">Įveskite <strong>FR</strong> į <strong>Country code</strong>.</translation>
    <translation id="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_step9" qtlid="388888">Pasirinkite <strong>ROM DATA</strong> ties <strong>Authentification mode</strong></translation>
    <translation id="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_step10" qtlid="388901"><strong>Capabilities</strong> nustatymuose pažymėkite:</translation>

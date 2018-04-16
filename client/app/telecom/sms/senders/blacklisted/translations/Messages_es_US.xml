@@ -4,7 +4,7 @@
 
    <translation id="sms_senders_blacklisted_manage_title" qtlid="340562">Gérer les expéditeurs blacklistés</translation>
 
-   <translation id="sms_senders_blacklisted_information_title" qtlid="26551">Informaciones</translation>
+   <translation id="sms_senders_blacklisted_information_title" qtlid="26551">Información</translation>
    <translation id="sms_senders_blacklisted_information_text_1" qtlid="340887">Liste de vos destinataires qui ont bloqué les réceptions de SMS en provenance de l’un de vos expéditeurs.</translation>
    <translation id="sms_senders_blacklisted_information_text_2" qtlid="340900">Si vous supprimez un numéro de la liste, la réception de SMS en provenance de vos expéditeurs sera rétablie vers ce destinataire.</translation>
 

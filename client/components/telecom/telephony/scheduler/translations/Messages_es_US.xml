@@ -92,9 +92,9 @@
 
 <!-- FILTERS -->
    <translation id="telephony_scheduler_categories_title" qtlid="396584">Catégories</translation>
-   <translation id="telephony_scheduler_categories_scheduler_1" qtlid="335258">Créneau 1</translation>
-   <translation id="telephony_scheduler_categories_scheduler_2" qtlid="335271">Créneau 2</translation>
-   <translation id="telephony_scheduler_categories_scheduler_3" qtlid="335284">Créneau 3</translation>
+   <translation id="telephony_scheduler_categories_scheduler_1" qtlid="335258">Franja 1</translation>
+   <translation id="telephony_scheduler_categories_scheduler_2" qtlid="335271">Franja 2</translation>
+   <translation id="telephony_scheduler_categories_scheduler_3" qtlid="335284">Franja 3</translation>
    <translation id="telephony_scheduler_categories_holidays" qtlid="396597">Jours chômés (Hors plages horaires)</translation>
    <translation id="telephony_scheduler_categories_description_number" qtlid="396610">Renvoi vers le numéro : {{ number }}</translation>
    <translation id="telephony_scheduler_categories_description_voicemail" qtlid="396623">Renvoi vers le répondeur : {{ number }}</translation>
