@@ -1,4 +1,4 @@
-angular.module("managerApp").controller("TelecomTelephonyBillingAccountOrderAliasCtrl", function ($q, $state, $stateParams, TelephonyMediator, TelecomTelephonyBillingAccountOrderAliasService) {
+angular.module("managerApp").controller("TelecomTelephonyBillingAccountOrderAliasCtrl", function ($q, $state, $stateParams, atInternet, TelephonyMediator, TelecomTelephonyBillingAccountOrderAliasService) {
     "use strict";
 
     this.state = $state.parent;
@@ -29,6 +29,13 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountOrderAlia
             })
             .finally(function () {
                 self.loading.init = false;
+
+                atInternet.trackPage({
+                    name: "orders-PhoneNumb",
+                    type: "navigation",
+                    level2: "Telecom",
+                    chapter1: "telecom"
+                });
             });
     }
 

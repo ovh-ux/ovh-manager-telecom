@@ -53,6 +53,7 @@
             }
 
             section {
+                position: relative;
                 overflow-y: auto;
 
                 .alert {
@@ -221,6 +222,10 @@
 
                 &.move {
                     transform: translateX(-(@page-width));
+                }
+
+                &:not(.move) {
+                    overflow: hidden;
                 }
 
                 .popover-page {

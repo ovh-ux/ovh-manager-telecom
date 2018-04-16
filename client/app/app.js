@@ -176,6 +176,7 @@ angular.module("managerApp", [
         var config = TRACKING.atInternetConfiguration;
 
         atInternet.setDefaultsPromise(OvhApiMe.v6().get().$promise.then(function (me) {
+            config.nichandle = me.nichandle;
             config.countryCode = me.country;
             config.currencyCode = me.currency && me.currency.code;
             config.visitorId = me.customerCode;
