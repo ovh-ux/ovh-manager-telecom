@@ -1,77 +1,66 @@
-angular.module("managerApp").controller(
-    "TelecomTelephonyLineCallsAbbreviatedNumbersCtrl",
-    function ($q, $stateParams, $translate, OvhApiTelephony, Toast, PAGINATION_PER_PAGE) {
-        "use strict";
-
-        var self = this;
-
-        this.remove = function (abbreviatedNumber) {
-            return OvhApiTelephony.Line().AbbreviatedNumber().v6().remove({
-                billingAccount: $stateParams.billingAccount,
-                serviceName: $stateParams.serviceName,
-                abbreviatedNumber: abbreviatedNumber.abbreviatedNumber
-            }).$promise;
-        };
-
-        this.insert = function (abbreviatedNumber) {
-            return OvhApiTelephony.Line().AbbreviatedNumber().v6().insert({
-                billingAccount: $stateParams.billingAccount,
-                serviceName: $stateParams.serviceName
-            }, abbreviatedNumber).$promise;
-        };
-
-        this.update = function (abbreviatedNumber) {
-            return OvhApiTelephony.Line().AbbreviatedNumber().v6().update({
-                billingAccount: $stateParams.billingAccount,
-                serviceName: $stateParams.serviceName,
-                abbreviatedNumber: abbreviatedNumber.abbreviatedNumber
-            }, _.pick(abbreviatedNumber, ["destinationNumber", "name", "surname"])).$promise;
-        };
-
-        this.load = function () {
-            this.loading = {
-                init: true
-            };
-            this.abbreviatedNumbers = [];
-            return OvhApiTelephony.Line().AbbreviatedNumber().Aapi().query({
-                billingAccount: $stateParams.billingAccount,
-                serviceName: $stateParams.serviceName
-            }).$promise.then(
-                function (abbreviatedNumbers) {
-                    self.abbreviatedNumbers = _.sortBy(abbreviatedNumbers, "abbreviatedNumber");
-                },
-                function () {
-                    Toast.error($translate.instant("telephony_line_actions_line_calls_abbreviated_numbers_read_error"));
-                }
-            ).finally(function () {
-                delete self.loading.init;
-            });
-        };
-
-        function init () {
-            self.pattern = {
-                regexp: /^2\d{2,3}$/,
-                errorMessage: $translate.instant("telephony_line_actions_line_calls_abbreviated_numbers_pattern_error")
-            };
-            self.filter = {
-                perPage: PAGINATION_PER_PAGE
-            };
-            return $q.all([
-                OvhApiTelephony.Line().v6().get({
-                    billingAccount: $stateParams.billingAccount,
-                    serviceName: $stateParams.serviceName
-                }).$promise.then(
-                    function (detail) {
-                        self.exportFilename = "ab_num_" + (detail.description || $stateParams.serviceName) + ".csv";
-                    },
-                    function () {
-                        self.exportFilename = "ab_num_" + $stateParams.serviceName + ".csv";
-                    }
-                ),
-                self.load()
-            ]);
-        }
-
-        init();
+angular.module("managerApp").controller("TelecomTelephonyLineCallsAbbreviatedNumbersCtrl", class TelecomTelephonyAbbreviatedNumbersCtrl {
+    constructor ($q, $stateParams, $translate, OvhApiTelephony, Toast, PAGINATION_PER_PAGE) {
+        this.$q = $q;
+        this.$stateParams = $stateParams;
+        this.$translate = $translate;
+        this.OvhApiTelephony = OvhApiTelephony;
+        this.Toast = Toast;
+        this.PAGINATION_PER_PAGE = PAGINATION_PER_PAGE;
     }
-);
+
+    remove (abbreviatedNumber) {
+        return this.OvhApiTelephony.AbbreviatedNumber().v6().remove({
+            billingAccount: this.$stateParams.billingAccount,
+            abbreviatedNumber: abbreviatedNumber.abbreviatedNumber
+        }).$promise;
+    }
+
+    insert (abbreviatedNumber) {
+        return this.OvhApiTelephony.AbbreviatedNumber().v6().insert({
+            billingAccount: this.$stateParams.billingAccount,
+            serviceName: this.$stateParams.serviceName
+        }, abbreviatedNumber).$promise;
+    }
+
+    update (abbreviatedNumber) {
+        return this.OvhApiTelephony.AbbreviatedNumber().v6().update({
+            billingAccount: this.$stateParams.billingAccount,
+            serviceName: this.$stateParams.serviceName,
+            abbreviatedNumber: abbreviatedNumber.abbreviatedNumber
+        }, _.pick(abbreviatedNumber, ["destinationNumber", "name", "surname"])).$promise;
+    }
+
+    load () {
+        this.loading = true;
+        this.abbreviatedNumbers = [];
+        return this.OvhApiTelephony.AbbreviatedNumber().Aapi().query({
+            billingAccount: this.$stateParams.billingAccount
+        }).$promise.then((abbreviatedNumbers) => {
+            this.abbreviatedNumbers = _.sortBy(abbreviatedNumbers, "abbreviatedNumber");
+        }, () => {
+            this.Toast.error(this.$translate.instant("telephony_abbreviated_numbers_read_error"));
+        }).finally(() => {
+            this.loading = false;
+        });
+    }
+
+    $onInit () {
+        this.pattern = {
+            regexp: /^7\d{2,3}$/,
+            errorMessage: this.$translate.instant("telephony_abbreviated_numbers_pattern_error")
+        };
+        this.filter = {
+            perPage: this.PAGINATION_PER_PAGE
+        };
+
+        return this.$q.all([
+            this.OvhApiTelephony.v6().get({ billingAccount: this.$stateParams.billingAccount }).$promise
+                .then((detail) => {
+                    this.exportFilename = "ab_num_" + (detail.description || this.$stateParams.billingAccount) + ".csv";
+                }, () => {
+                    this.exportFilename = "ab_num_" + this.$stateParams.billingAccount + ".csv";
+                }),
+            this.load()
+        ]);
+    }
+});

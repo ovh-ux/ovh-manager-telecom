@@ -29,7 +29,7 @@
                             data-uib-tooltip="{{ 'telephony_abbreviated_numbers_add_tooltip' | translate}}"
                             data-tooltip-placement="right"
                             data-tooltip-append-to-body="true"
-                            data-ng-disabled="$ctrl.loading.init"
+                            data-ng-disabled="$ctrl.loading"
                             data-translate="common_add">
                     </button>
                 </li>
@@ -41,7 +41,7 @@
                        data-ng-csv="$ctrl.abbreviatedNumbers"
                        data-csv-header="$ctrl.getCsvHeader()"
                        data-csv-column-order="$ctrl.getCsvOrder()"
-                       data-ng-disabled="$ctrl.loading.init || !$ctrl.abbreviatedNumbers.length"
+                       data-ng-disabled="$ctrl.loading || !$ctrl.abbreviatedNumbers.length"
                        data-uib-tooltip="{{ 'telephony_abbreviated_numbers_export_tooltip' | translate}}"
                        data-tooltip-placement="right"
                        data-tooltip-append-to-body="true"
@@ -57,7 +57,7 @@
                             data-uib-tooltip="{{ 'telephony_abbreviated_numbers_import_tooltip' | translate}}"
                             data-tooltip-placement="right"
                             data-tooltip-append-to-body="true"
-                            data-ng-disabled="$ctrl.loading.init"
+                            data-ng-disabled="$ctrl.loading"
                             data-translate="telephony_abbreviated_numbers_import_label">
                     </button>
                 </li>
@@ -69,7 +69,7 @@
                             data-uib-tooltip="{{ 'telephony_abbreviated_numbers_trash_all_tooltip' | translate}}"
                             data-tooltip-append-to-body="true"
                             data-tooltip-placement="right"
-                            data-ng-disabled="$ctrl.loading.init || !$ctrl.abbreviatedNumbers.length"
+                            data-ng-disabled="$ctrl.loading || !$ctrl.abbreviatedNumbers.length"
                             data-translate="telephony_abbreviated_numbers_trash_all_label">
                     </button>
                 </li>
@@ -77,37 +77,38 @@
         </div>
     </div>
 
-    <oui-datagrid data-rows="$ctrl.abbreviatedNumbers">
+    <div data-ng-if="!$ctrl.loading">
+        <oui-datagrid data-rows="$ctrl.abbreviatedNumbers">
 
-        <oui-column data-title="'telephony_abbreviated_numbers_id' | translate"
-                    data-property="abbreviatedNumber" data-sortable="asc">
-            <span class="word-break" data-ng-bind="$row.abbreviatedNumber"></span>
-        </oui-column>
+            <oui-column data-title="'telephony_abbreviated_numbers_id' | translate"
+                        data-property="abbreviatedNumber" data-sortable="asc">
+                <span class="word-break" data-ng-bind="$row.abbreviatedNumber"></span>
+            </oui-column>
 
-        <oui-column data-title="'telephony_abbreviated_numbers_number' | translate"
-                    data-property="destinationNumber" data-sortable>
-            <span class="word-break" data-ng-bind="$row.destinationNumber"></span>
-        </oui-column>
+            <oui-column data-title="'telephony_abbreviated_numbers_number' | translate"
+                        data-property="destinationNumber" data-sortable>
+                <span class="word-break" data-ng-bind="$row.destinationNumber"></span>
+            </oui-column>
 
-        <oui-column data-title="'telephony_abbreviated_numbers_surname' | translate"
-                    data-property="surname" data-sortable>
-            <span class="word-break" data-ng-bind="$row.surname"></span>
-        </oui-column>
+            <oui-column data-title="'telephony_abbreviated_numbers_surname' | translate"
+                        data-property="surname" data-sortable>
+                <span class="word-break" data-ng-bind="$row.surname"></span>
+            </oui-column>
 
-        <oui-column data-title="'telephony_abbreviated_numbers_name' | translate"
-                    data-property="name" data-sortable>
-            <span class="word-break" data-ng-bind="$row.name"></span>
-        </oui-column>
+            <oui-column data-title="'telephony_abbreviated_numbers_name' | translate"
+                        data-property="name" data-sortable>
+                <span class="word-break" data-ng-bind="$row.name"></span>
+            </oui-column>
 
-        <oui-action-menu data-align="end" data-compact>
-            <oui-action-menu-item data-text="{{'edit' | translate}}"
-                                  on-click="$ctrl.update($row)">
-            </oui-action-menu-item>
-            <oui-action-menu-item data-text="{{'delete' | translate}}"
-                                  on-click="$ctrl.remove($row)">
-            </oui-action-menu-item>
-        </oui-action-menu>
+            <oui-action-menu data-align="end" data-compact>
+                <oui-action-menu-item data-text="{{'edit' | translate}}"
+                                      on-click="$ctrl.update($row)">
+                </oui-action-menu-item>
+                <oui-action-menu-item data-text="{{'delete' | translate}}"
+                                      on-click="$ctrl.remove($row)">
+                </oui-action-menu-item>
+            </oui-action-menu>
 
-    </oui-datagrid>
-
+        </oui-datagrid>
+    </div>
 </div>
