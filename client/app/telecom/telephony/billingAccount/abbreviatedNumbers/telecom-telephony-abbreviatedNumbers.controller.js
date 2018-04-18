@@ -8,10 +8,10 @@ angular.module("managerApp").controller("TelecomTelephonyAbbreviatedNumbersCtrl"
         this.PAGINATION_PER_PAGE = PAGINATION_PER_PAGE;
     }
 
-    remove (abbreviatedNumber) {
+    remove ({ abbreviatedNumber }) {
         return this.OvhApiTelephony.AbbreviatedNumber().v6().remove({
             billingAccount: this.$stateParams.billingAccount,
-            abbreviatedNumber: abbreviatedNumber.abbreviatedNumber
+            abbreviatedNumber
         }).$promise;
     }
 
@@ -36,7 +36,8 @@ angular.module("managerApp").controller("TelecomTelephonyAbbreviatedNumbersCtrl"
         return this.OvhApiTelephony.AbbreviatedNumber().Aapi().query({
             billingAccount: this.$stateParams.billingAccount
         }).$promise.then((abbreviatedNumbers) => {
-            this.abbreviatedNumbers = _.sortBy(abbreviatedNumbers, "abbreviatedNumber");
+            // this.abbreviatedNumbers = _.sortBy(abbreviatedNumbers, "abbreviatedNumber");
+            this.abbreviatedNumbers = abbreviatedNumbers;
         }, () => {
             this.Toast.error(this.$translate.instant("telephony_abbreviated_numbers_read_error"));
         }).finally(() => {
@@ -56,9 +57,9 @@ angular.module("managerApp").controller("TelecomTelephonyAbbreviatedNumbersCtrl"
         return this.$q.all([
             this.OvhApiTelephony.v6().get({ billingAccount: this.$stateParams.billingAccount }).$promise
                 .then((detail) => {
-                    this.exportFilename = "ab_num_" + (detail.description || this.$stateParams.billingAccount) + ".csv";
+                    this.exportFilename = `ab_num_${(detail.description || this.$stateParams.billingAccount)}.csv`;
                 }, () => {
-                    this.exportFilename = "ab_num_" + this.$stateParams.billingAccount + ".csv";
+                    this.exportFilename = `ab_num_${this.$stateParams.billingAccount}.csv`;
                 }),
             this.load()
         ]);

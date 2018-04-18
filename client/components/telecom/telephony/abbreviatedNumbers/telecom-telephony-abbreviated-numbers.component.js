@@ -19,9 +19,7 @@ angular.module("managerApp").component("telecomTelephonyAbbreviatedNumbers", {
             self.filter = {
                 perPage: PAGINATION_PER_PAGE
             };
-            self.loading = {
-                init: true
-            };
+            self.loading = true;
             self.abbreviatedNumbers = [];
         };
 
@@ -176,6 +174,5 @@ angular.module("managerApp").component("telecomTelephonyAbbreviatedNumbers", {
                 delete abbreviatedNumber.updating;
             });
         };
-
     }
 });
