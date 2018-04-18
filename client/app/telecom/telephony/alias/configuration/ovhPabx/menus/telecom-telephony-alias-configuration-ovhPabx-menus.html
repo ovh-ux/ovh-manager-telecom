@@ -14,6 +14,8 @@
         </div>
         <!-- END OF SHOW LOADING -->
 
+        <toast-message></toast-message>
+
         <!-- NOT AN OVHPABX -->
         <div class="row"
              data-ng-if="!$ctrl.loading.init && ($ctrl.number.getFeatureFamily() !== 'ovhPabx' || ($ctrl.number.feature.featureType === 'cloudHunting' && !$ctrl.number.feature.isCcs()))">
