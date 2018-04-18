@@ -34,7 +34,7 @@
    <translation id="telephony_group_line_calls_click2call_removeUser" qtlid="335089">Suppression d'un identifiant</translation>
    <translation id="telephony_group_line_calls_click2call_removeUser_ko" qtlid="335102">Impossible de supprimer l'identifiant.<br/>{{error}}</translation>
 
-   <translation id="telephony_group_line_calls_click2call_changePasswordUser" qtlid="80394">Das Passwort ändern</translation>
+   <translation id="telephony_group_line_calls_click2call_changePasswordUser" qtlid="80394">Passwort ändern</translation>
    <translation id="telephony_group_line_calls_click2call_changePasswordUser_password_label" qtlid="334894">Mot de passe&#160;:&#160;</translation>
    <translation id="telephony_group_line_calls_click2call_changePasswordUser_password_placeholder" qtlid="2270">Passwort</translation>
    <translation id="telephony_group_line_calls_click2call_changePasswordUser_changingPassword" qtlid="215897">Änderung des Passworts wird durchgeführt</translation>

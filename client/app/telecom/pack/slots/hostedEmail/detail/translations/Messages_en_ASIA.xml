@@ -53,7 +53,7 @@
    <translation id="hosted_email_detail_client_change_password_submit" qtlid="8434">Modify password</translation>
    <translation id="hosted_email_detail_client_change_password_label" qtlid="17177">New password</translation>
 
-   <translation id="hosted_email_detail_client_delete_account" qtlid="150294">Delete the account</translation>
+   <translation id="hosted_email_detail_client_delete_account" qtlid="150294">Delete account</translation>
    <translation id="hosted_email_detail_client_delete_account_warning" qtlid="455946">Attention ! En supprimant votre compte, l'ensemble des messages qu'il contient seront <strong>définitivement</strong> supprimés. Aucune procédure de récupération des données ne sera possible après cette suppression.</translation>
    <translation id="hosted_email_detail_client_delete_account_confirm" qtlid="173632">Confirm deletion</translation>
    <translation id="hosted_email_detail_client_delete_account_success" qtlid="455959">Votre compte {{email}} est en cours de suppression.</translation>

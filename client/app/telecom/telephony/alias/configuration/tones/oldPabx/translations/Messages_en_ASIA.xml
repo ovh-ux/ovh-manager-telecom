@@ -23,7 +23,7 @@
    <translation id="telephony_alias_configuration_tones_old_pabx_end_call_info_sub" qtlid="461627">L'annonce sera diffusée si aucun membre du groupe n'est activé.</translation>
 
    <translation id="telephony_alias_configuration_tones_old_pabx_manage" qtlid="358344">Gestion des musiques et sonneries</translation>
-   <translation id="telephony_alias_configuration_tones_old_pabx_type_none" qtlid="30646">No</translation>
+   <translation id="telephony_alias_configuration_tones_old_pabx_type_none" qtlid="30646">None</translation>
    <translation id="telephony_alias_configuration_tones_old_pabx_type_custom_sound" qtlid="358448">Personnalisée</translation>
    <translation id="telephony_alias_configuration_tones_old_pabx_type_predefined_1" qtlid="358461">Prédéfinie 1</translation>
    <translation id="telephony_alias_configuration_tones_old_pabx_type_predefined_2" qtlid="358474">Prédéfinie 2</translation>

@@ -12,7 +12,7 @@
    <translation id="telefony_activation_shipping_transporter_label" qtlid="308060">Livraison par transporteur (+ {{cost}}€ HT) sous 24h (après envoi)</translation>
    <translation id="telefony_activation_shipping_relay_label" qtlid="308073">Livraison gratuite en point Mondial Relay sous 48h (après envoi)</translation>
    <translation id="telefony_activation_shipping_mode" qtlid="308086">Mode de livraison:</translation>
-   <translation id="telefony_activation_widget_activate_price_free" qtlid="130495">Gratuito</translation>
+   <translation id="telefony_activation_widget_activate_price_free" qtlid="130495">Grátis</translation>
    <translation id="telefony_activation_widget_free_slot_zero" qtlid="308099">Vous n'avez plus de service disponible.</translation>
    <translation id="telefony_activation_widget_activate_price_title" qtlid="83913">Preço</translation>
    <translation id="telefony_activation_widget_activate_button_label" qtlid="120486">Validar a nota de encomenda</translation>

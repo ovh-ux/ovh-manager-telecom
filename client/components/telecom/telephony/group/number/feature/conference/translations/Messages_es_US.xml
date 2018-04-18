@@ -23,7 +23,7 @@
    <translation id="telephony_number_feature_conference_general_settings_public_address" qtlid="466437">Adresse publique de suivi</translation>
    <translation id="telephony_number_feature_conference_general_settings_public_control_address" qtlid="466450">Adresse publique de contrôle</translation>
    <translation id="telephony_number_feature_conference_general_settings_public_address_generate" qtlid="84801">Générer</translation>
-   <translation id="telephony_number_feature_conference_general_settings_public_address_regenerate" qtlid="303198">Regénérer</translation>
+   <translation id="telephony_number_feature_conference_general_settings_public_address_regenerate" qtlid="303198">Regenerar</translation>
    <translation id="telephony_number_feature_conference_general_settings_public_address_generating" qtlid="466463">Génération des adresses publiques…</translation>
    <translation id="telephony_number_feature_conference_announcement" qtlid="337819">Annonce personnalisée</translation>
    <translation id="telephony_number_feature_conference_announcement_info" qtlid="466476">Vous pouvez choisir un fichier audio qui précédera l’entrée dans la salle de conférence.</translation>

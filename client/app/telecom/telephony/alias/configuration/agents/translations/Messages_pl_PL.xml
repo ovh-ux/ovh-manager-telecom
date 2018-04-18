@@ -27,4 +27,6 @@
    <translation id="telephony_alias_configuration_agents_status_loggedOut" qtlid="77154">Rozłączony</translation>
    <translation id="telephony_alias_configuration_agents_status_onBreak" qtlid="397156">Przerwa</translation>
 
+   <translation id="telephony_alias_configuration_agents_modal-warning" qtlid="480201">Votre configuration possède un ou plusieurs numéros externes. Les appels vers ces numéros vous seront facturés hors forfait quelque soit votre forfait.</translation>
+   <translation id="telephony_alias_configuration_agents_modal-question" qtlid="480214">Continuer avec cette configuration ?</translation>
 </translations>

@@ -33,4 +33,7 @@
    <translation id="telephony_alias_configuration_queues_strategy_roundRobin" qtlid="294919">Selon une répartition de charge</translation>
    <translation id="telephony_alias_configuration_queues_strategy_sequentiallyByAgentOrder" qtlid="294932">Selon l'ordre défini des membres</translation>
    <translation id="telephony_alias_configuration_queues_strategy_ringAll" qtlid="294906">Tous en même temps</translation>
+
+   <translation id="telephony_alias_configuration_queues_modal-warning" qtlid="480201">Votre configuration possède un ou plusieurs numéros externes. Les appels vers ces numéros vous seront facturés hors forfait quelque soit votre forfait.</translation>
+   <translation id="telephony_alias_configuration_queues_modal-question" qtlid="480214">Continuer avec cette configuration ?</translation>
 </translations>

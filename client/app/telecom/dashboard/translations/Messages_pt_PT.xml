@@ -7,7 +7,7 @@
    <translation id="telecom_dashboard_references" qtlid="16445">Referência</translation>
    <translation id="telecom_dashboard_payment_mean" qtlid="140014">Métodos de pagamento</translation>
    <translation id="telecom_dashboard_total_price" qtlid="20647">Montante c/IVA</translation>
-   <translation id="telecom_dashboard_download" qtlid="39286">Fazer o download</translation>
+   <translation id="telecom_dashboard_download" qtlid="39286">Transferir</translation>
    <translation id="telecom_dashboard_bill_url" qtlid="304940">Page Web</translation>
    <translation id="telecom_dashboard_bill_pdf" qtlid="304953">Télécharger en PDF</translation>
    <translation id="telecom_dashboard_bill_title" qtlid="304966">Mes 6 dernières factures</translation>
@@ -16,7 +16,7 @@
 
    <translation id="telecom_dashboard_task_title" qtlid="305005">Mes tâches</translation>
 
-   <translation id="telecom_dashboard_FAQ_title" qtlid="300370">Guias</translation>
+   <translation id="telecom_dashboard_FAQ_title" qtlid="300370">Manuais</translation>
    <translation id="telecom_dashboard_FAQ_Activate" qtlid="305018">Activation de mes services</translation>
    <translation id="telecom_dashboard_FAQ_managed_modem" qtlid="305031">Configurer mon modem</translation>
    <translation id="telecom_dashboard_FAQ_init_modem" qtlid="305044">Réinitialiser mon modem</translation>
@@ -25,7 +25,7 @@
    <translation id="telecom_dashboard_services_title" qtlid="305070">Mes Services</translation>
 
    <translation id="telecom_dashboard_services_internet" qtlid="246975">Internet</translation>
-   <translation id="telecom_dashboard_services_telephony" qtlid="29299">Serviço de Telefone</translation>
+   <translation id="telecom_dashboard_services_telephony" qtlid="29299">Serviço Telefónico</translation>
    <translation id="telecom_dashboard_services_sms" qtlid="28243">SMS</translation>
    <translation id="telecom_dashboard_services_hubic" qtlid="305083">HubiC</translation>
    <translation id="telecom_dashboard_services_exchange" qtlid="80430">Exchange</translation>

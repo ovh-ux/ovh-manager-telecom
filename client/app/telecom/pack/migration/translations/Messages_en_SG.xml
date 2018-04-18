@@ -12,7 +12,7 @@
    <translation id="telecom_pack_migration_offer_services_to_delete_explain" qtlid="331787">Le choix des services à supprimer vous sera proposé à l'étape suivante.</translation>
    <translation id="telecom_pack_migration_options" qtlid="23395">Options</translation>
    <translation id="telecom_pack_migration_commitment_month" qtlid="331800">{{ number }} mois</translation>
-   <translation id="telecom_pack_migration_commitment_none" qtlid="30646">No</translation>
+   <translation id="telecom_pack_migration_commitment_none" qtlid="30646">None</translation>
    <translation id="telecom_pack_migration_option_unavailable" qtlid="91957">Unavailable</translation>
    <translation id="telecom_pack_migration_accounts_activated" qtlid="331813">{{ number }} comptes activés</translation>
    <translation id="telecom_pack_migration_account_activated" qtlid="331826">{{ number }} compte activé</translation>
@@ -68,7 +68,7 @@
    <translation id="telecom_pack_migration_confirm_header_entitled" qtlid="11027">Title</translation>
    <translation id="telecom_pack_migration_confirm_header_price" qtlid="259961">Price per unit</translation>
    <translation id="telecom_pack_migration_confirm_header_quantity" qtlid="37107">Quantity</translation>
-   <translation id="telecom_pack_migration_confirm_header_total" qtlid="270007">Price excl. VAT/month</translation>
+   <translation id="telecom_pack_migration_confirm_header_total" qtlid="270007">Price excl. GST/month</translation>
 
    <translation id="telecom_pack_migration_confirm_current_offer" qtlid="332177">Offre {{ description }}</translation>
    <translation id="telecom_pack_migration_confirm_resume_voip_line" qtlid="332242">Ligne(s) téléphonique(s) supplémentaire(s)</translation>

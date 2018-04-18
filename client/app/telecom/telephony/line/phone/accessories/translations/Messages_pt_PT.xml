@@ -41,12 +41,12 @@
    <translation id="telephony_line_phone_accessories_shipping_validate" qtlid="391046">Valider ce moyen de livraison</translation>
 
 <!-- RESUME -->
-   <translation id="telephony_line_phone_accessories_resume_title" qtlid="177496">Resumo da sua nota de encomenda</translation>
+   <translation id="telephony_line_phone_accessories_resume_title" qtlid="177496">Resumo da nota de encomenda</translation>
    <translation id="telephony_line_phone_accessories_resume_validate" qtlid="391059">Finaliser ma commande</translation>
    <translation id="telephony_line_phone_accessories_resume_load_error" qtlid="391072">Oups, une erreur est survenue lors de la récupération du résumé de votre commande.</translation>
 
    <translation id="telephony_line_phone_accessories_resume_table_description" qtlid="9238">Descrição </translation>
-   <translation id="telephony_line_phone_accessories_resume_table_unit_price" qtlid="51715">Preço unitário s/IVA</translation>
+   <translation id="telephony_line_phone_accessories_resume_table_unit_price" qtlid="51715">Preço unitário (IVA não incl.)</translation>
    <translation id="telephony_line_phone_accessories_resume_table_quantity" qtlid="37107">Quantidade</translation>
    <translation id="telephony_line_phone_accessories_resume_table_total" qtlid="133292">Preço s/IVA</translation>
    <translation id="telephony_line_phone_accessories_resume_prices_tax_free_total" qtlid="37143">Total s/IVA</translation>

@@ -46,9 +46,9 @@
    <translation id="domain_activation_corporation_publication" qtlid="307839">Publication</translation>
    <translation id="domain_activation_corporation_announce" qtlid="307852">Annonce</translation>
    <translation id="domain_activation_corporation_asso_page" qtlid="305408">Page</translation>
-   <translation id="domain_activation_zip_code_birth" qtlid="307865">Birthplace post code </translation>
+   <translation id="domain_activation_zip_code_birth" qtlid="307865">Postcode of place of birth</translation>
    <translation id="domain_activation_date_birth" qtlid="38289">Birth date</translation>
-   <translation id="domain_activation_country_birth" qtlid="269877">Birth country </translation>
+   <translation id="domain_activation_country_birth" qtlid="269877">Country of birth</translation>
    <translation id="domain_activation_city_birth" qtlid="163856">Place of birth</translation>
    <translation id="domain_activation_organisation" qtlid="32278">Organisation</translation>
    <translation id="domain_activation_organisation_complement" qtlid="307878">Complément</translation>

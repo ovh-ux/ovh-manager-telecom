@@ -17,7 +17,7 @@
    <translation id="overTheBox_change_device" qtlid="289692">Associar um periférico</translation>
    <translation id="overTheBox_link_device_success" qtlid="317685">Le périphérique a été attaché à votre service.</translation>
    <translation id="overTheBox_status" qtlid="101000">Estado :</translation>
-   <translation id="overTheBox_status_active" qtlid="55133">Ativo</translation>
+   <translation id="overTheBox_status_active" qtlid="55133">Ativado</translation>
    <translation id="overTheBox_status_creating" qtlid="317698">En cours de création ...</translation>
    <translation id="overTheBox_status_deleted" qtlid="134514">Eliminado</translation>
    <translation id="overTheBox_status_toCreate" qtlid="289809">A criar</translation>

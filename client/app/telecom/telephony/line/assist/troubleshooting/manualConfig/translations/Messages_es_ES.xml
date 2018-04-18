@@ -27,6 +27,7 @@
    <translation id="telephony_line_assist_troubleshooting_manual_config_lg_factory_reset_step8" qtlid="389876">Su dispositivo se reiniciará con los valores de configuración predeterminados.</translation>
 <!-- THOMSON -->
    <translation id="telephony_line_assist_troubleshooting_manual_config_thomson_factory_reset_step1" qtlid="390045">Reinicie eléctricamente el teléfono y mantenga pulsadas las teclas + y - (en la parte inferior del teléfono) durante al menos 30 segundos (mientras dure la fase de inicio).</translation>
+   <translation id="telephony_line_assist_troubleshooting_manual_config_thomson_st2030_factory_reset_step1">Redémarrez électriquement votre téléphone et maintenez les touches "casque" et "micro coupé" pendant au moins 30 secondes (veuillez à rester appuyé durant toute la phase de démarrage).</translation>
    <translation id="telephony_line_assist_troubleshooting_manual_config_thomson_factory_reset_step2" qtlid="390058">Vuelva a reiniciar eléctricamente el teléfono, pero sin mantener pulsadas las teclas + y -.</translation>
 
 <!-- FIND IP -->

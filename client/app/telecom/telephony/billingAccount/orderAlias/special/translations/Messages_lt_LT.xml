@@ -18,20 +18,4 @@
 
    <translation id="telephony_order_special_order_success" qtlid="333516">Geografiniai numeriai užsakyti. Pateikite sutikimą su pagrindinėmis pardavimo sąlygomis ir užbaikite užsakymą.</translation>
    <translation id="telephony_order_special_range_error" qtlid="346885">Negalima pakeisti numerių ruožo.</translation>
-   <translation id="telephony_order_specific_typology_error" qtlid="346898">Negalima keisti numerių tipologijos.</translation>
-
-   <translation id="telephony_order_specific_typology_access_label" qtlid="346911">Paslaugos suteikiant prieigos kodus</translation>
-   <translation id="telephony_order_specific_typology_announced_label" qtlid="346924">Trumpi pranešimai</translation>
-   <translation id="telephony_order_specific_typology_conferencing_label" qtlid="346937">Telefonijos/telekonferencijų paslaugos</translation>
-   <translation id="telephony_order_specific_typology_contentsAuto_label" qtlid="346950">Automatinio turinio redagavimas</translation>
-   <translation id="telephony_order_specific_typology_contentsManual_label" qtlid="346963">Kvalifikuoto personalo pateikiamo turinio redagavimas</translation>
-   <translation id="telephony_order_specific_typology_games_label" qtlid="346976">Žaidimai</translation>
-   <translation id="telephony_order_specific_typology_linking_label" qtlid="346989">Susietos paslaugos</translation>
-   <translation id="telephony_order_specific_typology_m2m_label" qtlid="347002">Peer 2 peer paslaugos</translation>
-   <translation id="telephony_order_specific_typology_relationship_label" qtlid="347015">Kliento ir įmonės / administracijos / asociacijos bendradarbiavimas</translation>
-
-   <translation id="telephony_order_specific_typology_adults_label" qtlid="347028">Turinys suaugusiems</translation>
-   <translation id="telephony_order_specific_typology_content_label" qtlid="347041">Garsai, logotipai</translation>
-   <translation id="telephony_order_specific_typology_general_label" qtlid="69341">Bendrasis</translation>
-   <translation id="telephony_order_specific_typology_relaxing_label" qtlid="347054">Pramogos</translation>
 </translations>
