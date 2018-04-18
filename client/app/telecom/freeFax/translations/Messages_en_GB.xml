@@ -6,7 +6,7 @@
    <translation id="freefax_general_information" qtlid="306565">Informations Générales</translation>
    <translation id="freefax_fax_configuration" qtlid="306578">Configuration du fax</translation>
    <translation id="freefax_voicemail_configuration_title" qtlid="306591">Configuration du repondeur</translation>
-   <translation id="freefax_change_password" qtlid="80394">Change the password</translation>
+   <translation id="freefax_change_password" qtlid="80394">Change password</translation>
    <translation id="freefax_detail_error" qtlid="395583">Oups ! Nous n'avons pas pu récupérer les information de votre freefax.</translation>
    <translation id="freefax_expired_error" qtlid="186975">Service expired</translation>
 
@@ -23,7 +23,7 @@
    <translation id="freefax_notification_noNotification" qtlid="306682">Il n'y a aucune notification enregistrée.</translation>
    <translation id="freefax_notifications_title" qtlid="306695">Notifications du répondeur/télécopieur {{serviceName}}</translation>
    <translation id="freefax_notifications" qtlid="33250">Notifications</translation>
-   <translation id="freefax_notification_email" qtlid="33598">Email</translation>
+   <translation id="freefax_notification_email" qtlid="33598">Email address</translation>
    <translation id="freefax_notification_type" qtlid="306708">Notification du répondeur</translation>
    <translation id="freefax_notification_source" qtlid="395596">Source de la notification</translation>
    <translation id="freefax_notification_source_fax" qtlid="32926">Fax</translation>

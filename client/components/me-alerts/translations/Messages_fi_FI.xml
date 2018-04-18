@@ -14,7 +14,7 @@
 
    <translation id="me_alerts_OVHACCOUNT_DEBT" qtlid="384121">Prepaid-tilisi saldo on negatiivinen: <strong>{{value}}</strong> päivämäärä{{date | date:'medium'}}. Korjaa tilanne <a href="{{link}}" class="alert-link">laskutusosiossa</a>.</translation>
    <translation id="me_alerts_DEBTACCOUNT_DEBT" qtlid="344448">Sinulla on velkaa <strong>{{value}}</strong>. Mene <a href="{{link}}" class="alert-link">laskutusosioon</a> hoitamaan velanmaksu.</translation>
-   <translation id="me_alerts_DEBTACCOUNT_DEBT_WITH_UNMATURED_AMOUNT" qtlid="369503">Sinulla on velkaa <strong>{{ dueAmount }}</strong> (josta summa {{ unmaturedAmount }} ei ole erääntynyt). Mene <a href="#/billing/statements" class="alert-link">laskutusosioon</a> korjaamaan tilanne.</translation>
+   <translation id="me_alerts_DEBTACCOUNT_DEBT_WITH_UNMATURED_AMOUNT" qtlid="369503">Sinulla on velkaa <strong>{{ dueAmount }}</strong> (josta summa {{ unmaturedAmount }} ei ole erääntynyt). Mene <a href="{{ link }}" class="alert-link">laskutusosioon</a> korjaamaan tilanne.</translation>
 
    <translation id="me_alerts_OVHACCOUNT_ALERTTHRESHOLD" qtlid="384134">Prepaid-tilisi on saavuttanut määrittämäsi kynnysrajan. Katso lisätietoja <a href="{{link}}" class="alert-link">laskutusosiosta</a>.</translation>
 

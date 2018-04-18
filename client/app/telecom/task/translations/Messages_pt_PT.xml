@@ -4,12 +4,12 @@
 
    <translation id="telecom_task_service" qtlid="305330">Résumé de mes opérations</translation>
    <translation id="telecom_task_date" qtlid="24523">Data</translation>
-   <translation id="telecom_task_cancelled" qtlid="164623">Anulado</translation>
+   <translation id="telecom_task_cancelled" qtlid="164623">Anulada</translation>
    <translation id="telecom_task_doing" qtlid="26383">Em curso</translation>
    <translation id="telecom_task_done" qtlid="305343">Réalisée</translation>
-   <translation id="telecom_task_error" qtlid="45508">Em erro</translation>
+   <translation id="telecom_task_error" qtlid="45508">Com erro</translation>
    <translation id="telecom_task_problem" qtlid="270800">Problema</translation>
-   <translation id="telecom_task_todo" qtlid="305356">Programmée</translation>
+   <translation id="telecom_task_todo" qtlid="305356">Programada</translation>
    <translation id="telecom_task_all" qtlid="290472">Todas</translation>
    <translation id="telecom_task_status" qtlid="26443">Estado</translation>
    <translation id="telecom_task_function" qtlid="56105">Ação</translation>

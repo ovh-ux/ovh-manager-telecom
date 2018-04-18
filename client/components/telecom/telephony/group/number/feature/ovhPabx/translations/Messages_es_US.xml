@@ -60,9 +60,9 @@
 <!-- SCHEDULER CONDITION -->
    <translation id="telephony_number_feature_ovh_pabx_step_conditions_scheduler" qtlid="464929">Jours exceptionnels</translation>
    <translation id="telephony_number_feature_ovh_pabx_step_conditions_scheduler_infos" qtlid="464942">Vous pouvez paramétrer vos jours de fermetures exceptionnelles <a data-ui-sref="telecom.telephony.alias.configuration.scheduler.ovhPabx">sur cette page</a>.</translation>
-   <translation id="telephony_number_feature_ovh_pabx_step_conditions_scheduler_scheduler1" qtlid="335258">Créneau 1</translation>
-   <translation id="telephony_number_feature_ovh_pabx_step_conditions_scheduler_scheduler2" qtlid="335271">Créneau 2</translation>
-   <translation id="telephony_number_feature_ovh_pabx_step_conditions_scheduler_scheduler3" qtlid="335284">Créneau 3</translation>
+   <translation id="telephony_number_feature_ovh_pabx_step_conditions_scheduler_scheduler1" qtlid="335258">Franja 1</translation>
+   <translation id="telephony_number_feature_ovh_pabx_step_conditions_scheduler_scheduler2" qtlid="335271">Franja 2</translation>
+   <translation id="telephony_number_feature_ovh_pabx_step_conditions_scheduler_scheduler3" qtlid="335284">Franja 3</translation>
    <translation id="telephony_number_feature_ovh_pabx_step_conditions_scheduler_holidays" qtlid="396597">Jours chômés (Hors plages horaires)</translation>
 <!-- TIME CONDITIONS -->
    <translation id="telephony_number_feature_ovh_pabx_step_conditions_time_condition" qtlid="464955">Plages horaires génériques</translation>
@@ -105,7 +105,7 @@
    <translation id="telephony_number_feature_ovh_pabx_step_rule_set_caller_name_action_param_required" qtlid="463954">Veuillez donner un nom d'appelant.</translation>
    <translation id="telephony_number_feature_ovh_pabx_step_rule_set_caller_name_action_param_bad_format" qtlid="463967">Le nom de l'appelant ne peut contenir que des lettres (sans accents), chiffres, tirets bas ou des espaces.</translation>
 <!-- BRIDGE -->
-   <translation id="telephony_number_feature_ovh_pabx_step_rule_bridge" qtlid="432163">Transférer l'appel</translation>
+   <translation id="telephony_number_feature_ovh_pabx_step_rule_bridge" qtlid="432163">Transferir la llamada</translation>
    <translation id="telephony_number_feature_ovh_pabx_step_rule_bridge_explain" qtlid="463980">Permet simplement de transférer l'appel vers une ligne.</translation>
    <translation id="telephony_number_feature_ovh_pabx_step_rule_bridge_to_number" qtlid="463993">Transférer vers le numéro</translation>
    <translation id="telephony_number_feature_ovh_pabx_step_rule_bridge_action_param_required" qtlid="464006">Veuillez spécifier un numéro vers lequel transférer l'appel.</translation>

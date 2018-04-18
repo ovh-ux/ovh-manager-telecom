@@ -35,7 +35,7 @@
    <translation id="telephony_service_fax_settings_notification_options_update_success" qtlid="337949">Options enregistrées</translation>
    <translation id="telephony_service_fax_settings_notification_settings_update" qtlid="284867">Aplicar configuração</translation>
    <translation id="telephony_service_fax_settings_notification_settings_update_settings_success" qtlid="460353">Configuration enregistrée</translation>
-   <translation id="telephony_service_fax_settings_notification_settings_update_settings_error" qtlid="263533">Ocorreu um erro durante a modificação da configuração.</translation>
+   <translation id="telephony_service_fax_settings_notification_settings_update_settings_error" qtlid="263533">Erro ao processar alteração da configuração.</translation>
    <translation id="telephony_service_fax_settings_addresses_to_notify" qtlid="337975">Adresses e-mail à notifier</translation>
    <translation id="telephony_service_fax_settings_addresses_to_notify_add" qtlid="71357">Adicionar um endereço de e-mail</translation>
    <translation id="telephony_service_fax_settings_addresses_to_notify_empty" qtlid="357057">Vous n’avez pas encore configuré d’adresse e-mail à notifier.</translation>

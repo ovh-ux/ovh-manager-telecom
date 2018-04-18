@@ -22,11 +22,13 @@ angular.module("managerApp").run(function ($translate, $translatePartialLoader, 
                             if (_.get(alert, "data.debtAccount.unmaturedAmount.value", 0) > 0) {
                                 messages.push($translate.instant("me_alerts_DEBTACCOUNT_DEBT_WITH_UNMATURED_AMOUNT", {
                                     dueAmount: _.get(alert, "data.debtAccount.dueAmount.text"),
-                                    unmaturedAmount: _.get(alert, "data.debtAccount.unmaturedAmount.text")
+                                    unmaturedAmount: _.get(alert, "data.debtAccount.unmaturedAmount.text"),
+                                    link: REDIRECT_URLS.billing
                                 }));
                             } else {
                                 messages.push($translate.instant("me_alerts_DEBTACCOUNT_DEBT", {
-                                    value: _.get(alert, "data.debtAccount.dueAmount.text")
+                                    value: _.get(alert, "data.debtAccount.dueAmount.text"),
+                                    link: REDIRECT_URLS.billing
                                 }));
                             }
                             break;

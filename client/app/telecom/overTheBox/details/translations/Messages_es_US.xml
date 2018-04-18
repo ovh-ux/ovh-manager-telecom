@@ -2,38 +2,38 @@
 <translations>
    <translation id="overTheBox_dashboard_title" qtlid="305616">Mon OverTheBox</translation>
    <translation id="overTheBox_dashboard_service_label" qtlid="463382">Nom du service :</translation>
-   <translation id="overTheBox_device_listing_title" qtlid="289588">Liste des périphériques</translation>
+   <translation id="overTheBox_device_listing_title" qtlid="289588">Lista de periféricos</translation>
    <translation id="overTheBox_device_button_add" qtlid="317659">Nouveau périphérique</translation>
    <translation id="overTheBox_device_activation" qtlid="74958">Activation</translation>
    <translation id="overTheBox_device_id" qtlid="8194">ID</translation>
-   <translation id="overTheBox_device_last_seen" qtlid="289614">Dernière vue</translation>
-   <translation id="overTheBox_device_not_linked" qtlid="289627">Aucun périphérique n'est attaché à votre service.</translation>
+   <translation id="overTheBox_device_last_seen" qtlid="289614">Última vista</translation>
+   <translation id="overTheBox_device_not_linked" qtlid="289627">No hay ningún periférico asociado al servicio.</translation>
    <translation id="overTheBox_device_not_linked_infos" qtlid="317672">Pour continuer, vous devez attacher un périphérique à votre service.</translation>
-   <translation id="overTheBox_device_not_found" qtlid="289627">Aucun périphérique n'est attaché à votre service.</translation>
-   <translation id="order_overTheBox_no_device_detected" qtlid="289289">Aucune OverTheBox n'a été détectée sur votre réseau local.</translation>
-   <translation id="overTheBox_device_link" qtlid="289653">Attacher le périphérique</translation>
-   <translation id="overTheBox_device_link_manually" qtlid="289666">Attacher un périphérique manuellement</translation>
-   <translation id="overTheBox_link_device_confirm" qtlid="289679">Voulez-vous attacher votre service à ce périphérique ?</translation>
-   <translation id="overTheBox_change_device" qtlid="289692">Attacher à un autre périphérique</translation>
+   <translation id="overTheBox_device_not_found" qtlid="289627">No hay ningún periférico asociado al servicio.</translation>
+   <translation id="order_overTheBox_no_device_detected" qtlid="289289">No se ha detectado ningún OverTheBox en su red local.</translation>
+   <translation id="overTheBox_device_link" qtlid="289653">Asociar el periférico</translation>
+   <translation id="overTheBox_device_link_manually" qtlid="289666">Asociar un periférico manualmente</translation>
+   <translation id="overTheBox_link_device_confirm" qtlid="289679">¿Desea asociar su servicio a este periférico?</translation>
+   <translation id="overTheBox_change_device" qtlid="289692">Asociar a otro periférico</translation>
    <translation id="overTheBox_link_device_success" qtlid="317685">Le périphérique a été attaché à votre service.</translation>
    <translation id="overTheBox_status" qtlid="101000">Statut :</translation>
    <translation id="overTheBox_status_active" qtlid="55133">Actif</translation>
    <translation id="overTheBox_status_creating" qtlid="317698">En cours de création ...</translation>
    <translation id="overTheBox_status_deleted" qtlid="134514">Eliminado</translation>
-   <translation id="overTheBox_status_toCreate" qtlid="289809">A créer</translation>
+   <translation id="overTheBox_status_toCreate" qtlid="289809">Pendiente de creación</translation>
    <translation id="overTheBox_status_toDelete" qtlid="147048">Pendiente de eliminación</translation>
    <translation id="overTheBox_status_true" qtlid="30250">Activé</translation>
    <translation id="overTheBox_status_false" qtlid="24967">Desactivada</translation>
    <translation id="overTheBox_status_" qtlid="77142">Inconnu</translation>
    <translation id="overthebox_traffic" qtlid="89749">Débit</translation>
-   <translation id="overTheBox_tasks" qtlid="289822">Tâches :</translation>
-   <translation id="overTheBox_tasks_show" qtlid="289835">Voir les tâches</translation>
+   <translation id="overTheBox_tasks" qtlid="289822">Tareas:</translation>
+   <translation id="overTheBox_tasks_show" qtlid="289835">Ver las tareas</translation>
    <translation id="overTheBox_trafic" qtlid="39202">Trafic</translation>
 
    <translation id="overTheBox_bandwidth" qtlid="89749">Débit</translation>
    <translation id="overTheBox_publicIp" qtlid="317711">Adresse IP publique&#160;:</translation>
    <translation id="overTheBox_deviceId" qtlid="317724">Identifiant du périphérique&#160;:</translation>
-   <translation id="overTheBox_deviceId_button_title" qtlid="289471">Identifiant du périphérique :</translation>
+   <translation id="overTheBox_deviceId_button_title" qtlid="289471">ID del periférico:</translation>
    <translation id="overTheBox_device_state" qtlid="317737">État du périphérique&#160;:</translation>
    <translation id="overTheBox_expiration_date" qtlid="317750">Prochaine facturation&#160;:</translation>
    <translation id="overTheBox_billing_date" qtlid="317750">Prochaine facturation&#160;:</translation>
@@ -51,10 +51,10 @@
    <translation id="overTheBox_action_sysupgrade_title" qtlid="317828">Effectuer la mise à jour du système</translation>
    <translation id="overTheBox_action_sysupgrade_label" qtlid="317841">Entraîne une réinstallation, un redémarrage de la machine avec une sauvegarde de votre configuration.</translation>
 
-   <translation id="overTheBox_graph_filter_last5min" qtlid="289900">Les dernières 5 min</translation>
-   <translation id="overTheBox_graph_filter_lastHour" qtlid="289913">La dernière heure</translation>
-   <translation id="overTheBox_graph_filter_last24Hour" qtlid="289926">Les dernières 24 h</translation>
-   <translation id="overTheBox_graph_filter_lastWeek" qtlid="289939">La dernière semaine</translation>
+   <translation id="overTheBox_graph_filter_last5min" qtlid="289900">Los últimos 5 minutos</translation>
+   <translation id="overTheBox_graph_filter_lastHour" qtlid="289913">La última hora</translation>
+   <translation id="overTheBox_graph_filter_last24Hour" qtlid="289926">Las últimas 24 horas</translation>
+   <translation id="overTheBox_graph_filter_lastWeek" qtlid="289939">La última semana</translation>
    <translation id="overTheBox_graph_filter_lastMonth" qtlid="169680">El último mes</translation>
 
    <translation id="overthebox_general_information" qtlid="27115">Informations générales</translation>

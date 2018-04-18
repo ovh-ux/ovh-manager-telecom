@@ -23,7 +23,7 @@
    <translation id="telephony_alias_configuration_mode_calls_action_intercept_success" qtlid="466892">Interception de l'appel en cours</translation>
    <translation id="telephony_alias_configuration_mode_calls_action_hangup" qtlid="324587">Den Anruf beenden</translation>
    <translation id="telephony_alias_configuration_mode_calls_action_hangup_help" qtlid="466905">Vous pouvez raccrocher l'appel en cours</translation>
-   <translation id="telephony_alias_configuration_mode_calls_action_hangup_confirm" qtlid="397754">Raccrocher</translation>
+   <translation id="telephony_alias_configuration_mode_calls_action_hangup_confirm" qtlid="397754">Auflegen</translation>
    <translation id="telephony_alias_configuration_mode_calls_action_hangup_success" qtlid="466918">Fin de l'appel en cours</translation>
    <translation id="telephony_alias_configuration_mode_calls_action_transfert" qtlid="432163">Transférer l'appel</translation>
    <translation id="telephony_alias_configuration_mode_calls_action_transfert_number" qtlid="466931">Numéro de destination</translation>

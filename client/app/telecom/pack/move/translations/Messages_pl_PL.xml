@@ -13,8 +13,7 @@
    <translation id="pack_move_meeting_slots" qtlid="312597">Rendez-vous France Telecom</translation>
    <translation id="pack_move_eligibility_phone_form_error" qtlid="312610">Le numéro entré doit être valide et ne doit pas contenir de tirets ou d'espaces</translation>
    <translation id="pack_move_eligibility_subtitle" qtlid="105634">Możesz skorzystać z następujących sposobów wydzielenia:</translation>
-   <translation id="pack_move_eligibility_synchronisation_title" qtlid="312623">Synchronisation :</translation>
-   <translation id="pack_move_eligibility_estimated_rate_title" qtlid="312636">Débit estimé :</translation>
+   <translation id="pack_move_eligibility_synchronisation_estimated_rate_title">Débit synchronisation estimé :</translation>
    <translation id="pack_move_eligibility_synchronisation_download" qtlid="312649">Download :</translation>
    <translation id="pack_move_eligibility_synchronisation_byMonth" qtlid="312662">/m-c</translation>
    <translation id="pack_move_eligibility_synchronisation_nra" qtlid="312675">Cette ligne est raccordée au NRA <strong>{{name}}</strong> situé à <strong>{{distance}}</strong> mètres.</translation>

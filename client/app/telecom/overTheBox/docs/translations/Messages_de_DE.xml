@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <translations>
-   <translation id="overTheBox_docs_title" qtlid="300370">Hilfen</translation>
+   <translation id="overTheBox_docs_title" qtlid="300370">Anleitungen</translation>
 
    <translation id="overTheBox_docs_label_installation" qtlid="108721">Installation</translation>
    <translation id="overTheBox_docs_label_config" qtlid="305837">Erweiterte Konfiguration</translation>

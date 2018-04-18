@@ -2,7 +2,7 @@
 <translations>
    <translation id="telephony_group_line_calls_click2call_title" qtlid="334751">Click2call</translation>
    <translation id="telephony_group_line_calls_click2call_ids_title" qtlid="55889">Identifiants</translation>
-   <translation id="telephony_group_line_calls_click2call_informations_title" qtlid="26551">Informaciones</translation>
+   <translation id="telephony_group_line_calls_click2call_informations_title" qtlid="26551">Información</translation>
    <translation id="telephony_group_line_calls_click2call_informations_text_1" qtlid="334764">Le service Click2Call a été conçu pour simplifier la mise en relation avec vos clients.</translation>
    <translation id="telephony_group_line_calls_click2call_informations_text_2" qtlid="334777">D'un simple lien sur votre page web, rappelez vos clients. OVH fournit une API pour permettre de passer des appels sans toucher au téléphone&#160;!</translation>
    <translation id="telephony_group_line_calls_click2call_informations_text_3" qtlid="334790">Créez des identifiants afin d'autoriser une application ou une personne à effectuer des appels sur votre compte.</translation>

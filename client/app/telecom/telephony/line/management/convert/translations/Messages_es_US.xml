@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <translations>
    <translation id="telephony_line_convert_title" qtlid="387380">Convertir une ligne en numéro</translation>
-   <translation id="telephony_line_convert_info_title" qtlid="26551">Informaciones</translation>
+   <translation id="telephony_line_convert_info_title" qtlid="26551">Información</translation>
    <translation id="telephony_line_convert_info1" qtlid="387393">Les demandes de conversion seront prises en compte lors de votre prochaine facturation. Jusqu'à cette date, l'annulation des demandes restera possible.</translation>
    <translation id="telephony_line_convert_info2" qtlid="387406">Une fois la conversion réalisée, votre ligne ne sera plus opérationnelle et vous ne pourrez plus faire d'appels sortants, car le numéro sera transformé en alias.</translation>
    <translation id="telephony_line_convert_info3" qtlid="387419">Si vous avez un téléphone Plug And Phone sur cette ligne, ce dernier ne fonctionnera plus et nous vous proposerons un retour de matériel.</translation>

@@ -40,7 +40,7 @@
 <!-- TRACKING modal ADD -->
    <translation id="sms_options_response_tracking_add_title" qtlid="346209">Ajout d’une notification</translation>
    <translation id="sms_options_response_tracking_add_media_label" qtlid="28543">Media</translation>
-   <translation id="sms_options_response_tracking_add_media_email" qtlid="33598">Email</translation>
+   <translation id="sms_options_response_tracking_add_media_email" qtlid="33598">Email address</translation>
    <translation id="sms_options_response_tracking_add_media_sms" qtlid="28243">SMS</translation>
    <translation id="sms_options_response_tracking_add_sender_email_label" qtlid="24535">Sender</translation>
    <translation id="sms_options_response_tracking_add_sender_email_error_required" qtlid="346222">Le champ "Expéditeur" est obligatoire</translation>

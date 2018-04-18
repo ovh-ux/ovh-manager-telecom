@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <translations>
    <translation id="telephony_line_answer_voicemail_password_change_main_title" qtlid="337637">Mot de passe accès répondeur</translation>
-   <translation id="telephony_line_answer_voicemail_password_number_info" qtlid="26551">Informaciones</translation>
+   <translation id="telephony_line_answer_voicemail_password_number_info" qtlid="26551">Información</translation>
    <translation id="telephony_line_answer_voicemail_password_number_internal" qtlid="337650">Accès au répondeur :</translation>
    <translation id="telephony_line_answer_voicemail_password_number_external" qtlid="337663">De l'extérieur :</translation>
    <translation id="telephony_line_answer_voicemail_password_change_title" qtlid="337676">Mot de passe du répondeur</translation>

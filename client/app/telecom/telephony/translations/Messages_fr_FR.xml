@@ -128,7 +128,7 @@
    <translation id="telephony_common_time_condition_slot_from">de</translation>
    <translation id="telephony_common_time_condition_slot_to">à</translation>
 
-   <!-- EXPORT / IMPORT CONFIGURATION -->
+<!-- EXPORT / IMPORT CONFIGURATION -->
    <translation id="telephony_common_time_condition_export_configuration">Exporter</translation>
    <translation id="telephony_common_time_condition_import_configuration">Importer</translation>
    <translation id="telephony_common_time_condition_import_configuration_title">Importer des plages horaires</translation>

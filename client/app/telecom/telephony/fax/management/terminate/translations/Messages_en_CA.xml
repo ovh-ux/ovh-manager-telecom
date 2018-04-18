@@ -20,12 +20,12 @@
    <translation id="telephony_group_fax_management_terminate_button" qtlid="48646">Cancel</translation>
    <translation id="telephony_group_fax_management_terminate_cancel_doing" qtlid="463083">Annulation de la résiliation en cours</translation>
 <!-- CANCEL -->
-   <translation id="telephony_group_fax_management_terminate_cancel" qtlid="285350">Cancel cancellation </translation>
+   <translation id="telephony_group_fax_management_terminate_cancel" qtlid="285350">Cancel termination </translation>
    <translation id="telephony_group_fax_management_terminate_cancel_success" qtlid="463096">L'annulation de la résiliation de votre fax a été effectuée avec succès.</translation>
    <translation id="telephony_group_fax_management_terminate_cancel_error" qtlid="463109">Oups ! Une erreur est survenue lors de l'annulation de la résiliation de votre fax.</translation>
    <translation id="telephony_group_fax_management_terminate_cancel_doing" qtlid="463122">Une demande de résiliation pour le fax <strong>{{ serviceName }}</strong> est en cours et sera effective le <strong>{{ date }}</strong>.</translation>
    <translation id="telephony_group_fax_management_terminate_cancel_explain" qtlid="463135">Vous pouvez annuler la demande jusqu'à cette date.</translation>
-   <translation id="telephony_group_fax_management_terminate_cancel_button" qtlid="285350">Cancel cancellation </translation>
+   <translation id="telephony_group_fax_management_terminate_cancel_button" qtlid="285350">Cancel termination </translation>
    <translation id="telephony_group_fax_management_terminate_cancel_loading" qtlid="463083">Annulation de la résiliation en cours</translation>
 
    <translation id="telephony_group_fax_management_terminate_bulk_all_success" qtlid="463148">La demande de résiliation a bien été appliquée aux services sélectionnés</translation>

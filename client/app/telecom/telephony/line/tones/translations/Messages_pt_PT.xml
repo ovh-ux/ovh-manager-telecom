@@ -9,7 +9,7 @@
    <translation id="telephony_line_tones_onhold" qtlid="358422">Musique d'attente</translation>
    <translation id="telephony_line_tones_callwaiting" qtlid="358435">Annonce sur ligne occupée</translation>
    <translation id="telephony_line_tones_type_custom_sound" qtlid="358448">Personnalisée</translation>
-   <translation id="telephony_line_tones_type_none" qtlid="101193">Por defeito</translation>
+   <translation id="telephony_line_tones_type_none" qtlid="101193">Predefinido</translation>
    <translation id="telephony_line_tones_type_predefined_1" qtlid="358461">Prédéfinie 1</translation>
    <translation id="telephony_line_tones_type_predefined_2" qtlid="358474">Prédéfinie 2</translation>
    <translation id="telephony_line_tones_choose_file" qtlid="358487">Choisir un fichier</translation>
