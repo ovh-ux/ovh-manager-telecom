@@ -6,7 +6,7 @@
    <translation id="hosted_email_detail_title" qtlid="384324">Hosted Email {{name}}</translation>
    <translation id="hosted_email_detail_general_information" qtlid="27115">Informações gerais</translation>
    <translation id="hosted_email_detail_client_change_password" qtlid="8434">Alterar password</translation>
-   <translation id="hosted_email_detail_active" qtlid="55133">Ativo</translation>
+   <translation id="hosted_email_detail_active" qtlid="55133">Ativado</translation>
    <translation id="hosted_email_detail_inactive" qtlid="105310">Inativo</translation>
    <translation id="hosted_email_detail_status" qtlid="26443">Estado</translation>
    <translation id="hosted_email_detail_webmail" qtlid="384337">URL du serveur Webmail</translation>
@@ -51,9 +51,9 @@
    <translation id="hosted_email_detail_change_password_rule_size" qtlid="384597">Doit contenir entre 8 et 20 caractères</translation>
    <translation id="hosted_email_detail_change_password_rule_special" qtlid="384610">Doit contenir des chiffres, lettres sans accent ou {{list}}</translation>
    <translation id="hosted_email_detail_client_change_password_submit" qtlid="8434">Alterar password</translation>
-   <translation id="hosted_email_detail_client_change_password_label" qtlid="17177">Nova password</translation>
+   <translation id="hosted_email_detail_client_change_password_label" qtlid="17177">Nova palavra-passe</translation>
 
-   <translation id="hosted_email_detail_client_delete_account" qtlid="150294">Eliminar a conta</translation>
+   <translation id="hosted_email_detail_client_delete_account" qtlid="150294">Eliminar conta</translation>
    <translation id="hosted_email_detail_client_delete_account_warning" qtlid="455946">Attention ! En supprimant votre compte, l'ensemble des messages qu'il contient seront <strong>définitivement</strong> supprimés. Aucune procédure de récupération des données ne sera possible après cette suppression.</translation>
    <translation id="hosted_email_detail_client_delete_account_confirm" qtlid="173632">Confirmar eliminação</translation>
    <translation id="hosted_email_detail_client_delete_account_success" qtlid="455959">Votre compte {{email}} est en cours de suppression.</translation>

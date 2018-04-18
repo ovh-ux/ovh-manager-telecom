@@ -15,7 +15,7 @@
 
    <translation id="sms_users_sr_only_actions" qtlid="72809">Actions</translation>
 
-   <translation id="sms_users_action_change_password" qtlid="80394">Change the password</translation>
+   <translation id="sms_users_action_change_password" qtlid="80394">Change password</translation>
    <translation id="sms_users_action_change_password_label" qtlid="2270">Password</translation>
    <translation id="sms_users_action_quota" qtlid="6874">Quota</translation>
    <translation id="sms_users_action_limit" qtlid="33562">Limit</translation>
@@ -66,7 +66,7 @@
    <translation id="sms_users_templates_added" qtlid="393529">Personnalisation des alertes effectuée</translation>
    <translation id="sms_users_templates_update_ko" qtlid="393542">Impossible de modifier la personnalisation des alertes.</translation>
 
-   <translation id="sms_users_change_password_user_title" qtlid="80394">Change the password</translation>
+   <translation id="sms_users_change_password_user_title" qtlid="80394">Change password</translation>
    <translation id="sms_users_change_password_user_info" qtlid="338859">Vous changez actuellement le mot de passe de l’utilisateur <b>«{{ login }}»</b>.</translation>
    <translation id="sms_users_change_password_user_password_label" qtlid="334894">Mot de passe&#160;:&#160;</translation>
    <translation id="sms_users_change_password_user_password_placeholder" qtlid="2270">Password</translation>

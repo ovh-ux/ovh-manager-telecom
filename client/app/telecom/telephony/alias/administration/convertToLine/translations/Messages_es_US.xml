@@ -3,7 +3,7 @@
    <translation id="telephony_alias_administration_convert_back_link" qtlid="391943">Retour à l'administration de numéro</translation>
    <translation id="telephony_alias_administration_convert_title" qtlid="392099">Convertir un numéro en ligne</translation>
    <translation id="telephony_alias_administration_convert_offers_title" qtlid="392112">Sélection de l'offre</translation>
-   <translation id="telephony_alias_administration_convert_info_subtitle" qtlid="26551">Informaciones</translation>
+   <translation id="telephony_alias_administration_convert_info_subtitle" qtlid="26551">Información</translation>
    <translation id="telephony_alias_administration_convert_info" qtlid="387393">Les demandes de conversion seront prises en compte lors de votre prochaine facturation. Jusqu'à cette date, l'annulation des demandes restera possible.</translation>
    <translation id="telephony_alias_administration_convert_offers" qtlid="359787">Offres disponibles</translation>
    <translation id="telephony_alias_administration_convert_monthly_price_tax_free" qtlid="270254">{{ price }}/mes</translation>

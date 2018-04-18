@@ -63,8 +63,8 @@
    <translation id="xdsl_access_ip_is_being_deleted" qtlid="456089">en cours de suppression</translation>
 
 <!-- status -->
-   <translation id="xdsl_details_status_active" qtlid="55133">Ativo</translation>
-   <translation id="xdsl_details_status_cancelled" qtlid="164623">Anulado</translation>
+   <translation id="xdsl_details_status_active" qtlid="55133">Ativado</translation>
+   <translation id="xdsl_details_status_cancelled" qtlid="164623">Anulada</translation>
    <translation id="xdsl_details_status_close" qtlid="56117">Encerrado</translation>
    <translation id="xdsl_details_status_deleting" qtlid="152778">Eliminação em curso</translation>
    <translation id="xdsl_details_status_doing" qtlid="29647">Criação em curso</translation>

@@ -52,7 +52,7 @@
    <translation id="telephony_number_feature_ovh_pabx_menu_entry_action_set_caller_name_action_param_required" qtlid="463954">Veuillez donner un nom d'appelant.</translation>
    <translation id="telephony_number_feature_ovh_pabx_menu_entry_action_set_caller_name_action_param_bad_format" qtlid="463967">Le nom de l'appelant ne peut contenir que des lettres (sans accents), chiffres, tirets bas ou des espaces.</translation>
 <!-- BRIDGE -->
-   <translation id="telephony_number_feature_ovh_pabx_menu_entry_action_bridge" qtlid="432163">Transférer l'appel</translation>
+   <translation id="telephony_number_feature_ovh_pabx_menu_entry_action_bridge" qtlid="432163">Transferir la llamada</translation>
    <translation id="telephony_number_feature_ovh_pabx_menu_entry_action_bridge_explain" qtlid="463980">Permet simplement de transférer l'appel vers une ligne.</translation>
    <translation id="telephony_number_feature_ovh_pabx_menu_entry_action_bridge_to_number" qtlid="463993">Transférer vers le numéro</translation>
    <translation id="telephony_number_feature_ovh_pabx_menu_entry_action_bridge_action_param_required" qtlid="464006">Veuillez spécifier un numéro vers lequel transférer l'appel.</translation>

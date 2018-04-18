@@ -18,7 +18,7 @@
    <translation id="telephony_alias_portabilities_step_status_cancelled" qtlid="27631">Anulado</translation>
    <translation id="telephony_alias_portabilities_step_status_doing" qtlid="214896">Em curso...</translation>
    <translation id="telephony_alias_portabilities_step_status_done" qtlid="8662">Concluída </translation>
-   <translation id="telephony_alias_portabilities_step_status_error" qtlid="45508">Em erro</translation>
+   <translation id="telephony_alias_portabilities_step_status_error" qtlid="45508">Com erro</translation>
    <translation id="telephony_alias_portabilities_step_status_todo" qtlid="392320">Plannifié</translation>
    <translation id="telephony_alias_portabilities_step_name_acknowledgmentReceivedFromOperator" qtlid="392333">Accusé de l'opérateur reçu</translation>
    <translation id="telephony_alias_portabilities_step_name_belgiumPortabilityRequestCreated" qtlid="461146">Envoi de la demande à l'opérateur cédant</translation>

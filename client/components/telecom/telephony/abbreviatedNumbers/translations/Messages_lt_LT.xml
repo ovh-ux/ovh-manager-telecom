@@ -4,6 +4,7 @@
    <translation id="telephony_abbreviated_numbers_write_error" qtlid="334244">Negalima atnaujinti trumpųjų numerių sąrašo.</translation>
    <translation id="telephony_abbreviated_numbers_write_success" qtlid="334257">Trumpasis numeris {{num}} atnaujintas.</translation>
    <translation id="telephony_abbreviated_numbers_id" qtlid="334283">Trumpasis numeris</translation>
+   <translation id="telephony_abbreviated_numbers_id_help" qtlid="480279">Doit être un nombre à 3 ou 4 chiffres, débutant par un 7.</translation>
    <translation id="telephony_abbreviated_numbers_number" qtlid="334296">Paskirties numeris</translation>
    <translation id="telephony_abbreviated_numbers_surname" qtlid="3818">Pavadinimas</translation>
    <translation id="telephony_abbreviated_numbers_name" qtlid="23323">Vardas</translation>
@@ -11,6 +12,7 @@
    <translation id="telephony_abbreviated_numbers_remove_success" qtlid="360658">Trumpasis numeris {{abbreviatedNumber}} ištrintas.</translation>
    <translation id="telephony_abbreviated_numbers_remove_error" qtlid="360671">Negalima ištrinti trumpojo numerio {{abbreviatedNumber}}.</translation>
    <translation id="telephony_abbreviated_numbers_number_error" qtlid="360684">Įveskite numerį tarptautiniu formatu (00xx ...).</translation>
+   <translation id="telephony_abbreviated_numbers_number_help" qtlid="480292">Doit être un numéro de format international. Ex. 00xx...</translation>
    <translation id="telephony_abbreviated_numbers_save_error" qtlid="360697">Negalima išsaugoti trumpojo numerio.</translation>
    <translation id="telephony_abbreviated_numbers_not_free_error" qtlid="360710">Toks trumpasis numeris nėra galimas.</translation>
    <translation id="telephony_abbreviated_numbers_name_error" qtlid="360723">Leidžiami tik tarpo, skaičių ir lotyniški simboliai.</translation>

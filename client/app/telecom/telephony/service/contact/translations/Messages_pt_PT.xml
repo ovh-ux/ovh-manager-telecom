@@ -3,13 +3,13 @@
    <translation id="telephony_service_contact_infos" qtlid="26551">Informações</translation>
    <translation id="telephony_service_contact_edit" qtlid="459417">Modifier les coordonnées</translation>
    <translation id="telephony_service_contact_required" qtlid="459430">Ce champ est requis.</translation>
-   <translation id="telephony_service_contact_address" qtlid="30430">Morada</translation>
+   <translation id="telephony_service_contact_address" qtlid="30430">Endereço Postal</translation>
    <translation id="telephony_service_contact_legalform" qtlid="459443">Forme légale</translation>
    <translation id="telephony_service_contact_legalform_individual" qtlid="33850">Particular</translation>
    <translation id="telephony_service_contact_legalform_professional" qtlid="59795">Profissional </translation>
    <translation id="telephony_service_contact_legalform_corporation" qtlid="49022">Empresa</translation>
    <translation id="telephony_service_contact_legalform_association" qtlid="34138">Associação</translation>
-   <translation id="telephony_service_contact_lastname" qtlid="3818">Nome</translation>
+   <translation id="telephony_service_contact_lastname" qtlid="3818">Apelido</translation>
    <translation id="telephony_service_contact_firstname" qtlid="23323">Nome</translation>
    <translation id="telephony_service_contact_occupation" qtlid="101048">Profissão</translation>
    <translation id="telephony_service_contact_siret" qtlid="459456">Numéro SIRET</translation>

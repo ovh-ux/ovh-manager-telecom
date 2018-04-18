@@ -3,7 +3,7 @@
    <translation id="telephony_alias_change_type_title" qtlid="332918">Modifier le type de numéro</translation>
 
    <translation id="telephony_alias_change_type_info_text_1" qtlid="332931">Configurez votre numéro comme bon vous semble.</translation>
-   <translation id="telephony_alias_change_type_info_title" qtlid="26551">Informaciones</translation>
+   <translation id="telephony_alias_change_type_info_title" qtlid="26551">Información</translation>
    <translation id="telephony_alias_change_type_info_text_2" qtlid="332944">Par défaut, votre numéro n'est pas configuré et ne permet aucune action, mais OVH vous offre une multitude de services, de la redirection au serveur vocal interactif, en passant par la conférence ou la file d'appels.</translation>
    <translation id="telephony_alias_change_type_warning" qtlid="108456">Attention !</translation>
    <translation id="telephony_alias_change_type_warning_old_pabx" qtlid="462550">En modifiant ce type de configuration ({{ featureType }}) vers un autre type de configuration, vous ne pourrez plus revenir en arrière !</translation>

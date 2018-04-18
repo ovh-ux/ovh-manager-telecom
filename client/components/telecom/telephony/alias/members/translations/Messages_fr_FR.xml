@@ -24,6 +24,6 @@
    <translation id="telephony_alias_members_add" qtlid="392502">Ajouter un membre</translation>
    <translation id="telephony_alias_members_add_multiple" qtlid="397247">Ajouter {{ count }} membres</translation>
    <translation id="telephony_alias_members_explanation" qtlid="466801">Pour chaque membre, vous pouvez définir sa position, le nombre d'appels simultanés, le délai durant lequel il sonne et le délai de repos avant la présentation d'un nouvel appel suite à un appel terminé.</translation>
-   <translation id="telephony_alias_members_add_modal-warning">Votre configuration possède un ou plusieurs numéros externes. Les appels vers ces numéros vous seront facturés hors forfait quelque soit votre forfait.</translation>
-   <translation id="telephony_alias_members_add_modal-question">Continuer avec cette configuration ?</translation>
+   <translation id="telephony_alias_members_add_modal-warning" qtlid="480201">Votre configuration possède un ou plusieurs numéros externes. Les appels vers ces numéros vous seront facturés hors forfait quelque soit votre forfait.</translation>
+   <translation id="telephony_alias_members_add_modal-question" qtlid="480214">Continuer avec cette configuration ?</translation>
 </translations>

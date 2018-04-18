@@ -52,7 +52,7 @@ angular.module("managerApp").controller("telephonyNumberOvhPabxMenuListCtrl", fu
             if (error.status === 403) {
                 errorTranslationKey = "telephony_number_feature_ovh_pabx_menu_list_delete_error_used";
             }
-            Toast.error([$translate.instant(errorTranslationKey), _.get(error, "data.message") || ""].join(" "));
+            Toast.error([$translate.instant(errorTranslationKey)].join(" "));
             return $q.reject(error);
         }).finally(function () {
             self.askedMenuDelete = null;

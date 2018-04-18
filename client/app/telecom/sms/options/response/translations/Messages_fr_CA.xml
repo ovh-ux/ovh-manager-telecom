@@ -45,7 +45,7 @@
    <translation id="sms_options_response_tracking_add_sender_email_label" qtlid="24535">Expéditeur</translation>
    <translation id="sms_options_response_tracking_add_sender_email_error_required" qtlid="346222">Le champ "Expéditeur" est obligatoire</translation>
    <translation id="sms_options_response_tracking_add_sender_email_error_email" qtlid="346235">L’adresse email renseignée n’est pas valide.</translation>
-   <translation id="sms_options_response_tracking_add_target_email_label" qtlid="50686">Adresse email</translation>
+   <translation id="sms_options_response_tracking_add_target_email_label" qtlid="50686">Adresse courriel</translation>
    <translation id="sms_options_response_tracking_add_target_email_error_required" qtlid="346248">Le champ "Adresse email" est obligatoire.</translation>
    <translation id="sms_options_response_tracking_add_target_email_error_email" qtlid="346235">L’adresse email renseignée n’est pas valide.</translation>
    <translation id="sms_options_response_tracking_add_sender_number_label" qtlid="24535">Expéditeur</translation>

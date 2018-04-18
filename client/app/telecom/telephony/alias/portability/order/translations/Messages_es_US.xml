@@ -3,7 +3,7 @@
    <translation id="telephony_alias_portability_order_back_link" qtlid="460639">Retour au groupe</translation>
    <translation id="telephony_alias_portability_order_title" qtlid="334049">Demander une portabilité</translation>
    <translation id="telephony_alias_portability_order_order" qtlid="43558">Contratar</translation>
-   <translation id="telephony_alias_portability_order_infos_title" qtlid="26551">Informaciones</translation>
+   <translation id="telephony_alias_portability_order_infos_title" qtlid="26551">Información</translation>
    <translation id="telephony_alias_portability_order_infos" qtlid="460652">Durant toute la durée de votre contrat, la portabilité de vos numéros géographiques et non-géographiques vers OVH est totalement gratuite.</translation>
    <translation id="telephony_alias_portability_order_infos_country" qtlid="460665">La portabilité est pour le moment restreinte aux pays suivants : <strong>France</strong>, <strong>Belgique</strong> et <strong>Suisse</strong>.</translation>
    <translation id="telephony_alias_portability_order_warning_title" qtlid="314201">Atención:</translation>
@@ -14,9 +14,12 @@
    <translation id="telephony_alias_portability_order_landline" qtlid="460730">Un numéro isolé</translation>
    <translation id="telephony_alias_portability_order_sda" qtlid="460743">Un ou plusieurs numéros appartenant à une tranche de numéros (SDA)</translation>
    <translation id="telephony_alias_portability_order_callNumber" qtlid="460756">Numéro à porter (format international)</translation>
+   <translation id="telephony_alias_portability_order_sda_warning">Les numéros spéciaux ne pouvantt faire l'objet d'une demande de portabilité en numéro isolé, veuillez choisir la portabilité pour une tranche de numéros (SDA)</translation>
    <translation id="telephony_alias_portability_order_number_international" qtlid="460769">N° au format international</translation>
    <translation id="telephony_alias_portability_order_callNumber_pattern_error" qtlid="460782">Veuillez saisir un numéro au format international (0033… ou +33…).</translation>
-   <translation id="telephony_alias_portability_order_desireDate" qtlid="392255">Date de portabilité souhaitée</translation>
+   <translation id="telephony_alias_portability_order_desireDate">Date de portabilité souhaitée :</translation>
+   <translation id="telephony_alias_portability_order_desireDate_sooner">Au plus tôt</translation>
+   <translation id="telephony_alias_portability_order_desireDate_custom">Choisir la date</translation>
    <translation id="telephony_alias_portability_order_desireDate_pattern_error" qtlid="460795">La date saisie est invalide.</translation>
    <translation id="telephony_alias_portability_order_rio" qtlid="310257">RIO</translation>
    <translation id="telephony_alias_portability_order_rio_pattern_error" qtlid="460808">Le RIO saisi est invalide.</translation>
@@ -50,7 +53,7 @@
    <translation id="telephony_alias_portability_order_contact_floor" qtlid="313026">Étage</translation>
    <translation id="telephony_alias_portability_order_contact_pj" qtlid="460938">Publication dans l'annuaire</translation>
    <translation id="telephony_alias_portability_order_contact_required" qtlid="459430">Ce champ est requis.</translation>
-   <translation id="telephony_alias_portability_order_billing_account" qtlid="254102">Groupe de facturation</translation>
+   <translation id="telephony_alias_portability_order_billing_account" qtlid="254102">Grupo de facturación</translation>
    <translation id="telephony_alias_portability_order_redirect_line" qtlid="460951">Souhaitez-vous rediriger le numéro vers une ligne ?</translation>
    <translation id="telephony_alias_portability_order_redirect_line_choose" qtlid="460964">Choisir une ligne</translation>
    <translation id="telephony_alias_portability_order_redirect_line_info" qtlid="460977">Si vous ne sélectionnez aucune ligne, vous pourrez effectuer la redirection plus tard.</translation>
@@ -73,7 +76,9 @@
    <translation id="telephony_alias_portability_order_url" qtlid="35352">Bon de commande</translation>
    <translation id="telephony_alias_portability_order_step" qtlid="461107">Étape {{ current }}/{{ total }}</translation>
    <translation id="telephony_alias_portability_order_step_1" qtlid="461120">Numéro à porter</translation>
-   <translation id="telephony_alias_portability_order_step_2" qtlid="26551">Informaciones</translation>
+   <translation id="telephony_alias_portability_order_step_2" qtlid="26551">Información</translation>
    <translation id="telephony_alias_portability_order_step_3" qtlid="333282">Configuration du numéro</translation>
    <translation id="telephony_alias_portability_order_step_4" qtlid="461133">Finalisation</translation>
+
+   <translation id="telephony_alias_portability_order_number_category">Catégorie du numéro spécial</translation>
 </translations>

@@ -11,11 +11,11 @@
 
    <translation id="sms_senders_sr_only_actions" qtlid="72809">Ações</translation>
 
-   <translation id="sms_senders_referer_custom" qtlid="50062">Personalizável</translation>
+   <translation id="sms_senders_referer_custom" qtlid="50062">Personalizado</translation>
    <translation id="sms_senders_referer_domain" qtlid="340588">Domaine OVH</translation>
    <translation id="sms_senders_referer_line" qtlid="42802">Linha</translation>
    <translation id="sms_senders_referer_nic" qtlid="340601">Donnée personnelle</translation>
-   <translation id="sms_senders_referer_owner" qtlid="30634">Proprietário</translation>
+   <translation id="sms_senders_referer_owner" qtlid="30634">Titular</translation>
    <translation id="sms_senders_referer_virtual" qtlid="360229">Numéro virtuel</translation>
 
    <translation id="sms_senders_status_disable" qtlid="24967">Desativado</translation>

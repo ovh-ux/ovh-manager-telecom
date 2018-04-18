@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <translations>
-   <translation id="xdsl_modem_wifi_status_enable" qtlid="311414">Activar el wifi</translation>
-   <translation id="xdsl_modem_detault_wifi_status_enable" qtlid="456193">Activer le Wi-Fi par défaut</translation>
-   <translation id="xdsl_modem_wifi_status_disable" qtlid="456206">Désactiver le Wi-Fi</translation>
-   <translation id="xdsl_modem_default_wifi_status_disable" qtlid="456219">Désactiver le Wi-Fi par défaut</translation>
+   <translation id="xdsl_modem_wifi_status_enabled">Wi-Fi activé</translation>
+   <translation id="xdsl_modem_detault_wifi_status_enabled">Wi-Fi activé par défaut</translation>
+   <translation id="xdsl_modem_wifi_status_disabled">Wi-Fi désactivé</translation>
+   <translation id="xdsl_modem_default_wifi_status_disabled">Wi-Fi désactivé par défaut</translation>
    <translation id="xdsl_modem_wifi_description" qtlid="311427">El modo wifi permite configurar la red inalámbrica del módem para que puedan conectarse a ella sus dispositivos inalámbricos.</translation>
 
    <translation id="xdsl_modem_wifi_success_validation_on" qtlid="311440">Activando el wifi...</translation>

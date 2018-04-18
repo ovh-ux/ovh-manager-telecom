@@ -2,7 +2,7 @@
 <translations>
    <translation id="sms_receivers_manage_title" qtlid="339587">Gérer les destinataires</translation>
 
-   <translation id="sms_receivers_label_description" qtlid="3818">Nome</translation>
+   <translation id="sms_receivers_label_description" qtlid="3818">Apelido</translation>
    <translation id="sms_receivers_label_date" qtlid="339600">Date d’ajout</translation>
    <translation id="sms_receivers_label_records" qtlid="339613">Nombre de contacts</translation>
    <translation id="sms_receivers_label_auto_update" qtlid="339626">Mise à jour auto</translation>
@@ -11,7 +11,7 @@
 
    <translation id="sms_receivers_action_read" qtlid="339639">Consulter</translation>
    <translation id="sms_receivers_action_clean" qtlid="339652">Nettoyer</translation>
-   <translation id="sms_receivers_action_export" qtlid="39286">Fazer o download</translation>
+   <translation id="sms_receivers_action_export" qtlid="39286">Transferir</translation>
 
    <translation id="sms_receivers_information_title" qtlid="26551">Informações</translation>
    <translation id="sms_receivers_information_text_1" qtlid="394738">Vous avez la possibilité de créer jusqu’à 9 listes de contacts par le biais de fichiers textes ou <em>.csv</em>.</translation>
