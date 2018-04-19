@@ -29,7 +29,7 @@
                             data-uib-tooltip="{{ 'telephony_abbreviated_numbers_add_tooltip' | translate}}"
                             data-tooltip-placement="right"
                             data-tooltip-append-to-body="true"
-                            data-ng-disabled="$ctrl.loading.init"
+                            data-ng-disabled="$ctrl.loading"
                             data-translate="common_add">
                     </button>
                 </li>
@@ -41,7 +41,7 @@
                        data-ng-csv="$ctrl.abbreviatedNumbers"
                        data-csv-header="$ctrl.getCsvHeader()"
                        data-csv-column-order="$ctrl.getCsvOrder()"
-                       data-ng-disabled="$ctrl.loading.init || !$ctrl.abbreviatedNumbers.length"
+                       data-ng-disabled="$ctrl.loading || !$ctrl.abbreviatedNumbers.length"
                        data-uib-tooltip="{{ 'telephony_abbreviated_numbers_export_tooltip' | translate}}"
                        data-tooltip-placement="right"
                        data-tooltip-append-to-body="true"
@@ -57,7 +57,7 @@
                             data-uib-tooltip="{{ 'telephony_abbreviated_numbers_import_tooltip' | translate}}"
                             data-tooltip-placement="right"
                             data-tooltip-append-to-body="true"
-                            data-ng-disabled="$ctrl.loading.init"
+                            data-ng-disabled="$ctrl.loading"
                             data-translate="telephony_abbreviated_numbers_import_label">
                     </button>
                 </li>
@@ -69,7 +69,7 @@
                             data-uib-tooltip="{{ 'telephony_abbreviated_numbers_trash_all_tooltip' | translate}}"
                             data-tooltip-append-to-body="true"
                             data-tooltip-placement="right"
-                            data-ng-disabled="$ctrl.loading.init || !$ctrl.abbreviatedNumbers.length"
+                            data-ng-disabled="$ctrl.loading || !$ctrl.abbreviatedNumbers.length"
                             data-translate="telephony_abbreviated_numbers_trash_all_label">
                     </button>
                 </li>
@@ -109,5 +109,4 @@
         </oui-action-menu>
 
     </oui-datagrid>
-
 </div>
