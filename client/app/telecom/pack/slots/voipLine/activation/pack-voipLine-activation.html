@@ -38,10 +38,10 @@
                 data-ng-if="PackVoipLineActivationCtrl.orderCount.value">
                 <!-- Text -->
                 <div class="my-3" data-ng-if="!PackVoipLineActivationCtrl.loading || PackVoipLineActivationCtrl.modem.linesOnModem === 0">
-                    <p data-ng-if="PackVoipLineActivationCtrl.orderCountSelect.length > 1"
-                        data-translate="telefony_activation_add_line_intro_multiline"></p>
                     <p data-ng-if="PackVoipLineActivationCtrl.orderCountSelect.length > PackVoipLineActivationCtrl.modem.linesOnModem">
-                        <span class="ovh-font ovh-font-warning text-warning" aria-hidden="true"></span>
+                        <span class="ovh-font ovh-font-warning text-warning" aria-hidden="true" data-ng-if="PackVoipLineActivationCtrl.orderCountSelect.length > 1"></span>
+                        <span data-ng-if="PackVoipLineActivationCtrl.orderCountSelect.length > 1"
+                            data-translate="telefony_activation_add_line_intro_multiline"></span>
                         <span data-ng-if="PackVoipLineActivationCtrl.modem.linesOnModem === 1" data-translate="telefony_activation_widget_line_on_modem"></span>
                         <span data-ng-if="PackVoipLineActivationCtrl.modem.linesOnModem > 1"
                             data-translate="telefony_activation_widget_lines_on_modem"
