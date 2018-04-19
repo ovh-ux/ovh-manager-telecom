@@ -1,3 +1,36 @@
+<a name="10.2.0"></a>
+# [10.2.0](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.1.0...v10.2.0) (2018-04-19)
+
+
+### Bug Fixes
+
+* center row value ([c5e5331](https://github.com/ovh-ux/ovh-manager-telecom/commit/c5e5331))
+* **alias:** add error message if menu cannot be deleted ([bab5480](https://github.com/ovh-ux/ovh-manager-telecom/commit/bab5480))
+* PR feedback & update type, cta of hits ([f3e750a](https://github.com/ovh-ux/ovh-manager-telecom/commit/f3e750a))
+* PR feedback & update type, cta of hits ([66ab503](https://github.com/ovh-ux/ovh-manager-telecom/commit/66ab503))
+* **abbrev numbers:** fix reload oui-datagrid component ([b6cfc3b](https://github.com/ovh-ux/ovh-manager-telecom/commit/b6cfc3b))
+* **at-internet:** fix type param of hit tracking ([f9504b6](https://github.com/ovh-ux/ovh-manager-telecom/commit/f9504b6))
+* **at-internet:** fix type param of hit tracking ([ce70be9](https://github.com/ovh-ux/ovh-manager-telecom/commit/ce70be9))
+* **css -popover:** set hidden overflow to back from translated div ([47e4474](https://github.com/ovh-ux/ovh-manager-telecom/commit/47e4474))
+* **me-alerts:** fix bad links to billing statements ([f1cd5a7](https://github.com/ovh-ux/ovh-manager-telecom/commit/f1cd5a7))
+* **menu:** delete api detail error duplicate information ([e26740b](https://github.com/ovh-ux/ovh-manager-telecom/commit/e26740b))
+* **pack:** fix display of gtr price pack migration ([b52801e](https://github.com/ovh-ux/ovh-manager-telecom/commit/b52801e))
+* **pack:** fix select, dropdown menu and icons ([1571d34](https://github.com/ovh-ux/ovh-manager-telecom/commit/1571d34))
+* **pack:** fix warning icon and text multiple lines to activate ([0e83e45](https://github.com/ovh-ux/ovh-manager-telecom/commit/0e83e45))
+* **popover:** set section position relative to handle scroll ([ba54aa4](https://github.com/ovh-ux/ovh-manager-telecom/commit/ba54aa4))
+* **service contact:** fix missing way informations ([7f9e50a](https://github.com/ovh-ux/ovh-manager-telecom/commit/7f9e50a))
+* **sms:** resolve $title with implicit return ([2efc4e4](https://github.com/ovh-ux/ovh-manager-telecom/commit/2efc4e4))
+* **trunk:** trunk packs simultaneous lines ([c41af2b](https://github.com/ovh-ux/ovh-manager-telecom/commit/c41af2b))
+* **xdsl:** use of synchro values in place of estimated rate ([596e5ac](https://github.com/ovh-ux/ovh-manager-telecom/commit/596e5ac))
+
+
+### Features
+
+* **atInternet:** update tracking ([a67302d](https://github.com/ovh-ux/ovh-manager-telecom/commit/a67302d))
+* **atInternet:** update tracking ([50bb138](https://github.com/ovh-ux/ovh-manager-telecom/commit/50bb138))
+
+
+
 <a name="10.1.0"></a>
 # [10.1.0](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.0.2...v10.1.0) (2018-04-11)
 
