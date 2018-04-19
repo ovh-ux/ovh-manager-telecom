@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <translations>
-   <translation id="xdsl_modem_wifi_status_enable" qtlid="311414">Įjungti Wi-Fi</translation>
-   <translation id="xdsl_modem_detault_wifi_status_enable" qtlid="456193">Activer le Wi-Fi par défaut</translation>
-   <translation id="xdsl_modem_wifi_status_disable" qtlid="456206">Désactiver le Wi-Fi</translation>
-   <translation id="xdsl_modem_default_wifi_status_disable" qtlid="456219">Désactiver le Wi-Fi par défaut</translation>
+   <translation id="xdsl_modem_wifi_status_enabled" qtlid="479330">Wi-Fi activé</translation>
+   <translation id="xdsl_modem_detault_wifi_status_enabled" qtlid="479343">Wi-Fi activé par défaut</translation>
+   <translation id="xdsl_modem_wifi_status_disabled" qtlid="479356">Wi-Fi désactivé</translation>
+   <translation id="xdsl_modem_default_wifi_status_disabled" qtlid="479369">Wi-Fi désactivé par défaut</translation>
    <translation id="xdsl_modem_wifi_description" qtlid="311427">Wi-Fi režimas leidžia konfigūruoti tinklą nenaudojant kabelių, nes įranga prijungiama bevieliu būdu.</translation>
 
    <translation id="xdsl_modem_wifi_success_validation_on" qtlid="311440">Wi-Fi įjungiamas</translation>

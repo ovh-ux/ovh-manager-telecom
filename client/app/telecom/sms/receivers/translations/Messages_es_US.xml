@@ -13,7 +13,7 @@
    <translation id="sms_receivers_action_clean" qtlid="339652">Nettoyer</translation>
    <translation id="sms_receivers_action_export" qtlid="39286">Télécharger</translation>
 
-   <translation id="sms_receivers_information_title" qtlid="26551">Informaciones</translation>
+   <translation id="sms_receivers_information_title" qtlid="26551">Información</translation>
    <translation id="sms_receivers_information_text_1" qtlid="394738">Vous avez la possibilité de créer jusqu’à 9 listes de contacts par le biais de fichiers textes ou <em>.csv</em>.</translation>
    <translation id="sms_receivers_information_text_1_guide_start" qtlid="394751">Vous pouvez consulter le guide sur la</translation>
    <translation id="sms_receivers_information_text_1_guide_end" qtlid="394764">liste de destinataires</translation>

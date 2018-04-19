@@ -20,20 +20,4 @@
 
    <translation id="telephony_order_special_order_success" qtlid="333516">L'ordine dei numeri geografici è stato effettuato. Ti preghiamo di saldare il tuo ordine.</translation>
    <translation id="telephony_order_special_range_error" qtlid="346885">Impossibile caricare gli intervalli di numeri.</translation>
-   <translation id="telephony_order_specific_typology_error" qtlid="346898">Impossibile caricare le tipologie di numeri.</translation>
-
-   <translation id="telephony_order_specific_typology_access_label" qtlid="346911">Servizi che forniscono codici di accesso</translation>
-   <translation id="telephony_order_specific_typology_announced_label" qtlid="346924">Annunci</translation>
-   <translation id="telephony_order_specific_typology_conferencing_label" qtlid="346937">Servizi di telefonia/teleconferenza</translation>
-   <translation id="telephony_order_specific_typology_contentsAuto_label" qtlid="346950">Modifica dei contenuti automatizzata, consegnati automaticamente</translation>
-   <translation id="telephony_order_specific_typology_contentsManual_label" qtlid="346963">Modifica del contenuto dei servizi consegnati da persone fisiche qualificate</translation>
-   <translation id="telephony_order_specific_typology_games_label" qtlid="346976">Giochi</translation>
-   <translation id="telephony_order_specific_typology_linking_label" qtlid="346989">Servizi di messa in contatto</translation>
-   <translation id="telephony_order_specific_typology_m2m_label" qtlid="347002">Servizi Machine to Machine</translation>
-   <translation id="telephony_order_specific_typology_relationship_label" qtlid="347015">Rapporto azienda-cliente/amministrazione/associazione</translation>
-
-   <translation id="telephony_order_specific_typology_adults_label" qtlid="347028">Contenuto per adulti</translation>
-   <translation id="telephony_order_specific_typology_content_label" qtlid="347041">Suonerie, loghi</translation>
-   <translation id="telephony_order_specific_typology_general_label" qtlid="69341">Generale</translation>
-   <translation id="telephony_order_specific_typology_relaxing_label" qtlid="347054">Servizi ricreativi</translation>
 </translations>

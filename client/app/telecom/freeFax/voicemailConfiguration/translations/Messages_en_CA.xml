@@ -4,7 +4,7 @@
    <translation id="freefax_voicemail_parameters" qtlid="307163">Paramètres du répondeur</translation>
    <translation id="freefax_voicemail_activation" qtlid="307176">Activer le répondeur</translation>
    <translation id="freefax_voicemail_password" qtlid="307189">Mot de passe (4 chiffres)</translation>
-   <translation id="freefax_voicemail_change_password" qtlid="80394">Change the password</translation>
+   <translation id="freefax_voicemail_change_password" qtlid="80394">Change password</translation>
    <translation id="freefax_voicemail_change_password_confirm" qtlid="31498">Confirm</translation>
    <translation id="freefax_voicemail_ask_password" qtlid="307202">Mot de passe de messagerie</translation>
    <translation id="freefax_voicemail_always_ask_password" qtlid="307215">Toujours demander le mot de passe</translation>

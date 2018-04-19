@@ -15,6 +15,15 @@
    <translation id="common_pagination_ofnresults" qtlid="452982">de TOTAL_ITEMS resultados</translation>
    <translation id="common_pagination_currentpageofpagecount" qtlid="452995">Página CURRENT_PAGE de PAGE_COUNT</translation>
 
+   <translation id="common_field_error_required" qtlid="472294">Debe llenar este campo.</translation>
+   <translation id="common_field_error_number" qtlid="472307">Debe introducir un valor numérico válido.</translation>
+   <translation id="common_field_error_email" qtlid="472320">Debe introducir una dirección de correo electrónico válida.</translation>
+   <translation id="common_field_error_min" qtlid="472333">Debe introducir un valor mayor o igual a {{min}}.</translation>
+   <translation id="common_field_error_max" qtlid="472346">Debe introducir un valor menor o igual a {{max}}.</translation>
+   <translation id="common_field_error_minlength" qtlid="472359">Debe introducir {{minlength}} caracteres como mínimo.</translation>
+   <translation id="common_field_error_maxlength" qtlid="472372">Debe introducir {{maxlength}} caracteres como máximo.</translation>
+   <translation id="common_field_error_pattern" qtlid="472385">Debe introducir un formato válido.</translation>
+
    <translation id="yes" qtlid="50134">oui</translation>
    <translation id="common_yes_capitalized" qtlid="34776">Oui</translation>
    <translation id="no" qtlid="50602">non</translation>
@@ -26,6 +35,8 @@
    <translation id="hide" qtlid="26539">Cacher</translation>
    <translation id="common_add" qtlid="37923">Añadir</translation>
    <translation id="common_actions" qtlid="72809">Actions</translation>
+
+   <translation id="common_between_and" qtlid="479252">Entre {{between}} et {{and}}</translation>
 
    <translation id="common_search" qtlid="37659">Rechercher</translation>
 
@@ -40,6 +51,7 @@
    <translation id="submit" qtlid="26047">Valider</translation>
    <translation id="edit" qtlid="6766">Éditer</translation>
    <translation id="modify" qtlid="37875">Modifier</translation>
+   <translation id="common_add" qtlid="37923">Añadir</translation>
    <translation id="access" qtlid="304524">Acceder</translation>
    <translation id="edit_name" qtlid="304537">Editar {{name}}</translation>
    <translation id="common_create" qtlid="39226">Créer</translation>
@@ -132,9 +144,26 @@
    <translation id="common_menu_support_assistance" qtlid="52699">Assistance</translation>
    <translation id="common_menu_v3" qtlid="135931">Antiguo panel de control</translation>
    <translation id="common_menu_billing" qtlid="32950">Facturation</translation>
+   <translation id="common_menu_billing_history" qtlid="159540">Mis facturas</translation>
+   <translation id="common_menu_billing_payments" qtlid="398781">Monitoreo de los pagos</translation>
    <translation id="common_menu_language" qtlid="30598">Langue</translation>
    <translation id="common_menu_account" qtlid="157642">Mi cuenta</translation>
+   <translation id="common_menu_account_infos" qtlid="405499">Mi perfil</translation>
+   <translation id="common_menu_account_security" qtlid="125420">Sécurité</translation>
+   <translation id="common_menu_account_emails" qtlid="266118">Emails recibidos</translation>
+   <translation id="common_menu_account_subscriptions" qtlid="144708">Mis suscripciones</translation>
+   <translation id="common_menu_account_ssh" qtlid="165897">Mis claves SSH</translation>
+   <translation id="common_menu_account_advanced" qtlid="39958">Paramètres avancés</translation>
+   <translation id="common_menu_means" qtlid="90049">Moyens de paiement</translation>
+   <translation id="common_menu_means_mean" qtlid="139949">Mis formas de pago</translation>
+   <translation id="common_menu_means_ovhaccount" qtlid="366826">Mi cuenta prepagada</translation>
+   <translation id="common_menu_means_vouchers" qtlid="270917">Mis códigos promocionales</translation>
+   <translation id="common_menu_means_refunds" qtlid="139923">Mis devoluciones</translation>
+   <translation id="common_menu_means_fidelity" qtlid="260606">Área de fidelidad</translation>
+   <translation id="common_menu_means_credits" qtlid="448907">Mi crédito</translation>
    <translation id="common_menu_renew" qtlid="229658">Mis servicios</translation>
+   <translation id="common_menu_renew_management" qtlid="287527">Gestionar mis servicios</translation>
+   <translation id="common_menu_renew_agreements" qtlid="204350">Mis contratos</translation>
    <translation id="common_menu_orders_all" qtlid="282809">Mis pedidos</translation>
    <translation id="common_menu_contacts" qtlid="70541">Mis contactos</translation>
    <translation id="common_menu_list_ticket" qtlid="454039">Mis solicitudes de asistencia</translation>

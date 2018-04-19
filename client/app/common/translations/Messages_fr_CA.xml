@@ -15,6 +15,15 @@
    <translation id="common_pagination_ofnresults" qtlid="452982">sur TOTAL_ITEMS résultats</translation>
    <translation id="common_pagination_currentpageofpagecount" qtlid="452995">Page CURRENT_PAGE sur PAGE_COUNT</translation>
 
+   <translation id="common_field_error_required" qtlid="472294">Veuillez compléter ce champ.</translation>
+   <translation id="common_field_error_number" qtlid="472307">Veuillez saisir une valeur numérique valide.</translation>
+   <translation id="common_field_error_email" qtlid="472320">Veuillez saisir une adresse courriel valide.</translation>
+   <translation id="common_field_error_min" qtlid="472333">Veuillez saisir une valeur plus grande ou égale à {{min}}.</translation>
+   <translation id="common_field_error_max" qtlid="472346">Veuillez saisir une valeur plus petite ou égale à {{max}}.</translation>
+   <translation id="common_field_error_minlength" qtlid="472359">Veuillez saisir un minimum de {{minlength}} caractères.</translation>
+   <translation id="common_field_error_maxlength" qtlid="472372">Veuillez saisir un maximum de {{maxlength}} caractères.</translation>
+   <translation id="common_field_error_pattern" qtlid="472385">Veuillez saisir un format valide.</translation>
+
    <translation id="yes" qtlid="50134">oui</translation>
    <translation id="common_yes_capitalized" qtlid="34776">Oui</translation>
    <translation id="no" qtlid="50602">non</translation>
@@ -26,6 +35,8 @@
    <translation id="hide" qtlid="26539">Cacher</translation>
    <translation id="common_add" qtlid="37923">Ajouter</translation>
    <translation id="common_actions" qtlid="72809">Actions</translation>
+
+   <translation id="common_between_and" qtlid="479252">Entre {{between}} et {{and}}</translation>
 
    <translation id="common_search" qtlid="37659">Rechercher</translation>
 
@@ -40,13 +51,14 @@
    <translation id="submit" qtlid="26047">Valider</translation>
    <translation id="edit" qtlid="6766">Éditer</translation>
    <translation id="modify" qtlid="37875">Modifier</translation>
+   <translation id="common_add" qtlid="37923">Ajouter</translation>
    <translation id="access" qtlid="304524">Accéder</translation>
    <translation id="edit_name" qtlid="304537">Éditer {{name}}</translation>
    <translation id="common_create" qtlid="39226">Créer</translation>
    <translation id="cancel" qtlid="37863">Annuler</translation>
    <translation id="delete" qtlid="2414">Supprimer</translation>
    <translation id="delete_name" qtlid="304550">Supprimer {{name}}</translation>
-   <translation id="ok" qtlid="224880">Ok</translation>
+   <translation id="ok" qtlid="224880">OK</translation>
    <translation id="more_info" qtlid="34102">Plus d'informations</translation>
    <translation id="configure" qtlid="4010">Configurer</translation>
    <translation id="none" qtlid="8674">Aucune</translation>
@@ -78,7 +90,7 @@
    <translation id="back_my_access" qtlid="82449">Accès</translation>
 
    <translation id="sidebar_menu" qtlid="304576">Menu</translation>
-   <translation id="sidebar_placeholder" qtlid="122275">Recherche...</translation>
+   <translation id="sidebar_placeholder" qtlid="122275">Recherche…</translation>
    <translation id="sidebar_no_item_found" qtlid="304589">Aucun élément ne correspond à votre recherche.</translation>
 
 
@@ -132,9 +144,26 @@
    <translation id="common_menu_support_assistance" qtlid="52699">Assistance</translation>
    <translation id="common_menu_v3" qtlid="135931">Ancienne interface client</translation>
    <translation id="common_menu_billing" qtlid="32950">Facturation</translation>
+   <translation id="common_menu_billing_history" qtlid="159540">Mes factures</translation>
+   <translation id="common_menu_billing_payments" qtlid="398781">Suivi des paiements</translation>
    <translation id="common_menu_language" qtlid="30598">Langue</translation>
    <translation id="common_menu_account" qtlid="157642">Mon compte</translation>
+   <translation id="common_menu_account_infos" qtlid="405499">Mon profil</translation>
+   <translation id="common_menu_account_security" qtlid="125420">Sécurité</translation>
+   <translation id="common_menu_account_emails" qtlid="266118">Emails reçus</translation>
+   <translation id="common_menu_account_subscriptions" qtlid="144708">Mes abonnements</translation>
+   <translation id="common_menu_account_ssh" qtlid="165897">Mes clés SSH</translation>
+   <translation id="common_menu_account_advanced" qtlid="39958">Paramètres avancés</translation>
+   <translation id="common_menu_means" qtlid="90049">Moyens de paiement</translation>
+   <translation id="common_menu_means_mean" qtlid="139949">Mes moyens de paiement</translation>
+   <translation id="common_menu_means_ovhaccount" qtlid="366826">Mon compte prépayé</translation>
+   <translation id="common_menu_means_vouchers" qtlid="270917">Mes vouchers</translation>
+   <translation id="common_menu_means_refunds" qtlid="139923">Mes avoirs</translation>
+   <translation id="common_menu_means_fidelity" qtlid="260606">Mon espace fidélité</translation>
+   <translation id="common_menu_means_credits" qtlid="448907">Mes crédits</translation>
    <translation id="common_menu_renew" qtlid="229658">Mes services</translation>
+   <translation id="common_menu_renew_management" qtlid="287527">Gérer mes services</translation>
+   <translation id="common_menu_renew_agreements" qtlid="204350">Mes contrats</translation>
    <translation id="common_menu_orders_all" qtlid="282809">Mes commandes</translation>
    <translation id="common_menu_contacts" qtlid="70541">Mes contacts</translation>
    <translation id="common_menu_list_ticket" qtlid="454039">Mes demandes d’assistance</translation>
@@ -350,7 +379,7 @@
    <translation id="country_KW" qtlid="188262">Koweït</translation>
    <translation id="country_KY" qtlid="188275">Caïmanes, Îles</translation>
    <translation id="country_KZ" qtlid="188288">Kazakhstan</translation>
-   <translation id="country_LA" qtlid="188301">Lao, République Démocratique Populaire -</translation>
+   <translation id="country_LA" qtlid="188301">Lao, République Démocratique Populaire</translation>
    <translation id="country_LB" qtlid="188314">Liban</translation>
    <translation id="country_LC" qtlid="188327">Sainte-Lucie</translation>
    <translation id="country_LI" qtlid="188340">Liechtenstein</translation>

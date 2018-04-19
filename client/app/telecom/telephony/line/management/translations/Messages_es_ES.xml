@@ -11,6 +11,7 @@
    <translation id="telephony_line_management_actions_line_bannMaker" qtlid="333295">Generador de cartucho</translation>
    <translation id="telephony_line_management_actions_line_to_number" qtlid="338118">Convertir la línea en número</translation>
    <translation id="telephony_line_management_actions_line_delete_line_new" qtlid="338131">Baja de la línea</translation>
+   <translation id="telephony_line_management_actions_line_mgcp_ip_restriction" qtlid="336831">Restricción MGCP por IP</translation>
    <translation id="telephony_line_management_actions_line_password_canchange_error" qtlid="387497">No es posible autorizar el cambio de contraseña SIP.</translation>
    <translation id="telephony_line_management_actions_line_password_canchange_SIP_error" qtlid="387510">Solo se puede cambiar la contraseña en una línea SIP.</translation>
    <translation id="telephony_line_management_actions_line_password_canchange_plugnphone_error" qtlid="387523">No es posible cambiar la contraseña en un Plug'N'Phone.</translation>

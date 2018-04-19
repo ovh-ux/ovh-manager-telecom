@@ -9,7 +9,7 @@
    <translation id="sms_tabs_senders" qtlid="40490">Absender</translation>
    <translation id="sms_tabs_api_users" qtlid="339431">Utilisateurs API</translation>
    <translation id="sms_tabs_options" qtlid="23395">Optionen</translation>
-   <translation id="sms_tabs_guides" qtlid="300370">Hilfen</translation>
+   <translation id="sms_tabs_guides" qtlid="300370">Anleitungen</translation>
 
    <translation id="sms_rename_error" qtlid="317633">Impossible de renommer votre pack {{serviceName}}.</translation>
    <translation id="sms_loading_error" qtlid="463356">Une erreur est survenue lors du chargement de SMS</translation>

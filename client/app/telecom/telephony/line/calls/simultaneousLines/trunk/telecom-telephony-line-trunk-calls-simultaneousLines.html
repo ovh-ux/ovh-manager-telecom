@@ -53,7 +53,7 @@
                             <div class="row">
                                 <label class="control-label col-md-4"
                                        data-translate="telephony_line_actions_line_calls_trunk_simultaneous_current_channels_price"></label>
-                                <div class="col-md-3">
+                                <div class="col-md-8">
                                     <p class="form-control-static p-0 font-weight-bold"
                                        data-ng-bind="TrunkRatesSimultaneousLinesCtrl.trunkRates.current.price"></p>
                                 </div>
@@ -67,7 +67,10 @@
                                     <p class="form-control-static p-0 font-weight-bold"
                                        data-ng-bind="TrunkRatesSimultaneousLinesCtrl.trunkRates.current.price"></p>
                                 </div>
+                            </div>
 
+                            <div class="row"
+                                data-ng-if="TrunkRatesSimultaneousLinesCtrl.trunkRates.pending.price">
                                 <label class="control-label col-md-4"
                                        data-translate="telephony_line_actions_line_calls_trunk_simultaneous_pending_channels_price"></label>
                                 <div class="col-md-8">
@@ -113,7 +116,7 @@
                             <div class="row">
                                 <label class="control-label col-md-4"
                                        data-translate="telephony_line_actions_line_calls_trunk_simultaneous_new_channels_price"></label>
-                                <div class="col-md-3">
+                                <div class="col-md-8">
                                     <p class="form-control-static p-0 font-weight-bold"
                                        data-ng-bind="TrunkRatesSimultaneousLinesCtrl.trunkRates.change.price"></p>
                                 </div>
@@ -122,7 +125,7 @@
                             <div class="row">
                                 <label class="control-label col-md-4"
                                        data-translate="telephony_line_actions_line_calls_trunk_simultaneous_new_channels_minimum_bandwidth_recommended"></label>
-                                <div class="col-md-3">
+                                <div class="col-md-8">
                                     <p class="form-control-static p-0 font-weight-bold"
                                        data-translate="telephony_line_actions_line_calls_trunk_simultaneous_channels_bandwidth_rate"
                                        data-translate-values="{ bandwidth: TrunkRatesSimultaneousLinesCtrl.trunkRates.change.bandwidth }"></p>
@@ -148,7 +151,7 @@
                                 data-translate="telephony_line_actions_line_calls_trunk_simultaneous_channels_repartition_title">
                             </h2>
                         </header>
-                        <div class="form-group chart-container" 
+                        <div class="form-group chart-container"
                             data-ng-if="!TrunkRatesSimultaneousLinesCtrl.charts.loading">
                             <p data-chartjs="TrunkRatesSimultaneousLinesCtrl.chart"></p>
                         </div>

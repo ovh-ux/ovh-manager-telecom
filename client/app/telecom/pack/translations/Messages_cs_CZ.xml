@@ -20,6 +20,11 @@
    <translation id="pack_xdsl_hubic_domain" qtlid="8458">Doména</translation>
    <translation id="pack_xdsl_hubic_size" qtlid="7726">Velikost</translation>
    <translation id="pack_xdsl_hubic_voucher" qtlid="308554">(Code : {{voucher}})</translation>
+   <translation id="pack_xdsl_hubic_is_used" qtlid="479265">Déja utilisé</translation>
+   <translation id="pack_xdsl_hubic_used_voucher_pending_details" qtlid="479278">Récupération des données...</translation>
+   <translation id="pack_xdsl_hubic_used_email" qtlid="479291">Adresse email : {{email}}</translation>
+   <translation id="pack_xdsl_hubic_used_email_unavailable" qtlid="479304">Donnée indisponible</translation>
+   <translation id="pack_xdsl_hubic_domain_details_error" qtlid="479317">Une erreur est survenue lors de la récupération du détail des domaines</translation>
    <translation id="xdslAccess" qtlid="305603">Accès Internet</translation>
    <translation id="xdslAccess_default_sidebar_title" qtlid="308476">Mes accès</translation>
    <translation id="voipLine" qtlid="29299">Telefonie</translation>
@@ -68,7 +73,7 @@
    <translation id="still_pending" qtlid="308892">en cours de création</translation>
 
 <!-- EX-EMAIL -->
-   <translation id="account_name" qtlid="33598">E-mail</translation>
+   <translation id="account_name" qtlid="33598">E-mailová adresa</translation>
    <translation id="password" qtlid="2270">Heslo</translation>
    <translation id="password_confirmation" qtlid="9983">Potvrzení hesla</translation>
    <translation id="all_fields_are_required" qtlid="297579">Všechna pole jsou povinná</translation>

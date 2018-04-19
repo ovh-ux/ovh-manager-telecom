@@ -14,15 +14,20 @@
    <translation id="pack_xdsl_access_services_0" qtlid="308541">Sem acesso</translation>
    <translation id="pack_xdsl_access_description" qtlid="9238">Descrição </translation>
    <translation id="pack_xdsl_access_type" qtlid="2642">Tipo</translation>
-   <translation id="pack_xdsl_access_accessName" qtlid="46792">Identificador</translation>
+   <translation id="pack_xdsl_access_accessName" qtlid="46792">ID utilizador</translation>
    <translation id="pack_xdsl_voipLine_domain" qtlid="8458">Domínio</translation>
    <translation id="pack_xdsl_voipLine_billingAccount" qtlid="33862">Conta</translation>
    <translation id="pack_xdsl_hubic_domain" qtlid="8458">Domínio</translation>
-   <translation id="pack_xdsl_hubic_size" qtlid="7726">Tamanho</translation>
+   <translation id="pack_xdsl_hubic_size" qtlid="7726">Dimensão</translation>
    <translation id="pack_xdsl_hubic_voucher" qtlid="308554">(Code : {{voucher}})</translation>
+   <translation id="pack_xdsl_hubic_is_used" qtlid="479265">Déja utilisé</translation>
+   <translation id="pack_xdsl_hubic_used_voucher_pending_details" qtlid="479278">Récupération des données...</translation>
+   <translation id="pack_xdsl_hubic_used_email" qtlid="479291">Adresse email : {{email}}</translation>
+   <translation id="pack_xdsl_hubic_used_email_unavailable" qtlid="479304">Donnée indisponible</translation>
+   <translation id="pack_xdsl_hubic_domain_details_error" qtlid="479317">Une erreur est survenue lors de la récupération du détail des domaines</translation>
    <translation id="xdslAccess" qtlid="305603">Accès Internet</translation>
    <translation id="xdslAccess_default_sidebar_title" qtlid="308476">Mes accès</translation>
-   <translation id="voipLine" qtlid="29299">Serviço de Telefone</translation>
+   <translation id="voipLine" qtlid="29299">Serviço Telefónico</translation>
    <translation id="domain" qtlid="66428">Domínio</translation>
    <translation id="voipEcoFax" qtlid="308567">EcoFax Pro</translation>
    <translation id="hubic" qtlid="305083">HubiC</translation>
@@ -45,7 +50,7 @@
    <translation id="used_many" qtlid="308723"><strong>{{count}}</strong> utilisés</translation>
    <translation id="coming_soon" qtlid="250043">Disponível em breve</translation>
    <translation id="hostedEmail" qtlid="308736">Hosted Emails</translation>
-   <translation id="my_service" qtlid="229658">Os meus serviços</translation>
+   <translation id="my_service" qtlid="229658">Serviços</translation>
    <translation id="manage_my_pack" qtlid="308749">Gérer mon pack</translation>
    <translation id="account" qtlid="308762">compte</translation>
    <translation id="size" qtlid="308775">taille</translation>

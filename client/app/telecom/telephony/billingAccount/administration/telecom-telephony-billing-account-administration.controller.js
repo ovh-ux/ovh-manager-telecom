@@ -12,7 +12,7 @@ angular.module("managerApp").controller("TelecomTelephonyBillingAccountAdministr
     function init () {
         self.actions = [{
             name: "group_billing_options",
-            sref: "telecom.telephony.optionsGroup",
+            sref: "telecom.telephony.administration.optionsGroup",
             text: $translate.instant("telephony_group_admin_actions_group_billing_options")
         }, {
             name: "group_lines_group_change",

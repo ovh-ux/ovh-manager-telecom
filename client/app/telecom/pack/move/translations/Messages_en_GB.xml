@@ -13,8 +13,7 @@
    <translation id="pack_move_meeting_slots" qtlid="312597">Rendez-vous France Telecom</translation>
    <translation id="pack_move_eligibility_phone_form_error" qtlid="312610">Le numéro entré doit être valide et ne doit pas contenir de tirets ou d'espaces</translation>
    <translation id="pack_move_eligibility_subtitle" qtlid="105634">You are eligible for the following unbundling:</translation>
-   <translation id="pack_move_eligibility_synchronisation_title" qtlid="312623">Synchronisation :</translation>
-   <translation id="pack_move_eligibility_estimated_rate_title" qtlid="312636">Débit estimé :</translation>
+   <translation id="pack_move_eligibility_synchronisation_estimated_rate_title" qtlid="479486">Débit synchronisation estimé :</translation>
    <translation id="pack_move_eligibility_synchronisation_download" qtlid="312649">Download :</translation>
    <translation id="pack_move_eligibility_synchronisation_byMonth" qtlid="312662">/month</translation>
    <translation id="pack_move_eligibility_synchronisation_nra" qtlid="312675">Cette ligne est raccordée au NRA <strong>{{name}}</strong> situé à <strong>{{distance}}</strong> mètres.</translation>
@@ -61,7 +60,7 @@
    <translation id="pack_move_eligibility_address_more" qtlid="312987">Plus de précisions</translation>
 
    <translation id="pack_move_eligibility_number" qtlid="152505">Telephone number</translation>
-   <translation id="pack_move_eligibility_zipcode" qtlid="30346">Post code</translation>
+   <translation id="pack_move_eligibility_zipcode" qtlid="30346">Postcode</translation>
    <translation id="pack_move_eligibility_city" qtlid="33310">City</translation>
    <translation id="pack_move_eligibility_street" qtlid="152518">Street</translation>
    <translation id="pack_move_eligibility_street_number" qtlid="30778">Number</translation>
