@@ -13,7 +13,7 @@
    <translation id="pack_move_meeting_slots" qtlid="312597">Accedi a France Telecom</translation>
    <translation id="pack_move_eligibility_phone_form_error" qtlid="312610">Il numero inserito deve essere valido e non deve contenere trattini o spazi</translation>
    <translation id="pack_move_eligibility_subtitle" qtlid="105634">Hai diritto al tipo di disaggregazione seguente:</translation>
-   <translation id="pack_move_eligibility_synchronisation_estimated_rate_title">Débit synchronisation estimé :</translation>
+   <translation id="pack_move_eligibility_synchronisation_estimated_rate_title" qtlid="479486">Débit synchronisation estimé :</translation>
    <translation id="pack_move_eligibility_synchronisation_download" qtlid="312649">Download:</translation>
    <translation id="pack_move_eligibility_synchronisation_byMonth" qtlid="312662">/mese</translation>
    <translation id="pack_move_eligibility_synchronisation_nra" qtlid="312675">Questa linea è collegata all'NRA <strong>{{name}}</strong> situato a <strong>{{distance}}</strong> metri.</translation>

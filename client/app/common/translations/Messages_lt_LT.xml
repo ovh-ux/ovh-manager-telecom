@@ -15,14 +15,14 @@
    <translation id="common_pagination_ofnresults" qtlid="452982">viso rezultatų: TOTAL_ITEMS </translation>
    <translation id="common_pagination_currentpageofpagecount" qtlid="452995">Puslapis CURRENT_PAGE iš PAGE_COUNT</translation>
 
-   <translation id="common_field_error_required">Veuillez compléter ce champ.</translation>
-   <translation id="common_field_error_number">Veuillez saisir une valeur numérique valide.</translation>
-   <translation id="common_field_error_email">Veuillez saisir une adresse e-mail valide.</translation>
-   <translation id="common_field_error_min">Veuillez saisir une valeur plus grande ou égale à {{min}}.</translation>
-   <translation id="common_field_error_max">Veuillez saisir une valeur plus petite ou égale à {{max}}.</translation>
-   <translation id="common_field_error_minlength">Veuillez saisir un minimum de {{minlength}} caractères.</translation>
-   <translation id="common_field_error_maxlength">Veuillez saisir un maximum de {{maxlength}} caractères.</translation>
-   <translation id="common_field_error_pattern">Veuillez saisir un format valide.</translation>
+   <translation id="common_field_error_required" qtlid="472294">Prašome užpildyti šį lauką</translation>
+   <translation id="common_field_error_number" qtlid="472307">Įveskite skaitinę reikšmę.</translation>
+   <translation id="common_field_error_email" qtlid="472320">Įveskite galiojantį el. pašto adresą.</translation>
+   <translation id="common_field_error_min" qtlid="472333">Reikšmė turi būti lygi {{min}} arba didesnė.</translation>
+   <translation id="common_field_error_max" qtlid="472346">Reikšmė turi būtų lygi {{max}} arba mažesnė.</translation>
+   <translation id="common_field_error_minlength" qtlid="472359">Įveskite bent {{minlength}} simbolius.</translation>
+   <translation id="common_field_error_maxlength" qtlid="472372">Įveskite na daugiau kaip {{maxlength}} simbolius.</translation>
+   <translation id="common_field_error_pattern" qtlid="472385">Prašome naudoti priimtiną formatą</translation>
 
    <translation id="yes" qtlid="50134">taip</translation>
    <translation id="common_yes_capitalized" qtlid="34776">Taip</translation>
@@ -36,7 +36,7 @@
    <translation id="common_add" qtlid="37923">Pridėti</translation>
    <translation id="common_actions" qtlid="72809">Veiksmai</translation>
 
-   <translation id="common_between_and">Entre {{between}} et {{and}}</translation>
+   <translation id="common_between_and" qtlid="479252">Entre {{between}} et {{and}}</translation>
 
    <translation id="common_search" qtlid="37659">Ieškoti</translation>
 
@@ -51,7 +51,7 @@
    <translation id="submit" qtlid="26047">Patvirtinti</translation>
    <translation id="edit" qtlid="6766">Redaguoti</translation>
    <translation id="modify" qtlid="37875">Keisti</translation>
-   <translation id="common_add">Ajouter</translation>
+   <translation id="common_add" qtlid="37923">Pridėti</translation>
    <translation id="access" qtlid="304524">Pereiti</translation>
    <translation id="edit_name" qtlid="304537">Redaguoti {{name}}</translation>
    <translation id="common_create" qtlid="39226">Sukurti</translation>
@@ -144,26 +144,26 @@
    <translation id="common_menu_support_assistance" qtlid="52699">Pagalba</translation>
    <translation id="common_menu_v3" qtlid="135931">Ankstesnė valdymo sąsaja</translation>
    <translation id="common_menu_billing" qtlid="32950">Sąskaita</translation>
-   <translation id="common_menu_billing_history">Mes factures</translation>
-   <translation id="common_menu_billing_payments">Suivi des paiements</translation>
+   <translation id="common_menu_billing_history" qtlid="159540">Mano sąskaitos</translation>
+   <translation id="common_menu_billing_payments" qtlid="398781">Mokėjimų stebėjimas</translation>
    <translation id="common_menu_language" qtlid="30598">Kalba</translation>
    <translation id="common_menu_account" qtlid="157642">Mano paskyra</translation>
-   <translation id="common_menu_account_infos">Mon profil</translation>
-   <translation id="common_menu_account_security">Sécurité</translation>
-   <translation id="common_menu_account_emails">Emails reçus</translation>
-   <translation id="common_menu_account_subscriptions">Mes abonnements</translation>
-   <translation id="common_menu_account_ssh">Mes clés SSH</translation>
-   <translation id="common_menu_account_advanced">Paramètres avancés</translation>
-   <translation id="common_menu_means">Moyens de paiement</translation>
-   <translation id="common_menu_means_mean">Mes moyens de paiement</translation>
-   <translation id="common_menu_means_ovhaccount">Mon compte prépayé</translation>
-   <translation id="common_menu_means_vouchers">Mes vouchers</translation>
-   <translation id="common_menu_means_refunds">Mes avoirs</translation>
-   <translation id="common_menu_means_fidelity">Mon espace fidélité</translation>
-   <translation id="common_menu_means_credits">Mes crédits</translation>
+   <translation id="common_menu_account_infos" qtlid="405499">Mano profilis</translation>
+   <translation id="common_menu_account_security" qtlid="125420">Saugumas</translation>
+   <translation id="common_menu_account_emails" qtlid="266118">Gauti el. laiškai</translation>
+   <translation id="common_menu_account_subscriptions" qtlid="144708">Mano abonementai</translation>
+   <translation id="common_menu_account_ssh" qtlid="165897">Mano SSH raktai</translation>
+   <translation id="common_menu_account_advanced" qtlid="39958">Pažangūs nustatymai</translation>
+   <translation id="common_menu_means" qtlid="90049">Mokėjimo priemonės</translation>
+   <translation id="common_menu_means_mean" qtlid="139949">Mano mokėjimo priemonės</translation>
+   <translation id="common_menu_means_ovhaccount" qtlid="366826">Mano išankstinio mokėjimo paskyra</translation>
+   <translation id="common_menu_means_vouchers" qtlid="270917">Mano čekiai</translation>
+   <translation id="common_menu_means_refunds" qtlid="139923">Mano grąžinimai </translation>
+   <translation id="common_menu_means_fidelity" qtlid="260606">Mano lojalumo paskyra</translation>
+   <translation id="common_menu_means_credits" qtlid="448907">Mano kreditai</translation>
    <translation id="common_menu_renew" qtlid="229658">Mano paslaugos</translation>
-   <translation id="common_menu_renew_management">Gérer mes services</translation>
-   <translation id="common_menu_renew_agreements">Mes contrats</translation>
+   <translation id="common_menu_renew_management" qtlid="287527">Valdyti mano paslaugas</translation>
+   <translation id="common_menu_renew_agreements" qtlid="204350">Mano sutartys</translation>
    <translation id="common_menu_orders_all" qtlid="282809">Mano užsakymai</translation>
    <translation id="common_menu_contacts" qtlid="70541">Mano kontaktai</translation>
    <translation id="common_menu_list_ticket" qtlid="454039">Mano pagalbos užklausos</translation>

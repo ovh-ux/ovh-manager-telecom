@@ -13,7 +13,7 @@
    <translation id="pack_move_meeting_slots" qtlid="312597">Visite France Telecom</translation>
    <translation id="pack_move_eligibility_phone_form_error" qtlid="312610">El número introducido debe ser válido y no debe contener guiones ni espacios.</translation>
    <translation id="pack_move_eligibility_subtitle" qtlid="105634">Puede elegir entre los siguientes tipos de separación :</translation>
-   <translation id="pack_move_eligibility_synchronisation_estimated_rate_title">Débit synchronisation estimé :</translation>
+   <translation id="pack_move_eligibility_synchronisation_estimated_rate_title" qtlid="479486">Débit synchronisation estimé :</translation>
    <translation id="pack_move_eligibility_synchronisation_download" qtlid="312649">Descarga:</translation>
    <translation id="pack_move_eligibility_synchronisation_byMonth" qtlid="312662">/mes</translation>
    <translation id="pack_move_eligibility_synchronisation_nra" qtlid="312675">Esta línea está conectada al nodo de conexión de abonado <strong>{{name}}</strong> situado a <strong>{{distance}}</strong> metros.</translation>

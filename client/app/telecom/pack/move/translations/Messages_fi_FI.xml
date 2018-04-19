@@ -13,7 +13,7 @@
    <translation id="pack_move_meeting_slots" qtlid="312597">France Telecom -tapaaminen</translation>
    <translation id="pack_move_eligibility_phone_form_error" qtlid="312610">Syötetyn numeron on oltava voimassa eikä se saa sisältää väliviivoja tai välilyöntejä.</translation>
    <translation id="pack_move_eligibility_subtitle" qtlid="105634">Olet kelvollinen seuraaviin eriytystyyppeihin:</translation>
-   <translation id="pack_move_eligibility_synchronisation_estimated_rate_title">Débit synchronisation estimé :</translation>
+   <translation id="pack_move_eligibility_synchronisation_estimated_rate_title" qtlid="479486">Débit synchronisation estimé :</translation>
    <translation id="pack_move_eligibility_synchronisation_download" qtlid="312649">Download:</translation>
    <translation id="pack_move_eligibility_synchronisation_byMonth" qtlid="312662">/kuukausi</translation>
    <translation id="pack_move_eligibility_synchronisation_nra" qtlid="312675">Tämä linja on kiinnitetty NRA:han <strong>{{name}}</strong>, joka sijaitsee <strong>{{distance}}</strong> metrin päässä.</translation>

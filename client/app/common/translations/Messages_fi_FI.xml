@@ -15,14 +15,14 @@
    <translation id="common_pagination_ofnresults" qtlid="452982">/ TOTAL_ITEMS tulosta</translation>
    <translation id="common_pagination_currentpageofpagecount" qtlid="452995">Sivu CURRENT_PAGE / PAGE_COUNT</translation>
 
-   <translation id="common_field_error_required">Veuillez compléter ce champ.</translation>
-   <translation id="common_field_error_number">Veuillez saisir une valeur numérique valide.</translation>
-   <translation id="common_field_error_email">Veuillez saisir une adresse e-mail valide.</translation>
-   <translation id="common_field_error_min">Veuillez saisir une valeur plus grande ou égale à {{min}}.</translation>
-   <translation id="common_field_error_max">Veuillez saisir une valeur plus petite ou égale à {{max}}.</translation>
-   <translation id="common_field_error_minlength">Veuillez saisir un minimum de {{minlength}} caractères.</translation>
-   <translation id="common_field_error_maxlength">Veuillez saisir un maximum de {{maxlength}} caractères.</translation>
-   <translation id="common_field_error_pattern">Veuillez saisir un format valide.</translation>
+   <translation id="common_field_error_required" qtlid="472294">Ole hyvä ja täytä tämä kenttä.</translation>
+   <translation id="common_field_error_number" qtlid="472307">Syötä hyväksytty numeerinen arvo.</translation>
+   <translation id="common_field_error_email" qtlid="472320">Syötä voimassa oleva sähköpostiosoite.</translation>
+   <translation id="common_field_error_min" qtlid="472333">Veuillez saisir une valeur plus grande ou égale à {{min}}.</translation>
+   <translation id="common_field_error_max" qtlid="472346">Syötä pienempi tai yhtä suuri arvo kuin {{max}}.</translation>
+   <translation id="common_field_error_minlength" qtlid="472359">Syötä vähintään {{minlength}} merkkiä.</translation>
+   <translation id="common_field_error_maxlength" qtlid="472372">Syötä enintään {{maxlength}} merkkiä.</translation>
+   <translation id="common_field_error_pattern" qtlid="472385">Syötä hyväksytty formaatti.</translation>
 
    <translation id="yes" qtlid="50134">kyllä</translation>
    <translation id="common_yes_capitalized" qtlid="34776">Kyllä</translation>
@@ -36,7 +36,7 @@
    <translation id="common_add" qtlid="37923">Lisää</translation>
    <translation id="common_actions" qtlid="72809">Toiminnot</translation>
 
-   <translation id="common_between_and">Entre {{between}} et {{and}}</translation>
+   <translation id="common_between_and" qtlid="479252">Entre {{between}} et {{and}}</translation>
 
    <translation id="common_search" qtlid="37659">Haku</translation>
 
@@ -51,7 +51,7 @@
    <translation id="submit" qtlid="26047">Vahvista</translation>
    <translation id="edit" qtlid="6766">Muokkaa</translation>
    <translation id="modify" qtlid="37875">Muokkaa</translation>
-   <translation id="common_add">Ajouter</translation>
+   <translation id="common_add" qtlid="37923">Lisää</translation>
    <translation id="access" qtlid="304524">Kirjaudu</translation>
    <translation id="edit_name" qtlid="304537">Muokkaa {{name}}</translation>
    <translation id="common_create" qtlid="39226">Luo</translation>
@@ -144,26 +144,26 @@
    <translation id="common_menu_support_assistance" qtlid="52699">Tuki</translation>
    <translation id="common_menu_v3" qtlid="135931">Vanha hallintapaneeli</translation>
    <translation id="common_menu_billing" qtlid="32950">Laskutus</translation>
-   <translation id="common_menu_billing_history">Mes factures</translation>
-   <translation id="common_menu_billing_payments">Suivi des paiements</translation>
+   <translation id="common_menu_billing_history" qtlid="159540">Laskut</translation>
+   <translation id="common_menu_billing_payments" qtlid="398781">Maksujen seuranta</translation>
    <translation id="common_menu_language" qtlid="30598">Kieli</translation>
    <translation id="common_menu_account" qtlid="157642">Oma tili</translation>
-   <translation id="common_menu_account_infos">Mon profil</translation>
-   <translation id="common_menu_account_security">Sécurité</translation>
-   <translation id="common_menu_account_emails">Emails reçus</translation>
-   <translation id="common_menu_account_subscriptions">Mes abonnements</translation>
-   <translation id="common_menu_account_ssh">Mes clés SSH</translation>
-   <translation id="common_menu_account_advanced">Paramètres avancés</translation>
-   <translation id="common_menu_means">Moyens de paiement</translation>
-   <translation id="common_menu_means_mean">Mes moyens de paiement</translation>
-   <translation id="common_menu_means_ovhaccount">Mon compte prépayé</translation>
-   <translation id="common_menu_means_vouchers">Mes vouchers</translation>
-   <translation id="common_menu_means_refunds">Mes avoirs</translation>
-   <translation id="common_menu_means_fidelity">Mon espace fidélité</translation>
-   <translation id="common_menu_means_credits">Mes crédits</translation>
+   <translation id="common_menu_account_infos" qtlid="405499">Oma profiili</translation>
+   <translation id="common_menu_account_security" qtlid="125420">Tietoturva</translation>
+   <translation id="common_menu_account_emails" qtlid="266118">Vastaanotetut sähköpostit</translation>
+   <translation id="common_menu_account_subscriptions" qtlid="144708">Tilaukset</translation>
+   <translation id="common_menu_account_ssh" qtlid="165897">SSH-avaimet</translation>
+   <translation id="common_menu_account_advanced" qtlid="39958">Lisäasetukset</translation>
+   <translation id="common_menu_means" qtlid="90049">Maksuvälineet</translation>
+   <translation id="common_menu_means_mean" qtlid="139949">Maksuvälineet</translation>
+   <translation id="common_menu_means_ovhaccount" qtlid="366826">Oma prepaid-tili</translation>
+   <translation id="common_menu_means_vouchers" qtlid="270917">Kupongit</translation>
+   <translation id="common_menu_means_refunds" qtlid="139923">Hyvityslaskut</translation>
+   <translation id="common_menu_means_fidelity" qtlid="260606">Kanta-asiakastiedot</translation>
+   <translation id="common_menu_means_credits" qtlid="448907">Omat luotot</translation>
    <translation id="common_menu_renew" qtlid="229658">Omat palvelut</translation>
-   <translation id="common_menu_renew_management">Gérer mes services</translation>
-   <translation id="common_menu_renew_agreements">Mes contrats</translation>
+   <translation id="common_menu_renew_management" qtlid="287527">Palvelujen hallinta</translation>
+   <translation id="common_menu_renew_agreements" qtlid="204350">Sopimusehdot</translation>
    <translation id="common_menu_orders_all" qtlid="282809">Omat tilaukset</translation>
    <translation id="common_menu_contacts" qtlid="70541">Omat kontaktit</translation>
    <translation id="common_menu_list_ticket" qtlid="454039">Katso kaikki tukipyynnöt</translation>

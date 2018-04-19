@@ -66,7 +66,7 @@
    <translation id="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_step4" qtlid="388823">Seleziona <strong>Yes</strong> per l'opzione <strong>Enable EPROM Phonebook Provider</strong>.</translation>
    <translation id="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_step5" qtlid="388836">Inserisci <strong>Entreprise</strong> nel campo <strong>Provider name</strong></translation>
    <translation id="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_step6" qtlid="388849">Nella sezione <strong>Directory name (Private)</strong>, inserisci <strong>Rubrica aziendale</strong>.</translation>
-   <translation id="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_step7">Renseignez l'URL suivante dans <strong>Server URL : http://pb.voip.ovh.net/sm/{{serverUrl}}/pb.cgi</strong>.</translation>
+   <translation id="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_step7" qtlid="479941">Renseignez l'URL suivante dans <strong>Server URL : http://pb.voip.ovh.net/sm/{{serverUrl}}/pb.cgi</strong>.</translation>
    <translation id="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_step8" qtlid="388875">Inserisci <strong>FR</strong> o il Paese corrispondente nel campo <strong>Country code</strong>.</translation>
    <translation id="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_step9" qtlid="388888">Seleziona <strong>ROM DATA</strong> nel campo <strong>Authentification mode</strong></translation>
    <translation id="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_step10" qtlid="388901">Tra le opzioni <strong>Capabilities</strong>, seleziona:</translation>

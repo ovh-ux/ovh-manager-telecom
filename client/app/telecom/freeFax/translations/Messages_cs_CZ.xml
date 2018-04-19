@@ -23,7 +23,7 @@
    <translation id="freefax_notification_noNotification" qtlid="306682">Il n'y a aucune notification enregistrée.</translation>
    <translation id="freefax_notifications_title" qtlid="306695">Notifications du répondeur/télécopieur {{serviceName}}</translation>
    <translation id="freefax_notifications" qtlid="33250">Oznámení</translation>
-   <translation id="freefax_notification_email" qtlid="33598">E-mail</translation>
+   <translation id="freefax_notification_email" qtlid="33598">E-mailová adresa</translation>
    <translation id="freefax_notification_type" qtlid="306708">Notification du répondeur</translation>
    <translation id="freefax_notification_source" qtlid="395596">Source de la notification</translation>
    <translation id="freefax_notification_source_fax" qtlid="32926">Fax</translation>

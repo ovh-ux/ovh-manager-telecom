@@ -13,7 +13,7 @@
    <translation id="pack_move_meeting_slots" qtlid="312597">Pereiti prie France Telecom</translation>
    <translation id="pack_move_eligibility_phone_form_error" qtlid="312610">Prašome įvesti galiojantį numerį be brūkšnelių ar tarpų</translation>
    <translation id="pack_move_eligibility_subtitle" qtlid="105634">Jums galimas šis degrupavimas:</translation>
-   <translation id="pack_move_eligibility_synchronisation_estimated_rate_title">Débit synchronisation estimé :</translation>
+   <translation id="pack_move_eligibility_synchronisation_estimated_rate_title" qtlid="479486">Débit synchronisation estimé :</translation>
    <translation id="pack_move_eligibility_synchronisation_download" qtlid="312649">Download:</translation>
    <translation id="pack_move_eligibility_synchronisation_byMonth" qtlid="312662">/mėn.</translation>
    <translation id="pack_move_eligibility_synchronisation_nra" qtlid="312675">Ši linija prijungta prie NRA <strong>{{name}}</strong>, esančios už <strong>{{distance}}</strong> metrų.</translation>

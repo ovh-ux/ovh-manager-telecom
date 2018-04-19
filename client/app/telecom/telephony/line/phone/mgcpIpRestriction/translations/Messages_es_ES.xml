@@ -12,8 +12,8 @@
    <translation id="telephony_line_phone_mgcp_ip_restriction_submit" qtlid="458845">Ajouter l’adresse IP</translation>
    <translation id="telephony_line_phone_mgcp_ip_restriction_edit_success" qtlid="390747">La modificación se ha registrado y será efectiva en los próximos 5 minutos.</translation>
    <translation id="telephony_line_phone_mgcp_ip_restriction_edit_error" qtlid="390760">¡Vaya! Se ha producido un error al modificar la dirección IP autorizada.</translation>
-   <translation id="telephony_line_phone_mgcp_ip_restriction_bulk_all_success">La modification de la restriction MGCP de ligne a bien été appliquée aux services sélectionnés.</translation>
-   <translation id="telephony_line_phone_mgcp_ip_restriction_bulk_some_success">La modification de la restriction MGCP de ligne a bien été appliquée à {{ count }} des services sélectionnés.</translation>
-   <translation id="telephony_line_phone_mgcp_ip_restriction_bulk_error">La modification de la restriction MGCP de ligne n'a pu être appliquée au(x) service(s) suivant(s) :</translation>
-   <translation id="telephony_line_phone_mgcp_ip_restriction_bulk_on_error">Oups ! Une erreur est survenue lors de la modification de la restriction MGCP de ligne.</translation>
+   <translation id="telephony_line_phone_mgcp_ip_restriction_bulk_all_success" qtlid="479967">La modification de la restriction MGCP de ligne a bien été appliquée aux services sélectionnés.</translation>
+   <translation id="telephony_line_phone_mgcp_ip_restriction_bulk_some_success" qtlid="479980">La modification de la restriction MGCP de ligne a bien été appliquée à {{ count }} des services sélectionnés.</translation>
+   <translation id="telephony_line_phone_mgcp_ip_restriction_bulk_error" qtlid="479993">La modification de la restriction MGCP de ligne n'a pu être appliquée au(x) service(s) suivant(s) :</translation>
+   <translation id="telephony_line_phone_mgcp_ip_restriction_bulk_on_error" qtlid="480006">Oups ! Une erreur est survenue lors de la modification de la restriction MGCP de ligne.</translation>
 </translations>
