@@ -55,6 +55,8 @@ angular.module("managerApp").controller("PackTaskCtrl", function ($scope, $trans
         for (var i in self.status) {
             if (self.status.hasOwnProperty(i)) {
                 self.status[i].status = i;
+                self.status[i].title = $translate.instant("telecom_task_" + i);
+                self.status[i].tip = $translate.instant("telecom_task_" + i);
                 result.push(self.status[i]);
             }
         }
