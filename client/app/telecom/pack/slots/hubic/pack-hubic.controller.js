@@ -1,12 +1,10 @@
 angular.module("managerApp").controller("PackHubicCtrl", class {
 
-    constructor ($q, $scope, $stateParams, $translate, OvhApiPackXdslHubic, Poller, Toast, URLS) {
+    constructor ($q, $stateParams, $translate, OvhApiPackXdslHubic, Toast, URLS) {
         this.$q = $q;
-        this.$scope = $scope;
         this.$stateParams = $stateParams;
         this.$translate = $translate;
         this.OvhApiPackXdslHubic = OvhApiPackXdslHubic;
-        this.Poller = Poller;
         this.Toast = Toast;
         this.URLS = URLS;
     }
@@ -18,7 +16,7 @@ angular.module("managerApp").controller("PackHubicCtrl", class {
     getVoucherDetails (domain) {
         return this.OvhApiPackXdslHubic.v6().getDomainDetails({
             packName: this.$stateParams.packName,
-            domain: domain
+            domain
         }).$promise;
     }
 
@@ -32,7 +30,7 @@ angular.module("managerApp").controller("PackHubicCtrl", class {
 
         return this.OvhApiPackXdslHubic.v7().query().aggregate("packName").expand().execute().$promise.then((services) => {
             this.services = _.chain(services).filter((service) => service.path.includes(this.$stateParams.packName)).map((service) => {
-                const voucherUrl = [this.URLS.hubicVoucher, "token=" + _.get(service, "value.voucher")].join("?");
+                const voucherUrl = `${this.URLS.hubicVoucher}?token=${_.get(service, "value.voucher")}`;
                 return _.extend(
                     service,
                     {
@@ -58,15 +56,12 @@ angular.module("managerApp").controller("PackHubicCtrl", class {
                         servicesCodeUsed[index].url = this.URLS.hubicLogin;
                     });
                 }).finally(() => {
-                    this.Poller.kill({
-                        scope: this.$scope.id
-                    });
                     this.loaders.voucher = false;
                 });
 
             return this.services;
         }).catch((err) => {
-            this.Toast.error([this.$translate.instant("pack_xdsl_hubic_loading_error"), err.message].join(" "));
+            this.Toast.error(`${this.$translate.instant("pack_xdsl_hubic_loading_error")} ${err.message}`);
             return this.$q.reject(err);
         }).finally(() => {
             this.loaders.services = false;
@@ -84,12 +79,6 @@ angular.module("managerApp").controller("PackHubicCtrl", class {
 
         // Get service link to this access from current Pack Xdsl
         this.loadHubics();
-    }
-
-    $onDestroy () {
-        this.Poller.kill({
-            scope: this.$scope.$id
-        });
     }
 
 });
