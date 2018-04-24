@@ -19,10 +19,11 @@ angular.module("managerApp").component("telecomTelephonyAbbreviatedNumbers", {
             self.filter = {
                 perPage: PAGINATION_PER_PAGE
             };
-            self.loading = true;
-            self.abbreviatedNumbers = [];
+            self.loading = {
+                init: true
+            };
+            self.abbreviatedNumbers = undefined;
         };
-
 
         /**
          * Remove an abbreviated number from the list

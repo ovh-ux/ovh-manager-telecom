@@ -52,7 +52,7 @@ module.exports = function (app) {
 
         proxy.post({
             url: "https://www.ovh.com/auth/requestDevLogin/",
-            headers: headers,
+            headers,
             followRedirect: false,
             gzip: true,
             json: {
