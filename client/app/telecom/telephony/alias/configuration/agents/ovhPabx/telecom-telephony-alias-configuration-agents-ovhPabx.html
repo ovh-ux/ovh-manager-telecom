@@ -52,14 +52,14 @@
                                     data-available-types="['sip', 'number']"
                                     data-on-choice-validated="AgentsOvhPabxCtrl.onChooseServicePopover"
                                     data-on-choice-cancel="">
-                                <i class="ovh-font ovh-font-search"></i>
+                                <span class="ovh-font ovh-font-search"></span>
                             </button>
                         </span>
                         <span class="input-group-btn">
                             <button type="button"
                                     class="btn btn-default"
                                     data-ng-click="AgentsOvhPabxCtrl.cancelAddAgent($index)">
-                                <i class="ovh-font ovh-font-wrong"></i>
+                                <span class="ovh-font ovh-font-wrong"></span>
                             </button>
                         </span>
                     </div>
@@ -147,8 +147,24 @@
                                     data-ovh-checkbox-table-ids-selected="AgentsOvhPabxCtrl.agents.selected"
                                     data-ovh-checkbox-table-id="agentId" />
                             </th>
+                            <th scope="col">
+                                <button type="button"
+                                        class="btn btn-link p-0"
+                                        data-ng-click="AgentsOvhPabxCtrl.orderBy('number')">
+                                    <span data-translate="telephony_alias_configuration_agents_agent"></span>
+                                    <span class="oui-icon oui-icon-arrow-up"
+                                    data-ng-show="AgentsOvhPabxCtrl.orderedAscAgents">
+                                    </span>
+                                    <span class="oui-icon oui-icon-arrow-down"
+                                    data-ng-show="!AgentsOvhPabxCtrl.orderedAscAgents">
+                                    </span>
+                                </button>
+                            </th>
                             <th scope="col"
-                                data-translate="telephony_alias_configuration_agents_agent">
+                                data-translate="telephony_alias_configuration_agents_description">
+                            </th>
+                            <th scope="col"
+                                data-translate="telephony_alias_configuration_agents_type">
                             </th>
                             <th scope="col"
                                 data-translate="telephony_alias_configuration_agents_timeout">
@@ -180,6 +196,19 @@
                                        class="form-control no-transition"
                                        data-ng-if="agent.inEdition"
                                        data-ng-model="agent.inEdition.number" />
+                            </td>
+                            <td class="align-middle">
+                                <span data-ng-if="!agent.inEdition"
+                                      data-ng-bind="agent.description">
+                                </span>
+                                <input type="text"
+                                       class="form-control no-transition"
+                                       data-ng-if="agent.inEdition"
+                                       data-ng-model="agent.inEdition.description" />
+                            </td>
+                            <td class="align-middle">
+                                <span data-translate="{{'telephony_alias_configuration_agents_type_' + agent.type}}">
+                                </span>
                             </td>
                             <td class="align-middle">
                                 <span data-ng-if="!agent.inEdition"
@@ -227,7 +256,7 @@
                                         aria-label="{{:: 'edit' | translate }}"
                                         data-ng-if="!agent.inEdition"
                                         data-ng-click="AgentsOvhPabxCtrl.startEdition(agent)">
-                                     <i class="ovh-font ovh-font-editer"></i>
+                                     <span class="ovh-font ovh-font-editer"></span>
                                 </button>
                                 <div data-ng-if="agent.inEdition">
                                     <button type="button"

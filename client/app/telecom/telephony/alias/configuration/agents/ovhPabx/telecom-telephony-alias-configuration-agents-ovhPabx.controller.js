@@ -1,131 +1,163 @@
-angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationAgentsOvhPabxCtrl", function ($stateParams, $q, $translate, $uibModal, OvhApiTelephony, Toast, ToastError) {
-    "use strict";
+angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationAgentsOvhPabxCtrl", class TelecomTelephonyAliasConfigurationAgentsOvhPabxCtrl {
 
-    var self = this;
+    constructor ($stateParams, $q, $translate, $uibModal, OvhApiTelephony, Toast) {
+        this.$stateParams = $stateParams;
+        this.$q = $q;
+        this.$translate = $translate;
+        this.$uibModal = $uibModal;
+        this.OvhApiTelephony = OvhApiTelephony;
+        this.Toast = Toast;
+    }
 
-    function init () {
-
-        self.agents = {
+    $onInit () {
+        this.orderedAscAgents = true;
+        this.agents = {
             ids: [],
             paginated: [],
             selected: {},
             isLoading: false
         };
 
-        self.addAgentForm = {
+        this.addAgentForm = {
             numbers: [null],
             isAdding: false
         };
 
-        return self.fetchAgentsIds().then(function (ids) {
-            self.agents.ids = ids;
-        }).catch(function (err) {
-            return new ToastError(err);
+        this.types = [
+            { value: "internal", label: this.$translate.instant("telephony_alias_configuration_agents_type_internal") },
+            { value: "external", label: this.$translate.instant("telephony_alias_configuration_agents_type_external") }
+        ];
+
+        this.onChooseServicePopover = ({ serviceName }, pos) => {
+            this.addAgentForm.numbers[pos] = serviceName;
+        };
+
+        return this.fetchAgentsIds().then((ids) => {
+            this.agents.ids = ids;
+            this.orderBy("number");
+        }).catch((err) => {
+            this.Toast.error([this.$translate.instant("telephony_alias_configuration_agents_get_error"), _.get(err, "data.message")].join(" "));
+            return this.$q.reject(err);
         });
     }
 
-    self.fetchAgentsIds = function () {
-        self.agents.isLoading = true;
-        return OvhApiTelephony.OvhPabx().Hunting().Agent().v6().query({
-            billingAccount: $stateParams.billingAccount,
-            serviceName: $stateParams.serviceName
-        }).$promise.finally(function () {
-            self.agents.isLoading = false;
-        });
-    };
+    orderBy (prop) {
+        this.orderedAscAgents = !this.orderedAscAgents;
+        this.agents.paginated = _.sortBy(this.agents.paginated, prop);
 
-    self.fetchAgent = function (id) {
-        return OvhApiTelephony.OvhPabx().Hunting().Agent().v6().get({
-            billingAccount: $stateParams.billingAccount,
-            serviceName: $stateParams.serviceName,
+        if (!this.orderedAscAgents) {
+            this.agents.paginated = this.agents.paginated.reverse();
+        }
+    }
+
+    fetchAgentsIds () {
+        this.agents.isLoading = true;
+        return this.OvhApiTelephony.OvhPabx().Hunting().Agent().v6().query({
+            billingAccount: this.$stateParams.billingAccount,
+            serviceName: this.$stateParams.serviceName
+        }).$promise.finally(() => {
+            this.agents.isLoading = false;
+        });
+    }
+
+    fetchAgent (id) {
+        return this.OvhApiTelephony.OvhPabx().Hunting().Agent().v6().get({
+            billingAccount: this.$stateParams.billingAccount,
+            serviceName: this.$stateParams.serviceName,
             agentId: id
         }).$promise;
-    };
+    }
 
-    self.getSelectedAgentIds = function () {
-        return _.keys(self.agents.selected);
-    };
+    getSelectedAgentIds () {
+        return _.keys(this.agents.selected);
+    }
 
-    self.deleteAgents = function () {
-        self.agents.isDeleting = true;
-        return $q.all(self.getSelectedAgentIds().map(function (id) {
-            return OvhApiTelephony.OvhPabx().Hunting().Agent().v6().remove({
-                billingAccount: $stateParams.billingAccount,
-                serviceName: $stateParams.serviceName,
+    deleteAgents () {
+        this.agents.isDeleting = true;
+        return this.$q.all(this.getSelectedAgentIds().map((id) =>
+            this.OvhApiTelephony.OvhPabx().Hunting().Agent().v6().remove({
+                billingAccount: this.$stateParams.billingAccount,
+                serviceName: this.$stateParams.serviceName,
                 agentId: id
-            }).$promise.then(function () {
-                _.pull(self.agents.ids, parseInt(id, 10));
+            }).$promise.then(() => {
+                _.pull(this.agents.id, parseInt(id, 10));
+            })))
+            .then(() => {
+                this.Toast.success(this.$translate.instant("telephony_alias_configuration_agents_delete_success"));
+                return this.fetchAgentsIds().then((ids) => {
+                    this.agents.ids = ids;
+                });
+            })
+            .catch((err) => {
+                this.Toast.error([this.$translate.instant("telephony_alias_configuration_agents_delete_error"), _.get(err, "data.message")].join(" "));
+                return this.$q.reject(err);
+            })
+            .finally(() => {
+                this.agents.isDeleting = false;
+                this.agents.selected = {};
             });
-        })).then(function () {
-            Toast.success($translate.instant("telephony_alias_configuration_agents_delete_success"));
-        }).catch(function (err) {
-            return new ToastError(err);
-        }).finally(function () {
-            self.agents.isDeleting = false;
-            self.agents.selected = {};
-        });
-    };
+    }
 
-    self.startEdition = function (agent) {
-        agent.inEdition = _.pick(agent, ["number", "simultaneousLines", "status", "timeout", "wrapUpTime"]);
-    };
+    startEdition (agent) {
+        agent.inEdition = _.pick(agent, ["description", "number", "simultaneousLines", "status", "timeout", "type", "wrapUpTime"]);
+    }
 
-    self.isValidAgent = function (agent) {
-        var valid = true;
-        valid = valid && agent.number;
-        valid = valid && /^\d{1,6}$/.test(agent.timeout);
-        valid = valid && /^\d{1,6}$/.test(agent.wrapUpTime);
-        valid = valid && /^([1-9]|10)$/.test(agent.simultaneousLines);
+    isValidAgent ({ number, timeout, simultaneousLines, wrapUpTime }) {
+        let valid = true;
+        valid = valid && number;
+        valid = valid && /^\d{1,6}$/.test(timeout);
+        valid = valid && /^\d{1,6}$/.test(wrapUpTime);
+        valid = valid && /^([1-9]|10)$/.test(simultaneousLines);
         return valid;
-    };
+    }
 
-    self.updateAgent = function (agent) {
+    updateAgent (agent) {
         agent.isUpdating = true;
-        return OvhApiTelephony.OvhPabx().Hunting().Agent().v6().change({
-            billingAccount: $stateParams.billingAccount,
-            serviceName: $stateParams.serviceName,
+        return this.OvhApiTelephony.OvhPabx().Hunting().Agent().v6().change({
+            billingAccount: this.$stateParams.billingAccount,
+            serviceName: this.$stateParams.serviceName,
             agentId: agent.agentId
-        }, agent.inEdition).$promise.then(function () {
-            _.assign(agent, agent.inEdition);
-            agent.inEdition = null;
-            Toast.success($translate.instant("telephony_alias_configuration_agents_update_success"));
-        }).catch(function (err) {
-            return new ToastError(err);
-        }).finally(function () {
-            agent.isUpdating = false;
-        });
-    };
+        }, agent.inEdition).$promise
+            .then(() => {
+                _.assign(agent, agent.inEdition);
+                agent.inEdition = null;
+                this.Toast.success(this.$translate.instant("telephony_alias_configuration_agents_update_success"));
+            })
+            .catch((err) => {
+                this.Toast.error([this.$translate.instant("telephony_alias_configuration_agents_update_error"), _.get(err, "data.message")].join(" "));
+                return this.$q.reject(err);
+            })
+            .finally(() => {
+                agent.isUpdating = false;
+            });
+    }
 
-    self.onChooseServicePopover = function (service, pos) {
-        self.addAgentForm.numbers[pos] = service.serviceName;
-    };
-
-    self.cancelAddAgent = function (pos) {
-        if (pos === 0 && self.addAgentForm.numbers.length > 1) {
-            self.addAgentForm.numbers.shift();
-        } else if (self.addAgentForm.numbers.length > 1) {
-            _.pullAt(self.addAgentForm.numbers, pos);
+    cancelAddAgent (pos) {
+        if (pos === 0 && this.addAgentForm.numbers.length > 1) {
+            this.addAgentForm.numbers.shift();
+        } else if (this.addAgentForm.numbers.length > 1) {
+            _.pullAt(this.addAgentForm.numbers, pos);
         } else {
-            self.addAgentForm.numbers[0] = null;
+            this.addAgentForm.numbers[0] = null;
         }
-    };
+    }
 
-    self.addAgents = function () {
-        const modal = $uibModal.open({
+    addAgents () {
+        const modal = this.$uibModal.open({
             animation: true,
             templateUrl: "app/telecom/telephony/alias/configuration/agents/ovhPabx/telecom-telephony-alias-configuration-agents-ovhPabx-modal.html",
             controller: "telecomTelephonyAliasConfigurationAgentsOvhPabxModal",
             controllerAs: "$ctrl"
         });
-        modal.result.then(function () {
-            self.addAgentForm.isAdding = true;
-            return $q.all(self.addAgentForm.numbers.map(function (number) {
+        modal.result.then(() => {
+            this.addAgentForm.isAdding = true;
+            return this.$q.all(this.addAgentForm.numbers.map((number) => {
                 if (!number || !number.length) {
-                    return $q.when(null);
+                    return this.$q.when(null);
                 }
-                return OvhApiTelephony.OvhPabx().Hunting().Agent().v6().create({
-                    billingAccount: $stateParams.billingAccount,
-                    serviceName: $stateParams.serviceName
+                return this.OvhApiTelephony.OvhPabx().Hunting().Agent().v6().create({
+                    billingAccount: this.$stateParams.billingAccount,
+                    serviceName: this.$stateParams.serviceName
                 }, {
                     number: number,
                     simultaneousLines: 1,
@@ -133,20 +165,21 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationAgent
                     timeout: 20,
                     wrapUpTime: 0
                 }).$promise;
-            })).then(function () {
-                Toast.success($translate.instant("telephony_alias_configuration_agents_add_success"));
-                return self.fetchAgentsIds().then(function (ids) {
-                    self.agents.ids = ids;
+            }))
+                .then(() => {
+                    this.Toast.success(this.$translate.instant("telephony_alias_configuration_agents_add_success"));
+                    return this.fetchAgentsIds().then((ids) => {
+                        this.agents.ids = ids;
+                    });
+                })
+                .catch((err) => {
+                    this.Toast.error([this.$translate.instant("telephony_alias_configuration_agents_add_error"), _.get(err, "data.message")].join(" "));
+                    return this.$q.reject(err);
+                })
+                .finally(() => {
+                    this.addAgentForm.isAdding = false;
+                    this.addAgentForm.numbers = [null];
                 });
-            }).catch(function (err) {
-                return new ToastError(err);
-            }).finally(function () {
-                self.addAgentForm.isAdding = false;
-                self.addAgentForm.numbers = [null];
-            });
-
         });
-    };
-
-    init();
+    }
 });
