@@ -1,8 +1,9 @@
 angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationAgentsOvhPabxCtrl", class TelecomTelephonyAliasConfigurationAgentsOvhPabxCtrl {
 
-    constructor ($stateParams, $q, $translate, $uibModal, OvhApiTelephony, Toast) {
+    constructor ($stateParams, $q, $timeout, $translate, $uibModal, OvhApiTelephony, Toast) {
         this.$stateParams = $stateParams;
         this.$q = $q;
+        this.$timeout = $timeout;
         this.$translate = $translate;
         this.$uibModal = $uibModal;
         this.OvhApiTelephony = OvhApiTelephony;
@@ -34,15 +35,18 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationAgent
 
         return this.fetchAgentsIds().then((ids) => {
             this.agents.ids = ids;
-            this.orderBy("number");
         }).catch((err) => {
             this.Toast.error([this.$translate.instant("telephony_alias_configuration_agents_get_error"), _.get(err, "data.message")].join(" "));
             return this.$q.reject(err);
         });
     }
 
-    orderBy (prop) {
+    orderBy (prop, asc) {
         this.orderedAscAgents = !this.orderedAscAgents;
+        if (asc != null) {
+            this.orderedAscAgents = asc;
+        }
+
         this.agents.paginated = _.sortBy(this.agents.paginated, prop);
 
         if (!this.orderedAscAgents) {
@@ -70,6 +74,11 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationAgent
 
     getSelectedAgentIds () {
         return _.keys(this.agents.selected);
+    }
+
+    onTransformItemDone (items) {
+        this.$timeout(() => this.orderBy("number", this.orderedAscAgents), 1);
+        return items;
     }
 
     deleteAgents () {
