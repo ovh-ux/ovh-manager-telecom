@@ -77,7 +77,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationAgent
     }
 
     onTransformItemDone (items) {
-        this.$timeout(() => this.orderBy("number", this.orderedAscAgents), 1);
+        this.$timeout(() => this.orderBy("number", this.orderedAscAgents));
         return items;
     }
 
