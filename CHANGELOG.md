@@ -1,3 +1,20 @@
+<a name="10.3.0"></a>
+# [10.3.0](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.2.0...v10.3.0) (2018-05-03)
+
+
+### Bug Fixes
+
+* **alias:** allow plug and fax lines for member conf ([2d32385](https://github.com/ovh-ux/ovh-manager-telecom/commit/2d32385))
+* fix proxy headers ([cf5e79f](https://github.com/ovh-ux/ovh-manager-telecom/commit/cf5e79f))
+* rearrange buttons display otb ([d523474](https://github.com/ovh-ux/ovh-manager-telecom/commit/d523474))
+
+
+### Features
+
+* **telephony:** add search and filters on abbreviated numbers datagrid ([0315e55](https://github.com/ovh-ux/ovh-manager-telecom/commit/0315e55))
+
+
+
 <a name="10.2.0"></a>
 # [10.2.0](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.1.0...v10.2.0) (2018-04-19)
 
