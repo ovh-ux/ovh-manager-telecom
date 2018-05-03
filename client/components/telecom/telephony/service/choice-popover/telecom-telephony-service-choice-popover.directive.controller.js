@@ -30,7 +30,7 @@ angular.module("managerApp").controller("voipServiceChoicePopoverCtrl", function
         } else if (service.isTrunk && service.isTrunk()) {
             return "trunk";
         }
-        return service.isPlugNFax ? "plug_fax" : "sip";
+        return service.isPlugNFax ? "plugAndFax" : "sip";
     };
 
     self.excludeFilter = function (service) {
