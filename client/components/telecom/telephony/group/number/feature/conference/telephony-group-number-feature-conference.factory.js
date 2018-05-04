@@ -106,14 +106,6 @@ angular.module("managerApp").factory("TelephonyGroupNumberConference", function 
             featureSettings = {};
         }
 
-        if (featureSettings.announceFilename) {
-            promise.announceFilenameLabel = OvhApiMe.Document().v6().get({
-                id: featureSettings.announceFilename
-            }).$promise.then(function (doc) {
-                return doc.name;
-            });
-        }
-
         return $q.all(promise).then(function (result) {
             _.assign(self, _.pick(featureSettings, settingsAttributes), result);
             return self;
