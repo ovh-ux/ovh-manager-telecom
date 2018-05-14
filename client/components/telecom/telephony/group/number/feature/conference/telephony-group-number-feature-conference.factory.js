@@ -99,17 +99,14 @@ angular.module("managerApp").factory("TelephonyGroupNumberConference", function 
 
     TelephonyGroupNumberConference.prototype.setSettings = function (featureSettingsParam) {
         var self = this;
-        var promise = {};
         var featureSettings = featureSettingsParam;
 
         if (!featureSettings) {
             featureSettings = {};
         }
 
-        return $q.all(promise).then(function (result) {
-            _.assign(self, _.pick(featureSettings, settingsAttributes), result);
-            return self;
-        });
+        _.assign(self, _.pick(featureSettings, settingsAttributes));
+        return self;
     };
 
     TelephonyGroupNumberConference.prototype.setWebAccess = function (featureWebAccessParam) {
