@@ -1,3 +1,13 @@
+<a name="10.3.1"></a>
+## [10.3.1](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.3.0...v10.3.1) (2018-05-18)
+
+
+### Bug Fixes
+
+* missing announce file name ([1dad42f](https://github.com/ovh-ux/ovh-manager-telecom/commit/1dad42f))
+
+
+
 <a name="10.3.0"></a>
 # [10.3.0](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.2.0...v10.3.0) (2018-05-03)
 
