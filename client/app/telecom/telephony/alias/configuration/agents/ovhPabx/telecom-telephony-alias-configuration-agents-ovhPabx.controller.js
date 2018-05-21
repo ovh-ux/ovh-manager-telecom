@@ -1,8 +1,8 @@
 angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationAgentsOvhPabxCtrl", class TelecomTelephonyAliasConfigurationAgentsOvhPabxCtrl {
 
-    constructor ($stateParams, $q, $timeout, $translate, $uibModal, OvhApiTelephony, Toast) {
-        this.$stateParams = $stateParams;
+    constructor ($q, $stateParams, $timeout, $translate, $uibModal, OvhApiTelephony, Toast) {
         this.$q = $q;
+        this.$stateParams = $stateParams;
         this.$timeout = $timeout;
         this.$translate = $translate;
         this.$uibModal = $uibModal;
