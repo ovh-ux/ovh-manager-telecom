@@ -1,3 +1,25 @@
+<a name="10.4.1"></a>
+## [10.4.1](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.4.0...v10.4.1) (2018-05-25)
+
+
+
+<a name="10.4.0"></a>
+# [10.4.0](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.3.1...v10.4.0) (2018-05-23)
+
+
+### Bug Fixes
+
+* **alias:** fix order after action on agent ([15a67eb](https://github.com/ovh-ux/ovh-manager-telecom/commit/15a67eb))
+* feedback ([e79d49b](https://github.com/ovh-ux/ovh-manager-telecom/commit/e79d49b))
+* timeout useless delay param ([9e25971](https://github.com/ovh-ux/ovh-manager-telecom/commit/9e25971))
+
+
+### Features
+
+* **alias:** add sort agents in alias configuration for agents ([ed71e27](https://github.com/ovh-ux/ovh-manager-telecom/commit/ed71e27))
+
+
+
 <a name="10.3.1"></a>
 ## [10.3.1](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.3.0...v10.3.1) (2018-05-18)
 
