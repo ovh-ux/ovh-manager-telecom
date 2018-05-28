@@ -1,3 +1,13 @@
+<a name="10.4.2"></a>
+## [10.4.2](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.4.1...v10.4.2) (2018-05-28)
+
+
+### Bug Fixes
+
+* **xdsl:** fix display order button ([7a56e4c](https://github.com/ovh-ux/ovh-manager-telecom/commit/7a56e4c))
+
+
+
 <a name="10.4.1"></a>
 ## [10.4.1](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.4.0...v10.4.1) (2018-05-25)
 
