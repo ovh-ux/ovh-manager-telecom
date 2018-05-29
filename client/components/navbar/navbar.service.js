@@ -527,7 +527,7 @@ class ManagerNavbarService {
         const currentUniverse = "telecom";
         const managerUrls = this.MANAGER_URLS;
         const managerNames = [
-            "portal", "web", "dedicated", "cloud", "telecom", "gamma", "partners", "labs"
+            "portal", "web", "dedicated", "cloud", "telecom", "gamma", "partners"
         ];
 
         return _.map(managerNames, (managerName) => {
