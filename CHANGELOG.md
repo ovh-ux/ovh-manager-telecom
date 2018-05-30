@@ -1,3 +1,13 @@
+<a name="10.4.4"></a>
+## [10.4.4](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.4.3...v10.4.4) (2018-05-30)
+
+
+### Bug Fixes
+
+* **navbar:** fix label property for brand ([4136a27](https://github.com/ovh-ux/ovh-manager-telecom/commit/4136a27))
+
+
+
 <a name="10.4.3"></a>
 ## [10.4.3](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.4.2...v10.4.3) (2018-05-29)
 

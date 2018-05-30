@@ -563,7 +563,7 @@ class ManagerNavbarService {
             const baseNavbar = {
                 // Set OVH Logo
                 brand: {
-                    title: this.$translate.instant("common_menu_telecom"),
+                    label: this.$translate.instant("common_menu_telecom"),
                     url: managerUrls.telecom,
                     iconAlt: "OVH",
                     iconClass: "navbar-logo",
