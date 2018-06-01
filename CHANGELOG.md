@@ -1,3 +1,8 @@
+<a name="10.4.5"></a>
+## [10.4.5](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.4.4...v10.4.5) (2018-05-30)
+
+
+
 <a name="10.4.4"></a>
 ## [10.4.4](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.4.3...v10.4.4) (2018-05-30)
 
