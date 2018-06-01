@@ -1,3 +1,13 @@
+<a name="10.4.6"></a>
+## [10.4.6](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.4.5...v10.4.6) (2018-06-01)
+
+
+### Bug Fixes
+
+* **index:** disable ovh-task ([eebb017](https://github.com/ovh-ux/ovh-manager-telecom/commit/eebb017))
+
+
+
 <a name="10.4.5"></a>
 ## [10.4.5](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.4.4...v10.4.5) (2018-05-30)
 
