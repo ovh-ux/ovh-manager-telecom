@@ -1,18 +1,13 @@
-angular.module("managerApp").service("OverTheBoxMediator", function (OvhApiOverTheBox) {
-    "use strict";
+angular.module('managerApp').service('OverTheBoxMediator', function (OvhApiOverTheBox) {
+  const self = this;
 
-    var self = this;
-
-    /*= ============================
+  /*= ============================
     =            COUNT            =
-    =============================*/
+    ============================= */
 
-    self.getCount = function () {
-        return OvhApiOverTheBox.v6().query().$promise.then(function (otbIds) {
-            return otbIds.length;
-        });
-    };
+  self.getCount = function () {
+    return OvhApiOverTheBox.v6().query().$promise.then(otbIds => otbIds.length);
+  };
 
-    /* -----  End of COUNT  ------*/
-
+  /* -----  End of COUNT  ------*/
 });

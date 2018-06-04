@@ -1,161 +1,153 @@
-angular.module("managerApp").component("telecomTelephonyAliasMembers", {
-    bindings: {
-        api: "="
-    },
-    templateUrl: "components/telecom/telephony/alias/members/telecom-telephony-alias-members.html",
-    controller: function ($q, $translate, $translatePartialLoader, Toast, ToastError) {
-        "use strict";
+angular.module('managerApp').component('telecomTelephonyAliasMembers', {
+  bindings: {
+    api: '=',
+  },
+  templateUrl: 'components/telecom/telephony/alias/members/telecom-telephony-alias-members.html',
+  controller($q, $translate, $translatePartialLoader, Toast, ToastError) {
+    const self = this;
 
-        var self = this;
+    self.$onInit = function () {
+      self.loaders = {
+        init: false,
+        deleting: false,
+      };
+      self.sortableMembersOpts = {
+        handle: '.ovh-font-grip',
+        start() {
+          self.membersBeforeDrag = angular.copy(self.members);
+        },
+        stop: self.onMoveMember,
+        disabled: false,
+      };
+      self.members = null;
+      self.membersBeforeDrag = null;
+      self.memberInEdition = null;
+      self.memberToDelete = null;
 
-        self.$onInit = function () {
+      $translatePartialLoader.addPart('../components/telecom/telephony/alias/members');
+      return $translate.refresh().finally(() => {
+        self.isInitialized = true;
+        return self.refreshMembers().catch(err => new ToastError(err)).finally(() => {
+          self.loaders.init = false;
+        });
+      });
+    };
 
-            self.loaders = {
-                init: false,
-                deleting: false
-            };
-            self.sortableMembersOpts = {
-                handle: ".ovh-font-grip",
-                start: function () {
-                    self.membersBeforeDrag = angular.copy(self.members);
-                },
-                stop: self.onMoveMember,
-                disabled: false
-            };
-            self.members = null;
-            self.membersBeforeDrag = null;
-            self.memberInEdition = null;
-            self.memberToDelete = null;
+    self.api.addMembersToList = function (toAdd) {
+      _.each(toAdd.reverse(), (member) => {
+        self.members.unshift(member);
+      });
+      self.api.reorderMembers(self.members).then((orderedMembers) => {
+        self.members = orderedMembers;
+      });
+    };
 
-            $translatePartialLoader.addPart("../components/telecom/telephony/alias/members");
-            return $translate.refresh().finally(function () {
-                self.isInitialized = true;
-                return self.refreshMembers().catch(function (err) {
-                    return new ToastError(err);
-                }).finally(function () {
-                    self.loaders.init = false;
-                });
-            });
-        };
+    self.api.getMemberList = function () {
+      return angular.copy(self.members);
+    };
 
-        self.api.addMembersToList = function (toAdd) {
-            _.each(toAdd.reverse(), function (member) {
-                self.members.unshift(member);
-            });
-            self.api.reorderMembers(self.members).then(function (orderedMembers) {
-                self.members = orderedMembers;
-            });
-        };
+    self.refreshMembers = function () {
+      self.members = null;
+      return self.api.fetchMembers()
+        .then(members => self.api.reorderMembers(members)).then((orderedMembers) => {
+          self.members = orderedMembers;
+        })
+        .catch(err => new ToastError(err))
+        .finally(() => {
+          self.loaders.init = true;
+        });
+    };
 
-        self.api.getMemberList = function () {
-            return angular.copy(self.members);
-        };
+    self.updateMemberDescription = function (member) {
+      if (member.description === undefined) {
+        self.api.fetchMemberDescription(member)
+          .then((result) => {
+            _.set(member, 'description', result);
+          })
+          .catch(() => {
+            _.set(member, 'description', '');
+          });
+      }
+    };
 
-        self.refreshMembers = function () {
-            self.members = null;
-            return self.api.fetchMembers().then(function (members) {
-                return self.api.reorderMembers(members);
-            }).then(function (orderedMembers) {
-                self.members = orderedMembers;
-            }).catch(function (err) {
-                return new ToastError(err);
-            }).finally(function () {
-                self.loaders.init = true;
-            });
-        };
+    self.onSwapMembers = function (fromMember, toMember) {
+      const from = angular.copy(fromMember);
+      const to = angular.copy(toMember);
 
-        self.updateMemberDescription = function (member) {
-            if (member.description === undefined) {
-                self.api.fetchMemberDescription(member).then(function (result) {
-                    member.description = result;
-                }).catch(function () {
-                    member.description = "";
-                });
-            }
-        };
+      // we do it by hand first so the ui is refreshed immediately
+      const fromPos = fromMember.position;
+      const toPos = toMember.position;
+      _.set(fromMember, 'position', toPos);
+      _.set(toMember, 'position', fromPos);
+      self.members = _.sortBy(self.members, 'position');
 
-        self.onSwapMembers = function (fromMember, toMember) {
+      self.sortableMembersOpts.disabled = true;
+      return self.api
+        .swapMembers(from, to)
+        .then(() => self.api.reorderMembers(self.members))
+        .then((orderedMembers) => {
+          self.members = orderedMembers;
+        })
+        .catch((err) => {
+          // revert changes
+          _.set(fromMember, 'position', fromPos);
+          _.set(toMember, 'position', toPos);
+          self.members = _.sortBy(self.members, 'position');
+          return new ToastError(err);
+        })
+        .finally(() => {
+          self.sortableMembersOpts.disabled = false;
+        });
+    };
 
-            var from = angular.copy(fromMember);
-            var to = angular.copy(toMember);
+    self.onMoveMember = function (ev, ui) {
+      const targetPosition = ui.item.attr('data-position');
+      const movedMember = self.members[targetPosition];
+      const swappedMember = self.membersBeforeDrag[targetPosition];
 
-            // we do it by hand first so the ui is refreshed immediately
-            var fromPos = fromMember.position;
-            var toPos = toMember.position;
-            fromMember.position = toPos;
-            toMember.position = fromPos;
-            self.members = _.sortBy(self.members, "position");
+      // check if position changed ? (not dropped at the same place)
+      if (movedMember.agentId === swappedMember.agentId) {
+        return;
+      }
 
-            self.sortableMembersOpts.disabled = true;
-            return self.api.swapMembers(from, to).then(function () {
-                return self.api.reorderMembers(self.members);
-            }).then(function (orderedMembers) {
-                self.members = orderedMembers;
-            }).catch(function (err) {
-                // revert changes
-                fromMember.position = fromPos;
-                toMember.position = toPos;
-                self.members = _.sortBy(self.members, "position");
-                return new ToastError(err);
-            }).finally(function () {
-                self.sortableMembersOpts.disabled = false;
-            });
-        };
+      self.onSwapMembers(movedMember, swappedMember);
+    };
 
-        self.onMoveMember = function (ev, ui) {
-            var targetPosition = ui.item.attr("data-position");
-            var movedMember = self.members[targetPosition];
-            var swappedMember = self.membersBeforeDrag[targetPosition];
+    self.startMemberEdition = function (member) {
+      self.memberInEdition = angular.copy(member);
+      self.memberInEdition.timeout = member.timeout ? member.timeout : 1;
+    };
 
-            // check if position changed ? (not dropped at the same place)
-            if (movedMember.agentId === swappedMember.agentId) {
-                return;
-            }
+    self.cancelMemberEdition = function () {
+      self.memberInEdition = null;
+    };
 
-            self.onSwapMembers(movedMember, swappedMember);
-        };
+    self.submitMemberChanges = function () {
+      self.loaders.editing = true;
+      const attrs = ['status', 'timeout', 'wrapUpTime', 'simultaneousLines'];
+      return self.api.updateMember(self.memberInEdition).then(() => {
+        Toast.success($translate.instant('telephony_alias_members_change_success'));
+        const toUpdate = _.find(self.members, { agentId: self.memberInEdition.agentId });
+        _.assign(toUpdate, _.pick(self.memberInEdition, attrs));
+        self.cancelMemberEdition();
+      }).catch(err => new ToastError(err)).finally(() => {
+        self.loaders.editing = false;
+      });
+    };
 
-        self.startMemberEdition = function (member) {
-            self.memberInEdition = angular.copy(member);
-            self.memberInEdition.timeout = member.timeout ? member.timeout : 1;
-        };
-
-        self.cancelMemberEdition = function () {
-            self.memberInEdition = null;
-        };
-
-        self.submitMemberChanges = function () {
-            self.loaders.editing = true;
-            var attrs = ["status", "timeout", "wrapUpTime", "simultaneousLines"];
-            return self.api.updateMember(self.memberInEdition).then(function () {
-                Toast.success($translate.instant("telephony_alias_members_change_success"));
-                var toUpdate = _.find(self.members, { agentId: self.memberInEdition.agentId });
-                _.assign(toUpdate, _.pick(self.memberInEdition, attrs));
-                self.cancelMemberEdition();
-            }).catch(function (err) {
-                return new ToastError(err);
-            }).finally(function () {
-                self.loaders.editing = false;
-            });
-        };
-
-        self.deleteMember = function (toDelete) {
-            self.loaders.deleting = true;
-            self.api.deleteMember(self.memberToDelete).then(function () {
-                self.memberToDelete = null;
-                Toast.success($translate.instant("telephony_alias_members_delete_success"));
-                _.remove(self.members, function (m) {
-                    return m.agentId === toDelete.agentId;
-                });
-                return self.api.reorderMembers(self.members);
-            }).then(function (orderedMembers) {
-                self.members = orderedMembers;
-            }).catch(function (err) {
-                return new ToastError(err);
-            }).finally(function () {
-                self.loaders.deleting = false;
-            });
-        };
-    }
+    self.deleteMember = function (toDelete) {
+      self.loaders.deleting = true;
+      self.api.deleteMember(self.memberToDelete).then(() => {
+        self.memberToDelete = null;
+        Toast.success($translate.instant('telephony_alias_members_delete_success'));
+        _.remove(self.members, m => m.agentId === toDelete.agentId);
+        return self.api.reorderMembers(self.members);
+      }).then((orderedMembers) => {
+        self.members = orderedMembers;
+      }).catch(err => new ToastError(err))
+        .finally(() => {
+          self.loaders.deleting = false;
+        });
+    };
+  },
 });
-

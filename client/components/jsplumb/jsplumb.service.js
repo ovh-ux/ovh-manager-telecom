@@ -1,16 +1,13 @@
-angular.module("managerApp").service("jsPlumbService", function ($q) {
-    "use strict";
+angular.module('managerApp').service('jsPlumbService', function ($q) {
+  const self = this;
 
-    var self = this;
+  const jsPlumbReadyDefered = $q.defer();
 
-    var jsPlumbReadyDefered = $q.defer();
+  self.initJsPlumb = function () {
+    jsPlumb.ready(() => {
+      jsPlumbReadyDefered.resolve();
+    });
 
-    self.initJsPlumb = function () {
-        jsPlumb.ready(function () {
-            jsPlumbReadyDefered.resolve();
-        });
-
-        return jsPlumbReadyDefered.promise;
-    };
-
+    return jsPlumbReadyDefered.promise;
+  };
 });

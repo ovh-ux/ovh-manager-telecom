@@ -1,71 +1,68 @@
-angular.module("managerApp").controller("TelephonySchedulerFiltersCtrl", function (telephonyScheduler) {
-    "use strict";
+angular.module('managerApp').controller('TelephonySchedulerFiltersCtrl', function (telephonyScheduler) {
+  const self = this;
+  let categories = null;
 
-    var self = this;
-    var categories = null;
+  self.loading = {
+    init: true,
+  };
 
-    self.loading = {
-        init: true
-    };
+  self.chunkedCategories = null;
 
-    self.chunkedCategories = null;
-
-    /*= ==============================
+  /*= ==============================
     =            HELPERS            =
-    ===============================*/
+    =============================== */
 
-    self.convertCategoryToSlot = function (category) {
-        return telephonyScheduler.convertCategoryToSlot(self.telephonySchedulerCtrl.timeCondition, category);
-    };
+  self.convertCategoryToSlot = function (category) {
+    return telephonyScheduler
+      .convertCategoryToSlot(self.telephonySchedulerCtrl.timeCondition, category);
+  };
 
-    /* -----  End of HELPERS  ------*/
+  /* -----  End of HELPERS  ------*/
 
-    /*= ==============================
+  /*= ==============================
     =            ACTIONS            =
-    ===============================*/
+    =============================== */
 
-    self.toggleCategoryDisplay = function (category) {
-        category.active = !category.active;
+  self.toggleCategoryDisplay = function (category) {
+    _.set(category, 'active', !category.active);
 
-        self.filters.categories = _.chain(categories).filter({
-            active: false
-        }).map("value").value();
+    self.filters.categories = _.chain(categories).filter({
+      active: false,
+    }).map('value').value();
 
-        self.onChange();
-    };
+    self.onChange();
+  };
 
-    /* -----  End of ACTIONS  ------*/
+  /* -----  End of ACTIONS  ------*/
 
-    /*= =====================================
+  /*= =====================================
     =            INITIALIZATION            =
-    ======================================*/
+    ====================================== */
 
-    self.$onInit = function () {
-        self.loading.init = true;
-        self.telephonySchedulerCtrl.loading.filters = true;
+  self.$onInit = function () {
+    self.loading.init = true;
+    self.telephonySchedulerCtrl.loading.filters = true;
 
-        // check params
-        self.filters = _.defaults(self.filters || {}, {
-            categories: [] // will contain all categories to hide
-        });
+    // check params
+    self.filters = _.defaults(self.filters || {}, {
+      categories: [], // will contain all categories to hide
+    });
 
-        return telephonyScheduler.getAvailableCategories().then(function (apiCategories) {
-            categories = _.chain(apiCategories).filter(function (category) {
-                return self.telephonySchedulerCtrl.timeCondition ? self.convertCategoryToSlot(category) : true;
-            }).map(function (category) {
-                return {
-                    value: category,
-                    active: true
-                };
-            }).value();
+    return telephonyScheduler.getAvailableCategories().then((apiCategories) => {
+      categories = _.chain(apiCategories)
+        .filter(category => (self.telephonySchedulerCtrl.timeCondition ?
+          self.convertCategoryToSlot(category) : true))
+        .map(category => ({
+          value: category,
+          active: true,
+        })).value();
 
-            self.chunkedCategories = _.chunk(categories, 2);
-        }).finally(function () {
-            self.loading.init = false;
-            self.telephonySchedulerCtrl.loading.filters = false;
-        });
-    };
+      self.chunkedCategories = _.chunk(categories, 2);
+    }).finally(() => {
+      self.loading.init = false;
+      self.telephonySchedulerCtrl.loading.filters = false;
+    });
+  };
 
-    /* -----  End of INITIALIZATION  ------*/
-
+  /* -----  End of INITIALIZATION  ------*/
 });

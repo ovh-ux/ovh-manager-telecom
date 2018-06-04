@@ -1,37 +1,34 @@
-angular.module("managerApp").controller("TelecomPackMigrationMigrationCtrl", function ($scope, PackMigrationProcess) {
-    "use strict";
+angular.module('managerApp').controller('TelecomPackMigrationMigrationCtrl', function ($scope, PackMigrationProcess) {
+  const self = this;
 
-    var self = this;
+  self.loading = {
+    migrate: false,
+  };
+  self.process = null;
+  self.migrationStatus = null;
 
-    self.loading = {
-        migrate: false
-    };
-    self.process = null;
-    self.migrationStatus = null;
-
-    /*= =====================================
+  /*= =====================================
     =            INITIALIZATION            =
-    ======================================*/
+    ====================================== */
 
-    function init () {
-        self.loading.migrate = true;
-        self.process = PackMigrationProcess.getMigrationProcess();
+  function init() {
+    self.loading.migrate = true;
+    self.process = PackMigrationProcess.getMigrationProcess();
 
-        return PackMigrationProcess.startTaskPolling().then(function () {
-            self.migrationStatus = "success";
-            self.loading.migrate = false;
-        }, function () {
-            self.migrationStatus = "error";
-            self.loading.migrate = false;
-        });
-    }
-
-    $scope.$on("$destroy", function () {
-        PackMigrationProcess.stopTaskPolling();
+    return PackMigrationProcess.startTaskPolling().then(() => {
+      self.migrationStatus = 'success';
+      self.loading.migrate = false;
+    }, () => {
+      self.migrationStatus = 'error';
+      self.loading.migrate = false;
     });
+  }
 
-    /* -----  End of INITIALIZATION  ------*/
+  $scope.$on('$destroy', () => {
+    PackMigrationProcess.stopTaskPolling();
+  });
 
-    init();
+  /* -----  End of INITIALIZATION  ------*/
 
+  init();
 });

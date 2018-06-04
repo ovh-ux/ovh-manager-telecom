@@ -243,7 +243,7 @@
                                                 type="button"
                                                 class="btn btn-link"
                                                 data-ng-click="SmsSendersCtrl.edit(sender)"
-                                                data-ng-disabled="!SmsSendersCtrl.canEdit(sender)"
+                                                data-ng-disabled="!SmsSendersCtrl.constructor.canEdit(sender)"
                                                 data-translate="edit">
                                             </button>
                                         </li>
@@ -263,7 +263,7 @@
                                                 type="button"
                                                 class="btn btn-link"
                                                 data-ng-click="SmsSendersCtrl.terminate(sender)"
-                                                data-ng-disabled="!SmsSendersCtrl.canTerminate(sender)"
+                                                data-ng-disabled="!SmsSendersCtrl.constructor.canTerminate(sender)"
                                                 data-ng-bind="sender.serviceInfos.renew.deleteAtExpiration ? 'sms_senders_terminate_cancel' : 'common_resiliation' | translate">
                                             </button>
                                         </li>

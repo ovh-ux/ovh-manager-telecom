@@ -1,37 +1,33 @@
-angular.module("managerApp").controller("PackExchangeIndividualCtrl", function ($scope, OvhApiPackXdslExchangeIndividual, $stateParams) {
-    "use strict";
+angular.module('managerApp').controller('PackExchangeIndividualCtrl', function ($scope, OvhApiPackXdslExchangeIndividual, $stateParams) {
+  const self = this;
+  self.exchangeMail = {};
 
-    var self = this;
-    self.exchangeMail = {};
+  function init() {
+    self.exchangeMail.details = $scope.service;
+    self.exchangeMail.services = [];
 
-    function init () {
+    $scope.loaders = {
+      services: true,
+    };
 
-        self.exchangeMail.details = $scope.service;
-        self.exchangeMail.services = [];
+    // Get service link to this access from current Pack Xdsl
+    return OvhApiPackXdslExchangeIndividual.v6().query({
+      packId: $stateParams.packName,
+    }).$promise.then(
+      (services) => {
+        angular.forEach(services, (service) => {
+          self.exchangeMail.services.push({
+            name: service,
+            domain: service.replace(/^.+\./, '.'),
+          });
+        });
+        $scope.loaders.services = false;
+      },
+      () => {
+        $scope.loaders.services = false;
+      },
+    );
+  }
 
-        $scope.loaders = {
-            services: true
-        };
-
-        // Get service link to this access from current Pack Xdsl
-        return OvhApiPackXdslExchangeIndividual.v6().query({
-            packId: $stateParams.packName
-        }).$promise.then(
-            function (services) {
-                angular.forEach(services, function (service) {
-                    self.exchangeMail.services.push({
-                        name: service,
-                        domain: service.replace(/^.+\./, ".")
-                    });
-                });
-                $scope.loaders.services = false;
-            },
-            function () {
-                $scope.loaders.services = false;
-            }
-        );
-    }
-
-    init();
-
+  init();
 });

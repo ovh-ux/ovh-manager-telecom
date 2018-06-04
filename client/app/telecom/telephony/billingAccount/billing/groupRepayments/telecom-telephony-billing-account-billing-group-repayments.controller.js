@@ -1,121 +1,120 @@
-angular.module("managerApp").controller("TelecomTelephonyBillingAccountBillingGroupRepaymentsCtrl", function ($q, $stateParams, $translate, OvhApiTelephony, TelephonyMediator, Toast) {
-    "use strict";
+angular.module('managerApp').controller('TelecomTelephonyBillingAccountBillingGroupRepaymentsCtrl', function ($q, $stateParams, $translate, OvhApiTelephony, TelephonyMediator, Toast) {
+  const self = this;
 
-    var self = this;
+  /*= =====================================
+  =            INITIALIZATION            =
+  ====================================== */
 
-    /* =============================
-    =            EVENTS            =
-    ============================== */
-
-    self.askHistoryRepaymentConsumption = function () {
-        self.groupRepaymentsForm.isAsking = true;
-
-        return OvhApiTelephony.HistoryRepaymentConsumption().v6().create({
-            billingAccount: $stateParams.billingAccount
-        }, {
-            billingNumber: self.groupRepaymentsForm.billingNumber
-        }).$promise.then(function () {
-            Toast.success($translate.instant("telephony_group_billing_group_repayments_ask_new_repayment_success"));
-            init();
-        }).catch(function (error) {
-            Toast.error([$translate.instant("telephony_group_billing_group_repayments_ask_new_repayment_error"), _.get(error, "data.message")].join(" "));
-            init();
-            return $q.reject(error);
-        }).finally(function () {
-            self.groupRepaymentsForm.isAsking = false;
-        });
+  function init() {
+    self.consumptions = {
+      all: [],
+      raw: [],
+      hasAmountAvailable: null,
+      total: {
+        duration: null,
+        price: null,
+        call: null,
+      },
+      repayable: {
+        price: null,
+        call: null,
+      },
+      deferred: {
+        price: null,
+        call: null,
+      },
+      isLoading: false,
     };
 
-    /* -----  End of EVENTS  ------ */
+    self.groupRepaymentsForm = {
+      billingNumber: null,
+      isAsking: false,
+    };
 
+    self.consumptions.isLoading = true;
 
-    /*= =====================================
-    =            INITIALIZATION            =
-    ======================================*/
+    return TelephonyMediator
+      .getGroup($stateParams.billingAccount)
+      .then(group => group.getRepaymentConsumption().then((repaymentConsumptions) => {
+        self.consumptions.all = _.get(repaymentConsumptions, 'groupRepayments.all');
+        self.consumptions.raw = _.get(repaymentConsumptions, 'groupRepayments.raw');
 
-    function init () {
-        self.consumptions = {
-            all: [],
-            raw: [],
-            hasAmountAvailable: null,
-            total: {
-                duration: null,
-                price: null,
-                call: null
-            },
-            repayable: {
-                price: null,
-                call: null
-            },
-            deferred: {
-                price: null,
-                call: null
-            },
-            isLoading: false
-        };
+        // total
+        self.consumptions.total.duration = _.sum(self.consumptions.raw, 'duration');
+        self.consumptions.total.price = _.chain(self.consumptions.raw).sum('price').floor(2).value();
+        self.consumptions.total.call = _.chain(self.consumptions.all).size().value();
 
-        self.groupRepaymentsForm = {
-            billingNumber: null,
-            isAsking: false
-        };
+        // repayable
+        const repayable = _.chain(self.consumptions.all).filter('repayable');
+        self.consumptions.repayable.price = repayable.pluck('price').sum().floor(2).value();
+        self.consumptions.repayable.call = repayable.size().value();
+        self.consumptions.hasAmountAvailable = _.find(self.consumptions.raw, 'repayable');
 
-        self.consumptions.isLoading = true;
+        // deferred
+        self.consumptions.deferred.price =
+          _.floor(self.consumptions.total.price - self.consumptions.repayable.price, 2);
+        self.consumptions.deferred.call =
+          self.consumptions.total.call - self.consumptions.repayable.call;
 
-        return TelephonyMediator.getGroup($stateParams.billingAccount).then(function (group) {
-            return group.getRepaymentConsumption().then(function (repaymentConsumptions) {
-                self.consumptions.all = _.get(repaymentConsumptions, "groupRepayments.all");
-                self.consumptions.raw = _.get(repaymentConsumptions, "groupRepayments.raw");
-
-                // total
-                self.consumptions.total.duration = _.sum(self.consumptions.raw, "duration");
-                self.consumptions.total.price = _.chain(self.consumptions.raw).sum("price").floor(2).value();
-                self.consumptions.total.call = _.chain(self.consumptions.all).size().value();
-
-                // repayable
-                var repayable = _.chain(self.consumptions.all).filter("repayable");
-                self.consumptions.repayable.price = repayable.pluck("price").sum().floor(2).value();
-                self.consumptions.repayable.call = repayable.size().value();
-                self.consumptions.hasAmountAvailable = _.find(self.consumptions.raw, "repayable");
-
-                // deferred
-                self.consumptions.deferred.price = _.floor(self.consumptions.total.price - self.consumptions.repayable.price, 2);
-                self.consumptions.deferred.call = self.consumptions.total.call - self.consumptions.repayable.call;
-
-                var dialedNumbers = _.chain(self.consumptions.raw).groupBy("dialed").keysIn().value();
-                self.consumptions.groupedByDialedNumber = _.map(dialedNumbers, function (dialed) {
-                    var consumptions = _.filter(self.consumptions.raw, { dialed: dialed });
-                    var totalPrice = _.chain(consumptions).sum("price").round(2).value();
-                    var operators = _.chain(consumptions).groupBy("operator").keysIn().sort()
-                        .value();
-                    var details = _.map(operators, function (operator) {
-                        var operatorConsumptions = _.filter(consumptions, { operator: operator });
-                        var totalOperatorPrice = _.chain(operatorConsumptions).sum("price").round(2).value();
-                        return {
-                            operator: operator,
-                            totalOperatorConsumption: _.size(operatorConsumptions),
-                            totalOperatorDuration: _.sum(operatorConsumptions, "duration"),
-                            totalOperatorPrice: totalOperatorPrice
-                        };
-                    });
-                    return {
-                        dialed: dialed,
-                        totalConsumption: _.size(consumptions),
-                        totalDuration: _.sum(consumptions, "duration"),
-                        totalPrice: totalPrice,
-                        details: details
-                    };
-                });
-                return repaymentConsumptions;
-            });
-        }).catch(function (err) {
-            Toast.error([$translate.instant("telephony_group_billing_group_repayments_error"), (err.data && err.data.message) || ""].join(" "));
-            return $q.reject(err);
-        }).finally(function () {
-            self.consumptions.isLoading = false;
+        const dialedNumbers = _.chain(self.consumptions.raw).groupBy('dialed').keysIn().value();
+        self.consumptions.groupedByDialedNumber = _.map(dialedNumbers, (dialed) => {
+          const consumptions = _.filter(self.consumptions.raw, { dialed });
+          const totalPrice = _.chain(consumptions).sum('price').round(2).value();
+          const operators = _.chain(consumptions).groupBy('operator').keysIn().sort()
+            .value();
+          const details = _.map(operators, (operator) => {
+            const operatorConsumptions = _.filter(consumptions, { operator });
+            const totalOperatorPrice = _.chain(operatorConsumptions).sum('price').round(2).value();
+            return {
+              operator,
+              totalOperatorConsumption: _.size(operatorConsumptions),
+              totalOperatorDuration: _.sum(operatorConsumptions, 'duration'),
+              totalOperatorPrice,
+            };
+          });
+          return {
+            dialed,
+            totalConsumption: _.size(consumptions),
+            totalDuration: _.sum(consumptions, 'duration'),
+            totalPrice,
+            details,
+          };
         });
-    }
+        return repaymentConsumptions;
+      })).catch((err) => {
+        Toast.error([$translate.instant('telephony_group_billing_group_repayments_error'), (err.data && err.data.message) || ''].join(' '));
+        return $q.reject(err);
+      }).finally(() => {
+        self.consumptions.isLoading = false;
+      });
+  }
 
-    /* -----  End of INITIALIZATION  ------*/
+  /* -----  End of INITIALIZATION  ------*/
 
-    init();
+  /* =============================
+  =            EVENTS            =
+  ============================== */
+
+  self.askHistoryRepaymentConsumption = function () {
+    self.groupRepaymentsForm.isAsking = true;
+
+    return OvhApiTelephony.HistoryRepaymentConsumption().v6().create({
+      billingAccount: $stateParams.billingAccount,
+    }, {
+      billingNumber: self.groupRepaymentsForm.billingNumber,
+    }).$promise.then(() => {
+      Toast.success($translate.instant('telephony_group_billing_group_repayments_ask_new_repayment_success'));
+      init();
+    }).catch((error) => {
+      Toast.error([$translate.instant('telephony_group_billing_group_repayments_ask_new_repayment_error'), _.get(error, 'data.message')].join(' '));
+      init();
+      return $q.reject(error);
+    }).finally(() => {
+      self.groupRepaymentsForm.isAsking = false;
+    });
+  };
+
+  /* -----  End of EVENTS  ------ */
+
+  init();
 });

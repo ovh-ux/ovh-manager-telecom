@@ -1,326 +1,301 @@
-angular.module("managerApp").controller("TelecomTelephonyLinePhoneOrderCtrl", function ($q, $scope, $stateParams, $translate, IpAddress, TelephonyMediator, OvhApiTelephony, OvhApiOrder, Toast, ToastError, TELEPHONY_RMA) {
-    "use strict";
+angular.module('managerApp').controller('TelecomTelephonyLinePhoneOrderCtrl', function ($q, $scope, $stateParams, $translate, IpAddress, TelephonyMediator, OvhApiTelephony, OvhApiOrder, Toast, ToastError, TELEPHONY_RMA) {
+  const self = this;
 
-    var self = this;
+  self.pdfBaseUrl = TELEPHONY_RMA.pdfBaseUrl;
+  self.rmaStatusUrl = TelephonyMediator.getV6ToV4RedirectionUrl('line.line_sav_rma_status');
 
-    self.pdfBaseUrl = TELEPHONY_RMA.pdfBaseUrl;
-    self.rmaStatusUrl = TelephonyMediator.getV6ToV4RedirectionUrl("line.line_sav_rma_status");
+  function fetchOfferPhones(offer) {
+    return OvhApiTelephony.v6().getLineOfferPhones({
+      country: 'fr',
+      offer,
+    }).$promise;
+  }
 
-    function fetchOfferPhones (offer) {
-        return OvhApiTelephony.v6().getLineOfferPhones({
-            country: "fr",
-            offer: offer
-        }).$promise;
-    }
-
-    function fetchMerchandiseAvailable () {
-        return OvhApiTelephony.Line().Phone().v6().getMerchandiseAvailable({
-            billingAccount: $stateParams.billingAccount,
-            serviceName: $stateParams.serviceName
-        }).$promise.then(function (result) {
-            _.each(result, function (phone) {
-                var parts = (phone.name || "").split(/\./);
-                phone.displayName = _.capitalize(_.head(parts)) + " " + parts.slice(1).map(function (p) {
-                    return (p || "").toUpperCase();
-                }).join(" ");
-            });
-            return _.filter(result, function (phone) {
-                return phone.price && phone.price.value >= 0;
-            });
-        }).then(function (result) {
-            return fetchOfferPhones(self.line.getPublicOffer.name).then(function (offers) {
-                _.each(offers, function (offer) {
-                    var found = _.find(result, { name: offer.brand });
-                    if (found) {
-                        found.displayName = offer.description;
-                    }
-                });
-                return result;
-            });
-        });
-    }
-
-    function fetchOrder (order) {
-        var params = {
-            serviceName: $stateParams.serviceName,
-            hardware: order.phone,
-            retractation: order.retract,
-            shippingContactId: order.contact.id
-        };
-        if (_.get(order, "shipping.mode") === "mondialRelay") {
-            params.mondialRelayId = order.shipping.relay.id;
+  function fetchMerchandiseAvailable() {
+    return OvhApiTelephony.Line().Phone().v6().getMerchandiseAvailable({
+      billingAccount: $stateParams.billingAccount,
+      serviceName: $stateParams.serviceName,
+    }).$promise.then((result) => {
+      _.each(result, (phone) => {
+        const parts = (phone.name || '').split(/\./);
+        _.set(phone, 'displayName', `${_.capitalize(_.first(parts))} ${parts.slice(1).map(p => (p || '').toUpperCase()).join(' ')}`);
+      });
+      return _.filter(result, phone => phone.price && phone.price.value >= 0);
+    }).then(result => fetchOfferPhones(self.line.getPublicOffer.name).then((offers) => {
+      _.each(offers, (offer) => {
+        const found = _.find(result, { name: offer.brand });
+        if (found) {
+          found.displayName = offer.description;
         }
-        self.isFetchingOrder = true;
-        return OvhApiOrder.Telephony().v6().getHardware(params).$promise.finally(function () {
-            self.isFetchingOrder = false;
-        });
+      });
+      return result;
+    }));
+  }
+
+  function fetchOrder(order) {
+    const params = {
+      serviceName: $stateParams.serviceName,
+      hardware: order.phone,
+      retractation: order.retract,
+      shippingContactId: order.contact.id,
+    };
+    if (_.get(order, 'shipping.mode') === 'mondialRelay') {
+      params.mondialRelayId = order.shipping.relay.id;
     }
+    self.isFetchingOrder = true;
+    return OvhApiOrder.Telephony().v6().getHardware(params).$promise.finally(() => {
+      self.isFetchingOrder = false;
+    });
+  }
 
-    function filterContact (contacts) {
-        return _.chain(contacts).groupBy(function (contact) { // group contact to detect contact that are the same
-            var contactCopy = {
-                lastName: contact.lastName,
-                firstName: contact.firstName
-            };
-            if (contact.address) {
-                contactCopy.address = {
-                    country: contact.address.country,
-                    line1: contact.address.line1,
-                    zip: contact.address.zip,
-                    city: contact.address.city
-                };
-            }
-            return JSON.stringify(contactCopy);
-        }).map(function (groups) { // get only contacts that are unique
-            return _.first(groups);
-        }).filter(function (contact) { // filter contact that have id and are in given countries
-            return _.get(contact, "address") && ["BE", "FR", "CH"].indexOf(contact.address.country) > -1;
-        }).value();
-    }
-
-    function init () {
-
-        self.orderStep = "hardware";
-
-        self.order = {
-            contact: null,
-            phone: null,
-            summary: null,
-            rmas: [],
-            shipping: {
-                mode: null,
-                relay: null,
-                options: {
-                    shippingPrice: 0
-                }
-            },
-            retract: true,
-            isContractsAccepted: false,
-            url: null,
-            success: false,
-            orderURL: null
+  function filterContact(contacts) {
+    return _.chain(contacts).groupBy((contact) => {
+      // group contact to detect contact that are the same
+      const contactCopy = {
+        lastName: contact.lastName,
+        firstName: contact.firstName,
+      };
+      if (contact.address) {
+        contactCopy.address = {
+          country: contact.address.country,
+          line1: contact.address.line1,
+          zip: contact.address.zip,
+          city: contact.address.city,
         };
+      }
+      return JSON.stringify(contactCopy);
+    }).map(groups => // get only contacts that are unique
+      _.first(groups)).filter(contact => // filter contact that have id and are in given countries
+      _.get(contact, 'address') && ['BE', 'FR', 'CH'].indexOf(contact.address.country) > -1)
+      .value();
+  }
 
-        self.contactChoiceOptions = {
-            filter: filterContact
-        };
+  function init() {
+    self.orderStep = 'hardware';
 
-        self.macAddress = null;
-        self.line = null;
-        self.phone = null;
-        self.phoneOffers = null;
-        self.billingAccount = $stateParams.billingAccount;
-        self.serviceName = $stateParams.serviceName;
-        self.hasPendingOfferTasks = false;
+    self.order = {
+      contact: null,
+      phone: null,
+      summary: null,
+      rmas: [],
+      shipping: {
+        mode: null,
+        relay: null,
+        options: {
+          shippingPrice: 0,
+        },
+      },
+      retract: true,
+      isContractsAccepted: false,
+      url: null,
+      success: false,
+      orderURL: null,
+    };
 
-        self.isLoading = true;
-        TelephonyMediator.getGroup($stateParams.billingAccount).then(function (group) {
-            self.line = group.getLine($stateParams.serviceName);
-        }).then(function () {
-            return OvhApiTelephony.Line().v6().get({
-                billingAccount: self.line.billingAccount,
-                serviceName: self.line.serviceName
-            }).$promise.then(function (result) {
-                _.assign(self.line, { getPublicOffer: result.getPublicOffer }, { isAttachedToOtherLinesPhone: result.isAttachedToOtherLinesPhone });
-            });
-        }).then(function () {
-            return self.line.hasPendingOfferTasks();
-        }).then(function (hasPendingOfferTasks) {
-            self.hasPendingOfferTasks = hasPendingOfferTasks;
-            return self.line.getPhone();
-        }).then(function (phone) {
-            self.phone = phone;
-            if (phone) {
-                return phone.getRMAs().then(function (rmas) {
-                    self.rmas = rmas;
-                }).then(function () {
-                    self.isStepLoading = true;
-                    fetchMerchandiseAvailable().then(function (result) {
-                        self.merchandise = result;
-                    }).catch(function (err) {
-                        return new ToastError(err);
-                    }).finally(function () {
-                        self.isStepLoading = false;
-                    });
-                });
-            }
-            self.rmas = [];
-            return fetchOfferPhones(self.line.getPublicOffer.name).then(function (offers) {
-                self.phoneOffers = offers;
-                if (offers.length) {
-                    self.order.phone = _.first(offers).brand;
-                }
-            });
+    self.contactChoiceOptions = {
+      filter: filterContact,
+    };
 
-        }).catch(function (err) {
-            return new ToastError(err);
-        }).finally(function () {
-            self.isLoading = false;
-        });
+    self.macAddress = null;
+    self.line = null;
+    self.phone = null;
+    self.phoneOffers = null;
+    self.billingAccount = $stateParams.billingAccount;
+    self.serviceName = $stateParams.serviceName;
+    self.hasPendingOfferTasks = false;
 
-        $scope.$watch("PhoneOrderCtrl.orderStep", function (step) {
-            switch (step) {
-            case "hardware":
-                if (self.phone) {
-                    self.isStepLoading = true;
-                    fetchMerchandiseAvailable().then(function (result) {
-                        self.merchandise = result;
-                    }).catch(function (err) {
-                        return new ToastError(err);
-                    }).finally(function () {
-                        self.isStepLoading = false;
-                    });
-                } else if (self.line && self.line.getPublicOffer) {
-                    fetchOfferPhones(self.line.getPublicOffer.name).then(function (offers) {
-                        self.phoneOffers = offers;
-                    }).catch(function (err) {
-                        return new ToastError(err);
-                    }).finally(function () {
-                        self.isStepLoading = false;
-                    });
-                }
-                break;
-            case "summary":
-                self.isStepLoading = true;
-                self.order.isContractsAccepted = false;
-                fetchOrder(self.order).then(function (result) {
-                    self.order.summary = result;
-                }).catch(function (err) {
-                    return new ToastError(err);
-                }).finally(function () {
-                    self.isStepLoading = false;
-                });
-                break;
-            default:
-                break;
-            }
-        });
-    }
-
-    self.submitPhoneReturn = function () {
-        self.isSubmiting = true;
-        return OvhApiTelephony.Line().Phone().RMA().v6().post({
-            billingAccount: $stateParams.billingAccount,
-            serviceName: $stateParams.serviceName
-        }, {
-            type: "restitution but keep the service enable" // nice enum ...
-        }).$promise.then(function () {
-            return self.phone.getRMAs();
-        }).then(function (rmas) {
+    self.isLoading = true;
+    TelephonyMediator.getGroup($stateParams.billingAccount).then((group) => {
+      self.line = group.getLine($stateParams.serviceName);
+    }).then(() => OvhApiTelephony.Line().v6().get({
+      billingAccount: self.line.billingAccount,
+      serviceName: self.line.serviceName,
+    }).$promise.then((result) => {
+      _.assign(
+        self.line,
+        { getPublicOffer: result.getPublicOffer },
+        { isAttachedToOtherLinesPhone: result.isAttachedToOtherLinesPhone },
+      );
+    })).then(() => self.line.hasPendingOfferTasks())
+      .then((hasPendingOfferTasks) => {
+        self.hasPendingOfferTasks = hasPendingOfferTasks;
+        return self.line.getPhone();
+      })
+      .then((phone) => {
+        self.phone = phone;
+        if (phone) {
+          return phone.getRMAs().then((rmas) => {
             self.rmas = rmas;
-            self.returnSuccess = true;
-            self.orderStep = "hardware"; // reset form
-        }).catch(function (err) {
-            return new ToastError(err);
-        }).finally(function () {
-            self.isSubmiting = false;
-        });
-    };
-
-    self.submitOrder = function () {
-        if (self.phone) {
-            return self.submitRma();
+          }).then(() => {
+            self.isStepLoading = true;
+            fetchMerchandiseAvailable().then((result) => {
+              self.merchandise = result;
+            }).catch(err => new ToastError(err)).finally(() => {
+              self.isStepLoading = false;
+            });
+          });
         }
-        var params = {
-            hardware: self.order.phone,
-            retractation: self.order.retract
-        };
-        if (_.get(self.order, "shipping.mode") === "mondialRelay") {
-            params.mondialRelayId = self.order.shipping.relay.id;
-        } else {
-            params.shippingContactId = self.order.contact.id;
-        }
-        self.isSubmiting = true;
-        return OvhApiOrder.Telephony().v6().orderHardware({
-            serviceName: $stateParams.serviceName
-        }, params).$promise.then(function (order) {
-            self.order.success = true;
-            self.order.orderURL = order.url;
-            self.orderStep = "hardware"; // reset form
-        }).catch(function (err) {
-            return new ToastError(err);
-        }).finally(function () {
-            self.isSubmiting = false;
+        self.rmas = [];
+        return fetchOfferPhones(self.line.getPublicOffer.name).then((offers) => {
+          self.phoneOffers = offers;
+          if (offers.length) {
+            self.order.phone = _.first(offers).brand;
+          }
         });
+      })
+      .catch(err => new ToastError(err))
+      .finally(() => {
+        self.isLoading = false;
+      });
 
+    $scope.$watch('PhoneOrderCtrl.orderStep', (step) => {
+      switch (step) {
+        case 'hardware':
+          if (self.phone) {
+            self.isStepLoading = true;
+            fetchMerchandiseAvailable().then((result) => {
+              self.merchandise = result;
+            }).catch(err => new ToastError(err)).finally(() => {
+              self.isStepLoading = false;
+            });
+          } else if (self.line && self.line.getPublicOffer) {
+            fetchOfferPhones(self.line.getPublicOffer.name).then((offers) => {
+              self.phoneOffers = offers;
+            }).catch(err => new ToastError(err)).finally(() => {
+              self.isStepLoading = false;
+            });
+          }
+          break;
+        case 'summary':
+          self.isStepLoading = true;
+          self.order.isContractsAccepted = false;
+          fetchOrder(self.order).then((result) => {
+            self.order.summary = result;
+          }).catch(err => new ToastError(err)).finally(() => {
+            self.isStepLoading = false;
+          });
+          break;
+        default:
+          break;
+      }
+    });
+  }
+
+  self.submitPhoneReturn = function () {
+    self.isSubmiting = true;
+    return OvhApiTelephony.Line().Phone().RMA().v6()
+      .post({
+        billingAccount: $stateParams.billingAccount,
+        serviceName: $stateParams.serviceName,
+      }, {
+        type: 'restitution but keep the service enable', // nice enum ...
+      }).$promise.then(() => self.phone.getRMAs()).then((rmas) => {
+        self.rmas = rmas;
+        self.returnSuccess = true;
+        self.orderStep = 'hardware'; // reset form
+      }).catch(err => new ToastError(err)).finally(() => {
+        self.isSubmiting = false;
+      });
+  };
+
+  self.submitOrder = function () {
+    if (self.phone) {
+      return self.submitRma();
+    }
+    const params = {
+      hardware: self.order.phone,
+      retractation: self.order.retract,
+    };
+    if (_.get(self.order, 'shipping.mode') === 'mondialRelay') {
+      params.mondialRelayId = self.order.shipping.relay.id;
+    } else {
+      params.shippingContactId = self.order.contact.id;
+    }
+    self.isSubmiting = true;
+    return OvhApiOrder.Telephony().v6().orderHardware({
+      serviceName: $stateParams.serviceName,
+    }, params).$promise.then((order) => {
+      self.order.success = true;
+      self.order.orderURL = order.url;
+      self.orderStep = 'hardware'; // reset form
+    }).catch(err => new ToastError(err)).finally(() => {
+      self.isSubmiting = false;
+    });
+  };
+
+  self.submitRma = function () {
+    const params = {
+      newMerchandise: self.order.phone,
+      type: 'change to another phone/equipment (restitution first and shipping then)', // nice enum ...
     };
 
-    self.submitRma = function () {
-        var params = {
-            newMerchandise: self.order.phone,
-            type: "change to another phone/equipment (restitution first and shipping then)" // nice enum ...
-        };
+    if (_.get(self.order, 'shipping.mode') === 'mondialRelay') {
+      params.mondialRelayId = self.order.shipping.relay.id;
+    } else {
+      params.shippingContactId = self.order.contact.id;
+    }
 
-        if (_.get(self.order, "shipping.mode") === "mondialRelay") {
-            params.mondialRelayId = self.order.shipping.relay.id;
-        } else {
-            params.shippingContactId = self.order.contact.id;
-        }
+    self.isSubmiting = true;
+    return OvhApiTelephony.Line().Phone().RMA().v6()
+      .post({
+        billingAccount: $stateParams.billingAccount,
+        serviceName: $stateParams.serviceName,
+      }, params).$promise.then(() => self.phone.getRMAs()).then((rmas) => {
+        self.rmas = rmas;
+        self.order.success = true;
+        self.orderStep = 'hardware'; // reset form
+      }).catch(err => new ToastError(err)).finally(() => {
+        self.isSubmiting = false;
+      });
+  };
 
-        self.isSubmiting = true;
-        return OvhApiTelephony.Line().Phone().RMA().v6().post({
-            billingAccount: $stateParams.billingAccount,
-            serviceName: $stateParams.serviceName
-        }, params).$promise.then(function () {
-            return self.phone.getRMAs();
-        }).then(function (rmas) {
-            self.rmas = rmas;
-            self.order.success = true;
-            self.orderStep = "hardware"; // reset form
-        }).catch(function (err) {
-            return new ToastError(err);
-        }).finally(function () {
-            self.isSubmiting = false;
-        });
+  self.getPhoneLabel = function (phone) {
+    const name = $translate.instant('telephony_line_phone_order_order_change_for', { phone: phone.displayName });
+    const price = $translate.instant('telephony_line_phone_order_order_price_tax_free', { price: phone.price.text });
+    return [name, price].join(' ');
+  };
+
+  self.getOfferLabel = function (offer) {
+    const name = $translate.instant('telephony_line_phone_order_order_a', { brand: offer.description });
+    const price = $translate.instant('telephony_line_phone_order_order_price2_tax_free', { price: offer.price.text });
+    return [name, price].join(' ');
+  };
+
+  self.isSamePhone = function () {
+    return self.phone && self.order.phone && (`phone.${self.order.phone}`) === self.phone.brand;
+  };
+
+  self.ipValidator = (function () {
+    return {
+      test(value) {
+        return IpAddress.isValidPublicIp4(value);
+      },
     };
+  }());
 
-    self.getPhoneLabel = function (phone) {
-        var name = $translate.instant("telephony_line_phone_order_order_change_for", { phone: phone.displayName });
-        var price = $translate.instant("telephony_line_phone_order_order_price_tax_free", { price: phone.price.text });
-        return [name, price].join(" ");
-    };
+  self.detachPhone = function () {
+    self.isDetaching = true;
+    OvhApiTelephony.Line().v6().dissociateDevice({
+      billingAccount: $stateParams.billingAccount,
+      serviceName: $stateParams.serviceName,
+    }, {
+      ipAddress: self.attachedPhoneIpAddress,
+      macAddress: self.phone.macAddress,
+    }).$promise.then(() => {
+      Toast.success($translate.instant('telephony_line_phone_order_detach_device_success'));
 
-    self.getOfferLabel = function (offer) {
-        var name = $translate.instant("telephony_line_phone_order_order_a", { brand: offer.description });
-        var price = $translate.instant("telephony_line_phone_order_order_price2_tax_free", { price: offer.price.text });
-        return [name, price].join(" ");
-    };
+      // Cache reset
+      OvhApiTelephony.Line().v6().resetAllCache();
+      OvhApiTelephony.Line().Phone().v6().resetAllCache();
+      TelephonyMediator.resetAllCache();
+      init();
+    }).catch((err) => {
+      Toast.error([$translate.instant('telephony_line_phone_order_detach_device_error'), _.get(err, 'data.message')].join(' '));
+      return $q.reject(err);
+    }).finally(() => {
+      self.isDetaching = false;
+    });
+  };
 
-    self.isSamePhone = function () {
-        return self.phone && self.order.phone && ("phone." + self.order.phone) === self.phone.brand;
-    };
-
-    self.ipValidator = (function () {
-        return {
-            test: function (value) {
-                return IpAddress.isValidPublicIp4(value);
-            }
-        };
-    })();
-
-    self.detachPhone = function () {
-        self.isDetaching = true;
-        OvhApiTelephony.Line().v6().dissociateDevice({
-            billingAccount: $stateParams.billingAccount,
-            serviceName: $stateParams.serviceName
-        }, {
-            ipAddress: self.attachedPhoneIpAddress,
-            macAddress: self.phone.macAddress
-        }).$promise.then(function () {
-            Toast.success($translate.instant("telephony_line_phone_order_detach_device_success"));
-
-            // Cache reset
-            OvhApiTelephony.Line().v6().resetAllCache();
-            OvhApiTelephony.Line().Phone().v6().resetAllCache();
-            TelephonyMediator.resetAllCache();
-            init();
-        }).catch(function (err) {
-            Toast.error([$translate.instant("telephony_line_phone_order_detach_device_error"), _.get(err, "data.message")].join(" "));
-            return $q.reject(err);
-        }).finally(function () {
-            self.isDetaching = false;
-        });
-    };
-
-    init();
+  init();
 });

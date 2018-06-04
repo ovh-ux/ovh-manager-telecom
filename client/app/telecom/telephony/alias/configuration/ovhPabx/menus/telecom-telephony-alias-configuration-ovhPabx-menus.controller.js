@@ -1,105 +1,102 @@
-angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationOvhPabxMenusCtrl", function ($scope, $q, $stateParams, $translate, $timeout, TelephonyMediator, Toast, jsPlumbService, TELPHONY_NUMBER_JSPLUMB_INSTANCE_OPTIONS) {
-    "use strict";
+angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationOvhPabxMenusCtrl', function ($scope, $q, $stateParams, $translate, $timeout, TelephonyMediator, Toast, jsPlumbService, TELPHONY_NUMBER_JSPLUMB_INSTANCE_OPTIONS) {
+  const self = this;
 
-    var self = this;
+  self.loading = {
+    init: false,
+  };
 
-    self.loading = {
-        init: false
-    };
+  self.model = {
+    selectedMenu: null,
+  };
 
-    self.model = {
-        selectedMenu: null
-    };
+  self.menu = null;
+  self.jsPlumbInstanceOptions = TELPHONY_NUMBER_JSPLUMB_INSTANCE_OPTIONS;
+  self.jsPlumbInstance = null;
 
-    self.menu = null;
-    self.jsPlumbInstanceOptions = TELPHONY_NUMBER_JSPLUMB_INSTANCE_OPTIONS;
-    self.jsPlumbInstance = null;
-
-    /*= =============================
+  /*= =============================
     =            EVENTS            =
-    ==============================*/
+    ============================== */
 
-    function manageMenuDisplayChange (menu) {
-        if (self.menu) {
-            if (self.menu.status === "DRAFT") {
-                self.number.feature.removeMenu(self.menu);
-            }
-            self.menu.stopEdition(true);
-        }
-        self.menu = null;
-        return $timeout(function () {
-            // timeout to force menu redraw
-            self.menu = menu;
-        });
+  function manageMenuDisplayChange(menu) {
+    if (self.menu) {
+      if (self.menu.status === 'DRAFT') {
+        self.number.feature.removeMenu(self.menu);
+      }
+      self.menu.stopEdition(true);
     }
+    self.menu = null;
+    return $timeout(() => {
+      // timeout to force menu redraw
+      self.menu = menu;
+    });
+  }
 
-    self.onAddMenuBtnClick = function () {
-        manageMenuDisplayChange(self.number.feature.addMenu({
-            name: $translate.instant("telephony_alias_ovh_pabx_menus_new_menu_name", {
-                index: self.number.feature.menus.length + 1
-            }),
-            status: "DRAFT"
-        })).then(function () {
-            self.model.selectedMenu = null;
-            if (self.jsPlumbInstance) {
-                self.jsPlumbInstance.customRepaint();
-            }
-        });
-    };
+  self.onAddMenuBtnClick = function () {
+    manageMenuDisplayChange(self.number.feature.addMenu({
+      name: $translate.instant('telephony_alias_ovh_pabx_menus_new_menu_name', {
+        index: self.number.feature.menus.length + 1,
+      }),
+      status: 'DRAFT',
+    })).then(() => {
+      self.model.selectedMenu = null;
+      if (self.jsPlumbInstance) {
+        self.jsPlumbInstance.customRepaint();
+      }
+    });
+  };
 
-    self.onMenuSelected = function (menu) {
-        manageMenuDisplayChange(menu ? self.number.feature.getMenu(menu.menuId) : null);
-    };
+  self.onMenuSelected = function (menu) {
+    manageMenuDisplayChange(menu ? self.number.feature.getMenu(menu.menuId) : null);
+  };
 
-    /* -----  End of EVENTS  ------*/
+  /* -----  End of EVENTS  ------*/
 
-    /*= =====================================
+  /*= =====================================
     =            INITIALIZATION            =
-    ======================================*/
+    ====================================== */
 
-    self.$onInit = function () {
-        var initPromises;
+  self.$onInit = function () {
+    let initPromises;
 
-        self.loading.init = true;
+    self.loading.init = true;
 
-        return TelephonyMediator.getGroup($stateParams.billingAccount).then(function (group) {
-            self.number = group.getNumber($stateParams.serviceName);
+    return TelephonyMediator.getGroup($stateParams.billingAccount).then((group) => {
+      self.number = group.getNumber($stateParams.serviceName);
 
-            return self.number.feature.init().then(function () {
-                if (self.number.getFeatureFamily() === "ovhPabx") {
-                    initPromises = {
-                        menus: self.number.feature.getMenus(true),
-                        sounds: self.number.feature.getSounds(),
-                        tts: self.number.feature.getTts(),
-                        jsplumb: jsPlumbService.initJsPlumb()
-                    };
+      return self.number.feature.init().then(() => {
+        if (self.number.getFeatureFamily() === 'ovhPabx') {
+          initPromises = {
+            menus: self.number.feature.getMenus(true),
+            sounds: self.number.feature.getSounds(),
+            tts: self.number.feature.getTts(),
+            jsplumb: jsPlumbService.initJsPlumb(),
+          };
 
-                    if (self.number.feature.featureType !== "cloudIvr") {
-                        initPromises.queues = self.number.feature.getQueues();
-                    }
+          if (self.number.feature.featureType !== 'cloudIvr') {
+            initPromises.queues = self.number.feature.getQueues();
+          }
 
-                    return $q.all();
-                }
-                return null;
-            });
-        }).catch(function (error) {
-            Toast.error([$translate.instant("telephony_alias_configuration_load_error"), (error.data && error.data.message) || ""].join(" "));
-            return $q.reject(error);
-        }).finally(function () {
-            self.loading.init = false;
-        });
-    };
+          return $q.all();
+        }
+        return null;
+      });
+    }).catch((error) => {
+      Toast.error([$translate.instant('telephony_alias_configuration_load_error'), (error.data && error.data.message) || ''].join(' '));
+      return $q.reject(error);
+    }).finally(() => {
+      self.loading.init = false;
+    });
+  };
 
-    /**
+  /**
      *  What to do on controller destroy ?
      *  Remove draft menu from menu list
      */
-    $scope.$on("$destroy", function () {
-        if (self.menu) {
-            self.number.feature.removeMenu(self.menu);
-        }
-    });
+  $scope.$on('$destroy', () => {
+    if (self.menu) {
+      self.number.feature.removeMenu(self.menu);
+    }
+  });
 
-    /* -----  End of INITIALIZATION  ------*/
-
+  /* -----  End of INITIALIZATION  ------*/
 });

@@ -1,126 +1,122 @@
-angular.module("managerApp").controller("telephonyNumberOvhPabxMenuListCtrl", function ($q, $timeout, $filter, $translate, $translatePartialLoader, Toast) {
-    "use strict";
+angular.module('managerApp').controller('telephonyNumberOvhPabxMenuListCtrl', function ($q, $timeout, $filter, $translate, $translatePartialLoader, Toast) {
+  const self = this;
 
-    var self = this;
+  self.loading = {
+    init: false,
+    translations: false,
+  };
 
-    self.loading = {
-        init: false,
-        translations: false
-    };
+  self.askedMenuDelete = null;
+  self.idPrefix = null;
 
-    self.askedMenuDelete = null;
-    self.idPrefix = null;
+  self.menus = {
+    raw: null,
+    paginated: null,
+    sorted: null,
+    orderBy: 'name',
+    orderDesc: false,
+  };
 
-    self.menus = {
-        raw: null,
-        paginated: null,
-        sorted: null,
-        orderBy: "name",
-        orderDesc: false
-    };
-
-    /*= ==============================
+  /*= ==============================
     =            HELPERS            =
-    ===============================*/
+    =============================== */
 
-    self.orderByName = function () {
-        self.menus.orderDesc = !self.menus.orderDesc;
-    };
+  self.orderByName = function () {
+    self.menus.orderDesc = !self.menus.orderDesc;
+  };
 
-    function isDisabledMenuUsedInEntry (menu) {
-        return _.some(menu.entries, function (entry) {
-            return entry.action === "menuSub" && (entry.actionParam === self.disableMenuId || isDisabledMenuUsedInEntry(self.ovhPabx.getMenu(entry.actionParam)));
-        });
-    }
+  function isDisabledMenuUsedInEntry(menu) {
+    return _.some(menu.entries, entry => entry.action === 'menuSub' && (entry.actionParam === self.disableMenuId || isDisabledMenuUsedInEntry(self.ovhPabx.getMenu(entry.actionParam))));
+  }
 
-    self.isMenuChoiceDisabled = function (menu) {
-        return self.disableMenuId && (self.disableMenuId === menu.menuId || isDisabledMenuUsedInEntry(menu));
-    };
+  self.isMenuChoiceDisabled = function (menu) {
+    return self.disableMenuId &&
+      (self.disableMenuId === menu.menuId || isDisabledMenuUsedInEntry(menu));
+  };
 
-    /* -----  End of HELPERS  ------*/
+  /* -----  End of HELPERS  ------*/
 
-    /*= =============================
+  /*= =============================
     =            EVENTS            =
-    ==============================*/
+    ============================== */
 
-    self.onMenuDeleteConfirm = function (menu) {
-        return menu.remove().then(function () {
-            self.ovhPabx.removeMenu(menu);
-            self.onSelectedMenuChanged(null);
-        }).catch(function (error) {
-            var errorTranslationKey = "telephony_number_feature_ovh_pabx_menu_list_delete_error";
-            if (error.status === 403) {
-                errorTranslationKey = "telephony_number_feature_ovh_pabx_menu_list_delete_error_used";
-            }
-            Toast.error([$translate.instant(errorTranslationKey)].join(" "));
-            return $q.reject(error);
-        }).finally(function () {
-            self.askedMenuDelete = null;
-        });
-    };
+  self.onMenuDeleteConfirm = function (menu) {
+    return menu.remove().then(() => {
+      self.ovhPabx.removeMenu(menu);
+      self.onSelectedMenuChanged(null);
+    }).catch((error) => {
+      let errorTranslationKey = 'telephony_number_feature_ovh_pabx_menu_list_delete_error';
+      if (error.status === 403) {
+        errorTranslationKey = 'telephony_number_feature_ovh_pabx_menu_list_delete_error_used';
+      }
+      Toast.error([$translate.instant(errorTranslationKey)].join(' '));
+      return $q.reject(error);
+    }).finally(() => {
+      self.askedMenuDelete = null;
+    });
+  };
 
-    self.onSelectedMenuChanged = function (menu) {
-        if (self.onMenuSelected && _.isFunction(self.onMenuSelected())) {
-            $timeout(function () {
-                self.onMenuSelected()(menu);
-            });
-        }
-    };
+  self.onSelectedMenuChanged = function (menu) {
+    if (self.onMenuSelected && _.isFunction(self.onMenuSelected())) {
+      $timeout(() => {
+        self.onMenuSelected()(menu);
+      });
+    }
+  };
 
-    /* -----  End of EVENTS  ------*/
+  /* -----  End of EVENTS  ------*/
 
-    /*= =====================================
+  /*= =====================================
     =            INITIALIZATION            =
-    ======================================*/
+    ====================================== */
 
-    /* ----------  Translations load  ----------*/
+  /* ----------  Translations load  ----------*/
 
-    function getTranslations () {
-        self.loading.translations = true;
+  function getTranslations() {
+    self.loading.translations = true;
 
-        $translatePartialLoader.addPart("../components/telecom/telephony/group/number/feature/ovhPabx/menu/list");
-        return $translate.refresh().finally(function () {
-            self.loading.translations = false;
-        });
+    $translatePartialLoader.addPart('../components/telecom/telephony/group/number/feature/ovhPabx/menu/list');
+    return $translate.refresh().finally(() => {
+      self.loading.translations = false;
+    });
+  }
+
+  function getAllMenuEntries() {
+    const entriesPromises = [];
+    angular.forEach(self.ovhPabx.menus, (menu) => {
+      entriesPromises.push(menu.getEntries());
+    });
+
+    return $q.allSettled(entriesPromises);
+  }
+
+  /* ----------  Component initialization  ----------*/
+
+  self.$onInit = function () {
+    if (!self.numberCtrl && !self.ovhPabx) {
+      throw new Error('telephonyNumberOvhPabxMenuList must have telephonyNumber component as parent or must have ovhPabx attribute specified');
     }
 
-    function getAllMenuEntries () {
-        var entriesPromises = [];
-        angular.forEach(self.ovhPabx.menus, function (menu) {
-            entriesPromises.push(menu.getEntries());
-        });
+    self.loading.init = true;
 
-        return $q.allSettled(entriesPromises);
+    if (!self.ovhPabx) {
+      self.ovhPabx = self.numberCtrl.number.feature;
     }
 
-    /* ----------  Component initialization  ----------*/
+    if (!self.radioName) {
+      self.radioName = 'menuChoice';
+    }
+    self.idPrefix = _.kebabCase(self.radioName);
 
-    self.$onInit = function () {
-        if (!self.numberCtrl && !self.ovhPabx) {
-            throw new Error("telephonyNumberOvhPabxMenuList must have telephonyNumber component as parent or must have ovhPabx attribute specified");
-        }
+    return $q.all({
+      translations: getTranslations(),
+      menusEntries: getAllMenuEntries(),
+    }).then(() => {
+      self.menus.raw = self.ovhPabx.menus;
+    }).finally(() => {
+      self.loading.init = false;
+    });
+  };
 
-        self.loading.init = true;
-
-        if (!self.ovhPabx) {
-            self.ovhPabx = self.numberCtrl.number.feature;
-        }
-
-        if (!self.radioName) {
-            self.radioName = "menuChoice";
-        }
-        self.idPrefix = _.kebabCase(self.radioName);
-
-        return $q.all({
-            translations: getTranslations(),
-            menusEntries: getAllMenuEntries()
-        }).then(function () {
-            self.menus.raw = self.ovhPabx.menus;
-        }).finally(function () {
-            self.loading.init = false;
-        });
-    };
-
-    /* -----  End of INITIALIZATION  ------*/
-
+  /* -----  End of INITIALIZATION  ------*/
 });

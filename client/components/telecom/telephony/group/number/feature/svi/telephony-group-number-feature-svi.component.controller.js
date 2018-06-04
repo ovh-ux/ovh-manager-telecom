@@ -1,155 +1,150 @@
-angular.module("managerApp").controller("TelephonyNumberSviCtrl", function ($q, $translate, validator, Toast) {
-    "use strict";
+angular.module('managerApp').controller('TelephonyNumberSviCtrl', function ($q, $translate, validator, Toast) {
+  const self = this;
+  const protocolRegexp = new RegExp(/^(http(s)?:\/\/|ftp:\/\/|mailto:)/, 'g');
+  const v4UrlRegexp = new RegExp(/^(?:(?:[\w\.\-\+%!$&"\(\)*\+,;=]+:)*[\w\.\-\+%!$&"\(\)*\+,;=]+@)?(?:[a-z0-9\-\.%]+)\.[a-z]{1,5}(?::[0-9]+)?(?:[\/|\?][\w#!:\.\?\+=&%@!$"~*,;\/\(\)\[\]\-]*)?\/$/); // eslint-disable-line
 
-    var self = this;
-    var protocolRegexp = new RegExp(/^(http(s)?:\/\/|ftp:\/\/|mailto:)/, "g");
-    var v4UrlRegexp = new RegExp(/^(?:(?:[\w\.\-\+%!$&"\(\)*\+,;=]+:)*[\w\.\-\+%!$&"\(\)*\+,;=]+@)?(?:[a-z0-9\-\.%]+)\.[a-z]{1,5}(?::[0-9]+)?(?:[\/|\?][\w#!:\.\?\+=&%@!$"~*,;\/\(\)\[\]\-]*)?\/$/);
+  self.urlProtocols = ['http://', 'https://'];
+  self.urlRecordProtocols = ['http://', 'ftp://', 'mailto:'];
+  self.validator = validator;
 
-    self.urlProtocols = ["http://", "https://"];
-    self.urlRecordProtocols = ["http://", "ftp://", "mailto:"];
-    self.validator = validator;
+  self.model = {
+    urlProtocol: null,
+    urlRecordProtocol: null,
+  };
 
-    self.model = {
-        urlProtocol: null,
-        urlRecordProtocol: null
-    };
+  self.popoverOpen = false;
 
-    self.popoverOpen = false;
-
-    /*= ==============================
+  /*= ==============================
     =            HELPERS            =
-    ===============================*/
+    =============================== */
 
-    function saveFeature () {
-        return self.numberCtrl.number.feature.save().then(function () {
-            self.numberCtrl.jsplumbInstance.customRepaint();
-            self.numberCtrl.number.feature.stopEdition();
-        }).catch(function (error) {
-            self.numberCtrl.number.feature.stopEdition(true);
-            Toast.error([$translate.instant("telephony_number_feature_svi_save_error"), (error.data && error.data.message) || ""].join(" "));
-            return $q.reject(error);
-        }).finally(function () {
-            self.numberCtrl.loading.save = false;
-        });
+  function saveFeature() {
+    return self.numberCtrl.number.feature.save().then(() => {
+      self.numberCtrl.jsplumbInstance.customRepaint();
+      self.numberCtrl.number.feature.stopEdition();
+    }).catch((error) => {
+      self.numberCtrl.number.feature.stopEdition(true);
+      Toast.error([$translate.instant('telephony_number_feature_svi_save_error'), (error.data && error.data.message) || ''].join(' '));
+      return $q.reject(error);
+    }).finally(() => {
+      self.numberCtrl.loading.save = false;
+    });
+  }
+
+  function getProtocol(url) {
+    return _.get(url.match(protocolRegexp), '[0]') || 'http://';
+  }
+
+  self.isValidURL = function (value) {
+    return validator.isURL(value) && validator.isValidDomain(value.split('/')[0]);
+  };
+
+  self.isValidUrlRecord = function (value) {
+    if (!value) {
+      return true;
+    } else if (self.model.urlRecordProtocol === 'mailto:') {
+      return validator.isEmail(value);
+    } else if (self.model.urlRecordProtocol === 'ftp://') {
+      return v4UrlRegexp.test(value);
     }
+    return self.isValidURL(value);
+  };
 
-    function getProtocol (url) {
-        return _.get(url.match(protocolRegexp), "[0]") || "http://";
-    }
+  /* -----  End of HELPERS  ------*/
 
-    self.isValidURL = function (value) {
-        return validator.isURL(value) && validator.isValidDomain(value.split("/")[0]);
-    };
-
-    self.isValidUrlRecord = function (value) {
-        if (!value) {
-            return true;
-        } else if (self.model.urlRecordProtocol === "mailto:") {
-            return validator.isEmail(value);
-        } else if (self.model.urlRecordProtocol === "ftp://") {
-            return v4UrlRegexp.test(value);
-        }
-        return self.isValidURL(value);
-
-    };
-
-    /* -----  End of HELPERS  ------*/
-
-    /*= ==================================================
+  /*= ==================================================
     =            GETTER SETTER FOR NG MODELS            =
-    ===================================================*/
+    =================================================== */
 
-    self.urlModel = function (newUrl) {
-        if (arguments.length) {
-            return (self.numberCtrl.number.feature.url = !_.isEmpty(newUrl) ? self.model.urlProtocol + newUrl : "");
-        }
-        return self.numberCtrl.number.feature.url.replace(protocolRegexp, "");
+  self.urlModel = function (newUrl) {
+    if (arguments.length) {
+      return (self.numberCtrl.number.feature.url = !_.isEmpty(newUrl) ? self.model.urlProtocol + newUrl : ''); // eslint-disable-line
+    }
+    return self.numberCtrl.number.feature.url.replace(protocolRegexp, '');
+  };
 
-    };
+  self.urlRecordModel = function (newUrl) {
+    if (arguments.length) {
+      return (self.numberCtrl.number.feature.urlRecord = !_.isEmpty(newUrl) ? self.model.urlRecordProtocol + newUrl : ''); // eslint-disable-line
+    }
+    return self.numberCtrl.number.feature.urlRecord.replace(protocolRegexp, '');
+  };
 
-    self.urlRecordModel = function (newUrl) {
-        if (arguments.length) {
-            return (self.numberCtrl.number.feature.urlRecord = !_.isEmpty(newUrl) ? self.model.urlRecordProtocol + newUrl : "");
-        }
-        return self.numberCtrl.number.feature.urlRecord.replace(protocolRegexp, "");
+  /* -----  End of GETTER SETTER FOR NG MODELS  ------*/
 
-    };
-
-    /* -----  End of GETTER SETTER FOR NG MODELS  ------*/
-
-    /*= =============================
+  /*= =============================
     =            EVENTS            =
-    ==============================*/
+    ============================== */
 
-    /**
-     *  Called when url protocol change. Update the url value of the feature.
-     */
-    self.updateUrlProtocol = function () {
-        var urlValue = self.numberCtrl.number.feature.url.replace(protocolRegexp, "");
-        self.sviConfigForm.url.$setDirty(true);
-        self.numberCtrl.number.feature.url = !_.isEmpty(urlValue) ? self.model.urlProtocol + urlValue : "";
-    };
+  /**
+   *  Called when url protocol change. Update the url value of the feature.
+   */
+  self.updateUrlProtocol = function () {
+    const urlValue = self.numberCtrl.number.feature.url.replace(protocolRegexp, '');
+    self.sviConfigForm.url.$setDirty(true);
+    self.numberCtrl.number.feature.url = !_.isEmpty(urlValue) ? self.model.urlProtocol + urlValue : '';
+  };
 
-    /**
-     *  Called when url record protocol change. Update the urlRecord value of the feature.
-     */
-    self.updateUrlRecordProtocol = function () {
-        var urlValue = self.numberCtrl.number.feature.urlRecord.replace(protocolRegexp, "");
-        self.sviConfigForm.urlRecord.$setDirty(true);
-        self.numberCtrl.number.feature.urlRecord = !_.isEmpty(urlValue) ? self.model.urlRecordProtocol + urlValue : "";
-    };
+  /**
+   *  Called when url record protocol change. Update the urlRecord value of the feature.
+   */
+  self.updateUrlRecordProtocol = function () {
+    const urlValue = self.numberCtrl.number.feature.urlRecord.replace(protocolRegexp, '');
+    self.sviConfigForm.urlRecord.$setDirty(true);
+    self.numberCtrl.number.feature.urlRecord = !_.isEmpty(urlValue) ? self.model.urlRecordProtocol + urlValue : '';
+  };
 
-    /**
-     *  Called on config button clicked.
-     */
-    self.togglePopover = function () {
-        self.popoverOpen = !self.popoverOpen;
-        if (self.popoverOpen) {
-            self.numberCtrl.number.feature.startEdition();
-            self.model.urlProtocol = getProtocol(self.numberCtrl.number.feature.url);
-            self.model.urlRecordProtocol = getProtocol(self.numberCtrl.number.feature.urlRecord);
-        } else {
-            self.numberCtrl.number.feature.stopEdition(true);
-        }
-    };
+  /**
+   *  Called on config button clicked.
+   */
+  self.togglePopover = function () {
+    self.popoverOpen = !self.popoverOpen;
+    if (self.popoverOpen) {
+      self.numberCtrl.number.feature.startEdition();
+      self.model.urlProtocol = getProtocol(self.numberCtrl.number.feature.url);
+      self.model.urlRecordProtocol = getProtocol(self.numberCtrl.number.feature.urlRecord);
+    } else {
+      self.numberCtrl.number.feature.stopEdition(true);
+    }
+  };
 
-    /**
-     *  Called when submit is clicked. Configuration is OK, so we start to save the svi feature.
-     */
-    self.onPopoverValidate = function () {
-        self.popoverOpen = false;
-        return self.numberCtrl.saveNumber();
-    };
+  /**
+   *  Called when submit is clicked. Configuration is OK, so we start to save the svi feature.
+   */
+  self.onPopoverValidate = function () {
+    self.popoverOpen = false;
+    return self.numberCtrl.saveNumber();
+  };
 
-    /**
-     *  Called when cancel button is clicked. We stop feature configuration and rollback to previous configuration.
-     */
-    self.onPopoverCancel = function () {
-        self.popoverOpen = false;
-        self.numberCtrl.number.feature.stopEdition(true);
-    };
+  /**
+   *  Called when cancel button is clicked.
+   *  We stop feature configuration and rollback to previous configuration.
+   */
+  self.onPopoverCancel = function () {
+    self.popoverOpen = false;
+    self.numberCtrl.number.feature.stopEdition(true);
+  };
 
-    /* -----  End of EVENTS  ------*/
+  /* -----  End of EVENTS  ------*/
 
-    /*= =====================================
+  /*= =====================================
     =            INITIALIZATION            =
-    ======================================*/
+    ====================================== */
 
-    /**
-     *  Component initialization
-     */
-    self.$onInit = function () {
-        // set save feature function
-        self.numberCtrl.saveFeature = saveFeature;
-    };
+  /**
+   *  Component initialization
+   */
+  self.$onInit = function () {
+    // set save feature function
+    self.numberCtrl.saveFeature = saveFeature;
+  };
 
-    /**
-     *  Stop feature when component is destroyed.
-     */
-    self.$onDestroy = function () {
-        self.numberCtrl.number.feature.stopEdition(true);
-    };
+  /**
+   *  Stop feature when component is destroyed.
+   */
+  self.$onDestroy = function () {
+    self.numberCtrl.number.feature.stopEdition(true);
+  };
 
-    /* -----  End of INITIALIZATION  ------*/
-
+  /* -----  End of INITIALIZATION  ------*/
 });

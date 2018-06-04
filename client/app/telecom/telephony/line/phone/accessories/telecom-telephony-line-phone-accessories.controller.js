@@ -1,39 +1,36 @@
-angular.module("managerApp").controller("TelecomTelephonyLinePhoneAccessoriesCtrl", function ($q, $stateParams, $translate, atInternet, TelephonyMediator, TelephonyAccessoriesOrderProcess, Toast) {
-    "use strict";
+angular.module('managerApp').controller('TelecomTelephonyLinePhoneAccessoriesCtrl', function ($q, $stateParams, $translate, atInternet, TelephonyMediator, TelephonyAccessoriesOrderProcess, Toast) {
+  const self = this;
 
-    var self = this;
+  self.process = null;
 
-    self.process = null;
+  self.loading = {
+    init: false,
+  };
 
-    self.loading = {
-        init: false
-    };
-
-    /*= =====================================
+  /*= =====================================
     =            INITIALIZATION            =
-    ======================================*/
+    ====================================== */
 
-    function init () {
-        self.loading.init = true;
+  function init() {
+    self.loading.init = true;
 
-        return TelephonyMediator.getGroup($stateParams.billingAccount).then(function () {
-            self.process = TelephonyAccessoriesOrderProcess.init($stateParams.billingAccount);
-        }, function (error) {
-            Toast.error([$translate.instant("telephony_line_phone_accessories_load_error"), (error.data && error.data.message) || ""].join(" "));
-            return $q.error(error);
-        }).finally(function () {
-            self.loading.init = false;
-            return atInternet.trackPage({
-                name: "accessories-Tel",
-                type: "navigation",
-                level2: "Telecom",
-                chapter1: "telecom"
-            });
-        });
-    }
+    return TelephonyMediator.getGroup($stateParams.billingAccount).then(() => {
+      self.process = TelephonyAccessoriesOrderProcess.init($stateParams.billingAccount);
+    }, (error) => {
+      Toast.error([$translate.instant('telephony_line_phone_accessories_load_error'), (error.data && error.data.message) || ''].join(' '));
+      return $q.error(error);
+    }).finally(() => {
+      self.loading.init = false;
+      return atInternet.trackPage({
+        name: 'accessories-Tel',
+        type: 'navigation',
+        level2: 'Telecom',
+        chapter1: 'telecom',
+      });
+    });
+  }
 
-    /* -----  End of INITIALIZATION  ------*/
+  /* -----  End of INITIALIZATION  ------*/
 
-    init();
-
+  init();
 });

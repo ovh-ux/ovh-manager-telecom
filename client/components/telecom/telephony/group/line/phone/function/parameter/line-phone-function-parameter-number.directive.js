@@ -1,11 +1,8 @@
 (function () {
-    "use strict";
-    angular.module("managerApp").directive("functionParamaterNumber", function () {
-        return {
-            require: "ngModel",
-            link: function (/* $scope, $elm, $attrs, $ctrl*/) {
-                return true;
-            }
-        };
-    });
-})();
+  angular.module('managerApp').directive('functionParamaterNumber', () => ({
+    require: 'ngModel',
+    link(/* $scope, $elm, $attrs, $ctrl */) {
+      return true;
+    },
+  }));
+}());

@@ -1,21 +1,17 @@
-angular.module("managerApp").controller("jsplumbEndpointCtrl", function () {
-    "use strict";
+angular.module('managerApp').controller('jsplumbEndpointCtrl', function () {
+  const self = this;
 
-    var self = this;
+  self.endpoint = null;
 
-    self.endpoint = null;
-
-    /*= =====================================
+  /*= =====================================
     =            INITIALIZATION            =
-    ======================================*/
+    ====================================== */
 
-    self.$onInit = function () {
-        if (!self.uuid) {
-            self.uuid = _.uniqueId("endpoint_");
-        }
-    };
+  self.$onInit = function () {
+    if (!self.uuid) {
+      self.uuid = _.uniqueId('endpoint_');
+    }
+  };
 
-    /* -----  End of INITIALIZATION  ------*/
-
-
+  /* -----  End of INITIALIZATION  ------*/
 });

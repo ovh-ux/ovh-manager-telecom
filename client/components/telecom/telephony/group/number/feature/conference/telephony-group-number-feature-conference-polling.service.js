@@ -1,74 +1,67 @@
-angular.module("managerApp").service("telephonyGroupNumberConferencePolling", function ($q, $timeout) {
-    "use strict";
+angular.module('managerApp').service('telephonyGroupNumberConferencePolling', function ($q, $timeout) {
+  const self = this;
+  let pollingDeferred = null;
+  let pollingPromise = null;
+  let pollingStarted = false;
 
-    var self = this;
-    var pollingDeferred = null;
-    var pollingPromise = null;
-    var pollingStarted = false;
+  self.conference = null;
 
-    self.conference = null;
-
-    /*= =========================================
+  /*= =========================================
     =            POLLING MANAGEMENT            =
-    ==========================================*/
+    ========================================== */
 
-    function poll () {
-        if (!pollingStarted) {
-            return;
-        }
-
-        pollingPromise = $timeout(function () {
-            return self.conference.getInfos();
-        }, 1000).then(function () {
-            pollingDeferred.notify();
-            poll();
-        }, function (error) {
-            return pollingDeferred.reject(error);
-        });
+  function poll() {
+    if (!pollingStarted) {
+      return;
     }
 
-    self.startPolling = function () {
-        pollingStarted = true;
-        return poll();
-    };
+    pollingPromise = $timeout(() => self.conference.getInfos(), 1000).then(() => {
+      pollingDeferred.notify();
+      poll();
+    }, error => pollingDeferred.reject(error));
+  }
 
-    self.stopPolling = function () {
-        pollingStarted = false;
-        if (pollingPromise) {
-            $timeout.cancel(pollingPromise);
-        }
-        pollingDeferred.reject();
-    };
+  self.startPolling = function () {
+    pollingStarted = true;
+    return poll();
+  };
 
-    self.pausePolling = function () {
-        pollingStarted = false;
-        if (pollingPromise) {
-            $timeout.cancel(pollingPromise);
-        }
-    };
+  self.stopPolling = function () {
+    pollingStarted = false;
+    if (pollingPromise) {
+      $timeout.cancel(pollingPromise);
+    }
+    pollingDeferred.reject();
+  };
 
-    /* -----  End of POLLING MANAGEMENT  ------*/
+  self.pausePolling = function () {
+    pollingStarted = false;
+    if (pollingPromise) {
+      $timeout.cancel(pollingPromise);
+    }
+  };
 
-    /*= =====================================
+  /* -----  End of POLLING MANAGEMENT  ------*/
+
+  /*= =====================================
     =            INITIALIZATION            =
-    ======================================*/
+    ====================================== */
 
-    /**
+  /**
      *  Init and start conference polling
      */
-    self.initPolling = function (conferenceObj) {
-        // set conference instance to poll
-        self.conference = conferenceObj;
+  self.initPolling = function (conferenceObj) {
+    // set conference instance to poll
+    self.conference = conferenceObj;
 
-        // set polling deferred
-        pollingDeferred = $q.defer();
+    // set polling deferred
+    pollingDeferred = $q.defer();
 
-        // start polling
-        self.startPolling();
+    // start polling
+    self.startPolling();
 
-        return pollingDeferred.promise;
-    };
+    return pollingDeferred.promise;
+  };
 
-    /* -----  End of INITIALIZATION  ------*/
-
+  /* -----  End of INITIALIZATION  ------*/
 });

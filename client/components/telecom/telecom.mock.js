@@ -1,12 +1,8 @@
-"use strict";
+angular.module('telecomMock', []);
 
-angular.module("telecomMock", []);
-
-angular.module("telecomMock").run(function ($q, TelecomMediator) {
-
-    TelecomMediator.deferred = {
-        vip: $q.defer(),
-        count: $q.defer()
-    };
-
+angular.module('telecomMock').run(($q, TelecomMediator) => {
+  TelecomMediator.deferred = { // eslint-disable-line
+    vip: $q.defer(),
+    count: $q.defer(),
+  };
 });

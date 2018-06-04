@@ -1,18 +1,13 @@
-angular.module("managerApp").service("FaxMediator", function (OvhApiFreeFax) {
-    "use strict";
+angular.module('managerApp').service('FaxMediator', function (OvhApiFreeFax) {
+  const self = this;
 
-    var self = this;
-
-    /*= ============================
+  /*= ============================
     =            COUNT            =
-    =============================*/
+    ============================= */
 
-    self.getCount = function () {
-        return OvhApiFreeFax.v7().query().execute().$promise.then(function (freeFaxIds) {
-            return freeFaxIds.length;
-        });
-    };
+  self.getCount = function () {
+    return OvhApiFreeFax.v7().query().execute().$promise.then(freeFaxIds => freeFaxIds.length);
+  };
 
-    /* -----  End of COUNT  ------*/
-
+  /* -----  End of COUNT  ------*/
 });

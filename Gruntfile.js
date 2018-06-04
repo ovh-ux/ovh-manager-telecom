@@ -820,9 +820,9 @@ module.exports = function (grunt) {
                 name: "managerApp",
                 dest: "<%= yeoman.client %>/app/config/custom.js",
                 serializerOptions: {
-                    indent: "    ",
+                    indent: "  ",
                     no_trailing_comma: true,
-                    quote: "\""
+                    quote: "\'"
                 },
                 template: grunt.file.read("./tasks/constant.tpl.ejs"),
                 constants: {

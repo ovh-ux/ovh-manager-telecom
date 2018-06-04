@@ -1,62 +1,56 @@
-angular.module("managerApp").directive("groupConsumptionPieChart", function ($window) {
-    "use strict";
+angular.module('managerApp').directive('groupConsumptionPieChart', ($window) => {
+  const { d3 } = $window;
+  if (!d3) {
+    throw new Error('D3 must be load');
+  }
 
-    var d3 = $window.d3;
-    if (!d3) {
-        throw new Error("D3 must be load");
-    }
+  return {
+    scope: {
+      dataset: '=',
+    },
+    controllerAs: 'PieCtrl',
+    controller: 'GroupConsumptionPieChartCtrl',
+    templateUrl: 'components/telecom/telephony/group/consumption/pie-chart/telephony-group-consumption-pie-chart.html',
+    link($scope, $element, $attr, $ctrl) {
+      const sizeRatio = $element.parent('div')[0].offsetWidth;
+      const animationRatio = 20;
+      const viewBox = sizeRatio + (animationRatio * 2);
+      const radius = sizeRatio / 2;
+      const data = $scope.dataset || [];
 
-    return {
-        scope: {
-            dataset: "="
-        },
-        controllerAs: "PieCtrl",
-        controller: "GroupConsumptionPieChartCtrl",
-        templateUrl: "components/telecom/telephony/group/consumption/pie-chart/telephony-group-consumption-pie-chart.html",
-        link: function ($scope, $element, $attr, $ctrl) {
+      // Take angular element and do a d3 node
+      const svg = d3.select($element[0])
+        .append('div')
+        .classed('pie__container', true)
+        .append('svg')
+        .attr('preserveAspectRatio', 'xMinYMin meet')
+        .attr('viewBox', `-${animationRatio} -${animationRatio} ${viewBox} ${viewBox}`)
+        .classed('pie__wrapper', true)
+        .append('g')
+        .attr('transform', `translate(${sizeRatio / 2},${sizeRatio / 2})`);
 
-            var sizeRatio = $element.parent("div")[0].offsetWidth;
-            var animationRatio = 20;
-            var viewBox = sizeRatio + (animationRatio * 2);
-            var radius = sizeRatio / 2;
-            var data = $scope.dataset || [];
+      // Create Arc specification
+      const arc = d3.arc()
+        .innerRadius(radius - 20)
+        .outerRadius(radius);
 
-            // Take angular element and do a d3 node
-            var svg = d3.select($element[0])
-                .append("div")
-                .classed("pie__container", true)
-                .append("svg")
-                .attr("preserveAspectRatio", "xMinYMin meet")
-                .attr("viewBox", "-" + animationRatio + " -" + animationRatio + " " + viewBox + " " + viewBox)
-                .classed("pie__wrapper", true)
-                .append("g")
-                .attr("transform", "translate(" + (sizeRatio / 2) + "," + (sizeRatio / 2) + ")");
+      // Create Pie
+      const pie = d3.pie()
+        .value(d => d.count)
+        .sort(null);
 
-            // Create Arc specification
-            var arc = d3.arc()
-                .innerRadius(radius - 20)
-                .outerRadius(radius);
+      // Create arcs
+      const arcs = svg.selectAll('path')
+        .data(pie(data))
+        .enter()
+        .append('path')
+        .attr('d', arc)
+        .attr('class', d => d.data.label)
+        .each(function (d) {
+          return this._current === d;
+        });
 
-            // Create Pie
-            var pie = d3.pie()
-                .value(function (d) {
-                    return d.count;
-                })
-                .sort(null);
-
-            // Create arcs
-            var arcs = svg.selectAll("path")
-                .data(pie(data))
-                .enter()
-                .append("path")
-                .attr("d", arc)
-                .attr("class", function (d) {
-                    return d.data.label;
-                }).each(function (d) {
-                    return this._current === d;
-                });
-
-            /* var pathAnim = function (arc, dir) {
+      /* var pathAnim = function (arc, dir) {
                 switch (dir) {
                     case 0:
                         arc.transition()
@@ -84,43 +78,40 @@ angular.module("managerApp").directive("groupConsumptionPieChart", function ($wi
 
                 pathAnim(currentArc, ~~(!clicked));
                 currentArc.classed("clicked", !clicked);
-            });*/
+            }); */
 
-            $scope.$watchCollection("dataset", function (dataParam) {
-                var duration = 1200;
-                var theData = dataParam;
+      $scope.$watchCollection('dataset', (dataParam) => {
+        const duration = 1200;
+        let theData = dataParam;
 
-                if (theData) {
+        if (theData) {
+          // Update data into controller
+          $ctrl.setDataset(theData);
 
-                    // Update data into controller
-                    $ctrl.setDataset(theData);
+          if ($ctrl.getTotal() === 0) {
+            theData = [{
+              label: 'empty',
+              count: 1,
+            }];
+          }
 
-                    if ($ctrl.getTotal() === 0) {
-                        theData = [{
-                            label: "empty",
-                            count: 1
-                        }];
-                    }
+          // Update data in d3
+          arcs.data(pie(theData));
 
-                    // Update data in d3
-                    arcs.data(pie(theData));
-
-                    // Play awesome animation
-                    arcs.transition()
-                        .duration(duration)
-                        .ease(d3.easeBounce)
-                        .attr("class", function (d) {
-                            return d.data.label;
-                        })
-                        .attrTween("d", function (a) {
-                            var i = d3.interpolate(this._current, a);
-                            this._current = i(0);
-                            return function (t) {
-                                return arc(i(t));
-                            };
-                        });
-                }
+          // Play awesome animation
+          arcs.transition()
+            .duration(duration)
+            .ease(d3.easeBounce)
+            .attr('class', d => d.data.label)
+            .attrTween('d', function (a) {
+              const i = d3.interpolate(this._current, a);
+              this._current = i(0);
+              return function (t) {
+                return arc(i(t));
+              };
             });
         }
-    };
+      });
+    },
+  };
 });

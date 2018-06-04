@@ -1,54 +1,51 @@
-angular.module("managerApp").controller("TelecomOrdersAliasCtrl", function (OvhApiOrder, Toast, $q, $translate, $state) {
-    "use strict";
+angular.module('managerApp').controller('TelecomOrdersAliasCtrl', function (OvhApiOrder, Toast, $q, $translate, $state) {
+  const self = this;
 
-    var self = this;
-
-    /*= =============================
+  /*= =============================
     =            EVENTS            =
-    ==============================*/
+    ============================== */
 
-    this.submit = function () {
-        return $state.go(
-            "telecom.telephony.orderAlias",
-            {
-                billingAccount: self.billingAccount.billingAccount
-            },
-            {
-                reload: true
-            }
-        );
+  this.submit = function () {
+    return $state.go(
+      'telecom.telephony.orderAlias',
+      {
+        billingAccount: self.billingAccount.billingAccount,
+      },
+      {
+        reload: true,
+      },
+    );
+  };
+
+  /* -----  End of EVENTS  ------*/
+
+  /*= =====================================
+    =            INITIALIZATION            =
+    ====================================== */
+
+  function init() {
+    self.loading = {
+      init: true,
     };
 
-    /* -----  End of EVENTS  ------*/
-
-    /*= =====================================
-    =            INITIALIZATION            =
-    ======================================*/
-
-    function init () {
-        self.loading = {
-            init: true
-        };
-
-        OvhApiOrder.Telephony().Aapi().billingAccounts().$promise.then(
-            function (billingAccounts) {
-                self.orderAccounts = _.filter(billingAccounts, { status: "enabled" });
-                _.forEach(self.orderAccounts, function (elt) {
-                    elt.label = elt.description || elt.billingAccount;
-                });
-                return self.orderAccounts;
-            },
-            function (err) {
-                Toast.error($translate.instant("telecom_orders_alias_billing_loading_error"));
-                return $q.reject(err);
-            }
-        ).finally(function () {
-            self.loading.init = false;
+    OvhApiOrder.Telephony().Aapi().billingAccounts().$promise.then(
+      (billingAccounts) => {
+        self.orderAccounts = _.filter(billingAccounts, { status: 'enabled' });
+        _.forEach(self.orderAccounts, (elt) => {
+          _.set(elt, 'label', elt.description || elt.billingAccount);
         });
-    }
+        return self.orderAccounts;
+      },
+      (err) => {
+        Toast.error($translate.instant('telecom_orders_alias_billing_loading_error'));
+        return $q.reject(err);
+      },
+    ).finally(() => {
+      self.loading.init = false;
+    });
+  }
 
-    /* -----  End of INITIALIZATION  ------*/
+  /* -----  End of INITIALIZATION  ------*/
 
-    init();
-
+  init();
 });

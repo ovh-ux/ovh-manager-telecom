@@ -1,3 +1,3 @@
-angular.module("managerApp")
-    .constant("jsPlumb", jsPlumb)
-    .constant("jsPlumbUtil", jsPlumbUtil);
+angular.module('managerApp')
+  .constant('jsPlumb', jsPlumb)
+  .constant('jsPlumbUtil', jsPlumbUtil);

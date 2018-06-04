@@ -1,152 +1,146 @@
-angular.module("managerApp").factory("TelephonyGroupNumberMiniPabx", function ($q, VoipScheduler, VoipTimeCondition, OvhApiTelephonyMiniPabx) {
-    "use strict";
-
-    /*= ==================================
+angular.module('managerApp').factory('TelephonyGroupNumberMiniPabx', ($q, VoipScheduler, VoipTimeCondition, OvhApiTelephonyMiniPabx) => {
+  /*= ==================================
     =            CONSTRUCTOR            =
-    ===================================*/
+    =================================== */
 
-    function TelephonyGroupNumberMiniPabx (featureOptions) {
+  function TelephonyGroupNumberMiniPabx(featureOptions) {
+    // check for mandatory options
+    if (!featureOptions) {
+      throw new Error('mandatory options must be specified when creating a new TelephonyGroupNumberMiniPabx');
+    } else {
+      if (!featureOptions.billingAccount) {
+        throw new Error('billingAccount option must be specified when creating a new TelephonyGroupNumberMiniPabx');
+      }
 
-        // check for mandatory options
-        if (!featureOptions) {
-            throw new Error("mandatory options must be specified when creating a new TelephonyGroupNumberMiniPabx");
-        } else {
-            if (!featureOptions.billingAccount) {
-                throw new Error("billingAccount option must be specified when creating a new TelephonyGroupNumberMiniPabx");
-            }
+      if (!featureOptions.serviceName) {
+        throw new Error('serviceName option must be specified when creating a new TelephonyGroupNumberMiniPabx');
+      }
 
-            if (!featureOptions.serviceName) {
-                throw new Error("serviceName option must be specified when creating a new TelephonyGroupNumberMiniPabx");
-            }
-
-            if (!featureOptions.featureType) {
-                throw new Error("featureType option must be specified when creating a new TelephonyGroupNumberMiniPabx");
-            }
-        }
-
-        // set mandatory attributes
-        this.billingAccount = featureOptions.billingAccount;
-        this.serviceName = featureOptions.serviceName;
-        this.featureType = featureOptions.featureType;
-
-        // set feature options
-        this.setOptions(featureOptions);
-
-        // custom attributes
-        this.inEdition = false;
-        this.saveForEdition = null;
-
-        this.scheduler = null;
-        this.timeCondition = null;
+      if (!featureOptions.featureType) {
+        throw new Error('featureType option must be specified when creating a new TelephonyGroupNumberMiniPabx');
+      }
     }
 
-    /* -----  End of CONSTRUCTOR  ------*/
+    // set mandatory attributes
+    this.billingAccount = featureOptions.billingAccount;
+    this.serviceName = featureOptions.serviceName;
+    this.featureType = featureOptions.featureType;
 
-    /*= ========================================
+    // set feature options
+    this.setOptions(featureOptions);
+
+    // custom attributes
+    this.inEdition = false;
+    this.saveForEdition = null;
+
+    this.scheduler = null;
+    this.timeCondition = null;
+  }
+
+  /* -----  End of CONSTRUCTOR  ------*/
+
+  /*= ========================================
     =            PROTOTYPE METHODS            =
-    =========================================*/
+    ========================================= */
 
-    /* ----------  FEATURE OPTIONS  ----------*/
+  /* ----------  FEATURE OPTIONS  ----------*/
 
-    TelephonyGroupNumberMiniPabx.prototype.setOptions = function () {
-        var self = this;
+  TelephonyGroupNumberMiniPabx.prototype.setOptions = function () {
+    const self = this;
 
-        return self;
+    return self;
+  };
+
+  /* ----------  HELPERS  ----------*/
+
+  /* ----------  EDITION  ----------*/
+
+  TelephonyGroupNumberMiniPabx.prototype.startEdition = function () {
+    const self = this;
+
+    self.inEdition = true;
+    self.saveForEdition = {
+      featureType: angular.copy(self.featureType),
     };
 
-    /* ----------  HELPERS  ----------*/
+    return self;
+  };
 
-    /* ----------  EDITION  ----------*/
+  TelephonyGroupNumberMiniPabx.prototype.stopEdition = function (cancel) {
+    const self = this;
 
-    TelephonyGroupNumberMiniPabx.prototype.startEdition = function () {
-        var self = this;
+    if (self.saveForEdition && cancel) {
+      self.featureType = angular.copy(self.saveForEdition.featureType);
+    }
 
-        self.inEdition = true;
-        self.saveForEdition = {
-            featureType: angular.copy(self.featureType)
-        };
+    self.saveForEdition = null;
+    self.inEdition = false;
 
-        return self;
-    };
+    return self;
+  };
 
-    TelephonyGroupNumberMiniPabx.prototype.stopEdition = function (cancel) {
-        var self = this;
+  TelephonyGroupNumberMiniPabx.prototype.hasChange = function (attr) {
+    const self = this;
 
-        if (self.saveForEdition && cancel) {
-            self.featureType = angular.copy(self.saveForEdition.featureType);
-        }
+    if (!self.inEdition || !self.saveForEdition) {
+      return false;
+    }
 
-        self.saveForEdition = null;
-        self.inEdition = false;
+    if (attr) {
+      return !_.isEqual(_.get(self.saveForEdition, attr), _.get(self, attr));
+    }
+    return self.hasChange('featureType');
+  };
 
-        return self;
-    };
+  /* ----------  SCHEDULER  ----------*/
 
-    TelephonyGroupNumberMiniPabx.prototype.hasChange = function (attr) {
-        var self = this;
+  TelephonyGroupNumberMiniPabx.prototype.getScheduler = function () {
+    const self = this;
 
-        if (!self.inEdition || !self.saveForEdition) {
-            return false;
-        }
+    if (!self.scheduler) {
+      self.scheduler = new VoipScheduler({
+        billingAccount: self.billingAccount,
+        serviceName: self.serviceName,
+      });
+    }
 
-        if (attr) {
-            return !_.isEqual(_.get(self.saveForEdition, attr), _.get(self, attr));
-        }
-        return self.hasChange("featureType");
-    };
+    return self.scheduler.get();
+  };
 
-    /* ----------  SCHEDULER  ----------*/
+  /* ----------  TIMECONDITION  ----------*/
 
-    TelephonyGroupNumberMiniPabx.prototype.getScheduler = function () {
-        var self = this;
+  TelephonyGroupNumberMiniPabx.prototype.getTimeCondition = function () {
+    const self = this;
 
-        if (!self.scheduler) {
-            self.scheduler = new VoipScheduler({
-                billingAccount: self.billingAccount,
-                serviceName: self.serviceName
-            });
-        }
+    if (!self.timeCondition) {
+      self.timeCondition = new VoipTimeCondition({
+        featureType: 'sip',
+        billingAccount: self.billingAccount,
+        serviceName: self.serviceName,
+      });
+    }
 
-        return self.scheduler.get();
-    };
+    return self.timeCondition.init();
+  };
 
-    /* ----------  TIMECONDITION  ----------*/
+  /* ----------  HELPERS  ----------*/
 
-    TelephonyGroupNumberMiniPabx.prototype.getTimeCondition = function () {
-        var self = this;
+  TelephonyGroupNumberMiniPabx.prototype.inPendingState = function () {
+    return false;
+  };
 
-        if (!self.timeCondition) {
-            self.timeCondition = new VoipTimeCondition({
-                featureType: "sip",
-                billingAccount: self.billingAccount,
-                serviceName: self.serviceName
-            });
-        }
+  /* ----------  INITIALIZATION  ----------*/
 
-        return self.timeCondition.init();
-    };
+  TelephonyGroupNumberMiniPabx.prototype.init = function () {
+    const self = this;
 
-    /* ----------  HELPERS  ----------*/
+    return OvhApiTelephonyMiniPabx.v6().get({
+      billingAccount: self.billingAccount,
+      serviceName: self.serviceName,
+    }).$promise.then(featureOptions => self.setOptions(featureOptions));
+  };
 
-    TelephonyGroupNumberMiniPabx.prototype.inPendingState = function () {
-        return false;
-    };
+  /* -----  End of PROTOTYPE METHODS  ------*/
 
-    /* ----------  INITIALIZATION  ----------*/
-
-    TelephonyGroupNumberMiniPabx.prototype.init = function () {
-        var self = this;
-
-        return OvhApiTelephonyMiniPabx.v6().get({
-            billingAccount: self.billingAccount,
-            serviceName: self.serviceName
-        }).$promise.then(function (featureOptions) {
-            return self.setOptions(featureOptions);
-        });
-    };
-
-    /* -----  End of PROTOTYPE METHODS  ------*/
-
-    return TelephonyGroupNumberMiniPabx;
-
+  return TelephonyGroupNumberMiniPabx;
 });
