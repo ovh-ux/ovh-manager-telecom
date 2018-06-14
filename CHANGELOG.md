@@ -1,3 +1,14 @@
+<a name="10.4.7"></a>
+## [10.4.7](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.4.6...v10.4.7) (2018-06-14)
+
+
+### Bug Fixes
+
+* **navbar:** language button position and format ([23a6759](https://github.com/ovh-ux/ovh-manager-telecom/commit/23a6759))
+* **telephony add group order:** fix validation icon ([29a911c](https://github.com/ovh-ux/ovh-manager-telecom/commit/29a911c))
+
+
+
 <a name="10.4.6"></a>
 ## [10.4.6](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.4.5...v10.4.6) (2018-06-01)
 
