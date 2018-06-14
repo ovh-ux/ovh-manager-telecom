@@ -377,7 +377,7 @@ class ManagerNavbarService {
             name: "languages",
             label: _(currentLanguage).get("name"),
             "class": "oui-navbar-menu_language",
-            title: _(currentLanguage).get("key").replace("_", "-"),
+            title: _(currentLanguage).get("key").split("_")[0].toUpperCase(),
             headerTitle: this.$translate.instant("common_menu_language"),
             subLinks: _.map(this.LANGUAGES.available, (lang) => ({
                 title: lang.name,
@@ -577,8 +577,8 @@ class ManagerNavbarService {
             // Set Internal Links
             if (user) {
                 baseNavbar.internalLinks = [
-                    this.getAssistanceMenu(user), // Assistance
                     this.getLanguageMenu(), // Language
+                    this.getAssistanceMenu(user), // Assistance
                     this.getUserMenu(user) // User
                 ];
             }
