@@ -327,27 +327,56 @@ angular.module("managerApp", [
         $logProvider.debugEnabled(false);
     })
 
-    .run(($rootScope, $transitions, $translate, $translatePartialLoader,
-          ouiDatagridConfiguration, ouiPaginationConfiguration, ouiFieldConfiguration) => {
+    .run(($rootScope,
+          $transitions,
+          $translate,
+          $translatePartialLoader,
+          ouiCriteriaAdderConfiguration,
+          ouiDatagridConfiguration,
+          ouiFieldConfiguration,
+          ouiNavbarConfiguration,
+          ouiPaginationConfiguration,
+          ouiStepperConfiguration) => {
 
         "use strict";
         $translatePartialLoader.addPart("common");
         $translatePartialLoader.addPart("components");
 
         const removeHook = $transitions.onSuccess({}, () => {
-            ouiDatagridConfiguration.translations = {
-                emptyPlaceholder: $translate.instant("common_datagrid_nodata")
+            ouiCriteriaAdderConfiguration.translations = {
+                column_label: $translate.instant("common_criteria_adder_column_label"),
+                operator_label: $translate.instant("common_criteria_adder_operator_label"),
+
+                operator_boolean_is: $translate.instant("common_criteria_adder_operator_boolean_is"),
+                operator_boolean_isNot: $translate.instant("common_criteria_adder_operator_boolean_isNot"),
+
+                operator_string_contains: $translate.instant("common_criteria_adder_operator_string_contains"),
+                operator_string_containsNot: $translate.instant("common_criteria_adder_operator_string_containsNot"),
+                operator_string_startsWith: $translate.instant("common_criteria_adder_operator_string_startsWith"),
+                operator_string_endsWith: $translate.instant("common_criteria_adder_operator_string_endsWith"),
+                operator_string_is: $translate.instant("common_criteria_adder_operator_string_is"),
+                operator_string_isNot: $translate.instant("common_criteria_adder_operator_string_isNot"),
+
+                operator_number_is: $translate.instant("common_criteria_adder_operator_number_is"),
+                operator_number_smaller: $translate.instant("common_criteria_adder_operator_number_smaller"),
+                operator_number_bigger: $translate.instant("common_criteria_adder_operator_number_bigger"),
+
+                operator_date_is: $translate.instant("common_criteria_adder_operator_date_is"),
+                operator_date_isBefore: $translate.instant("common_criteria_adder_operator_date_isBefore"),
+                operator_date_isAfter: $translate.instant("common_criteria_adder_operator_date_isAfter"),
+
+                operator_options_is: $translate.instant("common_criteria_adder_operator_options_is"),
+                operator_options_isNot: $translate.instant("common_criteria_adder_operator_options_isNot"),
+
+                true_label: $translate.instant("common_criteria_adder_true_label"),
+                false_label: $translate.instant("common_criteria_adder_false_label"),
+
+                value_label: $translate.instant("common_criteria_adder_value_label"),
+                submit_label: $translate.instant("common_criteria_adder_submit_label")
             };
 
-            ouiPaginationConfiguration.translations = {
-                resultsPerPage: $translate.instant("common_pagination_resultsperpage"),
-                ofNResults: $translate.instant("common_pagination_ofnresults")
-                    .replace("TOTAL_ITEMS", "{{totalItems}}"),
-                currentPageOfPageCount: $translate.instant("common_pagination_currentpageofpagecount")
-                    .replace("CURRENT_PAGE", "{{currentPage}}")
-                    .replace("PAGE_COUNT", "{{pageCount}}"),
-                previousPage: $translate.instant("common_pagination_previous"),
-                nextPage: $translate.instant("common_pagination_next")
+            ouiDatagridConfiguration.translations = {
+                emptyPlaceholder: $translate.instant("common_datagrid_nodata")
             };
 
             ouiFieldConfiguration.translations = {
@@ -361,6 +390,32 @@ angular.module("managerApp", [
                     maxlength: $translate.instant("common_field_error_maxlength", { maxlength: "{{maxlength}}" }),
                     pattern: $translate.instant("common_field_error_pattern")
                 }
+            };
+
+            ouiNavbarConfiguration.translations = {
+                notification: {
+                    markRead: $translate.instant("common_navbar_notification_mark_as_read"),
+                    markUnread: $translate.instant("common_navbar_notification_mark_as_unread")
+                }
+            };
+
+            ouiPaginationConfiguration.translations = {
+                resultsPerPage: $translate.instant("common_pagination_resultsperpage"),
+                ofNResults: $translate.instant("common_pagination_ofnresults")
+                    .replace("TOTAL_ITEMS", "{{totalItems}}"),
+                currentPageOfPageCount: $translate.instant("common_pagination_currentpageofpagecount")
+                    .replace("CURRENT_PAGE", "{{currentPage}}")
+                    .replace("PAGE_COUNT", "{{pageCount}}"),
+                previousPage: $translate.instant("common_pagination_previous"),
+                nextPage: $translate.instant("common_pagination_next")
+            };
+            ouiStepperConfiguration.translations = {
+                optionalLabel: $translate.instant("common_stepper_optional_label"),
+                modifyThisStep: $translate.instant("common_stepper_modify_this_step"),
+                skipThisStep: $translate.instant("common_stepper_skip_this_step"),
+                nextButtonLabel: $translate.instant("common_stepper_next_button_label"),
+                submitButtonLabel: $translate.instant("common_stepper_submit_button_label"),
+                cancelButtonLabel: $translate.instant("common_stepper_cancel_button_label")
             };
 
             removeHook();

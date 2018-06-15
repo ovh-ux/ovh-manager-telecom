@@ -1,6 +1,6 @@
 class ManagerNavbarService {
     constructor ($q, $translate, $translatePartialLoader, LANGUAGES, MANAGER_URLS, REDIRECT_URLS, TARGET, URLS, OvhApiMe, OtrsPopupService, ssoAuthentication, PackMediator, telecomVoip,
-                 voipService, SmsMediator, OvhApiFreeFax, OvhApiOverTheBox, TelecomMediator) {
+                 voipService, SmsMediator, OvhApiFreeFax, OvhApiOverTheBox, TelecomMediator, NavbarNotificationService) {
         this.$q = $q;
         this.$translate = $translate;
         this.$translatePartialLoader = $translatePartialLoader;
@@ -19,6 +19,7 @@ class ManagerNavbarService {
         this.ovhApiFreeFax = OvhApiFreeFax;
         this.ovhApiOverTheBox = OvhApiOverTheBox;
         this.telecomMediator = TelecomMediator;
+        this.navbarNotificationService = NavbarNotificationService;
     }
 
     getPackGroup (pack) {
@@ -559,7 +560,7 @@ class ManagerNavbarService {
         const managerUrls = this.MANAGER_URLS;
 
         // Get base structure for the navbar
-        const getBaseNavbar = (user) => {
+        const getBaseNavbar = (user, notificationsMenu) => {
             const baseNavbar = {
                 // Set OVH Logo
                 brand: {
@@ -583,14 +584,20 @@ class ManagerNavbarService {
                 ];
             }
 
+            if (notificationsMenu.show) {
+                baseNavbar.internalLinks.splice(1, 0, notificationsMenu);
+            }
+
             return baseNavbar;
         };
 
-        return this.$q.all({
-            translate: this.loadTranslations(),
-            user: this.ovhApiMe.v6().get().$promise
-        })
-            .then(({ user }) => getBaseNavbar(user))
+        return this.$q
+            .all({
+                translate: this.loadTranslations(),
+                user: this.ovhApiMe.v6().get().$promise,
+                notifications: this.navbarNotificationService.getNavbarContent()
+            })
+            .then(({ user, notifications }) => getBaseNavbar(user, notifications))
             .catch(() => getBaseNavbar());
     }
 }
