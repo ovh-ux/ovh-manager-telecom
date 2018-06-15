@@ -22,7 +22,7 @@
    <translation id="telephony_group_billing_dashboard_status_enabled" qtlid="55133">Active</translation>
    <translation id="telephony_group_billing_dashboard_status_expired" qtlid="386339">Éxpiré</translation>
    <translation id="telephony_group_billing_dashboard_bill_date" qtlid="24523">Date</translation>
-   <translation id="telephony_group_billing_dashboard_bill_amount" qtlid="20635">Amount excl. VAT</translation>
+   <translation id="telephony_group_billing_dashboard_bill_amount" qtlid="20635">Amount</translation>
    <translation id="telephony_group_billing_dashboard_bill_paid" qtlid="334569">Déjà réglé</translation>
    <translation id="telephony_group_billing_dashboard_bill_download" qtlid="39286">Download</translation>
    <translation id="telephony_group_billing_dashboard_bill_download_pdf" qtlid="334582">Relevé de consommation au format PDF</translation>

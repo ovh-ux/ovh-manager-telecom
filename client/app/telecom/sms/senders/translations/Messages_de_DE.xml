@@ -13,7 +13,7 @@
 
    <translation id="sms_senders_referer_custom" qtlid="50062">Personalisiert</translation>
    <translation id="sms_senders_referer_domain" qtlid="340588">Domaine OVH</translation>
-   <translation id="sms_senders_referer_line" qtlid="42802">Leitung</translation>
+   <translation id="sms_senders_referer_line" qtlid="42802">Zeile</translation>
    <translation id="sms_senders_referer_nic" qtlid="340601">Donnée personnelle</translation>
    <translation id="sms_senders_referer_owner" qtlid="30634">Inhaber</translation>
    <translation id="sms_senders_referer_virtual" qtlid="360229">Numéro virtuel</translation>

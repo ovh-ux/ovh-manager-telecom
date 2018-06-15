@@ -53,7 +53,7 @@
    <translation id="xdsl_details_ips_remove_only_extra" qtlid="309737">Il n'est possible d'enlever que les blocks d'IPs supplémentaires</translation>
    <translation id="xdsl_details_ips_manage" qtlid="456024">gérer les IPs</translation>
    <translation id="xdsl_details_ips_delete" qtlid="456037">supprimer ce bloc d'IPs</translation>
-   <translation id="xdsl_details_ips_notifications" qtlid="72797">Alerts</translation>
+   <translation id="xdsl_details_ips_notifications" qtlid="72797">Waarschuwingen</translation>
    <translation id="xdsl_details_ips_title" qtlid="309750">IPs</translation>
    <translation id="xdsl_details_ips_order" qtlid="43558">Bestellen</translation>
    <translation id="xdsl_access_ip_delete_really" qtlid="309763">Voulez-vous vraiment supprimer le block d'IP <b>{{ip}}/{{range}}</b></translation>

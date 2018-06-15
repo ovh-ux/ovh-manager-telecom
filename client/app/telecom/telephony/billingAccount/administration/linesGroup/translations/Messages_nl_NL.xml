@@ -3,7 +3,7 @@
    <translation id="telephony_lines_group_title" qtlid="334413">Regroupement de lignes</translation>
    <translation id="telephony_lines_group_info" qtlid="26551">Informatie</translation>
    <translation id="telephony_lines_group_select" qtlid="386027">Selectie</translation>
-   <translation id="telephony_lines_group_select_another" qtlid="17431">Vorig</translation>
+   <translation id="telephony_lines_group_select_another" qtlid="17431">Vorige</translation>
    <translation id="telephony_lines_group_select_ba_help" qtlid="386040">Choisissez le groupe contenant les services que vous souhaitez attacher au groupe actuel :</translation>
    <translation id="telephony_lines_group_select_help" qtlid="386053">Choisissez les services à attacher au groupe actuel :</translation>
    <translation id="telephony_lines_group_line_count" qtlid="386066">Nombre de lignes attachées : <strong>{{lines}}</strong></translation>

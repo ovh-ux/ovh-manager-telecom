@@ -28,7 +28,7 @@
    <translation id="common_yes_capitalized" qtlid="34776">Ja</translation>
    <translation id="no" qtlid="50602">nee</translation>
    <translation id="common_no_capitalized" qtlid="34788">Nee</translation>
-   <translation id="previous" qtlid="17431">Vorig</translation>
+   <translation id="previous" qtlid="17431">Vorige</translation>
    <translation id="next" qtlid="17743">Volgende</translation>
 
    <translation id="show" qtlid="69353">Weergeven</translation>
@@ -78,7 +78,7 @@
    <translation id="back" qtlid="4118">Terug</translation>
    <translation id="contract_agree" qtlid="304563">J'accepte les conditions.</translation>
    <translation id="contract_next" qtlid="17743">Volgende</translation>
-   <translation id="contract_previous" qtlid="17431">Vorig</translation>
+   <translation id="contract_previous" qtlid="17431">Vorige</translation>
    <translation id="contract_download" qtlid="250082">Open het contract "{{id}}" in PDF</translation>
    <translation id="contract_help" qtlid="180382">Scroll naar beneden naar de contracten om deze te bevestigen.</translation>
    <translation id="contract_agree" qtlid="250095">Ik heb de voorwaarden gelezen en aanvaard</translation>
@@ -86,7 +86,7 @@
    <translation id="contract_list_title" qtlid="180408">Er is 1 contract, dat u kunt raadplegen.</translation>
    <translation id="contracts_list_title" qtlid="250108">Er zijn {{nbr}} contracten om door te lezen.</translation>
 
-   <translation id="back_my_pack" qtlid="82929">Pack</translation>
+   <translation id="back_my_pack" qtlid="82929">Pakket</translation>
    <translation id="back_my_access" qtlid="82449">Toegang</translation>
 
    <translation id="sidebar_menu" qtlid="304576">Menu</translation>

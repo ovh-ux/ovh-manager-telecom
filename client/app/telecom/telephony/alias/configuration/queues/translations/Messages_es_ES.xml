@@ -14,7 +14,7 @@
    <translation id="telephony_alias_configuration_queues_agent_add_helper" qtlid="462056">Numéro de l'agent à ajouter</translation>
    <translation id="telephony_alias_configuration_queues_agent_select_add" qtlid="462069">Ajouter cet agent à la file</translation>
    <translation id="telephony_alias_configuration_queues_agent_add_success" qtlid="462082">Membre ajouté</translation>
-   <translation id="telephony_alias_configuration_queues_options_manage" qtlid="340354">Configurar las opciones</translation>
+   <translation id="telephony_alias_configuration_queues_options_manage" qtlid="340354">Administrar las opciones</translation>
    <translation id="telephony_alias_configuration_queues_options" qtlid="23395">Opciones</translation>
    <translation id="telephony_alias_configuration_queues_description" qtlid="324223">Nombre de la cola</translation>
    <translation id="telephony_alias_configuration_queues_strategy" qtlid="294841">Estrategia</translation>
