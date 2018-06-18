@@ -1,3 +1,20 @@
+<a name="10.4.8"></a>
+## [10.4.8](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.4.7...v10.4.8) (2018-06-18)
+
+
+### Bug Fixes
+
+* **sms options recredit:** amount typo ([4c9a0e9](https://github.com/ovh-ux/ovh-manager-telecom/commit/4c9a0e9))
+* **telephony voicemail options:** add word-break ([0d7a261](https://github.com/ovh-ux/ovh-manager-telecom/commit/0d7a261))
+
+
+### Features
+
+* **navbar:** add new navbar notifications ([0f8a912](https://github.com/ovh-ux/ovh-manager-telecom/commit/0f8a912))
+* **oui-angular:** add more translations ([ad76549](https://github.com/ovh-ux/ovh-manager-telecom/commit/ad76549))
+
+
+
 <a name="10.4.7"></a>
 ## [10.4.7](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.4.6...v10.4.7) (2018-06-14)
 
