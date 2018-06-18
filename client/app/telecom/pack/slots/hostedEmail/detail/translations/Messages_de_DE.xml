@@ -5,7 +5,7 @@
    <translation id="hosted_email_detail_change_password_success" qtlid="384311">Votre nouveau mot de passe a été modifié sur le compte {{email}}.</translation>
    <translation id="hosted_email_detail_title" qtlid="384324">Hosted Email {{name}}</translation>
    <translation id="hosted_email_detail_general_information" qtlid="27115">Allgemeine Informationen</translation>
-   <translation id="hosted_email_detail_client_change_password" qtlid="8434">Das Passwort ändern</translation>
+   <translation id="hosted_email_detail_client_change_password" qtlid="8434">Passwort ändern</translation>
    <translation id="hosted_email_detail_active" qtlid="55133">Aktiv</translation>
    <translation id="hosted_email_detail_inactive" qtlid="105310">Inaktiv</translation>
    <translation id="hosted_email_detail_status" qtlid="26443">Status</translation>
@@ -50,7 +50,7 @@
 
    <translation id="hosted_email_detail_change_password_rule_size" qtlid="384597">Doit contenir entre 8 et 20 caractères</translation>
    <translation id="hosted_email_detail_change_password_rule_special" qtlid="384610">Doit contenir des chiffres, lettres sans accent ou {{list}}</translation>
-   <translation id="hosted_email_detail_client_change_password_submit" qtlid="8434">Das Passwort ändern</translation>
+   <translation id="hosted_email_detail_client_change_password_submit" qtlid="8434">Passwort ändern</translation>
    <translation id="hosted_email_detail_client_change_password_label" qtlid="17177">Neues Passwort</translation>
 
    <translation id="hosted_email_detail_client_delete_account" qtlid="150294">Den Account entfernen</translation>

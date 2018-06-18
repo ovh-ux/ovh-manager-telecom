@@ -7,7 +7,7 @@
    <translation id="telecom_common_pack_xdsl_order_step_name_configureAccessOnOVH" qtlid="312350">Configuration de l'accès sur les équipements OVH</translation>
    <translation id="telecom_common_pack_xdsl_order_step_name_orderPayed" qtlid="312363">Paiement de la commande</translation>
    <translation id="telecom_common_pack_xdsl_order_step_name_orderReceived" qtlid="312376">Vytvoření objednávky</translation>
-   <translation id="telecom_common_pack_xdsl_order_step_name_orderTreatment" qtlid="312389">Traitement de la commande</translation>
+   <translation id="telecom_common_pack_xdsl_order_step_name_orderTreatment" qtlid="312389">Zpracování objednávky</translation>
    <translation id="telecom_common_pack_xdsl_order_step_name_sendModem" qtlid="312402">Envoi du modem</translation>
    <translation id="telecom_common_pack_xdsl_order_step_name_sendOrderToProvider" qtlid="312415">Envoi de la commande au fournisseur d'accès</translation>
    <translation id="telecom_common_pack_xdsl_order_step_name_setupCustomerPremisesEquipment" qtlid="312428">Installation des équiquements</translation>

@@ -8,7 +8,7 @@
 
 <!-- HUNTINGS -->
    <translation id="telephony_alias_configuration_actions_number_hunting_beta" qtlid="356797">Bêta des files d'appels +</translation>
-   <translation id="telephony_alias_configuration_actions_number_hunting_mode" qtlid="340354">Gérer les options</translation>
+   <translation id="telephony_alias_configuration_actions_number_hunting_mode" qtlid="340354">Optionen verwalten</translation>
    <translation id="telephony_alias_configuration_actions_number_hunting_members" qtlid="356810">Mitglieder verwalten</translation>
    <translation id="telephony_alias_configuration_actions_number_hunting_agents" qtlid="461367">Gérer les agents</translation>
    <translation id="telephony_alias_configuration_actions_number_hunting_queues" qtlid="462134">Gérer les files</translation>

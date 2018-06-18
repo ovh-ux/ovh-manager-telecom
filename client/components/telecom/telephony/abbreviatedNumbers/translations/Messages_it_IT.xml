@@ -19,7 +19,7 @@
    <translation id="telephony_abbreviated_numbers_insert_title" qtlid="360736">Aggiungi un numero breve</translation>
    <translation id="telephony_abbreviated_numbers_update_title" qtlid="360749">Modifica un numero breve</translation>
    <translation id="telephony_abbreviated_numbers_export_label" qtlid="360762">Esporta la lista in formato csv</translation>
-   <translation id="telephony_abbreviated_numbers_download_label" qtlid="39286">Scarica</translation>
+   <translation id="telephony_abbreviated_numbers_download_label" qtlid="39286">Esegui il download</translation>
    <translation id="telephony_abbreviated_numbers_import_label" qtlid="69869">Importa</translation>
    <translation id="telephony_abbreviated_numbers_trash_all_label" qtlid="360775">Svuota</translation>
    <translation id="telephony_abbreviated_numbers_import_button_label" qtlid="360788">Seleziona il tuo file</translation>

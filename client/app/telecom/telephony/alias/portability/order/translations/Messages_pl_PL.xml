@@ -52,7 +52,7 @@
    <translation id="telephony_alias_portability_order_contact_stair" qtlid="313052">Escalier</translation>
    <translation id="telephony_alias_portability_order_contact_floor" qtlid="313026">Étage</translation>
    <translation id="telephony_alias_portability_order_contact_pj" qtlid="460938">Publication dans l'annuaire</translation>
-   <translation id="telephony_alias_portability_order_contact_required" qtlid="459430">Ce champ est requis.</translation>
+   <translation id="telephony_alias_portability_order_contact_required" qtlid="459430">Pole obowiązkowe.</translation>
    <translation id="telephony_alias_portability_order_billing_account" qtlid="254102">Grupa płatności</translation>
    <translation id="telephony_alias_portability_order_redirect_line" qtlid="460951">Souhaitez-vous rediriger le numéro vers une ligne ?</translation>
    <translation id="telephony_alias_portability_order_redirect_line_choose" qtlid="460964">Choisir une ligne</translation>

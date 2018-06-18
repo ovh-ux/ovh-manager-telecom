@@ -36,7 +36,7 @@
    <translation id="domain_activation_corporation_none" qtlid="112146">No identification</translation>
 <translation id="domain_activation_authinfo_info" qtlid="307735">Veuillez noter que le transfert ne pourra aboutir sans l’AuthInfo. Il s’agit d’un numéro d’identifiant que possède votre ancien registrar (le prestataire que gère actuellement le domaine).Pour l’obtenir vous devez contacter votre ancien prestataire et le lui demander. Vous pourrez ensuite poursuivre votre commande.</translation>
    <translation id="domain_activation_corporation_inpi" qtlid="307748">N°INPI</translation>
-   <translation id="domain_activation_corporation_brand_owner" qtlid="307761">Trademark owner</translation>
+   <translation id="domain_activation_corporation_brand_owner" qtlid="307761">the trademark owner</translation>
    <translation id="domain_activation_corporation_vat_info" qtlid="307774">La dénomination sociale doit correspondre à celle de votre numéro de TVA, veillez à ne pas mettre l’enseigne mais bien la dénomination sociale.</translation>
    <translation id="domain_activation_corporation_id_number" qtlid="307787">N° d’identification</translation>
    <translation id="domain_activation_corporation_noid_info" qtlid="307800">La fourniture d’un numéro d’identification est désormais optionnelle pour les domaines enregistrés à l’AFNIC. Cependant, il est recommandé d’en spécifier un si vous le pouvez, car cela permet à l’AFNIC de pouvoir vérifier beaucoup plus facilement que le propriétaire du domaine est bel et bien éligible.</translation>

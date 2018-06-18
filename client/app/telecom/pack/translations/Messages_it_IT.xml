@@ -109,7 +109,7 @@
    <translation id="pack_promotion_code_confirm" qtlid="309191">Sottoscrivo un nuovo contratto</translation>
    <translation id="pack_rename_error" qtlid="317633">Impossibile rinominare il tuo pack {{serviceName}}.</translation>
 
-   <translation id="pack_offer_migration" qtlid="25783">Cambia offerta </translation>
+   <translation id="pack_offer_migration" qtlid="25783">Cambia piano</translation>
 
    <translation id="pack_xdsl_oops_an_error_is_occured" qtlid="385455">Ops! Impossibile recuperare le informazioni relative al tuo pack.</translation>
 </translations>

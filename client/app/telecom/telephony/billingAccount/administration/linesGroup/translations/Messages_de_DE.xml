@@ -10,7 +10,7 @@
    <translation id="telephony_lines_group_number_count" qtlid="386079">Nombre de numéros attachés : <strong>{{numbers}}</strong></translation>
    <translation id="telephony_lines_group_telephony_group" qtlid="345910">Groupe de téléphonie</translation>
    <translation id="telephony_lines_group_line_and_number" qtlid="386092">Lignes et numéros</translation>
-   <translation id="telephony_lines_group_line" qtlid="42802">Leitung</translation>
+   <translation id="telephony_lines_group_line" qtlid="42802">Zeile</translation>
    <translation id="telephony_lines_group_alias" qtlid="30778">Nummer</translation>
    <translation id="telephony_lines_group_pool" qtlid="386105">Plage de numéros</translation>
    <translation id="telephony_lines_group_attach" qtlid="386118">Attacher les services sélectionnés</translation>

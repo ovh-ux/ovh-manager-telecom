@@ -52,7 +52,7 @@
    <translation id="telephony_alias_portability_order_contact_stair" qtlid="313052">Rappu</translation>
    <translation id="telephony_alias_portability_order_contact_floor" qtlid="313026">Kerros</translation>
    <translation id="telephony_alias_portability_order_contact_pj" qtlid="460938">Publication dans l'annuaire</translation>
-   <translation id="telephony_alias_portability_order_contact_required" qtlid="459430">Ce champ est requis.</translation>
+   <translation id="telephony_alias_portability_order_contact_required" qtlid="459430">Tämä kenttä on pakollinen.</translation>
    <translation id="telephony_alias_portability_order_billing_account" qtlid="254102">Laskutusryhmä</translation>
    <translation id="telephony_alias_portability_order_redirect_line" qtlid="460951">Souhaitez-vous rediriger le numéro vers une ligne ?</translation>
    <translation id="telephony_alias_portability_order_redirect_line_choose" qtlid="460964">Choisir une ligne</translation>
