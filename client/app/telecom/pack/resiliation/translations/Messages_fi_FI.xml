@@ -30,7 +30,7 @@
    <translation id="pack_resiliation_comment" qtlid="313455">Laissez nous un commentaire (optionnel)</translation>
    <translation id="pack_resiliation_comment2" qtlid="385637">Précisez-nous les raisons de votre résiliation (facultatif)</translation>
    <translation id="pack_resiliation_comment_required" qtlid="385650">Précisez-nous les raisons de votre résiliation</translation>
-   <translation id="pack_resiliation_date_format" qtlid="313468">jj/mm/aaaa</translation>
+   <translation id="pack_resiliation_date_format" qtlid="313468">pp/kk/vvvv</translation>
    <translation id="pack_resiliation_date_format_error" qtlid="313481">date non valide, utilisez le date picker ou spécifez une date au format</translation>
    <translation id="pack_resiliation_services_to_keep" qtlid="385663">Sélectionnez les services que vous souhaitez conserver</translation>
    <translation id="pack_resiliation_disabled_field_help" qtlid="313507">Les services grisés ci-dessous ne peuvent être conservés.</translation>

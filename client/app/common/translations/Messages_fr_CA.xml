@@ -58,7 +58,7 @@
    <translation id="cancel" qtlid="37863">Annuler</translation>
    <translation id="delete" qtlid="2414">Supprimer</translation>
    <translation id="delete_name" qtlid="304550">Supprimer {{name}}</translation>
-   <translation id="ok" qtlid="224880">OK</translation>
+   <translation id="ok" qtlid="224880">Ok</translation>
    <translation id="more_info" qtlid="34102">Plus d'informations</translation>
    <translation id="configure" qtlid="4010">Configurer</translation>
    <translation id="none" qtlid="8674">Aucune</translation>
@@ -150,7 +150,7 @@
    <translation id="common_menu_account" qtlid="157642">Mon compte</translation>
    <translation id="common_menu_account_infos" qtlid="405499">Mon profil</translation>
    <translation id="common_menu_account_security" qtlid="125420">Sécurité</translation>
-   <translation id="common_menu_account_emails" qtlid="266118">Emails reçus</translation>
+   <translation id="common_menu_account_emails" qtlid="266118">Courriels reçus</translation>
    <translation id="common_menu_account_subscriptions" qtlid="144708">Mes abonnements</translation>
    <translation id="common_menu_account_ssh" qtlid="165897">Mes clés SSH</translation>
    <translation id="common_menu_account_advanced" qtlid="39958">Paramètres avancés</translation>

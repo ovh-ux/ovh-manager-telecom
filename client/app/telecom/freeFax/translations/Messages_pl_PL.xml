@@ -63,7 +63,7 @@
    <translation id="freefax_quality_best" qtlid="306929">Optimale</translation>
    <translation id="freefax_header" qtlid="306942">Entête des fax</translation>
    <translation id="freefax_header_form_error" qtlid="306955">Le champ doit contenir de 1 à 50 caractères</translation>
-   <translation id="freefax_offer" qtlid="38217">Oferta</translation>
+   <translation id="freefax_offer" qtlid="38217">Pakiet</translation>
    <translation id="freefax_offer_ecofax_perso" qtlid="306968">EcoFax Perso</translation>
 
 <!-- Freefax header -->

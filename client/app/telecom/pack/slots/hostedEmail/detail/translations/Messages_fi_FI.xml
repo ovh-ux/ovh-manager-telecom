@@ -7,7 +7,7 @@
    <translation id="hosted_email_detail_general_information" qtlid="27115">Yleiset tiedot</translation>
    <translation id="hosted_email_detail_client_change_password" qtlid="8434">Salasanan muokkaus</translation>
    <translation id="hosted_email_detail_active" qtlid="55133">Aktiivinen</translation>
-   <translation id="hosted_email_detail_inactive" qtlid="105310">Toimeton</translation>
+   <translation id="hosted_email_detail_inactive" qtlid="105310">Pois käytöstä</translation>
    <translation id="hosted_email_detail_status" qtlid="26443">Tila</translation>
    <translation id="hosted_email_detail_webmail" qtlid="384337">URL du serveur Webmail</translation>
    <translation id="hosted_email_detail_client_configuration" qtlid="384350">Configuration client email</translation>

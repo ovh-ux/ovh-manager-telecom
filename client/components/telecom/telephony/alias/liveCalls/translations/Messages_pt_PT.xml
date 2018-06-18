@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <translations>
-   <translation id="telephony_alias_configuration_mode_info_title" qtlid="26671">Estatísticas</translation>
+   <translation id="telephony_alias_configuration_mode_info_title" qtlid="26671">Estatística</translation>
    <translation id="telephony_alias_configuration_stats_qos" qtlid="466814">QoS de la file (pourcentage d'appels pris)</translation>
    <translation id="telephony_alias_configuration_stats_calls_total" qtlid="324015">Nombre total d'appels</translation>
    <translation id="telephony_alias_configuration_stats_calls_answered" qtlid="324028">Nombre d'appels répondus</translation>

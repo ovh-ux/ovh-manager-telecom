@@ -190,7 +190,7 @@
 
    <translation id="common_order_new_service" qtlid="304823">Ordina un servizio</translation>
    <translation id="common_order_activate_service" qtlid="304836">Attiva un servizio</translation>
-   <translation id="common_migrate_pack" qtlid="25783">Cambia offerta </translation>
+   <translation id="common_migrate_pack" qtlid="25783">Cambia piano</translation>
    <translation id="common_resiliation" qtlid="48646">Disattiva</translation>
    <translation id="common_resiliation_cancel" qtlid="304849">La disattivazione del servizio è in corso, ma è ancora possibile annullare l'operazione.</translation>
 
@@ -216,7 +216,7 @@
    <translation id="common_refresh" qtlid="8182">Aggiornare</translation>
    <translation id="common_refresh_data" qtlid="384194">Aggiorna i dati</translation>
    <translation id="common_open_new_tab" qtlid="222176">Nuova finestra</translation>
-   <translation id="common_download" qtlid="39286">Scarica</translation>
+   <translation id="common_download" qtlid="39286">Esegui il download</translation>
    <translation id="common_relaunch" qtlid="31378">Rilanciare</translation>
    <translation id="common_filter" qtlid="59207">Filtra</translation>
    <translation id="common_home" qtlid="27643">Home Page</translation>

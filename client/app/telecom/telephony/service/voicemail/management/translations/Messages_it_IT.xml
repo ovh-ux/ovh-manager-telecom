@@ -6,7 +6,7 @@
    <translation id="telephony_line_answer_voicemail_directories_delete_message" qtlid="337572">Elimina il messaggio</translation>
    <translation id="telephony_line_answer_voicemail_directories_delete_message_plural" qtlid="337585">Elimina {{ count }} messaggi</translation>
    <translation id="telephony_line_answer_voicemail_directories_listen_message" qtlid="337598">Ascolta</translation>
-   <translation id="telephony_line_answer_voicemail_directories_download_message" qtlid="39286">Scarica</translation>
+   <translation id="telephony_line_answer_voicemail_directories_download_message" qtlid="39286">Esegui il download</translation>
    <translation id="telephony_line_answer_voicemail_directories_refresh_message" qtlid="250030">Aggiorna</translation>
    <translation id="telephony_line_answer_voicemail_directories_empty" qtlid="105791">Non hai alcun messaggio.</translation>
    <translation id="telephony_line_answer_voicemail_directories_caller" qtlid="303549">Chiamante</translation>

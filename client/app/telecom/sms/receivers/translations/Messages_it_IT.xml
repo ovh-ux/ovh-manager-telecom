@@ -11,7 +11,7 @@
 
    <translation id="sms_receivers_action_read" qtlid="339639">Consulta</translation>
    <translation id="sms_receivers_action_clean" qtlid="339652">Pulisci</translation>
-   <translation id="sms_receivers_action_export" qtlid="39286">Scarica</translation>
+   <translation id="sms_receivers_action_export" qtlid="39286">Esegui il download</translation>
 
    <translation id="sms_receivers_information_title" qtlid="26551">Informazioni</translation>
    <translation id="sms_receivers_information_text_1" qtlid="394738">È possibile creare fino a 9 liste di contatti tramite file di testo o <em>.csv</em>.</translation>

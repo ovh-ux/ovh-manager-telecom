@@ -8,7 +8,7 @@
    <translation id="sms_options_recredit_information_text" qtlid="340328">Vous avez la possibilité de recharger automatiquement votre compte SMS lorsque votre solde franchit un certain seuil.<br/>Cette recharge, qui s'effectue automatiquement, sera prélevée sur votre compte client OVH.</translation>
    <translation id="sms_options_recredit_information_note" qtlid="340341">Veuillez noter que la recharge ne sera possible que si la balance de votre compte client OVH est positive ou nulle. Il vous est possible de créditer votre compte client dans votre Espace Client Télécom section Facturation.</translation>
 
-   <translation id="sms_options_recredit_manage_title" qtlid="340354">Gérer les options</translation>
+   <translation id="sms_options_recredit_manage_title" qtlid="340354">Optionen verwalten</translation>
 
    <translation id="sms_options_recredit_manage_threshold_label" qtlid="340367">Seuil minimum&#160;:</translation>
    <translation id="sms_options_recredit_manage_threshold_text" qtlid="340380">{{ creditThresholdForAutomaticRecredit | number:2 }} crédits</translation>
@@ -23,7 +23,7 @@
    <translation id="sms_options_recredit_update_threshold_error_min" qtlid="338963">La valeur minimum de ce champ doit être de 0.</translation>
    <translation id="sms_options_recredit_update_threshold_error_number" qtlid="340484">Veuillez renseigner un numéro valide.</translation>
    <translation id="sms_options_recredit_update_quantity_label" qtlid="340497">Quantité à recharger</translation>
-   <translation id="sms_options_recredit_update_quantity_option" qtlid="340510">{{ amout }} crédits</translation>
+   <translation id="sms_options_recredit_update_quantity_option" qtlid="340510">{{ amount }} crédits</translation>
    <translation id="sms_options_recredit_updating" qtlid="340523">Configuration de la recharge automatique…</translation>
    <translation id="sms_options_recredit_updated" qtlid="340536">Configuration de la recharge automatique effectuée</translation>
    <translation id="sms_options_recredit_update_ko" qtlid="340549">Impossible de mettre à jour la configuration de la recharge automatique.<br/>{{error}}</translation>

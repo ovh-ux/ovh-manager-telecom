@@ -2,14 +2,14 @@
 <translations>
    <translation id="sms_users_manage_title" qtlid="338690">Gestion des comptes utilisateurs</translation>
 
-   <translation id="sms_users_actions_templates" qtlid="72797">Alerts</translation>
+   <translation id="sms_users_actions_templates" qtlid="72797">Waarschuwingen</translation>
 
    <translation id="sms_users_label_id" qtlid="46792">Gebruikersnaam</translation>
    <translation id="sms_users_label_quota_status" qtlid="338703">Activer le quota ?</translation>
    <translation id="sms_users_label_quota" qtlid="6874">Quota</translation>
    <translation id="sms_users_label_alert" qtlid="338716">Activer l’alerte ?</translation>
    <translation id="sms_users_label_threshold" qtlid="33562">Limiet</translation>
-   <translation id="sms_users_label_notification" qtlid="32386">Notificatie</translation>
+   <translation id="sms_users_label_notification" qtlid="32386">Melding</translation>
 
    <translation id="sms_users_empty" qtlid="215741">Geen gebruiker</translation>
 
@@ -96,7 +96,7 @@
    <translation id="sms_users_limit_user_alert_threshold_error_required" qtlid="339067">Le champ "seuil d’alerte" est obligatoire.</translation>
    <translation id="sms_users_limit_user_alert_threshold_error_min" qtlid="393555">La valeur minimum du seuil d’alerte doit être de 1.</translation>
    <translation id="sms_users_limit_user_alert_threshold_placeholder" qtlid="339054">Seuil d’alerte</translation>
-   <translation id="sms_users_limit_user_support_label" qtlid="32386">Notificatie</translation>
+   <translation id="sms_users_limit_user_support_label" qtlid="32386">Melding</translation>
    <translation id="sms_users_limit_user_support_both" qtlid="339080">Mail et SMS</translation>
    <translation id="sms_users_limit_user_support_mail" qtlid="21679">E-mail</translation>
    <translation id="sms_users_limit_user_support_sms" qtlid="28243">SMS</translation>

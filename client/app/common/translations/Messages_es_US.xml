@@ -178,7 +178,7 @@
    <translation id="common_skip_to_main_content" qtlid="454052">Ir al contenido principal</translation>
    <translation id="global_logout" qtlid="33658">Déconnexion</translation>
 
-   <translation id="common_pagination_page" qtlid="239246">Página {{currentPage}}/ {{nbPages}}</translation>
+   <translation id="common_pagination_page" qtlid="239246">Página {{currentPage}}/{{nbPages}}</translation>
    <translation id="common_pagination_display" qtlid="69353">Afficher</translation>
 
 <!-- Account balance -->
