@@ -1,3 +1,13 @@
+<a name="10.4.9"></a>
+## [10.4.9](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.4.8...v10.4.9) (2018-06-19)
+
+
+### Bug Fixes
+
+* **telephony fax:** contact view typo ([fc61712](https://github.com/ovh-ux/ovh-manager-telecom/commit/fc61712))
+
+
+
 <a name="10.4.8"></a>
 ## [10.4.8](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.4.7...v10.4.8) (2018-06-18)
 
