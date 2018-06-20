@@ -1,1 +1,1 @@
-angular.module("managerApp").constant("moment", moment);
+angular.module('managerApp').constant('moment', moment);

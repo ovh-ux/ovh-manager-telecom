@@ -1,132 +1,128 @@
-angular.module("managerApp").factory("TelephonyGroupNumberFeature", function ($q) {
-    "use strict";
-
-    /*= ==================================
+angular.module('managerApp').factory('TelephonyGroupNumberFeature', ($q) => {
+  /*= ==================================
     =            CONSTRUCTOR            =
-    ===================================*/
+    =================================== */
 
-    function TelephonyGroupNumberFeature (mandatoryOptions, featureOptionsParam) {
-        var featureOptions = featureOptionsParam;
+  function TelephonyGroupNumberFeature(mandatoryOptions, featureOptionsParam) {
+    let featureOptions = featureOptionsParam;
 
-        // check for mandatory options
-        if (!mandatoryOptions) {
-            throw new Error("mandatory options must be specified when creating a new TelephonyGroupNumberFeature");
-        } else {
-            if (!mandatoryOptions.billingAccount) {
-                throw new Error("billingAccount option must be specified when creating a new TelephonyGroupNumberFeature");
-            }
+    // check for mandatory options
+    if (!mandatoryOptions) {
+      throw new Error('mandatory options must be specified when creating a new TelephonyGroupNumberFeature');
+    } else {
+      if (!mandatoryOptions.billingAccount) {
+        throw new Error('billingAccount option must be specified when creating a new TelephonyGroupNumberFeature');
+      }
 
-            if (!mandatoryOptions.serviceName) {
-                throw new Error("serviceName option must be specified when creating a new TelephonyGroupNumberFeature");
-            }
+      if (!mandatoryOptions.serviceName) {
+        throw new Error('serviceName option must be specified when creating a new TelephonyGroupNumberFeature');
+      }
 
-            if (!mandatoryOptions.featureType) {
-                throw new Error("featureType option must be specified when creating a new TelephonyGroupNumberFeature");
-            }
-        }
-
-        if (!featureOptions) {
-            featureOptions = {};
-        }
-
-        // set mandatory attributes
-        this.billingAccount = mandatoryOptions.billingAccount;
-        this.serviceName = mandatoryOptions.serviceName;
-        this.featureType = mandatoryOptions.featureType;
-
-        // set feature options
-        this.setInfos(featureOptions);
-
-        // custom attributes
-        this.inEdition = false;
-        this.saveForEdition = null;
+      if (!mandatoryOptions.featureType) {
+        throw new Error('featureType option must be specified when creating a new TelephonyGroupNumberFeature');
+      }
     }
 
-    /* -----  End of CONSTRUCTOR  ------*/
+    if (!featureOptions) {
+      featureOptions = {};
+    }
 
-    /*= ========================================
+    // set mandatory attributes
+    this.billingAccount = mandatoryOptions.billingAccount;
+    this.serviceName = mandatoryOptions.serviceName;
+    this.featureType = mandatoryOptions.featureType;
+
+    // set feature options
+    this.setInfos(featureOptions);
+
+    // custom attributes
+    this.inEdition = false;
+    this.saveForEdition = null;
+  }
+
+  /* -----  End of CONSTRUCTOR  ------*/
+
+  /*= ========================================
     =            PROTOTYPE METHODS            =
-    =========================================*/
+    ========================================= */
 
-    /* ----------  FEATURE OPTIONS  ----------*/
+  /* ----------  FEATURE OPTIONS  ----------*/
 
-    TelephonyGroupNumberFeature.prototype.setInfos = function (featureOptions) {
-        var self = this;
+  TelephonyGroupNumberFeature.prototype.setInfos = function (featureOptions) {
+    const self = this;
 
-        angular.forEach(_.keys(featureOptions), function (featureOptionKey) {
-            self[featureOptionKey] = featureOptions[featureOptionKey];
-        });
+    angular.forEach(_.keys(featureOptions), (featureOptionKey) => {
+      self[featureOptionKey] = featureOptions[featureOptionKey];
+    });
 
-        return self;
-    };
+    return self;
+  };
 
-    /* ----------  EDITION  ----------*/
+  /* ----------  EDITION  ----------*/
 
-    TelephonyGroupNumberFeature.prototype.startEdition = function (attrsToSave) {
-        var self = this;
+  TelephonyGroupNumberFeature.prototype.startEdition = function (attrsToSave) {
+    const self = this;
 
-        self.inEdition = true;
+    self.inEdition = true;
 
-        self.saveForEdition = {};
-        angular.forEach(attrsToSave || ["featureType"], function (attr) {
-            self.saveForEdition[attr] = angular.copy(self[attr]);
-        });
+    self.saveForEdition = {};
+    angular.forEach(attrsToSave || ['featureType'], (attr) => {
+      self.saveForEdition[attr] = angular.copy(self[attr]);
+    });
 
-        return self;
-    };
+    return self;
+  };
 
-    TelephonyGroupNumberFeature.prototype.stopEdition = function (cancel) {
-        var self = this;
+  TelephonyGroupNumberFeature.prototype.stopEdition = function (cancel) {
+    const self = this;
 
-        if (self.saveForEdition && cancel) {
-            angular.forEach(_.keys(self.saveForEdition), function (editionKey) {
-                self[editionKey] = angular.copy(self.saveForEdition[editionKey]);
-            });
-        }
+    if (self.saveForEdition && cancel) {
+      angular.forEach(_.keys(self.saveForEdition), (editionKey) => {
+        self[editionKey] = angular.copy(self.saveForEdition[editionKey]);
+      });
+    }
 
-        self.saveForEdition = null;
-        self.inEdition = false;
+    self.saveForEdition = null;
+    self.inEdition = false;
 
-        return self;
-    };
+    return self;
+  };
 
-    TelephonyGroupNumberFeature.prototype.hasChange = function (attr) {
-        var self = this;
-        var hasChange = false;
+  TelephonyGroupNumberFeature.prototype.hasChange = function (attr) {
+    const self = this;
+    let hasChange = false;
 
-        if (!self.inEdition || !self.saveForEdition) {
-            return false;
-        }
+    if (!self.inEdition || !self.saveForEdition) {
+      return false;
+    }
 
-        if (attr) {
-            return self[attr] !== self.saveForEdition[attr];
-        }
-        angular.forEach(_.keys(self.saveForEdition), function (attrKey) {
-            if (!hasChange) {
-                hasChange = self.hasChange(attrKey);
-            }
-        });
+    if (attr) {
+      return self[attr] !== self.saveForEdition[attr];
+    }
+    angular.forEach(_.keys(self.saveForEdition), (attrKey) => {
+      if (!hasChange) {
+        hasChange = self.hasChange(attrKey);
+      }
+    });
 
-        return hasChange;
+    return hasChange;
+  };
 
-    };
+  /* ----------  HELPERS  ----------*/
 
-    /* ----------  HELPERS  ----------*/
+  TelephonyGroupNumberFeature.prototype.inPendingState = function () {
+    return false;
+  };
 
-    TelephonyGroupNumberFeature.prototype.inPendingState = function () {
-        return false;
-    };
+  /* ----------  INITIALIZATION  ----------*/
 
-    /* ----------  INITIALIZATION  ----------*/
+  TelephonyGroupNumberFeature.prototype.init = function () {
+    const self = this;
 
-    TelephonyGroupNumberFeature.prototype.init = function () {
-        var self = this;
+    return $q.when(self);
+  };
 
-        return $q.when(self);
-    };
+  /* -----  End of PROTOTYPE METHODS  ------*/
 
-    /* -----  End of PROTOTYPE METHODS  ------*/
-
-    return TelephonyGroupNumberFeature;
-
+  return TelephonyGroupNumberFeature;
 });

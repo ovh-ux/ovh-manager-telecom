@@ -1,46 +1,38 @@
-angular.module("managerApp").controller("TelecomTelephonyServiceAssistOrdersCtrl", function ($filter, $q, $translate, $stateParams, OvhApiTelephony, OvhApiMeOrder, TelephonyMediator) {
-    "use strict";
+angular.module('managerApp').controller('TelecomTelephonyServiceAssistOrdersCtrl', function ($filter, $q, $translate, $stateParams, OvhApiTelephony, OvhApiMeOrder, TelephonyMediator) {
+  const self = this;
+  self.service = null;
 
-    var self = this;
-    self.service = null;
+  /*= ==============================
+  =            HELPERS            =
+  =============================== */
 
-    /*= ==============================
-    =            HELPERS            =
-    ===============================*/
+  function fetchOrders() {
+    return OvhApiTelephony.v6().getCurrentOrderIds().$promise.then(orderIds => OvhApiMeOrder.v7().query().addFilter('orderId', 'in', orderIds).expand()
+      .execute().$promise.then(orders => $q.all(_.map(_.pluck(orders, 'value'), order => OvhApiMeOrder.v6().getStatus({
+        orderId: order.orderId,
+      }).$promise.then((status) => {
+        _.set(order, 'statusText', $translate.instant(`telephony_line_assist_orders_order_status_${_.snakeCase(status.status)}`));
+        return order;
+      })))));
+  }
 
-    function fetchOrders () {
-        return OvhApiTelephony.v6().getCurrentOrderIds().$promise.then(function (orderIds) {
-            return OvhApiMeOrder.v7().query().addFilter("orderId", "in", orderIds).expand().execute().$promise.then(function (orders) {
-                return $q.all(_.map(_.pluck(orders, "value"), function (order) {
-                    return OvhApiMeOrder.v6().getStatus({
-                        orderId: order.orderId
-                    }).$promise.then(function (status) {
-                        order.statusText = $translate.instant("telephony_line_assist_orders_order_status_" + _.snakeCase(status.status));
-                        return order;
-                    });
-                }));
-            });
-        });
-    }
+  /* -----  End of HELPERS  ------*/
 
-    /* -----  End of HELPERS  ------*/
+  /*= =====================================
+  =            INITIALIZATION            =
+  ====================================== */
 
-    /*= =====================================
-    =            INITIALIZATION            =
-    ======================================*/
+  self.$onInit = function () {
+    self.ordersRaw = null;
 
-    self.$onInit = function () {
-        self.ordersRaw = null;
+    return TelephonyMediator.getGroup($stateParams.billingAccount).then(() => {
+      self.service = TelephonyMediator.findService($stateParams.serviceName);
 
-        return TelephonyMediator.getGroup($stateParams.billingAccount).then(function () {
-            self.service = TelephonyMediator.findService($stateParams.serviceName);
+      return fetchOrders().then((orders) => {
+        self.ordersRaw = orders;
+      });
+    });
+  };
 
-            return fetchOrders().then(function (orders) {
-                self.ordersRaw = orders;
-            });
-        });
-    };
-
-    /* -----  End of INITIALIZATION  ------*/
-
+  /* -----  End of INITIALIZATION  ------*/
 });

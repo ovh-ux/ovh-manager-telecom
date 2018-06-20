@@ -1,12 +1,9 @@
-angular.module("smsMock", []);
+angular.module('smsMock', []);
 
-angular.module("smsMock").run(function ($q, $httpBackend, SmsMediator) {
-    "use strict";
+angular.module('smsMock').run(($q, $httpBackend, SmsMediator) => {
+  SmsMediator.initDeferred = $q.defer(); // eslint-disable-line
 
-    SmsMediator.initDeferred = $q.defer();
-
-    // TODO : do it better :-)
-    $httpBackend.whenGET(/\/2api\/.+/).respond(200, {});
-    $httpBackend.whenGET(/\/apiv6\/.+/).respond(200, {});
-
+  // TODO : do it better :-)
+  $httpBackend.whenGET(/\/2api\/.+/).respond(200, {});
+  $httpBackend.whenGET(/\/apiv6\/.+/).respond(200, {});
 });

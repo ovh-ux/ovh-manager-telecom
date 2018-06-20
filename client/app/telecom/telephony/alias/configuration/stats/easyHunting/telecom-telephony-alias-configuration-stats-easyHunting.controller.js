@@ -1,11 +1,9 @@
-angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationStatsEasyHuntingCtrl", function (OvhApiTelephony) {
-    "use strict";
+angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationStatsEasyHuntingCtrl', function (OvhApiTelephony) {
+  const self = this;
 
-    var self = this;
+  function init() {
+    self.apiEndpoint = OvhApiTelephony.EasyHunting();
+  }
 
-    function init () {
-        self.apiEndpoint = OvhApiTelephony.EasyHunting();
-    }
-
-    init();
+  init();
 });

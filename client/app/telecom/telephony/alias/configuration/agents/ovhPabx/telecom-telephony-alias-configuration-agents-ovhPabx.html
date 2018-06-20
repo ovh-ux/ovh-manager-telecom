@@ -255,7 +255,7 @@
                                         class="btn btn-link no-transition"
                                         aria-label="{{:: 'edit' | translate }}"
                                         data-ng-if="!agent.inEdition"
-                                        data-ng-click="AgentsOvhPabxCtrl.startEdition(agent)">
+                                        data-ng-click="AgentsOvhPabxCtrl.constructor.startEdition(agent)">
                                      <span class="ovh-font ovh-font-editer"></span>
                                 </button>
                                 <div data-ng-if="agent.inEdition">
@@ -270,7 +270,7 @@
                                             class="btn btn-primary"
                                             data-ng-if="agent.inEdition"
                                             data-ng-click="AgentsOvhPabxCtrl.updateAgent(agent)"
-                                            data-ng-disabled="agent.isUpdating || !AgentsOvhPabxCtrl.isValidAgent(agent.inEdition)">
+                                            data-ng-disabled="agent.isUpdating || !AgentsOvhPabxCtrl.constructor.isValidAgent(agent.inEdition)">
                                         <oui-spinner class="mr-2"
                                                      data-ng-if="agent.isUpdating"
                                                      data-size="s">

@@ -1,162 +1,156 @@
-angular.module("managerApp").factory("TelephonyGroupNumberEasyHunting", function ($q, VoipScheduler, VoipTimeCondition, OvhApiTelephony) {
-    "use strict";
-
-    /*= ==================================
+angular.module('managerApp').factory('TelephonyGroupNumberEasyHunting', ($q, VoipScheduler, VoipTimeCondition, OvhApiTelephony) => {
+  /*= ==================================
     =            CONSTRUCTOR            =
-    ===================================*/
+    =================================== */
 
-    function TelephonyGroupNumberEasyHunting (featureOptions) {
+  function TelephonyGroupNumberEasyHunting(featureOptions) {
+    // check for mandatory options
+    if (!featureOptions) {
+      throw new Error('mandatory options must be specified when creating a new TelephonyGroupNumberEasyHunting');
+    } else {
+      if (!featureOptions.billingAccount) {
+        throw new Error('billingAccount option must be specified when creating a new TelephonyGroupNumberEasyHunting');
+      }
 
-        // check for mandatory options
-        if (!featureOptions) {
-            throw new Error("mandatory options must be specified when creating a new TelephonyGroupNumberEasyHunting");
-        } else {
-            if (!featureOptions.billingAccount) {
-                throw new Error("billingAccount option must be specified when creating a new TelephonyGroupNumberEasyHunting");
-            }
+      if (!featureOptions.serviceName) {
+        throw new Error('serviceName option must be specified when creating a new TelephonyGroupNumberEasyHunting');
+      }
 
-            if (!featureOptions.serviceName) {
-                throw new Error("serviceName option must be specified when creating a new TelephonyGroupNumberEasyHunting");
-            }
-
-            if (!featureOptions.featureType) {
-                throw new Error("featureType option must be specified when creating a new TelephonyGroupNumberEasyHunting");
-            }
-        }
-
-        // set mandatory attributes
-        this.billingAccount = featureOptions.billingAccount;
-        this.serviceName = featureOptions.serviceName;
-        this.featureType = featureOptions.featureType;
-
-        // set feature options
-        this.setOptions(featureOptions);
-
-        // custom attributes
-        this.inEdition = false;
-        this.saveForEdition = null;
-
-        this.scheduler = null;
-        this.timeCondition = null;
+      if (!featureOptions.featureType) {
+        throw new Error('featureType option must be specified when creating a new TelephonyGroupNumberEasyHunting');
+      }
     }
 
-    /* -----  End of CONSTRUCTOR  ------*/
+    // set mandatory attributes
+    this.billingAccount = featureOptions.billingAccount;
+    this.serviceName = featureOptions.serviceName;
+    this.featureType = featureOptions.featureType;
 
-    /*= ========================================
+    // set feature options
+    this.setOptions(featureOptions);
+
+    // custom attributes
+    this.inEdition = false;
+    this.saveForEdition = null;
+
+    this.scheduler = null;
+    this.timeCondition = null;
+  }
+
+  /* -----  End of CONSTRUCTOR  ------*/
+
+  /*= ========================================
     =            PROTOTYPE METHODS            =
-    =========================================*/
+    ========================================= */
 
-    /* ----------  FEATURE OPTIONS  ----------*/
+  /* ----------  FEATURE OPTIONS  ----------*/
 
-    TelephonyGroupNumberEasyHunting.prototype.setOptions = function () {
-        var self = this;
+  TelephonyGroupNumberEasyHunting.prototype.setOptions = function () {
+    const self = this;
 
-        return self;
+    return self;
+  };
+
+  /* ----------  HELPERS  ----------*/
+
+  TelephonyGroupNumberEasyHunting.prototype.isCcs = function () {
+    const self = this;
+
+    return self.featureType === 'contactCenterSolution';
+  };
+
+  /* ----------  EDITION  ----------*/
+
+  TelephonyGroupNumberEasyHunting.prototype.startEdition = function () {
+    const self = this;
+
+    self.inEdition = true;
+    self.saveForEdition = {
+      featureType: angular.copy(self.featureType),
     };
 
-    /* ----------  HELPERS  ----------*/
+    return self;
+  };
 
-    TelephonyGroupNumberEasyHunting.prototype.isCcs = function () {
-        var self = this;
+  TelephonyGroupNumberEasyHunting.prototype.stopEdition = function (cancel) {
+    const self = this;
 
-        return self.featureType === "contactCenterSolution";
-    };
+    if (self.saveForEdition && cancel) {
+      self.featureType = angular.copy(self.saveForEdition.featureType);
+    }
 
-    /* ----------  EDITION  ----------*/
+    self.saveForEdition = null;
+    self.inEdition = false;
 
-    TelephonyGroupNumberEasyHunting.prototype.startEdition = function () {
-        var self = this;
+    return self;
+  };
 
-        self.inEdition = true;
-        self.saveForEdition = {
-            featureType: angular.copy(self.featureType)
-        };
+  TelephonyGroupNumberEasyHunting.prototype.hasChange = function (attr) {
+    const self = this;
 
-        return self;
-    };
+    if (!self.inEdition || !self.saveForEdition) {
+      return false;
+    }
 
-    TelephonyGroupNumberEasyHunting.prototype.stopEdition = function (cancel) {
-        var self = this;
+    if (attr) {
+      return !_.isEqual(_.get(self.saveForEdition, attr), _.get(self, attr));
+    }
+    return self.hasChange('featureType');
+  };
 
-        if (self.saveForEdition && cancel) {
-            self.featureType = angular.copy(self.saveForEdition.featureType);
-        }
+  /* ----------  SCHEDULER  ----------*/
 
-        self.saveForEdition = null;
-        self.inEdition = false;
+  TelephonyGroupNumberEasyHunting.prototype.getScheduler = function () {
+    const self = this;
 
-        return self;
-    };
+    if (!self.scheduler) {
+      self.scheduler = new VoipScheduler({
+        billingAccount: self.billingAccount,
+        serviceName: self.serviceName,
+      });
+    }
 
-    TelephonyGroupNumberEasyHunting.prototype.hasChange = function (attr) {
-        var self = this;
+    return self.scheduler.get();
+  };
 
-        if (!self.inEdition || !self.saveForEdition) {
-            return false;
-        }
+  /* ----------  TIMECONDITION  ----------*/
 
-        if (attr) {
-            return !_.isEqual(_.get(self.saveForEdition, attr), _.get(self, attr));
-        }
-        return self.hasChange("featureType");
-    };
+  TelephonyGroupNumberEasyHunting.prototype.getTimeCondition = function () {
+    const self = this;
 
-    /* ----------  SCHEDULER  ----------*/
+    if (!self.timeCondition) {
+      self.timeCondition = new VoipTimeCondition({
+        featureType: 'easyHunting',
+        billingAccount: self.billingAccount,
+        serviceName: self.serviceName,
+      });
+    }
 
-    TelephonyGroupNumberEasyHunting.prototype.getScheduler = function () {
-        var self = this;
+    return self.timeCondition.init();
+  };
 
-        if (!self.scheduler) {
-            self.scheduler = new VoipScheduler({
-                billingAccount: self.billingAccount,
-                serviceName: self.serviceName
-            });
-        }
+  /* ----------  HELPERS  ----------*/
 
-        return self.scheduler.get();
-    };
+  TelephonyGroupNumberEasyHunting.prototype.inPendingState = function () {
+    return false;
+  };
 
-    /* ----------  TIMECONDITION  ----------*/
+  /* ----------  INITIALIZATION  ----------*/
 
-    TelephonyGroupNumberEasyHunting.prototype.getTimeCondition = function () {
-        var self = this;
+  TelephonyGroupNumberEasyHunting.prototype.init = function (resetCache) {
+    const self = this;
 
-        if (!self.timeCondition) {
-            self.timeCondition = new VoipTimeCondition({
-                featureType: "easyHunting",
-                billingAccount: self.billingAccount,
-                serviceName: self.serviceName
-            });
-        }
+    if (resetCache) {
+      OvhApiTelephony.EasyHunting().v6().resetAllCache();
+    }
 
-        return self.timeCondition.init();
-    };
+    return OvhApiTelephony.EasyHunting().v6().get({
+      billingAccount: self.billingAccount,
+      serviceName: self.serviceName,
+    }).$promise.then(featureOptions => self.setOptions(featureOptions));
+  };
 
-    /* ----------  HELPERS  ----------*/
+  /* -----  End of PROTOTYPE METHODS  ------*/
 
-    TelephonyGroupNumberEasyHunting.prototype.inPendingState = function () {
-        return false;
-    };
-
-    /* ----------  INITIALIZATION  ----------*/
-
-    TelephonyGroupNumberEasyHunting.prototype.init = function (resetCache) {
-        var self = this;
-
-        if (resetCache) {
-            OvhApiTelephony.EasyHunting().v6().resetAllCache();
-        }
-
-        return OvhApiTelephony.EasyHunting().v6().get({
-            billingAccount: self.billingAccount,
-            serviceName: self.serviceName
-        }).$promise.then(function (featureOptions) {
-            return self.setOptions(featureOptions);
-        });
-    };
-
-    /* -----  End of PROTOTYPE METHODS  ------*/
-
-    return TelephonyGroupNumberEasyHunting;
-
+  return TelephonyGroupNumberEasyHunting;
 });

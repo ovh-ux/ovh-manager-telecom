@@ -1,29 +1,27 @@
-angular.module("managerApp").controller("OverTheBoxDocsCtrl", function ($translate, OVER_THE_BOX) {
-    "use strict";
+angular.module('managerApp').controller('OverTheBoxDocsCtrl', function ($translate, OVER_THE_BOX) {
+  const self = this;
 
-    var self = this;
-
-    function injectTitleInUrl (descriptor, lang) {
-        if (descriptor.url && descriptor.url[lang]) {
-            descriptor.url[lang] = descriptor.url[lang].replace("{title}", _.snakeCase($translate.instant(descriptor.label)));
-        }
-        if (descriptor.subs) {
-            _.forEach(descriptor.subs, function (sub) {
-                injectTitleInUrl(sub, lang);
-            });
-        }
+  function injectTitleInUrl(descriptor, lang) {
+    if (descriptor.url && descriptor.url[lang]) {
+      descriptor.url[lang] = descriptor.url[lang].replace('{title}', _.snakeCase($translate.instant(descriptor.label))); // eslint-disable-line
     }
-
-    function init () {
-        // Checking configuration (registered or from browser)
-        if (localStorage["univers-selected-language"]) {
-            self.language = localStorage["univers-selected-language"].replace(/\-.*$|_.*$/, "");
-        } else if (navigator.language || navigator.userLanguage) {
-            self.language = (navigator.language || navigator.userLanguage).replace(/\-.*$|_.*$/, "");
-        }
-        self.docs = OVER_THE_BOX;
-        injectTitleInUrl(self.docs, self.language);
+    if (descriptor.subs) {
+      _.forEach(descriptor.subs, (sub) => {
+        injectTitleInUrl(sub, lang);
+      });
     }
+  }
 
-    init();
+  function init() {
+    // Checking configuration (registered or from browser)
+    if (localStorage['univers-selected-language']) {
+      self.language = localStorage['univers-selected-language'].replace(/-.*$|_.*$/, '');
+    } else if (navigator.language || navigator.userLanguage) {
+      self.language = (navigator.language || navigator.userLanguage).replace(/-.*$|_.*$/, '');
+    }
+    self.docs = OVER_THE_BOX;
+    injectTitleInUrl(self.docs, self.language);
+  }
+
+  init();
 });

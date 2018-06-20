@@ -1,62 +1,62 @@
-angular.module("managerApp").controller("telephonyNumberOvhPabxSoundPopoverSectionCtrl", function ($translate, $translatePartialLoader) {
-    "use strict";
+angular.module('managerApp').controller('telephonyNumberOvhPabxSoundPopoverSectionCtrl', function ($translate, $translatePartialLoader) {
+  const self = this;
 
-    var self = this;
+  self.loading = {
+    init: false,
+    translations: false,
+  };
 
-    self.loading = {
-        init: false,
-        translations: false
-    };
+  self.model = {
+    soundFile: null,
+  };
 
-    self.model = {
-        soundFile: null
-    };
+  self.uploadErrors = null;
 
-    self.uploadErrors = null;
-
-    /*= ==============================
+  /*= ==============================
     =            HELPERS            =
-    ===============================*/
+    =============================== */
 
-    self.hasSoundFileError = function () {
-        return self.uploadErrors.extension || self.uploadErrors.size || self.uploadErrors.exists || self.uploadErrors.name;
-    };
+  self.hasSoundFileError = function () {
+    return self.uploadErrors.extension ||
+      self.uploadErrors.size ||
+      self.uploadErrors.exists ||
+      self.uploadErrors.name;
+  };
 
-    /* -----  End of HELPERS  ------*/
+  /* -----  End of HELPERS  ------*/
 
-    /*= =====================================
+  /*= =====================================
     =            INITIALIZATION            =
-    ======================================*/
+    ====================================== */
 
-    /* ----------  Translations load  ----------*/
+  /* ----------  Translations load  ----------*/
 
-    function getTranslations () {
-        self.loading.translations = true;
+  function getTranslations() {
+    self.loading.translations = true;
 
-        $translatePartialLoader.addPart("../components/telecom/telephony/group/number/feature/ovhPabx/sound/popover-section");
-        return $translate.refresh().finally(function () {
-            self.loading.translations = false;
-        });
+    $translatePartialLoader.addPart('../components/telecom/telephony/group/number/feature/ovhPabx/sound/popover-section');
+    return $translate.refresh().finally(() => {
+      self.loading.translations = false;
+    });
+  }
+
+  /* ----------  Component initialization  ----------*/
+
+  self.$onInit = function () {
+    if (!self.numberCtrl && !self.ovhPabx) {
+      throw new Error('telephonyNumberOvhPabxSoundPopoverSection must have telephonyNumber component as parent or must have ovhPabx attribute specified');
     }
 
-    /* ----------  Component initialization  ----------*/
+    self.loading.init = true;
 
-    self.$onInit = function () {
-        if (!self.numberCtrl && !self.ovhPabx) {
-            throw new Error("telephonyNumberOvhPabxSoundPopoverSection must have telephonyNumber component as parent or must have ovhPabx attribute specified");
-        }
+    if (!self.ovhPabx) {
+      self.ovhPabx = self.numberCtrl.number.feature;
+    }
 
-        self.loading.init = true;
+    return getTranslations().finally(() => {
+      self.loading.init = false;
+    });
+  };
 
-        if (!self.ovhPabx) {
-            self.ovhPabx = self.numberCtrl.number.feature;
-        }
-
-        return getTranslations().finally(function () {
-            self.loading.init = false;
-        });
-    };
-
-    /* -----  End of INITIALIZATION  ------*/
-
+  /* -----  End of INITIALIZATION  ------*/
 });

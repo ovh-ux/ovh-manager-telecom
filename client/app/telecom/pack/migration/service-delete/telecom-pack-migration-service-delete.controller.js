@@ -1,42 +1,38 @@
-angular.module("managerApp").controller("TelecomPackMigrationServiceDeleteCtrl", function (PackMigrationProcess) {
-    "use strict";
+angular.module('managerApp').controller('TelecomPackMigrationServiceDeleteCtrl', function (PackMigrationProcess) {
+  const self = this;
 
-    var self = this;
+  self.process = null;
 
-    self.process = null;
+  /*= ==============================
+  =            HELPERS            =
+  =============================== */
 
-    /*= ==============================
-    =            HELPERS            =
-    ===============================*/
+  self.selectedSubServiceToDeleteReached = function (subService) {
+    const count = _.filter(subService.services, {
+      selected: true,
+    }).length;
 
-    self.selectedSubServiceToDeleteReached = function (subService) {
-        var count = _.filter(subService.services, {
-            selected: true
-        }).length;
+    return count === subService.numberToDelete;
+  };
 
-        return count === subService.numberToDelete;
-    };
+  self.isValidSelection = function () {
+    return _.every(self.process.selectedOffer.subServicesToDelete, subService =>
+      self.selectedSubServiceToDeleteReached(subService));
+  };
 
-    self.isValidSelection = function () {
-        return _.every(self.process.selectedOffer.subServicesToDelete, function (subService) {
-            return self.selectedSubServiceToDeleteReached(subService);
-        });
-    };
+  /* -----  End of HELPERS  ------*/
 
-    /* -----  End of HELPERS  ------*/
+  /*= =====================================
+  =            INITIALIZATION            =
+  ====================================== */
 
-    /*= =====================================
-    =            INITIALIZATION            =
-    ======================================*/
+  function init() {
+    self.process = PackMigrationProcess.getMigrationProcess();
 
-    function init () {
-        self.process = PackMigrationProcess.getMigrationProcess();
+    self.chunkedSubServices = _.chunk(self.process.selectedOffer.subServicesToDelete, 2);
+  }
 
-        self.chunkedSubServices = _.chunk(self.process.selectedOffer.subServicesToDelete, 2);
-    }
+  /* -----  End of INITIALIZATION  ------*/
 
-    /* -----  End of INITIALIZATION  ------*/
-
-    init();
-
+  init();
 });

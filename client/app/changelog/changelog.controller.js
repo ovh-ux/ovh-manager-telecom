@@ -1,16 +1,13 @@
-angular.module("managerApp")
-    .controller("ChangelogCtrl", function (OvhApiChangelog, ToastError) {
-        "use strict";
+angular.module('managerApp')
+  .controller('ChangelogCtrl', function (OvhApiChangelog, ToastError) {
+    const self = this;
 
-        var self = this;
+    self.content = null;
 
-        self.content = null;
-
-        OvhApiChangelog.Aapi().query().$promise.then(
-            function (content) {
-                self.content = content;
-            },
-            ToastError
-        );
-
-    });
+    OvhApiChangelog.Aapi().query().$promise.then(
+      (content) => {
+        self.content = content;
+      },
+      ToastError,
+    );
+  });

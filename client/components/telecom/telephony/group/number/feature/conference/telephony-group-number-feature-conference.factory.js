@@ -2,417 +2,389 @@
  *  This factory manages the conference feature of a number.
  *  This manages the conference of /telephony/{billingAccount}/number API.
  */
-angular.module("managerApp").factory("TelephonyGroupNumberConference", function ($q, $timeout, TelephonyGroupNumberConferenceParticipant, TelephonyMediator, OvhApiTelephony, OvhApiMe, voipServiceTask) {
-    "use strict";
-
-    var settingsAttributes = ["featureType", "pin", "announceFile", "reportEmail",
-        "reportStatus", "whiteLabelReport", "language", "recordStatus",
-        "eventsChannel", "anonymousRejection", "announceFilename",
-        "enterMuted"
-    ];
+angular.module('managerApp').factory('TelephonyGroupNumberConference', ($q, $timeout, TelephonyGroupNumberConferenceParticipant, TelephonyMediator, OvhApiTelephony, OvhApiMe, voipServiceTask) => {
+  const settingsAttributes = ['featureType', 'pin', 'announceFile', 'reportEmail',
+    'reportStatus', 'whiteLabelReport', 'language', 'recordStatus',
+    'eventsChannel', 'anonymousRejection', 'announceFilename',
+    'enterMuted',
+  ];
 
     /*= ==================================
     =            CONSTRUCTOR            =
-    ===================================*/
+    =================================== */
 
-    function TelephonyGroupNumberConference (featureOptionsParam) {
-        var featureOptions = featureOptionsParam;
+  function TelephonyGroupNumberConference(featureOptionsParam) {
+    let featureOptions = featureOptionsParam;
 
-        // check for mandatory options
-        if (!featureOptions) {
-            featureOptions = {};
-        }
-
-        // check mandatory fields
-        if (!featureOptions.billingAccount) {
-            throw new Error("billingAccount option must be specified when creating a new TelephonyGroupNumberConference");
-        }
-
-        if (!featureOptions.serviceName) {
-            throw new Error("serviceName option must be specified when creating a new TelephonyGroupNumberConference");
-        }
-
-        if (!featureOptions.featureType) {
-            throw new Error("featureType option must be specified when creating a new TelephonyGroupNumberConference");
-        }
-
-        // set mandatory attributes
-        this.billingAccount = featureOptions.billingAccount;
-        this.serviceName = featureOptions.serviceName;
-        this.featureType = featureOptions.featureType;
-
-        // from API
-        this.locked = false;
-        this.membersCount = null;
-        this.dateStart = null;
-
-        // custom attributes
-        this.inEdition = false;
-        this.saveForEdition = null;
-        this.participants = [];
-
-        // settings
-        this.pin = null;
-        this.announceFile = false;
-        this.reportEmail = null;
-        this.reportStatus = null;
-        this.whiteLabelReport = false;
-        this.language = null;
-        this.recordStatus = false;
-        this.eventsChannel = null;
-        this.anonymousRejection = false;
-        this.announceFilename = false;
-        this.enterMuted = false;
-
-        // web access
-        this.webAccess = {
-            read: null,
-            write: null
-        };
-
-        // set feature options
-        this.setInfos(featureOptions);
+    // check for mandatory options
+    if (!featureOptions) {
+      featureOptions = {};
     }
 
-    /* -----  End of CONSTRUCTOR  ------*/
+    // check mandatory fields
+    if (!featureOptions.billingAccount) {
+      throw new Error('billingAccount option must be specified when creating a new TelephonyGroupNumberConference');
+    }
 
-    /*= ========================================
+    if (!featureOptions.serviceName) {
+      throw new Error('serviceName option must be specified when creating a new TelephonyGroupNumberConference');
+    }
+
+    if (!featureOptions.featureType) {
+      throw new Error('featureType option must be specified when creating a new TelephonyGroupNumberConference');
+    }
+
+    // set mandatory attributes
+    this.billingAccount = featureOptions.billingAccount;
+    this.serviceName = featureOptions.serviceName;
+    this.featureType = featureOptions.featureType;
+
+    // from API
+    this.locked = false;
+    this.membersCount = null;
+    this.dateStart = null;
+
+    // custom attributes
+    this.inEdition = false;
+    this.saveForEdition = null;
+    this.participants = [];
+
+    // settings
+    this.pin = null;
+    this.announceFile = false;
+    this.reportEmail = null;
+    this.reportStatus = null;
+    this.whiteLabelReport = false;
+    this.language = null;
+    this.recordStatus = false;
+    this.eventsChannel = null;
+    this.anonymousRejection = false;
+    this.announceFilename = false;
+    this.enterMuted = false;
+
+    // web access
+    this.webAccess = {
+      read: null,
+      write: null,
+    };
+
+    // set feature options
+    this.setInfos(featureOptions);
+  }
+
+  /* -----  End of CONSTRUCTOR  ------*/
+
+  /*= ========================================
     =            PROTOTYPE METHODS            =
-    =========================================*/
+    ========================================= */
 
-    /* ----------  FEATURE OPTIONS  ----------*/
+  /* ----------  FEATURE OPTIONS  ----------*/
 
-    TelephonyGroupNumberConference.prototype.setInfos = function (featureOptionsParam) {
-        var self = this;
-        var featureOptions = featureOptionsParam;
+  TelephonyGroupNumberConference.prototype.setInfos = function (featureOptionsParam) {
+    const self = this;
+    let featureOptions = featureOptionsParam;
 
-        if (!featureOptions) {
-            featureOptions = {};
-        }
+    if (!featureOptions) {
+      featureOptions = {};
+    }
 
-        self.locked = _.get(featureOptions, "locked", false);
-        self.membersCount = _.get(featureOptions, "membersCount", null);
-        self.dateStart = _.get(featureOptions, "dateStart", null);
+    self.locked = _.get(featureOptions, 'locked', false);
+    self.membersCount = _.get(featureOptions, 'membersCount', null);
+    self.dateStart = _.get(featureOptions, 'dateStart', null);
 
-        return self;
-    };
+    return self;
+  };
 
-    TelephonyGroupNumberConference.prototype.setSettings = function (featureSettingsParam) {
-        var self = this;
-        var featureSettings = featureSettingsParam;
+  TelephonyGroupNumberConference.prototype.setSettings = function (featureSettingsParam) {
+    const self = this;
+    let featureSettings = featureSettingsParam;
 
-        if (!featureSettings) {
-            featureSettings = {};
-        }
+    if (!featureSettings) {
+      featureSettings = {};
+    }
 
-        _.assign(self, _.pick(featureSettings, settingsAttributes));
-        return self;
-    };
+    _.assign(self, _.pick(featureSettings, settingsAttributes));
+    return self;
+  };
 
-    TelephonyGroupNumberConference.prototype.setWebAccess = function (featureWebAccessParam) {
-        var self = this;
-        var featureWebAccess = featureWebAccessParam;
+  TelephonyGroupNumberConference.prototype.setWebAccess = function (featureWebAccessParam) {
+    const self = this;
+    let featureWebAccess = featureWebAccessParam;
 
-        if (!featureWebAccess) {
-            featureWebAccess = [];
-        }
+    if (!featureWebAccess) {
+      featureWebAccess = [];
+    }
 
-        self.webAccess.read = _.find(featureWebAccess, { type: "read" });
-        self.webAccess.write = _.find(featureWebAccess, { type: "write" });
+    self.webAccess.read = _.find(featureWebAccess, { type: 'read' });
+    self.webAccess.write = _.find(featureWebAccess, { type: 'write' });
 
-        return self;
-    };
+    return self;
+  };
 
-    /* ----------  API CALLS  ----------*/
+  /* ----------  API CALLS  ----------*/
 
-    TelephonyGroupNumberConference.prototype.getInfos = function () {
-        var self = this;
+  TelephonyGroupNumberConference.prototype.getInfos = function () {
+    const self = this;
 
-        return OvhApiTelephony.Conference().v6().informations({
-            billingAccount: self.billingAccount,
-            serviceName: self.serviceName
-        }).$promise.then(function (infos) {
-            return self.setInfos(infos).getParticipants();
-        }, function (error) {
-            if (error.status === 404) {
-                // this means there is nobody in the conference
-                // reset participant list
-                self.participants = [];
+    return OvhApiTelephony.Conference().v6().informations({
+      billingAccount: self.billingAccount,
+      serviceName: self.serviceName,
+    }).$promise.then(infos => self.setInfos(infos).getParticipants(), (error) => {
+      if (error.status === 404) {
+        // this means there is nobody in the conference
+        // reset participant list
+        self.participants = [];
 
-                // reset informations
-                return self.setInfos({
-                    locked: false,
-                    dateStart: null
-                });
-            }
-            return $q.reject(error);
-
+        // reset informations
+        return self.setInfos({
+          locked: false,
+          dateStart: null,
         });
-    };
+      }
+      return $q.reject(error);
+    });
+  };
 
-    TelephonyGroupNumberConference.prototype.getParticipants = function () {
-        var self = this;
+  TelephonyGroupNumberConference.prototype.getParticipants = function () {
+    const self = this;
 
-        return OvhApiTelephony.Conference().Participants().Aapi().query({
-            billingAccount: self.billingAccount,
-            serviceName: self.serviceName
-        }).$promise.then(function (participants) {
-            return self.updateParticipantList(_.chain(participants).map("value").filter(null).value());
-        });
-    };
+    return OvhApiTelephony.Conference().Participants().Aapi().query({
+      billingAccount: self.billingAccount,
+      serviceName: self.serviceName,
+    }).$promise.then(participants => self.updateParticipantList(_.chain(participants).map('value').filter(null).value()));
+  };
 
-    TelephonyGroupNumberConference.prototype.save = function () {
-        var self = this;
-        var settings = _.pick(self, settingsAttributes);
+  TelephonyGroupNumberConference.prototype.save = function () {
+    const self = this;
+    const settings = _.pick(self, settingsAttributes);
 
-        if (_.isEmpty(settings.pin)) {
-            settings.pin = 0;
-        }
+    if (_.isEmpty(settings.pin)) {
+      settings.pin = 0;
+    }
 
-        return OvhApiTelephony.Conference().v6().updateSettings({
-            billingAccount: self.billingAccount,
-            serviceName: self.serviceName
-        }, _.omit(settings, ["featureType", "eventsChannel", "announceFilename"])).$promise.then(function () {
-            return self;
-        });
-    };
+    return OvhApiTelephony.Conference().v6().updateSettings({
+      billingAccount: self.billingAccount,
+      serviceName: self.serviceName,
+    }, _.omit(settings, ['featureType', 'eventsChannel', 'announceFilename'])).$promise.then(() => self);
+  };
 
-    TelephonyGroupNumberConference.prototype.lock = function () {
-        var self = this;
+  TelephonyGroupNumberConference.prototype.lock = function () {
+    const self = this;
 
-        return OvhApiTelephony.Conference().v6().lock({
-            billingAccount: self.billingAccount,
-            serviceName: self.serviceName
-        }, {}).$promise;
-    };
+    return OvhApiTelephony.Conference().v6().lock({
+      billingAccount: self.billingAccount,
+      serviceName: self.serviceName,
+    }, {}).$promise;
+  };
 
-    TelephonyGroupNumberConference.prototype.unlock = function () {
-        var self = this;
+  TelephonyGroupNumberConference.prototype.unlock = function () {
+    const self = this;
 
-        return OvhApiTelephony.Conference().v6().unlock({
-            billingAccount: self.billingAccount,
-            serviceName: self.serviceName
-        }, {}).$promise;
-    };
+    return OvhApiTelephony.Conference().v6().unlock({
+      billingAccount: self.billingAccount,
+      serviceName: self.serviceName,
+    }, {}).$promise;
+  };
 
-    TelephonyGroupNumberConference.prototype.getSettings = function () {
-        var self = this;
+  TelephonyGroupNumberConference.prototype.getSettings = function () {
+    const self = this;
 
-        return OvhApiTelephony.Conference().v6().settings({
-            billingAccount: self.billingAccount,
-            serviceName: self.serviceName
-        }).$promise.then(function (settings) {
-            return self.setSettings(settings);
-        });
-    };
+    return OvhApiTelephony.Conference().v6().settings({
+      billingAccount: self.billingAccount,
+      serviceName: self.serviceName,
+    }).$promise.then(settings => self.setSettings(settings));
+  };
 
-    TelephonyGroupNumberConference.prototype.getWebAccess = function () {
-        var self = this;
+  TelephonyGroupNumberConference.prototype.getWebAccess = function () {
+    const self = this;
 
-        return OvhApiTelephony.Conference().WebAccess().v6().query({
-            billingAccount: self.billingAccount,
-            serviceName: self.serviceName
-        }).$promise.then(function (ids) {
-            return $q.all(_.map(ids, function (id) {
-                return OvhApiTelephony.Conference().WebAccess().v6().get({
-                    billingAccount: self.billingAccount,
-                    serviceName: self.serviceName,
-                    id: id
-                }).$promise;
-            })).then(function (webAccess) {
-                self.setWebAccess(webAccess);
-            });
-        });
-    };
+    return OvhApiTelephony.Conference().WebAccess().v6()
+      .query({
+        billingAccount: self.billingAccount,
+        serviceName: self.serviceName,
+      }).$promise
+      .then(ids => $q.all(_.map(ids, id => OvhApiTelephony.Conference().WebAccess().v6().get({
+        billingAccount: self.billingAccount,
+        serviceName: self.serviceName,
+        id,
+      }).$promise)).then((webAccess) => {
+        self.setWebAccess(webAccess);
+      }));
+  };
 
-    TelephonyGroupNumberConference.prototype.generateWebAccess = function () {
-        var self = this;
+  TelephonyGroupNumberConference.prototype.generateWebAccess = function () {
+    const self = this;
 
-        return TelephonyMediator.getApiModelEnum("telephony.ConferenceWebAccessTypeEnum").then(function (accessType) {
-            return $q.all(_.map(accessType, function (type) {
-                return OvhApiTelephony.Conference().WebAccess().v6().create({
-                    billingAccount: self.billingAccount,
-                    serviceName: self.serviceName
-                }, {
-                    type: type
-                }).$promise;
-            })).then(function () {
-                return self.getWebAccess();
-            });
-        });
-    };
+    return TelephonyMediator.getApiModelEnum('telephony.ConferenceWebAccessTypeEnum').then(accessType => $q.all(_.map(accessType, type => OvhApiTelephony.Conference().WebAccess().v6().create({
+      billingAccount: self.billingAccount,
+      serviceName: self.serviceName,
+    }, {
+      type,
+    }).$promise)).then(() => self.getWebAccess()));
+  };
 
-    TelephonyGroupNumberConference.prototype.deleteWebAccess = function () {
-        var self = this;
-        var ids = [].concat(_.get(self.webAccess, "read.id"), _.get(self.webAccess, "write.id"));
+  TelephonyGroupNumberConference.prototype.deleteWebAccess = function () {
+    const self = this;
+    const ids = [].concat(_.get(self.webAccess, 'read.id'), _.get(self.webAccess, 'write.id'));
 
-        return $q.all(_.map(_.chain(ids).compact().value(), function (id) {
-            return OvhApiTelephony.Conference().WebAccess().v6().remove({
-                billingAccount: self.billingAccount,
-                serviceName: self.serviceName,
-                id: id
-            }).$promise;
-        })).then(function () {
-            self.webAccess = {
-                read: null,
-                write: null
-            };
-        });
-    };
+    return $q
+      .all(_.map(_.chain(ids).compact().value(), id =>
+        OvhApiTelephony.Conference().WebAccess().v6().remove({
+          billingAccount: self.billingAccount,
+          serviceName: self.serviceName,
+          id,
+        }).$promise))
+      .then(() => {
+        self.webAccess = {
+          read: null,
+          write: null,
+        };
+      });
+  };
 
-    TelephonyGroupNumberConference.prototype.announceUpload = function (file) {
-        var self = this;
+  TelephonyGroupNumberConference.prototype.announceUpload = function (file) {
+    const self = this;
 
-        return OvhApiMe.Document().v6().upload(file.name, file).then(function (doc) {
-            return OvhApiTelephony.Conference().v6().announceUpload({
-                billingAccount: self.billingAccount,
-                serviceName: self.serviceName
-            }, {
-                documentId: doc.id
-            }).$promise.then(function (task) {
-                return voipServiceTask.startPolling(self.billingAccount, self.serviceName, task.taskId, {
-                    namespace: "announceUpload_" + self.serviceName,
-                    interval: 1000,
-                    retryMaxAttempts: 0
-                }).catch(function (err) {
-                    if (err.status === 404) {
-                        // add some delay to ensure we get the sound from api when refreshing
-                        return $timeout(function () {
-                            return $q.when(true);
-                        }, 2000);
-                    }
-                    return $q.reject(err);
+    return OvhApiMe.Document().v6()
+      .upload(file.name, file)
+      .then(doc => OvhApiTelephony.Conference().v6().announceUpload({
+        billingAccount: self.billingAccount,
+        serviceName: self.serviceName,
+      }, {
+        documentId: doc.id,
+      }).$promise.then(task =>
+        voipServiceTask.startPolling(self.billingAccount, self.serviceName, task.taskId, {
+          namespace: `announceUpload_${self.serviceName}`,
+          interval: 1000,
+          retryMaxAttempts: 0,
+        }).catch((err) => {
+          if (err.status === 404) {
+            // add some delay to ensure we get the sound from api when refreshing
+            return $timeout(() => $q.when(true), 2000);
+          }
+          return $q.reject(err);
+        })));
+  };
 
-                });
-            });
-        });
-    };
+  /* ----------  PARTICIPATNS  ----------*/
 
-    /* ----------  PARTICIPATNS  ----------*/
+  TelephonyGroupNumberConference.prototype.updateParticipantList = function (participantsList) {
+    const self = this;
+    const curParticipantIds = _.map(self.participants, 'id');
+    const participantsListIds = _.map(participantsList, 'id');
+    const participantsIdsToRemove = _.difference(curParticipantIds, participantsListIds);
+    const participantsIdsToAddOrUpdate = _.difference(participantsListIds, participantsIdsToRemove);
 
-    TelephonyGroupNumberConference.prototype.updateParticipantList = function (participantsList) {
-        var self = this;
-        var curParticipantIds = _.map(self.participants, "id");
-        var participantsListIds = _.map(participantsList, "id");
-        var participantsIdsToRemove = _.difference(curParticipantIds, participantsListIds);
-        var participantsIdsToAddOrUpdate = _.difference(participantsListIds, participantsIdsToRemove);
+    // remove participants
+    angular.forEach(participantsIdsToRemove, (id) => {
+      _.remove(self.participants, {
+        id,
+      });
+    });
 
-        // remove participants
-        angular.forEach(participantsIdsToRemove, function (id) {
-            _.remove(self.participants, {
-                id: id
-            });
-        });
+    // add participants
+    angular.forEach(participantsIdsToAddOrUpdate, (id) => {
+      self.addParticipant(_.find(participantsList, {
+        id,
+      }));
+    });
 
-        // add participants
-        angular.forEach(participantsIdsToAddOrUpdate, function (id) {
-            self.addParticipant(_.find(participantsList, {
-                id: id
-            }));
-        });
+    return self;
+  };
 
-        return self;
-    };
+  TelephonyGroupNumberConference.prototype.addParticipant = function (participantOptions) {
+    const self = this;
+    let connectedParticipant = _.find(self.participants, {
+      id: participantOptions.id,
+    });
 
-    TelephonyGroupNumberConference.prototype.addParticipant = function (participantOptions) {
-        var self = this;
-        var connectedParticipant = _.find(self.participants, {
-            id: participantOptions.id
-        });
-
-        if (!connectedParticipant) {
-            connectedParticipant = new TelephonyGroupNumberConferenceParticipant(angular.extend(participantOptions, {
-                billingAccount: self.billingAccount,
-                serviceName: self.serviceName
-            }));
-            self.participants.push(connectedParticipant);
-        } else {
-            connectedParticipant.setInfos(participantOptions);
-        }
-
-        return connectedParticipant;
-    };
-
-    TelephonyGroupNumberConference.prototype.muteAllParticipants = function () {
-        var self = this;
-
-        return $q.allSettled(_.map(self.participants, function (participant) {
-            return participant.mute();
+    if (!connectedParticipant) {
+      connectedParticipant =
+        new TelephonyGroupNumberConferenceParticipant(angular.extend(participantOptions, {
+          billingAccount: self.billingAccount,
+          serviceName: self.serviceName,
         }));
-    };
+      self.participants.push(connectedParticipant);
+    } else {
+      connectedParticipant.setInfos(participantOptions);
+    }
 
-    TelephonyGroupNumberConference.prototype.unmuteAllParticipants = function () {
-        var self = this;
+    return connectedParticipant;
+  };
 
-        return $q.allSettled(_.map(self.participants, function (participant) {
-            return participant.unmute();
-        }));
-    };
+  TelephonyGroupNumberConference.prototype.muteAllParticipants = function () {
+    const self = this;
 
-    /* ----------  EDITION  ----------*/
+    return $q.allSettled(_.map(self.participants, participant => participant.mute()));
+  };
 
-    TelephonyGroupNumberConference.prototype.startEdition = function () {
-        var self = this;
+  TelephonyGroupNumberConference.prototype.unmuteAllParticipants = function () {
+    const self = this;
 
-        self.inEdition = true;
-        self.saveForEdition = _.assign({}, _.pick(self, settingsAttributes));
+    return $q.allSettled(_.map(self.participants, participant => participant.unmute()));
+  };
 
-        return self;
-    };
+  /* ----------  EDITION  ----------*/
 
-    TelephonyGroupNumberConference.prototype.stopEdition = function (cancel) {
-        var self = this;
+  TelephonyGroupNumberConference.prototype.startEdition = function () {
+    const self = this;
 
-        if (self.saveForEdition && cancel) {
-            _.assign(self, _.pick(self.saveForEdition, settingsAttributes));
-        }
+    self.inEdition = true;
+    self.saveForEdition = _.assign({}, _.pick(self, settingsAttributes));
 
-        self.saveForEdition = null;
-        self.inEdition = false;
+    return self;
+  };
 
-        return self;
-    };
+  TelephonyGroupNumberConference.prototype.stopEdition = function (cancel) {
+    const self = this;
 
-    TelephonyGroupNumberConference.prototype.hasChange = function () {
-        var self = this;
+    if (self.saveForEdition && cancel) {
+      _.assign(self, _.pick(self.saveForEdition, settingsAttributes));
+    }
 
-        if (!self.inEdition || !self.saveForEdition) {
-            return false;
-        }
+    self.saveForEdition = null;
+    self.inEdition = false;
 
-        return self.inEdition && !angular.equals(
-            _.pick(self.saveForEdition, settingsAttributes),
-            _.pick(self, settingsAttributes)
-        );
-    };
+    return self;
+  };
 
-    /* ----------  HELPERS  ----------*/
+  TelephonyGroupNumberConference.prototype.hasChange = function () {
+    const self = this;
 
-    TelephonyGroupNumberConference.prototype.inPendingState = function () {
-        return true;
-    };
+    if (!self.inEdition || !self.saveForEdition) {
+      return false;
+    }
 
-    TelephonyGroupNumberConference.prototype.hasParticipants = function () {
-        var self = this;
+    return self.inEdition && !angular.equals(
+      _.pick(self.saveForEdition, settingsAttributes),
+      _.pick(self, settingsAttributes),
+    );
+  };
 
-        return self.participants.length > 0;
-    };
+  /* ----------  HELPERS  ----------*/
 
-    /* ----------  INITIALIZATION  ----------*/
+  TelephonyGroupNumberConference.prototype.inPendingState = function () {
+    return true;
+  };
 
-    TelephonyGroupNumberConference.prototype.init = function () {
-        var self = this;
+  TelephonyGroupNumberConference.prototype.hasParticipants = function () {
+    const self = this;
 
-        return OvhApiTelephony.Conference().v6().get({
-            billingAccount: self.billingAccount,
-            serviceName: self.serviceName
-        }).$promise.then(function () {
-            return self.getInfos();
-        });
-    };
+    return self.participants.length > 0;
+  };
 
-    /* -----  End of PROTOTYPE METHODS  ------*/
+  /* ----------  INITIALIZATION  ----------*/
 
-    return TelephonyGroupNumberConference;
+  TelephonyGroupNumberConference.prototype.init = function () {
+    const self = this;
 
+    return OvhApiTelephony.Conference().v6().get({
+      billingAccount: self.billingAccount,
+      serviceName: self.serviceName,
+    }).$promise.then(() => self.getInfos());
+  };
+
+  /* -----  End of PROTOTYPE METHODS  ------*/
+
+  return TelephonyGroupNumberConference;
 });

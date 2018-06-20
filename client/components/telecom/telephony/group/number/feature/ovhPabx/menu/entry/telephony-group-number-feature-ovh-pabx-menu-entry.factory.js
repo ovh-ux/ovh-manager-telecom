@@ -1,195 +1,193 @@
-angular.module("managerApp").factory("TelephonyGroupNumberOvhPabxMenuEntry", function ($q, OvhApiTelephony) {
-    "use strict";
-
-    /*= ==================================
+angular.module('managerApp').factory('TelephonyGroupNumberOvhPabxMenuEntry', ($q, OvhApiTelephony) => {
+  /*= ==================================
     =            CONSTRUCTOR            =
-    ===================================*/
+    =================================== */
 
-    function TelephonyGroupNumberOvhPabxMenuEntry (menuEntryOptionsParam) {
-        var menuEntryOptions = menuEntryOptionsParam;
+  function TelephonyGroupNumberOvhPabxMenuEntry(menuEntryOptionsParam) {
+    let menuEntryOptions = menuEntryOptionsParam;
 
-        if (!menuEntryOptions) {
-            menuEntryOptions = {};
-        }
-
-        // check for mandatory options
-        if (!menuEntryOptions.billingAccount) {
-            throw new Error("billingAccount option must be specified when creating a new TelephonyGroupNumberOvhPabxMenuEntry");
-        }
-
-        if (!menuEntryOptions.serviceName) {
-            throw new Error("serviceName option must be specified when creating a new TelephonyGroupNumberOvhPabxMenuEntry");
-        }
-
-        if (!menuEntryOptions.menuId) {
-            throw new Error("menuId option must be specified when creating a new TelephonyGroupNumberOvhPabxMenuEntry");
-        }
-
-        // set mandatory attributes
-        this.billingAccount = menuEntryOptions.billingAccount;
-        this.serviceName = menuEntryOptions.serviceName;
-        this.menuId = menuEntryOptions.menuId;
-
-        // other attributes
-        this.entryId = menuEntryOptions.entryId || _.random(_.now());
-        this.action = null;
-        this.actionParam = null;
-        this.dtmf = null;
-        this.position = null;
-
-        // custom attributes
-        this.inEdition = false;
-        this.saveForEdition = null;
-        this.status = null;
-        this.menuSub = null;
-
-        this.setInfos(menuEntryOptions);
+    if (!menuEntryOptions) {
+      menuEntryOptions = {};
     }
 
-    /* -----  End of CONSTRUCTOR  ------*/
+    // check for mandatory options
+    if (!menuEntryOptions.billingAccount) {
+      throw new Error('billingAccount option must be specified when creating a new TelephonyGroupNumberOvhPabxMenuEntry');
+    }
 
-    TelephonyGroupNumberOvhPabxMenuEntry.prototype.setInfos = function (menuEntryOptions) {
-        var self = this;
+    if (!menuEntryOptions.serviceName) {
+      throw new Error('serviceName option must be specified when creating a new TelephonyGroupNumberOvhPabxMenuEntry');
+    }
 
-        self.action = menuEntryOptions.action || "setCallerName";
-        self.dtmf = menuEntryOptions.dtmf || null;
-        self.position = menuEntryOptions.position || null;
-        self.status = menuEntryOptions.status || "OK";
+    if (!menuEntryOptions.menuId) {
+      throw new Error('menuId option must be specified when creating a new TelephonyGroupNumberOvhPabxMenuEntry');
+    }
 
-        // special rule for action param
-        if (self.action === "playback" || self.action === "menuSub" || self.action === "callcenter") {
-            self.actionParam = menuEntryOptions.actionParam ? parseInt(menuEntryOptions.actionParam, 10) : "";
-        } else {
-            self.actionParam = menuEntryOptions.actionParam || "";
-        }
+    // set mandatory attributes
+    this.billingAccount = menuEntryOptions.billingAccount;
+    this.serviceName = menuEntryOptions.serviceName;
+    this.menuId = menuEntryOptions.menuId;
 
-        return self;
-    };
+    // other attributes
+    this.entryId = menuEntryOptions.entryId || _.random(_.now());
+    this.action = null;
+    this.actionParam = null;
+    this.dtmf = null;
+    this.position = null;
 
-    /*= ========================================
+    // custom attributes
+    this.inEdition = false;
+    this.saveForEdition = null;
+    this.status = null;
+    this.menuSub = null;
+
+    this.setInfos(menuEntryOptions);
+  }
+
+  /* -----  End of CONSTRUCTOR  ------*/
+
+  TelephonyGroupNumberOvhPabxMenuEntry.prototype.setInfos = function (menuEntryOptions) {
+    const self = this;
+
+    self.action = menuEntryOptions.action || 'setCallerName';
+    self.dtmf = menuEntryOptions.dtmf || null;
+    self.position = menuEntryOptions.position || null;
+    self.status = menuEntryOptions.status || 'OK';
+
+    // special rule for action param
+    if (self.action === 'playback' || self.action === 'menuSub' || self.action === 'callcenter') {
+      self.actionParam = menuEntryOptions.actionParam ? parseInt(menuEntryOptions.actionParam, 10) : '';
+    } else {
+      self.actionParam = menuEntryOptions.actionParam || '';
+    }
+
+    return self;
+  };
+
+  /*= ========================================
     =            PROTOTYPE METHODS            =
-    =========================================*/
+    ========================================= */
 
-    /* ----------  API CALLS  ----------*/
+  /* ----------  API CALLS  ----------*/
 
-    TelephonyGroupNumberOvhPabxMenuEntry.prototype.create = function () {
-        var self = this;
+  TelephonyGroupNumberOvhPabxMenuEntry.prototype.create = function () {
+    const self = this;
 
-        self.status = "IN_CREATION";
+    self.status = 'IN_CREATION';
 
-        return OvhApiTelephony.OvhPabx().Menu().Entry().v6().create({
-            billingAccount: self.billingAccount,
-            serviceName: self.serviceName,
-            menuId: self.menuId
-        }, {
-            action: self.action,
-            actionParam: self.actionParam,
-            dtmf: self.dtmf,
-            position: self.position
-        }).$promise.then(function (menuEntryOptions) {
-            self.entryId = menuEntryOptions.entryId;
-            self.status = "OK";
-            return self;
-        }, function (error) {
-            self.status = "DRAFT";
-            return $q.reject(error);
-        });
-    };
-
-    TelephonyGroupNumberOvhPabxMenuEntry.prototype.save = function () {
-        var self = this;
-
-        self.status = "SAVING";
-
-        return OvhApiTelephony.OvhPabx().Menu().Entry().v6().save({
-            billingAccount: self.billingAccount,
-            serviceName: self.serviceName,
-            menuId: self.menuId,
-            entryId: self.entryId
-        }, {
-            action: self.action,
-            actionParam: self.actionParam,
-            dtmf: self.dtmf,
-            position: self.position
-        }).$promise.then(function () {
-            return self;
-        }).finally(function () {
-            // in all case status is OK
-            self.status = "OK";
-        });
-    };
-
-    TelephonyGroupNumberOvhPabxMenuEntry.prototype.remove = function () {
-        var self = this;
-
-        self.status = "DELETING";
-
-        return OvhApiTelephony.OvhPabx().Menu().Entry().v6().remove({
-            billingAccount: self.billingAccount,
-            serviceName: self.serviceName,
-            menuId: self.menuId,
-            entryId: self.entryId
-        }).$promise.finally(function () {
-            // in all case status is OK
-            self.status = "OK";
-        });
-    };
-
-    /* ----------  EDITION  ----------*/
-
-    TelephonyGroupNumberOvhPabxMenuEntry.prototype.startEdition = function () {
-        var self = this;
-
-        self.inEdition = true;
-        self.saveForEdition = {
-            action: angular.copy(self.action),
-            actionParam: angular.copy(self.actionParam),
-            dtmf: angular.copy(self.dtmf),
-            position: angular.copy(self.position),
-            status: angular.copy(self.status)
-        };
-
+    return OvhApiTelephony.OvhPabx().Menu().Entry().v6()
+      .create({
+        billingAccount: self.billingAccount,
+        serviceName: self.serviceName,
+        menuId: self.menuId,
+      }, {
+        action: self.action,
+        actionParam: self.actionParam,
+        dtmf: self.dtmf,
+        position: self.position,
+      }).$promise.then((menuEntryOptions) => {
+        self.entryId = menuEntryOptions.entryId;
+        self.status = 'OK';
         return self;
+      }, (error) => {
+        self.status = 'DRAFT';
+        return $q.reject(error);
+      });
+  };
+
+  TelephonyGroupNumberOvhPabxMenuEntry.prototype.save = function () {
+    const self = this;
+
+    self.status = 'SAVING';
+
+    return OvhApiTelephony.OvhPabx().Menu().Entry().v6()
+      .save({
+        billingAccount: self.billingAccount,
+        serviceName: self.serviceName,
+        menuId: self.menuId,
+        entryId: self.entryId,
+      }, {
+        action: self.action,
+        actionParam: self.actionParam,
+        dtmf: self.dtmf,
+        position: self.position,
+      }).$promise.then(() => self).finally(() => {
+        // in all case status is OK
+        self.status = 'OK';
+      });
+  };
+
+  TelephonyGroupNumberOvhPabxMenuEntry.prototype.remove = function () {
+    const self = this;
+
+    self.status = 'DELETING';
+
+    return OvhApiTelephony.OvhPabx().Menu().Entry().v6()
+      .remove({
+        billingAccount: self.billingAccount,
+        serviceName: self.serviceName,
+        menuId: self.menuId,
+        entryId: self.entryId,
+      }).$promise.finally(() => {
+        // in all case status is OK
+        self.status = 'OK';
+      });
+  };
+
+  /* ----------  EDITION  ----------*/
+
+  TelephonyGroupNumberOvhPabxMenuEntry.prototype.startEdition = function () {
+    const self = this;
+
+    self.inEdition = true;
+    self.saveForEdition = {
+      action: angular.copy(self.action),
+      actionParam: angular.copy(self.actionParam),
+      dtmf: angular.copy(self.dtmf),
+      position: angular.copy(self.position),
+      status: angular.copy(self.status),
     };
 
-    TelephonyGroupNumberOvhPabxMenuEntry.prototype.stopEdition = function (cancel, saveForEdition) {
-        var self = this;
+    return self;
+  };
 
-        if (self.saveForEdition && cancel) {
-            self.action = angular.copy(self.saveForEdition.action);
-            self.actionParam = angular.copy(self.saveForEdition.actionParam);
-            self.dtmf = angular.copy(self.saveForEdition.dtmf);
-            self.position = angular.copy(self.saveForEdition.position);
-            self.status = angular.copy(self.saveForEdition.status);
-        } else if (saveForEdition && cancel) {
-            self.action = angular.copy(saveForEdition.action);
-            self.actionParam = angular.copy(saveForEdition.actionParam);
-            self.dtmf = angular.copy(saveForEdition.dtmf);
-            self.position = angular.copy(saveForEdition.position);
-            self.status = angular.copy(saveForEdition.status);
-        }
+  TelephonyGroupNumberOvhPabxMenuEntry.prototype.stopEdition = function (cancel, saveForEdition) {
+    const self = this;
 
-        self.saveForEdition = null;
-        self.inEdition = false;
+    if (self.saveForEdition && cancel) {
+      self.action = angular.copy(self.saveForEdition.action);
+      self.actionParam = angular.copy(self.saveForEdition.actionParam);
+      self.dtmf = angular.copy(self.saveForEdition.dtmf);
+      self.position = angular.copy(self.saveForEdition.position);
+      self.status = angular.copy(self.saveForEdition.status);
+    } else if (saveForEdition && cancel) {
+      self.action = angular.copy(saveForEdition.action);
+      self.actionParam = angular.copy(saveForEdition.actionParam);
+      self.dtmf = angular.copy(saveForEdition.dtmf);
+      self.position = angular.copy(saveForEdition.position);
+      self.status = angular.copy(saveForEdition.status);
+    }
 
-        return self;
-    };
+    self.saveForEdition = null;
+    self.inEdition = false;
 
-    TelephonyGroupNumberOvhPabxMenuEntry.prototype.hasChange = function (attr) {
-        var self = this;
+    return self;
+  };
 
-        if (!self.inEdition || !self.saveForEdition) {
-            return false;
-        }
+  TelephonyGroupNumberOvhPabxMenuEntry.prototype.hasChange = function (attr) {
+    const self = this;
 
-        if (attr) {
-            return !_.isEqual(_.get(self.saveForEdition, attr), _.get(self, attr));
-        }
-        return self.hasChange("action") || self.hasChange("actionParam") || self.hasChange("dtmf");
-    };
+    if (!self.inEdition || !self.saveForEdition) {
+      return false;
+    }
 
-    /* -----  End of PROTOTYPE METHODS  ------*/
+    if (attr) {
+      return !_.isEqual(_.get(self.saveForEdition, attr), _.get(self, attr));
+    }
+    return self.hasChange('action') || self.hasChange('actionParam') || self.hasChange('dtmf');
+  };
 
-    return TelephonyGroupNumberOvhPabxMenuEntry;
+  /* -----  End of PROTOTYPE METHODS  ------*/
 
+  return TelephonyGroupNumberOvhPabxMenuEntry;
 });

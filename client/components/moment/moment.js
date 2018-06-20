@@ -1,1 +1,1 @@
-angular.module("momentjs", []);
+angular.module('momentjs', []);

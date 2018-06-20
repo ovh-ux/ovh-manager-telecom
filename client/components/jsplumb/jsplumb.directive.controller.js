@@ -1,27 +1,24 @@
-angular.module("managerApp").controller("jsplumbCtrl", function ($timeout) {
-    "use strict";
+angular.module('managerApp').controller('jsplumbCtrl', function ($timeout) {
+  const self = this;
+  let repaintTimeout = null;
 
-    var self = this;
-    var repaintTimeout = null;
-
-    /*= ==============================
+  /*= ==============================
     =            HELPERS            =
-    ===============================*/
+    =============================== */
 
-    self.askForRepaint = function () {
-        if (repaintTimeout) {
-            $timeout.cancel(repaintTimeout);
-        }
+  self.askForRepaint = function () {
+    if (repaintTimeout) {
+      $timeout.cancel(repaintTimeout);
+    }
 
-        repaintTimeout = $timeout(function () {
-            if (self.instance) {
-                self.instance.setSuspendDrawing(false, true);
-            }
-        }, 150);
+    repaintTimeout = $timeout(() => {
+      if (self.instance) {
+        self.instance.setSuspendDrawing(false, true);
+      }
+    }, 150);
 
-        return repaintTimeout;
-    };
+    return repaintTimeout;
+  };
 
-    /* -----  End of HELPERS  ------*/
-
+  /* -----  End of HELPERS  ------*/
 });

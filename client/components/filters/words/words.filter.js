@@ -1,19 +1,15 @@
-angular.module("managerApp").filter("words", function () {
-    "use strict";
+angular.module('managerApp').filter('words', () => function (text, capitalizeFirstWord) {
+  const words = _.words(text);
 
-    return function (text, capitalizeFirstWord) {
-        var words = _.words(text);
+  if (capitalizeFirstWord) {
+    for (let i = 0; i < words.length; i += 1) {
+      if (i === 0) {
+        words[i] = _.capitalize(words[i]);
+      } else {
+        words[i] = words[i].toLowerCase();
+      }
+    }
+  }
 
-        if (capitalizeFirstWord) {
-            for (var i = 0; i < words.length; i++) {
-                if (i === 0) {
-                    words[i] = _.capitalize(words[i]);
-                } else {
-                    words[i] = words[i].toLowerCase();
-                }
-            }
-        }
-
-        return words.join(" ");
-    };
+  return words.join(' ');
 });
