@@ -126,7 +126,7 @@ class ManagerNavbarService {
 
     // Alias
     const alias = telephony.getAlias();
-    const sortedAlias = this.voipService.sortServicesByDisplayedName(alias);
+    const sortedAlias = this.voipService.constructor.sortServicesByDisplayedName(alias);
     if (sortedAlias.length) {
       addGroup(
         sortedAlias,
@@ -138,7 +138,7 @@ class ManagerNavbarService {
 
     // Lines
     const lines = telephony.getLines();
-    const sortedLines = this.voipService.sortServicesByDisplayedName(lines);
+    const sortedLines = this.voipService.constructor.sortServicesByDisplayedName(lines);
     if (sortedLines.length) {
       // Lines
       const sortedSipLines = _.filter(sortedLines, line => ['plugAndFax', 'fax', 'voicefax'].indexOf(line.featureType) === -1);
@@ -152,7 +152,8 @@ class ManagerNavbarService {
       }
 
       // PlugAndFax
-      const sortedPlugAndFaxLines = this.voipService.filterPlugAndFaxServices(sortedLines);
+      const sortedPlugAndFaxLines =
+        this.voipService.constructor.filterPlugAndFaxServices(sortedLines);
       if (sortedPlugAndFaxLines.length) {
         addGroup(
           sortedPlugAndFaxLines,
@@ -163,7 +164,7 @@ class ManagerNavbarService {
       }
 
       // Fax
-      const sortedFaxLines = this.voipService.filterFaxServices(sortedLines);
+      const sortedFaxLines = this.voipService.constructor.filterFaxServices(sortedLines);
       if (sortedFaxLines.length) {
         addGroup(
           sortedFaxLines,
