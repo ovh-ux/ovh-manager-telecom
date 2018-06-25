@@ -20,7 +20,7 @@
     "sms"
   ],
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">=8"
   },
   "scripts": {
     "start": "node server/app.js",
