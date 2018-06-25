@@ -80,7 +80,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationTones
           serviceName: $stateParams.serviceName,
         }, {
           type: toneType,
-          url: doc.getUrl,
+          documentId: doc.id,
         }).$promise
         .then(result => voipServiceTask.startPolling(
           $stateParams.billingAccount,
