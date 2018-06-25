@@ -1,94 +1,91 @@
-angular.module("managerApp").controller("TelephonyNumberOvhPabxCtrl", function ($q, $translate, $translatePartialLoader, TelephonyMediator, Toast) {
-    "use strict";
+angular.module('managerApp').controller('TelephonyNumberOvhPabxCtrl', function ($q, $translate, $translatePartialLoader, TelephonyMediator, Toast) {
+  const self = this;
 
-    var self = this;
+  self.popoverDatas = {
+    isOpen: false,
+    configType: null,
+  };
 
-    self.popoverDatas = {
-        isOpen: false,
-        configType: null
-    };
+  self.loading = {
+    dialplan: false,
+    translations: false,
+  };
 
-    self.loading = {
-        dialplan: false,
-        translations: false
-    };
+  self.ovhPabx = null;
+  self.dialplan = null;
 
-    self.ovhPabx = null;
-    self.dialplan = null;
-
-    /*= ==============================
+  /*= ==============================
     =            HELPERS            =
-    ===============================*/
+    =============================== */
 
-    self.refreshDisplayedDialplan = function () {
-        // for the moment it will only have one dialplan per ovhPabx. So we take the first.
-        self.dialplan = _.get(self.numberCtrl.number.feature.dialplans, "[0]");
-    };
+  self.refreshDisplayedDialplan = function () {
+    // for the moment it will only have one dialplan per ovhPabx. So we take the first.
+    self.dialplan = _.get(self.numberCtrl.number.feature.dialplans, '[0]');
+  };
 
-    /* -----  End of HELPERS  ------*/
+  /* -----  End of HELPERS  ------*/
 
-    /*= =====================================
+  /*= =====================================
     =            INITIALIZATION            =
-    ======================================*/
+    ====================================== */
 
-    /* ----------  Translations load  ----------*/
+  /* ----------  Translations load  ----------*/
 
-    function getTranslations () {
-        self.loading.translations = true;
+  function getTranslations() {
+    self.loading.translations = true;
 
-        // load ovhPabx translations
-        $translatePartialLoader.addPart("../components/telecom/telephony/group/number/feature/ovhPabx");
+    // load ovhPabx translations
+    $translatePartialLoader.addPart('../components/telecom/telephony/group/number/feature/ovhPabx');
 
-        // load time condition slot transations
-        $translatePartialLoader.addPart("../components/telecom/telephony/timeCondition/slot");
+    // load time condition slot transations
+    $translatePartialLoader.addPart('../components/telecom/telephony/timeCondition/slot');
 
-        // load specific types translations
-        $translatePartialLoader.addPart("../components/telecom/telephony/group/number/feature/ovhPabx/types/" + self.ovhPabx.featureType);
-        return $translate.refresh().finally(function () {
-            self.loading.translations = false;
-        });
-    }
+    // load specific types translations
+    $translatePartialLoader.addPart(`../components/telecom/telephony/group/number/feature/ovhPabx/types/${self.ovhPabx.featureType}`);
+    return $translate.refresh().finally(() => {
+      self.loading.translations = false;
+    });
+  }
 
-    /* ----------  Component initialization  ----------*/
+  /* ----------  Component initialization  ----------*/
 
-    self.$onInit = function () {
-        var initPromises;
+  self.$onInit = function () {
+    let initPromises;
 
-        // set loading
-        self.numberCtrl.loading.feature = true;
+    // set loading
+    self.numberCtrl.loading.feature = true;
 
-        // set ovhPabx
-        self.ovhPabx = self.numberCtrl.number.feature;
+    // set ovhPabx
+    self.ovhPabx = self.numberCtrl.number.feature;
 
-        return getTranslations().then(function () {
-            initPromises = [
-                self.ovhPabx.getDialplans(),
-                self.ovhPabx.getSounds(),
-                TelephonyMediator.getAll()
-            ];
+    return getTranslations().then(() => {
+      initPromises = [
+        self.ovhPabx.getDialplans(),
+        self.ovhPabx.getSounds(),
+        TelephonyMediator.getAll(),
+      ];
 
-            if (self.ovhPabx.featureType === "cloudIvr" || self.ovhPabx.featureType === "contactCenterSolutionExpert") {
-                initPromises.push(self.ovhPabx.getMenus(true));
-            }
-            if (self.ovhPabx.featureType !== "cloudIvr") {
-                initPromises.push(self.ovhPabx.getQueues());
-                if (self.ovhPabx.isCcs()) {
-                    initPromises.push(self.ovhPabx.getTts());
-                }
-            }
+      if (self.ovhPabx.featureType === 'cloudIvr' || self.ovhPabx.featureType === 'contactCenterSolutionExpert') {
+        initPromises.push(self.ovhPabx.getMenus(true));
+      }
+      if (self.ovhPabx.featureType !== 'cloudIvr') {
+        initPromises.push(self.ovhPabx.getQueues());
+        if (self.ovhPabx.isCcs()) {
+          initPromises.push(self.ovhPabx.getTts());
+        }
+      }
 
-            return $q.allSettled(initPromises);
-        }).then(function () {
-            self.refreshDisplayedDialplan();
-        }).finally(function () {
-            self.numberCtrl.loading.feature = false;
-        }).catch(function (error) {
-            Toast.error($translate.instant("telephony_number_feature_ovh_pabx_load_error"));
-            return $q.reject(error);
-        });
-    };
+      return $q.allSettled(initPromises);
+    }).then(() => {
+      self.refreshDisplayedDialplan();
+    }).finally(() => {
+      self.numberCtrl.loading.feature = false;
+    })
+      .catch((error) => {
+        Toast.error($translate.instant('telephony_number_feature_ovh_pabx_load_error'));
+        return $q.reject(error);
+      });
+  };
 
-    /* -----  End of INITIALIZATION  ------*/
-
-
+  /* -----  End of INITIALIZATION  ------*/
 });

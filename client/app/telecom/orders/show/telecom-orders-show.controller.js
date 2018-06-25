@@ -1,6 +1,3 @@
-angular.module("managerApp").controller("TelecomOrdersShowCtrl", function ($stateParams) {
-    "use strict";
-
-    this.serviceName = $stateParams.serviceName;
-
+angular.module('managerApp').controller('TelecomOrdersShowCtrl', function ($stateParams) {
+  this.serviceName = $stateParams.serviceName;
 });

@@ -1,15 +1,14 @@
-angular.module("managerApp").controller("voipTimeConditionSlotCtrl", function () {
-    "use strict";
+angular.module('managerApp').controller('voipTimeConditionSlotCtrl', function () {
+  const self = this;
 
-    var self = this;
-
-    /*= ==============================
+  /*= ==============================
     =            HELPERS            =
-    ===============================*/
+    =============================== */
 
-    self.getSlotDetail = function (property) {
-        return _.get(self.slot.inEdition && self.slot.saveForEdition ? self.slot.saveForEdition : self.slot, property);
-    };
+  self.getSlotDetail = function (property) {
+    return _.get(self.slot.inEdition && self.slot.saveForEdition ?
+      self.slot.saveForEdition : self.slot, property);
+  };
 
-    /* -----  End of HELPERS  ------*/
+  /* -----  End of HELPERS  ------*/
 });

@@ -1,38 +1,31 @@
-(function () {
-    "use strict";
+angular.module('managerApp').component('telecomV4Links', {
+  templateUrl: 'components/telecom/v4-links/telecom-v4-links.html',
+  bindings: {
+    actions: '=telecomV4Links',
+  },
+  controller() {
+    const self = this;
 
-    angular.module("managerApp").component("telecomV4Links", {
-        templateUrl: "components/telecom/v4-links/telecom-v4-links.html",
-        bindings: {
-            actions: "=telecomV4Links"
-        },
-        controller: function () {
-            var self = this;
+    self.actionRows = {
+      main: null,
+      normal: null,
+    };
 
-            self.actionRows = {
-                main: null,
-                normal: null
-            };
+    /*= =====================================
+    =            INITIALIZATION            =
+    ====================================== */
 
-            /*= =====================================
-            =            INITIALIZATION            =
-            ======================================*/
+    // self.$onInit = function () {
+    const mainActions = _.filter(self.actions, action => action.main && !action.divider);
 
-            // self.$onInit = function () {
-            var mainActions = _.filter(self.actions, function (action) {
-                return action.main && !action.divider;
-            });
+    self.actionRows.main = _.chunk(mainActions, 2);
 
-            self.actionRows.main = _.chunk(mainActions, 2);
+    self.actionRows.normal = _.chain(self.actions)
+      .difference(mainActions)
+      .filter(action => !action.divider)
+      .chunk(3)
+      .value();
 
-            self.actionRows.normal = _.chain(self.actions).difference(mainActions).filter(function (action) {
-                return !action.divider;
-            }).chunk(3)
-                .value();
-
-            /* -----  End of INITIALIZATION  ------*/
-
-        }
-    });
-
-})();
+    /* -----  End of INITIALIZATION  ------*/
+  },
+});

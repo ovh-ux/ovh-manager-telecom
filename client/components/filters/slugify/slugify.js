@@ -1,6 +1,3 @@
-angular.module("managerApp").filter("slugify", function () {
-    "use strict";
-    return function (str) {
-        return _.snakeCase(str);
-    };
+angular.module('managerApp').filter('slugify', () => function (str) {
+  return _.snakeCase(str);
 });

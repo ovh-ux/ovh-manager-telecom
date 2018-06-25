@@ -1,3 +1,3 @@
-angular.module("managerApp").controller("TelecomTelephonyAliasConsumptionOutgoingCallsCtrl", function () {
-    "use strict";
+angular.module('managerApp').controller('TelecomTelephonyAliasConsumptionOutgoingCallsCtrl', () => {
+
 });

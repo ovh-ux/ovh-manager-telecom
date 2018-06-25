@@ -1,69 +1,68 @@
-angular.module("managerApp").controller("TelecomTelephonyServiceFaxCampaignsReadCtrl", function ($stateParams, $q, $uibModalInstance, OvhApiTelephony, campaign, ToastError) {
-    "use strict";
+angular.module('managerApp').controller('TelecomTelephonyServiceFaxCampaignsReadCtrl', function ($stateParams, $q, $uibModalInstance, OvhApiTelephony, campaign, ToastError) {
+  const self = this;
 
-    var self = this;
+  /*= ==============================
+  =            HELPERS            =
+  =============================== */
 
-    /*= ==============================
-    =            HELPERS            =
-    ===============================*/
+  function fetchCampaignDetail(theCampaign) {
+    return OvhApiTelephony.Fax().Campaigns().v6().getDetail({
+      billingAccount: $stateParams.billingAccount,
+      serviceName: $stateParams.serviceName,
+      id: theCampaign.id,
+    }).$promise;
+  }
 
-    function fetchCampaignDetail (theCampaign) {
-        return OvhApiTelephony.Fax().Campaigns().v6().getDetail({
-            billingAccount: $stateParams.billingAccount,
-            serviceName: $stateParams.serviceName,
-            id: theCampaign.id
-        }).$promise;
-    }
+  /* -----  End of HELPERS  ------*/
 
-    /* -----  End of HELPERS  ------*/
+  /*= ==============================
+  =            ACTIONS            =
+  =============================== */
 
-    /*= ==============================
-    =            ACTIONS            =
-    ===============================*/
+  self.close = function () {
+    return $uibModalInstance.close(true);
+  };
 
-    self.close = function () {
-        return $uibModalInstance.close(true);
+  /* -----  End of ACTIONS  ------*/
+
+  /*= =====================================
+  =            INITIALIZATION            =
+  ====================================== */
+
+  function init() {
+    self.loading = {
+      init: false,
     };
 
-    /* -----  End of ACTIONS  ------*/
+    self.campaign = angular.copy(campaign);
 
-    /*= =====================================
-    =            INITIALIZATION            =
-    ======================================*/
+    self.details = {
+      todo: null,
+      success: null,
+      failed: null,
+    };
 
-    function init () {
-        self.loading = {
-            init: false
-        };
+    self.list = {
+      todo: true,
+      success: true,
+      failed: false,
+    };
 
-        self.campaign = angular.copy(campaign);
+    self.loading.init = true;
+    return fetchCampaignDetail(campaign)
+      .then(details => _.assign(self.details, details))
+      .catch((err) => {
+        if (err.status === 400) {
+          return $q.reject(err);
+        }
+        return new ToastError(err);
+      })
+      .finally(() => {
+        self.loading.init = false;
+      });
+  }
 
-        self.details = {
-            todo: null,
-            success: null,
-            failed: null
-        };
+  /* -----  End of INITIALIZATION  ------*/
 
-        self.list = {
-            todo: true,
-            success: true,
-            failed: false
-        };
-
-        self.loading.init = true;
-        return fetchCampaignDetail(campaign).then(function (details) {
-            return _.assign(self.details, details);
-        }).catch(function (err) {
-            if (err.status === 400) {
-                return $q.reject(err);
-            }
-            return new ToastError(err);
-        }).finally(function () {
-            self.loading.init = false;
-        });
-    }
-
-    /* -----  End of INITIALIZATION  ------*/
-
-    init();
+  init();
 });

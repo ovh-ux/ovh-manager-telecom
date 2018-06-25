@@ -1,6 +1,2 @@
-angular.module("managerApp").filter("capitalize", function () {
-    "use strict";
-
-    return _.capitalize;
-});
+angular.module('managerApp').filter('capitalize', () => _.capitalize);
 

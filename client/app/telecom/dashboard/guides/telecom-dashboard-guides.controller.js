@@ -1,47 +1,44 @@
-angular.module("managerApp").controller("TelecomDashboardGuidesCtrl", function (URLS, atInternet) {
-    "use strict";
+angular.module('managerApp').controller('TelecomDashboardGuidesCtrl', function (URLS, atInternet) {
+  const self = this;
 
-    var self = this;
+  self.links = null;
 
-    self.links = null;
-
-    /*= =====================================
+  /*= =====================================
     =            INITIALIZATION            =
-    ======================================*/
+    ====================================== */
 
-    function init () {
-        self.links = _.pick(URLS.guides, "packActivate", "modemConfig", "modemReinit");
-    }
+  function init() {
+    self.links = _.pick(URLS.guides, 'packActivate', 'modemConfig', 'modemReinit');
+  }
 
-    self.trackRedirection = function (link) {
-        var hit = {
-            type: "navigation",
-            level2: "Telecom",
-            chapter1: "telecom"
-        };
-
-        switch (link) {
-        case URLS.guides.packActivate:
-            hit.cta = "Activate my services";
-            hit.name = "Activation_Services";
-            break;
-        case URLS.guides.modemConfig:
-            hit.cta = "Configure my modem";
-            hit.name = "Setting_Modem";
-            break;
-        case URLS.guides.modemReinit:
-            hit.cta = "Restart my modem";
-            hit.name = "Reboot_Modem";
-            break;
-        default:
-            break;
-        }
-
-        return atInternet.trackClick(hit);
+  self.trackRedirection = function (link) {
+    const hit = {
+      type: 'navigation',
+      level2: 'Telecom',
+      chapter1: 'telecom',
     };
 
-    /* -----  End of INITIALIZATION  ------*/
+    switch (link) {
+      case URLS.guides.packActivate:
+        hit.cta = 'Activate my services';
+        hit.name = 'Activation_Services';
+        break;
+      case URLS.guides.modemConfig:
+        hit.cta = 'Configure my modem';
+        hit.name = 'Setting_Modem';
+        break;
+      case URLS.guides.modemReinit:
+        hit.cta = 'Restart my modem';
+        hit.name = 'Reboot_Modem';
+        break;
+      default:
+        break;
+    }
 
-    init();
+    return atInternet.trackClick(hit);
+  };
 
+  /* -----  End of INITIALIZATION  ------*/
+
+  init();
 });

@@ -1,77 +1,74 @@
-angular.module("managerApp").controller("TelecomTelephonyLineAssistTroubleshootingAutoConfigCtrl", function ($q, troubleshootingProcess, validator, OvhApiMyIp) {
-    "use strict";
+angular.module('managerApp').controller('TelecomTelephonyLineAssistTroubleshootingAutoConfigCtrl', function ($q, troubleshootingProcess, validator, OvhApiMyIp) {
+  const self = this;
 
-    var self = this;
+  self.loading = {
+    init: false,
+    resetConfig: false,
+  };
 
-    self.loading = {
-        init: false,
-        resetConfig: false
-    };
+  self.model = {
+    ip: null,
+  };
 
-    self.model = {
-        ip: null
-    };
+  self.process = null;
+  self.step = null;
+  self.myIpInfos = null;
+  self.validator = null;
+  self.status = 'CHECKIP';
+  self.resetConfigError = null;
+  self.resetConfigResult = null;
 
-    self.process = null;
-    self.step = null;
-    self.myIpInfos = null;
-    self.validator = null;
-    self.status = "CHECKIP";
+  /*= ==============================
+    =            ACTIONS            =
+    =============================== */
+
+  self.startAutoConfig = function () {
     self.resetConfigError = null;
     self.resetConfigResult = null;
 
-    /*= ==============================
-    =            ACTIONS            =
-    ===============================*/
+    self.loading.resetConfig = true;
 
-    self.startAutoConfig = function () {
-        self.resetConfigError = null;
-        self.resetConfigResult = null;
+    return self.process.line.phone.resetConfig(self.model.ip).then((resetResult) => {
+      self.status = 'OK';
+      self.step.isFinalized = true;
+      self.resetConfigResult = resetResult;
+    }).catch((error) => {
+      self.resetConfigError = error;
+      return $q.reject(error);
+    }).finally(() => {
+      self.loading.resetConfig = false;
+    });
+  };
 
-        self.loading.resetConfig = true;
+  self.resetIp = function () {
+    self.status = 'CHECKIP';
+    self.step.isFinalized = false;
+  };
 
-        return self.process.line.phone.resetConfig(self.model.ip).then(function (resetResult) {
-            self.status = "OK";
-            self.step.isFinalized = true;
-            self.resetConfigResult = resetResult;
-        }).catch(function (error) {
-            self.resetConfigError = error;
-            return $q.reject(error);
-        }).finally(function () {
-            self.loading.resetConfig = false;
-        });
-    };
+  /* -----  End of ACTIONS  ------*/
 
-    self.resetIp = function () {
-        self.status = "CHECKIP";
-        self.step.isFinalized = false;
-    };
-
-    /* -----  End of ACTIONS  ------*/
-
-    /*= =====================================
+  /*= =====================================
     =            INITIALIZATION            =
-    ======================================*/
+    ====================================== */
 
-    function init () {
-        self.loading.init = true;
-        self.process = troubleshootingProcess;
-        self.step = self.process.activeStep;
-        self.validator = validator;
+  function init() {
+    self.loading.init = true;
+    self.process = troubleshootingProcess;
+    self.step = self.process.activeStep;
+    self.validator = validator;
 
-        return $q.all({
-            myIp: OvhApiMyIp.Aapi().get().$promise,
-            lineIp: self.process.line.getIps()
-        }).then(function (responses) {
-            self.myIpInfos = _.get(responses, "myIp[0]");
-            self.model.ip = _.get(responses, "lineIp[0].ip");
-        }).finally(function () {
-            self.loading.init = false;
-        });
-    }
+    return $q.all({
+      myIp: OvhApiMyIp.Aapi().get().$promise,
+      lineIp: self.process.line.getIps(),
+    }).then((responses) => {
+      self.myIpInfos = _.get(responses, 'myIp[0]');
+      self.model.ip = _.get(responses, 'lineIp[0].ip');
+    }).finally(() => {
+      self.loading.init = false;
+    });
+  }
 
-    /* -----  End of INITIALIZATION  ------*/
+  /* -----  End of INITIALIZATION  ------*/
 
-    init();
-
+  init();
 });

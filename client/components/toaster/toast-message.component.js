@@ -1,58 +1,55 @@
-"use strict";
+angular.module('managerApp').component('toastMessage', {
+  templateUrl: 'components/toaster/toast-message.html',
+  controller(Toast, $timeout) {
+    const timestamp = (new Date()).getTime();
 
-angular.module("managerApp").component("toastMessage", {
-    templateUrl: "components/toaster/toast-message.html",
-    controller: function (Toast, $timeout) {
+    this.hasNewMessages = false;
 
-        let timestamp = (new Date()).getTime();
+    this.messageTypes = [
+      'error',
+      'warning',
+      'info',
+      'success',
+    ];
 
-        this.hasNewMessages = false;
+    this.updateMessages = (messages) => {
+      // update messages timestamp
+      const pendingMessages = _.filter(messages, m => !m.timestamp);
 
-        this.messageTypes = [
-            "error",
-            "warning",
-            "info",
-            "success"
-        ];
+      if (pendingMessages.length) {
+        this.hasNewMessages = true;
+        $timeout(() => {
+          this.hasNewMessages = false;
+        }, 1000);
+      }
 
-        this.updateMessages = (messages) => {
-            // update messages timestamp
-            let pendingMessages = _.filter(messages, (m) => !m.timestamp);
+      _.each(pendingMessages, (m) => {
+        _.set(m, 'timestamp', timestamp);
+      });
+    };
 
-            if (pendingMessages.length) {
-                this.hasNewMessages = true;
-                $timeout(() => {
-                    this.hasNewMessages = false;
-                }, 1000);
-            }
+    this.getMessagesByType = (type) => {
+      const messages = Toast.getMessagesByType(type);
 
-            _.each(pendingMessages, (m) => {
-                m.timestamp = timestamp;
-            });
-        };
+      this.updateMessages(messages);
 
-        this.getMessagesByType = (type) => {
-            let messages = Toast.getMessagesByType(type);
+      // do not display old messages
+      return _.filter(messages, m => m.timestamp >= timestamp);
+    };
 
-            this.updateMessages(messages);
+    this.getAllMessages = () => {
+      const messages = Toast.getMessages();
 
-            // do not display old messages
-            return _.filter(messages, (m) => m.timestamp >= timestamp);
-        };
+      this.updateMessages(messages);
 
-        this.getAllMessages = () => {
-            let messages = Toast.getMessages();
+      // do not display old messages
+      return _.filter(messages, m => m.timestamp >= timestamp);
+    };
 
-            this.updateMessages(messages);
+    this.hasMessagesOfType = type => this.getMessagesByType(type).length > 0;
 
-            // do not display old messages
-            return _.filter(messages, (m) => m.timestamp >= timestamp);
-        };
+    this.clearMessage = message => Toast.clearMessage(message);
 
-        this.hasMessagesOfType = (type) => this.getMessagesByType(type).length > 0;
-
-        this.clearMessage = (message) => Toast.clearMessage(message);
-
-        this.clearMessagesByType = (type) => Toast.clearMessagesByType(type);
-    }
+    this.clearMessagesByType = type => Toast.clearMessagesByType(type);
+  },
 });

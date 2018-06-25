@@ -1,29 +1,26 @@
-angular.module("managerApp").controller("ovhTaskFollowModalCtrl", function ($scope, $uibModalInstance) {
-    "use strict";
+angular.module('managerApp').controller('ovhTaskFollowModalCtrl', function ($scope, $uibModalInstance) {
+  const self = this;
 
-    var self = this;
+  self.isOpenState = {};
+  self.tasks = null;
 
-    self.isOpenState = {};
-    self.tasks = null;
-
-    /*= =============================
+  /*= =============================
     =            EVENTS            =
-    ==============================*/
+    ============================== */
 
-    self.cancel = function () {
-        $uibModalInstance.dismiss();
-    };
+  self.cancel = function () {
+    $uibModalInstance.dismiss();
+  };
 
-    /* -----  End of EVENTS  ------*/
+  /* -----  End of EVENTS  ------*/
 
-    /*= =====================================
+  /*= =====================================
     =            INITIALIZATION            =
-    ======================================*/
+    ====================================== */
 
-    self.$onInit = function () {
-        self.data = $scope.$parent.$ctrl.data;
-    };
+  self.$onInit = function () {
+    self.data = $scope.$parent.$ctrl.data;
+  };
 
-    /* -----  End of INITIALIZATION  ------*/
-
+  /* -----  End of INITIALIZATION  ------*/
 });

@@ -1,69 +1,63 @@
-angular.module("managerApp").controller("TelecomTelephonyLineAssistRmaCtrl", function ($stateParams, $q, $translate, Toast, ToastError, OvhApiTelephony) {
-    "use strict";
+angular.module('managerApp').controller('TelecomTelephonyLineAssistRmaCtrl', function ($stateParams, $q, $translate, Toast, ToastError, OvhApiTelephony) {
+  const self = this;
 
-    var self = this;
+  function init() {
+    self.rmaList = null;
+    return self.fetchRma().then((result) => {
+      self.rmaList = result;
+    }).catch(err => new ToastError(err));
+  }
 
-    function init () {
-        self.rmaList = null;
-        return self.fetchRma().then(function (result) {
-            self.rmaList = result;
-        }).catch(function (err) {
-            return new ToastError(err);
-        });
-    }
+  self.fetchPhone = function () {
+    return OvhApiTelephony.Line().Phone().v6().get({
+      billingAccount: $stateParams.billingAccount,
+      serviceName: $stateParams.serviceName,
+    }).$promise;
+  };
 
-    self.fetchPhone = function () {
-        return OvhApiTelephony.Line().Phone().v6().get({
-            billingAccount: $stateParams.billingAccount,
-            serviceName: $stateParams.serviceName
-        }).$promise;
-    };
+  self.fetchRma = function () {
+    return OvhApiTelephony.Line().Phone().RMA().v6()
+      .query({
+        billingAccount: $stateParams.billingAccount,
+        serviceName: $stateParams.serviceName,
+      }).$promise.catch((err) => {
+        if (err.status === 404) { // line has no phone
+          return [];
+        }
+        return $q.reject(err);
+      }).then(rmaIds => $q.all(rmaIds.map(id => OvhApiTelephony.Line().Phone().RMA().v6()
+        .get({
+          billingAccount: $stateParams.billingAccount,
+          serviceName: $stateParams.serviceName,
+          id,
+        }).$promise)));
+  };
 
-    self.fetchRma = function () {
-        return OvhApiTelephony.Line().Phone().RMA().v6().query({
-            billingAccount: $stateParams.billingAccount,
-            serviceName: $stateParams.serviceName
-        }).$promise.catch(function (err) {
-            if (err.status === 404) { // line has no phone
-                return [];
-            }
-            return $q.reject(err);
+  self.cancelRma = function (rma) {
+    _.set(rma, 'isCancelling', true);
+    return OvhApiTelephony.Line().Phone().RMA().v6()
+      .cancel({
+        billingAccount: $stateParams.billingAccount,
+        serviceName: $stateParams.serviceName,
+        id: rma.id,
+      }).$promise
+      .then(() => {
+        _.remove(self.rmaList, { id: rma.id });
+        Toast.success($translate.instant('telephony_line_assist_rma_cancel_success'));
+      })
+      .catch(err => new ToastError(err)).finally(() => {
+        _.set(rma, 'isCancelling', false);
+      });
+  };
 
-        }).then(function (rmaIds) {
-            return $q.all(rmaIds.map(function (id) {
-                return OvhApiTelephony.Line().Phone().RMA().v6().get({
-                    billingAccount: $stateParams.billingAccount,
-                    serviceName: $stateParams.serviceName,
-                    id: id
-                }).$promise;
-            }));
-        });
-    };
+  self.formatEquipementReference = function (ref) {
+    // example : 'AB12345' => 'AB:12:34:5'
+    return ((ref || '').match(/\w{1,2}/g) || []).join(':');
+  };
 
-    self.cancelRma = function (rma) {
-        rma.isCancelling = true;
-        return OvhApiTelephony.Line().Phone().RMA().v6().cancel({
-            billingAccount: $stateParams.billingAccount,
-            serviceName: $stateParams.serviceName,
-            id: rma.id
-        }).$promise.then(function () {
-            _.remove(self.rmaList, { id: rma.id });
-            Toast.success($translate.instant("telephony_line_assist_rma_cancel_success"));
-        }).catch(function (err) {
-            return new ToastError(err);
-        }).finally(function () {
-            rma.isCancelling = false;
-        });
-    };
+  self.getPdfUrl = function (rma) {
+    return `http://www.ovh.com/cgi-bin/telephony/rma.pl?reference=${rma.id}`;
+  };
 
-    self.formatEquipementReference = function (ref) {
-        // example : 'AB12345' => 'AB:12:34:5'
-        return ((ref || "").match(/\w{1,2}/g) || []).join(":");
-    };
-
-    self.getPdfUrl = function (rma) {
-        return "http://www.ovh.com/cgi-bin/telephony/rma.pl?reference=" + rma.id;
-    };
-
-    init();
+  init();
 });

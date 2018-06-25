@@ -10,140 +10,131 @@
  *   getList: returns the component's list of items.
  *
  */
-angular.module("managerApp").component("telecomTelephonyCallsFilteringTable", {
-    bindings: {
-        api: "="
-    },
-    templateUrl: "components/telecom/telephony/callsFiltering/telecom-telephony-callsFilteringTable.html",
-    controller: function ($scope, $timeout, $filter, $q, $translate, $translatePartialLoader, Toast, ToastError) {
-        "use strict";
+angular.module('managerApp').component('telecomTelephonyCallsFilteringTable', {
+  bindings: {
+    api: '=',
+  },
+  templateUrl: 'components/telecom/telephony/callsFiltering/telecom-telephony-callsFilteringTable.html',
+  controller(
+    $scope, $timeout, $filter, $q, $translate, $translatePartialLoader,
+    Toast, ToastError,
+  ) {
+    const self = this;
 
-        var self = this;
+    self.$onInit = function () {
+      self.screenLists = {
+        raw: [],
+        paginated: null,
+        sorted: null,
+        selected: {},
+        orderBy: 'callNumber',
+        orderDesc: false,
+        filterBy: {
+          list: undefined,
+          type: undefined,
+        },
+        isDeleting: false,
+        isTaskInProgress: false,
+      };
 
-        self.$onInit = function () {
+      self.poller = $timeout(self.refreshScreenListsPoller, 2000);
+      $scope.$on('$destroy', () => {
+        $timeout.cancel(self.poller);
+      });
 
-            self.screenLists = {
-                raw: [],
-                paginated: null,
-                sorted: null,
-                selected: {},
-                orderBy: "callNumber",
-                orderDesc: false,
-                filterBy: {
-                    list: undefined,
-                    type: undefined
-                },
-                isDeleting: false,
-                isTaskInProgress: false
-            };
+      self.api.update = function () {
+        self.updateScreenList();
+      };
 
-            self.poller = $timeout(self.refreshScreenListsPoller, 2000);
-            $scope.$on("$destroy", function () {
-                $timeout.cancel(self.poller);
-            });
+      self.api.getList = function () {
+        return angular.copy(self.screenLists.raw);
+      };
 
-            self.api.update = function () {
-                self.updateScreenList();
-            };
+      $translatePartialLoader.addPart('../components/telecom/telephony/callsFiltering');
+      return $translate.refresh().finally(() => {
+        self.isInitialized = true;
+        return self.refresh();
+      });
+    };
 
-            self.api.getList = function () {
-                return angular.copy(self.screenLists.raw);
-            };
+    self.refresh = function () {
+      self.isLoading = true;
+      return self.updateScreenList().catch(err => new ToastError(err)).finally(() => {
+        self.isLoading = false;
+      });
+    };
 
-            $translatePartialLoader.addPart("../components/telecom/telephony/callsFiltering");
-            return $translate.refresh().finally(function () {
-                self.isInitialized = true;
-                return self.refresh();
-            });
-        };
+    self.refreshScreenListsPoller = function () {
+      return self.updateScreenList().finally(() => {
+        self.poller = $timeout(self.refreshScreenListsPoller, 5000);
+      });
+    };
 
-        self.refresh = function () {
-            self.isLoading = true;
-            return self.updateScreenList().catch(function (err) {
-                return new ToastError(err);
-            }).finally(function () {
-                self.isLoading = false;
-            });
-        };
+    self.getSelection = function () {
+      return _.filter(self.screenLists.raw, screen => screen && screen.status !== 'delete' && self.screenLists.selected && self.screenLists.selected[screen.id]);
+    };
 
-        self.refreshScreenListsPoller = function () {
-            return self.updateScreenList().finally(function () {
-                self.poller = $timeout(self.refreshScreenListsPoller, 5000);
-            });
-        };
+    self.exportSelection = function () {
+      return _.map(self.getSelection(), filter => _.pick(filter, ['callNumber', 'nature', 'type']));
+    };
 
-        self.getSelection = function () {
-            return _.filter(self.screenLists.raw, function (screen) {
-                return screen && screen.status !== "delete" && self.screenLists.selected && self.screenLists.selected[screen.id];
-            });
-        };
-
-        self.exportSelection = function () {
-            return _.map(self.getSelection(), function (filter) {
-                return _.pick(filter, ["callNumber", "nature", "type"]);
-            });
-        };
-
-        self.updateScreenList = function () {
-            return self.api.fetchAll().then(function (result) {
-                if (result.length === self.screenLists.raw.length) {
-                    // update
-                    _.each(result, function (screen) {
-                        var toUpdate = _.find(self.screenLists.raw, { id: screen.id });
-                        if (toUpdate) {
-                            _.assign(toUpdate, screen);
-                        } else {
-                            self.screenLists.raw.push(screen);
-                        }
-                    });
-                } else {
-                    self.screenLists.raw = result;
-                }
-                self.sortScreenLists();
-                self.screenLists.isTaskInProgress = _.filter(self.screenLists.raw, { status: "active" }).length !== self.screenLists.raw.length;
-            });
-        };
-
-        self.removeSelectedScreenLists = function () {
-            var screenLists = self.getSelection();
-            var queries = screenLists.map(self.api.remove);
-            self.screenLists.isDeleting = true;
-            queries.push($timeout(angular.noop, 500)); // avoid clipping
-            Toast.info($translate.instant("telephony_calls_filtering_table_status_delete_success"));
-            return $q.all(queries).then(function () {
-                self.screenLists.selected = [];
-                return self.updateScreenList();
-            }).catch(function (err) {
-                return new ToastError(err);
-            }).finally(function () {
-                self.screenLists.isDeleting = false;
-            });
-        };
-
-        self.sortScreenLists = function () {
-            var data = angular.copy(self.screenLists.raw);
-            data = $filter("filter")(data, self.screenLists.filterBy);
-            data = $filter("orderBy")(
-                data,
-                self.screenLists.orderBy,
-                self.screenLists.orderDesc
-            );
-            self.screenLists.sorted = data;
-
-            // avoid pagination bug ...
-            if (self.screenLists.sorted.length === 0) {
-                self.screenLists.paginated = [];
-            }
-        };
-
-        self.orderScreenListsBy = function (by) {
-            if (self.screenLists.orderBy === by) {
-                self.screenLists.orderDesc = !self.screenLists.orderDesc;
+    self.updateScreenList = function () {
+      return self.api.fetchAll().then((result) => {
+        if (result.length === self.screenLists.raw.length) {
+          // update
+          _.each(result, (screen) => {
+            const toUpdate = _.find(self.screenLists.raw, { id: screen.id });
+            if (toUpdate) {
+              _.assign(toUpdate, screen);
             } else {
-                self.screenLists.orderBy = by;
+              self.screenLists.raw.push(screen);
             }
-            self.sortScreenLists();
-        };
-    }
-});
+          });
+        } else {
+          self.screenLists.raw = result;
+        }
+        self.sortScreenLists();
+        self.screenLists.isTaskInProgress = _.filter(self.screenLists.raw, { status: 'active' }).length !== self.screenLists.raw.length;
+      });
+    };
 
+    self.removeSelectedScreenLists = function () {
+      const screenLists = self.getSelection();
+      const queries = screenLists.map(self.api.remove);
+      self.screenLists.isDeleting = true;
+      queries.push($timeout(angular.noop, 500)); // avoid clipping
+      Toast.info($translate.instant('telephony_calls_filtering_table_status_delete_success'));
+      return $q.all(queries).then(() => {
+        self.screenLists.selected = [];
+        return self.updateScreenList();
+      }).catch(err => new ToastError(err)).finally(() => {
+        self.screenLists.isDeleting = false;
+      });
+    };
+
+    self.sortScreenLists = function () {
+      let data = angular.copy(self.screenLists.raw);
+      data = $filter('filter')(data, self.screenLists.filterBy);
+      data = $filter('orderBy')(
+        data,
+        self.screenLists.orderBy,
+        self.screenLists.orderDesc,
+      );
+      self.screenLists.sorted = data;
+
+      // avoid pagination bug ...
+      if (self.screenLists.sorted.length === 0) {
+        self.screenLists.paginated = [];
+      }
+    };
+
+    self.orderScreenListsBy = function (by) {
+      if (self.screenLists.orderBy === by) {
+        self.screenLists.orderDesc = !self.screenLists.orderDesc;
+      } else {
+        self.screenLists.orderBy = by;
+      }
+      self.sortScreenLists();
+    };
+  },
+});

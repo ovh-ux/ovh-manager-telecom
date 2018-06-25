@@ -1,3 +1,3 @@
-angular.module("managerApp").controller("TelecomTelephonyCtrl", function () {
-    "use strict";
+angular.module('managerApp').controller('TelecomTelephonyCtrl', () => {
+
 });

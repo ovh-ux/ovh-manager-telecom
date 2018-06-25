@@ -1,112 +1,109 @@
-angular.module("managerApp").factory("VoipTimeConditionSlot", function () {
-    "use strict";
-
-    /*= ==================================
+angular.module('managerApp').factory('VoipTimeConditionSlot', () => {
+  /*= ==================================
     =            CONSTRUCTOR            =
-    ===================================*/
+    =================================== */
 
-    function VoipTimeConditionSlot (slotOptions) {
-        var opts = slotOptions || {};
+  function VoipTimeConditionSlot(slotOptions) {
+    const opts = slotOptions || {};
 
-        // options check
-        if (!opts.serviceName) {
-            throw new Error("serviceName option must be specified when creating a new VoipTimeConditionSlot");
-        }
-        if (!opts.name) {
-            throw new Error("name option must be specified when creating a new VoipTimeConditionSlot");
-        }
-
-        // mandatory
-        this.name = opts.name;
-        this.serviceName = opts.serviceName;
-
-        // other attributes
-        this.setOptions(opts);
-
-        // custom attributes
-        this.inEdition = false;
-        this.saveForEdition = null;
-        this.originalSave = null;
+    // options check
+    if (!opts.serviceName) {
+      throw new Error('serviceName option must be specified when creating a new VoipTimeConditionSlot');
+    }
+    if (!opts.name) {
+      throw new Error('name option must be specified when creating a new VoipTimeConditionSlot');
     }
 
-    /* -----  End of CONSTRUCTOR  ------*/
+    // mandatory
+    this.name = opts.name;
+    this.serviceName = opts.serviceName;
 
-    /*= =========================================
+    // other attributes
+    this.setOptions(opts);
+
+    // custom attributes
+    this.inEdition = false;
+    this.saveForEdition = null;
+    this.originalSave = null;
+  }
+
+  /* -----  End of CONSTRUCTOR  ------*/
+
+  /*= =========================================
     =            PROTOTYPES METHODS            =
-    ==========================================*/
+    ========================================== */
 
-    VoipTimeConditionSlot.prototype.setOptions = function (slotOptions) {
-        var self = this;
+  VoipTimeConditionSlot.prototype.setOptions = function (slotOptions) {
+    const self = this;
 
-        self.type = slotOptions.type || "";
-        self.number = slotOptions.number || "";
+    self.type = slotOptions.type || '';
+    self.number = slotOptions.number || '';
 
-        return self;
+    return self;
+  };
+
+  /* ----------  Edition  ----------*/
+
+  VoipTimeConditionSlot.prototype.startEdition = function () {
+    const self = this;
+
+    self.inEdition = true;
+
+    self.saveForEdition = {
+      type: angular.copy(self.type),
+      number: angular.copy(self.number),
     };
 
-    /* ----------  Edition  ----------*/
+    if (!self.originalSave) {
+      self.originalSave = angular.copy(self.saveForEdition);
+    }
 
-    VoipTimeConditionSlot.prototype.startEdition = function () {
-        var self = this;
+    return self;
+  };
 
-        self.inEdition = true;
+  VoipTimeConditionSlot.prototype.stopEdition =
+    function (cancel, cancelToOriginalSave, resetOriginalSave) {
+      const self = this;
 
-        self.saveForEdition = {
-            type: angular.copy(self.type),
-            number: angular.copy(self.number)
-        };
+      if (self.originalSave && cancelToOriginalSave) {
+        self.type = angular.copy(self.originalSave.type);
+        self.number = angular.copy(self.originalSave.number);
+        self.originalSave = null;
+      } else if (self.saveForEdition && cancel) {
+        self.type = angular.copy(self.saveForEdition.type);
+        self.number = angular.copy(self.saveForEdition.number);
+      }
 
-        if (!self.originalSave) {
-            self.originalSave = angular.copy(self.saveForEdition);
-        }
+      if (resetOriginalSave) {
+        self.originalSave = null;
+      }
 
-        return self;
+      self.saveForEdition = null;
+      self.inEdition = false;
+
+      return self;
     };
 
-    VoipTimeConditionSlot.prototype.stopEdition = function (cancel, cancelToOriginalSave, resetOriginalSave) {
-        var self = this;
+  VoipTimeConditionSlot.prototype.hasChange = function (property, fromOriginal) {
+    const self = this;
+    let compareToObject = null;
 
-        if (self.originalSave && cancelToOriginalSave) {
-            self.type = angular.copy(self.originalSave.type);
-            self.number = angular.copy(self.originalSave.number);
-            self.originalSave = null;
-        } else if (self.saveForEdition && cancel) {
-            self.type = angular.copy(self.saveForEdition.type);
-            self.number = angular.copy(self.saveForEdition.number);
-        }
+    if (fromOriginal && !self.originalSave) {
+      return false;
+    } else if (!fromOriginal && !self.saveForEdition) {
+      return false;
+    }
 
-        if (resetOriginalSave) {
-            self.originalSave = null;
-        }
+    compareToObject = fromOriginal ? self.originalSave : self.saveForEdition;
 
-        self.saveForEdition = null;
-        self.inEdition = false;
+    if (property) {
+      return !_.isEqual(_.get(self, property), _.get(compareToObject, property));
+    }
+    return self.hasChange('status', fromOriginal) || self.hasChange('number', fromOriginal) || self.hasChange('type', fromOriginal);
+  };
 
-        return self;
-    };
-
-    VoipTimeConditionSlot.prototype.hasChange = function (property, fromOriginal) {
-        var self = this;
-        var compareToObject = null;
-
-        if (fromOriginal && !self.originalSave) {
-            return false;
-        } else if (!fromOriginal && !self.saveForEdition) {
-            return false;
-        }
-
-        compareToObject = fromOriginal ? self.originalSave : self.saveForEdition;
-
-        if (property) {
-            return !_.isEqual(_.get(self, property), _.get(compareToObject, property));
-        }
-        return self.hasChange("status", fromOriginal) || self.hasChange("number", fromOriginal) || self.hasChange("type", fromOriginal);
-
-    };
-
-    /* -----  End of PROTOTYPES METHODS  ------*/
+  /* -----  End of PROTOTYPES METHODS  ------*/
 
 
-    return VoipTimeConditionSlot;
-
+  return VoipTimeConditionSlot;
 });

@@ -1,49 +1,46 @@
-angular.module("managerApp").controller("voipTimeConditionCalendarCtrl", function ($q, $translate, $translatePartialLoader) {
-    "use strict";
+angular.module('managerApp').controller('voipTimeConditionCalendarCtrl', function ($q, $translate, $translatePartialLoader) {
+  const self = this;
 
-    var self = this;
+  self.loading = {
+    init: false,
+  };
 
-    self.loading = {
-        init: false
-    };
+  self.conditionInEdition = null;
+  self.fcEventInEdition = null;
 
-    self.conditionInEdition = null;
-    self.fcEventInEdition = null;
-
-    /*= ==============================
+  /*= ==============================
     =            HELPERS            =
-    ===============================*/
+    =============================== */
 
-    /* -----  End of HELPERS  ------*/
+  /* -----  End of HELPERS  ------*/
 
-    /*= =====================================
+  /*= =====================================
     =            INITIALIZATION            =
-    ======================================*/
+    ====================================== */
 
-    /* ----------  Load translations  ----------*/
+  /* ----------  Load translations  ----------*/
 
-    function getTranslations () {
-        self.loading.translations = true;
+  function getTranslations() {
+    self.loading.translations = true;
 
-        $translatePartialLoader.addPart("../components/telecom/telephony/timeCondition/condition");
-        return $translate.refresh().finally(function () {
-            self.loading.translations = false;
-        });
-    }
+    $translatePartialLoader.addPart('../components/telecom/telephony/timeCondition/condition');
+    return $translate.refresh().finally(() => {
+      self.loading.translations = false;
+    });
+  }
 
-    /* ----------  Component initialization  ----------*/
+  /* ----------  Component initialization  ----------*/
 
-    self.$onInit = function () {
-        self.loading.init = true;
+  self.$onInit = function () {
+    self.loading.init = true;
 
-        return $q.all([
-            getTranslations(),
-            self.timeCondition.getConditions()
-        ]).finally(function () {
-            self.loading.init = false;
-        });
-    };
+    return $q.all([
+      getTranslations(),
+      self.timeCondition.getConditions(),
+    ]).finally(() => {
+      self.loading.init = false;
+    });
+  };
 
-    /* -----  End of INITIALIZATION  ------*/
-
+  /* -----  End of INITIALIZATION  ------*/
 });

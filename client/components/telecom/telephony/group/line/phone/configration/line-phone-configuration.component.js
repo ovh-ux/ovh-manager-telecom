@@ -1,58 +1,55 @@
-angular.module("managerApp").component("linePhoneConfiguration", {
-    require: {
-        configForm: "^form"
-    },
-    bindings: {
-        configGroup: "=linePhoneConfigurationGroup",
-        editMode: "=linePhoneConfigurationEditMode",
-        expertMode: "=linePhoneConfigurationExpertMode"
-    },
-    templateUrl: "components/telecom/telephony/group/line/phone/configration/line-phone-configuration.html",
-    controller: function ($translate, validator, LINE_PHONE_CONFIGURATION) {
-        "use strict";
+angular.module('managerApp').component('linePhoneConfiguration', {
+  require: {
+    configForm: '^form',
+  },
+  bindings: {
+    configGroup: '=linePhoneConfigurationGroup',
+    editMode: '=linePhoneConfigurationEditMode',
+    expertMode: '=linePhoneConfigurationExpertMode',
+  },
+  templateUrl: 'components/telecom/telephony/group/line/phone/configration/line-phone-configuration.html',
+  controller($translate, validator, LINE_PHONE_CONFIGURATION) {
+    const self = this;
 
-        var self = this;
+    self.validator = validator;
 
-        self.validator = validator;
+    /*= ==============================
+      =            HELPERS            =
+      =============================== */
 
-        /*= ==============================
-        =            HELPERS            =
-        ===============================*/
+    self.isEnumHasToBeTranslated = function (configName) {
+      return LINE_PHONE_CONFIGURATION.configEnumsToTranslate.indexOf(configName) > -1;
+    };
 
-        self.isEnumHasToBeTranslated = function (configName) {
-            return LINE_PHONE_CONFIGURATION.configEnumsToTranslate.indexOf(configName) > -1;
-        };
+    self.getConfigValue = function (config) {
+      switch (config.type) {
+        case 'boolean':
+          return config.value ? $translate.instant('telephony_line_phone_configuration_config_yes') : $translate.instant('telephony_line_phone_configuration_config_no');
+        case 'enum':
+          return self.isEnumHasToBeTranslated(config.name) ? $translate.instant(['telephony_line_phone_configuration_config', _.snakeCase(config.value)].join('_')) : config.value;
+        default:
+          return config.value;
+      }
+    };
 
-        self.getConfigValue = function (config) {
-            switch (config.type) {
-            case "boolean":
-                return config.value ? $translate.instant("telephony_line_phone_configuration_config_yes") : $translate.instant("telephony_line_phone_configuration_config_no");
-            case "enum":
-                return self.isEnumHasToBeTranslated(config.name) ? $translate.instant(["telephony_line_phone_configuration_config", _.snakeCase(config.value)].join("_")) : config.value;
-            default:
-                return config.value;
-            }
-        };
+    self.getPlaceholderTranslation = function (configName) {
+      const trKey = ['telephony_line_phone_configuration_config', _.snakeCase(configName)].join('_');
+      const translated = $translate.instant(trKey);
+      return translated !== trKey ? translated : configName;
+    };
 
-        self.getPlaceholderTranslation = function (configName) {
-            var trKey = ["telephony_line_phone_configuration_config", _.snakeCase(configName)].join("_");
-            var translated = $translate.instant(trKey);
-            return translated !== trKey ? translated : configName;
-        };
+    /* -----  End of HELPERS  ------*/
 
-        /* -----  End of HELPERS  ------*/
+    /*= =============================
+      =            EVENTS            =
+      ============================== */
 
-        /*= =============================
-        =            EVENTS            =
-        ==============================*/
+    self.onTextInputBlur = function (config) {
+      if (_.isEmpty(config.value)) {
+        _.set(config, 'value', config.prevValue);
+      }
+    };
 
-        self.onTextInputBlur = function (config) {
-            if (_.isEmpty(config.value)) {
-                config.value = config.prevValue;
-            }
-        };
-
-        /* -----  End of EVENTS  ------*/
-
-    }
+    /* -----  End of EVENTS  ------*/
+  },
 });

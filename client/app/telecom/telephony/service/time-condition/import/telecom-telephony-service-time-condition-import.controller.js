@@ -1,36 +1,35 @@
-angular.module("managerApp").controller("TelecomTelephonyServiceTimeConditionImportCtrl", class TelecomTelephonyServiceTimeConditionImportCtrl {
+angular.module('managerApp').controller('TelecomTelephonyServiceTimeConditionImportCtrl', class TelecomTelephonyServiceTimeConditionImportCtrl {
+  constructor($translate, $uibModalInstance, Toast, voipTimeConditionConfiguration) {
+    this.$translate = $translate;
+    this.$uibModalInstance = $uibModalInstance;
+    this.Toast = Toast;
+    this.voipTimeConditionConfiguration = voipTimeConditionConfiguration;
+  }
 
-    constructor ($translate, $uibModalInstance, Toast, voipTimeConditionConfiguration) {
-        this.$translate = $translate;
-        this.$uibModalInstance = $uibModalInstance;
-        this.Toast = Toast;
-        this.voipTimeConditionConfiguration = voipTimeConditionConfiguration;
-    }
+  $onInit() {
+    this.isLoading = false;
+    this.hasChecked = false;
+  }
 
-    $onInit () {
-        this.isLoading = false;
-        this.hasChecked = false;
-    }
+  importConfiguration() {
+    this.isLoading = true;
+    this.voipTimeConditionConfiguration.importConfiguration(this.uploadedFile).then((response) => {
+      this.$uibModalInstance.close(response.data);
+    }).catch((error) => {
+      this.$uibModalInstance.dismiss(error);
+    }).finally(() => { this.isLoading = false; });
+  }
 
-    importConfiguration () {
-        this.isLoading = true;
-        this.voipTimeConditionConfiguration.importConfiguration(this.uploadedFile).then((response) => {
-            this.$uibModalInstance.close(response.data);
-        }).catch((error) => {
-            this.$uibModalInstance.dismiss(error);
-        }).finally(() => { this.isLoading = false; });
-    }
+  cancel() {
+    this.$uibModalInstance.dismiss();
+  }
 
-    cancel () {
-        this.$uibModalInstance.dismiss();
-    }
+  checkValidFileExtention(file) {
+    const jsonType = '.json';
+    const fileName = file ? file.name : '';
+    this.validFormatFile = _.endsWith(fileName.toLowerCase(), jsonType);
+    this.hasChecked = true;
 
-    checkValidFileExtention (file) {
-        const jsonType = ".json";
-        const fileName = file ? file.name : "";
-        this.validFormatFile = _.endsWith(fileName.toLowerCase(), jsonType);
-        this.hasChecked = true;
-
-        return this.validFormatFile;
-    }
+    return this.validFormatFile;
+  }
 });

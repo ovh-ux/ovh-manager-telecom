@@ -1,81 +1,78 @@
-angular.module("managerApp").controller("shippingModeSelectionCtrl", function ($q, $translate, $translatePartialLoader) {
-    "use strict";
+angular.module('managerApp').controller('shippingModeSelectionCtrl', function ($q, $translate, $translatePartialLoader) {
+  const self = this;
+  const allowedModes = ['mondialRelay', 'transporter'];
 
-    var self = this;
-    var allowedModes = ["mondialRelay", "transporter"];
+  self.loading = {
+    init: false,
+    contact: false,
+    translations: false,
+  };
 
-    self.loading = {
-        init: false,
-        contact: false,
-        translations: false
-    };
+  self.contactFullList = null;
 
-    self.contactFullList = null;
-
-    /*= ==============================
+  /*= ==============================
     =            HELPERS            =
-    ===============================*/
+    =============================== */
 
-    function checkOptions () {
-        self.options = _.defaults(self.options || {}, {
-            forceContactSelect: false,
-            payForRelay: false,
-            disableMondialRelay: false,
-            disableTransporter: false,
-            shippingPrice: 9.99
-        });
+  function checkOptions() {
+    self.options = _.defaults(self.options || {}, {
+      forceContactSelect: false,
+      payForRelay: false,
+      disableMondialRelay: false,
+      disableTransporter: false,
+      shippingPrice: 9.99,
+    });
 
-        if (self.options.disableMondialRelay && self.options.disableTransporter) {
-            throw new Error("shippingModeSelection component : you cannot disable mondialRelay AND transporter modes !");
-        }
-
-        if (!self.selectedMode) {
-            self.selectedMode = self.options.disableMondialRelay ? "transporter" : "mondialRelay";
-        } else if (allowedModes.indexOf(self.selectedMode) === -1) {
-            throw new Error("shippingModeSelection component : " + self.selectedMode + " is not an allowed value for shippingModeSelectionMode parameter.");
-        }
+    if (self.options.disableMondialRelay && self.options.disableTransporter) {
+      throw new Error('shippingModeSelection component : you cannot disable mondialRelay AND transporter modes !');
     }
 
-    /* -----  End of HELPERS  ------*/
+    if (!self.selectedMode) {
+      self.selectedMode = self.options.disableMondialRelay ? 'transporter' : 'mondialRelay';
+    } else if (allowedModes.indexOf(self.selectedMode) === -1) {
+      throw new Error(`shippingModeSelection component : ${self.selectedMode} is not an allowed value for shippingModeSelectionMode parameter.`);
+    }
+  }
 
-    /*= ==============================
+  /* -----  End of HELPERS  ------*/
+
+  /*= ==============================
     =            ACTIONS            =
-    ===============================*/
+    =============================== */
 
-    self.resetValues = function () {
-        if (self.selectedMode === "mondialRelay" && !self.options.forceContactSelect) {
-            self.shippingContact = null;
-        } else if (self.selectedMode === "transporter") {
-            self.selectedRelay = null;
-        }
-    };
-
-    /* -----  End of ACTIONS  ------*/
-
-    /*= =====================================
-    =            INITIALIZATION            =
-    ======================================*/
-
-    function loadTranslations () {
-        self.loading.translations = true;
-        $translatePartialLoader.addPart("../components/shippingModeSelection");
-        return $translate.refresh().finally(function () {
-            self.loading.translations = false;
-        });
+  self.resetValues = function () {
+    if (self.selectedMode === 'mondialRelay' && !self.options.forceContactSelect) {
+      self.shippingContact = null;
+    } else if (self.selectedMode === 'transporter') {
+      self.selectedRelay = null;
     }
+  };
 
-    self.$onInit = function () {
-        self.loading.init = true;
+  /* -----  End of ACTIONS  ------*/
 
-        checkOptions();
+  /*= =====================================
+    =            INITIALIZATION            =
+    ====================================== */
 
-        return loadTranslations().then(function () {
-            return self.onInitialized ? self.onInitialized() : [];
-        }).finally(function () {
-            self.loading.init = false;
-        });
-    };
+  function loadTranslations() {
+    self.loading.translations = true;
+    $translatePartialLoader.addPart('../components/shippingModeSelection');
+    return $translate.refresh().finally(() => {
+      self.loading.translations = false;
+    });
+  }
 
-    /* -----  End of INITIALIZATION  ------*/
+  self.$onInit = function () {
+    self.loading.init = true;
 
+    checkOptions();
+
+    return loadTranslations()
+      .then(() => (self.onInitialized ? self.onInitialized() : []))
+      .finally(() => {
+        self.loading.init = false;
+      });
+  };
+
+  /* -----  End of INITIALIZATION  ------*/
 });

@@ -1,37 +1,30 @@
-angular.module("managerApp").controller("telecomTelephonyAbbreviatedNumbersEmptyModal",
-                                        function ($scope, $q, $translate, $uibModalInstance, data) {
-                                            "use strict";
+angular.module('managerApp').controller(
+  'telecomTelephonyAbbreviatedNumbersEmptyModal',
+  function ($scope, $q, $translate, $uibModalInstance, data) {
+    const self = this;
 
-                                            var self = this;
+    this.loading = {
+      updating: false,
+    };
 
-                                            this.loading = {
-                                                updating: false
-                                            };
+    angular.extend(this, data);
 
-                                            angular.extend(this, data);
+    this.cancel = function () {
+      $uibModalInstance.dismiss('cancel');
+    };
 
-                                            this.cancel = function () {
-                                                $uibModalInstance.dismiss("cancel");
-                                            };
-
-                                            this.send = function () {
-                                                this.removing = true;
-                                                this.total = this.abbreviatedNumbers.length;
-                                                this.progress = 0;
-                                                return $q.all(
-                                                    _.map(
-                                                        self.abbreviatedNumbers,
-                                                        function (elt) {
-                                                            return $q.when(self.removeCallback({ value: elt })).finally(function () {
-                                                                self.progress++;
-                                                            });
-                                                        }
-                                                    )
-                                                ).finally(function () {
-                                                    $uibModalInstance.close();
-                                                });
-                                            };
-
-
-                                        }
+    this.send = function () {
+      this.removing = true;
+      this.total = this.abbreviatedNumbers.length;
+      this.progress = 0;
+      return $q.all(_.map(
+        self.abbreviatedNumbers,
+        elt => $q.when(self.removeCallback({ value: elt })).finally(() => {
+          self.progress += 1;
+        }),
+      )).finally(() => {
+        $uibModalInstance.close();
+      });
+    };
+  },
 );

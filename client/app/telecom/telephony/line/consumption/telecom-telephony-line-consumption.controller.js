@@ -1,44 +1,41 @@
-angular.module("managerApp").controller("TelecomTelephonyLineConsumptionCtrl", function ($translate) {
-    "use strict";
+angular.module('managerApp').controller('TelecomTelephonyLineConsumptionCtrl', function ($translate) {
+  const self = this;
 
-    var self = this;
+  self.actions = null;
 
-    self.actions = null;
-
-    /*= =====================================
+  /*= =====================================
     =            INITIALIZATION            =
-    ======================================*/
+    ====================================== */
 
-    function init () {
-        self.actions = [{
-            name: "line_consumption_incoming_calls",
-            main: true,
-            picto: "ovh-font-callReceiving",
-            sref: "telecom.telephony.line.consumption.incomingCalls",
-            text: $translate.instant("telephony_line_management_actions_line_consumption_incoming_calls")
-        }, {
-            name: "line_consumption_outgoing_calls",
-            main: true,
-            picto: "ovh-font-callEmitting",
-            sref: "telecom.telephony.line.consumption.outgoingCalls",
-            text: $translate.instant("telephony_line_management_actions_line_consumption_outgoing_calls")
-        }, {
-            name: "line_consumption_incoming_fax",
-            main: true,
-            picto: "ovh-font-faxReceiving",
-            sref: "telecom.telephony.line.consumption.incomingFax",
-            text: $translate.instant("telephony_line_management_actions_line_consumption_incoming_fax")
-        }, {
-            name: "line_consumption_outgoing_fax",
-            main: true,
-            picto: "ovh-font-faxEmitting",
-            sref: "telecom.telephony.line.consumption.outgoingFax",
-            text: $translate.instant("telephony_line_management_actions_line_consumption_outgoing_fax")
-        }];
-    }
+  function init() {
+    self.actions = [{
+      name: 'line_consumption_incoming_calls',
+      main: true,
+      picto: 'ovh-font-callReceiving',
+      sref: 'telecom.telephony.line.consumption.incomingCalls',
+      text: $translate.instant('telephony_line_management_actions_line_consumption_incoming_calls'),
+    }, {
+      name: 'line_consumption_outgoing_calls',
+      main: true,
+      picto: 'ovh-font-callEmitting',
+      sref: 'telecom.telephony.line.consumption.outgoingCalls',
+      text: $translate.instant('telephony_line_management_actions_line_consumption_outgoing_calls'),
+    }, {
+      name: 'line_consumption_incoming_fax',
+      main: true,
+      picto: 'ovh-font-faxReceiving',
+      sref: 'telecom.telephony.line.consumption.incomingFax',
+      text: $translate.instant('telephony_line_management_actions_line_consumption_incoming_fax'),
+    }, {
+      name: 'line_consumption_outgoing_fax',
+      main: true,
+      picto: 'ovh-font-faxEmitting',
+      sref: 'telecom.telephony.line.consumption.outgoingFax',
+      text: $translate.instant('telephony_line_management_actions_line_consumption_outgoing_fax'),
+    }];
+  }
 
-    /* -----  End of INITIALIZATION  ------*/
+  /* -----  End of INITIALIZATION  ------*/
 
-    init();
-
+  init();
 });

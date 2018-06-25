@@ -1,3 +1,3 @@
-angular.module("managerApp")
-    .constant("punycode", punycode)
-    .constant("validator", validator);
+angular.module('managerApp')
+  .constant('punycode', punycode)
+  .constant('validator', validator);

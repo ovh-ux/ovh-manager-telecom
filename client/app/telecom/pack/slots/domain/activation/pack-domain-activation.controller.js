@@ -1,179 +1,176 @@
-angular.module("managerApp").controller("PackDomainActivationController", function ($scope, $stateParams, $translate, $q, $state, $timeout, OvhApiPackXdslDomainActivation, Toast, OvhApiMe, OvhSimpleCountryList) {
-    "use strict";
+angular.module('managerApp').controller('PackDomainActivationController', function ($scope, $stateParams, $translate, $q, $state, $timeout, OvhApiPackXdslDomainActivation, Toast, OvhApiMe, OvhSimpleCountryList) {
+  const self = this;
 
-    var self = this;
+  function getUser() {
+    return OvhApiMe.v6().get().$promise;
+  }
 
-    function getUser () {
-        return OvhApiMe.v6().get().$promise;
-    }
-
-    function loadAvailableTlds () {
-        return OvhApiPackXdslDomainActivation.v6().getTlds({
-            packId: $scope.locker.packName
-        }, function (data) {
-            $scope.locker.tldList = [];
-            _.each(data, function (elt) {
-                $scope.locker.tldList.push({
-                    value: elt,
-                    label: "." + elt
-                });
-            });
-            $scope.model.tld = _.first(data);
-        }).$promise;
-    }
-
-    function loadActivatedDomains () {
-        return OvhApiPackXdslDomainActivation.v6().getServices({
-            packId: $scope.locker.packName
-        }, function (data) {
-            $scope.locker.activatedDomains = data;
-        }).$promise;
-    }
-
-    function init () {
-        /* Only for submitted data */
-        $scope.model = {
-            action: null, // Enum: [create | transfert | trade]
-            authInfo: null,
-            domain: null,
-            tld: null
-        };
-
-        /* All data who should not be in the model (not submitted) */
-        $scope.locker = {
-            packName: null,
-            tldList: [],
-            activatedDomains: null,
-            fqdn: null // Fully Qualified Domain Name (domain.tld)
-        };
-
-        /* State machine used to manipulate the view */
-        $scope.toggles = {
-            domainStatus: null,
-            domainLoading: false,
-            domainIsActivable: false,
-            transfertWanted: false,
-            authMethod: null
-        };
-
-        if (_.isEmpty($stateParams.packName)) {
-            Toast.error($translate.instant("domain_activation_total_error"));
-            return $q.when(null);
-        }
-
-        $scope.locker.packName = $stateParams.packName;
-        $scope.locker.activatedDomains = [];
-
-        self.countries = OvhSimpleCountryList.asDataForSelect;
-
-        self.isLoading = true;
-        return $q.all([
-            getUser(),
-            loadActivatedDomains(),
-            loadAvailableTlds()
-        ]).catch(function (error) {
-            Toast.error([$translate.instant("domain_activation_total_error"), _.get(error, "data.message")].join(" "));
-            return $q.reject(error);
-        }).finally(function () {
-            self.isLoading = false;
+  function loadAvailableTlds() {
+    return OvhApiPackXdslDomainActivation.v6().getTlds({
+      packId: $scope.locker.packName,
+    }, (data) => {
+      $scope.locker.tldList = [];
+      _.each(data, (elt) => {
+        $scope.locker.tldList.push({
+          value: elt,
+          label: `.${elt}`,
         });
+      });
+      $scope.model.tld = _.first(data);
+    }).$promise;
+  }
+
+  function loadActivatedDomains() {
+    return OvhApiPackXdslDomainActivation.v6().getServices({
+      packId: $scope.locker.packName,
+    }, (data) => {
+      $scope.locker.activatedDomains = data;
+    }).$promise;
+  }
+
+  function init() {
+    /* Only for submitted data */
+    $scope.model = {
+      action: null, // Enum: [create | transfert | trade]
+      authInfo: null,
+      domain: null,
+      tld: null,
+    };
+
+    /* All data who should not be in the model (not submitted) */
+    $scope.locker = {
+      packName: null,
+      tldList: [],
+      activatedDomains: null,
+      fqdn: null, // Fully Qualified Domain Name (domain.tld)
+    };
+
+    /* State machine used to manipulate the view */
+    $scope.toggles = {
+      domainStatus: null,
+      domainLoading: false,
+      domainIsActivable: false,
+      transfertWanted: false,
+      authMethod: null,
+    };
+
+    if (_.isEmpty($stateParams.packName)) {
+      Toast.error($translate.instant('domain_activation_total_error'));
+      return $q.when(null);
     }
 
-    var setDomainIsAvailable = function () {
-        $scope.toggles.domainStatus = "available";
-        $scope.model.action = "create";
+    $scope.locker.packName = $stateParams.packName;
+    $scope.locker.activatedDomains = [];
+
+    self.countries = OvhSimpleCountryList.asDataForSelect;
+
+    self.isLoading = true;
+    return $q.all([
+      getUser(),
+      loadActivatedDomains(),
+      loadAvailableTlds(),
+    ]).catch((error) => {
+      Toast.error([$translate.instant('domain_activation_total_error'), _.get(error, 'data.message')].join(' '));
+      return $q.reject(error);
+    }).finally(() => {
+      self.isLoading = false;
+    });
+  }
+
+  const setDomainIsAvailable = function () {
+    $scope.toggles.domainStatus = 'available';
+    $scope.model.action = 'create';
+  };
+
+  const setDomainIsNotAvailable = function () {
+    $scope.toggles.domainStatus = 'unavailable';
+    $scope.model.action = 'transfer';
+  };
+
+  (function () {
+    let to = null;
+    $scope.scheduleCheckDomainDisponibility = function () {
+      if (to) {
+        $timeout.cancel(to);
+      }
+      to = $timeout($scope.checkDomainDisponibility, 800);
     };
+  }());
 
-    var setDomainIsNotAvailable = function () {
-        $scope.toggles.domainStatus = "unavailable";
-        $scope.model.action = "transfer";
-    };
+  $scope.checkDomainDisponibility = function () {
+    /* we have to reset some previous setting to avoid some strange… things */
+    $scope.toggles.transfertWanted = false;
+    $scope.toggles.domainStatus = null;
+    $scope.toggles.authMethod = null;
+    $scope.toggles.domainLoading = false;
 
-    (function () {
-        var to = null;
-        $scope.scheduleCheckDomainDisponibility = function () {
-            if (to) {
-                $timeout.cancel(to);
-            }
-            to = $timeout($scope.checkDomainDisponibility, 800);
-        };
-    })();
+    if (!$scope.model.domain) {
+      $scope.locker.fqdn = null;
+      return;
+    }
 
-    $scope.checkDomainDisponibility = function () {
-        /* we have to reset some previous setting to avoid some strange… things */
-        $scope.toggles.transfertWanted = false;
-        $scope.toggles.domainStatus = null;
-        $scope.toggles.authMethod = null;
-        $scope.toggles.domainLoading = false;
+    $scope.locker.fqdn = [$scope.model.domain, $scope.model.tld].join('.');
 
-        if (!$scope.model.domain) {
-            $scope.locker.fqdn = null;
+    if (~$scope.locker.activatedDomains.indexOf($scope.locker.fqdn)) { // eslint-disable-line
+      $scope.toggles.domainStatus = 'alreadyActivated';
+    } else {
+      $scope.toggles.domainLoading = true;
+
+      OvhApiPackXdslDomainActivation.Aapi().checkDisponibility({
+        packId: $stateParams.packName,
+        domain: $scope.model.domain,
+        language: 'fr',
+      }).$promise.then((data) => {
+        // if the model still match the request
+        if (data && data.domain === $scope.model.domain) {
+          if (!data.search) {
+            Toast.error($translate.instant('domain_activation_error_on_check_disponibility'));
             return;
+          }
+
+          setDomainIsNotAvailable();
+          _.each(data.search, (search) => {
+            if (search.available && search.tld === $scope.model.tld) {
+              setDomainIsAvailable();
+            }
+          });
+
+          // TODO: IF NOT $scope.toggles.domainStatus THEN ERROR !!
         }
+      }).catch((err) => {
+        Toast.error([$translate.instant('domain_activation_error_on_check_disponibility'), _.get(err, 'data.message')].join(' '));
+        return $q.reject(err);
+      }).finally(() => {
+        $scope.toggles.domainLoading = false;
+      });
+    }
+  };
 
-        $scope.locker.fqdn = [$scope.model.domain, $scope.model.tld].join(".");
+  $scope.toggleTransfertWanted = function () {
+    $scope.toggles.transfertWanted = !$scope.toggles.transfertWanted;
+  };
 
-        if (~$scope.locker.activatedDomains.indexOf($scope.locker.fqdn)) {
-            $scope.toggles.domainStatus = "alreadyActivated";
-        } else {
-            $scope.toggles.domainLoading = true;
+  $scope.submit = function () {
+    const data = _.pick($scope.model, ['packName', 'action', 'authInfo', 'domain', 'tld']);
 
-            OvhApiPackXdslDomainActivation.Aapi().checkDisponibility({
-                packId: $stateParams.packName,
-                domain: $scope.model.domain,
-                language: "fr"
-            }).$promise.then(function (data) {
-                // if the model still match the request
-                if (data && data.domain === $scope.model.domain) {
+    self.isActivating = true;
+    OvhApiPackXdslDomainActivation.v6().postServices({
+      packId: $scope.locker.packName,
+    }, data).$promise.then(() => {
+      Toast.success($translate.instant('domain_activation_domain_is_saved'));
 
-                    if (!data.search) {
-                        Toast.error($translate.instant("domain_activation_error_on_check_disponibility"));
-                        return;
-                    }
-
-                    setDomainIsNotAvailable();
-                    _.each(data.search, function (search) {
-                        if (search.available && search.tld === $scope.model.tld) {
-                            setDomainIsAvailable();
-                        }
-                    });
-
-                    // TODO: IF NOT $scope.toggles.domainStatus THEN ERROR !!
-                }
-            }).catch(function (err) {
-                Toast.error([$translate.instant("domain_activation_error_on_check_disponibility"), _.get(err, "data.message")].join(" "));
-                return $q.reject(err);
-            }).finally(function () {
-                $scope.toggles.domainLoading = false;
-            });
-        }
-    };
-
-    $scope.toggleTransfertWanted = function () {
-        $scope.toggles.transfertWanted = !$scope.toggles.transfertWanted;
-    };
-
-    $scope.submit = function () {
-        var data = _.pick($scope.model, ["packName", "action", "authInfo", "domain", "tld"]);
-
-        self.isActivating = true;
-        OvhApiPackXdslDomainActivation.v6().postServices({
-            packId: $scope.locker.packName
-        }, data).$promise.then(function () {
-            Toast.success($translate.instant("domain_activation_domain_is_saved"));
-
-            $timeout(function () {
-                $state.go("telecom.pack", {
-                    packName: $stateParams.packName
-                });
-            }, 2000);
-        }).catch(function (err) {
-            Toast.error([$translate.instant("domain_activation_unable_to_save_domain"), _.get(err, "data.message")].join(" "));
-            return $q.reject(err);
-        }).finally(function () {
-            self.isActivating = false;
+      $timeout(() => {
+        $state.go('telecom.pack', {
+          packName: $stateParams.packName,
         });
-    };
+      }, 2000);
+    }).catch((err) => {
+      Toast.error([$translate.instant('domain_activation_unable_to_save_domain'), _.get(err, 'data.message')].join(' '));
+      return $q.reject(err);
+    }).finally(() => {
+      self.isActivating = false;
+    });
+  };
 
-    init();
+  init();
 });

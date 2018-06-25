@@ -1,53 +1,53 @@
-angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationOvhPabxSoundsCtrl", function ($q, $stateParams, $translate, TelephonyMediator, Toast) {
-    "use strict";
+angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationOvhPabxSoundsCtrl', function ($q, $stateParams, $translate, TelephonyMediator, Toast) {
+  const self = this;
 
-    var self = this;
+  self.loading = {
+    init: false,
+  };
 
-    self.loading = {
-        init: false
-    };
+  self.model = {
+    file: null,
+  };
 
-    self.model = {
-        file: null
-    };
+  self.number = null;
+  self.uploadErrors = null;
 
-    self.number = null;
-    self.uploadErrors = null;
+  /*= ==============================
+  =            HELPERS            =
+  =============================== */
 
-    /*= ==============================
-    =            HELPERS            =
-    ===============================*/
+  self.hasError = function () {
+    return self.uploadErrors.extension ||
+      self.uploadErrors.size ||
+      self.uploadErrors.name ||
+      self.uploadErrors.exists;
+  };
 
-    self.hasError = function () {
-        return self.uploadErrors.extension || self.uploadErrors.size || self.uploadErrors.name || self.uploadErrors.exists;
-    };
+  /* -----  End of HELPERS  ------*/
 
-    /* -----  End of HELPERS  ------*/
+  /*= =====================================
+  =            INITIALIZATION            =
+  ====================================== */
 
-    /*= =====================================
-    =            INITIALIZATION            =
-    ======================================*/
+  self.$onInit = function () {
+    self.loading.init = true;
 
-    self.$onInit = function () {
-        self.loading.init = true;
+    return TelephonyMediator.getGroup($stateParams.billingAccount).then((group) => {
+      self.number = group.getNumber($stateParams.serviceName);
 
-        return TelephonyMediator.getGroup($stateParams.billingAccount).then(function (group) {
-            self.number = group.getNumber($stateParams.serviceName);
+      return self.number.feature.init().then(() => {
+        if (self.number.getFeatureFamily() === 'ovhPabx') {
+          return self.number.feature.getSounds();
+        }
+        return null;
+      });
+    }).catch((error) => {
+      Toast.error([$translate.instant('telephony_alias_configuration_load_error'), (error.data && error.data.message) || ''].join(' '));
+      return $q.reject(error);
+    }).finally(() => {
+      self.loading.init = false;
+    });
+  };
 
-            return self.number.feature.init().then(function () {
-                if (self.number.getFeatureFamily() === "ovhPabx") {
-                    return self.number.feature.getSounds();
-                }
-                return null;
-            });
-        }).catch(function (error) {
-            Toast.error([$translate.instant("telephony_alias_configuration_load_error"), (error.data && error.data.message) || ""].join(" "));
-            return $q.reject(error);
-        }).finally(function () {
-            self.loading.init = false;
-        });
-    };
-
-    /* -----  End of INITIALIZATION  ------*/
-
+  /* -----  End of INITIALIZATION  ------*/
 });

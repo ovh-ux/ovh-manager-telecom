@@ -1,41 +1,37 @@
-angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationSchedulerEasyHuntingCtrl", function ($q, $translate, $stateParams, TelephonyMediator, Toast) {
-    "use strict";
+angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationSchedulerEasyHuntingCtrl', function ($q, $translate, $stateParams, TelephonyMediator, Toast) {
+  const self = this;
 
-    var self = this;
+  self.loading = {
+    init: false,
+  };
 
-    self.loading = {
-        init: false
-    };
+  self.group = null;
+  self.number = null;
 
-    self.group = null;
-    self.number = null;
-
-    /*= =====================================
+  /*= =====================================
     =            INITIALIZATION            =
-    ======================================*/
+    ====================================== */
 
-    function init () {
-        self.loading.init = true;
+  function init() {
+    self.loading.init = true;
 
-        return TelephonyMediator.getGroup($stateParams.billingAccount).then(function (group) {
-            self.group = group;
-            self.number = self.group.getNumber($stateParams.serviceName);
+    return TelephonyMediator.getGroup($stateParams.billingAccount).then((group) => {
+      self.group = group;
+      self.number = self.group.getNumber($stateParams.serviceName);
 
-            return self.number.feature.init().then(function () {
-                return $q.all({
-                    scheduler: self.number.feature.getScheduler(),
-                    timeCondition: self.number.feature.getTimeCondition()
-                });
-            });
-        }).catch(function (error) {
-            Toast.error([$translate.instant("telephony_alias_configuration_scheduler_load_error"), (error.data && error.data.message) || ""].join(" "));
-            return $q.reject(error);
-        }).finally(function () {
-            self.loading.init = false;
-        });
-    }
+      return self.number.feature.init().then(() => $q.all({
+        scheduler: self.number.feature.getScheduler(),
+        timeCondition: self.number.feature.getTimeCondition(),
+      }));
+    }).catch((error) => {
+      Toast.error([$translate.instant('telephony_alias_configuration_scheduler_load_error'), (error.data && error.data.message) || ''].join(' '));
+      return $q.reject(error);
+    }).finally(() => {
+      self.loading.init = false;
+    });
+  }
 
-    /* -----  End of INITIALIZATION  ------*/
+  /* -----  End of INITIALIZATION  ------*/
 
-    init();
+  init();
 });
