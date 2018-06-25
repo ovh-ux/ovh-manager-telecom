@@ -23,8 +23,6 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "lint": "eslint --quiet --ignore-pattern **/*.spec.js client/",
-    "lint:fix": "eslint --fix --quiet --ignore-pattern **/*.spec.js client/",
     "start": "node server/app.js",
     "test": "grunt test",
     "update-webdriver": "node node_modules/grunt-protractor-runner/node_modules/protractor/bin/webdriver-manager update",
