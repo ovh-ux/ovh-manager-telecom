@@ -95,7 +95,7 @@ angular.module("managerApp").controller("TelecomTelephonyLineTonesCtrl", functio
                 serviceName: $stateParams.serviceName
             }, {
                 type: toneType,
-                url: doc.getUrl
+                documentId: doc.id
             }).$promise;
         }).then(function () {
             self.tonesForm[toneType + "UploadSuccess"] = true;

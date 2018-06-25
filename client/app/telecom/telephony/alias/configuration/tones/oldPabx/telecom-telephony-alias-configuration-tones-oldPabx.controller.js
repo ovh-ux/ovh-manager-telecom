@@ -82,7 +82,7 @@ angular.module("managerApp").controller("TelecomTelephonyAliasConfigurationTones
                 serviceName: $stateParams.serviceName
             }, {
                 type: toneType,
-                url: doc.getUrl
+                documentId: doc.id
             }).$promise.then(function (result) {
                 return voipServiceTask.startPolling($stateParams.billingAccount, $stateParams.serviceName, result.taskId, {
                     namespace: "soundUploadTask_" + $stateParams.serviceName,
