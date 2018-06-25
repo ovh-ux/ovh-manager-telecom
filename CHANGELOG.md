@@ -1,3 +1,13 @@
+<a name="10.4.10"></a>
+## [10.4.10](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.4.9...v10.4.10) (2018-06-25)
+
+
+### Bug Fixes
+
+* **telephony alias configuration tones:** give a document id instead of a url ([72df8ba](https://github.com/ovh-ux/ovh-manager-telecom/commit/72df8ba))
+
+
+
 <a name="10.4.9"></a>
 ## [10.4.9](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.4.8...v10.4.9) (2018-06-19)
 
