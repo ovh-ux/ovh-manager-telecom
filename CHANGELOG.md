@@ -1,3 +1,15 @@
+<a name="10.4.11"></a>
+## [10.4.11](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.4.10...v10.4.11) (2018-06-26)
+
+
+### Bug Fixes
+
+* **navbar:** access to static methods ([a67e358](https://github.com/ovh-ux/ovh-manager-telecom/commit/a67e358))
+* **package engines:** require node 8 current lts ([27873b2](https://github.com/ovh-ux/ovh-manager-telecom/commit/27873b2))
+* **telephony alias configuration tones:** give a document id instead of a url ([#744](https://github.com/ovh-ux/ovh-manager-telecom/issues/744)) ([1759d28](https://github.com/ovh-ux/ovh-manager-telecom/commit/1759d28))
+
+
+
 <a name="10.4.10"></a>
 ## [10.4.10](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.4.9...v10.4.10) (2018-06-25)
 
