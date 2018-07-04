@@ -21,40 +21,31 @@ class NavbarNotificationService {
   getSubLinks() {
     return this.getMessages()
       .then(messages => messages.map(message => this.convertSubLink(message)))
-      .catch(() => [{
-        id: '0',
-        date: moment(),
-        time: this._formatTime(moment()),
-        level: 'error',
-        subject: this.$translate.instant('common_navbar_notification_error_subject'),
-        description: this.$translate.instant('common_navbar_notification_error'),
-      }]);
+      .catch(() => undefined);
   }
 
-  /* eslint-disable */
-  _formatTime(dateTime) {
+  static _formatTime(dateTime) {
     return moment(dateTime).fromNow();
   }
 
   _toggleSublinkAction(toUpdate, linkClicked) {
     if (toUpdate.isActive && !toUpdate.updating) {
-      toUpdate.updating = true;
+      _.set(toUpdate, 'updating', true);
       this.OvhApiNotificationAapi.post({ completed: [toUpdate.id] }).$promise.then(() => {
-        toUpdate.isActive = false;
-        toUpdate.acknowledged = true;
-      }).finally(() => { toUpdate.updating = false; });
+        _.set(toUpdate, 'isActive', false);
+        _.set(toUpdate, 'acknowledged', true);
+      }).finally(() => { _.set(toUpdate, 'updating', false); });
     } else if (!toUpdate.isActive && !toUpdate.updating && !linkClicked) {
-      toUpdate.updating = true;
+      _.set(toUpdate, 'updating', true);
       this.OvhApiNotificationAapi.post({ acknowledged: [toUpdate.id] }).$promise.then(() => {
-        toUpdate.isActive = true;
-        toUpdate.acknowledged = true;
-      }).finally(() => { toUpdate.updating = false; });
+        _.set(toUpdate, 'isActive', true);
+        _.set(toUpdate, 'acknowledged', true);
+      }).finally(() => { _.set(toUpdate, 'updating', false); });
     }
   }
-  /* eslint-enable */
 
   convertSubLink(notification) {
-    _.set(notification, 'time', this._formatTime(notification.date));
+    _.set(notification, 'time', this.constructor._formatTime(notification.date));
     _.set(notification, 'url', notification.urlDetails.href);
     _.set(notification, 'isActive', _.contains(['acknowledged', 'delivered'], notification.status));
     _.set(notification, 'acknowledged', _.contains(['acknowledged', 'completed', 'unknown'], notification.status));
@@ -85,7 +76,7 @@ class NavbarNotificationService {
     }
     this.formatTimeTask = this.$interval(() => {
       sublinks.forEach((notification) => {
-        _.set(notification, 'time', this._formatTime(notification.date));
+        _.set(notification, 'time', this.constructor._formatTime(notification.date));
       });
     }, this.NOTIFICATION_REFRESH_TIME);
   }
@@ -100,7 +91,7 @@ class NavbarNotificationService {
         limitTo: 10,
         onClick: () => this.acknowledgeAll(),
         subLinks: sublinks,
-        show: this.TARGET === 'EU' || this.TARGET === 'CA',
+        show: true,
       };
       this.navbarContent = navbarContent;
       return navbarContent;
