@@ -374,7 +374,7 @@ angular.module('managerApp', [
           markRead: $translate.instant('common_navbar_notification_mark_as_read'),
           markUnread: $translate.instant('common_navbar_notification_mark_as_unread'),
           noNotification: $translate.instant('common_navbar_notification_none'),
-          noNotificationDescription: $translate.instant('common_navbar_notification_none_description')
+          noNotificationDescription: $translate.instant('common_navbar_notification_none_description'),
         },
       });
 
