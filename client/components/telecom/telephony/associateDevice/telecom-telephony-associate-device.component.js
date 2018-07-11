@@ -64,7 +64,7 @@ angular.module('managerApp').component('telecomTelephonyAssociateDevice', {
         serviceName: self.serviceName,
       }, {
         ipAddress: self.ipAddress,
-        macAddress: self.macAdress,
+        macAddress: self.macAddress,
       }).$promise.then(() => {
         self.attachSuccess = true;
 
