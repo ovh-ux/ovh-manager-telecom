@@ -1,8 +1,7 @@
 #### SYSTEM COMMAND ####
 NODE=node
-NPM=npm
+YARN=yarn
 GRUNT=grunt
-BOWER=bower
 GIT=git
 CD=cd
 ECHO=@echo
@@ -20,7 +19,6 @@ CERTIFICATE_CSR_FILE=server/certificate/server.csr
 CERTIFICATE_CRT_FILE=server/certificate/server.crt
 
 #### FOLDERS ####
-BOWER_DIR=client/bower_components
 NODE_DIR=node_modules
 GRUNT_DEP=$(NODE_DIR)/grunt
 DIST_DIR=dist
@@ -32,9 +30,6 @@ DIST_TAR=dist.tar.gz
 NAME=`grep -Po '(?<="name": ")[^"]*' package.json`
 
 #### OTHER ####
-ifneq ($(strip $(bower_registry)),)
-BOWER_PARAM=--config.registry=$(bower_registry)
-endif
 
 
 help:
@@ -57,7 +52,6 @@ help:
 
 clean:
 	$(DEL) $(NODE_DIR)
-	$(DEL) $(BOWER_DIR)
 	$(DEL) $(DIST_DIR)
 	$(DEL) $(DIST_TAR)
 
@@ -71,8 +65,7 @@ gen-certificate:
 	rm $(CERTIFICATE_TMP_KEY)
 
 install:
-	$(NPM) install
-	$(BOWER) install $(BOWER_PARAM)
+	$(YARN) install
 
 dev: deps
 	$(GRUNT) serve
@@ -85,7 +78,7 @@ build: deps
 	$(TAR) $(DIST_TAR) $(DIST_DIR)
 
 release: deps
-	$(NPM) version $(type) -m "chore: release v%s"
+	$(YARN) version $(type) -m "chore: release v%s"
 
 ###############
 # Tests tasks #
@@ -100,7 +93,7 @@ coverage: deps
 	$(GRUNT) test:coverage:unit
 
 webdriver:
-	$(NPM) run update-webdriver
+	$(YARN) run update-webdriver
 
 test-e2e: deps webdriver
 	$(GRUNT) test:e2e --suite=$(suite) --browser=$(browser); \
@@ -122,10 +115,7 @@ tar-test-reports:
 #############
 
 # Dependencies of the project
-deps: $(GRUNT_DEP) $(BOWER_DIR)
-
-$(BOWER_DIR):
-	$(MAKE) install
+deps: $(GRUNT_DEP)
 
 $(NODE_DIR)/%:
 	$(MAKE) install

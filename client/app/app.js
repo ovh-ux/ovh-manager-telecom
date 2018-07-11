@@ -57,6 +57,8 @@ angular.module('managerApp', [
   'ovh-angular-user-pref',
   'ovh-angular-chatbot',
   'oui',
+  'ovh-angular-actions-menu',
+  'ovh-angular-sidebar-menu',
 ])
 
 /*= =========  GLOBAL OPTIONS  ========== */
@@ -103,7 +105,13 @@ angular.module('managerApp', [
   })
 
 /*= =========  TRANSLATOR  ========== */
-  .config(($translateProvider, LANGUAGES, tmhDynamicLocaleProvider) => {
+  .config((
+    $translateProvider,
+    LANGUAGES,
+    tmhDynamicLocaleProvider,
+    actionsMenuProvider,
+    SidebarMenuProvider,
+  ) => {
     // --- Translations configuration
     let defaultLanguage = 'fr_FR';
 
@@ -139,7 +147,7 @@ angular.module('managerApp', [
     moment.locale(defaultLanguage.split('_')[0]);
 
     // set angular locale
-    tmhDynamicLocaleProvider.localeLocationPattern('bower_components/angular-i18n/angular-locale_{{locale}}.js');
+    tmhDynamicLocaleProvider.localeLocationPattern('node_modules/angular-i18n/angular-locale_{{locale}}.js');
     tmhDynamicLocaleProvider.defaultLocale(_.kebabCase(defaultLanguage));
 
     // define translation loader
@@ -153,6 +161,11 @@ angular.module('managerApp', [
     $translateProvider.use(defaultLanguage);
 
     $translateProvider.fallbackLanguage('fr_FR');
+
+    // Rewrite path of translations for actions and sidebar menu modules
+    actionsMenuProvider.setTranslationPath('../node_modules/ovh-angular-actions-menu/dist/ovh-angular-actions-menu');
+    SidebarMenuProvider.clearTranslationPath();
+    SidebarMenuProvider.addTranslationPath('../node_modules/ovh-angular-sidebar-menu/dist/ovh-angular-sidebar-menu');
   })
 
 /*= =========  PAGE TRACKING  ========== */
@@ -374,7 +387,7 @@ angular.module('managerApp', [
           markRead: $translate.instant('common_navbar_notification_mark_as_read'),
           markUnread: $translate.instant('common_navbar_notification_mark_as_unread'),
           noNotification: $translate.instant('common_navbar_notification_none'),
-          noNotificationDescription: $translate.instant('common_navbar_notification_none_description')
+          noNotificationDescription: $translate.instant('common_navbar_notification_none_description'),
         },
       });
 
