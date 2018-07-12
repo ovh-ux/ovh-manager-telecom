@@ -1,3 +1,21 @@
+<a name="10.5.0"></a>
+# [10.5.0](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.4.11...v10.5.0) (2018-07-12)
+
+
+### Bug Fixes
+
+* **pack:** missing without tax mention ([1e2714f](https://github.com/ovh-ux/ovh-manager-telecom/commit/1e2714f))
+* **telephony:** typo mac address parameter ([3c6fb32](https://github.com/ovh-ux/ovh-manager-telecom/commit/3c6fb32))
+* **telephony options group:** use heading attribut on oui-back-button ([41c68ce](https://github.com/ovh-ux/ovh-manager-telecom/commit/41c68ce)), closes [/github.com/ovh-ux/ovh-ui-angular/commit/5ddc0ef2edba5898b97fcca0a73124d369432778#diff-c9aba9326a8bbfe4300255981d64e080R12](https://github.com//github.com/ovh-ux/ovh-ui-angular/commit/5ddc0ef2edba5898b97fcca0a73124d369432778/issues/diff-c9aba9326a8bbfe4300255981d64e080R12)
+* **yarn:** new-version parameter for release ([df5f310](https://github.com/ovh-ux/ovh-manager-telecom/commit/df5f310))
+
+
+### Features
+
+* **navbar:** add notification placeholder translations ([#741](https://github.com/ovh-ux/ovh-manager-telecom/issues/741)) ([4f789ac](https://github.com/ovh-ux/ovh-manager-telecom/commit/4f789ac))
+
+
+
 <a name="10.4.11"></a>
 ## [10.4.11](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.4.10...v10.4.11) (2018-06-26)
 
