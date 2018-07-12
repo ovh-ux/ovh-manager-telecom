@@ -9,7 +9,7 @@ angular.module("managerAppMock").run(function ($q, $httpBackend, TelecomMediator
 
     /* ----------  MISC MOCKS  ----------*/
     $httpBackend.whenGET("/engine/api/me").respond(200, {});
-    $httpBackend.whenGET("/bower_components/angular-i18n/angular-locale_en-us.js").respond(200, "");
+    $httpBackend.whenGET("/node_modules/angular-i18n/angular-locale_en-us.js").respond(200, "");
     $httpBackend.whenGET("/assets/images/raptor.png").respond(200, null);
 
     /* ----------  APIV6 MOCKS  ----------*/

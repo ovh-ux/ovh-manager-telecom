@@ -47,7 +47,8 @@
                             <p class="form-control-static">
                                 <strong class="text-price"
                                         data-ng-if="!PackResiliation.computingPrice"
-                                        data-ng-bind="PackResiliation.resiliationTerms.data.due.text"></strong>
+                                        data-translate="pack_resiliation_excluding_tax"
+                                        data-translate-values="{ amount: PackResiliation.resiliationTerms.data.due.text }"></strong>
                                 <oui-spinner class="ml-2"
                                              data-ng-if="PackResiliation.computingPrice"
                                              data-size="s">

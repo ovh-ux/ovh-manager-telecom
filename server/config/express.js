@@ -28,8 +28,8 @@ module.exports = function (app) {
     app.set('view engine', 'html');
 
     if ('production' === env) {
-        app.use(express.static(path.join(config.root, 'public')));
-        app.set('appPath', path.join(config.root, '/public'));
+        app.use(express.static(path.join(config.root, 'client')));
+        app.set('appPath', path.join(config.root, '/client'));
     } else {
         app.set('appPath', 'dist/client');
     }
