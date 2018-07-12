@@ -48,6 +48,7 @@ help:
 	$(ECHO) "make test-e2e suite=smoke|full browser=phantomjs|chrome|firefox    => launch the e2e tests"
 	$(ECHO) "make coverage                                                      => launch the coverage"
 	$(ECHO) "make build                                                         => build the project and generate dist"
+	$(ECHO) "make release type=patch|minor|major                                => build the project, generate build folder, increment release and commit the source"
 	$(ECHO) "_____________________________"
 
 clean:
@@ -78,7 +79,7 @@ build: deps
 	$(TAR) $(DIST_TAR) $(DIST_DIR)
 
 release: deps
-	$(YARN) version $(type) -m "chore: release v%s"
+	$(YARN) version --new-version $(type) -m "chore: release v%s"
 
 ###############
 # Tests tasks #
