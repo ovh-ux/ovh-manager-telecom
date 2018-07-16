@@ -223,9 +223,10 @@ angular.module('managerApp').controller('TelephonySchedulerEventsCtrl', function
     self.timeSlots = createTimeSlots();
 
     return telephonyScheduler.getAvailableCategories().then((categories) => {
-      self.categories =
-        _.filter(categories, category =>
-          (self.timeCondition ? self.convertCategoryToSlot(category) : true));
+      self.categories = _.filter(
+        categories,
+        category => (self.timeCondition ? self.convertCategoryToSlot(category) : true),
+      );
 
       if (self.event.status === 'CREATING' && self.scheduler.isEventInExistingRange(self.event)) {
         self.event.categories = getFirstAvailableCategory();

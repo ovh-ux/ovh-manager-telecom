@@ -173,8 +173,10 @@ angular.module('managerApp').controller('telephonyBulkActionModalCtrl', function
     self.model.billingAccount = self.bindings.billingAccount;
 
     return telecomVoip.fetchAll(false).then((billingAccounts) => {
-      self.billingAccounts =
-        _.sortBy(billingAccounts, billingAccount => billingAccount.getDisplayedName());
+      self.billingAccounts = _.sortBy(
+        billingAccounts,
+        billingAccount => billingAccount.getDisplayedName(),
+      );
 
       // get all services of each billingAccounts and apply a first filter based on serviceType
       allServices = _.chain(self.billingAccounts).map('services').flatten().filter(service => self.bindings.serviceType === 'all' || service.serviceType === self.bindings.serviceType)

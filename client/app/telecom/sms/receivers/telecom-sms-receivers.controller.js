@@ -81,11 +81,10 @@ angular
         }
         this.slot.count = receiversIds.length;
         this.slot.isFull = this.slot.count >= this.slot.threshold;
-        return this.$q.all(_.map(receiversIds, slotId =>
-          this.api.sms.receivers.get({
-            serviceName: this.$stateParams.serviceName,
-            slotId,
-          }).$promise));
+        return this.$q.all(_.map(receiversIds, slotId => this.api.sms.receivers.get({
+          serviceName: this.$stateParams.serviceName,
+          slotId,
+        }).$promise));
       });
     }
 
@@ -120,8 +119,10 @@ angular
      * @return {Array}
      */
     getSelection() {
-      return _.filter(this.receivers.raw, receiver =>
-        receiver && this.receivers.selected && this.receivers.selected[receiver.slotId]);
+      return _.filter(
+        this.receivers.raw,
+        receiver => receiver && this.receivers.selected && this.receivers.selected[receiver.slotId],
+      );
     }
 
     /**
@@ -297,11 +298,10 @@ angular
      */
     deleteSelectedReceivers() {
       const receivers = this.getSelection();
-      const queries = receivers.map(receiver =>
-        this.api.sms.receivers.delete({
-          serviceName: this.$stateParams.serviceName,
-          slotId: receiver.slotId,
-        }).$promise);
+      const queries = receivers.map(receiver => this.api.sms.receivers.delete({
+        serviceName: this.$stateParams.serviceName,
+        slotId: receiver.slotId,
+      }).$promise);
       this.receivers.isDeleting = true;
       queries.push(this.$timeout(angular.noop, 500)); // avoid clipping
       this.Toast.info(this.$translate.instant('sms_receivers_delete_receivers_success'));

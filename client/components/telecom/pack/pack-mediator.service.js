@@ -59,20 +59,18 @@ angular.module('managerApp').service('PackMediator', function PackMediator($q, O
       angular.forEach(packList, (pack) => {
         _.set(pack, 'xdsl', []);
       });
-    }).then(() =>
-    // fetch xdsl ids of each pack
-      self.fetchPackAccessByIds(_.pluck(packList, 'packName')).then((result) => {
-        angular.forEach(result, (access) => {
-          if (access.path && angular.isArray(access.value)) {
-            const match = /\/pack\/xdsl\/([^/]+)/.exec(access.path);
-            const packId = match && match.length === 2 ? match[1] : null;
-            const pack = _.find(packList, { packName: packId });
-            if (pack) {
-              pack.xdsl = pack.xdsl.concat(_.map(access.value, id => ({ accessName: id })));
-            }
+    }).then(() => self.fetchPackAccessByIds(_.pluck(packList, 'packName')).then((result) => {
+      angular.forEach(result, (access) => {
+        if (access.path && angular.isArray(access.value)) {
+          const match = /\/pack\/xdsl\/([^/]+)/.exec(access.path);
+          const packId = match && match.length === 2 ? match[1] : null;
+          const pack = _.find(packList, { packName: packId });
+          if (pack) {
+            pack.xdsl = pack.xdsl.concat(_.map(access.value, id => ({ accessName: id })));
           }
-        });
-      })).then(() => {
+        }
+      });
+    })).then(() => {
       // fetch xdsl details of each xdsl
       const xdslIds = _.pluck(_.flatten(_.pluck(packList, 'xdsl')), 'accessName');
       return self.fetchXdslByIds(xdslIds).then((result) => {

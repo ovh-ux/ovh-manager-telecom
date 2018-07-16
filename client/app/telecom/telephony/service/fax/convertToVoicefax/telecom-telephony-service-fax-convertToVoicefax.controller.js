@@ -8,21 +8,26 @@ angular.module('managerApp').controller('TelecomTelephonyServiceFaxConvertToVoic
   function fetchConvertToVoicefaxInformations() {
     return OvhApiOrder.Freefax().v6()
       .query().$promise
-      .then(serviceIds => $q.all(_.map(serviceIds, service => OvhApiOrder.Freefax().v6().get({
-        serviceName: service,
-      }).$promise.then((allowedOptions) => {
-        if (_.indexOf(allowedOptions, 'convertToVoicefax') >= 0) {
-          return service;
-        }
-        return null;
-      }, () => $q.when(false)))).then(services => $q.all(_.map(_.compact(services), service =>
-        OvhApiOrder.Freefax().v6().getConvertToVoicefax({
+      .then(serviceIds => $q
+        .all(_.map(serviceIds, service => OvhApiOrder.Freefax().v6().get({
           serviceName: service,
-          billingAccount: $stateParams.billingAccount,
-        }).$promise.then(informations => ({
-          service,
-          informations,
-        }))))));
+        }).$promise.then((allowedOptions) => {
+          if (_.indexOf(allowedOptions, 'convertToVoicefax') >= 0) {
+            return service;
+          }
+          return null;
+        }, () => $q.when(false))))
+        .then(services => $q
+          .all(_.map(
+            _.compact(services),
+            service => OvhApiOrder.Freefax().v6().getConvertToVoicefax({
+              serviceName: service,
+              billingAccount: $stateParams.billingAccount,
+            }).$promise.then(informations => ({
+              service,
+              informations,
+            })),
+          ))));
   }
 
   /* -----  End of HELPERS  ------ */

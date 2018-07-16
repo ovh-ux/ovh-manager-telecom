@@ -16,8 +16,10 @@ angular.module('managerApp').controller('TelecomPackMigrationServiceDeleteCtrl',
   };
 
   self.isValidSelection = function () {
-    return _.every(self.process.selectedOffer.subServicesToDelete, subService =>
-      self.selectedSubServiceToDeleteReached(subService));
+    return _.every(
+      self.process.selectedOffer.subServicesToDelete,
+      subService => self.selectedSubServiceToDeleteReached(subService),
+    );
   };
 
   /* -----  End of HELPERS  ------*/

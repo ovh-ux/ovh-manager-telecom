@@ -55,15 +55,14 @@ angular
       this.hlr.data = null;
       this.api.sms.hlr.resetCache();
       this.api.sms.hlr.resetQueryCache();
-      return this.SmsMediator.initDeferred.promise.then(() =>
-        this.api.sms.hlr.query({
-          serviceName: this.$stateParams.serviceName,
-        }).$promise.then(hlrIds => hlrIds.sort((a, b) => b - a)
-          .map(id => ({ id })))
-          .then((hlrs) => {
-            this.hlr.data = hlrs;
-            this.service = this.SmsMediator.getCurrentSmsService();
-          }))
+      return this.SmsMediator.initDeferred.promise.then(() => this.api.sms.hlr.query({
+        serviceName: this.$stateParams.serviceName,
+      }).$promise.then(hlrIds => hlrIds.sort((a, b) => b - a)
+        .map(id => ({ id })))
+        .then((hlrs) => {
+          this.hlr.data = hlrs;
+          this.service = this.SmsMediator.getCurrentSmsService();
+        }))
         .catch(err => this.ToastError(err));
     }
 
@@ -76,15 +75,18 @@ angular
       if (item.transformed) {
         return this.$q(resolve => resolve(item));
       }
-      return this.api.sms.hlr.get({
-        serviceName: this.$stateParams.serviceName,
-        id: item.id,
-      }).$promise.then((hlr) => {
-        _.set(hlr, 'transformed', true);
-        return hlr;
-      }).then(hlr =>
-        this.fetchPhoneOperator(hlr).then(operator =>
-          _.assign(hlr, { operatorName: operator.operator })).catch(() => hlr));
+      return this.api.sms.hlr
+        .get({
+          serviceName: this.$stateParams.serviceName,
+          id: item.id,
+        }).$promise
+        .then((hlr) => {
+          _.set(hlr, 'transformed', true);
+          return hlr;
+        })
+        .then(hlr => this.fetchPhoneOperator(hlr)
+          .then(operator => _.assign(hlr, { operatorName: operator.operator }))
+          .catch(() => hlr));
     }
 
     /**
@@ -117,7 +119,7 @@ angular
       if (number) {
         if (_.startsWith(number, '00')) {
           return `+${_.trimLeft(number, '00')}`;
-        } else if (number.charAt(0) === '0') {
+        } if (number.charAt(0) === '0') {
           return `+33${number.slice(1)}`;
         }
       }

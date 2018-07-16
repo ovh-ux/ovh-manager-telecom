@@ -24,8 +24,8 @@ angular.module('managerApp').controller('telephonyNumberOvhPabxDialplanExtension
   };
 
   self.getActionFamily = function () {
-    return self.rule.getActionFamily(self.rule.inEdition ?
-      self.rule.saveForEdition.action : self.rule.action);
+    return self.rule.getActionFamily(self.rule.inEdition
+      ? self.rule.saveForEdition.action : self.rule.action);
   };
 
   self.getRuleAttribute = function (attr) {
@@ -41,8 +41,8 @@ angular.module('managerApp').controller('telephonyNumberOvhPabxDialplanExtension
   };
 
   self.getRealRulePosition = function () {
-    return _.indexOf(self.rule.negativeAction ?
-      self.extension.negativeRules : self.extension.rules, self.rule) + 1;
+    return _.indexOf(self.rule.negativeAction
+      ? self.extension.negativeRules : self.extension.rules, self.rule) + 1;
   };
 
   /* -----  End of HELPERS  ------*/

@@ -30,8 +30,10 @@ angular.module('managerApp').controller('TelephonySchedulerImportCtrl', function
     } else {
       const validExtensions = ['ics', 'ical'];
       const fileName = file ? file.name : '';
-      self.isFileExtentionInvalid =
-        !_.some(validExtensions, ext => _.endsWith(fileName.toLowerCase(), ext));
+      self.isFileExtentionInvalid = !_.some(
+        validExtensions,
+        ext => _.endsWith(fileName.toLowerCase(), ext),
+      );
     }
     return self.isFileExtentionInvalid;
   };
@@ -54,9 +56,8 @@ angular.module('managerApp').controller('TelephonySchedulerImportCtrl', function
     self.loading.import = true;
 
     // upload file to /me/document
-    return uploadFile().then(document =>
-    // launch scheduler calendar import
-      self.scheduler.importIcsCalendar(document.getUrl).then((importTask) => {
+    return uploadFile()
+      .then(document => self.scheduler.importIcsCalendar(document.getUrl).then((importTask) => {
         self.status.uploaded = true;
 
         return $timeout(() => {
@@ -66,8 +67,8 @@ angular.module('managerApp').controller('TelephonySchedulerImportCtrl', function
           });
         }, 1000);
       })).catch(error => self.cancel(error)).finally(() => {
-      self.loading.import = false;
-    });
+        self.loading.import = false;
+      });
   };
 
   /* -----  End of ACTIONS  ------*/

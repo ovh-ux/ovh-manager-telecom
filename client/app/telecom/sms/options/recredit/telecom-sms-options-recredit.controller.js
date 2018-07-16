@@ -45,8 +45,7 @@ angular
         return this.api.orderSms.getCredits({
           serviceName: this.$stateParams.serviceName,
           quantity: service.automaticRecreditAmount,
-        }).$promise.then(credits =>
-          _.result(credits, 'prices.withoutTax')).then(price => _.assign(service, { price }));
+        }).$promise.then(credits => _.result(credits, 'prices.withoutTax')).then(price => _.assign(service, { price }));
       }
       _.set(service, 'price', null);
       return this.$q.when(service);

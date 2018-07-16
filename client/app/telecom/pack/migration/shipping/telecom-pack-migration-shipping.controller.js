@@ -39,8 +39,9 @@ angular.module('managerApp').controller('TelecomPackMigrationShippingCtrl', func
       packName: self.process.pack.packName,
       context: 'migration',
     }).$promise.then((shippingAddresses) => {
-      self.ovhContactOptions.customList = _.map(shippingAddresses, shippingAddress =>
-        new OvhContact({
+      self.ovhContactOptions.customList = _.map(
+        shippingAddresses,
+        shippingAddress => new OvhContact({
           address: {
             line1: shippingAddress.address,
             city: shippingAddress.cityName,
@@ -50,7 +51,8 @@ angular.module('managerApp').controller('TelecomPackMigrationShippingCtrl', func
           firstName: shippingAddress.firstName,
           lastName: shippingAddress.lastName,
           id: shippingAddress.shippingId,
-        }));
+        }),
+      );
 
       self.process.shipping.address = _.first(self.ovhContactOptions.customList);
     }, (error) => {

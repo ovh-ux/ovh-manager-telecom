@@ -4,9 +4,9 @@ angular.module('managerApp').controller('XdslModemFirewallCtrl', function ($stat
   this.mediator = PackXdslModemMediator;
 
   this.changeFirewallLevel = function () {
-    if (_.isEmpty($stateParams.serviceName) ||
-      !this.firewallCurrentLevelTmp ||
-      !PackXdslModemMediator.capabilities.canChangeEasyFirewallLevel) {
+    if (_.isEmpty($stateParams.serviceName)
+      || !this.firewallCurrentLevelTmp
+      || !PackXdslModemMediator.capabilities.canChangeEasyFirewallLevel) {
       this.firewallCurrentLevelTmp = this.firewallCurrentLevel;
       Toast.error($translate.instant('xdsl_modem_firewall_an_error_ocurred'));
       return $q.reject();

@@ -44,13 +44,12 @@ angular
         import: this.api.user.document.upload(
           this.phonecontactForm.uploadedFile.name,
           this.phonecontactForm.uploadedFile,
-        ).then(doc =>
-          this.api.sms.phonebooks.import({
-            serviceName: this.$stateParams.serviceName,
-            bookKey: _.get(this.phonebook, 'bookKey'),
-          }, {
-            documentId: doc.id,
-          }).$promise),
+        ).then(doc => this.api.sms.phonebooks.import({
+          serviceName: this.$stateParams.serviceName,
+          bookKey: _.get(this.phonebook, 'bookKey'),
+        }, {
+          documentId: doc.id,
+        }).$promise),
       }).then((result) => {
         this.phonecontactForm.isImporting = false;
         this.phonecontactForm.hasBeenImported = true;

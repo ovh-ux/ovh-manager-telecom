@@ -37,9 +37,8 @@ angular.module('managerApp').directive('voipTimeConditionCalendar', ($compile, $
       const conditionDropped = controller.timeCondition.getCondition(event.id);
       if (conditionDropped) {
         conditionDropped.startEdition();
-        conditionDropped.weekDay =
-          VOIP_TIMECONDITION_ORDERED_DAYS[event.start.day() === 0 ?
-            VOIP_TIMECONDITION_ORDERED_DAYS.length - 1 : event.start.day() - 1];
+        conditionDropped.weekDay = VOIP_TIMECONDITION_ORDERED_DAYS[event.start.day() === 0
+          ? VOIP_TIMECONDITION_ORDERED_DAYS.length - 1 : event.start.day() - 1];
         conditionDropped.timeFrom = event.start.format('HH:mm:ss');
         conditionDropped.timeTo = event.end.format('HH:mm:ss');
         conditionDropped.stopEdition();
@@ -167,16 +166,16 @@ angular.module('managerApp').directive('voipTimeConditionCalendar', ($compile, $
           controller.timeCondition.addCondition({
             hourBegin: start.format('HHmm'),
             hourEnd: end.format('HHmm'),
-            day: VOIP_TIMECONDITION_ORDERED_DAYS[start.day() === 0 ?
-              VOIP_TIMECONDITION_ORDERED_DAYS.length - 1 : start.day() - 1],
+            day: VOIP_TIMECONDITION_ORDERED_DAYS[start.day() === 0
+              ? VOIP_TIMECONDITION_ORDERED_DAYS.length - 1 : start.day() - 1],
             state: 'DRAFT',
           });
         } else {
           controller.timeCondition.addCondition({
             timeFrom: start.format('HH:mm:ss'),
             timeTo: end.format('HH:mm:ss'),
-            weekDay: VOIP_TIMECONDITION_ORDERED_DAYS[start.day() === 0 ?
-              VOIP_TIMECONDITION_ORDERED_DAYS.length - 1 : start.day() - 1],
+            weekDay: VOIP_TIMECONDITION_ORDERED_DAYS[start.day() === 0
+              ? VOIP_TIMECONDITION_ORDERED_DAYS.length - 1 : start.day() - 1],
             state: 'DRAFT',
           });
         }

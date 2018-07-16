@@ -53,8 +53,10 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationTones
     // check for good format
     const validExtensions = ['wav', 'mp3', 'mp4', 'ogg', 'wma'];
     const fileName = file ? file.name : '';
-    self.formErrors[toneType].format = !_.some(validExtensions, ext =>
-      _.endsWith(fileName.toLowerCase(), ext));
+    self.formErrors[toneType].format = !_.some(
+      validExtensions,
+      ext => _.endsWith(fileName.toLowerCase(), ext),
+    );
 
     // check for file size
     self.formErrors[toneType].size = file.size > 10000000;
@@ -72,31 +74,29 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationTones
     const name = (file.name || '').replace(/\s/g, '_');
 
     // first, upload document to get a file url
-    return OvhApiMe.Document().v6().upload(name, file).then(doc =>
-    // second upload the file with given url
-      apiService.v6()
-        .uploadTones({
-          billingAccount: $stateParams.billingAccount,
-          serviceName: $stateParams.serviceName,
-        }, {
-          type: toneType,
-          documentId: doc.id,
-        }).$promise
-        .then(result => voipServiceTask.startPolling(
-          $stateParams.billingAccount,
-          $stateParams.serviceName, result.taskId, {
-            namespace: `soundUploadTask_${$stateParams.serviceName}`,
-            interval: 1000,
-            retryMaxAttempts: 0,
-          },
-        ).catch((err) => {
-          // When the task does not exist anymore it is considered done (T_T)
-          if (err.status === 404) {
-            // add some delay to ensure we get the sound from api when refreshing
-            return $timeout(() => $q.when(true), 2000);
-          }
-          return $q.reject(err);
-        })));
+    return OvhApiMe.Document().v6().upload(name, file).then(doc => apiService.v6()
+      .uploadTones({
+        billingAccount: $stateParams.billingAccount,
+        serviceName: $stateParams.serviceName,
+      }, {
+        type: toneType,
+        documentId: doc.id,
+      }).$promise
+      .then(result => voipServiceTask.startPolling(
+        $stateParams.billingAccount,
+        $stateParams.serviceName, result.taskId, {
+          namespace: `soundUploadTask_${$stateParams.serviceName}`,
+          interval: 1000,
+          retryMaxAttempts: 0,
+        },
+      ).catch((err) => {
+        // When the task does not exist anymore it is considered done (T_T)
+        if (err.status === 404) {
+          // add some delay to ensure we get the sound from api when refreshing
+          return $timeout(() => $q.when(true), 2000);
+        }
+        return $q.reject(err);
+      })));
   }
 
   /* -----  End of HELPERS  ------ */

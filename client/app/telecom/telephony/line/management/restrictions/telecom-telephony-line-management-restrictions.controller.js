@@ -106,8 +106,10 @@ angular.module('managerApp').controller('TelecomTelephonyLineRestrictionsCtrl', 
       return changed;
     });
     const toAdd = _.filter(self.accountRestrictionsForm, ip => !ip.id);
-    const toDelete = _.filter(self.accountRestrictions, ip =>
-      ip.id && !_.find(self.accountRestrictionsForm, { id: ip.id }));
+    const toDelete = _.filter(
+      self.accountRestrictions,
+      ip => ip.id && !_.find(self.accountRestrictionsForm, { id: ip.id }),
+    );
     const deletePromise = _.pluck(changes.concat(toDelete), 'id').map(id => OvhApiMe.Telephony().DefaultIpRestriction().v6().remove({
       id,
     }).$promise);

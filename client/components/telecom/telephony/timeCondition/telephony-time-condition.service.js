@@ -159,8 +159,8 @@ angular.module('managerApp').service('voipTimeCondition', function ($q, $transla
   self.createGroupCondition = function (days, groupedConditionSlots) {
     return {
       days,
-      slots: !groupedConditionSlots || _.isEmpty(groupedConditionSlots) ?
-        [] : Object.keys(groupedConditionSlots).map((slotKey) => {
+      slots: !groupedConditionSlots || _.isEmpty(groupedConditionSlots)
+        ? [] : Object.keys(groupedConditionSlots).map((slotKey) => {
           const slotConditions = groupedConditionSlots[slotKey];
           return {
             condition: slotConditions[0].clone(),
@@ -172,8 +172,10 @@ angular.module('managerApp').service('voipTimeCondition', function ($q, $transla
         let groupText;
 
         // get ordered days indexes
-        const daysIndex = _.map(this.days, day =>
-          VOIP_TIMECONDITION_ORDERED_DAYS.indexOf(day)).sort();
+        const daysIndex = _.map(
+          this.days,
+          day => VOIP_TIMECONDITION_ORDERED_DAYS.indexOf(day),
+        ).sort();
 
         // check if indexes follow each others
         if (daysIndex.length > 1) {

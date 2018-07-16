@@ -59,10 +59,14 @@ angular.module('managerApp').controller('TelecomTelephonyBillingAccountManageCon
 
   function getPendingTasks() {
     return OvhApiMe.Task().ContactChange().v6()
-      .query().$promise.then(ids => $q.all(_.map(_.chunk(ids, 50), chunkIds =>
-        OvhApiMe.Task().ContactChange().v6().getBatch({
-          id: chunkIds,
-        }).$promise))
+      .query().$promise
+      .then(ids => $q
+        .all(_.map(
+          _.chunk(ids, 50),
+          chunkIds => OvhApiMe.Task().ContactChange().v6().getBatch({
+            id: chunkIds,
+          }).$promise,
+        ))
         .then(chunkResult => _.pluck(_.flatten(chunkResult), 'value')));
   }
 
@@ -71,8 +75,8 @@ angular.module('managerApp').controller('TelecomTelephonyBillingAccountManageCon
     _.each(tasks, (task) => {
       if (['checkValidity', 'doing', 'todo', 'validatingByCustomers'].indexOf(task.state) >= 0) {
         _.each(rows, (row) => {
-          if (row.serviceName === task.serviceDomain ||
-            (row.serviceType === 'group' && task.serviceDomain === $stateParams.billingAccount)) {
+          if (row.serviceName === task.serviceDomain
+            || (row.serviceType === 'group' && task.serviceDomain === $stateParams.billingAccount)) {
             _.set(row, 'pendingTask', task);
           }
         });

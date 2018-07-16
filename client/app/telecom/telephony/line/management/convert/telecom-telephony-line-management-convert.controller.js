@@ -67,8 +67,10 @@ angular.module('managerApp').controller('TelecomTelephonyLineConvertCtrl', funct
     filteredServices = _.filter(filteredServices, service => ['sip', 'mgcp'].indexOf(service.featureType) > -1);
 
     return OvhApiPackXdslVoipLine.v7().services().aggregate('packName').execute().$promise.then((lines) => {
-      filteredServices = _.filter(filteredServices, service =>
-        !_.some(lines, { key: service.serviceName }));
+      filteredServices = _.filter(
+        filteredServices,
+        service => !_.some(lines, { key: service.serviceName }),
+      );
 
       return $q.when(filteredServices);
     });

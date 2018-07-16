@@ -34,31 +34,29 @@ angular.module('managerApp').controller('TelecomTelephonyAliasHuntingSoundsCtrl'
     return OvhApiMe.Document().v6().upload(
       name,
       self.toUpload,
-    ).then(doc =>
-    // second upload the file with given url
-      self.apiEndpoint.v6().soundUpload({
-        billingAccount: $stateParams.billingAccount,
-        serviceName: $stateParams.serviceName,
-      }, {
-        name,
-        url: doc.getUrl,
-      }).$promise.then(result => voipServiceTask.startPolling(
-        $stateParams.billingAccount,
-        $stateParams.serviceName,
-        result.taskId,
-        {
-          namespace: `soundUploadTask_${$stateParams.serviceName}`,
-          interval: 1000,
-          retryMaxAttempts: 0,
-        },
-      ).catch((err) => {
-        // When the task does not exist anymore it is considered done (T_T)
-        if (err.status === 404) {
-          // add some delay to ensure we get the sound from api when refreshing
-          return $timeout(() => $q.when(true), 2000);
-        }
-        return $q.reject(err);
-      })))
+    ).then(doc => self.apiEndpoint.v6().soundUpload({
+      billingAccount: $stateParams.billingAccount,
+      serviceName: $stateParams.serviceName,
+    }, {
+      name,
+      url: doc.getUrl,
+    }).$promise.then(result => voipServiceTask.startPolling(
+      $stateParams.billingAccount,
+      $stateParams.serviceName,
+      result.taskId,
+      {
+        namespace: `soundUploadTask_${$stateParams.serviceName}`,
+        interval: 1000,
+        retryMaxAttempts: 0,
+      },
+    ).catch((err) => {
+      // When the task does not exist anymore it is considered done (T_T)
+      if (err.status === 404) {
+        // add some delay to ensure we get the sound from api when refreshing
+        return $timeout(() => $q.when(true), 2000);
+      }
+      return $q.reject(err);
+    })))
       .then(() => {
         self.toUpload = null;
         params.refreshSounds();

@@ -25,10 +25,9 @@ angular.module('managerApp').controller('TelecomSmsPhonebooksCreateCtrl', class 
     this.phonebookToAdd.isAdding = true;
     return this.api.sms.phonebooks.create({
       serviceName: this.$stateParams.serviceName,
-    }, _.pick(this.phonebookToAdd, 'name')).$promise.then(phonebook =>
-      this.$state.go('telecom.sms.phonebooks', {
-        bookKey: phonebook.bookKey,
-      })).catch((err) => {
+    }, _.pick(this.phonebookToAdd, 'name')).$promise.then(phonebook => this.$state.go('telecom.sms.phonebooks', {
+      bookKey: phonebook.bookKey,
+    })).catch((err) => {
       this.ToastError(err);
     }).finally(() => {
       this.phonebookToAdd.isAdding = false;

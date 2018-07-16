@@ -134,11 +134,11 @@ angular
      */
     hasChanged() {
       return !(
-        this.model.user.alertThresholdInformations.alertEmail === this.user.alertThresholdInformations.alertEmail &&
-          this.model.user.alertThresholdInformations.alertNumber === this.user.alertThresholdInformations.alertNumber &&
-          this.alertThreshold === this.user.alertThresholdInformations.alertThreshold &&
-          this.model.user.alertThresholdInformations.support === this.user.alertThresholdInformations.support &&
-          this.model.user.alertThresholdInformations.limitStatus === this.limitStatus
+        this.model.user.alertThresholdInformations.alertEmail === this.user.alertThresholdInformations.alertEmail
+          && this.model.user.alertThresholdInformations.alertNumber === this.user.alertThresholdInformations.alertNumber
+          && this.alertThreshold === this.user.alertThresholdInformations.alertThreshold
+          && this.model.user.alertThresholdInformations.support === this.user.alertThresholdInformations.support
+          && this.model.user.alertThresholdInformations.limitStatus === this.limitStatus
       );
     }
     /* eslint-enable max-len */

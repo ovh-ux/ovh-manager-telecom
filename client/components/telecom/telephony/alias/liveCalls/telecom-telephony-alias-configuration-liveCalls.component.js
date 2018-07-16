@@ -84,14 +84,17 @@ angular.module('managerApp').component('telecomTelephonyAliasLiveCalls', {
           serviceName: $stateParams.serviceName,
           queueId,
         }).$promise
-        .then(callsIds => $q.all(_.map((callsIds || []).reverse(), callId =>
-          self.apiEndpoint.Hunting().Queue().LiveCalls().v6()
-            .get({
-              billingAccount: $stateParams.billingAccount,
-              serviceName: $stateParams.serviceName,
-              queueId,
-              id: callId,
-            }).$promise)));
+        .then(callsIds => $q
+          .all(_.map(
+            (callsIds || []).reverse(),
+            callId => self.apiEndpoint.Hunting().Queue().LiveCalls().v6()
+              .get({
+                billingAccount: $stateParams.billingAccount,
+                serviceName: $stateParams.serviceName,
+                queueId,
+                id: callId,
+              }).$promise,
+          )));
     };
 
     self.fetchAgentsLiveStatus = function (queueId) {
@@ -103,17 +106,20 @@ angular.module('managerApp').component('telecomTelephonyAliasLiveCalls', {
           serviceName: $stateParams.serviceName,
           queueId,
         }).$promise
-        .then(agentIds => $q.all(_.map(agentIds, agentId =>
-          self.apiEndpoint.Hunting().Queue().Agent().v6()
-            .getLiveStatus({
-              billingAccount: $stateParams.billingAccount,
-              serviceName: $stateParams.serviceName,
-              queueId,
-              agentId,
-            }).$promise.then((agentStatus) => {
-              _.set(agentStatus, 'agentId', agentId);
-              return agentStatus;
-            }))));
+        .then(agentIds => $q
+          .all(_.map(
+            agentIds,
+            agentId => self.apiEndpoint.Hunting().Queue().Agent().v6()
+              .getLiveStatus({
+                billingAccount: $stateParams.billingAccount,
+                serviceName: $stateParams.serviceName,
+                queueId,
+                agentId,
+              }).$promise.then((agentStatus) => {
+                _.set(agentStatus, 'agentId', agentId);
+                return agentStatus;
+              }),
+          )));
     };
 
     self.getAverageWaitTime = function () {

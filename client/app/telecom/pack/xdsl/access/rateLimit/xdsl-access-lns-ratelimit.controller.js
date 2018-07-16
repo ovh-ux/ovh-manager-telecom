@@ -34,8 +34,8 @@ angular.module('managerApp').controller('XdslAccessLnsRateLimitCtrl', function (
   };
 
   self.valueChanged = function () {
-    return (self.rate.disabled !== self.undoRate.disabled) ||
-      (self.rate.value !== self.undoRate.value);
+    return (self.rate.disabled !== self.undoRate.disabled)
+      || (self.rate.value !== self.undoRate.value);
   };
 
   self.changeRate = function () {

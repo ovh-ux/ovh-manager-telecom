@@ -53,7 +53,7 @@ angular.module('managerApp').controller('telephonyNumberOvhPabxDialplanExtension
     }
     if (!service.isFax && service.isTrunk && service.isTrunk()) {
       return 'trunk';
-    } else if (service.isFax) {
+    } if (service.isFax) {
       return 'fax';
     }
     return service.isPlugNFax ? 'plug_fax' : 'line';
@@ -247,9 +247,9 @@ angular.module('managerApp').controller('telephonyNumberOvhPabxDialplanExtension
       self.availableActions = _.chain(enumValues).filter((enumVal) => {
         if (self.ovhPabx.featureType === 'cloudIvr') {
           return enumVal !== 'hunting' && enumVal !== 'tts';
-        } else if (!self.ovhPabx.isCcs) {
+        } if (!self.ovhPabx.isCcs) {
           return enumVal !== 'ivr' && enumVal !== 'tts';
-        } else if (self.ovhPabx.featureType === 'cloudHunting') {
+        } if (self.ovhPabx.featureType === 'cloudHunting') {
           return enumVal !== 'ivr';
         }
         return true;

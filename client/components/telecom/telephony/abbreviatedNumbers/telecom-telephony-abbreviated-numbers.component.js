@@ -63,8 +63,10 @@ angular.module('managerApp').component('telecomTelephonyAbbreviatedNumbers', {
       });
       addModalInstance.result.then((data) => {
         self.abbreviatedNumbers.push(data);
-        self.abbreviatedNumbers = _.sortBy(self.abbreviatedNumbers, elt =>
-          parseInt(elt.abbreviatedNumber, 10));
+        self.abbreviatedNumbers = _.sortBy(
+          self.abbreviatedNumbers,
+          elt => parseInt(elt.abbreviatedNumber, 10),
+        );
       });
     };
 
@@ -87,8 +89,10 @@ angular.module('managerApp').component('telecomTelephonyAbbreviatedNumbers', {
         },
       });
       importModalInstance.result.then((data) => {
-        self.abbreviatedNumbers = _.sortBy(self.abbreviatedNumbers.concat(data), elt =>
-          parseInt(elt.abbreviatedNumber, 10));
+        self.abbreviatedNumbers = _.sortBy(
+          self.abbreviatedNumbers.concat(data),
+          elt => parseInt(elt.abbreviatedNumber, 10),
+        );
       });
       importModalInstance.result.catch(() => {
         self.reloadCallback();

@@ -80,9 +80,8 @@ angular.module('managerApp').controller('TelecomTelephonyLineClick2CallAddUserCt
     //     _.some(service.offers, _.method("includes", "priceplan")) ||
     //     _.some(service.offers, _.method("includes", "voicefax"));
 
-    return _.filter(filteredServices, service =>
-      _.some(service.offers, _.method('includes', 'sipfax')) ||
-      _.some(service.offers, _.method('includes', 'priceplan')));
+    return _.filter(filteredServices, service => _.some(service.offers, _.method('includes', 'sipfax'))
+      || _.some(service.offers, _.method('includes', 'priceplan')));
   };
 
   self.getBulkParams = function () {

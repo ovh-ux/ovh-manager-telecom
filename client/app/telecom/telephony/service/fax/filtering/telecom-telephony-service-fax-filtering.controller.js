@@ -39,8 +39,10 @@ angular.module('managerApp').controller('TelecomTelephonyServiceFaxFilteringCtrl
   }
 
   self.getSelection = function () {
-    return _.filter(self.screenLists.raw, screen =>
-      screen && self.screenLists.selected && self.screenLists.selected[screen.id]);
+    return _.filter(
+      self.screenLists.raw,
+      screen => screen && self.screenLists.selected && self.screenLists.selected[screen.id],
+    );
   };
 
   /* -----  End of HELPERS  ------ */

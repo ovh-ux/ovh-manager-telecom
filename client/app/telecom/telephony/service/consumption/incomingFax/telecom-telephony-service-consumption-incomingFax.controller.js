@@ -7,12 +7,15 @@ angular.module('managerApp').controller('TelecomTelephonyServiceConsumptionIncom
         billingAccount: $stateParams.billingAccount,
         serviceName: $stateParams.serviceName,
       }).$promise
-      .then(ids => $q.all(_.map(_.chunk(ids, 50), chunkIds =>
-        OvhApiTelephony.Service().FaxConsumption().v6().getBatch({
-          billingAccount: $stateParams.billingAccount,
-          serviceName: $stateParams.serviceName,
-          consumptionId: chunkIds,
-        }).$promise))
+      .then(ids => $q
+        .all(_.map(
+          _.chunk(ids, 50),
+          chunkIds => OvhApiTelephony.Service().FaxConsumption().v6().getBatch({
+            billingAccount: $stateParams.billingAccount,
+            serviceName: $stateParams.serviceName,
+            consumptionId: chunkIds,
+          }).$promise,
+        ))
         .then(chunkResult => _.flatten(chunkResult)))
       .then((resultParam) => {
         let result = _.pluck(resultParam, 'value');

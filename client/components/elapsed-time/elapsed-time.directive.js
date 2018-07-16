@@ -46,7 +46,7 @@ angular.module('managerApp').service('ElapsedTimePeriodicUpdater', ($timeout, $h
     getDeltaTime() {
       if (deltaTime !== null) {
         return $q.when(deltaTime);
-      } else if (pendingDeltaTime) {
+      } if (pendingDeltaTime) {
         return pendingDeltaTime;
       }
       pendingDeltaTime = $http.get('/auth/time').then((result) => {

@@ -56,8 +56,8 @@ angular.module('managerApp').factory('TelephonyGroupNumberOvhPabxDialplanExtensi
     =            PROTOTYPE METHODS            =
     ========================================= */
 
-  TelephonyGroupNumberOvhPabxDialplanExtensionRule.prototype.setInfos =
-    function (ruleOptionsParam) {
+  TelephonyGroupNumberOvhPabxDialplanExtensionRule.prototype
+    .setInfos = function (ruleOptionsParam) {
       const self = this;
       let ruleOptions = ruleOptionsParam;
 
@@ -66,8 +66,8 @@ angular.module('managerApp').factory('TelephonyGroupNumberOvhPabxDialplanExtensi
       }
 
       self.action = ruleOptions.action || 'setCallerName';
-      self.negativeAction = !_.isUndefined(ruleOptions.negativeAction) ?
-        ruleOptions.negativeAction : false;
+      self.negativeAction = !_.isUndefined(ruleOptions.negativeAction)
+        ? ruleOptions.negativeAction : false;
       self.position = ruleOptions.position || null;
       self.status = ruleOptions.status || 'OK';
 
@@ -83,8 +83,8 @@ angular.module('managerApp').factory('TelephonyGroupNumberOvhPabxDialplanExtensi
       return self;
     };
 
-  TelephonyGroupNumberOvhPabxDialplanExtensionRule.prototype.getActionFamily =
-    function (actionParam) {
+  TelephonyGroupNumberOvhPabxDialplanExtensionRule.prototype
+    .getActionFamily = function (actionParam) {
       const self = this;
       let action = actionParam;
 
@@ -214,8 +214,8 @@ angular.module('managerApp').factory('TelephonyGroupNumberOvhPabxDialplanExtensi
     return self;
   };
 
-  TelephonyGroupNumberOvhPabxDialplanExtensionRule.prototype.stopEdition =
-    function (cancel, saveForEdition) {
+  TelephonyGroupNumberOvhPabxDialplanExtensionRule.prototype
+    .stopEdition = function (cancel, saveForEdition) {
       const self = this;
 
       if (self.saveForEdition && cancel) {

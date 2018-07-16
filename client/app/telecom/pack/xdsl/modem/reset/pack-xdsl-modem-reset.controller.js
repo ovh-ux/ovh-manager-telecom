@@ -14,14 +14,14 @@ angular.module('managerApp').controller('XdslModemResetCtrl', function ($statePa
         PackXdslModemMediator.setTask('resetModem');
       }
       PackXdslModemMediator.disableCapabilities();
-      Toast.success($translate.instant(resetOvhConfig ?
-        'xdsl_modem_reset_ovh_config_success' :
-        'xdsl_modem_reset_success'));
+      Toast.success($translate.instant(resetOvhConfig
+        ? 'xdsl_modem_reset_ovh_config_success'
+        : 'xdsl_modem_reset_success'));
       return result;
     }).catch((err) => {
-      Toast.error($translate.instant(resetOvhConfig ?
-        'xdsl_modem_reset_ovh_config_an_error_ocurred' :
-        'xdsl_modem_reset_an_error_ocurred'));
+      Toast.error($translate.instant(resetOvhConfig
+        ? 'xdsl_modem_reset_ovh_config_an_error_ocurred'
+        : 'xdsl_modem_reset_an_error_ocurred'));
       return $q.reject(err);
     });
     return $q.when(null);

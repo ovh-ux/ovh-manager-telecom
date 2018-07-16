@@ -42,9 +42,9 @@ angular.module('managerApp').controller('TelephonyNumberSviCtrl', function ($q, 
   self.isValidUrlRecord = function (value) {
     if (!value) {
       return true;
-    } else if (self.model.urlRecordProtocol === 'mailto:') {
+    } if (self.model.urlRecordProtocol === 'mailto:') {
       return validator.isEmail(value);
-    } else if (self.model.urlRecordProtocol === 'ftp://') {
+    } if (self.model.urlRecordProtocol === 'ftp://') {
       return v4UrlRegexp.test(value);
     }
     return self.isValidURL(value);

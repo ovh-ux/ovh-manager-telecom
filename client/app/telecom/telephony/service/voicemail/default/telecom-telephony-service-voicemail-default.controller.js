@@ -65,7 +65,7 @@ angular.module('managerApp').controller('TelecomTelephonyServiceVoicemailDefault
     const formatted = $filter('phoneNumber')(number.serviceName);
     if (number.description) {
       return number.description === number.serviceName ? formatted : `${formatted} ${number.description}`;
-    } else if (number.label) {
+    } if (number.label) {
       return number.label === number.serviceName ? formatted : `${formatted} ${number.label}`;
     }
     return formatted;

@@ -73,8 +73,8 @@ angular.module('managerApp').service('PackMigrationProcess', function ($q, OvhAp
       quantity: option.choosedValue,
     }));
 
-    if (migrationProcess.selectedOffer.options.gtr_ovh &&
-      migrationProcess.selectedOffer.options.gtr_ovh.selected) {
+    if (migrationProcess.selectedOffer.options.gtr_ovh
+      && migrationProcess.selectedOffer.options.gtr_ovh.selected) {
       migrationOptions.push({
         name: 'gtr_ovh',
         quantity: 1,
@@ -94,13 +94,13 @@ angular.module('managerApp').service('PackMigrationProcess', function ($q, OvhAp
     if (migrationProcess.selectedOffer.subServicesToDelete.length) {
       postParams.subServicesToDelete = [];
       angular.forEach(migrationProcess.selectedOffer.subServicesToDelete, (subService) => {
-        postParams.subServicesToDelete =
-        postParams.subServicesToDelete.concat(_.map(_.filter(subService.services, {
-          selected: true,
-        }), service => ({
-          service: service.name,
-          type: subService.type,
-        })));
+        postParams.subServicesToDelete = postParams
+          .subServicesToDelete.concat(_.map(_.filter(subService.services, {
+            selected: true,
+          }), service => ({
+            service: service.name,
+            type: subService.type,
+          })));
       });
     }
 

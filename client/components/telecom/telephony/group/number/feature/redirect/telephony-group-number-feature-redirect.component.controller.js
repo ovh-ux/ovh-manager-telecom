@@ -34,8 +34,9 @@ angular.module('managerApp').controller('TelephonyNumberRedirectCtrl', function 
       destinationServiceName = self.numberCtrl.number.feature.destination;
     }
 
-    const serviceFromCurrentGroup =
-      destinationServiceName ? self.group.getService(destinationServiceName) : null;
+    const serviceFromCurrentGroup = destinationServiceName
+      ? self.group.getService(destinationServiceName)
+      : null;
     return serviceFromCurrentGroup || TelephonyMediator.findService(destinationServiceName);
   }
 
@@ -53,8 +54,8 @@ angular.module('managerApp').controller('TelephonyNumberRedirectCtrl', function 
 
     // manage selected service
     selectedService = getDestinationService();
-    if (selectedService &&
-      !_.find(self.availableServices, { serviceName: selectedService.serviceName })) {
+    if (selectedService
+      && !_.find(self.availableServices, { serviceName: selectedService.serviceName })) {
       self.availableServices.push(selectedService);
     }
 
@@ -65,28 +66,26 @@ angular.module('managerApp').controller('TelephonyNumberRedirectCtrl', function 
      *  Set the save feature for parent component
      */
   function saveFeature() {
-    return self.numberCtrl.number.feature.save().then(task =>
-    // start polling to be sure that feature is totally saved
-      voipServiceTask.startPolling(
-        self.numberCtrl.number.billingAccount,
-        self.numberCtrl.number.serviceName,
-        task.taskId,
-        {
-          namespace: `numberRedirectTask_${self.numberCtrl.number.serviceName}`,
-          interval: 1000,
-          retryMaxAttempts: 0,
-        },
-      ).then(() => {
-        // number feature is save - stop its edition
+    return self.numberCtrl.number.feature.save().then(task => voipServiceTask.startPolling(
+      self.numberCtrl.number.billingAccount,
+      self.numberCtrl.number.serviceName,
+      task.taskId,
+      {
+        namespace: `numberRedirectTask_${self.numberCtrl.number.serviceName}`,
+        interval: 1000,
+        retryMaxAttempts: 0,
+      },
+    ).then(() => {
+      // number feature is save - stop its edition
+      self.numberCtrl.number.stopEdition(false, true);
+    }, (error) => {
+      if (error.status === 404) {
+        // consider number feature as saved - stop its edition
         self.numberCtrl.number.stopEdition(false, true);
-      }, (error) => {
-        if (error.status === 404) {
-          // consider number feature as saved - stop its edition
-          self.numberCtrl.number.stopEdition(false, true);
-          return $q.when(true);
-        }
-        return $q.reject(error);
-      })).catch((error) => {
+        return $q.when(true);
+      }
+      return $q.reject(error);
+    })).catch((error) => {
       Toast.error([$translate.instant('telephony_number_feature_redirect_save_error'), (error.data && error.data.message) || ''].join(' '));
       return $q.reject(error);
     }).finally(() => {
@@ -106,8 +105,8 @@ angular.module('managerApp').controller('TelephonyNumberRedirectCtrl', function 
   };
 
   self.onFeatureStartEdit = function () {
-    if (!self.numberCtrl.number.feature.destination &&
-      self.displayHelpers.hasOtherGroups && self.displayHelpers.currentGroupServiceCount > 4) {
+    if (!self.numberCtrl.number.feature.destination
+      && self.displayHelpers.hasOtherGroups && self.displayHelpers.currentGroupServiceCount > 4) {
       self.displayHelpers.serviceChoicePopoverOptions.popoverIsOpen = true;
       self.numberCtrl.number.feature.destination = 'pending';
     }
@@ -120,9 +119,8 @@ angular.module('managerApp').controller('TelephonyNumberRedirectCtrl', function 
   };
 
   self.manageCancelChoice = function () {
-    self.numberCtrl.number.feature.destination =
-      selectedService ? selectedService.serviceName :
-        self.numberCtrl.number.feature.stopEdition(true).startEdition().destination;
+    self.numberCtrl.number.feature.destination = selectedService ? selectedService.serviceName
+      : self.numberCtrl.number.feature.stopEdition(true).startEdition().destination;
     return refreshAvailableServices();
   };
 
@@ -153,14 +151,15 @@ angular.module('managerApp').controller('TelephonyNumberRedirectCtrl', function 
       return TelephonyMediator.getAll().then(() => {
         const numberList = getNumberList();
 
-        self.displayHelpers.currentGroupServiceCount =
-          numberList.length + self.group.lines.length + self.group.fax.length;
+        self.displayHelpers.currentGroupServiceCount = numberList.length
+          + self.group.lines.length
+          + self.group.fax.length;
 
         // set display helpers
         self.displayHelpers.hasOtherGroups = _.keys(TelephonyMediator.groups).length > 1;
         self.displayHelpers.availableTypes = self.numberCtrl.number.feature.featureType === 'ddi' ? ['trunk', 'sip'] : undefined;
-        if (self.displayHelpers.hasOtherGroups &&
-          self.displayHelpers.currentGroupServiceCount <= 4) {
+        if (self.displayHelpers.hasOtherGroups
+          && self.displayHelpers.currentGroupServiceCount <= 4) {
           self.displayHelpers.hiddenGroups.push(self.numberCtrl.number.billingAccount);
         }
       });

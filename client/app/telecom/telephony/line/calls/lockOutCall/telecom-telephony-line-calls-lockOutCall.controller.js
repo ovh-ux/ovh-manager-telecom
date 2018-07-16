@@ -8,8 +8,8 @@ angular.module('managerApp').controller(
     };
 
     self.needSave = function () {
-      return (self.options.lockOutCallPassword + self.options.lockOutCall) !==
-        (self.saved.lockOutCallPassword + self.saved.lockOutCall);
+      return (self.options.lockOutCallPassword + self.options.lockOutCall)
+        !== (self.saved.lockOutCallPassword + self.saved.lockOutCall);
     };
 
     self.cancel = function () {

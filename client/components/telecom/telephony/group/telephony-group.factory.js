@@ -194,14 +194,14 @@ angular.module('managerApp').factory('TelephonyGroup', ($q, OvhApiTelephony, Tel
         .value();
 
       self.calledFees = _.chain(calledFeesPrefix)
-        .map(prefix => _.filter(consumptions, consumption =>
-          _.startsWith(consumption.dialed, prefix) && consumption.price !== 0 && moment(consumption.creationDatetime).isAfter(moment().subtract(60, 'days').format()))).flatten().value();
+        .map(prefix => _.filter(consumptions, consumption => _.startsWith(consumption.dialed, prefix) && consumption.price !== 0 && moment(consumption.creationDatetime).isAfter(moment().subtract(60, 'days').format()))).flatten().value();
 
       self.groupRepayments = {
         all: consumptions,
         raw: _.chain(groupRepaymentsPrefix)
-          .map(prefix => _.filter(consumptions, consumption =>
-            _.startsWith(consumption.dialed, prefix) && consumption.price !== 0)).flatten().value(),
+          .map(prefix => _.filter(consumptions,
+            consumption => _.startsWith(consumption.dialed, prefix) && consumption.price !== 0))
+          .flatten().value(),
       };
 
       return self;

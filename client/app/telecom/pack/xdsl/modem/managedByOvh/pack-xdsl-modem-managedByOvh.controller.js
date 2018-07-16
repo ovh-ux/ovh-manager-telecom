@@ -8,9 +8,9 @@ angular.module('managerApp').controller('XdslModemManagedByCtrl', function ($sta
     PackXdslModemMediator.unsetTask('changeModemConfigManagement');
   };
 
-  this.tooltip = _.get(this.mediator, 'info.managedByOvh') ?
-    ['<strong class="text-warning">', $translate.instant('xdsl_modem_managedBy_warning'), '</strong>'].join('') :
-    ['<strong class="text-warning">', $translate.instant('xdsl_modem_managedBy_warning_override'), '</strong>'].join('');
+  this.tooltip = _.get(this.mediator, 'info.managedByOvh')
+    ? ['<strong class="text-warning">', $translate.instant('xdsl_modem_managedBy_warning'), '</strong>'].join('')
+    : ['<strong class="text-warning">', $translate.instant('xdsl_modem_managedBy_warning_override'), '</strong>'].join('');
 
   this.changeManagedBy = function () {
     if (_.isEmpty($stateParams.serviceName)) {

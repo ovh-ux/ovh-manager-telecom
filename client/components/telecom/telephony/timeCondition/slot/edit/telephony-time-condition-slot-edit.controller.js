@@ -30,7 +30,7 @@ angular.module('managerApp').controller('voipTimeConditionSlotEditCtrl', functio
     }
     if (!service.isFax && service.isTrunk && service.isTrunk()) {
       return 'trunk';
-    } else if (service.isFax) {
+    } if (service.isFax) {
       return 'fax';
     }
     return service.isPlugNFax ? 'plug_fax' : 'line';

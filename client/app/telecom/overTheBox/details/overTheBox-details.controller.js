@@ -276,8 +276,8 @@ angular.module('managerApp').controller('OverTheBoxDetailsCtrl', function ($scop
       .then((serviceInfos) => {
         self.serviceInfos = serviceInfos;
         if (self.serviceInfos && self.serviceInfos.renew) {
-          self.serviceInfos.renew.undoDeleteAtExpiration =
-            self.serviceInfos.renew.deleteAtExpiration;
+          self.serviceInfos.renew.undoDeleteAtExpiration = self
+            .serviceInfos.renew.deleteAtExpiration;
         }
         return serviceInfos;
       }).catch((error) => {
@@ -379,9 +379,9 @@ angular.module('managerApp').controller('OverTheBoxDetailsCtrl', function ($scop
     if (!this.serviceInfos || !this.serviceInfos.renew) {
       return false;
     }
-    return !this.serviceInfos.renew.deleteAtExpiration &&
-      !this.serviceInfos.undoDeleteAtExpiration &&
-      this.serviceInfos.canDeleteAtExpiration;
+    return !this.serviceInfos.renew.deleteAtExpiration
+      && !this.serviceInfos.undoDeleteAtExpiration
+      && this.serviceInfos.canDeleteAtExpiration;
   };
 
   /**
@@ -410,8 +410,8 @@ angular.module('managerApp').controller('OverTheBoxDetailsCtrl', function ($scop
       Toast.success($translate.instant(
         'overTheBox_resiliation_success',
         {
-          service: $scope.OverTheBox.service.customerDescription ||
-            $scope.OverTheBox.service.serviceName,
+          service: $scope.OverTheBox.service.customerDescription
+            || $scope.OverTheBox.service.serviceName,
           date: moment(self.serviceInfos.expiration).format('DD/MM/YYYY'),
         },
       ));
@@ -420,8 +420,8 @@ angular.module('managerApp').controller('OverTheBoxDetailsCtrl', function ($scop
       Toast.error($translate.instant(
         'overTheBox_resiliation_error',
         {
-          service: $scope.OverTheBox.service.customerDescription ||
-            $scope.OverTheBox.service.serviceName,
+          service: $scope.OverTheBox.service.customerDescription
+            || $scope.OverTheBox.service.serviceName,
         },
       ));
       return $q.reject(err);
@@ -442,8 +442,8 @@ angular.module('managerApp').controller('OverTheBoxDetailsCtrl', function ($scop
       Toast.success($translate.instant(
         'overTheBox_cancel_resiliation_success',
         {
-          service: $scope.OverTheBox.service.customerDescription ||
-            $scope.OverTheBox.service.serviceName,
+          service: $scope.OverTheBox.service.customerDescription
+            || $scope.OverTheBox.service.serviceName,
         },
       ));
       return data;
@@ -451,8 +451,8 @@ angular.module('managerApp').controller('OverTheBoxDetailsCtrl', function ($scop
       Toast.error($translate.instant(
         'overTheBox_resiliation_cancel_error',
         {
-          service: $scope.OverTheBox.service.customerDescription ||
-            $scope.OverTheBox.service.serviceName,
+          service: $scope.OverTheBox.service.customerDescription
+            || $scope.OverTheBox.service.serviceName,
         },
       ));
       return $q.reject(err);

@@ -30,7 +30,7 @@ angular.module('managerApp').controller('telephonyNumberOvhPabxMenuEntryEditCtrl
     if (self.menuEntryCtrl.menuEntry.action === 'playback') {
       return !!self.menuEntryCtrl.menuCtrl.ovhPabx
         .getSound(self.menuEntryCtrl.menuEntry.actionParam);
-    } else if (self.menuEntryCtrl.menuEntry.action === 'menuSub') {
+    } if (self.menuEntryCtrl.menuEntry.action === 'menuSub') {
       return self.menuEntryCtrl.menuEntry.actionParam !== '';
     }
     return true;

@@ -142,17 +142,22 @@ angular.module('managerApp').factory('TelephonyGroupNumberOvhPabx', (
         billingAccount: self.billingAccount,
         serviceName: self.serviceName,
       }).$promise
-      .then(dialplanIds => $q.all(_.map(_.chunk(dialplanIds, 50), chunkIds =>
-        OvhApiTelephony.OvhPabx().Dialplan().v6().getBatch({
-          billingAccount: self.billingAccount,
-          serviceName: self.serviceName,
-          dialplanId: chunkIds,
-        }).$promise.then((resources) => {
-          angular.forEach(_.map(resources, 'value'), (dialplanOptions) => {
-            self.addDialplan(dialplanOptions);
-          });
-          return self;
-        }))));
+      .then(dialplanIds => $q
+        .all(_.map(
+          _.chunk(dialplanIds, 50),
+          chunkIds => OvhApiTelephony.OvhPabx().Dialplan().v6()
+            .getBatch({
+              billingAccount: self.billingAccount,
+              serviceName: self.serviceName,
+              dialplanId: chunkIds,
+            }).$promise
+            .then((resources) => {
+              angular.forEach(_.map(resources, 'value'), (dialplanOptions) => {
+                self.addDialplan(dialplanOptions);
+              });
+              return self;
+            }),
+        )));
   };
 
   TelephonyGroupNumberOvhPabx.prototype.addDialplan = function (dialplanOptions) {
@@ -203,26 +208,31 @@ angular.module('managerApp').factory('TelephonyGroupNumberOvhPabx', (
         billingAccount: self.billingAccount,
         serviceName: self.serviceName,
       }).$promise
-      .then(soundIds => $q.all(_.map(_.chunk(soundIds, 50), chunkIds =>
-        OvhApiTelephony.OvhPabx().Sound().v6().getBatch({
-          billingAccount: self.billingAccount,
-          serviceName: self.serviceName,
-          soundId: chunkIds,
-        }).$promise.then((resources) => {
-          _.chain(resources).filter(soundOptions => soundOptions.value !== null).map('value').value()
-            .forEach((soundOptions) => {
-              // try to find sound with same name and without id
-              // and set new soundId (these sounds are freshly uploaded)
-              const sameFileFromName = _.find(self.sounds, {
-                name: soundOptions.name,
-              });
-              if (sameFileFromName && !sameFileFromName.soundId) {
-                sameFileFromName.soundId = soundOptions.soundId;
-              }
-              self.addSound(soundOptions);
-            });
-          return self;
-        }))));
+      .then(soundIds => $q
+        .all(_.map(
+          _.chunk(soundIds, 50),
+          chunkIds => OvhApiTelephony.OvhPabx().Sound().v6()
+            .getBatch({
+              billingAccount: self.billingAccount,
+              serviceName: self.serviceName,
+              soundId: chunkIds,
+            }).$promise
+            .then((resources) => {
+              _.chain(resources).filter(soundOptions => soundOptions.value !== null).map('value').value()
+                .forEach((soundOptions) => {
+                  // try to find sound with same name and without id
+                  // and set new soundId (these sounds are freshly uploaded)
+                  const sameFileFromName = _.find(self.sounds, {
+                    name: soundOptions.name,
+                  });
+                  if (sameFileFromName && !sameFileFromName.soundId) {
+                    sameFileFromName.soundId = soundOptions.soundId;
+                  }
+                  self.addSound(soundOptions);
+                });
+              return self;
+            }),
+        )));
   };
 
   TelephonyGroupNumberOvhPabx.prototype.addSound = function (soundOptions) {
@@ -278,19 +288,23 @@ angular.module('managerApp').factory('TelephonyGroupNumberOvhPabx', (
         billingAccount: self.billingAccount,
         serviceName: self.serviceName,
       }).$promise
-      .then(menuIds => $q.all(_.map(_.chunk(menuIds, 50), chunkIds =>
-        OvhApiTelephony.OvhPabx().Menu().v6().getBatch({
-          billingAccount: self.billingAccount,
-          serviceName: self.serviceName,
-          menuId: chunkIds,
-        }).$promise
-          .then((resources) => {
-            _.chain(resources).filter(menuOptions => menuOptions.value !== null).map('value').value()
-              .forEach((menuOptions) => {
-                self.addMenu(menuOptions);
-              });
-            return self;
-          })))
+      .then(menuIds => $q
+        .all(_.map(
+          _.chunk(menuIds, 50),
+          chunkIds => OvhApiTelephony.OvhPabx().Menu().v6()
+            .getBatch({
+              billingAccount: self.billingAccount,
+              serviceName: self.serviceName,
+              menuId: chunkIds,
+            }).$promise
+            .then((resources) => {
+              _.chain(resources).filter(menuOptions => menuOptions.value !== null).map('value').value()
+                .forEach((menuOptions) => {
+                  self.addMenu(menuOptions);
+                });
+              return self;
+            }),
+        ))
         .then(() => {
           const entriesPromises = [];
 
@@ -369,22 +383,25 @@ angular.module('managerApp').factory('TelephonyGroupNumberOvhPabx', (
         billingAccount: self.billingAccount,
         serviceName: self.serviceName,
       }).$promise
-      .then(queueIds => $q.all(_.map(_.chunk(queueIds, 50), chunkIds =>
-        OvhApiTelephony.OvhPabx().Hunting().Queue().v6()
-          .getBatch({
-            billingAccount: self.billingAccount,
-            serviceName: self.serviceName,
-            queueId: chunkIds,
-          }).$promise
-          .then((resources) => {
-            self.queues = _.chain(resources)
-              .filter(queueOptions => queueOptions.value !== null).map((queueOptionsParam) => {
-                const queueOptions = queueOptionsParam.value;
-                queueOptions.queueId = parseInt(queueOptions.queueId, 10);
-                return queueOptions;
-              }).value();
-            return self;
-          }))));
+      .then(queueIds => $q
+        .all(_.map(
+          _.chunk(queueIds, 50),
+          chunkIds => OvhApiTelephony.OvhPabx().Hunting().Queue().v6()
+            .getBatch({
+              billingAccount: self.billingAccount,
+              serviceName: self.serviceName,
+              queueId: chunkIds,
+            }).$promise
+            .then((resources) => {
+              self.queues = _.chain(resources)
+                .filter(queueOptions => queueOptions.value !== null).map((queueOptionsParam) => {
+                  const queueOptions = queueOptionsParam.value;
+                  queueOptions.queueId = parseInt(queueOptions.queueId, 10);
+                  return queueOptions;
+                }).value();
+              return self;
+            }),
+        )));
   };
 
   /* ----------  TTS  ----------*/
@@ -405,19 +422,23 @@ angular.module('managerApp').factory('TelephonyGroupNumberOvhPabx', (
         billingAccount: self.billingAccount,
         serviceName: self.serviceName,
       }).$promise
-      .then(ttsIds => $q.all(_.map(_.chunk(ttsIds, 50), chunkIds =>
-        OvhApiTelephony.OvhPabx().Tts().v6().getBatch({
-          billingAccount: self.billingAccount,
-          serviceName: self.serviceName,
-          id: chunkIds,
-        }).$promise
-          .then((resources) => {
-            _.chain(resources).filter(ttsOptions => ttsOptions.value !== null).map('value').value()
-              .forEach((ttsOptions) => {
-                self.addTts(ttsOptions);
-              });
-            return self;
-          }))));
+      .then(ttsIds => $q
+        .all(_.map(
+          _.chunk(ttsIds, 50),
+          chunkIds => OvhApiTelephony.OvhPabx().Tts().v6()
+            .getBatch({
+              billingAccount: self.billingAccount,
+              serviceName: self.serviceName,
+              id: chunkIds,
+            }).$promise
+            .then((resources) => {
+              _.chain(resources).filter(ttsOptions => ttsOptions.value !== null).map('value').value()
+                .forEach((ttsOptions) => {
+                  self.addTts(ttsOptions);
+                });
+              return self;
+            }),
+        )));
   };
 
   TelephonyGroupNumberOvhPabx.prototype.addTts = function (ttsOptionsParam) {

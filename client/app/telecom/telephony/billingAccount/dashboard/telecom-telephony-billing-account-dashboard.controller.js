@@ -99,11 +99,14 @@ angular.module('managerApp')
         .query({
           billingAccount: $stateParams.billingAccount,
         }).$promise
-        .then(ids => $q.all(_.map(_.slice(ids, ids.length - 5), chunkIds =>
-          OvhApiTelephony.HistoryConsumption().v6().getBatch({
-            billingAccount: $stateParams.billingAccount,
-            date: chunkIds,
-          }).$promise))
+        .then(ids => $q
+          .all(_.map(
+            _.slice(ids, ids.length - 5),
+            chunkIds => OvhApiTelephony.HistoryConsumption().v6().getBatch({
+              billingAccount: $stateParams.billingAccount,
+              date: chunkIds,
+            }).$promise,
+          ))
           .then((chunkResult) => {
             const result = _.pluck(_.flatten(chunkResult), 'value');
             self.bills = _.each(result, (consumption) => {
@@ -169,7 +172,7 @@ angular.module('managerApp')
             return $q.reject({
               statusText: 'Unable to download message',
             });
-          } else if (info.status === 'done') {
+          } if (info.status === 'done') {
             return $q.when(info);
           }
 

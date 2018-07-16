@@ -153,12 +153,13 @@ angular.module('managerApp').factory('TelephonyGroupNumber', ($q, $injector, Ovh
         action: 'termination',
         type: 'offer',
       }).$promise
-      .then(offerTaskIds => $q.all(_.map(offerTaskIds, id =>
-        OvhApiTelephony.Service().OfferTask().v6().get({
+      .then(offerTaskIds => $q
+        .all(_.map(offerTaskIds, id => OvhApiTelephony.Service().OfferTask().v6().get({
           billingAccount: self.billingAccount,
           serviceName: self.serviceName,
           taskId: id,
-        }).$promise)).then(tasks => _.head(_.filter(tasks, { status: 'todo' }))));
+        }).$promise))
+        .then(tasks => _.head(_.filter(tasks, { status: 'todo' }))));
   };
 
   TelephonyGroupNumber.prototype.getConvertToLineTask = function () {
@@ -170,8 +171,8 @@ angular.module('managerApp').factory('TelephonyGroupNumber', ($q, $injector, Ovh
         action: 'convertToSip',
         type: 'offer',
       }).$promise
-      .then(offerTaskIds => $q.all(_.map(offerTaskIds, id =>
-        OvhApiTelephony.Service().OfferTask().v6().get({
+      .then(offerTaskIds => $q
+        .all(_.map(offerTaskIds, id => OvhApiTelephony.Service().OfferTask().v6().get({
           billingAccount: self.billingAccount,
           serviceName: self.serviceName,
           taskId: id,

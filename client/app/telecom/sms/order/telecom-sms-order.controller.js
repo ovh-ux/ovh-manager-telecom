@@ -52,8 +52,8 @@ angular
 
       this.loading.init = true;
       this.SmsMediator.initAll().then(() => {
-        const availableAccounts =
-          _.toArray(this.SmsMediator.getAccounts()).sort((a, b) => a.name.localeCompare(b.name));
+        const availableAccounts = _.toArray(this.SmsMediator.getAccounts())
+          .sort((a, b) => a.name.localeCompare(b.name));
 
         // We have to format it to become human readable
         _.forEach(availableAccounts, (account, idx) => {
@@ -144,8 +144,7 @@ angular
       }).$promise.then((priceDetails) => {
         this.contracts = priceDetails.contracts;
         this.prices = priceDetails;
-      }).catch(() =>
-        this.Toast.error(this.$translate.instant('sms_order_ko'))).finally(() => {
+      }).catch(() => this.Toast.error(this.$translate.instant('sms_order_ko'))).finally(() => {
         this.loading.prices = false;
       });
     }
@@ -163,8 +162,7 @@ angular
         }).$promise.then((newAccountPriceDetails) => {
           this.prices.url = newAccountPriceDetails.url;
           return this.prices.url;
-        }).catch(() =>
-          this.Toast.error(this.$translate.instant('sms_order_ko'))).finally(() => {
+        }).catch(() => this.Toast.error(this.$translate.instant('sms_order_ko'))).finally(() => {
           this.loading.order = false;
         });
       }
@@ -174,8 +172,7 @@ angular
         quantity: this.getSelectedCredit(),
       }).$promise.then((priceDetails) => {
         this.prices.url = priceDetails.url;
-      }).catch(() =>
-        this.Toast.error(this.$translate.instant('sms_order_ko'))).finally(() => {
+      }).catch(() => this.Toast.error(this.$translate.instant('sms_order_ko'))).finally(() => {
         this.loading.order = false;
         return this.atInternet.trackClick({
           cta: 'Generate purchase order',

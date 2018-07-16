@@ -36,29 +36,22 @@ angular.module('managerApp').service('voipService', class {
   fetchAll(withError = true) {
     return this.OvhApiTelephony.Service().v7().query().aggregate('billingAccount')
       .expand()
-      .execute().$promise.then(result =>
-        _.chain(result).filter(res =>
+      .execute().$promise.then(result => _.chain(result).filter(res => _.has(res, 'value') || (withError && (_.keys(res.value).length && _.has(res.value, 'message')))).map((res) => {
+        const billingAccount = _.get(res.path.split('/'), '[2]');
 
-        // bug on APIv7 ? Sometimes res.error is null but res.value.message
-        // contains the error message...
-        // waiting for bugfix and test if message attribute is the only attribute
-        // of res.value object.
-          _.has(res, 'value') || (withError && (_.keys(res.value).length && _.has(res.value, 'message')))).map((res) => {
-          const billingAccount = _.get(res.path.split('/'), '[2]');
+        // same remark as above :-)
+        if (res.error || (_.keys(res.value).length === 1 && _.has(res.value, 'message'))) {
+          return new this.VoipService({
+            billingAccount,
+            serviceName: res.key,
+            error: res.error || res.value.message,
+          });
+        }
 
-          // same remark as above :-)
-          if (res.error || (_.keys(res.value).length === 1 && _.has(res.value, 'message'))) {
-            return new this.VoipService({
-              billingAccount,
-              serviceName: res.key,
-              error: res.error || res.value.message,
-            });
-          }
-
-          // ensure that billingAccount option is setted
-          _.set(res.value, 'billingAccount', billingAccount);
-          return this._constructService(res.value);
-        }).value());
+        // ensure that billingAccount option is setted
+        _.set(res.value, 'billingAccount', billingAccount);
+        return this._constructService(res.value);
+      }).value());
   }
 
   /**
@@ -209,8 +202,7 @@ angular.module('managerApp').service('voipService', class {
    *  @return {Array.<VoipSercice>} The filtered list of fax.
    */
   static filterFaxServices(services) {
-    return _.filter(services, service =>
-      ['fax', 'voicefax'].indexOf(service.featureType) > -1);
+    return _.filter(services, service => ['fax', 'voicefax'].indexOf(service.featureType) > -1);
   }
 
   /* -----  End of Filters  ------ */
@@ -228,8 +220,8 @@ angular.module('managerApp').service('voipService', class {
    *  @return {Array.<VoipSercice>}   The sorted list of services.
    */
   static sortServicesByDisplayedName(services) {
-    return angular.copy(services).sort((first, second) =>
-      first.getDisplayedName().localeCompare(second.getDisplayedName()));
+    return angular.copy(services)
+      .sort((first, second) => first.getDisplayedName().localeCompare(second.getDisplayedName()));
   }
 
   /* ==============================

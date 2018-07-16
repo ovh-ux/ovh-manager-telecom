@@ -30,8 +30,8 @@ angular.module('managerApp').controller('telephonyNumberOvhPabxMenuListCtrl', fu
   }
 
   self.isMenuChoiceDisabled = function (menu) {
-    return self.disableMenuId &&
-      (self.disableMenuId === menu.menuId || isDisabledMenuUsedInEntry(menu));
+    return self.disableMenuId
+      && (self.disableMenuId === menu.menuId || isDisabledMenuUsedInEntry(menu));
   };
 
   /* -----  End of HELPERS  ------*/

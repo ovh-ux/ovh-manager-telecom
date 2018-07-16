@@ -47,12 +47,12 @@ angular.module('managerApp').service('telecomVoip', class {
    *  @return {Promise} That returns all services grouped by billing accounts.
    */
   fetchAll(withError = true) {
-    return this.voipBillingAccount.fetchAll(withError).then(billingAccounts =>
-      this.voipService.fetchAll(withError).then((services) => {
-        billingAccounts.forEach(billingAccount =>
-          billingAccount.addServices(_.filter(services, {
-            billingAccount: billingAccount.billingAccount,
-          })));
+    return this.voipBillingAccount
+      .fetchAll(withError)
+      .then(billingAccounts => this.voipService.fetchAll(withError).then((services) => {
+        billingAccounts.forEach(billingAccount => billingAccount.addServices(_.filter(services, {
+          billingAccount: billingAccount.billingAccount,
+        })));
 
         return billingAccounts;
       }));

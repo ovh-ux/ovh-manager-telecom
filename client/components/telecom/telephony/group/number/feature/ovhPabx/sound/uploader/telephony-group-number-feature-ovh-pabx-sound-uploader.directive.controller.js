@@ -32,11 +32,11 @@ angular.module('managerApp').controller('telephonyNumberOvhPabxSoundUploaderCtrl
       // check for format
       self.$errors.extension = true;
       return false;
-    } else if (!nameRegex.test(fileNameWithoutExtension)) {
+    } if (!nameRegex.test(fileNameWithoutExtension)) {
       // check for file name
       self.$errors.name = true;
       return false;
-    } else if (self.file.size > 10000000) {
+    } if (self.file.size > 10000000) {
       // check for file size
       self.$errors.size = true;
       return false;

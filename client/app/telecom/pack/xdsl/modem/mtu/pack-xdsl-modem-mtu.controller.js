@@ -8,9 +8,9 @@ angular.module('managerApp').controller('XdslModemMtuCtrl', function ($statePara
   };
 
   this.changeMtuSize = function () {
-    if (_.isEmpty($stateParams.serviceName) ||
-      !self.mtuCurrentValueTmp ||
-      !PackXdslModemMediator.capabilities.canChangeMtu) {
+    if (_.isEmpty($stateParams.serviceName)
+      || !self.mtuCurrentValueTmp
+      || !PackXdslModemMediator.capabilities.canChangeMtu) {
       self.undo();
       Toast.error($translate.instant('xdsl_modem_mtu_an_error_ocurred'));
       return $q.reject();
@@ -39,8 +39,8 @@ angular.module('managerApp').controller('XdslModemMtuCtrl', function ($statePara
   };
 
   this.getDisplayValue = function () {
-    return PackXdslModemMediator.info.mtuSize ?
-      PackXdslModemMediator.info.mtuSize : PACK_XDSL_MODEM.mtu.default;
+    return PackXdslModemMediator.info.mtuSize
+      ? PackXdslModemMediator.info.mtuSize : PACK_XDSL_MODEM.mtu.default;
   };
 
   const init = function () {

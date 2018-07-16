@@ -51,10 +51,12 @@ angular.module('managerApp').controller('TelecomTelephonyBillingAccountBillingGr
         self.consumptions.hasAmountAvailable = _.find(self.consumptions.raw, 'repayable');
 
         // deferred
-        self.consumptions.deferred.price =
-          _.floor(self.consumptions.total.price - self.consumptions.repayable.price, 2);
-        self.consumptions.deferred.call =
-          self.consumptions.total.call - self.consumptions.repayable.call;
+        self.consumptions.deferred.price = _.floor(
+          self.consumptions.total.price - self.consumptions.repayable.price,
+          2,
+        );
+        self.consumptions.deferred.call = self.consumptions.total.call
+          - self.consumptions.repayable.call;
 
         const dialedNumbers = _.chain(self.consumptions.raw).groupBy('dialed').keysIn().value();
         self.consumptions.groupedByDialedNumber = _.map(dialedNumbers, (dialed) => {

@@ -11,12 +11,15 @@ angular.module('managerApp').controller('TelecomTelephonyServiceFaxCampaignsCtrl
         billingAccount: $stateParams.billingAccount,
         serviceName: $stateParams.serviceName,
       }).$promise
-      .then(campaignsIds => $q.all(_.map(campaignsIds, id =>
-        OvhApiTelephony.Fax().Campaigns().v6().get({
-          billingAccount: $stateParams.billingAccount,
-          serviceName: $stateParams.serviceName,
-          id,
-        }).$promise))
+      .then(campaignsIds => $q
+        .all(_.map(
+          campaignsIds,
+          id => OvhApiTelephony.Fax().Campaigns().v6().get({
+            billingAccount: $stateParams.billingAccount,
+            serviceName: $stateParams.serviceName,
+            id,
+          }).$promise,
+        ))
         .then(campaigns => _.each(campaigns, (campaign) => {
           _.set(campaign, 'reference', campaign.reference.slice(1, -1));
           if (validator.isDate(campaign.reference) && (campaign.status === 'error' || campaign.status === 'todo')) {

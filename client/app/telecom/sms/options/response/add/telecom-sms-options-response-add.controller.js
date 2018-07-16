@@ -33,35 +33,35 @@ angular
       this.targetNumberPattern = /^(\+|0{2}?)\d+$/;
 
       this.loading.init = true;
-      return this.SmsMediator.initDeferred.promise.then(() =>
-        this.SmsMediator.getApiScheme().then((schema) => {
+      return this.SmsMediator.initDeferred.promise
+        .then(() => this.SmsMediator.getApiScheme().then((schema) => {
           this.availableTrackingMedia = _.pull(schema.models['sms.ResponseTrackingMediaEnum'].enum, 'voice');
           return this.availableTrackingMedia;
         })).catch((err) => {
-        this.ToastError(err);
-      }).finally(() => {
-        this.loading.init = false;
-      });
+          this.ToastError(err);
+        }).finally(() => {
+          this.loading.init = false;
+        });
     }
 
     /**
-       * Reset tracking options.
-       */
+     * Reset tracking options.
+     */
     resetTrackingOptions() {
       this.trackingOptions.sender = '';
       this.trackingOptions.target = '';
     }
 
     /**
-       * Handle tracking sender number.
-       */
+     * Handle tracking sender number.
+     */
     handleTrackingSenderNumber() {
       this.trackingOptions.sender = _.has(this.trackingSender, 'sender') ? this.trackingSender.sender : '';
     }
 
     /**
-       * Restrict target number.
-       */
+     * Restrict target number.
+     */
     restrictTargetNumber() {
       if (this.trackingOptions.target) {
         this.trackingOptions.target = this.trackingOptions.target.replace(/[^0-9+]/g, '');
@@ -69,9 +69,9 @@ angular
     }
 
     /**
-       * Add sms response tracking options.
-       * @return {Promise}
-       */
+     * Add sms response tracking options.
+     * @return {Promise}
+     */
     add() {
       this.loading.addTrackingOption = true;
       this.model.service.smsResponse.trackingOptions.push(this.trackingOptions);

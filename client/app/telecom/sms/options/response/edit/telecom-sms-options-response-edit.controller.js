@@ -38,22 +38,22 @@ angular
       this.targetNumberPattern = /^\+?[\d+]{8,14}$/;
 
       this.loading.init = true;
-      return this.SmsMediator.initDeferred.promise.then(() =>
-        this.SmsMediator.getApiScheme().then((schema) => {
+      return this.SmsMediator.initDeferred.promise
+        .then(() => this.SmsMediator.getApiScheme().then((schema) => {
           this.availableTrackingMedia = _.pull(schema.models['sms.ResponseTrackingMediaEnum'].enum, 'voice');
           this.trackingOptions.media = this.model.option.media;
           this.trackingSender.sender = this.model.option.sender;
         })).catch((err) => {
-        this.ToastError(err);
-      }).finally(() => {
-        this.loading.init = false;
-      });
+          this.ToastError(err);
+        }).finally(() => {
+          this.loading.init = false;
+        });
     }
 
     /**
-       * Edit sms tesponse tracking options.
-       * @return {Promise}
-       */
+     * Edit sms tesponse tracking options.
+     * @return {Promise}
+     */
     edit() {
       this.model.service.smsResponse.trackingOptions[this.model.index] = {
         media: this.trackingOptions.media,
@@ -82,8 +82,8 @@ angular
     }
 
     /**
-       * Reset tracking options.
-       */
+     * Reset tracking options.
+     */
     resetTrackingOptions() {
       this.model.option.sender = '';
       this.model.option.target = '';

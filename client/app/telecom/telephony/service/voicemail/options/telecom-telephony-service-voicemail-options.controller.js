@@ -131,15 +131,15 @@ angular.module('managerApp').controller('TelecomTelephonyServiceVoicemailOptions
 
   // true if user made some changes in notification options, false otherwise
   self.notificationChanged = function () {
-    return self.notificationForm.audioFormat !== self.settings.audioFormat ||
-      self.notificationForm.keepMessage !== self.settings.keepMessage ||
-      self.notificationForm.fromName !== self.settings.fromName ||
-      self.notificationForm.fromEmail !== self.settings.fromEmail;
+    return self.notificationForm.audioFormat !== self.settings.audioFormat
+      || self.notificationForm.keepMessage !== self.settings.keepMessage
+      || self.notificationForm.fromName !== self.settings.fromName
+      || self.notificationForm.fromEmail !== self.settings.fromEmail;
   };
 
   self.recordingChanged = function () {
-    return (self.recordingForm.doNotRecord !== self.settings.doNotRecord) ||
-      self.recordingForm.uploadedFile || removeRecord;
+    return (self.recordingForm.doNotRecord !== self.settings.doNotRecord)
+      || self.recordingForm.uploadedFile || removeRecord;
   };
 
   self.checkValidAudioExtention = function (file) {
@@ -202,8 +202,8 @@ angular.module('managerApp').controller('TelecomTelephonyServiceVoicemailOptions
               return refreshAll().then(() => {
                 if (--maxRetries < 0) { // eslint-disable-line
                   return $q.reject('Unable to retrieve uploaded file');
-                } else if (!self.greetings ||
-                    (oldGreetings && oldGreetings.filename === self.greetings.filename)) {
+                } if (!self.greetings
+                    || (oldGreetings && oldGreetings.filename === self.greetings.filename)) {
                   return $timeout(refresh, 1500);
                 }
                 return $q.when(null);

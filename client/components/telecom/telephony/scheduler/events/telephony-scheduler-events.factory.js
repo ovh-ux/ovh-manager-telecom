@@ -258,33 +258,33 @@ angular.module('managerApp').factory('VoipSchedulerEvent', (OvhApiTelephony, SCH
    *
    *  @return {VoipSchedulerEvent} The current scheduler event instance.
    */
-  VoipSchedulerEvent.prototype.stopEdition =
-    function (rollbackSaveForEdition, rollbackOriginalSave) {
-      const self = this;
+  VoipSchedulerEvent.prototype.stopEdition = function (rollbackSaveForEdition,
+    rollbackOriginalSave) {
+    const self = this;
 
-      if (self.originalSave && rollbackOriginalSave) {
-        self.dateStart = angular.copy(self.originalSave.dateStart);
-        self.title = angular.copy(self.originalSave.title);
-        self.dateEnd = angular.copy(self.originalSave.dateEnd);
-        self.categories = angular.copy(self.originalSave.categories);
-        self.description = angular.copy(self.originalSave.description);
-        self.allDay = angular.copy(self.originalSave.allDay);
+    if (self.originalSave && rollbackOriginalSave) {
+      self.dateStart = angular.copy(self.originalSave.dateStart);
+      self.title = angular.copy(self.originalSave.title);
+      self.dateEnd = angular.copy(self.originalSave.dateEnd);
+      self.categories = angular.copy(self.originalSave.categories);
+      self.description = angular.copy(self.originalSave.description);
+      self.allDay = angular.copy(self.originalSave.allDay);
 
-        self.resetOriginalSave();
-      } else if (self.saveForEdition && rollbackSaveForEdition) {
-        self.dateStart = angular.copy(self.saveForEdition.dateStart);
-        self.title = angular.copy(self.saveForEdition.title);
-        self.dateEnd = angular.copy(self.saveForEdition.dateEnd);
-        self.categories = angular.copy(self.saveForEdition.categories);
-        self.description = angular.copy(self.saveForEdition.description);
-        self.allDay = angular.copy(self.saveForEdition.allDay);
-      }
+      self.resetOriginalSave();
+    } else if (self.saveForEdition && rollbackSaveForEdition) {
+      self.dateStart = angular.copy(self.saveForEdition.dateStart);
+      self.title = angular.copy(self.saveForEdition.title);
+      self.dateEnd = angular.copy(self.saveForEdition.dateEnd);
+      self.categories = angular.copy(self.saveForEdition.categories);
+      self.description = angular.copy(self.saveForEdition.description);
+      self.allDay = angular.copy(self.saveForEdition.allDay);
+    }
 
-      self.saveForEdition = null;
-      self.inEdition = false;
+    self.saveForEdition = null;
+    self.inEdition = false;
 
-      return self;
-    };
+    return self;
+  };
 
   /**
    *  Revert original save informations.
@@ -312,20 +312,20 @@ angular.module('managerApp').factory('VoipSchedulerEvent', (OvhApiTelephony, SCH
 
     if (fromOriginal && !self.originalSave) {
       return false;
-    } else if (!fromOriginal && !self.saveForEdition) {
+    } if (!fromOriginal && !self.saveForEdition) {
       return false;
     }
 
     if (property) {
-      return !_.isEqual(self[property], fromOriginal ?
-        self.originalSave[property] : self.saveForEdition[property]);
+      return !_.isEqual(self[property], fromOriginal
+        ? self.originalSave[property] : self.saveForEdition[property]);
     }
-    return ['CREATING', 'TODELETE'].indexOf(self.status) > -1 ||
-      self.hasChange('dateStart', fromOriginal) ||
-      self.hasChange('title', fromOriginal) ||
-      self.hasChange('dateEnd', fromOriginal) ||
-      self.hasChange('categories', fromOriginal) ||
-      self.hasChange('description', fromOriginal);
+    return ['CREATING', 'TODELETE'].indexOf(self.status) > -1
+      || self.hasChange('dateStart', fromOriginal)
+      || self.hasChange('title', fromOriginal)
+      || self.hasChange('dateEnd', fromOriginal)
+      || self.hasChange('categories', fromOriginal)
+      || self.hasChange('description', fromOriginal);
   };
 
   /* -----  End of PROTOTYPE METHODS  ------*/

@@ -119,8 +119,8 @@ angular.module('managerApp').controller('telephonyNumberOvhPabxDialplanExtension
   self.toggleEnabledState = function () {
     self.loading.save = true;
 
-    const actionPromise =
-      self.extension.enabled ? self.extension.disable() : self.extension.enable();
+    const actionPromise = self.extension.enabled
+      ? self.extension.disable() : self.extension.enable();
 
     return actionPromise.finally(() => {
       self.loading.save = false;
@@ -139,8 +139,8 @@ angular.module('managerApp').controller('telephonyNumberOvhPabxDialplanExtension
     }
 
     self.extension.addRule({
-      position: isNegative ?
-        self.extension.negativeRules.length + 1 : self.extension.rules.length + 1,
+      position: isNegative
+        ? self.extension.negativeRules.length + 1 : self.extension.rules.length + 1,
       status: 'DRAFT',
       negativeAction: isNegative,
     });

@@ -23,9 +23,9 @@ angular.module('managerApp').controller('voipServiceChoicePopoverCtrl', function
   self.getServiceType = function (service) {
     if (service.serviceType === 'alias') {
       return 'number';
-    } else if (service.isFax) {
+    } if (service.isFax) {
       return 'fax';
-    } else if (service.isTrunk && service.isTrunk()) {
+    } if (service.isTrunk && service.isTrunk()) {
       return 'trunk';
     }
     return service.isPlugNFax ? 'plugAndFax' : 'sip';

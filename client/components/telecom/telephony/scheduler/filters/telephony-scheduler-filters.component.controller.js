@@ -50,8 +50,8 @@ angular.module('managerApp').controller('TelephonySchedulerFiltersCtrl', functio
 
     return telephonyScheduler.getAvailableCategories().then((apiCategories) => {
       categories = _.chain(apiCategories)
-        .filter(category => (self.telephonySchedulerCtrl.timeCondition ?
-          self.convertCategoryToSlot(category) : true))
+        .filter(category => (self.telephonySchedulerCtrl.timeCondition
+          ? self.convertCategoryToSlot(category) : true))
         .map(category => ({
           value: category,
           active: true,

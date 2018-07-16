@@ -17,10 +17,10 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationOvhPa
   =============================== */
 
   self.hasError = function () {
-    return self.uploadErrors.extension ||
-      self.uploadErrors.size ||
-      self.uploadErrors.name ||
-      self.uploadErrors.exists;
+    return self.uploadErrors.extension
+      || self.uploadErrors.size
+      || self.uploadErrors.name
+      || self.uploadErrors.exists;
   };
 
   /* -----  End of HELPERS  ------*/

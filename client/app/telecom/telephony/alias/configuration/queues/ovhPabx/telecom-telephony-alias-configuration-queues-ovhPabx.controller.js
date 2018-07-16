@@ -87,13 +87,17 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationQueue
         billingAccount: $stateParams.billingAccount,
         serviceName: $stateParams.serviceName,
       }).$promise
-      .then(ids => $q.all(_.map(_.chunk(ids, 50), chunkIds =>
-        OvhApiTelephony.OvhPabx().Hunting().Agent().v6()
-          .getBatch({
-            billingAccount: $stateParams.billingAccount,
-            serviceName: $stateParams.serviceName,
-            agentId: chunkIds,
-          }).$promise)).then(chunkResult => _.pluck(_.flatten(chunkResult), 'value')));
+      .then(ids => $q
+        .all(_.map(
+          _.chunk(ids, 50),
+          chunkIds => OvhApiTelephony.OvhPabx().Hunting().Agent().v6()
+            .getBatch({
+              billingAccount: $stateParams.billingAccount,
+              serviceName: $stateParams.serviceName,
+              agentId: chunkIds,
+            }).$promise,
+        ))
+        .then(chunkResult => _.pluck(_.flatten(chunkResult), 'value')));
   };
 
   self.fetchAgentsOfQueue = function (queue) {
@@ -104,13 +108,16 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationQueue
         serviceName: $stateParams.serviceName,
         queueId: queue.queueId,
       }).$promise
-      .then(ids => $q.all(_.map(_.chunk(ids, 50), chunkIds =>
-        OvhApiTelephony.OvhPabx().Hunting().Agent().v6()
-          .getBatch({
-            billingAccount: $stateParams.billingAccount,
-            serviceName: $stateParams.serviceName,
-            agentId: chunkIds,
-          }).$promise)).then(chunkResult => _.pluck(_.flatten(chunkResult), 'value')));
+      .then(ids => $q
+        .all(_.map(
+          _.chunk(ids, 50),
+          chunkIds => OvhApiTelephony.OvhPabx().Hunting().Agent().v6()
+            .getBatch({
+              billingAccount: $stateParams.billingAccount,
+              serviceName: $stateParams.serviceName,
+              agentId: chunkIds,
+            }).$promise,
+        )).then(chunkResult => _.pluck(_.flatten(chunkResult), 'value')));
   };
 
   self.fetchAgentDescription = function (agent) {
@@ -125,15 +132,18 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationQueue
     OvhApiTelephony.OvhPabx().Hunting().Queue().Agent()
       .v6()
       .resetAllCache();
-    return $q.all(_.map(_.chunk(ids, 50), chunkIds =>
-      OvhApiTelephony.OvhPabx().Hunting().Queue().Agent()
-        .v6()
-        .getBatch({
-          billingAccount: $stateParams.billingAccount,
-          serviceName: $stateParams.serviceName,
-          queueId: queue.queueId,
-          agentId: chunkIds,
-        }).$promise))
+    return $q
+      .all(_.map(
+        _.chunk(ids, 50),
+        chunkIds => OvhApiTelephony.OvhPabx().Hunting().Queue().Agent()
+          .v6()
+          .getBatch({
+            billingAccount: $stateParams.billingAccount,
+            serviceName: $stateParams.serviceName,
+            queueId: queue.queueId,
+            agentId: chunkIds,
+          }).$promise,
+      ))
       .then(chunkResult => _.pluck(_.flatten(chunkResult), 'value')).then((orders) => {
         _.each(orders, (order) => {
           const agent = _.find(agents, { agentId: order.agentId });

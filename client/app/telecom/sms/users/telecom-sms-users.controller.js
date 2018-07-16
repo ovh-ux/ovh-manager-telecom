@@ -58,12 +58,10 @@ angular
     fetchUsers() {
       return this.api.smsUsers.query({
         serviceName: this.$stateParams.serviceName,
-      }).$promise.then(loginIds =>
-        this.$q.all(_.map(loginIds, login =>
-          this.api.smsUsers.get({
-            serviceName: this.$stateParams.serviceName,
-            login,
-          }).$promise)));
+      }).$promise.then(loginIds => this.$q.all(_.map(loginIds, login => this.api.smsUsers.get({
+        serviceName: this.$stateParams.serviceName,
+        login,
+      }).$promise)));
     }
 
     /**
@@ -120,12 +118,11 @@ angular
         controllerAs: 'UsersTemplatesCtrl',
         resolve: { service: () => this.service },
       });
-      modal.result.then(() =>
-        this.api.sms.get({
-          serviceName: this.$stateParams.serviceName,
-        }).$promise.then((service) => {
-          this.service = service;
-        }).catch(error => this.ToastError(error))).catch((error) => {
+      modal.result.then(() => this.api.sms.get({
+        serviceName: this.$stateParams.serviceName,
+      }).$promise.then((service) => {
+        this.service = service;
+      }).catch(error => this.ToastError(error))).catch((error) => {
         if (error && error.type === 'API') {
           this.Toast.error(this.$translate.instant('sms_users_templates_update_ko', { error: _.get(error, 'msg.data.message') }));
         }

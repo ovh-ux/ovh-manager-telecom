@@ -232,8 +232,8 @@ angular.module('managerApp').controller('PackVoipLineActivationCtrl', function (
     */
   this.isOrderReady = function () {
     const needNoHardware = self.isHardwareConfigured() && !self.isShipping();
-    const needHardware = self.isHardwareConfigured() && self.isShipping() &&
-      self.isTransportConfigured();
+    const needHardware = self.isHardwareConfigured() && self.isShipping()
+      && self.isTransportConfigured();
     return needNoHardware || needHardware;
   };
 
@@ -311,8 +311,8 @@ angular.module('managerApp').controller('PackVoipLineActivationCtrl', function (
             return !!this.needHardware && !!this.enabled;
           },
           isConfigured() {
-            return !this.enabled || !this.needHardware ||
-              (!!this.needHardware && !!this.enabled && !!this.hardware);
+            return !this.enabled || !this.needHardware
+              || (!!this.needHardware && !!this.enabled && !!this.hardware);
           },
         });
       }

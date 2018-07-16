@@ -39,8 +39,8 @@ angular.module('managerApp').controller('TelecomTelephonyLineCallsDisplayNumberC
   };
 
   self.hasChanges = function () {
-    return !angular.equals(self.displayedService, self.form.displayedService) ||
-               self.identificationRestriction !== self.form.identificationRestriction;
+    return !angular.equals(self.displayedService, self.form.displayedService)
+               || self.identificationRestriction !== self.form.identificationRestriction;
   };
 
   self.reset = function () {
