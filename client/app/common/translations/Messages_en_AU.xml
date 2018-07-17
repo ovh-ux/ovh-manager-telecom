@@ -10,10 +10,30 @@
    <translation id="ttc" qtlid="101385">incl. GST</translation>
    <translation id="table_sort" qtlid="94699">Sort</translation>
 
+   <translation id="common_criteria_adder_column_label" qtlid="479108">Column</translation>
+   <translation id="common_criteria_adder_operator_label" qtlid="425806">Condition</translation>
+   <translation id="common_criteria_adder_operator_boolean_is" qtlid="479121">is</translation>
+   <translation id="common_criteria_adder_operator_boolean_isNot" qtlid="479134">is different from</translation>
+   <translation id="common_criteria_adder_operator_string_contains" qtlid="218692">includes</translation>
+   <translation id="common_criteria_adder_operator_string_containsNot" qtlid="218705">doesn't include</translation>
+   <translation id="common_criteria_adder_operator_string_startsWith" qtlid="479147">starts with</translation>
+   <translation id="common_criteria_adder_operator_string_endsWith" qtlid="479160">ends with</translation>
+   <translation id="common_criteria_adder_operator_string_is" qtlid="479173">is equal to</translation>
+   <translation id="common_criteria_adder_operator_string_isNot" qtlid="479134">is different from</translation>
+   <translation id="common_criteria_adder_operator_number_is" qtlid="479173">is equal to</translation>
+   <translation id="common_criteria_adder_operator_number_smaller" qtlid="479186">is lower than</translation>
+   <translation id="common_criteria_adder_operator_number_bigger" qtlid="479199">is higher than</translation>
+   <translation id="common_criteria_adder_operator_date_is" qtlid="479121">is</translation>
+   <translation id="common_criteria_adder_operator_date_isBefore" qtlid="479212">is before</translation>
+   <translation id="common_criteria_adder_operator_date_isAfter" qtlid="479225">is after</translation>
+   <translation id="common_criteria_adder_operator_options_is" qtlid="479121">is</translation>
+   <translation id="common_criteria_adder_operator_options_isNot" qtlid="479134">is different from</translation>
+   <translation id="common_criteria_adder_true_label" qtlid="34776">Yes</translation>
+   <translation id="common_criteria_adder_false_label" qtlid="34788">No</translation>
+   <translation id="common_criteria_adder_value_label" qtlid="47548">Value</translation>
+   <translation id="common_criteria_adder_submit_label" qtlid="37923">Add</translation>
+
    <translation id="common_datagrid_nodata" qtlid="197635">No result</translation>
-   <translation id="common_pagination_resultsperpage" qtlid="433384">Results per page</translation>
-   <translation id="common_pagination_ofnresults" qtlid="452982">of TOTAL_ITEMS results</translation>
-   <translation id="common_pagination_currentpageofpagecount" qtlid="452995">Page CURRENT_PAGE of PAGE_COUNT</translation>
 
    <translation id="common_field_error_required" qtlid="472294">Please fill in this field.</translation>
    <translation id="common_field_error_number" qtlid="472307">Please enter a valid numeric value.</translation>
@@ -23,6 +43,31 @@
    <translation id="common_field_error_minlength" qtlid="472359">Please enter a minimum of {{minlength}} characters.</translation>
    <translation id="common_field_error_maxlength" qtlid="472372">Please enter a maximum of {{maxlength}} characters.</translation>
    <translation id="common_field_error_pattern" qtlid="472385">Please enter a valid format.</translation>
+
+   <translation id="common_navbar_notification_title" qtlid="33250">Notifications</translation>
+   <translation id="common_navbar_notification_see_all" qtlid="401914">See all the notifications </translation>
+   <translation id="common_navbar_notification_error_in_notification" qtlid="492055">Oops, there is a problem!</translation>
+   <translation id="common_navbar_notification_error_in_notification_description" qtlid="492068">Unable to load menu.</translation>
+   <translation id="common_navbar_notification_mark_as_read" qtlid="70865">Mark as read</translation>
+   <translation id="common_navbar_notification_mark_as_unread" qtlid="70877">Mark as unread</translation>
+   <translation id="common_navbar_notification_none" qtlid="492081">You are up to date!</translation>
+   <translation id="common_navbar_notification_none_description" qtlid="492094">You do not have any notifications.</translation>
+
+   <translation id="common_pagination_resultsperpage" qtlid="433384">Results per page</translation>
+   <translation id="common_pagination_page" qtlid="433397">page</translation>
+   <translation id="common_pagination_of" qtlid="121615">on</translation>
+   <translation id="common_pagination_ofnresults" qtlid="452982">of TOTAL_ITEMS results</translation>
+   <translation id="common_pagination_currentpageofpagecount" qtlid="452995">Page CURRENT_PAGE of PAGE_COUNT</translation>
+   <translation id="common_pagination_results" qtlid="433410">results</translation>
+   <translation id="common_pagination_next" qtlid="433423">Next page</translation>
+   <translation id="common_pagination_previous" qtlid="433436">Previous page</translation>
+
+   <translation id="common_stepper_optional_label" qtlid="356264">(optional)</translation>
+   <translation id="common_stepper_modify_this_step" qtlid="480922">Edit this step</translation>
+   <translation id="common_stepper_skip_this_step" qtlid="480935">Skip this step</translation>
+   <translation id="common_stepper_next_button_label" qtlid="17743">Next</translation>
+   <translation id="common_stepper_submit_button_label" qtlid="52807">Send</translation>
+   <translation id="common_stepper_cancel_button_label" qtlid="37863">Cancel</translation>
 
    <translation id="yes" qtlid="50134">yes</translation>
    <translation id="common_yes_capitalized" qtlid="34776">Yes</translation>

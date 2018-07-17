@@ -2,7 +2,7 @@
 <translations>
    <translation id="telephony_group_billing_deposit_movement_title" qtlid="386886">Transfert de vos dépôts de garantie entre groupes</translation>
    <translation id="telephony_group_billing_deposit_movement_info" qtlid="357655">Gérer le mouvement de vos dépôts de garantie entre vos différents groupes.</translation>
-   <translation id="telephony_group_billing_deposit_movement_source_subtitle" qtlid="97496">Lähde</translation>
+   <translation id="telephony_group_billing_deposit_movement_source_subtitle" qtlid="97496">Source</translation>
    <translation id="telephony_group_billing_deposit_movement_groups_label" qtlid="357668">Groupes&#160;:</translation>
    <translation id="telephony_group_billing_deposit_movement_deposit_label" qtlid="357395">Dépôt de garantie actuel&#160;:</translation>
    <translation id="telephony_group_billing_deposit_movement_amount_subtitle" qtlid="45328">Määrä</translation>

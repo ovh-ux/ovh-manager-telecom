@@ -2,7 +2,7 @@
 <translations>
    <translation id="telephony_group_billing_deposit_movement_title" qtlid="386886">Transferencia de fianzas entre grupos</translation>
    <translation id="telephony_group_billing_deposit_movement_info" qtlid="357655">Gestionar la transferencia de fianzas entre los distintos grupos.</translation>
-   <translation id="telephony_group_billing_deposit_movement_source_subtitle" qtlid="97496">Origen</translation>
+   <translation id="telephony_group_billing_deposit_movement_source_subtitle" qtlid="97496">Source</translation>
    <translation id="telephony_group_billing_deposit_movement_groups_label" qtlid="357668">Grupos:</translation>
    <translation id="telephony_group_billing_deposit_movement_deposit_label" qtlid="357395">Fianza actual:</translation>
    <translation id="telephony_group_billing_deposit_movement_amount_subtitle" qtlid="45328">Importe</translation>

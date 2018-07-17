@@ -10,10 +10,30 @@
    <translation id="ttc" qtlid="101385">vč. DPH</translation>
    <translation id="table_sort" qtlid="94699">Třídit</translation>
 
+   <translation id="common_criteria_adder_column_label" qtlid="479108">Sloupec</translation>
+   <translation id="common_criteria_adder_operator_label" qtlid="425806">Podmínka</translation>
+   <translation id="common_criteria_adder_operator_boolean_is" qtlid="479121">je</translation>
+   <translation id="common_criteria_adder_operator_boolean_isNot" qtlid="479134">je jiný než</translation>
+   <translation id="common_criteria_adder_operator_string_contains" qtlid="218692">zahrnuje</translation>
+   <translation id="common_criteria_adder_operator_string_containsNot" qtlid="218705">nezahrnuje</translation>
+   <translation id="common_criteria_adder_operator_string_startsWith" qtlid="479147">začíná na</translation>
+   <translation id="common_criteria_adder_operator_string_endsWith" qtlid="479160">končí na</translation>
+   <translation id="common_criteria_adder_operator_string_is" qtlid="479173">je rovný</translation>
+   <translation id="common_criteria_adder_operator_string_isNot" qtlid="479134">je jiný než</translation>
+   <translation id="common_criteria_adder_operator_number_is" qtlid="479173">je rovný</translation>
+   <translation id="common_criteria_adder_operator_number_smaller" qtlid="479186">je menší než</translation>
+   <translation id="common_criteria_adder_operator_number_bigger" qtlid="479199">je větší než</translation>
+   <translation id="common_criteria_adder_operator_date_is" qtlid="479121">je</translation>
+   <translation id="common_criteria_adder_operator_date_isBefore" qtlid="479212">je před</translation>
+   <translation id="common_criteria_adder_operator_date_isAfter" qtlid="479225">je po</translation>
+   <translation id="common_criteria_adder_operator_options_is" qtlid="479121">je</translation>
+   <translation id="common_criteria_adder_operator_options_isNot" qtlid="479134">je jiný než</translation>
+   <translation id="common_criteria_adder_true_label" qtlid="34776">Ano</translation>
+   <translation id="common_criteria_adder_false_label" qtlid="34788">Ne</translation>
+   <translation id="common_criteria_adder_value_label" qtlid="47548">Hodnota</translation>
+   <translation id="common_criteria_adder_submit_label" qtlid="37923">Přidat</translation>
+
    <translation id="common_datagrid_nodata" qtlid="197635">Žádný výsledek</translation>
-   <translation id="common_pagination_resultsperpage" qtlid="433384">Výsledky na stránku</translation>
-   <translation id="common_pagination_ofnresults" qtlid="452982">z TOTAL_ITEMS výsledků</translation>
-   <translation id="common_pagination_currentpageofpagecount" qtlid="452995">Strana CURRENT_PAGE z PAGE_COUNT</translation>
 
    <translation id="common_field_error_required" qtlid="472294">Vyplňte prosím toto pole.</translation>
    <translation id="common_field_error_number" qtlid="472307">Zadejte prosím platnou numerickou hodnotu.</translation>
@@ -24,6 +44,31 @@
    <translation id="common_field_error_minlength" qtlid="472359">Zadejte alespoň {{minlength}} znaků.</translation>
    <translation id="common_field_error_maxlength" qtlid="472372">Zadejte maximálně {{maxlength}} znaků.</translation>
    <translation id="common_field_error_pattern" qtlid="472385">Zadejte platný formát.</translation>
+
+   <translation id="common_navbar_notification_title" qtlid="33250">Oznámení</translation>
+   <translation id="common_navbar_notification_see_all" qtlid="401914">Zobrazit všechna upozornění</translation>
+   <translation id="common_navbar_notification_error_in_notification" qtlid="492055">Vyskytla se neočekávaná chyba.</translation>
+   <translation id="common_navbar_notification_error_in_notification_description" qtlid="492068">Nepodařilo se načíst nabídku.</translation>
+   <translation id="common_navbar_notification_mark_as_read" qtlid="70865">Označit jako přečtené</translation>
+   <translation id="common_navbar_notification_mark_as_unread" qtlid="70877">Označit jako nepřečtené</translation>
+   <translation id="common_navbar_notification_none" qtlid="492081">Používáte aktuální verzi.</translation>
+   <translation id="common_navbar_notification_none_description" qtlid="492094">Nemáte žádná upozornění.</translation>
+
+   <translation id="common_pagination_resultsperpage" qtlid="433384">Výsledky na stránku</translation>
+   <translation id="common_pagination_page" qtlid="433397">stránka</translation>
+   <translation id="common_pagination_of" qtlid="121615">na</translation>
+   <translation id="common_pagination_ofnresults" qtlid="452982">z TOTAL_ITEMS výsledků</translation>
+   <translation id="common_pagination_currentpageofpagecount" qtlid="452995">Strana CURRENT_PAGE z PAGE_COUNT</translation>
+   <translation id="common_pagination_results" qtlid="433410">výsledky</translation>
+   <translation id="common_pagination_next" qtlid="433423">Následující stránka</translation>
+   <translation id="common_pagination_previous" qtlid="433436">Předchozí stránka</translation>
+
+   <translation id="common_stepper_optional_label" qtlid="356264">(volitelné)</translation>
+   <translation id="common_stepper_modify_this_step" qtlid="480922">Upravit tento krok</translation>
+   <translation id="common_stepper_skip_this_step" qtlid="480935">Přeskočit tento krok</translation>
+   <translation id="common_stepper_next_button_label" qtlid="17743">Další</translation>
+   <translation id="common_stepper_submit_button_label" qtlid="52807">Odeslat</translation>
+   <translation id="common_stepper_cancel_button_label" qtlid="37863">Zrušit</translation>
 
    <translation id="yes" qtlid="50134">ano</translation>
    <translation id="common_yes_capitalized" qtlid="34776">Ano</translation>

@@ -50,6 +50,7 @@
    <translation id="used_many" qtlid="308723">Naudojama: <strong>{{count}}</strong></translation>
    <translation id="coming_soon" qtlid="250043">Jau greitai </translation>
    <translation id="hostedEmail" qtlid="308736">Hosted Email</translation>
+   <translation id="emailPro">xDSL E-mail</translation>
    <translation id="my_service" qtlid="229658">Mano paslaugos</translation>
    <translation id="manage_my_pack" qtlid="308749">Paketo valdymas</translation>
    <translation id="account" qtlid="308762">paskyra</translation>

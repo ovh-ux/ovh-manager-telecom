@@ -10,10 +10,30 @@
    <translation id="ttc" qtlid="101385">incl. BTW</translation>
    <translation id="table_sort" qtlid="94699">sorteren</translation>
 
+   <translation id="common_criteria_adder_column_label" qtlid="479108">Kolom</translation>
+   <translation id="common_criteria_adder_operator_label" qtlid="425806">Voorwaarde</translation>
+   <translation id="common_criteria_adder_operator_boolean_is" qtlid="479121">is</translation>
+   <translation id="common_criteria_adder_operator_boolean_isNot" qtlid="479134">verschilt van</translation>
+   <translation id="common_criteria_adder_operator_string_contains" qtlid="218692">bevat</translation>
+   <translation id="common_criteria_adder_operator_string_containsNot" qtlid="218705">bevat geen</translation>
+   <translation id="common_criteria_adder_operator_string_startsWith" qtlid="479147">begint met de waarde</translation>
+   <translation id="common_criteria_adder_operator_string_endsWith" qtlid="479160">eindigt met de waarde</translation>
+   <translation id="common_criteria_adder_operator_string_is" qtlid="479173">is gelijk aan</translation>
+   <translation id="common_criteria_adder_operator_string_isNot" qtlid="479134">verschilt van</translation>
+   <translation id="common_criteria_adder_operator_number_is" qtlid="479173">is gelijk aan</translation>
+   <translation id="common_criteria_adder_operator_number_smaller" qtlid="479186">is kleiner dan</translation>
+   <translation id="common_criteria_adder_operator_number_bigger" qtlid="479199">is groter dan</translation>
+   <translation id="common_criteria_adder_operator_date_is" qtlid="479121">is</translation>
+   <translation id="common_criteria_adder_operator_date_isBefore" qtlid="479212">is voor</translation>
+   <translation id="common_criteria_adder_operator_date_isAfter" qtlid="479225">is na</translation>
+   <translation id="common_criteria_adder_operator_options_is" qtlid="479121">is</translation>
+   <translation id="common_criteria_adder_operator_options_isNot" qtlid="479134">verschilt van</translation>
+   <translation id="common_criteria_adder_true_label" qtlid="34776">Ja</translation>
+   <translation id="common_criteria_adder_false_label" qtlid="34788">Nee</translation>
+   <translation id="common_criteria_adder_value_label" qtlid="47548">Waarde</translation>
+   <translation id="common_criteria_adder_submit_label" qtlid="37923">Toevoegen</translation>
+
    <translation id="common_datagrid_nodata" qtlid="197635">Geen resultaat</translation>
-   <translation id="common_pagination_resultsperpage" qtlid="433384">Resultaten per pagina</translation>
-   <translation id="common_pagination_ofnresults" qtlid="452982">van TOTAL_ITEMS resultaten</translation>
-   <translation id="common_pagination_currentpageofpagecount" qtlid="452995">Pagina CURRENT_PAGE van PAGE_COUNT</translation>
 
    <translation id="common_field_error_required" qtlid="472294">Vul alstublieft dit veld in.</translation>
    <translation id="common_field_error_number" qtlid="472307">Voer een geldige numerieke waarde in.</translation>
@@ -23,6 +43,31 @@
    <translation id="common_field_error_minlength" qtlid="472359">Voer een minimum van {{minlength}} tekens in.</translation>
    <translation id="common_field_error_maxlength" qtlid="472372">Voer een maximum van {{maxlength}} tekens in.</translation>
    <translation id="common_field_error_pattern" qtlid="472385">Voer een geldig formaat in.</translation>
+
+   <translation id="common_navbar_notification_title" qtlid="33250">Notificaties</translation>
+   <translation id="common_navbar_notification_see_all" qtlid="401914">Alle meldingen bekijken</translation>
+   <translation id="common_navbar_notification_error_in_notification" qtlid="492055">Er is een probleem opgetreden. </translation>
+   <translation id="common_navbar_notification_error_in_notification_description" qtlid="492068">Het menu kan niet worden gestart. </translation>
+   <translation id="common_navbar_notification_mark_as_read" qtlid="70865">Markeer als gelezen</translation>
+   <translation id="common_navbar_notification_mark_as_unread" qtlid="70877">Markeer als ongelezen</translation>
+   <translation id="common_navbar_notification_none" qtlid="492081">Ze zijn up-to-date.</translation>
+   <translation id="common_navbar_notification_none_description" qtlid="492094">U hebt geen meldingen.</translation>
+
+   <translation id="common_pagination_resultsperpage" qtlid="433384">Resultaten per pagina</translation>
+   <translation id="common_pagination_page" qtlid="433397">pagina</translation>
+   <translation id="common_pagination_of" qtlid="121615">op</translation>
+   <translation id="common_pagination_ofnresults" qtlid="452982">van TOTAL_ITEMS resultaten</translation>
+   <translation id="common_pagination_currentpageofpagecount" qtlid="452995">Pagina CURRENT_PAGE van PAGE_COUNT</translation>
+   <translation id="common_pagination_results" qtlid="433410">resultaten</translation>
+   <translation id="common_pagination_next" qtlid="433423">Volgende pagina</translation>
+   <translation id="common_pagination_previous" qtlid="433436">Vorige pagina</translation>
+
+   <translation id="common_stepper_optional_label" qtlid="356264">(optioneel)</translation>
+   <translation id="common_stepper_modify_this_step" qtlid="480922">Deze stap bewerken</translation>
+   <translation id="common_stepper_skip_this_step" qtlid="480935">Deze stap overslaan</translation>
+   <translation id="common_stepper_next_button_label" qtlid="17743">Volgende</translation>
+   <translation id="common_stepper_submit_button_label" qtlid="52807">Verzenden</translation>
+   <translation id="common_stepper_cancel_button_label" qtlid="37863">Annuleren</translation>
 
    <translation id="yes" qtlid="50134">Ja</translation>
    <translation id="common_yes_capitalized" qtlid="34776">Ja</translation>
