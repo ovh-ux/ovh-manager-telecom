@@ -14,7 +14,7 @@
    <translation id="telephony_calls_filtering_table_status_new" qtlid="26791">Vytvoření</translation>
    <translation id="telephony_calls_filtering_table_type" qtlid="2642">Typ</translation>
    <translation id="telephony_calls_filtering_table_type_incoming" qtlid="358916">Appels entrants</translation>
-   <translation id="telephony_calls_filtering_table_type_outgoing" qtlid="358929">Appels sortants</translation>
+   <translation id="telephony_calls_filtering_table_type_outgoing" qtlid="358929">Outgoing calls</translation>
    <translation id="telephony_calls_filtering_table_list" qtlid="358942">Seznam</translation>
    <translation id="telephony_calls_filtering_table_list_white" qtlid="358955">Blanche</translation>
    <translation id="telephony_calls_filtering_table_list_black" qtlid="358968">Noire</translation>

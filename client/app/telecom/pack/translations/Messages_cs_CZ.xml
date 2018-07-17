@@ -50,6 +50,7 @@
    <translation id="used_many" qtlid="308723"><strong>{{count}}</strong> utilisés</translation>
    <translation id="coming_soon" qtlid="250043">Již brzy</translation>
    <translation id="hostedEmail" qtlid="308736">Hosted Emails</translation>
+   <translation id="emailPro">xDSL E-mail</translation>
    <translation id="my_service" qtlid="229658">Mé služby</translation>
    <translation id="manage_my_pack" qtlid="308749">Gérer mon pack</translation>
    <translation id="account" qtlid="308762">compte</translation>
@@ -73,7 +74,7 @@
    <translation id="still_pending" qtlid="308892">en cours de création</translation>
 
 <!-- EX-EMAIL -->
-   <translation id="account_name" qtlid="33598">E-mailová adresa</translation>
+   <translation id="account_name" qtlid="33598">E-mail</translation>
    <translation id="password" qtlid="2270">Heslo</translation>
    <translation id="password_confirmation" qtlid="9983">Potvrzení hesla</translation>
    <translation id="all_fields_are_required" qtlid="297579">Všechna pole jsou povinná</translation>
