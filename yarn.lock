@@ -7297,8 +7297,8 @@ ovh-angular-user-pref@^0.3.1:
   resolved "https://registry.yarnpkg.com/ovh-angular-user-pref/-/ovh-angular-user-pref-0.3.1.tgz#07f5792513651f3262ae4879c174423649b08307"
 
 ovh-api-services@^3.0.0:
-  version "3.9.1"
-  resolved "https://registry.yarnpkg.com/ovh-api-services/-/ovh-api-services-3.9.1.tgz#f35a559affe7248c7deb76326594b39cddc90a6f"
+  version "3.10.0"
+  resolved "https://registry.yarnpkg.com/ovh-api-services/-/ovh-api-services-3.10.0.tgz#3b44ed96e44ade6e33f76e0a20eb0603e3f2bbe6"
   dependencies:
     grunt-injector "^0.6.0"
 
