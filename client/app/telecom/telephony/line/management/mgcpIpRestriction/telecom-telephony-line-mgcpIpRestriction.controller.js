@@ -51,8 +51,8 @@ angular.module('managerApp').controller('TelecomTelephonyLinePhoneMgcpIpRestrict
       billingAccount: $stateParams.billingAccount,
       serviceName: $stateParams.serviceName,
     }, {
-      mgcpIpRestriction: self.mgcpIpRestrictionForm.mgcpIpRestriction ?
-        self.mgcpIpRestrictionForm.mgcpIpRestriction : null,
+      mgcpIpRestriction: self.mgcpIpRestrictionForm.mgcpIpRestriction
+        ? self.mgcpIpRestrictionForm.mgcpIpRestriction : null,
     }).$promise.then(() => {
       Toast.success($translate.instant('telephony_line_phone_mgcp_ip_restriction_edit_success'));
       return fetchPhone().then((phone) => {

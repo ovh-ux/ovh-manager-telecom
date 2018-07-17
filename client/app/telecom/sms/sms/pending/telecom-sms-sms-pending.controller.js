@@ -60,11 +60,13 @@ angular
      * @return {Promise}
      */
     fetchPendingSmsWithStatus() {
-      return this.fetchPendingSms().then(pending =>
-        this.$q.all(_.map(pending, sms =>
-          this.fetchPendingSmsStatus(sms.ptt).then((status) => {
-            _.set(sms, 'status', status);
-          }))).then(() => pending));
+      return this.fetchPendingSms()
+        .then(pending => this.$q
+          .all(_.map(pending, sms => this.fetchPendingSmsStatus(sms.ptt)
+            .then((status) => {
+              _.set(sms, 'status', status);
+            })))
+          .then(() => pending));
     }
 
     /**
@@ -72,19 +74,21 @@ angular
      * @return {Promise}
      */
     fetchPendingSms() {
-      return this.api.sms.jobs.query({
-        serviceName: this.$stateParams.serviceName,
-      }).$promise.then(pendingIds =>
-        this.$q.all(_.map(_.chunk(pendingIds, 50), id =>
-          this.api.sms.jobs.getBatch({
+      return this.api.sms.jobs
+        .query({
+          serviceName: this.$stateParams.serviceName,
+        }).$promise
+        .then(pendingIds => this.$q
+          .all(_.map(_.chunk(pendingIds, 50), id => this.api.sms.jobs.getBatch({
             serviceName: this.$stateParams.serviceName,
             id,
-          }).$promise)).then((chunkResult) => {
-          const results = _.pluck(_.flatten(chunkResult), 'value');
-          return _.each(results, (sms) => {
-            _.set(sms, 'scheduledDatetime', moment(sms.creationDatetime).add(sms.differedDelivery, 'minutes').format());
-          });
-        }));
+          }).$promise))
+          .then((chunkResult) => {
+            const results = _.pluck(_.flatten(chunkResult), 'value');
+            return _.each(results, (sms) => {
+              _.set(sms, 'scheduledDatetime', moment(sms.creationDatetime).add(sms.differedDelivery, 'minutes').format());
+            });
+          }));
     }
 
     /**
@@ -129,8 +133,10 @@ angular
      * @return {Array}
      */
     getSelection() {
-      return _.filter(this.pending.paginated, pending =>
-        pending && this.pending.selected && this.pending.selected[pending.id]);
+      return _.filter(
+        this.pending.paginated,
+        pending => pending && this.pending.selected && this.pending.selected[pending.id],
+      );
     }
 
     /**
@@ -139,11 +145,10 @@ angular
      */
     cancelSelectedPending() {
       const pendings = this.getSelection();
-      const queries = pendings.map(pending =>
-        this.api.sms.jobs.delete({
-          serviceName: this.$stateParams.serviceName,
-          id: pending.id,
-        }).$promise);
+      const queries = pendings.map(pending => this.api.sms.jobs.delete({
+        serviceName: this.$stateParams.serviceName,
+        id: pending.id,
+      }).$promise);
       this.pending.isDeleting = true;
       queries.push(this.$timeout(angular.noop, 500)); // avoid clipping
       this.Toast.info(this.$translate.instant('sms_sms_pending_cancel_success'));
@@ -202,11 +207,10 @@ angular
       this.loading.cancelAll = true;
       return this.$q.all([
         this.$timeout(angular.noop, 1000),
-      ].concat(_.each(this.pending.raw, sms =>
-        this.api.sms.jobs.delete({
-          serviceName: this.$stateParams.serviceName,
-          id: sms.id,
-        }).$promise))).then(() => this.refresh()).catch((err) => {
+      ].concat(_.each(this.pending.raw, sms => this.api.sms.jobs.delete({
+        serviceName: this.$stateParams.serviceName,
+        id: sms.id,
+      }).$promise))).then(() => this.refresh()).catch((err) => {
         this.ToastError(err);
       }).finally(() => {
         this.loading.cancelAll = false;

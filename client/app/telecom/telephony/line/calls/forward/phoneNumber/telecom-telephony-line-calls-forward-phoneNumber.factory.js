@@ -3,21 +3,21 @@ angular.module('managerApp').factory('TelecomTelephonyLineCallsForwardPhoneNumbe
    * Phone number object
    * @param {Object} data properties
    */
-  const TelecomTelephonyLineCallsForwardPhoneNumber =
-    function TelecomTelephonyLineCallsForwardPhoneNumber(data) {
-      _.extend(this, data);
-      if (this.description === this.serviceName) {
-        this.description = '';
-      }
+  const TelecomTelephonyLineCallsForwardPhoneNumber = function TelecomTelephonyLineCallsForwardPhoneNumber(data) { // eslint-disable-line
+    _.extend(this, data);
+    if (this.description === this.serviceName) {
+      this.description = '';
+    }
 
-      // All sip lines with phones will be treated as plug&phone
-      if (this.hasPhone && (this.type === 'line' || this.type === 'voicemail')) {
-        this.type = 'plug&phone';
-      }
-    };
+    // All sip lines with phones will be treated as plug&phone
+    if (this.hasPhone && (this.type === 'line' || this.type === 'voicemail')) {
+      this.type = 'plug&phone';
+    }
+  };
 
   TelecomTelephonyLineCallsForwardPhoneNumber.prototype.toString = function () {
-    return this.description ? this.description + ['(', ')'].join(this.serviceName) : this.serviceName;
+    return this.description
+      ? this.description + ['(', ')'].join(this.serviceName) : this.serviceName;
   };
 
   Object.defineProperty(TelecomTelephonyLineCallsForwardPhoneNumber.prototype, 'serviceName', {

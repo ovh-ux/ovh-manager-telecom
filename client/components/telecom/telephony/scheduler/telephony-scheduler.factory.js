@@ -150,26 +150,31 @@ angular.module('managerApp').factory('VoipScheduler', ($q, OvhApiTelephony, Voip
   VoipScheduler.prototype.getEvents = function (filters) {
     const self = this;
 
-    return OvhApiTelephony.Scheduler().Events().v6().query(angular.extend({
-      billingAccount: self.billingAccount,
-      serviceName: self.serviceName,
-    }, filters || {})).$promise.then(eventIds => $q.all(_.map(_.chunk(eventIds, 50), chunkIds =>
-      OvhApiTelephony.Scheduler().Events().v6().getBatch({
+    return OvhApiTelephony.Scheduler().Events().v6()
+      .query(angular.extend({
         billingAccount: self.billingAccount,
         serviceName: self.serviceName,
-        uid: chunkIds,
-      }).$promise))
-      .then((chunkResult) => {
-        _.chain(chunkResult).flatten().pluck('value').filter(event => !_.find(self.events, {
-          uid: event.uid,
-        }))
-          .forEach((eventOptions) => {
-            self.addEvent(eventOptions);
-          })
-          .value();
+      }, filters || {})).$promise
+      .then(eventIds => $q
+        .all(_.map(
+          _.chunk(eventIds, 50),
+          chunkIds => OvhApiTelephony.Scheduler().Events().v6().getBatch({
+            billingAccount: self.billingAccount,
+            serviceName: self.serviceName,
+            uid: chunkIds,
+          }).$promise,
+        ))
+        .then((chunkResult) => {
+          _.chain(chunkResult).flatten().pluck('value').filter(event => !_.find(self.events, {
+            uid: event.uid,
+          }))
+            .forEach((eventOptions) => {
+              self.addEvent(eventOptions);
+            })
+            .value();
 
-        return self.events;
-      }));
+          return self.events;
+        }));
   };
 
   /**
@@ -244,9 +249,12 @@ angular.module('managerApp').factory('VoipScheduler', ($q, OvhApiTelephony, Voip
   VoipScheduler.prototype.isEventInExistingRange = function (event) {
     const self = this;
 
-    return _.some(self.events, schedulerEvent =>
-      _.isEqual(schedulerEvent.categories, event.categories) &&
-        (moment(schedulerEvent.dateStart).isBetween(event.dateStart, event.dateEnd, null, '[]') || moment(schedulerEvent.dateEnd).isBetween(event.dateStart, event.dateEnd, null, '[]')));
+    return _.some(
+      self.events,
+      schedulerEvent => _.isEqual(schedulerEvent.categories, event.categories)
+        && (moment(schedulerEvent.dateStart).isBetween(event.dateStart, event.dateEnd, null, '[]')
+          || moment(schedulerEvent.dateEnd).isBetween(event.dateStart, event.dateEnd, null, '[]')),
+    );
   };
 
   /* ----------  TASK  ----------*/
@@ -281,8 +289,10 @@ angular.module('managerApp').factory('VoipScheduler', ($q, OvhApiTelephony, Voip
 
     const makeIcsContent = function () {
       const icsEvents = [];
-      const filteredEvents =
-        _.filter(self.events, event => categoryFilter.indexOf(event.categories) === -1);
+      const filteredEvents = _.filter(
+        self.events,
+        event => categoryFilter.indexOf(event.categories) === -1,
+      );
 
       angular.forEach(filteredEvents, (event) => {
         icsEvents.push(event.toIcsVEvent(self.timeZone));

@@ -186,15 +186,19 @@ angular.module('managerApp').factory('VoipTimeCondition', ($q, voipTimeCondition
 
     return conditionResources
       .query(voipTimeCondition.getResourceCallParams(self)).$promise
-      .then(conditionIds => $q.all(_.map(_.chunk(conditionIds, 50), chunkIds =>
-        conditionResources.getBatch(voipTimeCondition
-          .getConditionResourceCallParams(self, chunkIds))
-          .$promise
-          .then((resources) => {
-            angular.forEach(_.map(resources, 'value'), (conditionOptions) => {
-              self.addCondition(conditionOptions);
-            });
-          }))).then(() => self));
+      .then(conditionIds => $q
+        .all(_.map(
+          _.chunk(conditionIds, 50),
+          chunkIds => conditionResources
+            .getBatch(voipTimeCondition.getConditionResourceCallParams(self, chunkIds))
+            .$promise
+            .then((resources) => {
+              angular.forEach(_.map(resources, 'value'), (conditionOptions) => {
+                self.addCondition(conditionOptions);
+              });
+            }),
+        ))
+        .then(() => self));
   };
 
   VoipTimeCondition.prototype.addCondition = function (conditionOptions) {
@@ -284,34 +288,34 @@ angular.module('managerApp').factory('VoipTimeCondition', ($q, voipTimeCondition
     return self;
   };
 
-  VoipTimeCondition.prototype.stopSlotsEdition =
-    function (cancel, cancelOriginalSave, resetOriginalSave) {
-      const self = this;
+  VoipTimeCondition.prototype.stopSlotsEdition = function (cancel, cancelOriginalSave,
+    resetOriginalSave) {
+    const self = this;
 
-      angular.forEach(self.slots, (slot) => {
-        slot.stopEdition(cancel, cancelOriginalSave, resetOriginalSave);
-      });
+    angular.forEach(self.slots, (slot) => {
+      slot.stopEdition(cancel, cancelOriginalSave, resetOriginalSave);
+    });
 
-      return self;
-    };
+    return self;
+  };
 
-  VoipTimeCondition.prototype.stopConditionsEdition =
-    function (cancel, cancelOriginalSave, resetOriginalSave) {
-      const self = this;
+  VoipTimeCondition.prototype.stopConditionsEdition = function (cancel, cancelOriginalSave,
+    resetOriginalSave) {
+    const self = this;
 
-      angular.forEach(self.conditions, (condition) => {
-        if (condition.state === 'TO_CREATE' || condition.state === 'DRAFT') {
-          self.removeCondition(condition);
-        } else {
-          if (condition.state === 'TO_DELETE') {
-            _.set(condition, 'state', 'OK');
-          }
-          condition.stopEdition(cancel, cancelOriginalSave, resetOriginalSave);
+    angular.forEach(self.conditions, (condition) => {
+      if (condition.state === 'TO_CREATE' || condition.state === 'DRAFT') {
+        self.removeCondition(condition);
+      } else {
+        if (condition.state === 'TO_DELETE') {
+          _.set(condition, 'state', 'OK');
         }
-      });
+        condition.stopEdition(cancel, cancelOriginalSave, resetOriginalSave);
+      }
+    });
 
-      return self;
-    };
+    return self;
+  };
 
   VoipTimeCondition.prototype.hasChange = function (property) {
     const self = this;

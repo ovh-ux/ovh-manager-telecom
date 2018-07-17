@@ -39,10 +39,10 @@ angular.module('managerApp').service('TelephonyMediator', function ($q, $statePa
   /* ------ Awesome code from perl -----------*/
   self.IsValidNumber = function (number) {
     return !!(
-      number &&
-            number.match(/^\+?(\d|\.| |#|-)+$/) &&
-            number.length < 26 &&
-            number.length > 2);
+      number
+            && number.match(/^\+?(\d|\.| |#|-)+$/)
+            && number.length < 26
+            && number.length > 2);
   };
 
   /*= =================================

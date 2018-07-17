@@ -13,8 +13,8 @@ angular.module('managerApp').controller('TelecomTelephonyLinePhoneCtrl', functio
   ====================================== */
 
   function isAllowedOrder(orderName) {
-    return !!(self.billingAccount.availableOrders &&
-      self.billingAccount.availableOrders.indexOf(orderName) > -1);
+    return !!(self.billingAccount.availableOrders
+      && self.billingAccount.availableOrders.indexOf(orderName) > -1);
   }
 
   function initActions() {
@@ -47,9 +47,9 @@ angular.module('managerApp').controller('TelecomTelephonyLinePhoneCtrl', functio
     }, {
       name: 'line_phone_order_plug_and_phone',
       sref: 'telecom.telephony.line.phone.order',
-      text: self.line.hasPhone ?
-        $translate.instant('telephony_line_phone_actions_line_phone_change_plug_and_phone') :
-        $translate.instant('telephony_line_phone_actions_line_phone_order_plug_and_phone'),
+      text: self.line.hasPhone
+        ? $translate.instant('telephony_line_phone_actions_line_phone_change_plug_and_phone')
+        : $translate.instant('telephony_line_phone_actions_line_phone_order_plug_and_phone'),
     }, {
       name: 'line_order_accessories',
       sref: 'telecom.telephony.line.phone.accessories',

@@ -39,7 +39,7 @@
 
           if (matchA < matchB) {
             return -1;
-          } else if (matchA > matchB) {
+          } if (matchA > matchB) {
             return 1;
           }
           return 0;

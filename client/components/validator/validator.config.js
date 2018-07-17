@@ -81,8 +81,8 @@ angular.module('managerApp').run((punycode) => {
   validator.extend('isIPBlock', (str, version) => {
     if (version === 4 || version === 6) {
       const split = str.split('/');
-      return split.length === 2 && validator.isIP(split[0], version) &&
-        parseInt(split[1], 10) > 0 && parseInt(split[1], 10) <= (version === 4 ? 32 : 128);
+      return split.length === 2 && validator.isIP(split[0], version)
+        && parseInt(split[1], 10) > 0 && parseInt(split[1], 10) <= (version === 4 ? 32 : 128);
     }
     return validator.isIPBlock(str, 4) || validator.isIPBlock(str, 6);
   });
@@ -158,8 +158,8 @@ angular.module('managerApp').run((punycode) => {
       inError = punycodeVersion.length > 255 || dotSplit.length < 2;
 
       // Check wildcard
-      if (!inError && punycodeVersion.indexOf('*') !== -1 &&
-          (theOptions.canBeginWithWildcard ? !/^(?:\*\.)[^*]+$/.test(punycodeVersion) : true)) {
+      if (!inError && punycodeVersion.indexOf('*') !== -1
+          && (theOptions.canBeginWithWildcard ? !/^(?:\*\.)[^*]+$/.test(punycodeVersion) : true)) {
         inError = true;
       }
 

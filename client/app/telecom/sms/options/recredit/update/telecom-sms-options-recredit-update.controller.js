@@ -33,20 +33,20 @@ angular
       this.attributs = ['creditThresholdForAutomaticRecredit', 'automaticRecreditAmount'];
 
       this.loading.init = true;
-      return this.SmsMediator.initDeferred.promise.then(() =>
-        this.SmsMediator.getApiScheme().then((schema) => {
+      return this.SmsMediator.initDeferred.promise
+        .then(() => this.SmsMediator.getApiScheme().then((schema) => {
           this.availablePackQuantity = _.sortBy(_.map(schema.models['sms.PackQuantityAutomaticRecreditEnum'].enum, Number));
         })).then(this.getAmount()).catch((err) => {
-        this.ToastError(err);
-      }).finally(() => {
-        this.loading.init = false;
-      });
+          this.ToastError(err);
+        }).finally(() => {
+          this.loading.init = false;
+        });
     }
 
     /**
-       * Get amount without tax.
-       * @return {Promise}
-       */
+     * Get amount without tax.
+     * @return {Promise}
+     */
     getAmount() {
       if (this.model.service.automaticRecreditAmount) {
         this.loading.price = true;
@@ -65,9 +65,9 @@ angular
     }
 
     /**
-       * Set automatic recredit option.
-       * @return {Promise}
-       */
+     * Set automatic recredit option.
+     * @return {Promise}
+     */
     setAutomaticRecredit() {
       this.loading.updateOptions = true;
       return this.$q.all([
@@ -95,9 +95,9 @@ angular
     }
 
     /**
-       * Has changed helper.
-       * @return {Boolean}
-       */
+     * Has changed helper.
+     * @return {Boolean}
+     */
     hasChanged() {
       return !_.isEqual(
         _.pick(this.model.service, this.attributs),

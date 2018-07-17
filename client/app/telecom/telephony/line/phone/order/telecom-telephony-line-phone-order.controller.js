@@ -64,9 +64,7 @@ angular.module('managerApp').controller('TelecomTelephonyLinePhoneOrderCtrl', fu
         };
       }
       return JSON.stringify(contactCopy);
-    }).map(groups => // get only contacts that are unique
-      _.first(groups)).filter(contact => // filter contact that have id and are in given countries
-      _.get(contact, 'address') && ['BE', 'FR', 'CH'].indexOf(contact.address.country) > -1)
+    }).map(groups => _.first(groups)).filter(contact => _.get(contact, 'address') && ['BE', 'FR', 'CH'].indexOf(contact.address.country) > -1)
       .value();
   }
 

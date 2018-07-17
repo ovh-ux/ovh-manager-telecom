@@ -22,8 +22,8 @@ angular.module('managerApp').factory('TelephonyGroupLinePhoneFunction', ($q, Ovh
           throw new Error(`${mandatoriesPhoneFunctionOptions[mandatoryNb]} option must be specified when creating a new TelephonyGroupLineFunctionPhone`);
         } else {
           // set mandatory attributes
-          this[mandatoriesPhoneFunctionOptions[mandatoryNb]] =
-            mandatoryOptions[mandatoriesPhoneFunctionOptions[mandatoryNb]];
+          this[mandatoriesPhoneFunctionOptions[mandatoryNb]] = mandatoryOptions[
+            mandatoriesPhoneFunctionOptions[mandatoryNb]];
         }
       }
     }
@@ -49,8 +49,8 @@ angular.module('managerApp').factory('TelephonyGroupLinePhoneFunction', ($q, Ovh
 
   /* ----------  FEATURE OPTIONS  ----------*/
 
-  TelephonyGroupLineFunctionPhone.prototype.setPhoneFunctionInfos =
-    function (phoneFunctionOptions) {
+  TelephonyGroupLineFunctionPhone.prototype
+    .setPhoneFunctionInfos = function (phoneFunctionOptions) {
       const self = this;
 
       angular.forEach(_.keys(phoneFunctionOptions), (phoneFunctionOptionsKey) => {

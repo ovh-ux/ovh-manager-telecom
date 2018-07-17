@@ -61,28 +61,28 @@ angular.module('managerApp').factory('VoipTimeConditionSlot', () => {
     return self;
   };
 
-  VoipTimeConditionSlot.prototype.stopEdition =
-    function (cancel, cancelToOriginalSave, resetOriginalSave) {
-      const self = this;
+  VoipTimeConditionSlot.prototype.stopEdition = function (cancel, cancelToOriginalSave,
+    resetOriginalSave) {
+    const self = this;
 
-      if (self.originalSave && cancelToOriginalSave) {
-        self.type = angular.copy(self.originalSave.type);
-        self.number = angular.copy(self.originalSave.number);
-        self.originalSave = null;
-      } else if (self.saveForEdition && cancel) {
-        self.type = angular.copy(self.saveForEdition.type);
-        self.number = angular.copy(self.saveForEdition.number);
-      }
+    if (self.originalSave && cancelToOriginalSave) {
+      self.type = angular.copy(self.originalSave.type);
+      self.number = angular.copy(self.originalSave.number);
+      self.originalSave = null;
+    } else if (self.saveForEdition && cancel) {
+      self.type = angular.copy(self.saveForEdition.type);
+      self.number = angular.copy(self.saveForEdition.number);
+    }
 
-      if (resetOriginalSave) {
-        self.originalSave = null;
-      }
+    if (resetOriginalSave) {
+      self.originalSave = null;
+    }
 
-      self.saveForEdition = null;
-      self.inEdition = false;
+    self.saveForEdition = null;
+    self.inEdition = false;
 
-      return self;
-    };
+    return self;
+  };
 
   VoipTimeConditionSlot.prototype.hasChange = function (property, fromOriginal) {
     const self = this;
@@ -90,7 +90,7 @@ angular.module('managerApp').factory('VoipTimeConditionSlot', () => {
 
     if (fromOriginal && !self.originalSave) {
       return false;
-    } else if (!fromOriginal && !self.saveForEdition) {
+    } if (!fromOriginal && !self.saveForEdition) {
       return false;
     }
 

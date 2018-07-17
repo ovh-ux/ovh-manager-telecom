@@ -31,8 +31,11 @@ angular.module('managerApp').controller('telecomTelephonyAbbreviatedNumbersImpor
             isValid: self.namePattern.test(line[3]),
           },
         };
-        abbrObj.isValid = _.reduce(Object.keys(abbrObj), (total, elt) =>
-          total && abbrObj[elt].isValid, true);
+        abbrObj.isValid = _.reduce(
+          Object.keys(abbrObj),
+          (total, elt) => total && abbrObj[elt].isValid,
+          true,
+        );
         return abbrObj;
       });
       self.loading.getFile = false;

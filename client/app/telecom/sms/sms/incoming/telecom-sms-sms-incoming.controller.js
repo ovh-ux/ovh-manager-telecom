@@ -73,14 +73,16 @@ angular
      * @return {Promise}
      */
     fetchIncomingSms() {
-      return this.api.smsIncoming.query({
-        serviceName: this.$stateParams.serviceName,
-      }).$promise.then(incomingIds =>
-        this.$q.all(_.map(_.chunk(incomingIds, 50), id =>
-          this.api.smsIncoming.getBatch({
+      return this.api.smsIncoming
+        .query({
+          serviceName: this.$stateParams.serviceName,
+        }).$promise
+        .then(incomingIds => this.$q
+          .all(_.map(_.chunk(incomingIds, 50), id => this.api.smsIncoming.getBatch({
             serviceName: this.$stateParams.serviceName,
             id,
-          }).$promise)).then(chunkResult => _.pluck(_.flatten(chunkResult), 'value')));
+          }).$promise))
+          .then(chunkResult => _.pluck(_.flatten(chunkResult), 'value')));
     }
 
     /**
@@ -136,8 +138,10 @@ angular
      * @return {Promise}
      */
     getSelection() {
-      return _.filter(this.incoming.raw, incoming =>
-        incoming && this.incoming.selected && this.incoming.selected[incoming.id]);
+      return _.filter(
+        this.incoming.raw,
+        incoming => incoming && this.incoming.selected && this.incoming.selected[incoming.id],
+      );
     }
 
     /**
@@ -146,11 +150,10 @@ angular
      */
     deleteSelectedIncoming() {
       const incomings = this.getSelection();
-      const queries = incomings.map(incoming =>
-        this.api.smsIncoming.delete({
-          serviceName: this.$stateParams.serviceName,
-          id: incoming.id,
-        }).$promise);
+      const queries = incomings.map(incoming => this.api.smsIncoming.delete({
+        serviceName: this.$stateParams.serviceName,
+        id: incoming.id,
+      }).$promise);
       this.incoming.isDeleting = true;
       queries.push(this.$timeout(angular.noop, 500)); // avoid clipping
       this.Toast.info(this.$translate.instant('sms_sms_incoming_remove_success'));
@@ -227,8 +230,7 @@ angular
         };
         return tryGetDocument().then((doc) => {
           this.$window.location.href = doc.getUrl;
-          this.$timeout(() =>
-            this.api.user.document.delete({ id: doc.id }).$promise, 3000);
+          this.$timeout(() => this.api.user.document.delete({ id: doc.id }).$promise, 3000);
         });
       }).catch((error) => {
         this.Toast.error(this.$translate.instant('sms_sms_incoming_download_history_ko'));

@@ -55,10 +55,12 @@
       function createDynamicConfigs(moduleNumberToAdd, existingModulesCount) {
         const dynamicConfigs = [];
         let dynamicConfig;
-        const startKeyNumber =
-          existingModulesCount * self.configGroup.pagesPerModule * self.configGroup.keysPerPage;
-        const keysNumberToAdd =
-          moduleNumberToAdd * self.configGroup.pagesPerModule * self.configGroup.keysPerPage;
+        const startKeyNumber = existingModulesCount
+          * self.configGroup.pagesPerModule
+          * self.configGroup.keysPerPage;
+        const keysNumberToAdd = moduleNumberToAdd
+          * self.configGroup.pagesPerModule
+          * self.configGroup.keysPerPage;
 
         for (let i = 0; i < keysNumberToAdd; i += 1) {
           dynamicConfig = angular.copy(keyConfigModel);
@@ -71,9 +73,9 @@
 
       self.getKeyIndex = function (index) {
         return {
-          number: (index + (self.model.moduleIndex * self.configGroup.keysPerPage) +
-            ((self.model.moduleIndex * self.configGroup.keysPerPage) +
-            (self.model.pageIndex * self.configGroup.keysPerPage))) + 1,
+          number: (index + (self.model.moduleIndex * self.configGroup.keysPerPage)
+            + ((self.model.moduleIndex * self.configGroup.keysPerPage)
+            + (self.model.pageIndex * self.configGroup.keysPerPage))) + 1,
         };
       };
 
@@ -87,11 +89,10 @@
         const existingModules = groupConfigs(self.configGroup.configs);
 
         if (self.extensionKeyModuleConfig.value > existingModules.length) {
-          self.configGroup.dynamicConfigs =
-            createDynamicConfigs(
-              self.extensionKeyModuleConfig.value - existingModules.length,
-              existingModules.length,
-            );
+          self.configGroup.dynamicConfigs = createDynamicConfigs(
+            self.extensionKeyModuleConfig.value - existingModules.length,
+            existingModules.length,
+          );
           self.modules = existingModules.concat(groupConfigs(self.configGroup.dynamicConfigs));
         } else {
           self.configGroup.dynamicConfigs = null;

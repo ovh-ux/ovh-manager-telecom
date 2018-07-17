@@ -66,8 +66,8 @@ angular.module('managerApp').controller('OrderOverTheBoxCtrl', function ($transl
         });
         return !found;
       });
-      self.proposeLinkDevice = (self.devices.length > 0) && (self.unlinkedServices.length > 0) ?
-        {
+      self.proposeLinkDevice = (self.devices.length > 0) && (self.unlinkedServices.length > 0)
+        ? {
           service: self.unlinkedServices[0],
           devices: self.orphanDevices.length === 1 ? self.orphanDevices[0] : null,
         } : null;

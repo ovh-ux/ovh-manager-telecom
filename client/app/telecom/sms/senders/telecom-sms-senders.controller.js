@@ -43,24 +43,23 @@ angular
     refresh() {
       this.senders.isLoading = true;
       this.resetAllCache();
-      return this.fetchSenders().then(senders =>
-        this.$q.all(_.map(senders, (sender) => {
-          _.set(sender, 'serviceInfos', null);
-          if (sender.type === 'virtual') {
-            const number = `00${_.trimLeft(sender.sender, '+')}`;
-            return this.api.sms.virtualNumbers
-              .getVirtualNumbersServiceInfos({ number }).$promise
-              .then((serviceInfos) => {
-                _.set(sender, 'serviceInfos', serviceInfos);
-                return sender;
-              });
-          }
-          return this.$q.resolve(sender);
-        })).then((sendersResult) => {
-          this.senders.raw = sendersResult;
-          this.senders.hasExpiration = _.some(this.senders.raw, 'serviceInfos.renew.deleteAtExpiration');
-          this.sortSenders();
-        })).catch((err) => {
+      return this.fetchSenders().then(senders => this.$q.all(_.map(senders, (sender) => {
+        _.set(sender, 'serviceInfos', null);
+        if (sender.type === 'virtual') {
+          const number = `00${_.trimLeft(sender.sender, '+')}`;
+          return this.api.sms.virtualNumbers
+            .getVirtualNumbersServiceInfos({ number }).$promise
+            .then((serviceInfos) => {
+              _.set(sender, 'serviceInfos', serviceInfos);
+              return sender;
+            });
+        }
+        return this.$q.resolve(sender);
+      })).then((sendersResult) => {
+        this.senders.raw = sendersResult;
+        this.senders.hasExpiration = _.some(this.senders.raw, 'serviceInfos.renew.deleteAtExpiration');
+        this.sortSenders();
+      })).catch((err) => {
         this.ToastError(err);
       }).finally(() => {
         this.senders.isLoading = false;
@@ -80,14 +79,16 @@ angular
      * @return {Promise}
      */
     fetchSenders() {
-      return this.api.sms.senders.query({
-        serviceName: this.$stateParams.serviceName,
-      }).$promise.then(sendersIds =>
-        this.$q.all(_.map(_.chunk(sendersIds, 50), chunkIds =>
-          this.api.sms.senders.getBatch({
+      return this.api.sms.senders
+        .query({
+          serviceName: this.$stateParams.serviceName,
+        }).$promise
+        .then(sendersIds => this.$q
+          .all(_.map(_.chunk(sendersIds, 50), chunkIds => this.api.sms.senders.getBatch({
             serviceName: this.$stateParams.serviceName,
             sender: chunkIds.join('|'),
-          }).$promise)).then(chunkResult => _.pluck(_.flatten(chunkResult), 'value')));
+          }).$promise))
+          .then(chunkResult => _.pluck(_.flatten(chunkResult), 'value')));
     }
 
     /**
@@ -121,8 +122,7 @@ angular
      * @return {Array}
      */
     getSelection() {
-      return _.filter(this.senders.raw, sender =>
-        sender && sender.type !== 'virtual' && this.senders.selected && this.senders.selected[sender.sender]);
+      return _.filter(this.senders.raw, sender => sender && sender.type !== 'virtual' && this.senders.selected && this.senders.selected[sender.sender]);
     }
 
     /**
@@ -131,11 +131,10 @@ angular
      */
     deleteSelectedSenders() {
       const senders = this.getSelection();
-      const queries = senders.map(sender =>
-        this.api.sms.senders.delete({
-          serviceName: this.$stateParams.serviceName,
-          sender: sender.sender,
-        }).$promise);
+      const queries = senders.map(sender => this.api.sms.senders.delete({
+        serviceName: this.$stateParams.serviceName,
+        sender: sender.sender,
+      }).$promise);
       this.senders.isDeleting = true;
       queries.push(this.$timeout(angular.noop, 500)); // avoid clipping
       this.Toast.info(this.$translate.instant('sms_senders_delete_senders_success'));
@@ -224,9 +223,9 @@ angular
      * @return {Boolean}
      */
     static canTerminate(sender) {
-      return sender.type === 'virtual' &&
-        sender.serviceInfos.canDeleteAtExpiration &&
-        sender.serviceInfos.status !== 'expired';
+      return sender.type === 'virtual'
+        && sender.serviceInfos.canDeleteAtExpiration
+        && sender.serviceInfos.status !== 'expired';
     }
 
     /**

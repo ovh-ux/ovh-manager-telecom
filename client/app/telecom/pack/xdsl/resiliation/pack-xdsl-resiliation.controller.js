@@ -23,8 +23,8 @@ angular.module('managerApp').controller('PackXdslResiliationCtrl', function ($sc
       serviceName: $stateParams.serviceName,
     }).$promise.then((data) => {
       self.resiliationTerms = data;
-      self.dpOpts.minDate = data.data.minResiliationDate ?
-        new Date(data.data.minResiliationDate) : new Date();
+      self.dpOpts.minDate = data.data.minResiliationDate
+        ? new Date(data.data.minResiliationDate) : new Date();
       self.minResiliationDate = self.dpOpts.minDate;
 
       self.when = new Date(self.resiliationTerms.data.resiliationDate);
@@ -75,8 +75,8 @@ angular.module('managerApp').controller('PackXdslResiliationCtrl', function ($sc
    * @param {Date} specifiedDate Date to validate
    */
   this.checkDate = function (specifiedDate) {
-    return !specifiedDate ||
-      (validator.isDate(specifiedDate) && (specifiedDate >= self.minResiliationDate));
+    return !specifiedDate
+      || (validator.isDate(specifiedDate) && (specifiedDate >= self.minResiliationDate));
   };
 
   /**

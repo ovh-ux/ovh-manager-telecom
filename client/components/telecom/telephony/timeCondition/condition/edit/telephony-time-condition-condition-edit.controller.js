@@ -45,9 +45,11 @@ angular.module('managerApp').controller('voipTimeConditionConditionCtrl', functi
     self.overlapDetected = false;
 
     // check if overlap an other condition on the same day
-    const dayConditions = _.filter(self.timeCondition.conditions, condition =>
-      condition.weekDay === self.condition.weekDay &&
-      condition.conditionId !== self.condition.conditionId);
+    const dayConditions = _.filter(
+      self.timeCondition.conditions,
+      condition => condition.weekDay === self.condition.weekDay
+        && condition.conditionId !== self.condition.conditionId,
+    );
     const isConditionOverlap = _.some(dayConditions, (condition) => {
       const momentFrom = condition.getTimeMoment('from');
       const momentTo = condition.getTimeMoment('to');

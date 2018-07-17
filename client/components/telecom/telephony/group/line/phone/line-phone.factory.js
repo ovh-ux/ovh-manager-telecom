@@ -22,8 +22,8 @@ angular.module('managerApp').factory('TelephonyGroupLinePhone', ($q, OvhApiTelep
           throw new Error(`${mandatoriesPhoneOptions[mandatoryNb]} option must be specified when creating a new TelephonyGroupLinePhone`);
         } else {
           // set mandatory attributes
-          this[mandatoriesPhoneOptions[mandatoryNb]] =
-            mandatoryOptions[mandatoriesPhoneOptions[mandatoryNb]];
+          this[mandatoriesPhoneOptions[mandatoryNb]] = mandatoryOptions[
+            mandatoriesPhoneOptions[mandatoryNb]];
         }
       }
     }
@@ -179,14 +179,16 @@ angular.module('managerApp').factory('TelephonyGroupLinePhone', ($q, OvhApiTelep
     return self;
   };
 
-  TelephonyGroupLinePhone.prototype.changePhoneConfiguration =
-    function (configsToSaveParam, refreshPhone, reboot) {
+  TelephonyGroupLinePhone.prototype
+    .changePhoneConfiguration = function (configsToSaveParam, refreshPhone, reboot) {
       const self = this;
       let configsToSave = configsToSaveParam;
 
       if (!configsToSave) {
-        configsToSave = _.filter(self.configurations, config =>
-          !_.isEqual(config.value, config.prevValue));
+        configsToSave = _.filter(
+          self.configurations,
+          config => !_.isEqual(config.value, config.prevValue),
+        );
       }
 
       return OvhApiTelephony.Line().Phone().v6().changePhoneConfiguration({
@@ -219,9 +221,9 @@ angular.module('managerApp').factory('TelephonyGroupLinePhone', ($q, OvhApiTelep
         self.getSip().then(sip => self.setPhoneInfos({ sip })),
         self.getIps().then(ip => self.setPhoneInfos({ ip })),
       ])
-      .then(() => self.getFunctionKeys().then(functionKey =>
-        self.setPhoneInfos({ functionKeys: functionKey }), () =>
-        self.setPhoneInfos({ functionKeys: [] })).then(() => self));
+      .then(() => self.getFunctionKeys()
+        .then(functionKey => self.setPhoneInfos({ functionKeys: functionKey }),
+          () => self.setPhoneInfos({ functionKeys: [] })).then(() => self));
   };
 
   /* -----  End of PROTOTYPE METHODS  ------*/

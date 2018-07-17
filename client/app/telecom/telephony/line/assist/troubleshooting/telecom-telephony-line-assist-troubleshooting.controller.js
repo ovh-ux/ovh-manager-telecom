@@ -32,23 +32,23 @@ angular.module('managerApp').controller('TelecomTelephonyLineAssistTroubleshooti
   function foundPhoneType() {
     if ((/^phone\.thomson/).test(self.process.line.phone.brand)) {
       return 'thomson';
-    } else if ((/^phone\.(siemens)/).test(self.process.line.phone.brand) || self.process.line.phone.brand === 'phone.gigaset.c530ip') {
+    } if ((/^phone\.(siemens)/).test(self.process.line.phone.brand) || self.process.line.phone.brand === 'phone.gigaset.c530ip') {
       return 'siemens';
-    } else if ((/^phone\.(gigaset)/).test(self.process.line.phone.brand)) {
+    } if ((/^phone\.(gigaset)/).test(self.process.line.phone.brand)) {
       return 'gigaset';
-    } else if ((/^phone\.(linksys\.pap)/).test(self.process.line.phone.brand) || self.process.line.phone.brand === 'phone.cisco.spa112') {
+    } if ((/^phone\.(linksys\.pap)/).test(self.process.line.phone.brand) || self.process.line.phone.brand === 'phone.cisco.spa112') {
       return 'linksys';
-    } else if ((/^phone\.(cisco\.spa)/).test(self.process.line.phone.brand)) {
+    } if ((/^phone\.(cisco\.spa)/).test(self.process.line.phone.brand)) {
       return 'cisco';
-    } else if ((/^phone\.lg/).test(self.process.line.phone.brand)) {
+    } if ((/^phone\.lg/).test(self.process.line.phone.brand)) {
       return 'lg';
-    } else if ((/^phone\.polycom/).test(self.process.line.phone.brand)) {
+    } if ((/^phone\.polycom/).test(self.process.line.phone.brand)) {
       return 'polycom';
-    } else if ((/^phone\.yealink/).test(self.process.line.phone.brand)) {
+    } if ((/^phone\.yealink/).test(self.process.line.phone.brand)) {
       return 'yealink';
-    } else if ((/^phone\.(unidata|incom)/).test(self.process.line.phone.brand)) {
+    } if ((/^phone\.(unidata|incom)/).test(self.process.line.phone.brand)) {
       return 'unidata';
-    } else if ((/^phone\.joher/).test(self.process.line.phone.brand)) {
+    } if ((/^phone\.joher/).test(self.process.line.phone.brand)) {
       return 'popc';
     }
     return 'unkown';
@@ -86,8 +86,8 @@ angular.module('managerApp').controller('TelecomTelephonyLineAssistTroubleshooti
     });
 
     // is there is no custom step to add, add common steps (procedure and contact support)
-    const stepsToAdd = steps || problem.customSteps ||
-      [commonSteps.procedureStep, commonSteps.contactStep];
+    const stepsToAdd = steps || problem.customSteps
+      || [commonSteps.procedureStep, commonSteps.contactStep];
 
     angular.forEach(stepsToAdd, (stepToAddOptionsParam, index) => {
       let stepToAddOptions = stepToAddOptionsParam;
@@ -347,8 +347,8 @@ angular.module('managerApp').controller('TelecomTelephonyLineAssistTroubleshooti
       self.process.phoneType = foundPhoneType();
 
       // set phone image src
-      self.imgScr = TELEPHONY_LINE_PHONE_ADDITIONAL_INFOS[self.process.line.phone.brand] ?
-        TELEPHONY_LINE_PHONE_ADDITIONAL_INFOS[self.process.line.phone.brand].img : null;
+      self.imgScr = TELEPHONY_LINE_PHONE_ADDITIONAL_INFOS[self.process.line.phone.brand]
+        ? TELEPHONY_LINE_PHONE_ADDITIONAL_INFOS[self.process.line.phone.brand].img : null;
 
       // set problem list
       self.problemsList = getPhoneTypeProblems();

@@ -29,16 +29,14 @@ angular.module('managerApp').service('voipBillingAccount', class {
    *  @return {Promise} That return an Array of VoipBillingAccount instances.
    */
   fetchAll(withError = true) {
-    return this.OvhApiTelephony.v7().query().expand().execute().$promise.then(result =>
-      _.chain(result).filter(res =>
-        _.has(res, 'value') || (withError && _.has(res, 'error'))).map((res) => {
-        if (res.value) {
-          return new this.VoipBillingAccount(res.value);
-        }
-        return new this.VoipBillingAccount({
-          billingAccount: res.key,
-          error: res.error,
-        });
-      }).value());
+    return this.OvhApiTelephony.v7().query().expand().execute().$promise.then(result => _.chain(result).filter(res => _.has(res, 'value') || (withError && _.has(res, 'error'))).map((res) => {
+      if (res.value) {
+        return new this.VoipBillingAccount(res.value);
+      }
+      return new this.VoipBillingAccount({
+        billingAccount: res.key,
+        error: res.error,
+      });
+    }).value());
   }
 });

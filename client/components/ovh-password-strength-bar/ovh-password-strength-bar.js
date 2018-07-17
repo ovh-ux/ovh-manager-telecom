@@ -82,10 +82,8 @@ angular.module('ovhPasswordStrengthBar', []).directive('ovhPasswordStrengthBar',
         counts.pos.symbols = matches.pos.symbols ? matches.pos.symbols.length : 0;
 
         tmp = _.reduce(
-          counts.pos, (memo, val) =>
-          // if has count will add 1
-            memo + Math.min(1, val)
-          , 0,
+          counts.pos, (memo, val) => memo + Math.min(1, val),
+          0,
         );
 
         counts.pos.numChars = p.length;

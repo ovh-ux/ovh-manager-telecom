@@ -157,8 +157,10 @@ angular
      * @return {Array}
      */
     getSelection() {
-      return _.filter(this.outgoing.paginated, outgoing =>
-        outgoing && this.outgoing.selected && this.outgoing.selected[outgoing.id]);
+      return _.filter(
+        this.outgoing.paginated,
+        outgoing => outgoing && this.outgoing.selected && this.outgoing.selected[outgoing.id],
+      );
     }
 
     /**
@@ -167,11 +169,10 @@ angular
      */
     deleteSelectedOutgoing() {
       const outgoings = this.getSelection();
-      const queries = outgoings.map(outgoing =>
-        this.api.smsOutgoing.delete({
-          serviceName: this.$stateParams.serviceName,
-          id: outgoing.id,
-        }).$promise);
+      const queries = outgoings.map(outgoing => this.api.smsOutgoing.delete({
+        serviceName: this.$stateParams.serviceName,
+        id: outgoing.id,
+      }).$promise);
       this.outgoing.isDeleting = true;
       queries.push(this.$timeout(angular.noop, 500)); // avoid clipping
       this.Toast.info(this.$translate.instant('sms_sms_outgoing_delete_success'));

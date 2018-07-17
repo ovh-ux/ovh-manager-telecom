@@ -67,8 +67,9 @@ angular
      */
     hasChanged() {
       return !(
-        this.model.user.quotaInformations.quotaLeft === this.user.quotaInformations.quotaLeft &&
-          this.model.user.quotaInformations.quotaStatus === this.user.quotaInformations.quotaStatus
+        this.model.user.quotaInformations.quotaLeft === this.user.quotaInformations.quotaLeft
+          && this.model.user.quotaInformations.quotaStatus === this.user
+            .quotaInformations.quotaStatus
       );
     }
   });

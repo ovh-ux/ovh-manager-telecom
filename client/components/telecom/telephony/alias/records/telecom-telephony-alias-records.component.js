@@ -43,8 +43,10 @@ angular.module('managerApp').component('telecomTelephonyAliasRecords', {
     };
 
     self.getSelection = function () {
-      return _.filter(self.records.raw, record =>
-        self.records.selected && self.records.selected[record.id]);
+      return _.filter(
+        self.records.raw,
+        record => self.records.selected && self.records.selected[record.id],
+      );
     };
 
     /* -----  End of HELPERS  ------*/

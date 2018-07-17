@@ -54,8 +54,8 @@ angular.module('managerApp').factory('TelephonyGroupNumberOvhPabxDialplanExtensi
     =            PROTOTYPE METHODS            =
     ========================================= */
 
-  TelephonyGroupNumberOvhPabxDialplanExtension.prototype.setInfos =
-    function (extensionOptionsParam) {
+  TelephonyGroupNumberOvhPabxDialplanExtension.prototype
+    .setInfos = function (extensionOptionsParam) {
       const self = this;
       let extensionOptions = extensionOptionsParam;
 
@@ -209,21 +209,25 @@ angular.module('managerApp').factory('TelephonyGroupNumberOvhPabxDialplanExtensi
         dialplanId: self.dialplanId,
         extensionId: self.extensionId,
       }).$promise
-      .then(ruleIds => $q.all(_.map(_.chunk(ruleIds, 50), chunkIds =>
-        OvhApiTelephony.OvhPabx().Dialplan().Extension().Rule()
-          .v6()
-          .getBatch({
-            billingAccount: self.billingAccount,
-            serviceName: self.serviceName,
-            dialplanId: self.dialplanId,
-            extensionId: self.extensionId,
-            ruleId: chunkIds,
-          }).$promise.then((resources) => {
-            angular.forEach(_.chain(resources).filter(resource => resource.value !== null).map('value').sortBy('position')
-              .value(), (ruleOptions) => {
-              self.addRule(ruleOptions);
-            });
-          }))).then(() => self));
+      .then(ruleIds => $q
+        .all(_.map(
+          _.chunk(ruleIds, 50),
+          chunkIds => OvhApiTelephony.OvhPabx().Dialplan().Extension().Rule()
+            .v6()
+            .getBatch({
+              billingAccount: self.billingAccount,
+              serviceName: self.serviceName,
+              dialplanId: self.dialplanId,
+              extensionId: self.extensionId,
+              ruleId: chunkIds,
+            }).$promise.then((resources) => {
+              angular.forEach(_.chain(resources).filter(resource => resource.value !== null).map('value').sortBy('position')
+                .value(), (ruleOptions) => {
+                self.addRule(ruleOptions);
+              });
+            }),
+        ))
+        .then(() => self));
   };
 
   TelephonyGroupNumberOvhPabxDialplanExtension.prototype.addRule = function (ruleOptionsParam) {
@@ -266,8 +270,8 @@ angular.module('managerApp').factory('TelephonyGroupNumberOvhPabxDialplanExtensi
     return self;
   };
 
-  TelephonyGroupNumberOvhPabxDialplanExtension.prototype.updateRulesPositions =
-    function (from, forNegativeActions) {
+  TelephonyGroupNumberOvhPabxDialplanExtension.prototype
+    .updateRulesPositions = function (from, forNegativeActions) {
       const self = this;
       const updatePositionPromises = [];
       const ruleList = forNegativeActions ? self.negativeRules : self.rules;
@@ -293,26 +297,31 @@ angular.module('managerApp').factory('TelephonyGroupNumberOvhPabxDialplanExtensi
         dialplanId: self.dialplanId,
         extensionId: self.extensionId,
       }).$promise
-      .then(ruleIds => $q.all(_.map(_.chunk(ruleIds, 50), chunkIds =>
-        OvhApiTelephony.OvhPabx().Dialplan().Extension().ConditionScreenList()
-          .v6()
-          .getBatch({
-            billingAccount: self.billingAccount,
-            serviceName: self.serviceName,
-            dialplanId: self.dialplanId,
-            extensionId: self.extensionId,
-            conditionId: chunkIds,
-          }).$promise.then((resources) => {
-            _.chain(resources).filter(resource => resource.value !== null).map('value').sortBy('conditionId')
-              .value()
-              .forEach((screenListOptions) => {
-                self.addScreenListCondition(screenListOptions);
-              });
-          }))).then(() => self));
+      .then(ruleIds => $q
+        .all(_.map(
+          _.chunk(ruleIds, 50),
+          chunkIds => OvhApiTelephony.OvhPabx().Dialplan().Extension().ConditionScreenList()
+            .v6()
+            .getBatch({
+              billingAccount: self.billingAccount,
+              serviceName: self.serviceName,
+              dialplanId: self.dialplanId,
+              extensionId: self.extensionId,
+              conditionId: chunkIds,
+            }).$promise
+            .then((resources) => {
+              _.chain(resources).filter(resource => resource.value !== null).map('value').sortBy('conditionId')
+                .value()
+                .forEach((screenListOptions) => {
+                  self.addScreenListCondition(screenListOptions);
+                });
+            }),
+        ))
+        .then(() => self));
   };
 
-  TelephonyGroupNumberOvhPabxDialplanExtension.prototype.addScreenListCondition =
-    function (screenListOptionsParam) {
+  TelephonyGroupNumberOvhPabxDialplanExtension.prototype
+    .addScreenListCondition = function (screenListOptionsParam) {
       const self = this;
       let condition = null;
       let screenListOptions = screenListOptionsParam;
@@ -343,8 +352,8 @@ angular.module('managerApp').factory('TelephonyGroupNumberOvhPabxDialplanExtensi
       return condition;
     };
 
-  TelephonyGroupNumberOvhPabxDialplanExtension.prototype.removeScreenListCondition =
-    function (screenListCondition) {
+  TelephonyGroupNumberOvhPabxDialplanExtension.prototype
+    .removeScreenListCondition = function (screenListCondition) {
       const self = this;
 
       _.remove(self.screenListConditions, screenListCondition);
@@ -358,8 +367,9 @@ angular.module('managerApp').factory('TelephonyGroupNumberOvhPabxDialplanExtensi
 
     self.screenListConditions.forEach((screenList) => {
       if (screenList.state === 'TO_DELETE') {
-        savePromises.push(screenList.remove().then(() =>
-          self.removeScreenListCondition(screenList)));
+        savePromises.push(screenList
+          .remove()
+          .then(() => self.removeScreenListCondition(screenList)));
       } else if (screenList.state === 'DRAFT') {
         savePromises.push(screenList.create().catch((error) => {
           self.removeScreenListCondition(screenList);
@@ -384,26 +394,31 @@ angular.module('managerApp').factory('TelephonyGroupNumberOvhPabxDialplanExtensi
         dialplanId: self.dialplanId,
         extensionId: self.extensionId,
       }).$promise
-      .then(ruleIds => $q.all(_.map(_.chunk(ruleIds, 50), chunkIds =>
-        OvhApiTelephony.OvhPabx().Dialplan().Extension().ConditionTime()
-          .v6()
-          .getBatch({
-            billingAccount: self.billingAccount,
-            serviceName: self.serviceName,
-            dialplanId: self.dialplanId,
-            extensionId: self.extensionId,
-            conditionId: chunkIds,
-          }).$promise.then((resources) => {
-            _.chain(resources).filter(resource => resource.value !== null).map('value').sortBy('conditionId')
-              .value()
-              .forEach((timeConditionOptions) => {
-                self.addTimeCondition(timeConditionOptions);
-              });
-          }))).then(() => self));
+      .then(ruleIds => $q
+        .all(_.map(
+          _.chunk(ruleIds, 50),
+          chunkIds => OvhApiTelephony.OvhPabx().Dialplan().Extension().ConditionTime()
+            .v6()
+            .getBatch({
+              billingAccount: self.billingAccount,
+              serviceName: self.serviceName,
+              dialplanId: self.dialplanId,
+              extensionId: self.extensionId,
+              conditionId: chunkIds,
+            }).$promise
+            .then((resources) => {
+              _.chain(resources).filter(resource => resource.value !== null).map('value').sortBy('conditionId')
+                .value()
+                .forEach((timeConditionOptions) => {
+                  self.addTimeCondition(timeConditionOptions);
+                });
+            }),
+        ))
+        .then(() => self));
   };
 
-  TelephonyGroupNumberOvhPabxDialplanExtension.prototype.addTimeCondition =
-    function (timeConditionOptionsParam) {
+  TelephonyGroupNumberOvhPabxDialplanExtension.prototype
+    .addTimeCondition = function (timeConditionOptionsParam) {
       const self = this;
       let condition = null;
       let timeConditionOptions = timeConditionOptionsParam;
@@ -434,14 +449,14 @@ angular.module('managerApp').factory('TelephonyGroupNumberOvhPabxDialplanExtensi
       return condition;
     };
 
-  TelephonyGroupNumberOvhPabxDialplanExtension.prototype.removeTimeCondition =
-  function (timeCondition) {
-    const self = this;
+  TelephonyGroupNumberOvhPabxDialplanExtension.prototype
+    .removeTimeCondition = function (timeCondition) {
+      const self = this;
 
-    _.remove(self.timeConditions, timeCondition);
+      _.remove(self.timeConditions, timeCondition);
 
-    return self;
-  };
+      return self;
+    };
 
   TelephonyGroupNumberOvhPabxDialplanExtension.prototype.saveTimeConditions = function () {
     const self = this;
@@ -451,8 +466,9 @@ angular.module('managerApp').factory('TelephonyGroupNumberOvhPabxDialplanExtensi
     self.timeConditions.forEach((timeCondition) => {
       if (timeCondition.state === 'TO_DELETE') {
         _.set(timeCondition, 'state', 'DELETING');
-        toDeletePromises.push(timeCondition.remove().then(() =>
-          self.removeTimeCondition(timeCondition)));
+        toDeletePromises.push(timeCondition
+          .remove()
+          .then(() => self.removeTimeCondition(timeCondition)));
       } else if (timeCondition.state === 'DRAFT') {
         _.set(timeCondition, 'state', 'CREATING');
         savePromises.push(timeCondition.create().catch((error) => {

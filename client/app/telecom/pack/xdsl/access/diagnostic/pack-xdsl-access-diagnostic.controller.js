@@ -85,8 +85,8 @@ angular.module('managerApp').controller('XdslDiagnosticCtrl', function ($q, $sco
     }
     if (typeof result === 'object') {
       self.diagnostic = result;
-      self.diagnostic.mainLine = result.lineDetails &&
-        result.lineDetails.length ? _.first(result.lineDetails) : null;
+      self.diagnostic.mainLine = result.lineDetails
+        && result.lineDetails.length ? _.first(result.lineDetails) : null;
     }
   };
 

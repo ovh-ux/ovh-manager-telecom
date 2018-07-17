@@ -77,8 +77,8 @@ angular.module('managerApp').controller('PackMoveCtrl', function (
       });
     },
     eventAfterAllRender() {
-      if (uiCalendarConfig.calendars && uiCalendarConfig.calendars.mainCalendar &&
-          !self.offer.meetingSlots.slot) {
+      if (uiCalendarConfig.calendars && uiCalendarConfig.calendars.mainCalendar
+          && !self.offer.meetingSlots.slot) {
         uiCalendarConfig.calendars.mainCalendar.fullCalendar(
           'gotoDate',
           self.offer.selected.meetingSlots.firstSlot.startDate,
@@ -106,8 +106,8 @@ angular.module('managerApp').controller('PackMoveCtrl', function (
         moveData.landline = {
           lineNumber: self.offer.selected.lineNumber,
           portLineNumber: self.form.futureLandline.keepLineNumber,
-          rio: validator.isRio(self.form.futureLandline.rio, self.form.futureLandline.lineNumber) ?
-            self.form.futureLandline.rio.toUpperCase() : undefined,
+          rio: validator.isRio(self.form.futureLandline.rio, self.form.futureLandline.lineNumber)
+            ? self.form.futureLandline.rio.toUpperCase() : undefined,
           status: self.offer.selected.lineStatus,
           unbundling: self.offer.selected.unbundling,
         };
@@ -117,8 +117,8 @@ angular.module('managerApp').controller('PackMoveCtrl', function (
           meeting: {
             fakeMeeting: self.offer.meetingSlots.fakeMeeting,
             name: self.offer.selected.contactName,
-            meetingSlot: !self.offer.meetingSlots.fakeMeeting ?
-              self.offer.meetingSlots.slot.data : undefined,
+            meetingSlot: !self.offer.meetingSlots.fakeMeeting
+              ? self.offer.meetingSlots.slot.data : undefined,
           },
         };
       }
@@ -225,13 +225,13 @@ angular.module('managerApp').controller('PackMoveCtrl', function (
    * @returns {boolean}
    */
   this.isFormValid = function () {
-    const keepLine = !self.form.futureLandline.keepLineNumber ||
-      validator.isRio(self.form.futureLandline.rio, self.form.futureLandline.lineNumber);
-    const ftMeeting = (self.offer.selected && self.offer.meetingSlots) &&
-      (!self.offer.selected.meetingSlots ||
-      (self.offer.selected.meetingSlots && self.offer.meetingSlots.fakeMeeting) ||
-      (self.offer.selected.meetingSlots && !self.offer.meetingSlots.fakeMeeting &&
-        self.offer.meetingSlots.slot));
+    const keepLine = !self.form.futureLandline.keepLineNumber
+      || validator.isRio(self.form.futureLandline.rio, self.form.futureLandline.lineNumber);
+    const ftMeeting = (self.offer.selected && self.offer.meetingSlots)
+      && (!self.offer.selected.meetingSlots
+      || (self.offer.selected.meetingSlots && self.offer.meetingSlots.fakeMeeting)
+      || (self.offer.selected.meetingSlots && !self.offer.meetingSlots.fakeMeeting
+        && self.offer.meetingSlots.slot));
 
     return keepLine && ((ftMeeting && self.offer.selected.contactName) || self.method === 'number');
   };
@@ -298,9 +298,9 @@ angular.module('managerApp').controller('PackMoveCtrl', function (
 
     /* if no meeting available, check the fakeMeeting.
       Do not offer a check box to the user if there is no choice to make */
-    if (!(this.offer.selected && this.offer.selected.meetingSlots &&
-      this.offer.selected.meetingSlots.meetingSlots &&
-      this.offer.selected.meetingSlots.meetingSlots.length)) {
+    if (!(this.offer.selected && this.offer.selected.meetingSlots
+      && this.offer.selected.meetingSlots.meetingSlots
+      && this.offer.selected.meetingSlots.meetingSlots.length)) {
       this.offer.meetingSlots.fakeMeeting = true;
     }
   };

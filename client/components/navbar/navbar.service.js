@@ -75,26 +75,25 @@ class ManagerNavbarService {
 
     return this.packMediator
       .fetchPacks()
-      .then(result =>
-        _.map(result, (item) => {
-          const itemLink = {
-            name: item.packName,
-            title: item.description || item.offerDescription || item.packName,
+      .then(result => _.map(result, (item) => {
+        const itemLink = {
+          name: item.packName,
+          title: item.description || item.offerDescription || item.packName,
+        };
+
+        if (item.xdsl.length) {
+          // Get subLinks for submenu
+          itemLink.subLinks = this.getPackGroup(item);
+        } else {
+          // Or create a link
+          itemLink.state = 'telecom.pack';
+          itemLink.stateParams = {
+            packName: item.packName,
           };
+        }
 
-          if (item.xdsl.length) {
-            // Get subLinks for submenu
-            itemLink.subLinks = this.getPackGroup(item);
-          } else {
-            // Or create a link
-            itemLink.state = 'telecom.pack';
-            itemLink.stateParams = {
-              packName: item.packName,
-            };
-          }
-
-          return itemLink;
-        }))
+        return itemLink;
+      }))
       .catch(() => this.$q.when(undefined));
   }
 
@@ -152,8 +151,8 @@ class ManagerNavbarService {
       }
 
       // PlugAndFax
-      const sortedPlugAndFaxLines =
-        this.voipService.constructor.filterPlugAndFaxServices(sortedLines);
+      const sortedPlugAndFaxLines = this.voipService
+        .constructor.filterPlugAndFaxServices(sortedLines);
       if (sortedPlugAndFaxLines.length) {
         addGroup(
           sortedPlugAndFaxLines,
@@ -185,26 +184,25 @@ class ManagerNavbarService {
 
     return this.telecomVoip
       .fetchAll()
-      .then(result =>
-        _.map(result, (item) => {
-          const itemLink = {
-            name: item.billingAccount,
-            title: item.getDisplayedName(),
+      .then(result => _.map(result, (item) => {
+        const itemLink = {
+          name: item.billingAccount,
+          title: item.getDisplayedName(),
+        };
+
+        if (item.services.length) {
+          // Get subLinks for submenu
+          itemLink.subLinks = this.getTelephonyGroup(item);
+        } else {
+          // Or create a link
+          itemLink.state = 'telecom.telephony';
+          itemLink.stateParams = {
+            billingAccount: item.billingAccount,
           };
+        }
 
-          if (item.services.length) {
-            // Get subLinks for submenu
-            itemLink.subLinks = this.getTelephonyGroup(item);
-          } else {
-            // Or create a link
-            itemLink.state = 'telecom.telephony';
-            itemLink.stateParams = {
-              billingAccount: item.billingAccount,
-            };
-          }
-
-          return itemLink;
-        }))
+        return itemLink;
+      }))
       .catch(() => this.$q.when(undefined));
   }
 
@@ -215,15 +213,14 @@ class ManagerNavbarService {
 
     return this.smsMediator
       .initAll()
-      .then(result =>
-        _.map(result, item => ({
-          name: item.name,
-          title: item.description || item.name,
-          state: 'telecom.sms.dashboard',
-          stateParams: {
-            serviceName: item.name,
-          },
-        })))
+      .then(result => _.map(result, item => ({
+        name: item.name,
+        title: item.description || item.name,
+        state: 'telecom.sms.dashboard',
+        stateParams: {
+          serviceName: item.name,
+        },
+      })))
       .catch(() => this.$q.when(undefined));
   }
 
@@ -235,15 +232,14 @@ class ManagerNavbarService {
     return this.ovhApiFreeFax.v6()
       .query().$promise
       .then(faxList => _.sortBy(faxList, 'number'))
-      .then(result =>
-        _.map(result, item => ({
-          name: item,
-          title: item,
-          state: 'telecom.freefax',
-          stateParams: {
-            serviceName: item,
-          },
-        })))
+      .then(result => _.map(result, item => ({
+        name: item,
+        title: item,
+        state: 'telecom.freefax',
+        stateParams: {
+          serviceName: item,
+        },
+      })))
       .catch(() => this.$q.when(undefined));
   }
 
@@ -255,22 +251,20 @@ class ManagerNavbarService {
     return this.ovhApiOverTheBox.v6()
       .query().$promise
       .then((serviceNames) => {
-        const requests = _.map(serviceNames, serviceName =>
-          this.ovhApiOverTheBox.v6().get({
-            serviceName,
-          }).$promise);
+        const requests = _.map(serviceNames, serviceName => this.ovhApiOverTheBox.v6().get({
+          serviceName,
+        }).$promise);
 
         return this.$q.all(requests);
       })
-      .then(result =>
-        _.map(result, item => ({
-          name: item.serviceName,
-          title: item.customerDescription || item.serviceName,
-          state: 'telecom.overTheBox.details',
-          stateParams: {
-            serviceName: item.serviceName,
-          },
-        })))
+      .then(result => _.map(result, item => ({
+        name: item.serviceName,
+        title: item.customerDescription || item.serviceName,
+        state: 'telecom.overTheBox.details',
+        stateParams: {
+          serviceName: item.serviceName,
+        },
+      })))
       .catch(() => this.$q.when(undefined));
   }
 

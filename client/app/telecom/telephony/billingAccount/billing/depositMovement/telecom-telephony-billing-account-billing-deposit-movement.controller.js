@@ -52,8 +52,10 @@ angular.module('managerApp').controller('TelecomTelephonyBillingAccountBillingDe
     self.currency = self.source.securityDeposit.currencyCode === 'EUR' ? '€' : self.source.securityDeposit.currencyCode;
     self.amount = 0;
 
-    const targets = _.filter(self.sources, item =>
-      item.value.billingAccount !== self.source.billingAccount);
+    const targets = _.filter(
+      self.sources,
+      item => item.value.billingAccount !== self.source.billingAccount,
+    );
 
     // disable target if not the same billing contact than source
     // build a billingAccount->promise object of all the requests to canTransferSecurityDeposit

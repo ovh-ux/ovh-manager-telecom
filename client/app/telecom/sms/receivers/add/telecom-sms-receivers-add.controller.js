@@ -81,15 +81,14 @@ angular
         promise = this.api.user.document.upload(
           this.receiverForm.uploadedFile.name,
           this.receiverForm.uploadedFile,
-        ).then(doc =>
-          this.api.sms.receivers.create({
-            serviceName: this.$stateParams.serviceName,
-          }, {
-            autoUpdate: this.receiverForm.autoUpdate,
-            documentId: doc.id,
-            description: this.receiverForm.description,
-            slotId: _.head(this.slot.available),
-          }).$promise);
+        ).then(doc => this.api.sms.receivers.create({
+          serviceName: this.$stateParams.serviceName,
+        }, {
+          autoUpdate: this.receiverForm.autoUpdate,
+          documentId: doc.id,
+          description: this.receiverForm.description,
+          slotId: _.head(this.slot.available),
+        }).$promise);
       }
       return promise.catch((err) => {
         const message = _.get(err, 'data.message');

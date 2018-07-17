@@ -5,15 +5,16 @@ angular.module('managerApp').controller('TelecomTelephonyServiceConsumptionIncom
     return OvhApiTelephony.Service().VoiceConsumption().v6().query({
       billingAccount: $stateParams.billingAccount,
       serviceName: $stateParams.serviceName,
-    }).$promise.then(ids =>
-    // single batch is limited to 50 ids, so we might make multiple batch calls
-      $q.all(_.map(_.chunk(ids, 50), chunkIds =>
-        OvhApiTelephony.Service().VoiceConsumption().v6().getBatch({
+    }).$promise.then(ids => $q
+      .all(_.map(
+        _.chunk(ids, 50),
+        chunkIds => OvhApiTelephony.Service().VoiceConsumption().v6().getBatch({
           billingAccount: $stateParams.billingAccount,
           serviceName: $stateParams.serviceName,
           consumptionId: chunkIds,
-        }).$promise))
-        .then(chunkResult => _.flatten(chunkResult)))
+        }).$promise,
+      ))
+      .then(chunkResult => _.flatten(chunkResult)))
       .then(result => _.chain(result)
         .pluck('value')
         .filter(conso => conso.wayType !== 'outgoing')
@@ -56,8 +57,8 @@ angular.module('managerApp').controller('TelecomTelephonyServiceConsumptionIncom
     fetchIncomingConsumption().then((result) => {
       self.consumption.raw = angular.copy(result);
       self.consumption.sorted = angular.copy(result);
-      self.consumption.durationSum =
-        new Date(_.sum(self.consumption.raw, conso => conso.duration) * 1000);
+      self.consumption.durationSum = new Date(_.sum(self.consumption.raw,
+        conso => conso.duration) * 1000);
     }, err => new ToastError(err));
   }
 

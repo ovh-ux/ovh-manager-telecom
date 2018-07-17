@@ -168,36 +168,36 @@ angular.module('managerApp').factory('VoipTimeConditionCondition', (voipTimeCond
     return self;
   };
 
-  VoipTimeConditionCondition.prototype.stopEdition =
-    function (cancel, cancelToOriginalSave, resetOriginalSave) {
-      const self = this;
-      let fromObject;
+  VoipTimeConditionCondition.prototype.stopEdition = function (cancel, cancelToOriginalSave,
+    resetOriginalSave) {
+    const self = this;
+    let fromObject;
 
-      if (self.originalSave && cancelToOriginalSave) {
-        fromObject = self.originalSave;
-      } else if (self.saveForEdition && cancel) {
-        fromObject = self.saveForEdition;
+    if (self.originalSave && cancelToOriginalSave) {
+      fromObject = self.originalSave;
+    } else if (self.saveForEdition && cancel) {
+      fromObject = self.saveForEdition;
+    }
+
+    if ((cancelToOriginalSave || cancel) && fromObject) {
+      self.weekDay = angular.copy(_.get(fromObject, 'weekDay'));
+      self.timeFrom = angular.copy(_.get(fromObject, 'timeFrom'));
+      self.timeTo = angular.copy(_.get(fromObject, 'timeTo'));
+
+      if (self.featureType !== 'ovhPabx') {
+        self.policy = angular.copy(_.get(fromObject, 'policy'));
       }
+    }
 
-      if ((cancelToOriginalSave || cancel) && fromObject) {
-        self.weekDay = angular.copy(_.get(fromObject, 'weekDay'));
-        self.timeFrom = angular.copy(_.get(fromObject, 'timeFrom'));
-        self.timeTo = angular.copy(_.get(fromObject, 'timeTo'));
+    if (cancelToOriginalSave || resetOriginalSave) {
+      self.originalSave = null;
+    }
 
-        if (self.featureType !== 'ovhPabx') {
-          self.policy = angular.copy(_.get(fromObject, 'policy'));
-        }
-      }
+    self.saveForEdition = null;
+    self.inEdition = false;
 
-      if (cancelToOriginalSave || resetOriginalSave) {
-        self.originalSave = null;
-      }
-
-      self.saveForEdition = null;
-      self.inEdition = false;
-
-      return self;
-    };
+    return self;
+  };
 
   VoipTimeConditionCondition.prototype.hasChange = function (property, fromOriginal) {
     const self = this;
@@ -209,7 +209,7 @@ angular.module('managerApp').factory('VoipTimeConditionCondition', (voipTimeCond
 
     if (fromOriginal && !self.originalSave) {
       return false;
-    } else if (!fromOriginal && !self.saveForEdition) {
+    } if (!fromOriginal && !self.saveForEdition) {
       return false;
     }
 

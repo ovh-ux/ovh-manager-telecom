@@ -4,9 +4,9 @@ angular.module('managerApp').directive('svaGenerator', ($q, $translatePartialLoa
       const n = number.replace(/\s/g, '');
       if (n.indexOf('+33') === 0 && n.length === 12) {
         return `0${n.slice(3)}`;
-      } else if (n.indexOf('0033') === 0 && n.length === 13) {
+      } if (n.indexOf('0033') === 0 && n.length === 13) {
         return `0${n.slice(4)}`;
-      } else if (n.indexOf('08') === 0 && n.length === 10) {
+      } if (n.indexOf('08') === 0 && n.length === 10) {
         return n;
       }
     }
@@ -17,9 +17,9 @@ angular.module('managerApp').directive('svaGenerator', ($q, $translatePartialLoa
     const prefix = parseInt(normalizeNumber(n).slice(0, 4), 10);
     if (prefix >= 800 && prefix <= 805) {
       return 'free';
-    } else if (prefix >= 806 && prefix <= 809) {
+    } if (prefix >= 806 && prefix <= 809) {
       return 'common';
-    } else if (prefix >= 810 && prefix <= 899) {
+    } if (prefix >= 810 && prefix <= 899) {
       return 'pay';
     }
     return null;

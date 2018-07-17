@@ -60,17 +60,17 @@ angular.module('managerApp').controller('telephonyNumberOvhPabxMenuCtrl', functi
   };
 
   self.getRuleAttr = function (attr) {
-    return _.get(self.dialplanRule.inEdition ?
-      self.dialplanRule.saveForEdition : self.dialplanRule, attr);
+    return _.get(self.dialplanRule.inEdition
+      ? self.dialplanRule.saveForEdition : self.dialplanRule, attr);
   };
 
   self.getDialplanRuleRealPosition = function () {
     if (!self.extensionCtrl) {
       return 1;
     }
-    return _.indexOf(self.dialplanRule.negativeAction ?
-      self.extensionCtrl.extension.negativeRules :
-      self.extensionCtrl.extension.rules, self.dialplanRule) + 1;
+    return _.indexOf(self.dialplanRule.negativeAction
+      ? self.extensionCtrl.extension.negativeRules
+      : self.extensionCtrl.extension.rules, self.dialplanRule) + 1;
   };
 
   self.getEntryMenu = function (entry) {
@@ -158,7 +158,7 @@ angular.module('managerApp').controller('telephonyNumberOvhPabxMenuCtrl', functi
         Toast.error([$translate.instant('telephony_number_feature_ovh_pabx_menu_entry_delete_error'), _.get(error, 'data.message') || ''].join(' '));
         return $q.reject(error);
       });
-    } else if (self.dialplanRule) {
+    } if (self.dialplanRule) {
       return self.dialplanRule.remove().then(() => {
         self.extensionCtrl.extension.removeRule(self.dialplanRule);
         self.dialplanRule = null;
@@ -254,8 +254,8 @@ angular.module('managerApp').controller('telephonyNumberOvhPabxMenuCtrl', functi
 
     // set jsplumb instance from number component if needed
     if (!self.jsplumbInstance) {
-      self.jsplumbInstance =
-        self.numberCtrl ? self.numberCtrl.jsplumbInstance : self.menuCtrl.jsplumbInstance;
+      self.jsplumbInstance = self.numberCtrl
+        ? self.numberCtrl.jsplumbInstance : self.menuCtrl.jsplumbInstance;
     }
 
     self.popoverStatus.isOpen = self.menu && self.menu.status === 'DRAFT';

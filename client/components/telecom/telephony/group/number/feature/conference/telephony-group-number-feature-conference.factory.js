@@ -228,12 +228,15 @@ angular.module('managerApp').factory('TelephonyGroupNumberConference', ($q, $tim
     const ids = [].concat(_.get(self.webAccess, 'read.id'), _.get(self.webAccess, 'write.id'));
 
     return $q
-      .all(_.map(_.chain(ids).compact().value(), id =>
-        OvhApiTelephony.Conference().WebAccess().v6().remove({
-          billingAccount: self.billingAccount,
-          serviceName: self.serviceName,
-          id,
-        }).$promise))
+      .all(_.map(
+        _.chain(ids).compact().value(),
+        id => OvhApiTelephony.Conference().WebAccess().v6()
+          .remove({
+            billingAccount: self.billingAccount,
+            serviceName: self.serviceName,
+            id,
+          }).$promise,
+      ))
       .then(() => {
         self.webAccess = {
           read: null,
@@ -247,23 +250,31 @@ angular.module('managerApp').factory('TelephonyGroupNumberConference', ($q, $tim
 
     return OvhApiMe.Document().v6()
       .upload(file.name, file)
-      .then(doc => OvhApiTelephony.Conference().v6().announceUpload({
-        billingAccount: self.billingAccount,
-        serviceName: self.serviceName,
-      }, {
-        documentId: doc.id,
-      }).$promise.then(task =>
-        voipServiceTask.startPolling(self.billingAccount, self.serviceName, task.taskId, {
-          namespace: `announceUpload_${self.serviceName}`,
-          interval: 1000,
-          retryMaxAttempts: 0,
-        }).catch((err) => {
-          if (err.status === 404) {
-            // add some delay to ensure we get the sound from api when refreshing
-            return $timeout(() => $q.when(true), 2000);
-          }
-          return $q.reject(err);
-        })));
+      .then(doc => OvhApiTelephony.Conference().v6()
+        .announceUpload({
+          billingAccount: self.billingAccount,
+          serviceName: self.serviceName,
+        }, {
+          documentId: doc.id,
+        }).$promise
+        .then(task => voipServiceTask
+          .startPolling(
+            self.billingAccount,
+            self.serviceName,
+            task.taskId,
+            {
+              namespace: `announceUpload_${self.serviceName}`,
+              interval: 1000,
+              retryMaxAttempts: 0,
+            },
+          )
+          .catch((err) => {
+            if (err.status === 404) {
+              // add some delay to ensure we get the sound from api when refreshing
+              return $timeout(() => $q.when(true), 2000);
+            }
+            return $q.reject(err);
+          })));
   };
 
   /* ----------  PARTICIPATNS  ----------*/
@@ -299,11 +310,13 @@ angular.module('managerApp').factory('TelephonyGroupNumberConference', ($q, $tim
     });
 
     if (!connectedParticipant) {
-      connectedParticipant =
-        new TelephonyGroupNumberConferenceParticipant(angular.extend(participantOptions, {
+      connectedParticipant = new TelephonyGroupNumberConferenceParticipant(angular.extend(
+        participantOptions,
+        {
           billingAccount: self.billingAccount,
           serviceName: self.serviceName,
-        }));
+        },
+      ));
       self.participants.push(connectedParticipant);
     } else {
       connectedParticipant.setInfos(participantOptions);

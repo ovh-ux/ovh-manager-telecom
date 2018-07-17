@@ -12,9 +12,9 @@ angular.module('managerApp').controller('XdslModemDmzCtrl', function ($statePara
   this.changeDmz = function () {
     this.editing = false;
     const validIp = validator.isIP(self.dmz) || self.dmz === null;
-    if (_.isEmpty($stateParams.serviceName) ||
-      !PackXdslModemMediator.capabilities.canChangeDMZ ||
-      !validIp) {
+    if (_.isEmpty($stateParams.serviceName)
+      || !PackXdslModemMediator.capabilities.canChangeDMZ
+      || !validIp) {
       Toast.error($translate.instant('xdsl_modem_dmz_an_error_ocurred'));
       return $q.reject();
     }

@@ -158,8 +158,8 @@ angular.module('managerApp').controller('TelecomTelephonyServiceAssistLogsCtrl',
 
   self.getBulkParams = function () {
     self.bulkDatas.infos.actions[0].route = `/telephony/{billingAccount}/${self.type}/{serviceName}`;
-    const logs = self.edition.mode ?
-      self.edition.notifications.logs : self.service.feature.notifications.logs;
+    const logs = self.edition.mode
+      ? self.edition.notifications.logs : self.service.feature.notifications.logs;
 
     return {
       notifications: {

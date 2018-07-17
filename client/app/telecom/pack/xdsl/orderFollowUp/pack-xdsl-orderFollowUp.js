@@ -14,4 +14,3 @@ angular.module('managerApp').config(($stateProvider) => {
     translations: ['common', 'telecom/pack/xdsl/orderFollowUp', 'telecom/pack/common'],
   });
 });
-

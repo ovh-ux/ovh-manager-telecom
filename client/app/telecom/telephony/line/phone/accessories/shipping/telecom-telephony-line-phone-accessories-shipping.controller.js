@@ -32,9 +32,7 @@ angular.module('managerApp').controller('TelecomTelephonyLinePhoneAccessoriesShi
         };
       }
       return JSON.stringify(contactCopy);
-    }).map(groups => // get only contacts that are unique
-      groups[0]).filter(contact => // filter contact that have id and are in given countries
-      _.get(contact, 'address') && ['BE', 'FR', 'CH'].indexOf(contact.address.country) > -1)
+    }).map(groups => groups[0]).filter(contact => _.get(contact, 'address') && ['BE', 'FR', 'CH'].indexOf(contact.address.country) > -1)
       .value();
   }
 

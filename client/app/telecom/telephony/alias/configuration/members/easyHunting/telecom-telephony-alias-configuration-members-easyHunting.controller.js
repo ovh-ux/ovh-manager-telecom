@@ -55,13 +55,16 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationMembe
         billingAccount: $stateParams.billingAccount,
         serviceName: $stateParams.serviceName,
       }).$promise
-      .then(ids => $q.all(_.map(_.chunk(ids, 50), chunkIds =>
-        OvhApiTelephony.EasyHunting().Hunting().Agent().v6()
-          .getBatch({
-            billingAccount: $stateParams.billingAccount,
-            serviceName: $stateParams.serviceName,
-            agentId: chunkIds,
-          }).$promise))
+      .then(ids => $q
+        .all(_.map(
+          _.chunk(ids, 50),
+          chunkIds => OvhApiTelephony.EasyHunting().Hunting().Agent().v6()
+            .getBatch({
+              billingAccount: $stateParams.billingAccount,
+              serviceName: $stateParams.serviceName,
+              agentId: chunkIds,
+            }).$promise,
+        ))
         .then(chunkResult => _.pluck(_.flatten(chunkResult), 'value')));
   };
 
@@ -70,15 +73,18 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationMembe
     OvhApiTelephony.EasyHunting().Hunting().Queue().Agent()
       .v6()
       .resetAllCache();
-    return $q.all(_.map(_.chunk(ids, 50), chunkIds =>
-      OvhApiTelephony.EasyHunting().Hunting().Queue().Agent()
-        .v6()
-        .getBatch({
-          billingAccount: $stateParams.billingAccount,
-          serviceName: $stateParams.serviceName,
-          queueId: self.queueId,
-          agentId: chunkIds,
-        }).$promise))
+    return $q
+      .all(_.map(
+        _.chunk(ids, 50),
+        chunkIds => OvhApiTelephony.EasyHunting().Hunting().Queue().Agent()
+          .v6()
+          .getBatch({
+            billingAccount: $stateParams.billingAccount,
+            serviceName: $stateParams.serviceName,
+            queueId: self.queueId,
+            agentId: chunkIds,
+          }).$promise,
+      ))
       .then(chunkResult => _.pluck(_.flatten(chunkResult), 'value'))
       .then((orders) => {
         _.each(orders, (order) => {
@@ -146,21 +152,19 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationMembe
         .create({
           billingAccount: $stateParams.billingAccount,
           serviceName: $stateParams.serviceName,
-        }, member).$promise.then(agent =>
-        // put agent in the queue
-          OvhApiTelephony.EasyHunting().Hunting().Agent().Queue()
-            .v6()
-            .create({
-              billingAccount: $stateParams.billingAccount,
-              serviceName: $stateParams.serviceName,
-              agentId: agent.agentId,
-            }, {
-              position: 0,
-              queueId: self.queueId,
-            }).$promise.then(() => {
-              agents.push(agent);
-              return agent;
-            })));
+        }, member).$promise.then(agent => OvhApiTelephony.EasyHunting().Hunting().Agent().Queue()
+          .v6()
+          .create({
+            billingAccount: $stateParams.billingAccount,
+            serviceName: $stateParams.serviceName,
+            agentId: agent.agentId,
+          }, {
+            position: 0,
+            queueId: self.queueId,
+          }).$promise.then(() => {
+            agents.push(agent);
+            return agent;
+          })));
     });
 
     return promise.then(() => {

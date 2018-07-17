@@ -17,10 +17,10 @@ angular.module('managerApp').controller('telephonyNumberOvhPabxSoundPopoverSecti
     =============================== */
 
   self.hasSoundFileError = function () {
-    return self.uploadErrors.extension ||
-      self.uploadErrors.size ||
-      self.uploadErrors.exists ||
-      self.uploadErrors.name;
+    return self.uploadErrors.extension
+      || self.uploadErrors.size
+      || self.uploadErrors.exists
+      || self.uploadErrors.name;
   };
 
   /* -----  End of HELPERS  ------*/

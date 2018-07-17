@@ -12,10 +12,14 @@ angular.module('managerApp').controller('TelecomTelephonyServiceFaxCustomDomains
   function fetchCustomDomains() {
     return OvhApiMe.Fax().CustomDomains().v6()
       .query().$promise
-      .then(customDomainsIds => $q.all(_.map(customDomainsIds, id =>
-        OvhApiMe.Fax().CustomDomains().v6().get({
-          id,
-        }).$promise)));
+      .then(customDomainsIds => $q
+        .all(_.map(
+          customDomainsIds,
+          id => OvhApiMe.Fax().CustomDomains().v6()
+            .get({
+              id,
+            }).$promise,
+        )));
   }
 
   /* -----  End of HELPERS  ------ */

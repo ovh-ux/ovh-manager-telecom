@@ -10,8 +10,8 @@ angular.module('managerApp').service('PackSidebar', function ($q, $translate, Si
     ================================== */
 
   function getPackStatus(pack) {
-    const isAllAccessInError =
-      pack.xdsl.length && _.every(pack.xdsl, xdsl => accessErrorStates.indexOf(xdsl.status) > -1);
+    const isAllAccessInError = pack.xdsl.length
+      && _.every(pack.xdsl, xdsl => accessErrorStates.indexOf(xdsl.status) > -1);
     if (isAllAccessInError) {
       return $q.when('error');
     }
@@ -103,8 +103,13 @@ angular.module('managerApp').service('PackSidebar', function ($q, $translate, Si
    *  and then add them to sidebar menu.
    */
   function fillXdsl(xdslListParam) {
-    const xdslList = _.filter(xdslListParam, xdslAccess => !_.find(self.allPacks, xdslPack =>
-      _.find(xdslPack.xdsl, { accessName: xdslAccess.accessName })));
+    const xdslList = _.filter(
+      xdslListParam,
+      xdslAccess => !_.find(
+        self.allPacks,
+        xdslPack => _.find(xdslPack.xdsl, { accessName: xdslAccess.accessName }),
+      ),
+    );
 
     angular.forEach(xdslList, (xdsl) => {
       let xdslIconClass = ['ovh-font'];

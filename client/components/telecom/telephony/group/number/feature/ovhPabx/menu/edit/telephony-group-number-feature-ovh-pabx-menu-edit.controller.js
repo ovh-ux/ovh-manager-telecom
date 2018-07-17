@@ -22,10 +22,10 @@ angular.module('managerApp').controller('telephonyNumberOvhPabxMenuEditCtrl', fu
     =============================== */
 
   self.hasSoundFileError = function () {
-    return self.uploadErrors.extension ||
-      self.uploadErrors.size ||
-      self.uploadErrors.exists ||
-      self.uploadErrors.name;
+    return self.uploadErrors.extension
+      || self.uploadErrors.size
+      || self.uploadErrors.exists
+      || self.uploadErrors.name;
   };
 
   self.getSoundInfos = function (soundType) {
@@ -141,7 +141,7 @@ angular.module('managerApp').controller('telephonyNumberOvhPabxMenuEditCtrl', fu
         // save menu entry if menu entry
         self.menuCtrl.menuEntry.actionParam = self.menu.menuId;
         return self.menuCtrl.menuEntry.status === 'DRAFT' ? self.menuCtrl.menuEntry.create() : self.menuCtrl.menuEntry.save();
-      } else if (self.menuCtrl.dialplanRule && self.menuCtrl.dialplanRule.action === 'ivr' && self.menuCtrl.dialplanRule.ivrMenu) {
+      } if (self.menuCtrl.dialplanRule && self.menuCtrl.dialplanRule.action === 'ivr' && self.menuCtrl.dialplanRule.ivrMenu) {
         // save dialplan extension rule
         self.menuCtrl.dialplanRule.actionParam = self.menu.menuId;
         return self.menuCtrl.dialplanRule.status === 'DRAFT' ? self.menuCtrl.dialplanRule.create() : self.menuCtrl.dialplanRule.save();

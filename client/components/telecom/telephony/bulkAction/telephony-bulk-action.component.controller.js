@@ -62,8 +62,8 @@ angular.module('managerApp').controller('telephonyBulkActionCtrl', function ($q,
   self.$onInit = function () {
     self.loading.init = true;
 
-    self.previouslyUpdatedServices =
-      telephonyBulkActionUpdatedServicesContainer.getUpdatedServices();
+    self.previouslyUpdatedServices = telephonyBulkActionUpdatedServicesContainer
+      .getUpdatedServices();
 
     // check for attributes
     // check for serviceType : line or number - default to line

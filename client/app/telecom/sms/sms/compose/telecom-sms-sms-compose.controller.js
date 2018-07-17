@@ -85,34 +85,32 @@ angular
       };
 
       this.loading.init = true;
-      return this.SmsMediator.initDeferred.promise.then(() =>
-        this.$q.all({
-          enums: this.fetchEnums(),
-          user: this.fetchUser(),
-          senders: this.fetchSenders(),
-          receivers: this.fetchReceivers(),
-          phonebooks: this.fetchPhonebooks(),
-        }).then((result) => {
-          this.enums = result.enums;
-          this.user = result.user;
-          this.senders.raw = result.senders;
-          this.receivers.raw = result.receivers;
-          this.phonebooks.raw = result.phonebooks;
-          this.phonebooks.current = _.head(this.phonebooks.raw);
-          return this.senders.raw;
-        }).then(senders =>
-          _.each(senders, (sender) => {
-            if (sender.type === 'virtual') {
-              this.senders.virtual.push(sender);
-            } else if (/\d+/.test(sender.sender)) {
-              this.senders.other.push(sender);
-            } else {
-              this.senders.alphanumeric.push(sender);
-            }
-          })).then(() => {
-          this.service = this.SmsMediator.getCurrentSmsService();
-          this.computeRemainingChar();
-        })).catch((err) => {
+      return this.SmsMediator.initDeferred.promise.then(() => this.$q.all({
+        enums: this.fetchEnums(),
+        user: this.fetchUser(),
+        senders: this.fetchSenders(),
+        receivers: this.fetchReceivers(),
+        phonebooks: this.fetchPhonebooks(),
+      }).then((result) => {
+        this.enums = result.enums;
+        this.user = result.user;
+        this.senders.raw = result.senders;
+        this.receivers.raw = result.receivers;
+        this.phonebooks.raw = result.phonebooks;
+        this.phonebooks.current = _.head(this.phonebooks.raw);
+        return this.senders.raw;
+      }).then(senders => _.each(senders, (sender) => {
+        if (sender.type === 'virtual') {
+          this.senders.virtual.push(sender);
+        } else if (/\d+/.test(sender.sender)) {
+          this.senders.other.push(sender);
+        } else {
+          this.senders.alphanumeric.push(sender);
+        }
+      })).then(() => {
+        this.service = this.SmsMediator.getCurrentSmsService();
+        this.computeRemainingChar();
+      })).catch((err) => {
         this.ToastError(err);
       }).finally(() => {
         this.loading.init = false;
@@ -145,14 +143,16 @@ angular
      * @return {Promise}
      */
     fetchSenders() {
-      return this.api.sms.senders.query({
-        serviceName: this.$stateParams.serviceName,
-      }).$promise.then(sendersIds =>
-        this.$q.all(_.map(sendersIds, sender =>
-          this.api.sms.senders.get({
+      return this.api.sms.senders
+        .query({
+          serviceName: this.$stateParams.serviceName,
+        }).$promise
+        .then(sendersIds => this.$q
+          .all(_.map(sendersIds, sender => this.api.sms.senders.get({
             serviceName: this.$stateParams.serviceName,
             sender,
-          }).$promise)).then(senders => _.filter(senders, { status: 'enable' })));
+          }).$promise))
+          .then(senders => _.filter(senders, { status: 'enable' })));
     }
 
     /**
@@ -160,11 +160,12 @@ angular
      * @return {Promise}
      */
     fetchReceivers() {
-      return this.api.sms.receivers.query({
-        serviceName: this.$stateParams.serviceName,
-      }).$promise.then(receiversIds =>
-        this.$q.all(_.map(receiversIds, slotId =>
-          this.api.sms.receivers.get({
+      return this.api.sms.receivers
+        .query({
+          serviceName: this.$stateParams.serviceName,
+        }).$promise
+        .then(receiversIds => this.$q
+          .all(_.map(receiversIds, slotId => this.api.sms.receivers.get({
             serviceName: this.$stateParams.serviceName,
             slotId,
           }).$promise)));
@@ -175,11 +176,12 @@ angular
      * @return {Promise}
      */
     fetchPhonebooks() {
-      return this.api.sms.phonebooks.query({
-        serviceName: this.$stateParams.serviceName,
-      }).$promise.then(phonebooksIds =>
-        this.$q.all(_.map(phonebooksIds, bookKey =>
-          this.api.sms.phonebooks.get({
+      return this.api.sms.phonebooks
+        .query({
+          serviceName: this.$stateParams.serviceName,
+        }).$promise
+        .then(phonebooksIds => this.$q
+          .all(_.map(phonebooksIds, bookKey => this.api.sms.phonebooks.get({
             serviceName: this.$stateParams.serviceName,
             bookKey,
           }).$promise)).then(phonebooks => _.sortBy(phonebooks, 'name')));
@@ -306,10 +308,10 @@ angular
      * @return {String}
      */
     getEstimationCreditRemaining() {
-      const totalReceivers = this.receivers.records +
-        this.phonebooks.lists.length + (this.sms.receivers ? 1 : 0);
-      const creditRemaining = this.service.creditsLeft -
-        (totalReceivers * this.message.equivalence);
+      const totalReceivers = this.receivers.records
+        + this.phonebooks.lists.length + (this.sms.receivers ? 1 : 0);
+      const creditRemaining = this.service.creditsLeft
+        - (totalReceivers * this.message.equivalence);
       return this.$filter('number')(creditRemaining, 2);
     }
 
@@ -404,16 +406,15 @@ angular
           ])).$promise);
         }
         if (_.size(slotIds)) {
-          _.map(slotIds, slotId =>
-            promises.push(this.api.sms.virtualNumbers.jobs.send({
-              serviceName: this.$stateParams.serviceName,
-              number: this.sms.sender,
-            }, _.omit(this.createSms(slotId), [
-              'receivers',
-              'sender',
-              'noStopClause',
-              'senderForResponse',
-            ])).$promise));
+          _.map(slotIds, slotId => promises.push(this.api.sms.virtualNumbers.jobs.send({
+            serviceName: this.$stateParams.serviceName,
+            number: this.sms.sender,
+          }, _.omit(this.createSms(slotId), [
+            'receivers',
+            'sender',
+            'noStopClause',
+            'senderForResponse',
+          ])).$promise));
         }
       } else {
         if (this.sms.receivers || _.size(this.phonebooks.lists)) {
@@ -422,10 +423,9 @@ angular
           }, this.createSms()).$promise);
         }
         if (_.size(slotIds)) {
-          _.map(slotIds, slotId =>
-            promises.push(this.api.sms.jobs.send({
-              serviceName: this.$stateParams.serviceName,
-            }, _.omit(this.createSms(slotId), 'receivers')).$promise));
+          _.map(slotIds, slotId => promises.push(this.api.sms.jobs.send({
+            serviceName: this.$stateParams.serviceName,
+          }, _.omit(this.createSms(slotId), 'receivers')).$promise));
         }
       }
 

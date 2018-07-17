@@ -23,8 +23,10 @@ angular.module('managerApp').controller('TelecomTelephonyLineDomainCtrl', functi
     =============================== */
 
   self.hasClientDomainChange = function () {
-    return !_.every(self.availableSipDomains.client, domain =>
-      _.isEqual(domain.prevValue, domain.currentDomain));
+    return !_.every(
+      self.availableSipDomains.client,
+      domain => _.isEqual(domain.prevValue, domain.currentDomain),
+    );
   };
 
   /* -----  End of HELPERS  ------*/
