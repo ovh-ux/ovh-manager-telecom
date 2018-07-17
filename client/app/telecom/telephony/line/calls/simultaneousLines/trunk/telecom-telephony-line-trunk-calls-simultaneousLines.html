@@ -1,34 +1,33 @@
 <section class="telephony-group-line-simultaneousLines">
 
     <header>
-        <section-back-link section-back-link-to-state="telecom.telephony.line.calls" section-back-link-title="{{ 'telephony_line_calls_back_link' | translate }}">
-        </section-back-link>
-        <h1 data-translate="telephony_line_actions_line_calls_simultaneous_line_title"></h1>
+        <oui-back-button data-heading="{{:: 'telephony_line_actions_line_calls_simultaneous_line_title' | translate }}"
+                         data-ui-sref="telecom.telephony.line.calls"></oui-back-button>
     </header>
 
-    <div class="text-center" data-ng-if="TrunkRatesSimultaneousLinesCtrl.trunkRates.loading">
+    <div class="text-center" data-ng-if="$ctrl.trunkRates.loading">
         <oui-spinner></oui-spinner>
     </div>
 
-    <div class="telecom-section-content" data-ng-hide="TrunkRatesSimultaneousLinesCtrl.trunkRates.loading">
+    <div class="telecom-section-content" data-ng-if="!$ctrl.trunkRates.loading">
 
         <toast-message></toast-message>
 
-        <div class="alert alert-info"
-             role="alert">
-             <p data-translate="telephony_line_actions_line_calls_trunk_simultaneous_info1"></p>
-             <p data-translate="telephony_line_actions_line_calls_trunk_simultaneous_info2"></p>
-             <p data-translate="telephony_line_actions_line_calls_trunk_simultaneous_info3"></p>
-        </div>
+        <oui-message data-type="info">
+            <p data-translate="telephony_line_actions_line_calls_trunk_simultaneous_info1"></p>
+            <p data-translate="telephony_line_actions_line_calls_trunk_simultaneous_info2"></p>
+            <p data-translate="telephony_line_actions_line_calls_trunk_simultaneous_info3"></p>
+        </oui-message>
 
-        <p data-ng-if="TrunkRatesSimultaneousLinesCtrl.trunkRates.current.quantity > 100" data-translate="telephony_line_actions_line_calls_simultaneous_line_support"></p>
+        <p data-ng-if="$ctrl.trunkRates.current.quantity > 100" data-translate="telephony_line_actions_line_calls_simultaneous_line_support"></p>
 
-        <div data-ng-if="TrunkRatesSimultaneousLinesCtrl.trunkRates.current.quantity <= 100 && !TrunkRatesSimultaneousLinesCtrl.trunkRates.loading">
+        <div data-ng-if="$ctrl.trunkRates.current.quantity <= 100 && !$ctrl.trunkRates.loading">
             <form name="simultaneousLinesCtrlForm"
-                  data-ng-if="!TrunkRatesSimultaneousLinesCtrl.trunkRates.order"
-                  data-ng-submit="TrunkRatesSimultaneousLinesCtrl.orderPacks()">
+                  data-ng-if="!$ctrl.trunkRates.order"
+                  data-ng-submit="$ctrl.orderPacks()"
+                  novalidate>
 
-                <div class="text-center" data-ng-if="!TrunkRatesSimultaneousLinesCtrl.contracts && TrunkRatesSimultaneousLinesCtrl.loading.order">
+                <div class="text-center" data-ng-if="!$ctrl.contracts && $ctrl.loading.order">
                     <oui-spinner></oui-spinner>
                 </div>
 
@@ -46,7 +45,7 @@
                                        data-translate="telephony_line_actions_line_calls_trunk_simultaneous_current_channels_quantity"></label>
                                 <div class="col-md-2">
                                     <p class="form-control-static p-0 font-weight-bold"
-                                       data-ng-bind="TrunkRatesSimultaneousLinesCtrl.trunkRates.current.quantity"></p>
+                                       data-ng-bind="$ctrl.trunkRates.current.quantity"></p>
                                 </div>
                             </div>
 
@@ -55,27 +54,27 @@
                                        data-translate="telephony_line_actions_line_calls_trunk_simultaneous_current_channels_price"></label>
                                 <div class="col-md-8">
                                     <p class="form-control-static p-0 font-weight-bold"
-                                       data-ng-bind="TrunkRatesSimultaneousLinesCtrl.trunkRates.current.price"></p>
+                                       data-ng-bind="$ctrl.trunkRates.current.price"></p>
                                 </div>
                             </div>
 
                             <div class="row mt-5"
-                                 data-ng-if="TrunkRatesSimultaneousLinesCtrl.trunkRates.pending.price">
+                                 data-ng-if="$ctrl.trunkRates.pending.price">
                                 <label class="control-label col-md-4"
                                        data-translate="telephony_line_actions_line_calls_trunk_simultaneous_pending_channels_quantity"></label>
                                 <div class="col-md-8">
                                     <p class="form-control-static p-0 font-weight-bold"
-                                       data-ng-bind="TrunkRatesSimultaneousLinesCtrl.trunkRates.current.price"></p>
+                                       data-ng-bind="$ctrl.trunkRates.current.price"></p>
                                 </div>
                             </div>
 
                             <div class="row"
-                                data-ng-if="TrunkRatesSimultaneousLinesCtrl.trunkRates.pending.price">
+                                data-ng-if="$ctrl.trunkRates.pending.price">
                                 <label class="control-label col-md-4"
                                        data-translate="telephony_line_actions_line_calls_trunk_simultaneous_pending_channels_price"></label>
                                 <div class="col-md-8">
                                     <p class="form-control-static p-0 font-weight-bold"
-                                       data-ng-bind="TrunkRatesSimultaneousLinesCtrl.trunkRates.current.price"></p>
+                                       data-ng-bind="$ctrl.trunkRates.current.price"></p>
                                 </div>
                             </div>
                         </section>
@@ -96,11 +95,11 @@
                                     <input id="quantityWanted"
                                            name="quantityWantedr"
                                            class="form-control"
-                                           data-ng-model="TrunkRatesSimultaneousLinesCtrl.trunkRates.change.quantityWanted"
+                                           data-ng-model="$ctrl.trunkRates.change.quantityWanted"
                                            type="number"
                                            min="0" max="100" step="5"
                                            data-ng-min="0" data-ng-max="100" data-ng-step="5"
-                                           data-ng-change="TrunkRatesSimultaneousLinesCtrl.getNewRepartition()" />
+                                           data-ng-change="$ctrl.getNewRepartition()" />
                                 </div>
                             </div>
 
@@ -109,7 +108,7 @@
                                        data-translate="telephony_line_actions_line_calls_trunk_simultaneous_new_channels_quantity_optimized"></label>
                                 <div class="col-md-2">
                                     <p class="form-control-static p-0 font-weight-bold"
-                                       data-ng-bind="TrunkRatesSimultaneousLinesCtrl.trunkRates.change.quantityOptimized"></p>
+                                       data-ng-bind="$ctrl.trunkRates.change.quantityOptimized"></p>
                                 </div>
                             </div>
 
@@ -118,7 +117,7 @@
                                        data-translate="telephony_line_actions_line_calls_trunk_simultaneous_new_channels_price"></label>
                                 <div class="col-md-8">
                                     <p class="form-control-static p-0 font-weight-bold"
-                                       data-ng-bind="TrunkRatesSimultaneousLinesCtrl.trunkRates.change.price"></p>
+                                       data-ng-bind="$ctrl.trunkRates.change.price"></p>
                                 </div>
                             </div>
 
@@ -128,13 +127,13 @@
                                 <div class="col-md-8">
                                     <p class="form-control-static p-0 font-weight-bold"
                                        data-translate="telephony_line_actions_line_calls_trunk_simultaneous_channels_bandwidth_rate"
-                                       data-translate-values="{ bandwidth: TrunkRatesSimultaneousLinesCtrl.trunkRates.change.bandwidth }"></p>
+                                       data-translate-values="{ bandwidth: $ctrl.trunkRates.change.bandwidth }"></p>
                                 </div>
                             </div>
 
                             <div class="float-right">
                                 <button class="btn btn-primary"
-                                        data-ng-disabled="!TrunkRatesSimultaneousLinesCtrl.canOrder() || TrunkRatesSimultaneousLinesCtrl.trunkRates.change.loading">
+                                        data-ng-disabled="!$ctrl.canOrder() || $ctrl.trunkRates.change.loading">
                                     <oui-spinner class="mr-2"
                                                 data-ng-if="LineForwardCtrl.loading.save"
                                                 data-size="s">
@@ -152,15 +151,15 @@
                             </h2>
                         </header>
                         <div class="form-group chart-container"
-                            data-ng-if="!TrunkRatesSimultaneousLinesCtrl.charts.loading">
-                            <p data-chartjs="TrunkRatesSimultaneousLinesCtrl.chart"></p>
+                            data-ng-if="!$ctrl.charts.loading">
+                            <p data-chartjs="$ctrl.chart"></p>
                         </div>
                     </section>
                 </div>
             </form>
 
             <div class="row"
-                 data-ng-if="TrunkRatesSimultaneousLinesCtrl.trunkRates.order.orderId">
+                 data-ng-if="$ctrl.trunkRates.order.orderId">
                 <section class="col-md-6 widget-presentation">
                     <header class="widget-presentation-header">
                         <h2 class="widget-presentation-title"
@@ -173,7 +172,7 @@
                                 data-translate="telephony_line_actions_line_calls_simultaneous_line_order_id"></label>
                         <div class="col-xs-6">
                             <p class="form-control-static p-0 font-weight-bold"
-                                data-ng-bind="TrunkRatesSimultaneousLinesCtrl.trunkRates.order.orderId"></p>
+                                data-ng-bind="$ctrl.trunkRates.order.orderId"></p>
                         </div>
                     </div>
 
@@ -182,7 +181,7 @@
                                 data-translate="telephony_line_actions_line_calls_simultaneous_line_order_link"></label>
                         <div class="col-xs-6">
                             <a target="_blank" title="{{'telephony_line_actions_line_calls_simultaneous_order' | translate}}"
-                                data-ng-href="{{TrunkRatesSimultaneousLinesCtrl.trunkRates.order.url}}">
+                                data-ng-href="{{$ctrl.trunkRates.order.url}}">
                                 <span data-translate="telephony_line_actions_line_calls_simultaneous_line_order_click"></span>
                                 <span class="ovh-font ovh-font-newtab ml-1"></span>
                             </a>
@@ -194,7 +193,7 @@
                                 data-translate="telephony_line_actions_line_calls_simultaneous_line_price_without_vat"></label>
                         <div class="col-xs-6">
                             <p class="form-control-static p-0 font-weight-bold text-danger"
-                                data-ng-bind="TrunkRatesSimultaneousLinesCtrl.trunkRates.order.prices.withoutTax.text"></p>
+                                data-ng-bind="$ctrl.trunkRates.order.prices.withoutTax.text"></p>
                         </div>
                     </div>
 
@@ -203,7 +202,7 @@
                                 data-translate="telephony_line_actions_line_calls_simultaneous_line_price_total"></label>
                         <div class="col-xs-6">
                             <p class="form-control-static p-0 font-weight-bold text-danger"
-                                data-ng-bind="TrunkRatesSimultaneousLinesCtrl.trunkRates.order.prices.withTax.text"></p>
+                                data-ng-bind="$ctrl.trunkRates.order.prices.withTax.text"></p>
                         </div>
                     </div>
                 </section>
