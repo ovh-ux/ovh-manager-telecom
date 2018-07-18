@@ -48,6 +48,7 @@ angular.module('managerApp').controller('TelecomTelephonyAbbreviatedNumbersCtrl'
   $onInit() {
     this.pattern = {
       regexp: /^7\d{2,3}$/,
+      startDigit: 7,
       errorMessage: this.$translate.instant('telephony_abbreviated_numbers_pattern_error'),
     };
     this.filter = {

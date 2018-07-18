@@ -18,8 +18,8 @@
 
         <oui-field
             data-label="{{:: 'telephony_abbreviated_numbers_id' | translate }}"
-            data-error-messages="{pattern: AbbreviatedNumberModal.pattern.errorMessage}"
-            data-help-text="{{:: 'telephony_abbreviated_numbers_id_help' | translate }}">
+            data-error-messages="{ pattern: AbbreviatedNumberModal.pattern.errorMessage }"
+            data-help-text="{{:: 'telephony_abbreviated_numbers_id_help' | translate: { digit:AbbreviatedNumberModal.pattern.startDigit } }}">
             <input
                 type="text"
                 name="abbreviatedNumber"
