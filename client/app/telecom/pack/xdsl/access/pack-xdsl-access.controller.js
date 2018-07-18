@@ -69,8 +69,8 @@ angular.module('managerApp').controller('XdslAccessCtrl', function (
 
   function success(result) {
     if (result.success) {
-      if ($scope.access.tasks.current.pendingOrderAdditionalIpOption &&
-        !result.data.pendingOrderAdditionalIpOption) {
+      if ($scope.access.tasks.current.pendingOrderAdditionalIpOption
+        && !result.data.pendingOrderAdditionalIpOption) {
         self.getIps();
         self.ordering = false;
       }

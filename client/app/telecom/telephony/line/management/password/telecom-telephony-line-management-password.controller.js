@@ -37,8 +37,10 @@ angular.module('managerApp').controller('TelecomTelephonyLinePasswordCtrl', func
     return $q.allSettled(promises)
       .then(listLines => listLines)
       .catch(listLines => listLines)
-      .then(listLines => $q.when(_.filter(filteredServices, service =>
-        _.some(listLines, { serviceName: service.serviceName, canChangePassword: true }))));
+      .then(listLines => $q.when(_.filter(
+        filteredServices,
+        service => _.some(listLines, { serviceName: service.serviceName, canChangePassword: true }),
+      )));
   };
 
   self.onBulkSuccess = function (bulkResult) {

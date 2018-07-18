@@ -90,8 +90,8 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationModeE
   }
 
   self.hasChanges = function () {
-    return !(angular.equals(self.options, self.optionsForm) &&
-      angular.equals(self.queueOptions, self.queueOptionsForm));
+    return !(angular.equals(self.options, self.optionsForm)
+      && angular.equals(self.queueOptions, self.queueOptionsForm));
   };
 
   self.undoChanges = function () {

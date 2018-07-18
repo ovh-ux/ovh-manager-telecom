@@ -27,12 +27,16 @@ angular.module('managerApp').controller('TelecomTelephonyLineCallsExternalNumber
         billingAccount: $stateParams.billingAccount,
         serviceName: $stateParams.serviceName,
       }).$promise
-      .then(numbers => $q.all(_.map(_.chunk(numbers, 50), chunkNumbers =>
-        OvhApiTelephony.Trunk().ExternalDisplayedNumber().v6().getBatch({
-          billingAccount: $stateParams.billingAccount,
-          serviceName: $stateParams.serviceName,
-          number: chunkNumbers,
-        }).$promise))
+      .then(numbers => $q
+        .all(_.map(
+          _.chunk(numbers, 50),
+          chunkNumbers => OvhApiTelephony.Trunk().ExternalDisplayedNumber().v6()
+            .getBatch({
+              billingAccount: $stateParams.billingAccount,
+              serviceName: $stateParams.serviceName,
+              number: chunkNumbers,
+            }).$promise,
+        ))
         .then(chunkResult => _.flatten(chunkResult)))
       .then(resultParam => _.chain(resultParam).filter(number => number.value !== null).pluck('value').value());
   }

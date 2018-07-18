@@ -61,38 +61,43 @@ angular
      * @return {Promise}
      */
     fetchPhonebookContact(phonebook) {
-      return this.api.sms.phonebooks.phonebookcontact.query({
-        serviceName: this.$stateParams.serviceName,
-        bookKey: _.get(phonebook, 'bookKey'),
-      }).$promise.then(phonebookContactIds =>
-        this.$q.all(_.map(_.chunk(phonebookContactIds, 50), id =>
-          this.api.sms.phonebooks.phonebookcontact.getBatch({
-            serviceName: this.$stateParams.serviceName,
-            bookKey: _.get(phonebook, 'bookKey'),
-            id,
-          }).$promise)).then((chunkResult) => {
-          const result = _.pluck(_.flatten(chunkResult), 'value');
-          const emptyPhoneNumber = _.get(this.constant.SMS_PHONEBOOKS, 'emptyFields.numbers');
-          return _.each(result, (contact) => {
-            _.set(contact, 'homeMobile', contact.homeMobile === emptyPhoneNumber ? '' : contact.homeMobile);
-            _.set(contact, 'homePhone', contact.homePhone === emptyPhoneNumber ? '' : contact.homePhone);
-            _.set(contact, 'workMobile', contact.workMobile === emptyPhoneNumber ? '' : contact.workMobile);
-            _.set(contact, 'workPhone', contact.workPhone === emptyPhoneNumber ? '' : contact.workPhone);
-          });
-        }).then((contacts) => {
-          const clonedContacts = [];
-          _.each(this.availableTypes, (field) => {
-            _.each(_.cloneDeep(contacts), (contact) => {
-              _.set(contact, 'type', field);
-              _.set(contact, 'id', [contact.id, contact.type].join('_'));
-              if (_.isEmpty(_.get(contact, field))) {
-                return;
-              }
-              clonedContacts.push(_.omit(contact, _.difference(this.availableTypes, [field])));
+      return this.api.sms.phonebooks.phonebookcontact
+        .query({
+          serviceName: this.$stateParams.serviceName,
+          bookKey: _.get(phonebook, 'bookKey'),
+        }).$promise
+        .then(phonebookContactIds => this.$q
+          .all(_.map(
+            _.chunk(phonebookContactIds, 50),
+            id => this.api.sms.phonebooks.phonebookcontact.getBatch({
+              serviceName: this.$stateParams.serviceName,
+              bookKey: _.get(phonebook, 'bookKey'),
+              id,
+            }).$promise,
+          ))
+          .then((chunkResult) => {
+            const result = _.pluck(_.flatten(chunkResult), 'value');
+            const emptyPhoneNumber = _.get(this.constant.SMS_PHONEBOOKS, 'emptyFields.numbers');
+            return _.each(result, (contact) => {
+              _.set(contact, 'homeMobile', contact.homeMobile === emptyPhoneNumber ? '' : contact.homeMobile);
+              _.set(contact, 'homePhone', contact.homePhone === emptyPhoneNumber ? '' : contact.homePhone);
+              _.set(contact, 'workMobile', contact.workMobile === emptyPhoneNumber ? '' : contact.workMobile);
+              _.set(contact, 'workPhone', contact.workPhone === emptyPhoneNumber ? '' : contact.workPhone);
             });
-          });
-          return _.flatten(clonedContacts);
-        }));
+          }).then((contacts) => {
+            const clonedContacts = [];
+            _.each(this.availableTypes, (field) => {
+              _.each(_.cloneDeep(contacts), (contact) => {
+                _.set(contact, 'type', field);
+                _.set(contact, 'id', [contact.id, contact.type].join('_'));
+                if (_.isEmpty(_.get(contact, field))) {
+                  return;
+                }
+                clonedContacts.push(_.omit(contact, _.difference(this.availableTypes, [field])));
+              });
+            });
+            return _.flatten(clonedContacts);
+          }));
     }
 
     /**

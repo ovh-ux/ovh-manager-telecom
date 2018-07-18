@@ -65,34 +65,41 @@ angular.module('managerApp').factory('TelephonyGroupNumberOvhPabxSound', ($q, $t
     const self = this;
 
     // first upload file to user document
-    return OvhApiMe.Document().v6().upload(self.name, file).then(doc =>
-    // second upload the file uploaded with its url to user document
-      OvhApiTelephony.OvhPabx().v6().soundUpload({
-        billingAccount: self.billingAccount,
-        serviceName: self.serviceName,
-      }, {
-        name: self.name,
-        url: doc.getUrl,
-      }).$promise.then(task =>
-      // third poll to check the progression of file upload
-        voipServiceTask.startPolling(self.billingAccount, self.serviceName, task.taskId, {
-          namespace: `soundUploadTask_${self.serviceName}`,
-          interval: 1000,
-          retryMaxAttempts: 0,
-        }).catch((err) => {
-          // When the task does not exist anymore it is considered done (T_T)
-          if (err.status === 404) {
-            // add some delay to ensure we get the sound from api when refreshing
-            return $timeout(() => $q.when(true), 2000);
-          }
-          return $q.reject(err);
-        }).finally(() => {
-          // to finish delete file uploaded to user document
-          // we don't care about success or fail
-          OvhApiMe.Document().v6().delete({
-            id: doc.id,
-          });
-        })));
+    return OvhApiMe.Document().v6()
+      .upload(self.name, file)
+      .then(doc => OvhApiTelephony.OvhPabx().v6()
+        .soundUpload({
+          billingAccount: self.billingAccount,
+          serviceName: self.serviceName,
+        }, {
+          name: self.name,
+          url: doc.getUrl,
+        }).$promise
+        .then(task => voipServiceTask
+          .startPolling(
+            self.billingAccount,
+            self.serviceName, task.taskId,
+            {
+              namespace: `soundUploadTask_${self.serviceName}`,
+              interval: 1000,
+              retryMaxAttempts: 0,
+            },
+          )
+          .catch((err) => {
+            // When the task does not exist anymore it is considered done (T_T)
+            if (err.status === 404) {
+              // add some delay to ensure we get the sound from api when refreshing
+              return $timeout(() => $q.when(true), 2000);
+            }
+            return $q.reject(err);
+          })
+          .finally(() => {
+            // to finish delete file uploaded to user document
+            // we don't care about success or fail
+            OvhApiMe.Document().v6().delete({
+              id: doc.id,
+            });
+          })));
   };
 
   /* -----  End of PROTOTYPE METHODS  ------*/

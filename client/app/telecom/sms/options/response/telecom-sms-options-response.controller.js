@@ -84,12 +84,10 @@ angular.module('managerApp').controller('TelecomSmsOptionsResponseCtrl', class T
   fetchSenders() {
     return this.api.smsSenders.query({
       serviceName: this.$stateParams.serviceName,
-    }).$promise.then(sendersIds =>
-      this.$q.all(_.map(sendersIds, sender =>
-        this.api.smsSenders.get({
-          serviceName: this.$stateParams.serviceName,
-          sender,
-        }).$promise)).then(senders => _.filter(senders, { status: 'enable' })));
+    }).$promise.then(sendersIds => this.$q.all(_.map(sendersIds, sender => this.api.smsSenders.get({
+      serviceName: this.$stateParams.serviceName,
+      sender,
+    }).$promise)).then(senders => _.filter(senders, { status: 'enable' })));
   }
 
   /**
@@ -148,11 +146,10 @@ angular.module('managerApp').controller('TelecomSmsOptionsResponseCtrl', class T
         },
       },
     });
-    modal.result.then(() =>
-      this.fetchService().then((service) => {
-        this.service = angular.copy(service);
-        this.smsResponse = angular.copy(_.result(this.service, 'smsResponse'));
-      })).catch((error) => {
+    modal.result.then(() => this.fetchService().then((service) => {
+      this.service = angular.copy(service);
+      this.smsResponse = angular.copy(_.result(this.service, 'smsResponse'));
+    })).catch((error) => {
       if (error && error.type === 'API') {
         this.Toast.error(this.$translate.instant('sms_options_response_tracking_add_option_ko', { error: error.message }));
       }
@@ -177,11 +174,10 @@ angular.module('managerApp').controller('TelecomSmsOptionsResponseCtrl', class T
         option: () => option,
       },
     });
-    modal.result.then(() =>
-      this.fetchService().then((service) => {
-        this.service = angular.copy(service);
-        this.smsResponse = angular.copy(_.result(this.service, 'smsResponse'));
-      })).catch((error) => {
+    modal.result.then(() => this.fetchService().then((service) => {
+      this.service = angular.copy(service);
+      this.smsResponse = angular.copy(_.result(this.service, 'smsResponse'));
+    })).catch((error) => {
       if (error && error.type === 'API') {
         this.Toast.error(this.$translate.instant('sms_options_response_tracking_edit_option_ko', { error: error.message }));
       }
@@ -205,11 +201,10 @@ angular.module('managerApp').controller('TelecomSmsOptionsResponseCtrl', class T
         option: () => option,
       },
     });
-    modal.result.then(() =>
-      this.fetchService().then((service) => {
-        this.service = angular.copy(service);
-        this.smsResponse = angular.copy(_.result(this.service, 'smsResponse'));
-      })).catch((error) => {
+    modal.result.then(() => this.fetchService().then((service) => {
+      this.service = angular.copy(service);
+      this.smsResponse = angular.copy(_.result(this.service, 'smsResponse'));
+    })).catch((error) => {
       if (error && error.type === 'API') {
         this.Toast.error(this.$translate.instant('sms_options_response_tracking_remove_option_ko', { error: error.message }));
       }
@@ -222,9 +217,9 @@ angular.module('managerApp').controller('TelecomSmsOptionsResponseCtrl', class T
      */
   hasChanged() {
     return !(
-      this.service.smsResponse.responseType === this.smsResponse.responseType &&
-            this.service.smsResponse.cgiUrl === this.smsResponse.cgiUrl &&
-            this.service.smsResponse.text === this.smsResponse.text
+      this.service.smsResponse.responseType === this.smsResponse.responseType
+            && this.service.smsResponse.cgiUrl === this.smsResponse.cgiUrl
+            && this.service.smsResponse.text === this.smsResponse.text
     );
   }
 });

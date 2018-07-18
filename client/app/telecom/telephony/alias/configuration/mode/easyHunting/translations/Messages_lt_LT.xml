@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <translations>
+   <translation id="telephony_alias_configuration_mode_easyhunting_info1">Vous pouvez modifier le mode de fonctionnement de votre file d'attente :</translation>
    <translation id="telephony_alias_configuration_mode_easyhunting_info2" qtlid="392554"><strong>Numeris, kurį rodyti</strong>: numeris, matomas laukimo grupės nariams.</translation>
    <translation id="telephony_alias_configuration_mode_easyhunting_info3" qtlid="392567"><strong>Atmesti paslėptus numerius</strong>: automatiškai atmeta paslėptus numerius.</translation>
    <translation id="telephony_alias_configuration_mode_easyhunting_info4" qtlid="392580"><strong>Skambinimo stebėjimas</strong>: leidžia stebėti skambučius, peradresuojamus grupės nariams.</translation>
@@ -19,6 +20,22 @@
    <translation id="telephony_alias_configuration_mode_easyhunting_call_follow" qtlid="392749">Skambučių stebėjimas</translation>
    <translation id="telephony_alias_configuration_mode_easyhunting_answer" qtlid="88956">Atsakiklis</translation>
    <translation id="telephony_alias_configuration_mode_easyhunting_none" qtlid="30646">Nėra</translation>
+
+   <translation id="telephony_alias_configuration_mode_easyhunting_strategy">Stratégie</translation>
+   <translation id="telephony_alias_configuration_mode_easyhunting_strategy_ringAll">Tous en même temps</translation>
+   <translation id="telephony_alias_configuration_mode_easyhunting_strategy_ringAll_info">Tous les téléphones sonnent en même temps, le premier qui décroche prend l'appel sur son poste.</translation>
+   <translation id="telephony_alias_configuration_mode_easyhunting_strategy_cumulationByAgentOrder">Selon l'ordre défini des membres, cumulé</translation>
+   <translation id="telephony_alias_configuration_mode_easyhunting_strategy_cumulationByAgentOrder_info">Le premier téléphone de la file d'attente sonne en premier et continue de sonner, le deuxième sonne à son tour après quelques secondes et continue de sonner en même temps que le premier, le troisième commence à sonner quelques seconde après etc.</translation>
+   <translation id="telephony_alias_configuration_mode_easyhunting_strategy_longestHangupAgent">Le plus ancien à avoir raccroché</translation>
+   <translation id="telephony_alias_configuration_mode_easyhunting_strategy_longestHangupAgent_info">Les téléphones sonnent les uns après les autres en suivant toujours le même ordre.</translation>
+   <translation id="telephony_alias_configuration_mode_easyhunting_strategy_longestIdleAgent">Du plus disponible au moins disponible</translation>
+   <translation id="telephony_alias_configuration_mode_easyhunting_strategy_longestIdleAgent_info">Les téléphones sonneront suivant leur disponibilité depuis l'activation.</translation>
+   <translation id="telephony_alias_configuration_mode_easyhunting_strategy_random">Aléatoire</translation>
+   <translation id="telephony_alias_configuration_mode_easyhunting_strategy_random_info">Les téléphones sonnent les uns après les autres de manière aléatoire.</translation>
+   <translation id="telephony_alias_configuration_mode_easyhunting_strategy_roundRobin">Selon une répartition de charge</translation>
+   <translation id="telephony_alias_configuration_mode_easyhunting_strategy_roundRobin_info">Les téléphones sonneront suivant leur disponibilité depuis le dernier appel : le plus disponible en premier.</translation>
+   <translation id="telephony_alias_configuration_mode_easyhunting_strategy_sequentiallyByAgentOrder">Selon l'ordre défini des membres</translation>
+   <translation id="telephony_alias_configuration_mode_easyhunting_strategy_sequentiallyByAgentOrder_info">Le premier téléphone de la file d'attente sonne en premier, le deuxième est second, etc.</translation>
 
    <translation id="telephony_alias_configuration_mode_easyhunting_queue_size" qtlid="294945">Didžiausias eilėje laukiančių skambučių kiekis</translation>
    <translation id="telephony_alias_configuration_mode_easyhunting_max_wait_time" qtlid="392853">Maksimali laukimo trukmė (sekundėmis)</translation>

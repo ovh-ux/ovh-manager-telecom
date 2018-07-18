@@ -26,8 +26,10 @@ angular.module('managerApp').controller('TelecomTelephonyLineDetailsCtrl', funct
         lastRegistrations: self.line.getLastRegistrations(),
       }).then(() => {
         if (self.line.lastRegistrations && self.line.lastRegistrations.length) {
-          self.lastRegistration = _.last(_.sortBy(self.line.lastRegistrations, reg =>
-            new Date(reg.datetime)));
+          self.lastRegistration = _.last(_.sortBy(
+            self.line.lastRegistrations,
+            reg => new Date(reg.datetime),
+          ));
         }
       });
     }).finally(() => {

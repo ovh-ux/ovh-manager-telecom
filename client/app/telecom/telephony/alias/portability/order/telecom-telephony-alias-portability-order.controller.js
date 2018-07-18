@@ -107,10 +107,12 @@ angular.module('managerApp').controller('TelecomTelephonyAliasPortabilityOrderCt
     }
 
     // handle special number
-    self.isSpecialNumber = _.some(specialNumberPrefix[self.order.country], prefix =>
-      _.startsWith(number, prefix));
-    self.order.specialNumberCategory = self.isSpecialNumber ?
-      _.first(self.typologies[self.order.country]).value : null;
+    self.isSpecialNumber = _.some(
+      specialNumberPrefix[self.order.country],
+      prefix => _.startsWith(number, prefix),
+    );
+    self.order.specialNumberCategory = self.isSpecialNumber
+      ? _.first(self.typologies[self.order.country]).value : null;
     self.order.type = self.isSpecialNumber ? 'special' : 'landline';
 
     self.order.translatedCountry = $translate.instant(`telephony_alias_portability_order_contact_country_${self.order.country}`);
@@ -205,20 +207,18 @@ angular.module('managerApp').controller('TelecomTelephonyAliasPortabilityOrderCt
       return OvhApiMe.Order().v6().get({
         orderId: result.orderId,
       }).$promise.then(
-        () =>
-        // in this case it's allowed to auto pay order
-          OvhApiMe.Order().v6().payRegisteredPaymentMean({
-            orderId: result.orderId,
-          }, {
-            paymentMean: 'ovhAccount',
-          }).$promise.then(() => {
-            self.order.autoPay = true;
-          }, () => {
-            // if it fails no need to reject because portablity order is a success
-            // and validation can always be done by clicking
-            self.order.autoPay = false;
-          })
-        , () => {
+        () => OvhApiMe.Order().v6().payRegisteredPaymentMean({
+          orderId: result.orderId,
+        }, {
+          paymentMean: 'ovhAccount',
+        }).$promise.then(() => {
+          self.order.autoPay = true;
+        }, () => {
+          // if it fails no need to reject because portablity order is a success
+          // and validation can always be done by clicking
+          self.order.autoPay = false;
+        }),
+        () => {
         // in this case it means that nic bill and connected are not the same
         // so display a message telling that order must be validated by clicking
         // no need to reject because portablity order is a success

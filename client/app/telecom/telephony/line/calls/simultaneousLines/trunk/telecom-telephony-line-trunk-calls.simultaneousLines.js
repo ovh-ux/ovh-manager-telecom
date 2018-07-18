@@ -5,7 +5,7 @@ angular.module('managerApp').config(($stateProvider) => {
       'lineView@telecom.telephony.line': {
         templateUrl: 'app/telecom/telephony/line/calls/simultaneousLines/trunk/telecom-telephony-line-trunk-calls-simultaneousLines.html',
         controller: 'TelecomTelephonyLineTrunkSimultaneousLines',
-        controllerAs: 'TrunkRatesSimultaneousLinesCtrl',
+        controllerAs: '$ctrl',
       },
     },
     translations: ['common', 'telecom/telephony/line/calls/simultaneousLines'],

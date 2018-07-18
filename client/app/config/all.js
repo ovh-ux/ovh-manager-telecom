@@ -55,6 +55,7 @@ angular.module('managerApp').constant('LANGUAGES', {
       'exchangeAccount',
       'exchangeIndividual',
       'exchangeLite',
+      'emailPro',
       'voipEcoFax',
       'hubic',
       'domain',
@@ -188,6 +189,9 @@ angular.module('managerApp').constant('LANGUAGES', {
       overTheBox: 'https://docs.ovh.com/display/public/CRXDSL/Accueil+xDSL',
       sms: {
         receivers: 'https://www.ovh.com/fr/g2402.liste_de_destinataire_sms',
+      },
+      xdsl: {
+        emailPro: 'https://docs.ovh.com/fr/xdsl/comment-gerer-mes-adresses-e-mails ',
       },
     },
     ipOrderContract: 'http://www.ovh.com/fr/support/documents_legaux/contrat_part_IP_supplementaires_xdsl.pdf',

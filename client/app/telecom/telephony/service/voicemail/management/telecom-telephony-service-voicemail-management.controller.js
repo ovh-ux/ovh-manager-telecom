@@ -7,22 +7,23 @@ angular.module('managerApp').controller('TelecomTelephonyServiceVoicemailManagem
         billingAccount: $stateParams.billingAccount,
         serviceName: $stateParams.serviceName,
       }).$promise
-      .then(ids =>
-      // max api batch size is 50
-        $q.all(_.map(_.chunk(ids, 50), chunkIds =>
-          OvhApiTelephony.Voicemail().Directories().v6().getBatch({
+      .then(ids => $q
+        .all(_.map(
+          _.chunk(ids, 50),
+          chunkIds => OvhApiTelephony.Voicemail().Directories().v6().getBatch({
             billingAccount: $stateParams.billingAccount,
             serviceName: $stateParams.serviceName,
             id: chunkIds,
-          }).$promise))
-          .then((chunkResult) => {
-            const result = _.pluck(_.flatten(chunkResult), 'value');
-            return _.map(result, (message) => {
-              _.set(message, 'durationAsDate', new Date(message.duration * 1000));
-              _.set(message, 'isPlaying', false);
-              return message;
-            });
-          }));
+          }).$promise,
+        ))
+        .then((chunkResult) => {
+          const result = _.pluck(_.flatten(chunkResult), 'value');
+          return _.map(result, (message) => {
+            _.set(message, 'durationAsDate', new Date(message.duration * 1000));
+            _.set(message, 'isPlaying', false);
+            return message;
+          });
+        }));
   }
 
   function init() {
@@ -55,8 +56,10 @@ angular.module('managerApp').controller('TelecomTelephonyServiceVoicemailManagem
   }
 
   this.getSelection = function () {
-    return _.filter(self.messages.raw, message =>
-      message && self.messages.selected && self.messages.selected[message.id]);
+    return _.filter(
+      self.messages.raw,
+      message => message && self.messages.selected && self.messages.selected[message.id],
+    );
   };
 
   this.sortMessages = function () {
@@ -84,7 +87,7 @@ angular.module('managerApp').controller('TelecomTelephonyServiceVoicemailManagem
           return $q.reject({
             statusText: 'Unable to download message',
           });
-        } else if (info.status === 'done') {
+        } if (info.status === 'done') {
           return $q.when(info);
         }
 
@@ -132,8 +135,8 @@ angular.module('managerApp').controller('TelecomTelephonyServiceVoicemailManagem
   };
 
   this.deleteMessages = function (messageList) {
-    const queries = messageList.map(message =>
-      OvhApiTelephony.Voicemail().Directories().v6().delete({
+    const queries = messageList.map(message => OvhApiTelephony.Voicemail().Directories().v6()
+      .delete({
         billingAccount: $stateParams.billingAccount,
         serviceName: $stateParams.serviceName,
         id: message.id,

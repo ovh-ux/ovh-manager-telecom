@@ -78,8 +78,10 @@ angular.module('managerApp').controller('telephonyNumberOvhPabxDialplanExtension
   };
 
   self.isConditionMatch = function (phoneNumber) {
-    self.conditionMatched = _.find(self.getScreenListConditionList(), condition =>
-      _.startsWith(phoneNumber, condition.callNumber));
+    self.conditionMatched = _.find(
+      self.getScreenListConditionList(),
+      condition => _.startsWith(phoneNumber, condition.callNumber),
+    );
 
     return !self.conditionMatched;
   };
@@ -95,9 +97,9 @@ angular.module('managerApp').controller('telephonyNumberOvhPabxDialplanExtension
   };
 
   self.isConditionGroupValid = function (conditionGroup) {
-    return conditionGroup.days.length &&
-      self.availableHours.indexOf(conditionGroup.slotTimeModel.timeFrom) !== -1 &&
-        self.availableHours.indexOf(conditionGroup.slotTimeModel.timeTo) !== -1;
+    return conditionGroup.days.length
+      && self.availableHours.indexOf(conditionGroup.slotTimeModel.timeFrom) !== -1
+        && self.availableHours.indexOf(conditionGroup.slotTimeModel.timeTo) !== -1;
   };
 
   self.getTimeConditionList = function () {
@@ -148,8 +150,8 @@ angular.module('managerApp').controller('telephonyNumberOvhPabxDialplanExtension
   /* ----------  TIME CONDITION  ----------*/
 
   self.onConditionGroupAddBtnClick = function () {
-    const conditionGroup =
-      transformVoipTimeConditionGroup(voipTimeCondition.createGroupCondition([], {}));
+    const conditionGroup = transformVoipTimeConditionGroup(voipTimeCondition
+      .createGroupCondition([], {}));
     conditionGroup.collapsed = false;
     self.groupedTimeConditions.push(conditionGroup);
   };
@@ -165,8 +167,14 @@ angular.module('managerApp').controller('telephonyNumberOvhPabxDialplanExtension
 
       // before check if there is no collision
       const filteredConditions = _.filter(self.extension.timeConditions, timeCondition => timeCondition.state !== 'TO_DELETE' && day.value === timeCondition.weekDay);
-      const isCollisionDetected = _.some(conditionGroup.slots, slot =>
-        hasConditionCollision(filteredConditions, slot.condition.timeFrom, slot.condition.timeTo));
+      const isCollisionDetected = _.some(
+        conditionGroup.slots,
+        slot => hasConditionCollision(
+          filteredConditions,
+          slot.condition.timeFrom,
+          slot.condition.timeTo,
+        ),
+      );
 
       if (isCollisionDetected) {
         _.set(conditionGroup, 'errors.collision', true);

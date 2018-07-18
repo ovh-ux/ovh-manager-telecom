@@ -7,15 +7,17 @@ angular.module('managerApp').controller('TelecomTelephonyServiceConsumptionOutgo
         billingAccount: $stateParams.billingAccount,
         serviceName: $stateParams.serviceName,
       }).$promise
-      .then(ids =>
-      // single batch is limited to 50 ids, so we might make multiple batch calls
-        $q.all(_.map(_.chunk(ids, 50), chunkIds =>
-          OvhApiTelephony.Service().VoiceConsumption().v6().getBatch({
-            billingAccount: $stateParams.billingAccount,
-            serviceName: $stateParams.serviceName,
-            consumptionId: chunkIds,
-          }).$promise))
-          .then(chunkResult => _.flatten(chunkResult)))
+      .then(ids => $q
+        .all(_.map(
+          _.chunk(ids, 50),
+          chunkIds => OvhApiTelephony.Service().VoiceConsumption().v6()
+            .getBatch({
+              billingAccount: $stateParams.billingAccount,
+              serviceName: $stateParams.serviceName,
+              consumptionId: chunkIds,
+            }).$promise,
+        ))
+        .then(chunkResult => _.flatten(chunkResult)))
       .then(result => _.chain(result)
         .pluck('value')
         .filter(conso => conso.wayType !== 'incoming' && conso.duration > 0)

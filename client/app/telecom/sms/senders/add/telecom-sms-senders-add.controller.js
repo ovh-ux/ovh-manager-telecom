@@ -37,24 +37,28 @@ angular
         sendersAvailableForValidation: this.fetchSendersAvailableForValidation(),
       }).then((results) => {
         this.sendersAvailableForValidation = results.sendersAvailableForValidation;
-        return this.$q.all(_.map(results.senders, sender =>
-          this.api.smsSenders.get({
-            serviceName: this.$stateParams.serviceName,
-            sender,
-          }).$promise));
+        return this.$q.all(_.map(results.senders, sender => this.api.smsSenders.get({
+          serviceName: this.$stateParams.serviceName,
+          sender,
+        }).$promise));
       }).then((senders) => {
-        this.senders.availableForValidation.domains =
-          _.filter(this.sendersAvailableForValidation, { referer: 'domain' });
-        this.senders.availableForValidation.domains =
-          _.filter(this.senders.availableForValidation.domains, domain => !_.find(senders, {
+        this.senders.availableForValidation.domains = _.filter(
+          this.sendersAvailableForValidation,
+          { referer: 'domain' },
+        );
+        this.senders.availableForValidation.domains = _.filter(
+          this.senders.availableForValidation.domains,
+          domain => !_.find(senders, {
             sender: domain.sender,
-          }));
-        this.senders.availableForValidation.nichandle =
-          _.uniq(_.filter(this.sendersAvailableForValidation, { referer: 'nichandle' }), 'sender');
-        this.senders.availableForValidation.nichandle =
-          _.filter(this.senders.availableForValidation.nichandle, nichandle => !_.find(senders, {
+          }),
+        );
+        this.senders.availableForValidation.nichandle = _.uniq(_.filter(this.sendersAvailableForValidation, { referer: 'nichandle' }), 'sender');
+        this.senders.availableForValidation.nichandle = _.filter(
+          this.senders.availableForValidation.nichandle,
+          nichandle => !_.find(senders, {
             sender: nichandle.sender,
-          }));
+          }),
+        );
       }).catch((err) => {
         this.ToastError(err);
       })
@@ -132,8 +136,8 @@ angular
         this.senders.availableForValidation.nichandle,
         this.senders.availableForValidation.domains,
       );
-      return _.filter(allSelectedSenders, sender => this.senders.availableForValidation.selected &&
-        this.senders.availableForValidation.selected[sender.sender]);
+      return _.filter(allSelectedSenders, sender => this.senders.availableForValidation.selected
+        && this.senders.availableForValidation.selected[sender.sender]);
     }
 
     /**
@@ -142,13 +146,12 @@ angular
      */
     addSelectedSendersAvailableForValidaton() {
       const sendersAvailableForValidaton = this.getSelection();
-      const queries = sendersAvailableForValidaton.map(sender =>
-        this.api.smsSenders.create({
-          serviceName: this.$stateParams.serviceName,
-        }, {
-          sender: sender.sender,
-          reason: 'sendersAvailableForValidation',
-        }).$promise);
+      const queries = sendersAvailableForValidaton.map(sender => this.api.smsSenders.create({
+        serviceName: this.$stateParams.serviceName,
+      }, {
+        sender: sender.sender,
+        reason: 'sendersAvailableForValidation',
+      }).$promise);
       this.loading.adding = true;
       queries.push(this.$timeout(angular.noop, 500)); // avoid clipping
       this.Toast.info(this.$translate.instant('sms_senders_add_senders_success'));

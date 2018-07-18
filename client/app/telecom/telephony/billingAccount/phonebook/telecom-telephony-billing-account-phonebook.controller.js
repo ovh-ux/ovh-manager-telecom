@@ -26,12 +26,15 @@ angular.module('managerApp')
           billingAccount: $stateParams.billingAccount,
           bookKey,
         }).$promise
-        .then(phonebookContactIds => $q.all(_.map(_.chunk(phonebookContactIds, 50), chunkIds =>
-          OvhApiTelephony.Phonebook().PhonebookContact().v6().getBatch({
-            billingAccount: $stateParams.billingAccount,
-            bookKey,
-            id: chunkIds,
-          }).$promise))
+        .then(phonebookContactIds => $q
+          .all(_.map(
+            _.chunk(phonebookContactIds, 50),
+            chunkIds => OvhApiTelephony.Phonebook().PhonebookContact().v6().getBatch({
+              billingAccount: $stateParams.billingAccount,
+              bookKey,
+              id: chunkIds,
+            }).$promise,
+          ))
           .then((chunkResult) => {
             const result = _.pluck(_.flatten(chunkResult), 'value');
             const emptyGroup = _.get(TELEPHONY_PHONEBOOK, 'emptyFields.group');
@@ -47,8 +50,12 @@ angular.module('managerApp')
     }
 
     self.getSelection = function () {
-      return _.filter(self.phonebookContact.raw, contact =>
-        contact && self.phonebookContact.selected && self.phonebookContact.selected[contact.id]);
+      return _.filter(
+        self.phonebookContact.raw,
+        contact => contact
+          && self.phonebookContact.selected
+          && self.phonebookContact.selected[contact.id],
+      );
     };
 
     /* -----  End of HELPERS  ------*/
@@ -263,8 +270,8 @@ angular.module('managerApp')
 
     self.deleteSelectedContacts = function () {
       const contacts = self.getSelection();
-      const queries = contacts.map(contact =>
-        OvhApiTelephony.Phonebook().PhonebookContact().v6().remove({
+      const queries = contacts.map(contact => OvhApiTelephony.Phonebook().PhonebookContact().v6()
+        .remove({
           billingAccount: $stateParams.billingAccount,
           bookKey: _.get(self.phonebook, 'bookKey'),
           id: contact.id,

@@ -43,8 +43,8 @@ angular.module('managerApp').controller('TelecomTelephonyLinePhoneCodecCtrl', fu
   };
 
   self.hasChanged = function () {
-    return (self.model.codecs && self.codecs.value !== self.model.codecs.value) ||
-      self.model.auto !== codecsAuto;
+    return (self.model.codecs && self.codecs.value !== self.model.codecs.value)
+      || self.model.auto !== codecsAuto;
   };
 
   /* -----  End of HELPERS  ------*/
@@ -120,11 +120,10 @@ angular.module('managerApp').controller('TelecomTelephonyLinePhoneCodecCtrl', fu
 
     return voipLinePhone
       .fetchAll()
-      .then(voipLinePhones => _.filter(filteredServices, service =>
-        _.some(voipLinePhones, {
-          serviceName: service.serviceName,
-          billingAccount: service.billingAccount,
-        })));
+      .then(voipLinePhones => _.filter(filteredServices, service => _.some(voipLinePhones, {
+        serviceName: service.serviceName,
+        billingAccount: service.billingAccount,
+      })));
   };
 
   self.getBulkParams = function () {

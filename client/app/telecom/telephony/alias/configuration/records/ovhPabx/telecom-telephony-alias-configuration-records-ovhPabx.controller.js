@@ -26,12 +26,16 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationRecor
         billingAccount: $stateParams.billingAccount,
         serviceName: $stateParams.serviceName,
       }).$promise
-      .then(recordsIds => $q.all(_.map(_.chunk(recordsIds, 50), chunkIds =>
-        OvhApiTelephony.OvhPabx().Records().v6().getBatch({
-          billingAccount: $stateParams.billingAccount,
-          serviceName: $stateParams.serviceName,
-          id: chunkIds,
-        }).$promise)).then(chunkResult => _.pluck(_.flatten(chunkResult), 'value')));
+      .then(recordsIds => $q
+        .all(_.map(
+          _.chunk(recordsIds, 50),
+          chunkIds => OvhApiTelephony.OvhPabx().Records().v6().getBatch({
+            billingAccount: $stateParams.billingAccount,
+            serviceName: $stateParams.serviceName,
+            id: chunkIds,
+          }).$promise,
+        ))
+        .then(chunkResult => _.pluck(_.flatten(chunkResult), 'value')));
   };
 
   /* -----  End of HELPERS  ------*/

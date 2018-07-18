@@ -81,8 +81,8 @@ angular.module('managerApp').controller('FreeFaxVoicemailConfigurationCtrl', fun
   };
 
   this.checkPassword = function () {
-    return (self.password[0] === self.password[1]) &&
-            self.validPassword(self.password[0]);
+    return (self.password[0] === self.password[1])
+            && self.validPassword(self.password[0]);
   };
 
   this.save = function (conf) {

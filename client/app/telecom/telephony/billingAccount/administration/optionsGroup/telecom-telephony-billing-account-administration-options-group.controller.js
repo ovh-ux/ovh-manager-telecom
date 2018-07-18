@@ -21,8 +21,8 @@ angular.module('managerApp').controller('TelecomTelephonyBillingAccountAdministr
 
   self.hasChanges = function () {
     return !(
-      angular.equals(self.telephonySettings, self.optionsGroupForm.telephony) &&
-            angular.equals(self.userSettings, self.optionsGroupForm.user)
+      angular.equals(self.telephonySettings, self.optionsGroupForm.telephony)
+            && angular.equals(self.userSettings, self.optionsGroupForm.user)
     );
   };
 

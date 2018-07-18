@@ -137,19 +137,22 @@ angular.module('managerApp').factory('TelephonyGroupNumberOvhPabxMenu', ($q, Ovh
         serviceName: self.serviceName,
         menuId: self.menuId,
       }).$promise
-      .then(menuEntryIds => $q.all(_.map(_.chunk(menuEntryIds, 50), chunkIds =>
-        OvhApiTelephony.OvhPabx().Menu().Entry().v6()
+      .then(menuEntryIds => $q.all(_.map(
+        _.chunk(menuEntryIds, 50),
+        chunkIds => OvhApiTelephony.OvhPabx().Menu().Entry().v6()
           .getBatch({
             billingAccount: self.billingAccount,
             serviceName: self.serviceName,
             menuId: self.menuId,
             entryId: chunkIds,
-          }).$promise.then((resources) => {
+          }).$promise
+          .then((resources) => {
             angular.forEach(_.chain(resources).map('value').sortBy('position').value(), (menuEntryOptions) => {
               self.addEntry(menuEntryOptions);
             });
             return self;
-          }))));
+          }),
+      )));
   };
 
   TelephonyGroupNumberOvhPabxMenu.prototype.addEntry = function (menuEntryOptionsParam) {

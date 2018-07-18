@@ -50,8 +50,8 @@ angular.module('managerApp').factory('TelephonyGroupNumberConferenceParticipant'
 
   /* ----------  FEATURE OPTIONS  ----------*/
 
-  TelephonyGroupNumberConferenceParticipant.prototype.setInfos =
-    function (participantOptionsParam) {
+  TelephonyGroupNumberConferenceParticipant.prototype
+    .setInfos = function (participantOptionsParam) {
       const self = this;
       let participantOptions = participantOptionsParam;
 

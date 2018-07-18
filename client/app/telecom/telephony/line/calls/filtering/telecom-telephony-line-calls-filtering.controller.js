@@ -8,12 +8,15 @@ angular.module('managerApp').controller('TelecomTelephonyLineCallsFilteringCtrl'
         billingAccount: $stateParams.billingAccount,
         serviceName: $stateParams.serviceName,
       }).$promise
-      .then(ids => $q.all(_.map(_.chunk(ids, 50), chunkIds =>
-        OvhApiTelephony.Screen().ScreenLists().v6().getBatch({
-          billingAccount: $stateParams.billingAccount,
-          serviceName: $stateParams.serviceName,
-          id: chunkIds,
-        }).$promise))
+      .then(ids => $q
+        .all(_.map(
+          _.chunk(ids, 50),
+          chunkIds => OvhApiTelephony.Screen().ScreenLists().v6().getBatch({
+            billingAccount: $stateParams.billingAccount,
+            serviceName: $stateParams.serviceName,
+            id: chunkIds,
+          }).$promise,
+        ))
         .then((chunkResult) => {
           const result = _.pluck(_.flatten(chunkResult), 'value');
           return _.each(result, (filter) => {

@@ -4,4 +4,3 @@ angular.module('managerApp').filter('duration', (moment, $filter) => function (s
   }
   return '-';
 });
-

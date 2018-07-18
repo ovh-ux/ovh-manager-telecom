@@ -80,15 +80,13 @@ angular.module('managerApp').controller('TelecomTelephonyLineTonesCtrl', functio
     return OvhApiMe.Document().v6().upload(
       self.tonesForm[`${toneType}File`].name,
       self.tonesForm[`${toneType}File`],
-    ).then(doc =>
-    // upload tone
-      OvhApiTelephony.Line().v6().toneUpload({
-        billingAccount: $stateParams.billingAccount,
-        serviceName: $stateParams.serviceName,
-      }, {
-        type: toneType,
-        documentId: doc.id,
-      }).$promise)
+    ).then(doc => OvhApiTelephony.Line().v6().toneUpload({
+      billingAccount: $stateParams.billingAccount,
+      serviceName: $stateParams.serviceName,
+    }, {
+      type: toneType,
+      documentId: doc.id,
+    }).$promise)
       .then(() => {
         self.tonesForm[`${toneType}UploadSuccess`] = true;
 

@@ -1,187 +1,178 @@
-angular.module('managerApp')
-  .controller('PackCtrl', function (
-    $scope, $stateParams, $q, $translate,
-    OvhApiPackXdsl, Toast, SidebarMenu, resiliationNotification,
-    DASHBOARD, PACK,
+angular.module('managerApp').controller('PackCtrl', class PackCtrl {
+  constructor(
+    $q, $scope, $stateParams, $translate,
+    DASHBOARD, OvhApiPackXdsl, PACK, resiliationNotification, SidebarMenu, Toast,
   ) {
-    const self = this;
+    this.$q = $q;
+    this.$scope = $scope;
+    this.$stateParams = $stateParams;
+    this.$translate = $translate;
+    this.DASHBOARD = DASHBOARD;
+    this.PACK = PACK;
+    this.OvhApiPackXdsl = OvhApiPackXdsl;
+    this.resiliationNotification = resiliationNotification;
+    this.SidebarMenu = SidebarMenu;
+    this.Toast = Toast;
+  }
 
+  $onInit() {
+    this.inError = false;
     this.loader = {
       page: true,
       service: true,
     };
 
-    /**
-     * Get all services for this pack
-     * @param {string} packId Identifier of the pack
-     * @returns {Promise}
-     */
-    this.getAllFrames = function (packId) {
-      const promises = [];
+    this.$scope.$on('reload-frames', () => this.$onInit());
 
-      // get all Services
-      promises.push(OvhApiPackXdsl.v6().getServices({
-        packId,
-      }).$promise.then((services) => {
-        const filteredServices = _.chain(services)
-          .filter(service => DASHBOARD.services.indexOf(service.name) > -1)
-          .map((service) => {
-            let index = DASHBOARD.services.indexOf(service.name);
-            if (index === -1) {
-              index = DASHBOARD.services.length;
+    return this.$q.all({
+      packInformation: this.getPackInformation(),
+      frames: this.initFrames(),
+    }).then(() => {
+      if (_.isArray(this.frames)) {
+        this.services = _.chain(this.frames)
+          .sortByOrder(['index'])
+
+          // transform a  [1 x l] matrix to a [2 x l/2] matrix
+          .reduce((all, elt, index) => {
+            let line = [];
+            if (index % 2) {
+              line = _.last(all);
+            } else {
+              all.push(line);
             }
+            line.push(elt);
+            return all;
+          }, [])
+          .value();
+      }
+      return this.services;
+    });
+  }
 
-            _.set(service, 'index', index + 1);
+  getAllFrames(packId) {
+    const promises = [];
 
-            return service;
+    promises.push(this.OvhApiPackXdsl.v6().getServices({ packId })
+      .$promise
+      .then((services) => {
+        const filteredServices = _.chain(services)
+          .filter(service => this.DASHBOARD.services.indexOf(service.name) > -1)
+          .map((service) => {
+            const newService = service;
+            let index = this.DASHBOARD.services.indexOf(service.name);
+            if (index === -1) {
+              index = this.DASHBOARD.services.length;
+            }
+            newService.index = index + 1;
+            return newService;
           })
           .value();
 
-        self.frames = self.frames.concat(filteredServices);
+        this.frames = [...this.frames, ...filteredServices];
       }));
 
-      // Append task frame if tasks are pending
-      promises.push(OvhApiPackXdsl.Tasks().v6().query({
-        packName: packId,
-      }).$promise.then((data) => {
+    // Append task frame if tasks are pending
+    promises.push(this.OvhApiPackXdsl.Tasks().v6().query({ packName: packId })
+      .$promise
+      .then((data) => {
         if (data.length) {
-          self.frames.push(PACK.frames.task);
+          this.frames.push(this.PACK.frames.task);
         }
         return data;
       }));
 
-      // Check for a promotion code
-      promises.push(OvhApiPackXdsl.PromotionCode().v6().capabilities({
-        packId: $stateParams.packName,
-      }).$promise.then((capabilities) => {
+    // Check for a promotion code
+    promises.push(this.OvhApiPackXdsl.PromotionCode().v6().capabilities({ packId })
+      .$promise
+      .then((capabilities) => {
         if (capabilities.canGenerate) {
-          const promotionCodeFrame = _.clone(PACK.frames.promotionCode);
+          const promotionCodeFrame = _.clone(this.PACK.frames.promotionCode);
           promotionCodeFrame.data = capabilities;
-          self.frames.push(promotionCodeFrame);
+          this.frames.push(promotionCodeFrame);
         }
         return capabilities;
       }));
 
-      return $q.all(promises);
-    };
+    return this.$q.all(promises);
+  }
 
-    /**
-     * Get pack informations
-     * @return {Promise}
-     */
-    this.getPackInformation = function () {
-      this.loader.page = true;
-      return OvhApiPackXdsl.Aapi().get({
-        packId: $stateParams.packName,
-      }).$promise.then((packInfo) => {
-        self.pack = _.extend(
+  getPackInformation() {
+    this.loader.page = true;
+    return this.OvhApiPackXdsl.Aapi().get({ packId: this.$stateParams.packName })
+      .$promise
+      .then((packInfo) => {
+        this.pack = _.extend(
           packInfo.general,
           {
             informations: packInfo.detail,
             mainAccess: _.head(packInfo.services),
           },
         );
-        self.resiliationSuccess = resiliationNotification.success;
-        _.set(resiliationNotification, 'success', false); // display only once
-        self.cancelResiliationSuccess = resiliationNotification.cancelSuccess;
-        _.set(resiliationNotification, 'cancelSuccess', false); // display only once
+        this.resiliationSuccess = this.resiliationNotification.success;
+        this.resiliationNotification.success = false; // display only once
+        this.cancelResiliationSuccess = this.resiliationNotification.cancelSuccess;
+        this.resiliationNotification.cancelSuccess = false; // display only once
         return packInfo;
-      }).catch((err) => {
-        self.inError = true;
-        Toast.error($translate.instant('pack_xdsl_oops_an_error_is_occured'));
-        return $q.reject(err);
-      }).finally(() => {
-        self.loader.page = false;
+      })
+      .catch((err) => {
+        this.inError = true;
+        this.Toast.error(this.$translate.instant('pack_xdsl_oops_an_error_is_occured'));
+        return this.$q.reject(err);
+      })
+      .finally(() => {
+        this.loader.page = false;
       });
-    };
+  }
 
-    /**
-     * Validate email
-     * @param {string} email Email address
-     * @return {boolean}
-     */
-    this.checkEmailAddress = function (email) {
-      return validator.isEmail(email);
-    };
+  /**
+   * Validate email
+   * @param {string} email Email address
+   * @return {boolean}
+   */
+  checkEmailAddress(email) {
+    return this.validator.isEmail(email);
+  }
 
-    /**
-     * Initialize the frame list
-     * @return {Promise}
-     */
-    this.initFrames = function () {
-      this.loader.service = true;
-      this.frames = [PACK.frames.informations];
+  /**
+   * Initialize the frame list
+   * @return {Promise}
+   */
+  initFrames() {
+    this.loader.service = true;
+    this.frames = [this.PACK.frames.informations];
 
-      return self.getAllFrames($stateParams.packName).catch((err) => {
-        if (err.status !== 460 && err.status !== 403) {
-          Toast.error([$translate.instant('pack_xdsl_oops_an_error_is_occured'), err.data ? err.data.message : ''].join(' '));
-        }
-        return $q.reject(err);
-      }).finally(() => {
-        self.loader.service = false;
-      });
-    };
+    return this.getAllFrames(this.$stateParams.packName).catch((err) => {
+      if (err.status !== 460 && err.status !== 403) {
+        this.Toast.error([this.$translate.instant('pack_xdsl_oops_an_error_is_occured'), _.get(err, 'data.message', '')].join(' '));
+      }
+      return this.$q.reject(err);
+    }).finally(() => {
+      this.loader.service = false;
+    });
+  }
 
-    /*= ==============================
-    =            ACTIONS            =
-    =============================== */
+  packDescriptionSave(newPackDescription) {
+    this.loader.save = true;
 
-    self.packDescriptionSave = function (newPackDescr) {
-      self.loader.save = true;
-
-      return OvhApiPackXdsl.v6().put({
-        packId: $stateParams.packName,
-      }, {
-        description: newPackDescr,
-      }).$promise.then(() => {
-        self.pack.description = newPackDescr;
+    return this.OvhApiPackXdsl.v6().put({
+      packId: this.$stateParams.packName,
+    }, {
+      description: newPackDescription,
+    })
+      .$promise
+      .then(() => {
+        this.pack.description = newPackDescription;
 
         // rename in sidebar menu
-        SidebarMenu.updateItemDisplay({
-          title: newPackDescr || self.pack.offerDescription,
-        }, $stateParams.packName, 'telecom-pack-section');
+        this.SidebarMenu.updateItemDisplay({
+          title: newPackDescription || this.pack.offerDescription,
+        }, this.$stateParams.packName, 'telecom-pack-section');
       }, (error) => {
-        Toast.error([$translate.instant('pack_rename_error', $stateParams), error.data.message].join(' '));
-        return $q.reject(error);
-      }).finally(() => {
-        self.loader.save = false;
+        this.Toast.error([this.$translate.instant('pack_rename_error', this.$stateParams), error.data.message].join(' '));
+        return this.$q.reject(error);
+      })
+      .finally(() => {
+        this.loader.save = false;
       });
-    };
-
-    /* -----  End of ACTIONS  ------*/
-
-    /**
-     * Initialize the controller
-     */
-    this.$onInit = function () {
-      this.inError = false;
-
-      return $q.all({
-        packInformation: this.getPackInformation(),
-        frames: this.initFrames(),
-      }).then(() => {
-        if (_.isArray(self.frames)) {
-          self.services = _.chain(self.frames)
-            .sortByOrder(['index'])
-
-          // transform a  [1 x l] matrix to a [2 x l/2] matrix
-            .reduce((all, elt, index) => {
-              let line = [];
-              if (index % 2) {
-                line = _.last(all);
-              } else {
-                all.push(line);
-              }
-              line.push(elt);
-              return all;
-            }, [])
-            .value();
-        }
-        return self.services;
-      });
-    };
-
-    $scope.$on('reload-frames', () => {
-      self.$onInit();
-    });
-  });
+  }
+});

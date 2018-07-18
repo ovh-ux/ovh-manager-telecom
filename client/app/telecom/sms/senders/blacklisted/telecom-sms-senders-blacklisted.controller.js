@@ -56,11 +56,12 @@ angular
      * @return {Promise}
      */
     fetchBlacklists() {
-      return this.api.sms.blacklists.query({
-        serviceName: this.$stateParams.serviceName,
-      }).$promise.then(blacklistsIds =>
-        this.$q.all(_.map(blacklistsIds, number =>
-          this.api.sms.blacklists.get({
+      return this.api.sms.blacklists
+        .query({
+          serviceName: this.$stateParams.serviceName,
+        }).$promise
+        .then(blacklistsIds => this.$q
+          .all(_.map(blacklistsIds, number => this.api.sms.blacklists.get({
             serviceName: this.$stateParams.serviceName,
             number,
           }).$promise)));
@@ -97,8 +98,10 @@ angular
      * @return {Array}
      */
     getSelection() {
-      return _.filter(this.blacklists.raw, list =>
-        list && this.blacklists.selected && this.blacklists.selected[list.number]);
+      return _.filter(
+        this.blacklists.raw,
+        list => list && this.blacklists.selected && this.blacklists.selected[list.number],
+      );
     }
 
     /**
@@ -107,11 +110,10 @@ angular
      */
     deleteSelectedBlacklist() {
       const blackLists = this.getSelection();
-      const queries = blackLists.map(list =>
-        this.api.sms.blacklists.delete({
-          serviceName: this.$stateParams.serviceName,
-          number: list.number,
-        }).$promise);
+      const queries = blackLists.map(list => this.api.sms.blacklists.delete({
+        serviceName: this.$stateParams.serviceName,
+        number: list.number,
+      }).$promise);
       this.blacklists.isDeleting = true;
       queries.push(this.$timeout(angular.noop, 500)); // avoid clipping
       this.Toast.info(this.$translate.instant('sms_senders_blacklisted_delete_list_success'));

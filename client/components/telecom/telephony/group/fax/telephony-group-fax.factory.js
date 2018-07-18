@@ -106,12 +106,16 @@ angular.module('managerApp').factory('TelephonyGroupFax', ($q, OvhApiTelephony) 
         action: 'termination',
         type: 'offer',
       }).$promise
-      .then(offerTaskIds => $q.all(_.map(offerTaskIds, id =>
-        OvhApiTelephony.Service().OfferTask().v6().get({
-          billingAccount: self.billingAccount,
-          serviceName: self.serviceName,
-          taskId: id,
-        }).$promise)).then(tasks => _.head(_.filter(tasks, { status: 'todo' }))));
+      .then(offerTaskIds => $q
+        .all(_.map(
+          offerTaskIds,
+          id => OvhApiTelephony.Service().OfferTask().v6().get({
+            billingAccount: self.billingAccount,
+            serviceName: self.serviceName,
+            taskId: id,
+          }).$promise,
+        ))
+        .then(tasks => _.head(_.filter(tasks, { status: 'todo' }))));
   };
 
   /* ----------  EDITION  ----------*/

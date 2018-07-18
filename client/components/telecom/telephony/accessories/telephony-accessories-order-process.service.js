@@ -42,14 +42,16 @@ angular.module('managerApp').service('TelephonyAccessoriesOrderProcess', functio
       return OvhApiTelephony.v6().accessories({
         country: country || 'fr',
       }).$promise.then((accessoriesList) => {
-        orderProcess.accessoriesList = _.map(accessoriesList, accessory =>
-          angular.extend(accessory, {
-            url: TELEPHONY_LINE_PHONE_ACCESSORIES[accessory.name] ?
-              TELEPHONY_LINE_PHONE_ACCESSORIES[accessory.name].url : null,
-            img: TELEPHONY_LINE_PHONE_ACCESSORIES[accessory.name] ?
-              TELEPHONY_LINE_PHONE_ACCESSORIES[accessory.name].img : null,
+        orderProcess.accessoriesList = _.map(
+          accessoriesList,
+          accessory => angular.extend(accessory, {
+            url: TELEPHONY_LINE_PHONE_ACCESSORIES[accessory.name]
+              ? TELEPHONY_LINE_PHONE_ACCESSORIES[accessory.name].url : null,
+            img: TELEPHONY_LINE_PHONE_ACCESSORIES[accessory.name]
+              ? TELEPHONY_LINE_PHONE_ACCESSORIES[accessory.name].img : null,
             quantity: 0,
-          }));
+          }),
+        );
 
         return orderProcess;
       });
@@ -68,8 +70,8 @@ angular.module('managerApp').service('TelephonyAccessoriesOrderProcess', functio
       billingAccount: orderProcess.billingAccount,
       accessories: getAccessoryList(),
       retractation: true,
-      shippingContactId: orderProcess.shipping.contact ?
-        orderProcess.shipping.contact.id : undefined,
+      shippingContactId: orderProcess.shipping.contact
+        ? orderProcess.shipping.contact.id : undefined,
       mondialRelayId: orderProcess.shipping.mode === 'mondialRelay' && orderProcess.shipping.relay ? orderProcess.shipping.relay.id : null,
     }).$promise;
   };
@@ -80,8 +82,8 @@ angular.module('managerApp').service('TelephonyAccessoriesOrderProcess', functio
     }, {
       accessories: getAccessoryList(),
       retractation: orderProcess.retract,
-      shippingContactId: orderProcess.shipping.contact ?
-        orderProcess.shipping.contact.id : undefined,
+      shippingContactId: orderProcess.shipping.contact
+        ? orderProcess.shipping.contact.id : undefined,
       mondialRelayId: orderProcess.shipping.mode === 'mondialRelay' ? orderProcess.shipping.relay.id : null,
     }).$promise;
   };

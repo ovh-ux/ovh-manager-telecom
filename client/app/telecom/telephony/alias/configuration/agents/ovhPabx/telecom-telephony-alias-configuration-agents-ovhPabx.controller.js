@@ -84,15 +84,16 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationAgent
 
   deleteAgents() {
     this.agents.isDeleting = true;
-    return this.$q.all(this.getSelectedAgentIds().map(id =>
-      this.OvhApiTelephony.OvhPabx().Hunting().Agent().v6()
-        .remove({
-          billingAccount: this.$stateParams.billingAccount,
-          serviceName: this.$stateParams.serviceName,
-          agentId: id,
-        }).$promise.then(() => {
-          _.pull(this.agents.id, parseInt(id, 10));
-        })))
+    return this.$q
+      .all(this.getSelectedAgentIds()
+        .map(id => this.OvhApiTelephony.OvhPabx().Hunting().Agent().v6()
+          .remove({
+            billingAccount: this.$stateParams.billingAccount,
+            serviceName: this.$stateParams.serviceName,
+            agentId: id,
+          }).$promise.then(() => {
+            _.pull(this.agents.id, parseInt(id, 10));
+          })))
       .then(() => {
         this.Toast.success(this.$translate.instant('telephony_alias_configuration_agents_delete_success'));
         return this.fetchAgentsIds().then((ids) => {

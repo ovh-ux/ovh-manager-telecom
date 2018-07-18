@@ -108,10 +108,10 @@ angular.module('managerApp').controller('TelecomTelephonyLineCallsForwardCtrl', 
     const searchReg = new RegExp(search, 'i');
 
     return _.chain(self.allOvhNumbers)
-      .filter(num => (searchReg.test(num.serviceName) || searchReg.test(num.description)) &&
-        (!origin || origin.indexOf(num.type) > -1) &&
-        filterType(num.type) &&
-        filterBillingAccount(num.billingAccount))
+      .filter(num => (searchReg.test(num.serviceName) || searchReg.test(num.description))
+        && (!origin || origin.indexOf(num.type) > -1)
+        && filterType(num.type)
+        && filterBillingAccount(num.billingAccount))
       .sortBy(num => (num.formatedNumber === $stateParams.serviceName ? 0 : 1)).uniq('serviceName')
       .value();
   };

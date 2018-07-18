@@ -70,11 +70,14 @@ angular.module('managerApp').controller('TelecomTelephonyBillingAccountAdministr
       .query({
         billingAccount: ba.billingAccount,
       }).$promise
-      .then(ids => $q.all(_.map(_.chunk(ids, 50), chunkIds =>
-        OvhApiTelephony.Number().v6().getBatch({
-          billingAccount: ba.billingAccount,
-          serviceName: chunkIds,
-        }).$promise))
+      .then(ids => $q
+        .all(_.map(
+          _.chunk(ids, 50),
+          chunkIds => OvhApiTelephony.Number().v6().getBatch({
+            billingAccount: ba.billingAccount,
+            serviceName: chunkIds,
+          }).$promise,
+        ))
         .then(chunkResult => _.pluck(_.flatten(chunkResult), 'value')));
 
     return $q.all({
@@ -114,32 +117,31 @@ angular.module('managerApp').controller('TelecomTelephonyBillingAccountAdministr
     const errorList = [];
     self.isAttaching = true;
 
-    return $q.all(_.map(self.getServicesToAttachList(), service =>
-      OvhApiTelephony.Service().v6()
-        .changeOfBillingAccount({
-          billingAccount: self.billingAccounts.selected.billingAccount,
-          serviceName: service.serviceName,
-        }, {
-          billingAccountDestination: $stateParams.billingAccount,
-        }).$promise
-        .then(() => {
-          if (service.aliases) {
-            self.numberCount += service.aliases.length;
-          } else if (service.serviceType === 'line') {
-            self.lineCount += 1;
-          } else {
-            self.numberCount += 1;
-          }
-          self.serviceAttachSuccess[service.serviceName] = true;
-          delete self.serviceAttachErrors[service.serviceName];
-        })
-        .catch((err) => {
-          errorList.push({
-            service,
-            error: err,
-          });
-          self.serviceAttachErrors[service.serviceName] = err;
-        })))
+    return $q.all(_.map(self.getServicesToAttachList(), service => OvhApiTelephony.Service().v6()
+      .changeOfBillingAccount({
+        billingAccount: self.billingAccounts.selected.billingAccount,
+        serviceName: service.serviceName,
+      }, {
+        billingAccountDestination: $stateParams.billingAccount,
+      }).$promise
+      .then(() => {
+        if (service.aliases) {
+          self.numberCount += service.aliases.length;
+        } else if (service.serviceType === 'line') {
+          self.lineCount += 1;
+        } else {
+          self.numberCount += 1;
+        }
+        self.serviceAttachSuccess[service.serviceName] = true;
+        delete self.serviceAttachErrors[service.serviceName];
+      })
+      .catch((err) => {
+        errorList.push({
+          service,
+          error: err,
+        });
+        self.serviceAttachErrors[service.serviceName] = err;
+      })))
       .finally(() => {
         self.isAttaching = false;
         self.servicesToAttach = {};

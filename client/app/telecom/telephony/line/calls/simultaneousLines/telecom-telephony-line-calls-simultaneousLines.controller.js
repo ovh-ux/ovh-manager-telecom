@@ -49,18 +49,22 @@ angular.module('managerApp')
           serviceName: $stateParams.serviceName,
           action: 'removeSimltaneousLines',
         }).$promise
-        .then(offerTasks => $q.all(_.map(offerTasks, taskId =>
-          OvhApiTelephonyService.OfferTask().v6().get({
-            billingAccount: $stateParams.billingAccount,
-            serviceName: $stateParams.serviceName,
-            taskId,
-          }).$promise.then((taskDetail) => {
-            _.set(taskDetail, 'formatedDate', $filter('date')(taskDetail.executionDate, 'fullDate'));
-            return taskDetail;
-          }).catch(err => $translate('telephony_line_actions_line_calls_simultaneous_line_offer_task_error').then((message) => {
-            Toast.error(message);
-            return $q.reject(err);
-          })))))
+        .then(offerTasks => $q.all(_.map(
+          offerTasks,
+          taskId => OvhApiTelephonyService.OfferTask().v6()
+            .get({
+              billingAccount: $stateParams.billingAccount,
+              serviceName: $stateParams.serviceName,
+              taskId,
+            }).$promise
+            .then((taskDetail) => {
+              _.set(taskDetail, 'formatedDate', $filter('date')(taskDetail.executionDate, 'fullDate'));
+              return taskDetail;
+            }).catch(err => $translate('telephony_line_actions_line_calls_simultaneous_line_offer_task_error').then((message) => {
+              Toast.error(message);
+              return $q.reject(err);
+            })),
+        )))
         .then((offerTasksDetails) => {
           self.offerTasks = offerTasksDetails;
           return self.offerTasks;
@@ -105,8 +109,8 @@ angular.module('managerApp')
           self.showDoRemoveButtons = false;
           self.recalculatePrices();
         }
-        if (self.saved.simultaneousLines > self.options.simultaneousLines &&
-          self.options.simultaneousLines) {
+        if (self.saved.simultaneousLines > self.options.simultaneousLines
+          && self.options.simultaneousLines) {
           self.showDoRemoveButtons = true;
         }
       } else {

@@ -103,12 +103,11 @@ angular.module('managerApp').controller('TelecomSmsSmsTemplatesCtrl', class Tele
       controller: 'TelecomSmsSmsTemplateAddCtrl',
       controllerAs: 'TemplateAddCtrl',
     });
-    modal.result.then(() =>
-      this.api.sms.templates.query({
-        serviceName: this.$stateParams.serviceName,
-      }).$promise.then((templates) => {
-        this.templates.raw = templates;
-      })).catch((error) => {
+    modal.result.then(() => this.api.sms.templates.query({
+      serviceName: this.$stateParams.serviceName,
+    }).$promise.then((templates) => {
+      this.templates.raw = templates;
+    })).catch((error) => {
       if (error && error.type === 'API') {
         this.Toast.error(this.$translate.instant('sms_sms_templates_adding_ko', { error: _.get(error, 'msg.data.message') }));
       }
@@ -165,12 +164,11 @@ angular.module('managerApp').controller('TelecomSmsSmsTemplatesCtrl', class Tele
       controllerAs: 'TemplateRemoveCtrl',
       resolve: { template: () => template },
     });
-    modal.result.then(() =>
-      this.api.sms.templates.query({
-        serviceName: this.$stateParams.serviceName,
-      }).$promise.then((templates) => {
-        this.templates.raw = templates;
-      })).catch((error) => {
+    modal.result.then(() => this.api.sms.templates.query({
+      serviceName: this.$stateParams.serviceName,
+    }).$promise.then((templates) => {
+      this.templates.raw = templates;
+    })).catch((error) => {
       if (error && error.type === 'API') {
         this.Toast.error(this.$translate.instant('sms_sms_templates_removing_ko', { error: _.get(error, 'msg.data.message') }));
       }

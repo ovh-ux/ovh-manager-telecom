@@ -186,18 +186,22 @@ angular.module('managerApp').factory('TelephonyGroupNumberOvhPabxDialplan', ($q,
         serviceName: self.serviceName,
         dialplanId: self.dialplanId,
       }).$promise
-      .then(extensionIds => $q.all(_.map(_.chunk(extensionIds, 50), chunkIds =>
-        OvhApiTelephony.OvhPabx().Dialplan().Extension().v6()
-          .getBatch({
-            billingAccount: self.billingAccount,
-            serviceName: self.serviceName,
-            dialplanId: self.dialplanId,
-            extensionId: chunkIds,
-          }).$promise.then((resources) => {
-            angular.forEach(_.chain(resources).map('value').sortBy('position').value(), (extenstionOptions) => {
-              self.addExtension(extenstionOptions);
-            });
-          }))).then(() => self));
+      .then(extensionIds => $q
+        .all(_.map(
+          _.chunk(extensionIds, 50),
+          chunkIds => OvhApiTelephony.OvhPabx().Dialplan().Extension().v6()
+            .getBatch({
+              billingAccount: self.billingAccount,
+              serviceName: self.serviceName,
+              dialplanId: self.dialplanId,
+              extensionId: chunkIds,
+            }).$promise.then((resources) => {
+              angular.forEach(_.chain(resources).map('value').sortBy('position').value(), (extenstionOptions) => {
+                self.addExtension(extenstionOptions);
+              });
+            }),
+        ))
+        .then(() => self));
   };
 
   TelephonyGroupNumberOvhPabxDialplan.prototype.addExtension = function (extensionOptionsParam) {
@@ -218,12 +222,14 @@ angular.module('managerApp').factory('TelephonyGroupNumberOvhPabxDialplan', ($q,
     if (extension) {
       extension.setInfos(extensionOptions);
     } else {
-      extension =
-        new TelephonyGroupNumberOvhPabxDialplanExtension(angular.extend(extensionOptions, {
+      extension = new TelephonyGroupNumberOvhPabxDialplanExtension(angular.extend(
+        extensionOptions,
+        {
           billingAccount: self.billingAccount,
           serviceName: self.serviceName,
           dialplanId: self.dialplanId,
-        }));
+        },
+      ));
       self.extensions.push(extension);
     }
 
@@ -241,12 +247,12 @@ angular.module('managerApp').factory('TelephonyGroupNumberOvhPabxDialplan', ($q,
   TelephonyGroupNumberOvhPabxDialplan.prototype.updateExtensionsPositions = function (from) {
     const self = this;
     const updatePositionPromises = [];
-    const extensionsToUpdate = from ?
-      _.filter(self.extensions, extension => extension.position > from) : self.extensions;
+    const extensionsToUpdate = from
+      ? _.filter(self.extensions, extension => extension.position > from) : self.extensions;
 
     angular.forEach(extensionsToUpdate, (extension) => {
-      updatePositionPromises.push(extension.move(from ?
-        extension.position - 1 : extension.position));
+      updatePositionPromises.push(extension.move(from
+        ? extension.position - 1 : extension.position));
     });
 
     return $q.allSettled(updatePositionPromises);

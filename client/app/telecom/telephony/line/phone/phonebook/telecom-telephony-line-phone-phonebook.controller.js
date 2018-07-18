@@ -34,15 +34,18 @@ angular.module('managerApp').controller('TelecomTelephonyLinePhonePhonebookCtrl'
         serviceName: $stateParams.serviceName,
         bookKey,
       }).$promise
-      .then(phonebookContactIds => $q.all(_.map(_.chunk(phonebookContactIds, 50), chunkIds =>
-        OvhApiTelephony.Line().Phone().Phonebook().PhonebookContact()
-          .v6()
-          .getBatch({
-            billingAccount: $stateParams.billingAccount,
-            serviceName: $stateParams.serviceName,
-            bookKey,
-            id: chunkIds,
-          }).$promise))
+      .then(phonebookContactIds => $q
+        .all(_.map(
+          _.chunk(phonebookContactIds, 50),
+          chunkIds => OvhApiTelephony.Line().Phone().Phonebook().PhonebookContact()
+            .v6()
+            .getBatch({
+              billingAccount: $stateParams.billingAccount,
+              serviceName: $stateParams.serviceName,
+              bookKey,
+              id: chunkIds,
+            }).$promise,
+        ))
         .then((chunkResult) => {
           const result = _.pluck(_.flatten(chunkResult), 'value');
           const emptyGroup = _.get(TELEPHONY_PHONEBOOK, 'emptyFields.group');
@@ -58,8 +61,12 @@ angular.module('managerApp').controller('TelecomTelephonyLinePhonePhonebookCtrl'
   }
 
   self.getSelection = function () {
-    return _.filter(self.phonebookContact.raw, contact =>
-      contact && self.phonebookContact.selected && self.phonebookContact.selected[contact.id]);
+    return _.filter(
+      self.phonebookContact.raw,
+      contact => contact
+        && self.phonebookContact.selected
+        && self.phonebookContact.selected[contact.id],
+    );
   };
 
   /* -----  End of HELPERS  ------*/
@@ -288,8 +295,8 @@ angular.module('managerApp').controller('TelecomTelephonyLinePhonePhonebookCtrl'
 
   self.deleteSelectedContacts = function () {
     const contacts = self.getSelection();
-    const queries = contacts.map(contact =>
-      OvhApiTelephony.Line().Phone().Phonebook().PhonebookContact()
+    const queries = contacts
+      .map(contact => OvhApiTelephony.Line().Phone().Phonebook().PhonebookContact()
         .v6()
         .remove({
           billingAccount: $stateParams.billingAccount,

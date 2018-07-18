@@ -9,7 +9,7 @@
    <translation id="xdsl_resiliation_type_name" qtlid="310907">le service</translation>
    <translation id="xdsl_resiliation_cancel" qtlid="310920">Annuler ma résiliation</translation>
    <translation id="xdsl_resiliation_cancel_really" qtlid="386847">Vous êtes sur le point d'annuler la résiliation de «{{description}}». Voulez-vous continuer ?</translation>
-   <translation id="xdsl_resiliation_service_date_format" qtlid="313468">jj/mm/aaaa</translation>
+   <translation id="xdsl_resiliation_service_date_format" qtlid="313468">dd/mm/aaaa</translation>
    <translation id="xdsl_resiliation_mail" qtlid="310946">Un e-mail de confirmation va vous être envoyé. Cet e-mail contient le bon de retour à joindre dans le colis de retour du modem.</translation>
    <translation id="xdsl_resiliation_terminate_info_1" qtlid="385559">Vous avez une demande de résiliation en cours. <br/> Cette résiliation est programmée le {{date}}. En cliquant sur le bouton «Annuler ma résiliation», vous procédez à l'annulation immédiate de la résiliation.</translation>
 </translations>

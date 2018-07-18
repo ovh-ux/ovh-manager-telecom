@@ -101,8 +101,10 @@ angular.module('managerApp').controller('TelephonySchedulerBankHolidaysCtrl', fu
 
   self.filterEvents = function (year) {
     if (year) {
-      return _.filter(self.holidaysLists[year], bankHoliday =>
-        bankHoliday.active && !bankHoliday.disabled);
+      return _.filter(
+        self.holidaysLists[year],
+        bankHoliday => bankHoliday.active && !bankHoliday.disabled,
+      );
     }
     let bankHolidays = [];
     _.keys(self.holidaysLists).forEach((theYear) => {

@@ -90,9 +90,9 @@ angular.module('managerApp').controller('TelecomSmsDashboardCtrl', class Telecom
   }
 
   /**
-     * Fetch all senders.
-     * @return {Promise}
-     */
+   * Fetch all senders.
+   * @return {Promise}
+   */
   fetchSenders() {
     return this.api.sms.senders.query({
       serviceName: this.$stateParams.serviceName,
@@ -100,10 +100,10 @@ angular.module('managerApp').controller('TelecomSmsDashboardCtrl', class Telecom
   }
 
   /**
-     * Fetch sms outgoing.
-     * @param  {Number} [month=0] number of month to subtract.
-     * @return {Promise}
-     */
+   * Fetch sms outgoing.
+   * @param  {Number} [month=0] number of month to subtract.
+   * @return {Promise}
+   */
   fetchOutgoing(month = 0) {
     return this.api.sms.outgoing.query({
       serviceName: this.$stateParams.serviceName,
@@ -113,10 +113,10 @@ angular.module('managerApp').controller('TelecomSmsDashboardCtrl', class Telecom
   }
 
   /**
-     * Fetch sms incoming.
-     * @param  {Number} [month=0] number of month to subtract.
-     * @return {Promise}
-     */
+   * Fetch sms incoming.
+   * @param  {Number} [month=0] number of month to subtract.
+   * @return {Promise}
+   */
   fetchIncoming(month = 0) {
     return this.api.sms.incoming.query({
       serviceName: this.$stateParams.serviceName,
@@ -126,9 +126,9 @@ angular.module('managerApp').controller('TelecomSmsDashboardCtrl', class Telecom
   }
 
   /**
-     * Fetch all sms jobs.
-     * @return {Promise}
-     */
+   * Fetch all sms jobs.
+   * @return {Promise}
+   */
   fetchJobs() {
     return this.api.sms.jobs.query({
       serviceName: this.$stateParams.serviceName,
@@ -136,9 +136,9 @@ angular.module('managerApp').controller('TelecomSmsDashboardCtrl', class Telecom
   }
 
   /**
-     * Get previous months helper.
-     * @return {Array}
-     */
+   * Get previous months helper.
+   * @return {Array}
+   */
   getPreviousMonths() {
     const monthsAvailable = [];
     for (let i = 1; i <= this.stats.limit; i += 1) {
@@ -152,13 +152,13 @@ angular.module('managerApp').controller('TelecomSmsDashboardCtrl', class Telecom
   }
 
   /**
-     * Get stats.
-     * @param  {Object} sender filter by sender.
-     * @return {Promise}
-     */
+   * Get stats.
+   * @param  {Object} sender filter by sender.
+   * @return {Promise}
+   */
   getStats(sender) {
-    const offset = this.stats.moment.month - (this.stats.filter.month ?
-      this.stats.filter.month : moment().month());
+    const offset = this.stats.moment.month - (this.stats.filter.month
+      ? this.stats.filter.month : moment().month());
     this.api.sms.outgoing.resetAllCache();
     this.api.sms.incoming.resetAllCache();
     this.loading.stats = true;
@@ -167,14 +167,18 @@ angular.module('managerApp').controller('TelecomSmsDashboardCtrl', class Telecom
       incoming: this.fetchIncoming(offset),
     }).then((results) => {
       if (sender) {
-        return this.$q.all(_.map(_.chunk(results.outgoing, 50), id =>
-          this.api.sms.outgoing.getBatch({
-            serviceName: this.$stateParams.serviceName,
-            id,
-          }).$promise.catch(err => this.ToastError(err)))).then(chunkResult => _.pluck(_.flatten(chunkResult), 'value')).then((sms) => {
-          this.stats.data.outgoing = _.filter(sms, { sender }).length;
-          this.stats.data.incoming = 0;
-        }).catch(err => this.ToastError(err));
+        return this.$q
+          .all(_.map(
+            _.chunk(results.outgoing, 50),
+            id => this.api.sms.outgoing.getBatch({
+              serviceName: this.$stateParams.serviceName,
+              id,
+            }).$promise.catch(err => this.ToastError(err)),
+          ))
+          .then(chunkResult => _.pluck(_.flatten(chunkResult), 'value')).then((sms) => {
+            this.stats.data.outgoing = _.filter(sms, { sender }).length;
+            this.stats.data.incoming = 0;
+          }).catch(err => this.ToastError(err));
       }
       this.stats.data.outgoing = results.outgoing.length;
       this.stats.data.incoming = results.incoming.length;

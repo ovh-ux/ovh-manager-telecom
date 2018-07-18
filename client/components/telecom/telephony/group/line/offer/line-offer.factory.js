@@ -39,7 +39,7 @@ angular.module('managerApp').factory('TelephonyGroupLineOffer', ($translate) => 
 
     if (!_.isEmpty(self.name)) {
       return _.first(self.name.split('.'));
-    } else if (_.isEmpty(self.name) && self.details && _.isArray(self.details)) {
+    } if (_.isEmpty(self.name) && self.details && _.isArray(self.details)) {
       intersect = _.intersection(self.details[0].split('.'), availableOfferTypes);
       return intersect.length ? intersect[0] : undefined;
     }

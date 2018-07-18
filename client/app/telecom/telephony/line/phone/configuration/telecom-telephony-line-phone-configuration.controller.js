@@ -23,8 +23,10 @@ angular.module('managerApp').controller('TelecomTelephonyLinePhoneConfigurationC
 
   function groupConfigs() {
     const groupedConfigs = _.groupBy(self.line.phone.configurations, 'group');
-    const additionalPhoneInfos =
-      _.get(TELEPHONY_LINE_PHONE_ADDITIONAL_INFOS, self.line.phone.brand);
+    const additionalPhoneInfos = _.get(
+      TELEPHONY_LINE_PHONE_ADDITIONAL_INFOS,
+      self.line.phone.brand,
+    );
 
     self.allGroups = [];
 
@@ -45,7 +47,7 @@ angular.module('managerApp').controller('TelecomTelephonyLinePhoneConfigurationC
 
       if (nullResultA) {
         return -1;
-      } else if (nullResultB) {
+      } if (nullResultB) {
         return 1;
       }
 
@@ -54,7 +56,7 @@ angular.module('managerApp').controller('TelecomTelephonyLinePhoneConfigurationC
 
       if (nullResultA) {
         return -1;
-      } else if (nullResultB) {
+      } if (nullResultB) {
         return 1;
       }
 
@@ -63,7 +65,7 @@ angular.module('managerApp').controller('TelecomTelephonyLinePhoneConfigurationC
 
       if (translatedA > translatedB) {
         return 1;
-      } else if (translatedA < translatedB) {
+      } if (translatedA < translatedB) {
         return -1;
       }
       return 0;
@@ -89,13 +91,17 @@ angular.module('managerApp').controller('TelecomTelephonyLinePhoneConfigurationC
   }
 
   self.getModifiedConfigs = function () {
-    return _.filter(self.line.phone.configurations, config =>
-      !_.isEqual(config.value, config.prevValue));
+    return _.filter(
+      self.line.phone.configurations,
+      config => !_.isEqual(config.value, config.prevValue),
+    );
   };
 
   self.getNonDefaultConfigs = function () {
-    return _.filter(self.line.phone.configurations, config =>
-      !_.isEqual(config.value, config.default));
+    return _.filter(
+      self.line.phone.configurations,
+      config => !_.isEqual(config.value, config.default),
+    );
   };
 
   /* -----  End of HELPERS  ------*/
@@ -151,8 +157,8 @@ angular.module('managerApp').controller('TelecomTelephonyLinePhoneConfigurationC
     });
 
     savePromise = self.line.phone
-      .changePhoneConfiguration(null, !dynamicConfigs.length, dynamicConfigs.length ?
-        false : self.model.reboot)
+      .changePhoneConfiguration(null, !dynamicConfigs.length, dynamicConfigs.length
+        ? false : self.model.reboot)
       .then(() => {
         if (dynamicConfigs.length) {
           savePromise = self.line.phone

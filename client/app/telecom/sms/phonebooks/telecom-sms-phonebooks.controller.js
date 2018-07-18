@@ -85,14 +85,17 @@ angular
      * @return {Promise}
      */
     fetchPhonebooks() {
-      return this.api.sms.phonebooks.query({
-        serviceName: this.$stateParams.serviceName,
-      }).$promise.then(phonebooksIds =>
-        this.$q.all(_.map(phonebooksIds, bookKey =>
-          this.api.sms.phonebooks.get({
-            serviceName: this.$stateParams.serviceName,
-            bookKey,
-          }).$promise)).then(phonebooks => _.sortBy(phonebooks, 'name')));
+      return this.api.sms.phonebooks
+        .query({
+          serviceName: this.$stateParams.serviceName,
+        }).$promise
+        .then(phonebooksIds => this.$q
+          .all(_.map(phonebooksIds, bookKey => this.api.sms.phonebooks
+            .get({
+              serviceName: this.$stateParams.serviceName,
+              bookKey,
+            }).$promise))
+          .then(phonebooks => _.sortBy(phonebooks, 'name')));
     }
 
     /**
@@ -104,27 +107,33 @@ angular
       if (!_.size(phonebook)) {
         return this.$q.when([]);
       }
-      return this.api.sms.phonebookContact.query({
-        serviceName: this.$stateParams.serviceName,
-        bookKey: _.get(phonebook, 'bookKey'),
-      }).$promise.then(phonebookContactIds =>
-        this.$q.all(_.map(_.chunk(phonebookContactIds, 50), id =>
-          this.api.sms.phonebookContact.getBatch({
-            serviceName: this.$stateParams.serviceName,
-            bookKey: _.get(phonebook, 'bookKey'),
-            id,
-          }).$promise)).then((chunkResult) => {
-          const result = _.pluck(_.flatten(chunkResult), 'value');
-          const emptyGroup = _.get(this.constant.SMS_PHONEBOOKS, 'emptyFields.group');
-          const emptyPhoneNumber = _.get(this.constant.SMS_PHONEBOOKS, 'emptyFields.numbers');
-          return _.each(result, (contact) => {
-            _.set(contact, 'group', contact.group === emptyGroup ? '' : contact.group);
-            _.set(contact, 'homeMobile', contact.homeMobile === emptyPhoneNumber ? '' : contact.homeMobile);
-            _.set(contact, 'homePhone', contact.homePhone === emptyPhoneNumber ? '' : contact.homePhone);
-            _.set(contact, 'workMobile', contact.workMobile === emptyPhoneNumber ? '' : contact.workMobile);
-            _.set(contact, 'workPhone', contact.workPhone === emptyPhoneNumber ? '' : contact.workPhone);
-          });
-        }));
+      return this.api.sms.phonebookContact
+        .query({
+          serviceName: this.$stateParams.serviceName,
+          bookKey: _.get(phonebook, 'bookKey'),
+        }).$promise
+        .then(phonebookContactIds => this.$q
+          .all(_.map(
+            _.chunk(phonebookContactIds, 50),
+            id => this.api.sms.phonebookContact
+              .getBatch({
+                serviceName: this.$stateParams.serviceName,
+                bookKey: _.get(phonebook, 'bookKey'),
+                id,
+              }).$promise,
+          ))
+          .then((chunkResult) => {
+            const result = _.pluck(_.flatten(chunkResult), 'value');
+            const emptyGroup = _.get(this.constant.SMS_PHONEBOOKS, 'emptyFields.group');
+            const emptyPhoneNumber = _.get(this.constant.SMS_PHONEBOOKS, 'emptyFields.numbers');
+            return _.each(result, (contact) => {
+              _.set(contact, 'group', contact.group === emptyGroup ? '' : contact.group);
+              _.set(contact, 'homeMobile', contact.homeMobile === emptyPhoneNumber ? '' : contact.homeMobile);
+              _.set(contact, 'homePhone', contact.homePhone === emptyPhoneNumber ? '' : contact.homePhone);
+              _.set(contact, 'workMobile', contact.workMobile === emptyPhoneNumber ? '' : contact.workMobile);
+              _.set(contact, 'workPhone', contact.workPhone === emptyPhoneNumber ? '' : contact.workPhone);
+            });
+          }));
     }
 
     /**
@@ -183,8 +192,12 @@ angular
      * @return {Array}
      */
     getSelection() {
-      return _.filter(this.phonebookContact.raw, contact =>
-        contact && this.phonebookContact.selected && this.phonebookContact.selected[contact.id]);
+      return _.filter(
+        this.phonebookContact.raw,
+        contact => contact
+          && this.phonebookContact.selected
+          && this.phonebookContact.selected[contact.id],
+      );
     }
 
     /**
@@ -248,8 +261,8 @@ angular
         this.api.sms.phonebooks.resetAllCache();
         return this.fetchPhonebooks().then((phonebooks) => {
           this.phonebooks.raw = phonebooks;
-          this.phonebooks.current = _.isEmpty(this.phonebooks.raw) ?
-            {} : _.head(this.phonebooks.raw);
+          this.phonebooks.current = _.isEmpty(this.phonebooks.raw)
+            ? {} : _.head(this.phonebooks.raw);
           return this.refresh();
         });
       }).catch((err) => {
@@ -357,12 +370,11 @@ angular
      */
     deleteSelectedPhonebookContact() {
       const contacts = this.getSelection();
-      const queries = contacts.map(contact =>
-        this.api.sms.phonebookContact.delete({
-          serviceName: this.$stateParams.serviceName,
-          bookKey: _.get(this.phonebooks.current, 'bookKey'),
-          id: contact.id,
-        }).$promise);
+      const queries = contacts.map(contact => this.api.sms.phonebookContact.delete({
+        serviceName: this.$stateParams.serviceName,
+        bookKey: _.get(this.phonebooks.current, 'bookKey'),
+        id: contact.id,
+      }).$promise);
       this.phonebookContact.isDeleting = true;
       queries.push(this.$timeout(angular.noop, 500)); // avoid clipping
       this.Toast.info(this.$translate.instant('sms_phonebooks_phonebook_contact_selected_delete_info'));
@@ -418,18 +430,17 @@ angular
      */
     exportPhonebookContact() {
       this.phonebookContact.isExporting = true;
-      const tryGetCsvExport = () =>
-        this.api.sms.phonebooks.getExport({
-          serviceName: this.$stateParams.serviceName,
-          bookKey: _.get(this.phonebooks.current, 'bookKey'),
-          format: 'csv',
-        }).$promise.then((exportPhonebook) => {
-          if (exportPhonebook.status === 'done') {
-            return exportPhonebook;
-          }
-          this.phonebookContact.poller = this.$timeout(tryGetCsvExport, 1000);
-          return this.phonebookContact.poller;
-        });
+      const tryGetCsvExport = () => this.api.sms.phonebooks.getExport({
+        serviceName: this.$stateParams.serviceName,
+        bookKey: _.get(this.phonebooks.current, 'bookKey'),
+        format: 'csv',
+      }).$promise.then((exportPhonebook) => {
+        if (exportPhonebook.status === 'done') {
+          return exportPhonebook;
+        }
+        this.phonebookContact.poller = this.$timeout(tryGetCsvExport, 1000);
+        return this.phonebookContact.poller;
+      });
       return tryGetCsvExport().then((phonebook) => {
         this.$window.location.href = phonebook.url;
         this.Toast.success(this.$translate.instant('sms_phonebooks_phonebook_contact_export_ok'));

@@ -13,55 +13,57 @@
     </div>
 
     <div class="modal-body clearfix">
-
         <h3 class="modal-title"
             data-translate="telephony_alias_hunting_sounds_manager">
         </h3>
 
-        <input-file data-ng-model="$ctrl.toUpload"
-                    data-ng-accept="audio/*"
-                    data-ng-accept-filter="$ctrl.checkValidAudioExtention(file)">
-            <i class="fa fa-upload mr-1"></i>
-            <span data-translate="telephony_alias_hunting_sounds_upload"></span>
-        </input-file>
+        <div class="form-group">
+            <input-file data-ng-model="$ctrl.toUpload"
+                        data-ng-accept="audio/*"
+                        data-ng-accept-filter="$ctrl.checkValidAudioExtention(file)">
+                <span class="fa fa-upload mr-1"></span>
+                <span data-translate="telephony_alias_hunting_sounds_upload"></span>
+            </input-file>
 
-        <button type="submit"
-                class="btn btn-default mt-2 float-right no-transition"
-                data-ng-disabled="$ctrl.isUploading"
-                data-ng-if="$ctrl.toUpload">
-            <oui-spinner class="mr-2"
-                         data-ng-if="$ctrl.isUploading"
-                         data-size="s">
-            </oui-spinner>
-            <span data-translate="submit"></span>
-        </button>
-
-        <div data-ng-if="$ctrl.sounds.length"
-             class="row">
-            <p class="col-xs-12 mt-3"
-               data-translate="telephony_alias_hunting_sounds_list"></p>
+            <button type="submit"
+                    class="btn btn-default mt-2 float-right no-transition"
+                    data-ng-disabled="$ctrl.isUploading"
+                    data-ng-if="$ctrl.toUpload">
+                <oui-spinner class="mr-2"
+                             data-ng-if="$ctrl.isUploading"
+                             data-size="s">
+                </oui-spinner>
+                <span data-translate="submit"></span>
+            </button>
         </div>
-        <ul data-ng-if="$ctrl.sounds.length">
-            <li class="row mt-1"
-                data-ng-repeat="sound in $ctrl.sounds track by $index">
-                <button type="button"
-                        class="btn btn-default col-xs-10"
-                        data-ng-click="$ctrl.chooseSound(sound)">
-                    <span data-ng-bind="sound.name"></span>
-                </button>
-                <button type="button"
-                        class="btn no-style col-xs-offset-1 col-xs-1"
-                        title="{{:: 'telephony_alias_hunting_sounds_delete' | translate }}"
-                        data-ng-disabled="sound.isDeleting"
-                        data-ng-click="$ctrl.deleteSound(sound)">
-                    <oui-spinner data-ng-if="sound.isDeleting"
-                                 data-size="s">
-                    </oui-spinner>
-                    <i class="ovh-font ovh-font-wrong"
-                       data-ng-if="!sound.isDeleting"></i>
-                </button>
-            </li>
-        </ul>
+
+        <div class="form-group"
+             data-ng-if="$ctrl.sounds.length">
+             <label class="control-label"
+                    data-translate="telephony_alias_hunting_sounds_list">
+             </label>
+             <div class="btn-group d-block clearfix mb-4"
+                  role="group"
+                  data-ng-repeat="sound in $ctrl.sounds track by $index">
+                 <button type="button"
+                         class="btn btn-default w-75"
+                         data-ng-click="$ctrl.chooseSound(sound)"
+                         data-ng-bind=":: sound.name">
+                 </button>
+                 <button type="button"
+                         class="btn btn-default w-25"
+                         data-title="{{:: 'telephony_alias_hunting_sounds_delete' | translate }}"
+                         data-ng-disabled="sound.isDeleting"
+                         data-ng-click="$ctrl.deleteSound(sound)">
+                     <oui-spinner data-ng-if="sound.isDeleting"
+                                  data-size="s">
+                     </oui-spinner>
+                     <span class="ovh-font ovh-font-wrong"
+                           data-ng-if="!sound.isDeleting">
+                     </span>
+                 </button>
+             </div>
+        </div>
 
     </div>
 

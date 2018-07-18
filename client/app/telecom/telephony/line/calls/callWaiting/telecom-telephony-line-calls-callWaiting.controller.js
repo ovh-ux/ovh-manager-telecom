@@ -10,8 +10,8 @@ angular.module('managerApp').controller('TelecomTelephonyLineCallsCallWaitingCtr
   }
 
   this.needSave = function () {
-    return (this.options.callWaiting !== self.saved.callWaiting) ||
-      (this.options.intercom !== self.saved.intercom);
+    return (this.options.callWaiting !== self.saved.callWaiting)
+      || (this.options.intercom !== self.saved.intercom);
   };
 
   this.cancel = function () {

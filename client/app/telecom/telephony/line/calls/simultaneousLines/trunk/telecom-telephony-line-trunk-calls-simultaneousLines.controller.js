@@ -19,8 +19,8 @@ angular.module('managerApp').controller('TelecomTelephonyLineTrunkSimultaneousLi
   }
 
   _getNewRepartition() {
-    if (this.trunkRates.change.quantityWanted > 0 &&
-      this.trunkRates.change.quantityWanted !== this.trunkRates.change.quantityOptimized) {
+    if (this.trunkRates.change.quantityWanted > 0
+      && this.trunkRates.change.quantityWanted !== this.trunkRates.change.quantityOptimized) {
       this.trunkRates.change.loading = true;
       return this.OvhApiTelephony.Trunk().v6().getChannelsPacksRepartition({
         billingAccount: this.$stateParams.billingAccount,
@@ -76,8 +76,8 @@ angular.module('managerApp').controller('TelecomTelephonyLineTrunkSimultaneousLi
   }
 
   canOrder() {
-    return this.trunkRates.change.quantityOptimized > 0 &&
-      this.trunkRates.change.quantityWanted > 0;
+    return this.trunkRates.change.quantityOptimized > 0
+      && this.trunkRates.change.quantityWanted > 0;
   }
 
   $onInit() {
@@ -108,8 +108,8 @@ angular.module('managerApp').controller('TelecomTelephonyLineTrunkSimultaneousLi
       loading: false,
       order: null,
       pending: {
-        quantity: this.currentLine.simultaneousLinesDetails.current -
-          this.currentLine.simultaneousLinesDetails.toBeDeleted,
+        quantity: this.currentLine.simultaneousLinesDetails.current
+          - this.currentLine.simultaneousLinesDetails.toBeDeleted,
         price: null,
         packsRepartition: [],
       },

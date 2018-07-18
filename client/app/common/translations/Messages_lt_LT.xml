@@ -10,10 +10,30 @@
    <translation id="ttc" qtlid="101385">su PVM</translation>
    <translation id="table_sort" qtlid="94699">Rikiuoti</translation>
 
+   <translation id="common_criteria_adder_column_label" qtlid="479108">Stulpelis</translation>
+   <translation id="common_criteria_adder_operator_label" qtlid="425806">Sąlygos</translation>
+   <translation id="common_criteria_adder_operator_boolean_is" qtlid="479121">yra</translation>
+   <translation id="common_criteria_adder_operator_boolean_isNot" qtlid="479134">yra skirtingas nei</translation>
+   <translation id="common_criteria_adder_operator_string_contains" qtlid="218692">yra</translation>
+   <translation id="common_criteria_adder_operator_string_containsNot" qtlid="218705">nėra</translation>
+   <translation id="common_criteria_adder_operator_string_startsWith" qtlid="479147">prasideda</translation>
+   <translation id="common_criteria_adder_operator_string_endsWith" qtlid="479160">baigiasi</translation>
+   <translation id="common_criteria_adder_operator_string_is" qtlid="479173">yra lygus</translation>
+   <translation id="common_criteria_adder_operator_string_isNot" qtlid="479134">yra skirtingas nei</translation>
+   <translation id="common_criteria_adder_operator_number_is" qtlid="479173">yra lygus</translation>
+   <translation id="common_criteria_adder_operator_number_smaller" qtlid="479186">yra žemesnis nei</translation>
+   <translation id="common_criteria_adder_operator_number_bigger" qtlid="479199">yra didesnis nei</translation>
+   <translation id="common_criteria_adder_operator_date_is" qtlid="479121">yra</translation>
+   <translation id="common_criteria_adder_operator_date_isBefore" qtlid="479212">yra ankčiau nei</translation>
+   <translation id="common_criteria_adder_operator_date_isAfter" qtlid="479225">yra vėliau nei</translation>
+   <translation id="common_criteria_adder_operator_options_is" qtlid="479121">yra</translation>
+   <translation id="common_criteria_adder_operator_options_isNot" qtlid="479134">yra skirtingas nei</translation>
+   <translation id="common_criteria_adder_true_label" qtlid="34776">Taip</translation>
+   <translation id="common_criteria_adder_false_label" qtlid="34788">Ne</translation>
+   <translation id="common_criteria_adder_value_label" qtlid="47548">Reikšmė</translation>
+   <translation id="common_criteria_adder_submit_label" qtlid="37923">Pridėti</translation>
+
    <translation id="common_datagrid_nodata" qtlid="197635">Jokio rezultato</translation>
-   <translation id="common_pagination_resultsperpage" qtlid="433384">Rezultatai / 1 psl.</translation>
-   <translation id="common_pagination_ofnresults" qtlid="452982">viso rezultatų: TOTAL_ITEMS </translation>
-   <translation id="common_pagination_currentpageofpagecount" qtlid="452995">Puslapis CURRENT_PAGE iš PAGE_COUNT</translation>
 
    <translation id="common_field_error_required" qtlid="472294">Prašome užpildyti šį lauką</translation>
    <translation id="common_field_error_number" qtlid="472307">Įveskite skaitinę reikšmę.</translation>
@@ -23,6 +43,31 @@
    <translation id="common_field_error_minlength" qtlid="472359">Įveskite bent {{minlength}} simbolius.</translation>
    <translation id="common_field_error_maxlength" qtlid="472372">Įveskite na daugiau kaip {{maxlength}} simbolius.</translation>
    <translation id="common_field_error_pattern" qtlid="472385">Prašome naudoti priimtiną formatą</translation>
+
+   <translation id="common_navbar_notification_title" qtlid="33250">Pranešimai</translation>
+   <translation id="common_navbar_notification_see_all" qtlid="401914">Peržiūrėti visus pranešimus</translation>
+   <translation id="common_navbar_notification_error_in_notification" qtlid="492055">Atsiprašome, yra nesklandumų!</translation>
+   <translation id="common_navbar_notification_error_in_notification_description" qtlid="492068">Mums nepavyko paleisti meniu.</translation>
+   <translation id="common_navbar_notification_mark_as_read" qtlid="70865">Žymėti kaip perskaitytus</translation>
+   <translation id="common_navbar_notification_mark_as_unread" qtlid="70877">Žymėti kaip neskaitytus</translation>
+   <translation id="common_navbar_notification_none" qtlid="492081">Jūsų paslauga atnaujinta!</translation>
+   <translation id="common_navbar_notification_none_description" qtlid="492094">Neturite jokio pranešimo.</translation>
+
+   <translation id="common_pagination_resultsperpage" qtlid="433384">Rezultatai / 1 psl.</translation>
+   <translation id="common_pagination_page" qtlid="433397">puslapis</translation>
+   <translation id="common_pagination_of" qtlid="121615"></translation>
+   <translation id="common_pagination_ofnresults" qtlid="452982">viso rezultatų: TOTAL_ITEMS </translation>
+   <translation id="common_pagination_currentpageofpagecount" qtlid="452995">Puslapis CURRENT_PAGE iš PAGE_COUNT</translation>
+   <translation id="common_pagination_results" qtlid="433410">rezultatai</translation>
+   <translation id="common_pagination_next" qtlid="433423">Kitas puslapis</translation>
+   <translation id="common_pagination_previous" qtlid="433436">Ankstesnis puslapis</translation>
+
+   <translation id="common_stepper_optional_label" qtlid="356264">(neprivaloma)</translation>
+   <translation id="common_stepper_modify_this_step" qtlid="480922">Keisti šį žingsnį</translation>
+   <translation id="common_stepper_skip_this_step" qtlid="480935">Praleisti šį žingsnį</translation>
+   <translation id="common_stepper_next_button_label" qtlid="17743">Toliau</translation>
+   <translation id="common_stepper_submit_button_label" qtlid="52807">Siųsti</translation>
+   <translation id="common_stepper_cancel_button_label" qtlid="37863">Anuliuoti</translation>
 
    <translation id="yes" qtlid="50134">taip</translation>
    <translation id="common_yes_capitalized" qtlid="34776">Taip</translation>

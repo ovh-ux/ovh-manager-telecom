@@ -27,10 +27,6 @@
    <translation id="telephony_abbreviated_numbers_import_modal_explaination" qtlid="360814">Elimina l'eventuale intestazione.</translation>
    <translation id="telephony_abbreviated_numbers_import_item_imported" qtlid="360827">Numeri importati:</translation>
    <translation id="telephony_abbreviated_numbers_import_item_rejected" qtlid="360840">Numeri ignorati:</translation>
-   <translation id="telephony_abbreviated_numbers_import_tooltip" qtlid="360853">Importa una lista di numeri brevi da un file csv</translation>
-   <translation id="telephony_abbreviated_numbers_export_tooltip" qtlid="360762">Esporta la lista in formato csv</translation>
-   <translation id="telephony_abbreviated_numbers_add_tooltip" qtlid="360736">Aggiungi un numero breve</translation>
-   <translation id="telephony_abbreviated_numbers_trash_all_tooltip" qtlid="360866">Elimina tutta la lista di numeri brevi</translation>
    <translation id="telephony_abbreviated_numbers_empty_modal_tile" qtlid="360879">Pulisci la lista dei numeri brevi</translation>
    <translation id="telephony_abbreviated_numbers_empty_modal_text" qtlid="360892">Tutti i numeri brevi saranno eliminati. Vuoi continuare?</translation>
    <translation id="telephony_abbreviated_numbers_import_loading_error" qtlid="360905">Questo file non è in formato csv (l'estensione deve essere .csv)</translation>

@@ -122,9 +122,9 @@ angular.module('managerApp').controller('OverTheBoxRemoteCtrl', function ($state
    * @returns {string}
    */
   this.getSshConnectionHelp = function (remote) {
-    return remote && remote.connectionInfos && remote.connectionInfos.ip ?
-      `ssh -p ${remote.connectionInfos.port} root@${remote.connectionInfos.ip}` :
-      '';
+    return remote && remote.connectionInfos && remote.connectionInfos.ip
+      ? `ssh -p ${remote.connectionInfos.port} root@${remote.connectionInfos.ip}`
+      : '';
   };
 
   /**
@@ -133,9 +133,9 @@ angular.module('managerApp').controller('OverTheBoxRemoteCtrl', function ($state
    * @returns {string}
    */
   this.getHttpConnectionHelp = function (remote) {
-    return remote && remote.connectionInfos && remote.connectionInfos.port ?
-      `https://${remote.connectionInfos.ip}:${remote.connectionInfos.port}/` :
-      '';
+    return remote && remote.connectionInfos && remote.connectionInfos.port
+      ? `https://${remote.connectionInfos.ip}:${remote.connectionInfos.port}/`
+      : '';
   };
 
   /**

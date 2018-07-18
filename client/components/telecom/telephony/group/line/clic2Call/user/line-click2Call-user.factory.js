@@ -22,8 +22,8 @@ angular.module('managerApp').factory('TelephonyGroupLineClick2CallUser', ($q, Ov
           throw new Error(`${mandatoriesPhoneOptions[mandatoryNb]} option must be specified when creating a new TelephonyGroupLineClick2CallUser`);
         } else {
           // set mandatory attributes
-          this[mandatoriesPhoneOptions[mandatoryNb]] =
-            mandatoryOptions[mandatoriesPhoneOptions[mandatoryNb]];
+          this[mandatoriesPhoneOptions[mandatoryNb]] = mandatoryOptions[
+            mandatoriesPhoneOptions[mandatoryNb]];
         }
       }
     }

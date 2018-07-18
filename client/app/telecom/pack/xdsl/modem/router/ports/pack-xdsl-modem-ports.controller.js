@@ -25,7 +25,7 @@ angular.module('managerApp').controller('XdslModemPortsCtrl', function ($statePa
     const found = _.find(this.ports, { name });
     if (!found) {
       return true;
-    } else if (!currentPort.id) {
+    } if (!currentPort.id) {
       return false;
     }
     return currentPort.id === found.id;

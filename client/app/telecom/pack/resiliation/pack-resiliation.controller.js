@@ -28,8 +28,8 @@ angular.module('managerApp').controller('PackResiliationCtrl', function ($stateP
     OvhApiPackXdslResiliation.Aapi().terms({
       packId: $stateParams.packName,
     }).$promise.then((data) => {
-      self.dpOpts.minDate = data.data.minResiliationDate ?
-        new Date(data.data.minResiliationDate) : new Date();
+      self.dpOpts.minDate = data.data.minResiliationDate
+        ? new Date(data.data.minResiliationDate) : new Date();
       self.minResiliationDate = self.dpOpts.minDate;
       self.resiliationTerms = {};
 
@@ -41,8 +41,8 @@ angular.module('managerApp').controller('PackResiliationCtrl', function ($stateP
 
       self.resiliationTerms.typeName = $translate.instant('pack_resiliation_type_name');
       if (self.resiliationTerms.data.resiliationReasons) {
-        self.resiliationTerms.data.resiliationReasons =
-          self.resiliationTerms.data.resiliationReasons.map(reason => ({
+        self.resiliationTerms.data.resiliationReasons = self
+          .resiliationTerms.data.resiliationReasons.map(reason => ({
             value: reason,
             label: $translate.instant(`pack_resiliation_choice_${reason}`),
           }));
@@ -89,8 +89,8 @@ angular.module('managerApp').controller('PackResiliationCtrl', function ($stateP
    * @param {Date} specifiedDate Date to validate
    */
   this.checkDate = function () {
-    return !self.model.when || (validator.isDate(self.model.when) &&
-      (self.model.when >= self.minResiliationDate));
+    return !self.model.when || (validator.isDate(self.model.when)
+      && (self.model.when >= self.minResiliationDate));
   };
 
   /**

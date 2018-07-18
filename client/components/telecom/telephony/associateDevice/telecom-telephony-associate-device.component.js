@@ -37,19 +37,22 @@ angular.module('managerApp').component('telecomTelephonyAssociateDevice', {
         }).$promise
         .then(phones => $q.all(_.map(phones, (phone) => {
           const line = _.first(phone.associatedLines).serviceName;
-          return OvhApiTelephony.Line().Phone().v6().get({
-            billingAccount: self.billingAccount,
-            serviceName: line,
-          }).$promise.then(details => _.assign(phone, details)).then(thePhone =>
-            OvhApiTelephony.Line().v6().ips({
+          return OvhApiTelephony.Line().Phone().v6()
+            .get({
               billingAccount: self.billingAccount,
               serviceName: line,
-            }).$promise.then((ips) => {
-              if (ips.length) {
-                _.set(thePhone, 'ip', _.first(ips).ip);
-              }
-              return thePhone;
-            }));
+            }).$promise
+            .then(details => _.assign(phone, details))
+            .then(thePhone => OvhApiTelephony.Line().v6()
+              .ips({
+                billingAccount: self.billingAccount,
+                serviceName: line,
+              }).$promise.then((ips) => {
+                if (ips.length) {
+                  _.set(thePhone, 'ip', _.first(ips).ip);
+                }
+                return thePhone;
+              }));
         })));
     };
 

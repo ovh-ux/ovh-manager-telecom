@@ -110,19 +110,21 @@ angular.module('managerApp').controller('TelecomTelephonyLinePhoneProgammableKey
 
     return voipLinePhoneFunction
       .fetchAll()
-      .then(voipLinePhoneFunctions => _.filter(filteredServices, service =>
-        _.find(voipLinePhoneFunctions, {
+      .then(voipLinePhoneFunctions => _.filter(
+        filteredServices,
+        service => _.find(voipLinePhoneFunctions, {
           serviceName: service.serviceName,
           billingAccount: service.billingAccount,
-        })));
+        }),
+      ));
   };
 
   self.onBulkSuccess = function (bulkResult) {
     if (bulkResult.error.length) {
       _.set(bulkResult, 'error', _.map(bulkResult.error, (error) => {
         const errorDetails = _.get(error, 'errors[0]');
-        _.set(error, 'errors[0].error', errorDetails.statusCode === 501 ?
-          $translate.instant('telephony_line_phone_programmableKeys_bulk_error_details') : errorDetails.error);
+        _.set(error, 'errors[0].error', errorDetails.statusCode === 501
+          ? $translate.instant('telephony_line_phone_programmableKeys_bulk_error_details') : errorDetails.error);
 
         return error;
       }));

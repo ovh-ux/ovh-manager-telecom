@@ -123,8 +123,8 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationTimeC
       });
 
       return self.number.feature.timeCondition.saveConditions().then(() => {
-        self.number.feature.timeCondition.conditions =
-          self.number.feature.timeCondition.conditions.concat(_.map(conditions, (condition) => {
+        self.number.feature.timeCondition.conditions = self.number.feature.timeCondition.conditions
+          .concat(_.map(conditions, (condition) => {
             _.set(condition, 'billingAccount', $stateParams.billingAccount);
             _.set(condition, 'serviceName', $stateParams.serviceName);
             _.set(condition, 'state', 'TO_CREATE');

@@ -104,8 +104,8 @@ angular.module('managerApp').controller('TelephonyNumberConferenceCtrl', functio
   };
 
   self.manageSoundParticipant = function (participant) {
-    const promise = [].concat(participant.energyEquivalence === 0 ?
-      participant.mute() : participant.unmute());
+    const promise = [].concat(participant.energyEquivalence === 0
+      ? participant.mute() : participant.unmute());
     let energy = null;
 
     switch (participant.energyEquivalence) {
@@ -188,8 +188,8 @@ angular.module('managerApp').controller('TelephonyNumberConferenceCtrl', functio
 
   self.toggleLockStatus = function () {
     return $q.when(true)
-      .then(() => (self.model.lockState ?
-        self.numberCtrl.number.feature.lock() : self.numberCtrl.number.feature.unlock()));
+      .then(() => (self.model.lockState
+        ? self.numberCtrl.number.feature.lock() : self.numberCtrl.number.feature.unlock()));
   };
 
   self.setMuteAll = function (newValue) {
@@ -198,9 +198,9 @@ angular.module('managerApp').controller('TelephonyNumberConferenceCtrl', functio
 
   self.toggleMuteAll = function () {
     return $q.when(true)
-      .then(() => (self.model.muteAllState ?
-        self.numberCtrl.number.feature.muteAllParticipants() :
-        self.numberCtrl.number.feature.unmuteAllParticipants()));
+      .then(() => (self.model.muteAllState
+        ? self.numberCtrl.number.feature.muteAllParticipants()
+        : self.numberCtrl.number.feature.unmuteAllParticipants()));
   };
 
   /* -----  End of EVENTS  ------*/
@@ -234,8 +234,8 @@ angular.module('managerApp').controller('TelephonyNumberConferenceCtrl', functio
           }
           return $q.reject(error);
         }, () => {
-          if (self.numberCtrl.number.feature.participants.length &&
-            self.numberCtrl.number.feature.participants.length !== participantCount) {
+          if (self.numberCtrl.number.feature.participants.length
+            && self.numberCtrl.number.feature.participants.length !== participantCount) {
             self.numberCtrl.jsplumbInstance.customRepaint();
             participantCount = self.numberCtrl.number.feature.participants.length;
           }
