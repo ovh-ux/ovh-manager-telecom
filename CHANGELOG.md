@@ -1,3 +1,22 @@
+<a name="10.5.2"></a>
+## [10.5.2](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.5.1...v10.5.2) (2018-07-18)
+
+
+### Bug Fixes
+
+* **alias:** fix list of sounds popup in configuration ([#769](https://github.com/ovh-ux/ovh-manager-telecom/issues/769)) ([39b8ef8](https://github.com/ovh-ux/ovh-manager-telecom/commit/39b8ef8))
+* **telephony:** add plugNFax lines in display Number selection ([aec118c](https://github.com/ovh-ux/ovh-manager-telecom/commit/aec118c))
+* **telephony:** restore easyhunting translations ([6df2a10](https://github.com/ovh-ux/ovh-manager-telecom/commit/6df2a10))
+* **trunk:** input number validation error useless ([b23cb66](https://github.com/ovh-ux/ovh-manager-telecom/commit/b23cb66))
+* **xdsl pack:** remove background color for promotion code ([13e07c6](https://github.com/ovh-ux/ovh-manager-telecom/commit/13e07c6))
+
+
+### Features
+
+* **xdsl:** add emailpro support in xdsl pack ([789d2da](https://github.com/ovh-ux/ovh-manager-telecom/commit/789d2da))
+
+
+
 <a name="10.5.1"></a>
 ## [10.5.1](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.5.0...v10.5.1) (2018-07-12)
 
