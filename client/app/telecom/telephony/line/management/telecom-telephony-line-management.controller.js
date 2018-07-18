@@ -36,7 +36,7 @@ angular.module('managerApp').controller('TelecomTelephonyLineManagementCtrl', fu
     } : {
       name: 'line_sip_ips_restrictions',
       sref: 'telecom.telephony.line.restrictions',
-      disabled: _.get(self.line, 'phone.protocol') !== 'sip',
+      disabled: _.get(self.line, 'phone.protocol') === 'mgcp',
       text: $translate.instant('telephony_line_management_actions_line_sip_ips_restrictions'),
     }, {
       name: 'line_language',
