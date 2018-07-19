@@ -1,43 +1,41 @@
-angular.module('managerApp').controller('TelecomTelephonyLineDetailsCtrl', function ($q, $stateParams, TelephonyMediator, NumberPlans, currentLine) {
-  const self = this;
+angular.module('managerApp').controller('TelecomTelephonyLineDetailsCtrl', class TelecomTelephonyLineDetailsCtrl {
+  constructor($q, $stateParams, currentLine, NumberPlans, TelephonyMediator) {
+    this.$q = $q;
+    this.billingAccount = $stateParams.billingAccount;
+    this.serviceName = $stateParams.serviceName;
+    this.currentLine = currentLine;
+    this.NumberPlans = NumberPlans;
+    this.TelephonyMediator = TelephonyMediator;
+  }
 
-  self.loading = {
-    init: false,
-  };
-  self.lastRegistration = null;
+  $onInit() {
+    this.loading = true;
+    this.lastRegistration = null;
 
-  /*= =====================================
-    =            INITIALIZATION            =
-    ====================================== */
+    this.TelephonyMediator.getGroup(this.billingAccount).then((group) => {
+      this.group = group;
+      this.line = _.merge(this.group.getLine(this.serviceName), this.currentLine || {});
+      this.line.getPublicOffer.description = this.line.getPublicOffer.description.replace('The Public Reference has an error', '-');
+      this.plan = this.NumberPlans.getPlanByNumber(this.line);
 
-  function init() {
-    self.loading.init = true;
-
-    TelephonyMediator.getGroup($stateParams.billingAccount).then((group) => {
-      self.group = group;
-      self.line = _.merge(self.group.getLine($stateParams.serviceName), currentLine || {});
-      self.line.getPublicOffer.description = self.line.getPublicOffer.description.replace('The Public Reference has an error', '-');
-      self.plan = NumberPlans.getPlanByNumber(self.line);
-
-      return $q.all({
-        phone: self.line.getPhone(),
-        options: self.line.getOptions(),
-        ips: self.line.getIps(),
-        lastRegistrations: self.line.getLastRegistrations(),
+      return this.$q.all({
+        phone: this.line.getPhone(),
+        options: this.line.getOptions(),
+        ips: this.line.getIps(),
+        lastRegistrations: this.line.getLastRegistrations(),
       }).then(() => {
-        if (self.line.lastRegistrations && self.line.lastRegistrations.length) {
-          self.lastRegistration = _.last(_.sortBy(
-            self.line.lastRegistrations,
-            reg => new Date(reg.datetime),
-          ));
+        if (_.isArray(this.line.lastRegistrations) && this.line.lastRegistrations.length) {
+          this.lastRegistration = _.chain(this.line.lastRegistrations)
+            .sortBy(this.line.lastRegistrations, reg => new Date(reg.datetime)).last().value();
+        }
+
+        if (_.some(_.words(this.line.offers), offer => _.includes(['sipfax', 'priceplan', 'trunk'], offer))) {
+          this.hasSimultaneousCallsOption = true;
+          this.isTrunkRates = _.some(this.line.offers, offer => _.startsWith(offer, 'voip.main.offer.fr.trunk.rates'));
         }
       });
     }).finally(() => {
-      self.loading.init = false;
+      this.loading = false;
     });
   }
-
-  /* -----  End of INITIALIZATION  ------*/
-
-  init();
 });

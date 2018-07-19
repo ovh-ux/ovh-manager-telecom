@@ -8,7 +8,7 @@ angular.module('managerApp').config(($stateProvider) => {
       'detailsView@telecom.telephony.line.detailsOffer': {
         templateUrl: 'app/telecom/telephony/line/details/telecom-telephony-line-details.html',
         controller: 'TelecomTelephonyLineDetailsCtrl',
-        controllerAs: 'DetailsOfferCtrl',
+        controllerAs: '$ctrl',
       },
     },
     translations: ['common', 'telecom/telephony/line/management'],

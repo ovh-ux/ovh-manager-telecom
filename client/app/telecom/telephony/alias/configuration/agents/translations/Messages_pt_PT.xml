@@ -6,10 +6,10 @@
    <translation id="telephony_alias_configuration_agents_add" qtlid="461406">Ajouter un agent</translation>
 
    <translation id="telephony_alias_configuration_agents_agent" qtlid="303562">Agente</translation>
-   <translation id="telephony_alias_configuration_agents_description">Description</translation>
-   <translation id="telephony_alias_configuration_agents_type">Type de numéro</translation>
-   <translation id="telephony_alias_configuration_agents_type_internal">Interne</translation>
-   <translation id="telephony_alias_configuration_agents_type_external">Externe</translation>
+   <translation id="telephony_alias_configuration_agents_description" qtlid="9238">Descrição </translation>
+   <translation id="telephony_alias_configuration_agents_type" qtlid="93283">Tipo de número</translation>
+   <translation id="telephony_alias_configuration_agents_type_internal" qtlid="315306">Interne</translation>
+   <translation id="telephony_alias_configuration_agents_type_external" qtlid="496967">Externe</translation>
    <translation id="telephony_alias_configuration_agents_timeout" qtlid="303692">Délai</translation>
    <translation id="telephony_alias_configuration_agents_wrapUpTime" qtlid="303705">Repos</translation>
    <translation id="telephony_alias_configuration_agents_simultaneousLines" qtlid="303718">Appels simultanés</translation>
@@ -27,10 +27,10 @@
    <translation id="telephony_alias_configuration_agents_delete_success" qtlid="461471">Agent(s) supprimé(s) avec succès.</translation>
    <translation id="telephony_alias_configuration_agents_update_success" qtlid="461484">Agent(s) mis à jour avec succès.</translation>
 
-   <translation id="telephony_alias_configuration_agents_get_error">Une erreur est survenue lors de la récupération des agents.</translation>
-   <translation id="telephony_alias_configuration_agents_add_error">Une erreur est survenue l'ajout de l'agent.</translation>
-   <translation id="telephony_alias_configuration_agents_delete_error">Une erreur est survenue lors de la suppression.</translation>
-   <translation id="telephony_alias_configuration_agents_update_error">Une erreur est survenue lors de la mise à jour de l'agent.</translation>
+   <translation id="telephony_alias_configuration_agents_get_error" qtlid="496980">Une erreur est survenue lors de la récupération des agents.</translation>
+   <translation id="telephony_alias_configuration_agents_add_error" qtlid="496993">Une erreur est survenue l'ajout de l'agent.</translation>
+   <translation id="telephony_alias_configuration_agents_delete_error" qtlid="225811">Ocorreu um erro aquando da eliminação.</translation>
+   <translation id="telephony_alias_configuration_agents_update_error" qtlid="497006">Une erreur est survenue lors de la mise à jour de l'agent.</translation>
 
    <translation id="telephony_alias_configuration_agents_status_available" qtlid="99920">Disponível</translation>
    <translation id="telephony_alias_configuration_agents_status_loggedOut" qtlid="77154">Desligado</translation>

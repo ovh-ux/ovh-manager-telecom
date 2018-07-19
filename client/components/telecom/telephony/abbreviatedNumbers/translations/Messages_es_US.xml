@@ -4,7 +4,7 @@
    <translation id="telephony_abbreviated_numbers_write_error" qtlid="334244">Impossible de mettre à jour le numéro abrégé.</translation>
    <translation id="telephony_abbreviated_numbers_write_success" qtlid="334257">Le numéro abrégé {{num}} a été mis à jour.</translation>
    <translation id="telephony_abbreviated_numbers_id" qtlid="334283">Numéro abrégé</translation>
-   <translation id="telephony_abbreviated_numbers_id_help" qtlid="480279">Doit être un nombre à 3 ou 4 chiffres, débutant par un 7.</translation>
+   <translation id="telephony_abbreviated_numbers_id_help" qtlid="497307">Doit être un nombre à 3 ou 4 chiffres, débutant par un {{digit}}.</translation>
    <translation id="telephony_abbreviated_numbers_number" qtlid="334296">Numéro cible</translation>
    <translation id="telephony_abbreviated_numbers_surname" qtlid="3818">Nombre</translation>
    <translation id="telephony_abbreviated_numbers_name" qtlid="23323">Nombre</translation>

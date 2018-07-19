@@ -52,7 +52,7 @@
                                data-ng-model="AliasOrderGeographicalCtrl.form.zone"
                                data-ng-change="AliasOrderGeographicalCtrl.changeZone()"
                                data-ng-disabled="AliasOrderGeographicalCtrl.loading.init || AliasOrderGeographicalCtrl.loading.order"
-                               data-uib-typeahead="item for item in AliasOrderGeographicalCtrl.getGeographicalZone($viewValue)"
+                               data-uib-typeahead="item as item.askedCity for item in AliasOrderGeographicalCtrl.getGeographicalZone($viewValue)"
                                data-typeahead-focus-first="true"
                                data-typeahead-editable="false"
                                data-typeahead-select-on-exact="true"
