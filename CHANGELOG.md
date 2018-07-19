@@ -1,3 +1,16 @@
+<a name="10.5.3"></a>
+## [10.5.3](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.5.2...v10.5.3) (2018-07-19)
+
+
+### Bug Fixes
+
+* show given city name taht users understand ([#773](https://github.com/ovh-ux/ovh-manager-telecom/issues/773)) ([6899682](https://github.com/ovh-ux/ovh-manager-telecom/commit/6899682))
+* **ip-sip-restrictions:** ip sip restriction disabled ([#778](https://github.com/ovh-ux/ovh-manager-telecom/issues/778)) ([b43098d](https://github.com/ovh-ux/ovh-manager-telecom/commit/b43098d))
+* **line:** missing condition to sim calls state link in global info ([#772](https://github.com/ovh-ux/ovh-manager-telecom/issues/772)) ([adc8280](https://github.com/ovh-ux/ovh-manager-telecom/commit/adc8280))
+* **line-abbreviatednumber:** pattern check for abbreviatednumber fix ([03f7a25](https://github.com/ovh-ux/ovh-manager-telecom/commit/03f7a25))
+
+
+
 <a name="10.5.2"></a>
 ## [10.5.2](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.5.1...v10.5.2) (2018-07-18)
 
