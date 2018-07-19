@@ -23,7 +23,7 @@
    <translation id="sms_options_recredit_update_threshold_error_min" qtlid="338963">El valor mínimo de este campo es 0.</translation>
    <translation id="sms_options_recredit_update_threshold_error_number" qtlid="340484">Por favor, introduzca un número válido.</translation>
    <translation id="sms_options_recredit_update_quantity_label" qtlid="340497">Cantidad a recargar</translation>
-   <translation id="sms_options_recredit_update_quantity_option" qtlid="340510">{{ amount }} créditos</translation>
+   <translation id="sms_options_recredit_update_quantity_option" qtlid="496863">{{ amount }} crédits</translation>
    <translation id="sms_options_recredit_updating" qtlid="340523">Configurando la recarga automática…</translation>
    <translation id="sms_options_recredit_updated" qtlid="340536">Se ha configurado la recarga automática.</translation>
    <translation id="sms_options_recredit_update_ko" qtlid="340549">No se ha podido actualizar la configuración de la recarga automática.<br/>{{error}}</translation>
