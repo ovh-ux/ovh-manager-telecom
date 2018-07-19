@@ -4,7 +4,7 @@
    <translation id="telephony_abbreviated_numbers_write_error" qtlid="334244">Negalima atnaujinti trumpųjų numerių sąrašo.</translation>
    <translation id="telephony_abbreviated_numbers_write_success" qtlid="334257">Trumpasis numeris {{num}} atnaujintas.</translation>
    <translation id="telephony_abbreviated_numbers_id" qtlid="334283">Trumpasis numeris</translation>
-   <translation id="telephony_abbreviated_numbers_id_help" qtlid="480279">Doit être un nombre à 3 ou 4 chiffres, débutant par un 7.</translation>
+   <translation id="telephony_abbreviated_numbers_id_help" qtlid="497307">Doit être un nombre à 3 ou 4 chiffres, débutant par un {{digit}}.</translation>
    <translation id="telephony_abbreviated_numbers_number" qtlid="334296">Paskirties numeris</translation>
    <translation id="telephony_abbreviated_numbers_surname" qtlid="3818">Pavadinimas</translation>
    <translation id="telephony_abbreviated_numbers_name" qtlid="23323">Vardas</translation>

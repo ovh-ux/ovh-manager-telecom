@@ -4,7 +4,7 @@
    <translation id="telephony_abbreviated_numbers_write_error" qtlid="334244">Impossibile aggiornare il numero breve.</translation>
    <translation id="telephony_abbreviated_numbers_write_success" qtlid="334257">Il numero breve {{num}} è stato aggiornato.</translation>
    <translation id="telephony_abbreviated_numbers_id" qtlid="334283">Numero breve</translation>
-   <translation id="telephony_abbreviated_numbers_id_help" qtlid="480279">Doit être un nombre à 3 ou 4 chiffres, débutant par un 7.</translation>
+   <translation id="telephony_abbreviated_numbers_id_help" qtlid="497307">Doit être un nombre à 3 ou 4 chiffres, débutant par un {{digit}}.</translation>
    <translation id="telephony_abbreviated_numbers_number" qtlid="334296">Numéro di destinazione</translation>
    <translation id="telephony_abbreviated_numbers_surname" qtlid="3818">Nome</translation>
    <translation id="telephony_abbreviated_numbers_name" qtlid="23323">Nome</translation>
