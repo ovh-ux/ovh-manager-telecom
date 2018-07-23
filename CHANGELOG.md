@@ -1,3 +1,14 @@
+<a name="10.5.4"></a>
+## [10.5.4](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.5.3...v10.5.4) (2018-07-23)
+
+
+### Bug Fixes
+
+* **xdsl pack:** align text frais de resiliation with ':' ([#786](https://github.com/ovh-ux/ovh-manager-telecom/issues/786)) ([751ba7f](https://github.com/ovh-ux/ovh-manager-telecom/commit/751ba7f))
+* **xdsl pack:** remove circle list style type on xdsl resiliation modal ([#784](https://github.com/ovh-ux/ovh-manager-telecom/issues/784)) ([db203d4](https://github.com/ovh-ux/ovh-manager-telecom/commit/db203d4))
+
+
+
 <a name="10.5.3"></a>
 ## [10.5.3](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.5.2...v10.5.3) (2018-07-19)
 
