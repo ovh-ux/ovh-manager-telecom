@@ -1,3 +1,13 @@
+<a name="10.5.5"></a>
+## [10.5.5](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.5.4...v10.5.5) (2018-07-24)
+
+
+### Bug Fixes
+
+* **portability:** fix missing parameters ([818aa47](https://github.com/ovh-ux/ovh-manager-telecom/commit/818aa47))
+
+
+
 <a name="10.5.4"></a>
 ## [10.5.4](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.5.3...v10.5.4) (2018-07-23)
 
