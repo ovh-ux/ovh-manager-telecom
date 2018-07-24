@@ -174,6 +174,10 @@ angular.module('managerApp').controller('TelecomTelephonyAliasPortabilityOrderCt
       params.specialNumberCategory = self.order.specialNumberCategory.replace('fr_', '');
     }
 
+    if (params.country === 'france') {
+      params.fiabilisation = self.order.sdatype === 'all';
+    }
+
     params.callNumber = self.normalizeNumber(params.callNumber);
     params.contactNumber = self.normalizeNumber(params.contactNumber);
     params.desireDate = moment(params.desireDate).format('Y-MM-DD');
