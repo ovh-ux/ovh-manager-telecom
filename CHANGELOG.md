@@ -1,3 +1,13 @@
+<a name="10.5.7"></a>
+## [10.5.7](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.5.6...v10.5.7) (2018-07-25)
+
+
+### Bug Fixes
+
+* **telephony:** force forward refresh ([21e3382](https://github.com/ovh-ux/ovh-manager-telecom/commit/21e3382))
+
+
+
 <a name="10.5.6"></a>
 ## [10.5.6](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.5.5...v10.5.6) (2018-07-25)
 
