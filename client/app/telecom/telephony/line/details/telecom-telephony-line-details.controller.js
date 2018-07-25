@@ -26,7 +26,7 @@ angular.module('managerApp').controller('TelecomTelephonyLineDetailsCtrl', class
       }).then(() => {
         if (_.isArray(this.line.lastRegistrations) && this.line.lastRegistrations.length) {
           this.lastRegistration = _.chain(this.line.lastRegistrations)
-            .sortBy(this.line.lastRegistrations, reg => new Date(reg.datetime)).last().value();
+            .sortBy(this.line.lastRegistrations, reg => new Date(reg.datetime)).first().value();
         }
 
         if (_.some(_.words(this.line.offers), offer => _.includes(['sipfax', 'priceplan', 'trunk'], offer))) {
