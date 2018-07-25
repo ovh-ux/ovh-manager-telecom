@@ -246,6 +246,7 @@ angular.module('managerApp').controller('TelecomTelephonyLineCallsForwardCtrl', 
     }).then(loadAllOvhNumbers).then(loadNatures)
       .then(loadForwards)
       .finally(() => {
+        self.resetNumbers();
         self.loading.init = false;
       });
   }
