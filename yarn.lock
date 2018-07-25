@@ -7325,8 +7325,8 @@ ovh-angular-mondial-relay@^4.0.0:
   resolved "https://registry.yarnpkg.com/ovh-angular-mondial-relay/-/ovh-angular-mondial-relay-4.0.0.tgz#92d7a0f7d76b573d3483ea0be1527f038ea518cc"
 
 ovh-angular-otrs@^6.0.1:
-  version "6.1.0"
-  resolved "https://registry.yarnpkg.com/ovh-angular-otrs/-/ovh-angular-otrs-6.1.0.tgz#a8a36d30a6618f524810a3e0476ec57706725c3b"
+  version "6.1.2"
+  resolved "https://registry.yarnpkg.com/ovh-angular-otrs/-/ovh-angular-otrs-6.1.2.tgz#59af35d64418599852fb0b08d045ccd416cea2b8"
 
 ovh-angular-pagination-front@^6.0.0:
   version "6.0.0"
