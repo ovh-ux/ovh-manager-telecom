@@ -5,7 +5,7 @@ angular.module('managerApp').config(($stateProvider) => {
       'smsView@telecom.sms': {
         templateUrl: 'app/telecom/sms/sms/templates/telecom-sms-sms-templates.html',
         controller: 'TelecomSmsSmsTemplatesCtrl',
-        controllerAs: 'SmsTemplates',
+        controllerAs: '$ctrl',
       },
     },
     translations: [

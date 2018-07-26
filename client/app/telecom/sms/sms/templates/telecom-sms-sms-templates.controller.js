@@ -12,6 +12,8 @@ angular.module('managerApp').controller('TelecomSmsSmsTemplatesCtrl', class Tele
     this.SmsMediator = SmsMediator;
     this.Toast = Toast;
     this.ToastError = ToastError;
+
+    this.templateItemModel = ['comment', 'status', 'name', 'description', 'activity', 'message', 'datetime'];
   }
 
   $onInit() {
@@ -33,7 +35,7 @@ angular.module('managerApp').controller('TelecomSmsSmsTemplatesCtrl', class Tele
       this.api.sms.templates.query({
         serviceName: this.$stateParams.serviceName,
       }).$promise.then((templates) => {
-        this.templates.raw = templates.map(id => ({ id }));
+        this.templates.raw = templates.map(name => ({ name }));
       });
     }).catch((err) => {
       this.ToastError(err);
@@ -48,11 +50,10 @@ angular.module('managerApp').controller('TelecomSmsSmsTemplatesCtrl', class Tele
      * @param  {String} name
      * @return {Promise}
      */
-  getDetails(name) {
-    this.templates.isLoading = true;
+  getDetails({ name }) {
     return this.api.sms.templates.get({
       serviceName: this.$stateParams.serviceName,
-      name: name.id,
+      name,
     }).$promise;
   }
 
@@ -85,7 +86,7 @@ angular.module('managerApp').controller('TelecomSmsSmsTemplatesCtrl', class Tele
     return this.api.sms.templates.query({
       serviceName: this.$stateParams.serviceName,
     }).$promise.then((templates) => {
-      this.templates.raw = templates.map(id => ({ id }));
+      this.templates.raw = templates.map(name => ({ name }));
     }).catch((err) => {
       this.ToastError(err);
     }).finally(() => {
@@ -106,7 +107,7 @@ angular.module('managerApp').controller('TelecomSmsSmsTemplatesCtrl', class Tele
     modal.result.then(() => this.api.sms.templates.query({
       serviceName: this.$stateParams.serviceName,
     }).$promise.then((templates) => {
-      this.templates.raw = templates;
+      this.templates.raw = templates.map(name => ({ name }));
     })).catch((error) => {
       if (error && error.type === 'API') {
         this.Toast.error(this.$translate.instant('sms_sms_templates_adding_ko', { error: _.get(error, 'msg.data.message') }));
@@ -124,7 +125,7 @@ angular.module('managerApp').controller('TelecomSmsSmsTemplatesCtrl', class Tele
       templateUrl: 'app/telecom/sms/sms/templates/edit/telecom-sms-sms-templates-edit.html',
       controller: 'TelecomSmsSmsTemplateEditCtrl',
       controllerAs: 'TemplateEditCtrl',
-      resolve: { template: () => template },
+      resolve: { template: () => _.pick(template, this.templateItemModel) },
     });
     modal.result.then(() => this.refresh()).catch((error) => {
       if (error && error.type === 'API') {
@@ -143,7 +144,7 @@ angular.module('managerApp').controller('TelecomSmsSmsTemplatesCtrl', class Tele
       templateUrl: 'app/telecom/sms/sms/templates/relaunch/telecom-sms-sms-templates-relaunch.html',
       controller: 'TelecomSmsSmsTemplateRelaunchCtrl',
       controllerAs: 'TemplateRelaunchCtrl',
-      resolve: { template: () => template },
+      resolve: { template: () => _.pick(template, this.templateItemModel) },
     });
     modal.result.then(() => this.refresh()).catch((error) => {
       if (error && error.type === 'API') {
@@ -162,12 +163,12 @@ angular.module('managerApp').controller('TelecomSmsSmsTemplatesCtrl', class Tele
       templateUrl: 'app/telecom/sms/sms/templates/remove/telecom-sms-sms-templates-remove.html',
       controller: 'TelecomSmsSmsTemplateRemoveCtrl',
       controllerAs: 'TemplateRemoveCtrl',
-      resolve: { template: () => template },
+      resolve: { template: () => _.pick(template, this.templateItemModel) },
     });
     modal.result.then(() => this.api.sms.templates.query({
       serviceName: this.$stateParams.serviceName,
     }).$promise.then((templates) => {
-      this.templates.raw = templates;
+      this.templates.raw = templates.map(name => ({ name }));
     })).catch((error) => {
       if (error && error.type === 'API') {
         this.Toast.error(this.$translate.instant('sms_sms_templates_removing_ko', { error: _.get(error, 'msg.data.message') }));
