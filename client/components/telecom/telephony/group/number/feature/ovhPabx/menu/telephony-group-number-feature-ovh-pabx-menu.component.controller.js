@@ -207,10 +207,11 @@ angular.module('managerApp').controller('telephonyNumberOvhPabxMenuCtrl', functi
   };
 
   self.onMenuOutsideClick = function () {
-    if ((self.menuEntry && self.menuEntry.status !== 'DELETE_PENDING') || (self.dialplanRule && self.dialplanRule.status !== 'DELETE_PENDING')) {
+    if ((self.menuEntry && self.menuEntry.status === 'DELETE_PENDING')
+        || (self.dialplanRule && self.dialplanRule.status === 'DELETE_PENDING')
+        || (self.menu && self.menu.status === 'DELETE_PENDING')) {
       return;
     }
-
     // cancel the deletion conirm
     self.onDeleteCancelBtnClick();
   };
