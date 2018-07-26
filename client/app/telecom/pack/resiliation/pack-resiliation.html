@@ -235,15 +235,15 @@
                             </strong>
                         </div>
                         <div class="row" data-ng-repeat="(period, amount) in PackResiliation.feeSummary.renewPrice track by $index">
-                             <span class="col-xs-4 col-md-2"
+                             <span class="col-xs-4"
                                    data-ng-if="period === '1'"
                                    data-translate="pack_resiliation_monthly_pass"></span>
-                            <span class="col-xs-4 col-md-2"
+                            <span class="col-xs-4"
                                   data-ng-if="period !== '1' && period !== '12'"
                                   data-translate="pack_resiliation_Nthly_pass"
                                   data-translate-values="{month: period}">
                              </span>
-                            <span class="col-xs-4 col-md-2"
+                            <span class="col-xs-4"
                                   data-ng-if="period === '12'"
                                   data-translate="pack_resiliation_annually_pass"></span>
                             <strong class="col-xs-8 col-md-10"
