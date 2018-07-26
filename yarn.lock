@@ -7316,9 +7316,9 @@ ovh-angular-input-number-spinner@^2.1.0:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/ovh-angular-input-number-spinner/-/ovh-angular-input-number-spinner-2.1.1.tgz#5d4c1f98e006d1592713eb4d1385092d63050951"
 
-ovh-angular-line-diagnostics@^0.4.0:
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/ovh-angular-line-diagnostics/-/ovh-angular-line-diagnostics-0.4.0.tgz#7873660cf6ed5a35e141c2e11792d87d5d0bfbf0"
+ovh-angular-line-diagnostics@^1.0.0:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/ovh-angular-line-diagnostics/-/ovh-angular-line-diagnostics-1.0.2.tgz#a3312e9fb10a6c3004d0fbba7234761b160a535a"
 
 ovh-angular-mondial-relay@^4.0.0:
   version "4.0.0"
