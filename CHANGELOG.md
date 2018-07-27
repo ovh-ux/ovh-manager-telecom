@@ -1,3 +1,13 @@
+<a name="10.5.8"></a>
+## [10.5.8](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.5.7...v10.5.8) (2018-07-27)
+
+
+### Bug Fixes
+
+* **xdsl resiliation:** correction of text alignement ([#802](https://github.com/ovh-ux/ovh-manager-telecom/issues/802)) ([77d6722](https://github.com/ovh-ux/ovh-manager-telecom/commit/77d6722))
+
+
+
 <a name="10.5.7"></a>
 ## [10.5.7](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.5.6...v10.5.7) (2018-07-25)
 
