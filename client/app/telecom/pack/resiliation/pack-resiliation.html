@@ -217,46 +217,40 @@
 
                     <div class="widget-presentation mt-5">
                         <h2 class="widget-presentation-title"
-                            data-ng-bind="'3. ' + ('pack_resiliation_fee_summary_total_title' | translate)"></h2>
-                        <div class="row">
-                            <span class="col-xs-4" data-translate="pack_resiliation_fee"></span>
-                            <strong class="col-xs-8 col-md-10"
-                                    data-translate="pack_resiliation_excluding_tax"
-                                    data-translate-values="{ amount: PackResiliation.feeSummary.duePrice.text }">
-                            </strong>
-                        </div>
-                        <div class="row" data-ng-if="PackResiliation.feeSummary.keepingPrice > 0">
-                            <span class="col-xs-4 col-md-2" data-translate="pack_resiliation_keeping_fee"></span>
-                            <strong class="col-xs-8 col-md-10"
-                                    data-translate="pack_resiliation_excluding_tax"
-                                    data-translate-values="{
-                                        amount: PackResiliation.feeSummary.keepingPrice,
-                                        currency: PackResiliation.feeSummary.currency}">
-                            </strong>
-                        </div>
-                        <div class="row" data-ng-repeat="(period, amount) in PackResiliation.feeSummary.renewPrice track by $index">
-                             <span class="col-xs-4"
-                                   data-ng-if="period === '1'"
-                                   data-translate="pack_resiliation_monthly_pass"></span>
-                            <span class="col-xs-4"
-                                  data-ng-if="period !== '1' && period !== '12'"
-                                  data-translate="pack_resiliation_Nthly_pass"
-                                  data-translate-values="{month: period}">
-                             </span>
-                            <span class="col-xs-4"
-                                  data-ng-if="period === '12'"
-                                  data-translate="pack_resiliation_annually_pass"></span>
-                            <strong class="col-xs-8 col-md-10"
-                                    data-ng-if="period === '12'"
-                                    data-translate="pack_resiliation_excluding_tax_annually"
-                                    data-translate-values="{ amount: amount, currency: PackResiliation.feeSummary.currency }">
-                            </strong>
-                            <strong class="col-xs-8 col-md-10"
-                                    data-ng-if="period !== '12'"
-                                    data-translate="pack_resiliation_excluding_tax_monthly"
-                                    data-translate-values="{ amount: amount, currency: PackResiliation.feeSummary.currency }">
-                            </strong>
-                        </div>
+                            data-ng-bind="'3. ' + ('pack_resiliation_fee_summary_total_title' | translate)"></h2>                       
+                        <dl>
+                            <dt data-translate="pack_resiliation_fee"></dt>
+                            <dd data-translate="pack_resiliation_excluding_tax"
+                                data-translate-values="{ amount: PackResiliation.feeSummary.duePrice.text }">
+                            </dd>
+                        </dl>
+                        <dl data-ng-if="PackResiliation.feeSummary.keepingPrice > 0">
+                            <dt data-translate="pack_resiliation_keeping_fee"></dt>
+                            <dd data-translate="pack_resiliation_excluding_tax"
+                                data-translate-values="{
+                                    amount: PackResiliation.feeSummary.keepingPrice,
+                                    currency: PackResiliation.feeSummary.currency
+                                }">
+                            </dd>
+                        </dl>
+                        <dl data-ng-repeat="(period, amount) in PackResiliation.feeSummary.renewPrice track by $index">
+                            <dt data-ng-if="period === '1'"
+                                data-translate="pack_resiliation_monthly_pass"></dt>
+                            <dd data-ng-if="period !== '1' && period !== '12'"
+                                data-translate="pack_resiliation_Nthly_pass"
+                                data-translate-values="{month: period}">
+                            </dd>                                
+                            <dt data-ng-if="period === '12'"
+                                data-translate="pack_resiliation_annually_pass"></dt>
+                            <dd data-ng-if="period === '12'"
+                                data-translate="pack_resiliation_excluding_tax_annually"
+                                data-translate-values="{ amount: amount, currency: PackResiliation.feeSummary.currency }">
+                            </dd>
+                            <dd data-ng-if="period !== '12'"
+                                data-translate="pack_resiliation_excluding_tax_monthly"
+                                data-translate-values="{ amount: amount, currency: PackResiliation.feeSummary.currency }">
+                            </dd>
+                        </dl>
 
                         <button class="btn btn-primary mt-5"
                                 data-ng-click="PackResiliation.openConfirmation()"
