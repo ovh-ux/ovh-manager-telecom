@@ -1,3 +1,14 @@
+<a name="10.5.9"></a>
+## [10.5.9](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.5.8...v10.5.9) (2018-07-30)
+
+
+### Bug Fixes
+
+* **line.tones:** music configuration for priceplan ([0db0585](https://github.com/ovh-ux/ovh-manager-telecom/commit/0db0585))
+* **xdsl.resiliation:** replace rows by dl ([34dbac2](https://github.com/ovh-ux/ovh-manager-telecom/commit/34dbac2))
+
+
+
 <a name="10.5.8"></a>
 ## [10.5.8](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.5.7...v10.5.8) (2018-07-27)
 
