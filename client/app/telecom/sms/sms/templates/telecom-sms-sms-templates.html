@@ -8,12 +8,13 @@
     </header>
 
     <!-- LOADING -->
-    <div class="text-center" data-ng-if="SmsTemplates.loading.init">
+    <div class="text-center"
+         data-ng-if="$ctrl.loading.init">
         <oui-spinner></oui-spinner>
     </div>
 
     <div class="telecom-section-content"
-         data-ng-if="!SmsTemplates.loading.init">
+         data-ng-if="!$ctrl.loading.init">
 
         <toast-message></toast-message>
 
@@ -67,11 +68,10 @@
                     aria-labelledby="btn-sms-templates-actions"
                     data-uib-dropdown-menu>
                     <li role="menuitem">
-                        <i class="ovh-font ovh-font-add-circle" aria-hidden="true"></i>
                         <button
                             type="button"
                             class="btn btn-link"
-                            data-ng-click="SmsTemplates.add()"
+                            data-ng-click="$ctrl.add()"
                             data-translate="common_add"
                             data-uib-tooltip="{{:: 'sms_sms_templates_add' | translate }}"
                             data-tooltip-placement="right"
@@ -79,11 +79,10 @@
                         </button>
                     </li>
                     <li role="menuitem">
-                        <i class="ovh-font ovh-font-arrow-rotate" aria-hidden="true"></i>
                         <button
                             type="button"
                             class="btn btn-link"
-                            data-ng-click="SmsTemplates.refresh()"
+                            data-ng-click="$ctrl.refresh()"
                             data-translate="common_refresh"
                             data-uib-tooltip="{{:: 'common_refresh_data' | translate }}"
                             data-tooltip-placement="right"
@@ -94,7 +93,9 @@
             </div>
         </div>
 
-        <oui-datagrid data-rows="SmsTemplates.templates.raw" data-row-loader="SmsTemplates.getDetails($row)">
+        <oui-datagrid data-rows="$ctrl.templates.raw"
+                      data-row-loader="$ctrl.getDetails($row)"
+                      data-ng-if="!$ctrl.templates.isLoading">
             <oui-column data-title="'sms_sms_templates_list_title_name' | translate" data-property="name" data-sortable="asc">
                 {{$row.name || '-'}}
             </oui-column>
@@ -116,30 +117,30 @@
             </oui-column>
 
             <oui-column data-title="'sms_sms_templates_list_title_status' | translate" data-property="status" data-sortable>
-                <i class="ovh-font"
-                   data-ng-class="{
-                       'ovh-font-inprogress text-info' : $row.status === 'waitingValidation',
-                       'ovh-font-activer' : $row.status === 'disable',
-                       'ovh-font-success text-success' : $row.status === 'enable',
-                       'ovh-font-failure text-danger' : $row.status === 'refused'
-                   }">
-                </i>
+                <span class="ovh-font"
+                      data-ng-class="{
+                          'ovh-font-inprogress text-info' : $row.status === 'waitingValidation',
+                          'ovh-font-activer' : $row.status === 'disable',
+                          'ovh-font-success text-success' : $row.status === 'enable',
+                          'ovh-font-failure text-danger' : $row.status === 'refused'
+                      }">
+               </span>
             </oui-column>
 
             <oui-action-menu data-align="end" data-compact>
                 <oui-action-menu-item
                     data-text="{{'edit' | translate}}"
-                    on-click="SmsTemplates.edit($row)">
+                    on-click="$ctrl.edit($row)">
                 </oui-action-menu-item>
 
                 <oui-action-menu-item
                     data-text="{{'common_relaunch' | translate}}"
-                    on-click="SmsTemplates.relaunch($row)">
+                    on-click="$ctrl.relaunch($row)">
                 </oui-action-menu-item>
 
                 <oui-action-menu-item
                     data-text="{{'delete' | translate}}"
-                    on-click="SmsTemplates.remove($row)">
+                    on-click="$ctrl.remove($row)">
                 </oui-action-menu-item>
             </oui-action-menu>
         </oui-datagrid>
