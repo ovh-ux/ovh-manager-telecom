@@ -733,63 +733,63 @@ module.exports = function (grunt) {
         files: {
           '<%= yeoman.tmp %>/app/components/translations/Messages_cs_CZ.json': [
              '<%= yeoman.tmp %>/components/**/Messages_cs_CZ.json',
-             '<%= yeoman.npm %>/**/Messages_cs_CZ.json'
+             '<%= yeoman.npm %>/ovh-*/**/Messages_cs_CZ.json'
           ],
           '<%= yeoman.tmp %>/app/components/translations/Messages_de_DE.json': [
              '<%= yeoman.tmp %>/components/**/Messages_de_DE.json',
-             '<%= yeoman.npm %>/**/Messages_de_DE.json'
+             '<%= yeoman.npm %>/ovh-*/**/Messages_de_DE.json'
           ],
           '<%= yeoman.tmp %>/app/components/translations/Messages_en_CA.json': [
              '<%= yeoman.tmp %>/components/**/Messages_en_CA.json',
-             '<%= yeoman.npm %>/**/Messages_en_CA.json'
+             '<%= yeoman.npm %>/ovh-*/**/Messages_en_CA.json'
           ],
           '<%= yeoman.tmp %>/app/components/translations/Messages_en_GB.json': [
             '<%= yeoman.tmp %>/components/**/Messages_en_GB.json',
-            '<%= yeoman.npm %>/**/Messages_en_GB.json'
+            '<%= yeoman.npm %>/ovh-*/**/Messages_en_GB.json'
           ],
           '<%= yeoman.tmp %>/app/components/translations/Messages_en_US.json': [
              '<%= yeoman.tmp %>/components/**/Messages_en_US.json',
-             '<%= yeoman.npm %>/**/Messages_en_US.json'
+             '<%= yeoman.npm %>/ovh-*/**/Messages_en_US.json'
           ],
           '<%= yeoman.tmp %>/app/components/translations/Messages_es_ES.json': [
              '<%= yeoman.tmp %>/components/**/Messages_es_ES.json',
-             '<%= yeoman.npm %>/**/Messages_es_ES.json'
+             '<%= yeoman.npm %>/ovh-*/**/Messages_es_ES.json'
           ],
           '<%= yeoman.tmp %>/app/components/translations/Messages_es_US.json': [
              '<%= yeoman.tmp %>/components/**/Messages_es_US.json',
-             '<%= yeoman.npm %>/**/Messages_es_US.json'
+             '<%= yeoman.npm %>/ovh-*/**/Messages_es_US.json'
           ],
           '<%= yeoman.tmp %>/app/components/translations/Messages_fi_FI.json': [
              '<%= yeoman.tmp %>/components/**/Messages_fi_FI.json',
-             '<%= yeoman.npm %>/**/Messages_fi_FI.json'
+             '<%= yeoman.npm %>/ovh-*/**/Messages_fi_FI.json'
           ],
           '<%= yeoman.tmp %>/app/components/translations/Messages_fr_CA.json': [
              '<%= yeoman.tmp %>/components/**/Messages_fr_CA.json',
-             '<%= yeoman.npm %>/**/Messages_fr_CA.json'
+             '<%= yeoman.npm %>/ovh-*/**/Messages_fr_CA.json'
           ],
           '<%= yeoman.tmp %>/app/components/translations/Messages_fr_FR.json': [
             '<%= yeoman.tmp %>/components/**/Messages_fr_FR.json',
-            '<%= yeoman.npm %>/**/Messages_fr_FR.json'
+            '<%= yeoman.npm %>/ovh-*/**/Messages_fr_FR.json'
           ],
           '<%= yeoman.tmp %>/app/components/translations/Messages_it_IT.json': [
              '<%= yeoman.tmp %>/components/**/Messages_it_IT.json',
-             '<%= yeoman.npm %>/**/Messages_it_IT.json'
+             '<%= yeoman.npm %>/ovh-*/**/Messages_it_IT.json'
           ],
           '<%= yeoman.tmp %>/app/components/translations/Messages_lt_LT.json': [
              '<%= yeoman.tmp %>/components/**/Messages_lt_LT.json',
-             '<%= yeoman.npm %>/**/Messages_lt_LT.json'
+             '<%= yeoman.npm %>/ovh-*/**/Messages_lt_LT.json'
           ],
           '<%= yeoman.tmp %>/app/components/translations/Messages_nl_NL.json': [
              '<%= yeoman.tmp %>/components/**/Messages_nl_NL.json',
-             '<%= yeoman.npm %>/**/Messages_nl_NL.json'
+             '<%= yeoman.npm %>/ovh-*/**/Messages_nl_NL.json'
           ],
           '<%= yeoman.tmp %>/app/components/translations/Messages_pl_PL.json': [
              '<%= yeoman.tmp %>/components/**/Messages_pl_PL.json',
-             '<%= yeoman.npm %>/**/Messages_pl_PL.json'
+             '<%= yeoman.npm %>/ovh-*/**/Messages_pl_PL.json'
           ],
           '<%= yeoman.tmp %>/app/components/translations/Messages_pt_PT.json': [
              '<%= yeoman.tmp %>/components/**/Messages_pt_PT.json',
-             '<%= yeoman.npm %>/**/Messages_pt_PT.json'
+             '<%= yeoman.npm %>/ovh-*/**/Messages_pt_PT.json'
           ]
         }
       }
