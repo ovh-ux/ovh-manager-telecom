@@ -38,7 +38,7 @@
 
                 <responsive-tab data-state="telecom.telephony.line.tones"
                                 data-dropdown-title="{{ 'telephony_line_tab_music_management' | translate }}"
-                                data-disabled="LineCtrl.loading.init || LineCtrl.line.isIndividual() || LineCtrl.line.isTrunk() || LineCtrl.line.isPlugNFax">
+                                data-disabled="LineCtrl.loading.init || LineCtrl.line.isIndividual() || LineCtrl.line.isTrunk() || !LineCtrl.line.isPriceplan()">
                     <span data-translate="telephony_line_tab_music_management"></span>
                 </responsive-tab>
 
