@@ -1,3 +1,19 @@
+<a name="10.5.10"></a>
+## [10.5.10](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.5.9...v10.5.10) (2018-07-30)
+
+
+### Bug Fixes
+
+* delete interactive menu does not work ([#801](https://github.com/ovh-ux/ovh-manager-telecom/issues/801)) ([bbcb7ef](https://github.com/ovh-ux/ovh-manager-telecom/commit/bbcb7ef))
+* **sms:** fix templates add, edition and deletion ([9193a94](https://github.com/ovh-ux/ovh-manager-telecom/commit/9193a94))
+
+
+### Performance Improvements
+
+* **grunt:** improve json compilation time ([#803](https://github.com/ovh-ux/ovh-manager-telecom/issues/803)) ([e430af4](https://github.com/ovh-ux/ovh-manager-telecom/commit/e430af4))
+
+
+
 <a name="10.5.9"></a>
 ## [10.5.9](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.5.8...v10.5.9) (2018-07-30)
 
