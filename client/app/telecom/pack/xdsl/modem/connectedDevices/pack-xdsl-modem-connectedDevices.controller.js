@@ -75,11 +75,13 @@ angular.module('managerApp').controller('XdslModemConnectedDevicesCtrl', functio
     return OvhApiXdsl.Modem().ConnectedDevices().Aapi().refresh({
       xdslId: $stateParams.serviceName,
     }).$promise.then((data) => {
-      self.devices = null;
+      self.devices = data;
       return data;
     }).catch((err) => {
-      Toast.error($translate.instant('xdsl_modem_refresh_error'));
+      Toast.error($translate.instant('xdsl_modem_refresh_error'));        
       return $q.reject(err);
+    }).finally(() => {
+      self.loading = false;
     });
   };
 
