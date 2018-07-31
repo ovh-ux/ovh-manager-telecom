@@ -20,12 +20,12 @@
                     type="button"
                     data-ng-click="DeviceCtrl.showDevices = !DeviceCtrl.showDevices">
                 <span data-ng-if="DeviceCtrl.devices.length">
-                    <i class="ovh-font"
-                          data-ng-class="{
-                              'ovh-font-disclosure-right':!DeviceCtrl.showDevices,
-                              'ovh-font-disclosure-down':DeviceCtrl.showDevices}"
-                          aria-hidden="true">
-                    </i>
+                    <span class="ovh-font"
+                        data-ng-class="{
+                            'ovh-font-disclosure-right':!DeviceCtrl.showDevices,
+                            'ovh-font-disclosure-down':DeviceCtrl.showDevices}"
+                        aria-hidden="true">
+                    </span>
                     <span data-ng-pluralize
                           data-count="DeviceCtrl.devices.length"
                           data-when="{'one': ('xdsl_modem_device_show_one' | translate : {count: DeviceCtrl.devices.length}),
