@@ -78,7 +78,7 @@ angular.module('managerApp').controller('XdslModemConnectedDevicesCtrl', functio
       self.devices = data;
       return data;
     }).catch((err) => {
-      Toast.error($translate.instant('xdsl_modem_refresh_error'));        
+      Toast.error($translate.instant('xdsl_modem_refresh_error'));
       return $q.reject(err);
     }).finally(() => {
       self.loading = false;
