@@ -28,9 +28,7 @@
                     </i>
                     <span data-ng-pluralize
                           data-count="DeviceCtrl.devices.length"
-                          data-when="{
-                              '0': ('xdsl_modem_device_show_none' | translate),
-                              'one': ('xdsl_modem_device_show_one' | translate : {count: DeviceCtrl.devices.length}),
+                          data-when="{'one': ('xdsl_modem_device_show_one' | translate : {count: DeviceCtrl.devices.length}),
                               'other': ('xdsl_modem_device_show_many' | translate : {count: DeviceCtrl.devices.length})}">
                     </span>
                 </span>
