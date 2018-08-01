@@ -40,15 +40,15 @@
                        for="display-mode"
                        data-translate="telephony_line_phone_configuration_mode_standard">
                 </label>
-                <label class="oui-switch oui-switch-toggle">
-                    <input type="checkbox"
-                           class="oui-switch oui-switch__checkbox"
-                           data-ng-model="PhoneConfigCtrl.model.expertMode"
-                           data-ng-change="PhoneConfigCtrl.onExpertModeChange()" />
-                    <div class="oui-switch__slider"></div>
-                    <i class="oui-icon oui-icon-success" aria-hidden="true"></i>
-                    <i class="oui-icon oui-icon-error" aria-hidden="true"></i>
-                </label>
+                <div class="oui-switch oui-switch_inline">
+                    <label class="oui-switch__label-container">
+                        <input type="checkbox"
+                               class="oui-switch__checkbox"
+                               data-ng-model="PhoneConfigCtrl.model.expertMode"
+                               data-ng-change="PhoneConfigCtrl.onExpertModeChange()">
+                        <span class="oui-switch__slider" aria-hidden="true"></span>
+                    </label>
+                </div>
                 <label class="d-inline-block align-middle mt-1"
                        data-ng-class="{ 'font-weight-bold': PhoneConfigCtrl.model.expertMode }"
                        for="display-mode"

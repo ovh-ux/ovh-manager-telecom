@@ -44,16 +44,16 @@
                     data-translate-attr="{ 'title': 'telephony_number_feature_conference_general_unlock' }">
                     <span class="ovh-font ovh-font-lockOpened" aria-hidden="true"></span>
                 </button>
-                <label class="oui-switch">
-                    <input type="checkbox"
-                           class="oui-switch__checkbox"
-                           id="lockStatus"
-                           data-ng-change="$ctrl.toggleLockStatus()"
-                           data-ng-model="$ctrl.model.lockState">
-                    <div class="oui-switch__slider"></div>
-                    <i class="oui-icon oui-icon-success" aria-hidden="true"></i>
-                    <i class="oui-icon oui-icon-error" aria-hidden="true"></i>
-                </label>
+                <div class="oui-switch oui-switch_inline">
+                    <label class="oui-switch__label-container">
+                        <input type="checkbox"
+                               class="oui-switch__checkbox"
+                               id="lockStatus"
+                               data-ng-model="$ctrl.model.lockState"
+                               data-ng-change="$ctrl.toggleLockStatus()">
+                        <span class="oui-switch__slider" aria-hidden="true"></span>
+                    </label>
+                </div>
                 <button
                     type="button"
                     class="voip-plan__step-btn voip-plan__step-btn--switch"
@@ -70,16 +70,16 @@
                     data-translate-attr="{ 'title': 'telephony_number_feature_conference_general_unmute_all_members' }">
                     <span class="ovh-font ovh-font-microphone" aria-hidden="true"></span>
                 </button>
-                <label class="oui-switch">
-                    <input type="checkbox"
-                           class="oui-switch__checkbox"
-                           id="muteAll"
-                           data-ng-change="$ctrl.toggleMuteAll()"
-                           data-ng-model="$ctrl.model.muteAllState">
-                    <div class="oui-switch__slider"></div>
-                    <i class="oui-icon oui-icon-success" aria-hidden="true"></i>
-                    <i class="oui-icon oui-icon-error" aria-hidden="true"></i>
-                </label>
+                <div class="oui-switch oui-switch_inline">
+                    <label class="oui-switch__label-container">
+                        <input type="checkbox"
+                                class="oui-switch__checkbox"
+                                id="muteAll"
+                                data-ng-model="$ctrl.model.muteAllState"
+                                data-ng-change="$ctrl.toggleMuteAll()">
+                        <span class="oui-switch__slider" aria-hidden="true"></span>
+                    </label>
+                </div>
                 <button
                     type="button"
                     class="voip-plan__step-btn voip-plan__step-btn--switch"
