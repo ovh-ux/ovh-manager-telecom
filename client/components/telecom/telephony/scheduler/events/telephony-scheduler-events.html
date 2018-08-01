@@ -29,13 +29,15 @@
                                 </button> <!-- TIME SLOT BTN -->
 
                                 <div class="col-xs-2 mt-3 px-2">
-                                    <label class="oui-switch">
-                                        <input type="checkbox"
-                                               class="oui-switch__checkbox"
-                                               data-ng-model="$ctrl.event.allDay"
-                                               data-ng-change="$ctrl.manageOnAllDayChange()">
-                                        <div class="oui-switch__slider"></div>
-                                    </label>
+                                    <div class="oui-switch">
+                                        <label class="oui-switch__label-container">
+                                            <input type="checkbox"
+                                                   class="oui-switch__checkbox"
+                                                   data-ng-model="$ctrl.event.allDay"
+                                                   data-ng-change="$ctrl.manageOnAllDayChange()">
+                                            <span class="oui-switch__slider" aria-hidden="true"></span>
+                                        </label>
+                                    </div>
                                 </div>
 
                                 <!-- ALL DAY BTN -->

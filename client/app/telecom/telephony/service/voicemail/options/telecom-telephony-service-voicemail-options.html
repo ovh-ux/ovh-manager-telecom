@@ -20,19 +20,23 @@
                   data-ng-submit="VoicemailOptionsCtrl.updateRecording()"
                   novalidate>
                 <div class="form-group">
-                    <label data-translate="telephony_line_answer_voicemail_options_recording"></label>
-                    <label class="oui-switch">
-                        <input type="checkbox"
-                               class="oui-switch oui-switch__checkbox"
-                               data-ng-model="VoicemailOptionsCtrl.recordingForm.doNotRecord"
-                               data-ng-disabled="VoicemailOptionsCtrl.recordingForm.isUpdating ||
-                                                 VoicemailOptionsCtrl.recordingForm.isSuccess"
-                               data-ng-true-value="false"
-                               data-ng-false-value="true" />
-                        <div class="oui-switch__slider"></div>
-                        <i class="oui-icon oui-icon-success" aria-hidden="true"></i>
-                        <i class="oui-icon oui-icon-error" aria-hidden="true"></i>
+                    <label class="control-label"
+                           for="doNotRecord"
+                           data-translate="telephony_line_answer_voicemail_options_recording">
                     </label>
+                    <div class="oui-switch">
+                        <label class="oui-switch__label-container">
+                            <input type="checkbox"
+                                   class="oui-switch__checkbox"
+                                   id="doNotRecord"
+                                   data-ng-model="VoicemailOptionsCtrl.recordingForm.doNotRecord"
+                                   data-ng-disabled="VoicemailOptionsCtrl.recordingForm.isUpdating ||
+                                                     VoicemailOptionsCtrl.recordingForm.isSuccess"
+                                   data-ng-true-value="false"
+                                   data-ng-false-value="true">
+                            <span class="oui-switch__slider" aria-hidden="true"></span>
+                        </label>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label data-translate="telephony_line_answer_voicemail_options_greetings"></label>
@@ -216,16 +220,20 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label data-translate="telephony_line_answer_voicemail_options_recording"></label>
-                    <label class="oui-switch">
-                        <input type="checkbox"
-                               class="oui-switch oui-switch__checkbox"
-                               data-ng-model="VoicemailOptionsCtrl.notificationForm.keepMessage"
-                               data-ng-disabled="VoicemailOptionsCtrl.notificationForm.isSuccess" />
-                        <div class="oui-switch__slider"></div>
-                        <i class="oui-icon oui-icon-success" aria-hidden="true"></i>
-                        <i class="oui-icon oui-icon-error" aria-hidden="true"></i>
+                    <label class="control-label"
+                           for="keepMessage"
+                           data-translate="telephony_line_answer_voicemail_options_recording">
                     </label>
+                    <div class="oui-switch">
+                        <label class="oui-switch__label-container">
+                            <input type="checkbox"
+                                   class="oui-switch__checkbox"
+                                   id="keepMessage"
+                                   data-ng-model="VoicemailOptionsCtrl.notificationForm.keepMessage"
+                                   data-ng-disabled="VoicemailOptionsCtrl.notificationForm.isSuccess">
+                            <span class="oui-switch__slider" aria-hidden="true"></span>
+                        </label>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label"

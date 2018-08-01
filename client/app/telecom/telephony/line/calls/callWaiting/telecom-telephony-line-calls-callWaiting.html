@@ -37,17 +37,17 @@
                             </div>
 
                             <span data-translate="telephony_line_actions_line_calls_call_waiting_cw_checkbox_label"></span>
-                            <label class="oui-switch align-middle ml-2">
-                                <input id="callWaiting"
-                                       name="callWaiting"
-                                       type="checkbox"
-                                       class="oui-switch__checkbox"
-                                       data-ng-disabled="LineCallWaitingCtrl.loading.save"
-                                       data-ng-model="LineCallWaitingCtrl.options.callWaiting" />
-                                <div class="oui-switch__slider"></div>
-                                <i class="oui-icon oui-icon-success" aria-hidden="true"></i>
-                                <i class="oui-icon oui-icon-error" aria-hidden="true"></i>
-                            </label>
+                            <div class="oui-switch">
+                                <label class="oui-switch__label-container">
+                                    <input type="checkbox"
+                                           class="oui-switch__checkbox"
+                                           id="callWaiting"
+                                           name="callWaiting"
+                                           data-ng-model="LineCallWaitingCtrl.options.callWaiting"
+                                           data-ng-disabled="LineCallWaitingCtrl.loading.save">
+                                    <span class="oui-switch__slider" aria-hidden="true"></span>
+                                </label>
+                            </div>
                         </div><!-- /.widget-presentation -->
                     </div>
 
