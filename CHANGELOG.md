@@ -1,3 +1,14 @@
+<a name="10.5.11"></a>
+## [10.5.11](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.5.10...v10.5.11) (2018-08-02)
+
+
+### Bug Fixes
+
+* use correct oui-switch semantic ([7059846](https://github.com/ovh-ux/ovh-manager-telecom/commit/7059846))
+* **dependencies:** remove duplicates vendor ([8b645fb](https://github.com/ovh-ux/ovh-manager-telecom/commit/8b645fb))
+
+
+
 <a name="10.5.10"></a>
 ## [10.5.10](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.5.9...v10.5.10) (2018-07-30)
 
