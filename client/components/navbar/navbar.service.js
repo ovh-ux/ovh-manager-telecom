@@ -1,7 +1,7 @@
 class ManagerNavbarService {
   constructor(
-    $q, $translate, $translatePartialLoader, $rootScope, LANGUAGES, MANAGER_URLS, REDIRECT_URLS, TARGET, URLS,
-    OvhApiMe, OtrsPopupService, ssoAuthentication, PackMediator, telecomVoip,
+    $q, $translate, $translatePartialLoader, $rootScope, LANGUAGES, MANAGER_URLS, REDIRECT_URLS,
+    TARGET, URLS, OvhApiMe, OtrsPopupService, ssoAuthentication, PackMediator, telecomVoip,
     voipService, SmsMediator, OvhApiFreeFax, OvhApiOverTheBox, TelecomMediator,
     NavbarNotificationService,
   ) {
