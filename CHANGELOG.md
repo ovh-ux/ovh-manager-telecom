@@ -1,3 +1,14 @@
+<a name="10.5.14"></a>
+## [10.5.14](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.5.13...v10.5.14) (2018-08-08)
+
+
+### Bug Fixes
+
+* **telephony.group:** add oui-button class ([5794fb4](https://github.com/ovh-ux/ovh-manager-telecom/commit/5794fb4))
+* **telephony.orderalias.geographical:** call api with zone.city ([4b1c1ba](https://github.com/ovh-ux/ovh-manager-telecom/commit/4b1c1ba))
+
+
+
 <a name="10.5.13"></a>
 ## [10.5.13](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.5.12...v10.5.13) (2018-08-08)
 
