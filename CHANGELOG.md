@@ -1,3 +1,14 @@
+<a name="10.5.13"></a>
+## [10.5.13](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.5.12...v10.5.13) (2018-08-08)
+
+
+### Bug Fixes
+
+* **sidebar:** temp display old sidebar in responsive for big account ([40465fd](https://github.com/ovh-ux/ovh-manager-telecom/commit/40465fd))
+* **tests:** fix exceeded character ([c618e39](https://github.com/ovh-ux/ovh-manager-telecom/commit/c618e39))
+
+
+
 <a name="10.5.12"></a>
 ## [10.5.12](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.5.11...v10.5.12) (2018-08-08)
 
