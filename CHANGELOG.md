@@ -1,3 +1,15 @@
+<a name="10.5.12"></a>
+## [10.5.12](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.5.11...v10.5.12) (2018-08-08)
+
+
+### Bug Fixes
+
+* **telephony:** allow selecting a billing address ([a814400](https://github.com/ovh-ux/ovh-manager-telecom/commit/a814400))
+* **telephony group:** alert message style ([a43d408](https://github.com/ovh-ux/ovh-manager-telecom/commit/a43d408))
+* **telephony group:** color message and oui button ([7ace83a](https://github.com/ovh-ux/ovh-manager-telecom/commit/7ace83a))
+
+
+
 <a name="10.5.11"></a>
 ## [10.5.11](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.5.10...v10.5.11) (2018-08-02)
 
