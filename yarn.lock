@@ -1570,7 +1570,7 @@ chalk@^0.4.0, chalk@~0.4.0:
 
 chalk@^0.5.1:
   version "0.5.1"
-  resolved "https://registry.yarnpkg.com/chalk/-/chalk-0.5.1.tgz#663b3a648b68b55d04690d49167aa837858f2174"
+  resolved "http://registry.npmjs.org/chalk/-/chalk-0.5.1.tgz#663b3a648b68b55d04690d49167aa837858f2174"
   dependencies:
     ansi-styles "^1.1.0"
     escape-string-regexp "^1.0.0"
@@ -6261,7 +6261,7 @@ lodash@4.17.5:
 
 lodash@^2.4.1, lodash@~2.4.1:
   version "2.4.2"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-2.4.2.tgz#fadd834b9683073da179b3eae6d9c0d15053f73e"
+  resolved "http://registry.npmjs.org/lodash/-/lodash-2.4.2.tgz#fadd834b9683073da179b3eae6d9c0d15053f73e"
 
 lodash@^4.0.0, lodash@^4.0.1, lodash@^4.12.0, lodash@^4.17.10, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.2.1, lodash@^4.3.0, lodash@^4.8.2, lodash@~4.17.10:
   version "4.17.10"
@@ -7328,9 +7328,9 @@ ovh-angular-input-number-spinner@^2.1.0:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/ovh-angular-input-number-spinner/-/ovh-angular-input-number-spinner-2.1.1.tgz#5d4c1f98e006d1592713eb4d1385092d63050951"
 
-ovh-angular-line-diagnostics@^1.0.0:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/ovh-angular-line-diagnostics/-/ovh-angular-line-diagnostics-1.0.2.tgz#a3312e9fb10a6c3004d0fbba7234761b160a535a"
+ovh-angular-line-diagnostics@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/ovh-angular-line-diagnostics/-/ovh-angular-line-diagnostics-2.0.0.tgz#55534f2403da77bbe06f36993e5b1bd70ebf218a"
 
 ovh-angular-mondial-relay@^4.0.0:
   version "4.0.0"
@@ -7402,9 +7402,9 @@ ovh-angular-user-pref@^0.3.1:
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/ovh-angular-user-pref/-/ovh-angular-user-pref-0.3.1.tgz#07f5792513651f3262ae4879c174423649b08307"
 
-ovh-api-services@^3.10.1:
-  version "3.10.1"
-  resolved "https://registry.yarnpkg.com/ovh-api-services/-/ovh-api-services-3.10.1.tgz#2557a831ea26ed742754e6049c667d1bc13dd606"
+ovh-api-services@^3.13.0:
+  version "3.13.0"
+  resolved "https://registry.yarnpkg.com/ovh-api-services/-/ovh-api-services-3.13.0.tgz#5f243a90c9684f3494b49531f0dfc5efc97f7b71"
   dependencies:
     grunt-injector "^0.6.0"
 
@@ -7446,9 +7446,9 @@ ovh-ui-kit-bs@~1.3.x:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/ovh-ui-kit-bs/-/ovh-ui-kit-bs-1.3.0.tgz#2600a62183d63e698ffe4ea00c6e9fef4ce5a3e5"
 
-ovh-ui-kit@^2.17.1:
-  version "2.17.1"
-  resolved "https://registry.yarnpkg.com/ovh-ui-kit/-/ovh-ui-kit-2.17.1.tgz#74cc15ee84e495206c415a14f4f47ebd50c1bb23"
+ovh-ui-kit@^2.18.0:
+  version "2.18.0"
+  resolved "https://registry.yarnpkg.com/ovh-ui-kit/-/ovh-ui-kit-2.18.0.tgz#eed38677ee28569f6c1de2c2af5317af1cd0ce24"
   dependencies:
     less-plugin-remcalc "^0.0.1"
 
@@ -7720,8 +7720,8 @@ pluralize@^7.0.0:
   resolved "https://registry.yarnpkg.com/pluralize/-/pluralize-7.0.0.tgz#298b89df8b93b0221dbf421ad2b1b1ea23fc6777"
 
 popper.js@^1.14.3:
-  version "1.14.3"
-  resolved "https://registry.yarnpkg.com/popper.js/-/popper.js-1.14.3.tgz#1438f98d046acf7b4d78cd502bf418ac64d4f095"
+  version "1.14.4"
+  resolved "https://registry.yarnpkg.com/popper.js/-/popper.js-1.14.4.tgz#8eec1d8ff02a5a3a152dd43414a15c7b79fd69b6"
 
 posix-character-classes@^0.1.0:
   version "0.1.1"

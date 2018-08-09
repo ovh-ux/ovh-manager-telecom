@@ -4,7 +4,7 @@ angular.module('managerApp').config(($stateProvider) => {
     views: {
       'accessView@telecom.pack.xdsl': {
         controller: 'XdslDiagnosticCtrl',
-        controllerAs: 'XdslDiagnostic',
+        controllerAs: '$ctrl',
         templateUrl: 'app/telecom/pack/xdsl/access/diagnostic/pack-xdsl-access-diagnostic.html',
       },
     },
