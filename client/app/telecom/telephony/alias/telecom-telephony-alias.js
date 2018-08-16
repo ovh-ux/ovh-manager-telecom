@@ -8,7 +8,7 @@ angular.module('managerApp').config(($stateProvider) => {
       'aliasView@telecom.telephony.alias': {
         templateUrl: 'app/telecom/telephony/alias/telecom-telephony-alias-main.view.html',
         controller: 'TelecomTelephonyAliasCtrl',
-        controllerAs: 'AliasCtrl',
+        controllerAs: '$ctrl',
       },
       'aliasInnerView@telecom.telephony.alias': {
         templateUrl: 'app/telecom/telephony/alias/portability/telecom-telephony-alias-portability.html',

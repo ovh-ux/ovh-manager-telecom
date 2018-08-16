@@ -197,6 +197,15 @@ angular.module('managerApp').factory('TelephonyGroupNumber', ($q, $injector, Ovh
     return self;
   };
 
+  TelephonyGroupNumber.prototype.isSpecialNumber = function () {
+    const self = this;
+    return OvhApiTelephony.Rsva().v6().getCurrentRateCode({
+      billingAccount: self.billingAccount,
+      serviceName: self.serviceName,
+    }).$promise.then(() => $q.when(true))
+      .catch(() => $q.when(false));
+  };
+
   TelephonyGroupNumber.prototype.stopEdition = function (cancel, stopFeatureEdition) {
     const self = this;
 
