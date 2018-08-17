@@ -316,6 +316,10 @@ angular-animate@~1.5.x:
   version "1.5.11"
   resolved "https://registry.yarnpkg.com/angular-aria/-/angular-aria-1.5.11.tgz#26963ac336891ced7b199e59afd7e9b25e53d6a6"
 
+angular-aria@^1.6.x:
+  version "1.7.3"
+  resolved "https://registry.yarnpkg.com/angular-aria/-/angular-aria-1.7.3.tgz#a545112da0daed875061ff49d1ac8964cfa51a8a"
+
 "angular-cookies@>=1.2.26 <1.8":
   version "1.7.2"
   resolved "https://registry.yarnpkg.com/angular-cookies/-/angular-cookies-1.7.2.tgz#cba3a9181d2a48c2d8195ff7fe329055fba970ba"
@@ -381,6 +385,10 @@ angular-resource@~1.5.x:
 angular-sanitize@1.3.x:
   version "1.3.20"
   resolved "https://registry.yarnpkg.com/angular-sanitize/-/angular-sanitize-1.3.20.tgz#5b1caa4176b8db2039d7d1c1527537a61be3cd67"
+
+angular-sanitize@^1.6.x:
+  version "1.7.3"
+  resolved "https://registry.yarnpkg.com/angular-sanitize/-/angular-sanitize-1.7.3.tgz#e1ddaa7337724f9554066fd9e9123486b8881c4a"
 
 angular-sanitize@^1.x:
   version "1.7.2"
@@ -457,6 +465,10 @@ angular@1.5.11:
 "angular@>=1.2.26 <=1.7", "angular@>=1.3.0 <2.0.0", angular@^1.3.15, angular@^1.4.8, angular@^1.5.5, angular@^1.6.4, angular@^1.x:
   version "1.7.2"
   resolved "https://registry.yarnpkg.com/angular/-/angular-1.7.2.tgz#687b955dbe5c533f8d73460461707af00360251f"
+
+angular@^1.6.x:
+  version "1.7.3"
+  resolved "https://registry.yarnpkg.com/angular/-/angular-1.7.3.tgz#0f25a661d079fc84d5ccc877a2ef9d7178575ddb"
 
 angularjs-scroll-glue@^2.2.0:
   version "2.2.0"
@@ -1736,7 +1748,7 @@ cli@~1.0.0:
     exit "0.1.2"
     glob "^7.1.1"
 
-clipboard@2.0.1:
+clipboard@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/clipboard/-/clipboard-2.0.1.tgz#a12481e1c13d8a50f5f036b0560fe5d16d74e46a"
   dependencies:
@@ -3701,9 +3713,9 @@ flat-cache@^1.2.1:
     graceful-fs "^4.1.2"
     write "^0.2.1"
 
-flatpickr@4.5.0:
-  version "4.5.0"
-  resolved "https://registry.yarnpkg.com/flatpickr/-/flatpickr-4.5.0.tgz#f72c7164a1c24e3ad419e3b2209d1a2d3604724a"
+flatpickr@^4.5.1:
+  version "4.5.1"
+  resolved "https://registry.yarnpkg.com/flatpickr/-/flatpickr-4.5.1.tgz#f65eaf54c07538f87d6f68a67b03cf816d7fb82f"
 
 follow-redirects@^1.0.0:
   version "1.5.0"
@@ -7325,8 +7337,8 @@ ovh-angular-mondial-relay@^4.0.0:
   resolved "https://registry.yarnpkg.com/ovh-angular-mondial-relay/-/ovh-angular-mondial-relay-4.0.0.tgz#92d7a0f7d76b573d3483ea0be1527f038ea518cc"
 
 ovh-angular-otrs@^6.0.1:
-  version "6.1.2"
-  resolved "https://registry.yarnpkg.com/ovh-angular-otrs/-/ovh-angular-otrs-6.1.2.tgz#59af35d64418599852fb0b08d045ccd416cea2b8"
+  version "6.1.3"
+  resolved "https://registry.yarnpkg.com/ovh-angular-otrs/-/ovh-angular-otrs-6.1.3.tgz#e1e1ee7eae9f172765cf7c80db1e510ceae59c2f"
 
 ovh-angular-pagination-front@^6.0.0:
   version "6.0.0"
@@ -7418,13 +7430,16 @@ ovh-protractor-jasmine2-logs-reporter@~0.0.1:
   dependencies:
     q "^1.4.1"
 
-ovh-ui-angular@^2.17.1:
-  version "2.17.1"
-  resolved "https://registry.yarnpkg.com/ovh-ui-angular/-/ovh-ui-angular-2.17.1.tgz#ed86530038bcbc60bb9d0a03d00e33327439fe48"
+ovh-ui-angular@^2.18.0:
+  version "2.18.0"
+  resolved "https://registry.yarnpkg.com/ovh-ui-angular/-/ovh-ui-angular-2.18.0.tgz#eef5ae22f360e8e028d34a05f67440ce44649c6c"
   dependencies:
-    clipboard "2.0.1"
+    angular "^1.6.x"
+    angular-aria "^1.6.x"
+    angular-sanitize "^1.6.x"
+    clipboard "^2.0.1"
     escape-string-regexp "^1.0.5"
-    flatpickr "4.5.0"
+    flatpickr "^4.5.1"
     popper.js "^1.14.3"
 
 ovh-ui-kit-bs@~1.3.x:
