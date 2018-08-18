@@ -27,11 +27,11 @@
 
 
                 <oui-datagrid data-rows="ConfigWifiCtrl.wifis" data-page-size="10">
-                    <oui-column data-title="'xdsl_modem_wifi_config_table_ssid' | translate" 
+                    <oui-column data-title="'xdsl_modem_wifi_config_table_ssid' | translate"
                                 data-property="SSID" data-sortable="asc">
                         {{$row.SSID}}
                     </oui-column>
-                    <oui-column data-title="'xdsl_modem_wifi_config_ssid_table_visibility' | translate" 
+                    <oui-column data-title="'xdsl_modem_wifi_config_ssid_table_visibility' | translate"
                                 data-property="SSIDAdvertisementEnabled" data-sortable>
                         <span data-translate="{{ $row.SSIDAdvertisementEnabled ? 'xdsl_modem_wifi_config_visible' : 'xdsl_modem_wifi_config_hidden' }}">
                         </span>
@@ -67,9 +67,8 @@
                     </oui-column>
 
                     <oui-action-menu data-align="end" data-compact>
-                        <oui-action-menu-item
-                                data-text="{{'edit' | translate}}"
-                                on-click="ConfigWifiCtrl.setSelectedWifi($row)">
+                        <oui-action-menu-item on-click="ConfigWifiCtrl.setSelectedWifi($row)">
+                            <span data-translate="edit"></span>
                         </oui-action-menu-item>
                     </oui-action-menu>
 
