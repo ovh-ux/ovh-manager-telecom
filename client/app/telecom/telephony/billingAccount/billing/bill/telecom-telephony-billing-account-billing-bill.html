@@ -30,16 +30,14 @@
                 </oui-column>
 
                 <oui-action-menu data-align="end" data-compact>
-                    <oui-action-menu-item data-text="{{'telephony_group_billing_bill_download_pdf' | translate}}"
-                                          on-click="BillingAccountBillCtrl.download($row, 'pdf')">
+                    <oui-action-menu-item on-click="BillingAccountBillCtrl.download($row, 'pdf')">
+                        <span data-translate="telephony_group_billing_bill_download_pdf"></span>
                     </oui-action-menu-item>
-
-                    <oui-action-menu-item data-text="{{'telephony_group_billing_bill_download_csv_emited' | translate}}"
-                                          on-click="BillingAccountBillCtrl.download($row, 'csv')">
+                    <oui-action-menu-item on-click="BillingAccountBillCtrl.download($row, 'csv')">
+                        <span data-translate="telephony_group_billing_bill_download_csv_emited"></span>
                     </oui-action-menu-item>
-
-                    <oui-action-menu-item data-text="{{'telephony_group_billing_bill_download_csv_received' | translate}}"
-                                          on-click="BillingAccountBillCtrl.download($row, 'received.csv')">
+                    <oui-action-menu-item on-click="BillingAccountBillCtrl.download($row, 'received.csv')">
+                        <span data-translate="telephony_group_billing_bill_download_csv_received"></span>
                     </oui-action-menu-item>
                 </oui-action-menu>
             </oui-datagrid>
