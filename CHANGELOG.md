@@ -1,3 +1,13 @@
+<a name="10.5.16"></a>
+## [10.5.16](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.5.15...v10.5.16) (2018-08-18)
+
+
+### Bug Fixes
+
+* **oui-action-menu-item:** remove deprecated text attribut ([25935a7](https://github.com/ovh-ux/ovh-manager-telecom/commit/25935a7))
+
+
+
 <a name="10.5.15"></a>
 ## [10.5.15](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.5.14...v10.5.15) (2018-08-17)
 
