@@ -1,3 +1,22 @@
+<a name="10.6.0"></a>
+# [10.6.0](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.5.16...v10.6.0) (2018-08-20)
+
+
+### Bug Fixes
+
+* **connected devices missing:** refresh connected devices ([98072fd](https://github.com/ovh-ux/ovh-manager-telecom/commit/98072fd))
+* **connected devices missing:** refresh connected devices ([679074a](https://github.com/ovh-ux/ovh-manager-telecom/commit/679074a))
+* **connected devices missing:** refresh connected devices ([2b6bbb6](https://github.com/ovh-ux/ovh-manager-telecom/commit/2b6bbb6))
+* **connected devices missing:** refresh connected devices ([638f3b1](https://github.com/ovh-ux/ovh-manager-telecom/commit/638f3b1))
+* **telephony:** missing alias options for function keys line phone ([b3d4d8a](https://github.com/ovh-ux/ovh-manager-telecom/commit/b3d4d8a))
+
+
+### Features
+
+* **telephony.alias.special:** add special number transfering pages ([#823](https://github.com/ovh-ux/ovh-manager-telecom/issues/823)) ([5b38acf](https://github.com/ovh-ux/ovh-manager-telecom/commit/5b38acf))
+
+
+
 <a name="10.5.16"></a>
 ## [10.5.16](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.5.15...v10.5.16) (2018-08-18)
 
