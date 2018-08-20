@@ -1,7 +1,7 @@
 class ManagerNavbarService {
   constructor(
-    $q, $translate, $translatePartialLoader, LANGUAGES, MANAGER_URLS, REDIRECT_URLS, TARGET, URLS,
-    OvhApiMe, OtrsPopupService, ssoAuthentication, PackMediator, telecomVoip,
+    $q, $translate, $translatePartialLoader, $rootScope, LANGUAGES, MANAGER_URLS, REDIRECT_URLS,
+    TARGET, URLS, OvhApiMe, OtrsPopupService, ssoAuthentication, PackMediator, telecomVoip,
     voipService, SmsMediator, OvhApiFreeFax, OvhApiOverTheBox, TelecomMediator,
     NavbarNotificationService,
   ) {
@@ -24,6 +24,8 @@ class ManagerNavbarService {
     this.ovhApiOverTheBox = OvhApiOverTheBox;
     this.telecomMediator = TelecomMediator;
     this.navbarNotificationService = NavbarNotificationService;
+
+    this.$rootScope = $rootScope;
   }
 
   getPackGroup(pack) {
@@ -271,13 +273,25 @@ class ManagerNavbarService {
   getProducts() {
     return this.telecomMediator
       .initServiceCount()
-      .then(count => this.$q.all({
-        pack: this.getPackProducts(count.pack),
-        telephony: this.getTelephonyProducts(count.telephony),
-        sms: this.getSmsProducts(count.sms),
-        freefax: this.getFaxProducts(count.freefax),
-        overTheBox: this.getOtbProducts(count.overTheBox),
-      }))
+      .then((count) => {
+        const sum = _.sum(count);
+
+        // TODO: Remove this ASAP, it's a quickfix to allow user to use the manager >.>
+        // We have to lazy-load this part
+
+        if (sum >= 500) {
+          this.$rootScope.shouldDisplayMenuButtonFallback = true;
+          return this.$q.when({});
+        }
+
+        return this.$q.all({
+          pack: this.getPackProducts(count.pack),
+          telephony: this.getTelephonyProducts(count.telephony),
+          sms: this.getSmsProducts(count.sms),
+          freefax: this.getFaxProducts(count.freefax),
+          overTheBox: this.getOtbProducts(count.overTheBox),
+        });
+      })
       .catch(() => this.$q.when(undefined));
   }
 

@@ -1,3 +1,63 @@
+<a name="10.5.16"></a>
+## [10.5.16](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.5.15...v10.5.16) (2018-08-18)
+
+
+### Bug Fixes
+
+* **oui-action-menu-item:** remove deprecated text attribut ([25935a7](https://github.com/ovh-ux/ovh-manager-telecom/commit/25935a7))
+
+
+
+<a name="10.5.15"></a>
+## [10.5.15](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.5.14...v10.5.15) (2018-08-17)
+
+
+
+<a name="10.5.14"></a>
+## [10.5.14](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.5.13...v10.5.14) (2018-08-08)
+
+
+### Bug Fixes
+
+* **telephony.group:** add oui-button class ([5794fb4](https://github.com/ovh-ux/ovh-manager-telecom/commit/5794fb4))
+* **telephony.orderalias.geographical:** call api with zone.city ([4b1c1ba](https://github.com/ovh-ux/ovh-manager-telecom/commit/4b1c1ba))
+
+
+
+<a name="10.5.13"></a>
+## [10.5.13](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.5.12...v10.5.13) (2018-08-08)
+
+
+### Bug Fixes
+
+* **sidebar:** temp display old sidebar in responsive for big account ([40465fd](https://github.com/ovh-ux/ovh-manager-telecom/commit/40465fd))
+* **tests:** fix exceeded character ([c618e39](https://github.com/ovh-ux/ovh-manager-telecom/commit/c618e39))
+
+
+
+<a name="10.5.12"></a>
+## [10.5.12](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.5.11...v10.5.12) (2018-08-08)
+
+
+### Bug Fixes
+
+* **telephony:** allow selecting a billing address ([a814400](https://github.com/ovh-ux/ovh-manager-telecom/commit/a814400))
+* **telephony group:** alert message style ([a43d408](https://github.com/ovh-ux/ovh-manager-telecom/commit/a43d408))
+* **telephony group:** color message and oui button ([7ace83a](https://github.com/ovh-ux/ovh-manager-telecom/commit/7ace83a))
+
+
+
+<a name="10.5.11"></a>
+## [10.5.11](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.5.10...v10.5.11) (2018-08-02)
+
+
+### Bug Fixes
+
+* use correct oui-switch semantic ([7059846](https://github.com/ovh-ux/ovh-manager-telecom/commit/7059846))
+* **dependencies:** remove duplicates vendor ([8b645fb](https://github.com/ovh-ux/ovh-manager-telecom/commit/8b645fb))
+
+
+
 <a name="10.5.10"></a>
 ## [10.5.10](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.5.9...v10.5.10) (2018-07-30)
 

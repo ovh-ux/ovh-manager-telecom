@@ -121,6 +121,12 @@ angular.module('managerApp').constant('LANGUAGES', {
         },
       },
     },
+    rsva: {
+      tariffBearing: {
+        value: 20,
+        currencyCode: 'EUR',
+      },
+    },
     packMove: {
       lineCreation: {
         value: 49.99,
@@ -211,6 +217,10 @@ angular.module('managerApp').constant('LANGUAGES', {
       packAdslEnterprise2013: 'http://www.ovh.com/fr/support/documents_legaux/Conditions_Generales_PackADSLGTRREADY2013.pdf',
     },
     keyGenHelp: 'https://www.ovh.com/fr/g1769.creation_des_cles_ssh',
+    transferTable: 'https://www.ovhtelecom.fr/telephonie/numeros_speciaux_08/reforme-des-numeros-speciaux.xml',
+    deontology: 'https://www.ovhtelecom.fr/support/documents_legaux/conditions%20particulieres%20deontologie%20numeros%20SVA%20Fr.pdf',
+    graphicCharter: 'http://s.svaplus.fr/mmdia/a/48/5/11439485prvpu.pdf',
+    svaToSvaPlus: 'http://s.svaplus.fr/mmdia/a/76/7/11442767lidlp.pdf',
     telecomWebSite: 'https://www.ovhtelecom.fr/',
   })
   .constant('TASK_STATUS', {

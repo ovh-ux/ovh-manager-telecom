@@ -238,10 +238,11 @@ angular.module('managerApp')
     }
 
     function getCloudHuntingParameter() {
+      const allowedFeatureTypes = ['cloudHunting', 'contactCenterSolution', 'contactCenterSolutionExpert'];
       return TelephonyMediator.getGroup($stateParams.billingAccount).then(() => {
         angular.forEach(TelephonyMediator.groups, (group) => {
           angular.forEach(group.numbers, (number) => {
-            if (number.feature.featureType === 'cloudHunting') {
+            if (_.includes(allowedFeatureTypes, number.feature.featureType)) {
               _.set(number, 'billingAccount', group.description || group.billingAccount);
               self.availableParameters.push(number);
             }

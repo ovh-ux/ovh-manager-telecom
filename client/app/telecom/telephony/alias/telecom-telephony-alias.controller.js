@@ -65,6 +65,9 @@ angular.module('managerApp').controller('TelecomTelephonyAliasCtrl', function ($
             self.convertTask = task;
             $scope.convertTask = task;
           }),
+          self.number.isSpecialNumber().then((result) => {
+            self.isSpecialNumber = result;
+          }),
         ]);
       }
       return null;

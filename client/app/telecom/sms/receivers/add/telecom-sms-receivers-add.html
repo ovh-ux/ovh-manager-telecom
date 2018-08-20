@@ -43,15 +43,15 @@
                    for="display-mode"
                    data-translate="sms_receivers_add_mode_document">
             </label>
-            <label class="oui-switch">
-                <input type="checkbox"
-                       class="oui-switch__checkbox"
-                       id="display-mode"
-                       data-ng-model="ReceiversAddCtrl.urlMode">
-                <div class="oui-switch__slider"></div>
-                <i class="oui-icon oui-icon-success" aria-hidden="true"></i>
-                <i class="oui-icon oui-icon-error" aria-hidden="true"></i>
-            </label>
+            <div class="oui-switch oui-switch_inline">
+                <label class="oui-switch__label-container">
+                    <input type="checkbox"
+                           class="oui-switch__checkbox"
+                           id="display-mode"
+                           data-ng-model="ReceiversAddCtrl.urlMode">
+                    <span class="oui-switch__slider" aria-hidden="true"></span>
+                </label>
+            </div>
             <label class="d-inline-block align-top"
                    for="display-mode"
                    data-translate="sms_receivers_add_mode_url">

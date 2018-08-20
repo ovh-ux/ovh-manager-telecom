@@ -14,9 +14,7 @@
         "node_modules/ovh-angular-mondial-relay/dist/ovh-angular-mondial-relay.min.css",
         "node_modules/ovh-angular-tail-logs/dist/ovh-angular-tail-logs.min.css",
         "node_modules/ovh-angular-timeline/dist/ovh-angular-timeline.css",
-        "node_modules/ovh-ng-input-password/dist/ovh-ng-input-password.css",
-        "node_modules/ovh-ui-kit/dist/ovh-ui-kit.css",
-        "node_modules/ovh-ui-kit-bs/dist/ovh-ui-kit-bs.css"
+        "node_modules/ovh-ng-input-password/dist/ovh-ng-input-password.css"
     ],
     "js": [
         "node_modules/jquery/dist/jquery.js",
@@ -42,7 +40,7 @@
         "node_modules/angular-ui-calendar/src/calendar.js",
         "node_modules/angular-ui-router/release/angular-ui-router.js",
         "node_modules/@bower_components/angular-uirouter-title/dist/angular-uirouter-title.js",
-        "node_modules/@bower_components/ui-select/dist/select.js",
+        "node_modules/ui-select/dist/select.js",
         "node_modules/jquery-ui/ui/version.js",
         "node_modules/jquery-ui/ui/plugin.js",
         "node_modules/jquery-ui/ui/widget.js",

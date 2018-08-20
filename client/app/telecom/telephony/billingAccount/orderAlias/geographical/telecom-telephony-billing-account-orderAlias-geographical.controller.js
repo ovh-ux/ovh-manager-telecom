@@ -104,7 +104,6 @@ angular.module('managerApp').controller('TelecomTelephonyAliasOrderGeographicalC
       'retractation',
       'streetName',
       'zip',
-      'zone',
     ];
     if (this.form.legalform === 'corporation') {
       filter = filter.concat([
@@ -117,6 +116,8 @@ angular.module('managerApp').controller('TelecomTelephonyAliasOrderGeographicalC
     const form = _.pick(this.form, filter);
     form.offer = 'alias';
     form.country = self.user.country;
+    form.zone = _.get(this.form, 'zone.city');
+
     if (form.pool === 1) {
       delete form.pool;
     }

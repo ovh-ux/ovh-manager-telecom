@@ -42,6 +42,12 @@
                 data-toggler-links="::navbar.responsiveLinks">
             </oui-navbar>
 
+            <button class="visible-xs visible-sm"
+                    type="button"
+                    data-ng-if="shouldDisplayMenuButtonFallback"
+                    onclick="$('#sidebar-menu').toggleClass('displayFallbackMenu')" style="position: absolute; height: 44px; width: 50px; display: block; background-color: transparent; z-index: 9999; top: 0; left: 0; border: 0;">
+            </button>
+
             <div class="container-fluid h-100 w-100" style="overflow: auto">
                 <div class="row">
 

@@ -201,15 +201,12 @@
                     </oui-column>
 
                     <oui-action-menu data-align="end" data-compact>
-                            <oui-action-menu-item
-                                data-text="{{'edit' | translate}}"
-                                on-click="TelecomSmsOptionsResponseCtrl.editTrackingOptions($index, $row)">
-                            </oui-action-menu-item>
-
-                            <oui-action-menu-item
-                                data-text="{{'delete' | translate}}"
-                                on-click="TelecomSmsOptionsResponseCtrl.removeTrackingOptions($index, $row)">
-                            </oui-action-menu-item>
+                        <oui-action-menu-item on-click="TelecomSmsOptionsResponseCtrl.editTrackingOptions($index, $row)">
+                            <span data-translate="edit"></span>
+                        </oui-action-menu-item>
+                        <oui-action-menu-item on-click="TelecomSmsOptionsResponseCtrl.removeTrackingOptions($index, $row)">
+                            <span data-translate="delete"></span>
+                        </oui-action-menu-item>
                     </oui-action-menu>
                 </oui-datagrid>
 

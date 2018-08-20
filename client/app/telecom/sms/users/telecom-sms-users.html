@@ -103,35 +103,25 @@
                     data-tooltip-append-to-body="true">
                 </span>
             </oui-column>
-            <oui-action-menu align="end" compact>
-                    <oui-action-menu-item
-                        data-text="{{'sms_users_action_change_password_label' | translate}}"
-                        on-click="SmsUsersCtrl.changePassword($row)">
+            <oui-action-menu data-align="end"
+                             data-compact>
+                    <oui-action-menu-item on-click="SmsUsersCtrl.changePassword($row)">
+                        <span data-translate="sms_users_action_change_password_label"></span>
                     </oui-action-menu-item>
-
-                    <oui-action-menu-item
-                        data-text="{{'sms_users_action_quota' | translate}}"
-                        on-click="SmsUsersCtrl.quota($row)">
+                    <oui-action-menu-item on-click="SmsUsersCtrl.quota($row)">
+                        <span data-translate="sms_users_action_quota"></span>
                     </oui-action-menu-item>
-
-                    <oui-action-menu-item
-                        data-text="{{'sms_users_action_limit' | translate}}"
-                        on-click="SmsUsersCtrl.limit($row)">
+                    <oui-action-menu-item on-click="SmsUsersCtrl.limit($row)">
+                        <span data-translate="sms_users_action_limit"></span>
                     </oui-action-menu-item>
-
-                    <oui-action-menu-item
-                        data-text="{{'sms_users_action_restriction_ip_label' | translate}}"
-                        on-click="SmsUsersCtrl.restrict($row)">
+                    <oui-action-menu-item on-click="SmsUsersCtrl.restrict($row)">
+                        <span data-translate="sms_users_action_restriction_ip_label"></span>
                     </oui-action-menu-item>
-
-                    <oui-action-menu-item
-                        data-text="{{'sms_users_action_url_callback_label' | translate}}"
-                        on-click="SmsUsersCtrl.callback($row)">
+                    <oui-action-menu-item on-click="SmsUsersCtrl.callback($row)">
+                        <span data-translate="sms_users_action_url_callback_label"></span>
                     </oui-action-menu-item>
-
-                    <oui-action-menu-item
-                        data-text="{{'delete' | translate}}"
-                        on-click="SmsUsersCtrl.remove($row)">
+                    <oui-action-menu-item on-click="SmsUsersCtrl.remove($row)">
+                        <span data-translate="delete"></span>
                     </oui-action-menu-item>
             </oui-action-menu>
         </oui-datagrid>
