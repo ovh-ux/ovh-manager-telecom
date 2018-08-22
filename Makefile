@@ -25,6 +25,7 @@ DIST_DIR=dist
 
 #### FILES ####
 DIST_TAR=dist.tar.gz
+DEPENDENCIES_FILES_LIST=dependencies.json
 
 #### MACRO ####
 NAME=`grep -Po '(?<="name": ")[^"]*' package.json`
@@ -68,9 +69,6 @@ gen-certificate:
 install:
 	$(YARN) install
 
-uninstall-smarttags:
-	if [ -n "$(SMARTTAG_PACKAGE_NAME_EU)" ]; then $(YARN) remove "$(SMARTTAG_PACKAGE_NAME_EU)"; fi
-
 dev: deps
 	$(GRUNT) serve
 
@@ -78,9 +76,8 @@ prod: deps
 	$(GRUNT) serve:dist
 
 build: deps
-	$(MAKE) uninstall-smarttags
-	if [ -n "$(SMARTTAG_REPO_EU)" ]; then $(YARN) add "$(SMARTTAG_REPO_EU)"; fi
-	if [ -n "$(SMARTTAG_REPO_EU)" ]; then sed -i 's/at\-internet\-smarttag\-manager[\-eu\-ca\-us]*\/dist/at\-internet\-smarttag\-manager-eu\/dist/' $(DEPENDENCIES_FILES_LIST); fi
+	if [ -n "$(SMARTTAG_REPO_EU)" ]; then $(YARN) add "$(SMARTTAG_REPO_EU)" --no-lockfile; fi
+	if [ -n "$(SMARTTAG_REPO_EU)" ]; then sed -i -r 's/at\-internet\-smarttag\-manager(-eu|-ca|-us)?\/dist/at-internet-smarttag-manager-eu\/dist/' $(DEPENDENCIES_FILES_LIST); fi
 	$(GRUNT) build --mode=prod
 	$(TAR) $(DIST_TAR) $(DIST_DIR)
 
