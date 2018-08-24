@@ -24,7 +24,7 @@ angular.module('managerApp').controller('PackCtrl', class PackCtrl {
 
     this.$scope.$on('reload-frames', () => this.$onInit());
     this.packDescriptionSave = this.updatePackDescriptionSave.bind(this);
-    
+
     return this.$q.all({
       packInformation: this.getPackInformation(),
       frames: this.initFrames(),
