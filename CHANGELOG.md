@@ -1,3 +1,15 @@
+<a name="10.6.1"></a>
+## [10.6.1](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.6.0...v10.6.1) (2018-08-24)
+
+
+### Bug Fixes
+
+* **build:** smarttag integration ([44a0245](https://github.com/ovh-ux/ovh-manager-telecom/commit/44a0245))
+* **packxdsl.name:** eslint error ([a3db695](https://github.com/ovh-ux/ovh-manager-telecom/commit/a3db695))
+* **packxdsl.name:** update display name ([7b8dc76](https://github.com/ovh-ux/ovh-manager-telecom/commit/7b8dc76))
+
+
+
 <a name="10.6.0"></a>
 # [10.6.0](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.5.16...v10.6.0) (2018-08-20)
 
