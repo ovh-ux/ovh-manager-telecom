@@ -8,6 +8,6 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'AliasOrderSpecialCtrl',
       },
     },
-    translations: ['common', 'telecom/telephony', 'telecom/telephony/billingAccount/orderAlias', 'telecom/telephony/billingAccount/orderAlias/special'],
+    translations: ['common', 'telecom/telephony', 'telecom/telephony/billingAccount/orderAlias', 'telecom/telephony/billingAccount/orderAlias/special', 'telecom/telephony/alias/special/rsva'],
   });
 });
