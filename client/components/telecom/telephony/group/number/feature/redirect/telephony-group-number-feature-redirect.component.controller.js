@@ -157,7 +157,7 @@ angular.module('managerApp').controller('TelephonyNumberRedirectCtrl', function 
 
         // set display helpers
         self.displayHelpers.hasOtherGroups = _.keys(TelephonyMediator.groups).length > 1;
-        self.displayHelpers.availableTypes = self.numberCtrl.number.feature.featureType === 'ddi' ? ['trunk', 'sip'] : undefined;
+        self.displayHelpers.availableTypes = self.numberCtrl.number.feature.featureType === 'ddi' ? ['trunk', 'sip', 'plugAndFax'] : undefined;
         if (self.displayHelpers.hasOtherGroups
           && self.displayHelpers.currentGroupServiceCount <= 4) {
           self.displayHelpers.hiddenGroups.push(self.numberCtrl.number.billingAccount);
