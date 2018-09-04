@@ -7,7 +7,7 @@
    <translation id="telephony_alias_configuration_queues_queue_create_success" qtlid="461991">File ajoutée</translation>
    <translation id="telephony_alias_configuration_queues_queue_delete" qtlid="324236">Supprimer la file</translation>
    <translation id="telephony_alias_configuration_queues_queue_delete_success" qtlid="462004">File supprimée</translation>
-   <translation id="telephony_alias_configuration_queues_queue_update" qtlid="249107">Apply the changes</translation>
+   <translation id="telephony_alias_configuration_queues_queue_update" qtlid="249107">Apply changes</translation>
    <translation id="telephony_alias_configuration_queues_queue_update_success" qtlid="462017">Modifications appliquées</translation>
    <translation id="telephony_alias_configuration_queues_agent_list" qtlid="462030">Agents membres de la file</translation>
    <translation id="telephony_alias_configuration_queues_agent_add" qtlid="462043">Ajouter un membre à la file</translation>

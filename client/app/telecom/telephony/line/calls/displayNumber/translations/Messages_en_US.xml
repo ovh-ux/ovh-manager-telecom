@@ -6,10 +6,10 @@
    <translation id="telephony_line_actions_line_calls_display_number_write_success" qtlid="336181">La présentation du numéro a été mise à jour.</translation>
    <translation id="telephony_line_actions_line_calls_display_number_label" qtlid="387029">Je souhaite présenter un numéro lors des appels sortants&#160;:</translation>
    <translation id="telephony_line_actions_line_calls_display_number_choose" qtlid="457272">Choisir un autre numéro</translation>
-   <translation id="telephony_line_actions_line_calls_display_number_confirm" qtlid="249107">Apply the changes</translation>
+   <translation id="telephony_line_actions_line_calls_display_number_confirm" qtlid="249107">Apply changes</translation>
    <translation id="telephony_line_actions_line_calls_display_number_info" qtlid="387042">Lors de vos appels sortants, présentez un numéro de votre groupe de facturation ou choisissez l'anonymat.</translation>
    <translation id="telephony_line_actions_line_calls_identificationRestriction_checkbox_label" qtlid="387055">Rester anonyme</translation>
-   <translation id="telephony_line_actions_line_calls_submit_changes" qtlid="249107">Apply the changes</translation>
+   <translation id="telephony_line_actions_line_calls_submit_changes" qtlid="249107">Apply changes</translation>
    <translation id="telephony_line_actions_line_calls_anonymous" qtlid="457285">Numéro masqué</translation>
 
    <translation id="telephony_line_actions_line_calls_display_number_bulk_all_success" qtlid="457298">La modification de la présentation du numéro a bien été appliquée aux services sélectionnés.</translation>

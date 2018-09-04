@@ -11,7 +11,7 @@
    <translation id="telephony_line_answer_voicemail_passwordConfirm_input_label" qtlid="197063">Confirmation:</translation>
    <translation id="telephony_line_answer_voicemail_passwordConfirm_input_placeholder" qtlid="387328">Saisissez à nouveau votre mot de passe</translation>
    <translation id="telephony_line_answer_voicemail_password_matching_warning" qtlid="337702">Le mot de passe saisi ne correspond pas.</translation>
-   <translation id="telephony_line_answer_voicemail_password_apply" qtlid="249107">Apply the changes</translation>
+   <translation id="telephony_line_answer_voicemail_password_apply" qtlid="249107">Apply changes</translation>
    <translation id="telephony_line_answer_voicemail_password_change_success" qtlid="337715">Mot de passe modifié avec succès.</translation>
    <translation id="telephony_line_answer_voicemail_password_change_error" qtlid="337728">Oups, nous n'arrivons pas à changer le mot de passe de votre répondeur.</translation>
    <translation id="telephony_line_answer_voicemail_password_info" qtlid="337741">Mot de passe demandé lors de la consultation des messages depuis l'extérieur uniquement.</translation>

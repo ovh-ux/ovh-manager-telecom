@@ -60,10 +60,10 @@
    <translation id="pack_move_eligibility_address_more" qtlid="312987">Plus de précisions</translation>
 
    <translation id="pack_move_eligibility_number" qtlid="152505">Teléfono</translation>
-   <translation id="pack_move_eligibility_zipcode" qtlid="30346">Code postal</translation>
-   <translation id="pack_move_eligibility_city" qtlid="33310">Ville</translation>
+   <translation id="pack_move_eligibility_zipcode" qtlid="30346">Código postal</translation>
+   <translation id="pack_move_eligibility_city" qtlid="33310">Ciudad</translation>
    <translation id="pack_move_eligibility_street" qtlid="152518">Calle</translation>
-   <translation id="pack_move_eligibility_street_number" qtlid="30778">Numéro</translation>
+   <translation id="pack_move_eligibility_street_number" qtlid="30778">Número</translation>
    <translation id="pack_move_eligibility_building" qtlid="313000">Bâtiment</translation>
    <translation id="pack_move_eligibility_door" qtlid="313013">Porte</translation>
    <translation id="pack_move_eligibility_floor" qtlid="313026">Étage</translation>

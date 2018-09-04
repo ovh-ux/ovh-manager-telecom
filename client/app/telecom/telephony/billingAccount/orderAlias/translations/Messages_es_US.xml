@@ -25,9 +25,9 @@
    <translation id="telephony_order_geographical_count_plurial" qtlid="333750">{{value}} numéros</translation>
    <translation id="telephony_order_geographical_count_singular" qtlid="333763">{{value}} numéro</translation>
 
-   <translation id="telephony_order_address_zipcode" qtlid="30346">Code postal</translation>
-   <translation id="telephony_order_address_city" qtlid="33310">Ville</translation>
-   <translation id="telephony_order_address_street_number" qtlid="30778">Numéro</translation>
+   <translation id="telephony_order_address_zipcode" qtlid="30346">Código postal</translation>
+   <translation id="telephony_order_address_city" qtlid="33310">Ciudad</translation>
+   <translation id="telephony_order_address_street_number" qtlid="30778">Número</translation>
    <translation id="telephony_order_address_street_name" qtlid="152518">Calle</translation>
 
    <translation id="telephony_order_confirm" qtlid="333776">Commandez ({{total}} TTC)</translation>

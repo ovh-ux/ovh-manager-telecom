@@ -32,13 +32,13 @@
    <translation id="xdsl_details_type_label" qtlid="2642">Tipo</translation>
    <translation id="xdsl_details_degroupage_label" qtlid="309633">Desagregación</translation>
    <translation id="xdsl_details_dns_really" qtlid="309646">¿Seguro que quiere cambiar el registro DNS inverso?</translation>
-   <translation id="xdsl_details_dns_placeholder" qtlid="44284">Registro inverso</translation>
+   <translation id="xdsl_details_dns_placeholder" qtlid="44284">Registro DNS inverso</translation>
    <translation id="xdsl_details_button_move" qtlid="308788">Trasladarme</translation>
    <translation id="xdsl_details_button_move_disabled" qtlid="384909">Solicitando la migración...</translation>
    <translation id="xdsl_details_button_deconsolidation" qtlid="79338">"Degrupación" total</translation>
-   <translation id="xdsl_details_button_diagnostic" qtlid="95059">Diagnóstico</translation>
-   <translation id="xdsl_details_button_ipv4" qtlid="44284">Registro inverso</translation>
-   <translation id="xdsl_details_button_ipv6" qtlid="44284">Registro inverso</translation>
+   <translation id="xdsl_details_button_diagnostic">Lancer le diagnostic</translation>
+   <translation id="xdsl_details_button_ipv4" qtlid="44284">Registro DNS inverso</translation>
+   <translation id="xdsl_details_button_ipv6" qtlid="44284">Registro DNS inverso</translation>
    <translation id="xdsl_details_add_dns" qtlid="309659">Añadir un registro DNS inverso</translation>
    <translation id="xdsl_details_connection" qtlid="52267">Tipo de conexión</translation>
    <translation id="xdsl_details_profile" qtlid="309672">Perfil de conexión</translation>

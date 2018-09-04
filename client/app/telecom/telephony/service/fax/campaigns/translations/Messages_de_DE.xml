@@ -6,7 +6,7 @@
    <translation id="telephony_service_fax_campaigns_filter" qtlid="59207">Filtern</translation>
    <translation id="telephony_service_fax_campaigns_filter_remove" qtlid="218939">Den Filter löschen</translation>
    <translation id="telephony_service_fax_campaigns_list_title_name" qtlid="391254">Campagne</translation>
-   <translation id="telephony_service_fax_campaigns_list_title_status" qtlid="33790">Zustand</translation>
+   <translation id="telephony_service_fax_campaigns_list_title_status" qtlid="33790">Status</translation>
    <translation id="telephony_service_fax_campaigns_list_title_success" qtlid="26443">Status</translation>
    <translation id="telephony_service_fax_campaigns_list_title_success_info" qtlid="391267">Statut de l’importation de votre liste de destinataires.</translation>
    <translation id="telephony_service_fax_campaigns_list_empty" qtlid="391280">Vous n’avez aucune campagne.</translation>
@@ -68,7 +68,7 @@
    <translation id="telephony_service_fax_campaigns_read_campaign_title" qtlid="339639">Einsehen</translation>
    <translation id="telephony_service_fax_campaigns_read_campaign_reference" qtlid="16445">Referenz</translation>
    <translation id="telephony_service_fax_campaigns_read_campaign_success" qtlid="26443">Status</translation>
-   <translation id="telephony_service_fax_campaigns_read_campaign_status" qtlid="33790">Zustand</translation>
+   <translation id="telephony_service_fax_campaigns_read_campaign_status" qtlid="33790">Status</translation>
    <translation id="telephony_service_fax_campaigns_read_campaign_message" qtlid="30574">Nachricht</translation>
    <translation id="telephony_service_fax_campaigns_read_campaign_date_start" qtlid="391774">Lancée le</translation>
    <translation id="telephony_service_fax_campaigns_read_campaign_date_start_scheduled" qtlid="391787">Lancement planifié le</translation>

@@ -7,7 +7,7 @@
    <translation id="telephony_alias_members_drag1" qtlid="397130">Le pictogramme</translation>
    <translation id="telephony_alias_members_drag2" qtlid="397143">vous permet d'effectuer un glisser-déposer afin de réordonner la position de vos membres dans la file.</translation>
    <translation id="telephony_alias_members_number_external" qtlid="93271">Numéro externe</translation>
-   <translation id="telephony_alias_members_status" qtlid="26443">Statut</translation>
+   <translation id="telephony_alias_members_status" qtlid="26443">Estado</translation>
    <translation id="telephony_alias_members_status_available" qtlid="99920">Disponible</translation>
    <translation id="telephony_alias_members_status_onBreak" qtlid="397156">En pausa</translation>
    <translation id="telephony_alias_members_status_loggedOut" qtlid="77154">Déconnecté</translation>
@@ -18,7 +18,7 @@
    <translation id="telephony_alias_members_wrap_up_time" qtlid="303705">Repos</translation>
    <translation id="telephony_alias_members_simultaneous_lines" qtlid="303718">Appels simultanés</translation>
    <translation id="telephony_alias_members_seconds" qtlid="397208">{{ amount }} sec.</translation>
-   <translation id="telephony_alias_members_number" qtlid="30778">Numéro</translation>
+   <translation id="telephony_alias_members_number" qtlid="30778">Número</translation>
    <translation id="telephony_alias_members_number_placeholder" qtlid="397221">Numéro au format international</translation>
    <translation id="telephony_alias_members_number_add" qtlid="397234">Ajouter un autre numéro</translation>
    <translation id="telephony_alias_members_add" qtlid="392502">Añadir un miembro</translation>

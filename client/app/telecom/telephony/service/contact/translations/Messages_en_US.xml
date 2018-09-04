@@ -20,12 +20,12 @@
    <translation id="telephony_service_contact_social_nomination_extra" qtlid="459521">Complément de désignation (Sigle, SARL, …)</translation>
    <translation id="telephony_service_contact_email" qtlid="50686">Email address</translation>
    <translation id="telephony_service_contact_country" qtlid="25171">Country</translation>
-   <translation id="telephony_service_contact_zipcode" qtlid="30346">Zip code</translation>
+   <translation id="telephony_service_contact_zipcode" qtlid="30346">Postal code</translation>
    <translation id="telephony_service_contact_city" qtlid="33310">City</translation>
    <translation id="telephony_service_contact_cedex" qtlid="459534">Cedex</translation>
    <translation id="telephony_service_contact_urbandistrict" qtlid="459547">Arrondissement (pour Paris, Lyon et Marseille)</translation>
    <translation id="telephony_service_contact_waynumber" qtlid="459560">Numéro de voie</translation>
-   <translation id="telephony_service_contact_wayname" qtlid="459573">Nom de la voie</translation>
+   <translation id="telephony_service_contact_wayname" qtlid="459573">Pathname</translation>
    <translation id="telephony_service_contact_addressextra" qtlid="459586">Complément d’adresse</translation>
    <translation id="telephony_service_contact_addressextra_invalid" qtlid="459599">Le complément d’adresse ne doit contenir ni caractères spéciaux ni accents</translation>
    <translation id="telephony_service_contact_waynumberextra" qtlid="459612">Complément du numéro dans la voie</translation>
@@ -52,7 +52,7 @@
    <translation id="telephony_service_contact_status_todo" qtlid="459820">Non effectué</translation>
    <translation id="telephony_service_contact_status_doing" qtlid="26383">In progress</translation>
    <translation id="telephony_service_contact_status_done" qtlid="27607">Done</translation>
-   <translation id="telephony_service_contact_apply" qtlid="249107">Apply the changes</translation>
+   <translation id="telephony_service_contact_apply" qtlid="249107">Apply changes</translation>
    <translation id="telephony_service_contact_must_fill" qtlid="102777">This field is mandatory </translation>
    <translation id="telephony_service_contact_city_not_found" qtlid="459833">Aucune ville n’a été trouvée pour ce code postal.</translation>
    <translation id="telephony_service_contact_success" qtlid="459846">Vos coordonnées ont bien été mises à jour.</translation>

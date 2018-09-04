@@ -7,7 +7,7 @@
    <translation id="telephony_service_fax_campaigns_filter_remove" qtlid="218939">Eliminar el filtro</translation>
    <translation id="telephony_service_fax_campaigns_list_title_name" qtlid="391254">Campagne</translation>
    <translation id="telephony_service_fax_campaigns_list_title_status" qtlid="33790">État</translation>
-   <translation id="telephony_service_fax_campaigns_list_title_success" qtlid="26443">Statut</translation>
+   <translation id="telephony_service_fax_campaigns_list_title_success" qtlid="26443">Estado</translation>
    <translation id="telephony_service_fax_campaigns_list_title_success_info" qtlid="391267">Statut de l’importation de votre liste de destinataires.</translation>
    <translation id="telephony_service_fax_campaigns_list_empty" qtlid="391280">Vous n’avez aucune campagne.</translation>
    <translation id="telephony_service_fax_campaigns_list_not_found" qtlid="391293">Aucune campagne fax ne correspond à cette recherche.</translation>
@@ -23,7 +23,7 @@
    <translation id="telephony_service_fax_campaigns_success_partial" qtlid="391384">Succès partiel</translation>
    <translation id="telephony_service_fax_campaigns_success_not_available" qtlid="26095">N/A</translation>
    <translation id="telephony_service_fax_campaigns_success_failed" qtlid="330825">Fallo</translation>
-   <translation id="telephony_service_fax_campaigns_sr_only_actions" qtlid="72809">Actions</translation>
+   <translation id="telephony_service_fax_campaigns_sr_only_actions" qtlid="72809">Acciones</translation>
    <translation id="telephony_service_fax_campaigns_action_read" qtlid="37527">Détails</translation>
    <translation id="telephony_service_fax_campaigns_action_start" qtlid="391397">Lancer la campagne</translation>
    <translation id="telephony_service_fax_campaigns_action_stop" qtlid="391410">Stopper la campagne</translation>
@@ -67,7 +67,7 @@
 <!-- CAMPAIGNS modal READ -->
    <translation id="telephony_service_fax_campaigns_read_campaign_title" qtlid="339639">Consultar</translation>
    <translation id="telephony_service_fax_campaigns_read_campaign_reference" qtlid="16445">Référence</translation>
-   <translation id="telephony_service_fax_campaigns_read_campaign_success" qtlid="26443">Statut</translation>
+   <translation id="telephony_service_fax_campaigns_read_campaign_success" qtlid="26443">Estado</translation>
    <translation id="telephony_service_fax_campaigns_read_campaign_status" qtlid="33790">État</translation>
    <translation id="telephony_service_fax_campaigns_read_campaign_message" qtlid="30574">Message</translation>
    <translation id="telephony_service_fax_campaigns_read_campaign_date_start" qtlid="391774">Lancée le</translation>

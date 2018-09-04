@@ -19,13 +19,13 @@
    <translation id="sms_sms_templates_informations_example_dt_3" qtlid="342226">Transactionnel</translation>
    <translation id="sms_sms_templates_informations_example_dd_3" qtlid="342239">Hi #LOGIN#, your account has been created on www.ovh.com!</translation>
    <translation id="sms_sms_templates_list_title_name" qtlid="3818">Nombre</translation>
-   <translation id="sms_sms_templates_list_title_date" qtlid="26419">Date de création</translation>
+   <translation id="sms_sms_templates_list_title_date" qtlid="26419">Fecha de creación</translation>
    <translation id="sms_sms_templates_list_title_message" qtlid="30574">Message</translation>
-   <translation id="sms_sms_templates_list_title_description" qtlid="9238">Description</translation>
-   <translation id="sms_sms_templates_list_title_status" qtlid="26443">Statut</translation>
+   <translation id="sms_sms_templates_list_title_description" qtlid="9238">Descripción</translation>
+   <translation id="sms_sms_templates_list_title_status" qtlid="26443">Estado</translation>
    <translation id="sms_sms_templates_list_title_type" qtlid="2642">Tipo</translation>
    <translation id="sms_sms_templates_list_empty" qtlid="342252">Vous n'avez aucun modèle.</translation>
-   <translation id="sms_sms_templates_sr_only_actions" qtlid="72809">Actions</translation>
+   <translation id="sms_sms_templates_sr_only_actions" qtlid="72809">Acciones</translation>
    <translation id="sms_sms_templates_action_relaunch" qtlid="31378">Relancer</translation>
 
 <!-- TEMPLATE modal ADD -->

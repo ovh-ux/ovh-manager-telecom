@@ -8,7 +8,7 @@
    <translation id="telephony_service_fax_password_error_password_maxlength" qtlid="357213">Le mot de passe ne peut excéder 12 caractères.</translation>
    <translation id="telephony_service_fax_password_label_confirm" qtlid="31498">Confirm</translation>
    <translation id="telephony_service_fax_password_error_confirm_password_match" qtlid="357226">Vos mots de passe ne correspondent pas.</translation>
-   <translation id="telephony_service_fax_password_apply" qtlid="249107">Apply the changes</translation>
+   <translation id="telephony_service_fax_password_apply" qtlid="249107">Apply changes</translation>
    <translation id="telephony_service_fax_password_change_success" qtlid="337715">Mot de passe modifié avec succès.</translation>
    <translation id="telephony_service_fax_password_change_error" qtlid="357239">Impossible de configurer le mot de passe.<br/>{{ error }}</translation>
 

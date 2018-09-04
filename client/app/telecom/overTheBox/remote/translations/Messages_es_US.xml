@@ -6,9 +6,9 @@
    <translation id="overTheBox_remote_table_id" qtlid="25615">IP</translation>
    <translation id="overTheBox_remote_table_port" qtlid="9034">Port</translation>
    <translation id="overTheBox_remote_table_connection" qtlid="55925">Connexion</translation>
-   <translation id="overTheBox_remote_table_status" qtlid="26443">Statut</translation>
+   <translation id="overTheBox_remote_table_status" qtlid="26443">Estado</translation>
    <translation id="overTheBox_remote_table_authorized_by" qtlid="306279">Autorisé par</translation>
-   <translation id="overTheBox_remote_table_expire" qtlid="30406">Expiration</translation>
+   <translation id="overTheBox_remote_table_expire" qtlid="30406">Expiración</translation>
    <translation id="overTheBox_remote_table_empty" qtlid="306292">Aucun accès à distance enregistré.</translation>
 
    <translation id="overTheBox_status_active" qtlid="55133">Actif</translation>

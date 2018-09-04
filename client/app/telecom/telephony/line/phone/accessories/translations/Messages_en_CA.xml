@@ -48,7 +48,7 @@
    <translation id="telephony_line_phone_accessories_resume_table_description" qtlid="9238">Description</translation>
    <translation id="telephony_line_phone_accessories_resume_table_unit_price" qtlid="51715">Unit price ex. VAT</translation>
    <translation id="telephony_line_phone_accessories_resume_table_quantity" qtlid="37107">Quantity</translation>
-   <translation id="telephony_line_phone_accessories_resume_table_total" qtlid="133292">Price ex. VAT</translation>
+   <translation id="telephony_line_phone_accessories_resume_table_total" qtlid="133292">Price excl. taxes</translation>
    <translation id="telephony_line_phone_accessories_resume_prices_tax_free_total" qtlid="37143">Total before taxes</translation>
    <translation id="telephony_line_phone_accessories_resume_prices_tax_total" qtlid="279470">VAT</translation>
    <translation id="telephony_line_phone_accessories_resume_prices_with_tax_total" qtlid="37167">Total incl. taxes</translation>

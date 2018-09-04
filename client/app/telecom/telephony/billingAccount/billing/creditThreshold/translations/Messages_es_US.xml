@@ -10,6 +10,6 @@
    <translation id="telephony_group_billing_credit_threshold_without_tax" qtlid="101397">HT</translation>
    <translation id="telephony_group_billing_credit_threshold_contracts_subtitle" qtlid="357551">Aceptación de los contratos</translation>
    <translation id="telephony_group_billing_credit_threshold_contracts" qtlid="357564">Vous devez accepter les contrats OVH avant de valider la demande de dépôt de garantie.</translation>
-   <translation id="telephony_group_billing_credit_threshold_submit" qtlid="37875">Modifier</translation>
+   <translation id="telephony_group_billing_credit_threshold_submit" qtlid="37875">Modificar</translation>
    <translation id="telephony_group_billing_credit_threshold_success" qtlid="357577">La demande de modification de la limite a été enregistrée avec succès !</translation>
 </translations>
