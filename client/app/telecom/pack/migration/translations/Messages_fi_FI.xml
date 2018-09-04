@@ -12,7 +12,7 @@
    <translation id="telecom_pack_migration_offer_services_to_delete_explain" qtlid="331787">Le choix des services à supprimer vous sera proposé à l'étape suivante.</translation>
    <translation id="telecom_pack_migration_options" qtlid="23395">Valinnat</translation>
    <translation id="telecom_pack_migration_commitment_month" qtlid="331800">{{ number }} mois</translation>
-   <translation id="telecom_pack_migration_commitment_none" qtlid="30646">Ei ole</translation>
+   <translation id="telecom_pack_migration_commitment_none" qtlid="30646">Ei mitään</translation>
    <translation id="telecom_pack_migration_option_unavailable" qtlid="91957">Ei käytettävissä</translation>
    <translation id="telecom_pack_migration_accounts_activated" qtlid="331813">{{ number }} comptes activés</translation>
    <translation id="telecom_pack_migration_account_activated" qtlid="331826">{{ number }} compte activé</translation>

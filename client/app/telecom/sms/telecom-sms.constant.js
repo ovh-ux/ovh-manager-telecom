@@ -36,7 +36,7 @@ angular
           {
             label: 'sms_guides_compose_email',
             url: {
-              fr: 'https://www.ovh.com/fr/g2143.{title}',
+              fr: 'https://docs.ovh.com/fr/sms/envoyer-sms-depuis-adresse-email/#gestion-des-destinataires',
             },
           },
           {

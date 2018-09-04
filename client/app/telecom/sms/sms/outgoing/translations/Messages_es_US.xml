@@ -10,7 +10,7 @@
    <translation id="sms_sms_outgoing_label_receiver" qtlid="40442">Destinataire</translation>
    <translation id="sms_sms_outgoing_label_tariff_code" qtlid="32290">Destination</translation>
    <translation id="sms_sms_outgoing_label_message" qtlid="30574">Message</translation>
-   <translation id="sms_sms_outgoing_label_status" qtlid="26443">Statut</translation>
+   <translation id="sms_sms_outgoing_label_status" qtlid="26443">Estado</translation>
 
    <translation id="sms_sms_outgoing_empty" qtlid="342538">Aucun historique</translation>
 

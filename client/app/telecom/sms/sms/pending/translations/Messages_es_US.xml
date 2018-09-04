@@ -9,7 +9,7 @@
    <translation id="sms_sms_pending_label_sender" qtlid="24535">Expéditeur</translation>
    <translation id="sms_sms_pending_label_receiver" qtlid="40442">Destinataire</translation>
    <translation id="sms_sms_pending_label_message" qtlid="30574">Message</translation>
-   <translation id="sms_sms_pending_label_status" qtlid="26443">Statut</translation>
+   <translation id="sms_sms_pending_label_status" qtlid="26443">Estado</translation>
 
    <translation id="sms_sms_pending_empty" qtlid="342473">Aucun SMS planifié</translation>
 

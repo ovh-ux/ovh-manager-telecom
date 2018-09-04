@@ -25,7 +25,7 @@
    <translation id="telephony_service_contact_cedex" qtlid="459534">Cedex</translation>
    <translation id="telephony_service_contact_urbandistrict" qtlid="459547">Arrondissement (pour Paris, Lyon et Marseille)</translation>
    <translation id="telephony_service_contact_waynumber" qtlid="459560">Numéro de voie</translation>
-   <translation id="telephony_service_contact_wayname" qtlid="459573">Nom de la voie</translation>
+   <translation id="telephony_service_contact_wayname" qtlid="459573">Straat</translation>
    <translation id="telephony_service_contact_addressextra" qtlid="459586">Complément d’adresse</translation>
    <translation id="telephony_service_contact_addressextra_invalid" qtlid="459599">Le complément d’adresse ne doit contenir ni caractères spéciaux ni accents</translation>
    <translation id="telephony_service_contact_waynumberextra" qtlid="459612">Complément du numéro dans la voie</translation>

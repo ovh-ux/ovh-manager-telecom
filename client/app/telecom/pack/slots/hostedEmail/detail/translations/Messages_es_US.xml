@@ -8,7 +8,7 @@
    <translation id="hosted_email_detail_client_change_password" qtlid="8434">Modifier le mot de passe</translation>
    <translation id="hosted_email_detail_active" qtlid="55133">Actif</translation>
    <translation id="hosted_email_detail_inactive" qtlid="105310">Inactif</translation>
-   <translation id="hosted_email_detail_status" qtlid="26443">Statut</translation>
+   <translation id="hosted_email_detail_status" qtlid="26443">Estado</translation>
    <translation id="hosted_email_detail_webmail" qtlid="384337">URL du serveur Webmail</translation>
    <translation id="hosted_email_detail_client_configuration" qtlid="384350">Configuration client email</translation>
    <translation id="hosted_email_detail_open_webmail" qtlid="384363">Ouvrir le client webmail</translation>

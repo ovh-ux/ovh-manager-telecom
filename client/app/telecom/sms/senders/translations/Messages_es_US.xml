@@ -6,16 +6,16 @@
 
    <translation id="sms_senders_label_sender" qtlid="24535">Expéditeur</translation>
    <translation id="sms_senders_label_referer" qtlid="2642">Tipo</translation>
-   <translation id="sms_senders_label_description" qtlid="9238">Description</translation>
-   <translation id="sms_senders_label_status" qtlid="26443">Statut</translation>
+   <translation id="sms_senders_label_description" qtlid="9238">Descripción</translation>
+   <translation id="sms_senders_label_status" qtlid="26443">Estado</translation>
 
-   <translation id="sms_senders_sr_only_actions" qtlid="72809">Actions</translation>
+   <translation id="sms_senders_sr_only_actions" qtlid="72809">Acciones</translation>
 
    <translation id="sms_senders_referer_custom" qtlid="50062">Personnalisé</translation>
    <translation id="sms_senders_referer_domain" qtlid="340588">Domaine OVH</translation>
    <translation id="sms_senders_referer_line" qtlid="42802">Ligne</translation>
    <translation id="sms_senders_referer_nic" qtlid="340601">Donnée personnelle</translation>
-   <translation id="sms_senders_referer_owner" qtlid="30634">Propriétaire</translation>
+   <translation id="sms_senders_referer_owner" qtlid="30634">Propietario</translation>
    <translation id="sms_senders_referer_virtual" qtlid="360229">Numéro virtuel</translation>
 
    <translation id="sms_senders_status_disable" qtlid="24967">Desactivada</translation>
@@ -36,7 +36,7 @@
    <translation id="sms_senders_edit_sender_title" qtlid="340640">Éditer l’expéditeur</translation>
    <translation id="sms_senders_edit_sender_information" qtlid="340653">Vous éditez actuellement l’expéditeur <b>«{{ sender }}»</b>.</translation>
    <translation id="sms_senders_edit_sender_description_label" qtlid="340666">Description&#160;:&#160;</translation>
-   <translation id="sms_senders_edit_sender_description_placeholder" qtlid="9238">Description</translation>
+   <translation id="sms_senders_edit_sender_description_placeholder" qtlid="9238">Descripción</translation>
    <translation id="sms_senders_edit_sender_status_label" qtlid="340679">Activer l’expéditeur</translation>
    <translation id="sms_senders_edit_sender_editing" qtlid="340692">Mise à jour de l’expéditeur…</translation>
    <translation id="sms_senders_edit_sender_edited" qtlid="340705">Expéditeur mis à jour&#160;!&#160;</translation>

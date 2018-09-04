@@ -40,13 +40,13 @@
    <translation id="telephony_alias_portability_order_contact_country_france" qtlid="29047">France</translation>
    <translation id="telephony_alias_portability_order_contact_country_belgium" qtlid="29059">Belgium</translation>
    <translation id="telephony_alias_portability_order_contact_country_switzerland" qtlid="40954">Switzerland</translation>
-   <translation id="telephony_alias_portability_order_contact_zip" qtlid="30346">Zip code</translation>
+   <translation id="telephony_alias_portability_order_contact_zip" qtlid="30346">Postal code</translation>
    <translation id="telephony_alias_portability_order_contact_zip_pattern_error" qtlid="460886">Code postal invalide.</translation>
    <translation id="telephony_alias_portability_order_contact_city" qtlid="33310">City</translation>
    <translation id="telephony_alias_portability_order_contact_street_number" qtlid="459560">Numéro de voie</translation>
    <translation id="telephony_alias_portability_order_contact_street_number_extra" qtlid="460899">Complément du numéro de voie</translation>
    <translation id="telephony_alias_portability_order_contact_street_number_pattern_error" qtlid="460912">Numéro de voie invalide.</translation>
-   <translation id="telephony_alias_portability_order_contact_street_name" qtlid="459573">Nom de la voie</translation>
+   <translation id="telephony_alias_portability_order_contact_street_name" qtlid="459573">Pathname</translation>
    <translation id="telephony_alias_portability_order_contact_street_type" qtlid="460925">Type de voie</translation>
    <translation id="telephony_alias_portability_order_contact_building" qtlid="313000">Bâtiment</translation>
    <translation id="telephony_alias_portability_order_contact_stair" qtlid="313052">Escalier</translation>

@@ -18,5 +18,5 @@
    <translation id="telephony_line_tones_choose_file_sound_success" qtlid="358526">Musique mise à jour</translation>
    <translation id="telephony_line_tones_choose_file_announce_success" qtlid="358539">Annonce mise à jour</translation>
    <translation id="telephony_line_tones_choose_file_type_error" qtlid="358552">Le format du fichier sélectionné n'est pas supporté.</translation>
-   <translation id="telephony_line_tones_apply" qtlid="249107">Apply the changes</translation>
+   <translation id="telephony_line_tones_apply" qtlid="249107">Apply changes</translation>
 </translations>

@@ -10,7 +10,7 @@
    <translation id="email_pro_detail_active" qtlid="55133">Actif</translation>
    <translation id="email_pro_detail_inactive" qtlid="105310">Inactif</translation>
 
-   <translation id="email_pro_detail_status" qtlid="26443">Statut</translation>
+   <translation id="email_pro_detail_status" qtlid="26443">Estado</translation>
    <translation id="email_pro_detail_webmail" qtlid="384337">URL du serveur Webmail</translation>
    <translation id="email_pro_detail_open_webmail" qtlid="384363">Ouvrir le client webmail</translation>
 

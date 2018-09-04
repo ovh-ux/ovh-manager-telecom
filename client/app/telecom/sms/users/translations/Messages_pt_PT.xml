@@ -4,7 +4,7 @@
 
    <translation id="sms_users_actions_templates" qtlid="72797">Alertas</translation>
 
-   <translation id="sms_users_label_id" qtlid="46792">ID utilizador</translation>
+   <translation id="sms_users_label_id" qtlid="46792">ID de utilizador</translation>
    <translation id="sms_users_label_quota_status" qtlid="338703">Activer le quota ?</translation>
    <translation id="sms_users_label_quota" qtlid="6874">Quota</translation>
    <translation id="sms_users_label_alert" qtlid="338716">Activer l’alerte ?</translation>
@@ -27,7 +27,7 @@
    <translation id="sms_users_add_user" qtlid="7150">Adicionar utilizador</translation>
    <translation id="sms_users_add_user_title" qtlid="338755">Nouveau compte utilisateur</translation>
    <translation id="sms_users_add_user_login_label" qtlid="338768">Identifiant&#160;:&#160;</translation>
-   <translation id="sms_users_add_user_login_placeholder" qtlid="46792">ID utilizador</translation>
+   <translation id="sms_users_add_user_login_placeholder" qtlid="46792">ID de utilizador</translation>
    <translation id="sms_users_add_user_login_error_required" qtlid="338781">Le champ "identifiant" est obligatoire.</translation>
    <translation id="sms_users_add_user_login_error_maxlength" qtlid="338794">Le champ "identifiant" ne doit pas dépasser les 40 caractères.</translation>
    <translation id="sms_users_add_user_password_label" qtlid="334894">Mot de passe&#160;:&#160;</translation>

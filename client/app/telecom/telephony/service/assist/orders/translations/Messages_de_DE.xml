@@ -3,7 +3,7 @@
    <translation id="telephony_line_assist_orders_title" qtlid="336298">Suivi des bons de commande</translation>
    <translation id="telephony_line_assist_orders_column_date" qtlid="24523">Datum</translation>
    <translation id="telephony_line_assist_orders_column_id" qtlid="289250">Bestellnummer </translation>
-   <translation id="telephony_line_assist_orders_column_status" qtlid="33790">Zustand</translation>
+   <translation id="telephony_line_assist_orders_column_status" qtlid="33790">Status</translation>
    <translation id="telephony_line_assist_orders_order_status_cancelled" qtlid="164623">Abgebrochen</translation>
    <translation id="telephony_line_assist_orders_order_status_cancelling" qtlid="282848">Wird storniert</translation>
    <translation id="telephony_line_assist_orders_order_status_checking" qtlid="33802">Validierung</translation>

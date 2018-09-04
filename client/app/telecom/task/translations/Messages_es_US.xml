@@ -11,11 +11,11 @@
    <translation id="telecom_task_problem" qtlid="270800">Problema</translation>
    <translation id="telecom_task_todo" qtlid="305356">Programada</translation>
    <translation id="telecom_task_all" qtlid="290472">Todos</translation>
-   <translation id="telecom_task_status" qtlid="26443">Statut</translation>
+   <translation id="telecom_task_status" qtlid="26443">Estado</translation>
    <translation id="telecom_task_function" qtlid="56105">Action</translation>
    <translation id="telecom_task_pack" qtlid="82929">Pack</translation>
    <translation id="telecom_task_filter_status_placeholder" qtlid="305369">Filtrer par statut</translation>
-   <translation id="telecom_task_status" qtlid="26443">Statut</translation>
+   <translation id="telecom_task_status" qtlid="26443">Estado</translation>
    <translation id="telecom_task_function" qtlid="56105">Action</translation>
    <translation id="telecom_task_filter_none" qtlid="305382">Toutes les opérations</translation>
    <translation id="telecom_task_none" qtlid="305395">Aucune tâche trouvée</translation>

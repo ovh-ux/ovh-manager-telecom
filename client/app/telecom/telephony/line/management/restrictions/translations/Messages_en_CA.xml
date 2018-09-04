@@ -8,7 +8,7 @@
    <translation id="telephony_line_restrictions_authorized" qtlid="387718">Réseaux IP autorisés</translation>
    <translation id="telephony_line_restrictions_add" qtlid="387731">Ajouter une adresse IP</translation>
    <translation id="telephony_line_restrictions_none" qtlid="387744">Aucune restriction</translation>
-   <translation id="telephony_line_restrictions_apply" qtlid="249107">Apply the changes</translation>
+   <translation id="telephony_line_restrictions_apply" qtlid="249107">Apply changes</translation>
    <translation id="telephony_line_restrictions_cancel" qtlid="37863">Cancel</translation>
    <translation id="telephony_line_restrictions_ip" qtlid="26191">IP address</translation>
    <translation id="telephony_line_restrictions_account_missing" qtlid="387757">Bientôt disponible.</translation>
