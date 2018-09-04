@@ -1,3 +1,23 @@
+<a name="10.6.2"></a>
+## [10.6.2](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.6.1...v10.6.2) (2018-09-04)
+
+
+### Bug Fixes
+
+* **alias conf:** set plugnfax availables for redirect alias ([0cb8d18](https://github.com/ovh-ux/ovh-manager-telecom/commit/0cb8d18))
+* **call forwarding:** call forwarding selection ([686dfc3](https://github.com/ovh-ux/ovh-manager-telecom/commit/686dfc3))
+* **guide-url:** sms guide url not working ([bbcf91b](https://github.com/ovh-ux/ovh-manager-telecom/commit/bbcf91b))
+* **sms.senders.add:** apply tag-pair rule on tbody elements ([db146cf](https://github.com/ovh-ux/ovh-manager-telecom/commit/db146cf))
+* **telephony order:** translations broken for typology ([3f051fe](https://github.com/ovh-ux/ovh-manager-telecom/commit/3f051fe))
+* **xdsl:** patch diagnostic module ([4f32228](https://github.com/ovh-ux/ovh-manager-telecom/commit/4f32228))
+
+
+### Features
+
+* **xdsl:** auto diagnostic new version ([6c4fab5](https://github.com/ovh-ux/ovh-manager-telecom/commit/6c4fab5))
+
+
+
 <a name="10.6.1"></a>
 ## [10.6.1](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.6.0...v10.6.1) (2018-08-24)
 
