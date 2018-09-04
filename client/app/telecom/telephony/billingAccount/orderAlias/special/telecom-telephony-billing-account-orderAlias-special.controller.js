@@ -40,15 +40,15 @@ angular.module('managerApp').controller('TelecomTelephonyAliasOrderSpecialCtrl',
           const typologies = _.filter(schema.models['telephony.NumberSpecialTypologyEnum'].enum, elt => elt.match(new RegExp(`^${country}_`)));
           self.typologies = _.map(typologies, typo => ({
             value: typo,
-            label: $translate.instant(`telephony_order_specific_typology_${typo.replace(new RegExp(`^${country}_`), '')}_label`),
+            label: $translate.instant(`telephony_alias_special_rsva_infos_typology_${typo.replace(new RegExp(`^${country}_`), '')}_label`),
           }));
           return self.typologies;
         }
-        Toast.error($translate.instant('telephony_order_specific_typology_error'));
+        Toast.error($translate.instant('telephony_alias_special_rsva_infos_typology_error'));
         return $q.reject('No typology');
       },
       (err) => {
-        Toast.error($translate.instant('telephony_order_specific_typology_error'));
+        Toast.error($translate.instant('telephony_alias_special_rsva_infos_typology_error'));
         return $q.reject(err);
       },
     );
