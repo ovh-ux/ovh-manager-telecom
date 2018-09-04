@@ -1,3 +1,5 @@
+import asyncLoaderFactory from './async-loader.factory';
+
 angular.module('managerApp', [
   'ovh-angular-sso-auth',
   'ovh-angular-sso-auth-modal-plugin',
@@ -52,13 +54,10 @@ angular.module('managerApp', [
   'matchmedia-ng',
   'ui.sortable',
   'angular-inview',
-  'angular-web-notification',
-  'ngEmbed',
-  'ovh-angular-user-pref',
-  'ovh-angular-chatbot',
   'oui',
   'ovh-angular-actions-menu',
   'ovh-angular-sidebar-menu',
+  'angular-translate-loader-pluggable',
 ])
 
 /*= =========  GLOBAL OPTIONS  ========== */
@@ -105,12 +104,14 @@ angular.module('managerApp', [
   })
 
 /*= =========  TRANSLATOR  ========== */
+  .factory('asyncLoader', asyncLoaderFactory)
   .config((
     $translateProvider,
     LANGUAGES,
     tmhDynamicLocaleProvider,
     actionsMenuProvider,
     SidebarMenuProvider,
+    translatePluggableLoaderProvider,
   ) => {
     // --- Translations configuration
     let defaultLanguage = 'fr_FR';
@@ -120,6 +121,10 @@ angular.module('managerApp', [
     } else {
       localStorage['univers-selected-language'] = defaultLanguage;
     }
+
+    $translateProvider.useLoader('translatePluggableLoader');
+
+    translatePluggableLoaderProvider.useLoader('asyncLoader')
 
     // Check if language exist into the list
     const availableLangsKeys = _.pluck(LANGUAGES.available, 'key');
@@ -151,7 +156,7 @@ angular.module('managerApp', [
     tmhDynamicLocaleProvider.defaultLocale(_.kebabCase(defaultLanguage));
 
     // define translation loader
-    $translateProvider.useLoader('$translatePartialLoader', {
+    translatePluggableLoaderProvider.useLoader('$translatePartialLoader', {
       urlTemplate: 'app/{part}/translations/Messages_{lang}.json',
     });
     $translateProvider.useLoaderCache(true);
