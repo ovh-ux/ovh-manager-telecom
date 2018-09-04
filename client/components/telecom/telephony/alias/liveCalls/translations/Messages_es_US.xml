@@ -17,7 +17,7 @@
    <translation id="telephony_alias_configuration_mode_calls_agent" qtlid="303562">Agente</translation>
    <translation id="telephony_alias_configuration_mode_calls_action" qtlid="56105">Action</translation>
    <translation id="telephony_alias_configuration_mode_calls_action_intercept" qtlid="466853">Intercepter l'appel</translation>
-   <translation id="telephony_alias_configuration_mode_calls_action_intercept_number" qtlid="30778">Numéro</translation>
+   <translation id="telephony_alias_configuration_mode_calls_action_intercept_number" qtlid="30778">Número</translation>
    <translation id="telephony_alias_configuration_mode_calls_action_intercept_help" qtlid="466866">Vous pouvez intercepter une communication non établie. Pour cela, il vous suffit de renseigner un numéro de téléphone vers lequel la communication en cours sera automatiquement transférée.</translation>
    <translation id="telephony_alias_configuration_mode_calls_action_intercept_confirm" qtlid="466879">Intercepter</translation>
    <translation id="telephony_alias_configuration_mode_calls_action_intercept_success" qtlid="466892">Interception de l'appel en cours</translation>
@@ -35,7 +35,7 @@
    <translation id="telephony_alias_configuration_mode_calls_action_eavesdrop_type_listen" qtlid="337598">Écouter</translation>
    <translation id="telephony_alias_configuration_mode_calls_action_eavesdrop_type_whisper_agent" qtlid="466983">Écouter et chuchoter à l'agent</translation>
    <translation id="telephony_alias_configuration_mode_calls_action_eavesdrop_type_whisper_all" qtlid="466996">Écouter et chuchoter à tous</translation>
-   <translation id="telephony_alias_configuration_mode_calls_action_eavesdrop_number" qtlid="30778">Numéro</translation>
+   <translation id="telephony_alias_configuration_mode_calls_action_eavesdrop_number" qtlid="30778">Número</translation>
    <translation id="telephony_alias_configuration_mode_calls_action_eavesdrop_help" qtlid="467009">Vous pouvez écouter une communication en cours ou chuchoter dans celle-ci. Pour cela, il vous suffit de renseigner un numéro de téléphone qui sera appelé automatiquement et mis en relation avec la communication en cours.</translation>
    <translation id="telephony_alias_configuration_mode_calls_action_eavesdrop_confirm" qtlid="31498">Confirmer</translation>
    <translation id="telephony_alias_configuration_mode_calls_action_eavesdrop_success" qtlid="467022">Mise en relation en cours</translation>
@@ -44,7 +44,7 @@
    <translation id="telephony_alias_configuration_mode_agents_ongoing" qtlid="324171">Número de agentes en llamada</translation>
    <translation id="telephony_alias_configuration_mode_agents_pending" qtlid="324184">Número de agentes en espera</translation>
    <translation id="telephony_alias_configuration_mode_agents_empty" qtlid="467035">Aucun agent</translation>
-   <translation id="telephony_alias_configuration_mode_calls_agent_status" qtlid="26443">Statut</translation>
+   <translation id="telephony_alias_configuration_mode_calls_agent_status" qtlid="26443">Estado</translation>
    <translation id="telephony_alias_configuration_mode_calls_agent_updated" qtlid="467048">Dernier changement de statut</translation>
    <translation id="telephony_alias_configuration_mode_calls_agent_updated_ago" qtlid="324210">Hay</translation>
    <translation id="telephony_alias_configuration_mode_calls_agent_status_inAQueueCall" qtlid="467061">En appel</translation>

@@ -11,7 +11,7 @@
    <translation id="telecom_orders_follow_up_header_service" qtlid="305291">Identifiant service</translation>
    <translation id="telecom_orders_follow_up_header_status" qtlid="26443">Estado</translation>
    <translation id="telecom_orders_follow_up_header_step" qtlid="5438">Etapa</translation>
-   <translation id="telecom_orders_follow_up_header_state" qtlid="8230">Status</translation>
+   <translation id="telecom_orders_follow_up_header_state" qtlid="8230">Estado</translation>
    <translation id="telecom_orders_follow_up_items_per_view" qtlid="305304">Items par page</translation>
    <translation id="telecom_orders_follow_up_no_orders" qtlid="463395">Actuellement vous n'avez pas de commandes en cours.</translation>
 </translations>

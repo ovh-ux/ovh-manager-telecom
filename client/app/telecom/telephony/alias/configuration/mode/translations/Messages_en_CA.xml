@@ -3,12 +3,12 @@
    <translation id="telephony_alias_configuration_mode_title" qtlid="340354">Manage options</translation>
    <translation id="telephony_alias_configuration_mode_info_title" qtlid="26551">Information</translation>
    <translation id="telephony_alias_configuration_mode_config_title" qtlid="4406">Configuration</translation>
-   <translation id="telephony_alias_configuration_mode_apply" qtlid="249107">Apply the changes</translation>
+   <translation id="telephony_alias_configuration_mode_apply" qtlid="249107">Apply changes</translation>
    <translation id="telephony_alias_configuration_mode_cancel" qtlid="172280">Cancel modifications</translation>
    <translation id="telephony_alias_configuration_mode_file" qtlid="392970">Fichier ...</translation>
 
    <translation id="telephony_alias_configuration_mode_info1" qtlid="392541">Vous pouvez modifier le mode de fonctionnement de votre file d'attente :</translation>
-   <translation id="telephony_alias_configuration_mode_pabx_apply_changes" qtlid="249107">Apply the changes</translation>
+   <translation id="telephony_alias_configuration_mode_pabx_apply_changes" qtlid="249107">Apply changes</translation>
 
 <!-- STRATEGY -->
    <translation id="telephony_alias_configuration_mode_pabx_strategy" qtlid="294841">Stratégie</translation>

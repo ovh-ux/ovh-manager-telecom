@@ -12,7 +12,7 @@
    <translation id="telephony_alias_configuration_records_form_record_disabling_language_french" qtlid="29684">French</translation>
    <translation id="telephony_alias_configuration_records_form_record_disabling_language_english" qtlid="33838">English</translation>
    <translation id="telephony_alias_configuration_records_form_record_disabling_digit" qtlid="461848">Choix du chiffre</translation>
-   <translation id="telephony_alias_configuration_records_form_submit" qtlid="249107">Apply the changes</translation>
+   <translation id="telephony_alias_configuration_records_form_submit" qtlid="249107">Apply changes</translation>
    <translation id="telephony_alias_configuration_records_list_title" qtlid="461861">Liste des enregistrements</translation>
    <translation id="telephony_alias_configuration_records_list_empty" qtlid="461874">Aucun enregistrement</translation>
    <translation id="telephony_alias_configuration_records_list_delete" qtlid="461887">Supprimer l’enregistrement sélectionné</translation>

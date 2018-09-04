@@ -10,7 +10,7 @@
    <translation id="sms_options_response_information_text_2" qtlid="346014">Vous pouvez également, en parallèle, être notifié de la réception d'un SMS par Email <em>(gratuit)</em> ou SMS <em>(coût&#160;:&#160;1 SMS)</em>.</translation>
    <translation id="sms_options_response_information_text_3" qtlid="346027">Veuillez noter que le client ne pourra répondre que sous 48 H. Passé ce délai technique, la réponse ne vous parviendra pas.</translation>
 
-   <translation id="sms_options_response_sr_only_actions" qtlid="72809">Actions</translation>
+   <translation id="sms_options_response_sr_only_actions" qtlid="72809">Acciones</translation>
 
 <!-- ACTION -->
    <translation id="sms_options_response_action_title" qtlid="346040">Action à la réception</translation>
@@ -49,7 +49,7 @@
    <translation id="sms_options_response_tracking_add_target_email_error_required" qtlid="346248">Le champ "Adresse email" est obligatoire.</translation>
    <translation id="sms_options_response_tracking_add_target_email_error_email" qtlid="346235">L’adresse email renseignée n’est pas valide.</translation>
    <translation id="sms_options_response_tracking_add_sender_number_label" qtlid="24535">Expéditeur</translation>
-   <translation id="sms_options_response_tracking_add_target_number_label" qtlid="30778">Numéro</translation>
+   <translation id="sms_options_response_tracking_add_target_number_label" qtlid="30778">Número</translation>
    <translation id="sms_options_response_tracking_add_target_number_placeholder" qtlid="360099">Numéro (exemple : +33301020304 ou 0033301020304)</translation>
    <translation id="sms_options_response_tracking_add_target_number_error_required" qtlid="346261">Le champ "Numéro" est obligatoire.</translation>
    <translation id="sms_options_response_tracking_add_target_number_error_pattern" qtlid="360112">Veuillez saisir un numéro national ou international valide.</translation>

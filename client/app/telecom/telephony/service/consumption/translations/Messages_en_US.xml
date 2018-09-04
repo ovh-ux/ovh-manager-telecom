@@ -7,7 +7,7 @@
    <translation id="telephony_service_consumption_calling_unknown" qtlid="190082">Anonymous</translation>
    <translation id="telephony_service_consumption_dialed" qtlid="81234">Called number</translation>
    <translation id="telephony_service_consumption_duration" qtlid="8218">Duration</translation>
-   <translation id="telephony_service_consumption_price_ht" qtlid="133292">Price ex. VAT</translation>
+   <translation id="telephony_service_consumption_price_ht" qtlid="133292">Price excl. taxes</translation>
    <translation id="telephony_service_consumption_destination" qtlid="32290">Destination</translation>
    <translation id="telephony_service_consumption_destination_any" qtlid="336467">Toute destination</translation>
    <translation id="telephony_service_consumption_destination_landline" qtlid="247118">Fixed</translation>

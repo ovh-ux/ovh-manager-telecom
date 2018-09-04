@@ -12,9 +12,9 @@
    <translation id="telephony_service_fax_filtering_new_list_select_whitelisted" qtlid="324301">Liste blanche</translation>
    <translation id="telephony_service_fax_filtering_new_list_select_blacklisted" qtlid="324288">Liste noire</translation>
    <translation id="telephony_service_fax_filtering_new_type_label" qtlid="2642">Tipo</translation>
-   <translation id="telephony_service_fax_filtering_new_type_select_numbers" qtlid="30778">Numéro</translation>
+   <translation id="telephony_service_fax_filtering_new_type_select_numbers" qtlid="30778">Número</translation>
    <translation id="telephony_service_fax_filtering_new_type_select_tsi" qtlid="460470">Identifiant de fax</translation>
-   <translation id="telephony_service_fax_filtering_new_number_label" qtlid="30778">Numéro</translation>
+   <translation id="telephony_service_fax_filtering_new_number_label" qtlid="30778">Número</translation>
    <translation id="telephony_service_fax_filtering_new_number_placeholder" qtlid="358851">Au format international</translation>
    <translation id="telephony_service_fax_filtering_new_success" qtlid="460483">Ajout du filtre en cours…</translation>
    <translation id="telephony_service_fax_filtering_new_error" qtlid="480032">Une erreur est survenue lors de l'ajout du filtre</translation>

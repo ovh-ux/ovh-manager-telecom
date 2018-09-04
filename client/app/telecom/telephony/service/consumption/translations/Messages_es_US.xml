@@ -3,7 +3,7 @@
    <translation id="telephony_service_consumption_filter" qtlid="59207">Filtrer</translation>
    <translation id="telephony_service_consumption_period" qtlid="336454">Période du <strong>{{ start }}</strong> au <strong>{{ end }}</strong></translation>
    <translation id="telephony_service_consumption_date" qtlid="24523">Date</translation>
-   <translation id="telephony_service_consumption_calling" qtlid="30778">Numéro</translation>
+   <translation id="telephony_service_consumption_calling" qtlid="30778">Número</translation>
    <translation id="telephony_service_consumption_calling_unknown" qtlid="190082">Anónimo</translation>
    <translation id="telephony_service_consumption_dialed" qtlid="81234">Numéro appelé</translation>
    <translation id="telephony_service_consumption_duration" qtlid="8218">Durée</translation>
