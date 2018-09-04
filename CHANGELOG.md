@@ -1,3 +1,14 @@
+<a name="10.6.3"></a>
+## [10.6.3](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.6.2...v10.6.3) (2018-09-04)
+
+
+### Bug Fixes
+
+* **xdsl:** patch diagnostic v2.0.2 ([7df541c](https://github.com/ovh-ux/ovh-manager-telecom/commit/7df541c))
+* **xdsl:** patch v2.0.3 xdsl diagnostic ([af40cc9](https://github.com/ovh-ux/ovh-manager-telecom/commit/af40cc9))
+
+
+
 <a name="10.6.2"></a>
 ## [10.6.2](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.6.1...v10.6.2) (2018-09-04)
 
