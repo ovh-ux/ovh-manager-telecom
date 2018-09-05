@@ -156,9 +156,10 @@ angular.module('managerApp', [
     tmhDynamicLocaleProvider.defaultLocale(_.kebabCase(defaultLanguage));
 
     // define translation loader
-    translatePluggableLoaderProvider.useLoader('$translatePartialLoader', {
+    /*translatePluggableLoaderProvider.useLoader('$translatePartialLoader', {
       urlTemplate: 'app/{part}/translations/Messages_{lang}.json',
     });
+    */
     $translateProvider.useLoaderCache(true);
     $translateProvider.useSanitizeValueStrategy('sanitizeParameters');
     $translateProvider.useMissingTranslationHandler('translateMissingTranslationHandler');
@@ -219,6 +220,7 @@ angular.module('managerApp', [
         token: 'translations',
         deps: ['$translate', '$translatePartialLoader'],
         resolveFn: ($translate, $translatePartialLoader) => {
+        /*
           const state = transition.to();
           if (state.translations) {
             const templateUrlTab = [];
@@ -264,6 +266,7 @@ angular.module('managerApp', [
 
             return $translate.refresh();
           }
+          */
 
           return null;
         },
