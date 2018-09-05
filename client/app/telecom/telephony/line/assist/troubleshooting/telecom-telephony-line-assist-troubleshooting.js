@@ -1,3 +1,13 @@
+angular.module('managerApp').run(($templateCache) => {
+    // import templates required by ng-include
+    $templateCache.put("app/telecom/telephony/line/assist/troubleshooting/procedure/cisco/telecom-telephony-line-assist-troubleshooting-procedure-cisco.html", require("./procedure/cisco/telecom-telephony-line-assist-troubleshooting-procedure-cisco.html"));
+    $templateCache.put("app/telecom/telephony/line/assist/troubleshooting/procedure/gigaset/telecom-telephony-line-assist-troubleshooting-procedure-gigaset.html", require("./procedure/gigaset/telecom-telephony-line-assist-troubleshooting-procedure-gigaset.html"));
+    $templateCache.put("app/telecom/telephony/line/assist/troubleshooting/procedure/lg/telecom-telephony-line-assist-troubleshooting-procedure-lg.html", require("./procedure/lg/telecom-telephony-line-assist-troubleshooting-procedure-lg.html"));
+    $templateCache.put("app/telecom/telephony/line/assist/troubleshooting/procedure/linksys/telecom-telephony-line-assist-troubleshooting-procedure-linksys.html", require("./procedure/linksys/telecom-telephony-line-assist-troubleshooting-procedure-linksys.html"));
+    $templateCache.put("app/telecom/telephony/line/assist/troubleshooting/procedure/polycom/telecom-telephony-line-assist-troubleshooting-procedure-polycom.html", require("./procedure/polycom/telecom-telephony-line-assist-troubleshooting-procedure-polycom.html"));
+    $templateCache.put("app/telecom/telephony/line/assist/troubleshooting/procedure/siemens/telecom-telephony-line-assist-troubleshooting-procedure-siemens.html", require("./procedure/siemens/telecom-telephony-line-assist-troubleshooting-procedure-siemens.html"));
+    $templateCache.put("app/telecom/telephony/line/assist/troubleshooting/procedure/thomson/telecom-telephony-line-assist-troubleshooting-procedure-thomson.html", require("./procedure/thomson/telecom-telephony-line-assist-troubleshooting-procedure-thomson.html"));
+});
 angular.module('managerApp').config(($stateProvider) => {
   $stateProvider.state('telecom.telephony.line.assist.troubleshooting', {
     url: '/troubleshooting',
