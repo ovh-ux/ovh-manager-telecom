@@ -1,3 +1,9 @@
+angular.module('managerApp').run(($templateCache) => {
+    // import templates required by ng-include
+    $templateCache.put("app/telecom/freeFax/information/freeFax-information.html", require("./information/freeFax-information.html"));
+    $templateCache.put("app/telecom/freeFax/credit/freeFax-credit.html", require("./credit/freeFax-credit.html"));
+    $templateCache.put("app/telecom/freeFax/faxConfiguration/freeFax-faxConfiguration.html", require("./faxConfiguration/freeFax-faxConfiguration.html"));
+});
 angular.module('managerApp').config(($stateProvider) => {
   $stateProvider.state('telecom.freefax', {
     url: '/freefax/:serviceName',
