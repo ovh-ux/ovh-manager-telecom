@@ -1,6 +1,7 @@
 // /* eslint-disable */
 
 import 'script-loader!jquery/dist/jquery.js';
+import 'script-loader!popper.js/dist/umd/popper.js';
 import 'angular';
 import 'script-loader!angular-animate/angular-animate.js';
 import 'script-loader!angular-aria/angular-aria.js';
@@ -67,7 +68,7 @@ import 'script-loader!@bower_components/international-phone-number/releases/inte
 import 'script-loader!ovh-angular-swimming-poll/dist/ovh-angular-swimming-poll.min.js';
 import 'script-loader!ovh-api-services/dist/ovh-api-services.min.js';
 import 'script-loader!ovh-angular-contact/dist/ovh-angular-contact.min.js';
-import 'script-loader!jquery.scrollTo/jquery.scrollTo.js';
+import 'script-loader!jquery.scrollto/jquery.scrollTo.js';
 import 'script-loader!ovh-angular-contracts/dist/ovh-angular-contracts.min.js';
 import 'script-loader!ovh-angular-input-number-spinner/dist/ovh-angular-input-number-spinner.min.js';
 import 'script-loader!urijs/src/URI.min.js';
