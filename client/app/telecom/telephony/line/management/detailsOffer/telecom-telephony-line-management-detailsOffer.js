@@ -11,6 +11,8 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: '$ctrl',
       },
     },
-    translations: ['common', 'telecom/telephony/line/management'],
+    translations: [
+      'telecom/telephony/line/management/detailsOffer'
+    ],
   });
 });

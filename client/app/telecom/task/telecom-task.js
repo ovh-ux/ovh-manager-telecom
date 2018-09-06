@@ -8,7 +8,10 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'TaskCtrl',
       },
     },
-    translations: ['common', 'telecom/task'],
+    translations: [
+      'common',
+      'telecom/task'
+    ],
     resolve: {
       $title(translations, $translate) {
         return $translate('telecom_task_page_title');

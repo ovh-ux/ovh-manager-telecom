@@ -3,8 +3,7 @@ angular.module('managerApp').config(($stateProvider) => {
     url: '/management',
     abstract: true,
     translations: [
-      'common',
-      'telecom/telephony/fax',
+      'telecom/telephony/fax/management',
     ],
   });
 });

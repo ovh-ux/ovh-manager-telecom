@@ -16,7 +16,11 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'LineManagementCtrl',
       },
     },
-    translations: ['common', 'telecom/telephony/line'],
+    translations: [
+      'telecom/telephony/line',
+      'telecom/telephony/line/details',
+      'telecom/telephony/line/management',
+    ],
     resolve: {
       currentLine($stateParams, OvhApiTelephony) {
         return OvhApiTelephony.Line().v6().get({

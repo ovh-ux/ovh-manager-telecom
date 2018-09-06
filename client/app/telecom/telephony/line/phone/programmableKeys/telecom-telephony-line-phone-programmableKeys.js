@@ -8,6 +8,8 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'ProgrammableKeysCtrl',
       },
     },
-    translations: ['common'],
+    translations: [
+      'telecom/telephony/line/phone/programmableKeys'
+    ],
   });
 });

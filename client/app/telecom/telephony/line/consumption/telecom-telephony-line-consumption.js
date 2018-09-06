@@ -8,6 +8,8 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'LineConsumptionCtrl',
       },
     },
-    translations: ['common', 'telecom/telephony/line/consumption'],
+    translations: [
+      'telecom/telephony/line/consumption'
+    ],
   });
 });

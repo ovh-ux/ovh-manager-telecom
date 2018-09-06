@@ -8,6 +8,8 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'LineLockOutCallCtrl',
       },
     },
-    translations: ['common', 'telecom/telephony/line/calls/lockOutCall'],
+    translations: [
+      'telecom/telephony/line/calls/lockOutCall'
+    ],
   });
 });
