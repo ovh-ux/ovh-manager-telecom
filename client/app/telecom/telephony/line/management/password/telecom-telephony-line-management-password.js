@@ -8,6 +8,6 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'PasswordCtrl',
       },
     },
-    translations: ['common', 'components', 'telecom/telephony/line/management', 'telecom/telephony/line/management/password'],
+    translations: ['common', 'telecom/telephony/line/management', 'telecom/telephony/line/management/password'],
   });
 });

@@ -28,7 +28,6 @@ angular.module('managerApp').config(($stateProvider) => {
       'telecom/pack/xdsl/access/deconsolidation',
       'telecom/pack/xdsl/access/statistics',
       'telecom/pack/xdsl/access/ipv6',
-      'telecom/pack/xdsl/access/lns',
       'telecom/pack/xdsl/access/portReset',
       'telecom/pack/xdsl/access/profil',
       'telecom/pack/xdsl/access/rateLimit',
