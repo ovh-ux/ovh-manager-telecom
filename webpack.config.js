@@ -36,6 +36,11 @@ const { config } = require('@ovh-ux/ovh-manager-webpack-toolkit')({
     path.resolve('./node_modules'),
   ],
   root: path.resolve(__dirname, './client/app'),
+  assets: {
+    files: [
+      { from: path.resolve(__dirname, './client/app/common/assets'), to: 'assets' },
+    ],
+  },
 });
 /* eslint-enable */
 
