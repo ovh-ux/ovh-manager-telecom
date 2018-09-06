@@ -28,7 +28,7 @@ function getEntries(startPath, filter) {
 
 /* eslint-disable import/no-unresolved, import/no-extraneous-dependencies */
 const { config } = require('@ovh-ux/ovh-manager-webpack-toolkit')({
-  template: path.resolve(__dirname, './client/webpack.html'),
+  template: path.resolve(__dirname, './client/index.html'),
   basePath: path.resolve(__dirname, './client'),
   lessPath: [
     path.resolve('./client/app'),

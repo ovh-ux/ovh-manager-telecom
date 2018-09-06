@@ -1,8 +1,6 @@
 node_modules
-client/index.html
 .tmp
 .idea
-client/app/app.less
 dist
 Messages_*_*.json
 npm-debug.log
