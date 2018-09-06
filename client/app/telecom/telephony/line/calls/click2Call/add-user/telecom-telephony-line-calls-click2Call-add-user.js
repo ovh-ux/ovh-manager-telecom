@@ -10,7 +10,6 @@ angular.module('managerApp').config(($stateProvider) => {
     },
     translations: [
       'common',
-      'components',
       'telecom/telephony/line/calls',
       'telecom/telephony/line/calls/click2Call',
       'telecom/telephony/line/calls/click2Call/add-user',

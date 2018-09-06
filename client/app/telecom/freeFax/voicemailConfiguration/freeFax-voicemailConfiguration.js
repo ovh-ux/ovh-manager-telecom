@@ -8,6 +8,6 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'VoicemailConf',
       },
     },
-    translations: ['common', 'telecom/freeFax', 'telecom/freeFax/information', 'telecom/freeFax/faxConfiguration'],
+    translations: ['common', 'telecom/freeFax'],
   });
 });
