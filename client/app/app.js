@@ -124,7 +124,7 @@ angular.module('managerApp', [
 
     $translateProvider.useLoader('translatePluggableLoader');
 
-    translatePluggableLoaderProvider.useLoader('asyncLoader')
+    translatePluggableLoaderProvider.useLoader('asyncLoader');
 
     // Check if language exist into the list
     const availableLangsKeys = _.pluck(LANGUAGES.available, 'key');
@@ -156,7 +156,7 @@ angular.module('managerApp', [
     tmhDynamicLocaleProvider.defaultLocale(_.kebabCase(defaultLanguage));
 
     // define translation loader
-    /*translatePluggableLoaderProvider.useLoader('$translatePartialLoader', {
+    /* translatePluggableLoaderProvider.useLoader('$translatePartialLoader', {
       urlTemplate: 'app/{part}/translations/Messages_{lang}.json',
     });
     */
@@ -218,58 +218,9 @@ angular.module('managerApp', [
     $transitionsProvider.onBefore({}, (transition) => {
       transition.addResolvable({
         token: 'translations',
-        deps: ['$translate', '$translatePartialLoader'],
-        resolveFn: ($translate, $translatePartialLoader) => {
-        /*
-          const state = transition.to();
-          if (state.translations) {
-            const templateUrlTab = [];
-            let translationsTab = state.translations;
-
-            if (state.templateUrl) {
-              templateUrlTab.push(state.templateUrl);
-            }
-
-            if (state.views) {
-              angular.forEach(state.views, (value) => {
-                if (_.isUndefined(value.noTranslations) && !value.noTranslations) {
-                  if (value.templateUrl) {
-                    templateUrlTab.push(value.templateUrl);
-                  }
-                  if (value.translations) {
-                    translationsTab = _.union(translationsTab, value.translations);
-                  }
-                }
-              });
-            }
-
-            angular.forEach(templateUrlTab, (templateUrl) => {
-              let routeTmp = templateUrl.substring(templateUrl.indexOf('/') + 1, templateUrl.lastIndexOf('/'));
-              let index = routeTmp.lastIndexOf('/');
-
-              while (index > 0) {
-                translationsTab.push(routeTmp);
-                routeTmp = routeTmp.substring(0, index);
-                index = routeTmp.lastIndexOf('/');
-              }
-
-              translationsTab.push(routeTmp);
-            });
-
-            // mmmhhh... It seems that we have to refresh after each time a part is added
-            translationsTab = _.uniq(translationsTab);
-
-            // load translation parts
-            angular.forEach(translationsTab, (part) => {
-              $translatePartialLoader.addPart(part);
-            });
-
-            return $translate.refresh();
-          }
-          */
-
-          return null;
-        },
+        deps: [],
+        resolveFn: () => null
+        ,
       }); // transition.addResolvable
     }); // $transitionsProvider.onBefore
   })

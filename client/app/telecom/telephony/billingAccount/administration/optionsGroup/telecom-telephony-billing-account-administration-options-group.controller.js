@@ -6,7 +6,7 @@ angular.module('managerApp').controller('TelecomTelephonyBillingAccountAdministr
   const telephonyAttributes = ['creditThreshold', 'description',
     'hiddenExternalNumber', 'overrideDisplayedNumber'];
 
-    /*= ==============================
+  /*= ==============================
     =            HELPERS            =
     =============================== */
 

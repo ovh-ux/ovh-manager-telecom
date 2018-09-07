@@ -1,14 +1,24 @@
+import packVoipLine from './slots/voipLine/pack-voipLine.html';
+import packTask from './slots/task/pack-task.html';
+import packVoipEcoFax from './slots/voipEcoFax/pack-voipEcoFax.html';
+import packHubic from './slots/hubic/pack-hubic.html';
+import packExchangeAccount from './slots/exchangeAccount/pack-exchangeAccount.html';
+import packXdslAccess from './slots/xdslAccess/pack-xdslAccess.html';
+import packInformations from './slots/informations/pack-informations.html';
+import packPromotionCode from './slots/promotionCode/pack-promotionCode.html';
+import packDomain from './slots/domain/pack-domain.html';
+
 angular.module('managerApp').run(($templateCache) => {
-    // import templates required by ng-include
-    $templateCache.put("app/telecom/pack/slots/voipLine/pack-voipLine.html", require("./slots/voipLine/pack-voipLine.html"));
-    $templateCache.put("app/telecom/pack/slots/task/pack-task.html", require("./slots/task/pack-task.html"));
-    $templateCache.put("app/telecom/pack/slots/voipEcoFax/pack-voipEcoFax.html", require("./slots/voipEcoFax/pack-voipEcoFax.html"));
-    $templateCache.put("app/telecom/pack/slots/hubic/pack-hubic.html", require("./slots/hubic/pack-hubic.html"));
-    $templateCache.put("app/telecom/pack/slots/exchangeAccount/pack-exchangeAccount.html", require("./slots/exchangeAccount/pack-exchangeAccount.html"));
-    $templateCache.put("app/telecom/pack/slots/xdslAccess/pack-xdslAccess.html", require("./slots/xdslAccess/pack-xdslAccess.html"));
-    $templateCache.put("app/telecom/pack/slots/informations/pack-informations.html", require("./slots/informations/pack-informations.html"));
-    $templateCache.put("app/telecom/pack/slots/promotionCode/pack-promotionCode.html", require("./slots/promotionCode/pack-promotionCode.html"));
-    $templateCache.put("app/telecom/pack/slots/domain/pack-domain.html", require("./slots/domain/pack-domain.html"));
+  // import templates required by ng-include
+  $templateCache.put('app/telecom/pack/slots/voipLine/pack-voipLine.html', packVoipLine);
+  $templateCache.put('app/telecom/pack/slots/task/pack-task.html', packTask);
+  $templateCache.put('app/telecom/pack/slots/voipEcoFax/pack-voipEcoFax.html', packVoipEcoFax);
+  $templateCache.put('app/telecom/pack/slots/hubic/pack-hubic.html', packHubic);
+  $templateCache.put('app/telecom/pack/slots/exchangeAccount/pack-exchangeAccount.html', packExchangeAccount);
+  $templateCache.put('app/telecom/pack/slots/xdslAccess/pack-xdslAccess.html', packXdslAccess);
+  $templateCache.put('app/telecom/pack/slots/informations/pack-informations.html', packInformations);
+  $templateCache.put('app/telecom/pack/slots/promotionCode/pack-promotionCode.html', packPromotionCode);
+  $templateCache.put('app/telecom/pack/slots/domain/pack-domain.html', packDomain);
 });
 angular.module('managerApp').config(($stateProvider) => {
   $stateProvider.state('telecom.pack', {

@@ -5,7 +5,7 @@ angular.module('managerApp').factory('FreeFaxNotificationObject', ($translate) =
     source: 'both',
   };
 
-    /**
+  /**
      * Object constructor
      * @param {Object} data Data from AAPI
      */
@@ -21,7 +21,7 @@ angular.module('managerApp').factory('FreeFaxNotificationObject', ($translate) =
     this.inApi = data ? data.inApi : false;
   };
 
-    /**
+  /**
      * Cancel edit mode
      */
   FreeFaxNotificationObject.prototype.cancel = function () {

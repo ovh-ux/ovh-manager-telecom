@@ -12,7 +12,7 @@ angular.module('managerApp').factory('PackXdslModemDhcpObject', (OvhApiXdsl, $tr
     dhcpName: '',
   };
 
-    /**
+  /**
      * Object constructor
      * @param {Object} data Data from APIv6
      */

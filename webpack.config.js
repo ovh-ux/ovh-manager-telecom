@@ -52,8 +52,7 @@ module.exports = merge(config, {
   {
     config: [path.resolve(__dirname, 'client/app/config/all.js'), path.resolve(__dirname, 'client/app/config/dev.js')],
   },
-  getEntries(path.resolve(__dirname, 'client/components'), /\.js$/),
-  ),
+  getEntries(path.resolve(__dirname, 'client/components'), /\.js$/)),
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].bundle.js',

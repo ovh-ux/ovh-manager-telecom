@@ -19,7 +19,7 @@ angular.module('managerApp').factory('VoipSchedulerEvent', (OvhApiTelephony, SCH
     return `${moment().format('YYYYMMDDhhmmss') + random.join('')}@ovh.com`;
   };
 
-    /*= ==================================
+  /*= ==================================
     =            CONSTRUCTOR            =
     =================================== */
 
