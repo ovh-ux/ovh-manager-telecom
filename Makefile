@@ -51,7 +51,9 @@ dev: deps
 	$(YARN) start
 
 prod: deps
-	$(yarn) build
+	$(YARN) build
+	mkdir dist/client
+	cd dist && ls -1 | grep -v ^client$ | xargs -I{} mv {} client && cd ..
 
 build: deps
 	# if [ -n "$(SMARTTAG_REPO_EU)" ]; then $(YARN) add "$(SMARTTAG_REPO_EU)" --no-lockfile; fi
