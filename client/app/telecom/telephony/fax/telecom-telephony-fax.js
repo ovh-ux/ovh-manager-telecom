@@ -17,7 +17,8 @@ angular.module('managerApp').config(($stateProvider) => {
       },
     },
     translations: [
-      'telecom/telephony/fax'
+      'telecom/telephony/fax',
+      'telecom/telephony/fax/management',
     ],
     resolve: {
       $title(translations, $translate, $stateParams) {

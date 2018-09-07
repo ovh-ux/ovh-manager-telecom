@@ -8,6 +8,8 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'PackDomainActivation',
       },
     },
-    translations: ['common', 'telecom/pack/slots/domain/activation'],
+    translations: [
+      'telecom/pack/slots/domain/activation'
+    ],
   });
 });

@@ -8,6 +8,8 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'OverTheBoxTasks',
       },
     },
-    translations: ['common', 'telecom/overTheBox', 'telecom/overTheBox/tasks'],
+    translations: [
+      'telecom/overTheBox/tasks'
+    ],
   });
 });

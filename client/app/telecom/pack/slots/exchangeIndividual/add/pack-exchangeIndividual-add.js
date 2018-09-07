@@ -8,6 +8,8 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'ctrl',
       },
     },
-    translations: ['common', 'telecom/pack/slots/exchangeIndividual/add'],
+    translations: [
+      'telecom/pack/slots/exchangeIndividual/add'
+    ],
   });
 });
