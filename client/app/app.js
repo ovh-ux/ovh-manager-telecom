@@ -152,7 +152,7 @@ angular.module('managerApp', [
     moment.locale(defaultLanguage.split('_')[0]);
 
     // set angular locale
-    tmhDynamicLocaleProvider.localeLocationPattern('node_modules/angular-i18n/angular-locale_{{locale}}.js');
+    tmhDynamicLocaleProvider.localeLocationPattern('angular-i18n/angular-locale_{{locale}}.js');
     tmhDynamicLocaleProvider.defaultLocale(_.kebabCase(defaultLanguage));
 
     // define translation loader

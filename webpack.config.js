@@ -39,20 +39,23 @@ const { config } = require('@ovh-ux/ovh-manager-webpack-toolkit')({
   assets: {
     files: [
       { from: path.resolve(__dirname, './client/app/common/assets'), to: 'assets' },
+      { from: path.resolve(__dirname, './node_modules/angular-i18n'), to: 'angular-i18n' },
     ],
   },
 });
 /* eslint-enable */
 
 module.exports = merge(config, {
-  entry: _.assign({
-    main: path.resolve(__dirname, './client/app/index.js'),
-  },
-  getEntries(path.resolve(__dirname, 'client/app/telecom'), /\.js$/),
-  {
-    config: [path.resolve(__dirname, 'client/app/config/all.js'), path.resolve(__dirname, 'client/app/config/dev.js')],
-  },
-  getEntries(path.resolve(__dirname, 'client/components'), /\.js$/)),
+  entry: _.assign(
+    {
+      main: path.resolve(__dirname, './client/app/index.js'),
+    },
+    getEntries(path.resolve(__dirname, 'client/app/telecom'), /\.js$/),
+    {
+      config: [path.resolve(__dirname, 'client/app/config/all.js'), path.resolve(__dirname, 'client/app/config/dev.js')],
+    },
+    getEntries(path.resolve(__dirname, 'client/components'), /\.js$/)
+  ),
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].bundle.js',
