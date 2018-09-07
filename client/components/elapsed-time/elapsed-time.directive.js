@@ -13,6 +13,10 @@
  *   - elapsedTime directives are synced and updated at the same time : every directive is updated
  *     in a single angular loop
  */
+angular.module('managerApp').run(($translate, asyncLoader) => {
+  asyncLoader.addTranslations(import(`./translations/Messages_${$translate.use()}.xml`).then(x => x.default));
+  $translate.refresh();
+});
 angular.module('managerApp').service('ElapsedTimePeriodicUpdater', ($timeout, $http, $q) => {
   const toRefresh = [];
   let deltaTime = null;
