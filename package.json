@@ -150,6 +150,7 @@
     "babel-preset-es2015": "^6.24.1",
     "copy-webpack-plugin": "^4.5.2",
     "css-loader": "^1.0.0",
+    "duplicate-package-checker-webpack-plugin": "^3.0.0",
     "eslint": "^5.1.0",
     "eslint-config-airbnb-base": "^13.0.0",
     "eslint-plugin-angular": "^3.3.0",
