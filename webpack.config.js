@@ -52,9 +52,9 @@ module.exports = merge(config, {
     },
     getEntries(path.resolve(__dirname, 'client/app/telecom'), /\.js$/),
     {
-      config: [path.resolve(__dirname, 'client/app/config/all.js'), path.resolve(__dirname, `client/app/config/${ process.env.WEBPACK_SERVE ? "dev": "prod" }.js`):],
+      config: [path.resolve(__dirname, 'client/app/config/all.js'), path.resolve(__dirname, `client/app/config/${process.env.WEBPACK_SERVE ? 'dev' : 'prod'}.js`)],
     },
-    getEntries(path.resolve(__dirname, 'client/components'), /\.js$/)
+    getEntries(path.resolve(__dirname, 'client/components'), /\.js$/),
   ),
   output: {
     path: path.resolve(__dirname, 'dist'),
