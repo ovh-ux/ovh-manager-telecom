@@ -8,6 +8,8 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'AliasConvertCtrl',
       },
     },
-    translations: ['common'],
+    translations: [
+      'telecom/telephony/alias/administration/convertToLine',
+    ],
   });
 });

@@ -79,8 +79,6 @@ angular.module('managerApp').config(($stateProvider) => {
       },
     },
     translations: [
-      'common',
-      'telecom/pack/xdsl',
       'telecom/pack/xdsl/modem',
       'telecom/pack/xdsl/modem/connectedDevices',
       'telecom/pack/xdsl/modem/bridgeMode',

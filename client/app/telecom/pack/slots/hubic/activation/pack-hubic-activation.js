@@ -8,6 +8,8 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'PackHubicActivation',
       },
     },
-    translations: ['common', 'telecom/pack/slots/hubic/activation'],
+    translations: [
+      'telecom/pack/slots/hubic/activation'
+    ],
   });
 });

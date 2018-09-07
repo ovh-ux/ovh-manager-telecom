@@ -8,6 +8,8 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: '$ctrl',
       },
     },
-    translations: ['common', 'telecom/telephony/alias/special/rsva'],
+    translations: [
+      'telecom/telephony/alias/special/rsva'
+    ],
   });
 });

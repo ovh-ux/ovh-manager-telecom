@@ -11,6 +11,8 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'OrderFollowUpCtrl',
       },
     },
-    translations: ['common', 'telecom/pack/xdsl/orderFollowUp', 'telecom/pack/common'],
+    translations: [
+      'telecom/pack/xdsl/orderFollowUp'
+    ],
   });
 });

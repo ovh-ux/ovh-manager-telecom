@@ -8,6 +8,8 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'AliasTerminateCtrl',
       },
     },
-    translations: ['common'],
+    translations: [
+      'telecom/telephony/alias/administration/terminate'
+    ],
   });
 });

@@ -8,6 +8,8 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'AliasConfigurationChangeTypeCtrl',
       },
     },
-    translations: ['common', 'telecom/telephony/alias/configuration'],
+    translations: [
+      'telecom/telephony/alias/configuration/changeType'
+    ],
   });
 });

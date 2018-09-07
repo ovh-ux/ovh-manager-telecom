@@ -8,6 +8,8 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'TerminateCancelCtrl',
       },
     },
-    translations: ['common', 'telecom/telephony/line/management/terminate', 'telecom/telephony/line/management/terminate/cancel'],
+    translations: [
+      'telecom/telephony/line/management/terminate/cancel'
+    ],
   });
 });

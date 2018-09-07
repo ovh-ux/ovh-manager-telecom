@@ -35,6 +35,12 @@ angular.module('managerApp').config(($stateProvider) => {
           .catch(() => $translate.instant('pack_xdsl_page_title', { name: $stateParams.packName }));
       },
     },
-    translations: ['common', 'telecom/pack', 'telecom/task', 'telecom/pack/slots/emailPro'],
+    translations: [
+      'common',
+      'telecom/pack',
+      'telecom/pack/common',
+      'telecom/task',
+      'telecom/pack/slots/emailPro'
+    ],
   });
 });

@@ -44,6 +44,10 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'ManualConfigCtrl',
       },
     },
-    translations: ['common', 'telecom/telephony/line/assist/troubleshooting'],
+    translations: [
+      'telecom/telephony/line/assist/troubleshooting',
+      'telecom/telephony/line/assist/troubleshooting/autoConfig',
+      'telecom/telephony/line/assist/troubleshooting/manualConfig',
+    ],
   });
 });

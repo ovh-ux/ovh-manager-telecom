@@ -9,8 +9,6 @@ angular.module('managerApp').config(($stateProvider) => {
       },
     },
     translations: [
-      'common',
-      'telecom/pack',
       'telecom/pack/xdsl/resiliation',
     ],
   });

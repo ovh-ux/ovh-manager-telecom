@@ -9,9 +9,6 @@ angular.module('managerApp').config(($stateProvider) => {
       },
     },
     translations: [
-      'common',
-      'telecom/telephony/line/calls',
-      'telecom/telephony/line/calls/click2Call',
       'telecom/telephony/line/calls/click2Call/change-password',
     ],
   });
