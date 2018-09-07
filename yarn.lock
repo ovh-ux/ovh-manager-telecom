@@ -771,9 +771,9 @@
     mkdirp "^0.5.1"
     rimraf "^2.5.2"
 
-"@ovh-ux/ovh-manager-webpack-toolkit@https://github.com/jleveugle/ovh-manager-webpack-toolkit.git":
+"@ovh-ux/ovh-manager-webpack-toolkit@https://github.com/jleveugle/ovh-manager-webpack-toolkit.git#06a3f95b78ae26633d8b3ef5bf22ace1ce3b4e7f":
   version "1.0.0"
-  resolved "https://github.com/jleveugle/ovh-manager-webpack-toolkit.git#847b356d7578a37617f99d89f98843395122e202"
+  resolved "https://github.com/jleveugle/ovh-manager-webpack-toolkit.git#06a3f95b78ae26633d8b3ef5bf22ace1ce3b4e7f"
   dependencies:
     cli-table "^0.3.1"
 
@@ -1097,8 +1097,8 @@ amdefine@>=0.0.4:
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
 
 angular-animate@^1.4.0:
-  version "1.7.3"
-  resolved "https://registry.yarnpkg.com/angular-animate/-/angular-animate-1.7.3.tgz#99aa794d3417aa6a794f603c9c27ec0ee4c4b3b4"
+  version "1.7.4"
+  resolved "https://registry.yarnpkg.com/angular-animate/-/angular-animate-1.7.4.tgz#14cee98e6aebab27642391c94c872009f2e3cd62"
 
 angular-animate@~1.5.x:
   version "1.5.11"
@@ -1109,12 +1109,12 @@ angular-animate@~1.5.x:
   resolved "https://registry.yarnpkg.com/angular-aria/-/angular-aria-1.5.11.tgz#26963ac336891ced7b199e59afd7e9b25e53d6a6"
 
 angular-aria@^1.6.x:
-  version "1.7.3"
-  resolved "https://registry.yarnpkg.com/angular-aria/-/angular-aria-1.7.3.tgz#a545112da0daed875061ff49d1ac8964cfa51a8a"
+  version "1.7.4"
+  resolved "https://registry.yarnpkg.com/angular-aria/-/angular-aria-1.7.4.tgz#0774cefa3a3e1bf0bf7aba5253e3bb9ca209f216"
 
 "angular-cookies@>=1.2.26 <1.8":
-  version "1.7.3"
-  resolved "https://registry.yarnpkg.com/angular-cookies/-/angular-cookies-1.7.3.tgz#9abf1968e8327a81e16a466184c7dd80f013eaa4"
+  version "1.7.4"
+  resolved "https://registry.yarnpkg.com/angular-cookies/-/angular-cookies-1.7.4.tgz#f234ba50bfc03b18fe5bc15390002d45c5ce3e78"
 
 angular-cookies@~1.5.x:
   version "1.5.11"
@@ -1145,8 +1145,8 @@ angular-inview@^2.2.0:
   resolved "https://registry.yarnpkg.com/angular-messages/-/angular-messages-1.5.11.tgz#ea99f0163594fcb0a2db701b3038339250decc90"
 
 angular-mocks@^1.5.5:
-  version "1.7.3"
-  resolved "https://registry.yarnpkg.com/angular-mocks/-/angular-mocks-1.7.3.tgz#6568d50e64e81180273f9ec6a062ea255159f6ac"
+  version "1.7.4"
+  resolved "https://registry.yarnpkg.com/angular-mocks/-/angular-mocks-1.7.4.tgz#106d9c96eae0117ad9962ee688da5e514edae645"
 
 angular-mocks@~1.5.x:
   version "1.5.11"
@@ -1176,11 +1176,11 @@ angular-resource@~1.5.x:
 
 angular-sanitize@1.3.x:
   version "1.3.20"
-  resolved "https://registry.yarnpkg.com/angular-sanitize/-/angular-sanitize-1.3.20.tgz#5b1caa4176b8db2039d7d1c1527537a61be3cd67"
+  resolved "http://registry.npmjs.org/angular-sanitize/-/angular-sanitize-1.3.20.tgz#5b1caa4176b8db2039d7d1c1527537a61be3cd67"
 
 angular-sanitize@^1.6.x, angular-sanitize@^1.x:
-  version "1.7.3"
-  resolved "https://registry.yarnpkg.com/angular-sanitize/-/angular-sanitize-1.7.3.tgz#e1ddaa7337724f9554066fd9e9123486b8881c4a"
+  version "1.7.4"
+  resolved "https://registry.yarnpkg.com/angular-sanitize/-/angular-sanitize-1.7.4.tgz#c7d80176ed31507fd0e08bbb3a6c25bf09db2a61"
 
 angular-sanitize@~1.5.x:
   version "1.5.11"
@@ -1254,15 +1254,15 @@ angular-web-notification@^1.2.22:
 
 angular@1.3.x:
   version "1.3.20"
-  resolved "https://registry.yarnpkg.com/angular/-/angular-1.3.20.tgz#b23a3d7c5e7f99f7d95b9b4d49b9ac355269baee"
+  resolved "http://registry.npmjs.org/angular/-/angular-1.3.20.tgz#b23a3d7c5e7f99f7d95b9b4d49b9ac355269baee"
 
 angular@1.5.11:
   version "1.5.11"
   resolved "https://registry.yarnpkg.com/angular/-/angular-1.5.11.tgz#8c5ba7386f15965c9acf3429f6881553aada30d6"
 
 "angular@>=1.2.26 <=1.7", "angular@>=1.3.0 <2.0.0", angular@^1.3.15, angular@^1.4.8, angular@^1.5.5, angular@^1.6.4, angular@^1.6.x, angular@^1.x:
-  version "1.7.3"
-  resolved "https://registry.yarnpkg.com/angular/-/angular-1.7.3.tgz#0f25a661d079fc84d5ccc877a2ef9d7178575ddb"
+  version "1.7.4"
+  resolved "https://registry.yarnpkg.com/angular/-/angular-1.7.4.tgz#c1bf4884c2d470c06907737a1bf0835a9f646f31"
 
 angularjs-scroll-glue@^2.2.0:
   version "2.2.0"
@@ -2622,7 +2622,11 @@ combined-stream@1.0.6, combined-stream@^1.0.5, combined-stream@~1.0.5, combined-
   dependencies:
     delayed-stream "~1.0.0"
 
-commander@2, commander@2.17.x, commander@~2.17.1:
+commander@2:
+  version "2.18.0"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-2.18.0.tgz#2bf063ddee7c7891176981a2cc798e5754bc6970"
+
+commander@2.17.x, commander@~2.17.1:
   version "2.17.1"
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.17.1.tgz#bd77ab7de6de94205ceacc72f1716d29f20a77bf"
 
@@ -6043,8 +6047,8 @@ keygrip@~1.0.2:
   resolved "https://registry.yarnpkg.com/keygrip/-/keygrip-1.0.2.tgz#ad3297c557069dea8bcfe7a4fa491b75c5ddeb91"
 
 killable@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/killable/-/killable-1.0.0.tgz#da8b84bd47de5395878f95d64d02f2449fe05e6b"
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/killable/-/killable-1.0.1.tgz#4c8ce441187a061c7474fb87ca08e2a638194892"
 
 kind-of@^1.1.0:
   version "1.1.0"
@@ -9100,8 +9104,8 @@ spdx-expression-parse@^3.0.0:
     spdx-license-ids "^3.0.0"
 
 spdx-license-ids@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/spdx-license-ids/-/spdx-license-ids-3.0.0.tgz#7a7cd28470cc6d3a1cfe6d66886f6bc430d3ac87"
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/spdx-license-ids/-/spdx-license-ids-3.0.1.tgz#e2a303236cac54b04031fa7a5a79c7e701df852f"
 
 spdy-transport@^2.0.18:
   version "2.1.0"
