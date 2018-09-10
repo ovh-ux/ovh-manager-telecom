@@ -28,7 +28,7 @@ function getEntries(startPath, filter) {
 
 /* eslint-disable import/no-unresolved, import/no-extraneous-dependencies */
 const { config } = require('@ovh-ux/ovh-manager-webpack-toolkit')({
-  template: path.resolve(__dirname, './client/webpack.html'),
+  template: path.resolve(__dirname, './client/index.html'),
   basePath: path.resolve(__dirname, './client'),
   lessPath: [
     path.resolve('./client/app'),
@@ -39,20 +39,22 @@ const { config } = require('@ovh-ux/ovh-manager-webpack-toolkit')({
   assets: {
     files: [
       { from: path.resolve(__dirname, './client/app/common/assets'), to: 'assets' },
+      { from: path.resolve(__dirname, './node_modules/angular-i18n'), to: 'angular-i18n' },
     ],
   },
 });
 /* eslint-enable */
 
 module.exports = merge(config, {
-  entry: _.assign({
-    main: path.resolve(__dirname, './client/app/index.js'),
-  },
-  getEntries(path.resolve(__dirname, 'client/app/telecom'), /\.js$/),
-  {
-    config: [path.resolve(__dirname, 'client/app/config/all.js'), path.resolve(__dirname, 'client/app/config/dev.js')],
-  },
-  getEntries(path.resolve(__dirname, 'client/components'), /\.js$/),
+  entry: _.assign(
+    {
+      main: path.resolve(__dirname, './client/app/index.js'),
+    },
+    getEntries(path.resolve(__dirname, 'client/app/telecom'), /\.js$/),
+    {
+      config: [path.resolve(__dirname, 'client/app/config/all.js'), path.resolve(__dirname, `client/app/config/${process.env.WEBPACK_SERVE ? 'dev' : 'prod'}.js`)],
+    },
+    getEntries(path.resolve(__dirname, 'client/components'), /\.js$/),
   ),
   output: {
     path: path.resolve(__dirname, 'dist'),

@@ -1,8 +1,12 @@
+import freeFaxInformations from './information/freeFax-information.html';
+import freeFaxCredit from './credit/freeFax-credit.html';
+import freeFaxFaxConfiguration from './faxConfiguration/freeFax-faxConfiguration.html';
+
 angular.module('managerApp').run(($templateCache) => {
-    // import templates required by ng-include
-    $templateCache.put("app/telecom/freeFax/information/freeFax-information.html", require("./information/freeFax-information.html"));
-    $templateCache.put("app/telecom/freeFax/credit/freeFax-credit.html", require("./credit/freeFax-credit.html"));
-    $templateCache.put("app/telecom/freeFax/faxConfiguration/freeFax-faxConfiguration.html", require("./faxConfiguration/freeFax-faxConfiguration.html"));
+  // import templates required by ng-include
+  $templateCache.put('app/telecom/freeFax/information/freeFax-information.html', freeFaxInformations);
+  $templateCache.put('app/telecom/freeFax/credit/freeFax-credit.html', freeFaxCredit);
+  $templateCache.put('app/telecom/freeFax/faxConfiguration/freeFax-faxConfiguration.html', freeFaxFaxConfiguration);
 });
 angular.module('managerApp').config(($stateProvider) => {
   $stateProvider.state('telecom.freefax', {

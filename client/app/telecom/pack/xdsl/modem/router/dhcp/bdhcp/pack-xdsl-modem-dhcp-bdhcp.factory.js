@@ -5,7 +5,7 @@ angular.module('managerApp').factory('PackXdslModemDhcpBdhcpObject', (OvhApiXdsl
     IPAddress: '',
   };
 
-    /**
+  /**
      * Object constructor
      * @param {Object} data Data from APIv6
      */
@@ -20,7 +20,7 @@ angular.module('managerApp').factory('PackXdslModemDhcpBdhcpObject', (OvhApiXdsl
     );
   };
 
-    /**
+  /**
      * Specify that the object has been read from the API
      */
   PackXdslModemDhcpBdhcpObject.prototype.inApi = function () {

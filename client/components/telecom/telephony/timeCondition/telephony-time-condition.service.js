@@ -18,7 +18,7 @@ angular.module('managerApp').service('voipTimeCondition', function ($q, $transla
     },
   };
 
-    /*= ====================================================
+  /*= ====================================================
     =            HELPERS FOR PARSING SIP HOURS            =
     ===================================================== */
 

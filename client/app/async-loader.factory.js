@@ -1,6 +1,5 @@
 // Inspired by angular-translate-partial-loader (see sources)
 export default /* @ngInject */ function ($q) {
-
   /**
    * The tricky part of this loader is that we need to check
    * if an import (addTranslations) has been called during all
@@ -19,20 +18,17 @@ export default /* @ngInject */ function ($q) {
   let changed = false;
 
   const loader = function loader() {
-
     // when the function is first called, we have no changes
     changed = false;
 
     // when all pending import are resolved
     return $q.all(pending).then(() => {
-
-        // if an import has been added during pending changes we need to loop
-        if (changed) {
-            return loader();
+      // if an import has been added during pending changes we need to loop
+      if (changed) {
+        return loader();
         // otherwise it's fine we just return translations
-        } else {
-            return translations;
-        }
+      }
+      return translations;
     });
   };
 
@@ -42,7 +38,7 @@ export default /* @ngInject */ function ($q) {
 
     // push the pending import
     pending.push(translationPromise.then((tr) => {
-        Object.assign(translations, tr)
+      Object.assign(translations, tr);
     }));
   };
 
