@@ -33,7 +33,7 @@ angular.module('managerApp').config(($stateProvider) => {
       },
     },
     translations: [
-      'telecom/telephony/line/phone/accessories'
+      'telecom/telephony/line/phone/accessories',
     ],
   });
 });

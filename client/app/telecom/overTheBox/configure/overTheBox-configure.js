@@ -10,7 +10,7 @@ angular.module('managerApp').config(($stateProvider, $urlRouterProvider) => {
       },
     },
     translations: [
-      'telecom/overTheBox/configure'
+      'telecom/overTheBox/configure',
     ],
   });
 

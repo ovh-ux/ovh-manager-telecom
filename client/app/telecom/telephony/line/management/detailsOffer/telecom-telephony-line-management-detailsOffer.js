@@ -12,7 +12,7 @@ angular.module('managerApp').config(($stateProvider) => {
       },
     },
     translations: [
-      'telecom/telephony/line/management/detailsOffer'
+      'telecom/telephony/line/management/detailsOffer',
     ],
   });
 });

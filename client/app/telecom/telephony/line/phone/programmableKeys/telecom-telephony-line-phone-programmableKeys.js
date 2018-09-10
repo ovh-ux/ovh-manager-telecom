@@ -9,7 +9,7 @@ angular.module('managerApp').config(($stateProvider) => {
       },
     },
     translations: [
-      'telecom/telephony/line/phone/programmableKeys'
+      'telecom/telephony/line/phone/programmableKeys',
     ],
   });
 });

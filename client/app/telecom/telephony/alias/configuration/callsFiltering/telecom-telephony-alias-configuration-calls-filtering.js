@@ -3,7 +3,7 @@ angular.module('managerApp').config(($stateProvider) => {
     url: '/callsFiltering',
     abstract: true,
     translations: [
-      'telecom/telephony/alias/configuration/callsFiltering'
+      'telecom/telephony/alias/configuration/callsFiltering',
     ],
   });
 });

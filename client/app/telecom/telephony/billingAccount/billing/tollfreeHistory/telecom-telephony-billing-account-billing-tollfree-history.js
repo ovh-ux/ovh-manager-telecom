@@ -9,7 +9,7 @@ angular.module('managerApp').config(($stateProvider) => {
       },
     },
     translations: [
-      'telecom/telephony/billingAccount/billing/tollfreeHistory'
+      'telecom/telephony/billingAccount/billing/tollfreeHistory',
     ],
   });
 });

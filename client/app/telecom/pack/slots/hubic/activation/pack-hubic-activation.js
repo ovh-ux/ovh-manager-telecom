@@ -9,7 +9,7 @@ angular.module('managerApp').config(($stateProvider) => {
       },
     },
     translations: [
-      'telecom/pack/slots/hubic/activation'
+      'telecom/pack/slots/hubic/activation',
     ],
   });
 });

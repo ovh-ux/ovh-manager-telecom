@@ -9,7 +9,7 @@ angular.module('managerApp').config(($stateProvider) => {
       },
     },
     translations: [
-      'telecom/telephony/alias/configuration/changeType'
+      'telecom/telephony/alias/configuration/changeType',
     ],
   });
 });

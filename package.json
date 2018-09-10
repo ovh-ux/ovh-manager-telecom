@@ -26,7 +26,8 @@
   "scripts": {
     "start": "webpack-serve",
     "build": "webpack --config webpack.config.js",
-    "test": "eslint --fix ./client",
+    "test": "eslint ./client",
+    "lint": "eslint --fix ./client",
     "update-webdriver": "node node_modules/grunt-protractor-runner/node_modules/protractor/bin/webdriver-manager update",
     "commit": "npm-scripts-config commit",
     "commitmsg": "npm-scripts-config commitmsg",

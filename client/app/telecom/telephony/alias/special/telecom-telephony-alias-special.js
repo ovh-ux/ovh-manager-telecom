@@ -7,7 +7,7 @@ angular.module('managerApp').config(($stateProvider) => {
       },
     },
     translations: [
-      'telecom/telephony/alias/special'
+      'telecom/telephony/alias/special',
     ],
   });
 });

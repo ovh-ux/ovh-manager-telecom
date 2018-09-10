@@ -3,7 +3,7 @@ angular.module('managerApp').config(($stateProvider) => {
     url: '/ovhPabx',
     abstract: true,
     translations: [
-      'telecom/telephony/alias/configuration/ovhPabx'
+      'telecom/telephony/alias/configuration/ovhPabx',
     ],
   });
 });

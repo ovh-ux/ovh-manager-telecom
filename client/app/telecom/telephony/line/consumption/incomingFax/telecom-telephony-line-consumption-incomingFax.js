@@ -14,7 +14,7 @@ angular.module('managerApp').config(($stateProvider) => {
       },
     },
     translations: [
-      'telecom/telephony/line/consumption/incomingFax'
+      'telecom/telephony/line/consumption/incomingFax',
     ],
   });
 });

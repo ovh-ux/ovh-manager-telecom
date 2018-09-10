@@ -39,7 +39,7 @@ angular.module('managerApp').config(($stateProvider) => {
       },
     },
     translations: [
-      'telecom/pack/migration'
+      'telecom/pack/migration',
     ],
   });
 });

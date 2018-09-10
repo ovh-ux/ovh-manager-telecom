@@ -9,7 +9,7 @@ angular.module('managerApp').config(($stateProvider) => {
       },
     },
     translations: [
-      'telecom/overTheBox/remote'
+      'telecom/overTheBox/remote',
     ],
   });
 });

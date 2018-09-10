@@ -9,7 +9,7 @@ angular.module('managerApp').config(($stateProvider) => {
       },
     },
     translations: [
-      'telecom/telephony/alias/special/rsva'
+      'telecom/telephony/alias/special/rsva',
     ],
   });
 });

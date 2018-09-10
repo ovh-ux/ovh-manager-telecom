@@ -50,7 +50,7 @@ angular.module('managerApp').config(($stateProvider) => {
       'telecom/pack',
       'telecom/pack/common',
       'telecom/task',
-      'telecom/pack/slots/emailPro'
+      'telecom/pack/slots/emailPro',
     ],
   });
 });

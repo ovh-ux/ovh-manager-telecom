@@ -9,7 +9,7 @@ angular.module('managerApp').config(($stateProvider) => {
       },
     },
     translations: [
-      'telecom/telephony/billingAccount/orderAlias/international'
+      'telecom/telephony/billingAccount/orderAlias/international',
     ],
   });
 });

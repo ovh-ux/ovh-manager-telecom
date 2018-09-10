@@ -9,7 +9,7 @@ angular.module('managerApp').config(($stateProvider) => {
       },
     },
     translations: [
-      'telecom/orders/alias'
+      'telecom/orders/alias',
     ],
   });
 });

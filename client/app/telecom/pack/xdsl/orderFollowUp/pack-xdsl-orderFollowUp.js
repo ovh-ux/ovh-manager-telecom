@@ -12,7 +12,7 @@ angular.module('managerApp').config(($stateProvider) => {
       },
     },
     translations: [
-      'telecom/pack/xdsl/orderFollowUp'
+      'telecom/pack/xdsl/orderFollowUp',
     ],
   });
 });

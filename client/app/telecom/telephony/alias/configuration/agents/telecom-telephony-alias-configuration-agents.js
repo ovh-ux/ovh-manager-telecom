@@ -3,7 +3,7 @@ angular.module('managerApp').config(($stateProvider) => {
     url: '/agents',
     abstract: true,
     translations: [
-      'telecom/telephony/alias/configuration/agents'
+      'telecom/telephony/alias/configuration/agents',
     ],
   });
 });

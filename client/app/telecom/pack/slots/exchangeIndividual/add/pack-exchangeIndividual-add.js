@@ -9,7 +9,7 @@ angular.module('managerApp').config(($stateProvider) => {
       },
     },
     translations: [
-      'telecom/pack/slots/exchangeIndividual/add'
+      'telecom/pack/slots/exchangeIndividual/add',
     ],
   });
 });

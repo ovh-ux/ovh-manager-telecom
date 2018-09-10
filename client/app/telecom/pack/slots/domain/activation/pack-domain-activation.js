@@ -9,7 +9,7 @@ angular.module('managerApp').config(($stateProvider) => {
       },
     },
     translations: [
-      'telecom/pack/slots/domain/activation'
+      'telecom/pack/slots/domain/activation',
     ],
   });
 });

@@ -10,7 +10,7 @@ angular.module('managerApp').config(($stateProvider) => {
     },
     translations: [
       'common',
-      'telecom/task'
+      'telecom/task',
     ],
     resolve: {
       $title(translations, $translate) {

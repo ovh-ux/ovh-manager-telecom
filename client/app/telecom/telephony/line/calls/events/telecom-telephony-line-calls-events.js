@@ -9,7 +9,7 @@ angular.module('managerApp').config(($stateProvider) => {
       },
     },
     translations: [
-      'telecom/telephony/line/calls/events'
+      'telecom/telephony/line/calls/events',
     ],
   });
 });

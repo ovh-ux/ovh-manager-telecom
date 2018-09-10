@@ -10,7 +10,7 @@ angular.module('managerApp').config(($stateProvider) => {
     },
     translations: [
       'telecom/telephony/billingAccount/administration',
-      'telecom/telephony/billingAccount/administration/linesGroup'
+      'telecom/telephony/billingAccount/administration/linesGroup',
     ],
   });
 });
