@@ -52,16 +52,13 @@ dev: deps
 
 prod: deps
 	$(YARN) build
-	echo "Create client folder"
-	mkdir dist/client
-	echo "Move ** in client folder"
-	cd dist && ls -1 | grep -v ^client$ | xargs -I{} mv {} client && cd ..
-	echo "Done - Move ** in client folder"
 
 build: deps
 	# if [ -n "$(SMARTTAG_REPO_EU)" ]; then $(YARN) add "$(SMARTTAG_REPO_EU)" --no-lockfile; fi
 	# if [ -n "$(SMARTTAG_REPO_EU)" ]; then sed -i -r 's/at\-internet\-smarttag\-manager(-eu|-ca|-us)?\/dist/at-internet-smarttag-manager-eu\/dist/' $(DEPENDENCIES_FILES_LIST); fi
 	$(YARN) build
+	mkdir dist/client
+	cd dist && ls -1 | grep -v ^client$ | xargs -I{} mv {} client && cd ..
 	$(TAR) $(DIST_TAR) $(DIST_DIR)
 
 release: deps
