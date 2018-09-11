@@ -82,6 +82,16 @@
       },
       icon: 'ovh-font-phoneAlt',
     },
+    'phone.yealink.t41s': {
+      img: 'https://www.ovhtelecom.fr/images/telephonie/yealink_t41s/t41s-main.jpg',
+      additionalConfiguration: {
+        UserInterface: {
+          screens: 3,
+          keysPerScreen: 5,
+        },
+      },
+      icon: 'ovh-font-phoneAlt',
+    },
     'phone.cisco.spa508g': {
       img: 'https://www.ovhtelecom.fr/images/telephonie/2015/phones/SPA-5XX.png',
       additionalConfiguration: {
