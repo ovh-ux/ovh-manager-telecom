@@ -18,6 +18,7 @@ const { config } = require('@ovh-ux/ovh-manager-webpack-toolkit')({
     files: [
       { from: path.resolve(__dirname, './client/app/common/assets'), to: 'assets' },
       { from: path.resolve(__dirname, './node_modules/angular-i18n'), to: 'angular-i18n' },
+      { from: path.resolve(__dirname, './client/**/*.html'), context: 'client' },
     ],
   },
 });
