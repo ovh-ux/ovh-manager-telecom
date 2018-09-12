@@ -771,16 +771,15 @@
     mkdirp "^0.5.1"
     rimraf "^2.5.2"
 
-"@ovh-ux/ovh-manager-webpack-toolkit@https://github.com/jleveugle/ovh-manager-webpack-toolkit.git#cc71a9f7814df486ef571d568c82230e1982e5ce":
+"@ovh-ux/ovh-manager-webpack-toolkit@https://github.com/jleveugle/ovh-manager-webpack-toolkit.git#9df4660bcba7961d0b3cac62a1a3a667e5cc456a":
   version "1.0.0"
-  resolved "https://github.com/jleveugle/ovh-manager-webpack-toolkit.git#cc71a9f7814df486ef571d568c82230e1982e5ce"
+  resolved "https://github.com/jleveugle/ovh-manager-webpack-toolkit.git#9df4660bcba7961d0b3cac62a1a3a667e5cc456a"
   dependencies:
     "@babel/core" "^7.0.0-beta.56"
     "@babel/generator" "^7.0.0"
     "@babel/parser" "^7.0.0"
     "@babel/plugin-syntax-dynamic-import" "^7.0.0-beta.56"
     "@babel/preset-env" "^7.0.0-beta.56"
-    angular-template-url-loader "^1.0.2"
     babel-eslint "^8.2.6"
     babel-loader "^8.0.0-beta"
     babel-plugin-angularjs-annotate "^0.9.0"
@@ -796,6 +795,7 @@
     less-loader "^4.1.0"
     less-plugin-remcalc "^0.0.1"
     lodash "^4.17.10"
+    mini-css-extract-plugin "^0.4.2"
     raw-loader "^0.5.1"
     request "^2.88.0"
     script-loader "^0.7.2"
@@ -3885,8 +3885,8 @@ ejs@^2.5.7:
   resolved "https://registry.yarnpkg.com/ejs/-/ejs-2.6.1.tgz#498ec0d495655abc6f23cd61868d926464071aa0"
 
 electron-to-chromium@^1.3.62:
-  version "1.3.65"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.65.tgz#0655c238e45fea7e0e0e81fd0cac62b8186129c2"
+  version "1.3.66"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.66.tgz#1410d8f8768a14dcd09d96222990f43c969af270"
 
 elliptic@^6.0.0:
   version "6.4.1"
@@ -5944,7 +5944,7 @@ is-number@^4.0.0:
 
 is-obj@^1.0.0:
   version "1.0.1"
-  resolved "https://registry.yarnpkg.com/is-obj/-/is-obj-1.0.1.tgz#3e4729ac1f5fde025cd7d83a896dab9f4f67db0f"
+  resolved "http://registry.npmjs.org/is-obj/-/is-obj-1.0.1.tgz#3e4729ac1f5fde025cd7d83a896dab9f4f67db0f"
 
 is-path-cwd@^1.0.0:
   version "1.0.0"
@@ -7078,6 +7078,14 @@ mimic-fn@^1.0.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/mimic-fn/-/mimic-fn-1.2.0.tgz#820c86a39334640e99516928bd03fca88057d022"
 
+mini-css-extract-plugin@^0.4.2:
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/mini-css-extract-plugin/-/mini-css-extract-plugin-0.4.2.tgz#b3ecc0d6b1bbe5ff14add42b946a7b200cf78651"
+  dependencies:
+    loader-utils "^1.1.0"
+    schema-utils "^1.0.0"
+    webpack-sources "^1.1.0"
+
 minimalistic-assert@^1.0.0, minimalistic-assert@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/minimalistic-assert/-/minimalistic-assert-1.0.1.tgz#2e194de044626d4a10e7f7fbc00ce73e83e4d5c7"
@@ -7285,8 +7293,8 @@ nanotiming@^7.2.0:
     nanoscheduler "^1.0.2"
 
 natives@^1.1.0:
-  version "1.1.4"
-  resolved "https://registry.yarnpkg.com/natives/-/natives-1.1.4.tgz#2f0f224fc9a7dd53407c7667c84cf8dbe773de58"
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/natives/-/natives-1.1.5.tgz#3bdbdb4104023e5dd239b56fc7ef3d9a17acc6aa"
 
 natural-compare@^1.4.0:
   version "1.4.0"
@@ -9721,8 +9729,8 @@ table@^4.0.3:
     string-width "^2.1.1"
 
 tapable@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/tapable/-/tapable-1.0.0.tgz#cbb639d9002eed9c6b5975eb20598d7936f1f9f2"
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/tapable/-/tapable-1.1.0.tgz#0d076a172e3d9ba088fd2272b2668fb8d194b78c"
 
 tar@^2.0.0:
   version "2.2.1"
