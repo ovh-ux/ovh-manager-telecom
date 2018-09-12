@@ -1,30 +1,8 @@
 const merge = require('webpack-merge');
 const path = require('path');
 const fs = require('fs');
+const glob = require('glob');
 const _ = require('lodash');
-
-function getEntries(startPath, filter) {
-  if (!fs.existsSync(startPath)) {
-    return [];
-  }
-
-  const files = fs.readdirSync(startPath);
-  let found = {};
-
-  files.forEach((filename) => {
-    const filePath = path.resolve(startPath, filename);
-    const stat = fs.lstatSync(filePath);
-
-    if (stat.isDirectory()) {
-      found = _.assign(found, getEntries(filePath, filter));
-    } else if (filter.test(filename) && filename.search('.spec.') < 0 && filename.search('.mock.') < 0) {
-      const resolvedPath = path.resolve(startPath, filename);
-      found[_.camelCase(resolvedPath)] = resolvedPath;
-    }
-  });
-
-  return found;
-}
 
 /* eslint-disable import/no-unresolved, import/no-extraneous-dependencies */
 const { config } = require('@ovh-ux/ovh-manager-webpack-toolkit')({
@@ -45,17 +23,26 @@ const { config } = require('@ovh-ux/ovh-manager-webpack-toolkit')({
 });
 /* eslint-enable */
 
+const folder = 'client/app/telecom';
+const bundles = {};
+
+fs.readdirSync('client/app/telecom').forEach((file) => {
+  const stats = fs.lstatSync(`${folder}/${file}`);
+  if (stats.isDirectory()) {
+    const jsFiles = glob.sync(`${folder}/${file}/**/*.js`, { absolute: true });
+    if (jsFiles.length > 0) {
+      bundles[file] = jsFiles;
+    }
+  }
+});
+
 module.exports = merge(config, {
-  entry: _.assign(
-    {
-      main: path.resolve(__dirname, './client/app/index.js'),
-    },
-    getEntries(path.resolve(__dirname, 'client/app/telecom'), /\.js$/),
-    {
-      config: [path.resolve(__dirname, 'client/app/config/all.js'), path.resolve(__dirname, `client/app/config/${process.env.WEBPACK_SERVE ? 'dev' : 'prod'}.js`)],
-    },
-    getEntries(path.resolve(__dirname, 'client/components'), /\.js$/),
-  ),
+  entry: _.assign({
+    main: path.resolve(__dirname, './client/app/index.js'),
+    telecom: glob.sync('client/app/telecom/*.js', { absolute: true }),
+    components: glob.sync('client/components/**/*.js', { absolute: true }),
+    config: [path.resolve(__dirname, 'client/app/config/all.js'), path.resolve(__dirname, `client/app/config/${process.env.WEBPACK_SERVE ? 'dev' : 'prod'}.js`)],
+  }, bundles),
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].bundle.js',
