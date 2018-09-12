@@ -13,7 +13,7 @@ angular.module('managerApp').config(($stateProvider) => {
       },
     },
     translations: [
-      'telecom/telephony/service/fax/customDomains'
+      'telecom/telephony/service/fax/customDomains',
     ],
   });
 });
