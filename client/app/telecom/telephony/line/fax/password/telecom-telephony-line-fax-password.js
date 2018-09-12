@@ -12,6 +12,8 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'PasswordCtrl',
       },
     },
-    translations: ['common'],
+    translations: [
+      'telecom/telephony/service/fax/password'
+    ],
   });
 });
