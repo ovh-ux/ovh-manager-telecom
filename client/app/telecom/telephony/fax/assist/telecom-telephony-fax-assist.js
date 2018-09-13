@@ -10,6 +10,7 @@ angular.module('managerApp').config(($stateProvider) => {
     },
     translations: [
       'telecom/telephony/fax/assist',
+      'telecom/telephony/service/assist',
     ],
   });
 });
