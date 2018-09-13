@@ -3,6 +3,7 @@
 @oui-path: "ovh-ui-kit";
 
 @import "ovh-ui-kit/packages/oui/stylekit";
+@import (less) "angular-flash-alert/dist/angular-flash.css"; // needs to be before ovh-ui-kit-bs or it will override style
 @import "ovh-ui-kit-bs/src/ovh-ui-kit-bs";
 @import "ovh-angular-sidebar-menu/less/ovh-angular-sidebar-menu.less";
 @import "ovh-angular-sidebar-menu/less/ovh-angular-sidebar-menu.dependencies.less";
@@ -17,7 +18,6 @@
 
 @import (less) "leaflet/dist/leaflet.css";
 @import (less) "ovh-angular-mondial-relay/dist/ovh-angular-mondial-relay.min.css";
-@import (less) "angular-flash-alert/dist/angular-flash.css";
 @import (less) "fullcalendar/dist/fullcalendar.css";
 @import (less) "ui-select/dist/select.css";
 @import (less) "messenger/build/css/messenger.css";
