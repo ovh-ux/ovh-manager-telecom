@@ -29,22 +29,24 @@ angular.module('managerApp').service('TelephonyVoipService', function ($q, OvhAp
               const service = item.value;
               service.billingAccount = billingAccount;
 
-              // create the service
-              if (service.featureType === 'fax' || service.featureType === 'voicefax') {
-                const fax = new TelephonyGroupFax(service);
-                groups[billingAccount].fax.push(fax);
-              } else {
-                const line = new TelephonyGroupLine(service);
-                const number = new TelephonyGroupNumber(service);
-                switch (service.serviceType) {
-                  case 'line':
-                    groups[billingAccount].lines.push(line);
-                    break;
-                  case 'alias':
-                    groups[billingAccount].numbers.push(number);
-                    break;
-                  default:
-                    break;
+              if (_.has(item, 'value.service')) {
+                // create the service
+                if (service.featureType === 'fax' || service.featureType === 'voicefax') {
+                  const fax = new TelephonyGroupFax(service);
+                  groups[billingAccount].fax.push(fax);
+                } else {
+                  const line = new TelephonyGroupLine(service);
+                  const number = new TelephonyGroupNumber(service);
+                  switch (service.serviceType) {
+                    case 'line':
+                      groups[billingAccount].lines.push(line);
+                      break;
+                    case 'alias':
+                      groups[billingAccount].numbers.push(number);
+                      break;
+                    default:
+                      break;
+                  }
                 }
               }
             }
