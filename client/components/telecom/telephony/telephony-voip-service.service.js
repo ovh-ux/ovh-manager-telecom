@@ -29,9 +29,9 @@ angular.module('managerApp').service('TelephonyVoipService', function ($q, OvhAp
               const service = item.value;
               service.billingAccount = billingAccount;
 
-              if (_.has(item, 'value.service')) {
+              if (_.has(item, 'value.serviceName')) {
                 // create the service
-                if (service.featureType === 'fax' || service.featureType === 'voicefax') {
+                if (['fax', 'voicefax'].includes(service.featureType)) {
                   const fax = new TelephonyGroupFax(service);
                   groups[billingAccount].fax.push(fax);
                 } else {
