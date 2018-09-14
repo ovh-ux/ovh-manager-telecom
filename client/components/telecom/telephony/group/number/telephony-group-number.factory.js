@@ -162,23 +162,6 @@ angular.module('managerApp').factory('TelephonyGroupNumber', ($q, $injector, Ovh
         .then(tasks => _.head(_.filter(tasks, { status: 'todo' }))));
   };
 
-  TelephonyGroupNumber.prototype.getConvertToLineTask = function () {
-    const self = this;
-    return OvhApiTelephony.Service().OfferTask().v6()
-      .query({
-        billingAccount: self.billingAccount,
-        serviceName: self.serviceName,
-        action: 'convertToSip',
-        type: 'offer',
-      }).$promise
-      .then(offerTaskIds => $q
-        .all(_.map(offerTaskIds, id => OvhApiTelephony.Service().OfferTask().v6().get({
-          billingAccount: self.billingAccount,
-          serviceName: self.serviceName,
-          taskId: id,
-        }).$promise)).then(tasks => _.head(_.filter(tasks, { status: 'todo' }))));
-  };
-
   /* ----------  EDITION  ----------*/
 
   TelephonyGroupNumber.prototype.startEdition = function (startFeatureEdition) {
@@ -195,15 +178,6 @@ angular.module('managerApp').factory('TelephonyGroupNumber', ($q, $injector, Ovh
     }
 
     return self;
-  };
-
-  TelephonyGroupNumber.prototype.isSpecialNumber = function () {
-    const self = this;
-    return OvhApiTelephony.Rsva().v6().getCurrentRateCode({
-      billingAccount: self.billingAccount,
-      serviceName: self.serviceName,
-    }).$promise.then(() => $q.when(true))
-      .catch(() => $q.when(false));
   };
 
   TelephonyGroupNumber.prototype.stopEdition = function (cancel, stopFeatureEdition) {

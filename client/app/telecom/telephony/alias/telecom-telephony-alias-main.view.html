@@ -1,17 +1,18 @@
 <section class="telecom-telephony-alias">
-
     <!-- LOADING -->
-    <div class="text-center" data-ng-if="$ctrl.loading.init">
+    <div class="text-center"
+         data-ng-if="$ctrl.loading">
         <oui-spinner data-size="l"></oui-spinner>
     </div>
 
     <div class="telecom-section-header"
-         data-ng-if="!$ctrl.loading.init">
+         data-ng-if="!$ctrl.loading">
+
         <header class="page-header"
                 role="banner">
             <!-- GROUP TITLE -->
             <editable-service-name data-editable-service-name-title="$ctrl.number.getDisplayedName()"
-                                   data-editable-service-name-title-on-save="$ctrl.numberDescriptionSave"
+                                   data-editable-service-name-title-on-save="$ctrl.numberDescriptionSave()"
                                    data-editable-service-name-service-name="$ctrl.number.serviceName"
                                    data-ng-if="$ctrl.serviceName"
                                    data-maxlength="25">
@@ -20,61 +21,39 @@
 
         <!-- LINE ACTIONS -->
         <nav role="navigation">
-            <responsive-tabs>
-
-                <responsive-tab data-state="telecom.telephony.alias"
-                                data-disabled="!$ctrl.serviceName"
-                                data-dropdown-title="{{:: 'telephony_alias_tab_portability' | translate }}">
-                    <span data-translate="telephony_alias_tab_portability"></span>
-                </responsive-tab>
-
-                <responsive-tab data-state="telecom.telephony.alias.administration"
-                                data-disabled="!$ctrl.serviceName"
-                                data-dropdown-title="{{:: 'telephony_alias_tab_administrative_management' | translate }}">
-                    <span data-translate="telephony_alias_tab_administrative_management"></span>
-                </responsive-tab>
-
-                <responsive-tab data-state="telecom.telephony.alias.configuration"
-                                data-disabled="!$ctrl.serviceName"
-                                data-dropdown-title="{{:: 'telephony_alias_tab_number_configuration' | translate }}">
-                    <span data-translate="telephony_alias_tab_number_configuration"></span>
-                </responsive-tab>
-
-                <responsive-tab data-state="telecom.telephony.alias.consumption"
-                                data-disabled="!$ctrl.serviceName"
-                                data-ng-if="!$ctrl.loading.init && $ctrl.hasConsumption()"
-                                data-dropdown-title="{{:: 'telephony_alias_tab_consumption' | translate }}">
-                    <span data-translate="telephony_alias_tab_consumption"></span>
-                </responsive-tab>
-
-                <responsive-tab data-state="telecom.telephony.alias.special"
-                                data-disabled="!$ctrl.serviceName || !$ctrl.isSpecialNumber"
-                                data-dropdown-title="{{:: 'telephony_alias_tab_special' | translate }}">
-                    <span data-translate="telephony_alias_tab_special"></span>
-                </responsive-tab>
-
-                <responsive-tab data-state="telecom.telephony.alias.svaGenerator"
-                                data-disabled="!$ctrl.serviceName"
-                                data-dropdown-title="{{:: 'telephony_alias_tab_bank_maker' | translate }}">
-                    <span data-translate="telephony_alias_tab_bank_maker"></span>
-                </responsive-tab>
-
-                <responsive-tab data-state="telecom.telephony.alias.contact"
-                                data-disabled="!$ctrl.serviceName"
-                                data-dropdown-title="{{:: 'telephony_alias_tab_number_directory' | translate }}">
-                    <span data-translate="telephony_alias_tab_number_directory"></span>
-                </responsive-tab>
-
-                <responsive-tab-more>
-                    <i class="fa fa-plus"></i>
-                </responsive-tab-more>
-            </responsive-tabs>
+            <oui-header-tabs class="oui-header-tabs">
+                <oui-header-tabs-item data-text="{{:: 'telephony_alias_tab_number' | translate }}"
+                                      data-state="telecom.telephony.alias.dashboard"
+                                      data-disabled="!$ctrl.serviceName"></oui-header-tabs-item>
+                <oui-header-tabs-item data-text="{{:: 'telephony_alias_tab_administrative_management' | translate }}"
+                                      data-state="telecom.telephony.alias.administration"
+                                      data-disabled="!$ctrl.serviceName"></oui-header-tabs-item>
+                <oui-header-tabs-item data-text="{{:: 'telephony_alias_tab_number_configuration' | translate }}"
+                                      data-state="telecom.telephony.alias.configuration"
+                                      data-disabled="!$ctrl.serviceName"></oui-header-tabs-item>
+                <oui-header-tabs-item data-text="{{:: 'telephony_alias_tab_consumption' | translate }}"
+                                      data-state="telecom.telephony.alias.consumption"
+                                      data-ng-if="$ctrl.serviceName && $ctrl.hasConsumption()"></oui-header-tabs-item>
+                <oui-header-tabs-item data-text="{{:: 'telephony_alias_tab_bank_maker' | translate }}"
+                                      data-state="telecom.telephony.alias.svaGenerator"
+                                      data-ng-if="$ctrl.serviceName && $ctrl.isSpecialNumber"></oui-header-tabs-item>
+                <oui-header-tabs-dropdown data-text="{{:: 'telephony_alias_tab_special' | translate }}"
+                                          data-ng-if="$ctrl.serviceName && $ctrl.isSpecialNumber">
+                    <oui-header-tabs-item data-text="{{:: 'telephony_alias_special_pending_transfer' | translate }}"
+                                          data-state="telecom.telephony.alias.specialTransfer"></oui-header-tabs-item>
+                    <oui-header-tabs-item data-text="{{:: 'telephony_alias_special_number_rsva' | translate }}"
+                                          data-state="telecom.telephony.alias.specialRsva"></oui-header-tabs-item>
+                </oui-header-tabs-dropdown>
+                <oui-header-tabs-item data-text="{{:: 'telephony_alias_tab_number_directory' | translate }}"
+                                      data-state="telecom.telephony.alias.contact"
+                                      data-disabled="!$ctrl.serviceName"></oui-header-tabs-item>
+            </oui-header-tabs>
         </nav>
     </div>
     <!-- /.telecom-section-header -->
 
     <div class="telecom-section-alert"
-         data-ng-if="!$ctrl.loading.init">
+         data-ng-if="!$ctrl.loading">
         <div class="alert alert-warning"
              role="alert"
              data-ng-if="$ctrl.terminationTask">
@@ -96,9 +75,8 @@
 
     <main class="telecom-section-content"
           role="main"
-          data-ng-if="!$ctrl.loading.init"
+          data-ng-if="!$ctrl.loading"
           data-ui-view="aliasInnerView">
     </main><!-- .telecom-section-content -->
-
 </section>
 <!-- /.telecom-telephony-alias -->

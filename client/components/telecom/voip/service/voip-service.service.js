@@ -2,17 +2,23 @@
  *  @ngdoc service
  *  @name managerApp.service:voipService
  *
+ *  @requires $q provider
  *  @requires OvhApiTelephony from ovh-api-services
  *  @requires managerApp.object:VoipService
  *  @requires managerApp.object:VoipServiceAlias
  *  @requires managerApp.object:VoipServiceLine
+ *  @requires managerApp.object.voipServiceTask
  *
  *  @description
  *  Service that manage API calls to `/telephony/{billingAccount}/service/{serviceName}`.
  *  It will differenciate alias and line service types.
  */
 angular.module('managerApp').service('voipService', class {
-  constructor(OvhApiTelephony, VoipService, VoipServiceAlias, VoipServiceLine) {
+  constructor(
+    $q,
+    OvhApiTelephony, VoipService, VoipServiceAlias, VoipServiceLine,
+  ) {
+    this.$q = $q;
     this.OvhApiTelephony = OvhApiTelephony;
     this.VoipService = VoipService;
     this.VoipServiceAlias = VoipServiceAlias;
@@ -124,8 +130,86 @@ angular.module('managerApp').service('voipService', class {
   fetchServiceDiagnosticReports(service, dayInterval) {
     return this.fetchDiagnosticReports(service.billingAccount, service.serviceName, dayInterval);
   }
-
   /* -----  End of Diagnostic reports  ------ */
+
+  /**
+   *  @ngdoc method
+   *  @name managerApp.service:voipService#getTerminationTask
+   *  @methodOf managerApp.service:voipService
+   *
+   *  @description
+   *  <p>Get pending termination task for a given service.</p>
+   *
+   *  @param  {VoipService} service   The given VoipService.
+   *
+   *  @return {Object}   the pending termination task
+   */
+  getTerminationTask(service) {
+    return this.OvhApiTelephony.Service().OfferTask().v6()
+      .query({
+        billingAccount: service.billingAccount,
+        serviceName: service.serviceName,
+        action: 'termination',
+        type: 'offer',
+      }).$promise.then(offerTaskIds => this.$q
+        .all(_.map(offerTaskIds, id => this.OvhApiTelephony.Service().OfferTask().v6().get({
+          billingAccount: service.billingAccount,
+          serviceName: service.serviceName,
+          taskId: id,
+        }).$promise))
+        .then(tasks => _.head(_.filter(tasks, { status: 'todo' }))));
+  }
+
+  /**
+   *  @ngdoc method
+   *  @name managerApp.service:voipService#getServiceDirectory
+   *  @methodOf managerApp.service:voipService
+   *
+   *  @description
+   *  <p>Get directory for a given service.</p>
+   *
+   *  @param  {VoipService} service   The given VoipService.
+   *
+   *  @return {Promise}  Promise that returns directory
+   */
+  getServiceDirectory(service) {
+    return this.OvhApiTelephony.Service().v6()
+      .directory({
+        billingAccount: service.billingAccount,
+        serviceName: service.serviceName,
+      }).$promise;
+  }
+
+  /**
+   *  @ngdoc method
+   *  @name managerApp.service:voipService#getServiceConsumption
+   *  @methodOf managerApp.service:voipService
+   *
+   *  @description
+   *  <p>Get consumption of a given service.</p>
+   *
+   *  @param  {VoipService} service The given VoipService service.
+   *
+   *  @return {Array}       Consumption list of details
+   */
+  getServiceConsumption(service) {
+    return this.OvhApiTelephony.Service().VoiceConsumption().v6()
+      .query({
+        billingAccount: service.billingAccount,
+        serviceName: service.serviceName,
+      }).$promise.then(ids => this.$q
+        .all(_.map(
+          _.chunk(ids, 50),
+          chunkIds => this.OvhApiTelephony.Service().VoiceConsumption().v6()
+            .getBatch({
+              billingAccount: service.billingAccount,
+              serviceName: service.serviceName,
+              consumptionId: chunkIds,
+            }).$promise,
+        ))
+        .then(chunkResult => _.flatten(chunkResult)))
+      .then(result => _.chain(result).pluck('value').value());
+  }
 
   /* ==============================
     =            Filters            =
@@ -159,9 +243,9 @@ angular.module('managerApp').service('voipService', class {
    *  @description
    *  Filter the services of given services list that match line serviceType.
    *
-   *  @param  {Array.<VoipSercice>} services The services list to filter.
+   *  @param  {Array.<VoipService>} services The services list to filter.
    *
-   *  @return {Array.<VoipSercice>} The filtered list of lines.
+   *  @return {Array.<VoipService>} The filtered list of lines.
    */
   static filterLineServices(services) {
     return _.filter(services, {

@@ -1,82 +1,78 @@
-angular.module('managerApp').controller('TelecomTelephonyAliasCtrl', function ($q, $stateParams, $translate, $scope, TelephonyMediator, SidebarMenu, Toast) {
-  const self = this;
+angular.module('managerApp').controller('TelecomTelephonyAliasCtrl', class TelecomTelephonyAliasCtrl {
+  constructor(
+    $q, $state, $stateParams, $translate,
+    SidebarMenu, TelephonyMediator, Toast,
+    voipService, voipServiceAlias,
+  ) {
+    this.$q = $q;
+    this.$state = $state;
+    this.$translate = $translate;
+    this.SidebarMenu = SidebarMenu;
+    this.TelephonyMediator = TelephonyMediator;
+    this.Toast = Toast;
+    this.voipService = voipService;
+    this.voipServiceAlias = voipServiceAlias;
 
-  self.loading = {
-    init: false,
-    save: false,
-  };
+    this.billingAccount = $stateParams.billingAccount;
+    this.serviceName = $stateParams.serviceName !== 'default' ? $stateParams.serviceName : null;
+  }
 
-  self.number = null;
-  self.links = null;
-  self.terminationTask = null;
-  self.serviceName = $stateParams.serviceName !== 'default' ? $stateParams.serviceName : null;
+  $onInit() {
+    this.number = null;
+    this.links = null;
+    this.terminationTask = null;
 
-  /* ==============================
-    =            HELPERS            =
-    =============================== */
+    this.fetchService();
+  }
 
-  self.hasConsumption = function () {
-    return ['redirect', 'ddi', 'conference', 'svi'].indexOf(self.number.feature.featureType) === -1;
-  };
-
-  /* -----  End of HELPERS  ------ */
-
-  /*= ==============================
-    =            ACTIONS            =
-    =============================== */
-
-  self.numberDescriptionSave = function (newServiceDescription) {
-    self.number.startEdition();
-    self.number.description = newServiceDescription;
-    return self.number.save().then(() => {
-      self.number.stopEdition();
-      SidebarMenu.updateItemDisplay({
-        title: self.number.getDisplayedName(),
-      }, self.number.serviceName, 'telecom-telephony-section', self.number.billingAccount);
-    }, (error) => {
-      self.number.stopEdition(true);
-      Toast.error([$translate.instant('telephony_alias_rename_error', $stateParams), error.data.message].join(' '));
-      return $q.reject(error);
-    });
-  };
-
-  /* -----  End of ACTIONS  ------*/
-
-  /*= =====================================
-    =            INITIALIZATION            =
-    ====================================== */
-
-  function init() {
-    self.loading.init = true;
-    TelephonyMediator.getGroup($stateParams.billingAccount).then((group) => {
-      self.number = group ? group.getNumber($stateParams.serviceName) : null;
-      self.links = {
-        order: TelephonyMediator.getV6ToV4RedirectionUrl('alias.number_order_new'),
-        bank: TelephonyMediator.getV6ToV4RedirectionUrl('alias.number_bannMaker'),
-        numberDirectory: TelephonyMediator.getV6ToV4RedirectionUrl('alias.number_manage_directory'),
+  fetchService() {
+    this.loading = true;
+    this.voipService.fetchSingleService(this.billingAccount, this.serviceName).then((number) => {
+      this.links = {
+        order: this.TelephonyMediator.getV6ToV4RedirectionUrl('alias.number_order_new'),
+        bank: this.TelephonyMediator.getV6ToV4RedirectionUrl('alias.number_bannMaker'),
+        numberDirectory: this.TelephonyMediator.getV6ToV4RedirectionUrl('alias.number_manage_directory'),
       };
-      if (self.number) {
-        return $q.all([
-          self.number.getTerminationTask().then((task) => {
-            self.terminationTask = task;
-            $scope.terminationTask = task;
-          }),
-          self.number.getConvertToLineTask().then((task) => {
-            self.convertTask = task;
-            $scope.convertTask = task;
-          }),
-          self.number.isSpecialNumber().then((result) => {
-            self.isSpecialNumber = result;
-          }),
-        ]);
+      if (number) {
+        this.number = number;
+        return this.$q.all({
+          convertToLineTask: this.voipServiceAlias.getConvertToLineTask(number),
+          terminationTask: this.voipService.getTerminationTask(number),
+          isSpecialNumber: this.voipServiceAlias.isSpecialNumber(number),
+        }).then((result) => {
+          this.convertTask = result.convertToLineTask;
+          this.terminationTask = result.terminationTask;
+          this.isSpecialNumber = result.isSpecialNumber;
+
+          return result;
+        });
       }
       return null;
+    }).catch((error) => {
+      this.Toast.error([this.$translate.instant('telephony_alias_load_error'), _.get(error, 'data.message').join(' ')]);
     }).finally(() => {
-      self.loading.init = false;
+      this.loading = false;
     });
   }
 
-  /* -----  End of INITIALIZATION  ------*/
+  hasConsumption() {
+    const typesWithoutConsumption = ['redirect', 'ddi', 'conference', 'empty'];
+    return !typesWithoutConsumption.includes(this.number.featureType);
+  }
 
-  init();
+  numberDescriptionSave() {
+    return (newServiceDescription) => {
+      const oldDescription = this.number.description;
+      this.number.description = newServiceDescription;
+
+      return this.voipServiceAlias.editDescription(this.number).then(() => {
+        this.SidebarMenu.updateItemDisplay({
+          title: this.number.getDisplayedName(),
+        }, this.number.serviceName, 'telecom-telephony-section', this.number.billingAccount);
+      }).catch((error) => {
+        this.number.description = oldDescription;
+        this.Toast.error([this.$translate.instant('telephony_alias_rename_error', this.serviceName), _.get(error, 'data.message', error.message)].join(' '));
+      });
+    };
+  }
 });

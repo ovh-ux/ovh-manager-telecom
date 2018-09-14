@@ -1,31 +1,15 @@
-angular.module('managerApp').controller('TelecomTelephonyServiceConsumptionOutgoingCallsCtrl', function ($stateParams, $q, $translate, $filter, $timeout, OvhApiTelephony, ToastError) {
+angular.module('managerApp').controller('TelecomTelephonyServiceConsumptionOutgoingCallsCtrl', function ($stateParams, $q, $translate, $filter, $timeout, OvhApiTelephony, ToastError, voipService) {
   const self = this;
 
   function fetchOutgoingConsumption() {
-    return OvhApiTelephony.Service().VoiceConsumption().v6()
-      .query({
-        billingAccount: $stateParams.billingAccount,
-        serviceName: $stateParams.serviceName,
-      }).$promise
-      .then(ids => $q
-        .all(_.map(
-          _.chunk(ids, 50),
-          chunkIds => OvhApiTelephony.Service().VoiceConsumption().v6()
-            .getBatch({
-              billingAccount: $stateParams.billingAccount,
-              serviceName: $stateParams.serviceName,
-              consumptionId: chunkIds,
-            }).$promise,
-        ))
-        .then(chunkResult => _.flatten(chunkResult)))
-      .then(result => _.chain(result)
-        .pluck('value')
-        .filter(conso => conso.wayType !== 'incoming' && conso.duration > 0)
-        .map((conso) => {
-          _.set(conso, 'durationAsDate', new Date(conso.duration * 1000));
-          return conso;
-        })
-        .value());
+    return voipService.getServiceConsumption({
+      billingAccount: $stateParams.billingAccount,
+      serviceName: $stateParams.serviceName,
+    }).then(result => result.filter(conso => conso.wayType !== 'incoming' && conso.duration > 0)
+      .map((conso) => {
+        _.set(conso, 'durationAsDate', new Date(conso.duration * 1000));
+        return conso;
+      }));
   }
 
   function init() {

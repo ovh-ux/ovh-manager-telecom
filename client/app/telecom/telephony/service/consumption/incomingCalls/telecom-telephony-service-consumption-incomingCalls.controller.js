@@ -1,34 +1,21 @@
-angular.module('managerApp').controller('TelecomTelephonyServiceConsumptionIncomingCallsCtrl', function ($stateParams, $q, $translate, $filter, $timeout, OvhApiTelephony, ToastError) {
+angular.module('managerApp').controller('TelecomTelephonyServiceConsumptionIncomingCallsCtrl', function ($stateParams, $q, $translate, $filter, $timeout, OvhApiTelephony, ToastError, voipService) {
   const self = this;
 
   function fetchIncomingConsumption() {
-    return OvhApiTelephony.Service().VoiceConsumption().v6().query({
+    return voipService.getServiceConsumption({
       billingAccount: $stateParams.billingAccount,
       serviceName: $stateParams.serviceName,
-    }).$promise.then(ids => $q
-      .all(_.map(
-        _.chunk(ids, 50),
-        chunkIds => OvhApiTelephony.Service().VoiceConsumption().v6().getBatch({
-          billingAccount: $stateParams.billingAccount,
-          serviceName: $stateParams.serviceName,
-          consumptionId: chunkIds,
-        }).$promise,
-      ))
-      .then(chunkResult => _.flatten(chunkResult)))
-      .then(result => _.chain(result)
-        .pluck('value')
-        .filter(conso => conso.wayType !== 'outgoing')
-        .map((conso) => {
-          _.set(conso, 'durationAsDate', new Date(conso.duration * 1000));
-          if (conso.wayType === 'incoming' && conso.duration === 0) {
-            _.set(conso, 'wayType', 'missing');
-          }
-          if (/anonymous/.test(conso.calling)) {
-            _.set(conso, 'calling', $translate.instant('telephony_service_consumption_anonymous'));
-          }
-          return conso;
-        })
-        .value());
+    }).then(result => result.filter(conso => conso.wayType !== 'outgoing')
+      .map((conso) => {
+        _.set(conso, 'durationAsDate', new Date(conso.duration * 1000));
+        if (conso.wayType === 'incoming' && conso.duration === 0) {
+          _.set(conso, 'wayType', 'missing');
+        }
+        if (/anonymous/.test(conso.calling)) {
+          _.set(conso, 'calling', $translate.instant('telephony_service_consumption_anonymous'));
+        }
+        return conso;
+      }));
   }
 
   function init() {

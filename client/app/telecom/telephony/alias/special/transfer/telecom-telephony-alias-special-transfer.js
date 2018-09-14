@@ -1,5 +1,5 @@
 angular.module('managerApp').config(($stateProvider) => {
-  $stateProvider.state('telecom.telephony.alias.special.transfer', {
+  $stateProvider.state('telecom.telephony.alias.specialTransfer', {
     url: '/transfer',
     views: {
       'aliasView@telecom.telephony.alias': {
