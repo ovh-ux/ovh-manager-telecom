@@ -1,3 +1,13 @@
+<a name="10.6.4"></a>
+## [10.6.4](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.6.3...v10.6.4) (2018-09-14)
+
+
+### Bug Fixes
+
+* **telphony:** handle empty expired services ([1931ce5](https://github.com/ovh-ux/ovh-manager-telecom/commit/1931ce5))
+
+
+
 <a name="10.6.3"></a>
 ## [10.6.3](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.6.2...v10.6.3) (2018-09-04)
 
