@@ -1,3 +1,13 @@
+<a name="10.6.5"></a>
+## [10.6.5](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.6.4...v10.6.5) (2018-09-14)
+
+
+### Bug Fixes
+
+* **telephony:** fix bad test ([2fd6fe0](https://github.com/ovh-ux/ovh-manager-telecom/commit/2fd6fe0))
+
+
+
 <a name="10.6.4"></a>
 ## [10.6.4](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.6.3...v10.6.4) (2018-09-14)
 
