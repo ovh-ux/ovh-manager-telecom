@@ -50,7 +50,7 @@ angular.module('managerApp').service('TelephonySidebar', function ($translate, S
 
         // add number subsections to billingAccount subsection
         addServiceMenuItems(sortedAlias, {
-          state: 'telecom.telephony.alias',
+          state: 'telecom.telephony.alias.dashboard',
           prefix: $translate.instant('telecom_sidebar_section_telephony_number'),
         }, billingAccountSubSection);
 

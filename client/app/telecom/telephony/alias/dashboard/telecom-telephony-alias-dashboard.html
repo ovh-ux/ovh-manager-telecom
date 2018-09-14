@@ -1,0 +1,113 @@
+<div class="container-fluid"
+     data-ng-if="!$ctrl.loading">
+    <div class="mb-3">
+        <span class="oui-header_6"
+              data-translate="telephony_alias_presentation_title"></span>
+        <a class="oui-link"
+           data-ng-click="$ctrl.hideDetails = !$ctrl.hideDetails"
+           data-translate="{{ ($ctrl.hideDetails ? 'hide' : 'show') | translate }}">
+        </a>
+    </div>
+    <div class="mb-3"
+         data-ng-hide="$ctrl.hideDetails">
+        <p class="oui-paragraph">
+            <span data-translate="telephony_alias_presentation_part_one"></span>
+            <span data-translate="telephony_alias_presentation_part_two"></span>
+        </p>
+        <p class="oui-paragraph"
+           data-translate="telephony_alias_presentation_part_three"></p>
+    </div>
+    <div class="row d-md-flex mb-5">
+        <div class="col-sm-4">
+            <oui-tile class="h-100"
+                      data-heading="{{:: 'telephony_alias_tile_information' | translate }}">
+                <oui-tile-definition data-term="{{:: 'telephony_alias_information_number' | translate }}"
+                                     data-description="{{:: $ctrl.number.serviceName }}"></oui-tile-definition>
+                <oui-tile-button data-on-click="$ctrl.$state.go('telecom.telephony.alias.administration.convertToLine')">
+                    <span data-translate="telephony_alias_information_number_to_line"></span>
+                </oui-tile-button>
+                <oui-tile-button data-on-click="$ctrl.$state.go('telecom.telephony.alias.administration.terminate')">
+                    <span data-translate="telephony_alias_information_terminate_number"></span>
+                </oui-tile-button>
+                <oui-tile-definition data-term="{{:: 'telephony_alias_information_region' | translate }}">
+                    <oui-tile-description>
+                        <span class="flag-icon"
+                              ng-class=":: 'flag-icon-' + $ctrl.number.country"></span> /
+                        <span data-translate="telephony_alias_information_region_code_format"
+                              data-translate-values="{ 'code': $ctrl.number.countryCode }"></span>
+                    </oui-tile-description>
+                </oui-tile-definition>
+                <oui-tile-definition data-term="{{:: 'telephony_alias_information_coordinates_directory' | translate }}"
+                                     data-description="{{:: ($ctrl.number.directory.displayMarketingDirectory ? 'yes' : 'no') | translate | capitalize }}"></oui-tile-definition>
+                <oui-tile-button data-on-click="$ctrl.$state.go('telecom.telephony.alias.contact')">
+                    <span data-translate="telephony_alias_information_contact_edit"></span>
+                </oui-tile-button>
+            </oui-tile>
+        </div>
+        <div class="col-sm-4">
+            <oui-tile class="h-100"
+                      data-heading="{{:: 'telephony_alias_tile_configuration' | translate }}">
+                <oui-tile-definition data-ng-if="$ctrl.number.featureType !== 'empty' && !$ctrl.hasExpertMode()">
+                    <oui-tile-description>
+                        <img data-ng-if="$ctrl.number"
+                             data-ng-src="assets/images/aliasFeature/schema-{{ $ctrl.groupNumberByFeatureType() }}.svg"
+                             data-ng-attr-alt="{{:: $ctrl.number.featureType }}">
+                    </oui-tile-description>
+                </oui-tile-definition>
+                <oui-tile-definition data-term="{{:: 'telephony_alias_configuration_configuration_type' | translate }}"
+                                     data-description="{{:: $ctrl.featureTypeLabel }}">
+                    <oui-tile-description>
+                        <p data-translate="{{:: $ctrl.featureTypeLabel }}"></p>
+                        <p class="oui-paragraph"
+                           data-ng-if="$ctrl.hasExpertMode()"
+                           data-translate="{{:: 'telephony_alias_config_feature_type_' + $ctrl.number.featureType | translate }}"></p>
+                    </oui-tile-description>
+                </oui-tile-definition>
+                <oui-tile-button data-on-click="$ctrl.$state.go('telecom.telephony.alias.configuration')">
+                    <span data-translate="telephony_alias_configuration_configure"></span>
+                </oui-tile-button>
+                <oui-tile-button data-ng-if="$ctrl.number.featureType !== 'empty'"
+                                 data-on-click="$ctrl.deleteConfiguration()">
+                    <span data-translate="telephony_alias_configuration_delete_configuration"></span>
+                </oui-tile-button>
+            </oui-tile>
+        </div>
+        <div class="col-sm-4"
+             data-ng-if="$ctrl.hasConsumption()">
+            <oui-tile class="h-100"
+                      data-heading="{{:: 'telephony_alias_tab_consumption' | translate }}">
+                <oui-tile-definition data-term="{{:: 'telephony_alias_consumption_incoming_calls_during_current_month' | translate }}"
+                                     data-description="{{:: $ctrl.consumption.incoming.total }}"></oui-tile-definition>
+                <oui-tile-definition data-term="{{:: 'telephony_alias_consumption_total_duration' | translate }}"
+                                     data-description="{{:: $ctrl.consumption.incoming.duration | date: 'HH:mm:ss': 'UTC' }}"></oui-tile-definition>
+                <oui-tile-definition data-term="{{:: 'telephony_alias_consumption_outgoing_calls_during_current_month' | translate }}"
+                                     data-description="{{:: $ctrl.consumption.outgoing.total }}"></oui-tile-definition>
+                <oui-tile-definition data-term="{{:: 'telephony_alias_consumption_total_duration' | translate }}"
+                                     data-description="{{:: $ctrl.consumption.outgoing.duration | date: 'HH:mm:ss': 'UTC' }}"></oui-tile-definition>
+                <oui-tile-definition data-term="{{:: 'telephony_alias_consumption_outgoing_out_plan' | translate }}">
+                    <oui-tile-description>
+                        <span data-translate="telephony_alias_consumption_outgoing_out_plan_detail"
+                              data-translate-values="{ 'price': $ctrl.consumption.outgoing.outplan }"></span>
+                    </oui-tile-description>
+                </oui-tile-definition>
+                <oui-tile-button data-on-click="$ctrl.$state.go('telecom.telephony.alias.consumption')">
+                    <span data-translate="telephony_alias_consumption_details"></span>
+                </oui-tile-button>
+            </oui-tile>
+        </div>
+    </div>
+    <div class="row"
+         data-ng-if="$ctrl.hasConsumption()">
+        <div class="col-md-12">
+            <oui-tile data-heading="{{:: 'telephony_alias_tile_detailed_consumption' | translate }}">
+                <div class="chart-container"
+                     data-chartjs="$ctrl.consumption.chart"></div>
+            </oui-tile>
+        </div>
+    </div>
+</div>
+
+<div class="text-center"
+     data-ng-if="$ctrl.loading">
+    <oui-spinner></oui-spinner>
+</div>

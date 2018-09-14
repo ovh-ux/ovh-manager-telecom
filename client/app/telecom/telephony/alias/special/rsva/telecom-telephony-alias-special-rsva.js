@@ -1,5 +1,5 @@
 angular.module('managerApp').config(($stateProvider) => {
-  $stateProvider.state('telecom.telephony.alias.special.rsva', {
+  $stateProvider.state('telecom.telephony.alias.specialRsva', {
     url: '/rsva',
     views: {
       'aliasView@telecom.telephony.alias': {
