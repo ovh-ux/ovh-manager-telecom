@@ -47,6 +47,21 @@ angular.module('managerApp').constant('PACK_XDSL_STATISTICS', {
           },
         }],
       },
+      pan: {
+        enabled: true,
+        mode: 'xy',
+        speed: 10,
+        threshold: 10,
+      },
+      zoom: {
+        enabled: true,
+        mode: 'xy',
+        drag: false,
+        limits: {
+              max: 10,
+              min: 0.5
+          },
+      },
     },
   },
 });

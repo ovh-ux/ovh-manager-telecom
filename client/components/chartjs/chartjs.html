@@ -1,2 +1,7 @@
-<canvas class="chart chart-line">
-</canvas>
+<oui-button class="pb-4 float-right"
+            data-ng-click="$ctrl.chartInstance.resetZoom()"
+            data-ng-if="$ctrl.enableResetZoom">
+    <span class="oui-icon oui-icon-error_circle" aria-hidden="true"></span>
+    <span data-translate="reset"></span>
+</oui-button>
+<canvas class="chart chart-line"></canvas>

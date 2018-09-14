@@ -46,6 +46,21 @@ angular.module('managerApp').constant('OVERTHEBOX_DETAILS', {
           },
         },
       },
+      pan: {
+          enabled: true,
+          mode: 'xy',
+          speed: 10,
+          threshold: 10,
+      },
+      zoom: {
+          enabled: true,
+          drag: false,
+          mode: 'xy',
+          limits: {
+              max: 10,
+              min: 0.5
+          },
+      },
     },
   },
 });
