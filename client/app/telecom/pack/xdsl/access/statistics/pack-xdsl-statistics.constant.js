@@ -58,9 +58,9 @@ angular.module('managerApp').constant('PACK_XDSL_STATISTICS', {
         mode: 'xy',
         drag: false,
         limits: {
-              max: 10,
-              min: 0.5
-          },
+          max: 10,
+          min: 0.5,
+        },
       },
     },
   },
