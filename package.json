@@ -143,7 +143,7 @@
     "@babel/core": "^7.0.0-beta.56",
     "@babel/plugin-syntax-dynamic-import": "^7.0.0-beta.56",
     "@babel/preset-env": "^7.0.0-beta.56",
-    "@ovh-ux/ovh-manager-webpack-toolkit": "https://github.com/jleveugle/ovh-manager-webpack-toolkit.git#9df4660bcba7961d0b3cac62a1a3a667e5cc456a",
+    "@ovh-ux/manager-webpack-config": "^0.0.2",
     "angular-template-url-loader": "^1.0.2",
     "babel-eslint": "^8.2.6",
     "babel-loader": "^8.0.0-beta",

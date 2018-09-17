@@ -5,7 +5,7 @@ const glob = require('glob');
 const _ = require('lodash');
 
 /* eslint-disable import/no-unresolved, import/no-extraneous-dependencies */
-const { config } = require('@ovh-ux/ovh-manager-webpack-toolkit')({
+const { config } = require('@ovh-ux/manager-webpack-config')({
   template: './client/index.html',
   basePath: './client',
   lessPath: [
