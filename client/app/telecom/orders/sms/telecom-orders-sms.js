@@ -11,6 +11,10 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'SmsOrder',
       },
     },
-    translations: ['common', 'telecom/orders/sms'],
+    translations: [
+      'common',
+      'telecom/orders/sms',
+      'telecom/sms/order',
+    ],
   });
 });
