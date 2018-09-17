@@ -64,42 +64,41 @@
                         <label for="lanAddressingType"
                                data-translate="xdsl_modem_lan_addressingType"
                                class="sr-only"></label>
-						<select
-							name="lanAddressingType"
-							id="lanAddressingType"
-							class="form-control"
-							data-ng-model="lan.tempValue.addressingType">
-							<option value="DHCP" data-translate="xdsl_modem_lan_addressingType_DHCP"></option>
-							<option value="Static" data-translate="xdsl_modem_lan_addressingType_Static"></option>
-						</select>
+                        <select name="lanAddressingType"
+                                id="lanAddressingType"
+                                class="form-control"
+                                data-ng-model="lan.tempValue.addressingType">
+                            <option value="DHCP" data-translate="xdsl_modem_lan_addressingType_DHCP"></option>
+                            <option value="Static" data-translate="xdsl_modem_lan_addressingType_Static"></option>
+                        </select>
                     </td>
 
                     <td class="form-group" data-title="{{ 'xdsl_modem_lan_ip' | translate }}">
                         <label for="lanIPAddress"
                                data-translate="xdsl_modem_lan_ip"
                                class="sr-only"></label>
-						<input name="lanIPAddress"
-							id="lanIPAddress"
-							type="text"
-							class="form-control"
-							data-ng-model="lan.tempValue.IPAddress"
-							maxlength="15"
-							placeholder="192.168.1.254"
-							data-ui-validate="'LanCtrl.validator.isIP($value)'"/>
+                        <input name="lanIPAddress"
+                               id="lanIPAddress"
+                               type="text"
+                               class="form-control"
+                               data-ng-model="lan.tempValue.IPAddress"
+                               maxlength="15"
+                               placeholder="192.168.1.254"
+                               data-ui-validate="'LanCtrl.validator.isIP($value)'">
                     </td>
 
                     <td class="form-group" data-title="{{ 'xdsl_modem_lan_subnetMask' | translate }}">
                         <label for="lanSubnetMask"
                                data-translate="xdsl_modem_lan_subnetMask"
                                class="sr-only"></label>
-						<input name="lanSubnetMask"
-							id="lanSubnetMask"
-							type="text"
-							class="form-control"
-							data-ng-model="lan.tempValue.subnetMask"
-							maxlength="15"
-							placeholder="255.255.255.0"
-							data-ui-validate="'LanCtrl.validator.isIP($value)'"/>
+                        <input name="lanSubnetMask"
+                               id="lanSubnetMask"
+                               type="text"
+                               class="form-control"
+                               data-ng-model="lan.tempValue.subnetMask"
+                               maxlength="15"
+                               placeholder="255.255.255.0"
+                               data-ui-validate="'LanCtrl.validator.isIP($value)'">
                     </td>
 
                     <td class="form-group col-mobile-button-big">

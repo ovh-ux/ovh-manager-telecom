@@ -40,9 +40,8 @@
             data-ng-show="AbbreviatedNumberModal.abbreviatedNumbers.length"
             type="submit"
             class="btn btn-primary"
-            data-ng-disabled="AbbreviatedNumberModal.removing"
-            data-translate="submit"
-            data-ng-disabled="abbreviatedNumberForm.$invalid">
+            data-ng-disabled="AbbreviatedNumberModal.removing || abbreviatedNumberForm.$invalid"
+            data-translate="submit">
         </button>
     </div>
 

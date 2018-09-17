@@ -42,13 +42,13 @@
                             <label for="dmzIPAddress"
                                    data-translate="xdsl_modem_dmz_modem_address"
                                    class="sr-only"></label>
-							<input name="dmzIPAddress"
-									id="dmzIPAddress"
-									type="text"
-									class="form-control"
-									data-ng-model="DmzCtrl.dmz"
-									placeholder="000.000.000.000"
-									data-ui-validate="'DmzCtrl.validator.isIP($value)'"/>
+                            <input name="dmzIPAddress"
+                                   id="dmzIPAddress"
+                                   type="text"
+                                   class="form-control"
+                                   data-ng-model="DmzCtrl.dmz"
+                                   placeholder="000.000.000.000"
+                                   data-ui-validate="'DmzCtrl.validator.isIP($value)'">
                         </td>
                         <td data-ng-if="DmzCtrl.mediator.tasks.changeModemConfigDMZ" class="text-center">
                             <oui-spinner data-size="s"></oui-spinner>
