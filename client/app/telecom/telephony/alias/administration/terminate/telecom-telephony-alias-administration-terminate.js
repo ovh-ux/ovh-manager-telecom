@@ -1,5 +1,5 @@
 angular.module('managerApp').config(($stateProvider) => {
-  $stateProvider.state('telecom.telephony.alias.administration.terminate', {
+  $stateProvider.state('telecom.telephony.alias.terminate', {
     url: '/terminate',
     views: {
       'aliasView@telecom.telephony.alias': {

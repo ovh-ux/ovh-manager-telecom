@@ -25,9 +25,6 @@
                 <oui-header-tabs-item data-text="{{:: 'telephony_alias_tab_number' | translate }}"
                                       data-state="telecom.telephony.alias.dashboard"
                                       data-disabled="!$ctrl.serviceName"></oui-header-tabs-item>
-                <oui-header-tabs-item data-text="{{:: 'telephony_alias_tab_administrative_management' | translate }}"
-                                      data-state="telecom.telephony.alias.administration"
-                                      data-disabled="!$ctrl.serviceName"></oui-header-tabs-item>
                 <oui-header-tabs-item data-text="{{:: 'telephony_alias_tab_number_configuration' | translate }}"
                                       data-state="telecom.telephony.alias.configuration"
                                       data-disabled="!$ctrl.serviceName"></oui-header-tabs-item>
@@ -59,7 +56,7 @@
              data-ng-if="$ctrl.terminationTask">
             <span data-translate="telephony_alias_termination_warning"
                   data-translate-values="{ date: ($ctrl.terminationTask.executionDate | date) }"></span>
-            <a data-ui-sref="telecom.telephony.alias.administration.terminate"
+            <a data-ui-sref="telecom.telephony.alias.terminate"
                data-translate="telephony_alias_termination_warning_cancel"></a>
         </div>
         <div class="alert alert-warning"
@@ -67,7 +64,7 @@
              data-ng-if="$ctrl.convertTask">
             <span data-translate="telephony_alias_convert_warning"
                   data-translate-values="{ date: ($ctrl.convertTask.executionDate | date) }"></span>
-            <a data-ui-sref="telecom.telephony.alias.administration.convertToLine"
+            <a data-ui-sref="telecom.telephony.alias.convertToLine"
                data-translate="telephony_alias_termination_warning_cancel"></a>
         </div>
     </div>

@@ -161,6 +161,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasDashboardControlle
     switch (this.alias.featureType) {
       case 'contactCenterSolution':
       case 'esayHunting':
+      case 'miniPabx':
         return 'easyHunting';
       case 'ddi':
       case 'easyPabx':
