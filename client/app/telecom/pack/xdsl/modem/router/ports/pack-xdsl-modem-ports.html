@@ -145,16 +145,16 @@
                         <label for="portExternalPortStart"
                                data-translate="xdsl_modem_ports_port_begin"
                                class="sr-only"></label>
-						<input type="number"
-							name="portExternalPortStart"
-							id="portExternalPortStart"
-							class="form-control"
-							data-ng-model="port.tempValue.externalPortStart"
-							maxlength="5"
-							min="1"
-							max="65535"
-							required
-							placeholder="80">
+                        <input type="number"
+                               name="portExternalPortStart"
+                               id="portExternalPortStart"
+                               class="form-control"
+                               data-ng-model="port.tempValue.externalPortStart"
+                               maxlength="5"
+                               min="1"
+                               max="65535"
+                               required
+                               placeholder="80">
                     </td>
 
                     <td data-title="{{ 'xdsl_modem_ports_port_end' | translate }}"
@@ -163,16 +163,16 @@
                         <label for="portExternalPortEnd"
                                data-translate="xdsl_modem_ports_port_end"
                                class="sr-only"></label>
-						<input type="number"
-							name="portExternalPortEnd"
-							id="portExternalPortEnd"
-							class="form-control"
-							data-ng-model="port.tempValue.externalPortEnd"
-							maxlength="5"
-							min="1"
-							max="65535"
-							required
-							placeholder="85">
+                        <input type="number"
+                               name="portExternalPortEnd"
+                               id="portExternalPortEnd"
+                               class="form-control"
+                               data-ng-model="port.tempValue.externalPortEnd"
+                               maxlength="5"
+                               min="1"
+                               max="65535"
+                               required
+                               placeholder="85">
                     </td>
 
                     <td data-title="{{ 'xdsl_modem_ports_protocol' | translate }}"
@@ -180,13 +180,12 @@
                         <label for="portProtocol"
                                data-translate="xdsl_modem_ports_protocol"
                                class="sr-only"></label>
-						<select
-								name="portProtocol"
-								id="portProtocol"
-								class="form-control"
-								data-ng-model="port.tempValue.protocol"
-								data-ng-options="proto as proto for proto in PortCtrl.protocol">
-						</select>
+                        <select name="portProtocol"
+                                id="portProtocol"
+                                class="form-control"
+                                data-ng-model="port.tempValue.protocol"
+                                data-ng-options="proto as proto for proto in PortCtrl.protocol">
+                        </select>
                     </td>
 
                     <td data-title="{{ 'xdsl_modem_ports_internal_client' | translate }}"
@@ -195,14 +194,14 @@
                         <label for="portInternalClient"
                                data-translate="xdsl_modem_ports_internal_client"
                                class="sr-only"></label>
-						<input type="text"
-							name="portInternalClient"
-							id="portInternalClient"
-							class="form-control"
-							data-ng-model="port.tempValue.internalClient"
-							placeholder="192.168.x.x"
-							maxlength="15"
-							data-ui-validate="'PortCtrl.validator.isIP($value)'">
+                        <input type="text"
+                               name="portInternalClient"
+                               id="portInternalClient"
+                               class="form-control"
+                               data-ng-model="port.tempValue.internalClient"
+                               placeholder="192.168.x.x"
+                               maxlength="15"
+                               data-ui-validate="'PortCtrl.validator.isIP($value)'">
                     </td>
 
                     <td data-title="{{ 'xdsl_modem_ports_internal_port' | translate }}"
@@ -211,16 +210,16 @@
                         <label for="internalPort"
                                data-translate="xdsl_modem_ports_internal_port"
                                class="sr-only"></label>
-						<input type="number"
-							name="internalPort"
-							id="internalPort"
-							class="form-control"
-							data-ng-model="port.tempValue.internalPort"
-							placeholder="8080"
-							maxlength="5"
-							min="1"
-							required
-							max="65535">
+                        <input type="number"
+                               name="internalPort"
+                               id="internalPort"
+                               class="form-control"
+                               data-ng-model="port.tempValue.internalPort"
+                               placeholder="8080"
+                               maxlength="5"
+                               min="1"
+                               required
+                               max="65535">
                     </td>
 
                     <td class="form-group col-mobile-button-big">

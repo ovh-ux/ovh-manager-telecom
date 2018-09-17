@@ -407,10 +407,9 @@
                         <tfoot class="table-comparison__foot">
                             <tr class="table-comparison__property">
                                 <td class="table-comparison__cell--empty" colspan="2"></td>
-                                <td class="table-comparison__cell table-comparison__value table-comparison__value--button"
+                                <td class="table-comparison__cell table-comparison__value table-comparison__value--button text-center"
                                     data-title="{{ offer.description }}"
-                                    data-ng-repeat="offer in OffersCtrl.process.migrationOffers.result.offers track by $index"
-                                    class="text-center">
+                                    data-ng-repeat="offer in OffersCtrl.process.migrationOffers.result.offers track by $index">
                                     <button type="button"
                                             class="btn btn-primary"
                                             data-ng-click="OffersCtrl.selectOffer(offer)"

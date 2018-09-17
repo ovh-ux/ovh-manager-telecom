@@ -21,17 +21,16 @@
             </h3>
 
             <div class="form-group">
-                    <input-file data-ng-model="AbbreviatedNumberModal.uploadedFile"
-                                data-change="AbbreviatedNumberModal.loadCsv(file)"
-                                data-ng-accept="text/csv">
-                        <i class="fa fa-upload mr-1"></i>
-                        <span data-translate="telephony_abbreviated_numbers_import_button_label"></span>
-                    </input-file>
-                    <div class="alert alert-danger mt-2"
-                         data-ng-if="AbbreviatedNumberModal.errorLoading"
-                         role="alert">
-                        <p data-ng-bind="AbbreviatedNumberModal.errorLoading"></p>
-                    </div>
+                <input-file data-ng-model="AbbreviatedNumberModal.uploadedFile"
+                            data-change="AbbreviatedNumberModal.loadCsv(file)"
+                            data-ng-accept="text/csv">
+                    <i class="fa fa-upload mr-1" aria-hidden="true"></i>
+                    <span data-translate="telephony_abbreviated_numbers_import_button_label"></span>
+                </input-file>
+                <div class="alert alert-danger mt-2"
+                     data-ng-if="AbbreviatedNumberModal.errorLoading"
+                     role="alert">
+                    <p data-ng-bind="AbbreviatedNumberModal.errorLoading"></p>
                 </div>
             </div>
 
@@ -97,13 +96,13 @@
         </uib-progressbar>
         <div>
             <span data-translate="telephony_abbreviated_numbers_import_item_imported"></span>
-            <span data-ng-bind="AbbreviatedNumberModal.imported.length"><span>
+            <span data-ng-bind="AbbreviatedNumberModal.imported.length"></span>
         </div>
         <div class="alert alert-danger mt-2"
              data-ng-if="AbbreviatedNumberModal.rejected"
              role="alert">
             <span data-translate="telephony_abbreviated_numbers_import_item_rejected"></span>
-            <span data-ng-bind="AbbreviatedNumberModal.rejected"><span>
+            <span data-ng-bind="AbbreviatedNumberModal.rejected"></span>
         </div>
     </div>
 
@@ -119,9 +118,8 @@
         <button
             type="submit"
             class="btn btn-primary"
-            data-ng-disabled="AbbreviatedNumberModal.importing || !AbbreviatedNumberModal.canImport"
-            data-translate="submit"
-            data-ng-disabled="abbreviatedNumberForm.$invalid">
+            data-ng-disabled="AbbreviatedNumberModal.importing || !AbbreviatedNumberModal.canImport || abbreviatedNumberForm.$invalid"
+            data-translate="submit">
         </button>
     </div>
 

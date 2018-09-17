@@ -88,27 +88,27 @@
                         <label for="bdhcpName"
                                data-translate="xdsl_modem_bdhcp_name"
                                class="sr-only"></label>
-						<input type="text"
-							name="bdhcpName"
-							id="bdhcpName"
-							class="form-control"
-							data-ng-model="bail.tempValue.name"
-							maxlength="30"
-							placeholder="{{ 'xdsl_modem_bdhcp_placeholder_name' | translate }}"/>
+                        <input type="text"
+                               name="bdhcpName"
+                               id="bdhcpName"
+                               class="form-control"
+                               data-ng-model="bail.tempValue.name"
+                               maxlength="30"
+                               placeholder="{{ 'xdsl_modem_bdhcp_placeholder_name' | translate }}">
                     </td>
 
                     <td class="form-group" data-title="{{ 'xdsl_modem_bdhcp_ip' | translate }}">
                         <label for="bdhcpIPAddress"
                                data-translate="xdsl_modem_bdhcp_ip"
                                class="sr-only"></label>
-						<input type="text"
-							name="bdhcpIPAddress"
-							id="bdhcpIPAddress"
-							class="form-control"
-							data-ng-model="bail.tempValue.IPAddress"
-							data-ui-validate="'BdhcpCtrl.validator.isIP($value)'"
-							maxlength="15"
-							placeholder="192.168.x.x"/>
+                        <input type="text"
+                               name="bdhcpIPAddress"
+                               id="bdhcpIPAddress"
+                               class="form-control"
+                               data-ng-model="bail.tempValue.IPAddress"
+                               data-ui-validate="'BdhcpCtrl.validator.isIP($value)'"
+                               maxlength="15"
+                               placeholder="192.168.x.x">
                     </td>
 
                     <td class="form-group" data-title="{{ 'xdsl_modem_bdhcp_mac' | translate }}">
