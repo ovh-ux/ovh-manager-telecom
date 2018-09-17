@@ -525,12 +525,6 @@ class ManagerNavbarService {
     };
   }
 
-  loadTranslations() {
-    this.$translatePartialLoader.addPart('common');
-    this.$translatePartialLoader.addPart('components');
-    return this.$translate.refresh();
-  }
-
   // Get managers links for main-links attribute
   getManagerLinks(products) {
     const currentUniverse = 'telecom';
@@ -601,7 +595,6 @@ class ManagerNavbarService {
 
     return this.$q
       .all({
-        translate: this.loadTranslations(),
         user: this.ovhApiMe.v6().get().$promise,
         notifications: this.navbarNotificationService.getNavbarContent(),
       })
