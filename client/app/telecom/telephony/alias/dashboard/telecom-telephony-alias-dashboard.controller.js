@@ -20,8 +20,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasDashboardControlle
   }
 
   $onInit() {
-    this.hideDetails = false;
-    this.number = null;
+    this.alias = null;
     this.consumption = {
       incoming: {},
       outgoing: {},
@@ -35,27 +34,27 @@ angular.module('managerApp').controller('TelecomTelephonyAliasDashboardControlle
 
   fetchService() {
     this.loading = true;
-    this.voipService.fetchSingleService(this.billingAccount, this.serviceName).then((number) => {
-      if (number) {
-        this.number = number;
-        this.featureTypeLabel = this.$translate.instant(`telephony_alias_configuration_configuration_type_${this.number.featureType}`);
+    this.voipService.fetchSingleService(this.billingAccount, this.serviceName).then((alias) => {
+      if (alias) {
+        this.alias = alias;
+        this.featureTypeLabel = this.$translate.instant(`telephony_alias_configuration_configuration_type_${this.alias.featureType}`);
 
-        return this.voipService.getServiceDirectory(number).then((result) => {
-          this.number.directory = result.directory;
+        return this.voipService.getServiceDirectory(alias).then((result) => {
+          this.alias.directory = result.directory;
 
           return this.hasConsumption() ? this.fetchServiceConsumption() : result;
         });
       }
       return null;
     }).catch((error) => {
-      this.Toast.error([this.$translate.instant('telephony_alias_load_error'), _.get(error, 'data.message').join(' ')]);
+      this.Toast.error([this.$translate.instant('telephony_alias_load_error'), _.get(error, 'data.message')].join(' '));
     }).finally(() => {
       this.loading = false;
     });
   }
 
   fetchServiceConsumption() {
-    function extractIncomingCallsDetails(calls) {
+    function transformIncomingCallsData(calls) {
       return calls.filter(call => call.wayType !== 'outgoing')
         .map((call) => {
           _.set(call, 'durationAsDate', new Date(call.duration * 1000));
@@ -63,7 +62,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasDashboardControlle
         });
     }
 
-    function extractOutgoingCallsDetails(calls) {
+    function transformOutgoingCallsData(calls) {
       return calls.filter(call => call.wayType !== 'incoming' && call.duration > 0)
         .map((call) => {
           _.set(call, 'durationAsDate', new Date(call.duration * 1000));
@@ -71,10 +70,10 @@ angular.module('managerApp').controller('TelecomTelephonyAliasDashboardControlle
         });
     }
 
-    return this.voipService.getServiceConsumption(this.number)
+    return this.voipService.getServiceConsumption(this.alias)
       .then((conso) => {
-        const incomingCalls = extractIncomingCallsDetails(conso);
-        const outgoingCalls = extractOutgoingCallsDetails(conso);
+        const incomingCalls = transformIncomingCallsData(conso);
+        const outgoingCalls = transformOutgoingCallsData(conso);
 
         this.consumption.incoming = {
           total: incomingCalls.length,
@@ -126,24 +125,28 @@ angular.module('managerApp').controller('TelecomTelephonyAliasDashboardControlle
       }));
     }
 
-    this.consumption.chart.addSerie(
-      this.$translate.instant('telephony_alias_consumption_outgoing_calls'),
-      convertCallsToChartData(_outgoingCalls), datasetConfiguration,
-    );
+    if (_.isEmpty(xAxisKeys)) {
+      this.consumption.chart.options.scales.xAxes = [];
+    } else {
+      this.consumption.chart.addSerie(
+        this.$translate.instant('telephony_alias_consumption_outgoing_calls'),
+        convertCallsToChartData(_outgoingCalls), datasetConfiguration,
+      );
 
-    this.consumption.chart.addSerie(
-      this.$translate.instant('telephony_alias_consumption_incoming_calls'),
-      convertCallsToChartData(_incomingCalls), datasetConfiguration,
-    );
+      this.consumption.chart.addSerie(
+        this.$translate.instant('telephony_alias_consumption_incoming_calls'),
+        convertCallsToChartData(_incomingCalls), datasetConfiguration,
+      );
+    }
   }
 
   deleteConfiguration() {
     this.$uibModal.open({
-      templateUrl: '/app/telecom/telephony/alias/dashboard/confirmDeleteConfiguration/confirmDeleteConfiguration.modal.html',
+      templateUrl: 'app/telecom/telephony/alias/dashboard/confirmDeleteConfiguration/confirmDeleteConfiguration.modal.html',
       controller: 'TelecomTelephonyAliasConfirmDeleteConfigurationCtrl',
       controllerAs: '$ctrl',
       resolve: {
-        number: this.number,
+        number: this.alias,
       },
     }).result.then(() => {
       this.OvhApiTelephony.Service().v6().resetCache();
@@ -155,26 +158,26 @@ angular.module('managerApp').controller('TelecomTelephonyAliasDashboardControlle
   }
 
   groupNumberByFeatureType() {
-    switch (this.number.featureType) {
+    switch (this.alias.featureType) {
       case 'contactCenterSolution':
       case 'esayHunting':
         return 'easyHunting';
       case 'ddi':
       case 'easyPabx':
-      case 'redirection':
-        return 'redirection';
+      case 'redirect':
+        return 'redirect';
       default:
-        return this.number.featureType;
+        return this.alias.featureType;
     }
   }
 
   hasConsumption() {
     const typesWithoutConsumption = ['redirect', 'ddi', 'conference', 'empty'];
-    return !typesWithoutConsumption.includes(this.number.featureType);
+    return !typesWithoutConsumption.includes(this.alias.featureType);
   }
 
   hasExpertMode() {
     const expertTypes = ['svi', 'contactCenterSolutionExpert', 'cloudHunting'];
-    return expertTypes.includes(this.number.featureType);
+    return expertTypes.includes(this.alias.featureType);
   }
 });

@@ -18,6 +18,7 @@ angular.module('managerApp').constant('TELEPHONY_ALIAS_CONSUMPTION', {
       },
       tooltips: {
         mode: 'label',
+        position: 'nearest',
       },
       scales: {
         xAxes: [

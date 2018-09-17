@@ -159,7 +159,7 @@ export default class {
           serviceName: service.serviceName,
           taskId: id,
         }).$promise))
-        .then(tasks => _.head(_.filter(tasks, { status: 'todo' }))));
+        .then(tasks => _.first(_.filter(tasks, { status: 'todo' }))));
   }
 
   /**
@@ -210,7 +210,7 @@ export default class {
             }).$promise,
         ))
         .then(chunkResult => _.flatten(chunkResult)))
-      .then(result => _.chain(result).pluck('value').value());
+      .then(result => _.map(result, 'value'));
   }
 
   /* ==============================
