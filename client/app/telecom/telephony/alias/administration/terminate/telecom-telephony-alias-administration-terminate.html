@@ -1,10 +1,9 @@
 <section class="telephony-group-alias-redirect">
 
     <header>
-        <section-back-link section-back-link-to-state="telecom.telephony.alias.administration"
-                           section-back-link-title="{{ 'telephony_alias_administration_terminate_back_link' | translate }}">
-        </section-back-link>
-        <h1 data-translate="telephony_alias_administration_terminate_title"></h1>
+        <oui-back-button data-state="telecom.telephony.alias.dashboard">
+            <span data-translate="telephony_alias_administration_terminate_title"></span>
+        </oui-back-button>
     </header>
 
     <div class="text-center" data-ng-if="AliasTerminateCtrl.isLoading">
