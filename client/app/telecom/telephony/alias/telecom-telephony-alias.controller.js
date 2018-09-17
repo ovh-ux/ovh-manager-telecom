@@ -18,7 +18,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasCtrl', class Telec
   }
 
   $onInit() {
-    this.number = null;
+    this.alias = null;
     this.links = null;
     this.terminationTask = null;
 
@@ -27,18 +27,18 @@ angular.module('managerApp').controller('TelecomTelephonyAliasCtrl', class Telec
 
   fetchService() {
     this.loading = true;
-    this.voipService.fetchSingleService(this.billingAccount, this.serviceName).then((number) => {
+    this.voipService.fetchSingleService(this.billingAccount, this.serviceName).then((alias) => {
       this.links = {
         order: this.TelephonyMediator.getV6ToV4RedirectionUrl('alias.number_order_new'),
         bank: this.TelephonyMediator.getV6ToV4RedirectionUrl('alias.number_bannMaker'),
         numberDirectory: this.TelephonyMediator.getV6ToV4RedirectionUrl('alias.number_manage_directory'),
       };
-      if (number) {
-        this.number = number;
+      if (alias) {
+        this.alias = alias;
         return this.$q.all({
-          convertToLineTask: this.voipServiceAlias.getConvertToLineTask(number),
-          terminationTask: this.voipService.getTerminationTask(number),
-          isSpecialNumber: this.voipServiceAlias.isSpecialNumber(number),
+          convertToLineTask: this.voipServiceAlias.getConvertToLineTask(alias),
+          terminationTask: this.voipService.getTerminationTask(alias),
+          isSpecialNumber: this.voipServiceAlias.isSpecialNumber(alias),
         }).then((result) => {
           this.convertTask = result.convertToLineTask;
           this.terminationTask = result.terminationTask;
@@ -51,26 +51,27 @@ angular.module('managerApp').controller('TelecomTelephonyAliasCtrl', class Telec
     }).catch((error) => {
       this.Toast.error([this.$translate.instant('telephony_alias_load_error'), _.get(error, 'data.message').join(' ')]);
     }).finally(() => {
+      this.$state.go('telecom.telephony.alias.dashboard');
       this.loading = false;
     });
   }
 
   hasConsumption() {
     const typesWithoutConsumption = ['redirect', 'ddi', 'conference', 'empty'];
-    return !typesWithoutConsumption.includes(this.number.featureType);
+    return !typesWithoutConsumption.includes(this.alias.featureType);
   }
 
-  numberDescriptionSave() {
+  aliasDescriptionSave() {
     return (newServiceDescription) => {
-      const oldDescription = this.number.description;
-      this.number.description = newServiceDescription;
+      const oldDescription = this.alias.description;
+      this.alias.description = newServiceDescription;
 
-      return this.voipServiceAlias.editDescription(this.number).then(() => {
+      return this.voipServiceAlias.editDescription(this.alias).then(() => {
         this.SidebarMenu.updateItemDisplay({
-          title: this.number.getDisplayedName(),
-        }, this.number.serviceName, 'telecom-telephony-section', this.number.billingAccount);
+          title: this.alias.getDisplayedName(),
+        }, this.alias.serviceName, 'telecom-telephony-section', this.alias.billingAccount);
       }).catch((error) => {
-        this.number.description = oldDescription;
+        this.alias.description = oldDescription;
         this.Toast.error([this.$translate.instant('telephony_alias_rename_error', this.serviceName), _.get(error, 'data.message', error.message)].join(' '));
       });
     };

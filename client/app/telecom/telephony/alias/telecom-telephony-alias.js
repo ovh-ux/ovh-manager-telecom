@@ -1,6 +1,5 @@
 angular.module('managerApp').config(($stateProvider) => {
   $stateProvider.state('telecom.telephony.alias', {
-    abstract: true,
     url: '/alias/:serviceName',
     views: {
       'telephonyView@telecom.telephony': {

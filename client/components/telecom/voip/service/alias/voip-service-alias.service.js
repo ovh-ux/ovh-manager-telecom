@@ -41,7 +41,7 @@ angular.module('managerApp').service('voipServiceAlias', class voipServiceAlias 
           billingAccount,
           serviceName,
           taskId: id,
-        }).$promise)).then(tasks => _.head(_.filter(tasks, { status: 'todo' }))));
+        }).$promise)).then(tasks => _.first(_.filter(tasks, { status: 'todo' }))));
   }
 
   /**
@@ -115,7 +115,7 @@ angular.module('managerApp').service('voipServiceAlias', class voipServiceAlias 
     return this.OvhApiTelephony.Rsva().v6().getCurrentRateCode({
       billingAccount,
       serviceName,
-    }).$promise.then(() => this.$q.when(true))
-      .catch(() => this.$q.when(false));
+    }).$promise.then(() => true)
+      .catch(() => false);
   }
 });
