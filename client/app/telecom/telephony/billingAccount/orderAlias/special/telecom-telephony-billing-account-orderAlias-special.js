@@ -10,6 +10,7 @@ angular.module('managerApp').config(($stateProvider) => {
     },
     translations: [
       'telecom/telephony/billingAccount/orderAlias/special',
+      'telecom/telephony/alias/special/rsva',
     ],
   });
 });

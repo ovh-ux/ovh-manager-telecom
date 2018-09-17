@@ -13,7 +13,7 @@
 
    <translation id="sms_users_empty" qtlid="215741">Ningún usuario</translation>
 
-   <translation id="sms_users_sr_only_actions" qtlid="72809">Actions</translation>
+   <translation id="sms_users_sr_only_actions" qtlid="72809">Acciones</translation>
 
    <translation id="sms_users_action_change_password" qtlid="80394">Changer le mot de passe</translation>
    <translation id="sms_users_action_change_password_label" qtlid="2270">Mot de passe</translation>
@@ -104,7 +104,7 @@
    <translation id="sms_users_limit_user_alert_email_placehoder" qtlid="11315">Adresse e-mail</translation>
    <translation id="sms_users_limit_user_alert_email_error_required" qtlid="339093">Le champ "adresse e-mail" est obligatoire.</translation>
    <translation id="sms_users_limit_user_alert_email_error_email" qtlid="339106">Adresse e-mail non valide.</translation>
-   <translation id="sms_users_limit_user_alert_number_label" qtlid="30778">Numéro</translation>
+   <translation id="sms_users_limit_user_alert_number_label" qtlid="30778">Número</translation>
    <translation id="sms_users_limit_user_alert_number_placeholder" qtlid="339119">Numéro (au format international)</translation>
    <translation id="sms_users_limit_user_alert_number_error_required" qtlid="339132">Le champ "numéro" est obligatoire.</translation>
    <translation id="sms_users_limit_user_alert_number_error_pattern" qtlid="339145">Veuillez saisir un numéro valide.</translation>

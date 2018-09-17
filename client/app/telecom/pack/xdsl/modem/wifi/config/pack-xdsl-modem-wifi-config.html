@@ -221,15 +221,14 @@
                         </label>
                         <div class="row">
                             <div class="col-xs-6">
-								<select
-										name="securityType"
-										id="securityType"
-										class="form-control"
-										data-ng-model="ConfigWifiCtrl.wifi.securityType"
-										required="required"
-										data-ng-change="ConfigWifiCtrl.resetKey()"
-										data-ng-options="item as ('xdsl_modem_wifi_' + item | translate) for item in ConfigWifiCtrl.fields.securityType">
-								</select>
+                                <select name="securityType"
+                                        id="securityType"
+                                        class="form-control"
+                                        data-ng-model="ConfigWifiCtrl.wifi.securityType"
+                                        required="required"
+                                        data-ng-change="ConfigWifiCtrl.resetKey()"
+                                        data-ng-options="item as ('xdsl_modem_wifi_' + item | translate) for item in ConfigWifiCtrl.fields.securityType">
+                                </select>
                             </div>
                         </div>
                     </div> <!-- End of Security -->
@@ -332,14 +331,14 @@
                         </label>
                         <div class="row">
                             <div class="col-xs-6">
-								<select name="channelMode"
-										id="channelMode"
-										class="form-control"
-										data-ng-model="ConfigWifiCtrl.wifi.channelCustom"
-										data-ng-change="ConfigWifiCtrl.onChannelChange()"
-										data-ng-options="chanelMode for chanelMode in ConfigWifiCtrl.fields.channelMode"
-										required>
-								</select>
+                                <select name="channelMode"
+                                        id="channelMode"
+                                        class="form-control"
+                                        data-ng-model="ConfigWifiCtrl.wifi.channelCustom"
+                                        data-ng-change="ConfigWifiCtrl.onChannelChange()"
+                                        data-ng-options="chanelMode for chanelMode in ConfigWifiCtrl.fields.channelMode"
+                                        required>
+                                </select>
                             </div>
                         </div>
                     </div> <!-- End of Channel -->

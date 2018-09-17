@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <translations>
    <translation id="telephony_calls_filtering_table_csv_filename" qtlid="358786">Filtrage</translation>
-   <translation id="telephony_calls_filtering_table_number" qtlid="30778">Numéro</translation>
+   <translation id="telephony_calls_filtering_table_number" qtlid="30778">Número</translation>
    <translation id="telephony_calls_filtering_table_nature" qtlid="93283">Type de numéro</translation>
    <translation id="telephony_calls_filtering_table_nature_fax" qtlid="32926">Fax</translation>
    <translation id="telephony_calls_filtering_table_nature_international" qtlid="358864">International</translation>
    <translation id="telephony_calls_filtering_table_nature_services" qtlid="358877">Services OVH</translation>
    <translation id="telephony_calls_filtering_table_nature_special" qtlid="358890">Numéro court</translation>
    <translation id="telephony_calls_filtering_table_nature_voicemail" qtlid="88956">Répondeur</translation>
-   <translation id="telephony_calls_filtering_table_status" qtlid="26443">Statut</translation>
+   <translation id="telephony_calls_filtering_table_status" qtlid="26443">Estado</translation>
    <translation id="telephony_calls_filtering_table_status_delete" qtlid="59699">Eliminación</translation>
    <translation id="telephony_calls_filtering_table_status_delete_success" qtlid="358903">Suppression en cours ...</translation>
    <translation id="telephony_calls_filtering_table_status_new" qtlid="26791">Creación</translation>
@@ -44,7 +44,7 @@
    <translation id="telephony_calls_filtering_type_outgoingWhiteList" qtlid="359124">Appels sortants - Liste blanche</translation>
    <translation id="telephony_calls_filtering_nature" qtlid="93283">Type de numéro</translation>
    <translation id="telephony_calls_filtering_apply" qtlid="41326">Appliquer</translation>
-   <translation id="telephony_calls_filtering_number" qtlid="30778">Numéro</translation>
+   <translation id="telephony_calls_filtering_number" qtlid="30778">Número</translation>
    <translation id="telephony_calls_filtering_number_info" qtlid="358838">Vous avez la possibilité de saisir tout ou partie du numéro. (Exemple : +33123455678 le numéro complet ; +3312345 les numéros commençant par ces chiffres)</translation>
    <translation id="telephony_calls_filtering_number_international" qtlid="358851">Au format international</translation>
    <translation id="telephony_calls_filtering_add_already_exist" qtlid="358760">Ce filtre est déjà présent dans la liste.</translation>

@@ -19,7 +19,7 @@
    <translation id="telephony_alias_configuration_mode_easyhunting_anonymous_rejection" qtlid="387185">Anonyymien puhelujen hylkäys</translation>
    <translation id="telephony_alias_configuration_mode_easyhunting_call_follow" qtlid="392749">Suivre les renvois d'appels</translation>
    <translation id="telephony_alias_configuration_mode_easyhunting_answer" qtlid="88956">Vastaaja</translation>
-   <translation id="telephony_alias_configuration_mode_easyhunting_none" qtlid="30646">Ei ole</translation>
+   <translation id="telephony_alias_configuration_mode_easyhunting_none" qtlid="30646">Ei mitään</translation>
 
    <translation id="telephony_alias_configuration_mode_easyhunting_strategy" qtlid="294841">Stratégie</translation>
    <translation id="telephony_alias_configuration_mode_easyhunting_strategy_ringAll" qtlid="294906">Tous en même temps</translation>

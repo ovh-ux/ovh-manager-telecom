@@ -12,7 +12,7 @@
    <translation id="xdsl_statistics_daily_label" qtlid="60366">Dienos</translation>
    <translation id="xdsl_statistics_weekly_label" qtlid="8806">Kas savaitę</translation>
    <translation id="xdsl_statistics_monthly_label" qtlid="60378">Mėnesio</translation>
-   <translation id="xdsl_statistics_yearly_label" qtlid="60390">Metų</translation>
+   <translation id="xdsl_statistics_yearly_label" qtlid="60390">Metams</translation>
    <translation id="xdsl_statistics_preview_label" qtlid="309438">Neseniai</translation>
    <translation id="xdsl_statistics_error" qtlid="309451">Duomenys šiuo metu neprieinami</translation>
    <translation id="xdsl_statistics_hour" qtlid="309464">(valanda UTC/GMT ({{-offset}}) h)</translation>

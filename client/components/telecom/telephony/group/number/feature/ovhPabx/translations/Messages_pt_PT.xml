@@ -111,7 +111,7 @@
    <translation id="telephony_number_feature_ovh_pabx_step_rule_bridge_action_param_required" qtlid="464006">Veuillez spécifier un numéro vers lequel transférer l'appel.</translation>
    <translation id="telephony_number_feature_ovh_pabx_step_rule_bridge_action_param_bad_format" qtlid="464019">Le numéro vers lequel transférer l'appel doit être au format international (ex: +33312345678).</translation>
 <!-- HANGUP -->
-   <translation id="telephony_number_feature_ovh_pabx_step_rule_hangup" qtlid="397754">Raccrocher</translation>
+   <translation id="telephony_number_feature_ovh_pabx_step_rule_hangup" qtlid="397754">Desligar</translation>
    <translation id="telephony_number_feature_ovh_pabx_step_rule_hangup_explain" qtlid="465280">Permet de mettre fin à l'appel.</translation>
 <!-- IVR -->
    <translation id="telephony_number_feature_ovh_pabx_step_rule_ivr" qtlid="324574">Lancer un menu interactif</translation>

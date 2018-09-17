@@ -1,6 +1,6 @@
 {
   "name": "ovh-manager-telecom",
-  "version": "10.6.1",
+  "version": "10.6.5",
   "description": "OVH Control Panel Telecom UI",
   "author": "OVH SAS",
   "license": "BSD-3-Clause",
@@ -106,7 +106,7 @@
     "ovh-angular-contact": "^3.0.0",
     "ovh-angular-contracts": "^2.0.0",
     "ovh-angular-input-number-spinner": "^2.1.0",
-    "ovh-angular-line-diagnostics": "^1.0.0",
+    "ovh-angular-line-diagnostics": "^2.0.1",
     "ovh-angular-mondial-relay": "^4.0.0",
     "ovh-angular-otrs": "^6.0.1",
     "ovh-angular-pagination-front": "^6.0.0",

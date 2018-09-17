@@ -40,13 +40,13 @@
    <translation id="telephony_alias_portability_order_contact_country_france" qtlid="29047">France</translation>
    <translation id="telephony_alias_portability_order_contact_country_belgium" qtlid="29059">Belgique</translation>
    <translation id="telephony_alias_portability_order_contact_country_switzerland" qtlid="40954">Suisse</translation>
-   <translation id="telephony_alias_portability_order_contact_zip" qtlid="30346">Code postal</translation>
+   <translation id="telephony_alias_portability_order_contact_zip" qtlid="30346">Código postal</translation>
    <translation id="telephony_alias_portability_order_contact_zip_pattern_error" qtlid="460886">Code postal invalide.</translation>
-   <translation id="telephony_alias_portability_order_contact_city" qtlid="33310">Ville</translation>
+   <translation id="telephony_alias_portability_order_contact_city" qtlid="33310">Ciudad</translation>
    <translation id="telephony_alias_portability_order_contact_street_number" qtlid="459560">Numéro de voie</translation>
    <translation id="telephony_alias_portability_order_contact_street_number_extra" qtlid="460899">Complément du numéro de voie</translation>
    <translation id="telephony_alias_portability_order_contact_street_number_pattern_error" qtlid="460912">Numéro de voie invalide.</translation>
-   <translation id="telephony_alias_portability_order_contact_street_name" qtlid="459573">Nom de la voie</translation>
+   <translation id="telephony_alias_portability_order_contact_street_name" qtlid="459573">Nombre de la ruta</translation>
    <translation id="telephony_alias_portability_order_contact_street_type" qtlid="460925">Type de voie</translation>
    <translation id="telephony_alias_portability_order_contact_building" qtlid="313000">Bâtiment</translation>
    <translation id="telephony_alias_portability_order_contact_stair" qtlid="313052">Escalier</translation>
@@ -62,7 +62,7 @@
    <translation id="telephony_alias_portability_order_sda_select" qtlid="461016">Porter votre numéro principal et une partie des numéros Sélection Directe à l'Arrivée (SDA).</translation>
    <translation id="telephony_alias_portability_order_sda_add" qtlid="461029">Numéro SDA à ajouter :</translation>
    <translation id="telephony_alias_portability_order_sda_add_list" qtlid="461042">Les numéros suivants seront également portés :</translation>
-   <translation id="telephony_alias_portability_order_description" qtlid="9238">Description</translation>
+   <translation id="telephony_alias_portability_order_description" qtlid="9238">Descripción</translation>
    <translation id="telephony_alias_portability_order_unit_price" qtlid="259961">Precio unitario</translation>
    <translation id="telephony_alias_portability_order_quantity" qtlid="37107">Quantité</translation>
    <translation id="telephony_alias_portability_order_total" qtlid="32458">Total</translation>

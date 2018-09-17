@@ -79,7 +79,7 @@
    <translation id="show" qtlid="69353">Afficher</translation>
    <translation id="hide" qtlid="26539">Cacher</translation>
    <translation id="common_add" qtlid="37923">Añadir</translation>
-   <translation id="common_actions" qtlid="72809">Actions</translation>
+   <translation id="common_actions" qtlid="72809">Acciones</translation>
 
    <translation id="common_between_and" qtlid="479252">Entre {{between}} et {{and}}</translation>
 
@@ -95,7 +95,7 @@
    <translation id="loading" qtlid="242769">Cargando...</translation>
    <translation id="submit" qtlid="26047">Valider</translation>
    <translation id="edit" qtlid="6766">Éditer</translation>
-   <translation id="modify" qtlid="37875">Modifier</translation>
+   <translation id="modify" qtlid="37875">Modificar</translation>
    <translation id="common_add" qtlid="37923">Añadir</translation>
    <translation id="access" qtlid="304524">Acceder</translation>
    <translation id="edit_name" qtlid="304537">Editar {{name}}</translation>
@@ -117,9 +117,9 @@
    <translation id="common_firstname" qtlid="23323">Nombre</translation>
    <translation id="common_lastname" qtlid="3818">Nombre</translation>
    <translation id="common_country" qtlid="25171">Pays</translation>
-   <translation id="common_city" qtlid="33310">Ville</translation>
+   <translation id="common_city" qtlid="33310">Ciudad</translation>
    <translation id="see" qtlid="103930">Voir</translation>
-   <translation id="common_zip_code" qtlid="30346">Code postal</translation>
+   <translation id="common_zip_code" qtlid="30346">Código postal</translation>
    <translation id="back" qtlid="4118">Retour</translation>
    <translation id="contract_agree" qtlid="304563">Acepto las condiciones.</translation>
    <translation id="contract_next" qtlid="17743">Suivant</translation>
@@ -188,7 +188,7 @@
    <translation id="common_menu_orders" qtlid="42394">Suivi de commande</translation>
    <translation id="common_menu_support_assistance" qtlid="52699">Assistance</translation>
    <translation id="common_menu_v3" qtlid="135931">Antiguo panel de control</translation>
-   <translation id="common_menu_billing" qtlid="32950">Facturation</translation>
+   <translation id="common_menu_billing" qtlid="32950">Facturación</translation>
    <translation id="common_menu_billing_history" qtlid="159540">Mis facturas</translation>
    <translation id="common_menu_billing_payments" qtlid="398781">Monitoreo de los pagos</translation>
    <translation id="common_menu_language" qtlid="30598">Langue</translation>

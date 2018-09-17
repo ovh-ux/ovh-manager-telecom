@@ -33,7 +33,7 @@
    <translation id="telephony_alias_configuration_tones_old_pabx_type_custom_sound_bad_format" qtlid="461653">Le format de fichier est invalide (formats autorisés : wav, mp3, mp4, ogg et wma).</translation>
    <translation id="telephony_alias_configuration_tones_old_pabx_type_custom_sound_bad_size" qtlid="461666">Le fichier est trop volumineux (taille max. : 10 Mo).</translation>
 
-   <translation id="telephony_alias_configuration_tones_old_pabx_save_tones" qtlid="249107">Apply the changes</translation>
+   <translation id="telephony_alias_configuration_tones_old_pabx_save_tones" qtlid="249107">Apply changes</translation>
 
    <translation id="telephony_alias_configuration_tones_old_pabx_load_error" qtlid="461679">Oups ! Une erreur est survenue lors du chargements de vos musiques.</translation>
    <translation id="telephony_alias_configuration_tones_old_pabx_save_success" qtlid="461692">Les modifications apportées à vos musiques ont été appliquées avec succès.</translation>

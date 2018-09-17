@@ -8,7 +8,7 @@
    <translation id="telephony_line_management_sip_domain_save_button" qtlid="69797">Save the changes</translation>
    <translation id="telephony_line_management_sip_domain_save_loading" qtlid="124303">Modifying </translation>
 
-   <translation id="telephony_line_management_sip_domain_confirm" qtlid="249107">Apply the changes</translation>
+   <translation id="telephony_line_management_sip_domain_confirm" qtlid="249107">Apply changes</translation>
 
    <translation id="telephony_line_management_sip_domain_line_title" qtlid="387575">Domaine SIP de la ligne</translation>
    <translation id="telephony_line_management_sip_domain_line_info" qtlid="387588">Domaine utilisé sur la ligne actuellement sélectionnée.</translation>

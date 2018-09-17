@@ -110,8 +110,8 @@
    <translation id="telephony_scheduler_events_time_slot" qtlid="396662">Plage horaire</translation>
    <translation id="telephony_scheduler_events_from" qtlid="88725">Du</translation>
    <translation id="telephony_scheduler_events_to" qtlid="88737">Au</translation>
-   <translation id="telephony_scheduler_events_description" qtlid="9238">Description</translation>
-   <translation id="telephony_scheduler_events_save" qtlid="37875">Modifier</translation>
+   <translation id="telephony_scheduler_events_description" qtlid="9238">Descripción</translation>
+   <translation id="telephony_scheduler_events_save" qtlid="37875">Modificar</translation>
    <translation id="telephony_scheduler_events_create" qtlid="396675">Créer l'événement</translation>
    <translation id="telephony_scheduler_events_date_start_edit" qtlid="159176">Fecha de inicio</translation>
    <translation id="telephony_scheduler_events_date_end_edit" qtlid="299858">Fecha de finalización</translation>

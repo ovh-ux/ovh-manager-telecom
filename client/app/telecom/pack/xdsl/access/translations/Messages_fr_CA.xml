@@ -32,13 +32,13 @@
    <translation id="xdsl_details_type_label" qtlid="2642">Type</translation>
    <translation id="xdsl_details_degroupage_label" qtlid="309633">Dégroupage</translation>
    <translation id="xdsl_details_dns_really" qtlid="309646">Êtes-vous sûr(e) de vouloir changer le reverse DNS ?</translation>
-   <translation id="xdsl_details_dns_placeholder" qtlid="44284">DNS inverse</translation>
+   <translation id="xdsl_details_dns_placeholder" qtlid="44284">DNS inversé</translation>
    <translation id="xdsl_details_button_move" qtlid="308788">Déménager</translation>
    <translation id="xdsl_details_button_move_disabled" qtlid="384909">Demande de déménagement en cours</translation>
    <translation id="xdsl_details_button_deconsolidation" qtlid="79338">Dégroupage total</translation>
-   <translation id="xdsl_details_button_diagnostic" qtlid="95059">Diagnostic</translation>
-   <translation id="xdsl_details_button_ipv4" qtlid="44284">DNS inverse</translation>
-   <translation id="xdsl_details_button_ipv6" qtlid="44284">DNS inverse</translation>
+   <translation id="xdsl_details_button_diagnostic">Lancer le diagnostic</translation>
+   <translation id="xdsl_details_button_ipv4" qtlid="44284">DNS inversé</translation>
+   <translation id="xdsl_details_button_ipv6" qtlid="44284">DNS inversé</translation>
    <translation id="xdsl_details_add_dns" qtlid="309659">Ajouter un reverse DNS</translation>
    <translation id="xdsl_details_connection" qtlid="52267">Type de connexion</translation>
    <translation id="xdsl_details_profile" qtlid="309672">Profil de connexion</translation>

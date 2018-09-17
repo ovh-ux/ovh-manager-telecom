@@ -12,12 +12,12 @@
    <translation id="pack_xdsl_avalaibleSlot_1" qtlid="308515">{{avalaible}} de disponible</translation>
    <translation id="pack_xdsl_avalaibleSlot_n" qtlid="308528">{{avalaible}} de disponibles</translation>
    <translation id="pack_xdsl_access_services_0" qtlid="308541">No hay accesos</translation>
-   <translation id="pack_xdsl_access_description" qtlid="9238">Description</translation>
+   <translation id="pack_xdsl_access_description" qtlid="9238">Descripción</translation>
    <translation id="pack_xdsl_access_type" qtlid="2642">Tipo</translation>
    <translation id="pack_xdsl_access_accessName" qtlid="46792">Identifiant</translation>
-   <translation id="pack_xdsl_voipLine_domain" qtlid="8458">Domaine</translation>
+   <translation id="pack_xdsl_voipLine_domain" qtlid="8458">Dominio</translation>
    <translation id="pack_xdsl_voipLine_billingAccount" qtlid="33862">Compte</translation>
-   <translation id="pack_xdsl_hubic_domain" qtlid="8458">Domaine</translation>
+   <translation id="pack_xdsl_hubic_domain" qtlid="8458">Dominio</translation>
    <translation id="pack_xdsl_hubic_size" qtlid="7726">Taille</translation>
    <translation id="pack_xdsl_hubic_voucher" qtlid="308554">(Code : {{voucher}})</translation>
    <translation id="pack_xdsl_hubic_is_used" qtlid="479265">Déja utilisé</translation>
@@ -65,7 +65,7 @@
    <translation id="pack_xdsl_inCreation" qtlid="308840">Pack en cours de création</translation>
    <translation id="pack_xdsl_offer_name" qtlid="233274">Nombre del producto</translation>
    <translation id="pack_xdsl_pack_id" qtlid="308853">Identifiant du pack</translation>
-   <translation id="pack_xdsl_created_date" qtlid="26419">Date de création</translation>
+   <translation id="pack_xdsl_created_date" qtlid="26419">Fecha de creación</translation>
    <translation id="pack_xdsl_engaged_date" qtlid="308866">Engagé jusqu'au</translation>
    <translation id="pack_xdsl_not_engaged" qtlid="384766">Vous n'êtes plus engagé</translation>
    <translation id="pack_xdsl_resiliation_date" qtlid="384779">Date de résiliation</translation>

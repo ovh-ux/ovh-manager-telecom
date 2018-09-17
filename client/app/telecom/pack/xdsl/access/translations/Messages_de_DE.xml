@@ -28,7 +28,7 @@
    <translation id="xdsl_details_followUp_label" qtlid="78870">Bestellungsnachverfolgung</translation>
    <translation id="xdsl_details_followUp_label_step_name_detail" qtlid="456011">Afficher le suivi</translation>
    <translation id="xdsl_details_details_label" qtlid="37527">Details</translation>
-   <translation id="xdsl_details_status_label" qtlid="33790">Zustand</translation>
+   <translation id="xdsl_details_status_label" qtlid="33790">Status</translation>
    <translation id="xdsl_details_type_label" qtlid="2642">Typ</translation>
    <translation id="xdsl_details_degroupage_label" qtlid="309633">Entbündelung</translation>
    <translation id="xdsl_details_dns_really" qtlid="309646">Sind Sie sicher, dass Sie das Reverse DNS ändern möchten?</translation>
@@ -36,7 +36,7 @@
    <translation id="xdsl_details_button_move" qtlid="308788">Transfer</translation>
    <translation id="xdsl_details_button_move_disabled" qtlid="384909">Demande de déménagement en cours</translation>
    <translation id="xdsl_details_button_deconsolidation" qtlid="79338">Vollständige Entbündelung</translation>
-   <translation id="xdsl_details_button_diagnostic" qtlid="95059">Diagnose</translation>
+   <translation id="xdsl_details_button_diagnostic">Lancer le diagnostic</translation>
    <translation id="xdsl_details_button_ipv4" qtlid="44284">DNS Reverse</translation>
    <translation id="xdsl_details_button_ipv6" qtlid="44284">DNS Reverse</translation>
    <translation id="xdsl_details_add_dns" qtlid="309659">Reverse-DNS-Eintrag hinzufügen</translation>
