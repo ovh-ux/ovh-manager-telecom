@@ -17,6 +17,22 @@ angular.module('managerApp').factory('VoipServiceAlias', (VoipService) => {
     constructor(options = {}) {
       super(options);
     }
+
+    /**
+     *  @ngdoc method
+     *  @name managerApp.object:VoipServiceAlias#isAPortabilityAlias
+     *  @propertyOf managerApp.object:VoipServiceAlias
+     *
+     *  @description
+     *  Check if the alias is a portability one
+     *
+     *  @return {Boolean}
+     */
+    isAPortabilityAlias() {
+      const publicOfferName = _.get(this, 'getPublicOffer.name', '');
+      const regExp = new RegExp(/portability/);
+      return regExp.test(publicOfferName);
+    }
   }
 
   return VoipServiceAlias;

@@ -19,10 +19,12 @@
                       data-heading="{{:: 'telephony_alias_tile_information' | translate }}">
                 <oui-tile-definition data-term="{{:: 'telephony_alias_information_number' | translate }}"
                                      data-description="{{:: $ctrl.alias.serviceName }}"></oui-tile-definition>
-                <oui-tile-button data-on-click="$ctrl.$state.go('telecom.telephony.alias.convertToLine')">
+                <oui-tile-button data-ng-if="!$ctrl.alias.isAPortabilityAlias()"
+                                 data-on-click="$ctrl.$state.go('telecom.telephony.alias.convertToLine')">
                     <span data-translate="telephony_alias_information_number_to_line"></span>
                 </oui-tile-button>
-                <oui-tile-button data-on-click="$ctrl.$state.go('telecom.telephony.alias.terminate')">
+                <oui-tile-button data-ng-if="!$ctrl.alias.isAPortabilityAlias()"
+                                 data-on-click="$ctrl.$state.go('telecom.telephony.alias.terminate')">
                     <span data-translate="telephony_alias_information_terminate_number"></span>
                 </oui-tile-button>
                 <oui-tile-definition data-term="{{:: 'telephony_alias_information_region' | translate }}">
