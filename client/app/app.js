@@ -219,8 +219,7 @@ angular.module('managerApp', [
       transition.addResolvable({
         token: 'translations',
         deps: [],
-        resolveFn: () => null
-        ,
+        resolveFn: () => null,
       }); // transition.addResolvable
     }); // $transitionsProvider.onBefore
   })

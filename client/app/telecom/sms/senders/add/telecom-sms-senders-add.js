@@ -8,6 +8,5 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'SmsSendersAddCtrl',
       },
     },
-    translations: [],
   });
 });

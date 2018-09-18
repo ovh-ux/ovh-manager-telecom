@@ -25,10 +25,9 @@
   },
   "scripts": {
     "start": "webpack-serve",
-    "build": "webpack --config webpack.config.js",
+    "build": "webpack",
     "test": "eslint ./client",
     "lint": "eslint --fix ./client",
-    "update-webdriver": "node node_modules/grunt-protractor-runner/node_modules/protractor/bin/webdriver-manager update",
     "commit": "npm-scripts-config commit",
     "commitmsg": "npm-scripts-config commitmsg",
     "version": "npm-scripts-config version",
@@ -140,9 +139,9 @@
     "validator-js": "chriso/validator.js#3.40.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.0.0-beta.56",
-    "@babel/plugin-syntax-dynamic-import": "^7.0.0-beta.56",
-    "@babel/preset-env": "^7.0.0-beta.56",
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
     "@ovh-ux/manager-webpack-config": "^0.0.2",
     "angular-template-url-loader": "^1.0.2",
     "babel-eslint": "^8.2.6",

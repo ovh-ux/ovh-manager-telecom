@@ -1,4 +1,4 @@
-/* eslint-disable */
+/* eslint-disable import/no-webpack-loader-syntax, import/no-unresolved, import/extensions */
 
 import 'script-loader!jquery';
 import 'angular';
