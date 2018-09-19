@@ -42,7 +42,7 @@ module.exports = merge(config, {
     main: './client/app/index.js',
     telecom: glob.sync('./client/app/telecom/*.js'),
     components: glob.sync('./client/components/**/*.js'),
-    config: ['./client/app/config/all.js', `./client/app/config/${process.env.WEBPACK_SERVE ? 'dev' : 'prod'}.js`],
+    config: ['./client/app/config/all.js', `./client/app/config/${process.env.NODE_ENV !== 'production' ? 'dev' : 'prod'}.js`],
   }, bundles),
   output: {
     path: path.resolve(__dirname, 'dist'),
