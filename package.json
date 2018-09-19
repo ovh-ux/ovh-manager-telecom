@@ -24,8 +24,8 @@
     "yarn": ">= 1.0.0"
   },
   "scripts": {
-    "start": "webpack-serve",
-    "build": "webpack",
+    "start": "webpack-dev-server",
+    "build": "webpack --env.production",
     "test": "eslint ./client",
     "lint": "eslint --fix ./client",
     "commit": "npm-scripts-config commit",
@@ -142,7 +142,7 @@
     "@babel/core": "^7.0.0",
     "@babel/plugin-syntax-dynamic-import": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
-    "@ovh-ux/manager-webpack-config": "^0.0.2",
+    "@ovh-ux/manager-webpack-config": "^1.0.0",
     "angular-template-url-loader": "^1.0.2",
     "babel-eslint": "^8.2.6",
     "babel-loader": "^8.0.0-beta",
@@ -178,8 +178,8 @@
     "webpack": "^4.17.1",
     "webpack-bundle-analyzer": "^2.13.1",
     "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.8",
     "webpack-merge": "^4.1.4",
-    "webpack-serve": "^2.0.2",
     "webpackbar": "^2.6.3"
   },
   "private": true,
