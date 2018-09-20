@@ -40,13 +40,16 @@ module.exports = (env = {}) => {
   }, env);
   /* eslint-enable */
 
+  // Extra config files
+  const extras = glob.sync('./.extras/**/*.js');
+
   return merge(config, {
     entry: _.assign({
       main: './client/app/index.js',
       telecom: glob.sync('./client/app/telecom/*.js'),
       components: glob.sync('./client/components/**/*.js'),
       config: ['./client/app/config/all.js', `./client/app/config/${env.production ? 'prod' : 'dev'}.js`],
-    }, bundles),
+    }, bundles, extras.length > 0 ? { extras } : {}),
     output: {
       path: path.resolve(__dirname, 'dist'),
       filename: '[name].bundle.js',
