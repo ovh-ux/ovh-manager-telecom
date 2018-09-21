@@ -26,8 +26,8 @@
   "scripts": {
     "start": "webpack-dev-server",
     "build": "webpack --env.production",
-    "test": "eslint ./client",
-    "lint": "eslint --fix ./client",
+    "test": "eslint --quiet ./client",
+    "lint": "eslint --quiet --fix ./client",
     "commit": "npm-scripts-config commit",
     "commitmsg": "npm-scripts-config commitmsg",
     "version": "npm-scripts-config version",
