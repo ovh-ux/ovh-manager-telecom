@@ -34,7 +34,6 @@
     "postversion": "git push && git push --tags",
     "preview-changelog": "npm-scripts-config preview-changelog"
   },
-  "main": "server/app.js",
   "dependencies": {
     "@bower_components/angular-ellipses": "genu/angular-ellipses#0.1.3",
     "@bower_components/angular-leaflet-directive": "tombatossals/angular-leaflet-directive#0.8.4",
