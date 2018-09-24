@@ -10,6 +10,8 @@
 * [Install](#install)
 * [Usage](#usage)
 * [Test](#test)
+* [Related](#related)
+* [Contributing](#contributing)
 * [License](#license)
 
 ## Prerequisites
@@ -40,6 +42,16 @@ And now open `https://localhost:9000`.
 ```sh
 yarn test
 ```
+
+## Related
+
+* [Web Control Panel UI](https://github.com/ovh-ux/ovh-manager-web).
+* [Dedicated Control Panel UI](https://github.com/ovh-ux/ovh-manager-dedicated).
+* [Cloud Control Panel UI](https://github.com/ovh-ux/ovh-manager-cloud).
+
+## Contributing
+
+Always feel free to help out! Whether it's [filing bugs and feature requests](https://github.com/ovh-ux/ovh-manager-telecom/issues/new) or working on some of the [open issues](https://github.com/ovh-ux/ovh-manager-telecom/issues), our [contributing guide](CONTRIBUTING.md) will help get you started.
 
 ## License
 
