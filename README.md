@@ -29,7 +29,7 @@ yarn install
 
 In order to run the manager in the development mode, you first you have to activate the developer mode in the [Manager V6](https://www.ovh.com/manager/dedicated/#/useraccount/advanced).
 
-Once you have activate the development mode just ran:
+Once you have enabled the development mode just ran:
 
 ```sh
 yarn start
