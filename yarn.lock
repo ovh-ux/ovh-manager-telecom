@@ -772,8 +772,8 @@
     rimraf "^2.5.2"
 
 "@ovh-ux/manager-webpack-config@^1.0.0":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@ovh-ux/manager-webpack-config/-/manager-webpack-config-1.1.1.tgz#426ae817b79b1e8ac10e6e94425ebe95bf67fde9"
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@ovh-ux/manager-webpack-config/-/manager-webpack-config-1.1.2.tgz#1824824cf913bd2b52b39c043d643f9121655a87"
   dependencies:
     "@babel/core" "^7.0.0"
     "@babel/generator" "^7.0.0"
