@@ -15,9 +15,7 @@ angular.module('managerApp').config(($stateProvider) => {
       },
     },
     translations: [
-      'common',
-      'telecom/telephony/fax',
-      'telecom/telephony/fax/fax',
+      'telecom/telephony/service/fax/convertToVoicefax',
     ],
   });
 });

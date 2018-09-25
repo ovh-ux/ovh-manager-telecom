@@ -12,6 +12,8 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'CampaignsCtrl',
       },
     },
-    translations: ['common'],
+    translations: [
+      'telecom/telephony/service/fax/campaigns',
+    ],
   });
 });
