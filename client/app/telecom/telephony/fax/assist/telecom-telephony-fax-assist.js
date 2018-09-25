@@ -9,9 +9,8 @@ angular.module('managerApp').config(($stateProvider) => {
       },
     },
     translations: [
-      'common',
-      'telecom/telephony/fax',
       'telecom/telephony/fax/assist',
+      'telecom/telephony/service/assist',
     ],
   });
 });

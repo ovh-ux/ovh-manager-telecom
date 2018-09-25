@@ -1,3 +1,46 @@
-<section class="telecom-section"
-         data-ui-view="telecomView">
-</section>
+<div class="col-container">
+    <!-- Skip to main content -->
+    <div class="skipnav">
+        <a class="oui-button oui-button_link" href=""
+            data-ng-click="scrollTo('maincontent')"
+            data-translate="common_skip_to_main_content">
+        </a>
+    </div>
+    <!-- /Skip to main content -->
+    <oui-navbar fixed
+        data-active-link="telecom"
+        data-brand="::navbar.brand"
+        data-main-links="::navbar.managerLinks"
+        data-aside-links="::navbar.internalLinks"
+        data-toggler-links="::navbar.responsiveLinks">
+    </oui-navbar>
+    <button class="visible-xs visible-sm"
+            type="button"
+            data-ng-if="shouldDisplayMenuButtonFallback"
+            onclick="$('#sidebar-menu').toggleClass('displayFallbackMenu')" style="position: absolute; height: 44px; width: 50px; display: block; background-color: transparent; z-index: 9999; top: 0; left: 0; border: 0;">
+    </button>
+    <div class="container-fluid h-100 w-100" style="overflow: auto">
+        <div class="row">
+            <!-- SIDE MENU -->
+            <div data-sidebar-menu
+                    class="col-md-3 col-lg-2">
+            </div>
+            <!-- CONTENT -->
+            <div id="content" class="col-md-9 col-md-offset-3 col-lg-10 col-lg-offset-2">
+                <!-- Skip content target -->
+                <div class="skiptarget">
+                    <a id="maincontent" href="">-</a>
+                </div>
+                <!-- /Skip content target -->
+                <flash-message duration="600000" class="flash"></flash-message>
+                <ovh-browser-alert></ovh-browser-alert>
+                <!-- <ovh-task-follow></ovh-task-follow> -->
+                <section class="telecom-section"
+                    data-ui-view="telecomView">
+                </section>
+            </div>
+
+        </div>
+        <!-- <chatbot></chatbot> -->
+    </div>
+</div>

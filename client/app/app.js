@@ -1,3 +1,5 @@
+import asyncLoaderFactory from './async-loader.factory';
+
 angular.module('managerApp', [
   'ovh-angular-sso-auth',
   'ovh-angular-sso-auth-modal-plugin',
@@ -52,13 +54,10 @@ angular.module('managerApp', [
   'matchmedia-ng',
   'ui.sortable',
   'angular-inview',
-  'angular-web-notification',
-  'ngEmbed',
-  'ovh-angular-user-pref',
-  'ovh-angular-chatbot',
   'oui',
   'ovh-angular-actions-menu',
   'ovh-angular-sidebar-menu',
+  'angular-translate-loader-pluggable',
 ])
 
 /*= =========  GLOBAL OPTIONS  ========== */
@@ -105,12 +104,14 @@ angular.module('managerApp', [
   })
 
 /*= =========  TRANSLATOR  ========== */
+  .factory('asyncLoader', asyncLoaderFactory)
   .config((
     $translateProvider,
     LANGUAGES,
     tmhDynamicLocaleProvider,
     actionsMenuProvider,
     SidebarMenuProvider,
+    translatePluggableLoaderProvider,
   ) => {
     // --- Translations configuration
     let defaultLanguage = 'fr_FR';
@@ -120,6 +121,10 @@ angular.module('managerApp', [
     } else {
       localStorage['univers-selected-language'] = defaultLanguage;
     }
+
+    $translateProvider.useLoader('translatePluggableLoader');
+
+    translatePluggableLoaderProvider.useLoader('asyncLoader');
 
     // Check if language exist into the list
     const availableLangsKeys = _.pluck(LANGUAGES.available, 'key');
@@ -147,13 +152,9 @@ angular.module('managerApp', [
     moment.locale(defaultLanguage.split('_')[0]);
 
     // set angular locale
-    tmhDynamicLocaleProvider.localeLocationPattern('node_modules/angular-i18n/angular-locale_{{locale}}.js');
+    tmhDynamicLocaleProvider.localeLocationPattern('angular-i18n/angular-locale_{{locale}}.js');
     tmhDynamicLocaleProvider.defaultLocale(_.kebabCase(defaultLanguage));
 
-    // define translation loader
-    $translateProvider.useLoader('$translatePartialLoader', {
-      urlTemplate: 'app/{part}/translations/Messages_{lang}.json',
-    });
     $translateProvider.useLoaderCache(true);
     $translateProvider.useSanitizeValueStrategy('sanitizeParameters');
     $translateProvider.useMissingTranslationHandler('translateMissingTranslationHandler');
@@ -212,56 +213,8 @@ angular.module('managerApp', [
     $transitionsProvider.onBefore({}, (transition) => {
       transition.addResolvable({
         token: 'translations',
-        deps: ['$translate', '$translatePartialLoader'],
-        resolveFn: ($translate, $translatePartialLoader) => {
-          const state = transition.to();
-          if (state.translations) {
-            const templateUrlTab = [];
-            let translationsTab = state.translations;
-
-            if (state.templateUrl) {
-              templateUrlTab.push(state.templateUrl);
-            }
-
-            if (state.views) {
-              angular.forEach(state.views, (value) => {
-                if (_.isUndefined(value.noTranslations) && !value.noTranslations) {
-                  if (value.templateUrl) {
-                    templateUrlTab.push(value.templateUrl);
-                  }
-                  if (value.translations) {
-                    translationsTab = _.union(translationsTab, value.translations);
-                  }
-                }
-              });
-            }
-
-            angular.forEach(templateUrlTab, (templateUrl) => {
-              let routeTmp = templateUrl.substring(templateUrl.indexOf('/') + 1, templateUrl.lastIndexOf('/'));
-              let index = routeTmp.lastIndexOf('/');
-
-              while (index > 0) {
-                translationsTab.push(routeTmp);
-                routeTmp = routeTmp.substring(0, index);
-                index = routeTmp.lastIndexOf('/');
-              }
-
-              translationsTab.push(routeTmp);
-            });
-
-            // mmmhhh... It seems that we have to refresh after each time a part is added
-            translationsTab = _.uniq(translationsTab);
-
-            // load translation parts
-            angular.forEach(translationsTab, (part) => {
-              $translatePartialLoader.addPart(part);
-            });
-
-            return $translate.refresh();
-          }
-
-          return null;
-        },
+        deps: [],
+        resolveFn: () => null,
       }); // transition.addResolvable
     }); // $transitionsProvider.onBefore
   })

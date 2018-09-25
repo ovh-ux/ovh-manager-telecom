@@ -1,3 +1,21 @@
+import telecomTelephonyLineAssistTroubleshootingProcedureCisco from './procedure/cisco/telecom-telephony-line-assist-troubleshooting-procedure-cisco.html';
+import telecomTelephonyLineAssistTroubleshootingProcedureGigaset from './procedure/gigaset/telecom-telephony-line-assist-troubleshooting-procedure-gigaset.html';
+import telecomTelephonyLineAssistTroubleshootingProcedureLg from './procedure/lg/telecom-telephony-line-assist-troubleshooting-procedure-lg.html';
+import telecomTelephonyLineAssistTroubleshootingProcedureLinksys from './procedure/linksys/telecom-telephony-line-assist-troubleshooting-procedure-linksys.html';
+import telecomTelephonyLineAssistTroubleshootingProcedurePolycom from './procedure/polycom/telecom-telephony-line-assist-troubleshooting-procedure-polycom.html';
+import telecomTelephonyLineAssistTroubleshootingProcedureSiemens from './procedure/siemens/telecom-telephony-line-assist-troubleshooting-procedure-siemens.html';
+import telecomTelephonyLineAssistTroubleshootingProcedureThomson from './procedure/thomson/telecom-telephony-line-assist-troubleshooting-procedure-thomson.html';
+
+angular.module('managerApp').run(($templateCache) => {
+  // import templates required by ng-include
+  $templateCache.put('app/telecom/telephony/line/assist/troubleshooting/procedure/cisco/telecom-telephony-line-assist-troubleshooting-procedure-cisco.html', telecomTelephonyLineAssistTroubleshootingProcedureCisco);
+  $templateCache.put('app/telecom/telephony/line/assist/troubleshooting/procedure/gigaset/telecom-telephony-line-assist-troubleshooting-procedure-gigaset.html', telecomTelephonyLineAssistTroubleshootingProcedureGigaset);
+  $templateCache.put('app/telecom/telephony/line/assist/troubleshooting/procedure/lg/telecom-telephony-line-assist-troubleshooting-procedure-lg.html', telecomTelephonyLineAssistTroubleshootingProcedureLg);
+  $templateCache.put('app/telecom/telephony/line/assist/troubleshooting/procedure/linksys/telecom-telephony-line-assist-troubleshooting-procedure-linksys.html', telecomTelephonyLineAssistTroubleshootingProcedureLinksys);
+  $templateCache.put('app/telecom/telephony/line/assist/troubleshooting/procedure/polycom/telecom-telephony-line-assist-troubleshooting-procedure-polycom.html', telecomTelephonyLineAssistTroubleshootingProcedurePolycom);
+  $templateCache.put('app/telecom/telephony/line/assist/troubleshooting/procedure/siemens/telecom-telephony-line-assist-troubleshooting-procedure-siemens.html', telecomTelephonyLineAssistTroubleshootingProcedureSiemens);
+  $templateCache.put('app/telecom/telephony/line/assist/troubleshooting/procedure/thomson/telecom-telephony-line-assist-troubleshooting-procedure-thomson.html', telecomTelephonyLineAssistTroubleshootingProcedureThomson);
+});
 angular.module('managerApp').config(($stateProvider) => {
   $stateProvider.state('telecom.telephony.line.assist.troubleshooting', {
     url: '/troubleshooting',
@@ -34,6 +52,10 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'ManualConfigCtrl',
       },
     },
-    translations: ['common', 'telecom/telephony/line/assist/troubleshooting'],
+    translations: [
+      'telecom/telephony/line/assist/troubleshooting',
+      'telecom/telephony/line/assist/troubleshooting/autoConfig',
+      'telecom/telephony/line/assist/troubleshooting/manualConfig',
+    ],
   });
 });

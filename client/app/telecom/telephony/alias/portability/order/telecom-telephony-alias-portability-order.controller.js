@@ -6,7 +6,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasPortabilityOrderCt
     belgium: ['0032800', '003278', '0032900', '003270'],
   };
 
-    // attributes shared by 'individual' and 'company' social reason
+  // attributes shared by 'individual' and 'company' social reason
   const sharedAttributes = [
     'billingAccount', 'building', 'callNumber', 'city', 'comment', 'contactName',
     'contactNumber', 'country', 'desireDate', 'displayUniversalDirectory', 'door',

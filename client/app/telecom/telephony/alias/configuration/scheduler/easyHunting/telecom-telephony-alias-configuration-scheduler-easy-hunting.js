@@ -8,6 +8,8 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: '$ctrl',
       },
     },
-    translations: ['common'],
+    translations: [
+      'telecom/telephony/alias/configuration/scheduler/easyHunting',
+    ],
   });
 });

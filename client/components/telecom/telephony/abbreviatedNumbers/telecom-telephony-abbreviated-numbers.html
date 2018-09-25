@@ -40,11 +40,11 @@
         </oui-column>
 
         <oui-action-menu data-align="end" data-compact>
-            <oui-action-menu-item data-text="{{::('edit' | translate)}}"
-                                  data-on-click="$ctrl.update($row)">
+            <oui-action-menu-item data-on-click="$ctrl.update($row)">
+                <span data-translate="edit"></span>
             </oui-action-menu-item>
-            <oui-action-menu-item data-text="{{::('delete' | translate)}}"
-                                  data-on-click="$ctrl.remove($row)">
+            <oui-action-menu-item data-on-click="$ctrl.remove($row)">
+                <span data-translate="delete"></span>
             </oui-action-menu-item>
         </oui-action-menu>
 
@@ -52,9 +52,9 @@
             <oui-action-menu data-text="{{::('common_actions' | translate)}}"
                              data-align="start">
                 <oui-action-menu-item
-                    data-text="{{::('common_add' | translate)}}"
                     data-on-click="$ctrl.add()"
                     data-disabled="$ctrl.loading.init">
+                    <span data-translate="common_add"></span>
                 </oui-action-menu-item>
                 <div role="menuitem" class="oui-action-menu__item">
                     <button type="button"
@@ -68,14 +68,14 @@
                     </button>
                 </div>
                 <oui-action-menu-item
-                    data-text="{{::('telephony_abbreviated_numbers_import_label' | translate)}}"
                     data-on-click="$ctrl.openImport()"
                     data-disabled="$ctrl.loading.init">
+                    <span data-translate="telephony_abbreviated_numbers_import_label"></span>
                 </oui-action-menu-item>
                 <oui-action-menu-item
-                    data-text="{{::('telephony_abbreviated_numbers_trash_all_label' | translate)}}"
                     data-on-click="$ctrl.trashAll()"
                     data-disabled="$ctrl.loading.init || !$ctrl.abbreviatedNumbers.length">
+                    <span data-translate="telephony_abbreviated_numbers_trash_all_label"></span>
                 </oui-action-menu-item>
             </oui-action-menu>
         </extra-top>

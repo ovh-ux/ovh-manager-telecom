@@ -9,7 +9,6 @@ angular.module('managerApp').config(($stateProvider) => {
       },
     },
     translations: [
-      'common',
       'telecom/sms/sms/outgoing',
     ],
   });

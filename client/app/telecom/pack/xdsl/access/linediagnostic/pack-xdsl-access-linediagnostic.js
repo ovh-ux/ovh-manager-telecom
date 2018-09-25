@@ -8,6 +8,6 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'PackxdslaccesslinediagnosticCtrl',
       },
     },
-    translations: ['common', 'pack/xdsl/access/linediagnostic'],
+    translations: ['common'],
   });
 });

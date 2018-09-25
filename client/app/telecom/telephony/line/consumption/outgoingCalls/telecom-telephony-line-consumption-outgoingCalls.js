@@ -13,6 +13,8 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'OutgoingCallsCtrl',
       },
     },
-    translations: ['common'],
+    translations: [
+      'telecom/telephony/line/consumption/outgoingCalls',
+    ],
   });
 });

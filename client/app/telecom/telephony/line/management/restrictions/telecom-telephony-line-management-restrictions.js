@@ -8,6 +8,8 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'LineRestrictionsCtrl',
       },
     },
-    translations: ['common', 'telecom/telephony/line/management/restrictions'],
+    translations: [
+      'telecom/telephony/line/management/restrictions',
+    ],
   });
 });

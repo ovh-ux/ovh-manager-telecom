@@ -8,6 +8,8 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'LineSimultaneousLinesCtrl',
       },
     },
-    translations: ['common', 'telecom/telephony/line/calls/simultaneousLines'],
+    translations: [
+      'telecom/telephony/line/calls/simultaneousLines',
+    ],
   });
 });

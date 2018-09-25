@@ -8,6 +8,8 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'SvaGeneratorCtrl',
       },
     },
-    translations: ['common'],
+    translations: [
+      'telecom/telephony/alias/svaGenerator',
+    ],
   });
 });

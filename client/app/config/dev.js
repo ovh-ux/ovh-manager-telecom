@@ -1,9 +1,9 @@
 angular.module('managerApp').constant('telecomConfig', {
   env: 'dev',
-  aapiRouteBase: '/2api',
-  apiRouteBase: '/apiv6',
-  apiv7RouteBase: '/apiv7',
-  wsRouteBase: '/ws',
+  aapiRouteBase: '/engine/2api',
+  apiRouteBase: '/engine/apiv6',
+  apiv7RouteBase: '/engine/apiv7',
+  wsRouteBase: '/engine/ws',
   loginUrl: '/auth',
   cookieSessionName: 'APIV6_SESSION',
 });

@@ -16,7 +16,10 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'AliasPortabilityCtrl',
       },
     },
-    translations: ['common', 'telecom/telephony/alias'],
+    translations: [
+      'telecom/telephony/alias',
+      'telecom/telephony/alias/portability',
+    ],
     resolve: {
       $title(translations, $translate, $stateParams, OvhApiTelephony) {
         return OvhApiTelephony.Number().v6().get({

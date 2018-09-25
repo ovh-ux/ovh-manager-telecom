@@ -8,6 +8,8 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: '$ctrl',
       },
     },
-    translations: ['common', 'common/telephony', 'telecom/telephony/line/calls/timeCondition', '../components/telecom/telephony/timeCondition/slot'],
+    translations: [
+      'telecom/telephony/line/calls/timeCondition',
+    ],
   });
 });
