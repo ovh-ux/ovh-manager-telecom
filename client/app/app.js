@@ -155,11 +155,6 @@ angular.module('managerApp', [
     tmhDynamicLocaleProvider.localeLocationPattern('angular-i18n/angular-locale_{{locale}}.js');
     tmhDynamicLocaleProvider.defaultLocale(_.kebabCase(defaultLanguage));
 
-    // define translation loader
-    /* translatePluggableLoaderProvider.useLoader('$translatePartialLoader', {
-      urlTemplate: 'app/{part}/translations/Messages_{lang}.json',
-    });
-    */
     $translateProvider.useLoaderCache(true);
     $translateProvider.useSanitizeValueStrategy('sanitizeParameters');
     $translateProvider.useMissingTranslationHandler('translateMissingTranslationHandler');
