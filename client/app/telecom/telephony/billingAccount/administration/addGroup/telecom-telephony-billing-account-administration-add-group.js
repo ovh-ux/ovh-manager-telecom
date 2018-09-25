@@ -8,6 +8,9 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'AddGroupCtrl',
       },
     },
-    translations: ['common'],
+    translations: [
+      'telecom/telephony/billingAccount/administration',
+      'telecom/telephony/billingAccount/administration/addGroup',
+    ],
   });
 });

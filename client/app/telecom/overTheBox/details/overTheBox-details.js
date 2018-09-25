@@ -1,3 +1,9 @@
+import overTheBoxWarningNotActivated from '../warning/overTheBox-warning-notActivated.html';
+
+angular.module('managerApp').run(($templateCache) => {
+  // import templates required by ng-include
+  $templateCache.put('app/telecom/overTheBox/warning/overTheBox-warning-notActivated.html', overTheBoxWarningNotActivated);
+});
 angular.module('managerApp').config(($stateProvider) => {
   $stateProvider.state('telecom.overTheBox.details', {
     url: '/details',

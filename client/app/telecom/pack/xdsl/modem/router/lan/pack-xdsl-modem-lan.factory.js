@@ -6,7 +6,7 @@ angular.module('managerApp').factory('PackXdslModemLanObject', (OvhApiXdsl, $tra
     lanName: '',
   };
 
-    /**
+  /**
      * Object constructor
      * @param {Object} data Data from APIv6
      */
@@ -21,7 +21,7 @@ angular.module('managerApp').factory('PackXdslModemLanObject', (OvhApiXdsl, $tra
     );
   };
 
-    /**
+  /**
      * Save a Lan
      * @param {String} serviceName Name of the pack xdslId
      * @return {Promise}

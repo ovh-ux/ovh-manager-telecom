@@ -8,6 +8,9 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'PhonebookCtrl',
       },
     },
-    translations: ['common', 'telecom/telephony'],
+    translations: [
+      'telecom/telephony/billingAccount',
+      'telecom/telephony/billingAccount/phonebook',
+    ],
   });
 });

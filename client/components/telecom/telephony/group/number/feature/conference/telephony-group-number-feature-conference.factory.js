@@ -9,7 +9,7 @@ angular.module('managerApp').factory('TelephonyGroupNumberConference', ($q, $tim
     'enterMuted',
   ];
 
-    /*= ==================================
+  /*= ==================================
     =            CONSTRUCTOR            =
     =================================== */
 

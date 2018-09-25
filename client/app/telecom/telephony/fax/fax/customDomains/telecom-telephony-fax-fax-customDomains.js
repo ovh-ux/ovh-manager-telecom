@@ -12,6 +12,8 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: '$ctrl',
       },
     },
-    translations: ['common'],
+    translations: [
+      'telecom/telephony/service/fax/customDomains',
+    ],
   });
 });

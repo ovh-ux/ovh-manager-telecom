@@ -8,6 +8,6 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: '$ctrl',
       },
     },
-    translations: ['common', 'components', 'telecom/pack/slots/emailPro/detail'],
+    translations: ['common', 'telecom/pack/slots/emailPro/detail'],
   });
 });

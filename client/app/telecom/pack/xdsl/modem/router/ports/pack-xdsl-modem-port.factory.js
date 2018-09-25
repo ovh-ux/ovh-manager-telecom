@@ -12,7 +12,7 @@ angular.module('managerApp').factory('PackXdslModemPortObject', (OvhApiXdsl, $tr
     id: null,
   };
 
-    /**
+  /**
      * Object constructor
      * @param {Object} data Data from APIv6
      */
@@ -27,7 +27,7 @@ angular.module('managerApp').factory('PackXdslModemPortObject', (OvhApiXdsl, $tr
     );
   };
 
-    /**
+  /**
      * Save a port redirection
      * @param {String} serviceName Name of the Xdsl service
      * @return {Promise}

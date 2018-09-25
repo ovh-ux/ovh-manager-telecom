@@ -12,7 +12,6 @@ angular.module('managerApp').config(($stateProvider) => {
       bookKey: null,
     },
     translations: [
-      'common',
       'telecom/sms/phonebooks',
     ],
   });

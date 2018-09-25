@@ -10,7 +10,6 @@ angular.module('managerApp').config(($stateProvider) => {
     },
     translations: [
       'common',
-      'components',
       'telecom/pack/xdsl',
       'telecom/pack/xdsl/access',
       'telecom/pack/xdsl/access/ip',

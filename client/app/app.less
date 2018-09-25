@@ -1,0 +1,183 @@
+@rem-base: rem-base(10px);
+@bs-path: "bootstrap";
+@oui-path: "ovh-ui-kit";
+
+@import "ovh-ui-kit/packages/oui/stylekit";
+@import (less) "angular-flash-alert/dist/angular-flash.css"; // needs to be before ovh-ui-kit-bs or it will override style
+@import "ovh-ui-kit-bs/src/ovh-ui-kit-bs";
+@import "ovh-angular-sidebar-menu/less/ovh-angular-sidebar-menu.less";
+@import "ovh-angular-sidebar-menu/less/ovh-angular-sidebar-menu.dependencies.less";
+@import "ovh-angular-tail-logs/less/ovh-angular-tail-logs.less";
+@import "ovh-angular-pagination-front/less/ovh-angular-pagination-front.less";
+@import "ovh-angular-sso-auth-modal-plugin/less/ovh-angular-sso-auth-modal-plugin.less";
+@import "ovh-angular-contact/less/ovh-angular-contact.less";
+@import "ovh-manager-webfont/dist/less/ovh-font";
+@import "ovh-angular-otrs/dist/ovh-angular-otrs.less";
+@import "font-awesome/less/font-awesome.less";
+// @import "ovh-angular-chatbot/src/ovh-angular-chatbot.less"; TODO: uncomment
+
+@import (less) "leaflet/dist/leaflet.css";
+@import (less) "ovh-angular-mondial-relay/dist/ovh-angular-mondial-relay.min.css";
+@import (less) "fullcalendar/dist/fullcalendar.css";
+@import (less) "ui-select/dist/select.css";
+@import (less) "messenger/build/css/messenger.css";
+@import (less) "messenger/build/css/messenger-theme-future.css";
+@import (less) "messenger/build/css/messenger-theme-flat.css";
+@import (less) "messenger/build/css/messenger-theme-block.css";
+@import (less) "intl-tel-input/build/css/intlTelInput.css";
+@import (less) "ovh-angular-toaster/dist/ovh-angular-toaster.css";
+@import (less) "ovh-angular-tail-logs/dist/ovh-angular-tail-logs.css";
+@import "ovh-angular-line-diagnostics/src/ovh-angular-line-diagnostics/ovh-angular-line-diagnostics.less";
+@import (less) "ovh-angular-tail-logs/dist/ovh-angular-tail-logs.css";
+@import "ovh-angular-timeline/src/ovh-angular-timeline.less";
+@import (less) "ovh-ng-input-password/dist/ovh-ng-input-password.css";
+
+// Paths for Icons & Fonts
+@icon-font-path: "../fonts/";
+@oui-icon-dist-folder: "../../dist/icons";
+@oui-font-source-sans-pro-folder: "../../packages/oui-typography/fonts/source-sans-pro";
+@fa-font-path: "../fonts";
+@flag-icon-css-path: "../node_modules/flag-icon-css/flags";
+@ovh-font-path:"../fonts/";
+
+// OVH Universe
+@ovh-universe-color: @oui-color-dodger;
+
+// Mobile
+@media (max-width: @screen-sm-max) {
+    .section-back-link {
+        padding-top: 24px;
+    }
+}
+
+/*
+ * content
+ */
+
+#content {
+    padding: 0;
+
+    .page-header {
+        margin-top: 0;
+    }
+
+    .container-fluid {
+        padding-bottom: 32px;
+    }
+}
+
+.col-container {
+    padding-top: @NAVBAR_HEIGHT;
+}
+
+.container {
+    width: auto;
+}
+
+// App-wide Styles
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: @screen-sm-min) {
+    .container {
+        max-width: 730px;
+    }
+}
+
+@media (min-width: @screen-sm-min) {
+    .flex-center {
+        .row {
+            display: flex;
+        }
+        .service-title {
+            display: flex;
+            align-items: center;
+        }
+    }
+}
+
+.elipse {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.alert {
+    &.me-alerts::before {
+        content: none;
+    }
+
+    &.alert-dismissible {
+        button.close {
+            opacity: 1;
+            color: @gray-base;
+
+            &:hover {
+                color: darken(@gray-base, 20%);
+            }
+        }
+    }
+}
+
+@import './common/less/button.less';
+@import './common/less/common.less';
+@import './common/less/date-picker.less';
+@import './common/less/form.less';
+@import './common/less/global.less';
+@import './common/less/header.less';
+@import './common/less/navbar.less';
+@import './common/less/ovh-angular-input-number-spinner.less';
+@import './common/less/popover.less';
+@import './common/less/revert-really-buttons.less';
+@import './common/less/service.less';
+@import './common/less/tables.less';
+@import './common/less/uiview-animate.less';
+@import './common/less/variables.less';
+@import './common/less/widget-presentation.less';
+@import './telecom/dashboard/telecom-dashboard.less';
+@import './telecom/overTheBox/remote/overTheBox-remote.less';
+@import './telecom/pack/migration/telecom-pack-migration.less';
+@import './telecom/pack/move/pack-move.less';
+@import './telecom/pack/resiliation/pack-resiliation.less';
+@import './telecom/pack/slots/voipLine/activation/pack-voipLine-activation.less';
+@import './telecom/pack/xdsl/access/deconsolidation/pack-xdsl-access-deconsolidation.less';
+@import './telecom/pack/xdsl/access/linediagnostic/pack-xdsl-access-linediagnostic.less';
+@import './telecom/pack/xdsl/access/pack-xdsl-access.less';
+@import './telecom/pack/xdsl/modem/pack-xdsl-modem.less';
+@import './telecom/pack/xdsl/orderFollowUp/pack-xdsl-orderFollowUp.less';
+@import './telecom/sms/sms/compose/addPhonebookContact/telecom-sms-sms-compose-addPhonebookContact.less';
+@import './telecom/telecom.less';
+@import './telecom/telephony/alias/configuration/mode/telecom-telephony-alias-configuration-mode.less';
+@import './telecom/telephony/alias/portability/portabilities/telecom-telephony-alias-portability-portabilities.less';
+@import './telecom/telephony/billingAccount/billing/groupRepayments/telecom-telephony-billing-account-billing-group-repayments.less';
+@import './telecom/telephony/billingAccount/dashboard/telecom-telephony-billing-account-dashboard.less';
+@import './telecom/telephony/billingAccount/manageContacts/telecom-telephony-billing-account-manageContacts.less';
+@import './telecom/telephony/billingAccount/orderAlias/telecom-telephony-billing-account-orderAlias.less';
+@import './telecom/telephony/line/assist/rma/telecom-telephony-line-assist-rma.less';
+@import './telecom/telephony/line/assist/troubleshooting/telecom-telephony-line-assist-troubleshooting.less';
+@import './telecom/telephony/line/calls/click2Call/telecom-telephony-line-calls-click2Call.less';
+@import './telecom/telephony/line/phone/accessories/telecom-telephony-line-phone-accessories.less';
+@import './telecom/telephony/line/phone/configuration/telecom-telephony-line-phone-configuration.less';
+@import './telecom/telephony/service/fax/campaigns/read/telecom-telephony-service-fax-campaigns-read.less';
+@import './telecom/telephony/service/fax/settings/telecom-telephony-service-fax-settings.less';
+@import './telecom/telephony/telecom-telephony.less';
+@import '../components/editable-service-name/editable-service-name.less';
+@import '../components/file-reader/file-reader.less';
+@import '../components/gauge/gauge.less';
+@import '../components/input-file/input-file.less';
+@import '../components/manager-preload/manager-preload.less';
+@import '../components/ovh-password/ovh-password.less';
+@import '../components/shippingModeSelection/shipping-mode-selection.less';
+@import '../components/sidebar/sidebar.less';
+@import '../components/slider/slider.less';
+@import '../components/successDrawingCheck/successDrawingCheck.less';
+@import '../components/telecom/telephony/abbreviatedNumbers/telecom-telephony-abbreviated-numbers.less';
+@import '../components/telecom/telephony/alias/members/telecom-telephony-alias-members.less';
+@import '../components/telecom/telephony/alias/svaGenerator/telephony-alias-svaGenerator.less';
+@import '../components/telecom/telephony/bulkAction/telephony-bulk-action.less';
+@import '../components/telecom/telephony/group/consumption/pie-chart/telephony-group-consumption-pie-chart.less';
+@import '../components/telecom/telephony/group/number/feature/conference/telephony-group-number-feature-conference.less';
+@import '../components/telecom/telephony/group/number/feature/ovhPabx/menu/telephony-group-number-feature-ovh-pabx-menu.less';
+@import '../components/telecom/telephony/group/number/telephony-group-number.less';
+@import '../components/telecom/telephony/scheduler/telephony-scheduler.less';
+@import '../components/telecom/telephony/service/choice-popover/telecom-telephony-service-popover.less';
+@import '../components/telecom/telephony/timeCondition/telephony-time-condition.less';
+@import '../components/telecom/v4-links/telecom-v4-links.less';
+@import '../components/toggleSwitch/toggleSwitch.less';

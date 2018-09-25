@@ -9,8 +9,6 @@ angular.module('managerApp').config(($stateProvider) => {
       },
     },
     translations: [
-      'common',
-      'components',
       'telecom/telephony/line/calls/abbreviatedNumbers',
     ],
   });

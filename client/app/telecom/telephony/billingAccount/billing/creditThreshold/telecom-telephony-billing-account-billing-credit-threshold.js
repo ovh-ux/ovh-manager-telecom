@@ -8,6 +8,9 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'BillingAccountCreditThresholdCtrl',
       },
     },
-    translations: ['common'],
+    translations: [
+      'telecom/telephony/billingAccount/billing',
+      'telecom/telephony/billingAccount/billing/creditThreshold',
+    ],
   });
 });

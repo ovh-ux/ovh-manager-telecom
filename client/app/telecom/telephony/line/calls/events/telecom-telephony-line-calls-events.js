@@ -8,6 +8,8 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'EventsCtrl',
       },
     },
-    translations: ['common'],
+    translations: [
+      'telecom/telephony/line/calls/events',
+    ],
   });
 });

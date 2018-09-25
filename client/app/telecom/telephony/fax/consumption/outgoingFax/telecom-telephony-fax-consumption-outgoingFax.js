@@ -11,6 +11,10 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: '$ctrl',
       },
     },
-    translations: ['common'],
+    translations: [
+      'telecom/telephony/fax/consumption/outgoingFax',
+      'telecom/telephony/service/consumption',
+      'telecom/telephony/service/consumption/outgoingFax',
+    ],
   });
 });

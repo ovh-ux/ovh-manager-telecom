@@ -8,6 +8,8 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'LineForwardCtrl',
       },
     },
-    translations: ['common', 'telecom/telephony/line/calls/forward'],
+    translations: [
+      'telecom/telephony/line/calls/forward',
+    ],
   });
 });

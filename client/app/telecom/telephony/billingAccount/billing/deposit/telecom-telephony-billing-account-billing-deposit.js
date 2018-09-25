@@ -9,8 +9,6 @@ angular.module('managerApp').config(($stateProvider) => {
       },
     },
     translations: [
-      'common',
-      'telecom/telephony/billingAccount/billing',
       'telecom/telephony/billingAccount/billing/deposit',
     ],
   });

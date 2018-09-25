@@ -1,3 +1,7 @@
+angular.module('managerApp').run(($translate, asyncLoader) => {
+  asyncLoader.addTranslations(import(`./translations/Messages_${$translate.use()}.xml`).then(x => x.default));
+  $translate.refresh();
+});
 angular.module('managerApp').directive('svaGenerator', ($q, $translatePartialLoader, $translate, $timeout, SvaGeneratorConfig) => {
   function normalizeNumber(number) {
     if (angular.isString(number)) {

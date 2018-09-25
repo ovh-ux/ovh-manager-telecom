@@ -9,8 +9,6 @@ angular.module('managerApp').config(($stateProvider) => {
       },
     },
     translations: [
-      'common',
-      'telecom/telephony/fax',
       'telecom/telephony/fax/management/terminate',
     ],
   });

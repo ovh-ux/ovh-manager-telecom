@@ -64,18 +64,22 @@
             <span data-ng-bind="$row.agent || '-'"></span>
         </oui-column>
         <oui-action-menu data-align="end" data-compact>
-            <oui-action-menu-item data-text="{{:: 'telephony_alias_configuration_mode_calls_action_intercept' | translate }}"
-                                  data-on-click="$ctrl.interceptCall($row)"
-                                  data-ng-if="!$row.answered"></oui-action-menu-item>
-            <oui-action-menu-item data-text="{{:: 'telephony_alias_configuration_mode_calls_action_eavesdrop' | translate }}"
-                                  data-on-click="$ctrl.eavesdropCall($row)"
-                                  data-ng-if="$row.answered"></oui-action-menu-item>
-            <oui-action-menu-item data-text="{{:: 'telephony_alias_configuration_mode_calls_action_transfert' | translate }}"
-                                  data-on-click="$ctrl.transfertCall($row)"
-                                  data-ng-if="$row.answered"></oui-action-menu-item>
-            <oui-action-menu-item data-text="{{:: 'telephony_alias_configuration_mode_calls_action_hangup' | translate }}"
-                                  data-on-click="$ctrl.hangupCall($row)"
-                                  data-ng-if="$row.answered"></oui-action-menu-item>
+            <oui-action-menu-item data-on-click="$ctrl.interceptCall($row)"
+                                  data-ng-if="!$row.answered">
+                <span data-translate="telephony_alias_configuration_mode_calls_action_intercept"></span>
+            </oui-action-menu-item>
+            <oui-action-menu-item data-on-click="$ctrl.eavesdropCall($row)"
+                                  data-ng-if="$row.answered">
+                <span data-translate="telephony_alias_configuration_mode_calls_action_eavesdrop"></span>
+            </oui-action-menu-item>
+            <oui-action-menu-item data-on-click="$ctrl.transfertCall($row)"
+                                  data-ng-if="$row.answered">
+                <span data-translate="telephony_alias_configuration_mode_calls_action_transfert"></span>
+            </oui-action-menu-item>
+            <oui-action-menu-item data-on-click="$ctrl.hangupCall($row)"
+                                  data-ng-if="$row.answered">
+                <span data-translate="telephony_alias_configuration_mode_calls_action_hangup"></span>
+            </oui-action-menu-item>
         </oui-action-menu>
     </oui-datagrid>
 </div><!-- calls -->

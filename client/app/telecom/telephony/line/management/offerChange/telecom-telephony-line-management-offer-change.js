@@ -8,6 +8,8 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'OfferChangeCtrl',
       },
     },
-    translations: ['common', 'telecom/telephony/line/management/offerChange'],
+    translations: [
+      'telecom/telephony/line/management/offerChange',
+    ],
   });
 });

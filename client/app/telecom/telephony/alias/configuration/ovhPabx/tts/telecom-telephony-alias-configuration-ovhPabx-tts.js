@@ -8,6 +8,8 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: '$ctrl',
       },
     },
-    translations: ['common', 'telecom/telephony/alias/configuration/ovhPabx/tts', '../components/telecom/telephony/group/number/feature/ovhPabx/tts'],
+    translations: [
+      'telecom/telephony/alias/configuration/ovhPabx/tts',
+    ],
   });
 });
