@@ -15,6 +15,7 @@ angular.module('managerApp').config(($stateProvider) => {
     },
     translations: [
       'telecom/telephony/alias/consumption/incomingCalls',
+      'telecom/telephony/service/consumption/incomingCalls',
     ],
   });
 });

@@ -10,6 +10,7 @@ angular.module('managerApp').config(($stateProvider) => {
     },
     translations: [
       'telecom/telephony/alias/consumption',
+      'telecom/telephony/service/consumption',
     ],
   });
 });
