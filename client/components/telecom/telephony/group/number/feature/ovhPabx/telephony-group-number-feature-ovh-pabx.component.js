@@ -24,8 +24,6 @@
         .then(x => x.default),
     );
 
-
-
     $translate.refresh();
   });
   angular.module('managerApp').component('telephonyNumberOvhPabx', {

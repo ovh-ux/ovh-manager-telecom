@@ -3,7 +3,7 @@ angular.module('managerApp').run(($translate, asyncLoader) => {
     import(`./translations/Messages_${$translate.use()}.xml`)
       .catch(() => import(`./translations/Messages_${$translate.fallbackLanguage()}.xml`))
       .then(x => x.default),
-  );;
+  );
   $translate.refresh();
 });
 angular.module('managerApp').directive('svaGenerator', ($q, $translatePartialLoader, $translate, $timeout, SvaGeneratorConfig) => {
