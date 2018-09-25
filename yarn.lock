@@ -7728,8 +7728,8 @@ ovh-angular-input-number-spinner@^2.1.0:
   resolved "https://registry.yarnpkg.com/ovh-angular-input-number-spinner/-/ovh-angular-input-number-spinner-2.1.1.tgz#5d4c1f98e006d1592713eb4d1385092d63050951"
 
 ovh-angular-line-diagnostics@^2.0.3:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/ovh-angular-line-diagnostics/-/ovh-angular-line-diagnostics-2.0.3.tgz#6f79b53cbe9c9bbb6187701b3ac288033b9e0f8d"
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/ovh-angular-line-diagnostics/-/ovh-angular-line-diagnostics-2.0.4.tgz#66dfe75123558bcbc28dc3a35fe9bfcc7f4d7049"
 
 ovh-angular-mondial-relay@^4.0.0:
   version "4.0.0"
@@ -8066,8 +8066,8 @@ pause-stream@^0.0.11:
     through "~2.3"
 
 pbkdf2@^3.0.3:
-  version "3.0.16"
-  resolved "https://registry.yarnpkg.com/pbkdf2/-/pbkdf2-3.0.16.tgz#7404208ec6b01b62d85bf83853a8064f8d9c2a5c"
+  version "3.0.17"
+  resolved "https://registry.yarnpkg.com/pbkdf2/-/pbkdf2-3.0.17.tgz#976c206530617b14ebb32114239f7b09336e93a6"
   dependencies:
     create-hash "^1.1.2"
     create-hmac "^1.1.4"
@@ -10289,8 +10289,8 @@ webpack@^4.17.1:
     webpack-sources "^1.2.0"
 
 webpack@^4.5.0:
-  version "4.20.0"
-  resolved "https://registry.yarnpkg.com/webpack/-/webpack-4.20.0.tgz#626551271362274e2e80991ad9de76f31f90e57d"
+  version "4.20.1"
+  resolved "https://registry.yarnpkg.com/webpack/-/webpack-4.20.1.tgz#c753c96809883a3d9f643b04152e0729a7a7f16d"
   dependencies:
     "@webassemblyjs/ast" "1.7.8"
     "@webassemblyjs/helper-module-context" "1.7.8"
