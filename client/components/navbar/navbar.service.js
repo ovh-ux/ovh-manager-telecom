@@ -3,7 +3,7 @@ class ManagerNavbarService {
     $q, $translate, $translatePartialLoader, $rootScope, LANGUAGES, MANAGER_URLS, REDIRECT_URLS,
     TARGET, URLS, OvhApiMe, OtrsPopupService, ssoAuthentication, PackMediator, telecomVoip,
     voipService, SmsMediator, OvhApiFreeFax, OvhApiOverTheBox, TelecomMediator,
-    NavbarNotificationService,
+    NavbarNotificationService, asyncLoader,
   ) {
     this.$q = $q;
     this.$translate = $translate;
@@ -24,6 +24,7 @@ class ManagerNavbarService {
     this.ovhApiOverTheBox = OvhApiOverTheBox;
     this.telecomMediator = TelecomMediator;
     this.navbarNotificationService = NavbarNotificationService;
+    this.asyncLoader = asyncLoader;
 
     this.$rootScope = $rootScope;
   }
@@ -593,8 +594,15 @@ class ManagerNavbarService {
       return baseNavbar;
     };
 
+    this.asyncLoader.addTranslations(
+      import(`../../app/common/translations/Messages_${this.$translate.use()}.xml`)
+        .catch(() => import(`../../app/common/translations/Messages_${this.$translate.fallbackLanguage()}.xml`))
+        .then(x => x.default),
+    );
+
     return this.$q
       .all({
+        translate: this.$translate.refresh(), // wait for common translations
         user: this.ovhApiMe.v6().get().$promise,
         notifications: this.navbarNotificationService.getNavbarContent(),
       })
