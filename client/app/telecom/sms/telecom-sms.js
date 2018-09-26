@@ -27,8 +27,7 @@ angular.module('managerApp').config(($stateProvider) => {
         .catch(() => $translate('sms_page_title', { name: $stateParams.serviceName })),
     },
     translations: [
-      'common',
-      'telecom/sms',
+      '../sms',
     ],
   });
 });

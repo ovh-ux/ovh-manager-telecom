@@ -12,9 +12,6 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'VoicemailPasswordCtrl',
       },
     },
-    translations: [
-      'common',
-      'telecom/telephony/service/voicemail/password',
-    ],
+    translations: ['../../../service/voicemail/password'],
   });
 });

@@ -8,6 +8,6 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'PortabilitiesCtrl',
       },
     },
-    translations: ['common', 'telecom/telephony/alias/portability/portabilities'],
+    translations: ['.'],
   });
 });

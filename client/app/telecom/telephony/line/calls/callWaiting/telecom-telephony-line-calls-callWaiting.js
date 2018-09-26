@@ -8,8 +8,6 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'LineCallWaitingCtrl',
       },
     },
-    translations: [
-      'telecom/telephony/line/calls/callWaiting',
-    ],
+    translations: ['.'],
   });
 });

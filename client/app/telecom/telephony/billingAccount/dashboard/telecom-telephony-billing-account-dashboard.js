@@ -8,8 +8,6 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'DashboardCtrl',
       },
     },
-    translations: [
-      'telecom/telephony/billingAccount/dashboard',
-    ],
+    translations: ['.'],
   });
 });

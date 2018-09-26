@@ -8,8 +8,6 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'RecordsOvhPabxCtrl',
       },
     },
-    translations: [
-      'telecom/telephony/alias/configuration/records/ovhPabx',
-    ],
+    translations: ['.'],
   });
 });

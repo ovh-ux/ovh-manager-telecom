@@ -8,9 +8,7 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'SmsOrder',
       },
     },
-    translations: [
-      'telecom/sms/order',
-    ],
+    translations: ['.'],
   });
 }).constant('SMS_ORDER_PREFIELDS_VALUES', [
   100,

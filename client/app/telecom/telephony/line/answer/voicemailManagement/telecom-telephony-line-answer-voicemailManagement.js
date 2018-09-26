@@ -12,6 +12,6 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'VoicemailManagementCtrl',
       },
     },
-    translations: ['common', 'telecom/telephony/service/voicemail/management', 'telecom/telephony/line/answer'],
+    translations: ['..', '../../../service/voicemail/management'],
   });
 });

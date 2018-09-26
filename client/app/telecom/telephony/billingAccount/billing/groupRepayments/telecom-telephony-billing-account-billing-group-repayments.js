@@ -7,7 +7,5 @@ angular.module('managerApp').config($stateProvider => $stateProvider.state('tele
       controllerAs: 'GroupRepaymentsCtrl',
     },
   },
-  translations: [
-    'telecom/telephony/billingAccount/billing/groupRepayments',
-  ],
+  translations: ['.'],
 }));

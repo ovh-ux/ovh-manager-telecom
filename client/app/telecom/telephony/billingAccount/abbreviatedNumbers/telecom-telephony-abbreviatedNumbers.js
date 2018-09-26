@@ -8,9 +8,6 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'AbbreviatedNumbersCtrl',
       },
     },
-    translations: [
-      'telecom/telephony/billingAccount',
-      'telecom/telephony/billingAccount/abbreviatedNumbers',
-    ],
+    translations: ['.', '..'],
   });
 });

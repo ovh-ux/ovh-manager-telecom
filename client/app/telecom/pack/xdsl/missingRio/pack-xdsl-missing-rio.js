@@ -8,8 +8,6 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'PackXdslMissingRio',
       },
     },
-    translations: [
-      'telecom/pack/xdsl/missingRio',
-    ],
+    translations: ['.'],
   });
 });

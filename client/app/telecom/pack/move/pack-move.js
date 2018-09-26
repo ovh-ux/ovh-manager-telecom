@@ -8,9 +8,6 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'PackMove',
       },
     },
-    translations: [
-      'telecom/pack/move',
-      'telecom/pack/move/contract',
-    ],
+    translations: ['.', './contract'],
   });
 });

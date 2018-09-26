@@ -8,9 +8,6 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'LogsCtrl',
       },
     },
-    translations: [
-      'common',
-      'telecom/telephony/service/assist/logs',
-    ],
+    translations: ['../../../service/assist/logs'],
   });
 });

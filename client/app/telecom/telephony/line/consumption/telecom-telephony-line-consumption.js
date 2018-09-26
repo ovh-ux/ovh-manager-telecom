@@ -9,12 +9,12 @@ angular.module('managerApp').config(($stateProvider) => {
       },
     },
     translations: [
-      'telecom/telephony/line/consumption',
-      'telecom/telephony/service/consumption',
-      'telecom/telephony/service/consumption/incomingCalls',
-      'telecom/telephony/service/consumption/outgoingCalls',
-      'telecom/telephony/service/consumption/incomingFax',
-      'telecom/telephony/service/consumption/outgoingFax',
+      '../consumption',
+      '../../service/consumption',
+      '../../service/consumption/incomingCalls',
+      '../../service/consumption/outgoingCalls',
+      '../../service/consumption/incomingFax',
+      '../../service/consumption/outgoingFax',
     ],
   });
 });

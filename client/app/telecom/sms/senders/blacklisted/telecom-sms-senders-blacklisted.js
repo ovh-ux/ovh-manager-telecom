@@ -8,8 +8,6 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'SmsSendersBlacklistedCtrl',
       },
     },
-    translations: [
-      'telecom/sms/senders/blacklisted',
-    ],
+    translations: ['.'],
   });
 });

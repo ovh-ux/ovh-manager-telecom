@@ -8,8 +8,6 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'OTBLogs',
       },
     },
-    translations: [
-      'telecom/overTheBox/logs',
-    ],
+    translations: ['.'],
   });
 });

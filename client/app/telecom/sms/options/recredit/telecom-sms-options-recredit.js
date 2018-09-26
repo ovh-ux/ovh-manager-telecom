@@ -8,8 +8,6 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'TelecomSmsOptionsRecreditCtrl',
       },
     },
-    translations: [
-      'telecom/sms/options/recredit',
-    ],
+    translations: ['.'],
   });
 });
