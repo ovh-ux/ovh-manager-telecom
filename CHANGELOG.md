@@ -1,3 +1,28 @@
+<a name="10.7.0"></a>
+# [10.7.0](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.6.5...v10.7.0) (2018-09-26)
+
+
+### Bug Fixes
+
+* **eslint:** fix lint errors ([9c61e56](https://github.com/ovh-ux/ovh-manager-telecom/commit/9c61e56))
+* **line-diagnostics:** add translations ([b04ce94](https://github.com/ovh-ux/ovh-manager-telecom/commit/b04ce94))
+* **navbar:** wait for common translations ([69240ce](https://github.com/ovh-ux/ovh-manager-telecom/commit/69240ce))
+* **oui-action-menu-item:** replace deprecated text attribute ([f0aa023](https://github.com/ovh-ux/ovh-manager-telecom/commit/f0aa023))
+* **package.json:** remove main entry ([dc4dd9a](https://github.com/ovh-ux/ovh-manager-telecom/commit/dc4dd9a))
+* **package.json:** remove unused dependencies ([80b234f](https://github.com/ovh-ux/ovh-manager-telecom/commit/80b234f))
+* **preload:** display translations when loaded ([1375472](https://github.com/ovh-ux/ovh-manager-telecom/commit/1375472))
+* **t41s-settings:** custom plug and phone settings ([2b0d243](https://github.com/ovh-ux/ovh-manager-telecom/commit/2b0d243))
+* lint some html files ([155dece](https://github.com/ovh-ux/ovh-manager-telecom/commit/155dece))
+* **telephony:** add translations files ([613c785](https://github.com/ovh-ux/ovh-manager-telecom/commit/613c785))
+* **telephony:** add translations files ([6c43635](https://github.com/ovh-ux/ovh-manager-telecom/commit/6c43635))
+* remove empty lines ([20b95e5](https://github.com/ovh-ux/ovh-manager-telecom/commit/20b95e5))
+* **telephony:** fix eslint errors ([422e87c](https://github.com/ovh-ux/ovh-manager-telecom/commit/422e87c))
+* **trads:** fix consumptions & fax translations ([217c50e](https://github.com/ovh-ux/ovh-manager-telecom/commit/217c50e))
+* **translations:** if requested language is unaivalable, use default ([5e80664](https://github.com/ovh-ux/ovh-manager-telecom/commit/5e80664))
+* **ui-router:** remove missing state translations ([6f60201](https://github.com/ovh-ux/ovh-manager-telecom/commit/6f60201))
+
+
+
 <a name="10.6.5"></a>
 ## [10.6.5](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.6.4...v10.6.5) (2018-09-14)
 
