@@ -12,5 +12,6 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'CampaignsCtrl',
       },
     },
+    translations: ['../../../service/fax/campaigns'],
   });
 });
