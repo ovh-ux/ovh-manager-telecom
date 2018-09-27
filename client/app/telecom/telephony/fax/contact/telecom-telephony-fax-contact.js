@@ -8,10 +8,6 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'ServiceContactCtrl',
       },
     },
-    translations: [
-      'common',
-      'telecom/telephony/fax',
-      'telecom/telephony/service/contact',
-    ],
+    translations: ['..', '../../service/contact'],
   });
 });

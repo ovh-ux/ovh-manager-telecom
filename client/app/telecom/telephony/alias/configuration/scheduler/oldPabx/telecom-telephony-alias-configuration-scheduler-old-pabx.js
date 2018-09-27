@@ -8,8 +8,6 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: '$ctrl',
       },
     },
-    translations: [
-      'telecom/telephony/alias/configuration/scheduler/oldPabx',
-    ],
+    translations: ['.'],
   });
 });

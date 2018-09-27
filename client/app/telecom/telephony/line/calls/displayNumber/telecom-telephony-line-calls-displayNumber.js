@@ -8,8 +8,6 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'LineDisplayNumberCtrl',
       },
     },
-    translations: [
-      'telecom/telephony/line/calls/displayNumber',
-    ],
+    translations: ['.'],
   });
 });

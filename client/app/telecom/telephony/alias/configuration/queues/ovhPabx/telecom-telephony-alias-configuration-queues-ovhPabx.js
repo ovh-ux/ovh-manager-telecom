@@ -8,6 +8,6 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'QueuesOvhPabxCtrl',
       },
     },
-    translations: ['telecom/telephony/alias/configuration/queues'],
+    translations: ['..'],
   });
 });

@@ -8,8 +8,6 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'LineAnswerCtrl',
       },
     },
-    translations: [
-      'telecom/telephony/line/answer',
-    ],
+    translations: ['.'],
   });
 });

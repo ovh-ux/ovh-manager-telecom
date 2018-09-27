@@ -11,8 +11,6 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'AliasOrderCtrl',
       },
     },
-    translations: [
-      'telecom/telephony/billingAccount/orderAlias',
-    ],
+    translations: ['.'],
   });
 });

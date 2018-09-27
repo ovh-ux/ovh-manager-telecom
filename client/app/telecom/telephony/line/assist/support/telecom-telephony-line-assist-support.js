@@ -8,6 +8,6 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'SupportCtrl',
       },
     },
-    translations: ['common', 'telecom/telephony/service/assist/support'],
+    translations: ['../../../service/assist/support'],
   });
 });

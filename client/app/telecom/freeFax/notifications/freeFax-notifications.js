@@ -9,6 +9,6 @@ angular.module('managerApp').config(($stateProvider) => {
         noTranslations: true,
       },
     },
-    translations: ['common', 'telecom/freeFax'],
+    translations: ['../../freeFax'],
   });
 });

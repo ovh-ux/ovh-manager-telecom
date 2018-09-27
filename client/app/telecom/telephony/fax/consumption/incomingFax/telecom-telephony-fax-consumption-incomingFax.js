@@ -12,9 +12,9 @@ angular.module('managerApp').config(($stateProvider) => {
       },
     },
     translations: [
-      'telecom/telephony/fax/consumption/incomingFax',
-      'telecom/telephony/service/consumption',
-      'telecom/telephony/service/consumption/incomingFax',
+      '.',
+      '../../../service/consumption',
+      '../../../service/consumption/incomingFax',
     ],
   });
 });

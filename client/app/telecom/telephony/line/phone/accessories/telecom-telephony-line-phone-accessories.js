@@ -32,8 +32,6 @@ angular.module('managerApp').config(($stateProvider) => {
         noTranslations: true,
       },
     },
-    translations: [
-      'telecom/telephony/line/phone/accessories',
-    ],
+    translations: ['.'],
   });
 });

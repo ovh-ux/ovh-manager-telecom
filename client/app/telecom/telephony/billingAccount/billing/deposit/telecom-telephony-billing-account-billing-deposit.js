@@ -8,8 +8,6 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'BillingDepositCtrl',
       },
     },
-    translations: [
-      'telecom/telephony/billingAccount/billing/deposit',
-    ],
+    translations: ['.'],
   });
 });

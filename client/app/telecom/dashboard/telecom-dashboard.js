@@ -20,7 +20,7 @@ angular.module('managerApp').config(($stateProvider) => {
         noTranslations: true,
       },
     },
-    translations: ['common', 'telecom/dashboard'],
+    translations: ['.'],
     resolve: {
       $title(translations, $translate) {
         return $translate('telecom_dashboard_page_title');

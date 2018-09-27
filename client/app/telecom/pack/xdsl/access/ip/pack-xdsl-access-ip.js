@@ -8,12 +8,6 @@ angular.module('managerApp').config(($stateProvider) => {
         templateUrl: 'app/telecom/pack/xdsl/access/ip/pack-xdsl-access-ip.html',
       },
     },
-    translations: [
-      'common',
-      'telecom/pack/xdsl',
-      'telecom/pack/xdsl/access',
-      'telecom/pack/xdsl/access/ip',
-      'telecom/pack/xdsl/access/ip/order',
-    ],
+    translations: ['.', './order'],
   });
 });

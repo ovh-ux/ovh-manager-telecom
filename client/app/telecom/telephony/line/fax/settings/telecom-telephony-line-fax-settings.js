@@ -12,6 +12,5 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'SettingsCtrl',
       },
     },
-    translations: ['common'],
   });
 });

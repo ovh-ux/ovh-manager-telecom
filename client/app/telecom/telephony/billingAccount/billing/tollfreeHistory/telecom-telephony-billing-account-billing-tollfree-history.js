@@ -8,8 +8,6 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'TollfreeHistoryCtrl',
       },
     },
-    translations: [
-      'telecom/telephony/billingAccount/billing/tollfreeHistory',
-    ],
+    translations: ['.'],
   });
 });

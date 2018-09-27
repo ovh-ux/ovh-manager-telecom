@@ -8,6 +8,6 @@ angular.module('managerApp').config(($stateProvider) => {
         templateUrl: 'app/telecom/pack/xdsl/access/diagnostic/pack-xdsl-access-diagnostic.html',
       },
     },
-    translations: ['common', 'telecom/pack/xdsl/access/diagnostic'],
+    translations: ['.'],
   });
 });
