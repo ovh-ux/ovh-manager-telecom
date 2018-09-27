@@ -14,8 +14,6 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: '$ctrl',
       },
     },
-    translations: [
-      'telecom/telephony/service/fax/convertToVoicefax',
-    ],
+    translations: ['../../../service/fax/convertToVoicefax'],
   });
 });

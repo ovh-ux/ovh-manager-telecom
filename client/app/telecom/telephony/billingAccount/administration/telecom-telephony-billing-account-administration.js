@@ -8,9 +8,6 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'BillingAccountAdministrationCtrl',
       },
     },
-    translations: [
-      'telecom/telephony/billingAccount/administration',
-      'telecom/telephony/billingAccount/billing',
-    ],
+    translations: ['.', '../billing'],
   });
 });

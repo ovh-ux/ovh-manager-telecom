@@ -9,7 +9,7 @@ angular.module('managerApp').config(($stateProvider) => {
       },
     },
     translations: [
-      'telecom/sms/users',
+      '../../sms/users',
     ],
   });
 });

@@ -6,8 +6,6 @@ angular.module('managerApp').config(($stateProvider) => {
         templateUrl: 'app/telecom/telephony/alias/special/telecom-telephony-alias-special.html',
       },
     },
-    translations: [
-      'telecom/telephony/alias/special',
-    ],
+    translations: ['.'],
   });
 });

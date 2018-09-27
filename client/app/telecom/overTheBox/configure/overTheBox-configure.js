@@ -9,9 +9,7 @@ angular.module('managerApp').config(($stateProvider, $urlRouterProvider) => {
         controllerAs: 'OverTheBoxConfigure',
       },
     },
-    translations: [
-      'telecom/overTheBox/configure',
-    ],
+    translations: ['.'],
   });
 
   // special redirection for /configure/overTheBox which is inside internal OTB UX

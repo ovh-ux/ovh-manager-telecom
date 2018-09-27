@@ -46,11 +46,10 @@ angular.module('managerApp').config(($stateProvider) => {
       },
     },
     translations: [
-      'common',
-      'telecom/pack',
-      'telecom/pack/common',
-      'telecom/task',
-      'telecom/pack/slots/emailPro',
+      '.',
+      './common',
+      '../task',
+      '../pack/slots/emailPro',
     ],
   });
 });

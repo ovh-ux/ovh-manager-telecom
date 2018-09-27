@@ -38,8 +38,6 @@ angular.module('managerApp').config(($stateProvider) => {
         noTranslations: true,
       },
     },
-    translations: [
-      'telecom/pack/migration',
-    ],
+    translations: ['.'],
   });
 });

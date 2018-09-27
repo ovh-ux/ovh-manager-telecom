@@ -8,7 +8,7 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'ConfigWifiCtrl',
       },
     },
-    translations: ['common', 'telecom/pack/xdsl/modem/wifi/config'],
+    translations: ['.'],
     params: {
       wifi: null,
     },

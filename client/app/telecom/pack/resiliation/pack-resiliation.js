@@ -8,8 +8,6 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'PackResiliation',
       },
     },
-    translations: [
-      'telecom/pack/resiliation',
-    ],
+    translations: ['.'],
   });
 });

@@ -910,9 +910,9 @@
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.2.tgz#54c5a964462be3d4d78af631363c18d6fa91ac26"
 
-"@ovh-ux/manager-webpack-config@^1.0.0":
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/@ovh-ux/manager-webpack-config/-/manager-webpack-config-1.1.2.tgz#1824824cf913bd2b52b39c043d643f9121655a87"
+"@ovh-ux/manager-webpack-config@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@ovh-ux/manager-webpack-config/-/manager-webpack-config-2.0.0.tgz#7b47a76acf423c4b3bc29f278c5f59d6a31fd67d"
   dependencies:
     "@babel/core" "^7.0.0"
     "@babel/generator" "^7.0.0"

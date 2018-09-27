@@ -8,8 +8,6 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'Click2CallChangePasswordCtrl',
       },
     },
-    translations: [
-      'telecom/telephony/line/calls/click2Call/change-password',
-    ],
+    translations: ['.'],
   });
 });

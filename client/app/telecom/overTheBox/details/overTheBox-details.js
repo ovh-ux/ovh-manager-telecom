@@ -14,11 +14,6 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'OverTheBoxDetails',
       },
     },
-    translations: [
-      'common',
-      'telecom/overTheBox/details',
-      'telecom/overTheBox/warning',
-      'telecom/overTheBox/remote',
-    ],
+    translations: ['.', '../warning', '../remote'],
   });
 });

@@ -5,7 +5,7 @@ angular.module('managerApp').config(($stateProvider) => {
     controller: 'TelecomCtrl',
     controllerAs: 'TelecomCtrl',
     abstract: true,
-    translations: ['common', 'telecom'],
+    translations: ['../common', '.'],
     resolve: {
       vipStatus($q, TelecomMediator) {
         // this can be totally async. We don't force it to be resolved before loading state.

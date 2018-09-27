@@ -17,9 +17,9 @@ angular.module('managerApp').config(($stateProvider) => {
       },
     },
     translations: [
-      'telecom/telephony/line',
-      'telecom/telephony/line/details',
-      'telecom/telephony/line/management',
+      '.',
+      './details',
+      './management',
     ],
     resolve: {
       currentLine($stateParams, OvhApiTelephony) {

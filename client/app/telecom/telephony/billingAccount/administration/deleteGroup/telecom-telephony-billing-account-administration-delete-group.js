@@ -8,9 +8,6 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'DeleteGroupCtrl',
       },
     },
-    translations: [
-      'telecom/telephony/billingAccount/administration',
-      'telecom/telephony/billingAccount/administration/deleteGroup',
-    ],
+    translations: ['.', '..'],
   });
 });

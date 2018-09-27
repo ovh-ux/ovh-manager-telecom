@@ -8,6 +8,6 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'PackVoipLineActivationCtrl',
       },
     },
-    translations: ['common', 'telecom/pack', 'telecom/pack/slots/voipLine/activation'],
+    translations: ['.'],
   });
 });

@@ -11,8 +11,6 @@ angular.module('managerApp').config(($stateProvider) => {
     params: {
       bookKey: null,
     },
-    translations: [
-      'telecom/sms/phonebooks',
-    ],
+    translations: ['.'],
   });
 });

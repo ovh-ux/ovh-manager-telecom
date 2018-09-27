@@ -8,8 +8,6 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'DetailCtrl',
       },
     },
-    translations: [
-      'telecom/pack/slots/hostedEmail/detail',
-    ],
+    translations: ['.'],
   });
 });
