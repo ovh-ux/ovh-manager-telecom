@@ -5,36 +5,35 @@
 @telephony-slot-available-color: rgb(26, 227, 135);
 
 .telecom-telephony {
+  footer.voip-action-bar {
+    background-color: rgba(70, 70, 70, 0.9);
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    padding: @padding-large-horizontal;
+    z-index: @zindex-modal-background;
+    font-size: 1.2em;
+  }
 
+  /* ----------  Special rules for action-bar  ---------- */
+  // medium rules (desktop)
+  @media (min-width: @screen-md-min) {
     footer.voip-action-bar {
-        background-color: rgba(70, 70, 70, 0.9);
-        position: fixed;
-        right: 0;
-        bottom: 0;
-        padding: @padding-large-horizontal;
-        z-index: @zindex-modal-background;
-        font-size: 1.2em;
+      left: 100% / 6;
     }
+  }
 
-    /*----------  Special rules for action-bar  ----------*/
-    // medium rules (desktop)
-    @media (min-width: @screen-md-min) {
-        footer.voip-action-bar {
-            left: 100% / 6;
-        }
+  // medium rules (tablet...)
+  @media (max-width: (@screen-md-min - 1)) {
+    footer.voip-action-bar {
+      left: 100% / 4;
     }
+  }
 
-    // medium rules (tablet...)
-    @media (max-width: (@screen-md-min - 1)) {
-        footer.voip-action-bar {
-            left: 100% / 4;
-        }
+  // small rules (phone)
+  @media (max-width: (@screen-sm-min - 1)) {
+    footer.voip-action-bar {
+      left: 0;
     }
-
-    // small rules (phone)
-    @media (max-width: (@screen-sm-min - 1)) {
-        footer.voip-action-bar {
-            left: 0;
-        }
-    }
+  }
 }
