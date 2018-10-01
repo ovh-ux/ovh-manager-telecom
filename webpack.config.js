@@ -3,11 +3,10 @@ const path = require('path');
 const fs = require('fs');
 const glob = require('glob');
 const _ = require('lodash');
+const webpackConfig = require('@ovh-ux/manager-webpack-config');
 
 const folder = './client/app/telecom';
 const bundles = {};
-
-const webpackConfig = require('@ovh-ux/manager-webpack-config');
 
 fs.readdirSync(folder).forEach((file) => {
   const stats = fs.lstatSync(`${folder}/${file}`);
@@ -20,7 +19,6 @@ fs.readdirSync(folder).forEach((file) => {
 });
 
 module.exports = (env = {}) => {
-  /* eslint-disable import/no-unresolved, import/no-extraneous-dependencies */
   const { config } = webpackConfig({
     template: './client/index.html',
     basePath: './client',
@@ -38,7 +36,6 @@ module.exports = (env = {}) => {
       ],
     },
   }, env);
-  /* eslint-enable */
 
   // Extra config files
   const extras = glob.sync('./.extras/**/*.js');
