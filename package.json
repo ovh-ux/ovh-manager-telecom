@@ -26,7 +26,7 @@
   "scripts": {
     "start": "webpack-dev-server",
     "build": "webpack --env.production",
-    "test": "eslint --quiet ./client",
+    "test": "yarn run lint",
     "lint": "run-p lint:css lint:js",
     "lint:css": "stylelint 'client/**/*.less' --fix",
     "lint:js": "eslint --quiet --fix ./client",
