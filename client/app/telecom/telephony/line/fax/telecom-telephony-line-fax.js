@@ -8,8 +8,6 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'LineFaxCtrl',
       },
     },
-    translations: [
-      'telecom/telephony/line/fax',
-    ],
+    translations: ['.'],
   });
 });

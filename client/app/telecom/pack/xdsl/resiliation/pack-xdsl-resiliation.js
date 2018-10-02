@@ -8,8 +8,6 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'PackXdslResiliation',
       },
     },
-    translations: [
-      'telecom/pack/xdsl/resiliation',
-    ],
+    translations: ['.'],
   });
 });

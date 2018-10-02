@@ -8,6 +8,6 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'DmzCtrl',
       },
     },
-    translations: ['common', 'telecom/pack/xdsl/modem/dmz'],
+    translations: ['.'],
   });
 });

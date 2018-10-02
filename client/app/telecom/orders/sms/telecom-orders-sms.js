@@ -12,9 +12,8 @@ angular.module('managerApp').config(($stateProvider) => {
       },
     },
     translations: [
-      'common',
-      'telecom/orders/sms',
-      'telecom/sms/order',
+      '.',
+      '../../sms/order',
     ],
   });
 });

@@ -8,6 +8,6 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'PackFaxActivationCtrl',
       },
     },
-    translations: ['common', 'telecom/pack/slots/voipEcoFax/activation'],
+    translations: ['.'],
   });
 });

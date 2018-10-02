@@ -10,6 +10,6 @@ angular.module('managerApp')
             templateUrl: 'app/telecom/pack/xdsl/access/notifications/pack-xdsl-access-notifications.html',
           },
         },
-        translations: ['common', 'telecom/pack/xdsl/access', 'telecom/pack/xdsl/access/notifications'],
+        translations: ['..', '.'],
       });
   });

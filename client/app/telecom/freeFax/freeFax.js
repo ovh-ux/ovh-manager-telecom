@@ -21,7 +21,7 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'FreeFax',
       },
     },
-    translations: ['common', 'telecom/freeFax'],
+    translations: ['.'],
     resolve: {
       $title(translations, $translate, $stateParams) {
         return $translate.instant('freefax_page_title', { name: $stateParams.serviceName }, null, null, 'escape');

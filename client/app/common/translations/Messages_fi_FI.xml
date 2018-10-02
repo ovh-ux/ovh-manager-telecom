@@ -38,7 +38,7 @@
    <translation id="common_field_error_required" qtlid="472294">Ole hyvä ja täytä tämä kenttä.</translation>
    <translation id="common_field_error_number" qtlid="472307">Syötä hyväksytty numeerinen arvo.</translation>
    <translation id="common_field_error_email" qtlid="472320">Syötä voimassa oleva sähköpostiosoite.</translation>
-   <translation id="common_field_error_min" qtlid="472333">Veuillez saisir une valeur plus grande ou égale à {{min}}.</translation>
+   <translation id="common_field_error_min" qtlid="472333">Syötä yhtä suuri tai suurempi arvo kuin {{min}}.</translation>
    <translation id="common_field_error_max" qtlid="472346">Syötä pienempi tai yhtä suuri arvo kuin {{max}}.</translation>
    <translation id="common_field_error_minlength" qtlid="472359">Syötä vähintään {{minlength}} merkkiä.</translation>
    <translation id="common_field_error_maxlength" qtlid="472372">Syötä enintään {{maxlength}} merkkiä.</translation>
@@ -424,7 +424,7 @@
    <translation id="country_KW" qtlid="188262">Kuwait</translation>
    <translation id="country_KY" qtlid="188275">Caymansaaret</translation>
    <translation id="country_KZ" qtlid="188288">Kazakstan</translation>
-   <translation id="country_LA" qtlid="188301">Laosin demokraattinen kansantasavalta</translation>
+   <translation id="country_LA" qtlid="501678">Lao, République Démocratique Populaire -</translation>
    <translation id="country_LB" qtlid="188314">Libanon</translation>
    <translation id="country_LC" qtlid="188327">Saint Lucia</translation>
    <translation id="country_LI" qtlid="188340">Liechtenstein</translation>

@@ -8,8 +8,6 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'RecordsEasyHuntingCtrl',
       },
     },
-    translations: [
-      'telecom/telephony/alias/configuration/records/easyHunting',
-    ],
+    translations: ['.'],
   });
 });

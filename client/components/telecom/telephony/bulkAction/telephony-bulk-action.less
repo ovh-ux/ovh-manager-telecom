@@ -1,64 +1,64 @@
 .bulk-action-modal {
-    .oui-search-input {
-        position: relative;
-        display: block;
+  .oui-search-input {
+    position: relative;
+    display: block;
 
-        .oui-input {
-            padding-left: 3.96rem;
+    .ovh-font {
+      position: absolute;
+      top: 8px;
+      left: 1px;
+      bottom: 1px;
+      width: 25px;
+      height: auto;
+      vertical-align: middle;
+      color: @oui-color-shuttle;
 
-            &:focus ~ .ovh-font::before {
-                color: #0090b1;
-            }
-        }
-
-        .ovh-font {
-            position: absolute;
-            top: 8px;
-            left: 1px;
-            bottom: 1px;
-            width: 25px;
-            height: auto;
-            vertical-align: middle;
-            color: @oui-color-shuttle;
-
-            &::before {
-                display: inline-block;
-                font-size: 2rem;
-                margin-left: 1rem;
-            }
-        }
+      &::before {
+        display: inline-block;
+        font-size: 2rem;
+        margin-left: 1rem;
+      }
     }
 
-    .list-group {
-        max-height: 350px;
-        overflow-y: auto;
-        border-top: 1px solid #DDD;
-        border-bottom: 1px solid #DDD;
+    .oui-input {
+      padding-left: 3.96rem;
 
-        .list-group-item {
-            &:first-child {
-                border-top: 0;
-            }
-
-            &:last-child {
-                border-bottom: 0;
-            }
-
-            .oui-checkbox .extra-description::before {
-                display: inline-block;
-                content: '-';
-                margin-right: 3px;
-            }
-        }
+      &:focus ~ .ovh-font::before {
+        color: #0090b1;
+      }
     }
+  }
 
-    .has-update {
-        background-color: @oui-color-info-fade !important;
-    }
+  .list-group {
+    max-height: 350px;
+    overflow-y: auto;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
 
-    .has-update_description {
-        color: #999 !important;
-        padding-left: 1rem;
-        font-style: italic !important;
+    .list-group-item {
+      &:first-child {
+        border-top: 0;
+      }
+
+      &:last-child {
+        border-bottom: 0;
+      }
+
+      .oui-checkbox .extra-description::before {
+        display: inline-block;
+        content: '-';
+        margin-right: 3px;
+      }
     }
+  }
+
+  .has-update {
+    background-color: @oui-color-info-fade !important;
+  }
+
+  .has-update_description {
+    color: #999 !important;
+    padding-left: 1rem;
+    font-style: italic !important;
+  }
 }

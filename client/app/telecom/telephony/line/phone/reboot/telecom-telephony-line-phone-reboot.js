@@ -8,8 +8,6 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'PhoneRebootCtrl',
       },
     },
-    translations: [
-      'telecom/telephony/line/phone/reboot',
-    ],
+    translations: ['.'],
   });
 });

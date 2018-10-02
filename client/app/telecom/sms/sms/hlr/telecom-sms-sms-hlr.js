@@ -8,9 +8,6 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'SmsHlrCtrl',
       },
     },
-    translations: [
-      'telecom/sms/dashboard',
-      'telecom/sms/sms/hlr',
-    ],
+    translations: ['../../dashboard', '.'],
   });
 });

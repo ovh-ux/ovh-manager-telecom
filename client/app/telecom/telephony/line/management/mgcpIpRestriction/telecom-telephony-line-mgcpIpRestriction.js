@@ -8,8 +8,6 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'MgcpIpRestrictionCtrl',
       },
     },
-    translations: [
-      'telecom/telephony/line/management/mgcpIpRestriction',
-    ],
+    translations: ['.'],
   });
 });

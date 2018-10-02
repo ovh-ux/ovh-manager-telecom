@@ -8,8 +8,6 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'Click2CallAddUserCtrl',
       },
     },
-    translations: [
-      'telecom/telephony/line/calls/click2Call/add-user',
-    ],
+    translations: ['.'],
   });
 });

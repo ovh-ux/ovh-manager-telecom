@@ -8,8 +8,6 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'CallsFilteringCtrl',
       },
     },
-    translations: [
-      'telecom/telephony/line/calls/filtering',
-    ],
+    translations: ['.'],
   });
 });
