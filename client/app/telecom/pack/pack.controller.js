@@ -102,11 +102,14 @@ angular.module('managerApp').controller('PackCtrl', class PackCtrl {
     return this.OvhApiPackXdsl.Aapi().get({ packId: this.$stateParams.packName })
       .$promise
       .then((packInfo) => {
-        this.pack = _.extend(
+        const service = _.first(packInfo.services);
+        this.pack = _.assign(
           packInfo.general,
           {
             informations: packInfo.detail,
-            mainAccess: _.head(packInfo.services),
+            mainAccess: _.assign(service, {
+              isFiberPack: _.includes(this.PACK.fiberAccess, service.accessType),
+            }),
           },
         );
         this.resiliationSuccess = this.resiliationNotification.success;

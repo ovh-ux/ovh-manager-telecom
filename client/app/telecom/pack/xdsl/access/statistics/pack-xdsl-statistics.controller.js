@@ -40,13 +40,19 @@ angular.module('managerApp').controller('XdslStatisticsCtrl', class XdslStatisti
       period: 'preview',
     };
 
-    return this.$q.all([
-      this.getSNRstatistics(this.snr.period)
-        .then(() => this.getAttenuationStatistics(this.attenuation.period)
-          .then(() => this.getSynchronizationStatistics(this.synchronization.period))),
-      this.getPingStatistics(this.ping.period)
-        .then(() => this.getTrafficStatistics(this.traffic.period)),
-    ]);
+    const PingStatsPromise = this.getPingStatistics(this.ping.period)
+      .then(() => this.getTrafficStatistics(this.traffic.period));
+
+    if (!this.$scope.access.xdsl.isFiber) {
+      return this.$q.all([
+        this.getSNRstatistics(this.snr.period)
+          .then(() => this.getAttenuationStatistics(this.attenuation.period)
+            .then(() => this.getSynchronizationStatistics(this.synchronization.period))),
+        PingStatsPromise,
+      ]);
+    }
+
+    return PingStatsPromise;
   }
 
   /**

@@ -204,7 +204,9 @@ angular.module('managerApp').controller('XdslAccessCtrl', class XdslAccessCtrl {
         xdslId: this.$stateParams.serviceName,
       }).$promise.then((access) => {
         this.$scope.loaders.xdsl = false;
-        this.$scope.access.xdsl = access;
+        this.$scope.access.xdsl = _.assign(access, {
+          isFiber: _.includes(this.PACK.fiberAccess, access.accessType),
+        });
         this.setStatusLabel(this.$scope.access.xdsl.status);
         return this.$scope.access.xdsl;
       }, (err) => {
