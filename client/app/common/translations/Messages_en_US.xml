@@ -119,7 +119,7 @@
    <translation id="common_country" qtlid="25171">Country</translation>
    <translation id="common_city" qtlid="33310">City</translation>
    <translation id="see" qtlid="103930">See </translation>
-   <translation id="common_zip_code" qtlid="30346">Postal code</translation>
+   <translation id="common_zip_code" qtlid="30346">Zip code</translation>
    <translation id="back" qtlid="4118">Back</translation>
    <translation id="contract_agree" qtlid="304563">I accept the conditions </translation>
    <translation id="contract_next" qtlid="17743">Next</translation>
@@ -424,7 +424,7 @@
    <translation id="country_KW" qtlid="188262">Kuwait</translation>
    <translation id="country_KY" qtlid="188275">Cayman Islands</translation>
    <translation id="country_KZ" qtlid="188288">Kazakhstan</translation>
-   <translation id="country_LA" qtlid="188301">Laos -</translation>
+   <translation id="country_LA" qtlid="501678">Lao, République Démocratique Populaire -</translation>
    <translation id="country_LB" qtlid="188314">Lebanon</translation>
    <translation id="country_LC" qtlid="188327">Saint-Lucia</translation>
    <translation id="country_LI" qtlid="188340">Liechtenstein</translation>

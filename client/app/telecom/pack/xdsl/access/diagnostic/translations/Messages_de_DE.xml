@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <translations>
-   <translation id="pack_xdsl_access_diagnostic_title">Diagnostic de votre ligne</translation>
+   <translation id="pack_xdsl_access_diagnostic_title" qtlid="501691">Diagnostic de votre ligne</translation>
    <translation id="pack_xdsl_access_diagnostic_wizard_title" qtlid="384818">Assistant de résolution de problèmes</translation>
 
    <translation id="pack_xdsl_access_diagnostic_launch" qtlid="310413">Lancer un diagnostic</translation>
