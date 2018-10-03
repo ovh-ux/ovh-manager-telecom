@@ -102,13 +102,13 @@ angular.module('managerApp').controller('PackCtrl', class PackCtrl {
     return this.OvhApiPackXdsl.Aapi().get({ packId: this.$stateParams.packName })
       .$promise
       .then((packInfo) => {
-        const service = _.first(packInfo.services);
+        const mainAccess = _.find(packInfo.services, service => service.role === 'main');
         this.pack = _.assign(
           packInfo.general,
           {
             informations: packInfo.detail,
-            mainAccess: _.assign(service, {
-              isFiberPack: _.includes(this.PACK.fiberAccess, service.accessType),
+            mainAccess: _.assign(mainAccess, {
+              isFiberPack: _.includes(this.PACK.fiberAccess, mainAccess.accessType),
             }),
           },
         );

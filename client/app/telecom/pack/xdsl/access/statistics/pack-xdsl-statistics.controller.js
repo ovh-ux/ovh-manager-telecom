@@ -15,10 +15,6 @@ angular.module('managerApp').controller('XdslStatisticsCtrl', class XdslStatisti
     this.XDSL = XDSL;
   }
 
-  /**
-   * Initialize the controller
-   * @return {Promise}
-   */
   $onInit() {
     this.charts = {};
 

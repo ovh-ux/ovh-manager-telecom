@@ -28,6 +28,7 @@ angular.module('managerApp').controller('XdslAccessCtrl', class XdslAccessCtrl {
 
   $onInit() {
     this.packName = this.$stateParams.packName;
+    this.number = this.$stateParams.number;
 
     this.$scope.loaders = {
       details: true,
@@ -45,23 +46,8 @@ angular.module('managerApp').controller('XdslAccessCtrl', class XdslAccessCtrl {
       rangeOfBaseIpv4IP: this.PACK_IP.baseIpv4Range,
     };
 
-    this.init();
-  }
-
-  init() {
-    this.number = this.$stateParams.number;
-
     this.getLinesDetails();
-
-    /* eslint-disable max-len */
-    this.$templateCache.put('pack-xdsl-access-tooltip-dslam.html', '<div class="tooltip-description" data-translate="xdsl_access_dslam_reset_description"></div><div class="text-warning" data-translate="xdsl_access_dslam_reset_warning"></div>');
-    this.$templateCache.put('pack-xdsl-access-tooltip-lnsApply.html', '<div class="tooltip-description" data-translate="xdsl_access_lns_ratelimit_description"></div><div class="text-warning" data-translate="xdsl_access_lns_ratelimit_warning"></div>');
-    this.$templateCache.put('pack-xdsl-access-tooltip-lns.html', '<div class="tooltip-description" data-translate="xdsl_access_lns_description"></div><div class="text-warning" data-translate="xdsl_access_lns_warning"></div>');
-    this.$templateCache.put('pack-xdsl-access-tooltip-deconsolidation.html', "<div class=\"tooltip-description\" data-ng-bind=\" ('xdsl_access_deconsolidation_warning_' + XdslAccess.lineDetails.deconsolidation) | translate\"></div>");
-    this.$templateCache.put('pack-xdsl-access-tooltip-ipDelete.html', '<div class="tooltip-description" data-translate="xdsl_details_ips_remove_only_extra"></div>');
-    this.$templateCache.put('pack-xdsl-access-tooltip-ips.html', '<div class="tooltip-description" data-translate="xdsl_access_ipv6_description"></div><div class="text-warning" data-translate="xdsl_access_ipv6_warning"></div>');
-    this.$templateCache.put('pack-xdsl-access-tooltip-dslamProfile.html', '<div class="text-left"><p data-translate="xdsl_access_profile_tooltip_interleaved"></p><p data-translate="xdsl_access_profile_tooltip_fast"></p><p data-translate="xdsl_access_profile_tooltip_ginp"></p><p data-translate="xdsl_access_profile_tooltip_auto"></p><p data-translate="xdsl_access_profile_tooltip_snr"></p><p class="text-warning" data-translate="xdsl_access_profile_tooltip_time"></p></div>');
-    /* eslint-enable max-len */
+    this.initTemplateCaches();
 
     this.$scope.notificationsChanged = (elements) => {
       if (this.$scope.access) {
@@ -74,6 +60,18 @@ angular.module('managerApp').controller('XdslAccessCtrl', class XdslAccessCtrl {
         this.$scope.access.xdsl.description = data.description;
       }
     });
+  }
+
+  initTemplateCaches() {
+    /* eslint-disable max-len */
+    this.$templateCache.put('pack-xdsl-access-tooltip-dslam.html', '<div class="tooltip-description" data-translate="xdsl_access_dslam_reset_description"></div><div class="text-warning" data-translate="xdsl_access_dslam_reset_warning"></div>');
+    this.$templateCache.put('pack-xdsl-access-tooltip-lnsApply.html', '<div class="tooltip-description" data-translate="xdsl_access_lns_ratelimit_description"></div><div class="text-warning" data-translate="xdsl_access_lns_ratelimit_warning"></div>');
+    this.$templateCache.put('pack-xdsl-access-tooltip-lns.html', '<div class="tooltip-description" data-translate="xdsl_access_lns_description"></div><div class="text-warning" data-translate="xdsl_access_lns_warning"></div>');
+    this.$templateCache.put('pack-xdsl-access-tooltip-deconsolidation.html', "<div class=\"tooltip-description\" data-ng-bind=\" ('xdsl_access_deconsolidation_warning_' + XdslAccess.lineDetails.deconsolidation) | translate\"></div>");
+    this.$templateCache.put('pack-xdsl-access-tooltip-ipDelete.html', '<div class="tooltip-description" data-translate="xdsl_details_ips_remove_only_extra"></div>');
+    this.$templateCache.put('pack-xdsl-access-tooltip-ips.html', '<div class="tooltip-description" data-translate="xdsl_access_ipv6_description"></div><div class="text-warning" data-translate="xdsl_access_ipv6_warning"></div>');
+    this.$templateCache.put('pack-xdsl-access-tooltip-dslamProfile.html', '<div class="text-left"><p data-translate="xdsl_access_profile_tooltip_interleaved"></p><p data-translate="xdsl_access_profile_tooltip_fast"></p><p data-translate="xdsl_access_profile_tooltip_ginp"></p><p data-translate="xdsl_access_profile_tooltip_auto"></p><p data-translate="xdsl_access_profile_tooltip_snr"></p><p class="text-warning" data-translate="xdsl_access_profile_tooltip_time"></p></div>');
+    /* eslint-enable max-len */
   }
 
   setStatusLabel(status) {
