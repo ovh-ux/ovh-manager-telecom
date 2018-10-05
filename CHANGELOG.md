@@ -1,3 +1,13 @@
+<a name="10.7.3"></a>
+## [10.7.3](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.7.2...v10.7.3) (2018-10-05)
+
+
+### Bug Fixes
+
+* **telephony:** fix troubleshooting translations ([8b34392](https://github.com/ovh-ux/ovh-manager-telecom/commit/8b34392))
+
+
+
 <a name="10.7.2"></a>
 ## [10.7.2](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.7.1...v10.7.2) (2018-10-05)
 
