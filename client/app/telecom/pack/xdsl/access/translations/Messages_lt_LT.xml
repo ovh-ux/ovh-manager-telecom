@@ -36,7 +36,7 @@
    <translation id="xdsl_details_button_move" qtlid="308788">Perkelti</translation>
    <translation id="xdsl_details_button_move_disabled" qtlid="384909">Perkėlimas užsakomas</translation>
    <translation id="xdsl_details_button_deconsolidation" qtlid="79338">Visiškas pergrupavimas</translation>
-   <translation id="xdsl_details_button_diagnostic">Lancer le diagnostic</translation>
+   <translation id="xdsl_details_button_diagnostic" qtlid="291357">Inicijuoti diagnostiką</translation>
    <translation id="xdsl_details_button_ipv4" qtlid="44284">Reverse DNS</translation>
    <translation id="xdsl_details_button_ipv6" qtlid="44284">Reverse DNS</translation>
    <translation id="xdsl_details_add_dns" qtlid="309659">Pridėti DNS reverse</translation>

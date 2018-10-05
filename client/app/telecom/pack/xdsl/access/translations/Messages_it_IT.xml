@@ -36,7 +36,7 @@
    <translation id="xdsl_details_button_move" qtlid="308788">Trasferisci</translation>
    <translation id="xdsl_details_button_move_disabled" qtlid="384909">Richiesta di trasferimento in corso...</translation>
    <translation id="xdsl_details_button_deconsolidation" qtlid="79338">Separazione totale</translation>
-   <translation id="xdsl_details_button_diagnostic">Lancer le diagnostic</translation>
+   <translation id="xdsl_details_button_diagnostic" qtlid="291357">Avvia la diagnostica</translation>
    <translation id="xdsl_details_button_ipv4" qtlid="44284">Reverse DNS</translation>
    <translation id="xdsl_details_button_ipv6" qtlid="44284">Reverse DNS</translation>
    <translation id="xdsl_details_add_dns" qtlid="309659">Aggiungi un reverse DNS</translation>

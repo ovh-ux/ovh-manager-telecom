@@ -4,7 +4,7 @@
    <translation id="email_pro_detail_change_password_error" qtlid="384298">Oups ! Le changement de mot de passe a échoué.</translation>
    <translation id="email_pro_detail_change_password_success" qtlid="384311">Votre nouveau mot de passe a été modifié sur le compte {{email}}.</translation>
    <translation id="email_pro_detail_title" qtlid="496876">xDSL E-mail {{name}}</translation>
-   <translation id="email_pro_detail_general_information" qtlid="27115">Informations générales</translation>
+   <translation id="email_pro_detail_general_information" qtlid="27115">Información general</translation>
    <translation id="email_pro_detail_client_change_password" qtlid="8434">Modifier le mot de passe</translation>
 
    <translation id="email_pro_detail_active" qtlid="55133">Actif</translation>

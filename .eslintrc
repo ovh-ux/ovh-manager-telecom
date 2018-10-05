@@ -1,32 +1,32 @@
 {
-    "root": true,
-    "extends": "airbnb-base",
-    "parser": "babel-eslint",
-    "plugins": ["angular"],
-    "env": {
-        "browser": true,
-        "jasmine": true,
-        "mocha": true,
-        "jquery": true,
-        "angular/mocks": true
-    },
-    "globals": {
-        "_": true,
-        "$": true,
-        "JSURL": true,
-        "angular": true,
-        "moment": true,
-        "punycode": true,
-        "URI": true,
-        "ipaddr": true,
-        "JustGage": true,
-        "validator": true,
-        "CSV": true,
-        "jsPlumb": true,
-        "jsPlumbUtil": true,
-        "Raven": true
-    },
-    "rules": {
-        "no-underscore-dangle": 0
-    }
+  "root": true,
+  "extends": "airbnb-base",
+  "parser": "babel-eslint",
+  "plugins": ["angular"],
+  "env": {
+    "browser": true,
+    "jasmine": true,
+    "mocha": true,
+    "jquery": true,
+    "angular/mocks": true
+  },
+  "globals": {
+    "_": true,
+    "$": true,
+    "JSURL": true,
+    "angular": true,
+    "moment": true,
+    "punycode": true,
+    "URI": true,
+    "ipaddr": true,
+    "JustGage": true,
+    "validator": true,
+    "CSV": true,
+    "jsPlumb": true,
+    "jsPlumbUtil": true,
+    "Raven": true
+  },
+  "rules": {
+    "no-underscore-dangle": 0
+  }
 }

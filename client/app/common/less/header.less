@@ -1,29 +1,33 @@
 #content {
-    :not(.widget-presentation) {
-        header:not(.widget-presentation-header):not(.page-header) {
-            margin: 32px 32px 16px;
-            h1 {
-                line-height: inherit;
-            }
-            dl {
-                font-size: 1.1em;
-                dt,dd {
-                    display: inline-block;
-                }
+  :not(.widget-presentation) {
+    header:not(.widget-presentation-header):not(.page-header) {
+      margin: 32px 32px 16px;
 
-                dd {
-                    color: @gray-base;
-                }
+      h1 {
+        line-height: inherit;
+      }
 
-                dt {
-                    font-weight: 500;
-                    font-size: 1.1em;
+      dl {
+        font-size: 1.1em;
 
-                    &:after {
-                        content: " : ";
-                    }
-                }
-            }
+        dt,
+        dd {
+          display: inline-block;
         }
-	}
+
+        dd {
+          color: @gray-base;
+        }
+
+        dt {
+          font-weight: 500;
+          font-size: 1.1em;
+
+          &::after {
+            content: " : ";
+          }
+        }
+      }
+    }
+  }
 }
