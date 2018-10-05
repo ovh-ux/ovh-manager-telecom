@@ -9116,9 +9116,9 @@ ovh-angular-line-diagnostics@^2.0.3:
   integrity sha512-NdaEy6544DxtIQzkPh0bEDhrT4CvMjkQqDySjuypfyN1q2DifJDFyf9PEONuJxO6WqLNUl84r7suJK9pshkNXQ==
 
 ovh-angular-mondial-relay@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/ovh-angular-mondial-relay/-/ovh-angular-mondial-relay-4.0.0.tgz#92d7a0f7d76b573d3483ea0be1527f038ea518cc"
-  integrity sha1-kteg99drVz00g+oL4VJ/A46lGMw=
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/ovh-angular-mondial-relay/-/ovh-angular-mondial-relay-4.1.0.tgz#2b07d4556fa9800f2fc5e8403d7e3b42ec3fef98"
+  integrity sha512-IjnIjJ07eyZGp/MHs6PmNLw5WY7H7vZpa1MBTqzUcbGBnnXv8Uy2qsVFfeR3naIBvMTBvQpOmamv4R9mxyxqYg==
 
 ovh-angular-otrs@^6.0.1:
   version "6.1.3"
