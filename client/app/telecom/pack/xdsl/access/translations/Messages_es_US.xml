@@ -14,7 +14,7 @@
    <translation id="xdsl_details_LNS" qtlid="45520">LNS</translation>
    <translation id="xdsl_resiliate" qtlid="48646">Dar de baja</translation>
 
-   <translation id="xdsl_details_title" qtlid="27115">Informations générales</translation>
+   <translation id="xdsl_details_title" qtlid="27115">Información general</translation>
    <translation id="xdsl_details_connection_title" qtlid="55925">Connexion</translation>
 
    <translation id="xdsl_details_caracteristics" qtlid="309568">Caractéristiques</translation>
@@ -36,7 +36,7 @@
    <translation id="xdsl_details_button_move" qtlid="308788">Déménager</translation>
    <translation id="xdsl_details_button_move_disabled" qtlid="384909">Demande de déménagement en cours</translation>
    <translation id="xdsl_details_button_deconsolidation" qtlid="79338">Dégroupage total</translation>
-   <translation id="xdsl_details_button_diagnostic">Lancer le diagnostic</translation>
+   <translation id="xdsl_details_button_diagnostic" qtlid="291357">Iniciar el diagnóstico</translation>
    <translation id="xdsl_details_button_ipv4" qtlid="44284">DNS inversa</translation>
    <translation id="xdsl_details_button_ipv6" qtlid="44284">DNS inversa</translation>
    <translation id="xdsl_details_add_dns" qtlid="309659">Ajouter un reverse DNS</translation>

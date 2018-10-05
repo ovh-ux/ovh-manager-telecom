@@ -60,7 +60,7 @@
    <translation id="pack_move_eligibility_address_more" qtlid="312987">Plus de précisions</translation>
 
    <translation id="pack_move_eligibility_number" qtlid="152505">Telephone number</translation>
-   <translation id="pack_move_eligibility_zipcode" qtlid="30346">Postal code</translation>
+   <translation id="pack_move_eligibility_zipcode" qtlid="30346">Zip code</translation>
    <translation id="pack_move_eligibility_city" qtlid="33310">City</translation>
    <translation id="pack_move_eligibility_street" qtlid="152518">Street</translation>
    <translation id="pack_move_eligibility_street_number" qtlid="30778">Number</translation>

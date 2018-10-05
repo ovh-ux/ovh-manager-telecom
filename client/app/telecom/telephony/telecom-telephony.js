@@ -33,6 +33,6 @@ angular.module('managerApp').config(($stateProvider) => {
         }).$promise.then(data => $translate.instant('telephony_page_title', { name: data.description || $stateParams.billingAccount }, null, null, 'escape')).catch(() => $translate('telephony_page_title', { name: $stateParams.billingAccount }));
       },
     },
-    translations: ['./billingAccount', './billingAccount/dashboard'],
+    translations: ['.', './billingAccount', './billingAccount/dashboard'],
   });
 });

@@ -40,7 +40,7 @@
    <translation id="telephony_alias_portability_order_contact_country_france" qtlid="29047">France</translation>
    <translation id="telephony_alias_portability_order_contact_country_belgium" qtlid="29059">Belgium</translation>
    <translation id="telephony_alias_portability_order_contact_country_switzerland" qtlid="40954">Switzerland</translation>
-   <translation id="telephony_alias_portability_order_contact_zip" qtlid="30346">Postal code</translation>
+   <translation id="telephony_alias_portability_order_contact_zip" qtlid="30346">Zip code</translation>
    <translation id="telephony_alias_portability_order_contact_zip_pattern_error" qtlid="460886">Code postal invalide.</translation>
    <translation id="telephony_alias_portability_order_contact_city" qtlid="33310">City</translation>
    <translation id="telephony_alias_portability_order_contact_street_number" qtlid="459560">Numéro de voie</translation>

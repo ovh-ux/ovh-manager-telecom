@@ -56,7 +56,7 @@
 
    <translation id="telephony_line_actions_line_calls_trunk_simultaneous_chart_legend_current" qtlid="103137">Současná</translation>
    <translation id="telephony_line_actions_line_calls_trunk_simultaneous_chart_legend_pending" qtlid="479811">1er du mois suivant</translation>
-   <translation id="telephony_line_actions_line_calls_trunk_simultaneous_chart_legend_new" qtlid="479824">Nouvelle</translation>
+   <translation id="telephony_line_actions_line_calls_trunk_simultaneous_chart_legend_new" qtlid="479824">Nový</translation>
    <translation id="telephony_line_actions_line_calls_trunk_simultaneous_channels_price_per_month" qtlid="479837">/ par mois</translation>
    <translation id="telephony_line_actions_line_calls_trunk_simultaneous_channels_bandwidth_rate" qtlid="479850">{{bandwidth}} Kbps</translation>
 
