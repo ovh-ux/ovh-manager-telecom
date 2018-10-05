@@ -104,6 +104,14 @@ angular.module('managerApp').service('PackMigrationProcess', function ($q, OvhAp
       });
     }
 
+    // building details post params
+    postParams.buildingReference = migrationProcess.selectedOffer.buildingReference;
+    postParams.stair = migrationProcess.selectedOffer.stair;
+    postParams.floor = migrationProcess.selectedOffer.floor;
+
+    // engage months post params
+    postParams.engageMonths = migrationProcess.selectedOffer.engageMonths;
+
     return OvhApiPackXdsl.v6().migrate({
       packName: migrationProcess.pack.packName,
     }, postParams).$promise;
@@ -181,6 +189,7 @@ angular.module('managerApp').service('PackMigrationProcess', function ($q, OvhAp
             })));
           });
           _.set(offer, 'options', _.indexBy(offer.options, 'name'));
+          _.set(offer, 'buildings', pollResult.result.buildings);
           return offer;
         }));
       }
@@ -198,7 +207,9 @@ angular.module('managerApp').service('PackMigrationProcess', function ($q, OvhAp
 
   self.selectOffer = function (offer) {
     migrationProcess.selectedOffer = offer;
-    if (migrationProcess.selectedOffer.totalSubServiceToDelete > 0) {
+    if (migrationProcess.selectedOffer.offerName.toLowerCase().includes('ftth')) {
+      migrationProcess.currentStep = 'buildingDetails';
+    } else if (migrationProcess.selectedOffer.totalSubServiceToDelete > 0) {
       migrationProcess.currentStep = 'serviceDelete';
     } else if (migrationProcess.selectedOffer.needNewModem) {
       migrationProcess.currentStep = 'shipping';

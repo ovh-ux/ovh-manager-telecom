@@ -1,0 +1,69 @@
+<div class="telecom-pack-migration-shipping">
+    <div class="row">
+        <div class="col-xs-12 col-md-6">
+            <div class="widget-presentation">
+                <!-- LOADER -->
+                <div class="text-center" data-ng-if="$ctrl.loading.init">
+                    <oui-spinner></oui-spinner>
+                </div>
+
+                <div data-ng-if="!$ctrl.loading.init" class="container">
+                    <div>
+                        <span data-translate="telecom_pack_migration_building_details_select_engagment"></span>
+                        <oui-radio name="engagement"
+                                   data-ng-repeat="engageMonths in $ctrl.process.selectedOffer.engagementMonths"
+                                   data-value="engageMonths" model="$ctrl.model.engageMonths">{{engageMonths}} {{
+                            'telecom_pack_migration_building_details_engagment_month' | translate }}
+                        </oui-radio>
+                    </div>
+
+                    <div>
+                        <span data-translate="telecom_pack_migration_building_details_select_building"></span>
+                        <oui-select name="building" data-model="$ctrl.model.selectedBuilding"
+                                    data-title="{{'telecom_pack_migration_building_details_select_a_building' | translate}}"
+                                    placeholder="{{'telecom_pack_migration_building_details_select_a_building' | translate}}"
+                                    data-items="$ctrl.process.selectedOffer.buildings" required data-match="name"
+                                    data-on-change="$ctrl.changeSelection()">
+                            <span ng-bind="$item.name"></span>
+                        </oui-select>
+                    </div>
+
+                    <div ng-if="$ctrl.model.selectedBuilding != null">
+                        <span data-translate="telecom_pack_migration_building_details_select_stair"></span>
+                        <oui-select name="stair" data-model="$ctrl.model.selectedStair"
+                                    data-title="{{'telecom_pack_migration_building_details_select_a_stair' | translate}}"
+                                    placeholder="{{'telecom_pack_migration_building_details_select_a_stair' | translate}}"
+                                    data-items="$ctrl.model.selectedBuilding.stairs" data-align="start" data-match="stair.label"
+                                    data-on-change="$ctrl.changeSelection(true)">
+                            <span ng-bind="$item.stair.label"></span>
+                        </oui-select>
+                    </div>
+
+                    <div ng-if="$ctrl.model.selectedStair != null">
+                        <span data-translate="telecom_pack_migration_building_details_select_floor"></span>
+                        <oui-select name="floor"data- model="$ctrl.model.selectedFloor"
+                                    data-title="{{'telecom_pack_migration_building_details_select_a_floor' | translate}}"
+                                    placeholder="{{'telecom_pack_migration_building_details_select_a_floor' | translate}}"
+                                    data-items="$ctrl.model.selectedStair.floors" data-align="start" data-match="label">
+                            <span ng-bind="$item.label"></span>
+                        </oui-select>
+                    </div>
+                </div>
+
+                <div class="mt-5"
+                     data-ng-if="!$ctrl.loading.init">
+                    <a class="btn btn-default"
+                       data-translate="telecom_pack_migration_confirm_cancel_button"
+                       data-ui-sref="telecom.pack">
+                    </a>
+                    <button type="button"
+                            class="btn btn-primary"
+                            data-ng-disabled="!$ctrl.isValidSelection()"
+                            data-translate="telecom_pack_migration_building_details_confirm"
+                            data-ng-click="$ctrl.nextStep()">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

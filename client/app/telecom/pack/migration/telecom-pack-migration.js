@@ -37,6 +37,12 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'ServiceDeleteCtrl',
         noTranslations: true,
       },
+      'buildingDetailsView@telecom.pack.migration': {
+        templateUrl: 'app/telecom/pack/migration/building-details/telecom-pack-migration-building-details.html',
+        controller: 'TelecomPackMigrationBuildingDetailsCtrl',
+        controllerAs: '$ctrl',
+        noTranslations: true,
+      },
     },
     translations: ['.'],
   });
