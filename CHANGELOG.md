@@ -1,3 +1,14 @@
+<a name="10.7.2"></a>
+## [10.7.2](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.7.1...v10.7.2) (2018-10-05)
+
+
+### Bug Fixes
+
+* remove border top of the summit banner ([993e44a](https://github.com/ovh-ux/ovh-manager-telecom/commit/993e44a))
+* update gitignore file ([e19268b](https://github.com/ovh-ux/ovh-manager-telecom/commit/e19268b))
+
+
+
 <a name="10.7.1"></a>
 ## [10.7.1](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.7.0...v10.7.1) (2018-10-02)
 
