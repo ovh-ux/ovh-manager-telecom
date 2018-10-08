@@ -1,3 +1,19 @@
+<a name="10.7.4"></a>
+## [10.7.4](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.7.3...v10.7.4) (2018-10-08)
+
+
+### Bug Fixes
+
+* **components.manager-preload:** center hr element ([e0563ba](https://github.com/ovh-ux/ovh-manager-telecom/commit/e0563ba))
+* remove unused scriptsrc file ([b73e7a4](https://github.com/ovh-ux/ovh-manager-telecom/commit/b73e7a4))
+
+
+### Features
+
+* **xdsl-modem:** update xDSL modem display ([b0e74ee](https://github.com/ovh-ux/ovh-manager-telecom/commit/b0e74ee))
+
+
+
 <a name="10.7.3"></a>
 ## [10.7.3](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.7.2...v10.7.3) (2018-10-05)
 
