@@ -1,54 +1,93 @@
-angular.module('managerApp').controller('TelecomPackMigrationBuildingDetailsCtrl', function ($q, $translate, PackMigrationProcess, OvhContact, OvhApiPackXdsl, OvhApiConnectivityEligibility) {
-  const self = this;
+angular.module('managerApp').controller('TelecomPackMigrationBuildingDetailsCtrl', class TelecomPackMigrationBuildingDetailsCtrl {
+  constructor($q, $translate, PackMigrationProcess, OvhApiConnectivityEligibility) {
+    this.$q = $q;
+    this.$translate = $translate;
+    this.PackMigrationProcess = PackMigrationProcess;
+    this.OvhApiConnectivityEligibility = OvhApiConnectivityEligibility;
+  }
 
-  self.process = null;
-  self.loading = {
-    init: false,
-  };
-  self.model = {
-    engageMonths: null,
-    selectedBuilding: null,
-    selectedStair: null,
-    selectedFloor: null,
-  };
+  /*= =====================================
+  =            INITIALIZATION            =
+  ====================================== */
+  $onInit() {
+    this.process = null;
+    this.loading = {
+      init: false,
+    };
+    this.model = {
+      engageMonths: null,
+      selectedBuilding: null,
+      selectedStair: null,
+      selectedFloor: null,
+    };
+
+    this.init();
+  }
+
+  init() {
+    this.loading.init = true;
+
+    this.process = this.PackMigrationProcess.getMigrationProcess();
+
+    this.process.selectedOffer.buildings.forEach((building, i) => {
+      // check if the building name is empty to set a name to display in the select component
+      if (building.name === '') {
+        this.process.selectedOffer.buildings[i].name = this.$translate.instant('telecom_pack_migration_building_details_unknown');
+      }
+
+      const params = {
+        building: building.reference,
+      };
+      this.OvhApiConnectivityEligibility.v6().buildingDetails({
+      }, params).$promise.then((buildingDetails) => {
+        if (_.has(buildingDetails, 'result.stairs')) {
+          this.process.selectedOffer.buildings[i].stairs = buildingDetails.result.stairs.map(
+            stair => this.convertStairs(stair),
+          );
+        }
+      });
+    });
+    this.loading.init = false;
+  }
+
+  /* -----  End of INITIALIZATION  ------*/
 
   /*= ==============================
   =            ACTIONS            =
   =============================== */
 
-  self.cancelMigration = function () {
-    PackMigrationProcess.cancelMigration();
-  };
+  cancelMigration() {
+    this.PackMigrationProcess.cancelMigration();
+  }
 
-  self.nextStep = function () {
-    self.process.selectedOffer.buildingReference = self.model.selectedBuilding.reference;
-    self.process.selectedOffer.engageMonths = self.model.engageMonths;
-    self.process.selectedOffer.stair = self.model.selectedStair.stair.value;
-    self.process.selectedOffer.floor = self.model.selectedFloor.value;
+  nextStep() {
+    this.process.selectedOffer.buildingReference = this.model.selectedBuilding.reference;
+    this.process.selectedOffer.engageMonths = this.model.engageMonths;
+    this.process.selectedOffer.stair = this.model.selectedStair.stair.value;
+    this.process.selectedOffer.floor = this.model.selectedFloor.value;
 
-    console.log(self.process.selectedOffer);
-    if (self.process.selectedOffer.totalSubServiceToDelete > 0) {
-      self.process.currentStep = 'serviceDelete';
-    } else if (self.process.selectedOffer.needNewModem) {
-      self.process.currentStep = 'shipping';
+    if (this.process.selectedOffer.totalSubServiceToDelete > 0) {
+      this.process.currentStep = 'serviceDelete';
+    } else if (this.process.selectedOffer.needNewModem) {
+      this.process.currentStep = 'shipping';
     } else {
-      self.process.currentStep = 'confirm';
+      this.process.currentStep = 'confirm';
     }
-  };
+  }
 
-  self.isValidSelection = function () {
-    if (self.model.engageMonths != null && self.model.selectedBuilding != null
-      && self.model.selectedStair != null && self.model.selectedFloor != null) {
+  isValidSelection() {
+    if (this.model.engageMonths != null && this.model.selectedBuilding != null
+      && this.model.selectedStair != null && this.model.selectedFloor != null) {
       return true;
     }
     return false;
-  };
+  }
 
-  function convertStairs(stair) {
+  convertStairs(stair) {
     const stairsModel = {};
     if (stair.stair === '_NA_') {
       stairsModel.stair = {
-        label: $translate.instant('telecom_pack_migration_building_details_none'),
+        label: this.$translate.instant('telecom_pack_migration_building_details_none'),
         value: stair.stair,
       };
     } else {
@@ -60,7 +99,7 @@ angular.module('managerApp').controller('TelecomPackMigrationBuildingDetailsCtrl
 
     if (stair.floors[0] === '_NA_') {
       stairsModel.floors = [{
-        label: $translate.instant('telecom_pack_migration_building_details_none'),
+        label: this.$translate.instant('telecom_pack_migration_building_details_none'),
         value: stair.floors[0],
       }];
     } else {
@@ -72,71 +111,32 @@ angular.module('managerApp').controller('TelecomPackMigrationBuildingDetailsCtrl
     return stairsModel;
   }
 
-  self.changeSelection = function (isFromStairs) {
+  changeSelection(isFromStairs) {
     if (!isFromStairs) {
-      if (self.model.selectedBuilding.stairs === undefined) {
+      if (this.model.selectedBuilding.stairs === undefined) {
         // Reload stairs and floors from APIv6 for building reference
         const params = {
-          building: self.model.selectedBuilding.reference,
+          building: this.model.selectedBuilding.reference,
         };
-        OvhApiConnectivityEligibility.v6().buildingDetails({
+        this.OvhApiConnectivityEligibility.v6().buildingDetails({
         }, params).$promise.then((buildingDetails) => {
-          if (buildingDetails.result && buildingDetails.result.stairs) {
-            const stairs = [];
-            buildingDetails.result.stairs.forEach((stair) => {
-              stairs.push(convertStairs(stair));
-            });
-            self.model.selectedBuilding.stairs = stairs;
+          if (_.has(buildingDetails, 'result.stairs')) {
+            this.model.selectedBuilding.stairs = buildingDetails.result.stairs.map(
+              stair => this.convertStairs(stair),
+            );
           }
         });
       }
-      if (self.model.selectedStair != null) {
-        self.model.selectedStair = null;
+      if (this.model.selectedStair != null) {
+        this.model.selectedStair = null;
       }
-      if (self.model.selectedFloor != null) {
-        self.model.selectedFloor = null;
+      if (this.model.selectedFloor != null) {
+        this.model.selectedFloor = null;
       }
     } else {
-      self.model.selectedFloor = null;
+      this.model.selectedFloor = null;
     }
-  };
-
-  /* -----  End of ACTIONS  ------*/
-
-  /*= =====================================
-  =            INITIALIZATION            =
-  ====================================== */
-  function init() {
-    self.loading.init = true;
-
-    self.process = PackMigrationProcess.getMigrationProcess();
-
-    console.log(self.process.selectedOffer);
-
-    self.process.selectedOffer.buildings.forEach((building, i) => {
-      // check if the building name is empty to set a name to display in the select component
-      if (building.name === '') {
-        self.process.selectedOffer.buildings[i].name = $translate.instant('telecom_pack_migration_building_details_unknown');
-      }
-
-      const params = {
-        building: building.reference,
-      };
-      OvhApiConnectivityEligibility.v6().buildingDetails({
-      }, params).$promise.then((buildingDetails) => {
-        if (buildingDetails.result && buildingDetails.result.stairs) {
-          const stairs = [];
-          buildingDetails.result.stairs.forEach((stair) => {
-            stairs.push(convertStairs(stair));
-          });
-          self.process.selectedOffer.buildings[i].stairs = stairs;
-        }
-      });
-    });
-    self.loading.init = false;
   }
 
-  /* -----  End of INITIALIZATION  ------*/
-
-  init();
+  /* -----  End of ACTIONS  ------*/
 });

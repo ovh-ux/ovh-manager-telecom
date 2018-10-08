@@ -105,9 +105,11 @@ angular.module('managerApp').service('PackMigrationProcess', function ($q, OvhAp
     }
 
     // building details post params
-    postParams.buildingReference = migrationProcess.selectedOffer.buildingReference;
-    postParams.stair = migrationProcess.selectedOffer.stair;
-    postParams.floor = migrationProcess.selectedOffer.floor;
+    _.assign(postParams, {
+      buildingReference: migrationProcess.selectedOffer.buildingReference,
+      stair: migrationProcess.selectedOffer.stair,
+      floor: migrationProcess.selectedOffer.floor,
+    });
 
     // engage months post params
     postParams.engageMonths = migrationProcess.selectedOffer.engageMonths;
@@ -207,7 +209,7 @@ angular.module('managerApp').service('PackMigrationProcess', function ($q, OvhAp
 
   self.selectOffer = function (offer) {
     migrationProcess.selectedOffer = offer;
-    if (migrationProcess.selectedOffer.offerName.toLowerCase().includes('ftth')) {
+    if (_.includes(migrationProcess.selectedOffer.offerName.toLowerCase(), 'ftth')) {
       migrationProcess.currentStep = 'buildingDetails';
     } else if (migrationProcess.selectedOffer.totalSubServiceToDelete > 0) {
       migrationProcess.currentStep = 'serviceDelete';
