@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <translations>
-   <translation id="telephony_alias_special_transfer">Reversements</translation>
-   <translation id="telephony_alias_special_fees">Coûts SVA</translation>
-   <translation id="telephony_alias_special_rsva">Tarification RSVA</translation>
+   <translation id="telephony_alias_special_transfer" qtlid="35820">Převod</translation>
+   <translation id="telephony_alias_special_fees" qtlid="501717">Coûts SVA</translation>
+   <translation id="telephony_alias_special_rsva" qtlid="501795">Tarification RSVA</translation>
 </translations>

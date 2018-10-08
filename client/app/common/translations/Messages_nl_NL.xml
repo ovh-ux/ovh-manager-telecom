@@ -187,7 +187,7 @@
    <translation id="common_menu_partners" qtlid="383512">Partners</translation>
    <translation id="common_menu_orders" qtlid="42394">Bestellingsstatus</translation>
    <translation id="common_menu_support_assistance" qtlid="52699">Support</translation>
-   <translation id="common_menu_v3" qtlid="135931">Oud client interface</translation>
+   <translation id="common_menu_v3" qtlid="135931">Oude klant-interface</translation>
    <translation id="common_menu_billing" qtlid="32950">Facturatie</translation>
    <translation id="common_menu_billing_history" qtlid="159540">Mijn facturen</translation>
    <translation id="common_menu_billing_payments" qtlid="398781">Betaling volgen</translation>
@@ -424,7 +424,7 @@
    <translation id="country_KW" qtlid="188262">Koeweit</translation>
    <translation id="country_KY" qtlid="188275">Cayman Islands</translation>
    <translation id="country_KZ" qtlid="188288">Kazachstan</translation>
-   <translation id="country_LA" qtlid="188301">Laos Democratische Volksrepubliek -</translation>
+   <translation id="country_LA" qtlid="501678">Lao, République Démocratique Populaire -</translation>
    <translation id="country_LB" qtlid="188314">Libanon</translation>
    <translation id="country_LC" qtlid="188327">St. Lucia</translation>
    <translation id="country_LI" qtlid="188340">Liechtenstein</translation>

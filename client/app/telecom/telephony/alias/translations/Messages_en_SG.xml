@@ -6,7 +6,7 @@
    <translation id="telephony_alias_tab_administrative_management" qtlid="72737">Management</translation>
    <translation id="telephony_alias_tab_number_configuration" qtlid="333282">Configuration du numéro</translation>
    <translation id="telephony_alias_tab_consumption" qtlid="25639">Usage</translation>
-   <translation id="telephony_alias_tab_special">Reversements</translation>
+   <translation id="telephony_alias_tab_special" qtlid="35820">Payouts</translation>
    <translation id="telephony_alias_tab_bank_maker" qtlid="333295">Générateur de cartouche</translation>
    <translation id="telephony_alias_tab_number_directory" qtlid="33370">Contacts</translation>
 
