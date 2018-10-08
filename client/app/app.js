@@ -162,11 +162,6 @@ angular.module('managerApp', [
     $translateProvider.use(defaultLanguage);
 
     $translateProvider.fallbackLanguage('fr_FR');
-
-    // Rewrite path of translations for actions and sidebar menu modules
-    actionsMenuProvider.setTranslationPath('../node_modules/ovh-angular-actions-menu/dist/ovh-angular-actions-menu');
-    SidebarMenuProvider.clearTranslationPath();
-    SidebarMenuProvider.addTranslationPath('../node_modules/ovh-angular-sidebar-menu/dist/ovh-angular-sidebar-menu');
   })
 
 /*= =========  PAGE TRACKING  ========== */
@@ -269,7 +264,6 @@ angular.module('managerApp', [
   })
 
   .run((
-    $rootScope,
     $transitions,
     $translate,
     $translatePartialLoader,
