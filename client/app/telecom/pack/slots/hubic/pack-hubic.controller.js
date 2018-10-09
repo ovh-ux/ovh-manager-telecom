@@ -30,7 +30,7 @@ angular.module('managerApp').controller('PackHubicCtrl', class {
     return this.OvhApiPackXdslHubic.v7().query().aggregate('packName').expand()
       .execute().$promise.then((services) => {
         this.services = _.chain(services)
-          .filter(service => service.path.includes(this.$stateParams.packName))
+              .filter(service => _.includes(service.path, this.$stateParams.packName))
           .map((service) => {
             const voucherUrl = `${this.URLS.hubicVoucher}?token=${_.get(service, 'value.voucher')}`;
             return _.extend(
