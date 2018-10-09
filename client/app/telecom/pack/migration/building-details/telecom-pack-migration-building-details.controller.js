@@ -1,6 +1,5 @@
 angular.module('managerApp').controller('TelecomPackMigrationBuildingDetailsCtrl', class TelecomPackMigrationBuildingDetailsCtrl {
-  constructor($q, $translate, PackMigrationProcess, OvhApiConnectivityEligibility) {
-    this.$q = $q;
+  constructor($translate, PackMigrationProcess, OvhApiConnectivityEligibility) {
     this.$translate = $translate;
     this.PackMigrationProcess = PackMigrationProcess;
     this.OvhApiConnectivityEligibility = OvhApiConnectivityEligibility;
@@ -21,10 +20,6 @@ angular.module('managerApp').controller('TelecomPackMigrationBuildingDetailsCtrl
       selectedFloor: null,
     };
 
-    this.init();
-  }
-
-  init() {
     this.loading.init = true;
 
     this.process = this.PackMigrationProcess.getMigrationProcess();
@@ -38,6 +33,7 @@ angular.module('managerApp').controller('TelecomPackMigrationBuildingDetailsCtrl
       const params = {
         building: building.reference,
       };
+
       this.OvhApiConnectivityEligibility.v6().buildingDetails({
       }, params).$promise.then((buildingDetails) => {
         if (_.has(buildingDetails, 'result.stairs')) {
@@ -45,9 +41,10 @@ angular.module('managerApp').controller('TelecomPackMigrationBuildingDetailsCtrl
             stair => this.convertStairs(stair),
           );
         }
+      }).finally(() => {
+        this.loading.init = false;
       });
     });
-    this.loading.init = false;
   }
 
   /* -----  End of INITIALIZATION  ------*/
@@ -103,18 +100,14 @@ angular.module('managerApp').controller('TelecomPackMigrationBuildingDetailsCtrl
         value: stair.floors[0],
       }];
     } else {
-      stairsModel.floors = [];
-      stair.floors.forEach((floor) => {
-        stairsModel.floors.push({ label: floor, value: floor });
-      });
+      stairsModel.floors = stair.floors.map(floor => ({ label: floor, value: floor }));
     }
     return stairsModel;
   }
 
   changeSelection(isFromStairs) {
     if (!isFromStairs) {
-      if (this.model.selectedBuilding.stairs === undefined) {
-        // Reload stairs and floors from APIv6 for building reference
+      if (this.model.selectedBuilding.stairs.length === 0) {
         const params = {
           building: this.model.selectedBuilding.reference,
         };
