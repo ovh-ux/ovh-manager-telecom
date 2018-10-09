@@ -793,8 +793,9 @@
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.2.tgz#54c5a964462be3d4d78af631363c18d6fa91ac26"
 
 "@ovh-ux/manager-webpack-config@^2.3.1":
-  version "2.3.1"
-  resolved "https://registry.yarnpkg.com/@ovh-ux/manager-webpack-config/-/manager-webpack-config-2.3.1.tgz#7c83264a8729992da1c7211aa58ed1b6921ec759"
+  version "2.3.2"
+  resolved "https://registry.yarnpkg.com/@ovh-ux/manager-webpack-config/-/manager-webpack-config-2.3.2.tgz#44d4f714e1369a6643b4c548b1cfe88938a46ce2"
+  integrity sha512-nMF8pwCn+MhKGC9b8BeJtO+asguFelDCrzVduJRzsF6YpclagCDdkfR0+UKSc2Gq3YxFu3idMhB95Wil57pLiQ==
   dependencies:
     "@babel/core" "^7.0.0"
     "@babel/generator" "^7.0.0"
@@ -828,6 +829,7 @@
     sass-loader "^7.1.0"
     script-loader "^0.7.2"
     style-loader "^0.23.0"
+    time-fix-plugin "^2.0.3"
     url-loader "^1.1.1"
     webpack "^4.5.0"
     webpack-bundle-analyzer "^2.13.1"
@@ -9697,6 +9699,11 @@ tildify@^1.0.0:
   resolved "https://registry.yarnpkg.com/tildify/-/tildify-1.2.0.tgz#dcec03f55dca9b7aa3e5b04f21817eb56e63588a"
   dependencies:
     os-homedir "^1.0.0"
+
+time-fix-plugin@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/time-fix-plugin/-/time-fix-plugin-2.0.3.tgz#b6b1ead519099bc621e28edb77dac7531918b7e1"
+  integrity sha512-5StGdiXCiBsq2+RdBQ0NrunFeKqVX0f2Myn8s1YqOxRS+kmuiHcdpPm27ucbM6FYawBKGTOOYxPnqxIBZyiqEg==
 
 time-stamp@^1.0.0:
   version "1.1.0"
