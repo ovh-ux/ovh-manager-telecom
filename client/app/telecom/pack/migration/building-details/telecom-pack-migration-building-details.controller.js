@@ -11,7 +11,7 @@ angular.module('managerApp').controller('TelecomPackMigrationBuildingDetailsCtrl
   $onInit() {
     this.process = null;
     this.loading = {
-      init: false,
+      init: true,
     };
     this.model = {
       engageMonths: null,
@@ -19,8 +19,6 @@ angular.module('managerApp').controller('TelecomPackMigrationBuildingDetailsCtrl
       selectedStair: null,
       selectedFloor: null,
     };
-
-    this.loading.init = true;
 
     this.process = this.PackMigrationProcess.getMigrationProcess();
 
