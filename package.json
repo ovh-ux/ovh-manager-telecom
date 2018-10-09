@@ -1,6 +1,6 @@
 {
   "name": "ovh-manager-telecom",
-  "version": "10.7.5",
+  "version": "10.7.6",
   "private": true,
   "description": "OVH Control Panel Telecom UI",
   "author": "OVH SAS",
@@ -32,7 +32,7 @@
     "lint:css": "stylelint 'client/**/*.less' --fix",
     "lint:js": "eslint --quiet --fix ./client",
     "clean": "npx rimraf .cache-loader dist node_modules",
-    "version": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md",
+    "version": "npx conventional-changelog-cli -p angular -i CHANGELOG.md -s && git add CHANGELOG.md",
     "postversion": "git push && git push --tags"
   },
   "lint-staged": {
@@ -87,6 +87,7 @@
     "angular-validation-match": "^1.4.x",
     "angularjs-scroll-glue": "^2.2.0",
     "at-internet-ui-router-plugin": "^1.0.0",
+    "babel-polyfill": "^6.26.0",
     "bootstrap": "^3.3.6",
     "chart.js": "~2.6.0",
     "d3": "^4.5.0",
