@@ -111,9 +111,6 @@ angular.module('managerApp').service('PackMigrationProcess', function ($q, OvhAp
       floor: migrationProcess.selectedOffer.floor,
     });
 
-    // engage months post params
-    postParams.engageMonths = migrationProcess.selectedOffer.engageMonths;
-
     return OvhApiPackXdsl.v6().migrate({
       packName: migrationProcess.pack.packName,
     }, postParams).$promise;

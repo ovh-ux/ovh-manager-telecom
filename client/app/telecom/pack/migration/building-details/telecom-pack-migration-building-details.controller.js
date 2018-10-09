@@ -59,7 +59,6 @@ angular.module('managerApp').controller('TelecomPackMigrationBuildingDetailsCtrl
 
   nextStep() {
     this.process.selectedOffer.buildingReference = this.model.selectedBuilding.reference;
-    this.process.selectedOffer.engageMonths = this.model.engageMonths;
     this.process.selectedOffer.stair = this.model.selectedStair.stair.value;
     this.process.selectedOffer.floor = this.model.selectedFloor.value;
 
@@ -73,7 +72,7 @@ angular.module('managerApp').controller('TelecomPackMigrationBuildingDetailsCtrl
   }
 
   isValidSelection() {
-    if (this.model.engageMonths != null && this.model.selectedBuilding != null
+    if (this.model.selectedBuilding != null
       && this.model.selectedStair != null && this.model.selectedFloor != null) {
       return true;
     }

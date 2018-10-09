@@ -8,13 +8,6 @@
                 </div>
 
                 <div data-ng-if="!$ctrl.loading.init">
-                    <p data-translate="telecom_pack_migration_building_details_select_engagment"></p>
-                    <oui-radio name="engagement"
-                               data-ng-repeat="engageMonths in $ctrl.process.selectedOffer.engagementMonths track by $index"
-                               data-value="engageMonths" data-model="$ctrl.model.engageMonths">{{engageMonths}} {{
-                        'telecom_pack_migration_building_details_engagment_month' | translate }}
-                    </oui-radio>
-
                     <div>
                         <span data-translate="telecom_pack_migration_building_details_select_building"></span>
                         <oui-select name="building" data-model="$ctrl.model.selectedBuilding"
