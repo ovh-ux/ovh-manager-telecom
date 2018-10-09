@@ -1,3 +1,13 @@
+<a name="10.7.6"></a>
+## [10.7.6](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.7.5...v10.7.6) (2018-10-09)
+
+
+### Bug Fixes
+
+* **ie11:** app will now display correctly ([ac50cfb](https://github.com/ovh-ux/ovh-manager-telecom/commit/ac50cfb))
+
+
+
 <a name="10.7.5"></a>
 ## [10.7.5](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.7.4...v10.7.5) (2018-10-08)
 
