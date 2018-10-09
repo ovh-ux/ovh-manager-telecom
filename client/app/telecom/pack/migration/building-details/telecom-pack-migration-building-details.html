@@ -1,6 +1,6 @@
 <div class="telecom-pack-migration-shipping">
     <div class="row">
-        <div class="-col-xs-12">
+        <div class="col-xs-12">
             <div class="widget-presentation">
                 <!-- LOADER -->
                 <div class="text-center" data-ng-if="$ctrl.loading.init">
@@ -8,7 +8,7 @@
                 </div>
 
                 <div data-ng-if="!$ctrl.loading.init">
-                    <span class="d-block" data-translate="telecom_pack_migration_building_details_select_engagment"></span>
+                    <p data-translate="telecom_pack_migration_building_details_select_engagment"></p>
                     <oui-radio name="engagement"
                                data-ng-repeat="engageMonths in $ctrl.process.selectedOffer.engagementMonths track by $index"
                                data-value="engageMonths" data-model="$ctrl.model.engageMonths">{{engageMonths}} {{
