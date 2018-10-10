@@ -1,5 +1,4 @@
-/* global Chart */
-angular.module('managerApp').constant('CHARTJS', {
+export const CHARTJS = {
   colors: [
     {
       borderColor: '#33acff',
@@ -55,4 +54,8 @@ angular.module('managerApp').constant('CHARTJS', {
       },
     },
   },
-}).constant('Chart', Chart);
+};
+
+export default {
+  CHARTJS,
+};

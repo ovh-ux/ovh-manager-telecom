@@ -1,6 +1,6 @@
-angular.module('managerApp').factory('ChartjsFactory', (CHARTJS) => {
+export default (TUC_CHARTS) => {
   const ChartjsFactory = function ChartjsFactory(data) {
-    _.extend(this, angular.copy(CHARTJS.squeleton), data);
+    _.extend(this, angular.copy(TUC_CHARTS.squeleton), data);
   };
 
   /**
@@ -11,14 +11,14 @@ angular.module('managerApp').factory('ChartjsFactory', (CHARTJS) => {
    *  - dataset => see chartjs (http://www.chartjs.org/docs/latest/charts/line.html#dataset-properties)
    * @return {Object} new added serie
    */
-  ChartjsFactory.prototype.addSerie = function (name, data, opts) {
+  ChartjsFactory.prototype.addSerie = function addSerie(name, data, opts) {
     const options = opts || {};
     this.data.datasets.push(_.extend(
       {
         label: name,
         data,
       },
-      CHARTJS.colors[this.data.datasets.length % CHARTJS.colors.length],
+      TUC_CHARTS.colors[this.data.datasets.length % TUC_CHARTS.colors.length],
       options.dataset,
     ));
     return _.last(this.data.datasets);
@@ -29,7 +29,7 @@ angular.module('managerApp').factory('ChartjsFactory', (CHARTJS) => {
    * @param   {String} name     Name of the callback
    * @param {Function} callback Callback
    */
-  ChartjsFactory.prototype.setTooltipCallback = function (name, callback) {
+  ChartjsFactory.prototype.setTooltipCallback = function setTooltipCallback(name, callback) {
     if (!this.options.tooltips) {
       this.options.tooltips = {};
     }
@@ -45,7 +45,7 @@ angular.module('managerApp').factory('ChartjsFactory', (CHARTJS) => {
    * @param           {object} options Options to merge
    * @param {Number|undefined} index Index of axis or all
    */
-  ChartjsFactory.prototype.setAxisOptions = function (axis, options, index) {
+  ChartjsFactory.prototype.setAxisOptions = function setAxisOptions(axis, options, index) {
     if (_.isUndefined(index)) {
       this.options.scales[axis].forEach((data) => {
         _.merge(data, options);
@@ -59,7 +59,7 @@ angular.module('managerApp').factory('ChartjsFactory', (CHARTJS) => {
    * Set title on the Y Label
    * @param {String} label Label to set
    */
-  ChartjsFactory.prototype.setYLabel = function (label) {
+  ChartjsFactory.prototype.setYLabel = function setYLabel(label) {
     if (this.options.scales.yAxes.length
       && _.first(this.options.scales.yAxes)
       && _.first(this.options.scales.yAxes).scaleLabel) {
@@ -68,4 +68,4 @@ angular.module('managerApp').factory('ChartjsFactory', (CHARTJS) => {
   };
 
   return ChartjsFactory;
-});
+};

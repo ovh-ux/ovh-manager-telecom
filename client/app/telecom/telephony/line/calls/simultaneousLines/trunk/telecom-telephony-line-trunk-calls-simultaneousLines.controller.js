@@ -1,6 +1,6 @@
 angular.module('managerApp').controller('TelecomTelephonyLineTrunkSimultaneousLines', class TelecomTelephonyLineTrunkSimultaneousLines {
   constructor(
-    $q, $stateParams, $translate, currentLine, ChartjsFactory, debounce,
+    $q, $stateParams, $translate, currentLine, TucChartjsFactory, debounce,
     OvhApiTelephony, OvhApiOrderTelephony, Toast, TRUNK_PACK_DETAILS,
   ) {
     this.$q = $q;
@@ -8,7 +8,7 @@ angular.module('managerApp').controller('TelecomTelephonyLineTrunkSimultaneousLi
     this.$translate = $translate;
 
     this.currentLine = currentLine;
-    this.ChartjsFactory = ChartjsFactory;
+    this.TucChartjsFactory = TucChartjsFactory;
     this.debounce = debounce;
     this.OvhApiTelephony = OvhApiTelephony;
     this.OvhApiOrderTelephony = OvhApiOrderTelephony;
@@ -48,7 +48,7 @@ angular.module('managerApp').controller('TelecomTelephonyLineTrunkSimultaneousLi
 
   buildChart() {
     const dataOffset = 0.1;
-    this.chart = new this.ChartjsFactory(angular.copy(this.TRUNK_PACK_DETAILS.chart));
+    this.chart = new this.TucChartjsFactory(angular.copy(this.TRUNK_PACK_DETAILS.chart));
 
     this.chart.data.labels = _.map(this.trunkRates.current.packsRepartition, pack => this.$translate.instant('telephony_line_actions_line_calls_trunk_simultaneous_chart_channels_label', { count: pack.channels }));
     this.chart.data.datasets.push({
