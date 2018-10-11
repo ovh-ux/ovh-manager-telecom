@@ -1,4 +1,4 @@
-export default (TUC_CHARTS) => {
+export default /* @ngInject */ (TUC_CHARTS) => {
   const ChartjsFactory = function ChartjsFactory(data) {
     _.extend(this, angular.copy(TUC_CHARTS.squeleton), data);
   };

@@ -3,6 +3,8 @@ angular.module('managerApp').controller('TelecomTelephonyLineTrunkSimultaneousLi
     $q, $stateParams, $translate, currentLine, TucChartjsFactory, debounce,
     OvhApiTelephony, OvhApiOrderTelephony, Toast, TRUNK_PACK_DETAILS,
   ) {
+    'ngInject';
+
     this.$q = $q;
     this.$stateParams = $stateParams;
     this.$translate = $translate;

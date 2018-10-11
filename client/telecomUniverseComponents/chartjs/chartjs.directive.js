@@ -2,7 +2,7 @@ import Chart from 'chart.js';
 
 import template from './chartjs.html';
 
-export default () => ({
+export default /* @ngInject */ () => ({
   restrict: 'A',
   scope: {
     tucChartjs: '=?',
@@ -15,7 +15,7 @@ export default () => ({
     canvas.id = _.uniqueId('tucChartjs');
     _.set(controller, 'ctx', canvas.getContext('2d'));
   },
-  controller: function directiveController($scope) {
+  controller: /* @ngInject */ function directiveController($scope) {
     const self = this;
 
     this.createChart = function createChart(data) {
