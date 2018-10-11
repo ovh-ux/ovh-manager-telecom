@@ -30,7 +30,7 @@
 
             <div data-ng-if="$ctrl.model.selectedStair !== null">
                 <span data-translate="telecom_pack_migration_building_details_select_floor"></span>
-                <oui-select name="floor" data- model="$ctrl.model.selectedFloor"
+                <oui-select name="floor" data-model="$ctrl.model.selectedFloor"
                             data-title="{{:: 'telecom_pack_migration_building_details_select_a_floor' | translate}}"
                             placeholder="{{:: 'telecom_pack_migration_building_details_select_a_floor' | translate}}"
                             data-items="$ctrl.model.selectedStair.floors" data-align="start" data-match="label">
