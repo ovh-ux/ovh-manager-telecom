@@ -1,24 +1,5 @@
-<form name="remoteControlForm"
-      data-ng-submit="FirewallCtrl.changeFirewallLevel()">
-    <div class="form-group">
-        <select
-                class="form-control"
-                id="configFirewall"
-                name="configFirewall"
-                data-ng-model="FirewallCtrl.firewallCurrentLevelTmp"
-                data-ng-options="level.label |translate for level in FirewallCtrl.firewallLevels"
-                data-ng-disabled="!FirewallCtrl.mediator.capabilities.canChangeEasyFirewallLevel || FirewallCtrl.mediator.tasks.changeModemConfigEasyFirewallLevel">
-        </select>
-    </div>
-    <button class="btn btn-primary ml-2"
-            type="submit"
-            data-ng-disabled="!FirewallCtrl.mediator.capabilities.canChangeEasyFirewallLevel || FirewallCtrl.firewallCurrentLevel === FirewallCtrl.firewallCurrentLevelTmp">
-            <span data-ng-if="FirewallCtrl.mediator.tasks.changeModemConfigEasyFirewallLevel">
-                <oui-spinner class="mr-2"
-                             data-size="s">
-                </oui-spinner>
-                <span data-translate="xdsl_modem_firewall_doing"></span>
-            </span>
-        <span data-ng-if="!FirewallCtrl.mediator.tasks.changeModemConfigEasyFirewallLevel" data-translate="xdsl_modem_firewall_submit"></span>
-    </button>
-</form>
+<div class="form-group">
+    <input type="text" class="form-control"
+           id="configFirewall"
+           name="configFirewall" value="{{FirewallCtrl.firewallCurrentLevel.label | translate}}" disabled>
+</div>

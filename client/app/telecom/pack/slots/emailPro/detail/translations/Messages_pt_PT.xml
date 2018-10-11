@@ -14,7 +14,7 @@
    <translation id="email_pro_detail_webmail" qtlid="384337">URL du serveur Webmail</translation>
    <translation id="email_pro_detail_open_webmail" qtlid="384363">Ouvrir le client webmail</translation>
 
-   <translation id="email_pro_detail_need_help" qtlid="435497">Precisa de ajuda ?</translation>
+   <translation id="email_pro_detail_need_help" qtlid="435497">Precisa de ajuda?</translation>
    <translation id="email_pro_detail_guide" qtlid="298469">Consultar guia</translation>
 
    <translation id="email_pro_detail_quota_value" qtlid="384376">{{value}} {{valueUnit}} / {{total}} {{totalUnit}}</translation>

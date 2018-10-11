@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <translations>
-   <translation id="telephony_alias_special_transfer_title_back_link">Retour à la gestion des reversements</translation>
-   <translation id="telephony_alias_special_transfer_title">Reversements numéro surtaxé</translation>
-   <translation id="telephony_alias_special_transfer_description">Cette section concerne les reversements des appels reçus sur votre numéro spécial. Pour accéder aux coûts générés par les appels entrants,</translation>
-   <translation id="telephony_alias_special_transfer_description_link">accédez aux coûts SVA de votre numéro.</translation>
-   <translation id="telephony_alias_special_transfer_date_filter">Date</translation>
-   <translation id="telephony_alias_special_transfer_calling_filter">Appelant</translation>
-   <translation id="telephony_alias_special_transfer_duration_filter">Durée (sec.)</translation>
-   <translation id="telephony_alias_special_transfer_operator_filter">Opérateur</translation>
-   <translation id="telephony_alias_special_transfer_price_filter">Montant (€)</translation>
-   <translation id="telephony_alias_special_transfer_total">Total</translation>
-   <translation id="telephony_alias_special_transfer_calls">{{calls}} appel</translation>
-   <translation id="telephony_alias_special_transfer_duration">{{duration}} sec.</translation>
-   <translation id="telephony_alias_special_transfer_price">{{price}} € HT</translation>
-   <translation id="telephony_alias_special_transfer_button">Accéder à la demande de reversement</translation>
+   <translation id="telephony_alias_special_transfer_title_back_link" qtlid="501704">Retour à la gestion des reversements</translation>
+   <translation id="telephony_alias_special_transfer_title" qtlid="502094">Reversements numéro surtaxé</translation>
+   <translation id="telephony_alias_special_transfer_description" qtlid="502107">Cette section concerne les reversements des appels reçus sur votre numéro spécial. Pour accéder aux coûts générés par les appels entrants,</translation>
+   <translation id="telephony_alias_special_transfer_description_link" qtlid="502120">accédez aux coûts SVA de votre numéro.</translation>
+   <translation id="telephony_alias_special_transfer_date_filter" qtlid="24523">Data</translation>
+   <translation id="telephony_alias_special_transfer_calling_filter" qtlid="303549">Chiamante</translation>
+   <translation id="telephony_alias_special_transfer_duration_filter" qtlid="501730">Durée (sec.)</translation>
+   <translation id="telephony_alias_special_transfer_operator_filter" qtlid="63052">Operatore</translation>
+   <translation id="telephony_alias_special_transfer_price_filter" qtlid="501743">Montant (€)</translation>
+   <translation id="telephony_alias_special_transfer_total" qtlid="32458">Totale</translation>
+   <translation id="telephony_alias_special_transfer_calls" qtlid="501756">{{calls}} appel</translation>
+   <translation id="telephony_alias_special_transfer_duration" qtlid="501769">{{duration}} sec.</translation>
+   <translation id="telephony_alias_special_transfer_price" qtlid="501782">{{price}} € HT</translation>
+   <translation id="telephony_alias_special_transfer_button" qtlid="502133">Accéder à la demande de reversement</translation>
 </translations>

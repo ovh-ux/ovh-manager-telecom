@@ -20,7 +20,7 @@
    <translation id="telephony_service_contact_social_nomination_extra" qtlid="459521">Complément de désignation (Sigle, SARL, …)</translation>
    <translation id="telephony_service_contact_email" qtlid="50686">Email address</translation>
    <translation id="telephony_service_contact_country" qtlid="25171">Country</translation>
-   <translation id="telephony_service_contact_zipcode" qtlid="30346">Postal code</translation>
+   <translation id="telephony_service_contact_zipcode" qtlid="30346">Zip code</translation>
    <translation id="telephony_service_contact_city" qtlid="33310">City</translation>
    <translation id="telephony_service_contact_cedex" qtlid="459534">Cedex</translation>
    <translation id="telephony_service_contact_urbandistrict" qtlid="459547">Arrondissement (pour Paris, Lyon et Marseille)</translation>

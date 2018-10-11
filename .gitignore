@@ -1,9 +1,4 @@
 node_modules
-.tmp
 dist
-Messages_*_*.json
-*.orig
-client/app/config/custom.js
-npm-debug.log
-dist.tar.gz
-tools/
+tools
+.cache-loader

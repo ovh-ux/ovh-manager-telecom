@@ -36,7 +36,7 @@
    <translation id="xdsl_details_button_move" qtlid="308788">Déménager</translation>
    <translation id="xdsl_details_button_move_disabled" qtlid="384909">Demande de déménagement en cours</translation>
    <translation id="xdsl_details_button_deconsolidation" qtlid="79338">Celkové rozdělení</translation>
-   <translation id="xdsl_details_button_diagnostic">Lancer le diagnostic</translation>
+   <translation id="xdsl_details_button_diagnostic" qtlid="291357">Spuštění diagnostiky</translation>
    <translation id="xdsl_details_button_ipv4" qtlid="44284">Reverzní DNS</translation>
    <translation id="xdsl_details_button_ipv6" qtlid="44284">Reverzní DNS</translation>
    <translation id="xdsl_details_add_dns" qtlid="309659">Ajouter un reverse DNS</translation>

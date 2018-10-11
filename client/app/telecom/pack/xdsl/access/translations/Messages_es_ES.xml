@@ -36,7 +36,7 @@
    <translation id="xdsl_details_button_move" qtlid="308788">Trasladarme</translation>
    <translation id="xdsl_details_button_move_disabled" qtlid="384909">Solicitando la migración...</translation>
    <translation id="xdsl_details_button_deconsolidation" qtlid="79338">"Degrupación" total</translation>
-   <translation id="xdsl_details_button_diagnostic">Lancer le diagnostic</translation>
+   <translation id="xdsl_details_button_diagnostic" qtlid="291357">Iniciar el diagnóstico</translation>
    <translation id="xdsl_details_button_ipv4" qtlid="44284">Registro DNS inverso</translation>
    <translation id="xdsl_details_button_ipv6" qtlid="44284">Registro DNS inverso</translation>
    <translation id="xdsl_details_add_dns" qtlid="309659">Añadir un registro DNS inverso</translation>

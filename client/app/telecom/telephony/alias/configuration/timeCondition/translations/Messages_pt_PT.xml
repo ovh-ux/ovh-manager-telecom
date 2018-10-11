@@ -7,7 +7,7 @@
 <!-- HELP -->
    <translation id="telephony_alias_configuration_time_condition_info1" qtlid="462511">La gestion des plages horaires vous permet de définir les créneaux durant lesquels la file d'attente est disponible ou non.</translation>
    <translation id="telephony_alias_configuration_time_condition_info2" qtlid="457532">Vous pouvez paramétrer vos jours de fermeture exceptionnelle sur <a data-ui-sref="{{sref}}">cette page</a>.</translation>
-   <translation id="telephony_alias_configuration_time_condition_need_help" qtlid="435497">Precisa de ajuda ?</translation>
+   <translation id="telephony_alias_configuration_time_condition_need_help" qtlid="435497">Precisa de ajuda?</translation>
    <translation id="telephony_alias_configuration_time_condition_hide_help" qtlid="457571">Cacher l'aide</translation>
    <translation id="telephony_alias_configuration_time_condition_help_1" qtlid="457584">Configurez d'abord vos redirections en cliquant sur un des <i class="ovh-font ovh-font-config"></i> dans la section "Configurez vos redirections".</translation>
    <translation id="telephony_alias_configuration_time_condition_help_2" qtlid="335492">Vous pouvez rediriger vos appels&#160;:</translation>

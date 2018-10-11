@@ -1,3 +1,75 @@
+<a name="10.7.6"></a>
+## [10.7.6](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.7.5...v10.7.6) (2018-10-09)
+
+
+### Bug Fixes
+
+* **ie11:** app will now display correctly ([ac50cfb](https://github.com/ovh-ux/ovh-manager-telecom/commit/ac50cfb))
+
+
+
+<a name="10.7.5"></a>
+## [10.7.5](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.7.4...v10.7.5) (2018-10-08)
+
+
+
+<a name="10.7.4"></a>
+## [10.7.4](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.7.3...v10.7.4) (2018-10-08)
+
+
+### Bug Fixes
+
+* **components.manager-preload:** center hr element ([e0563ba](https://github.com/ovh-ux/ovh-manager-telecom/commit/e0563ba))
+* remove unused scriptsrc file ([b73e7a4](https://github.com/ovh-ux/ovh-manager-telecom/commit/b73e7a4))
+
+
+### Features
+
+* **xdsl-modem:** update xDSL modem display ([b0e74ee](https://github.com/ovh-ux/ovh-manager-telecom/commit/b0e74ee))
+
+
+
+<a name="10.7.3"></a>
+## [10.7.3](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.7.2...v10.7.3) (2018-10-05)
+
+
+### Bug Fixes
+
+* **telephony:** fix troubleshooting translations ([8b34392](https://github.com/ovh-ux/ovh-manager-telecom/commit/8b34392))
+
+
+
+<a name="10.7.2"></a>
+## [10.7.2](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.7.1...v10.7.2) (2018-10-05)
+
+
+### Bug Fixes
+
+* remove border top of the summit banner ([993e44a](https://github.com/ovh-ux/ovh-manager-telecom/commit/993e44a))
+* update gitignore file ([e19268b](https://github.com/ovh-ux/ovh-manager-telecom/commit/e19268b))
+
+
+
+<a name="10.7.1"></a>
+## [10.7.1](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.7.0...v10.7.1) (2018-10-02)
+
+
+### Bug Fixes
+
+* **gitattributes:** update gitattributes files ([bc0b0ba](https://github.com/ovh-ux/ovh-manager-telecom/commit/bc0b0ba))
+* update license file ([8d25b9d](https://github.com/ovh-ux/ovh-manager-telecom/commit/8d25b9d))
+* **i18n:** submit / retrieve (summit) ([dd7dd16](https://github.com/ovh-ux/ovh-manager-telecom/commit/dd7dd16))
+* **translations:** add missing translations ([abaa351](https://github.com/ovh-ux/ovh-manager-telecom/commit/abaa351))
+* **webpack:** relative translations path ([8ff5f25](https://github.com/ovh-ux/ovh-manager-telecom/commit/8ff5f25))
+* **webpack:** remove useless eslint comments ([5a510ab](https://github.com/ovh-ux/ovh-manager-telecom/commit/5a510ab))
+
+
+### Features
+
+* **dashboard:** added Summit banner ([7534339](https://github.com/ovh-ux/ovh-manager-telecom/commit/7534339))
+
+
+
 <a name="10.7.0"></a>
 # [10.7.0](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.6.5...v10.7.0) (2018-09-26)
 
