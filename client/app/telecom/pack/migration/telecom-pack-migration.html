@@ -20,6 +20,11 @@
              data-ui-view="offersView">
         </div>
 
+        <!-- BUILDING DETAILS STEP -->
+        <div data-ng-if="!PackMigrationCtrl.loading.init && PackMigrationCtrl.process.currentStep === 'buildingDetails'"
+             data-ui-view="buildingDetailsView">
+        </div>
+
         <!-- SHIPPING STEP -->
         <div data-ng-if="!PackMigrationCtrl.loading.init && PackMigrationCtrl.process.currentStep === 'shipping'"
              data-ui-view="shippingView">
