@@ -4,10 +4,14 @@
    <translation id="xdsl_details_NRA_title" qtlid="40102">NRA</translation>
    <translation id="xdsl_details_NRA_distance" qtlid="63040">Distance du NRA</translation>
    <translation id="xdsl_details_NRA_name" qtlid="309477">Nom du NRA</translation>
+   <translation id="xdsl_details_NRO_title">NRO</translation>
+   <translation id="xdsl_details_NRO_name">Nom du NRO</translation>
    <translation id="xdsl_details_sectionLength_values" qtlid="309490">{{diameter}}mm : {{length}}m</translation>
    <translation id="xdsl_details_cable_type" qtlid="309503">Type de câble</translation>
    <translation id="xdsl_details_att" qtlid="40126">Atténuation</translation>
    <translation id="xdsl_details_db" qtlid="309516">{{mitigation}} dB</translation>
+   <translation id="xdsl_details_PTO_title">PTO</translation>
+   <translation id="xdsl_details_PTO_reference">Référence du PTO</translation>
    <translation id="xdsl_details_syncDown" qtlid="309529">{{syncDown}} Kbps</translation>
    <translation id="xdsl_details_syncUp" qtlid="309542">{{syncUp}} Kbps</translation>
    <translation id="xdsl_details_metters" qtlid="309555">{{distance}} mètres</translation>
@@ -19,6 +23,7 @@
 
    <translation id="xdsl_details_caracteristics" qtlid="309568">Caractéristiques</translation>
    <translation id="xdsl_details_mac_address" qtlid="42562">Adresse MAC</translation>
+   <translation id="xdsl_details_serial_number">Numéro de série</translation>
    <translation id="xdsl_details_modem_model" qtlid="455998">Modèle du modem</translation>
    <translation id="xdsl_details_mac_address_description" qtlid="309581">Adresse physique de l'équipement</translation>
    <translation id="xdsl_details_sync_label" qtlid="60698">Synchronisation</translation>

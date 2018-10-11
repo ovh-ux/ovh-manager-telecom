@@ -36,7 +36,7 @@
                             </li>
 
                             <!-- Synchro -->
-                            <li class="oui-tile__item">
+                            <li class="oui-tile__item" data-ng-if="!access.xdsl.isFiber">
                                 <div class="oui-tile__definition">
                                     <div class="oui-tile__term"
                                          data-translate="xdsl_details_sync_label"></div>
@@ -64,7 +64,7 @@
                             </li>
 
                             <!-- Attenuation -->
-                            <li class="oui-tile__item">
+                            <li class="oui-tile__item" data-ng-if="!access.xdsl.isFiber">
                                 <div class="oui-tile__definition">
                                     <div class="oui-tile__term" data-translate="xdsl_details_att"></div>
                                     <div class="oui-tile__description"
@@ -85,7 +85,7 @@
                             </li>
 
                             <!-- DEGROUPAGE -->
-                            <li class="oui-tile__item">
+                            <li class="oui-tile__item" data-ng-if="!access.xdsl.isFiber">
                                 <div class="oui-tile__definition">
                                     <div class="oui-tile__term" data-translate="xdsl_details_degroupage_label"></div>
                                     <div class="oui-tile__description"
@@ -141,13 +141,14 @@
                                                 <span data-ng-bind="access.xdsl.address.city"></span>
                                             </div>
 
-                                            <a class="oui-button oui-button_full-width oui-button_icon-right oui-button_secondary"
-                                               data-ui-sref="telecom.pack.move"
-                                               role="button">
+                                            <button class="oui-button oui-button_secondary oui-button_full-width oui-button_icon-right"
+                                                    data-ng-disabled="access.xdsl.isFiber"
+                                                    data-ui-sref="telecom.pack.move"
+                                                    role="button">
                                                 <span data-translate="xdsl_details_button_move"></span>
                                                 <span class="oui-icon oui-icon_circle oui-icon-chevron-right"
                                                       aria-hidden="true"></span>
-                                            </a>
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -227,9 +228,10 @@
                         data-translate="xdsl_details_caracteristics"></h3>
                     <div class="oui-tile__body">
                         <ul class="list-unstyled">
-                            <li class="oui-tile__item">
+                            <!--NRA-->
+                            <li class="oui-tile__item" data-ng-if="!access.xdsl.isFiber">
                                 <div class="oui-tile__definition">
-                                    <h5 data-translate="xdsl_details_NRA_title"></h5>
+                                    <h4 class="oui-header_5" data-translate="xdsl_details_NRA_title"></h4>
 
                                     <dl>
                                         <dt class="oui-tile__term"
@@ -288,12 +290,34 @@
                                     </dl>
                                 </div>
                             </li>
-
-
+                            <!--NRO-->
+                            <li class="oui-tile__item" data-ng-if="access.xdsl.isFiber">
+                                <div class="oui-tile__definition">
+                                    <h4 class="oui-header_5" data-translate="xdsl_details_NRO_title"></h4>
+                                    <dl>
+                                        <dt class="oui-tile__term"
+                                            data-translate="xdsl_details_NRO_name"></dt>
+                                        <dd class="oui-tile__description"
+                                            data-ng-bind="access.xdsl.nra"></dd>
+                                    </dl>
+                                </div>
+                            </li>
+                            <!--PTO (only for fiber)-->
+                            <li class="oui-tile__item" data-ng-if="access.xdsl.isFiber">
+                                <div class="oui-tile__definition" >
+                                    <h4 class="oui-header_5" data-translate="xdsl_details_PTO_title"></h4>
+                                    <dl>
+                                        <dt class="oui-tile__term"
+                                            data-translate="xdsl_details_PTO_reference"></dt>
+                                        <dd class="oui-tile__description"
+                                            data-ng-bind="XdslAccess.lineDetails.number"></dd>
+                                    </dl>
+                                </div>
+                            </li>
                             <!-- IPS -->
                             <li class="oui-tile__item">
                                 <div class="oui-tile__definition">
-                                    <h5 data-translate="xdsl_details_ips_title"></h5>
+                                    <h4 class="oui-header_5" data-translate="xdsl_details_ips_title"></h4>
                                     <!-- IP V4 -->
                                     <div data-ng-if="XdslAccess.ipsV4.length > 0">
                                         <div class="oui-tile__term"
@@ -387,17 +411,18 @@
                             <!-- Connexion -->
                             <li class="oui-tile__item">
                                 <div class="oui-tile__definition">
-                                    <h5 data-translate="xdsl_details_connection_title"></h5>
+                                    <h4 class="oui-header_5" data-translate="xdsl_details_connection_title"></h4>
 
-                                    <div class="oui-tile__term" data-translate="xdsl_details_connection"></div>
-                                    <div class="oui-tile__description">
-                                        <span data-ng-if="access.xdsl.capabilities.canChangeDslamProfile"
-                                              data-translate="xdsl_connection_ovh"></span>
-                                        <span data-ng-if="!access.xdsl.capabilities.canChangeDslamProfile"
-                                              data-translate="xdsl_connection_no_ovh"></span>
-                                    </div>
+                                    <div data-ng-if="!access.xdsl.isFiber">
+                                        <div class="oui-tile__term" data-translate="xdsl_details_connection"></div>
+                                        <div class="oui-tile__description">
+                                            <span data-ng-if="access.xdsl.capabilities.canChangeDslamProfile"
+                                                  data-translate="xdsl_connection_ovh"></span>
+                                            <span data-ng-if="!access.xdsl.capabilities.canChangeDslamProfile"
+                                                  data-translate="xdsl_connection_no_ovh"></span>
+                                        </div>
 
-                                    <div class="my-2"
+                                        <div class="my-2"
                                          data-ng-if="access.xdsl.capabilities.canChangeDslamProfile">
                                         <label>
                                             <a href="https://www.ovh.com/fr/a1649.adsl-vdsl-quel-profil-box"
@@ -412,46 +437,44 @@
                                         </label>
                                         <div class="oui-tile__description"
                                              data-ng-include="'app/telecom/pack/xdsl/access/profil/pack-xdsl-access-profil.html'"></div>
+                                        </div>
+
+                                        <div class="my-2"
+                                             data-ng-if="access.xdsl.capabilities.canApplyLnsRateLimit">
+                                            <span class="tooltip-label oui-tile__term"
+                                                  data-tooltip-append-to-body="true"
+                                                  data-tooltip-placement="right"
+                                                  data-uib-tooltip-template="'pack-xdsl-access-tooltip-lnsApply.html'"
+                                                  data-translate="xdsl_details_rate_limit">
+                                            </span>
+                                            <div class="oui-tile__description"
+                                                 data-ng-include="'app/telecom/pack/xdsl/access/rateLimit/xdsl-access-lns-ratelimit.html'"></div>
+                                        </div>
+                                        <div class="my-2"
+                                             data-ng-if="access.xdsl.capabilities.canResetDslamPort && access.xdsl.capabilities.hasDslamPort">
+                                            <span class="tooltip-label oui-tile__term"
+                                                  data-tooltip-append-to-body="true"
+                                                  data-tooltip-placement="right"
+                                                  data-uib-tooltip-template="'pack-xdsl-access-tooltip-dslam.html'"
+                                                  data-translate="xdsl_details_reset_dslam_port">
+                                            </span>
+                                            <div class="oui-tile__description"
+                                                 data-ng-include="'app/telecom/pack/xdsl/access/portReset/pack-xdsl-access-port-reset.html'"></div>
+                                        </div>
                                     </div>
 
-                                    <div class="my-2"
-                                         data-ng-if="access.xdsl.capabilities.canApplyLnsRateLimit">
-                                        <span class="tooltip-label oui-tile__term"
-                                              data-tooltip-append-to-body="true"
-                                              data-tooltip-placement="right"
-                                              data-uib-tooltip-template="'pack-xdsl-access-tooltip-lnsApply.html'"
-                                              data-translate="xdsl_details_rate_limit">
-                                        </span>
-                                        <div class="oui-tile__description"
-                                             data-ng-include="'app/telecom/pack/xdsl/access/rateLimit/xdsl-access-lns-ratelimit.html'"></div>
-                                    </div>
-
-                                    <div class="my-2"
-                                         data-ng-if="access.xdsl.capabilities.canResetDslamPort && access.xdsl.capabilities.hasDslamPort">
-                                        <span class="tooltip-label oui-tile__term"
-                                              data-tooltip-append-to-body="true"
-                                              data-tooltip-placement="right"
-                                              data-uib-tooltip-template="'pack-xdsl-access-tooltip-dslam.html'"
-                                              data-translate="xdsl_details_reset_dslam_port">
-                                        </span>
-                                        <div class="oui-tile__description"
-                                             data-ng-include="'app/telecom/pack/xdsl/access/portReset/pack-xdsl-access-port-reset.html'"></div>
-                                    </div>
-
-                                    <div class="my-2"
-                                         data-ng-if="XdslAccess.modem">
-                                        <span class="tooltip-label oui-tile__term"
-                                              data-tooltip-append-to-body="true"
-                                              data-tooltip-placement="right"
-                                              data-uib-tooltip-template="'pack-xdsl-access-tooltip-mac.html'"
-                                              data-translate="xdsl_details_mac_address">
-                                        </span>
+                                    <div data-ng-if="XdslAccess.modem">
+                                        <span data-ng-if="access.xdsl.isFiber" class="oui-tile__term" data-translate="xdsl_details_serial_number"></span>
+                                        <div data-ng-if="!access.xdsl.isFiber">
+                                            <span data-translate="xdsl_details_mac_address" class="oui-tile__term"></span>
+                                            <oui-popover>
+                                                <button type="button" class="oui-popover-button" data-oui-popover-trigger></button>
+                                                <oui-popover-content>{{:: 'xdsl_details_mac_address_description' | translate }}</oui-popover-content>
+                                            </oui-popover>
+                                        </div>
                                         <div class="oui-tile__description"
                                              data-ng-bind="XdslAccess.modem.macAddress"></div>
-                                    </div>
 
-                                    <div class="my-2"
-                                         data-ng-if="XdslAccess.modem">
                                         <div class="oui-tile__term"
                                              data-translate="xdsl_details_modem_model">
                                         </div>
