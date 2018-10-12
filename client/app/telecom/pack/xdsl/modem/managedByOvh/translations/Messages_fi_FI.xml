@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <translations>
-   <translation id="xdsl_modem_managedBy_title" qtlid="311310">Aktivoi etäkonfigurointi</translation>
+   <translation id="xdsl_modem_managedBy_title">Configuration à distance activée</translation>
    <translation id="xdsl_modem_managedBy_description" qtlid="311323">Modeemin konfiguraatio voidaan tehdä joko Hallintapaneelissa tai sen sisäisessä käyttöliittymässä. Aktivoimalla modeemin Hallintapaneelista kytket modeemin sisäisen käyttöliittymän pois päältä. &#13;
 </translation>
    <translation id="xdsl_modem_managedBy_warning" qtlid="311336">Huom, konfiguraation voi tehdä ainoastaan yhdeltä käyttöliittymältä</translation>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <translations>
-   <translation id="xdsl_modem_managedBy_title" qtlid="311310">Įjungti konfigūravimą nuotoliniu būdu</translation>
+   <translation id="xdsl_modem_managedBy_title">Configuration à distance activée</translation>
    <translation id="xdsl_modem_managedBy_description" qtlid="311323">Modemas gali būti konfigūruojamas arba kliento paskyroje, arba naudojant jo vidinę valdymo sąsają. Jei įjungsite modemo konfigūravimą kliento paskyroje, jūs išjungsite modemo vidinę valdymo sąsają.</translation>
    <translation id="xdsl_modem_managedBy_warning" qtlid="311336">Dėmesio: konfigūravimas galimas tik vienoje sąsajoje. </translation>
    <translation id="xdsl_modem_managedBy_warning_override" qtlid="385520">Dėmesio: konfigūracijos įjungimas nuotoliniu būdu panaikins jūsų modemo esamus nustatymus. </translation>
