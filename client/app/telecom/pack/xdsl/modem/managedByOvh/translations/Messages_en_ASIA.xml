@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <translations>
-   <translation id="xdsl_modem_managedBy_title" qtlid="311310">Activer la configuration à distance</translation>
+   <translation id="xdsl_modem_managedBy_title">Configuration à distance activée</translation>
    <translation id="xdsl_modem_managedBy_description" qtlid="311323">La configuration du modem peut se faire soit depuis l'Espace Client, soit depuis son interface interne. En activant la configuration du modem depuis l'Espace Client, vous désactivez l'interface interne de celui-ci.</translation>
    <translation id="xdsl_modem_managedBy_warning" qtlid="311336">Attention, la configuration ne peut se faire que depuis une seule interface.</translation>
    <translation id="xdsl_modem_managedBy_warning_override" qtlid="385520">Attention, l'activation de la configuration à distance va écraser le paramétrage actuel de votre modem.</translation>

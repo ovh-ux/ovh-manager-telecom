@@ -14,4 +14,6 @@ angular.module('managerApp').constant('PACK', {
       index: 60,
     },
   },
+
+  fiberAccess: ['ftth'],
 });

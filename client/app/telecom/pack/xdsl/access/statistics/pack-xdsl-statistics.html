@@ -5,7 +5,7 @@
     <ul class="list-unstyled">
 
         <!-- Synchonisation -->
-        <li class="oui-tile__item">
+        <li class="oui-tile__item" data-ng-if="!access.xdsl.isFiber">
             <div class="oui-tile__definition">
                 <h5 class="mb-2"
                      data-translate="xdsl_statistics_sync_title"></h5>
@@ -122,7 +122,7 @@
         </li>
 
         <!--      snr       -->
-        <li class="oui-tile__item">
+        <li class="oui-tile__item" data-ng-if="!access.xdsl.isFiber">
             <div class="oui-tile__definition">
                 <h5 class="mb-2"
                      data-translate="xdsl_statistics_snr_title"></h5>
@@ -160,8 +160,8 @@
             </div>
         </li>
 
-        <!-- Synchonisation -->
-        <li class="oui-tile__item">
+        <!-- Attenuation -->
+        <li class="oui-tile__item" data-ng-if="!access.xdsl.isFiber">
             <div class="oui-tile__definition">
                 <h5 class="mb-2"
                      data-translate="xdsl_statistics_attenuation_title"></h5>
