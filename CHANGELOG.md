@@ -1,3 +1,31 @@
+<a name="10.8.0"></a>
+# [10.8.0](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.7.6...v10.8.0) (2018-10-12)
+
+
+### Bug Fixes
+
+* update initialization value for loading init ([2d9adbb](https://github.com/ovh-ux/ovh-manager-telecom/commit/2d9adbb))
+* **i18n:** retrieve translations ([778dc8e](https://github.com/ovh-ux/ovh-manager-telecom/commit/778dc8e))
+* **i18n:** submit translations ([8ee2e20](https://github.com/ovh-ux/ovh-manager-telecom/commit/8ee2e20))
+* **pack.xdsl:** fix heading hierarchy ([c95357b](https://github.com/ovh-ux/ovh-manager-telecom/commit/c95357b))
+* remove 2 nodes useless ([fcc5828](https://github.com/ovh-ux/ovh-manager-telecom/commit/fcc5828))
+* remove extra space ([9cba401](https://github.com/ovh-ux/ovh-manager-telecom/commit/9cba401))
+* update from review comments ([0271d9b](https://github.com/ovh-ux/ovh-manager-telecom/commit/0271d9b))
+* update pack migration controller and view from review comments ([90f5f4d](https://github.com/ovh-ux/ovh-manager-telecom/commit/90f5f4d))
+* update style from review comments ([9d43bf5](https://github.com/ovh-ux/ovh-manager-telecom/commit/9d43bf5))
+* upgrade ovh-api-services ([2bcbf35](https://github.com/ovh-ux/ovh-manager-telecom/commit/2bcbf35))
+* upgrade ovh-ui-kit version ([5d22d80](https://github.com/ovh-ux/ovh-manager-telecom/commit/5d22d80))
+* upgrade yarn ([4f0e29a](https://github.com/ovh-ux/ovh-manager-telecom/commit/4f0e29a))
+
+
+### Features
+
+* **fiber:** add step for fiber migration ([af8c6eb](https://github.com/ovh-ux/ovh-manager-telecom/commit/af8c6eb))
+* **migration:** remove engagement duration ([45e93fc](https://github.com/ovh-ux/ovh-manager-telecom/commit/45e93fc))
+* **pack.xdsl:** add fiber information display ([42f8ed1](https://github.com/ovh-ux/ovh-manager-telecom/commit/42f8ed1))
+
+
+
 <a name="10.7.6"></a>
 ## [10.7.6](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.7.5...v10.7.6) (2018-10-09)
 
