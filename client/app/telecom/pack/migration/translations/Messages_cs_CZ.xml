@@ -95,6 +95,7 @@
    <translation id="telecom_pack_migration_confirm_resume_voipEcoFax" qtlid="332463">Ligne EcoFax</translation>
    <translation id="telecom_pack_migration_confirm_resume_voipLine" qtlid="83145">telefonní linka</translation>
    <translation id="telecom_pack_migration_confirm_resume_xdslAccess" qtlid="305603">Accès Internet</translation>
+   <translation id="telecom_pack_migration_confirm_resume_emailPro">Compte emailPro</translation>
 
    <translation id="telecom_pack_migration_confirm_contracts_accept_title" qtlid="213336">Smlouvy</translation>
    <translation id="telecom_pack_migration_confirm_contracts_accept_button" qtlid="332476">Valider le changement d'offre</translation>
@@ -129,4 +130,21 @@
 
    <translation id="telecom_pack_migration_shipping_contact" qtlid="384623">Contact de livraison</translation>
    <translation id="telecom_pack_migration_shipping_mode" qtlid="384636">Mode de livraison</translation>
+
+<!-- BUILDING DETAILS -->
+   <translation id="telecom_pack_migration_building_details_select_engagment">Veuillez choisir votre engagement</translation>
+   <translation id="telecom_pack_migration_building_details_engagment_month">mois</translation>
+   <translation id="telecom_pack_migration_building_details_select_building">Veuillez indiquer votre bâtiment</translation>
+   <translation id="telecom_pack_migration_building_details_select_a_building">Sélectionner un bâtiment</translation>
+   <translation id="telecom_pack_migration_building_details_select_stair">Veuillez indiquer votre escalier</translation>
+   <translation id="telecom_pack_migration_building_details_select_a_stair">Sélectionner un escalier</translation>
+   <translation id="telecom_pack_migration_building_details_select_floor">Veuillez indiquer votre étage</translation>
+   <translation id="telecom_pack_migration_building_details_select_a_floor">Sélectionner un étage</translation>
+   <translation id="telecom_pack_migration_building_details_building">Bâtiment</translation>
+   <translation id="telecom_pack_migration_building_details_stair">Escalier</translation>
+   <translation id="telecom_pack_migration_building_details_floor">Etage</translation>
+   <translation id="telecom_pack_migration_building_details_confirm">Confirmer la sélection</translation>
+   <translation id="telecom_pack_migration_building_details_none">Aucun</translation>
+   <translation id="telecom_pack_migration_building_details_unknown">Inconnu</translation>
+
 </translations>

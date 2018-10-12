@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <translations>
-   <translation id="xdsl_modem_managedBy_title" qtlid="311310">Activar la configuración remota</translation>
+   <translation id="xdsl_modem_managedBy_title">Configuration à distance activée</translation>
    <translation id="xdsl_modem_managedBy_description" qtlid="311323">La configuración del módem puede realizarse, o bien desde el área de cliente, o bien desde su interfaz interna. Si activa la configuración del módem desde el área de cliente, su interfaz interna se desactiva.</translation>
    <translation id="xdsl_modem_managedBy_warning" qtlid="311336">Atención: La configuración solo puede realizarse desde una única interfaz.</translation>
    <translation id="xdsl_modem_managedBy_warning_override" qtlid="385520">Atención: La activación de la configuración remota eliminará la configuración actual de su módem.</translation>
