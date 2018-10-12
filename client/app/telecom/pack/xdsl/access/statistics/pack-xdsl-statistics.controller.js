@@ -57,7 +57,7 @@ angular.module('managerApp').controller('XdslStatisticsCtrl', class XdslStatisti
    * @return {String}
    */
   displayBitrate(bitrate) {
-    return this.$filter('unit-humanize')(bitrate, 'bit', 1);
+    return this.$filter('tuc-unit-humanize')(bitrate, 'bit', 1);
   }
 
   /**
@@ -82,7 +82,7 @@ angular.module('managerApp').controller('XdslStatisticsCtrl', class XdslStatisti
   logarithmicAxisDisplay(label, index, all) {
     const interval = Math.round(all.length / 4);
     if (index === all.length - 1 || index % interval === 0) {
-      return this.$filter('unit-humanize')(label, 'generic', 1);
+      return this.$filter('tuc-unit-humanize')(label, 'generic', 1);
     }
     return '';
   }
