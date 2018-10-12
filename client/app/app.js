@@ -1,4 +1,5 @@
 import asyncLoaderFactory from './async-loader.factory';
+import telecomUniverseComponents from '../telecomUniverseComponents';
 
 angular.module('managerApp', [
   'ovh-angular-sso-auth',
@@ -58,6 +59,7 @@ angular.module('managerApp', [
   'ovh-angular-actions-menu',
   'ovh-angular-sidebar-menu',
   'angular-translate-loader-pluggable',
+  telecomUniverseComponents,
 ])
 
 /*= =========  GLOBAL OPTIONS  ========== */
