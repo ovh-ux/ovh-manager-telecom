@@ -49,20 +49,20 @@ export default angular
      * @param {String} rio          RIO code
      * @param {String} phoneNumber  Corresponding phone number
      */
-    validator.extend('isRio', (rio, phoneNumber) => (new Rio(rio)).check(phoneNumber));
+    validator.extend('tucIsRio', (rio, phoneNumber) => (new Rio(rio)).check(phoneNumber));
 
     /**
      * Validate a Standard insee
      * @param {Object} obj          Object containing in
      */
-    validator.extend('hasInseeCode', obj => _.isObject(obj) && !!obj.inseeCode);
+    validator.extend('tucHasInseeCode', obj => _.isObject(obj) && !!obj.inseeCode);
 
     /**
      * Validate a zipcode
      * @param {String} zipcode Zip code to validate
      * @param  {Array} filter  scope of the zip code
      */
-    validator.extend('isZipcode', (zipcode, filter) => {
+    validator.extend('tucIsZipcode', (zipcode, filter) => {
       const check = {
         frenchOverseas: /^9[78]\d{3}$/.test(zipcode),
         metropolitanFrance: /^\d{5}$/.test(zipcode) && (zipcode >= 1000) && (zipcode < 96000),
@@ -85,13 +85,13 @@ export default angular
      *  @param {String} str     IP representation string
      *  @param {Number} version IP version
      */
-    validator.extend('isIPBlock', (str, version) => {
+    validator.extend('tucIsIPBlock', (str, version) => {
       if (version === 4 || version === 6) {
         const split = str.split('/');
         return split.length === 2 && validator.isIP(split[0], version)
           && parseInt(split[1], 10) > 0 && parseInt(split[1], 10) <= (version === 4 ? 32 : 128);
       }
-      return validator.isIPBlock(str, 4) || validator.isIPBlock(str, 6);
+      return validator.tucIsIPBlock(str, 4) || validator.tucIsIPBlock(str, 6);
     });
 
     /**
@@ -99,7 +99,7 @@ export default angular
      *  @param {String} str     IP representation string
      *  @return {Boolean}
      */
-    validator.extend('isPrivateIPv4', (str) => {
+    validator.extend('tucIsPrivateIPv4', (str) => {
       if (validator.isIP(str, 4)) {
         const ipBlock = str.split('.');
         const bitBlock = parseInt(ipBlock[0], 10);
@@ -121,7 +121,7 @@ export default angular
      *  Validate a siret code
      *  @param {String} siret SIRET code
      */
-    validator.extend('isSiret', (siret) => {
+    validator.extend('tucIsSiret', (siret) => {
       if (_.isEmpty(siret)) {
         return true;
       }
@@ -134,11 +134,11 @@ export default angular
       return luhnSum % 10 === 0;
     });
 
-    validator.extend('isFrenchLandLine', phone => /^0[1-5]([\\s\\-]?([0-9]){2}){4}$/.test(phone));
+    validator.extend('tucIsFrenchLandLine', phone => /^0[1-5]([\\s\\-]?([0-9]){2}){4}$/.test(phone));
 
-    validator.extend('isFrenchPhoneNumber', phone => /^(0033|\+33\s?(\(0\))?|0)[^08](\s*\d{2}){4}$/.test(phone));
+    validator.extend('tucIsFrenchPhoneNumber', phone => /^(0033|\+33\s?(\(0\))?|0)[^08](\s*\d{2}){4}$/.test(phone));
 
-    validator.extend('isMacAddress', (val) => {
+    validator.extend('tucIsMacAddress', (val) => {
       const values = val.split(/:/);
       return values.length === 6 && _.reduce(values, (result, elt) => /^[0-9a-f]{2}$/i.test(elt) && result, true);
     });
@@ -153,7 +153,7 @@ export default angular
                                                           *.foo.bar.example.com
      * @return {Boolean}
      */
-    validator.extend('isValidDomain', (domain, options) => {
+    validator.extend('tucIsValidDomain', (domain, options) => {
       const theOptions = options || {};
       let inError = false;
 

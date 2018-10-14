@@ -106,7 +106,7 @@ angular.module('managerApp').controller('PackMoveCtrl', function (
         moveData.landline = {
           lineNumber: self.offer.selected.lineNumber,
           portLineNumber: self.form.futureLandline.keepLineNumber,
-          rio: validator.isRio(self.form.futureLandline.rio, self.form.futureLandline.lineNumber)
+          rio: validator.tucIsRio(self.form.futureLandline.rio, self.form.futureLandline.lineNumber)
             ? self.form.futureLandline.rio.toUpperCase() : undefined,
           status: self.offer.selected.lineStatus,
           unbundling: self.offer.selected.unbundling,
@@ -226,7 +226,7 @@ angular.module('managerApp').controller('PackMoveCtrl', function (
    */
   this.isFormValid = function () {
     const keepLine = !self.form.futureLandline.keepLineNumber
-      || validator.isRio(self.form.futureLandline.rio, self.form.futureLandline.lineNumber);
+      || validator.tucIsRio(self.form.futureLandline.rio, self.form.futureLandline.lineNumber);
     const ftMeeting = (self.offer.selected && self.offer.meetingSlots)
       && (!self.offer.selected.meetingSlots
       || (self.offer.selected.meetingSlots && self.offer.meetingSlots.fakeMeeting)

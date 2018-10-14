@@ -24,7 +24,7 @@ angular.module('managerApp').component('packMoveEligibilityAddress', {
       self.cities = null;
       delete this.address.streetNumber;
       delete this.address.street;
-      if (validator.isZipcode(zipcode, ['metropolitanFrance'])) {
+      if (validator.tucIsZipcode(zipcode, ['metropolitanFrance'])) {
         self.loaders.cities = true;
         self.loading = true;
         OvhApiXdslEligibility.v6().getCities({

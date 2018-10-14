@@ -36,7 +36,7 @@ angular.module('managerApp').controller('TelephonyNumberSviCtrl', function ($q, 
   }
 
   self.isValidURL = function (value) {
-    return validator.isURL(value) && validator.isValidDomain(value.split('/')[0]);
+    return validator.isURL(value) && validator.tucIsValidDomain(value.split('/')[0]);
   };
 
   self.isValidUrlRecord = function (value) {

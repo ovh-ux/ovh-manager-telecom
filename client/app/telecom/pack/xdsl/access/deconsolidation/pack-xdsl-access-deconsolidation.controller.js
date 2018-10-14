@@ -53,7 +53,7 @@ angular.module('managerApp')
     };
 
     this.checkRioCode = function () {
-      this.rioCodeIsValid = validator.isRio(self.model.rio, $stateParams.number);
+      this.rioCodeIsValid = validator.tucIsRio(self.model.rio, $stateParams.number);
     };
 
     function updateIsLegacyOffer() {
