@@ -1,12 +1,25 @@
-@success-drawing-check-size: 50px;
-@success-drawing-check-height: @success-drawing-check-size;
-@success-drawing-check-width: @success-drawing-check-size;
-@success-drawing-check-stroke-color: @oui-color-dodger;
-@success-drawing-check-stroke-width: 2;
-@success-drawing-check-shadow-color: black;
-@success-drawing-check-animation-duration: 0.7s;
+@import "bootstrap/less/mixins/clearfix";
+@import "ovh-ui-kit/packages/oui-color/_variables";
 
-success-drawing-check { /* stylelint-disable-line */
+tuc-success-drawing-check { /* stylelint-disable-line */
+  @success-drawing-check-size: 50px;
+  @success-drawing-check-height: @success-drawing-check-size;
+  @success-drawing-check-width: @success-drawing-check-size;
+  @success-drawing-check-stroke-color: @oui-color-dodger;
+  @success-drawing-check-stroke-width: 2;
+  @success-drawing-check-shadow-color: black;
+  @success-drawing-check-animation-duration: 0.7s;
+
+  @keyframes succesDrawingCheckAnim {
+    from {
+      stroke-dashoffset: 80;
+    }
+
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
   .clearfix;
 
   display: block;
@@ -53,15 +66,5 @@ success-drawing-check { /* stylelint-disable-line */
     > * {
       margin: 8px 0;
     }
-  }
-}
-
-@keyframes succesDrawingCheckAnim {
-  from {
-    stroke-dashoffset: 80;
-  }
-
-  to {
-    stroke-dashoffset: 0;
   }
 }
