@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('OverTheBoxDetailsCtrl', function ($scope, $rootScope, $filter, $translate, $q, $stateParams, XDSL, OVER_THE_BOX, OVERTHEBOX_DETAILS, OvhApiOverTheBox, OverTheBoxGraphService, Toast, ChartjsFactory) {
+angular.module('managerApp').controller('OverTheBoxDetailsCtrl', function ($scope, $rootScope, $filter, $translate, $q, $stateParams, XDSL, OVER_THE_BOX, OVERTHEBOX_DETAILS, OvhApiOverTheBox, OverTheBoxGraphService, Toast, TucChartjsFactory) {
   const self = this;
 
   /**
@@ -117,7 +117,7 @@ angular.module('managerApp').controller('OverTheBoxDetailsCtrl', function ($scop
       self.upload = computeSpeed(filteredUp);
 
       // Download chart
-      self.chartDown = new ChartjsFactory(angular.copy(OVERTHEBOX_DETAILS.chart));
+      self.chartDown = new TucChartjsFactory(angular.copy(OVERTHEBOX_DETAILS.chart));
       self.chartDown.setYLabel($translate.instant('overTheBox_statistics_bits_per_sec_legend'));
       self.chartDown.setAxisOptions('yAxes', {
         ticks: {
@@ -157,7 +157,7 @@ angular.module('managerApp').controller('OverTheBoxDetailsCtrl', function ($scop
       }
 
       // Upload chart
-      self.chartUp = new ChartjsFactory(angular.copy(OVERTHEBOX_DETAILS.chart));
+      self.chartUp = new TucChartjsFactory(angular.copy(OVERTHEBOX_DETAILS.chart));
       self.chartUp.setYLabel($translate.instant('overTheBox_statistics_bits_per_sec_legend'));
       self.chartUp.setAxisOptions('yAxes', {
         ticks: {

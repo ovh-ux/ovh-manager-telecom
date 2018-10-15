@@ -1,28 +1,33 @@
-angular.module('managerApp').directive('chartjs', Chart => ({
+import _ from 'lodash';
+import Chart from 'chart.js';
+
+import template from './chartjs.html';
+
+export default /* @ngInject */ () => ({
   restrict: 'A',
   scope: {
-    chartjs: '=?',
+    tucChartjs: '=?',
   },
   bindToController: true,
   controllerAs: '$ctrl',
-  templateUrl: 'components/chartjs/chartjs.html',
+  template,
   link(scope, element, attrs, controller) {
     const canvas = element.children().get(0);
-    canvas.id = _.uniqueId('chartjs');
+    canvas.id = _.uniqueId('tucChartjs');
     _.set(controller, 'ctx', canvas.getContext('2d'));
   },
-  controller: function directiveController($scope) {
+  controller: /* @ngInject */ function directiveController($scope) {
     const self = this;
 
-    this.createChart = function (data) {
+    this.createChart = function createChart(data) {
       if (this.chartInstance) {
         this.chartInstance.destroy();
       }
-      this.chartInstance = new Chart(this.ctx, data || this.chartjs);
+      this.chartInstance = new Chart(this.ctx, data || this.tucChartjs);
     };
 
-    this.$onInit = function () {
-      $scope.$watch('$ctrl.chartjs', (data) => {
+    this.$onInit = function $onInit() {
+      $scope.$watch('$ctrl.tucChartjs', (data) => {
         if (data) {
           self.createChart(data);
         }
@@ -35,4 +40,4 @@ angular.module('managerApp').directive('chartjs', Chart => ({
       });
     };
   },
-}));
+});

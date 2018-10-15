@@ -1,7 +1,7 @@
 angular.module('managerApp').controller('XdslStatisticsCtrl', class XdslStatisticsCtrl {
   constructor(
     $filter, $q, $scope, $stateParams, $translate,
-    ChartjsFactory, OvhApiXdsl,
+    TucChartjsFactory, OvhApiXdsl,
     PACK_XDSL_STATISTICS, XDSL,
   ) {
     this.$filter = $filter;
@@ -9,7 +9,7 @@ angular.module('managerApp').controller('XdslStatisticsCtrl', class XdslStatisti
     this.$scope = $scope;
     this.$stateParams = $stateParams;
     this.$translate = $translate;
-    this.ChartjsFactory = ChartjsFactory;
+    this.TucChartjsFactory = TucChartjsFactory;
     this.OvhApiXdsl = OvhApiXdsl;
     this.PACK_XDSL_STATISTICS = PACK_XDSL_STATISTICS;
     this.XDSL = XDSL;
@@ -159,7 +159,7 @@ angular.module('managerApp').controller('XdslStatisticsCtrl', class XdslStatisti
     }).then((stats) => {
       this.synchronization.haveSeries = !!(stats.uploads.length && stats.downloads.length);
 
-      this.synchronization.chart = new this.ChartjsFactory(
+      this.synchronization.chart = new this.TucChartjsFactory(
         angular.copy(this.PACK_XDSL_STATISTICS.chart),
       );
       this.synchronization.chart.setAxisOptions('yAxes', {
@@ -233,7 +233,9 @@ angular.module('managerApp').controller('XdslStatisticsCtrl', class XdslStatisti
     }).then((stats) => {
       this.traffic.haveSeries = !!(stats.uploads.length && stats.downloads.length);
 
-      this.traffic.chart = new this.ChartjsFactory(angular.copy(this.PACK_XDSL_STATISTICS.chart));
+      this.traffic.chart = new this.TucChartjsFactory(
+        angular.copy(this.PACK_XDSL_STATISTICS.chart),
+      );
 
       this.traffic.chart.setAxisOptions('yAxes', {
         type: 'logarithmic',
@@ -302,7 +304,7 @@ angular.module('managerApp').controller('XdslStatisticsCtrl', class XdslStatisti
     return this.getAccessStatistics('ping', period).then((statistics) => {
       this.ping.haveSeries = !!statistics.length;
 
-      this.ping.chart = new this.ChartjsFactory(angular.copy(this.PACK_XDSL_STATISTICS.chart));
+      this.ping.chart = new this.TucChartjsFactory(angular.copy(this.PACK_XDSL_STATISTICS.chart));
 
       this.ping.chart.setAxisOptions('yAxes', {
         type: 'linear',
@@ -357,7 +359,7 @@ angular.module('managerApp').controller('XdslStatisticsCtrl', class XdslStatisti
     }).then((stats) => {
       this.snr.haveSeries = !!(stats.uploads.length && stats.downloads.length);
 
-      this.snr.chart = new this.ChartjsFactory(angular.copy(this.PACK_XDSL_STATISTICS.chart));
+      this.snr.chart = new this.TucChartjsFactory(angular.copy(this.PACK_XDSL_STATISTICS.chart));
 
       this.snr.chart.setAxisOptions('yAxes', {
         type: 'linear',
@@ -426,7 +428,7 @@ angular.module('managerApp').controller('XdslStatisticsCtrl', class XdslStatisti
     }).then((stats) => {
       this.attenuation.haveSeries = !!(stats.uploads.length && stats.downloads.length);
 
-      this.attenuation.chart = new this.ChartjsFactory(
+      this.attenuation.chart = new this.TucChartjsFactory(
         angular.copy(this.PACK_XDSL_STATISTICS.chart),
       );
 
