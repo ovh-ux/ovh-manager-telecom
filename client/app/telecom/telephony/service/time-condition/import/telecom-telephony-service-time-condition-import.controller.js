@@ -1,8 +1,8 @@
 angular.module('managerApp').controller('TelecomTelephonyServiceTimeConditionImportCtrl', class TelecomTelephonyServiceTimeConditionImportCtrl {
-  constructor($translate, $uibModalInstance, TucToast, voipTimeConditionConfiguration) {
+  constructor($translate, $uibModalInstance, Toast, voipTimeConditionConfiguration) {
     this.$translate = $translate;
     this.$uibModalInstance = $uibModalInstance;
-    this.TucToast = TucToast;
+    this.Toast = Toast;
     this.voipTimeConditionConfiguration = voipTimeConditionConfiguration;
   }
 

@@ -3,7 +3,7 @@ angular
   .controller('TelecomSmsOptionsResponseEditCtrl', class TelecomSmsOptionsResponseEditCtrl {
     constructor(
       $q, $stateParams, $timeout, $uibModalInstance,
-      OvhApiSms, SmsMediator, service, senders, index, option, TucToastError,
+      OvhApiSms, SmsMediator, service, senders, index, option, ToastError,
     ) {
       this.$q = $q;
       this.$stateParams = $stateParams;
@@ -17,7 +17,7 @@ angular
       this.senders = senders;
       this.index = index;
       this.option = option;
-      this.TucToastError = TucToastError;
+      this.ToastError = ToastError;
     }
 
     $onInit() {
@@ -44,7 +44,7 @@ angular
           this.trackingOptions.media = this.model.option.media;
           this.trackingSender.sender = this.model.option.sender;
         })).catch((err) => {
-          this.TucToastError(err);
+          this.ToastError(err);
         }).finally(() => {
           this.loading.init = false;
         });

@@ -3,7 +3,7 @@ angular.module('managerApp').component('telecomTelephonyAliasMembersAdd', {
     api: '=',
   },
   templateUrl: 'components/telecom/telephony/alias/members/telecom-telephony-alias-members-add.html',
-  controller($q, $translate, $translatePartialLoader, $uibModal, TucToast, TucToastError) {
+  controller($q, $translate, $translatePartialLoader, $uibModal, Toast, ToastError) {
     const self = this;
 
     self.$onInit = function () {
@@ -25,7 +25,7 @@ angular.module('managerApp').component('telecomTelephonyAliasMembersAdd', {
       $translatePartialLoader.addPart('../components/telecom/telephony/alias/members');
       return $translate.refresh().finally(() => {
         self.isInitialized = true;
-        return self.refreshMembers().catch(err => new TucToastError(err));
+        return self.refreshMembers().catch(err => new ToastError(err));
       });
     };
 
@@ -67,11 +67,11 @@ angular.module('managerApp').component('telecomTelephonyAliasMembersAdd', {
             .map(number => _.assign({ number }, self.addMemberForm.options))
             .value())
           .then(() => {
-            TucToast.success($translate.instant('telephony_alias_members_add_success'));
+            Toast.success($translate.instant('telephony_alias_members_add_success'));
             self.resetMemberAddForm();
             form.$setPristine();
           })
-          .catch(err => new TucToastError(err))
+          .catch(err => new ToastError(err))
           .finally(() => {
             self.loaders.adding = false;
           });

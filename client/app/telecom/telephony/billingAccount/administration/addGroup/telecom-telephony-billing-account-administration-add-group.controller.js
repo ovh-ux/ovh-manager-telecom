@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyBillingAccountAdministrationAddGroup', function ($stateParams, $translate, $timeout, OvhApiOrderTelephony, TucToastError) {
+angular.module('managerApp').controller('TelecomTelephonyBillingAccountAdministrationAddGroup', function ($stateParams, $translate, $timeout, OvhApiOrderTelephony, ToastError) {
   const self = this;
 
   self.$onInit = function () {
@@ -8,7 +8,7 @@ angular.module('managerApp').controller('TelecomTelephonyBillingAccountAdministr
     OvhApiOrderTelephony.v6().getNewBillingAccount().$promise.then((result) => {
       self.contracts = result.contracts;
       self.prices = result.prices;
-    }, err => new TucToastError(err)).finally(() => {
+    }, err => new ToastError(err)).finally(() => {
       self.loading = false;
     });
   };
@@ -24,7 +24,7 @@ angular.module('managerApp').controller('TelecomTelephonyBillingAccountAdministr
     self.ordering = true;
     return OvhApiOrderTelephony.v6().orderNewBillingAccount().$promise.then((order) => {
       self.order = order;
-    }, err => new TucToastError(err)).finally(() => {
+    }, err => new ToastError(err)).finally(() => {
       self.ordering = false;
     });
   };

@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyServiceFaxSettingsCtrl', function ($q, $stateParams, $translate, $timeout, OvhApiTelephony, TucToast, TucToastError, telephonyBulk) {
+angular.module('managerApp').controller('TelecomTelephonyServiceFaxSettingsCtrl', function ($q, $stateParams, $translate, $timeout, OvhApiTelephony, Toast, ToastError, telephonyBulk) {
   const self = this;
 
   /* ===============================
@@ -57,9 +57,9 @@ angular.module('managerApp').controller('TelecomTelephonyServiceFaxSettingsCtrl'
       billingAccount: $stateParams.billingAccount,
       serviceName: $stateParams.serviceName,
     }, self.settings).$promise.then(() => refreshSettings()).then(() => {
-      TucToast.success($translate.instant('telephony_service_fax_settings_notification_settings_update_settings_success'));
+      Toast.success($translate.instant('telephony_service_fax_settings_notification_settings_update_settings_success'));
     }).catch(() => {
-      TucToast.error($translate.instant('telephony_service_fax_settings_notification_settings_update_settings_error'));
+      Toast.error($translate.instant('telephony_service_fax_settings_notification_settings_update_settings_error'));
     }).finally(() => {
       self.updatingSettings = false;
     });
@@ -96,7 +96,7 @@ angular.module('managerApp').controller('TelecomTelephonyServiceFaxSettingsCtrl'
       self.enums = results.enums;
     }).catch((err) => {
       self.settings = null;
-      return new TucToastError(err);
+      return new ToastError(err);
     }).finally(() => {
       self.loading.init = false;
     });
@@ -132,14 +132,14 @@ angular.module('managerApp').controller('TelecomTelephonyServiceFaxSettingsCtrl'
 
   self.onBulkSuccess = function (bulkResult) {
     // display message of success or error
-    telephonyBulk.getTucToastInfos(bulkResult, {
+    telephonyBulk.getToastInfos(bulkResult, {
       fullSuccess: $translate.instant('telephony_service_fax_settings_update_bulk_all_success'),
       partialSuccess: $translate.instant('telephony_service_fax_settings_update_bulk_some_success', {
         count: bulkResult.success.length,
       }),
       error: $translate.instant('telephony_service_fax_settings_update_bulk_error'),
     }).forEach((toastInfo) => {
-      TucToast[toastInfo.type](toastInfo.message, {
+      Toast[toastInfo.type](toastInfo.message, {
         hideAfter: null,
       });
     });
@@ -149,7 +149,7 @@ angular.module('managerApp').controller('TelecomTelephonyServiceFaxSettingsCtrl'
   };
 
   self.onBulkError = function (error) {
-    TucToast.error([$translate.instant('telephony_service_fax_settings_update_bulk_on_error'), _.get(error, 'msg.data')].join(' '));
+    Toast.error([$translate.instant('telephony_service_fax_settings_update_bulk_on_error'), _.get(error, 'msg.data')].join(' '));
   };
 
   /* -----  End of BULK  ------ */

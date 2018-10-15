@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationModeMiniPabxCtrl', function ($q, $translate, $stateParams, TelephonyMediator, OvhApiTelephony, OvhApiTelephonyMiniPabx, TucToast) {
+angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationModeMiniPabxCtrl', function ($q, $translate, $stateParams, TelephonyMediator, OvhApiTelephony, OvhApiTelephonyMiniPabx, Toast) {
   const self = this;
 
   self.loading = {
@@ -52,9 +52,9 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationModeM
       serviceName: $stateParams.serviceName,
     }, _.pick(self.formOptions, attrs)).$promise.then(() => {
       self.options = angular.copy(self.formOptions);
-      TucToast.success($translate.instant('telephony_alias_configuration_mode_mini_pabx_save_success'));
+      Toast.success($translate.instant('telephony_alias_configuration_mode_mini_pabx_save_success'));
     }).catch((error) => {
-      TucToast.error([$translate.instant('telephony_alias_configuration_mode_mini_pabx_save_error'), _.get(error, 'data.message')].join(' '));
+      Toast.error([$translate.instant('telephony_alias_configuration_mode_mini_pabx_save_error'), _.get(error, 'data.message')].join(' '));
       return $q.reject(error);
     }).finally(() => {
       self.loading.save = false;
@@ -87,7 +87,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationModeM
         self.voicemail = result.voicemail;
       }));
     }).catch((error) => {
-      TucToast.error([$translate.instant('telephony_alias_configuration_mode_mini_pabx_loading_error'), _.get(error, 'data.message')].join(' '));
+      Toast.error([$translate.instant('telephony_alias_configuration_mode_mini_pabx_loading_error'), _.get(error, 'data.message')].join(' '));
       return $q.reject(error);
     }).finally(() => {
       self.loading.init = false;

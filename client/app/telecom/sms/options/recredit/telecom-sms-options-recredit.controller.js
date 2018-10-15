@@ -3,7 +3,7 @@ angular
   .controller('TelecomSmsOptionsRecreditCtrl', class TelecomSmsOptionsRecreditCtrl {
     constructor(
       $q, $stateParams, $translate, $uibModal,
-      OvhApiOrderSms, SmsMediator, TucToast, TucToastError,
+      OvhApiOrderSms, SmsMediator, Toast, ToastError,
     ) {
       this.$q = $q;
       this.$stateParams = $stateParams;
@@ -13,8 +13,8 @@ angular
         orderSms: OvhApiOrderSms.v6(),
       };
       this.SmsMediator = SmsMediator;
-      this.TucToast = TucToast;
-      this.TucToastError = TucToastError;
+      this.Toast = Toast;
+      this.ToastError = ToastError;
     }
 
     $onInit() {
@@ -29,7 +29,7 @@ angular
         this.service = this.SmsMediator.getCurrentSmsService();
         return this.service;
       }).then(service => this.fetchOfferPrice(service)).catch((err) => {
-        this.TucToastError(err);
+        this.ToastError(err);
       }).finally(() => {
         this.loading.init = false;
       });
@@ -70,7 +70,7 @@ angular
         });
       }).catch((error) => {
         if (error && error.type === 'API') {
-          this.TucToast.error(this.$translate.instant('sms_options_recredit_update_ko', { error: error.message }));
+          this.Toast.error(this.$translate.instant('sms_options_recredit_update_ko', { error: error.message }));
         }
       });
     }

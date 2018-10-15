@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('PackVoipLineActivationCtrl', function ($scope, $stateParams, OvhApiPackXdsl, OvhApiPackXdslVoipLine, costs, $q, $translate, TucToastError) {
+angular.module('managerApp').controller('PackVoipLineActivationCtrl', function ($scope, $stateParams, OvhApiPackXdsl, OvhApiPackXdslVoipLine, costs, $q, $translate, ToastError) {
   const self = this;
   this.transporterCost = costs.voip.shipping.transporter.value;
   this.canUncheckOrderablePhones = true;
@@ -258,7 +258,7 @@ angular.module('managerApp').controller('PackVoipLineActivationCtrl', function (
     }, (err) => {
       self.orderDone = false;
       self.orderError = err;
-      return new TucToastError(err);
+      return new ToastError(err);
     }).finally(() => {
       self.orderPending = false;
     });
@@ -321,7 +321,7 @@ angular.module('managerApp').controller('PackVoipLineActivationCtrl', function (
 
       self.shippingAddresses = self.removeDuplicateAddress(data[2]);
       self.framedShippingAddresses = self.buildFramedObject(self.shippingAddresses);
-    }, TucToastError);
+    }, ToastError);
   };
 
   this.init();

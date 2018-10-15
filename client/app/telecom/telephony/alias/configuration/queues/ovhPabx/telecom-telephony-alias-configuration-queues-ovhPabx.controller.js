@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationQueuesOvhPabxCtrl', function ($stateParams, $q, $translate, $timeout, $uibModal, OvhApiTelephony, TucToast, TucToastError) {
+angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationQueuesOvhPabxCtrl', function ($stateParams, $q, $translate, $timeout, $uibModal, OvhApiTelephony, Toast, ToastError) {
   const self = this;
 
   function init() {
@@ -16,7 +16,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationQueue
       if (self.queues.length) {
         _.first(self.queues).isOpen = true;
       }
-    }).catch(err => new TucToastError(err));
+    }).catch(err => new ToastError(err));
   }
 
   self.fetchEnums = function () {
@@ -198,11 +198,11 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationQueue
       }, {
         strategy: 'sequentiallyByAgentOrder',
       }).$promise.then(() => {
-        TucToast.success($translate.instant('telephony_alias_configuration_queues_queue_create_success'));
+        Toast.success($translate.instant('telephony_alias_configuration_queues_queue_create_success'));
         return self.fetchQueues().then((queues) => {
           self.queues = queues;
         });
-      }).catch(err => new TucToastError(err)).finally(() => {
+      }).catch(err => new ToastError(err)).finally(() => {
         self.isCreating = false;
       });
   };
@@ -216,8 +216,8 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationQueue
         queueId: queue.queueId,
       }).$promise.then(() => {
         _.remove(self.queues, { queueId: queue.queueId });
-        TucToast.success($translate.instant('telephony_alias_configuration_queues_queue_delete_success'));
-      }).catch(err => new TucToastError(err)).finally(() => {
+        Toast.success($translate.instant('telephony_alias_configuration_queues_queue_delete_success'));
+      }).catch(err => new ToastError(err)).finally(() => {
         self.isDeleting = false;
       });
   };
@@ -249,8 +249,8 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationQueue
           queue.agentsApi.addMembersToList([added]);
           _.set(queue, 'agentToAdd', null);
           _.set(queue, 'addAgent', false);
-          TucToast.success($translate.instant('telephony_alias_configuration_queues_agent_add_success'));
-        }).catch(err => new TucToastError(err)).finally(() => {
+          Toast.success($translate.instant('telephony_alias_configuration_queues_agent_add_success'));
+        }).catch(err => new ToastError(err)).finally(() => {
           _.set(queue, 'isAdding', false);
         });
     });
@@ -300,8 +300,8 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationQueue
       }).$promise.then(() => {
         _.assign(queue, queue.inEdition);
         _.set(queue, 'inEdition', null);
-        TucToast.success($translate.instant('telephony_alias_configuration_queues_queue_update_success'));
-      }).catch(err => new TucToastError(err)).finally(() => {
+        Toast.success($translate.instant('telephony_alias_configuration_queues_queue_update_success'));
+      }).catch(err => new ToastError(err)).finally(() => {
         _.set(queue, 'isUpdating', true);
       });
   };
@@ -323,7 +323,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationQueue
                 // we mutate sounds array because it is used in the modal aswell
                 self.sounds.length = 0;
                 Array.prototype.push.apply(self.sounds, sounds);
-              }).catch(err => new TucToastError(err));
+              }).catch(err => new ToastError(err));
             },
           };
         },

@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationSchedulerOldPabxCtrl', function ($q, $translate, $stateParams, TelephonyMediator, TucToast) {
+angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationSchedulerOldPabxCtrl', function ($q, $translate, $stateParams, TelephonyMediator, Toast) {
   const self = this;
 
   self.loading = {
@@ -24,7 +24,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationSched
         timeCondition: self.number.feature.getTimeCondition(),
       }));
     }).catch((error) => {
-      TucToast.error([$translate.instant('telephony_alias_configuration_scheduler_load_error'), (error.data && error.data.message) || ''].join(' '));
+      Toast.error([$translate.instant('telephony_alias_configuration_scheduler_load_error'), (error.data && error.data.message) || ''].join(' '));
       return $q.reject(error);
     }).finally(() => {
       self.loading.init = false;

@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyLineCtrl', function ($q, $stateParams, $translate, TelephonyMediator, SidebarMenu, TucToast) {
+angular.module('managerApp').controller('TelecomTelephonyLineCtrl', function ($q, $stateParams, $translate, TelephonyMediator, SidebarMenu, Toast) {
   const self = this;
 
   self.loading = {
@@ -24,7 +24,7 @@ angular.module('managerApp').controller('TelecomTelephonyLineCtrl', function ($q
       }, self.line.serviceName, 'telecom-telephony-section', self.line.billingAccount);
     }, (error) => {
       self.line.stopEdition(true);
-      TucToast.error([$translate.instant('telephony_line_rename_error', $stateParams), error.data.message].join(' '));
+      Toast.error([$translate.instant('telephony_line_rename_error', $stateParams), error.data.message].join(' '));
       return $q.reject(error);
     });
   };

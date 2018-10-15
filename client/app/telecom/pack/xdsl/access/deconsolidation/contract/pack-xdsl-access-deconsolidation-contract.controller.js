@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('XdslDeconsolidationContractCtrl', function ($uibModalInstance, data, TucToastError, URLS, OvhApiXdslDeconsolidation, OvhApiMeVipStatus, $q) {
+angular.module('managerApp').controller('XdslDeconsolidationContractCtrl', function ($uibModalInstance, data, ToastError, URLS, OvhApiXdslDeconsolidation, OvhApiMeVipStatus, $q) {
   const self = this;
 
   this.rio = data.rio;
@@ -24,7 +24,7 @@ angular.module('managerApp').controller('XdslDeconsolidationContractCtrl', funct
       (terms) => {
         self.terms = terms;
       },
-      TucToastError,
+      ToastError,
     )
       .finally(() => {
         self.loading = false;
@@ -36,7 +36,7 @@ angular.module('managerApp').controller('XdslDeconsolidationContractCtrl', funct
       (vipStatus) => {
         self.isVIP = vipStatus.telecom;
       },
-      err => new TucToastError(err),
+      err => new ToastError(err),
     );
   }
 
@@ -46,7 +46,7 @@ angular.module('managerApp').controller('XdslDeconsolidationContractCtrl', funct
       serviceName: self.serviceName,
     }, self.rio ? { rio: self.rio } : null).$promise.then((result) => {
       $uibModalInstance.close(result);
-    }, TucToastError).finally(() => {
+    }, ToastError).finally(() => {
       self.loading = false;
     });
   };

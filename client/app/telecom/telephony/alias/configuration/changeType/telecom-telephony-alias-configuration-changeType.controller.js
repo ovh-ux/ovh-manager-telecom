@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationChangeTypeCtrl', function ($scope, $q, $translate, $state, $stateParams, TelephonyMediator, TucToast, voipServiceTask, telephonyBulk) {
+angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationChangeTypeCtrl', function ($scope, $q, $translate, $state, $stateParams, TelephonyMediator, Toast, voipServiceTask, telephonyBulk) {
   const self = this;
 
   self.number = null;
@@ -20,11 +20,11 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationChang
     return self.number.changeFeatureType().then(() => {
       self.number.feature.stopEdition();
       $state.go('telecom.telephony.alias.configuration');
-      return TucToast.success($translate.instant('telephony_alias_change_type_ok'));
+      return Toast.success($translate.instant('telephony_alias_change_type_ok'));
     }, (error) => {
       if (error.type !== 'poller') {
-        // Do not display TucToast if it is a poller error
-        TucToast.error([$translate.instant('telephony_alias_change_type_ko'), (error.data && error.data.message) || ''].join(' '));
+        // Do not display Toast if it is a poller error
+        Toast.error([$translate.instant('telephony_alias_change_type_ko'), (error.data && error.data.message) || ''].join(' '));
       }
       return $q.reject(error);
     }).finally(() => {
@@ -63,7 +63,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationChang
 
       return self.number;
     }).catch((error) => {
-      TucToast.error([$translate.instant('telephony_alias_load_error'), (error.data && error.data.message) || ''].join(' '));
+      Toast.error([$translate.instant('telephony_alias_load_error'), (error.data && error.data.message) || ''].join(' '));
       return $q.reject(error);
     })
       .finally(() => {
@@ -108,17 +108,17 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationChang
     self.checkServerTasksStatus(bulkResult.success).then(() => {
       // if one of the promises fails, the failed result won't be store in tasksChecked
       if (self.successfulTasks.length < bulkResult.success.length) {
-        TucToast.warn([$translate.instant('telephony_alias_config_change_type_bulk_server_tasks_some_error')]);
+        Toast.warn([$translate.instant('telephony_alias_config_change_type_bulk_server_tasks_some_error')]);
       }
 
-      telephonyBulk.getTucToastInfos(bulkResult, {
+      telephonyBulk.getToastInfos(bulkResult, {
         fullSuccess: $translate.instant('telephony_alias_config_change_type_bulk_all_success'),
         partialSuccess: $translate.instant('telephony_alias_config_change_type_bulk_some_success', {
           count: bulkResult.success.length,
         }),
         error: $translate.instant('telephony_alias_config_change_type_bulk_error'),
       }).forEach((toastInfo) => {
-        TucToast[toastInfo.type](toastInfo.message, {
+        Toast[toastInfo.type](toastInfo.message, {
           hideAfter: null,
         });
       });
@@ -128,13 +128,13 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationChang
         $state.go('telecom.telephony.alias.configuration');
       });
     }, () => {
-      TucToast.error([$translate.instant('telephony_alias_config_change_type_bulk_server_tasks_all_error')]);
+      Toast.error([$translate.instant('telephony_alias_config_change_type_bulk_server_tasks_all_error')]);
       self.loading.changing = false;
     });
   };
 
   self.onBulkError = function (error) {
-    TucToast.error([$translate.instant('telephony_alias_config_change_type_bulk_on_error'), _.get(error, 'msg.data')].join(' '));
+    Toast.error([$translate.instant('telephony_alias_config_change_type_bulk_on_error'), _.get(error, 'msg.data')].join(' '));
   };
 
 

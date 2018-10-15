@@ -3,7 +3,7 @@ angular
   .controller('TelecomSmsSmsIncomingCtrl', class TelecomSmsSmsIncomingCtrl {
     constructor(
       $filter, $q, $scope, $stateParams, $translate, $timeout, $uibModal, $window,
-      OvhApiSms, OvhApiMe, TucToast, TucToastError,
+      OvhApiSms, OvhApiMe, Toast, ToastError,
     ) {
       this.$filter = $filter;
       this.$q = $q;
@@ -20,8 +20,8 @@ angular
           document: OvhApiMe.Document().v6(),
         },
       };
-      this.TucToast = TucToast;
-      this.TucToastError = TucToastError;
+      this.Toast = Toast;
+      this.ToastError = ToastError;
     }
 
     $onInit() {
@@ -62,7 +62,7 @@ angular
         this.serviceInfos = results.serviceInfos;
         this.applySorting();
       }).catch((err) => {
-        this.TucToastError(err);
+        this.ToastError(err);
       }).finally(() => {
         this.incoming.isLoading = false;
       });
@@ -156,12 +156,12 @@ angular
       }).$promise);
       this.incoming.isDeleting = true;
       queries.push(this.$timeout(angular.noop, 500)); // avoid clipping
-      this.TucToast.info(this.$translate.instant('sms_sms_incoming_remove_success'));
+      this.Toast.info(this.$translate.instant('sms_sms_incoming_remove_success'));
       return this.$q.all(queries).then(() => {
         this.incoming.selected = {};
         return this.refresh();
       }).catch((err) => {
-        this.TucToastError(err);
+        this.ToastError(err);
       }).finally(() => {
         this.incoming.isDeleting = false;
       });
@@ -199,7 +199,7 @@ angular
       });
       modal.result.then(() => this.refresh()).catch((error) => {
         if (error && error.type === 'API') {
-          this.TucToast.error(this.$translate.instant('sms_sms_incoming_remove_ko', { error: _.get(error, 'msg.data.message') }));
+          this.Toast.error(this.$translate.instant('sms_sms_incoming_remove_ko', { error: _.get(error, 'msg.data.message') }));
         }
       });
     }
@@ -233,7 +233,7 @@ angular
           this.$timeout(() => this.api.user.document.delete({ id: doc.id }).$promise, 3000);
         });
       }).catch((error) => {
-        this.TucToast.error(this.$translate.instant('sms_sms_incoming_download_history_ko'));
+        this.Toast.error(this.$translate.instant('sms_sms_incoming_download_history_ko'));
         return this.$q.reject(error);
       }).finally(() => {
         this.incoming.isExporting = false;

@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationRecordsEasyHuntingCtrl', function ($q, $stateParams, TelephonyMediator, OvhApiTelephony, TucToastError) {
+angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationRecordsEasyHuntingCtrl', function ($q, $stateParams, TelephonyMediator, OvhApiTelephony, ToastError) {
   const self = this;
 
   /*= ==============================
@@ -82,7 +82,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationRecor
           };
         }
       });
-    }).catch(err => new TucToastError(err)).finally(() => {
+    }).catch(err => new ToastError(err)).finally(() => {
       self.isLoading = false;
     });
   }

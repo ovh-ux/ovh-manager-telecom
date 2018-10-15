@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelephonyNumberRedirectCtrl', function ($q, $translate, TelephonyMediator, voipServiceTask, TucToast) {
+angular.module('managerApp').controller('TelephonyNumberRedirectCtrl', function ($q, $translate, TelephonyMediator, voipServiceTask, Toast) {
   const self = this;
   let selectedService = null;
 
@@ -86,7 +86,7 @@ angular.module('managerApp').controller('TelephonyNumberRedirectCtrl', function 
       }
       return $q.reject(error);
     })).catch((error) => {
-      TucToast.error([$translate.instant('telephony_number_feature_redirect_save_error'), (error.data && error.data.message) || ''].join(' '));
+      Toast.error([$translate.instant('telephony_number_feature_redirect_save_error'), (error.data && error.data.message) || ''].join(' '));
       return $q.reject(error);
     }).finally(() => {
       self.numberCtrl.loading.save = false;

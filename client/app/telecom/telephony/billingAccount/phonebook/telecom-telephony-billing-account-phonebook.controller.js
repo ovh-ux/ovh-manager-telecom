@@ -1,5 +1,5 @@
 angular.module('managerApp')
-  .controller('TelecomTelephonyBillingAccountPhonebookCtrl', function ($document, $filter, $q, $scope, $stateParams, $timeout, $translate, $uibModal, $window, OvhApiTelephony, voipServiceTask, TucToast, TucToastError, TELEPHONY_PHONEBOOK) {
+  .controller('TelecomTelephonyBillingAccountPhonebookCtrl', function ($document, $filter, $q, $scope, $stateParams, $timeout, $translate, $uibModal, $window, OvhApiTelephony, voipServiceTask, Toast, ToastError, TELEPHONY_PHONEBOOK) {
     const self = this;
 
     /*= ==============================
@@ -74,8 +74,8 @@ angular.module('managerApp')
       }, name).$promise.then((phonebook) => {
         form.$setPristine();
         _.assign(self.phonebook, _.pick(phonebook, ['bookKey']), name);
-        TucToast.success($translate.instant('telephony_phonebook_create_success'));
-      }).catch(error => new TucToastError(error)).finally(() => {
+        Toast.success($translate.instant('telephony_phonebook_create_success'));
+      }).catch(error => new ToastError(error)).finally(() => {
         self.phonebookToAdd.isAdding = false;
       });
     };
@@ -101,7 +101,7 @@ angular.module('managerApp')
       }).$promise.then(() => {
         self.phonebook.name = self.phonebook.newName;
       }).catch((error) => {
-        TucToast.error($translate.instant('telephony_phonebook_update_ko', { error: _.get(error, 'data.message') }));
+        Toast.error($translate.instant('telephony_phonebook_update_ko', { error: _.get(error, 'data.message') }));
       }).finally(() => {
         self.phonebook.inEdition = false;
       });
@@ -126,7 +126,7 @@ angular.module('managerApp')
         self.sortPhonebookContact();
       }, (error) => {
         if (error && error.type === 'API') {
-          TucToast.error($translate.instant('telephony_phonebook_delete_ko', { error: _.get(error, 'msg.data.message') }));
+          Toast.error($translate.instant('telephony_phonebook_delete_ko', { error: _.get(error, 'msg.data.message') }));
         }
       }).finally(() => {
         self.phonebook.hasModalOpened = false;
@@ -153,7 +153,7 @@ angular.module('managerApp')
       });
       modal.result.then(() => self.refresh(), (error) => {
         if (error && error.type === 'API') {
-          TucToast.error($translate.instant('telephony_phonebook_contact_add_ko', { error: _.get(error, 'msg.data.message') }));
+          Toast.error($translate.instant('telephony_phonebook_contact_add_ko', { error: _.get(error, 'msg.data.message') }));
         }
       }).finally(() => {
         self.phonebookContact.hasModalOpened = false;
@@ -184,14 +184,14 @@ angular.module('managerApp')
                 self.phonebookContact.isImporting = false;
                 return self.refresh();
               }
-              TucToast.error([$translate.instant('telephony_number_feature_redirect_save_error'), (err.data && err.data.message) || ''].join(' '));
+              Toast.error([$translate.instant('telephony_number_feature_redirect_save_error'), (err.data && err.data.message) || ''].join(' '));
               return $q.reject(err);
             });
         }
         return null;
       }).catch((err) => {
         if (err && err.type === 'API') {
-          TucToast.error($translate.instant('telephony_phonebook_contact_action_import_ko', { error: _.get(err, 'msg.data.message') }));
+          Toast.error($translate.instant('telephony_phonebook_contact_action_import_ko', { error: _.get(err, 'msg.data.message') }));
         }
       }).finally(() => {
         self.phonebookContact.hasModalOpened = false;
@@ -219,9 +219,9 @@ angular.module('managerApp')
       };
       return tryGetCsvExport().then((phonebook) => {
         $window.location.href = phonebook.url; // eslint-disable-line
-        TucToast.success($translate.instant('telephony_phonebook_contact_action_export_ok'));
+        Toast.success($translate.instant('telephony_phonebook_contact_action_export_ok'));
       }).catch((err) => {
-        TucToast.error([$translate.instant('telephony_phonebook_contact_action_export_ko'), (err.data && err.data.message) || ''].join(' '));
+        Toast.error([$translate.instant('telephony_phonebook_contact_action_export_ko'), (err.data && err.data.message) || ''].join(' '));
         return $q.reject(err);
       }).finally(() => {
         self.phonebookContact.isExporting = false;
@@ -247,7 +247,7 @@ angular.module('managerApp')
       });
       modal.result.then(() => self.refresh(), (error) => {
         if (error && error.type === 'API') {
-          TucToast.error($translate.instant('telephony_phonebook_contact_update_ko', { error: _.get(error, 'msg.data.message') }));
+          Toast.error($translate.instant('telephony_phonebook_contact_update_ko', { error: _.get(error, 'msg.data.message') }));
         }
       }).finally(() => {
         self.phonebookContact.hasModalOpened = false;
@@ -261,9 +261,9 @@ angular.module('managerApp')
         bookKey: self.phonebook.bookKey,
         id: contact.id,
       }).$promise.then(() => {
-        TucToast.success($translate.instant('telephony_phonebook_contact_remove_success'));
+        Toast.success($translate.instant('telephony_phonebook_contact_remove_success'));
         return self.refresh();
-      }).catch(error => new TucToastError(error)).finally(() => {
+      }).catch(error => new ToastError(error)).finally(() => {
         self.phonebookContact.isDeleting = false;
       });
     };
@@ -278,11 +278,11 @@ angular.module('managerApp')
         }).$promise);
       self.phonebookContact.isDeleting = true;
       queries.push($timeout(angular.noop, 500)); // avoid clipping
-      TucToast.info($translate.instant('telephony_phonebook_delete_success'));
+      Toast.info($translate.instant('telephony_phonebook_delete_success'));
       return $q.all(queries).then(() => {
         self.phonebookContact.selected = {};
         return self.refresh();
-      }).catch(error => new TucToastError(error)).finally(() => {
+      }).catch(error => new ToastError(error)).finally(() => {
         self.phonebookContact.isDeleting = false;
       });
     };
@@ -327,7 +327,7 @@ angular.module('managerApp')
         self.phonebookContact.raw = phonebookContact;
         self.sortPhonebookContact();
         self.updatePhonebookContactGroups();
-      }).catch(error => new TucToastError(error)).finally(() => {
+      }).catch(error => new ToastError(error)).finally(() => {
         self.phonebookContact.isLoading = false;
       });
     };
@@ -377,7 +377,7 @@ angular.module('managerApp')
           });
         }
         return null;
-      }).catch(error => new TucToastError(error)).finally(() => {
+      }).catch(error => new ToastError(error)).finally(() => {
         self.phonebook.isLoading = false;
       });
     }

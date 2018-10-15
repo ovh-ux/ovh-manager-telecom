@@ -1,10 +1,10 @@
 angular.module('managerApp').controller('PackHubicCtrl', class {
-  constructor($q, $stateParams, $translate, OvhApiPackXdslHubic, TucToast, URLS) {
+  constructor($q, $stateParams, $translate, OvhApiPackXdslHubic, Toast, URLS) {
     this.$q = $q;
     this.$stateParams = $stateParams;
     this.$translate = $translate;
     this.OvhApiPackXdslHubic = OvhApiPackXdslHubic;
-    this.TucToast = TucToast;
+    this.Toast = Toast;
     this.URLS = URLS;
   }
 
@@ -65,7 +65,7 @@ angular.module('managerApp').controller('PackHubicCtrl', class {
 
         return this.services;
       }).catch((err) => {
-        this.TucToast.error(`${this.$translate.instant('pack_xdsl_hubic_loading_error')} ${err.message}`);
+        this.Toast.error(`${this.$translate.instant('pack_xdsl_hubic_loading_error')} ${err.message}`);
         return this.$q.reject(err);
       }).finally(() => {
         this.loaders.services = false;

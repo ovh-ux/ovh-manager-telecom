@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyServiceFaxCampaignsAddCtrl', function ($q, $stateParams, $translate, $timeout, $uibModalInstance, OvhApiTelephony, OvhApiMe, TucToastError) {
+angular.module('managerApp').controller('TelecomTelephonyServiceFaxCampaignsAddCtrl', function ($q, $stateParams, $translate, $timeout, $uibModalInstance, OvhApiTelephony, OvhApiMe, ToastError) {
   const self = this;
 
   /* ===============================
@@ -27,7 +27,7 @@ angular.module('managerApp').controller('TelecomTelephonyServiceFaxCampaignsAddC
     const fileName = file ? file.name : '';
     const found = _.endsWith(fileName.toLowerCase(), 'pdf');
     if (!found) {
-      TucToastError($translate.instant('telephony_service_fax_campaigns_add_campaign_file_invalid'));
+      ToastError($translate.instant('telephony_service_fax_campaigns_add_campaign_file_invalid'));
     }
     return found;
   };
@@ -36,7 +36,7 @@ angular.module('managerApp').controller('TelecomTelephonyServiceFaxCampaignsAddC
     const fileName = file ? file.name : '';
     const found = _.endsWith(fileName.toLowerCase(), 'txt');
     if (!found) {
-      TucToastError($translate.instant('telephony_service_fax_campaigns_add_campaign_file_invalid'));
+      ToastError($translate.instant('telephony_service_fax_campaigns_add_campaign_file_invalid'));
     }
     return found;
   };
@@ -162,7 +162,7 @@ angular.module('managerApp').controller('TelecomTelephonyServiceFaxCampaignsAddC
       ].join('\n');
     }).catch((err) => {
       self.campaign = {};
-      return new TucToastError(err);
+      return new ToastError(err);
     }).finally(() => {
       self.loading.init = false;
     });

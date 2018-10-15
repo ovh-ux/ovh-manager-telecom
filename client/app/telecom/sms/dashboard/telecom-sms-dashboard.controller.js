@@ -1,5 +1,5 @@
 angular.module('managerApp').controller('TelecomSmsDashboardCtrl', class TelecomSmsDashboardCtrl {
-  constructor($q, $stateParams, $translate, OvhApiSms, SmsMediator, TucToastError) {
+  constructor($q, $stateParams, $translate, OvhApiSms, SmsMediator, ToastError) {
     this.$q = $q;
     this.$stateParams = $stateParams;
     this.$translate = $translate;
@@ -12,7 +12,7 @@ angular.module('managerApp').controller('TelecomSmsDashboardCtrl', class Telecom
       },
     };
     this.SmsMediator = SmsMediator;
-    this.TucToastError = TucToastError;
+    this.ToastError = ToastError;
   }
 
   $onInit() {
@@ -83,7 +83,7 @@ angular.module('managerApp').controller('TelecomSmsDashboardCtrl', class Telecom
       this.stats.label.senders = results.senders;
       this.stats.label.months = this.getPreviousMonths();
     }).catch((err) => {
-      this.TucToastError(err);
+      this.ToastError(err);
     }).finally(() => {
       this.loading.init = false;
     });
@@ -173,18 +173,18 @@ angular.module('managerApp').controller('TelecomSmsDashboardCtrl', class Telecom
             id => this.api.sms.outgoing.getBatch({
               serviceName: this.$stateParams.serviceName,
               id,
-            }).$promise.catch(err => this.TucToastError(err)),
+            }).$promise.catch(err => this.ToastError(err)),
           ))
           .then(chunkResult => _.pluck(_.flatten(chunkResult), 'value')).then((sms) => {
             this.stats.data.outgoing = _.filter(sms, { sender }).length;
             this.stats.data.incoming = 0;
-          }).catch(err => this.TucToastError(err));
+          }).catch(err => this.ToastError(err));
       }
       this.stats.data.outgoing = results.outgoing.length;
       this.stats.data.incoming = results.incoming.length;
       return null;
     }).catch((err) => {
-      this.TucToastError(err);
+      this.ToastError(err);
     }).finally(() => {
       this.loading.stats = false;
     });

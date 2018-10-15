@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyFaxVoicemailActivationCtrl', function ($q, $translate, $stateParams, OvhApiTelephony, TucToast) {
+angular.module('managerApp').controller('TelecomTelephonyFaxVoicemailActivationCtrl', function ($q, $translate, $stateParams, OvhApiTelephony, Toast) {
   const self = this;
 
   self.loading = {
@@ -21,10 +21,10 @@ angular.module('managerApp').controller('TelecomTelephonyFaxVoicemailActivationC
     }, {
       routing: self.isVoicemailActive ? 'fax' : 'voicemail',
     }).$promise.then(() => {
-      TucToast.success($translate.instant('telephony_group_fax_voicemail_activation_save_success'));
+      Toast.success($translate.instant('telephony_group_fax_voicemail_activation_save_success'));
       self.isVoicemailActive = !self.isVoicemailActive;
     }).catch((error) => {
-      TucToast.error([$translate.instant('telephony_group_fax_voicemail_activation_save_error'), _.get(error, 'data.message')].join(' '));
+      Toast.error([$translate.instant('telephony_group_fax_voicemail_activation_save_error'), _.get(error, 'data.message')].join(' '));
       return $q.reject(error);
     }).finally(() => {
       self.loading.save = false;
@@ -46,7 +46,7 @@ angular.module('managerApp').controller('TelecomTelephonyFaxVoicemailActivationC
     }).$promise.then((routingSetting) => {
       self.isVoicemailActive = routingSetting.data === 'voicemail';
     }).catch((error) => {
-      TucToast.error([$translate.instant('telephony_group_fax_voicemail_activation_load_error'), _.get(error, 'data.message')].join(' '));
+      Toast.error([$translate.instant('telephony_group_fax_voicemail_activation_load_error'), _.get(error, 'data.message')].join(' '));
       return $q.reject(error);
     }).finally(() => {
       self.loading.init = false;

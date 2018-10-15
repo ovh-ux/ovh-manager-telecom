@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('XdslOrderFollowUpCtrl', function ($scope, $stateParams, OvhApiXdsl, $q, $translate, TucToast, TucToastError, ORDER_STATUS) {
+angular.module('managerApp').controller('XdslOrderFollowUpCtrl', function ($scope, $stateParams, OvhApiXdsl, $q, $translate, Toast, ToastError, ORDER_STATUS) {
   const self = this;
 
   this.loadData = function () {
@@ -32,11 +32,11 @@ angular.module('managerApp').controller('XdslOrderFollowUpCtrl', function ($scop
         self.allSuccess = allSuccessTmp;
       }, (err) => {
         self.events = [];
-        return new TucToastError(err);
+        return new ToastError(err);
       }).$promise,
     ]).then(() => {
       self.loading = false;
-    }, TucToastError);
+    }, ToastError);
   };
 
   this.init = function () {
@@ -46,7 +46,7 @@ angular.module('managerApp').controller('XdslOrderFollowUpCtrl', function ($scop
     self.xdslId = $stateParams.serviceName;
 
     if (_.isEmpty(self.xdslId)) {
-      return TucToast.error($translate.instant('xdsl_order_follow_up_total_error'));
+      return Toast.error($translate.instant('xdsl_order_follow_up_total_error'));
     }
 
     return self.loadData();

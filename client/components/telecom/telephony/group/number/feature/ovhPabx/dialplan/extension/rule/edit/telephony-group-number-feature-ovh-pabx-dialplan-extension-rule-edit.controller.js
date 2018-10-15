@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('telephonyNumberOvhPabxDialplanExtensionRuleEditCtrl', function ($scope, $q, $filter, $translate, TelephonyMediator, TucToast) {
+angular.module('managerApp').controller('telephonyNumberOvhPabxDialplanExtensionRuleEditCtrl', function ($scope, $q, $filter, $translate, TelephonyMediator, Toast) {
   const self = this;
 
   self.loading = {
@@ -202,7 +202,7 @@ angular.module('managerApp').controller('telephonyNumberOvhPabxDialplanExtension
       self.parentCtrl.numberCtrl.jsplumbInstance.customRepaint();
     }).catch((error) => {
       const errorTranslationKey = self.rule.status === 'DRAFT' ? 'telephony_number_feature_ovh_pabx_step_rule_create_error' : 'telephony_number_feature_ovh_pabx_step_rule_edit_error';
-      TucToast.error([$translate.instant(errorTranslationKey), _.get(error, 'data.message') || ''].join(' '));
+      Toast.error([$translate.instant(errorTranslationKey), _.get(error, 'data.message') || ''].join(' '));
       return $q.reject(error);
     });
   };

@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyBillingAccountBillingBillCtrl', function ($stateParams, $filter, $q, $timeout, $window, OvhApiTelephony, TucToastError) {
+angular.module('managerApp').controller('TelecomTelephonyBillingAccountBillingBillCtrl', function ($stateParams, $filter, $q, $timeout, $window, OvhApiTelephony, ToastError) {
   const self = this;
 
   function fetchConsumption() {
@@ -32,7 +32,7 @@ angular.module('managerApp').controller('TelecomTelephonyBillingAccountBillingBi
   self.refresh = function () {
     fetchConsumption().then((result) => {
       self.consumption.raw = result;
-    }, err => new TucToastError(err));
+    }, err => new ToastError(err));
   };
 
   self.fetchFile = function (consumption, type) {
@@ -61,7 +61,7 @@ angular.module('managerApp').controller('TelecomTelephonyBillingAccountBillingBi
     _.set(consumption, 'downloading', true);
     self.fetchFile(consumption, type).then((info) => {
       $window.location.href = info.url; // eslint-disable-line
-    }, err => new TucToastError(err)).finally(() => {
+    }, err => new ToastError(err)).finally(() => {
       _.set(consumption, 'downloading', false);
     });
   };

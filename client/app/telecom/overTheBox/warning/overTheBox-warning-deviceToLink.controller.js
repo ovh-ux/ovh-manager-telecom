@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('OrderOverTheBoxDeviceToLinkCtrl', function ($scope, $translate, $state, OvhApiOverTheBox, TucToast, TucToastError) {
+angular.module('managerApp').controller('OrderOverTheBoxDeviceToLinkCtrl', function ($scope, $translate, $state, OvhApiOverTheBox, Toast, ToastError) {
   const parent = $scope.OrderOverTheBox;
   const self = this;
 
@@ -32,9 +32,9 @@ angular.module('managerApp').controller('OrderOverTheBoxDeviceToLinkCtrl', funct
       deviceId: self.link.device,
     }).$promise.then(
       () => {
-        TucToast.success($translate.instant('overTheBox_link_device_success'));
+        Toast.success($translate.instant('overTheBox_link_device_success'));
       },
-      error => new TucToastError(error),
+      error => new ToastError(error),
     ).finally(() => {
       self.loader = false;
     });

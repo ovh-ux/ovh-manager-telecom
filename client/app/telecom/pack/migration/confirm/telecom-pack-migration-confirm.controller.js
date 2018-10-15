@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomPackMigrationConfirmCtrl', function ($q, $translate, PackMigrationProcess, TucToast) {
+angular.module('managerApp').controller('TelecomPackMigrationConfirmCtrl', function ($q, $translate, PackMigrationProcess, Toast) {
   const self = this;
 
   self.process = null;
@@ -42,7 +42,7 @@ angular.module('managerApp').controller('TelecomPackMigrationConfirmCtrl', funct
       self.process.migrationTaskId = migrationTask.id;
       self.process.currentStep = 'migration';
     }, (error) => {
-      TucToast.error([$translate.instant('telecom_pack_migration_error'), _.get(error, 'data.message', '')].join(' '));
+      Toast.error([$translate.instant('telecom_pack_migration_error'), _.get(error, 'data.message', '')].join(' '));
       return $q.reject(error);
     }).finally(() => {
       self.loading.migrate = false;

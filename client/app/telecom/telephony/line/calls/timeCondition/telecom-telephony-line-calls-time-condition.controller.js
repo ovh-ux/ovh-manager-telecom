@@ -1,6 +1,6 @@
 angular.module('managerApp').controller('TelecomTelephonyLineCallsTimeConditionCtrl', function (
   $q, $stateParams, $translate, $uibModal,
-  OvhApiTelephony, TelephonyMediator, TucToast, uiCalendarConfig, telephonyBulk,
+  OvhApiTelephony, TelephonyMediator, Toast, uiCalendarConfig, telephonyBulk,
   VoipTimeConditionCondition, voipTimeCondition, voipTimeConditionConfiguration,
 ) {
   const self = this;
@@ -47,11 +47,11 @@ angular.module('managerApp').controller('TelecomTelephonyLineCallsTimeConditionC
 
       // then save conditions
       return self.line.timeCondition.saveConditions().then(() => {
-        TucToast.success($translate.instant('telephony_line_calls_time_condition_save_success'));
+        Toast.success($translate.instant('telephony_line_calls_time_condition_save_success'));
       });
     }, (error) => {
       self.line.timeCondition.stopEdition(true).startEdition();
-      TucToast.error([$translate.instant('telephony_line_calls_time_condition_save_error'), _.get(error, 'data.message')].join(' '));
+      Toast.error([$translate.instant('telephony_line_calls_time_condition_save_error'), _.get(error, 'data.message')].join(' '));
       return $q.reject(error);
     }).finally(() => {
       self.line.timeCondition.status = 'OK';
@@ -108,7 +108,7 @@ angular.module('managerApp').controller('TelecomTelephonyLineCallsTimeConditionC
         self.slotList = _.chunk(self.line.timeCondition.slots, 2);
       });
     }).catch((error) => {
-      TucToast.error([$translate.instant('telephony_line_calls_time_condition_load_error'), _.get(error, 'data.message')].join(' '));
+      Toast.error([$translate.instant('telephony_line_calls_time_condition_load_error'), _.get(error, 'data.message')].join(' '));
       return $q.reject(error);
     }).finally(() => {
       self.loading.init = false;
@@ -158,16 +158,16 @@ angular.module('managerApp').controller('TelecomTelephonyLineCallsTimeConditionC
 
         uiCalendarConfig.calendars.conditionsCalendar.fullCalendar('refetchEvents');
         return self.line.timeCondition.saveConditions().then(() => {
-          TucToast.success($translate.instant('telephony_common_time_condition_import_configuration_success'));
+          Toast.success($translate.instant('telephony_common_time_condition_import_configuration_success'));
         }).catch(() => {
-          TucToast.error($translate.instant('telephony_common_time_condition_import_configuration_error'));
+          Toast.error($translate.instant('telephony_common_time_condition_import_configuration_error'));
         }).finally(() => {
           self.$onInit();
         });
       });
     }).catch((error) => {
       if (error) {
-        TucToast.error($translate.instant('telephony_common_time_condition_import_configuration_error'));
+        Toast.error($translate.instant('telephony_common_time_condition_import_configuration_error'));
       }
     });
   };
@@ -245,14 +245,14 @@ angular.module('managerApp').controller('TelecomTelephonyLineCallsTimeConditionC
 
   self.onBulkSuccess = function (bulkResult) {
     // display message of success or error
-    telephonyBulk.getTucToastInfos(bulkResult, {
+    telephonyBulk.getToastInfos(bulkResult, {
       fullSuccess: $translate.instant('telephony_line_calls_time_condition_bulk_all_success'),
       partialSuccess: $translate.instant('telephony_line_calls_time_condition_bulk_some_success', {
         count: bulkResult.success.length,
       }),
       error: $translate.instant('telephony_line_calls_time_condition_bulk_error'),
     }).forEach((toastInfo) => {
-      TucToast[toastInfo.type](toastInfo.message, {
+      Toast[toastInfo.type](toastInfo.message, {
         hideAfter: null,
       });
     });
@@ -267,7 +267,7 @@ angular.module('managerApp').controller('TelecomTelephonyLineCallsTimeConditionC
   };
 
   self.onBulkError = function (error) {
-    TucToast.error([$translate.instant('telephony_line_calls_time_condition_bulk_on_error'), _.get(error, 'msg.data')].join(' '));
+    Toast.error([$translate.instant('telephony_line_calls_time_condition_bulk_on_error'), _.get(error, 'msg.data')].join(' '));
   };
 
   self.getTimeConditions = function (action) {

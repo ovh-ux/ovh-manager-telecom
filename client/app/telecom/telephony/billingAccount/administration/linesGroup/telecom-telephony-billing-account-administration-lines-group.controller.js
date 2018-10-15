@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyBillingAccountAdministrationLinesGroup', function ($scope, $stateParams, $q, $translate, TelephonyMediator, TelephonySidebar, OvhApiTelephony, TucToast, TucToastError) {
+angular.module('managerApp').controller('TelecomTelephonyBillingAccountAdministrationLinesGroup', function ($scope, $stateParams, $q, $translate, TelephonyMediator, TelephonySidebar, OvhApiTelephony, Toast, ToastError) {
   const self = this;
 
   this.$onInit = function () {
@@ -31,7 +31,7 @@ angular.module('managerApp').controller('TelecomTelephonyBillingAccountAdministr
         .map(billingAccount => ({ id: billingAccount }));
       self.numberCount = result.numberCount;
       self.lineCount = result.lineCount;
-    }, err => new TucToastError(err));
+    }, err => new ToastError(err));
   };
 
   self.fetchBillingAccountDetails = function (billingAccount) {
@@ -146,9 +146,9 @@ angular.module('managerApp').controller('TelecomTelephonyBillingAccountAdministr
         self.isAttaching = false;
         self.servicesToAttach = {};
         if (errorList.length === 0) {
-          TucToast.success($translate.instant('telephony_lines_group_attach_success'));
+          Toast.success($translate.instant('telephony_lines_group_attach_success'));
         } else {
-          TucToast.error($translate.instant('telephony_lines_group_attach_warning'));
+          Toast.error($translate.instant('telephony_lines_group_attach_warning'));
         }
 
         // update sidebar with fresh data

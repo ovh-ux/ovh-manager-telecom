@@ -1,4 +1,4 @@
-angular.module('managerApp').service('TucToastError', ($translate, $q, TucToast) => function (err, translationId) {
+angular.module('managerApp').service('ToastError', ($translate, $q, Toast) => function (err, translationId) {
   const output = [$translate.instant(translationId || 'an_error_occured')];
 
   if (err.status) {
@@ -13,6 +13,6 @@ angular.module('managerApp').service('TucToastError', ($translate, $q, TucToast)
     output.push($translate.instant(err));
   }
 
-  TucToast.error(output.join(' '));
+  Toast.error(output.join(' '));
   return $q.reject(err);
 });

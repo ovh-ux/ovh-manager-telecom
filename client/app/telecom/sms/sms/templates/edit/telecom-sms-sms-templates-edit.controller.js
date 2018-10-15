@@ -3,7 +3,7 @@ angular
   .controller('TelecomSmsSmsTemplateEditCtrl', class TelecomSmsSmsTemplateEditCtrl {
     constructor(
       $q, $stateParams, $timeout, $translate, $uibModalInstance,
-      OvhApiSms, SmsMediator, template, TucToastError,
+      OvhApiSms, SmsMediator, template, ToastError,
     ) {
       this.$q = $q;
       this.$stateParams = $stateParams;
@@ -17,7 +17,7 @@ angular
       };
       this.SmsMediator = SmsMediator;
       this.template = template;
-      this.TucToastError = TucToastError;
+      this.ToastError = ToastError;
     }
 
     $onInit() {
@@ -36,7 +36,7 @@ angular
       return this.SmsMediator.getApiScheme().then((schema) => {
         this.availableActivities = schema.models['sms.TypeTemplateEnum'].enum;
       }).catch((err) => {
-        this.TucToastError(err);
+        this.ToastError(err);
       }).finally(() => {
         this.loading.init = false;
       });

@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('telephonyNumberOvhPabxDialplanEditCtrl', function ($q, $scope, $translate, TucToast) {
+angular.module('managerApp').controller('telephonyNumberOvhPabxDialplanEditCtrl', function ($q, $scope, $translate, Toast) {
   const self = this;
 
   self.dialplanCtrl = null;
@@ -24,7 +24,7 @@ angular.module('managerApp').controller('telephonyNumberOvhPabxDialplanEditCtrl'
     }, (error) => {
       const errorTranslationKey = self.dialplan.status !== 'DRAFT' ? 'telephony_number_feature_ovh_pabx_dialplan_save_error' : 'telephony_number_feature_ovh_pabx_dialplan_create_error';
       self.dialplan.stopEdition(true);
-      TucToast.error([$translate.instant(errorTranslationKey), error.data && error.data.message].join(' '));
+      Toast.error([$translate.instant(errorTranslationKey), error.data && error.data.message].join(' '));
       return $q.reject(error);
     }).finally(() => {
       self.dialplanCtrl.loading.save = false;

@@ -3,7 +3,7 @@ angular
   .controller('TelecomSmsSmsPendingCtrl', class TelecomSmsSmsPendingCtrl {
     constructor(
       $stateParams, $q, $filter, $uibModal, $translate, $timeout,
-      OvhApiSms, TucToast, TucToastError,
+      OvhApiSms, Toast, ToastError,
     ) {
       this.$stateParams = $stateParams;
       this.$q = $q;
@@ -16,8 +16,8 @@ angular
           jobs: OvhApiSms.Jobs().v6(),
         },
       };
-      this.TucToast = TucToast;
-      this.TucToastError = TucToastError;
+      this.Toast = Toast;
+      this.ToastError = ToastError;
     }
 
     $onInit() {
@@ -49,7 +49,7 @@ angular
         this.pending.raw = angular.copy(pending);
         this.applySorting();
       }).catch((err) => {
-        this.TucToastError(err);
+        this.ToastError(err);
       }).finally(() => {
         this.pending.isLoading = false;
       });
@@ -151,12 +151,12 @@ angular
       }).$promise);
       this.pending.isDeleting = true;
       queries.push(this.$timeout(angular.noop, 500)); // avoid clipping
-      this.TucToast.info(this.$translate.instant('sms_sms_pending_cancel_success'));
+      this.Toast.info(this.$translate.instant('sms_sms_pending_cancel_success'));
       return this.$q.all(queries).then(() => {
         this.pending.selected = {};
         return this.refresh();
       }).catch((err) => {
-        this.TucToastError(err);
+        this.ToastError(err);
       }).finally(() => {
         this.pending.isDeleting = false;
       });
@@ -194,7 +194,7 @@ angular
       });
       modal.result.then(() => this.refresh()).catch((error) => {
         if (error && error.type === 'API') {
-          this.TucToast.error(this.$translate.instant('sms_sms_pending_ko', { error: error.message }));
+          this.Toast.error(this.$translate.instant('sms_sms_pending_ko', { error: error.message }));
         }
       });
     }
@@ -211,7 +211,7 @@ angular
         serviceName: this.$stateParams.serviceName,
         id: sms.id,
       }).$promise))).then(() => this.refresh()).catch((err) => {
-        this.TucToastError(err);
+        this.ToastError(err);
       }).finally(() => {
         this.loading.cancelAll = false;
       });

@@ -1,16 +1,7 @@
 angular
   .module('managerApp')
   .controller('TelecomSmsSendersAddCtrl', class TelecomSmsSendersAddCtrl {
-    constructor(
-      $q,
-      $stateParams,
-      $translate,
-      $state,
-      $timeout,
-      OvhApiSms,
-      TucToast,
-      TucToastError,
-    ) {
+    constructor($q, $stateParams, $translate, $state, $timeout, OvhApiSms, Toast, ToastError) {
       this.$q = $q;
       this.$stateParams = $stateParams;
       this.$translate = $translate;
@@ -20,8 +11,8 @@ angular
         sms: OvhApiSms.v6(),
         smsSenders: OvhApiSms.Senders().v6(),
       };
-      this.TucToast = TucToast;
-      this.TucToastError = TucToastError;
+      this.Toast = Toast;
+      this.ToastError = ToastError;
     }
 
     $onInit() {
@@ -69,7 +60,7 @@ angular
           }),
         );
       }).catch((err) => {
-        this.TucToastError(err);
+        this.ToastError(err);
       })
         .finally(() => {
           this.loading.init = false;
@@ -108,10 +99,10 @@ angular
         sender: sender.sender,
         reason: 'sendersAvailableForValidation',
       }).$promise.then(() => {
-        this.TucToast.success(this.$translate.instant('sms_senders_add_sender_added'));
+        this.Toast.success(this.$translate.instant('sms_senders_add_sender_added'));
         return this.$state.go('telecom.sms.senders');
       }).catch((err) => {
-        this.TucToastError(err);
+        this.ToastError(err);
       }).finally(() => {
         this.loading.adding = false;
       });
@@ -130,7 +121,7 @@ angular
         description: this.sender.description,
         reason: this.sender.reason,
       }).$promise.then(() => this.$state.go('telecom.sms.senders')).catch((err) => {
-        this.TucToastError(err);
+        this.ToastError(err);
       }).finally(() => {
         this.loading.adding = false;
       });
@@ -163,12 +154,12 @@ angular
       }).$promise);
       this.loading.adding = true;
       queries.push(this.$timeout(angular.noop, 500)); // avoid clipping
-      this.TucToast.info(this.$translate.instant('sms_senders_add_senders_success'));
+      this.Toast.info(this.$translate.instant('sms_senders_add_senders_success'));
       return this.$q.all(queries).then(() => {
         this.senders.availableForValidation.selected = {};
         return this.$state.go('telecom.sms.senders');
       }).catch((err) => {
-        this.TucToastError(err);
+        this.ToastError(err);
       }).finally(() => {
         this.loading.adding = false;
       });

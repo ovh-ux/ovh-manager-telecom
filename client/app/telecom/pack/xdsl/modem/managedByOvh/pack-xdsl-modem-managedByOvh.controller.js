@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('XdslModemManagedByCtrl', function ($stateParams, $q, $translate, OvhApiXdsl, TucToast, PackXdslModemMediator) {
+angular.module('managerApp').controller('XdslModemManagedByCtrl', function ($stateParams, $q, $translate, OvhApiXdsl, Toast, PackXdslModemMediator) {
   const self = this;
 
   this.mediator = PackXdslModemMediator;
@@ -14,7 +14,7 @@ angular.module('managerApp').controller('XdslModemManagedByCtrl', function ($sta
 
   this.changeManagedBy = function () {
     if (_.isEmpty($stateParams.serviceName)) {
-      TucToast.error($translate.instant('xdsl_modem_managedBy_an_error_ocurred'));
+      Toast.error($translate.instant('xdsl_modem_managedBy_an_error_ocurred'));
       return $q.reject();
     }
     this.updating = true;
@@ -29,14 +29,14 @@ angular.module('managerApp').controller('XdslModemManagedByCtrl', function ($sta
       },
     ).$promise.then((data) => {
       if (PackXdslModemMediator.info.managedByOvh) {
-        TucToast.success($translate.instant('xdsl_modem_managedBy_success_validation_on'));
+        Toast.success($translate.instant('xdsl_modem_managedBy_success_validation_on'));
       } else {
-        TucToast.success($translate.instant('xdsl_modem_managedBy_success_validation_off'));
+        Toast.success($translate.instant('xdsl_modem_managedBy_success_validation_off'));
       }
       return data;
     }).catch((err) => {
       self.undo();
-      TucToast.error($translate.instant('xdsl_modem_managedBy_an_error_ocurred'));
+      Toast.error($translate.instant('xdsl_modem_managedBy_an_error_ocurred'));
       return $q.reject(err);
     }).finally(() => {
       self.updating = false;

@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyLineClick2CallAddUserCtrl', function ($q, $stateParams, $state, $translate, OvhApiTelephony, TelephonyGroupLineClick2CallUser, TucToast, telephonyBulk) {
+angular.module('managerApp').controller('TelecomTelephonyLineClick2CallAddUserCtrl', function ($q, $stateParams, $state, $translate, OvhApiTelephony, TelephonyGroupLineClick2CallUser, Toast, telephonyBulk) {
   const self = this;
 
   this.rules = [
@@ -37,10 +37,10 @@ angular.module('managerApp').controller('TelecomTelephonyLineClick2CallAddUserCt
     });
 
     return this.user.add().then(() => {
-      TucToast.success($translate.instant('telephony_group_line_calls_click2call_addUser_added', { name: self.user.login }));
+      Toast.success($translate.instant('telephony_group_line_calls_click2call_addUser_added', { name: self.user.login }));
       self.close();
     }, (error) => {
-      TucToast.error($translate.instant('telephony_group_line_calls_click2call_addUser_fail', { name: self.user.login }));
+      Toast.error($translate.instant('telephony_group_line_calls_click2call_addUser_fail', { name: self.user.login }));
       return $q.reject(error);
     }).finally(() => {
       self.loading.addUser = false;
@@ -95,14 +95,14 @@ angular.module('managerApp').controller('TelecomTelephonyLineClick2CallAddUserCt
 
   self.onBulkSuccess = function (bulkResult) {
     // display message of success or error
-    telephonyBulk.getTucToastInfos(bulkResult, {
+    telephonyBulk.getToastInfos(bulkResult, {
       fullSuccess: $translate.instant('telephony_group_line_calls_click2call_addUser_bulk_all_success'),
       partialSuccess: $translate.instant('telephony_group_line_calls_click2call_addUser_bulk_some_success', {
         count: bulkResult.success.length,
       }),
       error: $translate.instant('telephony_group_line_calls_click2call_addUser_bulk_error'),
     }).forEach((toastInfo) => {
-      TucToast[toastInfo.type](toastInfo.message, {
+      Toast[toastInfo.type](toastInfo.message, {
         hideAfter: null,
       });
     });
@@ -113,7 +113,7 @@ angular.module('managerApp').controller('TelecomTelephonyLineClick2CallAddUserCt
   };
 
   self.onBulkError = function (error) {
-    TucToast.error([$translate.instant('telephony_group_line_calls_click2call_addUser_bulk_on_error'), _.get(error, 'msg.data')].join(' '));
+    Toast.error([$translate.instant('telephony_group_line_calls_click2call_addUser_bulk_on_error'), _.get(error, 'msg.data')].join(' '));
   };
 
   /* -----  End of BULK  ------ */

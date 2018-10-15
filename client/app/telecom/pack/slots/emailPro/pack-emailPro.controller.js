@@ -1,10 +1,10 @@
 angular.module('managerApp').controller('PackEmailProCtrl', class PackEmailProCtrl {
-  constructor($q, $stateParams, $translate, OvhApiPackXdslEmailPro, TucToast) {
+  constructor($q, $stateParams, $translate, OvhApiPackXdslEmailPro, Toast) {
     this.$q = $q;
     this.$stateParams = $stateParams;
     this.$translate = $translate;
     this.OvhApiPackXdslEmailPro = OvhApiPackXdslEmailPro;
-    this.TucToast = TucToast;
+    this.Toast = Toast;
   }
 
   $onInit() {
@@ -26,7 +26,7 @@ angular.module('managerApp').controller('PackEmailProCtrl', class PackEmailProCt
         return this.services;
       })
       .catch((err) => {
-        this.TucToast.error(this.$translate.instant('email_pro_loading_error'));
+        this.Toast.error(this.$translate.instant('email_pro_loading_error'));
         return this.$q.reject(err);
       })
       .finally(() => {

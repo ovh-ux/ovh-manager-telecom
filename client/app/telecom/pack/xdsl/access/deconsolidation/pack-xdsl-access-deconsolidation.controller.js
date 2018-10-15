@@ -5,9 +5,9 @@ angular.module('managerApp')
     $timeout,
     $translate,
     OvhApiXdsl,
-    TucToast,
+    Toast,
     $uibModal,
-    TucToastError,
+    ToastError,
     REDIRECT_URLS,
     OvhApiPackXdsl,
     validator,
@@ -41,7 +41,7 @@ angular.module('managerApp')
         if (result.status === 'todo' || result.status === 'doing') {
           $scope.access.tasks.current[result.function] = true;
         }
-        TucToast.success($translate.instant('xdsl_access_deconsolidation_success'));
+        Toast.success($translate.instant('xdsl_access_deconsolidation_success'));
         $timeout(() => {
           $state.go('telecom.pack.xdsl');
         }, 3000);
@@ -63,7 +63,7 @@ angular.module('managerApp')
         (data) => {
           self.isLegacyOffer = data.capabilities.isLegacyOffer;
         },
-        TucToastError,
+        ToastError,
       );
     }
 

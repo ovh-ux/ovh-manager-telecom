@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('XdslModemWifiCtrl', function ($stateParams, $translate, $q, OvhApiXdsl, TucToast, PackXdslModemMediator) {
+angular.module('managerApp').controller('XdslModemWifiCtrl', function ($stateParams, $translate, $q, OvhApiXdsl, Toast, PackXdslModemMediator) {
   const self = this;
   this.loader = true;
   this.mediator = PackXdslModemMediator;
@@ -12,7 +12,7 @@ angular.module('managerApp').controller('XdslModemWifiCtrl', function ($statePar
 
   this.update = function () {
     if (_.isEmpty($stateParams.serviceName) || !PackXdslModemMediator.capabilities.canChangeWLAN) {
-      TucToast.error($translate.instant('xdsl_modem_firewall_an_error_ocurred'));
+      Toast.error($translate.instant('xdsl_modem_firewall_an_error_ocurred'));
       return $q.reject();
     }
     this.loader = true;
@@ -26,12 +26,12 @@ angular.module('managerApp').controller('XdslModemWifiCtrl', function ($statePar
       },
     ).$promise.then((data) => {
       PackXdslModemMediator.setTask('changeModemConfigWLAN');
-      TucToast.success($translate.instant(self.defaultWifi.enabled ? 'xdsl_modem_wifi_success_validation_on' : 'xdsl_modem_wifi_success_validation_off'));
+      Toast.success($translate.instant(self.defaultWifi.enabled ? 'xdsl_modem_wifi_success_validation_on' : 'xdsl_modem_wifi_success_validation_off'));
       self.undoData.enabled = self.defaultWifi.enabled;
       return data;
     }).catch((err) => {
       self.defaultWifi.enabled = self.undoData.enabled;
-      TucToast.error($translate.instant('xdsl_modem_wifi_update_error'));
+      Toast.error($translate.instant('xdsl_modem_wifi_update_error'));
       return $q.reject(err);
     }).finally(() => {
       self.loader = false;
@@ -53,7 +53,7 @@ angular.module('managerApp').controller('XdslModemWifiCtrl', function ($statePar
       };
       return data;
     }).catch((err) => {
-      TucToast.error($translate.instant('xdsl_modem_wifi_read_error'));
+      Toast.error($translate.instant('xdsl_modem_wifi_read_error'));
       return $q.reject(err);
     }).finally(() => {
       self.loader = false;

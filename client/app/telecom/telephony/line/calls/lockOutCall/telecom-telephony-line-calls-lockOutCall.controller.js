@@ -1,6 +1,6 @@
 angular.module('managerApp').controller(
   'TelecomTelephonyLineCallsLockOutCallCtrl',
-  function ($q, $stateParams, $translate, TucToast, TucToastError, OvhApiTelephony, telephonyBulk) {
+  function ($q, $stateParams, $translate, Toast, ToastError, OvhApiTelephony, telephonyBulk) {
     const self = this;
 
     self.isPin = function (val) {
@@ -27,9 +27,9 @@ angular.module('managerApp').controller(
       ).$promise.then(
         () => {
           self.saved = angular.copy(self.options);
-          TucToast.success($translate.instant('telephony_line_actions_line_calls_out_lock_call_save_success'));
+          Toast.success($translate.instant('telephony_line_actions_line_calls_out_lock_call_save_success'));
         },
-        () => new TucToastError($translate.instant('telephony_line_actions_line_calls_out_lock_call_save_error')),
+        () => new ToastError($translate.instant('telephony_line_actions_line_calls_out_lock_call_save_error')),
       ).finally(() => {
         self.loading.save = false;
       });
@@ -52,7 +52,7 @@ angular.module('managerApp').controller(
           self.options = _.pick(options, ['lockOutCallPassword', 'lockOutCall']);
           self.saved = angular.copy(self.options);
         },
-        () => new TucToastError($translate.instant('telephony_line_actions_line_calls_out_lock_call_load_error')),
+        () => new ToastError($translate.instant('telephony_line_actions_line_calls_out_lock_call_load_error')),
       ).finally(() => {
         self.loading.init = false;
       });
@@ -83,14 +83,14 @@ angular.module('managerApp').controller(
 
     self.onBulkSuccess = function (bulkResult) {
       // display message of success or error
-      telephonyBulk.getTucToastInfos(bulkResult, {
+      telephonyBulk.getToastInfos(bulkResult, {
         fullSuccess: $translate.instant('telephony_line_actions_line_calls_out_lock_call_bulk_all_success'),
         partialSuccess: $translate.instant('telephony_line_actions_line_calls_out_lock_call_bulk_some_success', {
           count: bulkResult.success.length,
         }),
         error: $translate.instant('telephony_line_actions_line_calls_out_lock_call_bulk_error'),
       }).forEach((toastInfo) => {
-        TucToast[toastInfo.type](toastInfo.message, {
+        Toast[toastInfo.type](toastInfo.message, {
           hideAfter: null,
         });
       });
@@ -100,7 +100,7 @@ angular.module('managerApp').controller(
     };
 
     self.onBulkError = function (error) {
-      TucToast.error([$translate.instant('telephony_line_actions_line_calls_out_lock_call_bulk_on_error'), _.get(error, 'msg.data')].join(' '));
+      Toast.error([$translate.instant('telephony_line_actions_line_calls_out_lock_call_bulk_on_error'), _.get(error, 'msg.data')].join(' '));
     };
   },
 );

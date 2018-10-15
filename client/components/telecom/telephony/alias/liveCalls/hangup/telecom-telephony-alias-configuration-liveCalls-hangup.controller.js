@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationLiveCallsHangupCtrl', function ($uibModalInstance, $translate, TucToast, params) {
+angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationLiveCallsHangupCtrl', function ($uibModalInstance, $translate, Toast, params) {
   const self = this;
 
   self.$onInit = function () {
@@ -22,7 +22,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationLiveC
         id: params.callId,
       }, {}).$promise.then(() => {
         $uibModalInstance.dismiss();
-        TucToast.success($translate.instant('telephony_alias_configuration_mode_calls_action_hangup_success'));
+        Toast.success($translate.instant('telephony_alias_configuration_mode_calls_action_hangup_success'));
       }).catch((err) => {
         self.error = _.get(err, 'data.message') || _.get(err, 'message') || err;
       }).finally(() => {

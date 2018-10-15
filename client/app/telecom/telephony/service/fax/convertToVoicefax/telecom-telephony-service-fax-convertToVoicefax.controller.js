@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyServiceFaxConvertToVoicefaxCtrl', function ($q, $stateParams, $timeout, $translate, OvhApiOrder, TucToast) {
+angular.module('managerApp').controller('TelecomTelephonyServiceFaxConvertToVoicefaxCtrl', function ($q, $stateParams, $timeout, $translate, OvhApiOrder, Toast) {
   const self = this;
 
   /* ===============================
@@ -56,7 +56,7 @@ angular.module('managerApp').controller('TelecomTelephonyServiceFaxConvertToVoic
     }, _.pick(self.convertToVoicefaxForm, 'billingAccount')).$promise.then((order) => {
       self.convertToVoicefaxForm.prices = order;
     }).catch((err) => {
-      TucToast.error([$translate.instant('telephony_service_fax_convert_to_voicefax_list_error_ordering'), _.get(err, 'data.message', '')].join(' '));
+      Toast.error([$translate.instant('telephony_service_fax_convert_to_voicefax_list_error_ordering'), _.get(err, 'data.message', '')].join(' '));
     }).finally(() => {
       self.convertToVoicefaxForm.isOrdering = false;
     });
@@ -86,7 +86,7 @@ angular.module('managerApp').controller('TelecomTelephonyServiceFaxConvertToVoic
       self.convertToVoicefaxForm.billingAccount = $stateParams.billingAccount;
       self.convertToVoicefaxForm.serviceName = _.first(self.services);
     }).catch((err) => {
-      TucToast.error([$translate.instant('telephony_service_fax_convert_to_voicefax_list_error_loading'), _.get(err, 'data.message', '')].join(' '));
+      Toast.error([$translate.instant('telephony_service_fax_convert_to_voicefax_list_error_loading'), _.get(err, 'data.message', '')].join(' '));
     }).finally(() => {
       self.isLoading = false;
     });

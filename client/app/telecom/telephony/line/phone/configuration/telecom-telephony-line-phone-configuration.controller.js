@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyLinePhoneConfigurationCtrl', function ($scope, $q, $timeout, $state, $stateParams, $translate, TelephonyMediator, TucToast, validator, TELEPHONY_LINE_PHONE_ADDITIONAL_INFOS) {
+angular.module('managerApp').controller('TelecomTelephonyLinePhoneConfigurationCtrl', function ($scope, $q, $timeout, $state, $stateParams, $translate, TelephonyMediator, Toast, validator, TELEPHONY_LINE_PHONE_ADDITIONAL_INFOS) {
   const self = this;
 
   self.line = null;
@@ -142,7 +142,7 @@ angular.module('managerApp').controller('TelecomTelephonyLinePhoneConfigurationC
     });
 
     if (!self.model.expertMode && self.hasExpertConfigs) {
-      TucToast.info($translate.instant('telephony_line_phone_configuration_default_info'));
+      Toast.info($translate.instant('telephony_line_phone_configuration_default_info'));
     }
   };
 
@@ -171,9 +171,9 @@ angular.module('managerApp').controller('TelecomTelephonyLinePhoneConfigurationC
     return savePromise.then(() => {
       self.model.manage = false;
       resetView();
-      TucToast.success($translate.instant('telephony_line_phone_configuration_save_success'));
+      Toast.success($translate.instant('telephony_line_phone_configuration_save_success'));
     }, (error) => {
-      TucToast.error([$translate.instant('telephony_line_phone_configuration_save_error'), (error.data && error.data.message) || ''].join(' '));
+      Toast.error([$translate.instant('telephony_line_phone_configuration_save_error'), (error.data && error.data.message) || ''].join(' '));
       return $q.reject(error);
     }).finally(() => {
       self.loading.save = false;
@@ -203,11 +203,11 @@ angular.module('managerApp').controller('TelecomTelephonyLinePhoneConfigurationC
         resetView();
         return null;
       }, (error) => {
-        TucToast.error([$translate.instant('telephony_line_phone_configuration_load_error'), (error.data && error.data.message) || ''].join(' '));
+        Toast.error([$translate.instant('telephony_line_phone_configuration_load_error'), (error.data && error.data.message) || ''].join(' '));
         return $q.reject(error);
       });
     }, (error) => {
-      TucToast.error([$translate.instant('telephony_line_phone_configuration_load_error'), (error.data && error.data.message) || ''].join(' '));
+      Toast.error([$translate.instant('telephony_line_phone_configuration_load_error'), (error.data && error.data.message) || ''].join(' '));
       return $q.reject(error);
     }).finally(() => {
       self.loading.init = false;

@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyLineClick2CallChangePasswordCtrl', function ($q, $stateParams, $state, $translate, TelephonyGroupLineClick2CallUser, TucToast) {
+angular.module('managerApp').controller('TelecomTelephonyLineClick2CallChangePasswordCtrl', function ($q, $stateParams, $state, $translate, TelephonyGroupLineClick2CallUser, Toast) {
   const self = this;
 
   this.rules = [
@@ -25,11 +25,11 @@ angular.module('managerApp').controller('TelecomTelephonyLineClick2CallChangePas
     this.loading.changePassword = true;
 
     return this.user.changePassword(self.password).then(() => {
-      TucToast.success($translate.instant('telephony_group_line_calls_click2call_changePassword_success', { name: self.user.login }));
+      Toast.success($translate.instant('telephony_group_line_calls_click2call_changePassword_success', { name: self.user.login }));
       self.close();
       return self.user;
     }, (error) => {
-      TucToast.error($translate.instant('telephony_group_line_calls_click2call_changePassword_fail', { name: self.user.login }));
+      Toast.error($translate.instant('telephony_group_line_calls_click2call_changePassword_fail', { name: self.user.login }));
       return $q.reject(error);
     }).finally(() => {
       self.loading.changePassword = false;

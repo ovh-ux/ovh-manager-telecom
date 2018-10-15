@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('PackResiliationCtrl', function ($stateParams, $state, $translate, TucToastError, OvhApiPackXdslResiliation, TucToast, $uibModal, $timeout, $q, OvhApiMe, PackMediator, resiliationNotification) {
+angular.module('managerApp').controller('PackResiliationCtrl', function ($stateParams, $state, $translate, ToastError, OvhApiPackXdslResiliation, Toast, $uibModal, $timeout, $q, OvhApiMe, PackMediator, resiliationNotification) {
   const self = this;
   self.model = {
     subServicesToKeep: {},
@@ -55,7 +55,7 @@ angular.module('managerApp').controller('PackResiliationCtrl', function ($stateP
       }
 
       self.updateFeeSummary();
-    }).catch(err => new TucToastError(err)).finally(() => {
+    }).catch(err => new ToastError(err)).finally(() => {
       self.loading = false;
     });
 
@@ -69,7 +69,7 @@ angular.module('managerApp').controller('PackResiliationCtrl', function ($stateP
       self.subServicesTerms = data;
     }).catch((err) => {
       self.subServicesTermsError = true;
-      return new TucToastError(err);
+      return new ToastError(err);
     }).finally(() => {
       self.subServicesTermsLoading = false;
     });
@@ -204,7 +204,7 @@ angular.module('managerApp').controller('PackResiliationCtrl', function ($stateP
     }, null).$promise.then((data) => {
       self.resiliationTerms.data.due = data.due;
       self.updateFeeSummary();
-    }, err => new TucToastError(err)).finally(() => {
+    }, err => new ToastError(err)).finally(() => {
       self.computingPrice = false;
     });
   };
@@ -258,7 +258,7 @@ angular.module('managerApp').controller('PackResiliationCtrl', function ($stateP
     }).$promise.then(() => {
       _.set(resiliationNotification, 'success', true);
       $state.go('telecom.pack', { packName: $stateParams.packName });
-    }).catch(err => new TucToastError(err)).finally(() => {
+    }).catch(err => new ToastError(err)).finally(() => {
       self.loading = false;
     });
   };
@@ -274,7 +274,7 @@ angular.module('managerApp').controller('PackResiliationCtrl', function ($stateP
     }, null).$promise.then(() => {
       _.set(resiliationNotification, 'cancelSuccess', true);
       $state.go('telecom.pack', { packName: $stateParams.packName });
-    }, err => new TucToastError(err)).finally(() => {
+    }, err => new ToastError(err)).finally(() => {
       self.loading = false;
     });
   };

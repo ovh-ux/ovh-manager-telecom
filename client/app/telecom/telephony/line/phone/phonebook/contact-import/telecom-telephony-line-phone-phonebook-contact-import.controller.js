@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyLinePhonePhonebookContactImportCtrl', function ($q, $stateParams, $timeout, $translate, $uibModalInstance, bookKey, OvhApiTelephony, OvhApiMe, TucToastError) {
+angular.module('managerApp').controller('TelecomTelephonyLinePhonePhonebookContactImportCtrl', function ($q, $stateParams, $timeout, $translate, $uibModalInstance, bookKey, OvhApiTelephony, OvhApiMe, ToastError) {
   const self = this;
 
   /*= ==============================
@@ -10,7 +10,7 @@ angular.module('managerApp').controller('TelecomTelephonyLinePhonePhonebookConta
     const fileName = file ? file.name : '';
     const found = _.some(validExtensions, ext => _.endsWith(fileName.toLowerCase(), ext));
     if (!found) {
-      TucToastError($translate.instant('telephony_phonebook_contact_action_import_file_invalid'));
+      ToastError($translate.instant('telephony_phonebook_contact_action_import_file_invalid'));
     }
     return found;
   };

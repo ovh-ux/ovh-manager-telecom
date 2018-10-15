@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('XdslModemConnectedDevicesCtrl', function ($scope, $stateParams, $q, $translate, OvhApiXdsl, TucToast, PackXdslModemMediator) {
+angular.module('managerApp').controller('XdslModemConnectedDevicesCtrl', function ($scope, $stateParams, $q, $translate, OvhApiXdsl, Toast, PackXdslModemMediator) {
   const self = this;
   self.devices = [];
 
@@ -60,7 +60,7 @@ angular.module('managerApp').controller('XdslModemConnectedDevicesCtrl', functio
       self.devices = data;
       return data;
     }).catch((err) => {
-      TucToast.error($translate.instant('xdsl_modem_connected_list_error'));
+      Toast.error($translate.instant('xdsl_modem_connected_list_error'));
       return $q.reject(err);
     });
   };
@@ -78,7 +78,7 @@ angular.module('managerApp').controller('XdslModemConnectedDevicesCtrl', functio
       self.devices = data;
       return data;
     }).catch((err) => {
-      TucToast.error($translate.instant('xdsl_modem_refresh_error'));
+      Toast.error($translate.instant('xdsl_modem_refresh_error'));
       return $q.reject(err);
     }).finally(() => {
       self.loading = false;

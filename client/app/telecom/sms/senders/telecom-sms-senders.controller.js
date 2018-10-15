@@ -3,7 +3,7 @@ angular
   .controller('TelecomSmsSendersCtrl', class TelecomSmsSendersCtrl {
     constructor(
       $stateParams, $q, $filter, $timeout, $uibModal, $translate,
-      OvhApiSms, TucToast, TucToastError,
+      OvhApiSms, Toast, ToastError,
     ) {
       this.$stateParams = $stateParams;
       this.$q = $q;
@@ -17,8 +17,8 @@ angular
           virtualNumbers: OvhApiSms.VirtualNumbers().v6(),
         },
       };
-      this.TucToast = TucToast;
-      this.TucToastError = TucToastError;
+      this.Toast = Toast;
+      this.ToastError = ToastError;
     }
 
     $onInit() {
@@ -60,7 +60,7 @@ angular
         this.senders.hasExpiration = _.some(this.senders.raw, 'serviceInfos.renew.deleteAtExpiration');
         this.sortSenders();
       })).catch((err) => {
-        this.TucToastError(err);
+        this.ToastError(err);
       }).finally(() => {
         this.senders.isLoading = false;
       });
@@ -137,12 +137,12 @@ angular
       }).$promise);
       this.senders.isDeleting = true;
       queries.push(this.$timeout(angular.noop, 500)); // avoid clipping
-      this.TucToast.info(this.$translate.instant('sms_senders_delete_senders_success'));
+      this.Toast.info(this.$translate.instant('sms_senders_delete_senders_success'));
       return this.$q.all(queries).then(() => {
         this.senders.selected = {};
         return this.refresh();
       }).catch((err) => {
-        this.TucToastError(err);
+        this.ToastError(err);
       }).finally(() => {
         this.senders.isDeleting = false;
       });
@@ -162,7 +162,7 @@ angular
       });
       modal.result.then(() => this.refresh()).catch((error) => {
         if (error && error.type === 'API') {
-          this.TucToast.error(this.$translate.instant('sms_senders_edit_sender_ko', { error: _.get(error, 'msg.data.message') }));
+          this.Toast.error(this.$translate.instant('sms_senders_edit_sender_ko', { error: _.get(error, 'msg.data.message') }));
         }
       });
     }
@@ -181,7 +181,7 @@ angular
       });
       modal.result.then(() => this.refresh()).catch((error) => {
         if (error && error.type === 'API') {
-          this.TucToast.error(this.$translate.instant('sms_senders_remove_sender_ko', { error: _.get(error, 'msg.data.message') }));
+          this.Toast.error(this.$translate.instant('sms_senders_remove_sender_ko', { error: _.get(error, 'msg.data.message') }));
         }
       });
     }
@@ -200,7 +200,7 @@ angular
       });
       modal.result.then(() => this.refresh()).catch((error) => {
         if (error && error.type === 'API') {
-          this.TucToast.error(this.$translate.instant('sms_senders_terminate_sender_ko', { error: _.get(error, 'msg.data.message') }));
+          this.Toast.error(this.$translate.instant('sms_senders_terminate_sender_ko', { error: _.get(error, 'msg.data.message') }));
         }
       });
     }

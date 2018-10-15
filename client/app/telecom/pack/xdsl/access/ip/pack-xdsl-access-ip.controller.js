@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('XdslAccessIpCtrl', function ($stateParams, OvhApiXdslIps, TucToastError, IpAddress) {
+angular.module('managerApp').controller('XdslAccessIpCtrl', function ($stateParams, OvhApiXdslIps, ToastError, IpAddress) {
   const self = this;
   this.validator = validator;
   this.ips = [];
@@ -19,7 +19,7 @@ angular.module('managerApp').controller('XdslAccessIpCtrl', function ($statePara
       self.loading = false;
     }, (err) => {
       self.loading = false;
-      return new TucToastError(err);
+      return new ToastError(err);
     });
   };
 
@@ -84,7 +84,7 @@ angular.module('managerApp').controller('XdslAccessIpCtrl', function ($statePara
       self.undo(ip);
     }, (err) => {
       _.set(ip, 'updating', false);
-      return new TucToastError(err);
+      return new ToastError(err);
     });
   };
 
@@ -104,7 +104,7 @@ angular.module('managerApp').controller('XdslAccessIpCtrl', function ($statePara
       delete ip.updating;  // eslint-disable-line
     }, (err) => {
       delete ip.updating; // eslint-disable-line
-      return new TucToastError(err);
+      return new ToastError(err);
     });
   };
 

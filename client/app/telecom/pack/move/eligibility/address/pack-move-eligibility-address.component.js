@@ -9,7 +9,7 @@ angular.module('managerApp').component('packMoveEligibilityAddress', {
   controllerAs: 'PackMoveEligibilityAddress',
   controller(
     $q, $scope, $stateParams, $translate, $filter,
-    validator, OvhApiXdslEligibility, OvhApiPackXdslMove, TucToast, costs,
+    validator, OvhApiXdslEligibility, OvhApiPackXdslMove, Toast, costs,
   ) {
     const self = this;
     this.validator = validator;
@@ -35,7 +35,7 @@ angular.module('managerApp').component('packMoveEligibilityAddress', {
             self.address.city = _.first(self.cities);
           }
         }, (error) => {
-          TucToast.error($translate.instant('pack_move_eligibility_zipcode_error', { zipcode }));
+          Toast.error($translate.instant('pack_move_eligibility_zipcode_error', { zipcode }));
           return $q.reject(error);
         }).finally(() => {
           delete self.loaders.cities;
@@ -63,7 +63,7 @@ angular.module('managerApp').component('packMoveEligibilityAddress', {
             return streets;
           },
           (error) => {
-            TucToast.error($translate.instant('pack_move_eligibility_street_error', { partial }));
+            Toast.error($translate.instant('pack_move_eligibility_street_error', { partial }));
             return $q.reject(error);
           },
         ).finally(() => {
@@ -94,7 +94,7 @@ angular.module('managerApp').component('packMoveEligibilityAddress', {
         (data) => {
           if (data.error) {
             self.offersChange({ OFFERS: [] });
-            TucToast.error($translate.instant(`pack_move_eligibility_address_error${data.error.indexOf('error_looking_for_neighbour_number') > -1 ? '_neighbour' : '_pairs'}`));
+            Toast.error($translate.instant(`pack_move_eligibility_address_error${data.error.indexOf('error_looking_for_neighbour_number') > -1 ? '_neighbour' : '_pairs'}`));
             return $q.reject(data.error);
           }
           if (data.result.offers.length) {
@@ -118,7 +118,7 @@ angular.module('managerApp').component('packMoveEligibilityAddress', {
           return data;
         },
         (err) => {
-          TucToast.error(err);
+          Toast.error(err);
           return $q.reject(err);
         },
       ).finally(() => {

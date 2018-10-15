@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyServiceFaxPasswordCtrl', function ($stateParams, $translate, $timeout, TelephonyMediator, OvhApiTelephony, TucToast, TucToastError, telephonyBulk) {
+angular.module('managerApp').controller('TelecomTelephonyServiceFaxPasswordCtrl', function ($stateParams, $translate, $timeout, TelephonyMediator, OvhApiTelephony, Toast, ToastError, telephonyBulk) {
   const self = this;
 
   /*= ==============================
@@ -24,7 +24,7 @@ angular.module('managerApp').controller('TelecomTelephonyServiceFaxPasswordCtrl'
         form.$setUntouched();
       }, 3000);
     }).catch((err) => {
-      TucToast.error($translate.instant('telephony_service_fax_password_change_error', { error: _.get(err, 'data.message') }));
+      Toast.error($translate.instant('telephony_service_fax_password_change_error', { error: _.get(err, 'data.message') }));
     }).finally(() => {
       self.passwordForm.isUpdating = false;
     });
@@ -53,7 +53,7 @@ angular.module('managerApp').controller('TelecomTelephonyServiceFaxPasswordCtrl'
     self.loading.init = true;
     return TelephonyMediator.getGroup($stateParams.billingAccount).then((group) => {
       self.fax = group.getFax($stateParams.serviceName);
-    }).catch(err => new TucToastError(err)).finally(() => {
+    }).catch(err => new ToastError(err)).finally(() => {
       self.loading.init = false;
     });
   }
@@ -90,14 +90,14 @@ angular.module('managerApp').controller('TelecomTelephonyServiceFaxPasswordCtrl'
 
   self.onBulkSuccess = function (bulkResult) {
     // display message of success or error
-    telephonyBulk.getTucToastInfos(bulkResult, {
+    telephonyBulk.getToastInfos(bulkResult, {
       fullSuccess: $translate.instant('telephony_service_fax_password_bulk_all_success'),
       partialSuccess: $translate.instant('telephony_service_fax_password_bulk_some_success', {
         count: bulkResult.success.length,
       }),
       error: $translate.instant('telephony_service_fax_password_bulk_error'),
     }).forEach((toastInfo) => {
-      TucToast[toastInfo.type](toastInfo.message, {
+      Toast[toastInfo.type](toastInfo.message, {
         hideAfter: null,
       });
     });
@@ -108,7 +108,7 @@ angular.module('managerApp').controller('TelecomTelephonyServiceFaxPasswordCtrl'
   };
 
   self.onBulkError = function (error) {
-    TucToast.error([$translate.instant('telephony_service_fax_password_bulk_on_error'), _.get(error, 'msg.data')].join(' '));
+    Toast.error([$translate.instant('telephony_service_fax_password_bulk_on_error'), _.get(error, 'msg.data')].join(' '));
   };
 
   /* -----  End of BULK  ------ */

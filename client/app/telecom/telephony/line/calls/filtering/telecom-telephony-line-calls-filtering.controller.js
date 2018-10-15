@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyLineCallsFilteringCtrl', function ($stateParams, $q, $timeout, $translate, TucToast, TucToastError, OvhApiTelephony, telephonyBulk) {
+angular.module('managerApp').controller('TelecomTelephonyLineCallsFilteringCtrl', function ($stateParams, $q, $timeout, $translate, Toast, ToastError, OvhApiTelephony, telephonyBulk) {
   const self = this;
 
   self.fetchScreenLists = function () {
@@ -82,7 +82,7 @@ angular.module('managerApp').controller('TelecomTelephonyLineCallsFilteringCtrl'
     };
     self.serviceName = $stateParams.serviceName;
     self.isInitializing = true;
-    return self.refresh().catch(err => new TucToastError(err)).finally(() => {
+    return self.refresh().catch(err => new ToastError(err)).finally(() => {
       self.isInitializing = false;
     });
   }
@@ -122,14 +122,14 @@ angular.module('managerApp').controller('TelecomTelephonyLineCallsFilteringCtrl'
 
   self.onBulkSuccess = function (bulkResult) {
     // display message of success or error
-    telephonyBulk.getTucToastInfos(bulkResult, {
+    telephonyBulk.getToastInfos(bulkResult, {
       fullSuccess: $translate.instant('telephony_line_calls_filtering_bulk_all_success'),
       partialSuccess: $translate.instant('telephony_line_calls_filtering_bulk_some_success', {
         count: bulkResult.success.length,
       }),
       error: $translate.instant('telephony_line_calls_filtering_bulk_error'),
     }).forEach((toastInfo) => {
-      TucToast[toastInfo.type](toastInfo.message, {
+      Toast[toastInfo.type](toastInfo.message, {
         hideAfter: null,
       });
     });
@@ -141,7 +141,7 @@ angular.module('managerApp').controller('TelecomTelephonyLineCallsFilteringCtrl'
   };
 
   self.onBulkError = function (error) {
-    TucToast.error([$translate.instant('telephony_line_calls_filtering_bulk_on_error'), _.get(error, 'msg.data')].join(' '));
+    Toast.error([$translate.instant('telephony_line_calls_filtering_bulk_on_error'), _.get(error, 'msg.data')].join(' '));
   };
 
   self.updateScreen = function (type) {
@@ -161,7 +161,7 @@ angular.module('managerApp').controller('TelecomTelephonyLineCallsFilteringCtrl'
       self.screen.raw = angular.copy(self.screen.modified);
     }).catch((err) => {
       self.screen.modified = angular.copy(self.screen.raw);
-      return new TucToastError(err);
+      return new ToastError(err);
     }).finally(() => {
       self.screen.isLoading = false;
       self.screen.isIncomingLoading = false;
@@ -182,7 +182,7 @@ angular.module('managerApp').controller('TelecomTelephonyLineCallsFilteringCtrl'
         _.assign(self.options.raw, _.pick(self.options.modified, opt));
         $timeout(angular.noop, 500);
       })
-      .catch(err => new TucToastError(err))
+      .catch(err => new ToastError(err))
       .finally(() => {
         self.options.isUpdating = null;
       });
@@ -198,7 +198,7 @@ angular.module('managerApp').controller('TelecomTelephonyLineCallsFilteringCtrl'
       self.screen.modified = angular.copy(self.screen.raw);
       self.options.raw = result.options;
       self.options.modified = angular.copy(result.options);
-    }).catch(err => new TucToastError(err)).finally(() => {
+    }).catch(err => new ToastError(err)).finally(() => {
       self.isLoading = false;
     });
   };

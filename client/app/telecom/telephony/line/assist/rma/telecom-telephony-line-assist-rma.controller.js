@@ -1,11 +1,11 @@
-angular.module('managerApp').controller('TelecomTelephonyLineAssistRmaCtrl', function ($stateParams, $q, $translate, TucToast, TucToastError, OvhApiTelephony) {
+angular.module('managerApp').controller('TelecomTelephonyLineAssistRmaCtrl', function ($stateParams, $q, $translate, Toast, ToastError, OvhApiTelephony) {
   const self = this;
 
   function init() {
     self.rmaList = null;
     return self.fetchRma().then((result) => {
       self.rmaList = result;
-    }).catch(err => new TucToastError(err));
+    }).catch(err => new ToastError(err));
   }
 
   self.fetchPhone = function () {
@@ -43,9 +43,9 @@ angular.module('managerApp').controller('TelecomTelephonyLineAssistRmaCtrl', fun
       }).$promise
       .then(() => {
         _.remove(self.rmaList, { id: rma.id });
-        TucToast.success($translate.instant('telephony_line_assist_rma_cancel_success'));
+        Toast.success($translate.instant('telephony_line_assist_rma_cancel_success'));
       })
-      .catch(err => new TucToastError(err)).finally(() => {
+      .catch(err => new ToastError(err)).finally(() => {
         _.set(rma, 'isCancelling', false);
       });
   };

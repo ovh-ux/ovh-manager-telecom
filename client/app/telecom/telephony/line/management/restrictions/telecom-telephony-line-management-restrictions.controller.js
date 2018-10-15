@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyLineRestrictionsCtrl', function ($stateParams, $timeout, $q, $document, $translate, OvhApiTelephony, TucToastError, IpAddress, OvhApiMe, TucToast, telephonyBulk) {
+angular.module('managerApp').controller('TelecomTelephonyLineRestrictionsCtrl', function ($stateParams, $timeout, $q, $document, $translate, OvhApiTelephony, ToastError, IpAddress, OvhApiMe, Toast, telephonyBulk) {
   const self = this;
 
   function fetchLineOptions() {
@@ -27,7 +27,7 @@ angular.module('managerApp').controller('TelecomTelephonyLineRestrictionsCtrl', 
       self.lineOptionsForm = angular.copy(self.lineOptions);
       self.accountRestrictions = result.accountRestrictions;
       self.accountRestrictionsForm = angular.copy(self.accountRestrictions);
-    }).catch(err => new TucToastError(err)).finally(() => {
+    }).catch(err => new ToastError(err)).finally(() => {
       self.isLoading = false;
     });
   }
@@ -89,7 +89,7 @@ angular.module('managerApp').controller('TelecomTelephonyLineRestrictionsCtrl', 
       $timeout(() => {
         self.changeLineSuccess = false;
       }, 2000);
-    }).catch(err => new TucToastError(err)).finally(() => {
+    }).catch(err => new ToastError(err)).finally(() => {
       self.isChangingLineOptions = false;
     });
   };
@@ -132,7 +132,7 @@ angular.module('managerApp').controller('TelecomTelephonyLineRestrictionsCtrl', 
           self.changeAccountSuccess = false;
         }, 2000);
       })
-      .catch(err => new TucToastError(err))
+      .catch(err => new ToastError(err))
       .finally(() => {
         self.isChangingAccountOptions = false;
       });
@@ -176,14 +176,14 @@ angular.module('managerApp').controller('TelecomTelephonyLineRestrictionsCtrl', 
 
   self.onBulkSuccess = function (bulkResult) {
     // display message of success or error
-    telephonyBulk.getTucToastInfos(bulkResult, {
+    telephonyBulk.getToastInfos(bulkResult, {
       fullSuccess: $translate.instant('telephony_line_restrictions_ip_bulk_all_success'),
       partialSuccess: $translate.instant('telephony_line_restrictions_ip_bulk_some_success', {
         count: bulkResult.success.length,
       }),
       error: $translate.instant('telephony_line_restrictions_ip_bulk_error'),
     }).forEach((toastInfo) => {
-      TucToast[toastInfo.type](toastInfo.message, {
+      Toast[toastInfo.type](toastInfo.message, {
         hideAfter: null,
       });
     });
@@ -195,7 +195,7 @@ angular.module('managerApp').controller('TelecomTelephonyLineRestrictionsCtrl', 
   };
 
   self.onBulkError = function (error) {
-    TucToast.error([$translate.instant('telephony_line_restrictions_ip_bulk_on_error'), _.get(error, 'msg.data')].join(' '));
+    Toast.error([$translate.instant('telephony_line_restrictions_ip_bulk_on_error'), _.get(error, 'msg.data')].join(' '));
   };
 
   /* -----  End of BULK  ------ */

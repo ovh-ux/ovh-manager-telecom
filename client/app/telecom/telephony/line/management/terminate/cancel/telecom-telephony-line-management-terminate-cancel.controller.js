@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyLineTerminateCancelCtrl', function ($stateParams, $state, TelephonyMediator, OvhApiTelephony, TucToast, $translate, $filter, $q) {
+angular.module('managerApp').controller('TelecomTelephonyLineTerminateCancelCtrl', function ($stateParams, $state, TelephonyMediator, OvhApiTelephony, Toast, $translate, $filter, $q) {
   const self = this;
 
   self.loading = {
@@ -15,10 +15,10 @@ angular.module('managerApp').controller('TelecomTelephonyLineTerminateCancelCtrl
         billingAccount: $stateParams.billingAccount,
         serviceName: $stateParams.serviceName,
       }, null).$promise.then(() => {
-        TucToast.success($translate.instant('telephony_group_line_cancel_terminating_ok'));
+        Toast.success($translate.instant('telephony_group_line_cancel_terminating_ok'));
         $state.go('^');
       }).catch(() => {
-        TucToast.error($translate.instant('telephony_group_line_cancel_terminating_ko'));
+        Toast.error($translate.instant('telephony_group_line_cancel_terminating_ko'));
       }).finally(() => {
         self.loading.cancelTerminate = false;
       });
@@ -59,7 +59,7 @@ angular.module('managerApp').controller('TelecomTelephonyLineTerminateCancelCtrl
         return self.taskDetails;
       });
     }).catch(() => $state.go('^'))).catch((error) => {
-      TucToast.error($translate.instant('telephony_group_line_terminating_ko', { error: error.data.message }));
+      Toast.error($translate.instant('telephony_group_line_terminating_ko', { error: error.data.message }));
     })
       .finally(() => {
         self.loading.init = false;

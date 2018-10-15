@@ -1,12 +1,12 @@
 angular.module('managerApp').controller('PackEmailProAddCtrl', class PackEmailProAddCtrl {
-  constructor($q, $scope, $state, $stateParams, $translate, OvhApiPackXdsl, TucToast) {
+  constructor($q, $scope, $state, $stateParams, $translate, OvhApiPackXdsl, Toast) {
     this.$q = $q;
     this.$state = $state;
     this.$scope = $scope;
     this.$stateParams = $stateParams;
     this.$translate = $translate;
     this.OvhApiPackXdsl = OvhApiPackXdsl;
-    this.TucToast = TucToast;
+    this.Toast = Toast;
   }
 
   $onInit() {
@@ -60,9 +60,9 @@ angular.module('managerApp').controller('PackEmailProAddCtrl', class PackEmailPr
         password: this.account.password,
       }).$promise
       .then(() => this.$state.go('telecom.pack', { packName: this.$stateParams.packName }))
-      .then(() => this.TucToast.success(this.$translate.instant('success_validation')))
+      .then(() => this.Toast.success(this.$translate.instant('success_validation')))
       .catch((error) => {
-        this.TucToast.error([this.$translate.instant('an_error_ocurred'), _.get(error, 'data.message', '')].join(' '));
+        this.Toast.error([this.$translate.instant('an_error_ocurred'), _.get(error, 'data.message', '')].join(' '));
         return this.$q.reject(error);
       })
       .finally(() => {

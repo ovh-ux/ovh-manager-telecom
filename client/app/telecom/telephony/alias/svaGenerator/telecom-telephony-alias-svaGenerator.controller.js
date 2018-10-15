@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyAliasSvaGeneratorCtrl', function ($stateParams, OvhApiTelephony, TucToastError, SvaGeneratorConfig) {
+angular.module('managerApp').controller('TelecomTelephonyAliasSvaGeneratorCtrl', function ($stateParams, OvhApiTelephony, ToastError, SvaGeneratorConfig) {
   const self = this;
 
   function init() {
@@ -23,7 +23,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasSvaGeneratorCtrl',
       if (err && err.status === 404) {
         self.notSupported = true;
       } else {
-        TucToastError(err);
+        ToastError(err);
       }
     }).finally(() => {
       self.isLoading = false;

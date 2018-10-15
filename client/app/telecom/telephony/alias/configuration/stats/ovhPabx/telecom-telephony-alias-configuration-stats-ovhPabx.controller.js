@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationStatsOvhPabxCtrl', function ($scope, $stateParams, $q, $timeout, OvhApiTelephony, TucToastError) {
+angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationStatsOvhPabxCtrl', function ($scope, $stateParams, $q, $timeout, OvhApiTelephony, ToastError) {
   const self = this;
   let poller = null;
   let stopPolling = false;
@@ -23,7 +23,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationStats
 
     self.fetchQueues().then((queues) => {
       self.queues = queues;
-    }).catch(err => new TucToastError(err));
+    }).catch(err => new ToastError(err));
 
     self.pollGlobalStats();
   }

@@ -1,7 +1,7 @@
 angular.module('managerApp').controller('TelecomTelephonyAliasSpecialRsvaCtrl', class TelecomTelephonyAliasSpecialRsvaCtrl {
   constructor(
     $filter, $q, $stateParams, $translate,
-    costs, OvhApiOrder, OvhApiTelephony, OvhApiTelephonyService, telephonyBulk, TucToast, URLS,
+    costs, OvhApiOrder, OvhApiTelephony, OvhApiTelephonyService, telephonyBulk, Toast, URLS,
   ) {
     this.$filter = $filter;
     this.$q = $q;
@@ -13,7 +13,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasSpecialRsvaCtrl', 
     this.OvhApiTelephony = OvhApiTelephony;
     this.OvhApiTelephonyService = OvhApiTelephonyService;
     this.telephonyBulk = telephonyBulk;
-    this.TucToast = TucToast;
+    this.Toast = Toast;
     this.URLS = URLS;
   }
 
@@ -98,7 +98,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasSpecialRsvaCtrl', 
         }));
       }),
     ]).catch((err) => {
-      this.TucToast.error([this.$translate.instant('telephony_alias_special_rsva_loading_error'), err.message].join(' '));
+      this.Toast.error([this.$translate.instant('telephony_alias_special_rsva_loading_error'), err.message].join(' '));
       return this.$q.reject(err);
     }).finally(() => {
       this.isLoading = false;
@@ -155,11 +155,11 @@ angular.module('managerApp').controller('TelecomTelephonyAliasSpecialRsvaCtrl', 
     promises.push(this.updateTypology());
 
     return this.$q.allSettled(promises).then(() => {
-      this.TucToast.success(this.$translate.instant('telephony_alias_special_rsva_success'));
+      this.Toast.success(this.$translate.instant('telephony_alias_special_rsva_success'));
     }).then(() => {
       this.isEditing = false;
     }).catch((err) => {
-      this.TucToast.error([this.$translate.instant('telephony_alias_special_rsva_error'), err.message].join(' '));
+      this.Toast.error([this.$translate.instant('telephony_alias_special_rsva_error'), err.message].join(' '));
       return this.$q.reject(err);
     })
       .finally(() => {
@@ -217,14 +217,14 @@ angular.module('managerApp').controller('TelecomTelephonyAliasSpecialRsvaCtrl', 
   onBulkSuccess() {
     return (bulkResult) => {
     // display message of success or error
-      this.telephonyBulk.getTucToastInfos(bulkResult, {
+      this.telephonyBulk.getToastInfos(bulkResult, {
         fullSuccess: this.$translate.instant('telephony_alias_special_rsva_bulk_all_success'),
         partialSuccess: this.$translate.instant('telephony_alias_special_rsva_bulk_some_success', {
           count: bulkResult.success.length,
         }),
         error: this.$translate.instant('telephony_alias_special_rsva_bulk_error'),
       }).forEach((toastInfo) => {
-        this.TucToast[toastInfo.type](toastInfo.message, {
+        this.Toast[toastInfo.type](toastInfo.message, {
           hideAfter: null,
         });
       });
@@ -237,7 +237,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasSpecialRsvaCtrl', 
 
   onBulkError() {
     return (error) => {
-      this.TucToast.error([this.$translate.instant('telephony_alias_special_rsva_bulk_on_error'), _.get(error, 'msg.data', '')].join(' '));
+      this.Toast.error([this.$translate.instant('telephony_alias_special_rsva_bulk_on_error'), _.get(error, 'msg.data', '')].join(' '));
     };
   }
 });

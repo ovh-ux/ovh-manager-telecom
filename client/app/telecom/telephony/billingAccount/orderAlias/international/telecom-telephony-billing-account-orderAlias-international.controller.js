@@ -1,5 +1,5 @@
 angular.module('managerApp')
-  .controller('TelecomTelephonyAliasOrderInternationalCtrl', function ($q, $translate, $stateParams, OvhApiTelephony, OvhApiTelephonyNumber, OvhApiOrder, TelecomTelephonyBillingAccountOrderAliasService, TucToast, TucToastError, TELEPHONY_NUMBER_OFFER) {
+  .controller('TelecomTelephonyAliasOrderInternationalCtrl', function ($q, $translate, $stateParams, OvhApiTelephony, OvhApiTelephonyNumber, OvhApiOrder, TelecomTelephonyBillingAccountOrderAliasService, Toast, ToastError, TELEPHONY_NUMBER_OFFER) {
     const self = this;
 
     /**
@@ -29,7 +29,7 @@ angular.module('managerApp')
             return data;
           },
           (err) => {
-            TucToastError($translate.instant('telephony_order_specific_numbers_error'));
+            ToastError($translate.instant('telephony_order_specific_numbers_error'));
             return $q.reject(err);
           },
         );
@@ -135,7 +135,7 @@ angular.module('managerApp')
       ).$promise.then(
         (response) => {
           self.orderInformations = response;
-          TucToast.success($translate.instant('telephony_order_international_order_success'));
+          Toast.success($translate.instant('telephony_order_international_order_success'));
           self.orderDone = true;
           return response;
         },
@@ -144,17 +144,17 @@ angular.module('managerApp')
           if (err && err.data && err.data.message) {
             switch (err.data.message) {
               case /^Invalid city parameter \(([^)]*)\)/.test(err.data.message) ? err.data.message : false:
-                TucToast.error($translate.instant('telephony_order_order_error_city', form));
+                Toast.error($translate.instant('telephony_order_order_error_city', form));
                 break;
               case /^The following specified number is not longer available/.test(err.data.message) ? err.data.message : false:
-                TucToast.error($translate.instant('telephony_order_order_error_available'));
+                Toast.error($translate.instant('telephony_order_order_error_available'));
                 delete self.loading.order;
                 break;
               default:
-                TucToast.error($translate.instant('telephony_order_international_order_error'));
+                Toast.error($translate.instant('telephony_order_international_order_error'));
             }
           } else {
-            TucToast.error($translate.instant('telephony_order_international_order_error'));
+            Toast.error($translate.instant('telephony_order_international_order_error'));
           }
           return $q.reject(err);
         },
@@ -219,7 +219,7 @@ angular.module('managerApp')
               });
             },
             (err) => {
-              TucToastError($translate.instant('telephony_order_international_countries_error'));
+              ToastError($translate.instant('telephony_order_international_countries_error'));
               return $q.reject(err);
             },
           ),

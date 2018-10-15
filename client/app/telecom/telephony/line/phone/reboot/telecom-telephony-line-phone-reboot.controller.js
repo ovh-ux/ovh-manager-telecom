@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyLinePhoneRebootCtrl', function ($q, $stateParams, $translate, $timeout, TucToast, TucToastError, OvhApiTelephony, TelephonyMediator) {
+angular.module('managerApp').controller('TelecomTelephonyLinePhoneRebootCtrl', function ($q, $stateParams, $translate, $timeout, Toast, ToastError, OvhApiTelephony, TelephonyMediator) {
   const self = this;
 
   function init() {
@@ -9,7 +9,7 @@ angular.module('managerApp').controller('TelecomTelephonyLinePhoneRebootCtrl', f
         self.phone = phone;
         self.isRebootable = /^phone\.(thomson|swissvoice)/.test(self.phone.brand);
       })
-      .catch(err => new TucToastError(err))
+      .catch(err => new ToastError(err))
       .finally(() => {
         self.isLoading = false;
       });
@@ -25,12 +25,12 @@ angular.module('managerApp').controller('TelecomTelephonyLinePhoneRebootCtrl', f
       $timeout(() => {
         self.rebootSuccess = false;
       }, 3000);
-      TucToast.success($translate.instant('telephony_line_phone_reboot_success'));
+      Toast.success($translate.instant('telephony_line_phone_reboot_success'));
     }).catch((err) => {
       if (err && err.status === 501) {
-        TucToast.error($translate.instant('telephony_line_phone_reboot_unsupported'));
+        Toast.error($translate.instant('telephony_line_phone_reboot_unsupported'));
       } else {
-        TucToast.error([$translate.instant('telephony_line_phone_reboot_error'), _.get(err, 'data.message')].join(' '));
+        Toast.error([$translate.instant('telephony_line_phone_reboot_error'), _.get(err, 'data.message')].join(' '));
       }
     }).finally(() => {
       self.isRebooting = false;

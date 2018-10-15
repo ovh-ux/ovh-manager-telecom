@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('OverTheBoxDetailsCtrl', function ($scope, $rootScope, $filter, $translate, $q, $stateParams, XDSL, OVER_THE_BOX, OVERTHEBOX_DETAILS, OvhApiOverTheBox, OverTheBoxGraphService, TucToast, ChartjsFactory) {
+angular.module('managerApp').controller('OverTheBoxDetailsCtrl', function ($scope, $rootScope, $filter, $translate, $q, $stateParams, XDSL, OVER_THE_BOX, OVERTHEBOX_DETAILS, OvhApiOverTheBox, OverTheBoxGraphService, Toast, ChartjsFactory) {
   const self = this;
 
   /**
@@ -196,7 +196,7 @@ angular.module('managerApp').controller('OverTheBoxDetailsCtrl', function ($scop
         self.chartUp.options.scales.xAxes = [];
       }
     }).catch((err) => {
-      TucToast.error($translate.instant('overthebox_traffic_error'));
+      Toast.error($translate.instant('overthebox_traffic_error'));
       $q.reject(err);
     }).finally(() => {
       self.loaders.graph = false;
@@ -256,10 +256,10 @@ angular.module('managerApp').controller('OverTheBoxDetailsCtrl', function ($scop
     }, {
       name: actionName,
     }).$promise.then((data) => {
-      TucToast.success($translate.instant('overTheBox_action_launch_success'));
+      Toast.success($translate.instant('overTheBox_action_launch_success'));
       return data;
     }).catch((err) => {
-      TucToast.error($translate.instant('overTheBox_action_launch_error'));
+      Toast.error($translate.instant('overTheBox_action_launch_error'));
       return $q.reject(err);
     }).finally(() => {
       getAvailableAction();
@@ -282,7 +282,7 @@ angular.module('managerApp').controller('OverTheBoxDetailsCtrl', function ($scop
         return serviceInfos;
       }).catch((error) => {
         self.error.tasks = error.data;
-        TucToast.error([$translate.instant('an_error_occured'), error.data.message].join(' '));
+        Toast.error([$translate.instant('an_error_occured'), error.data.message].join(' '));
         return $q.reject(error);
       }).finally(() => {
         self.loaders.infos = false;
@@ -301,7 +301,7 @@ angular.module('managerApp').controller('OverTheBoxDetailsCtrl', function ($scop
       return tasks;
     }).catch((error) => {
       self.error.tasks = error.data;
-      TucToast.error([$translate.instant('an_error_occured'), error.data.message].join(' '));
+      Toast.error([$translate.instant('an_error_occured'), error.data.message].join(' '));
       return $q.reject(error);
     }).finally(() => {
       self.loaders.tasks = false;
@@ -319,7 +319,7 @@ angular.module('managerApp').controller('OverTheBoxDetailsCtrl', function ($scop
       return self.deviceIds;
     }).catch((error) => {
       self.error.checking = error.data;
-      TucToast.error([$translate.instant('an_error_occured'), error.data.message].join(' '));
+      Toast.error([$translate.instant('an_error_occured'), error.data.message].join(' '));
       return $q.reject(error);
     }).finally(() => {
       self.loaders.checking = false;
@@ -361,10 +361,10 @@ angular.module('managerApp').controller('OverTheBoxDetailsCtrl', function ($scop
       deviceId: device.deviceId,
     }).$promise.then(() => {
       self.device = device;
-      TucToast.success($translate.instant('overTheBox_link_device_success'));
+      Toast.success($translate.instant('overTheBox_link_device_success'));
       return device;
     }).catch((error) => {
-      TucToast.error([$translate.instant('an_error_occured'), error.data.message].join(' '));
+      Toast.error([$translate.instant('an_error_occured'), error.data.message].join(' '));
       return $q.reject(error);
     }).finally(() => {
       self.loaders.device = false;
@@ -407,7 +407,7 @@ angular.module('managerApp').controller('OverTheBoxDetailsCtrl', function ($scop
     return OvhApiOverTheBox.v6().deleteAtExpiration({
       serviceName: $stateParams.serviceName,
     }, null).$promise.then(self.getServiceInfos).then((data) => {
-      TucToast.success($translate.instant(
+      Toast.success($translate.instant(
         'overTheBox_resiliation_success',
         {
           service: $scope.OverTheBox.service.customerDescription
@@ -417,7 +417,7 @@ angular.module('managerApp').controller('OverTheBoxDetailsCtrl', function ($scop
       ));
       return data;
     }).catch((err) => {
-      TucToast.error($translate.instant(
+      Toast.error($translate.instant(
         'overTheBox_resiliation_error',
         {
           service: $scope.OverTheBox.service.customerDescription
@@ -439,7 +439,7 @@ angular.module('managerApp').controller('OverTheBoxDetailsCtrl', function ($scop
     return OvhApiOverTheBox.v6().keepAtExpiration({
       serviceName: $stateParams.serviceName,
     }, null).$promise.then(self.getServiceInfos).then((data) => {
-      TucToast.success($translate.instant(
+      Toast.success($translate.instant(
         'overTheBox_cancel_resiliation_success',
         {
           service: $scope.OverTheBox.service.customerDescription
@@ -448,7 +448,7 @@ angular.module('managerApp').controller('OverTheBoxDetailsCtrl', function ($scop
       ));
       return data;
     }).catch((err) => {
-      TucToast.error($translate.instant(
+      Toast.error($translate.instant(
         'overTheBox_resiliation_cancel_error',
         {
           service: $scope.OverTheBox.service.customerDescription

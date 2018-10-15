@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('OverTheBoxCtrl', function ($stateParams, $translate, $q, OvhApiOverTheBox, SidebarMenu, TucToast, URLS) {
+angular.module('managerApp').controller('OverTheBoxCtrl', function ($stateParams, $translate, $q, OvhApiOverTheBox, SidebarMenu, Toast, URLS) {
   const self = this;
 
   self.dice = Math.round(Math.random() * 100);
@@ -38,7 +38,7 @@ angular.module('managerApp').controller('OverTheBoxCtrl', function ($stateParams
       }, self.service.serviceName, 'telecom-otb-section');
       return str;
     }).catch((err) => {
-      TucToast.error($translate.instant('overTheBox_error_rename', $stateParams));
+      Toast.error($translate.instant('overTheBox_error_rename', $stateParams));
       return $q.reject(err);
     }).finally(() => {
       self.nameUpdating = false;
@@ -55,7 +55,7 @@ angular.module('managerApp').controller('OverTheBoxCtrl', function ($stateParams
       },
       (error) => {
         self.error.service = error.data;
-        TucToast.error([$translate.instant('an_error_occured'), error.data.message].join(' '));
+        Toast.error([$translate.instant('an_error_occured'), error.data.message].join(' '));
       },
     );
   };

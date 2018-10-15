@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyAliasPortabilitiesCtrl', function ($translate, $stateParams, $q, OvhApiTelephony, TucToast) {
+angular.module('managerApp').controller('TelecomTelephonyAliasPortabilitiesCtrl', function ($translate, $stateParams, $q, OvhApiTelephony, Toast) {
   const self = this;
 
   self.loading = {
@@ -48,7 +48,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasPortabilitiesCtrl'
     fetchPortability().then((result) => {
       self.numbers = groupPortaByNumbers(result);
     }).catch((error) => {
-      TucToast.error([$translate.instant('telephony_alias_portabilities_load_error'), _.get(error, 'data.message')].join(' '));
+      Toast.error([$translate.instant('telephony_alias_portabilities_load_error'), _.get(error, 'data.message')].join(' '));
       return $q.reject(error);
     }).finally(() => {
       self.isLoading = false;
@@ -62,10 +62,10 @@ angular.module('managerApp').controller('TelecomTelephonyAliasPortabilitiesCtrl'
       billingAccount: $stateParams.billingAccount,
       id: portability.id,
     }, {}).$promise.then(() => {
-      TucToast.success($translate.instant('telephony_alias_portabilities_cancel_success'));
+      Toast.success($translate.instant('telephony_alias_portabilities_cancel_success'));
       return init();
     }).catch((error) => {
-      TucToast.error([$translate.instant('telephony_alias_portabilities_cancel_error'), _.get(error, 'data.message')].join(' '));
+      Toast.error([$translate.instant('telephony_alias_portabilities_cancel_error'), _.get(error, 'data.message')].join(' '));
       return $q.reject(error);
     }).finally(() => {
       self.loading.cancel = false;

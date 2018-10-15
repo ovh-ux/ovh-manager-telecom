@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyLineClick2CallCtrl', function ($stateParams, $state, TelephonyMediator, TucToast, $translate, $timeout, $q, $uibModal) {
+angular.module('managerApp').controller('TelecomTelephonyLineClick2CallCtrl', function ($stateParams, $state, TelephonyMediator, Toast, $translate, $timeout, $q, $uibModal) {
   const self = this;
 
   self.loading = {
@@ -18,9 +18,9 @@ angular.module('managerApp').controller('TelecomTelephonyLineClick2CallCtrl', fu
       $timeout(angular.noop, 1000),
     ]).then((responses) => {
       if (responses[0] === true) {
-        TucToast.success($translate.instant('telephony_group_line_calls_click2call_call_do_ok', { serviceName: $stateParams.serviceName }));
+        Toast.success($translate.instant('telephony_group_line_calls_click2call_call_do_ok', { serviceName: $stateParams.serviceName }));
       } else {
-        TucToast.error($translate.instant('telephony_group_line_calls_click2call_call_do_ko'));
+        Toast.error($translate.instant('telephony_group_line_calls_click2call_call_do_ko'));
       }
     }).finally(() => {
       self.loading.call = false;
@@ -58,7 +58,7 @@ angular.module('managerApp').controller('TelecomTelephonyLineClick2CallCtrl', fu
       return self.clickToCall.getUsers();
     }, (error) => {
       if (error && error.type === 'API') {
-        TucToast.error($translate.instant('telephony_group_line_calls_click2call_removeUser_ko', { error: error.message }));
+        Toast.error($translate.instant('telephony_group_line_calls_click2call_removeUser_ko', { error: error.message }));
       }
     });
     return modal;

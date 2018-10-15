@@ -3,7 +3,7 @@ angular
   .controller('TelecomSmsReceiversAddCtrl', class TelecomSmsReceiversAddCtrl {
     constructor(
       $q, $stateParams, $timeout, $translate, $uibModalInstance,
-      OvhApiSms, OvhApiMe, slot, TucToastError,
+      OvhApiSms, OvhApiMe, slot, ToastError,
     ) {
       this.$q = $q;
       this.$stateParams = $stateParams;
@@ -19,7 +19,7 @@ angular
         },
       };
       this.slot = slot;
-      this.TucToastError = TucToastError;
+      this.ToastError = ToastError;
     }
 
     $onInit() {
@@ -113,7 +113,7 @@ angular
       const fileName = file ? file.name : '';
       const found = _.some(validExtensions, ext => _.endsWith(fileName.toLowerCase(), ext));
       if (!found) {
-        this.TucToastError(this.$translate.instant('sms_receivers_add_file_invalid'));
+        this.ToastError(this.$translate.instant('sms_receivers_add_file_invalid'));
       }
       return found;
     }

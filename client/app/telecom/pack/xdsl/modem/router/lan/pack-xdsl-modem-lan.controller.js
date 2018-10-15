@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('XdslModemLanCtrl', function ($stateParams, $translate, OvhApiXdsl, PackXdslModemLanObject, validator, $q, TucToast, PackXdslModemMediator) {
+angular.module('managerApp').controller('XdslModemLanCtrl', function ($stateParams, $translate, OvhApiXdsl, PackXdslModemLanObject, validator, $q, Toast, PackXdslModemMediator) {
   const self = this;
 
   this.validator = validator;
@@ -35,7 +35,7 @@ angular.module('managerApp').controller('XdslModemLanCtrl', function ($statePara
     }).$promise.then((data) => {
       self.lans = _.map(data, elt => new PackXdslModemLanObject(elt));
     }).catch((err) => {
-      TucToast.error($translate.instant('xdsl_modem_lan_error'));
+      Toast.error($translate.instant('xdsl_modem_lan_error'));
       return $q.reject(err);
     }).finally(() => {
       self.loader = false;

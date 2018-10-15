@@ -1,5 +1,5 @@
 angular.module('managerApp')
-  .controller('FreeFaxConfigurationCtrl', function ($stateParams, $scope, $translate, OvhApiFreeFax, TucToastError) {
+  .controller('FreeFaxConfigurationCtrl', function ($stateParams, $scope, $translate, OvhApiFreeFax, ToastError) {
     const self = this;
 
     this.editMode = false;
@@ -56,7 +56,7 @@ angular.module('managerApp')
         serviceName: $stateParams.serviceName,
       }, null).$promise.then((password) => {
         self.generatedPassword = password.value;
-      }, err => new TucToastError(err)).finally(() => {
+      }, err => new ToastError(err)).finally(() => {
         self.generatingPassword = false;
       });
     };
@@ -80,7 +80,7 @@ angular.module('managerApp')
         serviceName: $stateParams.serviceName,
       }, formData).$promise.then(() => {
         self.editMode = false;
-      }, err => new TucToastError(err)).finally(() => {
+      }, err => new ToastError(err)).finally(() => {
         self.loading = false;
       });
     };

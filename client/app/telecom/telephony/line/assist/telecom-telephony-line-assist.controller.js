@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyLineAssistCtrl', function ($q, $translate, $stateParams, TelephonyMediator, TucToast) {
+angular.module('managerApp').controller('TelecomTelephonyLineAssistCtrl', function ($q, $translate, $stateParams, TelephonyMediator, Toast) {
   const self = this;
   let sectionLine = null;
 
@@ -48,7 +48,7 @@ angular.module('managerApp').controller('TelecomTelephonyLineAssistCtrl', functi
         initActions();
       });
     }).catch((error) => {
-      TucToast.error([$translate.instant('telephony_section_load_error'), (error && error.message) || ''].join(' '));
+      Toast.error([$translate.instant('telephony_section_load_error'), (error && error.message) || ''].join(' '));
       return $q.reject(error);
     }).finally(() => {
       self.loading.init = false;

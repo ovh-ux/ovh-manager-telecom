@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyLineTerminateCtrl', function ($stateParams, $state, TelephonyMediator, TucToast, $translate, telephonyBulk) {
+angular.module('managerApp').controller('TelecomTelephonyLineTerminateCtrl', function ($stateParams, $state, TelephonyMediator, Toast, $translate, telephonyBulk) {
   const self = this;
 
   self.loading = {
@@ -16,9 +16,9 @@ angular.module('managerApp').controller('TelecomTelephonyLineTerminateCtrl', fun
     self.loading.terminate = true;
 
     return self.line.terminate(self.reason).then(() => {
-      $state.go('.cancel').then(() => TucToast.success($translate.instant('telephony_group_line_terminating_ok')));
+      $state.go('.cancel').then(() => Toast.success($translate.instant('telephony_group_line_terminating_ok')));
     }).catch((error) => {
-      TucToast.error($translate.instant('telephony_group_line_terminating_ko', { error: error.data.message }));
+      Toast.error($translate.instant('telephony_group_line_terminating_ko', { error: error.data.message }));
     }).finally(() => {
       self.reason = {
         id: '',
@@ -89,7 +89,7 @@ angular.module('managerApp').controller('TelecomTelephonyLineTerminateCtrl', fun
 
   self.onBulkSuccess = function (bulkResult) {
     // display message of success or error
-    telephonyBulk.getTucToastInfos(bulkResult, {
+    telephonyBulk.getToastInfos(bulkResult, {
       fullSuccess: $translate.instant('telephony_group_line_terminating_bulk_all_success'),
       partialSuccess: $translate.instant('telephony_group_line_terminating_bulk_some_success', {
         count: bulkResult.success.length,
@@ -97,7 +97,7 @@ angular.module('managerApp').controller('TelecomTelephonyLineTerminateCtrl', fun
       }),
       error: $translate.instant('telephony_group_line_terminating_bulk_error'),
     }).forEach((toastInfo) => {
-      TucToast[toastInfo.type](toastInfo.message, {
+      Toast[toastInfo.type](toastInfo.message, {
         hideAfter: null,
       });
     });
@@ -107,7 +107,7 @@ angular.module('managerApp').controller('TelecomTelephonyLineTerminateCtrl', fun
   };
 
   self.onBulkError = function (error) {
-    TucToast.error([$translate.instant('telephony_group_line_terminating_bulk_on_error'), _.get(error, 'msg.data')].join(' '));
+    Toast.error([$translate.instant('telephony_group_line_terminating_bulk_on_error'), _.get(error, 'msg.data')].join(' '));
   };
 
   init();

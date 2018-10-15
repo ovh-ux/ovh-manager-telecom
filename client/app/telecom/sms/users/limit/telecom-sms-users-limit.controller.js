@@ -3,7 +3,7 @@ angular
   .controller('TelecomSmsUsersLimitCtrl', class TelecomSmsUsersLimitCtrl {
     constructor(
       $q, $stateParams, $timeout, $uibModalInstance,
-      OvhApiMe, OvhApiSms, SmsMediator, user, TucToastError,
+      OvhApiMe, OvhApiSms, SmsMediator, user, ToastError,
     ) {
       this.$q = $q;
       this.$stateParams = $stateParams;
@@ -16,7 +16,7 @@ angular
         user: OvhApiMe.v6(),
       };
       this.SmsMediator = SmsMediator;
-      this.TucToastError = TucToastError;
+      this.ToastError = ToastError;
       this.user = user;
     }
 
@@ -41,7 +41,7 @@ angular
         this.enums = result.enums;
         this.limitStatus = this.getLimitStatus();
       }).catch((err) => {
-        this.TucToastError(err);
+        this.ToastError(err);
       }).finally(() => {
         this.loading.init = false;
       });

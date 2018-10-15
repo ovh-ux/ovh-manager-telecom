@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('telephonyNumberOvhPabxTtsCreateCtrl', function ($q, $translate, $translatePartialLoader, TelephonyGroupNumberOvhPabxTts, TelephonyMediator, TucToast, TucToastError) {
+angular.module('managerApp').controller('telephonyNumberOvhPabxTtsCreateCtrl', function ($q, $translate, $translatePartialLoader, TelephonyGroupNumberOvhPabxTts, TelephonyMediator, Toast, ToastError) {
   const self = this;
 
   self.loading = {
@@ -48,7 +48,7 @@ angular.module('managerApp').controller('telephonyNumberOvhPabxTtsCreateCtrl', f
         self.onTtsCreationSuccess()(tts);
       }
     }).catch((error) => {
-      TucToast.error([$translate.instant('telephony_number_feature_ovh_pabx_tts_create_error'), _.get(error, 'data.message', '')].join(' '));
+      Toast.error([$translate.instant('telephony_number_feature_ovh_pabx_tts_create_error'), _.get(error, 'data.message', '')].join(' '));
       return $q.reject(error);
     }).finally(() => {
       self.loading.creating = false;
@@ -114,7 +114,7 @@ angular.module('managerApp').controller('telephonyNumberOvhPabxTtsCreateCtrl', f
     }).finally(() => {
       self.loading.init = false;
     })
-      .catch(error => new TucToastError(error));
+      .catch(error => new ToastError(error));
   };
 
   /* -----  End of INITIALIZATION  ------*/

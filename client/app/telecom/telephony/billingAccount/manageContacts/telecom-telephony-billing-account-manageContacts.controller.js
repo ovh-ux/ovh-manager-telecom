@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyBillingAccountManageContactsCtrl', function ($stateParams, $q, $translate, OvhApiTelephony, OvhApiMe, TelephonyMediator, OvhApiPackXdslVoipLine, TucToast, TucToastError) {
+angular.module('managerApp').controller('TelecomTelephonyBillingAccountManageContactsCtrl', function ($stateParams, $q, $translate, OvhApiTelephony, OvhApiMe, TelephonyMediator, OvhApiPackXdslVoipLine, Toast, ToastError) {
   const self = this;
 
   const contactAttributes = ['contactAdmin', 'contactBilling', 'contactTech'];
@@ -125,7 +125,7 @@ angular.module('managerApp').controller('TelecomTelephonyBillingAccountManageCon
       self.billingAccount = result.billingAccount;
       associatePendingTasks(result.tasks);
       return checkModifiableServices(result.group.concat(result.lines).concat(result.aliases));
-    }).catch(err => new TucToastError(err)).finally(() => {
+    }).catch(err => new ToastError(err)).finally(() => {
       self.isLoading = false;
     });
   }
@@ -186,8 +186,8 @@ angular.module('managerApp').controller('TelecomTelephonyBillingAccountManageCon
       _.set(contact, 'editing', false);
       self.isEditing = false;
       associatePendingTasks(tasks);
-      TucToast.success($translate.instant('telephony_group_manage_contacts_change_success'));
-    }).catch(err => new TucToastError(err)).finally(() => {
+      Toast.success($translate.instant('telephony_group_manage_contacts_change_success'));
+    }).catch(err => new ToastError(err)).finally(() => {
       _.set(contact, 'submiting', false);
     });
   };

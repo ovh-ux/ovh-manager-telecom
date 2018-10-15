@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('OverTheBoxRemoteCtrl', function ($stateParams, $translate, $scope, $q, URLS, OVER_THE_BOX, OVERTHEBOX_REMOTE_STATUS, OvhApiOverTheBox, TucToastError, TucToast, IpAddress) {
+angular.module('managerApp').controller('OverTheBoxRemoteCtrl', function ($stateParams, $translate, $scope, $q, URLS, OVER_THE_BOX, OVERTHEBOX_REMOTE_STATUS, OvhApiOverTheBox, ToastError, Toast, IpAddress) {
   const self = this;
 
   this.filter = {
@@ -35,7 +35,7 @@ angular.module('managerApp').controller('OverTheBoxRemoteCtrl', function ($state
         },
         (err) => {
           self.remotes = [];
-          return new TucToastError(err);
+          return new ToastError(err);
         },
       ).finally(() => {
         self.loading = false;
@@ -48,7 +48,7 @@ angular.module('managerApp').controller('OverTheBoxRemoteCtrl', function ($state
         (remotes) => {
           self.remotes = remotes;
         },
-        TucToastError,
+        ToastError,
         (remotes) => {
           self.remotes = remotes;
         },
@@ -94,12 +94,12 @@ angular.module('managerApp').controller('OverTheBoxRemoteCtrl', function ($state
     }, formData).$promise.then(() => {
       init();
       self.addForm = false;
-      TucToast.success($translate.instant('overTheBox_remote_element_added'));
+      Toast.success($translate.instant('overTheBox_remote_element_added'));
     }).catch((err) => {
       if (err && err.data === "Impossible to create a remote access, your device hasn't contacted us for more than 10 minutes") {
-        TucToast.error($translate.instant('overTheBox_remote_error_no_contact'));
+        Toast.error($translate.instant('overTheBox_remote_error_no_contact'));
       } else {
-        TucToast.error($translate.instant('overTheBox_remote_error_unknown'));
+        Toast.error($translate.instant('overTheBox_remote_error_unknown'));
       }
       return $q.reject(err);
     }).finally(() => {
@@ -152,7 +152,7 @@ angular.module('managerApp').controller('OverTheBoxRemoteCtrl', function ($state
       null,
     ).$promise.then(() => self.reloadRemote(remote), (err) => {
       _.set(remote, 'busy', false);
-      return new TucToastError(err);
+      return new ToastError(err);
     });
   };
 
@@ -170,12 +170,12 @@ angular.module('managerApp').controller('OverTheBoxRemoteCtrl', function ($state
       updateRemote(reloadedRemote, remote);
       if (reloadedRemote.accepted) {
         if (reloadedRemote.status !== 'toDelete') {
-          TucToast.success($translate.instant('overTheBox_remote_authorized', { port: reloadedRemote.exposedPort }));
+          Toast.success($translate.instant('overTheBox_remote_authorized', { port: reloadedRemote.exposedPort }));
         }
       } else {
-        TucToast.error($translate.instant('overTheBox_remote_authorized_failed', { port: reloadedRemote.exposedPort }));
+        Toast.error($translate.instant('overTheBox_remote_authorized_failed', { port: reloadedRemote.exposedPort }));
       }
-    }, TucToastError).finally(() => {
+    }, ToastError).finally(() => {
       _.set(remote, 'busy', false);
     });
   };
@@ -190,9 +190,9 @@ angular.module('managerApp').controller('OverTheBoxRemoteCtrl', function ($state
       serviceName: $stateParams.serviceName,
       remoteAccessId: remote.remoteAccessId,
     }, null).$promise.then(() => {
-      TucToast.success($translate.instant('overTheBox_remote_element_deleted'));
+      Toast.success($translate.instant('overTheBox_remote_element_deleted'));
       self.reloadRemote(remote);
-    }, TucToastError).finally(() => {
+    }, ToastError).finally(() => {
       _.set(remote, 'busy', false);
     });
   };

@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyServiceContactCtrl', function ($state, $stateParams, $q, $timeout, $translate, OvhApiTelephony, TucToast, TucToastError, OvhApiXdsl, telephonyBulk) {
+angular.module('managerApp').controller('TelecomTelephonyServiceContactCtrl', function ($state, $stateParams, $q, $timeout, $translate, OvhApiTelephony, Toast, ToastError, OvhApiXdsl, telephonyBulk) {
   const self = this;
 
   function buildWayInfo(directory) {
@@ -67,7 +67,7 @@ angular.module('managerApp').controller('TelecomTelephonyServiceContactCtrl', fu
 
       self.directoryProperties = _.get(res.infos, "models['telephony.DirectoryInfo'].properties");
       return null;
-    }).catch(err => new TucToastError(err)).finally(() => {
+    }).catch(err => new ToastError(err)).finally(() => {
       self.isLoading = false;
     });
   }
@@ -114,8 +114,8 @@ angular.module('managerApp').controller('TelecomTelephonyServiceContactCtrl', fu
     }, modified).$promise.then(() => {
       self.directory = angular.copy(self.directoryForm);
       self.isEditing = false;
-      TucToast.success($translate.instant('telephony_service_contact_success'));
-    }).catch(err => new TucToastError(err)).finally(() => {
+      Toast.success($translate.instant('telephony_service_contact_success'));
+    }).catch(err => new ToastError(err)).finally(() => {
       self.isUpdating = false;
     });
   };
@@ -140,14 +140,14 @@ angular.module('managerApp').controller('TelecomTelephonyServiceContactCtrl', fu
 
   self.onBulkSuccess = function (bulkResult) {
     // display message of success or error
-    telephonyBulk.getTucToastInfos(bulkResult, {
+    telephonyBulk.getToastInfos(bulkResult, {
       fullSuccess: $translate.instant('telephony_service_contact_bulk_all_success'),
       partialSuccess: $translate.instant('telephony_service_contact_bulk_some_success', {
         count: bulkResult.success.length,
       }),
       error: $translate.instant('telephony_service_contact_bulk_error'),
     }).forEach((toastInfo) => {
-      TucToast[toastInfo.type](toastInfo.message, {
+      Toast[toastInfo.type](toastInfo.message, {
         hideAfter: null,
       });
     });
@@ -156,7 +156,7 @@ angular.module('managerApp').controller('TelecomTelephonyServiceContactCtrl', fu
   };
 
   self.onBulkError = function (error) {
-    TucToast.error([$translate.instant('telephony_service_contact_bulk_on_error'), _.get(error, 'msg.data')].join(' '));
+    Toast.error([$translate.instant('telephony_service_contact_bulk_on_error'), _.get(error, 'msg.data')].join(' '));
   };
 
   self.onPostCodeChange = (function () {
@@ -248,7 +248,7 @@ angular.module('managerApp').controller('TelecomTelephonyServiceContactCtrl', fu
             self.directoryCodes = null;
             model.$setValidity('siret', false);
           }
-        }).catch(err => new TucToastError(err));
+        }).catch(err => new ToastError(err));
       }
     };
   }());

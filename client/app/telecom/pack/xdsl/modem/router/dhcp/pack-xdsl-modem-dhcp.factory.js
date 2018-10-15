@@ -1,4 +1,4 @@
-angular.module('managerApp').factory('PackXdslModemDhcpObject', (OvhApiXdsl, $translate, TucToast, $q) => {
+angular.module('managerApp').factory('PackXdslModemDhcpObject', (OvhApiXdsl, $translate, Toast, $q) => {
   const template = {
     serverEnabled: true,
     defaultGateway: '',
@@ -43,10 +43,10 @@ angular.module('managerApp').factory('PackXdslModemDhcpObject', (OvhApiXdsl, $tr
       ).$promise.then((data) => {
         _.extend(self, self.tempValue);
         self.toggleEdit(false);
-        TucToast.success($translate.instant('xdsl_modem_dhcp_success', { name: self.domainName }));
+        Toast.success($translate.instant('xdsl_modem_dhcp_success', { name: self.domainName }));
         return data;
       }).catch((err) => {
-        TucToast.error($translate.instant('xdsl_modem_dhcp_submit_error'));
+        Toast.error($translate.instant('xdsl_modem_dhcp_submit_error'));
         return $q.reject(err);
       }).finally(() => {
         self.busy = false;

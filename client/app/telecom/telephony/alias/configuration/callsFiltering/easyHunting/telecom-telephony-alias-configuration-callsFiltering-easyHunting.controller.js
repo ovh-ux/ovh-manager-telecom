@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationCallsFilteringEasyHuntingCtrl', function ($stateParams, $q, $translate, OvhApiTelephony, TucToastError, telephonyBulk, TucToast) {
+angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationCallsFilteringEasyHuntingCtrl', function ($stateParams, $q, $translate, OvhApiTelephony, ToastError, telephonyBulk, Toast) {
   const self = this;
 
   self.fetchStatus = function () {
@@ -75,7 +75,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationCalls
       self.screenStatus.raw = angular.copy(self.screenStatus.modified);
     }).catch((err) => {
       self.screenStatus.modified = angular.copy(self.screenStatus.raw);
-      return new TucToastError(err);
+      return new ToastError(err);
     }).finally(() => {
       self.screenStatus.isLoading = false;
     });
@@ -99,7 +99,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationCalls
     return self.fetchStatus().then((result) => {
       self.screenStatus.raw = result.status;
       self.screenStatus.modified = angular.copy(result.status);
-    }).catch(err => new TucToastError(err)).finally(() => {
+    }).catch(err => new ToastError(err)).finally(() => {
       self.screenStatus.isLoading = false;
     });
   }
@@ -132,14 +132,14 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationCalls
 
   self.onBulkSuccess = function (bulkResult) {
     // display message of success or error
-    telephonyBulk.getTucToastInfos(bulkResult, {
+    telephonyBulk.getToastInfos(bulkResult, {
       fullSuccess: $translate.instant('telephony_line_calls_filtering_bulk_all_success'),
       partialSuccess: $translate.instant('telephony_line_calls_filtering_bulk_some_success', {
         count: bulkResult.success.length,
       }),
       error: $translate.instant('telephony_line_calls_filtering_bulk_error'),
     }).forEach((toastInfo) => {
-      TucToast[toastInfo.type](toastInfo.message, {
+      Toast[toastInfo.type](toastInfo.message, {
         hideAfter: null,
       });
     });
@@ -148,6 +148,6 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationCalls
   };
 
   self.onBulkError = function (error) {
-    TucToast.error([$translate.instant('telephony_line_calls_filtering_bulk_on_error'), _.get(error, 'msg.data')].join(' '));
+    Toast.error([$translate.instant('telephony_line_calls_filtering_bulk_on_error'), _.get(error, 'msg.data')].join(' '));
   };
 });

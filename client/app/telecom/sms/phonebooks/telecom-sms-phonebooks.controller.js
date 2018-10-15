@@ -3,7 +3,7 @@ angular
   .controller('TelecomSmsPhonebooksCtrl', class TelecomSmsPhonebooksCtrl {
     constructor(
       $document, $filter, $q, $scope, $stateParams, $translate, $timeout, $uibModal, $window,
-      OvhApiSms, TucToast, TucToastError, SMS_PHONEBOOKS,
+      OvhApiSms, Toast, ToastError, SMS_PHONEBOOKS,
     ) {
       this.$document = $document;
       this.$filter = $filter;
@@ -21,8 +21,8 @@ angular
           task: OvhApiSms.Task().v6(),
         },
       };
-      this.TucToast = TucToast;
-      this.TucToastError = TucToastError;
+      this.Toast = Toast;
+      this.ToastError = ToastError;
       this.constant = { SMS_PHONEBOOKS };
     }
 
@@ -64,7 +64,7 @@ angular
           this.phonebookContact.isLoading = false;
         });
       }).catch((err) => {
-        this.TucToast.error(`${this.$translate.instant('sms_phonebooks_phonebook_ko')} ${_.get(err, 'data.message')}`);
+        this.Toast.error(`${this.$translate.instant('sms_phonebooks_phonebook_ko')} ${_.get(err, 'data.message')}`);
         return this.$q.rejec(err);
       }).finally(() => {
         this.phonebooks.isLoading = false;
@@ -236,7 +236,7 @@ angular
           return phonebooks;
         });
       }).catch((err) => {
-        this.TucToast.error(`${this.$translate.instant('sms_phonebooks_phonebook_update_ko')} ${_.get(err, 'data.message')}`);
+        this.Toast.error(`${this.$translate.instant('sms_phonebooks_phonebook_update_ko')} ${_.get(err, 'data.message')}`);
         return this.$q.reject(err);
       }).finally(() => {
         this.phonebooks.current.inEdition = false;
@@ -267,7 +267,7 @@ angular
         });
       }).catch((err) => {
         if (err && err.type === 'API') {
-          this.TucToast.error(this.$translate.instant('sms_phonebooks_phonebook_delete_ko', { error: _.get(err, 'msg.data.message') }));
+          this.Toast.error(this.$translate.instant('sms_phonebooks_phonebook_delete_ko', { error: _.get(err, 'msg.data.message') }));
         }
       }).finally(() => {
         this.phonebooks.hasModalOpened = false;
@@ -296,7 +296,7 @@ angular
       });
       modal.result.then(() => this.refresh()).catch((err) => {
         if (err && err.type === 'API') {
-          this.TucToast.error(this.$translate.instant('sms_phonebooks_phonebook_contact_create_ko', { error: _.get(err, 'msg.data.message') }));
+          this.Toast.error(this.$translate.instant('sms_phonebooks_phonebook_contact_create_ko', { error: _.get(err, 'msg.data.message') }));
         }
       }).finally(() => {
         this.phonebooks.hasModalOpened = false;
@@ -327,7 +327,7 @@ angular
       });
       modal.result.then(() => this.refresh()).catch((err) => {
         if (err && err.type === 'API') {
-          this.TucToast.error(this.$translate.instant('sms_phonebooks_phonebook_contact_update_ko', { error: _.get(err, 'msg.data.message') }));
+          this.Toast.error(this.$translate.instant('sms_phonebooks_phonebook_contact_update_ko', { error: _.get(err, 'msg.data.message') }));
         }
       }).finally(() => {
         this.phonebooks.hasModalOpened = false;
@@ -357,7 +357,7 @@ angular
       });
       modal.result.then(() => this.refresh()).catch((err) => {
         if (err && err.type === 'API') {
-          this.TucToast.error(this.$translate.instant('sms_phonebooks_phonebook_contact_delete_ko', { error: _.get(err, 'msg.data.message') }));
+          this.Toast.error(this.$translate.instant('sms_phonebooks_phonebook_contact_delete_ko', { error: _.get(err, 'msg.data.message') }));
         }
       }).finally(() => {
         this.phonebooks.hasModalOpened = false;
@@ -377,12 +377,12 @@ angular
       }).$promise);
       this.phonebookContact.isDeleting = true;
       queries.push(this.$timeout(angular.noop, 500)); // avoid clipping
-      this.TucToast.info(this.$translate.instant('sms_phonebooks_phonebook_contact_selected_delete_info'));
+      this.Toast.info(this.$translate.instant('sms_phonebooks_phonebook_contact_selected_delete_info'));
       return this.$q.all(queries).then(() => {
         this.phonebookContact.selected = {};
         return this.refresh();
       }).catch((err) => {
-        this.TucToast.error(this.$translate.instant('sms_phonebooks_phonebook_contact_selected_delete_ko', { error: _.get(err, 'data.message') }));
+        this.Toast.error(this.$translate.instant('sms_phonebooks_phonebook_contact_selected_delete_ko', { error: _.get(err, 'data.message') }));
         return this.$q.reject(err);
       }).finally(() => {
         this.phonebookContact.isDeleting = false;
@@ -417,7 +417,7 @@ angular
         return response;
       }).catch((err) => {
         if (err && err.type === 'API') {
-          this.TucToast.error(this.$translate.instant('sms_phonebooks_phonebook_contact_import_ko', { error: _.get(err, 'msg.data.message') }));
+          this.Toast.error(this.$translate.instant('sms_phonebooks_phonebook_contact_import_ko', { error: _.get(err, 'msg.data.message') }));
         }
       }).finally(() => {
         this.phonebooks.hasModalOpened = false;
@@ -443,9 +443,9 @@ angular
       });
       return tryGetCsvExport().then((phonebook) => {
         this.$window.location.href = phonebook.url;
-        this.TucToast.success(this.$translate.instant('sms_phonebooks_phonebook_contact_export_ok'));
+        this.Toast.success(this.$translate.instant('sms_phonebooks_phonebook_contact_export_ok'));
       }).catch((err) => {
-        this.TucToast.error(`${this.$translate.instant('sms_phonebooks_phonebook_contact_export_ko')} ${_.get(err, 'data.message')}`);
+        this.Toast.error(`${this.$translate.instant('sms_phonebooks_phonebook_contact_export_ko')} ${_.get(err, 'data.message')}`);
         return this.$q.reject(err);
       }).finally(() => {
         this.phonebookContact.isExporting = false;
@@ -464,7 +464,7 @@ angular
         this.sortPhonebookContact();
         this.updatePhonebookContactGroups();
       }).catch((err) => {
-        this.TucToast.error(`${this.$translate.instant('sms_phonebooks_phonebook_contact_ko')} ${_.get(err, 'data.message')}`);
+        this.Toast.error(`${this.$translate.instant('sms_phonebooks_phonebook_contact_ko')} ${_.get(err, 'data.message')}`);
         return this.$q.reject(err);
       }).finally(() => {
         this.phonebookContact.isLoading = false;

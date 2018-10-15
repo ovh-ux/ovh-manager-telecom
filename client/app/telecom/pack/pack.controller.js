@@ -1,7 +1,7 @@
 angular.module('managerApp').controller('PackCtrl', class PackCtrl {
   constructor(
     $q, $scope, $stateParams, $translate,
-    DASHBOARD, OvhApiPackXdsl, PACK, resiliationNotification, SidebarMenu, TucToast,
+    DASHBOARD, OvhApiPackXdsl, PACK, resiliationNotification, SidebarMenu, Toast,
   ) {
     this.$q = $q;
     this.$scope = $scope;
@@ -12,7 +12,7 @@ angular.module('managerApp').controller('PackCtrl', class PackCtrl {
     this.OvhApiPackXdsl = OvhApiPackXdsl;
     this.resiliationNotification = resiliationNotification;
     this.SidebarMenu = SidebarMenu;
-    this.TucToast = TucToast;
+    this.Toast = Toast;
   }
 
   $onInit() {
@@ -120,7 +120,7 @@ angular.module('managerApp').controller('PackCtrl', class PackCtrl {
       })
       .catch((err) => {
         this.inError = true;
-        this.TucToast.error(this.$translate.instant('pack_xdsl_oops_an_error_is_occured'));
+        this.Toast.error(this.$translate.instant('pack_xdsl_oops_an_error_is_occured'));
         return this.$q.reject(err);
       })
       .finally(() => {
@@ -147,7 +147,7 @@ angular.module('managerApp').controller('PackCtrl', class PackCtrl {
 
     return this.getAllFrames(this.$stateParams.packName).catch((err) => {
       if (err.status !== 460 && err.status !== 403) {
-        this.TucToast.error([this.$translate.instant('pack_xdsl_oops_an_error_is_occured'), _.get(err, 'data.message', '')].join(' '));
+        this.Toast.error([this.$translate.instant('pack_xdsl_oops_an_error_is_occured'), _.get(err, 'data.message', '')].join(' '));
       }
       return this.$q.reject(err);
     }).finally(() => {
@@ -172,7 +172,7 @@ angular.module('managerApp').controller('PackCtrl', class PackCtrl {
           title: newPackDescription || this.pack.offerDescription,
         }, this.$stateParams.packName, 'telecom-pack-section');
       }, (error) => {
-        this.TucToast.error([this.$translate.instant('pack_rename_error', this.$stateParams), error.data.message].join(' '));
+        this.Toast.error([this.$translate.instant('pack_rename_error', this.$stateParams), error.data.message].join(' '));
         return this.$q.reject(error);
       })
       .finally(() => {

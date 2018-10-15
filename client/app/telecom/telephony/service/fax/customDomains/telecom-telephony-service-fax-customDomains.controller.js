@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyServiceFaxCustomDomainsCtrl', function ($filter, $q, $stateParams, $timeout, $translate, OvhApiDomain, TelephonyMediator, TucToast, OvhApiMe) {
+angular.module('managerApp').controller('TelecomTelephonyServiceFaxCustomDomainsCtrl', function ($filter, $q, $stateParams, $timeout, $translate, OvhApiDomain, TelephonyMediator, Toast, OvhApiMe) {
   const self = this;
 
   /* ===============================
@@ -43,10 +43,10 @@ angular.module('managerApp').controller('TelecomTelephonyServiceFaxCustomDomains
     return OvhApiMe.Fax().CustomDomains().v6().create({}, _.pick(self.addCustomDomainsForm, 'domain')).$promise.then(() => {
       form.$setPristine();
       self.addCustomDomainsForm.domain = null;
-      TucToast.success($translate.instant('telephony_service_fax_custom_domains_configuration_form_add_success'));
+      Toast.success($translate.instant('telephony_service_fax_custom_domains_configuration_form_add_success'));
       return self.refresh();
     }).catch((err) => {
-      TucToast.error([$translate.instant('telephony_service_fax_custom_domains_configuration_form_add_error'), _.get(err, 'data.message', '')].join(' '));
+      Toast.error([$translate.instant('telephony_service_fax_custom_domains_configuration_form_add_error'), _.get(err, 'data.message', '')].join(' '));
     }).finally(() => {
       self.addCustomDomainsForm.isAdding = false;
     });
@@ -65,10 +65,10 @@ angular.module('managerApp').controller('TelecomTelephonyServiceFaxCustomDomains
       }).$promise,
       $timeout(angular.noop, 500),
     ]).then(() => {
-      TucToast.success($translate.instant('telephony_service_fax_custom_domains_configuration_form_remove_success'));
+      Toast.success($translate.instant('telephony_service_fax_custom_domains_configuration_form_remove_success'));
       return self.refresh();
     }).catch((err) => {
-      TucToast.error([$translate.instant('telephony_service_fax_custom_domains_configuration_form_remove_error'), _.get(err, 'data.message', '')].join(' '));
+      Toast.error([$translate.instant('telephony_service_fax_custom_domains_configuration_form_remove_error'), _.get(err, 'data.message', '')].join(' '));
     }).finally(() => {
       _.set(domain, 'isDeleting', false);
     });
@@ -84,7 +84,7 @@ angular.module('managerApp').controller('TelecomTelephonyServiceFaxCustomDomains
       self.customDomains.raw = result.customDomains;
       self.sortCustomDomains();
     }).catch((err) => {
-      TucToast.error([$translate.instant('telephony_service_fax_custom_domains_error_loading'), _.get(err, 'data.message', '')].join(' '));
+      Toast.error([$translate.instant('telephony_service_fax_custom_domains_error_loading'), _.get(err, 'data.message', '')].join(' '));
     }).finally(() => {
       self.customDomains.isLoading = false;
     });
@@ -119,7 +119,7 @@ angular.module('managerApp').controller('TelecomTelephonyServiceFaxCustomDomains
       self.fax = group.getFax($stateParams.serviceName);
       return self.refresh();
     }).catch((err) => {
-      TucToast.error([$translate.instant('telephony_service_fax_custom_domains_error_loading'), _.get(err, 'data.message', '')].join(' '));
+      Toast.error([$translate.instant('telephony_service_fax_custom_domains_error_loading'), _.get(err, 'data.message', '')].join(' '));
     }).finally(() => {
       self.loading.init = false;
     });

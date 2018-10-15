@@ -1,5 +1,5 @@
 angular.module('managerApp')
-  .controller('FreeFaxCreditCtrl', function (FREEFAX, $stateParams, TucToastError, OvhApiFreeFax) {
+  .controller('FreeFaxCreditCtrl', function (FREEFAX, $stateParams, ToastError, OvhApiFreeFax) {
     const self = this;
 
     function init() {
@@ -28,7 +28,7 @@ angular.module('managerApp')
         self.contracts = data.contracts;
       }, (err) => {
         self.cost = '';
-        return new TucToastError(err);
+        return new ToastError(err);
       });
     };
 
@@ -46,7 +46,7 @@ angular.module('managerApp')
         };
       }, (err) => {
         init();
-        return new TucToastError(err);
+        return new ToastError(err);
       });
     };
 

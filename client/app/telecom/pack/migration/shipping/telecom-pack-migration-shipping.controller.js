@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomPackMigrationShippingCtrl', function ($q, $translate, PackMigrationProcess, OvhContact, OvhApiPackXdsl, TucToast) {
+angular.module('managerApp').controller('TelecomPackMigrationShippingCtrl', function ($q, $translate, PackMigrationProcess, OvhContact, OvhApiPackXdsl, Toast) {
   const self = this;
 
   self.process = null;
@@ -56,7 +56,7 @@ angular.module('managerApp').controller('TelecomPackMigrationShippingCtrl', func
 
       self.process.shipping.address = _.first(self.ovhContactOptions.customList);
     }, (error) => {
-      TucToast.error([$translate.instant('telecom_pack_migration_shipping_addresses_error'), _.get(error, 'data.message', '')].join(' '));
+      Toast.error([$translate.instant('telecom_pack_migration_shipping_addresses_error'), _.get(error, 'data.message', '')].join(' '));
       return $q.reject(error);
     }).finally(() => {
       self.loading.init = false;

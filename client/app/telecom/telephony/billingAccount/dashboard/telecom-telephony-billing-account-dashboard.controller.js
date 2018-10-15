@@ -1,7 +1,7 @@
 angular.module('managerApp')
   .controller('TelecomTelephonyBillingAccountDashboardCtrl', function (
     $translate, $scope, $stateParams, $state, $q, $window, $timeout,
-    TelephonyMediator, OvhApiTelephony, TucToastError, TelephonyGroupLinePhone,
+    TelephonyMediator, OvhApiTelephony, ToastError, TelephonyGroupLinePhone,
     TELEPHONY_LINE_PHONE_ADDITIONAL_INFOS,
   ) {
     const self = this;
@@ -22,7 +22,7 @@ angular.module('managerApp')
         if (err.status === 404) {
           return $state.go('telecom.welcoming');
         }
-        return new TucToastError(err);
+        return new ToastError(err);
       });
     }
 
@@ -81,7 +81,7 @@ angular.module('managerApp')
       }).$promise.then((ids) => {
         self.portabilities = ids.length;
         return self.portabilities;
-      }).catch(err => new TucToastError(err)).finally(() => {
+      }).catch(err => new ToastError(err)).finally(() => {
         self.loading.portability = false;
       });
     }
@@ -113,7 +113,7 @@ angular.module('managerApp')
               _.set(consumption, 'priceValue', consumption.price ? consumption.price.value : null);
             });
             return self.bills;
-          }).catch(err => new TucToastError(err)).finally(() => {
+          }).catch(err => new ToastError(err)).finally(() => {
             self.loading.bills = false;
           }));
     }
@@ -155,7 +155,7 @@ angular.module('managerApp')
         }
 
         return self.consumption;
-      }).catch(err => new TucToastError(err)).finally(() => {
+      }).catch(err => new ToastError(err)).finally(() => {
         self.loading.consumption = false;
         return self.consumption;
       });
@@ -187,7 +187,7 @@ angular.module('managerApp')
       _.set(consumption, 'downloading', true);
       getFile(consumption, type).then((info) => {
         $window.location.href = info.url; // eslint-disable-line
-      }).catch(err => new TucToastError(err)).finally(() => {
+      }).catch(err => new ToastError(err)).finally(() => {
         _.set(consumption, 'downloading', false);
       });
     }

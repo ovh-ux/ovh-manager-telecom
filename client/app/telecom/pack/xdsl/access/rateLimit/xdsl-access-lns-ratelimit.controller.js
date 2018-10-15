@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('XdslAccessLnsRateLimitCtrl', function ($stateParams, $scope, $translate, OvhApiXdsl, TucToastError) {
+angular.module('managerApp').controller('XdslAccessLnsRateLimitCtrl', function ($stateParams, $scope, $translate, OvhApiXdsl, ToastError) {
   const self = this;
 
   function init() {
@@ -52,7 +52,7 @@ angular.module('managerApp').controller('XdslAccessLnsRateLimitCtrl', function (
         (err) => {
           self.doing = false;
           self.rate = JSON.parse(JSON.stringify(self.undoRate));
-          return new TucToastError(err);
+          return new ToastError(err);
         },
       );
     } else {

@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelephonyNumberConferenceCtrl', function ($q, $translate, TelephonyMediator, telephonyGroupNumberConferencePolling, TucToast, TucToastError) {
+angular.module('managerApp').controller('TelephonyNumberConferenceCtrl', function ($q, $translate, TelephonyMediator, telephonyGroupNumberConferencePolling, Toast, ToastError) {
   const self = this;
 
   const settingsAttributes = ['language', 'pin', 'announceFile',
@@ -58,7 +58,7 @@ angular.module('managerApp').controller('TelephonyNumberConferenceCtrl', functio
       self.numberCtrl.number.feature.stopEdition();
     }).catch((error) => {
       self.numberCtrl.number.feature.stopEdition(true);
-      TucToast.error([$translate.instant('telephony_number_feature_conference_save_error'), (error.data && error.data.message) || ''].join(' '));
+      Toast.error([$translate.instant('telephony_number_feature_conference_save_error'), (error.data && error.data.message) || ''].join(' '));
       return $q.reject(error);
     }).finally(() => {
       self.numberCtrl.loading.save = false;
@@ -79,7 +79,7 @@ angular.module('managerApp').controller('TelephonyNumberConferenceCtrl', functio
     self.loading.webAccess = true;
     return self.numberCtrl.number.feature
       .generateWebAccess()
-      .catch(err => new TucToastError(err))
+      .catch(err => new ToastError(err))
       .finally(() => {
         self.loading.webAccess = false;
       });
@@ -171,7 +171,7 @@ angular.module('managerApp').controller('TelephonyNumberConferenceCtrl', functio
     const found = _.some(validExtensions, ext => _.endsWith(fileName.toLowerCase(), ext));
 
     if (!found) {
-      return new TucToastError($translate.instant('telephony_number_feature_conference_announcement_file_invalid'));
+      return new ToastError($translate.instant('telephony_number_feature_conference_announcement_file_invalid'));
     }
 
     self.loading.announceUpload = true;
@@ -230,7 +230,7 @@ angular.module('managerApp').controller('TelephonyNumberConferenceCtrl', functio
       telephonyGroupNumberConferencePolling
         .initPolling(self.numberCtrl.number.feature).then(angular.noop, (error) => {
           if (error) {
-            TucToast.error([$translate.instant('telephony_number_feature_conference_refresh_error'), (error.data && error.data.message) || ''].join(' '));
+            Toast.error([$translate.instant('telephony_number_feature_conference_refresh_error'), (error.data && error.data.message) || ''].join(' '));
           }
           return $q.reject(error);
         }, () => {
@@ -241,7 +241,7 @@ angular.module('managerApp').controller('TelephonyNumberConferenceCtrl', functio
           }
         });
     }).catch((error) => {
-      TucToast.error([$translate.instant('telephony_number_feature_conference_load_error'), (error.data && error.data.message) || ''].join(' '));
+      Toast.error([$translate.instant('telephony_number_feature_conference_load_error'), (error.data && error.data.message) || ''].join(' '));
       return $q.reject(error);
     }).finally(() => {
       self.numberCtrl.loading.feature = false;

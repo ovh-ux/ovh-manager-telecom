@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('OrderOverTheBoxCtrl', function ($translate, $q, $scope, OvhApiOrderOverTheBoxNew, OvhApiPriceOverTheBoxOffer, OvhApiOverTheBox, TucToast, TucToastError, OvhApiMePaymentMean) {
+angular.module('managerApp').controller('OrderOverTheBoxCtrl', function ($translate, $q, $scope, OvhApiOrderOverTheBoxNew, OvhApiPriceOverTheBoxOffer, OvhApiOverTheBox, Toast, ToastError, OvhApiMePaymentMean) {
   const self = this;
 
   self.loaders = {
@@ -51,13 +51,13 @@ angular.module('managerApp').controller('OrderOverTheBoxCtrl', function ($transl
         return devices;
       }, (error) => {
         self.error.checking = error.data;
-        return new TucToastError(error);
+        return new ToastError(error);
       }),
       OvhApiOverTheBox.Aapi().getServices().$promise.then((services) => {
         self.services = services;
         self.unlinkedServices = services.filter(service => !service.device);
         return self.unlinkedServices;
-      }, err => new TucToastError(err)),
+      }, err => new ToastError(err)),
     ]).then(() => {
       self.orphanDevices = self.devices.filter((device) => {
         let found = false;
@@ -98,7 +98,7 @@ angular.module('managerApp').controller('OrderOverTheBoxCtrl', function ($transl
 
         return offers;
       },
-      () => new TucToastError(null, 'order_overTheBox_offers_error'),
+      () => new ToastError(null, 'order_overTheBox_offers_error'),
     );
   };
 
@@ -119,7 +119,7 @@ angular.module('managerApp').controller('OrderOverTheBoxCtrl', function ($transl
       }
 
       return durations;
-    }, error => new TucToastError(error)).finally(() => {
+    }, error => new ToastError(error)).finally(() => {
       self.loaders.durations = false;
     });
   };
@@ -135,7 +135,7 @@ angular.module('managerApp').controller('OrderOverTheBoxCtrl', function ($transl
       self.orderInformations = informations;
 
       return informations;
-    }, error => new TucToastError(error)).finally(() => {
+    }, error => new ToastError(error)).finally(() => {
       self.loaders.order = false;
     });
   };
@@ -154,7 +154,7 @@ angular.module('managerApp').controller('OrderOverTheBoxCtrl', function ($transl
       self.states.orderDone = true;
 
       return success;
-    }, error => new TucToastError(error)).finally(() => {
+    }, error => new ToastError(error)).finally(() => {
       self.loaders.create = false;
     });
   };
