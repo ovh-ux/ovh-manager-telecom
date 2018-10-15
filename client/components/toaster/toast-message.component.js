@@ -1,13 +1,6 @@
-import _ from 'lodash';
-
-
-import template from './toast-message.html';
-
-export default /* @ngInject */ {
-  template,
-  controller(TucToast, $timeout) {
-    'ngInject';
-
+angular.module('managerApp').component('toastMessage', {
+  templateUrl: 'components/toaster/toast-message.html',
+  controller(Toast, $timeout) {
     const timestamp = (new Date()).getTime();
 
     this.hasNewMessages = false;
@@ -36,7 +29,7 @@ export default /* @ngInject */ {
     };
 
     this.getMessagesByType = (type) => {
-      const messages = TucToast.getMessagesByType(type);
+      const messages = Toast.getMessagesByType(type);
 
       this.updateMessages(messages);
 
@@ -45,7 +38,7 @@ export default /* @ngInject */ {
     };
 
     this.getAllMessages = () => {
-      const messages = TucToast.getMessages();
+      const messages = Toast.getMessages();
 
       this.updateMessages(messages);
 
@@ -55,8 +48,8 @@ export default /* @ngInject */ {
 
     this.hasMessagesOfType = type => this.getMessagesByType(type).length > 0;
 
-    this.clearMessage = message => TucToast.clearMessage(message);
+    this.clearMessage = message => Toast.clearMessage(message);
 
-    this.clearMessagesByType = type => TucToast.clearMessagesByType(type);
+    this.clearMessagesByType = type => Toast.clearMessagesByType(type);
   },
-};
+});
