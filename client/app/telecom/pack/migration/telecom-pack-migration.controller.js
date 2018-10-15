@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomPackMigrationCtrl', function ($q, $stateParams, $translate, PackMigrationProcess, Toast) {
+angular.module('managerApp').controller('TelecomPackMigrationCtrl', function ($q, $stateParams, $translate, PackMigrationProcess, TucToast) {
   const self = this;
 
   self.process = null;
@@ -24,7 +24,7 @@ angular.module('managerApp').controller('TelecomPackMigrationCtrl', function ($q
         self.process.currentStep = 'offers';
       }
     }, (error) => {
-      Toast.error([$translate.instant('telecom_pack_migration_offer_choice_error_loading'), _.get(error, 'data.message', '')].join(' '));
+      TucToast.error([$translate.instant('telecom_pack_migration_offer_choice_error_loading'), _.get(error, 'data.message', '')].join(' '));
       return $q.reject(error);
     }).finally(() => {
       self.loading.init = false;

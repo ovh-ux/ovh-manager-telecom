@@ -3,7 +3,7 @@ angular
   .controller('TelecomSmsOrderCtrl', class TelecomSmsOrderCtrl {
     constructor(
       $q, $translate, $filter, $stateParams,
-      atInternet, SmsMediator, OvhApiOrder, debounce, Toast, SMS_ORDER_PREFIELDS_VALUES,
+      atInternet, SmsMediator, OvhApiOrder, debounce, TucToast, SMS_ORDER_PREFIELDS_VALUES,
     ) {
       this.$q = $q;
       this.$translate = $translate;
@@ -16,7 +16,7 @@ angular
         },
       };
       this.debounce = debounce;
-      this.Toast = Toast;
+      this.TucToast = TucToast;
       this.constant = { SMS_ORDER_PREFIELDS_VALUES };
       this.atInternet = atInternet;
     }
@@ -132,7 +132,7 @@ angular
           this.prices = newAccountPriceDetails;
           return this.prices;
         }).catch((error) => {
-          this.Toast.error(this.$translate.instant('sms_order_ko'));
+          this.TucToast.error(this.$translate.instant('sms_order_ko'));
           return this.$q.reject(error);
         }).finally(() => {
           this.loading.prices = false;
@@ -144,7 +144,7 @@ angular
       }).$promise.then((priceDetails) => {
         this.contracts = priceDetails.contracts;
         this.prices = priceDetails;
-      }).catch(() => this.Toast.error(this.$translate.instant('sms_order_ko'))).finally(() => {
+      }).catch(() => this.TucToast.error(this.$translate.instant('sms_order_ko'))).finally(() => {
         this.loading.prices = false;
       });
     }
@@ -162,7 +162,7 @@ angular
         }).$promise.then((newAccountPriceDetails) => {
           this.prices.url = newAccountPriceDetails.url;
           return this.prices.url;
-        }).catch(() => this.Toast.error(this.$translate.instant('sms_order_ko'))).finally(() => {
+        }).catch(() => this.TucToast.error(this.$translate.instant('sms_order_ko'))).finally(() => {
           this.loading.order = false;
         });
       }
@@ -172,7 +172,7 @@ angular
         quantity: this.getSelectedCredit(),
       }).$promise.then((priceDetails) => {
         this.prices.url = priceDetails.url;
-      }).catch(() => this.Toast.error(this.$translate.instant('sms_order_ko'))).finally(() => {
+      }).catch(() => this.TucToast.error(this.$translate.instant('sms_order_ko'))).finally(() => {
         this.loading.order = false;
         return this.atInternet.trackClick({
           cta: 'Generate purchase order',

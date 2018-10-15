@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomOrdersAliasCtrl', function (OvhApiOrder, Toast, $q, $translate, $state) {
+angular.module('managerApp').controller('TelecomOrdersAliasCtrl', function (OvhApiOrder, TucToast, $q, $translate, $state) {
   const self = this;
 
   /*= =============================
@@ -37,7 +37,7 @@ angular.module('managerApp').controller('TelecomOrdersAliasCtrl', function (OvhA
         return self.orderAccounts;
       },
       (err) => {
-        Toast.error($translate.instant('telecom_orders_alias_billing_loading_error'));
+        TucToast.error($translate.instant('telecom_orders_alias_billing_loading_error'));
         return $q.reject(err);
       },
     ).finally(() => {

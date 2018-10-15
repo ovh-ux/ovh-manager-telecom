@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomOrdersCtrl', function (OvhApiXdslOrderFollowup, ToastError, ORDER_STATUS, PAGINATION_PER_PAGE) {
+angular.module('managerApp').controller('TelecomOrdersCtrl', function (OvhApiXdslOrderFollowup, TucToastError, ORDER_STATUS, PAGINATION_PER_PAGE) {
   const self = this;
 
   self.ordersDetails = null;
@@ -25,7 +25,7 @@ angular.module('managerApp').controller('TelecomOrdersCtrl', function (OvhApiXds
       // sort: first ERROR, then TODO, then DOING, then DONE
       self.orders = _.sortByOrder(self.orders, ['priority'], ['desc']);
       self.ordersDetails = self.orders;
-    }, err => new ToastError(err));
+    }, err => new TucToastError(err));
   };
 
   /* -----  End of INITIALIZATION  ------*/

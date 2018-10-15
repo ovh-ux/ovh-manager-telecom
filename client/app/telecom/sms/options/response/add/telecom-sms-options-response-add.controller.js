@@ -3,7 +3,7 @@ angular
   .controller('TelecomSmsOptionsResponseAddCtrl', class TelecomSmsOptionsResponseAddCtrl {
     constructor(
       $q, $stateParams, $timeout, $uibModalInstance,
-      params, OvhApiSms, SmsMediator, ToastError,
+      params, OvhApiSms, SmsMediator, TucToastError,
     ) {
       this.$q = $q;
       this.$stateParams = $stateParams;
@@ -15,7 +15,7 @@ angular
       this.service = params.service;
       this.senders = params.senders;
       this.SmsMediator = SmsMediator;
-      this.ToastError = ToastError;
+      this.TucToastError = TucToastError;
     }
 
     $onInit() {
@@ -38,7 +38,7 @@ angular
           this.availableTrackingMedia = _.pull(schema.models['sms.ResponseTrackingMediaEnum'].enum, 'voice');
           return this.availableTrackingMedia;
         })).catch((err) => {
-          this.ToastError(err);
+          this.TucToastError(err);
         }).finally(() => {
           this.loading.init = false;
         });

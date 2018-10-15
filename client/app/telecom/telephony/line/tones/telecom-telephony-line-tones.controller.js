@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyLineTonesCtrl', function ($state, $stateParams, $q, $timeout, $translate, OvhApiTelephony, ToastError, OvhApiMe, TelephonyMediator) {
+angular.module('managerApp').controller('TelecomTelephonyLineTonesCtrl', function ($state, $stateParams, $q, $timeout, $translate, OvhApiTelephony, TucToastError, OvhApiMe, TelephonyMediator) {
   const self = this;
   const disabledFeatureError = {};
 
@@ -27,7 +27,7 @@ angular.module('managerApp').controller('TelecomTelephonyLineTonesCtrl', functio
       self.tonesEnum = ['None', 'Predefined 1', 'Predefined 2', 'Custom sound'];
       self.tones = tones;
       self.tonesForm = angular.copy(self.tones);
-    })).catch(err => (err === disabledFeatureError ? err : new ToastError(err))).finally(() => {
+    })).catch(err => (err === disabledFeatureError ? err : new TucToastError(err))).finally(() => {
       self.isLoading = false;
     });
   }
@@ -46,7 +46,7 @@ angular.module('managerApp').controller('TelecomTelephonyLineTonesCtrl', functio
     const fileName = file ? file.name : '';
     const found = _.some(validExtensions, ext => _.endsWith(fileName.toLowerCase(), ext));
     if (!found) {
-      ToastError($translate.instant('telephony_line_tones_choose_file_type_error'));
+      TucToastError($translate.instant('telephony_line_tones_choose_file_type_error'));
     }
     return found;
   };
@@ -66,7 +66,7 @@ angular.module('managerApp').controller('TelecomTelephonyLineTonesCtrl', functio
           // since there are no errors, assume tone is correctly updated
           self.tones[toneType] = self.tonesForm[toneType];
         }),
-      ]).catch(err => new ToastError(err)).finally(() => {
+      ]).catch(err => new TucToastError(err)).finally(() => {
         self.tonesForm[`${toneType}Updating`] = false;
       });
     }
@@ -97,7 +97,7 @@ angular.module('managerApp').controller('TelecomTelephonyLineTonesCtrl', functio
           self.tonesForm[`${toneType}UploadSuccess`] = false;
         }, 3000);
       })
-      .catch(err => new ToastError(err))
+      .catch(err => new TucToastError(err))
       .finally(() => {
         self.tonesForm[`${toneType}Uploading`] = false;
       });

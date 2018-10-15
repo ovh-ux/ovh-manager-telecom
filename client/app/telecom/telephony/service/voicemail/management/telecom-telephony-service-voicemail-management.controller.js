@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyServiceVoicemailManagementCtrl', function ($scope, $stateParams, $q, $translate, $timeout, $filter, $document, $window, ToastError, OvhApiTelephony) {
+angular.module('managerApp').controller('TelecomTelephonyServiceVoicemailManagementCtrl', function ($scope, $stateParams, $q, $translate, $timeout, $filter, $document, $window, TucToastError, OvhApiTelephony) {
   const self = this;
 
   function fetchMessageList() {
@@ -50,7 +50,7 @@ angular.module('managerApp').controller('TelecomTelephonyServiceVoicemailManagem
     fetchMessageList().then((messages) => {
       self.messages.raw = angular.copy(messages);
       self.sortMessages();
-    }).catch(err => new ToastError(err)).finally(() => {
+    }).catch(err => new TucToastError(err)).finally(() => {
       self.messages.isLoading = false;
     });
   }
@@ -118,7 +118,7 @@ angular.module('managerApp').controller('TelecomTelephonyServiceVoicemailManagem
         audioElt.src = info.url;
         audioElt.load();
         audioElt.play();
-      }).catch(err => new ToastError(err)).finally(() => {
+      }).catch(err => new TucToastError(err)).finally(() => {
         _.set(message, 'pendingListen', false);
       });
     }
@@ -129,7 +129,7 @@ angular.module('managerApp').controller('TelecomTelephonyServiceVoicemailManagem
     _.set(message, 'pendingDownload', true);
     return self.fetchMessageFile(message).then((info) => {
       $window.location.href = info.url; // eslint-disable-line
-    }).catch(err => new ToastError(err)).finally(() => {
+    }).catch(err => new TucToastError(err)).finally(() => {
       _.set(message, 'pendingDownload', false);
     });
   };
@@ -146,7 +146,7 @@ angular.module('managerApp').controller('TelecomTelephonyServiceVoicemailManagem
     return $q.all(queries).then(() => fetchMessageList().then((messages) => {
       self.messages.raw = angular.copy(messages);
       self.sortMessages();
-    })).catch(err => new ToastError(err)).finally(() => {
+    })).catch(err => new TucToastError(err)).finally(() => {
       self.messages.isDeleting = false;
     });
   };
@@ -172,7 +172,7 @@ angular.module('managerApp').controller('TelecomTelephonyServiceVoicemailManagem
     }).then((result) => {
       self.messages.raw = angular.copy(result.messages);
       self.sortMessages();
-    }).catch(err => new ToastError(err)).finally(() => {
+    }).catch(err => new TucToastError(err)).finally(() => {
       self.messages.isLoading = false;
     });
   };

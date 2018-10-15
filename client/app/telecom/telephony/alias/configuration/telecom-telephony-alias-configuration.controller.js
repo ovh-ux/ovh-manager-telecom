@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationCtrl', function ($q, $stateParams, $translate, atInternet, OvhApiMe, TelephonyMediator, Toast) {
+angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationCtrl', function ($q, $stateParams, $translate, atInternet, OvhApiMe, TelephonyMediator, TucToast) {
   const self = this;
 
   self.loading = {
@@ -197,7 +197,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationCtrl'
           });
         });
       })).catch((error) => {
-        Toast.error([$translate.instant('telephony_alias_configuration_load_error'), _.get(error, 'data.message', '')].join(' '));
+        TucToast.error([$translate.instant('telephony_alias_configuration_load_error'), _.get(error, 'data.message', '')].join(' '));
         return $q.reject(error);
       }).finally(() => {
         self.loading.init = false;

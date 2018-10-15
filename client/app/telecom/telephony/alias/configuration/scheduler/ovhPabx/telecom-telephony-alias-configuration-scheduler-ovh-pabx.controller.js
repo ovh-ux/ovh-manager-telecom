@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationSchedulerOvhPabxCtrl', function ($q, $translate, $stateParams, TelephonyMediator, Toast) {
+angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationSchedulerOvhPabxCtrl', function ($q, $translate, $stateParams, TelephonyMediator, TucToast) {
   const self = this;
 
   self.loading = {
@@ -21,7 +21,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationSched
 
       return self.number.feature.init().then(() => self.number.feature.getScheduler());
     }).catch((error) => {
-      Toast.error([$translate.instant('telephony_alias_configuration_scheduler_load_error'), (error.data && error.data.message) || ''].join(' '));
+      TucToast.error([$translate.instant('telephony_alias_configuration_scheduler_load_error'), (error.data && error.data.message) || ''].join(' '));
       return $q.reject(error);
     }).finally(() => {
       self.loading.init = false;

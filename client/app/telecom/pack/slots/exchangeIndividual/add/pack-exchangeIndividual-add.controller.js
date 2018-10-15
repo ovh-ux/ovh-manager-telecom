@@ -1,10 +1,10 @@
-angular.module('managerApp').controller('PackExchangeIndividualEmailAddCtrl', function ($q, $scope, $stateParams, OvhApiPackXdslExchangeIndividual, Toast, $translate) {
+angular.module('managerApp').controller('PackExchangeIndividualEmailAddCtrl', function ($q, $scope, $stateParams, OvhApiPackXdslExchangeIndividual, TucToast, $translate) {
   const self = this;
 
   this.add = function () {
     this.pendingOrder = true;
 
-    Toast.info($translate.instant('in_validation'));
+    TucToast.info($translate.instant('in_validation'));
 
     const accountTmp = angular.copy(self.account);
     delete accountTmp.name;
@@ -19,10 +19,10 @@ angular.module('managerApp').controller('PackExchangeIndividualEmailAddCtrl', fu
       },
       accountTmp,
     ).$promise.then((data) => {
-      Toast.success($translate.instant('success_validation'));
+      TucToast.success($translate.instant('success_validation'));
       return data;
     }).catch((error) => {
-      Toast.error([$translate.instant('an_error_ocurred'), _.get(error, 'data.message', '')].join(' '));
+      TucToast.error([$translate.instant('an_error_ocurred'), _.get(error, 'data.message', '')].join(' '));
       return $q.reject(error);
     }).finally(() => {
       self.pendingOrder = true;

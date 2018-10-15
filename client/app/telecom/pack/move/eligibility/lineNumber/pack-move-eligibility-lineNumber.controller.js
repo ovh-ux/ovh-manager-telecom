@@ -7,7 +7,15 @@ angular.module('managerApp').component('packMoveEligibilityLineNumber', {
   },
   templateUrl: 'app/telecom/pack/move/eligibility/lineNumber/pack-move-eligibility-lineNumber.html',
   controllerAs: 'PackMoveEligibilityPhoneNumber',
-  controller($scope, $stateParams, $filter, $translate, ToastError, Toast, OvhApiPackXdslMove) {
+  controller(
+    $scope,
+    $stateParams,
+    $filter,
+    $translate,
+    TucToastError,
+    TucToast,
+    OvhApiPackXdslMove,
+  ) {
     const self = this;
     this.phoneNumberRegex = '^0[1-5]([\\s\\-]?([0-9]){2}){4}$';
 
@@ -22,14 +30,14 @@ angular.module('managerApp').component('packMoveEligibilityLineNumber', {
         (data) => {
           if (data.error) {
             self.offersChange({ OFFERS: [] });
-            return new ToastError(data, data.error);
+            return new TucToastError(data, data.error);
           }
           if (angular.isDefined(data.result.offers)) {
             _.extend(self.testLine, data);
             self.offers = _.isArray(data.result.offers) ? data.result.offers : [];
 
             if (self.offers.length === 0) {
-              Toast.error($translate.instant('pack_move_eligibility_no_offers', { number: self.lineNumber }));
+              TucToast.error($translate.instant('pack_move_eligibility_no_offers', { number: self.lineNumber }));
             }
           }
           self.offers.forEach((offer) => {
@@ -48,7 +56,7 @@ angular.module('managerApp').component('packMoveEligibilityLineNumber', {
           self.offersChange({ OFFERS: self.offers });
           return data;
         },
-        () => new ToastError($translate.instant('pack_move_eligibility_error')),
+        () => new TucToastError($translate.instant('pack_move_eligibility_error')),
       ).finally(() => {
         self.loading = false;
       });

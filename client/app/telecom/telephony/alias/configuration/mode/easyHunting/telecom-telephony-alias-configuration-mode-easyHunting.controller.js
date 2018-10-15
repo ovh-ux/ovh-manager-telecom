@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationModeEasyHuntingCtrl', function ($stateParams, $q, $translate, $uibModal, OvhApiTelephony, OvhApiMe, Toast, ToastError) {
+angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationModeEasyHuntingCtrl', function ($stateParams, $q, $translate, $uibModal, OvhApiTelephony, OvhApiMe, TucToast, TucToastError) {
   const self = this;
 
   function fetchEnums() {
@@ -84,7 +84,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationModeE
       self.queueOptionsForm = angular.copy(self.queueOptions);
       self.voicemail = result.voicemail;
       self.sounds = result.sounds;
-    }).catch(err => new ToastError(err)).finally(() => {
+    }).catch(err => new TucToastError(err)).finally(() => {
       self.isLoading = false;
     });
   }
@@ -104,7 +104,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationModeE
       // we mutate sounds array because it is used in the modal aswell
       self.sounds.length = 0;
       Array.prototype.push.apply(self.sounds, sounds);
-    }).catch(err => new ToastError(err));
+    }).catch(err => new TucToastError(err));
   };
 
   self.openManageSoundsHelper = function (toneType) {
@@ -186,8 +186,8 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationModeE
 
     self.isUpdating = true;
     return $q.all(pending).then(() => {
-      Toast.success($translate.instant('telephony_alias_configuration_mode_easyhunting_success'));
-    }).catch(err => new ToastError(err)).finally(() => {
+      TucToast.success($translate.instant('telephony_alias_configuration_mode_easyhunting_success'));
+    }).catch(err => new TucToastError(err)).finally(() => {
       self.isUpdating = false;
     });
   };

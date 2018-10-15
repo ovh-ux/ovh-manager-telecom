@@ -3,7 +3,7 @@ angular
   .controller('TelecomSmsSmsHlrCtrl', class TelecomSmsSmsHlrCtrl {
     constructor(
       $stateParams, $q, $translate,
-      OvhApiSms, SmsMediator, validator, Toast, ToastError, SMS_URL,
+      OvhApiSms, SmsMediator, validator, TucToast, TucToastError, SMS_URL,
     ) {
       this.$stateParams = $stateParams;
       this.$q = $q;
@@ -15,8 +15,8 @@ angular
       };
       this.SmsMediator = SmsMediator;
       this.validator = validator;
-      this.Toast = Toast;
-      this.ToastError = ToastError;
+      this.TucToast = TucToast;
+      this.TucToastError = TucToastError;
       this.constant = { SMS_URL };
     }
 
@@ -63,7 +63,7 @@ angular
           this.hlr.data = hlrs;
           this.service = this.SmsMediator.getCurrentSmsService();
         }))
-        .catch(err => this.ToastError(err));
+        .catch(err => this.TucToastError(err));
     }
 
     /**
@@ -101,10 +101,10 @@ angular
         receivers: [this.receiver],
       }).$promise.then(() => {
         this.service.creditsLeft -= 0.1;
-        this.Toast.success(this.$translate.instant('sms_sms_hlr_query_send_success'));
+        this.TucToast.success(this.$translate.instant('sms_sms_hlr_query_send_success'));
         return this.refreshHlr();
       }).catch(() => {
-        this.Toast.error(this.$translate.instant('sms_sms_hlr_query_send_failed'));
+        this.TucToast.error(this.$translate.instant('sms_sms_hlr_query_send_failed'));
       }).finally(() => {
         this.hlr.isSending = false;
       });

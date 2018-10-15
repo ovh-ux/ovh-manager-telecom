@@ -1,5 +1,5 @@
 angular.module('managerApp')
-  .controller('XdslModemWifiConfigCtrl', function ($state, $q, $timeout, $stateParams, $translate, Toast, OvhApiXdsl, PackXdslModemMediator) {
+  .controller('XdslModemWifiConfigCtrl', function ($state, $q, $timeout, $stateParams, $translate, TucToast, OvhApiXdsl, PackXdslModemMediator) {
     const self = this;
     self.mediator = PackXdslModemMediator;
     self.wifi = null;
@@ -51,7 +51,7 @@ angular.module('managerApp')
         xdslId: $stateParams.serviceName,
         wifiName: this.wifi.wifiName,
       }, wifiTmp).$promise.then((data) => {
-        Toast.success($translate.instant(self.wifis.length > 1 ? 'xdsl_modem_wifi_config_success' : 'xdsl_modem_wifi_config_success_single'));
+        TucToast.success($translate.instant(self.wifis.length > 1 ? 'xdsl_modem_wifi_config_success' : 'xdsl_modem_wifi_config_success_single'));
 
         if (self.wifis.length > 1) {
           self.resetKey();
@@ -69,7 +69,7 @@ angular.module('managerApp')
         self.mediator.tasks.changeModemConfigWLAN = true;
         return data;
       }, (err) => {
-        Toast.error([$translate.instant('xdsl_modem_wifi_write_error'), _.get(err, 'data.message')].join(' '));
+        TucToast.error([$translate.instant('xdsl_modem_wifi_write_error'), _.get(err, 'data.message')].join(' '));
         return $q.reject(err);
       });
     };
@@ -155,7 +155,7 @@ angular.module('managerApp')
 
         self.fields.securityType = self.modem.model === 'TG799VAC' ? ['None', 'WPA2', 'WPAandWPA2'] : ['None', 'WEP', 'WPA', 'WPA2', 'WPAandWPA2'];
       }, (err) => {
-        Toast.error($translate.instant('xdsl_modem_wifi_read_error'));
+        TucToast.error($translate.instant('xdsl_modem_wifi_read_error'));
         return $q.reject(err);
       });
     };

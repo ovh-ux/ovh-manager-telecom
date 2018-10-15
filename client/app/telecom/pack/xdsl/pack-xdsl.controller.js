@@ -1,5 +1,5 @@
 /* global setTimeout */
-angular.module('managerApp').controller('PackXdslCtrl', function ($q, $transitions, $state, $translate, $stateParams, OvhApiPackXdsl, OvhApiXdsl, OvhApiXdslModem, Toast, smoothScroll, ToastError, SidebarMenu) {
+angular.module('managerApp').controller('PackXdslCtrl', function ($q, $transitions, $state, $translate, $stateParams, OvhApiPackXdsl, OvhApiXdsl, OvhApiXdslModem, TucToast, smoothScroll, TucToastError, SidebarMenu) {
   const animTime = 1500;
   const noModemStatus = 404;
   const self = this;
@@ -41,7 +41,7 @@ angular.module('managerApp').controller('PackXdslCtrl', function ($q, $transitio
       },
       (err) => {
         if (err.status !== noModemStatus) {
-          ToastError(err);
+          TucToastError(err);
           return $q.reject(err);
         }
         return err;
@@ -117,7 +117,7 @@ angular.module('managerApp').controller('PackXdslCtrl', function ($q, $transitio
         title: newAccessDescr || self.access.serviceName,
       }, $stateParams.serviceName, 'telecom-pack-section', $stateParams.packName);
     }, (error) => {
-      Toast.error([$translate.instant('xdsl_rename_error', $stateParams), error.data.message].join(' '));
+      TucToast.error([$translate.instant('xdsl_rename_error', $stateParams), error.data.message].join(' '));
       return $q.reject(error);
     }).finally(() => {
       self.loading.save = false;

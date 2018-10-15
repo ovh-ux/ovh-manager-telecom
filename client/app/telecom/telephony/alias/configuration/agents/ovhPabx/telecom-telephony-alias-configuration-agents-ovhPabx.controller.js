@@ -1,12 +1,12 @@
 angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationAgentsOvhPabxCtrl', class TelecomTelephonyAliasConfigurationAgentsOvhPabxCtrl {
-  constructor($q, $stateParams, $timeout, $translate, $uibModal, OvhApiTelephony, Toast) {
+  constructor($q, $stateParams, $timeout, $translate, $uibModal, OvhApiTelephony, TucToast) {
     this.$q = $q;
     this.$stateParams = $stateParams;
     this.$timeout = $timeout;
     this.$translate = $translate;
     this.$uibModal = $uibModal;
     this.OvhApiTelephony = OvhApiTelephony;
-    this.Toast = Toast;
+    this.TucToast = TucToast;
   }
 
   $onInit() {
@@ -35,7 +35,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationAgent
     return this.fetchAgentsIds().then((ids) => {
       this.agents.ids = ids;
     }).catch((err) => {
-      this.Toast.error([this.$translate.instant('telephony_alias_configuration_agents_get_error'), _.get(err, 'data.message')].join(' '));
+      this.TucToast.error([this.$translate.instant('telephony_alias_configuration_agents_get_error'), _.get(err, 'data.message')].join(' '));
       return this.$q.reject(err);
     });
   }
@@ -95,13 +95,13 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationAgent
             _.pull(this.agents.id, parseInt(id, 10));
           })))
       .then(() => {
-        this.Toast.success(this.$translate.instant('telephony_alias_configuration_agents_delete_success'));
+        this.TucToast.success(this.$translate.instant('telephony_alias_configuration_agents_delete_success'));
         return this.fetchAgentsIds().then((ids) => {
           this.agents.ids = ids;
         });
       })
       .catch((err) => {
-        this.Toast.error([this.$translate.instant('telephony_alias_configuration_agents_delete_error'), _.get(err, 'data.message')].join(' '));
+        this.TucToast.error([this.$translate.instant('telephony_alias_configuration_agents_delete_error'), _.get(err, 'data.message')].join(' '));
         return this.$q.reject(err);
       })
       .finally(() => {
@@ -136,10 +136,10 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationAgent
       .then(() => {
         _.assign(agent, agent.inEdition);
         _.set(agent, 'inEdition', null);
-        this.Toast.success(this.$translate.instant('telephony_alias_configuration_agents_update_success'));
+        this.TucToast.success(this.$translate.instant('telephony_alias_configuration_agents_update_success'));
       })
       .catch((err) => {
-        this.Toast.error([this.$translate.instant('telephony_alias_configuration_agents_update_error'), _.get(err, 'data.message')].join(' '));
+        this.TucToast.error([this.$translate.instant('telephony_alias_configuration_agents_update_error'), _.get(err, 'data.message')].join(' '));
         return this.$q.reject(err);
       })
       .finally(() => {
@@ -183,13 +183,13 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationAgent
           }).$promise;
       }))
         .then(() => {
-          this.Toast.success(this.$translate.instant('telephony_alias_configuration_agents_add_success'));
+          this.TucToast.success(this.$translate.instant('telephony_alias_configuration_agents_add_success'));
           return this.fetchAgentsIds().then((ids) => {
             this.agents.ids = ids;
           });
         })
         .catch((err) => {
-          this.Toast.error([this.$translate.instant('telephony_alias_configuration_agents_add_error'), _.get(err, 'data.message')].join(' '));
+          this.TucToast.error([this.$translate.instant('telephony_alias_configuration_agents_add_error'), _.get(err, 'data.message')].join(' '));
           return this.$q.reject(err);
         })
         .finally(() => {

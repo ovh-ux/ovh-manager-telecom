@@ -1,6 +1,6 @@
 angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationTonesOldPabxCtrl', function (
   $q, $stateParams, $translate, $timeout,
-  TelephonyMediator, Toast, voipServiceTask,
+  TelephonyMediator, TucToast, voipServiceTask,
   OvhApiMe, OvhApiTelephony, OvhApiTelephonyEasyPabx, OvhApiTelephonyMiniPabx,
 ) {
   const self = this;
@@ -129,10 +129,10 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationTones
 
     return $q.all(savePromises).then(() => {
       self.tones = angular.copy(_.pick(self.formOptions, attrs));
-      Toast.success($translate.instant('telephony_alias_configuration_tones_old_pabx_save_success'));
+      TucToast.success($translate.instant('telephony_alias_configuration_tones_old_pabx_save_success'));
       self.$onInit();
     }).catch((error) => {
-      Toast.error([$translate.instant('telephony_alias_configuration_tones_old_pabx_save_error'), _.get(error, 'data.message')].join(' '));
+      TucToast.error([$translate.instant('telephony_alias_configuration_tones_old_pabx_save_error'), _.get(error, 'data.message')].join(' '));
       return $q.reject(error);
     }).finally(() => {
       self.loaders.save = false;
@@ -162,7 +162,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationTones
         self.formOptions = angular.copy(self.tones);
       });
     }).catch((error) => {
-      Toast.error([$translate.instant('telephony_alias_configuration_tones_old_pabx_load_error'), _.get(error, 'data.message')].join(' '));
+      TucToast.error([$translate.instant('telephony_alias_configuration_tones_old_pabx_load_error'), _.get(error, 'data.message')].join(' '));
       return $q.reject(error);
     }).finally(() => {
       self.loaders.init = false;

@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('telephonyNumberOvhPabxDialplanExtensionRuleCtrl', function ($q, $translate, TelephonyMediator, Toast) {
+angular.module('managerApp').controller('telephonyNumberOvhPabxDialplanExtensionRuleCtrl', function ($q, $translate, TelephonyMediator, TucToast) {
   const self = this;
 
   self.popoverStatus = {
@@ -69,7 +69,7 @@ angular.module('managerApp').controller('telephonyNumberOvhPabxDialplanExtension
       // display information about rule count
       self.extensionCtrl.checkForDisplayHelpers();
     }, (error) => {
-      Toast.error([$translate.instant('telephony_number_feature_ovh_pabx_step_rule_action_delete_error'), _.get(error, 'data.message') || ''].join(' '));
+      TucToast.error([$translate.instant('telephony_number_feature_ovh_pabx_step_rule_action_delete_error'), _.get(error, 'data.message') || ''].join(' '));
       return $q.reject(error);
     });
   };

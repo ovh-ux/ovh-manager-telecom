@@ -15,7 +15,15 @@ angular.module('managerApp').component('telecomTelephonyCallsFilteringAdd', {
     disableNature: '@',
   },
   templateUrl: 'components/telecom/telephony/callsFiltering/telecom-telephony-callsFilteringAdd.html',
-  controller($q, $translate, $translatePartialLoader, $uibModal, Toast, ToastError, CSVParser) {
+  controller(
+    $q,
+    $translate,
+    $translatePartialLoader,
+    $uibModal,
+    TucToast,
+    TucToastError,
+    CSVParser,
+  ) {
     const self = this;
 
     self.screenListToAdd = {
@@ -50,8 +58,8 @@ angular.module('managerApp').component('telecomTelephonyCallsFilteringAdd', {
         }
         form.$setPristine();
         self.screenListToAdd.callNumber = '';
-        Toast.success($translate.instant('telephony_calls_filtering_add_success'));
-      }).catch(err => new ToastError(err)).finally(() => {
+        TucToast.success($translate.instant('telephony_calls_filtering_add_success'));
+      }).catch(err => new TucToastError(err)).finally(() => {
         self.isAdding = false;
       });
     };
@@ -88,7 +96,7 @@ angular.module('managerApp').component('telecomTelephonyCallsFilteringAdd', {
       const fileName = file ? file.name : '';
       const found = _.endsWith(fileName, 'csv');
       if (!found) {
-        ToastError($translate.instant('telephony_calls_filtering_add_csv_invalid'));
+        TucToastError($translate.instant('telephony_calls_filtering_add_csv_invalid'));
       }
       return found;
     };
@@ -104,9 +112,9 @@ angular.module('managerApp').component('telecomTelephonyCallsFilteringAdd', {
         }
         csvArray = csvArray.slice(1); // trim header
       } catch (err) {
-        return $q.when(new ToastError($translate.instant('telephony_calls_filtering_add_csv_parse_error'), err));
+        return $q.when(new TucToastError($translate.instant('telephony_calls_filtering_add_csv_parse_error'), err));
       }
-      Toast.info($translate.instant('telephony_calls_filtering_add_csv_import_success'));
+      TucToast.info($translate.instant('telephony_calls_filtering_add_csv_import_success'));
       return $q.all(_.map(csvArray, line => self.addScreenList({
         screen: {
           callNumber: line[0],
@@ -117,7 +125,7 @@ angular.module('managerApp').component('telecomTelephonyCallsFilteringAdd', {
         if (self.onScreenListAdded) {
           self.onScreenListAdded();
         }
-      }).catch(err => new ToastError(err));
+      }).catch(err => new TucToastError(err));
     };
 
     self.getNumberValidationPattern = (function () {

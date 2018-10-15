@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('OverTheBoxConfigureCtrl', function ($translate, $state, OvhApiOverTheBox, Toast, ToastError) {
+angular.module('managerApp').controller('OverTheBoxConfigureCtrl', function ($translate, $state, OvhApiOverTheBox, TucToast, TucToastError) {
   const self = this;
 
   this.orderHash = $state.href('order-overTheBox');
@@ -11,7 +11,7 @@ angular.module('managerApp').controller('OverTheBoxConfigureCtrl', function ($tr
         $state.go('order-overTheBox');
       }
       return services;
-    }, err => new ToastError(err)).finally(() => {
+    }, err => new TucToastError(err)).finally(() => {
       self.loading = false;
     });
   }

@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyLineCallsForwardCtrl', function ($q, $stateParams, $translate, $state, Toast, TelecomTelephonyLineCallsForwardService, validator, telephonyBulk, telecomVoip) {
+angular.module('managerApp').controller('TelecomTelephonyLineCallsForwardCtrl', function ($q, $stateParams, $translate, $state, TucToast, TelecomTelephonyLineCallsForwardService, validator, telephonyBulk, telecomVoip) {
   const self = this;
   self.validator = validator;
 
@@ -19,11 +19,11 @@ angular.module('managerApp').controller('TelecomTelephonyLineCallsForwardCtrl', 
       })
       .then(
         () => {
-          Toast.success($translate.instant('telephony_line_actions_line_calls_forward_save_success'));
+          TucToast.success($translate.instant('telephony_line_actions_line_calls_forward_save_success'));
           self.saved = angular.copy(self.forwards);
         },
         (err) => {
-          Toast.error($translate.instant('telephony_line_actions_line_calls_forward_save_error'));
+          TucToast.error($translate.instant('telephony_line_actions_line_calls_forward_save_error'));
           return $q.reject(err);
         },
       ).finally(() => {
@@ -167,7 +167,7 @@ angular.module('managerApp').controller('TelecomTelephonyLineCallsForwardCtrl', 
         self.setCancelBuffer();
       },
       (err) => {
-        Toast.error($translate.instant('telephony_line_actions_line_calls_forward_options_load_error'));
+        TucToast.error($translate.instant('telephony_line_actions_line_calls_forward_options_load_error'));
         return $q.reject(err);
       },
     );
@@ -184,7 +184,7 @@ angular.module('managerApp').controller('TelecomTelephonyLineCallsForwardCtrl', 
         return allOvhNumbers;
       },
       (err) => {
-        Toast.error($translate.instant('telephony_line_actions_line_calls_forward_number_load_error'));
+        TucToast.error($translate.instant('telephony_line_actions_line_calls_forward_number_load_error'));
         $q.reject(err);
       },
     );
@@ -198,7 +198,7 @@ angular.module('managerApp').controller('TelecomTelephonyLineCallsForwardCtrl', 
     return TelecomTelephonyLineCallsForwardService.loadNatures().then((natures) => {
       self.lineOptionForwardNatureTypeEnum = natures;
     }, () => {
-      Toast.error($translate.instant('telephony_line_actions_line_calls_forward_schema_load_error'));
+      TucToast.error($translate.instant('telephony_line_actions_line_calls_forward_schema_load_error'));
       return $q.reject();
     });
   }
@@ -309,14 +309,14 @@ angular.module('managerApp').controller('TelecomTelephonyLineCallsForwardCtrl', 
 
   self.onBulkSuccess = function (bulkResult) {
     // display message of success or error
-    telephonyBulk.getToastInfos(bulkResult, {
+    telephonyBulk.getTucToastInfos(bulkResult, {
       fullSuccess: $translate.instant('telephony_line_actions_line_calls_forward_bulk_all_success'),
       partialSuccess: $translate.instant('telephony_line_actions_line_calls_forward_bulk_some_success', {
         count: bulkResult.success.length,
       }),
       error: $translate.instant('telephony_line_actions_line_calls_forward_bulk_error'),
     }).forEach((toastInfo) => {
-      Toast[toastInfo.type](toastInfo.message, {
+      TucToast[toastInfo.type](toastInfo.message, {
         hideAfter: null,
       });
     });
@@ -328,7 +328,7 @@ angular.module('managerApp').controller('TelecomTelephonyLineCallsForwardCtrl', 
   };
 
   self.onBulkError = function (error) {
-    Toast.error([$translate.instant('telephony_line_actions_line_calls_forward_bulk_on_error'), _.get(error, 'msg.data')].join(' '));
+    TucToast.error([$translate.instant('telephony_line_actions_line_calls_forward_bulk_on_error'), _.get(error, 'msg.data')].join(' '));
   };
 
   /* -----  End of BULK  ------ */

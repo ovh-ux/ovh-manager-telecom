@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('telephonyNumberOvhPabxDialplanExtensionCtrl', function ($q, $scope, $timeout, $translate, Toast, UI_SORTABLE_HELPERS) {
+angular.module('managerApp').controller('telephonyNumberOvhPabxDialplanExtensionCtrl', function ($q, $scope, $timeout, $translate, TucToast, UI_SORTABLE_HELPERS) {
   const self = this;
   let redrawInterval = null;
 
@@ -170,7 +170,7 @@ angular.module('managerApp').controller('telephonyNumberOvhPabxDialplanExtension
       // display information about extension count
       self.dialplanCtrl.checkForDisplayHelpers();
     }, (error) => {
-      Toast.error([$translate.instant('telephony_number_feature_ovh_pabx_step_remove_error'), (error.data && error.data.message) || ''].join(' '));
+      TucToast.error([$translate.instant('telephony_number_feature_ovh_pabx_step_remove_error'), (error.data && error.data.message) || ''].join(' '));
       return $q.reject(error);
     }).finally(() => {
       self.loading.save = false;

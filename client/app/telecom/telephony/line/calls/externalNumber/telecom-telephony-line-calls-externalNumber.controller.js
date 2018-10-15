@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyLineCallsExternalNumberCtrl', function ($scope, $q, $stateParams, $translate, $timeout, TelecomMediator, TelephonyMediator, OvhApiTelephony, Toast, NumberPlans) {
+angular.module('managerApp').controller('TelecomTelephonyLineCallsExternalNumberCtrl', function ($scope, $q, $stateParams, $translate, $timeout, TelecomMediator, TelephonyMediator, OvhApiTelephony, TucToast, NumberPlans) {
   const self = this;
   let pollTimeout = null;
 
@@ -105,7 +105,7 @@ angular.module('managerApp').controller('TelecomTelephonyLineCallsExternalNumber
         }, 50);
       });
     }).catch((error) => {
-      Toast.error([$translate.instant('telephony_trunk_external_number_add_error'), _.get(error, 'data.message')].join(' '));
+      TucToast.error([$translate.instant('telephony_trunk_external_number_add_error'), _.get(error, 'data.message')].join(' '));
       return $q.reject(error);
     }).finally(() => {
       self.loading.add = false;
@@ -125,9 +125,9 @@ angular.module('managerApp').controller('TelecomTelephonyLineCallsExternalNumber
       number: self.toDelete.number,
     }).$promise.then(() => {
       _.remove(self.list, number => number.number === self.toDelete.number);
-      Toast.success($translate.instant('telephony_trunk_external_number_delete_success'));
+      TucToast.success($translate.instant('telephony_trunk_external_number_delete_success'));
     }).catch((error) => {
-      Toast.error([$translate.instant('telephony_trunk_external_number_delete_error'), _.get(error, 'data.message')].join(' '));
+      TucToast.error([$translate.instant('telephony_trunk_external_number_delete_error'), _.get(error, 'data.message')].join(' '));
       return $q.reject(error);
     }).finally(() => {
       self.toDelete = null;
@@ -159,7 +159,7 @@ angular.module('managerApp').controller('TelecomTelephonyLineCallsExternalNumber
         }
       });
     }).catch((error) => {
-      Toast.error([$translate.instant('telephony_trunk_external_number_load_error'), _.get(error, 'data.message')].join(' '));
+      TucToast.error([$translate.instant('telephony_trunk_external_number_load_error'), _.get(error, 'data.message')].join(' '));
       return $q.reject(error);
     }).finally(() => {
       self.loading.init = false;

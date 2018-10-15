@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('XdslModemDmzCtrl', function ($stateParams, $translate, $q, OvhApiXdsl, Toast, PackXdslModemMediator) {
+angular.module('managerApp').controller('XdslModemDmzCtrl', function ($stateParams, $translate, $q, OvhApiXdsl, TucToast, PackXdslModemMediator) {
   const self = this;
 
   this.editing = false;
@@ -15,7 +15,7 @@ angular.module('managerApp').controller('XdslModemDmzCtrl', function ($statePara
     if (_.isEmpty($stateParams.serviceName)
       || !PackXdslModemMediator.capabilities.canChangeDMZ
       || !validIp) {
-      Toast.error($translate.instant('xdsl_modem_dmz_an_error_ocurred'));
+      TucToast.error($translate.instant('xdsl_modem_dmz_an_error_ocurred'));
       return $q.reject();
     }
     return OvhApiXdsl.Modem().v6().update(
@@ -29,10 +29,10 @@ angular.module('managerApp').controller('XdslModemDmzCtrl', function ($statePara
       PackXdslModemMediator.disableCapabilities();
       PackXdslModemMediator.setTask('changeModemConfigDMZ');
       _.set(PackXdslModemMediator, 'info.dmzIP', self.dmz);
-      Toast.success($translate.instant('xdsl_modem_dmz_doing'));
+      TucToast.success($translate.instant('xdsl_modem_dmz_doing'));
       return data;
     }).catch((err) => {
-      Toast.error($translate.instant('xdsl_modem_dmz_an_error_ocurred'));
+      TucToast.error($translate.instant('xdsl_modem_dmz_an_error_ocurred'));
       return $q.reject(err);
     });
   };
@@ -54,7 +54,7 @@ angular.module('managerApp').controller('XdslModemDmzCtrl', function ($statePara
       self.modemLan = _.find(data, { lanName: 'defaultLAN' });
       return data;
     }).catch((err) => {
-      Toast.error($translate.instant('xdsl_modem_dmz_an_error_ocurred'));
+      TucToast.error($translate.instant('xdsl_modem_dmz_an_error_ocurred'));
       return $q.reject(err);
     });
   };

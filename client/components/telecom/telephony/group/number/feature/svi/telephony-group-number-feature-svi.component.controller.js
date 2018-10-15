@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelephonyNumberSviCtrl', function ($q, $translate, validator, Toast) {
+angular.module('managerApp').controller('TelephonyNumberSviCtrl', function ($q, $translate, validator, TucToast) {
   const self = this;
   const protocolRegexp = new RegExp(/^(http(s)?:\/\/|ftp:\/\/|mailto:)/, 'g');
   const v4UrlRegexp = new RegExp(/^(?:(?:[\w\.\-\+%!$&"\(\)*\+,;=]+:)*[\w\.\-\+%!$&"\(\)*\+,;=]+@)?(?:[a-z0-9\-\.%]+)\.[a-z]{1,5}(?::[0-9]+)?(?:[\/|\?][\w#!:\.\?\+=&%@!$"~*,;\/\(\)\[\]\-]*)?\/$/); // eslint-disable-line
@@ -24,7 +24,7 @@ angular.module('managerApp').controller('TelephonyNumberSviCtrl', function ($q, 
       self.numberCtrl.number.feature.stopEdition();
     }).catch((error) => {
       self.numberCtrl.number.feature.stopEdition(true);
-      Toast.error([$translate.instant('telephony_number_feature_svi_save_error'), (error.data && error.data.message) || ''].join(' '));
+      TucToast.error([$translate.instant('telephony_number_feature_svi_save_error'), (error.data && error.data.message) || ''].join(' '));
       return $q.reject(error);
     }).finally(() => {
       self.numberCtrl.loading.save = false;

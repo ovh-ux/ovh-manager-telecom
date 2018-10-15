@@ -1,5 +1,14 @@
 angular.module('managerApp').controller('TelecomSmsSmsTemplatesCtrl', class TelecomSmsSmsTemplatesCtrl {
-  constructor($q, $translate, $stateParams, $uibModal, OvhApiSms, SmsMediator, Toast, ToastError) {
+  constructor(
+    $q,
+    $translate,
+    $stateParams,
+    $uibModal,
+    OvhApiSms,
+    SmsMediator,
+    TucToast,
+    TucToastError,
+  ) {
     this.$q = $q;
     this.$translate = $translate;
     this.$stateParams = $stateParams;
@@ -10,8 +19,8 @@ angular.module('managerApp').controller('TelecomSmsSmsTemplatesCtrl', class Tele
       },
     };
     this.SmsMediator = SmsMediator;
-    this.Toast = Toast;
-    this.ToastError = ToastError;
+    this.TucToast = TucToast;
+    this.TucToastError = TucToastError;
 
     this.templateItemModel = ['comment', 'status', 'name', 'description', 'activity', 'message', 'datetime'];
   }
@@ -38,7 +47,7 @@ angular.module('managerApp').controller('TelecomSmsSmsTemplatesCtrl', class Tele
         this.templates.raw = templates.map(name => ({ name }));
       });
     }).catch((err) => {
-      this.ToastError(err);
+      this.TucToastError(err);
     }).finally(() => {
       this.loading.init = false;
     });
@@ -88,7 +97,7 @@ angular.module('managerApp').controller('TelecomSmsSmsTemplatesCtrl', class Tele
     }).$promise.then((templates) => {
       this.templates.raw = templates.map(name => ({ name }));
     }).catch((err) => {
-      this.ToastError(err);
+      this.TucToastError(err);
     }).finally(() => {
       this.templates.isLoading = false;
     });
@@ -110,7 +119,7 @@ angular.module('managerApp').controller('TelecomSmsSmsTemplatesCtrl', class Tele
       this.templates.raw = templates.map(name => ({ name }));
     })).catch((error) => {
       if (error && error.type === 'API') {
-        this.Toast.error(this.$translate.instant('sms_sms_templates_adding_ko', { error: _.get(error, 'msg.data.message') }));
+        this.TucToast.error(this.$translate.instant('sms_sms_templates_adding_ko', { error: _.get(error, 'msg.data.message') }));
       }
     });
   }
@@ -129,7 +138,7 @@ angular.module('managerApp').controller('TelecomSmsSmsTemplatesCtrl', class Tele
     });
     modal.result.then(() => this.refresh()).catch((error) => {
       if (error && error.type === 'API') {
-        this.Toast.error(this.$translate.instant('sms_sms_templates_editing_ko', { error: _.get(error, 'msg.data.message') }));
+        this.TucToast.error(this.$translate.instant('sms_sms_templates_editing_ko', { error: _.get(error, 'msg.data.message') }));
       }
     });
   }
@@ -148,7 +157,7 @@ angular.module('managerApp').controller('TelecomSmsSmsTemplatesCtrl', class Tele
     });
     modal.result.then(() => this.refresh()).catch((error) => {
       if (error && error.type === 'API') {
-        this.Toast.error(this.$translate.instant('sms_sms_templates_relaunching_ko', { error: _.get(error, 'msg.data.message') }));
+        this.TucToast.error(this.$translate.instant('sms_sms_templates_relaunching_ko', { error: _.get(error, 'msg.data.message') }));
       }
     });
   }
@@ -171,7 +180,7 @@ angular.module('managerApp').controller('TelecomSmsSmsTemplatesCtrl', class Tele
       this.templates.raw = templates.map(name => ({ name }));
     })).catch((error) => {
       if (error && error.type === 'API') {
-        this.Toast.error(this.$translate.instant('sms_sms_templates_removing_ko', { error: _.get(error, 'msg.data.message') }));
+        this.TucToast.error(this.$translate.instant('sms_sms_templates_removing_ko', { error: _.get(error, 'msg.data.message') }));
       }
     });
   }

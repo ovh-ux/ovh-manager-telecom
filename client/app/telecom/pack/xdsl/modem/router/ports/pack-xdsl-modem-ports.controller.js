@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('XdslModemPortsCtrl', function ($stateParams, $translate, $scope, OvhApiXdslModemPort, Toast, PackXdslModemPortObject, validator, PackXdslModemMediator) {
+angular.module('managerApp').controller('XdslModemPortsCtrl', function ($stateParams, $translate, $scope, OvhApiXdslModemPort, TucToast, PackXdslModemPortObject, validator, PackXdslModemMediator) {
   const self = this;
   self.loader = true;
   this.validator = validator;
@@ -91,7 +91,7 @@ angular.module('managerApp').controller('XdslModemPortsCtrl', function ($statePa
     OvhApiXdslModemPort.Aapi().query({ xdslId: $stateParams.serviceName }).$promise.then((data) => {
       self.ports = _.map(data, port => new PackXdslModemPortObject(port));
     }).catch(() => {
-      Toast.error($translate.instant('xdsl_modem_ports_read_error'));
+      TucToast.error($translate.instant('xdsl_modem_ports_read_error'));
     }).finally(() => {
       self.loader = false;
     });

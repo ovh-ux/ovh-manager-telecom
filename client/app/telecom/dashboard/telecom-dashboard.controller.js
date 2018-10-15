@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomDashboardCtrl', function ($translate, TelecomMediator, ToastError, URLS) {
+angular.module('managerApp').controller('TelecomDashboardCtrl', function ($translate, TelecomMediator, TucToastError, URLS) {
   const self = this;
 
   self.loading = {
@@ -23,7 +23,7 @@ angular.module('managerApp').controller('TelecomDashboardCtrl', function ($trans
 
     return TelecomMediator.deferred.vip.promise.then((vipStatus) => {
       self.isVip = vipStatus;
-    }, err => new ToastError(err, 'telecom_dashboard_auth_failed')).finally(() => {
+    }, err => new TucToastError(err, 'telecom_dashboard_auth_failed')).finally(() => {
       self.loading.vip = false;
     });
   }

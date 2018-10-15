@@ -3,7 +3,7 @@ angular
   .controller('TelecomSmsPhonebooksPhonebookContactImportCtrl', class TelecomSmsPhonebooksPhonebookContactImportCtrl {
     constructor(
       $q, $stateParams, $timeout, $translate, $uibModalInstance,
-      phonebook, OvhApiSms, OvhApiMe, ToastError,
+      phonebook, OvhApiSms, OvhApiMe, TucToastError,
     ) {
       this.$q = $q;
       this.$stateParams = $stateParams;
@@ -19,7 +19,7 @@ angular
           document: OvhApiMe.Document().v6(),
         },
       };
-      this.ToastError = ToastError;
+      this.TucToastError = TucToastError;
     }
 
     $onInit() {
@@ -72,7 +72,7 @@ angular
       const fileName = file ? file.name : '';
       const found = _.some(validExtensions, ext => _.endsWith(fileName.toLowerCase(), ext));
       if (!found) {
-        this.ToastError(this.$translate.instant('sms_phonebooks_phonebook_contact_import_file_invalid'));
+        this.TucToastError(this.$translate.instant('sms_phonebooks_phonebook_contact_import_file_invalid'));
       }
       return found;
     }

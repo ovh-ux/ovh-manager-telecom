@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('XdslModemMtuCtrl', function ($stateParams, $q, OvhApiXdsl, $translate, Toast, PackXdslModemMediator, PACK_XDSL_MODEM) {
+angular.module('managerApp').controller('XdslModemMtuCtrl', function ($stateParams, $q, OvhApiXdsl, $translate, TucToast, PackXdslModemMediator, PACK_XDSL_MODEM) {
   const self = this;
 
   this.mediator = PackXdslModemMediator;
@@ -12,7 +12,7 @@ angular.module('managerApp').controller('XdslModemMtuCtrl', function ($statePara
       || !self.mtuCurrentValueTmp
       || !PackXdslModemMediator.capabilities.canChangeMtu) {
       self.undo();
-      Toast.error($translate.instant('xdsl_modem_mtu_an_error_ocurred'));
+      TucToast.error($translate.instant('xdsl_modem_mtu_an_error_ocurred'));
       return $q.reject();
     }
     PackXdslModemMediator.setTask('changeMTU');
@@ -28,10 +28,10 @@ angular.module('managerApp').controller('XdslModemMtuCtrl', function ($statePara
       PackXdslModemMediator.disableCapabilities();
       self.mtuCurrentValue = self.mtuCurrentValueTmp;
       PackXdslModemMediator.setTask('changeMTU');
-      Toast.success($translate.instant('xdsl_modem_mtu_doing'));
+      TucToast.success($translate.instant('xdsl_modem_mtu_doing'));
     }).catch((err) => {
       self.undo();
-      Toast.error('xdsl_modem_mtu_an_error_ocurred');
+      TucToast.error('xdsl_modem_mtu_an_error_ocurred');
       return $q.reject(err);
     }).finally(() => {
       self.loading = false;

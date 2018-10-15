@@ -1,5 +1,5 @@
 angular.module('managerApp')
-  .controller('XdslModemCtrl', function ($scope, $stateParams, $translate, $q, OvhApiXdsl, Toast, PackXdslModemMediator) {
+  .controller('XdslModemCtrl', function ($scope, $stateParams, $translate, $q, OvhApiXdsl, TucToast, PackXdslModemMediator) {
     const self = this;
 
     this.getAccessName = function () {
@@ -9,7 +9,7 @@ angular.module('managerApp')
         self.serviceName = access.description || access.packName;
         return access;
       }).catch((err) => {
-        Toast.error($translate.instant('xdsl_model_access_error'));
+        TucToast.error($translate.instant('xdsl_model_access_error'));
         return $q.reject(err);
       });
     };
@@ -31,7 +31,7 @@ angular.module('managerApp')
         PackXdslModemMediator.open(
           $stateParams.serviceName,
           () => {
-            Toast.error($translate.instant('xdsl_model_task_error'));
+            TucToast.error($translate.instant('xdsl_model_task_error'));
           },
         ),
         self.getAccessName(),

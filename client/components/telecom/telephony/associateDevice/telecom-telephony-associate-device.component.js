@@ -15,7 +15,7 @@ angular.module('managerApp').component('telecomTelephonyAssociateDevice', {
   templateUrl: 'components/telecom/telephony/associateDevice/telecom-telephony-associate-device.html',
   controller(
     $scope, $state, $q, $translatePartialLoader, $translate,
-    OvhApiTelephony, TelephonyMediator, ToastError,
+    OvhApiTelephony, TelephonyMediator, TucToastError,
   ) {
     const self = this;
 
@@ -31,7 +31,7 @@ angular.module('managerApp').component('telecomTelephonyAssociateDevice', {
       $translatePartialLoader.addPart('../components/telecom/telephony/associateDevice');
       return $translate.refresh().then(self.fetchAssociablesPhones).then((phones) => {
         self.phones = phones;
-      }).catch(err => new ToastError(err))
+      }).catch(err => new TucToastError(err))
         .finally(() => {
           self.isInitialized = true;
         });
@@ -83,7 +83,7 @@ angular.module('managerApp').component('telecomTelephonyAssociateDevice', {
         OvhApiTelephony.Line().v6().resetAllCache();
         TelephonyMediator.resetAllCache();
         $state.reload();
-      }).catch(err => new ToastError(err)).finally(() => {
+      }).catch(err => new TucToastError(err)).finally(() => {
         self.isAttaching = false;
       });
     };

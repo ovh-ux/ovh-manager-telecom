@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyLineManagementLanguageCtrl', function ($translate, $q, $stateParams, $timeout, Toast, OvhApiTelephony, $filter) {
+angular.module('managerApp').controller('TelecomTelephonyLineManagementLanguageCtrl', function ($translate, $q, $stateParams, $timeout, TucToast, OvhApiTelephony, $filter) {
   const self = this;
 
   this.loaders = {
@@ -22,9 +22,9 @@ angular.module('managerApp').controller('TelecomTelephonyLineManagementLanguageC
       $timeout(() => {
         self.changeSuccess = false;
       }, 2000);
-      Toast.success($translate.instant('telephony_line_language_ok_change'), { hideAfter: 3 });
+      TucToast.success($translate.instant('telephony_line_language_ok_change'), { hideAfter: 3 });
     }).catch((err) => {
-      Toast.error($translate.instant('telephony_line_language_error_change'), err);
+      TucToast.error($translate.instant('telephony_line_language_error_change'), err);
     }).finally(() => {
       self.loaders.change = false;
     });
@@ -56,7 +56,7 @@ angular.module('managerApp').controller('TelecomTelephonyLineManagementLanguageC
       }
       return self.language;
     })).catch(() => {
-      Toast.error($translate.instant('telephony_line_language_error_init'));
+      TucToast.error($translate.instant('telephony_line_language_error_init'));
     }).finally(() => {
       self.loaders.init = false;
     });

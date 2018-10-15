@@ -1,4 +1,4 @@
-angular.module('managerApp').factory('PackXdslModemDhcpBdhcpObject', (OvhApiXdsl, $translate, Toast, $q) => {
+angular.module('managerApp').factory('PackXdslModemDhcpBdhcpObject', (OvhApiXdsl, $translate, TucToast, $q) => {
   const template = {
     MACAddress: '',
     name: '',
@@ -49,12 +49,12 @@ angular.module('managerApp').factory('PackXdslModemDhcpBdhcpObject', (OvhApiXdsl
           },
           _.pick(this.tempValue, _.without(Object.keys(template), 'MACAddress')),
         ).$promise.then((data) => {
-          Toast.success($translate.instant('xdsl_modem_bdhcp_edit_success', { name: self.name }));
+          TucToast.success($translate.instant('xdsl_modem_bdhcp_edit_success', { name: self.name }));
           _.extend(self, self.tempValue);
           self.toggleEdit(false);
           return data;
         }).catch((err) => {
-          Toast.error(`${$translate.instant('xdsl_modem_bdhcp_edit_error', { name: self.name })}<em>${err.data.message}</em>`);
+          TucToast.error(`${$translate.instant('xdsl_modem_bdhcp_edit_error', { name: self.name })}<em>${err.data.message}</em>`);
           return $q.reject(err);
         }).finally(() => {
           self.busy = false;
@@ -70,13 +70,13 @@ angular.module('managerApp').factory('PackXdslModemDhcpBdhcpObject', (OvhApiXdsl
         },
         _.pick(this.tempValue, Object.keys(template)),
       ).$promise.then((data) => {
-        Toast.success($translate.instant('xdsl_modem_bdhcp_add_success', { name: self.tempValue.name }));
+        TucToast.success($translate.instant('xdsl_modem_bdhcp_add_success', { name: self.tempValue.name }));
         _.extend(self, self.tempValue);
         self.inApi();
         self.toggleEdit(false);
         return data;
       }).catch((err) => {
-        Toast.error(`${$translate.instant('xdsl_modem_bdhcp_add_error', { name: self.tempValue.name })}<em>${err.data.message}</em>`);
+        TucToast.error(`${$translate.instant('xdsl_modem_bdhcp_add_error', { name: self.tempValue.name })}<em>${err.data.message}</em>`);
         return $q.reject(err);
       }).finally(() => {
         self.busy = false;
@@ -101,7 +101,7 @@ angular.module('managerApp').factory('PackXdslModemDhcpBdhcpObject', (OvhApiXdsl
         dhcpName,
         MACAddress: this.MACAddress,
       }).$promise.then(() => {
-        Toast.success($translate.instant('xdsl_modem_bdhcp_del_success', { name: self.name }));
+        TucToast.success($translate.instant('xdsl_modem_bdhcp_del_success', { name: self.name }));
         return self;
       }).catch(err => $q.reject(`${$translate.inatant('xdsl_modem_bdhcp_del_error', { name: self.name })}<em>${err.data.message}</em>`)).finally(() => {
         self.busy = false;

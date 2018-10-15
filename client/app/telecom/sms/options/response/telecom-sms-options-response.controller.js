@@ -1,5 +1,14 @@
 angular.module('managerApp').controller('TelecomSmsOptionsResponseCtrl', class TelecomSmsOptionsResponseCtrl {
-  constructor($q, $stateParams, $translate, $uibModal, OvhApiSms, SmsMediator, Toast, ToastError) {
+  constructor(
+    $q,
+    $stateParams,
+    $translate,
+    $uibModal,
+    OvhApiSms,
+    SmsMediator,
+    TucToast,
+    TucToastError,
+  ) {
     this.$q = $q;
     this.$stateParams = $stateParams;
     this.$translate = $translate;
@@ -9,8 +18,8 @@ angular.module('managerApp').controller('TelecomSmsOptionsResponseCtrl', class T
       smsSenders: OvhApiSms.Senders().v6(),
     };
     this.SmsMediator = SmsMediator;
-    this.Toast = Toast;
-    this.ToastError = ToastError;
+    this.TucToast = TucToast;
+    this.TucToastError = TucToastError;
   }
 
   $onInit() {
@@ -48,7 +57,7 @@ angular.module('managerApp').controller('TelecomSmsOptionsResponseCtrl', class T
       this.senders = responses.senders;
       this.computeRemainingChar();
     }).catch((err) => {
-      this.ToastError(err);
+      this.TucToastError(err);
     }).finally(() => {
       this.loading.init = false;
     });
@@ -119,9 +128,9 @@ angular.module('managerApp').controller('TelecomSmsOptionsResponseCtrl', class T
     }).$promise.then(() => {
       this.service.smsResponse = this.smsResponse;
       this.smsResponse = angular.copy(_.result(this.service, 'smsResponse'));
-      this.Toast.success(this.$translate.instant('sms_options_response_action_status_success'));
+      this.TucToast.success(this.$translate.instant('sms_options_response_action_status_success'));
     }).catch((err) => {
-      this.ToastError(err);
+      this.TucToastError(err);
     }).finally(() => {
       this.loading.action = false;
     });
@@ -151,7 +160,7 @@ angular.module('managerApp').controller('TelecomSmsOptionsResponseCtrl', class T
       this.smsResponse = angular.copy(_.result(this.service, 'smsResponse'));
     })).catch((error) => {
       if (error && error.type === 'API') {
-        this.Toast.error(this.$translate.instant('sms_options_response_tracking_add_option_ko', { error: error.message }));
+        this.TucToast.error(this.$translate.instant('sms_options_response_tracking_add_option_ko', { error: error.message }));
       }
     });
   }
@@ -179,7 +188,7 @@ angular.module('managerApp').controller('TelecomSmsOptionsResponseCtrl', class T
       this.smsResponse = angular.copy(_.result(this.service, 'smsResponse'));
     })).catch((error) => {
       if (error && error.type === 'API') {
-        this.Toast.error(this.$translate.instant('sms_options_response_tracking_edit_option_ko', { error: error.message }));
+        this.TucToast.error(this.$translate.instant('sms_options_response_tracking_edit_option_ko', { error: error.message }));
       }
     });
   }
@@ -206,7 +215,7 @@ angular.module('managerApp').controller('TelecomSmsOptionsResponseCtrl', class T
       this.smsResponse = angular.copy(_.result(this.service, 'smsResponse'));
     })).catch((error) => {
       if (error && error.type === 'API') {
-        this.Toast.error(this.$translate.instant('sms_options_response_tracking_remove_option_ko', { error: error.message }));
+        this.TucToast.error(this.$translate.instant('sms_options_response_tracking_remove_option_ko', { error: error.message }));
       }
     });
   }

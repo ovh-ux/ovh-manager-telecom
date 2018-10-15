@@ -1,9 +1,9 @@
-angular.module('managerApp').controller('XdslModemRebootCtrl', function ($stateParams, $scope, $translate, $q, OvhApiXdsl, PackXdslModemMediator, Toast) {
+angular.module('managerApp').controller('XdslModemRebootCtrl', function ($stateParams, $scope, $translate, $q, OvhApiXdsl, PackXdslModemMediator, TucToast) {
   this.mediator = PackXdslModemMediator;
 
   this.rebootModem = function () {
     if (_.isEmpty($stateParams.serviceName)) {
-      return Toast.error($translate.instant('xdsl_modem_reboot_an_error_ocurred'));
+      return TucToast.error($translate.instant('xdsl_modem_reboot_an_error_ocurred'));
     }
     PackXdslModemMediator.setTask('rebootModem');
     OvhApiXdsl.Modem().Reboot().v6().save(
@@ -16,10 +16,10 @@ angular.module('managerApp').controller('XdslModemRebootCtrl', function ($stateP
         PackXdslModemMediator.setTask('rebootModem');
       }
       PackXdslModemMediator.disableCapabilities();
-      Toast.success($translate.instant('xdsl_modem_reboot_success'));
+      TucToast.success($translate.instant('xdsl_modem_reboot_success'));
       return result;
     }).catch((err) => {
-      Toast.error($translate.instant('xdsl_modem_reboot_an_error_ocurred'));
+      TucToast.error($translate.instant('xdsl_modem_reboot_an_error_ocurred'));
       return $q.reject(err);
     });
     return $q.when(null);
@@ -28,7 +28,7 @@ angular.module('managerApp').controller('XdslModemRebootCtrl', function ($stateP
   const init = function () {
     $scope.$on('pack_xdsl_modem_task_rebootModem', (event, state) => {
       if (!state) {
-        Toast.success($translate.instant('xdsl_modem_reboot_success_end'));
+        TucToast.success($translate.instant('xdsl_modem_reboot_success_end'));
       }
     });
   };

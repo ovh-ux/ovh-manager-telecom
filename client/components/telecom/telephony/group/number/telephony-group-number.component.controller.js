@@ -1,5 +1,5 @@
 angular.module('managerApp').controller('TelephonyNumberCtrl', function (
-  $q, $translate, $translatePartialLoader, jsPlumbService, Toast,
+  $q, $translate, $translatePartialLoader, jsPlumbService, TucToast,
   TELPHONY_NUMBER_JSPLUMB_INSTANCE_OPTIONS, TELEPHONY_NUMBER_JSPLUMB_ENDPOINTS_OPTIONS,
   TELEPHONY_NUMBER_JSPLUMB_CONNECTIONS_OPTIONS,
 ) {
@@ -37,7 +37,7 @@ angular.module('managerApp').controller('TelephonyNumberCtrl', function (
       return self.saveFeature();
     }, (error) => {
       self.loading.save = false;
-      Toast.error([$translate.instant('telephony_number_save_error'), (error.data && error.data.message) || ''].join(' '));
+      TucToast.error([$translate.instant('telephony_number_save_error'), (error.data && error.data.message) || ''].join(' '));
       return $q.reject(error);
     });
   };

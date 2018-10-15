@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyLineDomainCtrl', function ($q, $stateParams, $translate, TelephonyMediator, OvhApiTelephony, OvhApiTelephonyLineOptions, Toast, telephonyBulk) {
+angular.module('managerApp').controller('TelecomTelephonyLineDomainCtrl', function ($q, $stateParams, $translate, TelephonyMediator, OvhApiTelephony, OvhApiTelephonyLineOptions, TucToast, telephonyBulk) {
   const self = this;
 
   self.line = null;
@@ -54,7 +54,7 @@ angular.module('managerApp').controller('TelecomTelephonyLineDomainCtrl', functi
       self.line.stopEdition();
     }, (error) => {
       self.line.stopEdition(true);
-      Toast.error([$translate.instant('telephony_line_management_sip_domain_load_error'), (error.data && error.data.message) || ''].join(' '));
+      TucToast.error([$translate.instant('telephony_line_management_sip_domain_load_error'), (error.data && error.data.message) || ''].join(' '));
       return $q.reject(error);
     }).finally(() => {
       self.loading.saveLine = false;
@@ -86,7 +86,7 @@ angular.module('managerApp').controller('TelecomTelephonyLineDomainCtrl', functi
         }).$promise.then(() => {
           _.set(domain, 'prevValue', domain.currentDomain);
         }, (error) => {
-          Toast.error([$translate.instant('telephony_line_management_sip_domain_load_error'), (error.data && error.data.message) || ''].join(' '));
+          TucToast.error([$translate.instant('telephony_line_management_sip_domain_load_error'), (error.data && error.data.message) || ''].join(' '));
           return $q.reject(error);
         });
 
@@ -125,7 +125,7 @@ angular.module('managerApp').controller('TelecomTelephonyLineDomainCtrl', functi
         });
       });
     }).catch((error) => {
-      Toast.error([$translate.instant('telephony_line_management_sip_domain_load_error'), (error.data && error.data.message) || ''].join(' '));
+      TucToast.error([$translate.instant('telephony_line_management_sip_domain_load_error'), (error.data && error.data.message) || ''].join(' '));
       return $q.reject(error);
     }).finally(() => {
       self.loading.init = false;
@@ -164,14 +164,14 @@ angular.module('managerApp').controller('TelecomTelephonyLineDomainCtrl', functi
 
   self.onBulkSuccess = function (bulkResult) {
     // display message of success or error
-    telephonyBulk.getToastInfos(bulkResult, {
+    telephonyBulk.getTucToastInfos(bulkResult, {
       fullSuccess: $translate.instant('telephony_line_management_sip_domain_bulk_all_success'),
       partialSuccess: $translate.instant('telephony_line_management_sip_domain_bulk_some_success', {
         count: bulkResult.success.length,
       }),
       error: $translate.instant('telephony_line_management_sip_domain_bulk_error'),
     }).forEach((toastInfo) => {
-      Toast[toastInfo.type](toastInfo.message, {
+      TucToast[toastInfo.type](toastInfo.message, {
         hideAfter: null,
       });
     });
@@ -184,7 +184,7 @@ angular.module('managerApp').controller('TelecomTelephonyLineDomainCtrl', functi
   };
 
   self.onBulkError = function (error) {
-    Toast.error([$translate.instant('telephony_line_management_sip_domain_bulk_on_error'), _.get(error, 'msg.data')].join(' '));
+    TucToast.error([$translate.instant('telephony_line_management_sip_domain_bulk_on_error'), _.get(error, 'msg.data')].join(' '));
   };
 
   /* -----  End of BULK  ------ */

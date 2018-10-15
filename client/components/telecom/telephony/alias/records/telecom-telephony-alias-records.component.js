@@ -13,7 +13,7 @@ angular.module('managerApp').component('telecomTelephonyAliasRecords', {
   templateUrl: 'components/telecom/telephony/alias/records/telecom-telephony-alias-records.html',
   controller(
     $filter, $q, $timeout, $translate, $translatePartialLoader,
-    TelephonyMediator, ToastError, Toast,
+    TelephonyMediator, TucToastError, TucToast,
   ) {
     const self = this;
 
@@ -76,7 +76,7 @@ angular.module('managerApp').component('telecomTelephonyAliasRecords', {
       self.queues.isUpdating = true;
       return self.api.updateQueue(self.queueForm).then(() => {
         _.assign(self.queues.selected, _.pick(self.queueForm, attrs));
-      }).catch(err => new ToastError(err)).finally(() => {
+      }).catch(err => new TucToastError(err)).finally(() => {
         self.queues.isUpdating = false;
       });
     };
@@ -112,11 +112,11 @@ angular.module('managerApp').component('telecomTelephonyAliasRecords', {
     self.deleteSelectedRecords = function () {
       const records = self.getSelection();
       self.records.isDeleting = true;
-      Toast.info($translate.instant('telephony_alias_configuration_records_list_delete_success'));
+      TucToast.info($translate.instant('telephony_alias_configuration_records_list_delete_success'));
       return self.api.deleteSelectedRecords(records).then(() => {
         self.records.selected = {};
         refreshRecords();
-      }).catch(err => new ToastError(err)).finally(() => {
+      }).catch(err => new TucToastError(err)).finally(() => {
         self.records.isDeleting = false;
       });
     };
@@ -155,7 +155,7 @@ angular.module('managerApp').component('telecomTelephonyAliasRecords', {
           records: refreshRecords(),
         }).then((result) => {
           self.enums = result.enums;
-        }).catch(err => new ToastError(err));
+        }).catch(err => new TucToastError(err));
       });
     };
 

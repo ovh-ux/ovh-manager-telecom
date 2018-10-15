@@ -3,7 +3,7 @@ angular
   .controller('TelecomSmsSendersBlacklistedCtrl', class TelecomSmsSendersBlacklistedCtrl {
     constructor(
       $stateParams, $q, $filter, $timeout, $uibModal, $translate,
-      OvhApiSms, Toast, ToastError,
+      OvhApiSms, TucToast, TucToastError,
     ) {
       this.$stateParams = $stateParams;
       this.$q = $q;
@@ -16,8 +16,8 @@ angular
           blacklists: OvhApiSms.Blacklists().v6(),
         },
       };
-      this.Toast = Toast;
-      this.ToastError = ToastError;
+      this.TucToast = TucToast;
+      this.TucToastError = TucToastError;
     }
 
     $onInit() {
@@ -45,7 +45,7 @@ angular
         this.blacklists.raw = angular.copy(blacklists);
         this.sortBlacklists();
       }).catch((err) => {
-        this.ToastError(err);
+        this.TucToastError(err);
       }).finally(() => {
         this.blacklists.isLoading = false;
       });
@@ -116,12 +116,12 @@ angular
       }).$promise);
       this.blacklists.isDeleting = true;
       queries.push(this.$timeout(angular.noop, 500)); // avoid clipping
-      this.Toast.info(this.$translate.instant('sms_senders_blacklisted_delete_list_success'));
+      this.TucToast.info(this.$translate.instant('sms_senders_blacklisted_delete_list_success'));
       return this.$q.all(queries).then(() => {
         this.blacklists.selected = {};
         return this.refresh();
       }).catch((err) => {
-        this.ToastError(err);
+        this.TucToastError(err);
       }).finally(() => {
         this.blacklists.isDeleting = false;
       });
@@ -141,7 +141,7 @@ angular
       });
       modal.result.then(() => this.refresh()).catch((error) => {
         if (error && error.type === 'API') {
-          this.Toast.error(this.$translate.instant('sms_senders_blacklisted_sender_ko', { error: _.get(error, 'msg.data.message') }));
+          this.TucToast.error(this.$translate.instant('sms_senders_blacklisted_sender_ko', { error: _.get(error, 'msg.data.message') }));
         }
       });
     }

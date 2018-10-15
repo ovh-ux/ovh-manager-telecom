@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('XdslModemDhcpBdhcpCtrl', function ($stateParams, $translate, Toast, validator, PackXdslModemDhcpBdhcpObject, OvhApiXdsl, $q, PackXdslModemMediator) {
+angular.module('managerApp').controller('XdslModemDhcpBdhcpCtrl', function ($stateParams, $translate, TucToast, validator, PackXdslModemDhcpBdhcpObject, OvhApiXdsl, $q, PackXdslModemMediator) {
   const self = this;
 
   this.validator = validator;
@@ -78,7 +78,7 @@ angular.module('managerApp').controller('XdslModemDhcpBdhcpCtrl', function ($sta
         return bdhcp;
       });
     }).catch((err) => {
-      Toast.error($translate.instant('xdsl_modem_dhcp_error'));
+      TucToast.error($translate.instant('xdsl_modem_dhcp_error'));
       return $q.reject(err);
     }).finally(() => {
       self.loader = false;

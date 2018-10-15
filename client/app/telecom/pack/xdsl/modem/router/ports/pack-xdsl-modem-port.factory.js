@@ -1,4 +1,4 @@
-angular.module('managerApp').factory('PackXdslModemPortObject', (OvhApiXdsl, $translate, Toast) => {
+angular.module('managerApp').factory('PackXdslModemPortObject', (OvhApiXdsl, $translate, TucToast) => {
   const template = {
     protocol: 'TCP',
     taskId: null,
@@ -45,10 +45,10 @@ angular.module('managerApp').factory('PackXdslModemPortObject', (OvhApiXdsl, $tr
       ).$promise.then(() => {
         _.extend(self, self.tempValue);
         self.toggleEdit(false);
-        Toast.success($translate.instant('xdsl_modem_ports_edit_success', { name: self.name }));
+        TucToast.success($translate.instant('xdsl_modem_ports_edit_success', { name: self.name }));
         return self;
       }).catch(() => {
-        Toast.error($translate.instant('xdsl_modem_ports_edit_error', { name: self.name }));
+        TucToast.error($translate.instant('xdsl_modem_ports_edit_error', { name: self.name }));
       }).finally(() => {
         self.busy = false;
       });
@@ -61,10 +61,10 @@ angular.module('managerApp').factory('PackXdslModemPortObject', (OvhApiXdsl, $tr
     ).$promise.then((data) => {
       _.extend(self, _.pick(data, Object.keys(template)));
       self.toggleEdit(false);
-      Toast.success($translate.instant('xdsl_modem_ports_add_success', { name: self.name }));
+      TucToast.success($translate.instant('xdsl_modem_ports_add_success', { name: self.name }));
       return self;
     }).catch(() => {
-      Toast.error($translate.instant('xdsl_modem_ports_add_error', { name: self.name }));
+      TucToast.error($translate.instant('xdsl_modem_ports_add_error', { name: self.name }));
     }).finally(() => {
       self.busy = false;
     });
@@ -82,10 +82,10 @@ angular.module('managerApp').factory('PackXdslModemPortObject', (OvhApiXdsl, $tr
       xdslId: serviceName,
       name: this.name,
     }).$promise.then(() => {
-      Toast.success($translate.instant('xdsl_modem_ports_del_success', { name: self.name }));
+      TucToast.success($translate.instant('xdsl_modem_ports_del_success', { name: self.name }));
       return self;
     }).catch(() => {
-      Toast.error($translate.instant('xdsl_modem_ports_del_error', { name: self.name }));
+      TucToast.error($translate.instant('xdsl_modem_ports_del_error', { name: self.name }));
     }).finally(() => {
       self.busy = false;
     });

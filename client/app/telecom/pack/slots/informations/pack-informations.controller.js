@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('PackInformationCtrl', function ($scope, $translate, $q, $stateParams, Toast, OvhApiPackXdsl, OvhApiXdsl, moment) {
+angular.module('managerApp').controller('PackInformationCtrl', function ($scope, $translate, $q, $stateParams, TucToast, OvhApiPackXdsl, OvhApiXdsl, moment) {
   const self = this;
 
   function getResiliationFollowUp() {
@@ -34,7 +34,7 @@ angular.module('managerApp').controller('PackInformationCtrl', function ($scope,
       self.isEngaged = moment($scope.Pack.pack.informations.engagedUpTo).isAfter(moment());
     }).catch((err) => {
       if (err.status !== 460 && err.status !== 403) {
-        Toast.error([$translate.instant('pack_xdsl_oops_an_error_is_occured'), err.data ? err.data.message : ''].join(' '));
+        TucToast.error([$translate.instant('pack_xdsl_oops_an_error_is_occured'), err.data ? err.data.message : ''].join(' '));
       }
       return $q.reject(err);
     }).finally(() => {

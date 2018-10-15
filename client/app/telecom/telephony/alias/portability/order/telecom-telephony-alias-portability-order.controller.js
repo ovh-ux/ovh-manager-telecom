@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyAliasPortabilityOrderCtrl', function ($scope, $stateParams, $translate, $q, moment, TelephonyMediator, OvhApiMe, OvhApiOrder, Toast) {
+angular.module('managerApp').controller('TelecomTelephonyAliasPortabilityOrderCtrl', function ($scope, $stateParams, $translate, $q, moment, TelephonyMediator, OvhApiMe, OvhApiOrder, TucToast) {
   const self = this;
 
   const specialNumberPrefix = {
@@ -61,7 +61,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasPortabilityOrderCt
       self.billingAccounts = groups;
       self.order.billingAccount = $stateParams.billingAccount;
     }).catch((err) => {
-      Toast.error(_.get(err, 'data.message'));
+      TucToast.error(_.get(err, 'data.message'));
       return $q.reject(err);
     }).then(() => OvhApiOrder.v6().schema().$promise.then((schema) => {
       if (schema && schema.models['telephony.NumberSpecialTypologyEnum'] && schema.models['telephony.NumberSpecialTypologyEnum'].enum) {
@@ -75,10 +75,10 @@ angular.module('managerApp').controller('TelecomTelephonyAliasPortabilityOrderCt
         return self.typologies;
       }
 
-      Toast.error($translate.instant('telephony_order_specific_typology_error'));
+      TucToast.error($translate.instant('telephony_order_specific_typology_error'));
       return $q.reject();
     }).catch((error) => {
-      Toast.error($translate.instant('telephony_order_specific_typology_error'));
+      TucToast.error($translate.instant('telephony_order_specific_typology_error'));
       return $q.reject(error);
     }));
   }
@@ -196,7 +196,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasPortabilityOrderCt
       })
       .catch((err) => {
         self.step = 'number';
-        Toast.error(_.get(err, 'data.message'));
+        TucToast.error(_.get(err, 'data.message'));
         return $q.reject(err);
       });
   };
@@ -231,7 +231,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasPortabilityOrderCt
         },
       );
     }).catch((err) => {
-      Toast.error([$translate.instant('telephony_alias_portability_order_error'), _.get(err, 'data.message')].join(' '));
+      TucToast.error([$translate.instant('telephony_alias_portability_order_error'), _.get(err, 'data.message')].join(' '));
       return $q.reject(err);
     }).finally(() => {
       self.order.isOrdering = false;

@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyBillingAccountAdministrationOptionsGroup', function ($q, $state, $stateParams, $translate, OvhApiTelephony, OvhApiMe, Toast) {
+angular.module('managerApp').controller('TelecomTelephonyBillingAccountAdministrationOptionsGroup', function ($q, $state, $stateParams, $translate, OvhApiTelephony, OvhApiMe, TucToast) {
   const self = this;
 
   this.$state = $state;
@@ -48,9 +48,9 @@ angular.module('managerApp').controller('TelecomTelephonyBillingAccountAdministr
     ]).then(() => {
       self.telephonySettings = angular.copy(self.optionsGroupForm.telephony);
       self.userSettings = angular.copy(self.optionsGroupForm.user);
-      Toast.success($translate.instant('telephony_billing_account_administration_options_group_success_changing'));
+      TucToast.success($translate.instant('telephony_billing_account_administration_options_group_success_changing'));
     }).catch((err) => {
-      Toast.error([$translate.instant('telephony_billing_account_administration_options_group_error_changing'), _.get(err, 'data.message', '')].join(' '));
+      TucToast.error([$translate.instant('telephony_billing_account_administration_options_group_error_changing'), _.get(err, 'data.message', '')].join(' '));
       return $q.reject(err);
     }).finally(() => {
       self.isChanging = false;
@@ -82,7 +82,7 @@ angular.module('managerApp').controller('TelecomTelephonyBillingAccountAdministr
       self.optionsGroupForm.telephony = angular.copy(self.telephonySettings);
       self.optionsGroupForm.user = angular.copy(self.userSettings);
     }).catch((err) => {
-      Toast.error([$translate.instant('telephony_billing_account_administration_options_group_error_loading'), _.get(err, 'data.message', '')].join(' '));
+      TucToast.error([$translate.instant('telephony_billing_account_administration_options_group_error_loading'), _.get(err, 'data.message', '')].join(' '));
       return $q.reject(err);
     }).finally(() => {
       self.isLoading = false;
