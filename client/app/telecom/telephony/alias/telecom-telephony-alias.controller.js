@@ -2,7 +2,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasCtrl', class Telec
   constructor(
     $q, $state, $stateParams, $translate,
     SidebarMenu, TelephonyMediator, TucToast,
-    voipService, voipServiceAlias,
+    tucVoipService, voipServiceAlias,
   ) {
     this.$q = $q;
     this.$state = $state;
@@ -10,7 +10,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasCtrl', class Telec
     this.SidebarMenu = SidebarMenu;
     this.TelephonyMediator = TelephonyMediator;
     this.TucToast = TucToast;
-    this.voipService = voipService;
+    this.tucVoipService = tucVoipService;
     this.voipServiceAlias = voipServiceAlias;
 
     this.billingAccount = $stateParams.billingAccount;
@@ -27,7 +27,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasCtrl', class Telec
 
   fetchService() {
     this.loading = true;
-    this.voipService.fetchSingleService(this.billingAccount, this.serviceName).then((alias) => {
+    this.tucVoipService.fetchSingleService(this.billingAccount, this.serviceName).then((alias) => {
       this.links = {
         order: this.TelephonyMediator.getV6ToV4RedirectionUrl('alias.number_order_new'),
         bank: this.TelephonyMediator.getV6ToV4RedirectionUrl('alias.number_bannMaker'),
@@ -37,7 +37,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasCtrl', class Telec
         this.alias = alias;
         return this.$q.all({
           convertToLineTask: this.voipServiceAlias.getConvertToLineTask(alias),
-          terminationTask: this.voipService.getTerminationTask(alias),
+          terminationTask: this.tucVoipService.getTerminationTask(alias),
           isSpecialNumber: this.voipServiceAlias.isSpecialNumber(alias),
         }).then((result) => {
           this.convertTask = result.convertToLineTask;
@@ -51,7 +51,9 @@ angular.module('managerApp').controller('TelecomTelephonyAliasCtrl', class Telec
     }).catch((error) => {
       this.TucToast.error([this.$translate.instant('telephony_alias_load_error'), _.get(error, 'data.message').join(' ')]);
     }).finally(() => {
-      this.$state.go('telecom.telephony.alias.dashboard');
+      if (_(this.$state.current.name).isEqual('telecom.telephony.alias')) {
+        this.$state.go('telecom.telephony.alias.dashboard');
+      }
       this.loading = false;
     });
   }

@@ -145,15 +145,20 @@ angular.module('managerApp').controller('TelecomTelephonyAliasDashboardControlle
       templateUrl: 'app/telecom/telephony/alias/dashboard/confirmDeleteConfiguration/confirmDeleteConfiguration.modal.html',
       controller: 'TelecomTelephonyAliasConfirmDeleteConfigurationCtrl',
       controllerAs: '$ctrl',
+      backdrop: 'static',
       resolve: {
         number: this.alias,
       },
     }).result.then(() => {
       this.OvhApiTelephony.Service().v6().resetCache();
-      this.fetchService();
+      this.$state.reload();
       this.Toast.success(this.$translate.instant('telephony_alias_delete_ok'));
     }).catch((error) => {
-      this.Toast.error([this.$translate.instant('telephony_alias_delete_ko'), _.get(error, 'data.message', error.message)].join(' '));
+      if (error) {
+        this.Toast.error(
+          `${this.$translate.instant('telephony_alias_delete_ko')} ${_.get(error, 'data.message', error.message)}`,
+        );
+      }
     });
   }
 

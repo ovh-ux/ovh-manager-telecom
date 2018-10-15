@@ -27,7 +27,7 @@
                                       data-disabled="!$ctrl.serviceName"></oui-header-tabs-item>
                 <oui-header-tabs-item data-text="{{:: 'telephony_alias_tab_number_configuration' | translate }}"
                                       data-state="telecom.telephony.alias.configuration"
-                                      data-disabled="!$ctrl.serviceName"></oui-header-tabs-item>
+                                      data-disabled="!$ctrl.serviceName || $ctrl.alias.featureType === 'empty'"></oui-header-tabs-item>
                 <oui-header-tabs-item data-text="{{:: 'telephony_alias_tab_consumption' | translate }}"
                                       data-state="telecom.telephony.alias.consumption"
                                       data-ng-if="$ctrl.serviceName && $ctrl.hasConsumption()"></oui-header-tabs-item>

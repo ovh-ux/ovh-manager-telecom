@@ -53,6 +53,7 @@
    <translation id="telephony_alias_configuration_configuration_type_empty" qtlid="333230">Aucune fonctionnalité</translation>
 
    <translation id="telephony_alias_configuration_redirect_to">Vers la ligne</translation>
+   <translation id="telephony_alias_configuration_choose">Choisir une configuration</translation>
    <translation id="telephony_alias_configuration_configure">Paramétrer la configuration</translation>
    <translation id="telephony_alias_configuration_delete_configuration">Supprimer la configuration</translation>
    <translation id="telephony_alias_configuration_delete_configuration_question_part1">Êtes-vous sûr de vouloir supprimer votre configuration ?</translation>
