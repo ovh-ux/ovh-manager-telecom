@@ -5,6 +5,7 @@ import validator from 'validator-js';
 
 export default angular
   .module('tucValidator', [])
+  .constant('validator', validator)
   .run(() => {
     const Rio = function (rioStr) {
       if (!/[A-Z0-9+]{12}/i.test(rioStr)) {
