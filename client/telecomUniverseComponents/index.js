@@ -2,6 +2,7 @@ import angular from 'angular';
 
 import tucChartjs from './chartjs';
 import tucDebounce from './debounce';
+import tucSlider from './slider';
 import tucSuccessDrawingCheck from './successDrawingCheck';
 import tucTableSort from './table-sort';
 import tucTelecomFax from './telecom/fax';
@@ -14,6 +15,7 @@ export default angular
   .module('telecomUniverseComponents', [
     tucChartjs,
     tucDebounce,
+    tucSlider,
     tucSuccessDrawingCheck,
     tucTableSort,
     tucTelecomFax,
