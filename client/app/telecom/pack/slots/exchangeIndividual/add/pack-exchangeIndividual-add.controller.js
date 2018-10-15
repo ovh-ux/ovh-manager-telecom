@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('PackExchangeIndividualEmailAddCtrl', function ($q, $scope, $stateParams, OvhApiPackXdslExchangeIndividual, Toast, $translate) {
+angular.module('managerApp').controller('PackExchangeIndividualEmailAddCtrl', function ($q, $scope, $stateParams, OvhApiPackXdslExchangeIndividual, Toast, $translate, tucValidator) {
   const self = this;
 
   this.add = function () {
@@ -41,7 +41,7 @@ angular.module('managerApp').controller('PackExchangeIndividualEmailAddCtrl', fu
 
     $scope.$watchGroup(['ctrl.account.name', 'ctrl.account.domain'], (newValue) => {
       if (newValue[0] && newValue[1]) {
-        const validAddress = validator.isEmail(newValue[0] + newValue[1]);
+        const validAddress = tucValidator.isEmail(newValue[0] + newValue[1]);
 
         if (!validAddress) {
           $scope.accountForm.accountName.$error.invalidAddress = true;

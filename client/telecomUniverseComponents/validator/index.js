@@ -5,8 +5,8 @@ import validator from 'validator-js';
 
 export default angular
   .module('tucValidator', [])
-  .constant('validator', validator)
-  .run(() => {
+  .constant('tucValidator', validator)
+  .run((tucValidator) => {
     const Rio = function (rioStr) {
       if (!/[A-Z0-9+]{12}/i.test(rioStr)) {
         return;
@@ -50,20 +50,20 @@ export default angular
      * @param {String} rio          RIO code
      * @param {String} phoneNumber  Corresponding phone number
      */
-    validator.extend('tucIsRio', (rio, phoneNumber) => (new Rio(rio)).check(phoneNumber));
+    tucValidator.extend('tucIsRio', (rio, phoneNumber) => (new Rio(rio)).check(phoneNumber));
 
     /**
      * Validate a Standard insee
      * @param {Object} obj          Object containing in
      */
-    validator.extend('tucHasInseeCode', obj => _.isObject(obj) && !!obj.inseeCode);
+    tucValidator.extend('tucHasInseeCode', obj => _.isObject(obj) && !!obj.inseeCode);
 
     /**
      * Validate a zipcode
      * @param {String} zipcode Zip code to validate
      * @param  {Array} filter  scope of the zip code
      */
-    validator.extend('tucIsZipcode', (zipcode, filter) => {
+    tucValidator.extend('tucIsZipcode', (zipcode, filter) => {
       const check = {
         frenchOverseas: /^9[78]\d{3}$/.test(zipcode),
         metropolitanFrance: /^\d{5}$/.test(zipcode) && (zipcode >= 1000) && (zipcode < 96000),
@@ -86,13 +86,13 @@ export default angular
      *  @param {String} str     IP representation string
      *  @param {Number} version IP version
      */
-    validator.extend('tucIsIPBlock', (str, version) => {
+    tucValidator.extend('tucIsIPBlock', (str, version) => {
       if (version === 4 || version === 6) {
         const split = str.split('/');
-        return split.length === 2 && validator.isIP(split[0], version)
+        return split.length === 2 && tucValidator.isIP(split[0], version)
           && parseInt(split[1], 10) > 0 && parseInt(split[1], 10) <= (version === 4 ? 32 : 128);
       }
-      return validator.tucIsIPBlock(str, 4) || validator.tucIsIPBlock(str, 6);
+      return tucValidator.tucIsIPBlock(str, 4) || tucValidator.tucIsIPBlock(str, 6);
     });
 
     /**
@@ -100,8 +100,8 @@ export default angular
      *  @param {String} str     IP representation string
      *  @return {Boolean}
      */
-    validator.extend('tucIsPrivateIPv4', (str) => {
-      if (validator.isIP(str, 4)) {
+    tucValidator.extend('tucIsPrivateIPv4', (str) => {
+      if (tucValidator.isIP(str, 4)) {
         const ipBlock = str.split('.');
         const bitBlock = parseInt(ipBlock[0], 10);
         const secondBitBlock = parseInt(ipBlock[1], 10);
@@ -122,7 +122,7 @@ export default angular
      *  Validate a siret code
      *  @param {String} siret SIRET code
      */
-    validator.extend('tucIsSiret', (siret) => {
+    tucValidator.extend('tucIsSiret', (siret) => {
       if (_.isEmpty(siret)) {
         return true;
       }
@@ -135,11 +135,11 @@ export default angular
       return luhnSum % 10 === 0;
     });
 
-    validator.extend('tucIsFrenchLandLine', phone => /^0[1-5]([\\s\\-]?([0-9]){2}){4}$/.test(phone));
+    tucValidator.extend('tucIsFrenchLandLine', phone => /^0[1-5]([\\s\\-]?([0-9]){2}){4}$/.test(phone));
 
-    validator.extend('tucIsFrenchPhoneNumber', phone => /^(0033|\+33\s?(\(0\))?|0)[^08](\s*\d{2}){4}$/.test(phone));
+    tucValidator.extend('tucIsFrenchPhoneNumber', phone => /^(0033|\+33\s?(\(0\))?|0)[^08](\s*\d{2}){4}$/.test(phone));
 
-    validator.extend('tucIsMacAddress', (val) => {
+    tucValidator.extend('tucIsMacAddress', (val) => {
       const values = val.split(/:/);
       return values.length === 6 && _.reduce(values, (result, elt) => /^[0-9a-f]{2}$/i.test(elt) && result, true);
     });
@@ -154,7 +154,7 @@ export default angular
                                                           *.foo.bar.example.com
      * @return {Boolean}
      */
-    validator.extend('tucIsValidDomain', (domain, options) => {
+    tucValidator.extend('tucIsValidDomain', (domain, options) => {
       const theOptions = options || {};
       let inError = false;
 
@@ -184,7 +184,7 @@ export default angular
         }
 
         // Check if it's not an IP
-        if (!inError && validator.isIP(domain)) {
+        if (!inError && tucValidator.isIP(domain)) {
           inError = true;
         }
 

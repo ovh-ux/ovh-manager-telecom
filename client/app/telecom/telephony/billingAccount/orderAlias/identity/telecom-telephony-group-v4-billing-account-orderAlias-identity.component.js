@@ -5,7 +5,7 @@ angular.module('managerApp').component('telecomTelephonyBillingAccountOrderAlias
     ngDisabled: '=?',
     organisation: '@',
   },
-  controller(validator) {
-    this.validator = validator;
+  controller(tucValidator) {
+    this.validator = tucValidator;
   },
 });

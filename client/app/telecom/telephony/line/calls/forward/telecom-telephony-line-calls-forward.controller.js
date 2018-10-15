@@ -1,6 +1,6 @@
-angular.module('managerApp').controller('TelecomTelephonyLineCallsForwardCtrl', function ($q, $stateParams, $translate, $state, Toast, TelecomTelephonyLineCallsForwardService, validator, telephonyBulk, telecomVoip) {
+angular.module('managerApp').controller('TelecomTelephonyLineCallsForwardCtrl', function ($q, $stateParams, $translate, $state, Toast, TelecomTelephonyLineCallsForwardService, tucValidator, telephonyBulk, telecomVoip) {
   const self = this;
-  self.validator = validator;
+  self.validator = tucValidator;
 
   function getEnabledTypes(types) {
     return _.pluck(_.filter(types, { enable: true }), 'id');

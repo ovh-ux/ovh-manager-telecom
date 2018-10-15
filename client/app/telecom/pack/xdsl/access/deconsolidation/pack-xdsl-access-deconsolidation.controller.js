@@ -10,7 +10,7 @@ angular.module('managerApp')
     ToastError,
     REDIRECT_URLS,
     OvhApiPackXdsl,
-    validator,
+    tucValidator,
     $stateParams,
   ) {
     const self = this;
@@ -53,7 +53,7 @@ angular.module('managerApp')
     };
 
     this.checkRioCode = function () {
-      this.rioCodeIsValid = validator.tucIsRio(self.model.rio, $stateParams.number);
+      this.rioCodeIsValid = tucValidator.tucIsRio(self.model.rio, $stateParams.number);
     };
 
     function updateIsLegacyOffer() {

@@ -9,7 +9,7 @@ angular.module('managerApp').component('telecomTelephonyBillingAccountOrderAlias
     const self = this;
 
     this.validator = {
-      tucIsZipcode() {
+      isZipcode() {
         return true;
       },
     };
@@ -24,7 +24,7 @@ angular.module('managerApp').component('telecomTelephonyBillingAccountOrderAlias
         }).$promise.then((rules) => {
           const zipCodeRegexp = _.get(rules, 'zip.regularExpression');
           if (zipCodeRegexp) {
-            self.validator.tucIsZipcode = function (value) {
+            self.validator.isZipcode = function (value) {
               return new RegExp(zipCodeRegexp).test(value);
             };
           }

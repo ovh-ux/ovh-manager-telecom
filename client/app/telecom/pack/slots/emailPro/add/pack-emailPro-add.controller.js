@@ -1,5 +1,5 @@
 angular.module('managerApp').controller('PackEmailProAddCtrl', class PackEmailProAddCtrl {
-  constructor($q, $scope, $state, $stateParams, $translate, OvhApiPackXdsl, Toast) {
+  constructor($q, $scope, $state, $stateParams, $translate, OvhApiPackXdsl, Toast, tucValidator) {
     this.$q = $q;
     this.$state = $state;
     this.$scope = $scope;
@@ -7,6 +7,7 @@ angular.module('managerApp').controller('PackEmailProAddCtrl', class PackEmailPr
     this.$translate = $translate;
     this.OvhApiPackXdsl = OvhApiPackXdsl;
     this.Toast = Toast;
+    this.valdiator = tucValidator;
   }
 
   $onInit() {
@@ -21,7 +22,7 @@ angular.module('managerApp').controller('PackEmailProAddCtrl', class PackEmailPr
     this.$scope.$watchGroup(['ctrl.account.name', 'ctrl.account.domain'], ([name, domain]) => {
       if (name && domain) {
         const email = name + domain;
-        const validAddress = validator.isEmail(email);
+        const validAddress = this.validator.isEmail(email);
 
         if (!validAddress) {
           this.$scope.accountForm.accountName.$error.invalidAddress = true;

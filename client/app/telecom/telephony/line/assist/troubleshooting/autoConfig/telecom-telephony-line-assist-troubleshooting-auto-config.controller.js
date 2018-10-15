@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyLineAssistTroubleshootingAutoConfigCtrl', function ($q, troubleshootingProcess, validator, OvhApiMyIp) {
+angular.module('managerApp').controller('TelecomTelephonyLineAssistTroubleshootingAutoConfigCtrl', function ($q, troubleshootingProcess, tucValidator, OvhApiMyIp) {
   const self = this;
 
   self.loading = {
@@ -55,7 +55,7 @@ angular.module('managerApp').controller('TelecomTelephonyLineAssistTroubleshooti
     self.loading.init = true;
     self.process = troubleshootingProcess;
     self.step = self.process.activeStep;
-    self.validator = validator;
+    self.validator = tucValidator;
 
     return $q.all({
       myIp: OvhApiMyIp.Aapi().get().$promise,
