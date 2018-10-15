@@ -1,4 +1,6 @@
-angular.module('managerApp').filter('unit-humanize', $translate => function (bytes, type, precision) {
+import _ from 'lodash';
+
+export default /* @ngInject */ $translate => function (bytes, type, precision) {
   let precisionVal = precision;
   if (_.isNaN(parseFloat(bytes)) || !_.isFinite(bytes)) {
     return '-';
@@ -27,4 +29,4 @@ angular.module('managerApp').filter('unit-humanize', $translate => function (byt
   const number = Math.floor(Math.log(bytes) / Math.log(1024));
   const value = (bytes / Math.pow(1024, Math.floor(number))).toFixed(precisionVal); // eslint-disable-line
   return $translate.instant(units[type || 'generic'][number], { val: value });
-});
+};

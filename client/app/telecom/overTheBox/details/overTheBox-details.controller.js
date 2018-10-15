@@ -11,7 +11,7 @@ angular.module('managerApp').controller('OverTheBoxDetailsCtrl', function ($scop
   const humanizeAxisDisplay = function (label, index, all) {
     const interval = Math.round(all.length / 4);
     if (index === all.length - 1 || index % interval === 0) {
-      return $filter('unit-humanize')(label, 'generic', 1);
+      return $filter('tuc-unit-humanize')(label, 'generic', 1);
     }
     return '';
   };
@@ -22,7 +22,7 @@ angular.module('managerApp').controller('OverTheBoxDetailsCtrl', function ($scop
    * @return {String}
    */
   const displayBitrate = function (bitrate) {
-    return $filter('unit-humanize')(bitrate, 'bit', 1);
+    return $filter('tuc-unit-humanize')(bitrate, 'bit', 1);
   };
 
   /**
