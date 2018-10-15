@@ -1,7 +1,10 @@
+import angular from 'angular';
+import _ from 'lodash';
+
 /**
  * ovh-angular-toaster replacement.
  */
-angular.module('managerApp').service('Toast', function ($timeout) {
+export default /* @ngInject */ function ($timeout) {
   const self = this;
 
   const defaultOptions = {
@@ -63,4 +66,4 @@ angular.module('managerApp').service('Toast', function ($timeout) {
   self.getMessagesByType = function (type) {
     return _.filter(messages, { type });
   };
-});
+}
