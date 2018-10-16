@@ -3,7 +3,7 @@ angular
   .controller('TelecomSmsOptionsRecreditCtrl', class TelecomSmsOptionsRecreditCtrl {
     constructor(
       $q, $stateParams, $translate, $uibModal,
-      OvhApiOrderSms, SmsMediator, Toast, ToastError,
+      OvhApiOrderSms, TucSmsMediator, Toast, ToastError,
     ) {
       this.$q = $q;
       this.$stateParams = $stateParams;
@@ -12,7 +12,7 @@ angular
       this.api = {
         orderSms: OvhApiOrderSms.v6(),
       };
-      this.SmsMediator = SmsMediator;
+      this.TucSmsMediator = TucSmsMediator;
       this.Toast = Toast;
       this.ToastError = ToastError;
     }
@@ -25,8 +25,8 @@ angular
       this.service = null;
 
       this.loading.init = true;
-      return this.SmsMediator.initDeferred.promise.then(() => {
-        this.service = this.SmsMediator.getCurrentSmsService();
+      return this.TucSmsMediator.initDeferred.promise.then(() => {
+        this.service = this.TucSmsMediator.getCurrentSmsService();
         return this.service;
       }).then(service => this.fetchOfferPrice(service)).catch((err) => {
         this.ToastError(err);
@@ -37,7 +37,7 @@ angular
 
     /**
      * Fetch offer price.
-     * @param  {Ojbect} service SmsService
+     * @param  {Ojbect} service TucSmsService
      * @return {Promise}
      */
     fetchOfferPrice(service) {
@@ -53,7 +53,7 @@ angular
 
     /**
      * Opens a modal to manage sms recredit options.
-     * @param  {Object} service SmsService
+     * @param  {Object} service TucSmsService
      */
     update(service) {
       const modal = this.$uibModal.open({

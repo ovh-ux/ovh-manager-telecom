@@ -3,7 +3,7 @@ angular
   .controller('TelecomSmsSmsHlrCtrl', class TelecomSmsSmsHlrCtrl {
     constructor(
       $stateParams, $q, $translate,
-      OvhApiSms, SmsMediator, validator, Toast, ToastError, SMS_URL,
+      OvhApiSms, TucSmsMediator, validator, Toast, ToastError, SMS_URL,
     ) {
       this.$stateParams = $stateParams;
       this.$q = $q;
@@ -13,7 +13,7 @@ angular
           hlr: OvhApiSms.Hlr().v6(),
         },
       };
-      this.SmsMediator = SmsMediator;
+      this.TucSmsMediator = TucSmsMediator;
       this.validator = validator;
       this.Toast = Toast;
       this.ToastError = ToastError;
@@ -55,13 +55,13 @@ angular
       this.hlr.data = null;
       this.api.sms.hlr.resetCache();
       this.api.sms.hlr.resetQueryCache();
-      return this.SmsMediator.initDeferred.promise.then(() => this.api.sms.hlr.query({
+      return this.TucSmsMediator.initDeferred.promise.then(() => this.api.sms.hlr.query({
         serviceName: this.$stateParams.serviceName,
       }).$promise.then(hlrIds => hlrIds.sort((a, b) => b - a)
         .map(id => ({ id })))
         .then((hlrs) => {
           this.hlr.data = hlrs;
-          this.service = this.SmsMediator.getCurrentSmsService();
+          this.service = this.TucSmsMediator.getCurrentSmsService();
         }))
         .catch(err => this.ToastError(err));
     }

@@ -1,12 +1,6 @@
 /* eslint-disable no-useless-escape */
 angular
   .module('managerApp')
-  .constant('SMS_REGEX', {
-    default7bitGSMAlphabet: /^[@£$¥èéùìòÇØøÅåΔ_ΦΓΛΩΠΨΣΘΞ^\{\}\\\[~\]\|€ÆæßÉ!"#¤%&'\(\)\*\+,-\.\/0123456789:;<=>\?¡ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÑÜ§¿abcdefghijklmnopqrstuvwxyzäöñüà\n\r\s]*$/,
-  })
-  .constant('SMS_STOP_CLAUSE', {
-    value: '\nSTOP:36111',
-  })
   .constant('SMS_URL', {
     hlrTermsOfUse: 'https://www.ovh.com/fr/support/documents_legaux/version/conditions_particulieres_HLR_2016-04-07.pdf',
   })

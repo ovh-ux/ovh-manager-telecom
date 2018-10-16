@@ -1,5 +1,14 @@
 angular.module('managerApp').controller('TelecomSmsSmsTemplatesCtrl', class TelecomSmsSmsTemplatesCtrl {
-  constructor($q, $translate, $stateParams, $uibModal, OvhApiSms, SmsMediator, Toast, ToastError) {
+  constructor(
+    $q,
+    $translate,
+    $stateParams,
+    $uibModal,
+    OvhApiSms,
+    TucSmsMediator,
+    Toast,
+    ToastError,
+  ) {
     this.$q = $q;
     this.$translate = $translate;
     this.$stateParams = $stateParams;
@@ -9,7 +18,7 @@ angular.module('managerApp').controller('TelecomSmsSmsTemplatesCtrl', class Tele
         templates: OvhApiSms.Templates().v6(),
       },
     };
-    this.SmsMediator = SmsMediator;
+    this.TucSmsMediator = TucSmsMediator;
     this.Toast = Toast;
     this.ToastError = ToastError;
 
@@ -30,8 +39,8 @@ angular.module('managerApp').controller('TelecomSmsSmsTemplatesCtrl', class Tele
     };
 
     this.loading.init = true;
-    return this.SmsMediator.initDeferred.promise.then(() => {
-      this.service = this.SmsMediator.getCurrentSmsService();
+    return this.TucSmsMediator.initDeferred.promise.then(() => {
+      this.service = this.TucSmsMediator.getCurrentSmsService();
       this.api.sms.templates.query({
         serviceName: this.$stateParams.serviceName,
       }).$promise.then((templates) => {

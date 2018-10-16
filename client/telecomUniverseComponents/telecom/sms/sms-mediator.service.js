@@ -1,4 +1,12 @@
-angular.module('managerApp').service('SmsMediator', function ($q, OvhApiSms, SmsService, SMS_REGEX, SMS_STOP_CLAUSE) {
+import angular from 'angular';
+
+export default /* @ngInject */ function (
+  $q,
+  OvhApiSms,
+  TucSmsService,
+  TUC_SMS_REGEX,
+  TUC_SMS_STOP_CLAUSE,
+) {
   const self = this;
   let currentSms = null;
   const smsText = {
@@ -10,7 +18,7 @@ angular.module('managerApp').service('SmsMediator', function ($q, OvhApiSms, Sms
     maxlength: null,
   };
 
-  self.smsServices = {}; // access to SmsService by name
+  self.smsServices = {}; // access to TucSmsService by name
   self.initDeferred = null;
   self.apiScheme = null;
 
@@ -47,7 +55,7 @@ angular.module('managerApp').service('SmsMediator', function ($q, OvhApiSms, Sms
   /* ----------  ACTIONS  ----------*/
 
   function addSmsService(smsOptions) {
-    const addedSms = new SmsService(smsOptions);
+    const addedSms = new TucSmsService(smsOptions);
 
     if (!self.smsServices[addedSms.name]) {
       self.smsServices[addedSms.name] = addedSms;
@@ -77,9 +85,9 @@ angular.module('managerApp').service('SmsMediator', function ($q, OvhApiSms, Sms
     const message = messageParam || '';
     smsText.threshold = threshold || 255;
 
-    const length = message.length + (suffix ? SMS_STOP_CLAUSE.value.length : 0);
+    const length = message.length + (suffix ? TUC_SMS_STOP_CLAUSE.value.length : 0);
 
-    if (message.match(SMS_REGEX.default7bitGSMAlphabet)) {
+    if (message.match(TUC_SMS_REGEX.default7bitGSMAlphabet)) {
       smsText.coding = '7bit';
       if (length <= 160) {
         smsText.defaultSize = 160;
@@ -153,4 +161,4 @@ angular.module('managerApp').service('SmsMediator', function ($q, OvhApiSms, Sms
   };
 
   /* -----  End of INITIALIZATION  ------*/
-});
+}

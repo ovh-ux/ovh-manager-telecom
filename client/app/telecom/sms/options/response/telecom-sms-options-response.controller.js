@@ -1,5 +1,14 @@
 angular.module('managerApp').controller('TelecomSmsOptionsResponseCtrl', class TelecomSmsOptionsResponseCtrl {
-  constructor($q, $stateParams, $translate, $uibModal, OvhApiSms, SmsMediator, Toast, ToastError) {
+  constructor(
+    $q,
+    $stateParams,
+    $translate,
+    $uibModal,
+    OvhApiSms,
+    TucSmsMediator,
+    Toast,
+    ToastError,
+  ) {
     this.$q = $q;
     this.$stateParams = $stateParams;
     this.$translate = $translate;
@@ -8,7 +17,7 @@ angular.module('managerApp').controller('TelecomSmsOptionsResponseCtrl', class T
       sms: OvhApiSms.v6(),
       smsSenders: OvhApiSms.Senders().v6(),
     };
-    this.SmsMediator = SmsMediator;
+    this.TucSmsMediator = TucSmsMediator;
     this.Toast = Toast;
     this.ToastError = ToastError;
   }
@@ -59,7 +68,7 @@ angular.module('managerApp').controller('TelecomSmsOptionsResponseCtrl', class T
      * @return {Promise}
      */
   fetchEnums() {
-    return this.SmsMediator.getApiScheme().then((schema) => {
+    return this.TucSmsMediator.getApiScheme().then((schema) => {
       const smsResponseTypeEnum = {
         smsResponseType: schema.models['sms.ResponseTypeEnum'].enum,
       };
@@ -95,7 +104,7 @@ angular.module('managerApp').controller('TelecomSmsOptionsResponseCtrl', class T
      * @return {Object}
      */
   computeRemainingChar() {
-    return _.assign(this.message, this.SmsMediator.getSmsInfoText(
+    return _.assign(this.message, this.TucSmsMediator.getSmsInfoText(
       this.smsResponse.text,
       false, // suffix
     ));

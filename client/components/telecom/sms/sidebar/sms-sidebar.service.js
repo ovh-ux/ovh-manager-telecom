@@ -1,4 +1,4 @@
-angular.module('managerApp').service('SmsSidebar', function ($translate, SidebarMenu, SmsMediator) {
+angular.module('managerApp').service('SmsSidebar', function ($translate, SidebarMenu, TucSmsMediator) {
   const self = this;
 
   self.mainSectionItem = null;
@@ -8,7 +8,7 @@ angular.module('managerApp').service('SmsSidebar', function ($translate, Sidebar
     ======================================== */
 
   self.loadSmsMainSection = function () {
-    return SmsMediator.initAll().then((smsDetails) => {
+    return TucSmsMediator.initAll().then((smsDetails) => {
       angular.forEach(smsDetails, (smsDetail) => {
         SidebarMenu.addMenuItem({
           id: smsDetail.name,

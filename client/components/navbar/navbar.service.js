@@ -2,7 +2,7 @@ class ManagerNavbarService {
   constructor(
     $q, $translate, $translatePartialLoader, $rootScope, LANGUAGES, MANAGER_URLS, REDIRECT_URLS,
     TARGET, URLS, OvhApiMe, OtrsPopupService, ssoAuthentication, PackMediator, telecomVoip,
-    voipService, SmsMediator, OvhApiFreeFax, OvhApiOverTheBox, TelecomMediator,
+    voipService, TucSmsMediator, OvhApiFreeFax, OvhApiOverTheBox, TelecomMediator,
     NavbarNotificationService, asyncLoader,
   ) {
     this.$q = $q;
@@ -19,7 +19,7 @@ class ManagerNavbarService {
     this.packMediator = PackMediator;
     this.telecomVoip = telecomVoip;
     this.voipService = voipService;
-    this.smsMediator = SmsMediator;
+    this.smsMediator = TucSmsMediator;
     this.ovhApiFreeFax = OvhApiFreeFax;
     this.ovhApiOverTheBox = OvhApiOverTheBox;
     this.telecomMediator = TelecomMediator;

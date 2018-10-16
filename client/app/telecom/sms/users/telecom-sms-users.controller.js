@@ -3,7 +3,7 @@ angular
   .controller('TelecomSmsUsersCtrl', class TelecomSmsUsersCtrl {
     constructor(
       $stateParams, $q, $filter, $uibModal, $translate,
-      OvhApiSms, SmsMediator, Toast, ToastError,
+      OvhApiSms, TucSmsMediator, Toast, ToastError,
     ) {
       this.$filter = $filter;
       this.$q = $q;
@@ -14,7 +14,7 @@ angular
         sms: OvhApiSms.v6(),
         smsUsers: OvhApiSms.Users().v6(),
       };
-      this.SmsMediator = SmsMediator;
+      this.TucSmsMediator = TucSmsMediator;
       this.Toast = Toast;
       this.ToastError = ToastError;
     }
@@ -30,7 +30,7 @@ angular
         isLoading: false,
       };
       this.refresh().then(() => {
-        this.service = this.SmsMediator.getCurrentSmsService();
+        this.service = this.TucSmsMediator.getCurrentSmsService();
       });
     }
 
