@@ -43,7 +43,6 @@ import 'script-loader!lodash/lodash.min.js';
 import 'ng-at-internet';
 import 'at-internet-ui-router-plugin';
 import 'bootstrap';
-import 'script-loader!chart.js/dist/Chart.js';
 import 'script-loader!@bower_components/crypto/crypto.min.js';
 import 'script-loader!CSV-JS/csv.js';
 import 'script-loader!d3/build/d3.js';
