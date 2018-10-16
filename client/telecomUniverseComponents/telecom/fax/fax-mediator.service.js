@@ -1,4 +1,4 @@
-angular.module('managerApp').service('FaxMediator', function (OvhApiFreeFax) {
+export default /* @ngInject */ function (OvhApiFreeFax) {
   const self = this;
 
   /*= ============================
@@ -10,4 +10,4 @@ angular.module('managerApp').service('FaxMediator', function (OvhApiFreeFax) {
   };
 
   /* -----  End of COUNT  ------*/
-});
+}
