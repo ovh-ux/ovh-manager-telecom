@@ -1,14 +1,14 @@
 angular.module('managerApp').controller('TelecomTelephonyAliasDashboardController', class TelecomTelephonyAliasHomeController {
   constructor(
     $state, $stateParams, $translate, $uibModal,
-    ChartjsFactory, OvhApiTelephony, Toast,
+    TucChartjsFactory, OvhApiTelephony, Toast,
     voipService,
     TELEPHONY_ALIAS_CONSUMPTION,
   ) {
     this.$state = $state;
     this.$translate = $translate;
     this.$uibModal = $uibModal;
-    this.ChartjsFactory = ChartjsFactory;
+    this.TucChartjsFactory = TucChartjsFactory;
     this.OvhApiTelephony = OvhApiTelephony;
     this.Toast = Toast;
     this.voipService = voipService;
@@ -24,7 +24,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasDashboardControlle
     this.consumption = {
       incoming: {},
       outgoing: {},
-      chart: new this.ChartjsFactory(
+      chart: new this.TucChartjsFactory(
         angular.copy(this.TELEPHONY_ALIAS_CONSUMPTION.chart),
       ),
     };

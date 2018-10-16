@@ -39,7 +39,7 @@
    <translation id="telephony_alias_configuration_configuration_type">Type de configuration</translation>
 
    <translation id="telephony_alias_configuration_configuration_type_conference" qtlid="333074">Conférence</translation>
-   <translation id="telephony_alias_configuration_configuration_type_redirect" qtlid="462563">Redirection avec supervision</translation>
+   <translation id="telephony_alias_configuration_configuration_type_redirect">Redirection</translation>
    <translation id="telephony_alias_configuration_configuration_type_ddi" qtlid="462576">Redirection avec présentation de ce numéro sur ma ligne SIP ou mon Trunk</translation>
    <translation id="telephony_alias_configuration_configuration_type_conference" qtlid="333074">Conférence</translation>
    <translation id="telephony_alias_configuration_configuration_type_cloudIvr" qtlid="333100">Serveur vocal interactif</translation>
@@ -73,7 +73,7 @@
    <translation id="telephony_alias_special_pending_transfer">Reversements en cours</translation>
    <translation id="telephony_alias_special_number_rsva">Tarification du numéro</translation>
 
-   <translation id="telephony_alias_config_feature_type_contactCenterSolutionExpert">Avec le mode expert de Contact Center Solution, vous pouvez gérer le flux de vos appels de bout en bout. En fonction des numéros appelants ou des plages horaires définies, choisissez vous-même votre stratégie. Jouez des sons d'accueil, personnalisez votre musique d'attente, faites sonner les postes de vos différents services. Cette solution est en bêta-test.</translation>
+   <translation id="telephony_alias_config_feature_type_contactCenterSolutionExpert">Avec le mode expert de Contact Center Solution, vous pouvez gérer le flux de vos appels de bout en bout. En fonction des numéros appelants ou des plages horaires, choisissez vous-même votre stratégie. Jouez des sons d'accueils, personnalisez votre musique d'attente, faites sonner les postes de vos différents services.</translation>
    <translation id="telephony_alias_config_feature_type_cloudHunting">Avec la File d'appels expert, vous pouvez gérer votre flux de communications de manière plus complète. Jouez un son d'accueil, personnalisez votre musique d'attente et faites sonner les postes de vos différents services en fonction de stratégies que vous définissez, sur des plages horaires choisies. Vous pouvez indiquer le nombre maximum d'appelants dans la file et leur temps d'attente maximal. Cette solution est en bêta-test.</translation>
    <translation id="telephony_alias_config_feature_type_svi">Le Serveur vocal interactif en VXML vous permet, via une configuration 2.1, d’utiliser un menu interactif avancé. L’appelant est invité, via des messages pré-enregistrés ou une synthèse vocale, à interagir avec le serveur grâce aux touches de son téléphone. Selon la configuration choisie, il sera possible de lire des sons ou de transférer un appel vers d’autres numéros. Notez que seuls les transferts vers les numéros OVH sont possibles.</translation>
 </translations>

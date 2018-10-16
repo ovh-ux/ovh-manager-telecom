@@ -56,7 +56,7 @@
    <translation id="telephony_alias_config_change_type_desc_contactCenterSolution">La file d’appels vous permet de rediriger un appel entrant vers plusieurs lignes, rattachées ou non à votre identifiant OVH.</translation>
 
    <translation id="telephony_alias_config_change_type_label_contactCenterSolutionExpert">Contact Center Solution</translation>
-   <translation id="telephony_alias_config_change_type_desc_contactCenterSolutionExpert" qtlid="462615">Avec le mode expert de Contact Center Solution, vous pouvez gérer le flux de vos appels de bout en bout. Sur une interface similaire à celle du serveur vocal interactif, programmez étape par étape le déroulement de vos appels entrants. En fonction des numéros appelants ou de plages horaires, jouez des sons d'accueils, personnalisez votre musique d'attente, faites sonner vos collaborateurs ou différents services suivant des stratégies que vous définissez. Cette solution est en bêta.</translation>
+   <translation id="telephony_alias_config_change_type_desc_contactCenterSolutionExpert">Avec le mode expert de Contact Center Solution, vous pouvez gérer le flux de vos appels de bout en bout. En fonction des numéros appelants ou des plages horaires, choisissez vous-même votre stratégie. Jouez des sons d'accueils, personnalisez votre musique d'attente, faites sonner les postes de vos différents services.</translation>
 
    <translation id="telephony_alias_config_change_type_label_empty" qtlid="333230">Aucune fonctionnalité</translation>
    <translation id="telephony_alias_config_change_type_desc_empty" qtlid="333243">Pas de fonctionnalité</translation>
