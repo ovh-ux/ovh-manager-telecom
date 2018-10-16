@@ -3,7 +3,7 @@ angular
   .controller('TelecomSmsSmsOutgoingCtrl', class TelecomSmsSmsOutgoingCtrl {
     constructor(
       $scope, $stateParams, $q, $filter, $timeout, $window, $uibModal, $translate,
-      OvhApiSms, OvhApiMe, debounce, Toast, ToastError,
+      OvhApiSms, OvhApiMe, tucDebounce, Toast, ToastError,
     ) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
@@ -19,7 +19,7 @@ angular
         smsJobs: OvhApiSms.Jobs().v6(),
         userDocument: OvhApiMe.Document().v6(),
       };
-      this.debounce = debounce;
+      this.tucDebounce = tucDebounce;
       this.Toast = Toast;
       this.ToastError = ToastError;
     }
@@ -57,7 +57,7 @@ angular
         this.outgoing.isLoading = false;
       });
 
-      this.getDebouncedOutgoings = this.debounce(this.refresh.bind(this), 500, false);
+      this.getDebouncedOutgoings = this.tucDebounce(this.refresh.bind(this), 500, false);
 
       this.$scope.$on('$destroy', () => {
         this.$timeout.cancel(this.outgoing.poller);
