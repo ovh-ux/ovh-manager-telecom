@@ -36,7 +36,7 @@
 
    <translation id="telephony_group_line_calls_click2call_changePasswordUser" qtlid="80394">Changer le mot de passe</translation>
    <translation id="telephony_group_line_calls_click2call_changePasswordUser_password_label" qtlid="334894">Mot de passe&#160;:&#160;</translation>
-   <translation id="telephony_group_line_calls_click2call_changePasswordUser_password_placeholder" qtlid="2270">Mot de passe</translation>
+   <translation id="telephony_group_line_calls_click2call_changePasswordUser_password_placeholder" qtlid="2270">Contraseña</translation>
    <translation id="telephony_group_line_calls_click2call_changePasswordUser_changingPassword" qtlid="215897">Cambiando la contraseña...</translation>
    <translation id="telephony_group_line_calls_click2call_changePasswordUser_changedPassword" qtlid="7918">Mot de passe changé avec succès</translation>
 </translations>

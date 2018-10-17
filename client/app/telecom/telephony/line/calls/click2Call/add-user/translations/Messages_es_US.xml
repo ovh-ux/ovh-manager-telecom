@@ -4,7 +4,7 @@
    <translation id="telephony_group_line_calls_click2call_addUser_title" qtlid="7150">Ajouter un utilisateur</translation>
 
    <translation id="telephony_group_line_calls_click2call_addUser_login_placeholder" qtlid="41062">Login</translation>
-   <translation id="telephony_group_line_calls_click2call_addUser_password_placeholder" qtlid="2270">Mot de passe</translation>
+   <translation id="telephony_group_line_calls_click2call_addUser_password_placeholder" qtlid="2270">Contraseña</translation>
    <translation id="telephony_group_line_calls_click2call_addUser_adding" qtlid="334920">Ajout de l'utilisateur...</translation>
    <translation id="telephony_group_line_calls_click2call_addUser_added" qtlid="387003">Utilisateur <strong>{{name}}</strong> ajouté&#160;!&#160;</translation>
    <translation id="telephony_group_line_calls_click2call_addUser_fail" qtlid="387016">Oups ! Nous n'avons pas pu ajouter l'utilisateur <strong>{{name}}</strong>.</translation>

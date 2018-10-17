@@ -4,7 +4,7 @@
    <translation id="overTheBox_remote_configure" qtlid="306266">Configurer l'accès à distance</translation>
 
    <translation id="overTheBox_remote_table_id" qtlid="25615">IP</translation>
-   <translation id="overTheBox_remote_table_port" qtlid="9034">Port</translation>
+   <translation id="overTheBox_remote_table_port" qtlid="9034">Puerto</translation>
    <translation id="overTheBox_remote_table_connection" qtlid="55925">Connexion</translation>
    <translation id="overTheBox_remote_table_status" qtlid="26443">Estado</translation>
    <translation id="overTheBox_remote_table_authorized_by" qtlid="306279">Autorisé par</translation>
@@ -12,7 +12,7 @@
    <translation id="overTheBox_remote_table_empty" qtlid="306292">Aucun accès à distance enregistré.</translation>
 
    <translation id="overTheBox_status_active" qtlid="55133">Actif</translation>
-   <translation id="overTheBox_status_creating" qtlid="26227">En création</translation>
+   <translation id="overTheBox_status_creating" qtlid="26227">En proceso de creación</translation>
    <translation id="overTheBox_status_deleted" qtlid="306305">Effacé</translation>
    <translation id="overTheBox_status_deleting" qtlid="152778">Eliminando</translation>
    <translation id="overTheBox_status_pendingValidation" qtlid="306318">Doit être validé</translation>
@@ -26,7 +26,7 @@
    <translation id="overTheBox_remote_detail_ip" qtlid="26191">Adresse IP</translation>
    <translation id="overTheBox_remote_detail_public_key" qtlid="306357">Clef publique</translation>
    <translation id="overTheBox_remote_detail_user" qtlid="7450">Utilisateur</translation>
-   <translation id="overTheBox_remote_detail_port" qtlid="9034">Port</translation>
+   <translation id="overTheBox_remote_detail_port" qtlid="9034">Puerto</translation>
    <translation id="overTheBox_remote_connection" qtlid="55925">Connexion</translation>
 
    <translation id="overTheBox_remote_add" qtlid="306370">Ajouter un accès à distance</translation>
