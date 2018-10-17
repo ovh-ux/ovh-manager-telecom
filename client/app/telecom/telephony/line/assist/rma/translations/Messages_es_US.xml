@@ -24,7 +24,7 @@
    <translation id="telephony_line_assist_rma_type_resends_due_to_shipping_not_withdraw" qtlid="458715">Renvoi pour cause de non réception</translation>
    <translation id="telephony_line_assist_rma_type_specific_return_merchandise_authorisation" qtlid="458728">Autorisation spéciale</translation>
    <translation id="telephony_line_assist_rma_type_termination" qtlid="59699">Eliminación</translation>
-   <translation id="telephony_line_assist_rma_type_unknown" qtlid="77142">Inconnu</translation>
+   <translation id="telephony_line_assist_rma_type_unknown" qtlid="77142">Desconocido</translation>
    <translation id="telephony_line_assist_rma_step_n" qtlid="458741">Étape {{ number }}</translation>
    <translation id="telephony_line_assist_rma_step_name_opening" qtlid="386404">Ouverture du ticket</translation>
    <translation id="telephony_line_assist_rma_step_name_parcelReception" qtlid="386417">Réception du colis</translation>
