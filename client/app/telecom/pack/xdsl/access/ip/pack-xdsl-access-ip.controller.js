@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('XdslAccessIpCtrl', function ($stateParams, OvhApiXdslIps, ToastError, IpAddress) {
+angular.module('managerApp').controller('XdslAccessIpCtrl', function ($stateParams, OvhApiXdslIps, ToastError, TucIpAddress) {
   const self = this;
   this.validator = validator;
   this.ips = [];
@@ -29,11 +29,11 @@ angular.module('managerApp').controller('XdslAccessIpCtrl', function ($statePara
    * @returns {Boolean}
    */
   this.checkIp = function (ip) {
-    const ipv4 = IpAddress.address4(ip);
+    const ipv4 = TucIpAddress.address4(ip);
     if (!ipv4.isValid()) {
       return false;
     }
-    const range = IpAddress.address4(decodeURIComponent($stateParams.block));
+    const range = TucIpAddress.address4(decodeURIComponent($stateParams.block));
     if (!range.isValid()) {
       return false;
     }

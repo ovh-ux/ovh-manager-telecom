@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('OverTheBoxRemoteCtrl', function ($stateParams, $translate, $scope, $q, URLS, OVER_THE_BOX, OVERTHEBOX_REMOTE_STATUS, OvhApiOverTheBox, ToastError, Toast, IpAddress) {
+angular.module('managerApp').controller('OverTheBoxRemoteCtrl', function ($stateParams, $translate, $scope, $q, URLS, OVER_THE_BOX, OVERTHEBOX_REMOTE_STATUS, OvhApiOverTheBox, ToastError, Toast, TucIpAddress) {
   const self = this;
 
   this.filter = {
@@ -72,7 +72,7 @@ angular.module('managerApp').controller('OverTheBoxRemoteCtrl', function ($state
     if (!ip) {
       return true;
     }
-    return IpAddress.isValidIp(ip);
+    return TucIpAddress.isValidIp(ip);
   };
 
   this.openDatePicker = function (event) {

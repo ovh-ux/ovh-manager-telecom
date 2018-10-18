@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyLineRestrictionsCtrl', function ($stateParams, $timeout, $q, $document, $translate, OvhApiTelephony, ToastError, IpAddress, OvhApiMe, Toast, telephonyBulk) {
+angular.module('managerApp').controller('TelecomTelephonyLineRestrictionsCtrl', function ($stateParams, $timeout, $q, $document, $translate, OvhApiTelephony, ToastError, TucIpAddress, OvhApiMe, Toast, telephonyBulk) {
   const self = this;
 
   function fetchLineOptions() {
@@ -141,7 +141,7 @@ angular.module('managerApp').controller('TelecomTelephonyLineRestrictionsCtrl', 
   self.ipValidator = (function () {
     return {
       test(value) {
-        return IpAddress.isValidPublicIp4(value);
+        return TucIpAddress.isValidPublicIp4(value);
       },
     };
   }());

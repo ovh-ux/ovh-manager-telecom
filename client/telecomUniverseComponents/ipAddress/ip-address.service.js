@@ -1,32 +1,22 @@
+import { Address4, Address6 } from 'ip-address';
+
 /**
  * Wrapper for ip-address library.
  * See doc here: http://ip-address.js.org/
  */
-angular.module('managerApp').service('IpAddress', function ($window) {
+export default function () {
   /**
      * Returns a new instance of Address6.
      */
   this.address6 = function (...args) {
-    if ('Address6' in $window) {
-      const { Address6 } = $window;
-      const address = Object.create(Address6.prototype);
-      Address6.apply(address, args);
-      return address;
-    }
-    throw new Error('Missing ip-address dependency');
+    return new Address6(...args);
   };
 
   /**
      * Returns a new instance of Address4.
      */
   this.address4 = function (...args) {
-    if ('Address4' in $window) {
-      const { Address4 } = $window;
-      const address = Object.create(Address4.prototype);
-      Address4.apply(address, args);
-      return address;
-    }
-    throw new Error('Missing ip-address dependency');
+    return new Address4(...args);
   };
 
   /**
@@ -58,4 +48,4 @@ angular.module('managerApp').service('IpAddress', function ($window) {
     }
     return valid;
   };
-});
+}

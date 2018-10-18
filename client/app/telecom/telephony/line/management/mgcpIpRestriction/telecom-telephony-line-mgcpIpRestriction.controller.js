@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyLinePhoneMgcpIpRestrictionCtrl', function ($q, $stateParams, $translate, IpAddress, OvhApiTelephony, OvhApiMe, Toast, ToastError, telephonyBulk) {
+angular.module('managerApp').controller('TelecomTelephonyLinePhoneMgcpIpRestrictionCtrl', function ($q, $stateParams, $translate, TucIpAddress, OvhApiTelephony, OvhApiMe, Toast, ToastError, telephonyBulk) {
   const self = this;
 
   /*= ==============================
@@ -23,7 +23,7 @@ angular.module('managerApp').controller('TelecomTelephonyLinePhoneMgcpIpRestrict
   self.ipValidator = (function () {
     return {
       test(value) {
-        return IpAddress.isValidPublicIp4(value);
+        return TucIpAddress.isValidPublicIp4(value);
       },
     };
   }());
