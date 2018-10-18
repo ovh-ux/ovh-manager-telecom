@@ -1,9 +1,12 @@
-angular.module('managerApp').factory('SmsService', (OvhApiSms) => {
+import angular from 'angular';
+import _ from 'lodash';
+
+export default /* @ngInject */ (OvhApiSms) => {
   /*= ==================================
     =            CONSTRUCTOR            =
     =================================== */
 
-  function SmsService(optionsParam) {
+  function TucSmsService(optionsParam) {
     let options = optionsParam;
 
     if (!options) {
@@ -12,7 +15,7 @@ angular.module('managerApp').factory('SmsService', (OvhApiSms) => {
 
     // options check
     if (!options.name) {
-      throw new Error('name option must be specified when creating a new SmsService');
+      throw new Error('name option must be specified when creating a new TucSmsService');
     }
 
     // mandatory
@@ -32,7 +35,7 @@ angular.module('managerApp').factory('SmsService', (OvhApiSms) => {
     =            PROTOTYPE METHODS            =
     ========================================= */
 
-  SmsService.prototype.setInfos = function (options) {
+  TucSmsService.prototype.setInfos = function (options) {
     const self = this;
 
     angular.forEach(_.keys(options), (optionKey) => {
@@ -42,7 +45,7 @@ angular.module('managerApp').factory('SmsService', (OvhApiSms) => {
     return self;
   };
 
-  SmsService.prototype.getDisplayedName = function () {
+  TucSmsService.prototype.getDisplayedName = function () {
     const self = this;
 
     return self.description || self.name;
@@ -50,7 +53,7 @@ angular.module('managerApp').factory('SmsService', (OvhApiSms) => {
 
   /* ----------  API CALLS  ----------*/
 
-  SmsService.prototype.save = function () {
+  TucSmsService.prototype.save = function () {
     const self = this;
 
     return OvhApiSms.v6().edit({
@@ -62,7 +65,7 @@ angular.module('managerApp').factory('SmsService', (OvhApiSms) => {
 
   /* ----------  EDITION  ----------*/
 
-  SmsService.prototype.startEdition = function () {
+  TucSmsService.prototype.startEdition = function () {
     const self = this;
 
     self.inEdition = true;
@@ -74,7 +77,7 @@ angular.module('managerApp').factory('SmsService', (OvhApiSms) => {
     return self;
   };
 
-  SmsService.prototype.stopEdition = function (cancel) {
+  TucSmsService.prototype.stopEdition = function (cancel) {
     const self = this;
 
     if (self.saveForEdition && cancel) {
@@ -89,5 +92,5 @@ angular.module('managerApp').factory('SmsService', (OvhApiSms) => {
 
   /* -----  End of PROTOTYPE METHODS  ------*/
 
-  return SmsService;
-});
+  return TucSmsService;
+};

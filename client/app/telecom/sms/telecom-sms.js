@@ -13,9 +13,9 @@ angular.module('managerApp').config(($stateProvider) => {
     },
     abstract: true,
     resolve: {
-      initSms: ($q, $stateParams, SmsMediator) => {
+      initSms: ($q, $stateParams, TucSmsMediator) => {
         // init sms services
-        SmsMediator.initAll().then(smsDetails => SmsMediator
+        TucSmsMediator.initAll().then(smsDetails => TucSmsMediator
           .setCurrentSmsService(smsDetails[$stateParams.serviceName]));
         return $q.when({ init: true });
       },

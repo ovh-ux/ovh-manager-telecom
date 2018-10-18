@@ -1,4 +1,6 @@
-angular.module('managerApp').service('CSVParser', function () {
+import CSV from 'CSV-JS';
+
+export default function () {
   this.setColumnSeparator = function (separatorParam) {
     let separator = separatorParam;
 
@@ -22,4 +24,4 @@ angular.module('managerApp').service('CSVParser', function () {
   this.parse = function (data) {
     return CSV.parse(data);
   };
-});
+}

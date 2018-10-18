@@ -1,9 +1,9 @@
 angular.module('managerApp').controller('TelecomSmsSmsComposeAddReceiversListsCtrl', class TelecomSmsSmsComposeAddReceiversListsCtrl {
-  constructor($stateParams, $timeout, $uibModalInstance, SmsMediator, receivers) {
+  constructor($stateParams, $timeout, $uibModalInstance, TucSmsMediator, receivers) {
     this.$stateParams = $stateParams;
     this.$timeout = $timeout;
     this.$uibModalInstance = $uibModalInstance;
-    this.SmsMediator = SmsMediator;
+    this.TucSmsMediator = TucSmsMediator;
     this.receivers = receivers;
   }
 

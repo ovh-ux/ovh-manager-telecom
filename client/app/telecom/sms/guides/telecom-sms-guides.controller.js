@@ -1,9 +1,9 @@
 angular
   .module('managerApp')
   .controller('TelecomSmsGuidesCtrl', class TelecomSmsGuidesCtrl {
-    constructor($translate, SmsMediator, ToastError, SMS_GUIDES) {
+    constructor($translate, TucSmsMediator, ToastError, SMS_GUIDES) {
       this.$translate = $translate;
-      this.SmsMediator = SmsMediator;
+      this.TucSmsMediator = TucSmsMediator;
       this.ToastError = ToastError;
       this.constant = { SMS_GUIDES };
     }
@@ -17,7 +17,7 @@ angular
       this.count = null;
 
       this.loading.init = true;
-      return this.SmsMediator.initDeferred.promise.then(() => {
+      return this.TucSmsMediator.initDeferred.promise.then(() => {
         this.guides = this.constant.SMS_GUIDES;
         if (localStorage['univers-selected-language']) {
           this.language = localStorage['univers-selected-language'].replace(/-.*$|_.*$/, '');

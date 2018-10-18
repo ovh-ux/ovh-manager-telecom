@@ -3,7 +3,7 @@ angular
   .controller('TelecomSmsOptionsResponseEditCtrl', class TelecomSmsOptionsResponseEditCtrl {
     constructor(
       $q, $stateParams, $timeout, $uibModalInstance,
-      OvhApiSms, SmsMediator, service, senders, index, option, ToastError,
+      OvhApiSms, TucSmsMediator, service, senders, index, option, ToastError,
     ) {
       this.$q = $q;
       this.$stateParams = $stateParams;
@@ -12,7 +12,7 @@ angular
       this.api = {
         sms: OvhApiSms.v6(),
       };
-      this.SmsMediator = SmsMediator;
+      this.TucSmsMediator = TucSmsMediator;
       this.service = service;
       this.senders = senders;
       this.index = index;
@@ -38,8 +38,8 @@ angular
       this.targetNumberPattern = /^\+?[\d+]{8,14}$/;
 
       this.loading.init = true;
-      return this.SmsMediator.initDeferred.promise
-        .then(() => this.SmsMediator.getApiScheme().then((schema) => {
+      return this.TucSmsMediator.initDeferred.promise
+        .then(() => this.TucSmsMediator.getApiScheme().then((schema) => {
           this.availableTrackingMedia = _.pull(schema.models['sms.ResponseTrackingMediaEnum'].enum, 'voice');
           this.trackingOptions.media = this.model.option.media;
           this.trackingSender.sender = this.model.option.sender;

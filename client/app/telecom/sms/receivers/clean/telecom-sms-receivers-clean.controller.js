@@ -1,5 +1,5 @@
 angular.module('managerApp').controller('TelecomSmsReceiversCleanCtrl', class TelecomSmsReceiversCleanCtrl {
-  constructor($q, $stateParams, $timeout, $uibModalInstance, OvhApiSms, SmsMediator, receiver) {
+  constructor($q, $stateParams, $timeout, $uibModalInstance, OvhApiSms, TucSmsMediator, receiver) {
     this.$q = $q;
     this.$stateParams = $stateParams;
     this.$timeout = $timeout;
@@ -9,7 +9,7 @@ angular.module('managerApp').controller('TelecomSmsReceiversCleanCtrl', class Te
         receivers: OvhApiSms.Receivers().v6(),
       },
     };
-    this.SmsMediator = SmsMediator;
+    this.TucSmsMediator = TucSmsMediator;
     this.receiver = receiver;
   }
 

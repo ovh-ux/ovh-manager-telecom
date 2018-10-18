@@ -3,7 +3,7 @@ angular
   .controller('TelecomSmsOptionsResponseRemoveCtrl', class TelecomSmsOptionsResponseRemoveCtrl {
     constructor(
       $q, $stateParams, $timeout, $uibModalInstance,
-      OvhApiSms, SmsMediator, service, index, option,
+      OvhApiSms, TucSmsMediator, service, index, option,
     ) {
       this.$q = $q;
       this.$stateParams = $stateParams;
@@ -12,7 +12,7 @@ angular
       this.api = {
         sms: OvhApiSms.v6(),
       };
-      this.SmsMediator = SmsMediator;
+      this.TucSmsMediator = TucSmsMediator;
       this.service = service;
       this.index = index;
       this.option = option;

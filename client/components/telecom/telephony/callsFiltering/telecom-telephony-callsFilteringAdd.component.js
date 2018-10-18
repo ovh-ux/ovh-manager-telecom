@@ -15,7 +15,7 @@ angular.module('managerApp').component('telecomTelephonyCallsFilteringAdd', {
     disableNature: '@',
   },
   templateUrl: 'components/telecom/telephony/callsFiltering/telecom-telephony-callsFilteringAdd.html',
-  controller($q, $translate, $translatePartialLoader, $uibModal, Toast, ToastError, CSVParser) {
+  controller($q, $translate, $translatePartialLoader, $uibModal, Toast, ToastError, TucCSVParser) {
     const self = this;
 
     self.screenListToAdd = {
@@ -96,7 +96,7 @@ angular.module('managerApp').component('telecomTelephonyCallsFilteringAdd', {
     self.importCSV = function (csvData) {
       let csvArray = null;
       try {
-        csvArray = CSVParser.parse(csvData);
+        csvArray = TucCSVParser.parse(csvData);
 
         // check if csv header is valid otherwise raise an error
         if (!angular.equals(csvArray[0], ['callNumber', 'nature', 'type'])) {

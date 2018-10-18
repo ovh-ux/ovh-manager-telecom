@@ -3,13 +3,13 @@ angular
   .controller('TelecomSmsOrderCtrl', class TelecomSmsOrderCtrl {
     constructor(
       $q, $translate, $filter, $stateParams,
-      atInternet, SmsMediator, OvhApiOrder, tucDebounce, Toast, SMS_ORDER_PREFIELDS_VALUES,
+      atInternet, TucSmsMediator, OvhApiOrder, tucDebounce, Toast, SMS_ORDER_PREFIELDS_VALUES,
     ) {
       this.$q = $q;
       this.$translate = $translate;
       this.$filter = $filter;
       this.$stateParams = $stateParams;
-      this.SmsMediator = SmsMediator;
+      this.TucSmsMediator = TucSmsMediator;
       this.api = {
         order: {
           sms: OvhApiOrder.Sms().v6(),
@@ -51,8 +51,8 @@ angular
       });
 
       this.loading.init = true;
-      this.SmsMediator.initAll().then(() => {
-        const availableAccounts = _.toArray(this.SmsMediator.getAccounts())
+      this.TucSmsMediator.initAll().then(() => {
+        const availableAccounts = _.toArray(this.TucSmsMediator.getAccounts())
           .sort((a, b) => a.name.localeCompare(b.name));
 
         // We have to format it to become human readable

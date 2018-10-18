@@ -1,7 +1,7 @@
 angular.module('managerApp').controller('TelecomSmsOptionsManageCtrl', class TelecomSmsOptionsManageCtrl {
-  constructor($uibModal, SmsMediator, ToastError) {
+  constructor($uibModal, TucSmsMediator, ToastError) {
     this.$uibModal = $uibModal;
-    this.SmsMediator = SmsMediator;
+    this.TucSmsMediator = TucSmsMediator;
     this.ToastError = ToastError;
   }
 
@@ -12,8 +12,8 @@ angular.module('managerApp').controller('TelecomSmsOptionsManageCtrl', class Tel
     this.service = null;
 
     this.loading.init = true;
-    return this.SmsMediator.initDeferred.promise.then(() => {
-      this.service = this.SmsMediator.getCurrentSmsService();
+    return this.TucSmsMediator.initDeferred.promise.then(() => {
+      this.service = this.TucSmsMediator.getCurrentSmsService();
     }).catch((err) => {
       this.ToastError(err);
     }).finally(() => {
@@ -23,7 +23,7 @@ angular.module('managerApp').controller('TelecomSmsOptionsManageCtrl', class Tel
 
   /**
      * Opens a modal to manage sms' options.
-     * @param  {Object} service SmsService.
+     * @param  {Object} service TucSmsService.
      */
   update(service) {
     this.$uibModal.open({
