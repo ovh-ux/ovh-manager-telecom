@@ -94,7 +94,6 @@ import 'ovh-angular-ui-confirm-modal';
 import 'ovh-ng-input-password';
 import 'ovh-ngstrap';
 import 'ovh-ui-angular';
-import 'script-loader!validator-js';
 import 'angular-translate-loader-pluggable';
 
 /* eslint-enable */

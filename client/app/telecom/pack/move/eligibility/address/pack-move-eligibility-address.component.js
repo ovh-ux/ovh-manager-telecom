@@ -9,10 +9,10 @@ angular.module('managerApp').component('packMoveEligibilityAddress', {
   controllerAs: 'PackMoveEligibilityAddress',
   controller(
     $q, $scope, $stateParams, $translate, $filter,
-    validator, OvhApiXdslEligibility, OvhApiPackXdslMove, Toast, costs,
+    OvhApiXdslEligibility, OvhApiPackXdslMove, Toast, tucValidator, costs,
   ) {
     const self = this;
-    this.validator = validator;
+    this.validator = tucValidator;
     this.loaders = {};
     this.streets = [];
 
@@ -24,7 +24,7 @@ angular.module('managerApp').component('packMoveEligibilityAddress', {
       self.cities = null;
       delete this.address.streetNumber;
       delete this.address.street;
-      if (validator.isZipcode(zipcode, ['metropolitanFrance'])) {
+      if (this.validator.tucIsZipcode(zipcode, ['metropolitanFrance'])) {
         self.loaders.cities = true;
         self.loading = true;
         OvhApiXdslEligibility.v6().getCities({

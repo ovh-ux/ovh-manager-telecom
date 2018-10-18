@@ -10,7 +10,7 @@ angular.module('managerApp')
     },
     templateUrl: 'app/telecom/pack/move/address/future/pack-move-address-future.html',
     controllerAs: 'PackMoveAddressFuture',
-    controller(validator) {
-      this.validator = validator;
+    controller(tucValidator) {
+      this.validator = tucValidator;
     },
   });

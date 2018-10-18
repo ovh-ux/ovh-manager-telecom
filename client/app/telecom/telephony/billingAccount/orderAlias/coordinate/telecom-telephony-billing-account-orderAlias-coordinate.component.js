@@ -6,7 +6,7 @@ angular.module('managerApp').component('telecomTelephonyBillingAccountOrderAlias
     regionCode: '@',
     hideChoice: '=?',
   },
-  controller(validator) {
-    this.validator = validator;
+  controller(tucValidator) {
+    this.validator = tucValidator;
   },
 });
