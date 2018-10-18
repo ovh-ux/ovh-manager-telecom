@@ -1,3 +1,22 @@
+<a name="10.8.1"></a>
+## [10.8.1](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.8.0...v10.8.1) (2018-10-18)
+
+
+### Bug Fixes
+
+* **components:** add eslintrc file ([3e32aa8](https://github.com/ovh-ux/ovh-manager-telecom/commit/3e32aa8))
+* **i18n:** retrieve translations ([6315b3a](https://github.com/ovh-ux/ovh-manager-telecom/commit/6315b3a))
+* **i18n:** submit translations ([c549dcb](https://github.com/ovh-ux/ovh-manager-telecom/commit/c549dcb))
+* **pack:** fix show and hide on init modal ([b7758b1](https://github.com/ovh-ux/ovh-manager-telecom/commit/b7758b1))
+* **pack.notification:** update fiber notification message ([3c5fbfd](https://github.com/ovh-ux/ovh-manager-telecom/commit/3c5fbfd))
+
+
+### Features
+
+* **home:** change subscription banner to live banner ([8528298](https://github.com/ovh-ux/ovh-manager-telecom/commit/8528298))
+
+
+
 <a name="10.8.0"></a>
 # [10.8.0](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.7.6...v10.8.0) (2018-10-12)
 
