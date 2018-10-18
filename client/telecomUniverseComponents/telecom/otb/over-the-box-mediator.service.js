@@ -1,4 +1,4 @@
-angular.module('managerApp').service('OverTheBoxMediator', function (OvhApiOverTheBox) {
+export default /* @ngInject */ function (OvhApiOverTheBox) {
   const self = this;
 
   /*= ============================
@@ -10,4 +10,4 @@ angular.module('managerApp').service('OverTheBoxMediator', function (OvhApiOverT
   };
 
   /* -----  End of COUNT  ------*/
-});
+}

@@ -4,6 +4,7 @@ import tucChartjs from './chartjs';
 import tucDebounce from './debounce';
 import tucTableSort from './table-sort';
 import tucTelecomFax from './telecom/fax';
+import tucTelecomOtb from './telecom/otb';
 import tucUnitHumanize from './unit/humanize';
 import tucValidator from './validator';
 
@@ -13,6 +14,7 @@ export default angular
     tucDebounce,
     tucTableSort,
     tucTelecomFax,
+    tucTelecomOtb,
     tucUnitHumanize,
     tucValidator,
   ])
