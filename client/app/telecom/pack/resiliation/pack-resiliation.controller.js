@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('PackResiliationCtrl', function ($stateParams, $state, $translate, ToastError, OvhApiPackXdslResiliation, Toast, $uibModal, $timeout, $q, OvhApiMe, PackMediator, resiliationNotification) {
+angular.module('managerApp').controller('PackResiliationCtrl', function ($stateParams, $state, $translate, ToastError, OvhApiPackXdslResiliation, Toast, $uibModal, $timeout, $q, OvhApiMe, PackMediator, resiliationNotification, tucValidator) {
   const self = this;
   self.model = {
     subServicesToKeep: {},
@@ -89,7 +89,7 @@ angular.module('managerApp').controller('PackResiliationCtrl', function ($stateP
    * @param {Date} specifiedDate Date to validate
    */
   this.checkDate = function () {
-    return !self.model.when || (validator.isDate(self.model.when)
+    return !self.model.when || (tucValidator.isDate(self.model.when)
       && (self.model.when >= self.minResiliationDate));
   };
 

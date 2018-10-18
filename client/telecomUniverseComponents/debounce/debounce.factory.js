@@ -1,4 +1,4 @@
-angular.module('managerApp').factory('debounce', ($timeout, $q) => function (func, wait, immediate) {
+export default /* @ngInject */ ($timeout, $q) => function (func, wait, immediate) {
   let timeout;
   let deferred = $q.defer();
 
@@ -23,4 +23,4 @@ angular.module('managerApp').factory('debounce', ($timeout, $q) => function (fun
     }
     return deferred.promise;
   };
-});
+};

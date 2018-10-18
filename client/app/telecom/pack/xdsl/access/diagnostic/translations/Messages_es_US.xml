@@ -43,7 +43,7 @@
 
    <translation id="pack_xdsl_access_diagnostic_line_line_test_actionPending" qtlid="26383">En cours</translation>
    <translation id="pack_xdsl_access_diagnostic_line_line_test_customerSideProblem" qtlid="310725">Problème côté client</translation>
-   <translation id="pack_xdsl_access_diagnostic_line_line_test_error" qtlid="26407">Erreur</translation>
+   <translation id="pack_xdsl_access_diagnostic_line_line_test_error" qtlid="26407">Error</translation>
    <translation id="pack_xdsl_access_diagnostic_line_line_test_noProblem" qtlid="310738">Fonctionnement OK</translation>
    <translation id="pack_xdsl_access_diagnostic_line_line_test_ovhSideProblem" qtlid="310751">Problème côté OVH</translation>
 

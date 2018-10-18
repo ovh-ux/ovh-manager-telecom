@@ -8,5 +8,5 @@
    <translation id="overTheBox_tasks_status_todo" qtlid="134605">Pendiente</translation>
    <translation id="overTheBox_tasks_status_doing" qtlid="26383">En cours</translation>
    <translation id="overTheBox_tasks_status_done" qtlid="26395">Terminée</translation>
-   <translation id="overTheBox_tasks_status_error" qtlid="26407">Erreur</translation>
+   <translation id="overTheBox_tasks_status_error" qtlid="26407">Error</translation>
 </translations>

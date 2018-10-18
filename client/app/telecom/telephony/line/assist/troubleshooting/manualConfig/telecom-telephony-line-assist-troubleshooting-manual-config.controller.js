@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyLineAssistTroubleshootingManualConfigCtrl', function (troubleshootingProcess, validator) {
+angular.module('managerApp').controller('TelecomTelephonyLineAssistTroubleshootingManualConfigCtrl', function (troubleshootingProcess, tucValidator) {
   const self = this;
 
   self.model = {
@@ -98,7 +98,7 @@ angular.module('managerApp').controller('TelecomTelephonyLineAssistTroubleshooti
   function init() {
     self.process = troubleshootingProcess;
     self.step = self.process.activeStep;
-    self.validator = validator;
+    self.validator = tucValidator;
   }
 
   /* -----  End of INITIALIZATION  ------*/
