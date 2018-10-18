@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <translations>
-   <translation id="notification_explanation" qtlid="310127">Las notificaciones de un acceso XDSL sirven para indicar cuándo un acceso ha dejado de responder y cuándo se restablece.</translation>
+   <translation id="notification_explanation">Les notifications d'un accès {{ access }} servent à indiquer lorsqu'un accès ne répond plus ainsi que le moment où il remonte.</translation>
 </translations>

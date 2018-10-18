@@ -18,7 +18,7 @@
    <translation id="telephony_line_details_hardware_combi" qtlid="359527">Combiné</translation>
    <translation id="telephony_line_details_hardware_mac" qtlid="42562">Adresse MAC</translation>
    <translation id="telephony_line_details_hardware_ip" qtlid="26191">Adresse IP</translation>
-   <translation id="telephony_line_details_hardware_port" qtlid="9034">Port</translation>
+   <translation id="telephony_line_details_hardware_port" qtlid="9034">Puerto</translation>
    <translation id="telephony_line_details_hardware_protocol" qtlid="19711">Protocole</translation>
    <translation id="telephony_line_details_hardware_infra" qtlid="125552">Infraestructura</translation>
    <translation id="telephony_line_details_hardware_status" qtlid="26443">Estado</translation>

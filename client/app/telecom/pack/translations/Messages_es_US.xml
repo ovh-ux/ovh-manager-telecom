@@ -75,7 +75,7 @@
 
 <!-- EX-EMAIL -->
    <translation id="account_name" qtlid="33598">Email</translation>
-   <translation id="password" qtlid="2270">Mot de passe</translation>
+   <translation id="password" qtlid="2270">Contraseña</translation>
    <translation id="password_confirmation" qtlid="9983">Confirmation</translation>
    <translation id="all_fields_are_required" qtlid="297579">Todos los campos son obligatorios.</translation>
    <translation id="required_fields_are_tag_with_a_star" qtlid="342793">&#160;Les champs obligatoires sont signalés par un astérisque</translation>

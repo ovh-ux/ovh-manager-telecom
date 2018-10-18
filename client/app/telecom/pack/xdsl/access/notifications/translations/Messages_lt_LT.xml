@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <translations>
-   <translation id="notification_explanation" qtlid="310127">xdsl prieigos pranešimai naudojami pranešti apie nepasiekiamumą ir kai jungtis atkuriama.</translation>
+   <translation id="notification_explanation">Les notifications d'un accès {{ access }} servent à indiquer lorsqu'un accès ne répond plus ainsi que le moment où il remonte.</translation>
 </translations>
