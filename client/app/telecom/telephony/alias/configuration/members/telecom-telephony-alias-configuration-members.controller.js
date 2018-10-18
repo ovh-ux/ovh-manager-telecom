@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationMembersEasyHuntingCtrl', function ($stateParams, $q, $translate, $timeout, OvhApiTelephony, TucToast, TucToastError) {
+angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationMembersCtrl', function ($stateParams, $q, $translate, $timeout, OvhApiTelephony, TucToast, TucToastError) {
   const self = this;
 
   function init() {

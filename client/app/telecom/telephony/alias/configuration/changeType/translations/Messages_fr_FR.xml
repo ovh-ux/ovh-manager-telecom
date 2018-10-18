@@ -25,39 +25,6 @@
 
    <translation id="telephony_alias_config_change_type_label_select" qtlid="333009">Choisissez une fonctionnalité</translation>
 
-   <translation id="telephony_alias_config_change_type_label_redirect">Redirection d’appels</translation>
-   <translation id="telephony_alias_config_change_type_desc_redirect">La redirection d’appels vous permet de rediriger les appels reçus vers la ligne ou numéro de votre choix.</translation>
-
-   <translation id="telephony_alias_config_change_type_label_ddi" qtlid="462576">Redirection avec présentation de ce numéro sur ma ligne SIP ou mon Trunk</translation>
-   <translation id="telephony_alias_config_change_type_desc_ddi" qtlid="333061">Ce mode vous permet de rediriger le numéro vers une ligne SIP ou un Trunk de votre choix.<br/><br/>Ce numéro pourra également être présenté pour les appels sortants de la ligne SIP ou du Trunk que vous choisirez.</translation>
-
-   <translation id="telephony_alias_config_change_type_label_conference" qtlid="333074">Conférence</translation>
-   <translation id="telephony_alias_config_change_type_desc_conference">La conférence vous permet d’être en communication téléphonique avec plusieurs interlocuteurs en simultané.</translation>
-
-   <translation id="telephony_alias_config_change_type_label_cloudIvr" qtlid="333100">Serveur vocal interactif</translation>
-   <translation id="telephony_alias_config_change_type_desc_cloudIvr">Un serveur vocal interactif vous permet de guider l’appelant vers le service adéquat via plusieurs choix à effectuer.</translation>
-
-   <translation id="telephony_alias_config_change_type_label_svi">SVI VXML</translation>
-   <translation id="telephony_alias_config_change_type_desc_svi">Le Serveur vocal interactif en VXML vous permet, via une configuration 2.1, d’utiliser un menu interactif avancé. L’appelant est invité, via des messages pré-enregistrés ou une synthèse vocale, à interagir avec le serveur grâce aux touches de son téléphone. Selon la configuration choisie, il sera possible de lire des sons ou de transférer un appel vers d’autres numéros. Notez que seuls les transferts vers les numéros OVH sont possibles.</translation>
-
-   <translation id="telephony_alias_config_change_type_label_easyHunting" qtlid="324457">File d'appels</translation>
-   <translation id="telephony_alias_config_change_type_desc_easyHunting" qtlid="333152">Avec la file d'appels, vous pouvez gérer le flux de vos appels.<br/><br/>Jouez un son d'accueil, personnalisez votre musique d'attente et faites sonner vos collaborateurs ou différents services en fonction de stratégies que vous définissez, sur des plages horaires choisies. Vous pouvez définir le nombre maximum d'appelants dans la file d'appels et le temps d'attente maximum. Si vous ne pouvez pas répondre, votre interlocuteur sera redirigé vers le répondeur d'une ligne OVH.<br/><br/><b class="text-danger">Veuillez noter que dans ce mode de fonctionnement, les renvois d'appels des membres de votre file d'appels seront automatiquement désactivés.</b></translation>
-
-   <translation id="telephony_alias_config_change_type_label_cloudHunting" qtlid="333165">File d'appels (mode expert)</translation>
-   <translation id="telephony_alias_config_change_type_desc_cloudHunting">Avec le mode expert de la file d’appels, vous pouvez gérer le flux de vos appels de bout en bout.<br/>Sur une interface similaire à celle du serveur vocal interactif, programmez étape par étape le déroulement de vos appels entrants.<br/>En fonction des numéros appelants ou de plages horaires, jouez des sons d’accueils, personnalisez votre musique d’attente, faites sonner vos collaborateurs ou différents services suivant des stratégies que vous définissez.<br/>Notez que dans ce mode de fonctionnement, les renvois d’appels des membres de votre file d’appels seront automatiquement désactivés.</translation>
-
-   <translation id="telephony_alias_config_change_type_label_easyPabx" qtlid="60119">Easy PABX</translation>
-   <translation id="telephony_alias_config_change_type_desc_easyPabx" qtlid="333191">Avec l'easyPABX ne perdez plus d'appels. Redirigez votre numéro vers une ou plusieurs lignes OVH ou numéros externes. Vous dispatchez vos appels entrants suivant des stratégies que vous définissez. Si vous ne pouvez pas repondre, votre interlocuteur sera redirigé vers un répondeur.</translation>
-
-   <translation id="telephony_alias_config_change_type_label_miniPabx" qtlid="333204">Mini PABX</translation>
-   <translation id="telephony_alias_config_change_type_desc_miniPabx" qtlid="333217">Avec le miniPABX gérez un flux d'appels vers différents services ou collaborateurs en fonction de leur disponibilité. Vous choisissez la répartition des appels, le nombre et le temps maximum des appels dans la file d'appels.</translation>
-
-   <translation id="telephony_alias_config_change_type_label_contactCenterSolution" qtlid="324457">File d’appels</translation>
-   <translation id="telephony_alias_config_change_type_desc_contactCenterSolution">La file d’appels vous permet de rediriger un appel entrant vers plusieurs lignes, rattachées ou non à votre identifiant OVH.</translation>
-
-   <translation id="telephony_alias_config_change_type_label_contactCenterSolutionExpert">Contact Center Solution</translation>
-   <translation id="telephony_alias_config_change_type_desc_contactCenterSolutionExpert">Avec le mode expert de Contact Center Solution, vous pouvez gérer le flux de vos appels de bout en bout. En fonction des numéros appelants ou des plages horaires, choisissez vous-même votre stratégie. Jouez des sons d'accueils, personnalisez votre musique d'attente, faites sonner les postes de vos différents services.</translation>
-
    <translation id="telephony_alias_config_change_type_label_empty" qtlid="333230">Aucune fonctionnalité</translation>
    <translation id="telephony_alias_config_change_type_desc_empty" qtlid="333243">Pas de fonctionnalité</translation>
 

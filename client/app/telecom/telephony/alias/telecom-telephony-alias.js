@@ -12,5 +12,6 @@ angular.module('managerApp').config(($stateProvider) => {
       },
     },
     translations: ['.'],
+    redirectTo: 'telecom.telephony.alias.dashboard',
   });
 });

@@ -12,10 +12,12 @@
  *                          (see {@link managerApp.object:VoipService `VoipService` constructor}
  *                          for availables options properties).
  */
-angular.module('managerApp').factory('VoipServiceAlias', (VoipService) => {
+angular.module('managerApp').factory('VoipServiceAlias', (VoipService, TELEPHONY_ALIAS) => {
   class VoipServiceAlias extends VoipService {
     constructor(options = {}) {
       super(options);
+
+      this.TELEPHONY_ALIAS = TELEPHONY_ALIAS;
     }
 
     /**
@@ -32,6 +34,20 @@ angular.module('managerApp').factory('VoipServiceAlias', (VoipService) => {
       const publicOfferName = _.get(this, 'getPublicOffer.name', '');
       const regExp = new RegExp(/portability/);
       return regExp.test(publicOfferName);
+    }
+
+    /**
+     *  @ngdoc method
+     *  @name managerApp.object:VoipServiceAlias#isContactCenterSolution
+     *  @propertyOf managerApp.object:VoipServiceAlias
+     *
+     *  @description
+     *  Check if the alias feature type is equivalent to Contact Center Solution feature
+     *
+     *  @return {Boolean}
+     */
+    isContactCenterSolution() {
+      return this.TELEPHONY_ALIAS.featureTypes.contactCenterSolution.includes(this.featureType);
     }
   }
 

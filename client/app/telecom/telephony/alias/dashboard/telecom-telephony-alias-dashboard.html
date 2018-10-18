@@ -36,7 +36,7 @@
                     </oui-tile-description>
                 </oui-tile-definition>
                 <oui-tile-definition data-term="{{:: 'telephony_alias_information_coordinates_directory' | translate }}"
-                                     data-description="{{:: ($ctrl.alias.directory.displayMarketingDirectory ? 'yes' : 'no') | translate | capitalize }}"></oui-tile-definition>
+                                     data-description="{{:: ($ctrl.alias.directory.displayMarketingDirectory ? 'yes' : 'no') | translate | tucCapitalize }}"></oui-tile-definition>
                 <oui-tile-button data-on-click="$ctrl.$state.go('telecom.telephony.alias.contact')">
                     <span data-translate="telephony_alias_information_contact_edit"></span>
             </oui-tile-button>

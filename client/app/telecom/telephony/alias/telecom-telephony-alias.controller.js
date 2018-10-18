@@ -51,9 +51,6 @@ angular.module('managerApp').controller('TelecomTelephonyAliasCtrl', class Telec
     }).catch((error) => {
       this.TucToast.error([this.$translate.instant('telephony_alias_load_error'), _.get(error, 'data.message').join(' ')]);
     }).finally(() => {
-      if (_(this.$state.current.name).isEqual('telecom.telephony.alias')) {
-        this.$state.go('telecom.telephony.alias.dashboard');
-      }
       this.loading = false;
     });
   }
@@ -73,9 +70,13 @@ angular.module('managerApp').controller('TelecomTelephonyAliasCtrl', class Telec
           title: this.alias.getDisplayedName(),
         }, this.alias.serviceName, 'telecom-telephony-section', this.alias.billingAccount);
       }).catch((error) => {
-        this.number.description = oldDescription;
+        this.alias.description = oldDescription;
         this.TucToast.error([this.$translate.instant('telephony_alias_rename_error', this.serviceName), _.get(error, 'data.message', error.message)].join(' '));
       });
     };
+  }
+
+  isContactCenterSolution() {
+    return this.alias.isContactCenterSolution();
   }
 });

@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationModeEasyHuntingCtrl', function ($stateParams, $q, $translate, $uibModal, OvhApiTelephony, OvhApiMe, TucToast, TucToastError) {
+angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationModeCtrl', function ($stateParams, $q, $translate, $uibModal, OvhApiTelephony, OvhApiMe, TucToast, TucToastError) {
   const self = this;
 
   function fetchEnums() {

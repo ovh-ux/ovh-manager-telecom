@@ -7,12 +7,12 @@
         <h1 data-translate="telephony_alias_configuration_mode_title"></h1>
     </header>
 
-    <div class="text-center" data-ng-if="ModeEasyHuntingCtrl.isLoading">
+    <div class="text-center" data-ng-if="$ctrl.isLoading">
         <oui-spinner></oui-spinner>
     </div>
 
     <div class="telecom-section-content"
-         data-ng-if="!ModeEasyHuntingCtrl.isLoading">
+         data-ng-if="!$ctrl.isLoading">
 
         <tuc-toast-message></tuc-toast-message>
 
@@ -40,7 +40,7 @@
                 </header>
                 <form id="easyHuntingOptionsForm"
                       name="easyHuntingOptionsForm"
-                      data-ng-submit="ModeEasyHuntingCtrl.updateOptions()"
+                      data-ng-submit="$ctrl.updateOptions()"
                       novalidate>
 
                     <div class="form-group">
@@ -52,9 +52,9 @@
                                 name="showCallerNumber"
                                 class="form-control"
                                 required
-                                data-ng-model="ModeEasyHuntingCtrl.optionsForm.showCallerNumber"
-                                data-ng-disabled="ModeEasyHuntingCtrl.isUpdating"
-                                data-ng-options="type as ('telephony_alias_configuration_mode_easyhunting_caller_' + type | translate) for type in ModeEasyHuntingCtrl.enums.caller">
+                                data-ng-model="$ctrl.optionsForm.showCallerNumber"
+                                data-ng-disabled="$ctrl.isUpdating"
+                                data-ng-options="type as ('telephony_alias_configuration_mode_easyhunting_caller_' + type | translate) for type in $ctrl.enums.caller">
                         </select>
                     </div>
 
@@ -63,8 +63,8 @@
                             <input type="checkbox"
                                    id="anonymousRejection"
                                    name="anonymousRejection"
-                                   data-ng-disabled="ModeEasyHuntingCtrl.isUpdating"
-                                   data-ng-model="ModeEasyHuntingCtrl.optionsForm.anonymousRejection" />
+                                   data-ng-disabled="$ctrl.isUpdating"
+                                   data-ng-model="$ctrl.optionsForm.anonymousRejection" />
                             <span data-translate="telephony_alias_configuration_mode_easyhunting_anonymous_rejection"></span>
                         </label>
                     </div>
@@ -74,8 +74,8 @@
                             <input type="checkbox"
                                    id="followCall"
                                    name="followCall"
-                                   data-ng-disabled="ModeEasyHuntingCtrl.isUpdating"
-                                   data-ng-model="ModeEasyHuntingCtrl.queueOptionsForm.followCallForwards" />
+                                   data-ng-disabled="$ctrl.isUpdating"
+                                   data-ng-model="$ctrl.queueOptionsForm.followCallForwards" />
                             <span data-translate="telephony_alias_configuration_mode_easyhunting_call_follow"></span>
                         </label>
                     </div>
@@ -89,9 +89,9 @@
                                 name="voicemail"
                                 class="form-control"
                                 required
-                                data-ng-disabled="ModeEasyHuntingCtrl.isUpdating"
-                                data-ng-model="ModeEasyHuntingCtrl.optionsForm.voicemail"
-                                data-ng-options="number as (number | tucPhoneNumber) for number in ModeEasyHuntingCtrl.voicemail">
+                                data-ng-disabled="$ctrl.isUpdating"
+                                data-ng-model="$ctrl.optionsForm.voicemail"
+                                data-ng-options="number as (number | tucPhoneNumber) for number in $ctrl.voicemail">
                             <option value="" data-translate="telephony_alias_configuration_mode_easyhunting_none"></option>
                         </select>
                     </div>
@@ -105,13 +105,13 @@
                                 name="strategy"
                                 class="form-control"
                                 required
-                                data-ng-disabled="ModeEasyHuntingCtrl.isUpdating"
-                                data-ng-model="ModeEasyHuntingCtrl.optionsForm.strategy"
-                                data-ng-options="strategy as ('telephony_alias_configuration_mode_easyhunting_strategy_' + strategy | translate) for strategy in ModeEasyHuntingCtrl.enums.strategy">
+                                data-ng-disabled="$ctrl.isUpdating"
+                                data-ng-model="$ctrl.optionsForm.strategy"
+                                data-ng-options="strategy as ('telephony_alias_configuration_mode_easyhunting_strategy_' + strategy | translate) for strategy in $ctrl.enums.strategy">
                         </select>
                         <span class="help-block">
                             <i class="ovh-font ovh-font-info"></i>
-                            <span data-translate="{{ 'telephony_alias_configuration_mode_easyhunting_strategy_' + ModeEasyHuntingCtrl.optionsForm.strategy + '_info' | translate }}"></span>
+                            <span data-translate="{{ 'telephony_alias_configuration_mode_easyhunting_strategy_' + $ctrl.optionsForm.strategy + '_info' | translate }}"></span>
                         </span>
                     </div>
 
@@ -123,8 +123,8 @@
                         <input-number-spinner id="queueSize"
                                               name="queueSize"
                                               class="d-inline-block"
-                                              data-ng-disabled="ModeEasyHuntingCtrl.isUpdating"
-                                              data-ng-model="ModeEasyHuntingCtrl.optionsForm.queueSize"
+                                              data-ng-disabled="$ctrl.isUpdating"
+                                              data-ng-model="$ctrl.optionsForm.queueSize"
                                               data-input-number-spinner-min="0"
                                               data-input-number-spinner-max="2147483647">
                         </input-number-spinner>
@@ -138,8 +138,8 @@
                         <input-number-spinner id="waitTime"
                                               name="waitTime"
                                               class="d-inline-block"
-                                              data-ng-disabled="ModeEasyHuntingCtrl.isUpdating"
-                                              data-ng-model="ModeEasyHuntingCtrl.optionsForm.maxWaitTime"
+                                              data-ng-disabled="$ctrl.isUpdating"
+                                              data-ng-model="$ctrl.optionsForm.maxWaitTime"
                                               data-input-number-spinner-min="0"
                                               data-input-number-spinner-max="2147483647">
                         </input-number-spinner>
@@ -154,15 +154,15 @@
                                 name="toneOnOverflow"
                                 class="form-control"
                                 required
-                                data-ng-disabled="ModeEasyHuntingCtrl.isUpdating"
-                                data-ng-model="ModeEasyHuntingCtrl.queueOptionsForm.actionOnOverflowParam"
-                                data-ng-options="sound.soundId as sound.name for sound in ModeEasyHuntingCtrl.sounds">
+                                data-ng-disabled="$ctrl.isUpdating"
+                                data-ng-model="$ctrl.queueOptionsForm.actionOnOverflowParam"
+                                data-ng-options="sound.soundId as sound.name for sound in $ctrl.sounds">
                             <option value="" data-translate="telephony_alias_configuration_mode_easyhunting_none"></option>
                         </select>
                         <button type="button"
                                 class="btn btn-default mt-2"
-                                data-ng-disabled="ModeEasyHuntingCtrl.managingSounds || ModeEasyHuntingCtrl.isUpdating"
-                                data-ng-click="ModeEasyHuntingCtrl.openManageSoundsHelper('toneOnOverflow')"
+                                data-ng-disabled="$ctrl.managingSounds || $ctrl.isUpdating"
+                                data-ng-click="$ctrl.openManageSoundsHelper('toneOnOverflow')"
                                 data-translate="telephony_alias_configuration_mode_file">
                         </button>
                     </div>
@@ -176,15 +176,15 @@
                                 name="toneOnOpening"
                                 class="form-control"
                                 required
-                                data-ng-disabled="ModeEasyHuntingCtrl.isUpdating"
-                                data-ng-model="ModeEasyHuntingCtrl.optionsForm.toneOnOpening"
-                                data-ng-options="sound.soundId as sound.name for sound in ModeEasyHuntingCtrl.sounds">
+                                data-ng-disabled="$ctrl.isUpdating"
+                                data-ng-model="$ctrl.optionsForm.toneOnOpening"
+                                data-ng-options="sound.soundId as sound.name for sound in $ctrl.sounds">
                             <option value="" data-translate="telephony_alias_configuration_mode_easyhunting_none"></option>
                         </select>
                         <button type="button"
                                 class="btn btn-default mt-2"
-                                data-ng-disabled="ModeEasyHuntingCtrl.managingSounds || ModeEasyHuntingCtrl.isUpdating"
-                                data-ng-click="ModeEasyHuntingCtrl.openManageSoundsHelper('toneOnOpening')"
+                                data-ng-disabled="$ctrl.managingSounds || $ctrl.isUpdating"
+                                data-ng-click="$ctrl.openManageSoundsHelper('toneOnOpening')"
                                 data-translate="telephony_alias_configuration_mode_file">
                         </button>
                     </div>
@@ -198,15 +198,15 @@
                                 name="toneOnHold"
                                 class="form-control"
                                 required
-                                data-ng-disabled="ModeEasyHuntingCtrl.isUpdating"
-                                data-ng-model="ModeEasyHuntingCtrl.optionsForm.toneOnHold"
-                                data-ng-options="sound.soundId as sound.name for sound in ModeEasyHuntingCtrl.sounds">
+                                data-ng-disabled="$ctrl.isUpdating"
+                                data-ng-model="$ctrl.optionsForm.toneOnHold"
+                                data-ng-options="sound.soundId as sound.name for sound in $ctrl.sounds">
                             <option value="" data-translate="telephony_alias_configuration_mode_easyhunting_none"></option>
                         </select>
                         <button type="button"
                                 class="btn btn-default mt-2"
-                                data-ng-disabled="ModeEasyHuntingCtrl.managingSounds || ModeEasyHuntingCtrl.isUpdating"
-                                data-ng-click="ModeEasyHuntingCtrl.openManageSoundsHelper('toneOnHold')"
+                                data-ng-disabled="$ctrl.managingSounds || $ctrl.isUpdating"
+                                data-ng-click="$ctrl.openManageSoundsHelper('toneOnHold')"
                                 data-translate="telephony_alias_configuration_mode_file">
                         </button>
                     </div>
@@ -220,34 +220,34 @@
                                 name="toneOnClosing"
                                 class="form-control"
                                 required
-                                data-ng-disabled="ModeEasyHuntingCtrl.isUpdating"
-                                data-ng-model="ModeEasyHuntingCtrl.optionsForm.toneOnClosing"
-                                data-ng-options="sound.soundId as sound.name for sound in ModeEasyHuntingCtrl.sounds">
+                                data-ng-disabled="$ctrl.isUpdating"
+                                data-ng-model="$ctrl.optionsForm.toneOnClosing"
+                                data-ng-options="sound.soundId as sound.name for sound in $ctrl.sounds">
                             <option value="" data-translate="telephony_alias_configuration_mode_easyhunting_none"></option>
                         </select>
                         <button type="button"
                                 class="btn btn-default mt-2"
-                                data-ng-disabled="ModeEasyHuntingCtrl.managingSounds || ModeEasyHuntingCtrl.isUpdating"
-                                data-ng-click="ModeEasyHuntingCtrl.openManageSoundsHelper('toneOnClosing')"
+                                data-ng-disabled="$ctrl.managingSounds || $ctrl.isUpdating"
+                                data-ng-click="$ctrl.openManageSoundsHelper('toneOnClosing')"
                                 data-translate="telephony_alias_configuration_mode_file">
                         </button>
                     </div>
 
                     <div class="form-group"
-                         data-ng-if="ModeEasyHuntingCtrl.hasChanges()">
+                         data-ng-if="$ctrl.hasChanges()">
                         <button type="submit"
                                 class="btn btn-primary"
-                                data-ng-disabled="ModeEasyHuntingCtrl.isUpdating">
+                                data-ng-disabled="$ctrl.isUpdating">
                             <oui-spinner class="mr-2"
-                                         data-ng-if="ModeEasyHuntingCtrl.isUpdating"
+                                         data-ng-if="$ctrl.isUpdating"
                                          data-size="s">
                             </oui-spinner>
                             <span data-translate="modify"></span>
                         </button>
                         <button type="button"
                                 class="btn btn-default"
-                                data-ng-disabled="ModeEasyHuntingCtrl.isUpdating"
-                                data-ng-click="ModeEasyHuntingCtrl.undoChanges()"
+                                data-ng-disabled="$ctrl.isUpdating"
+                                data-ng-click="$ctrl.undoChanges()"
                                 data-translate="cancel">
                         </button>
                     </div>

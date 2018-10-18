@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationCallsFilteringEasyHuntingCtrl', function ($stateParams, $q, $translate, OvhApiTelephony, TucToastError, tucTelephonyBulk, TucToast) {
+angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationCallsFilteringCtrl', function ($stateParams, $q, $translate, OvhApiTelephony, TucToastError, tucTelephonyBulk, TucToast) {
   const self = this;
 
   self.fetchStatus = function () {

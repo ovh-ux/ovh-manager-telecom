@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationTimeConditionEasyHuntingCtrl', function (
+angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationTimeConditionCtrl', function (
   $q, $stateParams, $translate, $uibModal,
   OvhApiTelephony, TelephonyMediator, TucToast, uiCalendarConfig, tucTelephonyBulk,
   VoipTimeConditionCondition, voipTimeConditionConfiguration,

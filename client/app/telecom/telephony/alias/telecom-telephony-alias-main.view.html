@@ -11,11 +11,11 @@
         <header class="page-header"
                 role="banner">
             <!-- GROUP TITLE -->
-            <tuc-editable-service-name data-tuc-editable-service-name-title="$ctrl.number.getDisplayedName()"
-                                   data-tuc-editable-service-name-title-on-save="$ctrl.numberDescriptionSave"
-                                   data-tuc-editable-service-name-service-name="$ctrl.number.serviceName"
-                                   data-ng-if="$ctrl.serviceName"
-                                   data-maxlength="25">
+            <tuc-editable-service-name data-tuc-editable-service-name-title="$ctrl.alias.getDisplayedName()"
+                                       data-editable-service-name-title-on-save="$ctrl.aliasDescriptionSave()"
+                                       data-tuc-editable-service-name-service-name="$ctrl.alias.serviceName"
+                                       data-ng-if="$ctrl.serviceName"
+                                       data-maxlength="25">
             </tuc-editable-service-name>
         </header>
 
@@ -25,9 +25,30 @@
                 <oui-header-tabs-item data-text="{{:: 'telephony_alias_tab_number' | translate }}"
                                       data-state="telecom.telephony.alias.dashboard"
                                       data-disabled="!$ctrl.serviceName"></oui-header-tabs-item>
+                <oui-header-tabs-dropdown data-text="{{:: 'telephony_alias_tab_number_configuration' | translate }}"
+                                          data-ng-if="$ctrl.alias.featureType !== 'empty'">
+                    <oui-header-tabs-item data-text="{{:: 'telephony_alias_tab_item_line_management' | translate }}"
+                                          data-state="telecom.telephony.alias.configuration.members"
+                                          data-ng-if="$ctrl.isContactCenterSolution()"></oui-header-tabs-item>
+                    <oui-header-tabs-item data-text="{{:: 'telephony_alias_tab_item_sounds_waiting_management' | translate }}"
+                                          data-state="telecom.telephony.alias.configuration.mode"
+                                          data-ng-if="$ctrl.isContactCenterSolution()"></oui-header-tabs-item>
+                    <oui-header-tabs-item data-text="{{:: 'telephony_alias_tab_item_time_condition_management' | translate }}"
+                                          data-state="telecom.telephony.alias.configuration.timeCondition"
+                                          data-ng-if="$ctrl.isContactCenterSolution()"></oui-header-tabs-item>
+                    <oui-header-tabs-item data-text="{{:: 'telephony_alias_tab_item_calls_filtering_management' | translate }}"
+                                          data-state="telecom.telephony.alias.configuration.callsFiltering"
+                                          data-ng-if="$ctrl.isContactCenterSolution()"></oui-header-tabs-item>
+                    <oui-header-tabs-item data-text="{{:: 'telephony_alias_tab_item_' + $ctrl.alias.featureType + '_management' | translate }}"
+                                          data-state="telecom.telephony.alias.configuration"
+                                          data-ng-if="!$ctrl.isContactCenterSolution()"></oui-header-tabs-item>
+                    <oui-header-tabs-divider></oui-header-tabs-divider>
+                    <oui-header-tabs-item data-text="{{:: 'telephony_alias_tab_item_change_featureType' | translate }}"
+                                          data-state="telecom.telephony.alias.configuration.changeType"></oui-header-tabs-item>
+                </oui-header-tabs-dropdown>
                 <oui-header-tabs-item data-text="{{:: 'telephony_alias_tab_number_configuration' | translate }}"
-                                      data-state="telecom.telephony.alias.configuration"
-                                      data-disabled="!$ctrl.serviceName || $ctrl.alias.featureType === 'empty'"></oui-header-tabs-item>
+                                      data-state="telecom.telephony.alias.configuration.changeType"
+                                      data-ng-if="$ctrl.alias.featureType === 'empty'"></oui-header-tabs-item>
                 <oui-header-tabs-item data-text="{{:: 'telephony_alias_tab_consumption' | translate }}"
                                       data-state="telecom.telephony.alias.consumption"
                                       data-ng-if="$ctrl.serviceName && $ctrl.hasConsumption()"></oui-header-tabs-item>

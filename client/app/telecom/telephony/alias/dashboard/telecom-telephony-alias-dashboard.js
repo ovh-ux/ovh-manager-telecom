@@ -1,6 +1,6 @@
 angular.module('managerApp').config(($stateProvider) => {
   $stateProvider.state('telecom.telephony.alias.dashboard', {
-    url: '/dashboard',
+    url: '',
     views: {
       'aliasInnerView@telecom.telephony.alias': {
         templateUrl: 'app/telecom/telephony/alias/dashboard/telecom-telephony-alias-dashboard.html',
@@ -8,6 +8,6 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: '$ctrl',
       },
     },
-    translations: ['./..'],
+    translations: ['..'],
   });
 });
