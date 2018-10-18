@@ -1,3 +1,13 @@
+<a name="10.8.2"></a>
+## [10.8.2](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.8.1...v10.8.2) (2018-10-18)
+
+
+### Bug Fixes
+
+* **dashboard:** add image query param ([7a611cb](https://github.com/ovh-ux/ovh-manager-telecom/commit/7a611cb))
+
+
+
 <a name="10.8.1"></a>
 ## [10.8.1](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.8.0...v10.8.1) (2018-10-18)
 
