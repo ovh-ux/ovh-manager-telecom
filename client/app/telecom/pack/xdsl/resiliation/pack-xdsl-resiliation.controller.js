@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('PackXdslResiliationCtrl', function ($scope, $stateParams, $translate, $q, $timeout, $filter, OvhApiXdsl, ToastError, OvhApiXdslResiliation, Toast) {
+angular.module('managerApp').controller('PackXdslResiliationCtrl', function ($scope, $stateParams, $translate, $q, $timeout, $filter, OvhApiXdsl, ToastError, OvhApiXdslResiliation, Toast, tucValidator) {
   const self = this;
 
   this.loading = true;
@@ -76,7 +76,7 @@ angular.module('managerApp').controller('PackXdslResiliationCtrl', function ($sc
    */
   this.checkDate = function (specifiedDate) {
     return !specifiedDate
-      || (validator.isDate(specifiedDate) && (specifiedDate >= self.minResiliationDate));
+      || (tucValidator.isDate(specifiedDate) && (specifiedDate >= self.minResiliationDate));
   };
 
   /**
