@@ -1,7 +1,7 @@
 angular.module('managerApp').controller('PackCtrl', class PackCtrl {
   constructor(
     $q, $scope, $stateParams, $translate,
-    DASHBOARD, OvhApiPackXdsl, PACK, resiliationNotification, SidebarMenu, Toast,
+    DASHBOARD, OvhApiPackXdsl, PACK, resiliationNotification, SidebarMenu, Toast, tucValidator,
   ) {
     this.$q = $q;
     this.$scope = $scope;
@@ -13,6 +13,7 @@ angular.module('managerApp').controller('PackCtrl', class PackCtrl {
     this.resiliationNotification = resiliationNotification;
     this.SidebarMenu = SidebarMenu;
     this.Toast = Toast;
+    this.validator = tucValidator;
   }
 
   $onInit() {

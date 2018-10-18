@@ -16,7 +16,6 @@
     "JSURL": true,
     "angular": true,
     "moment": true,
-    "punycode": true,
     "URI": true,
     "ipaddr": true,
     "JustGage": true,

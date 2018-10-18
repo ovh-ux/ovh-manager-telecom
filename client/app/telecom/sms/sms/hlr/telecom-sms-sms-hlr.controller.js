@@ -3,7 +3,7 @@ angular
   .controller('TelecomSmsSmsHlrCtrl', class TelecomSmsSmsHlrCtrl {
     constructor(
       $stateParams, $q, $translate,
-      OvhApiSms, TucSmsMediator, validator, Toast, ToastError, SMS_URL,
+      OvhApiSms, TucSmsMediator, tucValidator, Toast, ToastError, SMS_URL,
     ) {
       this.$stateParams = $stateParams;
       this.$q = $q;
@@ -14,7 +14,7 @@ angular
         },
       };
       this.TucSmsMediator = TucSmsMediator;
-      this.validator = validator;
+      this.validator = tucValidator;
       this.Toast = Toast;
       this.ToastError = ToastError;
       this.constant = { SMS_URL };

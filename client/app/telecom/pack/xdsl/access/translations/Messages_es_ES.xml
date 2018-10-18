@@ -4,14 +4,14 @@
    <translation id="xdsl_details_NRA_title" qtlid="40102">NRA</translation>
    <translation id="xdsl_details_NRA_distance" qtlid="63040">Distancia del NRA</translation>
    <translation id="xdsl_details_NRA_name" qtlid="309477">Nombre del NRA</translation>
-   <translation id="xdsl_details_NRO_title">NRO</translation>
-   <translation id="xdsl_details_NRO_name">Nom du NRO</translation>
+   <translation id="xdsl_details_NRO_title" qtlid="506936">NRO</translation>
+   <translation id="xdsl_details_NRO_name" qtlid="506949">Nom du NRO</translation>
    <translation id="xdsl_details_sectionLength_values" qtlid="309490">{{diameter}} mm: {{length}} m</translation>
    <translation id="xdsl_details_cable_type" qtlid="309503">Tipo de cable</translation>
    <translation id="xdsl_details_att" qtlid="40126">Atenuación</translation>
    <translation id="xdsl_details_db" qtlid="309516">{{mitigation}} dB</translation>
-   <translation id="xdsl_details_PTO_title">PTO</translation>
-   <translation id="xdsl_details_PTO_reference">Référence du PTO</translation>
+   <translation id="xdsl_details_PTO_title" qtlid="506962">PTO</translation>
+   <translation id="xdsl_details_PTO_reference" qtlid="506975">Référence du PTO</translation>
    <translation id="xdsl_details_syncDown" qtlid="309529">{{syncDown}} Kbps</translation>
    <translation id="xdsl_details_syncUp" qtlid="309542">{{syncUp}} Kbps</translation>
    <translation id="xdsl_details_metters" qtlid="309555">{{distance}} metros</translation>
@@ -23,7 +23,7 @@
 
    <translation id="xdsl_details_caracteristics" qtlid="309568">Características</translation>
    <translation id="xdsl_details_mac_address" qtlid="42562">Dirección MAC</translation>
-   <translation id="xdsl_details_serial_number">Numéro de série</translation>
+   <translation id="xdsl_details_serial_number" qtlid="506988">Numéro de série</translation>
    <translation id="xdsl_details_modem_model" qtlid="455998">Modèle du modem</translation>
    <translation id="xdsl_details_mac_address_description" qtlid="309581">Dirección física del dispositivo</translation>
    <translation id="xdsl_details_sync_label" qtlid="60698">Sincronización</translation>
