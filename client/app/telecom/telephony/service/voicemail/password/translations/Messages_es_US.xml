@@ -6,7 +6,7 @@
    <translation id="telephony_line_answer_voicemail_password_number_external" qtlid="337663">De l'extérieur :</translation>
    <translation id="telephony_line_answer_voicemail_password_change_title" qtlid="337676">Mot de passe du répondeur</translation>
    <translation id="telephony_line_answer_voicemail_password_input_label" qtlid="459937">Nouveau mot de passe (composé de 4 chiffres) :</translation>
-   <translation id="telephony_line_answer_voicemail_password_input_placeholder" qtlid="2270">Mot de passe</translation>
+   <translation id="telephony_line_answer_voicemail_password_input_placeholder" qtlid="2270">Contraseña</translation>
    <translation id="telephony_line_answer_voicemail_password_input_length_warning" qtlid="337689">Votre mot de passe doit comporter 4 chiffres.</translation>
    <translation id="telephony_line_answer_voicemail_passwordConfirm_input_label" qtlid="197063">Repetir contraseña:</translation>
    <translation id="telephony_line_answer_voicemail_passwordConfirm_input_placeholder" qtlid="387328">Saisissez à nouveau votre mot de passe</translation>

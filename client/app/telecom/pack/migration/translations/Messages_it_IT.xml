@@ -95,7 +95,7 @@
    <translation id="telecom_pack_migration_confirm_resume_voipEcoFax" qtlid="332463">Linea EcoFax</translation>
    <translation id="telecom_pack_migration_confirm_resume_voipLine" qtlid="83145">Linea telefonica</translation>
    <translation id="telecom_pack_migration_confirm_resume_xdslAccess" qtlid="305603">Accesso Internet</translation>
-   <translation id="telecom_pack_migration_confirm_resume_emailPro">Compte emailPro</translation>
+   <translation id="telecom_pack_migration_confirm_resume_emailPro" qtlid="506793">Compte emailPro</translation>
 
    <translation id="telecom_pack_migration_confirm_contracts_accept_title" qtlid="213336">Contratti</translation>
    <translation id="telecom_pack_migration_confirm_contracts_accept_button" qtlid="332476">Conferma la modifica della tua offerta</translation>
@@ -132,19 +132,19 @@
    <translation id="telecom_pack_migration_shipping_mode" qtlid="384636">Modalità di consegna</translation>
 
 <!-- BUILDING DETAILS -->
-   <translation id="telecom_pack_migration_building_details_select_engagment">Veuillez choisir votre engagement</translation>
-   <translation id="telecom_pack_migration_building_details_engagment_month">mois</translation>
-   <translation id="telecom_pack_migration_building_details_select_building">Veuillez indiquer votre bâtiment</translation>
-   <translation id="telecom_pack_migration_building_details_select_a_building">Sélectionner un bâtiment</translation>
-   <translation id="telecom_pack_migration_building_details_select_stair">Veuillez indiquer votre escalier</translation>
-   <translation id="telecom_pack_migration_building_details_select_a_stair">Sélectionner un escalier</translation>
-   <translation id="telecom_pack_migration_building_details_select_floor">Veuillez indiquer votre étage</translation>
-   <translation id="telecom_pack_migration_building_details_select_a_floor">Sélectionner un étage</translation>
-   <translation id="telecom_pack_migration_building_details_building">Bâtiment</translation>
-   <translation id="telecom_pack_migration_building_details_stair">Escalier</translation>
-   <translation id="telecom_pack_migration_building_details_floor">Etage</translation>
-   <translation id="telecom_pack_migration_building_details_confirm">Confirmer la sélection</translation>
-   <translation id="telecom_pack_migration_building_details_none">Aucun</translation>
-   <translation id="telecom_pack_migration_building_details_unknown">Inconnu</translation>
+   <translation id="telecom_pack_migration_building_details_select_engagment" qtlid="506806">Veuillez choisir votre engagement</translation>
+   <translation id="telecom_pack_migration_building_details_engagment_month" qtlid="40222">mese</translation>
+   <translation id="telecom_pack_migration_building_details_select_building" qtlid="506819">Veuillez indiquer votre bâtiment</translation>
+   <translation id="telecom_pack_migration_building_details_select_a_building" qtlid="506832">Sélectionner un bâtiment</translation>
+   <translation id="telecom_pack_migration_building_details_select_stair" qtlid="506845">Veuillez indiquer votre escalier</translation>
+   <translation id="telecom_pack_migration_building_details_select_a_stair" qtlid="506858">Sélectionner un escalier</translation>
+   <translation id="telecom_pack_migration_building_details_select_floor" qtlid="506871">Veuillez indiquer votre étage</translation>
+   <translation id="telecom_pack_migration_building_details_select_a_floor" qtlid="506884">Sélectionner un étage</translation>
+   <translation id="telecom_pack_migration_building_details_building" qtlid="313000">Palazzo</translation>
+   <translation id="telecom_pack_migration_building_details_stair" qtlid="313052">Scala</translation>
+   <translation id="telecom_pack_migration_building_details_floor" qtlid="506897">Etage</translation>
+   <translation id="telecom_pack_migration_building_details_confirm" qtlid="506910">Confirmer la sélection</translation>
+   <translation id="telecom_pack_migration_building_details_none" qtlid="30646">Nessuno</translation>
+   <translation id="telecom_pack_migration_building_details_unknown" qtlid="77142">Sconosciuto</translation>
 
 </translations>
