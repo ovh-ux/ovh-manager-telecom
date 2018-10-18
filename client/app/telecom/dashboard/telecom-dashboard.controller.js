@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomDashboardCtrl', function ($translate, TelecomMediator, ToastError, URLS) {
+angular.module('managerApp').controller('TelecomDashboardCtrl', function ($translate, OvhApiMe, TelecomMediator, ToastError, URLS) {
   const self = this;
 
   self.loading = {
@@ -10,6 +10,14 @@ angular.module('managerApp').controller('TelecomDashboardCtrl', function ($trans
 
   function buildSummitData() {
     self.localeForSummitBanner = $translate.use().split('_')[0] === 'fr' ? 'fr' : 'en';
+
+    const subsidiariesWithSummitBanner = ['FR', 'GB', 'DE', 'ES'];
+    self.shouldDisplayBanner = false;
+    return OvhApiMe.v6()
+      .get().$promise
+      .then(({ ovhSubsidiary }) => {
+        self.shouldDisplayBanner = _(subsidiariesWithSummitBanner).includes(ovhSubsidiary);
+      });
   }
 
   /*= =====================================
