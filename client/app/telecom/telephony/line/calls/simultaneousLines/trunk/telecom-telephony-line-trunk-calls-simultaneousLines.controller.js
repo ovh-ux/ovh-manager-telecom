@@ -1,6 +1,6 @@
 angular.module('managerApp').controller('TelecomTelephonyLineTrunkSimultaneousLines', class TelecomTelephonyLineTrunkSimultaneousLines {
   constructor(
-    $q, $stateParams, $translate, currentLine, TucChartjsFactory, debounce,
+    $q, $stateParams, $translate, currentLine, TucChartjsFactory, tucDebounce,
     OvhApiTelephony, OvhApiOrderTelephony, Toast, TRUNK_PACK_DETAILS,
   ) {
     'ngInject';
@@ -11,13 +11,13 @@ angular.module('managerApp').controller('TelecomTelephonyLineTrunkSimultaneousLi
 
     this.currentLine = currentLine;
     this.TucChartjsFactory = TucChartjsFactory;
-    this.debounce = debounce;
+    this.tucDebounce = tucDebounce;
     this.OvhApiTelephony = OvhApiTelephony;
     this.OvhApiOrderTelephony = OvhApiOrderTelephony;
     this.Toast = Toast;
     this.TRUNK_PACK_DETAILS = TRUNK_PACK_DETAILS;
 
-    this.getNewRepartition = debounce(() => this._getNewRepartition(), 500, false);
+    this.getNewRepartition = tucDebounce(() => this._getNewRepartition(), 500, false);
   }
 
   _getNewRepartition() {
