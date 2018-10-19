@@ -22,6 +22,7 @@
    <translation id="telecom_dashboard_FAQ_Activate" qtlid="305018">Activation de mes services</translation>
    <translation id="telecom_dashboard_FAQ_managed_modem" qtlid="305031">Configurer mon modem</translation>
    <translation id="telecom_dashboard_FAQ_init_modem" qtlid="305044">Réinitialiser mon modem</translation>
+   <translation id="telecom_dashboard_FAQ_restore_service">Rétablir mon service</translation>
    <translation id="telecom_dashboard_incident_impact" qtlid="305057">Incident détecté</translation>
 
    <translation id="telecom_dashboard_services_title" qtlid="305070">Mes Services</translation>

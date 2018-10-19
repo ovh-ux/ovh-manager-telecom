@@ -190,8 +190,9 @@ angular.module('managerApp').constant('LANGUAGES', {
       home: 'https://docs.ovh.com',
       telephony: 'https://docs.ovh.com/fr/voip/',
       packActivate: 'https://docs.ovh.com/fr/xdsl/comment-activer-mes-lignes-telephoniques-offre-adsl-vdsl/',
-      modemConfig: 'https://docs.ovh.com/fr/xdsl/configuration-modem-xdsl/',
-      modemReinit: 'https://docs.ovh.com/fr/xdsl/reinitialisation-du-modem/',
+      modemConfig: 'https://docs.ovh.com/fr/xdsl/configuration_du_modem_a_partir_de_votre_espace_client/',
+      modemReinit: 'https://docs.ovh.com/fr/xdsl/redemarrer-reinitialiser-modem-adsl-ovh/',
+      interruptedService: 'https://docs.ovh.com/fr/xdsl/interruption-de-service/',
       overTheBox: 'https://docs.ovh.com/display/public/CRXDSL/Accueil+xDSL',
       sms: {
         receivers: 'https://www.ovh.com/fr/g2402.liste_de_destinataire_sms',
