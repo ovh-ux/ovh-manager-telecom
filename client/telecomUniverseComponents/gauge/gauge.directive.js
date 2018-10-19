@@ -1,9 +1,13 @@
-angular.module('managerApp').directive('gauge', () => ({
+import _ from 'lodash';
+
+import template from './gauge.html';
+
+export default /* @ngInject */ () => ({
   restrict: 'A',
-  templateUrl: 'components/gauge/gauge.html',
+  template,
   scope: {
-    gauge: '=?',
-    gaugeWidth: '=?',
+    tucGauge: '=?',
+    tucGaugeWidth: '=?',
     ngModel: '=?',
   },
   controllerAs: '$ctrl',
@@ -14,6 +18,8 @@ angular.module('managerApp').directive('gauge', () => ({
     _.set(controller, 'gaugeContainer', elt.find('g.gauge'));
   },
   controller($scope, $interval) {
+    'ngInject';
+
     const self = this;
     let going;
     let targetValue = 0;
@@ -25,11 +31,11 @@ angular.module('managerApp').directive('gauge', () => ({
         return;
       }
       going = $interval(() => {
-        const speed = Math.abs(targetValue - currentValue) / (self.gauge || 1);
+        const speed = Math.abs(targetValue - currentValue) / (self.tucGauge || 1);
         if (speed > 0.05) {
           const dir = (targetValue - currentValue) / Math.abs(targetValue - currentValue);
-          currentValue += dir * speed * (self.gauge / 5);
-          const fraction = (currentValue || 0) / (self.gauge || 1);
+          currentValue += dir * speed * (self.tucGauge / 5);
+          const fraction = (currentValue || 0) / (self.tucGauge || 1);
           self.cursor.attr('transform', `rotate(${180 * fraction})`);
         } else {
           $interval.cancel(going);
@@ -44,7 +50,7 @@ angular.module('managerApp').directive('gauge', () => ({
       }
     });
 
-    $scope.$watch('$ctrl.gaugeWidth', (width) => {
+    $scope.$watch('$ctrl.tucGaugeWidth', (width) => {
       const scale = (width || 100) / 440;
       self.gaugeContainer.attr('transform', `scale(${scale})`);
       self.svg.css('width', `${Math.ceil(440 * scale)}px`);
@@ -53,4 +59,4 @@ angular.module('managerApp').directive('gauge', () => ({
 
     $scope.$watch('$ctrl.ngModel', goto);
   },
-}));
+});
