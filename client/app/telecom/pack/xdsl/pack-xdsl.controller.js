@@ -52,7 +52,7 @@ angular.module('managerApp').controller('PackXdslCtrl', function ($q, $transitio
   this.updateUIForState = function (state) {
     self.currentState = state.name;
     if ($stateParams.packName === 'sdsl') {
-      if (state.name === 'telecom.pack.xdsl' || state.name === 'telecom.pack.xdsl.modem') {
+      if (state.name === 'telecom.pack.xdsl' || state.name === 'telecom.pack.xdsl.modem' || state.name === 'telecom.pack.xdsl.tasks') {
         setAnim('anim');
         return;
       }
@@ -79,6 +79,7 @@ angular.module('managerApp').controller('PackXdslCtrl', function ($q, $transitio
         });
         break;
       case 'telecom.pack.xdsl.modem':
+      case 'telecom.pack.xdsl.tasks':
       case 'telecom.pack.xdsl':
         setAnim('anim');
         self.content.back.state = 'telecom.pack';
