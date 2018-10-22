@@ -10,7 +10,7 @@
             name="zipCode"
             data-translate-attr="{ placeholder: 'pack_move_eligibility_zipcode' }"
             data-ng-model="PackMoveEligibilityAddress.address.zipCode"
-            data-ui-validate="'PackMoveEligibilityAddress.validator.isZipcode($value, [\'metropolitanFrance\'])'"
+            data-ui-validate="'PackMoveEligibilityAddress.validator.tucIsZipcode($value, [\'metropolitanFrance\'])'"
             data-ng-change="PackMoveEligibilityAddress.getCities(PackMoveEligibilityAddress.address.zipCode)"
             data-ng-disabled="PackMoveEligibilityAddress.loaders.cities || PackMoveEligibilityAddress.method !== 'address'"
             required>

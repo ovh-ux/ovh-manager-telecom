@@ -3,14 +3,14 @@ angular
   .controller('TelecomSmsSmsComposeCtrl', class TelecomSmsSmsComposeCtrl {
     constructor(
       $q, $translate, $stateParams, $filter, $uibModal,
-      OvhApiSms, SmsMediator, OvhApiMe, atInternet, Toast, ToastError, URLS,
+      OvhApiSms, TucSmsMediator, OvhApiMe, atInternet, Toast, ToastError, URLS,
     ) {
       this.$q = $q;
       this.$translate = $translate;
       this.$stateParams = $stateParams;
       this.$filter = $filter;
       this.$uibModal = $uibModal;
-      this.SmsMediator = SmsMediator;
+      this.TucSmsMediator = TucSmsMediator;
       this.api = {
         sms: {
           jobs: OvhApiSms.Jobs().v6(),
@@ -85,7 +85,7 @@ angular
       };
 
       this.loading.init = true;
-      return this.SmsMediator.initDeferred.promise.then(() => this.$q.all({
+      return this.TucSmsMediator.initDeferred.promise.then(() => this.$q.all({
         enums: this.fetchEnums(),
         user: this.fetchUser(),
         senders: this.fetchSenders(),
@@ -108,7 +108,7 @@ angular
           this.senders.alphanumeric.push(sender);
         }
       })).then(() => {
-        this.service = this.SmsMediator.getCurrentSmsService();
+        this.service = this.TucSmsMediator.getCurrentSmsService();
         this.computeRemainingChar();
       })).catch((err) => {
         this.ToastError(err);
@@ -122,7 +122,7 @@ angular
      * @return {Promise}
      */
     fetchEnums() {
-      return this.SmsMediator.getApiScheme().then((schema) => {
+      return this.TucSmsMediator.getApiScheme().then((schema) => {
         const smsClass = {
           smsClass: _.pull(schema.models['sms.ClassEnum'].enum, 'toolkit'),
         };
@@ -192,7 +192,7 @@ angular
      * @return {Object}
      */
     computeRemainingChar() {
-      return _.assign(this.message, this.SmsMediator.getSmsInfoText(
+      return _.assign(this.message, this.TucSmsMediator.getSmsInfoText(
         this.sms.message,
         !this.sms.noStopClause, // suffix
       ));

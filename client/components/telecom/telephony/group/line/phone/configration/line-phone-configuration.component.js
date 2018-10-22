@@ -8,10 +8,10 @@ angular.module('managerApp').component('linePhoneConfiguration', {
     expertMode: '=linePhoneConfigurationExpertMode',
   },
   templateUrl: 'components/telecom/telephony/group/line/phone/configration/line-phone-configuration.html',
-  controller($translate, validator, LINE_PHONE_CONFIGURATION) {
+  controller($translate, tucValidator, LINE_PHONE_CONFIGURATION) {
     const self = this;
 
-    self.validator = validator;
+    self.validator = tucValidator;
 
     /*= ==============================
       =            HELPERS            =

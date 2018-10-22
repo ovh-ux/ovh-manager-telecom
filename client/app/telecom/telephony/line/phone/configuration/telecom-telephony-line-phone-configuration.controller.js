@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyLinePhoneConfigurationCtrl', function ($scope, $q, $timeout, $state, $stateParams, $translate, TelephonyMediator, Toast, validator, TELEPHONY_LINE_PHONE_ADDITIONAL_INFOS) {
+angular.module('managerApp').controller('TelecomTelephonyLinePhoneConfigurationCtrl', function ($scope, $q, $timeout, $state, $stateParams, $translate, TelephonyMediator, Toast, TELEPHONY_LINE_PHONE_ADDITIONAL_INFOS) {
   const self = this;
 
   self.line = null;

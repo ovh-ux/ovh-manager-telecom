@@ -1,5 +1,5 @@
 angular.module('managerApp').controller('TelecomSmsDashboardCtrl', class TelecomSmsDashboardCtrl {
-  constructor($q, $stateParams, $translate, OvhApiSms, SmsMediator, ToastError) {
+  constructor($q, $stateParams, $translate, OvhApiSms, TucSmsMediator, ToastError) {
     this.$q = $q;
     this.$stateParams = $stateParams;
     this.$translate = $translate;
@@ -11,7 +11,7 @@ angular.module('managerApp').controller('TelecomSmsDashboardCtrl', class Telecom
         jobs: OvhApiSms.Jobs().v6(),
       },
     };
-    this.SmsMediator = SmsMediator;
+    this.TucSmsMediator = TucSmsMediator;
     this.ToastError = ToastError;
   }
 
@@ -76,7 +76,7 @@ angular.module('managerApp').controller('TelecomSmsDashboardCtrl', class Telecom
       incoming: this.fetchIncoming(),
       jobs: this.fetchJobs(),
     }).then((results) => {
-      this.service = this.SmsMediator.getCurrentSmsService();
+      this.service = this.TucSmsMediator.getCurrentSmsService();
       this.stats.data.outgoing = results.outgoing.length;
       this.stats.data.incoming = results.incoming.length;
       this.stats.data.jobs = results.jobs.length;

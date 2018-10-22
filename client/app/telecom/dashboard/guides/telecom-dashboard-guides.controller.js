@@ -8,7 +8,7 @@ angular.module('managerApp').controller('TelecomDashboardGuidesCtrl', function (
     ====================================== */
 
   function init() {
-    self.links = _.pick(URLS.guides, 'packActivate', 'modemConfig', 'modemReinit');
+    self.links = _.pick(URLS.guides, 'packActivate', 'modemConfig', 'modemReinit', 'interruptedService');
   }
 
   self.trackRedirection = function (link) {
@@ -30,6 +30,10 @@ angular.module('managerApp').controller('TelecomDashboardGuidesCtrl', function (
       case URLS.guides.modemReinit:
         hit.cta = 'Restart my modem';
         hit.name = 'Reboot_Modem';
+        break;
+      case URLS.guides.interruptedService:
+        hit.cta = 'Restore service';
+        hit.name = 'Restore_Service';
         break;
       default:
         break;

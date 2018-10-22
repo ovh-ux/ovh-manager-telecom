@@ -1,4 +1,4 @@
-import asyncLoaderFactory from './async-loader.factory';
+import translateAsyncLoader from '@ovh-ux/translate-async-loader';
 import telecomUniverseComponents from '../telecomUniverseComponents';
 
 angular.module('managerApp', [
@@ -60,6 +60,7 @@ angular.module('managerApp', [
   'ovh-angular-sidebar-menu',
   'angular-translate-loader-pluggable',
   telecomUniverseComponents,
+  translateAsyncLoader,
 ])
 
 /*= =========  GLOBAL OPTIONS  ========== */
@@ -106,7 +107,6 @@ angular.module('managerApp', [
   })
 
 /*= =========  TRANSLATOR  ========== */
-  .factory('asyncLoader', asyncLoaderFactory)
   .config((
     $translateProvider,
     LANGUAGES,

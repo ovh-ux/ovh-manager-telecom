@@ -3,7 +3,7 @@ angular
   .controller('TelecomSmsReceiversCtrl', class TelecomSmsReceiversCtrl {
     constructor(
       $scope, $stateParams, $q, $filter, $uibModal, $translate, $timeout,
-      OvhApiSms, CSVParser, Toast, ToastError, URLS,
+      OvhApiSms, TucCSVParser, Toast, ToastError, URLS,
     ) {
       this.$filter = $filter;
       this.$q = $q;
@@ -18,7 +18,7 @@ angular
           task: OvhApiSms.Task().v6(),
         },
       };
-      this.CSVParser = CSVParser;
+      this.TucCSVParser = TucCSVParser;
       this.Toast = Toast;
       this.ToastError = ToastError;
       this.constant = { URLS };
@@ -246,10 +246,10 @@ angular
         serviceName: this.$stateParams.serviceName,
         slotId: receiver.slotId,
       }).$promise.then((csv) => {
-        this.CSVParser.setColumnSeparator(';');
-        this.CSVParser.setDetectTypes(false);
+        this.TucCSVParser.setColumnSeparator(';');
+        this.TucCSVParser.setDetectTypes(false);
         try {
-          this.csv.data = this.CSVParser.parse(csv.data);
+          this.csv.data = this.TucCSVParser.parse(csv.data);
         } catch (err) {
           this.csv.data = null;
           this.Toast.error(this.$translate.instant('sms_receivers_read_receiver_parse_ko', { error: _.get(err, 'msg.data.message') }));

@@ -1,8 +1,8 @@
-angular.module('managerApp').controller('XdslModemDmzCtrl', function ($stateParams, $translate, $q, OvhApiXdsl, Toast, PackXdslModemMediator) {
+angular.module('managerApp').controller('XdslModemDmzCtrl', function ($stateParams, $translate, $q, OvhApiXdsl, Toast, PackXdslModemMediator, tucValidator) {
   const self = this;
 
   this.editing = false;
-  this.validator = validator;
+  this.validator = tucValidator;
   this.mediator = PackXdslModemMediator;
 
   this.cancel = function () {
@@ -11,7 +11,7 @@ angular.module('managerApp').controller('XdslModemDmzCtrl', function ($statePara
 
   this.changeDmz = function () {
     this.editing = false;
-    const validIp = validator.isIP(self.dmz) || self.dmz === null;
+    const validIp = this.validator.isIP(self.dmz) || self.dmz === null;
     if (_.isEmpty($stateParams.serviceName)
       || !PackXdslModemMediator.capabilities.canChangeDMZ
       || !validIp) {

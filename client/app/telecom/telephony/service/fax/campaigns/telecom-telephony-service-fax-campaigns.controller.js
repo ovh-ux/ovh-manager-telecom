@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyServiceFaxCampaignsCtrl', function ($q, $stateParams, $translate, $filter, $uibModal, OvhApiTelephony, Toast, ToastError) {
+angular.module('managerApp').controller('TelecomTelephonyServiceFaxCampaignsCtrl', function ($q, $stateParams, $translate, $filter, $uibModal, OvhApiTelephony, Toast, ToastError, tucValidator) {
   const self = this;
 
   /*= ==============================
@@ -22,7 +22,7 @@ angular.module('managerApp').controller('TelecomTelephonyServiceFaxCampaignsCtrl
         ))
         .then(campaigns => _.each(campaigns, (campaign) => {
           _.set(campaign, 'reference', campaign.reference.slice(1, -1));
-          if (validator.isDate(campaign.reference) && (campaign.status === 'error' || campaign.status === 'todo')) {
+          if (tucValidator.isDate(campaign.reference) && (campaign.status === 'error' || campaign.status === 'todo')) {
             _.set(campaign, 'reference', moment(campaign.reference).format());
           }
         })));

@@ -1,11 +1,11 @@
-angular.module('managerApp').controller('TelephonyNumberSviCtrl', function ($q, $translate, validator, Toast) {
+angular.module('managerApp').controller('TelephonyNumberSviCtrl', function ($q, $translate, tucValidator, Toast) {
   const self = this;
   const protocolRegexp = new RegExp(/^(http(s)?:\/\/|ftp:\/\/|mailto:)/, 'g');
   const v4UrlRegexp = new RegExp(/^(?:(?:[\w\.\-\+%!$&"\(\)*\+,;=]+:)*[\w\.\-\+%!$&"\(\)*\+,;=]+@)?(?:[a-z0-9\-\.%]+)\.[a-z]{1,5}(?::[0-9]+)?(?:[\/|\?][\w#!:\.\?\+=&%@!$"~*,;\/\(\)\[\]\-]*)?\/$/); // eslint-disable-line
 
   self.urlProtocols = ['http://', 'https://'];
   self.urlRecordProtocols = ['http://', 'ftp://', 'mailto:'];
-  self.validator = validator;
+  self.validator = tucValidator;
 
   self.model = {
     urlProtocol: null,
@@ -36,14 +36,14 @@ angular.module('managerApp').controller('TelephonyNumberSviCtrl', function ($q, 
   }
 
   self.isValidURL = function (value) {
-    return validator.isURL(value) && validator.isValidDomain(value.split('/')[0]);
+    return tucValidator.isURL(value) && tucValidator.tucIsValidDomain(value.split('/')[0]);
   };
 
   self.isValidUrlRecord = function (value) {
     if (!value) {
       return true;
     } if (self.model.urlRecordProtocol === 'mailto:') {
-      return validator.isEmail(value);
+      return tucValidator.isEmail(value);
     } if (self.model.urlRecordProtocol === 'ftp://') {
       return v4UrlRegexp.test(value);
     }

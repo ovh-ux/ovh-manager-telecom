@@ -38,9 +38,9 @@
 
     <div class="modal-body"
          data-ng-if="SendersTerminateCtrl.terminated">
-        <success-drawing-check data-draw-success-check="SendersTerminateCtrl.terminated">
+        <tuc-success-drawing-check data-draw-success-check="SendersTerminateCtrl.terminated">
             <h4 data-ng-bind="SendersTerminateCtrl.sender.serviceInfos.renew.deleteAtExpiration ? 'sms_senders_terminate_sender_cancelled' : 'sms_senders_terminate_sender_terminated' | translate"></h4>
-        </success-drawing-check>
+        </tuc-success-drawing-check>
     </div>
 
     <div class="modal-footer">

@@ -1,5 +1,13 @@
 angular.module('managerApp').controller('TelecomSmsSmsTemplateAddCtrl', class TelecomSmsSmsTemplateAddCtrl {
-  constructor($q, $stateParams, $timeout, $translate, $uibModalInstance, OvhApiSms, SmsMediator) {
+  constructor(
+    $q,
+    $stateParams,
+    $timeout,
+    $translate,
+    $uibModalInstance,
+    OvhApiSms,
+    TucSmsMediator,
+  ) {
     this.$q = $q;
     this.$stateParams = $stateParams;
     this.$timeout = $timeout;
@@ -10,7 +18,7 @@ angular.module('managerApp').controller('TelecomSmsSmsTemplateAddCtrl', class Te
         templates: OvhApiSms.Templates().v6(),
       },
     };
-    this.SmsMediator = SmsMediator;
+    this.TucSmsMediator = TucSmsMediator;
   }
 
   $onInit() {
@@ -27,7 +35,7 @@ angular.module('managerApp').controller('TelecomSmsSmsTemplateAddCtrl', class Te
     };
     this.loading.init = true;
 
-    return this.SmsMediator.getApiScheme().then((schema) => {
+    return this.TucSmsMediator.getApiScheme().then((schema) => {
       this.availableActivities = [];
       angular.forEach(schema.models['sms.TypeTemplateEnum'].enum, (id) => {
         this.availableActivities.push({
