@@ -1,3 +1,14 @@
+<a name="10.9.0"></a>
+# [10.9.0](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.8.3...v10.9.0) (2018-10-22)
+
+
+### Features
+
+* **xdsl:** add tasks tab on xDSL detail view ([7362fd5](https://github.com/ovh-ux/ovh-manager-telecom/commit/7362fd5))
+* **xdsl:** update xDSL guides link ([f20dba2](https://github.com/ovh-ux/ovh-manager-telecom/commit/f20dba2))
+
+
+
 <a name="10.8.3"></a>
 ## [10.8.3](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.8.2...v10.8.3) (2018-10-18)
 
