@@ -1,4 +1,4 @@
-angular.module('managerApp').service('TelecomMediator', function ($q, $translate, OvhApiMeVipStatus, PackMediator, TelephonyMediator, SmsMediator, TucFaxMediator, OverTheBoxMediator, Toast) {
+angular.module('managerApp').service('TelecomMediator', function ($q, $translate, OvhApiMeVipStatus, PackMediator, TelephonyMediator, TucSmsMediator, TucFaxMediator, TucOverTheBoxMediator, Toast) {
   const self = this;
 
   self.isVip = false;
@@ -50,9 +50,9 @@ angular.module('managerApp').service('TelecomMediator', function ($q, $translate
     $q.all({
       pack: PackMediator.getCount().catch(handleCountError),
       telephony: TelephonyMediator.getCount().catch(handleCountError),
-      sms: SmsMediator.getCount().catch(handleCountError),
+      sms: TucSmsMediator.getCount().catch(handleCountError),
       freefax: TucFaxMediator.getCount().catch(handleCountError),
-      overTheBox: OverTheBoxMediator.getCount().catch(handleCountError),
+      overTheBox: TucOverTheBoxMediator.getCount().catch(handleCountError),
     }).then((counts) => {
       if (countErrors.length) {
         $translate.refresh().then(() => {

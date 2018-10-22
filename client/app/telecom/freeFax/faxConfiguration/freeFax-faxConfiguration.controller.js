@@ -1,9 +1,9 @@
 angular.module('managerApp')
-  .controller('FreeFaxConfigurationCtrl', function ($stateParams, $scope, $translate, OvhApiFreeFax, ToastError) {
+  .controller('FreeFaxConfigurationCtrl', function ($stateParams, $scope, $translate, OvhApiFreeFax, ToastError, tucValidator) {
     const self = this;
 
     this.editMode = false;
-    this.validator = validator;
+    this.validator = tucValidator;
     this.showFreeFaxHeaderTips = false;
     this.passwordDisplay = '*****';
     const savedModelData = {};

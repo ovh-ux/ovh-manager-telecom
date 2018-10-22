@@ -1,10 +1,10 @@
 angular.module('managerApp').controller('TelecomSmsCtrl', class TelecomSmsCtrl {
-  constructor($q, $stateParams, $translate, SidebarMenu, SmsMediator, Toast) {
+  constructor($q, $stateParams, $translate, SidebarMenu, TucSmsMediator, Toast) {
     this.$q = $q;
     this.$stateParams = $stateParams;
     this.$translate = $translate;
     this.SidebarMenu = SidebarMenu;
-    this.SmsMediator = SmsMediator;
+    this.TucSmsMediator = TucSmsMediator;
     this.Toast = Toast;
   }
 
@@ -16,8 +16,8 @@ angular.module('managerApp').controller('TelecomSmsCtrl', class TelecomSmsCtrl {
     this.service = null;
 
     this.loading.init = true;
-    this.SmsMediator.initDeferred.promise.then(() => {
-      this.service = this.SmsMediator.getCurrentSmsService();
+    this.TucSmsMediator.initDeferred.promise.then(() => {
+      this.service = this.TucSmsMediator.getCurrentSmsService();
       this.serviceNameSave = this.updateServiceNameSave.bind(this);
     }).catch((error) => {
       this.Toast.error(`${this.$translate.instant('sms_loading_error', this.$stateParams.serviceNameSave)} ${_.get(error, 'data.message', '')}`);

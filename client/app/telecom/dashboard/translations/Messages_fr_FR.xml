@@ -3,8 +3,6 @@
    <translation id="telecom_dashboard_title" qtlid="304667">Résumé de mes services</translation>
    <translation id="telecom_dashboard_page_title" qtlid="304667">Résumé de mes services</translation>
 
-   <translation id="configuration_summit_banner_alt">Voir les annonces du OVH SUMMIT PARIS 2018</translation>
-
    <translation id="telecom_dashboard_date" qtlid="24523">Date</translation>
    <translation id="telecom_dashboard_references" qtlid="16445">Référence</translation>
    <translation id="telecom_dashboard_payment_mean" qtlid="140014">Moyen de paiement</translation>
@@ -22,6 +20,7 @@
    <translation id="telecom_dashboard_FAQ_Activate" qtlid="305018">Activation de mes services</translation>
    <translation id="telecom_dashboard_FAQ_managed_modem" qtlid="305031">Configurer mon modem</translation>
    <translation id="telecom_dashboard_FAQ_init_modem" qtlid="305044">Réinitialiser mon modem</translation>
+   <translation id="telecom_dashboard_FAQ_restore_service">Rétablir mon service</translation>
    <translation id="telecom_dashboard_incident_impact" qtlid="305057">Incident détecté</translation>
 
    <translation id="telecom_dashboard_services_title" qtlid="305070">Mes Services</translation>

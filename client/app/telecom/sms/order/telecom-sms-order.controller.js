@@ -3,19 +3,19 @@ angular
   .controller('TelecomSmsOrderCtrl', class TelecomSmsOrderCtrl {
     constructor(
       $q, $translate, $filter, $stateParams,
-      atInternet, SmsMediator, OvhApiOrder, debounce, Toast, SMS_ORDER_PREFIELDS_VALUES,
+      atInternet, TucSmsMediator, OvhApiOrder, tucDebounce, Toast, SMS_ORDER_PREFIELDS_VALUES,
     ) {
       this.$q = $q;
       this.$translate = $translate;
       this.$filter = $filter;
       this.$stateParams = $stateParams;
-      this.SmsMediator = SmsMediator;
+      this.TucSmsMediator = TucSmsMediator;
       this.api = {
         order: {
           sms: OvhApiOrder.Sms().v6(),
         },
       };
-      this.debounce = debounce;
+      this.tucDebounce = tucDebounce;
       this.Toast = Toast;
       this.constant = { SMS_ORDER_PREFIELDS_VALUES };
       this.atInternet = atInternet;
@@ -51,8 +51,8 @@ angular
       });
 
       this.loading.init = true;
-      this.SmsMediator.initAll().then(() => {
-        const availableAccounts = _.toArray(this.SmsMediator.getAccounts())
+      this.TucSmsMediator.initAll().then(() => {
+        const availableAccounts = _.toArray(this.TucSmsMediator.getAccounts())
           .sort((a, b) => a.name.localeCompare(b.name));
 
         // We have to format it to become human readable
@@ -85,7 +85,7 @@ angular
         this.loading.init = false;
       });
 
-      this.getDebouncedPrices = this.debounce(() => this.getPrices(), 500, false);
+      this.getDebouncedPrices = this.tucDebounce(() => this.getPrices(), 500, false);
     }
 
     /**

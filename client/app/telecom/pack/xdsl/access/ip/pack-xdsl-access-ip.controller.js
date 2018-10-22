@@ -1,6 +1,6 @@
-angular.module('managerApp').controller('XdslAccessIpCtrl', function ($stateParams, OvhApiXdslIps, ToastError, TucIpAddress) {
+angular.module('managerApp').controller('XdslAccessIpCtrl', function ($stateParams, OvhApiXdslIps, ToastError, TucIpAddress, tucValidator) {
   const self = this;
-  this.validator = validator;
+  this.validator = tucValidator;
   this.ips = [];
 
   /**

@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('OverTheBoxRemoteCtrl', function ($stateParams, $translate, $scope, $q, URLS, OVER_THE_BOX, OVERTHEBOX_REMOTE_STATUS, OvhApiOverTheBox, ToastError, Toast, TucIpAddress) {
+angular.module('managerApp').controller('OverTheBoxRemoteCtrl', function ($stateParams, $translate, $scope, $q, URLS, OVER_THE_BOX, OVERTHEBOX_REMOTE_STATUS, OvhApiOverTheBox, ToastError, Toast, TucIpAddress, tucValidator) {
   const self = this;
 
   this.filter = {
@@ -7,7 +7,7 @@ angular.module('managerApp').controller('OverTheBoxRemoteCtrl', function ($state
 
   this.remoteStatus = OVERTHEBOX_REMOTE_STATUS;
 
-  this.validator = validator;
+  this.validator = tucValidator;
   this.publicKeyHelperUrl = URLS.keyGenHelp;
   this.pickerOpened = false;
   this.maxRemotes = OVER_THE_BOX.maxRemotes;
