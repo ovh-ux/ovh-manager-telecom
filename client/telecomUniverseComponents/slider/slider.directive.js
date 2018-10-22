@@ -1,4 +1,6 @@
-angular.module('managerApp').directive('slider', ($timeout) => {
+import angular from 'angular';
+
+export default /* @ngInject */ ($timeout) => {
   const angularize = function (element) {
     return angular.element(element);
   };
@@ -393,4 +395,4 @@ angular.module('managerApp').directive('slider', ($timeout) => {
       };
     },
   };
-});
+}
