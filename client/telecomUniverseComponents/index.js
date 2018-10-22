@@ -3,6 +3,7 @@ import angular from 'angular';
 import tucChartjs from './chartjs';
 import tucDebounce from './debounce';
 import tucGauge from './gauge';
+import tucIpAddress from './ipAddress';
 import tucSlider from './slider';
 import tucSuccessDrawingCheck from './successDrawingCheck';
 import tucTableSort from './table-sort';
@@ -17,6 +18,7 @@ export default angular
     tucChartjs,
     tucDebounce,
     tucGauge,
+    tucIpAddress,
     tucSlider,
     tucSuccessDrawingCheck,
     tucTableSort,

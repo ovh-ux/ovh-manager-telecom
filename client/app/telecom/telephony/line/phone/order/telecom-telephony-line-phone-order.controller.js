@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyLinePhoneOrderCtrl', function ($q, $scope, $stateParams, $translate, IpAddress, TelephonyMediator, OvhApiTelephony, OvhApiOrder, Toast, ToastError, TELEPHONY_RMA) {
+angular.module('managerApp').controller('TelecomTelephonyLinePhoneOrderCtrl', function ($q, $scope, $stateParams, $translate, TucIpAddress, TelephonyMediator, OvhApiTelephony, OvhApiOrder, Toast, ToastError, TELEPHONY_RMA) {
   const self = this;
 
   self.pdfBaseUrl = TELEPHONY_RMA.pdfBaseUrl;
@@ -266,7 +266,7 @@ angular.module('managerApp').controller('TelecomTelephonyLinePhoneOrderCtrl', fu
   self.ipValidator = (function () {
     return {
       test(value) {
-        return IpAddress.isValidPublicIp4(value);
+        return TucIpAddress.isValidPublicIp4(value);
       },
     };
   }());
