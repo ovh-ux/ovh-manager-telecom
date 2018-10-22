@@ -61,6 +61,7 @@
     "@bower_components/international-phone-number": "mareczek/international-phone-number#^0.0.16",
     "@bower_components/jsplumb": "sporritt/jsPlumb#~2.3.x",
     "@bower_components/matchmedia": "paulirish/matchMedia.js#~0.2.0",
+    "@ovh-ux/translate-async-loader": "^1.0.3",
     "CSV-JS": "^1.0.0",
     "angular": "1.5.11",
     "angular-animate": "~1.5.x",

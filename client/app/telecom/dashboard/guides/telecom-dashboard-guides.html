@@ -45,5 +45,19 @@
                 <i class="oui-icon oui-icon-chevron-right" aria-hidden="true"></i>
             </a>
         </li>
+        <li class="oui-tile__item oui-tile__item_button">
+            <a class="oui-tile__button oui-button oui-button_link oui-button_icon-right oui-button_full-width"
+               title="{{ ::'telecom_dashboard_FAQ_restore_service' | translate }} {{ ::'common_newtab' | translate }}"
+               target="_blank"
+               rel="noopener"
+               data-ng-href="{{ GuidesCtrl.links.interruptedService }}"
+               data-ng-click="GuidesCtrl.trackRedirection(GuidesCtrl.links.interruptedService)">
+                <span class="text-link"
+                      data-translate="telecom_dashboard_FAQ_restore_service">
+                </span>
+                <i class="fa fa-icon fa-external-link" aria-hidden="true"></i>
+                <i class="oui-icon oui-icon-chevron-right" aria-hidden="true"></i>
+            </a>
+        </li>
     </ul>
 </div>
