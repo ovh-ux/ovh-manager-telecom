@@ -22,7 +22,7 @@ import 'angular-translate-storage-local';
 import 'script-loader!moment/min/moment-with-locales.min.js';
 import 'script-loader!fullcalendar/dist/fullcalendar.js';
 import 'angular-ui-calendar';
-import 'angular-ui-router';
+import '@uirouter/angularjs';
 import '@bower_components/angular-uirouter-title';
 import 'script-loader!ui-select/dist/select.js';
 import 'script-loader!jquery-ui/ui/version.js';

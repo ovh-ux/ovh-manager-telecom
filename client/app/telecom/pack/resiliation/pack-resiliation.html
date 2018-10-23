@@ -1,7 +1,7 @@
 <div class="telecom-pack-resiliation">
 
     <header>
-        <section-back-link section-back-link-to-state="telecom.pack"></section-back-link>
+        <tuc-section-back-link data-tuc-section-back-link-to-state="telecom.pack"></tuc-section-back-link>
         <h1 data-translate="pack_resiliation_title"></h1>
     </header>
 
@@ -217,7 +217,7 @@
 
                     <div class="widget-presentation mt-5">
                         <h2 class="widget-presentation-title"
-                            data-ng-bind="'3. ' + ('pack_resiliation_fee_summary_total_title' | translate)"></h2>                       
+                            data-ng-bind="'3. ' + ('pack_resiliation_fee_summary_total_title' | translate)"></h2>
                         <dl>
                             <dt data-translate="pack_resiliation_fee"></dt>
                             <dd data-translate="pack_resiliation_excluding_tax"
@@ -239,7 +239,7 @@
                             <dd data-ng-if="period !== '1' && period !== '12'"
                                 data-translate="pack_resiliation_Nthly_pass"
                                 data-translate-values="{month: period}">
-                            </dd>                                
+                            </dd>
                             <dt data-ng-if="period === '12'"
                                 data-translate="pack_resiliation_annually_pass"></dt>
                             <dd data-ng-if="period === '12'"

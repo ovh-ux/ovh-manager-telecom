@@ -4,6 +4,7 @@ import tucChartjs from './chartjs';
 import tucDebounce from './debounce';
 import tucGauge from './gauge';
 import tucIpAddress from './ipAddress';
+import tucSectionBackLink from './section-back-link';
 import tucSlider from './slider';
 import tucSuccessDrawingCheck from './successDrawingCheck';
 import tucTableSort from './table-sort';
@@ -19,6 +20,7 @@ export default angular
     tucDebounce,
     tucGauge,
     tucIpAddress,
+    tucSectionBackLink,
     tucSlider,
     tucSuccessDrawingCheck,
     tucTableSort,

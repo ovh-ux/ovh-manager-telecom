@@ -988,7 +988,7 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.12.0.tgz#ea6dcbddbc5b584c83f06c60e82736d8fbb0c235"
   integrity sha512-3TUHC3jsBAB7qVRGxT6lWyYo2v96BMmD2PTcl47H25Lu7UXtFH/2qqmKiVrnel6Ne//0TFYf6uvNX+HW2FRkLQ==
 
-"@uirouter/angularjs@^1.0.0":
+"@uirouter/angularjs@^1.0.0", "@uirouter/angularjs@^1.0.20":
   version "1.0.20"
   resolved "https://registry.yarnpkg.com/@uirouter/angularjs/-/angularjs-1.0.20.tgz#bd330544cb2f1c35987f610d8fc353071786c04e"
   integrity sha512-fY6bsesTL/tg8gyFHXaIjD1r5b7Ac+SYupodO9OzT4/gKI0YC+uGzLpQESAiXlT3fsxdEPVBzdtAbzXDwCKdEA==
@@ -1453,13 +1453,6 @@ angular-ui-calendar@^1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/angular-ui-calendar/-/angular-ui-calendar-1.0.2.tgz#fa271057425572efaadf6660243cc33cb99f33c1"
   integrity sha1-+icQV0JVcu+q32ZgJDzDPLmfM8E=
-
-angular-ui-router@~1.0.15:
-  version "1.0.20"
-  resolved "https://registry.yarnpkg.com/angular-ui-router/-/angular-ui-router-1.0.20.tgz#86dbaaa3368df0c319f3328f4ace616a246cf394"
-  integrity sha512-D9Y+qOq6StinrlyeiHp7wbOBL5UbwaHW1dgpfQZ6fWuQ5Q5UOrJfe3S28XWDt8ybOKaUh2ds/IFXib5vCu8Opg==
-  dependencies:
-    "@uirouter/core" "5.0.21"
 
 angular-ui-sortable@^0.16.1:
   version "0.16.1"

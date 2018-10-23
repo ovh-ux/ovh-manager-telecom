@@ -9,9 +9,9 @@
         <header class="page-header"
                 role="banner"
                 data-ng-if="!PackXdslCtrl.loading.init">
-            <section-back-link data-ng-if="PackXdslCtrl.content.back.state && PackXdslCtrl.content.status === 'active'"
+            <tuc-section-back-link data-ng-if="PackXdslCtrl.content.back.state && PackXdslCtrl.content.status === 'active'"
                                data-ng-click="PackXdslCtrl.backState()"
-                               section-back-link-title="{{ PackXdslCtrl.pack.general.description || PackXdslCtrl.pack.general.packName || PackXdslCtrl.access.description || PackXdslCtrl.access.accessName }}"></section-back-link>
+                               data-tuc-section-back-link-title="{{ PackXdslCtrl.pack.general.description || PackXdslCtrl.pack.general.packName || PackXdslCtrl.access.description || PackXdslCtrl.access.accessName }}"></tuc-section-back-link>
             <!-- ACCESS TITLE -->
             <editable-service-name data-editable-service-name-title="PackXdslCtrl.access.description || PackXdslCtrl.access.accessName"
                                    data-editable-service-name-service-name="PackXdslCtrl.access.accessName"
