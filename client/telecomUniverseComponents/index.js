@@ -3,6 +3,7 @@ import angular from 'angular';
 import tucChartjs from './chartjs';
 import tucDebounce from './debounce';
 import tucEditableServiceName from './editable-service-name';
+import tucElapsedTime from './elapsed-time';
 import tucGauge from './gauge';
 import tucIpAddress from './ipAddress';
 import tucPhone from './phone';
@@ -22,6 +23,7 @@ export default angular
     tucChartjs,
     tucDebounce,
     tucEditableServiceName,
+    tucElapsedTime,
     tucGauge,
     tucIpAddress,
     tucPhone,
