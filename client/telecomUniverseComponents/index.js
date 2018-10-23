@@ -11,6 +11,7 @@ import tucTableSort from './table-sort';
 import tucTelecomFax from './telecom/fax';
 import tucTelecomOtb from './telecom/otb';
 import tucTelecomSms from './telecom/sms';
+import tucTelecomV4Links from './telecom/v4-links';
 import tucUnitHumanize from './unit/humanize';
 import tucValidator from './validator';
 
@@ -27,6 +28,7 @@ export default angular
     tucTelecomFax,
     tucTelecomOtb,
     tucTelecomSms,
+    tucTelecomV4Links,
     tucUnitHumanize,
     tucValidator,
   ])

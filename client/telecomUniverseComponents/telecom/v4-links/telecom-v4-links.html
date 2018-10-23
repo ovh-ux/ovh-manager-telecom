@@ -7,10 +7,10 @@
         <div class="row"
              data-ng-repeat="actionsRow in $ctrl.actionRows.main track by $index">
 
-            <telecom-v4-link class="col-xs-12 col-md-6"
+            <tuc-telecom-v4-link class="col-xs-12 col-md-6"
                              data-ng-repeat="action in actionsRow track by $index"
                              data-action="action">
-            </telecom-v4-link>
+            </tuc-telecom-v4-link>
 
         </div>
 
@@ -19,10 +19,10 @@
     <div class="row"
          data-ng-repeat="actionsRow in $ctrl.actionRows.normal track by $index">
 
-        <telecom-v4-link class="col-xs-12 col-md-4"
+        <tuc-telecom-v4-link class="col-xs-12 col-md-4"
                          data-ng-repeat="action in actionsRow track by $index"
                          data-action="action">
-        </telecom-v4-link>
+        </tuc-telecom-v4-link>
 
     </div>
 

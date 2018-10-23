@@ -1,5 +1,9 @@
-angular.module('managerApp').component('telecomV4Links', {
-  templateUrl: 'components/telecom/v4-links/telecom-v4-links.html',
+import _ from 'lodash';
+
+import template from './telecom-v4-links.html';
+
+export default {
+  template,
   bindings: {
     actions: '=telecomV4Links',
   },
@@ -28,4 +32,4 @@ angular.module('managerApp').component('telecomV4Links', {
 
     /* -----  End of INITIALIZATION  ------*/
   },
-});
+};

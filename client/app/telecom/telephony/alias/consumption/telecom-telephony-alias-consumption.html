@@ -1,16 +1,16 @@
 <div class="telephony-alias-consumption">
     <div class="row main-actions-container">
-        <telecom-v4-link class="col-xs-12 col-md-6"
+        <tuc-telecom-v4-link class="col-xs-12 col-md-6"
                          data-ng-repeat="action in AliasConsumptionCtrl.actions | filter : { main: 'true' } track by $index"
                          data-action="action">
-        </telecom-v4-link>
+        </tuc-telecom-v4-link>
     </div>
 
     <div class="row">
-        <telecom-v4-link class="col-xs-12 col-md-4"
+        <tuc-telecom-v4-link class="col-xs-12 col-md-4"
                          data-ng-repeat="action in AliasConsumptionCtrl.actions | filter : { main: '!true' } track by $index"
                          data-action="action">
-        </telecom-v4-link>
+        </tuc-telecom-v4-link>
     </div>
 </div>
 <!-- /.telephony-alias-consumption -->

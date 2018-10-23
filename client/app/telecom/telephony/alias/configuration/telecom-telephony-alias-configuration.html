@@ -6,9 +6,9 @@
 
     <div data-ng-if="!AliasConfigurationCtrl.loading.init">
 
-        <telecom-v4-links data-ng-if="!AliasConfigurationCtrl.isSubwayPlanActive()"
+        <tuc-telecom-v4-links data-ng-if="!AliasConfigurationCtrl.isSubwayPlanActive()"
                           data-telecom-v4-links="AliasConfigurationCtrl.actions">
-        </telecom-v4-links>
+        </tuc-telecom-v4-links>
 
         <telephony-number data-ng-if="AliasConfigurationCtrl.isSubwayPlanActive()"
                           data-telephony-number="AliasConfigurationCtrl.number"
