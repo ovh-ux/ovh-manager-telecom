@@ -17,7 +17,7 @@
         data-popover-is-open="$ctrl.popoverStatus.isOpen"
         data-popover-class="pretty-popover telephony-number-feature-popover telephony-number-ovh-pabx-actions-popup"
         data-ng-class="{ 'voip-plan__step-content--delete-anim': $ctrl.menuEntry.status === 'DELETE_PENDING' }"
-        data-hide-outside-click="$ctrl.onEntryOutsideClick()">
+        data-tuc-hide-outside-click="$ctrl.onEntryOutsideClick()">
         <!-- ENTRY ACTION -->
         <div class="voip-plan__step-description"
              data-ng-switch="$ctrl.getEntryAttribute('action')">

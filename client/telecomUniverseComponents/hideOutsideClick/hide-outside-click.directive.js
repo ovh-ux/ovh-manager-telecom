@@ -1,3 +1,5 @@
+import $ from 'jquery';
+
 /**
  *  Trigger that can be used with uib popover to combine existing "none" open trigger
  *  with "outsideClick" close trigger.
@@ -6,13 +8,13 @@
  *  Into your popover template add the directive to the root element and this will do the job:
  *  close popover when clicking outside it!
  */
-angular.module('managerApp').directive('hideOutsideClick', ($parse, $timeout) => ({
+export default /* @ngInject */ ($parse, $timeout) => ({
   restrict: 'A',
   link(scope, element, attrs) {
     const handler = function (event) {
       if (!$(event.target).closest(element).length) {
         scope.$apply(() => {
-          $parse(attrs.hideOutsideClick)(scope);
+          $parse(attrs.tucHideOutsideClick)(scope);
         });
       }
     };
@@ -27,4 +29,4 @@ angular.module('managerApp').directive('hideOutsideClick', ($parse, $timeout) =>
       $(document).off('mousedown', handler);
     });
   },
-}));
+});
