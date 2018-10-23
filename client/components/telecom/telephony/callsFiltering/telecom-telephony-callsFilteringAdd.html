@@ -2,13 +2,13 @@
      data-ng-if="$ctrl.isInitialized">
 
     <div class="clearfix mb-2">
-        <file-reader class="float-right"
+        <tuc-file-reader class="float-right"
                      data-ng-model="$ctrl.csv"
                      data-ng-accept=".csv"
                      data-ng-accept-filter="$ctrl.checkValidCSV(file)"
                      data-ng-read="$ctrl.importCSV(data)">
             <span data-translate="telephony_calls_filtering_add_csv_import"></span>
-        </file-reader>
+        </tuc-file-reader>
         <button type="button"
                 class="btn btn-default float-right mr-1"
                 data-ng-click="$ctrl.openHelper()"

@@ -1,4 +1,8 @@
-angular.module('managerApp').directive('fileReader', () => ({
+import angular from 'angular';
+
+import template from './file-reader.html';
+
+export default () => ({
   restrict: 'E',
   transclude: true,
   bindToController: true,
@@ -7,8 +11,10 @@ angular.module('managerApp').directive('fileReader', () => ({
     ngAcceptFilter: '&',
     ngRead: '&',
   },
-  templateUrl: 'components/file-reader/file-reader.html',
+  template,
   controller($element, $attrs, $window, $timeout) {
+    'ngInject';
+
     const fileInput = $element.find('input');
     const self = this;
 
@@ -42,4 +48,4 @@ angular.module('managerApp').directive('fileReader', () => ({
     }
   },
   controllerAs: 'ctrl',
-}));
+});

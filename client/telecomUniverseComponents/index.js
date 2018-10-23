@@ -4,6 +4,7 @@ import tucChartjs from './chartjs';
 import tucDebounce from './debounce';
 import tucEditableServiceName from './editable-service-name';
 import tucElapsedTime from './elapsed-time';
+import tucFileReader from './file-reader';
 import tucGauge from './gauge';
 import tucHideOutsideClick from './hideOutsideClick';
 import tucInputFile from './input-file';
@@ -26,6 +27,7 @@ export default angular
     tucDebounce,
     tucEditableServiceName,
     tucElapsedTime,
+    tucFileReader,
     tucGauge,
     tucHideOutsideClick,
     tucInputFile,
