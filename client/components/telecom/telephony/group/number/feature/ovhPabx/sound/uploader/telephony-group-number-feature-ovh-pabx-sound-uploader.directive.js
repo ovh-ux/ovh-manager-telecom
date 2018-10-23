@@ -2,7 +2,7 @@ angular.module('managerApp').directive('telephonyNumberOvhPabxSoundUploader', ()
   restrict: 'A',
   transclude: true,
   require: ['^^?telephonyNumber', '^^?telephonyNumberOvhPabx', 'telephonyNumberOvhPabxSoundUploader'],
-  template: '<div data-ng-transclude></div><input type="file" accept="audio/*" data-input-file-change="$ctrl.onSoundFileChoosed" />',
+  template: '<div data-ng-transclude></div><input type="file" accept="audio/*" data-tuc-input-file-change="$ctrl.onSoundFileChoosed" />',
   controllerAs: '$ctrl',
   scope: {
     ovhPabx: '=?',

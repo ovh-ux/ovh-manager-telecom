@@ -5,6 +5,7 @@ import tucDebounce from './debounce';
 import tucEditableServiceName from './editable-service-name';
 import tucElapsedTime from './elapsed-time';
 import tucGauge from './gauge';
+import tucInputFile from './input-file';
 import tucIpAddress from './ipAddress';
 import tucPhone from './phone';
 import tucSectionBackLink from './section-back-link';
@@ -25,6 +26,7 @@ export default angular
     tucEditableServiceName,
     tucElapsedTime,
     tucGauge,
+    tucInputFile,
     tucIpAddress,
     tucPhone,
     tucSectionBackLink,

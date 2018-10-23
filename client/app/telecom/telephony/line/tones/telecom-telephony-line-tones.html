@@ -43,13 +43,13 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <input-file data-ng-if="LineTonesCtrl.tonesForm.ringback === 'Custom sound' && !LineTonesCtrl.tonesForm.ringbackUploading && !LineTonesCtrl.tonesForm.ringbackUploadSuccess"
+                    <tuc-input-file data-ng-if="LineTonesCtrl.tonesForm.ringback === 'Custom sound' && !LineTonesCtrl.tonesForm.ringbackUploading && !LineTonesCtrl.tonesForm.ringbackUploadSuccess"
                                 data-ng-model="LineTonesCtrl.tonesForm.ringbackFile"
                                 data-ng-accept="audio/*"
                                 data-ng-accept-filter="LineTonesCtrl.filterValidExtension">
                         <i class="fa fa-upload mr-1" aria-hidden="true"></i>
                         <span data-translate="telephony_line_tones_choose_file"></span>
-                    </input-file>
+                    </tuc-input-file>
                     <button type="button"
                             class="btn btn-default"
                             data-ng-click="LineTonesCtrl.uploadTone('ringback')"
@@ -92,13 +92,13 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <input-file data-ng-if="LineTonesCtrl.tonesForm.onHold === 'Custom sound' && !LineTonesCtrl.tonesForm.onHoldUploading && !LineTonesCtrl.tonesForm.onHoldUploadSuccess"
+                    <tuc-input-file data-ng-if="LineTonesCtrl.tonesForm.onHold === 'Custom sound' && !LineTonesCtrl.tonesForm.onHoldUploading && !LineTonesCtrl.tonesForm.onHoldUploadSuccess"
                                 data-ng-model="LineTonesCtrl.tonesForm.onHoldFile"
                                 data-ng-accept="audio/*"
                                 data-ng-accept-filter="LineTonesCtrl.filterValidExtension">
                         <i class="fa fa-upload mr-1" aria-hidden="true"></i>
                         <span data-translate="telephony_line_tones_choose_file"></span>
-                    </input-file>
+                    </tuc-input-file>
                     <button type="button"
                             class="btn btn-default"
                             data-ng-click="LineTonesCtrl.uploadTone('onHold')"
@@ -141,13 +141,13 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <input-file data-ng-if="LineTonesCtrl.tonesForm.callWaiting === 'Custom sound' && !LineTonesCtrl.tonesForm.callWaitingUploading && !LineTonesCtrl.tonesForm.callWaitingUploadSuccess"
+                    <tuc-input-file data-ng-if="LineTonesCtrl.tonesForm.callWaiting === 'Custom sound' && !LineTonesCtrl.tonesForm.callWaitingUploading && !LineTonesCtrl.tonesForm.callWaitingUploadSuccess"
                                 data-ng-model="LineTonesCtrl.tonesForm.callWaitingFile"
                                 data-ng-accept="audio/*"
                                 data-ng-accept-filter="LineTonesCtrl.filterValidExtension">
                         <i class="fa fa-upload mr-1" aria-hidden="true"></i>
                         <span data-translate="telephony_line_tones_choose_file"></span>
-                    </input-file>
+                    </tuc-input-file>
                     <button type="button"
                             class="btn btn-default"
                             data-ng-click="LineTonesCtrl.uploadTone('callWaiting')"

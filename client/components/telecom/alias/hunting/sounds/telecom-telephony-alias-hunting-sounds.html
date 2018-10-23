@@ -18,12 +18,12 @@
         </h3>
 
         <div class="form-group">
-            <input-file data-ng-model="$ctrl.toUpload"
+            <tuc-input-file data-ng-model="$ctrl.toUpload"
                         data-ng-accept="audio/*"
                         data-ng-accept-filter="$ctrl.checkValidAudioExtention(file)">
                 <span class="fa fa-upload mr-1"></span>
                 <span data-translate="telephony_alias_hunting_sounds_upload"></span>
-            </input-file>
+            </tuc-input-file>
 
             <button type="submit"
                     class="btn btn-default mt-2 float-right no-transition"

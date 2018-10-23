@@ -26,13 +26,13 @@
                  role="alert"
                  data-translate="telephony_phonebook_contact_action_import_info">
             </div>
-            <input-file
+            <tuc-input-file
                 data-ng-model="ContactImportCtrl.phonecontactForm.uploadedFile"
                 data-ng-accept="text/*"
                 data-ng-accept-filter="ContactImportCtrl.checkValidTextExtention(file)">
                 <i class="fa fa-upload mr-2" aria-hidden="true"></i>
                 <span data-translate="telephony_phonebook_contact_action_import_file_label"></span>
-            </input-file>
+            </tuc-input-file>
         </div>
     </div>
     <!-- /.modal-body -->

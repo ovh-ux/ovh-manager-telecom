@@ -1,7 +1,7 @@
-angular.module('managerApp').directive('inputFileChange', () => ({
+export default () => ({
   restrict: 'A',
   scope: {
-    change: '&inputFileChange',
+    change: '&tucInputFileChange',
   },
   link(tScope, tElement) {
     tElement.bind('change', () => {
@@ -13,4 +13,4 @@ angular.module('managerApp').directive('inputFileChange', () => ({
       });
     });
   },
-}));
+});

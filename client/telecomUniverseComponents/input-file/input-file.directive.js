@@ -1,4 +1,8 @@
-angular.module('managerApp').directive('inputFile', () => ({
+import _ from 'lodash';
+
+import template from './input-file.html';
+
+export default () => ({
   restrict: 'E',
   transclude: true,
   scope: {
@@ -8,13 +12,15 @@ angular.module('managerApp').directive('inputFile', () => ({
     change: '&',
     fileExplain: '@',
   },
-  templateUrl: 'components/input-file/input-file.html',
+  template,
   link(scope, element, attrs, controller) {
     if (attrs.hasOwnProperty('ngAcceptFilter')) { // eslint-disable-line
       _.set(controller, 'hasNgAcceptFilter', true);
     }
   },
   controller($scope, $element, $timeout) {
+    'ngInject';
+
     $scope.selected = false;
     const self = this;
 
@@ -54,4 +60,4 @@ angular.module('managerApp').directive('inputFile', () => ({
       });
     };
   },
-}));
+});
