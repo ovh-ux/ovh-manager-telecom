@@ -2,6 +2,7 @@ import angular from 'angular';
 
 import tucChartjs from './chartjs';
 import tucDebounce from './debounce';
+import tucEditableServiceName from './editable-service-name';
 import tucGauge from './gauge';
 import tucIpAddress from './ipAddress';
 import tucSectionBackLink from './section-back-link';
@@ -19,6 +20,7 @@ export default angular
   .module('telecomUniverseComponents', [
     tucChartjs,
     tucDebounce,
+    tucEditableServiceName,
     tucGauge,
     tucIpAddress,
     tucSectionBackLink,

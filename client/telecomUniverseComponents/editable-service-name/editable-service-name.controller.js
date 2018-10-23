@@ -1,4 +1,7 @@
-angular.module('managerApp').controller('EditableServiceNameCtrl', function ($translate) {
+import angular from 'angular';
+import _ from 'lodash';
+
+export default /* @ngInject */ function ($translate) {
   const self = this;
 
   self.inEdition = false;
@@ -58,4 +61,4 @@ angular.module('managerApp').controller('EditableServiceNameCtrl', function ($tr
 
 
   /* -----  End of ACTIONS  ------*/
-});
+}
