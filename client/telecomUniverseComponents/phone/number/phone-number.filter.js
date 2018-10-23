@@ -1,4 +1,6 @@
-angular.module('managerApp').filter('phoneNumber', () => {
+import _ from 'lodash';
+
+export default () => {
   /**
      * Please see:
      * https://en.wikipedia.org/wiki/List_of_country_calling_codes
@@ -55,4 +57,4 @@ angular.module('managerApp').filter('phoneNumber', () => {
   return function (tel) {
     return prettifyNumber(tel);
   };
-});
+};

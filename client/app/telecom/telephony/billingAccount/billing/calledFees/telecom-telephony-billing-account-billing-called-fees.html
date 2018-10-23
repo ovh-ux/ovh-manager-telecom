@@ -57,7 +57,7 @@
                     data-ng-if="CalledFeesCtrl.consumptions.groupedByDialedNumber.length">
                     <li class="well mb-3"
                         data-ng-repeat="group in CalledFeesCtrl.consumptions.groupedByDialedNumber track by group.dialed">
-                        <h3 data-ng-bind="group.dialed | phoneNumber"></h3>
+                        <h3 data-ng-bind="group.dialed | tucPhoneNumber"></h3>
                         <ul class="list-unstyled mb-3 ml-3">
                             <li data-ng-repeat="detail in group.details track by $index">
                                 <span data-ng-if="detail.operator === 'other'"

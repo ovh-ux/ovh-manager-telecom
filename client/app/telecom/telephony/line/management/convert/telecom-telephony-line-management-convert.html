@@ -41,7 +41,7 @@
                data-ng-if="LineConvertCtrl.task">
                 <i class="ovh-font ovh-font-warning mr-1"></i>
                 <span data-translate="telephony_line_convert_warning"
-                      data-translate-values="{ line: (LineConvertCtrl.line.serviceName | phoneNumber), date: (LineConvertCtrl.task.executionDate | date) }"></span>
+                      data-translate-values="{ line: (LineConvertCtrl.line.serviceName | tucPhoneNumber), date: (LineConvertCtrl.task.executionDate | date) }"></span>
             </p>
 
             <telephony-bulk-action data-billing-account="{{ LineConvertCtrl.line.billingAccount }}"
@@ -63,7 +63,7 @@
                                  data-size="s">
                     </oui-spinner>
                     <span data-translate="telephony_line_convert_convert"
-                          data-translate-values="{ line: (LineConvertCtrl.line.serviceName | phoneNumber) }">
+                          data-translate-values="{ line: (LineConvertCtrl.line.serviceName | tucPhoneNumber) }">
                     </span>
                 </button>
             </div>

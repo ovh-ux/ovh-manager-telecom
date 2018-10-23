@@ -65,7 +65,7 @@
                     <span data-ng-if="member.description !== undefined"
                           data-ng-bind="member.description || ('telephony_alias_members_number_external' | translate)"></span>
                 </strong>
-                <strong class="memberPhoneNumber px-4" data-ng-bind="member.number | phoneNumber"></strong>
+                <strong class="memberPhoneNumber px-4" data-ng-bind="member.number | tucPhoneNumber"></strong>
                 <div class="row mt-3"
                      data-ng-if="!$ctrl.memberInEdition || $ctrl.memberInEdition.agentId !== member.agentId">
                     <small class="col-md-3 text-nowrap text-capitalize font-weight-bold"

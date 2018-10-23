@@ -61,7 +61,7 @@
 
             <oui-column data-title="'telephony_service_consumption_calling' | translate"
                         data-property="calling">
-                <span data-ng-bind="::$row.calling | phoneNumber"></span>
+                <span data-ng-bind="::$row.calling | tucPhoneNumber"></span>
                 <span data-ng-if="!$row.calling"
                     data-translate="telephony_service_consumption_calling_unknown">
                 </span>

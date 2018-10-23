@@ -85,13 +85,13 @@
 
             <oui-column data-title="'telephony_service_consumption_calling' | translate"
                         data-property="calling" data-sortable>
-                <span data-ng-if="$row.calling" data-ng-bind="::$row.calling | phoneNumber"></span>
+                <span data-ng-if="$row.calling" data-ng-bind="::$row.calling | tucPhoneNumber"></span>
                 <span data-ng-if="!$row.calling" data-translate="telephony_service_consumption_calling_unknown"></span>
             </oui-column>
 
             <oui-column data-title="'telephony_service_consumption_dialed' | translate"
                         data-property="dialed" data-sortable>
-                <span data-ng-bind="::$row.dialed === IncomingCallsCtrl.serviceName ? '-' : $row.dialed | phoneNumber"></span>
+                <span data-ng-bind="::$row.dialed === IncomingCallsCtrl.serviceName ? '-' : $row.dialed | tucPhoneNumber"></span>
             </oui-column>
 
             <oui-column data-title="'telephony_service_consumption_duration' | translate"

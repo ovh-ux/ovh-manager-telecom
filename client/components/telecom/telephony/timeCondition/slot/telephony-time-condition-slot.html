@@ -26,7 +26,7 @@
 
                 <span data-ng-if="$ctrl.slot.name !== 'available'"
                       data-translate="{{ 'voip_time_condition_slots_redirect_type_' + $ctrl.getSlotDetail('type') }}"
-                      data-translate-values="{ number: ($ctrl.getSlotDetail('number') | phoneNumber) }">
+                      data-translate-values="{ number: ($ctrl.getSlotDetail('number') | tucPhoneNumber) }">
                 </span>
 
                 <span data-ng-if="$ctrl.slot.name === 'available'"

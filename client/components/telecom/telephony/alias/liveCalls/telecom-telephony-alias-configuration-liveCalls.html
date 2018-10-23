@@ -48,7 +48,7 @@
     <oui-datagrid data-rows="$ctrl.calls">
         <oui-column data-title="'telephony_alias_configuration_mode_calls_number' | translate" data-property="callerIdNumber">
             <span class="text-capitalize"
-                  data-ng-bind="$row.callerIdNumber | phoneNumber"></span>
+                  data-ng-bind="$row.callerIdNumber | tucPhoneNumber"></span>
         </oui-column>
         <oui-column data-title="'telephony_alias_configuration_mode_calls_queue_time' | translate" data-property="begin">
             <elapsed-time data-from="$row.begin"></elapsed-time>

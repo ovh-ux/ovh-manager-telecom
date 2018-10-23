@@ -62,7 +62,7 @@
                   data-ng-bind="$ctrl.destinationService.getDisplayedName()">
             </span>
             <span class="voip-plan__step-info"
-                  data-ng-bind="$ctrl.destinationService.serviceName | phoneNumber">
+                  data-ng-bind="$ctrl.destinationService.serviceName | tucPhoneNumber">
             </span>
         </div>
         <div class="voip-plan__step-description"
@@ -112,7 +112,7 @@
                           data-ng-bind="service.getDisplayedName()">
                     </span>
                     <span class="voip-plan__step-info"
-                          data-ng-bind="service.serviceName | phoneNumber">
+                          data-ng-bind="service.serviceName | tucPhoneNumber">
                     </span>
                 </div>
             </label> <!-- SERVICE DISPLAY -->

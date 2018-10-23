@@ -42,13 +42,13 @@
                 <!-- VOICEMAIL -->
                 <span class="voip-plan__step-info"
                       data-ng-switch-when="voicemail"
-                      data-ng-bind="$ctrl.getVoicemailInfos().getDisplayedName() | phoneNumber">
+                      data-ng-bind="$ctrl.getVoicemailInfos().getDisplayedName() | tucPhoneNumber">
                 </span> <!-- VOICEMAIL -->
 
                 <!-- BRIDGE -->
                 <span class="voip-plan__step-info"
                       data-ng-switch-when="bridge"
-                      data-ng-bind="$ctrl.getRuleAttribute('actionParam') | phoneNumber">
+                      data-ng-bind="$ctrl.getRuleAttribute('actionParam') | tucPhoneNumber">
                 </span> <!-- BRIDGE -->
 
                 <!-- IVR -->

@@ -1,4 +1,6 @@
-angular.module('managerApp').directive('phoneNumber', ($q, OvhApiValidateAapi, TelephonyMediator) => ({
+import _ from 'lodash';
+
+export default /* @ngInject */ ($q, OvhApiValidateAapi, TelephonyMediator) => ({
   require: 'ngModel',
   link(scope, elm, attrs, ctrl) {
     /** Can't use isolate scope, $scompile.multidir* */
@@ -33,4 +35,4 @@ angular.module('managerApp').directive('phoneNumber', ($q, OvhApiValidateAapi, T
       });
     });
   },
-}));
+});

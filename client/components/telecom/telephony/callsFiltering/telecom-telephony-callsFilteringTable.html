@@ -170,7 +170,7 @@
                                data-ng-disabled="$ctrl.screenLists.isDeleting"
                                data-ng-model="$ctrl.screenLists.selected[screen.id]" />
                     </td>
-                    <td data-ng-bind="screen.callNumber | phoneNumber"></td>
+                    <td data-ng-bind="screen.callNumber | tucPhoneNumber"></td>
                     <td data-ng-bind="'telephony_calls_filtering_table_nature_' + screen.nature | translate"></td>
                     <td data-ng-bind="'telephony_calls_filtering_table_type_' + screen.shortType | translate"></td>
                     <td data-ng-bind="'telephony_calls_filtering_table_list_' + screen.list | translate"></td>

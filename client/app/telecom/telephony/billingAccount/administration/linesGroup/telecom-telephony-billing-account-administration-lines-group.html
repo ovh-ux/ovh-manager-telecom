@@ -100,7 +100,7 @@
                                            data-ng-if="!LinesGroupCtrl.serviceAttachSuccess[line.serviceName]"
                                            data-ng-true-value="{{ line }}"
                                            data-ng-model="LinesGroupCtrl.servicesToAttach[line.serviceName]" />
-                                    <span data-ng-bind="line.serviceName | phoneNumber"></span>
+                                    <span data-ng-bind="line.serviceName | tucPhoneNumber"></span>
                                     <span class="ml-2 text-muted"
                                           data-ng-if="line.description && line.description !== line.serviceName"
                                           data-ng-bind="line.description">
@@ -129,7 +129,7 @@
                                            data-ng-if="!LinesGroupCtrl.serviceAttachSuccess[alias.serviceName]"
                                            data-ng-true-value="{{ alias }}"
                                            data-ng-model="LinesGroupCtrl.servicesToAttach[alias.serviceName]" />
-                                    <span data-ng-bind="alias.serviceName | phoneNumber"></span>
+                                    <span data-ng-bind="alias.serviceName | tucPhoneNumber"></span>
                                     <span class="ml-2 text-muted"
                                           data-ng-if="alias.description && alias.description !== alias.serviceName"
                                           data-ng-bind="alias.description">

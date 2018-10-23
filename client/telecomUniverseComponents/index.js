@@ -5,6 +5,7 @@ import tucDebounce from './debounce';
 import tucEditableServiceName from './editable-service-name';
 import tucGauge from './gauge';
 import tucIpAddress from './ipAddress';
+import tucPhone from './phone';
 import tucSectionBackLink from './section-back-link';
 import tucSlider from './slider';
 import tucSuccessDrawingCheck from './successDrawingCheck';
@@ -23,6 +24,7 @@ export default angular
     tucEditableServiceName,
     tucGauge,
     tucIpAddress,
+    tucPhone,
     tucSectionBackLink,
     tucSlider,
     tucSuccessDrawingCheck,
