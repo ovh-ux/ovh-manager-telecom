@@ -1,3 +1,15 @@
+<a name="10.9.1"></a>
+## [10.9.1](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.9.0...v10.9.1) (2018-10-24)
+
+
+### Bug Fixes
+
+* **i18n:** retrieve translations ([d2c7226](https://github.com/ovh-ux/ovh-manager-telecom/commit/d2c7226))
+* **i18n:** submit translations ([0e62e9c](https://github.com/ovh-ux/ovh-manager-telecom/commit/0e62e9c))
+* **sms.options:** fix editing and deleting sms response options ([cebb110](https://github.com/ovh-ux/ovh-manager-telecom/commit/cebb110))
+
+
+
 <a name="10.9.0"></a>
 # [10.9.0](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.8.3...v10.9.0) (2018-10-22)
 
