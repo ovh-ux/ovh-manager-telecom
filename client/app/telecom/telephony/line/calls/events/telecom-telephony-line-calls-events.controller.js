@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyLineCallsEventsCtrl', function ($q, $translate, $stateParams, TelephonyMediator, Toast) {
+angular.module('managerApp').controller('TelecomTelephonyLineCallsEventsCtrl', function ($q, $translate, $stateParams, TelephonyMediator, TucToast) {
   const self = this;
 
   self.loading = {
@@ -20,7 +20,7 @@ angular.module('managerApp').controller('TelecomTelephonyLineCallsEventsCtrl', f
         timeCondition: self.line.getTimeCondition(),
       });
     }).catch((error) => {
-      Toast.error([$translate.instant('telephony_line_calls_events_load_error'), (error.data && error.data.message) || ''].join(' '));
+      TucToast.error([$translate.instant('telephony_line_calls_events_load_error'), (error.data && error.data.message) || ''].join(' '));
       return $q.reject(error);
     }).finally(() => {
       self.loading.init = false;

@@ -1,7 +1,7 @@
 angular.module('managerApp').controller('TelecomTelephonyLineTrunkSimultaneousLines', class TelecomTelephonyLineTrunkSimultaneousLines {
   constructor(
     $q, $stateParams, $translate, currentLine, TucChartjsFactory, tucDebounce,
-    OvhApiTelephony, OvhApiOrderTelephony, Toast, TRUNK_PACK_DETAILS,
+    OvhApiTelephony, OvhApiOrderTelephony, TucToast, TRUNK_PACK_DETAILS,
   ) {
     'ngInject';
 
@@ -14,7 +14,7 @@ angular.module('managerApp').controller('TelecomTelephonyLineTrunkSimultaneousLi
     this.tucDebounce = tucDebounce;
     this.OvhApiTelephony = OvhApiTelephony;
     this.OvhApiOrderTelephony = OvhApiOrderTelephony;
-    this.Toast = Toast;
+    this.TucToast = TucToast;
     this.TRUNK_PACK_DETAILS = TRUNK_PACK_DETAILS;
 
     this.getNewRepartition = tucDebounce(() => this._getNewRepartition(), 500, false);
@@ -38,7 +38,7 @@ angular.module('managerApp').controller('TelecomTelephonyLineTrunkSimultaneousLi
 
         return packResult;
       }).catch((error) => {
-        this.Toast.error(this.$translate.instant('telephony_line_actions_line_calls_trunk_simultaneous_new_get_channels_error'));
+        this.TucToast.error(this.$translate.instant('telephony_line_actions_line_calls_trunk_simultaneous_new_get_channels_error'));
         return error;
       }).finally(() => {
         this.trunkRates.change.loading = false;
@@ -84,7 +84,7 @@ angular.module('managerApp').controller('TelecomTelephonyLineTrunkSimultaneousLi
 
   $onInit() {
     if (!this.currentLine) {
-      this.Toast.error(this.$translate.instant('telephony_line_actions_line_calls_simultaneous_line_load_error'));
+      this.TucToast.error(this.$translate.instant('telephony_line_actions_line_calls_simultaneous_line_load_error'));
       return this.$q.when(null);
     }
 
@@ -139,7 +139,7 @@ angular.module('managerApp').controller('TelecomTelephonyLineTrunkSimultaneousLi
           this.buildChart();
           return pendingPack;
         }).catch((error) => {
-          this.Toast.error(this.$translate.instant('telephony_line_actions_line_calls_trunk_simultaneous_pending_channels_get_channels_error'));
+          this.TucToast.error(this.$translate.instant('telephony_line_actions_line_calls_trunk_simultaneous_pending_channels_get_channels_error'));
           return this.$q.reject(error);
         });
       }
@@ -147,7 +147,7 @@ angular.module('managerApp').controller('TelecomTelephonyLineTrunkSimultaneousLi
       this.buildChart();
       return packResult;
     }).catch((error) => {
-      this.Toast.error(this.$translate.instant('telephony_line_actions_line_calls_trunk_simultaneous_current_channels_get_channels_error'));
+      this.TucToast.error(this.$translate.instant('telephony_line_actions_line_calls_trunk_simultaneous_current_channels_get_channels_error'));
       return this.$q.reject(error);
     }).finally(() => {
       this.trunkRates.loading = false;
@@ -161,7 +161,7 @@ angular.module('managerApp').controller('TelecomTelephonyLineTrunkSimultaneousLi
     }, { quantity: this.trunkRates.change.quantityOptimized }).$promise.then((packOrder) => {
       this.trunkRates.order = packOrder;
     }).catch((error) => {
-      this.Toast.error([this.$translate.instant('telephony_line_actions_line_calls_trunk_simultaneous_new_channels_update_error'), error.data.message].join(' '));
+      this.TucToast.error([this.$translate.instant('telephony_line_actions_line_calls_trunk_simultaneous_new_channels_update_error'), error.data.message].join(' '));
       return error;
     }).finally(() => {
       this.trunkRates.loading = false;

@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('telephonyNumberOvhPabxMenuEntryEditCtrl', function ($scope, $q, $timeout, $translate, TelephonyMediator, Toast) {
+angular.module('managerApp').controller('telephonyNumberOvhPabxMenuEntryEditCtrl', function ($scope, $q, $timeout, $translate, TelephonyMediator, TucToast) {
   const self = this;
 
   self.loading = {
@@ -117,7 +117,7 @@ angular.module('managerApp').controller('telephonyNumberOvhPabxMenuEntryEditCtrl
     }).catch((error) => {
       // manage error display
       const errorTranslationKey = self.menuEntryCtrl.menuEntry.status === 'DRAFT' ? 'telephony_number_feature_ovh_pabx_menu_entry_create_error' : 'telephony_number_feature_ovh_pabx_menu_entry_edit_error';
-      Toast.error([$translate.instant(errorTranslationKey), _.get(error, 'data.message') || ''].join(' '));
+      TucToast.error([$translate.instant(errorTranslationKey), _.get(error, 'data.message') || ''].join(' '));
 
       // remove entry from menu if entry had to be created
       if (self.menuEntryCtrl.menuEntry.status === 'DRAFT') {

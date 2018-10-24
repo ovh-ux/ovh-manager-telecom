@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyLinePhoneCodecCtrl', function ($q, $stateParams, $translate, TelephonyMediator, Toast, OvhApiTelephony, telephonyBulk, voipLinePhone) {
+angular.module('managerApp').controller('TelecomTelephonyLinePhoneCodecCtrl', function ($q, $stateParams, $translate, TelephonyMediator, TucToast, OvhApiTelephony, telephonyBulk, voipLinePhone) {
   const self = this;
   let codecsAuto = null;
 
@@ -58,13 +58,13 @@ angular.module('managerApp').controller('TelecomTelephonyLinePhoneCodecCtrl', fu
 
     return self.line.saveOption('codecs', self.model.auto ? `${self.model.codecs.value}_a` : self.model.codecs.value).then(() => {
       self.saved = true;
-      Toast.success([$translate.instant('telephony_line_phone_codec_edit_codec_save_success')]);
+      TucToast.success([$translate.instant('telephony_line_phone_codec_edit_codec_save_success')]);
       refreshCodecs();
     }, (error) => {
       if (error.init) {
-        Toast.error([$translate.instant('telephony_line_phone_codec_edit_codec_load_error'), (error.data && error.data.message) || ''].join(' '));
+        TucToast.error([$translate.instant('telephony_line_phone_codec_edit_codec_load_error'), (error.data && error.data.message) || ''].join(' '));
       } else {
-        Toast.error([$translate.instant('telephony_line_phone_codec_edit_codec_save_error'), (error.data && error.data.message) || ''].join(' '));
+        TucToast.error([$translate.instant('telephony_line_phone_codec_edit_codec_save_error'), (error.data && error.data.message) || ''].join(' '));
       }
     }).finally(() => {
       self.loading.save = false;
@@ -88,7 +88,7 @@ angular.module('managerApp').controller('TelecomTelephonyLinePhoneCodecCtrl', fu
         codecList: self.line.getAvailableCodecs(),
       }).then(refreshCodecs);
     }).catch((error) => {
-      Toast.error([$translate.instant('telephony_line_phone_codec_load_error'), (error.data && error.data.message) || ''].join(' '));
+      TucToast.error([$translate.instant('telephony_line_phone_codec_load_error'), (error.data && error.data.message) || ''].join(' '));
       return error;
     }).finally(() => {
       self.loading.init = false;
@@ -136,14 +136,14 @@ angular.module('managerApp').controller('TelecomTelephonyLinePhoneCodecCtrl', fu
 
   self.onBulkSuccess = function (bulkResult) {
     // display message of success or error
-    telephonyBulk.getToastInfos(bulkResult, {
+    telephonyBulk.getTucToastInfos(bulkResult, {
       fullSuccess: $translate.instant('telephony_line_phone_codec_bulk_all_success'),
       partialSuccess: $translate.instant('telephony_line_phone_codec_bulk_some_success', {
         count: bulkResult.success.length,
       }),
       error: $translate.instant('telephony_line_phone_codec_bulk_error'),
     }).forEach((toastInfo) => {
-      Toast[toastInfo.type](toastInfo.message, {
+      TucToast[toastInfo.type](toastInfo.message, {
         hideAfter: null,
       });
     });
@@ -156,7 +156,7 @@ angular.module('managerApp').controller('TelecomTelephonyLinePhoneCodecCtrl', fu
   };
 
   self.onBulkError = function (error) {
-    Toast.error([$translate.instant('telephony_line_phone_codec_bulk_on_error'), _.get(error, 'msg.data')].join(' '));
+    TucToast.error([$translate.instant('telephony_line_phone_codec_bulk_on_error'), _.get(error, 'msg.data')].join(' '));
   };
 
   /* -----  End of BULK  ------ */

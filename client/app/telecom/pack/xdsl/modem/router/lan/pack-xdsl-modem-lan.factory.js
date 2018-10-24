@@ -1,4 +1,4 @@
-angular.module('managerApp').factory('PackXdslModemLanObject', (OvhApiXdsl, $translate, Toast, $q) => {
+angular.module('managerApp').factory('PackXdslModemLanObject', (OvhApiXdsl, $translate, TucToast, $q) => {
   const template = {
     IPAddress: '',
     addressingType: '',
@@ -38,10 +38,10 @@ angular.module('managerApp').factory('PackXdslModemLanObject', (OvhApiXdsl, $tra
     ).$promise.then((data) => {
       _.extend(self, self.tempValue);
       self.toggleEdit(false);
-      Toast.success($translate.instant('xdsl_modem_lan_success', { name: self.IPAddress }));
+      TucToast.success($translate.instant('xdsl_modem_lan_success', { name: self.IPAddress }));
       return data;
     }).catch((err) => {
-      Toast.error($translate.instant('xdsl_modem_lan_submit_error'));
+      TucToast.error($translate.instant('xdsl_modem_lan_submit_error'));
       return $q.reject(err);
     }).finally(() => {
       self.busy = false;

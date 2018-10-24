@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelephonyNumberOvhPabxCtrl', function ($q, $translate, $translatePartialLoader, TelephonyMediator, Toast) {
+angular.module('managerApp').controller('TelephonyNumberOvhPabxCtrl', function ($q, $translate, $translatePartialLoader, TelephonyMediator, TucToast) {
   const self = this;
 
   self.popoverDatas = {
@@ -82,7 +82,7 @@ angular.module('managerApp').controller('TelephonyNumberOvhPabxCtrl', function (
       self.numberCtrl.loading.feature = false;
     })
       .catch((error) => {
-        Toast.error($translate.instant('telephony_number_feature_ovh_pabx_load_error'));
+        TucToast.error($translate.instant('telephony_number_feature_ovh_pabx_load_error'));
         return $q.reject(error);
       });
   };

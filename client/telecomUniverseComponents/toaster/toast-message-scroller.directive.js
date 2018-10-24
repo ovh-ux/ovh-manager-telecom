@@ -1,4 +1,6 @@
-angular.module('managerApp').directive('toastMessageScroller', $window => ({
+import $ from 'jquery';
+
+export default /* @ngInject */ $window => ({
   restrict: 'A',
   link(scope, element) {
     const delay = 250;
@@ -10,4 +12,4 @@ angular.module('managerApp').directive('toastMessageScroller', $window => ({
       }, delay);
     }
   },
-}));
+});

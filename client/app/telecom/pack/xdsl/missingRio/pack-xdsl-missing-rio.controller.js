@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('PackXdslMissingRioCtrl', function ($q, $stateParams, $translate, OvhApiXdsl, Toast) {
+angular.module('managerApp').controller('PackXdslMissingRioCtrl', function ($q, $stateParams, $translate, OvhApiXdsl, TucToast) {
   const self = this;
 
   this.loading = true;
@@ -14,7 +14,7 @@ angular.module('managerApp').controller('PackXdslMissingRioCtrl', function ($q, 
     return OvhApiXdsl.v6().get({
       xdslId: $stateParams.serviceName,
     }).$promise.then(data => data, (err) => {
-      Toast.error([$translate.instant('xdsl_missing-rio_init_error'), _.get(err, 'data.message')].join(' '));
+      TucToast.error([$translate.instant('xdsl_missing-rio_init_error'), _.get(err, 'data.message')].join(' '));
       return $q.reject(err);
     }).then(() => {
       self.loading = false;
@@ -35,10 +35,10 @@ angular.module('managerApp').controller('PackXdslMissingRioCtrl', function ($q, 
     return OvhApiXdsl.v6().updateInvalidOrMissingRio({
       xdslId: $stateParams.serviceName,
     }, params).$promise.then(() => {
-      Toast.success($translate.instant('xdsl_missing-rio_sent'));
+      TucToast.success($translate.instant('xdsl_missing-rio_sent'));
       self.init();
     }, (err) => {
-      Toast.error([$translate.instant('xdsl_missing-rio_error'), _.get(err, 'data.message')].join(' '));
+      TucToast.error([$translate.instant('xdsl_missing-rio_error'), _.get(err, 'data.message')].join(' '));
       return $q.reject(err);
     }).finally(() => {
       self.loading = false;

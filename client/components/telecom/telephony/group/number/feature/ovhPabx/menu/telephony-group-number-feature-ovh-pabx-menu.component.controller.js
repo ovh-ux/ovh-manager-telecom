@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('telephonyNumberOvhPabxMenuCtrl', function ($q, $scope, $timeout, $translate, $translatePartialLoader, Toast, TELEPHONY_NUMBER_JSPLUMB_ENDPOINTS_OPTIONS, TELEPHONY_NUMBER_JSPLUMB_CONNECTIONS_OPTIONS) {
+angular.module('managerApp').controller('telephonyNumberOvhPabxMenuCtrl', function ($q, $scope, $timeout, $translate, $translatePartialLoader, TucToast, TELEPHONY_NUMBER_JSPLUMB_ENDPOINTS_OPTIONS, TELEPHONY_NUMBER_JSPLUMB_CONNECTIONS_OPTIONS) {
   const self = this;
 
   self.loading = {
@@ -145,7 +145,7 @@ angular.module('managerApp').controller('telephonyNumberOvhPabxMenuCtrl', functi
         if (error.status === 403) {
           errorTranslationKey = 'telephony_number_feature_ovh_pabx_menu_action_delete_error_used';
         }
-        Toast.error([$translate.instant(errorTranslationKey), _.get(error, 'data.message') || ''].join(' '));
+        TucToast.error([$translate.instant(errorTranslationKey), _.get(error, 'data.message') || ''].join(' '));
         return $q.reject(error);
       });
     }
@@ -155,7 +155,7 @@ angular.module('managerApp').controller('telephonyNumberOvhPabxMenuCtrl', functi
         self.menuEntry = null;
         self.menuCtrl.checkForDisplayHelpers();
       }).catch((error) => {
-        Toast.error([$translate.instant('telephony_number_feature_ovh_pabx_menu_entry_delete_error'), _.get(error, 'data.message') || ''].join(' '));
+        TucToast.error([$translate.instant('telephony_number_feature_ovh_pabx_menu_entry_delete_error'), _.get(error, 'data.message') || ''].join(' '));
         return $q.reject(error);
       });
     } if (self.dialplanRule) {
@@ -164,7 +164,7 @@ angular.module('managerApp').controller('telephonyNumberOvhPabxMenuCtrl', functi
         self.dialplanRule = null;
         self.extensionCtrl.checkForDisplayHelpers();
       }).catch((error) => {
-        Toast.error([$translate.instant('telephony_number_feature_ovh_pabx_menu_entry_delete_error'), _.get(error, 'data.message') || ''].join(' '));
+        TucToast.error([$translate.instant('telephony_number_feature_ovh_pabx_menu_entry_delete_error'), _.get(error, 'data.message') || ''].join(' '));
         return $q.reject(error);
       });
     }

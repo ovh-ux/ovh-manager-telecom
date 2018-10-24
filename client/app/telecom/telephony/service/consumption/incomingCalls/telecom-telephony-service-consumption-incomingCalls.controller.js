@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyServiceConsumptionIncomingCallsCtrl', function ($stateParams, $q, $translate, $filter, $timeout, OvhApiTelephony, ToastError) {
+angular.module('managerApp').controller('TelecomTelephonyServiceConsumptionIncomingCallsCtrl', function ($stateParams, $q, $translate, $filter, $timeout, OvhApiTelephony, TucToastError) {
   const self = this;
 
   function fetchIncomingConsumption() {
@@ -59,7 +59,7 @@ angular.module('managerApp').controller('TelecomTelephonyServiceConsumptionIncom
       self.consumption.sorted = angular.copy(result);
       self.consumption.durationSum = new Date(_.sum(self.consumption.raw,
         conso => conso.duration) * 1000);
-    }, err => new ToastError(err));
+    }, err => new TucToastError(err));
   }
 
   self.refresh = function () {

@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyServiceVoicemailOptionsCtrl', function ($scope, $stateParams, $q, $translate, $timeout, ToastError, OvhApiTelephony, OvhApiMe) {
+angular.module('managerApp').controller('TelecomTelephonyServiceVoicemailOptionsCtrl', function ($scope, $stateParams, $q, $translate, $timeout, TucToastError, OvhApiTelephony, OvhApiMe) {
   const self = this;
   let removeRecord = null;
 
@@ -37,7 +37,7 @@ angular.module('managerApp').controller('TelecomTelephonyServiceVoicemailOptions
           }).$promise.catch(() => {
             // sometimes api fails to retrieve a download URL,
             // since it's not blocking we don't want to reject an error
-            ToastError($translate.instant('telephony_line_answer_voicemail_options_recording_file_download_error'));
+            TucToastError($translate.instant('telephony_line_answer_voicemail_options_recording_file_download_error'));
             return { filename: null, url: null };
           }),
         }).then((data) => {
@@ -123,7 +123,7 @@ angular.module('managerApp').controller('TelecomTelephonyServiceVoicemailOptions
     }).catch((err) => {
       self.settings = null;
       self.greetings = null;
-      return new ToastError(err);
+      return new TucToastError(err);
     }).finally(() => {
       self.loading = false;
     });
@@ -147,7 +147,7 @@ angular.module('managerApp').controller('TelecomTelephonyServiceVoicemailOptions
     const fileName = file ? file.name : '';
     const found = _.some(validExtensions, ext => _.endsWith(fileName.toLowerCase(), ext));
     if (!found) {
-      ToastError($translate.instant('telephony_line_answer_voicemail_options_recording_file_invalid'));
+      TucToastError($translate.instant('telephony_line_answer_voicemail_options_recording_file_invalid'));
     }
     return found;
   };
@@ -224,7 +224,7 @@ angular.module('managerApp').controller('TelecomTelephonyServiceVoicemailOptions
       $timeout(() => {
         self.recordingForm.isSuccess = false; // reset form
       }, 3000);
-    }).catch(err => new ToastError(err))
+    }).catch(err => new TucToastError(err))
       .finally(() => {
         self.recordingForm.isUpdating = false;
       });
@@ -252,7 +252,7 @@ angular.module('managerApp').controller('TelecomTelephonyServiceVoicemailOptions
       $timeout(() => {
         self.notificationForm.isSuccess = false; // reset form
       }, 3000);
-    }).catch(err => new ToastError(err))
+    }).catch(err => new TucToastError(err))
       .finally(() => {
         self.notificationForm.isUpdating = false;
       });
@@ -278,7 +278,7 @@ angular.module('managerApp').controller('TelecomTelephonyServiceVoicemailOptions
     $q.all({
       noop: $timeout(angular.noop, 1000), // avoid clipping
       update,
-    }).then(() => refreshSettings()).catch(err => new ToastError(err)).finally(() => {
+    }).then(() => refreshSettings()).catch(err => new TucToastError(err)).finally(() => {
       self.emailForm.isRemoving = false;
     });
   };
@@ -306,7 +306,7 @@ angular.module('managerApp').controller('TelecomTelephonyServiceVoicemailOptions
       self.emailForm.email = null;
       self.emailForm.type = null;
       self.emailForm.isShown = false;
-    }).catch(err => new ToastError(err))
+    }).catch(err => new TucToastError(err))
       .finally(() => {
         self.emailForm.isAdding = false;
       });

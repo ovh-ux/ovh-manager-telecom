@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyAliasAdministrationConvertToLineCtrl', function ($stateParams, $q, $translate, OvhApiTelephony, ToastError, Toast, telephonyBulk) {
+angular.module('managerApp').controller('TelecomTelephonyAliasAdministrationConvertToLineCtrl', function ($stateParams, $q, $translate, OvhApiTelephony, TucToastError, TucToast, telephonyBulk) {
   const self = this;
 
   function init() {
@@ -13,7 +13,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasAdministrationConv
         self.offerError = $translate.instant('telephony_alias_administration_convert_range_error');
         return $q.reject(err);
       }
-      return new ToastError(err);
+      return new TucToastError(err);
     });
   }
 
@@ -65,8 +65,8 @@ angular.module('managerApp').controller('TelecomTelephonyAliasAdministrationConv
     }, {
       offer: self.offer.name,
     }).$promise.then(() => self.refresh()).then(() => {
-      Toast.success($translate.instant('telephony_alias_administration_convert_success'));
-    }).catch(err => new ToastError(err)).finally(() => {
+      TucToast.success($translate.instant('telephony_alias_administration_convert_success'));
+    }).catch(err => new TucToastError(err)).finally(() => {
       self.isConverting = false;
     });
   };
@@ -77,8 +77,8 @@ angular.module('managerApp').controller('TelecomTelephonyAliasAdministrationConv
       billingAccount: $stateParams.billingAccount,
       serviceName: $stateParams.serviceName,
     }, {}).$promise.then(() => self.refresh()).then(() => {
-      Toast.success($translate.instant('telephony_alias_administration_convert_cancel_success'));
-    }).catch(err => new ToastError(err)).finally(() => {
+      TucToast.success($translate.instant('telephony_alias_administration_convert_cancel_success'));
+    }).catch(err => new TucToastError(err)).finally(() => {
       self.isCancelling = false;
     });
   };
@@ -131,7 +131,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasAdministrationConv
 
   self.onBulkSuccess = function (bulkResult) {
     // display message of success or error
-    telephonyBulk.getToastInfos(bulkResult, {
+    telephonyBulk.getTucToastInfos(bulkResult, {
       fullSuccess: $translate.instant('telephony_alias_administration_convert_bulk_all_success'),
       partialSuccess: $translate.instant('telephony_alias_administration_convert_bulk_some_success', {
         count: bulkResult.success.length,
@@ -139,7 +139,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasAdministrationConv
       }),
       error: $translate.instant('telephony_alias_administration_convert_bulk_error'),
     }).forEach((toastInfo) => {
-      Toast[toastInfo.type](toastInfo.message, {
+      TucToast[toastInfo.type](toastInfo.message, {
         hideAfter: null,
       });
     });
@@ -148,7 +148,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasAdministrationConv
   };
 
   self.onBulkError = function (error) {
-    Toast.error([$translate.instant('telephony_alias_administration_convert_bulk_on_error'), _.get(error, 'msg.data')].join(' '));
+    TucToast.error([$translate.instant('telephony_alias_administration_convert_bulk_on_error'), _.get(error, 'msg.data')].join(' '));
   };
 
   init();

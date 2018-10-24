@@ -1,7 +1,7 @@
 angular.module('managerApp').service('telephonyBulk', function () {
   const self = this;
 
-  self.getToastInfos = function (bulkResult, messages, noDetails) {
+  self.getTucToastInfos = function (bulkResult, messages, noDetails) {
     const infos = [];
 
     // manage full success

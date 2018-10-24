@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('PackTaskCtrl', function ($scope, $translate, PAGINATION_PER_PAGE, TASK_STATUS, OvhApiPackXdslTask, ToastError) {
+angular.module('managerApp').controller('PackTaskCtrl', function ($scope, $translate, PAGINATION_PER_PAGE, TASK_STATUS, OvhApiPackXdslTask, TucToastError) {
   const self = this;
   this.allTasks = [];
   this.statusFilteredTasks = [];
@@ -15,7 +15,7 @@ angular.module('managerApp').controller('PackTaskCtrl', function ($scope, $trans
       (data) => {
         self.allTasks = data;
       },
-      ToastError,
+      TucToastError,
     );
   };
 

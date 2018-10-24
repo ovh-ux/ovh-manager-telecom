@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyBillingAccountCtrl', function ($q, $translate, $stateParams, TelephonyMediator, SidebarMenu, Toast, OvhApiOrder, OvhApiTelephony) {
+angular.module('managerApp').controller('TelecomTelephonyBillingAccountCtrl', function ($q, $translate, $stateParams, TelephonyMediator, SidebarMenu, TucToast, OvhApiOrder, OvhApiTelephony) {
   const self = this;
 
   self.loading = {
@@ -24,7 +24,7 @@ angular.module('managerApp').controller('TelecomTelephonyBillingAccountCtrl', fu
       }, self.group.billingAccount, 'telecom-telephony-section');
     }, (error) => {
       self.group.stopEdition(true);
-      Toast.error([$translate.instant('telephony_group_rename_error', $stateParams), error.data.message].join(' '));
+      TucToast.error([$translate.instant('telephony_group_rename_error', $stateParams), error.data.message].join(' '));
       return $q.reject(error);
     });
   };
@@ -62,7 +62,7 @@ angular.module('managerApp').controller('TelecomTelephonyBillingAccountCtrl', fu
         };
         return fetchGroupTerminationTask(group);
       }, (error) => {
-        Toast.error([$translate.instant('telephony_group_loading_error', $stateParams), error.data.message].join(' '));
+        TucToast.error([$translate.instant('telephony_group_loading_error', $stateParams), error.data.message].join(' '));
         return $q.reject(error);
       }),
       OvhApiOrder.Telephony().v6().billingAccounts().$promise.then((allowedBillingAccounts) => {

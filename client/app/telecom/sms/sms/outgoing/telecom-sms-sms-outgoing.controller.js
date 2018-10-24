@@ -3,7 +3,7 @@ angular
   .controller('TelecomSmsSmsOutgoingCtrl', class TelecomSmsSmsOutgoingCtrl {
     constructor(
       $scope, $stateParams, $q, $filter, $timeout, $window, $uibModal, $translate,
-      OvhApiSms, OvhApiMe, tucDebounce, Toast, ToastError,
+      OvhApiSms, OvhApiMe, tucDebounce, TucToast, TucToastError,
     ) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
@@ -20,8 +20,8 @@ angular
         userDocument: OvhApiMe.Document().v6(),
       };
       this.tucDebounce = tucDebounce;
-      this.Toast = Toast;
-      this.ToastError = ToastError;
+      this.TucToast = TucToast;
+      this.TucToastError = TucToastError;
     }
 
     $onInit() {
@@ -52,7 +52,7 @@ angular
         this.outgoing.raw = angular.copy(results.outgoing);
         this.serviceInfos = results.serviceInfos;
       }).catch((err) => {
-        this.ToastError(err);
+        this.TucToastError(err);
       }).finally(() => {
         this.outgoing.isLoading = false;
       });
@@ -175,12 +175,12 @@ angular
       }).$promise);
       this.outgoing.isDeleting = true;
       queries.push(this.$timeout(angular.noop, 500)); // avoid clipping
-      this.Toast.info(this.$translate.instant('sms_sms_outgoing_delete_success'));
+      this.TucToast.info(this.$translate.instant('sms_sms_outgoing_delete_success'));
       return this.$q.all(queries).then(() => {
         this.outgoing.selected = {};
         return this.refresh();
       }).catch((err) => {
-        this.ToastError(err);
+        this.TucToastError(err);
       }).finally(() => {
         this.outgoing.isDeleting = false;
       });
@@ -221,7 +221,7 @@ angular
       });
       modal.result.then(() => this.refresh()).catch((error) => {
         if (error && error.type === 'API') {
-          this.Toast.error(this.$translate.instant('sms_sms_outgoing_remove_ko', { error: error.message }));
+          this.TucToast.error(this.$translate.instant('sms_sms_outgoing_remove_ko', { error: error.message }));
         }
       });
     }
@@ -256,7 +256,7 @@ angular
           this.$window.location.href = doc.getUrl;
         });
       }).catch((error) => {
-        this.Toast.error(this.$translate.instant('sms_sms_outgoing_download_history_ko'));
+        this.TucToast.error(this.$translate.instant('sms_sms_outgoing_download_history_ko'));
         return this.$q.reject(error);
       }).finally(() => {
         this.outgoing.isExporting = false;
@@ -274,7 +274,7 @@ angular
       return this.fetchOutgoingSms().then((outgoing) => {
         this.outgoing.raw = angular.copy(outgoing);
       }).catch((err) => {
-        this.ToastError(err);
+        this.TucToastError(err);
       }).finally(() => {
         this.outgoing.isLoading = false;
       });

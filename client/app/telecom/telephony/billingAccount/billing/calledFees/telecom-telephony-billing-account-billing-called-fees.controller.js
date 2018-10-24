@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyBillingAccountBillingCalledFeesCtrl', function ($filter, $q, $stateParams, $translate, TelephonyMediator, Toast) {
+angular.module('managerApp').controller('TelecomTelephonyBillingAccountBillingCalledFeesCtrl', function ($filter, $q, $stateParams, $translate, TelephonyMediator, TucToast) {
   const self = this;
 
   /*= =====================================
@@ -42,7 +42,7 @@ angular.module('managerApp').controller('TelecomTelephonyBillingAccountBillingCa
         });
         return repaymentConsumptions;
       })).catch((err) => {
-        Toast.error([$translate.instant('telephony_group_billing_called_fees_error'), (err.data && err.data.message) || ''].join(' '));
+        TucToast.error([$translate.instant('telephony_group_billing_called_fees_error'), (err.data && err.data.message) || ''].join(' '));
         return $q.reject(err);
       }).finally(() => {
         self.consumptions.isLoading = false;

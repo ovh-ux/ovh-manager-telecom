@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationMembersOldPabxCtrl', function ($q, $stateParams, $translate, TelephonyMediator, Toast, OvhApiTelephony, OvhApiTelephonyEasyPabx, OvhApiTelephonyMiniPabx) {
+angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationMembersOldPabxCtrl', function ($q, $stateParams, $translate, TelephonyMediator, TucToast, OvhApiTelephony, OvhApiTelephonyEasyPabx, OvhApiTelephonyMiniPabx) {
   const self = this;
   let apiService;
 
@@ -156,12 +156,12 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationMembe
       serviceName: $stateParams.serviceName,
       agentNumber: self.agentInEdition.agentNumber,
     }, _.pick(self.agentInEdition, attrs)).$promise.then(() => {
-      Toast.success($translate.instant('telephony_alias_members_change_success'));
+      TucToast.success($translate.instant('telephony_alias_members_change_success'));
       const toUpdate = _.find(self.agents, { agentNumber: self.agentInEdition.agentNumber });
       _.assign(toUpdate, _.pick(self.agentInEdition, attrs));
       self.onAgentEditCancelBtnClick();
     }).catch((error) => {
-      Toast.error([$translate.instant('an_error_occured'), _.get(error, 'data.message')].join(' '));
+      TucToast.error([$translate.instant('an_error_occured'), _.get(error, 'data.message')].join(' '));
       return $q.error(error);
     }).finally(() => {
       self.loaders.editing = false;
@@ -179,12 +179,12 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationMembe
       agentNumber: self.agentToDelete.agentNumber,
     }).$promise.then(() => {
       self.agentToDelete = null;
-      Toast.success($translate.instant('telephony_alias_members_delete_success'));
+      TucToast.success($translate.instant('telephony_alias_members_delete_success'));
       _.remove(self.agents, a => a.agentNumber === agent.agentNumber);
       getServicesToExclude();
       return self.reorderAgents(agent.position);
     }, (error) => {
-      Toast.error([$translate.instant('an_error_occured'), _.get(error, 'data.message')].join(' '));
+      TucToast.error([$translate.instant('an_error_occured'), _.get(error, 'data.message')].join(' '));
       return $q.reject(error);
     }).finally(() => {
       self.loaders.deleting = false;
@@ -207,7 +207,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationMembe
         // revert changes
         _.set(fromAgent, 'position', fromPos);
         _.set(toAgent, 'position', toPos);
-        Toast.error([$translate.instant('an_error_occured'), _.get(error, 'data.message')].join(' '));
+        TucToast.error([$translate.instant('an_error_occured'), _.get(error, 'data.message')].join(' '));
         self.agents = _.sortBy(self.agents, 'position');
         return $q.reject(error);
       }).finally(() => {
@@ -225,7 +225,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationMembe
     });
 
     return $q.all(movePromises).catch((error) => {
-      Toast.error([$translate.instant('an_error_occured'), _.get(error, 'data.message')].join(' '));
+      TucToast.error([$translate.instant('an_error_occured'), _.get(error, 'data.message')].join(' '));
     }).finally(() => {
       self.sortableAgentsOpts.disabled = false;
     });
@@ -263,12 +263,12 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationMembe
       });
 
     return $q.all(addPromises).then(() => {
-      Toast.success($translate.instant('telephony_alias_members_add_success'));
+      TucToast.success($translate.instant('telephony_alias_members_add_success'));
       self.resetAgentAddForm();
       form.$setPristine();
       getServicesToExclude();
     }).catch((error) => {
-      Toast.error([$translate.instant('an_error_occured'), _.get(error, 'data.message')].join(' '));
+      TucToast.error([$translate.instant('an_error_occured'), _.get(error, 'data.message')].join(' '));
     }).finally(() => {
       self.loaders.adding = false;
     });
@@ -306,7 +306,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationMembe
         getServicesToExclude();
       });
     }).catch((error) => {
-      Toast.error([$translate.instant('telephony_alias_configuration_members_old_pabx_load_error'), _.get(error, 'data.message')].join(' '));
+      TucToast.error([$translate.instant('telephony_alias_configuration_members_old_pabx_load_error'), _.get(error, 'data.message')].join(' '));
       return $q.reject(error);
     }).finally(() => {
       self.loaders.init = false;

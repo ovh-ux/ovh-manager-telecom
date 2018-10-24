@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyBillingAccountBillingGroupRepaymentsCtrl', function ($q, $stateParams, $translate, OvhApiTelephony, TelephonyMediator, Toast) {
+angular.module('managerApp').controller('TelecomTelephonyBillingAccountBillingGroupRepaymentsCtrl', function ($q, $stateParams, $translate, OvhApiTelephony, TelephonyMediator, TucToast) {
   const self = this;
 
   /*= =====================================
@@ -84,7 +84,7 @@ angular.module('managerApp').controller('TelecomTelephonyBillingAccountBillingGr
         });
         return repaymentConsumptions;
       })).catch((err) => {
-        Toast.error([$translate.instant('telephony_group_billing_group_repayments_error'), (err.data && err.data.message) || ''].join(' '));
+        TucToast.error([$translate.instant('telephony_group_billing_group_repayments_error'), (err.data && err.data.message) || ''].join(' '));
         return $q.reject(err);
       }).finally(() => {
         self.consumptions.isLoading = false;
@@ -105,10 +105,10 @@ angular.module('managerApp').controller('TelecomTelephonyBillingAccountBillingGr
     }, {
       billingNumber: self.groupRepaymentsForm.billingNumber,
     }).$promise.then(() => {
-      Toast.success($translate.instant('telephony_group_billing_group_repayments_ask_new_repayment_success'));
+      TucToast.success($translate.instant('telephony_group_billing_group_repayments_ask_new_repayment_success'));
       init();
     }).catch((error) => {
-      Toast.error([$translate.instant('telephony_group_billing_group_repayments_ask_new_repayment_error'), _.get(error, 'data.message')].join(' '));
+      TucToast.error([$translate.instant('telephony_group_billing_group_repayments_ask_new_repayment_error'), _.get(error, 'data.message')].join(' '));
       init();
       return $q.reject(error);
     }).finally(() => {

@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyFaxCtrl', function ($q, $stateParams, $translate, atInternet, TelecomMediator, TelephonyMediator, SidebarMenu, Toast) {
+angular.module('managerApp').controller('TelecomTelephonyFaxCtrl', function ($q, $stateParams, $translate, atInternet, TelecomMediator, TelephonyMediator, SidebarMenu, TucToast) {
   const self = this;
 
   self.loading = {
@@ -23,7 +23,7 @@ angular.module('managerApp').controller('TelecomTelephonyFaxCtrl', function ($q,
       }, self.fax.serviceName, 'telecom-telephony-section', self.fax.billingAccount);
     }, (error) => {
       self.fax.stopEdition(true);
-      Toast.error([$translate.instant('telephony_fax_rename_error', $stateParams), error.data.message].join(' '));
+      TucToast.error([$translate.instant('telephony_fax_rename_error', $stateParams), error.data.message].join(' '));
       return $q.reject(error);
     });
   };

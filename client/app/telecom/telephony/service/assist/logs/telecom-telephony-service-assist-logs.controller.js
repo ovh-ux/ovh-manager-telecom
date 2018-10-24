@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyServiceAssistLogsCtrl', function ($q, $translate, $state, $stateParams, voipService, voipLineFeature, OvhApiMe, Toast, PAGINATION_PER_PAGE, telephonyBulk) {
+angular.module('managerApp').controller('TelecomTelephonyServiceAssistLogsCtrl', function ($q, $translate, $state, $stateParams, voipService, voipLineFeature, OvhApiMe, TucToast, PAGINATION_PER_PAGE, telephonyBulk) {
   const self = this;
 
   self.service = null;
@@ -42,7 +42,7 @@ angular.module('managerApp').controller('TelecomTelephonyServiceAssistLogsCtrl',
       .then((logs) => {
         self.logs = logs;
       }).catch((error) => {
-        Toast.error([$translate.instant('telephony_line_assist_support_logs_refresh_error'), _.get(error, 'data.message', '')].join(' '));
+        TucToast.error([$translate.instant('telephony_line_assist_support_logs_refresh_error'), _.get(error, 'data.message', '')].join(' '));
         return $q.reject(error);
       }).finally(() => {
         self.loading.refresh = false;
@@ -101,7 +101,7 @@ angular.module('managerApp').controller('TelecomTelephonyServiceAssistLogsCtrl',
     return voipLineFeature.saveFeature(self.service.feature, {
       notifications: self.edition.notifications,
     }).catch((error) => {
-      Toast.error([$translate.instant('telephony_line_assist_support_logs_save_error'), _.get(error, 'data.message', '')].join(' '));
+      TucToast.error([$translate.instant('telephony_line_assist_support_logs_save_error'), _.get(error, 'data.message', '')].join(' '));
       return $q.reject(error);
     }).finally(() => {
       self.loading.save = false;
@@ -132,7 +132,7 @@ angular.module('managerApp').controller('TelecomTelephonyServiceAssistLogsCtrl',
           logs: self.onLogsFrequencySelectChange(),
         });
       }).catch((error) => {
-        Toast.error([$translate.instant('telephony_line_assist_support_logs_init_error'), _.get(error, 'data.message', '')].join(' '));
+        TucToast.error([$translate.instant('telephony_line_assist_support_logs_init_error'), _.get(error, 'data.message', '')].join(' '));
         return $q.reject(error);
       }).finally(() => {
         self.loading.init = false;
@@ -170,7 +170,7 @@ angular.module('managerApp').controller('TelecomTelephonyServiceAssistLogsCtrl',
 
   self.onBulkSuccess = function (bulkResult) {
     // display message of success or error
-    telephonyBulk.getToastInfos(bulkResult, {
+    telephonyBulk.getTucToastInfos(bulkResult, {
       fullSuccess: $translate.instant('telephony_line_assist_support_logs_bulk_all_success'),
       partialSuccess: $translate.instant('telephony_line_assist_support_logs_bulk_some_success', {
         count: bulkResult.success.length,
@@ -178,7 +178,7 @@ angular.module('managerApp').controller('TelecomTelephonyServiceAssistLogsCtrl',
       }),
       error: $translate.instant('telephony_line_assist_support_logs_bulk_error'),
     }).forEach((toastInfo) => {
-      Toast[toastInfo.type](toastInfo.message, {
+      TucToast[toastInfo.type](toastInfo.message, {
         hideAfter: null,
       });
     });
@@ -187,6 +187,6 @@ angular.module('managerApp').controller('TelecomTelephonyServiceAssistLogsCtrl',
   };
 
   self.onBulkError = function (error) {
-    Toast.error([$translate.instant('telephony_line_assist_support_logs_bulk_on_error'), _.get(error, 'msg.data')].join(' '));
+    TucToast.error([$translate.instant('telephony_line_assist_support_logs_bulk_on_error'), _.get(error, 'msg.data')].join(' '));
   };
 });

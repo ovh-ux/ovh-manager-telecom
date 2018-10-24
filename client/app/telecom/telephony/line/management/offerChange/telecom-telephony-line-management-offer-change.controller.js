@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyLineManagementOfferChangeCtrl', function ($q, $stateParams, $translate, TelephonyMediator, Toast, OvhApiTelephony, telephonyBulk) {
+angular.module('managerApp').controller('TelecomTelephonyLineManagementOfferChangeCtrl', function ($q, $stateParams, $translate, TelephonyMediator, TucToast, OvhApiTelephony, telephonyBulk) {
   const self = this;
 
   self.loading = {
@@ -28,7 +28,7 @@ angular.module('managerApp').controller('TelecomTelephonyLineManagementOfferChan
    */
   function getPendingOfferChange() {
     return self.line.getOfferChange().catch((error) => {
-      Toast.error([$translate.instant('telephony_line_management_change_offer_change_error_init'), (error.data && error.data.message) || ''].join(' '));
+      TucToast.error([$translate.instant('telephony_line_management_change_offer_change_error_init'), (error.data && error.data.message) || ''].join(' '));
       return $q.reject(error);
     });
   }
@@ -65,12 +65,12 @@ angular.module('managerApp').controller('TelecomTelephonyLineManagementOfferChan
           description: _.get(self.line, 'offerInformations.description'),
         });
       }).catch((firstError) => {
-        Toast.error([$translate.instant('telephony_line_management_change_offer_change_error_init'), _.get(firstError, 'data.message', '')].join(' '));
+        TucToast.error([$translate.instant('telephony_line_management_change_offer_change_error_init'), _.get(firstError, 'data.message', '')].join(' '));
         self.initError = firstError;
         return $q.reject(firstError);
       });
     }).catch((error) => {
-      Toast.error([$translate.instant('telephony_line_management_change_offer_change_error_init'), _.get(error, 'data.message', '')].join(' '));
+      TucToast.error([$translate.instant('telephony_line_management_change_offer_change_error_init'), _.get(error, 'data.message', '')].join(' '));
       return $q.reject(error);
     }).finally(() => {
       self.loading.init = false;
@@ -106,7 +106,7 @@ angular.module('managerApp').controller('TelecomTelephonyLineManagementOfferChan
     return self.line.changeOffer(self.model.offer).then(() => {
       self.toggleEditMode();
     }).catch((error) => {
-      Toast.error([$translate.instant('telephony_line_management_change_offer_change_error_save'), (error.data && error.data.message) || ''].join(' '));
+      TucToast.error([$translate.instant('telephony_line_management_change_offer_change_error_save'), (error.data && error.data.message) || ''].join(' '));
       return $q.reject(error);
     }).finally(() => {
       self.loading.save = false;
@@ -122,7 +122,7 @@ angular.module('managerApp').controller('TelecomTelephonyLineManagementOfferChan
     return self.line
       .cancelOfferChange()
       .then(() => self.line.getCurrentOfferInformations()).catch((error) => {
-        Toast.error([$translate.instant('telephony_line_management_change_offer_change_pending_cancel_error'), (error.data && error.data.message) || ''].join(' '));
+        TucToast.error([$translate.instant('telephony_line_management_change_offer_change_pending_cancel_error'), (error.data && error.data.message) || ''].join(' '));
         return $q.reject(error);
       }).finally(() => {
         self.loading.cancel = false;
@@ -190,14 +190,14 @@ angular.module('managerApp').controller('TelecomTelephonyLineManagementOfferChan
 
   self.onBulkSuccess = function (bulkResult) {
     // display message of success or error
-    telephonyBulk.getToastInfos(bulkResult, {
+    telephonyBulk.getTucToastInfos(bulkResult, {
       fullSuccess: $translate.instant('telephony_line_management_change_offer_bulk_all_success'),
       partialSuccess: $translate.instant('telephony_line_management_change_offer_bulk_some_success', {
         count: bulkResult.success.length,
       }),
       error: $translate.instant('telephony_line_management_change_offer_bulk_error'),
     }).forEach((toastInfo) => {
-      Toast[toastInfo.type](toastInfo.message, {
+      TucToast[toastInfo.type](toastInfo.message, {
         hideAfter: null,
       });
     });
@@ -210,7 +210,7 @@ angular.module('managerApp').controller('TelecomTelephonyLineManagementOfferChan
   };
 
   self.onBulkError = function (error) {
-    Toast.error([$translate.instant('telephony_line_management_change_offer_bulk_on_error'), _.get(error, 'msg.data')].join(' '));
+    TucToast.error([$translate.instant('telephony_line_management_change_offer_bulk_on_error'), _.get(error, 'msg.data')].join(' '));
   };
 
   /* -----  End of BULK  ------ */

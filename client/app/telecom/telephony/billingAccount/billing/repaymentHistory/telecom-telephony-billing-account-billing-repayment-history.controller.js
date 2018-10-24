@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyBillingAccountBillingRepaymentHistoryCtrl', function ($q, $filter, $window, $timeout, $stateParams, $translate, TelephonyMediator, OvhApiTelephony, Toast) {
+angular.module('managerApp').controller('TelecomTelephonyBillingAccountBillingRepaymentHistoryCtrl', function ($q, $filter, $window, $timeout, $stateParams, $translate, TelephonyMediator, OvhApiTelephony, TucToast) {
   const self = this;
 
   self.group = null;
@@ -31,7 +31,7 @@ angular.module('managerApp').controller('TelecomTelephonyBillingAccountBillingRe
         }))
       .catch((err) => {
         self.consumptionData = [];
-        Toast.error([$translate.instant('telephony_group_billing_repayment_history_download_error'), (err.data && err.data.message) || ''].join(' '));
+        TucToast.error([$translate.instant('telephony_group_billing_repayment_history_download_error'), (err.data && err.data.message) || ''].join(' '));
         return $q.reject(err);
       });
   }
@@ -70,7 +70,7 @@ angular.module('managerApp').controller('TelecomTelephonyBillingAccountBillingRe
     return self.fetchFile(consumption).then((info) => {
       $window.location.href = info.url; // eslint-disable-line
     }).catch((error) => {
-      Toast.error([$translate.instant('telephony_group_billing_repayment_history_download_error'), (error.data && error.data.message) || ''].join(' '));
+      TucToast.error([$translate.instant('telephony_group_billing_repayment_history_download_error'), (error.data && error.data.message) || ''].join(' '));
       return $q.reject(error);
     });
   };
@@ -89,7 +89,7 @@ angular.module('managerApp').controller('TelecomTelephonyBillingAccountBillingRe
         self.consumptionData = consumptions;
       });
     }).catch((error) => {
-      Toast.error([$translate.instant('telephony_group_billing_repayment_history_download_error'), (error.data && error.data.message) || ''].join(' '));
+      TucToast.error([$translate.instant('telephony_group_billing_repayment_history_download_error'), (error.data && error.data.message) || ''].join(' '));
       return $q.reject(error);
     });
   };

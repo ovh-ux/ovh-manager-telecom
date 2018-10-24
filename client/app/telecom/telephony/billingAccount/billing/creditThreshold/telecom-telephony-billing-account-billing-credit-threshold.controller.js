@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyBillingAccountBillingCreditThresholdCtrl', function ($q, $state, $stateParams, $translate, $timeout, OvhApiOrderTelephony, OvhApiTelephony, ToastError) {
+angular.module('managerApp').controller('TelecomTelephonyBillingAccountBillingCreditThresholdCtrl', function ($q, $state, $stateParams, $translate, $timeout, OvhApiOrderTelephony, OvhApiTelephony, TucToastError) {
   const self = this;
 
   self.loading = {
@@ -34,7 +34,7 @@ angular.module('managerApp').controller('TelecomTelephonyBillingAccountBillingCr
       }));
       self.contracts = data.contracts.contracts;
       self.contractsAccepted = false;
-    }).catch(err => new ToastError(err)).finally(() => {
+    }).catch(err => new TucToastError(err)).finally(() => {
       self.loading.init = false;
     });
   }
@@ -57,7 +57,7 @@ angular.module('managerApp').controller('TelecomTelephonyBillingAccountBillingCr
       $timeout(() => {
         $state.reload();
       }, 5000);
-    }).catch(err => new ToastError(err)).finally(() => {
+    }).catch(err => new TucToastError(err)).finally(() => {
       self.loading.submit = false;
     });
   };

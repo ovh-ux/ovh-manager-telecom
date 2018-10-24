@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationMembersEasyHuntingCtrl', function ($stateParams, $q, $translate, $timeout, OvhApiTelephony, Toast, ToastError) {
+angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationMembersEasyHuntingCtrl', function ($stateParams, $q, $translate, $timeout, OvhApiTelephony, TucToast, TucToastError) {
   const self = this;
 
   function init() {
@@ -28,7 +28,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationMembe
     self.loaders.init = true;
     return self.fetchQueueId().then((id) => {
       self.queueId = id;
-    }).catch(err => new ToastError(err)).finally(() => {
+    }).catch(err => new TucToastError(err)).finally(() => {
       self.loaders.init = false;
     });
   }

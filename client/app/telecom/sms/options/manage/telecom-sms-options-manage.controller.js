@@ -1,8 +1,8 @@
 angular.module('managerApp').controller('TelecomSmsOptionsManageCtrl', class TelecomSmsOptionsManageCtrl {
-  constructor($uibModal, TucSmsMediator, ToastError) {
+  constructor($uibModal, TucSmsMediator, TucToastError) {
     this.$uibModal = $uibModal;
     this.TucSmsMediator = TucSmsMediator;
-    this.ToastError = ToastError;
+    this.TucToastError = TucToastError;
   }
 
   $onInit() {
@@ -15,7 +15,7 @@ angular.module('managerApp').controller('TelecomSmsOptionsManageCtrl', class Tel
     return this.TucSmsMediator.initDeferred.promise.then(() => {
       this.service = this.TucSmsMediator.getCurrentSmsService();
     }).catch((err) => {
-      this.ToastError(err);
+      this.TucToastError(err);
     }).finally(() => {
       this.loading.init = false;
     });

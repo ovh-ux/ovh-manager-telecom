@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('telephonyNumberOvhPabxSoundUploaderCtrl', function ($q, $translate, Toast) {
+angular.module('managerApp').controller('telephonyNumberOvhPabxSoundUploaderCtrl', function ($q, $translate, TucToast) {
   const self = this;
 
   /*= ==============================
@@ -82,7 +82,7 @@ angular.module('managerApp').controller('telephonyNumberOvhPabxSoundUploaderCtrl
         file: sound.name,
       });
       self.ovhPabx.removeSound(sound);
-      Toast.error([errorMsg, error.message || (error.data && error.data.message) || ''].join(' '));
+      TucToast.error([errorMsg, error.message || (error.data && error.data.message) || ''].join(' '));
       return $q.reject(error);
     }).finally(() => {
       self.file = null;

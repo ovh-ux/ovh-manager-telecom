@@ -3,7 +3,7 @@ angular
   .controller('TelecomSmsOptionsRecreditUpdateCtrl', class TelecomSmsOptionsRecreditUpdateCtrl {
     constructor(
       $q, $stateParams, $timeout, $uibModalInstance,
-      OvhApiOrderSms, OvhApiSms, TucSmsMediator, service, ToastError,
+      OvhApiOrderSms, OvhApiSms, TucSmsMediator, service, TucToastError,
     ) {
       this.$q = $q;
       this.$stateParams = $stateParams;
@@ -15,7 +15,7 @@ angular
       };
       this.TucSmsMediator = TucSmsMediator;
       this.service = service;
-      this.ToastError = ToastError;
+      this.TucToastError = TucToastError;
     }
 
     $onInit() {
@@ -37,7 +37,7 @@ angular
         .then(() => this.TucSmsMediator.getApiScheme().then((schema) => {
           this.availablePackQuantity = _.sortBy(_.map(schema.models['sms.PackQuantityAutomaticRecreditEnum'].enum, Number));
         })).then(this.getAmount()).catch((err) => {
-          this.ToastError(err);
+          this.TucToastError(err);
         }).finally(() => {
           this.loading.init = false;
         });

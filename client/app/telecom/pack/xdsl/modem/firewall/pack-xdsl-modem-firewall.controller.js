@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('XdslModemFirewallCtrl', function ($stateParams, $translate, $q, OvhApiXdsl, Toast, TucPackXdslModemMediator) {
+angular.module('managerApp').controller('XdslModemFirewallCtrl', function ($stateParams, $translate, $q, OvhApiXdsl, TucToast, TucPackXdslModemMediator) {
   const self = this;
 
   this.mediator = TucPackXdslModemMediator;
@@ -8,7 +8,7 @@ angular.module('managerApp').controller('XdslModemFirewallCtrl', function ($stat
       || !this.firewallCurrentLevelTmp
       || !TucPackXdslModemMediator.capabilities.canChangeEasyFirewallLevel) {
       this.firewallCurrentLevelTmp = this.firewallCurrentLevel;
-      Toast.error($translate.instant('xdsl_modem_firewall_an_error_ocurred'));
+      TucToast.error($translate.instant('xdsl_modem_firewall_an_error_ocurred'));
       return $q.reject();
     }
     return OvhApiXdsl.Modem().v6().update(
@@ -22,11 +22,11 @@ angular.module('managerApp').controller('XdslModemFirewallCtrl', function ($stat
       TucPackXdslModemMediator.disableCapabilities();
       TucPackXdslModemMediator.setTask('changeModemConfigEasyFirewallLevel');
       self.firewallCurrentLevel = self.firewallCurrentLevelTmp;
-      Toast.success($translate.instant('xdsl_modem_firewall_doing'));
+      TucToast.success($translate.instant('xdsl_modem_firewall_doing'));
       return data;
     }).catch((err) => {
       self.firewallCurrentLevelTmp = self.firewallCurrentLevel;
-      Toast.error($translate.instant('xdsl_modem_firewall_an_error_ocurred'));
+      TucToast.error($translate.instant('xdsl_modem_firewall_an_error_ocurred'));
       return $q.reject(err);
     });
   };

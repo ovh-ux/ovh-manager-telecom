@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationOvhPabxTtsCtrl', function ($q, $filter, $stateParams, $translate, TelephonyMediator, Toast) {
+angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationOvhPabxTtsCtrl', function ($q, $filter, $stateParams, $translate, TelephonyMediator, TucToast) {
   const self = this;
 
   self.loading = {
@@ -61,7 +61,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationOvhPa
       self.tts.raw = self.number.feature.tts;
       self.sortTts();
     }, (error) => {
-      Toast.error([$translate.instant('telephony_alias_ovh_pabx_tts_list_delete_error'), _.get(error, 'data.message', '')].join(' '));
+      TucToast.error([$translate.instant('telephony_alias_ovh_pabx_tts_list_delete_error'), _.get(error, 'data.message', '')].join(' '));
       return $q.reject(error);
     });
   };
@@ -89,7 +89,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationOvhPa
         return $q.when(self.number.feature);
       });
     }).catch((error) => {
-      Toast.error([$translate.instant('telephony_alias_configuration_load_error'), _.get(error, 'data.message', '')].join(' '));
+      TucToast.error([$translate.instant('telephony_alias_configuration_load_error'), _.get(error, 'data.message', '')].join(' '));
       return $q.reject(error);
     }).finally(() => {
       self.loading.init = false;

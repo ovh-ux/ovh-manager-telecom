@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyFaxManagementTerminateCtrl', function ($q, $stateParams, $translate, TelephonyMediator, voipServiceOfferTask, Toast, telephonyBulk) {
+angular.module('managerApp').controller('TelecomTelephonyFaxManagementTerminateCtrl', function ($q, $stateParams, $translate, TelephonyMediator, voipServiceOfferTask, TucToast, telephonyBulk) {
   const self = this;
 
   self.loading = {
@@ -46,7 +46,7 @@ angular.module('managerApp').controller('TelecomTelephonyFaxManagementTerminateC
         getTerminateTask(),
       ]);
     }).catch((error) => {
-      Toast.error([$translate.instant('telephony_fax_loading_error'), _.get(error, 'data.message', '')].join(' '));
+      TucToast.error([$translate.instant('telephony_fax_loading_error'), _.get(error, 'data.message', '')].join(' '));
       return $q.reject(error);
     }).finally(() => {
       self.loading.init = false;
@@ -63,13 +63,13 @@ angular.module('managerApp').controller('TelecomTelephonyFaxManagementTerminateC
     self.loading.terminate = true;
 
     return self.fax.terminate().then(() => getTerminateTask()).catch((error) => {
-      Toast.error([$translate.instant('telephony_group_fax_management_terminate_error'), _.get(error, 'data.message', '')].join(' '));
+      TucToast.error([$translate.instant('telephony_group_fax_management_terminate_error'), _.get(error, 'data.message', '')].join(' '));
       return $q.reject(error);
     }).finally(() => {
       self.loading.terminate = false;
     })
       .then(() => {
-        Toast.success($translate.instant('telephony_group_fax_management_terminate_success'));
+        TucToast.success($translate.instant('telephony_group_fax_management_terminate_success'));
       });
   };
 
@@ -78,9 +78,9 @@ angular.module('managerApp').controller('TelecomTelephonyFaxManagementTerminateC
 
     return self.fax.cancelTermination().then(() => {
       self.terminateTask = null;
-      Toast.success($translate.instant('telephony_group_fax_management_terminate_cancel_success'));
+      TucToast.success($translate.instant('telephony_group_fax_management_terminate_cancel_success'));
     }).catch((error) => {
-      Toast.error([$translate.instant('telephony_group_fax_management_terminate_cancel_error'), _.get(error, 'data.message', '')].join(' '));
+      TucToast.error([$translate.instant('telephony_group_fax_management_terminate_cancel_error'), _.get(error, 'data.message', '')].join(' '));
       return $q.reject(error);
     }).finally(() => {
       self.loading.cancel = false;
@@ -120,14 +120,14 @@ angular.module('managerApp').controller('TelecomTelephonyFaxManagementTerminateC
 
   self.onBulkSuccess = function (bulkResult) {
     // display message of success or error
-    telephonyBulk.getToastInfos(bulkResult, {
+    telephonyBulk.getTucToastInfos(bulkResult, {
       fullSuccess: $translate.instant('telephony_group_fax_management_terminate_bulk_all_success'),
       partialSuccess: $translate.instant('telephony_group_fax_management_terminate_bulk_some_success', {
         count: bulkResult.success.length,
       }),
       error: $translate.instant('telephony_group_fax_management_terminate_bulk_error'),
     }).forEach((toastInfo) => {
-      Toast[toastInfo.type](toastInfo.message, {
+      TucToast[toastInfo.type](toastInfo.message, {
         hideAfter: null,
       });
     });
@@ -136,7 +136,7 @@ angular.module('managerApp').controller('TelecomTelephonyFaxManagementTerminateC
   };
 
   self.onBulkError = function (error) {
-    Toast.error([$translate.instant('telephony_group_fax_management_terminate_bulk_on_error'), _.get(error, 'msg.data')].join(' '));
+    TucToast.error([$translate.instant('telephony_group_fax_management_terminate_bulk_on_error'), _.get(error, 'msg.data')].join(' '));
   };
 
   /* -----       End of BULK      ------ */

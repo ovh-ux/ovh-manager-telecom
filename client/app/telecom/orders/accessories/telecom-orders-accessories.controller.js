@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomOrdersAccessoriesCtrl', function ($q, $state, $translate, OvhApiOrder, OvhApiTelephony, Toast) {
+angular.module('managerApp').controller('TelecomOrdersAccessoriesCtrl', function ($q, $state, $translate, OvhApiOrder, OvhApiTelephony, TucToast) {
   const self = this;
 
   self.billingAccounts = null;
@@ -56,7 +56,7 @@ angular.module('managerApp').controller('TelecomOrdersAccessoriesCtrl', function
       });
       return self.billingAccounts;
     }, (error) => {
-      Toast.error([$translate.instant('telecom_orders_accessories_group_load_error'), (error.data && error.data.message) || ''].join(' '));
+      TucToast.error([$translate.instant('telecom_orders_accessories_group_load_error'), (error.data && error.data.message) || ''].join(' '));
       return $q.reject(error);
     }).finally(() => {
       self.loading.init = false;

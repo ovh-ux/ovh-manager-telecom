@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('XdslAccessNotificationCtrl', function ($stateParams, ToastError) {
+angular.module('managerApp').controller('XdslAccessNotificationCtrl', function ($stateParams, TucToastError) {
   this.xdslId = $stateParams.serviceName;
-  this.displayError = ToastError;
+  this.displayError = TucToastError;
 });

@@ -10,7 +10,7 @@
                     </h2>
                 </header>
 
-                <toast-message></toast-message>
+                <tuc-toast-message></tuc-toast-message>
 
                 <div class="alert alert-info"
                      role="alert">
@@ -38,8 +38,8 @@
 
                     <!-- TABLE -->
                     <oui-datagrid data-rows="$ctrl.customDomains.raw">
-                        <oui-column data-title="'telephony_service_fax_custom_domains_configuration_table_column_domain' | translate" 
-                                    data-property="domain" 
+                        <oui-column data-title="'telephony_service_fax_custom_domains_configuration_table_column_domain' | translate"
+                                    data-property="domain"
                                     data-sortable="asc">
                             <span data-ng-bind="$row.domain"></span>
                         </oui-column>
