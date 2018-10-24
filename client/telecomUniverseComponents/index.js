@@ -23,6 +23,7 @@ import tucTelecomTelephony from './telecom/telephony';
 import tucTelecomV4Links from './telecom/v4-links';
 import tucToaster from './toaster';
 import tucToastError from './toast-error';
+import tucUiSortableHelpers from './uiSortableHelpers';
 import tucUnitHumanize from './unit/humanize';
 import tucValidator from './validator';
 
@@ -51,6 +52,7 @@ export default angular
     tucTelecomV4Links,
     tucToaster,
     tucToastError,
+    tucUiSortableHelpers
     tucUnitHumanize,
     tucValidator,
   ])

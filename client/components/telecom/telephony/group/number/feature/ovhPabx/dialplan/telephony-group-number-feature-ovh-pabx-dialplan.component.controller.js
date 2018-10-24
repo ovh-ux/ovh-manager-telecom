@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('telephonyNumberOvhPabxDialplanCtrl', function ($q, $timeout, $translate, TucToast, UI_SORTABLE_HELPERS) {
+angular.module('managerApp').controller('telephonyNumberOvhPabxDialplanCtrl', function ($q, $timeout, $translate, TucToast, TUC_UI_SORTABLE_HELPERS) {
   const self = this;
 
   self.loading = {
@@ -159,7 +159,7 @@ angular.module('managerApp').controller('telephonyNumberOvhPabxDialplanCtrl', fu
       handle: '.extension-grip',
       cancel: '.voip-plan__step-icon--grip-disabled',
       containment: 'parent',
-      sort: UI_SORTABLE_HELPERS.variableHeightTolerance,
+      sort: TUC_UI_SORTABLE_HELPERS.variableHeightTolerance,
       start() {
         sortInterval = setInterval(() => {
           self.numberCtrl.jsplumbInstance.repaintEverything();
