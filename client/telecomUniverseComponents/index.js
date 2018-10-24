@@ -1,6 +1,7 @@
 import angular from 'angular';
 
 import tucChartjs from './chartjs';
+import tucCustomAsterisk from './custom-asterisk';
 import tucDebounce from './debounce';
 import tucEditableServiceName from './editable-service-name';
 import tucElapsedTime from './elapsed-time';
@@ -32,6 +33,7 @@ import tucValidator from './validator';
 export default angular
   .module('telecomUniverseComponents', [
     tucChartjs,
+    tucCustomAsterisk,
     tucDebounce,
     tucEditableServiceName,
     tucElapsedTime,

@@ -11,7 +11,7 @@
 <!-- LINKSYS -->
    <translation id="telephony_line_assist_troubleshooting_manual_config_linksys_factory_reset_step1" qtlid="389889">Connectez un téléphone sur une des lignes RJ11 de l'équipement.</translation>
    <translation id="telephony_line_assist_troubleshooting_manual_config_linksys_factory_reset_step2" qtlid="389902">Déconnectez le câble Ethernet</translation>
-   <translation id="telephony_line_assist_troubleshooting_manual_config_linksys_factory_reset_step3" qtlid="397325">Composez <strong><span class="custom-asterisk"></span><span class="custom-asterisk"></span><span class="custom-asterisk"></span><span class="custom-asterisk"></span></strong> puis <strong>73738#</strong>.</translation>
+   <translation id="telephony_line_assist_troubleshooting_manual_config_linksys_factory_reset_step3" qtlid="397325">Composez <strong><span class="tuc-custom-asterisk"></span><span class="tuc-custom-asterisk"></span><span class="tuc-custom-asterisk"></span><span class="tuc-custom-asterisk"></span></strong> puis <strong>73738#</strong>.</translation>
    <translation id="telephony_line_assist_troubleshooting_manual_config_linksys_factory_reset_step4" qtlid="389928">L'équipement va vous demander de confirmer le reset, en appuyant sur la touche <strong>1</strong>.</translation>
    <translation id="telephony_line_assist_troubleshooting_manual_config_linksys_factory_reset_step5" qtlid="389876">Votre équipement va alors redémarrer avec les paramètres de sortie d'usine.</translation>
    <translation id="telephony_line_assist_troubleshooting_manual_config_linksys_factory_reset_step6" qtlid="389941">Vous pouvez reconnecter l'équipement à votre réseau local</translation>
@@ -38,7 +38,7 @@
    <translation id="telephony_line_assist_troubleshooting_manual_config_cisco_find_ip_step3" qtlid="390097">L'adresse IP correspond à la valeur <strong>CurrentIP</strong>.</translation>
 <!-- LINKSYS -->
    <translation id="telephony_line_assist_troubleshooting_manual_config_linksys_find_ip_step1" qtlid="389889">Connectez un téléphone sur une des lignes RJ11 de l'équipement.</translation>
-   <translation id="telephony_line_assist_troubleshooting_manual_config_linksys_find_ip_step2" qtlid="397338">Composez <strong><span class="custom-asterisk"></span><span class="custom-asterisk"></span><span class="custom-asterisk"></span><span class="custom-asterisk"></span></strong> puis <strong>110#</strong>.</translation>
+   <translation id="telephony_line_assist_troubleshooting_manual_config_linksys_find_ip_step2" qtlid="397338">Composez <strong><span class="tuc-custom-asterisk"></span><span class="tuc-custom-asterisk"></span><span class="tuc-custom-asterisk"></span><span class="tuc-custom-asterisk"></span></strong> puis <strong>110#</strong>.</translation>
    <translation id="telephony_line_assist_troubleshooting_manual_config_linksys_find_ip_step3" qtlid="390123">Une voix vous dicte, en anglais et un par un, les chiffres de l'adresse IP de l'équipement.</translation>
    <translation id="telephony_line_assist_troubleshooting_manual_config_find_ip_step4" qtlid="390136">Entrez l'adresse IP dans ce champ et validez :</translation>
    <translation id="telephony_line_assist_troubleshooting_manual_config_find_ip_step4_placeholder" qtlid="390149">Adresse IP privée</translation>

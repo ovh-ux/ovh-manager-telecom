@@ -25,7 +25,7 @@
 
 <!-- MAC ADDRESS -->
    <translation id="telephony_line_assist_troubleshooting_auto_config_mac_address" qtlid="479915">Vérification de l’adresse MAC de votre téléphone</translation>
-   <translation id="telephony_line_assist_troubleshooting_auto_config_mac_address_explain" qtlid="397299">Merci de vérifier que l’adresse MAC<span class="custom-asterisk"></span> de votre téléphone est la&#160;:&#160;<strong>{{ macAddress }}</strong></translation>
+   <translation id="telephony_line_assist_troubleshooting_auto_config_mac_address_explain" qtlid="397299">Merci de vérifier que l’adresse MAC<span class="tuc-custom-asterisk"></span> de votre téléphone est la&#160;:&#160;<strong>{{ macAddress }}</strong></translation>
    <translation id="telephony_line_assist_troubleshooting_auto_config_mac_address_explain_note" qtlid="397312">Celle-ci se situe au dos de votre téléphone</translation>
    <translation id="telephony_line_assist_troubleshooting_auto_config_mac_address_W56P_explain_note" qtlid="479928">Celle-ci se situe sur la base, sur la face arrière de votre téléphone</translation>
 
