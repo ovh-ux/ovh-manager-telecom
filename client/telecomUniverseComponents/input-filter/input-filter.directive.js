@@ -3,17 +3,17 @@
  *
  * Example :
  *
- *     <input input-filter="$ctrl.myFilter" />
+ *     <input tuc-input-filter="$ctrl.myFilter" />
  *
  *     $ctrl.myFilter = function (value) {
  *         return value.replace(/\w/g, "");
  *     };
  */
-angular.module('managerApp').directive('inputFilter', $parse => ({
+export default /* @ngInject */ $parse => ({
   require: 'ngModel',
   restrict: 'A',
   link(scope, elt, attrs, modelCtrl) {
-    const handler = $parse(attrs.inputFilter)(scope);
+    const handler = $parse(attrs.tucInputFilter)(scope);
     if (handler) {
       modelCtrl.$parsers.push((value) => {
         const filtered = handler(value);
@@ -25,4 +25,4 @@ angular.module('managerApp').directive('inputFilter', $parse => ({
       });
     }
   },
-}));
+});

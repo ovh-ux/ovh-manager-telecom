@@ -8,6 +8,7 @@ import tucFileReader from './file-reader';
 import tucGauge from './gauge';
 import tucHideOutsideClick from './hideOutsideClick';
 import tucInputFile from './input-file';
+import tucInputFilter from './input-filter';
 import tucIpAddress from './ipAddress';
 import tucPhone from './phone';
 import tucSectionBackLink from './section-back-link';
@@ -35,6 +36,7 @@ export default angular
     tucGauge,
     tucHideOutsideClick,
     tucInputFile,
+    tucInputFilter,
     tucIpAddress,
     tucPhone,
     tucSectionBackLink,
