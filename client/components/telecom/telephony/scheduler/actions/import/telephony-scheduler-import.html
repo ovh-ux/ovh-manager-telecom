@@ -19,12 +19,12 @@
 
         <div class="form-group">
             <label data-translate="telephony_scheduler_import_select_file"></label>
-            <input-file data-ng-model="SchedulerImportCtrl.model.icsFile"
+            <tuc-input-file data-ng-model="SchedulerImportCtrl.model.icsFile"
                         data-change="SchedulerImportCtrl.checkIcsFileType(file)"
                         data-ng-accept="text/calendar">
                 <i class="fa fa-upload mr-2"></i>
                 <span data-translate="telephony_scheduler_import_ics_file"></span>
-            </input-file>
+            </tuc-input-file>
             <div class="text-danger"
                  data-ng-if="SchedulerImportCtrl.isFileExtentionInvalid">
                 <span data-translate="telephony_scheduler_import_ics_file_format_error"></span>

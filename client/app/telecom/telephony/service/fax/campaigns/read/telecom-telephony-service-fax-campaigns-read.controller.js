@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyServiceFaxCampaignsReadCtrl', function ($stateParams, $q, $uibModalInstance, OvhApiTelephony, campaign, ToastError) {
+angular.module('managerApp').controller('TelecomTelephonyServiceFaxCampaignsReadCtrl', function ($stateParams, $q, $uibModalInstance, OvhApiTelephony, campaign, TucToastError) {
   const self = this;
 
   /*= ==============================
@@ -55,7 +55,7 @@ angular.module('managerApp').controller('TelecomTelephonyServiceFaxCampaignsRead
         if (err.status === 400) {
           return $q.reject(err);
         }
-        return new ToastError(err);
+        return new TucToastError(err);
       })
       .finally(() => {
         self.loading.init = false;

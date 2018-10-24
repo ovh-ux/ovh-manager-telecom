@@ -1,10 +1,10 @@
 angular
   .module('managerApp')
   .controller('TelecomSmsGuidesCtrl', class TelecomSmsGuidesCtrl {
-    constructor($translate, TucSmsMediator, ToastError, SMS_GUIDES) {
+    constructor($translate, TucSmsMediator, TucToastError, SMS_GUIDES) {
       this.$translate = $translate;
       this.TucSmsMediator = TucSmsMediator;
-      this.ToastError = ToastError;
+      this.TucToastError = TucToastError;
       this.constant = { SMS_GUIDES };
     }
 
@@ -26,7 +26,7 @@ angular
         }
         this.injectTitleInUrl();
       }).catch((err) => {
-        this.ToastError(err);
+        this.TucToastError(err);
       }).finally(() => {
         this.loading.init = false;
       });

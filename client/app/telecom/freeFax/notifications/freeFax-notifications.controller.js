@@ -1,5 +1,5 @@
 angular.module('managerApp')
-  .controller('FreeFaxNotificationsCtrl', function ($stateParams, OvhApiFreeFax, Toast, $translate, $q, FREEFAX, FreeFaxNotificationObject) {
+  .controller('FreeFaxNotificationsCtrl', function ($stateParams, OvhApiFreeFax, TucToast, $translate, $q, FREEFAX, FreeFaxNotificationObject) {
     const self = this;
 
     /**
@@ -45,10 +45,10 @@ angular.module('managerApp')
         if (notif.accept) {
           notif.accept();
         }
-        Toast.success($translate.instant('freefax_notif_save_success'));
+        TucToast.success($translate.instant('freefax_notif_save_success'));
         return data;
       }).catch((err) => {
-        Toast.error($translate.instant('freefax_notif_save_error'));
+        TucToast.error($translate.instant('freefax_notif_save_error'));
         return $q.reject(err);
       }).finally(() => {
         notif.busy = false;
@@ -108,7 +108,7 @@ angular.module('managerApp')
         return self.notifications;
       }).catch((err) => {
         self.notifications = [];
-        Toast.error($translate.instant('freefax_notif_read_error'));
+        TucToast.error($translate.instant('freefax_notif_read_error'));
         return $q.reject(err);
       });
     }

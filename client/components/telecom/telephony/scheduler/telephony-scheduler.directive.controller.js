@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelephonySchedulerCtrl', function ($q, $locale, $translate, $translatePartialLoader, $uibModal, OvhApiTelephony, OvhApiMe, VoipSchedulerEvent, Poller, Toast, uiCalendarConfig, matchmedia) {
+angular.module('managerApp').controller('TelephonySchedulerCtrl', function ($q, $locale, $translate, $translatePartialLoader, $uibModal, OvhApiTelephony, OvhApiMe, VoipSchedulerEvent, Poller, TucToast, uiCalendarConfig, matchmedia) {
   const self = this;
 
   self.loading = {
@@ -38,7 +38,7 @@ angular.module('managerApp').controller('TelephonySchedulerCtrl', function ($q, 
       'dateStart.from': start.format(),
       'dateEnd.to': end.format(),
     }).then(events => events).catch((error) => {
-      Toast.error([$translate.instant('telephony_scheduler_load_error'), (error.data && error.data.message) || ''].join(' '));
+      TucToast.error([$translate.instant('telephony_scheduler_load_error'), (error.data && error.data.message) || ''].join(' '));
       return $q.reject(error);
     }).finally(() => {
       self.loading.events = false;
@@ -111,7 +111,7 @@ angular.module('managerApp').controller('TelephonySchedulerCtrl', function ($q, 
         self.scheduler.stopEdition(false, true).startEdition();
       }).catch((errors) => {
         angular.forEach(errors, (error) => {
-          Toast.error([$translate.instant('telephony_scheduler_save_error'), (error.data && error.data.message) || ''].join(' '));
+          TucToast.error([$translate.instant('telephony_scheduler_save_error'), (error.data && error.data.message) || ''].join(' '));
         });
         return $q.reject(errors);
       }),
@@ -122,7 +122,7 @@ angular.module('managerApp').controller('TelephonySchedulerCtrl', function ($q, 
         // stop edition and restart with saved value
         self.timeCondition.stopEdition(false, true).startEdition();
       }).catch((error) => {
-        Toast.error([$translate.instant('telephony_scheduler_save_error'), _.get(error, 'data.message', '')].join(' '));
+        TucToast.error([$translate.instant('telephony_scheduler_save_error'), _.get(error, 'data.message', '')].join(' '));
         return $q.reject(error);
       });
     }
@@ -188,9 +188,9 @@ angular.module('managerApp').controller('TelephonySchedulerCtrl', function ($q, 
       startImportTaskPolling(importDatas.importTask.taskId).then(() => {
         OvhApiTelephony.Scheduler().Events().v6().resetAllCache();
         $(uiCalendarConfig.calendars.eventsCalendar).fullCalendar('refetchEvents');
-        Toast.success($translate.instant('telephony_scheduler_import_success'));
+        TucToast.success($translate.instant('telephony_scheduler_import_success'));
       }, (error) => {
-        Toast.error([$translate.instant('telephony_scheduler_import_error'), (error && error.message) || ''].join(' '));
+        TucToast.error([$translate.instant('telephony_scheduler_import_error'), (error && error.message) || ''].join(' '));
         return $q.reject(error);
       }).finally(() => {
         self.loading.import = false;
@@ -204,7 +204,7 @@ angular.module('managerApp').controller('TelephonySchedulerCtrl', function ($q, 
       });
     }, (error) => {
       if (error && !_.isString(error)) {
-        Toast.error([$translate.instant('telephony_scheduler_import_error'), (error.data && error.data.message) || ''].join(' '));
+        TucToast.error([$translate.instant('telephony_scheduler_import_error'), (error.data && error.data.message) || ''].join(' '));
       }
       return $q.reject(error);
     });
@@ -234,7 +234,7 @@ angular.module('managerApp').controller('TelephonySchedulerCtrl', function ($q, 
 
     exportModal.result.catch((error) => {
       if (error && !_.isString(error)) {
-        Toast.error([$translate.instant('telephony_scheduler_export_error'), (error.data && error.data.message) || ''].join(' '));
+        TucToast.error([$translate.instant('telephony_scheduler_export_error'), (error.data && error.data.message) || ''].join(' '));
       }
       return $q.reject(error);
     });
@@ -340,7 +340,7 @@ angular.module('managerApp').controller('TelephonySchedulerCtrl', function ($q, 
         self.status.isDesktop = mediaQueryList.matches;
       });
     }).catch((error) => {
-      Toast.error([$translate.instant('telephony_scheduler_load_error'), (error.data && error.data.message) || ''].join(' '));
+      TucToast.error([$translate.instant('telephony_scheduler_load_error'), (error.data && error.data.message) || ''].join(' '));
       return $q.reject(error);
     }).finally(() => {
       self.loading.init = false;

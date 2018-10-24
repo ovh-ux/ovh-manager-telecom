@@ -4,7 +4,7 @@
         <oui-spinner></oui-spinner>
     </div>
 
-    <toast-message></toast-message>
+    <tuc-toast-message></tuc-toast-message>
 
     <div class="row"
          data-ng-if="!VoicemailOptionsCtrl.loading && VoicemailOptionsCtrl.settings">
@@ -58,12 +58,12 @@
                         </button>
                     </div>
                     <div class="mt-2">
-                        <input-file data-ng-model="VoicemailOptionsCtrl.recordingForm.uploadedFile"
+                        <tuc-input-file data-ng-model="VoicemailOptionsCtrl.recordingForm.uploadedFile"
                                     data-ng-accept="audio/*"
                                     data-ng-accept-filter="VoicemailOptionsCtrl.checkValidAudioExtention(file)">
                             <i class="fa fa-upload mr-1"></i>
                             <span data-translate="telephony_line_answer_voicemail_options_recording_file"></span>
-                        </input-file>
+                        </tuc-input-file>
                     </div>
                     <div data-ng-if="VoicemailOptionsCtrl.recordingForm.uploadedFile && !VoicemailOptionsCtrl.recordingForm.isUpdating">
                         <select class="form-control mt-1"

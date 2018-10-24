@@ -1,10 +1,10 @@
 angular.module('managerApp').controller('TelecomTelephonyAbbreviatedNumbersCtrl', class TelecomTelephonyAbbreviatedNumbersCtrl {
-  constructor($q, $stateParams, $translate, OvhApiTelephony, Toast, PAGINATION_PER_PAGE) {
+  constructor($q, $stateParams, $translate, OvhApiTelephony, TucToast, PAGINATION_PER_PAGE) {
     this.$q = $q;
     this.$stateParams = $stateParams;
     this.$translate = $translate;
     this.OvhApiTelephony = OvhApiTelephony;
-    this.Toast = Toast;
+    this.TucToast = TucToast;
     this.PAGINATION_PER_PAGE = PAGINATION_PER_PAGE;
   }
 
@@ -39,7 +39,7 @@ angular.module('managerApp').controller('TelecomTelephonyAbbreviatedNumbersCtrl'
       // this.abbreviatedNumbers = _.sortBy(abbreviatedNumbers, "abbreviatedNumber");
       this.abbreviatedNumbers = abbreviatedNumbers;
     }, () => {
-      this.Toast.error(this.$translate.instant('telephony_abbreviated_numbers_read_error'));
+      this.TucToast.error(this.$translate.instant('telephony_abbreviated_numbers_read_error'));
     }).finally(() => {
       this.loading = false;
     });

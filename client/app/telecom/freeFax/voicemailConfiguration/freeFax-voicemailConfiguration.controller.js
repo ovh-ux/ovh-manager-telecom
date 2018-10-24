@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('FreeFaxVoicemailConfigurationCtrl', function ($scope, $stateParams, OvhApiFreeFax, Toast, $translate, ToastError, $q, FREEFAX) {
+angular.module('managerApp').controller('FreeFaxVoicemailConfigurationCtrl', function ($scope, $stateParams, OvhApiFreeFax, TucToast, $translate, TucToastError, $q, FREEFAX) {
   const self = this;
   let initialActivateVoiceMail;
 
@@ -26,7 +26,7 @@ angular.module('managerApp').controller('FreeFaxVoicemailConfigurationCtrl', fun
         value: self.voiceMail.audioFormat,
       });
       return self.voiceMail;
-    }, err => new ToastError(err)).then(() => OvhApiFreeFax.v6().voiceMailGetRouting({
+    }, err => new TucToastError(err)).then(() => OvhApiFreeFax.v6().voiceMailGetRouting({
       serviceName: $stateParams.serviceName,
     }).$promise.then((routing) => {
       initialActivateVoiceMail = routing.value;
@@ -34,7 +34,7 @@ angular.module('managerApp').controller('FreeFaxVoicemailConfigurationCtrl', fun
       return self.voiceMail;
     }, (err) => {
       self.voiceMail.activateVoiceMail = false;
-      return new ToastError(err);
+      return new TucToastError(err);
     })).finally(() => {
       self.loading = false;
     });
@@ -67,9 +67,9 @@ angular.module('managerApp').controller('FreeFaxVoicemailConfigurationCtrl', fun
     }
 
     $q.all(tasks).then(() => {
-      Toast.success($translate.instant('freefax_voicemail_success'));
+      TucToast.success($translate.instant('freefax_voicemail_success'));
       init();
-    }, ToastError);
+    }, TucToastError);
   };
 
   this.validPassword = function (val) {
@@ -112,7 +112,7 @@ angular.module('managerApp').controller('FreeFaxVoicemailConfigurationCtrl', fun
   this.changePassword = function (newPassword) {
     return $q((resolve, reject) => {
       if (!self.checkPassword()) {
-        Toast.error($translate.instant('freefax_voicemail_bad_password'));
+        TucToast.error($translate.instant('freefax_voicemail_bad_password'));
         reject($translate.instant('freefax_voicemail_bad_password'));
       } else {
         OvhApiFreeFax.v6().changePassword({

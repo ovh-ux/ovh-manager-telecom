@@ -1,5 +1,5 @@
 angular.module('managerApp').controller('TelecomSmsPhonebooksCreateCtrl', class TelecomSmsPhonebooksCreateCtrl {
-  constructor($state, $stateParams, OvhApiSms, ToastError) {
+  constructor($state, $stateParams, OvhApiSms, TucToastError) {
     this.$state = $state;
     this.$stateParams = $stateParams;
     this.api = {
@@ -7,7 +7,7 @@ angular.module('managerApp').controller('TelecomSmsPhonebooksCreateCtrl', class 
         phonebooks: OvhApiSms.Phonebooks().v6(),
       },
     };
-    this.ToastError = ToastError;
+    this.TucToastError = TucToastError;
   }
 
   $onInit() {
@@ -28,7 +28,7 @@ angular.module('managerApp').controller('TelecomSmsPhonebooksCreateCtrl', class 
     }, _.pick(this.phonebookToAdd, 'name')).$promise.then(phonebook => this.$state.go('telecom.sms.phonebooks', {
       bookKey: phonebook.bookKey,
     })).catch((err) => {
-      this.ToastError(err);
+      this.TucToastError(err);
     }).finally(() => {
       this.phonebookToAdd.isAdding = false;
     });

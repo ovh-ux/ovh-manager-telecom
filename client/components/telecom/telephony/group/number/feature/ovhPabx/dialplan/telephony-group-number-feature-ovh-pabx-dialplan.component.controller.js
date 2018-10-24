@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('telephonyNumberOvhPabxDialplanCtrl', function ($q, $timeout, $translate, Toast, UI_SORTABLE_HELPERS) {
+angular.module('managerApp').controller('telephonyNumberOvhPabxDialplanCtrl', function ($q, $timeout, $translate, TucToast, TUC_UI_SORTABLE_HELPERS) {
   const self = this;
 
   self.loading = {
@@ -132,7 +132,7 @@ angular.module('managerApp').controller('telephonyNumberOvhPabxDialplanCtrl', fu
       self.ovhPabx.removeDialplan(self.dialplan);
       return createDialplan();
     }).catch((error) => {
-      Toast.error([$translate.instant('telephony_number_feature_ovh_pabx_dialplan_delete_error'), error.data && error.data.message].join(' '));
+      TucToast.error([$translate.instant('telephony_number_feature_ovh_pabx_dialplan_delete_error'), error.data && error.data.message].join(' '));
       return $q.reject(error);
     }).finally(() => {
       self.ovhPabxDialplanCtrl.loading.remove = false;
@@ -159,7 +159,7 @@ angular.module('managerApp').controller('telephonyNumberOvhPabxDialplanCtrl', fu
       handle: '.extension-grip',
       cancel: '.voip-plan__step-icon--grip-disabled',
       containment: 'parent',
-      sort: UI_SORTABLE_HELPERS.variableHeightTolerance,
+      sort: TUC_UI_SORTABLE_HELPERS.variableHeightTolerance,
       start() {
         sortInterval = setInterval(() => {
           self.numberCtrl.jsplumbInstance.repaintEverything();
@@ -198,7 +198,7 @@ angular.module('managerApp').controller('telephonyNumberOvhPabxDialplanCtrl', fu
     }).finally(() => {
       self.loading.init = false;
     }).catch((error) => {
-      Toast.error([$translate.instant('telephony_number_feature_ovh_pabx_load_error'), _.get(error, 'data.message') || ''].join(' '));
+      TucToast.error([$translate.instant('telephony_number_feature_ovh_pabx_load_error'), _.get(error, 'data.message') || ''].join(' '));
       return $q.reject(error);
     });
   };

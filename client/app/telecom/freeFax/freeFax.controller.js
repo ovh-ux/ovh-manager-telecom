@@ -1,5 +1,5 @@
 angular.module('managerApp')
-  .controller('FreeFaxCtrl', function ($q, $translate, $scope, OvhApiFreeFax, $stateParams, Toast) {
+  .controller('FreeFaxCtrl', function ($q, $translate, $scope, OvhApiFreeFax, $stateParams, TucToast) {
     const self = this;
 
     $scope.loading = true;
@@ -20,7 +20,7 @@ angular.module('managerApp')
         if (err.status === 460) {
           self.error = $translate.instant('freefax_expired_error');
         } else {
-          Toast.error($translate.instant('freefax_detail_error'));
+          TucToast.error($translate.instant('freefax_detail_error'));
         }
         return $q.reject(err);
       }).finally(() => {

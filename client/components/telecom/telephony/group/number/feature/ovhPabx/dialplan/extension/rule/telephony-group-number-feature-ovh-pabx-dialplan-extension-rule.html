@@ -2,9 +2,9 @@
     <!-- RULE BLOCK -->
          <!-- POSITION -->
          <div class="voip-plan__step-icon voip-plan__step-icon--grip hover-grip rule-grip"
-              data-jsplumb-endpoint="$ctrl.numberCtrl.jsPlumbEndpointsOptions.topLeft">
-             <span data-jsplumb-connection="!$ctrl.extension.enabled ? $ctrl.numberCtrl.jsPlumbConnectionsOptions.disabled : null"
-                   data-jsplumb-connection-target="{{ $ctrl.rule.negativeAction ? $ctrl.extensionCtrl.uuid + '-condition' : $ctrl.extensionCtrl.uuid }}"
+              data-tuc-jsplumb-endpoint="$ctrl.numberCtrl.jsPlumbEndpointsOptions.topLeft">
+             <span data-tuc-jsplumb-connection="!$ctrl.extension.enabled ? $ctrl.numberCtrl.jsPlumbConnectionsOptions.disabled : null"
+                   data-tuc-jsplumb-connection-target="{{ $ctrl.rule.negativeAction ? $ctrl.extensionCtrl.uuid + '-condition' : $ctrl.extensionCtrl.uuid }}"
                    data-ng-if="!$ctrl.extensionCtrl.extension.collapsed"
                    data-ng-class="$ctrl.isLoading() ? 'fa fa-spinner fa-pulse' :'ovh-font ovh-font-grip'"
                    aria-hidden="true">
@@ -19,11 +19,11 @@
              data-popover-is-open="$ctrl.popoverStatus.isOpen"
              data-popover-class="pretty-popover telephony-number-feature-popover telephony-number-ovh-pabx-actions-popup"
              data-ng-class="{ 'voip-plan__step-content--delete-anim': $ctrl.deletePending }"
-             data-hide-outside-click="$ctrl.onRuleOutsideClick()">
+             data-tuc-hide-outside-click="$ctrl.onRuleOutsideClick()">
             <div class="voip-plan__step-description"
                  data-ng-switch="$ctrl.getActionFamily()">
                 <span class="voip-plan__step-name voip-plan__step-name--has-info"
-                      data-translate="{{ 'telephony_number_feature_ovh_pabx_step_rule_' + ($ctrl.getRuleAttribute('action') | snakeCase) }}">
+                      data-translate="{{ 'telephony_number_feature_ovh_pabx_step_rule_' + ($ctrl.getRuleAttribute('action') | tucSnakeCase) }}">
                 </span>
                 <!-- ACTION PARAM DISPLAY -->
                 <!-- SLEEP -->
@@ -42,13 +42,13 @@
                 <!-- VOICEMAIL -->
                 <span class="voip-plan__step-info"
                       data-ng-switch-when="voicemail"
-                      data-ng-bind="$ctrl.getVoicemailInfos().getDisplayedName() | phoneNumber">
+                      data-ng-bind="$ctrl.getVoicemailInfos().getDisplayedName() | tucPhoneNumber">
                 </span> <!-- VOICEMAIL -->
 
                 <!-- BRIDGE -->
                 <span class="voip-plan__step-info"
                       data-ng-switch-when="bridge"
-                      data-ng-bind="$ctrl.getRuleAttribute('actionParam') | phoneNumber">
+                      data-ng-bind="$ctrl.getRuleAttribute('actionParam') | tucPhoneNumber">
                 </span> <!-- BRIDGE -->
 
                 <!-- IVR -->

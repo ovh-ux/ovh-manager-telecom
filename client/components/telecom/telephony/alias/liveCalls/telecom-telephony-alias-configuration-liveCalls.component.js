@@ -14,7 +14,7 @@ angular.module('managerApp').component('telecomTelephonyAliasLiveCalls', {
   templateUrl: 'components/telecom/telephony/alias/liveCalls/telecom-telephony-alias-configuration-liveCalls.html',
   controller(
     $scope, $stateParams, $q, $timeout, $uibModal, $translate, $translatePartialLoader,
-    moment, ToastError,
+    moment, TucToastError,
   ) {
     const self = this;
 
@@ -39,7 +39,7 @@ angular.module('managerApp').component('telecomTelephonyAliasLiveCalls', {
           self.pollStats(queueId);
           return self.refreshStats(queueId);
         }),
-      ]).catch(err => new ToastError(err)).finally(() => {
+      ]).catch(err => new TucToastError(err)).finally(() => {
         self.isLoading = false;
       });
     };

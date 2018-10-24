@@ -3,7 +3,7 @@ angular
   .controller('TelecomSmsSmsComposeAddPhonebookContactCtrl', class TelecomSmsSmsComposeAddPhonebookContactCtrl {
     constructor(
       $filter, $q, $scope, $stateParams, $timeout, $translate, $uibModalInstance,
-      phonebooks, OvhApiSms, Toast, SMS_PHONEBOOKS,
+      phonebooks, OvhApiSms, TucToast, SMS_PHONEBOOKS,
     ) {
       this.$filter = $filter;
       this.$q = $q;
@@ -20,7 +20,7 @@ angular
           },
         },
       };
-      this.Toast = Toast;
+      this.TucToast = TucToast;
       this.constant = { SMS_PHONEBOOKS };
     }
 
@@ -111,7 +111,7 @@ angular
         this.phonebookContact.raw = phonebookContact;
         this.sortPhonebookContact();
       }).catch((err) => {
-        this.Toast.error(`${this.$translate.instant('sms_sms_compose_add_phonebook_contact_ko')} ${_.get(err, 'data.message')}`);
+        this.TucToast.error(`${this.$translate.instant('sms_sms_compose_add_phonebook_contact_ko')} ${_.get(err, 'data.message')}`);
         return this.$q.reject(err);
       }).finally(() => {
         this.phonebookContact.isLoading = false;

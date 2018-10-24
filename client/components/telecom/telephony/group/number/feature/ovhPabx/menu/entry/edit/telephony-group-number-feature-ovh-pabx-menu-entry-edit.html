@@ -1,7 +1,7 @@
 <div data-ng-controller="telephonyNumberOvhPabxMenuEntryEditCtrl as $ctrl"
      class="telephony-number-ovh-pabx-menu-entry-edit popover-pages"
      data-ng-form="menuEntryForm"
-     data-hide-outside-click="$ctrl.onCancelBtnClick()">
+     data-tuc-hide-outside-click="$ctrl.onCancelBtnClick()">
 
     <div class="popover-pages-wrapper"
          data-ng-class="{ move: $ctrl.menuEntryCtrl.popoverStatus.move }">
@@ -45,7 +45,7 @@
                                data-translate="telephony_number_feature_ovh_pabx_menu_entry_edit_action">
                         </label>
                         <span class="block"
-                              data-translate="{{ 'telephony_number_feature_ovh_pabx_menu_entry_action_' + ($ctrl.menuEntryCtrl.menuEntry.action | snakeCase) }}">
+                              data-translate="{{ 'telephony_number_feature_ovh_pabx_menu_entry_action_' + ($ctrl.menuEntryCtrl.menuEntry.action | tucSnakeCase) }}">
                         </span>
                         <div class="chevron-right">
                             <div class="chevron-wrapper">

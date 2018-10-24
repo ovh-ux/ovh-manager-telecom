@@ -1,10 +1,10 @@
 <div class="ovh-pabx-dialplan-menu-entry voip-plan__step voip-plan__step--point">
     <!-- POSITION -->
     <div class="voip-plan__step-icon voip-plan__step-icon--basic"
-         data-jsplumb-endpoint="$ctrl.menuCtrl.jsPlumbEndpointsOptions.topLeft">
+         data-tuc-jsplumb-endpoint="$ctrl.menuCtrl.jsPlumbEndpointsOptions.topLeft">
          <span class="position-text entry-dtmf elipse text-center"
-               data-jsplumb-connection="$ctrl.isDisabled() ? $ctrl.menuCtrl.jsPlumbConnectionsOptions.disabled : null"
-               data-jsplumb-connection-target="{{ $ctrl.getParentEndpointUuid() }}"
+               data-tuc-jsplumb-connection="$ctrl.isDisabled() ? $ctrl.menuCtrl.jsPlumbConnectionsOptions.disabled : null"
+               data-tuc-jsplumb-connection-target="{{ $ctrl.getParentEndpointUuid() }}"
                data-ng-bind="$ctrl.getEntryAttribute('dtmf')">
          </span>
     </div> <!-- END OF POSITION -->
@@ -17,18 +17,18 @@
         data-popover-is-open="$ctrl.popoverStatus.isOpen"
         data-popover-class="pretty-popover telephony-number-feature-popover telephony-number-ovh-pabx-actions-popup"
         data-ng-class="{ 'voip-plan__step-content--delete-anim': $ctrl.menuEntry.status === 'DELETE_PENDING' }"
-        data-hide-outside-click="$ctrl.onEntryOutsideClick()">
+        data-tuc-hide-outside-click="$ctrl.onEntryOutsideClick()">
         <!-- ENTRY ACTION -->
         <div class="voip-plan__step-description"
              data-ng-switch="$ctrl.getEntryAttribute('action')">
             <span class="voip-plan__step-name"
-                  data-translate="{{ 'telephony_number_feature_ovh_pabx_menu_entry_action_' + ($ctrl.getEntryAttribute('action') | snakeCase) }}">
+                  data-translate="{{ 'telephony_number_feature_ovh_pabx_menu_entry_action_' + ($ctrl.getEntryAttribute('action') | tucSnakeCase) }}">
             </span>
 
             <!-- ACTION PARAM DISPLAY : BRIDGE -->
             <span class="voip-plan__step-info"
                   data-ng-switch-when="bridge"
-                  data-ng-bind="$ctrl.getEntryAttribute('actionParam') | phoneNumber">
+                  data-ng-bind="$ctrl.getEntryAttribute('actionParam') | tucPhoneNumber">
             </span> <!-- END OF ACTION PARAM DISPLAY : BRIDGE -->
 
             <!-- ACTION PARAM DISPLAY : PLAYBACK -->

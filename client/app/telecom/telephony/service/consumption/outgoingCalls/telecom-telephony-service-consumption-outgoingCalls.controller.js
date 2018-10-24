@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyServiceConsumptionOutgoingCallsCtrl', function ($stateParams, $q, $translate, $filter, $timeout, OvhApiTelephony, ToastError) {
+angular.module('managerApp').controller('TelecomTelephonyServiceConsumptionOutgoingCallsCtrl', function ($stateParams, $q, $translate, $filter, $timeout, OvhApiTelephony, TucToastError) {
   const self = this;
 
   function fetchOutgoingConsumption() {
@@ -77,7 +77,7 @@ angular.module('managerApp').controller('TelecomTelephonyServiceConsumptionOutgo
         return null;
       });
       self.consumption.sum.outPlan.price = `${Math.floor(self.consumption.sum.outPlan.price * 100.0, 2) / 100.0} ${priceSuffix}`;
-    }, err => new ToastError(err));
+    }, err => new TucToastError(err));
   }
 
   self.refresh = function () {

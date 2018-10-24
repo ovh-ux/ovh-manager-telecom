@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyFaxFaxCtrl', function ($q, $stateParams, $translate, TelecomMediator, TelephonyMediator, Toast) {
+angular.module('managerApp').controller('TelecomTelephonyFaxFaxCtrl', function ($q, $stateParams, $translate, TelecomMediator, TelephonyMediator, TucToast) {
   const self = this;
 
   self.loading = {
@@ -50,7 +50,7 @@ angular.module('managerApp').controller('TelecomTelephonyFaxFaxCtrl', function (
       self.fax = group.getFax($stateParams.serviceName);
       initActions();
     }).catch((error) => {
-      Toast.error([$translate.instant('telephony_fax_loading_error'), _.get(error, 'data.message', '')].join(' '));
+      TucToast.error([$translate.instant('telephony_fax_loading_error'), _.get(error, 'data.message', '')].join(' '));
       return $q.reject(error);
     }).finally(() => {
       self.loading.init = false;

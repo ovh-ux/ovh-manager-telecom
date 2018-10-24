@@ -3,14 +3,14 @@
           data-ng-submit="LnsRateLimitCtrl.changeRate()">
         <div class="row">
             <div class="col-xs-9">
-                <slider data-floor="{{LnsRateLimitCtrl.min}}"
+                <tuc-slider data-floor="{{LnsRateLimitCtrl.min}}"
                         data-ceiling="{{LnsRateLimitCtrl.max}}"
                         data-step="{{LnsRateLimitCtrl.step}}"
                         class="my-0"
                         data-ng-model="LnsRateLimitCtrl.rate.value"
                         data-refresh-trigger="LnsRateLimitCtrl.rate.disabled"
                         data-display-callback="LnsRateLimitCtrl.reformatValue(value)"
-                        data-disabled="access.tasks.current.lnsApplyRateLimit || LnsRateLimitCtrl.rate.disabled"></slider>
+                        data-disabled="access.tasks.current.lnsApplyRateLimit || LnsRateLimitCtrl.rate.disabled"></tuc-slider>
             </div>
             <div class="col-xs-3"
                  data-ng-if="!LnsRateLimitCtrl.rate.disabled"

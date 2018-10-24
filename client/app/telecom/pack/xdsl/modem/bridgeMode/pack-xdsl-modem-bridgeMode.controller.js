@@ -1,17 +1,17 @@
-angular.module('managerApp').controller('XdslModemBridgeModeCtrl', function ($stateParams, $q, $translate, OvhApiXdsl, Toast, PackXdslModemMediator) {
+angular.module('managerApp').controller('XdslModemBridgeModeCtrl', function ($stateParams, $q, $translate, OvhApiXdsl, TucToast, TucPackXdslModemMediator) {
   const self = this;
 
-  this.mediator = PackXdslModemMediator;
+  this.mediator = TucPackXdslModemMediator;
 
   this.undo = function () {
-    _.set(PackXdslModemMediator, 'info.isBridged', !this.isBridged);
+    _.set(TucPackXdslModemMediator, 'info.isBridged', !this.isBridged);
   };
 
   this.changeBridgeMode = function () {
     if (_.isEmpty($stateParams.serviceName)) {
-      return Toast.error($translate.instant('xdsl_modem_bridge_mode_an_error_ocurred'));
+      return TucToast.error($translate.instant('xdsl_modem_bridge_mode_an_error_ocurred'));
     }
-    PackXdslModemMediator.setTask('changeModemConfigBridgeMode');
+    TucPackXdslModemMediator.setTask('changeModemConfigBridgeMode');
     OvhApiXdsl.Modem().v6().update(
       {
         xdslId: $stateParams.serviceName,
@@ -20,24 +20,24 @@ angular.module('managerApp').controller('XdslModemBridgeModeCtrl', function ($st
         isBridged: self.isBridged,
       },
     ).$promise.then((data) => {
-      PackXdslModemMediator.disableCapabilities();
-      PackXdslModemMediator.setTask('changeModemConfigBridgeMode');
+      TucPackXdslModemMediator.disableCapabilities();
+      TucPackXdslModemMediator.setTask('changeModemConfigBridgeMode');
       if (self.isBridged) {
-        Toast.success($translate.instant('xdsl_modem_bridge_mode_success_validation_on'));
+        TucToast.success($translate.instant('xdsl_modem_bridge_mode_success_validation_on'));
       } else {
-        Toast.success($translate.instant('xdsl_modem_bridge_mode_success_validation_off'));
+        TucToast.success($translate.instant('xdsl_modem_bridge_mode_success_validation_off'));
       }
       return data;
     }).catch((err) => {
       self.undo();
-      Toast.error($translate.instant('xdsl_modem_bridge_mode_an_error_ocurred'));
+      TucToast.error($translate.instant('xdsl_modem_bridge_mode_an_error_ocurred'));
       return $q.reject(err);
     });
     return $q.when(null);
   };
 
   function init() {
-    self.isBridged = PackXdslModemMediator.info.isBridged;
+    self.isBridged = TucPackXdslModemMediator.info.isBridged;
   }
 
   init();

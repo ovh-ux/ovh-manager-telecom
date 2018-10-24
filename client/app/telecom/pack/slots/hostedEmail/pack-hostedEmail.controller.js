@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('PackHostedEmailCtrl', function ($q, $translate, $stateParams, Toast, OvhApiPackXdslHostedEmail) {
+angular.module('managerApp').controller('PackHostedEmailCtrl', function ($q, $translate, $stateParams, TucToast, OvhApiPackXdslHostedEmail) {
   const self = this;
 
   /**
@@ -17,7 +17,7 @@ angular.module('managerApp').controller('PackHostedEmailCtrl', function ($q, $tr
       }));
       return self.services;
     }).catch((err) => {
-      Toast.error($translate.instant('hosted_email_loading_error'));
+      TucToast.error($translate.instant('hosted_email_loading_error'));
       return $q.reject(err);
     }).finally(() => {
       self.loaders.services = false;

@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyBillingAccountBillingTollfreeHistoryCtrl', function ($q, $filter, $window, $timeout, $stateParams, $translate, TelephonyMediator, OvhApiTelephony, Toast) {
+angular.module('managerApp').controller('TelecomTelephonyBillingAccountBillingTollfreeHistoryCtrl', function ($q, $filter, $window, $timeout, $stateParams, $translate, TelephonyMediator, OvhApiTelephony, TucToast) {
   const self = this;
 
   self.group = null;
@@ -29,7 +29,7 @@ angular.module('managerApp').controller('TelecomTelephonyBillingAccountBillingTo
         }))
       .catch((err) => {
         self.consumptionData = [];
-        Toast.error([$translate.instant('telephony_group_billing_tollfree_history_download_error'), (err.data && err.data.message) || ''].join(' '));
+        TucToast.error([$translate.instant('telephony_group_billing_tollfree_history_download_error'), (err.data && err.data.message) || ''].join(' '));
         return $q.reject(err);
       });
   }
@@ -65,7 +65,7 @@ angular.module('managerApp').controller('TelecomTelephonyBillingAccountBillingTo
     return self.fetchFile(consumption).then((info) => {
       $window.location.href = info.url; // eslint-disable-line
     }).catch((err) => {
-      Toast.error([$translate.instant('telephony_group_billing_tollfree_history_download_error'), (err.data && err.data.message) || ''].join(' '));
+      TucToast.error([$translate.instant('telephony_group_billing_tollfree_history_download_error'), (err.data && err.data.message) || ''].join(' '));
       return $q.reject(err);
     });
   };
@@ -83,7 +83,7 @@ angular.module('managerApp').controller('TelecomTelephonyBillingAccountBillingTo
         self.consumptionData = consumptions;
       });
     }).catch((err) => {
-      Toast.error([$translate.instant('telephony_group_billing_tollfree_history_init_error'), (err.data && err.data.message) || ''].join(' '));
+      TucToast.error([$translate.instant('telephony_group_billing_tollfree_history_init_error'), (err.data && err.data.message) || ''].join(' '));
       return $q.reject(err);
     });
   };

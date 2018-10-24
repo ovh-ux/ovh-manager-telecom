@@ -4,11 +4,11 @@
     <div class="voip-plan__step"
          data-ng-if="$ctrl.numberCtrl.loading.feature">
         <div class="voip-plan__step-icon voip-plan__step-icon--basic"
-             data-jsplumb-endpoint
-             data-jsplumb-endpoint-uuid="redirect-loading">
+             data-tuc-jsplumb-endpoint
+             data-tuc-jsplumb-endpoint-uuid="redirect-loading">
             <span class="fa fa-spinner fa-pulse"
-               data-jsplumb-connection
-               data-jsplumb-connection-target="incoming-call-{{ $ctrl.numberCtrl.number.serviceName }}"
+               data-tuc-jsplumb-connection
+               data-tuc-jsplumb-connection-target="incoming-call-{{ $ctrl.numberCtrl.number.serviceName }}"
                aria-hidden="true">
            </span>
         </div>

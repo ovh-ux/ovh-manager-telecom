@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('PackXdslResiliationCtrl', function ($scope, $stateParams, $translate, $q, $timeout, $filter, OvhApiXdsl, ToastError, OvhApiXdslResiliation, Toast, tucValidator) {
+angular.module('managerApp').controller('PackXdslResiliationCtrl', function ($scope, $stateParams, $translate, $q, $timeout, $filter, OvhApiXdsl, TucToastError, OvhApiXdslResiliation, TucToast, tucValidator) {
   const self = this;
 
   this.loading = true;
@@ -19,7 +19,7 @@ angular.module('managerApp').controller('PackXdslResiliationCtrl', function ($sc
         description: data.description || data.serviceName,
       });
       return data;
-    }, err => new ToastError(err)).then(() => OvhApiXdslResiliation.Aapi().terms({
+    }, err => new TucToastError(err)).then(() => OvhApiXdslResiliation.Aapi().terms({
       serviceName: $stateParams.serviceName,
     }).$promise.then((data) => {
       self.resiliationTerms = data;
@@ -41,7 +41,7 @@ angular.module('managerApp').controller('PackXdslResiliationCtrl', function ($sc
         };
         return self.resiliationTerms;
       });
-    }, err => new ToastError(err)).finally(() => {
+    }, err => new TucToastError(err)).finally(() => {
       self.loading = false;
     }));
   };
@@ -61,9 +61,9 @@ angular.module('managerApp').controller('PackXdslResiliationCtrl', function ($sc
         resiliationSurvey: survey,
         resiliationDate: self.when ? self.when.toISOString() : null,
       }).$promise.then(() => {
-        Toast.success($translate.instant('xdsl_resiliation_mail'));
+        TucToast.success($translate.instant('xdsl_resiliation_mail'));
         self.init();
-      }, err => new ToastError(err)).finally(() => {
+      }, err => new TucToastError(err)).finally(() => {
         self.loading = false;
       });
     }
@@ -119,7 +119,7 @@ angular.module('managerApp').controller('PackXdslResiliationCtrl', function ($sc
       if (data.due) {
         self.resiliationTerms.data.due = data.due;
       }
-    }, err => new ToastError(err)).finally(() => {
+    }, err => new TucToastError(err)).finally(() => {
       self.computingPrice = false;
     });
   };
@@ -134,7 +134,7 @@ angular.module('managerApp').controller('PackXdslResiliationCtrl', function ($sc
       serviceName: service.serviceName,
     }, null).$promise.then(() => {
       self.init();
-    }, err => new ToastError(err)).finally(() => {
+    }, err => new TucToastError(err)).finally(() => {
       self.loading = false;
     });
   };

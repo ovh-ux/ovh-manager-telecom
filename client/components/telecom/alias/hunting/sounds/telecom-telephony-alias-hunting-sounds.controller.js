@@ -6,7 +6,7 @@ angular.module('managerApp').run(($translate, asyncLoader) => {
   );
   $translate.refresh();
 });
-angular.module('managerApp').controller('TelecomTelephonyAliasHuntingSoundsCtrl', function ($stateParams, $uibModalInstance, $timeout, $q, $translate, $translatePartialLoader, params, OvhApiMe, ToastError, voipServiceTask) {
+angular.module('managerApp').controller('TelecomTelephonyAliasHuntingSoundsCtrl', function ($stateParams, $uibModalInstance, $timeout, $q, $translate, $translatePartialLoader, params, OvhApiMe, TucToastError, voipServiceTask) {
   const self = this;
 
   function init() {
@@ -28,7 +28,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasHuntingSoundsCtrl'
     const fileName = file ? file.name : '';
     const found = _.some(validExtensions, ext => _.endsWith(fileName.toLowerCase(), ext));
     if (!found) {
-      ToastError($translate.instant('telephony_alias_hunting_sounds_invalid'));
+      TucToastError($translate.instant('telephony_alias_hunting_sounds_invalid'));
     }
     return found;
   };
@@ -69,7 +69,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasHuntingSoundsCtrl'
         self.toUpload = null;
         params.refreshSounds();
       })
-      .catch(err => new ToastError(err))
+      .catch(err => new TucToastError(err))
       .finally(() => {
         self.isUploading = false;
       });
@@ -89,7 +89,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasHuntingSoundsCtrl'
         soundId: sound.soundId,
       }).$promise.then(() => {
         _.remove(self.sounds, { soundId: sound.soundId });
-      }).catch(err => new ToastError(err)).finally(() => {
+      }).catch(err => new TucToastError(err)).finally(() => {
         _.set(sound, 'isDeleting', false);
       }),
     ]);

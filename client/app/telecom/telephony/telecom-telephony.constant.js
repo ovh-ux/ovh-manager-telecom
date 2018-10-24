@@ -19,41 +19,41 @@
       bottom: {
         source: {
           anchor: [0.5, 0.5, 0, 1],
-          connector: ['TwoSegments', { radius: 30 }],
+          connector: ['TucTwoSegments', { radius: 30 }],
         },
         target: {
           anchor: [0.5, 0.5, 0, 1],
-          connector: ['TwoSegments', { radius: 30 }],
+          connector: ['TucTwoSegments', { radius: 30 }],
         },
       },
       top: {
         source: {
           anchor: [0.5, 0.5, 0, -1],
-          connector: ['TwoSegments', { radius: 30 }],
+          connector: ['TucTwoSegments', { radius: 30 }],
         },
         target: {
           anchor: [0.5, 0.5, 0, -1],
-          connector: ['TwoSegments', { radius: 30 }],
+          connector: ['TucTwoSegments', { radius: 30 }],
         },
       },
       topLeft: {
         source: {
           anchor: [0.5, 0.5, -1, -1],
-          connector: ['TwoSegments', { radius: 30 }],
+          connector: ['TucTwoSegments', { radius: 30 }],
         },
         target: {
           anchor: [0.5, 0.5, -1, -1],
-          connector: ['TwoSegments', { radius: 30 }],
+          connector: ['TucTwoSegments', { radius: 30 }],
         },
       },
       bottomRight: {
         source: {
           anchor: [0.5, 0.5, 1, 1],
-          connector: ['TwoSegments', { radius: 30 }],
+          connector: ['TucTwoSegments', { radius: 30 }],
         },
         target: {
           anchor: [0.5, 0.5, 1, 1],
-          connector: ['TwoSegments', { radius: 30 }],
+          connector: ['TucTwoSegments', { radius: 30 }],
         },
       },
     },
@@ -77,41 +77,41 @@
       bottom: {
         source: {
           anchor: [0.5, 0.5, 0, 1],
-          connector: ['TwoSegments', { radius: 30 }],
+          connector: ['TucTwoSegments', { radius: 30 }],
         },
         target: {
           anchor: [0.5, 0.5, 0, 1],
-          connector: ['TwoSegments', { radius: 30 }],
+          connector: ['TucTwoSegments', { radius: 30 }],
         },
       },
       top: {
         source: {
           anchor: [0.5, 0.5, 0, -1],
-          connector: ['TwoSegments', { radius: 30 }],
+          connector: ['TucTwoSegments', { radius: 30 }],
         },
         target: {
           anchor: [0.5, 0.5, 0, -1],
-          connector: ['TwoSegments', { radius: 30 }],
+          connector: ['TucTwoSegments', { radius: 30 }],
         },
       },
       topLeft: {
         source: {
           anchor: [0.5, 0.5, -1, -1],
-          connector: ['TwoSegments', { radius: 30 }],
+          connector: ['TucTwoSegments', { radius: 30 }],
         },
         target: {
           anchor: [0.5, 0.5, -1, -1],
-          connector: ['TwoSegments', { radius: 30 }],
+          connector: ['TucTwoSegments', { radius: 30 }],
         },
       },
       bottomRight: {
         source: {
           anchor: [0.5, 0.5, 1, 1],
-          connector: ['TwoSegments', { radius: 30 }],
+          connector: ['TucTwoSegments', { radius: 30 }],
         },
         target: {
           anchor: [0.5, 0.5, 1, 1],
-          connector: ['TwoSegments', { radius: 30 }],
+          connector: ['TucTwoSegments', { radius: 30 }],
         },
       },
     },

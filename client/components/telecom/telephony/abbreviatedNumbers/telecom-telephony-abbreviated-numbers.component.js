@@ -18,7 +18,7 @@ angular.module('managerApp').component('telecomTelephonyAbbreviatedNumbers', {
     reloadCallback: '&',
   },
   templateUrl: 'components/telecom/telephony/abbreviatedNumbers/telecom-telephony-abbreviated-numbers.html',
-  controller($uibModal, $q, $stateParams, $translate, $timeout, Toast, PAGINATION_PER_PAGE) {
+  controller($uibModal, $q, $stateParams, $translate, $timeout, TucToast, PAGINATION_PER_PAGE) {
     const self = this;
 
     this.$onInit = function () {
@@ -39,12 +39,12 @@ angular.module('managerApp').component('telecomTelephonyAbbreviatedNumbers', {
     this.remove = function (abbreviatedNumber) {
       return $q.when(this.removeCallback({ value: abbreviatedNumber }))
         .then(() => {
-          Toast.success($translate.instant('telephony_abbreviated_numbers_remove_success', abbreviatedNumber));
+          TucToast.success($translate.instant('telephony_abbreviated_numbers_remove_success', abbreviatedNumber));
           const index = self.abbreviatedNumbers.indexOf(abbreviatedNumber);
           self.abbreviatedNumbers.splice(index, 1);
         })
         .catch((err) => {
-          Toast.error($translate.instant('telephony_abbreviated_numbers_remove_error', abbreviatedNumber));
+          TucToast.error($translate.instant('telephony_abbreviated_numbers_remove_error', abbreviatedNumber));
           return $q.reject(err);
         });
     };

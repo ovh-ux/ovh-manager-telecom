@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomPackMigrationServiceDeleteCtrl', function (PackMigrationProcess) {
+angular.module('managerApp').controller('TelecomPackMigrationServiceDeleteCtrl', function (TucPackMigrationProcess) {
   const self = this;
 
   self.process = null;
@@ -29,7 +29,7 @@ angular.module('managerApp').controller('TelecomPackMigrationServiceDeleteCtrl',
   ====================================== */
 
   function init() {
-    self.process = PackMigrationProcess.getMigrationProcess();
+    self.process = TucPackMigrationProcess.getMigrationProcess();
 
     self.chunkedSubServices = _.chunk(self.process.selectedOffer.subServicesToDelete, 2);
   }

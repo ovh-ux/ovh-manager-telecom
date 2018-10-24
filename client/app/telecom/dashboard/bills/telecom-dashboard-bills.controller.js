@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomDashboardBillsCtrl', function (OvhApiMeBill, ToastError, REDIRECT_URLS) {
+angular.module('managerApp').controller('TelecomDashboardBillsCtrl', function (OvhApiMeBill, TucToastError, REDIRECT_URLS) {
   const self = this;
 
   self.links = {
@@ -15,7 +15,7 @@ angular.module('managerApp').controller('TelecomDashboardBillsCtrl', function (O
       self.lastBills = bills;
     }, (err) => {
       self.lastBills = [];
-      ToastError(err);
+      TucToastError(err);
     });
   }
 

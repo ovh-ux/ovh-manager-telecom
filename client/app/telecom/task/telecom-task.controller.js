@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTaskCtrl', function ($scope, $translate, OvhApiPackXdslTask, ToastError, TASK_STATUS, PAGINATION_PER_PAGE) {
+angular.module('managerApp').controller('TelecomTaskCtrl', function ($scope, $translate, OvhApiPackXdslTask, TucToastError, TASK_STATUS, PAGINATION_PER_PAGE) {
   const self = this;
   const statusInfo = TASK_STATUS;
 
@@ -41,7 +41,7 @@ angular.module('managerApp').controller('TelecomTaskCtrl', function ($scope, $tr
         }
         _.set(tab, 'loading', false);
       },
-      ToastError,
+      TucToastError,
     );
   };
 

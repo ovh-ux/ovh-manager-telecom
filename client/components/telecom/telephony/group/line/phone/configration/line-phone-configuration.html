@@ -3,7 +3,7 @@
     <!-- CONSULT MODE -->
     <dl data-ng-if="!$ctrl.editMode">
         <dt data-ng-repeat-start="config in $ctrl.configGroup.configs track by $index"
-            data-translate="{{ ['telephony_line_phone_configuration_config', config.name].join('_') | snakeCase }}"
+            data-translate="{{ ['telephony_line_phone_configuration_config', config.name].join('_') | tucSnakeCase }}"
             data-translate-default="{{ config.name }}"
             data-ng-if="$ctrl.expertMode || (!$ctrl.expertMode && config.level === null)">
         </dt>
@@ -24,7 +24,7 @@
 
             <label data-ng-if="config.type !== 'ipv4' && config.type !== 'string'"
                    for="{{ config.name }}"
-                   data-translate="{{ ['telephony_line_phone_configuration_config', config.name].join('_') | snakeCase }}"
+                   data-translate="{{ ['telephony_line_phone_configuration_config', config.name].join('_') | tucSnakeCase }}"
                    data-translate-default="{{ config.name }}">
             </label>
 
@@ -56,7 +56,7 @@
                 <select class="form-control"
                         id="{{ config.name }}"
                         data-ng-model="config.value"
-                        data-ng-options="value as ($ctrl.isEnumHasToBeTranslated(config.name) ? (['telephony_line_phone_configuration_config', value].join('_') | snakeCase | translate) : value) for value in config['enum']">
+                        data-ng-options="value as ($ctrl.isEnumHasToBeTranslated(config.name) ? (['telephony_line_phone_configuration_config', value].join('_') | tucSnakeCase | translate) : value) for value in config['enum']">
                 </select>
             </div>
 
@@ -67,7 +67,7 @@
                  }">
                 <label for="{{ config.name }}"
                        class="control-label"
-                       data-translate="{{ ['telephony_line_phone_configuration_config', config.name].join('_') | snakeCase }}">
+                       data-translate="{{ ['telephony_line_phone_configuration_config', config.name].join('_') | tucSnakeCase }}">
                 </label>
                 <input type="text"
                        id="{{ config.name }}"
@@ -94,7 +94,7 @@
                  }">
                 <label for="{{ config.name }}"
                        class="control-label"
-                       data-translate="{{ ['telephony_line_phone_configuration_config', config.name].join('_') | snakeCase }}">
+                       data-translate="{{ ['telephony_line_phone_configuration_config', config.name].join('_') | tucSnakeCase }}">
                 </label>
                 <input type="text"
                        id="{{ config.name }}"

@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('OverTheBoxTasksCtrl', function ($translate, $q, $stateParams, PAGINATION_PER_PAGE, OvhApiOverTheBox, Toast) {
+angular.module('managerApp').controller('OverTheBoxTasksCtrl', function ($translate, $q, $stateParams, PAGINATION_PER_PAGE, OvhApiOverTheBox, TucToast) {
   const self = this;
 
   self.loaders = {
@@ -24,7 +24,7 @@ angular.module('managerApp').controller('OverTheBoxTasksCtrl', function ($transl
         self.taskIds = taskIds.map(taskId => ({ id: taskId }));
       },
       (error) => {
-        Toast.error([$translate.instant('an_error_occured'), error.data.message].join(' '));
+        TucToast.error([$translate.instant('an_error_occured'), error.data.message].join(' '));
       },
     );
   };
@@ -34,7 +34,7 @@ angular.module('managerApp').controller('OverTheBoxTasksCtrl', function ($transl
       .getTask({ serviceName: $stateParams.serviceName, taskId: row.id }).$promise.then(
         task => task,
         (error) => {
-          Toast.error([$translate.instant('an_error_occured'), error.data.message].join(' '));
+          TucToast.error([$translate.instant('an_error_occured'), error.data.message].join(' '));
         },
       );
   };

@@ -9,7 +9,7 @@
             data-translate="telephony_line_answer_voicemail_directories_title">
         </h2>
 
-        <toast-message></toast-message>
+        <tuc-toast-message></tuc-toast-message>
 
         <button class="btn btn-default mb-3 no-transition"
                 type="button"
@@ -113,7 +113,7 @@
                                    data-ng-model="VoicemailManagementCtrl.messages.selected[message.id]">
                         </td>
                         <th scope="row"
-                            data-ng-bind="message.caller | phoneNumber">
+                            data-ng-bind="message.caller | tucPhoneNumber">
                         </th>
                         <td>
                             <span class="text-nowrap" data-ng-bind="message.creationDatetime | date: 'dd/MM/yyyy'"></span>

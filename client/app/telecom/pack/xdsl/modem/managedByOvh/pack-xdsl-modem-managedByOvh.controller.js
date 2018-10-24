@@ -1,11 +1,11 @@
-angular.module('managerApp').controller('XdslModemManagedByCtrl', function ($stateParams, $q, $translate, OvhApiXdsl, Toast, PackXdslModemMediator) {
+angular.module('managerApp').controller('XdslModemManagedByCtrl', function ($stateParams, $q, $translate, OvhApiXdsl, TucToast, TucPackXdslModemMediator) {
   const self = this;
 
-  this.mediator = PackXdslModemMediator;
+  this.mediator = TucPackXdslModemMediator;
 
   this.undo = function () {
-    _.set(PackXdslModemMediator, 'info.managedByOvh', !PackXdslModemMediator.info.managedByOvh);
-    PackXdslModemMediator.unsetTask('changeModemConfigManagement');
+    _.set(TucPackXdslModemMediator, 'info.managedByOvh', !TucPackXdslModemMediator.info.managedByOvh);
+    TucPackXdslModemMediator.unsetTask('changeModemConfigManagement');
   };
 
   this.tooltip = _.get(this.mediator, 'info.managedByOvh')
@@ -14,29 +14,29 @@ angular.module('managerApp').controller('XdslModemManagedByCtrl', function ($sta
 
   this.changeManagedBy = function () {
     if (_.isEmpty($stateParams.serviceName)) {
-      Toast.error($translate.instant('xdsl_modem_managedBy_an_error_ocurred'));
+      TucToast.error($translate.instant('xdsl_modem_managedBy_an_error_ocurred'));
       return $q.reject();
     }
     this.updating = true;
-    PackXdslModemMediator.setTask('changeModemConfigManagement');
-    PackXdslModemMediator.disableCapabilities();
+    TucPackXdslModemMediator.setTask('changeModemConfigManagement');
+    TucPackXdslModemMediator.disableCapabilities();
     return OvhApiXdsl.Modem().v6().update(
       {
         xdslId: $stateParams.serviceName,
       },
       {
-        managedByOvh: PackXdslModemMediator.info.managedByOvh,
+        managedByOvh: TucPackXdslModemMediator.info.managedByOvh,
       },
     ).$promise.then((data) => {
-      if (PackXdslModemMediator.info.managedByOvh) {
-        Toast.success($translate.instant('xdsl_modem_managedBy_success_validation_on'));
+      if (TucPackXdslModemMediator.info.managedByOvh) {
+        TucToast.success($translate.instant('xdsl_modem_managedBy_success_validation_on'));
       } else {
-        Toast.success($translate.instant('xdsl_modem_managedBy_success_validation_off'));
+        TucToast.success($translate.instant('xdsl_modem_managedBy_success_validation_off'));
       }
       return data;
     }).catch((err) => {
       self.undo();
-      Toast.error($translate.instant('xdsl_modem_managedBy_an_error_ocurred'));
+      TucToast.error($translate.instant('xdsl_modem_managedBy_an_error_ocurred'));
       return $q.reject(err);
     }).finally(() => {
       self.updating = false;

@@ -5,7 +5,7 @@
             data-translate="telephony_service_consumption_outgoing_all">
         </h2>
 
-        <toast-message></toast-message>
+        <tuc-toast-message></tuc-toast-message>
 
         <p data-translate="telephony_service_consumption_outgoing_period"
            data-translate-values="{
@@ -81,7 +81,7 @@
 
             <oui-column data-title="'telephony_service_consumption_dialed' | translate"
                         data-property="dialed" data-sortable>
-                <span data-ng-bind="::$row.dialed | phoneNumber"></span>
+                <span data-ng-bind="::$row.dialed | tucPhoneNumber"></span>
             </oui-column>
 
             <oui-column data-title="'telephony_service_consumption_duration' | translate"

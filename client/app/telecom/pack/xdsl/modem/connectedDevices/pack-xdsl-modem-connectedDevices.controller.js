@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('XdslModemConnectedDevicesCtrl', function ($scope, $stateParams, $q, $translate, OvhApiXdsl, Toast, PackXdslModemMediator) {
+angular.module('managerApp').controller('XdslModemConnectedDevicesCtrl', function ($scope, $stateParams, $q, $translate, OvhApiXdsl, TucToast, TucPackXdslModemMediator) {
   const self = this;
   self.devices = [];
 
@@ -60,7 +60,7 @@ angular.module('managerApp').controller('XdslModemConnectedDevicesCtrl', functio
       self.devices = data;
       return data;
     }).catch((err) => {
-      Toast.error($translate.instant('xdsl_modem_connected_list_error'));
+      TucToast.error($translate.instant('xdsl_modem_connected_list_error'));
       return $q.reject(err);
     });
   };
@@ -71,14 +71,14 @@ angular.module('managerApp').controller('XdslModemConnectedDevicesCtrl', functio
   self.refresh = function () {
     this.devices = null;
     this.loading = true;
-    PackXdslModemMediator.disableCapabilities();
+    TucPackXdslModemMediator.disableCapabilities();
     return OvhApiXdsl.Modem().ConnectedDevices().Aapi().refresh({
       xdslId: $stateParams.serviceName,
     }).$promise.then((data) => {
       self.devices = data;
       return data;
     }).catch((err) => {
-      Toast.error($translate.instant('xdsl_modem_refresh_error'));
+      TucToast.error($translate.instant('xdsl_modem_refresh_error'));
       return $q.reject(err);
     }).finally(() => {
       self.loading = false;

@@ -40,7 +40,7 @@
                     <!-- SEARCH RESULTS -->
                     <div class="section-group"
                          data-ng-repeat="group in $ctrl.groupList track by $index">
-                        <div data-ng-repeat="service in group.getAllServices() | filter:$ctrl.excludeFilter | filter:$ctrl.availableFilter | propsFilter: { serviceName: $ctrl.search, description: $ctrl.search } track by $index">
+                        <div data-ng-repeat="service in group.getAllServices() | filter:$ctrl.excludeFilter | filter:$ctrl.availableFilter | tucPropsFilter: { serviceName: $ctrl.search, description: $ctrl.search } track by $index">
                             <div class="group-title text-capitalize"
                                  data-ng-if="$index === 0">
                                 <span data-ng-bind="group.getDisplayedName()"></span>

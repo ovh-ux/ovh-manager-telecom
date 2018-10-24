@@ -11,7 +11,7 @@ angular.module('managerApp').component('telecomTelephonyAliasMembers', {
     api: '=',
   },
   templateUrl: 'components/telecom/telephony/alias/members/telecom-telephony-alias-members.html',
-  controller($q, $translate, $translatePartialLoader, Toast, ToastError) {
+  controller($q, $translate, $translatePartialLoader, TucToast, TucToastError) {
     const self = this;
 
     self.$onInit = function () {
@@ -35,7 +35,7 @@ angular.module('managerApp').component('telecomTelephonyAliasMembers', {
       $translatePartialLoader.addPart('../components/telecom/telephony/alias/members');
       return $translate.refresh().finally(() => {
         self.isInitialized = true;
-        return self.refreshMembers().catch(err => new ToastError(err)).finally(() => {
+        return self.refreshMembers().catch(err => new TucToastError(err)).finally(() => {
           self.loaders.init = false;
         });
       });
@@ -60,7 +60,7 @@ angular.module('managerApp').component('telecomTelephonyAliasMembers', {
         .then(members => self.api.reorderMembers(members)).then((orderedMembers) => {
           self.members = orderedMembers;
         })
-        .catch(err => new ToastError(err))
+        .catch(err => new TucToastError(err))
         .finally(() => {
           self.loaders.init = true;
         });
@@ -101,7 +101,7 @@ angular.module('managerApp').component('telecomTelephonyAliasMembers', {
           _.set(fromMember, 'position', fromPos);
           _.set(toMember, 'position', toPos);
           self.members = _.sortBy(self.members, 'position');
-          return new ToastError(err);
+          return new TucToastError(err);
         })
         .finally(() => {
           self.sortableMembersOpts.disabled = false;
@@ -134,11 +134,11 @@ angular.module('managerApp').component('telecomTelephonyAliasMembers', {
       self.loaders.editing = true;
       const attrs = ['status', 'timeout', 'wrapUpTime', 'simultaneousLines'];
       return self.api.updateMember(self.memberInEdition).then(() => {
-        Toast.success($translate.instant('telephony_alias_members_change_success'));
+        TucToast.success($translate.instant('telephony_alias_members_change_success'));
         const toUpdate = _.find(self.members, { agentId: self.memberInEdition.agentId });
         _.assign(toUpdate, _.pick(self.memberInEdition, attrs));
         self.cancelMemberEdition();
-      }).catch(err => new ToastError(err)).finally(() => {
+      }).catch(err => new TucToastError(err)).finally(() => {
         self.loaders.editing = false;
       });
     };
@@ -147,12 +147,12 @@ angular.module('managerApp').component('telecomTelephonyAliasMembers', {
       self.loaders.deleting = true;
       self.api.deleteMember(self.memberToDelete).then(() => {
         self.memberToDelete = null;
-        Toast.success($translate.instant('telephony_alias_members_delete_success'));
+        TucToast.success($translate.instant('telephony_alias_members_delete_success'));
         _.remove(self.members, m => m.agentId === toDelete.agentId);
         return self.api.reorderMembers(self.members);
       }).then((orderedMembers) => {
         self.members = orderedMembers;
-      }).catch(err => new ToastError(err))
+      }).catch(err => new TucToastError(err))
         .finally(() => {
           self.loaders.deleting = false;
         });

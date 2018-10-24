@@ -57,11 +57,11 @@
                                 <td class="table-comparison__cell table-comparison__cell--border table-comparison__value table-comparison--item-base"
                                     data-translate-attr="{ 'data-title' : 'telecom_pack_migration_current_offer' }"
                                     data-translate-values="{ offerName : OffersCtrl.process.pack.offerDescription }"
-                                    data-ng-bind-html="OffersCtrl.process.pack.offerPrice.text | formatPrice"></td>
+                                    data-ng-bind-html="OffersCtrl.process.pack.offerPrice.text | tucFormatPrice"></td>
                                 <td class="table-comparison__cell table-comparison__cell--border table-comparison__value"
                                     data-title="{{ offer.description }}"
                                     data-ng-repeat="offer in OffersCtrl.process.migrationOffers.result.offers track by $index"
-                                    data-ng-bind-html="offer.displayedPrice.text | formatPrice">
+                                    data-ng-bind-html="offer.displayedPrice.text | tucFormatPrice">
                                 </td>
                             </tr>
                             <tr class="table-comparison__property">
@@ -152,7 +152,7 @@
                                             </input-number-spinner>
                                             <small class="d-block mt-2"
                                                    data-ng-init="offer.options.voip_line.formatPriceOptions = { withoutTax : true, addBrackets : true, additionalText : ('telecom_pack_migration_line_additional_text' | translate ) }"
-                                                   data-ng-bind-html="offer.options.voip_line.optionalPrice.text | formatPrice:offer.options.voip_line.formatPriceOptions">
+                                                   data-ng-bind-html="offer.options.voip_line.optionalPrice.text | tucFormatPrice:offer.options.voip_line.formatPriceOptions">
                                             </small>
                                         </div>
                                     </div>
@@ -206,7 +206,7 @@
                                             </input-number-spinner>
                                             <small class="d-block mt-2"
                                                    data-ng-init="offer.options.exchange_account.formatPriceOptions = { withoutTax : true, addBrackets : true, additionalText : ('telecom_pack_migration_account_additional_text' | translate ) }"
-                                                   data-ng-bind-html="offer.options.exchange_account.optionalPrice.text | formatPrice:offer.options.exchange_account.formatPriceOptions">
+                                                   data-ng-bind-html="offer.options.exchange_account.optionalPrice.text | tucFormatPrice:offer.options.exchange_account.formatPriceOptions">
                                             </small>
                                         </div>
                                     </div>
@@ -300,7 +300,7 @@
                                             </input-number-spinner>
                                             <small class="d-block mt-2"
                                                    data-ng-init="offer.options.voip_ecofax.formatPriceOptions = { withoutTax : true, addBrackets : true, additionalText : ('telecom_pack_migration_line_additional_text' | translate ) }"
-                                                   data-ng-bind-html="offer.options.voip_ecofax.optionalPrice.text | formatPrice:offer.options.voip_ecofax.formatPriceOptions">
+                                                   data-ng-bind-html="offer.options.voip_ecofax.optionalPrice.text | tucFormatPrice:offer.options.voip_ecofax.formatPriceOptions">
                                             </small>
                                         </div>
                                     </div>
@@ -355,7 +355,7 @@
                                             </input-number-spinner>
                                             <small class="d-block mt-2"
                                                   data-ng-init="offer.options.dom1.formatPriceOptions = { withoutTax : true, addBrackets : true, additionalText : ('telecom_pack_migration_domain_additional_text' | translate ) }"
-                                                  data-ng-bind-html="offer.options.dom1.optionalPrice.text | formatPrice:offer.options.dom1.formatPriceOptions">
+                                                  data-ng-bind-html="offer.options.dom1.optionalPrice.text | tucFormatPrice:offer.options.dom1.formatPriceOptions">
                                             </small>
                                         </div>
                                     </div>
@@ -393,7 +393,7 @@
                                             </div>
                                             <small class="d-block align-middle">
                                                 <span data-translate="telecom_pack_migration_gtr_add"></span>
-                                                <span data-ng-bind-html="offer.options.gtr_ovh.optionalPrice.text | formatPrice:{ addBrackets : true }"></span>
+                                                <span data-ng-bind-html="offer.options.gtr_ovh.optionalPrice.text | tucFormatPrice:{ addBrackets : true }"></span>
                                             </small>
                                         </label>
                                     </div>

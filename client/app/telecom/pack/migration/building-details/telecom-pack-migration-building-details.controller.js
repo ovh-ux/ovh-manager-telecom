@@ -1,7 +1,7 @@
 angular.module('managerApp').controller('TelecomPackMigrationBuildingDetailsCtrl', class TelecomPackMigrationBuildingDetailsCtrl {
-  constructor($translate, PackMigrationProcess, OvhApiConnectivityEligibility) {
+  constructor($translate, TucPackMigrationProcess, OvhApiConnectivityEligibility) {
     this.$translate = $translate;
-    this.PackMigrationProcess = PackMigrationProcess;
+    this.TucPackMigrationProcess = TucPackMigrationProcess;
     this.OvhApiConnectivityEligibility = OvhApiConnectivityEligibility;
   }
 
@@ -20,7 +20,7 @@ angular.module('managerApp').controller('TelecomPackMigrationBuildingDetailsCtrl
       selectedFloor: null,
     };
 
-    this.process = this.PackMigrationProcess.getMigrationProcess();
+    this.process = this.TucPackMigrationProcess.getMigrationProcess();
 
     this.process.selectedOffer.buildings.forEach((building, i) => {
       // check if the building name is empty to set a name to display in the select component
@@ -52,7 +52,7 @@ angular.module('managerApp').controller('TelecomPackMigrationBuildingDetailsCtrl
   =============================== */
 
   cancelMigration() {
-    this.PackMigrationProcess.cancelMigration();
+    this.TucPackMigrationProcess.cancelMigration();
   }
 
   nextStep() {

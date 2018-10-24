@@ -2,7 +2,7 @@ angular.module('managerApp').controller('XdslAccessCtrl', class XdslAccessCtrl {
   constructor(
     $filter, $q, $scope, $stateParams, $templateCache, $translate, $uibModal,
     OvhApiPackXdsl, OvhApiXdsl, OvhApiXdslIps, OvhApiXdslLines, OvhApiXdslModem,
-    OvhApiXdslNotifications, OvhApiXdslTasksCurrent, Toast, ToastError,
+    OvhApiXdslNotifications, OvhApiXdslTasksCurrent, TucToast, TucToastError,
     PACK, PACK_IP, REDIRECT_URLS,
   ) {
     this.$filter = $filter;
@@ -19,8 +19,8 @@ angular.module('managerApp').controller('XdslAccessCtrl', class XdslAccessCtrl {
     this.OvhApiXdslModem = OvhApiXdslModem;
     this.OvhApiXdslNotifications = OvhApiXdslNotifications;
     this.OvhApiXdslTasksCurrent = OvhApiXdslTasksCurrent;
-    this.Toast = Toast;
-    this.ToastError = ToastError;
+    this.TucToast = TucToast;
+    this.TucToastError = TucToastError;
     this.PACK = PACK;
     this.PACK_IP = PACK_IP;
     this.REDIRECT_URLS = REDIRECT_URLS;
@@ -97,7 +97,7 @@ angular.module('managerApp').controller('XdslAccessCtrl', class XdslAccessCtrl {
 
   error(err) {
     if (!_.isEmpty(err)) {
-      this.ToastError(err);
+      this.TucToastError(err);
     }
     this.$scope.loaders.tasks = false;
   }
@@ -142,7 +142,7 @@ angular.module('managerApp').controller('XdslAccessCtrl', class XdslAccessCtrl {
           return `${this.ip}/${this.range}`;
         };
       });
-    }, this.ToastError);
+    }, this.TucToastError);
   }
 
   hasPendingOrderAdditionalIpOption() {
@@ -180,10 +180,10 @@ angular.module('managerApp').controller('XdslAccessCtrl', class XdslAccessCtrl {
     }, null).$promise.then(() => {
       this.getIps();
       _.set(ip, 'deleting', false);
-      this.Toast.success(this.$translate.instant('xdsl_access_ip_block_delete_success', { ip: ip.ip }));
+      this.TucToast.success(this.$translate.instant('xdsl_access_ip_block_delete_success', { ip: ip.ip }));
     }, (err) => {
       _.set(ip, 'deleting', false);
-      this.ToastError(err);
+      this.TucToastError(err);
     });
   }
 
@@ -209,7 +209,7 @@ angular.module('managerApp').controller('XdslAccessCtrl', class XdslAccessCtrl {
         return this.$scope.access.xdsl;
       }, (err) => {
         this.$scope.loaders.xdsl = false;
-        return this.ToastError(err);
+        return this.TucToastError(err);
       }),
 
       // Get line details
@@ -222,7 +222,7 @@ angular.module('managerApp').controller('XdslAccessCtrl', class XdslAccessCtrl {
         this.$scope.loaders.deconsolidation = false;
       }, (err) => {
         this.$scope.loaders.deconsolidation = false;
-        return this.ToastError.constructor(err);
+        return this.TucToastError.constructor(err);
       }),
 
       // Get MAC Address
@@ -234,7 +234,7 @@ angular.module('managerApp').controller('XdslAccessCtrl', class XdslAccessCtrl {
         if (err.status === 404) {
           return;
         }
-        this.ToastError(err);
+        this.TucToastError(err);
       }),
 
       this.getIps(),
@@ -244,7 +244,7 @@ angular.module('managerApp').controller('XdslAccessCtrl', class XdslAccessCtrl {
         xdslId: this.$stateParams.serviceName,
       }).$promise.then((ids) => {
         this.$scope.access.notificationsCount = ids.length;
-      }, this.ToastError),
+      }, this.TucToastError),
 
       // Get Order
       this.OvhApiXdsl.v6().getOrder({
@@ -259,7 +259,7 @@ angular.module('managerApp').controller('XdslAccessCtrl', class XdslAccessCtrl {
         if (this.actualOrder.doneDate) {
           this.actualOrder.doneDateLocale = new Date(this.actualOrder.doneDate).toLocaleString();
         }
-      }, this.ToastError),
+      }, this.TucToastError),
 
       this.OvhApiPackXdsl.Task().v6().query({
         packName: this.packName,

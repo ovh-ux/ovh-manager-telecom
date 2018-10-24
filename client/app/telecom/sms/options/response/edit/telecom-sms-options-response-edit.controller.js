@@ -3,7 +3,7 @@ angular
   .controller('TelecomSmsOptionsResponseEditCtrl', class TelecomSmsOptionsResponseEditCtrl {
     constructor(
       $q, $stateParams, $timeout, $uibModalInstance,
-      OvhApiSms, TucSmsMediator, service, senders, index, option, ToastError,
+      OvhApiSms, TucSmsMediator, service, senders, index, option, TucToastError,
     ) {
       this.$q = $q;
       this.$stateParams = $stateParams;
@@ -17,7 +17,7 @@ angular
       this.senders = senders;
       this.index = index;
       this.option = option;
-      this.ToastError = ToastError;
+      this.TucToastError = TucToastError;
     }
 
     $onInit() {
@@ -44,7 +44,7 @@ angular
           this.trackingOptions.media = this.model.option.media;
           this.trackingSender.sender = this.model.option.sender;
         })).catch((err) => {
-          this.ToastError(err);
+          this.TucToastError(err);
         }).finally(() => {
           this.loading.init = false;
         });
@@ -61,24 +61,22 @@ angular
         target: this.model.option.target,
       };
       this.loading.editTrackingOption = true;
-      return this.$q.all([
-        this.api.sms.edit({
-          serviceName: this.$stateParams.serviceName,
-        }, {
-          smsResponse: {
-            trackingOptions: this.model.service.smsResponse.trackingOptions,
-            responseType: this.model.service.smsResponse.responseType,
-          },
-        }).$promise,
-        this.$timeout(angular.noop, 1000),
-      ]).then(() => {
-        this.loading.editTrackingOption = false;
-        this.edited = true;
-        return this.$timeout(() => this.close(), 1000);
-      }).catch(error => this.cancel({
-        type: 'API',
-        msg: error,
-      }));
+      return this.api.sms.edit({
+        serviceName: this.$stateParams.serviceName,
+      }, {
+        smsResponse: {
+          trackingOptions: this.model.service.smsResponse.trackingOptions,
+          responseType: this.model.service.smsResponse.responseType,
+        },
+      }).$promise
+        .then(() => {
+          this.loading.editTrackingOption = false;
+          this.edited = true;
+          return this.$timeout(() => this.close(), 1000);
+        }).catch(error => this.cancel({
+          type: 'API',
+          msg: error,
+        }));
     }
 
     /**

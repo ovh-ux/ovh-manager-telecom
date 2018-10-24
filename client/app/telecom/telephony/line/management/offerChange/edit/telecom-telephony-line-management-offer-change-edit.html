@@ -39,7 +39,7 @@
 
             <dl data-ng-if="OfferChangeEditCtrl.model.offer">
                 <dt data-translate="telephony_line_management_change_offer_change_edit_selected_price"></dt>
-                <dd data-ng-bind-html="OfferChangeEditCtrl.model.offer.price.text | formatPrice"></dd>
+                <dd data-ng-bind-html="OfferChangeEditCtrl.model.offer.price.text | tucFormatPrice"></dd>
 
                 <dt data-translate="telephony_line_management_change_offer_change_edit_selected_date"></dt>
                 <dd data-ng-bind="OfferChangeEditCtrl.line.nextBill | date:'shortDate'"></dd>

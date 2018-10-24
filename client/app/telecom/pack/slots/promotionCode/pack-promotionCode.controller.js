@@ -4,7 +4,7 @@
  * @description
  * Promotion Code controller
  */
-angular.module('managerApp').controller('PromotionCodeCtrl', function ($scope, $rootScope, $stateParams, $translate, $uibModal, OvhApiPackXdslPromotionCode, ToastError) {
+angular.module('managerApp').controller('PromotionCodeCtrl', function ($scope, $rootScope, $stateParams, $translate, $uibModal, OvhApiPackXdslPromotionCode, TucToastError) {
   const self = this;
 
   $scope.$watch('service', (val) => {
@@ -51,6 +51,6 @@ angular.module('managerApp').controller('PromotionCodeCtrl', function ($scope, $
       packId: $stateParams.packName,
     }, null).$promise.then(() => {
       $rootScope.$broadcast('reload-frames');
-    }, ToastError);
+    }, TucToastError);
   };
 });

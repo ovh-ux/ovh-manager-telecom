@@ -1,7 +1,7 @@
 angular.module('managerApp').controller('PackEmailProDetailCtrl', class PackEmailProDetailCtrl {
   constructor(
     $http, $q, $stateParams, $state, $translate,
-    OvhApiPackXdsl, OvhApiXdsl, PACK_EMAILPRO, Toast, URLS,
+    OvhApiPackXdsl, OvhApiXdsl, PACK_EMAILPRO, TucToast, URLS,
   ) {
     this.$http = $http;
     this.$q = $q;
@@ -12,7 +12,7 @@ angular.module('managerApp').controller('PackEmailProDetailCtrl', class PackEmai
     this.OvhApiXdsl = OvhApiXdsl;
     this.PACK_EMAILPRO = PACK_EMAILPRO;
     this.URLS = URLS;
-    this.Toast = Toast;
+    this.TucToast = TucToast;
   }
 
   $onInit() {
@@ -29,7 +29,7 @@ angular.module('managerApp').controller('PackEmailProDetailCtrl', class PackEmai
         this.getAccount(),
         this.loadPackInfo(),
       ])
-      .catch(() => this.$state.go('telecom.pack').then(() => this.Toast.error(this.$translate.instant('email_pro_detail_loading_error'))))
+      .catch(() => this.$state.go('telecom.pack').then(() => this.TucToast.error(this.$translate.instant('email_pro_detail_loading_error'))))
       .finally(() => {
         this.loading = false;
       });
@@ -69,9 +69,9 @@ angular.module('managerApp').controller('PackEmailProDetailCtrl', class PackEmai
       password: this.password,
     }).$promise
       .then(() => this.$state.go('telecom.pack'))
-      .then(() => this.Toast.success(this.$translate.instant('email_pro_detail_change_password_success', { email: this.$stateParams.serviceName })))
+      .then(() => this.TucToast.success(this.$translate.instant('email_pro_detail_change_password_success', { email: this.$stateParams.serviceName })))
       .catch((error) => {
-        this.Toast.error(this.$translate.instant('email_pro_detail_change_password_error'));
+        this.TucToast.error(this.$translate.instant('email_pro_detail_change_password_error'));
         return this.$q.reject(error);
       })
       .finally(() => {
@@ -85,9 +85,9 @@ angular.module('managerApp').controller('PackEmailProDetailCtrl', class PackEmai
     return this.OvhApiXdsl.Email().Pro().v6().delete({ email: this.$stateParams.serviceName })
       .$promise
       .then(() => this.$state.go('telecom.pack'))
-      .then(() => this.Toast.success(this.$translate.instant('email_pro_detail_client_delete_account_success', { email: this.$stateParams.serviceName })))
+      .then(() => this.TucToast.success(this.$translate.instant('email_pro_detail_client_delete_account_success', { email: this.$stateParams.serviceName })))
       .catch((error) => {
-        this.Toast.error(this.$translate.instant('email_pro_detail_client_delete_account_error'));
+        this.TucToast.error(this.$translate.instant('email_pro_detail_client_delete_account_error'));
         return this.$q.reject(error);
       })
       .finally(() => {

@@ -13,7 +13,7 @@
     },
     Anchors: ['Center'],
     MaxConnections: -1,
-    Connector: ['TwoSegments', { radius: 30 }],
+    Connector: ['TucTwoSegments', { radius: 30 }],
   }).constant('TELEPHONY_NUMBER_JSPLUMB_ENDPOINTS_OPTIONS', {
     topLeft: {
       anchor: [0.5, 0.5, -1, -1],

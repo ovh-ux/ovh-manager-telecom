@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyLinePhoneProgammableKeysCtrl', function ($translate, TelephonyMediator, $stateParams, $uibModal, Toast, OvhApiTelephony, telephonyBulk, voipLinePhoneFunction) {
+angular.module('managerApp').controller('TelecomTelephonyLinePhoneProgammableKeysCtrl', function ($translate, TelephonyMediator, $stateParams, $uibModal, TucToast, OvhApiTelephony, telephonyBulk, voipLinePhoneFunction) {
   const self = this;
 
   self.loading = {
@@ -37,7 +37,7 @@ angular.module('managerApp').controller('TelecomTelephonyLinePhoneProgammableKey
 
     modal.result.then(() => self.getPhone(), (error) => {
       if (error && error.type === 'API') {
-        Toast.error($translate.instant('telephony_line_phone_programmableKeys_save_error', { error: error.msg }));
+        TucToast.error($translate.instant('telephony_line_phone_programmableKeys_save_error', { error: error.msg }));
       }
       return self.getPhone();
     });
@@ -131,14 +131,14 @@ angular.module('managerApp').controller('TelecomTelephonyLinePhoneProgammableKey
     }
 
     // display message of success or error
-    telephonyBulk.getToastInfos(bulkResult, {
+    telephonyBulk.getTucToastInfos(bulkResult, {
       fullSuccess: $translate.instant('telephony_line_phone_programmableKeys_bulk_all_success'),
       partialSuccess: $translate.instant('telephony_line_phone_programmableKeys_bulk_some_success', {
         count: bulkResult.success.length,
       }),
       error: $translate.instant('telephony_line_phone_programmableKeys_bulk_error'),
     }, true).forEach((toastInfo) => {
-      Toast[toastInfo.type](toastInfo.message, {
+      TucToast[toastInfo.type](toastInfo.message, {
         hideAfter: null,
       });
     });
@@ -149,7 +149,7 @@ angular.module('managerApp').controller('TelecomTelephonyLinePhoneProgammableKey
   };
 
   self.onBulkError = function (error) {
-    Toast.error([$translate.instant('telephony_line_phone_programmableKeys_bulk_on_error'), _.get(error, 'msg.data')].join(' '));
+    TucToast.error([$translate.instant('telephony_line_phone_programmableKeys_bulk_on_error'), _.get(error, 'msg.data')].join(' '));
   };
 
   /* -----  End of BULK  ------ */

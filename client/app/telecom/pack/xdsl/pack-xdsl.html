@@ -9,14 +9,14 @@
         <header class="page-header"
                 role="banner"
                 data-ng-if="!PackXdslCtrl.loading.init">
-            <section-back-link data-ng-if="PackXdslCtrl.content.back.state && PackXdslCtrl.content.status === 'active'"
+            <tuc-section-back-link data-ng-if="PackXdslCtrl.content.back.state && PackXdslCtrl.content.status === 'active'"
                                data-ng-click="PackXdslCtrl.backState()"
-                               section-back-link-title="{{ PackXdslCtrl.pack.general.description || PackXdslCtrl.pack.general.packName || PackXdslCtrl.access.description || PackXdslCtrl.access.accessName }}"></section-back-link>
+                               data-tuc-section-back-link-title="{{ PackXdslCtrl.pack.general.description || PackXdslCtrl.pack.general.packName || PackXdslCtrl.access.description || PackXdslCtrl.access.accessName }}"></tuc-section-back-link>
             <!-- ACCESS TITLE -->
-            <editable-service-name data-editable-service-name-title="PackXdslCtrl.access.description || PackXdslCtrl.access.accessName"
-                                   data-editable-service-name-service-name="PackXdslCtrl.access.accessName"
-                                   data-editable-service-name-title-on-save="PackXdslCtrl.accessDescriptionSave">
-            </editable-service-name>
+            <tuc-editable-service-name data-tuc-editable-service-name-title="PackXdslCtrl.access.description || PackXdslCtrl.access.accessName"
+                                   data-tuc-editable-service-name-service-name="PackXdslCtrl.access.accessName"
+                                   data-tuc-editable-service-name-title-on-save="PackXdslCtrl.accessDescriptionSave">
+            </tuc-editable-service-name>
         </header>
 
         <nav role="navigation">
@@ -45,7 +45,7 @@
 
     </div><!-- .telecom-section-header -->
 
-    <toast-message></toast-message>
+    <tuc-toast-message></tuc-toast-message>
 
     <div class="telecom-section-content ui-view-container"
          data-ng-class="PackXdslCtrl.content.back.class"

@@ -11,11 +11,11 @@
         <!-- TITLE -->
         <header class="page-header"
                 role="banner">
-            <editable-service-name data-editable-service-name-title="TelecomSmsCtrl.service.getDisplayedName()"
-                                   data-editable-service-name-title-on-save="TelecomSmsCtrl.serviceNameSave"
-                                   data-editable-service-name-service-name="TelecomSmsCtrl.service.name"
+            <tuc-editable-service-name data-tuc-editable-service-name-title="TelecomSmsCtrl.service.getDisplayedName()"
+                                   data-tuc-editable-service-name-title-on-save="TelecomSmsCtrl.serviceNameSave"
+                                   data-tuc-editable-service-name-service-name="TelecomSmsCtrl.service.name"
                                    data-maxlength="25">
-            </editable-service-name>
+            </tuc-editable-service-name>
         </header>
 
         <nav role="navigation">
@@ -71,7 +71,7 @@
     <!-- .telecom-section-header -->
 
     <main class="telecom-section-content" role="main">
-          <toast-message></toast-message>
+          <tuc-toast-message></tuc-toast-message>
           <div data-ng-if="!TelecomSmsCtrl.loading.init"
                data-ui-view="smsInnerView">
           </div>

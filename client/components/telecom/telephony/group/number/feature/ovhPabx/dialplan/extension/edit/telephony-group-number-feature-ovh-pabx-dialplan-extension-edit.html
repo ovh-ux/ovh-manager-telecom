@@ -1,7 +1,7 @@
 <div data-ng-controller="telephonyNumberOvhPabxDialplanExtensionEditCtrl as $ctrl"
      class="telephony-number-ovh-pabx-extension-edit popover-pages"
      data-ng-form="extensionConditionsForm"
-     data-hide-outside-click="$ctrl.onCancelBtnClick()">
+     data-tuc-hide-outside-click="$ctrl.onCancelBtnClick()">
 
     <div class="popover-pages-wrapper"
          data-ng-class="{ move: $ctrl.parentCtrl.popoverStatus.move }">
@@ -85,7 +85,7 @@
 
                         <span class="d-block elipse no-wrap"
                               data-ng-if="$ctrl.extension.screenListType">
-                            <span data-translate="{{ 'telephony_number_feature_ovh_pabx_step_conditions_screen_list_type_' + ($ctrl.extension.screenListType | snakeCase) }}"></span>
+                            <span data-translate="{{ 'telephony_number_feature_ovh_pabx_step_conditions_screen_list_type_' + ($ctrl.extension.screenListType | tucSnakeCase) }}"></span>
                             <span data-ng-if="$ctrl.getScreenListConditionList().length">
                                 -
                                 <span data-translate="telephony_number_feature_ovh_pabx_step_conditions_screen_list_number_count"
@@ -390,7 +390,7 @@
                                 name="screenListTypeSelect"
                                 id="screenListTypeSelect"
                                 data-ng-model="$ctrl.extension.screenListType"
-                                data-ng-options="type as ('telephony_number_feature_ovh_pabx_step_conditions_screen_list_type_' + (type | snakeCase) | translate) for type in $ctrl.screenListTypes">
+                                data-ng-options="type as ('telephony_number_feature_ovh_pabx_step_conditions_screen_list_type_' + (type | tucSnakeCase) | translate) for type in $ctrl.screenListTypes">
                             <option data-ng-value="null"
                                     data-translate="telephony_number_feature_ovh_pabx_step_no_conditions">
                             </option>

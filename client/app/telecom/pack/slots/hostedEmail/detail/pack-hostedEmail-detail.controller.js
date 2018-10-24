@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('PackHostedEmailDetailCtrl', function ($q, $stateParams, $state, $http, $translate, Toast, OvhApiPackXdsl) {
+angular.module('managerApp').controller('PackHostedEmailDetailCtrl', function ($q, $stateParams, $state, $http, $translate, TucToast, OvhApiPackXdsl) {
   const self = this;
 
   self.askForDelete = false;
@@ -51,7 +51,7 @@ angular.module('managerApp').controller('PackHostedEmailDetailCtrl', function ($
       serviceType: 'ws',
     }).then((response) => {
       if (_.get(response, 'data.error')) {
-        Toast.error($translate.instant('hosted_email_detail_loading_error'));
+        TucToast.error($translate.instant('hosted_email_detail_loading_error'));
         return $q.reject();
       }
       self.configuration = _.get(response, 'data.answer');
@@ -70,7 +70,7 @@ angular.module('managerApp').controller('PackHostedEmailDetailCtrl', function ($
       };
       return self.configuration;
     }).catch((err) => {
-      Toast.error($translate.instant('hosted_email_detail_loading_error'));
+      TucToast.error($translate.instant('hosted_email_detail_loading_error'));
       return $q.reject(err);
     });
   };
@@ -89,7 +89,7 @@ angular.module('managerApp').controller('PackHostedEmailDetailCtrl', function ($
       serviceType: 'ws',
     }).then((response) => {
       if (_.get(response, 'data.error')) {
-        Toast.error($translate.instant('hosted_email_detail_loading_error'));
+        TucToast.error($translate.instant('hosted_email_detail_loading_error'));
         return $q.reject();
       }
       self.account = _.get(response, 'data.answer');
@@ -97,7 +97,7 @@ angular.module('managerApp').controller('PackHostedEmailDetailCtrl', function ($
       self.account.size = toHuman(self.account.size);
       return self.account;
     }).catch((err) => {
-      Toast.error($translate.instant('hosted_email_detail_loading_error'));
+      TucToast.error($translate.instant('hosted_email_detail_loading_error'));
       return $q.reject(err);
     });
   };
@@ -118,14 +118,14 @@ angular.module('managerApp').controller('PackHostedEmailDetailCtrl', function ($
       serviceType: 'ws',
     }).then((response) => {
       if (_.get(response, 'data.answer.status') === 'done') {
-        Toast.success($translate.instant('hosted_email_detail_change_password_success', { email: $stateParams.serviceName }));
+        TucToast.success($translate.instant('hosted_email_detail_change_password_success', { email: $stateParams.serviceName }));
         return $state.go('telecom.pack');
       }
       const msg = _.get(response, 'data.error.message') || '';
-      Toast.error([$translate.instant('hosted_email_detail_change_password_error'), msg].join(' '));
+      TucToast.error([$translate.instant('hosted_email_detail_change_password_error'), msg].join(' '));
       return $q.reject(response.data);
     }).catch((err) => {
-      Toast.error($translate.instant('hosted_email_detail_change_password_error'));
+      TucToast.error($translate.instant('hosted_email_detail_change_password_error'));
       return $q.reject(err);
     }).finally(() => {
       self.changingPassword = false;
@@ -151,13 +151,13 @@ angular.module('managerApp').controller('PackHostedEmailDetailCtrl', function ($
       serviceType: 'ws',
     }).then((response) => {
       if (_.get(response, 'data.answer.status') === 'done' || _.get(response, 'data.answer.status') === 'pending') {
-        Toast.success($translate.instant('hosted_email_detail_client_delete_account_success', { email: $stateParams.serviceName }));
+        TucToast.success($translate.instant('hosted_email_detail_client_delete_account_success', { email: $stateParams.serviceName }));
         return $state.go('telecom.pack');
       }
       const msg = _.get(response, 'data.error.message') || '';
-      return Toast.error([$translate.instant('hosted_email_detail_client_delete_account_error'), msg].join(' '));
+      return TucToast.error([$translate.instant('hosted_email_detail_client_delete_account_error'), msg].join(' '));
     }).catch((err) => {
-      Toast.error($translate.instant('hosted_email_detail_client_delete_account_error'));
+      TucToast.error($translate.instant('hosted_email_detail_client_delete_account_error'));
       return $q.reject(err);
     }).finally(() => {
       self.accountDeleting = false;

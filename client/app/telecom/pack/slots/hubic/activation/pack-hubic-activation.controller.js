@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('PackHubicActivationCtrl', function ($scope, $stateParams, OvhApiPackXdslHubic, ToastError) {
+angular.module('managerApp').controller('PackHubicActivationCtrl', function ($scope, $stateParams, OvhApiPackXdslHubic, TucToastError) {
   const self = this;
   self.hubicList = [];
 
@@ -7,7 +7,7 @@ angular.module('managerApp').controller('PackHubicActivationCtrl', function ($sc
       (data) => {
         self.hubicList = data;
       },
-      err => new ToastError(err),
+      err => new TucToastError(err),
     );
   };
 });

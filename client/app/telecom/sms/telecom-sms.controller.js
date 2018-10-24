@@ -1,11 +1,11 @@
 angular.module('managerApp').controller('TelecomSmsCtrl', class TelecomSmsCtrl {
-  constructor($q, $stateParams, $translate, SidebarMenu, TucSmsMediator, Toast) {
+  constructor($q, $stateParams, $translate, SidebarMenu, TucSmsMediator, TucToast) {
     this.$q = $q;
     this.$stateParams = $stateParams;
     this.$translate = $translate;
     this.SidebarMenu = SidebarMenu;
     this.TucSmsMediator = TucSmsMediator;
-    this.Toast = Toast;
+    this.TucToast = TucToast;
   }
 
   $onInit() {
@@ -20,7 +20,7 @@ angular.module('managerApp').controller('TelecomSmsCtrl', class TelecomSmsCtrl {
       this.service = this.TucSmsMediator.getCurrentSmsService();
       this.serviceNameSave = this.updateServiceNameSave.bind(this);
     }).catch((error) => {
-      this.Toast.error(`${this.$translate.instant('sms_loading_error', this.$stateParams.serviceNameSave)} ${_.get(error, 'data.message', '')}`);
+      this.TucToast.error(`${this.$translate.instant('sms_loading_error', this.$stateParams.serviceNameSave)} ${_.get(error, 'data.message', '')}`);
     }).finally(() => {
       this.loading.init = false;
     });
@@ -40,7 +40,7 @@ angular.module('managerApp').controller('TelecomSmsCtrl', class TelecomSmsCtrl {
         title: this.service.getDisplayedName(),
       }, this.service.name, 'telecom-sms-section');
     }).catch((error) => {
-      this.Toast.error(`${this.$translate.instant('sms_rename_error', this.$stateParams.serviceNameSave)} ${_.get(error, 'data.message', '')}`);
+      this.TucToast.error(`${this.$translate.instant('sms_rename_error', this.$stateParams.serviceNameSave)} ${_.get(error, 'data.message', '')}`);
       this.service.stopEdition(true);
       return this.$q.reject(error);
     });

@@ -5,8 +5,8 @@
 
     <div class="voip-plan"
          data-ng-if="!$ctrl.loading.init"
-         data-jsplumb="$ctrl.jsPlumbInstanceOptions"
-         data-jsplumb-instance="$ctrl.jsplumbInstance">
+         data-tuc-jsplumb="$ctrl.jsPlumbInstanceOptions"
+         data-tuc-jsplumb-instance="$ctrl.jsplumbInstance">
 
         <!-- HEADER -->
         <div class="number-header">
@@ -14,8 +14,8 @@
             <!-- INCOMING CALL -->
             <div class="voip-plan__step voip-plan__step--point">
                 <div class="voip-plan__start"
-                     data-jsplumb-endpoint
-                     data-jsplumb-endpoint-uuid="incoming-call-{{ $ctrl.number.serviceName }}">
+                     data-tuc-jsplumb-endpoint
+                     data-tuc-jsplumb-endpoint-uuid="incoming-call-{{ $ctrl.number.serviceName }}">
                 </div>
                 <h2 class="voip-plan__title" data-translate="telephony_number_incoming_calls"></h2>
             </div> <!-- INCOMING CALL -->
@@ -30,7 +30,7 @@
                           data-ng-bind="$ctrl.number.getDisplayedName()">
                     </span>
                     <span class="voip-plan__step-info"
-                          data-ng-bind="$ctrl.number.serviceName | phoneNumber">
+                          data-ng-bind="$ctrl.number.serviceName | tucPhoneNumber">
                     </span>
                 </div>
                 <!-- ONLY ONE ACTION => CHANGE FEATURE TYPE -->
