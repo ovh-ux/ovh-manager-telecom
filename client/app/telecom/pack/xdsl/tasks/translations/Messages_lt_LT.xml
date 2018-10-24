@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<translations>
+   <translation id="xdsl_tasks_list">Liste des tâches</translation>
+   <translation id="xdsl_tasks_name">Nom</translation>
+   <translation id="xdsl_tasks_id">ID</translation>
+   <translation id="xdsl_tasks_status">Statut</translation>
+   <translation id="xdsl_tasks_status_todo">A faire</translation>
+   <translation id="xdsl_tasks_status_doing">En cours</translation>
+   <translation id="xdsl_tasks_status_done">Terminée</translation>
+   <translation id="xdsl_tasks_status_error">Erreur</translation>
+   <translation id="xdsl_tasks_status_problem">Problème</translation>
+   <translation id="xdsl_no_task">Aucune tâche</translation>
+</translations>

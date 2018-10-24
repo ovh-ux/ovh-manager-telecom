@@ -4,6 +4,7 @@
    <translation id="xdsl_tabs_details" qtlid="26551">Tiedot</translation>
    <translation id="xdsl_tabs_modem" qtlid="309204">Oma modeemi</translation>
    <translation id="xdsl_tabs_line" qtlid="309217">Oma yhteys</translation>
+   <translation id="xdsl_tabs_tasks">Tâches</translation>
 
    <translation id="xdsl_rename_error" qtlid="332814">Yhteyden {{serviceName}} nimen muuttaminen ei onnistu.</translation>
 </translations>
