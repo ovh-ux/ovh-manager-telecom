@@ -56,7 +56,7 @@ export default angular
     tucTelecomV4Links,
     tucToaster,
     tucToastError,
-    tucUiSortableHelpers
+    tucUiSortableHelpers,
     tucUnitHumanize,
     tucValidator,
   ])
