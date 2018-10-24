@@ -20,6 +20,7 @@
    <translation id="telecom_dashboard_FAQ_Activate" qtlid="305018">Mano paslaugų aktyvavimas</translation>
    <translation id="telecom_dashboard_FAQ_managed_modem" qtlid="305031">Konfigūruoti modemą</translation>
    <translation id="telecom_dashboard_FAQ_init_modem" qtlid="305044">Atstatyti modemo parametrus</translation>
+   <translation id="telecom_dashboard_FAQ_restore_service">Rétablir mon service</translation>
    <translation id="telecom_dashboard_incident_impact" qtlid="305057">Aptiktas gedimas</translation>
 
    <translation id="telecom_dashboard_services_title" qtlid="305070">Mano paslaugos</translation>
