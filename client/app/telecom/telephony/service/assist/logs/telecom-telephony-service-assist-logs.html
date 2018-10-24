@@ -38,7 +38,7 @@
                     <div data-ng-if="!LogsCtrl.edition.mode">
                         <dl>
                             <dt data-translate="telephony_line_assist_support_logs_configs_frequency"></dt>
-                            <dd data-translate="{{ LogsCtrl.service.feature.notifications.logs ? (['telephony_line_assist_support_logs_configs_frequency', LogsCtrl.service.feature.notifications.logs.frequency].join('_') | snakeCase) : 'telephony_line_assist_support_logs_configs_frequency_never' }}"></dd>
+                            <dd data-translate="{{ LogsCtrl.service.feature.notifications.logs ? (['telephony_line_assist_support_logs_configs_frequency', LogsCtrl.service.feature.notifications.logs.frequency].join('_') | tucSnakeCase) : 'telephony_line_assist_support_logs_configs_frequency_never' }}"></dd>
 
                             <dt data-translate="telephony_line_assist_support_logs_configs_send_even_no_logs"
                                 data-ng-if="LogsCtrl.service.feature.notifications.logs.frequency !== 'Never'">
@@ -75,7 +75,7 @@
                                     id="frequency-select"
                                     name="frequency"
                                     data-ng-model="LogsCtrl.edition.notifications.logs.frequency"
-                                    data-ng-options="frequency as (['telephony_line_assist_support_logs_configs_frequency', frequency].join('_') | snakeCase | translate ) for frequency in LogsCtrl.availableLogsFrequencies">
+                                    data-ng-options="frequency as (['telephony_line_assist_support_logs_configs_frequency', frequency].join('_') | tucSnakeCase | translate ) for frequency in LogsCtrl.availableLogsFrequencies">
                             </select>
                         </div> <!-- FREQUENCY -->
 
@@ -180,7 +180,7 @@
                                     name="dayInterval"
                                     data-ng-model="LogsCtrl.model.dayInterval"
                                     data-ng-change="LogsCtrl.onLogsFrequencySelectChange()"
-                                    data-ng-options="dayInterval as (['telephony_line_assist_support_logs_list_days', dayInterval].join('_') | snakeCase | translate ) for dayInterval in LogsCtrl.availableDayInterval">
+                                    data-ng-options="dayInterval as (['telephony_line_assist_support_logs_list_days', dayInterval].join('_') | tucSnakeCase | translate ) for dayInterval in LogsCtrl.availableDayInterval">
                             </select>
                         </div>
                     </form>
@@ -212,7 +212,7 @@
                                     </div>
                                     <div class="media-body">
                                         <h4 class="media-heading"
-                                            data-ng-bind="log.name | words:'true'">
+                                            data-ng-bind="log.name | tucWords:'true'">
                                         </h4>
                                         <p class="text-muted"
                                            data-ng-bind="log.datetime | date:'short'">

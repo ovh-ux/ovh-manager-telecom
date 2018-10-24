@@ -37,7 +37,7 @@
                     <div class="input-select">
                         <label for="inputDomain"
                                class="control-label"
-                               data-ng-bind=":: 'domain_activation_form_domain_label' | translate | capitalize">
+                               data-ng-bind=":: 'domain_activation_form_domain_label' | translate | tucCapitalize">
                         </label>
                           <!-- For regex below
                           \x22 is " (double quote)
@@ -61,7 +61,7 @@
                                    required data-ng-minlength="1"
                                    data-ng-trim="true"
                                    data-ng-change="scheduleCheckDomainDisponibility();"
-                                   placeholder="{{:: 'domain_activation_form_domain_label' | translate | capitalize }}">
+                                   placeholder="{{:: 'domain_activation_form_domain_label' | translate | tucCapitalize }}">
                             <select data-ng-model="model.tld"
                                     class="form-control"
                                     name="tld"

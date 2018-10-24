@@ -205,7 +205,7 @@
                         <span data-ng-bind="group.getDisplayedName()"></span>
                     </div>
                     <div class="section-item"
-                         data-ng-repeat="service in $ctrl.filterGroupServices(group) | propsFilter: {serviceName: $ctrl.model.search, description: $ctrl.model.search} track by $index">
+                         data-ng-repeat="service in $ctrl.filterGroupServices(group) | tucPropsFilter: {serviceName: $ctrl.model.search, description: $ctrl.model.search} track by $index">
                         <div class="oui-radio">
                             <input type="radio"
                                    class="oui-radio__input"

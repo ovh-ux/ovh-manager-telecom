@@ -53,7 +53,7 @@
                                 data-ng-bind="accessory.description">
                             </p>
                             <p class="text-center">
-                               <span data-ng-bind-html="accessory.price.text | formatPrice:{ withoutTax : false }"></span>
+                               <span data-ng-bind-html="accessory.price.text | tucFormatPrice:{ withoutTax : false }"></span>
                                <span data-translate="common_without_tax"></span>
                             </p>
                             <input-number-spinner data-ng-model="accessory.quantity"
@@ -68,7 +68,7 @@
 
             <p>
                 <strong data-translate="telephony_line_phone_accessories_choice_total"></strong>
-                <span data-ng-bind-html="AccessoriesChoiceCtrl.orderTotal.text | formatPrice:{ withoutTax : false }"></span>
+                <span data-ng-bind-html="AccessoriesChoiceCtrl.orderTotal.text | tucFormatPrice:{ withoutTax : false }"></span>
                 <span data-translate="common_without_tax"></span>
             </p>
 

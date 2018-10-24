@@ -109,7 +109,7 @@
                             </div>
                             <i class="h3 text-danger line-height-normal ml-2 ovh-font ovh-font-warning"
                                data-ng-if="LinesGroupCtrl.serviceAttachErrors[line.serviceName]"
-                               data-uib-tooltip="{{ LinesGroupCtrl.serviceAttachErrors[line.serviceName] | errorMessage }}">
+                               data-uib-tooltip="{{ LinesGroupCtrl.serviceAttachErrors[line.serviceName] | tucErrorMessage }}">
                             </i>
                         </dd>
 
@@ -138,7 +138,7 @@
                             </div>
                             <i class="h3 text-danger line-height-normal ml-2 ovh-font ovh-font-warning"
                                data-ng-if="LinesGroupCtrl.serviceAttachErrors[alias.serviceName]"
-                               data-uib-tooltip="{{ LinesGroupCtrl.serviceAttachErrors[alias.serviceName] | errorMessage }}">
+                               data-uib-tooltip="{{ LinesGroupCtrl.serviceAttachErrors[alias.serviceName] | tucErrorMessage }}">
                             </i>
                         </dd>
 
@@ -163,7 +163,7 @@
                             </div>
                             <i class="h3 text-danger line-height-normal ml-2 ovh-font ovh-font-warning"
                                data-ng-if="LinesGroupCtrl.serviceAttachErrors[pool.serviceName]"
-                               data-uib-tooltip="{{ LinesGroupCtrl.serviceAttachErrors[pool.serviceName] | errorMessage }}">
+                               data-uib-tooltip="{{ LinesGroupCtrl.serviceAttachErrors[pool.serviceName] | tucErrorMessage }}">
                             </i>
                         </dd>
                     </dl>

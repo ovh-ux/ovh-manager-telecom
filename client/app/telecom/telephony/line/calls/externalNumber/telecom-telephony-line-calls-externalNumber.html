@@ -52,7 +52,7 @@
                                       data-ng-class="{
                                           'text-danger': number.status === 'refused' || number.status === 'toDelete',
                                           'text-warning': number.status === 'waitingValidation', 'text-success': number.status === 'enabled' }"
-                                      data-translate="{{ 'telephony_trunk_external_number_presented_list_number_status_' + (number.status | snakeCase) }}"></span>
+                                      data-translate="{{ 'telephony_trunk_external_number_presented_list_number_status_' + (number.status | tucSnakeCase) }}"></span>
                             </td>
                             <td>
                                 <!-- Delete confirmation -->

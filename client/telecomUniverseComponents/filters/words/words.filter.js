@@ -1,4 +1,6 @@
-angular.module('managerApp').filter('words', () => function (text, capitalizeFirstWord) {
+import _ from 'lodash';
+
+export default () => function (text, capitalizeFirstWord) {
   const words = _.words(text);
 
   if (capitalizeFirstWord) {
@@ -12,4 +14,4 @@ angular.module('managerApp').filter('words', () => function (text, capitalizeFir
   }
 
   return words.join(' ');
-});
+};

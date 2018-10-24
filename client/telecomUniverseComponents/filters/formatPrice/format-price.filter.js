@@ -1,4 +1,6 @@
-angular.module('managerApp').filter('formatPrice', ($sce, $translate) => function (priceText, options) {
+import angular from 'angular';
+
+export default /* @ngInject */ ($sce, $translate) => function (priceText, options) {
   let additionalTag;
   let formatedPrice;
 
@@ -22,4 +24,4 @@ angular.module('managerApp').filter('formatPrice', ($sce, $translate) => functio
     return ['(', formatedPrice, ')'].join('');
   }
   return formatedPrice;
-});
+};

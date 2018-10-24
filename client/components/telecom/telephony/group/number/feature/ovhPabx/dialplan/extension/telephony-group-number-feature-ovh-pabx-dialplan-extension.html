@@ -83,7 +83,7 @@
                             data-ng-if="$ctrl.getExtensionAttr('screenListType')">
                             <span data-translate="telephony_number_feature_ovh_pabx_step_conditions_screen_list"></span>
                             :
-                            <span data-translate="{{ 'telephony_number_feature_ovh_pabx_step_conditions_screen_list_type_' + ($ctrl.getExtensionAttr('screenListType') | snakeCase) }}"></span>
+                            <span data-translate="{{ 'telephony_number_feature_ovh_pabx_step_conditions_screen_list_type_' + ($ctrl.getExtensionAttr('screenListType') | tucSnakeCase) }}"></span>
                             <span data-ng-if="$ctrl.getExtensionAttr('screenListConditions').length">-</span>
                             <span data-translate="telephony_number_feature_ovh_pabx_step_conditions_screen_list_number_count"
                                   data-translate-values="{ count: $ctrl.getExtensionAttr('screenListConditions').length }"

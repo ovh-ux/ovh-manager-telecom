@@ -22,7 +22,7 @@
         <div class="voip-plan__step-description"
              data-ng-switch="$ctrl.getEntryAttribute('action')">
             <span class="voip-plan__step-name"
-                  data-translate="{{ 'telephony_number_feature_ovh_pabx_menu_entry_action_' + ($ctrl.getEntryAttribute('action') | snakeCase) }}">
+                  data-translate="{{ 'telephony_number_feature_ovh_pabx_menu_entry_action_' + ($ctrl.getEntryAttribute('action') | tucSnakeCase) }}">
             </span>
 
             <!-- ACTION PARAM DISPLAY : BRIDGE -->

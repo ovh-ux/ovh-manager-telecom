@@ -169,7 +169,7 @@
                                     'number',
                                     'type'
                                 ]"
-                                data-filename="{{ $ctrl.fax.billingAccount + ' ' + ($ctrl.fax.description || $ctrl.fax.serviceName) | slugify }}.csv">
+                                data-filename="{{ $ctrl.fax.billingAccount + ' ' + ($ctrl.fax.description || $ctrl.fax.serviceName) | tucSlugify }}.csv">
                             <span data-translate="telephony_service_fax_filtering_table_export"></span>
                         </button>
                     </div>

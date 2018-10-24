@@ -20,9 +20,9 @@
         <dt data-translate="telephony_alias_configuration_stats_calls_lost"></dt>
         <dd data-ng-bind="$ctrl.stats.callsLost"></dd>
         <dt data-translate="telephony_alias_configuration_stats_calls_wait_average"></dt>
-        <dd data-ng-bind="$ctrl.getAverageWaitTime() | duration"></dd>
+        <dd data-ng-bind="$ctrl.getAverageWaitTime() | tucDuration"></dd>
         <dt data-translate="telephony_alias_configuration_stats_calls_duration_average"></dt>
-        <dd data-ng-bind="$ctrl.getAverageCallTime() | duration"></dd>
+        <dd data-ng-bind="$ctrl.getAverageCallTime() | tucDuration"></dd>
     </dl>
 </div><!-- stats -->
 

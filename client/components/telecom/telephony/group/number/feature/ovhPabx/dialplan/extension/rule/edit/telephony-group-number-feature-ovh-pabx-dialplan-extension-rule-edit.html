@@ -23,7 +23,7 @@
                                data-translate="telephony_number_feature_ovh_pabx_step_rule_action">
                         </label>
                         <span class="d-block"
-                              data-translate="{{ 'telephony_number_feature_ovh_pabx_step_rule_' + ($ctrl.rule.action | snakeCase) }}">
+                              data-translate="{{ 'telephony_number_feature_ovh_pabx_step_rule_' + ($ctrl.rule.action | tucSnakeCase) }}">
                         </span>
                         <div class="chevron-right">
                             <div class="chevron-wrapper">
@@ -382,7 +382,7 @@
                     </div>
 
                     <div class="section-item"
-                         data-ng-repeat="service in $ctrl.filterGroupServices(group) | propsFilter: {serviceName: $ctrl.model.search, description: $ctrl.model.search} track by $index">
+                         data-ng-repeat="service in $ctrl.filterGroupServices(group) | tucPropsFilter: {serviceName: $ctrl.model.search, description: $ctrl.model.search} track by $index">
                         <div class="oui-radio">
                             <input type="radio"
                                    class="oui-radio__input"

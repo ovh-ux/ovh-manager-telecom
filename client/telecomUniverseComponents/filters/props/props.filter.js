@@ -1,4 +1,6 @@
-angular.module('managerApp').filter('propsFilter', () => function (items, props) {
+import angular from 'angular';
+
+export default () => function (items, props) {
   let out = [];
 
   if (angular.isArray(items)) {
@@ -25,4 +27,4 @@ angular.module('managerApp').filter('propsFilter', () => function (items, props)
   }
 
   return out;
-});
+};

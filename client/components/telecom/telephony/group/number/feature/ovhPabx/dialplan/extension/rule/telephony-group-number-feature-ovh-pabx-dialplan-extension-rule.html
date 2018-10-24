@@ -23,7 +23,7 @@
             <div class="voip-plan__step-description"
                  data-ng-switch="$ctrl.getActionFamily()">
                 <span class="voip-plan__step-name voip-plan__step-name--has-info"
-                      data-translate="{{ 'telephony_number_feature_ovh_pabx_step_rule_' + ($ctrl.getRuleAttribute('action') | snakeCase) }}">
+                      data-translate="{{ 'telephony_number_feature_ovh_pabx_step_rule_' + ($ctrl.getRuleAttribute('action') | tucSnakeCase) }}">
                 </span>
                 <!-- ACTION PARAM DISPLAY -->
                 <!-- SLEEP -->
