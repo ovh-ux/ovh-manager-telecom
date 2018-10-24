@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomPackMigrationMigrationCtrl', function ($scope, PackMigrationProcess) {
+angular.module('managerApp').controller('TelecomPackMigrationMigrationCtrl', function ($scope, TucPackMigrationProcess) {
   const self = this;
 
   self.loading = {
@@ -13,9 +13,9 @@ angular.module('managerApp').controller('TelecomPackMigrationMigrationCtrl', fun
 
   function init() {
     self.loading.migrate = true;
-    self.process = PackMigrationProcess.getMigrationProcess();
+    self.process = TucPackMigrationProcess.getMigrationProcess();
 
-    return PackMigrationProcess.startTaskPolling().then(() => {
+    return TucPackMigrationProcess.startTaskPolling().then(() => {
       self.migrationStatus = 'success';
       self.loading.migrate = false;
     }, () => {
@@ -25,7 +25,7 @@ angular.module('managerApp').controller('TelecomPackMigrationMigrationCtrl', fun
   }
 
   $scope.$on('$destroy', () => {
-    PackMigrationProcess.stopTaskPolling();
+    TucPackMigrationProcess.stopTaskPolling();
   });
 
   /* -----  End of INITIALIZATION  ------*/

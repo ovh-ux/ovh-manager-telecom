@@ -1,7 +1,7 @@
 angular.module('managerApp')
-  .controller('XdslModemWifiConfigCtrl', function ($state, $q, $timeout, $stateParams, $translate, Toast, OvhApiXdsl, PackXdslModemMediator) {
+  .controller('XdslModemWifiConfigCtrl', function ($state, $q, $timeout, $stateParams, $translate, Toast, OvhApiXdsl, TucPackXdslModemMediator) {
     const self = this;
-    self.mediator = PackXdslModemMediator;
+    self.mediator = TucPackXdslModemMediator;
     self.wifi = null;
     self.modem = null;
 

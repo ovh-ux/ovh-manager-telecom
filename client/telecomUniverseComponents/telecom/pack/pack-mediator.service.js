@@ -1,4 +1,7 @@
-angular.module('managerApp').service('PackMediator', function PackMediator($q, OvhApiPackXdsl, OvhApiXdsl) {
+import angular from 'angular';
+import _ from 'lodash';
+
+export default /* @ngInject */ function TucPackMediator($q, OvhApiPackXdsl, OvhApiXdsl) {
   const self = this;
 
   self.fetchLinesByIds = function (ids) {
@@ -145,4 +148,4 @@ angular.module('managerApp').service('PackMediator', function PackMediator($q, O
       xdsl: OvhApiXdsl.v7().query().addFilter('status', 'ne', 'deleting').execute().$promise,
     }).then(result => result.pack.length + result.xdsl.length);
   };
-});
+}

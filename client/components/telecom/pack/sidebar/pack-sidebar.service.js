@@ -1,4 +1,4 @@
-angular.module('managerApp').service('PackSidebar', function ($q, $translate, SidebarMenu, PackMediator) {
+angular.module('managerApp').service('PackSidebar', function ($q, $translate, SidebarMenu, TucPackMediator) {
   const self = this;
   const accessErrorStates = ['cancelled', 'close', 'deleting', 'slamming'];
 
@@ -18,7 +18,7 @@ angular.module('managerApp').service('PackSidebar', function ($q, $translate, Si
 
     const hasLine = _.find(pack.xdsl, xdsl => !!xdsl.line);
     if (!hasLine) {
-      return PackMediator.getPackStatus(pack.packName).then(status => (status === 'inCreation' ? 'inCreation' : 'error'));
+      return TucPackMediator.getPackStatus(pack.packName).then(status => (status === 'inCreation' ? 'inCreation' : 'error'));
     }
 
     return $q.when(_.find(pack.xdsl, xdsl => accessErrorStates.indexOf(xdsl.status) > -1) ? 'warning' : 'ok');
@@ -174,15 +174,15 @@ angular.module('managerApp').service('PackSidebar', function ($q, $translate, Si
     let adslList = [];
     let vdslList = [];
 
-    return PackMediator.fetchPacks().then((result) => {
+    return TucPackMediator.fetchPacks().then((result) => {
       packList = result;
       self.allPacks = self.allPacks.concat(packList);
-    }).then(() => PackMediator.fetchXdsl('sdsl').then((result) => {
+    }).then(() => TucPackMediator.fetchXdsl('sdsl').then((result) => {
       sdslList = result;
-    })).then(() => PackMediator.fetchXdsl('adsl').then((result) => {
+    })).then(() => TucPackMediator.fetchXdsl('adsl').then((result) => {
       adslList = result;
     }))
-      .then(() => PackMediator.fetchXdsl('vdsl').then((result) => {
+      .then(() => TucPackMediator.fetchXdsl('vdsl').then((result) => {
         vdslList = result;
       }))
       .then(() => {

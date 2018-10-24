@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomPackMigrationOffersCtrl', function ($q, $translate, PackMigrationProcess, Toast) {
+angular.module('managerApp').controller('TelecomPackMigrationOffersCtrl', function ($q, $translate, TucPackMigrationProcess, Toast) {
   const self = this;
 
   self.process = null;
@@ -21,11 +21,11 @@ angular.module('managerApp').controller('TelecomPackMigrationOffersCtrl', functi
       }
     });
 
-    _.set(offer, 'displayedPrice', PackMigrationProcess.getPriceStruct(totalOfferPrice));
+    _.set(offer, 'displayedPrice', TucPackMigrationProcess.getPriceStruct(totalOfferPrice));
   };
 
   self.selectOffer = function (offer) {
-    PackMigrationProcess.selectOffer(offer);
+    TucPackMigrationProcess.selectOffer(offer);
   };
 
   /* -----  End of ACTIONS  ------*/
@@ -50,7 +50,7 @@ angular.module('managerApp').controller('TelecomPackMigrationOffersCtrl', functi
   function init() {
     self.loading.init = true;
 
-    return PackMigrationProcess.initOffersView().then((migrationProcess) => {
+    return TucPackMigrationProcess.initOffersView().then((migrationProcess) => {
       self.process = migrationProcess;
     }, (error) => {
       Toast.error([$translate.instant('telecom_pack_migration_offer_choice_error_loading'), _.get(error, 'data.message', '')].join(' '));

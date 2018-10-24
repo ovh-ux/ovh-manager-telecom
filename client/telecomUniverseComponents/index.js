@@ -16,6 +16,7 @@ import tucSuccessDrawingCheck from './successDrawingCheck';
 import tucTableSort from './table-sort';
 import tucTelecomFax from './telecom/fax';
 import tucTelecomOtb from './telecom/otb';
+import tucTelecomPack from './telecom/pack';
 import tucTelecomSms from './telecom/sms';
 import tucTelecomTelephony from './telecom/telephony';
 import tucTelecomV4Links from './telecom/v4-links';
@@ -40,6 +41,7 @@ export default angular
     tucTableSort,
     tucTelecomFax,
     tucTelecomOtb,
+    tucTelecomPack,
     tucTelecomSms,
     tucTelecomTelephony,
     tucTelecomV4Links,

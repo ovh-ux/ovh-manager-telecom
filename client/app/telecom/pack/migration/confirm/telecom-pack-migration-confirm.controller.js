@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomPackMigrationConfirmCtrl', function ($q, $translate, PackMigrationProcess, Toast) {
+angular.module('managerApp').controller('TelecomPackMigrationConfirmCtrl', function ($q, $translate, TucPackMigrationProcess, Toast) {
   const self = this;
 
   self.process = null;
@@ -16,11 +16,11 @@ angular.module('managerApp').controller('TelecomPackMigrationConfirmCtrl', funct
   =============================== */
 
   self.getOptionPrice = function (option) {
-    return PackMigrationProcess.getPriceStruct(option.optionalPrice.value * option.choosedValue);
+    return TucPackMigrationProcess.getPriceStruct(option.optionalPrice.value * option.choosedValue);
   };
 
   self.getFirstMensuality = function () {
-    return PackMigrationProcess
+    return TucPackMigrationProcess
       .getPriceStruct(self.process.selectedOffer.displayedPrice.value + 9.99);
   };
 
@@ -38,7 +38,7 @@ angular.module('managerApp').controller('TelecomPackMigrationConfirmCtrl', funct
 
   self.startMigration = function () {
     self.loading.migrate = true;
-    return PackMigrationProcess.startMigration().then((migrationTask) => {
+    return TucPackMigrationProcess.startMigration().then((migrationTask) => {
       self.process.migrationTaskId = migrationTask.id;
       self.process.currentStep = 'migration';
     }, (error) => {
@@ -56,8 +56,8 @@ angular.module('managerApp').controller('TelecomPackMigrationConfirmCtrl', funct
   ====================================== */
 
   function init() {
-    self.process = PackMigrationProcess.getMigrationProcess();
-    self.choosedAdditionalOptions = PackMigrationProcess.getOptionsSelected();
+    self.process = TucPackMigrationProcess.getMigrationProcess();
+    self.choosedAdditionalOptions = TucPackMigrationProcess.getOptionsSelected();
   }
 
   /* -----  End of INITIALIZATION  ------*/

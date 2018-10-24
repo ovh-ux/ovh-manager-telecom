@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomPackMigrationShippingCtrl', function ($q, $translate, PackMigrationProcess, OvhContact, OvhApiPackXdsl, Toast) {
+angular.module('managerApp').controller('TelecomPackMigrationShippingCtrl', function ($q, $translate, TucPackMigrationProcess, OvhContact, OvhApiPackXdsl, Toast) {
   const self = this;
 
   self.process = null;
@@ -21,7 +21,7 @@ angular.module('managerApp').controller('TelecomPackMigrationShippingCtrl', func
   =============================== */
 
   self.cancelMigration = function () {
-    PackMigrationProcess.cancelMigration();
+    TucPackMigrationProcess.cancelMigration();
   };
 
   /* -----  End of ACTIONS  ------*/
@@ -33,7 +33,7 @@ angular.module('managerApp').controller('TelecomPackMigrationShippingCtrl', func
   function init() {
     self.loading.init = true;
 
-    self.process = PackMigrationProcess.getMigrationProcess();
+    self.process = TucPackMigrationProcess.getMigrationProcess();
 
     return OvhApiPackXdsl.v6().shippingAddresses({
       packName: self.process.pack.packName,

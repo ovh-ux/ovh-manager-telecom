@@ -1,4 +1,6 @@
-angular.module('managerApp').service('PackXdslModemMediator', function ($rootScope, $q, $translate, OvhApiXdsl, Poller) {
+import _ from 'lodash';
+
+export default /* @ngInject */ function ($rootScope, $q, OvhApiXdsl, Poller) {
   const self = this;
 
   this.capabilities = {
@@ -87,4 +89,4 @@ angular.module('managerApp').service('PackXdslModemMediator', function ($rootSco
       namespace: 'packXdslModemTasks',
     });
   };
-});
+}

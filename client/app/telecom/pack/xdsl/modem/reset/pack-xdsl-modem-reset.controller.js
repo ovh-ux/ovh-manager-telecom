@@ -1,19 +1,19 @@
-angular.module('managerApp').controller('XdslModemResetCtrl', function ($stateParams, $scope, $translate, $q, OvhApiXdsl, Toast, PackXdslModemMediator) {
-  this.mediator = PackXdslModemMediator;
+angular.module('managerApp').controller('XdslModemResetCtrl', function ($stateParams, $scope, $translate, $q, OvhApiXdsl, Toast, TucPackXdslModemMediator) {
+  this.mediator = TucPackXdslModemMediator;
 
   this.resetModem = function (resetOvhConfig) {
     if (_.isEmpty($stateParams.serviceName)) {
       return Toast.error($translate.instant('xdsl_modem_reset_an_error_ocurred'));
     }
-    PackXdslModemMediator.setTask('resetModem');
+    TucPackXdslModemMediator.setTask('resetModem');
     OvhApiXdsl.Modem().Reset().v6().save({
       xdslId: $stateParams.serviceName,
       resetOvhConfig: resetOvhConfig ? 1 : 0,
     }, null).$promise.then((result) => {
       if (result.status === 'todo' || result.status === 'doing') {
-        PackXdslModemMediator.setTask('resetModem');
+        TucPackXdslModemMediator.setTask('resetModem');
       }
-      PackXdslModemMediator.disableCapabilities();
+      TucPackXdslModemMediator.disableCapabilities();
       Toast.success($translate.instant(resetOvhConfig
         ? 'xdsl_modem_reset_ovh_config_success'
         : 'xdsl_modem_reset_success'));

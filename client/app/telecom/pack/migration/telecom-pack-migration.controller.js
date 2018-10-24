@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomPackMigrationCtrl', function ($q, $stateParams, $translate, PackMigrationProcess, Toast) {
+angular.module('managerApp').controller('TelecomPackMigrationCtrl', function ($q, $stateParams, $translate, TucPackMigrationProcess, Toast) {
   const self = this;
 
   self.process = null;
@@ -13,9 +13,9 @@ angular.module('managerApp').controller('TelecomPackMigrationCtrl', function ($q
 
   function init() {
     self.loading.init = true;
-    self.process = PackMigrationProcess.init($stateParams.packName);
+    self.process = TucPackMigrationProcess.init($stateParams.packName);
 
-    return PackMigrationProcess.checkForPendingMigration().then((pendingTasks) => {
+    return TucPackMigrationProcess.checkForPendingMigration().then((pendingTasks) => {
       if (pendingTasks && pendingTasks.length === 1) {
         self.process.currentStep = 'migration';
         self.process.migrationTaskId = _.first(pendingTasks);

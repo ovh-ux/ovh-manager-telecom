@@ -1,8 +1,8 @@
-angular.module('managerApp').controller('XdslModemLanCtrl', function ($stateParams, $translate, OvhApiXdsl, PackXdslModemLanObject, tucValidator, $q, Toast, PackXdslModemMediator) {
+angular.module('managerApp').controller('XdslModemLanCtrl', function ($stateParams, $translate, OvhApiXdsl, PackXdslModemLanObject, tucValidator, $q, Toast, TucPackXdslModemMediator) {
   const self = this;
 
   this.validator = tucValidator;
-  this.mediator = PackXdslModemMediator;
+  this.mediator = TucPackXdslModemMediator;
 
   /**
      * submit / unsubmit with keys

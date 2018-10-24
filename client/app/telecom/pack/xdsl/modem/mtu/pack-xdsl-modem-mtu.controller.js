@@ -1,7 +1,7 @@
-angular.module('managerApp').controller('XdslModemMtuCtrl', function ($stateParams, $q, OvhApiXdsl, $translate, Toast, PackXdslModemMediator, PACK_XDSL_MODEM) {
+angular.module('managerApp').controller('XdslModemMtuCtrl', function ($stateParams, $q, OvhApiXdsl, $translate, Toast, TucPackXdslModemMediator, PACK_XDSL_MODEM) {
   const self = this;
 
-  this.mediator = PackXdslModemMediator;
+  this.mediator = TucPackXdslModemMediator;
 
   this.undo = function () {
     self.mtuCurrentValueTmp = self.mtuCurrentValue;
@@ -10,12 +10,12 @@ angular.module('managerApp').controller('XdslModemMtuCtrl', function ($statePara
   this.changeMtuSize = function () {
     if (_.isEmpty($stateParams.serviceName)
       || !self.mtuCurrentValueTmp
-      || !PackXdslModemMediator.capabilities.canChangeMtu) {
+      || !TucPackXdslModemMediator.capabilities.canChangeMtu) {
       self.undo();
       Toast.error($translate.instant('xdsl_modem_mtu_an_error_ocurred'));
       return $q.reject();
     }
-    PackXdslModemMediator.setTask('changeMTU');
+    TucPackXdslModemMediator.setTask('changeMTU');
     this.loading = true;
     return OvhApiXdsl.Modem().v6().update(
       {
@@ -25,9 +25,9 @@ angular.module('managerApp').controller('XdslModemMtuCtrl', function ($statePara
         mtuSize: self.mtuCurrentValueTmp.value,
       },
     ).$promise.then(() => {
-      PackXdslModemMediator.disableCapabilities();
+      TucPackXdslModemMediator.disableCapabilities();
       self.mtuCurrentValue = self.mtuCurrentValueTmp;
-      PackXdslModemMediator.setTask('changeMTU');
+      TucPackXdslModemMediator.setTask('changeMTU');
       Toast.success($translate.instant('xdsl_modem_mtu_doing'));
     }).catch((err) => {
       self.undo();
@@ -39,8 +39,8 @@ angular.module('managerApp').controller('XdslModemMtuCtrl', function ($statePara
   };
 
   this.getDisplayValue = function () {
-    return PackXdslModemMediator.info.mtuSize
-      ? PackXdslModemMediator.info.mtuSize : PACK_XDSL_MODEM.mtu.default;
+    return TucPackXdslModemMediator.info.mtuSize
+      ? TucPackXdslModemMediator.info.mtuSize : PACK_XDSL_MODEM.mtu.default;
   };
 
   const init = function () {

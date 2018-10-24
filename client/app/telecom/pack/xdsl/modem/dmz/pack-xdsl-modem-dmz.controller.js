@@ -1,9 +1,9 @@
-angular.module('managerApp').controller('XdslModemDmzCtrl', function ($stateParams, $translate, $q, OvhApiXdsl, Toast, PackXdslModemMediator, tucValidator) {
+angular.module('managerApp').controller('XdslModemDmzCtrl', function ($stateParams, $translate, $q, OvhApiXdsl, Toast, TucPackXdslModemMediator, tucValidator) {
   const self = this;
 
   this.editing = false;
   this.validator = tucValidator;
-  this.mediator = PackXdslModemMediator;
+  this.mediator = TucPackXdslModemMediator;
 
   this.cancel = function () {
     this.editing = false;
@@ -13,7 +13,7 @@ angular.module('managerApp').controller('XdslModemDmzCtrl', function ($statePara
     this.editing = false;
     const validIp = this.validator.isIP(self.dmz) || self.dmz === null;
     if (_.isEmpty($stateParams.serviceName)
-      || !PackXdslModemMediator.capabilities.canChangeDMZ
+      || !TucPackXdslModemMediator.capabilities.canChangeDMZ
       || !validIp) {
       Toast.error($translate.instant('xdsl_modem_dmz_an_error_ocurred'));
       return $q.reject();
@@ -26,9 +26,9 @@ angular.module('managerApp').controller('XdslModemDmzCtrl', function ($statePara
         dmzIP: self.dmz,
       },
     ).$promise.then((data) => {
-      PackXdslModemMediator.disableCapabilities();
-      PackXdslModemMediator.setTask('changeModemConfigDMZ');
-      _.set(PackXdslModemMediator, 'info.dmzIP', self.dmz);
+      TucPackXdslModemMediator.disableCapabilities();
+      TucPackXdslModemMediator.setTask('changeModemConfigDMZ');
+      _.set(TucPackXdslModemMediator, 'info.dmzIP', self.dmz);
       Toast.success($translate.instant('xdsl_modem_dmz_doing'));
       return data;
     }).catch((err) => {
@@ -39,7 +39,7 @@ angular.module('managerApp').controller('XdslModemDmzCtrl', function ($statePara
 
   this.setEditMode = function () {
     this.editing = true;
-    this.dmz = PackXdslModemMediator.info.dmzIP;
+    this.dmz = TucPackXdslModemMediator.info.dmzIP;
   };
 
   this.delete = function () {

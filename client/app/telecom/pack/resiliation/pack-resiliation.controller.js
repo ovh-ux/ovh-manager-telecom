@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('PackResiliationCtrl', function ($stateParams, $state, $translate, ToastError, OvhApiPackXdslResiliation, Toast, $uibModal, $timeout, $q, OvhApiMe, PackMediator, resiliationNotification, tucValidator) {
+angular.module('managerApp').controller('PackResiliationCtrl', function ($stateParams, $state, $translate, ToastError, OvhApiPackXdslResiliation, Toast, $uibModal, $timeout, $q, OvhApiMe, TucPackMediator, resiliationNotification, tucValidator) {
   const self = this;
   self.model = {
     subServicesToKeep: {},

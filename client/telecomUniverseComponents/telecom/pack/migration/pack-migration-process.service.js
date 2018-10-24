@@ -1,7 +1,10 @@
+import angular from 'angular';
+import _ from 'lodash';
+
 /**
  *  Service used to share data between differents steps of the pack migration process.
  */
-angular.module('managerApp').service('PackMigrationProcess', function ($q, OvhApiPackXdsl, Poller) {
+export default /* @ngInject */ function ($q, OvhApiPackXdsl, Poller) {
   const self = this;
   let migrationProcess = null;
 
@@ -252,4 +255,4 @@ angular.module('managerApp').service('PackMigrationProcess', function ($q, OvhAp
   };
 
   /* -----  End of INITIALIZATION  ------*/
-});
+}
