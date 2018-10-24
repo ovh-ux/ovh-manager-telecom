@@ -1,11 +1,13 @@
-angular.module('managerApp').directive('jsplumbConnection', () => ({
+import angular from 'angular';
+
+export default () => ({
   restrict: 'A',
-  controller: 'jsplumbConnectionCtrl',
+  controller: 'TucJsplumbConnectionCtrl',
   controllerAs: '$ctrl',
-  require: ['^^jsplumb', '^^jsplumbEndpoint', 'jsplumbConnection'],
+  require: ['^^tucJsplumb', '^^tucJsplumbEndpoint', 'tucJsplumbConnection'],
   scope: {
-    options: '=jsplumbConnection',
-    target: '@jsplumbConnectionTarget',
+    options: '=tucJsplumbConnection',
+    target: '@tucJsplumbConnectionTarget',
   },
   bindToController: true,
   link(iScope, iElement, iAttrs, $ctrl) {
@@ -60,4 +62,4 @@ angular.module('managerApp').directive('jsplumbConnection', () => ({
       }
     });
   },
-}));
+});

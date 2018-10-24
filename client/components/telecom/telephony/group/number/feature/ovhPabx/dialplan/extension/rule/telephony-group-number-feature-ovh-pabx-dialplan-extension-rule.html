@@ -2,9 +2,9 @@
     <!-- RULE BLOCK -->
          <!-- POSITION -->
          <div class="voip-plan__step-icon voip-plan__step-icon--grip hover-grip rule-grip"
-              data-jsplumb-endpoint="$ctrl.numberCtrl.jsPlumbEndpointsOptions.topLeft">
-             <span data-jsplumb-connection="!$ctrl.extension.enabled ? $ctrl.numberCtrl.jsPlumbConnectionsOptions.disabled : null"
-                   data-jsplumb-connection-target="{{ $ctrl.rule.negativeAction ? $ctrl.extensionCtrl.uuid + '-condition' : $ctrl.extensionCtrl.uuid }}"
+              data-tuc-jsplumb-endpoint="$ctrl.numberCtrl.jsPlumbEndpointsOptions.topLeft">
+             <span data-tuc-jsplumb-connection="!$ctrl.extension.enabled ? $ctrl.numberCtrl.jsPlumbConnectionsOptions.disabled : null"
+                   data-tuc-jsplumb-connection-target="{{ $ctrl.rule.negativeAction ? $ctrl.extensionCtrl.uuid + '-condition' : $ctrl.extensionCtrl.uuid }}"
                    data-ng-if="!$ctrl.extensionCtrl.extension.collapsed"
                    data-ng-class="$ctrl.isLoading() ? 'fa fa-spinner fa-pulse' :'ovh-font ovh-font-grip'"
                    aria-hidden="true">

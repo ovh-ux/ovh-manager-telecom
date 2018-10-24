@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 /* eslint-disable */
 /**
  * One-segment
@@ -26,10 +28,10 @@
  *
  */
 
-(function () {
-  const TwoSegments = function (params) {
-    const _super = jsPlumb.Connectors.AbstractConnector.apply(this, arguments);
-    this.type = 'TwoSegments';
+export default /* @ngInject */ (TUC_JS_PLUMB, TUC_JS_PLUMB_UTIL) => {
+  const TucTwoSegments = function (params) {
+    const _super = TUC_JS_PLUMB.Connectors.AbstractConnector.apply(this, arguments);
+    this.type = 'TucTwoSegments';
 
     const parameters = _.extend({ radius: 10 }, params);
 
@@ -402,10 +404,8 @@
     };
   };
 
-    /**
-     * Add the connector to JS-Plumb
-     */
-  jsPlumbUtil.extend(TwoSegments, jsPlumb.Connectors.AbstractConnector);
-  jsPlumb.registerConnectorType(TwoSegments, 'TwoSegments');
-}());
+  TUC_JS_PLUMB_UTIL.extend(TucTwoSegments, TUC_JS_PLUMB.Connectors.AbstractConnector);
+  TUC_JS_PLUMB.registerConnectorType(TucTwoSegments, 'TucTwoSegments');
+
+}
 /* eslint-enable */

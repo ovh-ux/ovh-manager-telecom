@@ -4,10 +4,10 @@
     <div class="voip-plan__step">
         <div class="voip-plan__step-content voip-plan__step-content--node">
             <div class="voip-plan__step-icon voip-plan__step-icon--included"
-                 data-jsplumb-endpoint>
+                 data-tuc-jsplumb-endpoint>
                 <span data-ng-class="{ 'ovh-font ovh-font-phoneCall':!$ctrl.numberCtrl.loading.save, 'fa fa-spinner fa-pulse': $ctrl.numberCtrl.loading.save }"
-                   data-jsplumb-connection
-                   data-jsplumb-connection-target="incoming-call-{{ $ctrl.numberCtrl.number.serviceName }}"
+                   data-tuc-jsplumb-connection
+                   data-tuc-jsplumb-connection-target="incoming-call-{{ $ctrl.numberCtrl.number.serviceName }}"
                    aria-hidden="true">
                </span>
             </div>

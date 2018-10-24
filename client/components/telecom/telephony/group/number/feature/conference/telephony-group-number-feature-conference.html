@@ -4,13 +4,13 @@
     <div class="voip-plan__step">
         <div class="voip-plan__step-content voip-plan__step-content--node">
             <div class="voip-plan__step-icon voip-plan__step-icon--included"
-                 data-jsplumb-endpoint>
+                 data-tuc-jsplumb-endpoint>
                 <span data-ng-class="{
                        'ovh-font ovh-font-contacts': !$ctrl.numberCtrl.loading.save,
                        'fa fa-spinner fa-pulse': $ctrl.numberCtrl.loading.save
                    }"
-                   data-jsplumb-connection
-                   data-jsplumb-connection-target="incoming-call-{{ $ctrl.numberCtrl.number.serviceName }}"
+                   data-tuc-jsplumb-connection
+                   data-tuc-jsplumb-connection-target="incoming-call-{{ $ctrl.numberCtrl.number.serviceName }}"
                    aria-hidden="true">
                </span>
             </div>
@@ -95,11 +95,11 @@
     <div class="voip-plan__step"
          data-ng-if="$ctrl.numberCtrl.loading.feature || $ctrl.numberCtrl.loading.save">
         <div class="voip-plan__step-icon voip-plan__step-icon--basic"
-             data-jsplumb-endpoint
-             data-jsplumb-endpoint-uuid="redirect-loading">
+             data-tuc-jsplumb-endpoint
+             data-tuc-jsplumb-endpoint-uuid="redirect-loading">
             <span class="fa fa-spinner fa-pulse"
-               data-jsplumb-connection
-               data-jsplumb-connection-target="incoming-call-{{ $ctrl.numberCtrl.number.serviceName }}"
+               data-tuc-jsplumb-connection
+               data-tuc-jsplumb-connection-target="incoming-call-{{ $ctrl.numberCtrl.number.serviceName }}"
                aria-hidden="true">
            </span>
         </div>
@@ -116,11 +116,11 @@
         <div class="voip-plan__step">
             <div class="voip-plan__step-content">
                 <div class="voip-plan__step-icon voip-plan__step-icon--basic"
-                     data-jsplumb-endpoint="$ctrl.numberCtrl.jsPlumbEndpointsOptions.topLeft"
-                     data-jsplumb-endpoint-uuid="conference-participant-empty">
+                     data-tuc-jsplumb-endpoint="$ctrl.numberCtrl.jsPlumbEndpointsOptions.topLeft"
+                     data-tuc-jsplumb-endpoint-uuid="conference-participant-empty">
                     <span class="ovh-font ovh-font-forbidUser"
-                        data-jsplumb-connection
-                        data-jsplumb-connection-target="incoming-call-{{ $ctrl.numberCtrl.number.serviceName }}"
+                        data-tuc-jsplumb-connection
+                        data-tuc-jsplumb-connection-target="incoming-call-{{ $ctrl.numberCtrl.number.serviceName }}"
                         aria-hidden="true">
                     </span>
                 </div>
@@ -141,11 +141,11 @@
                  data-ng-class="{ disabled: !participant.hear || !participant.speak }">
 
                 <div class="voip-plan__step-icon voip-plan__step-icon--basic"
-                     data-jsplumb-endpoint="$ctrl.numberCtrl.jsPlumbEndpointsOptions.topLeft"
-                     data-jsplumb-endpoint-uuid="conference-participant-{{ participant.id }}">
+                     data-tuc-jsplumb-endpoint="$ctrl.numberCtrl.jsPlumbEndpointsOptions.topLeft"
+                     data-tuc-jsplumb-endpoint-uuid="conference-participant-{{ participant.id }}">
                     <span class="ovh-font ovh-font-user"
-                        data-jsplumb-connection
-                        data-jsplumb-connection-target="incoming-call-{{ $ctrl.numberCtrl.number.serviceName }}"
+                        data-tuc-jsplumb-connection
+                        data-tuc-jsplumb-connection-target="incoming-call-{{ $ctrl.numberCtrl.number.serviceName }}"
                         aria-hidden="true">
                     </span>
                 </div>

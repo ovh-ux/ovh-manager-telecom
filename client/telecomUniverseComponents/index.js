@@ -11,6 +11,7 @@ import tucHideOutsideClick from './hideOutsideClick';
 import tucInputFile from './input-file';
 import tucInputFilter from './input-filter';
 import tucIpAddress from './ipAddress';
+import tucJsplumb from './jsplumb';
 import tucPhone from './phone';
 import tucSectionBackLink from './section-back-link';
 import tucSlider from './slider';
@@ -41,6 +42,7 @@ export default angular
     tucInputFile,
     tucInputFilter,
     tucIpAddress,
+    tucJsplumb,
     tucPhone,
     tucSectionBackLink,
     tucSlider,

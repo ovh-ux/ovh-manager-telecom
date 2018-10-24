@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationOvhPabxMenusCtrl', function ($scope, $q, $stateParams, $translate, $timeout, TelephonyMediator, TucToast, jsPlumbService, TELPHONY_NUMBER_JSPLUMB_INSTANCE_OPTIONS) {
+angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationOvhPabxMenusCtrl', function ($scope, $q, $stateParams, $translate, $timeout, TelephonyMediator, TucToast, tucJsPlumbService, TELPHONY_NUMBER_JSPLUMB_INSTANCE_OPTIONS) {
   const self = this;
 
   self.loading = {
@@ -69,7 +69,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationOvhPa
             menus: self.number.feature.getMenus(true),
             sounds: self.number.feature.getSounds(),
             tts: self.number.feature.getTts(),
-            jsplumb: jsPlumbService.initJsPlumb(),
+            jsplumb: tucJsPlumbService.initJsPlumb(),
           };
 
           if (self.number.feature.featureType !== 'cloudIvr') {

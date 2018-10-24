@@ -47,7 +47,6 @@ import 'script-loader!@bower_components/crypto/crypto.min.js';
 import 'script-loader!CSV-JS/csv.js';
 import 'script-loader!d3/build/d3.js';
 import 'script-loader!jquery.cookie/jquery.cookie.js';
-import 'script-loader!@bower_components/jsplumb/dist/js/jsplumb.js';
 import 'script-loader!@bower_components/matchmedia/matchMedia.js';
 import 'matchmedia-ng';
 import 'script-loader!messenger/build/js/messenger.js';

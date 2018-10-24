@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('jsplumbConnectionCtrl', function () {
+export default function () {
   const self = this;
 
   self.connection = null;
@@ -17,4 +17,4 @@ angular.module('managerApp').controller('jsplumbConnectionCtrl', function () {
   };
 
   /* -----  End of INITIALIZATION  ------*/
-});
+}

@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('jsplumbCtrl', function ($timeout) {
+export default /* @ngInject */ function ($timeout) {
   const self = this;
   let repaintTimeout = null;
 
@@ -21,4 +21,4 @@ angular.module('managerApp').controller('jsplumbCtrl', function ($timeout) {
   };
 
   /* -----  End of HELPERS  ------*/
-});
+}

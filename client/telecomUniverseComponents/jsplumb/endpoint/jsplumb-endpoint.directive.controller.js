@@ -1,4 +1,6 @@
-angular.module('managerApp').controller('jsplumbEndpointCtrl', function () {
+import _ from 'lodash';
+
+export default function () {
   const self = this;
 
   self.endpoint = null;
@@ -14,4 +16,4 @@ angular.module('managerApp').controller('jsplumbEndpointCtrl', function () {
   };
 
   /* -----  End of INITIALIZATION  ------*/
-});
+}

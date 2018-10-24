@@ -5,9 +5,9 @@
         <div class="voip-plan__step-icon"
              data-ng-if="$ctrl.hasMenuEntryOrDialPlanExtension()"
              data-ng-class="$ctrl.dialplanRule ? 'hover-grip rule-grip voip-plan__step-icon--grip' : 'voip-plan__step-icon--basic'"
-             data-jsplumb-endpoint="$ctrl.jsPlumbEndpointsOptions.topLeft">
-             <span data-jsplumb-connection="$ctrl.isDisabled() ? $ctrl.numberCtrl.jsPlumbConnectionsOptions.disabled : null"
-                   data-jsplumb-connection-target="{{ $ctrl.getParentEndpointUuid() }}">
+             data-tuc-jsplumb-endpoint="$ctrl.jsPlumbEndpointsOptions.topLeft">
+             <span data-tuc-jsplumb-connection="$ctrl.isDisabled() ? $ctrl.numberCtrl.jsPlumbConnectionsOptions.disabled : null"
+                   data-tuc-jsplumb-connection-target="{{ $ctrl.getParentEndpointUuid() }}">
                  <span class="position-text"
                        data-ng-if="!$ctrl.dialplanRule"
                        data-ng-bind="$ctrl.getEntryAttr('dtmf')">
@@ -22,8 +22,8 @@
         <!-- MENU DISPLAY -->
         <div class="voip-plan__step-content voip-plan__step-content--after-grip voip-plan__step-content--node">
             <div class="voip-plan__step-icon voip-plan__step-icon--included"
-                 data-jsplumb-endpoint
-                 data-jsplumb-endpoint-uuid="{{ $ctrl.getEndpointUuid() }}">
+                 data-tuc-jsplumb-endpoint
+                 data-tuc-jsplumb-endpoint-uuid="{{ $ctrl.getEndpointUuid() }}">
                 <span class="ovh-font ovh-font-programmableKeys" aria-hidden="true"></span>
             </div>
             <!-- MENU NAME -->
@@ -165,10 +165,10 @@
         <div data-ng-if="$ctrl.loading.init">
             <div class="voip-plan__step">
                 <div class="voip-plan__step-icon"
-                     data-jsplumb-endpoint="$ctrl.jsPlumbEndpointsOptions.topLeft">
+                     data-tuc-jsplumb-endpoint="$ctrl.jsPlumbEndpointsOptions.topLeft">
                     <span class="fa fa-spinner fa-pulse"
-                       data-jsplumb-connection
-                       data-jsplumb-connection-target="{{ $ctrl.getEndpointUuid() }}"
+                       data-tuc-jsplumb-connection
+                       data-tuc-jsplumb-connection-target="{{ $ctrl.getEndpointUuid() }}"
                        aria-hidden="true">
                    </span>
                 </div>
@@ -233,12 +233,12 @@
             <div class="voip-plan__step">
                 <button type="button"
                         class="voip-plan__step-btn voip-plan__step-btn--primary voip-plan__step-btn--add"
-                        data-jsplumb-endpoint="$ctrl.jsPlumbEndpointsOptions.topLeft"
+                        data-tuc-jsplumb-endpoint="$ctrl.jsPlumbEndpointsOptions.topLeft"
                         data-translate-attr="{ title: 'telephony_number_feature_ovh_pabx_menu_action_add_entry' }"
                         data-ng-click="$ctrl.addMenuEntry()">
                     <span class="ovh-font ovh-font-ajouter"
-                       data-jsplumb-connection="$ctrl.isDisabled() ? $ctrl.jsPlumbConnectionsOptions.disabled : null"
-                       data-jsplumb-connection-target="{{ $ctrl.getEndpointUuid() }}"
+                       data-tuc-jsplumb-connection="$ctrl.isDisabled() ? $ctrl.jsPlumbConnectionsOptions.disabled : null"
+                       data-tuc-jsplumb-connection-target="{{ $ctrl.getEndpointUuid() }}"
                        aria-hidden="true">
                    </span>
                 </button>

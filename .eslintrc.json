@@ -21,8 +21,6 @@
     "JustGage": true,
     "validator": true,
     "CSV": true,
-    "jsPlumb": true,
-    "jsPlumbUtil": true,
     "Raven": true
   },
   "rules": {

@@ -27,11 +27,11 @@
     <div class="voip-plan__step"
          data-ng-if="$ctrl.numberCtrl.loading.feature || $ctrl.numberCtrl.loading.save">
         <div class="voip-plan__step-icon voip-plan__step-icon--basic"
-             data-jsplumb-endpoint
-             data-jsplumb-endpoint-uuid="redirect-loading">
+             data-tuc-jsplumb-endpoint
+             data-tuc-jsplumb-endpoint-uuid="redirect-loading">
             <span class="fa fa-spinner fa-pulse"
-               data-jsplumb-connection
-               data-jsplumb-connection-target="incoming-call-{{ $ctrl.numberCtrl.number.serviceName }}"
+               data-tuc-jsplumb-connection
+               data-tuc-jsplumb-connection-target="incoming-call-{{ $ctrl.numberCtrl.number.serviceName }}"
                aria-hidden="true">
            </span>
         </div>
@@ -48,11 +48,11 @@
          data-ng-init="$ctrl.onFeatureStopEdit()"
          data-ng-class="{ disabled: !$ctrl.destinationService }">
         <div class="voip-plan__step-icon voip-plan__step-icon--basic"
-             data-jsplumb-endpoint
-             data-jsplumb-endpoint-uuid="redirectTo-service-{{ $ctrl.numberCtrl.number.serviceName }}">
+             data-tuc-jsplumb-endpoint
+             data-tuc-jsplumb-endpoint-uuid="redirectTo-service-{{ $ctrl.numberCtrl.number.serviceName }}">
             <span class="ovh-font ovh-font-phone"
-               data-jsplumb-connection
-               data-jsplumb-connection-target="incoming-call-{{ $ctrl.numberCtrl.number.serviceName }}"
+               data-tuc-jsplumb-connection
+               data-tuc-jsplumb-connection-target="incoming-call-{{ $ctrl.numberCtrl.number.serviceName }}"
                aria-hidden="true">
            </span>
         </div>
@@ -84,8 +84,8 @@
         <div class="voip-plan__step"
              data-ng-repeat="service in $ctrl.availableServices track by service.serviceName">
             <!-- RADIO -->
-            <div data-jsplumb-endpoint="$ctrl.numberCtrl.jsPlumbEndpointsOptions.topLeft"
-                 data-jsplumb-endpoint-uuid="anchor-service-{{ service.serviceName }}">
+            <div data-tuc-jsplumb-endpoint="$ctrl.numberCtrl.jsPlumbEndpointsOptions.topLeft"
+                 data-tuc-jsplumb-endpoint-uuid="anchor-service-{{ service.serviceName }}">
                  <input class="voip-plan__step-radio"
                         type="radio"
                         data-ng-attr-id="radio-redirectTo-{{ service.serviceName }}"
@@ -93,8 +93,8 @@
                         data-ng-model="$ctrl.numberCtrl.number.feature.destination"
                         data-ng-change="$ctrl.onDestinationChange()"
                         data-ng-value="'{{ service.serviceName }}'"
-                        data-jsplumb-connection
-                        data-jsplumb-connection-target="incoming-call-{{ $ctrl.numberCtrl.number.serviceName }}" />
+                        data-tuc-jsplumb-connection
+                        data-tuc-jsplumb-connection-target="incoming-call-{{ $ctrl.numberCtrl.number.serviceName }}" />
             </div>
 
             <!-- RADIO -->
@@ -122,8 +122,8 @@
         <div class="voip-plan__step"
              data-ng-if="$ctrl.displayHelpers.hasOtherGroups || $ctrl.displayHelpers.currentGroupServiceCount > 4">
             <!-- RADIO -->
-            <div data-jsplumb-endpoint="$ctrl.numberCtrl.jsPlumbEndpointsOptions.topLeft"
-                 data-jsplumb-endpoint-uuid="anchor-other-service">
+            <div data-tuc-jsplumb-endpoint="$ctrl.numberCtrl.jsPlumbEndpointsOptions.topLeft"
+                 data-tuc-jsplumb-endpoint-uuid="anchor-other-service">
                  <input type="radio"
                         class="voip-plan__step-radio"
                         id="anchor-radio-other-service"
@@ -131,8 +131,8 @@
                         data-ng-model="$ctrl.numberCtrl.number.feature.destination"
                         data-ng-change="$ctrl.onDestinationChange()"
                         value="pending"
-                        data-jsplumb-connection
-                        data-jsplumb-connection-target="incoming-call-{{ $ctrl.numberCtrl.number.serviceName }}"/>
+                        data-tuc-jsplumb-connection
+                        data-tuc-jsplumb-connection-target="incoming-call-{{ $ctrl.numberCtrl.number.serviceName }}"/>
             </div>
              <!-- RADIO -->
             <!-- SERVICE DISPLAY -->

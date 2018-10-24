@@ -1,5 +1,5 @@
 angular.module('managerApp').controller('TelephonyNumberCtrl', function (
-  $q, $translate, $translatePartialLoader, jsPlumbService, TucToast,
+  $q, $translate, $translatePartialLoader, tucJsPlumbService, TucToast,
   TELPHONY_NUMBER_JSPLUMB_INSTANCE_OPTIONS, TELEPHONY_NUMBER_JSPLUMB_ENDPOINTS_OPTIONS,
   TELEPHONY_NUMBER_JSPLUMB_CONNECTIONS_OPTIONS,
 ) {
@@ -69,7 +69,7 @@ angular.module('managerApp').controller('TelephonyNumberCtrl', function (
 
     return $q.all([
       getTranslations(),
-      jsPlumbService.initJsPlumb(),
+      tucJsPlumbService.initJsPlumb(),
     ]).finally(() => {
       self.loading.init = false;
     });

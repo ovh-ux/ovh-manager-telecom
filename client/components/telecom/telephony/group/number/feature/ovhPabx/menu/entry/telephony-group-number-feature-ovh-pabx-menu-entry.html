@@ -1,10 +1,10 @@
 <div class="ovh-pabx-dialplan-menu-entry voip-plan__step voip-plan__step--point">
     <!-- POSITION -->
     <div class="voip-plan__step-icon voip-plan__step-icon--basic"
-         data-jsplumb-endpoint="$ctrl.menuCtrl.jsPlumbEndpointsOptions.topLeft">
+         data-tuc-jsplumb-endpoint="$ctrl.menuCtrl.jsPlumbEndpointsOptions.topLeft">
          <span class="position-text entry-dtmf elipse text-center"
-               data-jsplumb-connection="$ctrl.isDisabled() ? $ctrl.menuCtrl.jsPlumbConnectionsOptions.disabled : null"
-               data-jsplumb-connection-target="{{ $ctrl.getParentEndpointUuid() }}"
+               data-tuc-jsplumb-connection="$ctrl.isDisabled() ? $ctrl.menuCtrl.jsPlumbConnectionsOptions.disabled : null"
+               data-tuc-jsplumb-connection-target="{{ $ctrl.getParentEndpointUuid() }}"
                data-ng-bind="$ctrl.getEntryAttribute('dtmf')">
          </span>
     </div> <!-- END OF POSITION -->

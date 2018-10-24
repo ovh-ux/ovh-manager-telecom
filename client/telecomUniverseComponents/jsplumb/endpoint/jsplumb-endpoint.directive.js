@@ -1,12 +1,14 @@
-angular.module('managerApp').directive('jsplumbEndpoint', () => ({
+import angular from 'angular';
+
+export default () => ({
   restrict: 'A',
-  controller: 'jsplumbEndpointCtrl',
+  controller: 'TucJsplumbEndpointCtrl',
   bindToController: true,
   controllerAs: '$ctrl',
-  require: ['^^jsplumb', 'jsplumbEndpoint'],
+  require: ['^^tucJsplumb', 'tucJsplumbEndpoint'],
   scope: {
-    options: '=jsplumbEndpoint',
-    uuid: '@jsplumbEndpointUuid',
+    options: '=tucJsplumbEndpoint',
+    uuid: '@tucJsplumbEndpointUuid',
   },
   link: {
     pre(iScope, iElement, iAttrs, $ctrl) {
@@ -32,4 +34,4 @@ angular.module('managerApp').directive('jsplumbEndpoint', () => ({
       });
     },
   },
-}));
+});

@@ -1,15 +1,20 @@
-angular.module('managerApp').directive('jsplumb', () => ({
+import angular from 'angular';
+import $ from 'jquery';
+import _ from 'lodash';
+
+export default /* @ngInject */ TUC_JS_PLUMB => ({
   restrict: 'A',
-  controller: 'jsplumbCtrl',
+  controller: 'TucJsplumbCtrl',
   scope: {
-    options: '=jsplumb',
-    instance: '=jsplumbInstance',
+    options: '=tucJsplumb',
+    instance: '=tucJsplumbInstance',
   },
   bindToController: true,
   link: {
     pre(iScope, iElement, iAttrs, $ctrl) {
       // create a jsplumb instance with given options and with directive element as container
-      _.set($ctrl, 'instance', jsPlumb.getInstance(angular.extend($ctrl.options || {}, {
+
+      _.set($ctrl, 'instance', TUC_JS_PLUMB.getInstance(angular.extend($ctrl.options || {}, {
         Container: iElement,
       })));
 
@@ -48,4 +53,4 @@ angular.module('managerApp').directive('jsplumb', () => ({
       });
     },
   },
-}));
+});
