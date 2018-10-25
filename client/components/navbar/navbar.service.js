@@ -587,7 +587,7 @@ class ManagerNavbarService {
         ];
       }
 
-      if (notificationsMenu.show) {
+      if (_.get(notificationsMenu, 'show')) {
         baseNavbar.internalLinks.splice(1, 0, notificationsMenu);
       }
 
