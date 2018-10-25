@@ -8,10 +8,11 @@ import tucJsplumbConnectionDirective from './connection/jsplumb-connection.direc
 import tucJsplumbEndpointDirective from './endpoint/jsplumb-endpoint.directive';
 import tucJsplumbDirective from './jsplumb.directive';
 import tucJsplumbService from './jsplumb.service';
-import registerTwoSegmentsConnector from './connector/twoSegments/jsplumb-connector-twoSegment';
 
-export default angular
-  .module('tucJsplumb', [])
+const moduleName = 'tucJsplumb';
+
+angular
+  .module(moduleName, [])
   .constant('TUC_JS_PLUMB', TUC_JS_PLUMB)
   .constant('TUC_JS_PLUMB_UTIL', TUC_JS_PLUMB_UTIL)
   .controller('TucJsplumbConnectionCtrl', TucJsplumbConnectionCtrl)
@@ -20,6 +21,6 @@ export default angular
   .directive('tucJsplumbConnection', tucJsplumbConnectionDirective)
   .directive('tucJsplumbEndpoint', tucJsplumbEndpointDirective)
   .directive('tucJsplumb', tucJsplumbDirective)
-  .service('tucJsPlumbService', tucJsplumbService)
-  .config(registerTwoSegmentsConnector)
-  .name;
+  .service('tucJsPlumbService', tucJsplumbService);
+
+export default moduleName;

@@ -28,9 +28,9 @@ import _ from 'lodash';
  *
  */
 
-export default /* @ngInject */ (TUC_JS_PLUMB, TUC_JS_PLUMB_UTIL) => {
+export default (jsPlumb, jsPlumbUtil) => {
   const TucTwoSegments = function (params) {
-    const _super = TUC_JS_PLUMB.Connectors.AbstractConnector.apply(this, arguments);
+    const _super = jsPlumb.Connectors.AbstractConnector.apply(this, arguments);
     this.type = 'TucTwoSegments';
 
     const parameters = _.extend({ radius: 10 }, params);
@@ -404,8 +404,8 @@ export default /* @ngInject */ (TUC_JS_PLUMB, TUC_JS_PLUMB_UTIL) => {
     };
   };
 
-  TUC_JS_PLUMB_UTIL.extend(TucTwoSegments, TUC_JS_PLUMB.Connectors.AbstractConnector);
-  TUC_JS_PLUMB.registerConnectorType(TucTwoSegments, 'TucTwoSegments');
+  jsPlumbUtil.extend(TucTwoSegments, jsPlumb.Connectors.AbstractConnector);
+  jsPlumb.registerConnectorType(TucTwoSegments, 'TucTwoSegments');
 
 }
 /* eslint-enable */
