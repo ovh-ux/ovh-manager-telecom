@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <translations>
-   <translation id="xdsl_tasks_list">Liste des tâches</translation>
-   <translation id="xdsl_tasks_name">Nom</translation>
-   <translation id="xdsl_tasks_id">ID</translation>
-   <translation id="xdsl_tasks_status">Statut</translation>
-   <translation id="xdsl_tasks_status_todo">A faire</translation>
-   <translation id="xdsl_tasks_status_doing">En cours</translation>
-   <translation id="xdsl_tasks_status_done">Terminée</translation>
-   <translation id="xdsl_tasks_status_error">Erreur</translation>
-   <translation id="xdsl_tasks_status_problem">Problème</translation>
-   <translation id="xdsl_no_task">Aucune tâche</translation>
+   <translation id="xdsl_tasks_list" qtlid="289575">Overzicht van taken</translation>
+   <translation id="xdsl_tasks_name" qtlid="3818">Naam</translation>
+   <translation id="xdsl_tasks_id" qtlid="8194">ID</translation>
+   <translation id="xdsl_tasks_status" qtlid="26443">Status</translation>
+   <translation id="xdsl_tasks_status_todo" qtlid="134605">om te doen</translation>
+   <translation id="xdsl_tasks_status_doing" qtlid="26383">Wordt uitgevoerd</translation>
+   <translation id="xdsl_tasks_status_done" qtlid="26395">Beëindigd</translation>
+   <translation id="xdsl_tasks_status_error" qtlid="26407">Error</translation>
+   <translation id="xdsl_tasks_status_problem" qtlid="270800">Probleem</translation>
+   <translation id="xdsl_no_task" qtlid="217093">Geen taken</translation>
 </translations>

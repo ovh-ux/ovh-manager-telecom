@@ -1,3 +1,6 @@
+import angular from 'angular';
+import _ from 'lodash';
+
 /**
  *  @ngdoc object
  *  @name managerApp.object:VoipLineFeature

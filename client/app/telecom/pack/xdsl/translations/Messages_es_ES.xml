@@ -4,7 +4,7 @@
    <translation id="xdsl_tabs_details" qtlid="26551">Información</translation>
    <translation id="xdsl_tabs_modem" qtlid="309204">Mi módem</translation>
    <translation id="xdsl_tabs_line" qtlid="309217">Mi acceso</translation>
-   <translation id="xdsl_tabs_tasks">Tâches</translation>
+   <translation id="xdsl_tabs_tasks" qtlid="96716">Tareas</translation>
 
    <translation id="xdsl_rename_error" qtlid="332814">No se ha podido renombrar el acceso {{serviceName}}.</translation>
 </translations>
