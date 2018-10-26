@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyLinePhoneAccessoriesShippingCtrl', function ($q, TelephonyAccessoriesOrderProcess) {
+angular.module('managerApp').controller('TelecomTelephonyLinePhoneAccessoriesShippingCtrl', function ($q, TucTelephonyAccessoriesOrderProcess) {
   const self = this;
 
   self.process = null;
@@ -52,7 +52,7 @@ angular.module('managerApp').controller('TelecomTelephonyLinePhoneAccessoriesShi
 
     // contact options
     self.contactDeferred.promise
-      .then(() => TelephonyAccessoriesOrderProcess.getOrderCheckout()
+      .then(() => TucTelephonyAccessoriesOrderProcess.getOrderCheckout()
         .then((order) => {
           _.chain(order.details).filter({
             detailType: 'DELIVERY',
@@ -87,7 +87,7 @@ angular.module('managerApp').controller('TelecomTelephonyLinePhoneAccessoriesShi
 
   function init() {
     self.loading.init = true;
-    self.process = TelephonyAccessoriesOrderProcess.getOrderProcess();
+    self.process = TucTelephonyAccessoriesOrderProcess.getOrderProcess();
     initComponentsOptions();
   }
 

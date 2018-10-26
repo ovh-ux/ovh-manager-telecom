@@ -1,4 +1,12 @@
-angular.module('managerApp').service('TelephonyAccessoriesOrderProcess', function ($q, OvhApiTelephony, OvhApiOrder, TELEPHONY_LINE_PHONE_ACCESSORIES) {
+import angular from 'angular';
+import _ from 'lodash';
+
+export default /* @ngInject */ function (
+  $q,
+  OvhApiTelephony,
+  OvhApiOrder,
+  TUC_TELEPHONY_LINE_PHONE_ACCESSORIES,
+) {
   const self = this;
   let orderProcess = null;
 
@@ -45,10 +53,10 @@ angular.module('managerApp').service('TelephonyAccessoriesOrderProcess', functio
         orderProcess.accessoriesList = _.map(
           accessoriesList,
           accessory => angular.extend(accessory, {
-            url: TELEPHONY_LINE_PHONE_ACCESSORIES[accessory.name]
-              ? TELEPHONY_LINE_PHONE_ACCESSORIES[accessory.name].url : null,
-            img: TELEPHONY_LINE_PHONE_ACCESSORIES[accessory.name]
-              ? TELEPHONY_LINE_PHONE_ACCESSORIES[accessory.name].img : null,
+            url: TUC_TELEPHONY_LINE_PHONE_ACCESSORIES[accessory.name]
+              ? TUC_TELEPHONY_LINE_PHONE_ACCESSORIES[accessory.name].url : null,
+            img: TUC_TELEPHONY_LINE_PHONE_ACCESSORIES[accessory.name]
+              ? TUC_TELEPHONY_LINE_PHONE_ACCESSORIES[accessory.name].img : null,
             quantity: 0,
           }),
         );
@@ -111,4 +119,4 @@ angular.module('managerApp').service('TelephonyAccessoriesOrderProcess', functio
   };
 
   /* -----  End of INITIALIZATION  ------*/
-});
+}

@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyLinePhoneAccessoriesChoiceCtrl', function ($q, $translate, TelephonyAccessoriesOrderProcess) {
+angular.module('managerApp').controller('TelecomTelephonyLinePhoneAccessoriesChoiceCtrl', function ($q, $translate, TucTelephonyAccessoriesOrderProcess) {
   const self = this;
 
   self.process = null;
@@ -35,7 +35,7 @@ angular.module('managerApp').controller('TelecomTelephonyLinePhoneAccessoriesCho
       total += accessory.price.value * accessory.quantity;
     });
 
-    self.orderTotal = TelephonyAccessoriesOrderProcess.getPriceStruct(total);
+    self.orderTotal = TucTelephonyAccessoriesOrderProcess.getPriceStruct(total);
     return self.orderTotal;
   };
 
@@ -52,10 +52,10 @@ angular.module('managerApp').controller('TelecomTelephonyLinePhoneAccessoriesCho
   function init() {
     self.loading.init = true;
 
-    return TelephonyAccessoriesOrderProcess.getAvailableAccessories().then((orderProcess) => {
+    return TucTelephonyAccessoriesOrderProcess.getAvailableAccessories().then((orderProcess) => {
       self.process = orderProcess;
       self.chunkedList = _.chunk(self.process.accessoriesList, 4);
-      self.orderTotal = TelephonyAccessoriesOrderProcess.getPriceStruct(0);
+      self.orderTotal = TucTelephonyAccessoriesOrderProcess.getPriceStruct(0);
     }, (error) => {
       self.error.loading = error;
       return $q.reject(error);
