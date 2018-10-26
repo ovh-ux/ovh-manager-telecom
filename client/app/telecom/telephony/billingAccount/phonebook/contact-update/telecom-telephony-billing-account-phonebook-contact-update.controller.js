@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyBillingAccountPhonebookContactUpdateCtrl', function ($q, $stateParams, $timeout, $uibModalInstance, TelephonyMediator, OvhApiTelephony, Phonebookcontact, data) {
+angular.module('managerApp').controller('TelecomTelephonyBillingAccountPhonebookContactUpdateCtrl', function ($q, $stateParams, $timeout, $uibModalInstance, TelephonyMediator, OvhApiTelephony, TucPhonebookcontact, data) {
   const self = this;
 
   /*= ==============================
@@ -21,7 +21,7 @@ angular.module('managerApp').controller('TelecomTelephonyBillingAccountPhonebook
     =============================== */
 
   self.handleContactPhoneNumber = function () {
-    return Phonebookcontact.hasAtLeastOnePhoneNumber(self.phonecontactForm);
+    return TucPhonebookcontact.hasAtLeastOnePhoneNumber(self.phonecontactForm);
   };
 
   /* -----  End of EVENTS  ------*/
@@ -42,7 +42,7 @@ angular.module('managerApp').controller('TelecomTelephonyBillingAccountPhonebook
         billingAccount: $stateParams.billingAccount,
         bookKey: self.phonebook.bookKey,
         id: self.contact.id,
-      }, Phonebookcontact.getContactData(self.phonecontactForm)).$promise,
+      }, TucPhonebookcontact.getContactData(self.phonecontactForm)).$promise,
       $timeout(angular.noop, 1000),
     ]).then(() => {
       self.phonecontactForm.isAdding = false;

@@ -1,5 +1,5 @@
 angular.module('managerApp')
-  .controller('TelecomTelephonyBillingAccountPhonebookCtrl', function ($document, $filter, $q, $scope, $stateParams, $timeout, $translate, $uibModal, $window, OvhApiTelephony, voipServiceTask, TucToast, TucToastError, TELEPHONY_PHONEBOOK) {
+  .controller('TelecomTelephonyBillingAccountPhonebookCtrl', function ($document, $filter, $q, $scope, $stateParams, $timeout, $translate, $uibModal, $window, OvhApiTelephony, voipServiceTask, TucToast, TucToastError, TUC_TELEPHONY_PHONEBOOK) {
     const self = this;
 
     /*= ==============================
@@ -37,8 +37,8 @@ angular.module('managerApp')
           ))
           .then((chunkResult) => {
             const result = _.pluck(_.flatten(chunkResult), 'value');
-            const emptyGroup = _.get(TELEPHONY_PHONEBOOK, 'emptyFields.group');
-            const emptyPhoneNumber = _.get(TELEPHONY_PHONEBOOK, 'emptyFields.numbers');
+            const emptyGroup = _.get(TUC_TELEPHONY_PHONEBOOK, 'emptyFields.group');
+            const emptyPhoneNumber = _.get(TUC_TELEPHONY_PHONEBOOK, 'emptyFields.numbers');
             return _.each(result, (contact) => {
               _.set(contact, 'group', contact.group === emptyGroup ? '' : contact.group);
               _.set(contact, 'homeMobile', contact.homeMobile === emptyPhoneNumber ? '' : contact.homeMobile);

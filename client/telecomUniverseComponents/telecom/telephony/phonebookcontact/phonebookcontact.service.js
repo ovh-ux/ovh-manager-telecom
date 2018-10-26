@@ -1,4 +1,6 @@
-angular.module('managerApp').service('Phonebookcontact', function (TELEPHONY_PHONEBOOK) {
+import _ from 'lodash';
+
+export default /* @ngInject */ function (TUC_TELEPHONY_PHONEBOOK) {
   const self = this;
 
   self.getContactData = function (contact) {
@@ -6,7 +8,7 @@ angular.module('managerApp').service('Phonebookcontact', function (TELEPHONY_PHO
       return null;
     }
     return {
-      group: _.isEmpty(contact.group) ? _.get(TELEPHONY_PHONEBOOK, 'emptyFields.group') : contact.group,
+      group: _.isEmpty(contact.group) ? _.get(TUC_TELEPHONY_PHONEBOOK, 'emptyFields.group') : contact.group,
       name: contact.name,
       surname: contact.surname,
       homeMobile: _.isNull(contact.homeMobile) ? '' : contact.homeMobile,
@@ -20,6 +22,6 @@ angular.module('managerApp').service('Phonebookcontact', function (TELEPHONY_PHO
     if (!contact) {
       return null;
     }
-    return _.some(TELEPHONY_PHONEBOOK.numberFields, field => !_.isEmpty(_.get(contact, field)));
+    return _.some(TUC_TELEPHONY_PHONEBOOK.numberFields, field => !_.isEmpty(_.get(contact, field)));
   };
-});
+}
