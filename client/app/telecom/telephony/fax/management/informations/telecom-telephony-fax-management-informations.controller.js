@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyFaxManagementInformationsCtrl', function ($q, $stateParams, $translate, TelephonyMediator, TucToast, NumberPlans) {
+angular.module('managerApp').controller('TelecomTelephonyFaxManagementInformationsCtrl', function ($q, $stateParams, $translate, TelephonyMediator, TucToast, TucNumberPlans) {
   const self = this;
 
   self.loading = {
@@ -19,7 +19,7 @@ angular.module('managerApp').controller('TelecomTelephonyFaxManagementInformatio
     return TelephonyMediator.getGroup($stateParams.billingAccount).then((group) => {
       self.group = group;
       self.fax = self.group.getFax($stateParams.serviceName);
-      self.plan = NumberPlans.getPlanByNumber(self.fax);
+      self.plan = TucNumberPlans.getPlanByNumber(self.fax);
     }).catch((error) => {
       TucToast.error([$translate.instant('telephony_fax_loading_error'), _.get(error, 'data.message', '')].join(' '));
       return $q.reject(error);

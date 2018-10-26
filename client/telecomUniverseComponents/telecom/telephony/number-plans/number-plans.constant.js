@@ -1,6 +1,5 @@
-angular.module('managerApp').constant('TELEPHONY_NUMBER_PLANS', {
+export const TELEPHONY_NUMBER_PLANS = {
   be: {
-
     prefix: '+32',
     country: 'be',
     mobile: '+3247,+3248,+3249',
@@ -35,4 +34,6 @@ angular.module('managerApp').constant('TELEPHONY_NUMBER_PLANS', {
     mobile: '+393',
     country: 'it',
   },
-});
+};
+
+export default { TELEPHONY_NUMBER_PLANS };

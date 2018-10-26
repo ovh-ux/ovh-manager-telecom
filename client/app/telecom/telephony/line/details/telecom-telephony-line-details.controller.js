@@ -1,10 +1,10 @@
 angular.module('managerApp').controller('TelecomTelephonyLineDetailsCtrl', class TelecomTelephonyLineDetailsCtrl {
-  constructor($q, $stateParams, currentLine, NumberPlans, TelephonyMediator) {
+  constructor($q, $stateParams, currentLine, TucNumberPlans, TelephonyMediator) {
     this.$q = $q;
     this.billingAccount = $stateParams.billingAccount;
     this.serviceName = $stateParams.serviceName;
     this.currentLine = currentLine;
-    this.NumberPlans = NumberPlans;
+    this.TucNumberPlans = TucNumberPlans;
     this.TelephonyMediator = TelephonyMediator;
   }
 
@@ -16,7 +16,7 @@ angular.module('managerApp').controller('TelecomTelephonyLineDetailsCtrl', class
       this.group = group;
       this.line = _.merge(this.group.getLine(this.serviceName), this.currentLine || {});
       this.line.getPublicOffer.description = this.line.getPublicOffer.description.replace('The Public Reference has an error', '-');
-      this.plan = this.NumberPlans.getPlanByNumber(this.line);
+      this.plan = this.TucNumberPlans.getPlanByNumber(this.line);
 
       return this.$q.all({
         phone: this.line.getPhone(),
