@@ -1,12 +1,12 @@
-angular.module('managerApp').run(($translate, asyncLoader) => {
-  asyncLoader.addTranslations(
-    import(`./translations/Messages_${$translate.use()}.xml`)
-      .catch(() => import(`./translations/Messages_${$translate.fallbackLanguage()}.xml`))
-      .then(x => x.default),
-  );
-  $translate.refresh();
-});
-angular.module('managerApp').component('telecomTelephonyAbbreviatedNumbers', {
+import angular from 'angular';
+import _ from 'lodash';
+
+import template from './telecom-telephony-abbreviated-numbers.html';
+import templateAddOrUpdate from './telecom-telephony-abbreviated-numbers.modal.html';
+import templateImport from './import/telecom-telephony-abbreviated-numbers-import.modal.html';
+import templateTrashAll from './empty/telecom-telephony-abbreviated-numbers-empty.modal.html';
+
+export default {
   bindings: {
     abbreviatedNumbers: '=?',
     abbreviatedNumberPattern: '=?',
@@ -17,8 +17,10 @@ angular.module('managerApp').component('telecomTelephonyAbbreviatedNumbers', {
     updateCallback: '&',
     reloadCallback: '&',
   },
-  templateUrl: 'components/telecom/telephony/abbreviatedNumbers/telecom-telephony-abbreviated-numbers.html',
-  controller($uibModal, $q, $stateParams, $translate, $timeout, TucToast, PAGINATION_PER_PAGE) {
+  template,
+  controller($uibModal, $q, $translate, TucToast, PAGINATION_PER_PAGE) {
+    'ngInject';
+
     const self = this;
 
     this.$onInit = function () {
@@ -55,8 +57,8 @@ angular.module('managerApp').component('telecomTelephonyAbbreviatedNumbers', {
     this.add = function () {
       const addModalInstance = $uibModal.open({
         animation: true,
-        templateUrl: 'components/telecom/telephony/abbreviatedNumbers/telecom-telephony-abbreviated-numbers.modal.html',
-        controller: 'telecomTelephonyAbbreviatedNumbersModal',
+        template: templateAddOrUpdate,
+        controller: 'tucTelecomTelephonyAbbreviatedNumbersModal',
         controllerAs: 'AbbreviatedNumberModal',
         resolve: {
           data() {
@@ -84,8 +86,8 @@ angular.module('managerApp').component('telecomTelephonyAbbreviatedNumbers', {
     this.openImport = function () {
       const importModalInstance = $uibModal.open({
         animation: true,
-        templateUrl: 'components/telecom/telephony/abbreviatedNumbers/import/telecom-telephony-abbreviated-numbers-import.modal.html',
-        controller: 'telecomTelephonyAbbreviatedNumbersImportModal',
+        template: templateImport,
+        controller: 'tucTelecomTelephonyAbbreviatedNumbersImportModal',
         controllerAs: 'AbbreviatedNumberModal',
         resolve: {
           data() {
@@ -113,8 +115,8 @@ angular.module('managerApp').component('telecomTelephonyAbbreviatedNumbers', {
     this.trashAll = function () {
       const importModalInstance = $uibModal.open({
         animation: true,
-        templateUrl: 'components/telecom/telephony/abbreviatedNumbers/empty/telecom-telephony-abbreviated-numbers-empty.modal.html',
-        controller: 'telecomTelephonyAbbreviatedNumbersEmptyModal',
+        template: templateTrashAll,
+        controller: 'tucTelecomTelephonyAbbreviatedNumbersEmptyModal',
         controllerAs: 'AbbreviatedNumberModal',
         resolve: {
           data() {
@@ -160,8 +162,8 @@ angular.module('managerApp').component('telecomTelephonyAbbreviatedNumbers', {
       _.set(abbreviatedNumber, 'updating', true);
       const addModalInstance = $uibModal.open({
         animation: true,
-        templateUrl: 'components/telecom/telephony/abbreviatedNumbers/telecom-telephony-abbreviated-numbers.modal.html',
-        controller: 'telecomTelephonyAbbreviatedNumbersModal',
+        template: templateAddOrUpdate,
+        controller: 'tucTelecomTelephonyAbbreviatedNumbersModal',
         controllerAs: 'AbbreviatedNumberModal',
         resolve: {
           data() {
@@ -184,4 +186,4 @@ angular.module('managerApp').component('telecomTelephonyAbbreviatedNumbers', {
       });
     };
   },
-});
+};

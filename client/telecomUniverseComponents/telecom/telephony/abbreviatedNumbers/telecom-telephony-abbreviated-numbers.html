@@ -41,20 +41,20 @@
 
         <oui-action-menu data-align="end" data-compact>
             <oui-action-menu-item data-on-click="$ctrl.update($row)">
-                <span data-translate="edit"></span>
+                <span data-translate="telephony_abbreviated_numbers_edit"></span>
             </oui-action-menu-item>
             <oui-action-menu-item data-on-click="$ctrl.remove($row)">
-                <span data-translate="delete"></span>
+                <span data-translate="telephony_abbreviated_numbers_delete"></span>
             </oui-action-menu-item>
         </oui-action-menu>
 
         <extra-top>
-            <oui-action-menu data-text="{{::('common_actions' | translate)}}"
+            <oui-action-menu data-text="{{::('telephony_abbreviated_numbers_common_actions' | translate)}}"
                              data-align="start">
                 <oui-action-menu-item
                     data-on-click="$ctrl.add()"
                     data-disabled="$ctrl.loading.init">
-                    <span data-translate="common_add"></span>
+                    <span data-translate="telephony_abbreviated_numbers_common_add"></span>
                 </oui-action-menu-item>
                 <div role="menuitem" class="oui-action-menu__item">
                     <button type="button"

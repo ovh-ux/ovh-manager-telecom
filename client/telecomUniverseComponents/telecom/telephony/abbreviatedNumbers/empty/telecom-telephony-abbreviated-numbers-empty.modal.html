@@ -5,7 +5,7 @@
     <div class="modal-header">
         <button type="button"
                 class="close float-right"
-                aria-label="{{:: 'cancel' | translate }}"
+                aria-label="{{:: 'telephony_abbreviated_numbers_cancel' | translate }}"
                 data-ng-click="AbbreviatedNumberModal.cancel()">
             <span aria-hidden="true">&times;</span>
         </button>
@@ -34,14 +34,14 @@
             class="btn btn-default"
             data-ng-disabled="AbbreviatedNumberModal.removing"
             data-ng-click="AbbreviatedNumberModal.cancel()"
-            data-translate="cancel">
+            data-translate="telephony_abbreviated_numbers_cancel">
         </button>
         <button
             data-ng-show="AbbreviatedNumberModal.abbreviatedNumbers.length"
-            type="submit"
+            type="telephony_abbreviated_numbers_submit"
             class="btn btn-primary"
             data-ng-disabled="AbbreviatedNumberModal.removing || abbreviatedNumberForm.$invalid"
-            data-translate="submit">
+            data-translate="telephony_abbreviated_numbers_submit">
         </button>
     </div>
 

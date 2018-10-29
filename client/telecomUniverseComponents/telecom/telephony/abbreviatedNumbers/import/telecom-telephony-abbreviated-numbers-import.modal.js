@@ -1,4 +1,15 @@
-angular.module('managerApp').controller('telecomTelephonyAbbreviatedNumbersImportModal', function ($scope, $q, $translate, $uibModalInstance, data, PAGINATION_PER_PAGE) {
+import angular from 'angular';
+import CSV from 'CSV-JS';
+import _ from 'lodash';
+
+export default /* @ngInject */ function (
+  $scope,
+  $q,
+  $translate,
+  $uibModalInstance,
+  data,
+  TUC_TELECOM_TELEPHONY_ABBREVIATED_NUMBERS_PAGINATION_PER_PAGE,
+) {
   const self = this;
 
   function readerLoaded(e) {
@@ -65,7 +76,7 @@ angular.module('managerApp').controller('telecomTelephonyAbbreviatedNumbersImpor
     updating: false,
   };
 
-  this.perPage = PAGINATION_PER_PAGE;
+  this.perPage = TUC_TELECOM_TELEPHONY_ABBREVIATED_NUMBERS_PAGINATION_PER_PAGE;
 
   angular.extend(this, data);
 
@@ -137,4 +148,4 @@ angular.module('managerApp').controller('telecomTelephonyAbbreviatedNumbersImpor
       self.done = true;
     });
   };
-});
+}
