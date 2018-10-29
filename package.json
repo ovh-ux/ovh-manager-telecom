@@ -3,37 +3,33 @@
   "version": "10.9.2",
   "private": true,
   "description": "OVH Control Panel Telecom UI",
-  "author": "OVH SAS",
-  "license": "BSD-3-Clause",
   "keywords": [
-    "ovh",
-    "control",
-    "panel",
-    "telecom",
-    "pack",
-    "xdsl",
     "adsl",
-    "sdsl",
-    "vdsl",
-    "overthebox",
-    "voip",
+    "control",
     "fax",
-    "sms"
+    "overthebox",
+    "ovh",
+    "pack",
+    "panel",
+    "sdsl",
+    "sms",
+    "telecom",
+    "vdsl",
+    "voip",
+    "xdsl"
   ],
-  "engines": {
-    "node": ">=8",
-    "yarn": ">= 1.0.0"
-  },
+  "license": "BSD-3-Clause",
+  "author": "OVH SAS",
   "scripts": {
-    "start": "webpack-dev-server",
     "build": "webpack --env.production",
-    "test": "yarn run lint",
-    "lint": "run-p lint:html lint:css lint:js",
-    "lint:html": "htmlhint 'client/**/*.html'",
-    "lint:css": "stylelint 'client/**/*.less' --fix",
-    "lint:js": "eslint --quiet --fix ./client",
     "clean": "npx rimraf .cache-loader dist node_modules",
     "clean:dist": "npx rimraf dist",
+    "lint": "run-p lint:html lint:css lint:js",
+    "lint:css": "stylelint 'client/**/*.less' --fix",
+    "lint:html": "htmlhint 'client/**/*.html'",
+    "lint:js": "eslint --quiet --fix ./client",
+    "start": "webpack-dev-server",
+    "test": "yarn run lint",
     "version": "npx conventional-changelog-cli -p angular -i CHANGELOG.md -s && git add CHANGELOG.md",
     "postversion": "git push && git push --tags"
   },
@@ -158,5 +154,9 @@
     "stylelint": "^9.5.0",
     "stylelint-config-standard": "^18.2.0",
     "webpack-merge": "^4.1.4"
+  },
+  "engines": {
+    "node": ">=8",
+    "yarn": ">= 1.0.0"
   }
 }
