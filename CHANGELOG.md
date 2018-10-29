@@ -1,3 +1,23 @@
+<a name="10.9.2"></a>
+## [10.9.2](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.9.1...v10.9.2) (2018-10-29)
+
+
+### Bug Fixes
+
+* **components.jsplumb:** fix TucTwoSegments connector registration ([ed3408c](https://github.com/ovh-ux/ovh-manager-telecom/commit/ed3408c))
+* **i18n:** retrieve translations ([6210c91](https://github.com/ovh-ux/ovh-manager-telecom/commit/6210c91))
+* **i18n:** retrieve translations ([b819d1b](https://github.com/ovh-ux/ovh-manager-telecom/commit/b819d1b))
+* **i18n:** submit translations ([23ff7f6](https://github.com/ovh-ux/ovh-manager-telecom/commit/23ff7f6))
+* **navbar:** fix error in navbar initialization ([602fb0a](https://github.com/ovh-ux/ovh-manager-telecom/commit/602fb0a))
+* **phone.settings:** add isoV4 trad for yealink ldap ([6822ee4](https://github.com/ovh-ux/ovh-manager-telecom/commit/6822ee4))
+
+
+### Features
+
+* **fiber.order:** add fiber order ([#1056](https://github.com/ovh-ux/ovh-manager-telecom/issues/1056)) ([c20d9df](https://github.com/ovh-ux/ovh-manager-telecom/commit/c20d9df))
+
+
+
 <a name="10.9.1"></a>
 ## [10.9.1](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.9.0...v10.9.1) (2018-10-24)
 
