@@ -3,9 +3,12 @@ import translate from 'angular-translate';
 
 import tucUnitHumanizeFilter from './unit-humanize.filter';
 
-export default angular
-  .module('tucUnitHumanize', [
+const moduleName = 'tucUnitHumanize';
+
+angular
+  .module(moduleName, [
     translate,
   ])
-  .filter('tuc-unit-humanize', tucUnitHumanizeFilter)
-  .name;
+  .filter('tuc-unit-humanize', tucUnitHumanizeFilter);
+
+export default moduleName;

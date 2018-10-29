@@ -2,7 +2,10 @@ import angular from 'angular';
 
 import tucDebounce from './debounce.factory';
 
-export default angular
-  .module('tucDebounce', [])
-  .factory('tucDebounce', tucDebounce)
-  .name;
+const moduleName = 'tucDebounce';
+
+angular
+  .module(moduleName, [])
+  .factory('tucDebounce', tucDebounce);
+
+export default moduleName;

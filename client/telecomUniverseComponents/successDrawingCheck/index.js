@@ -4,7 +4,10 @@ import tucSuccessDrawingCheck from './successDrawingCheck.component';
 
 import './successDrawingCheck.less';
 
-export default angular
-  .module('tucSuccessDrawingCheck', [])
-  .component('tucSuccessDrawingCheck', tucSuccessDrawingCheck)
-  .name;
+const moduleName = 'tucSuccessDrawingCheck';
+
+angular
+  .module(moduleName, [])
+  .component('tucSuccessDrawingCheck', tucSuccessDrawingCheck);
+
+export default moduleName;

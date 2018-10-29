@@ -31,8 +31,10 @@ import tucUiSortableHelpers from './uiSortableHelpers';
 import tucUnitHumanize from './unit/humanize';
 import tucValidator from './validator';
 
-export default angular
-  .module('telecomUniverseComponents', [
+const moduleName = 'telecomUniverseComponents';
+
+angular
+  .module(moduleName, [
     tucChartjs,
     tucCustomAsterisk,
     tucDebounce,
@@ -63,5 +65,6 @@ export default angular
     tucUiSortableHelpers,
     tucUnitHumanize,
     tucValidator,
-  ])
-  .name;
+  ]);
+
+export default moduleName;

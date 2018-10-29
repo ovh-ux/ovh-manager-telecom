@@ -4,8 +4,11 @@ import tucInputFileChangeDirective from './input-file-change.directive';
 import tucInputFileDirective from './input-file.directive';
 import './input-file.less';
 
-export default angular
-  .module('tucInputFile', [])
+const moduleName = 'tucInputFile';
+
+angular
+  .module(moduleName, [])
   .directive('tucInputFileChange', tucInputFileChangeDirective)
-  .directive('tucInputFile', tucInputFileDirective)
-  .name;
+  .directive('tucInputFile', tucInputFileDirective);
+
+export default moduleName;

@@ -5,10 +5,13 @@ import tucEditableServiceNameCtrl from './editable-service-name.controller';
 import tucEditableServiceNameDirective from './editable-service-name.directive';
 import './editable-service-name.less';
 
-export default angular
-  .module('tucEditableServiceName', [
+const moduleName = 'tucEditableServiceName';
+
+angular
+  .module(moduleName, [
     translate,
   ])
   .controller('tucEditableServiceNameCtrl', tucEditableServiceNameCtrl)
-  .directive('tucEditableServiceName', tucEditableServiceNameDirective)
-  .name;
+  .directive('tucEditableServiceName', tucEditableServiceNameDirective);
+
+export default moduleName;

@@ -3,9 +3,12 @@ import 'ovh-api-services';
 
 import TucFaxMediator from './fax-mediator.service';
 
-export default angular
-  .module('tucTelecomFax', [
+const moduleName = 'tucTelecomFax';
+
+angular
+  .module(moduleName, [
     'ovh-api-services',
   ])
-  .service('TucFaxMediator', TucFaxMediator)
-  .name;
+  .service('TucFaxMediator', TucFaxMediator);
+
+export default moduleName;
