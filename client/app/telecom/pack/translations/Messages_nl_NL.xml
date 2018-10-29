@@ -75,22 +75,10 @@
 
 <!-- EX-EMAIL -->
    <translation id="account_name" qtlid="33598">E-mail</translation>
-   <translation id="password" qtlid="2270">Wachtwoord</translation>
-   <translation id="password_confirmation" qtlid="9983">Bevestiging</translation>
    <translation id="all_fields_are_required" qtlid="297579">Alle velden zijn verplicht</translation>
    <translation id="required_fields_are_tag_with_a_star" qtlid="342793">&#160;Les champs obligatoires sont signalés par un astérisque</translation>
    <translation id="in_validation" qtlid="308931">Votre demande est en cours</translation>
-   <translation id="security_level" qtlid="308944">Niveau de sécurité</translation>
-   <translation id="low" qtlid="23443">Zwak</translation>
-   <translation id="medium" qtlid="308957">Moyen</translation>
-   <translation id="strong" qtlid="308970">Fort</translation>
    <translation id="title_min_size" qtlid="308983">Le nom du compte doit comporter au minimum 5 caractères</translation>
-<!-- TEMP -->
-   <translation id="TEMP_the_password" qtlid="308996">Le mot de passe</translation>
-   <translation id="TEMP_must_content_a_lowercase" qtlid="309009">doit contenir une minuscule</translation>
-   <translation id="TEMP_must_content_an_uppercase" qtlid="309022">doit contenir une majuscule</translation>
-   <translation id="TEMP_must_content_a_figure" qtlid="309035">doit contenir un chiffre</translation>
-   <translation id="TEMP_must_be_lower_than_8_letters" qtlid="309048">doit comporter au minimum 8 caractères</translation>
 <!-- /EX-EMAIL -->
 
 

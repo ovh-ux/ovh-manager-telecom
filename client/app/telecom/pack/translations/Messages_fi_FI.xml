@@ -75,22 +75,10 @@
 
 <!-- EX-EMAIL -->
    <translation id="account_name" qtlid="33598">Sähköposti</translation>
-   <translation id="password" qtlid="2270">Salasana</translation>
-   <translation id="password_confirmation" qtlid="9983">Vahvista</translation>
    <translation id="all_fields_are_required" qtlid="297579">Kaikki kentät ovat pakollisia</translation>
    <translation id="required_fields_are_tag_with_a_star" qtlid="342793">&#160;Pakolliset kentät on merkitty tähdellä</translation>
    <translation id="in_validation" qtlid="308931">Pyyntöäsi käsitellään</translation>
-   <translation id="security_level" qtlid="308944">Tietoturvataso</translation>
-   <translation id="low" qtlid="23443">Heikko</translation>
-   <translation id="medium" qtlid="308957">Keskimääräinen</translation>
-   <translation id="strong" qtlid="308970">Vahva</translation>
    <translation id="title_min_size" qtlid="308983">Tilin nimen täytyy sisältää vähintään 5 merkkiä.</translation>
-<!-- TEMP -->
-   <translation id="TEMP_the_password" qtlid="308996">Salasana</translation>
-   <translation id="TEMP_must_content_a_lowercase" qtlid="309009">täytyy sisältää pienen kirjaimen</translation>
-   <translation id="TEMP_must_content_an_uppercase" qtlid="309022">täytyy sisältää ison alkukirjaimen</translation>
-   <translation id="TEMP_must_content_a_figure" qtlid="309035">täytyy sisältää numeron</translation>
-   <translation id="TEMP_must_be_lower_than_8_letters" qtlid="309048">täytyy sisältää vähintään 8 merkkiä</translation>
 <!-- /EX-EMAIL -->
 
 
