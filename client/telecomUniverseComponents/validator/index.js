@@ -3,8 +3,11 @@ import _ from 'lodash';
 import punycode from 'punycode';
 import validator from 'validator-js';
 
-export default angular
-  .module('tucValidator', [])
+
+const moduleName = 'tucValidator';
+
+angular
+  .module(moduleName, [])
   .constant('tucValidator', validator)
   .run((tucValidator) => {
     const Rio = function (rioStr) {
@@ -167,7 +170,7 @@ export default angular
 
         // Check wildcard
         if (!inError && punycodeVersion.indexOf('*') !== -1
-            && (theOptions.canBeginWithWildcard ? !/^(?:\*\.)[^*]+$/.test(punycodeVersion) : true)) {
+          && (theOptions.canBeginWithWildcard ? !/^(?:\*\.)[^*]+$/.test(punycodeVersion) : true)) {
           inError = true;
         }
 
@@ -195,5 +198,6 @@ export default angular
       }
       return !inError;
     });
-  })
-  .name;
+  });
+
+export default moduleName;

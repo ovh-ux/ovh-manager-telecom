@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyLinePhoneAccessoriesFinalizeCtrl', function ($q, TelephonyAccessoriesOrderProcess) {
+angular.module('managerApp').controller('TelecomTelephonyLinePhoneAccessoriesFinalizeCtrl', function ($q, TucTelephonyAccessoriesOrderProcess) {
   const self = this;
 
   self.process = null;
@@ -14,9 +14,9 @@ angular.module('managerApp').controller('TelecomTelephonyLinePhoneAccessoriesFin
 
   function init() {
     self.loading.init = true;
-    self.process = TelephonyAccessoriesOrderProcess.getOrderProcess();
+    self.process = TucTelephonyAccessoriesOrderProcess.getOrderProcess();
 
-    return TelephonyAccessoriesOrderProcess.orderCheckout().then((order) => {
+    return TucTelephonyAccessoriesOrderProcess.orderCheckout().then((order) => {
       self.order = order;
     }, (error) => {
       self.error = error;

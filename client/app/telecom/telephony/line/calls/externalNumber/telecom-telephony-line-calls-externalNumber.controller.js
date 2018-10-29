@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyLineCallsExternalNumberCtrl', function ($scope, $q, $stateParams, $translate, $timeout, TelecomMediator, TelephonyMediator, OvhApiTelephony, TucToast, NumberPlans) {
+angular.module('managerApp').controller('TelecomTelephonyLineCallsExternalNumberCtrl', function ($scope, $q, $stateParams, $translate, $timeout, TelecomMediator, TelephonyMediator, OvhApiTelephony, TucToast, TucNumberPlans) {
   const self = this;
   let pollTimeout = null;
 
@@ -147,7 +147,7 @@ angular.module('managerApp').controller('TelecomTelephonyLineCallsExternalNumber
 
     return TelephonyMediator.getGroup($stateParams.billingAccount).then((group) => {
       self.line = group.getLine($stateParams.serviceName);
-      self.plan = NumberPlans.getPlanByNumber(self.line);
+      self.plan = TucNumberPlans.getPlanByNumber(self.line);
       self.isVip = TelecomMediator.isVip;
       self.model.autoValidation = self.isVip;
 

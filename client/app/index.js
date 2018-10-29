@@ -90,7 +90,6 @@ import 'ovh-angular-tail-logs';
 import 'ovh-angular-timeline/dist/ovh-angular-timeline.js';
 import 'ovh-angular-ui-confirm-modal';
 import 'ovh-ng-input-password';
-import 'ovh-ngstrap';
 import 'ovh-ui-angular';
 import 'angular-translate-loader-pluggable';
 

@@ -75,22 +75,10 @@
 
 <!-- EX-EMAIL -->
    <translation id="account_name" qtlid="33598">Correo electrónico</translation>
-   <translation id="password" qtlid="2270">Contraseña</translation>
-   <translation id="password_confirmation" qtlid="9983">Confirmar</translation>
    <translation id="all_fields_are_required" qtlid="297579">Todos los campos son obligatorios.</translation>
    <translation id="required_fields_are_tag_with_a_star" qtlid="342793">&#160;Los campos obligatorios se indican con un asterisco.</translation>
    <translation id="in_validation" qtlid="308931">Su solicitud se está tramitando</translation>
-   <translation id="security_level" qtlid="308944">Nivel de seguridad</translation>
-   <translation id="low" qtlid="23443">Débil</translation>
-   <translation id="medium" qtlid="308957">Intermedio</translation>
-   <translation id="strong" qtlid="308970">Alto</translation>
    <translation id="title_min_size" qtlid="308983">El nombre debe tener al menos 5 caracteres.</translation>
-<!-- TEMP -->
-   <translation id="TEMP_the_password" qtlid="308996">La contraseña</translation>
-   <translation id="TEMP_must_content_a_lowercase" qtlid="309009">debe contener una minúscula</translation>
-   <translation id="TEMP_must_content_an_uppercase" qtlid="309022">debe contener una mayúscula</translation>
-   <translation id="TEMP_must_content_a_figure" qtlid="309035">debe contener una cifra</translation>
-   <translation id="TEMP_must_be_lower_than_8_letters" qtlid="309048">debe tener al menos 8 caracteres</translation>
 <!-- /EX-EMAIL -->
 
 

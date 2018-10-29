@@ -2,7 +2,10 @@ import angular from 'angular';
 
 import tucHideOutsideClickDirective from './hide-outside-click.directive';
 
-export default angular
-  .module('tucHideOutsideClick', [])
-  .directive('tucHideOutsideClick', tucHideOutsideClickDirective)
-  .name;
+const moduleName = 'tucHideOutsideClick';
+
+angular
+  .module(moduleName, [])
+  .directive('tucHideOutsideClick', tucHideOutsideClickDirective);
+
+export default moduleName;

@@ -13,6 +13,7 @@ import tucInputFile from './input-file';
 import tucInputFilter from './input-filter';
 import tucIpAddress from './ipAddress';
 import tucJsplumb from './jsplumb';
+import tucOvhPassword from './ovh-password';
 import tucPhone from './phone';
 import tucSectionBackLink from './section-back-link';
 import tucSlider from './slider';
@@ -31,8 +32,10 @@ import tucUiSortableHelpers from './uiSortableHelpers';
 import tucUnitHumanize from './unit/humanize';
 import tucValidator from './validator';
 
-export default angular
-  .module('telecomUniverseComponents', [
+const moduleName = 'telecomUniverseComponents';
+
+angular
+  .module(moduleName, [
     tucChartjs,
     tucCustomAsterisk,
     tucDebounce,
@@ -46,6 +49,7 @@ export default angular
     tucInputFilter,
     tucIpAddress,
     tucJsplumb,
+    tucOvhPassword,
     tucPhone,
     tucSectionBackLink,
     tucSlider,
@@ -63,5 +67,6 @@ export default angular
     tucUiSortableHelpers,
     tucUnitHumanize,
     tucValidator,
-  ])
-  .name;
+  ]);
+
+export default moduleName;

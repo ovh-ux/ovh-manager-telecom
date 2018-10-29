@@ -75,22 +75,10 @@
 
 <!-- EX-EMAIL -->
    <translation id="account_name" qtlid="33598">El. paštas</translation>
-   <translation id="password" qtlid="2270">Slaptažodis</translation>
-   <translation id="password_confirmation" qtlid="9983">Patvirtinimas</translation>
    <translation id="all_fields_are_required" qtlid="297579">Visi laukai privalomi</translation>
    <translation id="required_fields_are_tag_with_a_star" qtlid="342793">&#160;Privalomi laukai pažymėti žvaigždute</translation>
    <translation id="in_validation" qtlid="308931">Jūsų užklausa vykdoma</translation>
-   <translation id="security_level" qtlid="308944">Saugumo lygis</translation>
-   <translation id="low" qtlid="23443">Mažas</translation>
-   <translation id="medium" qtlid="308957">Vidutinis</translation>
-   <translation id="strong" qtlid="308970">Didelis</translation>
    <translation id="title_min_size" qtlid="308983">Paskyros pavadinimas turi būti sudarytas iš mažiausiai 5 simbolių</translation>
-<!-- TEMP -->
-   <translation id="TEMP_the_password" qtlid="308996">Slaptažodis</translation>
-   <translation id="TEMP_must_content_a_lowercase" qtlid="309009">turi būti mažoji raidė</translation>
-   <translation id="TEMP_must_content_an_uppercase" qtlid="309022">turi būti didžioji raidė</translation>
-   <translation id="TEMP_must_content_a_figure" qtlid="309035">Turi būti skaičius</translation>
-   <translation id="TEMP_must_be_lower_than_8_letters" qtlid="309048">Turi būti mažiausiai 8 simboliai</translation>
 <!-- /EX-EMAIL -->
 
 

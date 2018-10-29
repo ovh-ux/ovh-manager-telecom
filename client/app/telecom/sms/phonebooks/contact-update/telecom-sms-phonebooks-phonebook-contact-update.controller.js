@@ -3,14 +3,14 @@ angular
   .controller('TelecomSmsPhonebooksPhonebookContactUpdateCtrl', class TelecomSmsPhonebooksPhonebookContactUpdateCtrl {
     constructor(
       $q, $stateParams, $timeout, $uibModalInstance,
-      data, Phonebookcontact, OvhApiSms, TelephonyMediator,
+      data, TucPhonebookcontact, OvhApiSms, TelephonyMediator,
     ) {
       this.$q = $q;
       this.$stateParams = $stateParams;
       this.$timeout = $timeout;
       this.$uibModalInstance = $uibModalInstance;
       this.data = data;
-      this.Phonebookcontact = Phonebookcontact;
+      this.TucPhonebookcontact = TucPhonebookcontact;
       this.api = {
         sms: {
           phonebooks: {
@@ -60,7 +60,7 @@ angular
           serviceName: this.$stateParams.serviceName,
           bookKey: _.get(this.phonebook, 'bookKey'),
           id: _.get(this.contact, 'id'),
-        }, this.Phonebookcontact.getContactData(this.phonecontactForm)).$promise,
+        }, this.TucPhonebookcontact.getContactData(this.phonecontactForm)).$promise,
         this.$timeout(angular.noop, 1000),
       ]).then(() => {
         this.phonecontactForm.isUpdating = false;
@@ -86,7 +86,7 @@ angular
      * @return {Boolean}
      */
     handleContactPhoneNumber() {
-      return this.Phonebookcontact.hasAtLeastOnePhoneNumber(this.phonecontactForm);
+      return this.TucPhonebookcontact.hasAtLeastOnePhoneNumber(this.phonecontactForm);
     }
 
     cancel(message) {

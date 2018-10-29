@@ -184,4 +184,16 @@
    <translation id="telephony_line_phone_configuration_config_extension_key_module_page_number">Page {{ number }}</translation>
    <translation id="telephony_line_phone_configuration_config_extension_key_module_label_number">Étiquette d'extension n° {{ number }}</translation>
 
+<!-- LDAP phonebook -->
+   <translation id="telephony_line_phone_configuration_config_ldap_base">LdapBase</translation>
+   <translation id="telephony_line_phone_configuration_config_ldap_display_name">LdapDisplayName</translation>
+   <translation id="telephony_line_phone_configuration_config_ldap_max_hits">LdapMaxHits</translation>
+   <translation id="telephony_line_phone_configuration_config_ldap_name_attributes">LdapNameAttributes</translation>
+   <translation id="telephony_line_phone_configuration_config_ldap_name_filter">LdapNameFilter</translation>
+   <translation id="telephony_line_phone_configuration_config_ldap_number_attributes">LdapNumberAttributes</translation>
+   <translation id="telephony_line_phone_configuration_config_ldap_number_filter">LdapNumberFilter</translation>
+   <translation id="telephony_line_phone_configuration_config_ldap_password">LdapPassword</translation>
+   <translation id="telephony_line_phone_configuration_config_ldap_server_address">LdapServerAddress</translation>
+   <translation id="telephony_line_phone_configuration_config_ldap_server_port">LdapServerPort</translation>
+   <translation id="telephony_line_phone_configuration_config_ldap_username">LdapUsername</translation>
 </translations>

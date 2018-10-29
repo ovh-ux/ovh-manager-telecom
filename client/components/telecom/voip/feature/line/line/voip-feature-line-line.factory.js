@@ -1,3 +1,5 @@
+import angular from 'angular';
+
 /**
  *  @ngdoc object
  *  @name managerApp.object:VoipLine

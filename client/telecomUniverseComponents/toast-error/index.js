@@ -4,10 +4,13 @@ import translate from 'angular-translate';
 import TucToast from '../toaster';
 import TucToastError from './toast-error.service';
 
-export default angular
-  .module('tucToastError', [
+const moduleName = 'tucToastError';
+
+angular
+  .module(moduleName, [
     translate,
     TucToast,
   ])
-  .service('TucToastError', TucToastError)
-  .name;
+  .service('TucToastError', TucToastError);
+
+export default moduleName;

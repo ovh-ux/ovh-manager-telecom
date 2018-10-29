@@ -3,9 +3,12 @@ import 'ovh-api-services';
 
 import TucOverTheBoxMediator from './over-the-box-mediator.service';
 
-export default angular
-  .module('tucTelecomOtb', [
+const moduleName = 'tucTelecomOtb';
+
+angular
+  .module(moduleName, [
     'ovh-api-services',
   ])
-  .service('TucOverTheBoxMediator', TucOverTheBoxMediator)
-  .name;
+  .service('TucOverTheBoxMediator', TucOverTheBoxMediator);
+
+export default moduleName;

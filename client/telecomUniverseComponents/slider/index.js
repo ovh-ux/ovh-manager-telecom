@@ -4,7 +4,10 @@ import tucSliderDirective from './slider.directive';
 
 import './slider.less';
 
-export default angular
-  .module('tucSlider', [])
-  .directive('tucSlider', tucSliderDirective)
-  .name;
+const moduleName = 'tucSlider';
+
+angular
+  .module(moduleName, [])
+  .directive('tucSlider', tucSliderDirective);
+
+export default moduleName;

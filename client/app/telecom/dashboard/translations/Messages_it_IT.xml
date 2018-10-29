@@ -20,7 +20,7 @@
    <translation id="telecom_dashboard_FAQ_Activate" qtlid="305018">Attiva i tuoi servizi</translation>
    <translation id="telecom_dashboard_FAQ_managed_modem" qtlid="305031">Configura il tuo modem</translation>
    <translation id="telecom_dashboard_FAQ_init_modem" qtlid="305044">Effettua il reset del tuo modem</translation>
-   <translation id="telecom_dashboard_FAQ_restore_service">Rétablir mon service</translation>
+   <translation id="telecom_dashboard_FAQ_restore_service" qtlid="508169">Rétablir mon service</translation>
    <translation id="telecom_dashboard_incident_impact" qtlid="305057">Incidente rilevato</translation>
 
    <translation id="telecom_dashboard_services_title" qtlid="305070">I tuoi servizi</translation>

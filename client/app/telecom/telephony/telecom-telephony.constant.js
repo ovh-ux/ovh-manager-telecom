@@ -115,21 +115,9 @@
         },
       },
     },
-  }).constant('TELEPHONY_PHONEBOOK', {
-    numberFields: [
-      'homePhone',
-      'homeMobile',
-      'workPhone',
-      'workMobile',
-    ],
-    emptyFields: {
-      group: 'No group',
-      numbers: '0033',
-    },
+  }).constant('TELEPHONY_RMA', {
+    pdfBaseUrl: 'https://www.ovh.com/cgi-bin/telephony/rma.pl?reference=',
   })
-    .constant('TELEPHONY_RMA', {
-      pdfBaseUrl: 'https://www.ovh.com/cgi-bin/telephony/rma.pl?reference=',
-    })
     .constant('TELEPHONY_REPAYMENT_CONSUMPTION', {
       calledFeesPrefix: {
         fr: [

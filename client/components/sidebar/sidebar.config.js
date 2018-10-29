@@ -10,15 +10,17 @@ angular.module('managerApp').config((SidebarMenuProvider) => {
   // add translation path
   SidebarMenuProvider.addTranslationPath('../components/sidebar');
 }).run((
-  $q, $sce, $translate, atInternet, SidebarMenu, PackSidebar, TelephonySidebar,
-  SmsSidebar, FaxSidebar, OverTheBoxSidebar, TelecomMediator, ORDER_URLS, REDIRECT_URLS,
+  $sce, $translate,
+  atInternet, FaxSidebar, OverTheBoxSidebar, PackSidebar,
+  SidebarMenu, SmsSidebar, TelecomMediator, TelephonySidebar,
+  ORDER_URLS, REDIRECT_URLS,
 ) => {
   /*= =========================================
     =                   HELPERS                 =
     ========================================== */
 
   function setTracker(name, navigation, level2, chapter1) {
-    return function () {
+    return () => {
       atInternet.trackClick({
         name,
         type: navigation,
@@ -118,6 +120,12 @@ angular.module('managerApp').config((SidebarMenuProvider) => {
         target: '_blank',
         external: true,
         onClick: setTracker('order-ADSL_VDSL', 'navigation', 'Telecom', 'telecom'),
+      }, {
+        title: $translate.instant('telecom_sidebar_actions_menu_internet_fiber'),
+        href: ORDER_URLS.internet.fiber,
+        target: '_blank',
+        external: true,
+        onClick: setTracker('order-FIBER', 'navigation', 'Telecom', 'telecom'),
       }, {
         title: $translate.instant('telecom_sidebar_actions_menu_internet_enterprise'),
         href: ORDER_URLS.internet.enterprise,

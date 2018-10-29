@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyLinePhoneAccessoriesResumeCtrl', function ($q, TelephonyAccessoriesOrderProcess) {
+angular.module('managerApp').controller('TelecomTelephonyLinePhoneAccessoriesResumeCtrl', function ($q, TucTelephonyAccessoriesOrderProcess) {
   const self = this;
 
   self.process = null;
@@ -18,9 +18,9 @@ angular.module('managerApp').controller('TelecomTelephonyLinePhoneAccessoriesRes
 
   function init() {
     self.loading.init = true;
-    self.process = TelephonyAccessoriesOrderProcess.getOrderProcess();
+    self.process = TucTelephonyAccessoriesOrderProcess.getOrderProcess();
 
-    return TelephonyAccessoriesOrderProcess.getOrderCheckout().then((order) => {
+    return TucTelephonyAccessoriesOrderProcess.getOrderCheckout().then((order) => {
       _.remove(order.details, detail => ['SPECIAL', 'MUTE'].indexOf(detail.detailType) > -1 || (_.isEqual(detail.detailType, 'DELIVERY') && detail.totalPrice.value === 0));
 
       self.order = order;

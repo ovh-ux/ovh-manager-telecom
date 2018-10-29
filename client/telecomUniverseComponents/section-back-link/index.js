@@ -3,9 +3,12 @@ import uiRouter from '@uirouter/angularjs';
 
 import tucSectionBackLink from './section-back-link.component';
 
-export default angular
-  .module('tucSectionBackLink', [
+const moduleName = 'tucSectionBackLink';
+
+angular
+  .module(moduleName, [
     uiRouter,
   ])
-  .component('tucSectionBackLink', tucSectionBackLink)
-  .name;
+  .component('tucSectionBackLink', tucSectionBackLink);
+
+export default moduleName;

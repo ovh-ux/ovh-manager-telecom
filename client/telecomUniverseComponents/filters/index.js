@@ -12,8 +12,10 @@ import tucSlugifyFilter from './slugify/slugify';
 import tucSnakeCaseFilter from './snakeCase/snake-case.filter';
 import tucWordsFilter from './words/words.filter';
 
-export default angular
-  .module('tucFilters', [
+const moduleName = 'tucFilters';
+
+angular
+  .module(moduleName, [
     translate,
   ])
   .filter('tucCapitalize', tucCapitalizeFilter)
@@ -25,5 +27,6 @@ export default angular
   .filter('tucReplace', tucReplaceFilter)
   .filter('tucSlugify', tucSlugifyFilter)
   .filter('tucSnakeCase', tucSnakeCaseFilter)
-  .filter('tucWords', tucWordsFilter)
-  .name;
+  .filter('tucWords', tucWordsFilter);
+
+export default moduleName;

@@ -75,22 +75,10 @@
 
 <!-- EX-EMAIL -->
    <translation id="account_name" qtlid="33598">Email</translation>
-   <translation id="password" qtlid="2270">Password</translation>
-   <translation id="password_confirmation" qtlid="9983">Conferma</translation>
    <translation id="all_fields_are_required" qtlid="297579">Tutti i campi sono obbligatori</translation>
    <translation id="required_fields_are_tag_with_a_star" qtlid="342793">&#160;I campi indicati con un asterisco sono obbligatori</translation>
    <translation id="in_validation" qtlid="308931">La tua richiesta è in corso</translation>
-   <translation id="security_level" qtlid="308944">Livello di sicurezza</translation>
-   <translation id="low" qtlid="23443">Debole</translation>
-   <translation id="medium" qtlid="308957">Media</translation>
-   <translation id="strong" qtlid="308970">Alta</translation>
    <translation id="title_min_size" qtlid="308983">Il nome dell'account deve contenere almeno 5 caratteri</translation>
-<!-- TEMP -->
-   <translation id="TEMP_the_password" qtlid="308996">La password</translation>
-   <translation id="TEMP_must_content_a_lowercase" qtlid="309009">deve contenere una lettera minuscola</translation>
-   <translation id="TEMP_must_content_an_uppercase" qtlid="309022">deve contenere una lettera maiuscola</translation>
-   <translation id="TEMP_must_content_a_figure" qtlid="309035">deve contenere una cifra</translation>
-   <translation id="TEMP_must_be_lower_than_8_letters" qtlid="309048">deve contenere almeno 8 caratteri</translation>
 <!-- /EX-EMAIL -->
 
 

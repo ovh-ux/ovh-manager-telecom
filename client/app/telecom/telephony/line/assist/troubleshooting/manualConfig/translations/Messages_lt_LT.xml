@@ -11,7 +11,7 @@
 <!-- LINKSYS -->
    <translation id="telephony_line_assist_troubleshooting_manual_config_linksys_factory_reset_step1" qtlid="389889">Prijunkite telefoną prie įrangos RJ11 linijos.</translation>
    <translation id="telephony_line_assist_troubleshooting_manual_config_linksys_factory_reset_step2" qtlid="389902">Atjunkite Ethernet kabelį</translation>
-   <translation id="telephony_line_assist_troubleshooting_manual_config_linksys_factory_reset_step3" qtlid="397325">Kurti <strong><span class="custom-asterisk"></span><span class="custom-asterisk"></span><span class="custom-asterisk"></span><span class="custom-asterisk"></span></strong> vėliau <strong>73738#</strong>.</translation>
+   <translation id="telephony_line_assist_troubleshooting_manual_config_linksys_factory_reset_step3" qtlid="508182">Composez <strong><span class="tuc-custom-asterisk"></span><span class="tuc-custom-asterisk"></span><span class="tuc-custom-asterisk"></span><span class="tuc-custom-asterisk"></span></strong> puis <strong>73738#</strong>.</translation>
    <translation id="telephony_line_assist_troubleshooting_manual_config_linksys_factory_reset_step4" qtlid="389928">Įranga paprašys perkrovimo patvirtinimo, tai padarysite paspaudę <strong>1</strong>.</translation>
    <translation id="telephony_line_assist_troubleshooting_manual_config_linksys_factory_reset_step5" qtlid="389876">Jūsų įranga bus perkrauta naudojant gamyklinius parametrus.</translation>
    <translation id="telephony_line_assist_troubleshooting_manual_config_linksys_factory_reset_step6" qtlid="389941">Galite prijungti įrangą prie vietinio tinklo.</translation>
@@ -38,7 +38,7 @@
    <translation id="telephony_line_assist_troubleshooting_manual_config_cisco_find_ip_step3" qtlid="390097">IP adresas nurodytas ties <strong>CurrentIP</strong>.</translation>
 <!-- LINKSYS -->
    <translation id="telephony_line_assist_troubleshooting_manual_config_linksys_find_ip_step1" qtlid="389889">Prijunkite telefoną prie įrangos RJ11 linijos.</translation>
-   <translation id="telephony_line_assist_troubleshooting_manual_config_linksys_find_ip_step2" qtlid="397338">Kurti <strong><span class="custom-asterisk"></span><span class="custom-asterisk"></span><span class="custom-asterisk"></span><span class="custom-asterisk"></span></strong> vėliau <strong>110#</strong>.</translation>
+   <translation id="telephony_line_assist_troubleshooting_manual_config_linksys_find_ip_step2" qtlid="508195">Composez <strong><span class="tuc-custom-asterisk"></span><span class="tuc-custom-asterisk"></span><span class="tuc-custom-asterisk"></span><span class="tuc-custom-asterisk"></span></strong> puis <strong>110#</strong>.</translation>
    <translation id="telephony_line_assist_troubleshooting_manual_config_linksys_find_ip_step3" qtlid="390123">Balsas anglų kalba pasakys įrangos IP adreso skaičius vieną po kito.</translation>
    <translation id="telephony_line_assist_troubleshooting_manual_config_find_ip_step4" qtlid="390136">Įveskite IP adresą ir patvirtinkite:</translation>
    <translation id="telephony_line_assist_troubleshooting_manual_config_find_ip_step4_placeholder" qtlid="390149">Privatus IP adresas</translation>

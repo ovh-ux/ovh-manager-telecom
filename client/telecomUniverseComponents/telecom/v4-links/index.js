@@ -6,10 +6,13 @@ import tucTelecomV4Link from './v4-link/telecom-v4-link.component';
 
 import './telecom-v4-links.less';
 
-export default angular
-  .module('tucTelecomV4Links', [
+const moduleName = 'tucTelecomV4Links';
+
+angular
+  .module(moduleName, [
     uiRouter,
   ])
   .component('tucTelecomV4Links', tucTelecomV4Links)
-  .component('tucTelecomV4Link', tucTelecomV4Link)
-  .name;
+  .component('tucTelecomV4Link', tucTelecomV4Link);
+
+export default moduleName;

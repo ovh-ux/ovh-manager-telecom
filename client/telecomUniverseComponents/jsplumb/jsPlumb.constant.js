@@ -1,4 +1,8 @@
-import { jsPlumb, jsPlumbUtil } from 'jsplumb';
+import { jsPlumb, jsPlumbUtil } from 'jsplumb/dist/js/jsplumb';
+
+import registerTwoSegmentsConnector from './connector/twoSegments/jsplumb-connector-twoSegment';
+
+registerTwoSegmentsConnector(jsPlumb, jsPlumbUtil);
 
 export const TUC_JS_PLUMB = jsPlumb;
 export const TUC_JS_PLUMB_UTIL = jsPlumbUtil;
