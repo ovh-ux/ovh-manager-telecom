@@ -37,7 +37,7 @@ angular.module('managerApp').controller('telephonyBulkActionModalCtrl', function
     }
 
     if (self.model.searchService !== '') {
-      return $filter('propsFilter')(services, {
+      return $filter('tucPropsFilter')(services, {
         serviceName: self.model.searchService,
         description: self.model.searchService,
       });

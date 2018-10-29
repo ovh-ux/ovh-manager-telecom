@@ -85,7 +85,7 @@ angular.module('managerApp').controller('telephonyNumberOvhPabxDialplanExtension
   };
 
   self.filterDisplayedGroup = function (group) {
-    return $filter('propsFilter')(self.filterGroupServices(group), {
+    return $filter('tucPropsFilter')(self.filterGroupServices(group), {
       serviceName: self.model.search,
       description: self.model.search,
     }).length;
