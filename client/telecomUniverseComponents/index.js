@@ -15,6 +15,7 @@ import tucIpAddress from './ipAddress';
 import tucJsplumb from './jsplumb';
 import tucOvhPassword from './ovh-password';
 import tucPhone from './phone';
+import tucResiliation from './resiliation';
 import tucSectionBackLink from './section-back-link';
 import tucSlider from './slider';
 import tucSuccessDrawingCheck from './successDrawingCheck';
@@ -52,6 +53,7 @@ angular
     tucJsplumb,
     tucOvhPassword,
     tucPhone,
+    tucResiliation,
     tucSectionBackLink,
     tucSlider,
     tucSuccessDrawingCheck,

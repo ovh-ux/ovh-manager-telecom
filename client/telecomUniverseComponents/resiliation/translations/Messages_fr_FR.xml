@@ -18,4 +18,7 @@
    <translation id="resiliation_choice_other" qtlid="19963">Autre</translation>
    <translation id="resiliation_choice_technicalProblems" qtlid="313429">Problèmes techniques</translation>
    <translation id="resiliation_cancel" qtlid="313442">Annuler la résiliation en cours</translation>
+
+   <translation id="resiliation_common_cancel" qtlid="37863">Annuler</translation>
+   <translation id="resiliation_resiliation" qtlid="48646">Résilier</translation>
 </translations>

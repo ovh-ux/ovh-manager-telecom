@@ -4,7 +4,7 @@
         data-ng-if="!ResiliationReasonCtrl.panel"
         data-ng-click="ResiliationReasonCtrl.panel=true"
         title="{{ 'resiliation_resiliate' | translate:ResiliationReasonCtrl.resiliationReason }}">
-        <strong class="text-underline ng-binding" data-translate="common_resiliation"></strong>
+        <strong class="text-underline ng-binding" data-translate="resiliation_resiliation"></strong>
     </button>
     <form name="reasonForm" data-ng-show="ResiliationReasonCtrl.panel" data-ng-submit="ResiliationReasonCtrl.openConfirmation()">
         <div class="form-group">
@@ -21,7 +21,7 @@
             type="submit"
             data-ng-disabled="!ResiliationReasonCtrl.canResiliate()"
             title="{{ 'resiliation_resiliate' | translate:{name:resiliationReason.name, type:resiliationReason.typeName} }}">
-            <strong class="text-underline ng-binding" data-translate="common_resiliation"></strong>
+            <strong class="text-underline ng-binding" data-translate="resiliation_resiliation"></strong>
         </button>
     </form>
 </div>
