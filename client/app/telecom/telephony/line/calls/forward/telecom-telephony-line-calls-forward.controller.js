@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyLineCallsForwardCtrl', function ($q, $stateParams, $translate, $state, TucToast, TelecomTelephonyLineCallsForwardService, tucValidator, telephonyBulk, telecomVoip) {
+angular.module('managerApp').controller('TelecomTelephonyLineCallsForwardCtrl', function ($q, $stateParams, $translate, $state, TucToast, TelecomTelephonyLineCallsForwardService, tucValidator, telephonyBulk, tucTelecomVoip) {
   const self = this;
   self.validator = tucValidator;
 
@@ -237,7 +237,7 @@ angular.module('managerApp').controller('TelecomTelephonyLineCallsForwardCtrl', 
     };
 
     self.saved = angular.copy(self.options);
-    telecomVoip.fetchAll().then((billingAccounts) => {
+    tucTelecomVoip.fetchAll().then((billingAccounts) => {
       self.listBillingAccounts = billingAccounts;
       self.listBillingAccounts.unshift({ billingAccount: null, description: 'Tous les groupes' });
       self.filter.billingAccount = _.get(_.find(self.listBillingAccounts, { billingAccount: $stateParams.billingAccount }), 'billingAccount', null);

@@ -1,26 +1,26 @@
 /**
  *  @ngdoc object
- *  @name managerApp.object:VoipLinePhone
+ *  @name managerApp.object:TucVoipLinePhone
  *
  *  @description
  *  <p>Factory that describes a phone of a service with sip or mgcp featureType
  *    with attributes returned by `/telephony/{billingAccount}/line/{serviceName}/phone` API.</p>
  *
  *  @constructor
- *  @param {Object} options Options required for creating a new instance of VoipLinePhone (see {@link https://eu.api.ovh.com/console/#/telephony/%7BbillingAccount%7D/line/%7BserviceName%7D/phone#GET `telephony.Phone` enum}
+ *  @param {Object} options Options required for creating a new instance of TucVoipLinePhone (see {@link https://eu.api.ovh.com/console/#/telephony/%7BbillingAccount%7D/line/%7BserviceName%7D/phone#GET `telephony.Phone` enum}
  *  for available options properties).
  *
  *  Note that `billingAccount` and `serviceName` options are mandatory.
  */
-angular.module('managerApp').factory('VoipLinePhone', () => {
+export default () => {
   const mandatoryOptions = ['billingAccount', 'serviceName'];
 
-  class VoipLinePhone {
+  class TucVoipLinePhone {
     constructor(options = {}) {
       // check for mandatory options
       mandatoryOptions.forEach((option) => {
         if (!options[option]) {
-          throw new Error(`${option} option must be specified when creating a new VoipLinePhone`);
+          throw new Error(`${option} option must be specified when creating a new TucVoipLinePhone`);
         }
       });
 
@@ -35,15 +35,15 @@ angular.module('managerApp').factory('VoipLinePhone', () => {
 
     /**
      *  @ngdoc method
-     *  @name managerApp.object:VoipLinePhone#setOptions
-     *  @propertyOf managerApp.object:VoipLinePhone
+     *  @name managerApp.object:TucVoipLinePhone#setOptions
+     *  @propertyOf managerApp.object:TucVoipLinePhone
      *
      *  @description
      *  Set the options from `telephony.Phone` enum. This is called by default by the constructor.
      *
-     *  @param {Object} options Optional options for creating a new instance of VoipLinePhone.
+     *  @param {Object} options Optional options for creating a new instance of TucVoipLinePhone.
      *
-     *  @return {VoipLinePhone} The `VoipLinePhone` instance with options setted.
+     *  @return {TucVoipLinePhone} The `TucVoipLinePhone` instance with options setted.
      */
     setOptions(phoneOptions) {
       this.protocol = phoneOptions.protocol;
@@ -55,5 +55,5 @@ angular.module('managerApp').factory('VoipLinePhone', () => {
     }
   }
 
-  return VoipLinePhone;
-});
+  return TucVoipLinePhone;
+};

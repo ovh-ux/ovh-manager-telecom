@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('telephonyBulkActionModalCtrl', function ($http, $filter, $q, $translate, $uibModalInstance, modalBindings, telecomVoip) {
+angular.module('managerApp').controller('telephonyBulkActionModalCtrl', function ($http, $filter, $q, $translate, $uibModalInstance, modalBindings, tucTelecomVoip) {
   const self = this;
   let allServices;
 
@@ -172,7 +172,7 @@ angular.module('managerApp').controller('telephonyBulkActionModalCtrl', function
     self.bindings = modalBindings;
     self.model.billingAccount = self.bindings.billingAccount;
 
-    return telecomVoip.fetchAll(false).then((billingAccounts) => {
+    return tucTelecomVoip.fetchAll(false).then((billingAccounts) => {
       self.billingAccounts = _.sortBy(
         billingAccounts,
         billingAccount => billingAccount.getDisplayedName(),

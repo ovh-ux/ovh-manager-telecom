@@ -1,6 +1,6 @@
 /**
  *  @ngdoc object
- *  @name managerApp.object:VoipService
+ *  @name managerApp.object:TucVoipService
  *
  *  @description
  *  <p>Factory that describes a service with attributes
@@ -8,20 +8,20 @@
  *  <p>See {@link https://eu.api.ovh.com/console/#/telephony/%7BbillingAccount%7D/service/%7BserviceName%7D#GET `telephony.TelephonyService` enum} for available properties.</p>
  *
  *  @constructor
- *  @param {Object} options Options required for creating a new instance of VoipService (see {@link https://eu.api.ovh.com/console/#/telephony/%7BbillingAccount%7D/service/%7BserviceName%7D#GET `telephony.TelephonyService` enum}
+ *  @param {Object} options Options required for creating a new instance of TucVoipService (see {@link https://eu.api.ovh.com/console/#/telephony/%7BbillingAccount%7D/service/%7BserviceName%7D#GET `telephony.TelephonyService` enum}
  *  for availables options properties).
  *
  *  Note that `billingAccount` and `serviceName` options are mandatory.
  */
-angular.module('managerApp').factory('VoipService', () => {
+export default () => {
   const mandatoryOptions = ['billingAccount', 'serviceName'];
 
-  class VoipService {
+  class TucVoipService {
     constructor(options = {}) {
       // check for mandatory options
       mandatoryOptions.forEach((option) => {
         if (!options[option]) {
-          throw new Error(`${option} option must be specified when creating a new VoipService`);
+          throw new Error(`${option} option must be specified when creating a new TucVoipService`);
         }
       });
 
@@ -54,8 +54,8 @@ angular.module('managerApp').factory('VoipService', () => {
 
     /**
      *  @ngdoc method
-     *  @name managerApp.object:VoipService#getDisplayedName
-     *  @propertyOf managerApp.object:VoipService
+     *  @name managerApp.object:TucVoipService#getDisplayedName
+     *  @propertyOf managerApp.object:TucVoipService
      *
      *  @description
      *  Get the displayed name of the service.
@@ -69,8 +69,8 @@ angular.module('managerApp').factory('VoipService', () => {
 
     /**
      *  @ngdoc method
-     *  @name managerApp.object:VoipService#isDescriptionSameAsServiceName
-     *  @propertyOf managerApp.object:VoipService
+     *  @name managerApp.object:TucVoipService#isDescriptionSameAsServiceName
+     *  @propertyOf managerApp.object:TucVoipService
      *
      *  @description
      *  Helper that check if the description is the same as serviceName.
@@ -94,5 +94,5 @@ angular.module('managerApp').factory('VoipService', () => {
     /* -----  End of Some Helpers  ------ */
   }
 
-  return VoipService;
-});
+  return TucVoipService;
+};

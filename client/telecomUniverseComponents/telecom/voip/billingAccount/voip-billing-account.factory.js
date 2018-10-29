@@ -1,6 +1,9 @@
+import angular from 'angular';
+import _ from 'lodash';
+
 /**
  *  @ngdoc object
- *  @name managerApp.object:VoipBillingAccount
+ *  @name managerApp.object:TucVoipBillingAccount
  *
  *  @description
  *  <p>Factory that describes a billingAccount with attributes
@@ -9,20 +12,20 @@
  *  <p>Others "custom properties" are listed in **Properties** section bellow.</p>
  *
  *  @constructor
- *  @param {Object} options Options required for creating a new instance of VoipBillingAccount (see {@link https://api.ovh.com/console/#/telephony/%7BbillingAccount%7D#GET `telephony.BillingAccount` enum}
+ *  @param {Object} options Options required for creating a new instance of TucVoipBillingAccount (see {@link https://api.ovh.com/console/#/telephony/%7BbillingAccount%7D#GET `telephony.BillingAccount` enum}
  *  for availables options properties).
  *
  *  Note that `billingAccount` option is mandatory.
  */
-angular.module('managerApp').factory('VoipBillingAccount', (VoipService, voipService) => {
+export default /* @ngInject */ (TucVoipService, tucVoipService) => {
   const mandatoryOptions = ['billingAccount'];
 
-  class VoipBillingAccount {
+  class TucVoipBillingAccount {
     constructor(options = {}) {
       // check for mandatory options
       mandatoryOptions.forEach((option) => {
         if (!options[option]) {
-          throw new Error(`${option} option must be specified when creating a new VoipBillingAccount`);
+          throw new Error(`${option} option must be specified when creating a new TucVoipBillingAccount`);
         }
       });
 
@@ -47,23 +50,23 @@ angular.module('managerApp').factory('VoipBillingAccount', (VoipService, voipSer
       // custom attributes (not from API)
       /**
        *  @ngdoc property
-       *  @name managerApp.object:VoipBillingAccount#services
-       *  @propertyOf managerApp.object:VoipBillingAccount
+       *  @name managerApp.object:TucVoipBillingAccount#services
+       *  @propertyOf managerApp.object:TucVoipBillingAccount
        *
        *  @description
-       *  <p>Store the services attached to the VoipBillingAccount instance.</p>
+       *  <p>Store the services attached to the TucVoipBillingAccount instance.</p>
        *  <p>You can populate this services list with `addService` method
        *    or with `addServices` method.</p>
        *
-       *  @return {Array.<VoipService>} An array of `VoipService` instances.
+       *  @return {Array.<TucVoipService>} An array of `TucVoipService` instances.
        */
       this.services = [];
     }
 
     /**
      *  @ngdoc method
-     *  @name managerApp.object:VoipBillingAccount#getDisplayedName
-     *  @methodOf managerApp.object:VoipBillingAccount
+     *  @name managerApp.object:TucVoipBillingAccount#getDisplayedName
+     *  @methodOf managerApp.object:TucVoipBillingAccount
      *
      *  @description
      *  Get the displayed name of the billing account.
@@ -76,13 +79,13 @@ angular.module('managerApp').factory('VoipBillingAccount', (VoipService, voipSer
     }
 
     /* ======================================
-        =            Service section            =
-        ======================================= */
+    =            Service section            =
+    ======================================= */
 
     /**
      *  @ngdoc method
-     *  @name managerApp.object:VoipBillingAccount#addService
-     *  @methodOf managerApp.object:VoipBillingAccount
+     *  @name managerApp.object:TucVoipBillingAccount#addService
+     *  @methodOf managerApp.object:TucVoipBillingAccount
      *
      *  @description
      *  Add a service to billing account services list.
@@ -90,13 +93,14 @@ angular.module('managerApp').factory('VoipBillingAccount', (VoipService, voipSer
      *  option is already in the list), the existing service will be replaced by a service with
      *  the new options passed in arguments.
      *
-     *  @param {Object|VoipService} service     The options for creating a new VoipService instance
-     *                                          or a VoipService object.
+     *  @param {Object|TucVoipService} service
+     *  The options for creating a new TucVoipService instance or a TucVoipService object.
      *
-     *  @return {VoipService} The VoipService instance added (or replaced) to the services list.
+     *  @return {TucVoipService} The TucVoipService instance added (or replaced)
+     *  to the services list.
      */
     addService(service) {
-      const addedService = service.constructor.name !== 'VoipService' ? service : new VoipService(service);
+      const addedService = service.constructor.name !== 'TucVoipService' ? service : new TucVoipService(service);
 
       // check if service is already added
       const serviceIndex = _.findIndex(this.services, {
@@ -116,14 +120,14 @@ angular.module('managerApp').factory('VoipBillingAccount', (VoipService, voipSer
 
     /**
      *  @ngdoc method
-     *  @name managerApp.object:VoipBillingAccount#addServices
-     *  @methodOf managerApp.object:VoipBillingAccount
+     *  @name managerApp.object:TucVoipBillingAccount#addServices
+     *  @methodOf managerApp.object:TucVoipBillingAccount
      *
      *  @description
      *  Add one or many services to the billing account services list.
      *
      *  @param {Array.<Object>|Object} services     An object or a list of objects with options
-     *                                              for adding VoipService instances to billing
+     *                                              for adding TucVoipService instances to billing
      *                                              account services list.
      *
      *  @return {Array.<VoipSercice>} The list of all the services of the billing account
@@ -151,8 +155,8 @@ angular.module('managerApp').factory('VoipBillingAccount', (VoipService, voipSer
 
     /**
      *  @ngdoc method
-     *  @name managerApp.object:VoipBillingAccount#getAlias
-     *  @methodOf managerApp.object:VoipBillingAccount
+     *  @name managerApp.object:TucVoipBillingAccount#getAlias
+     *  @methodOf managerApp.object:TucVoipBillingAccount
      *
      *  @description
      *  Get the services of the billingAccount that match `alias` serviceType.
@@ -161,13 +165,13 @@ angular.module('managerApp').factory('VoipBillingAccount', (VoipService, voipSer
      *                                of the billing account.
      */
     getAlias() {
-      return voipService.constructor.filterAliasServices(this.services);
+      return tucVoipService.constructor.filterAliasServices(this.services);
     }
 
     /**
      *  @ngdoc method
-     *  @name managerApp.object:VoipBillingAccount#getLines
-     *  @methodOf managerApp.object:VoipBillingAccount
+     *  @name managerApp.object:TucVoipBillingAccount#getLines
+     *  @methodOf managerApp.object:TucVoipBillingAccount
      *
      *  @description
      *  Get the services of the billingAccount that match line serviceType.
@@ -176,7 +180,7 @@ angular.module('managerApp').factory('VoipBillingAccount', (VoipService, voipSer
      *                                of the billing account.
      */
     getLines() {
-      return voipService.constructor.filterLineServices(this.services);
+      return tucVoipService.constructor.filterLineServices(this.services);
     }
 
     /* ----------  By feature type  ---------- */
@@ -184,5 +188,5 @@ angular.module('managerApp').factory('VoipBillingAccount', (VoipService, voipSer
     /* -----  End of Filters  ------ */
   }
 
-  return VoipBillingAccount;
-});
+  return TucVoipBillingAccount;
+};

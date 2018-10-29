@@ -1,8 +1,8 @@
 class ManagerNavbarService {
   constructor(
     $q, $translate, $translatePartialLoader, $rootScope, LANGUAGES, MANAGER_URLS, REDIRECT_URLS,
-    TARGET, URLS, OvhApiMe, OtrsPopupService, ssoAuthentication, TucPackMediator, telecomVoip,
-    voipService, TucSmsMediator, OvhApiFreeFax, OvhApiOverTheBox, TelecomMediator,
+    TARGET, URLS, OvhApiMe, OtrsPopupService, ssoAuthentication, TucPackMediator, tucTelecomVoip,
+    tucVoipService, TucSmsMediator, OvhApiFreeFax, OvhApiOverTheBox, TelecomMediator,
     NavbarNotificationService, asyncLoader,
   ) {
     this.$q = $q;
@@ -17,8 +17,8 @@ class ManagerNavbarService {
     this.otrsPopupService = OtrsPopupService;
     this.ssoAuthentication = ssoAuthentication;
     this.packMediator = TucPackMediator;
-    this.telecomVoip = telecomVoip;
-    this.voipService = voipService;
+    this.tucTelecomVoip = tucTelecomVoip;
+    this.tucVoipService = tucVoipService;
     this.smsMediator = TucSmsMediator;
     this.ovhApiFreeFax = OvhApiFreeFax;
     this.ovhApiOverTheBox = OvhApiOverTheBox;
@@ -128,7 +128,7 @@ class ManagerNavbarService {
 
     // Alias
     const alias = telephony.getAlias();
-    const sortedAlias = this.voipService.constructor.sortServicesByDisplayedName(alias);
+    const sortedAlias = this.tucVoipService.constructor.sortServicesByDisplayedName(alias);
     if (sortedAlias.length) {
       addGroup(
         sortedAlias,
@@ -140,7 +140,7 @@ class ManagerNavbarService {
 
     // Lines
     const lines = telephony.getLines();
-    const sortedLines = this.voipService.constructor.sortServicesByDisplayedName(lines);
+    const sortedLines = this.tucVoipService.constructor.sortServicesByDisplayedName(lines);
     if (sortedLines.length) {
       // Lines
       const sortedSipLines = _.filter(sortedLines, line => ['plugAndFax', 'fax', 'voicefax'].indexOf(line.featureType) === -1);
@@ -154,7 +154,7 @@ class ManagerNavbarService {
       }
 
       // PlugAndFax
-      const sortedPlugAndFaxLines = this.voipService
+      const sortedPlugAndFaxLines = this.tucVoipService
         .constructor.filterPlugAndFaxServices(sortedLines);
       if (sortedPlugAndFaxLines.length) {
         addGroup(
@@ -166,7 +166,7 @@ class ManagerNavbarService {
       }
 
       // Fax
-      const sortedFaxLines = this.voipService.constructor.filterFaxServices(sortedLines);
+      const sortedFaxLines = this.tucVoipService.constructor.filterFaxServices(sortedLines);
       if (sortedFaxLines.length) {
         addGroup(
           sortedFaxLines,
@@ -185,7 +185,7 @@ class ManagerNavbarService {
       return this.$q.when(undefined);
     }
 
-    return this.telecomVoip
+    return this.tucTelecomVoip
       .fetchAll()
       .then(result => _.map(result, (item) => {
         const itemLink = {

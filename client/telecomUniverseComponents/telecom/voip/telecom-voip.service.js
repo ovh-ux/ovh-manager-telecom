@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 /**
  *  @ngdoc overview
  *  @name managerApp
@@ -13,10 +15,10 @@
 
 /**
  *  @ngdoc service
- *  @name managerApp.service:telecomVoip
+ *  @name managerApp.service:tucTelecomVoip
  *
- *  @requires managerApp.service:voipBillingAccount
- *  @requires managerApp.service:voipService
+ *  @requires managerApp.service:tucVoipBillingAccount
+ *  @requires managerApp.service:tucVoipService
  *
  *  @description
  *  <p>This service is the beginning of everything :-)
@@ -26,16 +28,18 @@
  *    and services like it has been done in a bad way :-)</p>
  *  <p>Groups cache will be removed and everything will be refreshed by APIv7 calls.</p>
  */
-angular.module('managerApp').service('telecomVoip', class {
-  constructor(voipBillingAccount, voipService) {
-    this.voipBillingAccount = voipBillingAccount;
-    this.voipService = voipService;
+export default class {
+  constructor(tucVoipBillingAccount, tucVoipService) {
+    'ngInject';
+
+    this.tucVoipBillingAccount = tucVoipBillingAccount;
+    this.tucVoipService = tucVoipService;
   }
 
   /**
    *  @ngdoc method
-   *  @name managerApp.service:telecomVoip#fetchAll
-   *  @methodOf managerApp.service:telecomVoip
+   *  @name managerApp.service:tucTelecomVoip#fetchAll
+   *  @methodOf managerApp.service:tucTelecomVoip
    *
    *  @description
    *  Fetch all (billing accounts and associated services) of connected user.
@@ -47,9 +51,9 @@ angular.module('managerApp').service('telecomVoip', class {
    *  @return {Promise} That returns all services grouped by billing accounts.
    */
   fetchAll(withError = true) {
-    return this.voipBillingAccount
+    return this.tucVoipBillingAccount
       .fetchAll(withError)
-      .then(billingAccounts => this.voipService.fetchAll(withError).then((services) => {
+      .then(billingAccounts => this.tucVoipService.fetchAll(withError).then((services) => {
         billingAccounts.forEach(billingAccount => billingAccount.addServices(_.filter(services, {
           billingAccount: billingAccount.billingAccount,
         })));
@@ -57,4 +61,4 @@ angular.module('managerApp').service('telecomVoip', class {
         return billingAccounts;
       }));
   }
-});
+}

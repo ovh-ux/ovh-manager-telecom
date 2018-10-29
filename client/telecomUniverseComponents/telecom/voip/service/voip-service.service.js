@@ -1,28 +1,33 @@
+import angular from 'angular';
+import _ from 'lodash';
+
 /**
  *  @ngdoc service
- *  @name managerApp.service:voipService
+ *  @name managerApp.service:tucVoipService
  *
  *  @requires OvhApiTelephony from ovh-api-services
- *  @requires managerApp.object:VoipService
- *  @requires managerApp.object:VoipServiceAlias
- *  @requires managerApp.object:VoipServiceLine
+ *  @requires managerApp.object:TucVoipService
+ *  @requires managerApp.object:TucVoipServiceAlias
+ *  @requires managerApp.object:TucVoipServiceLine
  *
  *  @description
  *  Service that manage API calls to `/telephony/{billingAccount}/service/{serviceName}`.
  *  It will differenciate alias and line service types.
  */
-angular.module('managerApp').service('voipService', class {
-  constructor(OvhApiTelephony, VoipService, VoipServiceAlias, VoipServiceLine) {
+export default class {
+  constructor(OvhApiTelephony, TucVoipService, TucVoipServiceAlias, TucVoipServiceLine) {
+    'ngInject';
+
     this.OvhApiTelephony = OvhApiTelephony;
-    this.VoipService = VoipService;
-    this.VoipServiceAlias = VoipServiceAlias;
-    this.VoipServiceLine = VoipServiceLine;
+    this.TucVoipService = TucVoipService;
+    this.TucVoipServiceAlias = TucVoipServiceAlias;
+    this.TucVoipServiceLine = TucVoipServiceLine;
   }
 
   /**
    *  @ngdoc method
-   *  @name managerApp.service:voipService#fetchAll
-   *  @methodOf managerApp.service:voipService
+   *  @name managerApp.service:tucVoipService#fetchAll
+   *  @methodOf managerApp.service:tucVoipService
    *
    *  @description
    *  Get all the service of connected user using API v7.
@@ -31,7 +36,7 @@ angular.module('managerApp').service('voipService', class {
    *                                      Should be replaced with better filters when APIv7
    *                                      will be able to filter by status code (SOON !!).
    *
-   *  @return {Promise} That return an Array of VoipService instances.
+   *  @return {Promise} That return an Array of TucVoipService instances.
    */
   fetchAll(withError = true) {
     return this.OvhApiTelephony.Service().v7().query().aggregate('billingAccount')
@@ -41,7 +46,7 @@ angular.module('managerApp').service('voipService', class {
 
         // same remark as above :-)
         if (res.error || (_.keys(res.value).length === 1 && _.has(res.value, 'message'))) {
-          return new this.VoipService({
+          return new this.TucVoipService({
             billingAccount,
             serviceName: res.key,
             error: res.error || res.value.message,
@@ -50,14 +55,14 @@ angular.module('managerApp').service('voipService', class {
 
         // ensure that billingAccount option is setted
         _.set(res.value, 'billingAccount', billingAccount);
-        return this._constructService(res.value);
+        return this._constructService(res.value); // eslint-disable-line
       }).value());
   }
 
   /**
    *  @ngdoc method
-   *  @name managerApp.service:voipService#fetchSingleService
-   *  @methodOf managerApp.service:voipService
+   *  @name managerApp.service:tucVoipService#fetchSingleService
+   *  @methodOf managerApp.service:tucVoipService
    *
    *  @description
    *  <p>Use API to get single service of given billingAccount and serviceName.</p>
@@ -66,7 +71,7 @@ angular.module('managerApp').service('voipService', class {
    *  @param  {String} billingAccount The billingAccount to which is attached the service.
    *  @param  {String} serviceName    The unique id of the service.
    *
-   *  @return {Promise}   That returns a VoipService instance representing the fetched service.
+   *  @return {Promise}   That returns a TucVoipService instance representing the fetched service.
    */
   fetchSingleService(billingAccount, serviceName) {
     return this.OvhApiTelephony.Service().v6().get({
@@ -75,7 +80,7 @@ angular.module('managerApp').service('voipService', class {
     }).$promise.then((result) => {
       // ensure billingAccount is setted
       _.set(result, 'billingAccount', billingAccount);
-      return this._constructService(result);
+      return this._constructService(result); // eslint-disable-line
     });
   }
 
@@ -85,8 +90,8 @@ angular.module('managerApp').service('voipService', class {
 
   /**
    *  @ngdoc method
-   *  @name managerApp.service:voipService#fetchDiagnosticReports
-   *  @methodOf managerApp.service:voipService
+   *  @name managerApp.service:tucVoipService#fetchDiagnosticReports
+   *  @methodOf managerApp.service:tucVoipService
    *
    *  @description
    *  <p>Use API to fetch relevant informations of the service detected from the MOS
@@ -110,13 +115,14 @@ angular.module('managerApp').service('voipService', class {
 
   /**
    *  @ngdoc method
-   *  @name managerApp.service:voipService#fetchServiceDiagnosticReports
-   *  @methodOf managerApp.service:voipService
+   *  @name managerApp.service:tucVoipService#fetchServiceDiagnosticReports
+   *  @methodOf managerApp.service:tucVoipService
    *
    *  @description
-   *  <p>Same as `fetchDiagnosticReports` but taking in argument a VoipService instance.</p>
+   *  <p>Same as `fetchDiagnosticReports` but taking in argument a TucVoipService instance.</p>
    *
-   *  @param  {VoipService} service   The VoipService instance you want to fetch diagnostic reports.
+   *  @param  {TucVoipService} service   The TucVoipService instance you want to fetch
+   *                                     diagnostic reports.
    *  @param  {String} dayInterval    Number of days from now that you want to get report.
    *
    *  @return {Promise}   That returns an Array of {@link http://jean-baptiste.devs.ria.ovh.net/rico/#/telephony/%7BbillingAccount%7D/service/%7BserviceName%7D/diagnosticReports#GET `telephony.DiagnosticReport`} objects.
@@ -135,8 +141,8 @@ angular.module('managerApp').service('voipService', class {
 
   /**
    *  @ngdoc method
-   *  @name managerApp.service:voipService#filterAliasServices
-   *  @methodOf managerApp.service:voipService
+   *  @name managerApp.service:tucVoipService#filterAliasServices
+   *  @methodOf managerApp.service:tucVoipService
    *
    *  @description
    *  Filter the services of given services list that match alias serviceType.
@@ -153,8 +159,8 @@ angular.module('managerApp').service('voipService', class {
 
   /**
    *  @ngdoc method
-   *  @name managerApp.service:voipService#filterLineServices
-   *  @methodOf managerApp.service:voipService
+   *  @name managerApp.service:tucVoipService#filterLineServices
+   *  @methodOf managerApp.service:tucVoipService
    *
    *  @description
    *  Filter the services of given services list that match line serviceType.
@@ -173,8 +179,8 @@ angular.module('managerApp').service('voipService', class {
 
   /**
    *  @ngdoc method
-   *  @name managerApp.service:voipService#filterPlugAndFaxServices
-   *  @methodOf managerApp.service:voipService
+   *  @name managerApp.service:tucVoipService#filterPlugAndFaxServices
+   *  @methodOf managerApp.service:tucVoipService
    *
    *  @description
    *  Filter the services of given services list that match plugAndFax featureType.
@@ -191,8 +197,8 @@ angular.module('managerApp').service('voipService', class {
 
   /**
    *  @ngdoc method
-   *  @name managerApp.service:voipService#filterFaxServices
-   *  @methodOf managerApp.service:voipService
+   *  @name managerApp.service:tucVoipService#filterFaxServices
+   *  @methodOf managerApp.service:tucVoipService
    *
    *  @description
    *  Filter the services of given services list that match fax featureType.
@@ -209,8 +215,8 @@ angular.module('managerApp').service('voipService', class {
 
   /**
    *  @ngdoc method
-   *  @name managerApp.service:voipService#sortServicesByDisplayedName
-   *  @methodOf managerApp.service:voipService
+   *  @name managerApp.service:tucVoipService#sortServicesByDisplayedName
+   *  @methodOf managerApp.service:tucVoipService
    *
    *  @description
    *  Sort given services list by displayed name.
@@ -225,8 +231,8 @@ angular.module('managerApp').service('voipService', class {
   }
 
   /* ==============================
-    =            Private            =
-    =============================== */
+  =            Private            =
+  =============================== */
 
   /**
    *  @description
@@ -235,20 +241,20 @@ angular.module('managerApp').service('voipService', class {
    *
    *  @private
    *
-   *  @param  {Object} options The options needed for creating a new VoipService instance
-   *                           (see VoipService constructor for more details).
-   *  @return {VoipService}    The good instance type of VoipService.
+   *  @param  {Object} options The options needed for creating a new TucVoipService instance
+   *                           (see TucVoipService constructor for more details).
+   *  @return {TucVoipService}    The good instance type of TucVoipService.
    */
   _constructService(options) {
     switch (options.serviceType) {
       case 'alias':
-        return new this.VoipServiceAlias(options);
+        return new this.TucVoipServiceAlias(options);
       case 'line':
-        return new this.VoipServiceLine(options);
+        return new this.TucVoipServiceLine(options);
       default:
         throw new Error(`${options.serviceType} serviceType is not supported`);
     }
   }
 
   /* -----  End of Private  ------ */
-});
+}

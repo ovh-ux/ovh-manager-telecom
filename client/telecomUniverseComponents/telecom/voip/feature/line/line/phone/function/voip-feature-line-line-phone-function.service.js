@@ -1,6 +1,8 @@
+import angular from 'angular';
+
 /**
  *  @ngdoc service
- *  @name managerApp.service:voipLinePhoneFunction
+ *  @name managerApp.service:tucVoipLinePhoneFunction
  *
  *  @description
  *  <p>Service that manage function keys of phone linked to sip and mgcp features
@@ -8,24 +10,26 @@
  *  <p>This service will manage API calls to
  *    `/telephony/{billingAccount}/line/{serviceName}/phone/functionKey/{keyNum}`</p>
  */
-angular.module('managerApp').service('voipLinePhoneFunction', class {
-  constructor($q, OvhApiTelephony, VoipLinePhoneFunction) {
+export default class {
+  constructor($q, OvhApiTelephony, TucVoipLinePhoneFunction) {
+    'ngInject';
+
     this.$q = $q;
     this.OvhApiTelephony = OvhApiTelephony;
-    this.VoipLinePhoneFunction = VoipLinePhoneFunction;
+    this.TucVoipLinePhoneFunction = TucVoipLinePhoneFunction;
   }
 
   /**
    * @ngdoc method
-   * @name managerApp.service:voipLinePhoneFunction#fetchAll
-   * @methodOf managerApp.service:voipLinePhoneFunction
+   * @name managerApp.service:tucVoipLinePhoneFunction#fetchAll
+   * @methodOf managerApp.service:tucVoipLinePhoneFunction
    *
    * @description
    *  Fetch all function keys of all phone of all services of serviceType line
    *  with featureType sip or mgcp from any billingAccount.
    *  This use APIv7 with wildcard and aggregation to achieve it.
    *
-   * @return {Promise}  That return an array of VoipLinePhoneFunction instances.
+   * @return {Promise}  That return an array of TucVoipLinePhoneFunction instances.
    */
   fetchAll() {
     return this.OvhApiTelephony.Line().Phone().FunctionKey().v7()
@@ -42,7 +46,7 @@ angular.module('managerApp').service('voipLinePhoneFunction', class {
           serviceName: splittedPath[4],
         });
 
-        return new this.VoipLinePhoneFunction(functionKeysOptions);
+        return new this.TucVoipLinePhoneFunction(functionKeysOptions);
       }));
   }
-});
+}

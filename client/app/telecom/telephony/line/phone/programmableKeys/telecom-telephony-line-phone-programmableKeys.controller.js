@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyLinePhoneProgammableKeysCtrl', function ($translate, TelephonyMediator, $stateParams, $uibModal, TucToast, OvhApiTelephony, telephonyBulk, voipLinePhoneFunction) {
+angular.module('managerApp').controller('TelecomTelephonyLinePhoneProgammableKeysCtrl', function ($translate, TelephonyMediator, $stateParams, $uibModal, TucToast, OvhApiTelephony, telephonyBulk, tucVoipLinePhoneFunction) {
   const self = this;
 
   self.loading = {
@@ -108,7 +108,7 @@ angular.module('managerApp').controller('TelecomTelephonyLinePhoneProgammableKey
   self.filterServices = function (services) {
     const filteredServices = _.filter(services, service => ['sip', 'mgcp'].indexOf(service.featureType) > -1);
 
-    return voipLinePhoneFunction
+    return tucVoipLinePhoneFunction
       .fetchAll()
       .then(voipLinePhoneFunctions => _.filter(
         filteredServices,

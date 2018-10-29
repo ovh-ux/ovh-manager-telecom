@@ -1,6 +1,8 @@
+import angular from 'angular';
+
 /**
  *  @ngdoc service
- *  @name managerApp.service:voipLinePhone
+ *  @name managerApp.service:tucVoipLinePhone
  *
  *  @description
  *  <p>Service that manage phone linked to sip and mgcp features of services
@@ -8,23 +10,25 @@
  *  <p>This service will manage API calls to
  *    `/telephony/{billingAccount}/line/{serviceName}/phone`</p>
  */
-angular.module('managerApp').service('voipLinePhone', class {
-  constructor(VoipLinePhone, voipService, OvhApiTelephony) {
-    this.VoipLinePhone = VoipLinePhone;
-    this.voipService = voipService;
+export default class {
+  constructor(TucVoipLinePhone, tucVoipService, OvhApiTelephony) {
+    'ngInject';
+
+    this.TucVoipLinePhone = TucVoipLinePhone;
+    this.tucVoipService = tucVoipService;
     this.OvhApiTelephony = OvhApiTelephony;
   }
 
   /**
    *  @ngdoc method
-   *  @name managerApp.service:voipLinePhone#fetchAll
-   *  @methodOf managerApp.service:voipLinePhone
+   *  @name managerApp.service:tucVoipLinePhone#fetchAll
+   *  @methodOf managerApp.service:tucVoipLinePhone
    *
    *  @description
    *  Fetch all phone of all services of serviceType line with featureType sip
    *  or mgcp from any billingAccount. This use APIv7 with wildcard and aggregation to achieve it.
    *
-   *  @return {Promise}   That return an array of VoipLinePhone instances.
+   *  @return {Promise}   That return an array of TucVoipLinePhone instances.
    */
   fetchAll() {
     return this.OvhApiTelephony.Line().Phone().v7().query()
@@ -44,10 +48,10 @@ angular.module('managerApp').service('voipLinePhone', class {
             serviceName: splittedPath[4],
           });
 
-          phoneList.push(new this.VoipLinePhone(phoneOptions));
+          phoneList.push(new this.TucVoipLinePhone(phoneOptions));
         });
 
         return phoneList;
       });
   }
-});
+}

@@ -1,27 +1,29 @@
+import _ from 'lodash';
+
 /**
  *  @ngdoc object
- *  @name managerApp.object:VoipServiceLine
+ *  @name managerApp.object:TucVoipServiceLine
  *
  *  @description
- *  <p>Inherits from {@link managerApp.object:VoipService VoipService}.</p>
+ *  <p>Inherits from {@link managerApp.object:TucVoipService TucVoipService}.</p>
  *  <p>This factory doesn't describe any API return. The API that describes
  *    the most this factory is `/telephony/{billingAccount}/service/{serviceName}`.</p>
  *
  *  @constructor
- *  @param {Object} options Options required for creating a new instance of VoipServiceLine
- *                          (see {@link managerApp.object:VoipService `VoipService` constructor}
+ *  @param {Object} options Options required for creating a new instance of TucVoipServiceLine
+ *                  (see {@link managerApp.object:TucVoipService `TucVoipService` constructor}
  *                          for availables options properties).
  */
-angular.module('managerApp').factory('VoipServiceLine', (VoipService) => {
-  class VoipServiceLine extends VoipService {
+export default /* @ngInject */ (TucVoipService) => {
+  class TucVoipServiceLine extends TucVoipService {
     constructor(options = {}) {
       super(options);
     }
 
     /**
      *  @ngdoc method
-     *  @name managerApp.object:VoipServiceLine#getRealFeatureType
-     *  @propertyOf managerApp.object:VoipServiceLine
+     *  @name managerApp.object:TucVoipServiceLine#getRealFeatureType
+     *  @propertyOf managerApp.object:TucVoipServiceLine
      *
      *  @description
      *  Get the real feature type of a service. Useful to get trunk lines.
@@ -34,8 +36,8 @@ angular.module('managerApp').factory('VoipServiceLine', (VoipService) => {
 
     /**
      *  @ngdoc method
-     *  @name managerApp.object:VoipServiceLine#isSipTrunk
-     *  @propertyOf managerApp.object:VoipServiceLine
+     *  @name managerApp.object:TucVoipServiceLine#isSipTrunk
+     *  @propertyOf managerApp.object:TucVoipServiceLine
      *
      *  @description
      *  Helper that try to check if the service offer is trunk or not.
@@ -49,8 +51,8 @@ angular.module('managerApp').factory('VoipServiceLine', (VoipService) => {
 
     /**
      *  @ngdoc method
-     *  @name managerApp.object:VoipServiceLine#isSipTrunkRates
-     *  @propertyOf managerApp.object:VoipServiceLine
+     *  @name managerApp.object:TucVoipServiceLine#isSipTrunkRates
+     *  @propertyOf managerApp.object:TucVoipServiceLine
      *
      *  @description
      *  Helper that try to check if the service offer is trunk rates or not.
@@ -62,5 +64,5 @@ angular.module('managerApp').factory('VoipServiceLine', (VoipService) => {
     }
   }
 
-  return VoipServiceLine;
-});
+  return TucVoipServiceLine;
+};

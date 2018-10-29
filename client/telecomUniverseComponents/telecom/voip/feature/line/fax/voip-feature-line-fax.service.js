@@ -1,32 +1,37 @@
+import angular from 'angular';
+import _ from 'lodash';
+
 /**
  *  @ngdoc service
- *  @name managerApp.service:voipFax
+ *  @name managerApp.service:tucVoipFax
  *
  *  @requires OvhApiTelephony from ovh-api-services
- *  @requires managerApp.object:VoipLineFeature
+ *  @requires managerApp.object:TucVoipLineFeature
  *
  *  @description
  *  <p>Describe a service that manage fax and freefax feature types.</p>
  *  <p>This service will manage API calls to `/telephony/{billingAccount}/fax/{serviceName}` (see {@link https://eu.api.ovh.com/console/#/telephony/%7BbillingAccount%7D/fax#GET telephony fax APIs})</p>
  */
-angular.module('managerApp').service('voipFax', class {
-  constructor(OvhApiTelephony, VoipLineFeature) {
+export default class {
+  constructor(OvhApiTelephony, TucVoipLineFeature) {
+    'ngInject';
+
     this.OvhApiTelephony = OvhApiTelephony;
-    this.VoipLineFeature = VoipLineFeature;
+    this.TucVoipLineFeature = TucVoipLineFeature;
   }
 
   /**
    *  @ngdoc method
-   *  @name managerApp.service:voipFax#fetchFeature
-   *  @methodOf managerApp.service:voipFax
+   *  @name managerApp.service:tucVoipFax#fetchFeature
+   *  @methodOf managerApp.service:tucVoipFax
    *
    *  @description
    *  <p>Fetch a fax feature from a service.</p>
    *  <p>Manage call to `GET /telephony/{billingAccount}/fax/{serviceName}`.</p>
    *
-   *  @param {VoipService} service    A `VoipService` instance.
+   *  @param {TucVoipService} service    A `TucVoipService` instance.
    *
-   *  @return {Promise}   That return a `VoipLineFeature` instance.
+   *  @return {Promise}   That return a `TucVoipLineFeature` instance.
    */
   fetchFeature(service) {
     return this.OvhApiTelephony.Fax().v6().get({
@@ -34,12 +39,12 @@ angular.module('managerApp').service('voipFax', class {
       serviceName: service.serviceName,
     }).$promise.then((featureOptions) => {
       // create an instance of the feature with it's options
-      const feature = new this.VoipLineFeature(angular.extend(featureOptions, {
+      const feature = new this.TucVoipLineFeature(angular.extend(featureOptions, {
         billingAccount: service.billingAccount,
         featureType: service.featureType,
       }));
 
-      // set service feature with VoipLineFeature instance previously created
+      // set service feature with TucVoipLineFeature instance previously created
       _.set(service, 'feature', feature);
 
       return service.feature;
@@ -48,17 +53,17 @@ angular.module('managerApp').service('voipFax', class {
 
   /**
    *  @ngdoc method
-   *  @name managerApp.service:voipFax#saveFeature
-   *  @methodOf managerApp.service:voipFax
+   *  @name managerApp.service:tucVoipFax#saveFeature
+   *  @methodOf managerApp.service:tucVoipFax
    *
    *  @description
    *  <p>Save a fax feature.</p>
    *  <p>Manage call to `PUT /telephony/{billingAccount}/fax/{serviceName}`.</p>
    *
-   *  @param {VoipLineFeature}    feature    The `VoipLineFeature` instance to save.
-   *  @param {Object}             options    The new options of the `VoipLineFeature` instance.
+   *  @param {TucVoipLineFeature}    feature    The `TucVoipLineFeature` instance to save.
+   *  @param {Object}             options    The new options of the `TucVoipLineFeature` instance.
    *
-   *  @return {Promise}   That return the `VoipLineFeature` instance with saved value.
+   *  @return {Promise}   That return the `TucVoipLineFeature` instance with saved value.
    */
   saveFeature(feature, featureOptions) {
     return this.OvhApiTelephony.Fax().v6().edit({
@@ -69,4 +74,4 @@ angular.module('managerApp').service('voipFax', class {
       feature.setOptions(featureOptions);
     });
   }
-});
+}

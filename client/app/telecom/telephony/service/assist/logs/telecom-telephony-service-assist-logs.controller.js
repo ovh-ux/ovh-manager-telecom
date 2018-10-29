@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyServiceAssistLogsCtrl', function ($q, $translate, $state, $stateParams, voipService, voipLineFeature, OvhApiMe, TucToast, PAGINATION_PER_PAGE, telephonyBulk) {
+angular.module('managerApp').controller('TelecomTelephonyServiceAssistLogsCtrl', function ($q, $translate, $state, $stateParams, tucVoipService, tucVoipLineFeature, OvhApiMe, TucToast, PAGINATION_PER_PAGE, telephonyBulk) {
   const self = this;
 
   self.service = null;
@@ -37,7 +37,7 @@ angular.module('managerApp').controller('TelecomTelephonyServiceAssistLogsCtrl',
   self.onLogsFrequencySelectChange = function () {
     self.loading.refresh = true;
 
-    return voipService
+    return tucVoipService
       .fetchServiceDiagnosticReports(self.service, self.model.dayInterval)
       .then((logs) => {
         self.logs = logs;
@@ -98,7 +98,7 @@ angular.module('managerApp').controller('TelecomTelephonyServiceAssistLogsCtrl',
     }
 
     // save notifications
-    return voipLineFeature.saveFeature(self.service.feature, {
+    return tucVoipLineFeature.saveFeature(self.service.feature, {
       notifications: self.edition.notifications,
     }).catch((error) => {
       TucToast.error([$translate.instant('telephony_line_assist_support_logs_save_error'), _.get(error, 'data.message', '')].join(' '));
@@ -119,7 +119,7 @@ angular.module('managerApp').controller('TelecomTelephonyServiceAssistLogsCtrl',
   self.$onInit = function () {
     self.loading.init = true;
 
-    return voipService
+    return tucVoipService
       .fetchSingleService($stateParams.billingAccount, $stateParams.serviceName)
       .then((service) => {
         self.service = service;
@@ -128,7 +128,7 @@ angular.module('managerApp').controller('TelecomTelephonyServiceAssistLogsCtrl',
         self.type = self.service.featureType === 'fax' ? 'fax' : 'line';
 
         return $q.all({
-          feature: voipLineFeature.fetchFeature(service),
+          feature: tucVoipLineFeature.fetchFeature(service),
           logs: self.onLogsFrequencySelectChange(),
         });
       }).catch((error) => {

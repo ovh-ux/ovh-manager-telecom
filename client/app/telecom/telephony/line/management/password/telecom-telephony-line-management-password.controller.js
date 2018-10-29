@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyLinePasswordCtrl', function ($scope, $state, $stateParams, TucToast, $q, $translate, OvhApiTelephony, telephonyBulk, voipLine) {
+angular.module('managerApp').controller('TelecomTelephonyLinePasswordCtrl', function ($scope, $state, $stateParams, TucToast, $q, $translate, OvhApiTelephony, telephonyBulk, tucVoipLine) {
   const self = this;
 
   self.init = function () {
@@ -32,7 +32,7 @@ angular.module('managerApp').controller('TelecomTelephonyLinePasswordCtrl', func
   self.filterServices = function (services) {
     const filteredServices = _.filter(services, service => ['sip'].indexOf(service.featureType) > -1);
 
-    const promises = _.map(filteredServices, service => voipLine.fetchLineInfo(service));
+    const promises = _.map(filteredServices, service => tucVoipLine.fetchLineInfo(service));
 
     return $q.allSettled(promises)
       .then(listLines => listLines)

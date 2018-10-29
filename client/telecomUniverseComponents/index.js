@@ -26,6 +26,7 @@ import tucTelecomRetractation from './telecom/retractation';
 import tucTelecomSms from './telecom/sms';
 import tucTelecomTelephony from './telecom/telephony';
 import tucTelecomV4Links from './telecom/v4-links';
+import tucTelecomVoip from './telecom/voip';
 import tucToaster from './toaster';
 import tucToastError from './toast-error';
 import tucUiSortableHelpers from './uiSortableHelpers';
@@ -62,6 +63,7 @@ angular
     tucTelecomSms,
     tucTelecomTelephony,
     tucTelecomV4Links,
+    tucTelecomVoip,
     tucToaster,
     tucToastError,
     tucUiSortableHelpers,

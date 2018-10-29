@@ -1,9 +1,9 @@
 /**
  *  @ngdoc service
- *  @name managerApp.service:voipLineFeature
+ *  @name managerApp.service:tucVoipLineFeature
  *
- *  @requires managerApp.service:voipLine
- *  @requires managerApp.service:voipFax
+ *  @requires managerApp.service:tucVoipLine
+ *  @requires managerApp.service:tucVoipFax
  *  @requires OvhApiTelephony from ovh-api-services
  *
  *  @description
@@ -12,66 +12,68 @@
  *  <p>This service will manage API calls to `/telephony/{billingAccount}/line/{serviceName}`
  *    and `/telephony/{billingAccount}/fax/{serviceName}`</p>
  */
-angular.module('managerApp').service('voipLineFeature', class {
-  constructor(voipLine, voipFax, OvhApiTelephony) {
-    this.voipLine = voipLine;
-    this.voipFax = voipFax;
+export default class {
+  constructor(tucVoipLine, tucVoipFax, OvhApiTelephony) {
+    'ngInject';
+
+    this.tucVoipLine = tucVoipLine;
+    this.tucVoipFax = tucVoipFax;
     this.OvhApiTelephony = OvhApiTelephony;
   }
 
   /**
    *  @ngdoc method
-   *  @name managerApp.service:voipLineFeature#fetchFeature
-   *  @methodOf managerApp.service:voipLineFeature
+   *  @name managerApp.service:tucVoipLineFeature#fetchFeature
+   *  @methodOf managerApp.service:tucVoipLineFeature
    *
    *  @description
-   *  Fetch feature from a service. Will let the good sub-service (`voipLine` or `voipFax`)
+   *  Fetch feature from a service. Will let the good sub-service (`tucVoipLine` or `tucVoipFax`)
    *  managing the good API call.
    *
-   *  @param {VoipService} service    A `VoipService` instance.
+   *  @param {TucVoipService} service    A `TucVoipService` instance.
    *
-   *  @return {Promise}   That return a `VoipFeature` instance.
+   *  @return {Promise}   That return a `TucVoipFeature` instance.
    */
   fetchFeature(service) {
     // first check featureType of the service
     if (this.constructor.isFax(service.featureType)) {
       // if fax or freefax - let the fax service fetch the feature
-      return this.voipFax.fetchFeature(service);
+      return this.tucVoipFax.fetchFeature(service);
     }
 
     // otherwise let the line service fetch the feature
-    return this.voipLine.fetchFeature(service);
+    return this.tucVoipLine.fetchFeature(service);
   }
 
   /**
    *  @ngdoc method
-   *  @name managerApp.service:voipLineFeature#saveFeature
-   *  @methodOf managerApp.service:voipLineFeature
+   *  @name managerApp.service:tucVoipLineFeature#saveFeature
+   *  @methodOf managerApp.service:tucVoipLineFeature
    *
    *  @description
-   *  Save a feature by letting the good sub-service (`voipLine` or `voipFax`)
+   *  Save a feature by letting the good sub-service (`tucVoipLine` or `tucVoipFax`)
    *  managing the good API call.
    *
-   *  @param {VoipFeature}    feature    The `VoipFeature` instance to save.
-   *  @param {Object}         options    The new options of the `VoipFeature` instance.
+   *  @param {TucVoipFeature}    feature    The `TucVoipFeature` instance to save.
+   *  @param {Object}         options    The new options of the `TucVoipFeature` instance.
    *
-   *  @return {Promise}   That return the `VoipFeature` instance with saved value.
+   *  @return {Promise}   That return the `TucVoipFeature` instance with saved value.
    */
   saveFeature(feature, options) {
     // first check featureType of the service
     if (this.constructor.isFax(feature.featureType)) {
       // if fax or freefax - let the fax service save the feature
-      return this.voipFax.saveFeature(feature, options);
+      return this.tucVoipFax.saveFeature(feature, options);
     }
 
     // otherwise let the line service save the feature
-    return this.voipLine.saveFeature(feature, options);
+    return this.tucVoipLine.saveFeature(feature, options);
   }
 
   /**
    *  @ngdoc method
-   *  @name managerApp.service:voipLineFeature#isFax
-   *  @methodOf managerApp.service:voipLineFeature
+   *  @name managerApp.service:tucVoipLineFeature#isFax
+   *  @methodOf managerApp.service:tucVoipLineFeature
    *
    *  @description
    *  Determine if the given feature type is fax type (and so managed by /fax API routes).
@@ -83,4 +85,4 @@ angular.module('managerApp').service('voipLineFeature', class {
   static isFax(featureType) {
     return ['fax', 'freefax'].indexOf(featureType) > -1;
   }
-});
+}
