@@ -318,6 +318,7 @@ angular.module('managerApp').constant('LANGUAGES', {
     domain: 'https://www.ovh.com/fr/domaines/tarifs/',
     internet: {
       xdsl: 'https://www.ovhtelecom.fr/adsl/',
+      fiber: 'https://www.ovhtelecom.fr/fibre/',
       enterprise: 'https://www.ovhtelecom.fr/adsl/entreprise/',
       rescue: 'https://www.ovhtelecom.fr/adsl/connexion-de-secours.xml',
       sdsl: 'https://www.ovhtelecom.fr/sdsl/',
