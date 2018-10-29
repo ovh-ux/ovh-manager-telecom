@@ -13,6 +13,7 @@ import tucInputFile from './input-file';
 import tucInputFilter from './input-filter';
 import tucIpAddress from './ipAddress';
 import tucJsplumb from './jsplumb';
+import tucOvhPassword from './ovh-password';
 import tucPhone from './phone';
 import tucSectionBackLink from './section-back-link';
 import tucSlider from './slider';
@@ -48,6 +49,7 @@ angular
     tucInputFilter,
     tucIpAddress,
     tucJsplumb,
+    tucOvhPassword,
     tucPhone,
     tucSectionBackLink,
     tucSlider,

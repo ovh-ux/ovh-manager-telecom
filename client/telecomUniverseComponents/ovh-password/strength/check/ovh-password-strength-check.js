@@ -1,4 +1,4 @@
-angular.module('ovhPasswordStrengthCheck', []).directive('ovhPasswordStrengthCheck', () => ({
+export default () => ({
   restrict: 'A',
   require: '?ngModel',
   link($scope, elem, attr, ngModel) {
@@ -41,4 +41,4 @@ angular.module('ovhPasswordStrengthCheck', []).directive('ovhPasswordStrengthChe
       ngModel.$validate();
     });
   },
-}));
+});

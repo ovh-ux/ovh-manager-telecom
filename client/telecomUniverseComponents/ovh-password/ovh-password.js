@@ -1,11 +1,13 @@
-angular.module('ovhPassword', []).directive('ovhPassword', () => ({
+import template from './ovh-password.html';
+
+export default () => ({
   restrict: 'EA',
   scope: {
     ovhPwd: '=',
     ovhPwdConfirm: '=',
   },
   replace: true,
-  templateUrl: 'components/ovh-password/ovh-password.html',
+  template,
   link($scope) {
     // We use an isolate scope, so define here some properties.
     $scope.password = {};
@@ -20,10 +22,4 @@ angular.module('ovhPassword', []).directive('ovhPassword', () => ({
       $scope.ovhPwdConfirm = newValue;
     });
   },
-}));
-
-angular.module('managerApp').config(($ovhpopoverProvider) => {
-  angular.extend($ovhpopoverProvider.defaults, {
-    animation: 'flat-fade',
-  });
 });

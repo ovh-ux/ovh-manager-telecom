@@ -1,4 +1,6 @@
-angular.module('ovhPasswordStrengthBar', []).directive('ovhPasswordStrengthBar', () => ({
+import _ from 'lodash';
+
+export default () => ({
   restrict: 'A',
   scope: {
     pwd: '=ovhPwdStrength',
@@ -183,4 +185,4 @@ angular.module('ovhPasswordStrengthBar', []).directive('ovhPasswordStrengthBar',
       $scope.value = checkStrength(newValue);
     });
   },
-}));
+});
