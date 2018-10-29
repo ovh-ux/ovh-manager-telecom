@@ -17,6 +17,7 @@ import tucOvhPassword from './ovh-password';
 import tucPhone from './phone';
 import tucResiliation from './resiliation';
 import tucSectionBackLink from './section-back-link';
+import tucShippingModeSelection from './shippingModeSelection';
 import tucSlider from './slider';
 import tucSuccessDrawingCheck from './successDrawingCheck';
 import tucTableSort from './table-sort';
@@ -55,6 +56,7 @@ angular
     tucPhone,
     tucResiliation,
     tucSectionBackLink,
+    tucShippingModeSelection,
     tucSlider,
     tucSuccessDrawingCheck,
     tucTableSort,

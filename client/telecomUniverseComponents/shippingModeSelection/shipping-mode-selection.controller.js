@@ -1,11 +1,12 @@
-angular.module('managerApp').controller('shippingModeSelectionCtrl', function ($q, $translate, $translatePartialLoader) {
+import _ from 'lodash';
+
+export default function () {
   const self = this;
   const allowedModes = ['mondialRelay', 'transporter'];
 
   self.loading = {
     init: false,
     contact: false,
-    translations: false,
   };
 
   self.contactFullList = null;
@@ -54,25 +55,20 @@ angular.module('managerApp').controller('shippingModeSelectionCtrl', function ($
     =            INITIALIZATION            =
     ====================================== */
 
-  function loadTranslations() {
-    self.loading.translations = true;
-    $translatePartialLoader.addPart('../components/shippingModeSelection');
-    return $translate.refresh().finally(() => {
-      self.loading.translations = false;
-    });
-  }
-
   self.$onInit = function () {
     self.loading.init = true;
 
     checkOptions();
 
-    return loadTranslations()
-      .then(() => (self.onInitialized ? self.onInitialized() : []))
-      .finally(() => {
-        self.loading.init = false;
-      });
+    if (self.onInitialized) {
+      self.onInitialized()
+        .finally(() => {
+          self.loading.init = false;
+        });
+    } else {
+      self.loading.init = false;
+    }
   };
 
   /* -----  End of INITIALIZATION  ------*/
-});
+}
