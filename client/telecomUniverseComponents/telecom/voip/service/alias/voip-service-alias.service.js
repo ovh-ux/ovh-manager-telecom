@@ -1,6 +1,8 @@
+import _ from 'lodash';
+
 /**
  *  @ngdoc service
- *  @name managerApp.service:voipServiceAlias
+ *  @name managerApp.service:tucVoipServiceAlias
  *
  *  @requires $q provider
  *  @requires OvhApiTelephony from ovh-api-services
@@ -9,8 +11,10 @@
  *  @description
  *  Service that manage specific API calls for aliases.
  */
-angular.module('managerApp').service('voipServiceAlias', class voipServiceAlias {
+export default class {
   constructor($q, OvhApiTelephony, voipServiceTask) {
+    'ngInject';
+
     this.$q = $q;
     this.OvhApiTelephony = OvhApiTelephony;
     this.voipServiceTask = voipServiceTask;
@@ -18,8 +22,8 @@ angular.module('managerApp').service('voipServiceAlias', class voipServiceAlias 
 
   /**
    *  @ngdoc method
-   *  @name managerApp.service:voipServiceAlias#getConvertToLineTask
-   *  @methodOf managerApp.service:voipServiceAlias
+   *  @name managerApp.service:tucVoipServiceAlias#getConvertToLineTask
+   *  @methodOf managerApp.service:tucVoipServiceAlias
    *
    *  @description
    *  <p>Get pending convertToLine task for a given number.</p>
@@ -46,8 +50,8 @@ angular.module('managerApp').service('voipServiceAlias', class voipServiceAlias 
 
   /**
    *  @ngdoc method
-   *  @name managerApp.service:voipServiceAlias#changeNumberFeatureType
-   *  @methodOf managerApp.service:voipServiceAlias
+   *  @name managerApp.service:tucVoipServiceAlias#changeNumberFeatureType
+   *  @methodOf managerApp.service:tucVoipServiceAlias
    *
    *  @description
    *  <p>Change the feature type of a number.</p>
@@ -80,8 +84,8 @@ angular.module('managerApp').service('voipServiceAlias', class voipServiceAlias 
 
   /**
    *  @ngdoc method
-   *  @name managerApp.service:voipServiceAlias#editDescription
-   *  @methodOf managerApp.service:voipServiceAlias
+   *  @name managerApp.service:tucVoipServiceAlias#editDescription
+   *  @methodOf managerApp.service:tucVoipServiceAlias
    *
    *  @description
    *  <p>Update the description of a number.</p>
@@ -101,8 +105,8 @@ angular.module('managerApp').service('voipServiceAlias', class voipServiceAlias 
 
   /**
    *  @ngdoc method
-   *  @name managerApp.service:voipServiceAlias#isSpecialNumber
-   *  @methodOf managerApp.service:voipServiceAlias
+   *  @name managerApp.service:tucVoipServiceAlias#isSpecialNumber
+   *  @methodOf managerApp.service:tucVoipServiceAlias
    *
    *  @description
    *  <p>Check if number is a special one.</p>
@@ -118,4 +122,55 @@ angular.module('managerApp').service('voipServiceAlias', class voipServiceAlias 
     }).$promise.then(() => true)
       .catch(() => false);
   }
-});
+
+  /**
+   *  @ngdoc method
+   *  @name managerApp.service:tucVoipServiceAlias#fetchRedirectNumber
+   *  @methodOf managerApp.service:tucVoipServiceAlias
+   *
+   *  @description
+   *  <p>Returns the redirect number properties.</p>
+   *
+   *  @param  {VoipService} number (destructured) The given VoipService number.
+   *
+   *  @return {VoipService} The redirect number
+   */
+  fetchRedirectNumber({ billingAccount, serviceName }) {
+    return this.OvhApiTelephony.Redirect().v6().get({
+      billingAccount,
+      featureType: 'redirect',
+      serviceName,
+    }).$promise;
+  }
+
+  /**
+   *  @ngdoc method
+   *  @name managerApp.service:tucVoipServiceAlias#fetchRedirectNumber
+   *  @methodOf managerApp.service:tucVoipServiceAlias
+   *
+   *  @description
+   *  <p>Change the destination number, for a redirect number.</p>
+   *
+   *  @param  {VoipService} number (destructured) The given VoipService number.
+   *  @param  {String}      destination           The number to redirect to
+   *
+   *  @return {Promise}     Polling change destination task that succeed once task is completed
+   */
+  changeDestinationRedirectNumber({ billingAccount, serviceName }, destination) {
+    return this.OvhApiTelephony.Redirect().v6().change({
+      billingAccount,
+      featureType: 'redirect',
+      serviceName,
+    }, { destination }).$promise.then(task => this.voipServiceTask
+      .startPolling(
+        billingAccount,
+        serviceName,
+        task.taskId,
+        {
+          namespace: `redirectChangeDestinationTask_${serviceName}`,
+          interval: 1000,
+          retryMaxAttempts: 0,
+        },
+      )).catch(error => error);
+  }
+}

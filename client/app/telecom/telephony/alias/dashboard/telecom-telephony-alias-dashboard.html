@@ -53,8 +53,7 @@
                              data-ng-attr-alt="{{:: $ctrl.alias.featureType }}">
                     </oui-tile-description>
                 </oui-tile-definition>
-                <oui-tile-definition data-term="{{:: 'telephony_alias_configuration_configuration_type' | translate }}"
-                                     data-description="{{:: $ctrl.featureTypeLabel }}">
+                <oui-tile-definition data-term="{{:: 'telephony_alias_configuration_configuration_type' | translate }}">
                     <oui-tile-description>
                         <p data-translate="{{:: $ctrl.featureTypeLabel }}"></p>
                         <p class="oui-paragraph"
@@ -63,6 +62,9 @@
                         </p>
                     </oui-tile-description>
                 </oui-tile-definition>
+                <oui-tile-definition data-ng-if="$ctrl.alias.featureType === 'redirect'"
+                                     data-term="{{:: 'telephony_alias_configuration_configuration_type_redirect_destination' | translate }}"
+                                     data-description="{{:: $ctrl.redirectionInformations }}"></oui-tile-definition>
                 <div data-ng-if="$ctrl.alias.featureType !== 'empty'">
                     <oui-tile-button data-on-click="$ctrl.$state.go('telecom.telephony.alias.configuration')">
                         <span data-translate="telephony_alias_configuration_configure"></span>

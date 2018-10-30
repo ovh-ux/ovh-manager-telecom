@@ -51,6 +51,7 @@
 
    <translation id="telephony_alias_configuration_configuration_type_conference" qtlid="333074">Conférence</translation>
    <translation id="telephony_alias_configuration_configuration_type_redirect">Redirection</translation>
+   <translation id="telephony_alias_configuration_configuration_type_redirect_destination">Vers la ligne</translation>
    <translation id="telephony_alias_configuration_configuration_type_ddi" qtlid="462576">Redirection avec présentation de ce numéro sur ma ligne SIP ou mon Trunk</translation>
    <translation id="telephony_alias_configuration_configuration_type_conference" qtlid="333074">Conférence</translation>
    <translation id="telephony_alias_configuration_configuration_type_cloudIvr" qtlid="333100">Serveur Vocal Interactif</translation>

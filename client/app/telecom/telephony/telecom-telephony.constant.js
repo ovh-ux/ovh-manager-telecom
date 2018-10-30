@@ -146,10 +146,5 @@
           '0032907',
         ],
       },
-    })
-    .constant('TELEPHONY_ALIAS', {
-      featureTypes: {
-        contactCenterSolution: ['contactCenterSolution', 'easyHunting', 'cloudHunting', 'easyPabx', 'miniPabx', 'oldPabx', 'ovhPabx'],
-      },
     });
 }());

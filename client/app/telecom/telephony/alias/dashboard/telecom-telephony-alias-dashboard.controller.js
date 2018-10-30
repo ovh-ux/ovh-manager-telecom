@@ -1,17 +1,19 @@
 angular.module('managerApp').controller('TelecomTelephonyAliasDashboardController', class TelecomTelephonyAliasHomeController {
   constructor(
-    $state, $stateParams, $translate, $uibModal,
-    TucChartjsFactory, OvhApiTelephony, Toast,
-    voipService,
+    $q, $state, $stateParams, $translate, $uibModal,
+    OvhApiTelephony, TucChartjsFactory, TucToast,
+    tucVoipService, tucVoipServiceAlias,
     TELEPHONY_ALIAS_CONSUMPTION,
   ) {
+    this.$q = $q;
     this.$state = $state;
     this.$translate = $translate;
     this.$uibModal = $uibModal;
-    this.TucChartjsFactory = TucChartjsFactory;
     this.OvhApiTelephony = OvhApiTelephony;
-    this.Toast = Toast;
-    this.voipService = voipService;
+    this.TucChartjsFactory = TucChartjsFactory;
+    this.TucToast = TucToast;
+    this.tucVoipService = tucVoipService;
+    this.tucVoipServiceAlias = tucVoipServiceAlias;
 
     this.TELEPHONY_ALIAS_CONSUMPTION = TELEPHONY_ALIAS_CONSUMPTION;
 
@@ -34,23 +36,47 @@ angular.module('managerApp').controller('TelecomTelephonyAliasDashboardControlle
 
   fetchService() {
     this.loading = true;
-    this.voipService.fetchSingleService(this.billingAccount, this.serviceName).then((alias) => {
-      if (alias) {
-        this.alias = alias;
-        this.featureTypeLabel = this.$translate.instant(`telephony_alias_configuration_configuration_type_${this.alias.featureType}`);
+    return this.tucVoipService.fetchSingleService(this.billingAccount, this.serviceName)
+      .then((alias) => {
+        if (alias) {
+          this.alias = alias;
+          this.featureTypeLabel = this.$translate.instant(`telephony_alias_configuration_configuration_type_${this.alias.featureType}`);
 
-        return this.voipService.getServiceDirectory(alias).then((result) => {
-          this.alias.directory = result.directory;
+          return this.tucVoipService.getServiceDirectory(alias).then(({ directory }) => {
+            this.alias.directory = directory;
 
-          return this.hasConsumption() ? this.fetchServiceConsumption() : result;
-        });
-      }
-      return null;
-    }).catch((error) => {
-      this.Toast.error([this.$translate.instant('telephony_alias_load_error'), _.get(error, 'data.message')].join(' '));
-    }).finally(() => {
-      this.loading = false;
-    });
+            return this.$q.all({
+              consumption: this.hasConsumption() ? this.fetchServiceConsumption() : angular.noop(),
+              redirectionInformations: _.isEqual(this.alias.featureType, 'redirect') ? this.fetchRedirectionInfo() : angular.noop(),
+            }).then(({ redirectionInformations }) => {
+              if (redirectionInformations) {
+                this.redirectionInformations = redirectionInformations.description
+                  || redirectionInformations.serviceName;
+              } else {
+                this.redirectionInformations = this.$translate.instant('common_none');
+              }
+            });
+          });
+        }
+        return null;
+      }).catch((error) => {
+        this.TucToast.error(
+          `${this.$translate.instant('telephony_alias_load_error')} ${_.get(error, 'data.message', error.message)}`,
+        );
+      }).finally(() => {
+        this.loading = false;
+      });
+  }
+
+  fetchRedirectionInfo() {
+    return this.tucVoipServiceAlias.fetchRedirectNumber({
+      billingAccount: this.alias.billingAccount,
+      serviceName: this.alias.serviceName,
+    }).then(({ destination }) => this.tucVoipService.fetchAll().then((allServices) => {
+      const [destinationLine] = allServices
+        .filter(({ serviceName }) => _.isEqual(serviceName, destination));
+      return destinationLine;
+    })).catch(error => error);
   }
 
   fetchServiceConsumption() {
@@ -70,7 +96,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasDashboardControlle
         });
     }
 
-    return this.voipService.getServiceConsumption(this.alias)
+    return this.tucVoipService.getServiceConsumption(this.alias)
       .then((conso) => {
         const incomingCalls = transformIncomingCallsData(conso);
         const outgoingCalls = transformOutgoingCallsData(conso);
@@ -90,6 +116,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasDashboardControlle
         };
 
         this.buildConsumptionChart(incomingCalls, outgoingCalls);
+        return conso;
       });
   }
 
@@ -152,10 +179,10 @@ angular.module('managerApp').controller('TelecomTelephonyAliasDashboardControlle
     }).result.then(() => {
       this.OvhApiTelephony.Service().v6().resetCache();
       this.$state.reload();
-      this.Toast.success(this.$translate.instant('telephony_alias_delete_ok'));
+      this.TucToast.success(this.$translate.instant('telephony_alias_delete_ok'));
     }).catch((error) => {
       if (error) {
-        this.Toast.error(
+        this.TucToast.error(
           `${this.$translate.instant('telephony_alias_delete_ko')} ${_.get(error, 'data.message', error.message)}`,
         );
       }

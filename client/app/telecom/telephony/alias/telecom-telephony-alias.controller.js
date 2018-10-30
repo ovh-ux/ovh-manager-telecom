@@ -2,7 +2,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasCtrl', class Telec
   constructor(
     $q, $state, $stateParams, $translate,
     SidebarMenu, TelephonyMediator, TucToast,
-    tucVoipService, voipServiceAlias,
+    tucVoipService, tucVoipServiceAlias,
   ) {
     this.$q = $q;
     this.$state = $state;
@@ -11,7 +11,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasCtrl', class Telec
     this.TelephonyMediator = TelephonyMediator;
     this.TucToast = TucToast;
     this.tucVoipService = tucVoipService;
-    this.voipServiceAlias = voipServiceAlias;
+    this.tucVoipServiceAlias = tucVoipServiceAlias;
 
     this.billingAccount = $stateParams.billingAccount;
     this.serviceName = $stateParams.serviceName !== 'default' ? $stateParams.serviceName : null;
@@ -36,9 +36,9 @@ angular.module('managerApp').controller('TelecomTelephonyAliasCtrl', class Telec
       if (alias) {
         this.alias = alias;
         return this.$q.all({
-          convertToLineTask: this.voipServiceAlias.getConvertToLineTask(alias),
+          convertToLineTask: this.tucVoipServiceAlias.getConvertToLineTask(alias),
           terminationTask: this.tucVoipService.getTerminationTask(alias),
-          isSpecialNumber: this.voipServiceAlias.isSpecialNumber(alias),
+          isSpecialNumber: this.tucVoipServiceAlias.isSpecialNumber(alias),
         }).then((result) => {
           this.convertTask = result.convertToLineTask;
           this.terminationTask = result.terminationTask;
@@ -65,7 +65,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasCtrl', class Telec
       const oldDescription = this.alias.description;
       this.alias.description = newServiceDescription;
 
-      return this.voipServiceAlias.editDescription(this.alias).then(() => {
+      return this.tucVoipServiceAlias.editDescription(this.alias).then(() => {
         this.SidebarMenu.updateItemDisplay({
           title: this.alias.getDisplayedName(),
         }, this.alias.serviceName, 'telecom-telephony-section', this.alias.billingAccount);

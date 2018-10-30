@@ -1,11 +1,11 @@
 angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationContactCenterSolutionCtrl', class TelecomTelephonyAliasConfigurationContactCenterSolutionCtrl {
-  constructor($state, $translate, $uibModal, alias, OvhApiTelephony, Toast) {
+  constructor($state, $translate, $uibModal, alias, OvhApiTelephony, TucToast) {
     this.$state = $state;
     this.$translate = $translate;
     this.$uibModal = $uibModal;
     this.alias = alias;
     this.OvhApiTelephony = OvhApiTelephony;
-    this.Toast = Toast;
+    this.TucToast = TucToast;
   }
 
   deleteConfiguration() {
@@ -22,7 +22,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationConta
       this.$state.go('telecom.telephony.alias').then(() => { this.$state.reload(); });
     }).catch((error) => {
       if (error) {
-        this.Toast.error(
+        this.TucToast.error(
           `${this.$translate.instant('telephony_alias_delete_ko')} ${_.get(error, 'data.message', error.message)}`,
         );
       }

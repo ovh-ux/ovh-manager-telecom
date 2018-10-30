@@ -17,7 +17,7 @@ angular.module('managerApp').config(($stateProvider) => {
       },
     },
     resolve: {
-      alias: ($stateParams, voipService) => voipService
+      alias: ($stateParams, tucVoipService) => tucVoipService
         .fetchSingleService($stateParams.billingAccount, $stateParams.serviceName)
         .then((alias) => {
           const aliasCopy = _.clone(alias);
@@ -25,6 +25,6 @@ angular.module('managerApp').config(($stateProvider) => {
           return aliasCopy;
         }),
     },
-    translations: ['.'],
+    translations: ['.', '..'],
   });
 });

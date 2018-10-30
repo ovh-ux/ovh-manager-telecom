@@ -1,17 +1,17 @@
 angular.module('managerApp').controller('TelecomTelephonyAliasConfirmDeleteConfigurationCtrl',
   class TelecomTelephonyAliasConfirmDeleteConfigurationCtrl {
-    constructor($uibModalInstance, number, voipServiceAlias) {
+    constructor($uibModalInstance, number, tucVoipServiceAlias) {
       this.$uibModalInstance = $uibModalInstance;
 
       this.number = number;
-      this.voipServiceAlias = voipServiceAlias;
+      this.tucVoipServiceAlias = tucVoipServiceAlias;
     }
 
     confirm() {
       const emptyType = 'empty';
 
       this.loading = true;
-      this.voipServiceAlias.changeNumberFeatureType(this.number, emptyType).then(() => {
+      this.tucVoipServiceAlias.changeNumberFeatureType(this.number, emptyType).then(() => {
         this.$uibModalInstance.close();
       }).catch((error) => {
         this.$uibModalInstance.dismiss(error);

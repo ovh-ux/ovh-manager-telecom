@@ -42,7 +42,7 @@
    <translation id="telephony_alias_configuration_title">Configuration : {{ featureType }}</translation>
    <translation id="telephony_alias_configuration_question_conference">Qu’est-ce que la conférence ?</translation>
    <translation id="telephony_alias_configuration_question_contactCenterSolution">Qu’est-ce qu’une file d’appels ?</translation>
-   <translation id="telephony_alias_configuration_question_redirect">Qu’est-ce que la redirection ?</translation>
+   <translation id="telephony_alias_configuration_question_redirect">Qu’est-ce que la redirection d’appels ?</translation>
    <translation id="telephony_alias_configuration_question_cloudIvr">Qu’est-ce qu’un serveur vocal interactif ?</translation>
    <translation id="telephony_alias_configuration_question_svi">Qu’est-ce qu’un serveur vocal interactif en VXML ?</translation>
    <translation id="telephony_alias_configuration_question_contactCenterSolutionExpert">Qu’est-ce que le Contact Center Solution ?</translation>
@@ -87,9 +87,26 @@
    <translation id="telephony_alias_config_change_type_label_contactCenterSolutionExpert">Contact Center Solution</translation>
    <translation id="telephony_alias_config_change_type_desc_contactCenterSolutionExpert">Avec le mode expert de Contact Center Solution, vous pouvez gérer le flux de vos appels de bout en bout. En fonction des numéros appelants ou des plages horaires, choisissez vous-même votre stratégie. Jouez des sons d'accueils, personnalisez votre musique d'attente, faites sonner les postes de vos différents services.</translation>
 
+   <!-- Contact Center Solution -->
    <translation id="telephony_alias_config_contactCenterSolution_tile_title">Paramétrage file d’appels</translation>
    <translation id="telephony_alias_config_contactCenterSolution_tile_line_management_action">Gestion des lignes dans la file (obligatoire)</translation>
    <translation id="telephony_alias_config_contactCenterSolution_tile_sounds_waiting_management_action">Gestion des sons et de l’attente (facultatif)</translation>
    <translation id="telephony_alias_config_contactCenterSolution_tile_time_condition_scheduler_management_action">Plages horaires et fermetures (conseillé)</translation>
    <translation id="telephony_alias_config_contactCenterSolution_tile_calls_filtering_action">Filtrage des appels (facultatif)</translation>
+
+   <!-- Redirection -->
+   <translation id="telephony_alias_config_redirect_incoming_calls_heading">Vos appels entrants</translation>
+   <translation id="telephony_alias_config_redirect_line_to_redirect">Ligne vers laquelle vos appels seront redirigés</translation>
+   <translation id="telephony_alias_config_redirect_select_line">Sélectionner une ligne</translation>
+   <translation id="telephony_alias_config_redirect_change_line">Modifier la ligne</translation>
+   <translation id="telephony_alias_config_redirect_alert_forbidden_surcharged_number">Veuillez noter que la législation interdit les redirections vers les numéros surtaxés.</translation>
+   <translation id="telephony_alias_config_redirect_convert_to_ccs_helper">Pour faire une redirection vers une ligne externe, il vous faut configurer votre numéro en </translation>
+   <translation id="telephony_alias_config_redirect_get_error">Une erreur est survenue lors de la récupération des informations sur la redirection.</translation>
+   <translation id="telephony_alias_config_redirect_update_success">Les paramètres de la redirection ont été modifiés.</translation>
+   <translation id="telephony_alias_config_redirect_update_error">Une erreur est survenue lors de la modification des paramètres de la redirection.</translation>
+   <translation id="telephony_alias_config_redirect_outgoing_calls_heading">Vos appels sortants</translation>
+   <translation id="telephony_alias_config_redirect_optionnal" qtlid="356264">(facultatif)</translation>
+   <translation id="telephony_alias_config_sip_line_activate_presentation">Activer la présentation de votre numéro lors des appels sortants</translation>
+   <translation id="telephony_alias_config_sip_line_activate_presentation_warning">Attention : si vous avez paramétré la présentation d’un autre numéro sur la ligne, il sera remplacé par ce numéro.</translation>
+
 </translations>

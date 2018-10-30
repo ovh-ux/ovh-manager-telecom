@@ -2,7 +2,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationChang
   constructor(
     $q, $state, $stateParams, $translate, $uibModal,
     OvhApiTelephony, TucToast, tucTelephonyBulk,
-    tucVoipService, voipServiceAlias, tucVoipServiceTask,
+    tucVoipService, tucVoipServiceAlias, tucVoipServiceTask,
   ) {
     this.$q = $q;
     this.$state = $state;
@@ -13,7 +13,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationChang
     this.tucTelephonyBulk = tucTelephonyBulk;
     this.TucToast = TucToast;
     this.tucVoipService = tucVoipService;
-    this.voipServiceAlias = voipServiceAlias;
+    this.tucVoipServiceAlias = tucVoipServiceAlias;
     this.tucVoipServiceTask = tucVoipServiceTask;
   }
 
@@ -94,7 +94,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationChang
   changeType() {
     this.loading = true;
 
-    this.voipServiceAlias.changeNumberFeatureType({
+    this.tucVoipServiceAlias.changeNumberFeatureType({
       billingAccount: this.billingAccount,
       serviceName: this.serviceName,
     }, this.selectedFeatureType.id).then(() => {

@@ -33,6 +33,7 @@
    <translation id="common_criteria_adder_value_label" qtlid="47548">Valeur</translation>
    <translation id="common_criteria_adder_submit_label" qtlid="37923">Ajouter</translation>
 
+   <translation id="common_none" qtlid="30646">Aucun</translation>
    <translation id="common_datagrid_nodata" qtlid="197635">Aucun résultat</translation>
 
    <translation id="common_field_error_required" qtlid="472294">Veuillez compléter ce champ.</translation>
