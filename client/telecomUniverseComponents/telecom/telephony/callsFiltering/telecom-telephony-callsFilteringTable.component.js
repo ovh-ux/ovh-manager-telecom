@@ -1,3 +1,8 @@
+import angular from 'angular';
+import _ from 'lodash';
+
+import template from './telecom-telephony-callsFilteringTable.html';
+
 /**
  * Calls filtering table component.
  *
@@ -10,18 +15,20 @@
  *   getList: returns the component's list of items.
  *
  */
-angular.module('managerApp').component('telecomTelephonyCallsFilteringTable', {
+export default /* @ngInject */ {
   bindings: {
     api: '=',
   },
-  templateUrl: 'components/telecom/telephony/callsFiltering/telecom-telephony-callsFilteringTable.html',
+  template,
   controller(
     $scope, $timeout, $filter, $q, $translate, $translatePartialLoader,
     TucToast, TucToastError,
   ) {
+    'ngInject';
+
     const self = this;
 
-    self.$onInit = function () {
+    self.$onInit = function $onInit() {
       self.screenLists = {
         raw: [],
         paginated: null,
@@ -42,11 +49,11 @@ angular.module('managerApp').component('telecomTelephonyCallsFilteringTable', {
         $timeout.cancel(self.poller);
       });
 
-      self.api.update = function () {
+      self.api.update = function update() {
         self.updateScreenList();
       };
 
-      self.api.getList = function () {
+      self.api.getList = function getList() {
         return angular.copy(self.screenLists.raw);
       };
 
@@ -57,28 +64,28 @@ angular.module('managerApp').component('telecomTelephonyCallsFilteringTable', {
       });
     };
 
-    self.refresh = function () {
+    self.refresh = function refresh() {
       self.isLoading = true;
       return self.updateScreenList().catch(err => new TucToastError(err)).finally(() => {
         self.isLoading = false;
       });
     };
 
-    self.refreshScreenListsPoller = function () {
+    self.refreshScreenListsPoller = function refreshScreenListsPoller() {
       return self.updateScreenList().finally(() => {
         self.poller = $timeout(self.refreshScreenListsPoller, 5000);
       });
     };
 
-    self.getSelection = function () {
+    self.getSelection = function getSelection() {
       return _.filter(self.screenLists.raw, screen => screen && screen.status !== 'delete' && self.screenLists.selected && self.screenLists.selected[screen.id]);
     };
 
-    self.exportSelection = function () {
+    self.exportSelection = function exportSelection() {
       return _.map(self.getSelection(), filter => _.pick(filter, ['callNumber', 'nature', 'type']));
     };
 
-    self.updateScreenList = function () {
+    self.updateScreenList = function updateScreenList() {
       return self.api.fetchAll().then((result) => {
         if (result.length === self.screenLists.raw.length) {
           // update
@@ -98,7 +105,7 @@ angular.module('managerApp').component('telecomTelephonyCallsFilteringTable', {
       });
     };
 
-    self.removeSelectedScreenLists = function () {
+    self.removeSelectedScreenLists = function removeSelectedScreenLists() {
       const screenLists = self.getSelection();
       const queries = screenLists.map(self.api.remove);
       self.screenLists.isDeleting = true;
@@ -112,7 +119,7 @@ angular.module('managerApp').component('telecomTelephonyCallsFilteringTable', {
       });
     };
 
-    self.sortScreenLists = function () {
+    self.sortScreenLists = function sortScreenLists() {
       let data = angular.copy(self.screenLists.raw);
       data = $filter('filter')(data, self.screenLists.filterBy);
       data = $filter('orderBy')(
@@ -128,7 +135,7 @@ angular.module('managerApp').component('telecomTelephonyCallsFilteringTable', {
       }
     };
 
-    self.orderScreenListsBy = function (by) {
+    self.orderScreenListsBy = function orderScreenListsBy(by) {
       if (self.screenLists.orderBy === by) {
         self.screenLists.orderDesc = !self.screenLists.orderDesc;
       } else {
@@ -137,4 +144,4 @@ angular.module('managerApp').component('telecomTelephonyCallsFilteringTable', {
       self.sortScreenLists();
     };
   },
-});
+};

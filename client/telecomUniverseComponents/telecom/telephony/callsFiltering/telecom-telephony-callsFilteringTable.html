@@ -67,11 +67,11 @@
                         <input type="checkbox"
                                data-ng-if="$ctrl.screenLists.paginated.length"
                                data-ng-disabled="$ctrl.screenLists.isDeleting"
-                               ovh-checkbox-table
-                               ovh-checkbox-table-ids-all="$ctrl.screenLists.raw"
-                               ovh-checkbox-table-ids-page="$ctrl.screenLists.paginated"
-                               ovh-checkbox-table-ids-selected="$ctrl.screenLists.selected"
-                               ovh-checkbox-table-id="id" />
+                               data-ovh-checkbox-table
+                               data-ovh-checkbox-table-ids-all="$ctrl.screenLists.raw"
+                               data-ovh-checkbox-table-ids-page="$ctrl.screenLists.paginated"
+                               data-ovh-checkbox-table-ids-selected="$ctrl.screenLists.selected"
+                               data-ovh-checkbox-table-id="id" />
                     </th>
                     <th>
                         <button class="btn btn-link p-0"
@@ -154,7 +154,7 @@
                         </button>
                         <button class="btn btn-link p-0 float-right"
                                 type="button"
-                                title="{{:: 'telephony_answer_voicemail_directories_refresh_message' | translate }}"
+                                title="{{:: 'telephony_calls_filtering_table_status_refresh' | translate }}"
                                 data-ng-disabled="$ctrl.screenLists.isDeleting"
                                 data-ng-click="$ctrl.refresh()">
                             <i class="text-default fa fa-refresh" aria-hidden="true"></i>
@@ -219,8 +219,8 @@
              data-current-page="currentPage"
              data-nb-pages="nbPages"
              data-items-per-page="itemsPerPage"
-             data-page-placeholder="{{'common_pagination_page' | translate: {currentPage:currentPage, nbPages:nbPages} }}"
-             data-item-per-page-placeholder="{{'common_pagination_display' | translate}}">
+             data-page-placeholder="{{'telephony_calls_filtering_pagination_page' | translate: {currentPage:currentPage, nbPages:nbPages} }}"
+             data-item-per-page-placeholder="{{'telephony_calls_filtering_pagination_display' | translate}}">
         </div>
     </div>
 </div>

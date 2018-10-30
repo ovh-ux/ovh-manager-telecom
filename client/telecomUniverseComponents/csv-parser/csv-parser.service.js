@@ -1,7 +1,7 @@
 import CSV from 'CSV-JS';
 
 export default function () {
-  this.setColumnSeparator = function (separatorParam) {
+  this.setColumnSeparator = function setColumnSeparator(separatorParam) {
     let separator = separatorParam;
 
     if (separator === undefined) {
@@ -11,7 +11,7 @@ export default function () {
     CSV.COLUMN_SEPARATOR = separator;
   };
 
-  this.setDetectTypes = function (detectParam) {
+  this.setDetectTypes = function setDetectTypes(detectParam) {
     let detect = detectParam;
 
     if (detect === undefined) {
@@ -21,7 +21,7 @@ export default function () {
     CSV.DETECT_TYPES = detect;
   };
 
-  this.parse = function (data) {
+  this.parse = function parse(data) {
     return CSV.parse(data);
   };
 }

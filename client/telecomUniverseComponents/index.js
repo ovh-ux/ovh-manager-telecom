@@ -1,6 +1,7 @@
 import angular from 'angular';
 
 import tucChartjs from './chartjs';
+import tucCsvParser from './csv-parser';
 import tucCustomAsterisk from './custom-asterisk';
 import tucDebounce from './debounce';
 import tucEditableServiceName from './editable-service-name';
@@ -40,6 +41,7 @@ const moduleName = 'telecomUniverseComponents';
 angular
   .module(moduleName, [
     tucChartjs,
+    tucCsvParser,
     tucCustomAsterisk,
     tucDebounce,
     tucEditableServiceName,

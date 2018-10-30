@@ -1,12 +1,10 @@
-angular.module('managerApp').run(($translate, asyncLoader) => {
-  asyncLoader.addTranslations(
-    import(`./translations/Messages_${$translate.use()}.xml`)
-      .catch(() => import(`./translations/Messages_${$translate.fallbackLanguage()}.xml`))
-      .then(x => x.default),
-  );
-  $translate.refresh();
-});
-angular.module('managerApp').component('telecomTelephonyCallsFilteringAdd', {
+import angular from 'angular';
+import _ from 'lodash';
+
+import template from './telecom-telephony-callsFilteringAdd.html';
+import templateOpenHelper from './addHelper/telecom-telephony-callsFilteringAddHelper.html';
+
+export default /* @ngInject */ {
   bindings: {
     addScreenList: '&', // function to add a given screen
     getScreenList: '&', // function to retrieve the list of existing screens
@@ -14,16 +12,17 @@ angular.module('managerApp').component('telecomTelephonyCallsFilteringAdd', {
     disableOutgoing: '@',
     disableNature: '@',
   },
-  templateUrl: 'components/telecom/telephony/callsFiltering/telecom-telephony-callsFilteringAdd.html',
+  template,
   controller(
     $q,
     $translate,
-    $translatePartialLoader,
     $uibModal,
     TucToast,
     TucToastError,
-    TucCSVParser,
+    TucCsvParser,
   ) {
+    'ngInject';
+
     const self = this;
 
     self.screenListToAdd = {
@@ -34,15 +33,11 @@ angular.module('managerApp').component('telecomTelephonyCallsFilteringAdd', {
 
     self.isAdding = false;
 
-    self.$onInit = function () {
-      self.isInitialized = false;
-      $translatePartialLoader.addPart('../components/telecom/telephony/callsFiltering');
-      return $translate.refresh().finally(() => {
-        self.isInitialized = true;
-      });
+    self.$onInit = function $onInit() {
+      self.isInitialized = true;
     };
 
-    self.addScreen = function (form) {
+    self.addScreen = function addScreen(form) {
       self.isAdding = true;
       if (self.screenListToAdd.callNumber === null) {
         self.screenListToAdd.callNumber = '';
@@ -64,7 +59,7 @@ angular.module('managerApp').component('telecomTelephonyCallsFilteringAdd', {
       });
     };
 
-    self.isScreenListsAlreadyExisting = function () {
+    self.isScreenListsAlreadyExisting = function isScreenListsAlreadyExisting() {
       const list = self.getScreenList();
       let found = _.find(list, {
         callNumber: self.screenListToAdd.callNumber || '',
@@ -92,7 +87,7 @@ angular.module('managerApp').component('telecomTelephonyCallsFilteringAdd', {
     };
 
 
-    self.checkValidCSV = function (file) {
+    self.checkValidCSV = function checkValidCSV(file) {
       const fileName = file ? file.name : '';
       const found = _.endsWith(fileName, 'csv');
       if (!found) {
@@ -101,10 +96,10 @@ angular.module('managerApp').component('telecomTelephonyCallsFilteringAdd', {
       return found;
     };
 
-    self.importCSV = function (csvData) {
+    self.importCSV = function importCSV(csvData) {
       let csvArray = null;
       try {
-        csvArray = TucCSVParser.parse(csvData);
+        csvArray = TucCsvParser.parse(csvData);
 
         // check if csv header is valid otherwise raise an error
         if (!angular.equals(csvArray[0], ['callNumber', 'nature', 'type'])) {
@@ -140,12 +135,12 @@ angular.module('managerApp').component('telecomTelephonyCallsFilteringAdd', {
       };
     }());
 
-    self.openHelper = function () {
+    self.openHelper = function openHelper() {
       self.helperModalOpened = true;
       const modal = $uibModal.open({
         animation: true,
-        templateUrl: 'components/telecom/telephony/callsFiltering/addHelper/telecom-telephony-callsFilteringAddHelper.html',
-        controller: 'TelecomTelephonyCallsFilteringAddHelperCtrl',
+        template: templateOpenHelper,
+        controller: 'tucTelecomTelephonyCallsFilteringAddHelperCtrl',
         controllerAs: 'FilteringHelperCtrl',
         resolve: {
           param() {
@@ -166,4 +161,4 @@ angular.module('managerApp').component('telecomTelephonyCallsFilteringAdd', {
       return modal;
     };
   },
-});
+};

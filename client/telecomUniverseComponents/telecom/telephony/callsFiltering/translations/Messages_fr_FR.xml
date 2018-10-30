@@ -13,6 +13,7 @@
    <translation id="telephony_calls_filtering_table_status_delete_success" qtlid="358903">Suppression en cours ...</translation>
    <translation id="telephony_calls_filtering_table_status_new" qtlid="26791">Création</translation>
    <translation id="telephony_calls_filtering_table_type" qtlid="2642">Type</translation>
+   <translation id="telephony_calls_filtering_table_status_refresh" qtlid="250030">Rafraîchir</translation>
    <translation id="telephony_calls_filtering_table_type_incoming" qtlid="358916">Appels entrants</translation>
    <translation id="telephony_calls_filtering_table_type_outgoing" qtlid="358929">Appels sortants</translation>
    <translation id="telephony_calls_filtering_table_list" qtlid="358942">Liste</translation>
@@ -49,4 +50,7 @@
    <translation id="telephony_calls_filtering_number_international" qtlid="358851">Au format international</translation>
    <translation id="telephony_calls_filtering_add_already_exist" qtlid="358760">Ce filtre est déjà présent dans la liste.</translation>
    <translation id="telephony_calls_filtering_add" qtlid="37923">Ajouter</translation>
+   <translation id="telephony_calls_filtering_cancel" qtlid="37863">Annuler</translation>
+   <translation id="telephony_calls_filtering_pagination_display" qtlid="69353">Afficher</translation>
+   <translation id="telephony_calls_filtering_pagination_page" qtlid="239246">Page {{currentPage}} / {{nbPages}}</translation>
 </translations>

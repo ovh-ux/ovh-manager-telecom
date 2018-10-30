@@ -1,4 +1,15 @@
-angular.module('managerApp').controller('TelecomTelephonyCallsFilteringAddHelperCtrl', function ($stateParams, $translate, $q, $uibModalInstance, param, TucToast, TucToastError) {
+import angular from 'angular';
+import _ from 'lodash';
+
+export default /* @ngInject */ function (
+  $stateParams,
+  $translate,
+  $q,
+  $uibModalInstance,
+  param,
+  TucToast,
+  TucToastError,
+) {
   const self = this;
 
   function init() {
@@ -16,7 +27,7 @@ angular.module('managerApp').controller('TelecomTelephonyCallsFilteringAddHelper
     };
   }
 
-  self.applyHelper = function () {
+  self.applyHelper = function applyHelper() {
     const toAdd = angular.copy(self.config[self.helper]);
     let nature = null;
 
@@ -49,9 +60,9 @@ angular.module('managerApp').controller('TelecomTelephonyCallsFilteringAddHelper
     });
   };
 
-  self.cancel = function () {
+  self.cancel = function cancel() {
     $uibModalInstance.dismiss();
   };
 
   init();
-});
+}
