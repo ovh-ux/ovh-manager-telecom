@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyAliasAdministrationConvertToLineCtrl', function ($stateParams, $q, $translate, OvhApiTelephony, TucToastError, TucToast, telephonyBulk) {
+angular.module('managerApp').controller('TelecomTelephonyAliasAdministrationConvertToLineCtrl', function ($stateParams, $q, $translate, OvhApiTelephony, TucToastError, TucToast, tucTelephonyBulk) {
   const self = this;
 
   function init() {
@@ -131,7 +131,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasAdministrationConv
 
   self.onBulkSuccess = function (bulkResult) {
     // display message of success or error
-    telephonyBulk.getTucToastInfos(bulkResult, {
+    tucTelephonyBulk.getTucToastInfos(bulkResult, {
       fullSuccess: $translate.instant('telephony_alias_administration_convert_bulk_all_success'),
       partialSuccess: $translate.instant('telephony_alias_administration_convert_bulk_some_success', {
         count: bulkResult.success.length,

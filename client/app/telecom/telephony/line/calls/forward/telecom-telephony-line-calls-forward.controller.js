@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyLineCallsForwardCtrl', function ($q, $stateParams, $translate, $state, TucToast, TelecomTelephonyLineCallsForwardService, tucValidator, telephonyBulk, tucTelecomVoip) {
+angular.module('managerApp').controller('TelecomTelephonyLineCallsForwardCtrl', function ($q, $stateParams, $translate, $state, TucToast, TelecomTelephonyLineCallsForwardService, tucValidator, tucTelephonyBulk, tucTelecomVoip) {
   const self = this;
   self.validator = tucValidator;
 
@@ -309,7 +309,7 @@ angular.module('managerApp').controller('TelecomTelephonyLineCallsForwardCtrl', 
 
   self.onBulkSuccess = function (bulkResult) {
     // display message of success or error
-    telephonyBulk.getTucToastInfos(bulkResult, {
+    tucTelephonyBulk.getTucToastInfos(bulkResult, {
       fullSuccess: $translate.instant('telephony_line_actions_line_calls_forward_bulk_all_success'),
       partialSuccess: $translate.instant('telephony_line_actions_line_calls_forward_bulk_some_success', {
         count: bulkResult.success.length,

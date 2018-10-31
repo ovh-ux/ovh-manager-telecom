@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyServiceFaxPasswordCtrl', function ($stateParams, $translate, $timeout, TelephonyMediator, OvhApiTelephony, TucToast, TucToastError, telephonyBulk) {
+angular.module('managerApp').controller('TelecomTelephonyServiceFaxPasswordCtrl', function ($stateParams, $translate, $timeout, TelephonyMediator, OvhApiTelephony, TucToast, TucToastError, tucTelephonyBulk) {
   const self = this;
 
   /*= ==============================
@@ -90,7 +90,7 @@ angular.module('managerApp').controller('TelecomTelephonyServiceFaxPasswordCtrl'
 
   self.onBulkSuccess = function (bulkResult) {
     // display message of success or error
-    telephonyBulk.getTucToastInfos(bulkResult, {
+    tucTelephonyBulk.getTucToastInfos(bulkResult, {
       fullSuccess: $translate.instant('telephony_service_fax_password_bulk_all_success'),
       partialSuccess: $translate.instant('telephony_service_fax_password_bulk_some_success', {
         count: bulkResult.success.length,

@@ -318,7 +318,7 @@
 
         <div class="form-group">
             <hr />
-            <telephony-bulk-action data-billing-account="{{ SettingsCtrl.bulkDatas.billingAccount }}"
+            <tuc-telephony-bulk-action data-billing-account="{{ SettingsCtrl.bulkDatas.billingAccount }}"
                                    data-service-name="{{ SettingsCtrl.bulkDatas.serviceName }}"
                                    data-custom-class="link d-block pl-0 mb-3"
                                    data-ng-disabled="SettingsCtrl.faxSettingsForm.$invalid || SettingsCtrl.addressesToNotifyForm.isShown"
@@ -327,7 +327,7 @@
                                    data-get-bulk-params="SettingsCtrl.getBulkParams"
                                    data-on-success="SettingsCtrl.onBulkSuccess"
                                    data-on-error="SettingsCtrl.onBulkError">
-            </telephony-bulk-action>
+            </tuc-telephony-bulk-action>
 
             <button type="submit"
                     class="btn btn-primary"

@@ -1,4 +1,6 @@
-angular.module('managerApp').service('telephonyBulk', function () {
+import _ from 'lodash';
+
+export default function () {
   const self = this;
 
   self.getTucToastInfos = function (bulkResult, messages, noDetails) {
@@ -36,4 +38,4 @@ angular.module('managerApp').service('telephonyBulk', function () {
 
     return infos;
   };
-});
+}

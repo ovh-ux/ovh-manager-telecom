@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyLinePhoneMgcpIpRestrictionCtrl', function ($q, $stateParams, $translate, TucIpAddress, OvhApiTelephony, OvhApiMe, TucToast, TucToastError, telephonyBulk) {
+angular.module('managerApp').controller('TelecomTelephonyLinePhoneMgcpIpRestrictionCtrl', function ($q, $stateParams, $translate, TucIpAddress, OvhApiTelephony, OvhApiMe, TucToast, TucToastError, tucTelephonyBulk) {
   const self = this;
 
   /*= ==============================
@@ -153,7 +153,7 @@ angular.module('managerApp').controller('TelecomTelephonyLinePhoneMgcpIpRestrict
 
   self.onBulkSuccess = function (bulkResult) {
     // display message of success or error
-    telephonyBulk.getTucToastInfos(bulkResult, {
+    tucTelephonyBulk.getTucToastInfos(bulkResult, {
       fullSuccess: $translate.instant('telephony_line_phone_mgcp_ip_restriction_bulk_all_success'),
       partialSuccess: $translate.instant('telephony_line_phone_mgcp_ip_restriction_bulk_some_success', {
         count: bulkResult.success.length,

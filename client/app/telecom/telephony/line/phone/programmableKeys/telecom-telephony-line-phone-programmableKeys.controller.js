@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyLinePhoneProgammableKeysCtrl', function ($translate, TelephonyMediator, $stateParams, $uibModal, TucToast, OvhApiTelephony, telephonyBulk, tucVoipLinePhoneFunction) {
+angular.module('managerApp').controller('TelecomTelephonyLinePhoneProgammableKeysCtrl', function ($translate, TelephonyMediator, $stateParams, $uibModal, TucToast, OvhApiTelephony, tucTelephonyBulk, tucVoipLinePhoneFunction) {
   const self = this;
 
   self.loading = {
@@ -131,7 +131,7 @@ angular.module('managerApp').controller('TelecomTelephonyLinePhoneProgammableKey
     }
 
     // display message of success or error
-    telephonyBulk.getTucToastInfos(bulkResult, {
+    tucTelephonyBulk.getTucToastInfos(bulkResult, {
       fullSuccess: $translate.instant('telephony_line_phone_programmableKeys_bulk_all_success'),
       partialSuccess: $translate.instant('telephony_line_phone_programmableKeys_bulk_some_success', {
         count: bulkResult.success.length,

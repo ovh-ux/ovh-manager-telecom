@@ -24,7 +24,7 @@
                 data-translate="telephony_line_phone_programmableKeys_title_2">
             </h2>
 
-            <telephony-bulk-action data-billing-account="{{ ProgrammableKeysCtrl.line.billingAccount }}"
+            <tuc-telephony-bulk-action data-billing-account="{{ ProgrammableKeysCtrl.line.billingAccount }}"
                                    data-service-name="{{ ProgrammableKeysCtrl.line.serviceName }}"
                                    data-custom-class="link d-block pl-0 mb-3"
                                    data-bulk-infos="ProgrammableKeysCtrl.bulkDatas.infos"
@@ -33,7 +33,7 @@
                                    data-get-bulk-params="ProgrammableKeysCtrl.getBulkParams"
                                    data-on-success="ProgrammableKeysCtrl.onBulkSuccess"
                                    data-on-error="ProgrammableKeysCtrl.onBulkError">
-            </telephony-bulk-action>
+            </tuc-telephony-bulk-action>
 
             <oui-datagrid data-rows="ProgrammableKeysCtrl.functionKeys.raw">
                 <oui-column data-title="'telephony_line_phone_programmableKeys_keys_title' | translate" data-property="label" data-sortable="asc">

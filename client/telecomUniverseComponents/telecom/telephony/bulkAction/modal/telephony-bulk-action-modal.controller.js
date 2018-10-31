@@ -1,4 +1,13 @@
-angular.module('managerApp').controller('telephonyBulkActionModalCtrl', function ($http, $filter, $q, $translate, $uibModalInstance, modalBindings, tucTelecomVoip) {
+import _ from 'lodash';
+
+export default /* @ngInject */ function (
+  $http,
+  $filter,
+  $q,
+  $uibModalInstance,
+  modalBindings,
+  tucTelecomVoip,
+) {
   const self = this;
   let allServices;
 
@@ -199,4 +208,4 @@ angular.module('managerApp').controller('telephonyBulkActionModalCtrl', function
   };
 
   /* -----  End of INITIALIZATION  ------ */
-});
+}

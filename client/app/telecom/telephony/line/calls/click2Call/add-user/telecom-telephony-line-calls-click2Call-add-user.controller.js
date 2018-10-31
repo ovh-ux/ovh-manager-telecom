@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyLineClick2CallAddUserCtrl', function ($q, $stateParams, $state, $translate, OvhApiTelephony, TelephonyGroupLineClick2CallUser, TucToast, telephonyBulk) {
+angular.module('managerApp').controller('TelecomTelephonyLineClick2CallAddUserCtrl', function ($q, $stateParams, $state, $translate, OvhApiTelephony, TelephonyGroupLineClick2CallUser, TucToast, tucTelephonyBulk) {
   const self = this;
 
   this.rules = [
@@ -95,7 +95,7 @@ angular.module('managerApp').controller('TelecomTelephonyLineClick2CallAddUserCt
 
   self.onBulkSuccess = function (bulkResult) {
     // display message of success or error
-    telephonyBulk.getTucToastInfos(bulkResult, {
+    tucTelephonyBulk.getTucToastInfos(bulkResult, {
       fullSuccess: $translate.instant('telephony_group_line_calls_click2call_addUser_bulk_all_success'),
       partialSuccess: $translate.instant('telephony_group_line_calls_click2call_addUser_bulk_some_success', {
         count: bulkResult.success.length,

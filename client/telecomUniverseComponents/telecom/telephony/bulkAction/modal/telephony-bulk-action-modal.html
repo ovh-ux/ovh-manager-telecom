@@ -6,7 +6,7 @@
     <div class="modal-header">
         <button type="button"
                 class="close float-right"
-                aria-label="{{ ::'cancel' | translate }}"
+                aria-label="{{:: 'telephony_bulk_action_cancel' | translate }}"
                 data-ng-click="$ctrl.cancel()">
             <span aria-hidden="true">&times;</span>
         </button>
@@ -23,7 +23,6 @@
         </div>
 
         <div data-ng-if="!$ctrl.loading.init">
-
             <p data-translate="telephony_bulk_action_apply_to_service_explain"></p>
 
             <!-- Filters -->
@@ -107,7 +106,7 @@
                                 </span>
                             </span>
                             <span class="oui-checkbox__description">
-                                <span data-translate="{{ service.serviceType === 'alias' ?  'telephony_service_type_alias' : 'telephony_service_feature_type_' + service.getRealFeatureType()  }}"></span>
+                                <span data-translate="{{ service.serviceType === 'alias' ?  'telephony_bulk_action_service_type_alias' : 'telephony_bulk_action_service_feature_type_' + service.getRealFeatureType()  }}"></span>
                                 <span class="extra-description"
                                       data-ng-if="!service.isDescriptionSameAsServiceName()"
                                       data-ng-bind="service.serviceName">
@@ -137,12 +136,12 @@
                 class="btn btn-default"
                 data-ng-click="$ctrl.cancel()"
                 data-ng-disabled="$ctrl.loading.init || $ctrl.loading.bulk"
-                data-translate="cancel">
+                data-translate="telephony_bulk_action_cancel">
         </button>
         <button type="submit"
                 class="btn btn-primary"
                 data-ng-disabled="$ctrl.loading.init || $ctrl.loading.bulk"
-                data-translate="submit">
+                data-translate="telephony_bulk_action_submit">
         </button>
     </div>
 

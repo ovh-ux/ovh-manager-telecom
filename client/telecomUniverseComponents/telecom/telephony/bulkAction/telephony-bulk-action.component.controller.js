@@ -1,4 +1,14 @@
-angular.module('managerApp').controller('telephonyBulkActionCtrl', function ($q, $translate, $translatePartialLoader, $uibModal, telephonyBulkActionUpdatedServicesContainer) {
+import _ from 'lodash';
+
+import templateModal from './modal/telephony-bulk-action-modal.html';
+
+export default /* @ngInject */ function (
+  $q,
+  $translate,
+  $translatePartialLoader,
+  $uibModal,
+  tucTelephonyBulkActionUpdatedServicesContainer,
+) {
   const self = this;
 
   self.loading = {
@@ -17,8 +27,8 @@ angular.module('managerApp').controller('telephonyBulkActionCtrl', function ($q,
     }
 
     return $uibModal.open({
-      templateUrl: 'components/telecom/telephony/bulkAction/modal/telephony-bulk-action-modal.html',
-      controller: 'telephonyBulkActionModalCtrl',
+      template: templateModal,
+      controller: 'tucTelephonyBulkActionModalCtrl',
       controllerAs: '$ctrl',
       resolve: {
         modalBindings: {
@@ -31,20 +41,22 @@ angular.module('managerApp').controller('telephonyBulkActionCtrl', function ($q,
           previouslyUpdatedServices: self.previouslyUpdatedServices,
         },
       },
-    }).result.then((data) => {
-      if (self.onSuccess && _.isFunction(self.onSuccess())) {
-        self.onSuccess()(data);
-      }
+    })
+      .result.then((data) => {
+        if (self.onSuccess && _.isFunction(self.onSuccess())) {
+          self.onSuccess()(data);
+        }
 
-      if (_.isArray(data.success)) {
-        telephonyBulkActionUpdatedServicesContainer.storeUpdatedServices(data.success);
-      }
-    }).catch((error) => {
-      if (_.get(error, 'type') === 'API' && self.onError && _.isFunction(self.onError())) {
-        self.onError()(error);
-      }
-      return $q.reject(error);
-    });
+        if (_.isArray(data.success)) {
+          tucTelephonyBulkActionUpdatedServicesContainer.storeUpdatedServices(data.success);
+        }
+      })
+      .catch((error) => {
+        if (_.get(error, 'type') === 'API' && self.onError && _.isFunction(self.onError())) {
+          self.onError()(error);
+        }
+        return $q.reject(error);
+      });
   };
 
   /* -----  End of EVENTS  ------ */
@@ -62,7 +74,7 @@ angular.module('managerApp').controller('telephonyBulkActionCtrl', function ($q,
   self.$onInit = function () {
     self.loading.init = true;
 
-    self.previouslyUpdatedServices = telephonyBulkActionUpdatedServicesContainer
+    self.previouslyUpdatedServices = tucTelephonyBulkActionUpdatedServicesContainer
       .getUpdatedServices();
 
     // check for attributes
@@ -78,4 +90,4 @@ angular.module('managerApp').controller('telephonyBulkActionCtrl', function ($q,
   };
 
   /* -----  End of INITIALIZATION  ------ */
-});
+}

@@ -16,4 +16,16 @@
    <translation id="telephony_bulk_action_modal_selected_count" qtlid="463564">{{ count }} services sélectionnés</translation>
    <translation id="telephony_bulk_action_modal_selected_count_single" qtlid="463577">{{ count }} service sélectionné</translation>
    <translation id="telephony_bulk_action_modal_service_updated" qtlid="463590">service modifié</translation>
+
+
+   <translation id="telephony_bulk_action_cancel" qtlid="37863">Annuler</translation>
+   <translation id="telephony_bulk_action_submit" qtlid="26047">Valider</translation>
+   <translation id="telephony_bulk_action_service_type_alias">Numéro</translation>
+   <translation id="telephony_bulk_action_service_feature_type_sip">Ligne SIP</translation>
+   <translation id="telephony_bulk_action_service_feature_type_mgcp">Ligne SIP</translation>
+   <translation id="telephony_bulk_action_service_feature_type_fax">FAX</translation>
+   <translation id="telephony_bulk_action_service_feature_type_freefax">FreeFax</translation>
+   <translation id="telephony_bulk_action_service_feature_type_trunk">Trunk</translation>
+   <translation id="telephony_bulk_action_service_feature_type_plugAndFax">Plug & Fax</translation>
+   <translation id="telephony_bulk_action_service_feature_type_voicefax">Fax</translation>
 </translations>

@@ -71,7 +71,7 @@
                             </button>
                         </div>
 
-                        <telephony-bulk-action data-billing-account="{{ LineRestrictionsCtrl.bulkDatas.billingAccount }}"
+                        <tuc-telephony-bulk-action data-billing-account="{{ LineRestrictionsCtrl.bulkDatas.billingAccount }}"
                                            data-service-name="{{ LineRestrictionsCtrl.bulkDatas.serviceName }}"
                                            data-custom-class="link d-block pl-0 mb-3"
                                            data-ng-disabled="lineOptionsForm.$invalid"
@@ -80,7 +80,7 @@
                                            data-get-bulk-params="LineRestrictionsCtrl.getBulkParams"
                                            data-on-success="LineRestrictionsCtrl.onBulkSuccess"
                                            data-on-error="LineRestrictionsCtrl.onBulkError">
-                        </telephony-bulk-action>
+                        </tuc-telephony-bulk-action>
 
                         <div class="form-group">
                             <button type="submit"

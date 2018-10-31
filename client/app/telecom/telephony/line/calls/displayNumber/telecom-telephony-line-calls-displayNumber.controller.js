@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyLineCallsDisplayNumberCtrl', function ($scope, $stateParams, $translate, $timeout, OvhApiTelephonyLineOptions, TucToast, TucToastError, telephonyBulk) {
+angular.module('managerApp').controller('TelecomTelephonyLineCallsDisplayNumberCtrl', function ($scope, $stateParams, $translate, $timeout, OvhApiTelephonyLineOptions, TucToast, TucToastError, tucTelephonyBulk) {
   const self = this;
 
   function getLineOptions() {
@@ -109,7 +109,7 @@ angular.module('managerApp').controller('TelecomTelephonyLineCallsDisplayNumberC
 
   self.onBulkSuccess = function (bulkResult) {
     // display message of success or error
-    telephonyBulk.getTucToastInfos(bulkResult, {
+    tucTelephonyBulk.getTucToastInfos(bulkResult, {
       fullSuccess: $translate.instant('telephony_line_actions_line_calls_display_number_bulk_all_success'),
       partialSuccess: $translate.instant('telephony_line_actions_line_calls_display_number_bulk_some_success', {
         count: bulkResult.success.length,

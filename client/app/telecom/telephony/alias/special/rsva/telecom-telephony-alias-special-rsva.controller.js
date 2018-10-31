@@ -1,7 +1,7 @@
 angular.module('managerApp').controller('TelecomTelephonyAliasSpecialRsvaCtrl', class TelecomTelephonyAliasSpecialRsvaCtrl {
   constructor(
     $filter, $q, $stateParams, $translate,
-    costs, OvhApiOrder, OvhApiTelephony, OvhApiTelephonyService, telephonyBulk, TucToast, URLS,
+    costs, OvhApiOrder, OvhApiTelephony, OvhApiTelephonyService, tucTelephonyBulk, TucToast, URLS,
   ) {
     this.$filter = $filter;
     this.$q = $q;
@@ -12,7 +12,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasSpecialRsvaCtrl', 
     this.OvhApiOrder = OvhApiOrder;
     this.OvhApiTelephony = OvhApiTelephony;
     this.OvhApiTelephonyService = OvhApiTelephonyService;
-    this.telephonyBulk = telephonyBulk;
+    this.tucTelephonyBulk = tucTelephonyBulk;
     this.TucToast = TucToast;
     this.URLS = URLS;
   }
@@ -217,7 +217,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasSpecialRsvaCtrl', 
   onBulkSuccess() {
     return (bulkResult) => {
     // display message of success or error
-      this.telephonyBulk.getTucToastInfos(bulkResult, {
+      this.tucTelephonyBulk.getTucToastInfos(bulkResult, {
         fullSuccess: this.$translate.instant('telephony_alias_special_rsva_bulk_all_success'),
         partialSuccess: this.$translate.instant('telephony_alias_special_rsva_bulk_some_success', {
           count: bulkResult.success.length,

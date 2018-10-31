@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyServiceContactCtrl', function ($state, $stateParams, $q, $timeout, $translate, OvhApiTelephony, TucToast, TucToastError, OvhApiXdsl, telephonyBulk) {
+angular.module('managerApp').controller('TelecomTelephonyServiceContactCtrl', function ($state, $stateParams, $q, $timeout, $translate, OvhApiTelephony, TucToast, TucToastError, OvhApiXdsl, tucTelephonyBulk) {
   const self = this;
 
   function buildWayInfo(directory) {
@@ -140,7 +140,7 @@ angular.module('managerApp').controller('TelecomTelephonyServiceContactCtrl', fu
 
   self.onBulkSuccess = function (bulkResult) {
     // display message of success or error
-    telephonyBulk.getTucToastInfos(bulkResult, {
+    tucTelephonyBulk.getTucToastInfos(bulkResult, {
       fullSuccess: $translate.instant('telephony_service_contact_bulk_all_success'),
       partialSuccess: $translate.instant('telephony_service_contact_bulk_some_success', {
         count: bulkResult.success.length,

@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyLineRestrictionsCtrl', function ($stateParams, $timeout, $q, $document, $translate, OvhApiTelephony, TucToastError, TucIpAddress, OvhApiMe, TucToast, telephonyBulk) {
+angular.module('managerApp').controller('TelecomTelephonyLineRestrictionsCtrl', function ($stateParams, $timeout, $q, $document, $translate, OvhApiTelephony, TucToastError, TucIpAddress, OvhApiMe, TucToast, tucTelephonyBulk) {
   const self = this;
 
   function fetchLineOptions() {
@@ -176,7 +176,7 @@ angular.module('managerApp').controller('TelecomTelephonyLineRestrictionsCtrl', 
 
   self.onBulkSuccess = function (bulkResult) {
     // display message of success or error
-    telephonyBulk.getTucToastInfos(bulkResult, {
+    tucTelephonyBulk.getTucToastInfos(bulkResult, {
       fullSuccess: $translate.instant('telephony_line_restrictions_ip_bulk_all_success'),
       partialSuccess: $translate.instant('telephony_line_restrictions_ip_bulk_some_success', {
         count: bulkResult.success.length,

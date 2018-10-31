@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyFaxManagementTerminateCtrl', function ($q, $stateParams, $translate, TelephonyMediator, voipServiceOfferTask, TucToast, telephonyBulk) {
+angular.module('managerApp').controller('TelecomTelephonyFaxManagementTerminateCtrl', function ($q, $stateParams, $translate, TelephonyMediator, voipServiceOfferTask, TucToast, tucTelephonyBulk) {
   const self = this;
 
   self.loading = {
@@ -120,7 +120,7 @@ angular.module('managerApp').controller('TelecomTelephonyFaxManagementTerminateC
 
   self.onBulkSuccess = function (bulkResult) {
     // display message of success or error
-    telephonyBulk.getTucToastInfos(bulkResult, {
+    tucTelephonyBulk.getTucToastInfos(bulkResult, {
       fullSuccess: $translate.instant('telephony_group_fax_management_terminate_bulk_all_success'),
       partialSuccess: $translate.instant('telephony_group_fax_management_terminate_bulk_some_success', {
         count: bulkResult.success.length,

@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyLineDomainCtrl', function ($q, $stateParams, $translate, TelephonyMediator, OvhApiTelephony, OvhApiTelephonyLineOptions, TucToast, telephonyBulk) {
+angular.module('managerApp').controller('TelecomTelephonyLineDomainCtrl', function ($q, $stateParams, $translate, TelephonyMediator, OvhApiTelephony, OvhApiTelephonyLineOptions, TucToast, tucTelephonyBulk) {
   const self = this;
 
   self.line = null;
@@ -164,7 +164,7 @@ angular.module('managerApp').controller('TelecomTelephonyLineDomainCtrl', functi
 
   self.onBulkSuccess = function (bulkResult) {
     // display message of success or error
-    telephonyBulk.getTucToastInfos(bulkResult, {
+    tucTelephonyBulk.getTucToastInfos(bulkResult, {
       fullSuccess: $translate.instant('telephony_line_management_sip_domain_bulk_all_success'),
       partialSuccess: $translate.instant('telephony_line_management_sip_domain_bulk_some_success', {
         count: bulkResult.success.length,

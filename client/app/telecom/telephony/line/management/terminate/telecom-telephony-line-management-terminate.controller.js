@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyLineTerminateCtrl', function ($stateParams, $state, TelephonyMediator, TucToast, $translate, telephonyBulk) {
+angular.module('managerApp').controller('TelecomTelephonyLineTerminateCtrl', function ($stateParams, $state, TelephonyMediator, TucToast, $translate, tucTelephonyBulk) {
   const self = this;
 
   self.loading = {
@@ -89,7 +89,7 @@ angular.module('managerApp').controller('TelecomTelephonyLineTerminateCtrl', fun
 
   self.onBulkSuccess = function (bulkResult) {
     // display message of success or error
-    telephonyBulk.getTucToastInfos(bulkResult, {
+    tucTelephonyBulk.getTucToastInfos(bulkResult, {
       fullSuccess: $translate.instant('telephony_group_line_terminating_bulk_all_success'),
       partialSuccess: $translate.instant('telephony_group_line_terminating_bulk_some_success', {
         count: bulkResult.success.length,

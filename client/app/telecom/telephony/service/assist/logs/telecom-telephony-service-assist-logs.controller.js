@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyServiceAssistLogsCtrl', function ($q, $translate, $state, $stateParams, tucVoipService, tucVoipLineFeature, OvhApiMe, TucToast, PAGINATION_PER_PAGE, telephonyBulk) {
+angular.module('managerApp').controller('TelecomTelephonyServiceAssistLogsCtrl', function ($q, $translate, $state, $stateParams, tucVoipService, tucVoipLineFeature, OvhApiMe, TucToast, PAGINATION_PER_PAGE, tucTelephonyBulk) {
   const self = this;
 
   self.service = null;
@@ -170,7 +170,7 @@ angular.module('managerApp').controller('TelecomTelephonyServiceAssistLogsCtrl',
 
   self.onBulkSuccess = function (bulkResult) {
     // display message of success or error
-    telephonyBulk.getTucToastInfos(bulkResult, {
+    tucTelephonyBulk.getTucToastInfos(bulkResult, {
       fullSuccess: $translate.instant('telephony_line_assist_support_logs_bulk_all_success'),
       partialSuccess: $translate.instant('telephony_line_assist_support_logs_bulk_some_success', {
         count: bulkResult.success.length,

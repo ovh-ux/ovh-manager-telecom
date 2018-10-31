@@ -718,7 +718,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <hr/>
-                                <telephony-bulk-action data-service-type="all"
+                                <tuc-telephony-bulk-action data-service-type="all"
                                                        data-billing-account="{{ ServiceContactCtrl.bulkDatas.billingAccount }}"
                                                        data-service-name="{{ ServiceContactCtrl.bulkDatas.serviceName }}"
                                                        data-custom-class="link d-block pl-0 mb-3"
@@ -727,7 +727,7 @@
                                                        data-get-bulk-params="ServiceContactCtrl.getBulkParams"
                                                        data-on-success="ServiceContactCtrl.onBulkSuccess"
                                                        data-on-error="ServiceContactCtrl.onBulkError">
-                                </telephony-bulk-action>
+                                </tuc-telephony-bulk-action>
                                 <button type="button"
                                         class="btn btn-default"
                                         data-ng-if="!ServiceContactCtrl.isEditing"

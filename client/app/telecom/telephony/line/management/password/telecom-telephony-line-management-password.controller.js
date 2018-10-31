@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyLinePasswordCtrl', function ($scope, $state, $stateParams, TucToast, $q, $translate, OvhApiTelephony, telephonyBulk, tucVoipLine) {
+angular.module('managerApp').controller('TelecomTelephonyLinePasswordCtrl', function ($scope, $state, $stateParams, TucToast, $q, $translate, OvhApiTelephony, tucTelephonyBulk, tucVoipLine) {
   const self = this;
 
   self.init = function () {
@@ -45,7 +45,7 @@ angular.module('managerApp').controller('TelecomTelephonyLinePasswordCtrl', func
 
   self.onBulkSuccess = function (bulkResult) {
     // display message of success or error
-    telephonyBulk.getTucToastInfos(bulkResult, {
+    tucTelephonyBulk.getTucToastInfos(bulkResult, {
       fullSuccess: $translate.instant('telephony_line_password_bulk_all_success'),
       partialSuccess: $translate.instant('telephony_line_password_bulk_some_success', {
         count: bulkResult.success.length,
