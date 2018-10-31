@@ -5,6 +5,7 @@ import tucTelecomTelephonyAccessories from './accessories';
 import tucTelecomTelephonyCallsFiltering from './callsFiltering';
 import tucTelecomTelephonyNumberPlans from './number-plans';
 import tucTelecomTelephonyPhonebookcontact from './phonebookcontact';
+import tucTelecomTelephonyScreen from './screen';
 
 const moduleName = 'tucTelecomTelephony';
 
@@ -15,6 +16,7 @@ angular
     tucTelecomTelephonyCallsFiltering,
     tucTelecomTelephonyNumberPlans,
     tucTelecomTelephonyPhonebookcontact,
+    tucTelecomTelephonyScreen,
   ]);
 
 export default moduleName;

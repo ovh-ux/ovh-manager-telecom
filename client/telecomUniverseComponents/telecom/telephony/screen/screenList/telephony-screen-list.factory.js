@@ -1,23 +1,24 @@
+import _ from 'lodash';
 /**
  *  @todo : manage sip feature type => /screen API
  */
-angular.module('managerApp').factory('VoipScreenScreenList', (OvhApiTelephony) => {
+export default /* @ngInject */ (OvhApiTelephony) => {
   /*= ==================================
     =            CONSTRUCTOR            =
     =================================== */
 
-  function VoipScreenScreenList(screenListOptionsParam) {
+  function TucVoipScreenScreenList(screenListOptionsParam) {
     const screenListOptions = screenListOptionsParam || {};
 
     // options check
     if (!screenListOptions.billingAccount) {
-      throw new Error('billingAccount option must be specified when creating a new VoipScreenScreenList');
+      throw new Error('billingAccount option must be specified when creating a new TucVoipScreenScreenList');
     }
     if (!screenListOptions.serviceName) {
-      throw new Error('serviceName option must be specified when creating a new VoipScreenScreenList');
+      throw new Error('serviceName option must be specified when creating a new TucVoipScreenScreenList');
     }
     if (!screenListOptions.featureType) {
-      throw new Error('featureType option must be specified when creating a new VoipScreenScreenList');
+      throw new Error('featureType option must be specified when creating a new TucVoipScreenScreenList');
     }
 
     // mandatory
@@ -28,10 +29,10 @@ angular.module('managerApp').factory('VoipScreenScreenList', (OvhApiTelephony) =
     // check for mandatory field required by ovhPabx feature type
     if (this.featureType === 'ovhPabx') {
       if (!screenListOptions.dialplanId) {
-        throw new Error('dialplanId option must be specified when creating a new VoipScreenScreenList');
+        throw new Error('dialplanId option must be specified when creating a new TucVoipScreenScreenList');
       }
       if (!screenListOptions.extensionId) {
-        throw new Error('extensionId option must be specified when creating a new VoipScreenScreenList');
+        throw new Error('extensionId option must be specified when creating a new TucVoipScreenScreenList');
       }
 
       this.dialplanId = screenListOptions.dialplanId;
@@ -52,7 +53,7 @@ angular.module('managerApp').factory('VoipScreenScreenList', (OvhApiTelephony) =
     =            PROTOTYPE METHODS            =
     ========================================= */
 
-  VoipScreenScreenList.prototype.setOptions = function (screenListOptions) {
+  TucVoipScreenScreenList.prototype.setOptions = function (screenListOptions) {
     const self = this;
 
     self.callNumber = _.get(screenListOptions, self.featureType === 'sip' ? 'callNumber' : 'callerIdNumber', null);
@@ -67,7 +68,7 @@ angular.module('managerApp').factory('VoipScreenScreenList', (OvhApiTelephony) =
 
   /* ----------  API CALLS  ----------*/
 
-  VoipScreenScreenList.prototype.create = function () {
+  TucVoipScreenScreenList.prototype.create = function () {
     const self = this;
 
     if (self.featureType !== 'ovhPabx') {
@@ -93,7 +94,7 @@ angular.module('managerApp').factory('VoipScreenScreenList', (OvhApiTelephony) =
       });
   };
 
-  VoipScreenScreenList.prototype.remove = function () {
+  TucVoipScreenScreenList.prototype.remove = function () {
     const self = this;
 
     if (self.featureType !== 'ovhPabx') {
@@ -117,5 +118,5 @@ angular.module('managerApp').factory('VoipScreenScreenList', (OvhApiTelephony) =
 
   /* -----  End of PROTOTYPE METHODS  ------*/
 
-  return VoipScreenScreenList;
-});
+  return TucVoipScreenScreenList;
+};

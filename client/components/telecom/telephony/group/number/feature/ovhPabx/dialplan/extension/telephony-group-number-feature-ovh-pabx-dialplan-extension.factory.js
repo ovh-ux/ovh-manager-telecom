@@ -1,4 +1,4 @@
-angular.module('managerApp').factory('TelephonyGroupNumberOvhPabxDialplanExtension', ($q, OvhApiTelephony, TelephonyGroupNumberOvhPabxDialplanExtensionRule, VoipScreenScreenList, VoipTimeConditionCondition) => {
+angular.module('managerApp').factory('TelephonyGroupNumberOvhPabxDialplanExtension', ($q, OvhApiTelephony, TelephonyGroupNumberOvhPabxDialplanExtensionRule, TucVoipScreenScreenList, VoipTimeConditionCondition) => {
   /*= ==================================
     =            CONSTRUCTOR            =
     =================================== */
@@ -339,7 +339,7 @@ angular.module('managerApp').factory('TelephonyGroupNumberOvhPabxDialplanExtensi
       if (condition) {
         condition.setOptions(screenListOptions);
       } else {
-        condition = new VoipScreenScreenList(angular.extend(screenListOptions, {
+        condition = new TucVoipScreenScreenList(angular.extend(screenListOptions, {
           featureType: 'ovhPabx',
           billingAccount: self.billingAccount,
           serviceName: self.serviceName,
