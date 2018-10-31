@@ -5,6 +5,8 @@
 
 <div data-ng-if="!$ctrl.loading">
 
+    <tuc-toast-message></tuc-toast-message>
+
     <h2 data-translate="telephony_alias_configuration_title"
         data-translate-values="{ 'featureType': ('telephony_alias_config_change_type_label_' + $ctrl.number.feature.featureType | translate) }"></h2>
 

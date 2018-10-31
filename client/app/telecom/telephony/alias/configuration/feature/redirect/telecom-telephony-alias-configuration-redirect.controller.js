@@ -1,7 +1,8 @@
 angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationRedirectCtrl', class TelecomTelephonyAliasConfigurationRedirectCtrl {
-  constructor($q, $stateParams, $translate,
+  constructor($q, $state, $stateParams, $translate,
     alias, TucToast, tucVoipService, tucVoipServiceAlias, tucVoipServiceLine) {
     this.$q = $q;
+    this.$state = $state;
     this.$stateParams = $stateParams;
     this.$translate = $translate;
     this.alias = alias;
@@ -122,10 +123,5 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationRedir
     }).finally(() => {
       this.loading = false;
     });
-  }
-
-  resetParams() {
-    this.newDestination = null;
-    this.destinationUsedAsPresentation = this.actualPresentation;
   }
 });

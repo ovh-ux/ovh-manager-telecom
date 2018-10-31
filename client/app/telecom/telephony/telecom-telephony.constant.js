@@ -146,5 +146,8 @@
           '0032907',
         ],
       },
+    })
+    .constant('TELEPHONY_SERVICE', {
+      validSoundExtensions: ['aiff', 'au', 'flac', 'ogg', 'mp3', 'wav', 'wma'],
     });
 }());
