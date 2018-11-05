@@ -16,11 +16,13 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationConfe
   }
 
   $onInit() {
+    [this.currentLanguage] = _.get(localStorage, 'univers-selected-language', 'fr').split('_');
     this.conferenceCopy = null;
     this.generatingUrls = false;
     this.hasWebAccessUrls = false;
     this.newFile = null;
     this.availableLanguages = this.TUC_TELEPHONY_ALIAS.conference.languages
+      .sort(({ value }) => (value !== this.currentLanguage ? 1 : -1))
       .map(({ label, value }) => ({
         label: this.$translate.instant(`language_${label}`),
         value,

@@ -24,8 +24,8 @@ export default class {
 
   /**
    *  @ngdoc method
-   *  @name managerApp.service:voipServiceAlias#getConvertToLineTask
-   *  @methodOf managerApp.service:voipServiceAlias
+   *  @name managerApp.service:tucVoipServiceAlias#getConvertToLineTask
+   *  @methodOf managerApp.service:tucVoipServiceAlias
    *
    *  @description
    *  <p>Get pending convertToLine task for a given number.</p>
@@ -52,8 +52,8 @@ export default class {
 
   /**
    *  @ngdoc method
-   *  @name managerApp.service:voipServiceAlias#changeNumberFeatureType
-   *  @methodOf managerApp.service:voipServiceAlias
+   *  @name managerApp.service:tucVoipServiceAlias#changeNumberFeatureType
+   *  @methodOf managerApp.service:tucVoipServiceAlias
    *
    *  @description
    *  <p>Change the feature type of a number.</p>
@@ -86,8 +86,8 @@ export default class {
 
   /**
    *  @ngdoc method
-   *  @name managerApp.service:voipServiceAlias#editDescription
-   *  @methodOf managerApp.service:voipServiceAlias
+   *  @name managerApp.service:tucVoipServiceAlias#editDescription
+   *  @methodOf managerApp.service:tucVoipServiceAlias
    *
    *  @description
    *  <p>Update the description of a number.</p>
@@ -107,8 +107,8 @@ export default class {
 
   /**
    *  @ngdoc method
-   *  @name managerApp.service:voipServiceAlias#isSpecialNumber
-   *  @methodOf managerApp.service:voipServiceAlias
+   *  @name managerApp.service:tucVoipServiceAlias#isSpecialNumber
+   *  @methodOf managerApp.service:tucVoipServiceAlias
    *
    *  @description
    *  <p>Check if number is a special one.</p>
@@ -127,8 +127,8 @@ export default class {
 
   /**
    *  @ngdoc method
-   *  @name managerApp.service:voipServiceAlias#fetchNumberSounds
-   *  @methodOf managerApp.service:voipServiceAlias
+   *  @name managerApp.service:tucVoipServiceAlias#fetchNumberSounds
+   *  @methodOf managerApp.service:tucVoipServiceAlias
    *
    *  @description
    *  <p>Fetch sounds available for a given number.</p>
@@ -150,8 +150,8 @@ export default class {
 
   /**
    *  @ngdoc method
-   *  @name managerApp.service:voipServiceAlias#fetchRedirectNumber
-   *  @methodOf managerApp.service:voipServiceAlias
+   *  @name managerApp.service:tucVoipServiceAlias#fetchRedirectNumber
+   *  @methodOf managerApp.service:tucVoipServiceAlias
    *
    *  @description
    *  <p>Returns the redirect number properties.</p>
@@ -170,8 +170,8 @@ export default class {
 
   /**
    *  @ngdoc method
-   *  @name managerApp.service:voipServiceAlias#fetchRedirectNumber
-   *  @methodOf managerApp.service:voipServiceAlias
+   *  @name managerApp.service:tucVoipServiceAlias#fetchRedirectNumber
+   *  @methodOf managerApp.service:tucVoipServiceAlias
    *
    *  @description
    *  <p>Change the destination number, for a redirect number.</p>
@@ -196,13 +196,13 @@ export default class {
           interval: 1000,
           retryMaxAttempts: 0,
         },
-      )).catch(error => error);
+      ));
   }
 
   /**
    *  @ngdoc method
-   *  @name managerApp.service:voipServiceAlias#fetchConferenceNumber
-   *  @methodOf managerApp.service:voipServiceAlias
+   *  @name managerApp.service:tucVoipServiceAlias#fetchConferenceNumber
+   *  @methodOf managerApp.service:tucVoipServiceAlias
    *
    *  @description
    *  <p>Fetch conference number.</p>
@@ -220,8 +220,8 @@ export default class {
 
   /**
    *  @ngdoc method
-   *  @name managerApp.service:voipServiceAlias#updateConferenceNumberSettings
-   *  @methodOf managerApp.service:voipServiceAlias
+   *  @name managerApp.service:tucVoipServiceAlias#updateConferenceNumberSettings
+   *  @methodOf managerApp.service:tucVoipServiceAlias
    *
    *  @description
    *  <p>Update settings of the conference number.</p>
@@ -239,8 +239,8 @@ export default class {
 
   /**
    *  @ngdoc method
-   *  @name managerApp.service:voipServiceAlias#uploadConferenceNumberAnnounce
-   *  @methodOf managerApp.service:voipServiceAlias
+   *  @name managerApp.service:tucVoipServiceAlias#uploadConferenceNumberAnnounce
+   *  @methodOf managerApp.service:tucVoipServiceAlias
    *
    *  @description
    *  <p>Upload an announce file for the conference number.</p>
@@ -266,14 +266,13 @@ export default class {
             retryMaxAttempts: 0,
           },
         ))
-      .then(() => true)
-      .catch(error => error);
+      .then(() => true);
   }
 
   /**
    *  @ngdoc method
-   *  @name managerApp.service:voipServiceAlias#fetchConferenceNumberWebAccess
-   *  @methodOf managerApp.service:voipServiceAlias
+   *  @name managerApp.service:tucVoipServiceAlias#fetchConferenceNumberWebAccess
+   *  @methodOf managerApp.service:tucVoipServiceAlias
    *
    *  @description
    *  <p>Fetch conference number web access.</p>
@@ -299,8 +298,8 @@ export default class {
 
   /**
    *  @ngdoc method
-   *  @name managerApp.service:voipServiceAlias#createConferenceNumberWebAccess
-   *  @methodOf managerApp.service:voipServiceAlias
+   *  @name managerApp.service:tucVoipServiceAlias#createConferenceNumberWebAccess
+   *  @methodOf managerApp.service:tucVoipServiceAlias
    *
    *  @description
    *  <p>Create new web access for a conference number.</p>
@@ -319,8 +318,8 @@ export default class {
 
   /**
    *  @ngdoc method
-   *  @name managerApp.service:voipServiceAlias#deleteConferenceNumberWebAccess
-   *  @methodOf managerApp.service:voipServiceAlias
+   *  @name managerApp.service:tucVoipServiceAlias#deleteConferenceNumberWebAccess
+   *  @methodOf managerApp.service:tucVoipServiceAlias
    *
    *  @description
    *  <p>Delete a web access of the conference number.</p>
