@@ -22,7 +22,7 @@
   "author": "OVH SAS",
   "scripts": {
     "build": "webpack --env.production",
-    "clean": "npx rimraf .cache-loader dist node_modules",
+    "clean": "npx rimraf dist node_modules",
     "clean:dist": "npx rimraf dist",
     "lint": "run-p lint:html lint:css lint:js",
     "lint:css": "stylelint 'client/**/*.less' --fix",
