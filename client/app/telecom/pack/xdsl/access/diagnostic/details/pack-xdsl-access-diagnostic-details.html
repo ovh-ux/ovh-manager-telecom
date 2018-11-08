@@ -12,15 +12,15 @@
 
     <dl data-ng-if="$ctrl.diagnostic">
         <div class="row">
-            <dt class="col" data-translate="xdsl_details_diagnostic_modal_status_term_time"></dt>
-            <dd class="col" data-ng-bind="$ctrl.diagnostic.diagnosticTime"></dd>
+            <dt class="col-xs-4" data-translate="xdsl_details_diagnostic_modal_status_term_time"></dt>
+            <dd class="col-xs-8" data-ng-bind="$ctrl.diagnostic.diagnosticTime"></dd>
         </div>
         <div data-ng-repeat="status in $ctrl.statuses"
              class="row">
-            <dt class="col" data-translate="{{ 'xdsl_details_diagnostic_modal_status_term_' + status.key}}"></dt>
-            <dd class="col">
+            <dt class="col-xs-4" data-translate="{{ 'xdsl_details_diagnostic_modal_status_term_' + status.key}}"></dt>
+            <dd class="col-xs-8">
                 <span aria-hidden="true"
-                      class="oui-icon {{ status.val ? 'oui-icon-success_circle' : 'oui-icon-error_circle' }}">
+                      class="small oui-icon {{ status.val ? 'oui-icon-success_circle' : 'oui-icon-error_circle' }}">
                 </span>
                 <span data-translate="{{ 'xdsl_details_diagnostic_modal_status_term_' + status.key + '_' + status.val }}"></span>
             </dd>

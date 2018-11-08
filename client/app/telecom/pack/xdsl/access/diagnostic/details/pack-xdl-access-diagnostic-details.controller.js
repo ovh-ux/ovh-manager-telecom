@@ -1,46 +1,37 @@
 angular.module('managerApp').controller('XdslDiagnosticDetailsCtrl', class XdslDiagnosticDetailsCtrl {
-  constructor($state, $translate) {
+  constructor($state, $stateParams, $translate, OvhApiXdslDiagnostic) {
     this.$state = $state;
+    this.$stateParams = $stateParams;
     this.$translate = $translate;
+    this.XdslDiagnostic = OvhApiXdslDiagnostic.v6();
   }
 
   $onInit() {
-    this.loading = false;
-    this.diagnostic = null;
+    this.serviceName = this.$stateParams.serviceName;
 
-    this.TrucService = {
-      get: () => new Promise((resolve) => {
-        resolve({
-          isActiveOnLns: null,
-          incident: null,
-          remaining: 4,
-          ping: null,
-          capabilities: {
-            isActiveOnLns: true,
-            incident: true,
-            ping: true,
-            sync: true,
-            isModemConnected: true,
-            proposedProfileId: true,
-            lineTest: true,
-          },
-          isModemConnected: null,
-          diagnosticTime: '2018-11-06T16:06:15+01:00',
-          lineDetails: null,
-        });
-      }),
-    };
+    this.loading = true;
+    this.diagnostic = null;
+    this.getDiagnostic().finally(() => {
+      this.loading = false;
+    });
   }
 
   check() {
     this.loading = true;
-    this.TrucService.get().then((diagnostic) => {
-      this.diagnostic = diagnostic;
-      this.statuses = Object.entries(_.pick(diagnostic, ['isActiveOnLns', 'ping', 'isModemConnected']))
-        .map(kv => ({ key: kv[0], val: !!kv[1] }));
-    }).finally(() => {
-      this.loading = false;
-    });
+    return this.XdslDiagnostic.launchDiagnostic({ xdslId: this.serviceName }, {}).$promise
+      .then(() => this.getDiagnostic())
+      .finally(() => {
+        this.loading = false;
+      });
+  }
+
+  getDiagnostic() {
+    return this.XdslDiagnostic.get({ xdslId: this.serviceName }).$promise
+      .then((diagnostic) => {
+        this.diagnostic = diagnostic;
+        this.statuses = Object.entries(_.pick(diagnostic, ['isActiveOnLns', 'ping', 'isModemConnected']))
+          .map(kv => ({ key: kv[0], val: !!kv[1] }));
+      });
   }
 
   getRemainingChecksText() {
