@@ -40,6 +40,8 @@ angular.module('managerApp').controller('XdslAccessCtrl', class XdslAccessCtrl {
     this.$scope.access = {
       xdsl: null,
       tasks: { current: {} },
+      brandName: null,
+      isZyxel: false,
     };
 
     this.$scope.constants = {
@@ -229,6 +231,10 @@ angular.module('managerApp').controller('XdslAccessCtrl', class XdslAccessCtrl {
       this.OvhApiXdslModem.v6().get({
         xdslId: this.$stateParams.serviceName,
       }).$promise.then((modemDetail) => {
+        this.$scope.access.brandName = modemDetail.brandName;
+        if (modemDetail.brandName === 'Zyxel') {
+          this.$scope.access.isZyxel = true;
+        }
         this.modem = modemDetail;
       }, (err) => {
         if (err.status === 404) {

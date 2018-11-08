@@ -33,6 +33,12 @@ angular.module('managerApp').controller('XdslAccessIpv6Ctrl', function ($statePa
     if ($scope.access.tasks.current.routingIpv6) {
       $scope.access.xdsl.ipv6Enabled = !$scope.access.xdsl.ipv6Enabled;
     }
+
+    $scope.message = "<h3>{{ 'xdsl_access_ipv6_status' | translate }}</h3>{{ access.xdsl.ipv6Enabled ? 'xdsl_access_ipv6_really_on' : 'xdsl_access_ipv6_really_off' | translate }} "
+    + "<div class='text-warning'>{{ 'xdsl_access_ipv6_warning' | translate }}</div> ";
+    if ($scope.access.isZyxel) {
+      $scope.message += "<div class='text-warning'>{{ 'xdsl_access_ipv6_zyxel_warning' | translate }}</div>";
+    }
   }
 
   init();
