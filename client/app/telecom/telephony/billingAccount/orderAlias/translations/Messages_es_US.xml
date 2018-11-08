@@ -35,7 +35,7 @@
    <translation id="telephony_order_identity_first_name" qtlid="23323">Nombre</translation>
    <translation id="telephony_order_identity_name" qtlid="3818">Nombre</translation>
    <translation id="telephony_order_identity_email" qtlid="33598">Email</translation>
-   <translation id="telephony_order_identity_phone" qtlid="34174">Téléphone</translation>
+   <translation id="telephony_order_identity_phone" qtlid="34174">Teléfono</translation>
 
    <translation id="telephony_order_identity_mendatory" qtlid="360957">Les champs notés avec une étoile sont obligatoires.</translation>
 
