@@ -66,9 +66,9 @@
    <translation id="telephony_alias_portability_order_unit_price" qtlid="259961">Price per unit</translation>
    <translation id="telephony_alias_portability_order_quantity" qtlid="37107">Quantity</translation>
    <translation id="telephony_alias_portability_order_total" qtlid="32458">Total</translation>
-   <translation id="telephony_alias_portability_order_total_tax_free" qtlid="37143">Total ex. VAT</translation>
+   <translation id="telephony_alias_portability_order_total_tax_free" qtlid="37143">Total ex. GST</translation>
    <translation id="telephony_alias_portability_order_total_tax" qtlid="279470">VAT</translation>
-   <translation id="telephony_alias_portability_order_total_with_tax" qtlid="37167">Total incl. VAT</translation>
+   <translation id="telephony_alias_portability_order_total_with_tax" qtlid="37167">Total inc. GST</translation>
    <translation id="telephony_alias_portability_order_error" qtlid="461055">Oups ! Une erreur est survenue lors de la demande portabilité.</translation>
    <translation id="telephony_alias_portability_order_address_too_long" qtlid="461068">L'ensemble des champs "Numéro de la voie", "Complément au numéro de voie", "Type de voie" et "Nom de la voie" ne doit pas dépasser 35 caractères.</translation>
    <translation id="telephony_alias_portability_order_success" qtlid="461081">Votre demande de portabilité a bien été prise en compte.</translation>

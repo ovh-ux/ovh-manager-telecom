@@ -50,7 +50,7 @@
    <translation id="domain_activation_date_birth" qtlid="38289">Date de naissance</translation>
    <translation id="domain_activation_country_birth" qtlid="269877">País de origen</translation>
    <translation id="domain_activation_city_birth" qtlid="163856">Ciudad de origen</translation>
-   <translation id="domain_activation_organisation" qtlid="32278">Organisation</translation>
+   <translation id="domain_activation_organisation" qtlid="32278">Organización</translation>
    <translation id="domain_activation_organisation_complement" qtlid="307878">Complément</translation>
    <translation id="domain_activation_unable_to_save_domain" qtlid="307891">Impossible d’enregistrer le domaine</translation>
    <translation id="domain_activation_domain_is_saved" qtlid="455933">Domaine enregistré avec succès. Vous allez être redirigé vers la vue globale de votre pack.</translation>
