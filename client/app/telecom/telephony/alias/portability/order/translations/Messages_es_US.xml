@@ -36,7 +36,7 @@
    <translation id="telephony_alias_portability_order_contact_gsm_help" qtlid="460847">Ce numéro ne sera pas utilisé à des fins commerciales, mais uniquement pour le suivi de votre portabilité</translation>
    <translation id="telephony_alias_portability_order_contact_siret" qtlid="460860">Numéro de siret ou d'entreprise</translation>
    <translation id="telephony_alias_portability_order_contact_address" qtlid="460873">Adresse d'installation de la ligne</translation>
-   <translation id="telephony_alias_portability_order_contact_country" qtlid="25171">Pays</translation>
+   <translation id="telephony_alias_portability_order_contact_country" qtlid="25171">País</translation>
    <translation id="telephony_alias_portability_order_contact_country_france" qtlid="29047">France</translation>
    <translation id="telephony_alias_portability_order_contact_country_belgium" qtlid="29059">Belgique</translation>
    <translation id="telephony_alias_portability_order_contact_country_switzerland" qtlid="40954">Suisse</translation>

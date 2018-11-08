@@ -46,7 +46,7 @@
                     <div class="form-group mt-4">
                         <div class="row">
                             <div class="col-md-6">
-                                <telephony-bulk-action data-billing-account="{{ CallsFilteringEasyHuntingCtrl.bulkDatas.billingAccount }}"
+                                <tuc-telephony-bulk-action data-billing-account="{{ CallsFilteringEasyHuntingCtrl.bulkDatas.billingAccount }}"
                                                        data-service-type="alias"
                                                        data-service-name="{{ CallsFilteringEasyHuntingCtrl.bulkDatas.serviceName }}"
                                                        data-custom-class="link d-block pl-0 mb-3"
@@ -55,7 +55,7 @@
                                                        data-get-bulk-params="CallsFilteringEasyHuntingCtrl.getBulkParams"
                                                        data-on-success="CallsFilteringEasyHuntingCtrl.onBulkSuccess"
                                                        data-on-error="CallsFilteringEasyHuntingCtrl.onBulkError">
-                                </telephony-bulk-action>
+                                </tuc-telephony-bulk-action>
                             </div>
                         </div>
                     </div>
@@ -69,13 +69,13 @@
                     <h2 class="widget-presentation-title"
                         data-translate="telephony_alias_configuration_calls_filtering_new">
                     </h2>
-                    <telecom-telephony-calls-filtering-add
+                    <tuc-telecom-telephony-calls-filtering-add
                         data-add-screen-list="CallsFilteringEasyHuntingCtrl.addScreenList(screen)"
                         data-get-screen-list="CallsFilteringEasyHuntingCtrl.screenLists.getList()"
                         data-on-screen-list-added="CallsFilteringEasyHuntingCtrl.onScreenListAdded(screen)"
                         data-disable-outgoing="true"
                         data-disable-nature="true">
-                    </telecom-telephony-calls-filtering-add>
+                    </tuc-telecom-telephony-calls-filtering-add>
                 </div>
                 <!-- /.widget-presentation -->
             </div>
@@ -87,9 +87,9 @@
             <h2 class="widget-presentation-title"
                 data-translate="telephony_alias_configuration_calls_filtering_config">
             </h2>
-            <telecom-telephony-calls-filtering-table
+            <tuc-telecom-telephony-calls-filtering-table
                 data-api="CallsFilteringEasyHuntingCtrl.screenLists">
-            </telecom-telephony-calls-filtering-table>
+            </tuc-telecom-telephony-calls-filtering-table>
         </div>
         <!-- /.widget-presentation -->
 

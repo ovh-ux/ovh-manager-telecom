@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationCallsFilteringEasyHuntingCtrl', function ($stateParams, $q, $translate, OvhApiTelephony, TucToastError, telephonyBulk, TucToast) {
+angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationCallsFilteringEasyHuntingCtrl', function ($stateParams, $q, $translate, OvhApiTelephony, TucToastError, tucTelephonyBulk, TucToast) {
   const self = this;
 
   self.fetchStatus = function () {
@@ -132,7 +132,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationCalls
 
   self.onBulkSuccess = function (bulkResult) {
     // display message of success or error
-    telephonyBulk.getTucToastInfos(bulkResult, {
+    tucTelephonyBulk.getTucToastInfos(bulkResult, {
       fullSuccess: $translate.instant('telephony_line_calls_filtering_bulk_all_success'),
       partialSuccess: $translate.instant('telephony_line_calls_filtering_bulk_some_success', {
         count: bulkResult.success.length,

@@ -25,7 +25,6 @@
 
    <translation id="xdsl_modem_wifi_config_canal" qtlid="279730">Canal</translation>
    <translation id="xdsl_modem_wifi_config_table_frequency" qtlid="30442">Frecuencia</translation>
-   <translation id="xdsl_modem_wifi_config_table_band_steering" qtlid="456401">Agrégée</translation>
    <translation id="xdsl_modem_wifi_config_table_guest" qtlid="456414">Invité</translation>
 
    <translation id="xdsl_modem_wifi_config_state_enabled" qtlid="30250">Activado</translation>

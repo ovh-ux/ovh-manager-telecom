@@ -146,14 +146,14 @@
                         <div class="form-group mt-4">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <telephony-bulk-action data-billing-account="{{ CallsFilteringCtrl.bulkDatas.billingAccount }}"
+                                    <tuc-telephony-bulk-action data-billing-account="{{ CallsFilteringCtrl.bulkDatas.billingAccount }}"
                                                            data-service-name="{{ CallsFilteringCtrl.bulkDatas.serviceName }}"
                                                            data-custom-class="link d-block pl-0 mb-3"
                                                            data-bulk-infos="CallsFilteringCtrl.bulkDatas.infos"
                                                            data-get-bulk-params="CallsFilteringCtrl.getBulkParams"
                                                            data-on-success="CallsFilteringCtrl.onBulkSuccess"
                                                            data-on-error="CallsFilteringCtrl.onBulkError">
-                                    </telephony-bulk-action>
+                                    </tuc-telephony-bulk-action>
                                 </div>
                             </div>
                         </div>
@@ -166,11 +166,11 @@
                     <h2 class="widget-presentation-title"
                         data-translate="telephony_line_calls_filtering_new">
                     </h2>
-                    <telecom-telephony-calls-filtering-add
+                    <tuc-telecom-telephony-calls-filtering-add
                         data-add-screen-list="CallsFilteringCtrl.addScreenList(screen)"
                         data-get-screen-list="CallsFilteringCtrl.screenLists.getList()"
                         data-on-screen-list-added="CallsFilteringCtrl.onScreenListAdded(screen)">
-                    </telecom-telephony-calls-filtering-add>
+                    </tuc-telecom-telephony-calls-filtering-add>
                 </div>
                 <!-- /.widget-presentation -->
 
@@ -183,9 +183,9 @@
                 data-translate="telephony_line_calls_filtering_config">
             </h2>
             <div class="table-responsive">
-                <telecom-telephony-calls-filtering-table
+                <tuc-telecom-telephony-calls-filtering-table
                     data-api="CallsFilteringCtrl.screenLists">
-                </telecom-telephony-calls-filtering-table>
+                </tuc-telecom-telephony-calls-filtering-table>
             </div>
         </div>
         <!-- /.widget-presentation -->

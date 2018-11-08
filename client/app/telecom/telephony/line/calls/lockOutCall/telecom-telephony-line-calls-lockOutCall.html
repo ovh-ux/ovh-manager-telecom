@@ -83,7 +83,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <hr/>
-                        <telephony-bulk-action data-billing-account="{{ LineLockOutCallCtrl.bulkDatas.billingAccount }}"
+                        <tuc-telephony-bulk-action data-billing-account="{{ LineLockOutCallCtrl.bulkDatas.billingAccount }}"
                                                data-service-name="{{ LineLockOutCallCtrl.bulkDatas.serviceName }}"
                                                data-custom-class="link d-block pl-0 mb-3"
                                                data-bulk-infos="LineLockOutCallCtrl.bulkDatas.infos"
@@ -91,7 +91,7 @@
                                                data-get-bulk-params="LineLockOutCallCtrl.getBulkParams"
                                                data-on-success="LineLockOutCallCtrl.onBulkSuccess"
                                                data-on-error="LineLockOutCallCtrl.onBulkError">
-                        </telephony-bulk-action>
+                        </tuc-telephony-bulk-action>
                         <button type="submit"
                                 class="btn btn-primary"
                                 data-ng-disabled="LineLockOutCallCtrl.updating || !lockOutCallForm.$valid">

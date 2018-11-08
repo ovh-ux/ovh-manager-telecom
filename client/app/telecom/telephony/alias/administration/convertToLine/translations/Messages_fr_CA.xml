@@ -6,7 +6,7 @@
    <translation id="telephony_alias_administration_convert_info_subtitle" qtlid="26551">Informations</translation>
    <translation id="telephony_alias_administration_convert_info" qtlid="387393">Les demandes de conversion seront prises en compte lors de votre prochaine facturation. Jusqu'à cette date, l'annulation des demandes restera possible.</translation>
    <translation id="telephony_alias_administration_convert_offers" qtlid="359787">Offres disponibles</translation>
-   <translation id="telephony_alias_administration_convert_monthly_price_tax_free" qtlid="270254">{{ price }} HT/mois</translation>
+   <translation id="telephony_alias_administration_convert_monthly_price_tax_free" qtlid="270254">{{ price }} /mois</translation>
    <translation id="telephony_alias_administration_convert_submit" qtlid="392125">Convertir le numéro</translation>
    <translation id="telephony_alias_administration_convert_success" qtlid="392138">Convertion planifiée avec succès.</translation>
    <translation id="telephony_alias_administration_convert_task" qtlid="392151">Le numéro {{ number }} sera converti en ligne le {{ date }}.</translation>

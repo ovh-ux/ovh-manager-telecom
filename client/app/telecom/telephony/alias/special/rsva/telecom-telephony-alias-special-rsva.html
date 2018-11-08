@@ -159,7 +159,7 @@
                     </fieldset>
                     <div class="form-group">
                         <hr/>
-                        <telephony-bulk-action data-service-type="alias"
+                        <tuc-telephony-bulk-action data-service-type="alias"
                                                data-billing-account="{{:: $ctrl.billingAccount }}"
                                                data-service-name="{{:: $ctrl.serviceName }}"
                                                data-custom-class="link d-block pl-0 mb-3"
@@ -169,7 +169,7 @@
                                                data-get-bulk-params="$ctrl.getBulkParams()"
                                                data-on-success="$ctrl.onBulkSuccess()"
                                                data-on-error="$ctrl.onBulkError()">
-                        </telephony-bulk-action>
+                        </tuc-telephony-bulk-action>
                         <button type="button"
                                 class="btn btn-default"
                                 data-ng-if="!$ctrl.isEditing"

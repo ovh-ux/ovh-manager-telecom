@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyLinePhoneCodecCtrl', function ($q, $stateParams, $translate, TelephonyMediator, TucToast, OvhApiTelephony, telephonyBulk, voipLinePhone) {
+angular.module('managerApp').controller('TelecomTelephonyLinePhoneCodecCtrl', function ($q, $stateParams, $translate, TelephonyMediator, TucToast, OvhApiTelephony, tucTelephonyBulk, tucVoipLinePhone) {
   const self = this;
   let codecsAuto = null;
 
@@ -118,7 +118,7 @@ angular.module('managerApp').controller('TelecomTelephonyLinePhoneCodecCtrl', fu
   self.filterServices = function (services) {
     const filteredServices = _.filter(services, service => ['sip', 'mgcp'].indexOf(service.featureType) > -1);
 
-    return voipLinePhone
+    return tucVoipLinePhone
       .fetchAll()
       .then(voipLinePhones => _.filter(filteredServices, service => _.some(voipLinePhones, {
         serviceName: service.serviceName,
@@ -136,7 +136,7 @@ angular.module('managerApp').controller('TelecomTelephonyLinePhoneCodecCtrl', fu
 
   self.onBulkSuccess = function (bulkResult) {
     // display message of success or error
-    telephonyBulk.getTucToastInfos(bulkResult, {
+    tucTelephonyBulk.getTucToastInfos(bulkResult, {
       fullSuccess: $translate.instant('telephony_line_phone_codec_bulk_all_success'),
       partialSuccess: $translate.instant('telephony_line_phone_codec_bulk_some_success', {
         count: bulkResult.success.length,

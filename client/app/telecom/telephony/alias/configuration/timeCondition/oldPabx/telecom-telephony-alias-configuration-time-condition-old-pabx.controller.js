@@ -1,6 +1,6 @@
 angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationTimeConditionOldPabxCtrl', function (
   $q, $stateParams, $translate, $uibModal,
-  OvhApiTelephony, TelephonyMediator, TucToast, uiCalendarConfig, telephonyBulk,
+  OvhApiTelephony, TelephonyMediator, TucToast, uiCalendarConfig, tucTelephonyBulk,
   voipTimeCondition, VoipTimeConditionCondition, voipTimeConditionConfiguration,
 ) {
   const self = this;
@@ -242,7 +242,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationTimeC
 
   self.onBulkSuccess = function (bulkResult) {
     // display message of success or error
-    telephonyBulk.getTucToastInfos(bulkResult, {
+    tucTelephonyBulk.getTucToastInfos(bulkResult, {
       fullSuccess: $translate.instant('telephony_line_calls_time_condition_bulk_all_success'),
       partialSuccess: $translate.instant('telephony_line_calls_time_condition_bulk_some_success', {
         count: bulkResult.success.length,

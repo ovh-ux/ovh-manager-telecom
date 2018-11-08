@@ -1,4 +1,4 @@
-angular.module('managerApp').service('TelephonySidebar', function ($translate, SidebarMenu, telecomVoip, voipService) {
+angular.module('managerApp').service('TelephonySidebar', function ($translate, SidebarMenu, tucTelecomVoip, tucVoipService) {
   const self = this;
   self.mainSectionItem = null;
 
@@ -22,7 +22,7 @@ angular.module('managerApp').service('TelephonySidebar', function ($translate, S
      * Telephony sidebar initilization
      */
   self.initTelephonySubsection = function () {
-    return telecomVoip.fetchAll().then((billingAccounts) => {
+    return tucTelecomVoip.fetchAll().then((billingAccounts) => {
       /* ----------  billingAccount display  ---------- */
 
       // first sort by getDisplayedName
@@ -45,7 +45,7 @@ angular.module('managerApp').service('TelephonySidebar', function ($translate, S
         /* ----------  Numbers (alias) display  ---------- */
 
         // first sort numbers of the billingAccount
-        const sortedAlias = voipService
+        const sortedAlias = tucVoipService
           .constructor.sortServicesByDisplayedName(billingAccount.getAlias());
 
         // add number subsections to billingAccount subsection
@@ -57,7 +57,7 @@ angular.module('managerApp').service('TelephonySidebar', function ($translate, S
         /* ----------  Lines display  ---------- */
 
         // first sort lines of the billingAccount
-        const sortedLines = voipService
+        const sortedLines = tucVoipService
           .constructor.sortServicesByDisplayedName(billingAccount.getLines());
 
         // display lines except plugAndFax and fax
@@ -75,7 +75,8 @@ angular.module('managerApp').service('TelephonySidebar', function ($translate, S
         }, billingAccountSubSection);
 
         // second get plugAndFax
-        const sortedPlugAndFaxLines = voipService.constructor.filterPlugAndFaxServices(sortedLines);
+        const sortedPlugAndFaxLines = tucVoipService.constructor
+          .filterPlugAndFaxServices(sortedLines);
 
         // add plugAndFax subsections to billingAccount subsection
         addServiceMenuItems(sortedPlugAndFaxLines, {
@@ -84,7 +85,7 @@ angular.module('managerApp').service('TelephonySidebar', function ($translate, S
         }, billingAccountSubSection);
 
         // then get fax
-        const sortedFaxLines = voipService.constructor.filterFaxServices(sortedLines);
+        const sortedFaxLines = tucVoipService.constructor.filterFaxServices(sortedLines);
 
         // add fax subsections to billingAccount subsection
         addServiceMenuItems(sortedFaxLines, {

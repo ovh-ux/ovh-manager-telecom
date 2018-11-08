@@ -1,6 +1,7 @@
 import angular from 'angular';
 
 import tucChartjs from './chartjs';
+import tucCsvParser from './csv-parser';
 import tucCustomAsterisk from './custom-asterisk';
 import tucDebounce from './debounce';
 import tucEditableServiceName from './editable-service-name';
@@ -15,7 +16,9 @@ import tucIpAddress from './ipAddress';
 import tucJsplumb from './jsplumb';
 import tucOvhPassword from './ovh-password';
 import tucPhone from './phone';
+import tucResiliation from './resiliation';
 import tucSectionBackLink from './section-back-link';
+import tucShippingModeSelection from './shippingModeSelection';
 import tucSlider from './slider';
 import tucSuccessDrawingCheck from './successDrawingCheck';
 import tucTableSort from './table-sort';
@@ -26,6 +29,7 @@ import tucTelecomRetractation from './telecom/retractation';
 import tucTelecomSms from './telecom/sms';
 import tucTelecomTelephony from './telecom/telephony';
 import tucTelecomV4Links from './telecom/v4-links';
+import tucTelecomVoip from './telecom/voip';
 import tucToaster from './toaster';
 import tucToastError from './toast-error';
 import tucUiSortableHelpers from './uiSortableHelpers';
@@ -37,6 +41,7 @@ const moduleName = 'telecomUniverseComponents';
 angular
   .module(moduleName, [
     tucChartjs,
+    tucCsvParser,
     tucCustomAsterisk,
     tucDebounce,
     tucEditableServiceName,
@@ -51,7 +56,9 @@ angular
     tucJsplumb,
     tucOvhPassword,
     tucPhone,
+    tucResiliation,
     tucSectionBackLink,
+    tucShippingModeSelection,
     tucSlider,
     tucSuccessDrawingCheck,
     tucTableSort,
@@ -62,6 +69,7 @@ angular
     tucTelecomSms,
     tucTelecomTelephony,
     tucTelecomV4Links,
+    tucTelecomVoip,
     tucToaster,
     tucToastError,
     tucUiSortableHelpers,

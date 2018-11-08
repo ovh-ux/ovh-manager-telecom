@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyLineCallsCallWaitingCtrl', function ($q, $stateParams, $translate, TucToast, TucToastError, OvhApiTelephony, TelephonyMediator, telephonyBulk) {
+angular.module('managerApp').controller('TelecomTelephonyLineCallsCallWaitingCtrl', function ($q, $stateParams, $translate, TucToast, TucToastError, OvhApiTelephony, TelephonyMediator, tucTelephonyBulk) {
   const self = this;
 
   function setIntercomGetter(obj) {
@@ -124,7 +124,7 @@ angular.module('managerApp').controller('TelecomTelephonyLineCallsCallWaitingCtr
 
   self.onBulkSuccess = function (bulkResult) {
     // display message of success or error
-    telephonyBulk.getTucToastInfos(bulkResult, {
+    tucTelephonyBulk.getTucToastInfos(bulkResult, {
       fullSuccess: $translate.instant('telephony_line_actions_line_calls_cw_intercom_bulk_all_success'),
       partialSuccess: $translate.instant('telephony_line_actions_line_calls_cw_intercom_bulk_some_success', {
         count: bulkResult.success.length,

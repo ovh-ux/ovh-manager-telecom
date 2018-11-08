@@ -45,9 +45,9 @@ yarn test
 
 ## Related
 
-* [Web Control Panel UI](https://github.com/ovh-ux/ovh-manager-web).
-* [Dedicated Control Panel UI](https://github.com/ovh-ux/ovh-manager-dedicated).
-* [Cloud Control Panel UI](https://github.com/ovh-ux/ovh-manager-cloud).
+* [ovh-manager-web](https://github.com/ovh-ux/ovh-manager-web) - OVH Control Panel Web UI
+* [ovh-manager-dedicated](https://github.com/ovh-ux/ovh-manager-dedicated) - OVH Control Panel Dedicated UI
+* [ovh-manager-cloud](https://github.com/ovh-ux/ovh-manager-cloud) - OVH Control Panel Cloud UI
 
 ## Contributing
 

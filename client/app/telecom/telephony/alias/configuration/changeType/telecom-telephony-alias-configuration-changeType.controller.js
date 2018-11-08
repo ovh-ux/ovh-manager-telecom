@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationChangeTypeCtrl', function ($scope, $q, $translate, $state, $stateParams, TelephonyMediator, TucToast, voipServiceTask, telephonyBulk) {
+angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationChangeTypeCtrl', function ($scope, $q, $translate, $state, $stateParams, TelephonyMediator, TucToast, voipServiceTask, tucTelephonyBulk) {
   const self = this;
 
   self.number = null;
@@ -111,7 +111,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationChang
         TucToast.warn([$translate.instant('telephony_alias_config_change_type_bulk_server_tasks_some_error')]);
       }
 
-      telephonyBulk.getTucToastInfos(bulkResult, {
+      tucTelephonyBulk.getTucToastInfos(bulkResult, {
         fullSuccess: $translate.instant('telephony_alias_config_change_type_bulk_all_success'),
         partialSuccess: $translate.instant('telephony_alias_config_change_type_bulk_some_success', {
           count: bulkResult.success.length,

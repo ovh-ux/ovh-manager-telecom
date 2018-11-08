@@ -1,6 +1,13 @@
 angular.module('managerApp').controller(
   'TelecomTelephonyLineCallsLockOutCallCtrl',
-  function ($q, $stateParams, $translate, TucToast, TucToastError, OvhApiTelephony, telephonyBulk) {
+  function (
+    $stateParams,
+    $translate,
+    TucToast,
+    TucToastError,
+    OvhApiTelephony,
+    tucTelephonyBulk,
+  ) {
     const self = this;
 
     self.isPin = function (val) {
@@ -83,7 +90,7 @@ angular.module('managerApp').controller(
 
     self.onBulkSuccess = function (bulkResult) {
       // display message of success or error
-      telephonyBulk.getTucToastInfos(bulkResult, {
+      tucTelephonyBulk.getTucToastInfos(bulkResult, {
         fullSuccess: $translate.instant('telephony_line_actions_line_calls_out_lock_call_bulk_all_success'),
         partialSuccess: $translate.instant('telephony_line_actions_line_calls_out_lock_call_bulk_some_success', {
           count: bulkResult.success.length,

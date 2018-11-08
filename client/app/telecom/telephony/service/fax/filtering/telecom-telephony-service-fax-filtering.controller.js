@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyServiceFaxFilteringCtrl', function ($filter, $q, $stateParams, $timeout, $translate, TelephonyMediator, OvhApiTelephony, TucToast, telephonyBulk) {
+angular.module('managerApp').controller('TelecomTelephonyServiceFaxFilteringCtrl', function ($filter, $q, $stateParams, $timeout, $translate, TelephonyMediator, OvhApiTelephony, TucToast, tucTelephonyBulk) {
   const self = this;
   let faxSettings = null;
   const screenListsTypes = [
@@ -273,7 +273,7 @@ angular.module('managerApp').controller('TelecomTelephonyServiceFaxFilteringCtrl
 
   self.onBulkSuccess = function (bulkResult) {
     // display message of success or error
-    telephonyBulk.getTucToastInfos(bulkResult, {
+    tucTelephonyBulk.getTucToastInfos(bulkResult, {
       fullSuccess: $translate.instant('telephony_service_fax_filtering_bulk_all_success'),
       partialSuccess: $translate.instant('telephony_service_fax_filtering_bulk_some_success', {
         count: bulkResult.success.length,

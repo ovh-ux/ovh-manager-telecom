@@ -44,14 +44,14 @@
                       data-translate-values="{ line: (LineConvertCtrl.line.serviceName | tucPhoneNumber), date: (LineConvertCtrl.task.executionDate | date) }"></span>
             </p>
 
-            <telephony-bulk-action data-billing-account="{{ LineConvertCtrl.line.billingAccount }}"
+            <tuc-telephony-bulk-action data-billing-account="{{ LineConvertCtrl.line.billingAccount }}"
                                    data-service-name="{{ LineConvertCtrl.line.serviceName }}"
                                    data-custom-class="link d-block pl-0 mb-3"
                                    data-bulk-infos="LineConvertCtrl.bulkDatas.infos"
                                    data-filter-services="LineConvertCtrl.filterServices"
                                    data-on-success="LineConvertCtrl.onBulkSuccess"
                                    data-on-error="LineConvertCtrl.onBulkError">
-            </telephony-bulk-action>
+            </tuc-telephony-bulk-action>
 
             <div data-ng-if="!LineConvertCtrl.task">
                 <button type="button"

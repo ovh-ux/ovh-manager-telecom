@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyServiceVoicemailDefaultCtrl', function ($scope, $stateParams, $q, $timeout, $filter, $translate, TucToastError, OvhApiTelephony, telephonyBulk, TucToast) {
+angular.module('managerApp').controller('TelecomTelephonyServiceVoicemailDefaultCtrl', function ($scope, $stateParams, $q, $timeout, $filter, $translate, TucToastError, OvhApiTelephony, tucTelephonyBulk, TucToast) {
   const self = this;
 
   function fetchLines() {
@@ -99,7 +99,7 @@ angular.module('managerApp').controller('TelecomTelephonyServiceVoicemailDefault
 
   self.onBulkSuccess = function (bulkResult) {
     // display message of success or error
-    telephonyBulk.getTucToastInfos(bulkResult, {
+    tucTelephonyBulk.getTucToastInfos(bulkResult, {
       fullSuccess: $translate.instant('telephony_line_answer_default_voicemail_bulk_all_success'),
       partialSuccess: $translate.instant('telephony_line_answer_default_voicemail_bulk_some_success', {
         count: bulkResult.success.length,

@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyLineCallsForwardCtrl', function ($q, $stateParams, $translate, $state, TucToast, TelecomTelephonyLineCallsForwardService, tucValidator, telephonyBulk, telecomVoip) {
+angular.module('managerApp').controller('TelecomTelephonyLineCallsForwardCtrl', function ($q, $stateParams, $translate, $state, TucToast, TelecomTelephonyLineCallsForwardService, tucValidator, tucTelephonyBulk, tucTelecomVoip) {
   const self = this;
   self.validator = tucValidator;
 
@@ -237,7 +237,7 @@ angular.module('managerApp').controller('TelecomTelephonyLineCallsForwardCtrl', 
     };
 
     self.saved = angular.copy(self.options);
-    telecomVoip.fetchAll().then((billingAccounts) => {
+    tucTelecomVoip.fetchAll().then((billingAccounts) => {
       self.listBillingAccounts = billingAccounts;
       self.listBillingAccounts.unshift({ billingAccount: null, description: 'Tous les groupes' });
       self.filter.billingAccount = _.get(_.find(self.listBillingAccounts, { billingAccount: $stateParams.billingAccount }), 'billingAccount', null);
@@ -309,7 +309,7 @@ angular.module('managerApp').controller('TelecomTelephonyLineCallsForwardCtrl', 
 
   self.onBulkSuccess = function (bulkResult) {
     // display message of success or error
-    telephonyBulk.getTucToastInfos(bulkResult, {
+    tucTelephonyBulk.getTucToastInfos(bulkResult, {
       fullSuccess: $translate.instant('telephony_line_actions_line_calls_forward_bulk_all_success'),
       partialSuccess: $translate.instant('telephony_line_actions_line_calls_forward_bulk_some_success', {
         count: bulkResult.success.length,

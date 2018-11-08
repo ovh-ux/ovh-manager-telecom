@@ -208,7 +208,7 @@
         <div class="row my-4">
             <div class="col-xs-12 col-sm-6">
                 <hr />
-                <telephony-bulk-action data-billing-account="{{ LineForwardCtrl.bulkDatas.billingAccount }}"
+                <tuc-telephony-bulk-action data-billing-account="{{ LineForwardCtrl.bulkDatas.billingAccount }}"
                                        data-service-name="{{ LineForwardCtrl.bulkDatas.serviceName }}"
                                        data-custom-class="link d-block pl-0 mb-3"
                                        data-ng-disabled="!forwardForm.$valid || !LineForwardCtrl.forwards || LineForwardCtrl.forwards.count < 0"
@@ -217,7 +217,7 @@
                                        data-get-bulk-params="LineForwardCtrl.getBulkParams"
                                        data-on-success="LineForwardCtrl.onBulkSuccess"
                                        data-on-error="LineForwardCtrl.onBulkError">
-                </telephony-bulk-action>
+                </tuc-telephony-bulk-action>
 
                 <button type="submit"
                         class="btn btn-primary"

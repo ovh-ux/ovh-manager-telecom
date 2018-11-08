@@ -67,7 +67,7 @@
                 </div>
             </div>
 
-            <telephony-bulk-action data-billing-account="{{ CodecCtrl.bulkDatas.billingAccount }}"
+            <tuc-telephony-bulk-action data-billing-account="{{ CodecCtrl.bulkDatas.billingAccount }}"
                        data-service-name="{{ CodecCtrl.bulkDatas.serviceName }}"
                        data-custom-class="link d-block pl-0 mb-3"
                        data-ng-disabled="!CodecCtrl.model.codecs || CodecCtrl.isCheckingPhones"
@@ -76,7 +76,7 @@
                        data-get-bulk-params="CodecCtrl.getBulkParams"
                        data-on-success="CodecCtrl.onBulkSuccess"
                        data-on-error="CodecCtrl.onBulkError">
-            </telephony-bulk-action>
+            </tuc-telephony-bulk-action>
 
             <button type="submit"
                     class="btn btn-primary"

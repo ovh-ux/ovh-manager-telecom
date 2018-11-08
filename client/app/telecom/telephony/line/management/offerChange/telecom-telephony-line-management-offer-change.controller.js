@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyLineManagementOfferChangeCtrl', function ($q, $stateParams, $translate, TelephonyMediator, TucToast, OvhApiTelephony, telephonyBulk) {
+angular.module('managerApp').controller('TelecomTelephonyLineManagementOfferChangeCtrl', function ($q, $stateParams, $translate, TelephonyMediator, TucToast, OvhApiTelephony, tucTelephonyBulk) {
   const self = this;
 
   self.loading = {
@@ -190,7 +190,7 @@ angular.module('managerApp').controller('TelecomTelephonyLineManagementOfferChan
 
   self.onBulkSuccess = function (bulkResult) {
     // display message of success or error
-    telephonyBulk.getTucToastInfos(bulkResult, {
+    tucTelephonyBulk.getTucToastInfos(bulkResult, {
       fullSuccess: $translate.instant('telephony_line_management_change_offer_bulk_all_success'),
       partialSuccess: $translate.instant('telephony_line_management_change_offer_bulk_some_success', {
         count: bulkResult.success.length,

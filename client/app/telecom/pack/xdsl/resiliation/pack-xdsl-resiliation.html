@@ -67,12 +67,12 @@
 
                     <div class="row mt-3" data-ng-if="!PackXdslResiliation.resiliationTerms.onGoingResiliation">
                         <div class="col-xs-12 col-md-4">
-                            <resiliation-reason
+                            <tuc-resiliation-reason
                                 data-ng-show="PackXdslResiliation.resiliationTerms.status"
                                 data-resiliation-reason-filter="{{PackXdslResiliation.resiliationTerms.data.resiliationReasons.join(',')}}"
-                                resiliation-reason="{id: PackXdslResiliation.resiliationTerms.serviceName, name:PackXdslResiliation.resiliationTerms.serviceName, type:'service', typeName:PackXdslResiliation.resiliationTerms.typeName}"
+                                tuc-resiliation-reason="{id: PackXdslResiliation.resiliationTerms.serviceName, name:PackXdslResiliation.resiliationTerms.serviceName, type:'service', typeName:PackXdslResiliation.resiliationTerms.typeName}"
                                 on-change="PackXdslResiliation.resiliateService(ELEMENT, SURVEY, ACCEPT)">
-                            </resiliation-reason>
+                            </tuc-resiliation-reason>
                         </div>
                     </div>
                 </div>

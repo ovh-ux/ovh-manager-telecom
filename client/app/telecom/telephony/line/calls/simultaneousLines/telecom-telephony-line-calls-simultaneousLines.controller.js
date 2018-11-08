@@ -2,7 +2,7 @@ angular.module('managerApp')
   .controller('TelecomTelephonyLineCallsSimultaneousLinesCtrl', function (
     $filter, $q, $stateParams, $translate,
     currentLine, OvhApiOrderTelephony, OvhApiTelephony, OvhApiTelephonyService,
-    telephonyBulk, TucToast,
+    tucTelephonyBulk, TucToast,
   ) {
     const self = this;
     const apiResources = {
@@ -227,7 +227,7 @@ angular.module('managerApp')
 
     self.onBulkSuccess = function (bulkResult) {
       // display message of success or error
-      telephonyBulk.getTucToastInfos(bulkResult, {
+      tucTelephonyBulk.getTucToastInfos(bulkResult, {
         fullSuccess: $translate.instant('telephony_line_actions_line_calls_simultaneous_bulk_all_success'),
         partialSuccess: $translate.instant('telephony_line_actions_line_calls_simultaneous_bulk_some_success', {
           count: bulkResult.success.length,

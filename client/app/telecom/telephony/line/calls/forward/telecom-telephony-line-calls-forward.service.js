@@ -1,6 +1,6 @@
 angular.module('managerApp').service('TelecomTelephonyLineCallsForwardService', function (
   $q, $translate, OvhApiTelephony, TelecomTelephonyLineCallsForwardPhoneNumber,
-  TelecomTelephonyLineCallsForward, TelecomTelephonyLineCallsForwardNature, voipLinePhone,
+  TelecomTelephonyLineCallsForward, TelecomTelephonyLineCallsForwardNature, tucVoipLinePhone,
 ) {
   /**
    * @param  {String} billingAccount Billing account
@@ -52,7 +52,7 @@ angular.module('managerApp').service('TelecomTelephonyLineCallsForwardService', 
       }
 
       // look for plug&phone lines
-      return voipLinePhone.fetchAll().then(phones => phones).catch(() => null)
+      return tucVoipLinePhone.fetchAll().then(phones => phones).catch(() => null)
         .then(phones => _.chain(ovhNums).forEach((num) => {
           _.set(num, 'hasPhone', !_.isUndefined(_.find(phones, { serviceName: num.serviceName })));
         }).map(num => new TelecomTelephonyLineCallsForwardPhoneNumber(_.pick(num, ['billingAccount', 'description', 'serviceName', 'type', 'hasPhone']))).filter(num => ['fax', 'voicemail', 'line', 'plug&phone', 'number'].indexOf(num.type) > -1)
