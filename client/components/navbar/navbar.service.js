@@ -1,7 +1,8 @@
 class ManagerNavbarService {
   constructor(
-    $q, $translate, $translatePartialLoader, $rootScope, LANGUAGES, MANAGER_URLS, REDIRECT_URLS,
-    TARGET, URLS, OvhApiMe, OtrsPopupService, ssoAuthentication, TucPackMediator, tucTelecomVoip,
+    $q, $translate, $translatePartialLoader, $rootScope,
+    LANGUAGES, MANAGER_URLS, REDIRECT_URLS, TARGET, URLS,
+    atInternet, OvhApiMe, OtrsPopupService, ssoAuthentication, TucPackMediator, tucTelecomVoip,
     tucVoipService, TucSmsMediator, OvhApiFreeFax, OvhApiOverTheBox, TelecomMediator,
     NavbarNotificationService, asyncLoader,
   ) {
@@ -13,6 +14,7 @@ class ManagerNavbarService {
     this.REDIRECT_URLS = REDIRECT_URLS;
     this.TARGET = TARGET;
     this.URLS = URLS;
+    this.atInternet = atInternet;
     this.ovhApiMe = OvhApiMe;
     this.otrsPopupService = OtrsPopupService;
     this.ssoAuthentication = ssoAuthentication;
@@ -338,6 +340,10 @@ class ManagerNavbarService {
         title: this.$translate.instant('common_menu_support_all_guides'),
         url: currentSubsidiaryURLs.guides.home,
         isExternal: true,
+        click: () => this.atInternet.trackClick({
+          name: 'assistance::all_guides',
+          type: 'action',
+        }),
       });
     }
 
@@ -351,6 +357,11 @@ class ManagerNavbarService {
           this.otrsPopupService.toggle();
         }
 
+        this.atInternet.trackClick({
+          name: 'assistance::create_assistance_request',
+          type: 'action',
+        });
+
         if (typeof callback === 'function') {
           callback();
         }
@@ -361,6 +372,10 @@ class ManagerNavbarService {
     assistanceMenu.push({
       title: this.$translate.instant('common_menu_support_list_ticket'),
       url: this.REDIRECT_URLS.listTicket,
+      click: () => this.atInternet.trackClick({
+        name: 'assistance::assistance_requests_created',
+        type: 'action',
+      }),
     });
 
     // Telephony (External)
@@ -369,6 +384,10 @@ class ManagerNavbarService {
         title: this.$translate.instant('common_menu_support_telephony_contact'),
         url: currentSubsidiaryURLs.support_contact,
         isExternal: true,
+        click: () => this.atInternet.trackClick({
+          name: 'assistance::helpline',
+          type: 'action',
+        }),
       });
     }
 
@@ -376,6 +395,10 @@ class ManagerNavbarService {
       name: 'assistance',
       title: this.$translate.instant('common_menu_support_assistance'),
       iconClass: 'icon-assistance',
+      onClick: () => this.atInternet.trackClick({
+        name: 'assistance',
+        type: 'action',
+      }),
       subLinks: assistanceMenu,
     };
   }
@@ -582,7 +605,7 @@ class ManagerNavbarService {
       if (user) {
         baseNavbar.internalLinks = [
           this.getLanguageMenu(), // Language
-          this.getAssistanceMenu(user), // Assistance
+          this.getAssistanceMenu(), // Assistance
           this.getUserMenu(user), // User
         ];
       }
