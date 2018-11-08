@@ -16,6 +16,9 @@ export const TUC_TELEPHONY_ALIAS = {
       control: 'write',
     },
   },
+  contactCenterSolution: {
+    tariffsGuideUrl: 'https://www.ovhtelecom.fr/telephonie/decouvrez/tarifs_telephonie.xml',
+  },
 };
 
 export default {

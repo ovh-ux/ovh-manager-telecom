@@ -49,4 +49,27 @@
       margin-right: auto;
     }
   }
+
+  // Specific style for custom buttons into datagrid
+  .row-height-limited {
+    td.oui-datagrid__cell > .ng-scope {
+      max-height: 4rem;
+    }
+  }
+
+  .content-precision-after::after {
+    content: "\2731";
+    vertical-align: super;
+    color: @oui-color-pomegranate;
+    font-size: 0.6rem;
+    margin: 0 0.2rem 0 0.2rem;
+  }
+
+  .content-precision-before::before {
+    content: "\2731";
+    vertical-align: super;
+    color: @oui-color-pomegranate;
+    font-size: 0.6rem;
+    margin: 0 0.2rem 0 0.2rem;
+  }
 }

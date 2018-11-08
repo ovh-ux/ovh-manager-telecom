@@ -54,6 +54,8 @@
    <translation id="common_navbar_notification_none" qtlid="492081">Vous êtes à jour !</translation>
    <translation id="common_navbar_notification_none_description" qtlid="492094">Vous n'avez aucune notification.</translation>
 
+   <translation id="common_open_new_tab">Ouvre un nouvel onglet</translation>
+
    <translation id="common_pagination_resultsperpage" qtlid="433384">Résultats par page</translation>
    <translation id="common_pagination_page" qtlid="433397">page</translation>
    <translation id="common_pagination_of" qtlid="121615">sur</translation>

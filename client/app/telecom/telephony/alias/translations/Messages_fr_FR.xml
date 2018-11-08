@@ -5,7 +5,7 @@
    <translation id="telephony_alias_tab_number">Mon numéro</translation>
    <translation id="telephony_alias_tab_portability" qtlid="333269">Portabilité</translation>
    <translation id="telephony_alias_tab_administrative_management" qtlid="72737">Gestion</translation>
-   <translation id="telephony_alias_tab_number_configuration" qtlid="333282">Configuration du numéro</translation>
+   <translation id="telephony_alias_tab_number_configuration" qtlid="4406">Configuration</translation>
    <translation id="telephony_alias_tab_consumption" qtlid="25639">Consommation</translation>
    <translation id="telephony_alias_tab_special" qtlid="35820">Reversements</translation>
    <translation id="telephony_alias_tab_bank_maker" qtlid="333295">Générateur de cartouche</translation>
@@ -19,7 +19,7 @@
 
    <translation id="telephony_alias_tab_item_line_management">Gestion des lignes</translation>
    <translation id="telephony_alias_tab_item_sounds_waiting_management">Gestion des sons et de l’attente</translation>
-   <translation id="telephony_alias_tab_item_time_condition_management">Plages horaires</translation>
+   <translation id="telephony_alias_tab_item_time_condition_management">Plages horaires et fermetures</translation>
    <translation id="telephony_alias_tab_item_calls_filtering_management">Filtrage d’appels</translation>
    <translation id="telephony_alias_tab_item_redirect_management">Redirection</translation>
    <translation id="telephony_alias_tab_item_conference_management" qtlid="333074">Conférence</translation>

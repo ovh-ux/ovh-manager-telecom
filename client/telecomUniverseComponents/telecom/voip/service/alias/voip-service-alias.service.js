@@ -7,19 +7,19 @@ import _ from 'lodash';
  *  @requires $q provider
  *  @requires OvhApiMe        from ovh-api-services
  *  @requires OvhApiTelephony from ovh-api-services
- *  @requires voipServiceTask service
+ *  @requires tucVoipServiceTask service
  *
  *  @description
  *  Service that manage specific API calls for aliases.
  */
 export default class {
-  constructor($q, OvhApiMe, OvhApiTelephony, voipServiceTask) {
+  constructor($q, OvhApiMe, OvhApiTelephony, tucVoipServiceTask) {
     'ngInject';
 
     this.$q = $q;
     this.OvhApiMe = OvhApiMe;
     this.OvhApiTelephony = OvhApiTelephony;
-    this.voipServiceTask = voipServiceTask;
+    this.tucVoipServiceTask = tucVoipServiceTask;
   }
 
   /**
@@ -71,7 +71,7 @@ export default class {
       }, {
         featureType,
       }).$promise
-      .then(task => this.voipServiceTask
+      .then(task => this.tucVoipServiceTask
         .startPolling(
           billingAccount,
           serviceName,
@@ -150,6 +150,244 @@ export default class {
 
   /**
    *  @ngdoc method
+   *  @name managerApp.service:tucVoipServiceAlias#fetchContactCenterSolutionNumber
+   *  @methodOf managerApp.service:tucVoipServiceAlias
+   *
+   *  @description
+   *  <p>Returns the contact center solution number properties.</p>
+   *
+   *  @param  {VoipService} number (destructured) The given VoipService number.
+   *
+   *  @return {VoipService}
+   */
+  fetchContactCenterSolutionNumber({ billingAccount, serviceName }) {
+    return this.OvhApiTelephony.EasyHunting().v6().get({
+      billingAccount,
+      serviceName,
+    }).$promise;
+  }
+
+  /**
+   *  @ngdoc method
+   *  @name managerApp.service:tucVoipServiceAlias#updateContactCenterSolutionNumber
+   *  @methodOf managerApp.service:tucVoipServiceAlias
+   *
+   *  @description
+   *  <p>Update the contact center solution number properties.</p>
+   *
+   *  @param  {VoipService} number (destructured) The given VoipService number.
+   *
+   *  @return {VoipService}
+   */
+  updateContactCenterSolutionNumber({ billingAccount, serviceName }, settings) {
+    return this.OvhApiTelephony.EasyHunting().v6().change({
+      billingAccount,
+      serviceName,
+    }, settings).$promise;
+  }
+
+  /**
+   *  @ngdoc method
+   *  @name managerApp.service:tucVoipServiceAlias#fetchContactCenterSolutionNumberQueues
+   *  @methodOf managerApp.service:tucVoipServiceAlias
+   *
+   *  @description
+   *  <p>Fetch current contact center solution existing queues.</p>
+   *
+   *  @param  {VoipService} number (destructured) The given VoipService number.
+   *
+   *  @return {Array[Object]}                     The queues list
+   */
+  fetchContactCenterSolutionNumberQueues({ billingAccount, serviceName }) {
+    return this.OvhApiTelephony.EasyHunting().Hunting().Queue().v6()
+      .query({
+        billingAccount,
+        serviceName,
+      })
+      .$promise.then(queueIds => this.$q.all(queueIds.map(
+        queueId => this.OvhApiTelephony.EasyHunting().Hunting().Queue().v6()
+          .get({
+            billingAccount,
+            serviceName,
+            queueId,
+          }).$promise,
+      )));
+  }
+
+  /**
+   *  @ngdoc method
+   *  @name managerApp.service:tucVoipServiceAlias#fetchContactCenterSolutionNumberAgents
+   *  @methodOf managerApp.service:tucVoipServiceAlias
+   *
+   *  @description
+   *  <p>Fetch all agents of contact center solution number.</p>
+   *
+   *  @param  {VoipService} number (destructured) The given VoipService number.
+   *
+   *  @return {Array[Object]}                     The agents list
+   */
+  fetchContactCenterSolutionNumberAgents({ billingAccount, serviceName }) {
+    return this.OvhApiTelephony.EasyHunting().Hunting().Agent().v6()
+      .query({
+        billingAccount,
+        serviceName,
+      }).$promise.then(agentIds => this.$q.all(
+        _.chunk(agentIds, 50).map(chunkIds => this.OvhApiTelephony.EasyHunting().Hunting().Agent()
+          .v6()
+          .getBatch({
+            billingAccount,
+            serviceName,
+            agentId: chunkIds,
+          }).$promise),
+      )).then(agents => _(agents).flatten().pluck('value').value());
+  }
+
+  /**
+   *  @ngdoc method
+   *  @name managerApp.service:tucVoipServiceAlias#fetchContactCenterSolutionNumberAgents
+   *  @methodOf managerApp.service:tucVoipServiceAlias
+   *
+   *  @description
+   *  <p>Fetch all agents lines of contact center solution number, with their queue order.</p>
+   *
+   *  @param  {VoipService} number (destructured) The given VoipService number.
+   *  @param  {String}      queueId               Id of the concerned queue
+   *
+   *  @return {Array[Object]}                     The agents list
+   */
+  fetchContactCenterSolutionNumberAgentsInQueue({ billingAccount, serviceName }, queueId) {
+    return this.fetchContactCenterSolutionNumberAgents({
+      billingAccount,
+      serviceName,
+    }).then(agents => this.OvhApiTelephony.EasyHunting().Hunting().Queue().Agent()
+      .v6()
+      .getBatch({
+        billingAccount,
+        serviceName,
+        queueId,
+        agentId: _.pluck(agents, 'agentId'),
+      }).$promise.then((queues) => {
+        const orderedAgents = agents.map((agentParam) => {
+          const agent = agentParam;
+          const positionToSet = _(queues)
+            .flatten()
+            .pluck('value')
+            .filter(queue => queue.agentId === agent.agentId)
+            .first()
+            .position;
+
+          agent.position = positionToSet;
+          return agent;
+        });
+
+        return _.sortBy(orderedAgents, 'position');
+      }));
+  }
+
+  /**
+   *  @ngdoc method
+   *  @name managerApp.service:tucVoipServiceAlias#addContactCenterSolutionNumberAgentInQueue
+   *  @methodOf managerApp.service:tucVoipServiceAlias
+   *
+   *  @description
+   *  <p>Add a new agent line to the contact center solution number queue.</p>
+   *
+   *  @param  {VoipService} number (destructured) The given VoipService number.
+   *  @param  {Object}      newAgent              Agent to create
+   *  @param  {String}      queueId               Id of the existing queue
+   */
+  addContactCenterSolutionNumberAgentInQueue(
+    { billingAccount, serviceName },
+    newAgent,
+    queueId,
+  ) {
+    return this.OvhApiTelephony.EasyHunting().Hunting().Agent()
+      .v6()
+      .create({
+        billingAccount,
+        serviceName,
+      }, newAgent).$promise
+      .then(({ agentId }) => this.OvhApiTelephony.EasyHunting().Hunting().Agent().Queue()
+        .v6()
+        .create({
+          billingAccount,
+          serviceName,
+          agentId,
+          queueId,
+        }, { position: 0, queueId }).$promise);
+  }
+
+  /**
+   *  @ngdoc method
+   *  @name managerApp.service:tucVoipServiceAlias#updateContactCenterSolutionNumberAgent
+   *  @methodOf managerApp.service:tucVoipServiceAlias
+   *
+   *  @description
+   *  <p>Update a specific agent line of the contact center solution number.</p>
+   *
+   *  @param  {VoipService} number (destructured) The given VoipService number.
+   *  @param  {String}      agentId               Id of the agent to update
+   *  @param  {Object}      agentSettings         Settings of agent to update
+   */
+  updateContactCenterSolutionNumberAgent({ billingAccount, serviceName }, agentId, agentSettings) {
+    return this.OvhApiTelephony.EasyHunting().Hunting().Agent()
+      .v6()
+      .change({
+        billingAccount,
+        serviceName,
+        agentId,
+      }, agentSettings).$promise;
+  }
+
+  /**
+   *  @ngdoc method
+   *  @name managerApp.service:tucVoipServiceAlias#updateContactCenterSolutionAgentPositionInQueue
+   *  @methodOf managerApp.service:tucVoipServiceAlias
+   *
+   *  @description
+   *  <p>Update the position of the agent line for a given contact center solution number.</p>
+   *
+   *  @param  {VoipService} number (destructured) The given VoipService number.
+   *  @param  {Objet}       agent  (destructured) The agent to update
+   *  @param  {Number}      queueIds              The id of related queue
+   */
+  updateContactCenterSolutionAgentPositionInQueue(
+    { billingAccount, serviceName },
+    { agentId, position },
+    queueId,
+  ) {
+    return this.OvhApiTelephony.EasyHunting().Hunting().Queue().Agent()
+      .v6()
+      .change({
+        billingAccount,
+        serviceName,
+        queueId,
+        agentId,
+      }, { position }).$promise;
+  }
+
+  /**
+   *  @ngdoc method
+   *  @name managerApp.service:tucVoipServiceAlias#deleteContactCenterSolutionNumberAgent
+   *  @methodOf managerApp.service:tucVoipServiceAlias
+   *
+   *  @description
+   *  <p>Delete a specific agent line of the contact center solution.</p>
+   *
+   *  @param  {VoipService} number (destructured) The given VoipService number.
+   *  @param  {Number}      agentId               Id of the agent to delete
+   */
+  deleteContactCenterSolutionNumberAgent({ billingAccount, serviceName }, agentId) {
+    return this.OvhApiTelephony.EasyHunting().Hunting().Agent().v6()
+      .remove({
+        billingAccount,
+        serviceName,
+        agentId,
+      }).$promise;
+  }
+
+  /**
+   *  @ngdoc method
    *  @name managerApp.service:tucVoipServiceAlias#fetchRedirectNumber
    *  @methodOf managerApp.service:tucVoipServiceAlias
    *
@@ -186,7 +424,7 @@ export default class {
       billingAccount,
       featureType: 'redirect',
       serviceName,
-    }, { destination }).$promise.then(({ taskId }) => this.voipServiceTask
+    }, { destination }).$promise.then(({ taskId }) => this.tucVoipServiceTask
       .startPolling(
         billingAccount,
         serviceName,
@@ -255,7 +493,7 @@ export default class {
         billingAccount,
         serviceName,
       }, { documentId: id }).$promise)
-      .then(({ taskId }) => this.voipServiceTask
+      .then(({ taskId }) => this.tucVoipServiceTask
         .startPolling(
           billingAccount,
           serviceName,
