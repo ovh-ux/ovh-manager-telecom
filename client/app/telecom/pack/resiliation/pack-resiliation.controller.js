@@ -281,7 +281,7 @@ angular.module('managerApp').controller('PackResiliationCtrl', function ($stateP
 
   this.openConfirmation = function () {
     $uibModal.open({
-      templateUrl: 'components/resiliation/resiliation.modal.html',
+      templateUrl: 'telecomUniverseComponents/resiliation/resiliation.modal.html',
       controllerAs: 'ResiliationModelCtrl',
       controller(subject) {
         this.resiliation = { confirm: {} };
