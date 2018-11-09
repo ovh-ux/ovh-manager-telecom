@@ -1,3 +1,12 @@
+## [10.10.1](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.10.0...v10.10.1) (2018-11-09)
+
+
+### Bug Fixes
+
+* **pack.resilisation:** set correct template url ([6cfc623](https://github.com/ovh-ux/ovh-manager-telecom/commit/6cfc623))
+
+
+
 # [10.10.0](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.9.2...v10.10.0) (2018-11-08)
 
 
