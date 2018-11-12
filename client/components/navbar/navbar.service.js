@@ -424,6 +424,15 @@ class ManagerNavbarService {
     };
   }
 
+  trackUserMenuSection(name, chapter2) {
+    this.atInternet.trackClick({
+      name,
+      type: 'action',
+      chapter1: 'account',
+      chapter2,
+    });
+  }
+
   getUserMenu(currentUser) {
     return {
       name: 'user',
@@ -437,6 +446,7 @@ class ManagerNavbarService {
           name: 'user.account',
           title: this.$translate.instant('common_menu_account'),
           url: this.REDIRECT_URLS.userInfos,
+          click: () => this.trackUserMenuSection('my_account', 'account'),
           subLinks: [{
             title: this.$translate.instant('common_menu_account_infos'),
             url: this.REDIRECT_URLS.userInfos,
@@ -463,6 +473,7 @@ class ManagerNavbarService {
           name: 'user.billing',
           title: this.$translate.instant('common_menu_billing'),
           url: this.REDIRECT_URLS.billing,
+          click: () => this.trackUserMenuSection('my_facturation', 'billing'),
           subLinks: [{
             title: this.$translate.instant('common_menu_billing_history'),
             url: this.REDIRECT_URLS.billing,
@@ -477,6 +488,7 @@ class ManagerNavbarService {
           name: 'user.services',
           title: this.$translate.instant('common_menu_renew'),
           url: this.REDIRECT_URLS.services,
+          click: () => this.trackUserMenuSection('my_services', 'services'),
           subLinks: [{
             title: this.$translate.instant('common_menu_renew_management'),
             url: this.REDIRECT_URLS.services,
@@ -494,6 +506,7 @@ class ManagerNavbarService {
           name: 'user.payment',
           title: this.$translate.instant('common_menu_means'),
           url: this.REDIRECT_URLS.paymentMeans,
+          click: () => this.trackUserMenuSection('my_payment_types', 'payment_types'),
           subLinks: [{
             title: this.$translate.instant('common_menu_means_mean'),
             url: this.REDIRECT_URLS.paymentMeans,
@@ -519,18 +532,21 @@ class ManagerNavbarService {
         (!currentUser.isEnterprise && this.TARGET === 'EU' && currentUser.ovhSubsidiary === 'FR') && {
           title: this.$translate.instant('common_menu_orders_all'),
           url: this.REDIRECT_URLS.orders,
+          click: () => this.trackUserMenuSection('my_orders', 'orders'),
         },
 
         // Contacts
         (this.TARGET === 'EU') && {
           title: this.$translate.instant('common_menu_contacts'),
           url: this.REDIRECT_URLS.contacts,
+          click: () => this.trackUserMenuSection('my_contacts', 'contacts'),
         },
 
         // Tickets
         {
           title: this.$translate.instant('common_menu_list_ticket'),
           url: this.REDIRECT_URLS.listTicket,
+          click: () => this.trackUserMenuSection('my_otrs_tickets', 'otrs'),
         },
 
         // Logout
