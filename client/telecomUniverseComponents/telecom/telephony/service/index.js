@@ -10,6 +10,6 @@ angular
   .module(moduleName, [
     'ovh-angular-swimming-poll',
   ])
-  .factory('tucVoipServiceTask', tucVoipServiceTask);
+  .service('tucVoipServiceTask', tucVoipServiceTask);
 
 export default moduleName;
