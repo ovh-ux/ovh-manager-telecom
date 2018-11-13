@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelephonyNumberRedirectCtrl', function ($q, $translate, TelephonyMediator, voipServiceTask, TucToast) {
+angular.module('managerApp').controller('TelephonyNumberRedirectCtrl', function ($q, $translate, TelephonyMediator, tucVoipServiceTask, TucToast) {
   const self = this;
   let selectedService = null;
 
@@ -66,7 +66,7 @@ angular.module('managerApp').controller('TelephonyNumberRedirectCtrl', function 
      *  Set the save feature for parent component
      */
   function saveFeature() {
-    return self.numberCtrl.number.feature.save().then(task => voipServiceTask.startPolling(
+    return self.numberCtrl.number.feature.save().then(task => tucVoipServiceTask.startPolling(
       self.numberCtrl.number.billingAccount,
       self.numberCtrl.number.serviceName,
       task.taskId,
@@ -173,7 +173,7 @@ angular.module('managerApp').controller('TelephonyNumberRedirectCtrl', function 
     self.numberCtrl.number.feature.stopEdition(true);
 
     // stop task polling
-    voipServiceTask.stopPolling(`numberRedirectTask_${self.numberCtrl.number.serviceName}`);
+    tucVoipServiceTask.stopPolling(`numberRedirectTask_${self.numberCtrl.number.serviceName}`);
   };
 
   /* -----  End of INITIALIZATION  ------*/
