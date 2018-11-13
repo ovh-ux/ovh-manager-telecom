@@ -127,29 +127,6 @@ export default class {
 
   /**
    *  @ngdoc method
-   *  @name managerApp.service:tucVoipServiceAlias#fetchNumberSounds
-   *  @methodOf managerApp.service:tucVoipServiceAlias
-   *
-   *  @description
-   *  <p>Fetch sounds available for a given number.</p>
-   *
-   *  @param  {VoipService} number (destructured) The given VoipService number.
-   */
-  fetchNumberSounds({ billingAccount, serviceName }) {
-    return this.OvhApiTelephony.EasyHunting().Sound().v6().query({
-      billingAccount,
-      serviceName,
-    }).$promise.then(soundIds => this.$q.all(
-      soundIds.map(soundId => this.OvhApiTelephony.EasyHunting().Sound().v6().get({
-        billingAccount,
-        serviceName,
-        soundId,
-      }).$promise),
-    ));
-  }
-
-  /**
-   *  @ngdoc method
    *  @name managerApp.service:tucVoipServiceAlias#fetchContactCenterSolutionNumber
    *  @methodOf managerApp.service:tucVoipServiceAlias
    *
@@ -175,9 +152,9 @@ export default class {
    *  @description
    *  <p>Update the contact center solution number properties.</p>
    *
-   *  @param  {VoipService} number (destructured) The given VoipService number.
+   *  @param  {VoipService} number   (destructured) The given VoipService number.
+   *  @param  {Object}      settings (destructured)
    *
-   *  @return {VoipService}
    */
   updateContactCenterSolutionNumber({ billingAccount, serviceName }, settings) {
     return this.OvhApiTelephony.EasyHunting().v6().change({
@@ -212,6 +189,45 @@ export default class {
             queueId,
           }).$promise,
       )));
+  }
+
+  /**
+   *  @ngdoc method
+   *  @name managerApp.service:tucVoipServiceAlias#updateContactCenterSolutionNumberQueue
+   *  @methodOf managerApp.service:tucVoipServiceAlias
+   *
+   *  @description
+   *  <p>Update the contact center solution number queue properties.</p>
+   *
+   *  @param  {VoipService} number        (destructured) The given VoipService number.
+   *  @param  {Object}      queueSettings (destructured) New queue settings
+   *
+   */
+  updateContactCenterSolutionNumberQueue(
+    { billingAccount, serviceName },
+    {
+      queueId,
+      actionOnClosure,
+      actionOnClosureParam,
+      actionOnOverflow,
+      actionOnOverflowParam,
+      maxMember,
+      maxWaitTime,
+    },
+  ) {
+    return this.OvhApiTelephony.EasyHunting().Hunting().Queue().v6()
+      .change({
+        billingAccount,
+        serviceName,
+        queueId,
+      }, {
+        actionOnClosure,
+        actionOnClosureParam,
+        actionOnOverflow,
+        actionOnOverflowParam,
+        maxMember,
+        maxWaitTime,
+      }).$promise;
   }
 
   /**
@@ -384,6 +400,65 @@ export default class {
         serviceName,
         agentId,
       }).$promise;
+  }
+
+  /**
+   *  @ngdoc method
+   *  @name managerApp.service:tucVoipServiceAlias#fetchContactCenterSolutionNumberSounds
+   *  @methodOf managerApp.service:tucVoipServiceAlias
+   *
+   *  @description
+   *  <p>Fetch existing sounds for a contact center solution number.</p>
+   *
+   *  @param  {VoipService} number (destructured) The given VoipService number.
+   *
+   *  @return {Array[Object]}                     List of existing sounds file
+   */
+  fetchContactCenterSolutionNumberSounds({ billingAccount, serviceName }) {
+    return this.OvhApiTelephony.EasyHunting().Sound().v6().query({
+      billingAccount,
+      serviceName,
+    }).$promise
+      .then(ids => this.$q.all(
+        ids.map(id => this.OvhApiTelephony.EasyHunting().Sound().v6().get({
+          billingAccount,
+          serviceName,
+          soundId: id,
+        }).$promise),
+      ));
+  }
+
+  /**
+   *  @ngdoc method
+   *  @name managerApp.service:tucVoipServiceAlias#uploadContactCenterSolutionNumberSoundFile
+   *  @methodOf managerApp.service:tucVoipServiceAlias
+   *
+   *  @description
+   *  <p>Upload sound file for a contact center solution number.</p>
+   *
+   *  @param  {VoipService} number (destructured) The given VoipService number.
+   *  @param  {Object}      file                  The new file to upload
+   */
+  uploadContactCenterSolutionNumberSoundFile({ billingAccount, serviceName }, file) {
+    return this.OvhApiMe.Document().v6().upload(file.name, file)
+      .then(({ id, name }) => this.OvhApiTelephony.EasyHunting().v6().soundUpload({
+        billingAccount,
+        serviceName,
+      }, {
+        documentId: id,
+        name,
+      }).$promise)
+      .then(({ taskId }) => this.tucVoipServiceTask
+        .startPolling(
+          billingAccount,
+          serviceName,
+          taskId,
+          {
+            namespace: `uploadContactCenterSolutionNumberSoundFileTask_${serviceName}`,
+            interval: 1000,
+            retryMaxAttempts: 0,
+          },
+        ));
   }
 
   /**
