@@ -1,4 +1,4 @@
-angular.module('managerApp').directive('voipTimeConditionCalendar', ($compile, $timeout, uiCalendarConfig, VOIP_TIMECONDITION_ORDERED_DAYS) => ({
+angular.module('managerApp').directive('voipTimeConditionCalendar', ($compile, $timeout, VoipTimeConditionCondition, uiCalendarConfig, VOIP_TIMECONDITION_ORDERED_DAYS) => ({
   restrict: 'EA',
   templateUrl: 'components/telecom/telephony/timeCondition/calendar/telephony-time-condition-calendar.html',
   controller: 'voipTimeConditionCalendarCtrl',
@@ -90,7 +90,8 @@ angular.module('managerApp').directive('voipTimeConditionCalendar', ($compile, $
       axisFormat: 'HH:mm',
       timeFormat: 'HH:mm',
       defaultView: 'agendaWeek',
-      snapDuration: '00:15',
+      duration: '01:00',
+      snapDuration: '01:00',
       eventConstraint: {
         start: '00:00',
         end: '24:00:01',
@@ -203,8 +204,49 @@ angular.module('managerApp').directive('voipTimeConditionCalendar', ($compile, $
       setEventsEditable(false);
     });
 
-    _.set(controller, 'onPopoverValidate', (fcEvent) => {
+    function repeatToDays({ id }, daysToRepeat, currentController) {
+      function checkTimeOverload(timeToCopy, condition) {
+        const timeMarginStart = moment(timeToCopy.timeFrom, 'HH:mm');
+        const timeMarginEnd = moment(timeToCopy.timeTo, 'HH:mm');
+        const conditionTimeFrom = moment(condition.timeFrom, 'HH:mm');
+        const conditionTimeTo = moment(condition.timeTo, 'HH:mm');
+
+        // First, we check if condtion time span is not between the source time
+        // condition to copy,
+        // and after if the source time won't overload the condition
+        return (conditionTimeFrom.isBetween(timeMarginStart, timeMarginEnd, 'hour')
+          || conditionTimeTo.isBetween(timeMarginStart, timeMarginEnd, 'hour'))
+          || (conditionTimeFrom.isSameOrBefore(timeMarginEnd)
+          && conditionTimeTo.isSameOrAfter(timeMarginStart));
+      }
+
+      const timeConditionToCopy = currentController.timeCondition.conditions
+        .find(({ conditionId }) => conditionId === id);
+
+      const newTimeConditions = daysToRepeat
+        .filter(({ name }) => {
+          const existingTime = currentController.timeCondition.conditions
+            .find(condition => condition.weekDay === name
+                && checkTimeOverload(timeConditionToCopy, condition));
+          return name !== timeConditionToCopy.weekDay && !existingTime;
+        })
+        .map(({ name }) => {
+          const dayToAdd = new VoipTimeConditionCondition(timeConditionToCopy);
+          dayToAdd.weekDay = name;
+          dayToAdd.state = 'TO_CREATE';
+          return dayToAdd;
+        });
+
+      newTimeConditions
+        .forEach(timeCondition => currentController.timeCondition.conditions.push(timeCondition));
+    }
+
+    _.set(controller, 'onPopoverValidate', (fcEvent, daysToRepeat, currentController) => {
       _.set(fcEvent, 'scope.isPopoverOpen', false);
+
+      if (daysToRepeat.length > 0) {
+        repeatToDays(fcEvent, daysToRepeat, currentController);
+      }
       uiCalendarConfig.calendars.conditionsCalendar.fullCalendar('refetchEvents');
     });
 

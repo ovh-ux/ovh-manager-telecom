@@ -129,8 +129,8 @@
    <translation id="telephony_common_time_condition_slot_to">à</translation>
 
 <!-- EXPORT / IMPORT CONFIGURATION -->
-   <translation id="telephony_common_time_condition_export_configuration">Exporter</translation>
-   <translation id="telephony_common_time_condition_import_configuration">Importer</translation>
+   <translation id="telephony_common_time_condition_export_configuration">Exporter des plages horaires</translation>
+   <translation id="telephony_common_time_condition_import_configuration">Importer des plages horaires</translation>
    <translation id="telephony_common_time_condition_import_configuration_title">Importer des plages horaires</translation>
    <translation id="telephony_common_time_condition_import_configuration_action">Fichier plage horaire</translation>
    <translation id="telephony_common_time_condition_import_configuration_file_format">Formats de fichiers supportés : .json</translation>

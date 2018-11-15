@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('voipTimeConditionConditionCtrl', function ($scope, $timeout) {
+angular.module('managerApp').controller('voipTimeConditionConditionCtrl', function ($scope, $timeout, $translate) {
   const self = this;
 
   self.loading = {
@@ -14,6 +14,37 @@ angular.module('managerApp').controller('voipTimeConditionConditionCtrl', functi
     timeFrom: null,
     timeTo: null,
   };
+
+  self.repeatToDays = [];
+  self.repeaterChoices = [
+    {
+      name: 'monday', id: 0, order: 0, active: false,
+    },
+    {
+      name: 'tuesday', id: 1, order: 1, active: false,
+    },
+    {
+      name: 'wednesday', id: 2, order: 2, active: false,
+    },
+    {
+      name: 'thursday', id: 3, order: 3, active: false,
+    },
+    {
+      name: 'friday', id: 4, order: 4, active: false,
+    },
+    {
+      name: 'saturday', id: 5, order: 5, active: false,
+    },
+    {
+      name: 'sunday', id: 6, order: 6, active: false,
+    },
+    {
+      name: 'weekDays', id: 7, order: 7, active: false,
+    },
+    {
+      name: 'weekendDays', id: 8, order: 8, active: false,
+    },
+  ];
 
   // From directive
   self.timeCondition = null;
@@ -69,6 +100,70 @@ angular.module('managerApp').controller('voipTimeConditionConditionCtrl', functi
     =            EVENTS            =
     ============================== */
 
+  self.onRepeaterBtnClick = function () {
+    self.popoverStatus.move = true;
+    self.popoverStatus.rightPage = 'repeater';
+  };
+
+  function handleDay(dayActive, day) {
+    if (dayActive) {
+      self.repeatToDays.push(day);
+    } else {
+      _.remove(self.repeatToDays, { name: day.name });
+    }
+  }
+
+  function handleDayList(dayActive, daySource) {
+    if (daySource.id === 7) {
+      self.repeaterChoices
+        .filter(({ id }) => id < 5)
+        .forEach((dayToRepeat) => {
+          const day = dayToRepeat;
+          day.active = dayActive;
+        });
+    } else {
+      self.repeaterChoices
+        .filter(({ id }) => [5, 6].includes(id))
+        .forEach((dayToRepeat) => {
+          const day = dayToRepeat;
+          day.active = dayActive;
+        });
+    }
+
+    self.repeatToDays = angular.copy(self.repeaterChoices);
+  }
+
+  self.updateRepeaterChoices = function (dayActive, day) {
+    if (day.id < 7) {
+      handleDay(dayActive, day);
+    } else {
+      handleDayList(dayActive, day);
+    }
+
+    self.repeatToDays = _.sortBy(self.repeatToDays, 'id');
+  };
+
+  self.moveBackward = function () {
+    const choices = self.repeatToDays
+      .filter(({ active, id }) => active && ![7, 8].includes(id))
+      .map(({ id }) => id);
+    const weekDays = [0, 1, 2, 3, 4];
+    const weekendDays = [5, 6];
+
+    if (_.isEqual(choices, weekDays)) {
+      self.repeatToDaysLabel = $translate.instant('voip_time_condition_condition_popover_days_repeat_weekDays_label');
+    } else if (_.isEqual(weekendDays, choices)) {
+      self.repeatToDaysLabel = $translate.instant('voip_time_condition_condition_popover_days_repeat_weekendDays_label');
+    } else if (_.isEqual(weekDays.concat(weekendDays), choices)) {
+      self.repeatToDaysLabel = $translate.instant('voip_time_condition_condition_popover_days_repeat_allDays_label');
+    } else {
+      self.repeatToDaysLabel = self.repeatToDays
+        .filter(({ active, id }) => active && ![7, 8].includes(id))
+        .map(({ name }) => $translate.instant(`voip_time_condition_condition_popover_days_${name} `)).join(' ');
+    }
+    self.popoverStatus.move = false;
+  };
+
   /* ----------  Policy  ----------*/
 
   self.onPolicyBtnClick = function () {
@@ -115,14 +210,16 @@ angular.module('managerApp').controller('voipTimeConditionConditionCtrl', functi
   /* ----------  Footer actions  ----------*/
 
   self.onValidateBtnClick = function () {
+    let repeatToDays = [];
     if (self.condition.state === 'DRAFT') {
       self.condition.state = 'TO_CREATE';
     }
 
     self.condition.stopEdition();
+    repeatToDays = self.repeatToDays.filter(({ id, active }) => active && ![7, 8].includes(id));
 
     if ($scope.$parent.$ctrl.onPopoverValidate) {
-      $scope.$parent.$ctrl.onPopoverValidate(self.fcEvent);
+      $scope.$parent.$ctrl.onPopoverValidate(self.fcEvent, repeatToDays, self);
     }
   };
 
@@ -132,7 +229,7 @@ angular.module('managerApp').controller('voipTimeConditionConditionCtrl', functi
 
   self.onDeleteBtnClick = function () {
     self.popoverStatus.move = true;
-    self.popoverStatus.rightPage = 'deleteConfirm';
+    self.popoverStatus.rightPage = 'delete';
   };
 
   /* -----  End of EVENTS  ------*/
