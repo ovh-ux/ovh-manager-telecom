@@ -114,6 +114,16 @@ export default /* @ngInject */ function ($q, OvhApiPackXdsl, Poller) {
       floor: migrationProcess.selectedOffer.floor,
     });
 
+    // OTP post params
+    _.assign(postParams, {
+      otp: migrationProcess.selectedOffer.pto,
+    });
+    if (migrationProcess.selectedOffer.pto && migrationProcess.selectedOffer.ptoReference) {
+      _.assign(postParams, {
+        otpReference: migrationProcess.selectedOffer.ptoReference,
+      });
+    }
+
     return OvhApiPackXdsl.v6().migrate({
       packName: migrationProcess.pack.packName,
     }, postParams).$promise;

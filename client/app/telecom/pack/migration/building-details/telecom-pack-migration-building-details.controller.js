@@ -18,6 +18,9 @@ angular.module('managerApp').controller('TelecomPackMigrationBuildingDetailsCtrl
       selectedBuilding: null,
       selectedStair: null,
       selectedFloor: null,
+      pto: null,
+      ptoReference: null,
+      ptoReferenceNotKnown: false,
     };
 
     this.process = this.TucPackMigrationProcess.getMigrationProcess();
@@ -59,6 +62,10 @@ angular.module('managerApp').controller('TelecomPackMigrationBuildingDetailsCtrl
     this.process.selectedOffer.buildingReference = this.model.selectedBuilding.reference;
     this.process.selectedOffer.stair = this.model.selectedStair.stair.value;
     this.process.selectedOffer.floor = this.model.selectedFloor.value;
+    this.process.selectedOffer.pto = this.model.pto;
+    if (this.model.pto && !this.model.ptoReferenceNotKnown) {
+      this.process.selectedOffer.ptoReference = this.model.ptoReference;
+    }
 
     if (this.process.selectedOffer.totalSubServiceToDelete > 0) {
       this.process.currentStep = 'serviceDelete';
@@ -70,9 +77,14 @@ angular.module('managerApp').controller('TelecomPackMigrationBuildingDetailsCtrl
   }
 
   isValidSelection() {
-    if (this.model.selectedBuilding != null
-      && this.model.selectedStair != null && this.model.selectedFloor != null) {
-      return true;
+    if (this.model.selectedBuilding != null && this.model.selectedStair != null
+      && this.model.selectedFloor != null && this.model.pto != null) {
+      if (this.model.pto && ((this.model.ptoReference != null && this.model.ptoReference !== '') || this.model.ptoReferenceNotKnown)) {
+        return true;
+      } if (!this.model.pto) {
+        return true;
+      }
+      return false;
     }
     return false;
   }
