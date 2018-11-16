@@ -48,7 +48,7 @@
                                    data-billing-account="{{:: $ctrl.number.billingAccount }}"
                                    data-service-name="{{:: $ctrl.number.serviceName }}"
                                    data-custom-class="link d-block pl-0 mt-4 mb-2"
-                                   data-bulk-infos="$ctrl.bulkDatas.infos"
+                                   data-bulk-infos="$ctrl.bulkData.infos"
                                    data-get-bulk-params="$ctrl.getBulkParams()"
                                    data-filter-services="$ctrl.filterServices()"
                                    data-on-success="$ctrl.onBulkSuccess()"
@@ -70,7 +70,7 @@
                 </oui-dropdown-content>
             </oui-dropdown>
             <oui-button data-variant="secondary"
-                        data-on-click="$ctrl.$state.go('telecom.telephony.alias.configuration.scheduler.easyHunting')">
+                        data-on-click="$ctrl.$state.go('telecom.telephony.alias.configuration.timeCondition.scheduler')">
                 <span data-translate="telephony_alias_config_contactCenterSolution_timeCondition_scheduler"></span>
             </oui-button>
         </div>

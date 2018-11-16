@@ -31,7 +31,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationTimeC
       options: 'options',
     };
 
-    this.bulkDatas = {
+    this.bulkData = {
       conditions: _.get(this.number, 'feature.timeCondition', []),
       infos: {
         name: 'timeConditionEasyHunting',

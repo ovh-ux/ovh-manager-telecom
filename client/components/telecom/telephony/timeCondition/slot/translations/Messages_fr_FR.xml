@@ -5,8 +5,8 @@
    <translation id="voip_time_condition_slots_type_slot3">Créneau 3</translation>
    <translation id="voip_time_condition_slots_type_available">Horaires d’ouverture</translation>
    <translation id="voip_time_condition_slots_type_unavailable">Horaires de fermeture</translation>
-   <translation id="voip_time_condition_slots_type_scheduler_unavailable">Jours chômés (Hors plages horaires)</translation>
    <translation id="voip_time_condition_slots_undefined">Non configuré</translation>
+   <translation id="voip_time_condition_slots_configure">Configurer</translation>
    <translation id="voip_time_condition_slots_redirect_type_voicemail">Rediriger vers le répondeur&#160;: <span class="no-wrap">{{ number }}</span></translation>
    <translation id="voip_time_condition_slots_redirect_type_number">Rediriger vers le numéro&#160;: <span class="no-wrap">{{ number }}</span></translation>
 

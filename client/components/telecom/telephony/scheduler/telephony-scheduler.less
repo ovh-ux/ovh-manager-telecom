@@ -46,41 +46,6 @@
       }
     }
   }
-
-  .telephony-scheduler-filters {
-    button {
-      padding: @padding-base-vertical @padding-base-horizontal;
-      color: @text-disabled-color;
-      text-decoration: none;
-      opacity: 0.5;
-
-      &:hover {
-        .telephony-time-condition-slot {
-          font-weight: bold;
-
-          .legend-description {
-            font-weight: bold !important;
-          }
-        }
-      }
-
-      &.active-slot {
-        .telephony-time-condition-slot {
-          color: @text-color;
-
-          .legend-description {
-            color: @text-color !important;
-          }
-        }
-
-        opacity: 1;
-      }
-
-      &.active {
-        opacity: 1;
-      }
-    }
-  }
 }
 
 .telephony-scheduler-time-condition-slots {

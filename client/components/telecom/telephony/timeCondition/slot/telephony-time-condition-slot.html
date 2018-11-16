@@ -5,13 +5,7 @@
         </div>
     </div>
     <div class="d-table-cell ml-3">
-        <span data-ng-if="$ctrl.isScheduler && $ctrl.slot.name === 'unavailable'"
-              data-translate="voip_time_condition_slots_type_scheduler_unavailable">
-        </span>
-
-        <span data-ng-if="!($ctrl.isScheduler && $ctrl.slot.name === 'unavailable')"
-              data-translate="{{:: 'voip_time_condition_slots_type_' + $ctrl.slot.name }}">
-        </span>
+        <span data-translate="{{ 'voip_time_condition_slots_type_' + $ctrl.slot.name }}"></span>
 
         <button type="button"
                 data-ng-if="::!!$ctrl.hasPopover"
@@ -21,10 +15,18 @@
 
         <div data-ng-if="!$ctrl.slot.noConfig">
             <!-- SLOT NOT DEFINED -->
-            <span data-ng-if="!$ctrl.getSlotDetail('number')"
-                  data-translate="voip_time_condition_slots_undefined"
-                  class="legend-description small font-weight-normal">
-            </span> <!-- END OF SLOT NOT DEFINED -->
+            <div data-ng-if="!$ctrl.getSlotDetail('number')">
+                <button class="oui-button_link p-0"
+                        aria-label="{{:: 'voip_time_condition_slots_configure' | translate }}"
+                        data-ng-if="::!!$ctrl.isScheduler"
+                        data-ng-click="$ctrl.$state.go('^')">
+                    <span data-translate="voip_time_condition_slots_configure"></span>
+                </button>
+                <small data-ng-if="::!$ctrl.isScheduler"
+                       data-translate="voip_time_condition_slots_undefined">
+                </small>
+            </div>
+            <!-- END OF SLOT NOT DEFINED -->
 
             <!-- SLOT DEFINED -->
             <span data-ng-if="$ctrl.getSlotDetail('number')"
