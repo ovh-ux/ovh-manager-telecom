@@ -6,7 +6,7 @@ angular.module('managerApp').constant('OVER_THE_BOX', {
   subs: [
     {
       url: {
-        fr: 'https://docs.ovh.com/fr/fr/telecom/overthebox/comment-fonctionne-overthebox/',
+        fr: 'https://docs.ovh.com/fr/overthebox/comment-fonctionne-overthebox/',
         it: 'https://www.ovh.it/g2237.{title}',
         en: 'https://www.ovh.com/us/g2237.{title}',
       },
@@ -18,7 +18,7 @@ angular.module('managerApp').constant('OVER_THE_BOX', {
       subs: [
         {
           url: {
-            fr: 'https://docs.ovh.com/fr/fr/telecom/overthebox/mes-10-premieres-minutes-avec-overthebox/',
+            fr: 'https://docs.ovh.com/fr/overthebox/mes-10-premieres-minutes-avec-overthebox/',
             it: 'https://www.ovh.it/g2228.{title}',
             en: 'https://www.ovh.com/us/g2228.{title}',
           },
@@ -27,7 +27,7 @@ angular.module('managerApp').constant('OVER_THE_BOX', {
         },
         {
           url: {
-            fr: 'https://docs.ovh.com/fr/fr/telecom/overthebox/desactiver-votre-serveur-dhcp/',
+            fr: 'https://docs.ovh.com/fr/overthebox/desactiver-votre-serveur-dhcp/',
             it: 'https://www.ovh.it/g2238.{title}',
             en: 'https://www.ovh.com/us/g2238.{title}',
           },
@@ -36,7 +36,7 @@ angular.module('managerApp').constant('OVER_THE_BOX', {
         },
         {
           url: {
-            fr: 'https://docs.ovh.com/fr/fr/telecom/overthebox/faq-overthebox/',
+            fr: 'https://docs.ovh.com/fr/overthebox/faq-overthebox/',
             it: 'https://www.ovh.it/g2242.{title}',
             en: 'https://www.ovh.com/us/g2242.{title}',
           },
@@ -53,7 +53,7 @@ angular.module('managerApp').constant('OVER_THE_BOX', {
           subs: [
             {
               url: {
-                fr: 'https://docs.ovh.com/fr/fr/telecom/overthebox/retablir-la-configuration-dusine/',
+                fr: 'https://docs.ovh.com/fr/overthebox/retablir-la-configuration-dusine/',
                 it: 'https://www.ovh.it/g2243.{title}',
                 en: 'https://www.ovh.com/us/g2243.{title}',
               },
@@ -62,7 +62,7 @@ angular.module('managerApp').constant('OVER_THE_BOX', {
             },
             {
               url: {
-                fr: 'https://docs.ovh.com/fr/fr/telecom/overthebox/acces-a-distance/',
+                fr: 'https://docs.ovh.com/fr/overthebox/acces-a-distance/',
                 it: 'https://www.ovh.it/g2275.{title}',
                 en: 'https://www.ovh.com/us/g2275.{title}',
               },
@@ -70,7 +70,7 @@ angular.module('managerApp').constant('OVER_THE_BOX', {
             },
             {
               url: {
-                fr: 'https://docs.ovh.com/fr/fr/telecom/overthebox/configurer-votre-lan/',
+                fr: 'https://docs.ovh.com/fr/overthebox/configurer-votre-lan/',
                 it: 'https://www.ovh.it/g2244.{title}',
                 en: 'https://www.ovh.com/us/g2244.{title}',
               },
@@ -79,7 +79,7 @@ angular.module('managerApp').constant('OVER_THE_BOX', {
             },
             {
               url: {
-                fr: 'https://docs.ovh.com/fr/fr/telecom/overthebox/redirection-de-port/',
+                fr: 'https://docs.ovh.com/fr/overthebox/redirection-de-port/',
                 it: 'https://www.ovh.it/g2245.{title}',
                 en: 'https://www.ovh.com/us/g2245.{title}',
               },
@@ -88,7 +88,7 @@ angular.module('managerApp').constant('OVER_THE_BOX', {
             },
             {
               url: {
-                fr: 'https://docs.ovh.com/fr/fr/telecom/overthebox/activer-la-qos/',
+                fr: 'https://docs.ovh.com/fr/overthebox/activer-la-qos/',
                 it: 'https://www.ovh.it/g2246.{title}',
                 en: 'https://www.ovh.com/us/g2246.{title}',
               },
@@ -97,7 +97,7 @@ angular.module('managerApp').constant('OVER_THE_BOX', {
             },
             {
               url: {
-                fr: 'https://docs.ovh.com/fr/fr/telecom/overthebox/fonctionnement-et-customisation-de-la-qos/',
+                fr: 'https://docs.ovh.com/fr/overthebox/fonctionnement-et-customisation-de-la-qos/',
                 it: 'https://www.ovh.it/g2247.{title}',
                 en: 'https://www.ovh.co.uk/g2247.{title}',
               },
@@ -106,7 +106,7 @@ angular.module('managerApp').constant('OVER_THE_BOX', {
             },
             {
               url: {
-                fr: 'https://docs.ovh.com/fr/fr/telecom/overthebox/politique-dagregation/',
+                fr: 'https://docs.ovh.com/fr/overthebox/',
                 it: 'https://www.ovh.it/g2252.{title}',
                 en: 'https://www.ovh.com/us/g2252.{title}',
               },
@@ -115,7 +115,7 @@ angular.module('managerApp').constant('OVER_THE_BOX', {
             },
             {
               url: {
-                fr: 'https://docs.ovh.com/fr/fr/telecom/overthebox/creer-un-bail-dhcp-permanent/',
+                fr: 'https://docs.ovh.com/fr/overthebox/creer-un-bail-dhcp-permanent/',
                 it: 'https://www.ovh.it/g2253.{title}',
                 en: 'https://www.ovh.com/us/g2253.{title}',
               },
@@ -124,7 +124,7 @@ angular.module('managerApp').constant('OVER_THE_BOX', {
             },
             {
               url: {
-                fr: 'https://docs.ovh.com/fr/fr/telecom/overthebox/desactiver-le-serveur-dhcp-doverthebox/',
+                fr: 'https://docs.ovh.com/fr/overthebox/desactiver-le-serveur-dhcp-doverthebox/',
                 it: 'https://www.ovh.it/g2254.{title}',
                 en: 'https://www.ovh.com/us/g2254.{title}',
               },
@@ -133,7 +133,7 @@ angular.module('managerApp').constant('OVER_THE_BOX', {
             },
             {
               url: {
-                fr: 'https://docs.ovh.com/fr/fr/telecom/overthebox/protocole-de-test-de-debit/',
+                fr: 'https://docs.ovh.com/fr/overthebox/protocole-de-test-de-debit/',
                 it: 'https://www.ovh.it/g2255.{title}',
                 en: 'https://www.ovh.com/us/g2255.{title}',
               },
@@ -142,7 +142,7 @@ angular.module('managerApp').constant('OVER_THE_BOX', {
             },
             {
               url: {
-                fr: 'https://docs.ovh.com/fr/fr/telecom/overthebox/exporter-et-importer-une-configuration/',
+                fr: 'https://docs.ovh.com/fr/overthebox/exporter-et-importer-une-configuration/',
                 it: 'https://www.ovh.it/g2256.{title}',
                 en: 'https://www.ovh.com/us/g2256.{title}',
               },
@@ -151,7 +151,7 @@ angular.module('managerApp').constant('OVER_THE_BOX', {
             },
             {
               url: {
-                fr: 'https://docs.ovh.com/fr/fr/telecom/overthebox/tester-overthebox-sur-virtualbox/',
+                fr: 'https://docs.ovh.com/fr/overthebox/',
                 it: 'https://www.ovh.it/g2281.{title}',
                 en: 'https://www.ovh.com/us/g2281.{title}',
               },
@@ -160,7 +160,7 @@ angular.module('managerApp').constant('OVER_THE_BOX', {
             },
             {
               url: {
-                fr: 'https://docs.ovh.com/fr/fr/telecom/overthebox/integration-dune-clef-3g-4g/',
+                fr: 'https://docs.ovh.com/fr/overthebox/integration-dune-clef-3g-4g/',
                 it: 'https://www.ovh.it/g2314.{title}',
                 en: 'https://www.ovh.com/us/g2314.{title}',
               },
@@ -174,7 +174,7 @@ angular.module('managerApp').constant('OVER_THE_BOX', {
           subs: [
             {
               url: {
-                fr: 'https://docs.ovh.com/fr/fr/telecom/overthebox/installer-limage-overthebox-sur-votre-materiel/',
+                fr: 'https://docs.ovh.com/fr/overthebox/installer-limage-overthebox-sur-votre-materiel/',
                 it: 'https://www.ovh.it/g2257.{title}',
                 en: 'https://www.ovh.com/us/g2257.{title}',
               },
@@ -183,7 +183,7 @@ angular.module('managerApp').constant('OVER_THE_BOX', {
             },
             {
               url: {
-                fr: 'https://docs.ovh.com/fr/fr/telecom/overthebox/desactiver-le-monitoring-dhcp-des-modems/',
+                fr: 'https://docs.ovh.com/fr/overthebox/desactiver-le-monitoring-dhcp-des-modems/',
                 it: 'https://www.ovh.it/g2276.{title}',
                 en: 'https://www.ovh.com/us/g2276.{title}',
               },
@@ -192,7 +192,7 @@ angular.module('managerApp').constant('OVER_THE_BOX', {
             },
             {
               url: {
-                fr: 'https://docs.ovh.com/fr/fr/telecom/overthebox/creer-une-interface-modem-manuellement/',
+                fr: 'https://docs.ovh.com/fr/overthebox/creer-une-interface-modem-manuellement/',
                 it: 'https://www.ovh.it/g2259.{title}',
                 en: 'https://www.ovh.com/us/g2259.{title}',
               },
@@ -201,7 +201,7 @@ angular.module('managerApp').constant('OVER_THE_BOX', {
             },
             {
               url: {
-                fr: 'https://docs.ovh.com/fr/fr/telecom/overthebox/configurer-votre-propre-serveur-dns/',
+                fr: 'https://docs.ovh.com/fr/overthebox/configurer-votre-propre-serveur-dns/',
                 it: 'https://www.ovh.it/g2260.{title}',
                 en: 'https://www.ovh.com/us/g2260.{title}',
               },
@@ -210,7 +210,7 @@ angular.module('managerApp').constant('OVER_THE_BOX', {
             },
             {
               url: {
-                fr: 'https://docs.ovh.com/fr/fr/telecom/overthebox/configuration-de-vlan/',
+                fr: 'https://docs.ovh.com/fr/overthebox/configuration-de-vlan/',
                 it: 'https://www.ovh.it/g2261.{title}',
                 en: 'https://www.ovh.com/us/g2261.{title}',
               },
@@ -219,7 +219,7 @@ angular.module('managerApp').constant('OVER_THE_BOX', {
             },
             {
               url: {
-                fr: 'https://docs.ovh.com/fr/fr/telecom/overthebox/regles-firewall/',
+                fr: 'https://docs.ovh.com/fr/overthebox/regles-firewall/',
                 it: 'https://www.ovh.it/g2262.{title}',
                 en: 'https://www.ovh.com/us/g2262.{title}',
               },
@@ -228,7 +228,7 @@ angular.module('managerApp').constant('OVER_THE_BOX', {
             },
             {
               url: {
-                fr: 'https://docs.ovh.com/fr/fr/telecom/overthebox/tethering-iphone-et-android/',
+                fr: 'https://docs.ovh.com/fr/overthebox/tethering-iphone-et-android/',
                 it: 'https://www.ovh.it/g2264.{title}',
                 en: 'https://www.ovh.com/us/g2264.{title}',
               },
@@ -237,7 +237,7 @@ angular.module('managerApp').constant('OVER_THE_BOX', {
             },
             {
               url: {
-                fr: 'https://docs.ovh.com/fr/fr/telecom/overthebox/dmz-couplage-overthebox-avec-un-autre-routeur/',
+                fr: 'https://docs.ovh.com/fr/overthebox/dmz-couplage-overthebox-avec-un-autre-routeur/',
                 it: 'https://www.ovh.it/g2265.{title}',
                 en: 'https://www.ovh.com/us/g2265.{title}',
               },
@@ -246,7 +246,7 @@ angular.module('managerApp').constant('OVER_THE_BOX', {
             },
             {
               url: {
-                fr: 'https://docs.ovh.com/fr/fr/telecom/overthebox/ajouter-un-serveur-active-directory-dans-les-options-dhcp/',
+                fr: 'https://docs.ovh.com/fr/overthebox/ajouter-un-serveur-active-directory-dans-les-options-dhcp/',
                 it: 'https://www.ovh.it/g2266.{title}',
                 en: 'https://www.ovh.com/us/g2266.{title}',
               },
@@ -255,7 +255,7 @@ angular.module('managerApp').constant('OVER_THE_BOX', {
             },
             {
               url: {
-                fr: 'https://docs.ovh.com/fr/fr/telecom/overthebox/creer-une-route-multiwan-specifique/',
+                fr: 'https://docs.ovh.com/fr/overthebox/',
                 it: 'https://www.ovh.it/g2263.{title}',
                 en: 'https://www.ovh.com/us/g2263.{title}',
               },

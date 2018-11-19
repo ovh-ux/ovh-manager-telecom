@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationChangeTypeCtrl', function ($scope, $q, $translate, $state, $stateParams, TelephonyMediator, TucToast, voipServiceTask, tucTelephonyBulk) {
+angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationChangeTypeCtrl', function ($scope, $q, $translate, $state, $stateParams, TelephonyMediator, TucToast, tucVoipServiceTask, tucTelephonyBulk) {
   const self = this;
 
   self.number = null;
@@ -141,7 +141,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationChang
   self.checkServerTasksStatus = function (updatedServices) {
     function runPollOnTask(billingAccount, serviceName, taskId) {
       return function () {
-        return voipServiceTask.startPolling(billingAccount, serviceName, taskId);
+        return tucVoipServiceTask.startPolling(billingAccount, serviceName, taskId);
       };
     }
 

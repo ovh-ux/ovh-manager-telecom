@@ -256,7 +256,7 @@
    <translation id="common_service_name_edit_title" qtlid="331683">{{ title }} : éditer le nom du service</translation>
 
    <translation id="common_monthly_without_tax" qtlid="331696">HT/mois</translation>
-   <translation id="common_without_tax" qtlid="101397">HT</translation>
+   <translation id="common_without_tax" qtlid="101397">.</translation>
 
    <translation id="common_refresh" qtlid="8182">Actualiser</translation>
    <translation id="common_refresh_data" qtlid="384194">Actualiser les données</translation>

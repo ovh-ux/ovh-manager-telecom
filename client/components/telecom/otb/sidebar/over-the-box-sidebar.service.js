@@ -46,6 +46,8 @@ angular.module('managerApp').service('OverTheBoxSidebar', function ($q, $transla
       allowSubItems: true,
       onLoad: self.loadOtbMainSection,
       loadOnState: 'telecom.overTheBox',
+      allowSearch: true,
+      infiniteScroll: true,
     });
 
     return self.mainSectionItem;

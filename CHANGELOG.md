@@ -1,3 +1,58 @@
+# [10.11.0](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.10.1...v10.11.0) (2018-11-19)
+
+
+### Bug Fixes
+
+* **deps:** update manager-webpack-config to v2.4.7 ([e909df9](https://github.com/ovh-ux/ovh-manager-telecom/commit/e909df9))
+* **deps:** upgrade manager-webpack-config to v3.0.0 ([4e3a9eb](https://github.com/ovh-ux/ovh-manager-telecom/commit/4e3a9eb))
+* **guides:** fix guide urls in over the box ([61d0bad](https://github.com/ovh-ux/ovh-manager-telecom/commit/61d0bad))
+* **i18n:** retrieve translations ([1f39524](https://github.com/ovh-ux/ovh-manager-telecom/commit/1f39524))
+* **i18n:** submit translations ([6114f5b](https://github.com/ovh-ux/ovh-manager-telecom/commit/6114f5b))
+
+
+### Features
+
+* **dashboard.guides:** change guides tracking name ([134bec7](https://github.com/ovh-ux/ovh-manager-telecom/commit/134bec7))
+* **ftth-otp:** add otp configuration for fiber migration ([9d0dbb0](https://github.com/ovh-ux/ovh-manager-telecom/commit/9d0dbb0))
+* **navbar.user:** add tracking on user menu ([805d83a](https://github.com/ovh-ux/ovh-manager-telecom/commit/805d83a))
+
+
+
+## [10.10.1](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.10.0...v10.10.1) (2018-11-09)
+
+
+### Bug Fixes
+
+* **pack.resilisation:** set correct template url ([6cfc623](https://github.com/ovh-ux/ovh-manager-telecom/commit/6cfc623))
+
+
+
+# [10.10.0](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.9.2...v10.10.0) (2018-11-08)
+
+
+### Bug Fixes
+
+* **components.filters:** update use of propsFilter ([cc87a7d](https://github.com/ovh-ux/ovh-manager-telecom/commit/cc87a7d))
+* **components.input-file:** add missing translations ([83d3d74](https://github.com/ovh-ux/ovh-manager-telecom/commit/83d3d74))
+* **components.section-back-link:** add missing translations ([edab949](https://github.com/ovh-ux/ovh-manager-telecom/commit/edab949))
+* **components.toaster:** add missing translations ([75e3d5d](https://github.com/ovh-ux/ovh-manager-telecom/commit/75e3d5d))
+* **deps:** update manager-webpack-config to v2.4.6 ([b158f18](https://github.com/ovh-ux/ovh-manager-telecom/commit/b158f18))
+* **deps:** update translate-async-loader to v1.0.5 ([29c5b58](https://github.com/ovh-ux/ovh-manager-telecom/commit/29c5b58))
+* **deps:** upgrade manager-webpack-config to v2.4.5 ([1d7076e](https://github.com/ovh-ux/ovh-manager-telecom/commit/1d7076e))
+* **deps:** upgrade ovh-angular-otrs to v6.3.0 ([0ba030e](https://github.com/ovh-ux/ovh-manager-telecom/commit/0ba030e))
+* **deps:** upgrade ovh-ui-kit to v2.22.0 ([a8b29e9](https://github.com/ovh-ux/ovh-manager-telecom/commit/a8b29e9))
+* **i18n:** retrieve translations ([2dc407b](https://github.com/ovh-ux/ovh-manager-telecom/commit/2dc407b))
+* **i18n:** submit translations ([0abe70b](https://github.com/ovh-ux/ovh-manager-telecom/commit/0abe70b))
+
+
+### Features
+
+* **ipv6:** add specific warning message for ipv6 config for zyxel modem ([221a36e](https://github.com/ovh-ux/ovh-manager-telecom/commit/221a36e))
+* **navbar:** add tracking for assistance and notifications ([9fa8172](https://github.com/ovh-ux/ovh-manager-telecom/commit/9fa8172))
+* **otb:** add search on side menu for OTB ([32ae40f](https://github.com/ovh-ux/ovh-manager-telecom/commit/32ae40f))
+
+
+
 <a name="10.9.2"></a>
 ## [10.9.2](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.9.1...v10.9.2) (2018-10-29)
 

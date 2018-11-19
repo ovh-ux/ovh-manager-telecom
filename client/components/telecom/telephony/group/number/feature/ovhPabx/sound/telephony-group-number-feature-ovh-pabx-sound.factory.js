@@ -1,4 +1,4 @@
-angular.module('managerApp').factory('TelephonyGroupNumberOvhPabxSound', ($q, $timeout, OvhApiMe, OvhApiTelephony, voipServiceTask) => {
+angular.module('managerApp').factory('TelephonyGroupNumberOvhPabxSound', ($q, $timeout, OvhApiMe, OvhApiTelephony, tucVoipServiceTask) => {
   /*= ==================================
     =            CONSTRUCTOR            =
     =================================== */
@@ -75,7 +75,7 @@ angular.module('managerApp').factory('TelephonyGroupNumberOvhPabxSound', ($q, $t
           name: self.name,
           url: doc.getUrl,
         }).$promise
-        .then(task => voipServiceTask
+        .then(task => tucVoipServiceTask
           .startPolling(
             self.billingAccount,
             self.serviceName, task.taskId,

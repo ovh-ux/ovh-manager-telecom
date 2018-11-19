@@ -1,48 +1,21 @@
-angular.module('managerApp').controller('TelecomDashboardGuidesCtrl', function (URLS, atInternet) {
-  const self = this;
-
-  self.links = null;
-
-  /*= =====================================
-    =            INITIALIZATION            =
-    ====================================== */
-
-  function init() {
-    self.links = _.pick(URLS.guides, 'packActivate', 'modemConfig', 'modemReinit', 'interruptedService');
+angular.module('managerApp').controller('TelecomDashboardGuidesCtrl', class TelecomDashboardGuidesCtrl {
+  constructor(atInternet, URLS) {
+    this.atInternet = atInternet;
+    this.URLS = URLS;
   }
 
-  self.trackRedirection = function (link) {
-    const hit = {
+  $onInit() {
+    this.guides = ['packActivate', 'modemConfig', 'modemReinit', 'interruptedService'];
+    this.links = _.pick(this.URLS.guides, this.guides);
+  }
+
+  trackRedirection(link) {
+    const index = _.findIndex(this.guides, guide => this.URLS.guides[guide] === link) + 1;
+    return this.atInternet.trackClick({
+      name: `TopGuide-Telecom-${index}`,
       type: 'navigation',
       level2: 'Telecom',
       chapter1: 'telecom',
-    };
-
-    switch (link) {
-      case URLS.guides.packActivate:
-        hit.cta = 'Activate my services';
-        hit.name = 'Activation_Services';
-        break;
-      case URLS.guides.modemConfig:
-        hit.cta = 'Configure my modem';
-        hit.name = 'Setting_Modem';
-        break;
-      case URLS.guides.modemReinit:
-        hit.cta = 'Restart my modem';
-        hit.name = 'Reboot_Modem';
-        break;
-      case URLS.guides.interruptedService:
-        hit.cta = 'Restore service';
-        hit.name = 'Restore_Service';
-        break;
-      default:
-        break;
-    }
-
-    return atInternet.trackClick(hit);
-  };
-
-  /* -----  End of INITIALIZATION  ------*/
-
-  init();
+    });
+  }
 });
