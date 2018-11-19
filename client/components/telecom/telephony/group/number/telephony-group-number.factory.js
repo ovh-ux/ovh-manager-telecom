@@ -1,4 +1,4 @@
-angular.module('managerApp').factory('TelephonyGroupNumber', ($q, $injector, OvhApiTelephony, voipServiceTask) => {
+angular.module('managerApp').factory('TelephonyGroupNumber', ($q, $injector, OvhApiTelephony, tucVoipServiceTask) => {
   /*= ==================================
     =            CONSTRUCTOR            =
     =================================== */
@@ -125,7 +125,7 @@ angular.module('managerApp').factory('TelephonyGroupNumber', ($q, $injector, Ovh
       }, {
         featureType: self.feature.featureType,
       }).$promise
-      .then(task => voipServiceTask
+      .then(task => tucVoipServiceTask
         .startPolling(
           self.billingAccount,
           self.serviceName,

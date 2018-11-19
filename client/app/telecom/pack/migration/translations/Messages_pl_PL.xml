@@ -146,5 +146,14 @@
    <translation id="telecom_pack_migration_building_details_confirm" qtlid="506910">Confirmer la sélection</translation>
    <translation id="telecom_pack_migration_building_details_none" qtlid="30646">Żaden</translation>
    <translation id="telecom_pack_migration_building_details_unknown" qtlid="77142">Nieznany</translation>
+   <translation id="telecom_pack_migration_building_details_title">Référence des bâtiments pour les offres FTTH</translation>
+   <translation id="telecom_pack_migration_pto_title">Boîtier Fibre PTO (Point de Terminaison Optique)</translation>
+   <translation id="telecom_pack_migration_pto_description">Disposez-vous déjà d'un boitier fibre à l'adresse d'installation ? (prise optique murale)</translation>
+   <translation id="telecom_pack_migration_pto_check_yes">Oui je dispose d'un boîter PTO</translation>
+   <translation id="telecom_pack_migration_pto_check_no">Non je ne dispose pas d'un boîter PTO</translation>
+   <translation id="telecom_pack_migration_pto_reference">Saisissez votre référence PTO</translation>
+   <translation id="telecom_pack_migration_pto_where">Où trouver votre numéro de référence du boîtier PTO ?</translation>
+   <translation id="telecom_pack_migration_pto_where_description">Cette référence est inscrite sur le boîtier PTO et est composée de chiffres et de lettres sous la forme OO-XXXX-XXXX /C</translation>
+   <translation id="telecom_pack_migration_pto_yes_not_known">J'ai un boîtier mais je ne connais pas son numéro</translation>
 
 </translations>

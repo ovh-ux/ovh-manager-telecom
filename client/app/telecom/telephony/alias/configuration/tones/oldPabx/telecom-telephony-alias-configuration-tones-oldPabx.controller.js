@@ -1,6 +1,6 @@
 angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationTonesOldPabxCtrl', function (
   $q, $stateParams, $translate, $timeout,
-  TelephonyMediator, TucToast, voipServiceTask,
+  TelephonyMediator, TucToast, tucVoipServiceTask,
   OvhApiMe, OvhApiTelephony, OvhApiTelephonyEasyPabx, OvhApiTelephonyMiniPabx,
 ) {
   const self = this;
@@ -82,7 +82,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationTones
         type: toneType,
         documentId: doc.id,
       }).$promise
-      .then(result => voipServiceTask.startPolling(
+      .then(result => tucVoipServiceTask.startPolling(
         $stateParams.billingAccount,
         $stateParams.serviceName, result.taskId, {
           namespace: `soundUploadTask_${$stateParams.serviceName}`,

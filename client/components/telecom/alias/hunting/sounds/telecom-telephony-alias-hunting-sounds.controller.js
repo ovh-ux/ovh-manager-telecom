@@ -6,7 +6,7 @@ angular.module('managerApp').run(($translate, asyncLoader) => {
   );
   $translate.refresh();
 });
-angular.module('managerApp').controller('TelecomTelephonyAliasHuntingSoundsCtrl', function ($stateParams, $uibModalInstance, $timeout, $q, $translate, $translatePartialLoader, params, OvhApiMe, TucToastError, voipServiceTask) {
+angular.module('managerApp').controller('TelecomTelephonyAliasHuntingSoundsCtrl', function ($stateParams, $uibModalInstance, $timeout, $q, $translate, $translatePartialLoader, params, OvhApiMe, TucToastError, tucVoipServiceTask) {
   const self = this;
 
   function init() {
@@ -48,7 +48,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasHuntingSoundsCtrl'
     }, {
       name,
       url: doc.getUrl,
-    }).$promise.then(result => voipServiceTask.startPolling(
+    }).$promise.then(result => tucVoipServiceTask.startPolling(
       $stateParams.billingAccount,
       $stateParams.serviceName,
       result.taskId,

@@ -1,6 +1,6 @@
 angular.module('managerApp').controller('TelecomTelephonyLinePhonePhonebookCtrl', function (
   $document, $filter, $q, $scope, $stateParams, $timeout, $translate, $uibModal, $window,
-  OvhApiTelephony, voipServiceTask, TucToast, TucToastError, TUC_TELEPHONY_PHONEBOOK,
+  OvhApiTelephony, tucVoipServiceTask, TucToast, TucToastError, TUC_TELEPHONY_PHONEBOOK,
 ) {
   const self = this;
 
@@ -194,7 +194,7 @@ angular.module('managerApp').controller('TelecomTelephonyLinePhonePhonebookCtrl'
     modal.result.then((response) => {
       if (_.has(response, 'taskId')) {
         self.phonebookContact.isImporting = true;
-        return voipServiceTask
+        return tucVoipServiceTask
           .startPolling($stateParams.billingAccount, $stateParams.serviceName, response.taskId, {
             namespace: `linePhonePhonebookContactImportTask_${$stateParams.serviceName}`,
             interval: 1000,

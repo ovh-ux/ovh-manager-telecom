@@ -2,7 +2,7 @@
  *  This factory manages the conference feature of a number.
  *  This manages the conference of /telephony/{billingAccount}/number API.
  */
-angular.module('managerApp').factory('TelephonyGroupNumberConference', ($q, $timeout, TelephonyGroupNumberConferenceParticipant, TelephonyMediator, OvhApiTelephony, OvhApiMe, voipServiceTask) => {
+angular.module('managerApp').factory('TelephonyGroupNumberConference', ($q, $timeout, TelephonyGroupNumberConferenceParticipant, TelephonyMediator, OvhApiTelephony, OvhApiMe, tucVoipServiceTask) => {
   const settingsAttributes = ['featureType', 'pin', 'announceFile', 'reportEmail',
     'reportStatus', 'whiteLabelReport', 'language', 'recordStatus',
     'eventsChannel', 'anonymousRejection', 'announceFilename',
@@ -257,7 +257,7 @@ angular.module('managerApp').factory('TelephonyGroupNumberConference', ($q, $tim
         }, {
           documentId: doc.id,
         }).$promise
-        .then(task => voipServiceTask
+        .then(task => tucVoipServiceTask
           .startPolling(
             self.billingAccount,
             self.serviceName,
