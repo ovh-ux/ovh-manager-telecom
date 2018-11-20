@@ -463,6 +463,125 @@ export default class {
 
   /**
    *  @ngdoc method
+   *  @name managerApp.service:tucVoipServiceAlias#fetchContactCenterSolutionNumberScreenListsStatus
+   *  @methodOf managerApp.service:tucVoipServiceAlias
+   *
+   *  @description
+   *  <p>Fetch screen lists current status for a contact center solution number.</p>
+   *
+   *  @param  {VoipService} number (destructured) The given VoipService number.
+   */
+  fetchContactCenterSolutionNumberScreenListsStatus({ billingAccount, serviceName }) {
+    return this.OvhApiTelephony.EasyHunting().ScreenListConditions().v6().get({
+      billingAccount,
+      serviceName,
+    }).$promise;
+  }
+
+  /**
+   *  @ngdoc method
+   *  @name managerApp.service:tucVoipServiceAlias#
+   *  fetchContactCenterSolutionNumberScreenListsConditions
+   *  @methodOf managerApp.service:tucVoipServiceAlias
+   *
+   *  @description
+   *  <p>Fetch screen lists for a contact center solution number.</p>
+   *
+   *  @param  {VoipService} number (destructured) The given VoipService number.
+   *
+   *  @return {Array[Object]}                     Screen lists
+   */
+  fetchContactCenterSolutionNumberScreenListsConditions({ billingAccount, serviceName }) {
+    return this.OvhApiTelephony.EasyHunting().ScreenListConditions().Conditions().v6()
+      .query({
+        billingAccount,
+        serviceName,
+      }).$promise
+      .then(ids => this.$q
+        .all(
+          _.chunk(ids, 50).map(chunkIds => this.OvhApiTelephony.EasyHunting()
+            .ScreenListConditions().Conditions().v6()
+            .getBatch({
+              billingAccount,
+              serviceName,
+              conditionId: chunkIds,
+            }).$promise),
+        )
+        .then(chunkResult => _(chunkResult).flatten().map('value').value()));
+  }
+
+  /**
+   *  @ngdoc method
+   *  @name managerApp.service:tucVoipServiceAlias#addContactCenterSolutionNumberScreenListCondition
+   *  @methodOf managerApp.service:tucVoipServiceAlias
+   *
+   *  @description
+   *  <p>Add a screen list condition to a contact center solution number.</p>
+   *
+   *  @param  {VoipService} number    (destructured) The given VoipService number.
+   *  @param  {Object}      condition (destructured) The screen to add
+   *
+   */
+  addContactCenterSolutionNumberScreenListCondition(
+    { billingAccount, serviceName },
+    { callNumber, type },
+  ) {
+    return this.OvhApiTelephony.EasyHunting().ScreenListConditions().Conditions().v6()
+      .create({
+        billingAccount,
+        serviceName,
+      }, {
+        callerIdNumber: callNumber,
+        screenListType: type,
+      }).$promise;
+  }
+
+  /**
+   *  @ngdoc method
+   *  @name managerApp.service:tucVoipServiceAlias#
+   *  updateContactCenterSolutionNumberScreenListConditions
+   *  @methodOf managerApp.service:tucVoipServiceAlias
+   *
+   *  @description
+   *  <p>Update the screen list conditions of a contact center solution number.</p>
+   *
+   *  @param  {VoipService} number (destructured) The given VoipService number.
+   *  @param  {String}      status                Screen lists status to set
+   *
+   */
+  updateContactCenterSolutionNumberScreenListConditions({ billingAccount, serviceName }, status) {
+    return this.OvhApiTelephony.EasyHunting().ScreenListConditions().v6().change({
+      billingAccount,
+      serviceName,
+    }, {
+      status,
+    }).$promise;
+  }
+
+  /**
+   *  @ngdoc method
+   *  @name managerApp.service:tucVoipServiceAlias#
+   *  removeContactCenterSolutionNumberScreenListConditions
+   *  @methodOf managerApp.service:tucVoipServiceAlias
+   *
+   *  @description
+   *  <p>Remove a screen list condition of a contact center solution number.</p>
+   *
+   *  @param  {VoipService} number    (destructured) The given VoipService number.
+   *  @param  {Object}      condition (destructured) The condition to remove
+   *
+   */
+  removeContactCenterSolutionNumberScreenListConditions({ billingAccount, serviceName }, { id }) {
+    return this.OvhApiTelephony.EasyHunting().ScreenListConditions().Conditions().v6()
+      .remove({
+        billingAccount,
+        serviceName,
+        conditionId: id,
+      }).$promise;
+  }
+
+  /**
+   *  @ngdoc method
    *  @name managerApp.service:tucVoipServiceAlias#fetchRedirectNumber
    *  @methodOf managerApp.service:tucVoipServiceAlias
    *

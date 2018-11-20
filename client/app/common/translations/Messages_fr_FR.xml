@@ -82,6 +82,7 @@
    <translation id="show" qtlid="69353">Afficher</translation>
    <translation id="hide" qtlid="26539">Cacher</translation>
    <translation id="common_add" qtlid="37923">Ajouter</translation>
+   <translation id="common_apply" qtlid="41326">Appliquer</translation>
    <translation id="common_actions" qtlid="72809">Actions</translation>
 
    <translation id="common_between_and" qtlid="479252">Entre {{between}} et {{and}}</translation>
@@ -89,6 +90,10 @@
    <translation id="common_search" qtlid="37659">Rechercher</translation>
 
    <translation id="common_error_title" qtlid="26407">Erreur</translation>
+   <translation id="common_delete_selected_one_item">Supprimer l’élément sélectionné</translation>
+   <translation id="common_delete_selected_items">Supprimer les éléments sélectionnés</translation>
+   <translation id="common_delete_selected_items_count">{{count}} élément(s) sélectionné(s)</translation>
+   <translation id="common_two_of_them">Les deux</translation>
 
    <translation id="an_error_occured" qtlid="148981">Une erreur est survenue.</translation>
    <translation id="error_401" qtlid="304472">Accès non autorisé</translation>
