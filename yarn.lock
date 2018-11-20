@@ -9071,10 +9071,10 @@ ovh-ngstrap@^4.0.2:
   resolved "https://registry.yarnpkg.com/ovh-ngstrap/-/ovh-ngstrap-4.0.2.tgz#059291bfb9f59b78df991e476dd2ede0507cb3c9"
   integrity sha1-BZKRv7n1m3jfmR5HbdLt4FB8s8k=
 
-ovh-ui-angular@^2.22.0:
-  version "2.22.0"
-  resolved "https://registry.yarnpkg.com/ovh-ui-angular/-/ovh-ui-angular-2.22.0.tgz#5f020ed4cc4481cb496362ba129d35a1a6b21c60"
-  integrity sha512-Dynr0CO/5Tz/vHPKeXk3AaSuUTRc6hO4YgfBKFZ0sMlw5tTtdDTtTyLADchX06SHyFmgjILefVpK5atw1Iscrg==
+ovh-ui-angular@^2.22.1:
+  version "2.22.1"
+  resolved "https://registry.yarnpkg.com/ovh-ui-angular/-/ovh-ui-angular-2.22.1.tgz#63d9ecb786bb872766b82a29c899dcb40b932eeb"
+  integrity sha512-zAGLqCvL/uuByVMGwQ8Odpf4hJ0Uhq92NT66ov249V+qh1YZGrgAaMEw4lBYXMZN9V6UQLsFdtIPXuyiNbwdYw==
   dependencies:
     angular ">=1.6.x"
     angular-aria ">=1.6.x"
