@@ -1,13 +1,6 @@
 angular
   .module('managerApp')
   .config(($urlServiceProvider, $stateProvider, $transitionsProvider) => {
-    // redirect to default location in case of undefined location target
-    $urlServiceProvider.rules.otherwise('/configuration');
-
-    /* ========================================================
-    =            UI ROUTER MODAL LAYOUT DEFINITION            =
-    ========================================================= */
-
     let modalInstance = null;
 
     /**
@@ -73,8 +66,6 @@ angular
         }
       });
     });
-
-    /* -----  End of UI ROUTER MODAL LAYOUT DEFINITION  ------ */
   })
   .run(($transitions, $state, $stateRegistry, $urlService) => {
     // manage restriction on billing section for enterprise account
@@ -85,10 +76,6 @@ angular
         $state.go('app.error', { error });
       }
     });
-
-    /* ========================================================
-    =            UI ROUTER MODAL LAYOUT DEFINITION            =
-    ========================================================= */
 
     /**
      * As initial URL synchronization is delayed we can check all modal layout states and check
@@ -140,6 +127,4 @@ angular
 
     $urlService.listen(); // Start responding to URL changes
     $urlService.sync(); // Find the matching URL and invoke the handler
-
-    /* -----  End of UI ROUTER MODAL LAYOUT DEFINITION  ------ */
   });
