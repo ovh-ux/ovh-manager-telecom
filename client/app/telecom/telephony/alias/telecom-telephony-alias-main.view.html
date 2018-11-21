@@ -49,6 +49,9 @@
                 <oui-header-tabs-item data-text="{{:: 'telephony_alias_tab_number_configuration' | translate }}"
                                       data-state="telecom.telephony.alias.configuration.changeType"
                                       data-ng-if="$ctrl.alias.featureType === 'empty'"></oui-header-tabs-item>
+                <oui-header-tabs-item data-text="{{:: 'telephony_alias_tab_statistics' | translate }}"
+                                      data-state="telecom.telephony.alias.configuration.statistics"
+                                      data-ng-if="$ctrl.isContactCenterSolution()"></oui-header-tabs-item>
                 <oui-header-tabs-item data-text="{{:: 'telephony_alias_tab_records' | translate }}"
                                       data-state="telecom.telephony.alias.records"
                                       data-ng-if="$ctrl.isContactCenterSolution()"></oui-header-tabs-item>

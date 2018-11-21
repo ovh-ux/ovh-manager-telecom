@@ -240,6 +240,65 @@ export default class {
 
   /**
    *  @ngdoc method
+   *  @name managerApp.service:tucVoipServiceAlias#fetchContactCenterSolutionNumberQueueStatistics
+   *  @methodOf managerApp.service:tucVoipServiceAlias
+   *
+   *  @description
+   *  <p>Fetch statistics of a contact center solution queue.</p>
+   *
+   *  @param  {VoipService} number (destructured) The given VoipService number.
+   *  @param  {String}      queueId               Id of queue to get stats
+   *
+   */
+  fetchContactCenterSolutionNumberQueueStatistics({ billingAccount, serviceName }, queueId) {
+    return this.OvhApiTelephony.EasyHunting().Hunting().Queue().v6()
+      .getLiveStatistics({
+        billingAccount,
+        serviceName,
+        queueId,
+      }).$promise;
+  }
+
+  /**
+   *  @ngdoc method
+   *  @name managerApp.service:tucVoipServiceAlias#fetchContactCenterSolutionNumberQueueCalls
+   *  @methodOf managerApp.service:tucVoipServiceAlias
+   *
+   *  @description
+   *  <p>Fetch calls of a contact center solution queue.</p>
+   *
+   *  @param  {VoipService} number (destructured) The given VoipService number.
+   *  @param  {String}      queueId               Id of queue to get stats
+   *
+   */
+  fetchContactCenterSolutionNumberQueueCalls({ billingAccount, serviceName }, queueId) {
+    return this.OvhApiTelephony.EasyHunting().Hunting().Queue().LiveCalls()
+      .v6()
+      .query({
+        billingAccount,
+        serviceName,
+        queueId,
+      }).$promise
+      .then((callsIds) => {
+        if (typeof callsIds !== 'string') {
+          return this.$q
+            .all(callsIds.reverse().map(
+              id => this.OvhApiTelephony.EasyHunting().Hunting().Queue().LiveCalls()
+                .v6()
+                .get({
+                  billingAccount,
+                  serviceName,
+                  queueId,
+                  id,
+                }).$promise,
+            ));
+        }
+        return this.$q.reject();
+      });
+  }
+
+  /**
+   *  @ngdoc method
    *  @name managerApp.service:tucVoipServiceAlias#fetchContactCenterSolutionNumberAgents
    *  @methodOf managerApp.service:tucVoipServiceAlias
    *
@@ -255,15 +314,22 @@ export default class {
       .query({
         billingAccount,
         serviceName,
-      }).$promise.then(agentIds => this.$q.all(
-        _.chunk(agentIds, 50).map(chunkIds => this.OvhApiTelephony.EasyHunting().Hunting().Agent()
-          .v6()
-          .getBatch({
-            billingAccount,
-            serviceName,
-            agentId: chunkIds,
-          }).$promise),
-      )).then(agents => _(agents).flatten().pluck('value').value());
+      }).$promise.then((agentIds) => {
+        if (typeof agentIds !== 'string') {
+          return this.$q.all(
+            _.chunk(agentIds, 50).map(chunkIds => this.OvhApiTelephony.EasyHunting().Hunting()
+              .Agent()
+              .v6()
+              .getBatch({
+                billingAccount,
+                serviceName,
+                agentId: chunkIds,
+              }).$promise),
+          ).then(agents => _(agents).flatten().pluck('value').value());
+        }
+
+        return this.$q.reject();
+      });
   }
 
   /**
@@ -460,6 +526,47 @@ export default class {
         serviceName,
         id,
       }).$promise;
+  }
+
+  /**
+   *  @ngdoc method
+   *  @name managerApp.service:tucVoipServiceAlias#fetchContactCenterSolutionNumberAgentsStatus
+   *  @methodOf managerApp.service:tucVoipServiceAlias
+   *
+   *  @description
+   *  <p>Fetch status of of all contact center solution agents.</p>
+   *
+   *  @param  {VoipService} number (destructured) The given VoipService number.
+   *  @param  {Number}      queueId               Id of the agents queue
+   */
+  fetchContactCenterSolutionNumberAgentsStatus({ billingAccount, serviceName }, queueId) {
+    return this.OvhApiTelephony.EasyHunting().Hunting().Queue().Agent()
+      .v6()
+      .query({
+        billingAccount,
+        serviceName,
+        queueId,
+      }).$promise
+      .then((agentIds) => {
+        if (typeof agentIds !== 'string') {
+          return this.$q
+            .all(agentIds.map(
+              agentId => this.OvhApiTelephony.EasyHunting().Hunting().Queue().Agent()
+                .v6()
+                .getLiveStatus({
+                  billingAccount,
+                  serviceName,
+                  queueId,
+                  agentId,
+                }).$promise.then((agentStatus) => {
+                  _.set(agentStatus, 'agentId', agentId);
+                  return agentStatus;
+                }),
+            ));
+        }
+
+        return this.$q.reject();
+      });
   }
 
   /**

@@ -1,8 +1,8 @@
-angular.module('managerApp').controller('TelecomTelephonyServiceConsumptionIncomingCallsCtrl', function ($stateParams, $q, $translate, $filter, $timeout, OvhApiTelephony, TucToastError, voipService) {
+angular.module('managerApp').controller('TelecomTelephonyServiceConsumptionIncomingCallsCtrl', function ($stateParams, $q, $translate, $filter, $timeout, OvhApiTelephony, TucToastError, tucVoipService) {
   const self = this;
 
   function fetchIncomingConsumption() {
-    return voipService.getServiceConsumption({
+    return tucVoipService.getServiceConsumption({
       billingAccount: $stateParams.billingAccount,
       serviceName: $stateParams.serviceName,
     }).then(result => result.filter(conso => conso.wayType !== 'outgoing')

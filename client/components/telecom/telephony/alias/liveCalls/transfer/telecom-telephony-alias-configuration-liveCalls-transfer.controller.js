@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationLiveCallsTransfertCtrl', function ($uibModalInstance, $translate, TucToast, params) {
+angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationLiveCallsTransferCtrl', function ($uibModalInstance, $translate, TucToast, params) {
   const self = this;
 
   self.$onInit = function () {
