@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationStatisticsCtrl', class TelecomTelephonyAliasConfigurationStatisticsCtrl {
+angular.module('managerApp').controller('TelecomTelephonyAliasStatisticsCtrl', class TelecomTelephonyAliasStatisticsCtrl {
   constructor(
     $q, $state, $stateParams, $timeout, $translate, $uibModal,
     OvhApiTelephony, TucToast, tucVoipServiceAlias,
@@ -28,7 +28,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationStati
       })
       .catch((error) => {
         this.TucToast.error(
-          `${this.$translate.instant('telephony_alias_configuration_statistics_fetch_error')} ${_.get(error, 'data.message', error.message)}`,
+          `${this.$translate.instant('telephony_alias_statistics_fetch_error')} ${_.get(error, 'data.message', error.message)}`,
         );
       })
       .finally(() => {
@@ -70,7 +70,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationStati
       })
       .catch((error) => {
         this.TucToast.error(
-          `${this.$translate.instant('telephony_alias_configuration_statistics_fetch_error')} ${_.get(error, 'data.message', error.message)}`,
+          `${this.$translate.instant('telephony_alias_statistics_fetch_error')} ${_.get(error, 'data.message', error.message)}`,
         );
       });
   }
@@ -78,7 +78,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationStati
   pollStats() {
     const periodicRefresh = () => {
       this.refreshStats(this.queue.queueId).finally(() => {
-        if (!this.stopPolling && this.$state.current.name === 'telecom.telephony.alias.configuration.statistics') {
+        if (!this.stopPolling && this.$state.current.name === 'telecom.telephony.alias.statistics') {
           this.poller = this.$timeout(periodicRefresh, 1000);
         } else {
           this.stopPoller();
