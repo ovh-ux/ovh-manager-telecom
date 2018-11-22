@@ -211,8 +211,12 @@ export default class {
       actionOnClosureParam,
       actionOnOverflow,
       actionOnOverflowParam,
+      askForRecordDisabling,
       maxMember,
       maxWaitTime,
+      record,
+      recordDisablingDigit,
+      recordDisablingLanguage,
     },
   ) {
     return this.OvhApiTelephony.EasyHunting().Hunting().Queue().v6()
@@ -225,8 +229,12 @@ export default class {
         actionOnClosureParam,
         actionOnOverflow,
         actionOnOverflowParam,
+        askForRecordDisabling,
         maxMember,
         maxWaitTime,
+        record,
+        recordDisablingDigit,
+        recordDisablingLanguage,
       }).$promise;
   }
 
@@ -399,6 +407,58 @@ export default class {
         billingAccount,
         serviceName,
         agentId,
+      }).$promise;
+  }
+
+  /**
+   *  @ngdoc method
+   *  @name managerApp.service:tucVoipServiceAlias#fetchContactCenterSolutionNumberRecords
+   *  @methodOf managerApp.service:tucVoipServiceAlias
+   *
+   *  @description
+   *  <p>Fetch records of the contact center solution.</p>
+   *
+   *  @param  {VoipService} number (destructured) The given VoipService number.
+   */
+  fetchContactCenterSolutionNumberRecords({ billingAccount, serviceName }) {
+    return this.OvhApiTelephony.EasyHunting().Records().v6()
+      .query({
+        billingAccount,
+        serviceName,
+      }).$promise
+      .then((recordsIds) => {
+        if (typeof recordsIds !== 'string') {
+          return this.$q.all(_.chunk(recordsIds, 50)
+            .map(chunkIds => this.OvhApiTelephony.EasyHunting().Records().v6()
+              .getBatch({
+                billingAccount,
+                serviceName,
+                id: chunkIds,
+              }).$promise));
+        }
+
+        return this.$q.reject();
+      })
+      .then(records => _(records).flatten().map('value').value());
+  }
+
+  /**
+   *  @ngdoc method
+   *  @name managerApp.service:tucVoipServiceAlias#deleteContactCenterSolutionNumberRecord
+   *  @methodOf managerApp.service:tucVoipServiceAlias
+   *
+   *  @description
+   *  <p>Delete a specific record of the contact center solution.</p>
+   *
+   *  @param  {VoipService} number (destructured) The given VoipService number.
+   *  @param  {Number}      id                    Id of the record to delete
+   */
+  deleteContactCenterSolutionNumberRecord({ billingAccount, serviceName }, id) {
+    return this.OvhApiTelephony.EasyHunting().Records().v6()
+      .remove({
+        billingAccount,
+        serviceName,
+        id,
       }).$promise;
   }
 

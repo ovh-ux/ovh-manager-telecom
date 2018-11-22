@@ -11,6 +11,8 @@
    <translation id="telephony_alias_tab_bank_maker" qtlid="333295">Générateur de cartouche</translation>
    <translation id="telephony_alias_tab_number_directory" qtlid="33370">Coordonnées</translation>
 
+   <translation id="telephony_alias_tab_records">Enregistrements</translation>
+
    <translation id="telephony_alias_rename_error" qtlid="333308">Impossible de renommer votre alias {{serviceName}}.</translation>
    <translation id="telephony_alias_termination_warning" qtlid="393061">Le numéro sera résilié le <strong>{{ date }}</strong>.</translation>
    <translation id="telephony_alias_termination_warning_cancel" qtlid="462953">Vous pourrez annuler dans la section suivante.</translation>
