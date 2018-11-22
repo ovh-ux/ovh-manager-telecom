@@ -136,8 +136,8 @@ export default class {
 
   /**
    *  @ngdoc method
-   *  @name managerApp.service:voipService#getTerminationTask
-   *  @methodOf managerApp.service:voipService
+   *  @name managerApp.service:tucVoipService#getTerminationTask
+   *  @methodOf managerApp.service:tucVoipService
    *
    *  @description
    *  <p>Get pending termination task for a given service.</p>
@@ -164,8 +164,8 @@ export default class {
 
   /**
    *  @ngdoc method
-   *  @name managerApp.service:voipService#getServiceDirectory
-   *  @methodOf managerApp.service:voipService
+   *  @name managerApp.service:tucVoipService#getServiceDirectory
+   *  @methodOf managerApp.service:tucVoipService
    *
    *  @description
    *  <p>Get directory for a given service.</p>
@@ -184,15 +184,15 @@ export default class {
 
   /**
    *  @ngdoc method
-   *  @name managerApp.service:voipService#getServiceConsumption
-   *  @methodOf managerApp.service:voipService
+   *  @name managerApp.service:tucVoipService#getServiceConsumption
+   *  @methodOf managerApp.service:tucVoipService
    *
    *  @description
    *  <p>Get consumption of a given service.</p>
    *
    *  @param  {VoipService} service The given VoipService service.
    *
-   *  @return {Array}       Consumption list of details
+   *  @return {Array}               Consumption list of details
    */
   getServiceConsumption(service) {
     return this.OvhApiTelephony.Service().VoiceConsumption().v6()
@@ -211,6 +211,31 @@ export default class {
         ))
         .then(chunkResult => _.flatten(chunkResult)))
       .then(result => _.map(result, 'value'));
+  }
+
+  /**
+   *  @ngdoc method
+   *  @name managerApp.service:tucVoipService#fetchServiceRepayments
+   *  @methodOf managerApp.service:tucVoipService
+   *
+   *  @description
+   *  <p>Fetch repayments of a given service.</p>
+   *
+   *  @param  {VoipService} service The given VoipService service.
+   *
+   *  @return {Array}               Repayments list
+   */
+  fetchServiceRepayments({ billingAccount, serviceName }) {
+    return this.OvhApiTelephony.Service().RepaymentConsumption().v6().query({
+      billingAccount,
+      serviceName,
+    }).$promise
+      .then(repaymentsIds => this.$q.all(repaymentsIds.map(repayment => this.OvhApiTelephony
+        .Service().RepaymentConsumption().v6().get({
+          billingAccount,
+          serviceName,
+          consumptionId: repayment,
+        }).$promise)));
   }
 
   /* ==============================

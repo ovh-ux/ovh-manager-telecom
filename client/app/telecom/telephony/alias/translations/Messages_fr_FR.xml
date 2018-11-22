@@ -85,7 +85,7 @@
    <translation id="telephony_alias_consumption_outgoing_out_plan_detail">{{ price }} € HT</translation>
    <translation id="telephony_alias_consumption_details">Voir le détail</translation>
 
-   <translation id="telephony_alias_special_pending_transfer">Reversements en cours</translation>
+   <translation id="telephony_alias_special_repayments">Reversements et coûts</translation>
    <translation id="telephony_alias_special_number_rsva">Tarification du numéro</translation>
 
    <translation id="telephony_alias_config_feature_type_contactCenterSolutionExpert">Avec le mode expert de Contact Center Solution, vous pouvez gérer le flux de vos appels de bout en bout. En fonction des numéros appelants ou des plages horaires, choisissez vous-même votre stratégie. Jouez des sons d'accueils, personnalisez votre musique d'attente, faites sonner les postes de vos différents services.</translation>
