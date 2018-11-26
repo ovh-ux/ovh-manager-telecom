@@ -3,15 +3,6 @@
       data-ng-submit="$ctrl.saveScheduler()"
       novalidate>
 
-    <div class="scheduler-overlay w-100 h-100"
-         data-ng-if="$ctrl.loading.edit || $ctrl.loading.import || $ctrl.loading.save">
-        <div class="scheduler-overlay-backdrop w-100 h-100"></div>
-        <div class="scheduler-overlay-loader d-flex flex-column align-items-center justify-content-center"
-             data-ng-if="$ctrl.loading.import"
-             data-ng-transclude>
-        </div>
-    </div>
-
     <div data-ng-if="!$ctrl.loading.init">
 
         <!-- SCHEDULER FILTERS -->
