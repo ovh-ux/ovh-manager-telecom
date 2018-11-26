@@ -37,6 +37,9 @@ export const TUC_TELEPHONY_ALIAS = {
       digits: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
     },
   },
+  specialNumber: {
+    noScheduledRateCode: 'No rate code changes had been scheduled.',
+  },
 };
 
 export default {

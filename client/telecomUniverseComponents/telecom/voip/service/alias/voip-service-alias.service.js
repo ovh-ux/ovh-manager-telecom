@@ -8,18 +8,20 @@ import _ from 'lodash';
  *  @requires OvhApiMe        from ovh-api-services
  *  @requires OvhApiTelephony from ovh-api-services
  *  @requires tucVoipServiceTask service
+ *  @requires TUC_TELEPHONY_ALIAS constants
  *
  *  @description
  *  Service that manage specific API calls for aliases.
  */
 export default class {
-  constructor($q, OvhApiMe, OvhApiTelephony, tucVoipServiceTask) {
+  constructor($q, OvhApiMe, OvhApiTelephony, tucVoipServiceTask, TUC_TELEPHONY_ALIAS) {
     'ngInject';
 
     this.$q = $q;
     this.OvhApiMe = OvhApiMe;
     this.OvhApiTelephony = OvhApiTelephony;
     this.tucVoipServiceTask = tucVoipServiceTask;
+    this.TUC_TELEPHONY_ALIAS = TUC_TELEPHONY_ALIAS;
   }
 
   /**
@@ -127,6 +129,119 @@ export default class {
 
   /**
    *  @ngdoc method
+   *  @name managerApp.service:tucVoipServiceAlias#getRSVAInformations
+   *  @methodOf managerApp.service:tucVoipServiceAlias
+   *
+   *  @description
+   *  <p>Get the RSVA informations of a special number.</p>
+   *
+   *  @param  {VoipService} number (destructured) The given VoipService number.
+   *
+   */
+  getRSVAInformations({ billingAccount, serviceName }) {
+    return this.OvhApiTelephony.Rsva().v6().get({
+      billingAccount,
+      serviceName,
+    }).$promise;
+  }
+
+  /**
+   *  @ngdoc method
+   *  @name managerApp.service:tucVoipServiceAlias#getAllowedRateCodes
+   *  @methodOf managerApp.service:tucVoipServiceAlias
+   *
+   *  @description
+   *  <p>Get allowed rate codes of the special number.</p>
+   *
+   *  @param  {VoipService} number (destructured) The given VoipService number.
+   *
+   *  @return {String}                            The rate codes
+   */
+  getAllowedRateCodes({ billingAccount, serviceName }) {
+    return this.OvhApiTelephony.Rsva().v6().getAllowedRateCodes({
+      billingAccount,
+      serviceName,
+    }).$promise;
+  }
+
+  /**
+   *  @ngdoc method
+   *  @name managerApp.service:tucVoipServiceAlias#getCurrentRateCode
+   *  @methodOf managerApp.service:tucVoipServiceAlias
+   *
+   *  @description
+   *  <p>Get current rate code of the special number.</p>
+   *
+   *  @param  {VoipService} number (destructured) The given VoipService number.
+   *
+   *  @return {String}                            The rate code
+   */
+  getCurrentRateCode({ billingAccount, serviceName }) {
+    return this.OvhApiTelephony.Rsva().v6().getCurrentRateCode({
+      billingAccount,
+      serviceName,
+    }).$promise;
+  }
+
+  /**
+   *  @ngdoc method
+   *  @name managerApp.service:tucVoipServiceAlias#getScheduledRateCode
+   *  @methodOf managerApp.service:tucVoipServiceAlias
+   *
+   *  @description
+   *  <p>Get scheduled rate code of the special number.</p>
+   *
+   *  @param  {VoipService} number (destructured) The given VoipService number.
+   *
+   *  @return {String}                            The rate code
+   */
+  getScheduledRateCode({ billingAccount, serviceName }) {
+    return this.OvhApiTelephony.Rsva().v6().getScheduledRateCode({
+      billingAccount,
+      serviceName,
+    }).$promise.catch(error => (_.get(error, 'data.message', error.message) === this.TUC_TELEPHONY_ALIAS.specialNumber.noScheduledRateCode ? null : this.$q.reject(error)));
+  }
+
+  /**
+   *  @ngdoc method
+   *  @name managerApp.service:tucVoipServiceAlias#updateRateCode
+   *  @methodOf managerApp.service:tucVoipServiceAlias
+   *
+   *  @description
+   *  <p>Update the rate code of a special number.</p>
+   *
+   *  @param  {VoipService} number   (destructured) The given VoipService number.
+   *  @param  {Object}      rateCode                Rate code to set
+   *
+   */
+  updateRateCode({ billingAccount, serviceName }, rateCode) {
+    return this.OvhApiTelephony.Rsva().v6().scheduleRateCode({
+      billingAccount,
+      serviceName,
+    }, { rateCode }).$promise;
+  }
+
+  /**
+   *  @ngdoc method
+   *  @name managerApp.service:tucVoipServiceAlias#updateTypology
+   *  @methodOf managerApp.service:tucVoipServiceAlias
+   *
+   *  @description
+   *  <p>Update the typology of a special number.</p>
+   *
+   *  @param  {VoipService} number   (destructured) The given VoipService number.
+   *  @param  {Object}      typology                Typology to set
+   *
+   */
+  updateTypology({ billingAccount, serviceName }, typology) {
+    return this.OvhApiTelephony.Rsva().v6().edit({
+      billingAccount,
+      serviceName,
+    }, { typology }).$promise;
+  }
+
+  /**
+   *  @ngdoc method
    *  @name managerApp.service:tucVoipServiceAlias#fetchContactCenterSolutionNumber
    *  @methodOf managerApp.service:tucVoipServiceAlias
    *
@@ -207,16 +322,10 @@ export default class {
     { billingAccount, serviceName },
     {
       queueId,
-      actionOnClosure,
-      actionOnClosureParam,
-      actionOnOverflow,
-      actionOnOverflowParam,
+      actionOnClosure, actionOnClosureParam, actionOnOverflow, actionOnOverflowParam,
       askForRecordDisabling,
-      maxMember,
-      maxWaitTime,
-      record,
-      recordDisablingDigit,
-      recordDisablingLanguage,
+      maxMember, maxWaitTime,
+      record, recordDisablingDigit, recordDisablingLanguage,
     },
   ) {
     return this.OvhApiTelephony.EasyHunting().Hunting().Queue().v6()

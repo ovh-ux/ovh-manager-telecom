@@ -124,7 +124,7 @@ angular.module('managerApp').constant('LANGUAGES', {
     rsva: {
       tariffBearing: {
         value: 20,
-        currencyCode: 'EUR',
+        currencySymbol: '€',
       },
     },
     packMove: {
