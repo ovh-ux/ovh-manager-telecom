@@ -36,7 +36,7 @@
    <translation id="pack_resiliation_disabled_field_help" qtlid="313507">Pilkai pažymėtos paslaugos negali būti išsaugotos.</translation>
    <translation id="pack_resiliation_services_cannot_keep" qtlid="313520">Atsisakę paketo negalėsite išsaugoti šios paslaugos.</translation>
    <translation id="pack_resiliation_subservices_load_error" qtlid="313533">Klaida įkeliant paslaugų atsisakymo informaciją. Negalima tęsti atsisakymo.</translation>
-   <translation id="pack_resiliation_hubic_disclamer" qtlid="385676">Jūsų hubiC paskyros bus automatiškai pakeistos nemokama 25 GB paslauga. Jeigu jūsų duomenys viršys suteikiamą limitą, jie bus pasiekiami. Galėsite bet kuriuo momentu pakeisti planą svetainėje <a target="_blank" href="https://hubic.com/home/" qtlid="313559" qtlid_href="313559">https://hubic.com/home/</a> arba mobilioje hubiC aplikacijoje.</translation>
+   <translation id="pack_resiliation_hubic_disclamer">Vos comptes hubiC seront automatiquement basculés en offre gratuite 25 Go. Si vos données dépassent la capacité de stockage d'une offre gratuite, ces dernières restent accessibles.</translation>
    <translation id="pack_resiliation_fee" qtlid="385689">Atsisakymo mokestis:</translation>
    <translation id="pack_resiliation_keeping_fee" qtlid="385702">Papildomo numerio išsaugojimas:</translation>
    <translation id="pack_resiliation_monthly_pass" qtlid="268289">Mėnesinis mokestis:</translation>
