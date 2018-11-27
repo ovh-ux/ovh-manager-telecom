@@ -28,13 +28,12 @@ angular.module('managerApp').service('TelephonyVoipService', function ($q, OvhAp
               const billingAccount = pathParts[2].toLowerCase();
               const service = item.value;
               service.billingAccount = billingAccount;
-
               if (_.has(item, 'value.serviceName')) {
                 // create the service
                 if (['fax', 'voicefax'].includes(service.featureType)) {
                   const fax = new TelephonyGroupFax(service);
                   groups[billingAccount].fax.push(fax);
-                } else {
+                } else if (_.has(groups, billingAccount)) {
                   const line = new TelephonyGroupLine(service);
                   const number = new TelephonyGroupNumber(service);
                   switch (service.serviceType) {
