@@ -36,7 +36,7 @@
    <translation id="xdsl_modem_wifi_config_ssid_advertisement_tooltip" qtlid="318036">L'identificativo di rete può essere mostrato pubblicamente o nascosto. In quest'ultimo caso, il nome non compare nella lista delle reti wireless disponibili e per accedere è necessario conoscere il nome della rete.</translation>
    <translation id="xdsl_modem_wifi_config_security_tooltip" qtlid="318049">La sicurezza definisce il tipo e il livello della crittografia della password di accesso alla tua rete wireless. Ti consogliamo di utilizzare "WPA e WPA2" con una crittografia più elevata.</translation>
    <translation id="xdsl_modem_wifi_config_key_tooltip" qtlid="318062">La chiave Wi-Fi è la password che verrà chiesta per accedere alla tua rete wireless. Ti consigliamo di utilizzare una password complessa, con lettere e numeri, maiuscole e minuscole.</translation>
-   <translation id="xdsl_modem_wifi_config_canal_tooltip" qtlid="318075">L'intervallo dei canali disponibili va da 1 a 13, corrispondenti a diverse frequenze. Non esitono raccomandazioni specifiche per la scelta di un canale rispetto a un altro.</translation>
+   <translation id="xdsl_modem_wifi_config_canal_tooltip">La plage de canaux disponibles correspond à des fréquences différentes. Il n'y a pas de recommandation particulière de choix entre un canal et un autre.</translation>
 
    <translation id="xdsl_modem_wifi_config_new_key" qtlid="303029">Nuova chiave</translation>
    <translation id="xdsl_modem_wifi_config_retype_new_key" qtlid="318088">Inserisci di nuovo la chiave</translation>

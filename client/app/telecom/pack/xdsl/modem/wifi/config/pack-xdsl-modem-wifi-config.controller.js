@@ -1,5 +1,5 @@
 angular.module('managerApp')
-  .controller('XdslModemWifiConfigCtrl', function ($state, $q, $timeout, $stateParams, $translate, TucToast, OvhApiXdsl, TucPackXdslModemMediator) {
+  .controller('XdslModemWifiConfigCtrl', function ($state, $q, $timeout, $stateParams, $translate, TucToast, OvhApiXdsl, TucPackXdslModemMediator, OvhApiXdslModemAvailableWLANChannel) {
     const self = this;
     self.mediator = TucPackXdslModemMediator;
     self.wifi = null;
@@ -11,7 +11,6 @@ angular.module('managerApp')
 
     self.fields = {
       securityType: {},
-      channelMode: _.flatten(['Auto', _.range(1, 14)]),
     };
 
     const wifiFields = [
@@ -120,6 +119,15 @@ angular.module('managerApp')
     };
 
     self.setSelectedWifi = function (wifi) {
+      // Call API to load available channel for selected wifi
+      if (!wifi.guest) {
+        OvhApiXdslModemAvailableWLANChannel.v6().get({
+          xdslId: $stateParams.serviceName,
+          frequency: wifi.frequency,
+        }).$promise.then((channelList) => {
+          self.fields.channelMode = _.flatten(['Auto', channelList]);
+        });
+      }
       self.wifi = angular.copy(wifi);
     };
 
