@@ -36,7 +36,7 @@
    <translation id="pack_resiliation_disabled_field_help" qtlid="313507">Les services grisés ci-dessous ne peuvent être conservés.</translation>
    <translation id="pack_resiliation_services_cannot_keep" qtlid="313520">En résiliant le pack, vous ne pouvez pas garder ce service.</translation>
    <translation id="pack_resiliation_subservices_load_error" qtlid="313533">Erreur de chargement des informations de résiliation des sous services. Impossible de poursuivre la résiliation.</translation>
-   <translation id="pack_resiliation_hubic_disclamer" qtlid="385676">Vos comptes hubiC seront automatiquement basculés en offre gratuite 25 Go. Si vos données dépassent la capacité de stockage d'une offre gratuite, ces dernières restent accessibles. Vous pourrez changer d'offre à tout moment en vous connectant sur <a target="_blank" href="https://hubic.com/home/" qtlid="313559" qtlid_href="313559">https://hubic.com/home/</a> ou depuis votre application mobile hubiC.</translation>
+   <translation id="pack_resiliation_hubic_disclamer">Vos comptes hubiC seront automatiquement basculés en offre gratuite 25 Go. Si vos données dépassent la capacité de stockage d'une offre gratuite, ces dernières restent accessibles.</translation>
    <translation id="pack_resiliation_fee" qtlid="385689">Frais de résiliation :</translation>
    <translation id="pack_resiliation_keeping_fee" qtlid="385702">Frais de conservation du numéro alias :</translation>
    <translation id="pack_resiliation_monthly_pass" qtlid="268289">Abonnement mensuel :</translation>

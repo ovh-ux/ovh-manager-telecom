@@ -36,7 +36,7 @@
    <translation id="xdsl_modem_wifi_config_ssid_advertisement_tooltip" qtlid="318036">Verkon tunniste (nimi) voi näkyä julkisesti tai se voi olla piilotettu. Jos se on piilotettu, täytyy sinun tietää verkkosi nimi voidaksesi yhdistää siihen. Verkko ei näy saatavilla olevien langattomien verkkojen listassa.</translation>
    <translation id="xdsl_modem_wifi_config_security_tooltip" qtlid="318049">Suojaus määrittää langattoman verkkosi salasanan salauksen tyypin ja tason. Vahvemman salauksen käyttämiseksi on suositeltua ottaa käyttöön "WPA" ja "WPA2".</translation>
    <translation id="xdsl_modem_wifi_config_key_tooltip" qtlid="318062">Wi-Fi -avain on salasana, joka vaaditaan langattomaan verkkoon yhdistämistä varten. On järkevää antaa kattava avain, eli sellainen joka sisältää kirjaimia JA numeroita, pienillä JA isoilla kirjaimilla.</translation>
-   <translation id="xdsl_modem_wifi_config_canal_tooltip" qtlid="318075">Saatavilla olevien kanavia on väliltä 1 - 13, erilaisia taajuksia vastaavasti. Olemassa ei ole erityisiä suosituksia kanavan valinnan suhteen.</translation>
+   <translation id="xdsl_modem_wifi_config_canal_tooltip">La plage de canaux disponibles correspond à des fréquences différentes. Il n'y a pas de recommandation particulière de choix entre un canal et un autre.</translation>
 
    <translation id="xdsl_modem_wifi_config_new_key" qtlid="303029">Uusi avain</translation>
    <translation id="xdsl_modem_wifi_config_retype_new_key" qtlid="318088">Syötä uudestaan uusi avain</translation>

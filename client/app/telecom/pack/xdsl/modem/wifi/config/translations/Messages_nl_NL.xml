@@ -36,7 +36,7 @@
    <translation id="xdsl_modem_wifi_config_ssid_advertisement_tooltip" qtlid="318036">L'identifiant (nom) réseau peut être visible publiquement ou masqué. Si masqué, il faut donc connaitre le nom de votre réseau pour y accéder, car il n'apparaîtra pas dans la liste des réseaux sans fil disponibles.</translation>
    <translation id="xdsl_modem_wifi_config_security_tooltip" qtlid="318049">La sécurité définit le type et la force de cryptage, du mot de passe requis pour accéder à votre réseau sans fil. Il est recommandé d'utiliser "WPA et WPA2" utilisant un cryptage plus élevé.</translation>
    <translation id="xdsl_modem_wifi_config_key_tooltip" qtlid="318062">La clé Wi-Fi est le mot de passe qui sera demandé pour pouvoir accéder à votre réseau sans fil. Il est judicieux de renseigner une clé complexe, c'est-à-dire contenant des lettres ET chiffres, avec majuscules ET minuscules.</translation>
-   <translation id="xdsl_modem_wifi_config_canal_tooltip" qtlid="318075">La plage de canaux disponibles va de 1 à 13, correspondant à des fréquences différentes. Il n'y a pas de recommandation particulière de choix entre un canal et un autre.</translation>
+   <translation id="xdsl_modem_wifi_config_canal_tooltip">La plage de canaux disponibles correspond à des fréquences différentes. Il n'y a pas de recommandation particulière de choix entre un canal et un autre.</translation>
 
    <translation id="xdsl_modem_wifi_config_new_key" qtlid="303029">Nieuwe key</translation>
    <translation id="xdsl_modem_wifi_config_retype_new_key" qtlid="318088">Ressaisissez la nouvelle clé</translation>
