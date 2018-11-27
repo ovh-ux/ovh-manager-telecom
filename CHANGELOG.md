@@ -1,3 +1,13 @@
+## [10.11.1](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.11.0...v10.11.1) (2018-11-27)
+
+
+### Bug Fixes
+
+* **deps:** upgrade npm-run-all to v4.1.5 ([7c8325e](https://github.com/ovh-ux/ovh-manager-telecom/commit/7c8325e))
+* **telephony:** telephony items not displayed ([f328f2c](https://github.com/ovh-ux/ovh-manager-telecom/commit/f328f2c))
+
+
+
 # [10.11.0](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.10.1...v10.11.0) (2018-11-19)
 
 
