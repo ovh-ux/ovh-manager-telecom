@@ -1,7 +1,7 @@
 angular.module('managerApp').controller('TelecomTelephonyAliasDashboardController', class TelecomTelephonyAliasHomeController {
   constructor(
     $q, $state, $stateParams, $translate, $uibModal,
-    OvhApiTelephony, TucChartjsFactory, TucToast,
+    atInternet, OvhApiTelephony, TucChartjsFactory, TucToast,
     tucVoipService, tucVoipServiceAlias,
     TELEPHONY_ALIAS_CONSUMPTION,
   ) {
@@ -9,6 +9,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasDashboardControlle
     this.$state = $state;
     this.$translate = $translate;
     this.$uibModal = $uibModal;
+    this.atInternet = atInternet;
     this.OvhApiTelephony = OvhApiTelephony;
     this.TucChartjsFactory = TucChartjsFactory;
     this.TucToast = TucToast;
@@ -212,5 +213,12 @@ angular.module('managerApp').controller('TelecomTelephonyAliasDashboardControlle
   hasExpertMode() {
     const expertTypes = ['svi', 'contactCenterSolutionExpert', 'cloudHunting'];
     return expertTypes.includes(this.alias.featureType);
+  }
+
+  redirectToChangeTypePage() {
+    this.$state.go('telecom.telephony.alias.configuration.changeType').then(() => this.atInternet.trackClick({
+      name: 'telecom::telephony::alias::dashboard::choose_configuration',
+      type: 'action',
+    }));
   }
 });

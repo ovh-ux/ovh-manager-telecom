@@ -1,7 +1,7 @@
 angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationChangeTypeCtrl', class TelecomTelephonyAliasConfigurationChangeTypeCtrl {
   constructor(
     $q, $state, $stateParams, $translate, $uibModal,
-    OvhApiTelephony, TucToast, tucTelephonyBulk,
+    atInternet, OvhApiTelephony, TucToast, tucTelephonyBulk,
     tucVoipService, tucVoipServiceAlias, tucVoipServiceTask,
   ) {
     this.$q = $q;
@@ -9,6 +9,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationChang
     this.$stateParams = $stateParams;
     this.$translate = $translate;
     this.$uibModal = $uibModal;
+    this.atInternet = atInternet;
     this.OvhApiTelephony = OvhApiTelephony;
     this.tucTelephonyBulk = tucTelephonyBulk;
     this.TucToast = TucToast;
@@ -146,6 +147,11 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationChang
   switchOptionMode() {
     this.showExpertOptions = !this.showExpertOptions;
     this.initSelectedFeatureType();
+
+    this.atInternet.trackClick({
+      name: `telecom::telephony::alias::configuration::change_type::${this.showExpertOptions ? 'show_expert_options' : 'show_simple_options'}`,
+      type: 'action',
+    });
   }
 
   /* ===========================
