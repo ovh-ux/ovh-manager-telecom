@@ -13,7 +13,7 @@
     <dl data-ng-if="$ctrl.diagnostic">
         <div class="row">
             <dt class="col-xs-4" data-translate="xdsl_details_diagnostic_modal_status_term_time"></dt>
-            <dd class="col-xs-8" data-ng-bind="$ctrl.diagnostic.diagnosticTime"></dd>
+            <dd class="col-xs-8" data-ng-bind="$ctrl.diagnostic.diagnosticTime | date: 'HH:mm:ss'"></dd>
         </div>
         <div data-ng-repeat="status in $ctrl.statuses"
              class="row">
