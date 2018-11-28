@@ -3,7 +3,7 @@
 @oui-path: "ovh-ui-kit";
 
 @import "ovh-ui-kit/packages/oui/stylekit";
-@import (less) "angular-flash-alert/dist/angular-flash.css"; // needs to be before ovh-ui-kit-bs or it will override style
+@import (less) "angular-flash-alert/dist/angular-flash.css"; /* needs to be before ovh-ui-kit-bs or it will override style */
 @import "ovh-ui-kit-bs/src/ovh-ui-kit-bs";
 @import "ovh-angular-sidebar-menu/less/ovh-angular-sidebar-menu.less";
 @import "ovh-angular-sidebar-menu/less/ovh-angular-sidebar-menu.dependencies.less";
@@ -14,7 +14,8 @@
 @import "ovh-manager-webfont/dist/less/ovh-font";
 @import "ovh-angular-otrs/dist/ovh-angular-otrs.less";
 @import "font-awesome/less/font-awesome.less";
-// @import "ovh-angular-chatbot/src/ovh-angular-chatbot.less"; TODO: uncomment
+
+/* @import "ovh-angular-chatbot/src/ovh-angular-chatbot.less"; TODO: uncomment */
 
 @import (less) "leaflet/dist/leaflet.css";
 @import (less) "ovh-angular-mondial-relay/dist/ovh-angular-mondial-relay.min.css";
@@ -28,11 +29,11 @@
 @import (less) "ovh-angular-toaster/dist/ovh-angular-toaster.css";
 @import (less) "ovh-angular-tail-logs/dist/ovh-angular-tail-logs.css";
 @import "ovh-angular-line-diagnostics/src/ovh-angular-line-diagnostics/ovh-angular-line-diagnostics.less";
-@import (less) "ovh-angular-tail-logs/dist/ovh-angular-tail-logs.css";
 @import "ovh-angular-timeline/src/ovh-angular-timeline.less";
 @import (less) "ovh-ng-input-password/dist/ovh-ng-input-password.css";
 
-// Paths for Icons & Fonts
+/* Paths for Icons & Fonts */
+
 @icon-font-path: "../fonts/";
 @oui-icon-dist-folder: "../../dist/icons";
 @oui-font-source-sans-pro-folder: "../../packages/oui-typography/fonts/source-sans-pro";
@@ -67,14 +68,14 @@
 }
 
 .col-container {
-  padding-top: @NAVBAR_HEIGHT;
+  padding-top: @navbar_height;
 }
 
 .container {
   width: auto;
 }
 
-// App-wide Styles
+/* App-wide Styles */
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: @screen-sm-min) {
