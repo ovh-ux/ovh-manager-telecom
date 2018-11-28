@@ -24,7 +24,7 @@
     "build": "webpack --env.production",
     "clean": "npx rimraf dist node_modules",
     "clean:dist": "npx rimraf dist",
-    "lint": "run-p lint:html lint:js",
+    "lint": "run-p lint:html lint:css lint:js",
     "lint:css": "stylelint 'client/**/*.less' --fix",
     "lint:html": "htmlhint 'client/**/*.html'",
     "lint:js": "eslint --quiet --fix ./client",
