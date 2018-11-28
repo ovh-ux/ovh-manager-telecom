@@ -6,7 +6,7 @@
    <translation id="telephony_line_assist_orders_column_status" qtlid="33790">Status</translation>
    <translation id="telephony_line_assist_orders_order_status_cancelled" qtlid="164623">Anulowane</translation>
    <translation id="telephony_line_assist_orders_order_status_cancelling" qtlid="282848">Trwa anulowanie</translation>
-   <translation id="telephony_line_assist_orders_order_status_checking" qtlid="33802">Zatwierdź</translation>
+   <translation id="telephony_line_assist_orders_order_status_checking" qtlid="33802">Zatwierdzenie</translation>
    <translation id="telephony_line_assist_orders_order_status_delivered" qtlid="282861">Zakończone</translation>
    <translation id="telephony_line_assist_orders_order_status_delivering" qtlid="282874">Dostarczanie w trakcie</translation>
    <translation id="telephony_line_assist_orders_order_status_documents_requested" qtlid="282887">W oczekiwaniu na dokumenty</translation>

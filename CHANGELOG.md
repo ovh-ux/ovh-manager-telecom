@@ -1,3 +1,36 @@
+# [10.12.0](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.11.2...v10.12.0) (2018-11-27)
+
+
+### Bug Fixes
+
+* **deps:** upgrade ovh-ui-angular to v2.22.1 ([e9f2f0d](https://github.com/ovh-ux/ovh-manager-telecom/commit/e9f2f0d))
+* **i18n:** retrieve translations ([b891e31](https://github.com/ovh-ux/ovh-manager-telecom/commit/b891e31))
+* **i18n:** submit translations ([cd8679d](https://github.com/ovh-ux/ovh-manager-telecom/commit/cd8679d))
+* **pack.resiliation:** remove label about hubic upgrade offer ([dc93b10](https://github.com/ovh-ux/ovh-manager-telecom/commit/dc93b10))
+* **pack.xdsl.access:** pop-up for order ip ([f43a60f](https://github.com/ovh-ux/ovh-manager-telecom/commit/f43a60f))
+
+
+### Features
+
+* **pack.xdsl.tasks:** update modem tasks list tab ([a4f02e4](https://github.com/ovh-ux/ovh-manager-telecom/commit/a4f02e4))
+* **wifi:** retrieve available channel associated to wifi frequency ([1e3bb6f](https://github.com/ovh-ux/ovh-manager-telecom/commit/1e3bb6f))
+
+
+
+## [10.11.2](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.11.1...v10.11.2) (2018-11-27)
+
+
+
+## [10.11.1](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.11.0...v10.11.1) (2018-11-27)
+
+
+### Bug Fixes
+
+* **deps:** upgrade npm-run-all to v4.1.5 ([7c8325e](https://github.com/ovh-ux/ovh-manager-telecom/commit/7c8325e))
+* **telephony:** telephony items not displayed ([f328f2c](https://github.com/ovh-ux/ovh-manager-telecom/commit/f328f2c))
+
+
+
 # [10.11.0](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.10.1...v10.11.0) (2018-11-19)
 
 

@@ -162,11 +162,7 @@ angular.module('managerApp').controller('XdslAccessCtrl', class XdslAccessCtrl {
       controller: 'XdslAccessIpOrderCtrl',
       controllerAs: 'ctrl',
       resolve: {
-        data() {
-          return {
-            xdslId: this.$stateParams.serviceName,
-          };
-        },
+        data: () => ({ xdslId: this.$stateParams.serviceName }),
       },
     });
     modal.result.then((result) => {
