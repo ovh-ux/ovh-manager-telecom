@@ -1,18 +1,13 @@
 angular.module('managerApp').config(($stateProvider) => {
-  $stateProvider.state('telecom.telephony.alias.consumption.incomingCalls', {
+  $stateProvider.state('telecom.telephony.alias.consumptionIncomingCalls', {
     url: '/incomingCalls',
     views: {
-      'aliasView@telecom.telephony.alias': {
-        templateUrl: 'app/telecom/telephony/alias/consumption/incomingCalls/telecom-telephony-alias-consumption-incomingCalls.html',
-        controller: 'TelecomTelephonyAliasConsumptionIncomingCallsCtrl',
-        controllerAs: 'AliasIncomingCallsCtrl',
-      },
-      'consumptionView@telecom.telephony.alias.consumption.incomingCalls': {
+      'aliasInnerView@telecom.telephony.alias': {
         templateUrl: 'app/telecom/telephony/service/consumption/incomingCalls/telecom-telephony-service-consumption-incomingCalls.html',
         controller: 'TelecomTelephonyServiceConsumptionIncomingCallsCtrl',
         controllerAs: 'IncomingCallsCtrl',
       },
     },
-    translations: ['.', '../../../service/consumption/incomingCalls'],
+    translations: ['..', '../../../service/consumption/', '../../../service/consumption/incomingCalls'],
   });
 });
