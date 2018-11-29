@@ -959,6 +959,14 @@
     request "^2.88.0"
     webpack-dev-server "^3.1.9"
 
+"@ovh-ux/telecom-universe-components@^1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@ovh-ux/telecom-universe-components/-/telecom-universe-components-1.0.4.tgz#122c48809e9c7817da589254f100d66a2dd935c8"
+  integrity sha512-PMkH7QQPtREYIiM9GmbNa42nTJc0n1hPQrnc0qTTa7Cf8oQdlKavlD573Hx4r8iOwzdHE8kQMq0wLUTBp/o7vQ==
+  dependencies:
+    bootstrap "^3.3.7"
+    ovh-ui-kit "^2.22.0"
+
 "@ovh-ux/translate-async-loader@^1.0.7":
   version "1.0.7"
   resolved "https://registry.yarnpkg.com/@ovh-ux/translate-async-loader/-/translate-async-loader-1.0.7.tgz#148189dda8dc5dfe11b024d86c9739f5195d2148"
@@ -2084,7 +2092,7 @@ boom@2.x.x:
   dependencies:
     hoek "2.x.x"
 
-bootstrap@^3.3.6:
+bootstrap@^3.3.6, bootstrap@^3.3.7:
   version "3.3.7"
   resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-3.3.7.tgz#5a389394549f23330875a3b150656574f8a9eb71"
   integrity sha1-WjiTlFSfIzMIdaOxUGVldPip63E=
