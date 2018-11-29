@@ -9009,10 +9009,10 @@ ovh-angular-responsive-tabs@^4.0.0:
   resolved "https://registry.yarnpkg.com/ovh-angular-responsive-tabs/-/ovh-angular-responsive-tabs-4.0.0.tgz#85b66d7032612c3ed1a14cb29f83d1331b50c1df"
   integrity sha1-hbZtcDJhLD7RoUyyn4PRMxtQwd8=
 
-ovh-angular-sidebar-menu@^7.0.0:
-  version "7.2.0"
-  resolved "https://registry.yarnpkg.com/ovh-angular-sidebar-menu/-/ovh-angular-sidebar-menu-7.2.0.tgz#fd35da0b09499bcb7341ad88ba94d30cef40b88e"
-  integrity sha1-/TXaCwlJm8tzQa2IupTTDO9AuI4=
+ovh-angular-sidebar-menu@^7.2.2:
+  version "7.2.2"
+  resolved "https://registry.yarnpkg.com/ovh-angular-sidebar-menu/-/ovh-angular-sidebar-menu-7.2.2.tgz#c9bca2c6c525bad5ad5640d1a0c97e1750bf39d4"
+  integrity sha512-1psM35uO29uv6Hri04OSLkehl+TcSl57SxPVOkVLDRocnTMxBPkJuZSW61VsKcVL4m5QgWp3ybJhyyEnZBBvhQ==
 
 ovh-angular-simple-country-list@^0.0.9:
   version "0.0.9"
