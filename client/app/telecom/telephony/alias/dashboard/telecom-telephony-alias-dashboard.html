@@ -12,6 +12,18 @@
                data-translate="telephony_alias_presentation_part_three">
             </p>
         </oui-collapsible>
+        <oui-message class="col-sm-8 mb-5"
+                     data-ng-if="$ctrl.isFeatureTypeObsolete()"
+                     data-type="warning">
+            <span data-translate="telephony_alias_config_obsolete_feature_type_part_one"></span>
+            <a class="oui-link"
+               data-ng-href="{{:: $ctrl.REDIRECT_URLS.telephonyV4 }}"
+               target="_blank"
+               rel="noopener">
+                <span data-translate="telecom_sidebar_section_v4"></span>
+            </a>
+            <span data-translate="telephony_alias_config_obsolete_feature_type_part_two"></span>
+        </oui-message>
     </div>
     <div class="row d-md-flex mb-5">
         <div class="col-sm-4">
@@ -20,10 +32,12 @@
                 <oui-tile-definition data-term="{{:: 'telephony_alias_information_number' | translate }}"
                                      data-description="{{:: $ctrl.alias.serviceName }}"></oui-tile-definition>
                 <oui-tile-button data-ng-if="!$ctrl.alias.isAPortabilityAlias()"
+                                 data-disabled="$ctrl.isFeatureTypeObsolete()"
                                  data-on-click="$ctrl.$state.go('telecom.telephony.alias.convertToLine')">
                     <span data-translate="telephony_alias_information_number_to_line"></span>
                 </oui-tile-button>
                 <oui-tile-button data-ng-if="!$ctrl.alias.isAPortabilityAlias()"
+                                 data-disabled="$ctrl.isFeatureTypeObsolete()"
                                  data-on-click="$ctrl.$state.go('telecom.telephony.alias.terminate')">
                     <span data-translate="telephony_alias_information_terminate_number"></span>
                 </oui-tile-button>
@@ -37,15 +51,16 @@
                 </oui-tile-definition>
                 <oui-tile-definition data-term="{{:: 'telephony_alias_information_coordinates_directory' | translate }}"
                                      data-description="{{:: ($ctrl.alias.directory.displayMarketingDirectory ? 'yes' : 'no') | translate | tucCapitalize }}"></oui-tile-definition>
-                <oui-tile-button data-on-click="$ctrl.$state.go('telecom.telephony.alias.contact')">
+                <oui-tile-button data-on-click="$ctrl.$state.go('telecom.telephony.alias.contact')"
+                                 data-disabled="$ctrl.isFeatureTypeObsolete()">
                     <span data-translate="telephony_alias_information_contact_edit"></span>
-            </oui-tile-button>
+                </oui-tile-button>
             </oui-tile>
         </div>
         <div class="col-sm-4">
             <oui-tile class="h-100"
                       data-heading="{{:: 'telephony_alias_tile_configuration' | translate }}">
-                <oui-tile-definition data-ng-if="$ctrl.alias.featureType !== 'empty' && !$ctrl.hasExpertMode()">
+                <oui-tile-definition data-ng-if="$ctrl.alias.featureType !== 'empty' && !$ctrl.hasExpertMode() && !$ctrl.isFeatureTypeObsolete()">
                     <oui-tile-description>
                         <img class="w-75"
                              data-ng-if="$ctrl.alias"
@@ -66,7 +81,8 @@
                                      data-term="{{:: 'telephony_alias_configuration_configuration_type_redirect_destination' | translate }}"
                                      data-description="{{:: $ctrl.redirectionInformations }}"></oui-tile-definition>
                 <div data-ng-if="$ctrl.alias.featureType !== 'empty'">
-                    <oui-tile-button data-on-click="$ctrl.$state.go('telecom.telephony.alias.configuration')">
+                    <oui-tile-button data-on-click="$ctrl.$state.go('telecom.telephony.alias.configuration')"
+                                     data-disabled="$ctrl.isFeatureTypeObsolete()">
                         <span data-translate="telephony_alias_configuration_configure"></span>
                     </oui-tile-button>
                     <oui-tile-button data-on-click="$ctrl.deleteConfiguration()">
@@ -97,7 +113,8 @@
                               data-translate-values="{ 'price': $ctrl.consumption.outgoing.outplan }"></span>
                     </oui-tile-description>
                 </oui-tile-definition>
-                <oui-tile-button data-on-click="$ctrl.$state.go('telecom.telephony.alias.consumption')">
+                <oui-tile-button data-on-click="$ctrl.$state.go('telecom.telephony.alias.consumption')"
+                                 data-disabled="$ctrl.isFeatureTypeObsolete()">
                     <span data-translate="telephony_alias_consumption_details"></span>
                 </oui-tile-button>
             </oui-tile>

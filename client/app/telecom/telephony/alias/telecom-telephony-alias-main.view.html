@@ -29,43 +29,55 @@
                                           data-ng-if="$ctrl.alias.featureType !== 'empty'">
                     <oui-header-tabs-item data-text="{{:: 'telephony_alias_tab_item_line_management' | translate }}"
                                           data-state="telecom.telephony.alias.configuration.lines"
+                                          data-disabled="$ctrl.isFeatureTypeObsolete()"
                                           data-ng-if="$ctrl.isContactCenterSolution()"></oui-header-tabs-item>
                     <oui-header-tabs-item data-text="{{:: 'telephony_alias_tab_item_sounds_waiting_management' | translate }}"
                                           data-state="telecom.telephony.alias.configuration.sounds"
+                                          data-disabled="$ctrl.isFeatureTypeObsolete()"
                                           data-ng-if="$ctrl.isContactCenterSolution()"></oui-header-tabs-item>
                     <oui-header-tabs-item data-text="{{:: 'telephony_alias_tab_item_time_condition_management' | translate }}"
                                           data-state="telecom.telephony.alias.configuration.timeCondition"
+                                          data-disabled="$ctrl.isFeatureTypeObsolete()"
                                           data-ng-if="$ctrl.isContactCenterSolution()"></oui-header-tabs-item>
                     <oui-header-tabs-item data-text="{{:: 'telephony_alias_tab_item_calls_filtering_management' | translate }}"
                                           data-state="telecom.telephony.alias.configuration.callsFiltering"
+                                          data-disabled="$ctrl.isFeatureTypeObsolete()"
                                           data-ng-if="$ctrl.isContactCenterSolution()"></oui-header-tabs-item>
                     <oui-header-tabs-item data-text="{{:: 'telephony_alias_tab_item_' + $ctrl.alias.featureType + '_management' | translate }}"
                                           data-state="telecom.telephony.alias.configuration"
+                                          data-disabled="$ctrl.isFeatureTypeObsolete()"
                                           data-ng-if="!$ctrl.isContactCenterSolution()"></oui-header-tabs-item>
                     <oui-header-tabs-divider></oui-header-tabs-divider>
                     <oui-header-tabs-item data-text="{{:: 'telephony_alias_tab_item_change_featureType' | translate }}"
-                                          data-state="telecom.telephony.alias.configuration.changeType"></oui-header-tabs-item>
+                                          data-state="telecom.telephony.alias.configuration.changeType"
+                                          data-disabled="$ctrl.isFeatureTypeObsolete()"></oui-header-tabs-item>
                 </oui-header-tabs-dropdown>
                 <oui-header-tabs-item data-text="{{:: 'telephony_alias_tab_number_configuration' | translate }}"
                                       data-state="telecom.telephony.alias.configuration.changeType"
+                                      data-disabled="$ctrl.isFeatureTypeObsolete()"
                                       data-ng-if="$ctrl.alias.featureType === 'empty'"></oui-header-tabs-item>
                 <oui-header-tabs-dropdown data-text="{{:: 'telephony_alias_tab_consumption' | translate }}"
                                           data-ng-if="$ctrl.serviceName && $ctrl.hasConsumption()">
                     <oui-header-tabs-item data-text="{{:: 'telephony_alias_consumption_incoming_calls' | translate }}"
-                                          data-state="telecom.telephony.alias.consumptionIncomingCalls"></oui-header-tabs-item>
+                                          data-state="telecom.telephony.alias.consumptionIncomingCalls"
+                                          data-ng-if="!$ctrl.isContactCenterSolution()"></oui-header-tabs-item>
                     <oui-header-tabs-item data-text="{{:: 'telephony_alias_consumption_outgoing_calls' | translate }}"
-                                          data-state="telecom.telephony.alias.consumptionOutgoingCalls"></oui-header-tabs-item>
+                                          data-state="telecom.telephony.alias.consumptionOutgoingCalls"
+                                          data-ng-if="!$ctrl.isContactCenterSolution()"></oui-header-tabs-item>
                 </oui-header-tabs-dropdown>
                 <oui-header-tabs-item data-text="{{:: 'telephony_alias_tab_statistics' | translate }}"
                                       data-state="telecom.telephony.alias.statistics"
+                                      data-disabled="$ctrl.isFeatureTypeObsolete()"
                                       data-ng-if="$ctrl.isContactCenterSolution()"></oui-header-tabs-item>
                 <oui-header-tabs-item data-text="{{:: 'telephony_alias_tab_records' | translate }}"
                                       data-state="telecom.telephony.alias.records"
+                                      data-disabled="$ctrl.isFeatureTypeObsolete()"
                                       data-ng-if="$ctrl.isContactCenterSolution()"></oui-header-tabs-item>
                 <oui-header-tabs-item data-text="{{:: 'telephony_alias_tab_bank_maker' | translate }}"
                                       data-state="telecom.telephony.alias.svaGenerator"
                                       data-ng-if="$ctrl.serviceName && $ctrl.isSpecialNumber"></oui-header-tabs-item>
                 <oui-header-tabs-dropdown data-text="{{:: 'telephony_alias_tab_special' | translate }}"
+                                          data-disabled="$ctrl.isFeatureTypeObsolete()"
                                           data-ng-if="$ctrl.serviceName && $ctrl.isSpecialNumber">
                     <oui-header-tabs-item data-text="{{:: 'telephony_alias_special_repayments' | translate }}"
                                           data-state="telecom.telephony.alias.repayments"></oui-header-tabs-item>
@@ -74,7 +86,7 @@
                 </oui-header-tabs-dropdown>
                 <oui-header-tabs-item data-text="{{:: 'telephony_alias_tab_number_directory' | translate }}"
                                       data-state="telecom.telephony.alias.contact"
-                                      data-disabled="!$ctrl.serviceName"></oui-header-tabs-item>
+                                      data-disabled="!$ctrl.serviceName || $ctrl.isFeatureTypeObsolete()"></oui-header-tabs-item>
             </oui-header-tabs>
         </nav>
     </div>

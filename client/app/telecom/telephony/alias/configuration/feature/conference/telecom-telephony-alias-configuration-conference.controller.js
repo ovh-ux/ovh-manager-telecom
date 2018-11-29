@@ -2,7 +2,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationConfe
   constructor(
     $q, $state, $stateParams, $timeout, $translate,
     TucToast, tucVoipServiceAlias,
-    TUC_TELEPHONY_ALIAS, TELEPHONY_SERVICE,
+    TELEPHONY_ALIAS_CONFERENCE, TELEPHONY_SERVICE,
   ) {
     this.$q = $q;
     this.$state = $state;
@@ -11,7 +11,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationConfe
     this.$translate = $translate;
     this.TucToast = TucToast;
     this.tucVoipServiceAlias = tucVoipServiceAlias;
-    this.TUC_TELEPHONY_ALIAS = TUC_TELEPHONY_ALIAS;
+    this.TELEPHONY_ALIAS_CONFERENCE = TELEPHONY_ALIAS_CONFERENCE;
     this.TELEPHONY_SERVICE = TELEPHONY_SERVICE;
   }
 
@@ -21,13 +21,13 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationConfe
     this.generatingUrls = false;
     this.hasWebAccessUrls = false;
     this.newFile = null;
-    this.availableLanguages = this.TUC_TELEPHONY_ALIAS.conference.languages
+    this.availableLanguages = this.TELEPHONY_ALIAS_CONFERENCE.languages
       .sort(({ value }) => (value !== this.currentLanguage ? 1 : -1))
       .map(({ label, value }) => ({
         label: this.$translate.instant(`language_${label}`),
         value,
       }));
-    this.availableReportStatus = this.TUC_TELEPHONY_ALIAS.conference.reportStatus.map(status => ({
+    this.availableReportStatus = this.TELEPHONY_ALIAS_CONFERENCE.reportStatus.map(status => ({
       label: this.$translate.instant(`telephony_alias_config_conference_report_status_${status}`),
       value: status,
     }));
@@ -81,11 +81,11 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationConfe
     return this.$q.all({
       followUp: this.tucVoipServiceAlias.createConferenceNumberWebAccess(
         this.serviceInfos,
-        this.TUC_TELEPHONY_ALIAS.conference.webAccessType.followUp,
+        this.TELEPHONY_ALIAS_CONFERENCE.webAccessType.followUp,
       ),
       control: this.tucVoipServiceAlias.createConferenceNumberWebAccess(
         this.serviceInfos,
-        this.TUC_TELEPHONY_ALIAS.conference.webAccessType.control,
+        this.TELEPHONY_ALIAS_CONFERENCE.webAccessType.control,
       ),
     }).then(() => this.tucVoipServiceAlias.fetchConferenceNumberWebAccess(this.serviceInfos))
       .then((webAccess) => {
@@ -138,9 +138,9 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationConfe
   formatWebAccess(webAccess) {
     return {
       followUp: webAccess
-        .find(({ type }) => type === this.TUC_TELEPHONY_ALIAS.conference.webAccessType.followUp),
+        .find(({ type }) => type === this.TELEPHONY_ALIAS_CONFERENCE.webAccessType.followUp),
       control: webAccess
-        .find(({ type }) => type === this.TUC_TELEPHONY_ALIAS.conference.webAccessType.control),
+        .find(({ type }) => type === this.TELEPHONY_ALIAS_CONFERENCE.webAccessType.control),
     };
   }
 

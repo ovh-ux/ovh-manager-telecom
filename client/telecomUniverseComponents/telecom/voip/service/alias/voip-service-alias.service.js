@@ -8,20 +8,24 @@ import _ from 'lodash';
  *  @requires OvhApiMe        from ovh-api-services
  *  @requires OvhApiTelephony from ovh-api-services
  *  @requires tucVoipServiceTask service
- *  @requires TUC_TELEPHONY_ALIAS constants
+ *  @requires TUC_TELEPHONY_ALIAS_SPECIAL_NUMBER constants
  *
  *  @description
  *  Service that manage specific API calls for aliases.
  */
 export default class {
-  constructor($q, OvhApiMe, OvhApiTelephony, tucVoipServiceTask, TUC_TELEPHONY_ALIAS) {
+  constructor(
+    $q,
+    OvhApiMe, OvhApiTelephony, tucVoipServiceTask,
+    TUC_TELEPHONY_ALIAS_SPECIAL_NUMBER,
+  ) {
     'ngInject';
 
     this.$q = $q;
     this.OvhApiMe = OvhApiMe;
     this.OvhApiTelephony = OvhApiTelephony;
     this.tucVoipServiceTask = tucVoipServiceTask;
-    this.TUC_TELEPHONY_ALIAS = TUC_TELEPHONY_ALIAS;
+    this.TUC_TELEPHONY_ALIAS_SPECIAL_NUMBER = TUC_TELEPHONY_ALIAS_SPECIAL_NUMBER;
   }
 
   /**
@@ -199,7 +203,7 @@ export default class {
     return this.OvhApiTelephony.Rsva().v6().getScheduledRateCode({
       billingAccount,
       serviceName,
-    }).$promise.catch(error => (_.get(error, 'data.message', error.message) === this.TUC_TELEPHONY_ALIAS.specialNumber.noScheduledRateCode ? null : this.$q.reject(error)));
+    }).$promise.catch(error => (_.get(error, 'data.message', error.message) === this.TUC_TELEPHONY_ALIAS_SPECIAL_NUMBER.noScheduledRateCode ? null : this.$q.reject(error)));
   }
 
   /**

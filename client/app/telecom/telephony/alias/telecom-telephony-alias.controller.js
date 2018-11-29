@@ -3,6 +3,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasCtrl', class Telec
     $q, $state, $stateParams, $translate,
     SidebarMenu, TelephonyMediator, TucToast,
     tucVoipService, tucVoipServiceAlias,
+    TELEPHONY_ALIAS_OBSOLETE_FEATURE_TYPES,
   ) {
     this.$q = $q;
     this.$state = $state;
@@ -12,6 +13,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasCtrl', class Telec
     this.TucToast = TucToast;
     this.tucVoipService = tucVoipService;
     this.tucVoipServiceAlias = tucVoipServiceAlias;
+    this.TELEPHONY_ALIAS_OBSOLETE_FEATURE_TYPES = TELEPHONY_ALIAS_OBSOLETE_FEATURE_TYPES;
 
     this.billingAccount = $stateParams.billingAccount;
     this.serviceName = $stateParams.serviceName !== 'default' ? $stateParams.serviceName : null;
@@ -80,5 +82,9 @@ angular.module('managerApp').controller('TelecomTelephonyAliasCtrl', class Telec
 
   isContactCenterSolution() {
     return this.alias.isContactCenterSolution();
+  }
+
+  isFeatureTypeObsolete() {
+    return this.TELEPHONY_ALIAS_OBSOLETE_FEATURE_TYPES.includes(this.alias.featureType);
   }
 });

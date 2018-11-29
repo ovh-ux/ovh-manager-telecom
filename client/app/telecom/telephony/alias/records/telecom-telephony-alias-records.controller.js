@@ -2,7 +2,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasRecordsCtrl', clas
   constructor(
     $q, $state, $stateParams, $timeout, $translate, $uibModal,
     TucToast, tucVoipServiceAlias,
-    TUC_TELEPHONY_ALIAS,
+    TELEPHONY_ALIAS_CONTACT_CENTER_SOLUTION,
   ) {
     this.$q = $q;
     this.$state = $state;
@@ -12,7 +12,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasRecordsCtrl', clas
     this.$uibModal = $uibModal;
     this.TucToast = TucToast;
     this.tucVoipServiceAlias = tucVoipServiceAlias;
-    this.TUC_TELEPHONY_ALIAS = TUC_TELEPHONY_ALIAS;
+    this.TELEPHONY_ALIAS_CONTACT_CENTER_SOLUTION = TELEPHONY_ALIAS_CONTACT_CENTER_SOLUTION;
   }
 
   $onInit() {
@@ -22,15 +22,15 @@ angular.module('managerApp').controller('TelecomTelephonyAliasRecordsCtrl', clas
       serviceName: this.$stateParams.serviceName,
     };
 
-    this.recordsGuideUrl = this.TUC_TELEPHONY_ALIAS.contactCenterSolution.recordsGuideUrl;
+    this.recordsGuideUrl = this.TELEPHONY_ALIAS_CONTACT_CENTER_SOLUTION.recordsGuideUrl;
 
-    this.recordDisablingLanguageOptions = this.TUC_TELEPHONY_ALIAS.contactCenterSolution.records
+    this.recordDisablingLanguageOptions = this.TELEPHONY_ALIAS_CONTACT_CENTER_SOLUTION.records
       .languages.map(({ id, code }) => ({
         id,
         label: this.$translate.instant(`language_${code}`),
       }));
 
-    this.recordDisablingDigitOptions = this.TUC_TELEPHONY_ALIAS.contactCenterSolution.records
+    this.recordDisablingDigitOptions = this.TELEPHONY_ALIAS_CONTACT_CENTER_SOLUTION.records
       .digits;
 
     return this.$q.all({

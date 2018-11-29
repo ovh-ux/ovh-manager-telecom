@@ -14,12 +14,12 @@ import _ from 'lodash';
  *                  (see {@link managerApp.object:TucVoipService `TucVoipService` constructor}
  *                          for availables options properties).
  */
-export default /* @ngInject */ (TucVoipService, TUC_TELEPHONY_ALIAS) => {
+export default /* @ngInject */ (TucVoipService, TUC_TELEPHONY_ALIAS_FEATURE_TYPES) => {
   class TucVoipServiceAlias extends TucVoipService {
     constructor(options = {}) {
       super(options);
 
-      this.TUC_TELEPHONY_ALIAS = TUC_TELEPHONY_ALIAS;
+      this.TUC_TELEPHONY_ALIAS_FEATURE_TYPES = TUC_TELEPHONY_ALIAS_FEATURE_TYPES;
     }
 
     /**
@@ -49,7 +49,8 @@ export default /* @ngInject */ (TucVoipService, TUC_TELEPHONY_ALIAS) => {
      *  @return {Boolean}
      */
     isContactCenterSolution() {
-      return this.TUC_TELEPHONY_ALIAS.featureTypes.contactCenterSolution.includes(this.featureType);
+      return this.TUC_TELEPHONY_ALIAS_FEATURE_TYPES.contactCenterSolution
+        .includes(this.featureType);
     }
   }
 

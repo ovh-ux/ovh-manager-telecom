@@ -1,8 +1,9 @@
 angular.module('managerApp').controller('TelecomTelephonyAliasConfirmDeleteConfigurationCtrl',
   class TelecomTelephonyAliasConfirmDeleteConfigurationCtrl {
-    constructor($uibModalInstance, number, tucVoipServiceAlias) {
+    constructor($uibModalInstance, isObsolete, number, tucVoipServiceAlias) {
       this.$uibModalInstance = $uibModalInstance;
 
+      this.isObsolete = isObsolete;
       this.number = number;
       this.tucVoipServiceAlias = tucVoipServiceAlias;
     }

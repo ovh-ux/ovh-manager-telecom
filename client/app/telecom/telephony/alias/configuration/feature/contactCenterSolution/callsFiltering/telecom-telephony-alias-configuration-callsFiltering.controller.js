@@ -2,7 +2,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationCalls
   constructor(
     $filter, $q, $state, $stateParams, $translate, $uibModal,
     tucTelephonyBulk, TucToast, tucVoipServiceAlias,
-    TUC_TELEPHONY_ALIAS,
+    TELEPHONY_ALIAS_CONTACT_CENTER_SOLUTION, TUC_TELEPHONY_ALIAS_FEATURE_TYPES,
   ) {
     this.$filter = $filter;
     this.$q = $q;
@@ -13,7 +13,8 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationCalls
     this.tucTelephonyBulk = tucTelephonyBulk;
     this.TucToast = TucToast;
     this.tucVoipServiceAlias = tucVoipServiceAlias;
-    this.TUC_TELEPHONY_ALIAS = TUC_TELEPHONY_ALIAS;
+    this.TELEPHONY_ALIAS_CONTACT_CENTER_SOLUTION = TELEPHONY_ALIAS_CONTACT_CENTER_SOLUTION;
+    this.TUC_TELEPHONY_ALIAS_FEATURE_TYPES = TUC_TELEPHONY_ALIAS_FEATURE_TYPES;
   }
 
   $onInit() {
@@ -22,14 +23,14 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationCalls
       serviceName: this.$stateParams.serviceName,
     };
 
-    this.listTypes = this.TUC_TELEPHONY_ALIAS.contactCenterSolution.filtering.listTypes
+    this.listTypes = this.TELEPHONY_ALIAS_CONTACT_CENTER_SOLUTION.filtering.listTypes
       .filter(type => _.startsWith(type, 'incoming'))
       .map(type => ({
         id: type,
         label: this.$translate.instant(`telephony_alias_configuration_calls_filtering_type_${type}`),
       }));
 
-    this.helpers = this.TUC_TELEPHONY_ALIAS.contactCenterSolution.filtering.helperPrefixes
+    this.helpers = this.TELEPHONY_ALIAS_CONTACT_CENTER_SOLUTION.filtering.helperPrefixes
       .map(({ label }) => ({
         id: label,
         label: this.$translate.instant(`telephony_alias_configuration_calls_filtering_helper_${label}`),
@@ -124,7 +125,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationCalls
     }
 
     if (this.helper.id) {
-      const { prefixes } = this.TUC_TELEPHONY_ALIAS.contactCenterSolution.filtering.helperPrefixes
+      const { prefixes } = this.TELEPHONY_ALIAS_CONTACT_CENTER_SOLUTION.filtering.helperPrefixes
         .find(({ label }) => label === this.helper.id);
       conditions = conditions.concat(prefixes);
     }
@@ -170,7 +171,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationCalls
 
   getScreenListNature(callNumber) {
     const formatedNumber = this.$filter('tucPhoneNumber')(callNumber).replace(' ', '');
-    const detectedPrefix = this.TUC_TELEPHONY_ALIAS.contactCenterSolution.filtering.helperPrefixes
+    const detectedPrefix = this.TELEPHONY_ALIAS_CONTACT_CENTER_SOLUTION.filtering.helperPrefixes
       .find(({ prefixes }) => prefixes.find(prefix => _.startsWith(formatedNumber, prefix)));
 
     return detectedPrefix ? detectedPrefix.label : 'line';
@@ -230,8 +231,8 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationCalls
 
   filterServices() {
     return services => services
-      .filter(({ featureType }) => this.TUC_TELEPHONY_ALIAS
-        .featureTypes.contactCenterSolution.includes(featureType));
+      .filter(({ featureType }) => this.TUC_TELEPHONY_ALIAS_FEATURE_TYPES.contactCenterSolution
+        .includes(featureType));
   }
 
   getBulkParams() {

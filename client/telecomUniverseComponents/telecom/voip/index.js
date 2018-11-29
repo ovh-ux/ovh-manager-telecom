@@ -2,7 +2,7 @@ import angular from 'angular';
 
 import 'ovh-api-services';
 
-import { TUC_TELEPHONY_ALIAS } from './telecom-voip.constant';
+import { TELEPHONY_ALIAS_FEATURE_TYPES, TELEPHONY_ALIAS_SPECIAL_NUMBER } from './telecom-voip.constant';
 
 import TucVoipBillingAccount from './billingAccount/voip-billing-account.factory';
 import TucVoipLinePhoneFunction from './feature/line/line/phone/function/voip-feature-line-line-phone-function.factory';
@@ -30,7 +30,8 @@ angular
   .module(moduleName, [
     'ovh-api-services',
   ])
-  .constant('TUC_TELEPHONY_ALIAS', TUC_TELEPHONY_ALIAS)
+  .constant('TUC_TELEPHONY_ALIAS_FEATURE_TYPES', TELEPHONY_ALIAS_FEATURE_TYPES)
+  .constant('TUC_TELEPHONY_ALIAS_SPECIAL_NUMBER', TELEPHONY_ALIAS_SPECIAL_NUMBER)
   .factory('TucVoipBillingAccount', TucVoipBillingAccount)
   .factory('TucVoipLinePhoneFunction', TucVoipLinePhoneFunction)
   .factory('TucVoipLinePhone', TucVoipLinePhone)

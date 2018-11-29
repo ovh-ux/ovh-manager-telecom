@@ -2,7 +2,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationLines
   constructor(
     $q, $state, $stateParams, $translate,
     TucToast, tucVoipServiceAlias,
-    TUC_TELEPHONY_ALIAS,
+    TELEPHONY_ALIAS_CONTACT_CENTER_SOLUTION,
   ) {
     this.$q = $q;
     this.$state = $state;
@@ -10,7 +10,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationLines
     this.$translate = $translate;
     this.TucToast = TucToast;
     this.tucVoipServiceAlias = tucVoipServiceAlias;
-    this.TUC_TELEPHONY_ALIAS = TUC_TELEPHONY_ALIAS;
+    this.TELEPHONY_ALIAS_CONTACT_CENTER_SOLUTION = TELEPHONY_ALIAS_CONTACT_CENTER_SOLUTION;
   }
 
   $onInit() {

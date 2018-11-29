@@ -3,7 +3,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationTimeC
     $state, $stateParams, $translate, $uibModal,
     OvhApiTelephony, TelephonyMediator, TucToast, tucTelephonyBulk,
     uiCalendarConfig, VoipTimeConditionCondition, voipTimeConditionConfiguration,
-    TUC_TELEPHONY_ALIAS,
+    TUC_TELEPHONY_ALIAS_FEATURE_TYPES,
   ) {
     this.$state = $state;
     this.$stateParams = $stateParams;
@@ -16,7 +16,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationTimeC
     this.uiCalendarConfig = uiCalendarConfig;
     this.VoipTimeConditionCondition = VoipTimeConditionCondition;
     this.voipTimeConditionConfiguration = voipTimeConditionConfiguration;
-    this.TUC_TELEPHONY_ALIAS = TUC_TELEPHONY_ALIAS;
+    this.TUC_TELEPHONY_ALIAS_FEATURE_TYPES = TUC_TELEPHONY_ALIAS_FEATURE_TYPES;
   }
 
   $onInit() {
@@ -181,7 +181,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationTimeC
 
   filterServices() {
     return services => services
-      .filter(({ featureType }) => this.TUC_TELEPHONY_ALIAS.featureTypes.contactCenterSolution
+      .filter(({ featureType }) => this.TUC_TELEPHONY_ALIAS_FEATURE_TYPES.contactCenterSolution
         .includes(featureType));
   }
 
