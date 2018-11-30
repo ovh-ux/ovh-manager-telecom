@@ -1,9 +1,11 @@
 angular.module('managerApp').controller('XdslDiagnosticDetailsCtrl', class XdslDiagnosticDetailsCtrl {
-  constructor($state, $stateParams, $translate, OvhApiXdslDiagnostic) {
+  constructor($scope, $state, $stateParams, $translate, OvhApiXdslDiagnostic, XdslTaskPoller) {
+    this.$scope = $scope;
     this.$state = $state;
     this.$stateParams = $stateParams;
     this.$translate = $translate;
     this.XdslDiagnostic = OvhApiXdslDiagnostic.v6();
+    this.XdslTaskPoller = XdslTaskPoller;
   }
 
   $onInit() {
@@ -14,6 +16,19 @@ angular.module('managerApp').controller('XdslDiagnosticDetailsCtrl', class XdslD
     this.getDiagnostic().finally(() => {
       this.loading = false;
     });
+
+    this.pollerTicket = this.XdslTaskPoller.register('accessDiagnosticRun', () => {
+      console.log('YEAH!');
+    });
+
+    // HACK
+    this.$scope.$on('$destroy', () => {
+      this.$onDestroy();
+    });
+  }
+
+  $onDestroy() {
+    this.XdslTaskPoller.unregister(this.pollerTicket);
   }
 
   check() {

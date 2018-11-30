@@ -2,7 +2,7 @@ angular.module('managerApp').controller('XdslAccessCtrl', class XdslAccessCtrl {
   constructor(
     $filter, $q, $scope, $stateParams, $templateCache, $translate, $uibModal,
     OvhApiPackXdsl, OvhApiXdsl, OvhApiXdslIps, OvhApiXdslLines, OvhApiXdslModem,
-    OvhApiXdslNotifications, OvhApiXdslTasksCurrent, TucToast, TucToastError,
+    OvhApiXdslNotifications, TucToast, TucToastError, XdslTaskPoller,
     PACK, PACK_IP, REDIRECT_URLS,
   ) {
     this.$filter = $filter;
@@ -18,9 +18,9 @@ angular.module('managerApp').controller('XdslAccessCtrl', class XdslAccessCtrl {
     this.OvhApiXdslLines = OvhApiXdslLines;
     this.OvhApiXdslModem = OvhApiXdslModem;
     this.OvhApiXdslNotifications = OvhApiXdslNotifications;
-    this.OvhApiXdslTasksCurrent = OvhApiXdslTasksCurrent;
     this.TucToast = TucToast;
     this.TucToastError = TucToastError;
+    this.XdslTaskPoller = XdslTaskPoller;
     this.PACK = PACK;
     this.PACK_IP = PACK_IP;
     this.REDIRECT_URLS = REDIRECT_URLS;
@@ -62,6 +62,22 @@ angular.module('managerApp').controller('XdslAccessCtrl', class XdslAccessCtrl {
         this.$scope.access.xdsl.description = data.description;
       }
     });
+
+    // HACK
+    this.$scope.$on('$destroy', () => {
+      this.$onDestroy();
+    });
+
+    this.additionalIpPollerTicket = this.XdslTaskPoller.register(
+      'pendingOrderAdditionalIpOption', () => {
+        this.getIps();
+        this.ordering = false;
+      },
+    );
+  }
+
+  $onDestroy() {
+    this.XdslTaskPoller.unregister(this.additionalIpPollerTicket);
   }
 
   initTemplateCaches() {
@@ -95,37 +111,6 @@ angular.module('managerApp').controller('XdslAccessCtrl', class XdslAccessCtrl {
       default:
         this.statusLabel = status;
     }
-  }
-
-  error(err) {
-    if (!_.isEmpty(err)) {
-      this.TucToastError(err);
-    }
-    this.$scope.loaders.tasks = false;
-  }
-
-  success(result) {
-    if (result.success) {
-      if (this.$scope.access.tasks.current.pendingOrderAdditionalIpOption
-        && !result.data.pendingOrderAdditionalIpOption) {
-        this.getIps();
-        this.ordering = false;
-      }
-      this.$scope.access.tasks.current = result.data;
-    } else {
-      this.error(result);
-    }
-    this.$scope.loaders.tasks = false;
-  }
-
-  pollTasks() {
-    this.OvhApiXdslTasksCurrent.Aapi().poll(this.$scope, {
-      xdslId: this.$stateParams.serviceName,
-    }).then(
-      result => this.success(result),
-      error => this.error(error),
-      pending => this.success(pending),
-    );
   }
 
   getOldV6TransfertUrl() {
@@ -185,6 +170,17 @@ angular.module('managerApp').controller('XdslAccessCtrl', class XdslAccessCtrl {
     });
   }
 
+  onTaskPollError(err) {
+    if (!_.isEmpty(err)) {
+      this.TucToastError(err);
+    }
+    this.$scope.loaders.tasks = false;
+  }
+
+  onTaskPollSuccess(result) {
+    this.$scope.access.tasks.current = result.data;
+    this.$scope.loaders.tasks = false;
+  }
 
   getLinesDetails() {
     this.$scope.loaders.details = true;
@@ -192,7 +188,12 @@ angular.module('managerApp').controller('XdslAccessCtrl', class XdslAccessCtrl {
 
     this.transfert = {};
 
-    this.pollTasks();
+    this.XdslTaskPoller.start(
+      this.$stateParams.serviceName,
+      this.$scope,
+      result => this.onTaskPollSuccess(result),
+      error => this.onTaskPollError(error),
+    );
 
     this.$q.allSettled([
       // Get access Details
