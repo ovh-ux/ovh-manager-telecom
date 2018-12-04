@@ -492,8 +492,13 @@
                     </span>
                 </p>
                 <p data-ng-if="PhoneOrderCtrl.phone">
-                    <strong data-translate="telephony_line_phone_order_return_address_title"></strong><br>
-                    <span data-translate="telephony_line_phone_order_return_address_content"></span>
+                    <strong class="d-block" data-translate="telephony_line_phone_order_return_address_title"></strong>
+                    <address>
+                        <span class="d-block" data-translate="telephony_line_phone_order_return_address_content_name"></span>
+                        <span class="d-block" data-translate="telephony_line_phone_order_return_address_content_service"></span>
+                        <span class="d-block" data-translate="telephony_line_phone_order_return_address_content_address"></span>
+                        <span class="d-block" data-translate="telephony_line_phone_order_return_address_content_city"></span>
+                    </address>
                 </p>
             </section>
         </div>
