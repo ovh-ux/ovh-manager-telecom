@@ -959,10 +959,10 @@
     request "^2.88.0"
     webpack-dev-server "^3.1.9"
 
-"@ovh-ux/telecom-universe-components@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@ovh-ux/telecom-universe-components/-/telecom-universe-components-1.1.0.tgz#4464f75de9577e5083f7b15b67d9cfd018507a0d"
-  integrity sha512-yGA5S9JlKFTH7U5tvnQv1JnzmawQL30q1kE4choXtN+89lqOOBVUi6RkDtpFk7j7/6t2eYNiDRkgZAZCNML4IA==
+"@ovh-ux/telecom-universe-components@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@ovh-ux/telecom-universe-components/-/telecom-universe-components-1.2.0.tgz#2c56f0bda08a6225c640cab475c02eb2035974bd"
+  integrity sha512-UftwGmsvcfhzEYQHXJE2KwDQM7YhEArYeGgw50GSWlSmyb5XjV8QMN5CkDWFdmr+0BFy/7ysJOonj6u3zjDQ4w==
   dependencies:
     bootstrap "^3.3.7"
     ovh-ui-kit "^2.22.0"
