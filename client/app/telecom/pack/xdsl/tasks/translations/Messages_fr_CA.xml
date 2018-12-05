@@ -10,5 +10,5 @@
    <translation id="xdsl_tasks_status_error" qtlid="26407">Erreur</translation>
    <translation id="xdsl_tasks_status_problem" qtlid="270800">Problème</translation>
    <translation id="xdsl_no_task" qtlid="217093">Aucune tâche</translation>
-   <translation id="xdsl_tasks_update_date">Date de mise à jour</translation>
+   <translation id="xdsl_tasks_update_date" qtlid="228748">Date de mise à jour</translation>
 </translations>

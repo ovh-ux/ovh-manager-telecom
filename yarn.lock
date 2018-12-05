@@ -959,6 +959,14 @@
     request "^2.88.0"
     webpack-dev-server "^3.1.9"
 
+"@ovh-ux/telecom-universe-components@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@ovh-ux/telecom-universe-components/-/telecom-universe-components-1.2.0.tgz#2c56f0bda08a6225c640cab475c02eb2035974bd"
+  integrity sha512-UftwGmsvcfhzEYQHXJE2KwDQM7YhEArYeGgw50GSWlSmyb5XjV8QMN5CkDWFdmr+0BFy/7ysJOonj6u3zjDQ4w==
+  dependencies:
+    bootstrap "^3.3.7"
+    ovh-ui-kit "^2.22.0"
+
 "@ovh-ux/translate-async-loader@^1.0.7":
   version "1.0.7"
   resolved "https://registry.yarnpkg.com/@ovh-ux/translate-async-loader/-/translate-async-loader-1.0.7.tgz#148189dda8dc5dfe11b024d86c9739f5195d2148"
@@ -2084,7 +2092,7 @@ boom@2.x.x:
   dependencies:
     hoek "2.x.x"
 
-bootstrap@^3.3.6:
+bootstrap@^3.3.6, bootstrap@^3.3.7:
   version "3.3.7"
   resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-3.3.7.tgz#5a389394549f23330875a3b150656574f8a9eb71"
   integrity sha1-WjiTlFSfIzMIdaOxUGVldPip63E=
@@ -9001,10 +9009,10 @@ ovh-angular-responsive-tabs@^4.0.0:
   resolved "https://registry.yarnpkg.com/ovh-angular-responsive-tabs/-/ovh-angular-responsive-tabs-4.0.0.tgz#85b66d7032612c3ed1a14cb29f83d1331b50c1df"
   integrity sha1-hbZtcDJhLD7RoUyyn4PRMxtQwd8=
 
-ovh-angular-sidebar-menu@^7.0.0:
-  version "7.2.0"
-  resolved "https://registry.yarnpkg.com/ovh-angular-sidebar-menu/-/ovh-angular-sidebar-menu-7.2.0.tgz#fd35da0b09499bcb7341ad88ba94d30cef40b88e"
-  integrity sha1-/TXaCwlJm8tzQa2IupTTDO9AuI4=
+ovh-angular-sidebar-menu@^7.2.2:
+  version "7.2.2"
+  resolved "https://registry.yarnpkg.com/ovh-angular-sidebar-menu/-/ovh-angular-sidebar-menu-7.2.2.tgz#c9bca2c6c525bad5ad5640d1a0c97e1750bf39d4"
+  integrity sha512-1psM35uO29uv6Hri04OSLkehl+TcSl57SxPVOkVLDRocnTMxBPkJuZSW61VsKcVL4m5QgWp3ybJhyyEnZBBvhQ==
 
 ovh-angular-simple-country-list@^0.0.9:
   version "0.0.9"
@@ -9054,9 +9062,9 @@ ovh-angular-user-pref@^0.3.1:
   integrity sha1-B/V5JRNlHzJirkh5wXRCNkmwgwc=
 
 ovh-api-services@^3.13.0:
-  version "3.25.0"
-  resolved "https://registry.yarnpkg.com/ovh-api-services/-/ovh-api-services-3.25.0.tgz#0453d66666bf554da5e75d35ddc3f0c42eeac436"
-  integrity sha512-p+3T/fcmbUSQnkRhI0/yc7FBw/2pLfAnCXq+mMlt5tj3Z97wERyRE//PiopZWj3nCrILsxqRMcAPT8e3j17SWg==
+  version "3.26.0"
+  resolved "https://registry.yarnpkg.com/ovh-api-services/-/ovh-api-services-3.26.0.tgz#24494d8b11d109d2b1c290de67e35050e0ae16e6"
+  integrity sha512-3MJruIqQP/BkbT3r6POpca0EL8IsIeWTtsNFtdCwT5DS6+xHFv9tmCgeC1Hkmb8B4FUDVmEe9meOnJe8pVJGtg==
   dependencies:
     lodash "^3.10.1"
 

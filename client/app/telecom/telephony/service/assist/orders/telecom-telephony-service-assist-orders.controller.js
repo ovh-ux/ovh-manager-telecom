@@ -31,6 +31,8 @@ angular.module('managerApp').controller('TelecomTelephonyServiceAssistOrdersCtrl
       return fetchOrders().then((orders) => {
         self.ordersRaw = orders;
       });
+    }).catch(() => {
+      self.ordersRaw = [];
     });
   };
 

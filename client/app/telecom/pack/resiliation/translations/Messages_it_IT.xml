@@ -37,7 +37,7 @@
    <translation id="pack_resiliation_disabled_field_help" qtlid="313507">I servizi indicati qui sotto non possono essere conservati.</translation>
    <translation id="pack_resiliation_services_cannot_keep" qtlid="313520">Se disattivi il pack non potrai conservare questo servizio.</translation>
    <translation id="pack_resiliation_subservices_load_error" qtlid="313533">Errore nel caricamento delle informazioni di disattivazione dei servizi associati, impossibile proseguire.</translation>
-   <translation id="pack_resiliation_hubic_disclamer">Vos comptes hubiC seront automatiquement basculés en offre gratuite 25 Go. Si vos données dépassent la capacité de stockage d'une offre gratuite, ces dernières restent accessibles.</translation>
+   <translation id="pack_resiliation_hubic_disclamer" qtlid="509417">Vos comptes hubiC seront automatiquement basculés en offre gratuite 25 Go. Si vos données dépassent la capacité de stockage d'une offre gratuite, ces dernières restent accessibles.</translation>
    <translation id="pack_resiliation_fee" qtlid="385689">Costi di disattivazione:</translation>
    <translation id="pack_resiliation_keeping_fee" qtlid="385702">Costi di mantenimento del numero alias:</translation>
    <translation id="pack_resiliation_monthly_pass" qtlid="268289">Abbonamento mensile:</translation>
