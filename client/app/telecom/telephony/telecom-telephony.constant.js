@@ -166,6 +166,9 @@
     })
     .constant('TELEPHONY_ALIAS_CONTACT_CENTER_SOLUTION', {
       tariffsGuideUrl: 'https://www.ovhtelecom.fr/telephonie/decouvrez/tarifs_telephonie.xml',
+      lines: {
+        strategies: ['sequentiallyByAgentOrder', 'ringAll', 'random', 'longestHangupAgent', 'longestIdleAgent', 'roundRobin', 'cumulationByAgentOrder'],
+      },
       filtering: {
         listTypes: ['incomingBlackList', 'incomingWhiteList', 'outgoingBlackList', 'outgoingWhiteList'],
         helperPrefixes: [

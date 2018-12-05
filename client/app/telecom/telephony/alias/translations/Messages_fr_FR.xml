@@ -28,6 +28,7 @@
    <translation id="telephony_alias_tab_item_conference_management" qtlid="333074">Conférence</translation>
    <translation id="telephony_alias_tab_item_cloudIvr_management" qtlid="333100">Serveur Vocal Interactif</translation>
    <translation id="telephony_alias_tab_item_svi_management" qtlid="333126">Serveur Vocal Interactif en VXML</translation>
+   <translation id="telephony_alias_tab_item_ddi_management">Redirection avec présentation</translation>
    <translation id="telephony_alias_tab_item_contactCenterSolutionExpert_management">Contact Center Solution expert</translation>
    <translation id="telephony_alias_tab_item_change_featureType">Changer de configuration</translation>
 

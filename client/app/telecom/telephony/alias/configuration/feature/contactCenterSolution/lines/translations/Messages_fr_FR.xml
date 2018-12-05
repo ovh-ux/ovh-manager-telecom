@@ -32,7 +32,7 @@
    <translation id="telephony_alias_config_contactCenterSolution_lines_strategy">Stratégie de sonnerie</translation>
    <translation id="telephony_alias_config_contactCenterSolution_lines_strategy_ringAll" qtlid="294906">Tous en même temps</translation>
    <translation id="telephony_alias_config_contactCenterSolution_lines_strategy_ringAll_info">Tous les téléphones sonnent en même temps. Le premier qui décroche prend l’appel sur son poste.</translation>
-   <translation id="telephony_alias_config_contactCenterSolution_lines_strategy_cumulationByAgentOrder" qtlid="294854">Selon l’ordre défini des membres, cumulé</translation>
+   <translation id="telephony_alias_config_contactCenterSolution_lines_strategy_cumulationByAgentOrder">Selon l’ordre défini dans la liste, cumulé</translation>
    <translation id="telephony_alias_config_contactCenterSolution_lines_strategy_cumulationByAgentOrder_info">Le premier téléphone de la file d’attente sonne. Le deuxième sonne à son tour après quelques secondes, en même temps que le premier. Le troisième commence à sonner quelques secondes après, etc.</translation>
    <translation id="telephony_alias_config_contactCenterSolution_lines_strategy_longestHangupAgent" qtlid="294867">Le plus ancien a avoir raccroché</translation>
    <translation id="telephony_alias_config_contactCenterSolution_lines_strategy_longestHangupAgent_info" qtlid="392788">Les téléphones sonnent les uns après les autres en suivant toujours le même ordre.</translation>

@@ -179,6 +179,11 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationTimeC
     this.uiCalendarConfig.calendars.conditionsCalendar.fullCalendar('refetchEvents');
   }
 
+  manageScheduler() {
+    this.onTimeConditionFormReset();
+    this.$state.go('telecom.telephony.alias.configuration.timeCondition.scheduler');
+  }
+
   filterServices() {
     return services => services
       .filter(({ featureType }) => this.TUC_TELEPHONY_ALIAS_FEATURE_TYPES.contactCenterSolution

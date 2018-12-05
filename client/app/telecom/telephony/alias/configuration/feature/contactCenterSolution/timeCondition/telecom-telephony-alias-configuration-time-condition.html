@@ -32,7 +32,7 @@
         <h3 class="oui-heading_underline"
             data-translate="telephony_alias_config_contactCenterSolution_timeCondition_slot_configuration"></h3>
         <div class="row mb-5">
-            <voip-time-condition-slot class="col-md-4"
+            <voip-time-condition-slot class="col-lg-4 col-md-6"
                                       data-ng-repeat="slot in $ctrl.number.feature.timeCondition.slots track by $index"
                                       data-time-condition-slot="slot"
                                       data-slot-enable-edition="true"
@@ -43,17 +43,6 @@
         <h3 class="oui-heading_underline"
             data-translate="telephony_alias_config_contactCenterSolution_timeCondition_time_configuration"></h3>
         <p data-translate="telephony_alias_config_contactCenterSolution_timeCondition_time_configuration_subtitle"></p>
-
-        <tuc-telephony-bulk-action data-service-type="alias"
-                                   data-billing-account="{{:: $ctrl.number.billingAccount }}"
-                                   data-service-name="{{:: $ctrl.number.serviceName }}"
-                                   data-custom-class="link d-block pl-0 mt-4 mb-2"
-                                   data-bulk-infos="$ctrl.bulkData.infos"
-                                   data-get-bulk-params="$ctrl.getBulkParams()"
-                                   data-filter-services="$ctrl.filterServices()"
-                                   data-on-success="$ctrl.onBulkSuccess()"
-                                   data-on-error="$ctrl.onBulkError()">
-        </tuc-telephony-bulk-action>
 
         <div class="oui-button-group">
             <oui-dropdown class="mr-3">
@@ -70,7 +59,7 @@
                 </oui-dropdown-content>
             </oui-dropdown>
             <oui-button data-variant="secondary"
-                        data-on-click="$ctrl.$state.go('telecom.telephony.alias.configuration.timeCondition.scheduler')">
+                        data-on-click="$ctrl.manageScheduler()">
                 <span data-translate="telephony_alias_config_contactCenterSolution_timeCondition_scheduler"></span>
             </oui-button>
         </div>
@@ -80,15 +69,34 @@
             <voip-time-condition-calendar data-voip-time-condition="$ctrl.number.feature.timeCondition"></voip-time-condition-calendar>
         </div>
 
-        <oui-button class="mb-5"
-                    data-variant="secondary"
-                    data-on-click="$ctrl.$state.go('^')">
-            <span data-translate="cancel"></span>
-        </oui-button>
+
+    </div>
+
+    <footer class="voip-action-bar"
+            data-ng-if="$ctrl.hasChanged()">
+        <p class="mb-3 font-weight-bold text-white"
+           data-translate="telephony_alias_config_contactCenterSolution_timeCondition_footer_save_question">
+        </p>
+
+        <tuc-telephony-bulk-action data-service-type="alias"
+                                   data-billing-account="{{:: $ctrl.number.billingAccount }}"
+                                   data-service-name="{{:: $ctrl.number.serviceName }}"
+                                   data-custom-class="link d-block pl-0 mt-4 mb-2"
+                                   data-bulk-infos="$ctrl.bulkData.infos"
+                                   data-get-bulk-params="$ctrl.getBulkParams()"
+                                   data-filter-services="$ctrl.filterServices()"
+                                   data-on-success="$ctrl.onBulkSuccess()"
+                                   data-on-error="$ctrl.onBulkError()">
+        </tuc-telephony-bulk-action>
+
         <oui-button data-variant="primary"
                     data-on-click="$ctrl.updateContactCenterSolution()"
                     data-disabled="!$ctrl.hasChanged()">
             <span data-translate="submit"></span>
         </oui-button>
-    </div>
+        <oui-button data-variant="secondary"
+                    data-on-click="$ctrl.onTimeConditionFormReset()">
+            <span data-translate="cancel"></span>
+        </oui-button>
+    </footer>
 </div>

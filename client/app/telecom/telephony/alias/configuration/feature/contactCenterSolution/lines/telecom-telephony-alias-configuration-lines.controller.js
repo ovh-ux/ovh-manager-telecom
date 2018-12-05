@@ -2,6 +2,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationLines
   constructor(
     $q, $state, $stateParams, $translate, $uibModal,
     featureTypeLabel, OvhApiTelephony, TucToast, tucVoipServiceAlias,
+    TELEPHONY_ALIAS_CONTACT_CENTER_SOLUTION,
   ) {
     this.$q = $q;
     this.$state = $state;
@@ -12,6 +13,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationLines
     this.OvhApiTelephony = OvhApiTelephony;
     this.TucToast = TucToast;
     this.tucVoipServiceAlias = tucVoipServiceAlias;
+    this.TELEPHONY_ALIAS_CONTACT_CENTER_SOLUTION = TELEPHONY_ALIAS_CONTACT_CENTER_SOLUTION;
   }
 
   $onInit() {
@@ -69,11 +71,13 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationLines
       caller: _.get(models, 'telephony.OvhPabxDialplanNumberPresentationEnum', { enum: [] }).enum.map(caller => ({
         label: this.$translate.instant(`telephony_alias_config_contactCenterSolution_lines_display_number_${caller}`),
         value: caller,
-      })),
-      strategy: _.get(models, 'telephony.OvhPabxHuntingQueueStrategyEnum', { enum: [] }).enum.map(strategy => ({
-        label: this.$translate.instant(`telephony_alias_config_contactCenterSolution_lines_strategy_${strategy}`),
-        value: strategy,
-      })),
+      })).reverse(),
+      strategy: this.TELEPHONY_ALIAS_CONTACT_CENTER_SOLUTION.lines.strategies
+        .filter(strategy => _.get(models, 'telephony.OvhPabxHuntingQueueStrategyEnum', { enum: [] }).enum.includes(strategy))
+        .map(strategy => ({
+          label: this.$translate.instant(`telephony_alias_config_contactCenterSolution_lines_strategy_${strategy}`),
+          value: strategy,
+        })),
       status: _.get(models, 'telephony.OvhPabxHuntingAgentStatusEnum', { enum: [] }).enum.map(status => ({
         label: this.$translate.instant(`telephony_alias_config_contactCenterSolution_lines_status_${status}`),
         value: status,

@@ -31,7 +31,7 @@
         }
 
         &.holidays {
-          .colorize-event-categories(@telephony-slot-available-color);
+          .colorize-event-categories(@oui-color-silver);
         }
       }
 
@@ -50,7 +50,8 @@
 
 .telephony-scheduler-time-condition-slots {
   .telephony-time-condition-slot .legend-color.unavailable {
-    .colorize-event-categories(@telephony-slot-available-color);
+    background-color: @oui-color-silver;
+    border: 1px solid @oui-color-dusty;
   }
 }
 

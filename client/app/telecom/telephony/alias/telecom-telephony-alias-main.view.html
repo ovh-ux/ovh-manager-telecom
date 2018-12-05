@@ -60,10 +60,10 @@
                                           data-ng-if="$ctrl.serviceName && $ctrl.hasConsumption()">
                     <oui-header-tabs-item data-text="{{:: 'telephony_alias_consumption_incoming_calls' | translate }}"
                                           data-state="telecom.telephony.alias.consumptionIncomingCalls"
-                                          data-ng-if="!$ctrl.isContactCenterSolution()"></oui-header-tabs-item>
+                                          data-disabled="$ctrl.isFeatureTypeObsolete()"></oui-header-tabs-item>
                     <oui-header-tabs-item data-text="{{:: 'telephony_alias_consumption_outgoing_calls' | translate }}"
                                           data-state="telecom.telephony.alias.consumptionOutgoingCalls"
-                                          data-ng-if="!$ctrl.isContactCenterSolution()"></oui-header-tabs-item>
+                                          data-disabled="$ctrl.isFeatureTypeObsolete()"></oui-header-tabs-item>
                 </oui-header-tabs-dropdown>
                 <oui-header-tabs-item data-text="{{:: 'telephony_alias_tab_statistics' | translate }}"
                                       data-state="telecom.telephony.alias.statistics"

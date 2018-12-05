@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelephonySchedulerCtrl', function ($anchorScroll, $locale, $location, $q, $translate, $translatePartialLoader, $uibModal, matchmedia, OvhApiTelephony, OvhApiMe, Poller, TucToast, uiCalendarConfig, VoipSchedulerEvent) {
+angular.module('managerApp').controller('TelephonySchedulerCtrl', function TelephonySchedulerCtrl($anchorScroll, $locale, $location, $q, $translate, $translatePartialLoader, $uibModal, matchmedia, OvhApiTelephony, OvhApiMe, Poller, TucToast, uiCalendarConfig, VoipSchedulerEvent) {
   const self = this;
 
   self.loading = {
@@ -17,6 +17,7 @@ angular.module('managerApp').controller('TelephonySchedulerCtrl', function ($anc
   self.model = {
     currentView: 'month',
     filters: {},
+    events: [],
   };
 
   self.status = {

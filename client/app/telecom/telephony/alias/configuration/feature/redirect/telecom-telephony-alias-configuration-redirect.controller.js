@@ -114,7 +114,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationRedir
       updateLinePresentation: this.canUpdatePresentation()
         ? this.updateLinePresentation() : angular.noop(),
     }).then(() => {
-      this.TucToast.success('telephony_alias_config_redirect_update_success');
+      this.TucToast.success(this.$translate.instant('telephony_alias_config_redirect_update_success'));
       this.$onInit();
     }).catch((error) => {
       this.TucToast.error(

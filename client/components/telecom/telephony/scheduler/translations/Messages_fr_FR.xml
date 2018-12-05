@@ -8,8 +8,8 @@
 
 <!-- ACTIONS MENU -->
    <translation id="telephony_scheduler_actions_add" qtlid="37923">Ajouter</translation>
-   <translation id="telephony_scheduler_actions_import">Importer des plages horaires</translation>
-   <translation id="telephony_scheduler_actions_export">Exporter des plages horaires</translation>
+   <translation id="telephony_scheduler_actions_import" qtlid="69869">Importer</translation>
+   <translation id="telephony_scheduler_actions_export" qtlid="69881">Exporter</translation>
    <translation id="telephony_scheduler_actions_bank_holidays">Afficher les jours fériés</translation>
    <translation id="telephony_scheduler_actions_bank_delete_all" qtlid="159891">Tout supprimer</translation>
 

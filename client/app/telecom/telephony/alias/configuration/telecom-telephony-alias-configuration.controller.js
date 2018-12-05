@@ -129,7 +129,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationCtrl'
   }
 
   isSubwayPlanActive() {
-    const complexFeatures = ['cloudIvr', 'svi', 'contactCenterSolutionExpert'];
+    const complexFeatures = ['cloudIvr', 'svi', 'contactCenterSolutionExpert', 'ddi'];
     return complexFeatures.includes(this.number.feature.featureType);
   }
 });

@@ -1,4 +1,4 @@
-angular.module('managerApp').directive('voipTimeConditionCalendar', ($compile, $timeout, VoipTimeConditionCondition, uiCalendarConfig, VOIP_TIMECONDITION_ORDERED_DAYS) => ({
+angular.module('managerApp').directive('voipTimeConditionCalendar', ($compile, $timeout, TucToast, VoipTimeConditionCondition, uiCalendarConfig, VOIP_TIMECONDITION_ORDERED_DAYS) => ({
   restrict: 'EA',
   templateUrl: 'components/telecom/telephony/timeCondition/calendar/telephony-time-condition-calendar.html',
   controller: 'voipTimeConditionCalendarCtrl',
@@ -231,7 +231,10 @@ angular.module('managerApp').directive('voipTimeConditionCalendar', ($compile, $
           return name !== timeConditionToCopy.weekDay && !existingTime;
         })
         .map(({ name }) => {
-          const dayToAdd = new VoipTimeConditionCondition(timeConditionToCopy);
+          const copyTimeCondition = angular.copy(timeConditionToCopy);
+          copyTimeCondition.conditionId = null;
+
+          const dayToAdd = new VoipTimeConditionCondition(copyTimeCondition);
           dayToAdd.weekDay = name;
           dayToAdd.state = 'TO_CREATE';
           return dayToAdd;
