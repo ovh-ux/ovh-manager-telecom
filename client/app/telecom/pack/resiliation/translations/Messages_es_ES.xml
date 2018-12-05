@@ -36,7 +36,7 @@
    <translation id="pack_resiliation_disabled_field_help" qtlid="313507">No es posible conservar los servicios indicados en gris.</translation>
    <translation id="pack_resiliation_services_cannot_keep" qtlid="313520">Si da de baja el pack, no puede conservar este servicio.</translation>
    <translation id="pack_resiliation_subservices_load_error" qtlid="313533">Se ha producido un error al cargar la información de baja de los servicios asociados. No es posible continuar tramitando la baja.</translation>
-   <translation id="pack_resiliation_hubic_disclamer">Vos comptes hubiC seront automatiquement basculés en offre gratuite 25 Go. Si vos données dépassent la capacité de stockage d'une offre gratuite, ces dernières restent accessibles.</translation>
+   <translation id="pack_resiliation_hubic_disclamer" qtlid="509417">Vos comptes hubiC seront automatiquement basculés en offre gratuite 25 Go. Si vos données dépassent la capacité de stockage d'une offre gratuite, ces dernières restent accessibles.</translation>
    <translation id="pack_resiliation_fee" qtlid="385689">Gastos de baja del servicio:</translation>
    <translation id="pack_resiliation_keeping_fee" qtlid="385702">Gastos de conservación del número alias:</translation>
    <translation id="pack_resiliation_monthly_pass" qtlid="268289">Suscripción mensual:</translation>

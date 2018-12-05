@@ -36,7 +36,7 @@
    <translation id="xdsl_modem_wifi_config_ssid_advertisement_tooltip" qtlid="318036">Tinklo identifikatorius (pavadinimas) gali būti matomas viešai arba slepiamas. Jeigu jis slepiamas, norint prisijungti reikės jį žinoti, kadangi jis nebus matomas tinklo nuostatose.</translation>
    <translation id="xdsl_modem_wifi_config_security_tooltip" qtlid="318049">Saugumas nustatomas naudojant įvairius šifravimo tipus bei stiprumą, o tinklas pasiekiamas tik įvedus slaptažodį. Rekomenduojame naudoti "WPA arba WPA2" šifravimą, kadangi tai šie tipai naudoja pažangesnius šifravimo metodus.</translation>
    <translation id="xdsl_modem_wifi_config_key_tooltip" qtlid="318062">Wi-Fi raktas - tai slaptažodis, kurio reikia norint prisijungti prie tinklo. Patartina naudoti sudėtingą raktą, t.y. sudarytą iš skaičių ir didžiųjų bei mažųjų raidžių.</translation>
-   <translation id="xdsl_modem_wifi_config_canal_tooltip">La plage de canaux disponibles correspond à des fréquences différentes. Il n'y a pas de recommandation particulière de choix entre un canal et un autre.</translation>
+   <translation id="xdsl_modem_wifi_config_canal_tooltip" qtlid="509573">La plage de canaux disponibles correspond à des fréquences différentes. Il n'y a pas de recommandation particulière de choix entre un canal et un autre.</translation>
 
    <translation id="xdsl_modem_wifi_config_new_key" qtlid="303029">Naujas raktas</translation>
    <translation id="xdsl_modem_wifi_config_retype_new_key" qtlid="318088">Įveskite raktą dar kartą</translation>
