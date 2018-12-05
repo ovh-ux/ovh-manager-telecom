@@ -36,7 +36,7 @@
    <translation id="xdsl_modem_wifi_config_ssid_advertisement_tooltip" qtlid="318036">El identificador (nombre) de red puede estar visible públicamente o puede ocultarse. Si se oculta, es necesario conocer el nombre de la red para poder acceder a ella, ya que no aparecerá en la lista de redes inalámbricas disponibles.</translation>
    <translation id="xdsl_modem_wifi_config_security_tooltip" qtlid="318049">La seguridad determina el tipo y la fuerza del cifrado, de la contraseña necesaria para acceder a la red inalámbrica. Se recomienda utilizar «WPA y WPA2», que utiliza un cifrado más elevado.</translation>
    <translation id="xdsl_modem_wifi_config_key_tooltip" qtlid="318062">La clave wifi es la contraseña que deberá introducir para acceder a la red inalámbrica. Se recomienda introducir una clave compleja, es decir, que contenga cifras y letras mayúsculas y minúsculas.</translation>
-   <translation id="xdsl_modem_wifi_config_canal_tooltip">La plage de canaux disponibles correspond à des fréquences différentes. Il n'y a pas de recommandation particulière de choix entre un canal et un autre.</translation>
+   <translation id="xdsl_modem_wifi_config_canal_tooltip" qtlid="509573">La plage de canaux disponibles correspond à des fréquences différentes. Il n'y a pas de recommandation particulière de choix entre un canal et un autre.</translation>
 
    <translation id="xdsl_modem_wifi_config_new_key" qtlid="303029">Nueva clave</translation>
    <translation id="xdsl_modem_wifi_config_retype_new_key" qtlid="318088">Vuelva a introducir la nueva clave</translation>
