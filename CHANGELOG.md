@@ -1,3 +1,24 @@
+# [10.13.0](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.12.0...v10.13.0) (2018-12-05)
+
+
+### Bug Fixes
+
+* apply stylelint rules ([8570e5a](https://github.com/ovh-ux/ovh-manager-telecom/commit/8570e5a))
+* **deps:** upgrade telecom-universe-components to v1.1.0 ([562b479](https://github.com/ovh-ux/ovh-manager-telecom/commit/562b479))
+* **i18n:** retrieve translations ([5b47ba0](https://github.com/ovh-ux/ovh-manager-telecom/commit/5b47ba0))
+* **i18n:** submit translations ([ec78fe0](https://github.com/ovh-ux/ovh-manager-telecom/commit/ec78fe0))
+* **pack.xdsl.modem.router:** typo for dchp end address ([1259ac8](https://github.com/ovh-ux/ovh-manager-telecom/commit/1259ac8))
+* **sidebar:** change less variable case ([03acf29](https://github.com/ovh-ux/ovh-manager-telecom/commit/03acf29))
+* **telephony:** prevent empty array issue and change address ([21565a0](https://github.com/ovh-ux/ovh-manager-telecom/commit/21565a0))
+
+
+### Features
+
+* **pack.xdsl.modem:** add firmware modem update ([e3f4104](https://github.com/ovh-ux/ovh-manager-telecom/commit/e3f4104))
+* **pack.xdsl.modem:** update call api to reset modem with ovh config ([d789eda](https://github.com/ovh-ux/ovh-manager-telecom/commit/d789eda))
+
+
+
 # [10.12.0](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.11.2...v10.12.0) (2018-11-27)
 
 
