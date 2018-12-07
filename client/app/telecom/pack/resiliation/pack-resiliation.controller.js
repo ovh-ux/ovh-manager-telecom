@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('PackResiliationCtrl', function ($stateParams, $state, $translate, TucToastError, OvhApiPackXdslResiliation, TucToast, $uibModal, $timeout, $q, OvhApiMe, TucPackMediator, resiliationNotification, tucValidator) {
+angular.module('managerApp').controller('PackResiliationCtrl', function ($stateParams, $state, $templateCache, $translate, TucToastError, OvhApiPackXdslResiliation, TucToast, $uibModal, $timeout, $q, OvhApiMe, TucPackMediator, resiliationNotification, tucValidator) {
   const self = this;
   self.model = {
     subServicesToKeep: {},
@@ -281,7 +281,7 @@ angular.module('managerApp').controller('PackResiliationCtrl', function ($stateP
 
   this.openConfirmation = function () {
     $uibModal.open({
-      templateUrl: 'telecomUniverseComponents/resiliation/resiliation.modal.html',
+      template: $templateCache.get('resiliation.modal.html'),
       controllerAs: 'ResiliationModelCtrl',
       controller(subject) {
         this.resiliation = { confirm: {} };
