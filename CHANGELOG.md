@@ -1,3 +1,12 @@
+## [10.13.1](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.13.0...v10.13.1) (2018-12-07)
+
+
+### Bug Fixes
+
+* **pack.resilisation:** retrieve template from cache ([55998c2](https://github.com/ovh-ux/ovh-manager-telecom/commit/55998c2))
+
+
+
 # [10.13.0](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.12.0...v10.13.0) (2018-12-05)
 
 
