@@ -10,7 +10,7 @@ angular.module('managerApp').service('XdslTaskPoller', class XdslTaskPoller {
     this.errorHandler = errorHandler;
     this.lastResult = null;
 
-    this.OvhApiXdslTasksCurrent.Aapi().poll(scope, {
+    return this.OvhApiXdslTasksCurrent.Aapi().poll(scope, {
       xdslId: serviceName,
     }).then(
       result => this.handleResult(result),

@@ -54,9 +54,10 @@
    <translation id="xdsl_details_diagnostic" qtlid="309724">Diagnostic de la ligne</translation>
    <translation id="xdsl_details_diagnostic_modal_button">Plus de détails sur l'état de ma ligne</translation>
    <translation id="xdsl_details_diagnostic_modal_title">Détails de l'état de votre ligne</translation>
-   <translation id="xdsl_details_diagnostic_modal_empty">Vous n'avez encore jamais lancé de diagnostic sur votre ligne.</translation>
+   <translation id="xdsl_details_diagnostic_modal_loading">Un diagnostic est en cours... Merci de patienter quelques instants.</translation>
+   <translation id="xdsl_details_diagnostic_modal_loading_info">Vous pouvez fermer cette fenêtre et y revenir plus tard si vous le souhaitez.</translation>
    <translation id="xdsl_details_diagnostic_modal_relaunch_status_check">Lancer un test</translation>
-   <translation id="xdsl_details_diagnostic_modal_relaunch_status_remaining_checks">({0} restants)</translation>
+   <translation id="xdsl_details_diagnostic_modal_relaunch_status_remaining_checks">({{remainingChecks}} restants)</translation>
    <translation id="xdsl_details_diagnostic_modal_relaunch_status_no_remaining_checks">Tests épuisés</translation>
    <translation id="xdsl_details_diagnostic_modal_status_term_time">Heure du diagnostic</translation>
    <translation id="xdsl_details_diagnostic_modal_status_term_isActiveOnLns">Passerelle de sortie LNS</translation>

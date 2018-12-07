@@ -1,6 +1,6 @@
 angular
   .module('managerApp')
-  .config(($urlServiceProvider, $stateProvider, $transitionsProvider) => {
+  .config(($stateProvider, $transitionsProvider, $urlServiceProvider) => {
     let modalInstance = null;
 
     /**

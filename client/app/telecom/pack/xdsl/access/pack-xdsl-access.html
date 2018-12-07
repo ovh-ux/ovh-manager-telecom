@@ -26,8 +26,10 @@
                                     <div class="oui-tile__description">
                                         <div class="mb-3 d-flex align-items-center justify-content-between">
                                             <div data-ng-bind-html="XdslAccess.statusLabel"></div>
-                                            <a data-ui-sref="telecom.pack.xdsl.access-diagnostic-details"
-                                               data-translate="xdsl_details_diagnostic_modal_button"></a>
+                                            <oui-button data-variant="link"
+                                                        data-on-click="XdslAccess.openDetailsPopup()">
+                                                <span data-translate="xdsl_details_diagnostic_modal_button"></span>
+                                            </oui-button>
                                         </div>
                                         <p data-translate="xdsl_details_diagnostic_description"></p>
                                         <a class="oui-button oui-button_full-width oui-button_icon-right oui-button_secondary"

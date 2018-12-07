@@ -3,12 +3,15 @@
     data-primary-label="{{ :: 'close' | translate }}"
     data-primary-action="$ctrl.$state.go('^')"
     data-secondary-label="{{ $ctrl.getRemainingChecksText() }}"
-    data-secondary-action="$ctrl.check()"
+    data-secondary-action="$ctrl.reload()"
     data-secondary-disabled="$ctrl.diagnostic.remaining === 0"
     data-on-dismiss="$ctrl.$state.go('^')"
-    data-loading="$ctrl.loading">
+    data-loading="!$ctrl.diagnostic">
 
-    <p data-ng-if="!$ctrl.diagnostic" data-translate="xdsl_details_diagnostic_modal_empty"></p>
+    <p data-ng-if="!$ctrl.diagnostic">
+        <span data-translate="xdsl_details_diagnostic_modal_loading"></span><br>
+        <span data-translate="xdsl_details_diagnostic_modal_loading_info"></span>
+    </p>
 
     <dl data-ng-if="$ctrl.diagnostic">
         <div class="row">
