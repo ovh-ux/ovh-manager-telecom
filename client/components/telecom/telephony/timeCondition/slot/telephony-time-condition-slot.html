@@ -4,21 +4,29 @@
              data-ng-class="$ctrl.slot.name">
         </div>
     </div>
-    <div class="slot-name d-table-cell ml-3">
-        <div data-ng-if="$ctrl.isScheduler && $ctrl.slot.name === 'unavailable'"
-             data-translate="voip_time_condition_slots_type_scheduler_unavailable">
-        </div>
+    <div class="d-table-cell ml-3">
+        <span data-translate="{{ 'voip_time_condition_slots_type_' + $ctrl.slot.name }}"></span>
 
-        <div data-ng-if="!($ctrl.isScheduler && $ctrl.slot.name === 'unavailable')"
-             data-translate="{{ 'voip_time_condition_slots_type_' + $ctrl.slot.name }}">
-        </div>
+        <button type="button"
+                data-ng-if="::!!$ctrl.hasPopover"
+                class="d-inline oui-popover-button"
+                aria-haspopup="true"
+                data-oui-popover="{{:: 'voip_time_condition_slots_type_' + (($ctrl.slot.name === 'available' || $ctrl.slot.name === 'unavailable') ? $ctrl.slot.name : 'slot') + '_help' | translate }}"></button>
 
         <div data-ng-if="!$ctrl.slot.noConfig">
             <!-- SLOT NOT DEFINED -->
-            <span data-ng-if="!$ctrl.getSlotDetail('number')"
-                  data-translate="voip_time_condition_slots_undefined"
-                  class="legend-description small font-weight-normal">
-            </span> <!-- END OF SLOT NOT DEFINED -->
+            <div data-ng-if="!$ctrl.getSlotDetail('number')">
+                <button class="oui-button_link p-0"
+                        aria-label="{{:: 'voip_time_condition_slots_configure' | translate }}"
+                        data-ng-if="::!!$ctrl.isScheduler"
+                        data-ng-click="$ctrl.$state.go('^')">
+                    <span data-translate="voip_time_condition_slots_configure"></span>
+                </button>
+                <small data-ng-if="::!$ctrl.isScheduler"
+                       data-translate="voip_time_condition_slots_undefined">
+                </small>
+            </div>
+            <!-- END OF SLOT NOT DEFINED -->
 
             <!-- SLOT DEFINED -->
             <span data-ng-if="$ctrl.getSlotDetail('number')"
@@ -32,21 +40,22 @@
                 <span data-ng-if="$ctrl.slot.name === 'available'"
                       data-ng-bind="$ctrl.slot.number">
                 </span>
-
             </span> <!-- END OF SLOT DEFINED -->
         </div>
     </div>
+
     <div class="d-table-cell text-right"
          data-ng-if="$ctrl.enableEdition && $ctrl.slot.name !== 'available'">
         <button type="button"
-                class="btn btn-default legend-edit"
+                class="oui-button oui-button_icon-alone"
+                aria-label="{{:: 'modify' | translate }}"
                 data-ng-disabled="$ctrl.timeCondition.status === 'SAVING'"
                 data-responsive-popover="'components/telecom/telephony/timeCondition/slot/edit/telephony-time-condition-slot-edit.html'"
                 data-popover-placement="right auto"
                 data-popover-trigger="outsideClick"
                 data-popover-is-open="$ctrl.slot.inEdition"
                 data-popover-class="pretty-popover voip-time-condition-slots-edit-popover">
-            <i class="ovh-font ovh-font-config"></i>
+            <span class="oui-icon oui-icon-gear" aria-hidden="true"></span>
         </button>
     </div>
 </div>

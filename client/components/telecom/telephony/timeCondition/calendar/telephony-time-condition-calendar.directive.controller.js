@@ -1,9 +1,11 @@
-angular.module('managerApp').controller('voipTimeConditionCalendarCtrl', function ($q, $translate, $translatePartialLoader) {
+angular.module('managerApp').controller('voipTimeConditionCalendarCtrl', function voipTimeConditionCalendarCtrl($q, $translate, $translatePartialLoader) {
   const self = this;
 
   self.loading = {
     init: false,
   };
+
+  self.eventSources = [];
 
   self.conditionInEdition = null;
   self.fcEventInEdition = null;
@@ -31,7 +33,7 @@ angular.module('managerApp').controller('voipTimeConditionCalendarCtrl', functio
 
   /* ----------  Component initialization  ----------*/
 
-  self.$onInit = function () {
+  self.$onInit = function $onInit() {
     self.loading.init = true;
 
     return $q.all([

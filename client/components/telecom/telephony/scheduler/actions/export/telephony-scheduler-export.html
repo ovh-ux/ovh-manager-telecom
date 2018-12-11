@@ -30,11 +30,9 @@
 
                     <button type="button"
                             class="btn btn-default w-100 text-left"
-                            data-ng-class="{ 'active-slot': category.active }"
                             data-ng-click="category.active = !category.active;">
 
-                        <voip-time-condition-slot data-time-condition-slot="SchedulerExportCtrl.convertCategoryToSlot(category.value)"
-                                                  data-is-scheduler="true">
+                        <voip-time-condition-slot data-time-condition-slot="SchedulerExportCtrl.convertCategoryToSlot(category.value)">
                         </voip-time-condition-slot>
 
                     </button>

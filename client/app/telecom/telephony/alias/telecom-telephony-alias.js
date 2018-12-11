@@ -10,20 +10,8 @@ angular.module('managerApp').config(($stateProvider) => {
         controller: 'TelecomTelephonyAliasCtrl',
         controllerAs: '$ctrl',
       },
-      'aliasInnerView@telecom.telephony.alias': {
-        templateUrl: 'app/telecom/telephony/alias/portability/telecom-telephony-alias-portability.html',
-        controller: 'TelecomTelephonyAliasPortabilityCtrl',
-        controllerAs: 'AliasPortabilityCtrl',
-      },
     },
-    translations: ['.', './portability'],
-    resolve: {
-      $title(translations, $translate, $stateParams, OvhApiTelephony) {
-        return OvhApiTelephony.Number().v6().get({
-          billingAccount: $stateParams.billingAccount,
-          serviceName: $stateParams.serviceName,
-        }).$promise.then(data => $translate.instant('telephony_alias_page_title', { name: data.description || $stateParams.serviceName }, null, null, 'escape')).catch(() => $translate('telephony_alias_page_title', { name: $stateParams.serviceName }));
-      },
-    },
+    translations: ['.'],
+    redirectTo: 'telecom.telephony.alias.dashboard',
   });
 });
