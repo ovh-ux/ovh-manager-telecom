@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <translations>
-   <translation id="telephony_alias_administration_terminate_back_link" qtlid="391943">Retour à l'administration de numéro</translation>
    <translation id="telephony_alias_administration_terminate_title" qtlid="334036">Résilier un numéro</translation>
    <translation id="telephony_alias_administration_terminate_subtitle" qtlid="391956">Résiliation du numéro</translation>
    <translation id="telephony_alias_administration_terminate_info_subtitle" qtlid="26551">Informations</translation>

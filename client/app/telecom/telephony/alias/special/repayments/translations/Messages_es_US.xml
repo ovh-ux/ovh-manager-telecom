@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<translations>
+   <translation id="telephony_alias_special_repayments_title">Reversements et coûts</translation>
+   <translation id="telephony_alias_special_repayments_subtitle">Vous retrouverez ci-dessous les reversements et/ou les coûts liés aux appels reçus sur votre numéro spécial.</translation>
+
+   <translation id="telephony_alias_special_transfer_title">Reversements</translation>
+   <translation id="telephony_alias_special_transfer_pending">Reversements en attente</translation>
+   <translation id="telephony_alias_special_transfer_available">Reversements disponibles</translation>
+   <translation id="telephony_alias_special_transfer_demand">Demander un virement</translation>
+
+   <translation id="telephony_alias_special_fees_title">Coûts</translation>
+   <translation id="telephony_alias_special_fees_to_pay">Coûts à verser</translation>
+
+   <translation id="telephony_alias_special_transfer_date" qtlid="24523">Date</translation>
+   <translation id="telephony_alias_special_transfer_calling" qtlid="303549">Persona que realiza la llamada</translation>
+   <translation id="telephony_alias_special_transfer_duration" qtlid="501730">Durée (sec.)</translation>
+   <translation id="telephony_alias_special_transfer_operator" qtlid="63052">Opérateur</translation>
+   <translation id="telephony_alias_special_transfer_transfer">Reversements HT</translation>
+   <translation id="telephony_alias_special_transfer_fees">Coûts HT</translation>
+
+   <translation id="telephony_alias_special_repayments_get_error">Une erreur est survenue lors de la récupération des reversements et coûts</translation>
+   <translation id="telephony_alias_special_repayment_price" qtlid="501782">{{price}} € HT</translation>
+</translations>

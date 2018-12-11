@@ -62,7 +62,7 @@ angular.module('managerApp').controller('TelecomTelephonyServiceVoicemailDefault
   };
 
   self.formatNumber = function (number) {
-    const formatted = $filter('phoneNumber')(number.serviceName);
+    const formatted = $filter('tucPhoneNumber')(number.serviceName);
     if (number.description) {
       return number.description === number.serviceName ? formatted : `${formatted} ${number.description}`;
     } if (number.label) {

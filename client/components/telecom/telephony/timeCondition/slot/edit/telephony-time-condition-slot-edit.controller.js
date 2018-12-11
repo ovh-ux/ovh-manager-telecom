@@ -74,6 +74,7 @@ angular.module('managerApp').controller('voipTimeConditionSlotEditCtrl', functio
 
     if (self.model.slotType === 'number') {
       // reset number to let user type its external number
+      self.slot.type = 'number';
       self.slot.number = null;
       self.redirectNumberOvh = null;
     } else {

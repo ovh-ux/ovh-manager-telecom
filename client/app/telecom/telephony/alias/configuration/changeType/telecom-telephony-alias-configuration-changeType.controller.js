@@ -1,170 +1,218 @@
-angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationChangeTypeCtrl', function ($scope, $q, $translate, $state, $stateParams, TelephonyMediator, TucToast, tucVoipServiceTask, tucTelephonyBulk) {
-  const self = this;
-
-  self.number = null;
-  self.noCache = false;
-  self.loading = {
-    changing: false,
-    line: true,
-  };
-
-  self.successfulTasks = [];
-
-  /*= ==============================
-  =            ACTIONS            =
-  =============================== */
-
-  self.changeType = function () {
-    self.loading.changing = true;
-
-    return self.number.changeFeatureType().then(() => {
-      self.number.feature.stopEdition();
-      $state.go('telecom.telephony.alias.configuration');
-      return TucToast.success($translate.instant('telephony_alias_change_type_ok'));
-    }, (error) => {
-      if (error.type !== 'poller') {
-        // Do not display TucToast if it is a poller error
-        TucToast.error([$translate.instant('telephony_alias_change_type_ko'), (error.data && error.data.message) || ''].join(' '));
-      }
-      return $q.reject(error);
-    }).finally(() => {
-      self.loading.changing = false;
-    });
-  };
-
-  /* -----  End of ACTIONS  ------*/
-
-  /*= =====================================
-  =            INITIALIZATION            =
-  ====================================== */
-
-  function init() {
-    self.loading.line = true;
-
-    return TelephonyMediator.getGroup($stateParams.billingAccount, self.noCache).then((group) => {
-      self.number = group.getNumber($stateParams.serviceName);
-      return self.number;
-    }).then(() => {
-      self.availableTypes = [
-        { id: 'redirect', label: $translate.instant('telephony_alias_config_change_type_label_redirect') },
-        { id: 'ddi', label: $translate.instant('telephony_alias_config_change_type_label_ddi') },
-        { id: 'conference', label: $translate.instant('telephony_alias_config_change_type_label_conference') },
-        { id: 'cloudIvr', label: $translate.instant('telephony_alias_config_change_type_label_cloudIvr') },
-        { id: 'svi', label: $translate.instant('telephony_alias_config_change_type_label_svi') },
-        { id: 'easyHunting', label: $translate.instant('telephony_alias_config_change_type_label_easyHunting') },
-        { id: 'cloudHunting', label: $translate.instant('telephony_alias_config_change_type_label_cloudHunting') },
-        { id: 'contactCenterSolution', label: $translate.instant('telephony_alias_config_change_type_label_contactCenterSolution') },
-        { id: 'contactCenterSolutionExpert', label: $translate.instant('telephony_alias_config_change_type_label_contactCenterSolutionExpert') },
-        { id: 'empty', label: $translate.instant('telephony_alias_config_change_type_label_empty') },
-      ];
-
-      self.number.feature.startEdition();
-      self.noCache = false;
-
-      return self.number;
-    }).catch((error) => {
-      TucToast.error([$translate.instant('telephony_alias_load_error'), (error.data && error.data.message) || ''].join(' '));
-      return $q.reject(error);
-    })
-      .finally(() => {
-        self.loading.line = false;
-      });
+angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationChangeTypeCtrl', class TelecomTelephonyAliasConfigurationChangeTypeCtrl {
+  constructor(
+    $q, $state, $stateParams, $translate, $uibModal,
+    atInternet, OvhApiTelephony, TucToast, tucTelephonyBulk,
+    tucVoipService, tucVoipServiceAlias, tucVoipServiceTask,
+  ) {
+    this.$q = $q;
+    this.$state = $state;
+    this.$stateParams = $stateParams;
+    this.$translate = $translate;
+    this.$uibModal = $uibModal;
+    this.atInternet = atInternet;
+    this.OvhApiTelephony = OvhApiTelephony;
+    this.tucTelephonyBulk = tucTelephonyBulk;
+    this.TucToast = TucToast;
+    this.tucVoipService = tucVoipService;
+    this.tucVoipServiceAlias = tucVoipServiceAlias;
+    this.tucVoipServiceTask = tucVoipServiceTask;
   }
 
-  $scope.$on('$destroy', () => {
-    if (self.number && self.number.feature) {
-      self.number.feature.stopEdition(true);
-    }
-  });
+  $onInit() {
+    this.number = null;
+    this.loading = true;
 
-  /* -----  End of INITIALIZATION  ------*/
+    this.billingAccount = this.$stateParams.billingAccount;
+    this.serviceName = this.$stateParams.serviceName;
+
+    this.options = {
+      simpleMode: ['cloudIvr', 'conference', 'contactCenterSolution', 'redirect'],
+      expertMode: ['contactCenterSolutionExpert', 'svi'],
+    };
+
+    this.bulkData = {
+      infos: {
+        name: 'configurationNumberChangeType',
+        actions: [{
+          name: 'options',
+          route: '/telephony/{billingAccount}/number/{serviceName}/changeFeatureType',
+          method: 'POST',
+          params: null,
+        }],
+      },
+    };
+
+    this.tucVoipService.fetchSingleService(this.billingAccount, this.serviceName).then((number) => {
+      this.number = number;
+      this.initSelectedFeatureType();
+
+      return this.number;
+    }).catch((error) => {
+      this.TucToast.error(
+        `${this.$translate.instant('telephony_alias_load_error')} ${_.get(error, 'data.message', '')}`,
+      );
+    }).finally(() => {
+      this.loading = false;
+    });
+  }
+
+  initSelectedFeatureType() {
+    this.selectedFeatureType = {
+      id: this.number.featureType,
+      name: this.$translate.instant(`telephony_alias_config_change_type_desc_${this.number.featureType}`),
+    };
+  }
+
+  canChangeType() {
+    if (this.showExpertOptions) {
+      return this.options.expertMode.includes(this.selectedFeatureType.id)
+        && this.selectedFeatureType.id !== this.number.featureType;
+    }
+
+    return this.options.simpleMode.includes(this.selectedFeatureType.id)
+      && this.selectedFeatureType.id !== this.number.featureType;
+  }
+
+  confirmChoice() {
+    if (!_(this.number.featureType).isEqual('empty')) {
+      const validChoiceModal = this.$uibModal.open({
+        templateUrl: 'app/telecom/telephony/alias/configuration/changeType/confirm/telecom-telephony-alias-configuration-changeType-confirm.html',
+        controller: 'TelecomTelephonyAliasConfigurationChangeTypeConfirmCtrl',
+        controllerAs: '$ctrl',
+        resolve: {
+          currentFeatureType: () => this.$translate.instant(`telephony_alias_configuration_configuration_type_${this.number.featureType}`),
+        },
+      });
+
+      validChoiceModal.result.then(() => {
+        this.changeType();
+      });
+    } else {
+      this.changeType();
+    }
+  }
+
+  changeType() {
+    this.loading = true;
+
+    this.tucVoipServiceAlias.changeNumberFeatureType({
+      billingAccount: this.billingAccount,
+      serviceName: this.serviceName,
+    }, this.selectedFeatureType.id).then(() => {
+      this.TucToast.success(this.$translate.instant('telephony_alias_change_type_ok'));
+      this.OvhApiTelephony.Service().v6().resetCache();
+      this.$state.go('^').then(() => {
+        this.$state.reload();
+      });
+    }).catch((error) => {
+      if (!_(error.type).isEqual('poller')) {
+        this.TucToast.error(
+          `${this.$translate.instant('telephony_alias_change_type_ko')} ${_.get(error, 'data.message', '')}`,
+        );
+      }
+    }).finally(() => {
+      this.loading = false;
+    });
+  }
+
+  checkServerTasksStatus() {
+    const { tucVoipServiceTask } = this;
+    return (updatedServices) => {
+      function runPollOnTask(billingAccount, serviceName, taskId) {
+        return () => tucVoipServiceTask.startPolling(billingAccount, serviceName, taskId);
+      }
+
+      this.loading = true;
+      let chain = this.$q.when();
+
+      updatedServices.forEach(({ billingAccount, serviceName, values }) => {
+        const [id] = values
+          .map(({ value }) => value)
+          .filter(({ action }) => action === 'changeType')
+          .map(value => value.taskId);
+
+        // chaining each promises
+        chain = chain.then(runPollOnTask(billingAccount, serviceName, id))
+          .then((result) => {
+            if (result) {
+              this.successfulTasks.push(result);
+            }
+          });
+      });
+
+      return chain;
+    };
+  }
+
+  switchOptionMode() {
+    this.showExpertOptions = !this.showExpertOptions;
+    this.initSelectedFeatureType();
+
+    this.atInternet.trackClick({
+      name: `telecom::telephony::alias::configuration::change_type::${this.showExpertOptions ? 'show_expert_options' : 'show_simple_options'}`,
+      type: 'action',
+    });
+  }
 
   /* ===========================
   =            BULK            =
   ============================ */
 
-  self.bulkDatas = {
-    infos: {
-      name: 'configurationNumberChangeType',
-      actions: [{
-        name: 'options',
-        route: '/telephony/{billingAccount}/number/{serviceName}/changeFeatureType',
-        method: 'POST',
-        params: null,
-      }],
-    },
-  };
+  canApplyBulkAction() {
+    const allOptions = [...this.options.simpleMode, ...this.options.expertMode];
+    return allOptions.includes(this.selectedFeatureType.id);
+  }
 
-  self.getBulkParams = function () {
-    const data = {
-      featureType: self.number.feature.featureType,
+  getBulkParams() {
+    return () => (
+      { featureType: this.selectedFeatureType.id }
+    );
+  }
+
+  onBulkSuccess() {
+    const checkServerTasksStatus = this.checkServerTasksStatus();
+    this.successfulTasks = [];
+    return (bulkResult) => {
+      // check if server tasks are all successful
+      checkServerTasksStatus(bulkResult.success).then(() => {
+        // if one of the promises fails, the failed result won't be stored in successfulTasks
+        if (this.successfulTasks.length < bulkResult.success.length) {
+          this.TucToast.warn([this.$translate.instant('telephony_alias_config_change_type_bulk_server_tasks_some_error')]);
+        }
+
+        this.tucTelephonyBulk.getTucToastInfos(bulkResult, {
+          fullSuccess: this.$translate.instant('telephony_alias_config_change_type_bulk_all_success'),
+          partialSuccess: this.$translate.instant('telephony_alias_config_change_type_bulk_some_success', {
+            count: bulkResult.success.length,
+          }),
+          error: this.$translate.instant('telephony_alias_config_change_type_bulk_error'),
+        }).forEach(({ message, type }) => {
+          this.TucToast[type](message, {
+            hideAfter: null,
+          });
+        });
+
+        this.OvhApiTelephony.Service().v6().resetCache();
+        this.OvhApiTelephony.Service().v6().resetQueryCache();
+
+        this.$state.go('telecom.telephony.alias.configuration').then(() => {
+          this.$state.reload();
+        });
+      }).catch(() => {
+        this.TucToast.error([this.$translate.instant('telephony_alias_config_change_type_bulk_server_tasks_all_error')]);
+      }).finally(() => {
+        this.loading = false;
+      });
     };
+  }
 
-    return data;
-  };
-
-  self.onBulkSuccess = function (bulkResult) {
-    // check if server tasks are all successful
-    self.checkServerTasksStatus(bulkResult.success).then(() => {
-      // if one of the promises fails, the failed result won't be store in tasksChecked
-      if (self.successfulTasks.length < bulkResult.success.length) {
-        TucToast.warn([$translate.instant('telephony_alias_config_change_type_bulk_server_tasks_some_error')]);
-      }
-
-      tucTelephonyBulk.getTucToastInfos(bulkResult, {
-        fullSuccess: $translate.instant('telephony_alias_config_change_type_bulk_all_success'),
-        partialSuccess: $translate.instant('telephony_alias_config_change_type_bulk_some_success', {
-          count: bulkResult.success.length,
-        }),
-        error: $translate.instant('telephony_alias_config_change_type_bulk_error'),
-      }).forEach((toastInfo) => {
-        TucToast[toastInfo.type](toastInfo.message, {
-          hideAfter: null,
-        });
-      });
-
-      // force v7 reset cache
-      TelephonyMediator.getAll(true).then(() => {
-        $state.go('telecom.telephony.alias.configuration');
-      });
-    }, () => {
-      TucToast.error([$translate.instant('telephony_alias_config_change_type_bulk_server_tasks_all_error')]);
-      self.loading.changing = false;
-    });
-  };
-
-  self.onBulkError = function (error) {
-    TucToast.error([$translate.instant('telephony_alias_config_change_type_bulk_on_error'), _.get(error, 'msg.data')].join(' '));
-  };
-
-
-  self.checkServerTasksStatus = function (updatedServices) {
-    function runPollOnTask(billingAccount, serviceName, taskId) {
-      return function () {
-        return tucVoipServiceTask.startPolling(billingAccount, serviceName, taskId);
-      };
-    }
-
-    self.loading.changing = true;
-
-    let chain = $q.when();
-
-    _.forEach(updatedServices, (service) => {
-      const id = _.head(_.chain(service.values).map('value').filter(val => val.action === 'changeType').value()).taskId;
-
-      // chaining each promises
-      chain = chain.then(runPollOnTask(service.billingAccount, service.serviceName, id))
-        .then((result) => {
-          if (result) {
-            self.successfulTasks.push(result);
-          }
-        });
-    });
-
-    return chain;
-  };
+  onBulkError() {
+    return (error) => {
+      this.TucToast.error(
+        `${this.$translate.instant('telephony_alias_config_change_type_bulk_on_error')} ${_.get(error, 'msg.data', '')}`,
+      );
+    };
+  }
 
   /* -----  End of BULK  ------ */
-
-  init();
 });

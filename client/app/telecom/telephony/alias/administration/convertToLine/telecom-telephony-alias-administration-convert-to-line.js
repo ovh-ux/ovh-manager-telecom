@@ -1,5 +1,5 @@
 angular.module('managerApp').config(($stateProvider) => {
-  $stateProvider.state('telecom.telephony.alias.administration.convertToLine', {
+  $stateProvider.state('telecom.telephony.alias.convertToLine', {
     url: '/convert',
     views: {
       'aliasView@telecom.telephony.alias': {

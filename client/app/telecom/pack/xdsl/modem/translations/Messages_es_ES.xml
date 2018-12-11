@@ -22,4 +22,6 @@
    <translation id="xdsl_model_access_error" qtlid="385455">¡Vaya! No hemos podido cargar los datos de su pack.</translation>
    <translation id="xdsl_model_task_error" qtlid="385468">¡Vaya! No hemos podido cargar la pila de tareas en curso.</translation>
    <translation id="xdsl_modem_modem_error" qtlid="385481">¡Vaya! No hemos podido cargar los datos de su módem.</translation>
+
+   <translation id="xdsl_modem_firmware">Firmware</translation>
 </translations>

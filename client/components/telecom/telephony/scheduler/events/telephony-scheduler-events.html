@@ -73,8 +73,7 @@
                             <label data-translate="telephony_scheduler_events_category"></label>
                             <div class="event-category telephony-scheduler-time-condition-slots"
                                  data-ng-if="$ctrl.event.categories">
-                                <voip-time-condition-slot data-time-condition-slot="$ctrl.convertCategoryToSlot()"
-                                                          data-is-scheduler="true">
+                                <voip-time-condition-slot data-time-condition-slot="$ctrl.convertCategoryToSlot()">
                                 </voip-time-condition-slot>
                             </div>
                             <div data-ng-if="!$ctrl.event.categories">
@@ -251,8 +250,7 @@
                                 <label class="oui-radio__label-container"
                                        for="eventCategories-{{ $index }}">
                                     <span class="oui-radio__label">
-                                        <voip-time-condition-slot data-time-condition-slot="$ctrl.convertCategoryToSlot(category)"
-                                                                  data-is-scheduler="true">
+                                        <voip-time-condition-slot data-time-condition-slot="$ctrl.convertCategoryToSlot(category)">
                                         </voip-time-condition-slot>
                                     </span>
                                 </label>

@@ -146,5 +146,49 @@
           '0032907',
         ],
       },
-    });
+    })
+    .constant('TELEPHONY_SERVICE', {
+      validSoundExtensions: ['aiff', 'au', 'flac', 'ogg', 'mp3', 'wav', 'wma'],
+    })
+    .constant('TELEPHONY_ALIAS_CONFERENCE', {
+      reportStatus: ['none', 'customer', 'other'],
+      languages: [
+        { label: 'de_DE', value: 'de' },
+        { label: 'en_GB', value: 'en' },
+        { label: 'es_ES', value: 'es' },
+        { label: 'fr_FR', value: 'fr' },
+        { label: 'it_IT', value: 'it' },
+      ],
+      webAccessType: {
+        followUp: 'read',
+        control: 'write',
+      },
+    })
+    .constant('TELEPHONY_ALIAS_CONTACT_CENTER_SOLUTION', {
+      tariffsGuideUrl: 'https://www.ovhtelecom.fr/telephonie/decouvrez/tarifs_telephonie.xml',
+      lines: {
+        strategies: ['sequentiallyByAgentOrder', 'ringAll', 'random', 'longestHangupAgent', 'longestIdleAgent', 'roundRobin', 'cumulationByAgentOrder'],
+      },
+      filtering: {
+        listTypes: ['incomingBlackList', 'incomingWhiteList', 'outgoingBlackList', 'outgoingWhiteList'],
+        helperPrefixes: [
+          { label: 'mobile', prefixes: ['+336', '+337'] },
+          { label: 'line', prefixes: ['+331', '+332', '+333', '+334', '+335', '+339'] },
+          { label: 'foreign', prefixes: ['+1', '+2', '+30', '+31', '+32', '+34', '+35', '+36', '+37', '+38', '+39', '+4', '+5', '+6', '+7', '+8', '+9'] },
+          { label: 'special', prefixes: ['+338'] },
+          { label: 'short', prefixes: ['10', '11', '12', '13', '14', '16', '19', '30', '31', '32', '36', '39'] },
+        ],
+      },
+      recordsGuideUrl: 'http://www.ovh.com/fr/support/documents_legaux/conditions_particulieres_du_service_d_enregistrement_des_communications_telephoniques.pdf',
+      records: {
+        languages: [
+          { id: 'french', code: 'fr_FR' },
+          { id: 'english', code: 'en_GB' },
+        ],
+        digits: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+      },
+    })
+    .constant('TELEPHONY_ALIAS_OBSOLETE_FEATURE_TYPES', [
+      'easyPabx', 'miniPabx',
+    ]);
 }());

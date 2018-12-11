@@ -1,32 +1,89 @@
 angular.module('managerApp').controller('TelecomTelephonyAliasSpecialRsvaCtrl', class TelecomTelephonyAliasSpecialRsvaCtrl {
   constructor(
-    $filter, $q, $stateParams, $translate,
-    costs, OvhApiOrder, OvhApiTelephony, OvhApiTelephonyService, tucTelephonyBulk, TucToast, URLS,
+    $q, $state, $stateParams, $translate,
+    costs, OvhApiOrder, tucTelephonyBulk, TucToast, tucVoipService, tucVoipServiceAlias,
   ) {
-    this.$filter = $filter;
     this.$q = $q;
-    this.serviceName = $stateParams.serviceName;
-    this.billingAccount = $stateParams.billingAccount;
+    this.$state = $state;
+    this.$stateParams = $stateParams;
     this.$translate = $translate;
     this.costs = costs;
     this.OvhApiOrder = OvhApiOrder;
-    this.OvhApiTelephony = OvhApiTelephony;
-    this.OvhApiTelephonyService = OvhApiTelephonyService;
     this.tucTelephonyBulk = tucTelephonyBulk;
     this.TucToast = TucToast;
-    this.URLS = URLS;
+    this.tucVoipService = tucVoipService;
+    this.tucVoipServiceAlias = tucVoipServiceAlias;
   }
 
   $onInit() {
-    this.rsva = {};
-    this.rsvaForm = {};
+    this.serviceInfos = {
+      billingAccount: this.$stateParams.billingAccount,
+      serviceName: this.$stateParams.serviceName,
+    };
 
-    this.links = _.pick(this.URLS, ['transferTable', 'deontology', 'graphicCharter', 'svaToSvaPlus']);
-    this.tariffBearingPrice = `${this.costs.rsva.tariffBearing.value} ${(this.costs.rsva.tariffBearing.currencyCode === 'EUR' ? '€' : this.costs.rsva.tariffBearing.currencyCode)}`;
+    this.tariffBearingPrice = `${this.costs.rsva.tariffBearing.value} ${(this.costs.rsva.tariffBearing.currencySymbol)}`;
+    this.initializeBulkData();
 
-    this.isLoading = true;
+    this.loading = true;
+    return this.$q.all({
+      directory: this.tucVoipService.getServiceDirectory(this.serviceInfos),
+      rateCodeInfos: this.getRateCodeInformations(this.serviceInfos),
+      rsvaInfos: this.tucVoipServiceAlias.getRSVAInformations(this.serviceInfos),
+      schema: this.OvhApiOrder.v6().schema().$promise,
+    })
+      .then(({
+        directory, rateCodeInfos, rsvaInfos, schema,
+      }) => {
+        this.rateCodeInfos = rateCodeInfos.rateCodeInfos;
+        this.directory = directory;
 
-    // Initialize bulk datas
+        this.allowedRateCodes = rateCodeInfos.allowedRateCodes;
+        this.currentRateCode = rateCodeInfos.currentRateCode;
+
+        this.rateCode = this.allowedRateCodes
+          .find(({ code }) => code === this.currentRateCode.rateCode);
+        this.pricingType = this.rateCode.pricePerMinuteWithoutTax.value > 0 ? 'minute' : 'call';
+        this.updateRateCodesByType();
+
+        this.scheduledRateCode = rateCodeInfos.scheduledRateCode;
+
+        if (this.scheduledRateCode) {
+          this.tariffBearingPrice = this.scheduledRateCode.updateRateCodePriceWithoutTax.value
+            ? this.scheduledRateCode.updateRateCodePriceWithoutTax.text : this.tariffBearingPrice;
+        }
+
+        if (_.has(schema, 'models[\'telephony.NumberSpecialTypologyEnum\'].enum')) {
+          this.regExp = new RegExp(`^${directory.country}_`);
+          this.typologies = schema.models['telephony.NumberSpecialTypologyEnum'].enum
+            .filter(element => element.match(this.regExp))
+            .map(typology => ({
+              value: typology,
+              displayValue: `${this.$translate.instant(`telephony_alias_special_rsva_infos_typology_${typology.replace(this.regExp, '')}_label`)}`,
+            }));
+
+          this.typology = _.find(this.typologies, { value: `${directory.country}_${rsvaInfos.typology.replace(directory.country, '')}` });
+          this.copyTypology = angular.copy(this.typology);
+        }
+      })
+      .catch((error) => {
+        this.TucToast.error(
+          `${this.$translate.instant('telephony_alias_special_rsva_loading_error')} ${_.get(error, 'data.message', error.message)}`,
+        );
+      })
+      .finally(() => {
+        this.loading = false;
+      });
+  }
+
+  getRateCodeInformations() {
+    return this.$q.all({
+      allowedRateCodes: this.tucVoipServiceAlias.getAllowedRateCodes(this.serviceInfos),
+      currentRateCode: this.tucVoipServiceAlias.getCurrentRateCode(this.serviceInfos),
+      scheduledRateCode: this.tucVoipServiceAlias.getScheduledRateCode(this.serviceInfos),
+    });
+  }
+
+  initializeBulkData() {
     this.bulkData = {
       infos: {
         name: 'rsva',
@@ -43,78 +100,21 @@ angular.module('managerApp').controller('TelecomTelephonyAliasSpecialRsvaCtrl', 
         }],
       },
     };
-
-    return this.$q.all([
-      this.OvhApiTelephony.Rsva().v6().getCurrentRateCode({
-        billingAccount: this.billingAccount,
-        serviceName: this.serviceName,
-      }).$promise.then((rateCodeInfos) => {
-        this.rateCodeInfos = rateCodeInfos;
-        return this.OvhApiTelephony.Rsva().v6().getAllowedRateCodes({
-          billingAccount: this.billingAccount,
-          serviceName: this.serviceName,
-        }).$promise.then((allowedRateCodes) => {
-          this.allowedRateCodes = allowedRateCodes;
-          this.rsva.rateCode = _.find(this.allowedRateCodes, { code: _.get(rateCodeInfos, 'rateCode') });
-          this.rsvaForm.rateCode = this.rsva.rateCode;
-        });
-      }),
-
-      this.OvhApiTelephony.Rsva().v6().getScheduledRateCode({
-        billingAccount: this.billingAccount,
-        serviceName: this.serviceName,
-      }).$promise.then((scheduledRateCode) => {
-        if (scheduledRateCode) {
-          this.scheduledRateCode = scheduledRateCode;
-          this.formattedEffectiveDatetime = this.$filter('date')(this.scheduledRateCode.effectiveDatetime, 'dd/MM/yyyy');
-          this.formattedCancelLimitDatetime = this.$filter('date')(this.scheduledRateCode.cancelLimitDatetime, 'dd/MM/yyyy');
-          this.tariffBearingPrice = this.scheduledRateCode.updateRateCodePriceWithoutTax.value
-            ? this.scheduledRateCode.updateRateCodePriceWithoutTax.text : this.tariffBearingPrice;
-        }
-      }).catch(() => false),
-
-      this.OvhApiTelephonyService.v6().directory({
-        billingAccount: this.billingAccount,
-        serviceName: this.serviceName,
-      }).$promise.then((result) => {
-        this.rsvaInfos = _.pick(result, ['siret', 'email']);
-        return this.OvhApiTelephony.Rsva().v6().get({
-          billingAccount: this.billingAccount,
-          serviceName: this.serviceName,
-        }).$promise.then(details => this.OvhApiOrder.v6().schema().$promise.then((schema) => {
-          if (_.has(schema, 'models[\'telephony.NumberSpecialTypologyEnum\'].enum')) {
-            const regExp = new RegExp(`^${result.country}_`);
-            this.typologies = _.map(
-              _.filter(schema.models['telephony.NumberSpecialTypologyEnum'].enum, elt => elt.match(regExp)),
-              typo => ({
-                value: typo,
-                label: `${this.$translate.instant(`telephony_alias_special_rsva_infos_typology_${typo.replace(regExp, '')}_label`)}`,
-              }),
-            );
-
-            this.rsva.typology = _.find(this.typologies, { value: `${result.country}_${details.typology.replace(result.country, '')}` });
-            this.rsvaForm.typology = this.rsva.typology;
-          }
-        }));
-      }),
-    ]).catch((err) => {
-      this.TucToast.error([this.$translate.instant('telephony_alias_special_rsva_loading_error'), err.message].join(' '));
-      return this.$q.reject(err);
-    }).finally(() => {
-      this.isLoading = false;
-    });
   }
 
-  additionalInfos(rateCode) {
-    const decimalPrecision = 5;
-    if (rateCode.pricePerCallWithoutTax.value) {
-      return `(${_.padRight(rateCode.pricePerCallWithoutTax.value, decimalPrecision, 0)}€${this.$translate.instant('telephony_alias_special_rsva_tariff_bearing_per_call')})`;
-    }
+  updateRateCodesByType() {
+    this.availableRateCodes = this.allowedRateCodes
+      .filter(({ pricePerMinuteWithoutTax, pricePerCallWithoutTax }) => (this.pricingType === 'minute'
+        ? pricePerMinuteWithoutTax.value > 0 : pricePerCallWithoutTax.value > 0));
 
-    if (rateCode.pricePerMinuteWithoutTax.value) {
-      return `(${_.padRight(rateCode.pricePerMinuteWithoutTax.value, decimalPrecision, 0)}€${this.$translate.instant('telephony_alias_special_rsva_tariff_bearing_per_minute')})`;
+    if (this.availableRateCodes.length > 0) {
+      this.rateCode = this.availableRateCodes
+        .find(({ code }) => code === this.currentRateCode.rateCode)
+        || _.first(this.availableRateCodes);
+    } else {
+      // If some rate codes are messy (no price), we add the current rate code for display purpose
+      this.availableRateCodes.push(this.rateCode);
     }
-    return '';
   }
 
   onChangeTariffBearing() {
@@ -122,56 +122,35 @@ angular.module('managerApp').controller('TelecomTelephonyAliasSpecialRsvaCtrl', 
     return this.rateCodeChanged;
   }
 
-  hasChanges() {
-    return (this.rateCodeChanged && this.tariffBearingChangeAgreed)
-    || !angular.equals(this.rsva.typology, this.rsvaForm.typology);
+  hasChangedRateCode() {
+    return !angular.equals(this.rateCode.code, this.currentRateCode.rateCode)
+      && this.tariffBearingChangeAgreed;
   }
 
-  updateRateCode() {
-    return this.OvhApiTelephony.Rsva().v6().scheduleRateCode({
-      billingAccount: this.billingAccount,
-      serviceName: this.serviceName,
-    }, { rateCode: _.get(this.rsvaForm, 'rateCode.code', '') }).$promise.then(() => {
-      this.rsva = angular.copy(this.rsvaForm);
-      this.isEditing = false;
-    });
-  }
-
-  updateTypology() {
-    return this.OvhApiTelephony.Rsva().v6().edit({
-      billingAccount: this.billingAccount,
-      serviceName: this.serviceName,
-    }, { typology: this.rsvaForm.typology.value.replace('fr_', '') }).$promise;
+  hasChanged() {
+    return this.hasChangedRateCode() || !angular.equals(this.typology, this.copyTypology);
   }
 
   applyChanges() {
-    const promises = [];
-    this.isUpdating = true;
+    this.loading = true;
 
-    if (this.rateCodeChanged && this.tariffBearingChangeAgreed) {
-      promises.push(this.updateRateCode());
-    }
-
-    promises.push(this.updateTypology());
-
-    return this.$q.allSettled(promises).then(() => {
-      this.TucToast.success(this.$translate.instant('telephony_alias_special_rsva_success'));
-    }).then(() => {
-      this.isEditing = false;
-    }).catch((err) => {
-      this.TucToast.error([this.$translate.instant('telephony_alias_special_rsva_error'), err.message].join(' '));
-      return this.$q.reject(err);
+    return this.$q.all({
+      rateCode: this.hasChangedRateCode() ? this.tucVoipServiceAlias.updateRateCode(
+        this.serviceInfos, this.rateCode.code,
+      ) : this.$q.when(),
+      typology: this.tucVoipServiceAlias.updateTypology(this.serviceInfos, this.typology.value.replace(this.regExp, '')),
     })
+      .then(() => this.$state.go('^').then(() => {
+        this.TucToast.success(this.$translate.instant('telephony_alias_special_rsva_success'));
+      }))
+      .catch((error) => {
+        this.TucToast.error(
+          `${this.$translate.instant('telephony_alias_special_rsva_error')} ${_.get(error, 'data.message', error.message)}`,
+        );
+      })
       .finally(() => {
-        this.isUpdating = false;
+        this.loading = false;
       });
-  }
-
-  cancelEdition() {
-    this.isEditing = false;
-    this.rsvaForm.rateCode = this.rsva.rateCode;
-    this.rsvaForm.typology = this.rsva.typology;
-    this.rateCodeChanged = false;
   }
 
   /* =====================================
@@ -179,39 +158,23 @@ angular.module('managerApp').controller('TelecomTelephonyAliasSpecialRsvaCtrl', 
   ====================================== */
 
   filterServices() {
-    return services => this.$q.allSettled(_.map(services,
-      service => this.OvhApiTelephony.Rsva().v6().getCurrentRateCode({
-        billingAccount: service.billingAccount,
-        serviceName: service.serviceName,
-      }).$promise))
+    return services => this.$q.allSettled(
+      services.map(({ billingAccount, serviceName }) => this.tucVoipServiceAlias
+        .getCurrentRateCode({
+          billingAccount, serviceName,
+        })),
+    )
       .then(result => result)
       .catch(result => result)
-      .then((promises) => {
-        const filteredServices = [];
-        _.times(promises.length, (index) => {
-          if (promises[index].status !== 404 && promises[index].status !== 400) {
-            filteredServices.push(services[index]);
-          }
-        });
-
-        return filteredServices;
-      });
+      .then(promises => promises
+        .map((promise, index) => (![400, 404].includes(promise.status) ? services[index] : null))
+        .filter(promise => promise));
   }
 
   getBulkParams() {
-    return (action) => {
-      let param;
-      if (action === 'scheduleRateCode') {
-        param = {
-          rateCode: _.get(this.rsvaForm, 'rateCode.code', ''),
-        };
-      } else {
-        param = {
-          typology: this.rsvaForm.typology.value.replace('fr_', ''),
-        };
-      }
-      return param;
-    };
+    return action => (action === 'scheduleRateCode'
+      ? { rateCode: _.get(this.rateCode, 'code', '') }
+      : { typology: this.typology.value.replace(this.regExp, '') });
   }
 
   onBulkSuccess() {
@@ -237,7 +200,9 @@ angular.module('managerApp').controller('TelecomTelephonyAliasSpecialRsvaCtrl', 
 
   onBulkError() {
     return (error) => {
-      this.TucToast.error([this.$translate.instant('telephony_alias_special_rsva_bulk_on_error'), _.get(error, 'msg.data', '')].join(' '));
+      this.TucToast.error(
+        `${this.$translate.instant('telephony_alias_special_rsva_bulk_on_error')} ${_.get(error, 'data.message', error.message)}`,
+      );
     };
   }
 });

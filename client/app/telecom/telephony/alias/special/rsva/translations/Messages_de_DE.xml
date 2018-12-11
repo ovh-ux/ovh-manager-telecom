@@ -1,16 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <translations>
+   <translation id="telephony_alias_special_rsva_title">Tarification</translation>
+   <translation id="telephony_alias_special_rsva_subtitle" qtlid="501808">Modifiez votre palier tarifaire, définissez la typologie de votre service ou indiquez l'identité du titulaire du service.</translation>
+
+   <translation id="telephony_alias_special_rsva_number_fee_description_part_one">La première modification du palier tarifaire est offerte. Par la suite, la modification sera facturée {{price}} HT.</translation>
+   <translation id="telephony_alias_special_rsva_number_fee_description_part_two">Effectuée avant le 20 du mois, cette modification sera effective le 1er du mois suivant.</translation>
+
+   <translation id="telephony_alias_special_rsva_pricing_type">Coût HT du service pour l’appelant</translation>
+   <translation id="telephony_alias_special_rsva_pricing_type_minute">Tarif par minute (Décompté à la seconde)</translation>
+   <translation id="telephony_alias_special_rsva_pricing_type_call">Forfait par appel</translation>
+   <translation id="telephony_alias_special_rsva_pricing_current_rate_code">(palier actuel)</translation>
+
+   <translation id="telephony_alias_special_rsva_call_repayment">Reversement de l’appel : {{price}}€ HT/min</translation>
+   <translation id="telephony_alias_special_rsva_owner_repayment">Reversement HT pour le titulaire du service : {{price}}€/min</translation>
+   <translation id="telephony_alias_special_rsva_tariff_bearing_changed_checkbox" qtlid="501899">Je reconnais avoir été informé que, passée la première modification tarifaire, cette opération me sera facturée {{price}} HT.</translation>
+
+   <translation id="telephony_alias_special_rsva_infos_title" qtlid="501990">Renseignements du numéro à l'attention du consommateur</translation>
+   <translation id="telephony_alias_special_rsva_infos_siret_label">Numéro Siret</translation>
+   <translation id="telephony_alias_special_rsva_infos_email_label">E-mail</translation>
+   <translation id="telephony_alias_special_rsva_infos_typology_label" qtlid="279743">Typ</translation>
+   <translation id="telephony_alias_special_rsva_infos_typology_label_help">La déclaration d’une typologie du service permettra de faciliter l’identification du service par le consommateur et une application simplifiée des règles déontologiques présentées par typologie de service. Réglementation ARCEP 12-0856</translation>
+
+
    <translation id="telephony_alias_special_rsva_title_back_link" qtlid="501704">Retour à la gestion des reversements</translation>
-   <translation id="telephony_alias_special_rsva_title" qtlid="501795">Tarification RSVA</translation>
-   <translation id="telephony_alias_special_rsva_topology_info" qtlid="501808">Modifiez votre palier tarifaire, définissez la typologie de votre service ou indiquez l'identité du titulaire du service.</translation>
    <translation id="telephony_alias_special_rsva_number_fee_title" qtlid="501821">Tarification du numéro</translation>
-   <translation id="telephony_alias_special_rsva_number_fee_description" qtlid="501834">La première modification du palier tarifaire est offerte. Par la suite, la modification sera facturée {{price}} HT.<br/>Effectuée avant le 20 du mois, cette modification sera effective le 1er du mois suivant.</translation>
+
    <translation id="telephony_alias_special_rsva_tariff_bearing_desc_label" qtlid="501847">Palier tarifaire actuel</translation>
    <translation id="telephony_alias_special_rsva_tariff_bearing_label" qtlid="501860">Nouveau palier tarifaire</translation>
    <translation id="telephony_alias_special_rsva_tariff_bearing_per_call" qtlid="501873">/ appel</translation>
    <translation id="telephony_alias_special_rsva_tariff_bearing_per_minute" qtlid="501886">/ min</translation>
    <translation id="telephony_alias_special_rsva_tariff_bearing_undefined_value" qtlid="102765">Nicht definiert</translation>
-   <translation id="telephony_alias_special_rsva_tariff_bearing_changed_checkbox" qtlid="501899">Je reconnais avoir été informé que, passée la première modification tarifaire, cette opération me sera facturée {{price}} HT.</translation>
+
    <translation id="telephony_alias_special_rsva_tariff_bearing_calling_price_label" qtlid="29167">Preis des Anrufs</translation>
    <translation id="telephony_alias_special_rsva_tariff_bearing_transfer_price_label" qtlid="501912">Reversement de l'appel</translation>
 
@@ -21,13 +41,11 @@
    <translation id="telephony_alias_special_rsva_scheduled_effective_date_label" qtlid="501951">Date effective</translation>
    <translation id="telephony_alias_special_rsva_scheduled_cancel_date_label" qtlid="501964">Date limite d'annulation</translation>
    <translation id="telephony_alias_special_rsva_scheduled_update_price_label" qtlid="501977">Coût du changement</translation>
+   <translation id="telephony_alias_special_rsva_scheduled_price" qtlid="501782">{{price}} € HT</translation>
 
    <translation id="telephony_alias_special_rsva_loading_error" qtlid="164675">Beim Abruf der Informationen ist ein Fehler aufgetreten</translation>
 
-   <translation id="telephony_alias_special_rsva_infos_title" qtlid="501990">Renseignements du numéro à l'attention du consommateur</translation>
-   <translation id="telephony_alias_special_rsva_infos_siret_label" qtlid="333802">Siret</translation>
-   <translation id="telephony_alias_special_rsva_infos_email_label" qtlid="33598">E-Mail</translation>
-   <translation id="telephony_alias_special_rsva_infos_typology_label" qtlid="279743">Typ</translation>
+
 
    <translation id="telephony_alias_special_rsva_infos_typology_access_label" qtlid="346911">Services délivrant des Codes d'accès</translation>
    <translation id="telephony_alias_special_rsva_infos_typology_adults_label" qtlid="347028">Contenu pour adultes</translation>

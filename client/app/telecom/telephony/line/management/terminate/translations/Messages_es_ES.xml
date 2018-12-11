@@ -9,10 +9,10 @@
    <translation id="telephony_group_line_terminate_info_4" qtlid="338378">Dispone de un plazo de 15 días para devolver el antiguo aparato desde la baja efectiva de la línea. La fianza se devolverá en una plazo de 10 días una vez recibido el dispositivo.</translation>
    <translation id="telephony_group_line_terminate_back_address" qtlid="338391">Dirección de devolución:&#160;</translation>
 
-   <translation id="telephony_group_line_terminate_address_name">OVH SAS</translation>
-   <translation id="telephony_group_line_terminate_address_service">Service Après Vente</translation>
-   <translation id="telephony_group_line_terminate_address_address">155 avenue Georges Hannart</translation>
-   <translation id="telephony_group_line_terminate_address_city">59170 Croix</translation>
+   <translation id="telephony_group_line_terminate_address_name" qtlid="61392">OVH SAS</translation>
+   <translation id="telephony_group_line_terminate_address_service" qtlid="509626">Service Après Vente</translation>
+   <translation id="telephony_group_line_terminate_address_address" qtlid="509639">155 avenue Georges Hannart</translation>
+   <translation id="telephony_group_line_terminate_address_city" qtlid="509652">59170 Croix</translation>
 
    <translation id="telephony_group_line_terminate_action_title" qtlid="338131">Baja de la línea</translation>
    <translation id="telephony_group_line_terminate_action_label" qtlid="338417">Por favor, indíquenos el motivo de la baja para ayudarnos a mejorar nuestros servicios:&#160;</translation>
