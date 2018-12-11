@@ -1,11 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <translations>
-   <translation id="telephony_alias_configuration_calls_filtering_title" qtlid="335141">Puhelujen suodatus</translation>
-   <translation id="telephony_alias_configuration_calls_filtering_config" qtlid="461289">Consulter, modifier ou exporter la configuration actuelle</translation>
+   <translation id="telephony_alias_configuration_calls_filtering_title">File d’appels : filtrage des appels</translation>
+   <translation id="telephony_alias_configuration_calls_filtering_subtitle">Le filtrage des appels vous permet de rejeter automatiquement une liste de numéros (liste noire) ou à l’inverse de n’accepter que certains numéros (liste blanche).</translation>
+
+   <translation id="telephony_alias_configuration_calls_filtering_configuration_filters">Configuration des filtrages</translation>
+   <translation id="telephony_alias_configuration_calls_filtering_anonymous_rejection">Rejeter automatiquement les appels anonymes</translation>
+   <translation id="telephony_alias_configuration_calls_filtering_anonymous_rejection_help">Si un correspondant vous appelle sans présenter son numéro, il entendra un message lui indiquant que vous n’acceptez pas ce type de communication.</translation>
+
+   <translation id="telephony_alias_configuration_calls_filtering_option_enabled" qtlid="30250">Aktivoitu</translation>
+   <translation id="telephony_alias_configuration_calls_filtering_option_disabled" qtlid="24967">Deaktivoitu</translation>
+
+   <translation id="telephony_alias_configuration_calls_filtering_configuration_lists">Configuration des listes</translation>
+   <translation id="telephony_alias_configuration_calls_filtering_type_list">Type de liste</translation>
+   <translation id="telephony_alias_configuration_calls_filtering_type_disabled">Aucun filtrage</translation>
+   <translation id="telephony_alias_configuration_calls_filtering_type_incomingWhiteList">Appels entrants autorisés (liste blanche)</translation>
+   <translation id="telephony_alias_configuration_calls_filtering_type_incomingBlackList">Appels entrants refusés (liste noire)</translation>
+   <translation id="telephony_alias_configuration_calls_filtering_type_outgoingWhiteList">Appels sortants autorisés (liste blanche)</translation>
+   <translation id="telephony_alias_configuration_calls_filtering_type_outgoingBlackList">Appels sortants refusés (liste noire)</translation>
+
+   <translation id="telephony_alias_configuration_calls_filtering_helpers">Ajout automatique de certains types de numéros dans la liste</translation>
+   <translation id="telephony_alias_configuration_calls_filtering_helper_mobile" qtlid="359137">Kansalliset matkapuhelimet</translation>
+   <translation id="telephony_alias_configuration_calls_filtering_helper_line" qtlid="359150">Kansalliset lankapuhelimet</translation>
+   <translation id="telephony_alias_configuration_calls_filtering_helper_foreign" qtlid="359163">Tuntemattomat numerot</translation>
+   <translation id="telephony_alias_configuration_calls_filtering_helper_special" qtlid="58991">Erikoisnumerot</translation>
+   <translation id="telephony_alias_configuration_calls_filtering_helper_short" qtlid="359176">Lyhytnumerot</translation>
+
+   <translation id="telephony_alias_configuration_calls_filtering_number_type_mobile">Mobile national</translation>
+   <translation id="telephony_alias_configuration_calls_filtering_number_type_line">Fixe national</translation>
+   <translation id="telephony_alias_configuration_calls_filtering_number_type_foreign">Numéro étranger</translation>
+   <translation id="telephony_alias_configuration_calls_filtering_number_type_special">Numéro spécial</translation>
+   <translation id="telephony_alias_configuration_calls_filtering_number_type_short">Numéro court</translation>
+
+   <translation id="telephony_alias_configuration_calls_filtering_add_number">Ajouter un numéro</translation>
+   <translation id="telephony_alias_configuration_calls_filtering_add_number_placeholder">Ex: 00332415...</translation>
+
+   <translation id="telephony_alias_configuration_calls_filtering_activation">Activation du filtrage</translation>
+
+   <translation id="telephony_alias_configuration_calls_filtering_lists_details">Détails de vos listes</translation>
+   <translation id="telephony_alias_configuration_calls_filtering_lists_export_one">Exporter la liste</translation>
+   <translation id="telephony_alias_configuration_calls_filtering_lists_export_many">Exporter les listes</translation>
+   <translation id="telephony_alias_configuration_calls_filtering_lists_number" qtlid="386326">Numerot</translation>
+   <translation id="telephony_alias_configuration_calls_filtering_lists_type_number" qtlid="93283">Numeron tyyppi</translation>
+   <translation id="telephony_alias_configuration_calls_filtering_lists_status" qtlid="26443">Tila</translation>
+
+   <translation id="telephony_alias_configuration_calls_filtering_lists_csv_filename" qtlid="358786">Suodatus</translation>
+
    <translation id="telephony_alias_configuration_calls_filtering_new" qtlid="358721">Konfiguroi uusia suodatuksia</translation>
    <translation id="telephony_alias_configuration_calls_filtering_enable" qtlid="460418">Activation des filtrages</translation>
    <translation id="telephony_alias_configuration_calls_filtering_incoming" qtlid="359033">Saapuvien puhelujen suodatus</translation>
    <translation id="telephony_alias_configuration_calls_filtering_list_none" qtlid="358981">Yksikään lista ei ole aktiivinen</translation>
-   <translation id="telephony_alias_configuration_calls_filtering_list_white" qtlid="324301">Liste blanche</translation>
-   <translation id="telephony_alias_configuration_calls_filtering_list_black" qtlid="324288">Liste noire</translation>
+   <translation id="telephony_alias_configuration_calls_filtering_list_incomingWhiteList" qtlid="358955">Valkoinen</translation>
+   <translation id="telephony_alias_configuration_calls_filtering_list_incomingBlackList" qtlid="358968">Musta</translation>
+
+   <translation id="telephony_alias_configuration_calls_filtering_change_status">Modifier le statut</translation>
+   <translation id="telephony_alias_configuration_calls_filtering_delete_all_question_title">Supprimer les listes</translation>
+   <translation id="telephony_alias_configuration_calls_filtering_delete_one_question_title">Supprimer la liste</translation>
+   <translation id="telephony_alias_configuration_calls_filtering_delete_all_question">Êtes-vous sûr de vouloir supprimer les listes sélectionnées ?</translation>
+   <translation id="telephony_alias_configuration_calls_filtering_delete_one_question">Êtes-vous sûr de vouloir supprimer la liste sélectionnée ?</translation>
+
+   <translation id="telephony_alias_configuration_calls_filtering_add_success">Le filtrage de vos appels a été configuré.</translation>
+   <translation id="telephony_alias_configuration_calls_filtering_add_error">Une erreur est survenue lors de la configuration du filtrage des appels.</translation>
+
+   <translation id="telephony_alias_configuration_calls_filtering_get_error">Une erreur est survenue lors de la récupération du filtrage des appels.</translation>
+   <translation id="telephony_alias_configuration_calls_filtering_update_error">Une erreur est survenue lors de la mise à jour du filtrage des appels.</translation>
+   <translation id="telephony_alias_configuration_calls_filtering_delete_all_error">Une erreur est survenue lors de la suppression de vos listes.</translation>
+   <translation id="telephony_alias_configuration_calls_filtering_delete_error">Une erreur est survenue lors de la suppression de la liste.</translation>
+
+   <translation id="telephony_line_calls_filtering_bulk_all_success" qtlid="457818">Le filtrage d'appels a bien été appliqué aux services sélectionnés.</translation>
+   <translation id="telephony_line_calls_filtering_bulk_some_success" qtlid="457831">Le filtrage d'appels a bien été appliqué à {{ count }} des services sélectionnés.</translation>
+   <translation id="telephony_line_calls_filtering_bulk_error" qtlid="457844">Le filtrage d'appels n'a pas pu être appliqué au(x) service(s) suivant(s) :</translation>
+   <translation id="telephony_line_calls_filtering_bulk_on_error" qtlid="457857">Oups ! Une erreur est survenue lors de l'application du filtrage d'appels.</translation>
 </translations>

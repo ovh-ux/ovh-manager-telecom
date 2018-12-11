@@ -21,7 +21,7 @@
    <translation id="pack_move_eligibility_synchronisation_line_active" qtlid="29635">Activo</translation>
    <translation id="pack_move_eligibility_synchronisation_line_inactive" qtlid="312701">Inactiva</translation>
    <translation id="pack_move_eligibility_synchronisation_upload" qtlid="312714">Subida:</translation>
-   <translation id="pack_move_eligibility_synchronisation_mbps" qtlid="105550">Mbps</translation>
+   <translation id="pack_move_eligibility_synchronisation_mbps" qtlid="105550">Mbit/s</translation>
    <translation id="pack_move_eligibility_unbundling_total" qtlid="79338">"Degrupación" total</translation>
    <translation id="pack_move_eligibility_unbundling_createNeighbour" qtlid="312727">Creación de vecindad</translation>
    <translation id="pack_move_eligibility_unbundling_creation" qtlid="312740">Creación de línea</translation>

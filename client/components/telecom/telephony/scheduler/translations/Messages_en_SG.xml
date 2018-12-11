@@ -10,7 +10,7 @@
    <translation id="telephony_scheduler_actions_add" qtlid="37923">Add</translation>
    <translation id="telephony_scheduler_actions_import" qtlid="69869">Import</translation>
    <translation id="telephony_scheduler_actions_export" qtlid="69881">Export</translation>
-   <translation id="telephony_scheduler_actions_bank_holidays" qtlid="395960">Jours fériés</translation>
+   <translation id="telephony_scheduler_actions_bank_holidays">Afficher les jours fériés</translation>
    <translation id="telephony_scheduler_actions_bank_delete_all" qtlid="159891">Delete all</translation>
 
 <!-- IMPORT ACTION -->
@@ -60,6 +60,7 @@
    <translation id="telephony_scheduler_bank_holidays_inject" qtlid="396428">Injecter {{ count }} jours fériés</translation>
 
 <!-- DELETE ALL -->
+   <translation id="telephony_scheduler_delete_all_confirm_question_title">Suppression des fermetures exceptionnelles</translation>
    <translation id="telephony_scheduler_delete_all_confirm_question" qtlid="396441">Êtes-vous certain de vouloir supprimer toutes vos fermetures exceptionnelles ?</translation>
 
 <!-- TIME ZONE -->

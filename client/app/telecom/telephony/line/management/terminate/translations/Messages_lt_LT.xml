@@ -9,10 +9,10 @@
    <translation id="telephony_group_line_terminate_info_4" qtlid="338378">Senąją įrangą reikia grąžinti per 15 dienų nuo linijos atjungimo. Užstatas bus grąžintas per 10 dienų nuo įrangos gavimo.</translation>
    <translation id="telephony_group_line_terminate_back_address" qtlid="338391">Grąžinimo adresas:&#160;</translation>
 
-   <translation id="telephony_group_line_terminate_address_name">OVH SAS</translation>
-   <translation id="telephony_group_line_terminate_address_service">Service Après Vente</translation>
-   <translation id="telephony_group_line_terminate_address_address">155 avenue Georges Hannart</translation>
-   <translation id="telephony_group_line_terminate_address_city">59170 Croix</translation>
+   <translation id="telephony_group_line_terminate_address_name" qtlid="61392">UAB OVH</translation>
+   <translation id="telephony_group_line_terminate_address_service" qtlid="509626">Service Après Vente</translation>
+   <translation id="telephony_group_line_terminate_address_address" qtlid="509639">155 avenue Georges Hannart</translation>
+   <translation id="telephony_group_line_terminate_address_city" qtlid="509652">59170 Croix</translation>
 
    <translation id="telephony_group_line_terminate_action_title" qtlid="338131">Linijos atsisakymas</translation>
    <translation id="telephony_group_line_terminate_action_label" qtlid="338417">Padėkite mums tobulinti savo paslaugas ir nurodykite  atsisakymo priežastį:&#160;</translation>

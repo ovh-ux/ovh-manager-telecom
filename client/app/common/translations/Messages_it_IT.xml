@@ -33,6 +33,7 @@
    <translation id="common_criteria_adder_value_label" qtlid="47548">Valore</translation>
    <translation id="common_criteria_adder_submit_label" qtlid="37923">Aggiungi</translation>
 
+   <translation id="common_none" qtlid="30646">Nessuno</translation>
    <translation id="common_datagrid_nodata" qtlid="197635">Nessun risultato</translation>
 
    <translation id="common_field_error_required" qtlid="472294">Completa questo campo.</translation>
@@ -52,6 +53,8 @@
    <translation id="common_navbar_notification_mark_as_unread" qtlid="70877">Segna come non letto</translation>
    <translation id="common_navbar_notification_none" qtlid="492081">È tutto aggiornato!</translation>
    <translation id="common_navbar_notification_none_description" qtlid="492094">Non hai nessuna notifica</translation>
+
+   <translation id="common_open_new_tab">Ouvre un nouvel onglet</translation>
 
    <translation id="common_pagination_resultsperpage" qtlid="433384">Risultati per pagina</translation>
    <translation id="common_pagination_page" qtlid="433397">pagina</translation>
@@ -79,6 +82,7 @@
    <translation id="show" qtlid="69353">Mostra</translation>
    <translation id="hide" qtlid="26539">Nascondere</translation>
    <translation id="common_add" qtlid="37923">Aggiungi</translation>
+   <translation id="common_apply" qtlid="41326">Applica</translation>
    <translation id="common_actions" qtlid="72809">Azioni</translation>
 
    <translation id="common_between_and" qtlid="479252">Entre {{between}} et {{and}}</translation>
@@ -86,6 +90,10 @@
    <translation id="common_search" qtlid="37659">Ricerca</translation>
 
    <translation id="common_error_title" qtlid="26407">Errore</translation>
+   <translation id="common_delete_selected_one_item">Supprimer l’élément sélectionné</translation>
+   <translation id="common_delete_selected_items">Supprimer les éléments sélectionnés</translation>
+   <translation id="common_delete_selected_items_count">{{count}} élément(s) sélectionné(s)</translation>
+   <translation id="common_two_of_them">Les deux</translation>
 
    <translation id="an_error_occured" qtlid="148981">Si è verificato un errore</translation>
    <translation id="error_401" qtlid="304472">Accesso non autorizzato</translation>
@@ -94,6 +102,7 @@
    <translation id="error_456" qtlid="304511">Errore irrecuperabile lato client</translation>
    <translation id="loading" qtlid="242769">Caricamento in corso...</translation>
    <translation id="submit" qtlid="26047">Conferma</translation>
+   <translation id="apply" qtlid="41326">Applica</translation>
    <translation id="edit" qtlid="6766">Modifica</translation>
    <translation id="modify" qtlid="37875">Modifica</translation>
    <translation id="common_add" qtlid="37923">Aggiungi</translation>
