@@ -1,74 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <translations>
-   <translation id="telephony_alias_configuration_mode_title" qtlid="340354">Gestisci le opzioni</translation>
-   <translation id="telephony_alias_configuration_mode_info_title" qtlid="26551">Informazioni</translation>
-   <translation id="telephony_alias_configuration_mode_config_title" qtlid="4406">Configurazione</translation>
-   <translation id="telephony_alias_configuration_mode_apply" qtlid="249107">Applica le modifiche</translation>
-   <translation id="telephony_alias_configuration_mode_cancel" qtlid="172280">Annulla le modifiche</translation>
-   <translation id="telephony_alias_configuration_mode_file" qtlid="392970">File...</translation>
+   <translation id="telephony_alias_config_contactCenterSolution_sounds_title">File d’appels : gestion des sons et de l’attente</translation>
+   <translation id="telephony_alias_config_contactCenterSolution_sounds_subtitle">Pour compléter votre stratégie, vous pouvez personnaliser avec des sons ce que vos clients entendront selon leur place dans la {{feature}}</translation>
 
-   <translation id="telephony_alias_configuration_mode_info1" qtlid="392541">È possibile modificare il funzionamento della tua coda:</translation>
-   <translation id="telephony_alias_configuration_mode_pabx_apply_changes" qtlid="249107">Applica le modifiche</translation>
+   <translation id="telephony_alias_config_contactCenterSolution_sounds_waiting_configuration">Configuration de l’attente</translation>
+   <translation id="telephony_alias_config_contactCenterSolution_sounds_waiting_opening_annonce" qtlid="392879">Messaggio prima della messa in attesa</translation>
+   <translation id="telephony_alias_config_contactCenterSolution_sounds_waiting_opening_annonce_help">Annonce diffusée avant la mise en attente dans la file.</translation>
+   <translation id="telephony_alias_config_contactCenterSolution_sounds_waiting_onHold" qtlid="358422">Musica di attesa</translation>
+   <translation id="telephony_alias_config_contactCenterSolution_sounds_waiting_onHold_help">Musique diffusée lorsque l’appelant est en attente</translation>
 
-<!-- STRATEGY -->
-   <translation id="telephony_alias_configuration_mode_pabx_strategy" qtlid="294841">Strategia</translation>
-   <translation id="telephony_alias_configuration_mode_pabx_strategy_ringAll" qtlid="294906">Tutti contemporaneamente</translation>
-   <translation id="telephony_alias_configuration_mode_pabx_strategy_ringAll_info" qtlid="392762">Tutti i telefoni squillano contemporaneamente, il primo che risponde riceve la chiamata alla sua postazione.</translation>
+   <translation id="telephony_alias_config_contactCenterSolution_sounds_overflow_configuration">Configuration du débordement</translation>
+   <translation id="telephony_alias_config_contactCenterSolution_sounds_overflow_max_waiting_calls" qtlid="294945">Numero massimo di chiamate in attesa</translation>
+   <translation id="telephony_alias_config_contactCenterSolution_sounds_overflow_max_waiting_calls_help">Une fois le nombre maximum atteint, le ou les appelants supplémentaires entendront l’annonce de débordement, si vous y avez ajouté un son</translation>
 
-   <translation id="telephony_alias_configuration_mode_pabx_strategy_cumulationByAgentOrder" qtlid="294854">In base all'ordine definito dai membri, cumulativo</translation>
-   <translation id="telephony_alias_configuration_mode_pabx_strategy_cumulationByAgentOrder_info" qtlid="392775">Il primo telefono della coda squilla per primo e continua a suonare, il secondo squilla dopo qualche secondo e continua a suonare contemporaneamente al primo, il terzo inizia a squillare dopo qualche secondo, ecc...</translation>
+   <translation id="telephony_alias_config_contactCenterSolution_sounds_overflow_action_to_play_help">Lorsque le nombre maximal d’appelants en attente est atteint, l’appelant tombera sur le répondeur de la ligne sélectionnée ou entendra une annonce de fermeture.</translation>
 
-   <translation id="telephony_alias_configuration_mode_pabx_strategy_longestHangupAgent" qtlid="294867">Il primo ad aver riagganciato</translation>
-   <translation id="telephony_alias_configuration_mode_pabx_strategy_longestHangupAgent_info" qtlid="392788">I telefoni squillano uno dopo l'altro, sempre nello stesso ordine.</translation>
+   <translation id="telephony_alias_config_contactCenterSolution_sounds_closing_configuration">Configuration de fermeture</translation>
+   <translation id="telephony_alias_config_contactCenterSolution_sounds_closing_timeout">Durée maximale d’attente dans la file</translation>
+   <translation id="telephony_alias_config_contactCenterSolution_sounds_closing_timeout_help">Durée maximale avant que l’appelant ne sorte de la file d’attente. Il sera redirigé sur le répondeur de votre file d’appels ou sur l’annonce de fermeture, en fonction de votre configuration.</translation>
 
-   <translation id="telephony_alias_configuration_mode_pabx_strategy_longestIdleAgent" qtlid="294880">Dal più disponibile al meno disponibile</translation>
-   <translation id="telephony_alias_configuration_mode_pabx_strategy_longestIdleAgent_info" qtlid="392801">I telefoni squillano in base alla loro disponibilità a partire dall'attivazione.</translation>
+   <translation id="telephony_alias_config_contactCenterSolution_sounds_closure_action_to_play_help">Lorsque la durée maximale d’attente dans la file est atteinte ou que les lignes de votre file d’appels sont déconnectées, l’appelant tombera sur le répondeur de la ligne sélectionnée ou entendra une annonce de fermeture.</translation>
 
-   <translation id="telephony_alias_configuration_mode_pabx_strategy_random" qtlid="294893">Casuale</translation>
-   <translation id="telephony_alias_configuration_mode_pabx_strategy_random_info" qtlid="392814">I telefoni squillano uno dopo l'altro in ordine casuale.</translation>
+   <translation id="telephony_alias_config_contactCenterSolution_sounds_add_sound" qtlid="462810">Ajouter un son</translation>
+   <translation id="telephony_alias_config_contactCenterSolution_sounds_add_voicemail">Ajouter un répondeur</translation>
+   <translation id="telephony_alias_config_contactCenterSolution_sounds_time_in_minutes">Temps exprimé en minutes.</translation>
+   <translation id="telephony_alias_config_contactCenterSolution_sounds_action_to_play">Action à jouer</translation>
+   <translation id="telephony_alias_config_contactCenterSolution_sounds_action_voicemail">Renvoyer sur un répondeur.</translation>
+   <translation id="telephony_alias_config_contactCenterSolution_sounds_action_playback">Jouer une annonce de fermeture.</translation>
 
-   <translation id="telephony_alias_configuration_mode_pabx_strategy_roundRobin" qtlid="294919">In base a una ripartizione del carico</translation>
-   <translation id="telephony_alias_configuration_mode_pabx_strategy_roundRobin_info" qtlid="392827">I telefoni squillano in base alla loro disponibilità a partire dall'ultima chiamata: il più disponibile per primo.</translation>
+<!-- Sounds upload -->
+   <translation id="telephony_alias_config_contactCenterSolution_sounds_invalid" qtlid="392931">Formato file non valido.</translation>
+   <translation id="telephony_alias_config_contactCenterSolution_sounds_size">Taille max. : 10 Mo.</translation>
+   <translation id="telephony_alias_config_contactCenterSolution_sounds_list" qtlid="392944">Seleziona un file esistente:</translation>
+   <translation id="telephony_alias_config_contactCenterSolution_sounds_delete" qtlid="135216">Elimina il file</translation>
 
-   <translation id="telephony_alias_configuration_mode_pabx_strategy_sequentiallyByAgentOrder" qtlid="294932">In base all'ordine definito dai membri</translation>
-   <translation id="telephony_alias_configuration_mode_pabx_strategy_sequentiallyByAgentOrder_info" qtlid="392840">Il primo telefono della coda squilla per primo, poi squilla il secondo, ecc...</translation>
-
-   <translation id="telephony_alias_configuration_mode_pabx_strategy_linear" qtlid="462225">Linéaire</translation>
-   <translation id="telephony_alias_configuration_mode_pabx_strategy_linear_info" qtlid="392840">Il primo telefono della coda squilla per primo, poi squilla il secondo, ecc...</translation>
-
-   <translation id="telephony_alias_configuration_mode_pabx_strategy_cyclic" qtlid="462238">Cyclique</translation>
-   <translation id="telephony_alias_configuration_mode_pabx_strategy_cyclic_info" qtlid="392788">I telefoni squillano uno dopo l'altro, sempre nello stesso ordine.</translation>
-
-   <translation id="telephony_alias_configuration_mode_pabx_strategy_mostIdleSinceLogging" qtlid="462251">Plus disponible depuis activation</translation>
-   <translation id="telephony_alias_configuration_mode_pabx_strategy_mostIdleSinceLogging_info" qtlid="392801">I telefoni squillano in base alla loro disponibilità a partire dall'attivazione.</translation>
-
-   <translation id="telephony_alias_configuration_mode_pabx_strategy_mostIdleSinceLastCall" qtlid="462264">Plus disponible depuis le dernier appel</translation>
-   <translation id="telephony_alias_configuration_mode_pabx_strategy_mostIdleSinceLastCall_info" qtlid="392827">I telefoni squillano in base alla loro disponibilità a partire dall'ultima chiamata: il più disponibile per primo.</translation>
-
-   <translation id="telephony_alias_configuration_mode_pabx_strategy_parallel" qtlid="462277">Parallèle</translation>
-   <translation id="telephony_alias_configuration_mode_pabx_strategy_parallel_info" qtlid="392762">Tutti i telefoni squillano contemporaneamente, il primo che risponde riceve la chiamata alla sua postazione.</translation>
-
-   <translation id="telephony_alias_configuration_mode_pabx_strategy_leastIdleSinceLastCall" qtlid="462290">Moins disponible depuis le dernier appel</translation>
-   <translation id="telephony_alias_configuration_mode_pabx_strategy_leastIdleSinceLastCall_info" qtlid="462303">Les téléphones sonneront suivant leur disponibilité depuis le dernier appel : le moins disponible en premier.</translation>
-
-<!-- PATTERN -->
-   <translation id="telephony_alias_configuration_mode_pabx_pattern" qtlid="462316">Mode de sonnerie</translation>
-
-   <translation id="telephony_alias_configuration_mode_pabx_pattern_cumulated" qtlid="462329">Cumulé</translation>
-   <translation id="telephony_alias_configuration_mode_pabx_pattern_cumulated_info" qtlid="462342">Les uns après les autres, en chevauchement.</translation>
-
-   <translation id="telephony_alias_configuration_mode_pabx_pattern_sequential" qtlid="462355">Séquentiel</translation>
-   <translation id="telephony_alias_configuration_mode_pabx_pattern_sequential_info" qtlid="462368">Les uns après les autres</translation>
-
-<!-- CALL REJECTION -->
-   <translation id="telephony_alias_configuration_mode_pabx_anonymous_call_rejection" qtlid="387185">Rifiuta chiamate anonime</translation>
-   <translation id="telephony_alias_configuration_mode_pabx_anonymous_call_rejection_info" qtlid="462381"><strong>Rejet des appels anonymes</strong> : permet de rejeter les appels anonymes.</translation>
-
-<!-- NUMBER OF CALLS -->
-   <translation id="telephony_alias_configuration_mode_pabx_number_of_calls" qtlid="335206">Numero di chiamate simultanee:</translation>
-   <translation id="telephony_alias_configuration_mode_pabx_number_of_calls_info" qtlid="462394"><strong>Nombre d'appels simultanés</strong> : nombre maximum d'appels simultanés par membre du groupe d'appel.</translation>
-
-<!-- STRATEGY AND PATTERN -->
-   <translation id="telephony_alias_configuration_mode_pabx_pattern_strategy_info" qtlid="462407"><strong>Stratégie et mode de sonnerie</strong> : stratégie des sonneries des membres du groupe d'appel.</translation>
-
+   <translation id="telephony_alias_config_contactCenterSolution_sounds_get_options_error">Une erreur est survenue lors de la récupération des options des sons et de l’attente de la file d’appels.</translation>
+   <translation id="telephony_alias_config_contactCenterSolution_sounds_upload_error">Une erreur est survenue lors du téléchargement du fichier.</translation>
+   <translation id="telephony_alias_config_contactCenterSolution_sounds_update_success">Les options des sons et de l’attente de la file d’appels ont été mises à jour.</translation>
+   <translation id="telephony_alias_config_contactCenterSolution_sounds_update_error">Une erreur est survenue lors la mise à jour des options de la file d’appels.</translation>
 </translations>

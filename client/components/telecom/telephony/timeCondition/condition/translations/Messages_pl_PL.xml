@@ -12,6 +12,20 @@
    <translation id="voip_time_condition_condition_popover_days_saturday" qtlid="6406">Sobota</translation>
    <translation id="voip_time_condition_condition_popover_days_sunday" qtlid="6418">Niedziela</translation>
 
+   <translation id="voip_time_condition_condition_popover_repeater">Répéter</translation>
+   <translation id="voip_time_condition_condition_popover_days_repeat_monday">Tous les lundis</translation>
+   <translation id="voip_time_condition_condition_popover_days_repeat_tuesday">Tous les mardis</translation>
+   <translation id="voip_time_condition_condition_popover_days_repeat_wednesday">Tous les mercredis</translation>
+   <translation id="voip_time_condition_condition_popover_days_repeat_thursday">Tous les jeudis</translation>
+   <translation id="voip_time_condition_condition_popover_days_repeat_friday">Tous les vendredis</translation>
+   <translation id="voip_time_condition_condition_popover_days_repeat_saturday">Tous les samedis</translation>
+   <translation id="voip_time_condition_condition_popover_days_repeat_sunday">Tous les dimanches</translation>
+   <translation id="voip_time_condition_condition_popover_days_repeat_weekDays">Seulement les jours de la semaine</translation>
+   <translation id="voip_time_condition_condition_popover_days_repeat_weekendDays">Seulement les week-ends</translation>
+   <translation id="voip_time_condition_condition_popover_days_repeat_weekDays_label">Tous les jours de la semaine</translation>
+   <translation id="voip_time_condition_condition_popover_days_repeat_weekendDays_label">Tout le week-end</translation>
+   <translation id="voip_time_condition_condition_popover_days_repeat_allDays_label">Tous les jours</translation>
+
    <translation id="voip_time_condition_condition_popover_policy" qtlid="335661">Rediriger les appels vers</translation>
    <translation id="voip_time_condition_condition_popover_time_slot" qtlid="396662">Plage horaire</translation>
    <translation id="voip_time_condition_condition_popover_time_slot_from" qtlid="69077">Od</translation>

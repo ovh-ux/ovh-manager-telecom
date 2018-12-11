@@ -22,4 +22,6 @@
    <translation id="xdsl_model_access_error" qtlid="385455">Oups ! Nous n'avons pas pu récupérer les informations relatives à votre pack.</translation>
    <translation id="xdsl_model_task_error" qtlid="385468">Oups ! Nous n'avons pas pu récupérer la pile de tâches en cours.</translation>
    <translation id="xdsl_modem_modem_error" qtlid="385481">Oups ! Nous n'avons pas pu récupérer les informations relatives à votre modem.</translation>
+
+   <translation id="xdsl_modem_firmware">Firmware</translation>
 </translations>

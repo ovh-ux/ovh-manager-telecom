@@ -66,9 +66,9 @@
    <translation id="pack_move_eligibility_street_number" qtlid="30778">Nummer</translation>
    <translation id="pack_move_eligibility_building" qtlid="313000">Bâtiment</translation>
    <translation id="pack_move_eligibility_door" qtlid="313013">Porte</translation>
-   <translation id="pack_move_eligibility_floor" qtlid="313026">Étage</translation>
+   <translation id="pack_move_eligibility_floor" qtlid="313026">Stockwerk</translation>
    <translation id="pack_move_eligibility_residence" qtlid="313039">Résidence</translation>
-   <translation id="pack_move_eligibility_stair" qtlid="313052">Escalier</translation>
+   <translation id="pack_move_eligibility_stair" qtlid="313052">Treppe</translation>
    <translation id="pack_move_eligibility_error" qtlid="313065">Une erreur est survenue durant le test d’éligibilité:</translation>
    <translation id="pack_move_eligibility_address_error_pairs" qtlid="456622">Nous avons enregistré un dysfonctionnement dans l’éligibilité de votre adresse de redirection : le nombre de paires est insuffisant pour créer une nouvelle ligne fixe</translation>
    <translation id="pack_move_eligibility_address_error_neighbour" qtlid="456635">Nous avons enregistré un dysfonctionnement dans l’éligibilité de votre adresse de redirection : une erreur est survenue lors de la recherche du numéro de rue</translation>
