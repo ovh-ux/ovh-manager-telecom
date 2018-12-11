@@ -50,6 +50,7 @@
    <translation id="xdsl_details_reset_dslam_port" qtlid="309685">Port de connexion</translation>
    <translation id="xdsl_details_rate_limit" qtlid="309698">Gestion de débit</translation>
    <translation id="xdsl_details_diagnostic_description">Vous rencontrez des difficultés avec votre accès internet ? Utilisez notre outil de résolution de problèmes.</translation>
+   <translation id="xdsl_details_diagnostic_not_yet_available">L'outil de résolution de problèmes n'est pas encore disponible pour votre type d'accès internet.</translation>
    <translation id="xdsl_details_diagnostic_label" qtlid="309711">Diagnostic de ligne</translation>
    <translation id="xdsl_details_diagnostic" qtlid="309724">Diagnostic de la ligne</translation>
    <translation id="xdsl_details_diagnostic_modal_button">Plus de détails sur l'état de ma ligne</translation>
