@@ -16,6 +16,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationConta
       backdrop: 'static',
       resolve: {
         number: this.alias,
+        isObsolete: false,
       },
     }).result.then(() => {
       this.OvhApiTelephony.Service().v6().resetCache();
