@@ -54,7 +54,7 @@
    <translation id="common_navbar_notification_none" qtlid="492081">Kaikki on ajantasalla!</translation>
    <translation id="common_navbar_notification_none_description" qtlid="492094">Sinulla ei ole yhtään ilmoitusta.</translation>
 
-   <translation id="common_open_new_tab">Ouvre un nouvel onglet</translation>
+   <translation id="common_open_new_tab" qtlid="493971">Opens a new tab</translation>
 
    <translation id="common_pagination_resultsperpage" qtlid="433384">Tulosta per sivu</translation>
    <translation id="common_pagination_page" qtlid="433397">sivu</translation>
@@ -64,7 +64,7 @@
    <translation id="common_pagination_results" qtlid="433410">tulokset</translation>
    <translation id="common_pagination_next" qtlid="433423">Seuraava sivu</translation>
    <translation id="common_pagination_previous" qtlid="433436">Edellinen sivu</translation>
-
+   <translation id="common_choose" qtlid="84153">Valitse</translation>
    <translation id="common_stepper_optional_label" qtlid="356264">(valinnainen)</translation>
    <translation id="common_stepper_modify_this_step" qtlid="480922">Muokkaa tätä vaihetta</translation>
    <translation id="common_stepper_skip_this_step" qtlid="480935">Älä huomioi tätä vaihetta</translation>
@@ -90,10 +90,10 @@
    <translation id="common_search" qtlid="37659">Haku</translation>
 
    <translation id="common_error_title" qtlid="26407">Virhe</translation>
-   <translation id="common_delete_selected_one_item">Supprimer l’élément sélectionné</translation>
-   <translation id="common_delete_selected_items">Supprimer les éléments sélectionnés</translation>
-   <translation id="common_delete_selected_items_count">{{count}} élément(s) sélectionné(s)</translation>
-   <translation id="common_two_of_them">Les deux</translation>
+   <translation id="common_delete_selected_one_item" qtlid="510033">Supprimer l’élément sélectionné</translation>
+   <translation id="common_delete_selected_items" qtlid="510046">Supprimer les éléments sélectionnés</translation>
+   <translation id="common_delete_selected_items_count" qtlid="510059">{{count}} élément(s) sélectionné(s)</translation>
+   <translation id="common_two_of_them" qtlid="510072">Les deux</translation>
 
    <translation id="an_error_occured" qtlid="148981">Tapahtui virhe</translation>
    <translation id="error_401" qtlid="304472">Pääsy kielletty</translation>

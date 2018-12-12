@@ -23,5 +23,5 @@
    <translation id="xdsl_model_task_error" qtlid="385468">Negalima gauti vykdomų užduočių.</translation>
    <translation id="xdsl_modem_modem_error" qtlid="385481">Negalima gauti modemo informacijos.</translation>
 
-   <translation id="xdsl_modem_firmware">Firmware</translation>
+   <translation id="xdsl_modem_firmware" qtlid="510150">Firmware</translation>
 </translations>

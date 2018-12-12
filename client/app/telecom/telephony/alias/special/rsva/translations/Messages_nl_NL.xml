@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <translations>
-   <translation id="telephony_alias_special_rsva_title">Tarification</translation>
+   <translation id="telephony_alias_special_rsva_title" qtlid="133253">Tarieven</translation>
    <translation id="telephony_alias_special_rsva_subtitle" qtlid="501808">Modifiez votre palier tarifaire, définissez la typologie de votre service ou indiquez l'identité du titulaire du service.</translation>
 
-   <translation id="telephony_alias_special_rsva_number_fee_description_part_one">La première modification du palier tarifaire est offerte. Par la suite, la modification sera facturée {{price}} HT.</translation>
-   <translation id="telephony_alias_special_rsva_number_fee_description_part_two">Effectuée avant le 20 du mois, cette modification sera effective le 1er du mois suivant.</translation>
+   <translation id="telephony_alias_special_rsva_number_fee_description_part_one" qtlid="512737">La première modification du palier tarifaire est offerte. Par la suite, la modification sera facturée {{price}} HT.</translation>
+   <translation id="telephony_alias_special_rsva_number_fee_description_part_two" qtlid="512750">Effectuée avant le 20 du mois, cette modification sera effective le 1er du mois suivant.</translation>
 
-   <translation id="telephony_alias_special_rsva_pricing_type">Coût HT du service pour l’appelant</translation>
-   <translation id="telephony_alias_special_rsva_pricing_type_minute">Tarif par minute (Décompté à la seconde)</translation>
-   <translation id="telephony_alias_special_rsva_pricing_type_call">Forfait par appel</translation>
-   <translation id="telephony_alias_special_rsva_pricing_current_rate_code">(palier actuel)</translation>
+   <translation id="telephony_alias_special_rsva_pricing_type" qtlid="512763">Coût HT du service pour l’appelant</translation>
+   <translation id="telephony_alias_special_rsva_pricing_type_minute" qtlid="512776">Tarif par minute (Décompté à la seconde)</translation>
+   <translation id="telephony_alias_special_rsva_pricing_type_call" qtlid="512789">Forfait par appel</translation>
+   <translation id="telephony_alias_special_rsva_pricing_current_rate_code" qtlid="512802">(palier actuel)</translation>
 
-   <translation id="telephony_alias_special_rsva_call_repayment">Reversement de l’appel : {{price}}€ HT/min</translation>
-   <translation id="telephony_alias_special_rsva_owner_repayment">Reversement HT pour le titulaire du service : {{price}}€/min</translation>
+   <translation id="telephony_alias_special_rsva_call_repayment" qtlid="512815">Reversement de l’appel : {{price}}€ HT/min</translation>
+   <translation id="telephony_alias_special_rsva_owner_repayment" qtlid="512828">Reversement HT pour le titulaire du service : {{price}}€/min</translation>
    <translation id="telephony_alias_special_rsva_tariff_bearing_changed_checkbox" qtlid="501899">Je reconnais avoir été informé que, passée la première modification tarifaire, cette opération me sera facturée {{price}} HT.</translation>
 
    <translation id="telephony_alias_special_rsva_infos_title" qtlid="501990">Renseignements du numéro à l'attention du consommateur</translation>
-   <translation id="telephony_alias_special_rsva_infos_siret_label">Numéro Siret</translation>
-   <translation id="telephony_alias_special_rsva_infos_email_label">E-mail</translation>
+   <translation id="telephony_alias_special_rsva_infos_siret_label" qtlid="512841">Numéro Siret</translation>
+   <translation id="telephony_alias_special_rsva_infos_email_label" qtlid="69509">E-mail</translation>
    <translation id="telephony_alias_special_rsva_infos_typology_label" qtlid="279743">Typologie</translation>
-   <translation id="telephony_alias_special_rsva_infos_typology_label_help">La déclaration d’une typologie du service permettra de faciliter l’identification du service par le consommateur et une application simplifiée des règles déontologiques présentées par typologie de service. Réglementation ARCEP 12-0856</translation>
+   <translation id="telephony_alias_special_rsva_infos_typology_label_help" qtlid="512854">La déclaration d’une typologie du service permettra de faciliter l’identification du service par le consommateur et une application simplifiée des règles déontologiques présentées par typologie de service. Réglementation ARCEP 12-0856</translation>
 
 
    <translation id="telephony_alias_special_rsva_title_back_link" qtlid="501704">Retour à la gestion des reversements</translation>
