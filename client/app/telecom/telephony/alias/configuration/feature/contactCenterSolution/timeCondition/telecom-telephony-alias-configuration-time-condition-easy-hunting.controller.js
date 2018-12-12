@@ -155,9 +155,9 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationTimeC
         // then save conditions
         return this.number.feature.timeCondition.saveConditions();
       })
-      .then(() => this.$state.go('^').then(() => {
+      .then(() => {
         this.TucToast.success(this.$translate.instant('telephony_alias_config_contactCenterSolution_timeCondition_update_success'));
-      }))
+      })
       .catch((error) => {
         this.number.feature.timeCondition.stopEdition(true).startEdition();
         this.TucToast.error(

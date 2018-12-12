@@ -48,67 +48,56 @@
                         </span>
                     </button> <!-- END OF REDIRECTION TYPE -->
 
-                    <!-- REDIRECT TO NUMBER -->
-                    <div class="section-item form-group"
-                         data-ng-if="$ctrl.model.slotType === 'number'"
-                         data-ng-class="{
-                             'has-error': slotEditForm.number.$invalid && slotEditForm.number.$touched
-                         }">
-                        <label for="number"
-                               class="control-label"
-                               data-translate="voip_time_condition_slots_redirect_popover_number_to_redirect">
-                        </label>
-                        <input type="text"
-                               class="form-control"
-                               name="number"
-                               id="number"
-                               data-ng-model="$ctrl.slot.number"
-                               data-translate-attr="{ placeholder: 'voip_time_condition_slots_redirect_popover_number_to_redirect_placeholder' }"
-                               data-required
-                               data-ng-pattern="/^\+(?:[0-9]){6,14}[0-9]$/" />
-                        <span class="help-block"
-                              role="alert"
-                              data-ng-if="slotEditForm.number.$touched"
-                              data-ng-messages="slotEditForm.number.$error">
-                            <span data-ng-message="required"
-                                  data-translate="voip_time_condition_slots_redirect_popover_number_to_redirect_required">
-                            </span>
-                            <span data-ng-message="pattern"
-                                  data-translate="voip_time_condition_slots_redirect_popover_number_to_redirect_format">
-                            </span>
-                        </span>
-                    </div> <!-- END OF REDIRECT TO NUMBER -->
+                    <div data-ng-if="!$ctrl.popoverStatus.move">
+                        <!-- REDIRECT TO NUMBER -->
+                        <div class="section-item form-group"
+                             data-ng-if="$ctrl.model.slotType === 'number'">
+                            <oui-field data-label="{{:: 'voip_time_condition_slots_redirect_popover_number_to_redirect' | translate }}"
+                                       data-error-messages="{
+                                           required: ('voip_time_condition_slots_redirect_popover_number_to_redirect_required' | translate),
+                                           pattern: ('voip_time_condition_slots_redirect_popover_number_to_redirect_format' | translate),
+                                       }">
+                                <input type="text"
+                                       class="oui-input"
+                                       name="number"
+                                       id="number"
+                                       placeholder="{{:: 'voip_time_condition_slots_redirect_popover_number_to_redirect_placeholder' | translate }}"
+                                       data-ng-model="$ctrl.slot.number"
+                                       data-required
+                                       data-ng-pattern="/^\+(?:[0-9]){6,14}[0-9]$/" />
+                            </oui-field>
+                        </div> <!-- END OF REDIRECT TO NUMBER -->
 
-                    <!-- VOICEMAIL OR OVH NUMBER -->
-                    <button type="button"
-                            class="section-item w-100 text-left"
-                            data-ng-if="$ctrl.model.slotType !== 'number'"
-                            data-ng-click="$ctrl.onSlotNumberBtnClick()">
-                        <label class="required"
-                               data-translate="voip_time_condition_slots_redirect_popover_number_to_redirect">
-                        </label>
-                        <span class="form-control-static"
-                              data-ng-if="$ctrl.slot.number && $ctlr.model.slotType === 'number'"
-                              data-ng-bind="$ctrl.slot.number | tucPhoneNumber">
-                        </span>
-                        <span class="form-control-static"
-                              data-ng-if="$ctrl.slot.number && $ctlr.model.slotType !== 'number'">
-                            <span data-ng-bind="$ctrl.redirectNumberOvh.getDisplayedName() + ' - '"></span>
-                            <span data-ng-if="$ctrl.redirectNumberOvh.serviceName !== $ctrl.redirectNumberOvh.getDisplayedName()"
-                                  data-ng-bind="$ctrl.redirectNumberOvh.serviceName + ' - '">
+                        <!-- VOICEMAIL OR OVH NUMBER -->
+                        <button type="button"
+                                class="section-item w-100 text-left"
+                                data-ng-if="$ctrl.model.slotType !== 'number'"
+                                data-ng-click="$ctrl.onSlotNumberBtnClick()">
+                            <span class="oui-label required"
+                                  data-translate="voip_time_condition_slots_redirect_popover_number_to_redirect">
                             </span>
-                            <span data-translate="{{ 'telecom_sidebar_section_telephony_filter_' + $ctrl.getServiceType($ctrl.redirectNumberOvh) }}"></span>
-                        </span>
-                        <span class="form-control-static"
-                              data-ng-if="!$ctrl.slot.number"
-                              data-translate="voip_time_condition_slots_undefined">
-                        </span>
-                        <span class="chevron-right">
-                            <span class="chevron-wrapper">
-                                <i class="ovh-font ovh-font-arrow-right"></i>
+                            <span class="form-control-static"
+                                  data-ng-if="$ctrl.slot.number">
+                                <span data-ng-bind="$ctrl.redirectNumberOvh.getDisplayedName() + ' - '"></span>
+                                <span data-ng-if="$ctrl.redirectNumberOvh.serviceName !== $ctrl.redirectNumberOvh.getDisplayedName()"
+                                      data-ng-bind="($ctrl.redirectNumberOvh.serviceName | tucPhoneNumber) + ' - '">
+                                </span>
+                                <span data-translate="{{ 'telecom_sidebar_section_telephony_filter_' + $ctrl.getServiceType($ctrl.redirectNumberOvh) }}"></span>
                             </span>
-                        </span>
-                    </button> <!-- END OF VOICEMAIL OR OVH NUMBER -->
+                            <span class="form-control-static"
+                                  data-ng-if="!$ctrl.slot.number"
+                                  data-translate="voip_time_condition_slots_undefined">
+                            </span>
+                            <span class="chevron-right">
+                                <span class="chevron-wrapper">
+                                    <span class="ovh-font ovh-font-arrow-right"
+                                          aria-hidden="true"></span>
+                                    <span class="sr-only"
+                                          data-translate="common_choose"></span>
+                                </span>
+                            </span>
+                        </button> <!-- END OF VOICEMAIL OR OVH NUMBER -->
+                    </div>
                 </div>
 
             </section>
