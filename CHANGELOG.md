@@ -1,3 +1,14 @@
+## [10.14.1](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.14.0...v10.14.1) (2018-12-12)
+
+
+### Bug Fixes
+
+* **i18n:** retrieve translations ([7cbb82a](https://github.com/ovh-ux/ovh-manager-telecom/commit/7cbb82a))
+* **telephony.alias:** remove ccs validate state change and delete popup ([4afd0f4](https://github.com/ovh-ux/ovh-manager-telecom/commit/4afd0f4))
+* **telephony.timecondition.slot:** update responsive popover placement ([e935ff9](https://github.com/ovh-ux/ovh-manager-telecom/commit/e935ff9))
+
+
+
 # [10.14.0](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.13.1...v10.14.0) (2018-12-11)
 
 
