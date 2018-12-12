@@ -64,7 +64,7 @@
    <translation id="common_pagination_results" qtlid="433410">résultats</translation>
    <translation id="common_pagination_next" qtlid="433423">Page suivante</translation>
    <translation id="common_pagination_previous" qtlid="433436">Page précédente</translation>
-
+   <translation id="common_choose" qtlid="84153">Choisir</translation>
    <translation id="common_stepper_optional_label" qtlid="356264">(facultatif)</translation>
    <translation id="common_stepper_modify_this_step" qtlid="480922">Modifier cette étape</translation>
    <translation id="common_stepper_skip_this_step" qtlid="480935">Ignorer cette étape</translation>
