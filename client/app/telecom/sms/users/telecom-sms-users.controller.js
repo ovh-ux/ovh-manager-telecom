@@ -138,7 +138,7 @@ angular
         animation: true,
         templateUrl: 'app/telecom/sms/users/change-password/telecom-sms-users-change-password.html',
         controller: 'TelecomSmsUsersChangePasswordCtrl',
-        controllerAs: 'UsersChangePasswordCtrl',
+        controllerAs: '$ctrl',
         resolve: { user: () => user },
       });
       modal.result.then(() => this.refresh()).catch((error) => {
