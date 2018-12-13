@@ -1,3 +1,12 @@
+## [10.15.1](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.15.0...v10.15.1) (2018-12-13)
+
+
+### Bug Fixes
+
+* **telecom:** upgrage ui-kit to fix broken select ([38cf174](https://github.com/ovh-ux/ovh-manager-telecom/commit/38cf174))
+
+
+
 # [10.15.0](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.14.1...v10.15.0) (2018-12-13)
 
 
