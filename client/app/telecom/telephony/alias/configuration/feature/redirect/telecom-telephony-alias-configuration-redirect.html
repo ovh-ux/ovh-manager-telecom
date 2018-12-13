@@ -46,12 +46,12 @@
 
     <div class="my-5">
         <oui-button data-variant="secondary"
-                    data-on-click="$ctrl.resetParams()">
+                    data-on-click="$ctrl.$state.go('^')">
             <span data-translate="cancel"></span>
         </oui-button>
         <oui-button data-variant="primary"
                     data-on-click="$ctrl.updateRedirection()"
-                    data-ng-disabled="!$ctrl.canUpdateRedirection()">
+                    data-disabled="!$ctrl.canUpdateRedirection()">
             <span data-translate="submit"></span>
         </oui-button>
     </div>

@@ -141,7 +141,7 @@
    <translation id="telecom_pack_migration_building_details_select_floor" qtlid="506871">Veuillez indiquer votre étage</translation>
    <translation id="telecom_pack_migration_building_details_select_a_floor" qtlid="506884">Sélectionner un étage</translation>
    <translation id="telecom_pack_migration_building_details_building" qtlid="313000">Bâtiment</translation>
-   <translation id="telecom_pack_migration_building_details_stair" qtlid="313052">Escalier</translation>
+   <translation id="telecom_pack_migration_building_details_stair" qtlid="313052">Stairs</translation>
    <translation id="telecom_pack_migration_building_details_floor" qtlid="506897">Etage</translation>
    <translation id="telecom_pack_migration_building_details_confirm" qtlid="506910">Confirmer la sélection</translation>
    <translation id="telecom_pack_migration_building_details_none" qtlid="30646">None</translation>
@@ -151,9 +151,9 @@
    <translation id="telecom_pack_migration_pto_description" qtlid="509131">Disposez-vous déjà d'un boitier fibre à l'adresse d'installation ? (prise optique murale)</translation>
    <translation id="telecom_pack_migration_pto_check_yes" qtlid="509144">Oui je dispose d'un boîter PTO</translation>
    <translation id="telecom_pack_migration_pto_check_no" qtlid="509157">Non je ne dispose pas d'un boîter PTO</translation>
-   <translation id="telecom_pack_migration_pto_reference" qtlid="509170">Saisissez votre référence PTO</translation>
-   <translation id="telecom_pack_migration_pto_where" qtlid="509183">Où trouver votre numéro de référence du boîtier PTO ?</translation>
-   <translation id="telecom_pack_migration_pto_where_description" qtlid="509196">Cette référence est inscrite sur le boîtier PTO et est composée de chiffres et de lettres sous la forme OO-XXXX-XXXX /C</translation>
-   <translation id="telecom_pack_migration_pto_yes_not_known" qtlid="509209">J'ai un boîtier mais je ne connais pas son numéro</translation>
+   <translation id="telecom_pack_migration_pto_reference" qtlid="509170">Enter your fibre optic termination point reference</translation>
+   <translation id="telecom_pack_migration_pto_where" qtlid="509183">Where is the fibre optic termination box reference?</translation>
+   <translation id="telecom_pack_migration_pto_where_description" qtlid="509196">This reference is located on the fibre optic termination box, and contains letters and numbers in the following format: OO-XXXX-XXXX /C</translation>
+   <translation id="telecom_pack_migration_pto_yes_not_known" qtlid="509209">I have a box but I don't know its number</translation>
 
 </translations>

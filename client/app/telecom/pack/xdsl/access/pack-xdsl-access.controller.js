@@ -1,26 +1,29 @@
 angular.module('managerApp').controller('XdslAccessCtrl', class XdslAccessCtrl {
   constructor(
-    $filter, $q, $scope, $stateParams, $templateCache, $translate, $uibModal,
-    OvhApiPackXdsl, OvhApiXdsl, OvhApiXdslIps, OvhApiXdslLines, OvhApiXdslModem,
-    OvhApiXdslNotifications, OvhApiXdslTasksCurrent, TucToast, TucToastError,
+    $filter, $q, $rootScope, $scope, $state, $stateParams, $templateCache, $translate, $uibModal,
+    OvhApiPackXdsl, OvhApiXdsl, OvhApiXdslDiagnostic, OvhApiXdslIps, OvhApiXdslLines,
+    OvhApiXdslModem, OvhApiXdslNotifications, TucToast, TucToastError, XdslTaskPoller,
     PACK, PACK_IP, REDIRECT_URLS,
   ) {
     this.$filter = $filter;
     this.$q = $q;
+    this.$rootScope = $rootScope;
     this.$scope = $scope;
+    this.$state = $state;
     this.$stateParams = $stateParams;
     this.$templateCache = $templateCache;
     this.$translate = $translate;
     this.$uibModal = $uibModal;
     this.OvhApiPackXdsl = OvhApiPackXdsl;
     this.OvhApiXdsl = OvhApiXdsl;
+    this.OvhApiXdslDiagnostic = OvhApiXdslDiagnostic.v6();
     this.OvhApiXdslIps = OvhApiXdslIps;
     this.OvhApiXdslLines = OvhApiXdslLines;
     this.OvhApiXdslModem = OvhApiXdslModem;
     this.OvhApiXdslNotifications = OvhApiXdslNotifications;
-    this.OvhApiXdslTasksCurrent = OvhApiXdslTasksCurrent;
     this.TucToast = TucToast;
     this.TucToastError = TucToastError;
+    this.XdslTaskPoller = XdslTaskPoller;
     this.PACK = PACK;
     this.PACK_IP = PACK_IP;
     this.REDIRECT_URLS = REDIRECT_URLS;
@@ -35,7 +38,10 @@ angular.module('managerApp').controller('XdslAccessCtrl', class XdslAccessCtrl {
       tasks: true,
       deconsolidation: true,
       xdsl: true,
+      accessDiagnosticLaunched: false,
     };
+
+    this.accessDiagnostic = null;
 
     this.$scope.access = {
       xdsl: null,
@@ -62,6 +68,79 @@ angular.module('managerApp').controller('XdslAccessCtrl', class XdslAccessCtrl {
         this.$scope.access.xdsl.description = data.description;
       }
     });
+
+    /*
+      HOW DIAGNOSTIC EVENTS WORK:
+
+      When we open the details modal, it sends a 'accessDiagnosticDetails:get'
+      event to retrieve a possibly loaded diagnostic.
+      We answer with 'accessDiagnosticDetails:arrived' and the diagnostic (or null)
+      as an event argument.
+      If the popup wants to relaunch a new one, it sends 'accessDiagnosticDetails:launch'.
+      We answer with 'accessDiagnosticDetails:arrived' when the diagnostic is finally there.
+
+      WHY WE DO THIS:
+
+      We use events because the process can be in any state when we arrive
+      on the page, and we don't know how long it will take for the diagnostic
+      to arrive (it is polled). If the user reloads the page, we lose controller's
+      state, so the code must be resilient and work even if we load the page in
+      the middle of the process.
+
+      Until the task is finished, the diagnostic we get from
+      the API is IRRELEVANT and should not be displayed to the user.
+    */
+    this.$rootScope.$on('accessDiagnosticDetails:launch', () => {
+      this.launchDiagnostic();
+    });
+
+    this.$rootScope.$on('accessDiagnosticDetails:get', () => {
+      if (!this.accessDiagnostic && !this.$scope.loaders.accessDiagnosticLaunched) {
+        this.launchDiagnostic();
+      }
+      this.$rootScope.$broadcast('accessDiagnosticDetails:arrived', this.accessDiagnostic);
+    });
+
+    this.diagPollerTicket = this.XdslTaskPoller.register('accessDiagnosticRun', () => {
+      this.$scope.loaders.accessDiagnosticLaunched = false;
+      this.getDiagnostic();
+    });
+
+    this.additionalIpPollerTicket = this.XdslTaskPoller.register(
+      'pendingOrderAdditionalIpOption', () => {
+        this.getIps();
+        this.ordering = false;
+      },
+    );
+
+    this.$scope.$on('$destroy', () => {
+      this.XdslTaskPoller.unregister(this.diagPollerTicket);
+      this.XdslTaskPoller.unregister(this.additionalIpPollerTicket);
+    });
+
+    this.getDiagnostic();
+  }
+
+  openDetailsPopup() {
+    if (this.accessDiagnostic === null && !this.$scope.loaders.accessDiagnosticLaunched) {
+      this.launchDiagnostic();
+    }
+    this.$state.go('telecom.pack.xdsl.access-diagnostic-details');
+  }
+
+  launchDiagnostic() {
+    this.accessDiagnostic = null;
+    this.$scope.loaders.accessDiagnosticLaunched = true;
+    return this.OvhApiXdslDiagnostic
+      .launchDiagnostic({ xdslId: this.$stateParams.serviceName }, {}).$promise;
+  }
+
+  getDiagnostic() {
+    return this.OvhApiXdslDiagnostic.get({ xdslId: this.$stateParams.serviceName }).$promise
+      .then((accessDiagnostic) => {
+        this.accessDiagnostic = accessDiagnostic;
+        this.$rootScope.$broadcast('accessDiagnosticDetails:arrived', this.accessDiagnostic);
+      });
   }
 
   initTemplateCaches() {
@@ -95,37 +174,6 @@ angular.module('managerApp').controller('XdslAccessCtrl', class XdslAccessCtrl {
       default:
         this.statusLabel = status;
     }
-  }
-
-  error(err) {
-    if (!_.isEmpty(err)) {
-      this.TucToastError(err);
-    }
-    this.$scope.loaders.tasks = false;
-  }
-
-  success(result) {
-    if (result.success) {
-      if (this.$scope.access.tasks.current.pendingOrderAdditionalIpOption
-        && !result.data.pendingOrderAdditionalIpOption) {
-        this.getIps();
-        this.ordering = false;
-      }
-      this.$scope.access.tasks.current = result.data;
-    } else {
-      this.error(result);
-    }
-    this.$scope.loaders.tasks = false;
-  }
-
-  pollTasks() {
-    this.OvhApiXdslTasksCurrent.Aapi().poll(this.$scope, {
-      xdslId: this.$stateParams.serviceName,
-    }).then(
-      result => this.success(result),
-      error => this.error(error),
-      pending => this.success(pending),
-    );
   }
 
   getOldV6TransfertUrl() {
@@ -185,6 +233,17 @@ angular.module('managerApp').controller('XdslAccessCtrl', class XdslAccessCtrl {
     });
   }
 
+  onTaskPollError(err) {
+    if (!_.isEmpty(err)) {
+      this.TucToastError(err);
+    }
+    this.$scope.loaders.tasks = false;
+  }
+
+  onTaskPollSuccess(result) {
+    this.$scope.access.tasks.current = result.data;
+    this.$scope.loaders.tasks = false;
+  }
 
   getLinesDetails() {
     this.$scope.loaders.details = true;
@@ -192,7 +251,12 @@ angular.module('managerApp').controller('XdslAccessCtrl', class XdslAccessCtrl {
 
     this.transfert = {};
 
-    this.pollTasks();
+    this.XdslTaskPoller.start(
+      this.$stateParams.serviceName,
+      this.$scope,
+      result => this.onTaskPollSuccess(result),
+      error => this.onTaskPollError(error),
+    );
 
     this.$q.allSettled([
       // Get access Details
