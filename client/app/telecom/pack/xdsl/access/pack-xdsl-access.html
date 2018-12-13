@@ -17,20 +17,29 @@
                         data-translate="xdsl_details_title"></h3>
                     <div class="oui-tile__body">
                         <ul class="list-unstyled">
+
+                            <!-- Diagnostic -->
                             <li class="oui-tile__item">
                                 <div class="oui-tile__definition">
                                     <div class="oui-tile__term"
                                          data-translate="xdsl_details_status_label"></div>
                                     <div class="oui-tile__description">
-                                        <div class="mb-3"
-                                             data-ng-bind-html="XdslAccess.statusLabel"></div>
-                                        <a class="oui-button oui-button_full-width oui-button_icon-right oui-button_secondary"
-                                           data-ui-sref="telecom.pack.xdsl.access-diagnostic"
-                                           role="button">
+                                        <div class="mb-3 d-flex align-items-center justify-content-between">
+                                            <div data-ng-bind-html="XdslAccess.statusLabel"></div>
+                                            <oui-button data-variant="link"
+                                                        data-on-click="XdslAccess.openDetailsPopup()">
+                                                <span data-translate="xdsl_details_diagnostic_modal_button"></span>
+                                            </oui-button>
+                                        </div>
+                                        <p data-ng-if="!access.xdsl.isFiber" data-translate="xdsl_details_diagnostic_description"></p>
+                                        <p data-ng-if="access.xdsl.isFiber" data-translate="xdsl_details_diagnostic_not_yet_available"></p>
+                                        <button class="oui-button oui-button_full-width oui-button_icon-right oui-button_secondary"
+                                                data-ui-sref="telecom.pack.xdsl.access-diagnostic"
+                                                data-ng-disabled="access.xdsl.isFiber">
                                             <span data-translate="xdsl_details_button_diagnostic"></span>
                                             <span class="oui-icon oui-icon_circle oui-icon-chevron-right"
                                                   aria-hidden="true"></span>
-                                        </a>
+                                        </button>
                                     </div>
                                 </div>
                             </li>
