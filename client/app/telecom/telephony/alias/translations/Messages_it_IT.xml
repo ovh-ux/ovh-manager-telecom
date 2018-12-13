@@ -64,7 +64,7 @@
    <translation id="telephony_alias_configuration_configuration_type_miniPabx" qtlid="333204">Mini PABX</translation>
    <translation id="telephony_alias_configuration_configuration_type_contactCenterSolution" qtlid="324457">Code di chiamata</translation>
    <translation id="telephony_alias_configuration_configuration_type_contactCenterSolutionExpert" qtlid="432904">Contact Center Solution</translation>
-   <translation id="telephony_alias_configuration_configuration_type_empty" qtlid="333230">Nessuna funzionalità</translation>
+   <translation id="telephony_alias_configuration_configuration_type_empty" qtlid="8674">Nessuno</translation>
 
    <translation id="telephony_alias_configuration_redirect_to" qtlid="513244">Vers la ligne</translation>
    <translation id="telephony_alias_configuration_choose" qtlid="513257">Choisir une configuration</translation>
