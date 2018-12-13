@@ -101,7 +101,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationCtrl'
         divider: true,
       }, {
         name: 'number_cloud_hunting_events',
-        sref: 'telecom.telephony.alias.configuration.scheduler.ovhPabx',
+        sref: 'telecom.telephony.alias.configuration.schedulerOvhPabx',
         text: this.$translate.instant('telephony_alias_configuration_actions_number_cloud_hunting_events'),
       });
 
@@ -115,7 +115,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationCtrl'
           text: this.$translate.instant('telephony_alias_configuration_actions_number_hunting_board'),
         }, {
           name: 'number_cloud_hunting_records',
-          sref: 'telecom.telephony.alias.configuration.records.ovhPabx',
+          sref: 'telecom.telephony.alias.configuration.recordsOvhPabx',
           text: this.$translate.instant('telephony_alias_configuration_actions_number_hunting_records'),
         });
       }
