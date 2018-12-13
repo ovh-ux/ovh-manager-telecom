@@ -1,3 +1,28 @@
+# [10.15.0](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.14.1...v10.15.0) (2018-12-13)
+
+
+### Bug Fixes
+
+* **autodiag:** format datetime ([fd36945](https://github.com/ovh-ux/ovh-manager-telecom/commit/fd36945))
+* **autodiag:** move images to the right place ([6d8ed6d](https://github.com/ovh-ux/ovh-manager-telecom/commit/6d8ed6d))
+* **i18n:** retrieve translations ([da8b56e](https://github.com/ovh-ux/ovh-manager-telecom/commit/da8b56e))
+* **i18n:** submit translations ([4a60561](https://github.com/ovh-ux/ovh-manager-telecom/commit/4a60561))
+* **telephony.alias:** fix expert broken states and redirect button ([069733a](https://github.com/ovh-ux/ovh-manager-telecom/commit/069733a))
+* **telephony.line.phone:** remove test which disable codecs section ([16ec6fa](https://github.com/ovh-ux/ovh-manager-telecom/commit/16ec6fa))
+
+
+### Features
+
+* **autodiag:** add a status modal ([0a4f151](https://github.com/ovh-ux/ovh-manager-telecom/commit/0a4f151))
+* **autodiag:** add broadband explanation image ([038ca94](https://github.com/ovh-ux/ovh-manager-telecom/commit/038ca94))
+* **autodiag:** move xdsl polling to a shared service ([057e0ba](https://github.com/ovh-ux/ovh-manager-telecom/commit/057e0ba))
+* **autodiag:** use the actual API ([12e6a1c](https://github.com/ovh-ux/ovh-manager-telecom/commit/12e6a1c))
+* **modals:** allow opening routed modals ([8ed6ecb](https://github.com/ovh-ux/ovh-manager-telecom/commit/8ed6ecb))
+* **xdsl.autodiag:** disable autodiag for fiber ([ebf844b](https://github.com/ovh-ux/ovh-manager-telecom/commit/ebf844b))
+* **xdsl.autodiag:** move the diagnostic logic the the main controller ([79ec099](https://github.com/ovh-ux/ovh-manager-telecom/commit/79ec099))
+
+
+
 ## [10.14.1](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.14.0...v10.14.1) (2018-12-12)
 
 
