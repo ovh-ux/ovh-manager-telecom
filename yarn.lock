@@ -959,6 +959,14 @@
     request "^2.88.0"
     webpack-dev-server "^3.1.9"
 
+"@ovh-ux/telecom-universe-components@^1.3.0":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@ovh-ux/telecom-universe-components/-/telecom-universe-components-1.3.0.tgz#f62b0e3a1e7bcb90f7293a16c2e4d6e25ca3dcc7"
+  integrity sha512-x24M3qv2fWpzWwXYXOUPUmgwvZsW21L1xFOdFYS8EGoWZa7uZ451ysXojTdeOwDOHy1Lk1rzpdMzZ/Qi4TmmfA==
+  dependencies:
+    bootstrap "^3.3.7"
+    ovh-ui-kit "^2.22.0"
+
 "@ovh-ux/translate-async-loader@^1.0.7":
   version "1.0.7"
   resolved "https://registry.yarnpkg.com/@ovh-ux/translate-async-loader/-/translate-async-loader-1.0.7.tgz#148189dda8dc5dfe11b024d86c9739f5195d2148"
@@ -2089,7 +2097,7 @@ boom@2.x.x:
   dependencies:
     hoek "2.x.x"
 
-bootstrap@^3.3.6:
+bootstrap@^3.3.6, bootstrap@^3.3.7:
   version "3.3.7"
   resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-3.3.7.tgz#5a389394549f23330875a3b150656574f8a9eb71"
   integrity sha1-WjiTlFSfIzMIdaOxUGVldPip63E=
@@ -9021,10 +9029,10 @@ ovh-angular-responsive-tabs@^4.0.0:
   resolved "https://registry.yarnpkg.com/ovh-angular-responsive-tabs/-/ovh-angular-responsive-tabs-4.0.0.tgz#85b66d7032612c3ed1a14cb29f83d1331b50c1df"
   integrity sha1-hbZtcDJhLD7RoUyyn4PRMxtQwd8=
 
-ovh-angular-sidebar-menu@^7.0.0:
-  version "7.2.0"
-  resolved "https://registry.yarnpkg.com/ovh-angular-sidebar-menu/-/ovh-angular-sidebar-menu-7.2.0.tgz#fd35da0b09499bcb7341ad88ba94d30cef40b88e"
-  integrity sha1-/TXaCwlJm8tzQa2IupTTDO9AuI4=
+ovh-angular-sidebar-menu@^7.2.2:
+  version "7.2.2"
+  resolved "https://registry.yarnpkg.com/ovh-angular-sidebar-menu/-/ovh-angular-sidebar-menu-7.2.2.tgz#c9bca2c6c525bad5ad5640d1a0c97e1750bf39d4"
+  integrity sha512-1psM35uO29uv6Hri04OSLkehl+TcSl57SxPVOkVLDRocnTMxBPkJuZSW61VsKcVL4m5QgWp3ybJhyyEnZBBvhQ==
 
 ovh-angular-simple-country-list@^0.0.9:
   version "0.0.9"
@@ -9074,9 +9082,9 @@ ovh-angular-user-pref@^0.3.1:
   integrity sha1-B/V5JRNlHzJirkh5wXRCNkmwgwc=
 
 ovh-api-services@^3.13.0:
-  version "3.25.0"
-  resolved "https://registry.yarnpkg.com/ovh-api-services/-/ovh-api-services-3.25.0.tgz#0453d66666bf554da5e75d35ddc3f0c42eeac436"
-  integrity sha512-p+3T/fcmbUSQnkRhI0/yc7FBw/2pLfAnCXq+mMlt5tj3Z97wERyRE//PiopZWj3nCrILsxqRMcAPT8e3j17SWg==
+  version "3.26.0"
+  resolved "https://registry.yarnpkg.com/ovh-api-services/-/ovh-api-services-3.26.0.tgz#24494d8b11d109d2b1c290de67e35050e0ae16e6"
+  integrity sha512-3MJruIqQP/BkbT3r6POpca0EL8IsIeWTtsNFtdCwT5DS6+xHFv9tmCgeC1Hkmb8B4FUDVmEe9meOnJe8pVJGtg==
   dependencies:
     lodash "^3.10.1"
 
@@ -9117,9 +9125,16 @@ ovh-ui-kit-bs@~1.3.x:
   resolved "https://registry.yarnpkg.com/ovh-ui-kit-bs/-/ovh-ui-kit-bs-1.3.3.tgz#31ed881f463b49fc91d418f7a9316e06e648d5b2"
   integrity sha512-H0r14QuDikarYlVqEpZIIM/9WroGqjzy9Z6l5hhchtATDl0kco3qa38ZpNK0hfUWr/s6LKHmREBd24AvxBljSw==
 
-ovh-ui-kit@^2.22.0, "ovh-ui-kit@git+https://github.com/ovh-ux/ovh-ui-kit.git":
+ovh-ui-kit@^2.20.0, ovh-ui-kit@^2.22.0:
   version "2.22.1"
   resolved "git+https://github.com/ovh-ux/ovh-ui-kit.git#2e488bfa62911c7e40428043791f41d5084d6a3d"
+  integrity sha512-XwWqBtkXcVT7YxtA8OxNlld8r7cqGSIiypAqg6zj6oQvlmlOczNEPGj8KMAivHZELMRs/wZV13Iw0kj+iOZ6zw==
+  dependencies:
+    less-plugin-remcalc "^0.1.0"
+
+"ovh-ui-kit@git+https://github.com/ovh-ux/ovh-ui-kit.git":
+  version "2.21.0"
+  resolved "git+https://github.com/ovh-ux/ovh-ui-kit.git#ab2f4113de091bffe54fc11ffaa556fce94db3d3"
   dependencies:
     less-plugin-remcalc "^0.1.0"
 

@@ -1,3 +1,83 @@
+## [10.14.1](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.14.0...v10.14.1) (2018-12-12)
+
+
+### Bug Fixes
+
+* **i18n:** retrieve translations ([7cbb82a](https://github.com/ovh-ux/ovh-manager-telecom/commit/7cbb82a))
+* **telephony.alias:** remove ccs validate state change and delete popup ([4afd0f4](https://github.com/ovh-ux/ovh-manager-telecom/commit/4afd0f4))
+* **telephony.timecondition.slot:** update responsive popover placement ([e935ff9](https://github.com/ovh-ux/ovh-manager-telecom/commit/e935ff9))
+
+
+
+# [10.14.0](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.13.1...v10.14.0) (2018-12-11)
+
+
+### Bug Fixes
+
+* **i18n:** retrieve translations ([37acac1](https://github.com/ovh-ux/ovh-manager-telecom/commit/37acac1))
+* **i18n:** submit translations ([119eef1](https://github.com/ovh-ux/ovh-manager-telecom/commit/119eef1))
+* **sidebar:** remove deprecated enterprise and backup line links ([bb814ea](https://github.com/ovh-ux/ovh-manager-telecom/commit/bb814ea))
+* **telephony:** bug on sidebar and images - update ui kit ([c91636d](https://github.com/ovh-ux/ovh-manager-telecom/commit/c91636d))
+* **telephony:** fix scheduler hidden elements on event creation ([4fb3477](https://github.com/ovh-ux/ovh-manager-telecom/commit/4fb3477))
+* **telephony.alias:** fix calendar and use tuc distant repo ([3aafef5](https://github.com/ovh-ux/ovh-manager-telecom/commit/3aafef5))
+* **telephony.alias:** fix oui-clipboard out of form ([7a6b3ef](https://github.com/ovh-ux/ovh-manager-telecom/commit/7a6b3ef))
+* **voicemail.default:** use the correct filter name for format number ([84f6efe](https://github.com/ovh-ux/ovh-manager-telecom/commit/84f6efe))
+
+
+### Features
+
+* **telephony.alias:** add ccs call filtering feature ([214bb66](https://github.com/ovh-ux/ovh-manager-telecom/commit/214bb66))
+* **telephony.alias:** add ccs line management ([390b7a1](https://github.com/ovh-ux/ovh-manager-telecom/commit/390b7a1))
+* **telephony.alias:** add ccs records page ([29f436d](https://github.com/ovh-ux/ovh-manager-telecom/commit/29f436d))
+* **telephony.alias:** add ccs statistics page ([bce84f4](https://github.com/ovh-ux/ovh-manager-telecom/commit/bce84f4))
+* **telephony.alias:** add ccs time conditions feature ([ec4a7a0](https://github.com/ovh-ux/ovh-manager-telecom/commit/ec4a7a0))
+* **telephony.alias:** add config alias redirect new page ([6bf324f](https://github.com/ovh-ux/ovh-manager-telecom/commit/6bf324f))
+* **telephony.alias:** add consumption menu ([2e8acd9](https://github.com/ovh-ux/ovh-manager-telecom/commit/2e8acd9))
+* **telephony.alias:** add new alias dashboard ([ef112ba](https://github.com/ovh-ux/ovh-manager-telecom/commit/ef112ba))
+* **telephony.alias:** add tracking ([c374ff5](https://github.com/ovh-ux/ovh-manager-telecom/commit/c374ff5))
+* **telephony.alias:** add voip alias ccs scheduler ([62cb994](https://github.com/ovh-ux/ovh-manager-telecom/commit/62cb994))
+* **telephony.alias:** add voip alias ccs sounds management ([8a235e4](https://github.com/ovh-ux/ovh-manager-telecom/commit/8a235e4))
+* **telephony.alias:** add voip alias change type redesign ([18afa78](https://github.com/ovh-ux/ovh-manager-telecom/commit/18afa78))
+* **telephony.alias:** add voip alias conference new page ([5f64009](https://github.com/ovh-ux/ovh-manager-telecom/commit/5f64009))
+* **telephony.alias:** change ccs statistics page ([e01040c](https://github.com/ovh-ux/ovh-manager-telecom/commit/e01040c))
+* **telephony.alias:** change special numbers repayments page ([6dec417](https://github.com/ovh-ux/ovh-manager-telecom/commit/6dec417))
+* **telephony.alias:** change voip alias rsva changes ([d20b641](https://github.com/ovh-ux/ovh-manager-telecom/commit/d20b641))
+* **telephony.alias:** handle obsolete configurations ([4a6941c](https://github.com/ovh-ux/ovh-manager-telecom/commit/4a6941c))
+* **telephony.alias:** hide specific actions to alias in portability ([077eafe](https://github.com/ovh-ux/ovh-manager-telecom/commit/077eafe))
+* **telephony.alias:** redesign of ccs config main page ([db83328](https://github.com/ovh-ux/ovh-manager-telecom/commit/db83328))
+
+
+
+## [10.13.1](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.13.0...v10.13.1) (2018-12-07)
+
+
+### Bug Fixes
+
+* **pack.resilisation:** retrieve template from cache ([55998c2](https://github.com/ovh-ux/ovh-manager-telecom/commit/55998c2))
+
+
+
+# [10.13.0](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.12.0...v10.13.0) (2018-12-05)
+
+
+### Bug Fixes
+
+* apply stylelint rules ([8570e5a](https://github.com/ovh-ux/ovh-manager-telecom/commit/8570e5a))
+* **deps:** upgrade telecom-universe-components to v1.1.0 ([562b479](https://github.com/ovh-ux/ovh-manager-telecom/commit/562b479))
+* **i18n:** retrieve translations ([5b47ba0](https://github.com/ovh-ux/ovh-manager-telecom/commit/5b47ba0))
+* **i18n:** submit translations ([ec78fe0](https://github.com/ovh-ux/ovh-manager-telecom/commit/ec78fe0))
+* **pack.xdsl.modem.router:** typo for dchp end address ([1259ac8](https://github.com/ovh-ux/ovh-manager-telecom/commit/1259ac8))
+* **sidebar:** change less variable case ([03acf29](https://github.com/ovh-ux/ovh-manager-telecom/commit/03acf29))
+* **telephony:** prevent empty array issue and change address ([21565a0](https://github.com/ovh-ux/ovh-manager-telecom/commit/21565a0))
+
+
+### Features
+
+* **pack.xdsl.modem:** add firmware modem update ([e3f4104](https://github.com/ovh-ux/ovh-manager-telecom/commit/e3f4104))
+* **pack.xdsl.modem:** update call api to reset modem with ovh config ([d789eda](https://github.com/ovh-ux/ovh-manager-telecom/commit/d789eda))
+
+
+
 # [10.12.0](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.11.2...v10.12.0) (2018-11-27)
 
 

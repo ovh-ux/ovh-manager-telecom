@@ -6,10 +6,11 @@ angular.module('managerApp').controller('XdslModemResetCtrl', function ($statePa
       return TucToast.error($translate.instant('xdsl_modem_reset_an_error_ocurred'));
     }
     TucPackXdslModemMediator.setTask('resetModem');
-    OvhApiXdsl.Modem().Reset().v6().save({
+    OvhApiXdsl.Modem().Reset().v6().reset({
       xdslId: $stateParams.serviceName,
-      resetOvhConfig: resetOvhConfig ? 1 : 0,
-    }, null).$promise.then((result) => {
+    }, {
+      resetOvhConfig: !!resetOvhConfig,
+    }).$promise.then((result) => {
       if (result.status === 'todo' || result.status === 'doing') {
         TucPackXdslModemMediator.setTask('resetModem');
       }

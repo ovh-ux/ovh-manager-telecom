@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelephonySchedulerCtrl', function ($q, $locale, $translate, $translatePartialLoader, $uibModal, OvhApiTelephony, OvhApiMe, VoipSchedulerEvent, Poller, TucToast, uiCalendarConfig, matchmedia) {
+angular.module('managerApp').controller('TelephonySchedulerCtrl', function TelephonySchedulerCtrl($anchorScroll, $locale, $location, $q, $translate, $translatePartialLoader, $uibModal, matchmedia, OvhApiTelephony, OvhApiMe, Poller, TucToast, uiCalendarConfig, VoipSchedulerEvent) {
   const self = this;
 
   self.loading = {
@@ -17,6 +17,7 @@ angular.module('managerApp').controller('TelephonySchedulerCtrl', function ($q, 
   self.model = {
     currentView: 'month',
     filters: {},
+    events: [],
   };
 
   self.status = {
@@ -162,6 +163,11 @@ angular.module('managerApp').controller('TelephonySchedulerCtrl', function ($q, 
   /* ----------  Actions menu  ----------*/
 
   self.manageAdd = function () {
+    if (self.model.currentView === 'month') {
+      $location.hash('scheduler-calendar');
+      $anchorScroll();
+    }
+
     $(uiCalendarConfig.calendars.eventsCalendar).fullCalendar('select', moment().startOf('day'), moment().endOf('day'));
     self.status.displayActions = false;
   };
@@ -283,24 +289,29 @@ angular.module('managerApp').controller('TelephonySchedulerCtrl', function ($q, 
   self.manageDeleteAll = function () {
     self.loading.deleteAll = true;
 
-    return self.scheduler.getEvents().then(() => {
-      // remove events to create from scheduler events list
-      _.filter(self.scheduler.events, {
-        status: 'TOCREATE',
-      }).forEach((event) => {
-        self.scheduler.removeEvent(event);
-      });
+    $uibModal.open({
+      templateUrl: 'components/telecom/telephony/scheduler/actions/deleteAll/telephony-scheduler-delete-all.html',
+      controller: 'TelephonySchedulerDeleteAllCtrl',
+      controllerAs: '$ctrl',
+    }).result
+      .then(() => self.scheduler.getEvents())
+      .then(() => {
+        // remove events to create from scheduler events list
+        self.scheduler.events.filter(({ status }) => status === 'TO_CREATE')
+          .forEach((event) => {
+            self.scheduler.removeEvent(event);
+          });
 
-      self.scheduler.events.forEach((event) => {
-        event.startEdition().status = 'TODELETE'; // eslint-disable-line
-      });
+        self.scheduler.events.forEach((event) => {
+          event.startEdition().status = 'TODELETE'; // eslint-disable-line
+        });
 
-      $(uiCalendarConfig.calendars.eventsCalendar).fullCalendar('refetchEvents');
-    }).finally(() => {
-      self.loading.deleteAll = false;
-      self.status.deleteConfirm = false;
-      self.status.displayActions = false;
-    });
+        $(uiCalendarConfig.calendars.eventsCalendar).fullCalendar('refetchEvents');
+      }).finally(() => {
+        self.loading.deleteAll = false;
+        self.status.deleteConfirm = false;
+        self.status.displayActions = false;
+      });
   };
 
   /* -----  End of ACTIONS  ------*/

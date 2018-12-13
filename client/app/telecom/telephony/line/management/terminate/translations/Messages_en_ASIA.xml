@@ -8,7 +8,11 @@
    <translation id="telephony_group_line_terminate_info_3" qtlid="338365">Procédure de retour matériel&#160;:&#160;</translation>
    <translation id="telephony_group_line_terminate_info_4" qtlid="338378">Vous nous retournez l'ancien matériel dans un délai de 15 jours après la résiliation effective de votre ligne. La caution vous est restituée sous 10 jours après réception de l'équipement.</translation>
    <translation id="telephony_group_line_terminate_back_address" qtlid="338391">Adresse de retour&#160;:&#160;</translation>
-   <translation id="telephony_group_line_terminate_address" qtlid="338404">OVH SAS<br/>Service Après Vente<br/>13 rue Kellermann<br/>59100 Roubaix<br/></translation>
+
+   <translation id="telephony_group_line_terminate_address_name" qtlid="61392">OVH Ltd.</translation>
+   <translation id="telephony_group_line_terminate_address_service" qtlid="509626">Service Après Vente</translation>
+   <translation id="telephony_group_line_terminate_address_address" qtlid="509639">155 avenue Georges Hannart</translation>
+   <translation id="telephony_group_line_terminate_address_city" qtlid="509652">59170 Croix</translation>
 
    <translation id="telephony_group_line_terminate_action_title" qtlid="338131">Résiliation de la ligne</translation>
    <translation id="telephony_group_line_terminate_action_label" qtlid="338417">Pour nous aider à améliorer nos services, veuillez préciser la raison de votre résiliation&#160;:&#160;</translation>

@@ -127,18 +127,6 @@ angular.module('managerApp').config((SidebarMenuProvider) => {
         external: true,
         onClick: setTracker('order-FIBER', 'navigation', 'Telecom', 'telecom'),
       }, {
-        title: $translate.instant('telecom_sidebar_actions_menu_internet_enterprise'),
-        href: ORDER_URLS.internet.enterprise,
-        target: '_blank',
-        external: true,
-        onClick: setTracker('order-Pack_ADSL_Entreprise', 'navigation', 'Telecom', 'telecom'),
-      }, {
-        title: $translate.instant('telecom_sidebar_actions_menu_internet_rescue'),
-        href: ORDER_URLS.internet.rescue,
-        target: '_blank',
-        external: true,
-        onClick: setTracker('order-Lignes_De_Secours', 'navigation', 'Telecom', 'telecom'),
-      }, {
         title: $translate.instant('telecom_sidebar_actions_menu_internet_sdsl'),
         href: ORDER_URLS.internet.sdsl,
         target: '_blank',

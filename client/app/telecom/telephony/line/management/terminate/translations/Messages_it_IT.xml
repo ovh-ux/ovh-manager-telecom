@@ -8,7 +8,11 @@
    <translation id="telephony_group_line_terminate_info_3" qtlid="338365">Procedura per la resituzione del materiale:&#160;</translation>
    <translation id="telephony_group_line_terminate_info_4" qtlid="338378">Il materiale deve essere restituito entro 15 giorni dall'effettiva disattivazione della tua linea. La cauzione verrà restituita entro 10 giorni dalla data di ricezione del materiale.</translation>
    <translation id="telephony_group_line_terminate_back_address" qtlid="338391">Indirizzo di restituzione:&#160;</translation>
-   <translation id="telephony_group_line_terminate_address" qtlid="338404">OVH SAS<br/>Service Après Vente<br/>13 rue Kellermann<br/>59100 Roubaix<br/></translation>
+
+   <translation id="telephony_group_line_terminate_address_name" qtlid="61392">OVH S.r.l.</translation>
+   <translation id="telephony_group_line_terminate_address_service" qtlid="509626">Service Après Vente</translation>
+   <translation id="telephony_group_line_terminate_address_address" qtlid="509639">155 avenue Georges Hannart</translation>
+   <translation id="telephony_group_line_terminate_address_city" qtlid="509652">59170 Croix</translation>
 
    <translation id="telephony_group_line_terminate_action_title" qtlid="338131">Disattiva la linea</translation>
    <translation id="telephony_group_line_terminate_action_label" qtlid="338417">Per aiutarci a migliorare, indica i motivi della disattivazione del tuo servizio:&#160;</translation>

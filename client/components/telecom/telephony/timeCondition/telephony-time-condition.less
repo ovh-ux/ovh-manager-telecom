@@ -28,8 +28,8 @@
     }
 
     &.unavailable {
-      background-color: #fff;
-      border: solid 1px @telephony-slot1-color;
+      background-color: @oui-color-silver;
+      border: solid 1px @oui-color-dusty;
     }
   }
 
@@ -144,27 +144,27 @@ div.voip-time-condition-calendar {
     }
 
     &.available div.fc-bg {
-      background-color: fade(@telephony-slot-available-color, 60%);
+      background-color: @telephony-slot-available-color;
       border: solid 1px @telephony-slot-available-color;
     }
 
     &.unavailable div.fc-bg {
       background-color: #fff;
-      border: solid 1px @telephony-slot1-color;
+      border: solid 1px @oui-color-iron;
     }
 
     &.slot1 div.fc-bg {
-      background-color: fade(@telephony-slot1-color, 60%);
+      background-color: @telephony-slot1-color;
       border: solid 1px @telephony-slot1-color;
     }
 
     &.slot2 div.fc-bg {
-      background-color: fade(@telephony-slot2-color, 60%);
+      background-color: @telephony-slot2-color;
       border: solid 1px @telephony-slot2-color;
     }
 
     &.slot3 div.fc-bg {
-      background-color: fade(@telephony-slot3-color, 60%);
+      background-color: @telephony-slot3-color;
       border: solid 1px @telephony-slot3-color;
     }
   }
@@ -192,6 +192,12 @@ div.voip-time-condition-calendar {
   }
 
   div.fc-time-grid {
+    background-color: @oui-color-silver;
+
+    .fc-axis {
+      background-color: #fff;
+    }
+
     div.fc-slats {
       tr.fc-minor {
         td {

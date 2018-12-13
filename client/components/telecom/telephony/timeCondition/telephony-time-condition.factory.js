@@ -77,6 +77,25 @@ angular.module('managerApp').factory('VoipTimeCondition', ($q, voipTimeCondition
       }));
     }
 
+    // set unavailable slot
+    const unavailableSlot = _.find(self.slots, {
+      name: 'unavailable',
+    });
+
+    if (unavailableSlot) {
+      unavailableSlot.setOptions({
+        type: opts.unavailableType || 'number',
+        number: opts.unavailableNumber || '',
+      });
+    } else {
+      self.slots.push(new VoipTimeConditionSlot({
+        name: 'unavailable',
+        serviceName: self.serviceName,
+        type: opts.unavailableType || 'number',
+        number: opts.unavailableNumber || '',
+      }));
+    }
+
     // set slot types
     for (let i = 0; i < voipTimeCondition.getAvailableSlotsCount(self.featureType); i += 1) {
       tmpSlotNumber = i + 1;
@@ -98,25 +117,6 @@ angular.module('managerApp').factory('VoipTimeCondition', ($q, voipTimeCondition
           number: _.get(opts, `${tmpSlotName}Number`) || '',
         }));
       }
-    }
-
-    // set unavailable slot
-    const unavailableSlot = _.find(self.slots, {
-      name: 'unavailable',
-    });
-
-    if (unavailableSlot) {
-      unavailableSlot.setOptions({
-        type: opts.unavailableType || 'number',
-        number: opts.unavailableNumber || '',
-      });
-    } else {
-      self.slots.push(new VoipTimeConditionSlot({
-        name: 'unavailable',
-        serviceName: self.serviceName,
-        type: opts.unavailableType || 'number',
-        number: opts.unavailableNumber || '',
-      }));
     }
 
     // set timeout option for sip feature type and enable state

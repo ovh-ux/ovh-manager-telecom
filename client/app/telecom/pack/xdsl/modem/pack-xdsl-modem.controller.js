@@ -3,7 +3,7 @@ angular.module('managerApp')
     const self = this;
 
     this.getAccessName = function () {
-      return OvhApiXdsl.v6().get({
+      return OvhApiXdsl.Modem().v6().get({
         xdslId: $stateParams.serviceName,
       }).$promise.then((access) => {
         self.serviceName = access.description || access.packName;

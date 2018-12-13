@@ -1,5 +1,5 @@
 import translateAsyncLoader from '@ovh-ux/translate-async-loader';
-import telecomUniverseComponents from '../telecomUniverseComponents';
+import telecomUniverseComponents from '@ovh-ux/telecom-universe-components';
 
 angular.module('managerApp', [
   'ovh-angular-sso-auth',

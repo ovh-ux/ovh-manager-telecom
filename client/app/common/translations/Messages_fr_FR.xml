@@ -33,6 +33,7 @@
    <translation id="common_criteria_adder_value_label" qtlid="47548">Valeur</translation>
    <translation id="common_criteria_adder_submit_label" qtlid="37923">Ajouter</translation>
 
+   <translation id="common_none" qtlid="30646">Aucun</translation>
    <translation id="common_datagrid_nodata" qtlid="197635">Aucun résultat</translation>
 
    <translation id="common_field_error_required" qtlid="472294">Veuillez compléter ce champ.</translation>
@@ -53,6 +54,8 @@
    <translation id="common_navbar_notification_none" qtlid="492081">Vous êtes à jour !</translation>
    <translation id="common_navbar_notification_none_description" qtlid="492094">Vous n'avez aucune notification.</translation>
 
+   <translation id="common_open_new_tab" qtlid="493971">Ouvre un nouvel onglet</translation>
+
    <translation id="common_pagination_resultsperpage" qtlid="433384">Résultats par page</translation>
    <translation id="common_pagination_page" qtlid="433397">page</translation>
    <translation id="common_pagination_of" qtlid="121615">sur</translation>
@@ -61,7 +64,7 @@
    <translation id="common_pagination_results" qtlid="433410">résultats</translation>
    <translation id="common_pagination_next" qtlid="433423">Page suivante</translation>
    <translation id="common_pagination_previous" qtlid="433436">Page précédente</translation>
-
+   <translation id="common_choose" qtlid="84153">Choisir</translation>
    <translation id="common_stepper_optional_label" qtlid="356264">(facultatif)</translation>
    <translation id="common_stepper_modify_this_step" qtlid="480922">Modifier cette étape</translation>
    <translation id="common_stepper_skip_this_step" qtlid="480935">Ignorer cette étape</translation>
@@ -79,6 +82,7 @@
    <translation id="show" qtlid="69353">Afficher</translation>
    <translation id="hide" qtlid="26539">Cacher</translation>
    <translation id="common_add" qtlid="37923">Ajouter</translation>
+   <translation id="common_apply" qtlid="41326">Appliquer</translation>
    <translation id="common_actions" qtlid="72809">Actions</translation>
 
    <translation id="common_between_and" qtlid="479252">Entre {{between}} et {{and}}</translation>
@@ -86,6 +90,10 @@
    <translation id="common_search" qtlid="37659">Rechercher</translation>
 
    <translation id="common_error_title" qtlid="26407">Erreur</translation>
+   <translation id="common_delete_selected_one_item" qtlid="510033">Supprimer l’élément sélectionné</translation>
+   <translation id="common_delete_selected_items" qtlid="510046">Supprimer les éléments sélectionnés</translation>
+   <translation id="common_delete_selected_items_count" qtlid="510059">{{count}} élément(s) sélectionné(s)</translation>
+   <translation id="common_two_of_them" qtlid="510072">Les deux</translation>
 
    <translation id="an_error_occured" qtlid="148981">Une erreur est survenue.</translation>
    <translation id="error_401" qtlid="304472">Accès non autorisé</translation>
@@ -94,6 +102,7 @@
    <translation id="error_456" qtlid="304511">Erreur irrécupérable côté client.</translation>
    <translation id="loading" qtlid="242769">Chargement en cours</translation>
    <translation id="submit" qtlid="26047">Valider</translation>
+   <translation id="apply" qtlid="41326">Appliquer</translation>
    <translation id="edit" qtlid="6766">Éditer</translation>
    <translation id="modify" qtlid="37875">Modifier</translation>
    <translation id="common_add" qtlid="37923">Ajouter</translation>

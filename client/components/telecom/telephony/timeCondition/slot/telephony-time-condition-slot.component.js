@@ -12,6 +12,7 @@
     bindings: {
       slot: '=timeConditionSlot',
       enableEdition: '<?slotEnableEdition',
+      hasPopover: '<?',
       isScheduler: '<?',
     },
     controller: 'voipTimeConditionSlotCtrl',

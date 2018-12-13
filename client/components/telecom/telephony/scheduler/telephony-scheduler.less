@@ -12,7 +12,8 @@
     .scheduler-ui-calendar {
       position: relative;
 
-      // defining calendar event styles
+      /* defining calendar event styles */
+
       a.fc-event {
         color: @text-color;
         cursor: pointer;
@@ -30,7 +31,7 @@
         }
 
         &.holidays {
-          .colorize-event-categories(@telephony-slot-available-color);
+          .colorize-event-categories(@oui-color-silver);
         }
       }
 
@@ -45,46 +46,12 @@
       }
     }
   }
-
-  .telephony-scheduler-filters {
-    button {
-      padding: @padding-base-vertical @padding-base-horizontal;
-      color: @text-disabled-color;
-      text-decoration: none;
-      opacity: 0.5;
-
-      &:hover {
-        .telephony-time-condition-slot {
-          font-weight: bold;
-
-          .legend-description {
-            font-weight: bold !important;
-          }
-        }
-      }
-
-      &.active-slot {
-        .telephony-time-condition-slot {
-          color: @text-color;
-
-          .legend-description {
-            color: @text-color !important;
-          }
-        }
-
-        opacity: 1;
-      }
-
-      &.active {
-        opacity: 1;
-      }
-    }
-  }
 }
 
 .telephony-scheduler-time-condition-slots {
   .telephony-time-condition-slot .legend-color.unavailable {
-    .colorize-event-categories(@telephony-slot-available-color);
+    background-color: @oui-color-silver;
+    border: 1px solid @oui-color-dusty;
   }
 }
 
@@ -221,10 +188,6 @@
                   .text-info {
                     color: #fff;
                   }
-                }
-
-                .btn-info {
-                  // background-color: fadeout(@MANAGER_BUTTON_COLOR, 88%);
                 }
               }
             }
