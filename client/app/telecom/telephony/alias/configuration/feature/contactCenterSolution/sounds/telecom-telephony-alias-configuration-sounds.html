@@ -68,12 +68,10 @@
                 <oui-radio-group name="actionOnOverflow"
                                  data-model="$ctrl.queueOptions.actionOnOverflow"
                                  data-on-change="$ctrl.queueOptions.actionOnOverflowParam = null">
-                    <oui-radio data-value="'voicemail'"
-                               required>
+                    <oui-radio data-value="'voicemail'">
                         <span data-translate="telephony_alias_config_contactCenterSolution_sounds_action_voicemail"></span>
                     </oui-radio>
-                    <oui-radio data-value="'playback'"
-                               required>
+                    <oui-radio data-value="'playback'">
                         <span data-translate="telephony_alias_config_contactCenterSolution_sounds_action_playback"></span>
                     </oui-radio>
                 </oui-radio-group>
@@ -137,12 +135,10 @@
                 <oui-radio-group name="actionOnClosure"
                                  data-model="$ctrl.queueOptions.actionOnClosure"
                                  data-on-change="$ctrl.queueOptions.actionOnClosureParam = null">
-                    <oui-radio data-value="'voicemail'"
-                               required>
+                    <oui-radio data-value="'voicemail'">
                         <span data-translate="telephony_alias_config_contactCenterSolution_sounds_action_voicemail"></span>
                     </oui-radio>
-                    <oui-radio data-value="'playback'"
-                               required>
+                    <oui-radio data-value="'playback'">
                         <span data-translate="telephony_alias_config_contactCenterSolution_sounds_action_playback"></span>
                     </oui-radio>
                 </oui-radio-group>
@@ -196,7 +192,7 @@
         </oui-button>
         <oui-button data-variant="primary"
                     data-on-click="$ctrl.updateContactCenterSolution()"
-                    data-disabled="!$ctrl.hasChanged() || $ctrl.soundsHoldForm.$invalid || $ctrl.soundsOverflowForm.$invalid || $ctrl.soundsClosureForm.$invalid || !$ctrl.queueOptions.actionOnClosureParam || !$ctrl.queueOptions.actionOnOverflowParam">
+                    data-disabled="!$ctrl.hasChanged() || $ctrl.soundsHoldForm.$invalid || $ctrl.soundsOverflowForm.$invalid || $ctrl.soundsClosureForm.$invalid">
             <span data-translate="submit"></span>
         </oui-button>
     </div>
