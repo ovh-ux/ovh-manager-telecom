@@ -21,6 +21,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationLines
       }],
       options: {
         status: 'available',
+        timeout: 20,
       },
     };
     this.linesToExclude = [];
