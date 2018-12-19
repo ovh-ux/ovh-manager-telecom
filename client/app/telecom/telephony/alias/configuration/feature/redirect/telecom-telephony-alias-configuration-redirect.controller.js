@@ -28,7 +28,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationRedir
         this.destination = allServices
           .find(({ serviceName }) => _.isEqual(serviceName, destination));
 
-        if (this.destination) {
+        if (this.destination && this.canDestinationBeUsedForPresentation()) {
           return this.tucVoipServiceLine.getLineOptions({
             billingAccount: this.destination.billingAccount,
             serviceName: this.destination.serviceName,
@@ -67,14 +67,15 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationRedir
     };
   }
 
-  isDestinationNotTrunkLine() {
+  canDestinationBeUsedForPresentation() {
     const trunkOffer = 'trunk';
+    const faxFeatureType = 'fax';
     const regExp = new RegExp(trunkOffer);
     if (this.newDestination) {
-      return !regExp.test(_(this.newDestination).get('getPublicOffer.name', trunkOffer));
+      return !regExp.test(_(this.newDestination).get('getPublicOffer.name', trunkOffer)) && this.newDestination.featureType !== faxFeatureType;
     }
 
-    return !regExp.test(_(this.destination).get('getPublicOffer.name', trunkOffer));
+    return !regExp.test(_(this.destination).get('getPublicOffer.name', trunkOffer)) && this.destination.featureType !== faxFeatureType;
   }
 
   canChangeDestination() {
