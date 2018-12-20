@@ -116,6 +116,14 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationSound
   updateContactCenterSolution() {
     this.loading = true;
 
+    if (this.queueOptions.actionOnClosure && !this.queueOptions.actionOnClosureParam) {
+      this.queueOptions.actionOnClosure = null;
+    }
+
+    if (this.queueOptions.actionOnOverflow && !this.queueOptions.actionOnOverflowParam) {
+      this.queueOptions.actionOnOverflow = null;
+    }
+
     return this.$q.all({
       ccsOptions: this.hasOptionsChanged() ? this.tucVoipServiceAlias
         .updateContactCenterSolutionNumber(

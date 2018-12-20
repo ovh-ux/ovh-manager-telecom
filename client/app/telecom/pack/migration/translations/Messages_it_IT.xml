@@ -151,9 +151,9 @@
    <translation id="telecom_pack_migration_pto_description" qtlid="509131">Disposez-vous déjà d'un boitier fibre à l'adresse d'installation ? (prise optique murale)</translation>
    <translation id="telecom_pack_migration_pto_check_yes" qtlid="509144">Oui je dispose d'un boîter PTO</translation>
    <translation id="telecom_pack_migration_pto_check_no" qtlid="509157">Non je ne dispose pas d'un boîter PTO</translation>
-   <translation id="telecom_pack_migration_pto_reference" qtlid="509170">Saisissez votre référence PTO</translation>
-   <translation id="telecom_pack_migration_pto_where" qtlid="509183">Où trouver votre numéro de référence du boîtier PTO ?</translation>
-   <translation id="telecom_pack_migration_pto_where_description" qtlid="509196">Cette référence est inscrite sur le boîtier PTO et est composée de chiffres et de lettres sous la forme OO-XXXX-XXXX /C</translation>
-   <translation id="telecom_pack_migration_pto_yes_not_known" qtlid="509209">J'ai un boîtier mais je ne connais pas son numéro</translation>
+   <translation id="telecom_pack_migration_pto_reference" qtlid="509170">Inserisci il codice identificativo del tuo box ottico</translation>
+   <translation id="telecom_pack_migration_pto_where" qtlid="509183">Dove si trova il codice identificativo del box ottico?</translation>
+   <translation id="telecom_pack_migration_pto_where_description" qtlid="509196">Questo codice si trova sul dispositivo ed è composto da cifre e lettere in formato OO-XXXX-XXXX /C</translation>
+   <translation id="telecom_pack_migration_pto_yes_not_known" qtlid="509209">Hai un box ottico ma non sai dove si trova il suo codice</translation>
 
 </translations>

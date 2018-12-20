@@ -151,8 +151,8 @@
    <translation id="telecom_pack_migration_pto_description" qtlid="509131">Disposez-vous déjà d'un boitier fibre à l'adresse d'installation ? (prise optique murale)</translation>
    <translation id="telecom_pack_migration_pto_check_yes" qtlid="509144">Oui je dispose d'un boîter PTO</translation>
    <translation id="telecom_pack_migration_pto_check_no" qtlid="509157">Non je ne dispose pas d'un boîter PTO</translation>
-   <translation id="telecom_pack_migration_pto_reference" qtlid="509170">Wprowadź numer Twojego terminala optycznego</translation>
-   <translation id="telecom_pack_migration_pto_where" qtlid="509183">Gdzie znajdę numer terminala optycznego?</translation>
+   <translation id="telecom_pack_migration_pto_reference" qtlid="509170">Wprowadź numer Twojego sieciowego terminala optycznego</translation>
+   <translation id="telecom_pack_migration_pto_where" qtlid="509183">Gdzie znajdę numer sieciowego terminala optycznego?</translation>
    <translation id="telecom_pack_migration_pto_where_description" qtlid="509196">Numer terminala znajdziesz na obudowie. Składa się on ze znaków alfanumerycznych zapisanych w postaci ciągu: OO-XXXX-XXXX /C</translation>
    <translation id="telecom_pack_migration_pto_yes_not_known" qtlid="509209">Na obudowie nie ma numeru</translation>
 
