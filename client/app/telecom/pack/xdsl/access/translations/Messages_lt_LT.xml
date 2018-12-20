@@ -41,7 +41,7 @@
    <translation id="xdsl_details_button_move" qtlid="308788">Perkelti</translation>
    <translation id="xdsl_details_button_move_disabled" qtlid="384909">Perkėlimas užsakomas</translation>
    <translation id="xdsl_details_button_deconsolidation" qtlid="79338">Visiškas pergrupavimas</translation>
-   <translation id="xdsl_details_button_diagnostic">Lancer l'outil</translation>
+   <translation id="xdsl_details_button_diagnostic" qtlid="515246">Lancer l'outil</translation>
    <translation id="xdsl_details_button_ipv4" qtlid="44284">Reverse DNS</translation>
    <translation id="xdsl_details_button_ipv6" qtlid="44284">Reverse DNS</translation>
    <translation id="xdsl_details_add_dns" qtlid="309659">Pridėti DNS reverse</translation>
@@ -49,30 +49,30 @@
    <translation id="xdsl_details_profile" qtlid="309672">Jungties profilis</translation>
    <translation id="xdsl_details_reset_dslam_port" qtlid="309685">Jungties prievadas</translation>
    <translation id="xdsl_details_rate_limit" qtlid="309698">Srauto valdymas</translation>
-   <translation id="xdsl_details_diagnostic_description">Vous rencontrez des difficultés avec votre accès internet ? Utilisez notre outil de résolution de problèmes.</translation>
-   <translation id="xdsl_details_diagnostic_not_yet_available">L'outil de résolution de problèmes n'est pas encore disponible pour votre type d'accès internet.</translation>
+   <translation id="xdsl_details_diagnostic_description" qtlid="515259">Vous rencontrez des difficultés avec votre accès internet ? Utilisez notre outil de résolution de problèmes.</translation>
+   <translation id="xdsl_details_diagnostic_not_yet_available" qtlid="515272">L'outil de résolution de problèmes n'est pas encore disponible pour votre type d'accès internet.</translation>
    <translation id="xdsl_details_diagnostic_label" qtlid="309711">Linijos diagnostika</translation>
    <translation id="xdsl_details_diagnostic" qtlid="309724">Linijos diagnostika</translation>
-   <translation id="xdsl_details_diagnostic_modal_button">Plus de détails sur l'état de ma ligne</translation>
-   <translation id="xdsl_details_diagnostic_modal_title">Détails de l'état de votre ligne</translation>
-   <translation id="xdsl_details_diagnostic_modal_loading">Un diagnostic est en cours... Merci de patienter quelques instants.</translation>
-   <translation id="xdsl_details_diagnostic_modal_loading_info">Vous pouvez fermer cette fenêtre et y revenir plus tard si vous le souhaitez.</translation>
-   <translation id="xdsl_details_diagnostic_modal_relaunch_status_check">Lancer un test</translation>
-   <translation id="xdsl_details_diagnostic_modal_relaunch_status_remaining_checks">({{remainingChecks}} restants)</translation>
-   <translation id="xdsl_details_diagnostic_modal_relaunch_status_no_remaining_checks">Tests épuisés</translation>
-   <translation id="xdsl_details_diagnostic_modal_status_term_time">Heure du diagnostic</translation>
-   <translation id="xdsl_details_diagnostic_modal_status_term_isActiveOnLns">Passerelle de sortie LNS</translation>
-   <translation id="xdsl_details_diagnostic_modal_status_term_isActiveOnLns_true">Votre équipement est actif.</translation>
-   <translation id="xdsl_details_diagnostic_modal_status_term_isActiveOnLns_false">Votre équipement n'est pas actif.</translation>
-   <translation id="xdsl_details_diagnostic_modal_status_term_ping">Réponse aux pings</translation>
-   <translation id="xdsl_details_diagnostic_modal_status_term_ping_true">Votre équipement répond aux pings.</translation>
-   <translation id="xdsl_details_diagnostic_modal_status_term_ping_false">Votre équipement ne répond pas aux pings.</translation>
-   <translation id="xdsl_details_diagnostic_modal_status_term_sync">Synchronisation de la ligne</translation>
-   <translation id="xdsl_details_diagnostic_modal_status_term_sync_true">La ligne est synchronisée.</translation>
-   <translation id="xdsl_details_diagnostic_modal_status_term_sync_false">La ligne n'est pas synchronisée.</translation>
-   <translation id="xdsl_details_diagnostic_modal_status_term_isModemConnected">Statut de connexion</translation>
-   <translation id="xdsl_details_diagnostic_modal_status_term_isModemConnected_true">Votre équipement OVH est connecté.</translation>
-   <translation id="xdsl_details_diagnostic_modal_status_term_isModemConnected_false">Votre équipement OVH est déconnecté.</translation>
+   <translation id="xdsl_details_diagnostic_modal_button" qtlid="515285">Plus de détails sur l'état de ma ligne</translation>
+   <translation id="xdsl_details_diagnostic_modal_title" qtlid="515298">Détails de l'état de votre ligne</translation>
+   <translation id="xdsl_details_diagnostic_modal_loading" qtlid="515311">Un diagnostic est en cours... Merci de patienter quelques instants.</translation>
+   <translation id="xdsl_details_diagnostic_modal_loading_info" qtlid="515324">Vous pouvez fermer cette fenêtre et y revenir plus tard si vous le souhaitez.</translation>
+   <translation id="xdsl_details_diagnostic_modal_relaunch_status_check" qtlid="515337">Lancer un test</translation>
+   <translation id="xdsl_details_diagnostic_modal_relaunch_status_remaining_checks" qtlid="515350">({{remainingChecks}} restants)</translation>
+   <translation id="xdsl_details_diagnostic_modal_relaunch_status_no_remaining_checks" qtlid="515363">Tests épuisés</translation>
+   <translation id="xdsl_details_diagnostic_modal_status_term_time" qtlid="310452">Diagnostikos valanda</translation>
+   <translation id="xdsl_details_diagnostic_modal_status_term_isActiveOnLns" qtlid="310543">LNS išėjimo kelias</translation>
+   <translation id="xdsl_details_diagnostic_modal_status_term_isActiveOnLns_true" qtlid="515376">Votre équipement est actif.</translation>
+   <translation id="xdsl_details_diagnostic_modal_status_term_isActiveOnLns_false" qtlid="515389">Votre équipement n'est pas actif.</translation>
+   <translation id="xdsl_details_diagnostic_modal_status_term_ping" qtlid="310582">Atsakas į PING</translation>
+   <translation id="xdsl_details_diagnostic_modal_status_term_ping_true" qtlid="515402">Votre équipement répond aux pings.</translation>
+   <translation id="xdsl_details_diagnostic_modal_status_term_ping_false" qtlid="515415">Votre équipement ne répond pas aux pings.</translation>
+   <translation id="xdsl_details_diagnostic_modal_status_term_sync" qtlid="310647">Linijos sinchronizavimas</translation>
+   <translation id="xdsl_details_diagnostic_modal_status_term_sync_true" qtlid="515428">La ligne est synchronisée.</translation>
+   <translation id="xdsl_details_diagnostic_modal_status_term_sync_false" qtlid="515441">La ligne n'est pas synchronisée.</translation>
+   <translation id="xdsl_details_diagnostic_modal_status_term_isModemConnected" qtlid="310491">Jungties būsena</translation>
+   <translation id="xdsl_details_diagnostic_modal_status_term_isModemConnected_true" qtlid="515454">Votre équipement OVH est connecté.</translation>
+   <translation id="xdsl_details_diagnostic_modal_status_term_isModemConnected_false" qtlid="515467">Votre équipement OVH est déconnecté.</translation>
 
 <!-- IPs -->
    <translation id="xdsl_details_ips_v4" qtlid="101781">IPv4</translation>
