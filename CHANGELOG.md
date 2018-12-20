@@ -1,3 +1,21 @@
+## [10.15.2](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.15.1...v10.15.2) (2018-12-20)
+
+
+### Bug Fixes
+
+* **i18n:** submit and retrieve translations ([690bbd1](https://github.com/ovh-ux/ovh-manager-telecom/commit/690bbd1))
+* **labels-scheduler:** translation for non translated labels ([5d6da87](https://github.com/ovh-ux/ovh-manager-telecom/commit/5d6da87))
+* **telephony.alias:** allow fax numbers for redirect ([823f280](https://github.com/ovh-ux/ovh-manager-telecom/commit/823f280))
+* **telephony.alias:** fix display of time condition slots ([cdf6bf3](https://github.com/ovh-ux/ovh-manager-telecom/commit/cdf6bf3))
+* **telephony.alias:** fix expert menu modal actions choice ([3bb0ff2](https://github.com/ovh-ux/ovh-manager-telecom/commit/3bb0ff2))
+* **telephony.alias:** fix international numbers ([74d97f0](https://github.com/ovh-ux/ovh-manager-telecom/commit/74d97f0))
+* **telephony.alias:** remove conference pin code restrictions ([e680327](https://github.com/ovh-ux/ovh-manager-telecom/commit/e680327))
+* **telephony.alias:** remove mandatory options for sounds ([9eae846](https://github.com/ovh-ux/ovh-manager-telecom/commit/9eae846))
+* **telephony.alias:** set default line timeout to 20 sec ([5ab6ddc](https://github.com/ovh-ux/ovh-manager-telecom/commit/5ab6ddc))
+* **telephony.alias:** undo deletion of used folder ([b46029a](https://github.com/ovh-ux/ovh-manager-telecom/commit/b46029a))
+
+
+
 ## [10.15.1](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.15.0...v10.15.1) (2018-12-13)
 
 
