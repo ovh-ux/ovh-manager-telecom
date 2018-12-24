@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationChangeTypeCtrl', class TelecomTelephonyAliasConfigurationChangeTypeCtrl {
+angular.module('managerApp').controller('TelecomTelephonyAliasChangeTypeCtrl', class TelecomTelephonyAliasChangeTypeCtrl {
   constructor(
     $q, $state, $stateParams, $translate, $uibModal,
     atInternet, OvhApiTelephony, TucToast, tucTelephonyBulk,
@@ -76,8 +76,8 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationChang
   confirmChoice() {
     if (!_(this.number.featureType).isEqual('empty')) {
       const validChoiceModal = this.$uibModal.open({
-        templateUrl: 'app/telecom/telephony/alias/configuration/changeType/confirm/telecom-telephony-alias-configuration-changeType-confirm.html',
-        controller: 'TelecomTelephonyAliasConfigurationChangeTypeConfirmCtrl',
+        templateUrl: 'app/telecom/telephony/alias/changeType/confirm/telecom-telephony-alias-changeType-confirm.html',
+        controller: 'TelecomTelephonyAliasChangeTypeConfirmCtrl',
         controllerAs: '$ctrl',
         resolve: {
           currentFeatureType: () => this.$translate.instant(`telephony_alias_configuration_configuration_type_${this.number.featureType}`),
