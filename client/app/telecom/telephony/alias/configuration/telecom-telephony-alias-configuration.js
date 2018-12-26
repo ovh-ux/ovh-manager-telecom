@@ -8,10 +8,14 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: '$ctrl',
       },
       'featureView@telecom.telephony.alias.configuration': {
-        templateProvider: alias => `<div data-ng-include="::'app/telecom/telephony/alias/configuration/feature/${alias.featureType}/telecom-telephony-alias-configuration-${alias.featureType}.html'"></div>`,
+        templateProvider: (alias) => {
+          const featureType = alias.featureType === 'ddi' ? 'redirect' : alias.featureType;
+          return `<div data-ng-include="::'app/telecom/telephony/alias/configuration/feature/${featureType}/telecom-telephony-alias-configuration-${featureType}.html'"></div>`;
+        },
         controllerProvider: (alias) => {
           const isNotEmptyFeature = alias.featureType !== 'empty';
-          return isNotEmptyFeature ? `TelecomTelephonyAliasConfiguration${_.capitalize(alias.featureType)}Ctrl` : null;
+          const featureType = alias.featureType === 'ddi' ? 'redirect' : alias.featureType;
+          return isNotEmptyFeature ? `TelecomTelephonyAliasConfiguration${_.capitalize(featureType)}Ctrl` : null;
         },
         controllerAs: '$ctrl',
       },

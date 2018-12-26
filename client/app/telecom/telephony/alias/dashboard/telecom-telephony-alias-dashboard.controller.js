@@ -43,7 +43,8 @@ angular.module('managerApp').controller('TelecomTelephonyAliasDashboardControlle
       .then((alias) => {
         if (alias) {
           this.alias = alias;
-          this.featureTypeLabel = this.$translate.instant(`telephony_alias_configuration_configuration_type_${this.alias.featureType}`);
+          const featureType = alias.featureType === 'ddi' ? 'redirect' : alias.featureType;
+          this.featureTypeLabel = this.$translate.instant(`telephony_alias_configuration_configuration_type_${featureType}`);
 
           return this.tucVoipService.getServiceDirectory(alias).then(({ directory }) => {
             this.alias.directory = directory;
@@ -75,11 +76,13 @@ angular.module('managerApp').controller('TelecomTelephonyAliasDashboardControlle
     return this.tucVoipServiceAlias.fetchRedirectNumber({
       billingAccount: this.alias.billingAccount,
       serviceName: this.alias.serviceName,
-    }).then(({ destination }) => this.tucVoipService.fetchAll().then((allServices) => {
-      const [destinationLine] = allServices
-        .filter(({ serviceName }) => _.isEqual(serviceName, destination));
-      return destinationLine;
-    })).catch(error => error);
+    }, this.alias.featureType)
+      .then(({ destination }) => this.tucVoipService.fetchAll().then((allServices) => {
+        const [destinationLine] = allServices
+          .filter(({ serviceName }) => _.isEqual(serviceName, destination));
+        return destinationLine;
+      }))
+      .catch(error => error);
   }
 
   fetchServiceConsumption() {

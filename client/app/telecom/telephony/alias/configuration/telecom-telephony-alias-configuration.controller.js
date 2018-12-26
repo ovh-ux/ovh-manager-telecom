@@ -25,7 +25,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationCtrl'
         this.number = number;
 
         return this.number.feature.init().then(() => {
-          this.featureTypeLabel = this.$translate.instant(`telephony_alias_config_change_type_label_${this.number.feature.featureType}`).toLowerCase();
+          this.featureTypeLabel = this.$translate.instant(`telephony_alias_config_change_type_label_${this.number.feature.featureType === 'ddi' ? 'redirect' : this.number.feature.featureType}`).toLowerCase();
           this.actions = this.getFeatureTypeActions();
 
           this.atInternet.trackPage({
@@ -125,11 +125,14 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationCtrl'
 
   groupFeatureType() {
     const sameFeatures = ['easyHunting', 'cloudHunting'];
-    return sameFeatures.includes(this.number.feature.featureType) ? 'contactCenterSolution' : this.number.feature.featureType;
+    let featureType = sameFeatures.includes(this.number.feature.featureType) ? 'contactCenterSolution' : this.number.feature.featureType;
+    featureType = featureType === 'ddi' ? 'redirect' : featureType;
+
+    return featureType;
   }
 
   isSubwayPlanActive() {
-    const complexFeatures = ['cloudIvr', 'svi', 'contactCenterSolutionExpert', 'ddi'];
+    const complexFeatures = ['cloudIvr', 'svi', 'contactCenterSolutionExpert'];
     return complexFeatures.includes(this.number.feature.featureType);
   }
 });
