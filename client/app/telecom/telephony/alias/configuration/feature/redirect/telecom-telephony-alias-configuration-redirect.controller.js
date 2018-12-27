@@ -73,8 +73,12 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationRedir
         serviceName: service.serviceName,
       }).then(() => {
         this.featureTypeToUse = 'redirect';
-      }).catch(() => {
-        this.featureTypeToUse = 'ddi';
+      }).catch((error) => {
+        if (error.status === 404) {
+          this.featureTypeToUse = 'ddi';
+        } else {
+          this.TucToast.error(`${this.$translate.instant('telephony_alias_config_redirect_get_error')} ${_.get(error, 'data.message', error.message)}`);
+        }
       }).finally(() => {
         this.loading = false;
       });
@@ -144,6 +148,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationRedir
       .then(() => {
         this.TucToast.success(this.$translate.instant('telephony_alias_config_redirect_update_success'));
         this.OvhApiTelephony.Number().resetCache();
+        this.OvhApiTelephony.Service().v6().resetCache();
         this.$onInit();
       })
       .catch((error) => {

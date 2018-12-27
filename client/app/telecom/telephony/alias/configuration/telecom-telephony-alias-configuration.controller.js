@@ -25,7 +25,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationCtrl'
         this.number = number;
 
         return this.number.feature.init().then(() => {
-          this.featureTypeLabel = this.$translate.instant(`telephony_alias_config_change_type_label_${this.number.feature.featureType === 'ddi' ? 'redirect' : this.number.feature.featureType}`).toLowerCase();
+          this.featureTypeLabel = this.$translate.instant(`telephony_alias_config_change_type_label_${this.groupFeatureType()}`).toLowerCase();
           this.actions = this.getFeatureTypeActions();
 
           this.atInternet.trackPage({
