@@ -224,8 +224,10 @@
    <translation id="common_menu_list_ticket" qtlid="454039">Mé tikety</translation>
    <translation id="common_menu_support_assistance" qtlid="52699">Podpora</translation>
    <translation id="common_menu_support_all_guides" qtlid="260788">Všechny přiručky</translation>
+   <translation id="common_menu_support_help_center">Centre d'aide</translation>
    <translation id="common_menu_support_new_ticket" qtlid="260801">Vytvořit ticket</translation>
    <translation id="common_menu_support_list_ticket" qtlid="260814">Seznam mých ticketů</translation>
+   <translation id="common_menu_support_ask_for_assistance">Demande d'assistance</translation>
    <translation id="common_menu_support_email_history" qtlid="260091">Historie e-mailů</translation>
    <translation id="common_menu_support_telephony_contact" qtlid="260827">Telefonická podpora</translation>
    <translation id="common_menu_telephony_redirection" qtlid="304797">Redirection vers le manager Téléphonie</translation>

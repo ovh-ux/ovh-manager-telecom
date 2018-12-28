@@ -8,7 +8,7 @@
    <translation id="telephony_alias_config_contactCenterSolution_lines_type" qtlid="2642">Tyyppi</translation>
    <translation id="telephony_alias_config_contactCenterSolution_lines_number" qtlid="30778">Numero</translation>
    <translation id="telephony_alias_config_contactCenterSolution_lines_name" qtlid="3818">Nimi</translation>
-   <translation id="telephony_alias_config_contactCenterSolution_lines_timeout" qtlid="2642">Tyyppi</translation>
+   <translation id="telephony_alias_config_contactCenterSolution_lines_timeout" qtlid="516455">Durée sonnerie</translation>
    <translation id="telephony_alias_config_contactCenterSolution_lines_wrapUpTime" qtlid="303705">Repos</translation>
    <translation id="telephony_alias_config_contactCenterSolution_lines_simultaneous_lines" qtlid="303718">Samanaikaiset puhelut</translation>
    <translation id="telephony_alias_config_contactCenterSolution_lines_status" qtlid="26443">Tila</translation>
