@@ -37,7 +37,7 @@
    <translation id="telephony_alias_configuration_mode_calls_action_eavesdrop_type_whisper_all" qtlid="466996">Écouter et chuchoter à tous</translation>
    <translation id="telephony_alias_configuration_mode_calls_action_eavesdrop_number" qtlid="30778">Número</translation>
    <translation id="telephony_alias_configuration_mode_calls_action_eavesdrop_help" qtlid="467009">Vous pouvez écouter une communication en cours ou chuchoter dans celle-ci. Pour cela, il vous suffit de renseigner un numéro de téléphone qui sera appelé automatiquement et mis en relation avec la communication en cours.</translation>
-   <translation id="telephony_alias_configuration_mode_calls_action_eavesdrop_confirm" qtlid="31498">Confirmer</translation>
+   <translation id="telephony_alias_configuration_mode_calls_action_eavesdrop_confirm" qtlid="31498">Confirmar</translation>
    <translation id="telephony_alias_configuration_mode_calls_action_eavesdrop_success" qtlid="467022">Mise en relation en cours</translation>
    <translation id="telephony_alias_configuration_mode_calls_empty" qtlid="324145">No hay llamadas.</translation>
    <translation id="telephony_alias_configuration_mode_agents_title" qtlid="324158">Agentes</translation>

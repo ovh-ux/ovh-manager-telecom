@@ -11,8 +11,8 @@
    <translation id="telephony_alias_contactCenterSolution_records_no_record_demand_help" qtlid="512568">En activant cette option, l’appelant peut refuser d’être enregistré</translation>
    <translation id="telephony_alias_contactCenterSolution_records_enabled" qtlid="30250">Aktywny</translation>
    <translation id="telephony_alias_contactCenterSolution_records_disabled" qtlid="24967">Wyłączony</translation>
-   <translation id="telephony_alias_contactCenterSolution_records_record_enabled" qtlid="94435">włączona</translation>
-   <translation id="telephony_alias_contactCenterSolution_records_record_disabled" qtlid="229971">wyłączone</translation>
+   <translation id="telephony_alias_contactCenterSolution_records_record_enabled" qtlid="516468">Activée</translation>
+   <translation id="telephony_alias_contactCenterSolution_records_record_disabled" qtlid="516481">Désactivée</translation>
    <translation id="telephony_alias_contactCenterSolution_records_no_record_demand_language" qtlid="303601">Langue du message</translation>
    <translation id="telephony_alias_contactCenterSolution_records_no_record_demand_digit" qtlid="512581">Chiffre à taper sur le téléphone</translation>
 

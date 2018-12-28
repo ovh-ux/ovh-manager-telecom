@@ -8,7 +8,7 @@
    <translation id="telephony_alias_config_contactCenterSolution_lines_type" qtlid="2642">Tipo</translation>
    <translation id="telephony_alias_config_contactCenterSolution_lines_number" qtlid="30778">Numero</translation>
    <translation id="telephony_alias_config_contactCenterSolution_lines_name" qtlid="3818">Nome</translation>
-   <translation id="telephony_alias_config_contactCenterSolution_lines_timeout" qtlid="2642">Tipo</translation>
+   <translation id="telephony_alias_config_contactCenterSolution_lines_timeout" qtlid="516455">Durée sonnerie</translation>
    <translation id="telephony_alias_config_contactCenterSolution_lines_wrapUpTime" qtlid="303705">Riposo</translation>
    <translation id="telephony_alias_config_contactCenterSolution_lines_simultaneous_lines" qtlid="303718">Chiamate simultanee</translation>
    <translation id="telephony_alias_config_contactCenterSolution_lines_status" qtlid="26443">Stato</translation>
