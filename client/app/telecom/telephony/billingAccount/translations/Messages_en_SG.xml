@@ -8,6 +8,7 @@
    <translation id="telephony_group_tab_contacts_book" qtlid="334179">Carnet de contacts</translation>
    <translation id="telephony_group_tab_short_numbers" qtlid="334192">Numéros abrégés</translation>
    <translation id="telephony_group_tab_contacts_manage" qtlid="73073">Manage contacts</translation>
+   <translation id="telephony_group_tab_guides">Guides</translation>
 
    <translation id="telephony_group_loading_error" qtlid="334205">Impossible de charger les informations relatives à votre compte de facturation ({{billingAccount}}).</translation>
    <translation id="telephony_group_rename_error" qtlid="334218">Impossible de renommer votre compte de facturation {{billingAccount}}.</translation>
