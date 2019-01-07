@@ -1,3 +1,12 @@
+## [10.15.3](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.15.2...v10.15.3) (2019-01-07)
+
+
+### Bug Fixes
+
+* **telephony.alias:** fix tuc component property name ([#1223](https://github.com/ovh-ux/ovh-manager-telecom/issues/1223)) ([7c7cc0a](https://github.com/ovh-ux/ovh-manager-telecom/commit/7c7cc0a))
+
+
+
 ## [10.15.2](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.15.1...v10.15.2) (2018-12-20)
 
 
