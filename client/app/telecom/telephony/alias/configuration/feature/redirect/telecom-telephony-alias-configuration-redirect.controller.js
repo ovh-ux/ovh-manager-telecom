@@ -1,11 +1,12 @@
 angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationRedirectCtrl', class TelecomTelephonyAliasConfigurationRedirectCtrl {
   constructor($q, $state, $stateParams, $translate,
-    alias, TucToast, tucVoipService, tucVoipServiceAlias, tucVoipServiceLine) {
+    alias, OvhApiTelephony, TucToast, tucVoipService, tucVoipServiceAlias, tucVoipServiceLine) {
     this.$q = $q;
     this.$state = $state;
     this.$stateParams = $stateParams;
     this.$translate = $translate;
     this.alias = alias;
+    this.OvhApiTelephony = OvhApiTelephony;
     this.TucToast = TucToast;
     this.tucVoipService = tucVoipService;
     this.tucVoipServiceAlias = tucVoipServiceAlias;
@@ -16,6 +17,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationRedir
     this.loading = true;
     this.destination = null;
     this.newDestination = null;
+    this.featureTypeToUse = this.featureTypeToUse || this.alias.featureType;
 
     this.billingAccount = this.$stateParams.billingAccount;
     this.serviceName = this.$stateParams.serviceName;
@@ -23,7 +25,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationRedir
     return this.tucVoipServiceAlias.fetchRedirectNumber({
       billingAccount: this.billingAccount,
       serviceName: this.serviceName,
-    })
+    }, this.featureTypeToUse)
       .then(({ destination }) => this.tucVoipService.fetchAll().then((allServices) => {
         this.destination = allServices
           .find(({ serviceName }) => _.isEqual(serviceName, destination));
@@ -55,15 +57,31 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationRedir
     return this.tucVoipServiceAlias.changeDestinationRedirectNumber({
       billingAccount: this.billingAccount,
       serviceName: this.serviceName,
-    }, serviceName);
+    }, serviceName, this.featureTypeToUse);
   }
 
   setNewDestination() {
     return (service) => {
+      this.loading = true;
       this.newDestination = service;
       if (this.canChangeDestination()) {
         this.destinationUsedAsPresentation = false;
       }
+
+      return this.tucVoipServiceLine.getPhone({
+        billingAccount: service.billingAccount,
+        serviceName: service.serviceName,
+      }).then(() => {
+        this.featureTypeToUse = 'redirect';
+      }).catch((error) => {
+        if (error.status === 404) {
+          this.featureTypeToUse = 'ddi';
+        } else {
+          this.TucToast.error(`${this.$translate.instant('telephony_alias_config_redirect_get_error')} ${_.get(error, 'data.message', error.message)}`);
+        }
+      }).finally(() => {
+        this.loading = false;
+      });
     };
   }
 
@@ -107,22 +125,39 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationRedir
     });
   }
 
+  updateFeatureType() {
+    if (this.alias.featureType !== this.featureTypeToUse) {
+      return this.tucVoipServiceAlias.changeNumberFeatureType({
+        billingAccount: this.billingAccount,
+        serviceName: this.serviceName,
+      }, this.featureTypeToUse);
+    }
+
+    return this.$q.when();
+  }
+
   updateRedirection() {
     this.loading = true;
-    return this.$q.all({
+
+    return this.updateFeatureType().then(() => this.$q.all({
       updateRedirection: this.canChangeDestination()
         ? this.changeDestination(this.newDestination) : angular.noop(),
       updateLinePresentation: this.canUpdatePresentation()
         ? this.updateLinePresentation() : angular.noop(),
-    }).then(() => {
-      this.TucToast.success(this.$translate.instant('telephony_alias_config_redirect_update_success'));
-      this.$onInit();
-    }).catch((error) => {
-      this.TucToast.error(
-        `${this.$translate.instant('telephony_alias_config_redirect_update_error')} ${_(error).get('data.message', error.message)}`,
-      );
-    }).finally(() => {
-      this.loading = false;
-    });
+    }))
+      .then(() => {
+        this.TucToast.success(this.$translate.instant('telephony_alias_config_redirect_update_success'));
+        this.OvhApiTelephony.Number().resetCache();
+        this.OvhApiTelephony.Service().v6().resetCache();
+        this.$onInit();
+      })
+      .catch((error) => {
+        this.TucToast.error(
+          `${this.$translate.instant('telephony_alias_config_redirect_update_error')} ${_(error).get('data.message', error.message)}`,
+        );
+      })
+      .finally(() => {
+        this.loading = false;
+      });
   }
 });

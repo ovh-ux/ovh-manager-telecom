@@ -77,7 +77,7 @@
                         </p>
                     </oui-tile-description>
                 </oui-tile-definition>
-                <oui-tile-definition data-ng-if="$ctrl.alias.featureType === 'redirect'"
+                <oui-tile-definition data-ng-if="$ctrl.alias.featureType === 'redirect' || $ctrl.alias.featureType === 'ddi'"
                                      data-term="{{:: 'telephony_alias_configuration_configuration_type_redirect_destination' | translate }}"
                                      data-description="{{:: $ctrl.redirectionInformations }}"></oui-tile-definition>
                 <div data-ng-if="$ctrl.alias.featureType !== 'empty'">
