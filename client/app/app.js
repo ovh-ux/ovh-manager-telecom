@@ -1,3 +1,4 @@
+import ngTailLogs from '@ovh-ux/ng-tail-logs';
 import translateAsyncLoader from '@ovh-ux/translate-async-loader';
 import telecomUniverseComponents from '@ovh-ux/telecom-universe-components';
 
@@ -22,9 +23,9 @@ angular.module('managerApp', [
   'ngResource',
   'ngSanitize',
   'ngAria',
+  ngTailLogs,
   'ovh-api-services',
   'ovh-angular-checkbox-table',
-  'ovh-angular-tail-logs',
   'ovhBrowserAlert',
   'ovh-angular-q-allSettled',
   'ovh-angular-simple-country-list',

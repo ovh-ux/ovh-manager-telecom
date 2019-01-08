@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('OverTheBoxLogsCtrl', function ($scope, $stateParams, OvhApiOverTheBox, OvhTailLogs) {
+angular.module('managerApp').controller('OverTheBoxLogsCtrl', function ($scope, $stateParams, OvhApiOverTheBox, TailLogs) {
   const self = this;
 
   self.logger = null;
@@ -17,7 +17,7 @@ angular.module('managerApp').controller('OverTheBoxLogsCtrl', function ($scope, 
   };
 
   function init() {
-    self.logger = new OvhTailLogs({
+    self.logger = new TailLogs({
       source() {
         return OvhApiOverTheBox.v6().getLogs({
           serviceName: $stateParams.serviceName,
