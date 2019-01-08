@@ -8,7 +8,7 @@
    <translation id="telephony_group_tab_contacts_book" qtlid="334179">Adresų knygelė</translation>
    <translation id="telephony_group_tab_short_numbers" qtlid="334192">Trumpieji numeriai</translation>
    <translation id="telephony_group_tab_contacts_manage" qtlid="73073">Kontaktų valdymas</translation>
-   <translation id="telephony_group_tab_guides">Guides</translation>
+   <translation id="telephony_group_tab_guides" qtlid="300370">Gidai</translation>
 
    <translation id="telephony_group_loading_error" qtlid="334205">Negalima keisti sąskaitų kontaktų ({{billingAccount}}) informacijos.</translation>
    <translation id="telephony_group_rename_error" qtlid="334218">Negalima pervadinti sąskaitų grupės {{billingAccount}}.</translation>

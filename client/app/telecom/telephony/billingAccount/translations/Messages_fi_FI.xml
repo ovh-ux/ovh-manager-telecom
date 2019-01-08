@@ -8,7 +8,7 @@
    <translation id="telephony_group_tab_contacts_book" qtlid="334179">Yhteystietoluettelo</translation>
    <translation id="telephony_group_tab_short_numbers" qtlid="334192">Lyhytvalintanumerot</translation>
    <translation id="telephony_group_tab_contacts_manage" qtlid="73073">Hallitse yhteystietoja</translation>
-   <translation id="telephony_group_tab_guides">Guides</translation>
+   <translation id="telephony_group_tab_guides" qtlid="300370">Oppaat</translation>
 
    <translation id="telephony_group_loading_error" qtlid="334205">Laskutustilisi ({{billingAccount}}) tietoja ei voida ladata.</translation>
    <translation id="telephony_group_rename_error" qtlid="334218">Laskutustiliäsi {{billingAccount}} ei voida nimetä uudelleen.</translation>
