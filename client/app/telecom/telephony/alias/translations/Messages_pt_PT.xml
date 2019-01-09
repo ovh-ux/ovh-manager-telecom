@@ -28,7 +28,7 @@
    <translation id="telephony_alias_tab_item_conference_management" qtlid="333074">Conférence</translation>
    <translation id="telephony_alias_tab_item_cloudIvr_management" qtlid="333100">Serveur vocal interactif</translation>
    <translation id="telephony_alias_tab_item_svi_management" qtlid="516494">Serveur Vocal Interactif en VXML</translation>
-   <translation id="telephony_alias_tab_item_ddi_management" qtlid="513062">Redirection avec présentation</translation>
+   <translation id="telephony_alias_tab_item_ddi_management" qtlid="46000">Reencaminhamento</translation>
    <translation id="telephony_alias_tab_item_contactCenterSolutionExpert_management" qtlid="513075">Contact Center Solution expert</translation>
    <translation id="telephony_alias_tab_item_change_featureType" qtlid="513088">Changer de configuration</translation>
 
@@ -54,7 +54,7 @@
    <translation id="telephony_alias_configuration_configuration_type_conference" qtlid="333074">Conférence</translation>
    <translation id="telephony_alias_configuration_configuration_type_redirect" qtlid="46000">Reencaminhamento</translation>
    <translation id="telephony_alias_configuration_configuration_type_redirect_destination" qtlid="513244">Vers la ligne</translation>
-   <translation id="telephony_alias_configuration_configuration_type_ddi" qtlid="462576">Redirection avec présentation de ce numéro sur ma ligne SIP ou mon Trunk</translation>
+   <translation id="telephony_alias_configuration_configuration_type_ddi" qtlid="46000">Reencaminhamento</translation>
    <translation id="telephony_alias_configuration_configuration_type_conference" qtlid="333074">Conférence</translation>
    <translation id="telephony_alias_configuration_configuration_type_cloudIvr" qtlid="333100">Serveur vocal interactif</translation>
    <translation id="telephony_alias_configuration_configuration_type_svi" qtlid="333126">Serveur vocal interactif (mode expert) en VXML</translation>

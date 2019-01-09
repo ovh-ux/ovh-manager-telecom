@@ -102,7 +102,7 @@
    <translation id="telephony_alias_config_redirect_alert_forbidden_surcharged_number" qtlid="512113">Veuillez noter que la législation interdit les redirections vers les numéros surtaxés.</translation>
    <translation id="telephony_alias_config_redirect_convert_to_ccs_helper" qtlid="512126">Pour faire une redirection vers une ligne externe, il vous faut configurer votre numéro en</translation>
    <translation id="telephony_alias_config_redirect_get_error" qtlid="512139">Une erreur est survenue lors de la récupération des informations sur la redirection.</translation>
-   <translation id="telephony_alias_config_redirect_get_phone_error">Une erreur est survenue lors de la récupération des informations sur le téléphone de la ligne.</translation>
+   <translation id="telephony_alias_config_redirect_get_phone_error" qtlid="517459">Une erreur est survenue lors de la récupération des informations sur le téléphone de la ligne.</translation>
    <translation id="telephony_alias_config_redirect_update_success" qtlid="512152">Les paramètres de la redirection ont été modifiés.</translation>
    <translation id="telephony_alias_config_redirect_update_error" qtlid="512165">Une erreur est survenue lors de la modification des paramètres de la redirection.</translation>
    <translation id="telephony_alias_config_redirect_outgoing_calls_heading" qtlid="512178">Vos appels sortants</translation>
