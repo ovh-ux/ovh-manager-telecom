@@ -1,3 +1,29 @@
+# [10.16.0](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.15.3...v10.16.0) (2019-01-09)
+
+
+### Bug Fixes
+
+* **i18n:** retrieve translations ([c8ee7a0](https://github.com/ovh-ux/ovh-manager-telecom/commit/c8ee7a0))
+* **i18n:** retrieve translations ([0a999da](https://github.com/ovh-ux/ovh-manager-telecom/commit/0a999da))
+* **i18n:** retrieve translations ([f291bfb](https://github.com/ovh-ux/ovh-manager-telecom/commit/f291bfb))
+* **i18n:** submit translations ([d631df8](https://github.com/ovh-ux/ovh-manager-telecom/commit/d631df8))
+* **i18n:** submit translations ([91974fb](https://github.com/ovh-ux/ovh-manager-telecom/commit/91974fb))
+* **i18n:** submit translations ([b56d7e0](https://github.com/ovh-ux/ovh-manager-telecom/commit/b56d7e0))
+* **sms:** fix long overflowing text on modal ([74c9898](https://github.com/ovh-ux/ovh-manager-telecom/commit/74c9898))
+* **telephony.alias:** fix typo of closure overflow sounds ([42964bc](https://github.com/ovh-ux/ovh-manager-telecom/commit/42964bc))
+* **telephony.alias:** remove pattern for lines to add ([#1215](https://github.com/ovh-ux/ovh-manager-telecom/issues/1215)) ([c4e5cb0](https://github.com/ovh-ux/ovh-manager-telecom/commit/c4e5cb0))
+* **telephony.alias:** rename state to prevent highlighting wrong menu ([4eb1f06](https://github.com/ovh-ux/ovh-manager-telecom/commit/4eb1f06))
+
+
+### Features
+
+* **components.navbar:** remove some assistance menu items for FR ([951f976](https://github.com/ovh-ux/ovh-manager-telecom/commit/951f976))
+* **telephony:** add week-end and bank holidays ([#1200](https://github.com/ovh-ux/ovh-manager-telecom/issues/1200)) ([8180a4d](https://github.com/ovh-ux/ovh-manager-telecom/commit/8180a4d))
+* **telephony.alias:** handle ddi numbers ([#1224](https://github.com/ovh-ux/ovh-manager-telecom/issues/1224)) ([bffb227](https://github.com/ovh-ux/ovh-manager-telecom/commit/bffb227))
+* **telephony.billingaccount:** add guides tab ([ff80124](https://github.com/ovh-ux/ovh-manager-telecom/commit/ff80124))
+
+
+
 ## [10.15.3](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.15.2...v10.15.3) (2019-01-07)
 
 
