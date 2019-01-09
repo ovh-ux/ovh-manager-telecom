@@ -86,7 +86,6 @@ import 'ovh-angular-simple-country-list';
 import 'ovh-angular-sso-auth';
 import 'ovh-angular-sso-auth-modal-plugin';
 import 'script-loader!angularjs-scroll-glue/src/scrollglue.js';
-import 'ovh-angular-tail-logs';
 import 'ovh-angular-timeline/dist/ovh-angular-timeline.js';
 import 'ovh-angular-ui-confirm-modal';
 import 'ovh-ng-input-password';

@@ -10,8 +10,8 @@
    <translation id="sms_consumed" qtlid="339535">Suivi conso</translation>
    <translation id="sms_consumed_credit_left" qtlid="339548">SMS restants</translation>
    <translation id="sms_consumed_automatic_recredit_amount" qtlid="339561">Recharge automatique</translation>
-   <translation id="sms_consumed_automatic_recredit_amount_activate" qtlid="94435">Activée</translation>
-   <translation id="sms_consumed_automatic_recredit_amount_disactivate" qtlid="229971">Désactivée</translation>
+   <translation id="sms_consumed_automatic_recredit_amount_activate" qtlid="94435">activée</translation>
+   <translation id="sms_consumed_automatic_recredit_amount_disactivate" qtlid="229971">désactivée</translation>
    <translation id="sms_consumed_last_recharge" qtlid="339574">Dernière recharge</translation>
    <translation id="sms_statistics_title" qtlid="26671">Statistiques</translation>
    <translation id="sms_statistics_filter_month" qtlid="20203">Mois en cours</translation>

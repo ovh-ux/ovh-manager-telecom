@@ -171,7 +171,7 @@ angular.module('managerApp').controller('TelecomSmsSmsTemplatesCtrl', class Tele
       animation: true,
       templateUrl: 'app/telecom/sms/sms/templates/remove/telecom-sms-sms-templates-remove.html',
       controller: 'TelecomSmsSmsTemplateRemoveCtrl',
-      controllerAs: 'TemplateRemoveCtrl',
+      controllerAs: '$ctrl',
       resolve: { template: () => _.pick(template, this.templateItemModel) },
     });
     modal.result.then(() => this.api.sms.templates.query({

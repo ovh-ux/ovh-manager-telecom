@@ -8,6 +8,7 @@
    <translation id="telephony_group_tab_contacts_book" qtlid="334179">Rubrica</translation>
    <translation id="telephony_group_tab_short_numbers" qtlid="334192">Numeri brevi</translation>
    <translation id="telephony_group_tab_contacts_manage" qtlid="73073">Gestisci i contatti</translation>
+   <translation id="telephony_group_tab_guides" qtlid="300370">Guide</translation>
 
    <translation id="telephony_group_loading_error" qtlid="334205">Impossibile caricare le informazioni relative al tuo account di fatturazione ({{billingAccount}}).</translation>
    <translation id="telephony_group_rename_error" qtlid="334218">Impossibile rinominare il tuo account di fatturazione {{billingAccount}}.</translation>

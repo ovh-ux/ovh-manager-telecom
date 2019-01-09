@@ -13,7 +13,7 @@
    <translation id="telephony_alias_config_contactCenterSolution_sounds_overflow_max_waiting_calls" qtlid="294945">Nombre maximum d'appelants en attente</translation>
    <translation id="telephony_alias_config_contactCenterSolution_sounds_overflow_max_waiting_calls_help" qtlid="511034">Une fois le nombre maximum atteint, le ou les appelants supplémentaires entendront l’annonce de débordement, si vous y avez ajouté un son</translation>
 
-   <translation id="telephony_alias_config_contactCenterSolution_sounds_overflow_action_to_play_help" qtlid="511047">Lorsque le nombre maximal d’appelants en attente est atteint, l’appelant tombera sur le répondeur de la ligne sélectionnée ou entendra une annonce de fermeture.</translation>
+   <translation id="telephony_alias_config_contactCenterSolution_sounds_overflow_action_to_play_help" qtlid="516640">Lorsque le nombre maximal d’appelants en attente est atteint, l’appelant tombera sur le répondeur de la ligne sélectionnée ou entendra une annonce de débordement.</translation>
 
    <translation id="telephony_alias_config_contactCenterSolution_sounds_closing_configuration" qtlid="511060">Configuration de fermeture</translation>
    <translation id="telephony_alias_config_contactCenterSolution_sounds_closing_timeout" qtlid="511073">Durée maximale d’attente dans la file</translation>
@@ -26,7 +26,8 @@
    <translation id="telephony_alias_config_contactCenterSolution_sounds_time_in_minutes" qtlid="511112">Temps exprimé en minutes.</translation>
    <translation id="telephony_alias_config_contactCenterSolution_sounds_action_to_play" qtlid="511125">Action à jouer</translation>
    <translation id="telephony_alias_config_contactCenterSolution_sounds_action_voicemail" qtlid="511138">Renvoyer sur un répondeur.</translation>
-   <translation id="telephony_alias_config_contactCenterSolution_sounds_action_playback" qtlid="511151">Jouer une annonce de fermeture.</translation>
+   <translation id="telephony_alias_config_contactCenterSolution_sounds_closure_action_playback" qtlid="511151">Jouer une annonce de fermeture.</translation>
+   <translation id="telephony_alias_config_contactCenterSolution_sounds_overflow_action_playback" qtlid="516653">Jouer une annonce de débordement.</translation>
 
 <!-- Sounds upload -->
    <translation id="telephony_alias_config_contactCenterSolution_sounds_invalid" qtlid="392931">Format de fichier invalide.</translation>

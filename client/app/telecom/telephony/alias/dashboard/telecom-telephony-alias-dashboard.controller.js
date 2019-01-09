@@ -50,7 +50,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasDashboardControlle
 
             return this.$q.all({
               consumption: this.hasConsumption() ? this.fetchServiceConsumption() : angular.noop(),
-              redirectionInformations: _.isEqual(this.alias.featureType, 'redirect') ? this.fetchRedirectionInfo() : angular.noop(),
+              redirectionInformations: ['ddi', 'redirect'].includes(this.alias.featureType) ? this.fetchRedirectionInfo() : angular.noop(),
             }).then(({ redirectionInformations }) => {
               if (redirectionInformations) {
                 this.redirectionInformations = redirectionInformations.description
@@ -75,11 +75,13 @@ angular.module('managerApp').controller('TelecomTelephonyAliasDashboardControlle
     return this.tucVoipServiceAlias.fetchRedirectNumber({
       billingAccount: this.alias.billingAccount,
       serviceName: this.alias.serviceName,
-    }).then(({ destination }) => this.tucVoipService.fetchAll().then((allServices) => {
-      const [destinationLine] = allServices
-        .filter(({ serviceName }) => _.isEqual(serviceName, destination));
-      return destinationLine;
-    })).catch(error => error);
+    }, this.alias.featureType)
+      .then(({ destination }) => this.tucVoipService.fetchAll().then((allServices) => {
+        const [destinationLine] = allServices
+          .filter(({ serviceName }) => _.isEqual(serviceName, destination));
+        return destinationLine;
+      }))
+      .catch(error => error);
   }
 
   fetchServiceConsumption() {
