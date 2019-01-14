@@ -1,4 +1,5 @@
 import ngTailLogs from '@ovh-ux/ng-tail-logs';
+import ngUirouterTitle from '@ovh-ux/ng-uirouter-title';
 import translateAsyncLoader from '@ovh-ux/translate-async-loader';
 import telecomUniverseComponents from '@ovh-ux/telecom-universe-components';
 
@@ -24,6 +25,7 @@ angular.module('managerApp', [
   'ngSanitize',
   'ngAria',
   ngTailLogs,
+  ngUirouterTitle,
   'ovh-api-services',
   'ovh-angular-checkbox-table',
   'ovhBrowserAlert',
@@ -38,7 +40,6 @@ angular.module('managerApp', [
   'ovh-angular-otrs',
   'ui.bootstrap',
   'ui.router',
-  'angular.uirouter.title',
   'ui.select',
   'ui.utils',
   'ui.calendar',
