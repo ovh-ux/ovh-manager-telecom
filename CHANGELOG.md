@@ -1,3 +1,12 @@
+## [10.17.2](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.17.1...v10.17.2) (2019-01-16)
+
+
+### Bug Fixes
+
+* **telephony.alias.dashboard:** set right configuration state name ([1dc68bb](https://github.com/ovh-ux/ovh-manager-telecom/commit/1dc68bb))
+
+
+
 ## [10.17.1](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.17.0...v10.17.1) (2019-01-16)
 
 
