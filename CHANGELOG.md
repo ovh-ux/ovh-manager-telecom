@@ -1,3 +1,12 @@
+## [10.17.1](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.17.0...v10.17.1) (2019-01-16)
+
+
+### Bug Fixes
+
+* **telephony.alias:** fix description of added lines in queue ([#1243](https://github.com/ovh-ux/ovh-manager-telecom/issues/1243)) ([498e5b1](https://github.com/ovh-ux/ovh-manager-telecom/commit/498e5b1))
+
+
+
 # [10.17.0](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.16.1...v10.17.0) (2019-01-16)
 
 
