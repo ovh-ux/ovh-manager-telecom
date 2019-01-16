@@ -1,3 +1,19 @@
+# [10.17.0](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.16.1...v10.17.0) (2019-01-16)
+
+
+### Bug Fixes
+
+* **ie11:** bump [@ovh-ux](https://github.com/ovh-ux)/translate-async-loader ([27fc061](https://github.com/ovh-ux/ovh-manager-telecom/commit/27fc061))
+* **pack:** display empty services message correctly ([#1241](https://github.com/ovh-ux/ovh-manager-telecom/issues/1241)) ([12fccfa](https://github.com/ovh-ux/ovh-manager-telecom/commit/12fccfa))
+* **telephony.alias.configuration:** fix change type state name ([#1242](https://github.com/ovh-ux/ovh-manager-telecom/issues/1242)) ([8cce7ea](https://github.com/ovh-ux/ovh-manager-telecom/commit/8cce7ea))
+
+
+### Features
+
+* **telephony.alias:** check external numbers before display modal ([#1228](https://github.com/ovh-ux/ovh-manager-telecom/issues/1228)) ([82190a7](https://github.com/ovh-ux/ovh-manager-telecom/commit/82190a7))
+
+
+
 ## [10.16.1](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.16.0...v10.16.1) (2019-01-09)
 
 
