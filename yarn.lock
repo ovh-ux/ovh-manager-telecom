@@ -690,12 +690,6 @@
   version "0.0.0"
   resolved "https://codeload.github.com/angular-ui/ui-utils/tar.gz/125cb72d692f9f116454f338f6a5471f3088f9b9"
 
-"@bower_components/angular-uirouter-title@ovh-ux/angular-uirouter-title#^1.0.0":
-  version "1.0.4"
-  resolved "https://codeload.github.com/ovh-ux/angular-uirouter-title/tar.gz/db853cd956f2330cd34965d81debd5757b5c3a46"
-  dependencies:
-    "@uirouter/angularjs" "^1.0.0"
-
 "@bower_components/bootstrap4@twbs/bootstrap#4.0.0-beta":
   version "4.0.0-beta"
   resolved "https://codeload.github.com/twbs/bootstrap/tar.gz/35f80bb12e4e71fd777ee60ffa43711d8f84b1a6"
@@ -966,6 +960,13 @@
   dependencies:
     lodash "^4.17.11"
 
+"@ovh-ux/ng-uirouter-title@^2.0.0-beta.3":
+  version "2.0.0-beta.3"
+  resolved "https://registry.yarnpkg.com/@ovh-ux/ng-uirouter-title/-/ng-uirouter-title-2.0.0-beta.3.tgz#ac1b4e2fc55e34e8a0d9643f85d65912d32bf4d2"
+  integrity sha512-ynw1xi7AVI/K7Bg6qFO/ApnrSyrr0g4YduWd9fRRZ4H6eUpJUlu3T/SibTzJ/5nyKyg1BnFH/wlB2SEF0Oplpw==
+  dependencies:
+    lodash "^4.17.11"
+
 "@ovh-ux/telecom-universe-components@^1.3.0":
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/@ovh-ux/telecom-universe-components/-/telecom-universe-components-1.5.0.tgz#5878fad65edb5ff6de445f0d67690d06078800cc"
@@ -1001,7 +1002,7 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.12.10.tgz#4fa76e6598b7de3f0cb6ec3abacc4f59e5b3a2ce"
   integrity sha512-8xZEYckCbUVgK8Eg7lf5Iy4COKJ5uXlnIOnePN0WUwSQggy9tolM+tDJf7wMOnT/JT/W9xDYIaYggt3mRV2O5w==
 
-"@uirouter/angularjs@^1.0.0", "@uirouter/angularjs@^1.0.20":
+"@uirouter/angularjs@^1.0.20":
   version "1.0.20"
   resolved "https://registry.yarnpkg.com/@uirouter/angularjs/-/angularjs-1.0.20.tgz#bd330544cb2f1c35987f610d8fc353071786c04e"
   integrity sha512-fY6bsesTL/tg8gyFHXaIjD1r5b7Ac+SYupodO9OzT4/gKI0YC+uGzLpQESAiXlT3fsxdEPVBzdtAbzXDwCKdEA==
