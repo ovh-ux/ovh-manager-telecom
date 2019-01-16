@@ -18,6 +18,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationLines
     this.addLineForm = {
       numbers: [{
         value: null,
+        description: null,
       }],
       options: {
         status: 'available',
@@ -53,8 +54,9 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationLines
   }
 
   onChooseServicePopover() {
-    return ({ serviceName }, index) => {
+    return ({ description, serviceName }, index) => {
       this.addLineForm.numbers[index].value = serviceName;
+      this.addLineForm.numbers[index].description = description;
       this.setLinesToExclude();
     };
   }
@@ -80,7 +82,8 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationLines
   addLines() {
     this.loading = true;
     const linesToAdd = this.addLineForm.numbers
-      .map(({ value }) => Object.assign({ number: value }, this.addLineForm.options));
+      .map(({ description, value }) => Object
+        .assign({ number: value, description }, this.addLineForm.options));
     let promiseChain = this.$q.when();
 
     linesToAdd.reverse().forEach((line) => {
