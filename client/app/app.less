@@ -1,4 +1,3 @@
-@rem-base: rem-base(10px);
 @bs-path: "bootstrap";
 @oui-path: "ovh-ui-kit";
 
@@ -43,6 +42,7 @@
 
 /* OVH Universe */
 @ovh-universe-color: @oui-color-dodger;
+@text-disabled-color: #757575;
 
 // Mobile
 @media (max-width: @screen-sm-max) {
@@ -119,23 +119,10 @@
   }
 }
 
-@import './common/less/button.less';
-@import './common/less/common.less';
-@import './common/less/date-picker.less';
-@import './common/less/form.less';
-@import './common/less/global.less';
-@import './common/less/header.less';
 @import './common/less/navbar.less';
-@import './common/less/ovh-angular-input-number-spinner.less';
-@import './common/less/popover.less';
-@import './common/less/revert-really-buttons.less';
-@import './common/less/service.less';
-@import './common/less/tables.less';
-@import './common/less/uiview-animate.less';
 @import './common/less/variables.less';
-@import './common/less/widget-presentation.less';
+@import './common/less/mixins.less';
 @import './telecom/dashboard/telecom-dashboard.less';
-@import './telecom/overTheBox/remote/overTheBox-remote.less';
 @import './telecom/pack/migration/telecom-pack-migration.less';
 @import './telecom/pack/move/pack-move.less';
 @import './telecom/pack/resiliation/pack-resiliation.less';
@@ -146,7 +133,6 @@
 @import './telecom/pack/xdsl/modem/pack-xdsl-modem.less';
 @import './telecom/pack/xdsl/orderFollowUp/pack-xdsl-orderFollowUp.less';
 @import './telecom/sms/sms/compose/addPhonebookContact/telecom-sms-sms-compose-addPhonebookContact.less';
-@import './telecom/telecom.less';
 @import './telecom/telephony/alias/portability/portabilities/telecom-telephony-alias-portability-portabilities.less';
 @import './telecom/telephony/billingAccount/billing/groupRepayments/telecom-telephony-billing-account-billing-group-repayments.less';
 @import './telecom/telephony/billingAccount/dashboard/telecom-telephony-billing-account-dashboard.less';

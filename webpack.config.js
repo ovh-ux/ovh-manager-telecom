@@ -55,6 +55,7 @@ module.exports = (env = {}) => {
       alias: {
         jquery: path.resolve(__dirname, 'node_modules/jquery'),
       },
+      mainFields: ['module', 'browser', 'main'],
     },
   });
 };

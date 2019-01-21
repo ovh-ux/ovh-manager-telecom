@@ -240,7 +240,7 @@ class ManagerNavbarService {
       .then(result => _.map(result, item => ({
         name: item,
         title: item,
-        state: 'telecom.freefax',
+        state: 'freefax',
         stateParams: {
           serviceName: item,
         },
@@ -265,7 +265,7 @@ class ManagerNavbarService {
       .then(result => _.map(result, item => ({
         name: item.serviceName,
         title: item.customerDescription || item.serviceName,
-        state: 'telecom.overTheBox.details',
+        state: 'overTheBox.details',
         stateParams: {
           serviceName: item.serviceName,
         },
