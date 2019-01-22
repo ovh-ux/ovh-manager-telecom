@@ -62,8 +62,8 @@ import 'script-loader!@bower_components/international-phone-number/releases/inte
 import 'ovh-angular-swimming-poll';
 import 'ovh-api-services';
 import 'ovh-angular-contact';
-import 'jquery.scrollto';
-import 'ovh-angular-contracts';
+import 'script-loader!jquery.scrollto';
+import '@ovh-ux/ng-ovh-contracts';
 import 'ovh-angular-input-number-spinner';
 import 'script-loader!urijs/src/URI.min.js';
 import 'script-loader!urijs/src/URITemplate.js';
@@ -90,7 +90,8 @@ import 'ovh-angular-ui-confirm-modal';
 import 'ovh-ng-input-password';
 import 'ovh-ui-angular';
 import 'angular-translate-loader-pluggable';
-
+import '@ovh-ux/ng-uirouter-title';
+import '@ovh-ux/manager-telecom-styles';
 /* eslint-enable */
 
 import './app-scss.scss';

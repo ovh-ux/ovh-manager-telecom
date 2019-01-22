@@ -140,7 +140,7 @@ angular.module('managerApp').config((SidebarMenuProvider) => {
         onClick: setTracker('order-ADSL', 'navigation', 'Telecom', 'telecom'),
       }, {
         title: $translate.instant('telecom_sidebar_actions_menu_internet_otb'),
-        state: 'telecom.overTheBox-order',
+        state: 'overTheBox-order',
       }],
     }, {
       title: $translate.instant('telecom_sidebar_actions_menu_telephony'),

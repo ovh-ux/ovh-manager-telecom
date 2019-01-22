@@ -3,62 +3,68 @@ import ngUirouterTitle from '@ovh-ux/ng-uirouter-title';
 import translateAsyncLoader from '@ovh-ux/translate-async-loader';
 import telecomUniverseComponents from '@ovh-ux/telecom-universe-components';
 
+import managerCore from '@ovh-ux/manager-core';
+import managerFreefax from '@ovh-ux/manager-freefax';
+import managerOverTheBox from '@ovh-ux/manager-overthebox';
+
 angular.module('managerApp', [
-  'ovh-angular-sso-auth',
-  'ovh-angular-sso-auth-modal-plugin',
   'angular-ellipses',
-  'ovh-angular-timeline',
-  'ovh-angular-ui-confirm-modal',
-  'ng-at-internet',
+  'angular-inview',
+  'angular-translate-loader-pluggable',
   'atInternetUiRouterPlugin',
-  'ovh-angular-contracts',
-  'ngFlash',
-  'ovh-ng-input-password',
-  'ovh-jquery-ui-draggable-ng',
-  'ovh-angular-sidebar-menu',
+  managerCore,
+  managerFreefax,
+  managerOverTheBox,
+  'matchmedia-ng',
   'momentjs',
-  'ovh-angular-mondial-relay',
+  'ng-at-internet',
   'ngAnimate',
+  'ngAria',
   'ngCookies',
+  'ngCsv',
+  'ngFlash',
   'ngMessages',
+  'ngOvhContracts',
+  'ngPassword',
   'ngResource',
   'ngSanitize',
-  'ngAria',
   ngTailLogs,
   ngUirouterTitle,
-  'ovh-api-services',
+  'ovh-angular-actions-menu',
+  'ovh-angular-apiv7',
   'ovh-angular-checkbox-table',
-  'ovhBrowserAlert',
-  'ovh-angular-q-allSettled',
-  'ovh-angular-simple-country-list',
-  'ovh-angular-pagination-front',
-  'pascalprecht.translate',
-  'ovh-angular-responsive-tabs',
-  'smoothScroll',
-  'ovh-angular-swimming-poll',
-  'tmh.dynamicLocale',
+  'ovh-angular-contact',
+  'ovh-angular-input-number-spinner',
+  'ovh-angular-line-diagnostics',
+  'ovh-angular-mondial-relay',
   'ovh-angular-otrs',
+  'ovh-angular-pagination-front',
+  'ovh-angular-q-allSettled',
+  'ovh-angular-responsive-tabs',
+  'ovh-angular-sidebar-menu',
+  'ovh-angular-simple-country-list',
+  'ovh-angular-sso-auth',
+  'ovh-angular-sso-auth-modal-plugin',
+  'ovh-angular-swimming-poll',
+  'ovh-angular-timeline',
+  'ovh-angular-ui-confirm-modal',
+  'ovh-api-services',
+  'ovhBrowserAlert',
+  'ovh-jquery-ui-draggable-ng',
+  'ovh-ng-input-password',
+  'oui',
+  'pascalprecht.translate',
+  'smoothScroll',
+  telecomUniverseComponents,
+  translateAsyncLoader,
+  'tmh.dynamicLocale',
   'ui.bootstrap',
   'ui.router',
   'ui.select',
   'ui.utils',
   'ui.calendar',
-  'validation.match',
-  'ovh-angular-apiv7',
-  'ngCsv',
-  'ovh-angular-line-diagnostics',
-  'ovh-angular-input-number-spinner',
-  'ovh-angular-contact',
-  'ngPassword',
-  'matchmedia-ng',
   'ui.sortable',
-  'angular-inview',
-  'oui',
-  'ovh-angular-actions-menu',
-  'ovh-angular-sidebar-menu',
-  'angular-translate-loader-pluggable',
-  telecomUniverseComponents,
-  translateAsyncLoader,
+  'validation.match',
 ])
 
 /*= =========  GLOBAL OPTIONS  ========== */
@@ -73,95 +79,17 @@ angular.module('managerApp', [
     $compileProvider.debugInfoEnabled(telecomConfig.env !== 'prod');
     $logProvider.debugEnabled(telecomConfig.env !== 'prod');
   })
-
-/*= =========  AUTHENTICATION  ========== */
-  .config(($httpProvider, telecomConfig, ssoAuthenticationProvider) => {
-    // --- configuration
-    ssoAuthenticationProvider.setLoginUrl(telecomConfig.loginUrl);
-    ssoAuthenticationProvider.setLogoutUrl(`${telecomConfig.loginUrl}?action=disconnect`);
-    ssoAuthenticationProvider.setConfig([
-      {
-        serviceType: 'apiv6',
-        urlPrefix: telecomConfig.apiRouteBase,
-      },
-      {
-        serviceType: 'apiv7',
-        urlPrefix: telecomConfig.apiv7RouteBase,
-      },
-      {
-        serviceType: 'aapi',
-        urlPrefix: telecomConfig.aapiRouteBase,
-      },
-      {
-        serviceType: 'ws',
-        urlPrefix: telecomConfig.wsRouteBase,
-      },
-    ]);
-
-    $httpProvider.interceptors.push('ssoAuthInterceptor');
-  })
   .config((LineDiagnosticsProvider) => {
     LineDiagnosticsProvider.setPathPrefix('/xdsl/{serviceName}');
   })
 
 /*= =========  TRANSLATOR  ========== */
   .config((
-    $translateProvider,
-    LANGUAGES,
-    tmhDynamicLocaleProvider,
-    actionsMenuProvider,
-    SidebarMenuProvider,
-    translatePluggableLoaderProvider,
+    TranslateServiceProvider,
   ) => {
-    // --- Translations configuration
-    let defaultLanguage = 'fr_FR';
-
-    if (localStorage['univers-selected-language']) {
-      defaultLanguage = localStorage['univers-selected-language'];
-    } else {
-      localStorage['univers-selected-language'] = defaultLanguage;
-    }
-
-    $translateProvider.useLoader('translatePluggableLoader');
-
-    translatePluggableLoaderProvider.useLoader('asyncLoader');
-
-    // Check if language exist into the list
-    const availableLangsKeys = _.pluck(LANGUAGES.available, 'key');
-
-    if (availableLangsKeys.indexOf(defaultLanguage) === -1) {
-      const languageSelected = defaultLanguage.split('_')[0];
-
-      // We set default language
-      defaultLanguage = LANGUAGES.default;
-
-      // We check if there is the same lang but another country
-
-      for (let j = availableLangsKeys.length - 1;
-        j >= 0 && defaultLanguage === LANGUAGES.default;
-        j -= 1) {
-        const language = availableLangsKeys[j];
-
-        if (/^(.*)_.*$/.test(language) && languageSelected === language.match(/^(.*)_.*$/)[1]) {
-          defaultLanguage = language;
-        }
-      }
-    }
-
+    const defaultLanguage = TranslateServiceProvider.getUserLocale();
     // set moment locale
     moment.locale(defaultLanguage.split('_')[0]);
-
-    // set angular locale
-    tmhDynamicLocaleProvider.localeLocationPattern('angular-i18n/angular-locale_{{locale}}.js');
-    tmhDynamicLocaleProvider.defaultLocale(_.kebabCase(defaultLanguage));
-
-    $translateProvider.useLoaderCache(true);
-    $translateProvider.useSanitizeValueStrategy('sanitizeParameters');
-    $translateProvider.useMissingTranslationHandler('translateMissingTranslationHandler');
-    $translateProvider.preferredLanguage(defaultLanguage);
-    $translateProvider.use(defaultLanguage);
-
-    $translateProvider.fallbackLanguage('fr_FR');
   })
 
 /*= =========  PAGE TRACKING  ========== */
@@ -195,10 +123,6 @@ angular.module('managerApp', [
         return $q.reject(rejection);
       },
     };
-  })
-  .factory('translateMissingTranslationHandler', $sanitize => function (translationId) {
-    // Fix security issue: https://github.com/angular-translate/angular-translate/issues/1418
-    return $sanitize(translationId);
   })
 
 /*= =========  LOAD TRANSLATIONS  ========== */

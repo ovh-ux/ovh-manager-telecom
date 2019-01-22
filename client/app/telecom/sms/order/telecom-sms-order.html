@@ -1,4 +1,4 @@
-<section class="telecom-sms-order">
+<section class="telecom-legacy telecom-sms-order">
 
     <div class="text-center" data-ng-if="SmsOrder.loading.init">
         <oui-spinner></oui-spinner>
@@ -120,9 +120,9 @@
 
             <div data-ng-if="!SmsOrder.loading.prices">
 
-                <div data-contracts="SmsOrder.contracts"
+                <div data-ovh-contracts="SmsOrder.contracts"
                      data-full-text="true"
-                     data-contracts-validated="SmsOrder.contractsAccepted">
+                     data-ovh-contracts-validated="SmsOrder.contractsAccepted">
                 </div>
 
                 <div class="checkbox">
