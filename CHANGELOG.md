@@ -1,3 +1,12 @@
+# [10.18.0](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.17.2...v10.18.0) (2019-01-22)
+
+
+### Features
+
+* use external overthebox and freefax modules ([#1152](https://github.com/ovh-ux/ovh-manager-telecom/issues/1152)) ([763c274](https://github.com/ovh-ux/ovh-manager-telecom/commit/763c274))
+
+
+
 ## [10.17.2](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.17.1...v10.17.2) (2019-01-16)
 
 
