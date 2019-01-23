@@ -1,4 +1,4 @@
-angular.module('managerApp').service('SmsSidebar', function ($translate, SidebarMenu, TucSmsMediator) {
+angular.module('managerApp').service('SmsSidebar', function SmsSidebar($translate, SidebarMenu, TucSmsMediator) {
   const self = this;
 
   self.mainSectionItem = null;
@@ -7,13 +7,13 @@ angular.module('managerApp').service('SmsSidebar', function ($translate, Sidebar
     =            SUBITEMS LOADING            =
     ======================================== */
 
-  self.loadSmsMainSection = function () {
+  self.loadSmsMainSection = function loadSmsMainSection() {
     return TucSmsMediator.initAll().then((smsDetails) => {
       angular.forEach(smsDetails, (smsDetail) => {
         SidebarMenu.addMenuItem({
           id: smsDetail.name,
           title: smsDetail.description || smsDetail.name,
-          state: 'telecom.sms.dashboard',
+          state: 'sms.service.dashboard',
           stateParams: {
             serviceName: smsDetail.name,
           },
@@ -28,7 +28,7 @@ angular.module('managerApp').service('SmsSidebar', function ($translate, Sidebar
     =            INITIALIZATION            =
     ====================================== */
 
-  self.init = function () {
+  self.init = function init() {
     self.mainSectionItem = SidebarMenu.addMenuItem({
       title: $translate.instant('telecom_sidebar_section_sms'),
       error: $translate.instant('telecom_sidebar_load_error'),
@@ -37,7 +37,7 @@ angular.module('managerApp').service('SmsSidebar', function ($translate, Sidebar
       icon: 'ovh-font ovh-font-message',
       allowSubItems: true,
       onLoad: self.loadSmsMainSection,
-      loadOnState: 'telecom.sms',
+      loadOnState: 'sms',
     });
 
     return self.mainSectionItem;

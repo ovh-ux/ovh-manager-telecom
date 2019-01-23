@@ -4,8 +4,11 @@ import translateAsyncLoader from '@ovh-ux/translate-async-loader';
 import telecomUniverseComponents from '@ovh-ux/telecom-universe-components';
 
 import managerCore from '@ovh-ux/manager-core';
+import managerDashboard from '@ovh-ux/manager-telecom-dashboard';
 import managerFreefax from '@ovh-ux/manager-freefax';
 import managerOverTheBox from '@ovh-ux/manager-overthebox';
+import managerSms from '@ovh-ux/manager-sms';
+import managerTelecomTask from '@ovh-ux/manager-telecom-task';
 
 angular.module('managerApp', [
   'angular-ellipses',
@@ -13,8 +16,11 @@ angular.module('managerApp', [
   'angular-translate-loader-pluggable',
   'atInternetUiRouterPlugin',
   managerCore,
+  managerDashboard,
   managerFreefax,
   managerOverTheBox,
+  managerSms,
+  managerTelecomTask,
   'matchmedia-ng',
   'momentjs',
   'ng-at-internet',
@@ -59,11 +65,12 @@ angular.module('managerApp', [
   translateAsyncLoader,
   'tmh.dynamicLocale',
   'ui.bootstrap',
-  'ui.router',
   'ui.select',
+  'ui.router',
   'ui.utils',
   'ui.calendar',
   'ui.sortable',
+  'ui.validate',
   'validation.match',
 ])
 
