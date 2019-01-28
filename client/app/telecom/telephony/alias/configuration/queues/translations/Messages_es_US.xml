@@ -15,7 +15,7 @@
    <translation id="telephony_alias_configuration_queues_agent_select_add" qtlid="462069">Ajouter cet agent à la file</translation>
    <translation id="telephony_alias_configuration_queues_agent_add_success" qtlid="462082">Membre ajouté</translation>
    <translation id="telephony_alias_configuration_queues_options_manage" qtlid="340354">Gestionar las opciones</translation>
-   <translation id="telephony_alias_configuration_queues_options" qtlid="23395">Options</translation>
+   <translation id="telephony_alias_configuration_queues_options" qtlid="23395">Opciones</translation>
    <translation id="telephony_alias_configuration_queues_description" qtlid="324223">Nom de la file</translation>
    <translation id="telephony_alias_configuration_queues_strategy" qtlid="294841">Stratégie</translation>
    <translation id="telephony_alias_configuration_queues_follow_call_forwards" qtlid="392749">Suivre les renvois d'appels</translation>
@@ -23,7 +23,7 @@
    <translation id="telephony_alias_configuration_queues_max_wait_time" qtlid="462095">Temps d'attente maximum dans la file (en secondes)</translation>
    <translation id="telephony_alias_configuration_queues_sound_on_hold" qtlid="358422">Musique d'attente</translation>
    <translation id="telephony_alias_configuration_queues_sound_on_overflow" qtlid="392866">Annonce sur débordement</translation>
-   <translation id="telephony_alias_configuration_queues_sound_none" qtlid="30646">Aucun</translation>
+   <translation id="telephony_alias_configuration_queues_sound_none" qtlid="30646">Ninguno</translation>
    <translation id="telephony_alias_configuration_queues_sound_file" qtlid="392970">Fichier ...</translation>
    <translation id="telephony_alias_configuration_queues_sound_invalid" qtlid="462108">Format de fichier invalide</translation>
    <translation id="telephony_alias_configuration_queues_strategy_cumulationByAgentOrder" qtlid="294854">Selon l'ordre défini des membres, cumulé</translation>

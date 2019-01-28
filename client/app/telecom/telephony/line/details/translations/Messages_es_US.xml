@@ -14,7 +14,7 @@
    <translation id="telephony_line_details_group_id" qtlid="43936">Nom du groupe</translation>
 
    <translation id="telephony_line_details_hardware_title" qtlid="359514">Informations sur le matériel</translation>
-   <translation id="telephony_line_details_hardware_model" qtlid="26143">Modèle</translation>
+   <translation id="telephony_line_details_hardware_model" qtlid="26143">Modelo</translation>
    <translation id="telephony_line_details_hardware_combi" qtlid="359527">Combiné</translation>
    <translation id="telephony_line_details_hardware_mac" qtlid="42562">Adresse MAC</translation>
    <translation id="telephony_line_details_hardware_ip" qtlid="26191">Adresse IP</translation>

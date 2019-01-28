@@ -29,7 +29,7 @@
    <translation id="telephony_number_feature_conference_announcement_info" qtlid="466476">Vous pouvez choisir un fichier audio qui précédera l’entrée dans la salle de conférence.</translation>
    <translation id="telephony_number_feature_conference_announcement_file_label" qtlid="466489">Fichier actuel</translation>
    <translation id="telephony_number_feature_conference_announcement_file" qtlid="391540">Fichier…</translation>
-   <translation id="telephony_number_feature_conference_announcement_file_empty" qtlid="30646">Aucun</translation>
+   <translation id="telephony_number_feature_conference_announcement_file_empty" qtlid="30646">Ninguno</translation>
    <translation id="telephony_number_feature_conference_announcement_file_upload" qtlid="466502">Uploader un fichier audio</translation>
    <translation id="telephony_number_feature_conference_announcement_file_invalid" qtlid="337845">Format de fichier non supporté.</translation>
    <translation id="telephony_number_feature_conference_announcement_file_supported" qtlid="466515">Formats supportés : wav, mp3, ogg<br/>Taille maximale : 10 Mo</translation>

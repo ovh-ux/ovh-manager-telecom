@@ -19,7 +19,7 @@
    <translation id="telephony_alias_config_change_type_desc" qtlid="332970">Description de la solution sélectionnée</translation>
    <translation id="telephony_alias_config_change_type_doing" qtlid="392983">Changement du type de numéro en cours...</translation>
 
-   <translation id="telephony_alias_change_type_validate" qtlid="26047">Valider</translation>
+   <translation id="telephony_alias_change_type_validate" qtlid="26047">Aceptar</translation>
    <translation id="telephony_alias_change_type_ok" qtlid="332983">Fonctionalité changée avec succès</translation>
    <translation id="telephony_alias_change_type_ko" qtlid="392996">Impossible de changer la fonctionnalité.</translation>
 
