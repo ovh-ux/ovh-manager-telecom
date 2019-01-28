@@ -12,7 +12,7 @@
 
    <translation id="telephony_line_management_sip_domain_line_title" qtlid="387575">Domaine SIP de la ligne</translation>
    <translation id="telephony_line_management_sip_domain_line_info" qtlid="387588">Domaine utilisé sur la ligne actuellement sélectionnée.</translation>
-   <translation id="telephony_line_management_sip_domain_line_registered" qtlid="307904">Domaine enregistré</translation>
+   <translation id="telephony_line_management_sip_domain_line_registered" qtlid="307904">Domain registriert</translation>
    <translation id="telephony_line_management_sip_domain_line_edit_button" qtlid="387601">Modifier le domaine SIP de la ligne</translation>
 
    <translation id="telephony_line_management_sip_domain_client_title" qtlid="387614">Domaines SIP associés à votre code client</translation>

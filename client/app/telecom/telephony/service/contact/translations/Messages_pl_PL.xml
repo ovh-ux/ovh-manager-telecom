@@ -29,7 +29,7 @@
    <translation id="telephony_service_contact_addressextra" qtlid="459586">Complément d’adresse</translation>
    <translation id="telephony_service_contact_addressextra_invalid" qtlid="459599">Le complément d’adresse ne doit contenir ni caractères spéciaux ni accents</translation>
    <translation id="telephony_service_contact_waynumberextra" qtlid="459612">Complément du numéro dans la voie</translation>
-   <translation id="telephony_service_contact_waynumberextra_short" qtlid="307878">Complément</translation>
+   <translation id="telephony_service_contact_waynumberextra_short" qtlid="307878">Uzupełnienie</translation>
    <translation id="telephony_service_contact_address2" qtlid="459612">Complément du numéro dans la voie</translation>
    <translation id="telephony_service_contact_universal_directory" qtlid="459625">Parution dans les annuaires</translation>
    <translation id="telephony_service_contact_universal_directory_publish" qtlid="459638">Publication dans l’annuaire</translation>

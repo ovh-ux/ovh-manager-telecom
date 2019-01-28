@@ -9,14 +9,14 @@
 
    <translation id="telephony_line_assist_support_logs_configs" qtlid="359254">Paramètres de notifications</translation>
    <translation id="telephony_line_assist_support_logs_configs_manage" qtlid="359267">Modifier les paramètres de notifications</translation>
-   <translation id="telephony_line_assist_support_logs_configs_validate" qtlid="26047">Valider</translation>
+   <translation id="telephony_line_assist_support_logs_configs_validate" qtlid="26047">Aceptar</translation>
    <translation id="telephony_line_assist_support_logs_configs_frequency" qtlid="359280">Réception des notifications par email</translation>
    <translation id="telephony_line_assist_support_logs_configs_frequency_never" qtlid="8770">Jamais</translation>
    <translation id="telephony_line_assist_support_logs_configs_frequency_once_a_day" qtlid="359293">Une fois par jour</translation>
    <translation id="telephony_line_assist_support_logs_configs_frequency_twice_a_day" qtlid="359306">Toutes les 12 heures</translation>
    <translation id="telephony_line_assist_support_logs_configs_send_even_no_logs" qtlid="359319">Envoyer même s'il n'y a aucune notification</translation>
-   <translation id="telephony_line_assist_support_logs_configs_send_even_no_logs_yes" qtlid="34776">Oui</translation>
-   <translation id="telephony_line_assist_support_logs_configs_send_even_no_logs_no" qtlid="34788">Non</translation>
+   <translation id="telephony_line_assist_support_logs_configs_send_even_no_logs_yes" qtlid="34776">Sí</translation>
+   <translation id="telephony_line_assist_support_logs_configs_send_even_no_logs_no" qtlid="34788">No</translation>
    <translation id="telephony_line_assist_support_logs_configs_email" qtlid="359332">Adresse Email</translation>
    <translation id="telephony_line_assist_support_logs_configs_email_invalid" qtlid="359345">La valeur du champ Email doit être une adresse Email valide.</translation>
    <translation id="telephony_line_assist_support_logs_configs_email_required" qtlid="359358">L'adresse Email est obligatoire.</translation>

@@ -66,7 +66,7 @@
    <translation id="telephony_alias_special_rsva_infos_missing_email" qtlid="502003">Aucune adresse e-mail n'est spécifiée ! Celle-ci doit être mise à jour <a class="oui-link" data-ui-sref="{{ sref }}">ici</a>.</translation>
 
    <translation id="telephony_alias_special_rsva_edit" qtlid="16301">Gestionar</translation>
-   <translation id="telephony_alias_special_rsva_apply" qtlid="26047">Valider</translation>
+   <translation id="telephony_alias_special_rsva_apply" qtlid="26047">Aceptar</translation>
    <translation id="telephony_alias_special_rsva_success" qtlid="337949">Options enregistrées</translation>
    <translation id="telephony_alias_special_rsva_error" qtlid="502016">Une erreur est survenue lors de la mise à jour de la tarification</translation>
 

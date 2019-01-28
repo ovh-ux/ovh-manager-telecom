@@ -37,7 +37,7 @@
    <translation id="telephony_alias_portability_order_contact_siret" qtlid="460860">Numéro de siret ou d'entreprise</translation>
    <translation id="telephony_alias_portability_order_contact_address" qtlid="460873">Adresse d'installation de la ligne</translation>
    <translation id="telephony_alias_portability_order_contact_country" qtlid="25171">País</translation>
-   <translation id="telephony_alias_portability_order_contact_country_france" qtlid="29047">France</translation>
+   <translation id="telephony_alias_portability_order_contact_country_france" qtlid="29047">Francia</translation>
    <translation id="telephony_alias_portability_order_contact_country_belgium" qtlid="29059">Belgique</translation>
    <translation id="telephony_alias_portability_order_contact_country_switzerland" qtlid="40954">Suisse</translation>
    <translation id="telephony_alias_portability_order_contact_zip" qtlid="30346">Código postal</translation>
@@ -64,11 +64,11 @@
    <translation id="telephony_alias_portability_order_sda_add_list" qtlid="461042">Les numéros suivants seront également portés :</translation>
    <translation id="telephony_alias_portability_order_description" qtlid="9238">Descripción</translation>
    <translation id="telephony_alias_portability_order_unit_price" qtlid="259961">Precio unitario</translation>
-   <translation id="telephony_alias_portability_order_quantity" qtlid="37107">Quantité</translation>
+   <translation id="telephony_alias_portability_order_quantity" qtlid="37107">Cantidad</translation>
    <translation id="telephony_alias_portability_order_total" qtlid="32458">Total</translation>
-   <translation id="telephony_alias_portability_order_total_tax_free" qtlid="37143">Total HT</translation>
+   <translation id="telephony_alias_portability_order_total_tax_free" qtlid="37143">Total (IVA no incl.)</translation>
    <translation id="telephony_alias_portability_order_total_tax" qtlid="279470"></translation>
-   <translation id="telephony_alias_portability_order_total_with_tax" qtlid="37167">Total TTC</translation>
+   <translation id="telephony_alias_portability_order_total_with_tax" qtlid="37167">Total IVA incl.</translation>
    <translation id="telephony_alias_portability_order_error" qtlid="461055">Oups ! Une erreur est survenue lors de la demande portabilité.</translation>
    <translation id="telephony_alias_portability_order_address_too_long" qtlid="461068">L'ensemble des champs "Numéro de la voie", "Complément au numéro de voie", "Type de voie" et "Nom de la voie" ne doit pas dépasser 35 caractères.</translation>
    <translation id="telephony_alias_portability_order_success" qtlid="461081">Votre demande de portabilité a bien été prise en compte.</translation>

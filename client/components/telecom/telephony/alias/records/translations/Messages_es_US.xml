@@ -9,8 +9,8 @@
    <translation id="telephony_alias_configuration_records_form_record" qtlid="303575">Enregistrement des appels</translation>
    <translation id="telephony_alias_configuration_records_form_ask_for_record_disabling" qtlid="461822">Activer la demande de non enregistrement d’appel</translation>
    <translation id="telephony_alias_configuration_records_form_record_disabling_language" qtlid="461835">Choix de la langue du message</translation>
-   <translation id="telephony_alias_configuration_records_form_record_disabling_language_french" qtlid="29684">Français</translation>
-   <translation id="telephony_alias_configuration_records_form_record_disabling_language_english" qtlid="33838">Anglais</translation>
+   <translation id="telephony_alias_configuration_records_form_record_disabling_language_french" qtlid="29684">Francés</translation>
+   <translation id="telephony_alias_configuration_records_form_record_disabling_language_english" qtlid="33838">Inglés</translation>
    <translation id="telephony_alias_configuration_records_form_record_disabling_digit" qtlid="461848">Choix du chiffre</translation>
    <translation id="telephony_alias_configuration_records_form_submit" qtlid="249107">Aplicar modificaciones</translation>
    <translation id="telephony_alias_configuration_records_list_title" qtlid="461861">Liste des enregistrements</translation>

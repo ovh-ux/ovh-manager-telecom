@@ -42,7 +42,7 @@
    <translation id="telephony_order_identity_organisation" qtlid="49022">Unternehmen</translation>
    <translation id="telephony_order_identity_ape" qtlid="333789">Code APE</translation>
    <translation id="telephony_order_identity_siret" qtlid="333802">Siret</translation>
-   <translation id="telephony_order_identity_nomination" qtlid="307709">Dénomination sociale</translation>
+   <translation id="telephony_order_identity_nomination" qtlid="307709">Unternehmensbezeichnung</translation>
 
    <translation id="telephony_order_legal" qtlid="333815">Validation de la commande</translation>
    <translation id="telephony_order_validate_order_tip" qtlid="358279">Bon de commande</translation>

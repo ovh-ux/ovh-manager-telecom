@@ -14,14 +14,14 @@
    <translation id="telephony_line_actions_line_calls_simultaneous_line_summary" qtlid="82725">Resumen</translation>
    <translation id="telephony_line_actions_line_calls_simultaneous_line_order_id" qtlid="457441">N° de commande</translation>
    <translation id="telephony_line_actions_line_calls_simultaneous_line_order_link" qtlid="35352">Bon de commande</translation>
-   <translation id="telephony_line_actions_line_calls_simultaneous_line_order_click" qtlid="127348">Cliquez ici</translation>
+   <translation id="telephony_line_actions_line_calls_simultaneous_line_order_click" qtlid="127348">Clic aquí</translation>
    <translation id="telephony_line_actions_line_calls_simultaneous_order" qtlid="43558">Contratar</translation>
    <translation id="telephony_line_actions_line_calls_simultaneous_bc" qtlid="334387">Afin de finaliser votre demande, merci de valider ce</translation>
    <translation id="telephony_line_actions_line_calls_simultaneous_url" qtlid="292800">orden de pedido</translation>
    <translation id="telephony_line_actions_line_calls_simultaneous_order" qtlid="186219">Generar la orden de pedido</translation>
    <translation id="telephony_line_actions_line_calls_simultaneous_offerTasks" qtlid="387107">Une suppression du nombre d'appels simultanés est en cours. Elle sera effective le {{executionDate}}.</translation>
    <translation id="telephony_line_actions_line_calls_simultaneous_offerTasks_1" qtlid="387120">Vous ne pouvez pas modifier le nombre d'appels simultanés pendant cette période.</translation>
-   <translation id="telephony_line_actions_line_calls_simultaneous_remove_validate" qtlid="26047">Valider</translation>
+   <translation id="telephony_line_actions_line_calls_simultaneous_remove_validate" qtlid="26047">Aceptar</translation>
    <translation id="telephony_line_actions_line_calls_simultaneous_remove_cancel" qtlid="37863">Cancelar</translation>
    <translation id="telephony_line_actions_line_calls_simultaneous_line_offer_task_error" qtlid="387133">Impossible de récupérer les tâches en cours.</translation>
 
