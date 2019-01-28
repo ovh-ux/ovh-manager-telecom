@@ -9132,10 +9132,10 @@ ovh-angular-input-number-spinner@^2.1.0:
   resolved "https://registry.yarnpkg.com/ovh-angular-input-number-spinner/-/ovh-angular-input-number-spinner-2.1.1.tgz#5d4c1f98e006d1592713eb4d1385092d63050951"
   integrity sha1-XUwfmOAG0VknE+tNE4UJLWMFCVE=
 
-ovh-angular-line-diagnostics@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/ovh-angular-line-diagnostics/-/ovh-angular-line-diagnostics-2.1.0.tgz#33c1022704dc899f8b2cf1027fb6cc88c5c185c4"
-  integrity sha512-ynhhTKoh9A6vKGjHXlqqYL5b5roGfdfELiYO+7RzXnPk2CEy1LOE+DZ1kcmCbgjuc+JJd1qskYfeFrHFOMlnFQ==
+ovh-angular-line-diagnostics@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/ovh-angular-line-diagnostics/-/ovh-angular-line-diagnostics-2.1.1.tgz#205cef5561c71475a43f4a44e256e5f79a0397f3"
+  integrity sha512-PynXgUzeaKsYa/3/n0Wztz4q2SrT1pt0ADaj44rxWTRzDOS0LrbHbA/sxpg/YiLN3h3ccgiiAGiT4ePJLRGNoQ==
 
 ovh-angular-mondial-relay@^4.0.0:
   version "4.1.1"
