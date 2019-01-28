@@ -43,8 +43,8 @@ angular.module('managerApp').config((SidebarMenuProvider) => {
       title: $translate.instant('telecom_sidebar_section_task'),
       category: 'task',
       icon: 'ovh-font ovh-font-tasks',
-      state: 'telecom.task',
-      loadOnState: 'telecom.task',
+      state: 'task',
+      loadOnState: 'task',
     });
   }
 
@@ -217,7 +217,7 @@ angular.module('managerApp').config((SidebarMenuProvider) => {
       icon: 'ovh-font ovh-font-message',
       subActions: [{
         title: $translate.instant('telecom_sidebar_actions_menu_sms'),
-        state: 'telecom.orders-sms',
+        state: 'sms.order',
       }, {
         title: $translate.instant('telecom_sidebar_actions_menu_sms_hlr'),
         href: ORDER_URLS.sms.hlr,
