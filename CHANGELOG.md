@@ -1,3 +1,21 @@
+# [10.19.0](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.18.1...v10.19.0) (2019-01-28)
+
+
+### Bug Fixes
+
+* **i18n:** retrieve translations ([f6e369a](https://github.com/ovh-ux/ovh-manager-telecom/commit/f6e369a))
+* **i18n:** submit translations ([c4a4f5d](https://github.com/ovh-ux/ovh-manager-telecom/commit/c4a4f5d))
+* **sms:** update serviceName in sidebar ([9fc75f8](https://github.com/ovh-ux/ovh-manager-telecom/commit/9fc75f8))
+* **sms.compose:** improve addPhonebookContact form display ([#1263](https://github.com/ovh-ux/ovh-manager-telecom/issues/1263)) ([806e717](https://github.com/ovh-ux/ovh-manager-telecom/commit/806e717))
+
+
+### Features
+
+* use translations for oui-clipboard ([#1262](https://github.com/ovh-ux/ovh-manager-telecom/issues/1262)) ([9d652d5](https://github.com/ovh-ux/ovh-manager-telecom/commit/9d652d5))
+* **pack.migration:** add options for migration offers ([#1261](https://github.com/ovh-ux/ovh-manager-telecom/issues/1261)) ([5d6e62d](https://github.com/ovh-ux/ovh-manager-telecom/commit/5d6e62d))
+
+
+
 ## [10.18.1](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.18.0...v10.18.1) (2019-01-22)
 
 
