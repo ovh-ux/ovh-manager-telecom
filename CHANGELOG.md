@@ -1,3 +1,7 @@
+## [10.19.1](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.19.0...v10.19.1) (2019-01-28)
+
+
+
 # [10.19.0](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.18.1...v10.19.0) (2019-01-28)
 
 
