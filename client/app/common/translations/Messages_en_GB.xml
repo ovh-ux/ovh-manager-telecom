@@ -33,6 +33,10 @@
    <translation id="common_criteria_adder_value_label" qtlid="47548">Value</translation>
    <translation id="common_criteria_adder_submit_label" qtlid="37923">Add</translation>
 
+   <translation id="common_clipboard_copy_to_clipboard">Copier dans le presse-papier</translation>
+   <translation id="common_clipboard_copied">Copié</translation>
+   <translation id="common_clipboard_not_supported">La copie dans le presse-papier n’est pas supportée. Veuillez copier le texte manuellement</translation>
+
    <translation id="common_none" qtlid="30646">None</translation>
    <translation id="common_datagrid_nodata" qtlid="197635">No result</translation>
 

@@ -6,6 +6,7 @@ import 'angular';
 import 'angular-animate';
 import 'angular-aria';
 import 'angular-ui-bootstrap';
+import 'angular-ui-validate';
 import 'angular-cookies';
 import 'script-loader!angular-dynamic-locale/dist/tmhDynamicLocale.min.js';
 import 'script-loader!@bower_components/angular-ellipses/src/truncate.js';

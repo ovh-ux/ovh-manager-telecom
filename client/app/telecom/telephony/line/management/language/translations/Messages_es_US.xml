@@ -5,13 +5,13 @@
    <translation id="telephony_line_language_title" qtlid="360021">Langue de la ligne</translation>
    <translation id="telephony_line_language_back_link" qtlid="338053">Retour à la gestion de la ligne</translation>
    <translation id="telephony_line_language_value_placeholder" qtlid="323651">Sélectionnez une langue</translation>
-   <translation id="telephony_line_language_value_dutch" qtlid="33982">Néerlandais</translation>
+   <translation id="telephony_line_language_value_dutch" qtlid="33982">Holandés</translation>
    <translation id="telephony_line_language_value_english_uk" qtlid="360034">Anglais (Royaume-Uni)</translation>
-   <translation id="telephony_line_language_value_french" qtlid="29684">Français</translation>
+   <translation id="telephony_line_language_value_french" qtlid="29684">Francés</translation>
    <translation id="telephony_line_language_value_french_be" qtlid="360047">Français (Belgique)</translation>
-   <translation id="telephony_line_language_value_german" qtlid="31618">Allemand</translation>
-   <translation id="telephony_line_language_value_italian" qtlid="33502">Italien</translation>
-   <translation id="telephony_line_language_value_spanish" qtlid="33454">Espagnol</translation>
+   <translation id="telephony_line_language_value_german" qtlid="31618">Alemán</translation>
+   <translation id="telephony_line_language_value_italian" qtlid="33502">Italiano</translation>
+   <translation id="telephony_line_language_value_spanish" qtlid="33454">Español</translation>
    <translation id="telephony_line_language_validate" qtlid="323638">Changer la langue</translation>
    <translation id="telephony_line_language_error_init" qtlid="360060">Impossible de récuperer la langue de votre ligne</translation>
    <translation id="telephony_line_language_error_change" qtlid="360073">Impossible de modifier la langue de votre ligne</translation>

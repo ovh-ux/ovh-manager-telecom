@@ -79,8 +79,8 @@
 <!-- CATEGORIES -->
    <translation id="telephony_scheduler_category_activation" qtlid="396532">Activer les plages horaires</translation>
    <translation id="telephony_scheduler_category_activation_explain" qtlid="396545">Les créneaux définis ne seront appliqués qu'après activation de vos plages horaires.</translation>
-   <translation id="telephony_scheduler_category_activation_yes" qtlid="34776">Oui</translation>
-   <translation id="telephony_scheduler_category_activation_no" qtlid="34788">Non</translation>
+   <translation id="telephony_scheduler_category_activation_yes" qtlid="34776">Sí</translation>
+   <translation id="telephony_scheduler_category_activation_no" qtlid="34788">No</translation>
 
 <!-- HEADER -->
    <translation id="telephony_scheduler_header_previous_title" qtlid="396558">Période précédente</translation>
@@ -110,7 +110,7 @@
    <translation id="telephony_scheduler_events_new_title" qtlid="88677">Nouvel événement</translation>
    <translation id="telephony_scheduler_events_back" qtlid="396636">Revenir à l'édition</translation>
    <translation id="telephony_scheduler_events_title" qtlid="69113">Objet</translation>
-   <translation id="telephony_scheduler_events_category" qtlid="28459">Catégorie</translation>
+   <translation id="telephony_scheduler_events_category" qtlid="28459">Categoría</translation>
    <translation id="telephony_scheduler_events_all_day" qtlid="396649">Journée entière</translation>
    <translation id="telephony_scheduler_events_time_slot" qtlid="396662">Plage horaire</translation>
    <translation id="telephony_scheduler_events_from" qtlid="88725">Du</translation>

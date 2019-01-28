@@ -12,7 +12,7 @@
    <translation id="telephony_group_fax_management_terminate_reason_label_billingDifficulties" qtlid="338469">Facturation non adaptée</translation>
    <translation id="telephony_group_fax_management_terminate_reason_label_cessationOfActivity" qtlid="313377">Cessation d'activité</translation>
    <translation id="telephony_group_fax_management_terminate_reason_label_missingOptions" qtlid="338482">Manque de fonctionnalités</translation>
-   <translation id="telephony_group_fax_management_terminate_reason_label_other" qtlid="28603">Autres</translation>
+   <translation id="telephony_group_fax_management_terminate_reason_label_other" qtlid="28603">Otros</translation>
    <translation id="telephony_group_fax_management_terminate_reason_label_plugAndPhoneDifficulties" qtlid="338495">Problèmes liés au matériel</translation>
    <translation id="telephony_group_fax_management_terminate_reason_label_technicalDifficulties" qtlid="313429">Problèmes techniques</translation>
    <translation id="telephony_group_fax_management_terminate_reason_label_moveToCompetitor" qtlid="338508">Départ vers la concurrence</translation>

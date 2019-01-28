@@ -21,8 +21,8 @@
    <translation id="telephony_line_phone_codec_edit_codec_load_error" qtlid="347314">Oups ! Une erreur est survenue lors du chargement des codecs.</translation>
 
    <translation id="telephony_line_phone_codec_edit_codec_automatic" qtlid="391150">Codecs automatiques :</translation>
-   <translation id="telephony_line_phone_codec_edit_codec_automatic_yes" qtlid="34776">Oui</translation>
-   <translation id="telephony_line_phone_codec_edit_codec_automatic_no" qtlid="34788">Non</translation>
+   <translation id="telephony_line_phone_codec_edit_codec_automatic_yes" qtlid="34776">Sí</translation>
+   <translation id="telephony_line_phone_codec_edit_codec_automatic_no" qtlid="34788">No</translation>
    <translation id="telephony_line_phone_codec_edit_codec_auto_choice" qtlid="391163">Codecs automatiques <em>(cette option est en test et permet de rendre plus souple la négociation de codecs)</em>.</translation>
 
    <translation id="telephony_line_phone_codec_bulk_all_success" qtlid="459274">La modification des codecs a bien été appliquée aux services sélectionnés.</translation>
