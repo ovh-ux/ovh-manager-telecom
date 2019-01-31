@@ -3,11 +3,12 @@
      data-ng-form="conditionEditForm">
 
     <div class="popover-pages-wrapper"
+         data-ng-if="!$ctrl.loading.init"
          data-ng-class="{ move: $ctrl.popoverStatus.move }">
 
         <section class="popover-page page-section">
             <header>
-                <h2 data-translate="voip_time_condition_condition_popover_title"></h2>
+                <h2 data-translate="{{:: $ctrl.condition.state === 'DRAFT' ? 'voip_time_condition_condition_add_popover_title' : 'voip_time_condition_condition_edit_popover_title'}}"></h2>
             </header>
 
             <section>
