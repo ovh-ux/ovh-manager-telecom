@@ -119,10 +119,8 @@ angular.module('managerApp').controller('PackCtrl', class PackCtrl {
         this.resiliationNotification.cancelSuccess = false; // display only once
         return packInfo;
       })
-      .catch((err) => {
+      .catch(() => {
         this.inError = true;
-        this.TucToast.error(this.$translate.instant('pack_xdsl_oops_an_error_is_occured'));
-        return this.$q.reject(err);
       })
       .finally(() => {
         this.loader.page = false;
