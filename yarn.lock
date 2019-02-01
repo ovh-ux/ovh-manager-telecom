@@ -906,12 +906,12 @@
     rollup-pluginutils "^2.3.3"
     slash "^2.0.0"
 
-"@ovh-ux/manager-core@^1.2.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@ovh-ux/manager-core/-/manager-core-1.2.0.tgz#3978af0118a855705a271bc37a4f62678b39ce69"
-  integrity sha512-W/wOnmYawDzxHg6kIYQ/SfNvKz5LU12nxs1snlhfUelDbBuK6zLAHgstlYR8jRGbgaMuZPQiekVmIDwNGWou8g==
+"@ovh-ux/manager-core@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@ovh-ux/manager-core/-/manager-core-2.0.0.tgz#24914c831c87d5241bca49cc418aa4dfcdee040c"
+  integrity sha512-cor3MH5jX+vvR+rZcsGmBhTNv4wfEcirHft3MwoghXSp6cpHmON5Ujcm1DSwlyRyaeSAY6fzyS5s6zu0PXyHKQ==
   dependencies:
-    "@ovh-ux/translate-async-loader" "^1.0.4"
+    "@ovh-ux/ng-translate-async-loader" "^2.0.0"
     lodash "^4.17.11"
 
 "@ovh-ux/manager-freefax@^1.0.6":
@@ -1021,12 +1021,37 @@
   dependencies:
     animated-scroll-to "^1.2.2"
 
+"@ovh-ux/ng-ovh-http@^4.0.1-beta.0":
+  version "4.0.1-beta.0"
+  resolved "https://registry.yarnpkg.com/@ovh-ux/ng-ovh-http/-/ng-ovh-http-4.0.1-beta.0.tgz#ccf793c7d34252952d0bf92d8f3a9ff2ca35e52e"
+  integrity sha512-D+pQvfzVr01fXlE75U2U3RdcxSBciqIo7CV4gJM5jyAS3zCXP4/YzNF/tCNIihNs9nI/juSieAnI7ah5xwVn+g==
+  dependencies:
+    lodash "~4.17.11"
+    urijs "^1.19.1"
+
+"@ovh-ux/ng-ovh-sso-auth-modal-plugin@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@ovh-ux/ng-ovh-sso-auth-modal-plugin/-/ng-ovh-sso-auth-modal-plugin-3.0.0.tgz#0e314b412769d65862d3900ca3a06374ef47fc86"
+  integrity sha512-cyMBkp353CH+RPU4PKZoNTCXKrlwtvgXq7ETzD8CRiFmmZ4AhUfyBNVXno7vBHW4jsAJhWDtN5TThVZWUYdF7w==
+  dependencies:
+    lodash "~4.17.11"
+
+"@ovh-ux/ng-ovh-sso-auth@^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@ovh-ux/ng-ovh-sso-auth/-/ng-ovh-sso-auth-4.0.0.tgz#f6c1027f5ef827d464ff3b0e702b1692ee279703"
+  integrity sha512-exPPBbg2WTXH4/LHu3dsqfHq073+NhBzB69WB97Dd75FKust3h/SUjyQyuFOn7h4Z0OI4/8db+6qpwjEIAAz6Q==
+
 "@ovh-ux/ng-tail-logs@^2.0.0-beta.1":
   version "2.0.0-beta.1"
   resolved "https://registry.yarnpkg.com/@ovh-ux/ng-tail-logs/-/ng-tail-logs-2.0.0-beta.1.tgz#823fc41c98770e428d93882e7cdf47f1a7e1711b"
   integrity sha512-tcyEnkqb71p+ImlsRalsqdZ/RcN1lixjUVItsR1oLooliiXumdPgmAjlGm6elBs3Gb+vzDq0+uouFwLxfeYVKg==
   dependencies:
     lodash "^4.17.11"
+
+"@ovh-ux/ng-translate-async-loader@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@ovh-ux/ng-translate-async-loader/-/ng-translate-async-loader-2.0.0.tgz#df0d155c6c2e38b53704ff4ca9b419f0695a88bf"
+  integrity sha512-CmAT0/rTYN/Niwtuo1pcY+y46nqGCR2dO6+4twqGiRkqu/ksgklZ4weaqF9Xgl/KYLv+zcCmxZf0J1gfXs7kag==
 
 "@ovh-ux/ng-uirouter-title@^2.0.0-beta.3":
   version "2.0.0-beta.3"
@@ -1043,7 +1068,7 @@
     bootstrap "^3.3.7"
     ovh-ui-kit "^2.22.0"
 
-"@ovh-ux/translate-async-loader@^1.0.4", "@ovh-ux/translate-async-loader@^1.0.8":
+"@ovh-ux/translate-async-loader@^1.0.8":
   version "1.0.8"
   resolved "https://registry.yarnpkg.com/@ovh-ux/translate-async-loader/-/translate-async-loader-1.0.8.tgz#7cbdc3dfed1042f511206ff6bb9f14c33b8406ba"
   integrity sha512-8yEhPeRTSxtEO9ODXRYZw6pzRQiV5ULCTi8mIzt39m/b9N2TcIF4ILTPsaa8xpE4npHKa/iYgL9z0HJUFi2LGQ==
@@ -9119,14 +9144,6 @@ ovh-angular-contact@^3.0.0:
   resolved "https://registry.yarnpkg.com/ovh-angular-contact/-/ovh-angular-contact-3.0.0.tgz#66ea9cd39a8bb1f194872f7f40ff5303688523f2"
   integrity sha1-Zuqc05qLsfGUhy9/QP9TA2iFI/I=
 
-ovh-angular-http@^4.0.1-alpha.0:
-  version "4.0.1-alpha.0"
-  resolved "https://registry.yarnpkg.com/ovh-angular-http/-/ovh-angular-http-4.0.1-alpha.0.tgz#b1e6d652a9892100738e25c45cd21c3c418995bb"
-  integrity sha512-FjK+laWVw/LurhpI4GRx84I5znxqPknaIFs18rntjxsZ2iacDocdBBzyjZGJrhoZzlokfdjW3LMlOo+FHzXOlQ==
-  dependencies:
-    lodash "~4.17.11"
-    urijs "^1.19.1"
-
 ovh-angular-input-number-spinner@^2.1.0:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/ovh-angular-input-number-spinner/-/ovh-angular-input-number-spinner-2.1.1.tgz#5d4c1f98e006d1592713eb4d1385092d63050951"
@@ -9181,16 +9198,6 @@ ovh-angular-simple-country-list@^0.0.9:
   version "0.0.9"
   resolved "https://registry.yarnpkg.com/ovh-angular-simple-country-list/-/ovh-angular-simple-country-list-0.0.9.tgz#6517645440a252ec626887141737f6835dbe378b"
   integrity sha1-ZRdkVECiUuxiaIcUFzf2g12+N4s=
-
-ovh-angular-sso-auth-modal-plugin@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/ovh-angular-sso-auth-modal-plugin/-/ovh-angular-sso-auth-modal-plugin-2.0.1.tgz#0bdfab8eff0f3c876eea47e884bfa2f3d06e16e6"
-  integrity sha1-C9+rjv8PPIdu6kfohL+i89BuFuY=
-
-ovh-angular-sso-auth@^4.0.0-alpha.3:
-  version "4.0.0-alpha.3"
-  resolved "https://registry.yarnpkg.com/ovh-angular-sso-auth/-/ovh-angular-sso-auth-4.0.0-alpha.3.tgz#52f3faaf0bf8430506c54bc808dd7d068b806ab9"
-  integrity sha512-Tjvuu16h1t96hT87Bv4u2PpE0PpPDgVunN6ebONiUlXlC9Zr4EKQU+RqXMBP1sk2NjXmn8taKGwmGQMzyanLRw==
 
 ovh-angular-swimming-poll@^3.0.0:
   version "3.0.0"
