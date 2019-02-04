@@ -1,3 +1,6 @@
+import ngOvhHttp from '@ovh-ux/ng-ovh-http';
+import ngOvhSsoAuth from '@ovh-ux/ng-ovh-sso-auth';
+import ngOvhSsoAuthModalPlugin from '@ovh-ux/ng-ovh-sso-auth-modal-plugin';
 import ngTailLogs from '@ovh-ux/ng-tail-logs';
 import ngUirouterTitle from '@ovh-ux/ng-uirouter-title';
 import translateAsyncLoader from '@ovh-ux/translate-async-loader';
@@ -34,6 +37,9 @@ angular.module('managerApp', [
   'ngPassword',
   'ngResource',
   'ngSanitize',
+  ngOvhHttp,
+  ngOvhSsoAuth,
+  ngOvhSsoAuthModalPlugin,
   ngTailLogs,
   ngUirouterTitle,
   'ovh-angular-actions-menu',
@@ -49,8 +55,6 @@ angular.module('managerApp', [
   'ovh-angular-responsive-tabs',
   'ovh-angular-sidebar-menu',
   'ovh-angular-simple-country-list',
-  'ovh-angular-sso-auth',
-  'ovh-angular-sso-auth-modal-plugin',
   'ovh-angular-swimming-poll',
   'ovh-angular-timeline',
   'ovh-angular-ui-confirm-modal',

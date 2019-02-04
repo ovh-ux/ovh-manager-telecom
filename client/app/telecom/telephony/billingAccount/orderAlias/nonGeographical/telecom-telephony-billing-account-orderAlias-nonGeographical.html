@@ -35,6 +35,22 @@
                                 data-ng-disabled="AliasOrderNonGeographicalCtrl.loading.init || AliasOrderNonGeographicalCtrl.loading.order">
                         </select>
                     </div>
+
+                    <div class="form-group" data-ng-if="AliasOrderNonGeographicalCtrl.showSDASelector">
+                        <!-- Order SDA redirection only -->
+                        <oui-radio data-model="AliasOrderNonGeographicalCtrl.offer" 
+                                   data-value="'alias'" 
+                                   data-on-change="AliasOrderNonGeographicalCtrl.changeOffer()"
+                                   class="col-sm-6">
+                            <span data-translate="telephony_order_nongeographical_order_alias"></span>
+                        </oui-radio>
+                        <oui-radio data-model="AliasOrderNonGeographicalCtrl.offer" 
+                                   data-value="'didsOnly'" 
+                                   data-on-change="AliasOrderNonGeographicalCtrl.changeOffer()"
+                                   class="col-sm-6">
+                            <span data-translate="telephony_order_nongeographical_order_sda_only"></span>
+                        </oui-radio>
+                    </div>
                 </div>
 
                 <!-- Specific / std -->
@@ -92,8 +108,8 @@
                     class="btn btn-primary"
                     type="submit"
                     data-ng-disabled="!AliasOrderNonGeographicalCtrl.contractsAccepted || AliasOrderNonGeographicalCtrl.loading.order || !orderNumberForm.$valid || AliasOrderNonGeographicalCtrl.loading.numbers"
-                    data-translate="telephony_order_confirm"
-                    data-translate-values="{ total: AliasOrderNonGeographicalCtrl.getTotal() }">
+                    data-translate="telephony_order_nongeographical_order_periodicy"
+                    data-translate-values="{ total: AliasOrderNonGeographicalCtrl.getTotal(), period: AliasOrderNonGeographicalCtrl.getPeriod() }">
                 </button>
                 <oui-spinner class="mr-2"
                              data-ng-if="AliasOrderNonGeographicalCtrl.loading.order"

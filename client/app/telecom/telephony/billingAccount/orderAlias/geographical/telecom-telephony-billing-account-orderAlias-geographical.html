@@ -37,6 +37,21 @@
                                 data-ng-disabled="AliasOrderGeographicalCtrl.loading.init || AliasOrderGeographicalCtrl.loading.order">
                         </select>
                     </div>
+                    <div class="form-group" data-ng-if="AliasOrderGeographicalCtrl.showSDASelector">
+                        <!-- Order SDA redirection only -->
+                        <oui-radio data-model="AliasOrderGeographicalCtrl.offer" 
+                                   data-value="'alias'"
+                                   data-on-change="AliasOrderGeographicalCtrl.changeOffer()"
+                                   class="col-sm-6">
+                            <span data-translate="telephony_order_geographical_order_alias"></span>
+                        </oui-radio>
+                        <oui-radio data-model="AliasOrderGeographicalCtrl.offer" 
+                                   data-value="'didsOnly'"
+                                   data-on-change="AliasOrderGeographicalCtrl.changeOffer()"
+                                   class="col-sm-6">
+                            <span data-translate="telephony_order_geographical_order_sda_only"></span>
+                        </oui-radio>
+                    </div>
                     <div class="form-group"
                          data-ng-class="{
                              'has-error': orderNumberForm.zone.$touched && orderNumberForm.zone.$invalid
@@ -122,8 +137,8 @@
                         class="btn btn-primary"
                         type="submit"
                         data-ng-disabled="!AliasOrderGeographicalCtrl.contractsAccepted || AliasOrderGeographicalCtrl.loading.order || !orderNumberForm.$valid || AliasOrderGeographicalCtrl.loading.order"
-                        data-translate="telephony_order_confirm"
-                        data-translate-values="{ total: AliasOrderGeographicalCtrl.getTotal() }">
+                        data-translate="telephony_order_geographical_order_periodicy"
+                        data-translate-values="{ total: AliasOrderGeographicalCtrl.getTotal(), period: AliasOrderGeographicalCtrl.getPeriod() }">
                     </button>
                     <oui-spinner class="ml-2"
                                  data-ng-if="AliasOrderGeographicalCtrl.loading.order"

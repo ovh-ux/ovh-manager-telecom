@@ -61,6 +61,8 @@
    <translation id="telephony_alias_configuration_calls_filtering_add_success" qtlid="510826">Le filtrage de vos appels a été configuré.</translation>
    <translation id="telephony_alias_configuration_calls_filtering_add_error" qtlid="510839">Une erreur est survenue lors de la configuration du filtrage des appels.</translation>
 
+   <translation id="telephony_alias_configuration_calls_filtering_footer_save_question" qtlid="395934">¿Realizar una copia de seguridad de mi configuración?</translation>
+
    <translation id="telephony_alias_configuration_calls_filtering_get_error" qtlid="510852">Une erreur est survenue lors de la récupération du filtrage des appels.</translation>
    <translation id="telephony_alias_configuration_calls_filtering_update_error" qtlid="510865">Une erreur est survenue lors de la mise à jour du filtrage des appels.</translation>
    <translation id="telephony_alias_configuration_calls_filtering_delete_all_error" qtlid="510878">Une erreur est survenue lors de la suppression de vos listes.</translation>

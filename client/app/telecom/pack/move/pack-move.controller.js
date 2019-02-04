@@ -309,6 +309,14 @@ angular.module('managerApp').controller('PackMoveCtrl', function (
   };
 
   /**
+   * Check if can keep line number
+   * @returns {boolean}
+   */
+  this.canKeepLineNumber = function () {
+    return this.offer.selected.portability.eligible && this.offer.selected.unbundling !== 'partial';
+  };
+
+  /**
    * Check is a pending move is on-going
    * @returns {Promise}
    */

@@ -40,6 +40,34 @@ angular.module('managerApp').controller('TelecomTelephonyAliasOrderNonGeographic
     });
   }
 
+  /**
+     * Get the prices for SDA redirection only
+     */
+  function getRedirectionSDAPrices() {
+    OvhApiOrder.Telephony().v6().getNumberNogeographical({
+      billingAccount: $stateParams.billingAccount,
+      country: self.user.country,
+      displayUniversalDirectory: self.form.displayUniversalDirectory,
+      legalform: self.form.legalform,
+      offer: 'didsOnly',
+      pool: self.form.pool,
+      retractation: self.form.retractation,
+    }).$promise
+      .then((data) => {
+        self.redirectionSDA = {};
+        self.redirectionSDA.prices = data.prices;
+        self.redirectionSDA.contracts = data.contracts;
+        _.mapKeys(self.redirectionSDA.prices, (value, name) => {
+          self.redirectionSDA.prices[name].title = $translate.instant(['telephony', 'order', 'number', 'type', name, 'label'].join('_'));
+        });
+        return data;
+      },
+      (err) => {
+        TucToastError($translate.instant('telephony_order_nongeographical_prices_error'));
+        return $q.reject(err);
+      });
+  }
+
   /*= =============================
   =            EVENTS            =
   ============================== */
@@ -60,11 +88,26 @@ angular.module('managerApp').controller('TelecomTelephonyAliasOrderNonGeographic
   };
 
   /**
+     * When offer selection changes
+     */
+  this.changeOffer = function () {
+    if (this.offer === 'didsOnly') {
+      getRedirectionSDAPrices();
+    }
+  };
+
+  /**
    * Get the Total of the order
    * @returns {String}
    */
   this.getTotal = function () {
     const count = this.form.amount.value;
+    if (this.offer === 'didsOnly') {
+      if (this.redirectionSDA && this.redirectionSDA.prices) {
+        const price = this.redirectionSDA.prices.withTax.text;
+        return price;
+      }
+    }
     if (this.prices) {
       const price = this.prices[this.form.numberType].withTax.text;
       return price.replace(/^([\d.,]*)/, forOne => forOne * count);
@@ -78,6 +121,23 @@ angular.module('managerApp').controller('TelecomTelephonyAliasOrderNonGeographic
   this.changeQty = function () {
     this.form.pool = this.form.amount.value;
     this.form.numberType = this.form.amount.value === 1 ? this.form.numberType : 'common';
+    if ([50, 100].includes(this.form.amount.value)) {
+      this.offer = 'alias';
+      this.showSDASelector = true;
+    } else {
+      this.showSDASelector = false;
+    }
+  };
+
+  /**
+   * Get the periodicity of the billing
+   * @returns {String}
+   */
+  this.getPeriod = function () {
+    if (this.offer === 'didsOnly') {
+      return $translate.instant('telephony_order_nongeographical_order_periodicy_annual');
+    }
+    return $translate.instant('telephony_order_nongeographical_order_periodicy_month');
   };
 
   /**
@@ -109,7 +169,13 @@ angular.module('managerApp').controller('TelecomTelephonyAliasOrderNonGeographic
       ]);
     }
     const form = _.pick(this.form, filter);
-    form.offer = 'alias';
+
+    // check if SDA redirection only is displayed
+    if (this.showSDASelector) {
+      form.offer = this.offer;
+    } else {
+      form.offer = 'alias';
+    }
     form.country = self.user.country;
     if (form.pool === 1) {
       delete form.pool;

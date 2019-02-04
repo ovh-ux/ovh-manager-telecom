@@ -27,7 +27,7 @@
                 </responsive-tab>
                 <responsive-tab data-state="telecom.pack.xdsl.modem"
                                 disabled="PackXdslCtrl.disabledModem"
-                                data-ng-if="PackXdslCtrl.content.status === 'active' || PackXdslCtrl.content.status === 'migration'"
+                                data-ng-if="PackXdslCtrl.isModemTabAvailable()"
                                 data-dropdown-title="{{ 'xdsl_tabs_modem' | translate }}">
                     <span data-translate="xdsl_tabs_modem"></span>
                 </responsive-tab>

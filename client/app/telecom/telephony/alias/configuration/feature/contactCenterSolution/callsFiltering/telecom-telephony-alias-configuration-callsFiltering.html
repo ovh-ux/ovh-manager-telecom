@@ -29,8 +29,6 @@
                         <span data-translate="telephony_alias_configuration_calls_filtering_option_disabled"></span>
                     </oui-radio>
                 </oui-radio-toggle-group>
-
-
             </oui-field>
 
             <oui-field data-label="{{:: 'telephony_alias_configuration_calls_filtering_activation' | translate }}">
@@ -86,24 +84,6 @@
                        data-ng-pattern="/^003[0-9]+$/">
             </oui-field>
 
-
-            <div class="oui-button-group">
-                <oui-button data-variant="primary"
-                            data-on-click="$ctrl.updateScreenListConditionsConfiguration()"
-                            data-disabled="$ctrl.listConfiguration.$invalid">
-                    <span data-translate="common_apply"></span>
-                </oui-button>
-                <tuc-telephony-bulk-action data-billing-account="{{:: $ctrl.serviceInfos.billingAccount }}"
-                                           data-service-type="alias"
-                                           data-service-name="{{:: $ctrl.serviceInfos.serviceName }}"
-                                           data-custom-class="link d-block"
-                                           data-bulk-infos="$ctrl.bulkData.infos"
-                                           data-filter-services="$ctrl.filterServices()"
-                                           data-get-bulk-params="$ctrl.getBulkParams()"
-                                           data-on-success="$ctrl.onBulkSuccess()"
-                                           data-on-error="$ctrl.onBulkError()">
-                </tuc-telephony-bulk-action>
-            </div>
         </form>
 
         <h3 class="oui-heading_underline"
@@ -177,11 +157,31 @@
                    data-translate-values="{ count: $selectedRows.length }"></p>
             </extra-top>
         </oui-datagrid>
+    </div>
 
-        <oui-button class="mb-5"
-                    data-variant="secondary"
+    <footer class="voip-action-bar"
+            data-ng-if="$ctrl.canUpdateSettings()">
+        <p class="mb-3 font-weight-bold text-white"
+           data-translate="telephony_alias_configuration_calls_filtering_footer_save_question">
+        </p>
+        <tuc-telephony-bulk-action data-service-type="alias"
+                                   data-billing-account="{{:: $ctrl.serviceInfos.billingAccount }}"
+                                   data-service-name="{{:: $ctrl.serviceInfos.serviceName }}"
+                                   data-custom-class="link d-block pl-0 mt-4 mb-2"
+                                   data-bulk-infos="$ctrl.bulkData.infos"
+                                   data-filter-services="$ctrl.filterServices()"
+                                   data-get-bulk-params="$ctrl.getBulkParams()"
+                                   data-on-success="$ctrl.onBulkSuccess()"
+                                   data-on-error="$ctrl.onBulkError()">
+        </tuc-telephony-bulk-action>
+
+        <oui-button data-variant="primary"
+                    data-on-click="$ctrl.updateScreenListConditionsConfiguration()">
+            <span data-translate="common_apply"></span>
+        </oui-button>
+        <oui-button data-variant="secondary"
                     data-on-click="$ctrl.$state.go('^')">
             <span data-translate="cancel"></span>
         </oui-button>
-    </div>
+    </footer>
 </div>

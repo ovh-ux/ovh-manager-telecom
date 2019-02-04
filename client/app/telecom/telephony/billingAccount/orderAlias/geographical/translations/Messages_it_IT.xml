@@ -16,4 +16,10 @@
    <translation id="telephony_order_geographical_order_error" qtlid="333347">L'ordine dei tuoi numeri geografici non è andato a buon fine, ti preghiamo di riprovare.</translation>
    <translation id="telephony_order_geographical_order_error_city" qtlid="333503">{{city}} non si trova nella zona ({{zone}})</translation>
    <translation id="telephony_order_geographical_order_success" qtlid="333516">L'ordine dei numeri geografici è stato effettuato. Ti preghiamo di saldare il tuo ordine.</translation>
+   <translation id="telephony_order_geographical_order_alias" qtlid="519428">Toutes les configurations</translation>
+   <translation id="telephony_order_geographical_order_sda_only" qtlid="519441">Uniquement redirections (SDAs)</translation>
+   <translation id="telephony_order_geographical_prices_error" qtlid="519454">Impossible de récupérer le tarif pour le numéro fixe SDA Redirection</translation>
+   <translation id="telephony_order_geographical_order_periodicy" qtlid="519467">Commandez ({{total}} TTC / {{period}})</translation>
+   <translation id="telephony_order_geographical_order_periodicy_annual" qtlid="204181">anno</translation>
+   <translation id="telephony_order_geographical_order_periodicy_month" qtlid="40222">mese</translation>
 </translations>
