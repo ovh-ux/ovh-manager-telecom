@@ -82,6 +82,11 @@ angular.module('managerApp').config(($stateProvider) => {
         controller: 'XdslModemFirmwareCtrl',
         controllerAs: '$ctrl',
       },
+      'serviceView@telecom.pack.xdsl.modem': {
+        templateUrl: 'app/telecom/pack/xdsl/modem/service/pack-xdsl-modem-service.html',
+        controller: 'XdslModemServiceCtrl',
+        controllerAs: '$ctrl',
+      },
     },
     translations: [
       '.',
@@ -99,6 +104,7 @@ angular.module('managerApp').config(($stateProvider) => {
       './router/ports',
       './wifi',
       './firmware',
+      './service',
     ],
   });
 });
