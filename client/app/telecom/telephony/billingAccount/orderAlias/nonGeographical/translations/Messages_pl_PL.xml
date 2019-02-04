@@ -15,4 +15,10 @@
    <translation id="telephony_order_nongeographical_order_error" qtlid="347093">La commande de numéro(s) non-géographique(s) a échoué. Veuillez réessayer ultérieurement.</translation>
    <translation id="telephony_order_nongeographical_order_error_city" qtlid="333503">{{city}} n'appartient pas à la zone ({{zone}})</translation>
    <translation id="telephony_order_nongeographical_order_success" qtlid="347106">Numéro(s) non-géographique(s) commandé(s). Veuillez accepter les conditions générales de vente et régler votre commande.</translation>
+   <translation id="telephony_order_nongeographical_order_alias">Toutes les configurations</translation>
+   <translation id="telephony_order_nongeographical_order_sda_only">Uniquement redirections (SDAs)</translation>
+   <translation id="telephony_order_nongeographical_prices_error">Impossible de récupérer le tarif pour le numéro fixe SDA Redirection</translation>
+   <translation id="telephony_order_nongeographical_order_periodicy">Commandez ({{total}} TTC / {{period}})</translation>
+   <translation id="telephony_order_nongeographical_order_periodicy_annual">an</translation>
+   <translation id="telephony_order_nongeographical_order_periodicy_month">mois</translation>
 </translations>

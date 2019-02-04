@@ -15,4 +15,10 @@
    <translation id="telephony_order_nongeographical_order_error" qtlid="347093">Nepavyko užsakyti ne geografinio numerio(-ių). Prašome bandyti vėliau.</translation>
    <translation id="telephony_order_nongeographical_order_error_city" qtlid="333503">{{city}} nėra zonoje ({{zone}})</translation>
    <translation id="telephony_order_nongeographical_order_success" qtlid="347106">Negeografiniai numeriai užsakyti. Prašome sutikti su bendrosiomis pardavimo sąlygomis ir užbaigti užsakymą.</translation>
+   <translation id="telephony_order_nongeographical_order_alias">Toutes les configurations</translation>
+   <translation id="telephony_order_nongeographical_order_sda_only">Uniquement redirections (SDAs)</translation>
+   <translation id="telephony_order_nongeographical_prices_error">Impossible de récupérer le tarif pour le numéro fixe SDA Redirection</translation>
+   <translation id="telephony_order_nongeographical_order_periodicy">Commandez ({{total}} TTC / {{period}})</translation>
+   <translation id="telephony_order_nongeographical_order_periodicy_annual">an</translation>
+   <translation id="telephony_order_nongeographical_order_periodicy_month">mois</translation>
 </translations>

@@ -15,4 +15,10 @@
    <translation id="telephony_order_nongeographical_order_error" qtlid="347093">Ei-maantieteellisen numeron tilaus epäonnistui. Ole hyvä ja yritä myöhemmin uudelleen.</translation>
    <translation id="telephony_order_nongeographical_order_error_city" qtlid="333503">{{city}}ei kuulu alueeseen ({{zone}})</translation>
    <translation id="telephony_order_nongeographical_order_success" qtlid="347106">Ei-maantieteellisten numeroiden tilaus. Ole hyvä ja hyväksy yleiset käyttöehdot sekä suorita tilauksen maksu.</translation>
+   <translation id="telephony_order_nongeographical_order_alias">Toutes les configurations</translation>
+   <translation id="telephony_order_nongeographical_order_sda_only">Uniquement redirections (SDAs)</translation>
+   <translation id="telephony_order_nongeographical_prices_error">Impossible de récupérer le tarif pour le numéro fixe SDA Redirection</translation>
+   <translation id="telephony_order_nongeographical_order_periodicy">Commandez ({{total}} TTC / {{period}})</translation>
+   <translation id="telephony_order_nongeographical_order_periodicy_annual">an</translation>
+   <translation id="telephony_order_nongeographical_order_periodicy_month">mois</translation>
 </translations>

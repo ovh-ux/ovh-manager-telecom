@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <translations>
 <!-- CONDITION EDIT -->
-   <translation id="voip_time_condition_condition_popover_title" qtlid="466762">Modifier une plage horaire</translation>
+   <translation id="voip_time_condition_condition_add_popover_title">Ajouter une plage horaire</translation>
+   <translation id="voip_time_condition_condition_edit_popover_title" qtlid="466762">Modifier une plage horaire</translation>
 <!-- DAYS -->
    <translation id="voip_time_condition_condition_popover_days" qtlid="323911">Dia da semana</translation>
    <translation id="voip_time_condition_condition_popover_days_monday" qtlid="6346">Segunda-feira</translation>
