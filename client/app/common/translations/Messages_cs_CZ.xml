@@ -51,6 +51,7 @@
    <translation id="common_field_error_pattern" qtlid="472385">Zadejte platný formát.</translation>
 
    <translation id="common_navbar_notification_title" qtlid="33250">Oznámení</translation>
+   <translation id="common_navbar_notification_title_expanded">Vos notifications</translation>
    <translation id="common_navbar_notification_see_all" qtlid="401914">Zobrazit všechna upozornění</translation>
    <translation id="common_navbar_notification_error_in_notification" qtlid="492055">Vyskytla se neočekávaná chyba.</translation>
    <translation id="common_navbar_notification_error_in_notification_description" qtlid="492068">Nepodařilo se načíst nabídku.</translation>
@@ -200,7 +201,6 @@
 <translation id="common_menu_portal" translate="none">MyOVH</translation>
    <translation id="common_menu_partners" qtlid="383512">Partneři</translation>
    <translation id="common_menu_orders" qtlid="42394">Stopování objednávky</translation>
-   <translation id="common_menu_support_assistance" qtlid="52699">Podpora</translation>
    <translation id="common_menu_v3" qtlid="135931">Starý zákaznický prostor</translation>
    <translation id="common_menu_billing" qtlid="32950">Fakturace</translation>
    <translation id="common_menu_billing_history" qtlid="159540">Mé faktury</translation>
@@ -227,6 +227,9 @@
    <translation id="common_menu_contacts" qtlid="70541">Mé kontakty</translation>
    <translation id="common_menu_list_ticket" qtlid="454039">Mé tikety</translation>
    <translation id="common_menu_support_assistance" qtlid="52699">Podpora</translation>
+   <translation id="common_menu_support_assistance_expanded">Besoin d'aide</translation>
+   <translation id="common_menu_support_userAccount_1">Bonjour {{username}}</translation>
+   <translation id="common_menu_support_userAccount_2">votre compte</translation>
    <translation id="common_menu_support_all_guides" qtlid="260788">Všechny přiručky</translation>
    <translation id="common_menu_support_help_center" qtlid="516575">Centre d'aide</translation>
    <translation id="common_menu_support_new_ticket" qtlid="260801">Vytvořit ticket</translation>

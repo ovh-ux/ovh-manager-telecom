@@ -50,6 +50,7 @@
    <translation id="common_field_error_pattern" qtlid="472385">Voer een geldig formaat in.</translation>
 
    <translation id="common_navbar_notification_title" qtlid="33250">Notificaties</translation>
+   <translation id="common_navbar_notification_title_expanded">Vos notifications</translation>
    <translation id="common_navbar_notification_see_all" qtlid="401914">Alle meldingen bekijken</translation>
    <translation id="common_navbar_notification_error_in_notification" qtlid="492055">Er is een probleem opgetreden. </translation>
    <translation id="common_navbar_notification_error_in_notification_description" qtlid="492068">Het menu kan niet worden gestart. </translation>
@@ -199,7 +200,6 @@
 <translation id="common_menu_portal" translate="none">MyOVH</translation>
    <translation id="common_menu_partners" qtlid="383512">Partners</translation>
    <translation id="common_menu_orders" qtlid="42394">Bestellingsstatus</translation>
-   <translation id="common_menu_support_assistance" qtlid="52699">Support</translation>
    <translation id="common_menu_v3" qtlid="135931">Oude klant-interface</translation>
    <translation id="common_menu_billing" qtlid="32950">Facturatie</translation>
    <translation id="common_menu_billing_history" qtlid="159540">Mijn facturen</translation>
@@ -226,6 +226,9 @@
    <translation id="common_menu_contacts" qtlid="70541">Mijn contacten</translation>
    <translation id="common_menu_list_ticket" qtlid="454039">Mijn support-verzoeken</translation>
    <translation id="common_menu_support_assistance" qtlid="52699">Support</translation>
+   <translation id="common_menu_support_assistance_expanded">Besoin d'aide</translation>
+   <translation id="common_menu_support_userAccount_1">Bonjour {{username}}</translation>
+   <translation id="common_menu_support_userAccount_2">votre compte</translation>
    <translation id="common_menu_support_all_guides" qtlid="260788">Alle handleidingen</translation>
    <translation id="common_menu_support_help_center" qtlid="516575">Hulpcentrum</translation>
    <translation id="common_menu_support_new_ticket" qtlid="260801">Maak een aanvraag ter assistentie aan</translation>

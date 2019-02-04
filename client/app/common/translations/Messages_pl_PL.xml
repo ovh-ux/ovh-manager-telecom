@@ -50,6 +50,7 @@
    <translation id="common_field_error_pattern" qtlid="472385">Użyj poprawnego formatu.</translation>
 
    <translation id="common_navbar_notification_title" qtlid="33250">Powiadomienia</translation>
+   <translation id="common_navbar_notification_title_expanded">Vos notifications</translation>
    <translation id="common_navbar_notification_see_all" qtlid="401914">Wyświetl wszystkie powiadomienia</translation>
    <translation id="common_navbar_notification_error_in_notification" qtlid="492055">Wystąpił nieoczekiwany błąd.</translation>
    <translation id="common_navbar_notification_error_in_notification_description" qtlid="492068">Nie można uruchomić menu.</translation>
@@ -199,7 +200,6 @@
 <translation id="common_menu_portal" translate="none">MyOVH</translation>
    <translation id="common_menu_partners" qtlid="383512">Partnerzy</translation>
    <translation id="common_menu_orders" qtlid="42394">Informacje o zamówieniu</translation>
-   <translation id="common_menu_support_assistance" qtlid="52699">Pomoc</translation>
    <translation id="common_menu_v3" qtlid="135931">Poprzednia wersja interfejsu</translation>
    <translation id="common_menu_billing" qtlid="32950">Płatności</translation>
    <translation id="common_menu_billing_history" qtlid="159540">Faktury</translation>
@@ -226,6 +226,9 @@
    <translation id="common_menu_contacts" qtlid="70541">Moje kontakty</translation>
    <translation id="common_menu_list_ticket" qtlid="454039">Moje zgłoszenia wysłane do pomocy technicznej</translation>
    <translation id="common_menu_support_assistance" qtlid="52699">Pomoc</translation>
+   <translation id="common_menu_support_assistance_expanded">Besoin d'aide</translation>
+   <translation id="common_menu_support_userAccount_1">Bonjour {{username}}</translation>
+   <translation id="common_menu_support_userAccount_2">votre compte</translation>
    <translation id="common_menu_support_all_guides" qtlid="260788">Wszystkie przewodniki</translation>
    <translation id="common_menu_support_help_center" qtlid="516575">Centrum pomocy</translation>
    <translation id="common_menu_support_new_ticket" qtlid="260801">Otwórz zgłoszenie</translation>
