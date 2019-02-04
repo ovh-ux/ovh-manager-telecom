@@ -1,3 +1,28 @@
+# [10.20.0](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.19.1...v10.20.0) (2019-02-04)
+
+
+### Bug Fixes
+
+* **i18n:** retrieve translations ([fcfe9a4](https://github.com/ovh-ux/ovh-manager-telecom/commit/fcfe9a4))
+* **i18n:** retrieve translations ([4530ba0](https://github.com/ovh-ux/ovh-manager-telecom/commit/4530ba0))
+* **i18n:** submit translations ([6459c96](https://github.com/ovh-ux/ovh-manager-telecom/commit/6459c96))
+* **i18n:** submit translations ([91c4df3](https://github.com/ovh-ux/ovh-manager-telecom/commit/91c4df3))
+* **navbar:** revamp style and texts ([#1214](https://github.com/ovh-ux/ovh-manager-telecom/issues/1214)) ([3d030b5](https://github.com/ovh-ux/ovh-manager-telecom/commit/3d030b5))
+* **pack:** remove unnecessary toast error message of pack informations ([#1278](https://github.com/ovh-ux/ovh-manager-telecom/issues/1278)) ([5deca4a](https://github.com/ovh-ux/ovh-manager-telecom/commit/5deca4a))
+* **pack.move:** avoid portability if partial unbundling ([#1275](https://github.com/ovh-ux/ovh-manager-telecom/issues/1275)) ([47292bf](https://github.com/ovh-ux/ovh-manager-telecom/commit/47292bf))
+* **pack.xdsl:** add upgrade offer status to display modem tab ([#1274](https://github.com/ovh-ux/ovh-manager-telecom/issues/1274)) ([5ac9c85](https://github.com/ovh-ux/ovh-manager-telecom/commit/5ac9c85))
+* **telephony.alias:** replace validate buttons by a footer bar ([#1277](https://github.com/ovh-ux/ovh-manager-telecom/issues/1277)) ([2e63ab4](https://github.com/ovh-ux/ovh-manager-telecom/commit/2e63ab4))
+* **telephony.timecondition:** set the right modal title ([#1272](https://github.com/ovh-ux/ovh-manager-telecom/issues/1272)) ([208fbe1](https://github.com/ovh-ux/ovh-manager-telecom/commit/208fbe1))
+
+
+### Features
+
+* **pack.xdsl.modem:** add allow services change modem config ([#1253](https://github.com/ovh-ux/ovh-manager-telecom/issues/1253)) ([1544481](https://github.com/ovh-ux/ovh-manager-telecom/commit/1544481))
+* **pack.xdsl.modem.router.dhcp:** add checks for denied dns ips ([#1264](https://github.com/ovh-ux/ovh-manager-telecom/issues/1264)) ([637c3d2](https://github.com/ovh-ux/ovh-manager-telecom/commit/637c3d2))
+* **telephony.order.alias:** add order for redirections sda ([#1240](https://github.com/ovh-ux/ovh-manager-telecom/issues/1240)) ([0e5b499](https://github.com/ovh-ux/ovh-manager-telecom/commit/0e5b499))
+
+
+
 ## [10.19.1](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.19.0...v10.19.1) (2019-01-28)
 
 
