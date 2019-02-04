@@ -313,7 +313,11 @@ angular.module('managerApp').controller('PackMoveCtrl', function (
    * @returns {boolean}
    */
   this.canKeepLineNumber = function () {
-    return this.offer.selected.portability.eligible && this.offer.selected.unbundling !== 'partial';
+    const canKeep = this.offer.selected.portability.eligible && this.offer.selected.unbundling !== 'partial';
+    if (!canKeep) {
+      self.form.futureLandline.keepLineNumber = false;
+    }
+    return canKeep;
   };
 
   /**
