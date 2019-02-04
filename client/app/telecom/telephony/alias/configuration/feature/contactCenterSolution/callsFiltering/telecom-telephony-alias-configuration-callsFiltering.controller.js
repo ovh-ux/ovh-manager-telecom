@@ -58,6 +58,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationCalls
         this.copyNumber = angular.copy(ccsNumber);
         this.screenLists = this.formatScreenLists(screenLists);
         this.screenListsStatus = screenListsStatus.status;
+        this.copyScreenListsStatus = angular.copy(screenListsStatus.status);
       })
       .catch((error) => {
         this.TucToast.error(
@@ -110,6 +111,10 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationCalls
 
   canUpdateAnonymousRejection() {
     return !angular.equals(this.number, this.copyNumber);
+  }
+
+  canUpdateFilteringStatus() {
+    return !angular.equals(this.screenListsStatus, this.copyScreenListsStatus);
   }
 
   canUpdateSettings() {
