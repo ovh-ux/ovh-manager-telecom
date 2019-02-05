@@ -1,3 +1,12 @@
+## [10.20.1](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.20.0...v10.20.1) (2019-02-05)
+
+
+### Bug Fixes
+
+* **pack.move:** update from selected/unselected partial unbundling ([#1286](https://github.com/ovh-ux/ovh-manager-telecom/issues/1286)) ([2f95f2c](https://github.com/ovh-ux/ovh-manager-telecom/commit/2f95f2c))
+
+
+
 # [10.20.0](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.19.1...v10.20.0) (2019-02-04)
 
 
