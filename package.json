@@ -41,7 +41,6 @@
     "@bower_components/crypto": "anodynos/node2web_crypto#3.46.1",
     "@bower_components/international-phone-number": "mareczek/international-phone-number#^0.0.16",
     "@bower_components/matchmedia": "paulirish/matchMedia.js#~0.2.0",
-    "@ovh-ux/angular-uirouter-title": "^1.0.4",
     "@ovh-ux/manager-core": "^2.0.0",
     "@ovh-ux/manager-freefax": "^2.0.0",
     "@ovh-ux/manager-overthebox": "^2.0.0",

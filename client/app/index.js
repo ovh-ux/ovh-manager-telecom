@@ -88,7 +88,6 @@ import 'ovh-angular-ui-confirm-modal';
 import 'ovh-ng-input-password';
 import 'ovh-ui-angular';
 import 'angular-translate-loader-pluggable';
-import '@ovh-ux/ng-uirouter-title';
 import '@ovh-ux/manager-telecom-styles';
 /* eslint-enable */
 
