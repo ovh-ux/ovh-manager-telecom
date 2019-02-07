@@ -345,7 +345,4 @@ angular.module('managerApp').constant('LANGUAGES', {
     },
     fax: 'https://www.ovhtelecom.fr/fax/',
     overTheBox: '#/overTheBox/order',
-  })
-  .constant('REDIRECT_URLS', {
-    listTicket: 'https://www.ovh.com/manager/dedicated/index.html#/ticket',
   });
