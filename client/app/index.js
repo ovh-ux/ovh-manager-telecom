@@ -74,7 +74,6 @@ import 'script-loader!leaflet/dist/leaflet-src.js';
 import 'script-loader!@bower_components/angular-leaflet-directive/dist/angular-leaflet-directive.js';
 import 'ovh-angular-mondial-relay';
 import 'ovh-jquery-ui-draggable-ng';
-import 'ovh-angular-otrs';
 import 'ovh-angular-pagination-front';
 import 'ovh-angular-q-allsettled';
 import 'ovh-angular-responsive-popover';

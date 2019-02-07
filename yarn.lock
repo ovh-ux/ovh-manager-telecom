@@ -9154,11 +9154,6 @@ ovh-angular-mondial-relay@^4.0.0:
   resolved "https://registry.yarnpkg.com/ovh-angular-mondial-relay/-/ovh-angular-mondial-relay-4.1.1.tgz#80c7c423e3e87107ef84ab9b1be6176254db3711"
   integrity sha512-5DZ1geMDnXnk0qcRReqzOpZ3w6HpFUbEEP/0zjtNHJ1FEdRbxU63TGtKIw8AY06vGZWJLfusSI74UOSvSKahtg==
 
-ovh-angular-otrs@^6.3.0:
-  version "6.3.0"
-  resolved "https://registry.yarnpkg.com/ovh-angular-otrs/-/ovh-angular-otrs-6.3.0.tgz#3ad3c9626be1917b5f0f557375de3757ad9b08ba"
-  integrity sha512-sXxQUlsC0ucl9UVcnSB9ZQsqTnKmW/zQZM+VH0gNpnJo9v3Klk4lHN3n0Wnd62Ic8Ke3Vjgk74Jk2THjQOHfcg==
-
 ovh-angular-pagination-front@^6.0.0:
   version "6.0.0"
   resolved "https://registry.yarnpkg.com/ovh-angular-pagination-front/-/ovh-angular-pagination-front-6.0.0.tgz#ac310848bddc1e0fea81b01cab0c0159a9ca128b"
