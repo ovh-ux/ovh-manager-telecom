@@ -9125,10 +9125,10 @@ ovh-angular-input-number-spinner@^2.1.0:
   resolved "https://registry.yarnpkg.com/ovh-angular-input-number-spinner/-/ovh-angular-input-number-spinner-2.1.1.tgz#5d4c1f98e006d1592713eb4d1385092d63050951"
   integrity sha1-XUwfmOAG0VknE+tNE4UJLWMFCVE=
 
-ovh-angular-line-diagnostics@^2.1.1:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/ovh-angular-line-diagnostics/-/ovh-angular-line-diagnostics-2.1.1.tgz#205cef5561c71475a43f4a44e256e5f79a0397f3"
-  integrity sha512-PynXgUzeaKsYa/3/n0Wztz4q2SrT1pt0ADaj44rxWTRzDOS0LrbHbA/sxpg/YiLN3h3ccgiiAGiT4ePJLRGNoQ==
+ovh-angular-line-diagnostics@^2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/ovh-angular-line-diagnostics/-/ovh-angular-line-diagnostics-2.1.2.tgz#b762a9545d3d565fb597cff8aa97b56583d0c924"
+  integrity sha512-QVoAHxqbgze2mBKuumSM6gW0ozu7edun+cL3cU0MetROtjWsnN3obpw4sSX72Q161us4vawkXRiQja56gjclSA==
 
 ovh-angular-mondial-relay@^4.0.0:
   version "4.1.1"
@@ -9181,11 +9181,6 @@ ovh-angular-timeline@^1.5.2:
   integrity sha1-k0DUvxvp4yc42Hwu/EDecIgkHZE=
   dependencies:
     angular "^1.3.15"
-
-ovh-angular-toaster@^0.8.0:
-  version "0.8.0"
-  resolved "https://registry.yarnpkg.com/ovh-angular-toaster/-/ovh-angular-toaster-0.8.0.tgz#7073201379ea196c721d583421c0cef1d04bdbdb"
-  integrity sha1-cHMgE3nqGWxyHVg0IcDO8dBL29s=
 
 ovh-angular-ui-confirm-modal@^1.0.2:
   version "1.0.2"

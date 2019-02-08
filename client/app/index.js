@@ -68,7 +68,6 @@ import '@ovh-ux/ng-ovh-contracts';
 import 'ovh-angular-input-number-spinner';
 import 'script-loader!urijs/src/URI.min.js';
 import 'script-loader!urijs/src/URITemplate.js';
-import 'ovh-angular-toaster';
 import 'ovh-angular-line-diagnostics';
 import 'script-loader!leaflet/dist/leaflet-src.js';
 import 'script-loader!@bower_components/angular-leaflet-directive/dist/angular-leaflet-directive.js';
