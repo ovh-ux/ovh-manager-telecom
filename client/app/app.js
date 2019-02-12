@@ -1,10 +1,10 @@
 import ngOvhHttp from '@ovh-ux/ng-ovh-http';
 import ngOvhSsoAuth from '@ovh-ux/ng-ovh-sso-auth';
 import ngOvhSsoAuthModalPlugin from '@ovh-ux/ng-ovh-sso-auth-modal-plugin';
+import ngOvhTelecomUniverseComponents from '@ovh-ux/ng-ovh-telecom-universe-components';
 import ngTailLogs from '@ovh-ux/ng-tail-logs';
+import ngTranslateAsyncLoader from '@ovh-ux/ng-translate-async-loader';
 import ngUirouterTitle from '@ovh-ux/ng-uirouter-title';
-import translateAsyncLoader from '@ovh-ux/translate-async-loader';
-import telecomUniverseComponents from '@ovh-ux/telecom-universe-components';
 
 import managerCore from '@ovh-ux/manager-core';
 import managerDashboard from '@ovh-ux/manager-telecom-dashboard';
@@ -40,7 +40,9 @@ angular.module('managerApp', [
   ngOvhHttp,
   ngOvhSsoAuth,
   ngOvhSsoAuthModalPlugin,
+  ngOvhTelecomUniverseComponents,
   ngTailLogs,
+  ngTranslateAsyncLoader,
   ngUirouterTitle,
   'ovh-angular-actions-menu',
   'ovh-angular-apiv7',
@@ -49,7 +51,6 @@ angular.module('managerApp', [
   'ovh-angular-input-number-spinner',
   'ovh-angular-line-diagnostics',
   'ovh-angular-mondial-relay',
-  'ovh-angular-otrs',
   'ovh-angular-pagination-front',
   'ovh-angular-q-allSettled',
   'ovh-angular-responsive-tabs',
@@ -65,8 +66,6 @@ angular.module('managerApp', [
   'oui',
   'pascalprecht.translate',
   'smoothScroll',
-  telecomUniverseComponents,
-  translateAsyncLoader,
   'tmh.dynamicLocale',
   'ui.bootstrap',
   'ui.select',
@@ -188,10 +187,6 @@ angular.module('managerApp', [
       // Set focus to target
       $document[0].getElementById(id).focus();
     });
-  })
-
-  .config((OtrsPopupProvider, REDIRECT_URLS) => {
-    OtrsPopupProvider.setBaseUrlTickets(_.get(REDIRECT_URLS, 'listTicket', null));
   })
 
   .config(($logProvider) => {

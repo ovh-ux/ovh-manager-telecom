@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyServiceAssistSupportCtrl', function ($stateParams, TelephonyMediator, OtrsPopupService, URLS) {
+angular.module('managerApp').controller('TelecomTelephonyServiceAssistSupportCtrl', function ($stateParams, TelephonyMediator, REDIRECT_URLS, URLS) {
   const self = this;
 
   self.loading = {
@@ -7,20 +7,7 @@ angular.module('managerApp').controller('TelecomTelephonyServiceAssistSupportCtr
 
   self.service = null;
   self.guideUrl = URLS.guides.telephony;
-
-  /*= ==============================
-    =            ACTIONS            =
-    =============================== */
-
-  self.openSupportTicket = function () {
-    if (!OtrsPopupService.isLoaded()) {
-      OtrsPopupService.init();
-    } else {
-      OtrsPopupService.toggle();
-    }
-  };
-
-  /* -----  End of ACTIONS  ------*/
+  self.listTicketUrl = _.get(REDIRECT_URLS, 'listTicket');
 
   /*= =====================================
     =            INITIALIZATION            =

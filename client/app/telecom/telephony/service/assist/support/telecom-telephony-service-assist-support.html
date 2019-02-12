@@ -38,11 +38,10 @@
                         <ul>
                             <li data-translate="telephony_line_assist_support_contact_by_phone"></li>
                             <li>
-                                <button type="button"
-                                        class="btn btn-link"
-                                        data-translate="telephony_line_assist_support_contact_ticket"
-                                        data-ng-click="SupportCtrl.openSupportTicket()">
-                                </button>
+                                <a
+                                    data-ng-href="{{:: SupportCtrl.listTicketUrl }}"
+                                    data-translate="telephony_line_assist_support_contact_ticket">
+                                </a>
                             </li>
                         </ul>
                     </section>

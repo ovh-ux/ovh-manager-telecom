@@ -68,13 +68,11 @@ import '@ovh-ux/ng-ovh-contracts';
 import 'ovh-angular-input-number-spinner';
 import 'script-loader!urijs/src/URI.min.js';
 import 'script-loader!urijs/src/URITemplate.js';
-import 'ovh-angular-toaster';
 import 'ovh-angular-line-diagnostics';
 import 'script-loader!leaflet/dist/leaflet-src.js';
 import 'script-loader!@bower_components/angular-leaflet-directive/dist/angular-leaflet-directive.js';
 import 'ovh-angular-mondial-relay';
 import 'ovh-jquery-ui-draggable-ng';
-import 'ovh-angular-otrs';
 import 'ovh-angular-pagination-front';
 import 'ovh-angular-q-allsettled';
 import 'ovh-angular-responsive-popover';
@@ -89,7 +87,6 @@ import 'ovh-angular-ui-confirm-modal';
 import 'ovh-ng-input-password';
 import 'ovh-ui-angular';
 import 'angular-translate-loader-pluggable';
-import '@ovh-ux/ng-uirouter-title';
 import '@ovh-ux/manager-telecom-styles';
 /* eslint-enable */
 

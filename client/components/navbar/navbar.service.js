@@ -2,7 +2,7 @@ class ManagerNavbarService {
   constructor(
     $q, $translate, $translatePartialLoader, $rootScope,
     LANGUAGES, MANAGER_URLS, REDIRECT_URLS, TARGET, URLS,
-    atInternet, OvhApiMe, OtrsPopupService, ssoAuthentication, TucPackMediator, tucTelecomVoip,
+    atInternet, OvhApiMe, ssoAuthentication, TucPackMediator, tucTelecomVoip,
     tucVoipService, TucSmsMediator, OvhApiFreeFax, OvhApiOverTheBox, TelecomMediator,
     NavbarBuilder, NavbarNotificationService, asyncLoader,
   ) {
@@ -16,7 +16,6 @@ class ManagerNavbarService {
     this.URLS = URLS;
     this.atInternet = atInternet;
     this.ovhApiMe = OvhApiMe;
-    this.otrsPopupService = OtrsPopupService;
     this.ssoAuthentication = ssoAuthentication;
     this.packMediator = TucPackMediator;
     this.tucTelecomVoip = tucTelecomVoip;
@@ -355,26 +354,6 @@ class ManagerNavbarService {
           type: 'action',
         }),
         mustBeKept: !mustDisplayNewMenu && _(currentSubsidiaryURLs).has('guides.home'),
-      },
-      {
-        title: this.$translate.instant('common_menu_support_new_ticket'),
-        click: (callback) => {
-          if (!this.otrsPopupService.isLoaded()) {
-            this.otrsPopupService.init();
-          } else {
-            this.otrsPopupService.toggle();
-          }
-
-          this.atInternet.trackClick({
-            name: 'assistance::create_assistance_request',
-            type: 'action',
-          });
-
-          if (_.isFunction(callback)) {
-            callback();
-          }
-        },
-        mustBeKept: !mustDisplayNewMenu,
       },
       {
         title: this.$translate.instant('common_menu_support_list_ticket'),
