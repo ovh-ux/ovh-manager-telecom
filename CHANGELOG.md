@@ -1,3 +1,13 @@
+## [10.20.2](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.20.1...v10.20.2) (2019-02-12)
+
+
+### Bug Fixes
+
+* **telephony.fax:** use oui-datagrid search input ([#1280](https://github.com/ovh-ux/ovh-manager-telecom/issues/1280)) ([ac5b631](https://github.com/ovh-ux/ovh-manager-telecom/commit/ac5b631))
+* **telephony.group.number:** display labels in phase with feature type ([#1290](https://github.com/ovh-ux/ovh-manager-telecom/issues/1290)) ([a351a71](https://github.com/ovh-ux/ovh-manager-telecom/commit/a351a71))
+
+
+
 ## [10.20.1](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.20.0...v10.20.1) (2019-02-05)
 
 
