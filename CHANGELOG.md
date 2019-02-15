@@ -1,3 +1,12 @@
+## [10.20.3](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.20.2...v10.20.3) (2019-02-15)
+
+
+### Bug Fixes
+
+* **deps:** upgrade ng-ovh-telecom-universe-components to 2.0.2 ([#1296](https://github.com/ovh-ux/ovh-manager-telecom/issues/1296)) ([9111944](https://github.com/ovh-ux/ovh-manager-telecom/commit/9111944))
+
+
+
 ## [10.20.2](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.20.1...v10.20.2) (2019-02-12)
 
 
