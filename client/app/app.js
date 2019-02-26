@@ -1,7 +1,9 @@
+import ngOvhApiv7 from '@ovh-ux/ng-ovh-apiv7';
 import ngOvhHttp from '@ovh-ux/ng-ovh-http';
 import ngOvhSsoAuth from '@ovh-ux/ng-ovh-sso-auth';
 import ngOvhSsoAuthModalPlugin from '@ovh-ux/ng-ovh-sso-auth-modal-plugin';
 import ngOvhTelecomUniverseComponents from '@ovh-ux/ng-ovh-telecom-universe-components';
+import ngPaginationFront from '@ovh-ux/ng-pagination-front';
 import ngTailLogs from '@ovh-ux/ng-tail-logs';
 import ngTranslateAsyncLoader from '@ovh-ux/ng-translate-async-loader';
 import ngUirouterTitle from '@ovh-ux/ng-uirouter-title';
@@ -37,21 +39,21 @@ angular.module('managerApp', [
   'ngPassword',
   'ngResource',
   'ngSanitize',
+  ngOvhApiv7,
   ngOvhHttp,
   ngOvhSsoAuth,
   ngOvhSsoAuthModalPlugin,
   ngOvhTelecomUniverseComponents,
+  ngPaginationFront,
   ngTailLogs,
   ngTranslateAsyncLoader,
   ngUirouterTitle,
   'ovh-angular-actions-menu',
-  'ovh-angular-apiv7',
   'ovh-angular-checkbox-table',
   'ovh-angular-contact',
   'ovh-angular-input-number-spinner',
   'ovh-angular-line-diagnostics',
   'ovh-angular-mondial-relay',
-  'ovh-angular-pagination-front',
   'ovh-angular-q-allSettled',
   'ovh-angular-responsive-tabs',
   'ovh-angular-sidebar-menu',
