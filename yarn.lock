@@ -1041,10 +1041,10 @@
   resolved "https://registry.yarnpkg.com/@ovh-ux/ng-ovh-sso-auth/-/ng-ovh-sso-auth-4.0.0.tgz#f6c1027f5ef827d464ff3b0e702b1692ee279703"
   integrity sha512-exPPBbg2WTXH4/LHu3dsqfHq073+NhBzB69WB97Dd75FKust3h/SUjyQyuFOn7h4Z0OI4/8db+6qpwjEIAAz6Q==
 
-"@ovh-ux/ng-ovh-telecom-universe-components@^2.0.2":
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/@ovh-ux/ng-ovh-telecom-universe-components/-/ng-ovh-telecom-universe-components-2.0.2.tgz#cdf10f1b52202ef9aaad3c680fabe2f29a6fd164"
-  integrity sha512-JNVshcYpYQRtGPLx2TQsHmmoez7ukSzs3QUVk4ItVpDVsJZAQHKaR5mTyE6FwMI3MuVS+86WdPlqHTHcgZfMZQ==
+"@ovh-ux/ng-ovh-telecom-universe-components@^2.0.3":
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/@ovh-ux/ng-ovh-telecom-universe-components/-/ng-ovh-telecom-universe-components-2.0.3.tgz#1adc34d7c67b942de7fc1ddbbb50461139b6e999"
+  integrity sha512-rwhdTyyGjTkT3bwxGEqknKYX/sxW4cF+kpRGlR3US0kY1/eB9qEeAwktmaejbl/dAH8MC4zy5qy2G/ltqeNv4A==
   dependencies:
     bootstrap "^3.3.7"
     ovh-ui-kit "^2.22.0"
