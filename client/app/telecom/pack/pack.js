@@ -50,6 +50,7 @@ angular.module('managerApp').config(($stateProvider) => {
       './common',
       '../task',
       '../pack/slots/emailPro',
+      '../pack/slots/task',
     ],
   });
 });
