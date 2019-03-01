@@ -1,3 +1,12 @@
+## [10.20.4](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.20.3...v10.20.4) (2019-03-01)
+
+
+### Bug Fixes
+
+* **telecom.pack.slots.task:** add missing translations ([#1306](https://github.com/ovh-ux/ovh-manager-telecom/issues/1306)) ([12bbb10](https://github.com/ovh-ux/ovh-manager-telecom/commit/12bbb10))
+
+
+
 ## [10.20.3](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.20.2...v10.20.3) (2019-02-15)
 
 
