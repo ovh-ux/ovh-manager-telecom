@@ -1,3 +1,17 @@
+## [10.20.5](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.20.4...v10.20.5) (2019-03-04)
+
+
+### Bug Fixes
+
+* **deps:** upgrade ng-ovh-apiv7 to v2.0.0 ([eb1040d](https://github.com/ovh-ux/ovh-manager-telecom/commit/eb1040d))
+* **i18n:** retrieve translations ([c01f342](https://github.com/ovh-ux/ovh-manager-telecom/commit/c01f342))
+* **i18n:** submit translations ([44e6f7e](https://github.com/ovh-ux/ovh-manager-telecom/commit/44e6f7e))
+* **pack.xdsl.resiliation:** use correct component binding ([#1304](https://github.com/ovh-ux/ovh-manager-telecom/issues/1304)) ([78e5e82](https://github.com/ovh-ux/ovh-manager-telecom/commit/78e5e82))
+* **telephony:** remove duplicate icon and add missing translation ([#1302](https://github.com/ovh-ux/ovh-manager-telecom/issues/1302)) ([dd77dd6](https://github.com/ovh-ux/ovh-manager-telecom/commit/dd77dd6))
+* **telephony.alias.configuration:** fix call forwarding option ([4546b51](https://github.com/ovh-ux/ovh-manager-telecom/commit/4546b51))
+
+
+
 ## [10.20.4](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.20.3...v10.20.4) (2019-03-01)
 
 
