@@ -30,7 +30,7 @@
    <translation id="telephony_alias_portability_order_contact_social_reason_individual" qtlid="33850">Particular o autónomo</translation>
    <translation id="telephony_alias_portability_order_contact_social_reason_corporation" qtlid="59795">Profesional</translation>
    <translation id="telephony_alias_portability_order_contact_firstname" qtlid="23323">Nombre</translation>
-   <translation id="telephony_alias_portability_order_contact_lastname" qtlid="3818">Nombre</translation>
+   <translation id="telephony_alias_portability_order_contact_lastname" qtlid="3818">Apellidos</translation>
    <translation id="telephony_alias_portability_order_contact_corporation_name" qtlid="276844">Nombre de la empresa </translation>
    <translation id="telephony_alias_portability_order_contact_gsm" qtlid="152440">Teléfono móvil</translation>
    <translation id="telephony_alias_portability_order_contact_gsm_help" qtlid="460847">Ce numéro ne sera pas utilisé à des fins commerciales, mais uniquement pour le suivi de votre portabilité</translation>

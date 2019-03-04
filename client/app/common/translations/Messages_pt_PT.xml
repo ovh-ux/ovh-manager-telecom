@@ -3,7 +3,7 @@
    <translation id="status_doing" qtlid="26383">Em curso</translation>
    <translation id="status_done" qtlid="8662">Concluída </translation>
    <translation id="status_error" qtlid="45508">Com erro</translation>
-   <translation id="status_todo" qtlid="304459">À venir</translation>
+   <translation id="status_todo" qtlid="304459">Em breve</translation>
    <translation id="status_active" qtlid="55133">Ativado</translation>
    <translation id="status_close" qtlid="66236">Encerrado</translation>
    <translation id="status_deleting" qtlid="134514">Eliminado</translation>
@@ -50,7 +50,7 @@
    <translation id="common_field_error_pattern" qtlid="472385">Introduza um formato válido.</translation>
 
    <translation id="common_navbar_notification_title" qtlid="33250">Notificações via e-mail</translation>
-   <translation id="common_navbar_notification_title_expanded">Vos notifications</translation>
+   <translation id="common_navbar_notification_title_expanded" qtlid="519493">As suas notificações</translation>
    <translation id="common_navbar_notification_see_all" qtlid="401914">Consultar todas as notificações</translation>
    <translation id="common_navbar_notification_error_in_notification" qtlid="492055">Lamentamos, mas existe um problema!</translation>
    <translation id="common_navbar_notification_error_in_notification_description" qtlid="492068">Nós não podemos inicializar o menu.</translation>
@@ -59,7 +59,7 @@
    <translation id="common_navbar_notification_none" qtlid="492081">Está atualizado!</translation>
    <translation id="common_navbar_notification_none_description" qtlid="492094">Você não tem notificação.</translation>
 
-   <translation id="common_open_new_tab" qtlid="493971">Opens a new tab</translation>
+   <translation id="common_open_new_tab" qtlid="493971">Abrir uma nova janela</translation>
 
    <translation id="common_pagination_resultsperpage" qtlid="433384">Resultados por página</translation>
    <translation id="common_pagination_page" qtlid="433397">página</translation>
@@ -101,22 +101,22 @@
    <translation id="common_two_of_them" qtlid="510072">Les deux</translation>
 
    <translation id="an_error_occured" qtlid="148981">Ocorreu um erro.</translation>
-   <translation id="error_401" qtlid="304472">Accès non autorisé</translation>
-   <translation id="error_403" qtlid="304485">Opération interdite</translation>
-   <translation id="error_417" qtlid="304498">Comportement de la requête inattendu</translation>
-   <translation id="error_456" qtlid="304511">Erreur irrécupérable côté client.</translation>
+   <translation id="error_401" qtlid="304472">Acesso não autorizado</translation>
+   <translation id="error_403" qtlid="304485">Operação proibida</translation>
+   <translation id="error_417" qtlid="304498">Comportamento do pedido inesperado</translation>
+   <translation id="error_456" qtlid="304511">Erro irrecuperável lado cliente.</translation>
    <translation id="loading" qtlid="242769">Carregamento em curso</translation>
    <translation id="submit" qtlid="26047">Validar</translation>
    <translation id="apply" qtlid="41326">Aplicar</translation>
    <translation id="edit" qtlid="6766">Editar</translation>
    <translation id="modify" qtlid="37875">Alterar</translation>
    <translation id="common_add" qtlid="37923">Adicionar</translation>
-   <translation id="access" qtlid="304524">Accéder</translation>
-   <translation id="edit_name" qtlid="304537">Éditer {{name}}</translation>
+   <translation id="access" qtlid="304524">Aceder</translation>
+   <translation id="edit_name" qtlid="304537">Editar {{name}}</translation>
    <translation id="common_create" qtlid="39226">Criar</translation>
    <translation id="cancel" qtlid="37863">Anular</translation>
    <translation id="delete" qtlid="2414">Eliminar</translation>
-   <translation id="delete_name" qtlid="304550">Supprimer {{name}}</translation>
+   <translation id="delete_name" qtlid="304550">Eliminar {{name}}</translation>
    <translation id="ok" qtlid="224880">OK</translation>
    <translation id="more_info" qtlid="34102">Mais informações</translation>
    <translation id="configure" qtlid="4010">Configurar</translation>
@@ -135,7 +135,7 @@
    <translation id="see" qtlid="103930">Ver</translation>
    <translation id="common_zip_code" qtlid="30346">Código postal</translation>
    <translation id="back" qtlid="4118">Retroceder</translation>
-   <translation id="contract_agree" qtlid="304563">J'accepte les conditions.</translation>
+   <translation id="contract_agree" qtlid="304563">Aceito as condições.</translation>
    <translation id="contract_next" qtlid="17743">Seguinte</translation>
    <translation id="contract_previous" qtlid="17431">Anterior</translation>
    <translation id="contract_download" qtlid="250082">Abrir o contrato"{{id}}" na versão PDF</translation>
@@ -150,7 +150,7 @@
 
    <translation id="sidebar_menu" qtlid="304576">Menu</translation>
    <translation id="sidebar_placeholder" qtlid="122275">A procurar...</translation>
-   <translation id="sidebar_no_item_found" qtlid="304589">Aucun élément ne correspond à votre recherche.</translation>
+   <translation id="sidebar_no_item_found" qtlid="304589">Nenhum elemento corresponde à sua pesquisa.</translation>
 
 
    <translation id="browser_alert_not_supported" qtlid="405357">O seu browser não é compatível</translation>
@@ -159,11 +159,11 @@
    <translation id="browser_alert_close" qtlid="405396">Fechar este alerta</translation>
 
 <!-- xdsl/sidebar -->
-   <translation id="label-menu-item-ok" qtlid="304602">Cette ligne est active.</translation>
-   <translation id="label-menu-item-down" qtlid="304615">Problème sur la ligne.</translation>
+   <translation id="label-menu-item-ok" qtlid="304602">Esta linha está ativa.</translation>
+   <translation id="label-menu-item-down" qtlid="304615">Problema na linha.</translation>
 
 <!-- pack/sidebar -->
-   <translation id="pack-menu-item-ok" qtlid="304628">Toutes vos lignes xDSL sont actives.</translation>
+   <translation id="pack-menu-item-ok" qtlid="304628">Todas as linhas xDSL estão ativas.</translation>
    <translation id="pack-menu-item-warn" qtlid="304641">Une ou plusieurs de vos lignes xDSL ne sont pas actives.</translation>
    <translation id="pack-menu-item-down" qtlid="304654">Toutes vos lignes xDSL sont inactives.</translation>
    <translation id="service_features" qtlid="304667">Résumé de mes services</translation>
@@ -226,9 +226,9 @@
    <translation id="common_menu_contacts" qtlid="70541">Contactos (utilizadores)</translation>
    <translation id="common_menu_list_ticket" qtlid="454039">Os meus tickets</translation>
    <translation id="common_menu_support_assistance" qtlid="52699">Assistência</translation>
-   <translation id="common_menu_support_assistance_expanded">Besoin d'aide</translation>
-   <translation id="common_menu_support_userAccount_1">Bonjour {{username}}</translation>
-   <translation id="common_menu_support_userAccount_2">votre compte</translation>
+   <translation id="common_menu_support_assistance_expanded" qtlid="519506">Ajuda</translation>
+   <translation id="common_menu_support_userAccount_1" qtlid="519519">Olá, {{username}}</translation>
+   <translation id="common_menu_support_userAccount_2" qtlid="519532">a sua conta</translation>
    <translation id="common_menu_support_all_guides" qtlid="260788">Manuais OVH</translation>
    <translation id="common_menu_support_help_center" qtlid="516575">Centro de ajuda</translation>
    <translation id="common_menu_support_new_ticket" qtlid="260801">Criar um ticket</translation>

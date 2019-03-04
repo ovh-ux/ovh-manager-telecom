@@ -31,7 +31,7 @@
    <translation id="telephony_order_confirm" qtlid="333776">Contratar ({{total}} IVA incl.)</translation>
 
    <translation id="telephony_order_identity_first_name" qtlid="23323">Nombre</translation>
-   <translation id="telephony_order_identity_name" qtlid="3818">Nombre</translation>
+   <translation id="telephony_order_identity_name" qtlid="3818">Apellidos</translation>
    <translation id="telephony_order_identity_email" qtlid="393022">Correo electrónico</translation>
    <translation id="telephony_order_identity_phone" qtlid="34174">Teléfono</translation>
 

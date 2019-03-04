@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <translations>
    <translation id="xdsl_tasks_list" qtlid="289575">Lista de tareas</translation>
-   <translation id="xdsl_tasks_name" qtlid="3818">Nombre</translation>
+   <translation id="xdsl_tasks_name" qtlid="3818">Apellidos</translation>
    <translation id="xdsl_tasks_id" qtlid="8194">ID</translation>
    <translation id="xdsl_tasks_status" qtlid="26443">Estado</translation>
    <translation id="xdsl_tasks_status_todo" qtlid="134605">Pendiente</translation>
