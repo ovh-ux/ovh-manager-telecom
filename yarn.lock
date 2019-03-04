@@ -899,18 +899,18 @@
     rollup-pluginutils "^2.3.3"
     slash "^2.0.0"
 
-"@ovh-ux/manager-core@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@ovh-ux/manager-core/-/manager-core-2.0.0.tgz#24914c831c87d5241bca49cc418aa4dfcdee040c"
-  integrity sha512-cor3MH5jX+vvR+rZcsGmBhTNv4wfEcirHft3MwoghXSp6cpHmON5Ujcm1DSwlyRyaeSAY6fzyS5s6zu0PXyHKQ==
+"@ovh-ux/manager-core@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@ovh-ux/manager-core/-/manager-core-3.0.0.tgz#225056a2bfa9614b314d4a6a6da910dd11fdc1d9"
+  integrity sha512-BKnqF8aNpZENwXn4lAvrSIq24ky6LfNFaEg/vhayCQezrq3DSx7JXZXbzf1r97LmjOZOaXM+vmNZlQTJ6sKZ2g==
   dependencies:
     "@ovh-ux/ng-translate-async-loader" "^2.0.0"
     lodash "^4.17.11"
 
-"@ovh-ux/manager-freefax@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@ovh-ux/manager-freefax/-/manager-freefax-2.0.0.tgz#232dc0e7d726bd6fc964e77b38c77663b30f96c8"
-  integrity sha512-M6d74CaH57EX2goKMZqStgDnk1OTZtosShrM7ift9m5VmZrH/i8bL05b1OFu1lCKuG3zKewkG+Sa86mkAViIAg==
+"@ovh-ux/manager-freefax@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@ovh-ux/manager-freefax/-/manager-freefax-3.0.0.tgz#2fa9b33a0df189456944282dcbdb798132259dc5"
+  integrity sha512-QPJGPNcFwQrmHgMclOLKyBv1oO4NprALZ+h4J9RqiIrfGLuKkcQLQsojwFGtEFvgTJjScOdiU6vFNhCAOlNAUQ==
   dependencies:
     bootstrap4 twbs/bootstrap#v4.0.0
     lodash "^4.17.11"
@@ -923,10 +923,10 @@
     lodash "4.17.11"
     moment "^2.22.2"
 
-"@ovh-ux/manager-sms@^2.0.1":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@ovh-ux/manager-sms/-/manager-sms-2.0.1.tgz#aa8dc70359b23e13399dfc8166b1e8ce91161251"
-  integrity sha512-IfTMYU/blxBbJPE7imybNTAFZfp5yJhOh4OK6GP++VPPXAP2n/MGjjoM7toczAbAY/VEXruTTTI3MDsRh16/7w==
+"@ovh-ux/manager-sms@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@ovh-ux/manager-sms/-/manager-sms-3.0.0.tgz#c64c9ef6e32d9b569301ca110f4141087b8f3133"
+  integrity sha512-ty7TkqO1bPSk+pkgkB6nF1e6rUsnkl5jshpaudfuBB+8Rr4hezL3utueiUlTWFRqIHL5AHiTRgoc8vvfotEIWA==
   dependencies:
     bootstrap4 twbs/bootstrap#v4.0.0
     lodash "^4.17.11"
@@ -946,10 +946,10 @@
     ovh-ui-kit "^2.23.1"
     ovh-ui-kit-bs "^2.1.1"
 
-"@ovh-ux/manager-telecom-task@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@ovh-ux/manager-telecom-task/-/manager-telecom-task-1.0.0.tgz#43a4d7e1d1511288b3cf7bab5879d3424c039bb6"
-  integrity sha512-hvoWGgFM8aOEoGauxNrHEmDWIr21MV8cO6JxqjwsGxjPzSSyhrYUjnNSzCWlUa7Fhvc3Y04R96XpscmFFVYczA==
+"@ovh-ux/manager-telecom-task@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@ovh-ux/manager-telecom-task/-/manager-telecom-task-2.0.0.tgz#b04dd0099eba297a1e6be6bbb10c54bc2d2d683d"
+  integrity sha512-RsfuSWvHgnP0eFJ1g8wAT7OVxvyG9Sp8SvF0+gqpDSoONIZl9mLMBYPef03iyslIyLv6FY35b55Qe4EqVJo3Wg==
   dependencies:
     lodash "^4.17.11"
 
@@ -1007,6 +1007,13 @@
     request "^2.88.0"
     webpack-dev-server "^3.1.9"
 
+"@ovh-ux/ng-ovh-apiv7@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@ovh-ux/ng-ovh-apiv7/-/ng-ovh-apiv7-2.0.0.tgz#838e6c224bb37928de84b4a0eb8c0c8a6713f1d7"
+  integrity sha512-EnJEEmoNCTjnCv/501GDZjxYt17YgGbVBr6BfqF6kD4FSf+TQpsP2sOKEXDLIj0oJUYRhU4z5d97AjX9zFSrFg==
+  dependencies:
+    lodash "^4.17.11"
+
 "@ovh-ux/ng-ovh-contracts@^3.0.0-beta.3":
   version "3.0.0-beta.3"
   resolved "https://registry.yarnpkg.com/@ovh-ux/ng-ovh-contracts/-/ng-ovh-contracts-3.0.0-beta.3.tgz#1dcd3612160f4c5eebd31a4bc12a2c632b35618f"
@@ -1034,13 +1041,20 @@
   resolved "https://registry.yarnpkg.com/@ovh-ux/ng-ovh-sso-auth/-/ng-ovh-sso-auth-4.0.0.tgz#f6c1027f5ef827d464ff3b0e702b1692ee279703"
   integrity sha512-exPPBbg2WTXH4/LHu3dsqfHq073+NhBzB69WB97Dd75FKust3h/SUjyQyuFOn7h4Z0OI4/8db+6qpwjEIAAz6Q==
 
-"@ovh-ux/ng-ovh-telecom-universe-components@^2.0.2":
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/@ovh-ux/ng-ovh-telecom-universe-components/-/ng-ovh-telecom-universe-components-2.0.2.tgz#cdf10f1b52202ef9aaad3c680fabe2f29a6fd164"
-  integrity sha512-JNVshcYpYQRtGPLx2TQsHmmoez7ukSzs3QUVk4ItVpDVsJZAQHKaR5mTyE6FwMI3MuVS+86WdPlqHTHcgZfMZQ==
+"@ovh-ux/ng-ovh-telecom-universe-components@^2.0.4":
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/@ovh-ux/ng-ovh-telecom-universe-components/-/ng-ovh-telecom-universe-components-2.0.4.tgz#69ff89c7785d0f1eaefa24ddf23da210d3f8ca94"
+  integrity sha512-1Bn9PLnwmU17bZErTLD9K7UghhQ24pLxwtuK9NT4FZKYC2LwS+dBdZonnxmuIHCSLEezpIaqieWaU1TtYDnjRg==
   dependencies:
     bootstrap "^3.3.7"
     ovh-ui-kit "^2.22.0"
+
+"@ovh-ux/ng-pagination-front@^8.0.0-alpha.0":
+  version "8.0.0-alpha.0"
+  resolved "https://registry.yarnpkg.com/@ovh-ux/ng-pagination-front/-/ng-pagination-front-8.0.0-alpha.0.tgz#fd84086d04068734cebb2a3e216a8db9116a0d7b"
+  integrity sha512-dQyronfFuCQR/Cb02PGbFWXtTy55eqjMcBY8LlvsB1kmBVy7gmbcf2AgD3Kliuv4sr8T6al1i5e6WPh/xS88Ag==
+  dependencies:
+    lodash "^4.17.11"
 
 "@ovh-ux/ng-tail-logs@^2.0.0-beta.1":
   version "2.0.0-beta.1"
@@ -9082,11 +9096,6 @@ ovh-angular-actions-menu@^3.0.0:
   resolved "https://registry.yarnpkg.com/ovh-angular-actions-menu/-/ovh-angular-actions-menu-3.2.0.tgz#5e997696750fc601a169067e03d3f03d6e392952"
   integrity sha1-Xpl2lnUPxgGhaQZ+A9PwPW45KVI=
 
-ovh-angular-apiv7@^1.1.1:
-  version "1.2.8"
-  resolved "https://registry.yarnpkg.com/ovh-angular-apiv7/-/ovh-angular-apiv7-1.2.8.tgz#5ae631d70029b3313a3aa47fb1901b168693d5e9"
-  integrity sha1-WuYx1wApszE6OqR/sZAbFoaT1ek=
-
 ovh-angular-browser-alert@ovh-ux/ovh-angular-browser-alert#^1.0.0:
   version "1.0.0"
   resolved "https://codeload.github.com/ovh-ux/ovh-angular-browser-alert/tar.gz/8336865a63083e009ae66241b13fec92762c35d3"
@@ -9134,11 +9143,6 @@ ovh-angular-mondial-relay@^4.0.0:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/ovh-angular-mondial-relay/-/ovh-angular-mondial-relay-4.1.1.tgz#80c7c423e3e87107ef84ab9b1be6176254db3711"
   integrity sha512-5DZ1geMDnXnk0qcRReqzOpZ3w6HpFUbEEP/0zjtNHJ1FEdRbxU63TGtKIw8AY06vGZWJLfusSI74UOSvSKahtg==
-
-ovh-angular-pagination-front@^6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/ovh-angular-pagination-front/-/ovh-angular-pagination-front-6.0.0.tgz#ac310848bddc1e0fea81b01cab0c0159a9ca128b"
-  integrity sha1-rDEISL3cHg/qgbAcqwwBWanKEos=
 
 ovh-angular-proxy-request@^0.1.0:
   version "0.1.0"
@@ -9192,10 +9196,10 @@ ovh-angular-user-pref@^0.3.1:
   resolved "https://registry.yarnpkg.com/ovh-angular-user-pref/-/ovh-angular-user-pref-0.3.1.tgz#07f5792513651f3262ae4879c174423649b08307"
   integrity sha1-B/V5JRNlHzJirkh5wXRCNkmwgwc=
 
-ovh-api-services@^3.13.0:
-  version "3.31.0"
-  resolved "https://registry.yarnpkg.com/ovh-api-services/-/ovh-api-services-3.31.0.tgz#b4b50dd8816b36b9266c6362c922b6c3fdda8996"
-  integrity sha512-ngb65X6BEBvR+dFYKdu8wgEKqKwFY1WFQGiJQoavQ1H0xEilAiURwkVXCpTUVufTA17fqdM1Ob4IY8WraQ6eAQ==
+ovh-api-services@^4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/ovh-api-services/-/ovh-api-services-4.2.0.tgz#6b85f990aefae1fbf5233718f856aa051dab98c5"
+  integrity sha512-IippIziLZplEJe6kX8SCZaaR7lLYm+iFbleL/G8x7zMkQeHDIwmKAiHWgAubXXoMyj/GgigBGlrYHiK8eNRAqg==
   dependencies:
     lodash "^3.10.1"
 

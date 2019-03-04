@@ -12,29 +12,28 @@
    <translation id="telecom_task_todo" qtlid="305356">Scheduled</translation>
    <translation id="telecom_task_all" qtlid="290472">All </translation>
    <translation id="telecom_task_status" qtlid="26443">Status</translation>
-   <translation id="telecom_task_function" qtlid="56105">Action</translation>
    <translation id="telecom_task_pack" qtlid="82929">Pack</translation>
    <translation id="telecom_task_filter_status_placeholder" qtlid="305369">Filter by status</translation>
-   <translation id="telecom_task_status" qtlid="26443">Status</translation>
-   <translation id="telecom_task_function" qtlid="56105">Action</translation>
    <translation id="telecom_task_filter_none" qtlid="305382">All operations </translation>
    <translation id="telecom_task_none" qtlid="305395">No task found </translation>
    <translation id="telecom_task_page" qtlid="305408">Page</translation>
    <translation id="telecom_task_page_amount" qtlid="305421">elements per page </translation>
 
-   <translation id="createTelephonyPhone" qtlid="305434">Order a professional phone </translation>
-   <translation id="createNas" qtlid="305447">Activate Cloud NAS online storage </translation>
-   <translation id="createFax" qtlid="305460">Activate the EcoFax service </translation>
-   <translation id="createTelephonyLine" qtlid="305473">Create a phone line </translation>
-   <translation id="telephonyLineRenewConfiguration" qtlid="305486">Reactivate a phone line </translation>
-   <translation id="createDomain" qtlid="305499">Order a domain </translation>
-   <translation id="createHubic" qtlid="305512">Create a HubiC account </translation>
-   <translation id="createHostedEmail" qtlid="111786">Create e-mail account</translation>
-   <translation id="createExchange" qtlid="305525">Create an Exchange account </translation>
-   <translation id="pendingMigration" qtlid="305538">Migrate service </translation>
-   <translation id="regeneratePromoCode" qtlid="305551">Regenerate promo code </translation>
-   <translation id="changePackOffer" qtlid="305564">Change service </translation>
-   <translation id="packXdslAddressMove" qtlid="86745">Moving</translation>
-   <translation id="accessDiagnosticRun" qtlid="309724">Diagnostic de la ligne</translation>
+   <translation id="telecom_task_function" qtlid="56105">Action</translation>
+   <translation id="telecom_task_function_createTelephonyPhone" qtlid="305434">Order a professional phone </translation>
+   <translation id="telecom_task_function_createNas" qtlid="305447">Activate Cloud NAS online storage </translation>
+   <translation id="telecom_task_function_createFax" qtlid="305460">Activate the EcoFax service </translation>
+   <translation id="telecom_task_function_createTelephonyLine" qtlid="305473">Create a phone line </translation>
+   <translation id="telecom_task_function_telephonyLineRenewConfiguration" qtlid="305486">Reactivate a phone line </translation>
+   <translation id="telecom_task_function_createDomain" qtlid="305499">Order a domain </translation>
+   <translation id="telecom_task_function_createHubic" qtlid="305512">Create a HubiC account </translation>
+   <translation id="telecom_task_function_createHostedEmail" qtlid="111786">Create e-mail account</translation>
+   <translation id="telecom_task_function_createExchange" qtlid="305525">Create an Exchange account </translation>
+   <translation id="telecom_task_function_pendingMigration" qtlid="305538">Migrate service </translation>
+   <translation id="telecom_task_function_pendingAddressMove">Déménagement de l'offre en cours</translation>
+   <translation id="telecom_task_function_regeneratePromoCode" qtlid="305551">Regenerate promo code </translation>
+   <translation id="telecom_task_function_changePackOffer" qtlid="305564">Change service </translation>
+   <translation id="telecom_task_function_packXdslAddressMove" qtlid="86745">Moving</translation>
+   <translation id="telecom_task_function_accessDiagnosticRun" qtlid="309724">Diagnostic de la ligne</translation>
 
 </translations>

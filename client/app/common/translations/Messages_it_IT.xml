@@ -33,9 +33,9 @@
    <translation id="common_criteria_adder_value_label" qtlid="47548">Valore</translation>
    <translation id="common_criteria_adder_submit_label" qtlid="37923">Aggiungi</translation>
 
-   <translation id="common_clipboard_copy_to_clipboard" qtlid="517998">Copier dans le presse-papier</translation>
-   <translation id="common_clipboard_copied" qtlid="518011">Copié</translation>
-   <translation id="common_clipboard_not_supported" qtlid="518024">La copie dans le presse-papier n’est pas supportée. Veuillez copier le texte manuellement</translation>
+   <translation id="common_clipboard_copy_to_clipboard" qtlid="517998">Copia negli appunti</translation>
+   <translation id="common_clipboard_copied" qtlid="518011">Copiato</translation>
+   <translation id="common_clipboard_not_supported" qtlid="518024">La copia negli appunti non è supportata, esegui l'operazione manualmente</translation>
 
    <translation id="common_none" qtlid="30646">Nessuno</translation>
    <translation id="common_datagrid_nodata" qtlid="197635">Nessun risultato</translation>
@@ -50,7 +50,7 @@
    <translation id="common_field_error_pattern" qtlid="472385">Inserisci un formato valido.</translation>
 
    <translation id="common_navbar_notification_title" qtlid="33250">Notifiche</translation>
-   <translation id="common_navbar_notification_title_expanded">Vos notifications</translation>
+   <translation id="common_navbar_notification_title_expanded" qtlid="519493">Le tue notifiche</translation>
    <translation id="common_navbar_notification_see_all" qtlid="401914">Visualizza tutte le notifiche</translation>
    <translation id="common_navbar_notification_error_in_notification" qtlid="492055">Ops, si è verificato un problema</translation>
    <translation id="common_navbar_notification_error_in_notification_description" qtlid="492068">Non è possibile avviare il menu</translation>
@@ -59,7 +59,7 @@
    <translation id="common_navbar_notification_none" qtlid="492081">È tutto aggiornato!</translation>
    <translation id="common_navbar_notification_none_description" qtlid="492094">Non hai nessuna notifica</translation>
 
-   <translation id="common_open_new_tab" qtlid="493971">Opens a new tab</translation>
+   <translation id="common_open_new_tab" qtlid="493971">Apri in una nuova scheda</translation>
 
    <translation id="common_pagination_resultsperpage" qtlid="433384">Risultati per pagina</translation>
    <translation id="common_pagination_page" qtlid="433397">pagina</translation>
@@ -90,15 +90,16 @@
    <translation id="common_apply" qtlid="41326">Applica</translation>
    <translation id="common_actions" qtlid="72809">Azioni</translation>
 
-   <translation id="common_between_and" qtlid="479252">Entre {{between}} et {{and}}</translation>
+   <translation id="common_between_and" qtlid="479252">Tra {{between}} e {{and}}</translation>
 
    <translation id="common_search" qtlid="37659">Ricerca</translation>
 
    <translation id="common_error_title" qtlid="26407">Errore</translation>
-   <translation id="common_delete_selected_one_item" qtlid="510033">Supprimer l’élément sélectionné</translation>
-   <translation id="common_delete_selected_items" qtlid="510046">Supprimer les éléments sélectionnés</translation>
-   <translation id="common_delete_selected_items_count" qtlid="510059">{{count}} élément(s) sélectionné(s)</translation>
-   <translation id="common_two_of_them" qtlid="510072">Les deux</translation>
+   <translation id="common_delete_selected_one_item" qtlid="510033">Elimina l'elemento selezionato&#13;
+</translation>
+   <translation id="common_delete_selected_items" qtlid="510046">Elimina gli elementi selezionati</translation>
+   <translation id="common_delete_selected_items_count" qtlid="510059">{{count}} elementi selezionati</translation>
+   <translation id="common_two_of_them" qtlid="510072">Entrambi</translation>
 
    <translation id="an_error_occured" qtlid="148981">Si è verificato un errore</translation>
    <translation id="error_401" qtlid="304472">Accesso non autorizzato</translation>
@@ -155,7 +156,7 @@
 
    <translation id="browser_alert_not_supported" qtlid="405357">Il tuo browser non è supportato</translation>
    <translation id="browser_alert_deprecated" qtlid="405370">Il tuo browser non è aggiornato e potrebbe contenere bug di sicurezza o di compatibilità.</translation>
-   <translation id="browser_alert_update" qtlid="455699">Nous vous recommandons de <a href="http://outdatedbrowser.com/fr" class="alert-link" target="_blank" rel="noopener">mettre à jour votre navigateur <i class="fa fa-external-link" aria-hidden="true"></i></a> afin de profiter d'une expérience optimale.</translation>
+   <translation id="browser_alert_update" qtlid="455699">Per un'esperienza di navigazione ottimale, ti consigliamo di <a href="http://outdatedbrowser.com/it" class="alert-link" target="_blank" rel="noopener">aggiornare il browser <i class="fa fa-external-link" aria-hidden="true"></i></a>.</translation>
    <translation id="browser_alert_close" qtlid="405396">Chiudi questo alert</translation>
 
 <!-- xdsl/sidebar -->
@@ -192,7 +193,7 @@
 
 <!-- Navbar Menu -->
    <translation id="common_menu_web" qtlid="135840">Web</translation>
-   <translation id="common_menu_labs" qtlid="384168">Ux Labs</translation>
+   <translation id="common_menu_labs" qtlid="384168">UX Labs</translation>
    <translation id="common_menu_dedicated" qtlid="31738">Dedicato</translation>
    <translation id="common_menu_cloud" qtlid="15677">Cloud</translation>
    <translation id="common_menu_telecom" qtlid="135827">ADSL e telefono</translation>
@@ -226,9 +227,9 @@
    <translation id="common_menu_contacts" qtlid="70541">I tuoi contatti</translation>
    <translation id="common_menu_list_ticket" qtlid="454039">Tue richieste di supporto</translation>
    <translation id="common_menu_support_assistance" qtlid="52699">Supporto</translation>
-   <translation id="common_menu_support_assistance_expanded">Besoin d'aide</translation>
-   <translation id="common_menu_support_userAccount_1">Bonjour {{username}}</translation>
-   <translation id="common_menu_support_userAccount_2">votre compte</translation>
+   <translation id="common_menu_support_assistance_expanded" qtlid="519506">Bisogno di aiuto?</translation>
+   <translation id="common_menu_support_userAccount_1" qtlid="519519">Buongiorno {{username}}</translation>
+   <translation id="common_menu_support_userAccount_2" qtlid="519532">il tuo account</translation>
    <translation id="common_menu_support_all_guides" qtlid="260788">Tutte le guide</translation>
    <translation id="common_menu_support_help_center" qtlid="516575">Centro di assistenza</translation>
    <translation id="common_menu_support_new_ticket" qtlid="260801">Crea una richiesta di supporto</translation>
@@ -265,11 +266,13 @@
 
    <translation id="common_menu_changelog" qtlid="260971">ChangeLog</translation>
 
-   <translation id="common_express_lite_banner_desc" qtlid="455712">Express Lite comprend donc un modem offrant un accès à internet et une ligne VoIP pour <span class="ad-price font-weight-bold fs14">22,99€ HT</span>&#160;/&#160;mois.</translation>
+   <translation id="common_express_lite_banner_desc" qtlid="455712">Express Lite comprende un modem che include un accesso Internet e una linea VoIP a <span class="ad-price font-weight-bold fs14">22,99 € +IVA</span>/mese.</translation>
    <translation id="common_express_lite_banner_title" qtlid="304888">OVH ti propone una nuova offerta base con connessione ADSL e VDSL.</translation>
    <translation id="common_generate_order" qtlid="186219">Genera ordine</translation>
    <translation id="common_boost_banner_title" qtlid="304901">OVH offre due gamme limitate di offerte "solo Internet" per la massima velocità.</translation>
-   <translation id="common_boost_banner_desc" qtlid="455725">Sécurisez votre connexion avec l'offre <span class="ad-price font-weight-bold fs14">CONNECT</span> ou doublez votre débit avec l'offre <span class="ad-price font-weight-bold fs14">BOOST</span> qui inclut le matériel et le service <span class="ad-price font-weight-bold fs14">OVER THE BOX</span>.<br/><small>Offre limitée aux 240 premières commandes.</small></translation>
+   <translation id="common_boost_banner_desc" qtlid="455725">Rendi sicura la tua connessione con l'offerta <span class="ad-price font-weight-bold fs14">CONNECT</span> o raddoppia la velocità con l'offerta <span class="ad-price font-weight-bold fs14">BOOST</span>, che include il dispositivo e il servizio <span class="ad-price font-weight-bold fs14">OVER THE BOX</span>.<br/><small> Offerta limitata ai primi 240 ordini.</small>&#13;
+&#13;
+</translation>
    <translation id="common_banner_discover" qtlid="304927">Scopri l'offerta</translation>
    <translation id="common_service_name_edit_title" qtlid="331683">{{ title }}: modifica il nome del servizio</translation>
 
@@ -285,12 +288,12 @@
    <translation id="common_home" qtlid="27643">Home Page</translation>
 
 <!-- Units -->
-   <translation id="unit_bits_per_sec" qtlid="455738">{{val}} bits/s</translation>
-   <translation id="unit_kilo_bits_per_sec" qtlid="455751">{{val}} Kbs/s</translation>
-   <translation id="unit_mega_bits_per_sec" qtlid="455764">{{val}} Mbs/s</translation>
-   <translation id="unit_giga_bits_per_sec" qtlid="455777">{{val}} Gbs/s</translation>
-   <translation id="unit_tera_bits_per_sec" qtlid="455790">{{val}} Tbs/s</translation>
-   <translation id="unit_peta_bits_per_sec" qtlid="455803">{{val}} Pbs/s</translation>
+   <translation id="unit_bits_per_sec" qtlid="455738">{{val}} bit/s</translation>
+   <translation id="unit_kilo_bits_per_sec" qtlid="455751">{{val}} KB/s</translation>
+   <translation id="unit_mega_bits_per_sec" qtlid="455764">{{val}} MB/s</translation>
+   <translation id="unit_giga_bits_per_sec" qtlid="455777">{{val}} GB/s</translation>
+   <translation id="unit_tera_bits_per_sec" qtlid="455790">{{val}} TB/s</translation>
+   <translation id="unit_peta_bits_per_sec" qtlid="455803">{{val}} PB/s</translation>
 
    <translation id="unit_generic_per_sec" qtlid="455816">{{val}}</translation>
    <translation id="unit_kilo_generic_per_sec" qtlid="455829">{{val}} K</translation>
@@ -442,7 +445,7 @@
    <translation id="country_KW" qtlid="188262">Kuwait</translation>
    <translation id="country_KY" qtlid="188275">Caiman, Isole</translation>
    <translation id="country_KZ" qtlid="188288">Kazakhistan</translation>
-   <translation id="country_LA" qtlid="501678">Lao, République Démocratique Populaire -</translation>
+   <translation id="country_LA" qtlid="501678">Laos, Repubblica Popolare Democratica -</translation>
    <translation id="country_LB" qtlid="188314">Libano</translation>
    <translation id="country_LC" qtlid="188327">Saint-Lucia</translation>
    <translation id="country_LI" qtlid="188340">Liechtenstein</translation>

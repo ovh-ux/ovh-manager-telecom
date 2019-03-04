@@ -41,6 +41,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationLines
         this.copyContactCenterSolution = angular.copy(ccs);
 
         [this.queue] = queues;
+        this.copyQueue = angular.copy(this.queue);
         this.enums = enums;
 
         this.selectedCaller = _.find(
@@ -96,7 +97,9 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationLines
   }
 
   hasChanged() {
-    return this.canUpdateContactCenterSolution() || this.canUpdateAgentsList();
+    return this.canUpdateContactCenterSolution()
+      || this.canUpdateAgentsList()
+      || this.canUpdateQueue();
   }
 
   canUpdateContactCenterSolution() {
@@ -105,6 +108,10 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationLines
 
   canUpdateAgentsList() {
     return !_.isEqual(this.agents, this.copyAgents);
+  }
+
+  canUpdateQueue() {
+    return !_.isEqual(this.queue, this.copyQueue);
   }
 
   deleteLineOpenModal(line) {
@@ -198,8 +205,16 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationLines
         )
         : angular.noop(),
       agentsList: this.canUpdateAgentsList() ? this.updateAgentsList() : angular.noop(),
+      queue: this.canUpdateQueue()
+        ? this.tucVoipServiceAlias.updateContactCenterSolutionNumberQueue(
+          this.serviceInfos,
+          this.queue,
+        ) : angular.noop(),
     }).then(() => {
       this.OvhApiTelephony.EasyHunting().Hunting().v6().resetCache();
+      this.OvhApiTelephony.EasyHunting().Hunting().Queue()
+        .v6()
+        .resetCache();
       this.OvhApiTelephony.EasyHunting().Hunting().Queue().Agent()
         .v6()
         .resetAllCache();

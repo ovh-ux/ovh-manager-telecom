@@ -9,7 +9,7 @@
 
    <translation id="xdsl_modem_device_mac" qtlid="42562">Dirección MAC</translation>
    <translation id="xdsl_modem_device_ip" qtlid="26191">Dirección IP</translation>
-   <translation id="xdsl_modem_device_host" qtlid="3818">Nombre</translation>
+   <translation id="xdsl_modem_device_host" qtlid="3818">Apellidos</translation>
    <translation id="xdsl_modem_device_connection_type" qtlid="307293">tipo</translation>
    <translation id="xdsl_modem_device_other" qtlid="19963">Otro</translation>
    <translation id="xdsl_modem_device_waiting_refresh" qtlid="311297">Pendiente de actualización</translation>

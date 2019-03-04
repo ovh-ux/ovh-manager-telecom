@@ -33,9 +33,9 @@
    <translation id="common_criteria_adder_value_label" qtlid="47548">Value</translation>
    <translation id="common_criteria_adder_submit_label" qtlid="37923">Add</translation>
 
-   <translation id="common_clipboard_copy_to_clipboard" qtlid="517998">Copier dans le presse-papier</translation>
-   <translation id="common_clipboard_copied" qtlid="518011">Copié</translation>
-   <translation id="common_clipboard_not_supported" qtlid="518024">La copie dans le presse-papier n’est pas supportée. Veuillez copier le texte manuellement</translation>
+   <translation id="common_clipboard_copy_to_clipboard" qtlid="517998">Copy to clipboard</translation>
+   <translation id="common_clipboard_copied" qtlid="518011">Copy</translation>
+   <translation id="common_clipboard_not_supported" qtlid="518024">Copying to clipboard is not supported. Please copy the text manually.</translation>
 
    <translation id="common_none" qtlid="30646">None</translation>
    <translation id="common_datagrid_nodata" qtlid="197635">No result</translation>
@@ -50,7 +50,7 @@
    <translation id="common_field_error_pattern" qtlid="472385">Please enter a valid format.</translation>
 
    <translation id="common_navbar_notification_title" qtlid="33250">Notifications</translation>
-   <translation id="common_navbar_notification_title_expanded">Vos notifications</translation>
+   <translation id="common_navbar_notification_title_expanded" qtlid="519493">Your notifications</translation>
    <translation id="common_navbar_notification_see_all" qtlid="401914">See all notifications </translation>
    <translation id="common_navbar_notification_error_in_notification" qtlid="492055">Oops, there's a problem!</translation>
    <translation id="common_navbar_notification_error_in_notification_description" qtlid="492068">The menu could not be loaded.</translation>
@@ -90,15 +90,15 @@
    <translation id="common_apply" qtlid="41326">Apply</translation>
    <translation id="common_actions" qtlid="72809">Actions</translation>
 
-   <translation id="common_between_and" qtlid="479252">Entre {{between}} et {{and}}</translation>
+   <translation id="common_between_and" qtlid="479252">Between {{between}} and {{and}}</translation>
 
    <translation id="common_search" qtlid="37659">Search</translation>
 
    <translation id="common_error_title" qtlid="26407">Error</translation>
-   <translation id="common_delete_selected_one_item" qtlid="510033">Supprimer l’élément sélectionné</translation>
-   <translation id="common_delete_selected_items" qtlid="510046">Supprimer les éléments sélectionnés</translation>
-   <translation id="common_delete_selected_items_count" qtlid="510059">{{count}} élément(s) sélectionné(s)</translation>
-   <translation id="common_two_of_them" qtlid="510072">Les deux</translation>
+   <translation id="common_delete_selected_one_item" qtlid="510033">Delete the item selected</translation>
+   <translation id="common_delete_selected_items" qtlid="510046">Delete the items selected</translation>
+   <translation id="common_delete_selected_items_count" qtlid="510059">{{count}} items selected</translation>
+   <translation id="common_two_of_them" qtlid="510072">Both</translation>
 
    <translation id="an_error_occured" qtlid="148981">An error has occurred.</translation>
    <translation id="error_401" qtlid="304472">Unauthorized access</translation>
@@ -155,7 +155,7 @@
 
    <translation id="browser_alert_not_supported" qtlid="405357">Your browser is not supported. </translation>
    <translation id="browser_alert_deprecated" qtlid="405370">Your browser is not up to date and may contain security vulnerabilities or have compatibility issues. </translation>
-   <translation id="browser_alert_update" qtlid="455699">Nous vous recommandons de <a href="http://outdatedbrowser.com/fr" class="alert-link" target="_blank" rel="noopener">mettre à jour votre navigateur <i class="fa fa-external-link" aria-hidden="true"></i></a> afin de profiter d'une expérience optimale.</translation>
+   <translation id="browser_alert_update" qtlid="455699">We recommend <a href="http://outdatedbrowser.com/fr" class="alert-link" target="_blank" rel="noopener">updating your browser <i class="fa fa-external-link" aria-hidden="true"></i></a> for an optimised experience.</translation>
    <translation id="browser_alert_close" qtlid="405396">Close this alert</translation>
 
 <!-- xdsl/sidebar -->
@@ -185,14 +185,14 @@
    <translation id="sidebar-service-view" qtlid="304732">View service </translation>
    <translation id="sidebar-facturationGroup-view" qtlid="304745">View billing group</translation>
    <translation id="sidebar_deskaas_title" qtlid="304758">Discover Deskaas</translation>
-   <translation id="sidebar_init_error" qtlid="384155">Oups, certains de vos services n'ont pas pu être chargés :</translation>
+   <translation id="sidebar_init_error" qtlid="384155">Oops, some of your services could not be changed:</translation>
 
    <translation id="coming_soon" qtlid="304771">This feature is not yet available.</translation>
    <translation id="back_home" qtlid="304784">Go to home </translation>
 
 <!-- Navbar Menu -->
    <translation id="common_menu_web" qtlid="135840">Web</translation>
-   <translation id="common_menu_labs" qtlid="384168">Ux Labs</translation>
+   <translation id="common_menu_labs" qtlid="384168">UX Labs</translation>
    <translation id="common_menu_dedicated" qtlid="31738">Dedicated</translation>
    <translation id="common_menu_cloud" qtlid="15677">Cloud</translation>
    <translation id="common_menu_telecom" qtlid="135827">Telecom</translation>
@@ -226,9 +226,9 @@
    <translation id="common_menu_contacts" qtlid="70541">My contacts</translation>
    <translation id="common_menu_list_ticket" qtlid="454039">My support requests</translation>
    <translation id="common_menu_support_assistance" qtlid="52699">Assistance</translation>
-   <translation id="common_menu_support_assistance_expanded">Besoin d'aide</translation>
-   <translation id="common_menu_support_userAccount_1">Bonjour {{username}}</translation>
-   <translation id="common_menu_support_userAccount_2">votre compte</translation>
+   <translation id="common_menu_support_assistance_expanded" qtlid="519506">Need help?</translation>
+   <translation id="common_menu_support_userAccount_1" qtlid="519519">Hello {{username}}</translation>
+   <translation id="common_menu_support_userAccount_2" qtlid="519532">your account</translation>
    <translation id="common_menu_support_all_guides" qtlid="260788">All guides</translation>
    <translation id="common_menu_support_help_center" qtlid="516575">Help centre</translation>
    <translation id="common_menu_support_new_ticket" qtlid="260801">Create a support request</translation>
@@ -245,7 +245,7 @@
    <translation id="common_pagination_display" qtlid="69353">Display</translation>
 
 <!-- Account balance -->
-   <translation id="common_account_balance_warning_flash" qtlid="384181">Votre compte prépayé est débiteur de <span class="balance-price">{{value}}€</span> au {{date | date:'medium'}}. Rendez-vous dans la section <a href="{{link}}">facturation</a> pour le créditer.</translation>
+   <translation id="common_account_balance_warning_flash" qtlid="384181">Your pre-paid account is in debit by <span class="balance-price">€{{value}}</span> as of {{date | date:'medium'}}. Please go to the <a href="{{link}}">Billing</a> section to credit it.</translation>
 
 <!-- Default credit car expiry -->
    <translation id="common_account_cb_expire_alert" qtlid="294763">Your default bank card expires in {{nbDays}} day(s). Please go to <a href="{{urlBillingSection}}">the billing section</a> to update it.</translation>
@@ -265,19 +265,19 @@
 
    <translation id="common_menu_changelog" qtlid="260971">Changelog</translation>
 
-   <translation id="common_express_lite_banner_desc" qtlid="455712">Express Lite comprend donc un modem offrant un accès à internet et une ligne VoIP pour <span class="ad-price font-weight-bold fs14">22,99€ HT</span>&#160;/&#160;mois.</translation>
+   <translation id="common_express_lite_banner_desc" qtlid="455712">Express Lite includes a modem that gives you internet access, and a VoIP for <span class="ad-price font-weight-bold fs14">€22.99 ex. VAT</span>/month.</translation>
    <translation id="common_express_lite_banner_title" qtlid="304888">OVH is launching a new ADSL and VDSL connection service. </translation>
    <translation id="common_generate_order" qtlid="186219">Generate purchase order</translation>
    <translation id="common_boost_banner_title" qtlid="304901">OVH has released two "Internet Only" limited ranges to offer maximum speed.</translation>
-   <translation id="common_boost_banner_desc" qtlid="455725">Sécurisez votre connexion avec l'offre <span class="ad-price font-weight-bold fs14">CONNECT</span> ou doublez votre débit avec l'offre <span class="ad-price font-weight-bold fs14">BOOST</span> qui inclut le matériel et le service <span class="ad-price font-weight-bold fs14">OVER THE BOX</span>.<br/><small>Offre limitée aux 240 premières commandes.</small></translation>
+   <translation id="common_boost_banner_desc" qtlid="455725">Secure your connection with the <span class="ad-price font-weight-bold fs14">CONNECT</span> solution, and double your bandwidth with the <span class="ad-price font-weight-bold fs14">BOOST</span> solution, which includes hardware and the <span class="ad-price font-weight-bold fs14">OVER THE BOX</span> service.<br/><small>Offer limited to the first 240 orders.</small></translation>
    <translation id="common_banner_discover" qtlid="304927">Find out more </translation>
-   <translation id="common_service_name_edit_title" qtlid="331683">{{ title }} : éditer le nom du service</translation>
+   <translation id="common_service_name_edit_title" qtlid="331683">{{ title }}: edit service name</translation>
 
-   <translation id="common_monthly_without_tax" qtlid="331696">HT/mois</translation>
+   <translation id="common_monthly_without_tax" qtlid="331696">ex. VAT/month</translation>
    <translation id="common_without_tax" qtlid="101397"></translation>
 
    <translation id="common_refresh" qtlid="8182">Refresh</translation>
-   <translation id="common_refresh_data" qtlid="384194">Actualiser les données</translation>
+   <translation id="common_refresh_data" qtlid="384194">Refresh data</translation>
    <translation id="common_open_new_tab" qtlid="222176">New window</translation>
    <translation id="common_download" qtlid="39286">Download</translation>
    <translation id="common_relaunch" qtlid="31378">Relaunch</translation>
@@ -442,7 +442,7 @@
    <translation id="country_KW" qtlid="188262">Kuwait</translation>
    <translation id="country_KY" qtlid="188275">Cayman Islands</translation>
    <translation id="country_KZ" qtlid="188288">Kazakhstan</translation>
-   <translation id="country_LA" qtlid="501678">Lao, République Démocratique Populaire -</translation>
+   <translation id="country_LA" qtlid="501678">Laos -</translation>
    <translation id="country_LB" qtlid="188314">Lebanon</translation>
    <translation id="country_LC" qtlid="188327">Saint-Lucia</translation>
    <translation id="country_LI" qtlid="188340">Liechtenstein</translation>

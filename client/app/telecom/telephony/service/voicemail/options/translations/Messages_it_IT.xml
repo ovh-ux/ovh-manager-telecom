@@ -2,6 +2,7 @@
 <translations>
    <translation id="telephony_line_answer_voicemail_options_recording_title" qtlid="337754">Benvenuto e registrazione dei messaggi</translation>
    <translation id="telephony_line_answer_voicemail_options_recording" qtlid="337767">Registrazione dei messaggi:</translation>
+   <translation id="telephony_line_answer_voicemail_options_notifications">Activation des notifications :</translation>
    <translation id="telephony_line_answer_voicemail_options_recording_disable_warn" qtlid="337780">La disattivazione della registrazione dei messaggi vocali comporta l'invio di email con messaggi in allegato.</translation>
    <translation id="telephony_line_answer_voicemail_options_greetings" qtlid="337793">Messaggio di benvenuto della segreteria:</translation>
    <translation id="telephony_line_answer_voicemail_options_recording_greet" qtlid="337806">Preannuncio</translation>

@@ -12,29 +12,28 @@
    <translation id="telecom_task_todo" qtlid="305356">Suunnitellut</translation>
    <translation id="telecom_task_all" qtlid="290472">Kaikki</translation>
    <translation id="telecom_task_status" qtlid="26443">Tila</translation>
-   <translation id="telecom_task_function" qtlid="56105">Toiminto</translation>
    <translation id="telecom_task_pack" qtlid="82929">Paketti</translation>
    <translation id="telecom_task_filter_status_placeholder" qtlid="305369">Suodata tilan mukaan</translation>
-   <translation id="telecom_task_status" qtlid="26443">Tila</translation>
-   <translation id="telecom_task_function" qtlid="56105">Toiminto</translation>
    <translation id="telecom_task_filter_none" qtlid="305382">Kaikki operaatiot</translation>
    <translation id="telecom_task_none" qtlid="305395">Yhtään tehtävää ei löytynyt</translation>
    <translation id="telecom_task_page" qtlid="305408">Sivu</translation>
    <translation id="telecom_task_page_amount" qtlid="305421">elementtiä sivua kohti</translation>
 
-   <translation id="createTelephonyPhone" qtlid="305434">pro-puhelimen tilaus</translation>
-   <translation id="createNas" qtlid="305447">Cloud NAS -storagen online aktivointi</translation>
-   <translation id="createFax" qtlid="305460">EcoFax-palvelun aktivointi</translation>
-   <translation id="createTelephonyLine" qtlid="305473">Puhelinlinjan luominen </translation>
-   <translation id="telephonyLineRenewConfiguration" qtlid="305486">Puhelinlinjan uudelleen aktivointi</translation>
-   <translation id="createDomain" qtlid="305499">Verkkotunnustilaus</translation>
-   <translation id="createHubic" qtlid="305512">HubiC-tilin luominen</translation>
-   <translation id="createHostedEmail" qtlid="111786">Sähköpostitilin luominen</translation>
-   <translation id="createExchange" qtlid="305525">Exchange-tilin luominen</translation>
-   <translation id="pendingMigration" qtlid="305538">Tuotteen migraatio</translation>
-   <translation id="regeneratePromoCode" qtlid="305551">Tarjouskoodin uudelleengenerointi</translation>
-   <translation id="changePackOffer" qtlid="305564">Tuotteen vaihtaminen</translation>
-   <translation id="packXdslAddressMove" qtlid="86745">Muutto</translation>
-   <translation id="accessDiagnosticRun" qtlid="309724">Linjan vianhaku</translation>
+   <translation id="telecom_task_function" qtlid="56105">Toiminto</translation>
+   <translation id="telecom_task_function_createTelephonyPhone" qtlid="305434">pro-puhelimen tilaus</translation>
+   <translation id="telecom_task_function_createNas" qtlid="305447">Cloud NAS -storagen online aktivointi</translation>
+   <translation id="telecom_task_function_createFax" qtlid="305460">EcoFax-palvelun aktivointi</translation>
+   <translation id="telecom_task_function_createTelephonyLine" qtlid="305473">Puhelinlinjan luominen </translation>
+   <translation id="telecom_task_function_telephonyLineRenewConfiguration" qtlid="305486">Puhelinlinjan uudelleen aktivointi</translation>
+   <translation id="telecom_task_function_createDomain" qtlid="305499">Verkkotunnustilaus</translation>
+   <translation id="telecom_task_function_createHubic" qtlid="305512">HubiC-tilin luominen</translation>
+   <translation id="telecom_task_function_createHostedEmail" qtlid="111786">Sähköpostitilin luominen</translation>
+   <translation id="telecom_task_function_createExchange" qtlid="305525">Exchange-tilin luominen</translation>
+   <translation id="telecom_task_function_pendingMigration" qtlid="305538">Tuotteen migraatio</translation>
+   <translation id="telecom_task_function_pendingAddressMove">Déménagement de l'offre en cours</translation>
+   <translation id="telecom_task_function_regeneratePromoCode" qtlid="305551">Tarjouskoodin uudelleengenerointi</translation>
+   <translation id="telecom_task_function_changePackOffer" qtlid="305564">Tuotteen vaihtaminen</translation>
+   <translation id="telecom_task_function_packXdslAddressMove" qtlid="86745">Muutto</translation>
+   <translation id="telecom_task_function_accessDiagnosticRun" qtlid="309724">Linjan vianhaku</translation>
 
 </translations>

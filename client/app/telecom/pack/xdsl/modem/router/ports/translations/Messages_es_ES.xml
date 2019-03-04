@@ -3,7 +3,7 @@
    <translation id="xdsl_modem_ports_title" qtlid="224646">Redirección de puertos</translation>
    <translation id="xdsl_modem_ports_description" qtlid="312194">Una redirección de puertos permite reenviar de un puerto (o rango de puertos) del módem hacia un puerto (o rango de puertos) determinado(s) de un dispositivo de su red. Si el módem está en modo router, no es posible acceder directamente desde internet a los dispositivos presentes en su red local. Una redirección de puertos permite acceder a ellos desde el exterior.</translation>
 
-   <translation id="xdsl_modem_ports_name" qtlid="3818">Nombre</translation>
+   <translation id="xdsl_modem_ports_name" qtlid="3818">Apellidos</translation>
    <translation id="xdsl_modem_ip_source" qtlid="138376">IP de origen</translation>
    <translation id="xdsl_modem_ports_port_begin" qtlid="312207">Puerto inicial</translation>
    <translation id="xdsl_modem_ports_port_end" qtlid="312220">Puerto final</translation>

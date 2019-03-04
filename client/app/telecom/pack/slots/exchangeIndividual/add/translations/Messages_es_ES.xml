@@ -2,7 +2,7 @@
 <translations>
    <translation id="add_an_account" qtlid="317646">Añadir una cuenta Exchange (Individual)</translation>
    <translation id="account_informations" qtlid="317594">Información sobre la cuenta</translation>
-   <translation id="account_last_name" qtlid="3818">Nombre</translation>
+   <translation id="account_last_name" qtlid="3818">Apellidos</translation>
    <translation id="account_first_name" qtlid="23323">Nombre</translation>
    <translation id="account_display_name" qtlid="23515">Nombre mostrado</translation>
    <translation id="antispam_option" qtlid="317607">Quiero tener protección antivirus y antispam.</translation>

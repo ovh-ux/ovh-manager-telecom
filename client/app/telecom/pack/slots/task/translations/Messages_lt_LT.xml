@@ -12,29 +12,28 @@
    <translation id="telecom_task_todo" qtlid="305356">Suprogramuota</translation>
    <translation id="telecom_task_all" qtlid="290472">Visi</translation>
    <translation id="telecom_task_status" qtlid="26443">Būsena</translation>
-   <translation id="telecom_task_function" qtlid="56105">Veiksmas</translation>
    <translation id="telecom_task_pack" qtlid="82929">Paketas</translation>
    <translation id="telecom_task_filter_status_placeholder" qtlid="305369">Filtruoti pagal būseną</translation>
-   <translation id="telecom_task_status" qtlid="26443">Būsena</translation>
-   <translation id="telecom_task_function" qtlid="56105">Veiksmas</translation>
    <translation id="telecom_task_filter_none" qtlid="305382">Visos operacijos</translation>
    <translation id="telecom_task_none" qtlid="305395">Nerasta jokių užduočių</translation>
    <translation id="telecom_task_page" qtlid="305408">Puslapis</translation>
    <translation id="telecom_task_page_amount" qtlid="305421">elementai puslapyje</translation>
 
-   <translation id="createTelephonyPhone" qtlid="305434">Užsakyti profesionalią telefoniją</translation>
-   <translation id="createNas" qtlid="305447">Saugyklos aktyvavimas Cloud NAS linijoje</translation>
-   <translation id="createFax" qtlid="305460">EcoFax paslaugos aktyvavimas</translation>
-   <translation id="createTelephonyLine" qtlid="305473">Telefonijos linijos kūrimas</translation>
-   <translation id="telephonyLineRenewConfiguration" qtlid="305486">Pakartotinis telefonijos linijos aktyvavimas</translation>
-   <translation id="createDomain" qtlid="305499">Domenu užsakymas</translation>
-   <translation id="createHubic" qtlid="305512">HubiC paskyros kūrimas</translation>
-   <translation id="createHostedEmail" qtlid="111786">El. pašto paskyros kūrimas</translation>
-   <translation id="createExchange" qtlid="305525">Exchange paskyros kūrimas</translation>
-   <translation id="pendingMigration" qtlid="305538">Paslaugos migravimas</translation>
-   <translation id="regeneratePromoCode" qtlid="305551">Nuolaidos kodo generavimas</translation>
-   <translation id="changePackOffer" qtlid="305564">Pasiūlymo keitimas</translation>
-   <translation id="packXdslAddressMove" qtlid="86745">Perkėlimas</translation>
-   <translation id="accessDiagnosticRun" qtlid="309724">Linijos diagnostika</translation>
+   <translation id="telecom_task_function" qtlid="56105">Veiksmas</translation>
+   <translation id="telecom_task_function_createTelephonyPhone" qtlid="305434">Užsakyti profesionalią telefoniją</translation>
+   <translation id="telecom_task_function_createNas" qtlid="305447">Saugyklos aktyvavimas Cloud NAS linijoje</translation>
+   <translation id="telecom_task_function_createFax" qtlid="305460">EcoFax paslaugos aktyvavimas</translation>
+   <translation id="telecom_task_function_createTelephonyLine" qtlid="305473">Telefonijos linijos kūrimas</translation>
+   <translation id="telecom_task_function_telephonyLineRenewConfiguration" qtlid="305486">Pakartotinis telefonijos linijos aktyvavimas</translation>
+   <translation id="telecom_task_function_createDomain" qtlid="305499">Domenu užsakymas</translation>
+   <translation id="telecom_task_function_createHubic" qtlid="305512">HubiC paskyros kūrimas</translation>
+   <translation id="telecom_task_function_createHostedEmail" qtlid="111786">El. pašto paskyros kūrimas</translation>
+   <translation id="telecom_task_function_createExchange" qtlid="305525">Exchange paskyros kūrimas</translation>
+   <translation id="telecom_task_function_pendingMigration" qtlid="305538">Paslaugos migravimas</translation>
+   <translation id="telecom_task_function_pendingAddressMove">Déménagement de l'offre en cours</translation>
+   <translation id="telecom_task_function_regeneratePromoCode" qtlid="305551">Nuolaidos kodo generavimas</translation>
+   <translation id="telecom_task_function_changePackOffer" qtlid="305564">Pasiūlymo keitimas</translation>
+   <translation id="telecom_task_function_packXdslAddressMove" qtlid="86745">Perkėlimas</translation>
+   <translation id="telecom_task_function_accessDiagnosticRun" qtlid="309724">Linijos diagnostika</translation>
 
 </translations>

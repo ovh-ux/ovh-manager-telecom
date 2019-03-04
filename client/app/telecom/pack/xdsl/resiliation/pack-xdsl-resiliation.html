@@ -69,8 +69,8 @@
                         <div class="col-xs-12 col-md-4">
                             <tuc-resiliation-reason
                                 data-ng-show="PackXdslResiliation.resiliationTerms.status"
-                                data-resiliation-reason-filter="{{PackXdslResiliation.resiliationTerms.data.resiliationReasons.join(',')}}"
-                                tuc-resiliation-reason="{id: PackXdslResiliation.resiliationTerms.serviceName, name:PackXdslResiliation.resiliationTerms.serviceName, type:'service', typeName:PackXdslResiliation.resiliationTerms.typeName}"
+                                data-tuc-resiliation-reason-filter="{{PackXdslResiliation.resiliationTerms.data.resiliationReasons.join(',')}}"
+                                data-tuc-resiliation-reason="{id: PackXdslResiliation.resiliationTerms.serviceName, name:PackXdslResiliation.resiliationTerms.serviceName, type:'service', typeName:PackXdslResiliation.resiliationTerms.typeName}"
                                 on-change="PackXdslResiliation.resiliateService(ELEMENT, SURVEY, ACCEPT)">
                             </tuc-resiliation-reason>
                         </div>
