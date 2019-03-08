@@ -13,8 +13,8 @@ angular.module('managerApp').config(($stateProvider) => {
     },
     translations: [
       '.',
-      '../../consumption',
-      '../../consumption/outgoingFax',
+      '../../../service/consumption',
+      '../../../service/consumption/outgoingFax',
     ],
   });
 });
