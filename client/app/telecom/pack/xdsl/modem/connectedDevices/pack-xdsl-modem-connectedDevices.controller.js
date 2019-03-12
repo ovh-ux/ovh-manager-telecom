@@ -1,4 +1,5 @@
-angular.module('managerApp').controller('XdslModemConnectedDevicesCtrl', function ($scope, $stateParams, $q, $translate, OvhApiXdsl, TucToast, TucPackXdslModemMediator) {
+angular.module('managerApp').controller('XdslModemConnectedDevicesCtrl', function ($q, $scope,
+  $stateParams, $translate, OvhApiXdsl, TucToast) {
   const self = this;
   self.devices = [];
 
@@ -69,9 +70,7 @@ angular.module('managerApp').controller('XdslModemConnectedDevicesCtrl', functio
      * Launch the refresh of the connected devices
      */
   self.refresh = function () {
-    this.devices = null;
     this.loading = true;
-    TucPackXdslModemMediator.disableCapabilities();
     return OvhApiXdsl.Modem().ConnectedDevices().Aapi().refresh({
       xdslId: $stateParams.serviceName,
     }).$promise.then((data) => {
@@ -79,9 +78,8 @@ angular.module('managerApp').controller('XdslModemConnectedDevicesCtrl', functio
       return data;
     }).catch((err) => {
       TucToast.error($translate.instant('xdsl_modem_refresh_error'));
+      this.loading = false;
       return $q.reject(err);
-    }).finally(() => {
-      self.loading = false;
     });
   };
 

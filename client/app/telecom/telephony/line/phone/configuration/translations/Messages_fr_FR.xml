@@ -114,9 +114,9 @@
    <translation id="telephony_line_phone_configuration_config_bluetooth_volume">Volume du bluetooth</translation>
    <translation id="telephony_line_phone_configuration_config_call_pickup_visual_alert">Alerte visuelle au décrochage</translation>
    <translation id="telephony_line_phone_configuration_config_call_pickup_beep_alert">Bip au décrochage</translation>
-   <translation id="telephony_line_phone_configuration_config_semi_attend_tran_enable">Transfert sur raccroché</translation>
-   <translation id="telephony_line_phone_configuration_config_on_hook_trans_enable">Transfert à l'aveugle sur raccroché</translation>
-   <translation id="telephony_line_phone_configuration_config_blind_on_hook_enable">Transfert à l'aveugle autorisé</translation>
+   <translation id="telephony_line_phone_configuration_config_semi_attend_tran_enable">Transfert semi-accompagné</translation>
+   <translation id="telephony_line_phone_configuration_config_on_hook_trans_enable">Transfert sur raccroché</translation>
+   <translation id="telephony_line_phone_configuration_config_blind_on_hook_enable">Transfert à l'aveugle sur raccroché</translation>
    <translation id="telephony_line_phone_configuration_config_dsskey_deal_type">Mode de transfert via DssKey</translation>
    <translation id="telephony_line_phone_configuration_config_new_call">Transfert supervisé (pré-appel avec votre collègue)</translation>
    <translation id="telephony_line_phone_configuration_config_attended_transfer">Transfert accompagné (pré-appel avec le client)</translation>
@@ -196,4 +196,10 @@
    <translation id="telephony_line_phone_configuration_config_ldap_server_address">LdapServerAddress</translation>
    <translation id="telephony_line_phone_configuration_config_ldap_server_port">LdapServerPort</translation>
    <translation id="telephony_line_phone_configuration_config_ldap_username">LdapUsername</translation>
+
+<!-- SOFT KEY LABEL -->
+   <translation id="telephony_line_phone_configuration_config_soft_key_label_1">SoftKeyLabel1</translation>
+   <translation id="telephony_line_phone_configuration_config_soft_key_label_2">SoftKeyLabel2</translation>
+   <translation id="telephony_line_phone_configuration_config_soft_key_label_3">SoftKeyLabel3</translation>
+   <translation id="telephony_line_phone_configuration_config_soft_key_label_4">SoftKeyLabel4</translation>
 </translations>

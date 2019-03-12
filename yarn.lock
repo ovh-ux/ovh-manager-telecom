@@ -907,26 +907,26 @@
     "@ovh-ux/ng-translate-async-loader" "^2.0.0"
     lodash "^4.17.11"
 
-"@ovh-ux/manager-freefax@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@ovh-ux/manager-freefax/-/manager-freefax-3.0.0.tgz#2fa9b33a0df189456944282dcbdb798132259dc5"
-  integrity sha512-QPJGPNcFwQrmHgMclOLKyBv1oO4NprALZ+h4J9RqiIrfGLuKkcQLQsojwFGtEFvgTJjScOdiU6vFNhCAOlNAUQ==
+"@ovh-ux/manager-freefax@^3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@ovh-ux/manager-freefax/-/manager-freefax-3.0.1.tgz#d64cdc33f034b55606f1bc30244fe25194225dfc"
+  integrity sha512-DSRp/XuEk6YxyVPhxZdI7vtLAXruE0JYYJ3/qV1Zh6ggTpr7c0kxE32T82o0J1IbGggkIG4kRPCSIkWONUe1dQ==
   dependencies:
     bootstrap4 twbs/bootstrap#v4.0.0
     lodash "^4.17.11"
 
-"@ovh-ux/manager-overthebox@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@ovh-ux/manager-overthebox/-/manager-overthebox-2.0.0.tgz#46db5e37d9f4959c00e13808779d3ebb7b9f2880"
-  integrity sha512-OaPzh3yzSDHhgk6E8EgrO9lMXGmvZwLtU1OgIxpQJfz1vWtC65r+BoZDf2WwhqST0iPk6K7+iyD3mPh00P95Nw==
+"@ovh-ux/manager-overthebox@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@ovh-ux/manager-overthebox/-/manager-overthebox-2.0.1.tgz#c41311ffff1bc05e8f6b4cb90f1a939daee832b7"
+  integrity sha512-khjt4gMSrY3mHQX3YLEAr+DCBLvl9uNHWxVW4A0Fo6TpLeruq2IM2g6rylw/691VQbtRZ1UyqiZodTG1mFVgfA==
   dependencies:
     lodash "4.17.11"
     moment "^2.22.2"
 
-"@ovh-ux/manager-sms@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@ovh-ux/manager-sms/-/manager-sms-3.0.0.tgz#c64c9ef6e32d9b569301ca110f4141087b8f3133"
-  integrity sha512-ty7TkqO1bPSk+pkgkB6nF1e6rUsnkl5jshpaudfuBB+8Rr4hezL3utueiUlTWFRqIHL5AHiTRgoc8vvfotEIWA==
+"@ovh-ux/manager-sms@^3.1.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@ovh-ux/manager-sms/-/manager-sms-3.1.0.tgz#3ecffc9c846dfff4b4bd2e665d0d29250e082073"
+  integrity sha512-RNpbDAHANF+lWynLd5FmznGL4BgCcmdpXgAJNxT8tsDnwMLaJY4vkzcvNk2TWkXPuCh0/avx4EJrn6rajvN+WA==
   dependencies:
     bootstrap4 twbs/bootstrap#v4.0.0
     lodash "^4.17.11"
@@ -8606,19 +8606,6 @@ node-gyp@^3.8.0:
   version "3.8.0"
   resolved "https://registry.yarnpkg.com/node-gyp/-/node-gyp-3.8.0.tgz#540304261c330e80d0d5edce253a68cb3964218c"
   integrity sha512-3g8lYefrRRzvGeSowdJKAKyks8oUpLEd/DyPV4eMhVlhJ0aNaZqIrNUIPuEWWTAoPqyFkfGrM67MC69baqn6vA==
-  dependencies:
-    fstream "^1.0.0"
-    glob "^7.0.3"
-    graceful-fs "^4.1.2"
-    mkdirp "^0.5.0"
-    nopt "2 || 3"
-    npmlog "0 || 1 || 2 || 3 || 4"
-    osenv "0"
-    request "^2.87.0"
-    rimraf "2"
-    semver "~5.3.0"
-    tar "^2.0.0"
-    which "1"
 
 node-libs-browser@^2.0.0:
   version "2.1.0"

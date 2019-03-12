@@ -166,5 +166,15 @@
       },
       icon: 'ovh-font-phoneAlt',
     },
+    'phone.yealink.t46s': {
+      img: 'https://www.ovhtelecom.fr/images/telephonie/accessories/yealink.t46s-sub.jpg',
+      additionalConfiguration: {
+        UserInterface: {
+          screens: 3,
+          keysPerScreen: 9,
+        },
+      },
+      icon: 'ovh-font-phoneAlt',
+    },
   });
 }());

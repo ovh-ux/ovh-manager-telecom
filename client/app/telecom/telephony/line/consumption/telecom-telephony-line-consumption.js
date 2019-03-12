@@ -9,7 +9,7 @@ angular.module('managerApp').config(($stateProvider) => {
       },
     },
     translations: [
-      '../consumption',
+      '.',
       '../../service/consumption',
       '../../service/consumption/incomingCalls',
       '../../service/consumption/outgoingCalls',
