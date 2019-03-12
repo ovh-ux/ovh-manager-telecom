@@ -196,4 +196,10 @@
    <translation id="telephony_line_phone_configuration_config_ldap_server_address">LdapServerAddress</translation>
    <translation id="telephony_line_phone_configuration_config_ldap_server_port">LdapServerPort</translation>
    <translation id="telephony_line_phone_configuration_config_ldap_username">LdapUsername</translation>
+
+<!-- SOFT KEY LABEL -->
+   <translation id="telephony_line_phone_configuration_config_soft_key_label_1">SoftKeyLabel1</translation>
+   <translation id="telephony_line_phone_configuration_config_soft_key_label_2">SoftKeyLabel2</translation>
+   <translation id="telephony_line_phone_configuration_config_soft_key_label_3">SoftKeyLabel3</translation>
+   <translation id="telephony_line_phone_configuration_config_soft_key_label_4">SoftKeyLabel4</translation>
 </translations>
