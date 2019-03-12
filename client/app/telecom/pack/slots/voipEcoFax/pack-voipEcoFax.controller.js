@@ -34,10 +34,7 @@ export default class PackVoipEcoFaxCtrl {
       }).$promise,
     })
       .then(({ ecofaxes }) => {
-        angular.forEach(ecofaxes, (service) => {
-          this.services.push(service);
-        });
-
+        this.services = ecofaxes;
         this.$scope.loaders.services = false;
       },
       () => {
