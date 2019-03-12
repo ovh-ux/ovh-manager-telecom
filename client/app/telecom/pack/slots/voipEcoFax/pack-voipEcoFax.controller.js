@@ -1,13 +1,17 @@
 export default class PackVoipEcoFaxCtrl {
   /* @ngInject */
   constructor(
+    $q,
     $scope,
     $stateParams,
+    OvhApiPackXdslVoipBillingAccount,
     OvhApiPackXdslVoipEcofax,
     REDIRECT_URLS,
   ) {
+    this.$q = $q;
     this.$scope = $scope;
     this.$stateParams = $stateParams;
+    this.OvhApiPackXdslVoipBillingAccount = OvhApiPackXdslVoipBillingAccount;
     this.OvhApiPackXdslVoipEcofax = OvhApiPackXdslVoipEcofax;
     this.REDIRECT_URLS = REDIRECT_URLS;
   }
@@ -21,11 +25,16 @@ export default class PackVoipEcoFaxCtrl {
     };
 
     // Get service link to this access from current Pack Xdsl
-    return this.OvhApiPackXdslVoipEcofax.v6().query({
-      packId: this.$stateParams.packName,
-    }).$promise.then(
-      (services) => {
-        angular.forEach(services, (service) => {
+    return this.$q.all({
+      ecofaxes: this.OvhApiPackXdslVoipEcofax.v6().query({
+        packId: this.$stateParams.packName,
+      }).$promise,
+      billingAccount: this.OvhApiPackXdslVoipBillingAccount.v6().query({
+        packId: this.$stateParams.packName,
+      }).$promise,
+    })
+      .then(({ ecofaxes }) => {
+        angular.forEach(ecofaxes, (service) => {
           this.services.push(service);
         });
 
@@ -33,8 +42,7 @@ export default class PackVoipEcoFaxCtrl {
       },
       () => {
         this.$scope.loaders.services = false;
-      },
-    );
+      });
   }
 
   generateV3Url(service) {
