@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 export default class PackVoipEcoFaxCtrl {
   /* @ngInject */
   constructor(
@@ -33,17 +35,13 @@ export default class PackVoipEcoFaxCtrl {
         packId: this.$stateParams.packName,
       }).$promise,
     })
-      .then(({ ecofaxes }) => {
+      .then(({ ecofaxes, billingAccount }) => {
         this.services = ecofaxes;
+        this.billingAccount = _.first(billingAccount);
       })
       .finally(() => {
         this.loaders.services = false;
       });
-  }
-
-  generateV3Url(service) {
-    // Build link to manager v3 for fax
-    return this.REDIRECT_URLS.telephony.replace('{line}', service);
   }
 }
 angular.module('managerApp').controller('PackVoipEcoFaxCtrl', PackVoipEcoFaxCtrl);
