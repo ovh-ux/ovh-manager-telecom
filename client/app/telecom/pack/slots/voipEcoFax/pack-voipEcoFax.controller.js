@@ -35,9 +35,8 @@ export default class PackVoipEcoFaxCtrl {
     })
       .then(({ ecofaxes }) => {
         this.services = ecofaxes;
-        this.$scope.loaders.services = false;
-      },
-      () => {
+      })
+      .finally(() => {
         this.$scope.loaders.services = false;
       });
   }
