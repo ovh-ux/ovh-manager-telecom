@@ -20,7 +20,7 @@ export default class PackVoipEcoFaxCtrl {
     this.details = this.$scope.service;
     this.services = [];
 
-    this.$scope.loaders = {
+    this.loaders = {
       services: true,
     };
 
@@ -37,7 +37,7 @@ export default class PackVoipEcoFaxCtrl {
         this.services = ecofaxes;
       })
       .finally(() => {
-        this.$scope.loaders.services = false;
+        this.loaders.services = false;
       });
   }
 
