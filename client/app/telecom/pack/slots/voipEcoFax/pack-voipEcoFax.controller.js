@@ -2,13 +2,13 @@ export default class PackVoipEcoFaxCtrl {
   /* @ngInject */
   constructor(
     $scope,
-    OvhApiPackXdslVoipEcofax,
     $stateParams,
+    OvhApiPackXdslVoipEcofax,
     REDIRECT_URLS,
   ) {
     this.$scope = $scope;
-    this.OvhApiPackXdslVoipEcofax = OvhApiPackXdslVoipEcofax;
     this.$stateParams = $stateParams;
+    this.OvhApiPackXdslVoipEcofax = OvhApiPackXdslVoipEcofax;
     this.REDIRECT_URLS = REDIRECT_URLS;
   }
 
