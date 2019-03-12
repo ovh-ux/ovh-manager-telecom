@@ -1,35 +1,45 @@
-angular.module('managerApp').controller('PackVoipEcoFaxCtrl', function ($scope, OvhApiPackXdslVoipEcofax, $stateParams, REDIRECT_URLS) {
-  const self = this;
+export default class PackVoipEcoFaxCtrl {
+  /* @ngInject */
+  constructor(
+    $scope,
+    OvhApiPackXdslVoipEcofax,
+    $stateParams,
+    REDIRECT_URLS,
+  ) {
+    this.$scope = $scope;
+    this.OvhApiPackXdslVoipEcofax = OvhApiPackXdslVoipEcofax;
+    this.$stateParams = $stateParams;
+    this.REDIRECT_URLS = REDIRECT_URLS;
+  }
 
-  const init = function init() {
-    self.details = $scope.service;
-    self.services = [];
+  $onInit() {
+    this.details = this.$scope.service;
+    this.services = [];
 
-    $scope.loaders = {
+    this.$scope.loaders = {
       services: true,
     };
 
     // Get service link to this access from current Pack Xdsl
-    return OvhApiPackXdslVoipEcofax.v6().query({
-      packId: $stateParams.packName,
+    return this.OvhApiPackXdslVoipEcofax.v6().query({
+      packId: this.$stateParams.packName,
     }).$promise.then(
       (services) => {
         angular.forEach(services, (service) => {
-          self.services.push(service);
+          this.services.push(service);
         });
 
-        $scope.loaders.services = false;
+        this.$scope.loaders.services = false;
       },
       () => {
-        $scope.loaders.services = false;
+        this.$scope.loaders.services = false;
       },
     );
-  };
+  }
 
-  self.generateV3Url = function (service) {
+  generateV3Url(service) {
     // Build link to manager v3 for fax
-    return REDIRECT_URLS.telephony.replace('{line}', service);
-  };
-
-  init();
-});
+    return this.REDIRECT_URLS.telephony.replace('{line}', service);
+  }
+}
+angular.module('managerApp').controller('PackVoipEcoFaxCtrl', PackVoipEcoFaxCtrl);
