@@ -1,3 +1,16 @@
+## [10.20.6](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.20.5...v10.20.6) (2019-03-12)
+
+
+### Bug Fixes
+
+* **i18n:** retrieve translations ([#1319](https://github.com/ovh-ux/ovh-manager-telecom/issues/1319)) ([8a1053f](https://github.com/ovh-ux/ovh-manager-telecom/commit/8a1053f))
+* **pack.xdsl.modem:** remove disable capabilities which generate error ([#1300](https://github.com/ovh-ux/ovh-manager-telecom/issues/1300)) ([0fad778](https://github.com/ovh-ux/ovh-manager-telecom/commit/0fad778))
+* **telephony.fax.consumption:** display called number ([#1315](https://github.com/ovh-ux/ovh-manager-telecom/issues/1315)) ([fad1247](https://github.com/ovh-ux/ovh-manager-telecom/commit/fad1247))
+* **telephony.line.phone.config:** fix config for yealink t46s ([#1316](https://github.com/ovh-ux/ovh-manager-telecom/issues/1316)) ([d15e4a2](https://github.com/ovh-ux/ovh-manager-telecom/commit/d15e4a2))
+* **telephony.line.phone.config:** update key/label for call transfer ([#1314](https://github.com/ovh-ux/ovh-manager-telecom/issues/1314)) ([3fdb545](https://github.com/ovh-ux/ovh-manager-telecom/commit/3fdb545))
+
+
+
 ## [10.20.5](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.20.4...v10.20.5) (2019-03-04)
 
 
