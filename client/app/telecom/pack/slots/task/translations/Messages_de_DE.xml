@@ -30,7 +30,7 @@
    <translation id="telecom_task_function_createHostedEmail" qtlid="111786">Erstellung eines E-Mail Accounts</translation>
    <translation id="telecom_task_function_createExchange" qtlid="305525">Création d'un compte Exchange</translation>
    <translation id="telecom_task_function_pendingMigration" qtlid="305538">Migration d'offre</translation>
-   <translation id="telecom_task_function_pendingAddressMove">Déménagement de l'offre en cours</translation>
+   <translation id="telecom_task_function_pendingAddressMove" qtlid="521119">Déménagement de l'offre en cours</translation>
    <translation id="telecom_task_function_regeneratePromoCode" qtlid="305551">Régénération du code promotionel</translation>
    <translation id="telecom_task_function_changePackOffer" qtlid="305564">Angebotswechsel</translation>
    <translation id="telecom_task_function_packXdslAddressMove" qtlid="86745">Umzug</translation>

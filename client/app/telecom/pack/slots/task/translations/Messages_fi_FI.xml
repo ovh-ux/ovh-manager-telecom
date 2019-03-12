@@ -30,7 +30,7 @@
    <translation id="telecom_task_function_createHostedEmail" qtlid="111786">Sähköpostitilin luominen</translation>
    <translation id="telecom_task_function_createExchange" qtlid="305525">Exchange-tilin luominen</translation>
    <translation id="telecom_task_function_pendingMigration" qtlid="305538">Tuotteen migraatio</translation>
-   <translation id="telecom_task_function_pendingAddressMove">Déménagement de l'offre en cours</translation>
+   <translation id="telecom_task_function_pendingAddressMove" qtlid="521119">Déménagement de l'offre en cours</translation>
    <translation id="telecom_task_function_regeneratePromoCode" qtlid="305551">Tarjouskoodin uudelleengenerointi</translation>
    <translation id="telecom_task_function_changePackOffer" qtlid="305564">Tuotteen vaihtaminen</translation>
    <translation id="telecom_task_function_packXdslAddressMove" qtlid="86745">Muutto</translation>
