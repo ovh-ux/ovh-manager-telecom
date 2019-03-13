@@ -20,6 +20,7 @@ export default class PackVoipEcoFaxCtrl {
 
   $onInit() {
     this.details = this.$scope.service;
+    this.packName = this.$stateParams.packName;
     this.services = [];
 
     this.loaders = {
@@ -29,10 +30,10 @@ export default class PackVoipEcoFaxCtrl {
     // Get service link to this access from current Pack Xdsl
     return this.$q.all({
       ecofaxes: this.OvhApiPackXdslVoipEcofax.v6().query({
-        packId: this.$stateParams.packName,
+        packId: this.packName,
       }).$promise,
       billingAccount: this.OvhApiPackXdslVoipBillingAccount.v6().query({
-        packId: this.$stateParams.packName,
+        packId: this.packName,
       }).$promise,
     })
       .then(({ ecofaxes, billingAccount }) => {
