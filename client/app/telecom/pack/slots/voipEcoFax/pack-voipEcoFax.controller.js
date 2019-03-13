@@ -6,15 +6,19 @@ export default class PackVoipEcoFaxCtrl {
     $q,
     $scope,
     $stateParams,
+    $translate,
     OvhApiPackXdslVoipBillingAccount,
     OvhApiPackXdslVoipEcofax,
+    TucToast,
     REDIRECT_URLS,
   ) {
     this.$q = $q;
     this.$scope = $scope;
     this.$stateParams = $stateParams;
+    this.$translate = $translate;
     this.OvhApiPackXdslVoipBillingAccount = OvhApiPackXdslVoipBillingAccount;
     this.OvhApiPackXdslVoipEcofax = OvhApiPackXdslVoipEcofax;
+    this.TucToast = TucToast;
     this.REDIRECT_URLS = REDIRECT_URLS;
   }
 
@@ -39,6 +43,10 @@ export default class PackVoipEcoFaxCtrl {
       .then(({ ecofaxes, billingAccount }) => {
         this.services = ecofaxes;
         this.billingAccount = _.first(billingAccount);
+      })
+      .catch((error) => {
+        this.TucToast.error(this.$translate.instant('ecofax_pro_loading_error'));
+        return this.$q.reject(error);
       })
       .finally(() => {
         this.loaders.services = false;
