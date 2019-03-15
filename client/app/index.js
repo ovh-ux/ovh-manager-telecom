@@ -59,7 +59,6 @@ import 'ovh-angular-checkbox-table';
 import 'script-loader!intl-tel-input/build/js/intlTelInput.min.js';
 import 'script-loader!intl-tel-input/lib/libphonenumber/build/utils.js';
 import 'script-loader!@bower_components/international-phone-number/releases/international-phone-number.js';
-import 'ovh-angular-swimming-poll';
 import 'ovh-api-services';
 import 'ovh-angular-contact';
 import 'script-loader!jquery.scrollto';
