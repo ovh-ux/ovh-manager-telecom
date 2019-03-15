@@ -1,3 +1,5 @@
+import ngAtInternet from '@ovh-ux/ng-at-internet';
+import ngAtInternetUiRouterPlugin from '@ovh-ux/ng-at-internet-ui-router-plugin';
 import ngOvhApiWrappers from '@ovh-ux/ng-ovh-api-wrappers';
 import ngOvhHttp from '@ovh-ux/ng-ovh-http';
 import ngOvhSsoAuth from '@ovh-ux/ng-ovh-sso-auth';
@@ -20,7 +22,6 @@ angular.module('managerApp', [
   'angular-ellipses',
   'angular-inview',
   'angular-translate-loader-pluggable',
-  'atInternetUiRouterPlugin',
   managerCore,
   managerDashboard,
   managerFreefax,
@@ -29,9 +30,10 @@ angular.module('managerApp', [
   managerTelecomTask,
   'matchmedia-ng',
   'momentjs',
-  'ng-at-internet',
   'ngAnimate',
   'ngAria',
+  ngAtInternet,
+  ngAtInternetUiRouterPlugin,
   'ngCookies',
   'ngCsv',
   'ngFlash',
