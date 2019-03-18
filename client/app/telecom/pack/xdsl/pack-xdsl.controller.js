@@ -79,6 +79,7 @@ angular.module('managerApp').controller('PackXdslCtrl',
           self.content.back.state = '^';
           getXdsl().then((xdsl) => {
             self.content.status = xdsl.status;
+            self.content.accessType = xdsl.accessType;
           });
           break;
         case 'telecom.pack.xdsl.modem':
@@ -88,6 +89,7 @@ angular.module('managerApp').controller('PackXdslCtrl',
           self.content.back.state = 'telecom.pack';
           getXdsl().then((xdsl) => {
             self.content.status = xdsl.status;
+            self.content.accessType = xdsl.accessType;
           });
           break;
         default:
@@ -103,7 +105,11 @@ angular.module('managerApp').controller('PackXdslCtrl',
     self.updateUIForState($state.current);
 
     self.isModemTabAvailable = function () {
-      return availableModemTabStatus.indexOf(self.content.status) > -1;
+      // Modem tab not available for SDSL access
+      if (self.content.accessType !== 'sdsl') {
+        return availableModemTabStatus.indexOf(self.content.status) > -1;
+      }
+      return false;
     };
 
     /*= =============================
