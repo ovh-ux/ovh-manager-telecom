@@ -6,6 +6,7 @@ angular.module('managerApp').controller('PackXdslCtrl',
     const noModemStatus = 404;
     const self = this;
     const availableModemTabStatus = ['active', 'migration', 'upgradeOffer'];
+    const SDSL = 'sdsl';
 
     self.loading = {
       init: false,
@@ -54,7 +55,7 @@ angular.module('managerApp').controller('PackXdslCtrl',
 
     this.updateUIForState = function (state) {
       self.currentState = state.name;
-      if ($stateParams.packName === 'sdsl') {
+      if ($stateParams.packName === SDSL) {
         if (state.name === 'telecom.pack.xdsl' || state.name === 'telecom.pack.xdsl.modem' || state.name === 'telecom.pack.xdsl.tasks') {
           setAnim('anim');
           return;
@@ -106,7 +107,7 @@ angular.module('managerApp').controller('PackXdslCtrl',
 
     self.isModemTabAvailable = function () {
       // Modem tab not available for SDSL access
-      if (self.content.accessType !== 'sdsl') {
+      if (self.content.accessType !== SDSL) {
         return availableModemTabStatus.indexOf(self.content.status) > -1;
       }
       return false;
