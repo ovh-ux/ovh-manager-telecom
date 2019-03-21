@@ -1,3 +1,24 @@
+# [10.21.0](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.20.6...v10.21.0) (2019-03-21)
+
+
+### Bug Fixes
+
+* **i18n:** retrieve translations ([2ca1905](https://github.com/ovh-ux/ovh-manager-telecom/commit/2ca1905))
+* **i18n:** submit translations ([eb95f9b](https://github.com/ovh-ux/ovh-manager-telecom/commit/eb95f9b))
+* **pack.ecofax:** warn user if an error occured ([37f5ac8](https://github.com/ovh-ux/ovh-manager-telecom/commit/37f5ac8))
+* **pack.sdsl.nav:** hide modem tab for sdsl pack ([f205fa1](https://github.com/ovh-ux/ovh-manager-telecom/commit/f205fa1))
+* **pack.xdsl:** add constant file for available modem tab status ([5d3230d](https://github.com/ovh-ux/ovh-manager-telecom/commit/5d3230d))
+* **pack.xdsl:** use constant instead of string ([20fad49](https://github.com/ovh-ux/ovh-manager-telecom/commit/20fad49))
+
+
+### Features
+
+* **config:** update domain url ([d175ddf](https://github.com/ovh-ux/ovh-manager-telecom/commit/d175ddf))
+* **pack.ecofax:** fetch voipBillingAccount ([3ccd272](https://github.com/ovh-ux/ovh-manager-telecom/commit/3ccd272))
+* **pack.ecofax:** redirect to telephony ecofax section ([fff35b3](https://github.com/ovh-ux/ovh-manager-telecom/commit/fff35b3))
+
+
+
 ## [10.20.6](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.20.5...v10.20.6) (2019-03-12)
 
 
