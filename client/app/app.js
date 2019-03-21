@@ -1,7 +1,10 @@
-import ngOvhApiv7 from '@ovh-ux/ng-ovh-apiv7';
+import ngAtInternet from '@ovh-ux/ng-at-internet';
+import ngAtInternetUiRouterPlugin from '@ovh-ux/ng-at-internet-ui-router-plugin';
+import ngOvhApiWrappers from '@ovh-ux/ng-ovh-api-wrappers';
 import ngOvhHttp from '@ovh-ux/ng-ovh-http';
 import ngOvhSsoAuth from '@ovh-ux/ng-ovh-sso-auth';
 import ngOvhSsoAuthModalPlugin from '@ovh-ux/ng-ovh-sso-auth-modal-plugin';
+import ngOvhSwimmingPoll from '@ovh-ux/ng-ovh-swimming-poll';
 import ngOvhTelecomUniverseComponents from '@ovh-ux/ng-ovh-telecom-universe-components';
 import ngPaginationFront from '@ovh-ux/ng-pagination-front';
 import ngTailLogs from '@ovh-ux/ng-tail-logs';
@@ -19,7 +22,6 @@ angular.module('managerApp', [
   'angular-ellipses',
   'angular-inview',
   'angular-translate-loader-pluggable',
-  'atInternetUiRouterPlugin',
   managerCore,
   managerDashboard,
   managerFreefax,
@@ -28,9 +30,10 @@ angular.module('managerApp', [
   managerTelecomTask,
   'matchmedia-ng',
   'momentjs',
-  'ng-at-internet',
   'ngAnimate',
   'ngAria',
+  ngAtInternet,
+  ngAtInternetUiRouterPlugin,
   'ngCookies',
   'ngCsv',
   'ngFlash',
@@ -39,10 +42,11 @@ angular.module('managerApp', [
   'ngPassword',
   'ngResource',
   'ngSanitize',
-  ngOvhApiv7,
+  ngOvhApiWrappers,
   ngOvhHttp,
   ngOvhSsoAuth,
   ngOvhSsoAuthModalPlugin,
+  ngOvhSwimmingPoll,
   ngOvhTelecomUniverseComponents,
   ngPaginationFront,
   ngTailLogs,
@@ -58,7 +62,6 @@ angular.module('managerApp', [
   'ovh-angular-responsive-tabs',
   'ovh-angular-sidebar-menu',
   'ovh-angular-simple-country-list',
-  'ovh-angular-swimming-poll',
   'ovh-angular-timeline',
   'ovh-angular-ui-confirm-modal',
   'ovh-api-services',

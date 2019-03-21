@@ -1,35 +1,56 @@
-angular.module('managerApp').controller('PackVoipEcoFaxCtrl', function ($scope, OvhApiPackXdslVoipEcofax, $stateParams, REDIRECT_URLS) {
-  const self = this;
+import _ from 'lodash';
 
-  const init = function init() {
-    self.details = $scope.service;
-    self.services = [];
+export default class PackVoipEcoFaxCtrl {
+  /* @ngInject */
+  constructor(
+    $q,
+    $scope,
+    $stateParams,
+    $translate,
+    OvhApiPackXdslVoipBillingAccount,
+    OvhApiPackXdslVoipEcofax,
+    TucToast,
+    REDIRECT_URLS,
+  ) {
+    this.$q = $q;
+    this.$scope = $scope;
+    this.$stateParams = $stateParams;
+    this.$translate = $translate;
+    this.OvhApiPackXdslVoipBillingAccount = OvhApiPackXdslVoipBillingAccount;
+    this.OvhApiPackXdslVoipEcofax = OvhApiPackXdslVoipEcofax;
+    this.TucToast = TucToast;
+    this.REDIRECT_URLS = REDIRECT_URLS;
+  }
 
-    $scope.loaders = {
+  $onInit() {
+    this.details = this.$scope.service;
+    this.packName = this.$stateParams.packName;
+    this.services = [];
+
+    this.loaders = {
       services: true,
     };
 
     // Get service link to this access from current Pack Xdsl
-    return OvhApiPackXdslVoipEcofax.v6().query({
-      packId: $stateParams.packName,
-    }).$promise.then(
-      (services) => {
-        angular.forEach(services, (service) => {
-          self.services.push(service);
-        });
-
-        $scope.loaders.services = false;
-      },
-      () => {
-        $scope.loaders.services = false;
-      },
-    );
-  };
-
-  self.generateV3Url = function (service) {
-    // Build link to manager v3 for fax
-    return REDIRECT_URLS.telephony.replace('{line}', service);
-  };
-
-  init();
-});
+    return this.$q.all({
+      ecofaxes: this.OvhApiPackXdslVoipEcofax.v6().query({
+        packId: this.packName,
+      }).$promise,
+      billingAccount: this.OvhApiPackXdslVoipBillingAccount.v6().query({
+        packId: this.packName,
+      }).$promise,
+    })
+      .then(({ ecofaxes, billingAccount }) => {
+        this.services = ecofaxes;
+        this.billingAccount = _.first(billingAccount);
+      })
+      .catch((error) => {
+        this.TucToast.error(this.$translate.instant('ecofax_pro_loading_error'));
+        return this.$q.reject(error);
+      })
+      .finally(() => {
+        this.loaders.services = false;
+      });
+  }
+}
+angular.module('managerApp').controller('PackVoipEcoFaxCtrl', PackVoipEcoFaxCtrl);

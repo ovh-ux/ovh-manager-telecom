@@ -1,11 +1,10 @@
 /* global setTimeout */
 angular.module('managerApp').controller('PackXdslCtrl',
   function ($q, $state, $transitions, $translate, $stateParams, OvhApiPackXdsl, OvhApiXdsl,
-    OvhApiXdslModem, SidebarMenu, smoothScroll, TucToast, TucToastError) {
+    OvhApiXdslModem, SidebarMenu, smoothScroll, TucToast, TucToastError, PACK_XDSL) {
     const animTime = 1500;
     const noModemStatus = 404;
     const self = this;
-    const availableModemTabStatus = ['active', 'migration', 'upgradeOffer'];
 
     self.loading = {
       init: false,
@@ -54,7 +53,7 @@ angular.module('managerApp').controller('PackXdslCtrl',
 
     this.updateUIForState = function (state) {
       self.currentState = state.name;
-      if ($stateParams.packName === 'sdsl') {
+      if ($stateParams.packName === PACK_XDSL.sdsl) {
         if (state.name === 'telecom.pack.xdsl' || state.name === 'telecom.pack.xdsl.modem' || state.name === 'telecom.pack.xdsl.tasks') {
           setAnim('anim');
           return;
@@ -79,6 +78,7 @@ angular.module('managerApp').controller('PackXdslCtrl',
           self.content.back.state = '^';
           getXdsl().then((xdsl) => {
             self.content.status = xdsl.status;
+            self.content.accessType = xdsl.accessType;
           });
           break;
         case 'telecom.pack.xdsl.modem':
@@ -88,6 +88,7 @@ angular.module('managerApp').controller('PackXdslCtrl',
           self.content.back.state = 'telecom.pack';
           getXdsl().then((xdsl) => {
             self.content.status = xdsl.status;
+            self.content.accessType = xdsl.accessType;
           });
           break;
         default:
@@ -103,7 +104,11 @@ angular.module('managerApp').controller('PackXdslCtrl',
     self.updateUIForState($state.current);
 
     self.isModemTabAvailable = function () {
-      return availableModemTabStatus.indexOf(self.content.status) > -1;
+      // Modem tab not available for SDSL access
+      if (self.content.accessType !== PACK_XDSL.sdsl) {
+        return PACK_XDSL.availableModemTabStatus.includes(self.content.status);
+      }
+      return false;
     };
 
     /*= =============================
