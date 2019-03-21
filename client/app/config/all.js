@@ -179,7 +179,7 @@ angular.module('managerApp').constant('LANGUAGES', {
     oldV6ServiceMove: 'https://www.ovhtelecom.fr/espaceclient/index.html#/administration/move/',
     oldV6ServiceTransfert: 'https://www.ovhtelecom.fr/espaceclient/index.html#/administration/changeOffer/',
     oldV6ServiceResiliate: 'https://www.ovhtelecom.fr/espaceclient/index.html#/administration/terminate/',
-    domain: 'https://www.ovh.com/manager/web/#/configuration/domain/{domain}?tab=GENERAL_INFORMATIONS',
+    domain: 'https://www.ovh.com/manager/web/#/configuration/domain/{domain}',
     deskaas: 'https://www.ovh.com/manager/sunrise/index.html#/deskaas',
     exchangeAccount: 'https://www.ovh.com/manager/web/index.html#/configuration/exchange_hosted/{organizationName}/{exchangeService}?tab=ACCOUNT',
   })
