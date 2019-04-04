@@ -1,3 +1,12 @@
+## [10.22.2](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.22.1...v10.22.2) (2019-04-04)
+
+
+### Features
+
+* **telephony.line.details:** display web informations only for yealink ([#1337](https://github.com/ovh-ux/ovh-manager-telecom/issues/1337)) ([4ad0930](https://github.com/ovh-ux/ovh-manager-telecom/commit/4ad0930))
+
+
+
 ## [10.22.1](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.22.0...v10.22.1) (2019-04-04)
 
 
