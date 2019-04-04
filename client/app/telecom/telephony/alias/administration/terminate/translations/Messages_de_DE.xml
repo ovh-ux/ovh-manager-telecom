@@ -22,6 +22,6 @@
    <translation id="telephony_alias_administration_terminate_pool_warning" qtlid="392060">Tous les numéros de cette plage seront résiliés.</translation>
    <translation id="telephony_alias_administration_terminate" qtlid="48646">Kündigen</translation>
    <translation id="telephony_alias_administration_terminate_success" qtlid="392073">Résiliation planifiée avec succès.</translation>
-   <translation id="telephony_alias_administration_cancel_termination" qtlid="285350">Die Kündigung zurücknehmen</translation>
+   <translation id="telephony_alias_administration_cancel_termination" qtlid="285350">Kündigung zurücknehmen</translation>
    <translation id="telephony_alias_administration_cancel_termination_success" qtlid="392086">Résiliation annulée.</translation>
 </translations>
