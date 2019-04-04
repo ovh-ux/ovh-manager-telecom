@@ -19,7 +19,7 @@
    <translation id="telephony_service_fax_campaigns_status_stopDoing" qtlid="391358">Stoppé en cours</translation>
    <translation id="telephony_service_fax_campaigns_status_error" qtlid="45508">Fehler</translation>
    <translation id="telephony_service_fax_campaigns_status_done" qtlid="8662">Beendet</translation>
-   <translation id="telephony_service_fax_campaigns_success" qtlid="391371">Succès</translation>
+   <translation id="telephony_service_fax_campaigns_success" qtlid="391371">Erfolgreich</translation>
    <translation id="telephony_service_fax_campaigns_success_partial" qtlid="391384">Succès partiel</translation>
    <translation id="telephony_service_fax_campaigns_success_not_available" qtlid="26095">Nicht verfügbar</translation>
    <translation id="telephony_service_fax_campaigns_success_failed" qtlid="330825">Gescheitert</translation>

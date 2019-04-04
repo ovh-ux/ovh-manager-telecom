@@ -454,35 +454,35 @@
                         </p>
                     </div>
 
-                    <!-- WAYNAME -->
+                    <!-- ADDRESS -->
                     <div class="form-group"
                          data-ng-class="{
-                             'has-error': contactForm.contactWayname.$invalid && contactForm.contactWayname.$touched
+                             'has-error': contactForm.contactAddress.$invalid && contactForm.contactAddress.$touched
                          }">
-                        <label for="contactWayname"
+                        <label for="contactAddress"
                                class="control-label">
-                            <span data-translate="telephony_service_contact_wayname"></span>
+                            <span data-translate="telephony_service_contact_address"></span>
                             <oui-spinner class="ml-1"
                                          data-ng-if="ServiceContactCtrl.isWayListLoading"
                                          data-size="s">
                             </oui-spinner>
                         </label>
                         <input type="text"
-                               id="contactWayname"
-                               name="contactWayname"
+                               id="contactAddress"
+                               name="contactAddress"
                                class="form-control"
                                required
                                data-ng-if="ServiceContactCtrl.isEditing"
-                               data-ng-model="ServiceContactCtrl.directoryForm.wayName"
+                               data-ng-model="ServiceContactCtrl.directoryForm.address"
                                data-ng-model-options="{ debounce: 300 }" />
                         <p class="form-control-static"
                            data-ng-if="!ServiceContactCtrl.isEditing"
-                           data-ng-bind="ServiceContactCtrl.directoryForm.wayName || '-'">
+                           data-ng-bind="ServiceContactCtrl.directoryForm.address || '-'">
                         </p>
                         <span class="help-block"
                               role="alert"
-                              data-ng-if="contactForm.contactWayname.$touched"
-                              data-ng-messages="contactForm.contactWayname.$error">
+                              data-ng-if="contactForm.contactAddress.$touched"
+                              data-ng-messages="contactForm.contactAddress.$error">
                             <span data-ng-message="required"
                                   data-translate="telephony_service_contact_must_fill">
                             </span>
