@@ -6,6 +6,7 @@ angular.module('managerApp').controller('TelecomTelephonyLineDetailsCtrl', class
     this.currentLine = currentLine;
     this.TucNumberPlans = TucNumberPlans;
     this.TelephonyMediator = TelephonyMediator;
+    this.isYealinkPhone = null;
   }
 
   $onInit() {
@@ -32,6 +33,12 @@ angular.module('managerApp').controller('TelecomTelephonyLineDetailsCtrl', class
         if (_.some(_.words(this.line.offers), offer => _.includes(['sipfax', 'priceplan', 'trunk'], offer))) {
           this.hasSimultaneousCallsOption = true;
           this.isTrunkRates = _.some(this.line.offers, offer => _.startsWith(offer, 'voip.main.offer.fr.trunk.rates'));
+        }
+        if (this.line.phone) {
+          this.isYealinkPhone = false;
+          if (this.line.phone.brand.indexOf('yealink') > -1) {
+            this.isYealinkPhone = true;
+          }
         }
       });
     }).finally(() => {

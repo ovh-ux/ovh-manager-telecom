@@ -79,6 +79,24 @@
             </section>
             <!-- /.widget-presentation -->
 
+            <!-- WEB INTERFACE INFORMATIONS ONLY FOR YEALINK PHONES -->
+            <section class="col-xs-12 col-md-6 widget-presentation" data-ng-if="::$ctrl.isYealinkPhone">
+                <header class="widget-presentation-header">
+                    <h2 class="widget-presentation-title"
+                        data-translate="telephony_line_details_global_web_title"></h2>
+                </header>
+                <dl>
+                    <!-- user -->
+                    <dt data-translate="telephony_line_details_web_user_label"></dt>
+                    <dd data-translate="telephony_line_details_web_user"></dd>
+
+                    <!-- password-->
+                    <dt data-translate="telephony_line_details_web_user_password"></dt>
+                    <dd data-ng-bind="::$ctrl.line.phone.userPassword || '-'"></dd>
+                </dl>
+            </section>
+            <!-- /.widget-presentation-->
+
         </div>
         <!-- /.row -->
 
