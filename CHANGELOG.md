@@ -1,3 +1,19 @@
+# [10.22.0](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.21.0...v10.22.0) (2019-04-04)
+
+
+### Bug Fixes
+
+* **i18n:** retrieve translations ([44d2efd](https://github.com/ovh-ux/ovh-manager-telecom/commit/44d2efd))
+* **i18n:** submit translations ([324e41d](https://github.com/ovh-ux/ovh-manager-telecom/commit/324e41d))
+
+
+### Features
+
+* **telephony.line.details:** add web interface informations ([#1331](https://github.com/ovh-ux/ovh-manager-telecom/issues/1331)) ([e2bd95a](https://github.com/ovh-ux/ovh-manager-telecom/commit/e2bd95a))
+* **telephony.service.contact:** use address for updating contact ([#1332](https://github.com/ovh-ux/ovh-manager-telecom/issues/1332)) ([c2e1754](https://github.com/ovh-ux/ovh-manager-telecom/commit/c2e1754))
+
+
+
 # [10.21.0](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.20.6...v10.21.0) (2019-03-21)
 
 
