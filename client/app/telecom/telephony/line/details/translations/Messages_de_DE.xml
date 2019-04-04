@@ -13,11 +13,6 @@
    <translation id="telephony_line_details_group_label" qtlid="9238">Beschreibung</translation>
    <translation id="telephony_line_details_group_id" qtlid="43936">Name der Gruppe</translation>
 
-   <translation id="telephony_line_details_global_web_title">Informations sur l'interface web</translation>
-   <translation id="telephony_line_details_web_user_label">Nom d'utilisateur</translation>
-   <translation id="telephony_line_details_web_user">user</translation>
-   <translation id="telephony_line_details_web_user_password">Mot de passe</translation>
-
    <translation id="telephony_line_details_hardware_title" qtlid="359514">Informations sur le matériel</translation>
    <translation id="telephony_line_details_hardware_model" qtlid="26143">Modell</translation>
    <translation id="telephony_line_details_hardware_combi" qtlid="359527">Combiné</translation>
