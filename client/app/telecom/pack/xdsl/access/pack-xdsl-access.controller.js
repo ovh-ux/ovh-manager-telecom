@@ -54,7 +54,6 @@ angular.module('managerApp').controller('XdslAccessCtrl', class XdslAccessCtrl {
       rangeOfBaseIpv4IP: this.PACK_IP.baseIpv4Range,
     };
 
-    this.getLinesDetails();
     this.initTemplateCaches();
 
     this.$scope.notificationsChanged = (elements) => {
@@ -90,26 +89,26 @@ angular.module('managerApp').controller('XdslAccessCtrl', class XdslAccessCtrl {
       Until the task is finished, the diagnostic we get from
       the API is IRRELEVANT and should not be displayed to the user.
     */
-    this.$rootScope.$on('accessDiagnosticDetails:launch', () => {
-      this.launchDiagnostic();
-    });
+    this.$rootScope.$on('accessDiagnosticDetails:launch', () => this.launchDiagnostic());
 
     this.$rootScope.$on('accessDiagnosticDetails:get', () => {
+      let launchDiagnostic;
       if (!this.accessDiagnostic && !this.$scope.loaders.accessDiagnosticLaunched) {
-        this.launchDiagnostic();
+        launchDiagnostic = this.launchDiagnostic();
       }
       this.$rootScope.$broadcast('accessDiagnosticDetails:arrived', this.accessDiagnostic);
+      return launchDiagnostic;
     });
 
     this.diagPollerTicket = this.XdslTaskPoller.register('accessDiagnosticRun', () => {
       this.$scope.loaders.accessDiagnosticLaunched = false;
-      this.getDiagnostic();
+      return this.getDiagnostic();
     });
 
     this.additionalIpPollerTicket = this.XdslTaskPoller.register(
       'pendingOrderAdditionalIpOption', () => {
-        this.getIps();
         this.ordering = false;
+        return this.getIps();
       },
     );
 
@@ -118,14 +117,17 @@ angular.module('managerApp').controller('XdslAccessCtrl', class XdslAccessCtrl {
       this.XdslTaskPoller.unregister(this.additionalIpPollerTicket);
     });
 
-    this.getDiagnostic();
+    return this.$q.all([
+      this.getLinesDetails(),
+      this.getDiagnostic(),
+    ]);
   }
 
   openDetailsPopup() {
     if (this.accessDiagnostic === null && !this.$scope.loaders.accessDiagnosticLaunched) {
       this.launchDiagnostic();
     }
-    this.$state.go('telecom.pack.xdsl.access-diagnostic-details');
+    return this.$state.go('telecom.pack.xdsl.access-diagnostic-details');
   }
 
   launchDiagnostic() {
@@ -258,7 +260,7 @@ angular.module('managerApp').controller('XdslAccessCtrl', class XdslAccessCtrl {
       error => this.onTaskPollError(error),
     );
 
-    this.$q.allSettled([
+    return this.$q.allSettled([
       // Get access Details
       this.OvhApiXdsl.v6().get({
         xdslId: this.$stateParams.serviceName,
