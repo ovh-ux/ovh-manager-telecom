@@ -126,6 +126,10 @@ angular.module('managerApp').controller('XdslAccessCtrl', class XdslAccessCtrl {
     ]);
   }
 
+  isLoading() {
+    return this.$scope.loaders.details || this.$scope.loaders.tasks || this.$scope.loaders.incident;
+  }
+
   openDetailsPopup() {
     if (this.accessDiagnostic === null && !this.$scope.loaders.accessDiagnosticLaunched) {
       this.launchDiagnostic();
