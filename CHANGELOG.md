@@ -1,3 +1,18 @@
+# [10.23.0](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.22.2...v10.23.0) (2019-04-10)
+
+
+### Bug Fixes
+
+* **i18n:** retrieve translations ([908f3cd](https://github.com/ovh-ux/ovh-manager-telecom/commit/908f3cd))
+* **i18n:** submit translations ([f6bd25c](https://github.com/ovh-ux/ovh-manager-telecom/commit/f6bd25c))
+
+
+### Features
+
+* **telepony.line.calls:** add tooltip on simultaneous lines ([#1343](https://github.com/ovh-ux/ovh-manager-telecom/issues/1343)) ([8d78159](https://github.com/ovh-ux/ovh-manager-telecom/commit/8d78159))
+
+
+
 ## [10.22.2](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.22.1...v10.22.2) (2019-04-04)
 
 
