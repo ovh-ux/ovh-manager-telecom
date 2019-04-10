@@ -60,4 +60,5 @@
    <translation id="telephony_line_actions_line_calls_trunk_simultaneous_channels_price_per_month" qtlid="479837">/ par mois</translation>
    <translation id="telephony_line_actions_line_calls_trunk_simultaneous_channels_bandwidth_rate" qtlid="479850">{{bandwidth}} Kbps</translation>
 
+   <translation id="telephony_line_actions_line_calls_simultaneous_tooltip">Le nombre d'appels simultanés est dépendant de votre matériel, veuillez-vous référer à sa documentation pour plus d'informations.</translation>
 </translations>
