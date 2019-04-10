@@ -223,6 +223,7 @@ angular.module('managerApp').constant('LANGUAGES', {
     graphicCharter: 'http://s.svaplus.fr/mmdia/a/48/5/11439485prvpu.pdf',
     svaToSvaPlus: 'http://s.svaplus.fr/mmdia/a/76/7/11442767lidlp.pdf',
     telecomWebSite: 'https://www.ovhtelecom.fr/',
+    xdslIncident: 'https://www.ovhtelecom.fr/xdsl/incident/#/',
   })
   .constant('TASK_STATUS', {
     cancelled: {

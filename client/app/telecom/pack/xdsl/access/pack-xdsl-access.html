@@ -1,12 +1,12 @@
 <section class="telecom-pack-xdsl-access" data-ui-view="accessView">
 
-    <div class="text-center" data-ng-if="loaders.details || loaders.tasks">
+    <div class="text-center" data-ng-if="loaders.details || loaders.tasks || loaders.tasks">
         <oui-spinner></oui-spinner>
     </div>
 
     <tuc-toast-message></tuc-toast-message>
 
-    <div data-ng-if="!loaders.details && !loaders.tasks">
+    <div data-ng-if="!loaders.details && !loaders.tasks && !loaders.incident">
 
         <div class="row d-md-flex mb-5">
             <div class="col-xs-12 col-md-6">
@@ -29,15 +29,30 @@
                                                 <span data-translate="xdsl_details_diagnostic_modal_button"></span>
                                             </oui-button>
                                         </div>
-                                        <p data-ng-if="!access.xdsl.isFiber" data-translate="xdsl_details_diagnostic_description"></p>
-                                        <p data-ng-if="access.xdsl.isFiber" data-translate="xdsl_details_diagnostic_not_yet_available"></p>
-                                        <button class="oui-button oui-button_full-width oui-button_icon-right oui-button_secondary"
-                                                data-ui-sref="telecom.pack.xdsl.access-diagnostic"
-                                                data-ng-disabled="access.xdsl.isFiber">
-                                            <span data-translate="xdsl_details_button_diagnostic"></span>
-                                            <span class="oui-icon oui-icon_circle oui-icon-chevron-right"
-                                                  aria-hidden="true"></span>
-                                        </button>
+                                        <div data-ng-if="!XdslAccess.hasIncidentOccured">
+                                            <p data-ng-if="!access.xdsl.isFiber" data-translate="xdsl_details_diagnostic_description"></p>
+                                            <p data-ng-if="access.xdsl.isFiber" data-translate="xdsl_details_diagnostic_not_yet_available"></p>
+                                            <button class="oui-button oui-button_full-width oui-button_icon-right oui-button_secondary"
+                                                    data-ui-sref="telecom.pack.xdsl.access-diagnostic"
+                                                    data-ng-disabled="access.xdsl.isFiber">
+                                                <span data-translate="xdsl_details_button_diagnostic"></span>
+                                                <span class="oui-icon oui-icon_circle oui-icon-chevron-right"
+                                                      aria-hidden="true"></span>
+                                            </button>
+                                        </div>
+                                        <div data-ng-if="XdslAccess.hasIncidentOccured">
+                                            <oui-message data-type="warning">
+                                                <p data-translate="xdsl_details_diagnostic_known_incident"></p>
+                                                <span class="text-nowrap"
+                                                      data-translate="xdsl_details_diagnostic_known_incident_details"></span>
+                                                <a class="oui-link"
+                                                   data-ng-href="{{:: XdslAccess.URLS.xdslIncident }}"
+                                                   rel="noopener"
+                                                   target="_blank">
+                                                    <span data-ng-bind="XdslAccess.URLS.xdslIncident"></span>
+                                                </a>
+                                            </oui-message>
+                                        </div>
                                     </div>
                                 </div>
                             </li>
