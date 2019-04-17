@@ -332,6 +332,7 @@ class ManagerNavbarService {
 
   getAssistanceMenu({ ovhSubsidiary: subsidiary }) {
     const mustDisplayNewMenu = ['FR'].includes(subsidiary);
+    const mustDisplayChatbot = ['FR'].includes(subsidiary);
     const currentSubsidiaryURLs = this.URLS || {};
 
     const assistanceMenuItems = [
@@ -382,6 +383,17 @@ class ManagerNavbarService {
           type: 'action',
         }),
         mustBeKept: _.has(currentSubsidiaryURLs, 'support_contact'),
+      },
+      {
+        title: `${this.$translate.instant('common_menu_support_chatbot')} <sup class="oui-color-california">OVH Chat</sup>`,
+        click: () => {
+          this.$rootScope.$broadcast('ovh-chatbot:open');
+          this.atInternet.trackClick({
+            name: 'assistance::chatbot',
+            type: 'action',
+          });
+        },
+        mustBeKept: mustDisplayChatbot,
       },
     ];
 

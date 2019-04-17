@@ -7,7 +7,7 @@
    <translation id="telephony_line_calls_actions_line_forwardcall" qtlid="93355">Call forwarding</translation>
    <translation id="telephony_line_calls_actions_line_displayNumber" qtlid="58532">Caller ID</translation>
    <translation id="telephony_line_calls_actions_line_simultaneouslines" qtlid="303718">Appels simultanés</translation>
-   <translation id="telephony_line_calls_actions_line_manage_slots" qtlid="335154">Gérer les plages horaires</translation>
+   <translation id="telephony_line_calls_actions_line_manage_slots" qtlid="335154">Manage time slots</translation>
    <translation id="telephony_line_calls_actions_line_calendar" qtlid="335167">Gérer les fermetures exceptionnelles</translation>
    <translation id="telephony_line_calls_actions_line_callWaiting" qtlid="335180">Double appel et Intercom</translation>
    <translation id="telephony_line_calls_actions_line_abbreviated_numbers" qtlid="334192">Numéros abrégés</translation>

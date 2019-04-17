@@ -27,8 +27,8 @@
 
    <translation id="telephony_alias_config_contactCenterSolution_timeCondition_footer_save_question" qtlid="395934">Salvare la configurazione?</translation>
 
-   <translation id="telephony_line_calls_time_condition_bulk_all_success" qtlid="457714">La configuration des plages horaires a bien été appliquée aux services sélectionnés.</translation>
-   <translation id="telephony_line_calls_time_condition_bulk_some_success" qtlid="457727">La configuration des plages horaires a bien été appliquée à {{ count }} des services sélectionnés.</translation>
-   <translation id="telephony_line_calls_time_condition_bulk_error" qtlid="457740">La configuration des plages horaires n'a pas pu être appliquée au(x) service(s) suivant(s) :</translation>
-   <translation id="telephony_line_calls_time_condition_bulk_on_error" qtlid="457753">Oups ! Une erreur est survenue lors de l'application de la configuration des plages horaires.</translation>
+   <translation id="telephony_line_calls_time_condition_bulk_all_success" qtlid="457714">La configurazione delle fasce orarie è stata correttamente applicata ai servizi selezionati.</translation>
+   <translation id="telephony_line_calls_time_condition_bulk_some_success" qtlid="457727">La configurazione delle fasce orarie è stata correttamente applicata a {{ count }} dei servizi selezionati.</translation>
+   <translation id="telephony_line_calls_time_condition_bulk_error" qtlid="457740">Impossibile applicare la configurazione delle fasce orarie a questi servizi:</translation>
+   <translation id="telephony_line_calls_time_condition_bulk_on_error" qtlid="457753">Ops! Si è verificato un errore durante l'applicazione della configurazione delle fasce orarie.</translation>
 </translations>
