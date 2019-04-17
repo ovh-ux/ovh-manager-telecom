@@ -1,3 +1,18 @@
+# [10.24.0](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.23.0...v10.24.0) (2019-04-17)
+
+
+### Bug Fixes
+
+* **i18n:** retrieve translations ([3f4a325](https://github.com/ovh-ux/ovh-manager-telecom/commit/3f4a325))
+* **i18n:** submit translations ([ae0f590](https://github.com/ovh-ux/ovh-manager-telecom/commit/ae0f590))
+
+
+### Features
+
+* add chatbot accessible from the assistance menu ([#1350](https://github.com/ovh-ux/ovh-manager-telecom/issues/1350)) ([df0e8ed](https://github.com/ovh-ux/ovh-manager-telecom/commit/df0e8ed))
+
+
+
 # [10.23.0](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.22.2...v10.23.0) (2019-04-10)
 
 
