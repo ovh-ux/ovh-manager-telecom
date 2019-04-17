@@ -12,7 +12,7 @@
    <translation id="telephony_alias_configuration_actions_number_hunting_members" qtlid="356810">Manage members</translation>
    <translation id="telephony_alias_configuration_actions_number_hunting_agents" qtlid="461367">Gérer les agents</translation>
    <translation id="telephony_alias_configuration_actions_number_hunting_queues" qtlid="462134">Gérer les files</translation>
-   <translation id="telephony_alias_configuration_actions_number_hunting_slots" qtlid="335154">Gérer les plages horaires</translation>
+   <translation id="telephony_alias_configuration_actions_number_hunting_slots" qtlid="335154">Manage time slots</translation>
    <translation id="telephony_alias_configuration_actions_number_hunting_events" qtlid="335167">Gérer les fermetures exceptionnelles</translation>
    <translation id="telephony_alias_configuration_actions_number_hunting_filtering" qtlid="356823">Gérer le filtrage d'appel</translation>
    <translation id="telephony_alias_configuration_actions_number_hunting_board" qtlid="462147">Consulter le tableau de bord</translation>
