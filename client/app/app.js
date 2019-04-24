@@ -3,6 +3,7 @@ import ngAtInternetUiRouterPlugin from '@ovh-ux/ng-at-internet-ui-router-plugin'
 import ngOvhApiWrappers from '@ovh-ux/ng-ovh-api-wrappers';
 import ngOvhChatbot from '@ovh-ux/ng-ovh-chatbot';
 import ngOvhHttp from '@ovh-ux/ng-ovh-http';
+import ngOvhMondialRelay from '@ovh-ux/ng-ovh-mondial-relay';
 import ngOvhSsoAuth from '@ovh-ux/ng-ovh-sso-auth';
 import ngOvhSsoAuthModalPlugin from '@ovh-ux/ng-ovh-sso-auth-modal-plugin';
 import ngOvhSwimmingPoll from '@ovh-ux/ng-ovh-swimming-poll';
@@ -46,6 +47,7 @@ angular.module('managerApp', [
   ngOvhApiWrappers,
   ngOvhChatbot,
   ngOvhHttp,
+  ngOvhMondialRelay,
   ngOvhSsoAuth,
   ngOvhSsoAuthModalPlugin,
   ngOvhSwimmingPoll,
@@ -59,7 +61,6 @@ angular.module('managerApp', [
   'ovh-angular-contact',
   'ovh-angular-input-number-spinner',
   'ovh-angular-line-diagnostics',
-  'ovh-angular-mondial-relay',
   'ovh-angular-q-allSettled',
   'ovh-angular-responsive-tabs',
   'ovh-angular-sidebar-menu',
