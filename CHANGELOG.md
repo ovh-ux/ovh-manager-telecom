@@ -1,3 +1,13 @@
+## [10.24.1](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.24.0...v10.24.1) (2019-04-24)
+
+
+### Bug Fixes
+
+* **deps:** upgrade @ovh-ux/ng-ovh-mondial-relay to v6.0.1 ([#1352](https://github.com/ovh-ux/ovh-manager-telecom/issues/1352)) ([3e9f6b3](https://github.com/ovh-ux/ovh-manager-telecom/commit/3e9f6b3))
+* **i18n:** retrieve translations ([#1359](https://github.com/ovh-ux/ovh-manager-telecom/issues/1359)) ([6b7c9b7](https://github.com/ovh-ux/ovh-manager-telecom/commit/6b7c9b7))
+
+
+
 # [10.24.0](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.23.0...v10.24.0) (2019-04-17)
 
 
