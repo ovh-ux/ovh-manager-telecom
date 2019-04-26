@@ -10,7 +10,6 @@ const component = {
   },
   template,
   controller,
-  controllerAs: 'PackMoveEligibilityAddress',
 };
 
 export default component;
