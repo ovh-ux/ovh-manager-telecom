@@ -1,3 +1,13 @@
+## [10.24.2](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.24.1...v10.24.2) (2019-04-25)
+
+
+### Bug Fixes
+
+* **components.navbar:** remove duplicate ticket entry ([#1362](https://github.com/ovh-ux/ovh-manager-telecom/issues/1362)) ([f69905b](https://github.com/ovh-ux/ovh-manager-telecom/commit/f69905b))
+* **pack.line.activation:** use new mondial relay element ([#1365](https://github.com/ovh-ux/ovh-manager-telecom/issues/1365)) ([2205a4e](https://github.com/ovh-ux/ovh-manager-telecom/commit/2205a4e))
+
+
+
 ## [10.24.1](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.24.0...v10.24.1) (2019-04-24)
 
 
