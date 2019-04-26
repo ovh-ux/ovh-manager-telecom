@@ -1,3 +1,5 @@
+import { AUTHORIZED_ABBREVIATIONS } from './pack-move-eligibility-address.constants';
+
 angular.module('managerApp').component('packMoveEligibilityAddress', {
   bindings: {
     address: '=?',
@@ -51,7 +53,7 @@ angular.module('managerApp').component('packMoveEligibilityAddress', {
     this.getStreets = function (partial) {
       self.streets = [];
       const partialStreet = partial.replace(/^[\d\s,]*/, '');
-      if (partialStreet.length > 2) {
+      if (partialStreet.length > 2 || AUTHORIZED_ABBREVIATIONS.includes(partialStreet)) {
         self.loaders.streets = true;
         self.loading = true;
         return OvhApiXdslEligibility.v6().getStreets({
