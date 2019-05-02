@@ -8,8 +8,8 @@ angular.module('managerApp').controller('TelecomTelephonyLineManagementCtrl', fu
   self.actions = [];
 
   /*= =====================================
-        =            INITIALIZATION            =
-        ====================================== */
+    =            INITIALIZATION           =
+    ======================================= */
 
   function initAction(taskCount, offerCount, isInXdslPack) {
     const actions = [{
@@ -50,7 +50,7 @@ angular.module('managerApp').controller('TelecomTelephonyLineManagementCtrl', fu
     }, {
       name: 'line_to_number',
       sref: 'telecom.telephony.line.convert',
-      disabled: isInXdslPack || self.line.isIndividual() || self.line.isVoicefax(),
+      disabled: isInXdslPack || self.line.isVoicefax(),
       text: $translate.instant('telephony_line_management_actions_line_to_number'),
     }];
 

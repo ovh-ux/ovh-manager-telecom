@@ -1,5 +1,5 @@
 <form name="addressCollectForm"
-      data-ng-submit="PackMoveEligibilityAddress.submitAddress()">
+      data-ng-submit="$ctrl.submitAddress()">
     <div class="form-group">
         <label for="zipCodeElem"
                data-translate="pack_move_eligibility_zipcode">
@@ -9,14 +9,14 @@
             id="zipCodeElem"
             name="zipCode"
             data-translate-attr="{ placeholder: 'pack_move_eligibility_zipcode' }"
-            data-ng-model="PackMoveEligibilityAddress.address.zipCode"
-            data-ui-validate="'PackMoveEligibilityAddress.validator.tucIsZipcode($value, [\'metropolitanFrance\'])'"
-            data-ng-change="PackMoveEligibilityAddress.getCities(PackMoveEligibilityAddress.address.zipCode)"
-            data-ng-disabled="PackMoveEligibilityAddress.loaders.cities || PackMoveEligibilityAddress.method !== 'address'"
+            data-ng-model="$ctrl.address.zipCode"
+            data-ui-validate="'$ctrl.validator.tucIsZipcode($value, [\'metropolitanFrance\'])'"
+            data-ng-change="$ctrl.getCities($ctrl.address.zipCode)"
+            data-ng-disabled="$ctrl.loaders.cities || $ctrl.method !== 'address'"
             required>
     </div>
     <div class="form-group"
-         data-ng-if="PackMoveEligibilityAddress.cities.length">
+         data-ng-if="$ctrl.cities.length">
         <label for="cityElem"
                data-translate="pack_move_eligibility_city">
         </label>
@@ -24,15 +24,15 @@
                 name="city"
                 id="cityElem"
                 data-translate-attr="{ placeholder: 'pack_move_eligibility_city' }"
-                data-ng-model="PackMoveEligibilityAddress.address.city"
-                data-ng-disabled="PackMoveEligibilityAddress.loaders.streets || PackMoveEligibilityAddress.method !== 'address'"
-                data-ng-change="PackMoveEligibilityAddress.address.street = null"
+                data-ng-model="$ctrl.address.city"
+                data-ng-disabled="$ctrl.loaders.streets || $ctrl.method !== 'address'"
+                data-ng-change="$ctrl.address.street = null"
                 required
-                data-ng-options="city as city.name for city in PackMoveEligibilityAddress.cities">
+                data-ng-options="city as city.name for city in $ctrl.cities">
         </select>
     </div>
     <div class="form-group"
-         data-ng-if="PackMoveEligibilityAddress.address.city.inseeCode && addressCollectForm.zipCode.$valid">
+         data-ng-if="$ctrl.address.city.inseeCode && addressCollectForm.zipCode.$valid">
          <label for="streetNumberElem"
                 data-translate="pack_move_eligibility_street_number">
          </label>
@@ -41,11 +41,11 @@
              id="streetNumberElem"
              name="streetNumber"
              data-translate-attr="{ placeholder: 'pack_move_eligibility_street_number' }"
-             data-ng-disabled="PackMoveEligibilityAddress.method !== 'address'"
-             data-ng-model="PackMoveEligibilityAddress.address.streetNumber" />
+             data-ng-disabled="$ctrl.method !== 'address'"
+             data-ng-model="$ctrl.address.streetNumber" />
     </div>
     <div class="form-group"
-         data-ng-if="PackMoveEligibilityAddress.address.city.inseeCode && addressCollectForm.zipCode.$valid">
+         data-ng-if="$ctrl.address.city.inseeCode && addressCollectForm.zipCode.$valid">
          <label for="streetElem"
                 data-translate="pack_move_eligibility_street">
          </label>
@@ -53,31 +53,31 @@
              class="form-control"
              id="streetElem"
              name="street"
-             data-ng-disabled="!PackMoveEligibilityAddress.address.city || PackMoveEligibilityAddress.method !== 'address'"
+             data-ng-disabled="!$ctrl.address.city || $ctrl.method !== 'address'"
              required
              data-translate-attr="{ placeholder: 'pack_move_eligibility_street' }"
-             data-ui-validate="'PackMoveEligibilityAddress.checkSelectedStreets($value)'"
-             data-uib-typeahead="street as street.name for street in PackMoveEligibilityAddress.getStreets($viewValue)"
-             data-uib-typeahead-loading="PackMoveEligibilityAddress.loaders.streets"
-             data-ng-model="PackMoveEligibilityAddress.address.street" />
+             data-ui-validate="'$ctrl.checkSelectedStreets($value)'"
+             data-uib-typeahead="street as street.name for street in $ctrl.getStreets($viewValue)"
+             data-uib-typeahead-loading="$ctrl.loaders.streets"
+             data-ng-model="$ctrl.address.street" />
     </div>
 
     <button type="button"
-            data-ng-if="PackMoveEligibilityAddress.address.street.rivoliCode"
-            data-ng-disabled="PackMoveEligibilityAddress.method !== 'address'"
-            data-ng-click="PackMoveEligibilityAddress.moreInfo = !PackMoveEligibilityAddress.moreInfo"
+            data-ng-if="$ctrl.address.street.rivoliCode"
+            data-ng-disabled="$ctrl.method !== 'address'"
+            data-ng-click="$ctrl.moreInfo = !$ctrl.moreInfo"
             class="btn btn-link p-0 mb-3">
         <i class="ovh-font"
            aria-hidden="true"
            data-ng-class="{
-               'ovh-font-disclosure-right': !PackMoveEligibilityAddress.moreInfo,
-               'ovh-font-disclosure-down': PackMoveEligibilityAddress.moreInfo
+               'ovh-font-disclosure-right': !$ctrl.moreInfo,
+               'ovh-font-disclosure-down': $ctrl.moreInfo
            }">
         </i>
         <span data-translate="pack_move_eligibility_address_more"></span>
     </button>
 
-    <div data-ng-if="PackMoveEligibilityAddress.moreInfo">
+    <div data-ng-if="$ctrl.moreInfo">
         <div class="form-group">
             <label for="residence"
                    data-translate="pack_move_eligibility_residence">
@@ -86,9 +86,9 @@
                    class="form-control"
                    id="residence"
                    name="residence"
-                   data-ng-disabled="!PackMoveEligibilityAddress.address.street.rivoliCode || PackMoveEligibilityAddress.method !== 'address'"
+                   data-ng-disabled="!$ctrl.address.street.rivoliCode || $ctrl.method !== 'address'"
                    data-translate-attr="{ placeholder: 'pack_move_eligibility_residence' }"
-                   data-ng-model="PackMoveEligibilityAddress.address.residence" />
+                   data-ng-model="$ctrl.address.residence" />
         </div>
         <div class="form-group">
             <label for="buildingElem"
@@ -98,9 +98,9 @@
                 class="form-control"
                 id="buildingElem"
                 name="building"
-                data-ng-disabled="!PackMoveEligibilityAddress.address.street.rivoliCode || PackMoveEligibilityAddress.method !== 'address'"
+                data-ng-disabled="!$ctrl.address.street.rivoliCode || $ctrl.method !== 'address'"
                 data-translate-attr="{ placeholder: 'pack_move_eligibility_building' }"
-                data-ng-model="PackMoveEligibilityAddress.address.building" />
+                data-ng-model="$ctrl.address.building" />
         </div>
         <div class="form-group">
             <label for="floorElem"
@@ -110,9 +110,9 @@
                 class="form-control"
                 id="floorElem"
                 name="floor"
-                data-ng-disabled="!PackMoveEligibilityAddress.address.street.rivoliCode || PackMoveEligibilityAddress.method !== 'address'"
+                data-ng-disabled="!$ctrl.address.street.rivoliCode || $ctrl.method !== 'address'"
                 data-translate-attr="{ placeholder: 'pack_move_eligibility_floor' }"
-                data-ng-model="PackMoveEligibilityAddress.address.floor" />
+                data-ng-model="$ctrl.address.floor" />
         </div>
         <div class="form-group">
             <label for="stairElem"
@@ -122,9 +122,9 @@
                class="form-control"
                id="stairElem"
                name="stair"
-               data-ng-disabled="!PackMoveEligibilityAddress.address.street.rivoliCode || PackMoveEligibilityAddress.method !== 'address'"
+               data-ng-disabled="!$ctrl.address.street.rivoliCode || $ctrl.method !== 'address'"
                data-translate-attr="{ placeholder: 'pack_move_eligibility_stair' }"
-               data-ng-model="PackMoveEligibilityAddress.address.stair" />
+               data-ng-model="$ctrl.address.stair" />
         </div>
         <div class="form-group">
             <label for="doorElem"
@@ -134,20 +134,20 @@
                class="form-control"
                id="doorElem"
                name="door"
-               data-ng-disabled="!PackMoveEligibilityAddress.address.street.rivoliCode || PackMoveEligibilityAddress.method !== 'address'"
+               data-ng-disabled="!$ctrl.address.street.rivoliCode || $ctrl.method !== 'address'"
                data-translate-attr="{ placeholder: 'pack_move_eligibility_door' }"
-               data-ng-model="PackMoveEligibilityAddress.address.door" />
+               data-ng-model="$ctrl.address.door" />
         </div>
     </div>
 
     <div class="mt-3">
         <button type="submit"
-                data-ng-disabled="PackMoveEligibilityAddress.loading || addressCollectForm.$invalid || PackMoveEligibilityAddress.method !== 'address'"
+                data-ng-disabled="$ctrl.loading || addressCollectForm.$invalid || $ctrl.method !== 'address'"
                 data-translate="submit"
                 class="btn btn-primary">
         </button>
         <oui-spinner class="ml-2"
-                     data-ng-if="PackMoveEligibilityAddress.loading"
+                     data-ng-if="$ctrl.loading"
                      data-size="s">
         </oui-spinner>
     </div>
