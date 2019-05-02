@@ -1,3 +1,5 @@
+import { NUMBER_EXTERNAL_TYPE } from './telecom-telephony-alias-configuration-queues-ovhPabx.constants';
+
 angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationQueuesOvhPabxCtrl', function ($stateParams, $q, $translate, $timeout, $uibModal, OvhApiTelephony, TucToast, TucToastError) {
   const self = this;
 
@@ -228,24 +230,28 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationQueue
   };
 
   self.addAgentToQueue = function (queue) {
-    const modal = $uibModal.open({
-      animation: true,
-      templateUrl: 'app/telecom/telephony/alias/configuration/queues/ovhPabx/telecom-telephony-alias-configuration-queues-ovhPabx-modal.html',
-      controller: 'telecomTelephonyAliasConfigurationQueuesOvhPabxCtrlModal',
-      controllerAs: '$ctrl',
-    });
-    modal.result.then(() => {
+    let confirm = $q.when();
+    if (queue.agentToAdd.type === NUMBER_EXTERNAL_TYPE) {
+      confirm = $uibModal.open({
+        animation: true,
+        templateUrl: 'app/telecom/telephony/alias/configuration/queues/ovhPabx/telecom-telephony-alias-configuration-queues-ovhPabx-modal.html',
+        controller: 'telecomTelephonyAliasConfigurationQueuesOvhPabxCtrlModal',
+        controllerAs: '$ctrl',
+      }).result;
+    }
+
+    confirm.then(() => {
       _.set(queue, 'isAdding', true);
       return OvhApiTelephony.OvhPabx().Hunting().Agent().v6()
         .addToQueue({
           billingAccount: $stateParams.billingAccount,
           serviceName: $stateParams.serviceName,
-          agentId: queue.agentToAdd,
+          agentId: queue.agentToAdd.agentId,
         }, {
           queueId: queue.queueId,
           position: 0,
         }).$promise.then(() => {
-          const added = _.find(self.agents, { agentId: queue.agentToAdd });
+          const added = _.find(self.agents, { agentId: queue.agentToAdd.agentId });
           queue.agentsApi.addMembersToList([added]);
           _.set(queue, 'agentToAdd', null);
           _.set(queue, 'addAgent', false);

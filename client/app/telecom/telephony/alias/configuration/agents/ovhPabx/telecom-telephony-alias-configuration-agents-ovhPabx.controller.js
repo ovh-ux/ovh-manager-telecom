@@ -1,3 +1,5 @@
+import { ALLOWED_FEATURE_TYPES } from './telecom-telephony-alias-configuration-agents-ovhPabx.constants';
+
 angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationAgentsOvhPabxCtrl',
   class TelecomTelephonyAliasConfigurationAgentsOvhPabxCtrl {
     constructor($q, $stateParams, $timeout, $translate, $uibModal, OvhApiTelephony,
@@ -172,10 +174,11 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationAgent
     checkExternalNumber() {
       const filteredNumbers = this.addAgentForm.numbers.filter(number => this.groupList
         .filter(telgroup => telgroup.services
-          .filter(service => service.serviceType === 'alias')
-          .filter(service => service.serviceName === number)
+          .filter(({ serviceName, serviceType }) => serviceName === number
+            && ALLOWED_FEATURE_TYPES.includes(serviceType))
           .length > 0)
         .length > 0);
+
       return filteredNumbers.length !== this.addAgentForm.numbers.length;
     }
 
