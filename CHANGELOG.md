@@ -1,3 +1,17 @@
+# [10.25.0](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.24.2...v10.25.0) (2019-05-02)
+
+
+### Bug Fixes
+
+* **pack.move:** allow specific streets abbreviations ([5c85ddc](https://github.com/ovh-ux/ovh-manager-telecom/commit/5c85ddc))
+
+
+### Features
+
+* **telephony.line.management:** migrate discover line to alias ([#1370](https://github.com/ovh-ux/ovh-manager-telecom/issues/1370)) ([96307f3](https://github.com/ovh-ux/ovh-manager-telecom/commit/96307f3))
+
+
+
 ## [10.24.2](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.24.1...v10.24.2) (2019-04-25)
 
 
