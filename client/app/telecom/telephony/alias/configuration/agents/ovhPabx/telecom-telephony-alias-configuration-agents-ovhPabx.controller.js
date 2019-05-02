@@ -1,4 +1,4 @@
-import { ALLOWED_FEATURE_TYPES } from './telecom-telephony-alias-configuration-agents-ovhPabx.constants';
+import { ALLOWED_FEATURE_TYPES, NUMBER_PREFIXES } from './telecom-telephony-alias-configuration-agents-ovhPabx.constants';
 
 angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationAgentsOvhPabxCtrl',
   class TelecomTelephonyAliasConfigurationAgentsOvhPabxCtrl {
@@ -170,16 +170,24 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationAgent
       }
     }
 
+    getInternalNumber(newNumber) {
+      const allNumbers = _.flatten(
+        _.map(
+          this.groupList,
+          'services',
+        ),
+      );
+      const [, numberSuffix] = newNumber.replace(/ /g, '').split(NUMBER_PREFIXES);
+      return allNumbers.find(({ serviceName }) => _.endsWith(serviceName, numberSuffix));
+    }
+
     // Check if external numbers are defined into the list
     checkExternalNumber() {
-      const filteredNumbers = this.addAgentForm.numbers.filter(number => this.groupList
-        .filter(telgroup => telgroup.services
-          .filter(({ serviceName, serviceType }) => serviceName === number
-            && ALLOWED_FEATURE_TYPES.includes(serviceType))
-          .length > 0)
-        .length > 0);
-
-      return filteredNumbers.length !== this.addAgentForm.numbers.length;
+      return !this.addAgentForm.numbers.some((newNumber) => {
+        const internalNumber = this.getInternalNumber(newNumber);
+        return internalNumber !== undefined
+          && ALLOWED_FEATURE_TYPES.includes(internalNumber.serviceType);
+      });
     }
 
     addAgents() {

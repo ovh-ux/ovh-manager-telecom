@@ -1,4 +1,5 @@
 import { NUMBER_EXTERNAL_TYPE } from './telecom-telephony-alias-configuration-queues-ovhPabx.constants';
+import modalTemplate from './telecom-telephony-alias-configuration-queues-ovhPabx-modal.html';
 
 angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationQueuesOvhPabxCtrl', function ($stateParams, $q, $translate, $timeout, $uibModal, OvhApiTelephony, TucToast, TucToastError) {
   const self = this;
@@ -234,7 +235,7 @@ angular.module('managerApp').controller('TelecomTelephonyAliasConfigurationQueue
     if (queue.agentToAdd.type === NUMBER_EXTERNAL_TYPE) {
       confirm = $uibModal.open({
         animation: true,
-        templateUrl: 'app/telecom/telephony/alias/configuration/queues/ovhPabx/telecom-telephony-alias-configuration-queues-ovhPabx-modal.html',
+        template: modalTemplate,
         controller: 'telecomTelephonyAliasConfigurationQueuesOvhPabxCtrlModal',
         controllerAs: '$ctrl',
       }).result;
