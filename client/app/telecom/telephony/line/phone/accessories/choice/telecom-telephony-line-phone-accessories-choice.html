@@ -56,11 +56,12 @@
                                <span data-ng-bind-html="accessory.price.text | tucFormatPrice:{ withoutTax : false }"></span>
                                <span data-translate="common_without_tax"></span>
                             </p>
-                            <input-number-spinner data-ng-model="accessory.quantity"
-                                                  data-input-number-spinner-min="AccessoriesChoiceCtrl.spinnerExtremities.min"
-                                                  data-input-number-spinner-max="AccessoriesChoiceCtrl.spinnerExtremities.max"
-                                                  data-input-number-spinner-on-change="AccessoriesChoiceCtrl.updateOrderTotal()">
-                            </input-number-spinner>
+                            <oui-numeric class="mx-auto"
+                                         data-model="accessory.quantity"
+                                         data-min="::AccessoriesChoiceCtrl.spinnerExtremities.min"
+                                         data-max="::AccessoriesChoiceCtrl.spinnerExtremities.max"
+                                         data-on-change="AccessoriesChoiceCtrl.updateOrderTotal()">
+                            </oui-numeric>
                         </div>
                     </div>
                 </div>
