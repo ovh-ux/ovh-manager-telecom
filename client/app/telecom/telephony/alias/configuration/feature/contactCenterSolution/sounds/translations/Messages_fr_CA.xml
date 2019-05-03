@@ -6,7 +6,7 @@
    <translation id="telephony_alias_config_contactCenterSolution_sounds_waiting_configuration" qtlid="510982">Configuration de l’attente</translation>
    <translation id="telephony_alias_config_contactCenterSolution_sounds_waiting_opening_annonce" qtlid="392879">Annonce avant mise en attente</translation>
    <translation id="telephony_alias_config_contactCenterSolution_sounds_waiting_opening_annonce_help" qtlid="510995">Annonce diffusée avant la mise en attente dans la file.</translation>
-   <translation id="telephony_alias_config_contactCenterSolution_sounds_waiting_onHold" qtlid="358422">Musique d'attente</translation>
+   <translation id="telephony_alias_config_contactCenterSolution_sounds_waiting_onHold" qtlid="358422">Musique d’attente</translation>
    <translation id="telephony_alias_config_contactCenterSolution_sounds_waiting_onHold_help" qtlid="511008">Musique diffusée lorsque l’appelant est en attente</translation>
 
    <translation id="telephony_alias_config_contactCenterSolution_sounds_overflow_configuration" qtlid="511021">Configuration du débordement</translation>

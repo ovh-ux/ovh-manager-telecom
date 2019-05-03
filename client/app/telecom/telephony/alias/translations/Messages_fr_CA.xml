@@ -58,11 +58,11 @@
    <translation id="telephony_alias_configuration_configuration_type_conference" qtlid="333074">Conférence</translation>
    <translation id="telephony_alias_configuration_configuration_type_cloudIvr" qtlid="333100">Serveur Vocal Interactif</translation>
    <translation id="telephony_alias_configuration_configuration_type_svi" qtlid="333126">Serveur Vocal Interactif (mode expert) en VXML</translation>
-   <translation id="telephony_alias_configuration_configuration_type_easyHunting" qtlid="324457">File d'appels</translation>
+   <translation id="telephony_alias_configuration_configuration_type_easyHunting" qtlid="324457">File d’appels</translation>
    <translation id="telephony_alias_configuration_configuration_type_cloudHunting" qtlid="333165">File d'appels (mode expert)</translation>
    <translation id="telephony_alias_configuration_configuration_type_easyPabx" qtlid="60119">Easy PABX</translation>
    <translation id="telephony_alias_configuration_configuration_type_miniPabx" qtlid="333204">Mini PABX</translation>
-   <translation id="telephony_alias_configuration_configuration_type_contactCenterSolution" qtlid="324457">File d'appels</translation>
+   <translation id="telephony_alias_configuration_configuration_type_contactCenterSolution" qtlid="324457">File d’appels</translation>
    <translation id="telephony_alias_configuration_configuration_type_contactCenterSolutionExpert" qtlid="432904">Contact Center Solution</translation>
    <translation id="telephony_alias_configuration_configuration_type_empty" qtlid="8674">Aucune</translation>
 

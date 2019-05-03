@@ -7,6 +7,7 @@
    <translation id="telephony_alias_members_drag1" qtlid="397130">Le pictogramme</translation>
    <translation id="telephony_alias_members_drag2" qtlid="397143">vous permet d'effectuer un glisser-déposer afin de réordonner la position de vos membres dans la file.</translation>
    <translation id="telephony_alias_members_number_external" qtlid="93271">Numer zewnętrzny</translation>
+   <translation id="telephony_alias_members_number_internal">Numéro interne</translation>
    <translation id="telephony_alias_members_status" qtlid="26443">Status</translation>
    <translation id="telephony_alias_members_status_available" qtlid="99920">Dostępny</translation>
    <translation id="telephony_alias_members_status_onBreak" qtlid="397156">Przerwa</translation>

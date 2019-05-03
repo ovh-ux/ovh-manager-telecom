@@ -20,8 +20,8 @@
    <translation id="telephony_line_management_sip_domain_client_country" qtlid="387640">Dominio {{ country }}</translation>
    <translation id="telephony_line_management_sip_domain_client_edit_button" qtlid="387653">Modifica i domini SIP associati al tuo codice cliente</translation>
 
-   <translation id="telephony_line_management_sip_domain_bulk_all_success" qtlid="458312">La modification du domaine SIP a bien été appliquée aux services sélectionnés.</translation>
-   <translation id="telephony_line_management_sip_domain_bulk_some_success" qtlid="458325">La modification du domaine SIP a bien été appliquée à {{ count }} des services sélectionnés.</translation>
-   <translation id="telephony_line_management_sip_domain_bulk_error" qtlid="458338">La modification du domaine SIP n'a pu être appliquée au(x) service(s) suivant(s) :</translation>
-   <translation id="telephony_line_management_sip_domain_bulk_on_error" qtlid="458351">Oups ! Une erreur est survenue lors de la modification du domaine SIP.</translation>
+   <translation id="telephony_line_management_sip_domain_bulk_all_success" qtlid="458312">La modifica del dominio SIP è stata applicata correttamente ai servizi selezionati.</translation>
+   <translation id="telephony_line_management_sip_domain_bulk_some_success" qtlid="458325">La modifica del dominio SIP è stata applicata correttamente a {{ count }} dei servizi selezionati.</translation>
+   <translation id="telephony_line_management_sip_domain_bulk_error" qtlid="458338">Non è stato possibile applicare la modifica del dominio SIP a questi servizi:</translation>
+   <translation id="telephony_line_management_sip_domain_bulk_on_error" qtlid="458351">Si è verificato un errore durante la modifica del dominio SIP.</translation>
 </translations>

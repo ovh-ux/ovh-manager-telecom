@@ -70,7 +70,7 @@
    <translation id="telephony_alias_config_change_type_label_svi" qtlid="511944">SVI VXML</translation>
    <translation id="telephony_alias_config_change_type_desc_svi" qtlid="511957">Le Serveur vocal interactif en VXML vous permet, via une configuration 2.1, d’utiliser un menu interactif avancé. L’appelant est invité, via des messages pré-enregistrés ou une synthèse vocale, à interagir avec le serveur grâce aux touches de son téléphone. Selon la configuration choisie, il sera possible de lire des sons ou de transférer un appel vers d’autres numéros. Notez que seuls les transferts vers les numéros OVH sont possibles.</translation>
 
-   <translation id="telephony_alias_config_change_type_label_easyHunting" qtlid="324457">File d'appels</translation>
+   <translation id="telephony_alias_config_change_type_label_easyHunting" qtlid="324457">File d’appels</translation>
    <translation id="telephony_alias_config_change_type_desc_easyHunting" qtlid="333152">Avec la file d'appels, vous pouvez gérer le flux de vos appels.<br/><br/>Jouez un son d'accueil, personnalisez votre musique d'attente et faites sonner vos collaborateurs ou différents services en fonction de stratégies que vous définissez, sur des plages horaires choisies. Vous pouvez définir le nombre maximum d'appelants dans la file d'appels et le temps d'attente maximum. Si vous ne pouvez pas répondre, votre interlocuteur sera redirigé vers le répondeur d'une ligne OVH.<br/><br/><b class="text-danger">Veuillez noter que dans ce mode de fonctionnement, les renvois d'appels des membres de votre file d'appels seront automatiquement désactivés.</b></translation>
 
    <translation id="telephony_alias_config_change_type_label_cloudHunting" qtlid="333165">File d'appels (mode expert)</translation>
@@ -81,7 +81,7 @@
    <translation id="telephony_alias_config_change_type_label_miniPabx" qtlid="333204">Mini PABX</translation>
    <translation id="telephony_alias_config_change_type_desc_miniPabx" qtlid="333217">Avec le miniPABX gérez un flux d'appels vers différents services ou collaborateurs en fonction de leur disponibilité. Vous choisissez la répartition des appels, le nombre et le temps maximum des appels dans la file d'appels.</translation>
 
-   <translation id="telephony_alias_config_change_type_label_contactCenterSolution" qtlid="324457">File d'appels</translation>
+   <translation id="telephony_alias_config_change_type_label_contactCenterSolution" qtlid="324457">File d’appels</translation>
    <translation id="telephony_alias_config_change_type_desc_contactCenterSolution" qtlid="511970">La file d’appels vous permet de rediriger un appel entrant vers plusieurs lignes, rattachées ou non à votre identifiant OVH.</translation>
 
    <translation id="telephony_alias_config_change_type_label_contactCenterSolutionExpert" qtlid="432904">Contact Center Solution</translation>

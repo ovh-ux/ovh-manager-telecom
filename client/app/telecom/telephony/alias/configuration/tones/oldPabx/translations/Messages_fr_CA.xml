@@ -12,7 +12,7 @@
    <translation id="telephony_alias_configuration_tones_old_pabx_ring_back_info" qtlid="358370"><strong>La sonnerie de pré-décroché</strong> : remplace la tonalité par défaut de pré-décroché.</translation>
    <translation id="telephony_alias_configuration_tones_old_pabx_ring_back_info_sub" qtlid="461549">La sonnerie de pré-décroché sera jouée si au moins un membre du groupe est disponible. Sinon, l'appelant est dirigé vers la musique d'attente.</translation>
 
-   <translation id="telephony_alias_configuration_tones_old_pabx_on_hold" qtlid="358422">Musique d'attente</translation>
+   <translation id="telephony_alias_configuration_tones_old_pabx_on_hold" qtlid="358422">Musique d’attente</translation>
    <translation id="telephony_alias_configuration_tones_old_pabx_on_hold_custom" qtlid="461562">Musique d'attente personnalisée</translation>
    <translation id="telephony_alias_configuration_tones_old_pabx_on_hold_info" qtlid="461575"><strong>La musique d'attente</strong> : musique diffusée lorsque l'appelant est en file d'attente.</translation>
    <translation id="telephony_alias_configuration_tones_old_pabx_on_hold_info_sub" qtlid="461588">La musique d'attente sera jouée si tous les membres du groupe sont occupés.</translation>
