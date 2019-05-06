@@ -1,3 +1,32 @@
+## [10.25.1](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.25.0...v10.25.1) (2019-05-06)
+
+
+### Bug Fixes
+
+* **i18n:** retrieve translations ([bd7067a](https://github.com/ovh-ux/ovh-manager-telecom/commit/bd7067a))
+* **i18n:** submit translations ([2993e0b](https://github.com/ovh-ux/ovh-manager-telecom/commit/2993e0b))
+* **line.phone.accessories:** replace input number by oui numeric ([#1375](https://github.com/ovh-ux/ovh-manager-telecom/issues/1375)) ([ffbb2b4](https://github.com/ovh-ux/ovh-manager-telecom/commit/ffbb2b4))
+* **telephony.add.line:** handle multiple forms of new number ([83c72db](https://github.com/ovh-ux/ovh-manager-telecom/commit/83c72db))
+* **telephony.add.line:** prevent disclaimer if no external number added ([4e1c966](https://github.com/ovh-ux/ovh-manager-telecom/commit/4e1c966))
+* **telephony.alias.ccs.queues:** set correct type of queue member ([#1376](https://github.com/ovh-ux/ovh-manager-telecom/issues/1376)) ([d625972](https://github.com/ovh-ux/ovh-manager-telecom/commit/d625972))
+* **telephony.order:** fix property alias to display found options ([#1371](https://github.com/ovh-ux/ovh-manager-telecom/issues/1371)) ([6d93b23](https://github.com/ovh-ux/ovh-manager-telecom/commit/6d93b23))
+
+
+
+# [10.25.0](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.24.2...v10.25.0) (2019-05-02)
+
+
+### Bug Fixes
+
+* **pack.move:** allow specific streets abbreviations ([5c85ddc](https://github.com/ovh-ux/ovh-manager-telecom/commit/5c85ddc))
+
+
+### Features
+
+* **telephony.line.management:** migrate discover line to alias ([#1370](https://github.com/ovh-ux/ovh-manager-telecom/issues/1370)) ([96307f3](https://github.com/ovh-ux/ovh-manager-telecom/commit/96307f3))
+
+
+
 ## [10.24.2](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.24.1...v10.24.2) (2019-04-25)
 
 

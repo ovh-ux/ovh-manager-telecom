@@ -39,13 +39,13 @@
                     </div>
                     <div class="form-group" data-ng-if="AliasOrderGeographicalCtrl.showSDASelector">
                         <!-- Order SDA redirection only -->
-                        <oui-radio data-model="AliasOrderGeographicalCtrl.offer" 
+                        <oui-radio data-model="AliasOrderGeographicalCtrl.offer"
                                    data-value="'alias'"
                                    data-on-change="AliasOrderGeographicalCtrl.changeOffer()"
                                    class="col-sm-6">
                             <span data-translate="telephony_order_geographical_order_alias"></span>
                         </oui-radio>
-                        <oui-radio data-model="AliasOrderGeographicalCtrl.offer" 
+                        <oui-radio data-model="AliasOrderGeographicalCtrl.offer"
                                    data-value="'didsOnly'"
                                    data-on-change="AliasOrderGeographicalCtrl.changeOffer()"
                                    class="col-sm-6">
@@ -67,7 +67,7 @@
                                data-ng-model="AliasOrderGeographicalCtrl.form.zone"
                                data-ng-change="AliasOrderGeographicalCtrl.changeZone()"
                                data-ng-disabled="AliasOrderGeographicalCtrl.loading.init || AliasOrderGeographicalCtrl.loading.order"
-                               data-uib-typeahead="item as item.askedCity for item in AliasOrderGeographicalCtrl.getGeographicalZone($viewValue)"
+                               data-uib-typeahead="item as item.city for item in AliasOrderGeographicalCtrl.getGeographicalZone($viewValue)"
                                data-typeahead-focus-first="true"
                                data-typeahead-editable="false"
                                data-typeahead-select-on-exact="true"
