@@ -78,12 +78,15 @@ angular.module('managerApp').controller('TelecomTelephonyLineAssistTroubleshooti
     =============================== */
 
   self.refreshSteps = function (steps) {
+    console.log('refreshSteps', steps);
     // reset steps
     self.steps = [];
 
     const problem = _.find(self.problemsList, {
       name: self.process.problem,
     });
+
+    console.log('refreshSteps', self.process.problem);
 
     // is there is no custom step to add, add common steps (procedure and contact support)
     const stepsToAdd = steps || problem.customSteps
@@ -101,6 +104,7 @@ angular.module('managerApp').controller('TelecomTelephonyLineAssistTroubleshooti
     });
 
     self.process.activeStep = _.first(self.steps);
+    console.log('refreshSteps', self.steps);
   };
 
   self.manageItWorks = function () {
@@ -128,6 +132,7 @@ angular.module('managerApp').controller('TelecomTelephonyLineAssistTroubleshooti
   };
 
   self.manageItStillDoesnttWork = function () {
+    console.log('manageItStillDoesnttWork', self.steps);
     const activeStepIndex = _.findIndex(self.steps, {
       active: true,
     });
@@ -203,8 +208,8 @@ angular.module('managerApp').controller('TelecomTelephonyLineAssistTroubleshooti
     }
     return [{
       name: 'callout',
-    }, {
-      name: 'callin',
+      customSteps: [commonSteps.procedureStep, commonSteps.autoConfigStep,
+        commonSteps.contactStep],
     }, {
       name: 'blueButton',
     }, {
@@ -307,6 +312,7 @@ angular.module('managerApp').controller('TelecomTelephonyLineAssistTroubleshooti
   }
 
   function getPhoneTypeProblems() {
+    console.log('getPhoneTypeProblems', self.process.phoneType);
     const steps = [commonSteps.autoConfigStep, commonSteps.contactStep];
 
     switch (self.process.phoneType) {
@@ -352,6 +358,7 @@ angular.module('managerApp').controller('TelecomTelephonyLineAssistTroubleshooti
 
       // set problem list
       self.problemsList = getPhoneTypeProblems();
+      console.log('init', self.problemsList);
     }).finally(() => {
       self.loading.init = false;
     });

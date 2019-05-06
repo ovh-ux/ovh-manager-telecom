@@ -11,7 +11,7 @@
    <translation id="telephony_line_assist_troubleshooting_procedure_common_network_check2_step1" qtlid="388290">Désactivez le SIP ALG / SIP Passthrough.</translation>
    <translation id="telephony_line_assist_troubleshooting_procedure_common_network_check2_step2" qtlid="388303">Autorisez le trafic vers le réseau 91.121.128.0/23.</translation>
 
-<!-- SIEMES -->
+<!-- SIEMENS -->
 <!-- CALLOUT -->
    <translation id="telephony_line_assist_troubleshooting_procedure_siemens_callout_step1" qtlid="388095">Sur le combiné appuyez sur le bouton central noir.</translation>
    <translation id="telephony_line_assist_troubleshooting_procedure_siemens_callout_step2" qtlid="388108">Allez dans <strong>Réglages</strong>.</translation>
@@ -41,7 +41,7 @@
    <translation id="telephony_line_assist_troubleshooting_procedure_siemens_callin_check_firewall_step2" qtlid="388303">Autorisez le trafic vers le réseau 91.121.128.0/23.</translation>
 <!-- BLUEBUTTON -->
    <translation id="telephony_line_assist_troubleshooting_procedure_siemens_bluebutton_main_explain" qtlid="388563">Ce dysfonctionnement peut arriver dans deux situations :</translation>
-   <translation id="telephony_line_assist_troubleshooting_procedure_siemens_bluebutton_step1" qtlid="388576">Le câble Ethernet n'est pas branché correctement sur votre base ou sur votre switch / routeur. Vérifiez que le câble est bien branché sur votre switch / routeur et que sur la base Gigaset il soit branché sur le côté de la base. Si le défaut est persistant, testez un autre câble.</translation>
+   <translation id="telephony_line_assist_troubleshooting_procedure_siemens_bluebutton_step1">Il y a un défaut réseau (pas d'adressage IP). Pour le confirmer, redémarrez la base, le bouton central va s'allumer en bleu puis s'éteindre. Vérifiez que le câble réseau est bien branché sur votre switch / routeur et que sur la base Gigaset il soit branché sur le côté de la base. Si le défaut est persistant, testez un autre câble.</translation>
    <translation id="telephony_line_assist_troubleshooting_procedure_siemens_bluebutton_step2" qtlid="388589">L'alimentation de la base ne se fait pas. Vérifiez que la prise au dos de la base est bien branchée ainsi que la prise électrique. Testez sur une autre prise électrique si le défaut est persistant.</translation>
 <!-- NOBASE -->
    <translation id="telephony_line_assist_troubleshooting_procedure_siemens_nobase_main_explain" qtlid="388602">Ce message est affiché lorsque le combiné ne parvient pas à se connecter en DECT à votre base.</translation>
@@ -49,12 +49,13 @@
    <translation id="telephony_line_assist_troubleshooting_procedure_siemens_nobase_cause1" qtlid="388628">La base n'est pas alimentée électriquement : vérifiez son branchement électrique.</translation>
    <translation id="telephony_line_assist_troubleshooting_procedure_siemens_nobase_cause2" qtlid="388641">Vous possédez plusieurs bases DECT et celles-ci sont trop proches (Empilées, les unes derrières les autres) : espacez les bases pour qu'il n'y ai pas de perturbation du signal DECT.</translation>
    <translation id="telephony_line_assist_troubleshooting_procedure_siemens_nobase_cause3" qtlid="388654">Vous êtes hors de portée de la base. Rapprochez-vous de celle-ci, si le combiné fonctionne il vous faudra prendre un Gigaset Repeater <a data-ui-sref="{{ sref }}">ici</a> ou replacer la base à un endroit plus optimum.</translation>
+   <translation id="telephony_line_assist_troubleshooting_procedure_siemens_nobase_cause4">Le combiné n'est plus enregistré sur la base. Sur le combiné, allez dans "Menu > Réglages > Enregistrement > Enregistrer combiné". Le combiné va afficher "Recherche d'une base prête pour l'enregistrement". Il faut alors appuyer sur le bouton central de la base jusqu’à ce que le combiné soit enregistré.</translation>
 <!-- REGISTER -->
    <translation id="telephony_line_assist_troubleshooting_procedure_siemens_register_main_explain" qtlid="388667">Votre combiné ne parvient pas à enregistrer votre ligne sur notre infrastructure.</translation>
    <translation id="telephony_line_assist_troubleshooting_procedure_siemens_register_check" qtlid="388680">Vérifiez dans l'ordre :</translation>
-   <translation id="telephony_line_assist_troubleshooting_procedure_siemens_register_step1" qtlid="388693">Vérifiez que le câble Ethernet est bien branché sur le côté droit de votre base et sur votre switch / routeur. (Le bouton de la base doit être allumé en bleu) Vérifiez également que votre connexion internet est fonctionnelle.</translation>
+   <translation id="telephony_line_assist_troubleshooting_procedure_siemens_register_step1">Vérifiez que le câble Ethernet est bien branché sur le côté droit de votre base et sur votre switch / routeur. (Le bouton de la base doit être allumé en bleu). Vérifiez également que votre connexion internet est fonctionnelle.</translation>
    <translation id="telephony_line_assist_troubleshooting_procedure_siemens_register_step2" qtlid="388706">Redémarrez la base électriquement (En débranchant l'alimentation de la base).</translation>
-   <translation id="telephony_line_assist_troubleshooting_procedure_siemens_register_step3" qtlid="388719">Vérifiez que votre téléphone possède bien une adresse IP, pour ce faire appuyez une seconde sur le bouton bleu de la base. Le combiné va sonner et afficher à l'écran « IP : xxx.xxx.xxx.xxx. Votre IP doit être différente de 0.0.0.0.</translation>
+   <translation id="telephony_line_assist_troubleshooting_procedure_siemens_register_step3">Vérifiez que votre téléphone possède bien une adresse IP publique, pour ce faire appuyez une seconde sur le bouton bleu de la base. Le combiné va sonner et afficher à l'écran « IP : xxx.xxx.xxx.xxx. Votre IP publique doit être différente de 0.0.0.0.</translation>
 <!-- PHONEBOOK -->
    <translation id="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_get_ip" qtlid="388732">Récupération de l'adresse IP privée du téléphone :</translation>
    <translation id="telephony_line_assist_troubleshooting_procedure_siemens_phonebook_get_ip_step1" qtlid="388745">Appuyez une seconde sur le bouton <strong>Bleu</strong> de la base à configurer.</translation>

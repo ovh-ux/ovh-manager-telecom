@@ -2,7 +2,7 @@
 <translations>
    <translation id="telephony_line_assist_troubleshooting_auto_config_title" qtlid="387835">Reconfiguration automatique de votre équipement</translation>
    <translation id="telephony_line_assist_troubleshooting_auto_config_info" qtlid="387848">Nous allons procéder à la reconfiguration automatique de votre équipement.</translation>
-   <translation id="telephony_line_assist_troubleshooting_auto_config_fill_ip" qtlid="387861">Entrez l'adresse IP de votre équipement afin de procéder à sa réinitialisation.</translation>
+   <translation id="telephony_line_assist_troubleshooting_auto_config_fill_ip">Entrez l'adresse IP publique de votre équipement afin de procéder à sa réinitialisation.</translation>
    <translation id="telephony_line_assist_troubleshooting_auto_config_reset_config" qtlid="387874">Reconfiguration du téléphone.</translation>
    <translation id="telephony_line_assist_troubleshooting_auto_config_reboot" qtlid="387887">Veuillez redémarrer électriquement votre équipement.</translation>
    <translation id="telephony_line_assist_troubleshooting_auto_config_after_reboot" qtlid="387900">Après la phase de démarrage, votre équipement devrait se connecter au réseau OVH et être de nouveau opérationnel.</translation>
