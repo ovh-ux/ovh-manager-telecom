@@ -224,7 +224,6 @@
    <translation id="common_menu_renew_agreements" qtlid="204350">Mano sutartys</translation>
    <translation id="common_menu_orders_all" qtlid="282809">Mano užsakymai</translation>
    <translation id="common_menu_contacts" qtlid="70541">Mano kontaktai</translation>
-   <translation id="common_menu_list_ticket" qtlid="454039">Mano pagalbos užklausos</translation>
    <translation id="common_menu_support_assistance" qtlid="52699">Pagalba</translation>
    <translation id="common_menu_support_assistance_expanded" qtlid="519506">Besoin d'aide</translation>
    <translation id="common_menu_support_userAccount_1" qtlid="519519">Bonjour {{username}}</translation>

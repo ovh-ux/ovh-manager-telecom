@@ -4,7 +4,7 @@
 
    <translation id="telephony_line_management_actions_line_details_offer" qtlid="27115">General information</translation>
    <translation id="telephony_line_management_actions_line_sip_password" qtlid="338066">Mot de passe SIP</translation>
-   <translation id="telephony_line_management_actions_line_sip_domain_management" qtlid="338079">Domaine SIP</translation>
+   <translation id="telephony_line_management_actions_line_sip_domain_management" qtlid="338079">SIP domain</translation>
    <translation id="telephony_line_management_actions_line_sip_ips_restrictions" qtlid="338092">Restrictions SIP par IP</translation>
    <translation id="telephony_line_management_actions_line_language" qtlid="338105">Gérer la langue</translation>
    <translation id="telephony_line_management_actions_line_resume_offer" qtlid="25783">Upgrade</translation>

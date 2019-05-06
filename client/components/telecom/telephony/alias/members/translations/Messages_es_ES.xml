@@ -7,6 +7,7 @@
    <translation id="telephony_alias_members_drag1" qtlid="397130">El pictograma</translation>
    <translation id="telephony_alias_members_drag2" qtlid="397143">le permite arrastrarlo para reordenar la posición de sus miembros en la cola.</translation>
    <translation id="telephony_alias_members_number_external" qtlid="93271">Número externo</translation>
+   <translation id="telephony_alias_members_number_internal">Numéro interne</translation>
    <translation id="telephony_alias_members_status" qtlid="26443">Estado</translation>
    <translation id="telephony_alias_members_status_available" qtlid="99920">Disponible</translation>
    <translation id="telephony_alias_members_status_onBreak" qtlid="397156">En pausa</translation>

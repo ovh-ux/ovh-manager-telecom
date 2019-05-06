@@ -224,7 +224,6 @@
    <translation id="common_menu_renew_agreements" qtlid="204350">Regulaminy</translation>
    <translation id="common_menu_orders_all" qtlid="282809">Moje zamówienia</translation>
    <translation id="common_menu_contacts" qtlid="70541">Moje kontakty</translation>
-   <translation id="common_menu_list_ticket" qtlid="454039">Moje zgłoszenia wysłane do pomocy technicznej</translation>
    <translation id="common_menu_support_assistance" qtlid="52699">Pomoc</translation>
    <translation id="common_menu_support_assistance_expanded" qtlid="519506">Potrzebujesz pomocy?</translation>
    <translation id="common_menu_support_userAccount_1" qtlid="519519">Witaj {{username}}</translation>
