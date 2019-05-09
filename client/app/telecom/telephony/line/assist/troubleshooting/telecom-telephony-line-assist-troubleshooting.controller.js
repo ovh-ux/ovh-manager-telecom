@@ -186,7 +186,8 @@ angular.module('managerApp').controller('TelecomTelephonyLineAssistTroubleshooti
   }
 
   function getSiemensProblems() {
-    if (self.process.line.phone.brand !== 'phone.gigaset.c530ip') {
+    console.log('getSiemensProblems', self.process.line.phone.brand);
+    if (!['phone.gigaset.c530ip', 'phone.siemens.a580ip', 'phone.siemens.c610ip'].includes(self.process.line.phone.brand)) {
       return [{
         name: 'callout',
       }, {
@@ -212,8 +213,12 @@ angular.module('managerApp').controller('TelecomTelephonyLineAssistTroubleshooti
         commonSteps.contactStep],
     }, {
       name: 'blueButton',
+      customSteps: [commonSteps.procedureStep, commonSteps.autoConfigStep,
+        commonSteps.contactStep],
     }, {
       name: 'nobase',
+      customSteps: [commonSteps.procedureStep, commonSteps.autoConfigStep,
+        commonSteps.contactStep],
     }, {
       name: 'register',
       customSteps: [commonSteps.procedureStep, commonSteps.autoConfigStep, {
@@ -355,10 +360,10 @@ angular.module('managerApp').controller('TelecomTelephonyLineAssistTroubleshooti
       // set phone image src
       self.imgScr = TELEPHONY_LINE_PHONE_ADDITIONAL_INFOS[self.process.line.phone.brand]
         ? TELEPHONY_LINE_PHONE_ADDITIONAL_INFOS[self.process.line.phone.brand].img : null;
+      console.log('init', TELEPHONY_LINE_PHONE_ADDITIONAL_INFOS, self.imgScr);
 
       // set problem list
       self.problemsList = getPhoneTypeProblems();
-      console.log('init', self.problemsList);
     }).finally(() => {
       self.loading.init = false;
     });
