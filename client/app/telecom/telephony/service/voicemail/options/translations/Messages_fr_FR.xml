@@ -31,4 +31,10 @@
    <translation id="telephony_line_answer_voicemail_options_mail_limit" qtlid="338014">Vous pouvez notifier un maximum de 5 adresses e-mail.</translation>
    <translation id="telephony_line_answer_voicemail_options_mail_type_attachment" qtlid="338027">Message joint en attachement</translation>
    <translation id="telephony_line_answer_voicemail_options_mail_type_simple" qtlid="338040">Notification uniquement</translation>
+
+
+   <translation id="telephony_line_answer_voicemail_options_update_bulk_all_success">La mise à jour de la configuration a bien été appliquée aux services sélectionnés.</translation>
+   <translation id="telephony_line_answer_voicemail_options_update_bulk_some_success">La mise à jour de la configuration a bien été appliquée à {{ count }} des services sélectionnés.</translation>
+   <translation id="telephony_line_answer_voicemail_options_update_bulk_error">La mise à jour de la configuration n'a pu être appliquée au(x) service(s) suivant(s) :</translation>
+   <translation id="telephony_line_answer_voicemail_options_update_bulk_on_error">Oups ! Une erreur est survenue lors de la mise à jour de la configuration.</translation>
 </translations>
