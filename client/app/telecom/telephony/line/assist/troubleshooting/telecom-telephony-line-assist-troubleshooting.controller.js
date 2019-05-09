@@ -78,15 +78,12 @@ angular.module('managerApp').controller('TelecomTelephonyLineAssistTroubleshooti
     =============================== */
 
   self.refreshSteps = function (steps) {
-    console.log('refreshSteps', steps);
     // reset steps
     self.steps = [];
 
     const problem = _.find(self.problemsList, {
       name: self.process.problem,
     });
-
-    console.log('refreshSteps', self.process.problem);
 
     // is there is no custom step to add, add common steps (procedure and contact support)
     const stepsToAdd = steps || problem.customSteps
@@ -104,7 +101,6 @@ angular.module('managerApp').controller('TelecomTelephonyLineAssistTroubleshooti
     });
 
     self.process.activeStep = _.first(self.steps);
-    console.log('refreshSteps', self.steps);
   };
 
   self.manageItWorks = function () {
@@ -132,7 +128,6 @@ angular.module('managerApp').controller('TelecomTelephonyLineAssistTroubleshooti
   };
 
   self.manageItStillDoesnttWork = function () {
-    console.log('manageItStillDoesnttWork', self.steps);
     const activeStepIndex = _.findIndex(self.steps, {
       active: true,
     });
@@ -186,7 +181,6 @@ angular.module('managerApp').controller('TelecomTelephonyLineAssistTroubleshooti
   }
 
   function getSiemensProblems() {
-    console.log('getSiemensProblems', self.process.line.phone.brand);
     if (!['phone.gigaset.c530ip', 'phone.siemens.a580ip', 'phone.siemens.c610ip'].includes(self.process.line.phone.brand)) {
       return [{
         name: 'callout',
@@ -317,7 +311,6 @@ angular.module('managerApp').controller('TelecomTelephonyLineAssistTroubleshooti
   }
 
   function getPhoneTypeProblems() {
-    console.log('getPhoneTypeProblems', self.process.phoneType);
     const steps = [commonSteps.autoConfigStep, commonSteps.contactStep];
 
     switch (self.process.phoneType) {
@@ -360,7 +353,6 @@ angular.module('managerApp').controller('TelecomTelephonyLineAssistTroubleshooti
       // set phone image src
       self.imgScr = TELEPHONY_LINE_PHONE_ADDITIONAL_INFOS[self.process.line.phone.brand]
         ? TELEPHONY_LINE_PHONE_ADDITIONAL_INFOS[self.process.line.phone.brand].img : null;
-      console.log('init', TELEPHONY_LINE_PHONE_ADDITIONAL_INFOS, self.imgScr);
 
       // set problem list
       self.problemsList = getPhoneTypeProblems();
