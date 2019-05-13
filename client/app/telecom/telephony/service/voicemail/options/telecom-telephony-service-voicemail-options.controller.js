@@ -361,18 +361,13 @@ angular.module('managerApp').controller('TelecomTelephonyServiceVoicemailOptions
     };
 
     self.getBulkParams = function () {
-      console.log('getBulkParams');
       const settings = pickEditableSettings(self.settings);
       _.assign(settings, _.pick(self.notificationForm, ['audioFormat', 'keepMessage', 'fromName', 'fromEmail']));
-      _.assign(settings, _.pick(self.recordingForm, ['doNotRecord']));
-
-      console.log('getBulkParams', settings);
-
       return settings;
     };
 
     self.onBulkSuccess = function (bulkResult) {
-    // display message of success or error
+      // display message of success or error
       tucTelephonyBulk.getTucToastInfos(bulkResult, {
         fullSuccess: $translate.instant('telephony_line_answer_voicemail_options_update_bulk_all_success'),
         partialSuccess: $translate.instant('telephony_line_answer_voicemail_options_update_bulk_some_success', {
@@ -384,6 +379,8 @@ angular.module('managerApp').controller('TelecomTelephonyServiceVoicemailOptions
           hideAfter: null,
         });
       });
+
+      refreshSettings();
     };
 
     self.onBulkError = function (error) {

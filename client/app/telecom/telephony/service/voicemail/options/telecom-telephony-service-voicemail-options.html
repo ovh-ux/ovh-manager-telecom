@@ -260,6 +260,23 @@
                            data-ng-disabled="VoicemailOptionsCtrl.notificationForm.isSuccess" />
                 </div>
                 <div class="form-group">
+                    <hr/>
+                    <tuc-telephony-bulk-action
+                        data-billing-account="{{ VoicemailOptionsCtrl.bulkDatas.billingAccount }}"
+                        data-service-name="{{ VoicemailOptionsCtrl.bulkDatas.serviceName }}"
+                        data-custom-class="link d-block pl-0 mb-3"
+                        data-bulk-infos="VoicemailOptionsCtrl.bulkDatas.infos"
+                        data-ng-disabled="!VoicemailOptionsCtrl.notificationChanged() ||
+                                            VoicemailOptionsCtrl.notificationForm.isUpdating ||
+                                            VoicemailOptionsCtrl.notificationForm.isSuccess ||
+                                            VoicemailOptionsCtrl.emailForm.isAdding ||
+                                            VoicemailOptionsCtrl.emailForm.isRemoving"
+                        data-filter-services="VoicemailOptionsCtrl.filterServices"
+                        data-get-bulk-params="VoicemailOptionsCtrl.getBulkParams"
+                        data-on-success="VoicemailOptionsCtrl.onBulkSuccess"
+                        data-on-error="VoicemailOptionsCtrl.onBulkError">
+                    </tuc-telephony-bulk-action>
+
                     <button type="submit"
                             class="btn btn-primary"
                             data-ng-disabled="!VoicemailOptionsCtrl.notificationChanged() ||
@@ -286,23 +303,5 @@
 
     <div class="mt-4"
          data-ng-if="!VoicemailOptionsCtrl.loading && VoicemailOptionsCtrl.settings">
-        <hr/>
-        <tuc-telephony-bulk-action
-            data-billing-account="{{ VoicemailOptionsCtrl.bulkDatas.billingAccount }}"
-            data-service-name="{{ VoicemailOptionsCtrl.bulkDatas.serviceName }}"
-            data-custom-class="link d-block pl-0 mb-3"
-            data-bulk-infos="VoicemailOptionsCtrl.bulkDatas.infos"
-            data-ng-disabled="(!VoicemailOptionsCtrl.recordingChanged() &&
-                              !VoicemailOptionsCtrl.notificationChanged()) ||
-                              VoicemailOptionsCtrl.recordingForm.isUpdating ||
-                              VoicemailOptionsCtrl.notificationForm.isUpdating ||
-                              VoicemailOptionsCtrl.notificationForm.isSuccess ||
-                              VoicemailOptionsCtrl.emailForm.isAdding ||
-                              VoicemailOptionsCtrl.emailForm.isRemoving"
-            data-filter-services="VoicemailOptionsCtrl.filterServices"
-            data-get-bulk-params="VoicemailOptionsCtrl.getBulkParams"
-            data-on-success="VoicemailOptionsCtrl.onBulkSuccess"
-            data-on-error="VoicemailOptionsCtrl.onBulkError">
-        </tuc-telephony-bulk-action>
     </div>
 </section>
