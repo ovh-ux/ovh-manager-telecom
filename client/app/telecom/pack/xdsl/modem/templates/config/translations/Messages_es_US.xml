@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<translations>
+   <translation id="xdsl_modem_template_config_list_title" qtlid="524192">Liste des templates de modem disponibles</translation>
+   <translation id="xdsl_modem_template_config_table_name" qtlid="166612">Nombre de la plantilla</translation>
+   <translation id="xdsl_modem_template_config_creation_date" qtlid="26419">Fecha de creación</translation>
+   <translation id="xdsl_modem_template_config_table_is_empty" qtlid="524205">Configuration vide</translation>
+   <translation id="xdsl_modem_template_config_error_missing" qtlid="524218">Template non existant !</translation>
+   <translation id="xdsl_modem_template_config_title" qtlid="524231">Détail de la configuration du template {{ name }}</translation>
+   <translation id="xdsl_modem_template_config_dhcp" qtlid="311778">DHCP</translation>
+   <translation id="xdsl_modem_template_config_dhcp_server" qtlid="8290">Servidor</translation>
+   <translation id="xdsl_modem_template_config_dhcp_gateway" qtlid="259844">Pasarela</translation>
+   <translation id="xdsl_modem_template_config_dhcp_primary_dns" qtlid="524244">DNS primaire</translation>
+   <translation id="xdsl_modem_template_config_dhcp_secondary_dns" qtlid="168250">DNS secundario</translation>
+   <translation id="xdsl_modem_template_config_dhcp_domain" qtlid="66428">Nom de domaine</translation>
+   <translation id="xdsl_modem_template_config_dhcp_range" qtlid="524257">Plage</translation>
+   <translation id="xdsl_modem_template_config_dhcp_lease_time" qtlid="524270">Durée d'allocation</translation>
+   <translation id="xdsl_modem_template_config_wifi" qtlid="524283">Wifi</translation>
+   <translation id="xdsl_modem_template_config_wifi_name" qtlid="524296">Nom du Wifi</translation>
+   <translation id="xdsl_modem_template_config_wifi_security" qtlid="125420">Sécurité</translation>
+   <translation id="xdsl_modem_template_config_wifi_channel" qtlid="279730">Canal</translation>
+   <translation id="xdsl_modem_template_config_wifi_frequency" qtlid="30442">Fréquence</translation>
+   <translation id="xdsl_modem_template_config_wifi_guest" qtlid="456414">Invité</translation>
+   <translation id="xdsl_modem_template_config_lan" qtlid="524309">LAN</translation>
+   <translation id="xdsl_modem_template_config_lan_addressing" qtlid="312103">Méthode de récupération d'adresse IP</translation>
+   <translation id="xdsl_modem_template_config_lan_ip_address" qtlid="26191">Adresse IP</translation>
+   <translation id="xdsl_modem_template_config_lan_subnet_mask" qtlid="311024">Máscara de subred</translation>
+   <translation id="xdsl_modem_template_config_dmz_and_mtu" qtlid="524322">DMZ et MTU</translation>
+   <translation id="xdsl_modem_template_config_ip_dmz" qtlid="524335">IP de la DMZ</translation>
+   <translation id="xdsl_modem_template_config_mtu" qtlid="311193">MTU</translation>
+   <translation id="xdsl_modem_template_config_port_mapping" qtlid="224646">Redirecciones de puertos</translation>
+   <translation id="xdsl_modem_template_config_port_mapping_name" qtlid="3818">Nombre</translation>
+   <translation id="xdsl_modem_template_config_port_mapping_ip_source" qtlid="138376">IP de origen</translation>
+   <translation id="xdsl_modem_template_config_port_mapping_start" qtlid="312207">Port de début</translation>
+   <translation id="xdsl_modem_template_config_port_mapping_end" qtlid="312220">Port de fin</translation>
+   <translation id="xdsl_modem_template_config_port_mapping_protocol" qtlid="19711">Protocole</translation>
+   <translation id="xdsl_modem_template_config_port_mapping_ip_dest" qtlid="161581">IP de destino</translation>
+   <translation id="xdsl_modem_template_config_port_mapping_internal" qtlid="312233">Port interne</translation>
+   <translation id="xdsl_modem_template_config_no_value" qtlid="8674">Aucune</translation>
+   <translation id="xdsl_modem_template_config_ignore_lan_dhcp" qtlid="524348">Ignorer LAN et DHCP</translation>
+   <translation id="xdsl_modem_template_config_ignore_dmz" qtlid="524361">Ignorer DMZ</translation>
+   <translation id="xdsl_modem_template_config_ignore_mtu" qtlid="524374">Ignorer MTU</translation>
+   <translation id="xdsl_modem_template_config_ignore" qtlid="524387">Ignorer</translation>
+
+<!-- Action messages -->
+   <translation id="xdsl_modem_template_config_delete_success" qtlid="524400">Template supprimé avec succès</translation>
+   <translation id="xdsl_modem_template_config_delete_error" qtlid="524413">Problème sur la suppression du template</translation>
+   <translation id="xdsl_modem_template_config_update_success" qtlid="524426">Template modifié avec succès</translation>
+   <translation id="xdsl_modem_template_config_update_error" qtlid="524439">Problème sur la modification du template</translation>
+
+<!-- Labels for modal component -->
+   <translation id="xdsl_modem_template_config_modal_title_delete" qtlid="524452">Suppression du template de modem sélectionné</translation>
+   <translation id="xdsl_modem_template_config_modal_title_update" qtlid="524465">Modification du template de modem sélectionné</translation>
+   <translation id="xdsl_modem_template_config_modal_question_delete" qtlid="524478">Êtes-vous sûr de vouloir supprimer le template {{ templateName }} ?</translation>
+   <translation id="xdsl_modem_template_config_modal_question_update" qtlid="524491">Êtes-vous sûr de vouloir modifier le template {{ templateName }} ?</translation>
+</translations>
