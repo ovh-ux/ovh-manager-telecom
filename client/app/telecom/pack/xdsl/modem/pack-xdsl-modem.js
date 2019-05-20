@@ -105,6 +105,7 @@ angular.module('managerApp').config(($stateProvider) => {
       './wifi',
       './firmware',
       './service',
+      './templates',
     ],
   });
 });

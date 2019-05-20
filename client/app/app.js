@@ -12,6 +12,7 @@ import ngPaginationFront from '@ovh-ux/ng-pagination-front';
 import ngTailLogs from '@ovh-ux/ng-tail-logs';
 import ngTranslateAsyncLoader from '@ovh-ux/ng-translate-async-loader';
 import ngUirouterTitle from '@ovh-ux/ng-uirouter-title';
+import ovhManagerNavbar from '@ovh-ux/manager-navbar';
 
 import managerCore from '@ovh-ux/manager-core';
 import managerDashboard from '@ovh-ux/manager-telecom-dashboard';
@@ -19,6 +20,7 @@ import managerFreefax from '@ovh-ux/manager-freefax';
 import managerOverTheBox from '@ovh-ux/manager-overthebox';
 import managerSms from '@ovh-ux/manager-sms';
 import managerTelecomTask from '@ovh-ux/manager-telecom-task';
+import navbar from '../components/navbar';
 
 angular.module('managerApp', [
   'angular-ellipses',
@@ -70,10 +72,12 @@ angular.module('managerApp', [
   'ovh-api-services',
   'ovhBrowserAlert',
   'ovh-jquery-ui-draggable-ng',
+  ovhManagerNavbar,
   'ovh-ng-input-password',
   'oui',
   'pascalprecht.translate',
   'smoothScroll',
+  navbar,
   'tmh.dynamicLocale',
   'ui.bootstrap',
   'ui.select',
@@ -177,24 +181,12 @@ angular.module('managerApp', [
   })
 
 /*= =========  LOAD NAVBAR AND SIDEBAR  ========== */
-  .run(($document, $rootScope, ManagerNavbarService) => {
-    // Get first base structure of the navbar, to avoid heavy loading
-    ManagerNavbarService.getNavbar()
-      .then((navbar) => {
-        _.set($rootScope, 'navbar', navbar);
-
-        // Then get the products links, to build the reponsive menu
-        ManagerNavbarService.getResponsiveLinks()
-          .then((responsiveLinks) => {
-            _.set($rootScope, 'navbar.responsiveLinks', responsiveLinks);
-          });
+  .run(/* @ngInject */ ($rootScope, $timeout, TelecomNavbar) => {
+    TelecomNavbar.getResponsiveLinks()
+      .then(links => _.set($rootScope, 'navbar.sidebarLinks', links))
+      .finally(() => {
+        $timeout(() => $rootScope.$broadcast('sidebar:loaded'));
       });
-
-    // Scroll to anchor id
-    _.set($rootScope, 'scrollTo', (id) => {
-      // Set focus to target
-      $document[0].getElementById(id).focus();
-    });
   })
 
   .config(($logProvider) => {

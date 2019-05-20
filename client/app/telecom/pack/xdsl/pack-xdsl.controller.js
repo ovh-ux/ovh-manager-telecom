@@ -74,6 +74,7 @@ angular.module('managerApp').controller('PackXdslCtrl',
         case 'telecom.pack.xdsl.access-resiliation':
         case 'telecom.pack.xdsl.missing-rio':
         case 'telecom.pack.xdsl.line-diagnostic':
+        case 'telecom.pack.xdsl.modem.templates':
           setAnim('invert-anim');
           self.content.back.state = '^';
           getXdsl().then((xdsl) => {
