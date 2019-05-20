@@ -1,3 +1,24 @@
+## [10.25.2](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.25.1...v10.25.2) (2019-05-20)
+
+
+### Bug Fixes
+
+* **deps:** upgrade ng-ovh-telecom-universe-components to v3.0.3 ([#1381](https://github.com/ovh-ux/ovh-manager-telecom/issues/1381)) ([1253c8c](https://github.com/ovh-ux/ovh-manager-telecom/commit/1253c8c))
+* **i18n:** add missing translations ([78854bb](https://github.com/ovh-ux/ovh-manager-telecom/commit/78854bb))
+* **i18n:** retrieve translations ([1d65e70](https://github.com/ovh-ux/ovh-manager-telecom/commit/1d65e70))
+* **i18n:** retrieve translations ([70c5372](https://github.com/ovh-ux/ovh-manager-telecom/commit/70c5372))
+* **i18n:** submit translations ([3515b8d](https://github.com/ovh-ux/ovh-manager-telecom/commit/3515b8d))
+* **i18n:** submit translations ([813d25e](https://github.com/ovh-ux/ovh-manager-telecom/commit/813d25e))
+
+
+### Features
+
+* **pack.xdsl:** add config for modem template ([#1351](https://github.com/ovh-ux/ovh-manager-telecom/issues/1351)) ([6029d20](https://github.com/ovh-ux/ovh-manager-telecom/commit/6029d20))
+* **xdsl.access.ipv6:** update ipv6 set on or set off message ([2334593](https://github.com/ovh-ux/ovh-manager-telecom/commit/2334593))
+* use @ovh-ux/manager-navbar component ([c896154](https://github.com/ovh-ux/ovh-manager-telecom/commit/c896154))
+
+
+
 ## [10.25.1](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.25.0...v10.25.1) (2019-05-06)
 
 
