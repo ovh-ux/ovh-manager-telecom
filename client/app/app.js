@@ -296,4 +296,5 @@ angular.module('managerApp', [
 
       removeHook();
     });
-  });
+  })
+  .run(/* @ngTranslationsInject ./common/translations */);
