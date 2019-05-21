@@ -6,6 +6,7 @@ export default class {
   /* @ngInject */
   constructor(
     $q,
+    $rootScope,
     $translate,
     OvhApiFreeFax,
     OvhApiOverTheBox,
@@ -17,6 +18,7 @@ export default class {
     REDIRECT_URLS,
   ) {
     this.$q = $q;
+    this.$rootScope = $rootScope;
     this.$translate = $translate;
     this.ovhApiFreeFax = OvhApiFreeFax;
     this.ovhApiOverTheBox = OvhApiOverTheBox;
