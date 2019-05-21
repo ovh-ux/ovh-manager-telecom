@@ -1,3 +1,12 @@
+## [10.25.3](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.25.2...v10.25.3) (2019-05-21)
+
+
+### Bug Fixes
+
+* **navbar:** large account menu ([b0fbbaa](https://github.com/ovh-ux/ovh-manager-telecom/commit/b0fbbaa))
+
+
+
 ## [10.25.2](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.25.1...v10.25.2) (2019-05-20)
 
 
