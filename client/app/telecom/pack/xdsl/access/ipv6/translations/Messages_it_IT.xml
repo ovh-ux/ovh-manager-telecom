@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <translations>
    <translation id="xdsl_access_ipv6_status" qtlid="506923">IPv6 activée</translation>
+   <translation id="xdsl_access_ipv6_status_off" qtlid="524504">IPv6 désactivée</translation>
    <translation id="xdsl_access_ipv6_description" qtlid="309945">L'attivazione del routing IPv6 diventerà effettiva entro 5-10 minuti. Questa operazione comporta anche l'aggiornamento del firmware del tuo modem. Attenzione: il firmware è ancora in fase beta. Durante l'aggiornamento si potrebbe quindi verificare un'interruzione della connessione, sia per l'attivazione che per la disattivazione dell'IPv6.</translation>
    <translation id="xdsl_access_ipv6_warning" qtlid="309958">Ti preghiamo di attendere e di non spegnere il tuo modem per tutta la durata dell'operazione.</translation>
    <translation id="xdsl_access_ipv6_success_validation_on" qtlid="309971">Attivazione IPv6 in corso...</translation>
