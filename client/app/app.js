@@ -1,9 +1,18 @@
+import { Environment } from '@ovh-ux/manager-config';
+import ovhManagerCore from '@ovh-ux/manager-core';
+import ovhManagerDashboard from '@ovh-ux/manager-telecom-dashboard';
+import ovhManagerFreefax from '@ovh-ux/manager-freefax';
+import ovhManagerNavbar from '@ovh-ux/manager-navbar';
+import ovhManagerOverTheBox from '@ovh-ux/manager-overthebox';
+import ovhManagerSms from '@ovh-ux/manager-sms';
+import ovhManagerTelecomTask from '@ovh-ux/manager-telecom-task';
 import ngAtInternet from '@ovh-ux/ng-at-internet';
 import ngAtInternetUiRouterPlugin from '@ovh-ux/ng-at-internet-ui-router-plugin';
 import ngOvhApiWrappers from '@ovh-ux/ng-ovh-api-wrappers';
 import ngOvhChatbot from '@ovh-ux/ng-ovh-chatbot';
 import ngOvhHttp from '@ovh-ux/ng-ovh-http';
 import ngOvhMondialRelay from '@ovh-ux/ng-ovh-mondial-relay';
+import ngOvhOtrs from '@ovh-ux/ng-ovh-otrs';
 import ngOvhSsoAuth from '@ovh-ux/ng-ovh-sso-auth';
 import ngOvhSsoAuthModalPlugin from '@ovh-ux/ng-ovh-sso-auth-modal-plugin';
 import ngOvhSwimmingPoll from '@ovh-ux/ng-ovh-swimming-poll';
@@ -12,26 +21,15 @@ import ngPaginationFront from '@ovh-ux/ng-pagination-front';
 import ngTailLogs from '@ovh-ux/ng-tail-logs';
 import ngTranslateAsyncLoader from '@ovh-ux/ng-translate-async-loader';
 import ngUirouterTitle from '@ovh-ux/ng-uirouter-title';
-import ovhManagerNavbar from '@ovh-ux/manager-navbar';
 
-import managerCore from '@ovh-ux/manager-core';
-import managerDashboard from '@ovh-ux/manager-telecom-dashboard';
-import managerFreefax from '@ovh-ux/manager-freefax';
-import managerOverTheBox from '@ovh-ux/manager-overthebox';
-import managerSms from '@ovh-ux/manager-sms';
-import managerTelecomTask from '@ovh-ux/manager-telecom-task';
 import navbar from '../components/navbar';
+
+Environment.setRegion('EU');
 
 angular.module('managerApp', [
   'angular-ellipses',
   'angular-inview',
   'angular-translate-loader-pluggable',
-  managerCore,
-  managerDashboard,
-  managerFreefax,
-  managerOverTheBox,
-  managerSms,
-  managerTelecomTask,
   'matchmedia-ng',
   'momentjs',
   'ngAnimate',
@@ -50,6 +48,7 @@ angular.module('managerApp', [
   ngOvhChatbot,
   ngOvhHttp,
   ngOvhMondialRelay,
+  ngOvhOtrs,
   ngOvhSsoAuth,
   ngOvhSsoAuthModalPlugin,
   ngOvhSwimmingPoll,
@@ -72,8 +71,14 @@ angular.module('managerApp', [
   'ovh-api-services',
   'ovhBrowserAlert',
   'ovh-jquery-ui-draggable-ng',
-  ovhManagerNavbar,
   'ovh-ng-input-password',
+  ovhManagerCore,
+  ovhManagerDashboard,
+  ovhManagerFreefax,
+  ovhManagerNavbar,
+  ovhManagerOverTheBox,
+  ovhManagerSms,
+  ovhManagerTelecomTask,
   'oui',
   'pascalprecht.translate',
   'smoothScroll',
