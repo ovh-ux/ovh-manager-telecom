@@ -1,3 +1,13 @@
+## [10.25.5](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.25.4...v10.25.5) (2019-05-29)
+
+
+### Bug Fixes
+
+* **deps:** bump manager-navbar to v0.5.0 ([#1399](https://github.com/ovh-ux/ovh-manager-telecom/issues/1399)) ([b03867b](https://github.com/ovh-ux/ovh-manager-telecom/commit/b03867b))
+* **deps:** upgrade some dependencies ([#1383](https://github.com/ovh-ux/ovh-manager-telecom/issues/1383)) ([469dadf](https://github.com/ovh-ux/ovh-manager-telecom/commit/469dadf))
+
+
+
 ## [10.25.4](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.25.3...v10.25.4) (2019-05-22)
 
 
