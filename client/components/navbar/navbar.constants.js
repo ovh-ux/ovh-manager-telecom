@@ -24,11 +24,6 @@ export const MENU = [
     name: 'overTheBox',
     title: 'telecom_sidebar_section_overTheBox',
   },
-  {
-    name: 'managerv4',
-    title: 'telecom_sidebar_section_task',
-    state: 'telecom.task',
-  },
 ];
 
 export default {
