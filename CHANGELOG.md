@@ -1,3 +1,13 @@
+## [10.25.6](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.25.5...v10.25.6) (2019-06-06)
+
+
+### Bug Fixes
+
+* **components.navbar:** remove duplicate constant ([fa04213](https://github.com/ovh-ux/ovh-manager-telecom/commit/fa04213))
+* **components.navbar:** specify the right sms state ([aff407a](https://github.com/ovh-ux/ovh-manager-telecom/commit/aff407a))
+
+
+
 ## [10.25.5](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.25.4...v10.25.5) (2019-05-29)
 
 
