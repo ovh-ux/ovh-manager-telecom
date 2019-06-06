@@ -1,3 +1,20 @@
+# [10.26.0](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.25.6...v10.26.0) (2019-06-06)
+
+
+### Bug Fixes
+
+* **deps:** upgrade some dependencies ([#1403](https://github.com/ovh-ux/ovh-manager-telecom/issues/1403)) ([9281bd9](https://github.com/ovh-ux/ovh-manager-telecom/commit/9281bd9))
+* **i18n:** retrieve translations ([d2564f3](https://github.com/ovh-ux/ovh-manager-telecom/commit/d2564f3))
+* **i18n:** submit translations ([d1012ad](https://github.com/ovh-ux/ovh-manager-telecom/commit/d1012ad))
+* **xdsl:** add oui icon external ([53b16d5](https://github.com/ovh-ux/ovh-manager-telecom/commit/53b16d5))
+
+
+### Features
+
+* **xdsl:** warn user and prevent use of diagnostic wizard if incident ([6f5b33b](https://github.com/ovh-ux/ovh-manager-telecom/commit/6f5b33b))
+
+
+
 ## [10.25.6](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.25.5...v10.25.6) (2019-06-06)
 
 
