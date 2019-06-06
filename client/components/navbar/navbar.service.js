@@ -220,7 +220,7 @@ export default class {
       .then(result => _.map(result, item => ({
         name: item.name,
         title: item.description || item.name,
-        state: 'telecom.sms.dashboard',
+        state: 'sms.service.dashboard',
         stateParams: {
           serviceName: item.name,
         },
