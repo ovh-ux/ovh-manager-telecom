@@ -1,9 +1,11 @@
+import { XDSL_NO_INCIDENT_CODE } from './pack-xdsl-access.constants';
+
 angular.module('managerApp').controller('XdslAccessCtrl', class XdslAccessCtrl {
   constructor(
     $filter, $q, $rootScope, $scope, $state, $stateParams, $templateCache, $translate, $uibModal,
     OvhApiPackXdsl, OvhApiXdsl, OvhApiXdslDiagnostic, OvhApiXdslIps, OvhApiXdslLines,
     OvhApiXdslModem, OvhApiXdslNotifications, TucToast, TucToastError, XdslTaskPoller,
-    PACK, PACK_IP, REDIRECT_URLS,
+    PACK, PACK_IP, REDIRECT_URLS, URLS,
   ) {
     this.$filter = $filter;
     this.$q = $q;
@@ -27,6 +29,7 @@ angular.module('managerApp').controller('XdslAccessCtrl', class XdslAccessCtrl {
     this.PACK = PACK;
     this.PACK_IP = PACK_IP;
     this.REDIRECT_URLS = REDIRECT_URLS;
+    this.URLS = URLS;
   }
 
   $onInit() {
@@ -39,6 +42,7 @@ angular.module('managerApp').controller('XdslAccessCtrl', class XdslAccessCtrl {
       deconsolidation: true,
       xdsl: true,
       accessDiagnosticLaunched: false,
+      incident: true,
     };
 
     this.accessDiagnostic = null;
@@ -54,7 +58,6 @@ angular.module('managerApp').controller('XdslAccessCtrl', class XdslAccessCtrl {
       rangeOfBaseIpv4IP: this.PACK_IP.baseIpv4Range,
     };
 
-    this.getLinesDetails();
     this.initTemplateCaches();
 
     this.$scope.notificationsChanged = (elements) => {
@@ -90,9 +93,7 @@ angular.module('managerApp').controller('XdslAccessCtrl', class XdslAccessCtrl {
       Until the task is finished, the diagnostic we get from
       the API is IRRELEVANT and should not be displayed to the user.
     */
-    this.$rootScope.$on('accessDiagnosticDetails:launch', () => {
-      this.launchDiagnostic();
-    });
+    this.$rootScope.$on('accessDiagnosticDetails:launch', () => this.launchDiagnostic());
 
     this.$rootScope.$on('accessDiagnosticDetails:get', () => {
       if (!this.accessDiagnostic && !this.$scope.loaders.accessDiagnosticLaunched) {
@@ -103,13 +104,13 @@ angular.module('managerApp').controller('XdslAccessCtrl', class XdslAccessCtrl {
 
     this.diagPollerTicket = this.XdslTaskPoller.register('accessDiagnosticRun', () => {
       this.$scope.loaders.accessDiagnosticLaunched = false;
-      this.getDiagnostic();
+      return this.getDiagnostic();
     });
 
     this.additionalIpPollerTicket = this.XdslTaskPoller.register(
       'pendingOrderAdditionalIpOption', () => {
-        this.getIps();
         this.ordering = false;
+        return this.getIps();
       },
     );
 
@@ -118,14 +119,22 @@ angular.module('managerApp').controller('XdslAccessCtrl', class XdslAccessCtrl {
       this.XdslTaskPoller.unregister(this.additionalIpPollerTicket);
     });
 
-    this.getDiagnostic();
+    return this.$q.all([
+      this.getLinesDetails(),
+      this.getDiagnostic(),
+      this.getIncident(),
+    ]);
+  }
+
+  isLoading() {
+    return this.$scope.loaders.details || this.$scope.loaders.tasks || this.$scope.loaders.incident;
   }
 
   openDetailsPopup() {
     if (this.accessDiagnostic === null && !this.$scope.loaders.accessDiagnosticLaunched) {
       this.launchDiagnostic();
     }
-    this.$state.go('telecom.pack.xdsl.access-diagnostic-details');
+    return this.$state.go('telecom.pack.xdsl.access-diagnostic-details');
   }
 
   launchDiagnostic() {
@@ -258,7 +267,7 @@ angular.module('managerApp').controller('XdslAccessCtrl', class XdslAccessCtrl {
       error => this.onTaskPollError(error),
     );
 
-    this.$q.allSettled([
+    return this.$q.allSettled([
       // Get access Details
       this.OvhApiXdsl.v6().get({
         xdslId: this.$stateParams.serviceName,
@@ -337,5 +346,25 @@ angular.module('managerApp').controller('XdslAccessCtrl', class XdslAccessCtrl {
     ]).finally(() => {
       this.$scope.loaders.details = false;
     });
+  }
+
+  getIncident() {
+    return this.OvhApiXdsl.Incident().v6().get({
+      serviceName: this.$stateParams.serviceName,
+    }).$promise
+      .then(() => {
+        this.hasIncidentOccured = true;
+      })
+      .catch((error) => {
+        const errorStatus = _.get(error, 'status');
+        if (errorStatus === XDSL_NO_INCIDENT_CODE) {
+          this.hasIncidentOccured = false;
+        } else {
+          this.TucToast.error(`${this.$translate.instant('xdsl_details_diagnostic_get_incident_error')} ${_.get(error, 'data.message', '')}`);
+        }
+      })
+      .finally(() => {
+        this.$scope.loaders.incident = false;
+      });
   }
 });
