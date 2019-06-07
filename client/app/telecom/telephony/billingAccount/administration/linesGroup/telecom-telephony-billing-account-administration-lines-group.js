@@ -8,6 +8,6 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'LinesGroupCtrl',
       },
     },
-    translations: ['.', '..'],
+    translations: { value: ['.', '..'], format: 'json' },
   });
 });

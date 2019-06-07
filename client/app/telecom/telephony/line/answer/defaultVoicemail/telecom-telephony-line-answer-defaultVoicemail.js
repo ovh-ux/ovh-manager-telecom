@@ -12,6 +12,6 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'DefaultVoicemailCtrl',
       },
     },
-    translations: ['..', '../../../service/voicemail/default'],
+    translations: { value: ['..', '../../../service/voicemail/default'], format: 'json' },
   });
 });

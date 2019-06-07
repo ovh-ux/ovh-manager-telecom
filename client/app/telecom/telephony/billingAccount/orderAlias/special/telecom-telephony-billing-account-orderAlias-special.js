@@ -8,6 +8,6 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'AliasOrderSpecialCtrl',
       },
     },
-    translations: ['.', '../../../alias/special/rsva'],
+    translations: { value: ['.', '../../../alias/special/rsva'], format: 'json' },
   });
 });

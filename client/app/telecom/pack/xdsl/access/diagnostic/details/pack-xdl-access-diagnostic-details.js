@@ -5,6 +5,6 @@ angular.module('managerApp').config(($stateProvider) => {
     controller: 'XdslDiagnosticDetailsCtrl',
     controllerAs: '$ctrl',
     layout: 'modal',
-    translations: ['..'],
+    translations: { value: ['..'], format: 'json' },
   });
 });

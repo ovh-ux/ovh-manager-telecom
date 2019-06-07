@@ -8,6 +8,6 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: '$ctrl',
       },
     },
-    translations: ['.', '../../service/assist'],
+    translations: { value: ['.', '../../service/assist'], format: 'json' },
   });
 });

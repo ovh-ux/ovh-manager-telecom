@@ -1,0 +1,14 @@
+{
+  "telephony_line_mgcp_ip_restriction_title": "MGCP rajoitus IP-osoitteella",
+  "telephony_line_mgcp_ip_restriction_line_title": "Linjan MGCP-rajoitus",
+  "telephony_line_mgcp_ip_restriction_line_info": "{{ restriction? 'La restriction ' + restriction : 'Cette restriction' }} est utilisée sur la ligne actuellement sélectionnée.",
+  "telephony_line_mgcp_ip_restriction_customer_code_title": "Asiakaskoodiisi liittyvä MGCP-rajoitus",
+  "telephony_line_mgcp_ip_restriction_customer_code_info": "Tätä rajoitusta käytetään asiakakoodillasi tilattujen uusien linjojen asennuksessa. ",
+  "telephony_line_mgcp_ip_restriction_label": "Sallittu IP-osoite:",
+  "telephony_line_mgcp_ip_restriction_placeholder": "Sallittu IP-osoite (esim: 213.186.33.33)",
+  "telephony_line_mgcp_ip_restriction_default_placeholder": "Adresse IP autorisée (exemple : 213.186.33.33/24)",
+  "telephony_line_mgcp_ip_restriction_error_pattern": "IP-osoite ei kelpaa.",
+  "telephony_line_mgcp_ip_restriction_submit": "Ajouter l’adresse IP",
+  "telephony_line_mgcp_ip_restriction_edit_success": "Muokkaus rekisteröitiin ja se astuu voimaan viiden minuutin kuluessa.",
+  "telephony_line_mgcp_ip_restriction_edit_error": "Hups! Tapahtui virhe sallitun IP-osoitteen muokkauksessa."
+}

@@ -12,6 +12,6 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'SettingsCtrl',
       },
     },
-    translations: ['../../../service/fax/settings'],
+    translations: { value: ['../../../service/fax/settings'], format: 'json' },
   });
 });

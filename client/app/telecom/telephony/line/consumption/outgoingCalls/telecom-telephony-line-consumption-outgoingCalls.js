@@ -13,6 +13,6 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'OutgoingCallsCtrl',
       },
     },
-    translations: ['.'],
+    translations: { value: ['.'], format: 'json' },
   });
 });

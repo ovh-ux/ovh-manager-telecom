@@ -12,6 +12,6 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'VoicemailOptionsCtrl',
       },
     },
-    translations: ['../../../service/voicemail/options'],
+    translations: { value: ['../../../service/voicemail/options'], format: 'json' },
   });
 });

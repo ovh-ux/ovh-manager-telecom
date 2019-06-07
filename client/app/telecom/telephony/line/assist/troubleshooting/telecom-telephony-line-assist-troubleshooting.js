@@ -52,6 +52,6 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'ManualConfigCtrl',
       },
     },
-    translations: ['.', './autoConfig', './manualConfig'],
+    translations: { value: ['.', './autoConfig', './manualConfig'], format: 'json' },
   });
 });

@@ -7,5 +7,5 @@ angular.module('managerApp').config($stateProvider => $stateProvider.state('tele
       controllerAs: 'GroupRepaymentsCtrl',
     },
   },
-  translations: ['.'],
+  translations: { value: ['.'], format: 'json' },
 }));

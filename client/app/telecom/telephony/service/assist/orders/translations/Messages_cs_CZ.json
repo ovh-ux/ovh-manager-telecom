@@ -1,0 +1,16 @@
+{
+  "telephony_line_assist_orders_title": "Suivi des bons de commande",
+  "telephony_line_assist_orders_column_date": "Datum",
+  "telephony_line_assist_orders_column_id": "Číslo objednávky",
+  "telephony_line_assist_orders_column_status": "Stav",
+  "telephony_line_assist_orders_order_status_cancelled": "Zrušeno",
+  "telephony_line_assist_orders_order_status_cancelling": "Probíhá zrušení",
+  "telephony_line_assist_orders_order_status_checking": "Schválení",
+  "telephony_line_assist_orders_order_status_delivered": "Doručeno",
+  "telephony_line_assist_orders_order_status_delivering": "Odesílání",
+  "telephony_line_assist_orders_order_status_documents_requested": "Dokumenty ve frontě",
+  "telephony_line_assist_orders_order_status_not_paid": "Nezaplaceno",
+  "telephony_line_assist_orders_order_status_unknown": "Neznámý",
+  "telephony_line_assist_orders_order_url_title": "Voir le bon de commande n°{{ id }}",
+  "telephony_line_assist_orders_empty": "Aucun bon de commande."
+}

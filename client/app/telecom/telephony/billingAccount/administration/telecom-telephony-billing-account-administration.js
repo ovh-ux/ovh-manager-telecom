@@ -8,6 +8,6 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'BillingAccountAdministrationCtrl',
       },
     },
-    translations: ['.', '../billing'],
+    translations: { value: ['.', '../billing'], format: 'json' },
   });
 });

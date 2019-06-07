@@ -8,6 +8,6 @@ angular.module('managerApp').config(($stateProvider) => {
         templateUrl: 'app/telecom/pack/xdsl/access/deconsolidation/pack-xdsl-access-deconsolidation.html',
       },
     },
-    translations: ['.', './contract'],
+    translations: { value: ['.', './contract'], format: 'json' },
   });
 });

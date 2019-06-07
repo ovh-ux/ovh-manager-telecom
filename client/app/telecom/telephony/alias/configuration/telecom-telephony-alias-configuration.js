@@ -30,6 +30,6 @@ angular.module('managerApp').config(($stateProvider) => {
         }),
       featureTypeLabel: $translate => $translate.instant('telephony_alias_configuration_configuration_type_contactCenterSolution').toLowerCase(),
     },
-    translations: ['.', '..'],
+    translations: { value: ['.', '..'], format: 'json' },
   });
 });

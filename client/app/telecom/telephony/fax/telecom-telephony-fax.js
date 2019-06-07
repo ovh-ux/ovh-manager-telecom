@@ -16,7 +16,7 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: '$ctrl',
       },
     },
-    translations: ['.', './management'],
+    translations: { value: ['.', './management'], format: 'json' },
     resolve: {
       $title(translations, $translate, $stateParams) {
         return $translate('telephony_fax_page_title', { name: $stateParams.serviceName });

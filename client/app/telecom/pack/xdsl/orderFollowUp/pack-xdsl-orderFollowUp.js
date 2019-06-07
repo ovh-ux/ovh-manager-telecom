@@ -11,6 +11,6 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'OrderFollowUpCtrl',
       },
     },
-    translations: ['.'],
+    translations: { value: ['.'], format: 'json' },
   });
 });

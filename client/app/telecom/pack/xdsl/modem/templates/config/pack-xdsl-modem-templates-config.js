@@ -8,7 +8,7 @@ angular.module('managerApp').config(/* @ngInject */ ($stateProvider) => {
         controllerAs: '$ctrl',
       },
     },
-    translations: ['.'],
+    translations: { value: ['.'], format: 'json' },
     params: {
       templates: null,
     },

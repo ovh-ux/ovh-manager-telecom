@@ -8,6 +8,6 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'PackMove',
       },
     },
-    translations: ['.', './contract'],
+    translations: { value: ['.', './contract'], format: 'json' },
   });
 });

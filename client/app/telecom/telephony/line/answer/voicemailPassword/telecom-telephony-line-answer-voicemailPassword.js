@@ -12,6 +12,6 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'VoicemailPasswordCtrl',
       },
     },
-    translations: ['..', '../../../service/voicemail/password'],
+    translations: { value: ['..', '../../../service/voicemail/password'], format: 'json' },
   });
 });

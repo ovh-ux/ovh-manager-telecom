@@ -11,7 +11,7 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'OrdersCtrl',
       },
     },
-    translations: ['.', '../pack/common'],
+    translations: { value: ['.', '../pack/common'], format: 'json' },
     resolve: {
       $title(translations, $translate) {
         return $translate('telecom_order_page_title');

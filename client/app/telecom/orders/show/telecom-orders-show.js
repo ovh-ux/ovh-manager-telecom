@@ -14,6 +14,6 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'OrderFollowUpCtrl',
       },
     },
-    translations: ['../../pack/xdsl/orderFollowUp'],
+    translations: { value: ['../../pack/xdsl/orderFollowUp'], format: 'json' },
   });
 });

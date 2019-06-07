@@ -11,7 +11,7 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: '$ctrl',
       },
     },
-    translations: ['.'],
+    translations: { value: ['.'], format: 'json' },
     redirectTo: 'telecom.telephony.alias.dashboard',
   });
 });

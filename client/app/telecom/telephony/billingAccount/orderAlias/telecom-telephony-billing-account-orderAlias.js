@@ -11,6 +11,6 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'AliasOrderCtrl',
       },
     },
-    translations: ['.'],
+    translations: { value: ['.'], format: 'json' },
   });
 });

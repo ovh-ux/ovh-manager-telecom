@@ -8,7 +8,7 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'ConfigWifiCtrl',
       },
     },
-    translations: ['.'],
+    translations: { value: ['.'], format: 'json' },
     params: {
       wifi: null,
     },

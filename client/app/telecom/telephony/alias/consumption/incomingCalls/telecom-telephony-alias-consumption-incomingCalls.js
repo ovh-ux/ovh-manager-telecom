@@ -8,6 +8,6 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'IncomingCallsCtrl',
       },
     },
-    translations: ['..', '../../../service/consumption/', '../../../service/consumption/incomingCalls'],
+    translations: { value: ['..', '../../../service/consumption/', '../../../service/consumption/incomingCalls'], format: 'json' },
   });
 });

@@ -8,6 +8,6 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'AbbreviatedNumbersCtrl',
       },
     },
-    translations: ['.', '..'],
+    translations: { value: ['.', '..'], format: 'json' },
   });
 });

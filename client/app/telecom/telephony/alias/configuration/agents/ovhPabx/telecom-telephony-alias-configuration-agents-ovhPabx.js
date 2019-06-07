@@ -8,6 +8,6 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'AgentsOvhPabxCtrl',
       },
     },
-    translations: ['..'],
+    translations: { value: ['..'], format: 'json' },
   });
 });
