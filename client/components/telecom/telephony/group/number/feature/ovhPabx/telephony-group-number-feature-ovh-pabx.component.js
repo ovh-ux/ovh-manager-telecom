@@ -1,26 +1,26 @@
 (function () {
   angular.module('managerApp').run(($translate, asyncLoader) => {
     asyncLoader.addTranslations(
-      import(`./translations/Messages_${$translate.use()}.xml`)
-        .catch(() => import(`./translations/Messages_${$translate.fallbackLanguage()}.xml`))
+      import(`./translations/Messages_${$translate.use()}.json`)
+        .catch(() => import(`./translations/Messages_${$translate.fallbackLanguage()}.json`))
         .then(x => x.default),
     );
 
     asyncLoader.addTranslations(
-      import(`./types/cloudHunting/translations/Messages_${$translate.use()}.xml`)
-        .catch(() => import(`./types/cloudHunting/translations/Messages_${$translate.fallbackLanguage()}.xml`))
+      import(`./types/cloudHunting/translations/Messages_${$translate.use()}.json`)
+        .catch(() => import(`./types/cloudHunting/translations/Messages_${$translate.fallbackLanguage()}.json`))
         .then(x => x.default),
     );
 
     asyncLoader.addTranslations(
-      import(`./types/cloudIvr/translations/Messages_${$translate.use()}.xml`)
-        .catch(() => import(`./types/cloudIvr/translations/Messages_${$translate.fallbackLanguage()}.xml`))
+      import(`./types/cloudIvr/translations/Messages_${$translate.use()}.json`)
+        .catch(() => import(`./types/cloudIvr/translations/Messages_${$translate.fallbackLanguage()}.json`))
         .then(x => x.default),
     );
 
     asyncLoader.addTranslations(
-      import(`./types/contactCenterSolutionExpert/translations/Messages_${$translate.use()}.xml`)
-        .catch(() => import(`./types/contactCenterSolutionExpert/translations/Messages_${$translate.fallbackLanguage()}.xml`))
+      import(`./types/contactCenterSolutionExpert/translations/Messages_${$translate.use()}.json`)
+        .catch(() => import(`./types/contactCenterSolutionExpert/translations/Messages_${$translate.fallbackLanguage()}.json`))
         .then(x => x.default),
     );
 

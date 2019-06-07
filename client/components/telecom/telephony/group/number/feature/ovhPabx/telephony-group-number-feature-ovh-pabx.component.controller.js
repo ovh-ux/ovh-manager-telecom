@@ -27,8 +27,8 @@ angular.module('managerApp').controller('TelephonyNumberOvhPabxCtrl',
     self.displayedFeatureType = function () {
       const { featureType } = self.numberCtrl.number.feature;
       asyncLoader.addTranslations(
-      import(`./types/${featureType}/translations/Messages_${$translate.use()}.xml`)
-        .catch(() => import(`./types/${featureType}/translations/Messages_${$translate.fallbackLanguage()}.xml`))
+      import(`./types/${featureType}/translations/Messages_${$translate.use()}.json`)
+        .catch(() => import(`./types/${featureType}/translations/Messages_${$translate.fallbackLanguage()}.json`))
         .then(x => x.default),
       );
       $translate.refresh();
