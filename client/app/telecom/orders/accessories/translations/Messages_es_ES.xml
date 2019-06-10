@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<translations>
-   <translation id="telecom_orders_accessories_title" qtlid="336857">Contratar accesorios</translation>
-   <translation id="telecom_orders_accessories_group_choice" qtlid="345910">Grupo de telefonía</translation>
-   <translation id="telecom_orders_accessories_group_choice_label" qtlid="395869">Seleccione el grupo de telefonía al que desea asociar la contratación de accesorios:</translation>
-   <translation id="telecom_orders_accessories_group_load_error" qtlid="395882">¡Vaya! No es posible cargar sus grupos de telefonía.</translation>
-   <translation id="telecom_orders_accessories_order_error" qtlid="395895">Este grupo no incluye ninguna línea para la que contratar accesorios.</translation>
-</translations>

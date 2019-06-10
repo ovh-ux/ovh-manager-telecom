@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<translations>
-   <translation id="telecom_orders_alias_title" qtlid="333256">Numeroiden tilaus</translation>
-   <translation id="telecom_orders_alias_billing_account_title" qtlid="345910">Puhelinryhmä</translation>
-   <translation id="telecom_orders_alias_billing_account_label" qtlid="345923">Valitse puhelinryhmä:</translation>
-   <translation id="telecom_orders_alias_billing_submit_label" qtlid="333529">Tilaa numero</translation>
-   <translation id="telecom_orders_alias_billing_loading_error" qtlid="345936">Puhelinryhmien lataaminen ei onnistu. </translation>
-</translations>

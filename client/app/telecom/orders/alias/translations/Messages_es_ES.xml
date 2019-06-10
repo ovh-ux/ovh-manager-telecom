@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<translations>
-   <translation id="telecom_orders_alias_title" qtlid="333256">Contratación de números</translation>
-   <translation id="telecom_orders_alias_billing_account_title" qtlid="345910">Grupo de telefonía</translation>
-   <translation id="telecom_orders_alias_billing_account_label" qtlid="345923">Seleccione el grupo de telefonía:</translation>
-   <translation id="telecom_orders_alias_billing_submit_label" qtlid="333529">Contratar un número</translation>
-   <translation id="telecom_orders_alias_billing_loading_error" qtlid="345936">No se han podido cargar los grupos de telefonía</translation>
-</translations>

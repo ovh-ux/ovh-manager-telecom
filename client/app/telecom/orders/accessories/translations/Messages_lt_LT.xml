@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<translations>
-   <translation id="telecom_orders_accessories_title" qtlid="336857">Užsakyti priedus</translation>
-   <translation id="telecom_orders_accessories_group_choice" qtlid="345910">Telefonijos grupė</translation>
-   <translation id="telecom_orders_accessories_group_choice_label" qtlid="395869">Pasirinkite telefonijos grupę, kuriai užsakomi priedai:</translation>
-   <translation id="telecom_orders_accessories_group_load_error" qtlid="395882">Negalima įkelti telefonų grupės.</translation>
-   <translation id="telecom_orders_accessories_order_error" qtlid="395895">Grupėje nėra linijos, kuriai galima užsakyti priedą.</translation>
-</translations>
