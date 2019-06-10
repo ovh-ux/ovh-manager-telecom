@@ -45,4 +45,15 @@
    <translation id="telephony_alias_portabilities_cancel_success" qtlid="461250">La demande de portabilité a bien été annulée.</translation>
    <translation id="telephony_alias_portabilities_cancel_error" qtlid="461263">Oups ! Une erreur est survenue lors de l'annulation de votre demande de portabilité.</translation>
    <translation id="telephony_alias_portabilities_load_error" qtlid="461276">Oups ! Une erreur est survenue lors du chargement des portabilités en cours.</translation>
+
+   <!-- Updload portability mandate -->
+   <translation id="telephony_alias_portabilities_attach_form">Attacher mon mandat de portabilité signé</translation>
+   <translation id="telephony_alias_portabilities_attach_document_form">Attacher un document</translation>
+   <translation id="telephony_alias_portabilities_attach_title">Attacher mon mandat de portabilité</translation>
+   <translation id="telephony_alias_portabilities_attach_action">Fichier mandat de portabilité</translation>
+   <translation id="telephony_alias_portabilities_attach_invalid_format">Format de fichier invalide</translation>
+   <translation id="telephony_alias_portabilities_attach_file_format">Taille max: 10Mo, format autorisé : PDF</translation>
+   <translation id="telephony_alias_portabilities_attach_processing">Attachement du mandat de portabilité en cours</translation>
+   <translation id="telephony_alias_portabilities_attach_document_processing">Attachement du document en cours</translation>
+
 </translations>
