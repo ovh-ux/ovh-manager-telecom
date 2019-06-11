@@ -11,9 +11,6 @@ angular.module('managerApp').config(($stateProvider) => {
         controllerAs: 'SmsOrder',
       },
     },
-    translations: [
-      '.',
-      '../../sms/order',
-    ],
+    translations: { value: ['.', '../../sms/order'], format: 'json' },
   });
 });
