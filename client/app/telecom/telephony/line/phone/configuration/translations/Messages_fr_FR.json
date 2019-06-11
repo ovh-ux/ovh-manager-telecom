@@ -109,6 +109,7 @@
   "telephony_line_phone_configuration_config_new_call": "Transfert supervisé (pré-appel avec votre collègue)",
   "telephony_line_phone_configuration_config_attended_transfer": "Transfert accompagné (pré-appel avec le client)",
   "telephony_line_phone_configuration_config_blind_transfer": "Transfert à l'aveugle (sans pré-appel)",
+  "telephony_line_phone_configuration_config_optional": "Choisir au moment de l'appel",
   "telephony_line_phone_configuration_config_blf_led_mode": "Voyant",
   "telephony_line_phone_configuration_config_blink_red_on_hold": "rouge clignotant",
   "telephony_line_phone_configuration_config_solid_red_on_hold": "rouge fixe",
