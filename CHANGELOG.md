@@ -1,3 +1,18 @@
+# [10.27.0](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.26.0...v10.27.0) (2019-06-13)
+
+
+### Bug Fixes
+
+* **i18n:** use json instead of xml ([cfe5854](https://github.com/ovh-ux/ovh-manager-telecom/commit/cfe5854))
+* **translations:** update providers to use json format ([7402031](https://github.com/ovh-ux/ovh-manager-telecom/commit/7402031))
+
+
+### Features
+
+* **telephony.line.phone.configuration:** add new parameter value ([#1413](https://github.com/ovh-ux/ovh-manager-telecom/issues/1413)) ([0e2c40d](https://github.com/ovh-ux/ovh-manager-telecom/commit/0e2c40d))
+
+
+
 # [10.26.0](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.25.6...v10.26.0) (2019-06-06)
 
 
