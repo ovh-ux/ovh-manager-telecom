@@ -1,3 +1,12 @@
+## [10.27.1](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.27.0...v10.27.1) (2019-06-13)
+
+
+### Bug Fixes
+
+* **deps:** upgrade some dependencies ([#1416](https://github.com/ovh-ux/ovh-manager-telecom/issues/1416)) ([15ecbcf](https://github.com/ovh-ux/ovh-manager-telecom/commit/15ecbcf))
+
+
+
 # [10.27.0](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.26.0...v10.27.0) (2019-06-13)
 
 
