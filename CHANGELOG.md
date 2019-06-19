@@ -1,3 +1,17 @@
+# [10.28.0](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.27.1...v10.28.0) (2019-06-19)
+
+
+### Bug Fixes
+
+* **deps:** upgrade ng-ovh-otrs to v7.1.4 ([#1421](https://github.com/ovh-ux/ovh-manager-telecom/issues/1421)) ([a909248](https://github.com/ovh-ux/ovh-manager-telecom/commit/a909248))
+
+
+### Features
+
+* **pack.xdsl.modem.template:** display error message if name invalid ([#1414](https://github.com/ovh-ux/ovh-manager-telecom/issues/1414)) ([13832e6](https://github.com/ovh-ux/ovh-manager-telecom/commit/13832e6))
+
+
+
 ## [10.27.1](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.27.0...v10.27.1) (2019-06-13)
 
 
