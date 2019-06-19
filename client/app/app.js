@@ -12,7 +12,6 @@ import ngOvhApiWrappers from '@ovh-ux/ng-ovh-api-wrappers';
 import ngOvhChatbot from '@ovh-ux/ng-ovh-chatbot';
 import ngOvhHttp from '@ovh-ux/ng-ovh-http';
 import ngOvhMondialRelay from '@ovh-ux/ng-ovh-mondial-relay';
-import ngOvhOtrs from '@ovh-ux/ng-ovh-otrs';
 import ngOvhSsoAuth from '@ovh-ux/ng-ovh-sso-auth';
 import ngOvhSsoAuthModalPlugin from '@ovh-ux/ng-ovh-sso-auth-modal-plugin';
 import ngOvhSwimmingPoll from '@ovh-ux/ng-ovh-swimming-poll';
@@ -48,7 +47,6 @@ angular.module('managerApp', [
   ngOvhChatbot,
   ngOvhHttp,
   ngOvhMondialRelay,
-  ngOvhOtrs,
   ngOvhSsoAuth,
   ngOvhSsoAuthModalPlugin,
   ngOvhSwimmingPoll,

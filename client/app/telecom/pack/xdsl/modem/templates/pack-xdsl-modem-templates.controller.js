@@ -1,7 +1,7 @@
 angular.module('managerApp').controller('XdslModemTemplateCtrl', class XdslModemTemplateCtrl {
   /* @ngInject */
   constructor($stateParams, $translate, $uibModal, OvhApiXdsl, TucPackXdslModemMediator,
-    TucToast) {
+    TucToast, PACK_XDSL_MODEM_TEMPLATE) {
     this.$stateParams = $stateParams;
     this.$translate = $translate;
     this.$uibModal = $uibModal;
@@ -9,6 +9,7 @@ angular.module('managerApp').controller('XdslModemTemplateCtrl', class XdslModem
     this.OvhApiXdsl = OvhApiXdsl;
     this.templateName = null;
     this.TucToast = TucToast;
+    this.TEMPLATE_CONSTANT = PACK_XDSL_MODEM_TEMPLATE;
   }
 
   /*= =====================================
@@ -46,11 +47,17 @@ angular.module('managerApp').controller('XdslModemTemplateCtrl', class XdslModem
       this.templateName = null;
       this.getModemTemplates();
     }).catch((err) => {
+      let errorMessage = '';
+      if (err.data.message.includes(this.TEMPLATE_CONSTANT.errors.duplicate)) {
+        errorMessage = this.$translate.instant('xdsl_modem_template_name_already_exist', { templateName: this.templateName });
+      } else if (err.data.message.includes(this.TEMPLATE_CONSTANT.errors.invalid)) {
+        errorMessage = this.$translate.instant('xdsl_modem_template_invalid_name', { templateName: this.templateName });
+      } else {
+        errorMessage = this.$translate.instant('xdsl_modem_template_an_error_ocurred');
+      }
       this.message = {
         type: 'error',
-        detail: err.data.message.includes('TemplateName')
-          ? this.$translate.instant('xdsl_modem_template_name_already_exist', { templateName: this.templateName })
-          : this.$translate.instant('xdsl_modem_template_an_error_ocurred'),
+        detail: errorMessage,
       };
     });
   }
