@@ -897,10 +897,10 @@
   resolved "https://registry.yarnpkg.com/@ovh-ux/manager-config/-/manager-config-0.2.0.tgz#0c2cce370c372993ed4ed25783191fe9112db839"
   integrity sha512-FEGIRGEaNQcHlHienK0Egf+JEB9FUK9PyJgkMP575pPDVTy67JRRD7uZ5FXCUfRtVgYLD4VYjwOzeucr3WtvFg==
 
-"@ovh-ux/manager-core@^6.0.0":
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/@ovh-ux/manager-core/-/manager-core-6.0.0.tgz#6de5168df81fb54716383eb787b687b7469f2637"
-  integrity sha512-MAJwgl12IR1yWd00G4DucFkg7kx0OzFeQ5zJstoniIGBUmUfUz5c1E1pzaFpDd0jUTBZkFpAQ5rrBisoGCQlFw==
+"@ovh-ux/manager-core@^6.0.1":
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/@ovh-ux/manager-core/-/manager-core-6.0.1.tgz#b218b4993ae16cfd56fecdf842a924246ced6332"
+  integrity sha512-eCgiLx6Hfh9JEpLcWvKZILJx8Q0b05K2OR3VmB7nESCRLZBRLUmFtBCnJMxghdGk0CMPKYu177HDtTwTBXX2cw==
   dependencies:
     "@ovh-ux/ng-translate-async-loader" "^2.0.0"
     lodash "^4.17.11"
@@ -913,10 +913,10 @@
     bootstrap4 twbs/bootstrap#v4.0.0
     lodash "^4.17.11"
 
-"@ovh-ux/manager-navbar@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@ovh-ux/manager-navbar/-/manager-navbar-1.0.0.tgz#a23ee87dd948011623da44aaac1af7b0f2ad4fb4"
-  integrity sha512-Xyp0SVEE7LGSlxDm92mlz8qNLX9J+9494jwdTAxzjFgF9aMNVvzZ6lgnw4+leeqzv9EMKVeyZ6CYWY8nRwmDIQ==
+"@ovh-ux/manager-navbar@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@ovh-ux/manager-navbar/-/manager-navbar-1.0.1.tgz#b80fb9617473ca908c933f1336a7ddbe3ab4f800"
+  integrity sha512-D9WIBPBKDBe0WusCfvOXXBC4dK9kJv0OiAvLLBOm4Tw7U+Lzpw2IMNcATrst7XmOiK7iO3zRgmxlJ0/5r88xIg==
   dependencies:
     lodash "^4.17.11"
     moment "^2.24.0"
@@ -943,13 +943,13 @@
   resolved "https://registry.yarnpkg.com/@ovh-ux/manager-telecom-dashboard/-/manager-telecom-dashboard-4.2.2.tgz#d23c0521cc6b8665ee6e90064de487b857299bc4"
   integrity sha512-1GRYgwi9X4gs/w2pcOJB1LmPh2kZyEE4hPZJn7dKwr1uNHnk6QGG4Zgy0p1ZUnW57T4djyGoGIphwpiT6Ox8sQ==
 
-"@ovh-ux/manager-telecom-styles@^2.0.2":
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/@ovh-ux/manager-telecom-styles/-/manager-telecom-styles-2.0.2.tgz#23256c8356f3c483a28c72e5d5f23d0999f24f13"
-  integrity sha512-+5/YPd0vraoawasaJQfq2x9P5PTF0lZwOUojjLyB0zMUm3SIVO4EPpLByStanmbA2IXkznKAadvSYLh+IkIutw==
+"@ovh-ux/manager-telecom-styles@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@ovh-ux/manager-telecom-styles/-/manager-telecom-styles-3.0.0.tgz#dd4ca3f580496f21d18e1d038f060fcb1c461276"
+  integrity sha512-AprJpcIbnMHtaLjbkPrhH44qvnCBXU7PhwKZSv5Fu/+sULGK03o63ePrr0M2VkxgdcF5qTnSlIMnwXl36SwB/A==
   dependencies:
     bootstrap "~3.3.7"
-    ovh-ui-kit "^2.23.1"
+    ovh-ui-kit "^2.33.3"
     ovh-ui-kit-bs "^2.1.1"
 
 "@ovh-ux/manager-telecom-task@^4.1.1":
@@ -9179,10 +9179,10 @@ ovh-angular-user-pref@^0.3.1:
   resolved "https://registry.yarnpkg.com/ovh-angular-user-pref/-/ovh-angular-user-pref-0.3.1.tgz#07f5792513651f3262ae4879c174423649b08307"
   integrity sha1-B/V5JRNlHzJirkh5wXRCNkmwgwc=
 
-ovh-api-services@^6.25.0:
-  version "6.25.0"
-  resolved "https://registry.yarnpkg.com/ovh-api-services/-/ovh-api-services-6.25.0.tgz#31aa0a5ffa6dad2aecd7c2737388985f9adb4bbb"
-  integrity sha512-gZerMzhVw8bSdKjBrXYPQjveIutdBufDii9ugzq1xNHpunRBLaCteWa5M+l7fejOzi+af9bmEeqlGcI/9c8/Ig==
+ovh-api-services@^6.30.0:
+  version "6.30.0"
+  resolved "https://registry.yarnpkg.com/ovh-api-services/-/ovh-api-services-6.30.0.tgz#d02a5eda1878911077721a3677d1ba598d572f4c"
+  integrity sha512-JmtAkRQTE8Ky5h6Y50YTHjH4AUt7omEkeEBoNk6G+ytHuJhjHFfUgR2JsRt2V1W7OcZrHjRWC6yDrrFU6LYU3g==
   dependencies:
     lodash "^3.10.1"
 
@@ -9206,10 +9206,10 @@ ovh-ngstrap@^4.0.2:
   resolved "https://registry.yarnpkg.com/ovh-ngstrap/-/ovh-ngstrap-4.0.2.tgz#059291bfb9f59b78df991e476dd2ede0507cb3c9"
   integrity sha1-BZKRv7n1m3jfmR5HbdLt4FB8s8k=
 
-ovh-ui-angular@^3.2.3:
-  version "3.2.3"
-  resolved "https://registry.yarnpkg.com/ovh-ui-angular/-/ovh-ui-angular-3.2.3.tgz#f9ce288041817e85cff40f75068d4bb37d553ad7"
-  integrity sha512-++drmpC64hYpeULj9Aqo+lTcxRUArU7tEBx1G3CDp288ERHLF9qwL/6L2DwOWAY2iMqgQKEMO/W5bUkaDcE0dw==
+ovh-ui-angular@^3.2.4:
+  version "3.2.4"
+  resolved "https://registry.yarnpkg.com/ovh-ui-angular/-/ovh-ui-angular-3.2.4.tgz#c5c45b811a81e5f900433e16c305110601bf691a"
+  integrity sha512-Kxq/fWhKG7JqXmoJaOxG9uUU0HED3Q8kK7S+yi74mShSrXUankP+x8+OJnc3HeMTbFq0bK6hUnZUJ8ksHbFXCA==
   dependencies:
     bloodhound-js "^1.2.3"
     clipboard "^2.0.1"
