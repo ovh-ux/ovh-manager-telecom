@@ -1,3 +1,13 @@
+## [10.28.1](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.28.0...v10.28.1) (2019-06-25)
+
+
+### Bug Fixes
+
+* **deps:** upgrade some dependencies ([#1426](https://github.com/ovh-ux/ovh-manager-telecom/issues/1426)) ([01a4aa5](https://github.com/ovh-ux/ovh-manager-telecom/commit/01a4aa5))
+* **i18n:** add missing translations ([07a9437](https://github.com/ovh-ux/ovh-manager-telecom/commit/07a9437))
+
+
+
 # [10.28.0](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.27.1...v10.28.0) (2019-06-19)
 
 
