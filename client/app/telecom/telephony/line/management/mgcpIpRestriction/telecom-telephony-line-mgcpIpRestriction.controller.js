@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyLinePhoneMgcpIpRestrictionCtrl', function ($q, $stateParams, $translate, TucIpAddress, OvhApiTelephony, OvhApiMe, TucToast, TucToastError, tucTelephonyBulk) {
+angular.module('managerApp').controller('TelecomTelephonyLineMgcpIpRestrictionCtrl', function ($q, $stateParams, $translate, TucIpAddress, OvhApiTelephony, OvhApiMe, TucToast, TucToastError, tucTelephonyBulk) {
   const self = this;
 
   /*= ==============================
@@ -54,13 +54,13 @@ angular.module('managerApp').controller('TelecomTelephonyLinePhoneMgcpIpRestrict
       mgcpIpRestriction: self.mgcpIpRestrictionForm.mgcpIpRestriction
         ? self.mgcpIpRestrictionForm.mgcpIpRestriction : null,
     }).$promise.then(() => {
-      TucToast.success($translate.instant('telephony_line_phone_mgcp_ip_restriction_edit_success'));
+      TucToast.success($translate.instant('telephony_line_mgcp_ip_restriction_edit_success'));
       return fetchPhone().then((phone) => {
         self.mgcpIpRestriction = _.pick(phone, 'mgcpIpRestriction');
         self.mgcpIpRestrictionForm = angular.copy(self.mgcpIpRestriction);
       });
     }).catch((error) => {
-      TucToast.error([$translate.instant('telephony_line_phone_mgcp_ip_restriction_edit_error'), (error.data && error.data.message) || ''].join(' '));
+      TucToast.error([$translate.instant('telephony_line_mgcp_ip_restriction_edit_error'), (error.data && error.data.message) || ''].join(' '));
       return $q.reject(error);
     }).finally(() => {
       self.isChangingMgcpIpRestriction = false;
@@ -91,13 +91,13 @@ angular.module('managerApp').controller('TelecomTelephonyLinePhoneMgcpIpRestrict
       });
     }
     return promise.then(() => {
-      TucToast.success($translate.instant('telephony_line_phone_mgcp_ip_restriction_edit_success'));
+      TucToast.success($translate.instant('telephony_line_mgcp_ip_restriction_edit_success'));
       return fetchDefaultMgcpIpRestriction().then((defaultMgcpIpRestriction) => {
         self.mgcpDefaultIpRestriction = defaultMgcpIpRestriction;
         self.mgcpDefaultIpRestrictionForm = angular.copy(self.mgcpDefaultIpRestriction);
       });
     }).catch((error) => {
-      TucToast.error([$translate.instant('telephony_line_phone_mgcp_ip_restriction_edit_error'), (error.data && error.data.message) || ''].join(' '));
+      TucToast.error([$translate.instant('telephony_line_mgcp_ip_restriction_edit_error'), (error.data && error.data.message) || ''].join(' '));
       return $q.reject(error);
     }).finally(() => {
       self.isChangingMgcpDefaultIpRestriction = false;
@@ -154,11 +154,11 @@ angular.module('managerApp').controller('TelecomTelephonyLinePhoneMgcpIpRestrict
   self.onBulkSuccess = function (bulkResult) {
     // display message of success or error
     tucTelephonyBulk.getTucToastInfos(bulkResult, {
-      fullSuccess: $translate.instant('telephony_line_phone_mgcp_ip_restriction_bulk_all_success'),
-      partialSuccess: $translate.instant('telephony_line_phone_mgcp_ip_restriction_bulk_some_success', {
+      fullSuccess: $translate.instant('telephony_line_mgcp_ip_restriction_bulk_all_success'),
+      partialSuccess: $translate.instant('telephony_line_mgcp_ip_restriction_bulk_some_success', {
         count: bulkResult.success.length,
       }),
-      error: $translate.instant('telephony_line_phone_mgcp_ip_restriction_bulk_error'),
+      error: $translate.instant('telephony_line_mgcp_ip_restriction_bulk_error'),
     }).forEach((toastInfo) => {
       TucToast[toastInfo.type](toastInfo.message, {
         hideAfter: null,
@@ -171,7 +171,7 @@ angular.module('managerApp').controller('TelecomTelephonyLinePhoneMgcpIpRestrict
   };
 
   self.onBulkError = function (error) {
-    TucToast.error([$translate.instant('telephony_line_phone_mgcp_ip_restriction_bulk_on_error'), _.get(error, 'msg.data')].join(' '));
+    TucToast.error([$translate.instant('telephony_line_mgcp_ip_restriction_bulk_on_error'), _.get(error, 'msg.data')].join(' '));
   };
 
   init();
