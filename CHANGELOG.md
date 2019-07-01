@@ -1,3 +1,13 @@
+## [10.28.2](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.28.1...v10.28.2) (2019-07-01)
+
+
+### Bug Fixes
+
+* **i18n:** add missing translations ([f6d66a1](https://github.com/ovh-ux/ovh-manager-telecom/commit/f6d66a1))
+* **telephony.line.management:** display mgcp ip restriction page ([#1430](https://github.com/ovh-ux/ovh-manager-telecom/issues/1430)) ([3e1e6e1](https://github.com/ovh-ux/ovh-manager-telecom/commit/3e1e6e1))
+
+
+
 ## [10.28.1](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.28.0...v10.28.1) (2019-06-25)
 
 
