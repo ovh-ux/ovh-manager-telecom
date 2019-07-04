@@ -80,11 +80,29 @@ angular.module('managerApp').controller('TelecomTelephonyBillingAccountAdministr
         ))
         .then(chunkResult => _.pluck(_.flatten(chunkResult), 'value')));
 
+    // get batch voicefax details
+    const voicefax = OvhApiTelephony.Fax().v6()
+      .query({
+        billingAccount: ba.billingAccount,
+      }).$promise
+      .then(ids => $q
+        .all(_.map(
+          _.chunk(ids, 50),
+          chunkIds => OvhApiTelephony.Fax().v6().getBatch({
+            billingAccount: ba.billingAccount,
+            serviceName: chunkIds,
+          }).$promise,
+        ))
+        .then(chunkResult => _.pluck(_.flatten(chunkResult), 'value').filter(res => res.serviceType.includes('line') && res.offers.toString().includes('voicefax'))));
+
     return $q.all({
       lines,
       aliases,
+      voicefax,
     }).then((result) => {
-      _.set(result, 'lines', _.compact(result.lines));
+      // push voicefax lines to lines
+      result.lines.push(result.voicefax);
+      _.set(result, 'lines', _.compact(_.flatten(result.lines)));
 
       // handle pool of aliases
       const pools = [];
