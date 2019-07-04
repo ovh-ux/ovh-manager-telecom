@@ -1,3 +1,17 @@
+# [10.29.0](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.28.2...v10.29.0) (2019-07-04)
+
+
+### Bug Fixes
+
+* **i18n:** add missing translations ([8da0dfd](https://github.com/ovh-ux/ovh-manager-telecom/commit/8da0dfd))
+
+
+### Features
+
+* **telephony.linesgroup:** add voice fax lines to group lines ([#1432](https://github.com/ovh-ux/ovh-manager-telecom/issues/1432)) ([5802019](https://github.com/ovh-ux/ovh-manager-telecom/commit/5802019))
+
+
+
 ## [10.28.2](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.28.1...v10.28.2) (2019-07-01)
 
 
