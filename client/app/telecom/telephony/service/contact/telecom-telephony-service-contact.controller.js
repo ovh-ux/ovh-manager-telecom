@@ -1,4 +1,4 @@
-angular.module('managerApp').controller('TelecomTelephonyServiceContactCtrl', function ($state, $stateParams, $q, $timeout, $translate, OvhApiTelephony, TucToast, TucToastError, OvhApiXdsl, tucTelephonyBulk) {
+angular.module('managerApp').controller('TelecomTelephonyServiceContactCtrl', function ($state, $stateParams, $q, $timeout, $translate, OvhApiTelephony, TucToast, TucToastError, OvhApiXdsl, tucTelephonyBulk, TELEPHONY_SERVICE_CONTACT_DIRECTORY_INFO) {
   const self = this;
 
   function buildWayInfo(directory) {
@@ -307,6 +307,22 @@ angular.module('managerApp').controller('TelecomTelephonyServiceContactCtrl', fu
 
   self.isShortForm = function () {
     return ['fr', 'be'].indexOf(self.directory.country) < 0;
+  };
+
+  self.getStatusLabel = function () {
+    if (self.directoryForm.status.includes(TELEPHONY_SERVICE_CONTACT_DIRECTORY_INFO.status.error)) {
+      return $translate.instant('telephony_service_contact_sync_error');
+    }
+    if (self.directoryForm.status.includes(TELEPHONY_SERVICE_CONTACT_DIRECTORY_INFO.status.todo)) {
+      if ((self.directoryForm.displayUniversalDirectory)
+          || (!self.directoryForm.displayUniversalDirectory
+            && self.directoryForm.modificationType
+              .includes(TELEPHONY_SERVICE_CONTACT_DIRECTORY_INFO.type.delete))) {
+        return $translate.instant('telephony_service_contact_sync_pending');
+      }
+      return $translate.instant('telephony_service_contact_sync_na');
+    }
+    return $translate.instant('telephony_service_contact_sync');
   };
 
   init();
