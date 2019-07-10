@@ -1,3 +1,17 @@
+# [10.30.0](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.29.0...v10.30.0) (2019-07-10)
+
+
+### Bug Fixes
+
+* **i18n:** add missing translations ([bc07480](https://github.com/ovh-ux/ovh-manager-telecom/commit/bc07480))
+
+
+### Features
+
+* **telephony.contact:** update synchronization message for directory ([#1436](https://github.com/ovh-ux/ovh-manager-telecom/issues/1436)) ([6dcbae7](https://github.com/ovh-ux/ovh-manager-telecom/commit/6dcbae7))
+
+
+
 # [10.29.0](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.28.2...v10.29.0) (2019-07-04)
 
 
