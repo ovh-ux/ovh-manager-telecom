@@ -709,8 +709,7 @@
                         <label class="control-label"
                                data-translate="telephony_service_contact_status">
                         </label>
-                        <p class="form-control-static"
-                           data-ng-bind="'telephony_service_contact_sync' + (ServiceContactCtrl.directoryForm.status === 'todo' ? '_pending' : '') | translate">
+                        <p class="form-control-static" data-ng-bind=":: ServiceContactCtrl.getStatusLabel()">
                         </p>
                     </div>
 
