@@ -8,6 +8,7 @@ import ovhManagerSms from '@ovh-ux/manager-sms';
 import ovhManagerTelecomTask from '@ovh-ux/manager-telecom-task';
 import ngAtInternet from '@ovh-ux/ng-at-internet';
 import ngAtInternetUiRouterPlugin from '@ovh-ux/ng-at-internet-ui-router-plugin';
+import ngOvhCheckboxTable from '@ovh-ux/ng-ovh-checkbox-table';
 import ngOvhApiWrappers from '@ovh-ux/ng-ovh-api-wrappers';
 import ngOvhChatbot from '@ovh-ux/ng-ovh-chatbot';
 import ngOvhHttp from '@ovh-ux/ng-ovh-http';
@@ -43,6 +44,7 @@ angular.module('managerApp', [
   'ngPassword',
   'ngResource',
   'ngSanitize',
+  ngOvhCheckboxTable,
   ngOvhApiWrappers,
   ngOvhChatbot,
   ngOvhHttp,
@@ -56,7 +58,6 @@ angular.module('managerApp', [
   ngTranslateAsyncLoader,
   ngUirouterTitle,
   'ovh-angular-actions-menu',
-  'ovh-angular-checkbox-table',
   'ovh-angular-contact',
   'ovh-angular-input-number-spinner',
   'ovh-angular-line-diagnostics',

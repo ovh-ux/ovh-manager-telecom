@@ -53,7 +53,6 @@ import 'script-loader!messenger/build/js/messenger-theme-flat.js';
 import 'ng-csv';
 import 'script-loader!ngSmoothScroll/angular-smooth-scroll.js';
 import 'script-loader!ovh-angular-browser-alert/dist/ovh-angular-browser-alert.js';
-import 'ovh-angular-checkbox-table';
 import 'script-loader!intl-tel-input/build/js/intlTelInput.min.js';
 import 'script-loader!intl-tel-input/lib/libphonenumber/build/utils.js';
 import 'script-loader!@bower_components/international-phone-number/releases/international-phone-number.js';

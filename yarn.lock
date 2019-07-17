@@ -929,13 +929,13 @@
     lodash "4.17.11"
     moment "^2.22.2"
 
-"@ovh-ux/manager-sms@^6.2.3":
-  version "6.2.3"
-  resolved "https://registry.yarnpkg.com/@ovh-ux/manager-sms/-/manager-sms-6.2.3.tgz#1915aacbd8fb48b31b91f9ea66235bd4a485d603"
-  integrity sha512-viCoKg6wmtBvwI3FNSdyhZehj4LtsDcnf8nPfiMPtMVrjn6g1HYzF7VhXU3GuzRoWNYgif6TFruVlWMNFfgQ2Q==
+"@ovh-ux/manager-sms@^7.0.1":
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/@ovh-ux/manager-sms/-/manager-sms-7.0.1.tgz#b6d002b2f7c3fa912a44160dec97cf87bde66238"
+  integrity sha512-8/eWMbyC+2rVtMSngq+25D8zmZKf/M3KhOyAWINJ6EEEp4HA3m4OPPB6/HecM3rd46WllLk1u5t6KFZJKw/iWw==
   dependencies:
     bootstrap4 twbs/bootstrap#v4.0.0
-    lodash "^4.17.11"
+    lodash "^4.17.14"
     moment "^2.22.2"
 
 "@ovh-ux/manager-telecom-dashboard@^4.2.2":
@@ -1041,6 +1041,13 @@
   dependencies:
     lodash "^4.17.11"
 
+"@ovh-ux/ng-ovh-checkbox-table@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@ovh-ux/ng-ovh-checkbox-table/-/ng-ovh-checkbox-table-1.0.0.tgz#0a431f47fbde05dd48ed8fe38693a4a76079af5d"
+  integrity sha512-3DWHTCsKJROCwPzOCchWSf65AyKxQHsqVw2sdifym5MMsHgbwmGSBUyGrxOlWzilKjaUffh9NlQPTDXuv+hGHA==
+  dependencies:
+    lodash "^4.17.11"
+
 "@ovh-ux/ng-ovh-contracts@^3.0.0-beta.3":
   version "3.0.0-beta.3"
   resolved "https://registry.yarnpkg.com/@ovh-ux/ng-ovh-contracts/-/ng-ovh-contracts-3.0.0-beta.3.tgz#1dcd3612160f4c5eebd31a4bc12a2c632b35618f"
@@ -1091,10 +1098,10 @@
   dependencies:
     lodash "^4.17.11"
 
-"@ovh-ux/ng-ovh-telecom-universe-components@^3.0.3":
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/@ovh-ux/ng-ovh-telecom-universe-components/-/ng-ovh-telecom-universe-components-3.0.3.tgz#77b69d1365cc23ea7f091868813061800e5c8d6f"
-  integrity sha512-wP4WsXfesglJp4PbmMboryKhX/QUbkX/ESUwvKbvERp57AR6rX2jCXcixpOXD8xI9ORtuWSK0A/9vI1lvoySyg==
+"@ovh-ux/ng-ovh-telecom-universe-components@^3.0.5":
+  version "3.0.5"
+  resolved "https://registry.yarnpkg.com/@ovh-ux/ng-ovh-telecom-universe-components/-/ng-ovh-telecom-universe-components-3.0.5.tgz#9021feedc827b6d7129b8c33ea78b41a5caa92e3"
+  integrity sha512-a2vMe6YpZn1A+rcvzsJkIbp5zW9aWj2UI3j1KFe8JDIOyj5Wdhy4CIHpKY2LoON1yJO1xOVhHFgyGPpPXKvZcg==
   dependencies:
     bootstrap "^3.3.7"
     ovh-ui-kit "^2.22.0"
@@ -1550,11 +1557,6 @@ angular-resource@~1.5.x:
   resolved "https://registry.yarnpkg.com/angular-resource/-/angular-resource-1.5.11.tgz#d93ea619184a2e0ee3ae338265758363172929f0"
   integrity sha1-2T6mGRhKLg7jrjOCZXWDYxcpKfA=
 
-angular-sanitize@1.3.x:
-  version "1.3.20"
-  resolved "https://registry.yarnpkg.com/angular-sanitize/-/angular-sanitize-1.3.20.tgz#5b1caa4176b8db2039d7d1c1527537a61be3cd67"
-  integrity sha1-WxyqQXa42yA519HBUnU3phvjzWc=
-
 angular-sanitize@^1.x:
   version "1.7.5"
   resolved "https://registry.yarnpkg.com/angular-sanitize/-/angular-sanitize-1.7.5.tgz#75d49e15071ca9c70581e76d20940f26372e24d2"
@@ -1633,11 +1635,6 @@ angular-web-notification@^1.2.22:
   integrity sha512-7zR/wSTLX4SoLUaZMvRHEN3zP6VHH4RfkTo2YTOyGJhT2StdJZI9QHx36HOeugY9pAr6+wtSt8brWysDqNnzCw==
   dependencies:
     simple-web-notification latest
-
-angular@1.3.x:
-  version "1.3.20"
-  resolved "https://registry.yarnpkg.com/angular/-/angular-1.3.20.tgz#b23a3d7c5e7f99f7d95b9b4d49b9ac355269baee"
-  integrity sha1-sjo9fF5/mffZW5tNSbmsNVJpuu4=
 
 angular@1.5.11:
   version "1.5.11"
@@ -7915,7 +7912,7 @@ lodash@4.17.10:
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.10.tgz#1b7793cf7259ea38fb3661d4d38b3260af8ae4e7"
   integrity sha512-UejweD1pDoXu+AD825lWwp4ZGtSwgnpZxb3JDViD7StjQz+Nb/6l093lx4OQ0foGWNRoc19mWy7BzL+UAK2iVg==
 
-lodash@4.17.11, lodash@^4.0.0, lodash@^4.0.1, lodash@^4.11.1, lodash@^4.12.0, lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.3, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.2.0, lodash@^4.2.1, lodash@^4.3.0, lodash@~4.17.10, lodash@~4.17.11:
+lodash@4.17.11, lodash@^4.0.0, lodash@^4.0.1, lodash@^4.11.1, lodash@^4.12.0, lodash@^4.17.10, lodash@^4.17.3, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.2.0, lodash@^4.2.1, lodash@^4.3.0, lodash@~4.17.10, lodash@~4.17.11:
   version "4.17.11"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
   integrity sha512-cQKh8igo5QUhZ7lg38DYWAxMvjSAKG0A8wGSVimP07SIUEK2UO+arSRKbRZWtelMtN5V0Hkwh5ryOto/SshYIg==
@@ -7925,6 +7922,11 @@ lodash@^3.10.1, lodash@^3.8.0:
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-3.10.1.tgz#5bf45e8e49ba4189e17d482789dfd15bd140b7b6"
   integrity sha1-W/Rejkm6QYnhfUgnid/RW9FAt7Y=
 
+lodash@^4.17.11, lodash@^4.17.14:
+  version "4.17.14"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.14.tgz#9ce487ae66c96254fe20b599f21b6816028078ba"
+  integrity sha512-mmKYbW3GLuJeX+iGP+Y7Gp1AiGHGbXHCOh/jZmrawMmsE7MS4znI3RL2FsjbqOyMayHInjOeykW7PEajUk1/xw==
+
 lodash@lodash/lodash#~3.10.1:
   version "3.10.1"
   resolved "https://codeload.github.com/lodash/lodash/tar.gz/dfbd78f71de0550068fc82ce6e013d443e5037d7"
@@ -7933,11 +7935,6 @@ lodash@~1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-1.0.2.tgz#8f57560c83b59fc270bd3d561b690043430e2551"
   integrity sha1-j1dWDIO1n8JwvT1WG2kAQ0MOJVE=
-
-lodash@~3.3.0:
-  version "3.3.1"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-3.3.1.tgz#3b914d4a1bb27efcee076e0dfa58152018e2042e"
-  integrity sha1-O5FNShuyfvzuB24N+lgVIBjiBC4=
 
 log-symbols@^1.0.2:
   version "1.0.2"
@@ -8428,12 +8425,12 @@ modify-values@^1.0.0:
   resolved "https://registry.yarnpkg.com/modify-values/-/modify-values-1.0.1.tgz#b3939fa605546474e3e3e3c63d64bd43b4ee6022"
   integrity sha512-xV2bxeN6F7oYjZWTe/YPAy6MN2M+sL4u/Rlm2AHCIVGfo2p1yGmBHQ6vHehl4bRTZBdHu3TSkWdYgkwpYzAGSw==
 
-moment@>=2.5.0, moment@^2.10.6, moment@^2.15.2, moment@^2.22.2:
+moment@>=2.5.0, moment@^2.10.6, moment@^2.15.2:
   version "2.22.2"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.22.2.tgz#3c257f9839fc0e93ff53149632239eb90783ff66"
   integrity sha1-PCV/mDn8DpP/UxSWMiOeuQeD/2Y=
 
-moment@^2.24.0:
+moment@^2.22.2, moment@^2.24.0:
   version "2.24.0"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.24.0.tgz#0d055d53f5052aa653c9f6eb68bb5d12bf5c2b5b"
   integrity sha512-bV7f+6l2QigeBBZSM/6yTNq4P2fNpSWj/0e7jQcy87A8e7o2nAfP/34/2ky5Vw4B9S446EtIhodAzkFCcR4dQg==
@@ -9107,16 +9104,6 @@ ovh-angular-chatbot@^1.0.3:
     ovh-angular-user-pref "^0.3.1"
     ovh-ui-kit "git+https://github.com/ovh-ux/ovh-ui-kit.git"
 
-ovh-angular-checkbox-table@^0.1.2:
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/ovh-angular-checkbox-table/-/ovh-angular-checkbox-table-0.1.2.tgz#b3b4dfed3274068d323463e3b07c2a25108e14be"
-  integrity sha1-s7Tf7TJ0Bo0yNGPjsHwqJRCOFL4=
-  dependencies:
-    angular "1.3.x"
-    angular-sanitize "1.3.x"
-    jquery "~2.1.3"
-    lodash "~3.3.0"
-
 ovh-angular-contact@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/ovh-angular-contact/-/ovh-angular-contact-3.0.0.tgz#66ea9cd39a8bb1f194872f7f40ff5303688523f2"
@@ -9224,9 +9211,9 @@ ovh-ui-kit-bs@^2.1.1:
   integrity sha512-gjWYjnGmS75nrEpYoYIvJ/wh7K8zzm4k5x2+mICOCmEOKbU7iWy642iXxvDI1TYR+61TDTRjtshnXsGVtUtu7g==
 
 ovh-ui-kit@^2.22.0:
-  version "2.30.0"
-  resolved "https://registry.yarnpkg.com/ovh-ui-kit/-/ovh-ui-kit-2.30.0.tgz#2ef4c038f55e667b4d160c6184de2a7b5a287f7b"
-  integrity sha512-gn20E69mwHw2YPecJ4+UApOmvFcNlFLCC5BRadrq5EGMYgh8m1a4U4PwccC7++7JC6mh3KKsuy/faU+lSieYnQ==
+  version "2.33.4"
+  resolved "https://registry.yarnpkg.com/ovh-ui-kit/-/ovh-ui-kit-2.33.4.tgz#8b620ed078c1fb9231bafc89e5575895d7b38fbd"
+  integrity sha512-eMQlEoWF3Aopp4IEQOJBKzTHvTd4t0I5BZBrtWGoJpfURQf8EI/FR4B/jry5PJf8KcAuw8EX6ICZKZsZvlQAYw==
   dependencies:
     less-plugin-remcalc "^0.1.0"
 
