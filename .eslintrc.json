@@ -21,7 +21,8 @@
     "JustGage": true,
     "validator": true,
     "CSV": true,
-    "Raven": true
+    "Raven": true,
+    "__NG_APP_INJECTIONS__": true
   },
   "rules": {
     "no-underscore-dangle": 0

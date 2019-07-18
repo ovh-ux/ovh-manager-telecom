@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const merge = require('webpack-merge');
 const path = require('path');
 const fs = require('fs');
@@ -57,5 +58,10 @@ module.exports = (env = {}) => {
       },
       mainFields: ['module', 'browser', 'main'],
     },
+    plugins: [
+      new webpack.DefinePlugin({
+        __NG_APP_INJECTIONS__: process.env.NG_APP_INJECTIONS ? `'${process.env.NG_APP_INJECTIONS}'` : 'null',
+      }),
+    ],
   });
 };

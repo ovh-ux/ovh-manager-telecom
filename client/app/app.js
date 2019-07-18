@@ -27,6 +27,7 @@ import navbar from '../components/navbar';
 Environment.setRegion('EU');
 
 angular.module('managerApp', [
+  __NG_APP_INJECTIONS__,
   'angular-ellipses',
   'angular-inview',
   'angular-translate-loader-pluggable',
@@ -91,7 +92,7 @@ angular.module('managerApp', [
   'ui.sortable',
   'ui.validate',
   'validation.match',
-])
+].filter(_.isString))
 
 /*= =========  GLOBAL OPTIONS  ========== */
   .config((
