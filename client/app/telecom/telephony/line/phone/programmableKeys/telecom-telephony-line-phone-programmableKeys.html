@@ -29,10 +29,10 @@
                                    data-custom-class="link d-block pl-0 mb-3"
                                    data-bulk-infos="ProgrammableKeysCtrl.bulkDatas.infos"
                                    data-ng-disabled="ProgrammableKeysCtrl.loading.keys || !ProgrammableKeysCtrl.functionKeys.raw.length"
-                                   data-filter-services="ProgrammableKeysCtrl.filterServices"
-                                   data-get-bulk-params="ProgrammableKeysCtrl.getBulkParams"
-                                   data-on-success="ProgrammableKeysCtrl.onBulkSuccess"
-                                   data-on-error="ProgrammableKeysCtrl.onBulkError">
+                                   data-filter-services="ProgrammableKeysCtrl.filterServices()"
+                                   data-get-bulk-params="ProgrammableKeysCtrl.getBulkParams()"
+                                   data-on-success="ProgrammableKeysCtrl.onBulkSuccess()"
+                                   data-on-error="ProgrammableKeysCtrl.onBulkError()">
             </tuc-telephony-bulk-action>
 
             <oui-datagrid data-rows="ProgrammableKeysCtrl.functionKeys.raw">
