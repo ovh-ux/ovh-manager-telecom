@@ -84,15 +84,15 @@
                                    data-translate="telephony_group_billing_deposit_movement_amount_label">
                             </label>
                             <div class="clearfix">
-                                <input-number-spinner class="float-left"
+                                <oui-numeric class="float-left"
                                                       id="amount"
-                                                      data-ng-model="BillingAccountDepositMovementCtrl.amount"
-                                                      data-ng-disabled="!BillingAccountDepositMovementCtrl.source
+                                                      data-model="BillingAccountDepositMovementCtrl.amount"
+                                                      data-disabled="!BillingAccountDepositMovementCtrl.source
                                                                         || !BillingAccountDepositMovementCtrl.source.securityDeposit.value
                                                                         || BillingAccountDepositMovementCtrl.loading.submit"
-                                                      data-input-number-spinner-min="0"
-                                                      data-input-number-spinner-max="BillingAccountDepositMovementCtrl.source.securityDeposit.value">
-                                </input-number-spinner>
+                                                      min="0"
+                                                      max="BillingAccountDepositMovementCtrl.source.securityDeposit.value">
+                                </oui-numeric>
                                 <span class="d-inline-block ml-2 mt-2"
                                       data-ng-if="BillingAccountDepositMovementCtrl.source.securityDeposit">
                                     <span data-ng-bind="BillingAccountDepositMovementCtrl.currency"></span>

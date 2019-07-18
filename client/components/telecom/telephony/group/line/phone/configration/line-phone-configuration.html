@@ -45,10 +45,10 @@
 
             <!-- NUMERIC TYPE -->
             <div data-ng-switch-when="numeric">
-                <input-number-spinner data-ng-model="config.value"
-                                      data-input-number-spinner-min="config.rangeValue.from"
-                                      data-input-number-spinner-max="config.rangeValue.to">
-                </input-number-spinner>
+                <oui-numeric data-model="config.value"
+                                      min="config.rangeValue.from"
+                                      max="config.rangeValue.to">
+                </oui-numeric>
             </div>
 
             <!-- ENUMT TYPE (SELECT) -->

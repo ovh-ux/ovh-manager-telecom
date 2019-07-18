@@ -53,11 +53,11 @@
                     <div class="section-item form-group">
                         <label for="transfer-timeout"
                                data-translate="telephony_number_feature_ovh_pabx_dialplan_transfer_timeout"></label>
-                        <input-number-spinner id="transfer-timeout"
-                                              data-ng-model="$ctrl.dialplan.transferTimeout"
-                                              data-input-number-spinner-min="0"
-                                              data-input-number-spinner-max="1800">
-                        </input-number-spinner>
+                        <oui-numeric id="transfer-timeout"
+                                              data-model="$ctrl.dialplan.transferTimeout"
+                                              min="0"
+                                              max="1800">
+                        </oui-numeric>
                         <span class="help-block"
                               data-translate="telephony_number_feature_ovh_pabx_dialplan_transfer_timeout_explain">
                         </span>

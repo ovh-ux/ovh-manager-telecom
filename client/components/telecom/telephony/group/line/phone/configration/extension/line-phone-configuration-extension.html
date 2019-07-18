@@ -17,11 +17,11 @@
         </label>
         <div class="row">
             <div class="col-xs-12 col-sm-6">
-                <input-number-spinner data-ng-model="$ctrl.extensionKeyModuleConfig.value"
-                                      data-input-number-spinner-min="$ctrl.extensionKeyModuleConfig.rangeValue.from"
-                                      data-input-number-spinner-max="$ctrl.extensionKeyModuleConfig.rangeValue.to"
-                                      data-input-number-spinner-on-change="$ctrl.onModuleNumberChange()">
-                </input-number-spinner>
+                <oui-numeric data-model="$ctrl.extensionKeyModuleConfig.value"
+                                      min="$ctrl.extensionKeyModuleConfig.rangeValue.from"
+                                      max="$ctrl.extensionKeyModuleConfig.rangeValue.to"
+                                      data-on-change="$ctrl.onModuleNumberChange()">
+                </oui-numeric>
 
                 <p data-ng-if="$ctrl.displayInfo"
                    class="text-info mt-2"

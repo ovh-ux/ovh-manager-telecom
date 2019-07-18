@@ -45,7 +45,7 @@
                     <!-- WEBMAIL -->
                     <dt class="service-title" data-translate="email_pro_detail_webmail"></dt>
                     <dd class="service-item">
-                        <a href="{{::$ctrl.configuration.webmailUrl}}"
+                        <a data-ng-href="{{::$ctrl.configuration.webmailUrl}}"
                            data-translate-attr="{ title:'email_pro_detail_open_webmail' }"
                            title="{{::$ctrl.configuration.webmailUrl}} {{::'common_newtab' | translate}}"
                            rel="noopener"
@@ -58,7 +58,7 @@
                     <!-- GUIDE -->
                     <dt class="service-title" data-translate="email_pro_detail_need_help"></dt>
                     <dd class="service-item">
-                        <a href="{{::$ctrl.guideUrl}}"
+                        <a data-ng-href="{{::$ctrl.guideUrl}}"
                            data-translate-attr="{ title:'email_pro_detail_guide' }"
                            title="{{::$ctrl.guideUrl}} {{::'common_newtab' | translate}}"
                            rel="noopener"

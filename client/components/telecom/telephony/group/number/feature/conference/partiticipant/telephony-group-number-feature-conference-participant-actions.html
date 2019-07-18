@@ -70,10 +70,10 @@
 
                     <div class="mb-3">
                         <label data-translate="telephony_number_feature_conference_participants_actions_sound_label"></label>
-                        <input-number-spinner data-ng-model="participant.energyEquivalence"
-                                              data-input-number-spinner-min="0"
-                                              data-input-number-spinner-max="4">
-                        </input-number-spinner>
+                        <oui-numeric data-model="participant.energyEquivalence"
+                                              min="0"
+                                              max="4">
+                        </oui-numeric>
                     </div>
 
                     <div class="button-container">

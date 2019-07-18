@@ -140,26 +140,26 @@
                                    class="control-label"
                                    data-translate="telephony_alias_configuration_queues_max_member">
                             </label>
-                            <input-number-spinner id="maxMember"
+                            <oui-numeric id="maxMember"
                                                   name="maxMember"
                                                   class="float-left"
-                                                  data-ng-model="queue.inEdition.maxMember"
-                                                  data-input-number-spinner-min="0"
-                                                  data-input-number-spinner-max="999999">
-                            </input-number-spinner>
+                                                  data-model="queue.inEdition.maxMember"
+                                                  min="0"
+                                                  max="999999">
+                            </oui-numeric>
                         </div>
                         <div class="form-group clearfix">
                             <label for="maxWait"
                                    class="control-label"
                                    data-translate="telephony_alias_configuration_queues_max_wait_time">
                             </label>
-                            <input-number-spinner id="maxWait"
+                            <oui-numeric id="maxWait"
                                                   name="maxWait"
                                                   class="float-left"
-                                                  data-ng-model="queue.inEdition.maxWaitTime"
-                                                  data-input-number-spinner-min="0"
-                                                  data-input-number-spinner-max="999999">
-                            </input-number-spinner>
+                                                  data-model="queue.inEdition.maxWaitTime"
+                                                  min="0"
+                                                  max="999999">
+                            </oui-numeric>
                         </div>
                         <div class="form-group">
                             <label for="soundOnHold"

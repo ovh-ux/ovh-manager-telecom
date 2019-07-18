@@ -93,10 +93,10 @@
                                 <span class="font-weight-bold d-inline-block mb-2"
                                       data-translate="telephony_number_feature_ovh_pabx_step_rule_sleep_duration">
                                 </span>
-                                <input-number-spinner data-ng-model="$ctrl.rule.actionParam"
-                                                      data-input-number-spinner-min="1000"
-                                                      data-input-number-spinner-max="86400000">
-                                </input-number-spinner>
+                                <oui-numeric data-model="$ctrl.rule.actionParam"
+                                                      min="1000"
+                                                      max="86400000">
+                                </oui-numeric>
                             </label>
                         </div> <!-- END OF SLEEP -->
 

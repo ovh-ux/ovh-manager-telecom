@@ -23,7 +23,7 @@
                     <input id="keepLine"
                            type="checkbox"
                            data-ng-disabled="!PackMoveAddressFuture.canKeepLineNumber"
-                           data-ng-click="PackMoveAddressFuture.rio = null"
+                           data-ng-change="PackMoveAddressFuture.rio = null"
                            data-ng-model="PackMoveAddressFuture.keepLineNumber"/>
                     <span class="service-item" data-translate="pack_move_keepLine"></span>
                     <strong class="location__lineNumber" data-ng-bind="PackMoveAddressFuture.lineNumber"></strong>
