@@ -51,7 +51,7 @@
                                                class="oui-checkbox__input"
                                                id="{{ :: 'forwardNoReply' + forward.type }}"
                                                name="{{ :: 'forwardNoReply' + forward.type }}"
-                                               data-ng-click="LineForwardCtrl.toggleChecked(forward)"
+                                               data-ng-change="LineForwardCtrl.toggleChecked(forward)"
                                                data-ng-disabled="LineForwardCtrl.loading.save"
                                                data-ng-model="forward.enable">
                                         <label class="oui-checkbox__label-container" for="{{ :: 'forwardNoReply' + forward.type }}">
@@ -170,7 +170,7 @@
                                            id="type_{{type.id}}"
                                            name="type_{{type.id}}"
                                            data-ng-model="type.enable"
-                                           data-ng-click="LineForwardCtrl.filterTypes()">
+                                           data-ng-change="LineForwardCtrl.filterTypes()">
                                     <label class="oui-checkbox__label-container" for="type_{{type.id}}">
                                         <span class="oui-checkbox__label">
                                             <span data-ng-bind="type.label"></span>

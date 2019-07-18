@@ -101,6 +101,7 @@ angular.module('managerApp', [
     $urlRouterProvider.otherwise('/');
 
     // $locationProvider.html5Mode(true);
+    $locationProvider.hashPrefix('');
 
     $compileProvider.debugInfoEnabled(telecomConfig.env !== 'prod');
     $logProvider.debugEnabled(telecomConfig.env !== 'prod');

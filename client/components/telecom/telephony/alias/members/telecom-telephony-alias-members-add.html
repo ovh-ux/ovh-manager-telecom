@@ -62,12 +62,12 @@
         <label for="timeoutInput"
                class="control-label"
                data-translate="telephony_alias_members_timeout"></label>
-        <input-number-spinner class="d-inline-block text-left"
+        <oui-numeric class="d-inline-block text-left"
                               id="timeoutInput"
-                              data-ng-model="$ctrl.addMemberForm.options.timeout"
-                              data-input-number-spinner-min="1"
-                              data-input-number-spinner-max="99999">
-        </input-number-spinner>
+                              data-model="$ctrl.addMemberForm.options.timeout"
+                              min="1"
+                              max="99999">
+        </oui-numeric>
     </div>
 
     <!-- WRAP UP TIME -->
@@ -75,12 +75,12 @@
         <label for="wrapUpTimeInput"
                class="control-label"
                data-translate="telephony_alias_members_wrap_up_time"></label>
-        <input-number-spinner class="d-inline-block text-left"
+        <oui-numeric class="d-inline-block text-left"
                               id="wrapUpTimeInput"
-                              data-ng-model="$ctrl.addMemberForm.options.wrapUpTime"
-                              data-input-number-spinner-min="0"
-                              data-input-number-spinner-max="99999">
-        </input-number-spinner>
+                              data-model="$ctrl.addMemberForm.options.wrapUpTime"
+                              min="0"
+                              max="99999">
+        </oui-numeric>
     </div>
 
     <!-- SIMULTANEOUS LINES -->
@@ -88,12 +88,12 @@
         <label for="simultaneousLinesInput"
                class="control-label"
                data-translate="telephony_alias_members_simultaneous_lines"></label>
-        <input-number-spinner class="d-inline-block text-left"
+        <oui-numeric class="d-inline-block text-left"
                               id="simultaneousLinesInput"
-                              data-ng-model="$ctrl.addMemberForm.options.simultaneousLines"
-                              data-input-number-spinner-min="1"
-                              data-input-number-spinner-max="10">
-        </input-number-spinner>
+                              data-model="$ctrl.addMemberForm.options.simultaneousLines"
+                              min="1"
+                              max="10">
+        </oui-numeric>
     </div>
 
     <div class="form-group">

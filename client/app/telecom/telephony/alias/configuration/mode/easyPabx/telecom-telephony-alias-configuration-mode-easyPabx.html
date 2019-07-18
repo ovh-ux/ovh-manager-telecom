@@ -64,14 +64,14 @@
                                for="noReplyTimer"
                                data-translate="telephony_alias_configuration_mode_easy_pabx_no_reply_timer">
                         </label>
-                        <input-number-spinner id="noReplyTimer"
+                        <oui-numeric id="noReplyTimer"
                                               name="noReplyTimer"
                                               class="d-inline-block"
-                                              data-ng-disabled="$ctrl.loading.save"
-                                              data-ng-model="$ctrl.formOptions.noReplyTimer"
-                                              data-input-number-spinner-min="5"
-                                              data-input-number-spinner-max="60">
-                        </input-number-spinner>
+                                              data-disabled="$ctrl.loading.save"
+                                              data-model="$ctrl.formOptions.noReplyTimer"
+                                              min="5"
+                                              max="60">
+                        </oui-numeric>
                     </div> <!-- End of noReplyTimer -->
 
                     <!-- voicemail -->
@@ -97,14 +97,14 @@
                                for="numberOfCalls"
                                data-translate="telephony_alias_configuration_mode_pabx_number_of_calls">
                         </label>
-                        <input-number-spinner id="numberOfCalls"
+                        <oui-numeric id="numberOfCalls"
                                               name="numberOfCalls"
                                               class="d-inline-block"
-                                              data-ng-disabled="$ctrl.loading.save"
-                                              data-ng-model="$ctrl.formOptions.numberOfCalls"
-                                              data-input-number-spinner-min="1"
-                                              data-input-number-spinner-max="10">
-                        </input-number-spinner>
+                                              data-disabled="$ctrl.loading.save"
+                                              data-model="$ctrl.formOptions.numberOfCalls"
+                                              min="1"
+                                              max="10">
+                        </oui-numeric>
                     </div> <!-- End of numberOfCalls -->
 
                     <!-- strategy -->

@@ -1,9 +1,8 @@
 angular.module('managerApp').controller('PackEmailProDetailCtrl', class PackEmailProDetailCtrl {
   constructor(
-    $http, $q, $stateParams, $state, $translate,
+    $q, $stateParams, $state, $translate,
     OvhApiPackXdsl, OvhApiXdsl, PACK_EMAILPRO, TucToast, URLS,
   ) {
-    this.$http = $http;
     this.$q = $q;
     this.$stateParams = $stateParams;
     this.$state = $state;

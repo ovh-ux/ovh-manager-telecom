@@ -10,14 +10,14 @@ angular.module('managerApp').controller('TelecomPackMigrationOffersCtrl', functi
   =            ACTIONS            =
   =============================== */
 
-  self.updateOfferDisplayedPrice = function (offer) {
+  self.updateOfferDisplayedPrice = function (value, offer) {
     let totalOfferPrice = offer.price.value;
 
     angular.forEach(offer.options, (option) => {
       if (option.name === 'gtr_ovh' && option.selected) {
         totalOfferPrice += option.optionalPrice.value;
       } else if (option.name !== 'gtr_ovh' && !_.isUndefined(option.choosedValue)) {
-        totalOfferPrice += option.choosedValue * option.optionalPrice.value;
+        totalOfferPrice += value * option.optionalPrice.value;
       }
     });
 

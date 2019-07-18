@@ -111,12 +111,12 @@
                         <label for="editTimeoutInput"
                                class="control-label"
                                data-translate="telephony_alias_members_timeout"></label>
-                        <input-number-spinner id="editTimeoutInput"
+                        <oui-numeric id="editTimeoutInput"
                                               class="d-inline-block text-left"
-                                              data-ng-model="$ctrl.memberInEdition.timeout"
-                                              data-input-number-spinner-min="1"
-                                              data-input-number-spinner-max="99999">
-                        </input-number-spinner>
+                                              data-model="$ctrl.memberInEdition.timeout"
+                                              min="1"
+                                              max="99999">
+                        </oui-numeric>
                     </div>
 
                     <!-- WRAP UP TIME -->
@@ -124,12 +124,12 @@
                         <label for="editWrapUpTimeInput"
                                class="control-label"
                                data-translate="telephony_alias_members_wrap_up_time"></label>
-                        <input-number-spinner id="editWrapUpTimeInput"
+                        <oui-numeric id="editWrapUpTimeInput"
                                               class="d-inline-block text-left"
-                                              data-ng-model="$ctrl.memberInEdition.wrapUpTime"
-                                              data-input-number-spinner-min="0"
-                                              data-input-number-spinner-max="99999">
-                        </input-number-spinner>
+                                              data-model="$ctrl.memberInEdition.wrapUpTime"
+                                              min="0"
+                                              max="99999">
+                        </oui-numeric>
                     </div>
 
                     <!-- SIMULTANEOUS LINES -->
@@ -137,12 +137,12 @@
                         <label for="editSimultaneousLinesInput"
                                class="control-label"
                                data-translate="telephony_alias_members_simultaneous_lines"></label>
-                        <input-number-spinner id="editSimultaneousLinesInput"
+                        <oui-numeric id="editSimultaneousLinesInput"
                                               class="d-inline-block text-left"
-                                              data-ng-model="$ctrl.memberInEdition.simultaneousLines"
-                                              data-input-number-spinner-min="1"
-                                              data-input-number-spinner-max="10">
-                        </input-number-spinner>
+                                              data-model="$ctrl.memberInEdition.simultaneousLines"
+                                              min="1"
+                                              max="10">
+                        </oui-numeric>
                     </div>
 
                     <div class="my-3">

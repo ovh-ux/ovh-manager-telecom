@@ -100,7 +100,7 @@
                                 <th class="table-comparison__cell table-comparison__cell--border table-comparison__property-name"
                                     scope="row"
                                     data-translate="telecom_pack_migration_commitment"></th>
-                                <td class="table-comparison__cell table-comparison__cell--border table-comparison__value table-comparison--item-base" 
+                                <td class="table-comparison__cell table-comparison__cell--border table-comparison__value table-comparison--item-base"
                                     data-translate-attr="{ 'data-title' : 'telecom_pack_migration_current_offer', 'number' : '12' }"
                                     data-translate-values="{ offerName : OffersCtrl.process.pack.offerDescription, number : 12 }"
                                     data-translate="telecom_pack_migration_commitment_month">
@@ -121,7 +121,7 @@
                                         data-uib-tooltip="{{ 'telecom_pack_migration_services_to_delete_explain' | translate }}">
                                    </span>
                                 </th>
-                                <td class="table-comparison__cell table-comparison__cell--border table-comparison__value table-comparison--item-base" 
+                                <td class="table-comparison__cell table-comparison__cell--border table-comparison__value table-comparison--item-base"
                                     data-translate-attr="{ 'data-title' : 'telecom_pack_migration_current_offer' }"
                                     data-translate-values="{ offerName : OffersCtrl.process.pack.offerDescription }">/</td>
                                 <td class="table-comparison__cell table-comparison__value table-comparison__cell--border"
@@ -148,7 +148,7 @@
                                     <span class="ovh-font ovh-font-phone table-comparison__property-icon" aria-hidden="true"></span>
                                     <span data-translate="telecom_pack_migration_line_title"></span>
                                 </th>
-                                <td class="table-comparison__cell table-comparison__value table-comparison--item-base" 
+                                <td class="table-comparison__cell table-comparison__value table-comparison--item-base"
                                     data-translate-attr="{ 'data-title' : 'telecom_pack_migration_current_offer' }"
                                     data-translate-values="{ offerName : OffersCtrl.process.pack.offerDescription }">
                                     <div data-ng-if="OffersCtrl.process.pack.options.voipLine">
@@ -179,12 +179,12 @@
                                                   data-translate="telecom_pack_migration_add_lines_upto"
                                                   data-translate-values="{ max : offer.options.voip_line.optional }">
                                             </span>
-                                            <input-number-spinner class="clearfix"
-                                                                  data-ng-model="offer.options.voip_line.choosedValue"
-                                                                  data-input-number-spinner-min="0"
-                                                                  data-input-number-spinner-max="offer.options.voip_line.optional"
-                                                                  data-input-number-spinner-on-change="OffersCtrl.updateOfferDisplayedPrice(offer, offer.options.voip_line)">
-                                            </input-number-spinner>
+                                            <oui-numeric class="clearfix mx-auto"
+                                                        data-model="offer.options.voip_line.choosedValue"
+                                                        min="0"
+                                                        max="offer.options.voip_line.optional"
+                                                        data-on-change="OffersCtrl.updateOfferDisplayedPrice(modelValue, offer)">
+                                            </oui-numeric>
                                             <small class="d-block mt-2"
                                                    data-ng-init="offer.options.voip_line.formatPriceOptions = { withoutTax : true, addBrackets : true, additionalText : ('telecom_pack_migration_line_additional_text' | translate ) }"
                                                    data-ng-bind-html="offer.options.voip_line.optionalPrice.text | tucFormatPrice:offer.options.voip_line.formatPriceOptions">
@@ -203,7 +203,7 @@
                                     <span class="ovh-font ovh-font-mail table-comparison__property-icon" aria-hidden="true"></span>
                                     <span data-translate="telecom_pack_migration_exchange_title"></span>
                                 </th>
-                                <td class="table-comparison__cell table-comparison__value table-comparison--item-base" 
+                                <td class="table-comparison__cell table-comparison__value table-comparison--item-base"
                                     data-translate-attr="{ 'data-title' : 'telecom_pack_migration_current_offer' }"
                                     data-translate-values="{ offerName : OffersCtrl.process.pack.offerDescription }">
                                     <div data-ng-if="OffersCtrl.process.pack.options.exchangeAccount">
@@ -234,12 +234,13 @@
                                                   data-translate="telecom_pack_migration_add_exchange_account_upto"
                                                   data-translate-values="{ max : offer.options.exchange_account.optional }">
                                             </span>
-                                            <input-number-spinner class="clearfix"
-                                                                  data-ng-model="offer.options.exchange_account.choosedValue"
-                                                                  data-input-number-spinner-min="0"
-                                                                  data-input-number-spinner-max="offer.options.exchange_account.optional"
-                                                                  data-input-number-spinner-on-change="OffersCtrl.updateOfferDisplayedPrice(offer, offer.options.exchange_account)">
-                                            </input-number-spinner>
+                                            <oui-numeric
+                                                class="clearfix mx-auto"
+                                                min="0"
+                                                max="offer.options.exchange_account.optional"
+                                                data-model="offer.options.exchange_account.choosedValue"
+                                                data-on-change="OffersCtrl.updateOfferDisplayedPrice(modelValue, offer)">
+                                            </oui-numeric>
                                             <small class="d-block mt-2"
                                                    data-ng-init="offer.options.exchange_account.formatPriceOptions = { withoutTax : true, addBrackets : true, additionalText : ('telecom_pack_migration_account_additional_text' | translate ) }"
                                                    data-ng-bind-html="offer.options.exchange_account.optionalPrice.text | tucFormatPrice:offer.options.exchange_account.formatPriceOptions">
@@ -328,12 +329,12 @@
                                                   data-translate="telecom_pack_migration_add_lines_upto"
                                                   data-translate-values="{ max : offer.options.voip_ecofax.optional }">
                                             </span>
-                                            <input-number-spinner class="clearfix"
-                                                                  data-ng-model="offer.options.voip_ecofax.choosedValue"
-                                                                  data-input-number-spinner-min="0"
-                                                                  data-input-number-spinner-max="offer.options.voip_ecofax.optional"
-                                                                  data-input-number-spinner-on-change="OffersCtrl.updateOfferDisplayedPrice(offer, offer.options.voip_ecofax)">
-                                            </input-number-spinner>
+                                            <oui-numeric class="clearfix mx-auto"
+                                                        data-model="offer.options.voip_ecofax.choosedValue"
+                                                        min="0"
+                                                        max="offer.options.voip_ecofax.optional"
+                                                        data-on-change="OffersCtrl.updateOfferDisplayedPrice(modelValue, offer)">
+                                            </oui-numeric>
                                             <small class="d-block mt-2"
                                                    data-ng-init="offer.options.voip_ecofax.formatPriceOptions = { withoutTax : true, addBrackets : true, additionalText : ('telecom_pack_migration_line_additional_text' | translate ) }"
                                                    data-ng-bind-html="offer.options.voip_ecofax.optionalPrice.text | tucFormatPrice:offer.options.voip_ecofax.formatPriceOptions">
@@ -383,12 +384,12 @@
                                                   data-translate="telecom_pack_migration_add_domains_upto"
                                                   data-translate-values="{ max : offer.options.dom1.optional }">
                                             </span>
-                                            <input-number-spinner class="clearfix"
-                                                                  data-ng-model="offer.options.dom1.choosedValue"
-                                                                  data-input-number-spinner-min="0"
-                                                                  data-input-number-spinner-max="offer.options.dom1.optional"
-                                                                  data-input-number-spinner-on-change="OffersCtrl.updateOfferDisplayedPrice(offer, offer.options.dom1)">
-                                            </input-number-spinner>
+                                            <oui-numeric class="clearfix mx-auto"
+                                                        data-model="offer.options.dom1.choosedValue"
+                                                        min="0"
+                                                        max="offer.options.dom1.optional"
+                                                        data-on-change="OffersCtrl.updateOfferDisplayedPrice(modelValue, offer)">
+                                            </oui-numeric>
                                             <small class="d-block mt-2"
                                                   data-ng-init="offer.options.dom1.formatPriceOptions = { withoutTax : true, addBrackets : true, additionalText : ('telecom_pack_migration_domain_additional_text' | translate ) }"
                                                   data-ng-bind-html="offer.options.dom1.optionalPrice.text | tucFormatPrice:offer.options.dom1.formatPriceOptions">
@@ -425,7 +426,7 @@
                                             <div class="input-group d-inline-block align-middle mr-2">
                                                 <input type="checkbox"
                                                        data-ng-model="offer.options.gtr_ovh.selected"
-                                                       data-ng-change="OffersCtrl.updateOfferDisplayedPrice(offer, offer.options.gtr_ovh)">
+                                                       data-ng-change="OffersCtrl.updateOfferDisplayedPrice(offer.options.gtr_ovh, offer)">
                                             </div>
                                             <small class="d-block align-middle">
                                                 <span data-translate="telecom_pack_migration_gtr_add"></span>
