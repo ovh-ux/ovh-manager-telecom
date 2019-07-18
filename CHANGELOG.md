@@ -1,3 +1,14 @@
+# [10.31.0](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.30.0...v10.31.0) (2019-07-18)
+
+
+### Bug Fixes
+
+* **i18n:** add missing translations ([44c401e](https://github.com/ovh-ux/ovh-manager-telecom/commit/44c401e))
+* **i18n:** add missing translations ([074274c](https://github.com/ovh-ux/ovh-manager-telecom/commit/074274c))
+* **telephony.line.phone:** remove unexisting call ([c3d893f](https://github.com/ovh-ux/ovh-manager-telecom/commit/c3d893f))
+
+
+
 # [10.30.0](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.29.0...v10.30.0) (2019-07-10)
 
 
