@@ -892,41 +892,41 @@
     rollup-pluginutils "^2.3.3"
     slash "^2.0.0"
 
-"@ovh-ux/manager-config@^0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@ovh-ux/manager-config/-/manager-config-0.2.0.tgz#0c2cce370c372993ed4ed25783191fe9112db839"
-  integrity sha512-FEGIRGEaNQcHlHienK0Egf+JEB9FUK9PyJgkMP575pPDVTy67JRRD7uZ5FXCUfRtVgYLD4VYjwOzeucr3WtvFg==
+"@ovh-ux/manager-config@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@ovh-ux/manager-config/-/manager-config-0.3.0.tgz#d3c444090ad42af74029184d0dcf4ca2c99f9f8d"
+  integrity sha512-CRI4sgN3iL3E6UJBA/xaYEGUggma7yCz9jZaQsJ5F9e4AncE9zzuJyPfKclHmenWyQbLLrrUkM7IOpxZER8zRQ==
 
-"@ovh-ux/manager-core@^6.0.1":
-  version "6.0.1"
-  resolved "https://registry.yarnpkg.com/@ovh-ux/manager-core/-/manager-core-6.0.1.tgz#b218b4993ae16cfd56fecdf842a924246ced6332"
-  integrity sha512-eCgiLx6Hfh9JEpLcWvKZILJx8Q0b05K2OR3VmB7nESCRLZBRLUmFtBCnJMxghdGk0CMPKYu177HDtTwTBXX2cw==
+"@ovh-ux/manager-core@^6.1.1":
+  version "6.1.1"
+  resolved "https://registry.yarnpkg.com/@ovh-ux/manager-core/-/manager-core-6.1.1.tgz#5ebb010f3d654be3b3afceb12da9891c092d2817"
+  integrity sha512-VDIttSrDaqqGL1L5dv1/a0PipoluH7imyCk8A3Y+3Xhchpxyb6hWtZJ8H3wqlGjkKQkzqKYdLIpYdOg3m0u/pg==
   dependencies:
     "@ovh-ux/ng-translate-async-loader" "^2.0.0"
-    lodash "^4.17.11"
+    lodash "^4.17.14"
 
-"@ovh-ux/manager-freefax@^5.1.2":
-  version "5.1.2"
-  resolved "https://registry.yarnpkg.com/@ovh-ux/manager-freefax/-/manager-freefax-5.1.2.tgz#dc5fc21891c567e1131dc95f6b4a655ac9db4554"
-  integrity sha512-S0ccSQJP96cu37XMEJQp2/GlfuTpeDFYjFRWPKs1LkP27vgAaNDFcDv5fVxfzC49AKsz+UHQV9tAxdGVxg00qQ==
+"@ovh-ux/manager-freefax@^5.2.1":
+  version "5.2.1"
+  resolved "https://registry.yarnpkg.com/@ovh-ux/manager-freefax/-/manager-freefax-5.2.1.tgz#cb93b8be419deac49642c8a6bfbcf685068d17cd"
+  integrity sha512-WfE8nwt0L3Du4dQ/SrlqySEKAVlONjctOfr7/AP+DeHhaew8kBi68X0BAmCQHlacDPUZr5t4J0an4IV72Ghh4g==
   dependencies:
     bootstrap4 twbs/bootstrap#v4.0.0
-    lodash "^4.17.11"
+    lodash "^4.17.14"
 
-"@ovh-ux/manager-navbar@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@ovh-ux/manager-navbar/-/manager-navbar-1.0.1.tgz#b80fb9617473ca908c933f1336a7ddbe3ab4f800"
-  integrity sha512-D9WIBPBKDBe0WusCfvOXXBC4dK9kJv0OiAvLLBOm4Tw7U+Lzpw2IMNcATrst7XmOiK7iO3zRgmxlJ0/5r88xIg==
+"@ovh-ux/manager-navbar@^1.2.1":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@ovh-ux/manager-navbar/-/manager-navbar-1.2.1.tgz#f3578b3778c188601dd6321a9e70d170d5dc495d"
+  integrity sha512-2lY9TLeDBA++y3Jt+zmQ8wRmAF+uLaNPcPKFhNSOYfsJX0+cO1speVeQb7+R449fpr7e5YVV4T0rV33AtFp0zQ==
   dependencies:
-    lodash "^4.17.11"
+    lodash "^4.17.14"
     moment "^2.24.0"
 
-"@ovh-ux/manager-overthebox@^4.2.3":
-  version "4.2.3"
-  resolved "https://registry.yarnpkg.com/@ovh-ux/manager-overthebox/-/manager-overthebox-4.2.3.tgz#e3355cf83939932584749e4ec980e5dd9ed61be3"
-  integrity sha512-Fci+o728fwdJP46xHFq3NrZCWF/I1605FqCaAgRu5ZUOTOCK5H6NHaX4Q66QXMS/kiYgtLw0uUAblH/WuSuvPg==
+"@ovh-ux/manager-overthebox@^4.3.1":
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/@ovh-ux/manager-overthebox/-/manager-overthebox-4.3.1.tgz#6b1811e05ceb7d16de6cb4bb16396d56e5589fb8"
+  integrity sha512-+Nl5BB/e8rEPu0+28aWUUaLKmzf1pVqKnMInymRXMOi5DvzWFo/31KlGvSXkh+vTx8qCSs3fdv68LbfwNTo/+g==
   dependencies:
-    lodash "4.17.11"
+    lodash "4.17.14"
     moment "^2.22.2"
 
 "@ovh-ux/manager-sms@^7.0.1":
@@ -938,26 +938,26 @@
     lodash "^4.17.14"
     moment "^2.22.2"
 
-"@ovh-ux/manager-telecom-dashboard@^4.2.2":
-  version "4.2.2"
-  resolved "https://registry.yarnpkg.com/@ovh-ux/manager-telecom-dashboard/-/manager-telecom-dashboard-4.2.2.tgz#d23c0521cc6b8665ee6e90064de487b857299bc4"
-  integrity sha512-1GRYgwi9X4gs/w2pcOJB1LmPh2kZyEE4hPZJn7dKwr1uNHnk6QGG4Zgy0p1ZUnW57T4djyGoGIphwpiT6Ox8sQ==
+"@ovh-ux/manager-telecom-dashboard@^4.3.1":
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/@ovh-ux/manager-telecom-dashboard/-/manager-telecom-dashboard-4.3.1.tgz#bca05038ac8fe85ae3687f416adadb89a5f5093a"
+  integrity sha512-1sgID1+xEcLTG42Fr4N47eliXHbBxsr4W/ZBteQV0enauUEuWJ0KjcCOYcYQ+iA7YUlmV1QZn4TfhKD0EDYWzA==
 
-"@ovh-ux/manager-telecom-styles@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@ovh-ux/manager-telecom-styles/-/manager-telecom-styles-3.0.0.tgz#dd4ca3f580496f21d18e1d038f060fcb1c461276"
-  integrity sha512-AprJpcIbnMHtaLjbkPrhH44qvnCBXU7PhwKZSv5Fu/+sULGK03o63ePrr0M2VkxgdcF5qTnSlIMnwXl36SwB/A==
+"@ovh-ux/manager-telecom-styles@^3.1.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@ovh-ux/manager-telecom-styles/-/manager-telecom-styles-3.1.0.tgz#d47925b1c51cfe06a11534bc0e9302fe0493467e"
+  integrity sha512-zCdwk02kiv3jKsRpU08Dd5c/2UGJxyWD9QuSisQFGheV7xu55zjU7EpwK8nXRPNwmgllQ29bvoK5danzFq3tQg==
   dependencies:
     bootstrap "~3.3.7"
     ovh-ui-kit "^2.33.3"
     ovh-ui-kit-bs "^2.1.1"
 
-"@ovh-ux/manager-telecom-task@^4.1.1":
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/@ovh-ux/manager-telecom-task/-/manager-telecom-task-4.1.1.tgz#0e8d7e8f34dd9b04a2644650e0f064501725fd5b"
-  integrity sha512-qcWD70m78ctvJxJCCjClJECDPlfNw0K4ibfRoUHYZswTyaK8MmW0ai9enmpIYFPG6HELYoaHIxkumKbGhwMwvg==
+"@ovh-ux/manager-telecom-task@^4.2.1":
+  version "4.2.1"
+  resolved "https://registry.yarnpkg.com/@ovh-ux/manager-telecom-task/-/manager-telecom-task-4.2.1.tgz#2cccd0f67655877cf15f074f682b11dcd8041216"
+  integrity sha512-5qeh3VELnVs8q9n1ULrIpkjIdkZcHdFsaG8GHXxB/AtCUIRFitKM/VBHV+CRbx7vHnmeNPsUibkBza68n3s9FQ==
   dependencies:
-    lodash "^4.17.11"
+    lodash "^4.17.14"
 
 "@ovh-ux/manager-webpack-config@^3.0.0":
   version "3.0.0"
@@ -1079,17 +1079,17 @@
   resolved "https://registry.yarnpkg.com/@ovh-ux/ng-ovh-proxy-request/-/ng-ovh-proxy-request-1.0.0-beta.0.tgz#45e2397515326f6c43f99221f746401509b7db1d"
   integrity sha512-JtCQLoxNfl7T1kz/draSsfH/dGjKQ7cwN2ArMsuYlZ9MVPaPlhf4PQz11WHSAQXxCcvZKsJ/AYmWUCKZlzI94w==
 
-"@ovh-ux/ng-ovh-sso-auth-modal-plugin@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@ovh-ux/ng-ovh-sso-auth-modal-plugin/-/ng-ovh-sso-auth-modal-plugin-3.0.0.tgz#0e314b412769d65862d3900ca3a06374ef47fc86"
-  integrity sha512-cyMBkp353CH+RPU4PKZoNTCXKrlwtvgXq7ETzD8CRiFmmZ4AhUfyBNVXno7vBHW4jsAJhWDtN5TThVZWUYdF7w==
+"@ovh-ux/ng-ovh-sso-auth-modal-plugin@^3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@ovh-ux/ng-ovh-sso-auth-modal-plugin/-/ng-ovh-sso-auth-modal-plugin-3.0.1.tgz#2384428a5fbc241f957c34f1b67d74649e64ff1c"
+  integrity sha512-YY/Jj3UGwOF0TNIg7hSbRxi5AjFlnuLDcoG+lJ7NEQqACQQsZSeyHxdQqcDZ68FziVIbr+XXnGRaybgAxQ+qHw==
   dependencies:
     lodash "~4.17.11"
 
-"@ovh-ux/ng-ovh-sso-auth@^4.0.0":
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/@ovh-ux/ng-ovh-sso-auth/-/ng-ovh-sso-auth-4.0.0.tgz#f6c1027f5ef827d464ff3b0e702b1692ee279703"
-  integrity sha512-exPPBbg2WTXH4/LHu3dsqfHq073+NhBzB69WB97Dd75FKust3h/SUjyQyuFOn7h4Z0OI4/8db+6qpwjEIAAz6Q==
+"@ovh-ux/ng-ovh-sso-auth@^4.1.0":
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/@ovh-ux/ng-ovh-sso-auth/-/ng-ovh-sso-auth-4.1.0.tgz#658c6eba11e8a4ab8162fe4242a93680230e48e9"
+  integrity sha512-dZm2ZGbhW3IhyTOWcCZ/0NJ5ZayoWEgGHRkDzN3LQH6nlwVv5mkatlaXzOc7HvcAop2W+S2LnOXJtbrqCucM9w==
 
 "@ovh-ux/ng-ovh-swimming-poll@^4.0.0":
   version "4.0.0"
@@ -7912,20 +7912,20 @@ lodash@4.17.10:
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.10.tgz#1b7793cf7259ea38fb3661d4d38b3260af8ae4e7"
   integrity sha512-UejweD1pDoXu+AD825lWwp4ZGtSwgnpZxb3JDViD7StjQz+Nb/6l093lx4OQ0foGWNRoc19mWy7BzL+UAK2iVg==
 
-lodash@4.17.11, lodash@^4.0.0, lodash@^4.0.1, lodash@^4.11.1, lodash@^4.12.0, lodash@^4.17.10, lodash@^4.17.3, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.2.0, lodash@^4.2.1, lodash@^4.3.0, lodash@~4.17.10, lodash@~4.17.11:
-  version "4.17.11"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
-  integrity sha512-cQKh8igo5QUhZ7lg38DYWAxMvjSAKG0A8wGSVimP07SIUEK2UO+arSRKbRZWtelMtN5V0Hkwh5ryOto/SshYIg==
+lodash@4.17.14, lodash@^4.17.11, lodash@^4.17.14:
+  version "4.17.14"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.14.tgz#9ce487ae66c96254fe20b599f21b6816028078ba"
+  integrity sha512-mmKYbW3GLuJeX+iGP+Y7Gp1AiGHGbXHCOh/jZmrawMmsE7MS4znI3RL2FsjbqOyMayHInjOeykW7PEajUk1/xw==
 
 lodash@^3.10.1, lodash@^3.8.0:
   version "3.10.1"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-3.10.1.tgz#5bf45e8e49ba4189e17d482789dfd15bd140b7b6"
   integrity sha1-W/Rejkm6QYnhfUgnid/RW9FAt7Y=
 
-lodash@^4.17.11, lodash@^4.17.14:
-  version "4.17.14"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.14.tgz#9ce487ae66c96254fe20b599f21b6816028078ba"
-  integrity sha512-mmKYbW3GLuJeX+iGP+Y7Gp1AiGHGbXHCOh/jZmrawMmsE7MS4znI3RL2FsjbqOyMayHInjOeykW7PEajUk1/xw==
+lodash@^4.0.0, lodash@^4.0.1, lodash@^4.11.1, lodash@^4.12.0, lodash@^4.17.10, lodash@^4.17.3, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.2.0, lodash@^4.2.1, lodash@^4.3.0, lodash@~4.17.10, lodash@~4.17.11:
+  version "4.17.11"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
+  integrity sha512-cQKh8igo5QUhZ7lg38DYWAxMvjSAKG0A8wGSVimP07SIUEK2UO+arSRKbRZWtelMtN5V0Hkwh5ryOto/SshYIg==
 
 lodash@lodash/lodash#~3.10.1:
   version "3.10.1"
