@@ -1,3 +1,12 @@
+## [10.31.1](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.31.0...v10.31.1) (2019-07-24)
+
+
+### Bug Fixes
+
+* **telephony.consumption.pie.chart:** fill with default empty color ([#1455](https://github.com/ovh-ux/ovh-manager-telecom/issues/1455)) ([3d8f4a6](https://github.com/ovh-ux/ovh-manager-telecom/commit/3d8f4a6))
+
+
+
 # [10.31.0](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.30.0...v10.31.0) (2019-07-18)
 
 
