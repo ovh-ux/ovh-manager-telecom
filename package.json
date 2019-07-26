@@ -1,6 +1,6 @@
 {
   "name": "ovh-manager-telecom",
-  "version": "10.31.1",
+  "version": "10.31.2",
   "private": true,
   "description": "OVH Control Panel Telecom UI",
   "keywords": [
