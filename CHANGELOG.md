@@ -1,3 +1,14 @@
+## [10.31.2](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.31.1...v10.31.2) (2019-07-26)
+
+
+### Bug Fixes
+
+* **i18n:** add missing translations ([09eb19e](https://github.com/ovh-ux/ovh-manager-telecom/commit/09eb19e))
+* **pack.move.offer:** load offer on init function ([#1454](https://github.com/ovh-ux/ovh-manager-telecom/issues/1454)) ([e5da6c2](https://github.com/ovh-ux/ovh-manager-telecom/commit/e5da6c2))
+* **pack.xdsl.translations:** add forgotten ids ([#1447](https://github.com/ovh-ux/ovh-manager-telecom/issues/1447)) ([d442642](https://github.com/ovh-ux/ovh-manager-telecom/commit/d442642))
+
+
+
 ## [10.31.1](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.31.0...v10.31.1) (2019-07-24)
 
 
