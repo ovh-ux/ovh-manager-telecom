@@ -114,6 +114,22 @@ angular.module('managerApp').controller('TelecomPackMigrationBuildingDetailsCtrl
     return stairsModel;
   }
 
+  /**
+   * Set default stairs model for empty stairs
+   */
+  defaultStairsModel() {
+    return {
+      stair: {
+        label: this.$translate.instant('telecom_pack_migration_building_details_none'),
+        value: '_NA_',
+      },
+      floors: [{
+        label: this.$translate.instant('telecom_pack_migration_building_details_none'),
+        value: '_NA_',
+      }],
+    };
+  }
+
   changeSelection(isFromStairs) {
     if (!isFromStairs) {
       if (this.model.selectedBuilding.stairs.length === 0) {
@@ -123,9 +139,14 @@ angular.module('managerApp').controller('TelecomPackMigrationBuildingDetailsCtrl
         this.OvhApiConnectivityEligibility.v6().buildingDetails({
         }, params).$promise.then((buildingDetails) => {
           if (_.has(buildingDetails, 'result.stairs')) {
-            this.model.selectedBuilding.stairs = buildingDetails.result.stairs.map(
-              stair => this.convertStairs(stair),
-            );
+            if (buildingDetails.result.stairs.length === 0) {
+              const stairModel = this.defaultStairsModel();
+              this.model.selectedBuilding.stairs.push(stairModel);
+            } else {
+              this.model.selectedBuilding.stairs = buildingDetails.result.stairs.map(
+                stair => this.convertStairs(stair),
+              );
+            }
           }
         });
       }
