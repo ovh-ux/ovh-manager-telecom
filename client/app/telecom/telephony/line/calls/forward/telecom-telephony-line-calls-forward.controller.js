@@ -178,16 +178,34 @@ angular.module('managerApp').controller('TelecomTelephonyLineCallsForwardCtrl', 
    * @return {Promise}
    */
   function loadAllOvhNumbers() {
-    return TelecomTelephonyLineCallsForwardService.loadAllOvhNumbers($stateParams.serviceName).then(
-      (allOvhNumbers) => {
-        self.allOvhNumbers = allOvhNumbers;
-        return allOvhNumbers;
-      },
-      (err) => {
-        TucToast.error($translate.instant('telephony_line_actions_line_calls_forward_number_load_error'));
-        $q.reject(err);
-      },
-    );
+    return TelecomTelephonyLineCallsForwardService.loadAllOvhNumbers($stateParams.serviceName)
+      .then(
+        (allOvhNumbers) => {
+          const numbers = allOvhNumbers.map((ovhNumber) => {
+            const filtered = self.listBillingAccounts
+              .filter(billingAccount => billingAccount.description
+                && billingAccount.billingAccount === ovhNumber.billingAccount);
+            const number = ovhNumber;
+            if (filtered.length === 1) {
+              number.billingAccountDescription = filtered[0].description;
+            } else {
+              number.billingAccountDescription = ovhNumber.billingAccount;
+            }
+            return number;
+          });
+          return numbers;
+        },
+      )
+      .then(
+        (allOvhNumbers) => {
+          self.allOvhNumbers = allOvhNumbers;
+          return allOvhNumbers;
+        },
+        (err) => {
+          TucToast.error($translate.instant('telephony_line_actions_line_calls_forward_number_load_error'));
+          $q.reject(err);
+        },
+      );
   }
 
   /**
@@ -239,9 +257,6 @@ angular.module('managerApp').controller('TelecomTelephonyLineCallsForwardCtrl', 
     self.saved = angular.copy(self.options);
     tucTelecomVoip.fetchAll().then((billingAccounts) => {
       self.listBillingAccounts = billingAccounts;
-      self.listBillingAccounts.unshift({ billingAccount: null, description: 'Tous les groupes' });
-      self.filter.billingAccount = _.get(_.find(self.listBillingAccounts, { billingAccount: $stateParams.billingAccount }), 'billingAccount', null);
-
       return billingAccounts;
     }).then(loadAllOvhNumbers).then(loadNatures)
       .then(loadForwards)
