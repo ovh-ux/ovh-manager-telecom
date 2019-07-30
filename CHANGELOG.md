@@ -1,3 +1,13 @@
+## [10.31.3](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.31.2...v10.31.3) (2019-07-30)
+
+
+### Bug Fixes
+
+* **i18n:** add missing translations ([b78dc81](https://github.com/ovh-ux/ovh-manager-telecom/commit/b78dc81))
+* **pack.migration.building-details:** manage empty list for stairs ([#1463](https://github.com/ovh-ux/ovh-manager-telecom/issues/1463)) ([c0b461c](https://github.com/ovh-ux/ovh-manager-telecom/commit/c0b461c))
+
+
+
 ## [10.31.2](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.31.1...v10.31.2) (2019-07-26)
 
 
