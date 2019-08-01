@@ -1,3 +1,12 @@
+## [10.31.4](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.31.3...v10.31.4) (2019-08-01)
+
+
+### Bug Fixes
+
+* **telephony.alias.members:** move initialization in $onInit ([#1470](https://github.com/ovh-ux/ovh-manager-telecom/issues/1470)) ([af867f2](https://github.com/ovh-ux/ovh-manager-telecom/commit/af867f2))
+
+
+
 ## [10.31.3](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.31.2...v10.31.3) (2019-07-30)
 
 
