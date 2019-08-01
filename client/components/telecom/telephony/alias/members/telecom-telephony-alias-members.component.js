@@ -32,6 +32,20 @@ angular.module('managerApp').component('telecomTelephonyAliasMembers', {
       self.memberInEdition = null;
       self.memberToDelete = null;
 
+
+      self.api.addMembersToList = function (toAdd) {
+        _.each(toAdd.reverse(), (member) => {
+          self.members.unshift(member);
+        });
+        self.api.reorderMembers(self.members).then((orderedMembers) => {
+          self.members = orderedMembers;
+        });
+      };
+
+      self.api.getMemberList = function () {
+        return angular.copy(self.members);
+      };
+
       $translatePartialLoader.addPart('../components/telecom/telephony/alias/members');
       return $translate.refresh().finally(() => {
         self.isInitialized = true;
@@ -39,19 +53,6 @@ angular.module('managerApp').component('telecomTelephonyAliasMembers', {
           self.loaders.init = false;
         });
       });
-    };
-
-    self.api.addMembersToList = function (toAdd) {
-      _.each(toAdd.reverse(), (member) => {
-        self.members.unshift(member);
-      });
-      self.api.reorderMembers(self.members).then((orderedMembers) => {
-        self.members = orderedMembers;
-      });
-    };
-
-    self.api.getMemberList = function () {
-      return angular.copy(self.members);
     };
 
     self.refreshMembers = function () {
