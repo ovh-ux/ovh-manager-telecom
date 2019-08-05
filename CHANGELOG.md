@@ -1,3 +1,12 @@
+## [10.31.6](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.31.5...v10.31.6) (2019-08-05)
+
+
+### Bug Fixes
+
+* **components.sidebar:** add missing translations for en_* files ([#1473](https://github.com/ovh-ux/ovh-manager-telecom/issues/1473)) ([da30ae9](https://github.com/ovh-ux/ovh-manager-telecom/commit/da30ae9))
+
+
+
 ## [10.31.5](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.31.4...v10.31.5) (2019-08-05)
 
 
