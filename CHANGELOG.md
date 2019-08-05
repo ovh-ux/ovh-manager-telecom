@@ -1,3 +1,14 @@
+## [10.31.5](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.31.4...v10.31.5) (2019-08-05)
+
+
+### Bug Fixes
+
+* **i18n:** add missing translations ([1266e10](https://github.com/ovh-ux/ovh-manager-telecom/commit/1266e10))
+* **i18n:** add missing translations [CDS 2] ([4b6fdc5](https://github.com/ovh-ux/ovh-manager-telecom/commit/4b6fdc5))
+* **telephony.line.calls:** list all numbers grouped by billingAccount ([#1458](https://github.com/ovh-ux/ovh-manager-telecom/issues/1458)) ([0ac19ba](https://github.com/ovh-ux/ovh-manager-telecom/commit/0ac19ba))
+
+
+
 ## [10.31.4](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.31.3...v10.31.4) (2019-08-01)
 
 
