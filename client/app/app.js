@@ -17,6 +17,7 @@ import ngOvhSsoAuth from '@ovh-ux/ng-ovh-sso-auth';
 import ngOvhSsoAuthModalPlugin from '@ovh-ux/ng-ovh-sso-auth-modal-plugin';
 import ngOvhSwimmingPoll from '@ovh-ux/ng-ovh-swimming-poll';
 import ngOvhTelecomUniverseComponents from '@ovh-ux/ng-ovh-telecom-universe-components';
+import ngOvhUiRouterLineProgress from '@ovh-ux/ng-ui-router-line-progress';
 import ngPaginationFront from '@ovh-ux/ng-pagination-front';
 import ngTailLogs from '@ovh-ux/ng-tail-logs';
 import ngTranslateAsyncLoader from '@ovh-ux/ng-translate-async-loader';
@@ -56,6 +57,7 @@ angular.module('managerApp', [
   ngPaginationFront,
   ngTailLogs,
   ngTranslateAsyncLoader,
+  ngOvhUiRouterLineProgress,
   ngUirouterTitle,
   'ovh-angular-actions-menu',
   'ovh-angular-contact',
