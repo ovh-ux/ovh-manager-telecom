@@ -17,6 +17,7 @@
   "telephony_line_actions_line_calls_forward_label_to": "au numéro",
   "telephony_line_actions_line_calls_forward_filter_number": "Filtrer les numéros",
   "telephony_line_actions_line_calls_forward_filter_number_by_billing_account": "Groupes",
+  "telephony_line_actions_line_calls_forward_filter_number_by_billing_account_all_value": "Tous les groupes",
   "telephony_line_actions_line_calls_forward_filter_number_by_line_type": "Types",
   "telephony_line_actions_line_calls_forward_filter_number_by_line_type_fax": "Fax",
   "telephony_line_actions_line_calls_forward_filter_number_by_line_type_line": "SIP",

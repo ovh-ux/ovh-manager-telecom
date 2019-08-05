@@ -132,7 +132,7 @@
                                             id="{{ :: 'forward' + forward.type + 'Number'}}"
                                             class="form-control no-transition"
                                             data-ng-required="forward.enable"
-                                            data-ng-options="preselect as (preselect.labelType + ' ' + preselect.toString()) for preselect in LineForwardCtrl.getFilteredNumbers($select.search, forward.nature.types) track by preselect.serviceName"
+                                            data-ng-options="preselect as (preselect.labelType + ' ' + preselect.toString()) group by preselect.billingAccountDescription for preselect in LineForwardCtrl.getFilteredNumbers($select.search, forward.nature.types) | orderBy:['billingAccountDescription','toString()'] track by preselect.serviceName"
                                             data-ng-disabled="LineForwardCtrl.loading.save">
                                     </select>
                                     <div data-ng-if="forward.nature.value === 'external'">
@@ -197,7 +197,8 @@
                                         id="filterBillingAccount"
                                         data-ng-model="LineForwardCtrl.filter.billingAccount"
                                         data-ng-change="LineForwardCtrl.resetNumbers()"
-                                        data-ng-options="account.billingAccount as (account.description || account.billingAccount) for account in LineForwardCtrl.listBillingAccounts">
+                                        data-ng-options="account.billingAccount as (account.description || account.billingAccount) for account in LineForwardCtrl.listBillingAccounts | orderBy:'description'">
+                                        <option value="" data-translate="telephony_line_actions_line_calls_forward_filter_number_by_billing_account_all_value"></option>
                                 </select>
                             </div>
                         </div>
