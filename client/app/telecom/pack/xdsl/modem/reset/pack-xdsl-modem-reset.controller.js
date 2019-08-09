@@ -35,7 +35,7 @@ angular.module('managerApp').controller('XdslModemResetCtrl', function ($statePa
     TucPackXdslModemMediator.setTask('reconfigureVoip');
     OvhApiXdsl.Modem().v6().reconfigureVoip({
       xdslId: $stateParams.serviceName,
-    }).$promise.then((result) => {
+    }, null).$promise.then((result) => {
       if (result.status === 'todo' || result.status === 'doing') {
         TucPackXdslModemMediator.setTask('reconfigureVoip');
       }
@@ -43,7 +43,11 @@ angular.module('managerApp').controller('XdslModemResetCtrl', function ($statePa
       TucToast.success($translate.instant('xdsl_modem_reset_reconf_tel_success'));
       return result;
     }).catch((err) => {
-      TucToast.error($translate.instant('xdsl_modem_reconf_tel_an_error_ocurred'));
+      if (err.status === 404 && err.statusText === 'Not Found') {
+        TucToast.error($translate.instant('xdsl_modem_reconf_tel_no_voip_line_found'));
+      } else {
+        TucToast.error($translate.instant('xdsl_modem_reconf_tel_an_error_ocurred'));
+      }
       return $q.reject(err);
     });
     return $q.when(null);
