@@ -1,3 +1,17 @@
+# [10.32.0](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.31.6...v10.32.0) (2019-08-12)
+
+
+### Bug Fixes
+
+* update manager urls ([#1480](https://github.com/ovh-ux/ovh-manager-telecom/issues/1480)) ([3823417](https://github.com/ovh-ux/ovh-manager-telecom/commit/3823417))
+
+
+### Features
+
+* add @ovh-ux/ng-ui-router-line-progress ([#1478](https://github.com/ovh-ux/ovh-manager-telecom/issues/1478)) ([072d383](https://github.com/ovh-ux/ovh-manager-telecom/commit/072d383))
+
+
+
 ## [10.31.6](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.31.5...v10.31.6) (2019-08-05)
 
 
