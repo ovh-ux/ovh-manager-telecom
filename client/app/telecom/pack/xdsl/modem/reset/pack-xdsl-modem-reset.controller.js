@@ -33,24 +33,36 @@ angular.module('managerApp').controller('XdslModemResetCtrl', function ($statePa
       return TucToast.error($translate.instant('xdsl_modem_reset_an_error_ocurred'));
     }
     TucPackXdslModemMediator.setTask('reconfigureVoip');
-    OvhApiXdsl.Modem().v6().reconfigureVoip({
+
+    // Disable capabilities canReconfigureVoip to disable button
+    this.mediator.capabilities.canReconfigureVoip = false;
+
+    return OvhApiXdsl.Modem().v6().reconfigureVoip({
       xdslId: $stateParams.serviceName,
     }, null).$promise.then((result) => {
       if (result.status === 'todo' || result.status === 'doing') {
         TucPackXdslModemMediator.setTask('reconfigureVoip');
       }
-      TucPackXdslModemMediator.disableCapabilities();
       TucToast.success($translate.instant('xdsl_modem_reset_reconf_tel_success'));
       return result;
     }).catch((err) => {
-      if (err.status === 404 && err.statusText === 'Not Found') {
-        TucToast.error($translate.instant('xdsl_modem_reconf_tel_no_voip_line_found'));
+      if (err.status === 404) {
+        if (err.statusText === 'Not Found') {
+          TucToast.error($translate.instant('xdsl_modem_reconf_tel_no_voip_line_found'));
+        } else {
+          TucToast.error($translate.instant('xdsl_modem_reconf_tel_an_error_ocurred'));
+        }
+      } else if (err.status === 400) {
+        if (err.data.message.includes('[l1::xdsl::intern::utils::_doResendModemTelephonyConfiguration()]')) {
+          TucToast.error($translate.instant('xdsl_modem_reconf_tel_renew_already_scheduled'));
+        } else {
+          TucToast.error($translate.instant('xdsl_modem_reconf_tel_an_error_ocurred'));
+        }
       } else {
         TucToast.error($translate.instant('xdsl_modem_reconf_tel_an_error_ocurred'));
       }
       return $q.reject(err);
     });
-    return $q.when(null);
   };
 
   const init = function () {
