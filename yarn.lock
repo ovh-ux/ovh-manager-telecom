@@ -9133,11 +9133,6 @@ ovh-angular-contact@^3.0.0:
   resolved "https://registry.yarnpkg.com/ovh-angular-contact/-/ovh-angular-contact-3.0.0.tgz#66ea9cd39a8bb1f194872f7f40ff5303688523f2"
   integrity sha1-Zuqc05qLsfGUhy9/QP9TA2iFI/I=
 
-ovh-angular-input-number-spinner@^2.1.0:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/ovh-angular-input-number-spinner/-/ovh-angular-input-number-spinner-2.1.1.tgz#5d4c1f98e006d1592713eb4d1385092d63050951"
-  integrity sha1-XUwfmOAG0VknE+tNE4UJLWMFCVE=
-
 ovh-angular-line-diagnostics@^2.1.2:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/ovh-angular-line-diagnostics/-/ovh-angular-line-diagnostics-2.1.2.tgz#b762a9545d3d565fb597cff8aa97b56583d0c924"
