@@ -913,10 +913,10 @@
     bootstrap4 twbs/bootstrap#v4.0.0
     lodash "^4.17.14"
 
-"@ovh-ux/manager-navbar@^1.2.2":
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/@ovh-ux/manager-navbar/-/manager-navbar-1.2.2.tgz#2878964dedd1e0a434354c7dda6d0c54606f8b85"
-  integrity sha512-7U54kz5Rm/jNdVYwGC/p3OBZMP+MiCq3+Cl2QHni5QPKOmRngk6LUsH0YzKjMvJMgcaMBF/BX7Jwz4NP0Lb53w==
+"@ovh-ux/manager-navbar@^1.2.3":
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/@ovh-ux/manager-navbar/-/manager-navbar-1.2.3.tgz#a770c999684bdc8cf0540b67e518d321e6d4fe70"
+  integrity sha512-t9O5jrOkCv4uhFxUG5GqfhWVHSw+2KQAL3SDIaOeU98C9ajTEOBAkb8tco1/MC7iD0jtOYXMfRd4nri32dMKAQ==
   dependencies:
     lodash "^4.17.14"
     moment "^2.24.0"
@@ -929,10 +929,10 @@
     lodash "4.17.14"
     moment "^2.22.2"
 
-"@ovh-ux/manager-sms@^7.0.2":
-  version "7.0.2"
-  resolved "https://registry.yarnpkg.com/@ovh-ux/manager-sms/-/manager-sms-7.0.2.tgz#a3efed7ebaf2d5a716ab831e3654b9c12afa72bf"
-  integrity sha512-F9fxhAWe8+1HV3u4D2l9rMQRCQXQs1S9a8m8wE7AEftVXRdyHUodrZ8QWJx2eMVxb5/8gqt/Hpd4PiYYZ0v/Fg==
+"@ovh-ux/manager-sms@^7.0.3":
+  version "7.0.3"
+  resolved "https://registry.yarnpkg.com/@ovh-ux/manager-sms/-/manager-sms-7.0.3.tgz#0750efb9facb43708a17deb63a839978acb19e6d"
+  integrity sha512-9bI6uwa/4QqVHrwc/9KK8Ij2wAx/yoRIDU9y8lfq500Pv80AkTjvvLv6jQLios4mdZJ7zKkXJRmSPGSv6qF6lQ==
   dependencies:
     bootstrap4 twbs/bootstrap#v4.0.0
     lodash "^4.17.14"
@@ -9190,10 +9190,10 @@ ovh-angular-user-pref@^0.3.1:
   resolved "https://registry.yarnpkg.com/ovh-angular-user-pref/-/ovh-angular-user-pref-0.3.1.tgz#07f5792513651f3262ae4879c174423649b08307"
   integrity sha1-B/V5JRNlHzJirkh5wXRCNkmwgwc=
 
-ovh-api-services@^8.0.1:
-  version "8.0.1"
-  resolved "https://registry.yarnpkg.com/ovh-api-services/-/ovh-api-services-8.0.1.tgz#c582499b5092f8fcf2dd51da735e33fbbf788886"
-  integrity sha512-y3WeCw/adZpQRFoAhlBKnLiFvvyH/wKv6XRWHmn07QmtoMycZSX6JZBMgXGPeJ1nwhPsacrc0sASa2kmdOkNJg==
+ovh-api-services@^8.3.0:
+  version "8.3.0"
+  resolved "https://registry.yarnpkg.com/ovh-api-services/-/ovh-api-services-8.3.0.tgz#d3a5634e8a5d3a6ed769b593599ef76d92b06745"
+  integrity sha512-2bsHNlx9Y6d2HdaUpQ5SzlOUYpfkKPWmFsxxNct5eKvNPavQDc1xfI2OTBsb1FkKiY52UtYEYM/rSrsDwFPLGA==
   dependencies:
     lodash "^4.17.15"
 
