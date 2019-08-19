@@ -1,3 +1,12 @@
+## [10.32.1](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.32.0...v10.32.1) (2019-08-19)
+
+
+### Bug Fixes
+
+* **pack.slots:** prevent include the missing no-element partial ([#1487](https://github.com/ovh-ux/ovh-manager-telecom/issues/1487)) ([5dbb304](https://github.com/ovh-ux/ovh-manager-telecom/commit/5dbb304))
+
+
+
 # [10.32.0](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.31.6...v10.32.0) (2019-08-12)
 
 
