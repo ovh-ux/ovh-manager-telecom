@@ -60,7 +60,6 @@ import 'ovh-api-services';
 import 'ovh-angular-contact';
 import 'script-loader!jquery.scrollto';
 import '@ovh-ux/ng-ovh-contracts';
-import 'ovh-angular-input-number-spinner';
 import 'script-loader!urijs/src/URI.min.js';
 import 'script-loader!urijs/src/URITemplate.js';
 import 'ovh-angular-line-diagnostics';

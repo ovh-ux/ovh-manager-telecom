@@ -61,7 +61,6 @@ angular.module('managerApp', [
   ngUirouterTitle,
   'ovh-angular-actions-menu',
   'ovh-angular-contact',
-  'ovh-angular-input-number-spinner',
   'ovh-angular-line-diagnostics',
   'ovh-angular-q-allSettled',
   'ovh-angular-responsive-tabs',
