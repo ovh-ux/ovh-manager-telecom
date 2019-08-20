@@ -1,4 +1,4 @@
-angular.module('managerApp').constant('COMFORT_EXCHANGE_TYPE_ERROR', {
+export const COMFORT_EXCHANGE_TYPE_ERROR = {
   errBase: 'ERR0',
   err001: 'ERR001',
   err002: 'ERR002',
@@ -11,4 +11,8 @@ angular.module('managerApp').constant('COMFORT_EXCHANGE_TYPE_ERROR', {
   err053: 'ERR053',
   err054: 'ERR054',
   errContactShipping: '[contactShipping]',
-});
+};
+
+export default {
+  COMFORT_EXCHANGE_TYPE_ERROR,
+};

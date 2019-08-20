@@ -1,13 +1,13 @@
+import { COMFORT_EXCHANGE_TYPE_ERROR } from './pack-xdsl-access-comfort-exchange.constant';
+
 angular.module('managerApp').controller('XdslAccessComfortExchangeCtrl', class XdslAccessComfortExchangeCtrl {
   /* @ngInject */
-  constructor($stateParams, $translate, OvhApiXdsl, TucToast, TucToastError,
-    COMFORT_EXCHANGE_TYPE_ERROR) {
+  constructor($stateParams, $translate, OvhApiXdsl, TucToast, TucToastError) {
     this.$stateParams = $stateParams;
     this.$translate = $translate;
     this.OvhApiXdsl = OvhApiXdsl;
     this.TucToast = TucToast;
     this.TucToastError = TucToastError;
-    this.COMFORT_EXCHANGE_TYPE_ERROR = COMFORT_EXCHANGE_TYPE_ERROR;
   }
 
   /*= =====================================
@@ -41,10 +41,10 @@ angular.module('managerApp').controller('XdslAccessComfortExchangeCtrl', class X
       this.exchange.order.date = result.date;
       this.TucToast.success(this.$translate.instant('xdsl_access_comfort_exchange_success_message'));
     }).catch((error) => {
-      if (error.data.message.includes(this.COMFORT_EXCHANGE_TYPE_ERROR.errBase)) {
+      if (error.data.message.includes(COMFORT_EXCHANGE_TYPE_ERROR.errBase)) {
         const typeError = error.data.message.substring(0, 6);
         this.TucToastError(this.$translate.instant(`xdsl_access_comfort_exchange_error_${typeError}`));
-      } else if (error.data.message.includes(this.COMFORT_EXCHANGE_TYPE_ERROR.errContactShipping)) {
+      } else if (error.data.message.includes(COMFORT_EXCHANGE_TYPE_ERROR.errContactShipping)) {
         this.TucToastError(this.$translate.instant('xdsl_access_comfort_exchange_error_contact_shipping'));
       } else {
         this.TucToastError(error);
