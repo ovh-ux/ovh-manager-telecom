@@ -32,7 +32,6 @@ angular.module('managerApp').controller('XdslAccessComfortExchangeCtrl', class X
     return this.OvhApiXdsl.Modem().v6().comfortExchange({
       xdslId: this.$stateParams.serviceName,
     }, {}).$promise.then((result) => {
-      console.log(result);
       this.exchange.isSuccess = true;
       this.exchange.order.url = result.url;
       this.exchange.order.id = result.orderId;
