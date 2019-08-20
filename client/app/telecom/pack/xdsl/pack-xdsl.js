@@ -56,6 +56,7 @@ angular.module('managerApp').config(($stateProvider) => {
         './access/rateLimit',
         './access/ip/order',
         './orderFollowUp',
+        './access/comfortExchange',
       ],
       format: 'json',
     },
