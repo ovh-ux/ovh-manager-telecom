@@ -1,3 +1,15 @@
+# [10.33.0](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.32.1...v10.33.0) (2019-08-20)
+
+
+### Features
+
+* add @ovh-ux/ng-ovh-request-tagger ([#1484](https://github.com/ovh-ux/ovh-manager-telecom/issues/1484)) ([8c0df2b](https://github.com/ovh-ux/ovh-manager-telecom/commit/8c0df2b))
+* **xdsl.modem:** add button to reconfigure voip line ([9ab11bc](https://github.com/ovh-ux/ovh-manager-telecom/commit/9ab11bc))
+* **xdsl.modem:** reconfigure voip on modem with correct error label ([bcede4f](https://github.com/ovh-ux/ovh-manager-telecom/commit/bcede4f))
+* **xdsl.modem:** update reconfigure voip line ([fd683eb](https://github.com/ovh-ux/ovh-manager-telecom/commit/fd683eb))
+
+
+
 ## [10.32.1](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.32.0...v10.32.1) (2019-08-19)
 
 
