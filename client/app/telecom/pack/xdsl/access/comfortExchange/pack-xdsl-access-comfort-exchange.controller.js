@@ -1,4 +1,5 @@
 angular.module('managerApp').controller('XdslAccessComfortExchangeCtrl', class XdslAccessComfortExchangeCtrl {
+  /* @ngInject */
   constructor($stateParams, $translate, OvhApiXdsl, TucToast, TucToastError,
     COMFORT_EXCHANGE_TYPE_ERROR) {
     this.$stateParams = $stateParams;
@@ -21,21 +22,24 @@ angular.module('managerApp').controller('XdslAccessComfortExchangeCtrl', class X
         priceWithTax: null,
         tax: null,
       },
-      isSucceed: false,
+      isSuccess: false,
     };
     this.isAvailable = false;
   }
+
 
   comfortExchange() {
     return this.OvhApiXdsl.Modem().v6().comfortExchange({
       xdslId: this.$stateParams.serviceName,
     }, {}).$promise.then((result) => {
-      this.exchange.isSucceed = true;
+      console.log(result);
+      this.exchange.isSuccess = true;
       this.exchange.order.url = result.url;
       this.exchange.order.id = result.orderId;
       this.exchange.order.priceWithoutTax = result.priceWithoutTax.text;
       this.exchange.order.priceWithTax = result.priceWithTax.text;
       this.exchange.order.tax = result.tax.text;
+      this.exchange.order.date = result.date;
       this.TucToast.success(this.$translate.instant('xdsl_access_comfort_exchange_success_message'));
     }).catch((error) => {
       if (error.data.message.includes(this.COMFORT_EXCHANGE_TYPE_ERROR.errBase)) {
