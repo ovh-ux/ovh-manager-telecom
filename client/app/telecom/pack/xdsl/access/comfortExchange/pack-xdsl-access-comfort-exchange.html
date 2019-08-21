@@ -6,70 +6,122 @@
 
         <tuc-toast-message></tuc-toast-message>
 
-        <div data-ng-if="!$ctrl.exchange.isSuccess"
-             data-translate="xdsl_access_comfort_exchange_waiting"></div>
-
-        <div data-ng-if="$ctrl.exchange.isSuccess">
-            <h3 data-translate="xdsl_access_comfort_exchange_bc_title"></h3>
-            <div class="form-group row">
-                <label class="col-sm-2 col-form-label col-form-label-sm"
-                       data-translate="xdsl_access_comfort_exchange_bc_number"
-                       for="bcNumber"></label>
-                <span class="oui-tile__description"
-                      data-ng-bind="$ctrl.exchange.order.id"
-                      id="bcNumber"></span>
+        <div ng-if="$ctrl.isRMAOpened">
+            <div data-translate="xdsl_access_comfort_exchange_already_opened_rma"></div>
+            <br/>
+            <div ng-repeat="rma in $ctrl.rmas track by $index">
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label col-form-label-sm"
+                        data-translate="xdsl_access_comfort_exchange_rma_status"
+                        for="rmaStatus"></label>
+                    <span class="oui-tile__description"
+                        data-ng-bind="rma.status"
+                        id="rmaStatus"></span>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label col-form-label-sm"
+                        data-translate="xdsl_access_comfort_exchange_rma_creation_date"
+                        for="rmaCreationDate"></label>
+                    <span class="oui-tile__description"
+                        data-ng-bind="(rma.creationDateTime | date: 'dd/MM/yyyy HH:mm:ss' )"
+                        id="rmaCreationDate"></span>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label col-form-label-sm"
+                        data-translate="xdsl_access_comfort_exchange_rma_new_merchandise"
+                        for="rmaNewMerchandise"></label>
+                    <span class="oui-tile__description"
+                        data-ng-bind="rma.newMerchandise"
+                        id="rmaNewMerchandise"></span>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label col-form-label-sm"
+                        data-translate="xdsl_access_comfort_exchange_rma_reference"
+                        for="rmaReference"></label>
+                    <span class="oui-tile__description"
+                        data-ng-bind="rma.id"
+                        id="rmaReference"></span>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label col-form-label-sm"
+                        data-translate="xdsl_access_comfort_exchange_rma_equipment_reference"
+                        for="rmaEquipmentRef"></label>
+                    <span class="oui-tile__description"
+                        data-ng-bind="rma.equipmentReference"
+                        id="rmaEquipmentRef"></span>
+                </div>
             </div>
-            <div class="form-group row">
-                <label class="col-sm-2 col-form-label col-form-label-sm"
-                       data-translate="xdsl_access_comfort_exchange_bc_date"
-                       for="bcDate"></label>
-                <span class="oui-tile__description"
-                      data-ng-bind="($ctrl.exchange.order.date | date: 'dd/MM/yyyy HH:mm:ss' )"
-                      id="bcDate"></span>
-            </div>
-            <div class="form-group row">
-                <label class="col-sm-2 col-form-label col-form-label-sm"
-                       data-translate="xdsl_access_comfort_exchange_price_without_tax"
-                       for="bcPriceHT"></label>
-                <span class="oui-tile__description"
-                      data-ng-bind="$ctrl.exchange.order.priceWithoutTax"
-                      id="bcPriceHT"></span>
-            </div>
-            <div class="form-group row">
-                <label class="col-sm-2 col-form-label col-form-label-sm"
-                       data-translate="xdsl_access_comfort_exchange_tax"
-                       for="bcTax"></label>
-                <span class="oui-tile__description"
-                      data-ng-bind="$ctrl.exchange.order.tax"
-                      id="bcTax"></span>
-            </div>
-            <div class="form-group row">
-                <label class="col-sm-2 col-form-label col-form-label-sm"
-                       data-translate="xdsl_access_comfort_exchange_price_with_tax"
-                       for="bcPriceTTC"></label>
-                <span class="oui-tile__description"
-                      data-ng-bind="$ctrl.exchange.order.priceWithTax"
-                      id="bcPriceTTC"></span>
-            </div>
-
-            <p>
-                <a target="_blank"
-                   class="btn btn-primary"
-                   rel="noopener"
-                   data-ng-href="{{:: $ctrl.exchange.order.url }}">
-                    <span data-translate="xdsl_access_comfort_exchange_bc_link"></span>
-                    <span class="fa fa-external-link" aria-hidden="true"></span>
-                </a>
-            </p>
         </div>
 
-        <button role="button"
-            class="oui-button oui-button_primary"
-            data-ng-disabled="$ctrl.isAvailable"
-            data-translate="xdsl_modem_exchange"
-            data-ng-click="$ctrl.comfortExchange()">
-        </button>
+        <div ng-if="!$ctrl.isRMAOpened">
+            <div data-ng-if="!$ctrl.exchange.isSuccess">
+                <div data-translate="xdsl_access_comfort_exchange_confirm_title"></div>
+                <div data-translate="xdsl_access_comfort_exchange_confirm_subtitle"></div>
+                <br/>
+            </div>
 
+            <div data-ng-if="$ctrl.exchange.isSuccess">
+                <h3 data-translate="xdsl_access_comfort_exchange_bc_title"></h3>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label col-form-label-sm"
+                        data-translate="xdsl_access_comfort_exchange_bc_number"
+                        for="bcNumber"></label>
+                    <span class="oui-tile__description"
+                        data-ng-bind="$ctrl.exchange.order.id"
+                        id="bcNumber"></span>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label col-form-label-sm"
+                        data-translate="xdsl_access_comfort_exchange_bc_date"
+                        for="bcDate"></label>
+                    <span class="oui-tile__description"
+                        data-ng-bind="($ctrl.exchange.order.date | date: 'dd/MM/yyyy HH:mm:ss' )"
+                        id="bcDate"></span>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label col-form-label-sm"
+                        data-translate="xdsl_access_comfort_exchange_price_without_tax"
+                        for="bcPriceHT"></label>
+                    <span class="oui-tile__description"
+                        data-ng-bind="$ctrl.exchange.order.priceWithoutTax"
+                        id="bcPriceHT"></span>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label col-form-label-sm"
+                        data-translate="xdsl_access_comfort_exchange_tax"
+                        for="bcTax"></label>
+                    <span class="oui-tile__description"
+                        data-ng-bind="$ctrl.exchange.order.tax"
+                        id="bcTax"></span>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label col-form-label-sm"
+                        data-translate="xdsl_access_comfort_exchange_price_with_tax"
+                        for="bcPriceTTC"></label>
+                    <span class="oui-tile__description"
+                        data-ng-bind="$ctrl.exchange.order.priceWithTax"
+                        id="bcPriceTTC"></span>
+                </div>
+
+                <p>
+                    <a target="_blank"
+                    class="btn btn-primary"
+                    rel="noopener"
+                    data-ng-href="{{:: $ctrl.exchange.order.url }}">
+                        <span data-translate="xdsl_access_comfort_exchange_bc_link"></span>
+                        <span class="fa fa-external-link" aria-hidden="true"></span>
+                    </a>
+                </p>
+            </div>
+
+            <button role="button"
+                class="oui-button oui-button_primary"
+                data-ng-disabled="$ctrl.isAvailable"
+                data-translate="xdsl_modem_exchange"
+                data-ng-click="$ctrl.comfortExchange()">
+            </button>
+
+        </div>
     </div>
 
 </div>

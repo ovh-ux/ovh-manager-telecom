@@ -25,12 +25,36 @@ angular.module('managerApp').controller('XdslAccessComfortExchangeCtrl', class X
       isSuccess: false,
     };
     this.isAvailable = false;
+    this.getListOpenedRMA();
   }
 
+  getListOpenedRMA() {
+    this.isRMAOpened = false;
+    return this.OvhApiXdsl.RMA().v6().query({
+      xdslId: this.xdslId,
+    }).$promise.then((result) => {
+      if (result.length > 0) {
+        this.rmas = [];
+        this.isRMAOpened = true;
+        result.forEach(id => this.OvhApiXdsl.RMA().v6().getRMA({
+          xdslId: this.xdslId,
+        }, { id }).$promise.then((rma) => {
+          const addRma = {
+            creationDateTime: rma.creationDatetime,
+            equipmentReference: rma.equipmentReference,
+            id: rma.id,
+            newMerchandise: rma.newMerchandise,
+            status: rma.status,
+          };
+          this.rmas.push(addRma);
+        }));
+      }
+    });
+  }
 
   comfortExchange() {
     return this.OvhApiXdsl.Modem().v6().comfortExchange({
-      xdslId: this.$stateParams.serviceName,
+      xdslId: this.xdslId,
     }, {}).$promise.then((result) => {
       this.exchange.isSuccess = true;
       this.exchange.order.url = result.url;

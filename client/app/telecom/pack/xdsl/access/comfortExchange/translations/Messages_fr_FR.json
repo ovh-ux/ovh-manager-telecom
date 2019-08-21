@@ -1,6 +1,7 @@
 {
   "xdsl_access_comfort_exchange_title": "Échange de modem",
-  "xdsl_access_comfort_exchange_waiting": "En attente de confirmation d'échange de modem…",
+  "xdsl_access_comfort_exchange_confirm_title": "Êtes-vous sûr(e) de vouloir effectuer cet échange?",
+  "xdsl_access_comfort_exchange_confirm_subtitle": "Le modem sera envoyé automatiquement à l'adresse de raccordement.",
   "xdsl_access_comfort_exchange_success_message": "Vous allez recevoir un e-mail vous décrivant la marche à suivre pour nous renvoyer votre ancien modem.",
   "xdsl_access_comfort_exchange_error_ERR011": "Erreur lors de la tentative de récupération des informations sur l'accès internet.",
   "xdsl_access_comfort_exchange_error_ERR012": "Erreur lors de la récupération des informations liées au contrat internet.",
@@ -19,5 +20,11 @@
   "xdsl_access_comfort_exchange_bc_date": "Date",
   "xdsl_access_comfort_exchange_price_without_tax": "Prix HT",
   "xdsl_access_comfort_exchange_tax": "TVA",
-  "xdsl_access_comfort_exchange_price_with_tax": "Prix TTC"
+  "xdsl_access_comfort_exchange_price_with_tax": "Prix TTC",
+  "xdsl_access_comfort_exchange_already_opened_rma": "Il y a déjà une demande d'échange de matériel en cours.",
+  "xdsl_access_comfort_exchange_rma_creation_date": "Date de création de la demande",
+  "xdsl_access_comfort_exchange_rma_new_merchandise": "Référence nouveau matériel",
+  "xdsl_access_comfort_exchange_rma_reference": "Référence RMA",
+  "xdsl_access_comfort_exchange_rma_equipment_reference": "Référence équipement",
+  "xdsl_access_comfort_exchange_rma_status": "Etat de la demande"
 }

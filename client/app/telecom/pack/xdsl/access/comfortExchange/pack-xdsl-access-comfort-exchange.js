@@ -5,10 +5,11 @@ angular.module('managerApp')
         url: '/comfortExchange',
         views: {
           'accessView@telecom.pack.xdsl': {
-            controller: 'XdslAccessComfortExchangeCtrl',
-            controllerAs: '$ctrl',
-            templateUrl: 'app/telecom/pack/xdsl/access/comfortExchange/pack-xdsl-access-comfort-exchange.html',
+            component: 'xdslAccessComfortExchange',
           },
+        },
+        resolve: {
+          xdslId: /* @ngInject */ $transition$ => $transition$.params().serviceName,
         },
         translations: { value: ['..', '.'], format: 'json' },
       });

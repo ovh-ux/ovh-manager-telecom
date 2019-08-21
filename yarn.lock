@@ -9185,10 +9185,9 @@ ovh-angular-user-pref@^0.3.1:
   resolved "https://registry.yarnpkg.com/ovh-angular-user-pref/-/ovh-angular-user-pref-0.3.1.tgz#07f5792513651f3262ae4879c174423649b08307"
   integrity sha1-B/V5JRNlHzJirkh5wXRCNkmwgwc=
 
-ovh-api-services@^9.2.0:
+"ovh-api-services@git+https://github.com/ovh-ux/ovh-api-services.git#feat/modem-comfort-exchange":
   version "9.2.0"
-  resolved "https://registry.yarnpkg.com/ovh-api-services/-/ovh-api-services-9.2.0.tgz#69bf57ccb81bd462ee38ab05f8c93edf0dc2b662"
-  integrity sha512-gzaSkh5zRSWMJbRlCGVUya+NR0Hyjatf/d+gFsTgNOAof6JYN/UQC5SqaF1IPLjWT2CTPHexcqPnXFYPqSHeNg==
+  resolved "git+https://github.com/ovh-ux/ovh-api-services.git#2121a037817e0283239998adfb76ed527e1d1129"
   dependencies:
     lodash "^4.17.15"
 
