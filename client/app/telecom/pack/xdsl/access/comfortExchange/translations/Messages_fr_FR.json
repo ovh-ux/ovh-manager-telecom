@@ -1,6 +1,6 @@
 {
   "xdsl_access_comfort_exchange_title": "Échange de modem",
-  "xdsl_access_comfort_exchange_confirm_title": "Êtes-vous sûr(e) de vouloir effectuer cet échange?",
+  "xdsl_access_comfort_exchange_confirm_title": "Êtes-vous sûr(e) de vouloir effectuer cet échange ?",
   "xdsl_access_comfort_exchange_confirm_subtitle": "Le modem sera envoyé automatiquement à l'adresse de raccordement.",
   "xdsl_access_comfort_exchange_success_message": "Vous allez recevoir un e-mail vous décrivant la marche à suivre pour nous renvoyer votre ancien modem.",
   "xdsl_access_comfort_exchange_error_ERR011": "Erreur lors de la tentative de récupération des informations sur l'accès internet.",

@@ -4,9 +4,7 @@ angular.module('managerApp')
       .state('telecom.pack.xdsl.access-modem-exchange', {
         url: '/comfortExchange',
         views: {
-          'accessView@telecom.pack.xdsl': {
-            component: 'xdslAccessComfortExchange',
-          },
+          'accessView@telecom.pack.xdsl': 'xdslAccessComfortExchange',
         },
         resolve: {
           xdslId: /* @ngInject */ $transition$ => $transition$.params().serviceName,
