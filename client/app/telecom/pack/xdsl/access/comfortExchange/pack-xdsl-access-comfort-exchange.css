@@ -9,7 +9,7 @@
 .rma-detail-label {
   color: #59697D;
   line-height: 1.5;
-  display: inline;
+  display: inline-flex;
   font-size: 1rem;
   font-weight: 400;
 }
