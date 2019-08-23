@@ -40,7 +40,7 @@ angular.module('managerApp').controller(
             this.isRMAOpened = true;
             rmas.forEach(id => this.OvhApiXdsl.RMA()
               .v6()
-              .getRMA(
+              .get(
                 {
                   xdslId: this.xdslId,
                 },
