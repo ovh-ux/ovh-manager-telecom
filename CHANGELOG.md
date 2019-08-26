@@ -1,3 +1,14 @@
+## [10.33.1](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.33.0...v10.33.1) (2019-08-26)
+
+
+### Bug Fixes
+
+* **i18n:** add missing translations [CDS 20] ([77828f0](https://github.com/ovh-ux/ovh-manager-telecom/commit/77828f0))
+* **i18n:** add missing translations [CDS 21] ([6b4c8f4](https://github.com/ovh-ux/ovh-manager-telecom/commit/6b4c8f4))
+* **i18n:** add missing translations [CDS 22] ([04fd9d8](https://github.com/ovh-ux/ovh-manager-telecom/commit/04fd9d8))
+
+
+
 # [10.33.0](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.32.1...v10.33.0) (2019-08-20)
 
 
