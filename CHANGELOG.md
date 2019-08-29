@@ -1,3 +1,12 @@
+## [10.33.3](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.33.2...v10.33.3) (2019-08-29)
+
+
+### Bug Fixes
+
+* **telephony.alias:** remove api error detail message ([#1493](https://github.com/ovh-ux/ovh-manager-telecom/issues/1493)) ([6f35032](https://github.com/ovh-ux/ovh-manager-telecom/commit/6f35032))
+
+
+
 ## [10.33.2](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.33.1...v10.33.2) (2019-08-27)
 
 
