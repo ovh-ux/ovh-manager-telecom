@@ -41,7 +41,7 @@
     "@bower_components/international-phone-number": "mareczek/international-phone-number#^0.0.16",
     "@bower_components/matchmedia": "paulirish/matchMedia.js#~0.2.0",
     "@ovh-ux/manager-config": "^0.3.0",
-    "@ovh-ux/manager-core": "^7.0.0",
+    "@ovh-ux/manager-core": "^7.1.2",
     "@ovh-ux/manager-freefax": "^5.2.1",
     "@ovh-ux/manager-navbar": "^1.2.3",
     "@ovh-ux/manager-overthebox": "^4.3.1",
