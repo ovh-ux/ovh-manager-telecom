@@ -1,7 +1,8 @@
 import './pack-xdsl-access-comfort-exchange.css';
+import template from './pack-xdsl-access-comfort-exchange.html';
 
 angular.module('managerApp').component('xdslAccessComfortExchange', {
-  templateUrl: 'app/telecom/pack/xdsl/access/comfortExchange/pack-xdsl-access-comfort-exchange.html',
+  template,
   controller: 'XdslAccessComfortExchangeCtrl',
   bindings: {
     xdslId: '<',

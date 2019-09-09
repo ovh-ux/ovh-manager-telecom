@@ -1,5 +1,5 @@
 angular.module('managerApp')
-  .config(($stateProvider) => {
+  .config(/* @ngInject */($stateProvider) => {
     $stateProvider
       .state('telecom.pack.xdsl.access-modem-exchange', {
         url: '/comfortExchange',

@@ -135,7 +135,7 @@
     "ovh-angular-timeline": "^1.5.2",
     "ovh-angular-ui-confirm-modal": "^1.0.2",
     "ovh-angular-user-pref": "^0.3.1",
-    "ovh-api-services": "git+https://github.com/ovh-ux/ovh-api-services.git#feat/modem-comfort-exchange",
+    "ovh-api-services": "^9.7.0",
     "ovh-jquery-ui-draggable-ng": "^0.0.5",
     "ovh-manager-webfont": "^1.0.1",
     "ovh-ng-input-password": "^1.2.5",
