@@ -4,7 +4,7 @@
 
     <tuc-toast-message></tuc-toast-message>
 
-    <div data-ng-if="$ctrl.isRMAOpened" class="opened-rma">
+    <div data-ng-if="$ctrl.isRMAOpened" class="mb-3">
         <span class="row" data-translate="xdsl_access_comfort_exchange_already_opened_rma"></span>
         <div data-ng-repeat="rma in $ctrl.rmas track by $index">
             <div class="row">
@@ -35,10 +35,10 @@
         </div>
     </div>
 
-    <div data-ng-if="!$ctrl.isRMAOpened">
+    <div data-ng-if="!$ctrl.isRMAOpened" class="mb-3">
         <div data-ng-if="!$ctrl.exchange.isSuccess">
-            <div class="row" data-translate="xdsl_access_comfort_exchange_confirm_title"></div>
-            <div class="row" data-translate="xdsl_access_comfort_exchange_confirm_subtitle"></div>
+            <div class="mb-2" data-translate="xdsl_access_comfort_exchange_confirm_title"></div>
+            <div class="mb-2" data-translate="xdsl_access_comfort_exchange_confirm_subtitle"></div>
 
             <oui-button variant="primary" data-ng-disabled="$ctrl.isAvailable"
                 data-ng-click="$ctrl.comfortExchange()">
