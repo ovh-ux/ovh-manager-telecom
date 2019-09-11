@@ -1027,12 +1027,12 @@
   dependencies:
     lodash "^4.17.11"
 
-"@ovh-ux/ng-ovh-api-wrappers@^4.0.2":
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/@ovh-ux/ng-ovh-api-wrappers/-/ng-ovh-api-wrappers-4.0.2.tgz#4d91cac4c622436f5359715dde31e1d6d75e2f5c"
-  integrity sha512-zNv2pQMyDRAVUOLvsRqV+6xG8NTz9LjWlSmvMXQ+sVjo9fZkEFxOS+mAGWgGweQjwrM+2Rd1t0Xj45hlhN/sQw==
+"@ovh-ux/ng-ovh-api-wrappers@^4.0.4":
+  version "4.0.4"
+  resolved "https://registry.yarnpkg.com/@ovh-ux/ng-ovh-api-wrappers/-/ng-ovh-api-wrappers-4.0.4.tgz#0fd5f6b7b428bb08e7c37d6bc98f43dfbda50ef9"
+  integrity sha512-ckPKAzXRuFkJ27QZ16AtiTgFZ8T5yTr6rkPqJetqGA8f2ncqBBnmnHtZGdoBFdk445dnrLyXsXjLuG0kTwSiRw==
   dependencies:
-    lodash "^4.17.11"
+    lodash "^4.17.15"
 
 "@ovh-ux/ng-ovh-chatbot@^2.0.1":
   version "2.0.1"
@@ -9185,10 +9185,10 @@ ovh-angular-user-pref@^0.3.1:
   resolved "https://registry.yarnpkg.com/ovh-angular-user-pref/-/ovh-angular-user-pref-0.3.1.tgz#07f5792513651f3262ae4879c174423649b08307"
   integrity sha1-B/V5JRNlHzJirkh5wXRCNkmwgwc=
 
-ovh-api-services@^9.7.0:
-  version "9.7.0"
-  resolved "https://registry.yarnpkg.com/ovh-api-services/-/ovh-api-services-9.7.0.tgz#e26ad3865d655221bb486bb966f4f41739a4e1e1"
-  integrity sha512-HzamNxusimGGfzWWWXzY2eB2q+mfLvikE980VfeqMYAC68tCTqXO+4TKLJatFEbSdBj878ZhnAlXRV+Xl6i+3A==
+ovh-api-services@^9.8.0:
+  version "9.8.0"
+  resolved "https://registry.yarnpkg.com/ovh-api-services/-/ovh-api-services-9.8.0.tgz#9764da1793ba3bd01bf897c2be6298a9de6cc2cb"
+  integrity sha512-WI9TfBkxkR5TZvQU1Xx8NIRwpS3TVqa7gQwRye+3Wj+b2UIGKAOmf0/fjGTsXSQBPsnMo3U4P+9YmjSO0OX5/A==
   dependencies:
     lodash "^4.17.15"
 
