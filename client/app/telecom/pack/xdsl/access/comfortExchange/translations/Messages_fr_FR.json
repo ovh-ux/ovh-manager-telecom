@@ -26,5 +26,6 @@
   "xdsl_access_comfort_exchange_rma_new_merchandise": "Référence nouveau matériel",
   "xdsl_access_comfort_exchange_rma_reference": "Référence RMA",
   "xdsl_access_comfort_exchange_rma_equipment_reference": "Référence équipement",
-  "xdsl_access_comfort_exchange_rma_status": "État de la demande"
+  "xdsl_access_comfort_exchange_rma_status": "État de la demande",
+  "xdsl_access_comfort_exchange_link_in_new_tab": "Ouverture du lien du bon de commande dans un nouvel onglet"
 }

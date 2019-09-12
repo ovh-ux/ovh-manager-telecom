@@ -2,7 +2,13 @@ import { COMFORT_EXCHANGE_TYPE_ERROR } from './pack-xdsl-access-comfort-exchange
 
 export default class XdslAccessComfortExchangeCtrl {
   /* @ngInject */
-  constructor($q, $translate, OvhApiXdsl, TucToast, TucToastError) {
+  constructor(
+    $q,
+    $translate,
+    OvhApiXdsl,
+    TucToast,
+    TucToastError,
+  ) {
     this.$q = $q;
     this.$translate = $translate;
     this.OvhApiXdsl = OvhApiXdsl;
