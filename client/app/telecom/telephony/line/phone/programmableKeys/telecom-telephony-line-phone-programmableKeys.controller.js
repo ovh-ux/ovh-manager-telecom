@@ -82,10 +82,29 @@ export default class TelecomTelephonyLinePhoneProgammableKeysCtrl {
   /* -----  End of INITIALIZATION  ------*/
 
   getPhone() {
+    const regexp = new RegExp(/[a-z]+|[\d.-_]+/ig);
+    const complexNumericRegExp = new RegExp(/\d+/g);
+
+    function sortFunctionKeys(a, b) {
+      const [alphaA, numericA] = a.label.match(regexp);
+      const [alphaB, numericB] = b.label.match(regexp);
+      if (alphaA === alphaB) {
+        const [numericA1, numericA2] = numericA.match(complexNumericRegExp);
+        const [numericB1, numericB2] = numericB.match(complexNumericRegExp);
+
+        if (numericA1 === numericB1) {
+          return parseInt(numericA2, 10) > parseInt(numericB2, 10) ? 1 : -1;
+        }
+        return parseInt(numericA, 10) > parseInt(numericB, 10) ? 1 : -1;
+      }
+      return alphaA > alphaB ? 1 : -1;
+    }
+
     return this.line.getPhone().then(() => {
       if (this.line.hasPhone) {
         return this.line.phone.initDeffered().then(() => {
-          this.functionKeys.raw = angular.copy(this.line.phone.functionKeys);
+          this.functionKeys.raw = _.cloneDeep(this.line.phone.functionKeys);
+          this.functionKeys.raw.sort(sortFunctionKeys);
         });
       }
       return null;
