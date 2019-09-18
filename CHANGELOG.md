@@ -1,3 +1,14 @@
+## [10.35.1](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.35.0...v10.35.1) (2019-09-18)
+
+
+### Bug Fixes
+
+* **pack.xdsl.modem:** fix enabling of sip alg option ([#1513](https://github.com/ovh-ux/ovh-manager-telecom/issues/1513)) ([8ef3dde](https://github.com/ovh-ux/ovh-manager-telecom/commit/8ef3dde))
+* **telephony.line.phone:** disable reboot only for gigaset and spa112 ([#1518](https://github.com/ovh-ux/ovh-manager-telecom/issues/1518)) ([a619c15](https://github.com/ovh-ux/ovh-manager-telecom/commit/a619c15))
+* **telephony.phone:** fix order of function keys ([#1512](https://github.com/ovh-ux/ovh-manager-telecom/issues/1512)) ([fcc6281](https://github.com/ovh-ux/ovh-manager-telecom/commit/fcc6281))
+
+
+
 # [10.35.0](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.34.0...v10.35.0) (2019-09-11)
 
 
