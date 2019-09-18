@@ -7,7 +7,7 @@ angular.module('managerApp').controller('TelecomTelephonyLinePhoneRebootCtrl', f
       .getGroup($stateParams.billingAccount)
       .then(group => group.getLine($stateParams.serviceName).getPhone()).then((phone) => {
         self.phone = phone;
-        self.isRebootable = /^phone\.(thomson|swissvoice)/.test(self.phone.brand);
+        self.isRebootable = !/^phone\.(gigaset|cisco.spa112)/.test(self.phone.brand);
       })
       .catch(err => new TucToastError(err))
       .finally(() => {
