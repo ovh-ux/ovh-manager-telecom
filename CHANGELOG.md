@@ -1,3 +1,12 @@
+## [10.35.2](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.35.1...v10.35.2) (2019-09-18)
+
+
+### Bug Fixes
+
+* **telephony.line.phone.programmablekeys:** keys natural sort ([e6e25cd](https://github.com/ovh-ux/ovh-manager-telecom/commit/e6e25cd)), closes [#1510](https://github.com/ovh-ux/ovh-manager-telecom/issues/1510)
+
+
+
 ## [10.35.1](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.35.0...v10.35.1) (2019-09-18)
 
 
