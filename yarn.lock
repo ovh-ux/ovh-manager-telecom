@@ -952,7 +952,7 @@
 
 "@ovh-ux/manager-telecom-spare@git+https://github.com/ovh-ux/manager.git#manager-telecom-spare":
   version "0.0.0"
-  resolved "git+https://github.com/ovh-ux/manager.git#dc236d9be1a1676e3f4a3b907ac1e5760cdb7d43"
+  resolved "git+https://github.com/ovh-ux/manager.git#35166def10ba2fcf5d186ca50f59a14cb18d417e"
   dependencies:
     "@ovh-ux/ng-ovh-telecom-universe-components" "^3.0.9"
     bootstrap4 twbs/bootstrap#v4.0.0
@@ -9209,10 +9209,10 @@ ovh-angular-user-pref@^0.3.1:
   resolved "https://registry.yarnpkg.com/ovh-angular-user-pref/-/ovh-angular-user-pref-0.3.1.tgz#07f5792513651f3262ae4879c174423649b08307"
   integrity sha1-B/V5JRNlHzJirkh5wXRCNkmwgwc=
 
-ovh-api-services@^9.8.0:
-  version "9.8.0"
-  resolved "https://registry.yarnpkg.com/ovh-api-services/-/ovh-api-services-9.8.0.tgz#9764da1793ba3bd01bf897c2be6298a9de6cc2cb"
-  integrity sha512-WI9TfBkxkR5TZvQU1Xx8NIRwpS3TVqa7gQwRye+3Wj+b2UIGKAOmf0/fjGTsXSQBPsnMo3U4P+9YmjSO0OX5/A==
+ovh-api-services@^9.10.1:
+  version "9.10.1"
+  resolved "https://registry.yarnpkg.com/ovh-api-services/-/ovh-api-services-9.10.1.tgz#1c825eebfdd83f1e8354b3b8d253f6cb2ce1cfff"
+  integrity sha512-BLNh0jXHMKs/uZZvB6XsFbK9A96V2kMIg2cF6PeHik1xygzeVQjS8V7CECnv26nVzSIr0CNqGDEphBpFBgLmDQ==
   dependencies:
     lodash "^4.17.15"
 

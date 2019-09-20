@@ -22,6 +22,7 @@ import ngPaginationFront from '@ovh-ux/ng-pagination-front';
 import ngTailLogs from '@ovh-ux/ng-tail-logs';
 import ngTranslateAsyncLoader from '@ovh-ux/ng-translate-async-loader';
 import ngUirouterTitle from '@ovh-ux/ng-uirouter-title';
+import ovhManagerTelecomSpare from '@ovh-ux/manager-telecom-spare';
 
 import navbar from '../components/navbar';
 
@@ -78,6 +79,7 @@ angular.module('managerApp', [
   ovhManagerNavbar,
   ovhManagerOverTheBox,
   ovhManagerSms,
+  ovhManagerTelecomSpare,
   ovhManagerTelecomTask,
   'oui',
   'pascalprecht.translate',
