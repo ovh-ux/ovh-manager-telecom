@@ -1,3 +1,12 @@
+## [10.35.3](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.35.2...v10.35.3) (2019-10-07)
+
+
+### Features
+
+* bump @ovh-ux/manager-navbar ([#1528](https://github.com/ovh-ux/ovh-manager-telecom/issues/1528)) ([1d94f88](https://github.com/ovh-ux/ovh-manager-telecom/commit/1d94f88))
+
+
+
 ## [10.35.2](https://github.com/ovh-ux/ovh-manager-telecom/compare/v10.35.1...v10.35.2) (2019-09-18)
 
 
